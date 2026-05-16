@@ -23,6 +23,12 @@ Astro static site, deployed to Vercel at https://hubstudio.ai.
 - Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, `style:`.
 - Branch naming: `feature/description`, `fix/description`.
 - Always run build before pushing.
+- The `prepare-commit-msg` hook prepends an `MMDD-HHMM` timestamp to
+  editor-driven commits. It does not replace the conventional-commit subject —
+  type the conventional subject and the hook prepends to it
+  (`0516-1637 feat: add contact form`). A bare `git commit` with no typed
+  subject yields just a timestamp, which is not conventional; commit with
+  `-m "feat: …"` (the hook leaves `-m` alone) when the subject matters.
 
 ## Performance / deployment constraints
 

@@ -2,8 +2,9 @@
 
 A self-contained git pre-commit hook: it detects raster images staged for
 commit, optimizes them in place, and re-stages them, so an unoptimized asset
-can never land in history. Project-agnostic. Copy the four files below into a
-new project, add the package.json entries, install once.
+can never land in history. Project-agnostic. Copy the files below into a
+new project, add the package.json entries, install once. File 5 is an optional
+companion hook unrelated to images — include it or skip it per project.
 
 ## What it does
 
@@ -37,6 +38,7 @@ npm install --save-dev sharp
 scripts/
   hooks/
     pre-commit                    # bash shim copied into .git/hooks/
+    prepare-commit-msg            # optional: timestamps commit messages
   pre-commit-optimize-images.mjs  # staged-image detector
   optimize-images-batch.mjs       # the sharp optimizer
   install-hooks.mjs               # one-time installer
@@ -455,6 +457,45 @@ main();
 
 ---
 
+## File 5 — `scripts/hooks/prepare-commit-msg` (optional)
+
+Companion hook, independent of the image pipeline. It prepends an `MMDD-HHMM`
+timestamp to commit messages written through the editor, so a bare
+`git commit` yields a subject like `0516-1637 …` instead of an empty line.
+Drop it in `scripts/hooks/` and `install-hooks.mjs` picks it up automatically —
+no extra wiring.
+
+```bash
+#!/bin/bash
+# Prepend an MMDD-HHMM timestamp to editor-driven commit messages.
+# Installed by `npm run hooks:install`.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+
+# Only fire on a plain `git commit`: no -m/-F, no merge/squash/amend/template.
+if [ -z "$COMMIT_SOURCE" ]; then
+  TIMESTAMP=$(date +"%m%d-%H%M")
+  ORIGINAL_MSG=$(cat "$COMMIT_MSG_FILE")
+  echo "$TIMESTAMP $ORIGINAL_MSG" > "$COMMIT_MSG_FILE"
+fi
+```
+
+The `[ -z "$COMMIT_SOURCE" ]` guard keeps it out of the way for every non-editor
+path: `-m`/`-F` (message), `--amend`/`-C` (commit), merges, squashes, and
+templates all keep their messages untouched. Only a plain `git commit` gets the
+timestamp.
+
+**Caveat — conventional commits.** Prepending a timestamp competes with a strict
+conventional-commits policy (`feat:`, `fix:`, …). The two can coexist: type a
+conventional subject in the editor and the hook prepends to it, giving
+`0516-1637 feat: add contact form`. But a bare `git commit` with no typed
+subject yields just `0516-1637`, which is not a conventional commit. If a
+project enforces conventional commits, either skip this hook or commit with
+`-m "feat: …"` (which the hook leaves alone) when the subject matters.
+
+---
+
 ## Notes
 
 - **Hooks are not version-controlled.** `.git/hooks/` is local to each clone.
@@ -467,7 +508,8 @@ main();
   bash shim through its bundled Bash, so the hook still works.
 - **Extending.** To add more hooks (lint, type-check, secret-scan), drop more
   files into `scripts/hooks/` and they get installed the same way. The
-  `pre-commit` shim can call several scripts in sequence.
+  `pre-commit` shim can call several scripts in sequence. File 5 is a worked
+  example of this — a standalone `prepare-commit-msg` hook.
 - **Husky alternative.** This is a zero-dependency approach. If the project
   already uses Husky, put the same `node scripts/pre-commit-optimize-images.mjs`
   line in `.husky/pre-commit` instead and skip files 1 and 3.
