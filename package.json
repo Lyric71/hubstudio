@@ -11,7 +11,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "format": "prettier --write \"src/**/*.{astro,ts,js,css,md}\""
+    "format": "prettier --write \"src/**/*.{astro,ts,js,css,md}\"",
+    "hooks:install": "node scripts/install-hooks.mjs",
+    "img:batch": "node scripts/optimize-images-batch.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -27,6 +29,7 @@
     "playwright": "^1.60.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
+    "sharp": "^0.33.5",
     "typescript": "^6.0.3"
   }
 }
