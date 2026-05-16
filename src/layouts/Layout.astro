@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import { getLocaleFromUrl, localizePath, useTranslations } from '../i18n/utils';
+import { locales, defaultLocale } from '../i18n/ui';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const SITE = 'https://hubstudio.ai';
+const LANG_NAMES: Record<string, string> = { en: 'English', fr: 'Français' };
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const year = new Date().getFullYear();
+
+const { title, description } = Astro.props;
+const pageTitle = title ?? t('meta.defaultTitle');
+const pageDescription = description ?? t('meta.defaultDescription');
+
+const path = Astro.url.pathname;
+const canonical = new URL(localizePath(path, locale), SITE).href;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+
+    {
+      locales.map((loc) => (
+        <link rel="alternate" hreflang={loc} href={new URL(localizePath(path, loc), SITE).href} />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(localizePath(path, defaultLocale), SITE).href}
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <a class="sr-only" href="#main">{t('nav.skipToContent')}</a>
+
+    <header>
+      <nav>
+        <a href={localizePath('/', locale)}>hubStudio</a>
+        <ul>
+          {
+            locales
+              .filter((loc) => loc !== locale)
+              .map((loc) => (
+                <li>
+                  <a href={localizePath(path, loc)} hreflang={loc}>
+                    {LANG_NAMES[loc]}
+                  </a>
+                </li>
+              ))
+          }
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer>
+      <p>{t('footer.rights', { year })}</p>
+    </footer>
+  </body>
+</html>
