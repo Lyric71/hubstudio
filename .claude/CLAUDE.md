@@ -24,7 +24,7 @@ Astro static site, deployed to Vercel at https://hubstudio.ai.
 - Branch naming: `feature/description`, `fix/description`.
 - Always run build before pushing.
 - The `prepare-commit-msg` hook prepends an `MMDD-HHMM` timestamp to
-  editor-driven commits. It does not replace the conventional-commit subject —
+  editor-driven commits. It does not replace the conventional-commit subject -
   type the conventional subject and the hook prepends to it
   (`0516-1637 feat: add contact form`). A bare `git commit` with no typed
   subject yields just a timestamp, which is not conventional; commit with
@@ -46,20 +46,54 @@ Every raster image (`.jpg`, `.jpeg`, `.png`, `.webp`) added under
 Targets: heroes max 2000px wide / under ~600 KB, inline 1600px / under ~250 KB,
 thumbnails under ~80 KB.
 
+## Image style guide (MANDATORY)
+
+`hubstudio-image-style-guide.md` (repo root) is the binding visual standard for
+every image AND every asset that ships on the site. The rule fires whenever you
+generate, source, select, crop, retouch, design, or replace any visual: photos
+and campaign images (heroes, case studies, process shots, team portraits,
+lifestyle, concept art) AND every other asset — SVG icons, illustrations, logos
+and marks, diagrams, backgrounds, textures, dividers, favicons, animation.
+
+Non-negotiables from that guide:
+
+- **Creative is the product, so every asset carries a creative angle.** Nothing
+  visual is allowed to be merely functional or generic. Each asset — SVGs
+  included — expresses a deliberate idea, is authored by one hand for
+  hubStudio, and can defend its place in one sentence. No off-the-shelf icon
+  sets used raw, no stock/library defaults dropped in to fill space. When the
+  obvious choice is generic, redesign it or cut it.
+- Authored editorial campaign photography (2024–2026 era), never the "AI
+  generator default." No glossy plastic skin, no perfect bokeh halos, no
+  impossible reflections, no symmetrical poreless faces.
+- One light source, one shadow. Directional natural light or a single softbox.
+- Real-photography technical look: prime-lens framing, f/2.8–f/5.6 depth,
+  warm-shadow film grade (Portra 400 / Kodak Gold / Fuji 400H), lifted black
+  point, subtle film grain on all hero images.
+- Rule-of-thirds composition with negative space for typography; mix crop
+  scales across a page; crop tighter than comfortable.
+- Anchor each brief to a named photographer reference plus a concrete lighting
+  condition, not a style adjective.
+- Every image gets a final human pass against the AI-tells checklist before it
+  goes live.
+
+Read the full file before any image work and follow it; do not paraphrase from
+memory. Treat it like the Translation rules: a permanent project standard.
+
 ## i18n architecture
 
 English at the root, every other locale under a prefix, with **native-language
 slugs per locale** (not the English slug with a prefix slapped on).
 
-- `src/i18n/ui.ts` — shared chrome strings (header, footer, meta) per locale.
+- `src/i18n/ui.ts`: shared chrome strings (header, footer, meta) per locale.
   English is the source of truth for key names; every locale defines the same
   keys. Page-level content stays inside each locale's `.astro` file.
-- `src/i18n/utils.ts` — `getLocaleFromUrl`, `stripLocale`, `localizePath`,
+- `src/i18n/utils.ts`: `getLocaleFromUrl`, `stripLocale`, `localizePath`,
   `useTranslations`. Portable: keep as-is across projects.
-- `src/i18n/page-slugs.ts` — per-locale EN<->native slug maps. Add an entry
+- `src/i18n/page-slugs.ts`: per-locale EN<->native slug maps. Add an entry
   here whenever a page ships in a new locale.
-- `src/pages/index.astro` etc. — EN pages at root.
-- `src/pages/fr/<native-slug>.astro` — FR pages with native slugs.
+- `src/pages/index.astro` etc.: EN pages at root.
+- `src/pages/fr/<native-slug>.astro`: FR pages with native slugs.
 
 `localizePath(path, locale)` round-trips a URL in either direction using the
 slug maps; unknown slugs fall back to the locale home so the language switcher
@@ -113,10 +147,10 @@ commit messages, or PR descriptions.
 
 **Two-step rewrite for any new or rewritten section:**
 
-- *Step 1 — Humanized translation.* Translate from English, hit the native
+- *Step 1: Humanized translation.* Translate from English, hit the native
   journalistic register, match register to audience, apply locale conventions
   for dates/currency/units/numbers/punctuation/quotation marks.
-- *Step 2 — Native rewrite (mandatory, even when Step 1 looks fine).* Treat
+- *Step 2: Native rewrite (mandatory, even when Step 1 looks fine).* Treat
   Step 1's output as a draft that is not native enough. Do NOT look back at the
   English source. Work only from the target-language draft. Restructure
   sentences, switch idioms to native equivalents, swap weak verbs for strong
@@ -136,6 +170,14 @@ product names stay half-width). FR uses guillemets `« »` with non-breaking
 spaces, and a non-breaking space before `: ; ! ?`. ES needs opening `¿` and
 `¡`. DE uses `„…"` quotes where typesetting allows.
 
+**No Chinese characters outside Chinese content (permanent).** Han characters
+(CJK ideographs) and Chinese full-width punctuation `。， 、：；！？""''（）` may
+appear ONLY in `zh-*` locale content. Never let a Han character or full-width
+mark leak into English, French, Spanish, German, Portuguese, or any other
+non-Chinese page, string, slug, alt text, meta tag, label, or microcopy: this
+includes stray characters from copy-paste, machine translation, or fallback
+text. Non-Chinese copy uses that language's own script and punctuation only.
+
 **Locale variant defaults:** Chinese → simplified (zh-CN) unless the path
 indicates traditional. French → metropolitan. Spanish → neutral peninsular.
 German → standard de-DE.
@@ -145,7 +187,7 @@ market stay in their canonical English form. Do not translate them, do not
 invent localized versions, do not retitle-case them. "hubStudio" keeps its
 canonical casing everywhere.
 
-**Single-locale default — no auto-translate.** When the user requests a content
+**Single-locale default: no auto-translate.** When the user requests a content
 change, edit ONLY the file(s) they referenced. Do not propagate the same change
 to other locales until the user explicitly says so (e.g. "translate this",
 "do all locales", "propagate"). When editing the English version, end with a
@@ -163,6 +205,31 @@ ES: `ñ→n`, accents → unaccented vowel. `localizePath` and any hreflang
 `/<locale>/` onto the English path. When editing a non-English page already
 shipped with an English slug, do NOT silently rename it: flag the mismatch and
 propose a redirect from old slug to new.
+
+## No em-dash, ever (permanent)
+
+The em-dash character (Unicode U+2014, the long dash, named here by codepoint
+so this rule file stays clean) is banned everywhere in this repo: rendered
+page content, headings, meta titles and descriptions, alt text, microcopy,
+button and form labels, every locale, plus code comments, JSDoc, CSS comments,
+HTML comments, section markers, commit-adjacent docs, and Markdown files. No
+exceptions, no "just this once."
+
+When you would reach for an em-dash, do one of these instead:
+
+- a comma, for a parenthetical or appositive aside;
+- a colon, when what follows explains or lists;
+- a period, splitting into two sentences (often the strongest fix);
+- parentheses, for a true aside;
+- restructure the sentence so no dash is needed.
+
+This is also an AI-writing tell: stripping it makes copy read as human-authored.
+See `HUMANIZER.md` for the wider set of tells.
+
+Allowed and untouched: the hyphen-minus `-` (compounds, ranges in code), the
+en-dash `–` in numeric ranges (`2024–2026`, `60–80%`), and arrows (`→`). Only
+U+2014 is banned. Before committing, grep staged files for U+2014 and confirm
+zero matches.
 
 ## SEO / redirects
 
