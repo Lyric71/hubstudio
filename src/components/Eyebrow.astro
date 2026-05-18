@@ -1,0 +1,12 @@
+---
+/**
+ * EyebrowLabel — §7. Tiny ALL-CAPS mono section tag.
+ * Every section opens with one (§14 "on system" rule 2).
+ */
+interface Props {
+  class?: string;
+}
+const { class: extra = '' } = Astro.props;
+---
+
+<span class={`eyebrow ${extra}`.trim()}><slot /></span>

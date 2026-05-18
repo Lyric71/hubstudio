@@ -1,0 +1,29 @@
+---
+/**
+ * Button — §7 component library.
+ * Renders an <a> when `href` is set, otherwise a <button>.
+ */
+type Variant = 'primary' | 'primary-inverse' | 'secondary' | 'on-dark' | 'ghost';
+
+interface Props {
+  variant?: Variant;
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+}
+
+const { variant = 'primary', href, type = 'button', class: extra = '' } = Astro.props;
+const cls = `btn btn--${variant} ${extra}`.trim();
+---
+
+{
+  href ? (
+    <a href={href} class={cls}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={cls}>
+      <slot />
+    </button>
+  )
+}

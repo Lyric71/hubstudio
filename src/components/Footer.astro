@@ -1,0 +1,177 @@
+---
+/**
+ * Footer — §5. Mirrors the mega-menu structure as a static link grid
+ * on --bg-ink. Small logo, location line, copyright, two legal links.
+ */
+import Logo from './Logo.astro';
+import { getLocaleFromUrl, localizePath } from '../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const lp = (p: string) => localizePath(p, locale);
+const year = new Date().getFullYear();
+
+const columns: { heading: string; links: { label: string; href: string }[] }[] = [
+  {
+    heading: 'The Studio',
+    links: [
+      { label: 'Who we are', href: '/the-studio' },
+      { label: 'The team', href: '/the-studio#team' },
+      { label: 'Beliefs', href: '/the-studio#beliefs' },
+      { label: 'Careers', href: '/careers' },
+    ],
+  },
+  {
+    heading: 'What We Do',
+    links: [
+      { label: 'Image Production', href: '/what-we-do/image' },
+      { label: 'Video Production', href: '/what-we-do/video' },
+      { label: 'Live Action Studio', href: '/what-we-do/live-action' },
+      { label: '3D, CGI & Motion', href: '/what-we-do/motion' },
+    ],
+  },
+  {
+    heading: 'Solutions',
+    links: [
+      { label: 'Brands', href: '/solutions/brands' },
+      { label: 'Agencies', href: '/solutions/agencies' },
+      { label: 'Retailers', href: '/solutions/retailers' },
+      { label: 'Manufacturers', href: '/solutions/manufacturers' },
+    ],
+  },
+  {
+    heading: 'hub4You',
+    links: [
+      { label: 'Platform overview', href: '/hub4you' },
+      { label: 'Integrations', href: '/hub4you#integrations' },
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'API docs', href: '/hub4you/api' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    links: [
+      { label: 'Insights', href: '/resources/insights' },
+      { label: 'How-to guides', href: '/resources/how-to' },
+      { label: 'Copyright & AI', href: '/resources/copyright-and-ai' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <a href={lp('/')} aria-label="hubStudio home"><Logo tone="dark" /></a>
+      <p class="site-footer__line">
+        A production house built for what content has become.
+      </p>
+      <p class="site-footer__loc">Studios across 16 markets &middot; Working worldwide</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Footer">
+      {
+        columns.map((col) => (
+          <div class="site-footer__col">
+            <p class="site-footer__heading">{col.heading}</p>
+            <ul>
+              {col.links.map((link) => (
+                <li>
+                  <a href={lp(link.href)}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <p>&copy; {year} hubStudio. All rights reserved.</p>
+    <div class="site-footer__legal">
+      <a href={lp('/privacy')}>Privacy</a>
+      <a href={lp('/terms')}>Terms</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .site-footer__inner {
+    display: grid;
+    gap: 48px;
+    padding-block: 80px 56px;
+  }
+  @media (min-width: 1024px) {
+    .site-footer__inner {
+      grid-template-columns: 1.4fr 3fr;
+      gap: 64px;
+    }
+  }
+  .site-footer__line {
+    margin-top: 20px;
+    max-width: 30ch;
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.72);
+  }
+  .site-footer__loc {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.5);
+  }
+  .site-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+  @media (min-width: 768px) {
+    .site-footer__nav {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .site-footer__heading {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.5);
+    margin-bottom: 16px;
+  }
+  .site-footer__col ul {
+    display: grid;
+    gap: 10px;
+  }
+  .site-footer__col a {
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.82);
+    transition: color 120ms ease-out;
+  }
+  .site-footer__col a:hover {
+    color: var(--brand-orange);
+  }
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+    padding-block: 24px 32px;
+    border-top: 1px solid rgba(240, 237, 233, 0.12);
+    font-size: 12px;
+    color: rgba(240, 237, 233, 0.5);
+  }
+  .site-footer__legal {
+    display: flex;
+    gap: 24px;
+  }
+  .site-footer__legal a:hover {
+    color: var(--brand-orange);
+  }
+</style>

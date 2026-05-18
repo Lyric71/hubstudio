@@ -1,0 +1,34 @@
+---
+/**
+ * Logo — §2 brand lockup. The faceted hexagonal cube mark + `hub Studio`
+ * wordmark. `tone="dark"` swaps to the cream-wordmark variant for use on
+ * --bg-ink surfaces (footer, dark sections).
+ */
+interface Props {
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+const { tone = 'light', class: extra = '' } = Astro.props;
+const src = tone === 'dark' ? '/logo/hubstudio-logo-dark.png' : '/logo/hubstudio-logo.png';
+---
+
+<img
+  src={src}
+  alt="hubStudio"
+  width="1459"
+  height="416"
+  decoding="async"
+  class={`logo ${extra}`.trim()}
+/>
+
+<style>
+  .logo {
+    height: 30px;
+    width: auto;
+  }
+  @media (min-width: 1024px) {
+    .logo {
+      height: 34px;
+    }
+  }
+</style>

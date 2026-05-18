@@ -1,0 +1,809 @@
+---
+/**
+ * Header — §5 navigation + mega menu.
+ * Persistent top nav, five mega-menu panels, mobile right-sheet drawer.
+ * Desktop panels open on hover / keyboard focus (CSS); JS handles the
+ * scroll state, Esc-to-close, and the mobile drawer.
+ */
+import Logo from './Logo.astro';
+import { localizePath } from '../i18n/utils';
+import { getLocaleFromUrl } from '../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const lp = (p: string) => localizePath(p, locale);
+
+type Link = { title: string; desc: string; href: string };
+type Group = { heading: string; links: Link[] };
+type Featured = {
+  variant: 'orange' | 'navy' | 'cream';
+  eyebrow: string;
+  title: string;
+  text: string;
+  cta: { label: string; href: string };
+};
+type MenuItem = {
+  label: string;
+  href: string;
+  intro: { eyebrow: string; pre: string; accent: string; post: string; text: string };
+  groups: Group[];
+  featured: Featured;
+};
+
+const menu: MenuItem[] = [
+  {
+    label: 'The Studio',
+    href: '/the-studio',
+    intro: {
+      eyebrow: 'The Studio',
+      pre: 'A production ',
+      accent: 'house',
+      post: '.',
+      text: 'Who we are, how we work, and why brands move their content operation here.',
+    },
+    groups: [
+      {
+        heading: 'About',
+        links: [
+          { title: 'Who we are', desc: 'The studio behind the work', href: '/the-studio' },
+          { title: 'Why hubStudio', desc: 'What sets the studio apart', href: '/the-studio#why' },
+          { title: 'The team', desc: 'Creatives across 16 markets', href: '/the-studio#team' },
+          { title: 'Careers', desc: 'Open roles and how we hire', href: '/careers' },
+        ],
+      },
+      {
+        heading: 'Approach',
+        links: [
+          { title: 'Our method', desc: 'Brief to finished asset', href: '/the-studio#method' },
+          { title: 'Beliefs', desc: 'What we hold to be true', href: '/the-studio#beliefs' },
+          { title: 'AI usage policy', desc: 'Generation, used responsibly', href: '/resources/ai-usage-policy' },
+        ],
+      },
+    ],
+    featured: {
+      variant: 'orange',
+      eyebrow: 'Founder story',
+      title: 'Built for what content became',
+      text: 'Why we rebuilt the studio model from the ground up.',
+      cta: { label: 'Read the story', href: '/the-studio#story' },
+    },
+  },
+  {
+    label: 'What We Do',
+    href: '/what-we-do',
+    intro: {
+      eyebrow: 'What We Do',
+      pre: 'Three lanes. One ',
+      accent: 'studio',
+      post: '.',
+      text: 'We produce content, we build the platform, and we direct the creative. End to end.',
+    },
+    groups: [
+      {
+        heading: 'Produce',
+        links: [
+          { title: 'Image Production', desc: 'On-brand visuals at scale', href: '/what-we-do/image' },
+          { title: 'Short & Long Video', desc: 'Shot, generated, or hybrid', href: '/what-we-do/video' },
+          { title: 'Live Action Studio', desc: 'Real photo and video shoots', href: '/what-we-do/live-action' },
+          { title: '3D, CGI & Motion', desc: 'Animation and product CGI', href: '/what-we-do/motion' },
+        ],
+      },
+      {
+        heading: 'Solutions',
+        links: [
+          { title: 'Brands', desc: 'Production at calendar speed', href: '/solutions/brands' },
+          { title: 'Agencies', desc: 'You strategize, we scale', href: '/solutions/agencies' },
+          { title: 'Retailers', desc: 'Full visual ecosystems', href: '/solutions/retailers' },
+          { title: 'Manufacturers', desc: 'Specs turned into sales', href: '/solutions/manufacturers' },
+        ],
+      },
+      {
+        heading: 'Direct',
+        links: [
+          { title: 'Strategy & Guidelines', desc: 'Positioning and creative', href: '/what-we-do/strategy' },
+          { title: 'Transcreation', desc: 'Multi-market, culturally native', href: '/what-we-do/transcreation' },
+          { title: 'Training', desc: 'Hands-on team workshops', href: '/what-we-do/training' },
+        ],
+      },
+    ],
+    featured: {
+      variant: 'orange',
+      eyebrow: 'Most requested',
+      title: 'Image production from $35 a brief',
+      text: 'Hundreds of finalized, on-brand assets a month.',
+      cta: { label: 'See image production', href: '/what-we-do/image' },
+    },
+  },
+  {
+    label: 'Work',
+    href: '/work',
+    intro: {
+      eyebrow: 'Work',
+      pre: 'Real brand ',
+      accent: 'work',
+      post: '.',
+      text: 'Campaigns and content shipped for brands selling into markets worldwide.',
+    },
+    groups: [
+      {
+        heading: 'By industry',
+        links: [
+          { title: 'Beauty', desc: 'Shiseido, Bobbi Brown', href: '/work?industry=beauty' },
+          { title: 'Automotive', desc: 'Mazda, premium SUV launch', href: '/work?industry=automotive' },
+          { title: 'Fashion', desc: 'Camper, global fashion', href: '/work?industry=fashion' },
+          { title: 'Food & Beverage', desc: 'Nescafe, 1834 Gin', href: '/work?industry=food' },
+        ],
+      },
+      {
+        heading: 'By format',
+        links: [
+          { title: 'Campaigns', desc: 'Global, multi-market', href: '/work?format=campaigns' },
+          { title: 'eCommerce', desc: 'Product packs at scale', href: '/work?format=ecommerce' },
+          { title: 'Social', desc: 'Feed-native content', href: '/work?format=social' },
+          { title: 'Brand Identity', desc: 'Systems and guidelines', href: '/work?format=brand' },
+        ],
+      },
+    ],
+    featured: {
+      variant: 'cream',
+      eyebrow: 'Latest case study',
+      title: '22% to 78% approval in six months',
+      text: 'A global appliance brand, rebuilt around generation.',
+      cta: { label: 'View the case', href: '/work/appliance-brand' },
+    },
+  },
+  {
+    label: 'hub4You',
+    href: '/hub4you',
+    intro: {
+      eyebrow: 'hub4You',
+      pre: 'Your own content ',
+      accent: 'studio',
+      post: '.',
+      text: 'A custom content platform on your dedicated GPU servers, run by your team.',
+    },
+    groups: [
+      {
+        heading: 'Platform',
+        links: [
+          { title: 'Overview', desc: 'What hub4You does', href: '/hub4you' },
+          { title: 'Workflows', desc: 'Pipelines built for production', href: '/hub4you#workflows' },
+          { title: 'Integrations', desc: 'Plugs into your DAM and PIM', href: '/hub4you#integrations' },
+        ],
+      },
+      {
+        heading: 'Pricing',
+        links: [
+          { title: 'Standard', desc: 'Shared deployment', href: '/pricing#standard' },
+          { title: 'Private', desc: 'Dedicated GPU servers', href: '/pricing#private' },
+        ],
+      },
+      {
+        heading: 'Resources',
+        links: [
+          { title: 'Setup guide', desc: 'Deployment in weeks', href: '/hub4you/setup' },
+          { title: 'API docs', desc: 'For your engineering team', href: '/hub4you/api' },
+        ],
+      },
+    ],
+    featured: {
+      variant: 'navy',
+      eyebrow: 'The platform',
+      title: 'Brand-trained models, your infrastructure',
+      text: 'Custom LoRAs and fine-tunes, locked in and reproducible.',
+      cta: { label: 'Explore hub4You', href: '/hub4you' },
+    },
+  },
+  {
+    label: 'Resources',
+    href: '/resources',
+    intro: {
+      eyebrow: 'Resources',
+      pre: 'Worth ',
+      accent: 'reading',
+      post: '.',
+      text: 'Perspectives, practical guides, and the legal ground rules for AI-native content.',
+    },
+    groups: [
+      {
+        heading: 'Learn',
+        links: [
+          { title: 'Insights', desc: 'Essays on AI-native content', href: '/resources/insights' },
+          { title: 'How-to guides', desc: 'Practical, step by step', href: '/resources/how-to' },
+          { title: 'Glossary', desc: 'The vocabulary, defined', href: '/resources/glossary' },
+        ],
+      },
+      {
+        heading: 'Legal',
+        links: [
+          { title: 'Copyright & AI', desc: 'Using AI without risk', href: '/resources/copyright-and-ai' },
+          { title: 'AI usage policy', desc: 'How we work, in writing', href: '/resources/ai-usage-policy' },
+        ],
+      },
+      {
+        heading: 'Connect',
+        links: [
+          { title: 'Newsletter', desc: 'Monthly, no noise', href: '/resources/newsletter' },
+          { title: 'Contact', desc: 'Talk to the studio', href: '/contact' },
+        ],
+      },
+    ],
+    featured: {
+      variant: 'cream',
+      eyebrow: 'Latest insight',
+      title: 'Culture cannot be briefed',
+      text: 'Why the creative layer is the part that still matters.',
+      cta: { label: 'Read insights', href: '/resources/insights' },
+    },
+  },
+];
+---
+
+<header class="site-header" id="site-header" data-scrolled="false">
+  <div class="site-header__bar">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href={lp('/')} aria-label="hubStudio home">
+        <Logo />
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="menubar">
+          {
+            menu.map((item) => (
+              <li class="nav-item">
+                <a
+                  class="nav-item__trigger"
+                  href={lp(item.href)}
+                  aria-haspopup="true"
+                >
+                  {item.label}
+                  <svg class="nav-item__chevron" viewBox="0 0 12 12" aria-hidden="true">
+                    <path d="M2 4 6 8 10 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+
+                <div class="mega" role="region" aria-label={item.label}>
+                  <div class="container mega__grid">
+                    <div class="mega__intro">
+                      <span class="eyebrow">{item.intro.eyebrow}</span>
+                      <p class="headline h3 mega__head">
+                        {item.intro.pre}
+                        <span class="accent">{item.intro.accent}</span>
+                        {item.intro.post}
+                      </p>
+                      <p class="mega__intro-text">{item.intro.text}</p>
+                      <a class="mega__intro-link" href={lp(item.href)}>
+                        All of {item.label} &rarr;
+                      </a>
+                    </div>
+
+                    <div class="mega__lists" data-cols={item.groups.length}>
+                      {item.groups.map((group) => (
+                        <div class="mega__group">
+                          <p class="mega__group-head">{group.heading}</p>
+                          <ul>
+                            {group.links.map((link) => (
+                              <li>
+                                <a class="mega__link" href={lp(link.href)}>
+                                  <span class="mega__link-title">{link.title}</span>
+                                  <span class="mega__link-desc">{link.desc}</span>
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a
+                      class={`mega__feat card card--${item.featured.variant}`}
+                      href={lp(item.featured.cta.href)}
+                    >
+                      <span class={`mega__feat-art mega__feat-art--${item.featured.variant}`} aria-hidden="true" />
+                      <span class="mega__feat-body">
+                        <span class="eyebrow">{item.featured.eyebrow}</span>
+                        <span class="mega__feat-title">{item.featured.title}</span>
+                        <span class="mega__feat-text">{item.featured.text}</span>
+                        <span class="mega__feat-cta">{item.featured.cta.label} &rarr;</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="btn btn--ghost site-header__util" href={lp('/work')}>See the work</a>
+        <a class="btn btn--primary" href={lp('/contact')}>Talk to us</a>
+        <button
+          class="site-header__burger"
+          id="nav-burger"
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
+          aria-label="Open menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile drawer (§5 right-sheet) -->
+  <div class="mobile-drawer" id="mobile-drawer" hidden>
+    <div class="mobile-drawer__panel">
+      <div class="mobile-drawer__top container">
+        <Logo />
+        <button class="mobile-drawer__close" id="nav-close" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="mobile-drawer__scroll container">
+        {
+          menu.map((item) => (
+            <div class="m-acc">
+              <button class="m-acc__trigger" aria-expanded="false">
+                {item.label}
+                <svg viewBox="0 0 12 12" aria-hidden="true">
+                  <path d="M2 4 6 8 10 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="m-acc__panel">
+                <div class="m-acc__inner">
+                  <a class={`m-acc__feat card card--${item.featured.variant}`} href={lp(item.featured.cta.href)}>
+                    <span class="eyebrow">{item.featured.eyebrow}</span>
+                    <span class="m-acc__feat-title">{item.featured.title}</span>
+                    <span class="mega__feat-cta">{item.featured.cta.label} &rarr;</span>
+                  </a>
+                  {item.groups.map((group) => (
+                    <div class="m-acc__group">
+                      <p class="mega__group-head">{group.heading}</p>
+                      <ul>
+                        {group.links.map((link) => (
+                          <li>
+                            <a href={lp(link.href)}>{link.title}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="mobile-drawer__foot container">
+        <a class="btn btn--primary" href={lp('/contact')}>Talk to us</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* ---- Nav bar -------------------------------------------------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-header__bar {
+    background: transparent;
+    transition: background-color 200ms ease-out, border-color 200ms ease-out;
+    border-bottom: 1px solid transparent;
+  }
+  .site-header[data-scrolled='true'] .site-header__bar {
+    background: var(--bg-cream);
+    border-bottom-color: var(--line-hairline);
+  }
+  .site-header__inner {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  @media (min-width: 1024px) {
+    .site-header__inner {
+      height: var(--nav-h);
+    }
+  }
+  .site-header__logo {
+    flex: none;
+  }
+
+  /* ---- Desktop menu bar ---------------------------------------- */
+  .primary-nav {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .primary-nav {
+      display: block;
+    }
+  }
+  .menubar {
+    display: flex;
+    gap: 4px;
+  }
+  .nav-item {
+    position: static;
+  }
+  .nav-item__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 14px;
+    font-size: var(--type-button);
+    font-weight: 500;
+    color: var(--text-ink);
+    border-radius: var(--radius-pill);
+    transition: color 120ms ease-out;
+  }
+  .nav-item__trigger:hover {
+    color: var(--brand-orange);
+  }
+  .nav-item__chevron {
+    width: 11px;
+    height: 11px;
+    transition: transform 180ms ease-out;
+  }
+  .nav-item:hover .nav-item__chevron,
+  .nav-item:focus-within .nav-item__chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ---- Mega panel ---------------------------------------------- */
+  .mega {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--bg-cream);
+    border-top: 1px solid var(--line-hairline);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 180ms ease-out, transform 180ms ease-out, visibility 0s linear 180ms;
+  }
+  .nav-item:hover .mega,
+  .nav-item:focus-within .mega {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 180ms ease-out, transform 180ms ease-out;
+  }
+  .mega__grid {
+    display: grid;
+    grid-template-columns: 25% 1fr 25%;
+    gap: 40px;
+    min-height: 360px;
+    padding-block: 40px;
+  }
+  .mega__head {
+    margin-top: 12px;
+  }
+  .mega__intro-text {
+    margin-top: 14px;
+    color: var(--text-mute);
+    font-size: var(--type-small);
+    line-height: 1.5;
+  }
+  .mega__intro-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .mega__lists {
+    display: grid;
+    gap: 32px;
+  }
+  .mega__lists[data-cols='2'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mega__lists[data-cols='3'] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .mega__group-head {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .mega__group ul {
+    display: grid;
+    gap: 2px;
+  }
+  .mega__link {
+    display: block;
+    padding: 8px 10px;
+    margin-inline: -10px;
+    border-radius: 12px;
+    transition: background-color 120ms ease-out;
+  }
+  .mega__link:hover {
+    background: rgba(10, 10, 20, 0.04);
+  }
+  .mega__link-title {
+    display: block;
+    font-size: var(--type-small);
+    font-weight: 600;
+  }
+  .mega__link-desc {
+    display: block;
+    font-size: 12px;
+    color: var(--text-mute);
+    margin-top: 1px;
+  }
+
+  /* Featured card */
+  .mega__feat {
+    display: flex;
+    flex-direction: column;
+    transition: transform 200ms ease-out;
+  }
+  .mega__feat:hover {
+    transform: translateY(-2px);
+  }
+  .mega__feat-art {
+    height: 116px;
+    flex: none;
+  }
+  .mega__feat-art--orange {
+    background: linear-gradient(135deg, var(--brand-orange-deep), var(--brand-orange));
+  }
+  .mega__feat-art--navy {
+    background: linear-gradient(135deg, #14275f, var(--brand-navy));
+  }
+  .mega__feat-art--cream {
+    background: linear-gradient(135deg, #e5e1db, #d8d3cb);
+  }
+  .mega__feat-body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .mega__feat-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-top: 4px;
+  }
+  .mega__feat-text {
+    font-size: 12px;
+    line-height: 1.45;
+    opacity: 0.78;
+  }
+  .mega__feat-cta {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+  .card--orange .eyebrow,
+  .card--navy .eyebrow {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  /* ---- Header actions ------------------------------------------ */
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .site-header__util {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .site-header__util {
+      display: inline-flex;
+    }
+  }
+  .site-header__burger {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 0 10px;
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+  }
+  .site-header__burger span {
+    height: 1.6px;
+    background: var(--text-ink);
+    border-radius: 2px;
+  }
+  @media (min-width: 1024px) {
+    .site-header__burger {
+      display: none;
+    }
+  }
+
+  /* ---- Mobile drawer ------------------------------------------- */
+  .mobile-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+  }
+  .mobile-drawer[hidden] {
+    display: none;
+  }
+  .mobile-drawer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 20, 0.4);
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+  }
+  .mobile-drawer[data-open='true']::before {
+    opacity: 1;
+  }
+  .mobile-drawer__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(420px, 92vw);
+    background: var(--bg-cream);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 240ms ease-out;
+  }
+  .mobile-drawer[data-open='true'] .mobile-drawer__panel {
+    transform: translateX(0);
+  }
+  .mobile-drawer__top {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: none;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .mobile-drawer__close {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--text-ink);
+  }
+  .mobile-drawer__scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-block: 8px 24px;
+  }
+  .mobile-drawer__foot {
+    flex: none;
+    padding-block: 18px;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .mobile-drawer__foot .btn {
+    width: 100%;
+  }
+
+  .m-acc {
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .m-acc__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    background: transparent;
+    border: none;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+  .m-acc__trigger svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 200ms ease-out;
+  }
+  .m-acc__trigger[aria-expanded='true'] svg {
+    transform: rotate(180deg);
+  }
+  .m-acc__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 240ms ease-in-out;
+  }
+  .m-acc__trigger[aria-expanded='true'] + .m-acc__panel {
+    grid-template-rows: 1fr;
+  }
+  .m-acc__inner {
+    overflow: hidden;
+  }
+  .m-acc__feat {
+    display: block;
+    padding: 16px;
+    margin-bottom: 18px;
+  }
+  .m-acc__feat-title {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+  .m-acc__group {
+    margin-bottom: 18px;
+  }
+  .m-acc__group ul {
+    display: grid;
+    gap: 2px;
+  }
+  .m-acc__group a {
+    display: block;
+    padding: 8px 0;
+    font-size: 15px;
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const drawer = document.getElementById('mobile-drawer');
+  const burger = document.getElementById('nav-burger');
+  const closeBtn = document.getElementById('nav-close');
+
+  /* Scroll state — cream background + hairline after 80px (§5). */
+  const onScroll = () => {
+    header?.setAttribute('data-scrolled', String(window.scrollY > 80));
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Mobile drawer */
+  const openDrawer = () => {
+    if (!drawer) return;
+    drawer.hidden = false;
+    requestAnimationFrame(() => drawer.setAttribute('data-open', 'true'));
+    burger?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeDrawer = () => {
+    if (!drawer) return;
+    drawer.setAttribute('data-open', 'false');
+    burger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    window.setTimeout(() => {
+      drawer.hidden = true;
+    }, 260);
+  };
+  burger?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+  drawer?.addEventListener('click', (e) => {
+    if (e.target === drawer) closeDrawer();
+  });
+
+  /* Mobile accordion — one section open at a time */
+  const accTriggers = Array.from(document.querySelectorAll<HTMLButtonElement>('.m-acc__trigger'));
+  accTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const open = trigger.getAttribute('aria-expanded') === 'true';
+      accTriggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));
+      trigger.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+
+  /* Esc closes the drawer and any open desktop panel */
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (drawer && !drawer.hidden) closeDrawer();
+    const active = document.activeElement as HTMLElement | null;
+    if (active && active.closest('.nav-item')) active.blur();
+  });
+</script>

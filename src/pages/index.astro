@@ -1,8 +1,1050 @@
 ---
+/**
+ * Home (`/`) — §8 blueprint:
+ * S1 Hero · S2 Bridge · S3 Stat row · S4 Three-card row · S5 Logo strip ·
+ * S6 Bordered text block · S7 Two-up card pair · S8 Use-case grid ·
+ * S9 Beliefs · S10 Tag cloud · S11 Pull-quote pair · S12 Accordion + sidebar ·
+ * S13 Closing CTA.
+ * Content from hubstudio-homepage-rewrite.md.
+ */
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const clients = ['Mazda', 'Nescafe', 'Marriott', 'Bobbi Brown', 'HiSense', 'Shiseido', 'Camper'];
+
+const stats = [
+  { value: '22→78%', label: 'Approval rate, six months in' },
+  { value: '7×', label: 'Output multiplier' },
+  { value: '60%', label: 'Cost reduction, passed through' },
+  { value: '3 days', label: 'Turnarounds, the floor we work from' },
+];
+
+const lanes = [
+  {
+    variant: 'orange',
+    glyph: '产',
+    name: 'Produce',
+    summary: 'On-brand visuals, video, and copy. Hundreds of finalized assets a month. Generated, shot, or hybrid.',
+    items: [
+      'Image production — $35 a brief to $405 a finalized asset',
+      'Short and long video — from $200 per script',
+      'Live action studio — real photo and video shoots',
+      '3D, CGI, motion design, video branding',
+    ],
+    href: '/what-we-do/image',
+  },
+  {
+    variant: 'navy',
+    glyph: '台',
+    name: 'Platform',
+    summary: 'Your own content studio on dedicated GPU infrastructure. Trained on your brand. Run by your team.',
+    items: [
+      'Hub4You platform on your dedicated GPU servers',
+      'Brand-trained models — custom LoRAs and fine-tunes',
+      'Pipelines on ComfyUI, Flux, Wan, Veo, Hunyuan',
+      'Integrated into your DAM and PIM',
+    ],
+    href: '/hub4you',
+  },
+  {
+    variant: 'cream',
+    glyph: '导',
+    name: 'Direct',
+    summary: 'The creative intelligence layer. Strategy, transcreation, training. The part that cannot be automated.',
+    items: [
+      'Content strategy, brand positioning, campaign creative',
+      'Transcreation — multi-market, culturally native',
+      'AI usage policy and approval workflows',
+      'Hands-on training for in-house teams',
+    ],
+    href: '/what-we-do/strategy',
+  },
+];
+
+const cases = [
+  { client: 'Mexicash', result: 'A full campaign system, localized end to end', tag: 'Campaign' },
+  { client: 'Shiseido', result: 'RQ PYOLOGY — beauty product content at scale', tag: 'Beauty' },
+  { client: 'Premium SUV', result: 'A global automotive launch, market by market', tag: 'Automotive' },
+  { client: 'HiSense', result: 'Product visuals across every channel and format', tag: '3C' },
+  { client: 'age20', result: 'Skincare campaign content, generated and shot', tag: 'Beauty' },
+  { client: '1834 Gin', result: 'Brand-world imagery for a spirits label', tag: 'Food & Beverage' },
+];
+
+const services = [
+  'Social Media', 'Ecommerce', 'Short Video', 'Ad Creative', 'Video Production',
+  'Print Design', 'Website Design', 'Email Design', 'Motion Design', 'Marketing Strategy',
+  'Presentation Design', 'Illustration', 'Storyboard', 'Packaging & Merch', 'Brand Identity',
+  'Ebooks & Reports', 'Concept Creation', 'Pitch Deck', 'Creative Strategy', 'Press Release',
+];
+
+const quotes = [
+  {
+    text: 'Anyone can generate a passable image now. The difference between passable and brilliant sits with the humans directing the work.',
+    name: 'Marcus Sullivan',
+    role: 'Creative Director',
+  },
+  {
+    text: 'Three-day turnarounds used to be impossible. Now they are simply the floor we work from.',
+    name: 'Léa Moreau',
+    role: 'Art Director',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How fast can you turn work around?',
+    a: 'Three days is the floor, not the exception. Most briefs move faster. Larger campaign systems run on a schedule we set with you at kickoff, so nothing about the timeline is a surprise.',
+  },
+  {
+    q: 'What does it cost?',
+    a: 'We publish our pricing because most studios hide theirs. Image production runs from $35 a brief to $405 for a fully finalized asset. Video starts at $200 per script. The savings from AI generation are real, and we pass them through.',
+  },
+  {
+    q: 'Do you actually shoot, or only generate?',
+    a: 'Both. We run a live action studio for real photo and video shoots, used by Mazda, Nescafe, Marriott, and Bobbi Brown. Plenty of briefs are best served generated, or as a hybrid. We tell you which, before you commit.',
+  },
+  {
+    q: 'What is hub4You?',
+    a: 'Hub4You is our content platform, deployed on your own dedicated GPU servers and integrated into your DAM and PIM. Your team operates it. We train and support. Deployment takes weeks, not quarters.',
+  },
+  {
+    q: 'Which markets can you produce for?',
+    a: 'We hire creative directors, art directors, and copywriters from the cultures our clients sell into. No cultural translation layer. Just creatives who already speak your market’s language.',
+  },
+];
 ---
 
-<Layout title="hubStudio" description="hubStudio — a studio building on the web.">
-  <h1>hubStudio</h1>
-  <p>Welcome. This is the starting point for hubStudio.</p>
+<Layout>
+  <!-- ===== S1 — Hero (asymmetric split) ===== -->
+  <section class="section hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Production house</span>
+        <h1 class="headline h1 reveal hero__title">
+          A production house built for what content has <span class="accent">become</span>.
+        </h1>
+        <p class="lead hero__lead">
+          A global appliance brand came to us with a 22 percent approval rate. Six months
+          later it hit 78 percent. Output multiplied by seven. Cost dropped by 60 percent.
+          That is the gap between the old way of making content and how it has to work now.
+        </p>
+        <div class="hero__cta">
+          <Button variant="primary" href="/contact">Talk to us</Button>
+          <Button variant="secondary" href="/work">See real brand work</Button>
+        </div>
+      </div>
+
+      <aside class="hero__card card card--orange grain">
+        <span class="chip hero__chip"><span class="chip__dot"></span>Now booking</span>
+        <p class="hero__card-msg">
+          Send the brief. We show you how we would deliver it, what it would cost, and
+          what we would shoot versus generate.
+        </p>
+        <div class="hero__card-actions">
+          <a href="/contact">Start a brief <span aria-hidden="true">→</span></a>
+          <a href="/hub4you">Run the platform <span aria-hidden="true">→</span></a>
+        </div>
+        <svg class="hero__cube" viewBox="0 0 32 35" aria-hidden="true">
+          <path d="M16 4 28 11 16 18 4 11Z" fill="#fff" opacity="0.95" />
+          <path d="M4 11 16 18 16 31 4 24Z" fill="#fff" opacity="0.55" />
+          <path d="M28 11 16 18 16 31 28 24Z" fill="#fff" opacity="0.28" />
+        </svg>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== S2 — Bridge headline (centered) ===== -->
+  <section class="section bridge">
+    <div class="container bridge__inner">
+      <span class="eyebrow">Track record</span>
+      <h2 class="headline h2 reveal">
+        Cost per finalized asset, cut in <span class="accent">half</span>.
+      </h2>
+      <p class="lead bridge__sub">
+        Brands need hundreds of assets a month, sometimes thousands, across formats nobody
+        was making five years ago. Traditional studios were never built for that. We were.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S3 — Stat row (bordered single card) ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="stat-row card card--cream">
+        {
+          stats.map((stat) => (
+            <div class="stat">
+              <span class="stat__value">{stat.value}</span>
+              <span class="stat__label">{stat.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4 — Three-card row (the three lanes) ===== -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">What we do</span>
+        <h2 class="headline h2 reveal">Three lanes. One <span class="accent">studio</span>.</h2>
+      </header>
+      <div class="lane-row">
+        {
+          lanes.map((lane) => (
+            <a class={`lane card card--${lane.variant}${lane.variant === 'orange' ? ' grain' : ''}`} href={lane.href}>
+              <span class="lane__glyph" aria-hidden="true">{lane.glyph}</span>
+              <span class="lane__name">{lane.name}</span>
+              <span class="lane__summary">{lane.summary}</span>
+              <ul class="lane__items">
+                {lane.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <span class="lane__cta">Explore {lane.name} <span aria-hidden="true">→</span></span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S5 — Logo strip ===== -->
+  <section class="section--tight logo-strip">
+    <div class="container">
+      <ul class="logo-strip__row">
+        {clients.map((name) => <li>{name}</li>)}
+      </ul>
+      <p class="logo-strip__caption">Trusted by brands selling into markets worldwide</p>
+    </div>
+  </section>
+
+  <!-- ===== S6 — Bordered text block ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-block card card--cream">
+        <span class="eyebrow">Who we are</span>
+        <p class="text-block__body">
+          We are a full production house. We shoot, we direct, we retouch, we edit. We also
+          use AI generation at a level most studios have not reached yet, and
+          <em> that</em> is the part worth talking about. Used the right way, generation cuts
+          the cost of a finalized asset by half or more. The savings are real, and we pass
+          them through to the client.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S7 — Two-up card pair (two ways to work) ===== -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">Two ways to work with us</span>
+        <h2 class="headline h2 reveal">
+          Send the brief. Or run the <span class="accent">platform</span>.
+        </h2>
+      </header>
+      <div class="pair">
+        <article class="pair__card card card--white">
+          <span class="chip pair__chip">Service</span>
+          <h3 class="headline h3">We do it for you</h3>
+          <p class="pair__body">
+            Send the brief, we deliver the content. Visuals, video, eCom packs, campaign
+            adaptations, transcreation, and full photo and video shoots when the brief
+            calls for it.
+          </p>
+          <ul class="pair__list">
+            <li><span>Volume</span><span>Hundreds of assets a month</span></li>
+            <li><span>From</span><span>$35 a brief</span></li>
+            <li><span>Turnaround</span><span>3 days, the floor</span></li>
+          </ul>
+          <Button variant="primary" href="/contact">Start a brief</Button>
+        </article>
+
+        <article class="pair__card card card--white">
+          <span class="chip pair__chip">Platform</span>
+          <h3 class="headline h3">We build the platform for you</h3>
+          <p class="pair__body">
+            Hub4You is our custom content platform, deployed on your dedicated GPU servers
+            and integrated into your DAM and PIM. Your team operates it. We train and
+            support.
+          </p>
+          <ul class="pair__list">
+            <li><span>Runs on</span><span>Your dedicated GPUs</span></li>
+            <li><span>Trained on</span><span>Your brand and products</span></li>
+            <li><span>Deployment</span><span>In weeks</span></li>
+          </ul>
+          <Button variant="secondary" href="/hub4you">Explore hub4You</Button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S8 — Use-case grid ===== -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">Selected work</span>
+        <h2 class="headline h2 reveal">Real brand <span class="accent">work</span>.</h2>
+      </header>
+      <div class="case-grid">
+        {
+          cases.map((c) => (
+            <a class="case card card--white" href="/work">
+              <span class="case__art" aria-hidden="true" />
+              <span class="case__meta">
+                <span class="case__tag">{c.tag}</span>
+                <span class="case__client">{c.client}</span>
+                <span class="case__result">{c.result}</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+      <div class="case-grid__more">
+        <Button variant="secondary" href="/work">See all case studies</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S9 — Beliefs block (centered) ===== -->
+  <section class="section beliefs">
+    <div class="container beliefs__inner">
+      <span class="eyebrow">What we believe</span>
+      <h2 class="headline h2 reveal">
+        Creative intelligence is the only thing left that <span class="accent">matters</span>.
+      </h2>
+      <p class="beliefs__p">
+        Culture cannot be briefed. Speed is the new craft. Anyone can generate a passable
+        image now, so the work that counts is the direction behind it.
+      </p>
+      <p class="beliefs__p">
+        We hire creatives from the cultures our clients sell into. No cultural translation
+        layer, no briefing the brief. Just people who understand why a German consumer
+        reads a page differently than a Brazilian one.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S10 — Tag cloud + summary ===== -->
+  <section class="section">
+    <div class="container tagcloud">
+      <div class="tagcloud__cloud">
+        {services.map((s) => <span class="tagchip">{s}</span>)}
+        <span class="tagchip tagchip--more">+ more</span>
+      </div>
+      <aside class="tagcloud__summary card card--cream">
+        <span class="eyebrow">One studio, every format</span>
+        <p class="tagcloud__statement">
+          If it carries your brand, we can <em>produce</em> it.
+        </p>
+        <p class="tagcloud__sub">
+          Twenty service lines, one team, one set of brand rules applied across all of it.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== S11 — Pull-quote pair ===== -->
+  <section class="section">
+    <div class="container quote-pair">
+      {
+        quotes.map((q) => (
+          <figure class="quote">
+            <blockquote class="quote__text">{q.text}</blockquote>
+            <figcaption class="quote__by">
+              <span class="quote__dot" aria-hidden="true" />
+              {q.name}, {q.role}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ===== S12 — Accordion + sidebar ===== -->
+  <section class="section">
+    <div class="container faq">
+      <div class="faq__list">
+        <header class="section-head section-head--left">
+          <span class="eyebrow">Before you ask</span>
+          <h2 class="headline h2 reveal">The questions we get <span class="accent">most</span>.</h2>
+        </header>
+        <div class="accordion">
+          {
+            faqs.map((faq, i) => (
+              <div class="acc-row">
+                <button class="acc-row__q" aria-expanded={i === 0 ? 'true' : 'false'}>
+                  <span>{faq.q}</span>
+                  <svg viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 5 7 10 12 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="acc-row__a">
+                  <div class="acc-row__a-inner"><p>{faq.a}</p></div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="faq__side card card--navy">
+        <span class="eyebrow">Still deciding?</span>
+        <h3 class="headline h3 faq__side-head">
+          Tell us what you need to <span class="accent">produce</span>.
+        </h3>
+        <p class="faq__side-text">
+          We will show you how we would deliver it, what it would cost, and what we would
+          shoot versus generate. No pitch deck.
+        </p>
+        <Button variant="primary-inverse" href="/contact">Talk to us</Button>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== S13 — Closing CTA (full-bleed dark) ===== -->
+  <section class="closing">
+    <div class="container closing__inner">
+      <span class="eyebrow">Get started</span>
+      <h2 class="headline h2 reveal closing__head">
+        The production house brands choose when the old way <span class="accent">stops</span> working.
+      </h2>
+      <Button variant="primary" href="/contact">Talk to us</Button>
+      <p class="closing__line">hello@hubstudio.ai &middot; Studios across 16 markets</p>
+      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
+        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
+        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
+      </svg>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  /* Tighter band used between full sections (stat row, logo strip). */
+  .section--tight {
+    padding-block: 24px;
+  }
+  .section-head {
+    text-align: center;
+    max-width: 760px;
+    margin-inline: auto;
+    margin-bottom: 56px;
+    display: grid;
+    gap: 16px;
+  }
+  .section-head--left {
+    text-align: left;
+    margin-inline: 0;
+  }
+
+  /* ---- S1 Hero ---- */
+  .hero {
+    padding-top: 140px;
+  }
+  .hero__grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 56px;
+    }
+  }
+  .hero__title {
+    margin-top: 20px;
+  }
+  .hero__lead {
+    margin-top: 26px;
+    max-width: 54ch;
+  }
+  .hero__cta {
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .hero__card {
+    position: relative;
+    padding: 32px;
+    color: #fff;
+    overflow: hidden;
+  }
+  .hero__chip {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+  }
+  .hero__card-msg {
+    margin-top: 22px;
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .hero__card-actions {
+    margin-top: 26px;
+    display: grid;
+    gap: 10px;
+  }
+  .hero__card-actions a {
+    font-weight: 600;
+    font-size: var(--type-small);
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+  }
+  .hero__cube {
+    position: absolute;
+    right: -22px;
+    bottom: -26px;
+    width: 150px;
+    opacity: 0.9;
+  }
+
+  /* ---- S2 Bridge ---- */
+  .bridge__inner {
+    text-align: center;
+    max-width: 820px;
+    margin-inline: auto;
+    display: grid;
+    gap: 18px;
+  }
+  .bridge__sub {
+    margin-inline: auto;
+    max-width: 60ch;
+  }
+
+  /* ---- S3 Stat row ---- */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stat {
+    padding: 40px 28px;
+    border-right: 1px solid var(--line-hairline);
+  }
+  .stat:last-child {
+    border-right: none;
+  }
+  .stat__value {
+    display: block;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat__label {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--text-mute);
+  }
+  @media (max-width: 767px) {
+    .stat-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stat:nth-child(2) {
+      border-right: none;
+    }
+    .stat:nth-child(1),
+    .stat:nth-child(2) {
+      border-bottom: 1px solid var(--line-hairline);
+    }
+  }
+  @media (max-width: 479px) {
+    .stat-row {
+      grid-template-columns: 1fr;
+    }
+    .stat {
+      border-right: none;
+      border-bottom: 1px solid var(--line-hairline);
+    }
+    .stat:last-child {
+      border-bottom: none;
+    }
+  }
+
+  /* ---- S4 Three-card row ---- */
+  .lane-row {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .lane-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .lane {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    transition: transform 200ms ease-out;
+  }
+  .lane:hover {
+    transform: translateY(-2px);
+  }
+  .lane__glyph {
+    font-size: 40px;
+    line-height: 1;
+    opacity: 0.32;
+  }
+  .lane__name {
+    margin-top: 18px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .lane__summary {
+    margin-top: 12px;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    opacity: 0.82;
+  }
+  .lane__items {
+    margin-top: 22px;
+    display: grid;
+    gap: 10px;
+    flex: 1;
+  }
+  .lane__items li {
+    font-size: 13px;
+    line-height: 1.4;
+    padding-left: 18px;
+    position: relative;
+  }
+  .lane__items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.5;
+  }
+  .lane__cta {
+    margin-top: 26px;
+    font-size: var(--type-small);
+    font-weight: 600;
+  }
+  .card--cream .lane__cta {
+    color: var(--brand-orange);
+  }
+
+  /* ---- S5 Logo strip ---- */
+  .logo-strip {
+    text-align: center;
+  }
+  .logo-strip__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px 44px;
+  }
+  .logo-strip__row li {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    opacity: 0.4;
+  }
+  .logo-strip__caption {
+    margin-top: 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  /* ---- S6 Bordered text block ---- */
+  .text-block {
+    max-width: 760px;
+    margin-inline: auto;
+    padding: 48px;
+    text-align: center;
+  }
+  .text-block__body {
+    margin-top: 18px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+  }
+  .text-block__body em {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  /* ---- S7 Two-up pair ---- */
+  .pair {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .pair {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .pair__card {
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+  }
+  .pair__chip {
+    align-self: flex-start;
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .pair__card h3 {
+    margin-top: 18px;
+  }
+  .pair__body {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .pair__list {
+    margin-top: 22px;
+    margin-bottom: 28px;
+    display: grid;
+    gap: 1px;
+    background: var(--line-hairline);
+    border: 1px solid var(--line-hairline);
+    border-radius: 14px;
+    overflow: hidden;
+    flex: 1;
+  }
+  .pair__list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 13px 16px;
+    background: var(--bg-white);
+    font-size: 13px;
+  }
+  .pair__list li span:first-child {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 11px;
+    color: var(--text-mute);
+  }
+  .pair__list li span:last-child {
+    font-weight: 600;
+  }
+  .pair__card .btn {
+    align-self: flex-start;
+  }
+
+  /* ---- S8 Use-case grid ---- */
+  .case-grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 600px) {
+    .case-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 900px) {
+    .case-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .case {
+    display: flex;
+    flex-direction: column;
+    transition: transform 200ms ease-out;
+  }
+  .case:hover {
+    transform: translateY(-2px);
+  }
+  .case__art {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #e7e3dc, #d4cec4);
+  }
+  .case:nth-child(3n + 1) .case__art {
+    background: linear-gradient(135deg, var(--brand-orange-deep), var(--brand-orange));
+  }
+  .case:nth-child(3n + 2) .case__art {
+    background: linear-gradient(135deg, #14275f, var(--brand-navy));
+  }
+  .case__meta {
+    padding: 22px;
+    display: grid;
+    gap: 6px;
+  }
+  .case__tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .case__client {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .case__result {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-mute);
+  }
+  .case-grid__more {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  /* ---- S9 Beliefs ---- */
+  .beliefs__inner {
+    text-align: center;
+    max-width: 720px;
+    margin-inline: auto;
+    display: grid;
+    gap: 20px;
+  }
+  .beliefs__p {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .beliefs__p:first-of-type {
+    margin-top: 6px;
+  }
+
+  /* ---- S10 Tag cloud ---- */
+  .tagcloud {
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 900px) {
+    .tagcloud {
+      grid-template-columns: 65% 1fr;
+      align-items: start;
+    }
+  }
+  .tagcloud__cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tagchip {
+    padding: 10px 18px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--type-small);
+    font-weight: 500;
+  }
+  .tagchip--more {
+    background: var(--brand-orange);
+    color: #fff;
+    border-color: var(--brand-orange);
+  }
+  .tagcloud__summary {
+    padding: 32px;
+  }
+  .tagcloud__statement {
+    margin-top: 14px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .tagcloud__statement em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .tagcloud__sub {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+
+  /* ---- S11 Pull-quote pair ---- */
+  .quote-pair {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .quote-pair {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 56px;
+    }
+  }
+  .quote__text {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(24px, 2.6vw, 34px);
+    line-height: 1.28;
+  }
+  .quote__by {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .quote__dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-navy));
+    flex: none;
+  }
+
+  /* ---- S12 Accordion + sidebar ---- */
+  .faq {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 1024px) {
+    .faq {
+      grid-template-columns: 1fr 360px;
+      gap: 56px;
+      align-items: start;
+    }
+  }
+  .acc-row {
+    border-top: 1px solid var(--line-strong);
+  }
+  .acc-row:last-child {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .acc-row__q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+  .acc-row__q svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    transition: transform 240ms ease-in-out;
+  }
+  .acc-row__q[aria-expanded='true'] svg {
+    transform: rotate(180deg);
+  }
+  .acc-row__a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 240ms ease-in-out;
+  }
+  .acc-row__q[aria-expanded='true'] + .acc-row__a {
+    grid-template-rows: 1fr;
+  }
+  .acc-row__a-inner {
+    overflow: hidden;
+  }
+  .acc-row__a-inner p {
+    padding-bottom: 24px;
+    max-width: 60ch;
+    color: var(--text-mute);
+    font-size: var(--type-small);
+    line-height: 1.6;
+  }
+  .faq__side {
+    padding: 36px;
+  }
+  @media (min-width: 1024px) {
+    .faq__side {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .faq__side-head {
+    margin-top: 14px;
+  }
+  .faq__side-text {
+    margin-top: 14px;
+    margin-bottom: 26px;
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.78);
+  }
+
+  /* ---- S13 Closing CTA ---- */
+  .closing {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .closing__inner {
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing__head {
+    max-width: 16ch;
+  }
+  .closing__line {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .closing__cube {
+    width: 44px;
+    margin-top: 8px;
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll (§10 — headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* FAQ accordion — one row open at a time. */
+  const rows = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc-row__q'));
+  rows.forEach((row) => {
+    row.addEventListener('click', () => {
+      const open = row.getAttribute('aria-expanded') === 'true';
+      rows.forEach((r) => r.setAttribute('aria-expanded', 'false'));
+      row.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+</script>

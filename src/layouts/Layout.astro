@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { getLocaleFromUrl, localizePath, useTranslations } from '../i18n/utils';
 import { locales, defaultLocale } from '../i18n/ui';
 
@@ -9,11 +11,9 @@ interface Props {
 }
 
 const SITE = 'https://hubstudio.ai';
-const LANG_NAMES: Record<string, string> = { en: 'English', fr: 'Français' };
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
-const year = new Date().getFullYear();
 
 const { title, description } = Astro.props;
 const pageTitle = title ?? t('meta.defaultTitle');
@@ -28,13 +28,30 @@ const canonical = new URL(localizePath(path, locale), SITE).href;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="canonical" href={canonical} />
+
+    <!-- Self-hosted fonts: preload the two that paint above the fold. -->
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-600-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/playfair-display-latin-500-italic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     {
       locales.map((loc) => (
@@ -53,33 +70,14 @@ const canonical = new URL(localizePath(path, locale), SITE).href;
     <meta property="og:url" content={canonical} />
   </head>
   <body>
-    <a class="sr-only" href="#main">{t('nav.skipToContent')}</a>
+    <a class="skip-link" href="#main">{t('nav.skipToContent')}</a>
 
-    <header>
-      <nav>
-        <a href={localizePath('/', locale)}>hubStudio</a>
-        <ul>
-          {
-            locales
-              .filter((loc) => loc !== locale)
-              .map((loc) => (
-                <li>
-                  <a href={localizePath(path, loc)} hreflang={loc}>
-                    {LANG_NAMES[loc]}
-                  </a>
-                </li>
-              ))
-          }
-        </ul>
-      </nav>
-    </header>
+    <Header />
 
     <main id="main">
       <slot />
     </main>
 
-    <footer>
-      <p>{t('footer.rights', { year })}</p>
-    </footer>
+    <Footer />
   </body>
 </html>

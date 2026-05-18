@@ -9,14 +9,16 @@ export const defaultLocale: Locale = 'en';
 
 export const ui = {
   en: {
-    'meta.defaultTitle': 'hubStudio',
-    'meta.defaultDescription': 'hubStudio — a studio building on the web.',
+    'meta.defaultTitle': 'hubStudio — A production house built for what content has become',
+    'meta.defaultDescription':
+      'hubStudio is a full production house. We shoot, direct, and generate hundreds of on-brand assets a month, or deploy a content platform your own team runs.',
     'nav.skipToContent': 'Skip to content',
     'footer.rights': '© {year} hubStudio. All rights reserved.',
   },
   fr: {
-    'meta.defaultTitle': 'hubStudio',
-    'meta.defaultDescription': 'hubStudio — un studio qui construit sur le web.',
+    'meta.defaultTitle': 'hubStudio — Une maison de production pour le contenu d’aujourd’hui',
+    'meta.defaultDescription':
+      'hubStudio est une maison de production complète. Nous tournons, dirigeons et générons des centaines de visuels conformes à la marque chaque mois.',
     'nav.skipToContent': 'Aller au contenu',
     'footer.rights': '© {year} hubStudio. Tous droits réservés.',
   },
