@@ -1,0 +1,1045 @@
+---
+/**
+ * Who We Are (`/the-studio/who-we-are`).
+ * Narrative content sourced verbatim from who-we-are-page.md.
+ * S1 Hero (team-photo background) · S2 Founder band · S3 Our Vision ·
+ * S4 What hybrid means · S5 What we are · S6 Our team (roles) ·
+ * S7 China Speed · S8 Languages · S9 Right client · S10 What we value ·
+ * S11 The values we live by · S12 Closing CTA.
+ *
+ * The "right client" pain points are reflowed from one source paragraph into
+ * a list; each item is a full source sentence kept word for word. The team
+ * roles (S6) and the four-pillar creed (S11) are content the client supplied
+ * separately. No ordinal numerals anywhere, per the permanent
+ * no-numbers-in-cards rule.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+/* S6: studio roles. Descriptions written for hubStudio, one creative angle each. */
+const roles = [
+  { name: 'Creative Directors', desc: 'They set the territory and own the idea. Every project starts here.' },
+  { name: 'Designers', desc: 'Layout, type and brand systems, built to hold up across markets.' },
+  { name: 'Copywriters', desc: 'The brand voice on the page, in the language each market speaks.' },
+  { name: 'Photographers', desc: 'Real shoots, real light, for the core brand material.' },
+  { name: 'Videographers', desc: 'Camera crews for the moments that need a set and a director.' },
+  { name: 'Video Production', desc: 'Edit, grade and finish, from first cut to delivery.' },
+  { name: 'Motion Designers', desc: 'Animation and motion graphics, where a frame needs to move.' },
+  { name: 'Retouchers', desc: 'The final human pass: dodge, burn, grain, every AI tell stripped out.' },
+  { name: 'AI Production', desc: 'Specialists who run the generation pipelines at studio scale.' },
+  { name: 'IT Engineers', desc: 'They train the models and keep our own GPU infrastructure running.' },
+  { name: 'Producers', desc: 'They hold the brief, the timeline and the budget together.' },
+  { name: 'Localization', desc: 'Adapting copy and culture so nothing is lost between markets.' },
+];
+
+/* S7: each item is one verbatim sentence from the source paragraph. */
+const clientSignals = [
+  "You're launching dozens of product variations across markets, and you need every visual to look like it belongs to the same brand.",
+  "You're spending six weeks on campaigns while competitors ship in days.",
+  "You're testing three creative concepts when you should be testing 30.",
+  "You're flying crews to eight markets for assets that could have been adapted from one good shoot.",
+  'Your marketing team is drowning in daily content requests from sales, regional offices and retail partners, with no scalable way to answer them.',
+];
+
+/* S11: the four-pillar creed, client supplied. Two source lines had a missing
+   sentence break; a period is inserted where the sentence clearly ends
+   (an em-dash is not an option here, per the no-em-dash rule). */
+const pillars = [
+  {
+    name: 'Creative Excellence',
+    points: [
+      'Demonstrating our creative ability through breakthrough campaigns that set industry standards',
+      'Making bold, informed creative decisions based on deep brand understanding and cultural insight',
+      'Valuing artistic vision and storytelling craft to build inspiring partnerships with visionary brands',
+    ],
+  },
+  {
+    name: 'Tech Mastery',
+    points: [
+      'Continuously mastering the latest AIGC models and techniques to stay ahead of the innovation curve',
+      "Engineering custom AI workflows that push the boundaries of what's possible in content creation",
+      'Sharing technical knowledge within our team to enhance collective capabilities and client outcomes',
+    ],
+  },
+  {
+    name: 'People First, Always',
+    points: [
+      'We take care of our creative talent and tech specialists. Our people are our greatest asset',
+      'Relationships are the foundation of everything we do with our team, clients, and creative community',
+      'We are constructive collaborators, not destructive disruptors, giving respect to earn it',
+    ],
+  },
+  {
+    name: 'Relentless Ambition',
+    points: [
+      'We put our hand up at every level and in every role, taking ownership of our craft and client success',
+      'We are ambitious in pursuing new creative territories and breakthrough technological capabilities',
+      "We trust our instincts. If something doesn't feel right creatively or technically, we speak up",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Who We Are | HubStudio AI Content Studio"
+  description="Hybrid AI content studio with teams in China and the Philippines. Founded by ex-Publicis CEO Cyril Drouin. Speed, scale, and creative craft."
+  heroOverlay
+>
+  <!-- ===== S1: Hero with team-photo background ===== -->
+  <section class="hero">
+    <img
+      class="hero__bg"
+      src="/Team/team-photo.webp"
+      alt="The hubStudio team talking over coffee in the studio kitchen."
+      width="1050"
+      height="586"
+      fetchpriority="high"
+    />
+    <div class="hero__veil" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <span class="eyebrow hero__eyebrow">The Studio</span>
+      <h1 class="headline h1 reveal hero__title">
+        Who <span class="accent">We</span> Are
+      </h1>
+      <p class="hero__subhead">
+        A content studio built for how brands actually work today
+      </p>
+      <p class="hero__p">
+        HubStudio makes content for brands, agencies, retailers and
+        manufacturers whose production setup can't keep up with what marketing
+        teams need now. Images, short video, ecommerce packs, social, campaign
+        adaptations. Teams in China and the Philippines. Clients across Europe,
+        North America and Asia.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S2: Founder band ===== -->
+  <section class="section founder">
+    <div class="container founder__grid">
+      <figure class="founder__portrait">
+        <img
+          class="founder__portrait-img"
+          src="/Team/cyril-drouin.jpg"
+          alt="Cyril Drouin, founder and CEO of hubStudio, in a dark jacket against a white background."
+          width="500"
+          height="758"
+          loading="lazy"
+        />
+        <figcaption class="founder__portrait-cap">
+          <span class="founder__portrait-name">Cyril Drouin</span>
+          <span class="founder__portrait-role">Founder and CEO</span>
+        </figcaption>
+      </figure>
+      <div class="founder__copy">
+        <span class="eyebrow founder__eyebrow">Founder</span>
+        <p class="founder__p">
+          Founded by Cyril Drouin, former CEO of Publicis Commerce and
+          Performance Marketing for China and North Asia. Over 20 years running
+          content and performance operations for global brands on Google, Meta,
+          Alibaba and ByteDance.
+        </p>
+        <div class="founder__social">
+          <a
+            class="social-link"
+            href="https://www.linkedin.com/in/cyril-d-68835729/"
+            target="_blank"
+            rel="noopener"
+          >
+            LinkedIn <span aria-hidden="true">&#8599;</span>
+          </a>
+          <a
+            class="social-link"
+            href="https://cyrildrouin.substack.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            Substack <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: Our Vision ===== -->
+  <section class="section vision">
+    <div class="container">
+      <div class="vision__card card card--navy grain">
+        <div class="vision__inner">
+          <span class="eyebrow vision__eyebrow">Our vision</span>
+          <h2 class="headline h2 reveal vision__head">
+            Our <span class="accent">Vision</span>
+          </h2>
+          <span class="vision__mark" aria-hidden="true">&ldquo;</span>
+          <blockquote class="vision__quote">
+            <p>
+              Traditional production is dying. Slowly, but it is dying. Too
+              slow, too expensive, and honestly too complicated for the volume
+              of assets brands need now.
+            </p>
+            <p>
+              The answer isn't to let AI do everything either. Pure AI content
+              has a ceiling, and most brands have already hit it.
+            </p>
+            <p>
+              The future is hybrid. Real shoots for the core brand material,
+              the moments that need a director, a model, a real product on a
+              real set. AI for everything that comes after: variations,
+              adaptations, localizations, the long tail of assets that used to
+              eat budgets and timelines.
+            </p>
+            <p>
+              Not every shot needs a shoot. And not every brand story can be
+              told by a prompt.
+            </p>
+            <p>
+              After 20 years inside Publicis working with some of the biggest
+              advertisers in the world, I've seen what production used to be,
+              and where it has to go. Hybrid works for luxury too, even in
+              mature Western markets where craft and consistency matter most.
+              The trick is knowing which 20% of the work needs a real set, and
+              which 80% can be reimagined.
+            </p>
+          </blockquote>
+          <figure class="vision__sign">
+            <img
+              class="vision__sign-img"
+              src="/Team/cyril-drouin-card.webp"
+              alt="Cyril Drouin."
+              width="690"
+              height="580"
+              loading="lazy"
+            />
+            <figcaption class="vision__sign-cap">
+              Cyril Drouin, Founder and CEO
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4: What hybrid actually means ===== -->
+  <section class="section--tight">
+    <div class="container split">
+      <div class="split__copy">
+        <span class="eyebrow split__eyebrow">Hybrid production</span>
+        <h2 class="headline h2 reveal split__head">
+          What <span class="accent">hybrid</span> actually means
+        </h2>
+        <p class="split__p">
+          Take a footwear launch. Twelve colorways, four key markets. The old
+          way is a full shoot per market, weeks of post, and a budget the CFO
+          doesn't really want to look at. The hybrid way is one strong shoot of
+          the hero product on a real model, and then AI to generate the color
+          variants, the market adaptations, the e-commerce angles, all from
+          that one core asset. Same brand quality. A fraction of the time. A
+          fraction of the cost.
+        </p>
+        <p class="split__p">
+          That's the simple version. The real work is figuring out which 20% to
+          shoot and which 80% to build from there. Which is where 20 years in
+          the business actually counts for something.
+        </p>
+      </div>
+      <figure class="split__media">
+        <img
+          src="/Images/who-we-are-hybrid.jpg"
+          alt="A single cream leather sneaker on a warm plaster ledge under hard directional light."
+          width="1024"
+          height="1024"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== S5: What we are ===== -->
+  <section class="section--tight">
+    <div class="container split split--rev">
+      <figure class="split__media">
+        <img
+          src="/Images/who-we-are-hero.jpg"
+          alt="An art director reviewing printed campaign frames pinned across a studio wall in afternoon window light."
+          width="1024"
+          height="1024"
+          loading="lazy"
+        />
+      </figure>
+      <div class="split__copy">
+        <span class="eyebrow split__eyebrow">Inside hubStudio</span>
+        <h2 class="headline h2 reveal split__head">
+          What we <span class="accent">are</span>
+        </h2>
+        <p class="split__lead">
+          A creative studio first. A technology company second.
+        </p>
+        <p class="split__p">
+          Our team is senior art directors, designers, photographers and video
+          directors who came up at large international agencies, both foreign
+          and Chinese. We have engineers who actually know how to train models
+          and build production pipelines, not just prompt their way through a
+          brief. We run our own GPU infrastructure, in China and outside. And
+          we keep a full studio for real shooting, because hybrid only works if
+          you can do both halves well.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S6: Our team ===== -->
+  <section class="section team">
+    <div class="container">
+      <header class="team__head">
+        <span class="eyebrow">Our team</span>
+        <h2 class="headline h2 reveal">
+          One studio, every <span class="accent">craft</span>
+        </h2>
+      </header>
+      <figure class="team__photo">
+        <img
+          src="/Team/team-photo.webp"
+          alt="Members of the hubStudio team talking over coffee in the studio break area."
+          width="1050"
+          height="586"
+          loading="lazy"
+        />
+      </figure>
+      <ul class="team__roles">
+        {
+          roles.map((role) => (
+            <li class="team__role">
+              <h3 class="team__role-name">{role.name}</h3>
+              <p class="team__role-desc">{role.desc}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S7: China Speed ===== -->
+  <section class="section speed">
+    <div class="container split">
+      <div class="split__copy">
+        <span class="eyebrow split__eyebrow">Production speed</span>
+        <h2 class="headline h2 reveal split__head">
+          China <span class="accent">Speed</span>
+        </h2>
+        <p class="split__p">
+          Our main hub is in China, and it's not by accident. China is where
+          the fastest production in the world happens. Not because corners get
+          cut. Because the domestic competition is brutal. Brands here expect
+          work back in 48 hours that would take three weeks in Paris or New
+          York.
+        </p>
+        <p class="split__p">
+          A simple example. A retail client briefs us on a Friday afternoon for
+          a Monday morning livestream. Fifteen lifestyle visuals, three product
+          videos, full localization. Our China team runs two shifts through the
+          weekend, and the work ships on time. Most studios outside of Asia
+          would have asked for two weeks just to scope it.
+        </p>
+        <p class="split__p">
+          When a campaign has to ship for a market launch, a flash sale, or a
+          competitive response, our China team can work around the clock. We've
+          built that muscle. Most studios outside Asia haven't.
+        </p>
+        <p class="split__p">
+          Our Philippines hub adds English-first creative talent and strong
+          post-production craft. Between the two hubs, clients get close to
+          24-hour coverage on bigger projects.
+        </p>
+      </div>
+      <figure class="split__media split__media--tall">
+        <img
+          src="/Images/who-we-are-china-speed.jpg"
+          alt="A designer working late at a glowing workstation inside the studio."
+          width="1024"
+          height="1024"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== S8: We speak your language ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="langs card card--white">
+        <span class="eyebrow langs__eyebrow">Languages</span>
+        <h2 class="headline h2 reveal langs__head">
+          We speak your <span class="accent">language</span>
+        </h2>
+        <p class="langs__p">
+          Literally. Our team works in English, French, Japanese, Spanish,
+          German and Mandarin. That matters more than most people think. Briefs
+          don't get lost in translation. Cultural references actually land. A
+          French luxury house can brief us in French. A Japanese retailer can
+          review copy in their own market's voice. Small things, but they add
+          up over a year.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S9: You're the right client for us if ===== -->
+  <section class="section client">
+    <div class="container">
+      <header class="client__head">
+        <span class="eyebrow">Who we work with</span>
+        <h2 class="headline h2 reveal">
+          You're the <span class="accent">right</span> client for us if
+        </h2>
+      </header>
+      <ul class="client__list">
+        {
+          clientSignals.map((signal) => (
+            <li class="client__item">{signal}</li>
+          ))
+        }
+      </ul>
+      <p class="client__close">
+        Sound familiar? You're not alone. There is a better way, and we've
+        built it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S10: What we value ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="values">
+        <span class="eyebrow values__eyebrow">How we work</span>
+        <h2 class="headline h2 reveal values__head">
+          What we <span class="accent">value</span>
+        </h2>
+        <p class="values__p">
+          Creative first. The technology is the means, the work is the point.
+          Tech has to earn its place: if a model helps the work, we use it, if
+          it doesn't, we don't. We try to be good partners to our team and to
+          our clients, which mostly means putting our hand up when something
+          isn't right, creatively or technically.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S11: The values we live by ===== -->
+  <section class="section creed">
+    <div class="container">
+      <header class="creed__head">
+        <span class="eyebrow">Our values</span>
+        <h2 class="headline h2 reveal">
+          The values we <span class="accent">live</span> by
+        </h2>
+      </header>
+      <div class="creed__grid">
+        {
+          pillars.map((pillar) => (
+            <article class="creed__card card card--white">
+              <h3 class="creed__name">{pillar.name}</h3>
+              <ul class="creed__points">
+                {pillar.points.map((point) => (
+                  <li class="creed__point">{point}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S12: Closing CTA ===== -->
+  <section class="closing">
+    <div class="container closing__inner">
+      <span class="eyebrow">Let's talk</span>
+      <h2 class="headline h2 reveal closing__head">
+        Want to see what this looks like for your <span class="accent">brand</span>?
+      </h2>
+      <p class="closing__p">
+        The fastest way is a 30-minute call. Bring a brief, or just a category
+        you want to test. We'll come back with sample work tailored to it.
+      </p>
+      <p class="closing__p closing__p--mute">
+        Not ready to talk yet? Browse our use cases to see how we've worked
+        with brands in fashion, beauty, retail and consumer electronics.
+      </p>
+      <div class="closing__cta">
+        <Button variant="primary" href="/contact">Contact us</Button>
+        <Button variant="on-dark" href="/work">See use cases</Button>
+      </div>
+      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
+        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
+        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
+      </svg>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section--tight {
+    padding-block: 56px;
+  }
+  @media (min-width: 768px) {
+    .section--tight {
+      padding-block: 88px;
+    }
+  }
+
+  /* ---- S1 Hero ---- */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: flex-end;
+    min-height: clamp(560px, 84vh, 800px);
+    padding: 132px 0 84px;
+    overflow: hidden;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 38%;
+    z-index: -2;
+  }
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      178deg,
+      rgba(8, 12, 28, 0.62) 0%,
+      rgba(8, 12, 28, 0.4) 38%,
+      rgba(8, 12, 28, 0.9) 100%
+    );
+  }
+  .hero__inner {
+    color: var(--text-on-dark);
+  }
+  .hero__eyebrow {
+    color: var(--brand-orange);
+  }
+  .hero__title {
+    margin-top: 18px;
+    color: #fff;
+  }
+  .hero__subhead {
+    margin-top: 18px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+    max-width: 22ch;
+  }
+  .hero__p {
+    margin-top: 20px;
+    max-width: 62ch;
+    font-size: var(--type-small);
+    line-height: 1.7;
+    color: rgba(240, 237, 233, 0.84);
+  }
+
+  /* ---- S2 Founder band ---- */
+  .founder {
+    background: var(--bg-white);
+  }
+  .founder__grid {
+    display: grid;
+    gap: 36px;
+    align-items: center;
+  }
+  @media (min-width: 860px) {
+    .founder__grid {
+      grid-template-columns: 0.62fr 1fr;
+      gap: 56px;
+    }
+  }
+  .founder__portrait {
+    margin: 0;
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-cream);
+    box-shadow: var(--shadow-card);
+    max-width: 360px;
+  }
+  .founder__portrait-img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 12%;
+  }
+  .founder__portrait-cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 48px 24px 22px;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 12, 28, 0) 0%,
+      rgba(8, 12, 28, 0.82) 100%
+    );
+  }
+  .founder__portrait-name {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .founder__portrait-role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.74);
+  }
+  .founder__eyebrow {
+    color: var(--brand-orange);
+  }
+  .founder__p {
+    margin-top: 16px;
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: var(--text-ink);
+    max-width: 54ch;
+  }
+  .founder__social {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--type-button);
+    font-weight: 600;
+    color: var(--text-ink);
+    transition: color 120ms ease-out, border-color 120ms ease-out;
+  }
+  .social-link span {
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .social-link:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+
+  /* ---- S3 Our Vision ---- */
+  .vision__card {
+    position: relative;
+    padding: 56px;
+  }
+  @media (max-width: 600px) {
+    .vision__card {
+      padding: 36px 24px;
+    }
+  }
+  .vision__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .vision__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .vision__head {
+    margin-top: 14px;
+  }
+  .vision__mark {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 72px;
+    line-height: 0.5;
+    color: var(--brand-orange);
+  }
+  .vision__quote {
+    margin: 0;
+    margin-top: 20px;
+    display: grid;
+    gap: 18px;
+  }
+  .vision__quote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(19px, 1.9vw, 25px);
+    line-height: 1.42;
+    color: var(--text-on-dark);
+  }
+  .vision__sign {
+    margin: 0;
+    margin-top: 36px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(240, 237, 233, 0.16);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .vision__sign-img {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 22%;
+    flex: none;
+  }
+  .vision__sign-cap {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-on-dark);
+  }
+
+  /* ---- S4 / S5 / S7 split layout ---- */
+  .split {
+    display: grid;
+    gap: 36px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .split {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+  }
+  .split__eyebrow {
+    color: var(--brand-orange);
+  }
+  .split__head {
+    margin-top: 14px;
+  }
+  .split__lead {
+    margin-top: 18px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--type-lead);
+    line-height: 1.4;
+    color: var(--text-ink);
+  }
+  .split__p {
+    margin-top: 16px;
+    font-size: var(--type-small);
+    line-height: 1.7;
+    color: var(--text-mute);
+    max-width: 56ch;
+  }
+  .split__media {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .split__media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .split__media--tall img {
+    aspect-ratio: 5 / 6;
+  }
+  @media (min-width: 980px) {
+    .split--rev .split__copy {
+      order: 2;
+    }
+    .split--rev .split__media {
+      order: 1;
+    }
+  }
+
+  .speed {
+    background: var(--bg-white);
+  }
+
+  /* ---- S6 Our team ---- */
+  .team__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .team__head .eyebrow {
+    color: var(--brand-orange);
+  }
+  .team__photo {
+    margin: 0 0 40px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .team__photo img {
+    width: 100%;
+    aspect-ratio: 1050 / 586;
+    object-fit: cover;
+  }
+  .team__roles {
+    display: grid;
+    gap: 1px;
+    background: var(--line-hairline);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  @media (min-width: 600px) {
+    .team__roles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 980px) {
+    .team__roles {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .team__role {
+    background: var(--bg-cream);
+    padding: 28px 26px;
+  }
+  .team__role-name {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .team__role-desc {
+    margin-top: 8px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* ---- S8 Languages ---- */
+  .langs {
+    padding: 48px 56px;
+    max-width: 860px;
+    margin-inline: auto;
+  }
+  @media (max-width: 600px) {
+    .langs {
+      padding: 36px 24px;
+    }
+  }
+  .langs__eyebrow {
+    color: var(--brand-orange);
+  }
+  .langs__head {
+    margin-top: 14px;
+  }
+  .langs__p {
+    margin-top: 18px;
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: var(--text-ink);
+  }
+
+  /* ---- S9 Right client ---- */
+  .client {
+    background: var(--bg-white);
+  }
+  .client__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .client__head .eyebrow {
+    color: var(--brand-orange);
+  }
+  .client__list {
+    display: grid;
+    gap: 2px;
+  }
+  .client__item {
+    position: relative;
+    padding: 22px 0 22px 38px;
+    border-top: 1px solid var(--line-strong);
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-ink);
+  }
+  .client__item:last-child {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  /* Authored marker: a small orange diamond, echoing the brand cube facet. */
+  .client__item::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 30px;
+    width: 11px;
+    height: 11px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .client__close {
+    margin-top: 32px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--type-h3);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    max-width: 22ch;
+  }
+
+  /* ---- S10 What we value ---- */
+  .values {
+    max-width: 760px;
+  }
+  .values__eyebrow {
+    color: var(--brand-orange);
+  }
+  .values__head {
+    margin-top: 14px;
+  }
+  .values__p {
+    margin-top: 18px;
+    font-size: var(--type-lead);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* ---- S11 The values we live by ---- */
+  .creed {
+    background: var(--bg-white);
+  }
+  .creed__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .creed__head .eyebrow {
+    color: var(--brand-orange);
+  }
+  .creed__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 760px) {
+    .creed__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .creed__card {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 600px) {
+    .creed__card {
+      padding: 32px 24px;
+    }
+  }
+  .creed__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .creed__points {
+    margin-top: 22px;
+    display: grid;
+    gap: 16px;
+  }
+  .creed__point {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  /* Small orange diamond, half the scale of the client-list marker. */
+  .creed__point::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+
+  /* ---- S12 Closing CTA ---- */
+  .closing {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .closing__inner {
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing .eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .closing__head {
+    max-width: 18ch;
+  }
+  .closing__p {
+    max-width: 56ch;
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .closing__p--mute {
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.58);
+  }
+  .closing__cta {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .closing__cube {
+    width: 44px;
+    margin-top: 12px;
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll (headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

@@ -46,6 +46,18 @@ Every raster image (`.jpg`, `.jpeg`, `.png`, `.webp`) added under
 Targets: heroes max 2000px wide / under ~600 KB, inline 1600px / under ~250 KB,
 thumbnails under ~80 KB.
 
+## No numbers in cards (PERMANENT)
+
+Never print a decorative ordinal numeral (`01`, `02`, `03`, …, or a bare `1`,
+`2`, `3`) inside a card or any repeated content block — card grids, step
+lists, feature rows, "how it works" sequences, accordion rows. The heading and
+the visual order carry the sequence; a numeral label never appears. This holds
+regardless of whether the block uses the `.card` class, an `<article>`, an
+`<li>`, or a plain `<div>` — if it is a repeated titled block, no number.
+Browser-native `<ol>` numbering counts too: suppress it in these blocks. When
+building or editing any such component, ship it numberless from the start; when
+reviewing existing pages, strip any numeral you find. No exceptions.
+
 ## Image style guide (MANDATORY)
 
 `hubstudio-image-style-guide.md` (repo root) is the binding visual standard for

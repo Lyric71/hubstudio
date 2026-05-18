@@ -1,7 +1,7 @@
 ﻿---
 /**
- * Footer: §5. Mirrors the mega-menu structure as a static link grid
- * on --bg-ink. Small logo, location line, copyright, two legal links.
+ * Footer: §5. Top-level menu entries only (no mega-menu links) as a static
+ * link list on --bg-ink. Small logo, location line, copyright, legal links.
  */
 import Logo from './Logo.astro';
 import { getLocaleFromUrl, localizePath } from '../i18n/utils';
@@ -10,52 +10,15 @@ const locale = getLocaleFromUrl(Astro.url);
 const lp = (p: string) => localizePath(p, locale);
 const year = new Date().getFullYear();
 
-const columns: { heading: string; links: { label: string; href: string }[] }[] = [
-  {
-    heading: 'The Studio',
-    links: [
-      { label: 'Who we are', href: '/the-studio' },
-      { label: 'The team', href: '/the-studio#team' },
-      { label: 'Beliefs', href: '/the-studio#beliefs' },
-      { label: 'Careers', href: '/careers' },
-    ],
-  },
-  {
-    heading: 'What We Do',
-    links: [
-      { label: 'Image Production', href: '/what-we-do/image' },
-      { label: 'Video Production', href: '/what-we-do/video' },
-      { label: 'Live Action Studio', href: '/what-we-do/live-action' },
-      { label: '3D, CGI & Motion', href: '/what-we-do/motion' },
-    ],
-  },
-  {
-    heading: 'Solutions',
-    links: [
-      { label: 'Brands', href: '/solutions/brands' },
-      { label: 'Agencies', href: '/solutions/agencies' },
-      { label: 'Retailers', href: '/solutions/retailers' },
-      { label: 'Manufacturers', href: '/solutions/manufacturers' },
-    ],
-  },
-  {
-    heading: 'hub4You',
-    links: [
-      { label: 'Platform overview', href: '/hub4you' },
-      { label: 'Integrations', href: '/hub4you#integrations' },
-      { label: 'Pricing', href: '/pricing' },
-      { label: 'API docs', href: '/hub4you/api' },
-    ],
-  },
-  {
-    heading: 'Resources',
-    links: [
-      { label: 'Insights', href: '/resources/insights' },
-      { label: 'How-to guides', href: '/resources/how-to' },
-      { label: 'Copyright & AI', href: '/resources/copyright-and-ai' },
-      { label: 'Contact', href: '/contact' },
-    ],
-  },
+/* Top-level menu entries only, mirroring the header nav. No mega-menu links. */
+const navLinks: { label: string; href: string }[] = [
+  { label: 'Services', href: '/services' },
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'The Studio', href: '/the-studio' },
+  { label: 'Work', href: '/work' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'hub4You', href: '/hub4you' },
 ];
 
 /* Sister agencies: the BeyondBorderGroup network. */
@@ -104,20 +67,15 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
     </div>
 
     <nav class="site-footer__nav" aria-label="Footer">
-      {
-        columns.map((col) => (
-          <div class="site-footer__col">
-            <p class="site-footer__heading">{col.heading}</p>
-            <ul>
-              {col.links.map((link) => (
-                <li>
-                  <a href={lp(link.href)}>{link.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
+      <ul>
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={lp(link.href)}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
     </nav>
   </div>
 
@@ -157,6 +115,7 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
     <div class="site-footer__legal">
       <a href={lp('/privacy')}>Privacy</a>
       <a href={lp('/terms')}>Terms</a>
+      <a href={lp('/cookies')}>Cookies</a>
     </div>
   </div>
 </footer>
@@ -192,14 +151,21 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
     color: rgba(240, 237, 233, 0.5);
   }
   .site-footer__nav {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px 24px;
+    display: flex;
+    align-items: center;
   }
-  @media (min-width: 768px) {
-    .site-footer__nav {
-      grid-template-columns: repeat(5, 1fr);
-    }
+  .site-footer__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+  }
+  .site-footer__nav a {
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.82);
+    transition: color 120ms ease-out;
+  }
+  .site-footer__nav a:hover {
+    color: var(--brand-orange);
   }
   .site-footer__heading {
     font-family: var(--font-mono);
@@ -209,18 +175,6 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
     text-transform: uppercase;
     color: rgba(240, 237, 233, 0.5);
     margin-bottom: 16px;
-  }
-  .site-footer__col ul {
-    display: grid;
-    gap: 10px;
-  }
-  .site-footer__col a {
-    font-size: var(--type-small);
-    color: rgba(240, 237, 233, 0.82);
-    transition: color 120ms ease-out;
-  }
-  .site-footer__col a:hover {
-    color: var(--brand-orange);
   }
   /* ---- Our network ---------------------------------------------- */
   .site-footer__network {

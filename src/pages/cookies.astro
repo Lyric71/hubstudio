@@ -1,0 +1,565 @@
+---
+/**
+ * Cookie Policy (`/cookies`).
+ * Compact legal hero + sticky table of contents + numbered sections,
+ * with a cookie inventory table. Adapted for hubStudio: content
+ * production studio operated by BeyondBorderGroup LTD, Hong Kong SAR.
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const updated = '18 May 2026';
+
+interface Block {
+  p?: string;
+  sub?: string;
+  list?: string[];
+  note?: string;
+  table?: { head: string[]; rows: string[][] };
+}
+interface Section {
+  id: string;
+  title: string;
+  blocks: Block[];
+}
+
+const sections: Section[] = [
+  {
+    id: 'what-cookies-are',
+    title: 'What cookies are',
+    blocks: [
+      {
+        p: 'Cookies are small text files placed on your device, a computer, tablet, or phone, when you visit a website. They are widely used to make sites work, to make them work more efficiently, and to give the site owner information about how the site is used. Similar technologies, such as local storage and pixels, do comparable jobs, and this policy covers them too.',
+      },
+    ],
+  },
+  {
+    id: 'how-we-use',
+    title: 'How we use cookies',
+    blocks: [
+      {
+        p: 'We keep our use of cookies deliberately minimal. The cookies on hubstudio.ai fall into three categories.',
+      },
+      { sub: 'Strictly necessary cookies' },
+      {
+        list: [
+          'Enable core functions such as page navigation, secure areas, and form submission',
+          'Cannot be switched off through our site, because the site cannot work properly without them',
+        ],
+      },
+      { sub: 'Functional cookies' },
+      {
+        list: [
+          'Remember choices you make, such as your language or region',
+          'Provide a more personalised experience without tracking you across other sites',
+        ],
+      },
+      { sub: 'Analytics cookies' },
+      {
+        list: [
+          'Help us understand how visitors use the site, which pages perform, and where to improve',
+          'We use privacy-friendly, self-hosted analytics rather than third-party services that are not reliably reachable from every market we serve',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'cookies-we-use',
+    title: 'Cookies we use',
+    blocks: [
+      {
+        table: {
+          head: ['Cookie', 'Type', 'Purpose', 'Duration'],
+          rows: [
+            [
+              'Session',
+              'Strictly necessary',
+              'Maintains your session and keeps the site secure',
+              'Session',
+            ],
+            [
+              'Preferences',
+              'Functional',
+              'Remembers your language and region choice',
+              '12 months',
+            ],
+            [
+              'Analytics',
+              'Analytics',
+              'Records anonymous, aggregated usage so we can improve the site',
+              '12 months',
+            ],
+          ],
+        },
+      },
+      {
+        p: 'Exact cookie names may vary as we update the site. This table describes their purpose and how long they last.',
+      },
+    ],
+  },
+  {
+    id: 'marketing',
+    title: 'Marketing cookies',
+    blocks: [
+      {
+        p: 'We do not currently use marketing or advertising cookies, and we do not use cookies to build advertising profiles or to track you across other websites. If this changes, we will update this policy and, where the law requires it, ask for your consent first.',
+      },
+    ],
+  },
+  {
+    id: 'third-party',
+    title: 'Third-party cookies',
+    blocks: [
+      {
+        p: 'Some pages may embed content or tools from third parties, such as a video player or a map. When they do, those third parties may set their own cookies, which we do not control. We recommend reviewing the cookie and privacy policies of any third-party service whose content appears on our site.',
+      },
+    ],
+  },
+  {
+    id: 'managing-cookies',
+    title: 'Managing cookies',
+    blocks: [
+      {
+        p: 'You are in control of cookies. Most browsers let you see what cookies are stored, delete them, and block some or all of them through the privacy or security settings. The Help section of your browser explains how.',
+      },
+      { sub: 'Useful to know:' },
+      {
+        list: [
+          'Blocking strictly necessary cookies may stop parts of the site from working',
+          'Settings apply per browser and per device, so you may need to repeat them',
+          'Most browsers also offer a private or incognito mode that limits how long cookies are kept',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'legal-framework',
+    title: 'Legal framework',
+    blocks: [
+      {
+        p: 'We handle personal data collected through cookies in line with the Hong Kong Personal Data (Privacy) Ordinance, and we honour the requirements of other data protection laws that apply to visitors from the markets we serve. More detail on how we handle personal data is in our Privacy Policy.',
+      },
+    ],
+  },
+  {
+    id: 'changes',
+    title: 'Changes to this policy',
+    blocks: [
+      {
+        p: 'We may update this policy as the site and our use of cookies change. The current version always sits on this page with its effective date.',
+      },
+    ],
+  },
+  {
+    id: 'contact',
+    title: 'Contact us',
+    blocks: [
+      {
+        p: 'Questions about our use of cookies can be sent to hello@hubstudio.ai, or through the contact page on this site.',
+      },
+    ],
+  },
+];
+
+const toc = sections.map((s) => ({ id: s.id, title: s.title }));
+const related = [
+  { label: 'Terms of Service', href: '/terms' },
+  { label: 'Privacy Policy', href: '/privacy' },
+];
+---
+
+<Layout
+  title="Cookie Policy | hubStudio"
+  description="How hubStudio uses cookies and similar technologies on hubstudio.ai, and how you can manage them."
+>
+  <!-- ===== Hero ===== -->
+  <section class="section legal-hero">
+    <div class="container">
+      <div class="legal-hero__inner">
+        <span class="eyebrow">Legal</span>
+        <h1 class="headline h2 reveal legal-hero__title">
+          Cookie <span class="accent">Policy</span>.
+        </h1>
+        <p class="lead legal-hero__lead">
+          This policy explains what cookies are, how hubStudio uses them on hubstudio.ai, and how
+          you can control them. It works alongside our Privacy Policy.
+        </p>
+        <span class="chip legal-hero__chip">
+          <span class="chip__dot"></span>Last updated {updated}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Body ===== -->
+  <section class="legal-main">
+    <div class="container">
+      <div class="legal-grid">
+        <nav class="toc" aria-label="On this page">
+          <p class="toc__title">On this page</p>
+          <ol class="toc__list">
+            {
+              toc.map((item, i) => (
+                <li>
+                  <a href={`#${item.id}`}>
+                    <span class="toc__num">{String(i + 1).padStart(2, '0')}</span>
+                    {item.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+
+        <div class="legal-body">
+          {
+            sections.map((sec, i) => (
+              <section class="legal-sec" id={sec.id}>
+                <span class="legal-sec__n">{String(i + 1).padStart(2, '0')}</span>
+                <h2 class="legal-sec__title">{sec.title}</h2>
+                {sec.blocks.map((b) =>
+                  b.p ? (
+                    <p class="legal-p">{b.p}</p>
+                  ) : b.note ? (
+                    <p class="legal-note">{b.note}</p>
+                  ) : b.sub ? (
+                    <p class="legal-sub">{b.sub}</p>
+                  ) : b.list ? (
+                    <ul class="legal-list">
+                      {b.list.map((x) => (
+                        <li>{x}</li>
+                      ))}
+                    </ul>
+                  ) : b.table ? (
+                    <div
+                      class="legal-table-wrap"
+                      role="region"
+                      aria-label="Cookies used on hubstudio.ai"
+                      tabindex="0"
+                    >
+                      <table class="legal-table">
+                        <thead>
+                          <tr>
+                            {b.table.head.map((h) => (
+                              <th scope="col">{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {b.table.rows.map((row) => (
+                            <tr>
+                              {row.map((cell, ci) =>
+                                ci === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>,
+                              )}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : null,
+                )}
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Closing ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="legal-cta card card--navy">
+        <span class="eyebrow">Still curious?</span>
+        <h2 class="headline h3 reveal legal-cta__head">
+          Questions about our <span class="accent">cookies</span>?
+        </h2>
+        <p class="legal-cta__text">
+          Write to us at <a href="mailto:hello@hubstudio.ai">hello@hubstudio.ai</a> and we will
+          point you to the right person.
+        </p>
+        <Button variant="primary-inverse" href="/contact">Contact hubStudio</Button>
+        <div class="legal-cta__links">
+          {related.map((r) => <a href={r.href}>{r.label}</a>)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section--tight {
+    padding-block: 24px 96px;
+  }
+
+  /* ---- Hero ---- */
+  .legal-hero {
+    padding-top: 64px;
+    padding-bottom: 0;
+  }
+  .legal-hero__inner {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+    display: grid;
+    gap: 18px;
+    justify-items: center;
+  }
+  .legal-hero__title {
+    margin-top: 4px;
+  }
+  .legal-hero__lead {
+    max-width: 60ch;
+  }
+  .legal-hero__chip {
+    margin-top: 6px;
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- Body layout ---- */
+  .legal-main {
+    padding-block: 56px 24px;
+  }
+  .legal-grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 1000px) {
+    .legal-grid {
+      grid-template-columns: 240px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+  }
+
+  /* ---- Table of contents ---- */
+  @media (min-width: 1000px) {
+    .toc {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .toc__title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .toc__list {
+    margin-top: 14px;
+    display: grid;
+  }
+  .toc__list a {
+    display: block;
+    padding: 7px 0 7px 14px;
+    border-left: 2px solid var(--line-hairline);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-mute);
+    transition:
+      color 120ms ease-out,
+      border-color 120ms ease-out;
+  }
+  .toc__list a:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .toc__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--brand-orange);
+    margin-right: 8px;
+  }
+
+  /* ---- Sections ---- */
+  .legal-body {
+    max-width: 70ch;
+  }
+  .legal-sec {
+    padding-block: 30px;
+    border-top: 1px solid var(--line-hairline);
+    scroll-margin-top: 104px;
+  }
+  .legal-sec:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+  .legal-sec__n {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--brand-orange);
+  }
+  .legal-sec__title {
+    margin-top: 8px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .legal-p {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    line-height: 1.7;
+    color: var(--text-mute);
+  }
+  .legal-sub {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .legal-list {
+    margin-top: 12px;
+    display: grid;
+    gap: 9px;
+  }
+  .legal-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .legal-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    opacity: 0.6;
+  }
+  .legal-note {
+    margin-top: 16px;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-hairline);
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: var(--text-mute);
+  }
+
+  /* ---- Cookie table ---- */
+  .legal-table-wrap {
+    margin-top: 16px;
+    overflow-x: auto;
+    border: 1px solid var(--line-hairline);
+    border-radius: 16px;
+  }
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+  }
+  .legal-table th,
+  .legal-table td {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    vertical-align: top;
+  }
+  .legal-table thead th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .legal-table tbody tr + tr th,
+  .legal-table tbody tr + tr td {
+    border-top: 1px solid var(--line-hairline);
+  }
+  .legal-table tbody th {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .legal-table tbody td {
+    color: var(--text-mute);
+  }
+
+  /* ---- Closing ---- */
+  .legal-cta {
+    max-width: 880px;
+    margin-inline: auto;
+    padding: 48px;
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+  }
+  @media (max-width: 600px) {
+    .legal-cta {
+      padding: 36px 24px;
+    }
+  }
+  .legal-cta .eyebrow {
+    color: var(--brand-orange);
+  }
+  .legal-cta__head {
+    max-width: 20ch;
+  }
+  .legal-cta__text {
+    max-width: 48ch;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .legal-cta__text a {
+    color: var(--brand-orange);
+  }
+  .legal-cta :global(.btn) {
+    margin-top: 8px;
+  }
+  .legal-cta__links {
+    margin-top: 18px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .legal-cta__links a {
+    color: rgba(240, 237, 233, 0.62);
+    transition: color 120ms ease-out;
+  }
+  .legal-cta__links a:hover {
+    color: var(--brand-orange);
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

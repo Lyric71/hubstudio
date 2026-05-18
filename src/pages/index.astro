@@ -22,7 +22,6 @@ const stats = [
 const lanes = [
   {
     variant: 'orange',
-    glyph: '01',
     name: 'Produce',
     summary: 'On-brand visuals, video, and copy. Hundreds of finalized assets a month. Generated, shot, or hybrid.',
     items: [
@@ -35,7 +34,6 @@ const lanes = [
   },
   {
     variant: 'navy',
-    glyph: '02',
     name: 'Platform',
     summary: 'Your own content studio on dedicated GPU infrastructure. Trained on your brand. Run by your team.',
     items: [
@@ -48,7 +46,6 @@ const lanes = [
   },
   {
     variant: 'cream',
-    glyph: '03',
     name: 'Direct',
     summary: 'The creative intelligence layer. Strategy, transcreation, training. The part that cannot be automated.',
     items: [
@@ -203,7 +200,6 @@ const faqs = [
         {
           lanes.map((lane) => (
             <a class={`lane card card--${lane.variant}${lane.variant === 'orange' ? ' grain' : ''}`} href={lane.href}>
-              <span class="lane__glyph" aria-hidden="true">{lane.glyph}</span>
               <span class="lane__name">{lane.name}</span>
               <span class="lane__summary">{lane.summary}</span>
               <ul class="lane__items">
@@ -657,13 +653,7 @@ const faqs = [
   .lane:hover {
     transform: translateY(-2px);
   }
-  .lane__glyph {
-    font-size: 40px;
-    line-height: 1;
-    opacity: 0.32;
-  }
   .lane__name {
-    margin-top: 18px;
     font-size: var(--type-h3);
     font-weight: 600;
     letter-spacing: -0.02em;

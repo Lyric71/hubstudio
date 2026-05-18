@@ -1,0 +1,2675 @@
+---
+/**
+ * Packaging & Merch Design service page
+ * (`/services/design/packaging-merch-design`).
+ * Copy from packaging-merch-page.md; hero + roots intros condensed on request.
+ * S1 Hero (dark) · S2 eCommerce roots · S2b Results band · S3 What we cover
+ * (tabbed) · S4 Sample marquee · S5 Optional sourcing · S6 Process timeline ·
+ * S7 The new math · S8 FAQ · S9 Closing CTA.
+ *
+ * Process numerals (1-5 in the source) are dropped: the project's permanent
+ * "no numbers in cards / step lists" rule overrides the source formatting.
+ * Imagery generated with scripts/generate-image.mjs unless noted.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import Button from '../../../components/Button.astro';
+
+/* Authored packaging / merch samples, each with an invented brand mark.
+   Drives both the hero carousel and the full-bleed marquee. */
+const samples = [
+  {
+    src: '/Images/packaging-merch-aurele.jpg',
+    brand: 'Aurele',
+    kind: 'Skincare packaging',
+    alt: 'Frosted glass serum bottle beside a sand-toned folding carton for the Aurele skincare line, on a warm plaster ledge.',
+  },
+  {
+    src: '/Images/packaging-merch-vante.jpg',
+    brand: 'Vante',
+    kind: 'Luxury gift box',
+    alt: 'Deep burgundy rigid gift box with a gold-foil Vante wordmark and a grosgrain ribbon, on a dark stone surface.',
+  },
+  {
+    src: '/Images/packaging-merch-fernwell.jpg',
+    brand: 'Fernwell',
+    kind: 'Branded merchandise',
+    alt: 'Canvas tote bag, stoneware mug and folded t-shirt screen-printed with the Fernwell wordmark, on a sunlit oak table.',
+  },
+  {
+    src: '/Images/packaging-merch-mojo.jpg',
+    brand: 'Mojo',
+    kind: 'Beverage packaging',
+    alt: 'Two coral-orange aluminium cans for the Mojo sparkling drink on a deep-navy surface under hard directional light.',
+  },
+  {
+    src: '/Images/packaging-merch-kasa.jpg',
+    brand: 'Kasa',
+    kind: 'Cosmetics set',
+    alt: 'Two aluminium tubes and a frosted jar printed with the Kasa wordmark, on a pale travertine surface in morning light.',
+  },
+  {
+    src: '/Images/packaging-merch-luma.jpg',
+    brand: 'Luma',
+    kind: 'PR & influencer box',
+    alt: 'Open kraft PR mailer with a printed belly-band reading Luma, holding three products in tissue paper on a concrete tabletop.',
+  },
+];
+
+/* S2b: results, drawn from the recent-projects line. Counters animate up. */
+const stats = [
+  { from: 22, to: 78, suffix: '%', label: 'Creative approval rate', note: 'Lifted from 22%' },
+  { from: 0, to: 60, suffix: '%', label: 'Lower content cost', note: 'On recent projects' },
+  { from: 0, to: 7, suffix: '×', label: 'Asset output', note: 'Without a single new hire' },
+];
+
+/* S3: the two coverage areas, shown as switchable panels. The tag rows
+   surface phrases already named in the prose below them. */
+const coverTabs = [
+  {
+    id: 'packaging',
+    label: 'Packaging',
+    heading: 'What we cover on packaging',
+    image: '/Images/packaging-merch-vante.jpg',
+    imageAlt: 'Burgundy luxury rigid gift box with a gold-foil wordmark, an example of packaging design.',
+    body: [
+      'Primary packaging for beauty, FMCG, beverage, electronics and luxury. Outer cartons that protect the product and the brand. Labels, dielines, print-ready files. Sustainable options with real material variants (not a green color swap). Limited editions, seasonal runs, full regulatory localization for ingredient lists, claims and barcodes by market.',
+      'You get concept boards, photoreal mockups, and production files your supplier can run with on the first pass. No back-and-forth on missing bleeds at midnight before a print deadline.',
+    ],
+    tags: [
+      'Beauty & FMCG',
+      'Beverage',
+      'Electronics',
+      'Luxury',
+      'Outer cartons',
+      'Labels & dielines',
+      'Print-ready files',
+      'Sustainable variants',
+      'Limited editions',
+      'Regulatory localization',
+    ],
+  },
+  {
+    id: 'merchandise',
+    label: 'Merchandise',
+    heading: 'What we cover on merchandise',
+    image: '/Images/packaging-merch-fernwell.jpg',
+    imageAlt: 'Canvas tote, mug and folded t-shirt screen-printed with one wordmark, an example of branded merchandise.',
+    lead: 'Branded merch designed to be kept, not tossed.',
+    body: [
+      'Apparel, drinkware, accessories, stationery, tech kit, trade show gear. Influencer mailers and PR boxes built for the unboxing moment. Retail displays, in-store activations, loyalty premiums, gift-with-purchase systems.',
+      'Every piece is designed against your brand system and shown in context, so your team can approve it before a supplier quotes.',
+    ],
+    tags: [
+      'Apparel',
+      'Drinkware',
+      'Accessories',
+      'Stationery',
+      'Tech kit',
+      'Trade show gear',
+      'PR & influencer boxes',
+      'Retail displays',
+      'In-store activations',
+      'Loyalty premiums',
+    ],
+  },
+];
+
+/* S5: factory audit credentials, named in the sourcing copy. */
+const credentials = ['BSCI', 'SEDEX', 'SA8000', 'NDA in place'];
+
+/* S6: process steps, numerals removed per the no-numbers rule. */
+const steps = [
+  {
+    title: 'Brief and brand immersion.',
+    body: 'Visual codes, category context, consumer.',
+  },
+  {
+    title: 'Creative direction. The step that matters most.',
+    body: 'Senior creative directors set the territory and the structural concept. This is where a packaging line becomes ownable, and where merch goes from forgettable to collected.',
+  },
+  {
+    title: 'AIGC exploration.',
+    body: 'Dozens of directions in parallel, faster than traditional sketching.',
+  },
+  {
+    title: 'Refinement and production.',
+    body: 'Dielines, print files, mockups, supplier handover.',
+  },
+  {
+    title: 'Adaptation at scale.',
+    body: 'Market variants, SKU extensions, seasonal updates.',
+  },
+];
+
+/* S7: the old agency timeline, broken into the phases the copy names. */
+const oldPhases = [
+  { label: 'Concepts', weeks: 'Six weeks', span: 6 },
+  { label: 'Adaptations', weeks: 'Two weeks', span: 2 },
+  { label: 'Production files', weeks: 'Two weeks', span: 2 },
+];
+
+/* S8: FAQ. Wording kept verbatim; one answer links to the Copyright guide. */
+const faqs = [
+  {
+    q: 'How long does a packaging project take?',
+    a: "Two to three weeks for design from brief to print-ready files. Faster if it's an SKU extension on an existing system. If you also need production, add 4 to 8 weeks for manufacturing and shipping.",
+  },
+  {
+    q: 'What do I need to send you to get started?',
+    a: "Product information, brand guidelines if you have them, a sense of the market, and any reference work you like or hate. If you don't have brand guidelines, we'll work from what exists and flag the gaps.",
+  },
+  {
+    q: 'Who actually does the work?',
+    a: 'Senior creative directors from agency backgrounds lead every project. AIGC specialists handle the production volume. No junior teams running the brief.',
+  },
+  {
+    q: 'Do you work in our brand language and visual system, or impose your own?',
+    a: 'Yours. We train our AI setup on your existing brand assets, so the output stays inside your visual system, not ours.',
+  },
+  {
+    q: 'What about copyright on AI-generated work?',
+    a: 'You own the final deliverables. We use commercially safe models and document the workflow. For full detail on the legal side, see our Copyright and AI guide.',
+    link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
+  },
+  {
+    q: 'Can you handle a full SKU range, or just hero packs?',
+    a: 'Both. Our setup is built for volume. Some clients come for one hero pack, others come with 200 SKUs across four markets. The workflow scales.',
+  },
+  {
+    q: 'Do you do dielines and print production files, or just concepts?',
+    a: 'Full production files. Dielines, bleeds, color profiles, print specs. Your supplier can run with it on the first pass.',
+  },
+  {
+    q: 'What if we already have a packaging supplier we want to keep using?',
+    a: 'Fine. We deliver print-ready files and step back. Sourcing is optional, not required.',
+  },
+  {
+    q: 'How does pricing work?',
+    a: "Project-based for one-off work. Monthly retainer for ongoing volume. Quarterly advance billing for retainer clients. We'll quote after the first call.",
+  },
+  {
+    q: 'Can we start small to see if it works?',
+    a: "Yes. Send us one product. Inside two weeks you'll get three packaging directions and a sourcing estimate. No retainer, no commitment, the work is yours either way.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Packaging & Merchandise Design + China Sourcing"
+  description="AI-powered packaging and merch design with direct sourcing from audited China factories. One team, one timeline. Built for brands shipping at scale."
+  heroOverlay
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="scroll-progress" aria-hidden="true"><span class="scroll-progress__bar"></span></div>
+
+  <!-- ===== S1: Hero (dark) ===== -->
+  <section class="hero grain">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="hero__kicker reveal" style="--i:0">
+          <span class="hero__kicker-dot" aria-hidden="true"></span>
+          Services · Design
+        </span>
+        <h1 class="headline h1 reveal hero__title" style="--i:1">
+          Packaging &amp; <span class="accent">Merchandise</span> Design
+        </h1>
+        <p class="hero__tagline reveal" style="--i:2">
+          Design it. Source it. Ship it. <span class="accent">One team.</span>
+        </p>
+        <p class="hero__p reveal" style="--i:3">
+          Most brands hire a studio to design packaging, then chase factories
+          through a broker. Two contracts, two layers of margin. We do both:
+          senior creative directors run the design, our China team sources it
+          through audited factories. One sign-off, faster to market.
+        </p>
+        <div class="hero__cta reveal" style="--i:4">
+          <Button variant="primary" href="/contact">Start the brief</Button>
+          <a class="hero__jump" href="#work">
+            See sample work
+            <span class="hero__jump-arrow" aria-hidden="true">&darr;</span>
+          </a>
+        </div>
+        <ul class="hero__marks reveal" style="--i:5">
+          <li>One creative + sourcing team</li>
+          <li>Audited China factories</li>
+          <li>From brief to print-ready in weeks</li>
+        </ul>
+      </div>
+
+      <aside class="hero__media reveal" style="--i:3">
+        <span class="hero__deck" aria-hidden="true"></span>
+        <span class="hero__glow" aria-hidden="true"></span>
+        <div
+          class="pcar"
+          aria-roledescription="carousel"
+          aria-label="Packaging and merchandise samples"
+        >
+          <div class="pcar__viewport">
+            {
+              samples.map((s, i) => (
+                <figure
+                  class="pcar__slide"
+                  data-slide={i}
+                  data-active={i === 0 ? 'true' : 'false'}
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={`${s.brand}, ${s.kind}`}
+                  aria-hidden={i === 0 ? 'false' : 'true'}
+                >
+                  <img
+                    class="pcar__img"
+                    src={s.src}
+                    alt={s.alt}
+                    width="1024"
+                    height="1024"
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                  />
+                  <figcaption class="pcar__cap">
+                    <span class="pcar__brand">{s.brand}</span>
+                    <span class="pcar__kind">{s.kind}</span>
+                  </figcaption>
+                </figure>
+              ))
+            }
+            <button class="pcar__nav pcar__nav--prev" type="button" aria-label="Previous sample">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M10 2 4 8 10 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <button class="pcar__nav pcar__nav--next" type="button" aria-label="Next sample">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M6 2 12 8 6 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <span class="pcar__tag" aria-hidden="true">Studio samples</span>
+          <div class="pcar__dots" role="tablist" aria-label="Choose a sample">
+            {
+              samples.map((s, i) => (
+                <button
+                  class="pcar__dot"
+                  type="button"
+                  data-dot={i}
+                  data-active={i === 0 ? 'true' : 'false'}
+                  role="tab"
+                  aria-selected={i === 0 ? 'true' : 'false'}
+                  aria-label={`Show ${s.brand}`}
+                >
+                  <span class="pcar__dot-fill"></span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== S2: eCommerce roots ===== -->
+  <section class="section roots">
+    <div class="container roots__grid">
+      <div class="roots__visual reveal">
+        <div class="roots__frame pfx">
+          <img
+            class="roots__img parallax"
+            src="/Images/pmd-roots.jpg"
+            alt="A shopper at a sunlit cafe table holding a phone that shows a single skincare product."
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </div>
+        <span class="roots__float" aria-hidden="true">
+          <span class="roots__float-num">0.5s</span>
+          <span class="roots__float-cap">per product, on the feed</span>
+        </span>
+      </div>
+
+      <div class="roots__copy">
+        <span class="eyebrow roots__eyebrow reveal">Why it matters</span>
+        <h2 class="headline h2 reveal roots__head">
+          Why our eCommerce <span class="accent">roots</span> matter
+        </h2>
+        <p class="roots__p reveal">
+          A shopper swipes an Amazon beauty category at lunch, half a second per
+          product. Packaging carries the whole sale: no salesperson, no second
+          chance.
+        </p>
+        <p class="roots__p reveal">
+          That's the market our team came up in. For twenty years, through
+          Beyond Border Group, we ran eCommerce storefronts across Amazon,
+          Tmall, JD and Douyin. We design packaging that holds up in a listing,
+          on a shelf, and in an unboxing video.
+        </p>
+        <p class="roots__clients reveal">
+          <span class="roots__clients-label">Clients have included</span>
+          <span class="roots__client">HiSense</span>
+          <span class="roots__client">Camper</span>
+          <span class="roots__client">age20</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S2b: Results band (overlapping) ===== -->
+  <section class="resultband">
+    <div class="container">
+      <div class="results grain reveal">
+        <div class="results__head">
+          <span class="eyebrow results__eyebrow">The results</span>
+          <p class="results__quote">
+            Recent projects lifted creative approval rates from 22% to 78%, cut
+            content costs by 60%, and pushed asset output 7x without adding a
+            single hire.
+          </p>
+        </div>
+        <div class="results__grid">
+          {
+            stats.map((s, i) => (
+              <div class="stat" style={`--i:${i}`}>
+                <span
+                  class="stat__num"
+                  data-count-from={s.from}
+                  data-count-to={s.to}
+                  data-suffix={s.suffix}
+                >
+                  {s.from}
+                  {s.suffix}
+                </span>
+                <span class="stat__label">{s.label}</span>
+                <span class="stat__note">{s.note}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: What we cover (tabbed showcase) ===== -->
+  <section class="section sec-cover">
+    <div class="container">
+      <header class="section-head section-head--left">
+        <span class="eyebrow reveal">What we cover</span>
+        <h2 class="headline h2 reveal">
+          Two lanes, one <span class="accent">brand system</span>.
+        </h2>
+      </header>
+
+      <div class="cover reveal" data-active="packaging">
+        <div class="cover__tabs" role="tablist" aria-label="Coverage areas">
+          <span class="cover__indicator" aria-hidden="true"></span>
+          {
+            coverTabs.map((tab, i) => (
+              <button
+                class="cover__tab"
+                type="button"
+                role="tab"
+                id={`covtab-${tab.id}`}
+                data-tab={tab.id}
+                aria-controls={`covpanel-${tab.id}`}
+                aria-selected={i === 0 ? 'true' : 'false'}
+              >
+                {tab.label}
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="cover__stage">
+          {
+            coverTabs.map((tab, i) => (
+              <article
+                class="cover__panel"
+                id={`covpanel-${tab.id}`}
+                role="tabpanel"
+                aria-labelledby={`covtab-${tab.id}`}
+                data-panel={tab.id}
+                data-active={i === 0 ? 'true' : 'false'}
+                hidden={i !== 0}
+              >
+                <div class="cover__media">
+                  <img
+                    src={tab.image}
+                    alt={tab.imageAlt}
+                    width="1024"
+                    height="1024"
+                    loading="lazy"
+                  />
+                  <span class="cover__badge">{tab.label}</span>
+                </div>
+                <div class="cover__text">
+                  <h3 class="headline h3 cover__head">{tab.heading}</h3>
+                  {tab.lead && <p class="cover__lead">{tab.lead}</p>}
+                  {tab.body.map((para) => (
+                    <p class="cover__p">{para}</p>
+                  ))}
+                  <p class="cover__tags-label">In scope</p>
+                  <ul class="cover__tags">
+                    {tab.tags.map((t, ti) => (
+                      <li class="cover__chip" style={`--i:${ti}`}>
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4: Sample marquee ===== -->
+  <section class="marquee-section" id="work">
+    <div class="container">
+      <header class="marquee-head">
+        <span class="eyebrow reveal">Sample work</span>
+        <p class="marquee-head__line reveal">
+          Concepts and mockups, generated and finished in the studio.
+        </p>
+      </header>
+    </div>
+    <div class="marquee" aria-label="Packaging and merchandise samples">
+      <div class="marquee__track">
+        {
+          [...samples, ...samples].map((s, i) => (
+            <figure class="mq-card" aria-hidden={i >= samples.length ? 'true' : 'false'}>
+              <img
+                class="mq-card__img"
+                src={s.src}
+                alt={i >= samples.length ? '' : s.alt}
+                width="1024"
+                height="1024"
+                loading="lazy"
+              />
+              <figcaption class="mq-card__cap">
+                <span class="mq-card__brand">{s.brand}</span>
+                <span class="mq-card__kind">{s.kind}</span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+    <div class="marquee marquee--rev" aria-hidden="true">
+      <div class="marquee__track marquee__track--rev">
+        {
+          [...samples.slice().reverse(), ...samples.slice().reverse()].map((s) => (
+            <figure class="mq-card mq-card--sm">
+              <img
+                class="mq-card__img"
+                src={s.src}
+                alt=""
+                width="1024"
+                height="1024"
+                loading="lazy"
+              />
+              <figcaption class="mq-card__cap">
+                <span class="mq-card__brand">{s.brand}</span>
+                <span class="mq-card__kind">{s.kind}</span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S5: Optional sourcing ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="source card card--navy grain reveal">
+        <div class="source__grid">
+          <div class="source__visual">
+            <div class="source__frame pfx">
+              <img
+                class="source__img parallax"
+                src="/Images/pmd-factory.jpg"
+                alt="A worker on a packaging production line in a daylit factory, finished cartons and rolls of kraft board."
+                width="1024"
+                height="1024"
+                loading="lazy"
+              />
+            </div>
+            <div class="source__sub">
+              <img
+                src="/Images/pmd-inspect.jpg"
+                alt="Hands inspecting a finished printed carton against a quality-control sheet on a workbench."
+                width="1024"
+                height="1024"
+                loading="lazy"
+              />
+            </div>
+            <div class="source__stat">
+              <span class="source__stat-num">4&ndash;8 weeks</span>
+              <span class="source__stat-cap">approved design to delivered units</span>
+            </div>
+          </div>
+
+          <div class="source__body">
+            <span class="eyebrow source__eyebrow reveal">Optional · Sourcing</span>
+            <h2 class="headline h2 reveal source__head">
+              Need it produced too? We can <span class="accent">source</span> it.
+            </h2>
+            <p class="source__intro reveal">
+              This part is optional. Most clients come to us for the design. But
+              if you also need someone to handle production, we can pick it up
+              from there.
+            </p>
+            <p class="source__p reveal">
+              We're based in Shanghai, which means we can plug straight into
+              China's premium factory network. The suppliers we work with
+              already produce for global brands across textiles, drinkware,
+              accessories, tech and packaging materials. BSCI, SEDEX and SA8000
+              documentation available by category. NDAs in place before a single
+              factory sees the brief.
+            </p>
+            <ul class="creds reveal">
+              {
+                credentials.map((c, i) => (
+                  <li class="cred" style={`--i:${i}`}>
+                    <svg viewBox="0 0 14 14" aria-hidden="true">
+                      <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    {c}
+                  </li>
+                ))
+              }
+            </ul>
+            <p class="source__p reveal">
+              MOQs negotiated per project, with small-batch runs available for
+              PR and influencer work. Typical lead time runs 4 to 8 weeks from
+              approved design to delivered units, depending on category and
+              finish.
+            </p>
+            <p class="source__p source__p--quiet reveal">
+              If you already have your own production partners, no problem. We
+              hand over the files and step back.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S6: Process timeline ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="proc__top">
+        <div class="proc__intro">
+          <span class="eyebrow reveal">Our process</span>
+          <h2 class="headline h2 reveal proc__head">
+            Our process: creative is where it's <span class="accent">won</span>.
+          </h2>
+          <p class="proc__lede reveal">
+            Most studios sell process. We sell the creative call. AI made the
+            technical side cheap and fast for everyone. It didn't replace the
+            eye that picks which idea is actually worth scaling.
+          </p>
+          <p class="proc__note reveal">
+            First two steps are where it's won or lost. The rest is execution.
+          </p>
+        </div>
+        <div class="proc__shot reveal">
+          <img
+            src="/Images/hubstudio-shanghai-studio.webp"
+            alt="Inside the hubStudio Shanghai studio: the team reviewing packaging dielines and layouts on screen."
+            width="1024"
+            height="1024"
+            loading="lazy"
+          />
+          <span class="proc__shot-tag">Shanghai studio</span>
+        </div>
+      </div>
+
+      <div class="ptl" data-count={steps.length}>
+        <div class="ptl__rail" aria-hidden="true">
+          <span class="ptl__rail-fill"></span>
+        </div>
+        <ol class="ptl__steps">
+          {
+            steps.map((step, i) => (
+              <li class="ptl__step" data-step={i} data-active={i === 0 ? 'true' : 'false'}>
+                <span class="ptl__node" aria-hidden="true"></span>
+                <div class="ptl__card">
+                  <span class="ptl__phase">{i < 2 ? 'Where it is won' : 'Execution'}</span>
+                  <h3 class="ptl__title">{step.title}</h3>
+                  <p class="ptl__text">{step.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S7: The new math ===== -->
+  <section class="section math">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow reveal">The new math</span>
+        <h2 class="headline h2 reveal">
+          How AI changes the <span class="accent">math</span>.
+        </h2>
+        <p class="lead section-head__sub reveal">
+          A client lands with 60 SKUs for a Q3 launch across four markets. The
+          same brief, run two ways.
+        </p>
+      </header>
+
+      <div class="wf">
+        <article class="wf__row wf__row--old reveal">
+          <div class="wf__side">
+            <span class="wf__tag wf__tag--old">The old workflow</span>
+            <span class="wf__total">Twelve weeks</span>
+            <p class="wf__p">
+              Old workflow: brief an agency, six weeks for concepts, two more
+              for adaptations, another two for production files. Twelve weeks,
+              three or four design rounds, and one tired team.
+            </p>
+          </div>
+          <div class="wf__viz">
+            <div class="wf__bar">
+              {
+                oldPhases.map((ph, i) => (
+                  <span class="wf__seg" style={`--span:${ph.span};--i:${i}`}>
+                    <span class="wf__seg-label">{ph.label}</span>
+                    <span class="wf__seg-weeks">{ph.weeks}</span>
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+        </article>
+
+        <article class="wf__row wf__row--new reveal">
+          <div class="wf__side">
+            <span class="wf__tag wf__tag--new">Our workflow</span>
+            <span class="wf__total wf__total--new">An afternoon</span>
+            <p class="wf__p">
+              Our workflow: dozens of concept directions in an afternoon.
+              Photoreal mockups before a sample is ordered. SKU adaptation
+              across markets without rebuilding every layout. Material and
+              finish simulation (matte foil, embossed kraft, soft-touch) before
+              a plate is cut.
+            </p>
+          </div>
+          <div class="wf__viz">
+            <div class="wf__bar wf__bar--new">
+              <span class="wf__seg wf__seg--solo" style="--span:1;--i:0">
+                <span class="wf__seg-label">Concept to mockup</span>
+                <span class="wf__seg-weeks">One afternoon</span>
+              </span>
+              <span class="wf__rest" aria-hidden="true"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="hub4 card card--navy reveal">
+        <div class="hub4__copy">
+          <span class="chip hub4__badge">hub4You · AI agent platform</span>
+          <h3 class="headline h3 hub4__head">
+            Quarterly to <span class="accent">weekly</span>.
+          </h3>
+          <p class="hub4__text">
+            For brands running hundreds of SKUs, we deploy hub4You, our custom
+            AI agent setup trained on your own brand system. It generates
+            on-brand packaging variants on demand, and connects directly to your
+            DAM and PIM so the output lands where your team already works.
+            That's the gap between launching quarterly and launching weekly.
+          </p>
+          <Button variant="primary" href="/hub4you">Explore hub4You</Button>
+        </div>
+        <div class="hub4__media">
+          <div class="hub4__window" data-tilt>
+            <div class="hub4__chrome" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <img
+              src="/Images/hub4fashion.jpg"
+              alt="The hub4You platform interface generating on-brand product visuals from a model and a background."
+              width="2000"
+              height="1125"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S8: FAQ ===== -->
+  <section class="section faqs">
+    <div class="container faqs__grid">
+      <aside class="faqs__intro">
+        <span class="eyebrow reveal">FAQ</span>
+        <h2 class="headline h2 reveal faqs__head">
+          Ten questions, <span class="accent">answered</span>.
+        </h2>
+        <p class="faqs__sub reveal">
+          The things brands ask before the first call. If yours is not here,
+          put it in the brief.
+        </p>
+        <div class="reveal">
+          <Button variant="primary" href="/contact">Start the brief</Button>
+        </div>
+      </aside>
+      <div class="accordion">
+        {
+          faqs.map((faq, i) => (
+            <div class="acc-row reveal" style={`--i:${Math.min(i, 6)}`}>
+              <button
+                class="acc-row__q"
+                type="button"
+                aria-expanded={i === 0 ? 'true' : 'false'}
+              >
+                <span>{faq.q}</span>
+                <span class="acc-row__icon" aria-hidden="true">
+                  <span></span><span></span>
+                </span>
+              </button>
+              <div class="acc-row__a">
+                <div class="acc-row__a-inner">
+                  <p>
+                    {faq.link ? (
+                      <>
+                        {faq.a.split(faq.link.match)[0]}
+                        <a class="acc-row__link" href={faq.link.href}>
+                          {faq.link.match}
+                        </a>
+                        {faq.a.split(faq.link.match)[1]}
+                      </>
+                    ) : (
+                      faq.a
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S9: Closing CTA ===== -->
+  <section class="closing grain">
+    <div class="container closing__inner">
+      <span class="eyebrow reveal">Try us</span>
+      <h2 class="headline h1 reveal closing__head">
+        See it on your own <span class="accent">product</span>.
+      </h2>
+      <p class="closing__p reveal">
+        Send us a product. Inside two weeks, you'll get three packaging
+        directions and a sourcing estimate. No retainer, no commitment. Whatever
+        we produce is yours to keep, even if you walk.
+      </p>
+      <div class="reveal">
+        <Button variant="primary" href="/contact">Start the brief</Button>
+      </div>
+      <p class="closing__line">hello@hubstudio.ai &middot; Studios across 16 markets</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---- Scroll progress ---- */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 200;
+    pointer-events: none;
+  }
+  .scroll-progress__bar {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+  }
+
+  /* ---- Reveal motion ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .section-head {
+    text-align: center;
+    max-width: 760px;
+    margin-inline: auto;
+    margin-bottom: 60px;
+    display: grid;
+    gap: 16px;
+  }
+  .section-head--left {
+    text-align: left;
+    margin-inline: 0;
+    margin-bottom: 44px;
+  }
+  .section-head__sub {
+    margin-inline: auto;
+    max-width: 56ch;
+  }
+
+  /* ============================================================
+     S1  HERO (dark)
+     ============================================================ */
+  .hero {
+    position: relative;
+    overflow: clip;
+    padding-top: 140px;
+    padding-bottom: 132px;
+    color: var(--text-on-dark);
+    background:
+      radial-gradient(58% 46% at 8% -6%, rgba(30, 58, 138, 0.55), transparent 72%),
+      radial-gradient(52% 56% at 102% 108%, rgba(233, 78, 27, 0.38), transparent 70%),
+      var(--bg-ink);
+  }
+  @media (max-width: 760px) {
+    .hero {
+      padding-top: 116px;
+      padding-bottom: 96px;
+    }
+  }
+  .hero__grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 52px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .hero__grid {
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 68px;
+    }
+  }
+  .hero__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 16px 8px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(240, 237, 233, 0.16);
+    background: rgba(240, 237, 233, 0.05);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .hero__kicker-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    box-shadow: 0 0 0 4px rgba(233, 78, 27, 0.22);
+  }
+  .hero__title {
+    margin-top: 24px;
+    font-size: clamp(46px, 6.6vw, 92px);
+  }
+  .hero__title .accent,
+  .hero__tagline .accent {
+    color: var(--brand-orange);
+  }
+  .hero__tagline {
+    margin-top: 20px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.16;
+    color: #fff;
+  }
+  .hero__p {
+    margin-top: 22px;
+    max-width: 54ch;
+    font-size: var(--type-body);
+    line-height: 1.65;
+    color: rgba(240, 237, 233, 0.74);
+  }
+  .hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 24px;
+  }
+  .hero__jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-on-dark);
+  }
+  .hero__jump-arrow {
+    display: inline-flex;
+    width: 26px;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(240, 237, 233, 0.3);
+    transition: transform 220ms ease-out, background-color 200ms ease-out;
+  }
+  .hero__jump:hover .hero__jump-arrow {
+    transform: translateY(3px);
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .hero__marks {
+    margin-top: 38px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(240, 237, 233, 0.12);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+  }
+  .hero__marks li {
+    position: relative;
+    padding-left: 18px;
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hero__marks li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+
+  /* Hero media: carousel + layered deck */
+  .hero__media {
+    position: relative;
+  }
+  .hero__deck {
+    position: absolute;
+    inset: 7% -6% -8% 8%;
+    border-radius: var(--radius-card);
+    background: linear-gradient(155deg, rgba(30, 58, 138, 0.62), rgba(14, 22, 51, 0.1));
+    border: 1px solid rgba(240, 237, 233, 0.12);
+    transform: rotate(4.5deg);
+    z-index: 0;
+  }
+  .hero__glow {
+    position: absolute;
+    inset: -16%;
+    background: radial-gradient(50% 50% at 50% 45%, rgba(233, 78, 27, 0.4), transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .pcar {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 18px;
+  }
+  .pcar__viewport {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-ink);
+    border: 1px solid rgba(240, 237, 233, 0.14);
+    box-shadow: 0 40px 80px -24px rgba(0, 0, 0, 0.7);
+    aspect-ratio: 4 / 5;
+  }
+  .pcar__slide {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 460ms ease, visibility 0s linear 460ms;
+  }
+  .pcar__slide[data-active='true'] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 460ms ease;
+  }
+  .pcar__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+  }
+  .pcar__slide[data-active='true'] .pcar__img {
+    transform: scale(1);
+    transition: transform 4400ms ease-out;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pcar__img,
+    .pcar__slide[data-active='true'] .pcar__img {
+      transform: none;
+      transition: none;
+    }
+  }
+  .pcar__cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 56px 22px 20px;
+    background: linear-gradient(180deg, rgba(8, 12, 28, 0) 0%, rgba(8, 12, 28, 0.86) 100%);
+  }
+  .pcar__brand {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .pcar__kind {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.74);
+  }
+  .pcar__tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.7);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(240, 237, 233, 0.18);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.86);
+  }
+  .pcar__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--text-ink);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition:
+      background-color 140ms ease-out,
+      transform 160ms ease-out,
+      opacity 200ms ease-out;
+  }
+  .pcar:hover .pcar__nav,
+  .pcar:focus-within .pcar__nav {
+    opacity: 1;
+  }
+  .pcar__nav:hover {
+    background: var(--brand-orange);
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+  }
+  .pcar__nav svg {
+    width: 16px;
+    height: 16px;
+  }
+  .pcar__nav--prev {
+    left: 14px;
+  }
+  .pcar__nav--next {
+    right: 14px;
+  }
+  @media (max-width: 700px) {
+    .pcar__nav {
+      opacity: 1;
+    }
+  }
+  .pcar__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .pcar__dot {
+    width: 30px;
+    height: 6px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: rgba(240, 237, 233, 0.2);
+    overflow: hidden;
+  }
+  .pcar__dot-fill {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: var(--brand-orange);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+  }
+  .pcar__dot[data-active='true'] .pcar__dot-fill {
+    animation: dot-fill 3500ms linear forwards;
+  }
+  .pcar[data-paused='true'] .pcar__dot[data-active='true'] .pcar__dot-fill {
+    animation-play-state: paused;
+  }
+  @keyframes dot-fill {
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pcar__dot[data-active='true'] .pcar__dot-fill {
+      animation: none;
+      transform: scaleX(1);
+    }
+  }
+
+  /* Hero ticker */
+  .hero__ticker {
+    position: relative;
+    z-index: 1;
+    margin-top: 76px;
+    padding-block: 18px;
+    border-top: 1px solid rgba(240, 237, 233, 0.12);
+    border-bottom: 1px solid rgba(240, 237, 233, 0.12);
+    overflow: hidden;
+  }
+  @media (max-width: 760px) {
+    .hero__ticker {
+      margin-top: 52px;
+    }
+  }
+  .hero__ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 30s linear infinite;
+  }
+  .hero__ticker-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    padding-right: 22px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(22px, 3vw, 38px);
+    color: rgba(240, 237, 233, 0.42);
+    white-space: nowrap;
+  }
+  .hero__ticker-dot {
+    color: var(--brand-orange);
+    font-family: var(--font-sans);
+    font-style: normal;
+  }
+  @keyframes ticker {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__ticker-track {
+      animation: none;
+    }
+  }
+
+  /* ============================================================
+     S2  eCommerce roots
+     ============================================================ */
+  .roots__grid {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .roots__grid {
+      grid-template-columns: 0.96fr 1.04fr;
+      gap: 70px;
+    }
+  }
+  .roots__visual {
+    position: relative;
+  }
+  .roots__frame {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: 0 32px 60px -28px rgba(10, 10, 20, 0.5);
+    aspect-ratio: 7 / 6;
+  }
+  .roots__img {
+    width: 100%;
+    height: 124%;
+    object-fit: cover;
+    will-change: transform;
+  }
+  .roots__float {
+    position: absolute;
+    right: -14px;
+    bottom: -26px;
+    display: grid;
+    gap: 2px;
+    padding: 18px 22px;
+    border-radius: 18px;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    box-shadow: 0 20px 40px rgba(10, 10, 20, 0.32);
+  }
+  @media (max-width: 540px) {
+    .roots__float {
+      right: 8px;
+      bottom: -20px;
+      padding: 14px 18px;
+    }
+  }
+  .roots__float-num {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--brand-orange);
+  }
+  .roots__float-cap {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .roots__eyebrow {
+    color: var(--brand-orange);
+  }
+  .roots__head {
+    margin-top: 14px;
+  }
+  .roots__p {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .roots__clients {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .roots__clients-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-right: 4px;
+  }
+  .roots__client {
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line-strong);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+
+  /* ============================================================
+     S2b  Results band (overlaps neighbours)
+     ============================================================ */
+  .resultband {
+    position: relative;
+    z-index: 5;
+    margin-block: clamp(-128px, -10vw, -76px);
+  }
+  .results {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    padding: clamp(36px, 4.6vw, 66px);
+    color: var(--text-on-dark);
+    background:
+      radial-gradient(60% 80% at 100% 0%, rgba(233, 78, 27, 0.34), transparent 66%),
+      radial-gradient(50% 70% at 0% 100%, rgba(30, 58, 138, 0.5), transparent 70%),
+      var(--bg-ink);
+    box-shadow: 0 50px 90px -34px rgba(0, 0, 0, 0.6);
+    display: grid;
+    gap: 38px;
+  }
+  @media (min-width: 940px) {
+    .results {
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 56px;
+      align-items: center;
+    }
+  }
+  .results__eyebrow {
+    color: var(--brand-orange);
+  }
+  .results__quote {
+    margin-top: 16px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(20px, 1.9vw, 26px);
+    line-height: 1.4;
+  }
+  .results__grid {
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 560px) {
+    .results__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .stat {
+    padding: 24px;
+    border-radius: 18px;
+    background: rgba(240, 237, 233, 0.05);
+    border: 1px solid rgba(240, 237, 233, 0.12);
+  }
+  .stat__num {
+    display: block;
+    font-size: clamp(44px, 5vw, 66px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--brand-orange);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat__label {
+    display: block;
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .stat__note {
+    display: block;
+    margin-top: 3px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.6);
+  }
+
+  /* ============================================================
+     S3  What we cover (tabs)
+     ============================================================ */
+  .sec-cover {
+    padding-top: clamp(150px, 16vw, 240px);
+  }
+  .cover__tabs {
+    position: relative;
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 4px;
+    padding: 5px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 28px;
+  }
+  .cover__indicator {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    width: calc((100% - 10px) / 2);
+    border-radius: var(--radius-pill);
+    background: var(--brand-orange);
+    box-shadow: 0 6px 16px rgba(233, 78, 27, 0.4);
+    transition: transform 420ms cubic-bezier(0.34, 1.42, 0.5, 1);
+  }
+  .cover[data-active='merchandise'] .cover__indicator {
+    transform: translateX(100%);
+  }
+  .cover__tab {
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: transparent;
+    padding: 13px 34px;
+    border-radius: var(--radius-pill);
+    font-size: var(--type-small);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-mute);
+    transition: color 240ms ease-out;
+  }
+  .cover__tab[aria-selected='true'] {
+    color: #fff;
+  }
+  .cover__stage {
+    display: grid;
+  }
+  .cover__panel {
+    grid-area: 1 / 1;
+    display: grid;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background: var(--bg-white);
+    box-shadow: 0 40px 80px -36px rgba(10, 10, 20, 0.46);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.99);
+    transition:
+      opacity 460ms ease,
+      transform 460ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 460ms;
+  }
+  .cover__panel[hidden] {
+    display: grid;
+  }
+  .cover__panel[data-active='true'] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    transition:
+      opacity 460ms ease,
+      transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @media (min-width: 860px) {
+    .cover__panel {
+      grid-template-columns: 0.96fr 1.04fr;
+    }
+  }
+  .cover__media {
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+  }
+  .cover__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cover__panel[data-active='true']:hover .cover__media img {
+    transform: scale(1.06);
+  }
+  .cover__badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.94);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .cover__text {
+    padding: clamp(28px, 3.4vw, 50px);
+  }
+  .cover__lead {
+    margin-top: 14px;
+    font-size: var(--type-lead);
+    line-height: 1.4;
+    color: var(--text-ink);
+  }
+  .cover__p {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: var(--text-mute);
+  }
+  .cover__tags-label {
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-hairline);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .cover__tags {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cover__chip {
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-hairline);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-ink);
+    transition: background-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out;
+  }
+  .cover__chip:hover {
+    background: var(--brand-orange);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .cover__panel[data-active='true'] .cover__chip {
+    animation: chip-in 480ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(240ms + var(--i, 0) * 40ms);
+  }
+  @keyframes chip-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cover__panel,
+    .cover__panel[data-active='true'] .cover__chip {
+      transition: none;
+      animation: none;
+    }
+  }
+
+  /* ============================================================
+     S4  Sample marquee
+     ============================================================ */
+  .marquee-section {
+    padding-block: 64px 72px;
+    overflow: hidden;
+  }
+  .marquee-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 20px;
+    margin-bottom: 34px;
+  }
+  .marquee-head .eyebrow {
+    color: var(--brand-orange);
+  }
+  .marquee-head__line {
+    font-size: var(--type-lead);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+  .marquee {
+    position: relative;
+  }
+  .marquee--rev {
+    margin-top: 20px;
+  }
+  .marquee::before,
+  .marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 12%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-cream), transparent);
+  }
+  .marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg-cream), transparent);
+  }
+  .marquee__track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: marquee 54s linear infinite;
+  }
+  .marquee__track--rev {
+    animation-duration: 64s;
+    animation-direction: reverse;
+  }
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(calc(-50% - 10px));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+      animation: none;
+    }
+  }
+  .mq-card {
+    margin: 0;
+    flex: none;
+    width: clamp(232px, 27vw, 308px);
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--bg-white);
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+  .mq-card--sm {
+    width: clamp(176px, 20vw, 224px);
+  }
+  .mq-card__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .mq-card:hover .mq-card__img {
+    transform: scale(1.07);
+  }
+  .mq-card__cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 42px 18px 16px;
+    background: linear-gradient(180deg, rgba(8, 12, 28, 0), rgba(8, 12, 28, 0.82));
+  }
+  .mq-card__brand {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .mq-card__kind {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.7);
+  }
+
+  /* ============================================================
+     S5  Optional sourcing
+     ============================================================ */
+  .source {
+    padding: 0;
+    box-shadow: 0 44px 90px -42px rgba(10, 16, 40, 0.7);
+  }
+  .source__grid {
+    display: grid;
+  }
+  @media (min-width: 940px) {
+    .source__grid {
+      grid-template-columns: 0.96fr 1.04fr;
+      align-items: center;
+    }
+  }
+  .source__visual {
+    position: relative;
+    padding: 40px;
+    min-height: 360px;
+  }
+  @media (max-width: 600px) {
+    .source__visual {
+      padding: 24px 24px 56px;
+    }
+  }
+  .source__frame {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+    aspect-ratio: 5 / 4;
+  }
+  .source__img {
+    width: 100%;
+    height: 122%;
+    object-fit: cover;
+    will-change: transform;
+  }
+  .source__sub {
+    position: absolute;
+    right: 18px;
+    bottom: 30px;
+    width: 42%;
+    max-width: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 4px solid var(--brand-navy-deep);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.46);
+  }
+  .source__sub img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  @media (max-width: 540px) {
+    .source__sub {
+      display: none;
+    }
+  }
+  .source__stat {
+    position: absolute;
+    left: 14px;
+    top: 56px;
+    display: grid;
+    gap: 3px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: var(--brand-orange);
+    color: #fff;
+    box-shadow: 0 16px 34px rgba(233, 78, 27, 0.5);
+  }
+  .source__stat-num {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .source__stat-cap {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    max-width: 16ch;
+    line-height: 1.4;
+    opacity: 0.92;
+  }
+  .source__body {
+    padding: clamp(32px, 4vw, 60px);
+  }
+  .source__eyebrow {
+    color: rgba(240, 237, 233, 0.62);
+  }
+  .source__head {
+    margin-top: 14px;
+    max-width: 20ch;
+  }
+  .source__intro {
+    margin-top: 20px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-on-dark);
+  }
+  .source__p {
+    margin-top: 16px;
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .source__p--quiet {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .creds {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cred {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(240, 237, 233, 0.08);
+    border: 1px solid rgba(240, 237, 233, 0.16);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-on-dark);
+    transition: border-color 200ms ease-out, background-color 200ms ease-out, transform 200ms ease-out;
+  }
+  .cred:hover {
+    border-color: var(--brand-orange);
+    background: rgba(233, 78, 27, 0.16);
+    transform: translateY(-2px);
+  }
+  .cred svg {
+    width: 13px;
+    height: 13px;
+    color: var(--brand-orange);
+  }
+
+  /* ============================================================
+     S6  Process
+     ============================================================ */
+  .proc__top {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 70px;
+  }
+  @media (min-width: 940px) {
+    .proc__top {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+    }
+  }
+  .proc__intro .eyebrow {
+    color: var(--brand-orange);
+  }
+  .proc__head {
+    margin-top: 14px;
+  }
+  .proc__lede {
+    margin-top: 18px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .proc__note {
+    margin-top: 22px;
+    padding: 16px 20px;
+    border-left: 3px solid var(--brand-orange);
+    background: rgba(233, 78, 27, 0.07);
+    border-radius: 0 12px 12px 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-ink);
+  }
+  .proc__shot {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: 0 32px 60px -30px rgba(10, 10, 20, 0.5);
+    aspect-ratio: 4 / 3;
+  }
+  .proc__shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .proc__shot-tag {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.74);
+    backdrop-filter: blur(6px);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-on-dark);
+  }
+
+  /* Horizontal timeline */
+  .ptl {
+    position: relative;
+  }
+  .ptl__rail {
+    position: absolute;
+    top: 9px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--line-strong);
+  }
+  .ptl__rail-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 2px;
+    background: var(--brand-orange);
+  }
+  .ptl__steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+  }
+  .ptl__step {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 22px;
+    transition: opacity 360ms ease-out;
+  }
+  .ptl__node {
+    justify-self: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--line-strong);
+    background: var(--bg-cream);
+    position: relative;
+    z-index: 1;
+    transition:
+      border-color 320ms ease-out,
+      background-color 320ms ease-out,
+      transform 320ms cubic-bezier(0.34, 1.4, 0.5, 1),
+      box-shadow 320ms ease-out;
+  }
+  .ptl__step[data-active='true'] .ptl__node {
+    border-color: var(--brand-orange);
+    background: var(--brand-orange);
+    transform: scale(1.3);
+    box-shadow: 0 0 0 6px rgba(233, 78, 27, 0.16);
+  }
+  .ptl__card {
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+    padding: 24px 22px 26px;
+    box-shadow: var(--shadow-card);
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 280ms ease-out;
+  }
+  .ptl__step[data-active='true'] .ptl__card {
+    transform: translateY(-8px);
+    box-shadow: 0 26px 46px -18px rgba(10, 10, 20, 0.26);
+  }
+  .ptl__phase {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .ptl__step[data-active='true'] .ptl__phase {
+    color: var(--brand-orange);
+  }
+  .ptl__title {
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .ptl__text {
+    margin-top: 9px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  @media (min-width: 861px) {
+    .ptl__step {
+      opacity: 0.46;
+    }
+    .ptl__step[data-active='true'] {
+      opacity: 1;
+    }
+  }
+  @media (max-width: 860px) {
+    .ptl__rail {
+      display: none;
+    }
+    .ptl__steps {
+      grid-auto-flow: column;
+      grid-auto-columns: 82%;
+      grid-template-columns: none;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 14px;
+      margin-inline: calc(-1 * var(--container-pad-mobile));
+      padding-inline: var(--container-pad-mobile);
+    }
+    .ptl__step {
+      scroll-snap-align: center;
+      grid-template-rows: none;
+      gap: 0;
+    }
+    .ptl__node {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ptl__step {
+      opacity: 1;
+    }
+  }
+
+  /* ============================================================
+     S7  The new math
+     ============================================================ */
+  .math {
+    background: var(--bg-white);
+  }
+  .wf {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  .wf__row {
+    display: grid;
+    gap: 26px;
+    padding: clamp(28px, 3.4vw, 42px);
+    border-radius: var(--radius-card);
+  }
+  @media (min-width: 820px) {
+    .wf__row {
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 44px;
+      align-items: center;
+    }
+  }
+  .wf__row--old {
+    background: var(--bg-cream);
+    border: 1px solid var(--line-hairline);
+  }
+  .wf__row--new {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    box-shadow: 0 34px 70px -34px rgba(10, 16, 40, 0.6);
+  }
+  .wf__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .wf__tag::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .wf__tag--old {
+    color: var(--text-mute);
+  }
+  .wf__tag--new {
+    color: var(--brand-orange);
+  }
+  .wf__total {
+    display: block;
+    margin-top: 12px;
+    font-size: clamp(32px, 3.6vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .wf__total--new {
+    color: var(--brand-orange);
+  }
+  .wf__p {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .wf__row--new .wf__p {
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .wf__bar {
+    display: flex;
+    gap: 4px;
+    height: 92px;
+  }
+  .wf__seg {
+    flex: var(--span, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 3px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    color: #fff;
+    overflow: hidden;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .wf__row.is-in .wf__seg {
+    transform: scaleX(1);
+    transition: transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(280ms + var(--i, 0) * 150ms);
+  }
+  .wf__row--old .wf__seg:nth-child(1) {
+    background: #8d8980;
+  }
+  .wf__row--old .wf__seg:nth-child(2) {
+    background: #a8a299;
+  }
+  .wf__row--old .wf__seg:nth-child(3) {
+    background: #c2bcb1;
+  }
+  .wf__seg-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .wf__seg-weeks {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.86;
+  }
+  .wf__bar--new {
+    align-items: stretch;
+  }
+  .wf__seg--solo {
+    flex: none;
+    width: 26%;
+    min-width: 152px;
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-deep));
+  }
+  .wf__rest {
+    flex: 1;
+    border-radius: 12px;
+    border: 1px dashed rgba(240, 237, 233, 0.22);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wf__seg {
+      transform: none;
+    }
+  }
+
+  .hub4 {
+    margin-top: var(--gap-card);
+    display: grid;
+    gap: 36px;
+    padding: clamp(32px, 3.8vw, 52px);
+    align-items: center;
+    box-shadow: 0 40px 80px -38px rgba(10, 16, 40, 0.66);
+  }
+  @media (min-width: 900px) {
+    .hub4 {
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 52px;
+    }
+  }
+  .hub4__badge {
+    background: rgba(233, 78, 27, 0.18);
+    color: var(--brand-orange);
+  }
+  .hub4__head {
+    margin-top: 16px;
+  }
+  .hub4__head .accent {
+    color: var(--brand-orange);
+  }
+  .hub4__text {
+    margin-top: 14px;
+    margin-bottom: 26px;
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .hub4__window {
+    border-radius: 14px;
+    overflow: hidden;
+    background: #0b1020;
+    border: 1px solid rgba(240, 237, 233, 0.14);
+    box-shadow: 0 36px 70px rgba(0, 0, 0, 0.52);
+    transition: transform 220ms ease-out;
+    transform-style: preserve-3d;
+  }
+  .hub4__chrome {
+    display: flex;
+    gap: 7px;
+    padding: 12px 16px;
+    background: rgba(240, 237, 233, 0.06);
+    border-bottom: 1px solid rgba(240, 237, 233, 0.1);
+  }
+  .hub4__chrome span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(240, 237, 233, 0.26);
+  }
+  .hub4__chrome span:first-child {
+    background: var(--brand-orange);
+  }
+  .hub4__window img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ============================================================
+     S8  FAQ
+     ============================================================ */
+  .faqs__grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 1000px) {
+    .faqs__grid {
+      grid-template-columns: 360px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+  }
+  .faqs__intro .eyebrow {
+    color: var(--brand-orange);
+  }
+  @media (min-width: 1000px) {
+    .faqs__intro {
+      position: sticky;
+      top: 100px;
+    }
+  }
+  .faqs__head {
+    margin-top: 14px;
+  }
+  .faqs__sub {
+    margin-top: 16px;
+    margin-bottom: 26px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .accordion {
+    display: grid;
+  }
+  .acc-row {
+    border-top: 1px solid var(--line-strong);
+  }
+  .acc-row:last-child {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .acc-row__q {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    transition: color 160ms ease-out;
+  }
+  .acc-row__q:hover {
+    color: var(--brand-orange);
+  }
+  .acc-row__icon {
+    position: relative;
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin-top: 3px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    transition: background-color 200ms ease-out, border-color 200ms ease-out;
+  }
+  .acc-row__q[aria-expanded='true'] .acc-row__icon {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .acc-row__icon span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), background-color 200ms ease-out;
+  }
+  .acc-row__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .acc-row__q[aria-expanded='true'] .acc-row__icon span {
+    background: #fff;
+  }
+  .acc-row__q[aria-expanded='true'] .acc-row__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .acc-row__a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease-in-out;
+  }
+  .acc-row__q[aria-expanded='true'] + .acc-row__a {
+    grid-template-rows: 1fr;
+  }
+  .acc-row__a-inner {
+    overflow: hidden;
+  }
+  .acc-row__a-inner p {
+    padding-bottom: 24px;
+    max-width: 62ch;
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: var(--text-mute);
+  }
+  .acc-row__link {
+    color: var(--brand-orange);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ============================================================
+     S9  Closing CTA
+     ============================================================ */
+  .closing {
+    position: relative;
+    overflow: clip;
+    color: var(--text-on-dark);
+    background:
+      radial-gradient(46% 60% at 86% 0%, rgba(233, 78, 27, 0.32), transparent 66%),
+      radial-gradient(50% 64% at 6% 100%, rgba(30, 58, 138, 0.46), transparent 70%),
+      var(--bg-ink);
+  }
+  .closing__inner {
+    position: relative;
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing .eyebrow {
+    color: var(--brand-orange);
+  }
+  .closing__head {
+    max-width: 18ch;
+  }
+  .closing__head .accent {
+    color: var(--brand-orange);
+  }
+  .closing__p {
+    max-width: 56ch;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .closing__line {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.55);
+  }
+</style>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---- Scroll progress bar ---- */
+  const progress = document.querySelector<HTMLElement>('.scroll-progress__bar');
+  if (progress) {
+    const onScrollProgress = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      progress.style.transform = `scaleX(${max > 0 ? Math.min(1, doc.scrollTop / max) : 0})`;
+    };
+    onScrollProgress();
+    window.addEventListener('scroll', onScrollProgress, { passive: true });
+    window.addEventListener('resize', onScrollProgress);
+  }
+
+  /* ---- Reveal on scroll (staggered) ---- */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14, rootMargin: '0px 0px -7% 0px' },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* ---- Count-up stats ---- */
+  const counters = Array.from(document.querySelectorAll<HTMLElement>('.stat__num'));
+  if (counters.length) {
+    const runCount = (el: HTMLElement) => {
+      const from = Number(el.dataset.countFrom || 0);
+      const to = Number(el.dataset.countTo || 0);
+      const suffix = el.dataset.suffix || '';
+      if (reduceMotion.matches) {
+        el.textContent = `${to}${suffix}`;
+        return;
+      }
+      const dur = 1500;
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = `${Math.round(from + (to - from) * eased)}${suffix}`;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    if ('IntersectionObserver' in window) {
+      const co = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              runCount(entry.target as HTMLElement);
+              co.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      counters.forEach((c) => co.observe(c));
+    } else {
+      counters.forEach(runCount);
+    }
+  }
+
+  /* ---- Gentle parallax on framed images ---- */
+  const parallaxEls = Array.from(document.querySelectorAll<HTMLElement>('.parallax'));
+  if (parallaxEls.length && !reduceMotion.matches) {
+    let ticking = false;
+    const applyParallax = () => {
+      const vh = window.innerHeight;
+      parallaxEls.forEach((el) => {
+        const frame = (el.closest('.pfx') as HTMLElement) || el;
+        const r = frame.getBoundingClientRect();
+        if (r.bottom < -120 || r.top > vh + 120) return;
+        const offset = (r.top + r.height / 2 - vh / 2) / vh;
+        el.style.transform = `translate3d(0, ${(-offset * 46).toFixed(1)}px, 0)`;
+      });
+      ticking = false;
+    };
+    const requestParallax = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(applyParallax);
+      }
+    };
+    applyParallax();
+    window.addEventListener('scroll', requestParallax, { passive: true });
+    window.addEventListener('resize', requestParallax);
+  }
+
+  /* ---- Hero sample carousel ---- */
+  const car = document.querySelector<HTMLElement>('.pcar');
+  if (car) {
+    const slides = Array.from(car.querySelectorAll<HTMLElement>('.pcar__slide'));
+    const dots = Array.from(car.querySelectorAll<HTMLButtonElement>('.pcar__dot'));
+    const prev = car.querySelector<HTMLButtonElement>('.pcar__nav--prev');
+    const next = car.querySelector<HTMLButtonElement>('.pcar__nav--next');
+    let index = 0;
+    let timer: number | undefined;
+
+    const render = () => {
+      slides.forEach((slide, i) => {
+        const active = i === index;
+        slide.dataset.active = String(active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+      dots.forEach((dot, i) => {
+        const active = i === index;
+        dot.dataset.active = String(active);
+        dot.setAttribute('aria-selected', String(active));
+        const fill = dot.firstElementChild as HTMLElement | null;
+        if (fill && active) {
+          fill.style.animation = 'none';
+          void fill.offsetWidth;
+          fill.style.animation = '';
+        }
+      });
+    };
+    const go = (i: number) => {
+      index = (i + slides.length) % slides.length;
+      render();
+    };
+    const stop = () => {
+      if (timer !== undefined) window.clearInterval(timer);
+      timer = undefined;
+      car.dataset.paused = 'true';
+    };
+    const start = () => {
+      if (reduceMotion.matches || slides.length < 2) return;
+      stop();
+      car.dataset.paused = 'false';
+      timer = window.setInterval(() => go(index + 1), 3500);
+    };
+
+    prev?.addEventListener('click', () => { go(index - 1); start(); });
+    next?.addEventListener('click', () => { go(index + 1); start(); });
+    dots.forEach((dot, i) =>
+      dot.addEventListener('click', () => { go(i); start(); }),
+    );
+    car.addEventListener('pointerenter', stop);
+    car.addEventListener('pointerleave', start);
+    car.addEventListener('focusin', stop);
+    car.addEventListener('focusout', start);
+
+    render();
+    start();
+  }
+
+  /* ---- S3 What we cover: tab switcher ---- */
+  const cover = document.querySelector<HTMLElement>('.cover');
+  if (cover) {
+    const tabs = Array.from(cover.querySelectorAll<HTMLButtonElement>('.cover__tab'));
+    const panels = Array.from(cover.querySelectorAll<HTMLElement>('.cover__panel'));
+    const selectTab = (id: string) => {
+      cover.dataset.active = id;
+      tabs.forEach((t) =>
+        t.setAttribute('aria-selected', String(t.dataset.tab === id)),
+      );
+      panels.forEach((p) => {
+        const on = p.dataset.panel === id;
+        p.dataset.active = String(on);
+        p.hidden = !on;
+      });
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => selectTab(tab.dataset.tab || ''));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        const dir = e.key === 'ArrowRight' ? 1 : -1;
+        const nextTab = tabs[(i + dir + tabs.length) % tabs.length];
+        nextTab.focus();
+        selectTab(nextTab.dataset.tab || '');
+      });
+    });
+  }
+
+  /* ---- S6 Process: horizontal timeline fill ---- */
+  const ptl = document.querySelector<HTMLElement>('.ptl');
+  if (ptl) {
+    const fill = ptl.querySelector<HTMLElement>('.ptl__rail-fill');
+    const tlSteps = Array.from(ptl.querySelectorAll<HTMLElement>('.ptl__step'));
+    const isWide = window.matchMedia('(min-width: 861px)');
+    let ticking = false;
+    const updateTimeline = () => {
+      ticking = false;
+      if (!isWide.matches) {
+        if (fill) fill.style.width = '100%';
+        tlSteps.forEach((s) => (s.dataset.active = 'true'));
+        return;
+      }
+      const vh = window.innerHeight;
+      const r = ptl.getBoundingClientRect();
+      const raw = (vh * 0.82 - r.top) / (r.height + vh * 0.3);
+      const p = Math.max(0, Math.min(1, raw));
+      if (fill) fill.style.width = `${(p * 100).toFixed(1)}%`;
+      const reached = p * tlSteps.length;
+      tlSteps.forEach((s, i) => {
+        s.dataset.active = String(i < Math.max(1, Math.ceil(reached)));
+      });
+    };
+    const requestTimeline = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateTimeline);
+      }
+    };
+    updateTimeline();
+    window.addEventListener('scroll', requestTimeline, { passive: true });
+    window.addEventListener('resize', requestTimeline);
+  }
+
+  /* ---- S7 hub4You window: subtle pointer tilt ---- */
+  const tiltEl = document.querySelector<HTMLElement>('[data-tilt]');
+  if (tiltEl && !reduceMotion.matches && window.matchMedia('(pointer: fine)').matches) {
+    const reset = () => {
+      tiltEl.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg)';
+    };
+    tiltEl.addEventListener('pointermove', (e) => {
+      const r = tiltEl.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      tiltEl.style.transform = `perspective(1100px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg)`;
+    });
+    tiltEl.addEventListener('pointerleave', reset);
+    reset();
+  }
+
+  /* ---- FAQ accordion: one row open at a time ---- */
+  const accRows = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc-row__q'));
+  accRows.forEach((row) => {
+    row.addEventListener('click', () => {
+      const open = row.getAttribute('aria-expanded') === 'true';
+      accRows.forEach((r) => r.setAttribute('aria-expanded', 'false'));
+      row.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+</script>

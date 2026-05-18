@@ -418,27 +418,22 @@ const risks = [
 /* ---- S8: Protection strategy ------------------------------------ */
 const strategy = [
   {
-    n: '01',
     title: 'Layer in human creativity',
     body: 'Use AI for drafts, then apply significant human editing and creative judgement.',
   },
   {
-    n: '02',
     title: 'Document everything',
     body: 'Archive prompts, raw outputs, edits, and final versions with timestamps.',
   },
   {
-    n: '03',
     title: 'Avoid mimicry',
     body: 'Write descriptive prompts. Never reference specific artists or brands by name.',
   },
   {
-    n: '04',
     title: 'Verify every output',
     body: 'Reverse image search visuals, plagiarism-check text, and review for likenesses.',
   },
   {
-    n: '05',
     title: 'Require human approval',
     body: 'Route high-stakes campaigns through legal review before publication.',
   },
@@ -487,7 +482,7 @@ const beforeDeciding = [
         <img
           class="hero__img"
           src="/Images/copyright-ai-hero.webp"
-          alt="Printed manuscript pages resting in directional studio light."
+          alt="Sculptural paper arches in cream, navy, and burnt-orange on a concrete plinth."
           width="1024"
           height="1024"
           loading="eager"
@@ -640,9 +635,9 @@ const beforeDeciding = [
         </header>
         <div class="accordion">
           {
-            faqs.map((faq, i) => (
+            faqs.map((faq) => (
               <div class="acc-row">
-                <button class="acc-row__q" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <button class="acc-row__q" aria-expanded="false">
                   <span>{faq.q}</span>
                   <svg viewBox="0 0 14 14" aria-hidden="true">
                     <path d="M2 5 7 10 12 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
@@ -737,11 +732,8 @@ const beforeDeciding = [
             {
               strategy.map((step) => (
                 <li class="strat__step">
-                  <span class="strat__n" aria-hidden="true">{step.n}</span>
-                  <div>
-                    <h3 class="strat__step-title">{step.title}</h3>
-                    <p class="strat__step-body">{step.body}</p>
-                  </div>
+                  <h3 class="strat__step-title">{step.title}</h3>
+                  <p class="strat__step-body">{step.body}</p>
                 </li>
               ))
             }
@@ -1268,21 +1260,11 @@ const beforeDeciding = [
     gap: 4px;
   }
   .strat__step {
-    display: flex;
-    gap: 18px;
     padding: 18px 0;
     border-top: 1px solid var(--line-hairline);
   }
   .strat__step:first-child {
     border-top: none;
-  }
-  .strat__n {
-    flex: none;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--brand-orange);
-    padding-top: 2px;
   }
   .strat__step-title {
     font-size: var(--type-h4);
