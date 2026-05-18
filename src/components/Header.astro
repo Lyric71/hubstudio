@@ -1,9 +1,13 @@
----
+﻿---
 /**
- * Header — §5 navigation + mega menu.
- * Persistent top nav, five mega-menu panels, mobile right-sheet drawer.
- * Desktop panels open on hover / keyboard focus (CSS); JS handles the
- * scroll state, Esc-to-close, and the mobile drawer.
+ * Header: §5 navigation + mega menu.
+ * Persistent top nav, mega-menu panels, mobile right-sheet drawer.
+ * Every desktop panel opens with the same intro column (eyebrow · headline ·
+ * blurb · "All of X" link), then a layout that fits the section: standard
+ * (link groups · featured card), services (four-column design-service list)
+ * or solutions (client/consulting columns · platform grid). hub4You sits in
+ * the action area as a standalone button. Panels open on hover / keyboard
+ * focus (CSS); JS handles the scroll state, Esc-to-close and the mobile drawer.
  */
 import Logo from './Logo.astro';
 import { localizePath } from '../i18n/utils';
@@ -12,6 +16,14 @@ import { getLocaleFromUrl } from '../i18n/utils';
 const locale = getLocaleFromUrl(Astro.url);
 const lp = (p: string) => localizePath(p, locale);
 
+interface Props {
+  /** When true the bar sits transparently over a dark hero: light text /
+   *  cream-wordmark logo until the page scrolls past 80px. */
+  overlay?: boolean;
+}
+const { overlay = false } = Astro.props;
+
+type Intro = { eyebrow: string; pre: string; accent: string; post: string; text: string };
 type Link = { title: string; desc: string; href: string };
 type Group = { heading: string; links: Link[] };
 type Featured = {
@@ -20,16 +32,127 @@ type Featured = {
   title: string;
   text: string;
   cta: { label: string; href: string };
+  /** When set, the card art slot shows this image instead of a gradient. */
+  image?: string;
 };
+type FlatLink = { label: string; href: string };
+type ServiceLink = { label: string; desc: string; href: string };
+type SubGroup = { heading: string; links: FlatLink[] };
+type SolutionCol = { heading: string; links?: FlatLink[]; subgroups?: SubGroup[] };
 type MenuItem = {
   label: string;
   href: string;
-  intro: { eyebrow: string; pre: string; accent: string; post: string; text: string };
-  groups: Group[];
-  featured: Featured;
+  intro?: Intro;
+  groups?: Group[];
+  featured?: Featured;
+  /** When set, the item renders the Services panel (four-column list). */
+  services?: ServiceLink[];
+  /** When set, the item renders the Solutions panel (grouped columns). */
+  solutionCols?: SolutionCol[];
 };
 
 const menu: MenuItem[] = [
+  {
+    label: 'Services',
+    href: '/services',
+    intro: {
+      eyebrow: 'Services',
+      pre: 'Twenty service lines. One ',
+      accent: 'studio',
+      post: '.',
+      text: 'From a single social post to a full campaign system: every format your brand needs, produced in days, not weeks.',
+    },
+    services: [
+      { label: 'Social Media', desc: 'Scroll-stopping content for every feed.', href: '/services/design/social-media' },
+      { label: 'eCommerce', desc: 'Product visuals that turn browsers into buyers.', href: '/services/design/ecommerce' },
+      { label: 'Short Video', desc: 'Vertical, fast, made for TikTok and Reels.', href: '/services/design/short-video' },
+      { label: 'Ad Creative', desc: 'Performance creative built to be tested.', href: '/services/design/ad-creative' },
+      { label: 'Video Production', desc: 'Script to final cut, shot or generated.', href: '/services/design/video-production' },
+      { label: 'Print Design', desc: 'Press-ready layouts for every format.', href: '/services/design/print-design' },
+      { label: 'Website Design', desc: 'Pages that look sharp at every breakpoint.', href: '/services/design/website-design' },
+      { label: 'Email Design', desc: 'Campaigns and flows that land in the inbox.', href: '/services/design/email-design' },
+      { label: 'Motion Design', desc: 'Animation and motion graphics with polish.', href: '/services/design/motion-design' },
+      { label: 'Marketing Strategy', desc: 'The plan behind the content, market by market.', href: '/services/design/marketing-strategy' },
+      { label: 'Presentation Design', desc: 'Decks that hold a room’s attention.', href: '/services/design/presentation-design' },
+      { label: 'Illustration Design', desc: 'Custom illustration in your brand’s language.', href: '/services/design/illustration-design' },
+      { label: 'Storyboard', desc: 'Frames that map a film before it shoots.', href: '/services/design/storyboard' },
+      { label: 'Packaging & Merch Design', desc: 'Shelf-ready packaging and branded merch.', href: '/services/design/packaging-merch-design' },
+      { label: 'Brand Identity', desc: 'Logos, systems, and guidelines that scale.', href: '/services/design/brand-identity' },
+      { label: 'Ebook and Digital Reports', desc: 'Long-form content designed to be read.', href: '/services/design/ebook-digital-reports' },
+      { label: 'Concept Creation', desc: 'Big ideas before the production starts.', href: '/services/design/concept-creation' },
+      { label: 'Pitch Deck', desc: 'Investor and client decks that win the room.', href: '/services/design/pitch-deck' },
+      { label: 'Creative Strategy', desc: 'Direction that ties every asset together.', href: '/services/design/creative-strategy' },
+      { label: 'Press Release', desc: 'News written and designed to get picked up.', href: '/services/design/press-release' },
+    ],
+  },
+  {
+    label: 'Solutions',
+    href: '/solutions',
+    intro: {
+      eyebrow: 'Solutions',
+      pre: 'Built around how your brand ',
+      accent: 'sells',
+      post: '.',
+      text: 'Who we work with, the consulting we run, and the platforms we produce for, matched to your market.',
+    },
+    solutionCols: [
+      {
+        heading: 'Clients',
+        links: [
+          { label: 'Brands', href: '/solutions/brands' },
+          { label: 'Agencies', href: '/solutions/agencies' },
+          { label: 'Retailers', href: '/solutions/retailers' },
+          { label: 'Manufacturers', href: '/solutions/manufacturers' },
+        ],
+      },
+      {
+        heading: 'Consulting',
+        links: [
+          { label: 'Consulting', href: '/solutions/consulting' },
+          { label: 'Agentic-Design', href: '/solutions/agentic-design' },
+          { label: 'Training', href: '/solutions/training' },
+        ],
+      },
+      {
+        heading: 'Platforms',
+        subgroups: [
+          {
+            heading: 'Social',
+            links: [
+              { label: 'Meta', href: '/solutions/platforms/meta' },
+              { label: 'TikTok', href: '/solutions/platforms/tiktok' },
+              { label: 'LinkedIn', href: '/solutions/platforms/linkedin' },
+              { label: 'WeChat', href: '/solutions/platforms/wechat' },
+              { label: 'RedNote', href: '/solutions/platforms/rednote' },
+              { label: 'Douyin', href: '/solutions/platforms/douyin' },
+              { label: 'Weibo', href: '/solutions/platforms/weibo' },
+            ],
+          },
+          {
+            heading: 'eCommerce',
+            links: [
+              { label: 'Website', href: '/solutions/platforms/ecommerce-website' },
+              { label: 'Amazon', href: '/solutions/platforms/amazon' },
+              { label: 'Tmall', href: '/solutions/platforms/tmall' },
+              { label: 'JD', href: '/solutions/platforms/jd' },
+              { label: 'Shopify', href: '/solutions/platforms/shopify' },
+            ],
+          },
+          {
+            heading: 'Brand',
+            links: [
+              { label: 'Website', href: '/solutions/platforms/brand-website' },
+              { label: 'WeChat', href: '/solutions/platforms/brand-wechat' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Pricing',
+    href: '/pricing',
+  },
   {
     label: 'The Studio',
     href: '/the-studio',
@@ -45,17 +168,9 @@ const menu: MenuItem[] = [
         heading: 'About',
         links: [
           { title: 'Who we are', desc: 'The studio behind the work', href: '/the-studio' },
-          { title: 'Why hubStudio', desc: 'What sets the studio apart', href: '/the-studio#why' },
-          { title: 'The team', desc: 'Creatives across 16 markets', href: '/the-studio#team' },
-          { title: 'Careers', desc: 'Open roles and how we hire', href: '/careers' },
-        ],
-      },
-      {
-        heading: 'Approach',
-        links: [
-          { title: 'Our method', desc: 'Brief to finished asset', href: '/the-studio#method' },
-          { title: 'Beliefs', desc: 'What we hold to be true', href: '/the-studio#beliefs' },
-          { title: 'AI usage policy', desc: 'Generation, used responsibly', href: '/resources/ai-usage-policy' },
+          { title: 'Our creative talents', desc: 'Creatives across 16 markets', href: '/the-studio#talents' },
+          { title: 'Our AI excellence', desc: 'Generation, used at studio level', href: '/the-studio#ai' },
+          { title: 'Partner program', desc: 'Build alongside hubStudio', href: '/partner-program' },
         ],
       },
     ],
@@ -65,133 +180,12 @@ const menu: MenuItem[] = [
       title: 'Built for what content became',
       text: 'Why we rebuilt the studio model from the ground up.',
       cta: { label: 'Read the story', href: '/the-studio#story' },
-    },
-  },
-  {
-    label: 'What We Do',
-    href: '/what-we-do',
-    intro: {
-      eyebrow: 'What We Do',
-      pre: 'Three lanes. One ',
-      accent: 'studio',
-      post: '.',
-      text: 'We produce content, we build the platform, and we direct the creative. End to end.',
-    },
-    groups: [
-      {
-        heading: 'Produce',
-        links: [
-          { title: 'Image Production', desc: 'On-brand visuals at scale', href: '/what-we-do/image' },
-          { title: 'Short & Long Video', desc: 'Shot, generated, or hybrid', href: '/what-we-do/video' },
-          { title: 'Live Action Studio', desc: 'Real photo and video shoots', href: '/what-we-do/live-action' },
-          { title: '3D, CGI & Motion', desc: 'Animation and product CGI', href: '/what-we-do/motion' },
-        ],
-      },
-      {
-        heading: 'Solutions',
-        links: [
-          { title: 'Brands', desc: 'Production at calendar speed', href: '/solutions/brands' },
-          { title: 'Agencies', desc: 'You strategize, we scale', href: '/solutions/agencies' },
-          { title: 'Retailers', desc: 'Full visual ecosystems', href: '/solutions/retailers' },
-          { title: 'Manufacturers', desc: 'Specs turned into sales', href: '/solutions/manufacturers' },
-        ],
-      },
-      {
-        heading: 'Direct',
-        links: [
-          { title: 'Strategy & Guidelines', desc: 'Positioning and creative', href: '/what-we-do/strategy' },
-          { title: 'Transcreation', desc: 'Multi-market, culturally native', href: '/what-we-do/transcreation' },
-          { title: 'Training', desc: 'Hands-on team workshops', href: '/what-we-do/training' },
-        ],
-      },
-    ],
-    featured: {
-      variant: 'orange',
-      eyebrow: 'Most requested',
-      title: 'Image production from $35 a brief',
-      text: 'Hundreds of finalized, on-brand assets a month.',
-      cta: { label: 'See image production', href: '/what-we-do/image' },
+      image: '/Team/cyril-drouin-card.webp',
     },
   },
   {
     label: 'Work',
     href: '/work',
-    intro: {
-      eyebrow: 'Work',
-      pre: 'Real brand ',
-      accent: 'work',
-      post: '.',
-      text: 'Campaigns and content shipped for brands selling into markets worldwide.',
-    },
-    groups: [
-      {
-        heading: 'By industry',
-        links: [
-          { title: 'Beauty', desc: 'Shiseido, Bobbi Brown', href: '/work?industry=beauty' },
-          { title: 'Automotive', desc: 'Mazda, premium SUV launch', href: '/work?industry=automotive' },
-          { title: 'Fashion', desc: 'Camper, global fashion', href: '/work?industry=fashion' },
-          { title: 'Food & Beverage', desc: 'Nescafe, 1834 Gin', href: '/work?industry=food' },
-        ],
-      },
-      {
-        heading: 'By format',
-        links: [
-          { title: 'Campaigns', desc: 'Global, multi-market', href: '/work?format=campaigns' },
-          { title: 'eCommerce', desc: 'Product packs at scale', href: '/work?format=ecommerce' },
-          { title: 'Social', desc: 'Feed-native content', href: '/work?format=social' },
-          { title: 'Brand Identity', desc: 'Systems and guidelines', href: '/work?format=brand' },
-        ],
-      },
-    ],
-    featured: {
-      variant: 'cream',
-      eyebrow: 'Latest case study',
-      title: '22% to 78% approval in six months',
-      text: 'A global appliance brand, rebuilt around generation.',
-      cta: { label: 'View the case', href: '/work/appliance-brand' },
-    },
-  },
-  {
-    label: 'hub4You',
-    href: '/hub4you',
-    intro: {
-      eyebrow: 'hub4You',
-      pre: 'Your own content ',
-      accent: 'studio',
-      post: '.',
-      text: 'A custom content platform on your dedicated GPU servers, run by your team.',
-    },
-    groups: [
-      {
-        heading: 'Platform',
-        links: [
-          { title: 'Overview', desc: 'What hub4You does', href: '/hub4you' },
-          { title: 'Workflows', desc: 'Pipelines built for production', href: '/hub4you#workflows' },
-          { title: 'Integrations', desc: 'Plugs into your DAM and PIM', href: '/hub4you#integrations' },
-        ],
-      },
-      {
-        heading: 'Pricing',
-        links: [
-          { title: 'Standard', desc: 'Shared deployment', href: '/pricing#standard' },
-          { title: 'Private', desc: 'Dedicated GPU servers', href: '/pricing#private' },
-        ],
-      },
-      {
-        heading: 'Resources',
-        links: [
-          { title: 'Setup guide', desc: 'Deployment in weeks', href: '/hub4you/setup' },
-          { title: 'API docs', desc: 'For your engineering team', href: '/hub4you/api' },
-        ],
-      },
-    ],
-    featured: {
-      variant: 'navy',
-      eyebrow: 'The platform',
-      title: 'Brand-trained models, your infrastructure',
-      text: 'Custom LoRAs and fine-tunes, locked in and reproducible.',
-      cta: { label: 'Explore hub4You', href: '/hub4you' },
-    },
   },
   {
     label: 'Resources',
@@ -219,13 +213,6 @@ const menu: MenuItem[] = [
           { title: 'AI usage policy', desc: 'How we work, in writing', href: '/resources/ai-usage-policy' },
         ],
       },
-      {
-        heading: 'Connect',
-        links: [
-          { title: 'Newsletter', desc: 'Monthly, no noise', href: '/resources/newsletter' },
-          { title: 'Contact', desc: 'Talk to the studio', href: '/contact' },
-        ],
-      },
     ],
     featured: {
       variant: 'cream',
@@ -233,89 +220,189 @@ const menu: MenuItem[] = [
       title: 'Culture cannot be briefed',
       text: 'Why the creative layer is the part that still matters.',
       cta: { label: 'Read insights', href: '/resources/insights' },
+      image: '/Images/mega-resources.webp',
     },
   },
 ];
 ---
 
-<header class="site-header" id="site-header" data-scrolled="false">
+<header
+  class="site-header"
+  id="site-header"
+  data-scrolled="false"
+  data-overlay={overlay ? 'true' : 'false'}
+>
   <div class="site-header__bar">
     <div class="container site-header__inner">
       <a class="site-header__logo" href={lp('/')} aria-label="hubStudio home">
-        <Logo />
+        <Logo class="logo--light" />
+        <Logo tone="dark" class="logo--dark" />
       </a>
 
       <nav class="primary-nav" aria-label="Primary">
         <ul class="menubar">
           {
-            menu.map((item) => (
-              <li class="nav-item">
-                <a
-                  class="nav-item__trigger"
-                  href={lp(item.href)}
-                  aria-haspopup="true"
-                >
-                  {item.label}
-                  <svg class="nav-item__chevron" viewBox="0 0 12 12" aria-hidden="true">
-                    <path d="M2 4 6 8 10 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </a>
+            menu.map((item) => {
+              /* Plain link: no dropdown */
+              if (!item.groups && !item.services && !item.solutionCols) {
+                return (
+                  <li class="nav-item">
+                    <a class="nav-item__trigger" href={lp(item.href)}>
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              }
+              return (
+                <li class="nav-item">
+                  <a class="nav-item__trigger" href={lp(item.href)} aria-haspopup="true">
+                    {item.label}
+                    <svg class="nav-item__chevron" viewBox="0 0 12 12" aria-hidden="true">
+                      <path d="M2 4 6 8 10 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
 
-                <div class="mega" role="region" aria-label={item.label}>
-                  <div class="container mega__grid">
-                    <div class="mega__intro">
-                      <span class="eyebrow">{item.intro.eyebrow}</span>
-                      <p class="headline h3 mega__head">
-                        {item.intro.pre}
-                        <span class="accent">{item.intro.accent}</span>
-                        {item.intro.post}
-                      </p>
-                      <p class="mega__intro-text">{item.intro.text}</p>
-                      <a class="mega__intro-link" href={lp(item.href)}>
-                        All of {item.label} &rarr;
-                      </a>
-                    </div>
+                  <div class="mega" role="region" aria-label={item.label}>
+                    <div
+                      class:list={[
+                        'container',
+                        'mega__grid',
+                        item.services && 'mega__grid--services',
+                        item.solutionCols && 'mega__grid--solutions',
+                      ]}
+                    >
+                      {/* Column 1: shared intro */}
+                      <div class="mega__intro">
+                        <span class="eyebrow">{item.intro!.eyebrow}</span>
+                        <p class="headline h3 mega__head">
+                          {item.intro!.pre}
+                          <span class="accent">{item.intro!.accent}</span>
+                          {item.intro!.post}
+                        </p>
+                        <p class="mega__intro-text">{item.intro!.text}</p>
+                        <a class="mega__intro-link" href={lp(item.href)}>
+                          All of {item.label} &rarr;
+                        </a>
+                      </div>
 
-                    <div class="mega__lists" data-cols={item.groups.length}>
-                      {item.groups.map((group) => (
-                        <div class="mega__group">
-                          <p class="mega__group-head">{group.heading}</p>
-                          <ul>
-                            {group.links.map((link) => (
+                      {/* Services layout */}
+                      {item.services && (
+                        <div class="mega__services">
+                          <p class="mega__group-head">Design Services</p>
+                          <ul class="services-list">
+                            {item.services.map((svc) => (
                               <li>
-                                <a class="mega__link" href={lp(link.href)}>
-                                  <span class="mega__link-title">{link.title}</span>
-                                  <span class="mega__link-desc">{link.desc}</span>
+                                <a class="services-link" href={lp(svc.href)}>
+                                  <span class="services-link__title">{svc.label}</span>
+                                  <span class="services-link__desc">{svc.desc}</span>
                                 </a>
                               </li>
                             ))}
                           </ul>
                         </div>
-                      ))}
-                    </div>
+                      )}
 
-                    <a
-                      class={`mega__feat card card--${item.featured.variant}`}
-                      href={lp(item.featured.cta.href)}
-                    >
-                      <span class={`mega__feat-art mega__feat-art--${item.featured.variant}`} aria-hidden="true" />
-                      <span class="mega__feat-body">
-                        <span class="eyebrow">{item.featured.eyebrow}</span>
-                        <span class="mega__feat-title">{item.featured.title}</span>
-                        <span class="mega__feat-text">{item.featured.text}</span>
-                        <span class="mega__feat-cta">{item.featured.cta.label} &rarr;</span>
-                      </span>
-                    </a>
+                      {/* Solutions layout */}
+                      {item.solutionCols && (
+                        <div class="mega__solutions">
+                          <div class="mega__sol-side">
+                            {item.solutionCols
+                              .filter((col) => col.links)
+                              .map((col) => (
+                                <div class="mega__sol-col">
+                                  <p class="mega__group-head">{col.heading}</p>
+                                  <ul class="mega__sol-list">
+                                    {col.links!.map((l) => (
+                                      <li>
+                                        <a class="sol-link" href={lp(l.href)}>
+                                          {l.label}
+                                        </a>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                          </div>
+                          {item.solutionCols
+                            .filter((col) => col.subgroups)
+                            .map((col) => (
+                              <div class="mega__sol-platforms">
+                                <p class="mega__group-head">{col.heading}</p>
+                                <div class="mega__sol-plat-grid">
+                                  {col.subgroups!.map((sg) => (
+                                    <div class="mega__sol-plat-col">
+                                      <p class="mega__sol-sub-head">{sg.heading}</p>
+                                      <ul class="mega__sol-list">
+                                        {sg.links.map((l) => (
+                                          <li>
+                                            <a class="sol-link" href={lp(l.href)}>
+                                              {l.label}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+
+                      {/* Standard layout: link groups + featured card */}
+                      {item.groups && (
+                        <div class="mega__lists" data-cols={item.groups.length}>
+                          {item.groups.map((group) => (
+                            <div class="mega__group">
+                              <p class="mega__group-head">{group.heading}</p>
+                              <ul>
+                                {group.links.map((link) => (
+                                  <li>
+                                    <a class="mega__link" href={lp(link.href)}>
+                                      <span class="mega__link-title">{link.title}</span>
+                                      <span class="mega__link-desc">{link.desc}</span>
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {item.featured && (
+                        <a
+                          class={`mega__feat card card--${item.featured.variant}`}
+                          href={lp(item.featured.cta.href)}
+                        >
+                          {item.featured.image ? (
+                            <img
+                              class="mega__feat-img"
+                              src={item.featured.image}
+                              alt={item.featured.title}
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span class={`mega__feat-art mega__feat-art--${item.featured.variant}`} aria-hidden="true" />
+                          )}
+                          <span class="mega__feat-body">
+                            <span class="eyebrow">{item.featured.eyebrow}</span>
+                            <span class="mega__feat-title">{item.featured.title}</span>
+                            <span class="mega__feat-text">{item.featured.text}</span>
+                            <span class="mega__feat-cta">{item.featured.cta.label} &rarr;</span>
+                          </span>
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))
+                </li>
+              );
+            })
           }
         </ul>
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--ghost site-header__util" href={lp('/work')}>See the work</a>
+        <a class="site-header__hub" href={lp('/hub4you')}>hub4You</a>
         <a class="btn btn--primary" href={lp('/contact')}>Talk to us</a>
         <button
           class="site-header__burger"
@@ -339,40 +426,100 @@ const menu: MenuItem[] = [
       </div>
       <div class="mobile-drawer__scroll container">
         {
-          menu.map((item) => (
-            <div class="m-acc">
-              <button class="m-acc__trigger" aria-expanded="false">
-                {item.label}
-                <svg viewBox="0 0 12 12" aria-hidden="true">
-                  <path d="M2 4 6 8 10 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-              <div class="m-acc__panel">
-                <div class="m-acc__inner">
-                  <a class={`m-acc__feat card card--${item.featured.variant}`} href={lp(item.featured.cta.href)}>
-                    <span class="eyebrow">{item.featured.eyebrow}</span>
-                    <span class="m-acc__feat-title">{item.featured.title}</span>
-                    <span class="mega__feat-cta">{item.featured.cta.label} &rarr;</span>
+          menu.map((item) => {
+            /* Plain link */
+            if (!item.groups && !item.services && !item.solutionCols) {
+              return (
+                <div class="m-acc">
+                  <a class="m-acc__trigger m-acc__trigger--link" href={lp(item.href)}>
+                    {item.label}
                   </a>
-                  {item.groups.map((group) => (
-                    <div class="m-acc__group">
-                      <p class="mega__group-head">{group.heading}</p>
-                      <ul>
-                        {group.links.map((link) => (
-                          <li>
-                            <a href={lp(link.href)}>{link.title}</a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                </div>
+              );
+            }
+            return (
+              <div class="m-acc">
+                <button class="m-acc__trigger" aria-expanded="false">
+                  {item.label}
+                  <svg viewBox="0 0 12 12" aria-hidden="true">
+                    <path d="M2 4 6 8 10 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="m-acc__panel">
+                  <div class="m-acc__inner">
+                    <p class="m-acc__intro">{item.intro!.text}</p>
+
+                    {item.services && (
+                      <div class="m-acc__group">
+                        <p class="mega__group-head">Design Services</p>
+                        <ul class="m-acc__group-list">
+                          {item.services.map((svc) => (
+                            <li>
+                              <a href={lp(svc.href)}>
+                                <span class="m-acc__link-title">{svc.label}</span>
+                                <span class="m-acc__link-desc">{svc.desc}</span>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {item.solutionCols &&
+                      item.solutionCols.map((col) => (
+                        <div class="m-acc__group">
+                          <p class="mega__group-head">{col.heading}</p>
+                          {col.links && (
+                            <ul class="m-acc__group-list">
+                              {col.links.map((l) => (
+                                <li>
+                                  <a href={lp(l.href)}>{l.label}</a>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          {col.subgroups &&
+                            col.subgroups.map((sg) => (
+                              <div class="m-acc__sub">
+                                <p class="m-acc__sub-head">{sg.heading}</p>
+                                <ul class="m-acc__group-list">
+                                  {sg.links.map((l) => (
+                                    <li>
+                                      <a href={lp(l.href)}>{l.label}</a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                        </div>
+                      ))}
+
+                    {item.groups &&
+                      item.groups.map((group) => (
+                        <div class="m-acc__group">
+                          <p class="mega__group-head">{group.heading}</p>
+                          <ul class="m-acc__group-list">
+                            {group.links.map((link) => (
+                              <li>
+                                <a href={lp(link.href)}>{link.title}</a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+
+                    <a class="m-acc__all" href={lp(item.href)}>
+                      All of {item.label} &rarr;
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
+            );
+          })
         }
       </div>
       <div class="mobile-drawer__foot container">
+        <a class="mobile-drawer__hub" href={lp('/hub4you')}>hub4You</a>
         <a class="btn btn--primary" href={lp('/contact')}>Talk to us</a>
       </div>
     </div>
@@ -409,6 +556,39 @@ const menu: MenuItem[] = [
   }
   .site-header__logo {
     flex: none;
+    display: inline-flex;
+  }
+  /* Two logo lockups, one shown at a time (dark-wordmark vs cream-wordmark). */
+  .site-header__logo :global(.logo--dark) {
+    display: none;
+  }
+
+  /* ---- Overlay mode: bar sits over a dark hero ----------------- */
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__logo :global(.logo--light) {
+    display: none;
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__logo :global(.logo--dark) {
+    display: inline-block;
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .nav-item__trigger {
+    color: var(--text-on-dark);
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .nav-item__trigger:hover {
+    color: var(--brand-orange);
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__hub {
+    color: var(--text-on-dark);
+    border-color: rgba(240, 237, 233, 0.42);
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__hub:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__burger {
+    border-color: rgba(240, 237, 233, 0.42);
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__burger span {
+    background: var(--text-on-dark);
   }
 
   /* ---- Desktop menu bar ---------------------------------------- */
@@ -422,7 +602,7 @@ const menu: MenuItem[] = [
   }
   .menubar {
     display: flex;
-    gap: 4px;
+    gap: 2px;
   }
   .nav-item {
     position: static;
@@ -431,12 +611,13 @@ const menu: MenuItem[] = [
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 8px 14px;
+    padding: 8px 12px;
     font-size: var(--type-button);
     font-weight: 500;
     color: var(--text-ink);
     border-radius: var(--radius-pill);
     transition: color 120ms ease-out;
+    white-space: nowrap;
   }
   .nav-item__trigger:hover {
     color: var(--brand-orange);
@@ -475,9 +656,22 @@ const menu: MenuItem[] = [
   .mega__grid {
     display: grid;
     grid-template-columns: 25% 1fr 25%;
-    gap: 40px;
-    min-height: 360px;
-    padding-block: 40px;
+    gap: 48px;
+    min-height: 300px;
+    padding-block: 34px;
+  }
+  .mega__grid--services,
+  .mega__grid--solutions {
+    grid-template-columns: 25% 1fr;
+  }
+
+  /* Column 1: shared intro */
+  .mega__intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--line-hairline);
+    padding-right: 40px;
   }
   .mega__head {
     margin-top: 12px;
@@ -495,9 +689,16 @@ const menu: MenuItem[] = [
     font-weight: 600;
     color: var(--brand-orange);
   }
+
+  /* Standard: link groups */
   .mega__lists {
     display: grid;
     gap: 32px;
+    align-content: center;
+  }
+  .mega__lists[data-cols='1'] .mega__group ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 28px;
   }
   .mega__lists[data-cols='2'] {
     grid-template-columns: repeat(2, 1fr);
@@ -542,10 +743,96 @@ const menu: MenuItem[] = [
     margin-top: 1px;
   }
 
-  /* Featured card */
+  /* ---- Services panel ------------------------------------------ */
+  .services-list {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px 20px;
+  }
+  .services-link {
+    display: block;
+    padding: 8px 10px;
+    margin-inline: -10px;
+    border-radius: 10px;
+    transition: background-color 120ms ease-out;
+  }
+  .services-link:hover {
+    background: rgba(10, 10, 20, 0.04);
+  }
+  .services-link__title {
+    display: block;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .services-link:hover .services-link__title {
+    color: var(--brand-orange);
+  }
+  .services-link__desc {
+    display: block;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--text-mute);
+    margin-top: 1px;
+  }
+
+  /* ---- Solutions panel ----------------------------------------- */
+  .mega__solutions {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) 2.5fr;
+    gap: 40px;
+    align-content: start;
+  }
+  .mega__sol-side {
+    display: grid;
+    gap: 28px;
+    align-content: start;
+  }
+  .mega__sol-plat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 12px;
+  }
+  .mega__sol-list {
+    display: grid;
+    gap: 1px;
+    margin-top: 12px;
+  }
+  .mega__sol-plat-grid .mega__sol-list {
+    margin-top: 4px;
+  }
+  .mega__sol-sub-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+    opacity: 0.6;
+  }
+  .sol-link {
+    display: block;
+    padding: 7px 10px;
+    margin-inline: -10px;
+    border-radius: 10px;
+    font-size: var(--type-small);
+    font-weight: 500;
+    color: var(--text-ink);
+    transition: background-color 120ms ease-out, color 120ms ease-out;
+  }
+  .sol-link:hover {
+    background: rgba(10, 10, 20, 0.04);
+    color: var(--brand-orange);
+  }
+
+  /* ---- Featured card ------------------------------------------- */
   .mega__feat {
     display: flex;
     flex-direction: column;
+    align-self: start;
+    overflow: hidden;
     transition: transform 200ms ease-out;
   }
   .mega__feat:hover {
@@ -563,6 +850,13 @@ const menu: MenuItem[] = [
   }
   .mega__feat-art--cream {
     background: linear-gradient(135deg, #e5e1db, #d8d3cb);
+  }
+  .mega__feat-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    flex: none;
   }
   .mega__feat-body {
     padding: 18px 20px 20px;
@@ -597,13 +891,26 @@ const menu: MenuItem[] = [
     align-items: center;
     gap: 10px;
   }
-  .site-header__util {
+  .site-header__hub {
     display: none;
   }
   @media (min-width: 1024px) {
-    .site-header__util {
+    .site-header__hub {
       display: inline-flex;
+      align-items: center;
+      padding: 9px 18px;
+      font-size: var(--type-button);
+      font-weight: 600;
+      color: var(--text-ink);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-pill);
+      transition: color 120ms ease-out, border-color 120ms ease-out;
+      white-space: nowrap;
     }
+  }
+  .site-header__hub:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
   }
   .site-header__burger {
     display: inline-flex;
@@ -685,11 +992,24 @@ const menu: MenuItem[] = [
   }
   .mobile-drawer__foot {
     flex: none;
+    display: grid;
+    gap: 10px;
     padding-block: 18px;
     border-top: 1px solid var(--line-hairline);
   }
   .mobile-drawer__foot .btn {
     width: 100%;
+  }
+  .mobile-drawer__hub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--type-button);
+    font-weight: 600;
+    color: var(--text-ink);
   }
 
   .m-acc {
@@ -727,29 +1047,51 @@ const menu: MenuItem[] = [
   .m-acc__inner {
     overflow: hidden;
   }
-  .m-acc__feat {
-    display: block;
-    padding: 16px;
+  .m-acc__intro {
     margin-bottom: 18px;
-  }
-  .m-acc__feat-title {
-    display: block;
-    font-size: 15px;
-    font-weight: 600;
-    margin-top: 6px;
-    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-mute);
   }
   .m-acc__group {
     margin-bottom: 18px;
   }
-  .m-acc__group ul {
+  .m-acc__group-list {
     display: grid;
     gap: 2px;
   }
-  .m-acc__group a {
+  .m-acc__group-list a {
     display: block;
     padding: 8px 0;
     font-size: 15px;
+  }
+  .m-acc__link-title {
+    display: block;
+    font-weight: 600;
+  }
+  .m-acc__link-desc {
+    display: block;
+    font-size: 12px;
+    color: var(--text-mute);
+    margin-top: 1px;
+  }
+  .m-acc__sub {
+    margin-top: 10px;
+  }
+  .m-acc__sub-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .m-acc__all {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--brand-orange);
   }
 </style>
 
@@ -759,7 +1101,7 @@ const menu: MenuItem[] = [
   const burger = document.getElementById('nav-burger');
   const closeBtn = document.getElementById('nav-close');
 
-  /* Scroll state — cream background + hairline after 80px (§5). */
+  /* Scroll state: cream background + hairline after 80px (§5). */
   const onScroll = () => {
     header?.setAttribute('data-scrolled', String(window.scrollY > 80));
   };
@@ -789,7 +1131,7 @@ const menu: MenuItem[] = [
     if (e.target === drawer) closeDrawer();
   });
 
-  /* Mobile accordion — one section open at a time */
+  /* Mobile accordion: one section open at a time */
   const accTriggers = Array.from(document.querySelectorAll<HTMLButtonElement>('.m-acc__trigger'));
   accTriggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {

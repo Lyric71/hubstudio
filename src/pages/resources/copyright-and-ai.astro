@@ -1,0 +1,1421 @@
+---
+/**
+ * Copyright & AI: legal FAQ & guide (`/resources/copyright-and-ai`).
+ * Content sourced from hubstudio.ai/ai-content-copyright-legal-faq-guide.
+ * S1 Hero · S2 Bottom line · S3 What gets protected · S4 Platform rights ·
+ * S5 Legal landscape · S6 FAQ · S7 Liability · S8 Protection strategy ·
+ * S9 Disclaimer · S10 Closing CTA.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+/* ---- S3: What gets protected ----------------------------------- */
+const protectedItems = [
+  'Human-authored text and arrangement',
+  'Substantial human modifications to AI outputs',
+  'AI-assisted works where humans control the expression',
+];
+const unprotectedItems = [
+  'Raw AI outputs straight from a prompt',
+  'Prompt refinement and iteration alone',
+  'Content where the AI determined the creative choices',
+];
+
+/* ---- S4: Platform rights ---------------------------------------- */
+const platforms = [
+  {
+    name: 'OpenAI',
+    sub: 'ChatGPT / DALL-E',
+    commercial: { s: 'yes', t: 'All paid plans' },
+    indem: { s: 'yes', t: 'Enterprise / API only, up to 12 months of fees' },
+    note: 'The free tier grants usage rights but zero protection.',
+  },
+  {
+    name: 'Google Gemini',
+    sub: '',
+    commercial: { s: 'yes', t: 'Free & paid' },
+    indem: { s: 'partial', t: 'Paid plans only' },
+    note: 'On the free tier, Google uses your prompts for training.',
+  },
+  {
+    name: 'Midjourney',
+    sub: '',
+    commercial: { s: 'partial', t: 'Paid plans only' },
+    indem: { s: 'no', t: 'None offered' },
+    note: 'The free tier is non-commercial; images are public by default.',
+  },
+  {
+    name: 'Adobe Firefly',
+    sub: '',
+    commercial: { s: 'yes', t: 'Yes' },
+    indem: { s: 'yes', t: 'Enterprise, capped at $10K per claim' },
+    note: 'Trained on "commercially safe" data; auto-tags outputs as AI.',
+  },
+  {
+    name: 'Stability AI',
+    sub: '',
+    commercial: { s: 'partial', t: 'Under $1M revenue' },
+    indem: { s: 'no', t: 'None offered' },
+    note: 'An enterprise licence is required above $1M in revenue.',
+  },
+];
+
+/* ---- S5: Legal landscape ---------------------------------------- */
+const cases = [
+  {
+    date: '2023',
+    name: 'Zarya of the Dawn',
+    body: 'The US Copyright Office drew the boundary: human-written text and creative arrangement received protection, while the individual Midjourney images did not.',
+  },
+  {
+    date: 'Feb 2025',
+    name: 'Thomson Reuters v. Ross Intelligence',
+    body: 'A US court rejected the fair use defence for AI training on a competitor’s content, calling it commercial, non-transformative use that caused market harm.',
+  },
+  {
+    date: 'Mar 2025',
+    name: 'Thaler v. Perlmutter',
+    body: 'The DC Circuit Court confirmed machines cannot be authors under US copyright law. Human authorship is the threshold for protection.',
+  },
+  {
+    date: 'Sep 2025',
+    name: 'Bartz v. Anthropic',
+    body: 'A $1.5 billion settlement after authors proved Anthropic downloaded pirated books for training data. Using pirated data is never protected.',
+  },
+  {
+    date: 'Nov 2025',
+    name: 'GEMA v. OpenAI',
+    body: 'A Munich court delivered the first EU finding of AI-model copyright infringement, ruling ChatGPT reproduced song lyrics. OpenAI must pay licensing fees.',
+  },
+  {
+    date: 'Ongoing',
+    name: 'The New York Times v. OpenAI',
+    body: 'A pending case testing whether using copyrighted material to train AI models qualifies as fair use in the United States.',
+  },
+];
+
+/* ---- S6: FAQ ----------------------------------------------------- */
+/* Answer blocks: { p } renders a paragraph, { h, items } renders a list. */
+const faqs = [
+  {
+    q: 'Can AI-generated content be copyrighted?',
+    a: [
+      { p: 'Not if it is purely AI-generated. US and EU law both require human authorship for copyright protection.' },
+      { p: 'Thaler v. Perlmutter (March 2025): the DC Circuit Court ruled machines cannot be authors under US copyright law. Zarya of the Dawn (2023): the Copyright Office protected human-written text and creative arrangement but denied protection to raw Midjourney images.' },
+      {
+        h: 'What gets copyright protection',
+        items: [
+          'Human-authored text and strategic direction',
+          'Creative selection and arrangement of AI elements',
+          'Substantial human modifications to AI outputs',
+          'Works where humans control the creative expression',
+        ],
+      },
+      {
+        h: 'What does not get protection',
+        items: [
+          'Raw AI outputs from prompts',
+          'Minor adjustments to AI content',
+          'Iterative prompt refinement alone',
+          'Content where AI determined the creative choices',
+        ],
+      },
+      { p: 'For copyright protection, the human creative contribution must be substantial and documented.' },
+    ],
+  },
+  {
+    q: 'Who owns AI-generated content legally?',
+    a: [
+      { p: 'Ownership depends on contracts and the level of human contribution. Most AI platforms grant users contractual rights to outputs, but copyright protection depends on whether the human contribution meets the legal threshold for authorship.' },
+      {
+        h: 'Employment context',
+        items: [
+          'Content created by employees: the employer owns it under the work-for-hire doctrine',
+          'Content created by contractors: ownership is determined by the contract',
+          'Content created by agencies: requires an explicit transfer agreement',
+        ],
+      },
+      {
+        h: 'Always verify',
+        items: [
+          'Platform commercial use terms',
+          'Whether the platform trains on your data',
+          'Indemnification coverage, if any',
+          'Geographic restrictions on usage',
+        ],
+      },
+    ],
+  },
+  {
+    q: 'What happens if someone claims copyright infringement?',
+    a: [
+      { p: 'The user bears the liability, not the AI platform. Platform indemnification, where it is offered, provides only limited protection.' },
+      {
+        h: 'Platform indemnification examples',
+        items: [
+          'OpenAI Enterprise: Copyright Shield covers claims up to 12 months of fees paid, on Enterprise and API only, not the free tier',
+          'Google Gemini paid plans: covers both training data and generated outputs; the free tier is excluded',
+          'Adobe Firefly Enterprise: indemnification capped at $10,000 per output or claim',
+          'Midjourney and Stability AI: no indemnification offered',
+        ],
+      },
+      {
+        h: 'What indemnification typically does not cover',
+        items: [
+          'Trademark claims, which are explicitly excluded',
+          'Content you knew or should have known was infringing',
+          'Outputs where you disabled safety filters or citations',
+          'Use after receiving an infringement notice from a rights holder',
+        ],
+      },
+      { p: 'The $1.5 billion Anthropic settlement (September 2025) involved authors proving Anthropic downloaded pirated books for training data.' },
+    ],
+  },
+  {
+    q: 'Do you need to disclose AI usage?',
+    a: [
+      { p: 'It depends on jurisdiction and content type.' },
+      {
+        h: 'United States, currently',
+        items: [
+          'No general legal requirement for marketing content',
+          'The FTC requires disclosure if AI creates deceptive endorsements, testimonials, or product claims',
+          'State laws are emerging; California and New York are considering disclosure mandates',
+        ],
+      },
+      {
+        h: 'European Union, from August 2026',
+        items: [
+          'The EU AI Act mandates labeling for AI-generated images, audio, and video',
+          'Required format: "clearly labelled as AI generated" by machine-readable means',
+          'Text content is currently exempt',
+          'Penalties for non-compliance reach €35M or 7% of global annual revenue',
+        ],
+      },
+      {
+        h: 'Platform-specific requirements',
+        items: [
+          'TikTok, Instagram, and YouTube are adding AI content labels',
+          'Some platforms require creator disclosure when AI generation tools are used',
+        ],
+      },
+      { p: 'Transparency requirements are tightening globally. Plan for disclosure capabilities even where they are not yet required.' },
+    ],
+  },
+  {
+    q: 'What is the legal difference between free and paid AI platforms?',
+    a: [
+      { p: 'Free tools provide no legal protection. Paid enterprise platforms offer indemnification, privacy, and clear commercial rights.' },
+      {
+        h: 'Free tools versus enterprise platforms',
+        items: [
+          'Copyright indemnification: none on free tools, available on enterprise',
+          'Data privacy: free tools may train on your data, enterprise does not',
+          'Commercial use rights: often restricted on free tools, unrestricted on enterprise',
+          'Usage tracking: prompts may be stored on free tools, private on enterprise',
+        ],
+      },
+      { p: 'The Midjourney free tier restricts commercial use entirely under a Creative Commons Noncommercial 4.0 licence. Using free-tier outputs commercially violates the licence terms. Enterprise platform pricing typically ranges from $30 to $60 per user per month.' },
+    ],
+  },
+  {
+    q: 'Can competitors legally copy AI-generated marketing materials?',
+    a: [
+      { p: 'Yes, if the content is purely AI-generated without substantial human creative contribution. Pure AI outputs lack copyright protection under current US and EU law, and content in the public domain can be copied freely.' },
+      {
+        h: 'What creates legal protection',
+        items: [
+          'Substantial human creative direction',
+          'Selection and arrangement decisions',
+          'Editing and modification choices',
+          'Strategic composition',
+        ],
+      },
+      { p: 'The Zarya of the Dawn case established this: individual AI images received no copyright protection, but the human-authored arrangement and text did. Proving substantial human contribution requires documentation; without evidence of the creative process, defending against copying becomes difficult.' },
+    ],
+  },
+  {
+    q: 'What are the trademark risks with AI-generated content?',
+    a: [
+      { p: 'Trademark infringement is serious exposure, and platform indemnification explicitly excludes trademark claims. Copyright protects creative expression; trademark protects brand identifiers and prevents consumer confusion.' },
+      {
+        h: 'Common AI trademark risks',
+        items: [
+          'Visual similarity to protected logos, packaging, or designs',
+          'Trademarked colour combinations such as UPS brown, Tiffany blue, or T-Mobile magenta',
+          'Trade dress: the overall look and feel of products or packaging',
+        ],
+      },
+      { p: 'Indemnification does not cover trademarks because the infringement occurs through your commercial use creating consumer confusion, not through AI generation itself. That is your liability. GEMA v. OpenAI (Munich, November 2025) found ChatGPT infringed copyright by reproducing song lyrics, and OpenAI must pay licensing fees.' },
+      {
+        h: 'Risk management',
+        items: [
+          'Avoid prompts referencing competitor brands by name',
+          'Screen outputs for brand resemblance before commercial use',
+          'Reverse image search all visual content',
+          'Commission legal review for major campaigns',
+        ],
+      },
+    ],
+  },
+  {
+    q: 'Can you legally recreate a competitor’s advertising style with AI?',
+    a: [
+      { p: 'Style and aesthetic are not copyrightable. Specific creative expressions are.' },
+      {
+        h: 'Legal: acceptable prompts',
+        items: [
+          '"Luxury automotive photography aesthetic"',
+          '"Minimalist tech product design language"',
+          '"Premium spirits brand sophistication"',
+          '"High-energy sports marketing vibe"',
+        ],
+      },
+      {
+        h: 'Illegal: infringement risk',
+        items: [
+          '"Apple iPhone campaign clone"',
+          '"BMW 2024 ad series recreation"',
+          '"Patagonia campaign exact match"',
+          'Prompts naming specific artists, photographers, or brands',
+        ],
+      },
+      { p: 'Thomson Reuters v. Ross Intelligence (February 2025) rejected the fair use defence for AI training on a competitor’s content, finding it commercial, non-transformative use that created a competing product and caused market harm. You can capture a quality level and a feeling; you cannot copy specific protected elements. "Inspired by" is generally acceptable. "Identical to" crosses into infringement.' },
+    ],
+  },
+  {
+    q: 'What documentation should you maintain for legal protection?',
+    a: [
+      { p: 'Documentation proves human authorship and protects against infringement claims. Keep records across five areas.' },
+      {
+        h: 'Creative development',
+        items: [
+          'Creative briefs and strategic direction',
+          'Mood boards and reference materials',
+          'Initial concept development',
+        ],
+      },
+      {
+        h: 'Production records',
+        items: [
+          'Prompt history and iterations',
+          'Raw AI outputs before editing',
+          'Human modifications and editing decisions',
+          'Version history with timestamps',
+        ],
+      },
+      {
+        h: 'Verification and approval',
+        items: [
+          'Reverse image search results and plagiarism check reports',
+          'Trademark screening results and brand similarity reviews',
+          'Quality review notes and stakeholder approvals',
+          'Final sign-offs with dates',
+        ],
+      },
+      {
+        h: 'Platform documentation',
+        items: [
+          'Commercial licence confirmations',
+          'Terms of service at the time of creation',
+          'Indemnification coverage details',
+        ],
+      },
+      { p: 'The $1.5 billion Anthropic settlement turned on evidence: Anthropic could not prove legitimate training-data sourcing. Retain records for a minimum of seven years, the statute of limitations for copyright claims in most jurisdictions, in a version-controlled system with an audit trail.' },
+    ],
+  },
+  {
+    q: 'Is using AI for commercial content production legal and safe?',
+    a: [
+      { p: 'Yes, when you understand the legal requirements and limitations. The safeguards scale with volume.' },
+      {
+        h: 'Small-scale use, under 100 assets a month',
+        items: [
+          'Free tools with commercial licences are acceptable',
+          'Document human contributions',
+          'Maintain basic verification workflows',
+        ],
+      },
+      {
+        h: 'Medium-scale use, 100 to 1,000 assets a month',
+        items: [
+          'Enterprise platforms with indemnification recommended',
+          'Systematic documentation processes',
+          'Regular legal review of outputs and trademark screening',
+        ],
+      },
+      {
+        h: 'Large-scale production, 1,000+ assets a month',
+        items: [
+          'Enterprise platforms are mandatory',
+          'Comprehensive documentation systems',
+          'Dedicated legal review workflows and essential indemnification coverage',
+        ],
+      },
+      { p: 'By client type: agencies are liable to clients for delivered content, and platform indemnification does not transfer automatically. Brands must protect their own trademark while avoiding others, since the FTC holds them responsible for AI-generated product claims. Manufacturers and retailers need consistent processes, because one infringement claim across thousands of SKUs can shut down an entire catalogue.' },
+    ],
+  },
+  {
+    q: 'How does copyright law work for international AI content, especially in Asia-Pacific?',
+    a: [
+      { p: 'Copyright principles align globally, since human authorship is required everywhere, but platform availability and enforcement vary significantly.' },
+      {
+        h: 'Platform availability',
+        items: [
+          'China: OpenAI and Google services are blocked or restricted; domestic alternatives such as Alibaba Tongyi Qianwen, Baidu ERNIE, and ByteDance platforms require commercial licences',
+          'Hong Kong, Singapore, Japan, and South Korea: full access to Western enterprise platforms, strong IP frameworks, and reliable enforcement',
+        ],
+      },
+      {
+        h: 'Copyright law variations',
+        items: [
+          'China: the Copyright Law (2020 revision) requires human authorship; a first-to-file system means documentation timing matters, and registration aids enforcement',
+          'Japan: protection similar to US and EU frameworks; registration is optional but provides litigation advantages',
+          'Singapore: a common law system aligned with UK and US principles, with robust IP enforcement',
+        ],
+      },
+      { p: 'If you create content in the US or Asia for EU markets, the August 2026 EU AI Act labeling requirements still apply. Images, audio, and video distributed in the EU must be labeled as AI-generated, with penalties up to €35M or 7% of global revenue. Multi-jurisdiction campaigns require compliance with the strictest applicable law, which is often the EU.' },
+    ],
+  },
+];
+
+/* Flatten an answer to plain text for the FAQPage schema. */
+const faqAnswerText = (blocks: { p?: string; h?: string; items?: string[] }[]) =>
+  blocks
+    .map((b) => (b.items ? `${b.h ? b.h + ': ' : ''}${b.items.join('; ')}.` : b.p))
+    .join(' ');
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: faqAnswerText(f.a) },
+  })),
+};
+
+/* ---- S7: Where liability lands ---------------------------------- */
+const risks = [
+  {
+    title: 'Copyright infringement',
+    body: 'Using AI content that mimics protected works exposes you, not the platform.',
+  },
+  {
+    title: 'Trademark violations',
+    body: 'AI output resembling protected brands is your liability, and it is typically excluded from indemnification.',
+  },
+  {
+    title: 'False advertising',
+    body: 'Unverified AI-generated product claims violate FTC rules. The brand answers for them.',
+  },
+  {
+    title: 'Defamation and privacy',
+    body: 'AI can produce false statements or absorb personal data into outputs. Both carry exposure.',
+  },
+];
+
+/* ---- S8: Protection strategy ------------------------------------ */
+const strategy = [
+  {
+    n: '01',
+    title: 'Layer in human creativity',
+    body: 'Use AI for drafts, then apply significant human editing and creative judgement.',
+  },
+  {
+    n: '02',
+    title: 'Document everything',
+    body: 'Archive prompts, raw outputs, edits, and final versions with timestamps.',
+  },
+  {
+    n: '03',
+    title: 'Avoid mimicry',
+    body: 'Write descriptive prompts. Never reference specific artists or brands by name.',
+  },
+  {
+    n: '04',
+    title: 'Verify every output',
+    body: 'Reverse image search visuals, plagiarism-check text, and review for likenesses.',
+  },
+  {
+    n: '05',
+    title: 'Require human approval',
+    body: 'Route high-stakes campaigns through legal review before publication.',
+  },
+];
+
+/* ---- S9: Disclaimer --------------------------------------------- */
+const beforeDeciding = [
+  'Consult qualified legal counsel in your jurisdiction',
+  'Verify current platform terms and conditions',
+  'Review the latest regulatory requirements for your markets',
+  'Assess your specific risk profile and compliance needs',
+];
+---
+
+<Layout
+  title="Copyright & AI: Legal FAQ & Guide | hubStudio"
+  description="Guide to AI content copyright covering ownership rights, platform indemnification, trademark risks, and compliance for US, EU, and Asia-Pacific markets."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ===== S1: Hero ===== -->
+  <section class="section hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Resources · Legal</span>
+        <h1 class="headline h1 reveal hero__title">
+          What copyright law actually says about
+          <span class="accent">AI-generated content</span>.
+        </h1>
+        <p class="lead hero__lead">
+          Purely AI-generated content cannot be copyrighted in the US or EU. This guide
+          covers ownership rights, platform indemnification, trademark risk, and compliance
+          across the US, EU, and Asia-Pacific, so your team can use AI with the safeguards
+          already in place.
+        </p>
+        <div class="hero__cta">
+          <Button variant="primary" href="/contact">Talk to us</Button>
+          <Button variant="secondary" href="#faq">Read the FAQ</Button>
+        </div>
+        <span class="chip hero__chip">
+          <span class="chip__dot"></span>Educational, not legal advice · Updated December 2025
+        </span>
+      </div>
+
+      <aside class="hero__media">
+        <img
+          class="hero__img"
+          src="/Images/copyright-ai-hero.webp"
+          alt="Printed manuscript pages resting in directional studio light."
+          width="1024"
+          height="1024"
+          loading="eager"
+        />
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== S2: Bottom line ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="text-block card card--cream">
+        <span class="eyebrow">The bottom line</span>
+        <h2 class="headline h2 reveal text-block__head">
+          Treat AI as your assistant, <span class="accent">not your creator</span>.
+        </h2>
+        <p class="text-block__body">
+          Your competitors can legally copy AI-generated marketing assets that lack human
+          creative input. The March 2025 Thaler v. Perlmutter ruling confirmed copyright
+          requires human authorship, while Anthropic’s $1.5 billion settlement proved
+          AI companies face massive liability for using pirated training data.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: What gets protected ===== -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">What gets protected</span>
+        <h2 class="headline h2 reveal">
+          Human authorship is the <span class="accent">threshold</span>.
+        </h2>
+        <p class="lead section-head__sub">
+          The US Copyright Office is explicit: prompts alone, even hundreds of iterations,
+          do not establish authorship, because you cannot predict or control the AI output.
+          Protection follows the human, not the machine.
+        </p>
+      </header>
+      <div class="pair">
+        <article class="prot card card--white">
+          <span class="chip prot__chip prot__chip--yes">Gets protection</span>
+          <h3 class="headline h3">Where a person shaped it</h3>
+          <ul class="prot__list prot__list--yes">
+            {protectedItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+        <article class="prot card card--white">
+          <span class="chip prot__chip prot__chip--no">No protection</span>
+          <h3 class="headline h3">Where the machine decided</h3>
+          <ul class="prot__list prot__list--no">
+            {unprotectedItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4: Platform rights ===== -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">Platform rights</span>
+        <h2 class="headline h2 reveal">
+          Know the licence <span class="accent">before you create</span>.
+        </h2>
+        <p class="lead section-head__sub">
+          Free tools provide no legal protection. Paid enterprise platforms offer
+          indemnification, privacy, and clear commercial rights. Terms vary sharply between
+          providers, and between the tiers of a single provider.
+        </p>
+      </header>
+
+      <div class="ptable card card--white">
+        <div class="ptable__scroll" role="region" aria-label="AI platform rights comparison" tabindex="0">
+          <table class="ptable__t">
+            <thead>
+              <tr>
+                <th scope="col">Platform</th>
+                <th scope="col">Commercial use</th>
+                <th scope="col">Indemnification</th>
+                <th scope="col">Critical note</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                platforms.map((p) => (
+                  <tr>
+                    <th scope="row" class="ptable__name">
+                      {p.name}
+                      {p.sub && <span class="ptable__sub">{p.sub}</span>}
+                    </th>
+                    <td>
+                      <span class={`mark mark--${p.commercial.s}`} aria-hidden="true" />
+                      {p.commercial.t}
+                    </td>
+                    <td>
+                      <span class={`mark mark--${p.indem.s}`} aria-hidden="true" />
+                      {p.indem.t}
+                    </td>
+                    <td class="ptable__note">{p.note}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="ptable__legend">
+          <span><span class="mark mark--yes" aria-hidden="true" /> Available</span>
+          <span><span class="mark mark--partial" aria-hidden="true" /> Conditional</span>
+          <span><span class="mark mark--no" aria-hidden="true" /> Not offered</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S5: Legal landscape ===== -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">Legal landscape</span>
+        <h2 class="headline h2 reveal">
+          The rulings <span class="accent">reshaping</span> AI copyright.
+        </h2>
+      </header>
+      <ol class="timeline">
+        {
+          cases.map((c) => (
+            <li class="tcase card card--white">
+              <span class="tcase__date">{c.date}</span>
+              <div class="tcase__body">
+                <h3 class="tcase__name">{c.name}</h3>
+                <p class="tcase__text">{c.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== S6: FAQ ===== -->
+  <section class="section" id="faq">
+    <div class="container faq">
+      <div class="faq__list">
+        <header class="section-head section-head--left">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="headline h2 reveal">Eleven questions, <span class="accent">answered</span>.</h2>
+        </header>
+        <div class="accordion">
+          {
+            faqs.map((faq, i) => (
+              <div class="acc-row">
+                <button class="acc-row__q" aria-expanded={i === 0 ? 'true' : 'false'}>
+                  <span>{faq.q}</span>
+                  <svg viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 5 7 10 12 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="acc-row__a">
+                  <div class="acc-row__a-inner">
+                    {faq.a.map((block) =>
+                      block.items ? (
+                        <>
+                          {block.h && <p class="faq-sub">{block.h}</p>}
+                          <ul class="faq-points">
+                            {block.items.map((item) => (
+                              <li>{item}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        <p class="faq-p">{block.p}</p>
+                      ),
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="faq__side card card--navy">
+        <span class="eyebrow">Rather not manage this alone?</span>
+        <h3 class="headline h3 faq__side-head">
+          We build the <span class="accent">governance</span> in.
+        </h3>
+        <p class="faq__side-text">
+          hubStudio runs AI content production with indemnified platforms, documented human
+          authorship, and verification before anything ships. Tell us what you need to
+          produce.
+        </p>
+        <Button variant="primary-inverse" href="/contact">Talk to us</Button>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== S7: Where liability lands ===== -->
+  <section class="section liability">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">Where liability lands</span>
+        <h2 class="headline h2 reveal">You own the <span class="accent">liability</span>.</h2>
+        <p class="lead section-head__sub">
+          Platform terms shift infringement liability to users. "The AI did it" is no
+          defence. Marketing teams carry exposure on four fronts.
+        </p>
+      </header>
+      <div class="risk-grid">
+        {
+          risks.map((risk) => (
+            <article class="risk card card--white">
+              <h3 class="risk__title">{risk.title}</h3>
+              <p class="risk__body">{risk.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S8: Protection strategy ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="strat">
+        <aside class="strat__media">
+          <img
+            src="/Images/copyright-ai-protection.webp"
+            alt="Layered documentation and human review protecting AI-assisted creative work."
+            width="1024"
+            height="1024"
+            loading="lazy"
+          />
+        </aside>
+        <div class="strat__copy">
+          <span class="eyebrow">Protection strategy</span>
+          <h2 class="headline h2 reveal strat__head">
+            Build protection in <span class="accent">deliberately</span>.
+          </h2>
+          <p class="strat__intro">
+            Since purely AI-generated content may carry no protection, competitors can copy
+            unguarded assets. The fix is deliberate human involvement at every step.
+          </p>
+          <ol class="strat__list">
+            {
+              strategy.map((step) => (
+                <li class="strat__step">
+                  <span class="strat__n" aria-hidden="true">{step.n}</span>
+                  <div>
+                    <h3 class="strat__step-title">{step.title}</h3>
+                    <p class="strat__step-body">{step.body}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S9: Disclaimer ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="disclaimer card card--cream">
+        <span class="chip disclaimer__chip">Important disclaimer</span>
+        <p class="disclaimer__body">
+          AI copyright law is evolving rapidly. Courts worldwide are actively deciding cases
+          that will shape how intellectual property rights apply to AI-generated content.
+          This guide is provided for educational purposes only and does not constitute legal
+          advice. Laws, platform terms, and enforcement practices may have changed since
+          publication.
+        </p>
+        <p class="disclaimer__lead">Before making business decisions on this information:</p>
+        <ul class="disclaimer__list">
+          {beforeDeciding.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="disclaimer__stamp">Last updated December 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S10: Closing CTA ===== -->
+  <section class="closing">
+    <div class="container closing__inner">
+      <span class="eyebrow">Work with a studio that already does this</span>
+      <h2 class="headline h2 reveal closing__head">
+        Put AI to work with the <span class="accent">safeguards</span> already built in.
+      </h2>
+      <Button variant="primary" href="/contact">Talk to us</Button>
+      <p class="closing__line">hello@hubstudio.ai &middot; Studios across 16 markets</p>
+      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
+        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
+        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
+      </svg>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section--tight {
+    padding-block: 24px;
+  }
+  .section-head {
+    text-align: center;
+    max-width: 780px;
+    margin-inline: auto;
+    margin-bottom: 56px;
+    display: grid;
+    gap: 16px;
+  }
+  .section-head--left {
+    text-align: left;
+    margin-inline: 0;
+  }
+  .section-head__sub {
+    margin-inline: auto;
+    max-width: 62ch;
+  }
+
+  /* ---- S1 Hero ---- */
+  .hero {
+    padding-top: 70px;
+  }
+  .hero__grid {
+    display: grid;
+    gap: 36px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+    }
+  }
+  .hero__title {
+    margin-top: 20px;
+  }
+  .hero__lead {
+    margin-top: 24px;
+    max-width: 56ch;
+  }
+  .hero__cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .hero__chip {
+    margin-top: 26px;
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+  .hero__media {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-cream);
+    box-shadow: var(--shadow-card);
+  }
+  .hero__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  /* ---- S2 Bottom line ---- */
+  .text-block {
+    max-width: 820px;
+    margin-inline: auto;
+    padding: 48px;
+    text-align: center;
+    display: grid;
+    gap: 16px;
+  }
+  @media (max-width: 600px) {
+    .text-block {
+      padding: 32px 24px;
+    }
+  }
+  .text-block .eyebrow {
+    color: var(--brand-orange);
+  }
+  .text-block__head {
+    font-size: var(--type-h3);
+  }
+  .text-block__body {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+
+  /* ---- S3 What gets protected ---- */
+  .pair {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .pair {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .prot {
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+  }
+  .prot__chip {
+    align-self: flex-start;
+  }
+  .prot__chip--yes {
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .prot__chip--no {
+    background: rgba(10, 10, 20, 0.06);
+    color: var(--text-mute);
+  }
+  .prot h3 {
+    margin-top: 18px;
+  }
+  .prot__list {
+    margin-top: 22px;
+    display: grid;
+    gap: 14px;
+  }
+  .prot__list li {
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+    padding-left: 30px;
+    position: relative;
+  }
+  .prot__list li::before {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .prot__list--yes li::before {
+    content: '+';
+    background: rgba(233, 78, 27, 0.12);
+    color: var(--brand-orange);
+  }
+  .prot__list--no li::before {
+    content: '\00d7';
+    background: rgba(10, 10, 20, 0.06);
+    color: var(--text-mute);
+  }
+
+  /* ---- S4 Platform rights ---- */
+  .ptable {
+    padding: 16px;
+  }
+  .ptable__scroll {
+    overflow-x: auto;
+  }
+  .ptable__t {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 680px;
+  }
+  .ptable__t th,
+  .ptable__t td {
+    text-align: left;
+    padding: 18px 16px;
+    vertical-align: top;
+    font-size: var(--type-small);
+    line-height: 1.5;
+  }
+  .ptable__t thead th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .ptable__t tbody tr + tr {
+    border-top: 1px solid var(--line-hairline);
+  }
+  .ptable__name {
+    font-size: var(--type-body);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .ptable__sub {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    white-space: nowrap;
+    color: var(--text-mute);
+  }
+  .ptable__note {
+    color: var(--text-mute);
+  }
+  .mark {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: 1px;
+  }
+  .mark--yes {
+    background: var(--brand-orange);
+  }
+  .mark--partial {
+    background: transparent;
+    border: 2px solid var(--brand-orange);
+  }
+  .mark--no {
+    background: var(--line-strong);
+  }
+  .ptable__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    padding: 16px 16px 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+
+  /* ---- S5 Legal landscape ---- */
+  .timeline {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 700px) {
+    .timeline {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .timeline {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .tcase {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .tcase__date {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: rgba(233, 78, 27, 0.1);
+  }
+  .tcase__name {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .tcase__text {
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+
+  /* ---- S6 FAQ ---- */
+  .faq {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 1024px) {
+    .faq {
+      grid-template-columns: 1fr 340px;
+      gap: 56px;
+      align-items: start;
+    }
+  }
+  .acc-row {
+    border-top: 1px solid var(--line-strong);
+  }
+  .acc-row:last-child {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .acc-row__q {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+  .acc-row__q svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    margin-top: 4px;
+    transition: transform 240ms ease-in-out;
+  }
+  .acc-row__q[aria-expanded='true'] svg {
+    transform: rotate(180deg);
+  }
+  .acc-row__a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 240ms ease-in-out;
+  }
+  .acc-row__q[aria-expanded='true'] + .acc-row__a {
+    grid-template-rows: 1fr;
+  }
+  .acc-row__a-inner {
+    overflow: hidden;
+  }
+  .acc-row__a-inner > :last-child {
+    margin-bottom: 24px;
+  }
+  .faq-p {
+    max-width: 64ch;
+    color: var(--text-mute);
+    font-size: var(--type-small);
+    line-height: 1.65;
+    margin-top: 14px;
+  }
+  .faq-p:first-child {
+    margin-top: 2px;
+  }
+  .faq-sub {
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+  }
+  .faq-points {
+    margin-top: 10px;
+    display: grid;
+    gap: 8px;
+    max-width: 64ch;
+  }
+  .faq-points li {
+    position: relative;
+    padding-left: 20px;
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .faq-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    opacity: 0.6;
+  }
+  .faq__side {
+    padding: 36px;
+  }
+  @media (min-width: 1024px) {
+    .faq__side {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .faq__side-head {
+    margin-top: 14px;
+  }
+  .faq__side-text {
+    margin-top: 14px;
+    margin-bottom: 26px;
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.78);
+  }
+
+  /* ---- S7 Liability ---- */
+  .liability {
+    background: var(--bg-white);
+  }
+  .risk-grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 600px) {
+    .risk-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .risk-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .risk {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .risk__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .risk__body {
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+
+  /* ---- S8 Protection strategy ---- */
+  .strat {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .strat {
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 56px;
+    }
+  }
+  .strat__media {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-ink);
+    box-shadow: var(--shadow-card);
+  }
+  .strat__media img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  .strat__copy .eyebrow {
+    color: var(--brand-orange);
+  }
+  .strat__head {
+    margin-top: 14px;
+  }
+  .strat__intro {
+    margin-top: 16px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .strat__list {
+    margin-top: 28px;
+    display: grid;
+    gap: 4px;
+  }
+  .strat__step {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .strat__step:first-child {
+    border-top: none;
+  }
+  .strat__n {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--brand-orange);
+    padding-top: 2px;
+  }
+  .strat__step-title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .strat__step-body {
+    margin-top: 5px;
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+
+  /* ---- S9 Disclaimer ---- */
+  .disclaimer {
+    max-width: 880px;
+    margin-inline: auto;
+    padding: 40px;
+  }
+  @media (max-width: 600px) {
+    .disclaimer {
+      padding: 32px 24px;
+    }
+  }
+  .disclaimer__chip {
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .disclaimer__body {
+    margin-top: 18px;
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: var(--text-mute);
+  }
+  .disclaimer__lead {
+    margin-top: 18px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .disclaimer__list {
+    margin-top: 12px;
+    display: grid;
+    gap: 8px;
+  }
+  .disclaimer__list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .disclaimer__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    opacity: 0.6;
+  }
+  .disclaimer__stamp {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-hairline);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  /* ---- S10 Closing CTA ---- */
+  .closing {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .closing__inner {
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing__head {
+    max-width: 18ch;
+  }
+  .closing__line {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .closing__cube {
+    width: 44px;
+    margin-top: 8px;
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll (§10: headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* FAQ accordion: one row open at a time. */
+  const rows = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc-row__q'));
+  rows.forEach((row) => {
+    row.addEventListener('click', () => {
+      const open = row.getAttribute('aria-expanded') === 'true';
+      rows.forEach((r) => r.setAttribute('aria-expanded', 'false'));
+      row.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+</script>

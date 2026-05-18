@@ -46,7 +46,7 @@ git push -u origin main
 
 ---
 
-## 2. package.json — scripts block
+## 2. package.json: scripts block
 
 The reusable script set. Drop the image/llms/indexnow scripts in `scripts/` (see
 sections below) and these wire them up:
@@ -123,10 +123,10 @@ generated-*.png
 Commit this, never commit `.env`:
 
 ```dotenv
-# WaveSpeed AI — text-to-image generation (https://wavespeed.ai)
+# WaveSpeed AI: text-to-image generation (https://wavespeed.ai)
 WAVESPEED_API_KEY=
 
-# Resend — transactional email (https://resend.com/api-keys)
+# Resend: transactional email (https://resend.com/api-keys)
 RESEND_API_KEY=
 
 # Recipient address for the contact form
@@ -135,7 +135,7 @@ CONTACT_TO_EMAIL=
 
 ---
 
-## 4. CLAUDE.md — the parts worth keeping
+## 4. CLAUDE.md: the parts worth keeping
 
 Put a `.claude/CLAUDE.md` at the project root with the hard, permanent rules.
 The reusable, non-style sections:
@@ -175,7 +175,7 @@ This is the reusable skeleton: English at the root, every other locale under a
 prefix, with **native-language slugs per locale** (not the English slug with a
 prefix slapped on).
 
-### astro.config.mjs — i18n block
+### astro.config.mjs: i18n block
 
 ```js
 i18n: {
@@ -202,7 +202,7 @@ src/pages/
     qui-nous-sommes.astro   # FR pages with NATIVE slugs
 ```
 
-### ui.ts — shared string dictionary
+### ui.ts: shared string dictionary
 
 Page-level content stays inside each locale's `.astro` file. Only shared chrome
 (nav, footer, meta) goes in `ui.ts`. Rules when extending it:
@@ -212,7 +212,7 @@ Page-level content stays inside each locale's `.astro` file. Only shared chrome
 - `useTranslations(locale)` returns a `t()` with `{placeholder}` interpolation
   and English fallback for any missing key.
 
-### utils.ts — the routing helpers (reuse verbatim)
+### utils.ts: the routing helpers (reuse verbatim)
 
 `localizePath(path, locale)` round-trips a URL in either direction
 (`/about` <-> `/fr/qui-nous-sommes`) using a per-locale `slugMap`. A
@@ -224,7 +224,7 @@ The whole `src/i18n/` directory is portable. For a new project: keep
 `utils.ts` as-is, rewrite the `slugMap` / `prefixMap` entries, swap the
 `ui.ts` strings.
 
-### Translation rules (MANDATORY — keep these in CLAUDE.md)
+### Translation rules (MANDATORY: keep these in CLAUDE.md)
 
 The single source of truth for any non-English work. Output must read like a
 native journalist in the target language wrote it originally, not like a
@@ -272,10 +272,10 @@ commit messages, or PR descriptions.
 
 **Two-step rewrite for any new or rewritten section:**
 
-- *Step 1 — Humanized translation.* Translate from English, hit the native
+- *Step 1: Humanized translation.* Translate from English, hit the native
   journalistic register, match register to audience, apply locale conventions
   for dates/currency/units/numbers/punctuation/quotation marks.
-- *Step 2 — Native rewrite (mandatory, even when Step 1 looks fine).* Treat
+- *Step 2: Native rewrite (mandatory, even when Step 1 looks fine).* Treat
   Step 1's output as a draft that is not native enough. Do NOT look back at the
   English source. Work only from the target-language draft. Restructure
   sentences, switch idioms to native equivalents, swap weak verbs for strong
@@ -303,7 +303,7 @@ German → standard de-DE.
 market stay in their canonical English form. Do not translate them, do not
 invent localized versions, do not retitle-case them.
 
-**Single-locale default — no auto-translate.** When the user requests a content
+**Single-locale default: no auto-translate.** When the user requests a content
 change, edit ONLY the file(s) they referenced. Do not propagate the same change
 to other locales until the user explicitly says so (e.g. "translate this",
 "do all locales", "propagate"). When editing the English version, end with a
@@ -418,11 +418,11 @@ If the new site replaces an existing one, the BBG `redirection-plan.md` +
 
 ### Optimizer scripts
 
-- `scripts/optimize-images-batch.mjs` — in-place batch optimizer. Scans a tree
+- `scripts/optimize-images-batch.mjs`: in-place batch optimizer. Scans a tree
   or a single file, resizes oversized images, recompresses (JPG mozjpeg q82
   progressive, PNG palette + max compression, WebP q78 effort 6), skips files
   under 30 KB, replaces in place at the same path. `npm run img:batch`.
-- `scripts/optimize-image.mjs` — older single-file variant that emits a
+- `scripts/optimize-image.mjs`: older single-file variant that emits a
   JPG + WebP pair. `npm run img <path>`.
 - Targets: heroes max 2000px wide / under ~600 KB, inline 1600px / under
   ~250 KB, thumbnails under ~80 KB.
@@ -445,7 +445,7 @@ npm run hooks:install
 This is the reusable pattern for any repo-tracked git hook: keep hooks in
 `scripts/hooks/`, install with a script. Note BBG keeps hooks in
 `scripts/hooks/` rather than Husky; a separate repo in the workspace uses a
-`.husky/` directory instead — pick one convention.
+`.husky/` directory instead: pick one convention.
 
 ---
 
@@ -499,7 +499,7 @@ full-page or per-selector screenshot at `deviceScaleFactor: 2` with
 
 ---
 
-## 11. HUMANIZER.md — carry this file over
+## 11. HUMANIZER.md: carry this file over
 
 `HUMANIZER.md` (project root) is portable and worth keeping. It is a
 self-contained skill that strips AI-writing tells from any text: 29 numbered
@@ -524,14 +524,14 @@ Excluded because it is style, content, or layout, or project-specific:
 - Design tokens, color palette, typography scale, spacing grid, component
   patterns, motion specs, accessibility visual specs (CLAUDE.md §9–14).
 - `anti-ai-writing-style.md` and the 9-iteration humanizer *workflow* in
-  CLAUDE.md §5 — these encode BBG's specific copy-voice process. `HUMANIZER.md`
+  CLAUDE.md §5: these encode BBG's specific copy-voice process. `HUMANIZER.md`
   itself is kept (see section 11); the project-specific iteration ritual around
   it is not.
-- `docs/imagen-front-end.md` — an image art-direction skill for generating
+- `docs/imagen-front-end.md`: an image art-direction skill for generating
   design reference comps; purely visual direction.
 - The actual redirect URL tables, insight/case slug lists, brand copy, and the
-  `src/content/` articles — all project data.
+  `src/content/` articles: all project data.
 - `migrate-insights-taxonomy.mjs`, `rename-fr-insights.mjs`, `add-pubdates.mjs`,
   `internal-link-insights.mjs`, `add-case-metrics.mjs`,
-  `add-insight-author-takeaways.mjs`, `localize-wp-images.mjs` — one-off
+  `add-insight-author-takeaways.mjs`, `localize-wp-images.mjs`: one-off
   content-migration scripts tied to this site's data shape.

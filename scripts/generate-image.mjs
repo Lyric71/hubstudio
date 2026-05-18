@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 // WaveSpeed text-to-image CLI. Submit a prompt, poll for the result, save the file.
 //
 // Usage:
@@ -7,7 +7,7 @@
 //   node scripts/generate-image.mjs "hero banner" --out=public/Images/hero.png
 //
 // Output:
-//   Default filename is generated-<timestamp>.<format> in the repo root — that
+//   Default filename is generated-<timestamp>.<format> in the repo root: that
 //   pattern is git-ignored (scratch output). Pass --out= to write a kept file;
 //   writing into public/Images/ means the pre-commit optimizer picks it up.
 //
@@ -58,7 +58,7 @@ async function main() {
   console.log(`Prompt: "${opts.prompt}"`);
   console.log(`Model:  ${MODEL}  (${opts.quality}, ${opts.format})`);
 
-  // Step 1 — submit the task.
+  // Step 1: submit the task.
   const submitRes = await fetch(`${API_URL}/${MODEL}`, {
     method: "POST",
     headers: {
@@ -83,7 +83,7 @@ async function main() {
   const taskId = submitData.data.id;
   console.log(`Task submitted: ${taskId}`);
 
-  // Step 2 — poll once per second until completed or failed.
+  // Step 2: poll once per second until completed or failed.
   process.stdout.write("Generating");
   for (let i = 0; i < POLL_TIMEOUT_S; i++) {
     await new Promise((r) => setTimeout(r, 1000));

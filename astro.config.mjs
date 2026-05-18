@@ -1,4 +1,4 @@
-// @ts-check
+﻿// @ts-check
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -21,7 +21,7 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      // Built-in i18n only handles plain prefix routing — fine while pages
+      // Built-in i18n only handles plain prefix routing: fine while pages
       // share slugs across locales. Once native per-locale slugs ship, swap
       // this for a `serialize` hook that resolves each locale pair through
       // src/i18n/page-slugs.ts (see reusable-website-starter.md §6).

@@ -1,6 +1,6 @@
 ---
 /**
- * Home (`/`) — §8 blueprint:
+ * Home (`/`): §8 blueprint:
  * S1 Hero · S2 Bridge · S3 Stat row · S4 Three-card row · S5 Logo strip ·
  * S6 Bordered text block · S7 Two-up card pair · S8 Use-case grid ·
  * S9 Beliefs · S10 Tag cloud · S11 Pull-quote pair · S12 Accordion + sidebar ·
@@ -22,25 +22,25 @@ const stats = [
 const lanes = [
   {
     variant: 'orange',
-    glyph: '产',
+    glyph: '01',
     name: 'Produce',
     summary: 'On-brand visuals, video, and copy. Hundreds of finalized assets a month. Generated, shot, or hybrid.',
     items: [
-      'Image production — $35 a brief to $405 a finalized asset',
-      'Short and long video — from $200 per script',
-      'Live action studio — real photo and video shoots',
+      'Image production, from $35 a brief to $405 a finalized asset',
+      'Short and long video, from $200 per script',
+      'Live action studio: real photo and video shoots',
       '3D, CGI, motion design, video branding',
     ],
     href: '/what-we-do/image',
   },
   {
     variant: 'navy',
-    glyph: '台',
+    glyph: '02',
     name: 'Platform',
     summary: 'Your own content studio on dedicated GPU infrastructure. Trained on your brand. Run by your team.',
     items: [
       'Hub4You platform on your dedicated GPU servers',
-      'Brand-trained models — custom LoRAs and fine-tunes',
+      'Brand-trained models: custom LoRAs and fine-tunes',
       'Pipelines on ComfyUI, Flux, Wan, Veo, Hunyuan',
       'Integrated into your DAM and PIM',
     ],
@@ -48,12 +48,12 @@ const lanes = [
   },
   {
     variant: 'cream',
-    glyph: '导',
+    glyph: '03',
     name: 'Direct',
     summary: 'The creative intelligence layer. Strategy, transcreation, training. The part that cannot be automated.',
     items: [
       'Content strategy, brand positioning, campaign creative',
-      'Transcreation — multi-market, culturally native',
+      'Transcreation: multi-market, culturally native',
       'AI usage policy and approval workflows',
       'Hands-on training for in-house teams',
     ],
@@ -63,7 +63,7 @@ const lanes = [
 
 const cases = [
   { client: 'Mexicash', result: 'A full campaign system, localized end to end', tag: 'Campaign' },
-  { client: 'Shiseido', result: 'RQ PYOLOGY — beauty product content at scale', tag: 'Beauty' },
+  { client: 'Shiseido', result: 'RQ PYOLOGY: beauty product content at scale', tag: 'Beauty' },
   { client: 'Premium SUV', result: 'A global automotive launch, market by market', tag: 'Automotive' },
   { client: 'HiSense', result: 'Product visuals across every channel and format', tag: '3C' },
   { client: 'age20', result: 'Skincare campaign content, generated and shot', tag: 'Beauty' },
@@ -114,46 +114,55 @@ const faqs = [
 ];
 ---
 
-<Layout>
-  <!-- ===== S1 — Hero (asymmetric split) ===== -->
-  <section class="section hero">
-    <div class="container hero__grid">
+<Layout heroOverlay>
+  <!-- ===== S1: Hero (full-bleed video) ===== -->
+  <section class="hero">
+    <div class="hero__media" aria-hidden="true">
+      <video
+        class="hero__video"
+        id="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        tabindex="-1"
+        poster="/Video/home-hero-poster.webp"
+      >
+        <source src="/Video/home-hero.webm" type="video/webm" />
+        <source src="/Video/home-hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__scrim"></div>
+    </div>
+
+    <div class="container hero__inner">
       <div class="hero__copy">
-        <span class="eyebrow">Production house</span>
+        <span class="eyebrow hero__eyebrow">Production house</span>
         <h1 class="headline h1 reveal hero__title">
           A production house built for what content has <span class="accent">become</span>.
         </h1>
         <p class="lead hero__lead">
-          A global appliance brand came to us with a 22 percent approval rate. Six months
-          later it hit 78 percent. Output multiplied by seven. Cost dropped by 60 percent.
-          That is the gap between the old way of making content and how it has to work now.
+          We pair deep AIGC expertise with real studio craft to cut production costs by up
+          to 60 percent, ship in days instead of weeks, and scale output by 7x. Our
+          generation pipelines, dedicated GPU infrastructure, and creative direction turn
+          the volume modern brands now need into work that actually performs.
         </p>
         <div class="hero__cta">
           <Button variant="primary" href="/contact">Talk to us</Button>
-          <Button variant="secondary" href="/work">See real brand work</Button>
+          <Button variant="on-dark" href="/work">See real brand work</Button>
         </div>
       </div>
+    </div>
 
-      <aside class="hero__card card card--orange grain">
-        <span class="chip hero__chip"><span class="chip__dot"></span>Now booking</span>
-        <p class="hero__card-msg">
-          Send the brief. We show you how we would deliver it, what it would cost, and
-          what we would shoot versus generate.
-        </p>
-        <div class="hero__card-actions">
-          <a href="/contact">Start a brief <span aria-hidden="true">→</span></a>
-          <a href="/hub4you">Run the platform <span aria-hidden="true">→</span></a>
-        </div>
-        <svg class="hero__cube" viewBox="0 0 32 35" aria-hidden="true">
-          <path d="M16 4 28 11 16 18 4 11Z" fill="#fff" opacity="0.95" />
-          <path d="M4 11 16 18 16 31 4 24Z" fill="#fff" opacity="0.55" />
-          <path d="M28 11 16 18 16 31 28 24Z" fill="#fff" opacity="0.28" />
-        </svg>
-      </aside>
+    <div class="container hero__trust">
+      <span class="hero__trust-label">Trusted by</span>
+      <ul class="hero__trust-list">
+        {clients.map((name) => <li>{name}</li>)}
+      </ul>
     </div>
   </section>
 
-  <!-- ===== S2 — Bridge headline (centered) ===== -->
+  <!-- ===== S2: Bridge headline (centered) ===== -->
   <section class="section bridge">
     <div class="container bridge__inner">
       <span class="eyebrow">Track record</span>
@@ -167,7 +176,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S3 — Stat row (bordered single card) ===== -->
+  <!-- ===== S3: Stat row (bordered single card) ===== -->
   <section class="section--tight">
     <div class="container">
       <div class="stat-row card card--cream">
@@ -183,7 +192,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S4 — Three-card row (the three lanes) ===== -->
+  <!-- ===== S4: Three-card row (the three lanes) ===== -->
   <section class="section">
     <div class="container">
       <header class="section-head">
@@ -210,7 +219,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S5 — Logo strip ===== -->
+  <!-- ===== S5: Logo strip ===== -->
   <section class="section--tight logo-strip">
     <div class="container">
       <ul class="logo-strip__row">
@@ -220,7 +229,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S6 — Bordered text block ===== -->
+  <!-- ===== S6: Bordered text block ===== -->
   <section class="section">
     <div class="container">
       <div class="text-block card card--cream">
@@ -236,7 +245,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S7 — Two-up card pair (two ways to work) ===== -->
+  <!-- ===== S7: Two-up card pair (two ways to work) ===== -->
   <section class="section">
     <div class="container">
       <header class="section-head">
@@ -281,7 +290,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S8 — Use-case grid ===== -->
+  <!-- ===== S8: Use-case grid ===== -->
   <section class="section">
     <div class="container">
       <header class="section-head">
@@ -308,7 +317,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S9 — Beliefs block (centered) ===== -->
+  <!-- ===== S9: Beliefs block (centered) ===== -->
   <section class="section beliefs">
     <div class="container beliefs__inner">
       <span class="eyebrow">What we believe</span>
@@ -327,7 +336,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S10 — Tag cloud + summary ===== -->
+  <!-- ===== S10: Tag cloud + summary ===== -->
   <section class="section">
     <div class="container tagcloud">
       <div class="tagcloud__cloud">
@@ -346,7 +355,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S11 — Pull-quote pair ===== -->
+  <!-- ===== S11: Pull-quote pair ===== -->
   <section class="section">
     <div class="container quote-pair">
       {
@@ -363,7 +372,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S12 — Accordion + sidebar ===== -->
+  <!-- ===== S12: Accordion + sidebar ===== -->
   <section class="section">
     <div class="container faq">
       <div class="faq__list">
@@ -404,7 +413,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S13 — Closing CTA (full-bleed dark) ===== -->
+  <!-- ===== S13: Closing CTA (full-bleed dark) ===== -->
   <section class="closing">
     <div class="container closing__inner">
       <span class="eyebrow">Get started</span>
@@ -440,27 +449,82 @@ const faqs = [
     margin-inline: 0;
   }
 
-  /* ---- S1 Hero ---- */
+  /* ---- S1 Hero (full-bleed video) ---- */
   .hero {
-    padding-top: 140px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: clamp(620px, 94vh, 1000px);
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    /* Pull up under the transparent sticky header (header height: 64/72px). */
+    margin-top: -64px;
   }
-  .hero__grid {
-    display: grid;
-    gap: 40px;
-    align-items: center;
-  }
-  @media (min-width: 900px) {
-    .hero__grid {
-      grid-template-columns: 1.5fr 1fr;
-      gap: 56px;
+  @media (min-width: 1024px) {
+    .hero {
+      margin-top: calc(-1 * var(--nav-h));
     }
   }
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* Poster paints instantly and stands in if the video is suppressed. */
+    background: var(--bg-ink) url('/Video/home-hero-poster.webp') center / cover
+      no-repeat;
+  }
+  .hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__video {
+      display: none;
+    }
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 12, 28, 0.93) 0%,
+        rgba(8, 12, 28, 0.6) 46%,
+        rgba(8, 12, 28, 0.22) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 12, 28, 0.62) 0%,
+        rgba(8, 12, 28, 0.12) 32%,
+        rgba(8, 12, 28, 0.78) 100%
+      );
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-h) + 64px);
+    padding-bottom: 48px;
+  }
+  .hero__copy {
+    max-width: 800px;
+  }
+  .hero__eyebrow {
+    color: var(--brand-orange);
+  }
   .hero__title {
-    margin-top: 20px;
+    margin-top: 22px;
+    color: #fff;
   }
   .hero__lead {
-    margin-top: 26px;
-    max-width: 54ch;
+    margin-top: 24px;
+    max-width: 56ch;
+    color: rgba(240, 237, 233, 0.84);
   }
   .hero__cta {
     margin-top: 34px;
@@ -468,42 +532,46 @@ const faqs = [
     flex-wrap: wrap;
     gap: 12px;
   }
-  .hero__card {
+  .hero__trust {
     position: relative;
-    padding: 32px;
-    color: #fff;
-    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    padding-top: 22px;
+    padding-bottom: 40px;
+    border-top: 1px solid rgba(240, 237, 233, 0.16);
   }
-  .hero__chip {
-    background: rgba(255, 255, 255, 0.16);
-    color: #fff;
+  .hero__trust-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.55);
   }
-  .hero__card-msg {
-    margin-top: 22px;
-    font-size: 19px;
-    line-height: 1.4;
-    font-weight: 500;
+  .hero__trust-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
   }
-  .hero__card-actions {
-    margin-top: 26px;
-    display: grid;
-    gap: 10px;
-  }
-  .hero__card-actions a {
-    font-weight: 600;
+  .hero__trust-list li {
     font-size: var(--type-small);
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.24);
-  }
-  .hero__cube {
-    position: absolute;
-    right: -22px;
-    bottom: -26px;
-    width: 150px;
-    opacity: 0.9;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: rgba(240, 237, 233, 0.7);
   }
 
   /* ---- S2 Bridge ---- */
+  /* Sub-paragraph leads straight into the stat row, so trim the gap. */
+  .bridge {
+    padding-bottom: 40px;
+  }
+  @media (min-width: 768px) {
+    .bridge {
+      padding-bottom: 56px;
+    }
+  }
   .bridge__inner {
     text-align: center;
     max-width: 820px;
@@ -1019,7 +1087,24 @@ const faqs = [
 </style>
 
 <script>
-  /* Reveal headlines on scroll (§10 — headlines only). */
+  /* Hero video: honour prefers-reduced-motion: hold on the poster frame. */
+  const heroVideo = document.getElementById('hero-video') as HTMLVideoElement | null;
+  if (heroVideo) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const applyMotionPref = () => {
+      if (reduced.matches) {
+        heroVideo.removeAttribute('autoplay');
+        heroVideo.pause();
+      } else {
+        const play = heroVideo.play();
+        if (play && typeof play.catch === 'function') play.catch(() => {});
+      }
+    };
+    applyMotionPref();
+    reduced.addEventListener('change', applyMotionPref);
+  }
+
+  /* Reveal headlines on scroll (§10: headlines only). */
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(
@@ -1038,7 +1123,7 @@ const faqs = [
     reveals.forEach((el) => el.classList.add('is-in'));
   }
 
-  /* FAQ accordion — one row open at a time. */
+  /* FAQ accordion: one row open at a time. */
   const rows = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc-row__q'));
   rows.forEach((row) => {
     row.addEventListener('click', () => {

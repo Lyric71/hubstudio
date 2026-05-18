@@ -1,0 +1,518 @@
+---
+/**
+ * Terms of Service (`/terms`).
+ * Compact legal hero + sticky table of contents + numbered sections.
+ * Adapted for hubStudio: content production studio operated by
+ * BeyondBorderGroup LTD, Hong Kong SAR.
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const updated = '18 May 2026';
+
+interface Block {
+  p?: string;
+  sub?: string;
+  list?: string[];
+  note?: string;
+  table?: { head: string[]; rows: string[][] };
+}
+interface Section {
+  id: string;
+  title: string;
+  blocks: Block[];
+}
+
+const sections: Section[] = [
+  {
+    id: 'who-we-are',
+    title: 'Who we are',
+    blocks: [
+      {
+        p: 'hubStudio is a content production studio operated by BeyondBorderGroup LTD, a company registered in the Hong Kong Special Administrative Region. In these terms, "hubStudio", "we", "us", and "our" refer to that company. "You" refers to the visitor, client, or platform user accepting these terms.',
+      },
+      {
+        p: 'By visiting hubstudio.ai, creating a hub4You account, or commissioning work from us, you agree to these terms. If you accept them on behalf of a company, you confirm you are authorised to bind that company.',
+      },
+    ],
+  },
+  {
+    id: 'services',
+    title: 'The services we provide',
+    blocks: [
+      {
+        p: 'hubStudio produces commercial content across four practices: image production, video production, live-action studio work, and 3D, CGI, and motion. We also operate hub4You, a platform for briefing, reviewing, and managing content production.',
+      },
+      {
+        p: 'We use AI-assisted tools as part of our production process. Where AI contributes to a deliverable, we apply documented human authorship and review so the final work meets professional and legal standards. The scope, format, and timeline of any engagement are set out in a separate proposal or statement of work, which prevails over these terms where the two conflict.',
+      },
+    ],
+  },
+  {
+    id: 'acceptable-use',
+    title: 'Using our website and platform',
+    blocks: [
+      { sub: 'You agree not to:' },
+      {
+        list: [
+          'Use the site or platform for any unlawful purpose or in breach of these terms',
+          'Attempt to gain unauthorised access to any account, server, or system we operate',
+          'Scrape, copy, or harvest content or data without our written permission',
+          'Upload malware or interfere with the security or operation of the site or platform',
+          'Send spam or unsolicited communications through any contact channel we provide',
+        ],
+      },
+      {
+        p: 'We may suspend or withdraw access to the website or hub4You at any time, without notice, where we reasonably believe these terms have been broken.',
+      },
+    ],
+  },
+  {
+    id: 'intellectual-property',
+    title: 'Intellectual property',
+    blocks: [
+      {
+        p: 'All content on the hubStudio website and the hub4You platform, including text, design, code, logos, and showreels, belongs to hubStudio or its licensors and is protected by intellectual property law. Nothing in these terms transfers that ownership to you.',
+      },
+      {
+        p: 'Work we produce for you is different. Ownership of the final deliverables in a paid engagement transfers to you once we have received full payment of all applicable fees, unless your engagement agreement states otherwise. Until payment is complete, we retain all rights in the work.',
+      },
+      {
+        p: 'We may retain working files, drafts, and production assets, and we may feature completed, published work in our portfolio and marketing unless your agreement restricts this.',
+      },
+    ],
+  },
+  {
+    id: 'client-obligations',
+    title: 'Your obligations as a client',
+    blocks: [
+      { sub: 'When you engage us, you agree to:' },
+      {
+        list: [
+          'Provide accurate, complete information and brief us in good time',
+          'Review deliverables and return feedback within the windows set in your statement of work',
+          'Confirm that any materials you supply, such as logos, footage, or product information, do not infringe the rights of others',
+          'Hold the licences and consents needed for us to produce the work you request',
+          'Pay all fees in full and on schedule',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'fees',
+    title: 'Fees and payment',
+    blocks: [
+      {
+        p: 'Fees, billing frequency, and currency are set out in your proposal or statement of work. Unless agreed otherwise, recurring work is billed monthly in advance, and project work is billed against agreed milestones.',
+      },
+      {
+        p: 'Invoices are due within the period stated on the invoice. Overdue amounts may carry interest at 1.5% per month, or the maximum permitted by law if lower. We may suspend work and withhold deliverables on any account more than 15 days overdue, and a suspension does not extend agreed timelines.',
+      },
+      {
+        p: 'Fees are exclusive of taxes and duties, which are your responsibility where they apply.',
+      },
+    ],
+  },
+  {
+    id: 'confidentiality',
+    title: 'Confidentiality',
+    blocks: [
+      {
+        p: 'Each of us may receive information from the other that is confidential, including business plans, pricing, briefs, and unreleased creative work. Both parties agree to protect such information, use it only to deliver and receive the services, and keep it confidential for two years after an engagement ends.',
+      },
+      {
+        p: 'This does not apply to information that becomes public through no fault of the receiving party, or that must be disclosed by law.',
+      },
+    ],
+  },
+  {
+    id: 'liability',
+    title: 'Warranties and limitation of liability',
+    blocks: [
+      {
+        p: 'We provide the website, the hub4You platform, and our services with reasonable skill and care. Beyond that, and to the fullest extent permitted by law, they are provided "as is" without further warranties of any kind, express or implied.',
+      },
+      {
+        note: 'To the fullest extent permitted by law, our total liability arising from or connected to an engagement is limited to the fees you paid for the specific service that gave rise to the claim. We are not liable for indirect or consequential loss, including lost profit, lost revenue, or loss of data. Nothing in these terms limits liability that cannot be limited by law.',
+      },
+    ],
+  },
+  {
+    id: 'termination',
+    title: 'Term and termination',
+    blocks: [
+      {
+        p: 'These terms apply for as long as you use our website, hold a hub4You account, or have an active engagement with us. Either party may end an engagement in line with the notice terms in the relevant statement of work.',
+      },
+      {
+        p: 'On termination, you remain liable for fees covering work completed or committed up to the termination date. The clauses on intellectual property, confidentiality, liability, and governing law survive termination.',
+      },
+    ],
+  },
+  {
+    id: 'governing-law',
+    title: 'Governing law and disputes',
+    blocks: [
+      {
+        p: 'These terms and any dispute arising from them are governed by the laws of the Hong Kong Special Administrative Region. The courts of Hong Kong have exclusive jurisdiction, and you and hubStudio submit to that jurisdiction.',
+      },
+      {
+        p: 'Before starting formal proceedings, both parties agree to attempt in good faith to resolve any dispute through direct discussion.',
+      },
+    ],
+  },
+  {
+    id: 'changes',
+    title: 'Changes to these terms',
+    blocks: [
+      {
+        p: 'We may update these terms as our services and legal obligations change. The current version always sits on this page with its effective date. Significant changes to an active engagement will be communicated to you directly. Continued use of our website, the platform, or our services after an update means you accept the revised terms.',
+      },
+    ],
+  },
+  {
+    id: 'contact',
+    title: 'Contact us',
+    blocks: [
+      {
+        p: 'Questions about these terms can be sent to hello@hubstudio.ai, or through the contact page on this site.',
+      },
+    ],
+  },
+];
+
+const toc = sections.map((s) => ({ id: s.id, title: s.title }));
+const related = [
+  { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Cookie Policy', href: '/cookies' },
+];
+---
+
+<Layout
+  title="Terms of Service | hubStudio"
+  description="The terms that govern your use of the hubStudio website, the hub4You platform, and our content production services."
+>
+  <!-- ===== Hero ===== -->
+  <section class="section legal-hero">
+    <div class="container">
+      <div class="legal-hero__inner">
+        <span class="eyebrow">Legal</span>
+        <h1 class="headline h2 reveal legal-hero__title">
+          Terms of <span class="accent">Service</span>.
+        </h1>
+        <p class="lead legal-hero__lead">
+          These terms govern your use of the hubStudio website, the hub4You platform, and the
+          content production services we provide. Please read them before you engage us.
+        </p>
+        <span class="chip legal-hero__chip">
+          <span class="chip__dot"></span>Last updated {updated}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Body ===== -->
+  <section class="legal-main">
+    <div class="container">
+      <div class="legal-grid">
+        <nav class="toc" aria-label="On this page">
+          <p class="toc__title">On this page</p>
+          <ol class="toc__list">
+            {
+              toc.map((item, i) => (
+                <li>
+                  <a href={`#${item.id}`}>
+                    <span class="toc__num">{String(i + 1).padStart(2, '0')}</span>
+                    {item.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+
+        <div class="legal-body">
+          {
+            sections.map((sec, i) => (
+              <section class="legal-sec" id={sec.id}>
+                <span class="legal-sec__n">{String(i + 1).padStart(2, '0')}</span>
+                <h2 class="legal-sec__title">{sec.title}</h2>
+                {sec.blocks.map((b) =>
+                  b.p ? (
+                    <p class="legal-p">{b.p}</p>
+                  ) : b.note ? (
+                    <p class="legal-note">{b.note}</p>
+                  ) : b.sub ? (
+                    <p class="legal-sub">{b.sub}</p>
+                  ) : b.list ? (
+                    <ul class="legal-list">
+                      {b.list.map((x) => (
+                        <li>{x}</li>
+                      ))}
+                    </ul>
+                  ) : null,
+                )}
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Closing ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="legal-cta card card--navy">
+        <span class="eyebrow">Need a hand?</span>
+        <h2 class="headline h3 reveal legal-cta__head">
+          Questions about these <span class="accent">terms</span>?
+        </h2>
+        <p class="legal-cta__text">
+          Write to us at <a href="mailto:hello@hubstudio.ai">hello@hubstudio.ai</a> and we will
+          point you to the right person.
+        </p>
+        <Button variant="primary-inverse" href="/contact">Contact hubStudio</Button>
+        <div class="legal-cta__links">
+          {related.map((r) => <a href={r.href}>{r.label}</a>)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section--tight {
+    padding-block: 24px 96px;
+  }
+
+  /* ---- Hero ---- */
+  .legal-hero {
+    padding-top: 64px;
+    padding-bottom: 0;
+  }
+  .legal-hero__inner {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+    display: grid;
+    gap: 18px;
+    justify-items: center;
+  }
+  .legal-hero__title {
+    margin-top: 4px;
+  }
+  .legal-hero__lead {
+    max-width: 60ch;
+  }
+  .legal-hero__chip {
+    margin-top: 6px;
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- Body layout ---- */
+  .legal-main {
+    padding-block: 56px 24px;
+  }
+  .legal-grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 1000px) {
+    .legal-grid {
+      grid-template-columns: 240px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+  }
+
+  /* ---- Table of contents ---- */
+  @media (min-width: 1000px) {
+    .toc {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .toc__title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .toc__list {
+    margin-top: 14px;
+    display: grid;
+  }
+  .toc__list a {
+    display: block;
+    padding: 7px 0 7px 14px;
+    border-left: 2px solid var(--line-hairline);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-mute);
+    transition:
+      color 120ms ease-out,
+      border-color 120ms ease-out;
+  }
+  .toc__list a:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .toc__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--brand-orange);
+    margin-right: 8px;
+  }
+
+  /* ---- Sections ---- */
+  .legal-body {
+    max-width: 70ch;
+  }
+  .legal-sec {
+    padding-block: 30px;
+    border-top: 1px solid var(--line-hairline);
+    scroll-margin-top: 104px;
+  }
+  .legal-sec:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+  .legal-sec__n {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--brand-orange);
+  }
+  .legal-sec__title {
+    margin-top: 8px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .legal-p {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    line-height: 1.7;
+    color: var(--text-mute);
+  }
+  .legal-sub {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .legal-list {
+    margin-top: 12px;
+    display: grid;
+    gap: 9px;
+  }
+  .legal-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .legal-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    opacity: 0.6;
+  }
+  .legal-note {
+    margin-top: 16px;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-hairline);
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: var(--text-mute);
+  }
+
+  /* ---- Closing ---- */
+  .legal-cta {
+    max-width: 880px;
+    margin-inline: auto;
+    padding: 48px;
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+  }
+  @media (max-width: 600px) {
+    .legal-cta {
+      padding: 36px 24px;
+    }
+  }
+  .legal-cta .eyebrow {
+    color: var(--brand-orange);
+  }
+  .legal-cta__head {
+    max-width: 20ch;
+  }
+  .legal-cta__text {
+    max-width: 48ch;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .legal-cta__text a {
+    color: var(--brand-orange);
+  }
+  .legal-cta :global(.btn) {
+    margin-top: 8px;
+  }
+  .legal-cta__links {
+    margin-top: 18px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .legal-cta__links a {
+    color: rgba(240, 237, 233, 0.62);
+    transition: color 120ms ease-out;
+  }
+  .legal-cta__links a:hover {
+    color: var(--brand-orange);
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

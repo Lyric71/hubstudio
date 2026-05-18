@@ -8,6 +8,8 @@ import { locales, defaultLocale } from '../i18n/ui';
 interface Props {
   title?: string;
   description?: string;
+  /** Render the header transparently over a dark hero (light nav until scroll). */
+  heroOverlay?: boolean;
 }
 
 const SITE = 'https://hubstudio.ai';
@@ -15,7 +17,7 @@ const SITE = 'https://hubstudio.ai';
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 
-const { title, description } = Astro.props;
+const { title, description, heroOverlay = false } = Astro.props;
 const pageTitle = title ?? t('meta.defaultTitle');
 const pageDescription = description ?? t('meta.defaultDescription');
 
@@ -72,7 +74,7 @@ const canonical = new URL(localizePath(path, locale), SITE).href;
   <body>
     <a class="skip-link" href="#main">{t('nav.skipToContent')}</a>
 
-    <Header />
+    <Header overlay={heroOverlay} />
 
     <main id="main">
       <slot />

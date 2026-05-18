@@ -1,10 +1,10 @@
-# Pre-commit image-optimization hook — portable extract
+# Pre-commit image-optimization hook: portable extract
 
 A self-contained git pre-commit hook: it detects raster images staged for
 commit, optimizes them in place, and re-stages them, so an unoptimized asset
 can never land in history. Project-agnostic. Copy the files below into a
 new project, add the package.json entries, install once. File 5 is an optional
-companion hook unrelated to images — include it or skip it per project.
+companion hook unrelated to images: include it or skip it per project.
 
 ## What it does
 
@@ -85,7 +85,7 @@ overridden per run with flags.
 
 ---
 
-## File 1 — `scripts/hooks/pre-commit`
+## File 1: `scripts/hooks/pre-commit`
 
 Bash shim. Gets copied into `.git/hooks/pre-commit`. On non-Windows the
 installer also `chmod +x` it.
@@ -105,7 +105,7 @@ node scripts/pre-commit-optimize-images.mjs
 
 ---
 
-## File 2 — `scripts/pre-commit-optimize-images.mjs`
+## File 2: `scripts/pre-commit-optimize-images.mjs`
 
 Detects staged raster images, optimizes each, re-stages it. Aborts the commit
 (exit 1) if the optimizer fails.
@@ -163,7 +163,7 @@ main();
 
 ---
 
-## File 3 — `scripts/install-hooks.mjs`
+## File 3: `scripts/install-hooks.mjs`
 
 Copies repo-tracked hooks into `.git/hooks/`. Idempotent. Run once per clone.
 
@@ -210,7 +210,7 @@ main().catch((err) => {
 
 ---
 
-## File 4 — `scripts/optimize-images-batch.mjs`
+## File 4: `scripts/optimize-images-batch.mjs`
 
 The optimizer. Usable on its own (`npm run img:batch`) or called by the hook.
 
@@ -457,12 +457,12 @@ main();
 
 ---
 
-## File 5 — `scripts/hooks/prepare-commit-msg` (optional)
+## File 5: `scripts/hooks/prepare-commit-msg` (optional)
 
 Companion hook, independent of the image pipeline. It prepends an `MMDD-HHMM`
 timestamp to commit messages written through the editor, so a bare
 `git commit` yields a subject like `0516-1637 …` instead of an empty line.
-Drop it in `scripts/hooks/` and `install-hooks.mjs` picks it up automatically —
+Drop it in `scripts/hooks/` and `install-hooks.mjs` picks it up automatically -
 no extra wiring.
 
 ```bash
@@ -486,7 +486,7 @@ path: `-m`/`-F` (message), `--amend`/`-C` (commit), merges, squashes, and
 templates all keep their messages untouched. Only a plain `git commit` gets the
 timestamp.
 
-**Caveat — conventional commits.** Prepending a timestamp competes with a strict
+**Caveat: conventional commits.** Prepending a timestamp competes with a strict
 conventional-commits policy (`feat:`, `fix:`, …). The two can coexist: type a
 conventional subject in the editor and the hook prepends to it, giving
 `0516-1637 feat: add contact form`. But a bare `git commit` with no typed
@@ -509,7 +509,7 @@ project enforces conventional commits, either skip this hook or commit with
 - **Extending.** To add more hooks (lint, type-check, secret-scan), drop more
   files into `scripts/hooks/` and they get installed the same way. The
   `pre-commit` shim can call several scripts in sequence. File 5 is a worked
-  example of this — a standalone `prepare-commit-msg` hook.
+  example of this: a standalone `prepare-commit-msg` hook.
 - **Husky alternative.** This is a zero-dependency approach. If the project
   already uses Husky, put the same `node scripts/pre-commit-optimize-images.mjs`
   line in `.husky/pre-commit` instead and skip files 1 and 3.

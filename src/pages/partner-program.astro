@@ -1,0 +1,601 @@
+---
+/**
+ * Partner program (`/partner-program`).
+ * Content sourced from hubstudio.ai/partner-program.
+ * S1 Hero · S2 Why partner · S3 Stat row · S4 How it works ·
+ * S5 Commission tiers · S6 What we handle + Who we look for · S7 Closing CTA.
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const stats = [
+  { value: '60–80%', label: 'Cost reduction we deliver clients' },
+  { value: '7×', label: 'Output scaling, against a traditional studio' },
+  { value: '22→78%', label: 'Approval rate, where the work lands' },
+];
+
+const steps = [
+  {
+    title: 'You introduce',
+    body: 'Introduce us to brands, agencies, or retailers who need content at scale. That is the whole ask.',
+  },
+  {
+    title: 'We deliver',
+    body: 'We handle everything from there: pitches, proposals, production, and delivery. You stay in the loop, not on the hook.',
+  },
+  {
+    title: 'You earn',
+    body: 'Commission lands on every deal that closes, plus ongoing residuals when clients renew. No quotas, no minimum commitments.',
+  },
+];
+
+const tiers = [
+  {
+    variant: 'orange',
+    badge: 'Tier 1',
+    name: 'Introduction Partner',
+    eligibility: 'Starting tier for all new partners.',
+    earn: [
+      '15% commission on your first deal',
+      '12% commission on deals 2–5',
+      'Immediate payment once the client pays us',
+    ],
+    advance: 'Close 6 deals or generate $30K in gross margin to advance.',
+  },
+  {
+    variant: 'navy',
+    badge: 'Tier 2',
+    name: 'Active Partner',
+    eligibility: 'Unlocked after closing 6 deals or generating $30K in gross margin.',
+    earn: [
+      '15% commission on every deal',
+      '5% residual on client renewals for 12 months',
+      '$500 bonus for every 5 closed deals',
+      'Early commission draws after your third deal',
+    ],
+    advance: 'Generate $100K+ in annual gross margin for hubStudio to advance.',
+  },
+  {
+    variant: 'cream',
+    badge: 'Tier 3',
+    name: 'Elite Partner',
+    eligibility: 'Unlocked after driving $100K+ in annual gross margin.',
+    earn: [
+      '20% commission on every deal',
+      '10% residual on renewals for 24 months',
+    ],
+    advance: 'Best for seasoned business development professionals building a serious revenue stream alongside us.',
+  },
+];
+
+const handled = [
+  'Initial discovery calls and needs assessment',
+  'Custom proposals tailored to client needs',
+  'Full project execution and delivery',
+  'Client relationship management',
+];
+
+const fit = [
+  'Former agency professionals with deep client relationships',
+  'Marketing consultants advising brands on content strategy',
+  'Creative directors who have gone independent',
+  'Business development professionals in retail or ecommerce',
+  'Anyone with access to marketing decision-makers who need content at scale',
+];
+---
+
+<Layout
+  title="Partner Program | hubStudio"
+  description="Introduce brands to AI-native content production and earn commission on every deal, plus renewal residuals. Three partner tiers, no quotas, no minimum commitments."
+>
+  <!-- ===== S1: Hero ===== -->
+  <section class="section hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Partner program</span>
+        <h1 class="headline h1 reveal hero__title">
+          Turn your network into <span class="accent">revenue</span> by introducing
+          brands to AI-native content production.
+        </h1>
+        <p class="lead hero__lead">
+          You are not selling another creative agency. You are introducing businesses
+          to the future of content production, and earning meaningful commission for
+          every introduction that closes.
+        </p>
+        <div class="hero__cta">
+          <Button variant="primary" href="/contact">Book a call</Button>
+          <Button variant="secondary" href="#tiers">See the commission tiers</Button>
+        </div>
+      </div>
+
+      <figure class="hero__visual card">
+        <img
+          class="hero__img"
+          src="/Images/partner-program-hero.webp"
+          alt="Interconnected orange and navy cubes branching into a network, content produced at scale"
+          width="1408"
+          height="768"
+          fetchpriority="high"
+        />
+        <span class="chip hero__chip"><span class="chip__dot"></span>Now recruiting</span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== S2: Why partner with us ===== -->
+  <section class="section bridge">
+    <div class="container bridge__inner">
+      <span class="eyebrow">Why partner with us</span>
+      <h2 class="headline h2 reveal">
+        The content production model is <span class="accent">broken</span>.
+      </h2>
+      <p class="lead bridge__sub">
+        Brands need thousands of assets a month, but traditional studios are too slow
+        and too expensive to deliver at that scale. We solved it by combining elite
+        creative talent with AIGC technology, GPU infrastructure, and real studio
+        execution.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S3: Stat row ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="stat-row card card--cream">
+        {
+          stats.map((stat) => (
+            <div class="stat">
+              <span class="stat__value">{stat.value}</span>
+              <span class="stat__label">{stat.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4: How it works ===== -->
+  <section class="section" id="how">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2 class="headline h2 reveal">Three steps. One <span class="accent">introduction</span>.</h2>
+      </header>
+      <div class="step-row">
+        {
+          steps.map((step) => (
+            <article class="step card card--white">
+              <h3 class="headline h3 step__title">{step.title}</h3>
+              <p class="step__body">{step.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S5: Commission tiers ===== -->
+  <section class="section" id="tiers">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">Commission structure</span>
+        <h2 class="headline h2 reveal">Three partnership <span class="accent">tiers</span>.</h2>
+      </header>
+      <div class="tier-row">
+        {
+          tiers.map((tier) => (
+            <article class={`tier card card--${tier.variant}${tier.variant === 'orange' ? ' grain' : ''}`}>
+              <span class="tier__badge">{tier.badge}</span>
+              <h3 class="tier__name">{tier.name}</h3>
+              <p class="tier__eligibility">{tier.eligibility}</p>
+              <span class="tier__label">What you earn</span>
+              <ul class="tier__items">
+                {tier.earn.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <p class="tier__advance">{tier.advance}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="bonus card card--white">
+        <span class="chip bonus__chip">Fast-start bonus</span>
+        <p class="bonus__text">
+          Close your first deal within 60 days of joining and we add <strong>$500</strong>
+          to your commission. Not pressure. Momentum. We want you to see early success,
+          and we are willing to invest in making it happen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S6: What we handle + Who we look for ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="pair">
+        <article class="pair__card card card--white">
+          <span class="chip pair__chip">What we handle</span>
+          <h3 class="headline h3">Once you make the introduction</h3>
+          <ul class="pair__list">
+            {handled.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+
+        <article class="pair__card card card--white">
+          <span class="chip pair__chip">Who we look for</span>
+          <h3 class="headline h3">Great partners come from everywhere</h3>
+          <ul class="pair__list">
+            {fit.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S7: Closing CTA ===== -->
+  <section class="closing">
+    <div class="container closing__inner">
+      <span class="eyebrow">Ready to start?</span>
+      <h2 class="headline h2 reveal closing__head">
+        Book a 15-minute call to explore the <span class="accent">partnership</span>.
+      </h2>
+      <Button variant="primary" href="/contact">Book a call</Button>
+      <p class="closing__line">hello@hubstudio.ai &middot; Studios across 16 markets</p>
+      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
+        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
+        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
+      </svg>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section--tight {
+    padding-block: 24px;
+  }
+  .section-head {
+    text-align: center;
+    max-width: 760px;
+    margin-inline: auto;
+    margin-bottom: 56px;
+    display: grid;
+    gap: 16px;
+  }
+
+  /* ---- S1 Hero ---- */
+  .hero {
+    padding-top: 70px;
+  }
+  .hero__grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+    }
+  }
+  .hero__title {
+    margin-top: 20px;
+    font-size: clamp(34px, 3.6vw, 52px);
+  }
+  .hero__lead {
+    margin-top: 24px;
+    max-width: 52ch;
+  }
+  .hero__cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .hero__visual {
+    position: relative;
+    line-height: 0;
+  }
+  .hero__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1408 / 768;
+    object-fit: cover;
+  }
+  .hero__chip {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: var(--brand-orange);
+    color: #fff;
+  }
+
+  /* ---- S2 Bridge ---- */
+  .bridge__inner {
+    text-align: center;
+    max-width: 820px;
+    margin-inline: auto;
+    display: grid;
+    gap: 18px;
+  }
+  .bridge__sub {
+    margin-inline: auto;
+    max-width: 62ch;
+  }
+
+  /* ---- S3 Stat row ---- */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stat {
+    padding: 40px 28px;
+    border-right: 1px solid var(--line-hairline);
+  }
+  .stat:last-child {
+    border-right: none;
+  }
+  .stat__value {
+    display: block;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat__label {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--text-mute);
+  }
+  @media (max-width: 767px) {
+    .stat-row {
+      grid-template-columns: 1fr;
+    }
+    .stat {
+      border-right: none;
+      border-bottom: 1px solid var(--line-hairline);
+    }
+    .stat:last-child {
+      border-bottom: none;
+    }
+  }
+
+  /* ---- S4 How it works ---- */
+  .step-row {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .step-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .step {
+    padding: 32px;
+  }
+  .step__body {
+    margin-top: 12px;
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+
+  /* ---- S5 Commission tiers ---- */
+  .tier-row {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .tier-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .tier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+  }
+  .tier__badge {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.16);
+  }
+  .card--cream .tier__badge {
+    background: rgba(233, 78, 27, 0.12);
+    color: var(--brand-orange);
+  }
+  .tier__name {
+    margin-top: 18px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .tier__eligibility {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.45;
+    opacity: 0.82;
+  }
+  .tier__label {
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .tier__items {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+    flex: 1;
+  }
+  .tier__items li {
+    font-size: 14px;
+    line-height: 1.45;
+    padding-left: 20px;
+    position: relative;
+  }
+  .tier__items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.55;
+  }
+  .tier__advance {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.82;
+  }
+  .card--cream .tier__advance {
+    border-top-color: var(--line-hairline);
+  }
+  .bonus {
+    margin-top: var(--gap-card);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  @media (min-width: 768px) {
+    .bonus {
+      flex-direction: row;
+      align-items: center;
+      gap: 28px;
+    }
+  }
+  .bonus__chip {
+    align-self: flex-start;
+    flex: none;
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .bonus__text {
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .bonus__text strong {
+    color: var(--text-ink);
+  }
+
+  /* ---- S6 Two-up pair ---- */
+  .pair {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .pair {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .pair__card {
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+  }
+  .pair__chip {
+    align-self: flex-start;
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .pair__card h3 {
+    margin-top: 18px;
+  }
+  .pair__list {
+    margin-top: 22px;
+    display: grid;
+    gap: 12px;
+  }
+  .pair__list li {
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+    padding-left: 22px;
+    position: relative;
+  }
+  .pair__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+
+  /* ---- S7 Closing CTA ---- */
+  .closing {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .closing__inner {
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing__head {
+    max-width: 18ch;
+  }
+  .closing__line {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .closing__cube {
+    width: 44px;
+    margin-top: 8px;
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll (§10: headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>
