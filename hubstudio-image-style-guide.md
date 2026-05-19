@@ -73,7 +73,9 @@ Every image gets a final human pass to catch these before it goes live.
 
 ## Workflow for generating site images
 
-Start with a written photographer reference and a specific real-world lighting condition rather than a style adjective. *"Shot like Harley Weir, single window light from camera left, Portra 400, mid-afternoon"* outperforms *"cinematic and moody."*
+Use a photographer reference and a specific real-world lighting condition to frame the brief in your head, then translate that into concrete descriptive language for the prompt you actually send. A prompt built from "single window light from camera left, warm slightly desaturated grade, mid-afternoon, shallow depth of field, fine grain" outperforms a vague "cinematic and moody."
+
+**Never put a real person's name in a generation prompt (permanent).** The image model behind `scripts/generate-image.mjs` (gpt-image-2 via WaveSpeed) rejects prompts that name photographers, artists, directors, celebrities, or any real individual: it flags them as "potentially sensitive" and the job fails. The photographer names throughout this guide are internal art-direction shorthand only. When you write the literal prompt, convert every named reference into its concrete visual properties: lens, light direction and quality, color grade, grain, composition, distance, mood. Describe the look, never the name.
 
 Generate, then take the best frame into postproduction the way a real photographer would: subtle dodge and burn, film grain pass, slight chromatic aberration at edges, color grade in Lightroom or Capture One presets. This postproduction stage is what closes the gap between "AI image" and "campaign image" and what makes detection tools unreliable against the final file.
 
