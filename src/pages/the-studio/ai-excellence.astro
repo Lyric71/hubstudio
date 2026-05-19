@@ -1,0 +1,2185 @@
+---
+/**
+ * AI Excellence (`/the-studio/ai-excellence`).
+ * Narrative content sourced from ai-excellence-page.md. Brand name normalised
+ * to the canonical "hubStudio" casing throughout. No ordinal numerals in any
+ * card or repeated block, per the permanent no-numbers-in-cards rule: the
+ * five-stage pipeline carries its sequence through stage names and visual
+ * order only. Stat figures are data display (units attached), not ordinals.
+ *
+ * Layout mirrors who-we-are.astro: layered editorial. Image hero, overlapping
+ * stat card, an image-backed capabilities trio, asymmetric splits, an audience
+ * grid, a vertical pipeline flow, service cards, an FAQ accordion and a
+ * closing CTA. Motion:
+ * page-load stagger in the hero, scroll-reveal elsewhere, parallax on section
+ * media, count-up on stats, plus a scroll-progress bar.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+const heroChips = [
+  'AIGC image',
+  'AIGC video',
+  'AIGC content',
+  'Custom model training',
+  'Prompt engineering',
+];
+
+/* S3: the three capabilities that fold into one studio. */
+const unitePillars = [
+  {
+    name: 'Best in class creative',
+    desc: 'A strong creative and design team drawn from 4A agencies, mixing international and Chinese talent.',
+  },
+  {
+    name: 'AIGC technical experts',
+    desc: 'AIGC engineers with deep hands-on experience, running our own dedicated GPU infrastructure.',
+  },
+  {
+    name: 'Studio capabilities',
+    desc: 'Account services, media, and live photo and video shooting, all under one roof.',
+  },
+];
+
+const stats = [
+  { value: 60, suffix: '%', label: 'Below traditional studio production cost' },
+  { value: 7, suffix: 'x', label: 'Output scaled for brands working this way' },
+  { value: 78, suffix: '%', label: 'Internal approval rate on AI assets, up from 22%' },
+  { value: 6, suffix: 'wk', label: 'From brief to a trained custom model, at most' },
+];
+
+/* S4: the three-way market position. The hubStudio card is the resolved
+   answer, so it carries the accent treatment. */
+const stance = [
+  {
+    kind: 'Traditional studios',
+    line: 'Craft, but too slow and too expensive for the volume marketing teams need now.',
+  },
+  {
+    kind: 'Generic AI tools',
+    line: 'Fast and cheap, weak on cultural nuance and brand voice. They hand you a tool, not an output.',
+  },
+  {
+    kind: 'hubStudio',
+    line: 'AI does the heavy lifting. Senior creatives make sure the result is something the brand can put its name on.',
+    lead: true,
+  },
+];
+
+/* S6: who we work with. One creative angle each, written for hubStudio. */
+const audiences = [
+  {
+    name: 'Agencies',
+    desc: 'White-label production capacity for groups that need to scale output without scaling headcount.',
+  },
+  {
+    name: 'Brand marketing teams',
+    desc: 'HiSense in consumer electronics, age20 in beauty, both running always-on content programs through the studio.',
+  },
+  {
+    name: 'Retailers and eCommerce',
+    desc: 'Thousands of SKUs across an almost infinite set of format requirements, held to one brand standard.',
+  },
+  {
+    name: 'Manufacturers',
+    desc: 'Global product libraries localized so regional sales teams sell with assets that fit their market.',
+  },
+  {
+    name: 'Procurement leads',
+    desc: 'Predictable monthly spend, clear deliverables, quarterly advance billing for budget clarity.',
+  },
+];
+
+/* S6 icon set: one consistent 1.7px stroke system drawn for hubStudio.
+   Interlocking frames, campaign horn, price tag, product box, billing
+   calendar. currentColor lets each card recolour them. */
+const audienceIcons = [
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="3" width="12" height="12" rx="2.6"/><rect x="9" y="9" width="12" height="12" rx="2.6"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a2 2 0 0 0 2 2h1l1.6 4.6"/><path d="M4 12 17 5.4v13.2L4 12Z"/><path d="M17.4 9.4a3.2 3.2 0 0 1 0 5.2"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 12.4 12 4h6.4v6.4L10 18.8a1.7 1.7 0 0 1-2.4 0l-4-4a1.7 1.7 0 0 1 0-2.4Z"/><circle cx="14.9" cy="9.1" r="1.4"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 21 8v8l-9 5.2L3 16V8Z"/><path d="M3 8l9 5.2L21 8"/><path d="M12 13.2V21"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="4.6" width="17.2" height="16" rx="2.6"/><path d="M3.4 9.6h17.2"/><path d="M8 2.8v3.6M16 2.8v3.6"/><path d="M7.8 14.4 10.2 16.8 16 11"/></svg>',
+];
+
+/* S7: the production pipeline. Five stages, sequence carried by name and
+   order, no ordinal numerals. */
+const pipeline = [
+  {
+    name: 'Brief',
+    desc: 'We sit with the client team to map objectives, brand codes, audiences and channels.',
+    meta: 'One or two working sessions',
+  },
+  {
+    name: 'Train',
+    desc: 'Engineers train custom AI models, including LoRA, on the brand’s visual language and product library.',
+    meta: 'Three to six weeks',
+  },
+  {
+    name: 'Create',
+    desc: 'Senior art directors generate options at volume, then narrow to the strongest cuts.',
+    meta: 'A hundred concepts down to ten',
+  },
+  {
+    name: 'Perfect',
+    desc: 'Studio retouching, copy editing and brand QA before anything leaves the building.',
+    meta: 'Final human pass',
+  },
+  {
+    name: 'Deploy',
+    desc: 'Files delivered in client formats, ready for social, eCommerce, paid media and CRM.',
+    meta: 'Channel-ready output',
+  },
+];
+
+/* S8: what collapsing production costs unlock for brands. */
+const unlocks = [
+  'A hundred concepts to test instead of five',
+  'Native relevance for every audience, culture and platform, not a global creative that lands nowhere specific',
+  'Bold ideas tested without production risk',
+  'No props, no talent fees, no crew on standby',
+  'Data feedback that improves the next round of assets',
+  'Multi-market transcreation that respects local nuance, not a translated headline on a Western image',
+  'Output at scale and speed, without the brand becoming unrecognizable in the process',
+];
+
+/* S9: the three AIGC service lines. Service detail pages are not yet live, so
+   each card links to the work index rather than a dead route. */
+const services = [
+  {
+    name: 'AIGC Image',
+    img: '/Images/work/camper-hero.webp',
+    w: 1440,
+    h: 1920,
+    alt: 'A Camper footwear campaign visual adapted across markets by hubStudio.',
+    lead: 'Hundreds of on-brand product shots, lifestyle visuals and campaign assets, delivered in days.',
+    detail: 'Product photography, seasonal campaigns, market adaptations, social assets. Cuts production time by 80 percent.',
+  },
+  {
+    name: 'AIGC Video',
+    img: '/Images/work/hisense-hero.webp',
+    w: 1800,
+    h: 1350,
+    alt: 'A HiSense brand video frame produced through the hubStudio AIGC pipeline.',
+    lead: 'Premium brand storytelling without the constraints of traditional video production.',
+    detail: 'Short-form social, brand films, campaign cutdowns, built for the feed they ship to.',
+  },
+  {
+    name: 'AIGC Content',
+    img: '/Images/work/age20-hero.webp',
+    w: 1800,
+    h: 2423,
+    alt: 'An age20 beauty campaign asset created by the hubStudio content team.',
+    lead: 'PR articles, campaign storyboards, video scripts, email copy, product naming, website pages.',
+    detail: 'Brand voice held steady across every format. Days, not weeks.',
+  },
+];
+
+/* S10: how clients engage. Three models, most use a combination. */
+const engage = [
+  {
+    kicker: 'One-off',
+    name: 'Creative AI Setup',
+    desc: 'The studio defines the client’s visual language and trains custom AI models, including LoRA, on the brand. A one-time engagement that becomes the foundation for everything after.',
+  },
+  {
+    kicker: 'Monthly retainer',
+    name: 'Ongoing Content Production',
+    desc: 'A predictable monthly flow of text, images and video. Scoped to the channel mix, paced to the editorial calendar, billed quarterly in advance for budget clarity.',
+  },
+  {
+    kicker: 'Project-based',
+    name: 'Studio Services',
+    desc: 'Live photo and video shoots when AIGC alone is not the right call, product image cleanup so AI output starts from a stronger base, plus distribution across social, web and eCommerce.',
+  },
+];
+
+/* S11: what clients are actually paying for. Authored 1.8px line icons:
+   four-point spark, code brackets, node graph, curation funnel. */
+const payoff = [
+  {
+    name: 'Creative expertise',
+    desc: 'People who know what works for your audience, not just what looks impressive on a render.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.4 14.9 9.1 21.6 12 14.9 14.9 12 21.6 9.1 14.9 2.4 12 9.1 9.1Z"/></svg>',
+  },
+  {
+    name: 'Prompt engineering',
+    desc: 'Writing instructions so the model produces what the brand needs the first time, not the fortieth.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7.2 4.4 12 9 16.8"/><path d="M15 7.2 19.6 12 15 16.8"/></svg>',
+  },
+  {
+    name: 'Custom model training',
+    desc: 'Teaching generation models the brand’s specific style, a visual intelligence off-the-shelf tools cannot match.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.3 7.3 16.7 11M7.3 16.7 16.7 13"/></svg>',
+  },
+  {
+    name: 'Intelligent curation',
+    desc: 'Hundreds of options get generated. The ten that actually perform are the ones we ship.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 5h17.2l-6.6 7.7V20l-4 1.6v-8.9Z"/></svg>',
+  },
+];
+
+const ipPoints = [
+  'Every asset documented: which model was used, which references trained it, which prompts produced it.',
+  'The custom models we train on your brand are your property, not ours. Full stop.',
+  'For commercial work, we use models with clear licensing terms.',
+  'An audit trail any legal team can verify. No client legal review has come back with a problem yet.',
+];
+
+const faqs = [
+  {
+    q: 'How long does a Creative AI Setup take?',
+    a: 'Three to six weeks from brief to trained model, depending on the depth of the brand library.',
+  },
+  {
+    q: 'What does monthly content production cost?',
+    a: 'Honestly, it depends. Retainers start in the low four figures per month for smaller brands and scale up from there based on volume. We price around the actual asset mix you need, not a fixed package, because no two brands run the same channel mix. Happy to walk you through what your numbers would look like on a call.',
+  },
+  {
+    q: 'Can you match the quality of a traditional photo shoot?',
+    a: 'For most product, lifestyle and campaign work, yes, easily. Where it gets more interesting is high-end fashion editorial, or shoots that need a specific talent or location. There we usually recommend a hybrid approach: live capture combined with AIGC post-production. The two are not mutually exclusive.',
+  },
+  {
+    q: 'Do you work with agencies on a white-label basis?',
+    a: 'Yes. White-label production for agencies is one of the studio’s largest service lines.',
+  },
+  {
+    q: 'Where is your team based?',
+    a: 'The studio is based in China, with creatives drawn from both Western 4A agencies and the Chinese market. Clients are across Asia, Europe and the Americas.',
+  },
+];
+---
+
+<Layout
+  title="AI Excellence | hubStudio AIGC Content Studio"
+  description="AI-native content studio with senior creatives, prompt engineers and GPU power. On-brand assets at scale, in days, around 60% cheaper."
+>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===== S1: Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero__media">
+      <img
+        class="hero__bg"
+        data-parallax
+        data-parallax-speed="0.16"
+        src="/Images/hubstudio-shanghai-studio.webp"
+        alt="The hubStudio production floor in Shanghai, creatives at GPU workstations."
+        width="1024"
+        height="1024"
+        fetchpriority="high"
+      />
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="grain hero__grain" aria-hidden="true"></div>
+    </div>
+
+    <div class="container hero__inner">
+      <p class="eyebrow hero__kicker">The Studio</p>
+      <h1 class="hero__title">
+        <span class="hero__w">AI</span>
+        <span class="hero__w hero__w--accent">Excellence</span>
+      </h1>
+      <p class="hero__lede">
+        Creative intelligence is the new moat
+      </p>
+      <p class="hero__intro">
+        When every brand has the same AI tools, the work that wins is the work
+        humans choose to ship. hubStudio is an AI-native content studio built
+        for exactly that.
+      </p>
+      <ul class="hero__chips">
+        {heroChips.map((c) => <li class="hero__chip">{c}</li>)}
+      </ul>
+      <div class="hero__meta">
+        <span class="hero__meta-item">A studio first, an AI company second</span>
+        <span class="hero__meta-item">
+          Clients across Asia, Europe and the Americas
+        </span>
+      </div>
+    </div>
+
+    <a class="hero__cue" href="#one-studio" aria-label="Scroll to read more">
+      <span class="hero__cue-label">Scroll</span>
+      <span class="hero__cue-line" aria-hidden="true"></span>
+    </a>
+
+    <svg class="hero__cube" viewBox="0 0 32 35" aria-hidden="true">
+      <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+      <path d="M4 11 16 18 16 31 4 24Z" fill="#fff" opacity="0.85" />
+      <path d="M28 11 16 18 16 31 28 24Z" fill="#fff" opacity="0.55" />
+    </svg>
+  </section>
+
+  <!-- ===== S2: Stats (overlapping card) ===== -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__card">
+        {
+          stats.map((s, i) => (
+            <article class="stat" data-reveal style={`--i:${i}`}>
+              <span class="stat__num">
+                <span class="stat__count" data-count={s.value}>0</span>
+                <span class="stat__suffix">{s.suffix}</span>
+              </span>
+              <span class="stat__label">{s.label}</span>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: We unite all as one studio ===== -->
+  <section class="unite" id="one-studio">
+    <div class="unite__media">
+      <img
+        class="unite__bg"
+        data-parallax
+        data-parallax-speed="0.12"
+        src="/Images/who-we-are-office.webp"
+        alt="The hubStudio team at workstations in a bright open-plan studio."
+        width="1050"
+        height="573"
+        loading="lazy"
+      />
+      <div class="unite__scrim" aria-hidden="true"></div>
+      <div class="grain unite__grain" aria-hidden="true"></div>
+    </div>
+    <div class="container unite__inner">
+      <header class="unite__head">
+        <p class="eyebrow unite__eyebrow" data-reveal>Human-led, AI-generated</p>
+        <h2 class="unite__title" data-reveal>
+          We unite all as <span class="accent">one studio</span>
+        </h2>
+        <p class="unite__intro" data-reveal>
+          Senior creatives, AIGC engineers and a working studio, pulling in the
+          same direction on every brief.
+        </p>
+      </header>
+      <ul class="unite__pillars">
+        {
+          unitePillars.map((p, i) => (
+            <li class="upillar" data-reveal style={`--i:${i}`}>
+              <span class="upillar__bar" aria-hidden="true" />
+              <h3 class="upillar__name">{p.name}</h3>
+              <p class="upillar__desc">{p.desc}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S4: A human-led AI studio ===== -->
+  <section class="section studio">
+    <div class="container studio__grid">
+      <div class="studio__copy">
+        <p class="eyebrow accent-eyebrow" data-reveal>Positioning</p>
+        <h2 class="headline h2 studio__head" data-reveal>
+          A <span class="accent">human-led</span> AI studio, not another
+          generic tool
+        </h2>
+        <p class="studio__p" data-reveal>
+          Most traditional studios are too slow and too expensive for the
+          volume brands actually need now. Walk into any marketing department
+          in November and ask how the year's content backlog is going. You will
+          get your answer.
+        </p>
+        <p class="studio__p" data-reveal>
+          Generic AI platforms are fast and cheap. They also fall short on
+          cultural nuance, brand voice and creative judgment. They hand a
+          marketing team a tool, not an output the team can ship without a
+          rework. And that rework is usually where the savings evaporate.
+        </p>
+
+        <div class="stance" data-reveal>
+          {
+            stance.map((s) => (
+              <article class:list={['stance__card', s.lead && 'stance__card--lead']}>
+                <span class="stance__kind">{s.kind}</span>
+                <p class="stance__line">{s.line}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <figure class="studio__media" data-reveal>
+        <div class="media-frame media-frame--tall">
+          <img
+            data-parallax
+            data-parallax-speed="0.08"
+            src="/Images/who-we-are-studio.jpg"
+            alt="A photographer shooting a product on a lit set inside the hubStudio space."
+            width="1360"
+            height="768"
+            loading="lazy"
+          />
+        </div>
+        <span class="studio__badge">AI lifts. Senior creatives sign off.</span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== S5: East and West ===== -->
+  <section class="section markets">
+    <div class="container markets__grid">
+      <figure class="markets__media" data-reveal>
+        <div class="media-frame media-frame--tall">
+          <img
+            data-parallax
+            data-parallax-speed="0.1"
+            src="/Images/who-we-are-china-speed.jpg"
+            alt="A Chinese production crew working across Western and Chinese platform formats."
+            width="768"
+            height="1360"
+            loading="lazy"
+          />
+        </div>
+      </figure>
+      <div class="markets__copy">
+        <p class="eyebrow accent-eyebrow" data-reveal>Two ecosystems</p>
+        <h2 class="headline h2 markets__head" data-reveal>
+          East and West, under <span class="accent">one roof</span>
+        </h2>
+        <p class="markets__lead" data-reveal>
+          Most studios know one ecosystem. We work in both.
+        </p>
+        <p class="markets__p" data-reveal>
+          Western platforms: Google, Meta and the global creative stack you
+          would expect. Chinese platforms: Alibaba, ByteDance, Tencent and the
+          local AIGC tooling that outside teams rarely navigate well, even when
+          they think they do.
+        </p>
+        <p class="markets__p" data-reveal>
+          Our creative bench mixes 4A agency veterans with Chinese designers and
+          art directors. The studio is led by founder Cyril Drouin, former CEO
+          of Publicis Commerce for China and North Asia, who spent two decades
+          running digital and commerce operations across both markets before
+          launching hubStudio in 2024.
+        </p>
+        <blockquote class="pull-quote pull-quote--inline" data-reveal>
+          <p class="pull-quote__text">
+            After twenty years going back and forth between Western and Chinese
+            digital ecosystems, one thing is obvious. You cannot brief your way
+            to cultural relevance. You have to hire it.
+          </p>
+          <footer class="pull-quote__by">Cyril Drouin, Founder, hubStudio</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S6: Who we work with ===== -->
+  <section class="section audiences">
+    <div class="container">
+      <header class="audiences__head">
+        <p class="eyebrow accent-eyebrow" data-reveal>Who we work with</p>
+        <h2 class="headline h2" data-reveal>
+          Built for teams that ship at <span class="accent">scale</span>
+        </h2>
+      </header>
+      <ul class="audiences__grid">
+        {
+          audiences.map((a, i) => (
+            <li class="aud" data-reveal style={`--i:${i % 3}`}>
+              <span class="aud__icon" set:html={audienceIcons[i]} />
+              <h3 class="aud__name">{a.name}</h3>
+              <p class="aud__desc">{a.desc}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S7: How the pipeline works ===== -->
+  <section class="pipeline">
+    <div class="container">
+      <header class="pipeline__head">
+        <p class="eyebrow pipeline__eyebrow" data-reveal>How the work moves</p>
+        <h2 class="pipeline__title" data-reveal>
+          How the <span class="accent">pipeline</span> works
+        </h2>
+        <p class="pipeline__intro" data-reveal>
+          Five stages. Each one has a clear owner and a clear output.
+        </p>
+      </header>
+      <ol class="flow">
+        {
+          pipeline.map((stage, i) => (
+            <li class="stage" data-reveal style={`--i:${i % 3}`}>
+              <span class="stage__mark" aria-hidden="true" />
+              <div class="stage__body">
+                <h3 class="stage__name">{stage.name}</h3>
+                <p class="stage__desc">{stage.desc}</p>
+              </div>
+              <span class="stage__meta">{stage.meta}</span>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="pipeline__close" data-reveal>
+        Brands working with us this way have moved internal approval rates from
+        22% to 78% on AI-generated assets, and scaled output by roughly 7x.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S8: Why AIGC changes the economics ===== -->
+  <section class="section economics">
+    <div class="container economics__inner">
+      <div class="economics__lead-col">
+        <p class="eyebrow accent-eyebrow" data-reveal>The new economics</p>
+        <h2 class="headline h2 economics__head" data-reveal>
+          Why AIGC changes the <span class="accent">economics</span> of content
+        </h2>
+        <p class="economics__p" data-reveal>
+          Production costs are collapsing. Props, talent fees, location rentals,
+          crew, post-production: the line items that defined the old model are
+          shrinking or, in some cases, gone entirely. What replaces them is
+          infrastructure, talent direction and creative judgment.
+        </p>
+        <p class="economics__p" data-reveal>
+          Hyper-relevance is the new baseline. Content needs to fit every
+          platform, every audience, every market. The old production models
+          cannot keep up, and patching them with one AI tool here and a
+          freelancer there will not fix the problem.
+        </p>
+      </div>
+      <ul class="unlocks">
+        {
+          unlocks.map((u, i) => (
+            <li class="unlock" data-reveal style={`--i:${i % 2}`}>
+              <span class="unlock__mark" aria-hidden="true" />
+              <span>{u}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S9: Our AIGC services ===== -->
+  <section class="section services">
+    <div class="container">
+      <header class="services__head">
+        <p class="eyebrow accent-eyebrow" data-reveal>What we make</p>
+        <h2 class="headline h2" data-reveal>
+          Our AIGC <span class="accent">services</span>
+        </h2>
+      </header>
+      <div class="services__grid">
+        {
+          services.map((svc, i) => (
+            <article class="svc" data-reveal style={`--i:${i}`}>
+              <div class="svc__media">
+                <img
+                  src={svc.img}
+                  alt={svc.alt}
+                  width={svc.w}
+                  height={svc.h}
+                  loading="lazy"
+                />
+              </div>
+              <div class="svc__body">
+                <h3 class="svc__name">{svc.name}</h3>
+                <p class="svc__lead">{svc.lead}</p>
+                <p class="svc__detail">{svc.detail}</p>
+                <a class="svc__link" href="/work">
+                  See it in the work
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M5 12h13M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S10: How we engage ===== -->
+  <section class="section engage">
+    <div class="container">
+      <header class="engage__head">
+        <p class="eyebrow accent-eyebrow" data-reveal>How we engage</p>
+        <h2 class="headline h2" data-reveal>
+          Three ways to <span class="accent">work</span> with us
+        </h2>
+        <p class="engage__intro" data-reveal>
+          Three models. Most clients use a combination.
+        </p>
+      </header>
+      <div class="engage__grid">
+        {
+          engage.map((e, i) => (
+            <article class="engage-card" data-reveal style={`--i:${i}`}>
+              <span class="engage-card__kicker">{e.kicker}</span>
+              <h3 class="engage-card__name">{e.name}</h3>
+              <p class="engage-card__desc">{e.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S11: What you are actually paying for ===== -->
+  <section class="payoff">
+    <div class="payoff__glow" aria-hidden="true"></div>
+    <div class="container">
+      <header class="payoff__head">
+        <p class="eyebrow payoff__eyebrow" data-reveal>The real product</p>
+        <h2 class="payoff__title" data-reveal>
+          What you are actually <span class="accent">paying for</span>
+        </h2>
+        <p class="payoff__intro" data-reveal>
+          When every brand can access the same generation tools, the tools stop
+          being the differentiator. What separates work that performs from work
+          that just renders is what happens around the model.
+        </p>
+      </header>
+      <div class="payoff__grid">
+        {
+          payoff.map((p, i) => (
+            <article class="payoff-card" data-reveal style={`--i:${i % 2}`}>
+              <span class="payoff-card__icon" set:html={p.icon} />
+              <h3 class="payoff-card__name">{p.name}</h3>
+              <p class="payoff-card__desc">{p.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S12: Copyright and IP ===== -->
+  <section class="section ip">
+    <div class="container ip__inner">
+      <div class="ip__copy">
+        <p class="eyebrow accent-eyebrow" data-reveal>Copyright and IP</p>
+        <h2 class="headline h2 ip__head" data-reveal>
+          AI content raises real legal questions. We take them
+          <span class="accent">seriously</span>.
+        </h2>
+        <p class="ip__p" data-reveal>
+          We work with models that have clear licensing terms for commercial
+          use, and we keep an audit trail any legal team can verify. We would
+          rather over-document than leave a client exposed.
+        </p>
+      </div>
+      <ul class="ip__list">
+        {
+          ipPoints.map((point, i) => (
+            <li class="ip__item" data-reveal style={`--i:${i % 2}`}>
+              <span class="ip__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 12.5 10 17.5 19 7"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <span>{point}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S13: FAQ ===== -->
+  <section class="section faq">
+    <div class="container faq__inner">
+      <header class="faq__head">
+        <p class="eyebrow accent-eyebrow" data-reveal>Questions</p>
+        <h2 class="headline h2" data-reveal>
+          Frequently asked <span class="accent">questions</span>
+        </h2>
+      </header>
+      <div class="faq__list">
+        {
+          faqs.map((item) => (
+            <details class="qa" data-reveal>
+              <summary class="qa__q">
+                <span>{item.q}</span>
+                <span class="qa__sign" aria-hidden="true" />
+              </summary>
+              <div class="qa__a">
+                <p>{item.a}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S14: Closing CTA ===== -->
+  <section class="closing">
+    <div class="closing__glow" aria-hidden="true"></div>
+    <div class="container closing__inner">
+      <p class="eyebrow closing__eyebrow" data-reveal>Let's build your edge</p>
+      <h2 class="headline h2 closing__head" data-reveal>
+        See the output before you commit to <span class="accent">anything</span>
+      </h2>
+      <p class="closing__p" data-reveal>
+        Book a 30-minute call with Cyril and the team. We will walk you through
+        real client work, show the pipeline end to end, and generate a few free
+        visuals on your own brand.
+      </p>
+      <p class="closing__p closing__p--mute" data-reveal>
+        No pitch deck. No commitment. Just the work.
+      </p>
+      <div class="closing__cta" data-reveal>
+        <Button variant="primary" href="/contact">Contact us</Button>
+        <Button variant="on-dark" href="/work">See use cases</Button>
+      </div>
+      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
+        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
+        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
+      </svg>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ============ Shared ============ */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+    z-index: 200;
+    transition: width 80ms linear;
+  }
+
+  .accent-eyebrow {
+    color: var(--brand-orange);
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Reusable image frame: rounded, deep shadow, parallax-safe. */
+  .media-frame {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    box-shadow:
+      0 2px 8px rgba(10, 10, 20, 0.08),
+      0 30px 60px -28px rgba(10, 10, 20, 0.4);
+  }
+  .media-frame--wide {
+    aspect-ratio: 16 / 9;
+  }
+  .media-frame--tall {
+    aspect-ratio: 4 / 5;
+  }
+  .media-frame img {
+    position: absolute;
+    inset: -8% 0;
+    width: 100%;
+    height: 116%;
+    object-fit: cover;
+    will-change: transform;
+  }
+
+  /* Reusable pull quote. */
+  .pull-quote {
+    margin: 8px 0 0;
+    padding: 4px 0 4px 30px;
+    border-left: 3px solid var(--brand-orange);
+  }
+  .pull-quote__text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.5vw, 32px);
+    line-height: 1.32;
+    color: var(--text-ink);
+  }
+  .pull-quote__by {
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .pull-quote--inline {
+    margin-top: 24px;
+  }
+
+  /* ============ S1 Hero ============ */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: clamp(620px, 92vh, 940px);
+    padding: 96px 0 150px;
+    overflow: hidden;
+  }
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: -9% 0;
+    width: 100%;
+    height: 118%;
+    object-fit: cover;
+    object-position: 50% 46%;
+    will-change: transform;
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        104deg,
+        rgba(8, 12, 28, 0.92) 0%,
+        rgba(8, 12, 28, 0.74) 38%,
+        rgba(8, 12, 28, 0.3) 72%,
+        rgba(8, 12, 28, 0.46) 100%
+      ),
+      linear-gradient(0deg, rgba(8, 12, 28, 0.62) 0%, rgba(8, 12, 28, 0) 46%);
+  }
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+  }
+  .hero__inner {
+    position: relative;
+    color: var(--text-on-dark);
+  }
+  .hero__kicker {
+    color: var(--brand-orange);
+    position: relative;
+    padding-left: 46px;
+  }
+  .hero__kicker::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 34px;
+    height: 1px;
+    background: var(--brand-orange);
+  }
+  .hero__title {
+    margin-top: 22px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.92;
+    font-size: clamp(60px, 11vw, 168px);
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.22em;
+  }
+  .hero__w {
+    display: inline-block;
+  }
+  .hero__w--accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .hero__lede {
+    margin-top: 12px;
+    font-size: clamp(22px, 2.6vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    max-width: 20ch;
+  }
+  .hero__intro {
+    margin-top: 22px;
+    max-width: 56ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .hero__chips {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .hero__chip {
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(240, 237, 233, 0.26);
+    background: rgba(240, 237, 233, 0.06);
+    backdrop-filter: blur(6px);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .hero__meta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+  }
+  .hero__meta-item {
+    position: relative;
+    padding-left: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hero__meta-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .hero__cue {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hero__cue-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .hero__cue-line {
+    width: 1px;
+    height: 46px;
+    background: linear-gradient(
+      180deg,
+      rgba(240, 237, 233, 0.7),
+      rgba(240, 237, 233, 0)
+    );
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__cue-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: var(--brand-orange);
+    animation: cueDrop 1.9s ease-in-out infinite;
+  }
+  @keyframes cueDrop {
+    0% { transform: translateY(-16px); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: translateY(48px); opacity: 0; }
+  }
+  .hero__cube {
+    position: absolute;
+    width: clamp(40px, 6vw, 78px);
+    right: clamp(24px, 7vw, 120px);
+    top: clamp(110px, 18vh, 210px);
+    z-index: 1;
+    filter: drop-shadow(0 12px 24px rgba(8, 12, 28, 0.5));
+    animation: cubeFloat 7s ease-in-out infinite;
+  }
+  @keyframes cubeFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  /* Hero load orchestration */
+  .hero__kicker,
+  .hero__w,
+  .hero__lede,
+  .hero__intro,
+  .hero__chip,
+  .hero__meta,
+  .hero__cue {
+    opacity: 0;
+    animation: heroRise 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+  }
+  .hero__kicker { animation-delay: 0.1s; }
+  .hero__w:nth-child(1) { animation-delay: 0.22s; }
+  .hero__w:nth-child(2) { animation-delay: 0.34s; }
+  .hero__lede { animation-delay: 0.46s; }
+  .hero__intro { animation-delay: 0.56s; }
+  .hero__chip:nth-child(1) { animation-delay: 0.64s; }
+  .hero__chip:nth-child(2) { animation-delay: 0.7s; }
+  .hero__chip:nth-child(3) { animation-delay: 0.76s; }
+  .hero__chip:nth-child(4) { animation-delay: 0.82s; }
+  .hero__chip:nth-child(5) { animation-delay: 0.88s; }
+  .hero__meta { animation-delay: 0.96s; }
+  .hero__cue { animation-delay: 1.3s; }
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(34px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ S2 Stats ============ */
+  .stats {
+    position: relative;
+    z-index: 2;
+    margin-top: -96px;
+  }
+  .stats__card {
+    border-radius: var(--radius-card);
+    box-shadow:
+      0 2px 10px rgba(10, 10, 20, 0.06),
+      0 40px 70px -40px rgba(10, 10, 20, 0.4);
+    display: grid;
+    gap: 1px;
+    background: var(--line-hairline);
+    border: 1px solid var(--line-hairline);
+    overflow: hidden;
+  }
+  @media (min-width: 620px) {
+    .stats__card {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 940px) {
+    .stats__card {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stat {
+    background: var(--bg-white);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: background-color 200ms ease-out;
+  }
+  .stat:hover {
+    background: var(--bg-cream);
+  }
+  .stat__num {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(46px, 5vw, 66px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text-ink);
+  }
+  .stat__suffix {
+    color: var(--brand-orange);
+  }
+  .stat__label {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-mute);
+    max-width: 24ch;
+  }
+
+  /* ============ S3 One studio ============ */
+  .unite {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: var(--text-on-dark);
+    padding-block: var(--section-pad-y-mobile);
+  }
+  @media (min-width: 768px) {
+    .unite {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .unite__media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+  }
+  .unite__bg {
+    position: absolute;
+    inset: -9% 0;
+    width: 100%;
+    height: 118%;
+    object-fit: cover;
+    object-position: 50% 44%;
+    will-change: transform;
+  }
+  .unite__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 12, 28, 0.84) 0%,
+      rgba(8, 12, 28, 0.7) 46%,
+      rgba(8, 12, 28, 0.88) 100%
+    );
+  }
+  .unite__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+  }
+  .unite__head {
+    max-width: 900px;
+    display: grid;
+    gap: 16px;
+    margin-bottom: clamp(36px, 5vw, 64px);
+  }
+  .unite__eyebrow {
+    color: var(--brand-orange);
+  }
+  .unite__title {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 6.4vw, 92px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    color: #fff;
+  }
+  .unite__title .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .unite__intro {
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.82);
+    max-width: 56ch;
+  }
+  .unite__pillars {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 760px) {
+    .unite__pillars {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .upillar {
+    padding: 34px 30px 32px;
+    border: 1px solid rgba(240, 237, 233, 0.16);
+    border-radius: 22px;
+    background: rgba(14, 22, 51, 0.55);
+    backdrop-filter: blur(10px);
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 220ms ease-out,
+      background-color 220ms ease-out;
+  }
+  .upillar:hover {
+    transform: translateY(-6px);
+    border-color: rgba(233, 78, 27, 0.5);
+    background: rgba(14, 22, 51, 0.74);
+  }
+  .upillar__bar {
+    display: block;
+    width: 56px;
+    height: 5px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+  }
+  .upillar__name {
+    margin-top: 24px;
+    font-family: var(--font-serif);
+    font-size: clamp(26px, 2.4vw, 34px);
+    font-weight: 500;
+    line-height: 1.12;
+    color: #fff;
+  }
+  .upillar__desc {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: rgba(240, 237, 233, 0.78);
+  }
+
+  /* ============ S4 Studio ============ */
+  .studio__grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .studio__grid {
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 72px;
+    }
+  }
+  .studio__head {
+    margin-top: 14px;
+  }
+  .studio__p {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 56ch;
+  }
+  .stance {
+    margin-top: 34px;
+    display: grid;
+    gap: 12px;
+  }
+  .stance__card {
+    padding: 22px 24px;
+    border-radius: 16px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+  }
+  .stance__card--lead {
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-deep));
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 24px 44px -28px rgba(233, 78, 27, 0.7);
+  }
+  .stance__kind {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .stance__card--lead .stance__kind {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .stance__line {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-ink);
+  }
+  .stance__card--lead .stance__line {
+    color: #fff;
+    font-weight: 500;
+  }
+  .studio__media {
+    position: relative;
+  }
+  .studio__badge {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    padding: 10px 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.86);
+    backdrop-filter: blur(8px);
+    color: var(--text-on-dark);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============ S5 Markets ============ */
+  .markets {
+    background: var(--bg-white);
+  }
+  .markets__grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .markets__grid {
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 72px;
+    }
+  }
+  .markets__media {
+    position: relative;
+  }
+  .markets__head {
+    margin-top: 14px;
+  }
+  .markets__lead {
+    margin-top: 18px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--type-h3);
+    line-height: 1.25;
+    color: var(--text-ink);
+  }
+  .markets__p {
+    margin-top: 16px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 56ch;
+  }
+
+  /* ============ S6 Audiences ============ */
+  .audiences__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .audiences__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 600px) {
+    .audiences__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 980px) {
+    .audiences__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .aud {
+    position: relative;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 20px;
+    padding: 30px 28px;
+    overflow: hidden;
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 220ms ease-out,
+      border-color 220ms ease-out;
+  }
+  .aud::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .aud:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 44px -26px rgba(10, 10, 20, 0.5);
+    border-color: transparent;
+  }
+  .aud:hover::after {
+    transform: scaleX(1);
+  }
+  .aud__icon {
+    display: block;
+    width: 42px;
+    height: 42px;
+    color: var(--brand-orange);
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .aud__icon :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+  .aud:hover .aud__icon {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  .aud__name {
+    margin-top: 20px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .aud__desc {
+    margin-top: 8px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* ============ S7 Pipeline ============ */
+  .pipeline {
+    background:
+      radial-gradient(
+        90% 120% at 88% 0%,
+        rgba(30, 58, 138, 0.5) 0%,
+        rgba(14, 22, 51, 0) 58%
+      ),
+      var(--bg-ink);
+    color: var(--text-on-dark);
+    padding-block: var(--section-pad-y-mobile);
+  }
+  @media (min-width: 768px) {
+    .pipeline {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .pipeline__head {
+    max-width: 760px;
+    display: grid;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .pipeline__eyebrow {
+    color: var(--brand-orange);
+  }
+  .pipeline__title {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 6vw, 86px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    color: #fff;
+  }
+  .pipeline__title .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .pipeline__intro {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .flow {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .stage {
+    position: relative;
+    display: grid;
+    gap: 6px 26px;
+    grid-template-columns: 26px 1fr;
+    padding: clamp(26px, 3.4vw, 40px) 0;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .stage:last-child {
+    border-bottom: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  @media (min-width: 760px) {
+    .stage {
+      grid-template-columns: 26px minmax(0, 1fr) 220px;
+      align-items: baseline;
+      gap: 0 38px;
+    }
+  }
+  .stage__mark {
+    width: 14px;
+    height: 14px;
+    margin-top: 7px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .stage:hover .stage__mark {
+    transform: rotate(135deg) scale(1.18);
+  }
+  .stage__body {
+    display: grid;
+    gap: 8px;
+  }
+  .stage__name {
+    font-size: clamp(26px, 3.4vw, 44px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #fff;
+  }
+  .stage__desc {
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.78);
+    max-width: 52ch;
+  }
+  .stage__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  @media (min-width: 760px) {
+    .stage__meta {
+      text-align: right;
+    }
+  }
+  .pipeline__close {
+    margin-top: 40px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 32px);
+    line-height: 1.34;
+    color: #fff;
+    max-width: 32ch;
+  }
+  .pipeline__close::after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin-top: 22px;
+    background: var(--brand-orange);
+  }
+
+  /* ============ S8 Economics ============ */
+  .economics {
+    background: var(--bg-white);
+  }
+  .economics__inner {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 940px) {
+    .economics__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .economics__head {
+    margin-top: 14px;
+  }
+  .economics__p {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 54ch;
+  }
+  .unlocks {
+    display: grid;
+    gap: 2px;
+  }
+  .unlock {
+    display: flex;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-hairline);
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.55;
+    color: var(--text-ink);
+  }
+  .unlock:last-child {
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .unlock__mark {
+    flex: none;
+    margin-top: 7px;
+    width: 10px;
+    height: 10px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+
+  /* ============ S9 Services ============ */
+  .services__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .services__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 720px) {
+    .services__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .svc {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 22px;
+    overflow: hidden;
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 220ms ease-out;
+  }
+  .svc:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 50px -28px rgba(10, 10, 20, 0.5);
+  }
+  .svc__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .svc__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .svc:hover .svc__media img {
+    transform: scale(1.05);
+  }
+  .svc__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 28px 26px 26px;
+  }
+  .svc__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .svc__lead {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--text-ink);
+  }
+  .svc__detail {
+    margin-top: 10px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .svc__link {
+    margin-top: auto;
+    padding-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .svc__link svg {
+    width: 17px;
+    height: 17px;
+    transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .svc:hover .svc__link svg {
+    transform: translateX(5px);
+  }
+
+  /* ============ S10 Engage ============ */
+  .engage {
+    background: var(--bg-white);
+  }
+  .engage__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .engage__intro {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .engage__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 720px) {
+    .engage__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .engage-card {
+    position: relative;
+    padding: 32px 30px 34px;
+    border: 1px solid var(--line-hairline);
+    border-radius: 22px;
+    background: var(--bg-cream);
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 220ms ease-out,
+      background-color 220ms ease-out;
+  }
+  .engage-card:hover {
+    transform: translateY(-6px);
+    background: var(--bg-white);
+    box-shadow: 0 26px 46px -28px rgba(10, 10, 20, 0.5);
+  }
+  .engage-card__kicker {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .engage-card__name {
+    margin-top: 18px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .engage-card__desc {
+    margin-top: 12px;
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: var(--text-mute);
+  }
+
+  /* ============ S11 Payoff ============ */
+  .payoff {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    padding-block: var(--section-pad-y-mobile);
+  }
+  @media (min-width: 768px) {
+    .payoff {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .payoff__glow {
+    position: absolute;
+    width: 720px;
+    height: 720px;
+    left: -300px;
+    bottom: -300px;
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.28) 0%,
+      rgba(233, 78, 27, 0) 66%
+    );
+    pointer-events: none;
+  }
+  .payoff__head {
+    position: relative;
+    max-width: 820px;
+    display: grid;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .payoff__eyebrow {
+    color: var(--brand-orange);
+  }
+  .payoff__title {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 6vw, 86px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    color: #fff;
+  }
+  .payoff__title .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .payoff__intro {
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .payoff__grid {
+    position: relative;
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 720px) {
+    .payoff__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .payoff-card {
+    padding: 34px 32px;
+    border: 1px solid rgba(240, 237, 233, 0.14);
+    border-radius: 22px;
+    background: rgba(240, 237, 233, 0.04);
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 220ms ease-out,
+      background-color 220ms ease-out;
+  }
+  .payoff-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(233, 78, 27, 0.5);
+    background: rgba(233, 78, 27, 0.07);
+  }
+  .payoff-card__icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    color: var(--brand-orange);
+  }
+  .payoff-card__icon :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+  .payoff-card__name {
+    margin-top: 22px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .payoff-card__desc {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.78);
+  }
+
+  /* ============ S12 Copyright and IP ============ */
+  .ip {
+    background: var(--bg-white);
+  }
+  .ip__inner {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 940px) {
+    .ip__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .ip__head {
+    margin-top: 14px;
+  }
+  .ip__p {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 52ch;
+  }
+  .ip__list {
+    display: grid;
+    gap: 2px;
+  }
+  .ip__item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line-hairline);
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.55;
+    color: var(--text-ink);
+  }
+  .ip__item:last-child {
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .ip__check {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(233, 78, 27, 0.12);
+    color: var(--brand-orange);
+  }
+  .ip__check svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ============ S13 FAQ ============ */
+  .faq__inner {
+    max-width: 880px;
+    margin-inline: auto;
+  }
+  .faq__head {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .faq__list {
+    display: grid;
+    gap: 12px;
+  }
+  .qa {
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+    background: var(--bg-white);
+    overflow: hidden;
+    transition: border-color 200ms ease-out;
+  }
+  .qa[open] {
+    border-color: var(--line-strong);
+  }
+  .qa__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 26px;
+    cursor: pointer;
+    font-size: clamp(17px, 1.5vw, 21px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    list-style: none;
+  }
+  .qa__q::-webkit-details-marker {
+    display: none;
+  }
+  .qa__sign {
+    position: relative;
+    flex: none;
+    width: 22px;
+    height: 22px;
+  }
+  .qa__sign::before,
+  .qa__sign::after {
+    content: '';
+    position: absolute;
+    background: var(--brand-orange);
+    border-radius: 2px;
+    transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .qa__sign::before {
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2.4px;
+    transform: translateY(-50%);
+  }
+  .qa__sign::after {
+    left: 50%;
+    top: 0;
+    width: 2.4px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+  .qa[open] .qa__sign::after {
+    transform: translateX(-50%) scaleY(0);
+  }
+  .qa__a {
+    padding: 0 26px 26px;
+  }
+  .qa__a p {
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 64ch;
+  }
+
+  /* ============ S14 Closing ============ */
+  .closing {
+    position: relative;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+  .closing__glow {
+    position: absolute;
+    width: 680px;
+    height: 680px;
+    left: 50%;
+    bottom: -380px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.42) 0%,
+      rgba(233, 78, 27, 0) 66%
+    );
+    pointer-events: none;
+  }
+  .closing__inner {
+    position: relative;
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .closing__head {
+    max-width: 20ch;
+    color: #fff;
+  }
+  .closing__p {
+    max-width: 56ch;
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .closing__p--mute {
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .closing__cta {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .closing__cube {
+    width: 46px;
+    margin-top: 14px;
+    animation: cubeFloat 7s ease-in-out infinite;
+  }
+
+  /* ============ Reduced motion ============ */
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    .hero__kicker,
+    .hero__w,
+    .hero__lede,
+    .hero__intro,
+    .hero__chip,
+    .hero__meta,
+    .hero__cue {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .hero__cube,
+    .closing__cube,
+    .hero__cue-line::after {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Scroll progress bar ---- */
+  const progress = document.getElementById('scroll-progress');
+  const onProgress = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    if (progress) progress.style.width = `${pct}%`;
+  };
+  onProgress();
+  window.addEventListener('scroll', onProgress, { passive: true });
+
+  /* ---- Scroll reveal ---- */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduced) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* ---- Count-up stats ---- */
+  const counters = document.querySelectorAll<HTMLElement>('[data-count]');
+  const runCount = (el: HTMLElement) => {
+    const target = Number(el.dataset.count || '0');
+    if (reduced) {
+      el.textContent = String(target);
+      return;
+    }
+    const duration = 1500;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window) {
+    const co = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            runCount(entry.target as HTMLElement);
+            co.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+    counters.forEach((el) => co.observe(el));
+  } else {
+    counters.forEach((el) => (el.textContent = el.dataset.count || '0'));
+  }
+
+  /* ---- Parallax on section media ---- */
+  const parallaxEls = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-parallax]'),
+  );
+  if (parallaxEls.length && !reduced) {
+    let ticking = false;
+    const apply = () => {
+      const vh = window.innerHeight;
+      parallaxEls.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < -200 || rect.top > vh + 200) return;
+        const speed = Number(el.dataset.parallaxSpeed || '0.1');
+        const fromCenter = rect.top + rect.height / 2 - vh / 2;
+        el.style.transform = `translate3d(0, ${(-fromCenter * speed).toFixed(1)}px, 0)`;
+      });
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(apply);
+        ticking = true;
+      }
+    };
+    apply();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+</script>

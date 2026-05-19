@@ -49,16 +49,6 @@ const listSchema = {
         production economics.
       </p>
     </div>
-    <div class="container">
-      <img
-        class="hero__img"
-        src="/Images/insights-hero.webp"
-        alt="An arrangement of sculptural cream, navy, and burnt-orange geometric forms on a vast concrete plane in low raking light."
-        width="2000"
-        height="1125"
-        loading="eager"
-      />
-    </div>
   </section>
 
   <!-- ===== Featured lead ===== -->
@@ -146,6 +136,27 @@ const listSchema = {
   </section>
 </Layout>
 
+<script>
+  /* Reveal headlines on scroll (§10: headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>
+
 <style>
   .section--tight {
     padding-block: 0;
@@ -181,13 +192,32 @@ const listSchema = {
   .feat:hover {
     transform: translateY(-4px);
   }
+  .feat__img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
   .feat__body {
     padding: 44px;
-    max-width: 760px;
   }
   @media (max-width: 600px) {
     .feat__body {
       padding: 32px 24px;
+    }
+  }
+  @media (min-width: 860px) {
+    .feat {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: stretch;
+    }
+    .feat__img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+    .feat__body {
+      padding: 52px;
+      align-self: center;
     }
   }
   .feat__tag {

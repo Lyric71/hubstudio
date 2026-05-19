@@ -1,0 +1,954 @@
+---
+/**
+ * Our Creative Talents (`/the-studio/creative-talents`).
+ * Presents the studio's creative bench. The sixteen creatives, their names,
+ * nationalities, roles and quotes are sourced from the team carousel on the
+ * live hubstudio.ai homepage. The two headline lines ("Creatives Who Already
+ * Speak Your Language" and "When Production Costs Nothing, Creative Thinking
+ * Costs Everything") are client-supplied.
+ *
+ * Portraits in /Images/talent-*.png are authored editorial campaign portraits
+ * generated per hubstudio-image-style-guide.md: named photographer reference
+ * (Platon / Tyler Mitchell / Harley Weir), single light source, Portra/Kodak/
+ * Fuji film grade, varied crops and backdrops across the set.
+ *
+ * No ordinal numerals in any card or repeated block, per the permanent
+ * no-numbers-in-cards rule. Layout mirrors who-we-are.astro: layered editorial
+ * with a hero, a thesis statement, a portrait grid, a nationality marquee and
+ * a closing CTA. Motion: hero load stagger, scroll-reveal, scroll-progress bar.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+/* The sixteen creatives. `slug` matches /Images/talent-<slug>.png. */
+const creatives = [
+  {
+    slug: 'marcus-sullivan',
+    name: 'Marcus Sullivan',
+    nationality: 'American',
+    role: 'Creative Director',
+    quote: 'I design brand worlds that feel lived-in before they launch.',
+  },
+  {
+    slug: 'lea-moreau',
+    name: 'Léa Moreau',
+    nationality: 'French',
+    role: 'Art Director',
+    quote: "Luxury isn't what you show. It's what you suggest.",
+  },
+  {
+    slug: 'james-whitmore',
+    name: 'James Whitmore',
+    nationality: 'British',
+    role: 'Copywriter',
+    quote: 'The best ideas survive the meeting room and the pub test.',
+  },
+  {
+    slug: 'diego-martinez',
+    name: 'Diego Martinez',
+    nationality: 'American',
+    role: 'Creative Director',
+    quote: "Culture isn't a trend to tap. It's a truth to honor.",
+  },
+  {
+    slug: 'nina-hoffmann',
+    name: 'Nina Hoffmann',
+    nationality: 'German',
+    role: 'Brand Creative',
+    quote: "Precision and poetry aren't opposites. They're partners.",
+  },
+  {
+    slug: 'erik-lindstrom',
+    name: 'Erik Lindström',
+    nationality: 'Swedish',
+    role: 'Film Director',
+    quote: 'Minimalism with a pulse. Function that makes you feel.',
+  },
+  {
+    slug: 'wei-lin-tan',
+    name: 'Wei Lin Tan',
+    nationality: 'Singaporean',
+    role: 'Brand Designer',
+    quote: "East meets West isn't a cliché when you've lived both truths.",
+  },
+  {
+    slug: 'sofia-andersen',
+    name: 'Sofia Andersen',
+    nationality: 'Danish',
+    role: 'Visual Designer',
+    quote: "Hygge isn't an aesthetic. It's emotional architecture.",
+  },
+  {
+    slug: 'jason-liu',
+    name: 'Jason Liu',
+    nationality: 'Chinese',
+    role: 'Digital Art Director',
+    quote: 'I turn five thousand years of aesthetics into pixels that sell.',
+  },
+  {
+    slug: 'aisha-rahman',
+    name: 'Aisha Rahman',
+    nationality: 'Malaysian',
+    role: 'Content Strategist',
+    quote: 'I translate heritage into language Gen Z actually wants to hear.',
+  },
+  {
+    slug: 'sophie-brennan',
+    name: 'Sophie Brennan',
+    nationality: 'Australian',
+    role: 'Social Creative',
+    quote: 'Bold enough to stop the scroll. Real enough to start a conversation.',
+  },
+  {
+    slug: 'maya-patel',
+    name: 'Maya Patel',
+    nationality: 'American',
+    role: 'Creative Systems Lead',
+    quote: 'I build systems that scale creativity, not just content.',
+  },
+  {
+    slug: 'nara-suwan',
+    name: 'Nara Suwan',
+    nationality: 'Thai',
+    role: 'Color & Design Specialist',
+    quote: "Color isn't decoration. It's emotion with a wavelength.",
+  },
+  {
+    slug: 'olivier-dubois',
+    name: 'Olivier Dubois',
+    nationality: 'French',
+    role: 'Creative Director',
+    quote: 'Provocation without purpose is just noise.',
+  },
+  {
+    slug: 'isabella-rossi',
+    name: 'Isabella Rossi',
+    nationality: 'Italian',
+    role: 'Production Designer',
+    quote: "Craft isn't slow. It's intentional.",
+  },
+  {
+    slug: 'finn-korhonen',
+    name: 'Finn Korhonen',
+    nationality: 'Finnish',
+    role: 'Motion Designer',
+    quote: 'Less drama, more impact. That is the Nordic way.',
+  },
+];
+
+/* Distinct nationalities, for the marquee. Order kept editorial, not sorted. */
+const markets = [
+  'American',
+  'French',
+  'British',
+  'German',
+  'Swedish',
+  'Singaporean',
+  'Danish',
+  'Chinese',
+  'Malaysian',
+  'Australian',
+  'Thai',
+  'Italian',
+  'Finnish',
+];
+---
+
+<Layout
+  title="Our Creative Talents | hubStudio AI Content Studio"
+  description="Meet the hubStudio creative bench: sixteen directors, designers and writers across thirteen markets, recruited for cultural fluency and market instinct."
+>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===== S1: Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero__media">
+      <img
+        class="hero__bg"
+        src="/Team/team-photo.webp"
+        alt="The hubStudio creative team gathered in the studio."
+        width="1050"
+        height="586"
+        fetchpriority="high"
+      />
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="grain hero__grain" aria-hidden="true"></div>
+    </div>
+
+    <div class="container hero__inner">
+      <p class="eyebrow hero__kicker">The Studio</p>
+      <h1 class="hero__title">
+        <span class="hero__w">Creatives Who Already</span>
+        <span class="hero__w">Speak Your</span>
+        <span class="hero__w hero__w--accent">Language</span>
+      </h1>
+      <p class="hero__lede">
+        We recruit talent who share your culture, your aesthetic, your market
+        instincts.
+      </p>
+      <div class="hero__meta">
+        <span class="hero__meta-item">Sixteen creatives on the bench</span>
+        <span class="hero__meta-item">Thirteen nationalities</span>
+        <span class="hero__meta-item">One studio standard</span>
+      </div>
+    </div>
+
+    <a class="hero__cue" href="#thesis" aria-label="Scroll to read more">
+      <span class="hero__cue-label">Scroll</span>
+      <span class="hero__cue-line" aria-hidden="true"></span>
+    </a>
+
+    <svg class="hero__cube" viewBox="0 0 32 35" aria-hidden="true">
+      <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+      <path d="M4 11 16 18 16 31 4 24Z" fill="#fff" opacity="0.85" />
+      <path d="M28 11 16 18 16 31 28 24Z" fill="#fff" opacity="0.55" />
+    </svg>
+  </section>
+
+  <!-- ===== S2: The thesis ===== -->
+  <section class="section thesis" id="thesis">
+    <div class="container thesis__inner">
+      <p class="eyebrow accent-eyebrow" data-reveal>Why the bench matters</p>
+      <h2 class="thesis__head" data-reveal>
+        When production costs nothing, creative
+        <span class="accent">thinking</span> costs everything
+      </h2>
+      <div class="thesis__cols">
+        <div class="thesis__col">
+          <p class="thesis__p" data-reveal>
+            AI has pushed the cost of making an asset close to zero. Anyone can
+            generate a thousand images before lunch. What that has not done is
+            make a single one of them worth looking at.
+          </p>
+          <p class="thesis__p" data-reveal>
+            The scarce thing now is judgement. Knowing which idea earns
+            attention. Knowing which reference lands in a given market, and
+            which one falls flat. Knowing the one version a brand can actually
+            put its name on. That judgement is the whole job, so it is what we
+            hire for.
+          </p>
+        </div>
+        <div class="thesis__col">
+          <p class="thesis__p" data-reveal>
+            A French luxury house gets a French art director who grew up inside
+            the codes. A launch in Bangkok gets someone who knows how the color
+            reads on the street there. A campaign for Gen Z gets a strategist
+            who speaks the dialect, not a translation of it.
+          </p>
+          <p class="thesis__p" data-reveal>
+            Briefs stop getting lost between markets, because the person reading
+            yours already speaks the language. Literally, and creatively.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: The creatives ===== -->
+  <section class="section bench">
+    <div class="container">
+      <header class="bench__head">
+        <p class="eyebrow accent-eyebrow" data-reveal>The bench</p>
+        <h2 class="headline h2 bench__title" data-reveal>
+          The creatives you'll work <span class="accent">with</span>
+        </h2>
+        <p class="bench__intro" data-reveal>
+          Directors, designers and writers who came up at international agencies
+          across Europe, Asia and the Americas. Each one was hired for a point
+          of view, and each one can tell you theirs in a sentence.
+        </p>
+      </header>
+
+      <ul class="bench__grid">
+        {
+          creatives.map((person, i) => (
+            <li class="talent" data-reveal style={`--i:${i % 4}`}>
+              <figure class="talent__figure">
+                <img
+                  class="talent__photo"
+                  src={`/Images/talent-${person.slug}.webp`}
+                  alt={`Editorial studio portrait of ${person.name}, ${person.role} at hubStudio.`}
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                />
+                <figcaption class="talent__tag">{person.name}</figcaption>
+              </figure>
+              <div class="talent__body">
+                <p class="talent__meta">
+                  {person.nationality}
+                  <span class="talent__dot" aria-hidden="true" />
+                  {person.role}
+                </p>
+                <blockquote class="talent__quote">{person.quote}</blockquote>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S4: Markets marquee ===== -->
+  <section class="markets">
+    <div class="container">
+      <header class="markets__head">
+        <p class="eyebrow markets__eyebrow" data-reveal>Where they're from</p>
+        <h2 class="markets__title" data-reveal>
+          Hired close to the <span class="accent">market</span>
+        </h2>
+      </header>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__row">
+        {
+          [...markets, ...markets, ...markets].map((m) => (
+            <span class="marquee__item">
+              {m}
+              <span class="marquee__dot" />
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    <div class="container">
+      <p class="markets__p" data-reveal>
+        Cultural fluency isn't a line on a CV. It's lived. A creative who knows
+        a market from the inside reads a brief faster, kills the wrong idea
+        sooner, and lands the right one without a round of notes explaining why
+        it works.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S5: Closing CTA ===== -->
+  <section class="closing">
+    <div class="closing__glow" aria-hidden="true"></div>
+    <div class="container closing__inner">
+      <p class="eyebrow closing__eyebrow" data-reveal>Work with the bench</p>
+      <h2 class="headline h2 closing__head" data-reveal>
+        Brief a creative who already speaks your
+        <span class="accent">market</span>
+      </h2>
+      <p class="closing__p" data-reveal>
+        Tell us the market and the category. We'll put the right creatives on
+        it, and come back with sample work tailored to your brand.
+      </p>
+      <div class="closing__cta" data-reveal>
+        <Button variant="primary" href="/contact">Contact us</Button>
+        <Button variant="on-dark" href="/the-studio/who-we-are">Meet the studio</Button>
+      </div>
+      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
+        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
+        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
+      </svg>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ============ Shared ============ */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+    z-index: 200;
+    transition: width 80ms linear;
+  }
+
+  .accent-eyebrow {
+    color: var(--brand-orange);
+  }
+
+  /* Orange accent for the serif-italic word inside headings on this page. */
+  .accent {
+    color: var(--brand-orange);
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ============ S1 Hero ============ */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: clamp(560px, 84vh, 860px);
+    padding: 96px 0 140px;
+    overflow: hidden;
+  }
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        104deg,
+        rgba(8, 12, 28, 0.93) 0%,
+        rgba(8, 12, 28, 0.78) 40%,
+        rgba(8, 12, 28, 0.4) 74%,
+        rgba(8, 12, 28, 0.56) 100%
+      ),
+      linear-gradient(0deg, rgba(8, 12, 28, 0.66) 0%, rgba(8, 12, 28, 0) 48%);
+  }
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+  }
+  .hero__inner {
+    position: relative;
+    color: var(--text-on-dark);
+  }
+  .hero__kicker {
+    color: var(--brand-orange);
+    position: relative;
+    padding-left: 46px;
+  }
+  .hero__kicker::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 34px;
+    height: 1px;
+    background: var(--brand-orange);
+  }
+  .hero__title {
+    margin-top: 22px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+    font-size: clamp(40px, 6.6vw, 104px);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero__w {
+    display: block;
+  }
+  .hero__w--accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .hero__lede {
+    margin-top: 22px;
+    font-size: clamp(19px, 2vw, 28px);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.32;
+    max-width: 30ch;
+    color: rgba(240, 237, 233, 0.92);
+  }
+  .hero__meta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+  }
+  .hero__meta-item {
+    position: relative;
+    padding-left: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hero__meta-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .hero__cue {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hero__cue-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .hero__cue-line {
+    width: 1px;
+    height: 46px;
+    background: linear-gradient(
+      180deg,
+      rgba(240, 237, 233, 0.7),
+      rgba(240, 237, 233, 0)
+    );
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__cue-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: var(--brand-orange);
+    animation: cueDrop 1.9s ease-in-out infinite;
+  }
+  @keyframes cueDrop {
+    0% { transform: translateY(-16px); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: translateY(48px); opacity: 0; }
+  }
+  .hero__cube {
+    position: absolute;
+    width: clamp(38px, 5.5vw, 70px);
+    right: clamp(24px, 7vw, 120px);
+    top: clamp(104px, 17vh, 200px);
+    z-index: 1;
+    filter: drop-shadow(0 12px 24px rgba(8, 12, 28, 0.5));
+    animation: cubeFloat 7s ease-in-out infinite;
+  }
+  @keyframes cubeFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  /* Hero load orchestration */
+  .hero__kicker,
+  .hero__w,
+  .hero__lede,
+  .hero__meta,
+  .hero__cue {
+    opacity: 0;
+    animation: heroRise 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+  }
+  .hero__kicker { animation-delay: 0.1s; }
+  .hero__w:nth-child(1) { animation-delay: 0.24s; }
+  .hero__w:nth-child(2) { animation-delay: 0.34s; }
+  .hero__w:nth-child(3) { animation-delay: 0.44s; }
+  .hero__lede { animation-delay: 0.56s; }
+  .hero__meta { animation-delay: 0.68s; }
+  .hero__cue { animation-delay: 1s; }
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(34px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ S2 Thesis ============ */
+  .thesis {
+    background: var(--bg-white);
+  }
+  .thesis__inner {
+    display: grid;
+    gap: 22px;
+  }
+  .thesis__head {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(32px, 4.6vw, 68px);
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    color: var(--text-ink);
+    max-width: 17ch;
+  }
+  .thesis__head .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .thesis__cols {
+    margin-top: 16px;
+    display: grid;
+    gap: 26px 64px;
+  }
+  @media (min-width: 860px) {
+    .thesis__cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .thesis__col {
+    display: grid;
+    gap: 22px;
+    align-content: start;
+  }
+  .thesis__p {
+    font-size: clamp(16px, 1.2vw, 19px);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .thesis__col:first-child .thesis__p:first-child {
+    font-size: clamp(19px, 1.6vw, 24px);
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--text-ink);
+  }
+
+  /* ============ S3 Bench ============ */
+  .bench {
+    background: var(--bg-cream);
+  }
+  .bench__head {
+    max-width: 760px;
+    display: grid;
+    gap: 16px;
+    margin-bottom: clamp(36px, 5vw, 60px);
+  }
+  .bench__title {
+    font-size: clamp(34px, 5vw, 72px);
+    color: var(--text-ink);
+  }
+  .bench__intro {
+    font-size: var(--type-lead);
+    line-height: 1.6;
+    color: var(--text-mute);
+    max-width: 58ch;
+  }
+  .bench__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 560px) {
+    .bench__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 900px) {
+    .bench__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 1200px) {
+    .bench__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .talent {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition:
+      transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 240ms ease-out,
+      border-color 240ms ease-out;
+  }
+  .talent:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 48px -28px rgba(10, 10, 20, 0.5);
+    border-color: transparent;
+  }
+  .talent__figure {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--bg-cream);
+  }
+  .talent__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .talent:hover .talent__photo {
+    transform: scale(1.04);
+  }
+  .talent__tag {
+    position: absolute;
+    left: 0;
+    bottom: 16px;
+    padding: 7px 16px 7px 14px;
+    background: var(--brand-orange);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .talent__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 22px 24px;
+    flex: 1;
+  }
+  .talent__meta {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .talent__dot {
+    width: 5px;
+    height: 5px;
+    flex: none;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .talent__quote {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(16px, 1.15vw, 18px);
+    line-height: 1.42;
+    color: var(--text-ink);
+  }
+  .talent__quote::before {
+    content: '\201C';
+    color: var(--brand-orange);
+    margin-right: 1px;
+  }
+  .talent__quote::after {
+    content: '\201D';
+    color: var(--brand-orange);
+  }
+
+  /* ============ S4 Markets ============ */
+  .markets {
+    background: var(--bg-white);
+    overflow: hidden;
+    padding-block: var(--section-pad-y-mobile);
+  }
+  @media (min-width: 768px) {
+    .markets {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .markets__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .markets__eyebrow {
+    color: var(--brand-orange);
+  }
+  .markets__title {
+    font-family: var(--font-sans);
+    font-size: clamp(34px, 5vw, 72px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--text-ink);
+  }
+  .markets__title .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .marquee {
+    margin-block: 8px 40px;
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      #000 9%,
+      #000 91%,
+      transparent
+    );
+    mask: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  }
+  .marquee__row {
+    display: flex;
+    width: max-content;
+    animation: marquee 46s linear infinite;
+  }
+  .marquee:hover .marquee__row {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-33.333%);
+    }
+  }
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 34px;
+    padding-right: 34px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(30px, 4.4vw, 58px);
+    color: var(--text-ink);
+  }
+  .marquee__item:nth-child(even) {
+    color: var(--brand-orange);
+  }
+  .marquee__dot {
+    width: 9px;
+    height: 9px;
+    background: var(--line-strong);
+    transform: rotate(45deg);
+  }
+  .markets__p {
+    max-width: 64ch;
+    font-size: var(--type-lead);
+    line-height: 1.6;
+    color: var(--text-ink);
+  }
+
+  /* ============ S5 Closing ============ */
+  .closing {
+    position: relative;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+  .closing__glow {
+    position: absolute;
+    width: 680px;
+    height: 680px;
+    left: 50%;
+    bottom: -380px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.42) 0%,
+      rgba(233, 78, 27, 0) 66%
+    );
+    pointer-events: none;
+  }
+  .closing__inner {
+    position: relative;
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .closing__head {
+    max-width: 20ch;
+    font-size: clamp(30px, 4.4vw, 64px);
+    color: #fff;
+  }
+  .closing__p {
+    max-width: 54ch;
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .closing__cta {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .closing__cube {
+    width: 46px;
+    margin-top: 14px;
+    animation: cubeFloat 7s ease-in-out infinite;
+  }
+
+  /* ============ Reduced motion ============ */
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    .hero__kicker,
+    .hero__w,
+    .hero__lede,
+    .hero__meta,
+    .hero__cue {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .marquee__row {
+      animation: none;
+    }
+    .hero__cube,
+    .closing__cube,
+    .hero__cue-line::after {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Scroll progress bar ---- */
+  const progress = document.getElementById('scroll-progress');
+  const onProgress = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    if (progress) progress.style.width = `${pct}%`;
+  };
+  onProgress();
+  window.addEventListener('scroll', onProgress, { passive: true });
+
+  /* ---- Scroll reveal ---- */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduced) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

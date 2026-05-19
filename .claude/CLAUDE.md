@@ -48,6 +48,20 @@ Every raster image (`.jpg`, `.jpeg`, `.png`, `.webp`) added under
 Targets: heroes max 2000px wide / under ~600 KB, inline 1600px / under ~250 KB,
 thumbnails under ~80 KB.
 
+## Body text size (PERMANENT)
+
+Running body copy, the paragraph-level prose inside a section (descriptions,
+explanatory paragraphs, card body text, FAQ answers), uses `var(--type-body)`
+(17px) with a line-height around 1.6 to 1.66. This is the one canonical body
+size: the reference is the body paragraphs on the studio / "who we are" page.
+
+Never set running body paragraphs to `var(--type-small)` (14px).
+`--type-small` is reserved for captions, figure labels, eyebrows, chips,
+microcopy, and UI chrome, never for sentences a reader is meant to read
+through. When a section's prose looks "denser" than the studio page, it is
+almost certainly mis-sized to `--type-small`: correct it to `--type-body`.
+No exceptions, every page, every locale.
+
 ## No numbers in cards (PERMANENT)
 
 Never print a decorative ordinal numeral (`01`, `02`, `03`, …, or a bare `1`,
