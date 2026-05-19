@@ -228,12 +228,12 @@ const pillars = [
   <!-- ===== S4: What we are ===== -->
   <section class="section--tight">
     <div class="container split split--rev">
-      <figure class="split__media">
+      <figure class="split__media split__media--wide">
         <img
-          src="/Images/who-we-are-hero.jpg"
-          alt="An art director reviewing printed campaign frames pinned across a studio wall in afternoon window light."
-          width="1024"
-          height="1024"
+          src="/Images/who-we-are-office.webp"
+          alt="The hubStudio team at workstations in a bright open-plan studio office."
+          width="1050"
+          height="573"
           loading="lazy"
         />
       </figure>
@@ -250,9 +250,12 @@ const pillars = [
           directors who came up at large international agencies, both foreign
           and Chinese. We have engineers who actually know how to train models
           and build production pipelines, not just prompt their way through a
-          brief. We run our own GPU infrastructure, in China and outside. And
-          we keep a full studio for real shooting, because hybrid only works if
-          you can do both halves well.
+          brief.
+        </p>
+        <p class="split__p">
+          We run our own GPU infrastructure, in China and outside. And we keep
+          a full studio for real shooting, because hybrid only works if you can
+          do both halves well.
         </p>
       </div>
     </div>
@@ -325,9 +328,9 @@ const pillars = [
       <figure class="split__media split__media--tall">
         <img
           src="/Images/who-we-are-china-speed.jpg"
-          alt="A designer working late at a glowing workstation inside the studio."
-          width="1024"
-          height="1024"
+          alt="A Chinese production crew shooting and editing e-commerce content in the studio."
+          width="864"
+          height="1536"
           loading="lazy"
         />
       </figure>
@@ -515,12 +518,6 @@ const pillars = [
     line-height: 1.7;
     color: rgba(240, 237, 233, 0.84);
   }
-  .hero__social {
-    margin-top: 26px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
   .social-link {
     display: inline-flex;
     align-items: center;
@@ -540,6 +537,10 @@ const pillars = [
   .social-link:hover {
     color: var(--brand-orange);
     border-color: var(--brand-orange);
+  }
+  .social-link--sm {
+    padding: 7px 15px;
+    font-size: 13px;
   }
 
   /* ---- S2 Our Vision ---- */
@@ -589,25 +590,38 @@ const pillars = [
   .vision__sign {
     margin: 0;
     margin-top: 36px;
-    padding-top: 26px;
+    padding-top: 28px;
     border-top: 1px solid rgba(240, 237, 233, 0.16);
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    display: grid;
+    gap: 18px;
+    justify-items: start;
   }
-  .vision__sign-img {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: 50% 22%;
-    flex: none;
+  /* Signature is blue ink on transparent; the mask recolours it to cream so
+     it reads on the navy card. */
+  .vision__sign-mark {
+    display: block;
+    width: clamp(170px, 24vw, 224px);
+    aspect-ratio: 1408 / 768;
+    background-color: var(--text-on-dark);
+    -webkit-mask: url('/Team/cyril-drouin-signature.png') no-repeat left center /
+      contain;
+    mask: url('/Team/cyril-drouin-signature.png') no-repeat left center /
+      contain;
   }
   .vision__sign-cap {
+    display: grid;
+    gap: 12px;
+  }
+  .vision__sign-name {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 18px;
     color: var(--text-on-dark);
+  }
+  .vision__sign-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   /* ---- S3 / S4 / S6 split layout ---- */
