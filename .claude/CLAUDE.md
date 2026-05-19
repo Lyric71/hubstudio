@@ -16,7 +16,9 @@ Astro static site, deployed to Vercel at https://hubstudio.ai.
 
 - Run `npm run build` before committing to catch build errors.
 - Run `npm run check` (`astro check`) for TypeScript validation.
-- Verify responsive at 375px, 768px, 1280px.
+- Do NOT take Playwright screenshots or run a visual QA pass after a task by
+  default. It is slow and not wanted. Only capture screenshots / verify
+  responsive at 375px, 768px, 1280px when the user explicitly asks for it.
 
 ## Git conventions
 

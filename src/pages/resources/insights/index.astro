@@ -1,0 +1,336 @@
+---
+/**
+ * /resources/insights: the Insights index.
+ * Hero + featured lead article + card grid. All entries from
+ * src/data/insights.ts (newest first). No ordinal numerals on cards.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import Button from '../../../components/Button.astro';
+import { insights } from '../../../data/insights';
+
+const [featured, ...rest] = insights;
+
+const SITE = 'https://hubstudio.ai';
+const listSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'hubStudio Insights',
+  description:
+    'Essays on AI-native content: AI search, creative systems, production economics, and the creative intelligence that scales them.',
+  url: `${SITE}/resources/insights`,
+  blogPost: insights.map((i) => ({
+    '@type': 'BlogPosting',
+    headline: i.title,
+    description: i.metaDescription,
+    datePublished: i.dateISO,
+    author: { '@type': 'Person', name: i.author },
+    url: `${SITE}/resources/insights/${i.slug}`,
+  })),
+};
+---
+
+<Layout
+  title="Insights: AI-Generated Content Strategy | hubStudio"
+  description="Expert insights on AI-generated content production. How brands architect intelligent creative systems that scale quality, speed, and authenticity."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(listSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="section hero">
+    <div class="container hero__inner">
+      <span class="eyebrow">Resources &middot; Insights</span>
+      <h1 class="headline h1 reveal hero__title">
+        Insights that architect the future of
+        <span class="accent">AI-generated content</span>.
+      </h1>
+      <p class="lead hero__lead">
+        Where creative intelligence meets generative production. How leading brands build
+        AI-native content systems that amplify imagination, scale authenticity, and reset
+        production economics.
+      </p>
+    </div>
+    <div class="container">
+      <img
+        class="hero__img"
+        src="/Images/insights-hero.webp"
+        alt="An arrangement of sculptural cream, navy, and burnt-orange geometric forms on a vast concrete plane in low raking light."
+        width="2000"
+        height="1125"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <!-- ===== Featured lead ===== -->
+  <section class="section--tight">
+    <div class="container">
+      <a class={`feat card card--white feat--${featured.tone}`} href={`/resources/insights/${featured.slug}`}>
+        <img
+          class="feat__img"
+          src={featured.image}
+          alt={featured.imageAlt}
+          width="2000"
+          height="1333"
+          loading="eager"
+        />
+        <div class="feat__body">
+          <span class="chip feat__tag">
+            <span class="feat__flag">Latest</span>{featured.category}
+          </span>
+          <h2 class="headline h2 feat__title">{featured.title}</h2>
+          <p class="lead feat__deck">{featured.deck}</p>
+          <p class="feat__meta">
+            <span>{featured.author}</span>
+            <span class="feat__dot" aria-hidden="true"></span>
+            <time datetime={featured.dateISO}>{featured.date}</time>
+            <span class="feat__dot" aria-hidden="true"></span>
+            <span>{featured.readingTime}</span>
+          </p>
+          <span class="feat__cta">Read insight &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Grid ===== -->
+  <section class="section--grid">
+    <div class="container">
+      <header class="grid-head">
+        <span class="eyebrow">The archive</span>
+        <h2 class="headline h3">More from the studio.</h2>
+      </header>
+      <div class="grid">
+        {
+          rest.map((item) => (
+            <a class="icard card card--white" href={`/resources/insights/${item.slug}`}>
+              <img
+                class="icard__img"
+                src={item.image}
+                alt={item.imageAlt}
+                width="2000"
+                height="1333"
+                loading="lazy"
+              />
+              <span class="icard__body">
+                <span class={`chip icard__tag icard__tag--${item.tone}`}>{item.category}</span>
+                <h3 class="icard__title">{item.title}</h3>
+                <p class="icard__deck">{item.deck}</p>
+                <p class="icard__meta">
+                  <time datetime={item.dateISO}>{item.date}</time>
+                  <span class="icard__dot" aria-hidden="true"></span>
+                  <span>{item.readingTime}</span>
+                </p>
+                <span class="icard__more">Read insight &rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Closing CTA ===== -->
+  <section class="closing">
+    <div class="container closing__inner">
+      <span class="eyebrow">From insight to execution</span>
+      <h2 class="headline h2 reveal closing__head">
+        In the AI era, execution is the <span class="accent">strategy</span>.
+      </h2>
+      <p class="closing__text">
+        hubStudio helps brands and agencies turn these shifts into scalable systems: AIGC video
+        and image production, structured content engines, and custom studios, all human-led.
+      </p>
+      <Button variant="primary" href="/contact">Talk to us</Button>
+      <p class="closing__line">hello@hubstudio.ai &middot; Studios across 16 markets</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section--tight {
+    padding-block: 0;
+  }
+  .section--grid {
+    padding-block: 72px 112px;
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    padding-bottom: 56px;
+  }
+  .hero__inner {
+    max-width: 880px;
+  }
+  .hero__title {
+    margin-top: 20px;
+  }
+  .hero__lead {
+    margin-top: 24px;
+    max-width: 62ch;
+  }
+
+  /* ---- Featured lead ---- */
+  .feat {
+    display: block;
+    border-left: 3px solid var(--brand-orange);
+    transition: transform 200ms ease-out;
+  }
+  .feat--navy {
+    border-left-color: var(--brand-navy);
+  }
+  .feat:hover {
+    transform: translateY(-4px);
+  }
+  .feat__body {
+    padding: 44px;
+    max-width: 760px;
+  }
+  @media (max-width: 600px) {
+    .feat__body {
+      padding: 32px 24px;
+    }
+  }
+  .feat__tag {
+    gap: 10px;
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .feat__flag {
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .feat__title {
+    margin-top: 20px;
+    font-size: clamp(28px, 3.6vw, 44px);
+  }
+  .feat__deck {
+    margin-top: 16px;
+    max-width: 56ch;
+  }
+  .feat__meta,
+  .icard__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .feat__meta {
+    margin-top: 22px;
+  }
+  .feat__dot,
+  .icard__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .feat__cta {
+    display: inline-block;
+    margin-top: 22px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+
+  /* ---- Grid ---- */
+  .grid-head {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .icard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 30px;
+    transition: transform 200ms ease-out;
+  }
+  .icard:hover {
+    transform: translateY(-4px);
+  }
+  .icard__tag--orange {
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .icard__tag--navy {
+    background: rgba(30, 58, 138, 0.1);
+    color: var(--brand-navy);
+  }
+  .icard__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .icard__deck {
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .icard__meta {
+    font-size: 11px;
+  }
+  .icard__more {
+    margin-top: auto;
+    padding-top: 6px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+
+  /* ---- Closing CTA ---- */
+  .closing {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .closing__inner {
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing .eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .closing__head {
+    max-width: 18ch;
+  }
+  .closing__text {
+    max-width: 54ch;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .closing__line {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.55);
+  }
+</style>

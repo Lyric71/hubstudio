@@ -1,0 +1,837 @@
+---
+/**
+ * Case study detail (`/work/<slug>`).
+ * One page per entry in `src/data/case-studies.ts`, generated statically.
+ *
+ * S1 Hero (dark) · S2 Challenge · S3 Approach · S4 What we delivered + gallery
+ * · S5 Results band · S6 Services · S7 Next study + closing CTA.
+ *
+ * No ordinal numerals on the approach / delivered / results blocks, per the
+ * permanent no-numbers-in-cards rule. Results figures carry units, so they
+ * read as data display, not ordinals.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import { caseStudies } from '../../data/case-studies';
+
+export function getStaticPaths() {
+  return caseStudies.map((study, i) => {
+    const next = caseStudies[(i + 1) % caseStudies.length];
+    return { params: { slug: study.slug }, props: { study, next } };
+  });
+}
+
+const { study, next } = Astro.props;
+---
+
+<Layout
+  title={`${study.client}: ${study.title} | hubStudio Work`}
+  description={study.summary}
+  heroOverlay
+>
+  <!-- ===== S1: Hero ===== -->
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="grain hero__grain" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <a class="crumb__link" href="/work">Work</a>
+          <span class="crumb__sep" aria-hidden="true">/</span>
+          <span class="crumb__here">{study.client}</span>
+        </nav>
+        <p class="eyebrow hero__kicker">{study.category}</p>
+        <h1 class="hero__title">{study.title}</h1>
+        <p class="hero__summary">{study.summary}</p>
+        <dl class="hero__facts">
+          <div class="fact">
+            <dt class="fact__key">Client</dt>
+            <dd class="fact__val">{study.client}</dd>
+          </div>
+          <div class="fact">
+            <dt class="fact__key">Industry</dt>
+            <dd class="fact__val">{study.industry}</dd>
+          </div>
+          <div class="fact">
+            <dt class="fact__key">Market</dt>
+            <dd class="fact__val">{study.region}</dd>
+          </div>
+        </dl>
+      </div>
+      <figure class="hero__media">
+        <img
+          src={study.hero.src}
+          alt={study.hero.alt}
+          width="900"
+          height="675"
+          fetchpriority="high"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== S2: The challenge ===== -->
+  <section class="section challenge">
+    <div class="container challenge__grid">
+      <header class="challenge__head" data-reveal>
+        <p class="eyebrow accent-eyebrow">The brief</p>
+        <h2 class="headline h2">
+          The <span class="accent">challenge</span>
+        </h2>
+      </header>
+      <div class="challenge__prose">
+        {study.challenge.map((p, i) => (
+          <p class="challenge__p" data-reveal style={`--i:${i}`}>{p}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: Our approach ===== -->
+  <section class="section approach">
+    <div class="container">
+      <header class="approach__head">
+        <p class="eyebrow accent-eyebrow" data-reveal>How we worked</p>
+        <h2 class="headline h2" data-reveal>
+          Our <span class="accent">approach</span>
+        </h2>
+        <p class="approach__lead" data-reveal>{study.approachLead}</p>
+      </header>
+      <ul class="approach__grid">
+        {study.approach.map((item, i) => (
+          <li class="acard" data-reveal style={`--i:${i % 2}`}>
+            <span class="acard__mark" aria-hidden="true"></span>
+            <h3 class="acard__title">{item.title}</h3>
+            <p class="acard__desc">{item.desc}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S4: What we delivered ===== -->
+  <section class="section delivered">
+    <div class="container delivered__grid">
+      <div class="delivered__copy">
+        <p class="eyebrow accent-eyebrow" data-reveal>The output</p>
+        <h2 class="headline h2" data-reveal>
+          What we <span class="accent">delivered</span>
+        </h2>
+        <ul class="delivered__list">
+          {study.delivered.map((d, i) => (
+            <li class="delivered__item" data-reveal style={`--i:${i}`}>
+              <svg class="delivered__tick" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M5 13l4 4 10-11"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>{d}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {study.gallery.length > 0 && (
+        <div class="delivered__gallery" data-reveal>
+          {study.gallery.map((img) => (
+            <figure class="gframe">
+              <img src={img.src} alt={img.alt} width="700" height="525" loading="lazy" />
+            </figure>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ===== S5: Results ===== -->
+  <section class="results">
+    <div class="container">
+      <header class="results__head">
+        <p class="eyebrow results__eyebrow" data-reveal>The outcome</p>
+        <h2 class="headline h2 results__title" data-reveal>
+          What it <span class="accent">added up</span> to
+        </h2>
+      </header>
+      <div class="results__band">
+        {study.results.map((r, i) => (
+          <article class="rstat" data-reveal style={`--i:${i}`}>
+            <span class="rstat__val">{r.value}</span>
+            <span class="rstat__label">{r.label}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S6: Services ===== -->
+  <section class="section services">
+    <div class="container services__inner">
+      <p class="eyebrow accent-eyebrow" data-reveal>What we ran</p>
+      <h2 class="headline h3 services__title" data-reveal>
+        Services on this project
+      </h2>
+      <ul class="services__chips" data-reveal>
+        {study.services.map((s) => <li class="schip">{s}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S7: Next study + CTA ===== -->
+  <section class="closing">
+    <div class="closing__glow" aria-hidden="true"></div>
+    <div class="container closing__inner">
+      <a class="nextcard" href={`/work/${next.slug}`} data-reveal>
+        <div class="nextcard__media">
+          <img src={next.hero.src} alt={next.hero.alt} width="520" height="390" loading="lazy" />
+        </div>
+        <div class="nextcard__body">
+          <span class="eyebrow nextcard__eyebrow">Next case study</span>
+          <span class="nextcard__title">{next.title}</span>
+          <span class="nextcard__client">{next.client} &middot; {next.category}</span>
+          <span class="nextcard__cta">
+            Read it
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5 12h13M12 5l7 7-7 7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <div class="closing__cta-block" data-reveal>
+        <h2 class="headline h2 closing__head">
+          Have a brief like <span class="accent">this</span>?
+        </h2>
+        <p class="closing__p">
+          Tell us the category and the constraint. We will come back with sample
+          work tailored to it, usually inside a week.
+        </p>
+        <div class="closing__cta">
+          <Button variant="primary" href="/contact">Contact us</Button>
+          <Button variant="on-dark" href="/work">All case studies</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .accent-eyebrow {
+    color: var(--brand-orange);
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ============ S1 Hero ============ */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+    /* Pull up under the transparent sticky header so the overlay nav sits on
+       the dark hero, not the cream page background (see homepage hero). */
+    margin-top: -64px;
+    padding: calc(var(--nav-h) + clamp(60px, 10vh, 128px)) 0 clamp(64px, 9vh, 110px);
+  }
+  @media (min-width: 1024px) {
+    .hero {
+      margin-top: calc(-1 * var(--nav-h));
+    }
+  }
+  .hero__glow {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    right: -220px;
+    top: -320px;
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.38) 0%,
+      rgba(233, 78, 27, 0) 64%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    z-index: -1;
+  }
+  .hero__inner {
+    display: grid;
+    gap: 44px;
+    align-items: center;
+  }
+  @media (min-width: 940px) {
+    .hero__inner {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+    }
+  }
+  .crumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .crumb__link {
+    color: rgba(240, 237, 233, 0.6);
+    transition: color 120ms ease-out;
+  }
+  .crumb__link:hover {
+    color: var(--brand-orange);
+  }
+  .crumb__here {
+    color: var(--text-on-dark);
+  }
+  .hero__kicker {
+    margin-top: 24px;
+    color: var(--brand-orange);
+  }
+  .hero__title {
+    margin-top: 14px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    font-size: clamp(34px, 4.6vw, 62px);
+    color: #fff;
+  }
+  .hero__summary {
+    margin-top: 20px;
+    max-width: 54ch;
+    font-size: var(--type-lead);
+    line-height: 1.56;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .hero__facts {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 40px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .fact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .fact__key {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.5);
+  }
+  .fact__val {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .hero__media {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow:
+      0 2px 10px rgba(10, 10, 20, 0.3),
+      0 40px 70px -36px rgba(0, 0, 0, 0.7);
+  }
+  .hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Hero load orchestration */
+  .hero__copy > *,
+  .hero__media {
+    opacity: 0;
+    animation: heroRise 0.9s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+  }
+  .crumb { animation-delay: 0.08s; }
+  .hero__kicker { animation-delay: 0.18s; }
+  .hero__title { animation-delay: 0.28s; }
+  .hero__summary { animation-delay: 0.4s; }
+  .hero__facts { animation-delay: 0.52s; }
+  .hero__media { animation-delay: 0.34s; }
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ S2 Challenge ============ */
+  .challenge {
+    background: var(--bg-white);
+  }
+  .challenge__grid {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 940px) {
+    .challenge__grid {
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .challenge__head {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 940px) {
+    .challenge__head {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .challenge__prose {
+    display: grid;
+    gap: 24px;
+  }
+  .challenge__p {
+    font-size: clamp(17px, 1.25vw, 21px);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 64ch;
+  }
+  .challenge__p:first-child {
+    font-weight: 500;
+    color: var(--text-ink);
+  }
+
+  /* ============ S3 Approach ============ */
+  .approach {
+    background: var(--bg-cream);
+  }
+  .approach__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .approach__lead {
+    margin-top: 4px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--type-h3);
+    line-height: 1.3;
+    color: var(--text-ink);
+  }
+  .approach__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 720px) {
+    .approach__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .acard {
+    position: relative;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 22px;
+    padding: clamp(26px, 3vw, 36px);
+    overflow: hidden;
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 220ms ease-out;
+  }
+  .acard::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .acard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 48px -28px rgba(10, 10, 20, 0.45);
+  }
+  .acard:hover::after {
+    transform: scaleX(1);
+  }
+  .acard__mark {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .acard:hover .acard__mark {
+    transform: rotate(135deg) scale(1.15);
+  }
+  .acard__title {
+    margin-top: 22px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .acard__desc {
+    margin-top: 10px;
+    font-size: var(--type-small);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+
+  /* ============ S4 Delivered ============ */
+  .delivered {
+    background: var(--bg-white);
+  }
+  .delivered__grid {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 940px) {
+    .delivered__grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 64px;
+      align-items: start;
+    }
+  }
+  .delivered__list {
+    margin-top: 28px;
+    display: grid;
+    gap: 14px;
+  }
+  .delivered__item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: var(--type-body);
+    line-height: 1.5;
+    color: var(--text-ink);
+  }
+  .delivered__tick {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    margin-top: 1px;
+    padding: 4px;
+    border-radius: 8px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-deep));
+  }
+  .delivered__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .delivered__gallery .gframe:first-child {
+    grid-column: 1 / -1;
+  }
+  .gframe {
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--bg-ink);
+    box-shadow: 0 18px 36px -26px rgba(10, 10, 20, 0.5);
+  }
+  .delivered__gallery .gframe:first-child {
+    aspect-ratio: 16 / 9;
+  }
+  .gframe img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .gframe:hover img {
+    transform: scale(1.05);
+  }
+
+  /* ============ S5 Results ============ */
+  .results {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    padding-block: var(--section-pad-y-mobile);
+  }
+  @media (min-width: 768px) {
+    .results {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .results__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .results__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .results__title {
+    color: #fff;
+  }
+  .results__band {
+    display: grid;
+    gap: 1px;
+    background: rgba(240, 237, 233, 0.12);
+    border: 1px solid rgba(240, 237, 233, 0.12);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  @media (min-width: 720px) {
+    .results__band {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .rstat {
+    background: var(--bg-ink);
+    padding: 40px 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background-color 200ms ease-out;
+  }
+  .rstat:hover {
+    background: var(--brand-navy-deep);
+  }
+  .rstat__val {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(36px, 4vw, 54px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--brand-orange);
+  }
+  .rstat__label {
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: rgba(240, 237, 233, 0.78);
+    max-width: 26ch;
+  }
+
+  /* ============ S6 Services ============ */
+  .services {
+    background: var(--bg-cream);
+  }
+  .services__inner {
+    display: grid;
+    gap: 18px;
+    justify-items: center;
+    text-align: center;
+  }
+  .services__title {
+    max-width: 20ch;
+  }
+  .services__chips {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .schip {
+    padding: 11px 22px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    font-size: var(--type-small);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+
+  /* ============ S7 Closing ============ */
+  .closing {
+    position: relative;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+  .closing__glow {
+    position: absolute;
+    width: 680px;
+    height: 680px;
+    left: 50%;
+    bottom: -400px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.4) 0%,
+      rgba(233, 78, 27, 0) 66%
+    );
+    pointer-events: none;
+  }
+  .closing__inner {
+    position: relative;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    gap: 56px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+
+  .nextcard {
+    display: grid;
+    gap: 0;
+    background: rgba(240, 237, 233, 0.04);
+    border: 1px solid rgba(240, 237, 233, 0.14);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition:
+      transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 240ms ease-out;
+  }
+  @media (min-width: 680px) {
+    .nextcard {
+      grid-template-columns: 280px 1fr;
+    }
+  }
+  .nextcard:hover {
+    transform: translateY(-6px);
+    border-color: rgba(233, 78, 27, 0.5);
+  }
+  .nextcard__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--brand-navy-deep);
+  }
+  @media (min-width: 680px) {
+    .nextcard__media {
+      aspect-ratio: auto;
+    }
+  }
+  .nextcard__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .nextcard:hover .nextcard__media img {
+    transform: scale(1.05);
+  }
+  .nextcard__body {
+    padding: clamp(26px, 3vw, 38px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+  }
+  .nextcard__eyebrow {
+    color: var(--brand-orange);
+  }
+  .nextcard__title {
+    margin-top: 6px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.22;
+    color: #fff;
+  }
+  .nextcard__client {
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .nextcard__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .nextcard__cta svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 200ms ease-out;
+  }
+  .nextcard:hover .nextcard__cta svg {
+    transform: translateX(5px);
+  }
+
+  .closing__cta-block {
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    padding-top: 44px;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .closing__head {
+    max-width: 16ch;
+    color: #fff;
+  }
+  .closing__p {
+    max-width: 52ch;
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .closing__cta {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    .hero__copy > *,
+    .hero__media {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduced) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

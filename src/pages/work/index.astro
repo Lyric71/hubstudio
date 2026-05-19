@@ -1,0 +1,510 @@
+---
+/**
+ * Work index (`/work`).
+ * The case study collection, sourced from `src/data/case-studies.ts`.
+ * Dark hero, then a two-column case study grid linking to `/work/<slug>`.
+ * No ordinal numerals on cards, per the permanent no-numbers rule; the
+ * results figures inside each card carry units, so they are data display.
+ *
+ * Layout: hero with page-load stagger, scroll-reveal grid, closing CTA.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import { caseStudies } from '../../data/case-studies';
+
+const total = caseStudies.length;
+---
+
+<Layout
+  title="Work | hubStudio Case Studies"
+  description="Selected hubStudio case studies: fragrance launches, multi-market campaigns, AI content platforms and more, across fashion, beauty, retail and consumer electronics."
+  heroOverlay
+>
+  <!-- ===== S1: Hero ===== -->
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="grain hero__grain" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <p class="eyebrow hero__kicker">Selected work</p>
+      <h1 class="hero__title">
+        <span class="hero__w">The</span>
+        <span class="hero__w hero__w--accent">work</span>
+      </h1>
+      <p class="hero__lede">
+        Real briefs, real brands, real constraints
+      </p>
+      <p class="hero__intro">
+        A fragrance that had to transform on screen. A five-platform campaign
+        with a five-day deadline. A heritage jeweller closing years of digital
+        lag. Each project below started as a problem traditional production
+        could not solve at the speed or the budget the brand needed.
+      </p>
+      <div class="hero__meta">
+        <span class="hero__meta-item">{total} case studies</span>
+        <span class="hero__meta-item">Fashion, beauty, retail, electronics</span>
+        <span class="hero__meta-item">Clients across Europe, Asia and the Americas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S2: Case study grid ===== -->
+  <section class="section work">
+    <div class="container">
+      <ul class="work__grid">
+        {
+          caseStudies.map((c, i) => (
+            <li class="work__item" data-reveal style={`--i:${i % 2}`}>
+              <a class="study" href={`/work/${c.slug}`}>
+                <div class="study__media">
+                  <img
+                    src={c.hero.src}
+                    alt={c.hero.alt}
+                    width="800"
+                    height="600"
+                    loading={i < 2 ? 'eager' : 'lazy'}
+                  />
+                  <span class="study__cat">{c.category}</span>
+                </div>
+                <div class="study__body">
+                  <p class="study__client">{c.client}</p>
+                  <h2 class="study__title">{c.title}</h2>
+                  <p class="study__summary">{c.summary}</p>
+                  <div class="study__foot">
+                    <ul class="study__stats">
+                      {c.results.slice(0, 2).map((r) => (
+                        <li class="study__stat">
+                          <span class="study__stat-val">{r.value}</span>
+                          <span class="study__stat-label">{r.label}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <span class="study__cta">
+                      Read case study
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M5 12h13M12 5l7 7-7 7"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S3: Closing CTA ===== -->
+  <section class="closing">
+    <div class="closing__glow" aria-hidden="true"></div>
+    <div class="container closing__inner">
+      <p class="eyebrow closing__eyebrow" data-reveal>Let's talk</p>
+      <h2 class="headline h2 closing__head" data-reveal>
+        Bring us the brief everyone says is <span class="accent">impossible</span>
+      </h2>
+      <p class="closing__p" data-reveal>
+        The fastest way to see what hubStudio can do is a 30-minute call. Bring
+        a brief, or just a category you want to test. We will come back with
+        sample work tailored to it.
+      </p>
+      <div class="closing__cta" data-reveal>
+        <Button variant="primary" href="/contact">Contact us</Button>
+        <Button variant="on-dark" href="/the-studio/who-we-are">Meet the studio</Button>
+      </div>
+      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
+        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
+        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
+      </svg>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ============ S1 Hero ============ */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+    /* Pull up under the transparent sticky header so the overlay nav sits on
+       the dark hero, not the cream page background (see homepage hero). */
+    margin-top: -64px;
+    padding: calc(var(--nav-h) + clamp(80px, 14vh, 170px)) 0 clamp(80px, 12vh, 130px);
+  }
+  @media (min-width: 1024px) {
+    .hero {
+      margin-top: calc(-1 * var(--nav-h));
+    }
+  }
+  .hero__glow {
+    position: absolute;
+    width: 820px;
+    height: 820px;
+    right: -180px;
+    top: -340px;
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.4) 0%,
+      rgba(233, 78, 27, 0) 64%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    z-index: -1;
+  }
+  .hero__kicker {
+    color: var(--brand-orange);
+    position: relative;
+    padding-left: 46px;
+  }
+  .hero__kicker::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 34px;
+    height: 1px;
+    background: var(--brand-orange);
+  }
+  .hero__title {
+    margin-top: 20px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.92;
+    font-size: clamp(72px, 13vw, 188px);
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.22em;
+  }
+  .hero__w {
+    display: inline-block;
+  }
+  .hero__w--accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .hero__lede {
+    margin-top: 12px;
+    font-size: clamp(22px, 2.6vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    max-width: 22ch;
+  }
+  .hero__intro {
+    margin-top: 22px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .hero__meta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+  }
+  .hero__meta-item {
+    position: relative;
+    padding-left: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hero__meta-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+
+  /* Hero load orchestration */
+  .hero__kicker,
+  .hero__w,
+  .hero__lede,
+  .hero__intro,
+  .hero__meta {
+    opacity: 0;
+    animation: heroRise 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+  }
+  .hero__kicker { animation-delay: 0.1s; }
+  .hero__w:nth-child(1) { animation-delay: 0.22s; }
+  .hero__w:nth-child(2) { animation-delay: 0.32s; }
+  .hero__lede { animation-delay: 0.46s; }
+  .hero__intro { animation-delay: 0.58s; }
+  .hero__meta { animation-delay: 0.7s; }
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(34px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ S2 Work grid ============ */
+  .work {
+    background: var(--bg-cream);
+  }
+  .work__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 860px) {
+    .work__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+  }
+
+  .study {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition:
+      transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 240ms ease-out,
+      border-color 240ms ease-out;
+  }
+  .study:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 34px 60px -34px rgba(10, 10, 20, 0.5);
+    border-color: transparent;
+  }
+  .study__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--bg-ink);
+  }
+  .study__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .study:hover .study__media img {
+    transform: scale(1.05);
+  }
+  .study__cat {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.86);
+    backdrop-filter: blur(8px);
+    color: var(--text-on-dark);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .study__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: clamp(24px, 3vw, 36px);
+  }
+  .study__client {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .study__title {
+    margin-top: 12px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.22;
+  }
+  .study__summary {
+    margin-top: 12px;
+    font-size: var(--type-small);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .study__foot {
+    margin-top: auto;
+    padding-top: 22px;
+  }
+  .study__stats {
+    display: flex;
+    gap: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .study__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .study__stat-val {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+  .study__stat-label {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--text-mute);
+    max-width: 18ch;
+  }
+  .study__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .study__cta svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 200ms ease-out;
+  }
+  .study:hover .study__cta svg {
+    transform: translateX(5px);
+  }
+
+  /* ============ S3 Closing ============ */
+  .closing {
+    position: relative;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+  .closing__glow {
+    position: absolute;
+    width: 680px;
+    height: 680px;
+    left: 50%;
+    bottom: -380px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.42) 0%,
+      rgba(233, 78, 27, 0) 66%
+    );
+    pointer-events: none;
+  }
+  .closing__inner {
+    position: relative;
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .closing__head {
+    max-width: 20ch;
+    color: #fff;
+  }
+  .closing__p {
+    max-width: 56ch;
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .closing__cta {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .closing__cube {
+    width: 46px;
+    margin-top: 14px;
+    animation: cubeFloat 7s ease-in-out infinite;
+  }
+  @keyframes cubeFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    .hero__kicker,
+    .hero__w,
+    .hero__lede,
+    .hero__intro,
+    .hero__meta {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .closing__cube {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduced) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

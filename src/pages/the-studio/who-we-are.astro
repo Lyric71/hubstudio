@@ -1,22 +1,37 @@
 ---
 /**
  * Who We Are (`/the-studio/who-we-are`).
- * Narrative content sourced verbatim from who-we-are-page.md.
- * S1 Hero (team-photo background) · S2 Our Vision · S3 What hybrid means ·
- * S4 What we are · S5 Our team (roles) · S6 China Speed · S7 Languages ·
- * S8 Right client · S9 What we value · S10 The values we live by ·
- * S11 Closing CTA.
+ * Narrative content sourced from who-we-are-page.md (the "What hybrid means"
+ * copy is a client-approved shortened rewrite). Team roles and the four-pillar
+ * creed are client-supplied. No ordinal numerals in any card or repeated
+ * block, per the permanent no-numbers-in-cards rule. Stat figures below are
+ * data display (units attached), not ordinals.
  *
- * The "right client" pain points are reflowed from one source paragraph into
- * a list; each item is a full source sentence kept word for word. The team
- * roles (S5) and the four-pillar creed (S10) are content the client supplied
- * separately. No ordinal numerals anywhere, per the permanent
- * no-numbers-in-cards rule.
+ * Layout: layered editorial. Image hero, overlapping stat card, asymmetric
+ * splits, an animated shoot/build ratio, a roles grid, a language marquee, an
+ * interactive client list, and an accordion creed. Motion: page-load stagger
+ * in the hero, scroll-reveal everywhere else, parallax on section media,
+ * count-up on stats, plus a scroll-progress bar.
  */
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 
-/* S5: studio roles. Descriptions written for hubStudio, one creative angle each. */
+const contentTypes = [
+  'Images',
+  'Short video',
+  'Ecommerce packs',
+  'Social',
+  'Campaign adaptations',
+];
+
+const stats = [
+  { value: 15, suffix: '', label: 'Years in content and performance' },
+  { value: 6, suffix: '', label: 'Working languages on the team' },
+  { value: 48, suffix: 'h', label: 'Turnaround' },
+  { value: 2, suffix: '', label: 'Production hubs, in China and the Philippines' },
+];
+
+/* S6: studio roles. Descriptions written for hubStudio, one creative angle each. */
 const roles = [
   { name: 'Creative Directors', desc: 'They set the territory and own the idea. Every project starts here.' },
   { name: 'Designers', desc: 'Layout, type and brand systems, built to hold up across markets.' },
@@ -32,7 +47,9 @@ const roles = [
   { name: 'Localization', desc: 'Adapting copy and culture so nothing is lost between markets.' },
 ];
 
-/* S8: each item is one verbatim sentence from the source paragraph. */
+const languages = ['English', 'French', 'Japanese', 'Spanish', 'German', 'Mandarin'];
+
+/* S9: each item is one verbatim sentence from the source paragraph. */
 const clientSignals = [
   "You're launching dozens of product variations across markets, and you need every visual to look like it belongs to the same brand.",
   "You're spending six weeks on campaigns while competitors ship in days.",
@@ -41,12 +58,13 @@ const clientSignals = [
   'Your marketing team is drowning in daily content requests from sales, regional offices and retail partners, with no scalable way to answer them.',
 ];
 
-/* S10: the four-pillar creed, client supplied. Two source lines had a missing
-   sentence break; a period is inserted where the sentence clearly ends
-   (an em-dash is not an option here, per the no-em-dash rule). */
+/* S11: the four-pillar creed, client supplied. Two source lines had a missing
+   sentence break; a period is inserted where the sentence clearly ends. */
 const pillars = [
   {
     name: 'Creative Excellence',
+    note: 'The work is the point.',
+    image: '/Images/value-creative-excellence.jpg',
     points: [
       'Demonstrating our creative ability through breakthrough campaigns that set industry standards',
       'Making bold, informed creative decisions based on deep brand understanding and cultural insight',
@@ -55,6 +73,8 @@ const pillars = [
   },
   {
     name: 'Tech Mastery',
+    note: 'Tech earns its place.',
+    image: '/Images/value-tech-mastery.jpg',
     points: [
       'Continuously mastering the latest AIGC models and techniques to stay ahead of the innovation curve',
       "Engineering custom AI workflows that push the boundaries of what's possible in content creation",
@@ -63,6 +83,8 @@ const pillars = [
   },
   {
     name: 'People First, Always',
+    note: 'People are the asset.',
+    image: '/Images/value-people-first.jpg',
     points: [
       'We take care of our creative talent and tech specialists. Our people are our greatest asset',
       'Relationships are the foundation of everything we do with our team, clients, and creative community',
@@ -71,6 +93,8 @@ const pillars = [
   },
   {
     name: 'Relentless Ambition',
+    note: 'Hand up, every role.',
+    image: '/Images/value-relentless-ambition.jpg',
     points: [
       'We put our hand up at every level and in every role, taking ownership of our craft and client success',
       'We are ambitious in pursuing new creative territories and breakthrough technological capabilities',
@@ -78,181 +102,283 @@ const pillars = [
     ],
   },
 ];
+
+/* Authored line-icon set for the five client tensions: variation grid, clock,
+   rising bars, globe, overloaded stack. Same 1.7px stroke system. */
+const clientIcons = [
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3.2" y="3.2" width="7.3" height="7.3" rx="1.7"/><rect x="13.5" y="3.2" width="7.3" height="7.3" rx="1.7"/><rect x="3.2" y="13.5" width="7.3" height="7.3" rx="1.7"/><rect x="13.5" y="13.5" width="7.3" height="7.3" rx="1.7"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.7 2.3"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><path d="M6.6 20.5v-5.2"/><path d="M12 20.5V10.6"/><path d="M17.4 20.5V4.8"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.8 2.7 15.2 0 18M12 3c-2.7 2.8-2.7 15.2 0 18"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 21 8l-9 5.2L3 8z"/><path d="M3 12 12 17.2 21 12"/><path d="M3 16 12 21.2 21 16"/></svg>',
+];
 ---
 
 <Layout
   title="Who We Are | HubStudio AI Content Studio"
   description="Hybrid AI content studio with teams in China and the Philippines. Founded by ex-Publicis CEO Cyril Drouin. Speed, scale, and creative craft."
-  heroOverlay
 >
-  <!-- ===== S1: Hero with team-photo background ===== -->
-  <section class="hero">
-    <img
-      class="hero__bg"
-      src="/Team/team-photo.webp"
-      alt="The hubStudio team talking over coffee in the studio kitchen."
-      width="1050"
-      height="586"
-      fetchpriority="high"
-    />
-    <div class="hero__veil" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===== S1: Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero__media">
+      <img
+        class="hero__bg"
+        data-parallax
+        data-parallax-speed="0.16"
+        src="/Images/who-we-are-office.webp"
+        alt="The hubStudio team at workstations in a bright open-plan studio office."
+        width="1050"
+        height="573"
+        fetchpriority="high"
+      />
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="grain hero__grain" aria-hidden="true"></div>
+    </div>
+
     <div class="container hero__inner">
-      <span class="eyebrow hero__eyebrow">The Studio</span>
-      <h1 class="headline h1 reveal hero__title">
-        Who <span class="accent">We</span> Are
+      <p class="eyebrow hero__kicker">The Studio</p>
+      <h1 class="hero__title">
+        <span class="hero__w">Who</span>
+        <span class="hero__w hero__w--accent">We</span>
+        <span class="hero__w">Are</span>
       </h1>
-      <p class="hero__subhead">
+      <p class="hero__lede">
         A content studio built for how brands actually work today
       </p>
-      <p class="hero__p">
+      <p class="hero__intro">
         HubStudio makes content for brands, agencies, retailers and
         manufacturers whose production setup can't keep up with what marketing
-        teams need now. Images, short video, ecommerce packs, social, campaign
-        adaptations. Teams in China and the Philippines. Clients across Europe,
-        North America and Asia.
+        teams need now.
       </p>
-      <p class="hero__p">
-        Founded by Cyril Drouin, former CEO of Publicis Commerce and
-        Performance Marketing for China and North Asia. Over 20 years running
-        content and performance operations for global brands on Google, Meta,
-        Alibaba and ByteDance.
-      </p>
+      <ul class="hero__chips">
+        {contentTypes.map((c) => <li class="hero__chip">{c}</li>)}
+      </ul>
+      <div class="hero__meta">
+        <span class="hero__meta-item">Teams in China and the Philippines</span>
+        <span class="hero__meta-item">
+          Clients across Europe, North America and Asia
+        </span>
+      </div>
     </div>
+
+    <a class="hero__cue" href="#vision" aria-label="Scroll to read more">
+      <span class="hero__cue-label">Scroll</span>
+      <span class="hero__cue-line" aria-hidden="true"></span>
+    </a>
+
+    <svg class="hero__cube" viewBox="0 0 32 35" aria-hidden="true">
+      <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+      <path d="M4 11 16 18 16 31 4 24Z" fill="#fff" opacity="0.85" />
+      <path d="M28 11 16 18 16 31 28 24Z" fill="#fff" opacity="0.55" />
+    </svg>
   </section>
 
-  <!-- ===== S2: Our Vision ===== -->
-  <section class="section vision">
+  <!-- ===== S2: Stats (overlapping card) ===== -->
+  <section class="stats">
     <div class="container">
-      <div class="vision__card card card--navy grain">
-        <div class="vision__inner">
-          <span class="eyebrow vision__eyebrow">Our vision</span>
-          <h2 class="headline h2 reveal vision__head">
-            Our <span class="accent">Vision</span>
-          </h2>
-          <span class="vision__mark" aria-hidden="true">&ldquo;</span>
-          <blockquote class="vision__quote">
-            <p>
-              Traditional production is dying. Slowly, but it is dying. Too
-              slow, too expensive, and honestly too complicated for the volume
-              of assets brands need now.
-            </p>
-            <p>
-              The answer isn't to let AI do everything either. Pure AI content
-              has a ceiling, and most brands have already hit it.
-            </p>
-            <p>
-              The future is hybrid. Real shoots for the core brand material,
-              the moments that need a director, a model, a real product on a
-              real set. AI for everything that comes after: variations,
-              adaptations, localizations, the long tail of assets that used to
-              eat budgets and timelines.
-            </p>
-            <p>
-              Not every shot needs a shoot. And not every brand story can be
-              told by a prompt.
-            </p>
-            <p>
-              After 20 years inside Publicis working with some of the biggest
-              advertisers in the world, I've seen what production used to be,
-              and where it has to go. Hybrid works for luxury too, even in
-              mature Western markets where craft and consistency matter most.
-              The trick is knowing which 20% of the work needs a real set, and
-              which 80% can be reimagined.
-            </p>
-          </blockquote>
-          <figure class="vision__sign">
-            <span
-              class="vision__sign-mark"
-              role="img"
-              aria-label="Cyril Drouin's handwritten signature"
-            ></span>
-            <figcaption class="vision__sign-cap">
-              <span class="vision__sign-name">Cyril Drouin, Founder and CEO</span>
-              <span class="vision__sign-social">
-                <a
-                  class="social-link social-link--sm"
-                  href="https://www.linkedin.com/in/cyril-d-68835729/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  LinkedIn <span aria-hidden="true">&#8599;</span>
-                </a>
-                <a
-                  class="social-link social-link--sm"
-                  href="https://cyrildrouin.substack.com/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Substack <span aria-hidden="true">&#8599;</span>
-                </a>
+      <div class="stats__card">
+        {
+          stats.map((s, i) => (
+            <article class="stat" data-reveal style={`--i:${i}`}>
+              <span class="stat__num">
+                <span class="stat__count" data-count={s.value}>0</span>
+                <span class="stat__suffix">{s.suffix}</span>
               </span>
-            </figcaption>
-          </figure>
-        </div>
+              <span class="stat__label">{s.label}</span>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <!-- ===== S3: What hybrid actually means ===== -->
-  <section class="section--tight">
-    <div class="container split">
-      <div class="split__copy">
-        <span class="eyebrow split__eyebrow">Hybrid production</span>
-        <h2 class="headline h2 reveal split__head">
+  <!-- ===== S3: Our Vision ===== -->
+  <section class="section vision" id="vision">
+    <div class="container">
+      <header class="vision__head">
+        <p class="eyebrow accent-eyebrow" data-reveal>From the founder</p>
+        <h2 class="headline h2" data-reveal>
+          Our <span class="accent">Vision</span>
+        </h2>
+      </header>
+      <div class="vision__spread">
+        <div class="vision__prose">
+          <p class="vision__lead" data-reveal>
+            Traditional production is dying. Slowly, but it is dying. Too slow,
+            too expensive, and honestly too complicated for the volume of
+            assets brands need now.
+          </p>
+          <p class="vision__p" data-reveal>
+            The answer isn't to let AI do everything either. Pure AI content
+            has a ceiling, and most brands have already hit it.
+          </p>
+          <p class="vision__p" data-reveal>
+            The future is hybrid. Real shoots for the core brand material, the
+            moments that need a director, a model, a real product on a real
+            set. AI for everything that comes after: variations, adaptations,
+            localizations, the long tail of assets that used to eat budgets and
+            timelines.
+          </p>
+          <p class="vision__pull" data-reveal>
+            Not every shot needs a shoot. And not every brand story can be told
+            by a prompt.
+          </p>
+          <p class="vision__p" data-reveal>
+            After 15 years inside Publicis working with some of the biggest
+            advertisers in the world, I've seen what production used to be, and
+            where it has to go. Hybrid works for luxury too, even in mature
+            Western markets where craft and consistency matter most. The trick
+            is knowing which 20% of the work needs a real set, and which 80%
+            can be reimagined.
+          </p>
+        </div>
+        <aside class="vision__aside">
+          <div class="founder-card" data-reveal>
+            <img
+              class="founder-card__photo"
+              src="/Team/cyril-drouin.jpg"
+              alt="Cyril Drouin, founder and CEO of hubStudio."
+              width="500"
+              height="758"
+              loading="lazy"
+            />
+            <div class="founder-card__body">
+              <span
+                class="founder-card__sign"
+                role="img"
+                aria-label="Cyril Drouin's handwritten signature"
+              ></span>
+              <p class="founder-card__name">Cyril Drouin</p>
+              <p class="founder-card__role">Founder and CEO</p>
+              <div class="founder-card__social">
+              <a
+                class="social-link"
+                href="https://www.linkedin.com/in/cyril-d-68835729/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Cyril Drouin on LinkedIn"
+              >
+                <svg class="social-link__logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.86-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.73v20.53C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.73C24 .78 23.2 0 22.22 0z"
+                  />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <a
+                class="social-link"
+                href="https://cyrildrouin.substack.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Cyril Drouin on Substack"
+              >
+                <svg class="social-link__logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M22.54 8.24H1.46V5.4h21.08v2.84zM1.46 10.81V24L12 18.11 22.54 24V10.81H1.46zM22.54 0H1.46v2.84h21.08V0z"
+                  />
+                </svg>
+                <span>Substack</span>
+              </a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4: What hybrid actually means ===== -->
+  <section class="section hybrid">
+    <div class="container hybrid__grid">
+      <div class="hybrid__copy">
+        <p class="eyebrow accent-eyebrow" data-reveal>Hybrid production</p>
+        <h2 class="headline h2 hybrid__head" data-reveal>
           What <span class="accent">hybrid</span> actually means
         </h2>
-        <p class="split__p">
+        <p class="hybrid__p" data-reveal>
           Take a footwear launch: twelve colorways, four markets. The old way
           is a full shoot per market, weeks of post, a budget the CFO dreads.
           The hybrid way is one strong shoot of the hero product, then AI for
           every color variant, market adaptation and e-commerce angle. Same
           quality, a fraction of the cost.
         </p>
-        <p class="split__p">
+        <p class="hybrid__p" data-reveal>
           The real work is knowing which 20% to shoot and which 80% to build
-          from there. That's where 20 years in the business counts.
+          from there. That's where 15 years in the business counts.
         </p>
+
+        <div class="ratio" data-reveal>
+          <div class="ratio__bar">
+            <span class="ratio__fill ratio__fill--shoot" style="--w:20%"></span>
+            <span class="ratio__fill ratio__fill--build" style="--w:80%"></span>
+          </div>
+          <div class="ratio__legend">
+            <div class="ratio__key">
+              <span class="ratio__pct">20%</span>
+              <span class="ratio__tag">Shoot for real</span>
+            </div>
+            <div class="ratio__key ratio__key--build">
+              <span class="ratio__pct">80%</span>
+              <span class="ratio__tag">Build with AI</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <figure class="split__media">
-        <img
-          src="/Images/who-we-are-hybrid.jpg"
-          alt="A single cream leather sneaker on a warm plaster ledge under hard directional light."
-          width="1024"
-          height="1024"
-          loading="lazy"
-        />
+
+      <figure class="hybrid__media" data-reveal>
+        <div class="media-frame">
+          <img
+            data-parallax
+            data-parallax-speed="0.07"
+            src="/Images/who-we-are-hybrid.jpg"
+            alt="A single cream leather sneaker on a warm plaster ledge under hard directional light."
+            width="1024"
+            height="1024"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="hybrid__cap">One hero shoot. Every variant after.</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ===== S4: What we are ===== -->
-  <section class="section--tight">
-    <div class="container split split--rev">
-      <figure class="split__media split__media--wide">
-        <img
-          src="/Images/who-we-are-office.webp"
-          alt="The hubStudio team at workstations in a bright open-plan studio office."
-          width="1050"
-          height="573"
-          loading="lazy"
-        />
+  <!-- ===== S5: What we are ===== -->
+  <section class="section make">
+    <div class="container make__grid">
+      <figure class="make__media" data-reveal>
+        <div class="media-frame media-frame--wide">
+          <img
+            data-parallax
+            data-parallax-speed="0.08"
+            src="/Images/who-we-are-studio.jpg"
+            alt="A Chinese photographer shooting a product on a lit set with a crew assisting in a real studio."
+            width="1536"
+            height="864"
+            loading="lazy"
+          />
+        </div>
+        <span class="make__badge">Real shoots, real light</span>
       </figure>
-      <div class="split__copy">
-        <span class="eyebrow split__eyebrow">Inside hubStudio</span>
-        <h2 class="headline h2 reveal split__head">
+      <div class="make__copy">
+        <p class="eyebrow accent-eyebrow" data-reveal>Inside hubStudio</p>
+        <h2 class="headline h2 make__head" data-reveal>
           What we <span class="accent">are</span>
         </h2>
-        <p class="split__lead">
+        <p class="make__lead" data-reveal>
           A creative studio first. A technology company second.
         </p>
-        <p class="split__p">
+        <p class="make__p" data-reveal>
           Our team is senior art directors, designers, photographers and video
           directors who came up at large international agencies, both foreign
           and Chinese. We have engineers who actually know how to train models
           and build production pipelines, not just prompt their way through a
           brief.
         </p>
-        <p class="split__p">
+        <p class="make__p" data-reveal>
           We run our own GPU infrastructure, in China and outside. And we keep
           a full studio for real shooting, because hybrid only works if you can
           do both halves well.
@@ -261,30 +387,35 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S5: Our team ===== -->
+  <!-- ===== S6: Our team ===== -->
   <section class="section team">
     <div class="container">
       <header class="team__head">
-        <span class="eyebrow">Our team</span>
-        <h2 class="headline h2 reveal">
+        <p class="eyebrow accent-eyebrow" data-reveal>Our team</p>
+        <h2 class="headline h2" data-reveal>
           One studio, every <span class="accent">craft</span>
         </h2>
       </header>
-      <figure class="team__photo">
-        <img
-          src="/Team/team-photo.webp"
-          alt="Members of the hubStudio team talking over coffee in the studio break area."
-          width="1050"
-          height="586"
-          loading="lazy"
-        />
+      <figure class="team__photo" data-reveal>
+        <div class="media-frame media-frame--wide">
+          <img
+            data-parallax
+            data-parallax-speed="0.06"
+            src="/Team/team-photo.webp"
+            alt="Members of the hubStudio team talking over coffee in the studio break area."
+            width="1050"
+            height="586"
+            loading="lazy"
+          />
+        </div>
       </figure>
       <ul class="team__roles">
         {
-          roles.map((role) => (
-            <li class="team__role">
-              <h3 class="team__role-name">{role.name}</h3>
-              <p class="team__role-desc">{role.desc}</p>
+          roles.map((role, i) => (
+            <li class="role" data-reveal style={`--i:${i % 3}`}>
+              <span class="role__mark" aria-hidden="true" />
+              <h3 class="role__name">{role.name}</h3>
+              <p class="role__desc">{role.desc}</p>
             </li>
           ))
         }
@@ -292,155 +423,209 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S6: China Speed ===== -->
+  <!-- ===== S7: China Speed ===== -->
   <section class="section speed">
-    <div class="container split">
-      <div class="split__copy">
-        <span class="eyebrow split__eyebrow">Production speed</span>
-        <h2 class="headline h2 reveal split__head">
+    <div class="container speed__grid">
+      <figure class="speed__media" data-reveal>
+        <div class="media-frame media-frame--tall">
+          <img
+            data-parallax
+            data-parallax-speed="0.1"
+            src="/Images/who-we-are-china-speed.jpg"
+            alt="A Chinese production crew shooting and editing e-commerce content in the studio."
+            width="864"
+            height="1536"
+            loading="lazy"
+          />
+        </div>
+        <span class="speed__badge">
+          <span class="speed__badge-dot" aria-hidden="true"></span>
+          Two shifts, around the clock
+        </span>
+      </figure>
+      <div class="speed__copy">
+        <p class="eyebrow speed__eyebrow" data-reveal>Production speed</p>
+        <h2 class="headline h2 speed__head" data-reveal>
           China <span class="accent">Speed</span>
         </h2>
-        <p class="split__p">
+        <p class="speed__lead" data-reveal>
           Our main hub is in China, and it's not by accident. China is where
           the fastest production in the world happens. Not because corners get
           cut. Because the domestic competition is brutal. Brands here expect
           work back in 48 hours that would take three weeks in Paris or New
           York.
         </p>
-        <p class="split__p">
+        <p class="speed__p" data-reveal>
           A simple example. A retail client briefs us on a Friday afternoon for
           a Monday morning livestream. Fifteen lifestyle visuals, three product
           videos, full localization. Our China team runs two shifts through the
           weekend, and the work ships on time. Most studios outside of Asia
           would have asked for two weeks just to scope it.
         </p>
-        <p class="split__p">
+        <p class="speed__p" data-reveal>
           When a campaign has to ship for a market launch, a flash sale, or a
           competitive response, our China team can work around the clock. We've
           built that muscle. Most studios outside Asia haven't.
         </p>
-        <p class="split__p">
+        <p class="speed__p" data-reveal>
           Our Philippines hub adds English-first creative talent and strong
           post-production craft. Between the two hubs, clients get close to
           24-hour coverage on bigger projects.
         </p>
       </div>
-      <figure class="split__media split__media--tall">
-        <img
-          src="/Images/who-we-are-china-speed.jpg"
-          alt="A Chinese production crew shooting and editing e-commerce content in the studio."
-          width="864"
-          height="1536"
-          loading="lazy"
-        />
-      </figure>
     </div>
   </section>
 
-  <!-- ===== S7: We speak your language ===== -->
-  <section class="section--tight">
+  <!-- ===== S8: We speak your language ===== -->
+  <section class="section langs">
     <div class="container">
-      <div class="langs card card--white">
-        <span class="eyebrow langs__eyebrow">Languages</span>
-        <h2 class="headline h2 reveal langs__head">
+      <header class="langs__head">
+        <p class="eyebrow accent-eyebrow" data-reveal>Languages</p>
+        <h2 class="headline h2" data-reveal>
           We speak your <span class="accent">language</span>
         </h2>
-        <p class="langs__p">
-          Literally. Our team works in English, French, Japanese, Spanish,
-          German and Mandarin. That matters more than most people think. Briefs
-          don't get lost in translation. Cultural references actually land. A
-          French luxury house can brief us in French. A Japanese retailer can
-          review copy in their own market's voice. Small things, but they add
-          up over a year.
-        </p>
+      </header>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__row">
+        {
+          [...languages, ...languages, ...languages, ...languages].map((l) => (
+            <span class="marquee__item">
+              {l}
+              <span class="marquee__dot" />
+            </span>
+          ))
+        }
       </div>
+    </div>
+    <div class="container">
+      <p class="langs__p" data-reveal>
+        Literally. Our team works in English, French, Japanese, Spanish, German
+        and Mandarin. That matters more than most people think. Briefs don't
+        get lost in translation. Cultural references actually land. A French
+        luxury house can brief us in French. A Japanese retailer can review
+        copy in their own market's voice. Small things, but they add up over a
+        year.
+      </p>
     </div>
   </section>
 
-  <!-- ===== S8: You're the right client for us if ===== -->
-  <section class="section client">
+  <!-- ===== S9: You're the right client for us if ===== -->
+  <section class="signals-sec">
+    <div class="signals-sec__glow" aria-hidden="true"></div>
     <div class="container">
-      <header class="client__head">
-        <span class="eyebrow">Who we work with</span>
-        <h2 class="headline h2 reveal">
-          You're the <span class="accent">right</span> client for us if
+      <header class="signals__head">
+        <p class="eyebrow signals__eyebrow" data-reveal>Who we work with</p>
+        <h2 class="signals__title" data-reveal>
+          You're the <span class="accent">right</span><br />
+          client for us if
         </h2>
       </header>
-      <ul class="client__list">
+      <ul class="signals">
         {
-          clientSignals.map((signal) => (
-            <li class="client__item">{signal}</li>
+          clientSignals.map((signal, i) => (
+            <li class="signal" data-reveal style={`--i:${i}`}>
+              <a class="signal__link" href="/contact">
+                <span class="signal__icon" set:html={clientIcons[i]} />
+                <span class="signal__text">{signal}</span>
+                <span class="signal__go" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h13M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+              </a>
+            </li>
           ))
         }
       </ul>
-      <p class="client__close">
+      <p class="signals__close" data-reveal>
         Sound familiar? You're not alone. There is a better way, and we've
         built it.
       </p>
     </div>
   </section>
 
-  <!-- ===== S9: What we value ===== -->
-  <section class="section--tight">
-    <div class="container">
-      <div class="values">
-        <span class="eyebrow values__eyebrow">How we work</span>
-        <h2 class="headline h2 reveal values__head">
-          What we <span class="accent">value</span>
-        </h2>
-        <p class="values__p">
+  <!-- ===== S10: What we value ===== -->
+  <section class="value">
+    <div class="container value__inner">
+      <div class="value__lead-col">
+        <p class="eyebrow value__eyebrow" data-reveal>How we work</p>
+        <p class="value__lead" data-reveal>
           Creative first. The technology is the means, the work is the point.
-          Tech has to earn its place: if a model helps the work, we use it, if
-          it doesn't, we don't. We try to be good partners to our team and to
-          our clients, which mostly means putting our hand up when something
-          isn't right, creatively or technically.
         </p>
       </div>
+      <p class="value__body" data-reveal>
+        Tech has to earn its place: if a model helps the work, we use it, if it
+        doesn't, we don't. We try to be good partners to our team and to our
+        clients, which mostly means putting our hand up when something isn't
+        right, creatively or technically.
+      </p>
     </div>
   </section>
 
-  <!-- ===== S10: The values we live by ===== -->
-  <section class="section creed">
-    <div class="container">
-      <header class="creed__head">
-        <span class="eyebrow">Our values</span>
-        <h2 class="headline h2 reveal">
-          The values we <span class="accent">live</span> by
-        </h2>
-      </header>
-      <div class="creed__grid">
-        {
-          pillars.map((pillar) => (
-            <article class="creed__card card card--white">
-              <h3 class="creed__name">{pillar.name}</h3>
-              <ul class="creed__points">
-                {pillar.points.map((point) => (
-                  <li class="creed__point">{point}</li>
+  <!-- ===== S11: The values we live by ===== -->
+  <section class="creed">
+    <div class="container creed__head">
+      <p class="eyebrow accent-eyebrow" data-reveal>Our values</p>
+      <h2 class="creed__title" data-reveal>
+        The values we <span class="accent">live</span> by
+      </h2>
+    </div>
+    {
+      pillars.map((pillar, i) => (
+        <div class:list={['pillar', i % 2 === 0 ? 'pillar--dark' : 'pillar--flip']}>
+          <div class="container pillar__inner">
+            <div class="pillar__lead" data-reveal>
+              <img
+                class="pillar__visual"
+                src={pillar.image}
+                alt={`Abstract visual for ${pillar.name}`}
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+              <span class="pillar__note">{pillar.note}</span>
+            </div>
+            <div class="pillar__body">
+              <h3 class="pillar__name" data-reveal>{pillar.name}</h3>
+              <ul class="pillar__points">
+                {pillar.points.map((point, j) => (
+                  <li class="pillar__point" data-reveal style={`--i:${j}`}>
+                    <span class="pillar__pt-mark" aria-hidden="true" />
+                    <span>{point}</span>
+                  </li>
                 ))}
               </ul>
-            </article>
-          ))
-        }
-      </div>
-    </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
   </section>
 
-  <!-- ===== S11: Closing CTA ===== -->
+  <!-- ===== S12: Closing CTA ===== -->
   <section class="closing">
+    <div class="closing__glow" aria-hidden="true"></div>
     <div class="container closing__inner">
-      <span class="eyebrow">Let's talk</span>
-      <h2 class="headline h2 reveal closing__head">
+      <p class="eyebrow closing__eyebrow" data-reveal>Let's talk</p>
+      <h2 class="headline h2 closing__head" data-reveal>
         Want to see what this looks like for your <span class="accent">brand</span>?
       </h2>
-      <p class="closing__p">
+      <p class="closing__p" data-reveal>
         The fastest way is a 30-minute call. Bring a brief, or just a category
         you want to test. We'll come back with sample work tailored to it.
       </p>
-      <p class="closing__p closing__p--mute">
+      <p class="closing__p closing__p--mute" data-reveal>
         Not ready to talk yet? Browse our use cases to see how we've worked
         with brands in fashion, beauty, retail and consumer electronics.
       </p>
-      <div class="closing__cta">
+      <div class="closing__cta" data-reveal>
         <Button variant="primary" href="/contact">Contact us</Button>
         <Button variant="on-dark" href="/work">See use cases</Button>
       </div>
@@ -454,274 +639,638 @@ const pillars = [
 </Layout>
 
 <style>
-  .section--tight {
-    padding-block: 56px;
-  }
-  @media (min-width: 768px) {
-    .section--tight {
-      padding-block: 88px;
-    }
+  /* ============ Shared ============ */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+    z-index: 200;
+    transition: width 80ms linear;
   }
 
-  /* ---- S1 Hero ---- */
+  .accent-eyebrow {
+    color: var(--brand-orange);
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Reusable image frame: rounded, deep shadow, hover lift, parallax-safe. */
+  .media-frame {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    box-shadow:
+      0 2px 8px rgba(10, 10, 20, 0.08),
+      0 30px 60px -28px rgba(10, 10, 20, 0.4);
+  }
+  .media-frame--wide {
+    aspect-ratio: 16 / 9;
+  }
+  .media-frame--tall {
+    aspect-ratio: 9 / 16;
+  }
+  .media-frame img {
+    position: absolute;
+    inset: -8% 0;
+    width: 100%;
+    height: 116%;
+    object-fit: cover;
+    will-change: transform;
+  }
+
+  /* ============ S1 Hero ============ */
   .hero {
     position: relative;
     isolation: isolate;
     display: flex;
-    align-items: flex-end;
-    min-height: clamp(560px, 84vh, 800px);
-    padding: 132px 0 84px;
+    flex-direction: column;
+    justify-content: center;
+    min-height: clamp(620px, 92vh, 940px);
+    padding: 96px 0 150px;
+    overflow: hidden;
+  }
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
     overflow: hidden;
   }
   .hero__bg {
     position: absolute;
-    inset: 0;
+    inset: -9% 0;
     width: 100%;
-    height: 100%;
+    height: 118%;
     object-fit: cover;
-    object-position: 50% 38%;
-    z-index: -2;
+    object-position: 50% 42%;
+    will-change: transform;
   }
-  .hero__veil {
+  .hero__scrim {
     position: absolute;
     inset: 0;
-    z-index: -1;
-    background: linear-gradient(
-      178deg,
-      rgba(8, 12, 28, 0.62) 0%,
-      rgba(8, 12, 28, 0.4) 38%,
-      rgba(8, 12, 28, 0.9) 100%
-    );
+    background:
+      linear-gradient(
+        104deg,
+        rgba(8, 12, 28, 0.92) 0%,
+        rgba(8, 12, 28, 0.74) 38%,
+        rgba(8, 12, 28, 0.3) 72%,
+        rgba(8, 12, 28, 0.46) 100%
+      ),
+      linear-gradient(0deg, rgba(8, 12, 28, 0.62) 0%, rgba(8, 12, 28, 0) 46%);
+  }
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
   }
   .hero__inner {
+    position: relative;
     color: var(--text-on-dark);
   }
-  .hero__eyebrow {
+  .hero__kicker {
     color: var(--brand-orange);
+    position: relative;
+    padding-left: 46px;
+  }
+  .hero__kicker::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 34px;
+    height: 1px;
+    background: var(--brand-orange);
   }
   .hero__title {
-    margin-top: 18px;
+    margin-top: 22px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.92;
+    font-size: clamp(68px, 13vw, 184px);
     color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.22em;
   }
-  .hero__subhead {
-    margin-top: 18px;
-    font-size: var(--type-h3);
+  .hero__w {
+    display: inline-block;
+  }
+  .hero__w--accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .hero__lede {
+    margin-top: 10px;
+    font-size: clamp(22px, 2.6vw, 38px);
     font-weight: 600;
     letter-spacing: -0.02em;
-    line-height: 1.18;
+    line-height: 1.12;
+    max-width: 18ch;
+  }
+  .hero__intro {
+    margin-top: 22px;
+    max-width: 56ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .hero__chips {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .hero__chip {
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(240, 237, 233, 0.26);
+    background: rgba(240, 237, 233, 0.06);
+    backdrop-filter: blur(6px);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .hero__meta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+  }
+  .hero__meta-item {
+    position: relative;
+    padding-left: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hero__meta-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .hero__cue {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hero__cue-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .hero__cue-line {
+    width: 1px;
+    height: 46px;
+    background: linear-gradient(
+      180deg,
+      rgba(240, 237, 233, 0.7),
+      rgba(240, 237, 233, 0)
+    );
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__cue-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: var(--brand-orange);
+    animation: cueDrop 1.9s ease-in-out infinite;
+  }
+  @keyframes cueDrop {
+    0% { transform: translateY(-16px); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: translateY(48px); opacity: 0; }
+  }
+  .hero__cube {
+    position: absolute;
+    width: clamp(40px, 6vw, 78px);
+    right: clamp(24px, 7vw, 120px);
+    top: clamp(110px, 18vh, 210px);
+    z-index: 1;
+    filter: drop-shadow(0 12px 24px rgba(8, 12, 28, 0.5));
+    animation: cubeFloat 7s ease-in-out infinite;
+  }
+  @keyframes cubeFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  /* Hero load orchestration */
+  .hero__kicker,
+  .hero__w,
+  .hero__lede,
+  .hero__intro,
+  .hero__chip,
+  .hero__meta,
+  .hero__cue {
+    opacity: 0;
+    animation: heroRise 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+  }
+  .hero__kicker { animation-delay: 0.1s; }
+  .hero__w:nth-child(1) { animation-delay: 0.22s; }
+  .hero__w:nth-child(2) { animation-delay: 0.32s; }
+  .hero__w:nth-child(3) { animation-delay: 0.42s; }
+  .hero__lede { animation-delay: 0.52s; }
+  .hero__intro { animation-delay: 0.62s; }
+  .hero__chip:nth-child(1) { animation-delay: 0.7s; }
+  .hero__chip:nth-child(2) { animation-delay: 0.76s; }
+  .hero__chip:nth-child(3) { animation-delay: 0.82s; }
+  .hero__chip:nth-child(4) { animation-delay: 0.88s; }
+  .hero__chip:nth-child(5) { animation-delay: 0.94s; }
+  .hero__meta { animation-delay: 1s; }
+  .hero__cue { animation-delay: 1.3s; }
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(34px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ S2 Stats ============ */
+  .stats {
+    position: relative;
+    z-index: 2;
+    margin-top: -96px;
+  }
+  .stats__card {
+    background: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow:
+      0 2px 10px rgba(10, 10, 20, 0.06),
+      0 40px 70px -40px rgba(10, 10, 20, 0.4);
+    display: grid;
+    gap: 1px;
+    background: var(--line-hairline);
+    border: 1px solid var(--line-hairline);
+    overflow: hidden;
+  }
+  @media (min-width: 620px) {
+    .stats__card {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 940px) {
+    .stats__card {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stat {
+    background: var(--bg-white);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: background-color 200ms ease-out;
+  }
+  .stat:hover {
+    background: var(--bg-cream);
+  }
+  .stat__num {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(46px, 5vw, 66px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text-ink);
+  }
+  .stat__suffix {
+    color: var(--brand-orange);
+  }
+  .stat__label {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-mute);
     max-width: 22ch;
   }
-  .hero__p {
-    margin-top: 18px;
+
+  /* ============ S3 Vision ============ */
+  .vision {
+    background: var(--bg-white);
+  }
+  .vision__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 52px;
+  }
+  .vision__spread {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 940px) {
+    .vision__spread {
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .vision__prose {
+    display: grid;
+    gap: 26px;
+  }
+  .vision__lead {
+    font-size: clamp(24px, 2.5vw, 34px);
+    font-weight: 600;
+    line-height: 1.34;
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+  .vision__p {
+    font-size: clamp(17px, 1.25vw, 20px);
+    line-height: 1.64;
+    color: var(--text-mute);
     max-width: 62ch;
-    font-size: var(--type-small);
-    line-height: 1.7;
-    color: rgba(240, 237, 233, 0.84);
+  }
+  .vision__pull {
+    margin-block: 6px;
+    padding: 4px 0 4px 30px;
+    border-left: 3px solid var(--brand-orange);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(25px, 2.8vw, 38px);
+    line-height: 1.28;
+    color: var(--text-ink);
+  }
+  .vision__aside {
+    position: relative;
+  }
+  @media (min-width: 940px) {
+    .vision__aside {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .founder-card {
+    background:
+      radial-gradient(
+        130% 90% at 88% 0%,
+        rgba(30, 58, 138, 0.55) 0%,
+        rgba(14, 22, 51, 0) 64%
+      ),
+      var(--bg-ink);
+    color: var(--text-on-dark);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 56px -34px rgba(10, 10, 20, 0.6);
+  }
+  .founder-card__photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 50% 14%;
+  }
+  .founder-card__body {
+    padding: 26px 30px 30px;
+  }
+  /* Signature is blue ink on transparent; the mask recolours it to cream. */
+  .founder-card__sign {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    aspect-ratio: 1408 / 768;
+    background-color: var(--text-on-dark);
+    -webkit-mask: url('/Team/cyril-drouin-signature.png') no-repeat left center /
+      contain;
+    mask: url('/Team/cyril-drouin-signature.png') no-repeat left center / contain;
+  }
+  .founder-card__name {
+    margin-top: 16px;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .founder-card__role {
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .founder-card__social {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
   .social-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 9px 18px;
-    border: 1px solid rgba(240, 237, 233, 0.4);
+    padding: 9px 16px;
+    border: 1px solid rgba(240, 237, 233, 0.3);
     border-radius: var(--radius-pill);
-    font-size: var(--type-button);
+    background: rgba(240, 237, 233, 0.06);
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-on-dark);
-    transition: color 120ms ease-out, border-color 120ms ease-out;
+    transition:
+      color 140ms ease-out,
+      border-color 140ms ease-out,
+      background-color 140ms ease-out;
   }
-  .social-link span {
-    font-family: var(--font-mono);
-    font-size: 13px;
+  .social-link__logo {
+    width: 17px;
+    height: 17px;
+    flex: none;
   }
   .social-link:hover {
-    color: var(--brand-orange);
-    border-color: var(--brand-orange);
-  }
-  .social-link--sm {
-    padding: 7px 15px;
-    font-size: 13px;
+    color: var(--bg-ink);
+    background: var(--text-on-dark);
+    border-color: var(--text-on-dark);
   }
 
-  /* ---- S2 Our Vision ---- */
-  .vision__card {
-    position: relative;
-    padding: 56px;
-  }
-  @media (max-width: 600px) {
-    .vision__card {
-      padding: 36px 24px;
-    }
-  }
-  .vision__inner {
-    position: relative;
-    z-index: 1;
-    max-width: 760px;
-    margin-inline: auto;
-  }
-  .vision__eyebrow {
-    color: rgba(240, 237, 233, 0.6);
-  }
-  .vision__head {
-    margin-top: 14px;
-  }
-  .vision__mark {
-    display: block;
-    margin-top: 12px;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 72px;
-    line-height: 0.5;
-    color: var(--brand-orange);
-  }
-  .vision__quote {
-    margin: 0;
-    margin-top: 20px;
+  /* ============ S4 Hybrid ============ */
+  .hybrid__grid {
     display: grid;
-    gap: 18px;
-  }
-  .vision__quote p {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(19px, 1.9vw, 25px);
-    line-height: 1.42;
-    color: var(--text-on-dark);
-  }
-  .vision__sign {
-    margin: 0;
-    margin-top: 36px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(240, 237, 233, 0.16);
-    display: grid;
-    gap: 18px;
-    justify-items: start;
-  }
-  /* Signature is blue ink on transparent; the mask recolours it to cream so
-     it reads on the navy card. */
-  .vision__sign-mark {
-    display: block;
-    width: clamp(170px, 24vw, 224px);
-    aspect-ratio: 1408 / 768;
-    background-color: var(--text-on-dark);
-    -webkit-mask: url('/Team/cyril-drouin-signature.png') no-repeat left center /
-      contain;
-    mask: url('/Team/cyril-drouin-signature.png') no-repeat left center /
-      contain;
-  }
-  .vision__sign-cap {
-    display: grid;
-    gap: 12px;
-  }
-  .vision__sign-name {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 18px;
-    color: var(--text-on-dark);
-  }
-  .vision__sign-social {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  /* ---- S3 / S4 / S6 split layout ---- */
-  .split {
-    display: grid;
-    gap: 36px;
+    gap: 40px;
     align-items: center;
   }
   @media (min-width: 980px) {
-    .split {
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+    .hybrid__grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 72px;
     }
   }
-  .split__eyebrow {
-    color: var(--brand-orange);
-  }
-  .split__head {
+  .hybrid__head {
     margin-top: 14px;
   }
-  .split__lead {
+  .hybrid__p {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 52ch;
+  }
+  .ratio {
+    margin-top: 34px;
+  }
+  .ratio__bar {
+    display: flex;
+    gap: 5px;
+    height: 18px;
+  }
+  .ratio__fill {
+    width: 0;
+    border-radius: 6px;
+    transition: width 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .ratio.is-in .ratio__fill {
+    width: var(--w);
+  }
+  .ratio__fill--shoot {
+    background: var(--line-strong);
+  }
+  .ratio__fill--build {
+    background: linear-gradient(90deg, var(--brand-orange-deep), var(--brand-orange));
+  }
+  .ratio__legend {
+    margin-top: 16px;
+    display: flex;
+    gap: 14px;
+  }
+  .ratio__key {
+    flex: 1;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-hairline);
+  }
+  .ratio__key--build {
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-deep));
+    border-color: transparent;
+    color: #fff;
+  }
+  .ratio__pct {
+    display: block;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .ratio__tag {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .hybrid__media {
+    position: relative;
+  }
+  .hybrid__cap {
+    margin-top: 16px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--text-ink);
+  }
+
+  /* ============ S5 What we are ============ */
+  .make {
+    background: var(--bg-white);
+  }
+  .make__grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .make__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+  }
+  .make__media {
+    position: relative;
+  }
+  .make__badge,
+  .speed__badge {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.86);
+    backdrop-filter: blur(8px);
+    color: var(--text-on-dark);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .make__head {
+    margin-top: 14px;
+  }
+  .make__lead {
     margin-top: 18px;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: var(--type-lead);
-    line-height: 1.4;
+    font-size: var(--type-h3);
+    line-height: 1.25;
     color: var(--text-ink);
   }
-  .split__p {
+  .make__p {
     margin-top: 16px;
-    font-size: var(--type-small);
-    line-height: 1.7;
+    font-size: var(--type-body);
+    line-height: 1.66;
     color: var(--text-mute);
-    max-width: 56ch;
-  }
-  .split__media {
-    margin: 0;
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    box-shadow: var(--shadow-card);
-  }
-  .split__media img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
-  .split__media--wide img {
-    aspect-ratio: 16 / 9;
-  }
-  .split__media--tall img {
-    aspect-ratio: 9 / 16;
-  }
-  @media (min-width: 980px) {
-    .split--rev .split__copy {
-      order: 2;
-    }
-    .split--rev .split__media {
-      order: 1;
-    }
+    max-width: 52ch;
   }
 
-  .speed {
-    background: var(--bg-white);
-  }
-  /* The 9:16 China Speed photo gets the narrower column so it stays a
-     sensible height beside the copy. */
-  @media (min-width: 980px) {
-    .speed .split {
-      grid-template-columns: 1.3fr 0.7fr;
-    }
-  }
-
-  /* ---- S5 Our team ---- */
+  /* ============ S6 Team ============ */
   .team__head {
     max-width: 720px;
     display: grid;
     gap: 14px;
-    margin-bottom: 36px;
-  }
-  .team__head .eyebrow {
-    color: var(--brand-orange);
+    margin-bottom: 32px;
   }
   .team__photo {
-    margin: 0 0 40px;
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    box-shadow: var(--shadow-card);
-  }
-  .team__photo img {
-    width: 100%;
-    aspect-ratio: 1050 / 586;
-    object-fit: cover;
+    margin: 0 0 var(--gap-card);
   }
   .team__roles {
     display: grid;
-    gap: 1px;
-    background: var(--line-hairline);
-    border: 1px solid var(--line-hairline);
-    border-radius: var(--radius-card);
-    overflow: hidden;
+    gap: var(--gap-card);
   }
   @media (min-width: 600px) {
     .team__roles {
@@ -733,182 +1282,533 @@ const pillars = [
       grid-template-columns: repeat(3, 1fr);
     }
   }
-  .team__role {
-    background: var(--bg-cream);
-    padding: 28px 26px;
+  .role {
+    position: relative;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 20px;
+    padding: 30px 28px;
+    overflow: hidden;
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 220ms ease-out,
+      border-color 220ms ease-out;
   }
-  .team__role-name {
+  .role::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .role:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 44px -26px rgba(10, 10, 20, 0.5);
+    border-color: transparent;
+  }
+  .role:hover::after {
+    transform: scaleX(1);
+  }
+  .role__mark {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .role:hover .role__mark {
+    transform: rotate(135deg) scale(1.15);
+  }
+  .role__name {
+    margin-top: 20px;
     font-size: var(--type-h4);
     font-weight: 600;
     letter-spacing: -0.01em;
   }
-  .team__role-desc {
+  .role__desc {
     margin-top: 8px;
     font-size: var(--type-small);
     line-height: 1.6;
     color: var(--text-mute);
   }
 
-  /* ---- S7 Languages ---- */
-  .langs {
-    padding: 48px 56px;
-    max-width: 860px;
-    margin-inline: auto;
+  /* ============ S7 China Speed ============ */
+  .speed {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
   }
-  @media (max-width: 600px) {
-    .langs {
-      padding: 36px 24px;
+  .speed__grid {
+    display: grid;
+    gap: 44px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .speed__grid {
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 72px;
     }
   }
-  .langs__eyebrow {
-    color: var(--brand-orange);
+  .speed__media {
+    position: relative;
   }
-  .langs__head {
+  .speed__badge {
+    background: rgba(233, 78, 27, 0.95);
+  }
+  .speed__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+  .speed__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .speed__head {
     margin-top: 14px;
+    color: #fff;
   }
-  .langs__p {
+  .speed__lead {
+    margin-top: 22px;
+    font-size: clamp(19px, 1.6vw, 24px);
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #fff;
+    max-width: 58ch;
+  }
+  .speed__p {
     margin-top: 18px;
-    font-size: var(--type-lead);
-    line-height: 1.55;
-    color: var(--text-ink);
+    font-size: clamp(15px, 1.05vw, 17px);
+    line-height: 1.68;
+    color: rgba(240, 237, 233, 0.78);
+    max-width: 60ch;
   }
 
-  /* ---- S8 Right client ---- */
-  .client {
+  /* ============ S8 Languages ============ */
+  .langs {
     background: var(--bg-white);
+    overflow: hidden;
   }
-  .client__head {
+  .langs__head {
     max-width: 720px;
     display: grid;
     gap: 14px;
     margin-bottom: 40px;
   }
-  .client__head .eyebrow {
-    color: var(--brand-orange);
+  .marquee {
+    margin-block: 8px 44px;
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      #000 9%,
+      #000 91%,
+      transparent
+    );
+    mask: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
   }
-  .client__list {
-    display: grid;
-    gap: 2px;
+  .marquee__row {
+    display: flex;
+    width: max-content;
+    animation: marquee 34s linear infinite;
   }
-  .client__item {
-    position: relative;
-    padding: 22px 0 22px 38px;
-    border-top: 1px solid var(--line-strong);
-    font-size: var(--type-lead);
-    line-height: 1.5;
-    color: var(--text-ink);
+  .marquee:hover .marquee__row {
+    animation-play-state: paused;
   }
-  .client__item:last-child {
-    border-bottom: 1px solid var(--line-strong);
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
   }
-  /* Authored marker: a small orange diamond, echoing the brand cube facet. */
-  .client__item::before {
-    content: '';
-    position: absolute;
-    left: 2px;
-    top: 30px;
-    width: 11px;
-    height: 11px;
-    background: var(--brand-orange);
-    transform: rotate(45deg);
-  }
-  .client__close {
-    margin-top: 32px;
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 38px;
+    padding-right: 38px;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: var(--type-h3);
-    line-height: 1.3;
-    letter-spacing: -0.01em;
+    font-size: clamp(34px, 5vw, 64px);
     color: var(--text-ink);
-    max-width: 22ch;
   }
-
-  /* ---- S9 What we value ---- */
-  .values {
-    max-width: 760px;
-  }
-  .values__eyebrow {
+  .marquee__item:nth-child(even) {
     color: var(--brand-orange);
   }
-  .values__head {
-    margin-top: 14px;
+  .marquee__dot {
+    width: 10px;
+    height: 10px;
+    background: var(--line-strong);
+    transform: rotate(45deg);
   }
-  .values__p {
-    margin-top: 18px;
+  .langs__p {
+    max-width: 70ch;
     font-size: var(--type-lead);
     line-height: 1.6;
-    color: var(--text-mute);
+    color: var(--text-ink);
   }
 
-  /* ---- S10 The values we live by ---- */
+  /* ============ S9 Right client ============ */
+  .signals-sec {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    padding-block: var(--section-pad-y-mobile);
+  }
+  @media (min-width: 768px) {
+    .signals-sec {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .signals-sec__glow {
+    position: absolute;
+    width: 720px;
+    height: 720px;
+    right: -300px;
+    top: -260px;
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.3) 0%,
+      rgba(233, 78, 27, 0) 66%
+    );
+    pointer-events: none;
+  }
+  .signals__head {
+    position: relative;
+    max-width: 1000px;
+    margin-bottom: 52px;
+    display: grid;
+    gap: 18px;
+  }
+  .signals__eyebrow {
+    color: var(--brand-orange);
+  }
+  .signals__title {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 6.6vw, 96px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    color: #fff;
+  }
+  .signals__title .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .signals {
+    position: relative;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .signal {
+    position: relative;
+    border-bottom: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .signal__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 3.4vw, 52px);
+    padding: clamp(24px, 3.4vw, 44px) clamp(14px, 2.6vw, 38px);
+    color: inherit;
+    transition:
+      background-color 280ms ease-out,
+      padding-left 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .signal__link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--brand-orange);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 340ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .signal__link:hover {
+    background: rgba(233, 78, 27, 0.07);
+    padding-left: clamp(26px, 3.6vw, 58px);
+  }
+  .signal__link:hover::before {
+    transform: scaleY(1);
+  }
+  .signal__icon {
+    flex: none;
+    width: clamp(46px, 6.4vw, 74px);
+    height: clamp(46px, 6.4vw, 74px);
+    color: var(--brand-orange);
+    transition: transform 380ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .signal__icon :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+  .signal__link:hover .signal__icon {
+    transform: scale(1.12) rotate(-6deg);
+  }
+  .signal__text {
+    flex: 1;
+    font-size: clamp(19px, 2.1vw, 31px);
+    font-weight: 500;
+    line-height: 1.32;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .signal__go {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(240, 237, 233, 0.24);
+    display: grid;
+    place-items: center;
+    color: var(--text-on-dark);
+    transition:
+      background-color 240ms ease-out,
+      border-color 240ms ease-out,
+      color 240ms ease-out,
+      transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .signal__go svg {
+    width: 20px;
+    height: 20px;
+  }
+  .signal__link:hover .signal__go {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    color: #fff;
+    transform: rotate(-45deg);
+  }
+  @media (max-width: 620px) {
+    .signal__go {
+      display: none;
+    }
+  }
+  .signals__close {
+    margin-top: 48px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(24px, 3vw, 40px);
+    line-height: 1.28;
+    color: #fff;
+    max-width: 24ch;
+  }
+  .signals__close::after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin-top: 24px;
+    background: var(--brand-orange);
+  }
+
+  /* ============ S10 What we value ============ */
+  .value {
+    background:
+      radial-gradient(
+        90% 120% at 12% 0%,
+        rgba(30, 58, 138, 0.5) 0%,
+        rgba(14, 22, 51, 0) 58%
+      ),
+      var(--bg-ink);
+    color: var(--text-on-dark);
+    padding-block: var(--section-pad-y-mobile);
+  }
+  @media (min-width: 768px) {
+    .value {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .value__inner {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 880px) {
+    .value__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+  }
+  .value__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+    margin-bottom: 22px;
+  }
+  .value__lead {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(27px, 3vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: #fff;
+  }
+  .value__body {
+    font-size: var(--type-lead);
+    line-height: 1.64;
+    color: rgba(240, 237, 233, 0.8);
+    padding-left: 24px;
+    border-left: 2px solid var(--brand-orange);
+  }
+  @media (min-width: 880px) {
+    .value__body {
+      margin-top: 6px;
+    }
+  }
+
+  /* ============ S11 The values we live by ============ */
   .creed {
     background: var(--bg-white);
   }
   .creed__head {
-    max-width: 720px;
-    display: grid;
-    gap: 14px;
-    margin-bottom: 40px;
-  }
-  .creed__head .eyebrow {
-    color: var(--brand-orange);
-  }
-  .creed__grid {
-    display: grid;
-    gap: var(--gap-card);
-  }
-  @media (min-width: 760px) {
-    .creed__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  .creed__card {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-  }
-  @media (max-width: 600px) {
-    .creed__card {
-      padding: 32px 24px;
-    }
-  }
-  .creed__name {
-    font-size: var(--type-h3);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--line-hairline);
-  }
-  .creed__points {
-    margin-top: 22px;
+    max-width: 820px;
     display: grid;
     gap: 16px;
+    padding-top: clamp(72px, 12vw, 150px);
+    padding-bottom: clamp(36px, 6vw, 66px);
   }
-  .creed__point {
-    position: relative;
-    padding-left: 22px;
-    font-size: var(--type-small);
-    line-height: 1.6;
+  .creed__title {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 6vw, 86px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    color: var(--text-ink);
+  }
+  .creed__title .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .pillar {
+    background: var(--bg-white);
+    color: var(--text-ink);
+  }
+  .pillar--dark {
+    background:
+      radial-gradient(
+        110% 80% at 86% 0%,
+        rgba(30, 58, 138, 0.5) 0%,
+        rgba(14, 22, 51, 0) 62%
+      ),
+      var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .pillar__inner {
+    display: grid;
+    gap: 36px;
+    padding-block: clamp(56px, 9vw, 122px);
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .pillar__inner {
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 76px;
+    }
+    .pillar--flip .pillar__lead {
+      order: 2;
+    }
+  }
+  .pillar__lead {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: flex-start;
+  }
+  .pillar__visual {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 28px;
+    box-shadow: 0 34px 64px -32px rgba(10, 10, 20, 0.6);
+  }
+  .pillar--dark .pillar__visual {
+    box-shadow: 0 34px 64px -30px rgba(0, 0, 0, 0.7);
+  }
+  .pillar__note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(21px, 2.2vw, 32px);
+    line-height: 1.2;
+    color: var(--brand-orange);
+    max-width: 13ch;
+  }
+  .pillar__name {
+    font-size: clamp(36px, 5.4vw, 78px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+  }
+  .pillar__points {
+    margin-top: clamp(22px, 3vw, 38px);
+  }
+  .pillar__point {
+    display: flex;
+    gap: 18px;
+    padding: clamp(15px, 1.7vw, 22px) 0;
+    border-top: 1px solid var(--line-hairline);
+    font-size: clamp(15px, 1.3vw, 19px);
+    line-height: 1.55;
     color: var(--text-mute);
   }
-  /* Small orange diamond, half the scale of the client-list marker. */
-  .creed__point::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 7px;
-    height: 7px;
+  .pillar__point:last-child {
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .pillar--dark .pillar__point {
+    border-top-color: rgba(240, 237, 233, 0.16);
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .pillar--dark .pillar__point:last-child {
+    border-bottom-color: rgba(240, 237, 233, 0.16);
+  }
+  .pillar__pt-mark {
+    flex: none;
+    margin-top: 8px;
+    width: 10px;
+    height: 10px;
     background: var(--brand-orange);
     transform: rotate(45deg);
   }
 
-  /* ---- S11 Closing CTA ---- */
+  /* ============ S12 Closing ============ */
   .closing {
+    position: relative;
     background: var(--bg-ink);
     color: var(--text-on-dark);
+    overflow: hidden;
+  }
+  .closing__glow {
+    position: absolute;
+    width: 680px;
+    height: 680px;
+    left: 50%;
+    bottom: -380px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.42) 0%,
+      rgba(233, 78, 27, 0) 66%
+    );
+    pointer-events: none;
   }
   .closing__inner {
+    position: relative;
     text-align: center;
     padding-block: var(--section-pad-y-mobile);
     display: grid;
@@ -920,11 +1820,12 @@ const pillars = [
       padding-block: var(--section-pad-y-desktop);
     }
   }
-  .closing .eyebrow {
+  .closing__eyebrow {
     color: rgba(240, 237, 233, 0.6);
   }
   .closing__head {
     max-width: 18ch;
+    color: #fff;
   }
   .closing__p {
     max-width: 56ch;
@@ -934,7 +1835,7 @@ const pillars = [
   }
   .closing__p--mute {
     font-size: var(--type-small);
-    color: rgba(240, 237, 233, 0.58);
+    color: rgba(240, 237, 233, 0.55);
   }
   .closing__cta {
     margin-top: 10px;
@@ -944,15 +1845,57 @@ const pillars = [
     gap: 12px;
   }
   .closing__cube {
-    width: 44px;
-    margin-top: 12px;
+    width: 46px;
+    margin-top: 14px;
+    animation: cubeFloat 7s ease-in-out infinite;
+  }
+
+  /* ============ Reduced motion ============ */
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    .hero__kicker,
+    .hero__w,
+    .hero__lede,
+    .hero__intro,
+    .hero__chip,
+    .hero__meta,
+    .hero__cue {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .ratio.is-in .ratio__fill {
+      transition: none;
+    }
+    .marquee__row {
+      animation: none;
+    }
+    .hero__cube,
+    .closing__cube,
+    .hero__cue-line::after,
+    .speed__badge-dot {
+      animation: none;
+    }
   }
 </style>
 
 <script>
-  /* Reveal headlines on scroll (headlines only). */
-  const reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Scroll progress bar ---- */
+  const progress = document.getElementById('scroll-progress');
+  const onProgress = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    if (progress) progress.style.width = `${pct}%`;
+  };
+  onProgress();
+  window.addEventListener('scroll', onProgress, { passive: true });
+
+  /* ---- Scroll reveal ---- */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduced) {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -962,10 +1905,74 @@ const pillars = [
           }
         });
       },
-      { threshold: 0.2 },
+      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' },
     );
-    reveals.forEach((el) => io.observe(el));
+    revealEls.forEach((el) => io.observe(el));
   } else {
-    reveals.forEach((el) => el.classList.add('is-in'));
+    revealEls.forEach((el) => el.classList.add('is-in'));
   }
+
+  /* ---- Count-up stats ---- */
+  const counters = document.querySelectorAll<HTMLElement>('[data-count]');
+  const runCount = (el: HTMLElement) => {
+    const target = Number(el.dataset.count || '0');
+    if (reduced) {
+      el.textContent = String(target);
+      return;
+    }
+    const duration = 1500;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window) {
+    const co = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            runCount(entry.target as HTMLElement);
+            co.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+    counters.forEach((el) => co.observe(el));
+  } else {
+    counters.forEach((el) => (el.textContent = el.dataset.count || '0'));
+  }
+
+  /* ---- Parallax on section media ---- */
+  const parallaxEls = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-parallax]'),
+  );
+  if (parallaxEls.length && !reduced) {
+    let ticking = false;
+    const apply = () => {
+      const vh = window.innerHeight;
+      parallaxEls.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < -200 || rect.top > vh + 200) return;
+        const speed = Number(el.dataset.parallaxSpeed || '0.1');
+        const fromCenter = rect.top + rect.height / 2 - vh / 2;
+        el.style.transform = `translate3d(0, ${(-fromCenter * speed).toFixed(1)}px, 0)`;
+      });
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(apply);
+        ticking = true;
+      }
+    };
+    apply();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
 </script>

@@ -1,0 +1,279 @@
+---
+/**
+ * Thank-you (`/thank-you`).
+ * Confirmation after a brief is sent from /contact. Layout principle from
+ * beyondbordergroup.com/thank-you, rebuilt in the hubStudio design system:
+ * S1 image hero with the confirmation message · S2 "while you wait" reading.
+ * Kept out of the sitemap and the nav: reached only by submitting the form.
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+/* Multilingual thanks: a nod to producing across 16 markets (Latin scripts
+   only: Han characters never leak onto a non-Chinese page). */
+const thanks = ['Thanks', 'Merci', 'Gracias', 'Grazie', 'Danke', 'Obrigado'];
+
+/* "While you wait" reading, pulled from the header Resources / Studio menus. */
+const reading = [
+  {
+    eyebrow: 'Insights',
+    title: 'What AI-native content actually changes',
+    text: 'Essays on the part of the work that still needs a human, and the part that no longer does.',
+    href: '/resources/insights',
+  },
+  {
+    eyebrow: 'The Studio',
+    title: 'Who we are',
+    text: 'The studio behind the work, how we run production, and why brands move their content operation here.',
+    href: '/the-studio/who-we-are',
+  },
+];
+---
+
+<Layout
+  heroOverlay
+  title="Brief received | hubStudio"
+  description="Your project brief has reached the hubStudio team. A producer will read it today and reply within one business day."
+>
+  <!-- ===== S1: Hero ===== -->
+  <section class="ty-hero">
+    <div class="ty-hero__media" aria-hidden="true">
+      <div class="ty-hero__scrim"></div>
+    </div>
+
+    <div class="container ty-hero__inner">
+      <div class="ty-hero__copy">
+        <span class="eyebrow ty-hero__eyebrow">Brief received</span>
+        <h1 class="headline h1 reveal ty-hero__title">
+          Thanks for <span class="accent">writing in</span>.
+        </h1>
+        <p class="lead ty-hero__lead">
+          Your brief just landed with a producer. They will read it today and
+          reply within one business day, Monday to Friday. We read every message
+          in person, no auto-responder triage, and we will tell you straight
+          whether to shoot it, generate it, or both.
+        </p>
+        <p class="ty-hero__note">
+          Time-sensitive? Reach us directly at
+          <a href="mailto:hello@hubstudio.ai">hello@hubstudio.ai</a>.
+        </p>
+        <div class="ty-hero__cta">
+          <Button variant="primary" href="/work">See real brand work</Button>
+          <Button variant="on-dark" href="/">Back to home</Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container ty-hero__greet">
+      <span class="ty-hero__greet-label">Heard in 16 markets</span>
+      <ul class="ty-hero__greet-list">
+        {thanks.map((word) => <li>{word}.</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S2: While you wait ===== -->
+  <section class="section wait">
+    <div class="container">
+      <header class="wait__head">
+        <span class="eyebrow">While you wait</span>
+        <h2 class="headline h2 reveal">
+          Worth a look before we <span class="accent">reply</span>.
+        </h2>
+      </header>
+      <div class="wait__grid">
+        {
+          reading.map((item) => (
+            <a class="wait__card card card--white" href={item.href}>
+              <span class="eyebrow">{item.eyebrow}</span>
+              <h3 class="headline h3 wait__card-title">{item.title}</h3>
+              <p class="wait__card-text">{item.text}</p>
+              <span class="wait__card-cta">
+                Read more <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---- S1 Hero ------------------------------------------------- */
+  .ty-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: clamp(560px, 82vh, 860px);
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    /* Pull up under the transparent sticky header. */
+    margin-top: -64px;
+  }
+  @media (min-width: 1024px) {
+    .ty-hero {
+      margin-top: calc(-1 * var(--nav-h));
+    }
+  }
+  .ty-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--bg-ink) url('/Images/contact-hero.webp') center / cover no-repeat;
+  }
+  .ty-hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 12, 28, 0.94) 0%,
+        rgba(8, 12, 28, 0.68) 50%,
+        rgba(8, 12, 28, 0.3) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 12, 28, 0.6) 0%,
+        rgba(8, 12, 28, 0.14) 34%,
+        rgba(8, 12, 28, 0.82) 100%
+      );
+  }
+  .ty-hero__inner {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-h) + 56px);
+    padding-bottom: 44px;
+  }
+  .ty-hero__copy {
+    max-width: 740px;
+  }
+  .ty-hero__eyebrow {
+    color: var(--brand-orange);
+  }
+  .ty-hero__title {
+    margin-top: 20px;
+    color: #fff;
+    font-size: clamp(40px, 5.4vw, 78px);
+  }
+  .ty-hero__lead {
+    margin-top: 22px;
+    max-width: 58ch;
+    color: rgba(240, 237, 233, 0.84);
+  }
+  .ty-hero__note {
+    margin-top: 18px;
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.66);
+  }
+  .ty-hero__note a {
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .ty-hero__note a:hover {
+    text-decoration: underline;
+  }
+  .ty-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ty-hero__greet {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    padding-top: 22px;
+    padding-bottom: 38px;
+    border-top: 1px solid rgba(240, 237, 233, 0.16);
+  }
+  .ty-hero__greet-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .ty-hero__greet-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+  }
+  .ty-hero__greet-list li {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    color: rgba(240, 237, 233, 0.74);
+  }
+
+  /* ---- S2 While you wait --------------------------------------- */
+  .wait__head {
+    max-width: 640px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .wait__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .wait__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .wait__card {
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+    transition: transform 200ms ease-out;
+  }
+  .wait__card:hover {
+    transform: translateY(-4px);
+  }
+  .wait__card-title {
+    margin-top: 14px;
+  }
+  .wait__card-text {
+    margin-top: 12px;
+    flex: 1;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .wait__card-cta {
+    margin-top: 22px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll (§10: headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

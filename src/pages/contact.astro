@@ -1,0 +1,754 @@
+---
+/**
+ * Contact (`/contact`).
+ * Layout principle borrowed from beyondbordergroup.com/contact, rebuilt in the
+ * hubStudio design system: S1 dark image hero · S2 contact rail + project form
+ * (posts to /api/contact, Resend) · S3 closing band.
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+/* Multilingual hello: a nod to producing across 16 markets (Latin scripts
+   only: Han characters never leak onto a non-Chinese page). */
+const greetings = ['Hello', 'Bonjour', 'Hola', 'Ciao', 'Hallo', 'Olá'];
+
+/* "You are": Solutions > Clients, from the header nav. */
+const clientTypes = ['Brand', 'Agency', 'Retailer', 'Manufacturer'];
+
+/* "Services you are looking for": the twenty design service lines plus the
+   three consulting lines, mirroring the header Services + Solutions menus. */
+const designServices = [
+  'Social Media', 'eCommerce', 'Short Video', 'Ad Creative', 'Video Production',
+  'Print Design', 'Website Design', 'Email Design', 'Motion Design',
+  'Marketing Strategy', 'Presentation Design', 'Illustration Design', 'Storyboard',
+  'Packaging & Merch Design', 'Brand Identity', 'Ebook and Digital Reports',
+  'Concept Creation', 'Pitch Deck', 'Creative Strategy', 'Press Release',
+];
+const consultingServices = ['Consulting', 'Agentic-Design', 'Training'];
+
+const subscriptionOptions = [
+  'Yes, that is what we want',
+  'Maybe, tell me more',
+  'No, project by project',
+];
+
+const budgetRanges = [
+  'Less than 5k USD',
+  '5–20k USD',
+  '20–50k USD',
+  '50k USD+',
+];
+---
+
+<Layout
+  heroOverlay
+  title="Contact | hubStudio"
+  description="Send a brief, ask about pricing, or tell us what you are trying to make. A producer reads every message at hubStudio and replies within one business day."
+>
+  <!-- ===== S1: Hero ===== -->
+  <section class="c-hero">
+    <div class="c-hero__media" aria-hidden="true">
+      <div class="c-hero__scrim"></div>
+    </div>
+
+    <div class="container c-hero__inner">
+      <div class="c-hero__copy">
+        <span class="eyebrow c-hero__eyebrow">Contact</span>
+        <h1 class="headline h1 reveal c-hero__title">
+          Let's talk about the content your brand actually <span class="accent">needs</span>.
+        </h1>
+        <p class="lead c-hero__lead">
+          Send a brief, ask about pricing, or just tell us what you are trying to
+          make. A producer reads every message, replies within one business day,
+          and tells you straight whether to shoot it, generate it, or both.
+        </p>
+        <div class="c-hero__cta">
+          <Button variant="primary" href="#brief">Start a brief</Button>
+          <a class="c-hero__mail" href="mailto:hello@hubstudio.ai">hello@hubstudio.ai</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container c-hero__greet">
+      <span class="c-hero__greet-label">Producing across 16 markets</span>
+      <ul class="c-hero__greet-list">
+        {greetings.map((g) => <li>{g}.</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== S2: Contact rail + project form ===== -->
+  <section class="section form-sec" id="brief">
+    <div class="container form-grid">
+      <!-- Contact rail -->
+      <aside class="rail">
+        <span class="eyebrow">Reach us directly</span>
+        <h2 class="headline h3 rail__head">
+          One studio, every market you sell into.
+        </h2>
+        <p class="rail__intro">
+          hubStudio runs as a single production house with creatives drawn from
+          the cultures our clients sell into. Wherever the brief lands, the same
+          team picks it up.
+        </p>
+
+        <div class="rail__block">
+          <span class="rail__label">Email</span>
+          <a class="rail__email" href="mailto:hello@hubstudio.ai">hello@hubstudio.ai</a>
+        </div>
+
+        <div class="rail__block">
+          <span class="rail__label">Response time</span>
+          <p class="rail__value">Within one business day, Monday to Friday.</p>
+        </div>
+
+        <div class="rail__block">
+          <span class="rail__label">Where we produce</span>
+          <ul class="rail__regions">
+            <li>Greater China</li>
+            <li>Southeast Asia</li>
+            <li>Europe</li>
+            <li>North America</li>
+            <li>Middle East</li>
+            <li>Latin America</li>
+          </ul>
+        </div>
+
+        <p class="rail__note">
+          Exploring a referral partnership instead?
+          <a href="/partner-program">See the partner program &rarr;</a>
+        </p>
+      </aside>
+
+      <!-- Project form -->
+      <div class="form-card card card--white">
+        <span class="chip form-card__chip"><span class="chip__dot"></span>Tell us about your project</span>
+        <h2 class="headline h3 form-card__head">
+          The more you share, the sharper our first reply.
+        </h2>
+
+        <form
+          class="brief-form"
+          id="brief-form"
+          method="POST"
+          action="/api/contact"
+        >
+          <!-- Honeypot: hidden from people, tempting to bots. -->
+          <div class="hp" aria-hidden="true">
+            <label for="company_url">Company website</label>
+            <input id="company_url" name="company_url" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="firstName">First name <span class="req">*</span></label>
+              <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+            </div>
+            <div class="field">
+              <label for="lastName">Last name <span class="req">*</span></label>
+              <input id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="email">Work email <span class="req">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="company">Company <span class="req">*</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="website">Website <span class="opt-tag">optional</span></label>
+            <input id="website" name="website" type="url" placeholder="https://" autocomplete="url" />
+          </div>
+
+          <fieldset class="choice-set">
+            <legend>You are <span class="req">*</span></legend>
+            <div class="choice">
+              {clientTypes.map((c) => (
+                <label class="pick-wrap">
+                  <input type="radio" name="clientType" value={c} required />
+                  <span class="pick">{c}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-set">
+            <legend>Services you are looking for <span class="opt-tag">select any</span></legend>
+            <span class="choice-sub">Design</span>
+            <div class="choice">
+              {designServices.map((s) => (
+                <label class="pick-wrap">
+                  <input type="checkbox" name="services" value={s} />
+                  <span class="pick">{s}</span>
+                </label>
+              ))}
+            </div>
+            <span class="choice-sub">Consulting</span>
+            <div class="choice">
+              {consultingServices.map((s) => (
+                <label class="pick-wrap">
+                  <input type="checkbox" name="services" value={s} />
+                  <span class="pick">{s}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-set">
+            <legend>Interested in design as a subscription <span class="req">*</span></legend>
+            <div class="choice">
+              {subscriptionOptions.map((o) => (
+                <label class="pick-wrap">
+                  <input type="radio" name="subscription" value={o} required />
+                  <span class="pick">{o}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-set">
+            <legend>Your budget <span class="req">*</span></legend>
+            <div class="choice">
+              {budgetRanges.map((b) => (
+                <label class="pick-wrap">
+                  <input type="radio" name="budget" value={b} required />
+                  <span class="pick">{b}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="message">Tell us about your project <span class="req">*</span></label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="What are you making, for which markets, and by when?"
+            ></textarea>
+          </div>
+
+          <div class="form-foot">
+            <button type="submit" class="btn btn--primary form-submit">Send the brief</button>
+            <p class="form-fine">
+              We reply within one business day. No newsletter, no resale of your details.
+            </p>
+          </div>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: Closing band ===== -->
+  <section class="closing">
+    <div class="container closing__inner">
+      <span class="eyebrow">While you are here</span>
+      <h2 class="headline h2 reveal closing__head">
+        See the work before you send the <span class="accent">brief</span>.
+      </h2>
+      <Button variant="primary" href="/work">See real brand work</Button>
+      <p class="closing__line">hello@hubstudio.ai &middot; Studios across 16 markets</p>
+      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
+        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
+        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
+        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
+      </svg>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---- S1 Hero ------------------------------------------------- */
+  .c-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: clamp(540px, 78vh, 820px);
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    /* Pull up under the transparent sticky header. */
+    margin-top: -64px;
+  }
+  @media (min-width: 1024px) {
+    .c-hero {
+      margin-top: calc(-1 * var(--nav-h));
+    }
+  }
+  .c-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--bg-ink) url('/Images/contact-hero.webp') center / cover no-repeat;
+  }
+  .c-hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 12, 28, 0.94) 0%,
+        rgba(8, 12, 28, 0.66) 48%,
+        rgba(8, 12, 28, 0.28) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 12, 28, 0.6) 0%,
+        rgba(8, 12, 28, 0.12) 34%,
+        rgba(8, 12, 28, 0.8) 100%
+      );
+  }
+  .c-hero__inner {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-h) + 56px);
+    padding-bottom: 44px;
+  }
+  .c-hero__copy {
+    max-width: 760px;
+  }
+  .c-hero__eyebrow {
+    color: var(--brand-orange);
+  }
+  .c-hero__title {
+    margin-top: 20px;
+    color: #fff;
+    font-size: clamp(40px, 5.4vw, 78px);
+  }
+  .c-hero__lead {
+    margin-top: 22px;
+    max-width: 58ch;
+    color: rgba(240, 237, 233, 0.84);
+  }
+  .c-hero__cta {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+  }
+  .c-hero__mail {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: rgba(240, 237, 233, 0.78);
+    border-bottom: 1px solid rgba(240, 237, 233, 0.28);
+    padding-bottom: 2px;
+    transition: color 120ms ease-out, border-color 120ms ease-out;
+  }
+  .c-hero__mail:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .c-hero__greet {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    padding-top: 22px;
+    padding-bottom: 38px;
+    border-top: 1px solid rgba(240, 237, 233, 0.16);
+  }
+  .c-hero__greet-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .c-hero__greet-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+  }
+  .c-hero__greet-list li {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    color: rgba(240, 237, 233, 0.74);
+  }
+
+  /* ---- S2 Form section ----------------------------------------- */
+  .form-grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 960px) {
+    .form-grid {
+      grid-template-columns: minmax(280px, 340px) 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+  }
+
+  /* Contact rail */
+  .rail__head {
+    margin-top: 14px;
+  }
+  .rail__intro {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .rail__block {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .rail__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 8px;
+  }
+  .rail__email {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange);
+  }
+  .rail__email:hover {
+    text-decoration: underline;
+  }
+  .rail__value {
+    font-size: var(--type-small);
+    line-height: 1.55;
+  }
+  .rail__regions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .rail__regions li {
+    padding: 6px 13px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line-strong);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .rail__note {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-hairline);
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .rail__note a {
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .rail__note a:hover {
+    text-decoration: underline;
+  }
+
+  /* Form card */
+  .form-card {
+    padding: 32px 24px;
+  }
+  @media (min-width: 768px) {
+    .form-card {
+      padding: 44px;
+    }
+  }
+  .form-card__chip {
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .form-card__head {
+    margin-top: 16px;
+    max-width: 22ch;
+  }
+  .brief-form {
+    margin-top: 30px;
+    display: grid;
+    gap: 24px;
+  }
+
+  /* Honeypot: kept in the layout flow for bots, invisible to people. */
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .row {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 620px) {
+    .row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .field {
+    display: grid;
+    gap: 8px;
+  }
+  .field label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .req {
+    color: var(--brand-orange);
+  }
+  .opt-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 13px 15px;
+    font: inherit;
+    font-size: 15px;
+    color: var(--text-ink);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    transition: border-color 120ms ease-out, background-color 120ms ease-out;
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.55;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: var(--text-mute);
+    opacity: 0.7;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    background: var(--bg-white);
+    border-color: var(--brand-orange);
+  }
+
+  /* Choice fieldsets (radio / checkbox pills) */
+  .choice-set {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  .choice-set legend {
+    padding: 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .choice-sub {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin: 14px 0 8px;
+  }
+  .choice-sub:first-of-type {
+    margin-top: 0;
+  }
+  .choice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pick-wrap {
+    display: inline-flex;
+    cursor: pointer;
+  }
+  .pick-wrap input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pick {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line-strong);
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-ink);
+    transition: background-color 120ms ease-out, border-color 120ms ease-out,
+      color 120ms ease-out;
+  }
+  .pick-wrap:hover .pick {
+    border-color: var(--brand-orange);
+    color: var(--brand-orange);
+  }
+  .pick-wrap input:checked + .pick {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    color: #fff;
+  }
+  .pick-wrap input:focus-visible + .pick {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 2px;
+  }
+
+  /* Footer of the form */
+  .form-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 20px;
+    padding-top: 6px;
+  }
+  .form-submit {
+    flex: none;
+  }
+  .form-fine {
+    flex: 1;
+    min-width: 220px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .form-status {
+    margin: 0;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: var(--type-small);
+    line-height: 1.5;
+  }
+  .form-status[data-tone='ok'] {
+    background: rgba(30, 58, 138, 0.08);
+    color: var(--brand-navy-deep);
+  }
+  .form-status[data-tone='err'] {
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange-deep);
+  }
+
+  /* ---- S3 Closing band ----------------------------------------- */
+  .closing {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .closing__inner {
+    text-align: center;
+    padding-block: var(--section-pad-y-mobile);
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+  }
+  @media (min-width: 768px) {
+    .closing__inner {
+      padding-block: var(--section-pad-y-desktop);
+    }
+  }
+  .closing__head {
+    max-width: 18ch;
+  }
+  .closing__line {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .closing__cube {
+    width: 44px;
+    margin-top: 8px;
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll (§10: headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* Submit the brief over fetch for inline feedback. Without JS the form
+     still posts to /api/contact and the endpoint redirects to /thank-you. */
+  const form = document.getElementById('brief-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status') as HTMLParagraphElement | null;
+  const submit = form?.querySelector('.form-submit') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (event) => {
+    if (!form.reportValidity()) return;
+    event.preventDefault();
+    if (!submit || !status) return;
+
+    submit.disabled = true;
+    const label = submit.textContent;
+    submit.textContent = 'Sending…';
+    status.hidden = true;
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
+        window.location.href = '/thank-you';
+        return;
+      }
+      status.textContent =
+        data.error || 'Something went wrong. Email hello@hubstudio.ai and we will pick it up.';
+      status.dataset.tone = 'err';
+      status.hidden = false;
+    } catch {
+      status.textContent =
+        'Network error. Email hello@hubstudio.ai and we will pick it up.';
+      status.dataset.tone = 'err';
+      status.hidden = false;
+    } finally {
+      submit.disabled = false;
+      submit.textContent = label;
+    }
+  });
+</script>
