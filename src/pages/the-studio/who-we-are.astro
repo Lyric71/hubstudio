@@ -2,21 +2,21 @@
 /**
  * Who We Are (`/the-studio/who-we-are`).
  * Narrative content sourced verbatim from who-we-are-page.md.
- * S1 Hero (team-photo background) · S2 Founder band · S3 Our Vision ·
- * S4 What hybrid means · S5 What we are · S6 Our team (roles) ·
- * S7 China Speed · S8 Languages · S9 Right client · S10 What we value ·
- * S11 The values we live by · S12 Closing CTA.
+ * S1 Hero (team-photo background) · S2 Our Vision · S3 What hybrid means ·
+ * S4 What we are · S5 Our team (roles) · S6 China Speed · S7 Languages ·
+ * S8 Right client · S9 What we value · S10 The values we live by ·
+ * S11 Closing CTA.
  *
  * The "right client" pain points are reflowed from one source paragraph into
  * a list; each item is a full source sentence kept word for word. The team
- * roles (S6) and the four-pillar creed (S11) are content the client supplied
+ * roles (S5) and the four-pillar creed (S10) are content the client supplied
  * separately. No ordinal numerals anywhere, per the permanent
  * no-numbers-in-cards rule.
  */
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 
-/* S6: studio roles. Descriptions written for hubStudio, one creative angle each. */
+/* S5: studio roles. Descriptions written for hubStudio, one creative angle each. */
 const roles = [
   { name: 'Creative Directors', desc: 'They set the territory and own the idea. Every project starts here.' },
   { name: 'Designers', desc: 'Layout, type and brand systems, built to hold up across markets.' },
@@ -32,7 +32,7 @@ const roles = [
   { name: 'Localization', desc: 'Adapting copy and culture so nothing is lost between markets.' },
 ];
 
-/* S7: each item is one verbatim sentence from the source paragraph. */
+/* S8: each item is one verbatim sentence from the source paragraph. */
 const clientSignals = [
   "You're launching dozens of product variations across markets, and you need every visual to look like it belongs to the same brand.",
   "You're spending six weeks on campaigns while competitors ship in days.",
@@ -41,7 +41,7 @@ const clientSignals = [
   'Your marketing team is drowning in daily content requests from sales, regional offices and retail partners, with no scalable way to answer them.',
 ];
 
-/* S11: the four-pillar creed, client supplied. Two source lines had a missing
+/* S10: the four-pillar creed, client supplied. Two source lines had a missing
    sentence break; a period is inserted where the sentence clearly ends
    (an em-dash is not an option here, per the no-em-dash rule). */
 const pillars = [
@@ -111,57 +111,16 @@ const pillars = [
         adaptations. Teams in China and the Philippines. Clients across Europe,
         North America and Asia.
       </p>
+      <p class="hero__p">
+        Founded by Cyril Drouin, former CEO of Publicis Commerce and
+        Performance Marketing for China and North Asia. Over 20 years running
+        content and performance operations for global brands on Google, Meta,
+        Alibaba and ByteDance.
+      </p>
     </div>
   </section>
 
-  <!-- ===== S2: Founder band ===== -->
-  <section class="section founder">
-    <div class="container founder__grid">
-      <figure class="founder__portrait">
-        <img
-          class="founder__portrait-img"
-          src="/Team/cyril-drouin.jpg"
-          alt="Cyril Drouin, founder and CEO of hubStudio, in a dark jacket against a white background."
-          width="500"
-          height="758"
-          loading="lazy"
-        />
-        <figcaption class="founder__portrait-cap">
-          <span class="founder__portrait-name">Cyril Drouin</span>
-          <span class="founder__portrait-role">Founder and CEO</span>
-        </figcaption>
-      </figure>
-      <div class="founder__copy">
-        <span class="eyebrow founder__eyebrow">Founder</span>
-        <p class="founder__p">
-          Founded by Cyril Drouin, former CEO of Publicis Commerce and
-          Performance Marketing for China and North Asia. Over 20 years running
-          content and performance operations for global brands on Google, Meta,
-          Alibaba and ByteDance.
-        </p>
-        <div class="founder__social">
-          <a
-            class="social-link"
-            href="https://www.linkedin.com/in/cyril-d-68835729/"
-            target="_blank"
-            rel="noopener"
-          >
-            LinkedIn <span aria-hidden="true">&#8599;</span>
-          </a>
-          <a
-            class="social-link"
-            href="https://cyrildrouin.substack.com/"
-            target="_blank"
-            rel="noopener"
-          >
-            Substack <span aria-hidden="true">&#8599;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== S3: Our Vision ===== -->
+  <!-- ===== S2: Our Vision ===== -->
   <section class="section vision">
     <div class="container">
       <div class="vision__card card card--navy grain">
@@ -202,16 +161,31 @@ const pillars = [
             </p>
           </blockquote>
           <figure class="vision__sign">
-            <img
-              class="vision__sign-img"
-              src="/Team/cyril-drouin-card.webp"
-              alt="Cyril Drouin."
-              width="690"
-              height="580"
-              loading="lazy"
-            />
+            <span
+              class="vision__sign-mark"
+              role="img"
+              aria-label="Cyril Drouin's handwritten signature"
+            ></span>
             <figcaption class="vision__sign-cap">
-              Cyril Drouin, Founder and CEO
+              <span class="vision__sign-name">Cyril Drouin, Founder and CEO</span>
+              <span class="vision__sign-social">
+                <a
+                  class="social-link social-link--sm"
+                  href="https://www.linkedin.com/in/cyril-d-68835729/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  LinkedIn <span aria-hidden="true">&#8599;</span>
+                </a>
+                <a
+                  class="social-link social-link--sm"
+                  href="https://cyrildrouin.substack.com/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Substack <span aria-hidden="true">&#8599;</span>
+                </a>
+              </span>
             </figcaption>
           </figure>
         </div>
@@ -219,7 +193,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S4: What hybrid actually means ===== -->
+  <!-- ===== S3: What hybrid actually means ===== -->
   <section class="section--tight">
     <div class="container split">
       <div class="split__copy">
@@ -228,18 +202,15 @@ const pillars = [
           What <span class="accent">hybrid</span> actually means
         </h2>
         <p class="split__p">
-          Take a footwear launch. Twelve colorways, four key markets. The old
-          way is a full shoot per market, weeks of post, and a budget the CFO
-          doesn't really want to look at. The hybrid way is one strong shoot of
-          the hero product on a real model, and then AI to generate the color
-          variants, the market adaptations, the e-commerce angles, all from
-          that one core asset. Same brand quality. A fraction of the time. A
-          fraction of the cost.
+          Take a footwear launch: twelve colorways, four markets. The old way
+          is a full shoot per market, weeks of post, a budget the CFO dreads.
+          The hybrid way is one strong shoot of the hero product, then AI for
+          every color variant, market adaptation and e-commerce angle. Same
+          quality, a fraction of the cost.
         </p>
         <p class="split__p">
-          That's the simple version. The real work is figuring out which 20% to
-          shoot and which 80% to build from there. Which is where 20 years in
-          the business actually counts for something.
+          The real work is knowing which 20% to shoot and which 80% to build
+          from there. That's where 20 years in the business counts.
         </p>
       </div>
       <figure class="split__media">
@@ -254,7 +225,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S5: What we are ===== -->
+  <!-- ===== S4: What we are ===== -->
   <section class="section--tight">
     <div class="container split split--rev">
       <figure class="split__media">
@@ -287,7 +258,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S6: Our team ===== -->
+  <!-- ===== S5: Our team ===== -->
   <section class="section team">
     <div class="container">
       <header class="team__head">
@@ -318,7 +289,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S7: China Speed ===== -->
+  <!-- ===== S6: China Speed ===== -->
   <section class="section speed">
     <div class="container split">
       <div class="split__copy">
@@ -363,7 +334,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S8: We speak your language ===== -->
+  <!-- ===== S7: We speak your language ===== -->
   <section class="section--tight">
     <div class="container">
       <div class="langs card card--white">
@@ -383,7 +354,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S9: You're the right client for us if ===== -->
+  <!-- ===== S8: You're the right client for us if ===== -->
   <section class="section client">
     <div class="container">
       <header class="client__head">
@@ -406,7 +377,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S10: What we value ===== -->
+  <!-- ===== S9: What we value ===== -->
   <section class="section--tight">
     <div class="container">
       <div class="values">
@@ -425,7 +396,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S11: The values we live by ===== -->
+  <!-- ===== S10: The values we live by ===== -->
   <section class="section creed">
     <div class="container">
       <header class="creed__head">
@@ -451,7 +422,7 @@ const pillars = [
     </div>
   </section>
 
-  <!-- ===== S12: Closing CTA ===== -->
+  <!-- ===== S11: Closing CTA ===== -->
   <section class="closing">
     <div class="container closing__inner">
       <span class="eyebrow">Let's talk</span>
@@ -538,82 +509,13 @@ const pillars = [
     max-width: 22ch;
   }
   .hero__p {
-    margin-top: 20px;
+    margin-top: 18px;
     max-width: 62ch;
     font-size: var(--type-small);
     line-height: 1.7;
     color: rgba(240, 237, 233, 0.84);
   }
-
-  /* ---- S2 Founder band ---- */
-  .founder {
-    background: var(--bg-white);
-  }
-  .founder__grid {
-    display: grid;
-    gap: 36px;
-    align-items: center;
-  }
-  @media (min-width: 860px) {
-    .founder__grid {
-      grid-template-columns: 0.62fr 1fr;
-      gap: 56px;
-    }
-  }
-  .founder__portrait {
-    margin: 0;
-    position: relative;
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    background: var(--bg-cream);
-    box-shadow: var(--shadow-card);
-    max-width: 360px;
-  }
-  .founder__portrait-img {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: 50% 12%;
-  }
-  .founder__portrait-cap {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    padding: 48px 24px 22px;
-    background: linear-gradient(
-      180deg,
-      rgba(8, 12, 28, 0) 0%,
-      rgba(8, 12, 28, 0.82) 100%
-    );
-  }
-  .founder__portrait-name {
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: #fff;
-  }
-  .founder__portrait-role {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(240, 237, 233, 0.74);
-  }
-  .founder__eyebrow {
-    color: var(--brand-orange);
-  }
-  .founder__p {
-    margin-top: 16px;
-    font-size: var(--type-lead);
-    line-height: 1.55;
-    color: var(--text-ink);
-    max-width: 54ch;
-  }
-  .founder__social {
+  .hero__social {
     margin-top: 26px;
     display: flex;
     flex-wrap: wrap;
@@ -624,11 +526,11 @@ const pillars = [
     align-items: center;
     gap: 8px;
     padding: 9px 18px;
-    border: 1px solid var(--line-strong);
+    border: 1px solid rgba(240, 237, 233, 0.4);
     border-radius: var(--radius-pill);
     font-size: var(--type-button);
     font-weight: 600;
-    color: var(--text-ink);
+    color: var(--text-on-dark);
     transition: color 120ms ease-out, border-color 120ms ease-out;
   }
   .social-link span {
@@ -640,7 +542,7 @@ const pillars = [
     border-color: var(--brand-orange);
   }
 
-  /* ---- S3 Our Vision ---- */
+  /* ---- S2 Our Vision ---- */
   .vision__card {
     position: relative;
     padding: 56px;
@@ -708,7 +610,7 @@ const pillars = [
     color: var(--text-on-dark);
   }
 
-  /* ---- S4 / S5 / S7 split layout ---- */
+  /* ---- S3 / S4 / S6 split layout ---- */
   .split {
     display: grid;
     gap: 36px;
@@ -768,7 +670,7 @@ const pillars = [
     background: var(--bg-white);
   }
 
-  /* ---- S6 Our team ---- */
+  /* ---- S5 Our team ---- */
   .team__head {
     max-width: 720px;
     display: grid;
@@ -823,7 +725,7 @@ const pillars = [
     color: var(--text-mute);
   }
 
-  /* ---- S8 Languages ---- */
+  /* ---- S7 Languages ---- */
   .langs {
     padding: 48px 56px;
     max-width: 860px;
@@ -847,7 +749,7 @@ const pillars = [
     color: var(--text-ink);
   }
 
-  /* ---- S9 Right client ---- */
+  /* ---- S8 Right client ---- */
   .client {
     background: var(--bg-white);
   }
@@ -897,7 +799,7 @@ const pillars = [
     max-width: 22ch;
   }
 
-  /* ---- S10 What we value ---- */
+  /* ---- S9 What we value ---- */
   .values {
     max-width: 760px;
   }
@@ -914,7 +816,7 @@ const pillars = [
     color: var(--text-mute);
   }
 
-  /* ---- S11 The values we live by ---- */
+  /* ---- S10 The values we live by ---- */
   .creed {
     background: var(--bg-white);
   }
@@ -977,7 +879,7 @@ const pillars = [
     transform: rotate(45deg);
   }
 
-  /* ---- S12 Closing CTA ---- */
+  /* ---- S11 Closing CTA ---- */
   .closing {
     background: var(--bg-ink);
     color: var(--text-on-dark);

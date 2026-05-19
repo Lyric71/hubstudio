@@ -241,8 +241,8 @@ const faqSchema = {
           </a>
         </div>
         <ul class="hero__marks reveal" style="--i:5">
-          <li>One creative + sourcing team</li>
-          <li>Audited China factories</li>
+          <li>Senior creative directors lead</li>
+          <li>Packaging and branded merch design</li>
           <li>From brief to print-ready in weeks</li>
         </ul>
       </div>
@@ -773,11 +773,7 @@ const faqSchema = {
         {
           faqs.map((faq, i) => (
             <div class="acc-row reveal" style={`--i:${Math.min(i, 6)}`}>
-              <button
-                class="acc-row__q"
-                type="button"
-                aria-expanded={i === 0 ? 'true' : 'false'}
-              >
+              <button class="acc-row__q" type="button" aria-expanded="false">
                 <span>{faq.q}</span>
                 <span class="acc-row__icon" aria-hidden="true">
                   <span></span><span></span>
@@ -888,21 +884,25 @@ const faqSchema = {
   /* ============================================================
      S1  HERO (dark)
      ============================================================ */
+  /* Pulled up under the sticky header so the dark hero sits behind the
+     transparent overlay nav (matches the home page pattern). */
   .hero {
     position: relative;
     overflow: clip;
-    padding-top: 140px;
-    padding-bottom: 132px;
+    margin-top: -64px;
+    padding-top: 128px;
+    padding-bottom: 104px;
     color: var(--text-on-dark);
     background:
       radial-gradient(58% 46% at 8% -6%, rgba(30, 58, 138, 0.55), transparent 72%),
       radial-gradient(52% 56% at 102% 108%, rgba(233, 78, 27, 0.38), transparent 70%),
       var(--bg-ink);
   }
-  @media (max-width: 760px) {
+  @media (min-width: 1024px) {
     .hero {
-      padding-top: 116px;
-      padding-bottom: 96px;
+      margin-top: calc(-1 * var(--nav-h));
+      padding-top: 152px;
+      padding-bottom: 136px;
     }
   }
   .hero__grid {
@@ -1205,53 +1205,6 @@ const faqSchema = {
     .pcar__dot[data-active='true'] .pcar__dot-fill {
       animation: none;
       transform: scaleX(1);
-    }
-  }
-
-  /* Hero ticker */
-  .hero__ticker {
-    position: relative;
-    z-index: 1;
-    margin-top: 76px;
-    padding-block: 18px;
-    border-top: 1px solid rgba(240, 237, 233, 0.12);
-    border-bottom: 1px solid rgba(240, 237, 233, 0.12);
-    overflow: hidden;
-  }
-  @media (max-width: 760px) {
-    .hero__ticker {
-      margin-top: 52px;
-    }
-  }
-  .hero__ticker-track {
-    display: flex;
-    width: max-content;
-    animation: ticker 30s linear infinite;
-  }
-  .hero__ticker-row {
-    display: inline-flex;
-    align-items: center;
-    gap: 22px;
-    padding-right: 22px;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(22px, 3vw, 38px);
-    color: rgba(240, 237, 233, 0.42);
-    white-space: nowrap;
-  }
-  .hero__ticker-dot {
-    color: var(--brand-orange);
-    font-family: var(--font-sans);
-    font-style: normal;
-  }
-  @keyframes ticker {
-    to {
-      transform: translateX(-50%);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero__ticker-track {
-      animation: none;
     }
   }
 

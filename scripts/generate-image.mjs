@@ -3,8 +3,8 @@
 //
 // Usage:
 //   npm run gen -- "a futuristic city skyline at sunset"
-//   node scripts/generate-image.mjs "a red fox in snow" --quality=1K --format=png
-//   node scripts/generate-image.mjs "hero banner" --out=public/Images/hero.png
+//   node scripts/generate-image.mjs "a red fox in snow" --quality=high --resolution=2k
+//   node scripts/generate-image.mjs "hero banner" --aspect-ratio=16:9 --out=public/Images/hero.png
 //
 // Output:
 //   Default filename is generated-<timestamp>.<format> in the repo root: that
@@ -18,16 +18,24 @@ import { writeFile } from "node:fs/promises";
 import process from "node:process";
 
 const API_URL = "https://api.wavespeed.ai/api/v3";
-const MODEL = "google/nano-banana-2/text-to-image";
+const MODEL = "openai/gpt-image-2/text-to-image";
 const POLL_TIMEOUT_S = 120; // 120s for CLI/batch per the integration guide
 
 const API_KEY = process.env.WAVESPEED_API_KEY;
 
 function parseArgs(argv) {
-  const opts = { quality: "1K", format: "png", out: null };
+  const opts = {
+    quality: "medium", // low | medium | high
+    resolution: "1k", // 1k | 2k | 4k
+    aspectRatio: "1:1", // 1:1 3:2 2:3 3:4 4:3 4:5 5:4 9:16 16:9 21:9
+    format: "png", // saved-file extension only
+    out: null,
+  };
   const words = [];
   for (const a of argv) {
     if (a.startsWith("--quality=")) opts.quality = a.slice(10);
+    else if (a.startsWith("--resolution=")) opts.resolution = a.slice(13);
+    else if (a.startsWith("--aspect-ratio=")) opts.aspectRatio = a.slice(15);
     else if (a.startsWith("--format=")) opts.format = a.slice(9);
     else if (a.startsWith("--out=")) opts.out = a.slice(6);
     else if (a.startsWith("--")) {
@@ -50,13 +58,16 @@ async function main() {
   }
   if (!opts.prompt) {
     console.error(
-      'Usage: npm run gen -- "<prompt>"  [--quality=1K] [--format=png] [--out=path.png]',
+      'Usage: npm run gen -- "<prompt>"  [--quality=low|medium|high]' +
+        " [--resolution=1k|2k|4k] [--aspect-ratio=16:9] [--format=png] [--out=path.png]",
     );
     process.exit(1);
   }
 
   console.log(`Prompt: "${opts.prompt}"`);
-  console.log(`Model:  ${MODEL}  (${opts.quality}, ${opts.format})`);
+  console.log(
+    `Model:  ${MODEL}  (${opts.quality}, ${opts.resolution}, ${opts.aspectRatio})`,
+  );
 
   // Step 1: submit the task.
   const submitRes = await fetch(`${API_URL}/${MODEL}`, {
@@ -67,7 +78,8 @@ async function main() {
     },
     body: JSON.stringify({
       prompt: opts.prompt,
-      output_format: opts.format,
+      aspect_ratio: opts.aspectRatio,
+      resolution: opts.resolution,
       quality: opts.quality,
     }),
   });
