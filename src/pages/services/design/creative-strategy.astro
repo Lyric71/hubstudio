@@ -1,0 +1,2273 @@
+---
+/**
+ * Creative Strategy  ·  /services/design/creative-strategy
+ *
+ * Mirrors /services/design/packaging-merch-design and
+ * /services/design/brand-identity: same "Pressroom" art direction (crop
+ * marks, calibration colour bar, mono figure labels) adapted to strategy
+ * work. Copy from creative-strategy-page.md, folded into the existing
+ * nine-section layout. Process step numerals dropped per the no-numbers
+ * rule. Pricing softened per the no-pricing-on-site rule.
+ *
+ * Imagery lives in /public/Images with the cs- prefix.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import Button from '../../../components/Button.astro';
+
+/* Six invented sample strategy specimens, one per category named in
+   the source studio-samples list. */
+const samples = [
+  {
+    src: '/Images/cs-sample-aldair.jpg',
+    brand: 'Aldair',
+    kind: 'FMCG positioning platform',
+    alt: 'A printed Aldair positioning statement card with a category map and three colour chips, on a warm worktable.',
+  },
+  {
+    src: '/Images/cs-sample-norven.jpg',
+    brand: 'Norven',
+    kind: 'Beverage messaging architecture',
+    alt: 'A folded Norven messaging house diagram, value props, proof points and a tagline bank, photographed flat.',
+  },
+  {
+    src: '/Images/cs-sample-pelora.jpg',
+    brand: 'Pelora',
+    kind: 'Beauty voice and codes',
+    alt: 'Three Pelora voice-principle cards beside printed colour swatches and a typography specimen, on a sand stoneware tray.',
+  },
+  {
+    src: '/Images/cs-sample-mereth.jpg',
+    brand: 'Mereth',
+    kind: 'Consumer tech prompt system',
+    alt: 'A printed Mereth prompt library card stack with a labelled reference pack and exclusion list, on a studio table.',
+  },
+  {
+    src: '/Images/cs-sample-astrel.jpg',
+    brand: 'Astrel',
+    kind: 'Fashion campaign platform',
+    alt: 'A printed Astrel campaign platform board with key visual frames and territory headlines, leaned against a plaster wall.',
+  },
+  {
+    src: '/Images/cs-sample-vellen.jpg',
+    brand: 'Vellen',
+    kind: 'Hospitality content strategy',
+    alt: 'A Vellen content strategy spread on a worktable, channel matrix, content pillars and editorial calendar laid out.',
+  },
+];
+
+/* Calibration colour bar: a printer's strip, used as a section divider. */
+const colourBar = [
+  '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
+  '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
+];
+
+/* Results stats, from the source's 30-engagement Q1 2024–Q1 2026 cohort. */
+const stats = [
+  { from: 22, to: 78, suffix: '%', label: 'Creative approval rate', note: 'Up from 22% baseline' },
+  { from: 1, to: 3, suffix: 'x', label: 'Brief-to-asset cycle', note: 'On follow-on production' },
+  { from: 0, to: 60, suffix: '%', label: 'Lower content cost', note: 'On platform-built campaigns' },
+];
+
+/* Two coverage lanes. The seven lanes in the source brief group into the
+   brand foundation (positioning, codes, messaging, voice) and the working
+   layer AI tools actually consume (prompts, campaign platforms, content
+   frameworks). Keeping the two-feature layout means the lanes have to
+   group, not list. */
+const coverage = [
+  {
+    fig: 'B',
+    label: 'Foundation',
+    heading: 'The brand AI needs to recognise.',
+    image: '/Images/cs-cover-foundation.jpg',
+    alt: 'A studio still life of strategic foundation artifacts: positioning statement card, distinctive code swatches, voice principles printed flat.',
+    body: [
+      'Brand positioning, distinctive brand codes, messaging architecture, voice and tone. Statement, narrative, competitive and whitespace map, plus the category entry points (the 7W framework researchers at Ehrenberg-Bass keep being right about). The three to five sensory assets your category recognises before the logo lands. A messaging house with value props, proof points, an elevator pitch, taglines, and a working lexicon of words to use and words to ban.',
+      'Voice principles, register by channel, sample sentences for the formats you ship most. Tight enough that a prompt holds the voice across a 200-asset rollout without drifting into the category average.',
+    ],
+    tags: [
+      'Positioning', 'Category entry points', 'Distinctive codes',
+      'Messaging house', 'Value props', 'Voice principles',
+      'Register by channel', 'Lexicon', 'Tagline bank', 'Competitive map',
+    ],
+  },
+  {
+    fig: 'C',
+    label: 'The working layer',
+    heading: 'Briefs, prompts and rollout, codified.',
+    image: '/Images/cs-cover-prompts.jpg',
+    alt: 'A printed prompt library, a reference pack and an exclusion list spread across a warm worktable beside a typography card.',
+    lead: 'A brand expressed in instructions a model can follow, not in adjectives a human has to interpret.',
+    body: [
+      'Campaign platforms and big ideas. Territories, key visuals, hero concepts, storyboards, headline banks, hooks and CTAs. Three platform routes per brief, because the route that wins the room on day one usually is not the route that performs in market. Prompt systems and AI usage strategy: a documented prompt library with positives, negatives and seeds. Reference packs, exclusion lists, and a LoRA brief when a fine-tune is justified (often it is not).',
+      'Content strategy and frameworks: goals, KPIs, personas, customer journeys (including the discover-validate-buy pattern across Xiaohongshu, Douyin and WeChat for China-bound brands), content pillars, channel matrix, editorial calendar, measurement plan, governance checklist.',
+    ],
+    tags: [
+      'Campaign platforms', 'Big ideas', 'Storyboards', 'Headline banks',
+      'Prompt library', 'Reference packs', 'Exclusion lists', 'LoRA briefs',
+      'Content pillars', 'China journeys',
+    ],
+  },
+];
+
+/* Execution credentials, named in the production-handover copy. */
+const credentials = ['Figma library', 'Miro boards', 'Midjourney models', 'ComfyUI rigs'];
+
+/* Process steps. The "where it is won / the rest is execution" tiers come
+   from the source's own framing of strategic direction as the step that
+   matters most. Numerals dropped per the no-numbers rule. */
+const processSteps = [
+  {
+    short: 'Discovery',
+    tier: 'Where it is won',
+    title: 'Discovery and audit.',
+    body: 'Existing brand, category, audience, competitors and whitespace. Plus a clear-eyed audit of the brand guidelines, sales decks and customer voice you already have.',
+    image: '/Images/cs-p1-discovery.jpg',
+    alt: 'A workshop wall covered in printed competitor pages, a positioning matrix marked up in pencil and a column of category notes.',
+  },
+  {
+    short: 'Strategic direction',
+    tier: 'Where it is won',
+    title: 'Strategic direction. The step that matters most.',
+    body: 'Senior strategists set two or three distinct platform routes. Each comes with positioning, distinctive codes, messaging and voice worked through enough that you are choosing between strategies, not moodboards.',
+    image: '/Images/cs-p2-direction.jpg',
+    alt: 'A strategist presenting three platform direction boards pinned to a plaster wall, hand pointing at one route.',
+  },
+  {
+    short: 'AI exploration',
+    tier: 'The rest is execution',
+    title: 'AI exploration in context.',
+    body: 'The chosen direction tested against real outputs: the prompt library generates campaign variants, voice samples and channel adaptations in parallel. You see how the strategy holds across a hundred assets before any of it locks.',
+    image: '/Images/cs-p3-aigc.jpg',
+    alt: 'A contact-sheet grid of nine prompt variations on one campaign concept printed and pinned across a fabric board.',
+  },
+  {
+    short: 'Codification',
+    tier: 'The rest is execution',
+    title: 'Codification and system build.',
+    body: 'Messaging house, voice guide, distinctive codes documentation, prompt library with positives, negatives and seeds. Reference packs and exclusion lists. A LoRA brief when fine-tuning earns its keep.',
+    image: '/Images/cs-p4-refine.jpg',
+    alt: 'A printed brand platform book open at the messaging house spread, beside a stack of prompt library cards on a worktable.',
+  },
+  {
+    short: 'Rollout kit',
+    tier: 'The rest is execution',
+    title: 'Rollout kit and handover.',
+    body: 'Templates for the formats your team ships every week, content frameworks, channel matrix, governance checklist. Briefable artifacts a human team can use, and prompt structures an AI stack can hold.',
+    image: '/Images/cs-p5-adapt.jpg',
+    alt: 'A flat-lay of strategy rollout assets: voice cards, channel matrix, editorial calendar, prompt library cards and a content pillars sheet.',
+  },
+];
+
+/* The old consultancy timeline, set against our four-to-six week platform
+   build. The source FAQ contrasts heritage consultancies that run on
+   quarters with our workflow that runs on weeks. */
+const oldPhases = [
+  { label: 'Discovery', dur: 'Four weeks', span: 4 },
+  { label: 'Direction', dur: 'Five weeks', span: 5 },
+  { label: 'Codification', dur: 'Seven weeks', span: 7 },
+];
+
+/* FAQ: source has 16 questions, condensed to 10 to match the layout.
+   Pricing FAQ kept but softened (no figures), per the no-pricing rule. */
+const faqs = [
+  {
+    q: 'How long does an engagement take?',
+    a: 'Two weeks for a focused brief such as a positioning refresh or a single campaign platform. Four to six weeks for a full brand platform with messaging, voice, distinctive codes and a prompt library. Faster on extensions of an existing system. Heritage consultancies routinely stretch the same scope across two quarters; the compression here is real, but it comes from AI making the production fast, not from skipping the thinking.',
+  },
+  {
+    q: 'How does pricing work?',
+    a: 'Project-based for one-off work, monthly retainer for ongoing brand stewardship, quarterly advance billing for retainers. We quote firm after the first call once the brief and scope are clear. The number depends on market count, language count, format breadth and how much existing material we work from. We will tell you upfront and we will tell you what is driving it.',
+  },
+  {
+    q: 'How are you different from a traditional brand consultancy?',
+    a: 'Three things. We ship strategy that survives into AI production tools, the kind of work most consultancies still do not write for. Our strategists have run accounts on agency floors, not only in slide decks, so the platform briefs production rather than winning an award for itself. And we work on weeks, not quarters. That is the timeline mid-market budgets actually allow.',
+  },
+  {
+    q: 'How are you different from WPP Open, Adobe Firefly Foundry or Canva Grow?',
+    a: 'Those are platforms. We are a studio. The holdco platforms work well if you are already inside the managed-service model and have the budget for it, and Canva Grow sits closer to SMB territory. We work with mid-market and enterprise marketing teams who need someone to write the strategy that goes into whichever platform they are on, or to run the platform on their behalf. We do not really care which tool you are using on the production layer.',
+  },
+  {
+    q: 'What do I need to send to get started?',
+    a: 'Current brand guidelines if you have them. Recent campaign work. Three to five competitors you want to differentiate from. Sales decks or messaging your team uses today. Customer research, NPS verbatims or reviews if available. If formal brand guidelines do not exist, we work from what does and flag the gaps.',
+  },
+  {
+    q: 'Who actually does the work?',
+    a: 'Strategists with agency planning backgrounds lead every engagement. Creative directors join for platform work. AI specialists translate the strategy into prompt systems, brand-trained models and exclusion lists. No junior teams running the brief alone.',
+  },
+  {
+    q: 'Will the strategy work for our AI production tools, or just for humans?',
+    a: 'Both. The output is built as briefable artifacts a human team can use, and as prompt structures, reference libraries, LoRA briefs and exclusion lists that AI tools can hold. You can hand the platform to Hogarth, to your in-house studio, to us, or to a competitor of ours, and the brand will still hold.',
+  },
+  {
+    q: 'Can you work alongside our existing brand agency?',
+    a: 'Yes. Some clients keep their brand agency for big-idea above-the-line work and bring us in for the AI production layer. We sit alongside, briefed off the same platform. We have also worked the other way around, writing the platform for the brand agency to execute.',
+  },
+  {
+    q: 'Do you write strategy for the China market specifically?',
+    a: 'Yes. Our team is based in Shanghai and runs daily across Xiaohongshu, Douyin and WeChat. The platform we ship for a China-bound brand accounts for the discover-validate-buy pattern (Douyin creates desire, Xiaohongshu validates, WeChat closes), the seeding model (zhong cao), KOL-KOC tiering, and the 2026 compliance climate around AI disclosure. We have watched too many Western brands translate a global platform literally and lose six months.',
+  },
+  {
+    q: 'What about IP on the strategy work?',
+    a: 'You own the deliverables. The platform, the messaging house, the voice guide, the distinctive codes documentation, the prompt library, the LoRA briefs. All yours. We document the workflow so your team can keep using it without us. Brand-trained models we build for you stay with you. For the full position on copyright and AI, see our Copyright and AI guide.',
+    link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Creative Strategy Services | AI-Native | hubStudio"
+  description="Creative strategy built for the AI production era. Positioning, distinctive codes, messaging, prompt systems that hold the brand across 1,000 assets."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
+
+  <div class="page">
+    <!-- ============ S1 · HERO ============ -->
+    <section class="hero">
+      <div class="hero__panel">
+        <svg class="hero__reg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <div class="hero__panel-in">
+          <p class="kicker kicker--light r">
+            <span class="kicker__tick"></span>Design service
+            <span class="kicker__sep">/</span> Creative Strategy
+          </p>
+          <h1 class="hero__title">
+            <span class="line"><span class="line__i">Creative</span></span>
+            <span class="line"><span class="line__i serif">Strategy</span></span>
+            <span class="line"><span class="line__i">Platforms.</span></span>
+          </h1>
+          <p class="hero__tag r" style="--d:.45s">
+            A brand AI can scale <em>without flattening.</em>
+          </p>
+          <div class="hero__lead r" style="--d:.55s">
+            <p>
+              Friday afternoon. The studio just shipped 600 social posts.
+              Every channel covered, every asset technically on-brand. The
+              CMO pulls up six and asks her to name the brand without the
+              logo. She cannot.
+            </p>
+            <p>
+              The AI did not fail in that meeting. Nobody wrote the brand
+              into the machine before they hit generate. We do that part:
+              positioning, distinctive codes, messaging, prompt systems
+              that hold across a thousand outputs.
+            </p>
+          </div>
+          <div class="hero__cta r" style="--d:.65s">
+            <Button variant="primary" href="/contact">Start the brief</Button>
+            <a class="ghost-link ghost-link--light" href="#proof">
+              See the work
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <p class="hero__meta r" style="--d:.72s">
+            Shanghai studio <span>/</span> Strategy + AI production layer
+          </p>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <img
+          src="/Images/cs-hero.jpg"
+          alt="A strategy wall in a Shanghai studio: printed positioning statement, three platform direction boards and pencil-marked competitor pages pinned across plaster."
+          width="1024"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="hero__chip">Studio work <span>/</span> Strategy wall</span>
+      </div>
+    </section>
+
+    <!-- calibration bar -->
+    <div class="cbar" aria-hidden="true">
+      {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+    </div>
+
+    <!-- ============ S2 · WHY IT MATTERS ============ -->
+    <section class="why">
+      <div class="shell">
+        <div class="why__top">
+          <div class="why__head">
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
+            <h2 class="dh r" style="--d:.05s">
+              The prompt is the brief.<br /><span class="serif">Fuzzy brands</span> get fuzzy outputs.
+            </h2>
+          </div>
+          <div class="why__text">
+            <p class="r" style="--d:.1s">
+              Cyril founded hubStudio after running Publicis Commerce and
+              Performance Marketing for China and North Asia. He gets a
+              version of the same call most months. It is usually from
+              someone who already paid a consultancy for a brand book and
+              assumed the book would hold. It does not.
+            </p>
+            <p class="r" style="--d:.16s">
+              Brand books are written for humans to interpret, but
+              generative models do not read that way. They take
+              instructions, and the instructions go vague the moment a
+              junior team starts prompting against guidelines written in
+              adjectives. Write a fuzzy brand and you get fuzzy outputs at
+              industrial volume, which is one of the faster ways a category
+              can converge into sameness.
+            </p>
+            <p class="why__clients r" style="--d:.22s">
+              Studio samples include <strong>HiSense</strong>,
+              <strong>Camper</strong>, <strong>age20s</strong>,
+              <strong>Shiseido RQ PYOLOGY</strong> and
+              <strong>M. Bricolage</strong>. Plus FMCG, beverage and B2B
+              software platforms covered under NDA.
+            </p>
+          </div>
+        </div>
+
+        <figure class="why__shot crop r-clip">
+          <div class="crop__inner">
+            <img
+              src="/Images/cs-roots.jpg"
+              alt="A wide view of a Shanghai strategy room: three strategists at a long table, a wall of pinned positioning maps and a printed prompt library spread out."
+              width="1408"
+              height="768"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="fig">The strategy room, Shanghai</figcaption>
+        </figure>
+
+        <div class="stats">
+          <p class="stats__quote r">
+            Across roughly thirty strategy engagements run between Q1 2024
+            and Q1 2026, clients reported creative approval rates lifted
+            from 22% to 78%, the brief-to-asset cycle 3x faster on
+            follow-on production, and content costs down 60% on campaigns
+            built off the platform.
+          </p>
+          <div class="stats__grid">
+            {
+              stats.map((s, i) => (
+                <div class="stat r" style={`--d:${i * 0.1}s`}>
+                  <span
+                    class="stat__num"
+                    data-from={s.from}
+                    data-to={s.to}
+                    data-suffix={s.suffix}
+                  >
+                    {s.from}{s.suffix}
+                  </span>
+                  <span class="stat__label">{s.label}</span>
+                  <span class="stat__note">{s.note}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S3 · WHAT WE COVER ============ -->
+    <section class="cover">
+      <div class="shell">
+        <header class="band">
+          <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
+          <h2 class="dh r" style="--d:.05s">
+            Seven lanes, one <span class="serif">operating system</span>.
+          </h2>
+        </header>
+
+        {
+          coverage.map((c, i) => (
+            <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
+              <figure class="feature__media crop r-clip">
+                <div class="crop__inner">
+                  <img
+                    src={c.image}
+                    alt={c.alt}
+                    width="1024"
+                    height="1024"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="fig">{c.label}</figcaption>
+              </figure>
+              <div class="feature__body">
+                <p class="feature__idx r"><span class="feature__tick"></span>Coverage</p>
+                <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
+                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
+                {c.body.map((para, pi) => (
+                  <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
+                    {para}
+                  </p>
+                ))}
+                <p class="feature__scope r" style="--d:.24s">In scope</p>
+                <ul class="chips r" style="--d:.28s">
+                  {c.tags.map((t) => (
+                    <li class="chip">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ============ S4 · PROOF / GALLERY ============ -->
+    <section class="proof" id="proof">
+      <div class="shell">
+        <header class="band band--split">
+          <div>
+            <p class="kicker r"><span class="kicker__tick"></span>Contact sheet</p>
+            <h2 class="dh r" style="--d:.05s">
+              Selected <span class="serif">proofs</span>.
+            </h2>
+          </div>
+          <p class="band__note r" style="--d:.1s">
+            Strategy artifacts and platform specimens, authored in the
+            studio. Brands are anonymised; the work is real.
+          </p>
+        </header>
+
+        <div class="sheet">
+          {
+            samples.map((s, i) => (
+              <figure class="shot crop r-clip" style={`--d:${(i % 3) * 0.08}s`}>
+                <div class="crop__inner">
+                  <img
+                    src={s.src}
+                    alt={s.alt}
+                    width="1024"
+                    height="1024"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="shot__cap">
+                  <span class="shot__brand">{s.brand}</span>
+                  <span class="shot__kind">{s.kind}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S5 · EXECUTION (OPTIONAL) ============ -->
+    <section class="source">
+      <div class="shell source__grid">
+        <div class="source__visual">
+          <figure class="source__main crop">
+            <div class="crop__inner">
+              <img
+                src="/Images/cs-strategy-room.jpg"
+                alt="Two strategists at a long studio table working through a printed prompt library, a third pinning a campaign platform board behind them."
+                width="1024"
+                height="1024"
+                loading="lazy"
+              />
+            </div>
+          </figure>
+          <figure class="source__inset">
+            <img
+              src="/Images/cs-strategy-inset.jpg"
+              alt="Two hands annotating a printed messaging house with a pencil, a colour chip book at the edge of the frame."
+              width="1024"
+              height="1024"
+              loading="lazy"
+            />
+          </figure>
+          <div class="source__stat">
+            <span class="source__stat-num">4&ndash;6 wks</span>
+            <span class="source__stat-cap">Brief to delivered platform</span>
+          </div>
+        </div>
+
+        <div class="source__body">
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Optional capability</p>
+          <h2 class="dh r" style="--d:.05s">
+            Need execution too?<br />We can <span class="serif">produce</span> it.
+          </h2>
+          <p class="source__lead r" style="--d:.1s">
+            This part is optional. Most clients use the strategy work as the
+            foundation and roll it out through their existing agency or
+            in-house studio. The brand platform, prompt library and
+            messaging house are built to be picked up by another team on
+            day one.
+          </p>
+          <p class="source__p r" style="--d:.16s">
+            If you would rather we run the production alongside the
+            strategy, we do that too. Images, video, post and adaptation
+            across markets, coordinated through one team using the same
+            prompt systems and brand-trained models that built the
+            platform. The advantage is consistency. The same strategist who
+            approved the voice and codes is still on the work six months
+            in, instead of a new freelancer trying to reverse-engineer the
+            brand from the PDF.
+          </p>
+          <ul class="creds r" style="--d:.22s">
+            {
+              credentials.map((c) => (
+                <li class="cred">
+                  <svg viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  {c}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="source__p r" style="--d:.26s">
+            We work in Miro and Figma for the strategy artifacts, with
+            custom-trained brand models on Midjourney, Stable Diffusion and
+            ComfyUI for visual development. Tencent Hunyuan and Alibaba Wan
+            are in rotation for China-bound work, where the Chinese models
+            tend to render Mandarin signage and East-Asian faces with fewer
+            post-production fixes.
+          </p>
+          <p class="source__p source__p--quiet r" style="--d:.3s">
+            Source files, the brand platform, prompt libraries and any
+            brand-trained models are yours either way.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S6 · PROCESS ============ -->
+    <section class="craft" id="craft">
+      <div class="shell craft__intro">
+        <p class="kicker r"><span class="kicker__tick"></span>Our process</p>
+        <h2 class="dh r" style="--d:.05s">
+          Strategic direction first.<br />Production scale <span class="serif">second</span>.
+        </h2>
+        <p class="craft__lede r" style="--d:.12s">
+          AI rewards brands that already know who they are. It punishes the
+          ones hoping technology will sort that out. So we do the
+          unglamorous work first, then translate it into a working layer
+          your tools can hold.
+        </p>
+        <p class="craft__note r" style="--d:.16s">
+          First two steps are where it is won or lost. The rest is execution.
+        </p>
+      </div>
+
+      <div class="seq" id="seq">
+        <div class="seq__stick">
+          <div class="shell seq__stage">
+            <div class="seq__nav" aria-label="Process steps">
+              {
+                processSteps.map((s, i) => (
+                  <button
+                    class="seq__step"
+                    type="button"
+                    data-i={i}
+                    data-active={i === 0 ? 'true' : 'false'}
+                  >
+                    <span class="seq__step-dot">
+                      <span class="seq__step-fill"></span>
+                    </span>
+                    <span class="seq__step-label">{s.short}</span>
+                  </button>
+                ))
+              }
+            </div>
+
+            <div class="seq__panels">
+              {
+                processSteps.map((s, i) => (
+                  <article
+                    class="seq__panel"
+                    data-panel={i}
+                    data-active={i === 0 ? 'true' : 'false'}
+                  >
+                    <figure class="seq__media crop">
+                      <div class="crop__inner">
+                        <img
+                          src={s.image}
+                          alt={s.alt}
+                          width="1200"
+                          height="900"
+                          loading="lazy"
+                        />
+                      </div>
+                    </figure>
+                    <div class="seq__text">
+                      <span class="seq__tier">{s.tier}</span>
+                      <h3 class="seq__title">{s.title}</h3>
+                      <p class="seq__body">{s.body}</p>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S7 · THE MATH ============ -->
+    <section class="math">
+      <div class="shell">
+        <header class="band">
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>The new math</p>
+          <h2 class="dh r" style="--d:.05s">
+            How AI changes<br />the <span class="serif">math</span>.
+          </h2>
+          <p class="band__note band__note--light r" style="--d:.1s">
+            A mid-market brand lands with a full platform brief: positioning,
+            distinctive codes, messaging, voice, prompt library, content
+            framework. The same scope, run two ways.
+          </p>
+        </header>
+
+        <div class="vs">
+          <article class="vs__row vs__row--old r">
+            <div class="vs__side">
+              <span class="vs__tag">The consultancy workflow</span>
+              <span class="vs__total">Sixteen weeks</span>
+            </div>
+            <div class="vs__main">
+              <div class="vs__bar">
+                {
+                  oldPhases.map((ph, i) => (
+                    <span class="vs__seg" style={`--span:${ph.span};--i:${i}`}>
+                      <span class="vs__seg-label">{ph.label}</span>
+                      <span class="vs__seg-dur">{ph.dur}</span>
+                    </span>
+                  ))
+                }
+              </div>
+              <p class="vs__p">
+                Mid-tier consultancy timeline: four weeks for discovery and
+                audit, five for direction, then seven on codification and
+                guidelines. Three rounds of revision, partner time billed at
+                full rate, junior teams running the work. Heritage
+                consultancies stretch the same scope across two quarters or
+                more.
+              </p>
+            </div>
+          </article>
+
+          <article class="vs__row vs__row--new r">
+            <div class="vs__side">
+              <span class="vs__tag vs__tag--new">Our workflow</span>
+              <span class="vs__total vs__total--new">Four to six weeks</span>
+            </div>
+            <div class="vs__main">
+              <div class="vs__bar vs__bar--new">
+                <span class="vs__seg vs__seg--solo" style="--span:1;--i:0">
+                  <span class="vs__seg-label">Brief to delivered platform</span>
+                  <span class="vs__seg-dur">Four to six weeks</span>
+                </span>
+                <span class="vs__rest" aria-hidden="true"></span>
+              </div>
+              <p class="vs__p">
+                Two or three platform routes worked through enough to choose
+                between strategies, not moodboards. The prompt library
+                generates campaign variants in parallel so you see the
+                strategy holding across a hundred assets before any of it
+                locks. Codification, master files, prompt library, content
+                framework, strategist-led the whole way.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="hub r">
+          <div class="hub__copy">
+            <span class="hub__badge">hub4You / AI agent platform</span>
+            <h3 class="dh dh--sm hub__head">
+              Strategy that <span class="serif">scales</span>.
+            </h3>
+            <p class="hub__text">
+              For brands shipping across hundreds of touchpoints, we deploy
+              hub4You, our custom AI agent setup trained on the platform we
+              built. It generates on-brand campaign assets on demand inside
+              your prompt structures, exclusion lists and reference packs,
+              and connects directly to your DAM and PIM so the output lands
+              where your team already works. That is the gap between
+              shipping quarterly and shipping weekly.
+            </p>
+            <Button variant="primary" href="/hub4you">Explore hub4You</Button>
+          </div>
+          <div class="hub__media">
+            <div class="win" id="win">
+              <div class="win__bar" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <em>hub4You</em>
+              </div>
+              <img
+                src="/Images/hub4fashion.jpg"
+                alt="The hub4You platform generating on-brand campaign variants from a stored brand platform and prompt library."
+                width="2000"
+                height="1125"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S8 · FAQ ============ -->
+    <section class="faq">
+      <div class="shell faq__grid">
+        <aside class="faq__intro">
+          <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
+          <h2 class="dh r" style="--d:.05s">
+            Before the<br />first <span class="serif">call</span>.
+          </h2>
+          <p class="faq__sub r" style="--d:.1s">
+            The things brands ask before we start. If yours is not here,
+            put it in the brief.
+          </p>
+          <div class="r" style="--d:.16s">
+            <Button variant="primary" href="/contact">Start the brief</Button>
+          </div>
+        </aside>
+
+        <div class="acc">
+          {
+            faqs.map((faq) => (
+              <div class="acc__row r">
+                <button class="acc__q" type="button" aria-expanded="false">
+                  <span class="acc__qmark">Q</span>
+                  <span class="acc__qtext">{faq.q}</span>
+                  <span class="acc__icon" aria-hidden="true">
+                    <span></span><span></span>
+                  </span>
+                </button>
+                <div class="acc__a">
+                  <div class="acc__a-inner">
+                    <p>
+                      {faq.link ? (
+                        <>
+                          {faq.a.split(faq.link.match)[0]}
+                          <a href={faq.link.href}>{faq.link.match}</a>
+                          {faq.a.split(faq.link.match)[1]}
+                        </>
+                      ) : (
+                        faq.a
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S9 · CLOSING ============ -->
+    <section class="end">
+      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+      </svg>
+      <div class="shell end__inner">
+        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Try us</p>
+        <h2 class="end__title r" style="--d:.05s">
+          Try it on a<br />real <span class="serif">brief</span>.
+        </h2>
+        <p class="end__p r" style="--d:.12s">
+          Send us the brief. Two weeks later you get three platform
+          directions, a written rationale, and a sample prompt library
+          showing how the strategy would survive into AI production. No
+          retainer, no commitment. Whatever we produce is yours.
+        </p>
+        <div class="end__cta r" style="--d:.18s">
+          <Button variant="primary" href="/contact">Start the brief</Button>
+          <a class="ghost-link ghost-link--light" href="/work">
+            See more work
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="cbar cbar--end" aria-hidden="true">
+        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* ===================== Foundations ===================== */
+  .page {
+    --ink: #0e1633;
+    --navy: #0e1f4e;
+    --paper: #f0ede9;
+    --paper-2: #e7e3dd;
+    overflow: clip;
+  }
+  .shell {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(22px, 5vw, 60px);
+  }
+
+  /* Scroll progress */
+  .prog {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 200;
+    pointer-events: none;
+  }
+  .prog__bar {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: var(--brand-orange);
+  }
+
+  /* Reveal primitives */
+  .r,
+  .r-clip {
+    --d: 0s;
+  }
+  .r {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d);
+  }
+  .r.in {
+    opacity: 1;
+    transform: none;
+  }
+  .r-clip .crop__inner {
+    clip-path: inset(0 0 101% 0);
+    transition: clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .r-clip .crop__inner img {
+    transform: scale(1.12);
+    transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .r-clip.in .crop__inner {
+    clip-path: inset(0 0 0 0);
+  }
+  .r-clip.in .crop__inner img {
+    transform: scale(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .r,
+    .r.in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .r-clip .crop__inner,
+    .r-clip .crop__inner img {
+      clip-path: none;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Mono kicker label */
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .kicker--light {
+    color: rgba(240, 237, 233, 0.66);
+  }
+  .kicker__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .kicker__sep {
+    color: var(--brand-orange);
+  }
+
+  /* Display heading */
+  .dh {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(34px, 4.4vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+  .dh--sm {
+    font-size: clamp(26px, 2.6vw, 38px);
+  }
+  .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange);
+  }
+
+  /* Figure caption + crop frame */
+  .crop {
+    position: relative;
+    margin: 0;
+  }
+  .crop::before,
+  .crop::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    z-index: 2;
+  }
+  .crop::before {
+    top: -9px;
+    left: -9px;
+    border-top: 1.5px solid var(--brand-orange);
+    border-left: 1.5px solid var(--brand-orange);
+  }
+  .crop::after {
+    right: -9px;
+    bottom: 28px;
+    border-right: 1.5px solid var(--brand-orange);
+    border-bottom: 1.5px solid var(--brand-orange);
+  }
+  .crop__inner {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .crop__inner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .fig {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  /* Ghost link */
+  .ghost-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .ghost-link svg {
+    width: 19px;
+    height: 19px;
+    transition: transform 0.24s ease-out;
+  }
+  .ghost-link:hover svg {
+    transform: translateX(5px);
+  }
+  .ghost-link--light {
+    color: var(--text-on-dark);
+  }
+
+  /* Section header band */
+  .band {
+    max-width: 720px;
+    margin-bottom: clamp(40px, 5vw, 70px);
+    display: grid;
+    gap: 18px;
+  }
+  .band--split {
+    max-width: none;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 880px) {
+    .band--split {
+      grid-template-columns: 1fr 0.82fr;
+      align-items: end;
+      gap: 18px 60px;
+    }
+    .band--split > div {
+      display: grid;
+      gap: 18px;
+    }
+  }
+  .band__note {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .band__note--light {
+    color: rgba(240, 237, 233, 0.76);
+  }
+
+  /* Calibration colour bar */
+  .cbar {
+    display: flex;
+    height: 12px;
+  }
+  .cbar span {
+    flex: 1;
+  }
+  .cbar--end {
+    margin-top: clamp(60px, 8vw, 110px);
+  }
+
+  /* ===================== S1 · Hero ===================== */
+  .hero {
+    display: grid;
+    background: var(--ink);
+    color: var(--text-on-dark);
+  }
+  @media (min-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .hero__panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: clamp(40px, 4.4vw, 72px) clamp(24px, 5vw, 64px);
+    overflow: clip;
+  }
+  .hero__reg {
+    position: absolute;
+    width: clamp(240px, 28vw, 420px);
+    right: -12%;
+    bottom: -14%;
+    color: rgba(240, 237, 233, 0.055);
+    pointer-events: none;
+  }
+  .hero__panel-in {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+  }
+  .hero__title {
+    margin-top: 24px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(46px, 6.6vw, 92px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+  .hero__title .line {
+    display: block;
+    overflow: hidden;
+    padding: 0.22em 0.14em;
+    margin: -0.22em -0.14em;
+  }
+  .hero__title .line__i {
+    display: block;
+    transform: translateY(145%);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero__title .line:nth-child(1) .line__i {
+    transition-delay: 0.12s;
+  }
+  .hero__title .line:nth-child(2) .line__i {
+    transition-delay: 0.22s;
+  }
+  .hero__title .line:nth-child(3) .line__i {
+    transition-delay: 0.32s;
+  }
+  .hero.in .hero__title .line__i {
+    transform: translateY(0);
+  }
+  .hero__title .serif {
+    font-size: 1.04em;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__title .line__i {
+      transform: none;
+    }
+  }
+  .hero__tag {
+    margin-top: 26px;
+    font-size: clamp(18px, 1.5vw, 23px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .hero__tag em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--brand-orange);
+  }
+  .hero__lead {
+    margin-top: 20px;
+    display: grid;
+    gap: 13px;
+    max-width: 46ch;
+  }
+  .hero__lead p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.74);
+  }
+  .hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 26px;
+  }
+  .hero__meta {
+    margin-top: 34px;
+    padding-top: 20px;
+    border-top: 1.5px dashed rgba(240, 237, 233, 0.2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.5);
+  }
+  .hero__meta span {
+    color: var(--brand-orange);
+  }
+  .hero__visual {
+    position: relative;
+    overflow: hidden;
+    min-height: 58vh;
+  }
+  @media (min-width: 900px) {
+    .hero__visual {
+      min-height: auto;
+    }
+  }
+  .hero__visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.08);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero.in .hero__visual img {
+    transform: scale(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__visual img {
+      transform: none;
+    }
+  }
+  .hero__chip {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 2;
+    display: inline-flex;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.78);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-on-dark);
+  }
+  .hero__chip span {
+    color: var(--brand-orange);
+  }
+
+  /* ===================== S2 · Why ===================== */
+  .why {
+    background: var(--ink);
+    color: var(--text-on-dark);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .why__top {
+    display: grid;
+    gap: 30px;
+  }
+  @media (min-width: 900px) {
+    .why__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+  }
+  .why__head .dh {
+    margin-top: 18px;
+  }
+  .why__text {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+    padding-top: 6px;
+  }
+  .why__text p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .why__clients {
+    color: rgba(240, 237, 233, 0.6) !important;
+  }
+  .why__clients strong {
+    color: var(--text-on-dark);
+    font-weight: 600;
+  }
+  .why__shot {
+    margin-top: clamp(40px, 5vw, 72px);
+  }
+  .why__shot .crop__inner {
+    aspect-ratio: 16 / 8;
+  }
+  .why__shot .fig {
+    color: rgba(240, 237, 233, 0.5);
+  }
+
+  /* Stats */
+  .stats {
+    margin-top: clamp(48px, 6vw, 84px);
+    border-top: 1.5px dashed rgba(240, 237, 233, 0.22);
+    padding-top: clamp(36px, 4vw, 56px);
+  }
+  .stats__quote {
+    max-width: 60ch;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(19px, 1.9vw, 25px);
+    line-height: 1.42;
+    color: var(--text-on-dark);
+  }
+  .stats__grid {
+    margin-top: 40px;
+    display: grid;
+    gap: 30px;
+  }
+  @media (min-width: 720px) {
+    .stats__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+  .stat {
+    display: grid;
+    gap: 5px;
+    padding-top: 24px;
+    border-top: 1.5px solid rgba(240, 237, 233, 0.16);
+  }
+  .stat__num {
+    font-size: clamp(56px, 7vw, 96px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--brand-orange);
+  }
+  .stat__label {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .stat__note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.55);
+  }
+
+  /* ===================== S3 · Cover ===================== */
+  .cover {
+    background: var(--paper);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .feature {
+    display: grid;
+    gap: 36px;
+    align-items: center;
+    padding-block: clamp(40px, 5vw, 72px);
+    border-top: 1.5px dashed var(--line-strong);
+  }
+  .feature:last-child {
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  @media (min-width: 900px) {
+    .feature {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+    .feature--rev .feature__media {
+      order: 2;
+    }
+  }
+  .feature__media .crop__inner {
+    aspect-ratio: 5 / 4;
+  }
+  .feature__idx {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .feature__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .feature__body .dh {
+    margin-top: 16px;
+  }
+  .feature__lead {
+    margin-top: 14px;
+    font-size: var(--type-lead);
+    line-height: 1.42;
+    color: var(--text-ink);
+    font-weight: 500;
+  }
+  .feature__p {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .feature__scope {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-hairline);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .chips {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    padding: 8px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 500;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease;
+  }
+  .chip:hover {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    color: #fff;
+  }
+
+  /* ===================== S4 · Proof sheet ===================== */
+  .proof {
+    background: var(--bg-white);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .sheet {
+    display: grid;
+    gap: clamp(22px, 3vw, 40px);
+  }
+  @media (min-width: 720px) {
+    .sheet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .sheet .shot:nth-child(3n + 2) {
+      margin-top: 60px;
+    }
+    .sheet .shot:nth-child(3n) {
+      margin-top: 30px;
+    }
+  }
+  .shot .crop__inner {
+    aspect-ratio: 1 / 1;
+  }
+  .shot .crop__inner img {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .shot:hover .crop__inner img {
+    transform: scale(1.06);
+  }
+  .shot__cap {
+    margin-top: 14px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .shot__brand {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .shot__kind {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  /* ===================== S5 · Sourcing ===================== */
+  .source {
+    background: var(--navy);
+    color: var(--text-on-dark);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .source__grid {
+    display: grid;
+    gap: 52px;
+  }
+  @media (min-width: 940px) {
+    .source__grid {
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 70px;
+      align-items: center;
+    }
+  }
+  .source__visual {
+    position: relative;
+  }
+  .source__main .crop__inner {
+    aspect-ratio: 5 / 4;
+  }
+  .source__inset {
+    position: absolute;
+    right: -14px;
+    bottom: -34px;
+    width: 42%;
+    max-width: 200px;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 5px solid var(--navy);
+    box-shadow: 0 20px 36px rgba(0, 0, 0, 0.42);
+  }
+  .source__inset img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  @media (max-width: 520px) {
+    .source__inset {
+      display: none;
+    }
+  }
+  .source__stat {
+    position: absolute;
+    left: -10px;
+    top: 36px;
+    display: grid;
+    gap: 3px;
+    padding: 15px 19px;
+    border-radius: 12px;
+    background: var(--brand-orange);
+    color: #fff;
+    box-shadow: 0 16px 32px rgba(233, 78, 27, 0.42);
+  }
+  .source__stat-num {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .source__stat-cap {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    max-width: 15ch;
+    line-height: 1.4;
+  }
+  .source__body .dh {
+    margin-top: 16px;
+  }
+  .source__lead {
+    margin-top: 20px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-on-dark);
+  }
+  .source__p {
+    margin-top: 15px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .source__p--quiet {
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .creds {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+  .cred {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(240, 237, 233, 0.2);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .cred:hover {
+    border-color: var(--brand-orange);
+    background: rgba(233, 78, 27, 0.16);
+  }
+  .cred svg {
+    width: 13px;
+    height: 13px;
+    color: var(--brand-orange);
+  }
+
+  /* ===================== S6 · Process ===================== */
+  .craft {
+    background: var(--paper);
+    padding-top: clamp(80px, 10vw, 150px);
+  }
+  .craft__intro {
+    max-width: 780px;
+    margin-bottom: clamp(36px, 5vw, 60px);
+  }
+  .craft__intro .kicker {
+    color: var(--brand-orange);
+  }
+  .craft__intro .dh {
+    margin-top: 16px;
+  }
+  .craft__lede {
+    margin-top: 18px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .craft__note {
+    margin-top: 22px;
+    display: inline-block;
+    padding: 13px 20px;
+    border-left: 3px solid var(--brand-orange);
+    background: rgba(233, 78, 27, 0.07);
+    border-radius: 0 10px 10px 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-ink);
+  }
+
+  .seq__nav {
+    display: none;
+  }
+  .seq__panels {
+    display: grid;
+    gap: clamp(48px, 7vw, 96px);
+    padding-bottom: clamp(80px, 10vw, 150px);
+  }
+  .seq__panel {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 760px) {
+    .seq__panel {
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .seq__panel:nth-child(even) .seq__media {
+      order: 2;
+    }
+  }
+  .seq__media .crop__inner {
+    aspect-ratio: 4 / 3;
+  }
+  .seq__tier {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .seq__title {
+    margin-top: 12px;
+    font-size: clamp(25px, 2.7vw, 38px);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+  .seq__body {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+
+  .craft--pinned .seq {
+    height: 480vh;
+  }
+  .craft--pinned .seq__stick {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .craft--pinned .seq__stage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(22px, 3vw, 40px);
+  }
+  .craft--pinned .seq__nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  .seq__step {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  .seq__step-dot {
+    height: 5px;
+    border-radius: 3px;
+    background: var(--line-strong);
+    overflow: hidden;
+  }
+  .seq__step-fill {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: var(--brand-orange);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+  }
+  .seq__step-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    transition: color 0.3s ease;
+  }
+  .seq__step[data-active='true'] .seq__step-label {
+    color: var(--text-ink);
+  }
+  .craft--pinned .seq__panels {
+    position: relative;
+    display: block;
+    height: clamp(340px, 60vh, 540px);
+    padding-bottom: 0;
+  }
+  .craft--pinned .seq__panel {
+    position: absolute;
+    inset: 0;
+    align-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(26px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 0.5s;
+  }
+  .craft--pinned .seq__panel[data-active='true'] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition:
+      opacity 0.5s ease,
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .craft--pinned .seq__panel:nth-child(even) .seq__media {
+    order: 0;
+  }
+  .craft--pinned .seq__media .crop__inner {
+    aspect-ratio: auto;
+    height: clamp(280px, 52vh, 460px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .craft--pinned .seq__panel {
+      transition: none;
+    }
+  }
+
+  /* ===================== S7 · The math ===================== */
+  .math {
+    background: var(--ink);
+    color: var(--text-on-dark);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .vs {
+    display: grid;
+    gap: 22px;
+  }
+  .vs__row {
+    display: grid;
+    gap: 24px;
+    padding: 34px;
+    border-radius: 22px;
+    border: 1.5px solid rgba(240, 237, 233, 0.14);
+  }
+  @media (min-width: 820px) {
+    .vs__row {
+      grid-template-columns: 0.3fr 0.7fr;
+      gap: 40px;
+      align-items: center;
+    }
+  }
+  @media (max-width: 560px) {
+    .vs__row {
+      padding: 26px 22px;
+    }
+  }
+  .vs__row--new {
+    background: rgba(233, 78, 27, 0.08);
+    border-color: rgba(233, 78, 27, 0.32);
+  }
+  .vs__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .vs__tag::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .vs__tag--new {
+    color: var(--brand-orange);
+  }
+  .vs__total {
+    display: block;
+    margin-top: 12px;
+    font-size: clamp(30px, 3.4vw, 46px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .vs__total--new {
+    color: var(--brand-orange);
+  }
+  .vs__bar {
+    display: flex;
+    gap: 4px;
+    height: 78px;
+  }
+  .vs__seg {
+    flex: var(--span, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 3px;
+    padding: 11px 13px;
+    border-radius: 9px;
+    color: #fff;
+    overflow: hidden;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .vs__row.in .vs__seg {
+    transform: scaleX(1);
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(0.2s + var(--i, 0) * 0.13s);
+  }
+  .vs__row--old .vs__seg:nth-child(1) {
+    background: #5b5f74;
+  }
+  .vs__row--old .vs__seg:nth-child(2) {
+    background: #7c7f90;
+  }
+  .vs__row--old .vs__seg:nth-child(3) {
+    background: #9b9da9;
+  }
+  .vs__seg--solo {
+    flex: none;
+    width: 28%;
+    min-width: 144px;
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-deep));
+  }
+  .vs__rest {
+    flex: 1;
+    border-radius: 9px;
+    border: 1.5px dashed rgba(240, 237, 233, 0.2);
+  }
+  .vs__seg-label {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .vs__seg-dur {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .vs__p {
+    margin-top: 16px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: rgba(240, 237, 233, 0.74);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vs__seg {
+      transform: none;
+    }
+  }
+
+  .hub {
+    margin-top: clamp(36px, 4vw, 56px);
+    display: grid;
+    gap: 40px;
+    align-items: center;
+    padding: clamp(32px, 4vw, 52px);
+    border-radius: 24px;
+    background:
+      radial-gradient(80% 120% at 100% 0%, rgba(233, 78, 27, 0.16), transparent 60%),
+      var(--navy);
+  }
+  @media (min-width: 940px) {
+    .hub {
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 56px;
+    }
+  }
+  .hub__badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: var(--radius-pill);
+    background: rgba(233, 78, 27, 0.18);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .hub__head {
+    margin-top: 18px;
+    color: var(--text-on-dark);
+  }
+  .hub__text {
+    margin-top: 14px;
+    margin-bottom: 26px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .win {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0b1020;
+    border: 1px solid rgba(240, 237, 233, 0.14);
+    box-shadow: 0 34px 64px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease-out;
+    transform-style: preserve-3d;
+  }
+  .win__bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 12px 16px;
+    background: rgba(240, 237, 233, 0.05);
+    border-bottom: 1px solid rgba(240, 237, 233, 0.1);
+  }
+  .win__bar span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(240, 237, 233, 0.24);
+  }
+  .win__bar span:first-child {
+    background: var(--brand-orange);
+  }
+  .win__bar em {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.5);
+  }
+  .win img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ===================== S8 · FAQ ===================== */
+  .faq {
+    background: var(--paper);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .faq__grid {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 1000px) {
+    .faq__grid {
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .faq__intro {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .faq__intro .dh {
+    margin-top: 18px;
+  }
+  .faq__sub {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .acc {
+    display: grid;
+  }
+  .acc__row {
+    border-top: 1.5px solid var(--ink);
+  }
+  .acc__row:last-child {
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .acc__q {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 16px;
+    padding: 26px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+  }
+  .acc__qmark {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-orange);
+    padding-top: 3px;
+  }
+  .acc__qtext {
+    font-size: clamp(17px, 1.6vw, 21px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    transition: color 0.18s ease;
+  }
+  .acc__q:hover .acc__qtext {
+    color: var(--brand-orange);
+  }
+  .acc__icon {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+  }
+  .acc__icon span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text-ink);
+    transform: translate(-50%, -50%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .acc__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .acc__q[aria-expanded='true'] .acc__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .acc__q[aria-expanded='true'] .acc__icon span {
+    background: var(--brand-orange);
+  }
+  .acc__a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s ease;
+  }
+  .acc__q[aria-expanded='true'] + .acc__a {
+    grid-template-rows: 1fr;
+  }
+  .acc__a-inner {
+    overflow: hidden;
+  }
+  .acc__a-inner p {
+    padding: 0 0 26px 41px;
+    max-width: 64ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .acc__a-inner a {
+    color: var(--brand-orange);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ===================== S9 · Closing ===================== */
+  .end {
+    position: relative;
+    background: var(--ink);
+    color: var(--text-on-dark);
+    padding-top: clamp(80px, 11vw, 150px);
+    overflow: clip;
+  }
+  .end__reg {
+    position: absolute;
+    width: clamp(300px, 36vw, 560px);
+    top: -16%;
+    right: -9%;
+    color: rgba(240, 237, 233, 0.05);
+    pointer-events: none;
+  }
+  .end__inner {
+    position: relative;
+    display: grid;
+    justify-items: start;
+    gap: 22px;
+  }
+  .end__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(40px, 6.6vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+  .end__p {
+    max-width: 54ch;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .end__cta {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 26px;
+  }
+</style>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Scroll progress */
+  const progBar = document.querySelector<HTMLElement>('.prog__bar');
+  if (progBar) {
+    const onScroll = () => {
+      const d = document.documentElement;
+      const max = d.scrollHeight - d.clientHeight;
+      progBar.style.transform = `scaleX(${max > 0 ? Math.min(1, d.scrollTop / max) : 0})`;
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
+  /* Reveal on scroll */
+  const revealEls = document.querySelectorAll('.r, .r-clip, .hero');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -7% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  /* Count-up stats */
+  const nums = Array.from(document.querySelectorAll<HTMLElement>('.stat__num'));
+  const runCount = (el: HTMLElement) => {
+    const from = Number(el.dataset.from || 0);
+    const to = Number(el.dataset.to || 0);
+    const suffix = el.dataset.suffix || '';
+    if (reduceMotion.matches) {
+      el.textContent = `${to}${suffix}`;
+      return;
+    }
+    const dur = 1500;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = `${Math.round(from + (to - from) * eased)}${suffix}`;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window && nums.length) {
+    const io2 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            runCount(e.target as HTMLElement);
+            io2.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+    nums.forEach((n) => io2.observe(n));
+  } else {
+    nums.forEach(runCount);
+  }
+
+  /* Process: pinned scroll sequence */
+  const craft = document.getElementById('craft');
+  const seq = document.getElementById('seq');
+  if (craft && seq) {
+    const steps = Array.from(seq.querySelectorAll<HTMLElement>('.seq__step'));
+    const panels = Array.from(seq.querySelectorAll<HTMLElement>('.seq__panel'));
+    const fills = steps.map((s) => s.querySelector<HTMLElement>('.seq__step-fill'));
+    const n = panels.length;
+    const wide = window.matchMedia('(min-width: 880px)');
+
+    const setActive = (idx: number, sub: number) => {
+      panels.forEach((p, i) => (p.dataset.active = String(i === idx)));
+      steps.forEach((s, i) => {
+        s.dataset.active = String(i === idx);
+        const f = fills[i];
+        if (f) f.style.transform = `scaleX(${i < idx ? 1 : i === idx ? sub : 0})`;
+      });
+    };
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      if (!craft.classList.contains('craft--pinned')) return;
+      const total = seq.offsetHeight - window.innerHeight;
+      const scrolled = Math.min(total, Math.max(0, -seq.getBoundingClientRect().top));
+      const p = total > 0 ? scrolled / total : 0;
+      const exact = p * n;
+      const idx = Math.min(n - 1, Math.floor(exact));
+      const sub = Math.min(1, Math.max(0, exact - idx));
+      setActive(idx, idx === n - 1 ? 1 : sub);
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    const applyMode = () => {
+      if (wide.matches && !reduceMotion.matches) {
+        craft.classList.add('craft--pinned');
+        update();
+      } else {
+        craft.classList.remove('craft--pinned');
+        panels.forEach((p) => (p.dataset.active = 'true'));
+      }
+    };
+
+    steps.forEach((s, i) => {
+      s.addEventListener('click', () => {
+        if (!craft.classList.contains('craft--pinned')) return;
+        const railTop = seq.getBoundingClientRect().top + window.scrollY;
+        const total = seq.offsetHeight - window.innerHeight;
+        window.scrollTo({
+          top: railTop + ((i + 0.5) / n) * total,
+          behavior: reduceMotion.matches ? 'auto' : 'smooth',
+        });
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => {
+      applyMode();
+      update();
+    });
+    applyMode();
+  }
+
+  /* FAQ accordion: one open at a time */
+  const accQs = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc__q'));
+  accQs.forEach((q) => {
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') === 'true';
+      accQs.forEach((o) => o.setAttribute('aria-expanded', 'false'));
+      q.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+
+  /* hub4You window: subtle pointer tilt */
+  const win = document.getElementById('win');
+  if (win && !reduceMotion.matches && window.matchMedia('(pointer: fine)').matches) {
+    const reset = () => {
+      win.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+    };
+    win.addEventListener('pointermove', (e) => {
+      const r = win.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      win.style.transform = `perspective(1200px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 7).toFixed(2)}deg)`;
+    });
+    win.addEventListener('pointerleave', reset);
+    reset();
+  }
+</script>
