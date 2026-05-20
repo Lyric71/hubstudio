@@ -1,58 +1,56 @@
 ---
 /**
- * Concept Creation  ·  /services/design/concept-creation
+ * Motion Design  ·  /services/design/motion-design
  *
- * Mirrors /services/design/packaging-merch-design and the rest of the
- * design-service set: same "Pressroom" art direction (crop marks,
- * calibration colour bar, mono figure labels) adapted for campaign concept
- * work. Copy from concept-creation-page.md, folded into the nine-section
- * layout. Process step numerals dropped per the no-numbers rule. The
- * sourcing slot from the packaging template is repurposed here as the
- * AI-sameness section, with the same navy / image / stat composition.
+ * Art direction continues the "Pressroom" language of the Packaging & Merch
+ * page: crop marks, a calibration colour bar, mono figure labels, registration
+ * marks, dashed dividers. The subject moves to motion stills, timeline detail
+ * and variant grids, but the visual grammar of the design vertical holds.
  *
- * Imagery lives in /public/Images with the cc- prefix.
+ * Copy from motion-design-page.md. Process step numerals are intentionally
+ * dropped per the project's permanent "no numbers in cards / step lists" rule.
+ * All imagery sits in /public/Images.
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
 
-/* Six invented sample briefs, one per category named in the source
-   studio-samples list. Real client names stay withheld per the source. */
+/* Studio motion stills, each with an invented brand mark. */
 const samples = [
   {
-    src: '/Images/cc-sample-marenne.jpg',
-    brand: 'Marenne',
-    kind: 'FMCG relaunch platform',
-    alt: 'A printed Marenne campaign key visual leaned against a sand plaster wall, tight profile portrait with the wordmark set in a modern serif.',
+    src: '/Images/md-ident.jpg',
+    brand: 'Aerith',
+    kind: 'Luxury fragrance ident',
+    alt: 'Single hero frame from the Aerith fragrance ident, a frosted glass bottle wrapped in drifting incense smoke under a single warm sidelight.',
   },
   {
-    src: '/Images/cc-sample-halcyra.jpg',
-    brand: 'Halcyra',
-    kind: 'Luxury fragrance world',
-    alt: 'A printed Halcyra fragrance campaign visual against a burgundy lacquered wall, close-up of a frosted glass bottle held in shadow.',
+    src: '/Images/md-fmcg.jpg',
+    brand: 'Nordel',
+    kind: 'FMCG product explainer',
+    alt: 'Hero frame from the Nordel honey explainer, a craft glass jar on brushed steel with a strand of honey caught mid-drizzle.',
   },
   {
-    src: '/Images/cc-sample-tervane.jpg',
-    brand: 'Tervane',
-    kind: 'Consumer tech product story',
-    alt: 'A printed Tervane consumer tech campaign visual against pale concrete, single matte-black device on sand surface with the wordmark in modern sans.',
+    src: '/Images/md-saas.jpg',
+    brand: 'Glasshouse',
+    kind: 'SaaS onboarding suite',
+    alt: 'Hero frame from the Glasshouse onboarding sequence, an aluminium laptop on a pale oak desk showing a soft pastel product walkthrough.',
   },
   {
-    src: '/Images/cc-sample-belisse.jpg',
-    brand: 'Belisse',
-    kind: 'Beauty seasonal territory',
-    alt: 'A printed Belisse beauty seasonal campaign visual against a peach plaster wall, three-quarter portrait with negative space for the wordmark.',
+    src: '/Images/md-launch.jpg',
+    brand: 'Korai',
+    kind: 'Consumer tech launch trailer',
+    alt: 'Hero frame from the Korai launch trailer, a matte black earbuds case on dark stone under hard rim light.',
   },
   {
-    src: '/Images/cc-sample-solven.jpg',
-    brand: 'Solven',
-    kind: 'Beverage cross-market platform',
-    alt: 'A printed Solven beverage campaign visual against chalky daylight, two bottles of pale herbal drink on a sand-toned table.',
+    src: '/Images/md-social.jpg',
+    brand: 'Vellis',
+    kind: 'Beauty social cutdown',
+    alt: 'Hero frame from the Vellis cutdown system, a frosted serum dropper with two clear oil droplets caught mid-fall above the bottle.',
   },
   {
-    src: '/Images/cc-sample-orenza.jpg',
-    brand: 'Orenza',
-    kind: 'Fashion capsule narrative',
-    alt: 'A printed Orenza fashion lookbook visual against a warm grey wall, full-length editorial of a model in a structured wool coat.',
+    src: '/Images/md-ooh.jpg',
+    brand: 'Murra',
+    kind: 'Beverage OOH animation',
+    alt: 'Hero frame from the Murra OOH campaign, a coral-orange sparkling drink can casting a long shadow across a pale concrete wall.',
   },
 ];
 
@@ -62,160 +60,182 @@ const colourBar = [
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
 ];
 
-/* Results stats, from the source's 60-engagement Jan 2024 to Mar 2026
-   cohort. Page reads each averaged against prior agency engagements on
-   similar briefs. */
+/* Stats from the "results" section of the source copy. */
 const stats = [
-  { from: 0, to: 3, suffix: 'x', label: 'Creative routes per brief', note: 'Explored, not just sketched' },
-  { from: 0, to: 70, suffix: '%', label: 'Less time to direction', note: 'Brief to approved route' },
-  { from: 0, to: 5, suffix: ' days', label: 'To first visualized round', note: 'Photoreal, in context' },
+  { from: 0, to: 5, suffix: 'x', label: 'Faster delivery', note: 'On multi-format campaigns' },
+  { from: 0, to: 50, suffix: '%', label: 'Lower cost per asset', note: 'On recent social campaigns' },
+  { from: 0, to: 12, suffix: 'x', label: 'Cutdowns per hero', note: 'Without a single new hire' },
 ];
 
-/* Two coverage lanes. The five lanes in the source (territories, key
-   visuals, mood films, tone of voice, campaign architecture) group into
-   the creative call (territories + tone + architecture) and the
-   visualization layer that proves the call (key visuals + mood films).
-   Keeping the two-feature layout means the lanes have to group, not list. */
+/* The two coverage lanes. Tag rows surface phrases named in the prose. */
 const coverage = [
   {
     fig: 'B',
-    label: 'Creative direction',
-    heading: 'Territory, voice and architecture.',
-    image: '/Images/cc-cover-direction.jpg',
-    alt: 'A studio worktable with three printed creative-territory cards pinned above it, tear-sheets and a key-visual mockup leaned to the right.',
+    label: 'Brand & broadcast',
+    heading: 'What we cover on brand and broadcast.',
+    image: '/Images/md-ident.jpg',
+    alt: 'A still frame from the Aerith fragrance ident, an example of brand motion work.',
     body: [
-      "A concept is not a tagline on a slide. It is a creative platform a brand can live inside for two years, across forty assets and six markets. We open with three to five distinct creative territories, each grounded in a real consumer insight, with a proposition, positioning rationale and architecture for how the route travels.",
-      'Tone of voice and copy direction sit alongside the territory. Headline territory, body voice, verbal system. Sample copy is written to prove the system holds before anyone starts production. Campaign architecture covers how the idea flexes from a 6-sheet to a 6-second TikTok, from a 200-page lookbook to a product page.',
+      'Logo idents, brand stings, title sequences, conference openers. Explainer and product animation for SaaS demos, fintech walkthroughs, pharma, app onboarding, and the looping hero animations at the top of a homepage. Broadcast covers TV commercials, branded content and conference films. 3D and hybrid is where photoreal product animation, character work, and live-action plus motion graphics come together.',
+      'Out-of-home animation runs from 6-second airport DOOH to programmatic billboards and Times Square LED. Built to network specs, silent by default.',
     ],
     tags: [
-      'Creative territories', 'Consumer insight', 'Proposition',
-      'Tone of voice', 'Verbal system', 'Sample copy', 'Headline bank',
-      'Campaign architecture', 'Hub and spoke', 'Multi-market',
+      'Brand idents', 'Title sequences', 'Explainer & product', 'SaaS demos',
+      'Homepage loops', 'TV commercials', 'Branded content', '3D & hybrid',
+      'OOH animation', 'Programmatic DOOH',
     ],
   },
   {
     fig: 'C',
-    label: 'Visualization',
-    heading: 'Key visuals and mood films, in week one.',
-    image: '/Images/cc-cover-visualization.jpg',
-    alt: 'A monitor on a worktable showing a single photoreal hero key visual mid-review, beside printed references and color-graded test prints.',
-    lead: 'Visualization moved to week one. By the time the deck lands in the boardroom, routes look like routes, not bullet points.',
+    label: 'Social & retail',
+    heading: 'What we cover on social and retail.',
+    image: '/Images/md-social.jpg',
+    alt: 'A still frame from the Vellis beauty cutdown system, an example of social motion work.',
+    lead: 'The volume lane, where the feed eats every asset you ship.',
     body: [
-      'For each surviving route, we generate hero visuals at final composition. Photoreal, in market context, occasionally in a couple of executions. You see the concept the way a consumer would, not as a stock-photo placeholder under a tagline.',
-      'Mood films sit beside the key visuals: twenty to forty second cuts built from AI-generated footage, with pacing, music, edit rhythm. Clients use them to pre-test internally before a production day is booked.',
+      'Vertical hooks for TikTok, Reels and Shorts. Square Meta cutdowns. YouTube bumpers. Douyin and Xiaohongshu native variants. eCommerce and retail is the long tail: PDP loops, packshot-to-motion, marketplace creative for Amazon, Tmall and Douyin Shop, and the SKU variant flow that never really stops.',
+      "If your format isn't on the list, ask. We've probably shipped it.",
     ],
     tags: [
-      'Photoreal key visuals', 'In-market context', 'Hero film mockups',
-      'Mood films', 'Pre-test internally', 'Production-ready references',
-      'Brand-trained models', 'Final composition', 'Multiple executions',
+      'TikTok & Reels', 'Meta cutdowns', 'YouTube bumpers', 'Douyin & Xiaohongshu',
+      'PDP loops', 'Packshot-to-motion', 'Marketplace creative', 'SKU variants',
+      'Vertical hooks', 'Stories formats',
     ],
   },
 ];
 
-/* Process steps. Numerals dropped per the no-numbers rule; the source's
-   own "judgment is the bottleneck" sets the tier for each step. */
+/* Tools used in the craft section, named in the source copy. */
+const tools = [
+  'After Effects 2026', 'Cinema 4D', 'Houdini',
+  'Kling 3.0', 'Seedance 2.0', 'Wan 2.6', 'Hunyuan Video',
+  'Runway Gen-4.5', 'Veo 3.1', 'ComfyUI', 'Lottie & Rive',
+];
+
+/* Process steps. Numerals dropped per the no-numbers rule. The source's own
+   "this is the step that decides the project" sets each step's tier. */
 const processSteps = [
   {
     short: 'Brief',
     tier: 'Where it is won',
-    title: 'Brief and brand immersion.',
-    body: 'Business problem, audience, competitive landscape, brand codes.',
-    image: '/Images/cc-p1-brief.jpg',
-    alt: 'A studio worktable with a printed brief document, a competitive landscape map, a notebook open to audience notes, color chips and a coffee cup.',
+    title: 'Brief and motion spec.',
+    body: 'Format list, durations, aspect ratios from 16:9 to 9:16 to 1:1 to 4:5, platform specs, voiceover plan, cutdown matrix from day one.',
+    image: '/Images/md-p1-brief.jpg',
+    alt: 'A printed motion brief sheet on a wood worktable with aspect ratio diagrams, duration timelines, a coffee cup and reference frames.',
   },
   {
     short: 'Creative direction',
     tier: 'Where it is won',
-    title: 'Creative direction. The step that matters most.',
-    body: 'Senior creatives set the territory and the structural concept. This is where a campaign becomes ownable and where a route earns the right to scale.',
-    image: '/Images/cc-p2-direction.jpg',
-    alt: 'A senior creative director pinning a printed territory card onto a corkboard already showing three other territory cards.',
+    title: 'Creative direction. The step that decides the project.',
+    body: 'Motion designers set the visual language, timing system, and the hero edit the rest of the campaign earns its way around.',
+    image: '/Images/md-p2-direction.jpg',
+    alt: 'A motion designer in profile gesturing at a wall-mounted screen showing three campaign styleframes in a row.',
   },
   {
-    short: 'AIGC exploration',
+    short: 'AI exploration',
     tier: 'The rest is execution',
-    title: 'AIGC exploration.',
-    body: 'Dozens of visual directions per route in parallel, faster than traditional sketching and closer to the final asset.',
-    image: '/Images/cc-p3-aigc.jpg',
-    alt: 'A monitor showing a grid of twelve AI-explored variations of the same campaign key visual, beside a printed reference pack and test prints.',
+    title: 'AI exploration.',
+    body: 'Style frames and motion tests in parallel, often a dozen directions inside the first week.',
+    image: '/Images/md-p3-aigc.jpg',
+    alt: 'A studio monitor showing a clean grid of twelve AI motion exploration thumbnails, each a colour and lighting variation of the same scene.',
   },
   {
-    short: 'Refinement',
+    short: 'Hero build',
     tier: 'The rest is execution',
-    title: 'Refinement and presentation.',
-    body: 'The winning route sharpened into a presentable platform: hero visuals, mood film, copy system, architecture.',
-    image: '/Images/cc-p4-refine.jpg',
-    alt: 'A creative director annotating a printed key visual with a graphite pencil, the print on a warm oak worktable beside a feedback sheet.',
+    title: 'Hero build and refinement.',
+    body: 'Three rounds on timing, easing, sound, and grade.',
+    image: '/Images/md-p4-refine.jpg',
+    alt: 'A close detail of a motion software timeline on a large monitor in a dark studio, with the hero composition frame visible above the keyframed tracks.',
   },
   {
-    short: 'Adaptation',
+    short: 'Variants',
     tier: 'The rest is execution',
-    title: 'Adaptation across markets.',
-    body: 'Local executions of the hub idea: language, cultural references, market-specific extensions, channel cut-downs.',
-    image: '/Images/cc-p5-adapt.jpg',
-    alt: 'A worktable laid out with the same key visual adapted into seven market variants, different headlines and languages, central image consistent.',
+    title: 'Variant production at scale.',
+    body: 'Cutdowns, aspect ratios, language localisation, regional swaps, all through the brand-trained pipeline. Captions and end cards built in.',
+    image: '/Images/md-p5-adapt.jpg',
+    alt: 'A studio wall of five monitors at different aspect ratios, each showing the same hero scene adapted to fit.',
   },
 ];
 
-/* The old agency timeline, split into the phases the source case
-   describes (three agencies briefed in January, deck in April). */
+/* The old, hand-keyframed timeline, split into phases. The brief reference is
+   the skincare-client story in the source copy: hero plus 14 Meta cutdowns,
+   six vertical hooks, three homepage loops, one Mandarin Douyin version. */
 const oldPhases = [
-  { label: 'Concepts', dur: 'Six weeks', span: 6 },
-  { label: 'Adaptations', dur: 'Two weeks', span: 2 },
-  { label: 'Production files', dur: 'Two weeks', span: 2 },
+  { label: 'Hero animation', dur: 'Two weeks', span: 2 },
+  { label: 'Cutdowns by hand', dur: 'Three weeks', span: 3 },
+  { label: 'Localisation', dur: 'One week', span: 1 },
 ];
 
-/* FAQ: wording adapted from the source. One answer links to the
-   Copyright guide. */
+/* FAQ: wording from the source markdown. One answer links to the Copyright
+   guide. */
 const faqs = [
   {
-    q: 'How long does a concept project take?',
-    a: "One to two weeks for first round. Three to four weeks total from brief to approved concept and architecture. Faster on a route extension. Tight launch window, we compress to ten days for a single-territory focused brief.",
+    q: 'How long does a motion project take?',
+    a: 'Two to three weeks for a single hero piece from brief to final master. Three to four weeks for a campaign with a full variant matrix across formats and markets. Faster on extensions of an existing system. Rush available when the launch calendar demands it.',
   },
   {
-    q: 'How is the work scoped?',
-    a: "Project-based for one-off concepts. Monthly retainer for clients running multiple campaigns a quarter. We scope firm after the first call.",
+    q: 'What does rush actually mean?',
+    a: "Five to seven business days for a hero, two to three days for a variant pack off an approved master. Rush adds to the project quote since it usually means weekend hours and a tighter team. We'll tell you upfront whether the timeline is realistic or whether something in the brief has to give.",
   },
   {
-    q: 'What does a concept project cost?',
-    a: "We do not publish pricing because real concept work scales with the brief. Single-market, single-territory in three weeks sits in a different range from multi-market platform work across six routes. We quote firm after a thirty-minute call, with the scope written up so you can compare it like-for-like against any other partner.",
+    q: 'Do you integrate with our DAM, PIM, or review tool?',
+    a: 'Yes. We deliver into Frame.io, Wipster, Workfront, Bynder, Brandfolder, and most major DAMs. For brands on a custom stack, we can push masters and variants into whatever ingestion format your system expects. Review and approval runs through whichever tool your team already uses.',
+  },
+  {
+    q: 'What does a project actually cost?',
+    a: "Three pricing models depending on scope. Project-based for one-off heroes or short campaigns. Monthly retainer for brands shipping ongoing volume across social, eCom, and OOH. Quarterly advance billing once the retainer has been running a few months, since it stabilises the burn rate on both sides. We quote firm after the first call once the brief, format list, and cutdown matrix are clear.",
+  },
+  {
+    q: 'When does a project make sense versus a retainer?',
+    a: "Rule of thumb. One hero plus its first cutdown wave is a project. A monthly cadence of new heroes, refreshes, and a continuous cutdown pipeline is a retainer, and the per-asset cost drops noticeably under it. If you are not sure, we will model both off your actual format list and you pick.",
   },
   {
     q: 'How many rounds of revisions are included?',
-    a: "Three rounds on the final concept, two on the territory stage. Most projects close inside two rounds at each stage. The visualization step front-loads alignment, so revision cycles run shorter than on traditional concept work.",
+    a: "Three. Most projects close inside two. Beyond round three we quote hourly, but it's rare on motion work since the hero direction is locked in step two.",
+  },
+  {
+    q: 'What if the AI output looks off-brand, or has artifacts?',
+    a: "That's why senior motion designers run the brief, not the model. Anything that ships goes through a human QC pass on brand consistency, motion logic, hand and finger detail (still the classic AI tell), and any frame artifacts. If a generation cannot carry the hero, we cut it in After Effects instead. The pipeline serves the brand, not the other way around.",
   },
   {
     q: 'What do I need to send to get started?',
-    a: "The brief, even a rough one. Existing brand guidelines if they exist. Recent campaign work, with notes on what tested well and what did not. Audience research, even fragments. References you admire or want to differentiate from. The fewer assumptions we have to make, the sharper round one comes out.",
+    a: "Brand guidelines, including any existing motion system if you have one. Final script, voiceover plan, music direction. Format and spec list with durations, aspect ratios, and platform targets. Reference work you like or want to avoid. If a motion system doesn't exist yet, we build one as we go and hand it over with the masters.",
   },
   {
     q: 'Who actually does the work?',
-    a: 'Senior creatives with agency backgrounds (Publicis, Ogilvy, BBDO, Wieden) lead every project. AI specialists run the visualization layer. Strategists sit in the brief and the review. No junior teams running concept work on their own.',
+    a: "Motion designers from agency and broadcast backgrounds lead every project. AI specialists handle the variant production volume. Sound and mix runs through people who've shipped broadcast spots, not designers guessing at loudness standards. No junior teams running the brief alone.",
   },
   {
-    q: 'Will the concepts look like us, or like AI?',
-    a: 'Like you, ideally a sharper version of you. We train our visualization references on your brand world, your past campaigns and the references you respond to. For brands without a strong existing system, we calibrate against direct competitors and the direction you give us.',
+    q: 'Will the work look like us, or like you?',
+    a: 'Like you. We train our AI pipelines on your existing brand assets, so the variants stay inside your visual and motion system, not ours. For brands without a documented motion system, we build one and hand it over.',
   },
   {
-    q: 'How do you avoid the AI sameness problem?',
-    a: 'By not running open-ended generation against generic prompts. Researchers at Dalarna University ran 700 image generation loops and found models converge on twelve dominant motifs when left to themselves. Our work starts with senior creative direction, brand-trained references and a clear point of view. The AI extends the direction. It does not pick it.',
-  },
-  {
-    q: 'Can the concept be produced by anyone, or only by you?',
-    a: 'By anyone. We deliver concepts as production-ready creative systems with full direction documentation. Your existing agency, in-house team or production partner can take it forward. About half our concept clients produce with us. The other half take it elsewhere.',
-  },
-  {
-    q: 'What about copyright on AI-generated concept work?',
-    a: 'You own the final deliverables. We use commercially safe models, document the workflow and keep the strategic IP, the territories, headlines and architecture, entirely original. For the legal side in full, see our Copyright and AI guide.',
+    q: 'What about copyright on AI-generated motion?',
+    a: 'You own the final deliverables. We use commercially safe models, and we document the workflow. For the legal side in full, see our Copyright and AI guide.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
   {
-    q: 'Can you handle concepts across multiple markets at once?',
-    a: 'Yes. Most of our concept work is multi-market by default. Creative talent recruited from the markets you sell into. We pressure-test territories against cultural references in each market before recommending the route that travels best.',
+    q: 'Who owns the source files after the project closes?',
+    a: "You do. After Effects projects, Cinema 4D scenes, ComfyUI workflows, master ProRes files, the lot. We archive a copy for six months on our side in case you come back for variants. Beyond that we will hold it if you ask, or wipe it if you don't.",
   },
   {
-    q: 'Do you do naming and branding too?',
-    a: 'Not in this scope. Concept creation is campaign-level creative direction. Naming, identity systems and full brand strategy work sit in a separate practice. If a project needs both, we sequence them or partner with a specialist branding studio.',
+    q: 'Can you work under NDA on unreleased products?',
+    a: "Yes. We sign NDAs before any brief shares technical detail. For brands working on pre-launch products, we run the whole pipeline behind a need-to-know wall on our side and don't use the work in our own portfolio without written sign-off.",
+  },
+  {
+    q: 'Can you handle a full multi-market campaign, or just one piece?',
+    a: 'Both. Some clients come to us for one hero film. Others come with a hero plus 200 cutdowns across 12 markets, 8 languages, and 30 SKU variants. Workflow scales either way.',
+  },
+  {
+    q: 'Do you deliver true broadcast masters, or just web cuts?',
+    a: "Both, and we treat them as different jobs. ProRes 422 and ProRes 4444 or DNxHR HQX masters for broadcast and OOH networks, with R128 loudness on the audio side. H.264 and HEVC for digital and social, sized to each platform's current spec. Lottie and Rive when motion has to live inside a product UI. Captions, alt-text and accessibility passes included where required.",
+  },
+  {
+    q: 'Where are you based, and where can you deliver?',
+    a: 'Our production team is based in Shanghai. We ship motion work for clients into the US, EU, UK, Middle East and APAC. For brands going into China, we produce native Douyin, Xiaohongshu and Tmall creative with local voice and culturally adapted hooks, not subtitled Western edits, which generally underperform by 60 to 70 percent on conversion. Local-language voice and regulatory copy are handled in-region.',
+  },
+  {
+    q: 'Can we start small to see if it works?',
+    a: 'Yes. Send us one brief. Inside two weeks you get three direction frames, a 15-second hero animatic, and a production estimate for the full variant matrix. No retainer, no commitment, the work is yours either way.',
   },
 ];
 
@@ -231,8 +251,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="Concept Creation Services | AI-Native | hubStudio"
-  description="Campaign concepts pressure-tested in days, not months. Senior creative direction, AI-powered visualization, built for every market you sell into."
+  title="Motion Design Services | AI-Native | hubStudio"
+  description="Brand-grade motion design at scale. Explainers, social cutdowns, product loops, idents. Senior art directors lead, AI runs production, every market."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -249,52 +269,53 @@ const faqSchema = {
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
             <span class="kicker__tick"></span>Design service
-            <span class="kicker__sep">/</span> Concept Creation
+            <span class="kicker__sep">/</span> Motion
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Campaign</span></span>
-            <span class="line"><span class="line__i serif">concepts.</span></span>
-            <span class="line"><span class="line__i">In days.</span></span>
+            <span class="line"><span class="line__i">Motion</span></span>
+            <span class="line"><span class="line__i serif">Design.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Pressure-tested early. <em>Not after the deck.</em>
+            Animated assets that <em>hold the brand</em>, at the speed the feed
+            eats them.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              Most concept work dies in the deck. Three rounds in, no one can
-              tell the routes apart, and the route that ships is the fourth
-              version of an idea that was in the room in week two.
+              A skincare client signs off on a 60-second hero on Monday. By
+              Friday the growth lead is back, asking for 14 Meta cutdowns, six
+              vertical hooks, three homepage loops, and a Mandarin Douyin
+              version three weeks out.
             </p>
             <p>
-              We moved visualization into week one. By the time the deck lands
-              in the boardroom, the routes look like routes. And the room can
-              actually pick one.
+              That call now lands almost every week. Two animators on After
+              Effects can't keep up. We work it differently: senior direction on
+              the hero, AI-assisted production on the variants.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
             <Button variant="primary" href="/contact">Start the brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
-              See sample work
+              See the work
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Senior creative direction <span>/</span> AI-native visualization
+            Shanghai studio <span>/</span> Hero direction + variant pipeline
           </p>
         </div>
       </div>
       <div class="hero__visual">
         <img
-          src="/Images/cc-hero.jpg"
-          alt="A creative director reviewing three large printed campaign key-visual mockups pinned to a plaster wall in a sunlit Paris atelier."
+          src="/Images/md-ident.jpg"
+          alt="Single hero frame from the Aerith fragrance ident, a frosted glass bottle wrapped in drifting incense smoke under a single warm sidelight."
           width="1024"
           height="1024"
           loading="eager"
           fetchpriority="high"
         />
-        <span class="hero__chip">Studio work <span>/</span> Concept routes</span>
+        <span class="hero__chip">Studio work <span>/</span> Aerith</span>
       </div>
     </section>
 
@@ -310,25 +331,25 @@ const faqSchema = {
           <div class="why__head">
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
             <h2 class="dh r" style="--d:.05s">
-              The route that ships<br />
-              <span class="serif">is round four</span>.
+              Why the feed eats<br />so much <span class="serif">creative</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              A global beauty brand briefed three agencies on a relaunch in
-              January. By April there were nine routes, sixty slides each, and
-              three strategy directors in a Paris boardroom who could not tell
-              the routes apart anymore.
+              Meta's Andromeda rollout has rewritten the feed. Brands shipping
+              20-plus new ads a month see 65 percent higher ROAS than brands
+              shipping under 10. Static creative on its own no longer earns the
+              impression.
             </p>
             <p class="r" style="--d:.16s">
-              The launch slipped a quarter. The budget went sideways. The route
-              that finally shipped was the fourth round of an idea that had been
-              in the room since week two.
+              The top third of advertisers on Meta now run roughly 395 live ads
+              at any time. Fatigue windows have collapsed from six weeks to two
+              or three, and creative operations now make up around 80 percent
+              of performance work.
             </p>
             <p class="why__clients r" style="--d:.22s">
-              We hear some version of that story from new clients most months.
-              So we moved <strong>visualization</strong> into week one.
+              Source: <strong>Segwise</strong>, Meta Andromeda Creative Strategy
+              Playbook, 2026.
             </p>
           </div>
         </div>
@@ -336,21 +357,21 @@ const faqSchema = {
         <figure class="why__shot crop r-clip">
           <div class="crop__inner">
             <img
-              src="/Images/cc-roots.jpg"
-              alt="A Paris strategy boardroom in late afternoon, ten campaign concept boards leaned against the wall, three people mid-discussion at the table."
-              width="1408"
-              height="768"
+              src="/Images/md-roots.jpg"
+              alt="A motion designer at a dim studio workstation, dual monitors glowing with motion frames in progress under a single warm desk lamp."
+              width="1920"
+              height="1080"
               loading="lazy"
             />
           </div>
-          <figcaption class="fig">The boardroom in week ten</figcaption>
+          <figcaption class="fig">Shanghai studio, evening shift</figcaption>
         </figure>
 
         <div class="stats">
           <p class="stats__quote r">
-            Across roughly 60 concept engagements between January 2024 and March
-            2026: three times the routes explored per brief, 70% less time from
-            brief to approved direction, five days to first visualized round.
+            Across roughly 60 motion engagements over the last two years,
+            clients report faster turnarounds, lower cost per asset, and far
+            higher output. Averages, not single-project highs.
           </p>
           <div class="stats__grid">
             {
@@ -380,8 +401,13 @@ const faqSchema = {
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
           <h2 class="dh r" style="--d:.05s">
-            Two lanes, one <span class="serif">creative platform</span>.
+            Every format, one <span class="serif">motion system</span>.
           </h2>
+          <p class="band__note r" style="--d:.1s">
+            A 15-second hero and a 6-second bumper share almost nothing in how
+            they earn attention. So we staff each format with motion designers
+            who have shipped it before, all working off one motion system.
+          </p>
         </header>
 
         {
@@ -428,13 +454,14 @@ const faqSchema = {
           <div>
             <p class="kicker r"><span class="kicker__tick"></span>Contact sheet</p>
             <h2 class="dh r" style="--d:.05s">
-              Selected <span class="serif">briefs</span>.
+              Selected <span class="serif">frames</span>.
             </h2>
           </div>
           <p class="band__note r" style="--d:.1s">
-            Briefs we have worked on in the past eighteen months, brand names
-            withheld where NDAs apply. Each cover is an authored campaign
-            artifact, not a stock pull.
+            Single frames pulled from recent motion work: FMCG explainer
+            series, luxury fragrance ident, SaaS onboarding suite, consumer
+            tech launch trailer, beauty social cutdown system, beverage OOH
+            across six markets.
           </p>
         </header>
 
@@ -462,16 +489,16 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ============ S5 · AI SAMENESS (was sourcing) ============ -->
+    <!-- ============ S5 · CRAFT (HERO BY HAND, VARIANTS ON PIPELINE) ============ -->
     <section class="source">
       <div class="shell source__grid">
         <div class="source__visual">
           <figure class="source__main crop">
             <div class="crop__inner">
               <img
-                src="/Images/cc-sameness-main.jpg"
-                alt="A studio wall covered with a contact-sheet print-out of forty-eight near-identical AI-generated images, beside a single authored campaign key visual that clearly breaks the pattern."
-                width="1024"
+                src="/Images/md-craft-hand.jpg"
+                alt="Close-up of a motion designer's hands at a pen tablet, keyframing a hero shot in a dim studio under the warm glow of the monitor."
+                width="1280"
                 height="1024"
                 loading="lazy"
               />
@@ -479,73 +506,60 @@ const faqSchema = {
           </figure>
           <figure class="source__inset">
             <img
-              src="/Images/cc-sameness-inset.jpg"
-              alt="A close-up of a creative director's hand drawing a single decisive red mark on a printed campaign key visual."
-              width="1024"
+              src="/Images/md-craft-pipeline.jpg"
+              alt="A secondary monitor in the same studio, showing a grid of nine variant motion thumbnails cut to different aspect ratios."
+              width="1280"
               height="1024"
               loading="lazy"
             />
           </figure>
           <div class="source__stat">
-            <span class="source__stat-num">12 motifs</span>
-            <span class="source__stat-cap">Out of 700 AI generations, all converged</span>
+            <span class="source__stat-num">1 + many</span>
+            <span class="source__stat-cap">One hero, every cutdown on a pipeline</span>
           </div>
         </div>
 
         <div class="source__body">
-          <p class="kicker kicker--light r"><span class="kicker__tick"></span>The trap to avoid</p>
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>The craft</p>
           <h2 class="dh r" style="--d:.05s">
-            The AI <span class="serif">sameness</span> trap.
+            The hero is animated by hand.<br />The variants ride a
+            <span class="serif">pipeline</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            In December 2025, researchers at Dalarna University ran 700 image
-            generation loops across diverse prompts. All 700 runs converged on
-            nearly identical visuals: what the authors called "visual elevator
-            music."
+            Most studios still hand-keyframe every cutdown. By the 12th
+            vertical the timing has drifted, typography no longer matches the
+            master, and the brand looks slightly different in every version.
           </p>
           <p class="source__p r" style="--d:.16s">
-            Just twelve dominant motifs accounted for the output. Stormy
-            lighthouses, palatial interiors, commercially safe aesthetics.
-            Volume without judgment is not a moat, it is a liability. The
-            Canva 2026 marketing study ran the consumer side: 70% of consumers
-            say they can usually spot AI ads because they are missing soul, and
-            87% say the best advertising still needs a human touch.
+            We work it the other way. The hero is built in After Effects 2026
+            and Cinema 4D by senior designers. The brand system, easing curves
+            and grade are locked into a master project. Variants then run
+            through AI-assisted pipelines that respect what the hero set up.
           </p>
-          <ul class="creds r" style="--d:.22s">
-            <li class="cred">
-              <svg viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              Brand-trained references
-            </li>
-            <li class="cred">
-              <svg viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              Senior direction first
-            </li>
-            <li class="cred">
-              <svg viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              Final human pass
-            </li>
-            <li class="cred">
-              <svg viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              Commercially safe models
-            </li>
+          <p class="source__p r" style="--d:.2s">
+            What we actually use. After Effects 2026 and Cinema 4D for hero
+            builds, Houdini for simulation. Kling 3.0 and Seedance 2.0 for
+            image-to-video and motion transfer. Wan 2.6 and Hunyuan Video for
+            high-volume product motion. Runway Gen-4.5 when precise camera
+            direction matters. Veo 3.1 when integrated audio belongs in the
+            generation. ComfyUI for brand-trained pipelines. Lottie and Rive
+            when motion lives in a product UI. The tool depends on the brief.
+          </p>
+          <ul class="creds r" style="--d:.24s">
+            {
+              tools.map((t) => (
+                <li class="cred">
+                  <svg viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  {t}
+                </li>
+              ))
+            }
           </ul>
-          <p class="source__p r" style="--d:.26s">
-            We do not run open-ended generation against a generic prompt and
-            pick the least bad output. We build brand-trained references, write
-            creative direction at the territory stage and use AI to extend a
-            point of view rather than replace one.
-          </p>
           <p class="source__p source__p--quiet r" style="--d:.3s">
-            Sameness is the default. Authorship is the discipline. The work has
-            to defend its place in one sentence, or it does not ship.
+            Where we don't fit: a one-off sting for next week isn't where our
+            setup pays off. Volume is.
           </p>
         </div>
       </div>
@@ -556,17 +570,14 @@ const faqSchema = {
       <div class="shell craft__intro">
         <p class="kicker r"><span class="kicker__tick"></span>Our process</p>
         <h2 class="dh r" style="--d:.05s">
-          Judgment is the<br /><span class="serif">bottleneck</span> now.
+          Most of the work happens<br />before the first <span class="serif">frame</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Every route used to need a photographer, a location, a model and a
-          producer to herd them. Agencies hedged. Visualization is close to
-          free now, so the constraint is judgment. Which territory lands. Which
-          visual earns attention. Which headline does not sound like the last
-          campaign in the category.
+          Three rounds of revisions included. Beyond that we quote hourly.
+          Cutdown matrix, captions and end cards built in from the brief.
         </p>
         <p class="craft__note r" style="--d:.16s">
-          First two steps are where it is won or lost. The rest is execution.
+          First two steps are where it's won or lost. The rest is execution.
         </p>
       </div>
 
@@ -630,11 +641,11 @@ const faqSchema = {
         <header class="band">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>The new math</p>
           <h2 class="dh r" style="--d:.05s">
-            How AI changes<br />the <span class="serif">math</span>.
+            How AI rewrote<br /><span class="serif">motion</span>.
           </h2>
           <p class="band__note band__note--light r" style="--d:.1s">
-            A client lands with a Q3 relaunch, three or four markets, six
-            possible routes. The same brief, run two ways.
+            One hero, 14 Meta cutdowns, six vertical hooks, three homepage
+            loops, and a Mandarin Douyin version. The same brief, run two ways.
           </p>
         </header>
 
@@ -642,7 +653,7 @@ const faqSchema = {
           <article class="vs__row vs__row--old r">
             <div class="vs__side">
               <span class="vs__tag">The old workflow</span>
-              <span class="vs__total">Twelve weeks</span>
+              <span class="vs__total">Six weeks</span>
             </div>
             <div class="vs__main">
               <div class="vs__bar">
@@ -656,10 +667,10 @@ const faqSchema = {
                 }
               </div>
               <p class="vs__p">
-                Old workflow: brief three agencies, wait six weeks for concepts,
-                two more for adaptation, another two for production references.
-                Twelve weeks, three or four review rounds, and a room that can
-                no longer tell the routes apart.
+                Brief an agency, two weeks on the hero, three more for cutdowns
+                by hand, a final week for language localisation. By the time
+                the variants ship the fatigue window has already closed on the
+                hero. Two animators on After Effects, one tired team.
               </p>
             </div>
           </article>
@@ -667,22 +678,23 @@ const faqSchema = {
           <article class="vs__row vs__row--new r">
             <div class="vs__side">
               <span class="vs__tag vs__tag--new">Our workflow</span>
-              <span class="vs__total vs__total--new">Five days</span>
+              <span class="vs__total vs__total--new">Two weeks</span>
             </div>
             <div class="vs__main">
               <div class="vs__bar vs__bar--new">
                 <span class="vs__seg vs__seg--solo" style="--span:1;--i:0">
-                  <span class="vs__seg-label">Brief to visualized round</span>
-                  <span class="vs__seg-dur">Five days</span>
+                  <span class="vs__seg-label">Hero + pipeline</span>
+                  <span class="vs__seg-dur">Two weeks</span>
                 </span>
                 <span class="vs__rest" aria-hidden="true"></span>
               </div>
               <p class="vs__p">
-                Our workflow: senior creative direction in the first session,
-                three to five territories visualized at hero quality inside the
-                first week. Mood films cut from AI-generated footage before a
-                production day is booked. The room picks one because the routes
-                look like routes.
+                Senior direction locks the hero in week one. The brand-trained
+                pipeline turns the variant matrix, every aspect ratio and every
+                language, in days, not weeks. Coca-Cola's Fizzion and
+                Unilever's Sketch Pro run on the same logic: concept-to-asset
+                inside two hours, motion roughly three times faster than the
+                old TV-first model.
               </p>
             </div>
           </article>
@@ -692,15 +704,15 @@ const faqSchema = {
           <div class="hub__copy">
             <span class="hub__badge">hub4You / AI agent platform</span>
             <h3 class="dh dh--sm hub__head">
-              One platform, <span class="serif">every market</span>.
+              Quarterly to <span class="serif">weekly</span>.
             </h3>
             <p class="hub__text">
-              For brands running concept platforms across many markets, we
-              deploy hub4You, our custom AI agent setup trained on your own
-              brand world. It extends the approved territory into local
-              executions on demand, and connects directly to your DAM and PIM
-              so the output lands where your team already works. That is the
-              gap between launching quarterly and launching weekly.
+              For brands running ongoing motion volume, we deploy hub4You, our
+              custom AI agent setup trained on your own brand and motion
+              system. It generates on-brand cutdowns and variants on demand,
+              and connects directly to your DAM and PIM so the output lands
+              where your team already works. That's the gap between launching
+              quarterly and launching weekly.
             </p>
             <Button variant="primary" href="/hub4you">Explore hub4You</Button>
           </div>
@@ -712,7 +724,7 @@ const faqSchema = {
               </div>
               <img
                 src="/Images/hub4fashion.jpg"
-                alt="The hub4You platform generating on-brand campaign visuals from a model image and a styled background."
+                alt="The hub4You platform generating on-brand product visuals from a model and a background."
                 width="2000"
                 height="1125"
                 loading="lazy"
@@ -785,10 +797,10 @@ const faqSchema = {
           Try it on a real<br /><span class="serif">brief</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          Send us a concept brief. You will hear back from a creative director,
-          not a salesperson. First round lands inside ten days. Whatever we
-          produce in that round is yours, regardless of whether you continue
-          with us.
+          Send us a motion job. Inside two weeks you get three direction
+          frames, a 15-second hero animatic, and a production estimate for the
+          full variant matrix. No retainer, no commitment, and whatever we
+          produce is yours to keep regardless of whether you go ahead with us.
         </p>
         <div class="end__cta r" style="--d:.18s">
           <Button variant="primary" href="/contact">Start the brief</Button>
@@ -1078,6 +1090,8 @@ const faqSchema = {
     line-height: 1.02;
     letter-spacing: -0.045em;
   }
+  /* Generous padding gives glyph ascenders / descenders room inside the
+     reveal mask; the matching negative margin keeps the lines tight. */
   .hero__title .line {
     display: block;
     overflow: hidden;
@@ -1094,9 +1108,6 @@ const faqSchema = {
   }
   .hero__title .line:nth-child(2) .line__i {
     transition-delay: 0.22s;
-  }
-  .hero__title .line:nth-child(3) .line__i {
-    transition-delay: 0.32s;
   }
   .hero.in .hero__title .line__i {
     transform: translateY(0);
@@ -1440,7 +1451,7 @@ const faqSchema = {
     color: var(--text-mute);
   }
 
-  /* ===================== S5 · Sourcing (repurposed: AI sameness) ===================== */
+  /* ===================== S5 · Craft (hero + pipeline grid) ===================== */
   .source {
     background: var(--navy);
     color: var(--text-on-dark);
@@ -1508,7 +1519,7 @@ const faqSchema = {
     font-size: 9px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    max-width: 15ch;
+    max-width: 17ch;
     line-height: 1.4;
   }
   .source__body .dh {

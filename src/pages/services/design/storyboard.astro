@@ -1,58 +1,57 @@
 ---
 /**
- * Concept Creation  ·  /services/design/concept-creation
+ * Storyboard  ·  /services/design/storyboard
  *
- * Mirrors /services/design/packaging-merch-design and the rest of the
- * design-service set: same "Pressroom" art direction (crop marks,
- * calibration colour bar, mono figure labels) adapted for campaign concept
- * work. Copy from concept-creation-page.md, folded into the nine-section
- * layout. Process step numerals dropped per the no-numbers rule. The
- * sourcing slot from the packaging template is repurposed here as the
- * AI-sameness section, with the same navy / image / stat composition.
+ * Same art-direction system as /services/design/packaging-merch-design (the
+ * "pressroom" layout): mono labels, dieline crop marks, a calibration colour
+ * bar, editorial typography, alternating media features. Adapted for
+ * pre-production: six format lanes instead of two, a "where AI breaks"
+ * spread in place of the sourcing block, and a 2-3 week vs 3-5 day timeline.
  *
- * Imagery lives in /public/Images with the cc- prefix.
+ * Copy from storyboard-page.md. Process step numerals are intentionally
+ * dropped: the project's permanent "no numbers in cards / step lists" rule
+ * overrides the source numbering. All imagery sits in /public/Images.
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
 
-/* Six invented sample briefs, one per category named in the source
-   studio-samples list. Real client names stay withheld per the source. */
+/* Selected studio samples, each tied to a project type. */
 const samples = [
   {
-    src: '/Images/cc-sample-marenne.jpg',
-    brand: 'Marenne',
-    kind: 'FMCG relaunch platform',
-    alt: 'A printed Marenne campaign key visual leaned against a sand plaster wall, tight profile portrait with the wordmark set in a modern serif.',
+    src: '/Images/sb-sample-tv.jpg',
+    brand: 'Veyra',
+    kind: 'Beauty global TV spot',
+    alt: 'A grid of pencil-and-ink storyboard panels for a beauty TV spot, pinned to a studio wall under afternoon window light.',
   },
   {
-    src: '/Images/cc-sample-halcyra.jpg',
-    brand: 'Halcyra',
-    kind: 'Luxury fragrance world',
-    alt: 'A printed Halcyra fragrance campaign visual against a burgundy lacquered wall, close-up of a frosted glass bottle held in shadow.',
+    src: '/Images/sb-sample-digital.jpg',
+    brand: 'Pelt',
+    kind: 'Social campaign, three ratios',
+    alt: 'Three printed storyboard sheets reframing the same sneaker spot in vertical, square and widescreen, laid on a wooden desk.',
   },
   {
-    src: '/Images/cc-sample-tervane.jpg',
-    brand: 'Tervane',
-    kind: 'Consumer tech product story',
-    alt: 'A printed Tervane consumer tech campaign visual against pale concrete, single matte-black device on sand surface with the wordmark in modern sans.',
+    src: '/Images/sb-sample-animation.jpg',
+    brand: 'Norven',
+    kind: 'Animated fintech explainer',
+    alt: 'A grid of pencil keyframe poses for a 2D character animation pinned to a corkboard with in-between counts noted below.',
   },
   {
-    src: '/Images/cc-sample-belisse.jpg',
-    brand: 'Belisse',
-    kind: 'Beauty seasonal territory',
-    alt: 'A printed Belisse beauty seasonal campaign visual against a peach plaster wall, three-quarter portrait with negative space for the wordmark.',
+    src: '/Images/sb-sample-explainer.jpg',
+    brand: 'Modra',
+    kind: 'B2B product film',
+    alt: 'A laptop on a studio desk showing a storyboard panel with a product UI mockup, voiceover script and script-to-frame timeline.',
   },
   {
-    src: '/Images/cc-sample-solven.jpg',
-    brand: 'Solven',
-    kind: 'Beverage cross-market platform',
-    alt: 'A printed Solven beverage campaign visual against chalky daylight, two bottles of pale herbal drink on a sand-toned table.',
+    src: '/Images/sb-sample-branded.jpg',
+    brand: 'Aldair',
+    kind: 'Automotive anthem film',
+    alt: 'A printed storyboard sequence on a wide table beside a top-down blocking diagram and a scene beat list.',
   },
   {
-    src: '/Images/cc-sample-orenza.jpg',
-    brand: 'Orenza',
-    kind: 'Fashion capsule narrative',
-    alt: 'A printed Orenza fashion lookbook visual against a warm grey wall, full-length editorial of a model in a structured wool coat.',
+    src: '/Images/sb-sample-pitch.jpg',
+    brand: 'Astrel',
+    kind: 'Agency pitch board',
+    alt: 'A pitch document open on a tabletop showing a single full-bleed storyboard hero frame next to a deck cover.',
   },
 ];
 
@@ -62,160 +61,175 @@ const colourBar = [
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
 ];
 
-/* Results stats, from the source's 60-engagement Jan 2024 to Mar 2026
-   cohort. Page reads each averaged against prior agency engagements on
-   similar briefs. */
+/* Recent-project results, drawn from the source quote. */
 const stats = [
-  { from: 0, to: 3, suffix: 'x', label: 'Creative routes per brief', note: 'Explored, not just sketched' },
-  { from: 0, to: 70, suffix: '%', label: 'Less time to direction', note: 'Brief to approved route' },
-  { from: 0, to: 5, suffix: ' days', label: 'To first visualized round', note: 'Photoreal, in context' },
+  { from: 0, to: 5, suffix: ' days', label: 'First-cut delivery', note: 'On a 30-second spot' },
+  { from: 0, to: 70, suffix: '%', label: 'Faster pre-production', note: 'Average across campaigns' },
+  { from: 0, to: 6, suffix: ' markets', label: 'Average campaign reach', note: 'Last twelve months' },
 ];
 
-/* Two coverage lanes. The five lanes in the source (territories, key
-   visuals, mood films, tone of voice, campaign architecture) group into
-   the creative call (territories + tone + architecture) and the
-   visualization layer that proves the call (key visuals + mood films).
-   Keeping the two-feature layout means the lanes have to group, not list. */
-const coverage = [
+/* Trust signals shown as a thin strip below the hero. */
+const signals = [
+  'Boards led by art directors with TV and broadcast credits',
+  'Frames the director, DP and client read the same way',
+  'Shot grammar, camera language, timing and audio on every panel',
+  'Three to five days for a first cut on a 30-second spot',
+];
+
+/* Six format lanes. Each renders as a card in a 2-up / 3-up grid. */
+const lanes = [
   {
-    fig: 'B',
-    label: 'Creative direction',
-    heading: 'Territory, voice and architecture.',
-    image: '/Images/cc-cover-direction.jpg',
-    alt: 'A studio worktable with three printed creative-territory cards pinned above it, tear-sheets and a key-visual mockup leaned to the right.',
-    body: [
-      "A concept is not a tagline on a slide. It is a creative platform a brand can live inside for two years, across forty assets and six markets. We open with three to five distinct creative territories, each grounded in a real consumer insight, with a proposition, positioning rationale and architecture for how the route travels.",
-      'Tone of voice and copy direction sit alongside the territory. Headline territory, body voice, verbal system. Sample copy is written to prove the system holds before anyone starts production. Campaign architecture covers how the idea flexes from a 6-sheet to a 6-second TikTok, from a 200-page lookbook to a product page.',
-    ],
-    tags: [
-      'Creative territories', 'Consumer insight', 'Proposition',
-      'Tone of voice', 'Verbal system', 'Sample copy', 'Headline bank',
-      'Campaign architecture', 'Hub and spoke', 'Multi-market',
-    ],
+    label: 'TV and broadcast',
+    image: '/Images/sb-sample-tv.jpg',
+    alt: 'A grid of storyboard panels for a beauty TV spot on a studio wall in afternoon window light.',
+    lead: '15, 30 and 60-second spots, anthem films and full campaign systems with cutdowns.',
+    body: 'Boards built to broadcast specs, with regulatory copy by market and talent guidelines locked into frame one.',
+    tags: ['15s spots', '30s spots', '60s anthems', 'Cutdowns', 'Regulatory by market'],
   },
   {
-    fig: 'C',
-    label: 'Visualization',
-    heading: 'Key visuals and mood films, in week one.',
-    image: '/Images/cc-cover-visualization.jpg',
-    alt: 'A monitor on a worktable showing a single photoreal hero key visual mid-review, beside printed references and color-graded test prints.',
-    lead: 'Visualization moved to week one. By the time the deck lands in the boardroom, routes look like routes, not bullet points.',
-    body: [
-      'For each surviving route, we generate hero visuals at final composition. Photoreal, in market context, occasionally in a couple of executions. You see the concept the way a consumer would, not as a stock-photo placeholder under a tagline.',
-      'Mood films sit beside the key visuals: twenty to forty second cuts built from AI-generated footage, with pacing, music, edit rhythm. Clients use them to pre-test internally before a production day is booked.',
-    ],
-    tags: [
-      'Photoreal key visuals', 'In-market context', 'Hero film mockups',
-      'Mood films', 'Pre-test internally', 'Production-ready references',
-      'Brand-trained models', 'Final composition', 'Multiple executions',
-    ],
+    label: 'Digital and social',
+    image: '/Images/sb-sample-digital.jpg',
+    alt: 'Three storyboard sheets reframing one sneaker spot across vertical, square and widescreen ratios.',
+    lead: 'The highest-volume lane we run. A single concept ships in every ratio the platform demands.',
+    body: '9:16 vertical for TikTok and Reels, 1:1 square for in-feed, 16:9 for YouTube and CTV, 4:5 for the scroll. Each ratio gets reboarded, not just cropped.',
+    tags: ['9:16 vertical', '1:1 square', '16:9 wide', '4:5 scroll', 'Reboarded, not cropped'],
+  },
+  {
+    label: 'Animation and motion',
+    image: '/Images/sb-sample-animation.jpg',
+    alt: 'Pencil keyframe poses for a 2D character animation, pinned to a corkboard with in-between counts.',
+    lead: 'Full-cel 2D and 3D animation, motion graphics, kinetic typography, explainer animations.',
+    body: 'Boards in this lane carry keyframe poses, in-between counts, camera-move notation and pacing notes for the animatic.',
+    tags: ['2D animation', '3D animation', 'Motion graphics', 'Kinetic type', 'Keyframe poses'],
+  },
+  {
+    label: 'Explainer and product film',
+    image: '/Images/sb-sample-explainer.jpg',
+    alt: 'A laptop showing a product UI storyboard panel beside a voiceover script and a script-to-frame timeline.',
+    lead: 'Where most B2B and SaaS work lives. Voiceover-driven, with UI screen states or product visualisation at the centre.',
+    body: 'Boards carry script-to-frame sync down to the syllable, so the editor cuts to the word and not around it.',
+    tags: ['B2B films', 'SaaS demos', 'UI screen states', 'Script-to-frame sync', 'VO timing'],
+  },
+  {
+    label: 'Branded film and long-form',
+    image: '/Images/sb-sample-branded.jpg',
+    alt: 'A branded-film storyboard sequence on a wide table with a top-down blocking diagram and a scene beat list.',
+    lead: 'Brands are buying actual short films now, not long commercials. We board them like short films.',
+    body: 'Scene blocking diagrams, sequence beat maps, a director-treatment companion document, and a pitch-deck cut for the marketing team to share internally.',
+    tags: ['Short film boards', 'Blocking diagrams', 'Beat maps', 'Director companion', 'Marketing cut'],
+  },
+  {
+    label: 'Pitch boards',
+    image: '/Images/sb-sample-pitch.jpg',
+    alt: 'A pitch document open on a tabletop showing a single full-bleed storyboard hero frame.',
+    lead: 'Shortest shelf life. Highest stakes for the agency. A board that does not sell in three frames loses the pitch.',
+    body: 'Designed to read as a presentation document first, a production document second, with the production-quality version held in reserve for the win.',
+    tags: ['Agency pitches', 'New business', 'Three-frame hook', 'Deck-ready', 'Production-ready'],
   },
 ];
 
-/* Process steps. Numerals dropped per the no-numbers rule; the source's
-   own "judgment is the bottleneck" sets the tier for each step. */
+/* Process steps. Numerals dropped per the no-numbers rule. The source's
+   own "cinematic thinking is where it's won" sets the tier for each step. */
 const processSteps = [
   {
     short: 'Brief',
     tier: 'Where it is won',
-    title: 'Brief and brand immersion.',
-    body: 'Business problem, audience, competitive landscape, brand codes.',
-    image: '/Images/cc-p1-brief.jpg',
-    alt: 'A studio worktable with a printed brief document, a competitive landscape map, a notebook open to audience notes, color chips and a coffee cup.',
+    title: 'Brief and shoot spec.',
+    body: 'Final script, format list, delivery duration, brand guidelines, talent rules, product reference, regulatory copy by market.',
+    image: '/Images/sb-p1-brief.jpg',
+    alt: 'A briefing table with open script pages, a brand guidelines binder and talent reference sheets under warm desk light.',
   },
   {
     short: 'Creative direction',
     tier: 'Where it is won',
-    title: 'Creative direction. The step that matters most.',
-    body: 'Senior creatives set the territory and the structural concept. This is where a campaign becomes ownable and where a route earns the right to scale.',
-    image: '/Images/cc-p2-direction.jpg',
-    alt: 'A senior creative director pinning a printed territory card onto a corkboard already showing three other territory cards.',
+    title: 'Creative direction. The step that decides it.',
+    body: 'Art directors set the shot grammar, the camera language, the visual hook, the cuts, the line of the scene.',
+    image: '/Images/sb-p2-direction.jpg',
+    alt: 'A senior art director at a studio desk drawing the hero shot on a blank storyboard sheet beside pinned reference photos.',
   },
   {
-    short: 'AIGC exploration',
+    short: 'AI exploration',
     tier: 'The rest is execution',
-    title: 'AIGC exploration.',
-    body: 'Dozens of visual directions per route in parallel, faster than traditional sketching and closer to the final asset.',
-    image: '/Images/cc-p3-aigc.jpg',
-    alt: 'A monitor showing a grid of twelve AI-explored variations of the same campaign key visual, beside a printed reference pack and test prints.',
+    title: 'AI exploration.',
+    body: 'Dozens of frame directions in parallel, with character and product consistency locked through reference sheets.',
+    image: '/Images/sb-p3-aigc.jpg',
+    alt: 'A laptop showing a grid of AI-generated cinematic frame explorations for one spot, with reference sheets pinned behind.',
   },
   {
-    short: 'Refinement',
+    short: 'Board build',
     tier: 'The rest is execution',
-    title: 'Refinement and presentation.',
-    body: 'The winning route sharpened into a presentable platform: hero visuals, mood film, copy system, architecture.',
-    image: '/Images/cc-p4-refine.jpg',
-    alt: 'A creative director annotating a printed key visual with a graphite pencil, the print on a warm oak worktable beside a feedback sheet.',
+    title: 'Board build and refinement.',
+    body: 'Frame-by-frame layout, timing in seconds and frames, camera-move notation, audio cues, ratio variants, shot list export.',
+    image: '/Images/sb-p4-build.jpg',
+    alt: 'A finished storyboard sheet with timing in seconds, camera-move arrows in red pencil and audio cues underlined.',
   },
   {
-    short: 'Adaptation',
+    short: 'Animatic',
     tier: 'The rest is execution',
-    title: 'Adaptation across markets.',
-    body: 'Local executions of the hub idea: language, cultural references, market-specific extensions, channel cut-downs.',
-    image: '/Images/cc-p5-adapt.jpg',
-    alt: 'A worktable laid out with the same key visual adapted into seven market variants, different headlines and languages, central image consistent.',
+    title: 'Optional animatic.',
+    body: 'Timed sequence with rough VO and music, exported as video for director and client review.',
+    image: '/Images/sb-p5-animatic.jpg',
+    alt: 'A laptop showing an animatic timeline in a video editor with storyboard frames sequenced and a voiceover waveform below.',
   },
 ];
 
-/* The old agency timeline, split into the phases the source case
-   describes (three agencies briefed in January, deck in April). */
+/* The old workflow vs ours, in the phases the copy names. */
 const oldPhases = [
-  { label: 'Concepts', dur: 'Six weeks', span: 6 },
-  { label: 'Adaptations', dur: 'Two weeks', span: 2 },
-  { label: 'Production files', dur: 'Two weeks', span: 2 },
+  { label: 'Treatment', dur: 'Half a week', span: 3 },
+  { label: 'First-pass boards', dur: 'One week', span: 6 },
+  { label: 'Revisions', dur: 'Half a week', span: 3 },
 ];
 
-/* FAQ: wording adapted from the source. One answer links to the
-   Copyright guide. */
+/* FAQ: twelve questions, verbatim from the source. */
 const faqs = [
   {
-    q: 'How long does a concept project take?',
-    a: "One to two weeks for first round. Three to four weeks total from brief to approved concept and architecture. Faster on a route extension. Tight launch window, we compress to ten days for a single-territory focused brief.",
+    q: 'How long does a storyboard project take?',
+    a: 'Three to five days for a first cut on a 30-second spot. One to two weeks for a multi-format campaign with cutdowns. Three to seven extra days if you need a full animatic. Faster on extensions of an existing system.',
   },
   {
-    q: 'How is the work scoped?',
-    a: "Project-based for one-off concepts. Monthly retainer for clients running multiple campaigns a quarter. We scope firm after the first call.",
+    q: 'What does a project actually cost?',
+    a: 'Project-based for one-off boards. Monthly retainer for ongoing volume, common for brands with rolling content calendars. Quarterly advance billing for retainer clients. We quote firm after the first call once the brief, formats and frame count are clear.',
   },
   {
-    q: 'What does a concept project cost?',
-    a: "We do not publish pricing because real concept work scales with the brief. Single-market, single-territory in three weeks sits in a different range from multi-market platform work across six routes. We quote firm after a thirty-minute call, with the scope written up so you can compare it like-for-like against any other partner.",
+    q: 'Why is this more expensive than a freelance storyboard artist?',
+    a: "A freelancer quotes per frame on the work as drawn. Our setup includes creative direction from a senior art director, AI iteration that puts ten directions in front of you in the time it takes a freelance artist to draw one, character and product consistency tooling, animatic-ready file structure, and the handoff to the production company. For a single thumbnail, we are not the cheap option. For a campaign that has to ship across multiple formats and markets, the per-frame math usually works out in our favour.",
   },
   {
-    q: 'How many rounds of revisions are included?',
-    a: "Three rounds on the final concept, two on the territory stage. Most projects close inside two rounds at each stage. The visualization step front-loads alignment, so revision cycles run shorter than on traditional concept work.",
+    q: 'How does this compare to using AI tools in-house?',
+    a: 'If your team has a senior art director and a workflow that already handles character consistency, AI tools alone will get you most of the way. If you are new to the stack, the first three projects will look more like the consistency problems described above than like finished boards. Brands that hire us are usually past the point of running that experiment.',
   },
   {
     q: 'What do I need to send to get started?',
-    a: "The brief, even a rough one. Existing brand guidelines if they exist. Recent campaign work, with notes on what tested well and what did not. Audience research, even fragments. References you admire or want to differentiate from. The fewer assumptions we have to make, the sharper round one comes out.",
+    a: "Final or near-final script. Brand guidelines if you have them. Talent guidelines and product reference. Delivery format list with durations and ratios. Production company contact if one is booked. Reference work you like, and work you want to avoid. If brand guidelines do not exist, we work from what does and flag the gaps in the first brief response.",
   },
   {
     q: 'Who actually does the work?',
-    a: 'Senior creatives with agency backgrounds (Publicis, Ogilvy, BBDO, Wieden) lead every project. AI specialists run the visualization layer. Strategists sit in the brief and the review. No junior teams running concept work on their own.',
+    a: 'Art directors with TV and broadcast credits (Publicis, Ogilvy, WPP and named production-company alumni) lead every project. AI specialists handle the iteration volume. The senior on the brief stays on it from brief to final hand-off.',
   },
   {
-    q: 'Will the concepts look like us, or like AI?',
-    a: 'Like you, ideally a sharper version of you. We train our visualization references on your brand world, your past campaigns and the references you respond to. For brands without a strong existing system, we calibrate against direct competitors and the direction you give us.',
+    q: 'Will the boards look like our brand, or like AI?',
+    a: 'Like your brand. We train on your existing assets, talent guides and product reference so the output stays inside your visual system, not a generic AI aesthetic.',
   },
   {
-    q: 'How do you avoid the AI sameness problem?',
-    a: 'By not running open-ended generation against generic prompts. Researchers at Dalarna University ran 700 image generation loops and found models converge on twelve dominant motifs when left to themselves. Our work starts with senior creative direction, brand-trained references and a clear point of view. The AI extends the direction. It does not pick it.',
+    q: 'Do you deliver animatics, or just static boards?',
+    a: 'Both. Static boards are the standard deliverable. Animatics are an optional add-on when timing matters, which is most of the time for any spot under 30 seconds. Output formats include PDF for static boards and MP4 for animatics, plus source files on request.',
   },
   {
-    q: 'Can the concept be produced by anyone, or only by you?',
-    a: 'By anyone. We deliver concepts as production-ready creative systems with full direction documentation. Your existing agency, in-house team or production partner can take it forward. About half our concept clients produce with us. The other half take it elsewhere.',
-  },
-  {
-    q: 'What about copyright on AI-generated concept work?',
-    a: 'You own the final deliverables. We use commercially safe models, document the workflow and keep the strategic IP, the territories, headlines and architecture, entirely original. For the legal side in full, see our Copyright and AI guide.',
+    q: 'What about copyright on AI-generated frames?',
+    a: 'You own the final deliverables. We use commercially safe models and document the workflow. Boards are reference for production, not the final film, so the legal questions are different from generative video. For the full picture, see our Copyright and AI guide.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
   {
-    q: 'Can you handle concepts across multiple markets at once?',
-    a: 'Yes. Most of our concept work is multi-market by default. Creative talent recruited from the markets you sell into. We pressure-test territories against cultural references in each market before recommending the route that travels best.',
+    q: 'Can you work with our existing production company?',
+    a: 'Yes, and we prefer it. About two-thirds of our work plugs in alongside a production company the brand already has on retainer. We deliver boards, shot lists and animatics matched to their pipeline. Where we add the most value is the gap between the script and the production company first treatment, which is where most timelines slip.',
   },
   {
-    q: 'Do you do naming and branding too?',
-    a: 'Not in this scope. Concept creation is campaign-level creative direction. Naming, identity systems and full brand strategy work sit in a separate practice. If a project needs both, we sequence them or partner with a specialist branding studio.',
+    q: 'Where are you based, and where can you deliver?',
+    a: 'Our production team is based in Shanghai, with senior creative leads across Asia and Europe. We have delivered boards into the US, EU, UK, Middle East and APAC. Languages we have worked in include English, French, German, Spanish, Mandarin, Cantonese, Japanese, Korean and Arabic.',
+  },
+  {
+    q: 'Can we start small to see if it works?',
+    a: 'Yes. Send us one script. Inside one week you get three frame directions on the opening sequence and a board estimate for the full spot. No retainer, no commitment, the work is yours either way.',
   },
 ];
 
@@ -231,8 +245,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="Concept Creation Services | AI-Native | hubStudio"
-  description="Campaign concepts pressure-tested in days, not months. Senior creative direction, AI-powered visualization, built for every market you sell into."
+  title="Storyboard Services | AI-Native | hubStudio"
+  description="Cinematic storyboards for TV, social, animation and branded film. Senior art directors lead. AI-paced iteration. Shoot-ready in days."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -248,27 +262,28 @@ const faqSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
-            <span class="kicker__sep">/</span> Concept Creation
+            <span class="kicker__tick"></span>Services
+            <span class="kicker__sep">/</span> Pre-production
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Campaign</span></span>
-            <span class="line"><span class="line__i serif">concepts.</span></span>
-            <span class="line"><span class="line__i">In days.</span></span>
+            <span class="line"><span class="line__i">Story</span></span>
+            <span class="line"><span class="line__i serif">Board.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Pressure-tested early. <em>Not after the deck.</em>
+            Shoot-ready frames. Cinematic intent. <em>No surprises on set.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              Most concept work dies in the deck. Three rounds in, no one can
-              tell the routes apart, and the route that ships is the fourth
-              version of an idea that was in the room in week two.
+              The call comes Thursday afternoon, three days into a four-day
+              shoot. The director says the board never showed the hero product
+              in the wide. The cutdowns will not assemble. Six figures of crew
+              time on the line because the board went to set with a missing
+              beat.
             </p>
             <p>
-              We moved visualization into week one. By the time the deck lands
-              in the boardroom, the routes look like routes. And the room can
-              actually pick one.
+              We hear some version of that story from new clients most
+              quarters. The board, in our setup, is a working document that
+              travels with the spot from brief to delivery.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
@@ -281,20 +296,20 @@ const faqSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Senior creative direction <span>/</span> AI-native visualization
+            Shanghai studio <span>/</span> Senior art directors lead
           </p>
         </div>
       </div>
       <div class="hero__visual">
         <img
-          src="/Images/cc-hero.jpg"
-          alt="A creative director reviewing three large printed campaign key-visual mockups pinned to a plaster wall in a sunlit Paris atelier."
+          src="/Images/sb-hero.jpg"
+          alt="A senior art director marking a pinned storyboard frame on a studio wall in warm afternoon light."
           width="1024"
           height="1024"
           loading="eager"
           fetchpriority="high"
         />
-        <span class="hero__chip">Studio work <span>/</span> Concept routes</span>
+        <span class="hero__chip">Studio work <span>/</span> Pre-production</span>
       </div>
     </section>
 
@@ -303,32 +318,47 @@ const faqSchema = {
       {colourBar.map((c) => <span style={`background:${c}`}></span>)}
     </div>
 
-    <!-- ============ S2 · WHY IT MATTERS ============ -->
+    <!-- ============ S1b · TRUST SIGNALS ============ -->
+    <section class="signals">
+      <div class="shell">
+        <ul class="signals__list">
+          {signals.map((s) => (
+            <li class="signals__item r">
+              <span class="signals__tick"></span>{s}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ S2 · WHY / RESULTS ============ -->
     <section class="why">
       <div class="shell">
         <div class="why__top">
           <div class="why__head">
-            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>The results</p>
             <h2 class="dh r" style="--d:.05s">
-              The route that ships<br />
-              <span class="serif">is round four</span>.
+              Continuity is where<br /><span class="serif">boards die</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              A global beauty brand briefed three agencies on a relaunch in
-              January. By April there were nine routes, sixty slides each, and
-              three strategy directors in a Paris boardroom who could not tell
-              the routes apart anymore.
+              Most boards die in the gap between panels. The hero wears a red
+              jacket in frame four and a blue one in frame six. The product
+              label faces left in the wide, right in the close. None of it
+              gets caught in review. All of it gets caught on set, around
+              lunchtime, when the light is starting to go.
             </p>
             <p class="r" style="--d:.16s">
-              The launch slipped a quarter. The budget went sideways. The route
-              that finally shipped was the fourth round of an idea that had been
-              in the room since week two.
+              We start from the opposite end. Character sheets, product
+              reference and location plates locked before frame one. Shot
+              grammar called out frame by frame in the vocabulary the DP
+              recognises. Timing in seconds and frames on every panel.
             </p>
             <p class="why__clients r" style="--d:.22s">
-              We hear some version of that story from new clients most months.
-              So we moved <strong>visualization</strong> into week one.
+              Across roughly <strong>30 storyboard engagements</strong> in the
+              last two years, clients have reported faster sign-off, fewer
+              reshoots and stronger pitches.
             </p>
           </div>
         </div>
@@ -336,21 +366,21 @@ const faqSchema = {
         <figure class="why__shot crop r-clip">
           <div class="crop__inner">
             <img
-              src="/Images/cc-roots.jpg"
-              alt="A Paris strategy boardroom in late afternoon, ten campaign concept boards leaned against the wall, three people mid-discussion at the table."
+              src="/Images/sb-roots.jpg"
+              alt="A long studio wall covered in pinned storyboard panels with an art director reviewing a frame in afternoon light."
               width="1408"
               height="768"
               loading="lazy"
             />
           </div>
-          <figcaption class="fig">The boardroom in week ten</figcaption>
+          <figcaption class="fig">The review wall</figcaption>
         </figure>
 
         <div class="stats">
           <p class="stats__quote r">
-            Across roughly 60 concept engagements between January 2024 and March
-            2026: three times the routes explored per brief, 70% less time from
-            brief to approved direction, five days to first visualized round.
+            On a 30-second spot we deliver a first cut in three to five days,
+            against a two to three week traditional benchmark. Reshoots forced
+            by missing shots on boards we delivered last year: zero.
           </p>
           <div class="stats__grid">
             {
@@ -380,44 +410,46 @@ const faqSchema = {
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
           <h2 class="dh r" style="--d:.05s">
-            Two lanes, one <span class="serif">creative platform</span>.
+            Every format that gets shot, one <span class="serif">campaign system</span>.
           </h2>
+          <p class="band__note r" style="--d:.1s">
+            A 30-second TV spot, a 6-second YouTube bumper and a 90-second
+            anthem film share almost nothing in their pacing. We staff each
+            format with art directors who have boarded it before, all working
+            off one campaign system so the assets hold together when they land
+            in market the same week. The work breaks into six lanes.
+          </p>
         </header>
 
-        {
-          coverage.map((c, i) => (
-            <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
-              <figure class="feature__media crop r-clip">
+        <div class="lanes">
+          {lanes.map((l, i) => (
+            <article class="lane r" style={`--d:${(i % 3) * 0.08}s`}>
+              <figure class="lane__media crop r-clip">
                 <div class="crop__inner">
                   <img
-                    src={c.image}
-                    alt={c.alt}
+                    src={l.image}
+                    alt={l.alt}
                     width="1024"
-                    height="1024"
+                    height="820"
                     loading="lazy"
                   />
                 </div>
-                <figcaption class="fig">{c.label}</figcaption>
+                <figcaption class="fig">{l.label}</figcaption>
               </figure>
-              <div class="feature__body">
-                <p class="feature__idx r"><span class="feature__tick"></span>Coverage</p>
-                <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
-                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
-                {c.body.map((para, pi) => (
-                  <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
-                    {para}
-                  </p>
-                ))}
-                <p class="feature__scope r" style="--d:.24s">In scope</p>
-                <ul class="chips r" style="--d:.28s">
-                  {c.tags.map((t) => (
-                    <li class="chip">{t}</li>
-                  ))}
-                </ul>
-              </div>
+              <h3 class="lane__head">{l.label}</h3>
+              <p class="lane__lead">{l.lead}</p>
+              <p class="lane__body">{l.body}</p>
+              <ul class="lane__tags">
+                {l.tags.map((t) => <li class="chip chip--sm">{t}</li>)}
+              </ul>
             </article>
-          ))
-        }
+          ))}
+        </div>
+
+        <p class="cover__foot r">
+          If your format is not on the list, ask. We have probably boarded it
+          once.
+        </p>
       </div>
     </section>
 
@@ -428,13 +460,12 @@ const faqSchema = {
           <div>
             <p class="kicker r"><span class="kicker__tick"></span>Contact sheet</p>
             <h2 class="dh r" style="--d:.05s">
-              Selected <span class="serif">briefs</span>.
+              Selected <span class="serif">proofs</span>.
             </h2>
           </div>
           <p class="band__note r" style="--d:.1s">
-            Briefs we have worked on in the past eighteen months, brand names
-            withheld where NDAs apply. Each cover is an authored campaign
-            artifact, not a stock pull.
+            Frames and ratio variants from recent boards, authored in the
+            studio. Every panel is hand-finished work, not a stock pull.
           </p>
         </header>
 
@@ -462,90 +493,88 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ============ S5 · AI SAMENESS (was sourcing) ============ -->
+    <!-- ============ S5 · WHERE AI BREAKS ============ -->
     <section class="source">
       <div class="shell source__grid">
         <div class="source__visual">
           <figure class="source__main crop">
             <div class="crop__inner">
               <img
-                src="/Images/cc-sameness-main.jpg"
-                alt="A studio wall covered with a contact-sheet print-out of forty-eight near-identical AI-generated images, beside a single authored campaign key visual that clearly breaks the pattern."
+                src="/Images/sb-ai-breaks.jpg"
+                alt="A continuity comparison sheet pinned to a corkboard: inconsistent AI frames on the left, art-director-corrected frames with red notes on the right."
                 width="1024"
-                height="1024"
+                height="820"
                 loading="lazy"
               />
             </div>
           </figure>
           <figure class="source__inset">
             <img
-              src="/Images/cc-sameness-inset.jpg"
-              alt="A close-up of a creative director's hand drawing a single decisive red mark on a printed campaign key visual."
+              src="/Images/sb-ai-inset.jpg"
+              alt="A hand making red ink margin notes on a printed storyboard panel to correct a continuity error."
               width="1024"
               height="1024"
               loading="lazy"
             />
           </figure>
           <div class="source__stat">
-            <span class="source__stat-num">12 motifs</span>
-            <span class="source__stat-cap">Out of 700 AI generations, all converged</span>
+            <span class="source__stat-num">1 pass</span>
+            <span class="source__stat-cap">Senior art-director review on every frame</span>
           </div>
         </div>
 
         <div class="source__body">
-          <p class="kicker kicker--light r"><span class="kicker__tick"></span>The trap to avoid</p>
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Where AI breaks</p>
           <h2 class="dh r" style="--d:.05s">
-            The AI <span class="serif">sameness</span> trap.
+            Why boards generated by tools alone do not make it to <span class="serif">set</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            In December 2025, researchers at Dalarna University ran 700 image
-            generation loops across diverse prompts. All 700 runs converged on
-            nearly identical visuals: what the authors called "visual elevator
-            music."
+            Image models are probabilistic by design. Without a tight reference
+            setup they drift between frames. Facial features morph. Hair
+            changes colour. Product labels rotate on their own.
           </p>
           <p class="source__p r" style="--d:.16s">
-            Just twelve dominant motifs accounted for the output. Stormy
-            lighthouses, palatial interiors, commercially safe aesthetics.
-            Volume without judgment is not a moat, it is a liability. The
-            Canva 2026 marketing study ran the consumer side: 70% of consumers
-            say they can usually spot AI ads because they are missing soul, and
-            87% say the best advertising still needs a human touch.
+            That is the failure mode you cannot ship to a director. Our setup
+            answers it with locked character sheets before any frame gets
+            generated, fixed reference packs per scene, seed control across the
+            whole board, and a senior art-director hand-pass on every frame
+            before it goes into a client deck.
           </p>
           <ul class="creds r" style="--d:.22s">
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Brand-trained references
+              Locked character sheets
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Senior direction first
+              Fixed reference packs
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Final human pass
+              Seed control
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Commercially safe models
+              Art-director hand-pass
             </li>
           </ul>
           <p class="source__p r" style="--d:.26s">
-            We do not run open-ended generation against a generic prompt and
-            pick the least bad output. We build brand-trained references, write
-            creative direction at the territory stage and use AI to extend a
-            point of view rather than replace one.
+            This is what we mean by AI-native rather than AI-only. The
+            iteration runs on the model. The picks come from the art director.
           </p>
           <p class="source__p source__p--quiet r" style="--d:.3s">
-            Sameness is the default. Authorship is the discipline. The work has
-            to defend its place in one sentence, or it does not ship.
+            Where we do not fit: one-off thumbnails for an internal review.
+            Our setup pays off on full campaigns and multi-format ship lists,
+            work that has to survive client review, legal review and three
+            rounds of brand approval.
           </p>
         </div>
       </div>
@@ -556,17 +585,15 @@ const faqSchema = {
       <div class="shell craft__intro">
         <p class="kicker r"><span class="kicker__tick"></span>Our process</p>
         <h2 class="dh r" style="--d:.05s">
-          Judgment is the<br /><span class="serif">bottleneck</span> now.
+          Cinematic thinking is<br />where it is <span class="serif">won</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Every route used to need a photographer, a location, a model and a
-          producer to herd them. Agencies hedged. Visualization is close to
-          free now, so the constraint is judgment. Which territory lands. Which
-          visual earns attention. Which headline does not sound like the last
-          campaign in the category.
+          AI made the visual generation side cheap and fast for everyone.
+          Picking the frame that actually sells the spot, and the cut that
+          carries the story, is still the hard part.
         </p>
         <p class="craft__note r" style="--d:.16s">
-          First two steps are where it is won or lost. The rest is execution.
+          The first two steps are where it is won. The rest is execution.
         </p>
       </div>
 
@@ -630,11 +657,11 @@ const faqSchema = {
         <header class="band">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>The new math</p>
           <h2 class="dh r" style="--d:.05s">
-            How AI changes<br />the <span class="serif">math</span>.
+            How AI rewrote<br />the <span class="serif">math</span>.
           </h2>
           <p class="band__note band__note--light r" style="--d:.1s">
-            A client lands with a Q3 relaunch, three or four markets, six
-            possible routes. The same brief, run two ways.
+            A 30-second TV spot, run two ways. Same brief, same script, same
+            ship list.
           </p>
         </header>
 
@@ -642,7 +669,7 @@ const faqSchema = {
           <article class="vs__row vs__row--old r">
             <div class="vs__side">
               <span class="vs__tag">The old workflow</span>
-              <span class="vs__total">Twelve weeks</span>
+              <span class="vs__total">Two to three weeks</span>
             </div>
             <div class="vs__main">
               <div class="vs__bar">
@@ -656,10 +683,10 @@ const faqSchema = {
                 }
               </div>
               <p class="vs__p">
-                Old workflow: brief three agencies, wait six weeks for concepts,
-                two more for adaptation, another two for production references.
-                Twelve weeks, three or four review rounds, and a room that can
-                no longer tell the routes apart.
+                Brief an agency, wait a week for a treatment, another week for
+                first-pass boards, a few more days for revisions. Two to three
+                weeks before a frame is approved, three or four rounds of
+                redraw, and a board that is dated by the time it lands on set.
               </p>
             </div>
           </article>
@@ -667,22 +694,21 @@ const faqSchema = {
           <article class="vs__row vs__row--new r">
             <div class="vs__side">
               <span class="vs__tag vs__tag--new">Our workflow</span>
-              <span class="vs__total vs__total--new">Five days</span>
+              <span class="vs__total vs__total--new">Three to five days</span>
             </div>
             <div class="vs__main">
               <div class="vs__bar vs__bar--new">
                 <span class="vs__seg vs__seg--solo" style="--span:1;--i:0">
-                  <span class="vs__seg-label">Brief to visualized round</span>
-                  <span class="vs__seg-dur">Five days</span>
+                  <span class="vs__seg-label">Brief to first cut</span>
+                  <span class="vs__seg-dur">Three to five days</span>
                 </span>
                 <span class="vs__rest" aria-hidden="true"></span>
               </div>
               <p class="vs__p">
-                Our workflow: senior creative direction in the first session,
-                three to five territories visualized at hero quality inside the
-                first week. Mood films cut from AI-generated footage before a
-                production day is booked. The room picks one because the routes
-                look like routes.
+                Dozens of frame directions explored in parallel on day one.
+                Character and product consistency locked from reference sheets.
+                Ratio variants reboarded from the same system, not cropped.
+                Animatic on demand. Three rounds of revisions included.
               </p>
             </div>
           </article>
@@ -692,15 +718,15 @@ const faqSchema = {
           <div class="hub__copy">
             <span class="hub__badge">hub4You / AI agent platform</span>
             <h3 class="dh dh--sm hub__head">
-              One platform, <span class="serif">every market</span>.
+              Weekly briefs, not <span class="serif">quarterly</span>.
             </h3>
             <p class="hub__text">
-              For brands running concept platforms across many markets, we
-              deploy hub4You, our custom AI agent setup trained on your own
-              brand world. It extends the approved territory into local
-              executions on demand, and connects directly to your DAM and PIM
-              so the output lands where your team already works. That is the
-              gap between launching quarterly and launching weekly.
+              For brands running ongoing ad and content calendars, we deploy
+              hub4You, our agent setup trained on your own brand system. It
+              generates on-brand boards on demand, holds character and product
+              consistency across the whole calendar, and connects to your DAM
+              and shot-list pipeline so the output lands where your team and
+              your production company already work.
             </p>
             <Button variant="primary" href="/hub4you">Explore hub4You</Button>
           </div>
@@ -711,8 +737,8 @@ const faqSchema = {
                 <em>hub4You</em>
               </div>
               <img
-                src="/Images/hub4fashion.jpg"
-                alt="The hub4You platform generating on-brand campaign visuals from a model image and a styled background."
+                src="/Images/sb-hub.jpg"
+                alt="The hub4You platform generating on-brand storyboard frames with character consistency from a brand-trained model."
                 width="2000"
                 height="1125"
                 loading="lazy"
@@ -720,6 +746,15 @@ const faqSchema = {
             </div>
           </div>
         </div>
+
+        <blockquote class="pull r">
+          <p>
+            Roughly 70% of production delays trace back to pre-production
+            oversights, with storyboarding and shot-listing among the most
+            cited weak points.
+          </p>
+          <footer>Independent film industry survey, cited across pre-production tooling reviews, 2025</footer>
+        </blockquote>
       </div>
     </section>
 
@@ -727,13 +762,13 @@ const faqSchema = {
     <section class="faq">
       <div class="shell faq__grid">
         <aside class="faq__intro">
-          <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
+          <p class="kicker r"><span class="kicker__tick"></span>Twelve questions</p>
           <h2 class="dh r" style="--d:.05s">
             Before the<br />first <span class="serif">call</span>.
           </h2>
           <p class="faq__sub r" style="--d:.1s">
-            The things brands ask before we start. If yours is not here, put it
-            in the brief.
+            The things brands ask before we start. If yours is not here, put
+            it in the brief.
           </p>
           <div class="r" style="--d:.16s">
             <Button variant="primary" href="/contact">Start the brief</Button>
@@ -780,15 +815,15 @@ const faqSchema = {
         <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
       </svg>
       <div class="shell end__inner">
-        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Try us</p>
+        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Try it on a script</p>
         <h2 class="end__title r" style="--d:.05s">
-          Try it on a real<br /><span class="serif">brief</span>.
+          See it on your<br />own <span class="serif">script</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          Send us a concept brief. You will hear back from a creative director,
-          not a salesperson. First round lands inside ten days. Whatever we
-          produce in that round is yours, regardless of whether you continue
-          with us.
+          Send a script. Inside one week you get three frame directions on the
+          opening sequence and a board estimate for the full spot. No
+          retainer, no commitment. Whatever we produce is yours to keep,
+          regardless of where the conversation goes.
         </p>
         <div class="end__cta r" style="--d:.18s">
           <Button variant="primary" href="/contact">Start the brief</Button>
@@ -1074,7 +1109,7 @@ const faqSchema = {
     margin-top: 24px;
     font-family: var(--font-sans);
     font-weight: 600;
-    font-size: clamp(46px, 6.6vw, 92px);
+    font-size: clamp(58px, 8.4vw, 116px);
     line-height: 1.02;
     letter-spacing: -0.045em;
   }
@@ -1094,9 +1129,6 @@ const faqSchema = {
   }
   .hero__title .line:nth-child(2) .line__i {
     transition-delay: 0.22s;
-  }
-  .hero__title .line:nth-child(3) .line__i {
-    transition-delay: 0.32s;
   }
   .hero.in .hero__title .line__i {
     transform: translateY(0);
@@ -1199,6 +1231,43 @@ const faqSchema = {
     color: var(--brand-orange);
   }
 
+  /* ===================== S1b · Signals ===================== */
+  .signals {
+    background: var(--paper-2);
+    padding-block: clamp(28px, 3.4vw, 44px);
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  .signals__list {
+    display: grid;
+    gap: 16px 36px;
+  }
+  @media (min-width: 720px) {
+    .signals__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .signals__list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .signals__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: var(--type-body);
+    line-height: 1.45;
+    color: var(--text-ink);
+    font-weight: 500;
+  }
+  .signals__tick {
+    flex-shrink: 0;
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+    margin-top: 0.6em;
+  }
+
   /* ===================== S2 · Why ===================== */
   .why {
     background: var(--ink);
@@ -1279,7 +1348,7 @@ const faqSchema = {
     border-top: 1.5px solid rgba(240, 237, 233, 0.16);
   }
   .stat__num {
-    font-size: clamp(56px, 7vw, 96px);
+    font-size: clamp(48px, 6vw, 80px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -1298,79 +1367,58 @@ const faqSchema = {
     color: rgba(240, 237, 233, 0.55);
   }
 
-  /* ===================== S3 · Cover ===================== */
+  /* ===================== S3 · Cover (lanes grid) ===================== */
   .cover {
     background: var(--paper);
     padding-block: clamp(80px, 10vw, 150px);
   }
-  .feature {
+  .lanes {
     display: grid;
-    gap: 36px;
-    align-items: center;
-    padding-block: clamp(40px, 5vw, 72px);
+    gap: clamp(36px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  }
+  @media (min-width: 700px) {
+    .lanes {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .lanes {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .lane {
+    display: grid;
+    gap: 14px;
+    padding-top: 16px;
     border-top: 1.5px dashed var(--line-strong);
   }
-  .feature:last-child {
-    border-bottom: 1.5px dashed var(--line-strong);
-  }
-  @media (min-width: 900px) {
-    .feature {
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-    }
-    .feature--rev .feature__media {
-      order: 2;
-    }
-  }
-  .feature__media .crop__inner {
+  .lane__media .crop__inner {
     aspect-ratio: 5 / 4;
   }
-  .feature__idx {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-mute);
+  .lane__head {
+    margin-top: 6px;
+    font-size: clamp(22px, 1.9vw, 27px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
   }
-  .feature__tick {
-    width: 22px;
-    height: 0;
-    border-top: 1.5px solid var(--brand-orange);
-  }
-  .feature__body .dh {
-    margin-top: 16px;
-  }
-  .feature__lead {
-    margin-top: 14px;
+  .lane__lead {
     font-size: var(--type-lead);
     line-height: 1.42;
-    color: var(--text-ink);
     font-weight: 500;
+    color: var(--text-ink);
   }
-  .feature__p {
-    margin-top: 14px;
+  .lane__body {
     font-size: var(--type-body);
-    line-height: 1.66;
+    line-height: 1.62;
     color: var(--text-mute);
   }
-  .feature__scope {
-    margin-top: 24px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line-hairline);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-  }
-  .chips {
-    margin-top: 14px;
+  .lane__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
+    margin-top: 4px;
   }
   .chip {
     padding: 8px 14px;
@@ -1383,10 +1431,24 @@ const faqSchema = {
       color 0.18s ease,
       border-color 0.18s ease;
   }
+  .chip--sm {
+    padding: 5px 11px;
+    font-size: 11px;
+  }
   .chip:hover {
     background: var(--brand-orange);
     border-color: var(--brand-orange);
     color: #fff;
+  }
+  .cover__foot {
+    margin-top: clamp(40px, 5vw, 60px);
+    padding-top: 22px;
+    border-top: 1.5px dashed var(--line-strong);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
   }
 
   /* ===================== S4 · Proof sheet ===================== */
@@ -1440,7 +1502,7 @@ const faqSchema = {
     color: var(--text-mute);
   }
 
-  /* ===================== S5 · Sourcing (repurposed: AI sameness) ===================== */
+  /* ===================== S5 · Where AI breaks (source-style) ===================== */
   .source {
     background: var(--navy);
     color: var(--text-on-dark);
@@ -1591,8 +1653,6 @@ const faqSchema = {
     color: var(--text-ink);
   }
 
-  /* Sequence, default state: static stacked steps (mobile, no-JS,
-     reduced motion). JS upgrades wide viewports to the pinned mode. */
   .seq__nav {
     display: none;
   }
@@ -1640,7 +1700,6 @@ const faqSchema = {
     color: var(--text-mute);
   }
 
-  /* Pinned mode: the stage sticks while steps advance with scroll. */
   .craft--pinned .seq {
     height: 480vh;
   }
@@ -1793,7 +1852,7 @@ const faqSchema = {
   .vs__total {
     display: block;
     margin-top: 12px;
-    font-size: clamp(30px, 3.4vw, 46px);
+    font-size: clamp(28px, 3.2vw, 42px);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -1945,6 +2004,30 @@ const faqSchema = {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .pull {
+    margin: clamp(40px, 5vw, 64px) 0 0;
+    padding: clamp(28px, 4vw, 44px);
+    border-left: 3px solid var(--brand-orange);
+    border-radius: 0 16px 16px 0;
+    background: rgba(240, 237, 233, 0.04);
+  }
+  .pull p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 27px);
+    line-height: 1.42;
+    color: var(--text-on-dark);
+    max-width: 60ch;
+  }
+  .pull footer {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.5);
   }
 
   /* ===================== S8 · FAQ ===================== */
