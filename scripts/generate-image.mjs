@@ -19,7 +19,7 @@ import process from "node:process";
 
 const API_URL = "https://api.wavespeed.ai/api/v3";
 const MODEL = "openai/gpt-image-2/text-to-image";
-const POLL_TIMEOUT_S = 120; // 120s for CLI/batch per the integration guide
+const POLL_TIMEOUT_S = 240; // 240s for CLI/batch under parallel load
 
 const API_KEY = process.env.WAVESPEED_API_KEY;
 

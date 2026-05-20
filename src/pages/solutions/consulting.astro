@@ -1,0 +1,1335 @@
+---
+/**
+ * AIGC Consulting  ·  /solutions/consulting
+ *
+ * Architect-your-AI-native-creative-future page. Same art direction language
+ * as the design service pages: print-shop typographic frame, calibration bars,
+ * editorial display headings, paired with consulting content drawn from the
+ * existing /aigc-consulting-services-ai-content-studio-setup-implementation/
+ * page.
+ *
+ * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
+ * cards or repeated blocks, body copy at var(--type-body), hubStudio retains
+ * its canonical lowercase-h casing.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+/* Calibration colour bar: a printer's strip, used as a section divider. */
+const colourBar = [
+  '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
+  '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
+];
+
+/* The three reasons the source page leads with. Card content carries no
+   ordinal numerals; the heading and visual order do the sequencing. */
+const reasons = [
+  {
+    label: 'Operations',
+    title: 'Transform content operations without disrupting team culture.',
+    body: "Consulting that amplifies your team's capabilities while preserving your brand's distinctive voice, transforming how you create, adapt and scale content across every channel.",
+  },
+  {
+    label: 'Integration',
+    title: 'Navigate complex AI integration with expert guidance.',
+    body: 'Professional consulting that gives you proven roadmaps, turning AIGC adoption into a competitive advantage across your entire content ecosystem rather than a series of one-off pilots.',
+  },
+  {
+    label: 'Capability',
+    title: 'Future-proof your content capabilities.',
+    body: 'Partnerships that keep you at the front of a rapidly evolving toolset, with infrastructure that grows alongside emerging models, formats and platforms instead of locking you to today.',
+  },
+];
+
+/* Five expertise lanes. Each lane carries an opening lead, a short body and
+   a tag list of the underlying capability blocks. The tag list replaces the
+   numbered sub-headings the source page uses, satisfying the no-numbers rule
+   while preserving the substance verbatim. */
+const lanes = [
+  {
+    fig: 'A',
+    label: 'Architecture & implementation',
+    heading: 'AIGC studio architecture and implementation.',
+    image: '/Images/hub4fashion.jpg',
+    alt: 'A creative studio workstation with a colour-calibrated monitor showing an AIGC generation pipeline open beside reference photography.',
+    lead: 'We architect AI-enhanced studios that amplify your creative team rather than replace it.',
+    body: [
+      'Starting from your creative DNA, we design customised AIGC infrastructure that accelerates ideation and execution: state-of-the-art GPU networks, intelligent processing pipelines built on ComfyUI, open-source and API-based models (Flux, Stable Diffusion XL, Kling, Veo3, Wan) and custom rendering farms tuned to your output volumes.',
+      'Integration is the harder half of the work. We ship ComfyUI workflows, custom Photoshop plugins and automated asset generation directly inside the creative pipeline your team already uses, so the new capability feels native on day one.',
+    ],
+    tags: [
+      'Foundation design', 'Creative DNA discovery',
+      'GPU network setup', 'ComfyUI pipelines',
+      'Flux / SDXL / Kling / Veo3 / Wan',
+      'Custom render farms', 'Photoshop plugins',
+      'Native workflow integration',
+    ],
+  },
+  {
+    fig: 'B',
+    label: 'Maintenance & evolution',
+    heading: 'AIGC studio maintenance and evolution.',
+    image: '/Images/who-we-are-china-speed.jpg',
+    alt: 'A two-monitor engineering desk in a warm-lit studio, one screen showing render-farm telemetry and the other a model-training progress chart.',
+    lead: 'Creative technology evolves as fast as your ambitions, so we maintain it that way.',
+    body: [
+      'Regular updates for open-source models, API improvements and custom LoRA fine-tuning. Sophisticated monitoring through custom dashboards that track render speeds, quality metrics and creative-team satisfaction scores, so you see the system the way an operator does, not just the way a vendor reports it.',
+      'Strategic upgrades support new formats as they mature (3D, sound, avatar, LoRA), and ongoing training keeps your team at the front of AI-enhanced creativity through workshops, tool certifications and hands-on sessions with the latest AIGC releases.',
+    ],
+    tags: [
+      'Continuous model updates', 'Custom LoRA fine-tuning',
+      'Quality dashboards', 'Render-speed monitoring',
+      'Team-satisfaction tracking',
+      '3D / sound / avatar formats',
+      'Workshops & certifications',
+    ],
+  },
+  {
+    fig: 'C',
+    label: 'Support ecosystem',
+    heading: 'A comprehensive AIGC support ecosystem.',
+    image: '/Images/who-we-are-hybrid.jpg',
+    alt: 'Two creative-technologists in a daylit Shanghai studio reviewing a generation workflow on a large monitor, one taking notes on a tablet.',
+    lead: 'More than troubleshooting. Creative problem-solving as a continuous service.',
+    body: [
+      'Our support layer combines ComfyUI expertise, ControlNet workflow design and curated prompt libraries built for your brand voice. When something stalls the pipeline, the first response is creative as well as technical: there is usually a better path through the system rather than around it.',
+      'For critical campaigns we provide round-the-clock rapid response with backup GPU resources, emergency render farms and crisis communication protocols so a deadline never depends on a single point of failure.',
+    ],
+    tags: [
+      'ComfyUI support', 'ControlNet workflows',
+      'Custom prompt libraries', '24/7 rapid response',
+      'Backup GPU resources', 'Emergency render farms',
+      'Crisis communication protocols',
+    ],
+  },
+  {
+    fig: 'D',
+    label: 'Advanced capabilities',
+    heading: 'Advanced AIGC capabilities.',
+    image: '/Images/hub4presentation.jpg',
+    alt: 'A laptop screen displaying an AIGC platform interface generating multiple aspect-ratio variants of a single campaign image at once.',
+    lead: 'Cohesive output across formats, markets and channels, without the cost stack that usually implies.',
+    body: [
+      'Integrated pipelines that pair Stable Video Diffusion for motion, ESRGAN for upscaling and custom aspect-ratio optimisation. The same campaign ships from a 9:16 Instagram Story to a 16:9 billboard automatically, with brand integrity intact.',
+      'Cultural adaptation runs through AIGC models for copy localisation, region-specific visual training datasets and API connections into local social platforms, so creative reads native rather than translated. Machine-learning models score campaign data to predict performance and direct the next round of creative.',
+    ],
+    tags: [
+      'Stable Video Diffusion', 'ESRGAN upscaling',
+      'Aspect-ratio automation', 'Multi-format pipelines',
+      'Copy localisation models', 'Regional training datasets',
+      'Predictive creative analytics',
+    ],
+  },
+  {
+    fig: 'E',
+    label: 'Strategic implementation',
+    heading: 'Strategic implementation consulting.',
+    image: '/Images/who-we-are-office.webp',
+    alt: 'A small client workshop in a sunlit meeting room with a printed twelve-month roadmap on the wall and three people discussing a phase.',
+    lead: 'Twelve-month roadmaps with ROI modelling, risk-assessment matrices and phased timelines.',
+    body: [
+      'Each roadmap carries specific deliverables, success metrics and integration checkpoints. Team development runs alongside it: structured learning programmes covering prompt-engineering certification, AIGC tool mastery and the new creative-technical hybrid roles your studio will need.',
+      'Workflow architecture is the connective tissue. Custom automation through Zapier, Make.com and direct API integrations links AIGC tools to project management (Monday.com, Asana), asset management (Frame.io, Adobe Creative Cloud) and your existing approval chain. ROI dashboards track cost-per-asset, time-to-market, quality metrics and client satisfaction.',
+    ],
+    tags: [
+      'Twelve-month roadmaps', 'ROI modelling',
+      'Risk-assessment matrices', 'Phased rollout',
+      'Prompt-engineering certification',
+      'Hybrid role design', 'Zapier / Make.com automation',
+      'Monday.com / Asana / Frame.io', 'ROI dashboards',
+    ],
+  },
+];
+
+/* FAQ: phrasing held close to the source page, with em-dashes restructured
+   into commas, colons or sentence breaks per the repo standard. */
+const faqs = [
+  {
+    q: 'How long does AIGC studio implementation take?',
+    a: 'A complete setup ranges from a few weeks to several months depending on complexity. Basic infrastructure is the fastest piece; custom model training takes additional time, followed by comprehensive team training so the system has people who can actually run it.',
+  },
+  {
+    q: "What's the minimum team size for AIGC consulting?",
+    a: 'We work with content teams from small in-house pods up to global creative departments. Very small teams often get more value from our production services than a full consulting implementation, and we will say so honestly before quoting.',
+  },
+  {
+    q: 'Which AI tools do you specialise in?',
+    a: 'Leading generative platforms for images and video, advanced workflow automation, and custom model development. The stack integrates with major creative software and asset-management systems, so the new capability lands inside the tools your team already opens every morning.',
+  },
+  {
+    q: 'Do you provide ongoing support after implementation?',
+    a: 'Yes. Regular optimisation sessions, round-the-clock technical support, periodic model updates and continuous team training are included in every consulting package. Implementation is a starting line, not a finish.',
+  },
+  {
+    q: "What's the typical ROI timeline?",
+    a: 'Most clients see meaningful efficiency gains within the first quarter. Full return on the engagement is typically achieved inside the first year, depending on content volume and the breadth of the rollout.',
+  },
+  {
+    q: 'Can you work with our existing creative workflows?',
+    a: 'Yes. AIGC capability layers into your current process through APIs and custom plugins rather than replacing pipelines that already work. Established approval chains, file conventions and brand checks stay in place.',
+  },
+  {
+    q: 'How do you ensure brand consistency across AI-generated content?',
+    a: 'Custom model training on extensive brand asset libraries, automated brand-compliance checks and human creative review integrated into your approval workflow. The model learns the brand; the people still sign it off.',
+  },
+  {
+    q: 'What hardware do we need?',
+    a: 'None on premise. We provide cloud-based GPU resources, and existing creative workstations with a standard internet connection are enough to operate the stack.',
+  },
+  {
+    q: 'Do you train our team or provide external resources?',
+    a: 'Both. We certify and upskill your existing team through workshops, and we provide direct access to hubStudio AIGC specialists for complex projects and technical escalations. Most clients use the mix and shift the balance over time.',
+  },
+  {
+    q: 'What industries do you serve?',
+    a: 'E-commerce, fashion, automotive, consumer goods, technology, and any brand that ships high volumes of visual content. We adapt the methodology to the industry, including its compliance and review requirements.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="AIGC Consulting Services | AI Content Studio Setup | hubStudio"
+  description="Strategic AIGC consulting for brands. Expert AI content studio setup, custom model training, integration and implementation guidance from hubStudio."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
+
+  <div class="page">
+    <!-- ============ S1 · HERO ============ -->
+    <section class="hero">
+      <div class="hero__panel">
+        <svg class="hero__reg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <div class="hero__panel-in">
+          <p class="kicker kicker--light r">
+            <span class="kicker__tick"></span>Solutions
+            <span class="kicker__sep">/</span> AIGC Consulting
+          </p>
+          <h1 class="hero__title">
+            <span class="line"><span class="line__i">Architect your</span></span>
+            <span class="line"><span class="line__i">AI-native creative</span></span>
+            <span class="line"><span class="line__i serif">future.</span></span>
+          </h1>
+          <p class="hero__tag r" style="--d:.45s">
+            Where creative intelligence meets <em>strategic transformation</em>.
+          </p>
+          <div class="hero__lead r" style="--d:.55s">
+            <p>
+              Most brands buy a model subscription, run a pilot, then stall
+              when the time comes to operationalise. The stack is real, the
+              integration is not. The team is excited, the workflow is not
+              built. The pilot ships once and never again.
+            </p>
+            <p>
+              We architect the studio that turns AIGC from a pilot into a
+              capability. Infrastructure, integration, governance and team
+              development, run by people who do this work for hubStudio every
+              day.
+            </p>
+          </div>
+          <div class="hero__cta r" style="--d:.65s">
+            <Button variant="primary" href="/contact">Start a consulting brief</Button>
+            <a class="ghost-link ghost-link--light" href="#expertise">
+              See the expertise
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <p class="hero__meta r" style="--d:.72s">
+            Shanghai studio <span>/</span> 35+ markets, cloud GPU stack
+          </p>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <img
+          src="/Images/who-we-are-studio.jpg"
+          alt="A daylit hubStudio creative floor with workstations, calibrated monitors and a wall of printed model-output sheets pinned for review."
+          width="1024"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="hero__chip">Shanghai <span>/</span> Studio floor</span>
+      </div>
+    </section>
+
+    <!-- calibration bar -->
+    <div class="cbar" aria-hidden="true">
+      {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+    </div>
+
+    <!-- ============ S2 · WHY ============ -->
+    <section class="why">
+      <div class="shell">
+        <header class="band band--split">
+          <div>
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
+            <h2 class="dh r" style="--d:.05s">
+              Why smart companies<br />choose AIGC <span class="serif">consulting</span>.
+            </h2>
+          </div>
+          <p class="band__note band__note--light r" style="--d:.1s">
+            The buy-a-tool reflex is two years out of date. The brands pulling
+            ahead treat AIGC as an operating model, not a software purchase,
+            and the consulting work is what gets them there.
+          </p>
+        </header>
+
+        <div class="reasons">
+          {
+            reasons.map((r, i) => (
+              <article class="reason r" style={`--d:${i * 0.08}s`}>
+                <p class="reason__label">
+                  <span class="reason__tick"></span>
+                  {r.label}
+                </p>
+                <h3 class="reason__title">{r.title}</h3>
+                <p class="reason__body">{r.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S3 · EXPERTISE LANES ============ -->
+    <section class="cover" id="expertise">
+      <div class="shell">
+        <header class="band">
+          <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
+          <h2 class="dh r" style="--d:.05s">
+            Five lanes, one <span class="serif">operating model</span>.
+          </h2>
+          <p class="band__note r" style="--d:.1s">
+            Each lane is a self-contained engagement. Most clients start with
+            one, then expand into the next as the studio matures. The lanes
+            share infrastructure, governance and the same senior leads.
+          </p>
+        </header>
+
+        {
+          lanes.map((c, i) => (
+            <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
+              <figure class="feature__media crop r-clip">
+                <div class="crop__inner">
+                  <img
+                    src={c.image}
+                    alt={c.alt}
+                    width="1024"
+                    height="820"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="fig">{c.label}</figcaption>
+              </figure>
+              <div class="feature__body">
+                <p class="feature__idx r">
+                  <span class="feature__tick"></span>
+                  Consulting lane
+                </p>
+                <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
+                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
+                {c.body.map((para, pi) => (
+                  <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
+                    {para}
+                  </p>
+                ))}
+                <p class="feature__scope r" style="--d:.24s">In scope</p>
+                <ul class="chips r" style="--d:.28s">
+                  {c.tags.map((t) => (
+                    <li class="chip">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ============ S4 · WHY HUBSTUDIO ============ -->
+    <section class="source">
+      <div class="shell source__grid">
+        <div class="source__visual">
+          <figure class="source__main crop">
+            <div class="crop__inner">
+              <img
+                src="/Images/hubstudio-shanghai-studio.webp"
+                alt="A wide view of the hubStudio Shanghai floor: editorial daylight, calibrated stations, model-output proofs pinned along the back wall."
+                width="1024"
+                height="820"
+                loading="lazy"
+              />
+            </div>
+          </figure>
+          <div class="source__stat">
+            <span class="source__stat-num">One studio</span>
+            <span class="source__stat-cap">Creative and technical, under one roof</span>
+          </div>
+        </div>
+
+        <div class="source__body">
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why hubStudio</p>
+          <h2 class="dh r" style="--d:.05s">
+            Deep technical AIGC expertise<br />with creative <span class="serif">sensibility</span>.
+          </h2>
+          <p class="source__lead r" style="--d:.1s">
+            Most consulting partners come from one side of the divide: a
+            systems integrator who has never authored a campaign, or a
+            creative agency adding "AI" to the deck cover. The engagement
+            then bends toward whichever side wrote the proposal.
+          </p>
+          <p class="source__p r" style="--d:.16s">
+            We sit on both. Our consulting practice is built inside an active
+            content studio, so AI implementation enhances rather than disrupts
+            the creative culture it lands in. The methodology is proven on the
+            studio's own production work first, then handed to clients.
+          </p>
+          <p class="source__p r" style="--d:.22s">
+            That positions you at the front of rapidly evolving AI capability
+            while building a content operation that survives the next model
+            release rather than being rebuilt by it.
+          </p>
+          <ul class="creds r" style="--d:.28s">
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Senior leads only
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Cloud GPU stack
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              35+ markets shipped
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              NDA in place
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S5 · FAQ ============ -->
+    <section class="faq">
+      <div class="shell faq__grid">
+        <aside class="faq__intro">
+          <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
+          <h2 class="dh r" style="--d:.05s">
+            Before the<br />first <span class="serif">call</span>.
+          </h2>
+          <p class="faq__sub r" style="--d:.1s">
+            The questions brands ask before we begin. If yours is not below,
+            put it in the brief.
+          </p>
+          <div class="r" style="--d:.16s">
+            <Button variant="primary" href="/contact">Start a consulting brief</Button>
+          </div>
+        </aside>
+
+        <div class="acc">
+          {
+            faqs.map((faq) => (
+              <div class="acc__row r">
+                <button class="acc__q" type="button" aria-expanded="false">
+                  <span class="acc__qmark">Q</span>
+                  <span class="acc__qtext">{faq.q}</span>
+                  <span class="acc__icon" aria-hidden="true">
+                    <span></span><span></span>
+                  </span>
+                </button>
+                <div class="acc__a">
+                  <div class="acc__a-inner">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S6 · CLOSING ============ -->
+    <section class="end">
+      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+      </svg>
+      <div class="shell end__inner">
+        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Start small</p>
+        <h2 class="end__title r" style="--d:.05s">
+          Architect with<br /><span class="serif">us</span>.
+        </h2>
+        <p class="end__p r" style="--d:.12s">
+          Send a brief, a current state, or just the question that prompted
+          this page. A senior lead reads it inside two working days and
+          replies with a scope, a phased plan and an honest read on whether
+          consulting or production is the better starting point.
+        </p>
+        <div class="end__cta r" style="--d:.18s">
+          <Button variant="primary" href="/contact">Start a consulting brief</Button>
+          <a class="ghost-link ghost-link--light" href="/work">
+            See client work
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="cbar cbar--end" aria-hidden="true">
+        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* ===================== Foundations ===================== */
+  .page {
+    --ink: #0e1633;
+    --navy: #0e1f4e;
+    --paper: #f0ede9;
+    --paper-2: #e7e3dd;
+    overflow: clip;
+  }
+  .shell {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(22px, 5vw, 60px);
+  }
+
+  /* Scroll progress */
+  .prog {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 200;
+    pointer-events: none;
+  }
+  .prog__bar {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: var(--brand-orange);
+  }
+
+  /* Reveal primitives */
+  .r,
+  .r-clip {
+    --d: 0s;
+  }
+  .r {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d);
+  }
+  .r.in {
+    opacity: 1;
+    transform: none;
+  }
+  .r-clip .crop__inner {
+    clip-path: inset(0 0 101% 0);
+    transition: clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .r-clip .crop__inner img {
+    transform: scale(1.12);
+    transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .r-clip.in .crop__inner {
+    clip-path: inset(0 0 0 0);
+  }
+  .r-clip.in .crop__inner img {
+    transform: scale(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .r,
+    .r.in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .r-clip .crop__inner,
+    .r-clip .crop__inner img {
+      clip-path: none;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Mono kicker label */
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .kicker--light {
+    color: rgba(240, 237, 233, 0.66);
+  }
+  .kicker__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .kicker__sep {
+    color: var(--brand-orange);
+  }
+
+  /* Display heading */
+  .dh {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(34px, 4.4vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+  .dh--sm {
+    font-size: clamp(26px, 2.6vw, 38px);
+  }
+  .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange);
+  }
+
+  /* Figure caption + crop frame */
+  .crop {
+    position: relative;
+    margin: 0;
+  }
+  .crop::before,
+  .crop::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    z-index: 2;
+  }
+  .crop::before {
+    top: -9px;
+    left: -9px;
+    border-top: 1.5px solid var(--brand-orange);
+    border-left: 1.5px solid var(--brand-orange);
+  }
+  .crop::after {
+    right: -9px;
+    bottom: 28px;
+    border-right: 1.5px solid var(--brand-orange);
+    border-bottom: 1.5px solid var(--brand-orange);
+  }
+  .crop__inner {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .crop__inner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .fig {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  /* Ghost link */
+  .ghost-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .ghost-link svg {
+    width: 19px;
+    height: 19px;
+    transition: transform 0.24s ease-out;
+  }
+  .ghost-link:hover svg {
+    transform: translateX(5px);
+  }
+  .ghost-link--light {
+    color: var(--text-on-dark);
+  }
+
+  /* Section header band */
+  .band {
+    max-width: 720px;
+    margin-bottom: clamp(40px, 5vw, 70px);
+    display: grid;
+    gap: 18px;
+  }
+  .band--split {
+    max-width: none;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 880px) {
+    .band--split {
+      grid-template-columns: 1fr 0.82fr;
+      align-items: end;
+      gap: 18px 60px;
+    }
+    .band--split > div {
+      display: grid;
+      gap: 18px;
+    }
+  }
+  .band__note {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .band__note--light {
+    color: rgba(240, 237, 233, 0.76);
+  }
+
+  /* Calibration colour bar */
+  .cbar {
+    display: flex;
+    height: 12px;
+  }
+  .cbar span {
+    flex: 1;
+  }
+  .cbar--end {
+    margin-top: clamp(60px, 8vw, 110px);
+  }
+
+  /* ===================== S1 · Hero ===================== */
+  .hero {
+    display: grid;
+    background: var(--ink);
+    color: var(--text-on-dark);
+  }
+  @media (min-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .hero__panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: clamp(40px, 4.4vw, 72px) clamp(24px, 5vw, 64px);
+    overflow: clip;
+  }
+  .hero__reg {
+    position: absolute;
+    width: clamp(240px, 28vw, 420px);
+    right: -12%;
+    bottom: -14%;
+    color: rgba(240, 237, 233, 0.055);
+    pointer-events: none;
+  }
+  .hero__panel-in {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+  }
+  .hero__title {
+    margin-top: 24px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(40px, 5.6vw, 80px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+  .hero__title .line {
+    display: block;
+    overflow: hidden;
+    padding: 0.22em 0.14em;
+    margin: -0.22em -0.14em;
+  }
+  .hero__title .line__i {
+    display: block;
+    transform: translateY(145%);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero__title .line:nth-child(1) .line__i {
+    transition-delay: 0.12s;
+  }
+  .hero__title .line:nth-child(2) .line__i {
+    transition-delay: 0.22s;
+  }
+  .hero__title .line:nth-child(3) .line__i {
+    transition-delay: 0.32s;
+  }
+  .hero.in .hero__title .line__i {
+    transform: translateY(0);
+  }
+  .hero__title .serif {
+    font-size: 1.04em;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__title .line__i {
+      transform: none;
+    }
+  }
+  .hero__tag {
+    margin-top: 26px;
+    font-size: clamp(18px, 1.5vw, 23px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .hero__tag em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--brand-orange);
+  }
+  .hero__lead {
+    margin-top: 20px;
+    display: grid;
+    gap: 13px;
+    max-width: 46ch;
+  }
+  .hero__lead p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.74);
+  }
+  .hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 26px;
+  }
+  .hero__meta {
+    margin-top: 34px;
+    padding-top: 20px;
+    border-top: 1.5px dashed rgba(240, 237, 233, 0.2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.5);
+  }
+  .hero__meta span {
+    color: var(--brand-orange);
+  }
+  .hero__visual {
+    position: relative;
+    overflow: hidden;
+    min-height: 58vh;
+  }
+  @media (min-width: 900px) {
+    .hero__visual {
+      min-height: auto;
+    }
+  }
+  .hero__visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.08);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero.in .hero__visual img {
+    transform: scale(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__visual img {
+      transform: none;
+    }
+  }
+  .hero__chip {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 2;
+    display: inline-flex;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.78);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-on-dark);
+  }
+  .hero__chip span {
+    color: var(--brand-orange);
+  }
+
+  /* ===================== S2 · Why ===================== */
+  .why {
+    background: var(--ink);
+    color: var(--text-on-dark);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .reasons {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 820px) {
+    .reasons {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+  }
+  .reason {
+    padding-top: 26px;
+    border-top: 1.5px solid rgba(240, 237, 233, 0.18);
+    display: grid;
+    gap: 14px;
+  }
+  .reason__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .reason__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .reason__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+  }
+  .reason__body {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.74);
+  }
+
+  /* ===================== S3 · Expertise lanes ===================== */
+  .cover {
+    background: var(--paper);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .feature {
+    display: grid;
+    gap: 36px;
+    align-items: center;
+    padding-block: clamp(40px, 5vw, 72px);
+    border-top: 1.5px dashed var(--line-strong);
+  }
+  .feature:last-child {
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  @media (min-width: 900px) {
+    .feature {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+    .feature--rev .feature__media {
+      order: 2;
+    }
+  }
+  .feature__media .crop__inner {
+    aspect-ratio: 5 / 4;
+  }
+  .feature__idx {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .feature__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .feature__body .dh {
+    margin-top: 16px;
+  }
+  .feature__lead {
+    margin-top: 14px;
+    font-size: var(--type-lead);
+    line-height: 1.42;
+    color: var(--text-ink);
+    font-weight: 500;
+  }
+  .feature__p {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .feature__scope {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-hairline);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .chips {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    padding: 8px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 500;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease;
+  }
+  .chip:hover {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    color: #fff;
+  }
+
+  /* ===================== S4 · Why hubStudio ===================== */
+  .source {
+    background: var(--navy);
+    color: var(--text-on-dark);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .source__grid {
+    display: grid;
+    gap: 52px;
+  }
+  @media (min-width: 940px) {
+    .source__grid {
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 70px;
+      align-items: center;
+    }
+  }
+  .source__visual {
+    position: relative;
+  }
+  .source__main .crop__inner {
+    aspect-ratio: 5 / 4;
+  }
+  .source__stat {
+    position: absolute;
+    left: -10px;
+    top: 36px;
+    display: grid;
+    gap: 3px;
+    padding: 15px 19px;
+    border-radius: 12px;
+    background: var(--brand-orange);
+    color: #fff;
+    box-shadow: 0 16px 32px rgba(233, 78, 27, 0.42);
+  }
+  .source__stat-num {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .source__stat-cap {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    max-width: 18ch;
+    line-height: 1.4;
+  }
+  .source__body .dh {
+    margin-top: 16px;
+  }
+  .source__lead {
+    margin-top: 20px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-on-dark);
+  }
+  .source__p {
+    margin-top: 15px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .creds {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+  .cred {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(240, 237, 233, 0.2);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .cred:hover {
+    border-color: var(--brand-orange);
+    background: rgba(233, 78, 27, 0.16);
+  }
+  .cred svg {
+    width: 13px;
+    height: 13px;
+    color: var(--brand-orange);
+  }
+
+  /* ===================== S5 · FAQ ===================== */
+  .faq {
+    background: var(--paper);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .faq__grid {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 1000px) {
+    .faq__grid {
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .faq__intro {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .faq__intro .dh {
+    margin-top: 18px;
+  }
+  .faq__sub {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .acc {
+    display: grid;
+  }
+  .acc__row {
+    border-top: 1.5px solid var(--ink);
+  }
+  .acc__row:last-child {
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .acc__q {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 16px;
+    padding: 26px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  .acc__qmark {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-orange);
+    padding-top: 3px;
+  }
+  .acc__qtext {
+    font-size: clamp(17px, 1.6vw, 21px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    transition: color 0.18s ease;
+  }
+  .acc__q:hover .acc__qtext {
+    color: var(--brand-orange);
+  }
+  .acc__icon {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+  }
+  .acc__icon span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text-ink);
+    transform: translate(-50%, -50%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .acc__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .acc__q[aria-expanded='true'] .acc__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .acc__q[aria-expanded='true'] .acc__icon span {
+    background: var(--brand-orange);
+  }
+  .acc__a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s ease;
+  }
+  .acc__q[aria-expanded='true'] + .acc__a {
+    grid-template-rows: 1fr;
+  }
+  .acc__a-inner {
+    overflow: hidden;
+  }
+  .acc__a-inner p {
+    padding: 0 0 26px 41px;
+    max-width: 64ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+
+  /* ===================== S6 · Closing ===================== */
+  .end {
+    position: relative;
+    background: var(--ink);
+    color: var(--text-on-dark);
+    padding-top: clamp(80px, 11vw, 150px);
+    overflow: clip;
+  }
+  .end__reg {
+    position: absolute;
+    width: clamp(300px, 36vw, 560px);
+    top: -16%;
+    right: -9%;
+    color: rgba(240, 237, 233, 0.05);
+    pointer-events: none;
+  }
+  .end__inner {
+    position: relative;
+    display: grid;
+    justify-items: start;
+    gap: 22px;
+  }
+  .end__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(40px, 6.6vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+  .end__p {
+    max-width: 54ch;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .end__cta {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 26px;
+  }
+</style>
+
+<script>
+  /* Scroll progress */
+  const progBar = document.querySelector<HTMLElement>('.prog__bar');
+  if (progBar) {
+    const onScroll = () => {
+      const d = document.documentElement;
+      const max = d.scrollHeight - d.clientHeight;
+      progBar.style.transform = `scaleX(${max > 0 ? Math.min(1, d.scrollTop / max) : 0})`;
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
+  /* Reveal on scroll */
+  const revealEls = document.querySelectorAll('.r, .r-clip, .hero');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -7% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  /* FAQ accordion: one open at a time */
+  const accQs = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc__q'));
+  accQs.forEach((q) => {
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') === 'true';
+      accQs.forEach((o) => o.setAttribute('aria-expanded', 'false'));
+      q.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+</script>

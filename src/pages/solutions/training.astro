@@ -1,0 +1,1399 @@
+---
+/**
+ * AIGC Training  ·  /solutions/training
+ *
+ * Professional AIGC training for marketing teams and agencies, drawn from
+ * the existing /professional-aigc-training-course-ai-content-creation-for-brands/
+ * page. Shares the print-shop typographic frame, calibration bars and
+ * editorial display headings used across the solutions pages.
+ *
+ * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
+ * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
+ * its canonical lowercase-h casing.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+/* Calibration colour bar: a printer's strip, used as a section divider. */
+const colourBar = [
+  '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
+  '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
+];
+
+/* Why training matters. Card content carries no ordinal numerals; the
+   heading and visual order do the sequencing. */
+const reasons = [
+  {
+    label: 'Beyond basic prompting',
+    title: 'Past the prompt-syntax demo, into the production muscle.',
+    body: "Most courses stop at typing a prompt. We teach the surrounding discipline: brief, generate, judge, retouch, brand-check, ship. The skill that compounds is the workflow around the tool, not the tool itself.",
+  },
+  {
+    label: 'Competitive advantage',
+    title: 'Move at the pace of brands already pulling ahead.',
+    body: 'The teams compounding their output through AIGC are not the ones with the biggest stack. They are the ones with the trained operators. Train inside an active studio and your team ships campaign-grade work the week after class.',
+  },
+  {
+    label: 'Future-proof skills',
+    title: 'Skills the next model release does not break.',
+    body: 'Models change every quarter. The underlying craft does not. The curriculum builds the visual judgement, prompt engineering and workflow architecture that survive each new release rather than getting rebuilt by it.',
+  },
+];
+
+/* "For who" audiences. Repeated card block, no numerals per repo standard. */
+const audiences = [
+  {
+    label: 'Brand professionals',
+    title: 'In-house brand and content teams.',
+    body: 'Marketing, brand and content leads who commission AIGC work and own the output. Leave the cohort with the literacy to brief, review and approve.',
+  },
+  {
+    label: 'Agency teams',
+    title: 'Creative, account and production crews.',
+    body: 'Agencies adopting AIGC inside live client workflows. The training fits around an existing approval chain rather than replacing it.',
+  },
+  {
+    label: 'Creative directors',
+    title: 'Design and creative leadership.',
+    body: 'Directors building an AI-fluent studio without losing the brand voice. The course foregrounds craft, judgement and the editorial pass models still skip.',
+  },
+  {
+    label: 'Procurement & operations',
+    title: 'Policy, vendor and cost owners.',
+    body: 'Procurement, operations and finance teams writing the AIGC policy, picking vendors and setting the cost model. Built to give the non-creative side a real working knowledge.',
+  },
+];
+
+/* Two curriculum lanes. Each carries a lead, body and a tag list of the
+   underlying topics. The tag list replaces numbered sub-headings, satisfying
+   the no-numbers rule while preserving the substance. */
+const lanes = [
+  {
+    label: 'AIGC for beginners',
+    heading: 'AIGC for beginners.',
+    image: '/Images/training-beginner.jpg',
+    alt: 'A daylit hubStudio workshop with a participant generating brand visuals on a colour-calibrated monitor, a printed brief on the desk beside the keyboard.',
+    lead: 'Two days inside the studio. Real tools, real briefs, work that ships.',
+    body: [
+      "Fundamentals first: an intuition for diffusion models, prompt engineering, parameter optimisation, brand-safety guardrails and the legal frameworks every team now has to work inside. The theory is short, the workshop is long.",
+      'Then the tool tour: MidJourney, Gemini, ChatGPT-4o, Flux, Wan and Veo, with three real brand-case workshops running alongside. The cohort leaves with a motion module, a starter prompt library tuned to their brand voice and a portfolio of pieces they generated themselves.',
+    ],
+    tags: [
+      'Diffusion fundamentals', 'Prompt engineering',
+      'Parameter optimisation', 'Brand-safety guardrails',
+      'Legal frameworks',
+      'MidJourney / Gemini / ChatGPT-4o',
+      'Flux / Wan / Veo',
+      'Three brand-case workshops', 'Motion module',
+      'Prompt library starter',
+    ],
+  },
+  {
+    label: 'Advanced AIGC',
+    heading: 'Advanced AIGC.',
+    image: '/Images/training-advanced.jpg',
+    alt: 'A dim, daylit advanced-training workstation with a ComfyUI node graph on one monitor and a high-resolution render preview on the other.',
+    lead: 'ComfyUI, ControlNet and Stable Diffusion treated as a production stack.',
+    body: [
+      'Node-based logic, sampling techniques, AnimateDiff for motion and high-resolution processing pipelines. The curriculum is the workflow itself, taught by the engineers who built and run hubStudio production every week.',
+      'Then the enterprise layer: character consistency at scale, scalable asset production, brand-voice fine-tuning, export optimisation and the integration patterns that connect AIGC into existing creative software, asset management and approval chains. Built for teams already shipping content and ready to industrialise it.',
+    ],
+    tags: [
+      'ComfyUI', 'ControlNet', 'Stable Diffusion',
+      'AnimateDiff', 'Sampling techniques',
+      'Node-based workflows', 'High-resolution processing',
+      'Character consistency', 'Scalable asset production',
+      'Brand-voice fine-tuning', 'Workflow integration',
+      'Quality control',
+    ],
+  },
+];
+
+/* FAQ: phrasing held close to the source page, restructured for the repo
+   standard (no em-dashes, native phrasing). */
+const faqs = [
+  {
+    q: 'Can you customise the AIGC training for our specific industry?',
+    a: 'Yes. The curriculum is shaped by sector: beauty, automotive, luxury, food and beverage, technology, with industry-specific case studies and a preliminary consultation that aligns the cohort with the work your team actually ships.',
+  },
+  {
+    q: 'What technical prerequisites do participants need?',
+    a: 'None. No advanced background is required, though basic familiarity with design software helps. The advanced module benefits from creative-workflow experience but is not gated on it.',
+  },
+  {
+    q: 'Can we focus on specific aspects of AIGC rather than the full curriculum?',
+    a: 'Yes. Customised half-day and full-day sessions dive deep on the topics most relevant to your immediate needs and strategic goals. Most clients run a focused first cohort, then expand.',
+  },
+  {
+    q: 'Do you offer post-training support for our team?',
+    a: 'Thirty days of post-training support is included on every corporate program: trainer access for technical questions, implementation guidance and prompt-library refinement. Extended packages run quarterly or annually.',
+  },
+  {
+    q: 'Can you deliver training at our company offices?',
+    a: 'The default is on-premise at the Shanghai studio, with the high-performance workstations, GPU acceleration and licensed software the curriculum needs. On-site delivery at your offices is available on request, subject to hardware and software validation.',
+  },
+  {
+    q: "What's the difference between the Beginner and Advanced modules?",
+    a: 'The beginner module covers popular tools and prompt engineering for everyday content production. The advanced module covers ComfyUI workflows, ControlNet and the enterprise production pipelines a studio runs at scale. Both together give the full stack; either alone is useful in isolation.',
+  },
+  {
+    q: 'How long are the training sessions and can they be shortened?',
+    a: 'Sessions are designed as four-hour or eight-hour intensives, with a 30% theory and 70% practical split. Shorter overview sessions are possible for executive briefings.',
+  },
+  {
+    q: 'What languages is the training available in?',
+    a: 'English and Mandarin Chinese. The trainer team is international, with cultural perspectives baked into the case studies rather than treated as a translation step.',
+  },
+  {
+    q: 'What will participants take away from the training?',
+    a: 'A portfolio of brand-aligned visual content they generated themselves, documented workflows ready for ongoing implementation, a reusable prompt library tuned to the brand, technical troubleshooting capabilities and the strategic context to brief future AIGC work.',
+  },
+  {
+    q: 'Do you offer consulting services beyond training?',
+    a: 'Yes. AIGC implementation consulting covers content audits, workflow optimisation, tool selection, brand-safety protocols and ongoing creative direction. Many clients start with a training cohort and continue with a consulting engagement on the studio side.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Professional AIGC Training Course | AI Content Creation for Brands | hubStudio"
+  description="Professional AIGC training for marketing teams and agencies. Master AI content creation tools with expert-led courses and hands-on workshops at hubStudio."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
+
+  <div class="page">
+    <!-- ============ S1 · HERO ============ -->
+    <section class="hero">
+      <div class="hero__panel">
+        <svg class="hero__reg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <div class="hero__panel-in">
+          <p class="kicker kicker--light r">
+            <span class="kicker__tick"></span>Solutions
+            <span class="kicker__sep">/</span> Training
+          </p>
+          <h1 class="hero__title">
+            <span class="line"><span class="line__i">Master the future</span></span>
+            <span class="line"><span class="line__i">of creative</span></span>
+            <span class="line"><span class="line__i serif">intelligence.</span></span>
+          </h1>
+          <p class="hero__tag r" style="--d:.45s">
+            Transform your brand's content production with cutting-edge AI
+            technologies and human creativity, <em>working in concert</em>.
+          </p>
+          <div class="hero__lead r" style="--d:.55s">
+            <p>
+              Most AI training stops at prompt syntax. The teams pulling ahead
+              learn the whole loop: tooling, judgement, brand safety and the
+              production pipeline that turns a generated frame into a campaign
+              asset.
+            </p>
+            <p>
+              We train inside an active content studio, so the curriculum is
+              the workflow we run every week. Cohorts leave with a portfolio
+              of pieces they generated, the prompt library to repeat them and
+              the workflow architecture to scale.
+            </p>
+          </div>
+          <div class="hero__cta r" style="--d:.65s">
+            <Button variant="primary" href="/contact">Start a training brief</Button>
+            <a class="ghost-link ghost-link--light" href="#curriculum">
+              See the curriculum
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <p class="hero__meta r" style="--d:.72s">
+            Shanghai studio <span>/</span> English & Mandarin, on-site cohorts
+          </p>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <img
+          src="/Images/training-hero.jpg"
+          alt="A late-afternoon hubStudio workshop floor with a senior trainer at a whiteboard and four participants at calibrated workstations reviewing AIGC frames."
+          width="1024"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="hero__chip">Shanghai <span>/</span> Training floor</span>
+      </div>
+    </section>
+
+    <!-- calibration bar -->
+    <div class="cbar" aria-hidden="true">
+      {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+    </div>
+
+    <!-- ============ S2 · WHY ============ -->
+    <section class="why">
+      <div class="shell">
+        <header class="band band--split">
+          <div>
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why train</p>
+            <h2 class="dh r" style="--d:.05s">
+              Why AI generated<br />content <span class="serif">training</span>.
+            </h2>
+          </div>
+          <p class="band__note band__note--light r" style="--d:.1s">
+            The buy-a-tool reflex stops at the demo. The brands compounding
+            real content output have trained operators inside the workflow,
+            and the training itself is what gets them there.
+          </p>
+        </header>
+
+        <div class="reasons">
+          {
+            reasons.map((r, i) => (
+              <article class="reason r" style={`--d:${i * 0.08}s`}>
+                <p class="reason__label">
+                  <span class="reason__tick"></span>
+                  {r.label}
+                </p>
+                <h3 class="reason__title">{r.title}</h3>
+                <p class="reason__body">{r.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S3 · FOR WHO ============ -->
+    <section class="audience">
+      <div class="shell">
+        <header class="band">
+          <p class="kicker r"><span class="kicker__tick"></span>For whom</p>
+          <h2 class="dh r" style="--d:.05s">
+            Built for the people who <span class="serif">commission</span>,<br />approve and run the work.
+          </h2>
+          <p class="band__note r" style="--d:.1s">
+            Four audiences, one curriculum. Each cohort is shaped to the
+            role mix in the room, so the work tracks the way your team
+            actually operates.
+          </p>
+        </header>
+
+        <div class="aud-grid">
+          {
+            audiences.map((a, i) => (
+              <article class="aud r" style={`--d:${i * 0.06}s`}>
+                <p class="aud__label">
+                  <span class="aud__tick"></span>
+                  {a.label}
+                </p>
+                <h3 class="aud__title">{a.title}</h3>
+                <p class="aud__body">{a.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S4 · CURRICULUM LANES ============ -->
+    <section class="cover" id="curriculum">
+      <div class="shell">
+        <header class="band">
+          <p class="kicker r"><span class="kicker__tick"></span>What you will learn</p>
+          <h2 class="dh r" style="--d:.05s">
+            Two modules, one <span class="serif">studio</span>.
+          </h2>
+          <p class="band__note r" style="--d:.1s">
+            Beginner builds fluency, advanced builds production capability.
+            Most teams run both back to back; some pick the module that
+            matches their current stage and grow into the other.
+          </p>
+        </header>
+
+        {
+          lanes.map((c, i) => (
+            <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
+              <figure class="feature__media crop r-clip">
+                <div class="crop__inner">
+                  <img
+                    src={c.image}
+                    alt={c.alt}
+                    width="1024"
+                    height="820"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="fig">{c.label}</figcaption>
+              </figure>
+              <div class="feature__body">
+                <p class="feature__idx r">
+                  <span class="feature__tick"></span>
+                  Curriculum module
+                </p>
+                <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
+                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
+                {c.body.map((para, pi) => (
+                  <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
+                    {para}
+                  </p>
+                ))}
+                <p class="feature__scope r" style="--d:.24s">In scope</p>
+                <ul class="chips r" style="--d:.28s">
+                  {c.tags.map((t) => (
+                    <li class="chip">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ============ S5 · TRAINERS ============ -->
+    <section class="source">
+      <div class="shell source__grid">
+        <div class="source__visual">
+          <figure class="source__main crop">
+            <div class="crop__inner">
+              <img
+                src="/Images/training-trainers.jpg"
+                alt="A senior hubStudio trainer reviewing a ComfyUI workflow on a large monitor with a cohort participant, warm afternoon light through a Shanghai studio window."
+                width="1024"
+                height="820"
+                loading="lazy"
+              />
+            </div>
+          </figure>
+          <div class="source__stat">
+            <span class="source__stat-num">Senior leads</span>
+            <span class="source__stat-cap">Creative directors and AIGC engineers, no juniors</span>
+          </div>
+        </div>
+
+        <div class="source__body">
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Who teaches</p>
+          <h2 class="dh r" style="--d:.05s">
+            Elite creative and<br />technical <span class="serif">experts</span>.
+          </h2>
+          <p class="source__lead r" style="--d:.1s">
+            Former CEOs and creative directors from Publicis Commerce paired
+            with the AIGC engineers who run hubStudio's production stack.
+            Trainers who have shipped both sides of the table.
+          </p>
+          <p class="source__p r" style="--d:.16s">
+            Years of brand and campaign work for global accounts, plus the
+            current studio practice of generating, fine-tuning and deploying
+            models for clients every week. The course material is whatever
+            shipped that morning, not last year's deck.
+          </p>
+          <p class="source__p r" style="--d:.22s">
+            The curriculum is customisable for beauty, automotive, luxury,
+            food and beverage, technology. A preliminary consultation aligns
+            the cohort with your category, your toolchain and the formats you
+            already ship to.
+          </p>
+          <ul class="creds r" style="--d:.28s">
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Senior leads only
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              English & Mandarin
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Customised by industry
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Shanghai studio
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S6 · FAQ ============ -->
+    <section class="faq">
+      <div class="shell faq__grid">
+        <aside class="faq__intro">
+          <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
+          <h2 class="dh r" style="--d:.05s">
+            Before the<br />first <span class="serif">cohort</span>.
+          </h2>
+          <p class="faq__sub r" style="--d:.1s">
+            The questions teams ask before a cohort starts. If yours is not
+            below, put it in the brief.
+          </p>
+          <div class="r" style="--d:.16s">
+            <Button variant="primary" href="/contact">Start a training brief</Button>
+          </div>
+        </aside>
+
+        <div class="acc">
+          {
+            faqs.map((faq) => (
+              <div class="acc__row r">
+                <button class="acc__q" type="button" aria-expanded="false">
+                  <span class="acc__qmark">Q</span>
+                  <span class="acc__qtext">{faq.q}</span>
+                  <span class="acc__icon" aria-hidden="true">
+                    <span></span><span></span>
+                  </span>
+                </button>
+                <div class="acc__a">
+                  <div class="acc__a-inner">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S7 · CLOSING ============ -->
+    <section class="end">
+      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+      </svg>
+      <div class="shell end__inner">
+        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Train with us</p>
+        <h2 class="end__title r" style="--d:.05s">
+          Train with<br /><span class="serif">us</span>.
+        </h2>
+        <p class="end__p r" style="--d:.12s">
+          Send a roster, a desired window or just the gap you want to close.
+          A senior lead reads it inside two working days and replies with a
+          curriculum, format and outcome plan, plus an honest read on whether
+          training, consulting or production is the right starting line.
+        </p>
+        <div class="end__cta r" style="--d:.18s">
+          <Button variant="primary" href="/contact">Start a training brief</Button>
+          <a class="ghost-link ghost-link--light" href="/the-studio">
+            See the studio
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="cbar cbar--end" aria-hidden="true">
+        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* ===================== Foundations ===================== */
+  .page {
+    --ink: #0e1633;
+    --navy: #0e1f4e;
+    --paper: #f0ede9;
+    --paper-2: #e7e3dd;
+    overflow: clip;
+  }
+  .shell {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(22px, 5vw, 60px);
+  }
+
+  /* Scroll progress */
+  .prog {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 200;
+    pointer-events: none;
+  }
+  .prog__bar {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: var(--brand-orange);
+  }
+
+  /* Reveal primitives */
+  .r,
+  .r-clip {
+    --d: 0s;
+  }
+  .r {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d);
+  }
+  .r.in {
+    opacity: 1;
+    transform: none;
+  }
+  .r-clip .crop__inner {
+    clip-path: inset(0 0 101% 0);
+    transition: clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .r-clip .crop__inner img {
+    transform: scale(1.12);
+    transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .r-clip.in .crop__inner {
+    clip-path: inset(0 0 0 0);
+  }
+  .r-clip.in .crop__inner img {
+    transform: scale(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .r,
+    .r.in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .r-clip .crop__inner,
+    .r-clip .crop__inner img {
+      clip-path: none;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Mono kicker label */
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .kicker--light {
+    color: rgba(240, 237, 233, 0.66);
+  }
+  .kicker__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .kicker__sep {
+    color: var(--brand-orange);
+  }
+
+  /* Display heading */
+  .dh {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(34px, 4.4vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+  .dh--sm {
+    font-size: clamp(26px, 2.6vw, 38px);
+  }
+  .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange);
+  }
+
+  /* Figure caption + crop frame */
+  .crop {
+    position: relative;
+    margin: 0;
+  }
+  .crop::before,
+  .crop::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    z-index: 2;
+  }
+  .crop::before {
+    top: -9px;
+    left: -9px;
+    border-top: 1.5px solid var(--brand-orange);
+    border-left: 1.5px solid var(--brand-orange);
+  }
+  .crop::after {
+    right: -9px;
+    bottom: 28px;
+    border-right: 1.5px solid var(--brand-orange);
+    border-bottom: 1.5px solid var(--brand-orange);
+  }
+  .crop__inner {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .crop__inner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .fig {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  /* Ghost link */
+  .ghost-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .ghost-link svg {
+    width: 19px;
+    height: 19px;
+    transition: transform 0.24s ease-out;
+  }
+  .ghost-link:hover svg {
+    transform: translateX(5px);
+  }
+  .ghost-link--light {
+    color: var(--text-on-dark);
+  }
+
+  /* Section header band */
+  .band {
+    max-width: 720px;
+    margin-bottom: clamp(40px, 5vw, 70px);
+    display: grid;
+    gap: 18px;
+  }
+  .band--split {
+    max-width: none;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 880px) {
+    .band--split {
+      grid-template-columns: 1fr 0.82fr;
+      align-items: end;
+      gap: 18px 60px;
+    }
+    .band--split > div {
+      display: grid;
+      gap: 18px;
+    }
+  }
+  .band__note {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .band__note--light {
+    color: rgba(240, 237, 233, 0.76);
+  }
+
+  /* Calibration colour bar */
+  .cbar {
+    display: flex;
+    height: 12px;
+  }
+  .cbar span {
+    flex: 1;
+  }
+  .cbar--end {
+    margin-top: clamp(60px, 8vw, 110px);
+  }
+
+  /* ===================== S1 · Hero ===================== */
+  .hero {
+    display: grid;
+    background: var(--ink);
+    color: var(--text-on-dark);
+  }
+  @media (min-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .hero__panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: clamp(40px, 4.4vw, 72px) clamp(24px, 5vw, 64px);
+    overflow: clip;
+  }
+  .hero__reg {
+    position: absolute;
+    width: clamp(240px, 28vw, 420px);
+    right: -12%;
+    bottom: -14%;
+    color: rgba(240, 237, 233, 0.055);
+    pointer-events: none;
+  }
+  .hero__panel-in {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+  }
+  .hero__title {
+    margin-top: 24px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(40px, 5.6vw, 80px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+  .hero__title .line {
+    display: block;
+    overflow: hidden;
+    padding: 0.22em 0.14em;
+    margin: -0.22em -0.14em;
+  }
+  .hero__title .line__i {
+    display: block;
+    transform: translateY(145%);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero__title .line:nth-child(1) .line__i {
+    transition-delay: 0.12s;
+  }
+  .hero__title .line:nth-child(2) .line__i {
+    transition-delay: 0.22s;
+  }
+  .hero__title .line:nth-child(3) .line__i {
+    transition-delay: 0.32s;
+  }
+  .hero.in .hero__title .line__i {
+    transform: translateY(0);
+  }
+  .hero__title .serif {
+    font-size: 1.04em;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__title .line__i {
+      transform: none;
+    }
+  }
+  .hero__tag {
+    margin-top: 26px;
+    font-size: clamp(18px, 1.5vw, 23px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .hero__tag em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--brand-orange);
+  }
+  .hero__lead {
+    margin-top: 20px;
+    display: grid;
+    gap: 13px;
+    max-width: 46ch;
+  }
+  .hero__lead p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.74);
+  }
+  .hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 26px;
+  }
+  .hero__meta {
+    margin-top: 34px;
+    padding-top: 20px;
+    border-top: 1.5px dashed rgba(240, 237, 233, 0.2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.5);
+  }
+  .hero__meta span {
+    color: var(--brand-orange);
+  }
+  .hero__visual {
+    position: relative;
+    overflow: hidden;
+    min-height: 58vh;
+  }
+  @media (min-width: 900px) {
+    .hero__visual {
+      min-height: auto;
+    }
+  }
+  .hero__visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.08);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero.in .hero__visual img {
+    transform: scale(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__visual img {
+      transform: none;
+    }
+  }
+  .hero__chip {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 2;
+    display: inline-flex;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.78);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-on-dark);
+  }
+  .hero__chip span {
+    color: var(--brand-orange);
+  }
+
+  /* ===================== S2 · Why ===================== */
+  .why {
+    background: var(--ink);
+    color: var(--text-on-dark);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .reasons {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 820px) {
+    .reasons {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+  }
+  .reason {
+    padding-top: 26px;
+    border-top: 1.5px solid rgba(240, 237, 233, 0.18);
+    display: grid;
+    gap: 14px;
+  }
+  .reason__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .reason__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .reason__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+  }
+  .reason__body {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.74);
+  }
+
+  /* ===================== S3 · Audience ===================== */
+  .audience {
+    background: var(--paper);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .aud-grid {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 720px) {
+    .aud-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+  }
+  @media (min-width: 1080px) {
+    .aud-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+  }
+  .aud {
+    padding: 26px 22px 30px;
+    background: #fff;
+    border: 1px solid var(--line-hairline);
+    border-radius: 6px;
+    display: grid;
+    gap: 14px;
+    transition: border-color 0.18s ease, transform 0.24s ease;
+  }
+  .aud:hover {
+    border-color: var(--brand-orange);
+    transform: translateY(-2px);
+  }
+  .aud__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .aud__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .aud__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(19px, 1.5vw, 22px);
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+  .aud__body {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* ===================== S4 · Curriculum lanes ===================== */
+  .cover {
+    background: var(--paper-2);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .feature {
+    display: grid;
+    gap: 36px;
+    align-items: center;
+    padding-block: clamp(40px, 5vw, 72px);
+    border-top: 1.5px dashed var(--line-strong);
+  }
+  .feature:last-child {
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  @media (min-width: 900px) {
+    .feature {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+    .feature--rev .feature__media {
+      order: 2;
+    }
+  }
+  .feature__media .crop__inner {
+    aspect-ratio: 5 / 4;
+  }
+  .feature__idx {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .feature__tick {
+    width: 22px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .feature__body .dh {
+    margin-top: 16px;
+  }
+  .feature__lead {
+    margin-top: 14px;
+    font-size: var(--type-lead);
+    line-height: 1.42;
+    color: var(--text-ink);
+    font-weight: 500;
+  }
+  .feature__p {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .feature__scope {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-hairline);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .chips {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    padding: 8px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 500;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease;
+  }
+  .chip:hover {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    color: #fff;
+  }
+
+  /* ===================== S5 · Trainers ===================== */
+  .source {
+    background: var(--navy);
+    color: var(--text-on-dark);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .source__grid {
+    display: grid;
+    gap: 52px;
+  }
+  @media (min-width: 940px) {
+    .source__grid {
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 70px;
+      align-items: center;
+    }
+  }
+  .source__visual {
+    position: relative;
+  }
+  .source__main .crop__inner {
+    aspect-ratio: 5 / 4;
+  }
+  .source__stat {
+    position: absolute;
+    left: -10px;
+    top: 36px;
+    display: grid;
+    gap: 3px;
+    padding: 15px 19px;
+    border-radius: 12px;
+    background: var(--brand-orange);
+    color: #fff;
+    box-shadow: 0 16px 32px rgba(233, 78, 27, 0.42);
+  }
+  .source__stat-num {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .source__stat-cap {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    max-width: 20ch;
+    line-height: 1.4;
+  }
+  .source__body .dh {
+    margin-top: 16px;
+  }
+  .source__lead {
+    margin-top: 20px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-on-dark);
+  }
+  .source__p {
+    margin-top: 15px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .creds {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+  .cred {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(240, 237, 233, 0.2);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .cred:hover {
+    border-color: var(--brand-orange);
+    background: rgba(233, 78, 27, 0.16);
+  }
+  .cred svg {
+    width: 13px;
+    height: 13px;
+    color: var(--brand-orange);
+  }
+
+  /* ===================== S6 · FAQ ===================== */
+  .faq {
+    background: var(--paper);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .faq__grid {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 1000px) {
+    .faq__grid {
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .faq__intro {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .faq__intro .dh {
+    margin-top: 18px;
+  }
+  .faq__sub {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .acc {
+    display: grid;
+  }
+  .acc__row {
+    border-top: 1.5px solid var(--ink);
+  }
+  .acc__row:last-child {
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .acc__q {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 16px;
+    padding: 26px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  .acc__qmark {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-orange);
+    padding-top: 3px;
+  }
+  .acc__qtext {
+    font-size: clamp(17px, 1.6vw, 21px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    transition: color 0.18s ease;
+  }
+  .acc__q:hover .acc__qtext {
+    color: var(--brand-orange);
+  }
+  .acc__icon {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+  }
+  .acc__icon span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text-ink);
+    transform: translate(-50%, -50%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .acc__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .acc__q[aria-expanded='true'] .acc__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .acc__q[aria-expanded='true'] .acc__icon span {
+    background: var(--brand-orange);
+  }
+  .acc__a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s ease;
+  }
+  .acc__q[aria-expanded='true'] + .acc__a {
+    grid-template-rows: 1fr;
+  }
+  .acc__a-inner {
+    overflow: hidden;
+  }
+  .acc__a-inner p {
+    padding: 0 0 26px 41px;
+    max-width: 64ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+
+  /* ===================== S7 · Closing ===================== */
+  .end {
+    position: relative;
+    background: var(--ink);
+    color: var(--text-on-dark);
+    padding-top: clamp(80px, 11vw, 150px);
+    overflow: clip;
+  }
+  .end__reg {
+    position: absolute;
+    width: clamp(300px, 36vw, 560px);
+    top: -16%;
+    right: -9%;
+    color: rgba(240, 237, 233, 0.05);
+    pointer-events: none;
+  }
+  .end__inner {
+    position: relative;
+    display: grid;
+    justify-items: start;
+    gap: 22px;
+  }
+  .end__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(40px, 6.6vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+  .end__p {
+    max-width: 54ch;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .end__cta {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 26px;
+  }
+</style>
+
+<script>
+  /* Scroll progress */
+  const progBar = document.querySelector<HTMLElement>('.prog__bar');
+  if (progBar) {
+    const onScroll = () => {
+      const d = document.documentElement;
+      const max = d.scrollHeight - d.clientHeight;
+      progBar.style.transform = `scaleX(${max > 0 ? Math.min(1, d.scrollTop / max) : 0})`;
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
+  /* Reveal on scroll */
+  const revealEls = document.querySelectorAll('.r, .r-clip, .hero');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -7% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  /* FAQ accordion: one open at a time */
+  const accQs = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc__q'));
+  accQs.forEach((q) => {
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') === 'true';
+      accQs.forEach((o) => o.setAttribute('aria-expanded', 'false'));
+      q.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+</script>
