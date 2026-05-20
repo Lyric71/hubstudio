@@ -1,0 +1,654 @@
+---
+/**
+ * AIGC Video Creation  ·  /solutions/ai-production/video
+ *
+ * Studio-grade AIGC video, with the narrative arc kept human. Drawn from
+ * the source page's "what just became possible" framing, the economics
+ * section and the four content lanes the studio actually ships.
+ *
+ * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
+ * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
+ * its canonical lowercase-h casing.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import Button from '../../../components/Button.astro';
+
+const colourBar = [
+  '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
+  '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
+];
+
+const reasons = [
+  {
+    label: 'What became possible',
+    title: 'Create what was previously impossible.',
+    body: 'Underwater product reveals. Zero-gravity demonstrations. Environments that do not exist. Talent in locations they have never visited. Every impossible creative idea is now a storyboard away from reality.',
+  },
+  {
+    label: 'Test before invest',
+    title: 'Test everything before investing anything.',
+    body: 'Run five creative directions in parallel. Test them. Refine. Scale the winner. What used to require separate productions now happens at the same time, removing guesswork from creative strategy and from media spend.',
+  },
+  {
+    label: 'Scale and speed',
+    title: 'One concept, one thousand variations, at the speed of culture.',
+    body: 'Hit the master story once, then ship it in 47 languages with lip-sync precision and 12 platform cuts. Trending topic Tuesday, branded response Wednesday. The marginal cost of the next variation approaches zero.',
+  },
+];
+
+const lanes = [
+  {
+    label: 'Short-form social',
+    heading: 'Short-form social video.',
+    image: '/Images/sb-sample-digital.jpg',
+    alt: 'A daylit edit suite frame with vertical short-form variations laid out in the timeline panel and a master cut paused on the main monitor, warm shadow grade.',
+    lead: 'Platform-optimised content for TikTok, Reels and Shorts, with native pacing and rhythm.',
+    body: [
+      "Product demonstrations, unboxing experiences, lifestyle-driven brand storytelling and UGC-style adaptations. Each cut is built for the platform it will live on, not retrofitted from a master that was made for somewhere else.",
+      'Useful where the channel demands constant new creative and the team cannot afford to wait for a shoot every time a new angle is on the table.',
+    ],
+    tags: [
+      'TikTok / Reels / Shorts', 'Product demonstrations',
+      'Unboxing experiences', 'Lifestyle storytelling',
+      'UGC-style adaptations', 'Vertical-first edits',
+    ],
+  },
+  {
+    label: 'E-commerce video',
+    heading: 'E-commerce and retail video.',
+    image: '/Images/sb-sample-explainer.jpg',
+    alt: 'A daylit product video review with multiple PDP-ready angles arranged on a calibrated monitor and seasonal variants pinned beside it, lifted black point, real-photography grade.',
+    lead: 'Product showcases with dynamic angles, demonstrations, tutorials and marketplace-ready content for global platforms.',
+    body: [
+      "Hero product video, feature demonstrations, installation walkthroughs and platform-specific assets for Amazon, Tmall and the rest of the global marketplace stack.",
+      'Useful for retailers and manufacturers shipping high volumes of product variations, where the PDP video and the marketplace tile carry the conversion weight.',
+    ],
+    tags: [
+      'Product showcases', 'Feature demonstrations',
+      'Tutorials', 'Amazon / Tmall ready',
+      'Seasonal adaptations', 'Promotional variants',
+    ],
+  },
+  {
+    label: 'Brand & campaign',
+    heading: 'Brand and campaign video.',
+    image: '/Images/sb-sample-tv.jpg',
+    alt: 'A cinematic narrative-driven brand video paused on a large calibrated monitor with the master storyboard pinned along the wall to the right, warm shadow grade.',
+    lead: 'Narrative-driven brand stories, concept testing and ambassador content, with multi-language lip-sync adaptation.',
+    body: [
+      "Concept visualisation through to finished master film. Multi-language adaptation with lip-sync, so the brand ambassador is recognisable in every market without re-shooting.",
+      'Useful for global campaigns where the master idea has to travel across languages and cultures while keeping the line that made it work in the first place.',
+    ],
+    tags: [
+      'Brand storytelling', 'Concept testing',
+      'Multi-language lip-sync', 'Ambassador content',
+      'Hero film', 'Director-led storyboard',
+    ],
+  },
+  {
+    label: 'Long to short',
+    heading: 'Long-form to short-form adaptation.',
+    image: '/Images/sb-sample-branded.jpg',
+    alt: 'A daylit edit-suite frame of an editor selecting key moments from a long-form master timeline and assembling them into short-form social cuts, warm shadow grade.',
+    lead: 'Intelligent editing that identifies key moments and assembles the social cuts automatically.',
+    body: [
+      'Multiple social cuts generated from a single master file, platform-specific formatting and seamless integration of brand elements and messaging.',
+      'Useful for maximising the ROI of existing video: the keynote that becomes the social series, the interview that becomes the always-on content engine, the launch film that keeps feeding the channel for the next two quarters.',
+    ],
+    tags: [
+      'Key-moment selection', 'Auto social cuts',
+      'Platform-specific formats', 'Brand element overlay',
+      'Master to feed', 'Always-on content',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'How does AI video generation compare to traditional video production?',
+    a: 'AI video generation excels at creating scalable, cost-effective content for digital platforms, product demonstrations and social. Traditional production remains ideal for complex narratives that require actors, elaborate sets or specific cinematographic technique. AI generation offers unmatched speed and versatility for most brand video needs.',
+  },
+  {
+    q: 'What types of video content work best with AI generation?',
+    a: 'Product showcases, social content, e-commerce video, brand storytelling, explainer content and adaptations perform exceptionally well. AI generation is particularly powerful for creating multiple variations, platform-specific formats and localised content at scale.',
+  },
+  {
+    q: 'How long does it take to produce AI-generated videos?',
+    a: 'Simple video content can be generated within 24 to 48 hours. Complex projects requiring custom training or extensive post-production typically take 3 to 5 days. That is a significant time advantage over traditional video production, which often takes weeks or months.',
+  },
+  {
+    q: 'Can you create videos featuring real people, or only AI-generated characters?',
+    a: 'Both. We can work with footage of real people (actors, brand ambassadors, employees) and enhance it with AI, or create entirely AI-generated characters and spokespersons. We also specialise in lip-sync technology for multi-language adaptation of existing content.',
+  },
+  {
+    q: 'How do you handle data privacy and confidentiality?',
+    a: 'Strict data privacy protocols. All client data is processed on private servers, never shared with public AI models, and prompts are anonymised. We can deploy dedicated servers in your preferred geography and provide detailed data-handling agreements.',
+  },
+  {
+    q: 'What is included in your video generation training programs?',
+    a: 'Training covers video-specific AI tools (Wan, Veo, Flux, Suno), motion-prompt engineering, video workflow architecture, platform optimisation and hands-on workshops. Beginner and advanced levels are available; participants leave with practical video assets and reusable workflows.',
+  },
+  {
+    q: 'What video formats and platforms do you support?',
+    a: 'All major platforms including Instagram, TikTok, YouTube, LinkedIn and Facebook, plus e-commerce platforms such as Amazon and Tmall. Square, vertical, horizontal and custom aspect ratios as needed.',
+  },
+  {
+    q: 'How do you ensure brand consistency across AI-generated videos?',
+    a: 'Custom AI models trained on your brand visual identity, colour palette, typography and style guidelines. Creative directors oversee every project to ensure brand consistency, and the QC process verifies that every video aligns with the brand standard before delivery.',
+  },
+  {
+    q: 'Can you adapt existing long-form video into short-form content?',
+    a: 'Yes. Intelligent AI editing identifies key moments, creates multiple social cuts from the master and formats them for different platforms automatically. Particularly valuable for maximising the ROI of existing video content.',
+  },
+  {
+    q: 'What about music and sound design for AI-generated video?',
+    a: 'Comprehensive audio: AI-generated background music, sound effects, voiceovers in multiple languages and text-to-speech. All audio content is cleared for commercial use and can be customised to match the brand audio identity.',
+  },
+  {
+    q: 'Can AI-generated video be used across all marketing channels?',
+    a: 'Yes, with proper licensing and compliance considerations. We ensure all generated content meets platform requirements and provide guidance on usage rights. The video is designed for multi-channel deployment across paid, social, web and e-commerce.',
+  },
+  {
+    q: 'How do you price video generation projects?',
+    a: 'Pricing depends on video complexity, length, customisation and volume. Simple social video starts at a different price point than complex brand narrative that requires custom training. We provide detailed quotes based on your specific project scope and deliverables.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="AIGC Video Creation | Studio-Grade AI Video Production | hubStudio"
+  description="Studio-grade AIGC video production at hubStudio. Short-form social, e-commerce, brand campaigns and long-to-short adaptation with director-led storyboards."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
+
+  <div class="page">
+    <section class="hero">
+      <div class="hero__panel">
+        <svg class="hero__reg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <div class="hero__panel-in">
+          <p class="kicker kicker--light r">
+            <span class="kicker__tick"></span>AI Production
+            <span class="kicker__sep">/</span> Video
+          </p>
+          <h1 class="hero__title">
+            <span class="line"><span class="line__i">Ten times the</span></span>
+            <span class="line"><span class="line__i">video, half the</span></span>
+            <span class="line"><span class="line__i serif">time.</span></span>
+          </h1>
+          <p class="hero__tag r" style="--d:.45s">
+            The narrative arc is still <em>everything</em>.
+          </p>
+          <div class="hero__lead r" style="--d:.55s">
+            <p>
+              The constraints that defined video production for decades
+              just disappeared. Studio shoots that cost six figures, talent
+              fees, location rentals: gone. The new question is not what
+              we can afford, it is what we should create.
+            </p>
+            <p>
+              AIGC is the execution engine. Human vision stays
+              irreplaceable. Creative directors design every shot. AIGC
+              ships them across formats, languages and markets at the
+              pace the channel demands.
+            </p>
+          </div>
+          <div class="hero__cta r" style="--d:.65s">
+            <Button variant="primary" href="/contact">Start a video brief</Button>
+            <a class="ghost-link ghost-link--light" href="#lanes">
+              See the work
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <p class="hero__meta r" style="--d:.72s">
+            Shanghai studio <span>/</span> Director-led storyboards, AIGC execution
+          </p>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <img
+          src="/Images/aiprod-video-hero.jpg"
+          alt="A daylit edit-suite floor with a large calibrated monitor showing a paused master cut, vertical and square variations arranged in the timeline panel, warm window light from camera left and a single editor reviewing the work."
+          width="1024"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="hero__chip">Shanghai <span>/</span> Video floor</span>
+      </div>
+    </section>
+
+    <div class="cbar" aria-hidden="true">
+      {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+    </div>
+
+    <section class="why">
+      <div class="shell">
+        <header class="band band--split">
+          <div>
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>What just became possible</p>
+            <h2 class="dh r" style="--d:.05s">
+              The constraints that<br />defined video, <span class="serif">gone</span>.
+            </h2>
+          </div>
+          <p class="band__note band__note--light r" style="--d:.1s">
+            Production cost vanishes. Speed becomes strategy. Testing
+            costs nothing. Abundance replaces constraints. The brands
+            that build a video-first content engine compound an
+            advantage their static-reliant competitors cannot copy.
+          </p>
+        </header>
+
+        <div class="reasons">
+          {
+            reasons.map((r, i) => (
+              <article class="reason r" style={`--d:${i * 0.08}s`}>
+                <p class="reason__label">
+                  <span class="reason__tick"></span>
+                  {r.label}
+                </p>
+                <h3 class="reason__title">{r.title}</h3>
+                <p class="reason__body">{r.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="cover" id="lanes">
+      <div class="shell">
+        <header class="band">
+          <p class="kicker r"><span class="kicker__tick"></span>What we build for brands</p>
+          <h2 class="dh r" style="--d:.05s">
+            Four lanes of video<br /><span class="serif">production</span>.
+          </h2>
+          <p class="band__note r" style="--d:.1s">
+            Short-form, e-commerce, brand and adaptation, all run inside
+            the same studio with the same senior creative leads. The
+            storyboard is human; the execution is AIGC.
+          </p>
+        </header>
+
+        {
+          lanes.map((c, i) => (
+            <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
+              <figure class="feature__media crop r-clip">
+                <div class="crop__inner">
+                  <img
+                    src={c.image}
+                    alt={c.alt}
+                    width="1024"
+                    height="820"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="fig">{c.label}</figcaption>
+              </figure>
+              <div class="feature__body">
+                <p class="feature__idx r">
+                  <span class="feature__tick"></span>
+                  Video lane
+                </p>
+                <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
+                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
+                {c.body.map((para, pi) => (
+                  <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
+                    {para}
+                  </p>
+                ))}
+                <p class="feature__scope r" style="--d:.24s">In scope</p>
+                <ul class="chips r" style="--d:.28s">
+                  {c.tags.map((t) => (
+                    <li class="chip">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="source">
+      <div class="shell source__grid">
+        <div class="source__visual">
+          <figure class="source__main crop">
+            <div class="crop__inner">
+              <img
+                src="/Images/who-we-are-studio.jpg"
+                alt="A wide view of the hubStudio Shanghai floor with editorial daylight, calibrated stations and master films paused on monitors along the central row."
+                width="1024"
+                height="820"
+                loading="lazy"
+              />
+            </div>
+          </figure>
+          <div class="source__stat">
+            <span class="source__stat-num">Director-led</span>
+            <span class="source__stat-cap">Every shot designed before AIGC executes it</span>
+          </div>
+        </div>
+
+        <div class="source__body">
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why hubStudio</p>
+          <h2 class="dh r" style="--d:.05s">
+            Production execution<br />no longer limits the <span class="serif">vision</span>.
+          </h2>
+          <p class="source__lead r" style="--d:.1s">
+            Strategy first: target audience, key message, desired action.
+            Then the storyboard, shot by shot, with visual direction. Our
+            creative directors define what viewers see, feel and remember.
+            No AI makes these decisions.
+          </p>
+          <p class="source__p r" style="--d:.16s">
+            The same product in ten different room styles. A brand
+            ambassador in Paris, Tokyo and New York without travel. A
+            winter campaign reshot for the summer season. The storyboard
+            process stays the same; the execution becomes infinitely
+            more flexible and affordable.
+          </p>
+          <p class="source__p r" style="--d:.22s">
+            Video is no longer the last resort. It is the first answer.
+          </p>
+          <ul class="creds r" style="--d:.28s">
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Senior creative direction
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Lip-sync localisation
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Private hosting
+            </li>
+            <li class="cred">
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              NDA in place
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="shell faq__grid">
+        <aside class="faq__intro">
+          <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
+          <h2 class="dh r" style="--d:.05s">
+            Before the<br />first <span class="serif">cut</span>.
+          </h2>
+          <p class="faq__sub r" style="--d:.1s">
+            The questions brand and performance leads ask before we begin.
+            If yours is not below, put it in the brief.
+          </p>
+          <div class="r" style="--d:.16s">
+            <Button variant="primary" href="/contact">Start a video brief</Button>
+          </div>
+        </aside>
+
+        <div class="acc">
+          {
+            faqs.map((faq) => (
+              <div class="acc__row r">
+                <button class="acc__q" type="button" aria-expanded="false">
+                  <span class="acc__qmark">Q</span>
+                  <span class="acc__qtext">{faq.q}</span>
+                  <span class="acc__icon" aria-hidden="true">
+                    <span></span><span></span>
+                  </span>
+                </button>
+                <div class="acc__a">
+                  <div class="acc__a-inner">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="end">
+      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+      </svg>
+      <div class="shell end__inner">
+        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Build with us</p>
+        <h2 class="end__title r" style="--d:.05s">
+          Shoot less.<br /><span class="serif">Ship more</span>.
+        </h2>
+        <p class="end__p r" style="--d:.12s">
+          Send a storyboard, a master film or just the campaign you keep
+          wanting to extend. A senior lead reads it inside two working
+          days and replies with a phased plan, a cost shape and an
+          honest read on which lane starts first.
+        </p>
+        <div class="end__cta r" style="--d:.18s">
+          <Button variant="primary" href="/contact">Start a video brief</Button>
+          <a class="ghost-link ghost-link--light" href="/work">
+            See client work
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="cbar cbar--end" aria-hidden="true">
+        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page { --ink: #0e1633; --navy: #0e1f4e; --paper: #f0ede9; --paper-2: #e7e3dd; overflow: clip; }
+  .shell { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: clamp(22px, 5vw, 60px); }
+  .prog { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 200; pointer-events: none; }
+  .prog__bar { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: 0 50%; background: var(--brand-orange); }
+  .r, .r-clip { --d: 0s; }
+  .r { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d); }
+  .r.in { opacity: 1; transform: none; }
+  .r-clip .crop__inner { clip-path: inset(0 0 101% 0); transition: clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d, 0s); }
+  .r-clip .crop__inner img { transform: scale(1.12); transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d, 0s); }
+  .r-clip.in .crop__inner { clip-path: inset(0 0 0 0); }
+  .r-clip.in .crop__inner img { transform: scale(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .r, .r.in { opacity: 1; transform: none; transition: none; }
+    .r-clip .crop__inner, .r-clip .crop__inner img { clip-path: none; transform: none; transition: none; }
+  }
+  .kicker { display: flex; align-items: center; gap: 9px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+  .kicker--light { color: rgba(240, 237, 233, 0.66); }
+  .kicker__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
+  .kicker__sep { color: var(--brand-orange); }
+  .dh { font-family: var(--font-sans); font-weight: 600; font-size: clamp(34px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.03em; }
+  .dh--sm { font-size: clamp(26px, 2.6vw, 38px); }
+  .serif { font-family: var(--font-serif); font-style: italic; font-weight: 500; letter-spacing: -0.01em; color: var(--brand-orange); }
+  .crop { position: relative; margin: 0; }
+  .crop::before, .crop::after { content: ''; position: absolute; width: 16px; height: 16px; z-index: 2; }
+  .crop::before { top: -9px; left: -9px; border-top: 1.5px solid var(--brand-orange); border-left: 1.5px solid var(--brand-orange); }
+  .crop::after { right: -9px; bottom: 28px; border-right: 1.5px solid var(--brand-orange); border-bottom: 1.5px solid var(--brand-orange); }
+  .crop__inner { overflow: hidden; border-radius: 4px; }
+  .crop__inner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .fig { margin-top: 14px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mute); }
+  .ghost-link { display: inline-flex; align-items: center; gap: 9px; font-size: var(--type-small); font-weight: 600; color: var(--text-ink); }
+  .ghost-link svg { width: 19px; height: 19px; transition: transform 0.24s ease-out; }
+  .ghost-link:hover svg { transform: translateX(5px); }
+  .ghost-link--light { color: var(--text-on-dark); }
+  .band { max-width: 720px; margin-bottom: clamp(40px, 5vw, 70px); display: grid; gap: 18px; }
+  .band--split { max-width: none; grid-template-columns: 1fr; }
+  @media (min-width: 880px) {
+    .band--split { grid-template-columns: 1fr 0.82fr; align-items: end; gap: 18px 60px; }
+    .band--split > div { display: grid; gap: 18px; }
+  }
+  .band__note { font-size: var(--type-lead); line-height: 1.5; color: var(--text-mute); }
+  .band__note--light { color: rgba(240, 237, 233, 0.76); }
+  .cbar { display: flex; height: 12px; }
+  .cbar span { flex: 1; }
+  .cbar--end { margin-top: clamp(60px, 8vw, 110px); }
+  .hero { display: grid; background: var(--ink); color: var(--text-on-dark); }
+  @media (min-width: 900px) { .hero { grid-template-columns: 1fr 1fr; } }
+  .hero__panel { position: relative; display: flex; align-items: center; padding: clamp(40px, 4.4vw, 72px) clamp(24px, 5vw, 64px); overflow: clip; }
+  .hero__reg { position: absolute; width: clamp(240px, 28vw, 420px); right: -12%; bottom: -14%; color: rgba(240, 237, 233, 0.055); pointer-events: none; }
+  .hero__panel-in { position: relative; width: 100%; max-width: 600px; }
+  .hero__title { margin-top: 24px; font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.02; letter-spacing: -0.045em; }
+  .hero__title .line { display: block; overflow: hidden; padding: 0.22em 0.14em; margin: -0.22em -0.14em; }
+  .hero__title .line__i { display: block; transform: translateY(145%); transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+  .hero__title .line:nth-child(1) .line__i { transition-delay: 0.12s; }
+  .hero__title .line:nth-child(2) .line__i { transition-delay: 0.22s; }
+  .hero__title .line:nth-child(3) .line__i { transition-delay: 0.32s; }
+  .hero.in .hero__title .line__i { transform: translateY(0); }
+  .hero__title .serif { font-size: 1.04em; }
+  @media (prefers-reduced-motion: reduce) { .hero__title .line__i { transform: none; } }
+  .hero__tag { margin-top: 26px; font-size: clamp(18px, 1.5vw, 23px); font-weight: 600; letter-spacing: -0.02em; }
+  .hero__tag em { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--brand-orange); }
+  .hero__lead { margin-top: 20px; display: grid; gap: 13px; max-width: 46ch; }
+  .hero__lead p { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
+  .hero__cta { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .hero__meta { margin-top: 34px; padding-top: 20px; border-top: 1.5px dashed rgba(240, 237, 233, 0.2); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240, 237, 233, 0.5); }
+  .hero__meta span { color: var(--brand-orange); }
+  .hero__visual { position: relative; overflow: hidden; min-height: 58vh; }
+  @media (min-width: 900px) { .hero__visual { min-height: auto; } }
+  .hero__visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .hero.in .hero__visual img { transform: scale(1); }
+  @media (prefers-reduced-motion: reduce) { .hero__visual img { transform: none; } }
+  .hero__chip { position: absolute; left: 18px; bottom: 18px; z-index: 2; display: inline-flex; gap: 8px; padding: 9px 15px; border-radius: var(--radius-pill); background: rgba(14, 22, 51, 0.78); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+  .hero__chip span { color: var(--brand-orange); }
+  .why { background: var(--ink); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
+  .reasons { display: grid; gap: 28px; }
+  @media (min-width: 820px) { .reasons { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+  .reason { padding-top: 26px; border-top: 1.5px solid rgba(240, 237, 233, 0.18); display: grid; gap: 14px; }
+  .reason__label { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
+  .reason__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
+  .reason__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(22px, 2vw, 28px); line-height: 1.18; letter-spacing: -0.02em; color: var(--text-on-dark); }
+  .reason__body { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
+  .cover { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
+  .feature { display: grid; gap: 36px; align-items: center; padding-block: clamp(40px, 5vw, 72px); border-top: 1.5px dashed var(--line-strong); }
+  .feature:last-child { border-bottom: 1.5px dashed var(--line-strong); }
+  @media (min-width: 900px) {
+    .feature { grid-template-columns: 1fr 1fr; gap: 72px; }
+    .feature--rev .feature__media { order: 2; }
+  }
+  .feature__media .crop__inner { aspect-ratio: 5 / 4; }
+  .feature__idx { display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+  .feature__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
+  .feature__body .dh { margin-top: 16px; }
+  .feature__lead { margin-top: 14px; font-size: var(--type-lead); line-height: 1.42; color: var(--text-ink); font-weight: 500; }
+  .feature__p { margin-top: 14px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+  .feature__scope { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line-hairline); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
+  .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 12px; font-weight: 500; transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
+  .chip:hover { background: var(--brand-orange); border-color: var(--brand-orange); color: #fff; }
+  .source { background: var(--navy); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
+  .source__grid { display: grid; gap: 52px; }
+  @media (min-width: 940px) { .source__grid { grid-template-columns: 0.92fr 1.08fr; gap: 70px; align-items: center; } }
+  .source__visual { position: relative; }
+  .source__main .crop__inner { aspect-ratio: 5 / 4; }
+  .source__stat { position: absolute; left: -10px; top: 36px; display: grid; gap: 3px; padding: 15px 19px; border-radius: 12px; background: var(--brand-orange); color: #fff; box-shadow: 0 16px 32px rgba(233, 78, 27, 0.42); }
+  .source__stat-num { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .source__stat-cap { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; max-width: 18ch; line-height: 1.4; }
+  .source__body .dh { margin-top: 16px; }
+  .source__lead { margin-top: 20px; font-size: var(--type-lead); line-height: 1.5; color: var(--text-on-dark); }
+  .source__p { margin-top: 15px; font-size: var(--type-body); line-height: 1.66; color: rgba(240, 237, 233, 0.78); }
+  .creds { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 9px; }
+  .cred { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: var(--radius-pill); border: 1px solid rgba(240, 237, 233, 0.2); font-family: var(--font-mono); font-size: 12px; font-weight: 500; transition: border-color 0.2s ease, background-color 0.2s ease; }
+  .cred:hover { border-color: var(--brand-orange); background: rgba(233, 78, 27, 0.16); }
+  .cred svg { width: 13px; height: 13px; color: var(--brand-orange); }
+  .faq { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
+  .faq__grid { display: grid; gap: 44px; }
+  @media (min-width: 1000px) {
+    .faq__grid { grid-template-columns: 0.78fr 1.22fr; gap: 72px; align-items: start; }
+    .faq__intro { position: sticky; top: 96px; }
+  }
+  .faq__intro .dh { margin-top: 18px; }
+  .faq__sub { margin-top: 18px; margin-bottom: 26px; font-size: var(--type-body); line-height: 1.62; color: var(--text-mute); }
+  .acc { display: grid; }
+  .acc__row { border-top: 1.5px solid var(--ink); }
+  .acc__row:last-child { border-bottom: 1.5px solid var(--ink); }
+  .acc__q { width: 100%; display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 16px; padding: 26px 0; background: transparent; border: none; text-align: left; cursor: pointer; }
+  .acc__qmark { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--brand-orange); padding-top: 3px; }
+  .acc__qtext { font-size: clamp(17px, 1.6vw, 21px); font-weight: 600; letter-spacing: -0.01em; color: var(--text-ink); transition: color 0.18s ease; }
+  .acc__q:hover .acc__qtext { color: var(--brand-orange); }
+  .acc__icon { position: relative; width: 22px; height: 22px; margin-top: 2px; }
+  .acc__icon span { position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; border-radius: 2px; background: var(--text-ink); transform: translate(-50%, -50%); transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+  .acc__icon span:last-child { transform: translate(-50%, -50%) rotate(90deg); }
+  .acc__q[aria-expanded='true'] .acc__icon span:last-child { transform: translate(-50%, -50%) rotate(0deg); }
+  .acc__q[aria-expanded='true'] .acc__icon span { background: var(--brand-orange); }
+  .acc__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.32s ease; }
+  .acc__q[aria-expanded='true'] + .acc__a { grid-template-rows: 1fr; }
+  .acc__a-inner { overflow: hidden; }
+  .acc__a-inner p { padding: 0 0 26px 41px; max-width: 64ch; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+  .end { position: relative; background: var(--ink); color: var(--text-on-dark); padding-top: clamp(80px, 11vw, 150px); overflow: clip; }
+  .end__reg { position: absolute; width: clamp(300px, 36vw, 560px); top: -16%; right: -9%; color: rgba(240, 237, 233, 0.05); pointer-events: none; }
+  .end__inner { position: relative; display: grid; justify-items: start; gap: 22px; }
+  .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
+  .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
+  .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+</style>
+
+<script>
+  const progBar = document.querySelector<HTMLElement>('.prog__bar');
+  if (progBar) {
+    const onScroll = () => {
+      const d = document.documentElement;
+      const max = d.scrollHeight - d.clientHeight;
+      progBar.style.transform = `scaleX(${max > 0 ? Math.min(1, d.scrollTop / max) : 0})`;
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+  const revealEls = document.querySelectorAll('.r, .r-clip, .hero');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -7% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+  const accQs = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc__q'));
+  accQs.forEach((q) => {
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') === 'true';
+      accQs.forEach((o) => o.setAttribute('aria-expanded', 'false'));
+      q.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+</script>

@@ -1,0 +1,119 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+---
+
+<HowtoLayout slug="notebooklm-decks-and-infographics">
+  <p class="standfirst">You already have the content. A category review deck from last quarter, a product sheet, a research PDF, a YouTube training, a few links the team keeps forwarding. What you do not have is time, especially when every request lands with a new deadline. NotebookLM's Studio workflow turns decks and infographics into a first-draft problem. That is useful. It only becomes valuable when you pair it with creative direction, brand rules, and a simple QA loop.</p>
+
+  <h2>What Studio can actually make</h2>
+  <p>Think of Studio as a draft engine, not a publishing tool. Out of the box it gives you two formats:</p>
+  <ul>
+    <li><strong>Infographics.</strong> A visual summary from a PDF, a set of URLs, or a transcript.</li>
+    <li><strong>Slide decks.</strong> A structured presentation built from those same sources.</li>
+  </ul>
+  <p>The output is rarely shippable on its own. Your job is to make the draft shippable. Everything below is the routine that gets you there.</p>
+
+  <h2>Set up your source pack once, reuse it forever</h2>
+  <p>NotebookLM is source-led. Output quality is highly correlated with input quality, and the easiest gains come before you touch a prompt.</p>
+
+  <h3>Pick one lane</h3>
+  <p>Do not start with "a deck for everyone". Start with a single, named use case:</p>
+  <ul>
+    <li>Retail sell-in deck.</li>
+    <li>Internal training deck.</li>
+    <li>POV carousel for LinkedIn.</li>
+  </ul>
+
+  <h3>Build a truth-layer document</h3>
+  <p>One page that locks down the facts NotebookLM will lean on:</p>
+  <ul>
+    <li>Approved product names, SKUs, specs.</li>
+    <li>Claims you can use, plus claims you cannot use.</li>
+    <li>Market differences that change the story per geography.</li>
+  </ul>
+  <p>This is the cheapest insurance against subtly wrong slides.</p>
+
+  <h3>Keep the source pack tight</h3>
+  <p>Aim for five to twelve inputs. More than that and the model starts averaging, less and it starts inventing.</p>
+  <ul>
+    <li>One PDF: a brief, a research piece, or a brand guideline.</li>
+    <li>Three to five URLs from sources you trust.</li>
+    <li>One transcript: training, webinar, interview.</li>
+    <li>One example deck whose structure you already like.</li>
+  </ul>
+
+  <h2>Turn a PDF into an infographic and a slide deck</h2>
+  <p>The simplest workflow and the fastest way to test quality. Create a notebook, upload the cleanest, most final version of the PDF, and open Studio.</p>
+
+  <h3>Generate the infographic first</h3>
+  <p>Infographics force clarity. If the model cannot reduce the document to a handful of blocks, the deck will wander too.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Infographic prompt</p>
+    <p class="prompt__body">"Create an infographic that explains the key framework in this PDF. Keep it scannable for business readers. Use five to seven blocks. Include definitions only if essential."</p>
+  </div>
+
+  <h3>Then the slide deck</h3>
+  <p>Decide what kind of deck you actually need. A presenter deck stays short and meeting-friendly. A self-reading deck carries more detail and survives being forwarded.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Slide deck prompt</p>
+    <p class="prompt__body">"Create a slide deck for a senior business audience. Structure it as context, key insight, implications, recommended actions. Keep each slide to one message. Use only information supported by the PDF."</p>
+  </div>
+
+  <p>Export and move into your brand template. Treat the export as raw material. The brand system comes next.</p>
+
+  <h2>Turn multiple URLs into a comparison deck</h2>
+  <p>The most realistic modern-work scenario. Your team already works from links. Add three to five URLs on one topic, keep the question tight, and avoid mixing unrelated material.</p>
+
+  <h3>Ask for the comparison infographic first</h3>
+  <div class="prompt">
+    <p class="prompt__label">Comparison infographic prompt</p>
+    <p class="prompt__body">"Compare these sources in a side-by-side infographic. Use columns for what it is, when to use it, strengths, limitations, and practical examples. Keep language non-technical."</p>
+  </div>
+
+  <h3>Then expand into the deck</h3>
+  <div class="prompt">
+    <p class="prompt__label">Comparison deck prompt</p>
+    <p class="prompt__body">"Turn the comparison into a ten-slide deck. Slide one is the POV. Slides two to eight cover the comparison. Slide nine is recommendations. Slide ten is next steps."</p>
+  </div>
+
+  <h2>Turn a YouTube video into a training deck</h2>
+  <p>Video is where knowledge tends to hide. NotebookLM will read the transcript and turn it into something a team can actually run on.</p>
+
+  <h3>Generate a training-first deck</h3>
+  <p>Training decks fail when they are summaries. They win when they teach a sequence.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Training deck prompt</p>
+    <p class="prompt__body">"Create a training deck from this transcript. Include learning objectives, key concepts, a step-by-step process, common mistakes, and a short checklist at the end. Keep it practical for a team that needs to execute."</p>
+  </div>
+
+  <h3>Add a one-page infographic recap</h3>
+  <p>This becomes the visual SOP people actually pin above their desk.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Training infographic prompt</p>
+    <p class="prompt__body">"Create a one-page infographic summarising the process steps and checks. Make it usable as an internal SOP."</p>
+  </div>
+
+  <h2>The shipping layer: what to QA every time</h2>
+  <p>This is where most teams lose trust. The deck looks finished, but it is subtly wrong. Run the same pass every time, and the small errors stop slipping through.</p>
+  <ul>
+    <li><strong>Truth.</strong> Names, SKUs, specs, timing.</li>
+    <li><strong>Claims.</strong> Every number and promise is supported by a source.</li>
+    <li><strong>Narrative.</strong> One storyline, no filler slides.</li>
+    <li><strong>Brand voice.</strong> Terminology, tone, the words you never say.</li>
+    <li><strong>Design rules.</strong> Typography, hierarchy, logo use, spacing.</li>
+    <li><strong>Localisation.</strong> Language and market context, not just translation.</li>
+  </ul>
+
+  <h2>First drafts are cheap, trust is not</h2>
+  <p>NotebookLM makes it easy to produce more decks and more infographics. That is not the win. The win is a repeatable lane where sources are curated, drafts are generated fast, QA protects accuracy, and brand templates make the output consistent across markets.</p>
+
+  <blockquote>The deck looking finished is not the goal. The deck holding up under scrutiny is.</blockquote>
+
+  <div class="callout">
+    <p>hubStudio sets up this lane end-to-end: source pack design, prompt libraries, brand templates, QA rules, and the production workflows that can actually run at scale.</p>
+  </div>
+</HowtoLayout>

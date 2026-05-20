@@ -114,6 +114,14 @@ const menu: MenuItem[] = [
         ],
       },
       {
+        heading: 'AI Production',
+        links: [
+          { label: 'Image', href: '/solutions/ai-production/image' },
+          { label: 'Video', href: '/solutions/ai-production/video' },
+          { label: 'Content', href: '/solutions/ai-production/content' },
+        ],
+      },
+      {
         heading: 'Platforms',
         subgroups: [
           {
@@ -780,13 +788,13 @@ const menu: MenuItem[] = [
   /* ---- Solutions panel ----------------------------------------- */
   .mega__solutions {
     display: grid;
-    grid-template-columns: minmax(170px, 1fr) 2.5fr;
-    gap: 40px;
+    gap: 32px;
     align-content: start;
   }
   .mega__sol-side {
     display: grid;
-    gap: 28px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
     align-content: start;
   }
   .mega__sol-plat-grid {
