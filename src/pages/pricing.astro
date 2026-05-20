@@ -1,0 +1,1776 @@
+---
+/**
+ * Pricing (`/pricing`).
+ * Editorial magazine treatment: full-bleed cover, sticky chapter index,
+ * three chapter spreads, marquee, comparison matrix, filtered FAQ, dark
+ * closing. Scroll-linked motion, magnetic CTAs, drawing-on-scroll timeline.
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const models = ['Asset-Based', 'Project-Based', 'Subscription'];
+
+const assetVolume = [
+  { k: 'Image production', d: 'Briefed, finalized, ready to ship.' },
+  { k: 'Short video', d: 'Vertical, fast, made for the feed.' },
+  { k: 'Product copy & transcreation', d: 'Written natively, market by market.' },
+  { k: 'Social captions', d: 'Tone-of-voice locked across channels.' },
+];
+
+const assetProject = [
+  'Brand identity', 'Website design', 'Packaging & merch', 'Motion design',
+  'Illustration', 'Storyboard', 'Presentation & pitch decks',
+  'Ebooks & reports', 'Press releases', 'Concept creation',
+  'Creative & marketing strategy', 'Long-form video',
+  'Live photo & video shoots', '3D & CGI',
+];
+
+const projectTimeline = [
+  {
+    label: 'Brief',
+    note: 'In your words. A page is enough.',
+    icon: 'M4 4h12v16H4z M7 9h6 M7 13h6 M7 17h4',
+  },
+  {
+    label: 'Proposal',
+    note: '48-hour binding response.',
+    icon: 'M4 12l4 4 12-12',
+  },
+  {
+    label: 'Production',
+    note: 'Creative director, art director, AIGC engineer, copywriter, producer.',
+    icon: 'M4 12a8 8 0 1 0 8-8 M12 8v4l3 2',
+  },
+  {
+    label: 'First review',
+    note: 'Inside two weeks of kickoff.',
+    icon: 'M3 12s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6z M12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z',
+  },
+  {
+    label: 'Delivery',
+    note: 'Full delivery inside four weeks maximum.',
+    icon: 'M5 13l4 4L19 7',
+  },
+];
+
+const projectIncluded = [
+  'Creative direction and concept development',
+  'Production across image, video, text, motion, design, and live shoots',
+  'AI model fine-tuning when the brand calls for it, Lora stays your property',
+  'Post-production, rounds of modification, final asset packaging',
+  'Project management with a single point of contact',
+];
+
+const projectUseCases = [
+  'Product launches and seasonal campaigns',
+  'eCommerce content packs across SKUs and platforms',
+  'Pitch work for new business',
+  'Brand identity refreshes paired with full asset libraries',
+  'Multi-market campaign adaptations',
+];
+
+const retainerIncluded = [
+  { k: 'Dedicated team', d: 'Creative director, art director, AIGC engineer.' },
+  { k: 'Monthly volume', d: 'Agreed upfront, rolls over inside the quarter.' },
+  { k: 'Across 20 services', d: 'Mix-and-match every format your brand needs.' },
+  { k: 'Brand guardrails', d: 'Prompt library, consistency sets, brand-trained models.' },
+  { k: 'Weekly cadence', d: 'Published SLA we share with your team.' },
+  { k: 'Live shoot days', d: 'Bundled inside the retainer when the brief calls for it.' },
+];
+
+const retainerTerms = [
+  { months: '3 months', sub: 'Pilot a workflow.' },
+  { months: '6 months', sub: 'Lock in a season.' },
+  { months: '12 months', sub: 'Build a content engine.' },
+];
+
+const currencies = ['USD', 'EUR', 'GBP', 'HKD', 'CNY'];
+
+const matrixRows = [
+  {
+    feature: 'Best for',
+    a: 'Volume work, scaling up or down each month',
+    p: 'Defined campaigns with a clear scope and deadline',
+    s: 'Continuous content across markets and channels',
+  },
+  {
+    feature: 'Commitment',
+    a: 'Per order, no lock-in',
+    p: 'Per brief, milestone-based',
+    s: '3, 6, or 12-month terms',
+  },
+  {
+    feature: 'First delivery',
+    a: 'In days, on most volume work',
+    p: 'First review in two weeks',
+    s: 'Weekly cadence, priority queue',
+  },
+  {
+    feature: 'Rounds of modification',
+    a: 'Three on finalized work',
+    p: 'Three on finalized work',
+    s: 'More, on retainer',
+  },
+  {
+    feature: 'Lora training',
+    a: 'Add-on when it fits',
+    p: 'Included when the brand calls for it',
+    s: 'Included, with prompt library',
+  },
+  {
+    feature: 'Asset ownership',
+    a: 'Yours on payment',
+    p: 'Yours on payment',
+    s: 'Yours on payment',
+  },
+  {
+    feature: 'Surge capacity',
+    a: 'Larger order with priority',
+    p: 'Re-scope mid-flight',
+    s: 'Double volume, no renegotiation',
+  },
+  {
+    feature: 'Single point of contact',
+    a: 'Producer on the order',
+    p: 'Project lead, kickoff to delivery',
+    s: 'Dedicated team, embedded',
+  },
+];
+
+type FaqCategory = 'Engagement' | 'Ownership' | 'Pricing' | 'Delivery' | 'Production';
+
+const faqs: { c: FaqCategory; q: string; a: string }[] = [
+  { c: 'Engagement', q: 'Can we start small and grow into a subscription?', a: 'Yes. Most clients begin with an Asset-Based order or a single Project, then move to a Studio Retainer once the volume justifies it. The transition is friction-free, and the brand assets, prompts, and trained models we built for you carry across.' },
+  { c: 'Engagement', q: 'Do you sign annual contracts?', a: 'Only when it serves you. Asset and Project work has no lock-in. Studio Retainers run on three, six, or twelve-month terms, with the longer commitments unlocking better unit economics.' },
+  { c: 'Ownership', q: 'Who owns the assets and the prompts?', a: 'You do. Full ownership of finalized assets and the prompts used to produce them transfers on payment. AI models and Loras trained on your products remain hubStudio property by default. Full transfer of trained models is available as a separate licensing arrangement, quoted on request.' },
+  { c: 'Ownership', q: 'What about confidentiality and IP protection?', a: 'NDA on request, signed before any brief is shared. Trained on your shots, your references, your guidelines. Nothing leaks into a public model, nothing is reused for another client.' },
+  { c: 'Pricing', q: 'How is pricing set?', a: 'Final quotes reflect scope, complexity, volume, and timeline. We send a binding proposal within 48 hours of receiving your brief. Asset, Project, and Subscription rates are shared transparently once we understand what you need.' },
+  { c: 'Pricing', q: 'What does the MOQ actually mean? Can I order one image?', a: 'MOQs exist because briefing, onboarding, and quality control carry a fixed cost regardless of volume. Below the minimum, the economics no longer make sense for either side. If your need is genuinely a one-off, we can absorb it inside a Project quote or point you to a freelancer who fits better.' },
+  { c: 'Delivery', q: 'How fast can you deliver?', a: 'Three days is the floor on most volume work, not the exception. Project kickoffs deliver first review inside two weeks, full delivery inside four weeks maximum. Retainer clients work on a published weekly cadence with priority queue access.' },
+  { c: 'Delivery', q: 'What if the first delivery is not right?', a: 'Every asset includes rounds of modification (three on finalized work, more on retainer). If we miss the brief, we redo the work, no extra charge. The brief alignment call happens before any production starts, which is why this rarely happens.' },
+  { c: 'Production', q: 'Do you cover languages and markets outside English?', a: 'Yes. We work in English, French, German, Spanish, and Chinese. Operations run from China and the Philippines, with creative talent producing for clients across multiple markets. Transcreation is handled by people who write natively in the target language, not translated into it.' },
+  { c: 'Production', q: 'Do you actually shoot, or only generate?', a: 'Both. We run a live action studio for real photo and video shoots, used by brands selling worldwide. Plenty of briefs are best served generated, or as a hybrid. We tell you which makes sense, before you commit. The savings from AI generation are real on the briefs where it fits, and we pass them through.' },
+  { c: 'Production', q: 'What inputs do you need from us to get started?', a: 'For images: a creative brief, your brand visual identity, product shots if applicable. For video: the above plus a finalized script (or we write one). For copy: tone-of-voice guide and product information. For shoots: brief, brand guidelines, product, talent direction if any. We have a one-page brief template that does the heavy lifting.' },
+  { c: 'Production', q: 'Can you integrate with our DAM, PIM, or eCommerce platform?', a: 'Yes, on the hub4You Private Platform. We build connectors to Salsify, Akeneo, Bynder, Adobe Commerce, Shopify Plus, Salesforce Commerce Cloud, and most enterprise systems. Integration scope is part of the setup quote.' },
+  { c: 'Pricing', q: 'What payment terms do you offer?', a: 'Asset orders run on a deposit and balance model. Projects are milestone-based. Retainers are billed monthly in advance. Net 30 is available for established clients and listed entities.' },
+  { c: 'Pricing', q: 'Which currencies do you bill in?', a: 'USD by default. We also invoice in EUR, GBP, HKD, and CNY on request. Cross-border invoicing runs through Beyond Border Group Limited in Hong Kong.' },
+  { c: 'Ownership', q: 'Do you take usage rights into account?', a: 'Pricing assumes unlimited internal and external commercial use across owned and paid channels. Broadcast-quality TV usage, out-of-home at scale, or talent likeness licensing for AI brand ambassadors are quoted separately. Tell us where it runs, we will be straightforward about any uplift.' },
+  { c: 'Engagement', q: 'What happens to my retainer volume if we do not use it?', a: 'Unused monthly volume rolls into the next month within the same quarter. Anything beyond that resets. We would rather flag underutilisation early and rebalance the plan than let budget go to waste.' },
+  { c: 'Delivery', q: 'Can you scale up for a peak season or product launch?', a: 'Yes. Retainer clients have a published surge clause that lets them double volume for one to two months without renegotiating the contract. Asset clients can simply place a bigger order with priority handling for a small uplift.' },
+  { c: 'Engagement', q: 'What is the first step?', a: 'Send a brief or a rough idea to hello@hubstudio.ai. We come back within 24 hours with clarifying questions, a proposal, and three to five sample visuals on the house so you can judge the output before you commit.' },
+];
+
+const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 'Delivery', 'Production', 'Ownership'];
+---
+
+<Layout
+  title="Pricing | hubStudio"
+  description="Three ways to work with hubStudio: Asset-Based per-unit pricing, Project-Based campaigns, or a Studio Retainer. No mystery fees, no forced subscriptions. Pick the model that fits how your team actually works."
+>
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="hero__tag">Pricing</span>
+        <h1 class="hero__display reveal">
+          Three ways to work with us. One <em>studio</em>.
+        </h1>
+        <p class="hero__lead">
+          Every brand has a different content rhythm. Pick the model that fits
+          how your team actually works. No forced subscriptions, no mystery
+          fees, no twelve-page contracts.
+        </p>
+
+        <div class="hero__picker" role="tablist" aria-label="Pricing models">
+          {
+            models.map((m) => (
+              <a
+                class="hero__picker-item"
+                role="tab"
+                href={`#${m === 'Subscription' ? 'subscription' : m === 'Asset-Based' ? 'asset-based' : 'project-based'}`}
+                data-model={m}
+              >
+                <span class="hero__picker-dot" aria-hidden="true"></span>
+                {m}
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="hero__cta">
+          <Button variant="primary" href="/contact" class="js-magnetic">Start a project</Button>
+          <Button variant="secondary" href="#matrix" class="js-magnetic">Compare the three</Button>
+        </div>
+      </div>
+
+      <figure class="hero__visual">
+        <img
+          src="/Images/pricing-hero.png"
+          alt="A hand poised with a fountain pen over the signature line of a typeset proposal on cream cardstock"
+          class="js-parallax"
+          data-speed="0.05"
+          width="1408"
+          height="768"
+          fetchpriority="high"
+        />
+        <span class="hero__visual-chip">48-hour binding proposal</span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STAT STRIP
+       ============================================================ -->
+  <section class="stats" id="manifesto">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat-block">
+          <span class="stat-block__num" data-count="20">0</span>
+          <span class="stat-block__label">Service lines under one roof</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-block__num"><span data-count="48">0</span>h</span>
+          <span class="stat-block__label">Binding proposal from brief</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-block__num">&lt;<span data-count="4">0</span>w</span>
+          <span class="stat-block__label">Project delivery, maximum</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-block__num"><span data-count="16">0</span></span>
+          <span class="stat-block__label">Creative markets we produce in</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER: ASSET-BASED
+       ============================================================ -->
+  <section class="chapter chapter--light" id="asset-based">
+    <div class="container chapter__grid">
+      <header class="chapter__head">
+        <span class="chapter__tag">Asset-Based</span>
+        <h2 class="chapter__display reveal">
+          Pay for what <em>you ship</em>.
+        </h2>
+        <p class="chapter__lead">
+          You brief, we deliver. Across twenty service lines, every format your
+          brand needs, produced in days, not weeks. Generated, shot, or hybrid,
+          we tell you which makes sense before you commit.
+        </p>
+      </header>
+
+      <figure class="chapter__photo chapter__photo--asset js-tilt" data-tilt="6">
+        <img src="/Images/pricing-asset.png" alt="A concrete worktable covered with finished printed brand materials laid out in a loose grid" loading="lazy" width="1024" height="768" />
+        <span class="chapter__photo-chip">Volume + per-project · One studio</span>
+      </figure>
+
+      <div class="chapter__body">
+        <div class="pillar-row">
+          <article class="pillar js-spotlight">
+            <p class="pillar__head"><span></span>Volume formats, MOQs apply</p>
+            <ul class="pillar__list">
+              {assetVolume.map((it) => (
+                <li>
+                  <span class="pillar__list-k">{it.k}</span>
+                  <span class="pillar__list-d">{it.d}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="pillar__note">
+              Finalized, ready-to-use, rounds of modification included. The full
+              MOQ list ships on request.
+            </p>
+          </article>
+
+          <article class="pillar js-spotlight">
+            <p class="pillar__head"><span></span>Quoted per project, no MOQ</p>
+            <ul class="chip-cluster">
+              {assetProject.map((it) => <li class="chip-cluster__chip">{it}</li>)}
+            </ul>
+            <p class="pillar__note">
+              Pre and post-production quoted as add-ons across every format:
+              scripting, voice-over, editing, subtitles, sound design, retouching,
+              talent direction.
+            </p>
+          </article>
+        </div>
+
+        <div class="chapter__cta">
+          <Button variant="primary" href="/contact" class="js-magnetic">Get a quote on an asset order</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S5 : CHAPTER 2: PROJECT-BASED
+       ============================================================ -->
+  <section class="chapter chapter--cream" id="project-based">
+    <div class="container chapter__grid chapter__grid--reverse">
+      <header class="chapter__head">
+        <span class="chapter__tag">Project-Based</span>
+        <h2 class="chapter__display reveal">
+          Campaigns. Launches. Brand <em>moments</em>.
+        </h2>
+        <p class="chapter__lead">
+          We build the project team around your brief. Creative director, art
+          director, AIGC engineer, copywriter, producer. One quote. One delivery
+          schedule. One invoice.
+        </p>
+      </header>
+
+      <figure class="chapter__photo chapter__photo--project js-tilt" data-tilt="-5">
+        <img src="/Images/pricing-project.png" alt="A small creative team gathered around a long studio worktable reviewing a printed campaign rollout" loading="lazy" width="1024" height="768" />
+        <span class="chapter__photo-chip chapter__photo-chip--right">One team · One quote · One invoice</span>
+      </figure>
+
+      <div class="chapter__body">
+        <div class="timeline" data-timeline>
+          <svg class="timeline__path" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M40 40 C 220 0, 320 80, 500 40 S 780 0, 960 40" />
+          </svg>
+          <ol class="timeline__list">
+            {projectTimeline.map((t) => (
+              <li class="timeline__step">
+                <span class="timeline__node">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d={t.icon} fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="timeline__label">{t.label}</span>
+                <span class="timeline__note">{t.note}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="pair-row">
+          <article class="pair-card pair-card--white">
+            <p class="pair-card__head"><span></span>Included by default</p>
+            <ul class="pair-card__list">
+              {projectIncluded.map((it) => <li>{it}</li>)}
+            </ul>
+          </article>
+          <article class="pair-card pair-card--white">
+            <p class="pair-card__head"><span></span>Typical use cases</p>
+            <ul class="pair-card__list">
+              {projectUseCases.map((it) => <li>{it}</li>)}
+            </ul>
+          </article>
+        </div>
+
+        <div class="chapter__cta">
+          <Button variant="primary" href="/contact" class="js-magnetic">Brief us on a project</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S6 : CHAPTER 3: SUBSCRIPTION (dark immersive)
+       ============================================================ -->
+  <section class="chapter chapter--dark" id="subscription">
+    <div class="chapter__dark-bg" aria-hidden="true">
+      <div class="chapter__dark-blob chapter__dark-blob--a"></div>
+      <div class="chapter__dark-blob chapter__dark-blob--b"></div>
+    </div>
+
+    <div class="container subscription__inner">
+      <header class="chapter__head chapter__head--center">
+        <span class="chapter__tag chapter__tag--on-dark">Subscription</span>
+        <h2 class="chapter__display chapter__display--center reveal">
+          Your studio <em>on retainer</em>.
+        </h2>
+        <p class="chapter__lead chapter__lead--on-dark">
+          Predictable monthly cost. Compounding velocity. A managed creative
+          team that operates like an extension of yours. Mix-and-match across
+          all twenty service lines on a published weekly cadence.
+        </p>
+      </header>
+
+      <div class="retainer">
+        <div class="retainer__grid">
+          {retainerIncluded.map((it) => (
+            <article class="retainer__cell">
+              <p class="retainer__cell-k">{it.k}</p>
+              <p class="retainer__cell-d">{it.d}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="retainer__terms">
+          <p class="retainer__terms-head">Terms that fit how you scale</p>
+          <div class="retainer__terms-row">
+            {retainerTerms.map((t) => (
+              <button class="retainer__term" data-term type="button">
+                <span class="retainer__term-mo">{t.months}</span>
+                <span class="retainer__term-sub">{t.sub}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="retainer__currencies">
+          <span class="retainer__currencies-label">Billed in</span>
+          <div class="retainer__currencies-row">
+            {currencies.map((c) => <span class="retainer__currency">{c}</span>)}
+          </div>
+        </div>
+
+        <div class="chapter__cta chapter__cta--center">
+          <Button variant="primary" href="/contact" class="js-magnetic">Scope a retainer</Button>
+        </div>
+      </div>
+    </div>
+
+    <figure class="subscription__photo" aria-hidden="true">
+      <img src="/Images/pricing-subscription.png" alt="" loading="lazy" width="1024" height="768" />
+    </figure>
+  </section>
+
+  <!-- ============================================================
+       S7 : COMPARISON MATRIX
+       ============================================================ -->
+  <section class="matrix" id="matrix">
+    <div class="container">
+      <header class="matrix__head">
+        <span class="chapter__tag">At a glance</span>
+        <h2 class="chapter__display reveal">
+          Three models, <em>side by side</em>.
+        </h2>
+      </header>
+
+      <div class="matrix__wrap">
+        <table class="matrix__table">
+          <thead>
+            <tr>
+              <th scope="col" class="matrix__th matrix__th--feature">&nbsp;</th>
+              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--orange">Asset-Based</span></th>
+              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--navy">Project-Based</span></th>
+              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--ink">Subscription</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {matrixRows.map((row) => (
+              <tr class="matrix__row">
+                <th scope="row" class="matrix__feature">{row.feature}</th>
+                <td>{row.a}</td>
+                <td>{row.p}</td>
+                <td>{row.s}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S8 : FAQ (filtered)
+       ============================================================ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <header class="faq__head">
+        <span class="chapter__tag">Frequently asked</span>
+        <h2 class="chapter__display reveal">
+          The questions buyers <em>always</em> ask.
+        </h2>
+      </header>
+
+      <div class="faq__filter" role="tablist" aria-label="FAQ categories">
+        {faqCategories.map((cat, i) => (
+          <button
+            class="faq__filter-btn"
+            type="button"
+            role="tab"
+            data-filter={cat}
+            aria-selected={i === 0 ? 'true' : 'false'}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div class="faq__list">
+        {faqs.map((item) => (
+          <details class="faq__item" data-category={item.c}>
+            <summary class="faq__q">
+              <span class="faq__cat">{item.c}</span>
+              <span class="faq__q-text">{item.q}</span>
+              <svg class="faq__chev" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </summary>
+            <p class="faq__a">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S9 : CLOSING (dark, immersive, animated cube)
+       ============================================================ -->
+  <section class="cta">
+    <div class="cta__bg" aria-hidden="true">
+      <div class="cta__blob cta__blob--a"></div>
+      <div class="cta__blob cta__blob--b"></div>
+      <div class="cta__grain"></div>
+    </div>
+
+    <div class="container cta__inner">
+      <svg class="cta__cube js-cube" viewBox="0 0 120 130" aria-hidden="true">
+        <path d="M60 8 L112 38 L60 68 L8 38 Z" fill="var(--brand-orange)" />
+        <path d="M8 38 L60 68 L60 122 L8 92 Z" fill="var(--brand-navy)" />
+        <path d="M112 38 L60 68 L60 122 L112 92 Z" fill="var(--brand-navy-deep)" />
+      </svg>
+
+      <span class="chapter__tag chapter__tag--on-dark">Ready when you are</span>
+      <h2 class="cta__display reveal">
+        Let us build something <em>worth paying for</em>.
+      </h2>
+      <p class="cta__lead">
+        Send us a brief or a question. We come back with a clear proposal, a few
+        sample visuals on the house, and an honest view of which model fits your
+        team best.
+      </p>
+
+      <div class="cta__buttons">
+        <Button variant="primary" href="/contact" class="js-magnetic">Start a project</Button>
+        <Button variant="on-dark" href="/contact" class="js-magnetic">Book a 30-minute call</Button>
+      </div>
+
+      <p class="cta__hello">
+        <a href="mailto:hello@hubstudio.ai" class="cta__hello-link">hello@hubstudio.ai</a>
+        <span class="cta__hello-sep">&middot;</span>
+        <span>Studios across 16 markets</span>
+      </p>
+      <p class="cta__fine">All quotes valid 30 days. Tax excluded where applicable.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ============================================================
+     PRICING PAGE : editorial 2026 treatment
+     Tokens come from global.css. Local rules below add depth,
+     parallax, marquee, sticky rail, drawing timeline, matrix.
+     ============================================================ */
+
+  /* ----------------------------------------------------------------
+     Hero
+     ---------------------------------------------------------------- */
+  .hero {
+    position: relative;
+    background: var(--bg-cream);
+    padding-block: 56px 64px;
+  }
+  @media (min-width: 1024px) {
+    .hero {
+      padding-block: 88px 96px;
+    }
+  }
+  .hero__grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 64px;
+    }
+  }
+  .hero__copy {
+    display: grid;
+    gap: 24px;
+    align-content: start;
+  }
+  .hero__tag {
+    align-self: start;
+    display: inline-flex;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(233, 78, 27, 0.12);
+    color: var(--brand-orange);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+  .hero__display {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+    font-size: clamp(36px, 4.6vw, 64px);
+    color: var(--text-ink);
+    margin: 0;
+  }
+  .hero__display em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange);
+  }
+  .hero__lead {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .hero__picker {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px;
+    border-radius: var(--radius-pill);
+    background: #fff;
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+    width: fit-content;
+    max-width: 100%;
+  }
+  .hero__picker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-ink);
+    white-space: nowrap;
+    transition: background-color 180ms, color 180ms;
+  }
+  .hero__picker-item:hover {
+    background: rgba(233, 78, 27, 0.08);
+    color: var(--brand-orange);
+  }
+  .hero__picker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .hero__cta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .hero__visual {
+    position: relative;
+    margin: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 24px 60px rgba(10, 10, 20, 0.12);
+  }
+  @media (min-width: 1024px) {
+    .hero__visual {
+      aspect-ratio: 5 / 6;
+    }
+  }
+  .hero__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero__visual-chip {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--text-ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* ----------------------------------------------------------------
+     Stat strip
+     ---------------------------------------------------------------- */
+  .stats {
+    padding-block: 56px;
+    background: var(--bg-cream);
+    border-top: 1px solid var(--line-hairline);
+  }
+  @media (min-width: 1024px) {
+    .stats { padding-block: 72px; }
+  }
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+  @media (min-width: 900px) {
+    .stats__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+  }
+  .stat-block {
+    display: grid;
+    gap: 10px;
+  }
+  .stat-block__num {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    font-size: clamp(40px, 4vw, 56px);
+    line-height: 1;
+    color: var(--text-ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-block__label {
+    font-size: var(--type-small);
+    line-height: 1.45;
+    color: var(--text-mute);
+    max-width: 24ch;
+  }
+
+  /* ----------------------------------------------------------------
+     CHAPTER (shared)
+     ---------------------------------------------------------------- */
+  .chapter {
+    position: relative;
+    padding-block: clamp(72px, 9vw, 128px);
+  }
+  .chapter--light { background: var(--bg-white); }
+  .chapter--cream { background: var(--bg-cream); }
+  .chapter--dark { overflow: hidden; }
+
+  .chapter__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(233, 78, 27, 0.12);
+    color: var(--brand-orange);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .chapter__tag--on-dark {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-on-dark);
+  }
+
+  .chapter__display {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    font-size: clamp(34px, 4.2vw, 56px);
+    margin: 0;
+    max-width: 20ch;
+  }
+  .chapter__display em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange);
+  }
+  .chapter__display--center {
+    margin-inline: auto;
+    text-align: center;
+    max-width: 24ch;
+  }
+
+  .chapter__lead {
+    font-size: clamp(17px, 1.3vw, 20px);
+    line-height: 1.55;
+    color: var(--text-mute);
+    max-width: 52ch;
+    margin-top: 28px;
+  }
+  .chapter__lead--on-dark {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .chapter__head {
+    display: grid;
+    gap: 4px;
+    align-content: start;
+  }
+  .chapter__head--center {
+    text-align: center;
+    justify-items: center;
+  }
+  .chapter__head .chapter__tag {
+    margin-bottom: 24px;
+  }
+  .chapter__cta { margin-top: 48px; }
+  .chapter__cta--center {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Chapter grid: head + photo on row 1, body full-width on row 2 */
+  .chapter__grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 1024px) {
+    .chapter__grid {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      grid-template-areas:
+        'head photo'
+        'body body';
+      column-gap: 56px;
+      row-gap: 64px;
+      align-items: center;
+    }
+    .chapter__grid > .chapter__head { grid-area: head; }
+    .chapter__grid > .chapter__photo { grid-area: photo; }
+    .chapter__grid > .chapter__body { grid-area: body; }
+
+    .chapter__grid--reverse {
+      grid-template-areas:
+        'photo head'
+        'body body';
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    }
+  }
+  .chapter__photo {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    margin: 0;
+    transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 30px 80px rgba(10, 10, 20, 0.16);
+  }
+  .chapter__photo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .chapter__photo:hover img { transform: scale(1.04); }
+  .chapter__photo-chip {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--text-ink);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .chapter__photo-chip--right {
+    left: auto;
+    right: 20px;
+  }
+
+  /* Pillar row (Asset chapter) */
+  .pillar-row {
+    margin-top: 56px;
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 768px) {
+    .pillar-row { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  .pillar {
+    position: relative;
+    padding: 32px;
+    border-radius: 24px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-hairline);
+    isolation: isolate;
+    overflow: hidden;
+    transition: transform 240ms ease-out, box-shadow 240ms ease-out;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(10, 10, 20, 0.08);
+  }
+  .js-spotlight::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(233, 78, 27, 0.18), transparent 65%);
+    opacity: 0;
+    transition: opacity 240ms;
+  }
+  .js-spotlight:hover::before { opacity: 1; }
+  .pillar__head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 22px;
+  }
+  .pillar__head span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .pillar__list {
+    display: grid;
+    gap: 16px;
+  }
+  .pillar__list li {
+    padding-block: 12px;
+    border-top: 1px solid var(--line-hairline);
+    display: grid;
+    gap: 4px;
+  }
+  .pillar__list li:first-child { border-top: 0; padding-top: 0; }
+  .pillar__list-k {
+    font-size: var(--type-body);
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .pillar__list-d {
+    font-size: var(--type-small);
+    color: var(--text-mute);
+    line-height: 1.5;
+  }
+  .pillar__note {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-hairline);
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .chip-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip-cluster__chip {
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: #fff;
+    border: 1px solid var(--line-hairline);
+    font-size: var(--type-small);
+    color: var(--text-ink);
+    transition: background-color 200ms, color 200ms, border-color 200ms, transform 200ms;
+  }
+  .chip-cluster__chip:hover {
+    background: var(--brand-orange);
+    color: #fff;
+    border-color: var(--brand-orange);
+    transform: translateY(-2px);
+  }
+
+  /* Project chapter : Timeline */
+  .timeline {
+    position: relative;
+    margin-top: 56px;
+    padding-block: 16px 8px;
+  }
+  .timeline__path {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 80px;
+    pointer-events: none;
+    top: 18px;
+  }
+  .timeline__path path {
+    fill: none;
+    stroke: var(--brand-orange);
+    stroke-width: 2;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    transition: stroke-dashoffset 1400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .timeline.is-in .timeline__path path { stroke-dashoffset: 0; }
+
+  .timeline__list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 800px) {
+    .timeline__list {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+  }
+  .timeline__step {
+    display: grid;
+    gap: 10px;
+    justify-items: start;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms, transform 600ms;
+  }
+  @media (min-width: 800px) {
+    .timeline__step { justify-items: center; text-align: center; }
+  }
+  .timeline.is-in .timeline__step { opacity: 1; transform: translateY(0); }
+  .timeline.is-in .timeline__step:nth-child(1) { transition-delay: 100ms; }
+  .timeline.is-in .timeline__step:nth-child(2) { transition-delay: 260ms; }
+  .timeline.is-in .timeline__step:nth-child(3) { transition-delay: 420ms; }
+  .timeline.is-in .timeline__step:nth-child(4) { transition-delay: 580ms; }
+  .timeline.is-in .timeline__step:nth-child(5) { transition-delay: 740ms; }
+
+  .timeline__node {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--line-hairline);
+    color: var(--brand-orange);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(10, 10, 20, 0.08);
+    transition: transform 240ms, border-color 240ms;
+  }
+  .timeline__step:hover .timeline__node {
+    transform: scale(1.08) rotate(-2deg);
+    border-color: var(--brand-orange);
+  }
+  .timeline__node svg { width: 22px; height: 22px; }
+  .timeline__label {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--type-body);
+    color: var(--text-ink);
+  }
+  .timeline__note {
+    font-size: var(--type-small);
+    color: var(--text-mute);
+    line-height: 1.45;
+    max-width: 22ch;
+  }
+
+  /* Pair row (Project chapter included + use cases) */
+  .pair-row {
+    margin-top: 56px;
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 768px) {
+    .pair-row { grid-template-columns: 1fr 1fr; }
+  }
+  .pair-card {
+    padding: 32px;
+    border-radius: 24px;
+  }
+  .pair-card--white {
+    background: #fff;
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .pair-card__head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 22px;
+  }
+  .pair-card__head span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .pair-card__list {
+    display: grid;
+    gap: 12px;
+  }
+  .pair-card__list li {
+    position: relative;
+    padding-left: 24px;
+    font-size: var(--type-body);
+    line-height: 1.55;
+  }
+  .pair-card__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    opacity: 0.7;
+  }
+
+  /* ----------------------------------------------------------------
+     Subscription chapter (dark immersive)
+     ---------------------------------------------------------------- */
+  .chapter--dark {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    isolation: isolate;
+  }
+  .chapter__dark-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .chapter__dark-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+  }
+  .chapter__dark-blob--a {
+    width: 600px;
+    height: 600px;
+    top: -120px;
+    left: -120px;
+    background: radial-gradient(circle, rgba(30, 58, 138, 0.65), transparent 70%);
+    animation: float-a 24s ease-in-out infinite;
+  }
+  .chapter__dark-blob--b {
+    width: 480px;
+    height: 480px;
+    bottom: -160px;
+    right: -120px;
+    background: radial-gradient(circle, rgba(233, 78, 27, 0.42), transparent 70%);
+    animation: float-b 20s ease-in-out infinite;
+  }
+
+  .subscription__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 64px;
+  }
+  .retainer {
+    max-width: 1080px;
+    margin-inline: auto;
+    width: 100%;
+    display: grid;
+    gap: 48px;
+    padding: 48px;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  @media (max-width: 767px) {
+    .retainer { padding: 28px; }
+  }
+  .retainer__grid {
+    display: grid;
+    gap: 28px 32px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 700px) {
+    .retainer__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .retainer__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .retainer__cell {
+    display: grid;
+    gap: 8px;
+    padding-block: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding-top: 24px;
+  }
+  .retainer__cell-k {
+    font-size: var(--type-body);
+    font-weight: 600;
+    color: #fff;
+  }
+  .retainer__cell-d {
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.72);
+  }
+
+  .retainer__terms {
+    display: grid;
+    gap: 16px;
+  }
+  .retainer__terms-head {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .retainer__terms-row {
+    display: grid;
+    gap: 12px;
+  }
+  @media (min-width: 700px) {
+    .retainer__terms-row { grid-template-columns: repeat(3, 1fr); }
+  }
+  .retainer__term {
+    text-align: left;
+    padding: 22px 24px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+    display: grid;
+    gap: 6px;
+    transition: background-color 220ms, border-color 220ms, transform 220ms;
+    cursor: pointer;
+  }
+  .retainer__term:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+  }
+  .retainer__term[data-active='true'] {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(233, 78, 27, 0.3);
+  }
+  .retainer__term-mo {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .retainer__term-sub {
+    font-size: 13px;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .retainer__term[data-active='true'] .retainer__term-sub { color: rgba(255, 255, 255, 0.9); }
+
+  .retainer__currencies {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .retainer__currencies-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .retainer__currencies-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .retainer__currency {
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(240, 237, 233, 0.85);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .subscription__photo {
+    position: absolute;
+    right: -10%;
+    bottom: -15%;
+    width: 40vw;
+    max-width: 480px;
+    aspect-ratio: 4 / 3;
+    margin: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    opacity: 0.22;
+    transform: rotate(4deg);
+    z-index: 0;
+    pointer-events: none;
+    mask-image: linear-gradient(135deg, #000 60%, transparent 100%);
+  }
+  .subscription__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ----------------------------------------------------------------
+     S7 : Matrix
+     ---------------------------------------------------------------- */
+  .matrix {
+    padding-block: clamp(72px, 9vw, 120px);
+    background: var(--bg-white);
+  }
+  .matrix__head {
+    margin-bottom: 56px;
+    display: grid;
+    gap: 24px;
+  }
+  .matrix__head .chapter__tag { align-self: start; justify-self: start; }
+  .matrix__wrap {
+    overflow-x: auto;
+    border-radius: 28px;
+    border: 1px solid var(--line-hairline);
+    background: var(--bg-cream);
+    box-shadow: 0 30px 80px rgba(10, 10, 20, 0.06);
+  }
+  .matrix__table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    font-size: var(--type-body);
+  }
+  .matrix__th,
+  .matrix__feature,
+  .matrix__table td {
+    padding: 22px 24px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .matrix__th {
+    background: #fff;
+    border-bottom: 1px solid var(--line-hairline);
+    font-weight: 500;
+    color: var(--text-mute);
+    font-size: var(--type-small);
+    font-family: var(--font-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .matrix__th--feature {
+    width: 22%;
+  }
+  .matrix__th-chip {
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 0.08em;
+  }
+  .matrix__th-chip--orange { background: var(--brand-orange); }
+  .matrix__th-chip--navy { background: var(--brand-navy); }
+  .matrix__th-chip--ink { background: var(--text-ink); }
+
+  .matrix__feature {
+    width: 22%;
+    font-weight: 600;
+    color: var(--text-ink);
+    background: rgba(0, 0, 0, 0.015);
+    font-size: var(--type-body);
+    font-family: var(--font-sans);
+    text-transform: none;
+    letter-spacing: -0.005em;
+  }
+  .matrix__row {
+    border-top: 1px solid var(--line-hairline);
+    transition: background-color 200ms;
+  }
+  .matrix__row:hover {
+    background: rgba(233, 78, 27, 0.04);
+  }
+  .matrix__row td {
+    color: var(--text-mute);
+    line-height: 1.5;
+  }
+
+  /* ----------------------------------------------------------------
+     S8 : FAQ
+     ---------------------------------------------------------------- */
+  .faq {
+    padding-block: clamp(72px, 9vw, 120px);
+    background: var(--bg-cream);
+  }
+  .faq__head {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .faq__filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line-hairline);
+    margin-bottom: 8px;
+  }
+  .faq__filter-btn {
+    padding: 9px 18px;
+    border-radius: var(--radius-pill);
+    background: #fff;
+    border: 1px solid var(--line-hairline);
+    color: var(--text-ink);
+    font-size: var(--type-button);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 200ms, color 200ms, border-color 200ms, transform 200ms;
+  }
+  .faq__filter-btn:hover { transform: translateY(-2px); border-color: var(--line-strong); }
+  .faq__filter-btn[aria-selected='true'] {
+    background: var(--brand-orange);
+    color: #fff;
+    border-color: var(--brand-orange);
+  }
+  .faq__list {
+    display: grid;
+    gap: 4px;
+  }
+  .faq__item {
+    border-bottom: 1px solid var(--line-hairline);
+    transition: opacity 240ms, max-height 240ms;
+  }
+  .faq__item[data-hide='true'] {
+    display: none;
+  }
+  .faq__q {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 18px;
+    padding-block: 22px;
+  }
+  .faq__q::-webkit-details-marker { display: none; }
+  .faq__cat {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    background: rgba(233, 78, 27, 0.1);
+    padding: 5px 10px;
+    border-radius: var(--radius-pill);
+    flex: none;
+  }
+  .faq__q-text {
+    font-size: var(--type-body);
+    font-weight: 600;
+    color: var(--text-ink);
+    line-height: 1.4;
+  }
+  .faq__chev {
+    width: 16px;
+    height: 16px;
+    color: var(--text-mute);
+    transition: transform 240ms ease-out;
+    flex: none;
+  }
+  .faq__item[open] .faq__chev { transform: rotate(180deg); color: var(--brand-orange); }
+  .faq__a {
+    padding: 4px 0 24px;
+    margin-left: 0;
+    max-width: 72ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  @media (min-width: 700px) {
+    .faq__a { margin-left: 90px; }
+  }
+
+  /* ----------------------------------------------------------------
+     S9 : Closing CTA (dark)
+     ---------------------------------------------------------------- */
+  .cta {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    padding-block: clamp(96px, 11vw, 160px);
+    text-align: center;
+  }
+  .cta__bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+  .cta__blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.55; }
+  .cta__blob--a {
+    width: 480px; height: 480px; top: -120px; left: 10%;
+    background: radial-gradient(circle, rgba(233, 78, 27, 0.6), transparent 70%);
+    animation: float-a 18s ease-in-out infinite;
+  }
+  .cta__blob--b {
+    width: 560px; height: 560px; bottom: -160px; right: 5%;
+    background: radial-gradient(circle, rgba(30, 58, 138, 0.7), transparent 70%);
+    animation: float-b 22s ease-in-out infinite;
+  }
+  .cta__grain {
+    position: absolute; inset: 0; opacity: 0.18; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  }
+  .cta__inner {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+  }
+  .cta__cube {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 16px;
+    transform-style: preserve-3d;
+    animation: cube-rotate 20s linear infinite;
+  }
+  @keyframes cube-rotate {
+    from { transform: rotateY(0deg) rotateX(8deg); }
+    to { transform: rotateY(360deg) rotateX(8deg); }
+  }
+  .cta__display {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+    font-size: clamp(36px, 5vw, 72px);
+    max-width: 18ch;
+    margin: 0;
+  }
+  .cta__display em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--brand-orange);
+  }
+  .cta__lead {
+    max-width: 56ch;
+    color: rgba(240, 237, 233, 0.78);
+    font-size: clamp(16px, 1.2vw, 19px);
+    line-height: 1.55;
+  }
+  .cta__buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .cta__hello {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .cta__hello-link { color: rgba(240, 237, 233, 0.9); }
+  .cta__hello-link:hover { color: var(--brand-orange); }
+  .cta__hello-sep { opacity: 0.5; }
+  .cta__fine {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.4);
+    margin-top: 8px;
+  }
+
+  /* ----------------------------------------------------------------
+     Reveal (shared)
+     ---------------------------------------------------------------- */
+  .reveal { opacity: 0; transform: translateY(24px); }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 600ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal,
+    .timeline__step { opacity: 1; transform: none; }
+    .timeline__path path { stroke-dashoffset: 0; }
+  }
+</style>
+
+<script>
+  /* ============================================================
+     Pricing page : scroll-linked motion + interaction
+     ============================================================ */
+
+  // 1) Reveal-on-scroll (headlines, components, timeline drawing)
+  const reveals = document.querySelectorAll('.reveal, [data-timeline]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+
+  // 2) Count-up numbers on first view
+  const counters = document.querySelectorAll<HTMLElement>('[data-count]');
+  if ('IntersectionObserver' in window) {
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const target = Number(el.dataset.count || 0);
+        const duration = 1400;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - start) / duration);
+          const ease = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.floor(target * ease).toString();
+          if (t < 1) requestAnimationFrame(tick);
+          else el.textContent = String(target);
+        };
+        requestAnimationFrame(tick);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach((el) => cio.observe(el));
+  }
+
+  // 4) Parallax on hero image
+  const parallaxEls = document.querySelectorAll<HTMLElement>('.js-parallax');
+  let parallaxRaf = 0;
+  const onScrollParallax = () => {
+    parallaxRaf = 0;
+    const y = window.scrollY;
+    parallaxEls.forEach((el) => {
+      const speed = Number(el.dataset.speed || 0.2);
+      el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
+    });
+  };
+  if (parallaxEls.length) {
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!parallaxRaf) parallaxRaf = requestAnimationFrame(onScrollParallax);
+      },
+      { passive: true },
+    );
+  }
+
+  // 5) Cursor-follow spotlight inside pillar cards
+  const spotlights = document.querySelectorAll<HTMLElement>('.js-spotlight');
+  spotlights.forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+
+  // 6) Tilt on chapter photos (gentle, pointer-based)
+  const tilters = document.querySelectorAll<HTMLElement>('.js-tilt');
+  tilters.forEach((el) => {
+    const max = Number(el.dataset.tilt || 5);
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      el.style.transform = `perspective(1200px) rotateY(${px * max}deg) rotateX(${-py * max}deg)`;
+    });
+    el.addEventListener('pointerleave', () => {
+      el.style.transform = '';
+    });
+  });
+
+  // 7) Magnetic CTAs
+  const magnetic = document.querySelectorAll<HTMLElement>('.js-magnetic');
+  magnetic.forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      el.style.transform = `translate(${x * 0.18}px, ${y * 0.22}px)`;
+    });
+    el.addEventListener('pointerleave', () => {
+      el.style.transform = '';
+    });
+  });
+
+  // 8) FAQ category filter
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.faq__filter-btn');
+  const faqItems = document.querySelectorAll<HTMLDetailsElement>('.faq__item');
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.setAttribute('aria-selected', 'false'));
+      btn.setAttribute('aria-selected', 'true');
+      const filter = btn.dataset.filter;
+      faqItems.forEach((item) => {
+        const hide = filter !== 'All' && item.dataset.category !== filter;
+        item.dataset.hide = hide ? 'true' : 'false';
+        if (hide) item.open = false;
+      });
+    });
+  });
+
+  // 9) FAQ accordion: one open at a time
+  faqItems.forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        faqItems.forEach((other) => {
+          if (other !== item && other.dataset.hide !== 'true') other.open = false;
+        });
+      }
+    });
+  });
+
+  // 10) Retainer term toggle
+  const termBtns = document.querySelectorAll<HTMLButtonElement>('.retainer__term');
+  termBtns.forEach((btn, i) => {
+    if (i === 1) btn.setAttribute('data-active', 'true');
+    btn.addEventListener('click', () => {
+      termBtns.forEach((b) => b.removeAttribute('data-active'));
+      btn.setAttribute('data-active', 'true');
+    });
+  });
+
+  // 11) Smooth scroll for anchor links
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
