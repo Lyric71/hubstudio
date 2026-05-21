@@ -49,6 +49,24 @@ function parseArgs(argv) {
   return opts;
 }
 
+// Wrap fetch with retries on transient network errors. The poll loop fires
+// ~90 sequential requests per image; a single dropped connection should not
+// kill an otherwise healthy job.
+async function fetchRetry(url, options = {}, retries = 4) {
+  let lastErr;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await fetch(url, options);
+    } catch (err) {
+      lastErr = err;
+      if (attempt < retries) {
+        await new Promise((r) => setTimeout(r, 800 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastErr;
+}
+
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
 
@@ -70,7 +88,7 @@ async function main() {
   );
 
   // Step 1: submit the task.
-  const submitRes = await fetch(`${API_URL}/${MODEL}`, {
+  const submitRes = await fetchRetry(`${API_URL}/${MODEL}`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${API_KEY}`,
@@ -101,7 +119,7 @@ async function main() {
     await new Promise((r) => setTimeout(r, 1000));
     process.stdout.write(".");
 
-    const statusRes = await fetch(`${API_URL}/predictions/${taskId}/result`, {
+    const statusRes = await fetchRetry(`${API_URL}/predictions/${taskId}/result`, {
       headers: { Authorization: `Bearer ${API_KEY}` },
     });
     const statusData = await statusRes.json().catch(() => ({}));
@@ -113,7 +131,7 @@ async function main() {
         console.error("\nCompleted but no output URL returned.");
         process.exit(1);
       }
-      const imgRes = await fetch(imageUrl);
+      const imgRes = await fetchRetry(imageUrl);
       const buffer = Buffer.from(await imgRes.arrayBuffer());
       const filename = opts.out || `generated-${Date.now()}.${opts.format}`;
       await writeFile(filename, buffer);

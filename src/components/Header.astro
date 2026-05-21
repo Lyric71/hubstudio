@@ -5,9 +5,9 @@
  * Every desktop panel opens with the same intro column (eyebrow · headline ·
  * blurb · "All of X" link), then a layout that fits the section: standard
  * (link groups · featured card), services (four-column design-service list)
- * or solutions (client/consulting columns · platform grid). hub4You sits in
- * the action area as a standalone button. Panels open on hover / keyboard
- * focus (CSS); JS handles the scroll state, Esc-to-close and the mobile drawer.
+ * or solutions (client/consulting columns · platform grid). Panels open on
+ * hover / keyboard focus (CSS); JS handles the scroll state, Esc-to-close and
+ * the mobile drawer.
  */
 import Logo from './Logo.astro';
 import { localizePath } from '../i18n/utils';
@@ -150,7 +150,6 @@ const menu: MenuItem[] = [
             heading: 'Brand',
             links: [
               { label: 'Website', href: '/solutions/platforms/brand-website' },
-              { label: 'WeChat', href: '/solutions/platforms/brand-wechat' },
             ],
           },
         ],
@@ -409,7 +408,6 @@ const menu: MenuItem[] = [
       </nav>
 
       <div class="site-header__actions">
-        <a class="site-header__hub" href={lp('/hub4you')}>hub4You</a>
         <a class="btn btn--primary" href={lp('/contact')}>Talk to us</a>
         <button
           class="site-header__burger"
@@ -526,7 +524,6 @@ const menu: MenuItem[] = [
         }
       </div>
       <div class="mobile-drawer__foot container">
-        <a class="mobile-drawer__hub" href={lp('/hub4you')}>hub4You</a>
         <a class="btn btn--primary" href={lp('/contact')}>Talk to us</a>
       </div>
     </div>
@@ -582,14 +579,6 @@ const menu: MenuItem[] = [
   }
   .site-header[data-overlay='true'][data-scrolled='false'] .nav-item__trigger:hover {
     color: var(--brand-orange);
-  }
-  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__hub {
-    color: var(--text-on-dark);
-    border-color: rgba(240, 237, 233, 0.42);
-  }
-  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__hub:hover {
-    color: var(--brand-orange);
-    border-color: var(--brand-orange);
   }
   .site-header[data-overlay='true'][data-scrolled='false'] .site-header__burger {
     border-color: rgba(240, 237, 233, 0.42);
@@ -898,27 +887,6 @@ const menu: MenuItem[] = [
     align-items: center;
     gap: 10px;
   }
-  .site-header__hub {
-    display: none;
-  }
-  @media (min-width: 1024px) {
-    .site-header__hub {
-      display: inline-flex;
-      align-items: center;
-      padding: 9px 18px;
-      font-size: var(--type-button);
-      font-weight: 600;
-      color: var(--text-ink);
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius-pill);
-      transition: color 120ms ease-out, border-color 120ms ease-out;
-      white-space: nowrap;
-    }
-  }
-  .site-header__hub:hover {
-    color: var(--brand-orange);
-    border-color: var(--brand-orange);
-  }
   .site-header__burger {
     display: inline-flex;
     flex-direction: column;
@@ -1007,18 +975,6 @@ const menu: MenuItem[] = [
   .mobile-drawer__foot .btn {
     width: 100%;
   }
-  .mobile-drawer__hub {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-pill);
-    font-size: var(--type-button);
-    font-weight: 600;
-    color: var(--text-ink);
-  }
-
   .m-acc {
     border-bottom: 1px solid var(--line-hairline);
   }

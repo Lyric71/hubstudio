@@ -1,9 +1,13 @@
 ---
 /**
  * Pricing (`/pricing`).
- * Editorial magazine treatment: full-bleed cover, sticky chapter index,
- * three chapter spreads, marquee, comparison matrix, filtered FAQ, dark
- * closing. Scroll-linked motion, magnetic CTAs, drawing-on-scroll timeline.
+ * Editorial treatment: hero, stat strip, three chapter spreads, two
+ * pull-quote interludes, comparison matrix, filtered FAQ, dark closing.
+ * Scroll-linked motion, magnetic CTAs, drawing-on-scroll timeline.
+ *
+ * SEO excerpt (25 words): hubStudio offers three pricing models: pay per
+ * asset, scope a fixed project, or keep a creative studio on monthly
+ * retainer. No mystery fees, no lock-in.
  */
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
@@ -140,32 +144,34 @@ const matrixRows = [
 type FaqCategory = 'Engagement' | 'Ownership' | 'Pricing' | 'Delivery' | 'Production';
 
 const faqs: { c: FaqCategory; q: string; a: string }[] = [
-  { c: 'Engagement', q: 'Can we start small and grow into a subscription?', a: 'Yes. Most clients begin with an Asset-Based order or a single Project, then move to a Studio Retainer once the volume justifies it. The transition is friction-free, and the brand assets, prompts, and trained models we built for you carry across.' },
-  { c: 'Engagement', q: 'Do you sign annual contracts?', a: 'Only when it serves you. Asset and Project work has no lock-in. Studio Retainers run on three, six, or twelve-month terms, with the longer commitments unlocking better unit economics.' },
-  { c: 'Ownership', q: 'Who owns the assets and the prompts?', a: 'You do. Full ownership of finalized assets and the prompts used to produce them transfers on payment. AI models and Loras trained on your products remain hubStudio property by default. Full transfer of trained models is available as a separate licensing arrangement, quoted on request.' },
-  { c: 'Ownership', q: 'What about confidentiality and IP protection?', a: 'NDA on request, signed before any brief is shared. Trained on your shots, your references, your guidelines. Nothing leaks into a public model, nothing is reused for another client.' },
-  { c: 'Pricing', q: 'How is pricing set?', a: 'Final quotes reflect scope, complexity, volume, and timeline. We send a binding proposal within 48 hours of receiving your brief. Asset, Project, and Subscription rates are shared transparently once we understand what you need.' },
-  { c: 'Pricing', q: 'What does the MOQ actually mean? Can I order one image?', a: 'MOQs exist because briefing, onboarding, and quality control carry a fixed cost regardless of volume. Below the minimum, the economics no longer make sense for either side. If your need is genuinely a one-off, we can absorb it inside a Project quote or point you to a freelancer who fits better.' },
-  { c: 'Delivery', q: 'How fast can you deliver?', a: 'Three days is the floor on most volume work, not the exception. Project kickoffs deliver first review inside two weeks, full delivery inside four weeks maximum. Retainer clients work on a published weekly cadence with priority queue access.' },
+  { c: 'Engagement', q: 'Can we start small and grow into a subscription?', a: 'Yes, and most clients do exactly that. They place an Asset-Based order or run one Project first, then move to a Studio Retainer once the volume earns it. Moving over is simple. The brand assets, the prompts, and the models we trained for you all come with you.' },
+  { c: 'Engagement', q: 'Do you sign annual contracts?', a: 'Only when it works in your favor. Asset and Project work has no lock-in at all. Studio Retainers run on three, six, or twelve-month terms, and the longer ones bring the rate per asset down.' },
+  { c: 'Ownership', q: 'Who owns the assets and the prompts?', a: 'You do. The finished assets and the prompts behind them become yours the moment the invoice is paid. The one exception is the AI models and Loras trained on your products: those stay with hubStudio by default, though you can license them outright if you want them, quoted case by case.' },
+  { c: 'Ownership', q: 'What about confidentiality and IP protection?', a: 'We sign an NDA on request, before a single brief changes hands. Anything we build for you is trained only on your shots, your references, and your guidelines. None of it feeds a public model, and none of it gets reused for another client.' },
+  { c: 'Pricing', q: 'Why are there no prices on this page?', a: 'Because an honest number depends on the brief. A launch across five markets and a single batch of social images are not the same job, and a fixed rate card would overcharge the small order while underquoting the big one. Send the brief and the figure you get back reflects the actual work, with nothing padded and nothing buried.' },
+  { c: 'Pricing', q: 'How is pricing set?', a: 'Your quote reflects scope, complexity, volume, and the deadline you are working to. We send a binding proposal within 48 hours of getting your brief. Asset, Project, and Subscription rates are all laid out plainly once we know what you need.' },
+  { c: 'Pricing', q: 'How do we budget for this internally?', a: 'Send the brief early, even a rough version. Because the proposal is binding and comes back within 48 hours, you can take a real number into a budget conversation rather than a guess. If the scope changes later, we revise the proposal before anything gets signed.' },
+  { c: 'Pricing', q: 'What does the MOQ actually mean? Can I order one image?', a: 'MOQs exist because the briefing, the onboarding, and the quality checks cost the same whether you order ten assets or one. Below the minimum, the math stops working for both sides. If your need really is a one-off, we can fold it into a Project quote or point you to a freelancer who suits it better.' },
+  { c: 'Delivery', q: 'How fast can you deliver?', a: 'Three days is the floor on most volume work, and it is the rule rather than the exception. Projects hit their first review within two weeks of kickoff and wrap inside four weeks at the outside. Retainer clients get a weekly delivery rhythm and skip the queue.' },
   { c: 'Delivery', q: 'What if the first delivery is not right?', a: 'Every asset includes rounds of modification (three on finalized work, more on retainer). If we miss the brief, we redo the work, no extra charge. The brief alignment call happens before any production starts, which is why this rarely happens.' },
   { c: 'Production', q: 'Do you cover languages and markets outside English?', a: 'Yes. We work in English, French, German, Spanish, and Chinese. Operations run from China and the Philippines, with creative talent producing for clients across multiple markets. Transcreation is handled by people who write natively in the target language, not translated into it.' },
-  { c: 'Production', q: 'Do you actually shoot, or only generate?', a: 'Both. We run a live action studio for real photo and video shoots, used by brands selling worldwide. Plenty of briefs are best served generated, or as a hybrid. We tell you which makes sense, before you commit. The savings from AI generation are real on the briefs where it fits, and we pass them through.' },
+  { c: 'Production', q: 'Do you actually shoot, or only generate?', a: 'Both. We run a live-action studio for real photo and video shoots, the kind brands selling worldwide rely on. Plenty of briefs are better generated, or built as a hybrid of the two. We will tell you which makes sense before you commit. Where AI generation fits, the savings are real, and we pass them through to you.' },
   { c: 'Production', q: 'What inputs do you need from us to get started?', a: 'For images: a creative brief, your brand visual identity, product shots if applicable. For video: the above plus a finalized script (or we write one). For copy: tone-of-voice guide and product information. For shoots: brief, brand guidelines, product, talent direction if any. We have a one-page brief template that does the heavy lifting.' },
   { c: 'Production', q: 'Can you integrate with our DAM, PIM, or eCommerce platform?', a: 'Yes, on the hub4You Private Platform. We build connectors to Salsify, Akeneo, Bynder, Adobe Commerce, Shopify Plus, Salesforce Commerce Cloud, and most enterprise systems. Integration scope is part of the setup quote.' },
-  { c: 'Pricing', q: 'What payment terms do you offer?', a: 'Asset orders run on a deposit and balance model. Projects are milestone-based. Retainers are billed monthly in advance. Net 30 is available for established clients and listed entities.' },
+  { c: 'Pricing', q: 'What payment terms do you offer?', a: 'Asset orders take a deposit upfront, with the balance due on delivery. Project billing follows the milestones as they land. Retainers are invoiced monthly, in advance. Established clients and listed companies can ask us for Net 30.' },
   { c: 'Pricing', q: 'Which currencies do you bill in?', a: 'USD by default. We also invoice in EUR, GBP, HKD, and CNY on request. Cross-border invoicing runs through Beyond Border Group Limited in Hong Kong.' },
-  { c: 'Ownership', q: 'Do you take usage rights into account?', a: 'Pricing assumes unlimited internal and external commercial use across owned and paid channels. Broadcast-quality TV usage, out-of-home at scale, or talent likeness licensing for AI brand ambassadors are quoted separately. Tell us where it runs, we will be straightforward about any uplift.' },
-  { c: 'Engagement', q: 'What happens to my retainer volume if we do not use it?', a: 'Unused monthly volume rolls into the next month within the same quarter. Anything beyond that resets. We would rather flag underutilisation early and rebalance the plan than let budget go to waste.' },
+  { c: 'Ownership', q: 'Do you take usage rights into account?', a: 'Every quote assumes unlimited commercial use across your owned and paid channels. A few things sit outside that: broadcast TV, out-of-home at scale, and talent-likeness licensing for AI brand ambassadors get quoted separately. Tell us where the work will run, and we will be upfront about any uplift.' },
+  { c: 'Engagement', q: 'What happens to my retainer volume if we do not use it?', a: 'Unused volume rolls into the next month, as long as it stays inside the same quarter. Anything past that resets. We would rather flag a slow month early and rebalance the plan than watch your budget quietly go to waste.' },
   { c: 'Delivery', q: 'Can you scale up for a peak season or product launch?', a: 'Yes. Retainer clients have a published surge clause that lets them double volume for one to two months without renegotiating the contract. Asset clients can simply place a bigger order with priority handling for a small uplift.' },
-  { c: 'Engagement', q: 'What is the first step?', a: 'Send a brief or a rough idea to hello@hubstudio.ai. We come back within 24 hours with clarifying questions, a proposal, and three to five sample visuals on the house so you can judge the output before you commit.' },
+  { c: 'Engagement', q: 'What is the first step?', a: 'Send a brief, or just a rough idea, to hello@hubstudio.ai. You will hear back inside 24 hours. We come back with a proposal, three to five sample visuals at no charge, and whatever questions the brief raised for us, so you can judge the work before committing to it.' },
 ];
 
 const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 'Delivery', 'Production', 'Ownership'];
 ---
 
 <Layout
-  title="Pricing | hubStudio"
-  description="Three ways to work with hubStudio: Asset-Based per-unit pricing, Project-Based campaigns, or a Studio Retainer. No mystery fees, no forced subscriptions. Pick the model that fits how your team actually works."
+  title="hubStudio Pricing: Asset, Project, or Retainer"
+  description="Three ways to work with hubStudio: pay per asset, scope a project, or keep a creative studio on retainer. No mystery fees and no lock-in."
 >
   <!-- ============================================================
        HERO
@@ -178,9 +184,10 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
           Three ways to work with us. One <em>studio</em>.
         </h1>
         <p class="hero__lead">
-          Every brand has a different content rhythm. Pick the model that fits
-          how your team actually works. No forced subscriptions, no mystery
-          fees, no twelve-page contracts.
+          Some brands need a steady drip of content. Others need everything at
+          once for a launch. Pick the model that matches how your team really
+          works, not how a studio would prefer to bill you. No forced plans,
+          and no contract that takes a lawyer to read.
         </p>
 
         <div class="hero__picker" role="tablist" aria-label="Pricing models">
@@ -240,7 +247,7 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
         </div>
         <div class="stat-block">
           <span class="stat-block__num"><span data-count="16">0</span></span>
-          <span class="stat-block__label">Creative markets we produce in</span>
+          <span class="stat-block__label">Markets we produce in</span>
         </div>
       </div>
     </div>
@@ -257,9 +264,11 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
           Pay for what <em>you ship</em>.
         </h2>
         <p class="chapter__lead">
-          You brief, we deliver. Across twenty service lines, every format your
-          brand needs, produced in days, not weeks. Generated, shot, or hybrid,
-          we tell you which makes sense before you commit.
+          You send the brief. We produce the work. Twenty service lines, the
+          formats your brand reaches for, turned around in a few days instead
+          of a few weeks. Some of it we generate, some we shoot, and plenty of
+          briefs land somewhere in between. We will tell you which is right
+          before you spend anything.
         </p>
       </header>
 
@@ -281,8 +290,9 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
               ))}
             </ul>
             <p class="pillar__note">
-              Finalized, ready-to-use, rounds of modification included. The full
-              MOQ list ships on request.
+              Every asset arrives finished and ready to use, with rounds of
+              modification built in. Ask for the full MOQ list and we will send
+              it over.
             </p>
           </article>
 
@@ -292,9 +302,9 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
               {assetProject.map((it) => <li class="chip-cluster__chip">{it}</li>)}
             </ul>
             <p class="pillar__note">
-              Pre and post-production quoted as add-ons across every format:
-              scripting, voice-over, editing, subtitles, sound design, retouching,
-              talent direction.
+              Pre- and post-production are quoted as add-ons on any format:
+              scripting, voice-over, editing, subtitles, sound design,
+              retouching, and talent direction.
             </p>
           </article>
         </div>
@@ -307,25 +317,41 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
   </section>
 
   <!-- ============================================================
-       S5 : CHAPTER 2: PROJECT-BASED
+       INTERLUDE: pricing principle
+       ============================================================ -->
+  <section class="interlude">
+    <div class="container">
+      <blockquote class="interlude__quote">
+        <p>
+          We quote the job in front of us. Not a number picked to look tidy on a
+          web page, and not a plan you have to grow into.
+        </p>
+        <cite class="interlude__cite">hubStudio, on how we price</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER: PROJECT-BASED
        ============================================================ -->
   <section class="chapter chapter--cream" id="project-based">
     <div class="container chapter__grid chapter__grid--reverse">
       <header class="chapter__head">
         <span class="chapter__tag">Project-Based</span>
         <h2 class="chapter__display reveal">
-          Campaigns. Launches. Brand <em>moments</em>.
+          Built for your next <em>launch</em>.
         </h2>
         <p class="chapter__lead">
-          We build the project team around your brief. Creative director, art
-          director, AIGC engineer, copywriter, producer. One quote. One delivery
-          schedule. One invoice.
+          We assemble the team around your brief: a creative director, an art
+          director, an AIGC engineer, a copywriter, a producer. You deal with
+          one quote and one schedule, and the invoice comes once. Our live-action
+          crew has shot for brands including Mazda, Nescafe, and Marriott.
         </p>
       </header>
 
       <figure class="chapter__photo chapter__photo--project js-tilt" data-tilt="-5">
         <img src="/Images/pricing-project.png" alt="A small creative team gathered around a long studio worktable reviewing a printed campaign rollout" loading="lazy" width="1024" height="768" />
-        <span class="chapter__photo-chip chapter__photo-chip--right">One team · One quote · One invoice</span>
+        <span class="chapter__photo-chip chapter__photo-chip--right">One team · One invoice</span>
       </figure>
 
       <div class="chapter__body">
@@ -371,7 +397,22 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
   </section>
 
   <!-- ============================================================
-       S6 : CHAPTER 3: SUBSCRIPTION (dark immersive)
+       INTERLUDE: ownership
+       ============================================================ -->
+  <section class="interlude interlude--alt">
+    <div class="container">
+      <blockquote class="interlude__quote">
+        <p>
+          You own the brief, the finished files, and the prompts behind them the
+          day the invoice clears.
+        </p>
+        <cite class="interlude__cite">hubStudio, on what you keep</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER: SUBSCRIPTION (dark immersive)
        ============================================================ -->
   <section class="chapter chapter--dark" id="subscription">
     <div class="chapter__dark-bg" aria-hidden="true">
@@ -386,9 +427,11 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
           Your studio <em>on retainer</em>.
         </h2>
         <p class="chapter__lead chapter__lead--on-dark">
-          Predictable monthly cost. Compounding velocity. A managed creative
-          team that operates like an extension of yours. Mix-and-match across
-          all twenty service lines on a published weekly cadence.
+          A fixed monthly cost, and a team that gets faster the longer it works
+          with you, because it stops relearning your brand on every job. It
+          runs like an in-house studio you never had to hire for. Mix and match
+          across all twenty service lines, on a weekly schedule we put in
+          writing.
         </p>
       </header>
 
@@ -442,6 +485,10 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
         <h2 class="chapter__display reveal">
           Three models, <em>side by side</em>.
         </h2>
+        <p class="section-note">
+          Still weighing them up? This is the quickest way to see where the
+          three differ before you talk to us.
+        </p>
       </header>
 
       <div class="matrix__wrap">
@@ -479,6 +526,10 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
         <h2 class="chapter__display reveal">
           The questions buyers <em>always</em> ask.
         </h2>
+        <p class="section-note">
+          Filter by what you need to know. If your question is not here, email
+          hello@hubstudio.ai and we will answer it directly.
+        </p>
       </header>
 
       <div class="faq__filter" role="tablist" aria-label="FAQ categories">
@@ -531,12 +582,12 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
 
       <span class="chapter__tag chapter__tag--on-dark">Ready when you are</span>
       <h2 class="cta__display reveal">
-        Let us build something <em>worth paying for</em>.
+        Let's build something <em>worth paying for</em>.
       </h2>
       <p class="cta__lead">
-        Send us a brief or a question. We come back with a clear proposal, a few
-        sample visuals on the house, and an honest view of which model fits your
-        team best.
+        Send a brief, or just a question. You will get a clear proposal back,
+        a few sample visuals at no charge, and a candid take on which of the
+        three models suits your team.
       </p>
 
       <div class="cta__buttons">
@@ -549,7 +600,7 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
         <span class="cta__hello-sep">&middot;</span>
         <span>Studios across 16 markets</span>
       </p>
-      <p class="cta__fine">All quotes valid 30 days. Tax excluded where applicable.</p>
+      <p class="cta__fine">All quotes valid 30 days. Tax excluded where applicable. Pricing models last reviewed May 2026.</p>
     </div>
   </section>
 </Layout>
@@ -1326,6 +1377,43 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
   .subscription__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* ----------------------------------------------------------------
+     Interlude pull-quotes
+     ---------------------------------------------------------------- */
+  .interlude {
+    background: var(--bg-cream);
+    padding-block: clamp(56px, 8vw, 104px);
+  }
+  .interlude--alt {
+    background: var(--bg-white);
+  }
+  .interlude__quote {
+    max-width: 940px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 3vw, 44px);
+    border-left: 3px solid var(--brand-orange);
+  }
+  .interlude__quote p {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.24;
+    font-size: clamp(24px, 3vw, 40px);
+    color: var(--text-ink);
+  }
+  .interlude__cite {
+    display: block;
+    margin-top: 22px;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  /* ----------------------------------------------------------------
      S7 : Matrix
      ---------------------------------------------------------------- */
   .matrix {
@@ -1335,7 +1423,13 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
   .matrix__head {
     margin-bottom: 56px;
     display: grid;
-    gap: 24px;
+    gap: 18px;
+  }
+  .section-note {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+    max-width: 56ch;
   }
   .matrix__head .chapter__tag { align-self: start; justify-self: start; }
   .matrix__wrap {
@@ -1414,7 +1508,7 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
   }
   .faq__head {
     display: grid;
-    gap: 24px;
+    gap: 18px;
     margin-bottom: 40px;
   }
   .faq__filter {

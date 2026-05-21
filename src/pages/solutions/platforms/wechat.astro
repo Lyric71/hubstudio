@@ -3,13 +3,20 @@
  * WeChat · /solutions/platforms/wechat
  *
  * Editorial layout adapted from /solutions/platforms/meta. Same print-shop
- * primitives (crop marks, calibration colour bar, mono figure labels, dashed
+ * primitives (crop marks, calibration color bar, mono figure labels, dashed
  * rules) reframed for WeChat: the four surfaces we ship creative into, the
  * AIGC mechanics for each, the partnership model.
  *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
  * its canonical lowercase-h casing.
+ *
+ * Page excerpt (25 words): hubStudio produces WeChat creative across four
+ * surfaces: Official Account articles, Tencent Ads, Channels video, and Mini
+ * Program storefronts. One brief, one creative direction, every market.
+ *
+ * Two attributed blockquote citations (Tencent results) carry the external
+ * data points; both use the .cite component. Copy reviewed early 2026.
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
@@ -57,13 +64,13 @@ const coverage = [
   {
     fig: 'B',
     label: 'Content',
-    heading: 'Content. Official Account articles and feed.',
+    heading: 'Content. Articles for the Official Account.',
     image: '/Images/wechat-content.jpg',
     alt: 'A phone held in both hands, the screen filled with an open WeChat Official Account article, the cover image and headline at the top and an in-article image stack below, the WeChat chrome visible across the top of the screen.',
-    lead: 'Editorial-grade Official Account articles, written and designed by the studio for the surface readers actually open.',
+    lead: 'Official Account articles, written and designed in-house for a surface readers choose to open.',
     body: [
-      "We write, art-direct and build the graphic articles that carry a WeChat Official Account: a cover that earns the tap from a crowded subscription list, a headline that survives the feed, an article laid out as a piece of editorial design rather than a wall of pasted screenshots. Long-form brand storytelling, product features, launch announcements and seasonal pieces, each one set to the brand book.",
-      "Copy is written by native Mandarin writers who publish on WeChat every week, never run through a translation of an English draft. The article is finished image by image, retouched by the same hand as the campaign hero, and delivered ready to schedule. The cadence rises, the brand line does not move.",
+      "We write, art-direct, and build the articles that carry a WeChat Official Account. That means a cover good enough to earn the tap in a crowded subscription list, a headline that holds up in the feed, and a layout that reads as designed rather than pasted together. One month it is a long brand feature, the next a product launch or a seasonal piece. Either way, it stays inside the brand book.",
+      "Native Mandarin writers handle the copy. They publish on WeChat every week, so they write for the platform from the first line, and nothing gets run through a translated English draft. We finish each article image by image, retouched by the same people who handle the campaign hero, then hand it over ready to schedule.",
     ],
     tags: [
       'Service Account articles', 'Subscription posts', 'Cover design',
@@ -77,27 +84,27 @@ const coverage = [
     heading: 'Ad creative. Built for Tencent Ads.',
     image: '/Images/wechat-ads.jpg',
     alt: 'A wide monitor showing the Tencent Ads creative library, a grid of WeChat Moments and Channels ad variants lined up in the placement preview panel.',
-    lead: 'Performance creative produced for every Tencent Ads surface, at the volume the buying actually wants.',
+    lead: 'Performance creative for every Tencent Ads surface, made at the volume a real media plan burns through.',
     body: [
-      "Moments ads that read as native to the feed rather than an interruption in it. Channels in-feed video built to hold past the first second. Banner placements, Mini Program ads and search creative, all briefed around the placement set the media team is buying. We produce the format diversity the auction needs and the naming conventions the downstream reporting expects.",
-      "Conversion frames, catalogue cards, hook-tested Channels cuts and lead-gen units all run through the same studio pass, so the long tail of variants looks like the hero rather than a thinned-out clone of it.",
+      "A Moments ad should look like it belongs between two friends' posts, not crash into the middle of them. Channels video has to hold attention through the first second or it loses the rest. We build banner placements, Mini Program ads, and search creative the same way, each one briefed around the exact placements the media team is buying.",
+      "Conversion frames, catalog cards, hook-tested Channels cuts, retargeting units: all of it goes through the same studio finish as the hero ad. Files arrive named the way Tencent Ads and your reporting expect, so nobody downstream has to rename anything.",
     ],
     tags: [
       'Moments ads', 'Channels in-feed', 'Banner placements',
-      'Mini Program ads', 'Search creative', 'Catalogue cards',
+      'Mini Program ads', 'Search creative', 'Catalog cards',
       'Hook A/B testing', 'Retargeting variants',
     ],
   },
   {
     fig: 'D',
     label: 'Channels',
-    heading: 'Channels. Short-form video and livestream.',
+    heading: 'Channels. Video and livestream.',
     image: '/Images/wechat-video.jpg',
     alt: 'A phone screen showing a WeChat Channels video paused mid-frame, the vertical video interface with the like, comment and share rail running up the right edge.',
-    lead: 'Short-form video and livestream creative for WeChat Channels, scripted and finished end to end.',
+    lead: 'Short-form video and livestream creative for WeChat Channels, scripted, shot, and finished by one team.',
     body: [
-      "We script, produce and edit the organic side of a Channels presence: short videos built to hold attention from the opening frame, livestream creative with lower-thirds, product cards and overlays that match the brand, replay cuts and highlight clips that keep working after the stream ends. Channels links straight to the Official Account and the Mini Program, so every video is built to carry a viewer onward.",
-      "The work is signed off by a creative director, graded in the studio and shipped in the vertical format Channels serves. Optional brand-owned avatar presenters host the clips and the livestreams in any language, so the cast never has to be re-booked.",
+      "We handle the organic side of a Channels presence. The short videos are built to hold attention from the opening frame. Livestreams come with lower-thirds, product cards, and overlays that match the brand, plus replay cuts and highlight clips that keep earning views after the stream ends. Because Channels links straight through to the Official Account and the Mini Program, every video is made to move the viewer somewhere next.",
+      "A creative director signs off the work, it gets graded in the studio, and it ships vertical, the way Channels serves it. If you want, brand-owned avatar presenters can host the clips and the livestreams in any language, which means a seasonal refresh never sends anyone back to a booking agent.",
     ],
     tags: [
       'Short-form video', 'Livestream creative', 'Lower-thirds and overlays',
@@ -108,13 +115,13 @@ const coverage = [
   {
     fig: 'E',
     label: 'Storefront',
-    heading: 'Storefront. Mini Program, designed to sell.',
+    heading: 'Storefront. A Mini Program designed to sell.',
     image: '/Images/wechat-miniprogram.jpg',
     alt: 'A phone screen showing a WeChat Mini Program storefront, a campaign banner above a grid of product cards, the rounded capsule menu in the top corner of the interface.',
-    lead: 'The visual design of a Mini Program storefront: covers, banners, product cards and campaign skins, on-brand and built to convert.',
+    lead: 'The visual design of a Mini Program storefront: covers, banners, product cards, and campaign skins, all on-brand and built to convert.',
     body: [
-      "A Mini Program is a brand's owned commerce surface inside WeChat, and it should look authored rather than assembled from a template. We design the storefront's visual system: the home banner, the category tiles, the product card grid, the campaign landing skins, the seasonal refresh. Product and lifestyle imagery is shot or generated to fill it, sized to the exact frames the Mini Program serves.",
-      "We design the look and produce the imagery; your developers ship the build. Every campaign gets a matching storefront skin, so a launch that runs on Moments lands on a storefront designed inside the same brief.",
+      "A Mini Program is the brand's own storefront inside WeChat, and it should not look like it came out of a template. We design the visual system for it, from the home banner and category tiles to the product grid and the campaign landing screens. Then we shoot or generate the product and lifestyle photography to fill it, sized to the exact frames the storefront serves.",
+      "We design the look and produce the images. Your developers handle the build itself. Every campaign also gets a storefront skin to match, designed from the same brief as the ads sending traffic to it.",
     ],
     tags: [
       'Home banners', 'Category tiles', 'Product card imagery',
@@ -131,7 +138,7 @@ const processSteps = [
     short: 'Brief',
     tier: 'Where it is won',
     title: 'Discovery and brief.',
-    body: 'One working session to lock the goal, audience, WeChat surfaces in scope, brand truth and no-go zones. Output is a one-page strategic brief and an asset map by surface and by service lane.',
+    body: 'One working session to settle the goal, the audience, which WeChat surfaces are in scope, and what the brand will and will not do. You get back a one-page brief and an asset map broken out by surface and by lane.',
     image: '/Images/wechat-p1-brief.jpg',
     alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the WeChat Official Account dashboard alongside printed Moments and Channels screenshots.',
   },
@@ -139,15 +146,15 @@ const processSteps = [
     short: 'Direction',
     tier: 'Where it is won',
     title: 'Creative direction across the four lanes.',
-    body: 'Visual references locked, tone defined, the editorial voice set for the Official Account, AIGC and avatar model selection made per surface. Content, ad creative, Channels and storefront each get their own treatment. This is where a campaign becomes ownable.',
+    body: 'We lock the visual references and set the editorial voice for the Official Account. AIGC and avatar models get chosen surface by surface. Content, ad creative, Channels, and storefront each get their own treatment, all of it under one direction.',
     image: '/Images/wechat-p2-direction.jpg',
-    alt: 'A storyboard wall with four columns of frame sketches labelled Content, Ads, Channels and Storefront, each column anchored by a printed WeChat phone mock.',
+    alt: 'A storyboard wall with four columns of frame sketches labeled Content, Ads, Channels and Storefront, each column anchored by a printed WeChat phone mock.',
   },
   {
     short: 'AIGC',
     tier: 'The rest is execution',
     title: 'AIGC generation and authored finish.',
-    body: 'Per-lane generation across the agreed surfaces. Every output goes through the studio retouch and brand-check pass before any media plan or publishing calendar sees it.',
+    body: 'Now the generation runs, lane by lane, across the surfaces we agreed on. Every output still goes through the studio retouch and a brand check before a media plan or a publishing calendar ever sees it.',
     image: '/Images/wechat-p3-aigc.jpg',
     alt: 'A motion designer at a calibrated workstation, the main monitor showing a single WeChat Channels hero frame, the side panel showing the Tencent Ads creative library grid of variants.',
   },
@@ -155,7 +162,7 @@ const processSteps = [
     short: 'Launch',
     tier: 'The rest is execution',
     title: 'Launch. Per-surface, per-market.',
-    body: 'Assets handed over in the formats WeChat actually serves: article image sets ready to schedule, Moments and Channels ads named for Tencent Ads, storefront skins sized to the Mini Program frames. Tracking and creative naming built for downstream reporting.',
+    body: 'Assets are handed over in the formats WeChat actually uses: article image sets ready to schedule, Moments and Channels ads named for Tencent Ads, storefront skins cut to the Mini Program frames. Tracking and naming are set up so the reporting later makes sense.',
     image: '/Images/wechat-p4-launch.jpg',
     alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the Tencent Ads campaign dashboard with WeChat Moments ad placements live.',
   },
@@ -163,52 +170,56 @@ const processSteps = [
     short: 'Adapt',
     tier: 'The rest is execution',
     title: 'Adapt. Variants, refresh, season.',
-    body: 'Once the hero is signed off, the variant cascade lands in days. New audiences, new cities, new festivals, new seasons. The brief stays the same, the variants compound.',
+    body: 'Once the hero is approved, new variants land within days, for a new audience, another city, a festival, or the next season. The brief does not change, so each new batch is faster and cheaper than the one before it.',
     image: '/Images/wechat-p5-adapt.jpg',
-    alt: 'A colourist at a calibrated grading suite, the main reference monitor showing a warm WeChat Channels frame paused on a product still, the Channels interface elements visible at the screen edges.',
+    alt: 'A colorist at a calibrated grading suite, the main reference monitor showing a warm WeChat Channels frame paused on a product still, the Channels interface elements visible at the screen edges.',
   },
 ];
 
 const faqs = [
   {
     q: 'What exactly do you produce for WeChat?',
-    a: 'Four lanes, one studio. Content covers Official Account articles, from the cover image to the full editorial layout, for both Service and Subscription accounts. Ad creative covers Moments ads, Channels in-feed video, banner and Mini Program placements built for Tencent Ads. Channels covers short-form video and livestream creative for the WeChat Channels surface. Storefront covers the visual design of a Mini Program: banners, product cards and campaign skins. The four lanes share one creative direction and one finishing pass, so the long tail looks like the hero.',
+    a: 'Four things, all under one studio. We write and design Official Account articles, for both Service and Subscription accounts. We build ad creative for Tencent Ads, across Moments, Channels in-feed, banner, and Mini Program placements. We script and produce Channels video and livestreams. And we design the look of a Mini Program storefront, down to the banners and product cards. One creative direction sits over all four.',
   },
   {
     q: 'Who writes the Official Account articles?',
-    a: 'Native Mandarin writers who publish on WeChat every week, not translators working from an English document. An article is written for the surface from the first line: a cover that earns the tap, a headline that survives a crowded subscription list, an editorial layout designed image by image rather than pasted together. The English brief sets the strategy; the article itself is authored in Chinese for a Chinese reader.',
+    a: "Native Mandarin writers, not translators working off an English document. They publish on WeChat every week, so they write for the platform's habits from the first line. The brief can reach us in English; the article itself is written in Chinese, for a Chinese reader.",
   },
   {
     q: 'What does the Storefront lane actually cover?',
-    a: 'The visual design and the imagery, not the back end. We design the Mini Program storefront system, the home banner, the category tiles, the product card grid, the campaign landing skins, and we shoot or generate the product and lifestyle imagery that fills it, sized to the frames the Mini Program serves. Your team or your developer handles registration, verification and the build; we hand over a finished design and a full image set.',
+    a: 'Design and imagery, not the back end. We design the storefront system, the banners, the category tiles, the product grid, the campaign screens, and we shoot or generate the photography that fills it. What we do not do is the build. Registration, verification, and development stay with your team or your developer. You get a finished design and a full set of images, ready to drop in.',
   },
   {
     q: 'Can you produce Channels video at the volume our plan needs?',
-    a: 'Yes. A single hero shoot or AIGC sprint produces the master, and the variant cascade lands per audience and per city inside days. The cost-per-variation curve flattens fast: the first variant is expensive, the fiftieth is close to free. Custom-trained LoRA models on your brand keep every frame on-brand, and optional avatar presenters mean a refresh never needs a re-shoot.',
+    a: 'Yes. One hero shoot, or one AIGC sprint, produces the master. After that the variants come fast, sorted by audience and by city, usually within days. LoRA models trained on your brand keep every frame consistent, and the optional avatar presenters mean a refresh does not need another shoot.',
+  },
+  {
+    q: 'How does pricing work?',
+    a: 'Every project is scoped from the brief, so there is no public rate card. What it costs depends on which surfaces are in scope, how many variants you need, and whether the brand needs a one-time setup for LoRA models or an avatar. The more you order, the lower the cost per asset, since most of the work sits in the master and not the variants behind it. Send the brief and you get a written scope and an indicative figure back, usually within 48 hours.',
   },
   {
     q: 'How do you keep the brand line consistent across the four lanes?',
-    a: 'The hero concept is signed off once, in the direction step. After that, every variant in every lane runs through the same retouch pass, the same colour grade and the same brand-safety check. The studio is what keeps articles, ad creative, Channels video and storefront design reading like one campaign rather than four parallel ones.',
+    a: 'The hero concept gets signed off once, during the direction step. From then on, every variant in every lane runs through the same retouch, the same color grade, and the same brand-safety check. That shared finish is what keeps the articles, the ads, the Channels video, and the storefront looking like a single campaign.',
   },
   {
     q: 'What is your turnaround for a Moments ad or a Channels cut?',
-    a: 'Short-form creative on an existing brand can be brief to first cut in 24 to 72 hours. A new brand or a new product takes a one-time onboarding to lock the treatment, the LoRA models and the avatar; after that, weekly drops at production-grade quality are the working tempo. Trend-reactive pieces can turn around inside a day or two when the calendar calls for it.',
+    a: 'For a brand we already work with, short-form creative runs about 24 to 72 hours from brief to first cut. A new brand or a new product needs a one-time setup first, to lock the treatment, train the LoRA models, and build the avatar. After that, a weekly drop at full production quality is the normal pace. When something is trending and the calendar calls for it, we can turn a piece around in a day or two.',
   },
   {
     q: 'Do you handle Tencent Ads placements and dynamic creative?',
-    a: 'Yes. We brief the ad creative lane around the placement set the media team is buying across Tencent Ads, including Moments, Channels, banner and Mini Program units. Variants are produced with the format diversity dynamic creative needs and named so the reporting downstream stays legible. We produce and finish the creative; the media buying itself stays with whoever runs your account.',
+    a: 'Yes. We brief the ad creative around whatever placements the media team is buying across Tencent Ads: Moments, Channels, banner, Mini Program. Dynamic creative needs a lot of format variety, and we produce it, named cleanly so the reporting stays readable afterward. We make and finish the creative. The media buying itself stays with whoever runs your account.',
   },
   {
     q: 'How do you keep the work from feeling AI-generated?',
-    a: 'Every output goes through a studio retouch pass: dodge and burn, grain, chromatic aberration and a colour grade in Lightroom or Capture One. The image style guide rules out the AI tells: poreless skin, identical bokeh, melted product detail, almost-but-not-quite text. The final file passes a human review before any media plan or publishing calendar sees it. This is what closes the gap between an AI image and a campaign image.',
+    a: 'Every output goes through a studio retouch pass: dodge and burn, film grain, a little chromatic aberration, a color grade in Lightroom or Capture One. We keep a written image style guide that bans the usual AI tells, things like poreless skin, identical bokeh, melted product detail, and text that is almost but not quite real letters. A person reviews every final file before it goes anywhere near a media plan.',
   },
   {
     q: 'Can you white-label this for our agency?',
-    a: 'Yes. A significant share of our WeChat work runs under agency brands, with full white-label delivery and confidential collaboration. The agency owns the relationship and the client communication; we deliver the production capability behind it.',
+    a: "Yes, and a good share of our WeChat work already does. We deliver under your agency's brand, with NDAs in place, and we stay out of sight. You keep the client relationship and run the conversation. We are the production capacity behind it.",
   },
   {
     q: 'Who owns the assets, the masters and the trained models?',
-    a: 'You own all finished assets, all masters, and any LoRA, fine-tuned or avatar models trained on your IP. Commercial use rights for AIGC outputs are routed through enterprise tiers that grant commercial use. For full detail on the legal side, see our Copyright and AI guide.',
+    a: 'You do. That covers the finished assets, the masters, and any LoRA, fine-tuned, or avatar models trained on your IP. Commercial-use rights for AIGC output are handled through enterprise tiers that grant them. The Copyright and AI guide goes through the legal detail.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
 ];
@@ -225,8 +236,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="WeChat AIGC: Official Account, Channels & Moments Creative at Scale"
-  description="AIGC for WeChat. Official Account articles, Moments ads, Channels video and Mini Program storefront design, produced inside a working studio. One brief, every surface."
+  title="WeChat AIGC: Content, Ads & Channels Creative"
+  description="AIGC creative for WeChat: Official Account articles, Moments and Channels ads, and Mini Program storefront design from one studio, one brief."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -248,22 +259,24 @@ const faqSchema = {
           <h1 class="hero__title">
             <span class="line"><span class="line__i">Four lanes,</span></span>
             <span class="line"><span class="line__i serif">one WeChat brief.</span></span>
-            <span class="line"><span class="line__i">AIGC, in scale.</span></span>
+            <span class="line"><span class="line__i">AIGC, at scale.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
             Content. Ad creative. Channels. <em>Storefront.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              We ship four kinds of work into WeChat: editorial articles for
-              the Official Account; performance ad creative for Tencent Ads;
-              short-form video and livestream for Channels; and the visual
-              design of a Mini Program storefront.
+              We make four kinds of work for WeChat: editorial articles for
+              your Official Account, paid ad creative for Tencent Ads,
+              short-form video and livestreams for Channels, and the design of
+              a Mini Program storefront.
             </p>
             <p>
-              One brief, four lanes, every surface. One hero direction, fifty
-              market variants. AIGC inside a working production company, not in
-              place of one.
+              It all runs off one brief. A single creative direction holds the
+              surfaces together, and one approved concept becomes around fifty
+              versions, each tuned to a different city or market. The AI runs
+              inside a working studio. People still direct it and sign off
+              every frame.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
@@ -309,17 +322,16 @@ const faqSchema = {
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              We do four kinds of work for WeChat, end to end. Editorial
-              articles for the Official Account, written by native Mandarin
-              hands. Paid ad creative built for every Tencent Ads surface.
-              Short-form video and livestream for Channels. The visual design
-              of a Mini Program storefront, sized to the frames it serves.
+              WeChat behaves like four products inside one app. People read on
+              the Official Account, scroll Moments, watch Channels, and shop in
+              Mini Programs, mostly without switching to anything else. We make
+              work for all four.
             </p>
             <p class="r" style="--d:.16s">
-              One creative direction sits across all four. The same studio
-              hands that retouch the hero finish every variant in every lane,
-              so the long tail looks like the campaign rather than a thinned
-              clone of it.
+              A single creative direction sits over everything we make. The
+              same studio hands that retouch the hero image also finish every
+              variant behind it. That keeps the fiftieth ad looking like the
+              brand, not a tired knockoff of the first.
             </p>
           </div>
         </div>
@@ -338,12 +350,17 @@ const faqSchema = {
         </figure>
 
         <div class="stats">
-          <p class="stats__quote r">
-            One WeChat brief, four service lanes, every surface. Articles, ad
-            creative, Channels and storefront finished by the same studio
-            hands, with fifty-plus variants per concept and brief to first cut
-            inside forty-eight hours on short-form work.
+          <p class="stats__lead r">
+            Start with the audience. Its scale is the one thing about WeChat
+            that nobody disputes.
           </p>
+          <blockquote class="cite r" style="--d:.08s">
+            <p>
+              Combined monthly active users of Weixin and WeChat reached 1.41
+              billion as of September 30, 2025.
+            </p>
+            <cite>Tencent Holdings, Q3 2025 results</cite>
+          </blockquote>
           <div class="stats__grid">
             {
               stats.map((s, i) => (
@@ -424,9 +441,9 @@ const faqSchema = {
             </h2>
           </div>
           <p class="band__note r" style="--d:.1s">
-            Articles, Moments ads, Channels cuts and storefront stills produced
-            through the studio pipeline. Every frame is authored work, sized
-            for the surface it ships on.
+            A selection of finished work: articles, Moments ads, Channels cuts,
+            and storefront stills, all run through the studio. Each frame is
+            authored, and sized for the surface it runs on.
           </p>
         </header>
 
@@ -489,18 +506,32 @@ const faqSchema = {
             Authored creative, <span class="serif">AI volume</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            The WeChat brands compounding their results in 2026 are not the
-            ones with the loudest stack. They are the ones running an authored
-            creative process with AIGC inside it.
+            Right now, plenty of brands have AI tools for WeChat. Fewer have
+            kept a real creative process around those tools. The ones that did
+            tend to be the ones getting results, because the tooling was never
+            the hard part.
           </p>
-          <p class="source__p r" style="--d:.16s">
-            We sit between the technical and the creative: a working studio
-            with directors, writers, retouchers and colourists alongside the
-            AIGC engineers and the LoRA-training pipeline. Every variant ships
-            with the same brand discipline as the hero, because the same hands
-            sign it off.
+          <p class="source__p r" style="--d:.14s">
+            WeChat is also where the ad money is heading. Tencent's own results
+            say as much, and Channels, which the company reports under the name
+            Video Accounts, is a big part of why.
           </p>
-          <ul class="creds r" style="--d:.22s">
+          <blockquote class="cite r" style="--d:.18s">
+            <p>
+              Marketing-services revenue rose 19% in 2025, lifted by higher ad
+              impressions as user engagement grew on Video Accounts and Weixin
+              Search.
+            </p>
+            <cite>Tencent Holdings, full-year 2025 results</cite>
+          </blockquote>
+          <p class="source__p r" style="--d:.22s">
+            We are a working studio before anything else. Directors, writers,
+            retouchers, and colorists sit next to the AIGC engineers, the
+            people who run the AI image and video generation. Nothing goes
+            straight from a model to a client. Every file gets the same review
+            the hero shot does.
+          </p>
+          <ul class="creds r" style="--d:.28s">
             {
               credentials.map((c) => (
                 <li class="cred">
@@ -512,14 +543,15 @@ const faqSchema = {
               ))
             }
           </ul>
-          <p class="source__p r" style="--d:.26s">
-            Everything runs on private infrastructure with hosting in mainland
-            China, Hong Kong, the EU or the US depending on your data
-            sovereignty position. Custom-trained LoRA models stay your
-            property and can be exported if you ever leave.
+          <p class="source__p r" style="--d:.32s">
+            Everything runs on private infrastructure. You choose where it is
+            hosted, in mainland China, Hong Kong, the EU, or the US, depending
+            on where your data needs to sit. The LoRA models we train, small
+            add-on models that teach the AI your brand's look, stay your
+            property, and you can take them with you if you ever leave.
           </p>
-          <p class="source__p source__p--quiet r" style="--d:.3s">
-            We pick up where you need us and step back where you do not.
+          <p class="source__p source__p--quiet r" style="--d:.36s">
+            We do as much or as little of this as you need.
           </p>
         </div>
       </div>
@@ -533,13 +565,13 @@ const faqSchema = {
           One brief,<br />every <span class="serif">surface</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Articles, Moments ads, Channels video and storefront design share
-          the same brand line, and the same process. The format changes; the
-          discipline stays the same. The work is won in the direction, not in
-          the launch.
+          Articles, Moments ads, Channels video, and storefront design all run
+          through the same process. The format at the end of it changes, but
+          the steps to get there do not. Most of the outcome is settled early,
+          in the brief and the creative direction.
         </p>
         <p class="craft__note r" style="--d:.16s">
-          The first two steps are where it is won or lost. The rest is execution.
+          The first two steps decide most of it. The rest is execution.
         </p>
       </div>
 
@@ -614,35 +646,41 @@ const faqSchema = {
           </div>
         </aside>
 
-        <div class="acc">
-          {
-            faqs.map((faq) => (
-              <div class="acc__row r">
-                <button class="acc__q" type="button" aria-expanded="false">
-                  <span class="acc__qmark">Q</span>
-                  <span class="acc__qtext">{faq.q}</span>
-                  <span class="acc__icon" aria-hidden="true">
-                    <span></span><span></span>
-                  </span>
-                </button>
-                <div class="acc__a">
-                  <div class="acc__a-inner">
-                    <p>
-                      {faq.link ? (
-                        <>
-                          {faq.a.split(faq.link.match)[0]}
-                          <a href={faq.link.href}>{faq.link.match}</a>
-                          {faq.a.split(faq.link.match)[1]}
-                        </>
-                      ) : (
-                        faq.a
-                      )}
-                    </p>
+        <div class="faq__main">
+          <div class="acc">
+            {
+              faqs.map((faq) => (
+                <div class="acc__row r">
+                  <button class="acc__q" type="button" aria-expanded="false">
+                    <span class="acc__qmark">Q</span>
+                    <span class="acc__qtext">{faq.q}</span>
+                    <span class="acc__icon" aria-hidden="true">
+                      <span></span><span></span>
+                    </span>
+                  </button>
+                  <div class="acc__a">
+                    <div class="acc__a-inner">
+                      <p>
+                        {faq.link ? (
+                          <>
+                            {faq.a.split(faq.link.match)[0]}
+                            <a href={faq.link.href}>{faq.link.match}</a>
+                            {faq.a.split(faq.link.match)[1]}
+                          </>
+                        ) : (
+                          faq.a
+                        )}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
-          }
+              ))
+            }
+          </div>
+          <p class="faq__updated r">
+            WeChat platform and ad-format details on this page were last
+            reviewed in early 2026.
+          </p>
         </div>
       </div>
     </section>
@@ -659,9 +697,9 @@ const faqSchema = {
           Send the WeChat brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          A surface-by-surface recommendation, a scope outline, an indicative
-          timeline and a few free article or Channels frames so you can see
-          the thinking before any budget commits.
+          You get a recommendation surface by surface, a scope outline, a rough
+          timeline, and a few sample article or Channels frames, free, so you
+          can see how we think before you commit a budget.
         </p>
         <div class="end__cta r" style="--d:.18s">
           <Button variant="primary" href="/contact">Send the brief</Button>
@@ -727,6 +765,11 @@ const faqSchema = {
   .crop__inner img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .fig { margin-top: 14px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mute); }
 
+  /* Attributed citation, shared by the Why and Partnership sections */
+  .cite { margin: clamp(22px, 3vw, 30px) 0; max-width: 56ch; display: grid; gap: 13px; padding-left: clamp(18px, 2vw, 26px); border-left: 2px solid var(--brand-orange); }
+  .cite p { font-family: var(--font-serif); font-style: italic; font-size: clamp(19px, 1.9vw, 25px); line-height: 1.44; color: var(--text-on-dark); }
+  .cite cite { font-family: var(--font-mono); font-style: normal; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240, 237, 233, 0.55); }
+
   .ghost-link { display: inline-flex; align-items: center; gap: 9px; font-size: var(--type-small); font-weight: 600; color: var(--text-ink); }
   .ghost-link svg { width: 19px; height: 19px; transition: transform 0.24s ease-out; }
   .ghost-link:hover svg { transform: translateX(5px); }
@@ -788,7 +831,7 @@ const faqSchema = {
   .why__shot .fig { color: rgba(240, 237, 233, 0.5); }
 
   .stats { margin-top: clamp(48px, 6vw, 84px); border-top: 1.5px dashed rgba(240, 237, 233, 0.22); padding-top: clamp(36px, 4vw, 56px); }
-  .stats__quote { max-width: 60ch; font-family: var(--font-serif); font-style: italic; font-size: clamp(19px, 1.9vw, 25px); line-height: 1.42; color: var(--text-on-dark); }
+  .stats__lead { max-width: 50ch; font-size: var(--type-body); line-height: 1.6; color: rgba(240, 237, 233, 0.78); margin-bottom: 24px; }
   .stats__grid { margin-top: 40px; display: grid; gap: 30px; }
   @media (min-width: 720px) { .stats__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
   .stat { display: grid; gap: 5px; padding-top: 24px; border-top: 1.5px solid rgba(240, 237, 233, 0.16); }
@@ -895,6 +938,7 @@ const faqSchema = {
   }
   .faq__intro .dh { margin-top: 18px; }
   .faq__sub { margin-top: 18px; margin-bottom: 26px; font-size: var(--type-body); line-height: 1.62; color: var(--text-mute); }
+  .faq__updated { margin-top: 26px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mute); }
   .acc { display: grid; }
   .acc__row { border-top: 1.5px solid var(--ink); }
   .acc__row:last-child { border-bottom: 1.5px solid var(--ink); }

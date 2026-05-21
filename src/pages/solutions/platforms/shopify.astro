@@ -1,0 +1,1065 @@
+---
+/**
+ * Shopify · /solutions/platforms/shopify
+ *
+ * What hubStudio does for Shopify, across three service lanes: product
+ * pages, store content and ad creative. Editorial print-shop layout (crop
+ * marks, calibration colour bar, mono figure labels, dashed rules) carried
+ * over from meta.astro.
+ *
+ * Page excerpt (25 words): hubStudio makes three kinds of work for a Shopify
+ * store: product pages, store content, and ad creative for every channel you
+ * buy, from one brief.
+ *
+ * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
+ * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
+ * its canonical lowercase-h casing.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import Button from '../../../components/Button.astro';
+
+const colourBar = [
+  '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
+  '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
+];
+
+const stats = [
+  { from: 0, to: 3, suffix: '', label: 'Lanes we ship', note: 'Product pages, store content, ad creative' },
+  { from: 0, to: 200, suffix: '+', label: 'SKUs per catalog pass', note: 'One template, every product' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On a product page or an ad set' },
+];
+
+const samples = [
+  {
+    src: '/Images/shopify-sample-pdp.jpg',
+    kind: 'Product pages · PDP gallery',
+    alt: 'A vertical phone held in soft window light, the screen filled with a Shopify product detail page: a large on-model product photo, the title and price beneath it, and the add-to-cart button at the bottom of the storefront interface.',
+  },
+  {
+    src: '/Images/shopify-sample-video.jpg',
+    kind: 'Product pages · Product video',
+    alt: 'A phone screen showing a Shopify product page with a product video playing in the gallery, a progress bar across the clip and the title, price and add-to-cart button visible below in the storefront interface.',
+  },
+  {
+    src: '/Images/shopify-sample-collection.jpg',
+    kind: 'Store content · Collection page',
+    alt: 'A laptop screen showing a Shopify collection page: a grid of product cards each with a photo, a name and a price, filter controls down the left and a cart icon in the theme navigation.',
+  },
+  {
+    src: '/Images/shopify-sample-homepage.jpg',
+    kind: 'Store content · Homepage',
+    alt: 'A laptop screen showing a Shopify storefront homepage, a full-width seasonal hero banner above a featured product row, the theme navigation and cart icon along the top.',
+  },
+  {
+    src: '/Images/shopify-sample-ad.jpg',
+    kind: 'Ad creative · Meta & TikTok',
+    alt: 'A desktop screen with a Shopify product page open in one window and three vertical ad creative variants lined up beside it, the storefront price and add-to-cart button visible in the open page.',
+  },
+];
+
+const coverage = [
+  {
+    fig: 'B',
+    label: 'Product pages',
+    heading: 'Product pages. Description, image, video.',
+    image: '/Images/shopify-product.jpg',
+    alt: 'A phone held in both hands showing a Shopify product detail page: a swipeable image gallery at the top, the product title and price below it, and an add-to-cart button fixed at the bottom of the storefront interface.',
+    lead: 'The product page is where the sale happens. We build the whole thing: the copy, the gallery, the video, the way the price and the offer are shown.',
+    body: [
+      'Every product gets a real description, written to be read and to be found in search. The gallery is shot on-model and in context, not just on a white sweep. A short video covers what a still photo cannot. The price, the bundle, the sale all get laid out so a shopper reads the offer at a glance. We build the first page as a template, then run the rest of the catalog through it.',
+      'A creative director signs off that template, and the retoucher who finishes the hero product finishes the slow-selling SKU too. A three-hundred-product catalog ends up looking like one store, not three hundred separate uploads.',
+    ],
+    tags: [
+      'Product descriptions', 'On-model galleries', 'In-context stills',
+      'Product video', 'Detail & scale shots', 'Offer & price callouts',
+      'Bundle visuals', 'Catalog templates',
+    ],
+  },
+  {
+    fig: 'C',
+    label: 'Store content',
+    heading: 'Store content. The storefront and its channels.',
+    image: '/Images/shopify-store.jpg',
+    alt: 'A laptop screen showing a Shopify storefront homepage: a full-width hero banner across the top, a grid of collection cards below it, and a cart icon in the top navigation of the theme.',
+    lead: 'Everything around the product page. The homepage, the collection pages, the brand pages, and the organic social that feeds the store.',
+    body: [
+      'The homepage hero and the seasonal banners. Collection pages that actually merchandise instead of just listing stock. The About page and the brand story. Lookbooks. And the organic social on Instagram, TikTok and Pinterest, which carries the look of the store and sends people back to it. One brand book runs through all of it.',
+      'A storefront is never really finished. A new drop, a sale, a seasonal swap. We run it on a calendar instead of a scramble, so the store a customer lands on this week matches the ad that brought them there.',
+    ],
+    tags: [
+      'Homepage heroes', 'Collection pages', 'Brand-story pages',
+      'Lookbooks', 'Seasonal banners', 'Instagram & TikTok',
+      'Pinterest content', 'Always-on calendar',
+    ],
+  },
+  {
+    fig: 'D',
+    label: 'Ad creative',
+    heading: 'Ad creative. Built for every channel you buy.',
+    image: '/Images/shopify-ads.jpg',
+    alt: 'A wide monitor showing a Shopify product page open beside a grid of paid ad variants in vertical and square ratios, the storefront price and add-to-cart button visible in the open tab.',
+    lead: 'The paid creative that brings traffic to the store, made for Meta, TikTok, Google and wherever else the media plan spends.',
+    body: [
+      'Static and video ads, in every ratio and length the channels take. Catalog and dynamic product ads pulled straight from the store. Hook-tested short-form for TikTok and Reels. Shopping and Performance Max assets for Google. Every ad is built to match the product page it lands on, so the click never feels like it crossed into a different store.',
+      'A media plan is hungry, and five variants is not enough to test with. We build to the placement set the buyer is running, in the volume the algorithms reward, and we name the files so the reporting still reads a month later. The first variant takes real work. By the fortieth, the cost barely registers.',
+    ],
+    tags: [
+      'Meta & Reels ads', 'TikTok ads', 'Google Shopping',
+      'Performance Max', 'Catalog / DPA', 'Static & video',
+      'Hook A/B testing', 'Retargeting variants',
+    ],
+  },
+];
+
+const credentials = ['Private GPU infra', 'NDA & DPA', 'EU AI Act', 'Data sovereignty'];
+
+const processSteps = [
+  {
+    short: 'Brief',
+    tier: 'Where it is won',
+    title: 'Discovery and brief.',
+    body: 'One working session. We pin down the catalog, the margins that matter, which channels are in play and what the brand stands for. You leave with a one-page brief and a map of every page and asset, sorted by lane and by priority SKU.',
+    image: '/Images/shopify-p1-brief.jpg',
+    alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the Shopify admin product list alongside printed product-page and collection-page screenshots.',
+  },
+  {
+    short: 'Direction',
+    tier: 'Where it is won',
+    title: 'Creative direction across the three lanes.',
+    body: 'References go on the wall, the tone gets named, the product-page template takes shape, and we pick the AI models that suit each lane. Product pages, store content and ad creative each get their own treatment while sharing one brand line.',
+    image: '/Images/shopify-p2-direction.jpg',
+    alt: 'A storyboard wall with three columns of frame sketches labelled Product, Store and Ads, each column anchored by a printed Shopify product-page phone mock.',
+  },
+  {
+    short: 'AIGC',
+    tier: 'The rest is execution',
+    title: 'AIGC generation and authored finish.',
+    body: 'Now the volume gets made, lane by lane, SKU by SKU. Nothing reaches the storefront or a media plan until it has been through the retouch bench and the brand check.',
+    image: '/Images/shopify-p3-aigc.jpg',
+    alt: 'A retoucher at a calibrated workstation, the main monitor showing a single Shopify product-page hero image, the side panel showing a grid of catalog product thumbnails in the Shopify admin.',
+  },
+  {
+    short: 'Launch',
+    tier: 'The rest is execution',
+    title: 'Launch. Per-page, per-channel.',
+    body: 'Product pages and store content go live on the theme; ad creative goes to the media team in the formats each channel serves. The files are named so the reporting stays readable once the campaign and the catalog are both live.',
+    image: '/Images/shopify-p4-launch.jpg',
+    alt: 'A merchandiser at a daylit studio desk, the calibrated monitor showing a live Shopify storefront collection page with a published product grid.',
+  },
+  {
+    short: 'Adapt',
+    tier: 'The rest is execution',
+    title: 'Adapt. Restock, refresh, season.',
+    body: 'Once the template is approved, new SKUs slot straight in, a sale swaps the banners, a season refreshes the hero. The original brief still holds. You are adding to it, not starting over.',
+    image: '/Images/shopify-p5-adapt.jpg',
+    alt: 'A colorist at a calibrated grading suite, the reference monitor showing a warm Shopify product-page image paused on a styled product still, the storefront price and gallery thumbnails visible at the screen edges.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What exactly do you produce for a Shopify store?',
+    a: 'Three lanes of work. Product pages: the description, the image gallery, the product video and the way the price and offer are shown. Store content: the homepage, collection pages, brand-story pages and the organic social that feeds the store. And ad creative for Meta, TikTok, Google and wherever else the media plan spends. They share one creative direction and one finishing pass, so a brand can hire a single lane or all three and the work still matches.',
+  },
+  {
+    q: 'What goes into a product page build?',
+    a: 'Four parts. A description written to read well and to be found in search. An image gallery shot on-model and in context, not just on a white background. A short product video that answers the questions a still photo cannot. And a clear layout for the price, the bundle and the sale. We build the first page as a template, then run the catalog through it.',
+  },
+  {
+    q: 'What counts as store content?',
+    a: 'Everything around the product page. The homepage hero and seasonal banners, collection pages that merchandise rather than just list, brand-story and About pages, lookbooks, and the organic social on Instagram, TikTok and Pinterest. It all runs off one brand book, so the storefront and the feed read as the same brand.',
+  },
+  {
+    q: 'Can you handle our whole catalog, not just the hero products?',
+    a: 'Yes, and that is the point of the template. The hero SKU and the long-tail SKU get the same retoucher and the same brand check. A three-hundred-product catalog comes back looking like one store. The first page is the expensive one. After that the cost per page falls fast, and the brand models we train keep all of them consistent.',
+  },
+  {
+    q: 'How do you keep the store and the ads looking like one brand?',
+    a: 'The template and the brand line get signed off once, during the direction step. From there, every product page, every banner and every ad variant goes through the same retouch, the same color grade and the same brand check. That shared finish is the reason the ad, the click and the product page read as one store instead of three vendors who happen to share a logo.',
+  },
+  {
+    q: 'What is your turnaround on a product page or an ad set?',
+    a: 'For a brand we already know, a product page or a short-form ad set can go from brief to first cut in 24 to 72 hours. A new brand or a new catalog needs a one-time setup first, to lock the template and train the models. After that, a weekly drop at production quality is a comfortable pace.',
+  },
+  {
+    q: 'How does pricing work?',
+    a: 'We quote by project, and usually by lane, so a brand can start with the product pages and add the rest later. The number depends on how many SKUs and pages are in scope, how much ad volume the media plan needs, and whether we are training fresh brand or product models. Send a brief with a rough scope and a quote comes back, with no obligation to go ahead.',
+  },
+  {
+    q: 'Do you handle paid ads for Meta, TikTok and Google?',
+    a: 'Yes. The ad creative lane is built around whatever placement set the media team is buying: Meta and Reels, TikTok, Google Shopping and Performance Max, catalog and dynamic product ads. The variants come in the format range each channel needs, matched to the product page they land on, and named so the reporting still makes sense once everything is live.',
+  },
+  {
+    q: 'How do you keep the work from looking AI-generated?',
+    a: 'Every file goes through a studio finish: dodge and burn, grain, a little chromatic aberration, a color grade in Lightroom or Capture One. Our image style guide names the usual giveaways, the poreless skin, the identical bokeh, the product that melts into a hand, the text that is almost but not quite words. A person checks the final frame against that list before it ships. That last pass is what separates an AI image from a product image that sells.',
+  },
+  {
+    q: 'Can you white-label this for our agency?',
+    a: 'Yes. A good share of our Shopify work ships under agency brands, with full white-label delivery and a confidentiality agreement in place. The agency keeps the client relationship. We supply the production capacity behind it.',
+  },
+  {
+    q: 'Who owns the images, the copy and the trained models?',
+    a: 'You do. Every finished page, every master file, every line of copy, and any custom model we train on your brand or your products belongs to you. Commercial rights for the AI outputs run through enterprise tiers that grant commercial use. The Copyright and AI guide covers the legal detail.',
+    link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Shopify Product Pages & Ad Creative at Scale"
+  description="hubStudio makes Shopify product pages, store content and ad creative. One brief, three lanes, finished in a working studio."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
+
+  <div class="page">
+    <!-- S1 · HERO -->
+    <section class="hero">
+      <div class="hero__panel">
+        <svg class="hero__reg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <div class="hero__panel-in">
+          <p class="kicker kicker--light r">
+            <span class="kicker__tick"></span>Platform
+            <span class="kicker__sep">/</span> Shopify
+          </p>
+          <h1 class="hero__title">
+            <span class="line"><span class="line__i">Three lanes,</span></span>
+            <span class="line"><span class="line__i serif">one Shopify brief.</span></span>
+            <span class="line"><span class="line__i">AIGC, at scale.</span></span>
+          </h1>
+          <p class="hero__tag r" style="--d:.45s">
+            Product pages. Store content. <em>Ad creative.</em>
+          </p>
+          <div class="hero__lead r" style="--d:.55s">
+            <p>
+              hubStudio makes three kinds of work for a Shopify store. The
+              product pages come first: the copy, the gallery, the video, the
+              way an offer is shown. Then the rest of the storefront, the
+              homepage, the collection pages, the social that points back to
+              it. And the ad creative that pays for the traffic, for Meta,
+              TikTok, Google and wherever the budget goes.
+            </p>
+            <p>
+              It all runs off a single brief. One creative direction goes in,
+              and the work comes back built for every page and every placement.
+              The AI sits inside a real production company, which is the part
+              most studios skip.
+            </p>
+          </div>
+          <div class="hero__cta r" style="--d:.65s">
+            <Button variant="primary" href="/contact">Send the brief</Button>
+            <a class="ghost-link ghost-link--light" href="#proof">
+              See the work
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <p class="hero__meta r" style="--d:.72s">
+            Hong Kong + Shanghai <span>/</span> Shopify-native creative under one director
+          </p>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <img
+          src="/Images/shopify-hero.jpg"
+          alt="A close editorial portrait of a hand holding a phone in warm rim light, the phone screen filled with a Shopify storefront product page, the image gallery, the product title and price, and the add-to-cart button visible in the interface."
+          width="1024"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="hero__chip">Platform work <span>/</span> Shopify</span>
+      </div>
+    </section>
+
+    <div class="cbar" aria-hidden="true">
+      {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+    </div>
+
+    <!-- S2 · WHY -->
+    <section class="why">
+      <div class="shell">
+        <div class="why__top">
+          <div class="why__head">
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
+            <h2 class="dh r" style="--d:.05s">
+              What we ship<br /><span class="serif">into Shopify</span>.
+            </h2>
+          </div>
+          <div class="why__text">
+            <p class="r" style="--d:.1s">
+              Most brands run their store as a pile of separate jobs. A
+              copywriter for the descriptions, a photo studio for the images, a
+              performance shop for the ads, an agency for the social. Four
+              vendors, four invoices, and a brand that ends up a little
+              different in each one.
+            </p>
+            <p class="r" style="--d:.16s">
+              hubStudio keeps all of it under one roof and one creative
+              director. Product pages, store content and ad creative come off
+              the same brief, take the same color grade, and pass the same pair
+              of eyes before they ship. Click an ad, land on a page that looks
+              like the ad.
+            </p>
+          </div>
+        </div>
+
+        <figure class="why__shot crop r-clip">
+          <div class="crop__inner">
+            <img
+              src="/Images/shopify-roots.jpg"
+              alt="A wide editorial shot of two designers at a daylit studio table, three laptop screens lined up showing a Shopify product detail page, a Shopify collection page grid and a library of paid ad variants, one per service lane."
+              width="1408"
+              height="768"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="fig">Three lanes, one creative direction</figcaption>
+        </figure>
+
+        <div class="stats">
+          <p class="stats__quote r">
+            One brief covers all three lanes. The same hands finish every
+            product page, and short-form work comes back as a first cut within
+            two days.
+          </p>
+          <div class="stats__grid">
+            {
+              stats.map((s, i) => (
+                <div class="stat r" style={`--d:${i * 0.1}s`}>
+                  <span
+                    class="stat__num"
+                    data-from={s.from}
+                    data-to={s.to}
+                    data-suffix={s.suffix}
+                  >
+                    {s.from}{s.suffix}
+                  </span>
+                  <span class="stat__label">{s.label}</span>
+                  <span class="stat__note">{s.note}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3 · COVERAGE -->
+    <section class="cover">
+      <div class="shell">
+        <header class="band">
+          <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
+          <h2 class="dh r" style="--d:.05s">
+            Three lanes, one <span class="serif">brand line</span>.
+          </h2>
+        </header>
+
+        {
+          coverage.map((c, i) => (
+            <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
+              <figure class="feature__media crop r-clip">
+                <div class="crop__inner">
+                  <img
+                    src={c.image}
+                    alt={c.alt}
+                    width="1024"
+                    height="1024"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="fig">{c.label} lane</figcaption>
+              </figure>
+              <div class="feature__body">
+                <p class="feature__idx r"><span class="feature__tick"></span>Lane</p>
+                <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
+                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
+                {c.body.map((para, pi) => (
+                  <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
+                    {para}
+                  </p>
+                ))}
+                <p class="feature__scope r" style="--d:.24s">In scope</p>
+                <ul class="chips r" style="--d:.28s">
+                  {c.tags.map((t) => (
+                    <li class="chip">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- S4 · PROOF -->
+    <section class="proof" id="proof">
+      <div class="shell">
+        <header class="band band--split">
+          <div>
+            <p class="kicker r"><span class="kicker__tick"></span>Contact sheet</p>
+            <h2 class="dh r" style="--d:.05s">
+              Selected <span class="serif">frames</span>.
+            </h2>
+          </div>
+          <p class="band__note r" style="--d:.1s">
+            A handful of stills from recent Shopify work, across all three
+            lanes. Each one was made for the exact page or placement it runs
+            on, not resized to fit.
+          </p>
+        </header>
+
+        <div class="sheet">
+          {
+            samples.map((s, i) => (
+              <figure class="shot crop r-clip" style={`--d:${(i % 3) * 0.08}s`}>
+                <div class="crop__inner">
+                  <img
+                    src={s.src}
+                    alt={s.alt}
+                    width="1024"
+                    height="1024"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="shot__cap">
+                  <span class="shot__kind">{s.kind}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- S5 · PARTNERSHIP -->
+    <section class="source">
+      <div class="shell source__grid">
+        <div class="source__visual">
+          <figure class="source__main crop">
+            <div class="crop__inner">
+              <img
+                src="/Images/shopify-hybrid-main.jpg"
+                alt="A producer at a wide reference monitor showing a Shopify product page open beside a grid of paid ad variants, the columns tagged across the product, store and ad lanes."
+                width="1024"
+                height="1024"
+                loading="lazy"
+              />
+            </div>
+          </figure>
+          <figure class="source__inset">
+            <img
+              src="/Images/shopify-hybrid-inset.jpg"
+              alt="A close cinematic detail of a hand holding a phone vertically against a soft cream background, the screen filled with a Shopify product page including the image gallery, the price and the add-to-cart button."
+              width="1024"
+              height="1024"
+              loading="lazy"
+            />
+          </figure>
+          <div class="source__stat">
+            <span class="source__stat-num">1 brief</span>
+            <span class="source__stat-cap">Three lanes, every page, every channel</span>
+          </div>
+        </div>
+
+        <div class="source__body">
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Partnership</p>
+          <h2 class="dh r" style="--d:.05s">
+            Authored creative, <span class="serif">AI volume</span>.
+          </h2>
+          <p class="source__lead r" style="--d:.1s">
+            The brands pulling ahead on Shopify right now are not the ones with
+            the biggest tool subscription. They are the ones who kept a real
+            creative process and put AI to work inside it.
+          </p>
+          <p class="source__p r" style="--d:.16s">
+            That gap is where we sit. On one side, directors, retouchers and
+            colorists. On the other, the AI engineers and the model-training
+            pipeline. They share a room, which is why the three-hundredth
+            product page gets signed off as carefully as the first.
+          </p>
+          <ul class="creds r" style="--d:.22s">
+            {
+              credentials.map((c) => (
+                <li class="cred">
+                  <svg viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  {c}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="source__p r" style="--d:.26s">
+            Everything runs on our own infrastructure. Hosting sits in
+            mainland China, Hong Kong, the EU or the US, wherever your data
+            rules point. The models we train on your brand and your products
+            belong to you, and you can take them along if the relationship
+            ever ends.
+          </p>
+          <p class="source__p source__p--quiet r" style="--d:.3s">
+            Some clients hand us the whole storefront. Others just want the
+            product pages. Either way works for us.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6 · PROCESS -->
+    <section class="craft" id="craft">
+      <div class="shell craft__intro">
+        <p class="kicker r"><span class="kicker__tick"></span>How a Shopify build runs</p>
+        <h2 class="dh r" style="--d:.05s">
+          One brief,<br />every <span class="serif">page</span>.
+        </h2>
+        <p class="craft__lede r" style="--d:.12s">
+          Every lane runs through the same five steps. The format changes from
+          a product page to an ad to a homepage. The process under it does not,
+          and most of what decides whether the work sells happens early, well
+          before launch day.
+        </p>
+        <p class="craft__note r" style="--d:.16s">
+          The first two steps decide the build. Everything after is execution.
+        </p>
+      </div>
+
+      <div class="seq" id="seq">
+        <div class="seq__stick">
+          <div class="shell seq__stage">
+            <div class="seq__nav" aria-label="Process steps">
+              {
+                processSteps.map((s, i) => (
+                  <button
+                    class="seq__step"
+                    type="button"
+                    data-i={i}
+                    data-active={i === 0 ? 'true' : 'false'}
+                  >
+                    <span class="seq__step-dot">
+                      <span class="seq__step-fill"></span>
+                    </span>
+                    <span class="seq__step-label">{s.short}</span>
+                  </button>
+                ))
+              }
+            </div>
+
+            <div class="seq__panels">
+              {
+                processSteps.map((s, i) => (
+                  <article
+                    class="seq__panel"
+                    data-panel={i}
+                    data-active={i === 0 ? 'true' : 'false'}
+                  >
+                    <figure class="seq__media crop">
+                      <div class="crop__inner">
+                        <img
+                          src={s.image}
+                          alt={s.alt}
+                          width="1200"
+                          height="900"
+                          loading="lazy"
+                        />
+                      </div>
+                    </figure>
+                    <div class="seq__text">
+                      <span class="seq__tier">{s.tier}</span>
+                      <h3 class="seq__title">{s.title}</h3>
+                      <p class="seq__body">{s.body}</p>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S7 · FAQ -->
+    <section class="faq">
+      <div class="shell faq__grid">
+        <aside class="faq__intro">
+          <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
+          <h2 class="dh r" style="--d:.05s">
+            Before the<br />first <span class="serif">call</span>.
+          </h2>
+          <p class="faq__sub r" style="--d:.1s">
+            The things brands ask before we start. If yours is not here, put
+            it in the brief.
+          </p>
+          <div class="r" style="--d:.16s">
+            <Button variant="primary" href="/contact">Send the brief</Button>
+          </div>
+          <p class="fig r" style="--d:.2s">Reviewed May 2026</p>
+        </aside>
+
+        <div class="acc">
+          {
+            faqs.map((faq) => (
+              <div class="acc__row r">
+                <button class="acc__q" type="button" aria-expanded="false">
+                  <span class="acc__qmark">Q</span>
+                  <span class="acc__qtext">{faq.q}</span>
+                  <span class="acc__icon" aria-hidden="true">
+                    <span></span><span></span>
+                  </span>
+                </button>
+                <div class="acc__a">
+                  <div class="acc__a-inner">
+                    <p>
+                      {faq.link ? (
+                        <>
+                          {faq.a.split(faq.link.match)[0]}
+                          <a href={faq.link.href}>{faq.link.match}</a>
+                          {faq.a.split(faq.link.match)[1]}
+                        </>
+                      ) : (
+                        faq.a
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- S8 · CLOSE -->
+    <section class="end">
+      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+      </svg>
+      <div class="shell end__inner">
+        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Try us</p>
+        <h2 class="end__title r" style="--d:.05s">
+          Send the Shopify brief.<br />Back in <span class="serif">48 hours</span>.
+        </h2>
+        <p class="end__p r" style="--d:.12s">
+          You get a recommendation for each lane, a rough scope and timeline,
+          and a couple of sample product-page or ad frames, made for free, so
+          you can see how we think before any money is on the table.
+        </p>
+        <div class="end__cta r" style="--d:.18s">
+          <Button variant="primary" href="/contact">Send the brief</Button>
+          <a class="ghost-link ghost-link--light" href="/work">
+            See more work
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="cbar cbar--end" aria-hidden="true">
+        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    --ink: #0e1633;
+    --navy: #0e1f4e;
+    --paper: #f0ede9;
+    --paper-2: #e7e3dd;
+    overflow: clip;
+  }
+  .shell {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(22px, 5vw, 60px);
+  }
+
+  .prog { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 200; pointer-events: none; }
+  .prog__bar { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: 0 50%; background: var(--brand-orange); }
+
+  .r, .r-clip { --d: 0s; }
+  .r { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d); }
+  .r.in { opacity: 1; transform: none; }
+  .r-clip .crop__inner { clip-path: inset(0 0 101% 0); transition: clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d, 0s); }
+  .r-clip .crop__inner img { transform: scale(1.12); transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d, 0s); }
+  .r-clip.in .crop__inner { clip-path: inset(0 0 0 0); }
+  .r-clip.in .crop__inner img { transform: scale(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .r, .r.in { opacity: 1; transform: none; transition: none; }
+    .r-clip .crop__inner, .r-clip .crop__inner img { clip-path: none; transform: none; transition: none; }
+  }
+
+  .kicker { display: flex; align-items: center; gap: 9px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+  .kicker--light { color: rgba(240, 237, 233, 0.66); }
+  .kicker__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
+  .kicker__sep { color: var(--brand-orange); }
+
+  .dh { font-family: var(--font-sans); font-weight: 600; font-size: clamp(34px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.03em; }
+  .dh--sm { font-size: clamp(26px, 2.6vw, 38px); }
+  .serif { font-family: var(--font-serif); font-style: italic; font-weight: 500; letter-spacing: -0.01em; color: var(--brand-orange); }
+
+  .crop { position: relative; margin: 0; }
+  .crop::before, .crop::after { content: ''; position: absolute; width: 16px; height: 16px; z-index: 2; }
+  .crop::before { top: -9px; left: -9px; border-top: 1.5px solid var(--brand-orange); border-left: 1.5px solid var(--brand-orange); }
+  .crop::after { right: -9px; bottom: 28px; border-right: 1.5px solid var(--brand-orange); border-bottom: 1.5px solid var(--brand-orange); }
+  .crop__inner { overflow: hidden; border-radius: 4px; }
+  .crop__inner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .fig { margin-top: 14px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mute); }
+
+  .ghost-link { display: inline-flex; align-items: center; gap: 9px; font-size: var(--type-small); font-weight: 600; color: var(--text-ink); }
+  .ghost-link svg { width: 19px; height: 19px; transition: transform 0.24s ease-out; }
+  .ghost-link:hover svg { transform: translateX(5px); }
+  .ghost-link--light { color: var(--text-on-dark); }
+
+  .band { max-width: 720px; margin-bottom: clamp(40px, 5vw, 70px); display: grid; gap: 18px; }
+  .band--split { max-width: none; grid-template-columns: 1fr; }
+  @media (min-width: 880px) {
+    .band--split { grid-template-columns: 1fr 0.82fr; align-items: end; gap: 18px 60px; }
+    .band--split > div { display: grid; gap: 18px; }
+  }
+  .band__note { font-size: var(--type-lead); line-height: 1.5; color: var(--text-mute); }
+
+  .cbar { display: flex; height: 12px; }
+  .cbar span { flex: 1; }
+  .cbar--end { margin-top: clamp(60px, 8vw, 110px); }
+
+  /* Hero */
+  .hero { display: grid; background: var(--ink); color: var(--text-on-dark); }
+  @media (min-width: 900px) { .hero { grid-template-columns: 1fr 1fr; } }
+  .hero__panel { position: relative; display: flex; align-items: center; padding: clamp(40px, 4.4vw, 72px) clamp(24px, 5vw, 64px); overflow: clip; }
+  .hero__reg { position: absolute; width: clamp(240px, 28vw, 420px); right: -12%; bottom: -14%; color: rgba(240, 237, 233, 0.055); pointer-events: none; }
+  .hero__panel-in { position: relative; width: 100%; max-width: 600px; }
+  .hero__title { margin-top: 24px; font-family: var(--font-sans); font-weight: 600; font-size: clamp(46px, 6.6vw, 92px); line-height: 1.02; letter-spacing: -0.045em; }
+  .hero__title .line { display: block; overflow: hidden; padding: 0.22em 0.14em; margin: -0.22em -0.14em; }
+  .hero__title .line__i { display: block; transform: translateY(145%); transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+  .hero__title .line:nth-child(1) .line__i { transition-delay: 0.12s; }
+  .hero__title .line:nth-child(2) .line__i { transition-delay: 0.22s; }
+  .hero__title .line:nth-child(3) .line__i { transition-delay: 0.32s; }
+  .hero.in .hero__title .line__i { transform: translateY(0); }
+  .hero__title .serif { font-size: 1.04em; }
+  @media (prefers-reduced-motion: reduce) { .hero__title .line__i { transform: none; } }
+  .hero__tag { margin-top: 26px; font-size: clamp(18px, 1.5vw, 23px); font-weight: 600; letter-spacing: -0.02em; }
+  .hero__tag em { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--brand-orange); }
+  .hero__lead { margin-top: 20px; display: grid; gap: 13px; max-width: 46ch; }
+  .hero__lead p { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
+  .hero__cta { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .hero__meta { margin-top: 34px; padding-top: 20px; border-top: 1.5px dashed rgba(240, 237, 233, 0.2); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240, 237, 233, 0.5); }
+  .hero__meta span { color: var(--brand-orange); }
+  .hero__visual { position: relative; overflow: hidden; min-height: 58vh; }
+  @media (min-width: 900px) { .hero__visual { min-height: auto; } }
+  .hero__visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .hero.in .hero__visual img { transform: scale(1); }
+  @media (prefers-reduced-motion: reduce) { .hero__visual img { transform: none; } }
+  .hero__chip { position: absolute; left: 18px; bottom: 18px; z-index: 2; display: inline-flex; gap: 8px; padding: 9px 15px; border-radius: var(--radius-pill); background: rgba(14, 22, 51, 0.78); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+  .hero__chip span { color: var(--brand-orange); }
+
+  /* Why */
+  .why { background: var(--ink); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
+  .why__top { display: grid; gap: 30px; }
+  @media (min-width: 900px) { .why__top { grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; } }
+  .why__head .dh { margin-top: 18px; }
+  .why__text { display: grid; gap: 16px; align-content: start; padding-top: 6px; }
+  .why__text p { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.78); }
+  .why__clients { color: rgba(240, 237, 233, 0.6) !important; }
+  .why__clients strong { color: var(--text-on-dark); font-weight: 600; }
+  .why__shot { margin-top: clamp(40px, 5vw, 72px); }
+  .why__shot .crop__inner { aspect-ratio: 16 / 8; }
+  .why__shot .fig { color: rgba(240, 237, 233, 0.5); }
+
+  .stats { margin-top: clamp(48px, 6vw, 84px); border-top: 1.5px dashed rgba(240, 237, 233, 0.22); padding-top: clamp(36px, 4vw, 56px); }
+  .stats__quote { max-width: 60ch; font-family: var(--font-serif); font-style: italic; font-size: clamp(19px, 1.9vw, 25px); line-height: 1.42; color: var(--text-on-dark); }
+  .stats__grid { margin-top: 40px; display: grid; gap: 30px; }
+  @media (min-width: 720px) { .stats__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+  .stat { display: grid; gap: 5px; padding-top: 24px; border-top: 1.5px solid rgba(240, 237, 233, 0.16); }
+  .stat__num { font-size: clamp(56px, 7vw, 96px); font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--brand-orange); }
+  .stat__label { margin-top: 6px; font-size: 16px; font-weight: 600; }
+  .stat__note { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(240, 237, 233, 0.55); }
+
+  /* Coverage */
+  .cover { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
+  .feature { display: grid; gap: 36px; align-items: center; padding-block: clamp(40px, 5vw, 72px); border-top: 1.5px dashed var(--line-strong); }
+  .feature:last-child { border-bottom: 1.5px dashed var(--line-strong); }
+  @media (min-width: 900px) {
+    .feature { grid-template-columns: 1fr 1fr; gap: 72px; }
+    .feature--rev .feature__media { order: 2; }
+  }
+  .feature__media .crop__inner { aspect-ratio: 5 / 4; }
+  .feature__idx { display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+  .feature__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
+  .feature__body .dh { margin-top: 16px; }
+  .feature__lead { margin-top: 14px; font-size: var(--type-lead); line-height: 1.42; color: var(--text-ink); font-weight: 500; }
+  .feature__p { margin-top: 14px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+  .feature__scope { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line-hairline); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
+  .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 12px; font-weight: 500; transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
+  .chip:hover { background: var(--brand-orange); border-color: var(--brand-orange); color: #fff; }
+
+  /* Proof */
+  .proof { background: var(--bg-white); padding-block: clamp(80px, 10vw, 150px); }
+  .sheet { display: grid; gap: clamp(22px, 3vw, 40px); }
+  @media (min-width: 720px) {
+    .sheet { grid-template-columns: repeat(3, 1fr); }
+    .sheet .shot:nth-child(3n + 2) { margin-top: 60px; }
+    .sheet .shot:nth-child(3n) { margin-top: 30px; }
+  }
+  .shot .crop__inner { aspect-ratio: 1 / 1; }
+  .shot .crop__inner img { transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .shot:hover .crop__inner img { transform: scale(1.06); }
+  .shot__cap { margin-top: 14px; display: flex; align-items: baseline; padding-bottom: 10px; border-bottom: 1.5px solid var(--ink); }
+  .shot__kind { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-ink); }
+
+  /* Partnership / Source */
+  .source { background: var(--navy); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
+  .source__grid { display: grid; gap: 52px; }
+  @media (min-width: 940px) { .source__grid { grid-template-columns: 0.92fr 1.08fr; gap: 70px; align-items: center; } }
+  .source__visual { position: relative; }
+  .source__main .crop__inner { aspect-ratio: 5 / 4; }
+  .source__inset { position: absolute; right: -14px; bottom: -34px; width: 42%; max-width: 200px; margin: 0; border-radius: 8px; overflow: hidden; border: 5px solid var(--navy); box-shadow: 0 20px 36px rgba(0, 0, 0, 0.42); }
+  .source__inset img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  @media (max-width: 520px) { .source__inset { display: none; } }
+  .source__stat { position: absolute; left: -10px; top: 36px; display: grid; gap: 3px; padding: 15px 19px; border-radius: 12px; background: var(--brand-orange); color: #fff; box-shadow: 0 16px 32px rgba(233, 78, 27, 0.42); }
+  .source__stat-num { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+  .source__stat-cap { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; max-width: 15ch; line-height: 1.4; }
+  .source__body .dh { margin-top: 16px; }
+  .source__lead { margin-top: 20px; font-size: var(--type-lead); line-height: 1.5; color: var(--text-on-dark); }
+  .source__p { margin-top: 15px; font-size: var(--type-body); line-height: 1.66; color: rgba(240, 237, 233, 0.78); }
+  .source__p--quiet { color: rgba(240, 237, 233, 0.55); }
+  .creds { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 9px; }
+  .cred { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: var(--radius-pill); border: 1px solid rgba(240, 237, 233, 0.2); font-family: var(--font-mono); font-size: 12px; font-weight: 500; transition: border-color 0.2s ease, background-color 0.2s ease; }
+  .cred:hover { border-color: var(--brand-orange); background: rgba(233, 78, 27, 0.16); }
+  .cred svg { width: 13px; height: 13px; color: var(--brand-orange); }
+
+  /* Process */
+  .craft { background: var(--paper); padding-top: clamp(80px, 10vw, 150px); }
+  .craft__intro { max-width: 780px; margin-bottom: clamp(36px, 5vw, 60px); }
+  .craft__intro .kicker { color: var(--brand-orange); }
+  .craft__intro .dh { margin-top: 16px; }
+  .craft__lede { margin-top: 18px; font-size: var(--type-lead); line-height: 1.5; color: var(--text-mute); }
+  .craft__note { margin-top: 22px; display: inline-block; padding: 13px 20px; border-left: 3px solid var(--brand-orange); background: rgba(233, 78, 27, 0.07); border-radius: 0 10px 10px 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--text-ink); }
+
+  .seq__nav { display: none; }
+  .seq__panels { display: grid; gap: clamp(48px, 7vw, 96px); padding-bottom: clamp(80px, 10vw, 150px); }
+  .seq__panel { display: grid; gap: 28px; }
+  @media (min-width: 760px) {
+    .seq__panel { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .seq__panel:nth-child(even) .seq__media { order: 2; }
+  }
+  .seq__media .crop__inner { aspect-ratio: 4 / 3; }
+  .seq__tier { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
+  .seq__title { margin-top: 12px; font-size: clamp(25px, 2.7vw, 38px); font-weight: 600; line-height: 1.12; letter-spacing: -0.025em; }
+  .seq__body { margin-top: 14px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+
+  .craft--pinned .seq { height: 480vh; }
+  .craft--pinned .seq__stick { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
+  .craft--pinned .seq__stage { width: 100%; display: flex; flex-direction: column; gap: clamp(22px, 3vw, 40px); }
+  .craft--pinned .seq__nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .seq__step { display: flex; flex-direction: column; gap: 10px; padding: 0; background: transparent; border: none; text-align: left; cursor: pointer; }
+  .seq__step-dot { height: 5px; border-radius: 3px; background: var(--line-strong); overflow: hidden; }
+  .seq__step-fill { display: block; height: 100%; width: 100%; background: var(--brand-orange); transform: scaleX(0); transform-origin: 0 50%; }
+  .seq__step-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-mute); transition: color 0.3s ease; }
+  .seq__step[data-active='true'] .seq__step-label { color: var(--text-ink); }
+  .craft--pinned .seq__panels { position: relative; display: block; height: clamp(340px, 60vh, 540px); padding-bottom: 0; }
+  .craft--pinned .seq__panel { position: absolute; inset: 0; align-content: center; opacity: 0; visibility: hidden; transform: translateY(26px); transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.5s; }
+  .craft--pinned .seq__panel[data-active='true'] { opacity: 1; visibility: visible; transform: none; transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .craft--pinned .seq__panel:nth-child(even) .seq__media { order: 0; }
+  .craft--pinned .seq__media .crop__inner { aspect-ratio: auto; height: clamp(280px, 52vh, 460px); }
+  @media (prefers-reduced-motion: reduce) { .craft--pinned .seq__panel { transition: none; } }
+
+  /* FAQ */
+  .faq { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
+  .faq__grid { display: grid; gap: 44px; }
+  @media (min-width: 1000px) {
+    .faq__grid { grid-template-columns: 0.78fr 1.22fr; gap: 72px; align-items: start; }
+    .faq__intro { position: sticky; top: 96px; }
+  }
+  .faq__intro .dh { margin-top: 18px; }
+  .faq__sub { margin-top: 18px; margin-bottom: 26px; font-size: var(--type-body); line-height: 1.62; color: var(--text-mute); }
+  .acc { display: grid; }
+  .acc__row { border-top: 1.5px solid var(--ink); }
+  .acc__row:last-child { border-bottom: 1.5px solid var(--ink); }
+  .acc__q { width: 100%; display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 16px; padding: 26px 0; background: transparent; border: none; text-align: left; }
+  .acc__qmark { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--brand-orange); padding-top: 3px; }
+  .acc__qtext { font-size: clamp(17px, 1.6vw, 21px); font-weight: 600; letter-spacing: -0.01em; color: var(--text-ink); transition: color 0.18s ease; }
+  .acc__q:hover .acc__qtext { color: var(--brand-orange); }
+  .acc__icon { position: relative; width: 22px; height: 22px; margin-top: 2px; }
+  .acc__icon span { position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; border-radius: 2px; background: var(--text-ink); transform: translate(-50%, -50%); transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+  .acc__icon span:last-child { transform: translate(-50%, -50%) rotate(90deg); }
+  .acc__q[aria-expanded='true'] .acc__icon span:last-child { transform: translate(-50%, -50%) rotate(0deg); }
+  .acc__q[aria-expanded='true'] .acc__icon span { background: var(--brand-orange); }
+  .acc__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.32s ease; }
+  .acc__q[aria-expanded='true'] + .acc__a { grid-template-rows: 1fr; }
+  .acc__a-inner { overflow: hidden; }
+  .acc__a-inner p { padding: 0 0 26px 41px; max-width: 64ch; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+  .acc__a-inner a { color: var(--brand-orange); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* Close */
+  .end { position: relative; background: var(--ink); color: var(--text-on-dark); padding-top: clamp(80px, 11vw, 150px); overflow: clip; }
+  .end__reg { position: absolute; width: clamp(300px, 36vw, 560px); top: -16%; right: -9%; color: rgba(240, 237, 233, 0.05); pointer-events: none; }
+  .end__inner { position: relative; display: grid; justify-items: start; gap: 22px; }
+  .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
+  .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
+  .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+</style>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const progBar = document.querySelector<HTMLElement>('.prog__bar');
+  if (progBar) {
+    const onScroll = () => {
+      const d = document.documentElement;
+      const max = d.scrollHeight - d.clientHeight;
+      progBar.style.transform = `scaleX(${max > 0 ? Math.min(1, d.scrollTop / max) : 0})`;
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
+  const revealEls = document.querySelectorAll('.r, .r-clip, .hero');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -7% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  const nums = Array.from(document.querySelectorAll<HTMLElement>('.stat__num'));
+  const runCount = (el: HTMLElement) => {
+    const from = Number(el.dataset.from || 0);
+    const to = Number(el.dataset.to || 0);
+    const suffix = el.dataset.suffix || '';
+    if (reduceMotion.matches) {
+      el.textContent = `${to}${suffix}`;
+      return;
+    }
+    const dur = 1500;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = `${Math.round(from + (to - from) * eased)}${suffix}`;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window && nums.length) {
+    const io2 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            runCount(e.target as HTMLElement);
+            io2.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+    nums.forEach((n) => io2.observe(n));
+  } else {
+    nums.forEach(runCount);
+  }
+
+  const craft = document.getElementById('craft');
+  const seq = document.getElementById('seq');
+  if (craft && seq) {
+    const steps = Array.from(seq.querySelectorAll<HTMLElement>('.seq__step'));
+    const panels = Array.from(seq.querySelectorAll<HTMLElement>('.seq__panel'));
+    const fills = steps.map((s) => s.querySelector<HTMLElement>('.seq__step-fill'));
+    const n = panels.length;
+    const wide = window.matchMedia('(min-width: 880px)');
+
+    const setActive = (idx: number, sub: number) => {
+      panels.forEach((p, i) => (p.dataset.active = String(i === idx)));
+      steps.forEach((s, i) => {
+        s.dataset.active = String(i === idx);
+        const f = fills[i];
+        if (f) f.style.transform = `scaleX(${i < idx ? 1 : i === idx ? sub : 0})`;
+      });
+    };
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      if (!craft.classList.contains('craft--pinned')) return;
+      const total = seq.offsetHeight - window.innerHeight;
+      const scrolled = Math.min(total, Math.max(0, -seq.getBoundingClientRect().top));
+      const p = total > 0 ? scrolled / total : 0;
+      const exact = p * n;
+      const idx = Math.min(n - 1, Math.floor(exact));
+      const sub = Math.min(1, Math.max(0, exact - idx));
+      setActive(idx, idx === n - 1 ? 1 : sub);
+    };
+    const onScrollSeq = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    const applyMode = () => {
+      if (wide.matches && !reduceMotion.matches) {
+        craft.classList.add('craft--pinned');
+        update();
+      } else {
+        craft.classList.remove('craft--pinned');
+        panels.forEach((p) => (p.dataset.active = 'true'));
+      }
+    };
+
+    steps.forEach((s, i) => {
+      s.addEventListener('click', () => {
+        if (!craft.classList.contains('craft--pinned')) return;
+        const railTop = seq.getBoundingClientRect().top + window.scrollY;
+        const total = seq.offsetHeight - window.innerHeight;
+        window.scrollTo({
+          top: railTop + ((i + 0.5) / n) * total,
+          behavior: reduceMotion.matches ? 'auto' : 'smooth',
+        });
+      });
+    });
+
+    window.addEventListener('scroll', onScrollSeq, { passive: true });
+    window.addEventListener('resize', () => {
+      applyMode();
+      update();
+    });
+    applyMode();
+  }
+
+  const accQs = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc__q'));
+  accQs.forEach((q) => {
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') === 'true';
+      accQs.forEach((o) => o.setAttribute('aria-expanded', 'false'));
+      q.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+</script>

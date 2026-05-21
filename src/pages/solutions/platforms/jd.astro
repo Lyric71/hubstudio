@@ -1,0 +1,1088 @@
+---
+/**
+ * JD (JD.com) · /solutions/platforms/jd
+ *
+ * What hubStudio does for JD, across four service lanes: product content,
+ * store content, ad creative and campaign. Editorial print-shop layout (crop
+ * marks, calibration colour bar, mono figure labels, dashed rules) carried
+ * over from meta.astro, the platform-page reference implementation.
+ *
+ * Page excerpt (25 words): hubStudio builds four kinds of work for JD: detail
+ * pages, flagship store content, Jingzhuntong ad creative, and 618 campaign
+ * kits, all from a single brief.
+ *
+ * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
+ * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
+ * its canonical lowercase-h casing.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import Button from '../../../components/Button.astro';
+
+const colourBar = [
+  '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
+  '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
+];
+
+const stats = [
+  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Product, store, ad creative, campaign' },
+  { from: 0, to: 50, suffix: '+', label: 'Variants per concept', note: 'From one signed-off master' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On detail pages and store modules' },
+];
+
+const samples = [
+  {
+    src: '/Images/jd-sample-detail.jpg',
+    kind: 'Product content · Detail page',
+    alt: 'A vertical phone held in soft window light, the screen showing a JD product detail page scrolled to the long-scroll description, an infographic module and a usage-scene module stacked down the page above the JD app navigation bar.',
+  },
+  {
+    src: '/Images/jd-sample-main.jpg',
+    kind: 'Product content · Main image',
+    alt: 'A phone held vertically, the screen showing a JD product detail page with the large main image at the top, the red price block beneath it and a row of SKU swatch thumbnails along the lower interface.',
+  },
+  {
+    src: '/Images/jd-sample-store.jpg',
+    kind: 'Store content · Flagship store',
+    alt: 'A phone screen displaying a JD flagship store homepage, a wide brand banner above a row of category tabs and a grid of shoppable product tiles.',
+  },
+  {
+    src: '/Images/jd-sample-kuaiche.jpg',
+    kind: 'Ad creative · Kuaiche',
+    alt: 'A phone screen showing JD search results, a Kuaiche sponsored product card at the top of the list with a small grey ad label, a product image, a red price and a buy button.',
+  },
+  {
+    src: '/Images/jd-sample-618.jpg',
+    kind: 'Campaign · 618 venue page',
+    alt: 'A phone held vertically, the screen filled by a JD 618 festival venue page, a bold red festival banner above a countdown strip and a grid of coupon tiles.',
+  },
+];
+
+const coverage = [
+  {
+    fig: 'B',
+    label: 'Product content',
+    heading: 'Product content. The detail page, top to bottom.',
+    image: '/Images/jd-product.jpg',
+    alt: 'A phone held in both hands, the screen showing a JD product detail page scrolled to the long-scroll modules, an infographic panel and a comparison panel visible above the JD app navigation bar.',
+    lead: 'Everything on the JD listing that does the selling: the main image set, the long-scroll detail page, and the listing video, built to the standard of the paid work.',
+    body: [
+      "On JD, the detail page is where the shopper makes the call. Most catalogs treat it as a spec sheet the factory sent over. We build the whole thing instead. The main image set is shot clean and to JD's rules. The SKU swatches are made as a set, so the variants actually match. The long-scroll page is designed module by module: the infographics, the scale shots, the usage scenes, the comparison panel a category shopper stops to read. The listing video gets three seconds to earn the rest, and it is cut for exactly that.",
+      "Coupon graphics, gift-with-purchase callouts, trust badges, all of it gets the same finish, and all of it is sized to JD's upload rules so nothing gets suppressed. One creative director signs off every module. The retoucher who finishes the hero image also finishes the spec diagram, the part of the page nobody else wants to touch.",
+    ],
+    tags: [
+      'Main image set', 'SKU swatches', 'Detail-page modules',
+      'Infographic panels', 'Usage-scene shots', 'Listing video',
+      'Comparison panels', 'Coupon graphics',
+    ],
+  },
+  {
+    fig: 'C',
+    label: 'Store content',
+    heading: 'Store content. The flagship store, run as a channel.',
+    image: '/Images/jd-store.jpg',
+    alt: 'A phone screen showing a JD flagship store homepage, a wide brand banner above a row of category tabs and a grid of shoppable product tiles, the JD app navigation visible at the top of the interface.',
+    lead: "The brand's own storefront on JD: a multi-page flagship store, decorated and merchandised like a real destination.",
+    body: [
+      "JD gives every brand a flagship store. It is a multi-page site that sits inside JD, and most brands hang a banner on it, drop in a product wall, and then forget it exists. We treat it as a destination. The homepage says what the brand is. The category pages merchandise rather than dump stock. The scene tiles are shoppable. New-arrival and member zones give a returning shopper somewhere to go.",
+      "The store gets the same direction as the detail page and the same finishing hands, so the two never drift apart. Decoration is timed to the retail calendar, not refreshed once a year and left. When a campaign goes live, the store goes with it.",
+    ],
+    tags: [
+      'Flagship store pages', 'Store homepage', 'Category merchandising',
+      'Shoppable scene tiles', 'New-arrival modules', 'Member-zone graphics',
+      'Store banners', 'Seasonal decoration',
+    ],
+  },
+  {
+    fig: 'D',
+    label: 'Ad creative',
+    heading: 'Ad creative. Built for Jingzhuntong.',
+    image: '/Images/jd-ads.jpg',
+    alt: 'A wide monitor showing the Jingzhuntong creative library, a grid of Kuaiche search ads and JD app-splash variants lined up in the placement preview panel.',
+    lead: 'Paid creative for every JD ad surface, made in the volume the auction rewards.',
+    body: [
+      "Kuaiche wants search creative that holds up on a crowded results page. The app splash wants one strong frame for the second after a shopper opens JD. Focus banners, the recommendation feed, JD's off-site display network: each one is its own build. We work to the exact placement set the media team is buying on Jingzhuntong, in every ratio and length the auction will take.",
+      "File naming gets the same care as the artwork, which sounds fussy until a campaign is a month old and the reporting has to still make sense. Search creative, splash frames, feed cards, retargeting cuts all get the studio finish the hero gets.",
+    ],
+    tags: [
+      'Kuaiche search ads', 'App splash', 'Focus banners',
+      'Recommendation feed', 'Display network', 'Carousel cards',
+      'Hook A/B testing', 'Retargeting variants',
+    ],
+  },
+  {
+    fig: 'E',
+    label: 'Campaign',
+    heading: 'Campaign. Built for 618 and the festival calendar.',
+    image: '/Images/jd-campaign.jpg',
+    alt: 'A phone screen showing a JD 618 festival venue page, a bold red festival banner above a countdown timer, a coupon-tile grid and a row of festival-dressed product cards.',
+    lead: 'The look and the full asset kit behind a JD festival push, from 618 through Double 11, carried across every surface at once.',
+    body: [
+      "JD runs on its festivals, and 618 is the one it invented. A festival is not a banner. It is a system. The venue page needs its own visual identity. The detail pages get dressed for the period. The store gets decorated. Then come the pre-sale graphics, the coupon and warm-up assets, the countdown modules, the ad creative cut for the festival auction. We design the look once and carry it across all of it, so the brand reads as one campaign on one of the heaviest dates on the China retail calendar.",
+      "Volume is the real problem here. A single festival can need a few hundred assets inside a tight window, and we staff for that, with writers and retouchers in Shanghai working the festival clock. The warm-up, the peak-day swap, the last-call push, each one lands on its own deadline.",
+    ],
+    tags: [
+      '618 festival kits', 'Double 11 campaigns', 'Venue-page identity',
+      'Pre-sale graphics', 'Coupon and warm-up assets', 'Countdown modules',
+      'Festival-dressed listings', 'Peak-day variants',
+    ],
+  },
+];
+
+const credentials = ['Private GPU infra', 'NDA & DPA', 'EU AI Act', 'Data sovereignty'];
+
+const processSteps = [
+  {
+    short: 'Brief',
+    tier: 'Where it is won',
+    title: 'The brief, in one working session.',
+    body: 'One working session. We pin down the catalog, the priority SKUs, the JD surfaces in play, and the festival dates you are buying into. We also get clear on what the brand will not do, which matters as much as what it will. You leave with a one-page brief and an asset map, sorted by SKU and by lane.',
+    image: '/Images/jd-p1-brief.jpg',
+    alt: 'A creative director and a brand lead at a studio table, a laptop between them showing a JD flagship store layout alongside printed JD product detail page and 618 venue-page screenshots.',
+  },
+  {
+    short: 'Direction',
+    tier: 'Where it is won',
+    title: 'Creative direction, lane by lane.',
+    body: 'References go on the wall, the tone gets named, and the module list and the festival look start to take shape. We also pick the AI models that suit each lane. Product content, store, ad creative, campaign: each gets its own treatment. This is the step that makes the catalog yours and not a template.',
+    image: '/Images/jd-p2-direction.jpg',
+    alt: 'A storyboard wall with four columns of frame sketches labelled Product, Store, Ads and Campaign, each column anchored by a printed JD product detail page mock.',
+  },
+  {
+    short: 'AIGC',
+    tier: 'The rest is execution',
+    title: 'Generation, then the finishing bench.',
+    body: 'Now the volume gets made, lane by lane, SKU by SKU. Nothing reaches a listing or a media plan until it has cleared the retouch bench and the brand check.',
+    image: '/Images/jd-p3-aigc.jpg',
+    alt: 'A motion designer at a calibrated workstation, the main monitor showing a single JD detail-page hero module, the side panel showing the Jingzhuntong creative library grid of variants.',
+  },
+  {
+    short: 'Launch',
+    tier: 'The rest is execution',
+    title: 'Launch, per-SKU and per-festival.',
+    body: 'Files go to the catalog and media teams in the formats JD actually serves: the right ratios for each ad slot, the module set for each detail page, the image set named per SKU. The naming sounds trivial. It is what keeps the catalog legible once it is all live.',
+    image: '/Images/jd-p4-launch.jpg',
+    alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the Jingzhuntong campaign dashboard with Kuaiche and app-splash placements live.',
+  },
+  {
+    short: 'Adapt',
+    tier: 'The rest is execution',
+    title: 'Adapt: variants, refresh, the next festival.',
+    body: 'Once the hero listing is signed off, the variants come fast. A new SKU in the range. A different category. The next festival on the calendar. The brief still holds, so you are adding to it rather than starting over.',
+    image: '/Images/jd-p5-adapt.jpg',
+    alt: 'A colourist at a calibrated grading suite, the main reference monitor showing a warm JD lifestyle listing image paused on a product still, the JD interface elements visible at the screen edge.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What exactly do you make for JD?',
+    a: 'Four lanes, one studio. Product content is the detail page: the main image set, the SKU swatches, the long-scroll modules, the infographics, the listing video. Store content is the multi-page flagship store, decorated and merchandised as a channel. Ad creative covers Jingzhuntong, which means Kuaiche search ads, the app splash, focus banners, the recommendation feed. Campaign is the festival work, the kits for 618, Double 11 and the New Year sale. The four share one creative direction and one finishing pass, so the long tail of the catalog looks like the hero SKU. Hire one lane or all four.',
+  },
+  {
+    q: 'How do you build a JD detail page?',
+    a: "We build the whole listing, not a single asset. The main image set is shot clean and to JD's current rules. The SKU swatches are made as a set so the variants match. The long-scroll page is designed module by module: the infographics, the scale shots, the usage scenes, the comparison panel a category shopper stops to read. The listing video is cut to earn its first three seconds. Coupon and trust graphics are sized to JD's upload rules so nothing gets suppressed. None of it arrives as a stack of files from the factory.",
+  },
+  {
+    q: 'How does the Campaign lane handle 618 and the festival calendar?',
+    a: "A JD festival is a system, not a banner. We design the festival look once, then carry it across every surface in the same window: the venue-page identity, the festival-dressed detail pages, the store decoration for the period, the pre-sale and coupon graphics, the countdown modules, the ad creative for the festival auction. 618 is JD's own event and one of the heaviest dates on the calendar, so the kit is built for volume and staffed on the festival clock. Warm-up, peak-day swap, last-call push: each is delivered on its own deadline.",
+  },
+  {
+    q: 'Who writes the Chinese copy on the detail page and the store?',
+    a: 'Native Mandarin writers who shop on JD themselves, not translators working from an English document. A JD detail page is written for a Chinese reader from the first line. The headline frames the product the way that reader expects it framed, the module copy answers an objection a real shopper has, the spec language matches the category. The English brief sets the strategy. The copy itself is written in Chinese, for the JD audience, by people who use the platform.',
+  },
+  {
+    q: 'What does a JD engagement cost?',
+    a: 'We price by project, and usually by lane, so a brand can start with one lane and add the others later. The cost depends on how many surfaces are in scope, how much volume the catalog and the media plan need, and whether we are training new product models from scratch. Send a brief and a scope, and a quote comes back, with no obligation to go ahead. Festival work is normally scoped on its own, since the volume spikes hard around 618 and Double 11.',
+  },
+  {
+    q: 'Can you produce detail pages and ad creative at the volume our catalog needs?',
+    a: 'Yes, and the volume is where this model pays for itself. One hero shoot or one AI sprint produces the master. After that the variants land per SKU, per category and per ad slot inside days. The first variant is the expensive one. By the fiftieth, the cost per piece is close to nothing, and the LoRA models we train on your products keep all of them on brand.',
+  },
+  {
+    q: 'How do you keep the brand line consistent across a big catalog?',
+    a: 'The hero concept is signed off once, in the direction step. After that, every detail-page module, every store tile and every ad variant goes through the same retouch pass, the same color grade and the same brand check. That shared finish is the reason a fifty-SKU catalog can read as one brand. Without it you get what most large catalogs already have, which is listings that were plainly built by different freelancers in different years.',
+  },
+  {
+    q: 'How fast is a detail page or an ad asset?',
+    a: 'For a brand we already know, a detail-page module or an ad asset can go from brief to first cut in 24 to 72 hours. A new brand or a new product line needs a one-time onboarding first, to lock the treatment and train the LoRA models. After that, a weekly drop at production quality is a comfortable pace. When a festival forces the issue, a reactive asset can turn around inside a day.',
+  },
+  {
+    q: 'Do you handle Kuaiche, the app splash and the rest of Jingzhuntong?',
+    a: "Yes. We brief the ad creative lane around whatever placement set the media team is buying on Jingzhuntong: Kuaiche search creative, the app splash, focus banners, the recommendation feed, JD's off-site display network. The variants come in the format range the auction needs, and they are named so the reporting still reads clearly once everything is live.",
+  },
+  {
+    q: 'How do you keep the work from looking AI-generated?',
+    a: 'Every file goes through a studio finish: dodge and burn, a grain pass, a little chromatic aberration, a color grade in Lightroom or Capture One. Our image style guide names the usual giveaways, the poreless skin, the identical bokeh, the product edge that melts into a hand, the text that is almost but not quite words. A person checks the final frame against that list before it ships. That last pass is what separates an AI image from a campaign image.',
+  },
+  {
+    q: 'Can you white-label this for our agency?',
+    a: 'Yes. A good share of our JD work ships under agency brands, with full white-label delivery and a confidentiality agreement in place. The agency keeps the client relationship. We supply the production capacity behind it.',
+  },
+  {
+    q: 'Who owns the assets, the masters and the trained models?',
+    a: 'You do. Every finished asset, every master file, and any LoRA or fine-tuned model we train on your products belongs to you. Commercial rights for the AI outputs run through enterprise tiers that grant commercial use. The Copyright and AI guide covers the legal detail.',
+    link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="JD AIGC: Detail Page, Store & Campaign Creative"
+  description="AIGC for JD: detail pages, flagship store decoration, Jingzhuntong ad creative and 618 campaign kits, built in a working studio. One brief, every SKU."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
+
+  <div class="page">
+    <!-- S1 · HERO -->
+    <section class="hero">
+      <div class="hero__panel">
+        <svg class="hero__reg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <div class="hero__panel-in">
+          <p class="kicker kicker--light r">
+            <span class="kicker__tick"></span>Platform
+            <span class="kicker__sep">/</span> JD
+          </p>
+          <h1 class="hero__title">
+            <span class="line"><span class="line__i">Four lanes,</span></span>
+            <span class="line"><span class="line__i serif">one JD brief.</span></span>
+            <span class="line"><span class="line__i">AIGC, at scale.</span></span>
+          </h1>
+          <p class="hero__tag r" style="--d:.45s">
+            Product content. Store content. Ad creative. <em>Campaign.</em>
+          </p>
+          <div class="hero__lead r" style="--d:.55s">
+            <p>
+              We make four kinds of work for JD. Product content for the
+              detail page, from the main image set to the long-scroll modules
+              and the listing video. Store content for the flagship store.
+              Ad creative for Jingzhuntong, Kuaiche and the app splash. And
+              campaign kits for 618 and the rest of the festival calendar.
+            </p>
+            <p>
+              It all runs off one brief. One creative direction goes in, and
+              the work comes back cut for every surface JD serves. The AI
+              generation happens inside a working production company, not in
+              place of one.
+            </p>
+          </div>
+          <div class="hero__cta r" style="--d:.65s">
+            <Button variant="primary" href="/contact">Send the brief</Button>
+            <a class="ghost-link ghost-link--light" href="#proof">
+              See the work
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <p class="hero__meta r" style="--d:.72s">
+            Hong Kong + Shanghai <span>/</span> JD-native creative under one director
+          </p>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <img
+          src="/Images/jd-hero.jpg"
+          alt="A close editorial portrait of a hand holding a phone in warm rim light, the phone screen filled with a JD product detail page showing the image thumbnail strip, the red price block, the SKU swatch row and the two stacked add-to-cart and buy-now buttons."
+          width="1024"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="hero__chip">Platform work <span>/</span> JD</span>
+      </div>
+    </section>
+
+    <div class="cbar" aria-hidden="true">
+      {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+    </div>
+
+    <!-- S2 · WHY -->
+    <section class="why">
+      <div class="shell">
+        <div class="why__top">
+          <div class="why__head">
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
+            <h2 class="dh r" style="--d:.05s">
+              What we ship<br /><span class="serif">into JD</span>.
+            </h2>
+          </div>
+          <div class="why__text">
+            <p class="r" style="--d:.1s">
+              We do four kinds of work for JD, start to finish. Product content
+              is the detail page: the main image set, the SKU swatches, the
+              long-scroll modules, the infographics, the listing video. Store
+              content is the multi-page flagship store. Ad creative is built
+              for Jingzhuntong, Kuaiche and the app splash. Campaign is the
+              festival work, one look carried across 618, Double 11 and the
+              New Year sale.
+            </p>
+            <p class="r" style="--d:.16s">
+              One creative direction sits over all four. The same studio hands
+              that retouch the hero image also finish the detail-page modules,
+              the store tiles and the festival assets. That is why a fifty-SKU
+              catalog still reads as one brand, and not as fifty separate
+              listings.
+            </p>
+          </div>
+        </div>
+
+        <figure class="why__shot crop r-clip">
+          <div class="crop__inner">
+            <img
+              src="/Images/jd-roots.jpg"
+              alt="A wide editorial shot of two designers at a daylit studio table, four laptop screens lined up showing a JD product detail page, a JD flagship store homepage, the Jingzhuntong creative library and a JD 618 festival venue page, one per service lane."
+              width="1408"
+              height="768"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="fig">Four lanes, one creative direction</figcaption>
+        </figure>
+
+        <div class="stats">
+          <p class="stats__quote r">
+            One brief, four lanes, every SKU. The hands that sign off the hero
+            sign off the long tail too, and a detail page comes back as a first
+            cut inside two days.
+          </p>
+          <div class="stats__grid">
+            {
+              stats.map((s, i) => (
+                <div class="stat r" style={`--d:${i * 0.1}s`}>
+                  <span
+                    class="stat__num"
+                    data-from={s.from}
+                    data-to={s.to}
+                    data-suffix={s.suffix}
+                  >
+                    {s.from}{s.suffix}
+                  </span>
+                  <span class="stat__label">{s.label}</span>
+                  <span class="stat__note">{s.note}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3 · COVERAGE -->
+    <section class="cover">
+      <div class="shell">
+        <header class="band">
+          <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
+          <h2 class="dh r" style="--d:.05s">
+            Four lanes, one <span class="serif">brand line</span>.
+          </h2>
+        </header>
+
+        {
+          coverage.map((c, i) => (
+            <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
+              <figure class="feature__media crop r-clip">
+                <div class="crop__inner">
+                  <img
+                    src={c.image}
+                    alt={c.alt}
+                    width="1024"
+                    height="1024"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="fig">{c.label} lane</figcaption>
+              </figure>
+              <div class="feature__body">
+                <p class="feature__idx r"><span class="feature__tick"></span>Lane</p>
+                <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
+                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
+                {c.body.map((para, pi) => (
+                  <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
+                    {para}
+                  </p>
+                ))}
+                <p class="feature__scope r" style="--d:.24s">In scope</p>
+                <ul class="chips r" style="--d:.28s">
+                  {c.tags.map((t) => (
+                    <li class="chip">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- S4 · PROOF -->
+    <section class="proof" id="proof">
+      <div class="shell">
+        <header class="band band--split">
+          <div>
+            <p class="kicker r"><span class="kicker__tick"></span>Contact sheet</p>
+            <h2 class="dh r" style="--d:.05s">
+              Selected <span class="serif">frames</span>.
+            </h2>
+          </div>
+          <p class="band__note r" style="--d:.1s">
+            Stills from recent JD work, a couple per lane. Each one was built
+            for the exact surface it runs on, not stretched to fit afterward.
+          </p>
+        </header>
+
+        <div class="sheet">
+          {
+            samples.map((s, i) => (
+              <figure class="shot crop r-clip" style={`--d:${(i % 3) * 0.08}s`}>
+                <div class="crop__inner">
+                  <img
+                    src={s.src}
+                    alt={s.alt}
+                    width="1024"
+                    height="1024"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption class="shot__cap">
+                  <span class="shot__kind">{s.kind}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- S5 · PARTNERSHIP -->
+    <section class="source">
+      <div class="shell source__grid">
+        <div class="source__visual">
+          <figure class="source__main crop">
+            <div class="crop__inner">
+              <img
+                src="/Images/jd-hybrid-main.jpg"
+                alt="A producer at a wide reference monitor showing the Jingzhuntong creative library, four columns of detail-page, flagship store, ad and 618 campaign assets tagged Product, Store, Ads and Campaign."
+                width="1024"
+                height="1024"
+                loading="lazy"
+              />
+            </div>
+          </figure>
+          <figure class="source__inset">
+            <img
+              src="/Images/jd-hybrid-inset.jpg"
+              alt="A close cinematic detail of a hand holding a phone vertically against a soft cream background, the screen showing a JD product detail page with the image thumbnail strip and the red price block visible."
+              width="1024"
+              height="1024"
+              loading="lazy"
+            />
+          </figure>
+          <div class="source__stat">
+            <span class="source__stat-num">1 brief</span>
+            <span class="source__stat-cap">Four lanes, every SKU, every festival</span>
+          </div>
+        </div>
+
+        <div class="source__body">
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Partnership</p>
+          <h2 class="dh r" style="--d:.05s">
+            Authored creative, <span class="serif">AI volume</span>.
+          </h2>
+          <p class="source__lead r" style="--d:.1s">
+            On JD, the brands that pull ahead are not the ones spending the
+            most on Kuaiche. They are the ones who kept a real creative process
+            and put AI to work inside it.
+          </p>
+          <p class="source__p r" style="--d:.16s">
+            That seam is where we sit. On one side, a working studio: art
+            directors, retouchers, colorists, Mandarin copywriters. On the
+            other, the AI engineers and the model-training pipeline. They share
+            a room in Shanghai, and they argue about the work, which is the
+            point. The fiftieth variant gets the same scrutiny as the first,
+            because the same people sign it off.
+          </p>
+          <ul class="creds r" style="--d:.22s">
+            {
+              credentials.map((c) => (
+                <li class="cred">
+                  <svg viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  {c}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="source__p r" style="--d:.26s">
+            Everything runs on our own infrastructure. Hosting sits in mainland
+            China, Hong Kong, the EU, or the US, wherever your data rules
+            point. The LoRA models we train on your products are yours, and you
+            can take them with you if the relationship ever ends.
+          </p>
+          <p class="source__p source__p--quiet r" style="--d:.3s">
+            Some brands hand us the whole JD operation. Others just want the
+            festival kit. Either way works for us.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6 · PROCESS -->
+    <section class="craft" id="craft">
+      <div class="shell craft__intro">
+        <p class="kicker r"><span class="kicker__tick"></span>How a JD campaign runs</p>
+        <h2 class="dh r" style="--d:.05s">
+          One brief,<br />every <span class="serif">placement</span>.
+        </h2>
+        <p class="craft__lede r" style="--d:.12s">
+          The detail page, the store, the ad surfaces, the festival venue: they
+          share one brand line and one process. The format changes from lane to
+          lane. The process under it does not, and most of what decides whether
+          the work lands happens early, well before launch day.
+        </p>
+        <p class="craft__note r" style="--d:.16s">
+          Get the brief and the direction right, and the rest is mostly execution.
+        </p>
+      </div>
+
+      <div class="seq" id="seq">
+        <div class="seq__stick">
+          <div class="shell seq__stage">
+            <div class="seq__nav" aria-label="Process steps">
+              {
+                processSteps.map((s, i) => (
+                  <button
+                    class="seq__step"
+                    type="button"
+                    data-i={i}
+                    data-active={i === 0 ? 'true' : 'false'}
+                  >
+                    <span class="seq__step-dot">
+                      <span class="seq__step-fill"></span>
+                    </span>
+                    <span class="seq__step-label">{s.short}</span>
+                  </button>
+                ))
+              }
+            </div>
+
+            <div class="seq__panels">
+              {
+                processSteps.map((s, i) => (
+                  <article
+                    class="seq__panel"
+                    data-panel={i}
+                    data-active={i === 0 ? 'true' : 'false'}
+                  >
+                    <figure class="seq__media crop">
+                      <div class="crop__inner">
+                        <img
+                          src={s.image}
+                          alt={s.alt}
+                          width="1200"
+                          height="900"
+                          loading="lazy"
+                        />
+                      </div>
+                    </figure>
+                    <div class="seq__text">
+                      <span class="seq__tier">{s.tier}</span>
+                      <h3 class="seq__title">{s.title}</h3>
+                      <p class="seq__body">{s.body}</p>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S7 · FAQ -->
+    <section class="faq">
+      <div class="shell faq__grid">
+        <aside class="faq__intro">
+          <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
+          <h2 class="dh r" style="--d:.05s">
+            Before the<br />first <span class="serif">call</span>.
+          </h2>
+          <p class="faq__sub r" style="--d:.1s">
+            The things brands ask before we start. If yours is not here, put
+            it in the brief.
+          </p>
+          <div class="r" style="--d:.16s">
+            <Button variant="primary" href="/contact">Send the brief</Button>
+          </div>
+          <p class="fig r" style="--d:.2s">Reviewed May 2026</p>
+        </aside>
+
+        <div class="acc">
+          {
+            faqs.map((faq) => (
+              <div class="acc__row r">
+                <button class="acc__q" type="button" aria-expanded="false">
+                  <span class="acc__qmark">Q</span>
+                  <span class="acc__qtext">{faq.q}</span>
+                  <span class="acc__icon" aria-hidden="true">
+                    <span></span><span></span>
+                  </span>
+                </button>
+                <div class="acc__a">
+                  <div class="acc__a-inner">
+                    <p>
+                      {faq.link ? (
+                        <>
+                          {faq.a.split(faq.link.match)[0]}
+                          <a href={faq.link.href}>{faq.link.match}</a>
+                          {faq.a.split(faq.link.match)[1]}
+                        </>
+                      ) : (
+                        faq.a
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- S8 · CLOSE -->
+    <section class="end">
+      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
+      </svg>
+      <div class="shell end__inner">
+        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Try us</p>
+        <h2 class="end__title r" style="--d:.05s">
+          Send the JD brief.<br />Back in <span class="serif">48 hours</span>.
+        </h2>
+        <p class="end__p r" style="--d:.12s">
+          You get a recommendation for each surface, a rough scope and
+          timeline, and a couple of sample detail-page modules or store frames,
+          made for free, so you can see how we work before any budget is
+          committed.
+        </p>
+        <div class="end__cta r" style="--d:.18s">
+          <Button variant="primary" href="/contact">Send the brief</Button>
+          <a class="ghost-link ghost-link--light" href="/work">
+            See more work
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="cbar cbar--end" aria-hidden="true">
+        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    --ink: #0e1633;
+    --navy: #0e1f4e;
+    --paper: #f0ede9;
+    --paper-2: #e7e3dd;
+    overflow: clip;
+  }
+  .shell {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(22px, 5vw, 60px);
+  }
+
+  .prog { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 200; pointer-events: none; }
+  .prog__bar { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: 0 50%; background: var(--brand-orange); }
+
+  .r, .r-clip { --d: 0s; }
+  .r { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d); }
+  .r.in { opacity: 1; transform: none; }
+  .r-clip .crop__inner { clip-path: inset(0 0 101% 0); transition: clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d, 0s); }
+  .r-clip .crop__inner img { transform: scale(1.12); transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d, 0s); }
+  .r-clip.in .crop__inner { clip-path: inset(0 0 0 0); }
+  .r-clip.in .crop__inner img { transform: scale(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .r, .r.in { opacity: 1; transform: none; transition: none; }
+    .r-clip .crop__inner, .r-clip .crop__inner img { clip-path: none; transform: none; transition: none; }
+  }
+
+  .kicker { display: flex; align-items: center; gap: 9px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+  .kicker--light { color: rgba(240, 237, 233, 0.66); }
+  .kicker__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
+  .kicker__sep { color: var(--brand-orange); }
+
+  .dh { font-family: var(--font-sans); font-weight: 600; font-size: clamp(34px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.03em; }
+  .dh--sm { font-size: clamp(26px, 2.6vw, 38px); }
+  .serif { font-family: var(--font-serif); font-style: italic; font-weight: 500; letter-spacing: -0.01em; color: var(--brand-orange); }
+
+  .crop { position: relative; margin: 0; }
+  .crop::before, .crop::after { content: ''; position: absolute; width: 16px; height: 16px; z-index: 2; }
+  .crop::before { top: -9px; left: -9px; border-top: 1.5px solid var(--brand-orange); border-left: 1.5px solid var(--brand-orange); }
+  .crop::after { right: -9px; bottom: 28px; border-right: 1.5px solid var(--brand-orange); border-bottom: 1.5px solid var(--brand-orange); }
+  .crop__inner { overflow: hidden; border-radius: 4px; }
+  .crop__inner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .fig { margin-top: 14px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mute); }
+
+  .ghost-link { display: inline-flex; align-items: center; gap: 9px; font-size: var(--type-small); font-weight: 600; color: var(--text-ink); }
+  .ghost-link svg { width: 19px; height: 19px; transition: transform 0.24s ease-out; }
+  .ghost-link:hover svg { transform: translateX(5px); }
+  .ghost-link--light { color: var(--text-on-dark); }
+
+  .band { max-width: 720px; margin-bottom: clamp(40px, 5vw, 70px); display: grid; gap: 18px; }
+  .band--split { max-width: none; grid-template-columns: 1fr; }
+  @media (min-width: 880px) {
+    .band--split { grid-template-columns: 1fr 0.82fr; align-items: end; gap: 18px 60px; }
+    .band--split > div { display: grid; gap: 18px; }
+  }
+  .band__note { font-size: var(--type-lead); line-height: 1.5; color: var(--text-mute); }
+
+  .cbar { display: flex; height: 12px; }
+  .cbar span { flex: 1; }
+  .cbar--end { margin-top: clamp(60px, 8vw, 110px); }
+
+  /* Hero */
+  .hero { display: grid; background: var(--ink); color: var(--text-on-dark); }
+  @media (min-width: 900px) { .hero { grid-template-columns: 1fr 1fr; } }
+  .hero__panel { position: relative; display: flex; align-items: center; padding: clamp(40px, 4.4vw, 72px) clamp(24px, 5vw, 64px); overflow: clip; }
+  .hero__reg { position: absolute; width: clamp(240px, 28vw, 420px); right: -12%; bottom: -14%; color: rgba(240, 237, 233, 0.055); pointer-events: none; }
+  .hero__panel-in { position: relative; width: 100%; max-width: 600px; }
+  .hero__title { margin-top: 24px; font-family: var(--font-sans); font-weight: 600; font-size: clamp(46px, 6.6vw, 92px); line-height: 1.02; letter-spacing: -0.045em; }
+  .hero__title .line { display: block; overflow: hidden; padding: 0.22em 0.14em; margin: -0.22em -0.14em; }
+  .hero__title .line__i { display: block; transform: translateY(145%); transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+  .hero__title .line:nth-child(1) .line__i { transition-delay: 0.12s; }
+  .hero__title .line:nth-child(2) .line__i { transition-delay: 0.22s; }
+  .hero__title .line:nth-child(3) .line__i { transition-delay: 0.32s; }
+  .hero.in .hero__title .line__i { transform: translateY(0); }
+  .hero__title .serif { font-size: 1.04em; }
+  @media (prefers-reduced-motion: reduce) { .hero__title .line__i { transform: none; } }
+  .hero__tag { margin-top: 26px; font-size: clamp(18px, 1.5vw, 23px); font-weight: 600; letter-spacing: -0.02em; }
+  .hero__tag em { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--brand-orange); }
+  .hero__lead { margin-top: 20px; display: grid; gap: 13px; max-width: 46ch; }
+  .hero__lead p { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
+  .hero__cta { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .hero__meta { margin-top: 34px; padding-top: 20px; border-top: 1.5px dashed rgba(240, 237, 233, 0.2); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240, 237, 233, 0.5); }
+  .hero__meta span { color: var(--brand-orange); }
+  .hero__visual { position: relative; overflow: hidden; min-height: 58vh; }
+  @media (min-width: 900px) { .hero__visual { min-height: auto; } }
+  .hero__visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .hero.in .hero__visual img { transform: scale(1); }
+  @media (prefers-reduced-motion: reduce) { .hero__visual img { transform: none; } }
+  .hero__chip { position: absolute; left: 18px; bottom: 18px; z-index: 2; display: inline-flex; gap: 8px; padding: 9px 15px; border-radius: var(--radius-pill); background: rgba(14, 22, 51, 0.78); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+  .hero__chip span { color: var(--brand-orange); }
+
+  /* Why */
+  .why { background: var(--ink); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
+  .why__top { display: grid; gap: 30px; }
+  @media (min-width: 900px) { .why__top { grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; } }
+  .why__head .dh { margin-top: 18px; }
+  .why__text { display: grid; gap: 16px; align-content: start; padding-top: 6px; }
+  .why__text p { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.78); }
+  .why__clients { color: rgba(240, 237, 233, 0.6) !important; }
+  .why__clients strong { color: var(--text-on-dark); font-weight: 600; }
+  .why__shot { margin-top: clamp(40px, 5vw, 72px); }
+  .why__shot .crop__inner { aspect-ratio: 16 / 8; }
+  .why__shot .fig { color: rgba(240, 237, 233, 0.5); }
+
+  .stats { margin-top: clamp(48px, 6vw, 84px); border-top: 1.5px dashed rgba(240, 237, 233, 0.22); padding-top: clamp(36px, 4vw, 56px); }
+  .stats__quote { max-width: 60ch; font-family: var(--font-serif); font-style: italic; font-size: clamp(19px, 1.9vw, 25px); line-height: 1.42; color: var(--text-on-dark); }
+  .stats__grid { margin-top: 40px; display: grid; gap: 30px; }
+  @media (min-width: 720px) { .stats__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+  .stat { display: grid; gap: 5px; padding-top: 24px; border-top: 1.5px solid rgba(240, 237, 233, 0.16); }
+  .stat__num { font-size: clamp(56px, 7vw, 96px); font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--brand-orange); }
+  .stat__label { margin-top: 6px; font-size: 16px; font-weight: 600; }
+  .stat__note { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(240, 237, 233, 0.55); }
+
+  /* Coverage */
+  .cover { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
+  .feature { display: grid; gap: 36px; align-items: center; padding-block: clamp(40px, 5vw, 72px); border-top: 1.5px dashed var(--line-strong); }
+  .feature:last-child { border-bottom: 1.5px dashed var(--line-strong); }
+  @media (min-width: 900px) {
+    .feature { grid-template-columns: 1fr 1fr; gap: 72px; }
+    .feature--rev .feature__media { order: 2; }
+  }
+  .feature__media .crop__inner { aspect-ratio: 5 / 4; }
+  .feature__idx { display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+  .feature__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
+  .feature__body .dh { margin-top: 16px; }
+  .feature__lead { margin-top: 14px; font-size: var(--type-lead); line-height: 1.42; color: var(--text-ink); font-weight: 500; }
+  .feature__p { margin-top: 14px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+  .feature__scope { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line-hairline); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
+  .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 12px; font-weight: 500; transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
+  .chip:hover { background: var(--brand-orange); border-color: var(--brand-orange); color: #fff; }
+
+  /* Proof */
+  .proof { background: var(--bg-white); padding-block: clamp(80px, 10vw, 150px); }
+  .sheet { display: grid; gap: clamp(22px, 3vw, 40px); }
+  @media (min-width: 720px) {
+    .sheet { grid-template-columns: repeat(3, 1fr); }
+    .sheet .shot:nth-child(3n + 2) { margin-top: 60px; }
+    .sheet .shot:nth-child(3n) { margin-top: 30px; }
+  }
+  .shot .crop__inner { aspect-ratio: 1 / 1; }
+  .shot .crop__inner img { transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .shot:hover .crop__inner img { transform: scale(1.06); }
+  .shot__cap { margin-top: 14px; display: flex; align-items: baseline; padding-bottom: 10px; border-bottom: 1.5px solid var(--ink); }
+  .shot__kind { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-ink); }
+
+  /* Partnership / Source */
+  .source { background: var(--navy); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
+  .source__grid { display: grid; gap: 52px; }
+  @media (min-width: 940px) { .source__grid { grid-template-columns: 0.92fr 1.08fr; gap: 70px; align-items: center; } }
+  .source__visual { position: relative; }
+  .source__main .crop__inner { aspect-ratio: 5 / 4; }
+  .source__inset { position: absolute; right: -14px; bottom: -34px; width: 42%; max-width: 200px; margin: 0; border-radius: 8px; overflow: hidden; border: 5px solid var(--navy); box-shadow: 0 20px 36px rgba(0, 0, 0, 0.42); }
+  .source__inset img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  @media (max-width: 520px) { .source__inset { display: none; } }
+  .source__stat { position: absolute; left: -10px; top: 36px; display: grid; gap: 3px; padding: 15px 19px; border-radius: 12px; background: var(--brand-orange); color: #fff; box-shadow: 0 16px 32px rgba(233, 78, 27, 0.42); }
+  .source__stat-num { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+  .source__stat-cap { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; max-width: 15ch; line-height: 1.4; }
+  .source__body .dh { margin-top: 16px; }
+  .source__lead { margin-top: 20px; font-size: var(--type-lead); line-height: 1.5; color: var(--text-on-dark); }
+  .source__p { margin-top: 15px; font-size: var(--type-body); line-height: 1.66; color: rgba(240, 237, 233, 0.78); }
+  .source__p--quiet { color: rgba(240, 237, 233, 0.55); }
+  .creds { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 9px; }
+  .cred { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: var(--radius-pill); border: 1px solid rgba(240, 237, 233, 0.2); font-family: var(--font-mono); font-size: 12px; font-weight: 500; transition: border-color 0.2s ease, background-color 0.2s ease; }
+  .cred:hover { border-color: var(--brand-orange); background: rgba(233, 78, 27, 0.16); }
+  .cred svg { width: 13px; height: 13px; color: var(--brand-orange); }
+
+  /* Process */
+  .craft { background: var(--paper); padding-top: clamp(80px, 10vw, 150px); }
+  .craft__intro { max-width: 780px; margin-bottom: clamp(36px, 5vw, 60px); }
+  .craft__intro .kicker { color: var(--brand-orange); }
+  .craft__intro .dh { margin-top: 16px; }
+  .craft__lede { margin-top: 18px; font-size: var(--type-lead); line-height: 1.5; color: var(--text-mute); }
+  .craft__note { margin-top: 22px; display: inline-block; padding: 13px 20px; border-left: 3px solid var(--brand-orange); background: rgba(233, 78, 27, 0.07); border-radius: 0 10px 10px 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--text-ink); }
+
+  .seq__nav { display: none; }
+  .seq__panels { display: grid; gap: clamp(48px, 7vw, 96px); padding-bottom: clamp(80px, 10vw, 150px); }
+  .seq__panel { display: grid; gap: 28px; }
+  @media (min-width: 760px) {
+    .seq__panel { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .seq__panel:nth-child(even) .seq__media { order: 2; }
+  }
+  .seq__media .crop__inner { aspect-ratio: 4 / 3; }
+  .seq__tier { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
+  .seq__title { margin-top: 12px; font-size: clamp(25px, 2.7vw, 38px); font-weight: 600; line-height: 1.12; letter-spacing: -0.025em; }
+  .seq__body { margin-top: 14px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+
+  .craft--pinned .seq { height: 480vh; }
+  .craft--pinned .seq__stick { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
+  .craft--pinned .seq__stage { width: 100%; display: flex; flex-direction: column; gap: clamp(22px, 3vw, 40px); }
+  .craft--pinned .seq__nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .seq__step { display: flex; flex-direction: column; gap: 10px; padding: 0; background: transparent; border: none; text-align: left; cursor: pointer; }
+  .seq__step-dot { height: 5px; border-radius: 3px; background: var(--line-strong); overflow: hidden; }
+  .seq__step-fill { display: block; height: 100%; width: 100%; background: var(--brand-orange); transform: scaleX(0); transform-origin: 0 50%; }
+  .seq__step-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-mute); transition: color 0.3s ease; }
+  .seq__step[data-active='true'] .seq__step-label { color: var(--text-ink); }
+  .craft--pinned .seq__panels { position: relative; display: block; height: clamp(340px, 60vh, 540px); padding-bottom: 0; }
+  .craft--pinned .seq__panel { position: absolute; inset: 0; align-content: center; opacity: 0; visibility: hidden; transform: translateY(26px); transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.5s; }
+  .craft--pinned .seq__panel[data-active='true'] { opacity: 1; visibility: visible; transform: none; transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .craft--pinned .seq__panel:nth-child(even) .seq__media { order: 0; }
+  .craft--pinned .seq__media .crop__inner { aspect-ratio: auto; height: clamp(280px, 52vh, 460px); }
+  @media (prefers-reduced-motion: reduce) { .craft--pinned .seq__panel { transition: none; } }
+
+  /* FAQ */
+  .faq { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
+  .faq__grid { display: grid; gap: 44px; }
+  @media (min-width: 1000px) {
+    .faq__grid { grid-template-columns: 0.78fr 1.22fr; gap: 72px; align-items: start; }
+    .faq__intro { position: sticky; top: 96px; }
+  }
+  .faq__intro .dh { margin-top: 18px; }
+  .faq__sub { margin-top: 18px; margin-bottom: 26px; font-size: var(--type-body); line-height: 1.62; color: var(--text-mute); }
+  .acc { display: grid; }
+  .acc__row { border-top: 1.5px solid var(--ink); }
+  .acc__row:last-child { border-bottom: 1.5px solid var(--ink); }
+  .acc__q { width: 100%; display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 16px; padding: 26px 0; background: transparent; border: none; text-align: left; }
+  .acc__qmark { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--brand-orange); padding-top: 3px; }
+  .acc__qtext { font-size: clamp(17px, 1.6vw, 21px); font-weight: 600; letter-spacing: -0.01em; color: var(--text-ink); transition: color 0.18s ease; }
+  .acc__q:hover .acc__qtext { color: var(--brand-orange); }
+  .acc__icon { position: relative; width: 22px; height: 22px; margin-top: 2px; }
+  .acc__icon span { position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; border-radius: 2px; background: var(--text-ink); transform: translate(-50%, -50%); transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+  .acc__icon span:last-child { transform: translate(-50%, -50%) rotate(90deg); }
+  .acc__q[aria-expanded='true'] .acc__icon span:last-child { transform: translate(-50%, -50%) rotate(0deg); }
+  .acc__q[aria-expanded='true'] .acc__icon span { background: var(--brand-orange); }
+  .acc__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.32s ease; }
+  .acc__q[aria-expanded='true'] + .acc__a { grid-template-rows: 1fr; }
+  .acc__a-inner { overflow: hidden; }
+  .acc__a-inner p { padding: 0 0 26px 41px; max-width: 64ch; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+  .acc__a-inner a { color: var(--brand-orange); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* Close */
+  .end { position: relative; background: var(--ink); color: var(--text-on-dark); padding-top: clamp(80px, 11vw, 150px); overflow: clip; }
+  .end__reg { position: absolute; width: clamp(300px, 36vw, 560px); top: -16%; right: -9%; color: rgba(240, 237, 233, 0.05); pointer-events: none; }
+  .end__inner { position: relative; display: grid; justify-items: start; gap: 22px; }
+  .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
+  .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
+  .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+</style>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const progBar = document.querySelector<HTMLElement>('.prog__bar');
+  if (progBar) {
+    const onScroll = () => {
+      const d = document.documentElement;
+      const max = d.scrollHeight - d.clientHeight;
+      progBar.style.transform = `scaleX(${max > 0 ? Math.min(1, d.scrollTop / max) : 0})`;
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
+  const revealEls = document.querySelectorAll('.r, .r-clip, .hero');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -7% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  const nums = Array.from(document.querySelectorAll<HTMLElement>('.stat__num'));
+  const runCount = (el: HTMLElement) => {
+    const from = Number(el.dataset.from || 0);
+    const to = Number(el.dataset.to || 0);
+    const suffix = el.dataset.suffix || '';
+    if (reduceMotion.matches) {
+      el.textContent = `${to}${suffix}`;
+      return;
+    }
+    const dur = 1500;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = `${Math.round(from + (to - from) * eased)}${suffix}`;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window && nums.length) {
+    const io2 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            runCount(e.target as HTMLElement);
+            io2.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+    nums.forEach((n) => io2.observe(n));
+  } else {
+    nums.forEach(runCount);
+  }
+
+  const craft = document.getElementById('craft');
+  const seq = document.getElementById('seq');
+  if (craft && seq) {
+    const steps = Array.from(seq.querySelectorAll<HTMLElement>('.seq__step'));
+    const panels = Array.from(seq.querySelectorAll<HTMLElement>('.seq__panel'));
+    const fills = steps.map((s) => s.querySelector<HTMLElement>('.seq__step-fill'));
+    const n = panels.length;
+    const wide = window.matchMedia('(min-width: 880px)');
+
+    const setActive = (idx: number, sub: number) => {
+      panels.forEach((p, i) => (p.dataset.active = String(i === idx)));
+      steps.forEach((s, i) => {
+        s.dataset.active = String(i === idx);
+        const f = fills[i];
+        if (f) f.style.transform = `scaleX(${i < idx ? 1 : i === idx ? sub : 0})`;
+      });
+    };
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      if (!craft.classList.contains('craft--pinned')) return;
+      const total = seq.offsetHeight - window.innerHeight;
+      const scrolled = Math.min(total, Math.max(0, -seq.getBoundingClientRect().top));
+      const p = total > 0 ? scrolled / total : 0;
+      const exact = p * n;
+      const idx = Math.min(n - 1, Math.floor(exact));
+      const sub = Math.min(1, Math.max(0, exact - idx));
+      setActive(idx, idx === n - 1 ? 1 : sub);
+    };
+    const onScrollSeq = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    const applyMode = () => {
+      if (wide.matches && !reduceMotion.matches) {
+        craft.classList.add('craft--pinned');
+        update();
+      } else {
+        craft.classList.remove('craft--pinned');
+        panels.forEach((p) => (p.dataset.active = 'true'));
+      }
+    };
+
+    steps.forEach((s, i) => {
+      s.addEventListener('click', () => {
+        if (!craft.classList.contains('craft--pinned')) return;
+        const railTop = seq.getBoundingClientRect().top + window.scrollY;
+        const total = seq.offsetHeight - window.innerHeight;
+        window.scrollTo({
+          top: railTop + ((i + 0.5) / n) * total,
+          behavior: reduceMotion.matches ? 'auto' : 'smooth',
+        });
+      });
+    });
+
+    window.addEventListener('scroll', onScrollSeq, { passive: true });
+    window.addEventListener('resize', () => {
+      applyMode();
+      update();
+    });
+    applyMode();
+  }
+
+  const accQs = Array.from(document.querySelectorAll<HTMLButtonElement>('.acc__q'));
+  accQs.forEach((q) => {
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') === 'true';
+      accQs.forEach((o) => o.setAttribute('aria-expanded', 'false'));
+      q.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+</script>
