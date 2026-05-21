@@ -9,7 +9,7 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 
-/* Multilingual thanks: a nod to producing across 16 markets (Latin scripts
+/* Multilingual thanks: a nod to producing for brands worldwide (Latin scripts
    only: Han characters never leak onto a non-Chinese page). */
 const thanks = ['Thanks', 'Merci', 'Gracias', 'Grazie', 'Danke', 'Obrigado'];
 
@@ -32,6 +32,7 @@ const reading = [
 
 <Layout
   heroOverlay
+  noindex
   title="Brief received | hubStudio"
   description="Your project brief has reached the hubStudio team. A producer will read it today and reply within one business day."
 >
@@ -65,7 +66,7 @@ const reading = [
     </div>
 
     <div class="container ty-hero__greet">
-      <span class="ty-hero__greet-label">Heard in 16 markets</span>
+      <span class="ty-hero__greet-label">Heard around the world</span>
       <ul class="ty-hero__greet-list">
         {thanks.map((word) => <li>{word}.</li>)}
       </ul>

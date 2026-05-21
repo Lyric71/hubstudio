@@ -10,7 +10,7 @@ const locale = getLocaleFromUrl(Astro.url);
 const lp = (p: string) => localizePath(p, locale);
 const year = new Date().getFullYear();
 
-/* Top-level menu entries only, mirroring the header nav. No mega-menu links. */
+/* Header top-level entries, plus the hub4You platform. No mega-menu links. */
 const navLinks: { label: string; href: string }[] = [
   { label: 'Services', href: '/services' },
   { label: 'Solutions', href: '/solutions' },

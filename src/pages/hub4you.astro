@@ -1,0 +1,812 @@
+---
+/**
+ * hub4You  ·  /hub4you
+ *
+ * Product page for hub4You, hubStudio's private AI content platform (the
+ * "We Build It For You" model). Linked from the "Explore hub4You" CTA on
+ * every service page, so it has to stand on its own as a destination.
+ *
+ * S1 Hero (dark) · S2 What it is · S3 Capabilities · S4 Showcase ·
+ * S5 Integrations · S6 Two ways to work · S7 Closing CTA.
+ *
+ * No ordinal numerals on the card grids (permanent project rule).
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const SITE = 'https://hubstudio.ai';
+const url = `${SITE}/hub4you`;
+
+/* S3: what the platform does. No numerals, the headings carry the order. */
+const capabilities = [
+  {
+    name: 'Agents trained on your brand',
+    desc: 'Each agent learns your visual system, your product range, and your tone of voice. Output is on-brand because the brand is trained into the model, not briefed again on every job.',
+  },
+  {
+    name: 'Private infrastructure',
+    desc: 'Dedicated GPU pipelines and a private model environment. Your product data and your brand training stay yours, isolated from any shared or public model.',
+  },
+  {
+    name: 'Output on demand',
+    desc: 'Product pages, category visuals, ad variants, identity applications. Your team generates them the moment a brief lands, not weeks down the calendar.',
+  },
+  {
+    name: 'Connected to your stack',
+    desc: 'hub4You plugs into the DAM, PIM, and commerce platform you already run, so finished assets land where your team works without a single manual export.',
+  },
+];
+
+/* S4: real platform output, reused from the service-page showcases. */
+const showcase = [
+  {
+    img: '/Images/hub4fashion.jpg',
+    alt: 'The hub4You platform generating on-brand fashion campaign visuals from a stored brand system.',
+    label: 'Fashion campaign variants',
+  },
+  {
+    img: '/Images/hub4presentation.jpg',
+    alt: 'The hub4You platform composing on-brand presentation slides from a master deck.',
+    label: 'Sales and deck content',
+  },
+  {
+    img: '/Images/hub4website.jpg',
+    alt: 'The hub4You platform producing on-brand website layout variants from a single brand system.',
+    label: 'Website and PDP layouts',
+  },
+];
+
+/* S5: the systems hub4You connects into. */
+const integrations = [
+  { group: 'DAM and PIM', tools: ['Salsify', 'Akeneo', 'Bynder'] },
+  {
+    group: 'Commerce',
+    tools: ['Adobe Commerce', 'Shopify Plus', 'Salesforce Commerce Cloud'],
+  },
+];
+
+/* S6: the two engagement models. hub4You is the second. */
+const models = [
+  {
+    kind: 'We Do It For You',
+    title: 'Send the brief',
+    desc: 'Full-service production. You brief the studio, we deliver finished assets. Nothing to set up, and the fastest way to prove the model on real work.',
+    href: '/pricing',
+    cta: 'See how we work',
+    featured: false,
+  },
+  {
+    kind: 'We Build It For You',
+    title: 'Run the platform',
+    desc: 'hub4You. Your private content platform, with custom agents and your own team operating it. Built for brands where content is continuous, not occasional.',
+    href: '/contact',
+    cta: 'Talk to us',
+    featured: true,
+  },
+];
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'hub4You',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url,
+  description:
+    'hub4You is hubStudio’s private AI content platform: custom agents trained on a brand, run on private infrastructure by the brand’s own team, and connected to its DAM, PIM, and commerce stack.',
+  image: `${SITE}/Images/hub4fashion.jpg`,
+  publisher: {
+    '@type': 'Organization',
+    name: 'hubStudio',
+    url: SITE,
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'hub4You', item: url },
+  ],
+};
+---
+
+<Layout
+  heroOverlay
+  title="hub4You: Your Private AI Content Platform | hubStudio"
+  description="hub4You is hubStudio's private AI content platform: custom agents trained on your brand, connected to your DAM and PIM, and run by your own team."
+  image="/Images/hub4fashion.jpg"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- ===== S1: Hero ===== -->
+  <section class="h4-hero">
+    <div class="h4-hero__glow" aria-hidden="true"></div>
+    <div class="grain h4-hero__grain" aria-hidden="true"></div>
+    <div class="container h4-hero__inner">
+      <div class="h4-hero__copy">
+        <span class="eyebrow h4-hero__eyebrow">hub4You / AI agent platform</span>
+        <h1 class="h4-hero__title">
+          The content platform your own team <span class="accent">runs</span>.
+        </h1>
+        <p class="h4-hero__lead">
+          hub4You is the platform half of hubStudio. Custom AI agents, trained on your
+          brand and your products, on private infrastructure, operated by your team.
+          The studio builds it. You run it.
+        </p>
+        <div class="h4-hero__cta">
+          <Button variant="primary" href="/contact">Talk to us</Button>
+          <Button variant="on-dark" href="/pricing">See how we work</Button>
+        </div>
+      </div>
+      <figure class="h4-hero__media">
+        <img
+          src="/Images/hub4fashion.jpg"
+          alt="The hub4You platform generating on-brand campaign visuals from a stored brand system."
+          width="2000"
+          height="1125"
+          fetchpriority="high"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== S2: What it is ===== -->
+  <section class="section h4-intro">
+    <div class="container h4-intro__grid">
+      <header class="h4-intro__head" data-reveal>
+        <span class="eyebrow accent-eyebrow">What it is</span>
+        <h2 class="headline h2">
+          The studio, moved <span class="accent">inside your business</span>.
+        </h2>
+      </header>
+      <div class="h4-intro__prose">
+        <p class="h4-intro__p" data-reveal style="--i:0">
+          Most brands start by sending us the brief. hub4You is what comes next: the
+          same production capability, standing inside your own walls, with your team
+          at the controls.
+        </p>
+        <p class="h4-intro__p" data-reveal style="--i:1">
+          The platform runs on agents trained on your brand DNA and your product data,
+          so output holds the brand by default. There is no relearning the brand on
+          every job, and no creative drift across markets. What changes is the speed
+          and the economics. What does not change is how the work looks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: Capabilities ===== -->
+  <section class="section h4-caps">
+    <div class="container">
+      <header class="h4-caps__head">
+        <span class="eyebrow accent-eyebrow" data-reveal>What it does</span>
+        <h2 class="headline h2" data-reveal>
+          A production line, <span class="accent">not a tool</span>.
+        </h2>
+      </header>
+      <div class="h4-caps__grid">
+        {
+          capabilities.map((c, i) => (
+            <article class="h4-cap" data-reveal style={`--i:${i % 2}`}>
+              <span class="h4-cap__mark" aria-hidden="true"></span>
+              <h3 class="h4-cap__name">{c.name}</h3>
+              <p class="h4-cap__desc">{c.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4: Showcase ===== -->
+  <section class="section h4-show">
+    <div class="container">
+      <header class="h4-show__head">
+        <span class="eyebrow accent-eyebrow" data-reveal>What teams produce with it</span>
+        <h2 class="headline h2" data-reveal>
+          One platform, every <span class="accent">format</span>.
+        </h2>
+      </header>
+      <div class="h4-show__grid">
+        {
+          showcase.map((s) => (
+            <figure class="h4-shot" data-reveal>
+              <div class="h4-shot__media">
+                <img src={s.img} alt={s.alt} width="2000" height="1125" loading="lazy" />
+              </div>
+              <figcaption class="h4-shot__label">{s.label}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S5: Integrations ===== -->
+  <section class="section h4-int">
+    <div class="container h4-int__grid">
+      <header class="h4-int__head" data-reveal>
+        <span class="eyebrow accent-eyebrow">Integrations</span>
+        <h2 class="headline h2">
+          Built to fit the stack you <span class="accent">already run</span>.
+        </h2>
+        <p class="h4-int__lead">
+          hub4You connects to the systems your team works in every day, so generated
+          assets move straight into the pipeline instead of sitting in a folder.
+        </p>
+      </header>
+      <div class="h4-int__lists">
+        {
+          integrations.map((row) => (
+            <div class="h4-int__row" data-reveal>
+              <p class="h4-int__group">{row.group}</p>
+              <ul class="h4-int__tools">
+                {row.tools.map((tool) => (
+                  <li class="h4-int__chip">{tool}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S6: Two ways to work ===== -->
+  <section class="section h4-models">
+    <div class="container">
+      <header class="h4-models__head">
+        <span class="eyebrow accent-eyebrow" data-reveal>Two ways to work</span>
+        <h2 class="headline h2" data-reveal>
+          Start with the brief. Move to the <span class="accent">platform</span>.
+        </h2>
+        <p class="h4-models__lead" data-reveal>
+          Most brands begin with full-service production and move to hub4You as the
+          volume grows. Plenty of teams run both at once.
+        </p>
+      </header>
+      <div class="h4-models__grid">
+        {
+          models.map((m) => (
+            <a
+              class={`h4-model${m.featured ? ' h4-model--featured' : ''}`}
+              href={m.href}
+              data-reveal
+            >
+              {m.featured && <span class="h4-model__flag">The platform</span>}
+              <span class="h4-model__kind">{m.kind}</span>
+              <span class="h4-model__title">{m.title}</span>
+              <p class="h4-model__desc">{m.desc}</p>
+              <span class="h4-model__cta">
+                {m.cta} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S7: Closing CTA ===== -->
+  <section class="h4-cta">
+    <div class="h4-cta__glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="h4-cta__inner">
+        <span class="eyebrow h4-cta__eyebrow">Get started</span>
+        <h2 class="headline h2 h4-cta__title">
+          Bring the studio <span class="accent">in-house</span>.
+        </h2>
+        <p class="h4-cta__text">
+          Tell us what your team produces and at what volume. We will scope the
+          platform, the agents, and the training, and come back inside one business day.
+        </p>
+        <Button variant="primary" href="/contact">Talk to us</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .accent-eyebrow {
+    color: var(--brand-orange);
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ===== S1 Hero ===== */
+  .h4-hero {
+    position: relative;
+    isolation: isolate;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+    /* Pull up under the transparent sticky header (see homepage hero). */
+    margin-top: -64px;
+    padding: calc(var(--nav-h) + clamp(60px, 10vh, 124px)) 0 clamp(64px, 9vh, 110px);
+  }
+  @media (min-width: 1024px) {
+    .h4-hero {
+      margin-top: calc(-1 * var(--nav-h));
+    }
+  }
+  .h4-hero__glow {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    right: -240px;
+    top: -300px;
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.4) 0%,
+      rgba(233, 78, 27, 0) 64%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+  .h4-hero__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    z-index: -1;
+  }
+  .h4-hero__inner {
+    display: grid;
+    gap: 44px;
+    align-items: center;
+  }
+  @media (min-width: 940px) {
+    .h4-hero__inner {
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 60px;
+    }
+  }
+  .h4-hero__eyebrow {
+    color: var(--brand-orange);
+  }
+  .h4-hero__title {
+    margin-top: 16px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    font-size: clamp(36px, 5vw, 66px);
+    color: #fff;
+    max-width: 14ch;
+  }
+  .h4-hero__lead {
+    margin-top: 22px;
+    max-width: 52ch;
+    font-size: var(--type-lead);
+    line-height: 1.56;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .h4-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .h4-hero__media {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    box-shadow:
+      0 2px 10px rgba(10, 10, 20, 0.3),
+      0 40px 70px -36px rgba(0, 0, 0, 0.7);
+  }
+  .h4-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===== S2 What it is ===== */
+  .h4-intro {
+    background: var(--bg-white);
+  }
+  .h4-intro__grid {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 940px) {
+    .h4-intro__grid {
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  @media (min-width: 940px) {
+    .h4-intro__head {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+  }
+  .h4-intro__head .headline {
+    margin-top: 14px;
+  }
+  .h4-intro__prose {
+    display: grid;
+    gap: 24px;
+  }
+  .h4-intro__p {
+    font-size: clamp(17px, 1.2vw, 21px);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .h4-intro__p:first-child {
+    font-weight: 500;
+    color: var(--text-ink);
+  }
+
+  /* ===== S3 Capabilities ===== */
+  .h4-caps {
+    background: var(--bg-cream);
+  }
+  .h4-caps__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .h4-caps__head .headline {
+    margin-top: 0;
+  }
+  .h4-caps__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 720px) {
+    .h4-caps__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .h4-cap {
+    position: relative;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 22px;
+    padding: clamp(26px, 3vw, 38px);
+    overflow: hidden;
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 220ms ease-out;
+  }
+  .h4-cap::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-deep));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .h4-cap:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 48px -28px rgba(10, 10, 20, 0.45);
+  }
+  .h4-cap:hover::after {
+    transform: scaleX(1);
+  }
+  .h4-cap__mark {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .h4-cap:hover .h4-cap__mark {
+    transform: rotate(135deg) scale(1.15);
+  }
+  .h4-cap__name {
+    margin-top: 22px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .h4-cap__desc {
+    margin-top: 10px;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+
+  /* ===== S4 Showcase ===== */
+  .h4-show {
+    background: var(--bg-white);
+  }
+  .h4-show__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .h4-show__grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) {
+    .h4-show__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .h4-shot {
+    margin: 0;
+  }
+  .h4-shot__media {
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: var(--bg-ink);
+    box-shadow: var(--shadow-card);
+  }
+  .h4-shot__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .h4-shot:hover .h4-shot__media img {
+    transform: scale(1.05);
+  }
+  .h4-shot__label {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+
+  /* ===== S5 Integrations ===== */
+  .h4-int {
+    background: var(--bg-cream);
+  }
+  .h4-int__grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 940px) {
+    .h4-int__grid {
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .h4-int__head .headline {
+    margin-top: 14px;
+  }
+  .h4-int__lead {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+    max-width: 50ch;
+  }
+  .h4-int__lists {
+    display: grid;
+    gap: 28px;
+  }
+  .h4-int__row {
+    border-top: 1px solid var(--line-strong);
+    padding-top: 22px;
+  }
+  .h4-int__group {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 16px;
+  }
+  .h4-int__tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .h4-int__chip {
+    padding: 11px 22px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    font-size: var(--type-small);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+
+  /* ===== S6 Two ways to work ===== */
+  .h4-models {
+    background: var(--bg-white);
+  }
+  .h4-models__head {
+    max-width: 720px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .h4-models__lead {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+    max-width: 54ch;
+  }
+  .h4-models__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 720px) {
+    .h4-models__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .h4-model {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: clamp(30px, 3.4vw, 44px);
+    border-radius: var(--radius-card);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 220ms ease-out;
+  }
+  .h4-model:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 48px -28px rgba(10, 10, 20, 0.45);
+  }
+  .h4-model--featured {
+    background: var(--bg-ink);
+    border-color: transparent;
+    color: var(--text-on-dark);
+  }
+  .h4-model__flag {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    padding: 6px 13px;
+    border-radius: var(--radius-pill);
+    background: var(--brand-orange);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .h4-model__kind {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .h4-model__title {
+    margin-top: 6px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+  .h4-model__desc {
+    margin-top: 8px;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .h4-model--featured .h4-model__desc {
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .h4-model__cta {
+    margin-top: 18px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .h4-model__cta span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .h4-model:hover .h4-model__cta span {
+    transform: translateX(4px);
+  }
+
+  /* ===== S7 Closing CTA ===== */
+  .h4-cta {
+    position: relative;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+  .h4-cta__glow {
+    position: absolute;
+    width: 680px;
+    height: 680px;
+    left: 50%;
+    bottom: -420px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.4) 0%,
+      rgba(233, 78, 27, 0) 66%
+    );
+    pointer-events: none;
+  }
+  .h4-cta__inner {
+    position: relative;
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+    padding-block: clamp(72px, 9vw, 140px);
+  }
+  .h4-cta__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .h4-cta__title {
+    color: #fff;
+    max-width: 16ch;
+  }
+  .h4-cta__text {
+    max-width: 52ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .h4-cta__inner .btn {
+    margin-top: 8px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other pages. */
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduced) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

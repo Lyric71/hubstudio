@@ -1,0 +1,170 @@
+---
+/**
+ * 404 (Not Found). Astro serves this for any unmatched route and Vercel
+ * returns it with a 404 status. Kept out of the search index via `noindex`.
+ * Dark hero treatment so a dead end still feels like the brand.
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const links = [
+  { label: 'Services', href: '/services', desc: 'Twenty service lines, one studio.' },
+  { label: 'Work', href: '/work', desc: 'Selected brand case studies.' },
+  { label: 'Resources', href: '/resources', desc: 'Insights, guides, and the glossary.' },
+  { label: 'Contact', href: '/contact', desc: 'Send the studio a brief.' },
+];
+---
+
+<Layout
+  heroOverlay
+  noindex
+  title="Page not found | hubStudio"
+  description="The page has moved or no longer exists. Find your way back to hubStudio's work, services, and resources."
+>
+  <section class="nf">
+    <div class="nf__glow" aria-hidden="true"></div>
+    <div class="grain nf__grain" aria-hidden="true"></div>
+    <div class="container nf__inner">
+      <span class="eyebrow nf__eyebrow">Error 404</span>
+      <p class="nf__code" aria-hidden="true">404</p>
+      <h1 class="headline h1 nf__title">
+        This page has <span class="accent">moved on</span>.
+      </h1>
+      <p class="nf__text">
+        The link is broken or the page no longer exists. No production was harmed.
+        Here is the way back in.
+      </p>
+      <div class="nf__cta">
+        <Button variant="primary" href="/">Back to home</Button>
+        <Button variant="on-dark" href="/contact">Talk to us</Button>
+      </div>
+      <ul class="nf__links">
+        {
+          links.map((l) => (
+            <li>
+              <a class="nf__link" href={l.href}>
+                <span class="nf__link-text">
+                  <span class="nf__link-label">{l.label}</span>
+                  <span class="nf__link-desc">{l.desc}</span>
+                </span>
+                <span class="nf__link-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .nf {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    margin-top: -64px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .nf {
+      margin-top: calc(-1 * var(--nav-h));
+    }
+  }
+  .nf__glow {
+    position: absolute;
+    width: 720px;
+    height: 720px;
+    right: -200px;
+    top: -300px;
+    background: radial-gradient(
+      circle,
+      rgba(233, 78, 27, 0.38) 0%,
+      rgba(233, 78, 27, 0) 64%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+  .nf__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    z-index: -1;
+  }
+  .nf__inner {
+    padding-block: calc(var(--nav-h) + 80px) 100px;
+    max-width: 720px;
+  }
+  .nf__eyebrow {
+    color: var(--brand-orange);
+  }
+  .nf__code {
+    margin-top: 10px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    font-size: clamp(96px, 18vw, 220px);
+    color: rgba(240, 237, 233, 0.08);
+  }
+  .nf__title {
+    margin-top: -0.18em;
+    color: #fff;
+  }
+  .nf__text {
+    margin-top: 22px;
+    max-width: 48ch;
+    font-size: var(--type-lead);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .nf__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .nf__links {
+    margin-top: 48px;
+    display: grid;
+    gap: 2px;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .nf__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 4px;
+    border-bottom: 1px solid rgba(240, 237, 233, 0.14);
+    transition: padding-left 200ms ease-out;
+  }
+  .nf__link:hover {
+    padding-left: 12px;
+  }
+  .nf__link-label {
+    display: block;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .nf__link-desc {
+    display: block;
+    margin-top: 3px;
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .nf__link-arrow {
+    flex: none;
+    font-size: 20px;
+    color: var(--brand-orange);
+    transition: transform 200ms ease-out;
+  }
+  .nf__link:hover .nf__link-arrow {
+    transform: translateX(6px);
+  }
+</style>

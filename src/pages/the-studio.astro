@@ -1,0 +1,419 @@
+---
+/**
+ * The Studio hub  ·  /the-studio
+ *
+ * Top-level hub for the studio section. Links the four studio pages, then
+ * carries the founder story at #story, the anchor the header "Founder story"
+ * card points to. No ordinal numerals on the card grid (project card rule).
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const pages = [
+  {
+    name: 'Who we are',
+    href: '/the-studio/who-we-are',
+    desc: 'The production house behind the work: how it runs, where its studios sit, and why the economics come out different.',
+  },
+  {
+    name: 'Our creative talents',
+    href: '/the-studio/creative-talents',
+    desc: 'The directors, editors, retouchers, and AIGC engineers, embedded across sixteen markets so the work reads native in each one.',
+  },
+  {
+    name: 'Our AI excellence',
+    href: '/the-studio/ai-excellence',
+    desc: 'Generation used at studio level: dedicated GPU pipelines, brand-trained models, and the QA loops that keep output on-brand.',
+  },
+  {
+    name: 'Partner program',
+    href: '/partner-program',
+    desc: 'A lane for agencies and studios that want hubStudio production capacity running quietly under their own name.',
+  },
+];
+
+const stats = [
+  { num: '16', label: 'Markets with creative talent on the ground' },
+  { num: '50%', label: 'Typical cut in the cost of a finished asset' },
+  { num: 'Days', label: 'From brief to delivery, not weeks' },
+];
+---
+
+<Layout
+  title="The Studio: Talent, Craft & AI Practice | hubStudio"
+  description="Inside hubStudio: a creative production house across Hong Kong, Shanghai, Changsha, and the Philippines, pairing real studio craft with deep AIGC expertise."
+>
+  <!-- ===== Hero ===== -->
+  <section class="ts-hero">
+    <div class="container">
+      <span class="eyebrow">The Studio</span>
+      <h1 class="headline h1 reveal ts-hero__title">
+        A production house, built for what content has <span class="accent">become</span>.
+      </h1>
+      <p class="lead ts-hero__lead">
+        hubStudio pairs real studio craft with deep AIGC expertise, run out of China
+        where the production economics still work. This is the studio behind the work:
+        who runs it, the talent inside it, and the AI practice on top.
+      </p>
+      <div class="ts-hero__cta">
+        <Button variant="primary" href="/contact">Talk to us</Button>
+        <Button variant="secondary" href="/work">See real brand work</Button>
+      </div>
+    </div>
+    <div class="container">
+      <figure class="ts-hero__figure">
+        <img
+          src="/Team/team-photo.webp"
+          alt="The hubStudio team gathered on the studio's production floor."
+          width="1050"
+          height="586"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== Stats ===== -->
+  <section class="ts-stats">
+    <div class="container ts-stats__grid">
+      {
+        stats.map((s) => (
+          <div class="ts-stat">
+            <span class="ts-stat__num">{s.num}</span>
+            <span class="ts-stat__label">{s.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ===== Inside the studio ===== -->
+  <section class="section ts-pages">
+    <div class="container">
+      <header class="ts-pages__head">
+        <span class="eyebrow">Inside the studio</span>
+        <h2 class="headline h2 reveal">Four ways to <span class="accent">look closer</span>.</h2>
+      </header>
+      <div class="ts-grid">
+        {
+          pages.map((p) => (
+            <a class="ts-card" href={p.href}>
+              <h3 class="ts-card__name">{p.name}</h3>
+              <p class="ts-card__desc">{p.desc}</p>
+              <span class="ts-card__cta">
+                Read more <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Founder story ===== -->
+  <section class="ts-story" id="story">
+    <div class="container ts-story__grid">
+      <figure class="ts-story__figure">
+        <img
+          src="/Team/cyril-drouin.jpg"
+          alt="Cyril Drouin, founder of hubStudio."
+          width="500"
+          height="800"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div class="ts-story__body">
+        <span class="eyebrow ts-story__eyebrow">Founder story</span>
+        <h2 class="headline h2 reveal ts-story__title">
+          Built for what content <span class="accent">became</span>.
+        </h2>
+        <p class="ts-story__p">
+          hubStudio started from one observation. The studios that brands relied on
+          were never built for the volume those brands now need. A traditional shoot
+          could not answer a calendar that asks for hundreds of on-brand assets a
+          month, across markets, in days.
+        </p>
+        <p class="ts-story__p">
+          The answer was not to drop craft for a generator. It was to rebuild the
+          studio model from the ground up: keep the directors, the editors, and the
+          art direction, and put a generation layer underneath, brand-trained models
+          and GPU pipelines that the same team runs every day. Some assets get shot.
+          Some get generated. Most briefs land in between, and the studio decides per
+          asset which path serves the work.
+        </p>
+        <p class="ts-story__p">
+          That is the studio we built: headquartered in Hong Kong, with studios in
+          Shanghai, Changsha, and the Philippines, and creative talent embedded in
+          the markets our clients sell into. The
+          economics change, the speed changes, and the work still looks like it
+          belongs to the brand.
+        </p>
+        <figure class="ts-story__sign">
+          <img
+            src="/Team/cyril-drouin-signature.png"
+            alt="Signature of Cyril Drouin."
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+          <figcaption>Cyril Drouin, Founder</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Closing CTA ===== -->
+  <section class="ts-cta">
+    <div class="container">
+      <div class="ts-cta__card card card--navy">
+        <span class="eyebrow ts-cta__eyebrow">Work with the studio</span>
+        <h2 class="headline h3 ts-cta__title">
+          Tell us what you need to <span class="accent">produce</span>.
+        </h2>
+        <p class="ts-cta__text">
+          Send the brief, or ask us to stand up the studio inside your own business.
+          Either way, a producer reads it within one business day.
+        </p>
+        <Button variant="primary-inverse" href="/contact">Talk to us</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---- Hero ---------------------------------------------------- */
+  .ts-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+  }
+  .ts-hero__title {
+    margin-top: 16px;
+    max-width: 18ch;
+  }
+  .ts-hero__lead {
+    margin-top: 22px;
+    max-width: 60ch;
+  }
+  .ts-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ts-hero__figure {
+    margin: clamp(40px, 6vw, 72px) 0 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 1050 / 586;
+    box-shadow: var(--shadow-card);
+  }
+  .ts-hero__figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---- Stats -------------------------------------------------- */
+  .ts-stats {
+    padding-block: clamp(48px, 6vw, 80px);
+  }
+  .ts-stats__grid {
+    display: grid;
+    gap: 2px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .ts-stats__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .ts-stat {
+    display: grid;
+    gap: 8px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line-strong);
+  }
+  .ts-stat__num {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--brand-orange);
+  }
+  .ts-stat__label {
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+    max-width: 28ch;
+  }
+
+  /* ---- Inside the studio -------------------------------------- */
+  .ts-pages {
+    padding-top: 0;
+  }
+  .ts-pages__head {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .ts-grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .ts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .ts-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: clamp(28px, 3vw, 38px);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .ts-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.12);
+  }
+  .ts-card__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .ts-card__desc {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .ts-card__cta {
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .ts-card__cta span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .ts-card:hover .ts-card__cta span {
+    transform: translateX(4px);
+  }
+
+  /* ---- Founder story ----------------------------------------- */
+  .ts-story {
+    background: var(--bg-cream);
+    padding-block: clamp(72px, 9vw, 128px);
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .ts-story__grid {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 900px) {
+    .ts-story__grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .ts-story__figure {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 5 / 8;
+    box-shadow: var(--shadow-card);
+  }
+  @media (min-width: 900px) {
+    .ts-story__figure {
+      position: sticky;
+      top: calc(var(--nav-h) + 40px);
+    }
+  }
+  .ts-story__figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ts-story__title {
+    margin-top: 12px;
+  }
+  .ts-story__p {
+    margin-top: 20px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .ts-story__sign {
+    margin: 32px 0 0;
+  }
+  .ts-story__sign img {
+    width: 168px;
+    height: auto;
+  }
+  .ts-story__sign figcaption {
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+
+  /* ---- Closing CTA ------------------------------------------- */
+  .ts-cta {
+    padding-block: clamp(72px, 9vw, 140px);
+  }
+  .ts-cta__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    padding: clamp(40px, 6vw, 76px) clamp(24px, 5vw, 64px);
+  }
+  .ts-cta__eyebrow {
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .ts-cta__title {
+    color: #fff;
+  }
+  .ts-cta__text {
+    max-width: 48ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .ts-cta__card .btn {
+    margin-top: 10px;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

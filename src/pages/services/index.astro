@@ -212,12 +212,38 @@ const categories: Category[] = [
     ],
   },
 ];
+
+// Structured data: every service line as a Service entity, provided by
+// hubStudio. Gives search engines and AI assistants the full service surface.
+const SITE = 'https://hubstudio.ai';
+const serviceListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'hubStudio creative services',
+  url: `${SITE}/services`,
+  itemListElement: categories
+    .flatMap((cat) => cat.services)
+    .map((svc, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Service',
+        name: svc.name,
+        description: svc.desc,
+        url: `${SITE}${svc.href}`,
+        serviceType: svc.name,
+        provider: { '@type': 'Organization', name: 'hubStudio', url: SITE },
+      },
+    })),
+};
 ---
 
 <Layout
-  title="Services | hubStudio"
-  description="Twenty creative service lines under one studio: social, video, motion, ecommerce, web, strategy, brand identity, and sales communications. Explore every hubStudio service."
+  title="Creative Services: 20 Lines, One Studio | hubStudio"
+  description="Twenty creative service lines under one studio: social, video, motion, ecommerce, web, strategy, brand identity, and sales communications."
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceListSchema)} />
+
   <!-- ===== Hero ===== -->
   <section class="svc-hero">
     <div class="container">

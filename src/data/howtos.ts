@@ -83,7 +83,7 @@ export const howtos: Howto[] = [
     author: 'Cyril Drouin',
     metaTitle: 'How to Build AI-Ready Content Systems for AI Search | hubStudio',
     metaDescription:
-      'AI search prioritises video, tools, and structured content. A practical guide for content teams shifting from text-heavy SEO pages to AI-ready systems.',
+      'AI search prioritizes video, tools, and structured content. A practical guide for content teams shifting from text-heavy SEO pages to AI-ready systems.',
   },
 ];
 

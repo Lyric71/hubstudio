@@ -27,6 +27,19 @@ export interface GalleryImage {
   alt: string;
 }
 
+export interface CaseVideo {
+  /** Web-optimized H.264 MP4 source. */
+  mp4: string;
+  /** VP9 WebM source, served first where supported. */
+  webm: string;
+  /** Poster frame (WebP) shown before playback. */
+  poster: string;
+  /** Accessible description of the clip. */
+  alt: string;
+  /** Natural aspect ratio as a CSS `aspect-ratio` value, e.g. '16 / 9'. */
+  aspect: string;
+}
+
 export interface CaseStudy {
   slug: string;
   client: string;
@@ -51,6 +64,8 @@ export interface CaseStudy {
   /** Service chips. */
   services: string[];
   gallery: GalleryImage[];
+  /** Web-optimized campaign clips, shown in the "in motion" section. */
+  videos?: CaseVideo[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -101,6 +116,15 @@ export const caseStudies: CaseStudy[] = [
     ],
     services: ['Launch film', 'AIGC', 'Fluid simulation', 'Social cutdowns'],
     gallery: [],
+    videos: [
+      {
+        mp4: '/Video/noyz-1.mp4',
+        webm: '/Video/noyz-1.webm',
+        poster: '/Video/noyz-1-poster.webp',
+        alt: 'Noyz Mylk de Parfum launch film built around the signature mist-to-milk transformation.',
+        aspect: '4 / 5',
+      },
+    ],
   },
   {
     slug: 'mexicash',
@@ -159,6 +183,36 @@ export const caseStudies: CaseStudy[] = [
       {
         src: '/Images/work/mexicash-3.webp',
         alt: 'Mexicash campaign frame cut for a horizontal desktop placement.',
+      },
+    ],
+    videos: [
+      {
+        mp4: '/Video/mexicash-1.mp4',
+        webm: '/Video/mexicash-1.webm',
+        poster: '/Video/mexicash-1-poster.webp',
+        alt: 'Mexicash micro-credit campaign video, horizontal cut for desktop and in-feed placements.',
+        aspect: '1942 / 1080',
+      },
+      {
+        mp4: '/Video/mexicash-2.mp4',
+        webm: '/Video/mexicash-2.webm',
+        poster: '/Video/mexicash-2-poster.webp',
+        alt: 'Mexicash micro-credit campaign video, vertical cut for mobile feeds.',
+        aspect: '9 / 16',
+      },
+      {
+        mp4: '/Video/mexicash-3.mp4',
+        webm: '/Video/mexicash-3.webm',
+        poster: '/Video/mexicash-3-poster.webp',
+        alt: 'Mexicash micro-credit campaign video, vertical cut for TikTok and stories.',
+        aspect: '9 / 16',
+      },
+      {
+        mp4: '/Video/mexicash-4.mp4',
+        webm: '/Video/mexicash-4.webm',
+        poster: '/Video/mexicash-4-poster.webp',
+        alt: 'Mexicash micro-credit campaign video, horizontal 16:9 cut for YouTube and Display.',
+        aspect: '1942 / 1080',
       },
     ],
   },
@@ -221,6 +275,29 @@ export const caseStudies: CaseStudy[] = [
       {
         src: '/Images/work/elizabeth-gage-3.webp',
         alt: 'A seasonal Elizabeth Gage campaign visual styled for gifting.',
+      },
+    ],
+    videos: [
+      {
+        mp4: '/Video/elizabeth-gage-1.mp4',
+        webm: '/Video/elizabeth-gage-1.webm',
+        poster: '/Video/elizabeth-gage-1-poster.webp',
+        alt: 'Elizabeth Gage product video holding a jewellery piece in macro detail.',
+        aspect: '1446 / 1080',
+      },
+      {
+        mp4: '/Video/elizabeth-gage-2.mp4',
+        webm: '/Video/elizabeth-gage-2.webm',
+        poster: '/Video/elizabeth-gage-2-poster.webp',
+        alt: 'Elizabeth Gage product video styled for Instagram feed and stories.',
+        aspect: '1446 / 1080',
+      },
+      {
+        mp4: '/Video/elizabeth-gage-3.mp4',
+        webm: '/Video/elizabeth-gage-3.webm',
+        poster: '/Video/elizabeth-gage-3-poster.webp',
+        alt: 'Elizabeth Gage vertical product video adapted for TikTok and stories.',
+        aspect: '1080 / 1446',
       },
     ],
   },

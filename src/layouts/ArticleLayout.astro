@@ -33,20 +33,52 @@ const articleSchema = {
   '@type': 'BlogPosting',
   headline: insight.title,
   description: insight.metaDescription,
+  image: new URL(insight.image, SITE).href,
   datePublished: insight.dateISO,
+  dateModified: insight.dateISO,
   author: { '@type': 'Person', name: insight.author },
   publisher: {
     '@type': 'Organization',
     name: 'hubStudio',
     url: SITE,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE}/logo/hubstudio-logo.png`,
+      width: 1459,
+      height: 416,
+    },
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   articleSection: insight.category,
+  inLanguage: 'en',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Insights',
+      item: `${SITE}/resources/insights`,
+    },
+    { '@type': 'ListItem', position: 3, name: insight.title, item: url },
+  ],
 };
 ---
 
-<Layout title={insight.metaTitle} description={insight.metaDescription}>
+<Layout
+  title={insight.metaTitle}
+  description={insight.metaDescription}
+  image={insight.image}
+  ogType="article"
+  publishedTime={insight.dateISO}
+  modifiedTime={insight.dateISO}
+>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- ===== Hero ===== -->
   <article class="art">

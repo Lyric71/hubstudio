@@ -49,7 +49,7 @@ export const insights: Insight[] = [
     author: 'Cyril Drouin',
     metaTitle: 'Why AI Search Is Forcing a New Content System | hubStudio',
     metaDescription:
-      'AI search is rewriting SEO. As Google prioritises video, tools, and structured content, brands must shift from text-heavy pages to AI-ready content systems.',
+      'AI search is rewriting SEO. As Google prioritizes video, tools, and structured content, brands must shift from text-heavy pages to AI-ready content systems.',
   },
   {
     slug: 'luxury-ai-content-systems',
@@ -127,14 +127,14 @@ export const insights: Insight[] = [
     category: 'Search & GEO',
     tone: 'navy',
     title: "The search revolution you're not preparing for",
-    deck: 'Traditional SEO ranked for clicks. GEO optimises for AI recommendation and trust.',
+    deck: 'Traditional SEO ranked for clicks. GEO optimizes for AI recommendation and trust.',
     date: 'November 17, 2025',
     dateISO: '2025-11-17',
     readingTime: '6 min read',
     author: 'Cyril Drouin',
     metaTitle: 'GEO vs SEO: How AI Search Rewrites the Rules | hubStudio',
     metaDescription:
-      'Google search is fading fast. ChatGPT, Perplexity, and AI Overviews now control visibility. GEO optimises for AI recommendation and trust.',
+      'Google search is fading fast. ChatGPT, Perplexity, and AI Overviews now control visibility. GEO optimizes for AI recommendation and trust.',
   },
   {
     slug: 'three-years-of-genai-ecommerce',
@@ -203,6 +203,125 @@ export const insights: Insight[] = [
     metaTitle: 'Adobe, AI, and the End of the Creative Suite Era | hubStudio',
     metaDescription:
       'Adobe chose aggregation over innovation. AI-native production rebuilt content creation from first principles, and the architecture has shifted.',
+  },
+  {
+    slug: 'ai-avatars-brand-content',
+    image: '/Images/insight-ai-avatars-brand-content.webp',
+    imageAlt:
+      'A grid of portraits, each face split between a smiling human likeness and a chrome robotic head.',
+    category: 'AI Avatars',
+    tone: 'orange',
+    title: 'AI avatars: how businesses are transforming brand content',
+    deck: 'Avatars moved from novelty to infrastructure. The ways brands use them now, and what separates a smart deployment from a gimmick.',
+    date: 'September 14, 2025',
+    dateISO: '2025-09-14',
+    readingTime: '5 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'How AI Avatars Are Transforming Brand Content | hubStudio',
+    metaDescription:
+      'How businesses use AI avatars for scalable content creation, global localization, personalized outreach, and consistent brand representation.',
+  },
+  {
+    slug: 'diffusion-models-explained',
+    image: '/Images/insight-diffusion-models-explained.webp',
+    imageAlt:
+      'A pale blue-white macro render of countless soft textured spheres of varying sizes drifting in shallow focus.',
+    category: 'AI Foundations',
+    tone: 'navy',
+    title: "Understanding diffusion models: the science behind your brand's AI visuals",
+    deck: 'The technology behind every AI image tool your team uses, and why understanding it changes how you brief and judge the work.',
+    date: 'August 19, 2025',
+    dateISO: '2025-08-19',
+    readingTime: '6 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Diffusion Models: The Science Behind AI Visuals | hubStudio',
+    metaDescription:
+      'How diffusion models power AI image generation for brands: the technology behind tools like Midjourney, and the custom AIGC workflows built on it.',
+  },
+  {
+    slug: 'custom-aigc-workflows',
+    image: '/Images/insight-custom-aigc-workflows.webp',
+    imageAlt:
+      'A desktop monitor on a purple backdrop showing a content-library interface, a grid of interior and lifestyle image thumbnails.',
+    category: 'Production',
+    tone: 'orange',
+    title: 'How we build custom AIGC workflows for every client',
+    deck: "Generic AI tools cannot hold a brand. The real power is workflow architecture tuned to each brand's creative DNA.",
+    date: 'August 4, 2025',
+    dateISO: '2025-08-04',
+    readingTime: '6 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Building Custom AIGC Workflows for Every Client | hubStudio',
+    metaDescription:
+      "Generic AI tools cannot capture a brand's creative DNA. How hubStudio architects custom AIGC workflows around each client's creative territories.",
+  },
+  {
+    slug: 'agentic-ai-creative-data',
+    image: '/Images/insight-agentic-ai-creative-data.webp',
+    imageAlt:
+      'An abstract black, white, and orange collage of close-up human eyes among geometric fragments, spheres, and fine line work.',
+    category: 'Agentic AI',
+    tone: 'navy',
+    title: 'How agentic AI is reshaping data work for creative teams',
+    deck: "Autonomous agents now handle the analytics grind. The analyst's job shifts from spreadsheets to brand intelligence.",
+    date: 'July 27, 2025',
+    dateISO: '2025-07-27',
+    readingTime: '5 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'How Agentic AI Is Reshaping Creative Data Work | hubStudio',
+    metaDescription:
+      'How autonomous AI agents reshape creative analytics, the insights they surface automatically, and how analysts become brand intelligence architects.',
+  },
+  {
+    slug: 'veo-3-studio-review',
+    image: '/Images/insight-veo-3-studio-review.webp',
+    imageAlt:
+      'A glowing neon outline of a video play-button icon hovering over still water amid soft pink and teal clouds.',
+    category: 'AI Video',
+    tone: 'orange',
+    title: "Veo 3 deep dive: an AIGC studio's honest assessment",
+    deck: "We ran Google's video model through a real production pipeline. Where it earns its place, and where it does not.",
+    date: 'July 4, 2025',
+    dateISO: '2025-07-04',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: "Veo 3 Review: An AIGC Studio's Honest Assessment | hubStudio",
+    metaDescription:
+      'A professional AIGC studio assesses Veo 3: video quality, brand applications, cost, and where it fits in a real production workflow.',
+  },
+  {
+    slug: 'cloudflare-pay-per-crawl',
+    image: '/Images/insight-cloudflare-pay-per-crawl.webp',
+    imageAlt:
+      'A desktop monitor on a white surface with paper documents and clippings bursting outward from a cluttered on-screen feed.',
+    category: 'Content Rights',
+    tone: 'navy',
+    title: 'Cloudflare changed the AIGC game: why pay per crawl protects brand content',
+    deck: 'Default AI scrapers now hit a paywall. For brands, original content turns from free training data into a protected asset.',
+    date: 'July 3, 2025',
+    dateISO: '2025-07-03',
+    readingTime: '7 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Cloudflare Pay Per Crawl and AIGC Content Protection | hubStudio',
+    metaDescription:
+      "Cloudflare's pay-per-crawl model blocks default AI scrapers and forces platforms to pay for access, turning original brand content into a protected asset.",
+  },
+  {
+    slug: 'data-driven-aigc',
+    image: '/Images/insight-data-driven-aigc.webp',
+    imageAlt:
+      'A dark digital corridor of streaming green, blue, and red data receding into the distance.',
+    category: 'Performance',
+    tone: 'orange',
+    title: 'Beyond prompts: how data-driven AIGC transforms brand content at scale',
+    deck: 'Prompt-and-pray does not scale. A feedback loop that trains models on performance data does.',
+    date: 'June 30, 2025',
+    dateISO: '2025-06-30',
+    readingTime: '7 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Data-Driven AIGC: Scaling Brand Content That Performs | hubStudio',
+    metaDescription:
+      'Most brands still prompt and pray. Data-driven AIGC turns performance data into a feedback loop that trains models, scales content, and lifts conversions.',
   },
 ];
 

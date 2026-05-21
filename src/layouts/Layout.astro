@@ -2,7 +2,12 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLocaleFromUrl, localizePath, useTranslations } from '../i18n/utils';
+import {
+  getLocaleFromUrl,
+  localizePath,
+  getTranslatedLocales,
+  useTranslations,
+} from '../i18n/utils';
 import { locales, defaultLocale } from '../i18n/ui';
 
 interface Props {
@@ -10,6 +15,17 @@ interface Props {
   description?: string;
   /** Render the header transparently over a dark hero (light nav until scroll). */
   heroOverlay?: boolean;
+  /** Root-relative or absolute path to the social share image (1200x630). */
+  image?: string;
+  /** Open Graph object type. Articles and how-to guides pass 'article'. */
+  ogType?: 'website' | 'article';
+  /** Keep the page out of the search index (thank-you, 404). */
+  noindex?: boolean;
+  /** ISO dates, emitted as article:* tags when ogType is 'article'. */
+  publishedTime?: string;
+  modifiedTime?: string;
+  /** Root-relative image to preload (the LCP hero image of the page). */
+  preloadImage?: string;
 }
 
 const SITE = 'https://hubstudio.ai';
@@ -17,12 +33,74 @@ const SITE = 'https://hubstudio.ai';
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 
-const { title, description, heroOverlay = false } = Astro.props;
+const {
+  title,
+  description,
+  heroOverlay = false,
+  image = '/og-default.png',
+  ogType = 'website',
+  noindex = false,
+  publishedTime,
+  modifiedTime,
+  preloadImage,
+} = Astro.props;
 const pageTitle = title ?? t('meta.defaultTitle');
 const pageDescription = description ?? t('meta.defaultDescription');
 
 const path = Astro.url.pathname;
 const canonical = new URL(localizePath(path, locale), SITE).href;
+const ogImage = new URL(image, SITE).href;
+const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
+
+// hreflang: emit alternates only for locales where the page genuinely exists.
+// An English-only page emits none, rather than pointing fr at a fallback home.
+const altLocales = getTranslatedLocales(path);
+
+// Site-wide identity, carried on every page so any page can anchor the brand.
+const orgId = `${SITE}/#organization`;
+const siteSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': orgId,
+      name: 'hubStudio',
+      url: SITE,
+      description:
+        'A creative production house pairing real studio craft with deep AIGC expertise, run out of China, with creative direction on top.',
+      email: 'hello@hubstudio.ai',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE}/logo/hubstudio-logo.png`,
+        width: 1459,
+        height: 416,
+      },
+      image: `${SITE}/og-default.png`,
+      areaServed: 'Worldwide',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'hello@hubstudio.ai',
+        contactType: 'customer service',
+        availableLanguage: ['English', 'French', 'Chinese'],
+      },
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'BeyondBorderGroup',
+        url: 'https://beyondbordergroup.org',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: SITE,
+      name: 'hubStudio',
+      description:
+        'hubStudio is a full creative production house: AIGC video and image work, structured content engines, and custom studios, human-led.',
+      publisher: { '@id': orgId },
+      inLanguage: [...locales],
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -37,6 +115,7 @@ const canonical = new URL(localizePath(path, locale), SITE).href;
 
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
 
     <!-- Self-hosted fonts: preload the two that paint above the fold. -->
@@ -54,22 +133,60 @@ const canonical = new URL(localizePath(path, locale), SITE).href;
       type="font/woff2"
       crossorigin
     />
+    {
+      preloadImage && (
+        <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+      )
+    }
 
     {
-      locales.map((loc) => (
-        <link rel="alternate" hreflang={loc} href={new URL(localizePath(path, loc), SITE).href} />
-      ))
+      altLocales.length > 1 &&
+        altLocales.map((loc) => (
+          <link
+            rel="alternate"
+            hreflang={loc}
+            href={new URL(localizePath(path, loc), SITE).href}
+          />
+        ))
     }
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href={new URL(localizePath(path, defaultLocale), SITE).href}
-    />
+    {
+      altLocales.length > 1 && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={new URL(localizePath(path, defaultLocale), SITE).href}
+        />
+      )
+    }
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="hubStudio" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    {
+      ogType === 'article' && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )
+    }
+    {
+      ogType === 'article' && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )
+    }
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(siteSchema)}
+    />
   </head>
   <body>
     <a class="skip-link" href="#main">{t('nav.skipToContent')}</a>

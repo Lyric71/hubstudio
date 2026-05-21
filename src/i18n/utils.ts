@@ -77,6 +77,39 @@ export function localizePath(path: string, locale: Locale): string {
 }
 
 /**
+ * Locales in which `path` genuinely exists as its own page; the default
+ * locale is always included. A non-default locale counts only when
+ * page-slugs.ts maps the canonical English path (directly or via a prefix).
+ * Drives hreflang: an English-only page emits no alternates rather than
+ * pointing every other locale at a fallback home.
+ */
+export function getTranslatedLocales(path: string): Locale[] {
+  const en = toCanonical(path);
+  const result: Locale[] = [defaultLocale];
+
+  for (const locale of locales) {
+    if (locale === defaultLocale) continue;
+
+    const map = slugMap[locale] ?? {};
+    if (en in map) {
+      result.push(locale);
+      continue;
+    }
+
+    const prefixes = prefixMap[locale] ?? {};
+    for (const enPrefix of Object.keys(prefixes)) {
+      const ep = normalize(enPrefix);
+      if (en === ep || en.startsWith(ep + '/')) {
+        result.push(locale);
+        break;
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
  * Returns a `t()` bound to `locale`. Supports `{placeholder}` interpolation
  * and falls back to the English string for any key missing in the locale.
  */

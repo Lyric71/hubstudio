@@ -1,0 +1,355 @@
+---
+/**
+ * Resources hub  ·  /resources
+ *
+ * Top-level hub for the resources section: links the four resource areas,
+ * then previews the latest insights. No ordinal numerals on the card grids
+ * (project card rule).
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import { insights } from '../data/insights';
+
+const areas = [
+  {
+    name: 'Insights',
+    href: '/resources/insights',
+    desc: 'Essays on AI-native content, written by the people running the pipelines.',
+  },
+  {
+    name: 'How-to guides',
+    href: '/resources/how-to',
+    desc: 'Practical, step-by-step guides to the AI tools production teams actually use.',
+  },
+  {
+    name: 'Glossary',
+    href: '/resources/glossary',
+    desc: 'The vocabulary of AI-generated content, defined in plain language.',
+  },
+  {
+    name: 'Copyright and AI',
+    href: '/resources/copyright-and-ai',
+    desc: 'The legal ground rules for using AI-generated content without taking on risk.',
+  },
+];
+
+const latest = insights.slice(0, 3);
+---
+
+<Layout
+  title="Resources: AI Content Insights & Guides | hubStudio"
+  description="Perspectives, practical guides, and the legal ground rules for AI-native content. Read hubStudio insights, how-to guides, the glossary, and copyright guidance."
+>
+  <!-- ===== Hero ===== -->
+  <section class="rs-hero">
+    <div class="container">
+      <span class="eyebrow">Resources</span>
+      <h1 class="headline h1 reveal rs-hero__title">
+        Worth <span class="accent">reading</span>.
+      </h1>
+      <p class="lead rs-hero__lead">
+        Practitioner notes on AI-native content, the practical guides behind them,
+        and the legal ground rules. Written by the people running the pipelines, not
+        the marketing department.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Areas ===== -->
+  <section class="rs-areas">
+    <div class="container">
+      <div class="rs-grid">
+        {
+          areas.map((a) => (
+            <a class="rs-card" href={a.href}>
+              <h2 class="rs-card__name">{a.name}</h2>
+              <p class="rs-card__desc">{a.desc}</p>
+              <span class="rs-card__cta">
+                Explore <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Latest insights ===== -->
+  <section class="section rs-latest">
+    <div class="container">
+      <header class="rs-latest__head">
+        <div>
+          <span class="eyebrow">Latest insights</span>
+          <h2 class="headline h2 reveal">Fresh from the <span class="accent">studio</span>.</h2>
+        </div>
+        <a class="rs-latest__all" href="/resources/insights">
+          All insights <span aria-hidden="true">&rarr;</span>
+        </a>
+      </header>
+      <div class="rs-ins-grid">
+        {
+          latest.map((post) => (
+            <a class="rs-ins card card--white" href={`/resources/insights/${post.slug}`}>
+              <div class="rs-ins__media">
+                <img
+                  src={post.image}
+                  alt={post.imageAlt}
+                  width="1600"
+                  height="1067"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class={`chip rs-ins__tag rs-ins__tag--${post.tone}`}>{post.category}</span>
+              </div>
+              <div class="rs-ins__body">
+                <h3 class="rs-ins__title">{post.title}</h3>
+                <p class="rs-ins__deck">{post.deck}</p>
+                <p class="rs-ins__meta">
+                  <time datetime={post.dateISO}>{post.date}</time>
+                  <span class="rs-ins__dot" aria-hidden="true" />
+                  <span>{post.readingTime}</span>
+                </p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Closing CTA ===== -->
+  <section class="rs-cta">
+    <div class="container">
+      <div class="rs-cta__card card card--orange grain">
+        <span class="eyebrow rs-cta__eyebrow">From reading to production</span>
+        <h2 class="headline h3 rs-cta__title">Turn the shift into a content system.</h2>
+        <p class="rs-cta__text">
+          hubStudio builds human-led, AI-native content production. Tell us what you
+          need to produce, and a producer will reply within one business day.
+        </p>
+        <Button variant="primary-inverse" href="/contact">Talk to us</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---- Hero ---------------------------------------------------- */
+  .rs-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(40px, 6vw, 72px);
+  }
+  .rs-hero__title {
+    margin-top: 16px;
+  }
+  .rs-hero__lead {
+    margin-top: 22px;
+    max-width: 58ch;
+  }
+
+  /* ---- Areas -------------------------------------------------- */
+  .rs-areas {
+    padding-bottom: clamp(48px, 7vw, 96px);
+  }
+  .rs-grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .rs-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .rs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: clamp(28px, 3vw, 38px);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .rs-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.12);
+  }
+  .rs-card__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .rs-card__desc {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .rs-card__cta {
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .rs-card__cta span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .rs-card:hover .rs-card__cta span {
+    transform: translateX(4px);
+  }
+
+  /* ---- Latest insights --------------------------------------- */
+  .rs-latest {
+    background: var(--bg-cream);
+  }
+  .rs-latest__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px 32px;
+    margin-bottom: 36px;
+  }
+  .rs-latest__head .eyebrow {
+    margin-bottom: 12px;
+  }
+  .rs-latest__all {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .rs-ins-grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .rs-ins-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .rs-ins-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .rs-ins {
+    display: flex;
+    flex-direction: column;
+    transition: transform 200ms ease-out;
+  }
+  .rs-ins:hover {
+    transform: translateY(-4px);
+  }
+  .rs-ins__media {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--bg-cream);
+  }
+  .rs-ins__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .rs-ins__tag {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+  }
+  .rs-ins__tag--orange {
+    background: rgba(233, 78, 27, 0.92);
+    color: #fff;
+  }
+  .rs-ins__tag--navy {
+    background: rgba(14, 31, 78, 0.92);
+    color: #fff;
+  }
+  .rs-ins__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 26px;
+  }
+  .rs-ins__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .rs-ins__deck {
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .rs-ins__meta {
+    margin-top: auto;
+    padding-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .rs-ins__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+
+  /* ---- Closing CTA ------------------------------------------- */
+  .rs-cta {
+    padding-block: clamp(72px, 9vw, 140px);
+  }
+  .rs-cta__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    padding: clamp(40px, 6vw, 76px) clamp(24px, 5vw, 64px);
+    color: #fff;
+  }
+  .rs-cta__eyebrow {
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .rs-cta__title {
+    color: #fff;
+  }
+  .rs-cta__text {
+    max-width: 48ch;
+    color: rgba(255, 255, 255, 0.86);
+  }
+  .rs-cta__card .btn {
+    margin-top: 10px;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

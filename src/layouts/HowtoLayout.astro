@@ -29,24 +29,59 @@ const related = relatedHowtos(slug, 3);
 const SITE = 'https://hubstudio.ai';
 const url = `${SITE}/resources/how-to/${howto.slug}`;
 
+// Article, not HowTo: Google retired HowTo rich results in 2023, and a
+// plain editorial guide is more honestly an Article than a step recipe.
 const articleSchema = {
   '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: howto.title,
+  '@type': 'Article',
+  headline: howto.title,
   description: howto.metaDescription,
+  image: new URL(howto.image, SITE).href,
   datePublished: howto.dateISO,
+  dateModified: howto.dateISO,
   author: { '@type': 'Person', name: howto.author },
   publisher: {
     '@type': 'Organization',
     name: 'hubStudio',
     url: SITE,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE}/logo/hubstudio-logo.png`,
+      width: 1459,
+      height: 416,
+    },
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  articleSection: howto.category,
+  inLanguage: 'en',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'How-to guides',
+      item: `${SITE}/resources/how-to`,
+    },
+    { '@type': 'ListItem', position: 3, name: howto.title, item: url },
+  ],
 };
 ---
 
-<Layout title={howto.metaTitle} description={howto.metaDescription}>
+<Layout
+  title={howto.metaTitle}
+  description={howto.metaDescription}
+  image={howto.image}
+  ogType="article"
+  publishedTime={howto.dateISO}
+  modifiedTime={howto.dateISO}
+>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- ===== Hero ===== -->
   <article class="art">
