@@ -90,7 +90,7 @@ const coverage = [
     label: 'Always-on & cultural',
     heading: 'What we cover on always-on.',
     image: '/Images/sv-coverage-organic.jpg',
-    alt: 'Hands of a creator demonstrating a skincare product with a vertical phone capturing the demo in window light.',
+    alt: 'A beauty creator at a vanity desk holding a skincare serum bottle to a vertical phone on a tripod, filming a how-to in soft window light.',
     lead: 'Calendar work most brands underestimate until the feed has gone quiet.',
     body: [
       "Brand films get the slowest treatment in the studio: cinematic vignettes cut down without losing the idea. Educational and how-to is what Bilibili and Xiaohongshu reward most, with numbered steps lifting retention 34% when the numbering doesn't feel listy. Always-on social ships within 48 hours of a trend breaking.",
@@ -347,10 +347,10 @@ const faqSchema = {
               whole sale: no salesperson, no second chance, just the hook.
             </p>
             <p class="r" style="--d:.16s">
-              That's the market our team came up in. hub Studio is the
+              That's the market our team came up in. hubStudio is the
               AI-native content studio inside Beyond Border Group, founded by
-              Cyril Vidal, former CEO of Publicis Commerce for China and North
-              Asia. We deliver short-form video for HiSense, Camper, Age20,
+              the former CEO of Publicis Commerce for China and North Asia.
+              We deliver short-form video for HiSense, Camper, Age20,
               Shiseido RQ PYOLOGY across TikTok, Reels, Shorts, Douyin,
               Xiaohongshu and Bilibili.
             </p>
@@ -2141,19 +2141,4 @@ const faqSchema = {
     });
   });
 
-  /* hub4You window: subtle pointer tilt */
-  const win = document.getElementById('win');
-  if (win && !reduceMotion.matches && window.matchMedia('(pointer: fine)').matches) {
-    const reset = () => {
-      win.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
-    };
-    win.addEventListener('pointermove', (e) => {
-      const r = win.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      win.style.transform = `perspective(1200px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 7).toFixed(2)}deg)`;
-    });
-    win.addEventListener('pointerleave', reset);
-    reset();
-  }
 </script>

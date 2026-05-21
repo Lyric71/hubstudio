@@ -311,8 +311,8 @@ const faqSchema = {
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              Cyril founded hubStudio after running Publicis Commerce and
-              Performance Marketing for China and North Asia. He gets a
+              hubStudio was founded by the former CEO of Publicis Commerce
+              and Performance Marketing for China and North Asia. We get a
               version of the same call most months. It is usually from
               someone who already paid a consultancy for a brand book and
               assumed the book would hold. It does not.
@@ -2141,19 +2141,4 @@ const faqSchema = {
     });
   });
 
-  /* hub4You window: subtle pointer tilt */
-  const win = document.getElementById('win');
-  if (win && !reduceMotion.matches && window.matchMedia('(pointer: fine)').matches) {
-    const reset = () => {
-      win.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
-    };
-    win.addEventListener('pointermove', (e) => {
-      const r = win.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      win.style.transform = `perspective(1200px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 7).toFixed(2)}deg)`;
-    });
-    win.addEventListener('pointerleave', reset);
-    reset();
-  }
 </script>

@@ -147,7 +147,7 @@ const breadcrumbSchema = {
 
   <!-- ===== S4: What we delivered ===== -->
   <section class="section delivered">
-    <div class="container delivered__grid">
+    <div class="container">
       <div class="delivered__copy">
         <p class="eyebrow accent-eyebrow" data-reveal>The output</p>
         <h2 class="headline h2" data-reveal>
@@ -579,21 +579,17 @@ const breadcrumbSchema = {
   .delivered {
     background: var(--bg-white);
   }
-  .delivered__grid {
-    display: grid;
-    gap: 44px;
-  }
-  @media (min-width: 940px) {
-    .delivered__grid {
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 64px;
-      align-items: start;
-    }
-  }
   .delivered__list {
     margin-top: 28px;
     display: grid;
     gap: 14px;
+  }
+  /* Two-column checklist once the row is wide enough to read it. */
+  @media (min-width: 720px) {
+    .delivered__list {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 56px;
+    }
   }
   .delivered__item {
     display: flex;
@@ -614,9 +610,15 @@ const breadcrumbSchema = {
     background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-deep));
   }
   .delivered__gallery {
+    margin-top: 48px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+  }
+  @media (min-width: 720px) {
+    .delivered__gallery {
+      margin-top: 64px;
+    }
   }
   .delivered__gallery .gframe:first-child {
     grid-column: 1 / -1;

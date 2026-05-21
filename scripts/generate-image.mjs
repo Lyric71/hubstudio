@@ -51,12 +51,18 @@ function parseArgs(argv) {
 
 // Wrap fetch with retries on transient network errors. The poll loop fires
 // ~90 sequential requests per image; a single dropped connection should not
-// kill an otherwise healthy job.
+// kill an otherwise healthy job. Each attempt gets its own abort timeout so a
+// stalled connection fails fast and is retried, instead of hanging for minutes
+// on the OS-level TCP timeout and defeating the retry logic.
+const FETCH_TIMEOUT_MS = 60_000;
 async function fetchRetry(url, options = {}, retries = 4) {
   let lastErr;
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      return await fetch(url, options);
+      return await fetch(url, {
+        ...options,
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      });
     } catch (err) {
       lastErr = err;
       if (attempt < retries) {

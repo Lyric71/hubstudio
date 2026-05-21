@@ -187,12 +187,44 @@ const shifts = [
   },
 ];
 
-/* FAQ: trimmed to five questions, answers tightened. The legal answer keeps
-   its link to the Copyright and AI guide. */
+/* FAQ: twelve questions covering email design craft and content, answers
+   tightened. The legal answer keeps its link to the Copyright and AI guide. */
 const faqs = [
   {
     q: 'How long does an email design project take?',
     a: 'About a week for a standard campaign template. Two to three weeks for a full lifecycle set. Three to four for a modular system with documentation. Extensions of an existing system come back inside 48 hours.',
+  },
+  {
+    q: 'What do you need from us to brief a project?',
+    a: 'A format list, your ESP, the brand guidelines and any regulatory copy by market. Send a target inbox matrix and render-test requirements if you have them. If you do not, we define them with you on the first call. The brief and render spec get locked before the first sketch.',
+  },
+  {
+    q: 'Can you design a full lifecycle flow, or just single emails?',
+    a: 'Either. We design single campaign templates and complete lifecycle sets running welcome, cart, browse, post-purchase, replenishment, winback and sunset. For a full flow we map the sequence and the triggers with you, then design every email so the set reads as one program, not eight unrelated sends.',
+  },
+  {
+    q: 'Do you write the email copy, or only design it?',
+    a: 'Both, depending on what you need. Most clients bring their own copy and we design around it. When you want words and layout handled together, our writers draft the body copy, headlines and CTAs, then the designers build to it. Copy and design developed side by side always beats copy poured into a finished template.',
+  },
+  {
+    q: 'Do you handle subject lines and preview text too?',
+    a: 'Yes. The subject line and preview text are the first design decision, not an afterthought, since they decide whether the email gets opened at all. We write and test variants, and we check how the preview text reads next to the subject line in each major inbox.',
+  },
+  {
+    q: 'Can you work from our existing brand guidelines or design system?',
+    a: 'Yes, and we prefer to. We start from your brand guidelines, type scale and color tokens, and build the email system to extend them rather than invent a parallel look. If you have no email-specific system yet, we create one that stays faithful to the master brand.',
+  },
+  {
+    q: 'Will the emails render in dark mode and across Outlook, Gmail and Apple Mail?',
+    a: 'That is the core of the work. Every build is Litmus-tested across the full client matrix. We do not release until rendering is clean in dark mode on iOS Mail, Gmail web and the new Outlook at minimum, with fallbacks in place for the clients that strip modern CSS.',
+  },
+  {
+    q: 'How do you handle accessibility and the European Accessibility Act?',
+    a: 'Every template is validated against WCAG 2.2 AA: color contrast, real alt text, a logical heading structure and a readable order when styles are stripped. Since the European Accessibility Act took effect in June 2025, this is a legal requirement for any brand selling to EU consumers, so we treat it as part of the build, not an extra.',
+  },
+  {
+    q: 'Can you handle a full multi-market program, or just one template?',
+    a: 'Both. Some clients come for one welcome email. Others come with a campaign across fourteen markets, eleven languages and 200 SKU variants, all due in three weeks. The workflow handles both ends.',
   },
   {
     q: 'Who does the work?',
@@ -202,10 +234,6 @@ const faqs = [
     q: 'What about copyright on AI-generated work?',
     a: 'You own the final deliverables. We use commercially safe models and document the workflow. Full detail in our Copyright and AI guide.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
-  },
-  {
-    q: 'Can you handle a full multi-market program, or just one template?',
-    a: 'Both. Some clients come for one welcome email. Others come with a campaign across fourteen markets, eleven languages and 200 SKU variants, all due in three weeks. The workflow handles both ends.',
   },
   {
     q: 'Can we start small?',
@@ -653,7 +681,7 @@ const faqSchema = {
         <aside class="faq__intro">
           <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
           <h2 class="dh r" style="--d:.05s">
-            Five questions,<br /><span class="serif">answered</span>.
+            Twelve questions,<br /><span class="serif">answered</span>.
           </h2>
           <p class="faq__sub r" style="--d:.1s">
             What brands ask before the first call.
