@@ -36,7 +36,7 @@ type Featured = {
   image?: string;
 };
 type FlatLink = { label: string; href: string };
-type ServiceLink = { label: string; desc: string; href: string };
+type ServiceGroup = { heading: string; links: FlatLink[] };
 type SubGroup = { heading: string; links: FlatLink[] };
 type SolutionCol = { heading: string; links?: FlatLink[]; subgroups?: SubGroup[] };
 type MenuItem = {
@@ -45,8 +45,8 @@ type MenuItem = {
   intro?: Intro;
   groups?: Group[];
   featured?: Featured;
-  /** When set, the item renders the Services panel (four-column list). */
-  services?: ServiceLink[];
+  /** When set, the item renders the Services panel (grouped columns). */
+  serviceGroups?: ServiceGroup[];
   /** When set, the item renders the Solutions panel (grouped columns). */
   solutionCols?: SolutionCol[];
 };
@@ -62,27 +62,57 @@ const menu: MenuItem[] = [
       post: '.',
       text: 'From a single social post to a full campaign system: every format your brand needs, produced in days, not weeks.',
     },
-    services: [
-      { label: 'Social Media', desc: 'Scroll-stopping content for every feed.', href: '/services/design/social-media' },
-      { label: 'eCommerce', desc: 'Product visuals that turn browsers into buyers.', href: '/services/design/ecommerce' },
-      { label: 'Short Video', desc: 'Vertical, fast, made for TikTok and Reels.', href: '/services/design/short-video' },
-      { label: 'Ad Creative', desc: 'Performance creative built to be tested.', href: '/services/design/ad-creative' },
-      { label: 'Video Production', desc: 'Script to final cut, shot or generated.', href: '/services/design/video-production' },
-      { label: 'Print Design', desc: 'Press-ready layouts for every format.', href: '/services/design/print-design' },
-      { label: 'Website Design', desc: 'Pages that look sharp at every breakpoint.', href: '/services/design/website-design' },
-      { label: 'Email Design', desc: 'Campaigns and flows that land in the inbox.', href: '/services/design/email-design' },
-      { label: 'Motion Design', desc: 'Animation and motion graphics with polish.', href: '/services/design/motion-design' },
-      { label: 'Marketing Strategy', desc: 'The plan behind the content, market by market.', href: '/services/design/marketing-strategy' },
-      { label: 'Presentation Design', desc: 'Decks that hold a room’s attention.', href: '/services/design/presentation-design' },
-      { label: 'Illustration Design', desc: 'Custom illustration in your brand’s language.', href: '/services/design/illustration-design' },
-      { label: 'Storyboard', desc: 'Frames that map a film before it shoots.', href: '/services/design/storyboard' },
-      { label: 'Packaging & Merch Design', desc: 'Shelf-ready packaging and branded merch.', href: '/services/design/packaging-merch-design' },
-      { label: 'Brand Identity', desc: 'Logos, systems, and guidelines that scale.', href: '/services/design/brand-identity' },
-      { label: 'Ebook and Digital Reports', desc: 'Long-form content designed to be read.', href: '/services/design/ebook-digital-reports' },
-      { label: 'Concept Creation', desc: 'Big ideas before the production starts.', href: '/services/design/concept-creation' },
-      { label: 'Pitch Deck', desc: 'Investor and client decks that win the room.', href: '/services/design/pitch-deck' },
-      { label: 'Creative Strategy', desc: 'Direction that ties every asset together.', href: '/services/design/creative-strategy' },
-      { label: 'Press Release', desc: 'News written and designed to get picked up.', href: '/services/design/press-release' },
+    serviceGroups: [
+      {
+        heading: 'Content & Social',
+        links: [
+          { label: 'Social Media', href: '/services/design/social-media' },
+          { label: 'Ad Creative', href: '/services/design/ad-creative' },
+          { label: 'Short Video', href: '/services/design/short-video' },
+          { label: 'Email Design', href: '/services/design/email-design' },
+        ],
+      },
+      {
+        heading: 'Video & Motion',
+        links: [
+          { label: 'Video Production', href: '/services/design/video-production' },
+          { label: 'Motion Design', href: '/services/design/motion-design' },
+        ],
+      },
+      {
+        heading: 'Commerce & Web',
+        links: [
+          { label: 'eCommerce', href: '/services/design/ecommerce' },
+          { label: 'Website Design', href: '/services/design/website-design' },
+          { label: 'Print Design', href: '/services/design/print-design' },
+        ],
+      },
+      {
+        heading: 'Strategy & Direction',
+        links: [
+          { label: 'Marketing Strategy', href: '/services/design/marketing-strategy' },
+          { label: 'Creative Strategy', href: '/services/design/creative-strategy' },
+          { label: 'Concept Creation', href: '/services/design/concept-creation' },
+          { label: 'Storyboard', href: '/services/design/storyboard' },
+        ],
+      },
+      {
+        heading: 'Brand Identity',
+        links: [
+          { label: 'Brand Identity', href: '/services/design/brand-identity' },
+          { label: 'Illustration Design', href: '/services/design/illustration-design' },
+          { label: 'Packaging & Merch Design', href: '/services/design/packaging-merch-design' },
+        ],
+      },
+      {
+        heading: 'Sales & Communications',
+        links: [
+          { label: 'Presentation Design', href: '/services/design/presentation-design' },
+          { label: 'Pitch Deck', href: '/services/design/pitch-deck' },
+          { label: 'Ebook and Digital Reports', href: '/services/design/ebook-digital-reports' },
+          { label: 'Press Release', href: '/services/design/press-release' },
+        ],
+      },
     ],
   },
   {
@@ -109,7 +139,6 @@ const menu: MenuItem[] = [
         heading: 'Consulting',
         links: [
           { label: 'Consulting', href: '/solutions/consulting' },
-          { label: 'Agentic-Design', href: '/solutions/agentic-design' },
           { label: 'Training', href: '/solutions/training' },
         ],
       },
@@ -250,7 +279,7 @@ const menu: MenuItem[] = [
           {
             menu.map((item) => {
               /* Plain link: no dropdown */
-              if (!item.groups && !item.services && !item.solutionCols) {
+              if (!item.groups && !item.serviceGroups && !item.solutionCols) {
                 return (
                   <li class="nav-item">
                     <a class="nav-item__trigger" href={lp(item.href)}>
@@ -273,7 +302,7 @@ const menu: MenuItem[] = [
                       class:list={[
                         'container',
                         'mega__grid',
-                        item.services && 'mega__grid--services',
+                        item.serviceGroups && 'mega__grid--services',
                         item.solutionCols && 'mega__grid--solutions',
                       ]}
                     >
@@ -292,19 +321,22 @@ const menu: MenuItem[] = [
                       </div>
 
                       {/* Services layout */}
-                      {item.services && (
+                      {item.serviceGroups && (
                         <div class="mega__services">
-                          <p class="mega__group-head">Design Services</p>
-                          <ul class="services-list">
-                            {item.services.map((svc) => (
-                              <li>
-                                <a class="services-link" href={lp(svc.href)}>
-                                  <span class="services-link__title">{svc.label}</span>
-                                  <span class="services-link__desc">{svc.desc}</span>
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
+                          {item.serviceGroups.map((group) => (
+                            <div class="mega__svc-col">
+                              <p class="mega__group-head">{group.heading}</p>
+                              <ul class="mega__svc-list">
+                                {group.links.map((l) => (
+                                  <li>
+                                    <a class="sol-link" href={lp(l.href)}>
+                                      {l.label}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
                         </div>
                       )}
 
@@ -433,7 +465,7 @@ const menu: MenuItem[] = [
         {
           menu.map((item) => {
             /* Plain link */
-            if (!item.groups && !item.services && !item.solutionCols) {
+            if (!item.groups && !item.serviceGroups && !item.solutionCols) {
               return (
                 <div class="m-acc">
                   <a class="m-acc__trigger m-acc__trigger--link" href={lp(item.href)}>
@@ -454,21 +486,19 @@ const menu: MenuItem[] = [
                   <div class="m-acc__inner">
                     <p class="m-acc__intro">{item.intro!.text}</p>
 
-                    {item.services && (
-                      <div class="m-acc__group">
-                        <p class="mega__group-head">Design Services</p>
-                        <ul class="m-acc__group-list">
-                          {item.services.map((svc) => (
-                            <li>
-                              <a href={lp(svc.href)}>
-                                <span class="m-acc__link-title">{svc.label}</span>
-                                <span class="m-acc__link-desc">{svc.desc}</span>
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    {item.serviceGroups &&
+                      item.serviceGroups.map((group) => (
+                        <div class="m-acc__group">
+                          <p class="mega__group-head">{group.heading}</p>
+                          <ul class="m-acc__group-list">
+                            {group.links.map((l) => (
+                              <li>
+                                <a href={lp(l.href)}>{l.label}</a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
 
                     {item.solutionCols &&
                       item.solutionCols.map((col) => (
@@ -740,37 +770,25 @@ const menu: MenuItem[] = [
   }
 
   /* ---- Services panel ------------------------------------------ */
-  .services-list {
-    margin-top: 14px;
+  .mega__services {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px 20px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 28px 20px;
+    align-content: start;
   }
-  .services-link {
-    display: block;
-    padding: 8px 10px;
-    margin-inline: -10px;
-    border-radius: 10px;
-    transition: background-color 120ms ease-out;
+  .mega__svc-col {
+    align-content: start;
   }
-  .services-link:hover {
-    background: rgba(10, 10, 20, 0.04);
-  }
-  .services-link__title {
-    display: block;
-    font-size: var(--type-small);
-    font-weight: 600;
-    color: var(--text-ink);
-  }
-  .services-link:hover .services-link__title {
-    color: var(--brand-orange);
-  }
-  .services-link__desc {
-    display: block;
-    font-size: 12px;
+  /* Reserve two lines so single- and double-line heads align the
+     hairline and the link list across all six columns. */
+  .mega__svc-col .mega__group-head {
+    min-height: 48px;
     line-height: 1.4;
-    color: var(--text-mute);
-    margin-top: 1px;
+  }
+  .mega__svc-list {
+    display: grid;
+    gap: 1px;
+    margin-top: 12px;
   }
 
   /* ---- Solutions panel ----------------------------------------- */

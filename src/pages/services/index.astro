@@ -1,0 +1,495 @@
+---
+/**
+ * Services index  ·  /services
+ *
+ * A visual hub that introduces all twenty service lines, grouped into
+ * six categories. Each service is a card: image, name, one-line intro,
+ * and a link through to its own service page under /services/design/.
+ * Category order and grouping mirror the Services mega menu in
+ * Header.astro. No ordinal numerals anywhere (project card rule).
+ *
+ * Images are reused from the individual service pages; no new raster
+ * assets are added here.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+type Service = {
+  name: string;
+  href: string;
+  img: string;
+  alt: string;
+  desc: string;
+};
+type Category = {
+  id: string;
+  title: string;
+  blurb: string;
+  services: Service[];
+};
+
+const categories: Category[] = [
+  {
+    id: 'content-social',
+    title: 'Content & Social',
+    blurb: 'The assets that ship weekly.',
+    services: [
+      {
+        name: 'Social Media',
+        href: '/services/design/social-media',
+        img: '/Images/sm-hero.jpg',
+        alt: 'A content creator in a sunlit Shanghai loft holding a vertical smartphone close to her face.',
+        desc: 'Scroll-stopping content built for every feed, shipped in days not weeks.',
+      },
+      {
+        name: 'Ad Creative',
+        href: '/services/design/ad-creative',
+        img: '/Images/ac-hero.jpg',
+        alt: 'Overhead view of a creative workspace with a phone showing a paused vertical-video ad.',
+        desc: 'Performance creative made to be tested, iterated, and scaled.',
+      },
+      {
+        name: 'Short Video',
+        href: '/services/design/short-video',
+        img: '/Images/sv-hero.jpg',
+        alt: 'A short-video creator filming on a tripod-mounted phone in a warm-lit Shanghai studio.',
+        desc: 'Vertical, fast, and native to TikTok, Reels, and Douyin.',
+      },
+      {
+        name: 'Email Design',
+        href: '/services/design/email-design',
+        img: '/Images/emd-p4-build.jpg',
+        alt: 'A laptop showing an HTML email code editor beside a live email preview.',
+        desc: 'Campaigns and lifecycle flows that land in the inbox and get opened.',
+      },
+    ],
+  },
+  {
+    id: 'video-motion',
+    title: 'Video & Motion',
+    blurb: 'Moving image, long and short.',
+    services: [
+      {
+        name: 'Video Production',
+        href: '/services/design/video-production',
+        img: '/Images/vp-hero.jpg',
+        alt: 'A director of photography behind a cinema camera on a darkened studio set.',
+        desc: 'Script to final cut, whether shot on set or generated.',
+      },
+      {
+        name: 'Motion Design',
+        href: '/services/design/motion-design',
+        img: '/Images/md-ident.jpg',
+        alt: 'A frosted glass fragrance bottle wrapped in drifting incense smoke under a warm sidelight.',
+        desc: 'Idents, explainers, and motion graphics with real polish.',
+      },
+    ],
+  },
+  {
+    id: 'commerce-web',
+    title: 'Commerce & Web',
+    blurb: 'Everything that sells or hosts.',
+    services: [
+      {
+        name: 'eCommerce',
+        href: '/services/design/ecommerce',
+        img: '/Images/ecom-hero.jpg',
+        alt: 'A single matte white ceramic skincare bottle on a soft warm beige paper backdrop.',
+        desc: 'Product visuals that turn browsers into buyers.',
+      },
+      {
+        name: 'Website Design',
+        href: '/services/design/website-design',
+        img: '/Images/wd-hero.jpg',
+        alt: 'A 16-inch laptop on a warm walnut desk in a sunlit studio.',
+        desc: 'Pages that stay sharp at every breakpoint.',
+      },
+      {
+        name: 'Print Design',
+        href: '/services/design/print-design',
+        img: '/Images/print-hero.jpg',
+        alt: 'A hardcover monograph and a bound editorial catalog open on a plaster worktable.',
+        desc: 'Press-ready layouts for catalogs, brochures, and editorial.',
+      },
+    ],
+  },
+  {
+    id: 'strategy-direction',
+    title: 'Strategy & Direction',
+    blurb: 'The thinking before the pixels.',
+    services: [
+      {
+        name: 'Marketing Strategy',
+        href: '/services/design/marketing-strategy',
+        img: '/Images/ms-hero.jpg',
+        alt: 'A marketing strategist working at a long oak table in a Shanghai studio.',
+        desc: 'The plan behind the content, built market by market.',
+      },
+      {
+        name: 'Creative Strategy',
+        href: '/services/design/creative-strategy',
+        img: '/Images/cs-hero.jpg',
+        alt: 'A strategy wall in a Shanghai studio pinned with a printed positioning statement.',
+        desc: 'Direction that ties every asset to one idea.',
+      },
+      {
+        name: 'Concept Creation',
+        href: '/services/design/concept-creation',
+        img: '/Images/cc-hero.jpg',
+        alt: 'A creative director reviewing printed campaign key-visual mockups pinned to a wall.',
+        desc: 'The big idea, locked before production starts.',
+      },
+      {
+        name: 'Storyboard',
+        href: '/services/design/storyboard',
+        img: '/Images/sb-hero.jpg',
+        alt: 'A senior art director marking a pinned storyboard frame in warm afternoon light.',
+        desc: 'Frames that map a film before a single shot.',
+      },
+    ],
+  },
+  {
+    id: 'brand-identity',
+    title: 'Brand Identity',
+    blurb: 'The system everything else flows from.',
+    services: [
+      {
+        name: 'Brand Identity',
+        href: '/services/design/brand-identity',
+        img: '/Images/bi-hero.jpg',
+        alt: 'A printed brand identity board on a warm plaster ledge.',
+        desc: 'Logos, systems, and guidelines built to scale.',
+      },
+      {
+        name: 'Illustration Design',
+        href: '/services/design/illustration-design',
+        img: '/Images/illustration-hero.jpg',
+        alt: 'An illustrator’s worktable with a graphics tablet showing an editorial illustration.',
+        desc: 'Custom illustration that speaks your brand’s language.',
+      },
+      {
+        name: 'Packaging & Merch Design',
+        href: '/services/design/packaging-merch-design',
+        img: '/Images/packaging-merch-aurele.jpg',
+        alt: 'A serum bottle and carton styled as one art-directed shot on a plaster ledge.',
+        desc: 'Shelf-ready packaging and merch worth keeping.',
+      },
+    ],
+  },
+  {
+    id: 'sales-communications',
+    title: 'Sales & Communications',
+    blurb: 'Decks, documents, and news.',
+    services: [
+      {
+        name: 'Presentation Design',
+        href: '/services/design/presentation-design',
+        img: '/Images/presentation-design-hero.jpg',
+        alt: 'An open laptop showing a clean deck slide with a minimalist growth chart.',
+        desc: 'Decks that hold a room from first slide to last.',
+      },
+      {
+        name: 'Pitch Deck',
+        href: '/services/design/pitch-deck',
+        img: '/Images/pitch-hero.jpg',
+        alt: 'A founder pitching to two investors in a quiet meeting room.',
+        desc: 'Investor and client decks built to win the room.',
+      },
+      {
+        name: 'Ebook and Digital Reports',
+        href: '/services/design/ebook-digital-reports',
+        img: '/Images/edr-hero.jpg',
+        alt: 'A hardcover bound annual report lying open on a warm walnut desk.',
+        desc: 'Long-form content designed to actually be read.',
+      },
+      {
+        name: 'Press Release',
+        href: '/services/design/press-release',
+        img: '/Images/pr-hero.jpg',
+        alt: 'A journalist reading a printed multi-page press release at a sunlit newsroom desk.',
+        desc: 'News written and designed to get picked up.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Services | hubStudio"
+  description="Twenty creative service lines under one studio: social, video, motion, ecommerce, web, strategy, brand identity, and sales communications. Explore every hubStudio service."
+>
+  <!-- ===== Hero ===== -->
+  <section class="svc-hero">
+    <div class="container">
+      <span class="eyebrow">Services</span>
+      <h1 class="headline h1 reveal svc-hero__title">
+        Twenty service lines. One <span class="accent">studio</span>.
+      </h1>
+      <p class="lead svc-hero__lead">
+        From a single social post to a full campaign system: every format your brand
+        needs, produced in days, not weeks. Explore the work, grouped six ways.
+      </p>
+      <nav class="svc-jump" aria-label="Service categories">
+        {
+          categories.map((cat) => (
+            <a class="svc-jump__link" href={`#${cat.id}`}>
+              {cat.title}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  <!-- ===== Categories ===== -->
+  <div class="svc-cats">
+    <div class="container">
+      {
+        categories.map((cat) => (
+          <section class="svc-cat" id={cat.id}>
+            <header class="svc-cat__head">
+              <h2 class="svc-cat__title reveal">{cat.title}</h2>
+              <p class="svc-cat__blurb">{cat.blurb}</p>
+            </header>
+            <div class="svc-grid">
+              {cat.services.map((svc) => (
+                <a class="svc-card" href={svc.href}>
+                  <div class="svc-card__media">
+                    <img
+                      class="svc-card__img"
+                      src={svc.img}
+                      alt={svc.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="svc-card__body">
+                    <h3 class="svc-card__name">{svc.name}</h3>
+                    <p class="svc-card__desc">{svc.desc}</p>
+                    <span class="svc-card__cta">
+                      View service <span aria-hidden="true">&rarr;</span>
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- ===== Closing CTA ===== -->
+  <section class="svc-cta">
+    <div class="container">
+      <div class="svc-cta__card card card--orange grain">
+        <span class="eyebrow svc-cta__eyebrow">Where to start</span>
+        <h2 class="headline h3 svc-cta__title">Not sure which service you need?</h2>
+        <p class="svc-cta__text">
+          Tell us what you are shipping. We will point you to the right service, or
+          build the mix that fits the brief.
+        </p>
+        <Button variant="primary-inverse" href="/contact">Talk to us</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---- Hero ---------------------------------------------------- */
+  .svc-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(40px, 6vw, 76px);
+  }
+  .svc-hero__title {
+    margin-top: 16px;
+    max-width: 16ch;
+  }
+  .svc-hero__lead {
+    margin-top: 22px;
+    max-width: 56ch;
+  }
+
+  /* Category jump links */
+  .svc-jump {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .svc-jump__link {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--type-small);
+    font-weight: 500;
+    color: var(--text-ink);
+    transition: color 120ms ease-out, border-color 120ms ease-out,
+      background-color 120ms ease-out;
+  }
+  .svc-jump__link:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+
+  /* ---- Category sections --------------------------------------- */
+  .svc-cats {
+    padding-bottom: clamp(64px, 8vw, 112px);
+  }
+  .svc-cat {
+    scroll-margin-top: 96px;
+  }
+  .svc-cat + .svc-cat {
+    margin-top: clamp(64px, 9vw, 112px);
+  }
+  .svc-cat__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 32px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+    margin-bottom: 36px;
+  }
+  .svc-cat__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(28px, 3.2vw, 46px);
+  }
+  .svc-cat__blurb {
+    font-size: var(--type-body);
+    color: var(--text-mute);
+  }
+
+  /* ---- Service grid + cards ------------------------------------ */
+  .svc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 640px) {
+    .svc-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .svc-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .svc-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.12);
+  }
+  .svc-card__media {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--bg-cream);
+  }
+  .svc-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms ease-out;
+  }
+  .svc-card:hover .svc-card__img {
+    transform: scale(1.04);
+  }
+  .svc-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px 24px 24px;
+  }
+  .svc-card__name {
+    font-family: var(--font-sans);
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .svc-card__desc {
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .svc-card__cta {
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .svc-card__cta span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .svc-card:hover .svc-card__cta span {
+    transform: translateX(4px);
+  }
+
+  /* ---- Closing CTA -------------------------------------------- */
+  .svc-cta {
+    padding-bottom: clamp(80px, 10vw, 150px);
+  }
+  .svc-cta__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    padding: clamp(40px, 6vw, 76px) clamp(24px, 5vw, 64px);
+    color: #fff;
+  }
+  .svc-cta__eyebrow {
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .svc-cta__title {
+    color: #fff;
+  }
+  .svc-cta__text {
+    max-width: 44ch;
+    color: rgba(255, 255, 255, 0.86);
+  }
+  .svc-cta__card .btn {
+    margin-top: 10px;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the home page reveal pattern. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>
