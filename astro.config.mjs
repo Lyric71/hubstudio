@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://hubstudio.ai',
+  site: 'https://www.hubstudio.ai',
 
   // Vercel strips trailing slashes before applying redirect rules.
   trailingSlash: 'never',

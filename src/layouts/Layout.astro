@@ -28,7 +28,7 @@ interface Props {
   preloadImage?: string;
 }
 
-const SITE = 'https://hubstudio.ai';
+const SITE = 'https://www.hubstudio.ai';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
@@ -58,6 +58,7 @@ const altLocales = getTranslatedLocales(path);
 
 // Site-wide identity, carried on every page so any page can anchor the brand.
 const orgId = `${SITE}/#organization`;
+const founderId = `${SITE}/#cyril-drouin`;
 const siteSchema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -88,6 +89,18 @@ const siteSchema = {
         name: 'BeyondBorderGroup',
         url: 'https://beyondbordergroup.org',
       },
+      founder: { '@id': founderId },
+    },
+    {
+      '@type': 'Person',
+      '@id': founderId,
+      name: 'Cyril Drouin',
+      jobTitle: 'Founder and CEO',
+      worksFor: { '@id': orgId },
+      sameAs: [
+        'https://www.linkedin.com/in/cyril-d-68835729/',
+        'https://cyrildrouin.substack.com/',
+      ],
     },
     {
       '@type': 'WebSite',

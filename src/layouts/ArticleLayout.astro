@@ -25,7 +25,7 @@ const { slug } = Astro.props;
 const insight = getInsight(slug);
 const related = relatedInsights(slug, 3);
 
-const SITE = 'https://hubstudio.ai';
+const SITE = 'https://www.hubstudio.ai';
 const url = `${SITE}/resources/insights/${insight.slug}`;
 
 const articleSchema = {
@@ -35,7 +35,7 @@ const articleSchema = {
   description: insight.metaDescription,
   image: new URL(insight.image, SITE).href,
   datePublished: insight.dateISO,
-  dateModified: insight.dateISO,
+  dateModified: insight.dateModifiedISO ?? insight.dateISO,
   author: { '@type': 'Person', name: insight.author },
   publisher: {
     '@type': 'Organization',
@@ -51,6 +51,10 @@ const articleSchema = {
   mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   articleSection: insight.category,
   inLanguage: 'en',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['.art-hero__title', '.art-hero__deck', '.standfirst'],
+  },
 };
 
 const breadcrumbSchema = {
@@ -75,7 +79,7 @@ const breadcrumbSchema = {
   image={insight.image}
   ogType="article"
   publishedTime={insight.dateISO}
-  modifiedTime={insight.dateISO}
+  modifiedTime={insight.dateModifiedISO ?? insight.dateISO}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

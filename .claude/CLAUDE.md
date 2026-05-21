@@ -1,6 +1,7 @@
 # hubStudio
 
-Astro static site, deployed to Vercel at https://hubstudio.ai.
+Astro static site, deployed to Vercel. Canonical host: https://www.hubstudio.ai
+(the apex hubstudio.ai 301-redirects to www).
 
 ## Stack
 

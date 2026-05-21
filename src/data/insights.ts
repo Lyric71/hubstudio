@@ -21,6 +21,8 @@ export interface Insight {
   date: string;
   /** ISO publish date for schema + <time>. */
   dateISO: string;
+  /** ISO last-modified date for schema; falls back to dateISO when unset. */
+  dateModifiedISO?: string;
   /** e.g. "6 min read" */
   readingTime: string;
   author: string;

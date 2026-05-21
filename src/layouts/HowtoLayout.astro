@@ -26,7 +26,7 @@ const { slug } = Astro.props;
 const howto = getHowto(slug);
 const related = relatedHowtos(slug, 3);
 
-const SITE = 'https://hubstudio.ai';
+const SITE = 'https://www.hubstudio.ai';
 const url = `${SITE}/resources/how-to/${howto.slug}`;
 
 // Article, not HowTo: Google retired HowTo rich results in 2023, and a
@@ -38,7 +38,7 @@ const articleSchema = {
   description: howto.metaDescription,
   image: new URL(howto.image, SITE).href,
   datePublished: howto.dateISO,
-  dateModified: howto.dateISO,
+  dateModified: howto.dateModifiedISO ?? howto.dateISO,
   author: { '@type': 'Person', name: howto.author },
   publisher: {
     '@type': 'Organization',
@@ -54,6 +54,10 @@ const articleSchema = {
   mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   articleSection: howto.category,
   inLanguage: 'en',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['.art-hero__title', '.art-hero__deck', '.standfirst'],
+  },
 };
 
 const breadcrumbSchema = {
@@ -78,7 +82,7 @@ const breadcrumbSchema = {
   image={howto.image}
   ogType="article"
   publishedTime={howto.dateISO}
-  modifiedTime={howto.dateISO}
+  modifiedTime={howto.dateModifiedISO ?? howto.dateISO}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
