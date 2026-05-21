@@ -1,11 +1,11 @@
 ---
 /**
- * LinkedIn · /solutions/platforms/linkedin
+ * RedNote (Xiaohongshu) · /solutions/platforms/rednote
  *
- * Editorial layout copied verbatim from /solutions/platforms/meta. Same
- * print-shop primitives (crop marks, calibration colour bar, mono figure
- * labels, dashed rules) and the same eight-section architecture; only the
- * frontmatter data and the section copy change for LinkedIn.
+ * Editorial layout adapted from /solutions/platforms/meta. Same print-shop
+ * primitives (crop marks, calibration colour bar, mono figure labels, dashed
+ * rules) reframed for RedNote: the four lanes we ship creative into, the AIGC
+ * mechanics for each, the partnership model.
  *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
@@ -20,106 +20,106 @@ const colourBar = [
 ];
 
 const stats = [
-  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, thought leadership, avatar' },
+  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Notes, ad creative, KOC, avatar' },
   { from: 0, to: 50, suffix: '+', label: 'Variations per concept', note: 'From one signed-off master' },
-  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On feed posts and document carousels' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first note', note: 'On photo and video notes' },
 ];
 
 const samples = [
   {
-    src: '/Images/linkedin-sample-feed.jpg',
-    kind: 'Organic · LinkedIn Feed',
-    alt: 'A laptop screen filled with a LinkedIn Feed post, a wide editorial brand image above the post body, the like, celebrate, comment and repost reaction bar visible beneath it.',
+    src: '/Images/rednote-sample-note.jpg',
+    kind: 'Organic · Photo note',
+    alt: 'A vertical phone held in soft window light, the screen showing an open RedNote photo note: a swipeable cover image of a warm ceramic skincare flatlay with a row of page dots beneath it and the heart, star and speech-bubble icons along the bottom of the interface.',
   },
   {
-    src: '/Images/linkedin-sample-sponsored.jpg',
-    kind: 'Ad creative · Sponsored Content',
-    alt: 'A laptop screen showing the LinkedIn Campaign Manager preview panel, a single-image Sponsored Content ad with the Promoted label and a call-to-action button in the placement frame.',
+    src: '/Images/rednote-sample-feed.jpg',
+    kind: 'Ad creative · In-feed note',
+    alt: 'A phone screen showing the RedNote discovery feed, a two-column staggered waterfall of lifestyle note cards, the lead card carrying a small paid-placement label over a sand-toned cover photo.',
   },
   {
-    src: '/Images/linkedin-sample-carousel.jpg',
-    kind: 'Content · Document carousel',
-    alt: 'A phone held vertically showing a LinkedIn document carousel paused mid-swipe, the page-dot indicator and swipe arrows visible along the bottom of the post.',
+    src: '/Images/rednote-sample-search.jpg',
+    kind: 'Ad creative · Search note',
+    alt: 'A phone screen showing RedNote search results, a rounded search field at the top and a two-column grid of note cards below, the lead card a boosted product note with a small paid label.',
   },
   {
-    src: '/Images/linkedin-sample-leader.jpg',
-    kind: 'Thought leadership · Thought Leader Ad',
-    alt: 'A phone screen showing a LinkedIn feed post boosted as a Thought Leader Ad, a head-and-shoulders profile photo with the author name and the Promoted by label above the post body.',
+    src: '/Images/rednote-sample-koc.jpg',
+    kind: 'KOC · Photo note',
+    alt: 'A phone held vertically in a creator hand, the screen showing a candid hand-held RedNote photo note of a cosmetics product held up to a bathroom mirror, the save and like counts visible on the bottom bar of the interface.',
   },
   {
-    src: '/Images/linkedin-sample-avatar.jpg',
-    kind: 'Avatar · Native video',
-    alt: 'A laptop screen showing a LinkedIn native video post of an AI avatar presenter speaking to camera in business knitwear, the video scrubber and reaction bar visible in the post interface.',
+    src: '/Images/rednote-sample-avatar.jpg',
+    kind: 'Avatar · Video note',
+    alt: 'A phone screen showing a RedNote video note paused on an AI avatar presenter speaking to camera in neutral knitwear, the progress bar and the heart, star and speech-bubble rail visible in the interface.',
   },
 ];
 
 const coverage = [
   {
     fig: 'B',
-    label: 'Content',
-    heading: 'Content. Company page, carousels and video.',
-    image: '/Images/linkedin-content.jpg',
-    alt: 'A laptop screen filled with a LinkedIn company-page feed, a brand post with a wide editorial image at the top and the reaction bar beneath, the LinkedIn left-rail navigation visible alongside it.',
-    lead: 'Editorial-grade organic content for every LinkedIn surface, written and produced by the studio.',
+    label: 'Notes',
+    heading: 'Notes. Photo and video, built to be saved.',
+    image: '/Images/rednote-notes.jpg',
+    alt: 'A phone held in both hands, the screen filled with an open RedNote photo note, a large editorial product image with a row of swipe dots beneath it, the title and body text in Chinese and the bottom interaction bar of the app visible.',
+    lead: 'Editorial-grade organic notes for RedNote, photo and video, written and produced inside the studio.',
     body: [
-      "We plan, write and produce the organic side of a LinkedIn presence: feed posts that read like the brand and not like a press release, document carousels built to be swiped to the last page, native video that holds past the title card, polls that start a real conversation, newsletter editions on a fixed cadence. Each format gets its own structure and its own treatment, never the same announcement reformatted five ways.",
-      "The work is signed off by an editor, designed by the same hand as the campaign, and shipped in the exact formats LinkedIn serves. The calendar stays full, the brand line does not move.",
+      "We script, shoot and finish the organic side of a RedNote presence: photo notes that earn the tap from a crowded discovery feed, video notes that hold past the cover frame, swipe sequences built so the second image is as considered as the first. The cover is treated as the campaign still it actually is, because on RedNote the cover is what gets clicked.",
+      "Titles and body copy are written natively in Chinese, for search as much as for the feed, never carried across from an English caption. Every note is signed off by a creative director and retouched by the same hand as the campaign hero. The calendar fills; the brand line does not move.",
     ],
     tags: [
-      'Feed posts', 'Document carousels', 'Native video',
-      'Polls', 'Newsletter editions', 'Event promo',
-      'Company page banners', 'Always-on calendar',
+      'Photo notes', 'Video notes', 'Cover frames',
+      'Search-led titles', 'Swipe sequences', 'Brand-book grids',
+      'Native Chinese copy', 'Always-on calendar',
     ],
   },
   {
     fig: 'C',
     label: 'Ad creative',
-    heading: 'Ad creative. Built for Campaign Manager.',
-    image: '/Images/linkedin-ads.jpg',
-    alt: 'A wide monitor showing the LinkedIn Campaign Manager creative library, a grid of Sponsored Content single-image, carousel and video ad variants lined up in the placement preview panel.',
-    lead: 'Performance creative produced at the volume LinkedIn buying actually wants to test.',
+    heading: 'Ad creative. Built for feed and search.',
+    image: '/Images/rednote-ads.jpg',
+    alt: 'A wide monitor showing a RedNote ad creative library, a grid of in-feed sponsored notes and search-result notes lined up in a placement preview, each carrying a small paid-placement label.',
+    lead: "Performance creative produced at the volume RedNote's feed and search auctions actually reward.",
     body: [
-      "Sponsored Content, Conversation Ads, Dynamic Ads and Lead Gen Forms each reward a wider creative set than most B2B teams ever ship. We brief, generate and finish paid creative around the format mix the media plan is buying: single image, carousel, document and video for the feed, message and conversation creative for the inbox, dynamic frames that personalise off profile data.",
-      "Hook-tested variants, audience-specific cuts and the naming conventions the downstream reporting expects all run through the same studio pass, so the testing set looks like the hero rather than a thinned-out clone of it.",
+      "RedNote runs on two engines, the discovery feed and search, and a paid note has to win both without ever reading as an interruption. We brief, generate and finish in-feed sponsored notes, search-led notes and splash frames around the placement set the media team is buying, with the cover variety the auction needs to keep learning.",
+      "Conversion notes, shoppable-note creative and keyword-targeted variants all run through the same studio pass, so the paid long tail looks like the organic feed rather than a thinned-out clone of it. Ratios and naming are matched to what the buying tools expect downstream.",
     ],
     tags: [
-      'Sponsored Content', 'Conversation Ads', 'Document ads',
-      'Video ads', 'Dynamic Ads', 'Lead-gen creative',
-      'Hook A/B testing', 'Retargeting variants',
+      'In-feed notes', 'Search ads', 'Splash frames',
+      'Cover A/B testing', 'Keyword-led notes', 'Shoppable note creative',
+      'Conversion notes', 'Retargeting variants',
     ],
   },
   {
     fig: 'D',
-    label: 'Thought leadership',
-    heading: 'Thought leadership. Authored in the founder voice.',
-    image: '/Images/linkedin-thought.jpg',
-    alt: 'A phone screen showing a LinkedIn personal-profile feed, a long-form text post under a head-and-shoulders profile photo, the reaction count and comment thread visible below the post.',
-    lead: 'Executive content written in the voice of the people behind the brand, not the brand handle.',
+    label: 'KOC',
+    heading: 'KOC. Creator notes at studio scale.',
+    image: '/Images/rednote-koc.jpg',
+    alt: 'A phone screen showing a RedNote photo note shot in a creator hand-held style, a product held up in soft bathroom light, the like and save counts visible on the bottom interaction bar.',
+    lead: 'Authored creator-style notes for RedNote, without the seeding-list chase or the rights cleanup.',
     body: [
-      "The posts that travel furthest on LinkedIn carry a person's name, not a logo. We ghostwrite for founders and executives end to end: POV posts on the category, document essays that argue a position, commentary on the week's news, scripts for the short pieces to camera. Written in the executive's voice from a real working session, never a generic leadership template.",
-      "When a post earns it, we build the matching Thought Leader Ad, so the personal post runs in paid distribution under the executive's name. The same editorial line carries from the profile into the media plan.",
+      "RedNote was built on the creator note: the honest-looking review, the haul, the get-ready sequence, the before-and-after, the round-up of things actually bought. We produce that work end to end. Real hand-held grammar, real product-in-hand frames, finished inside the studio so the brand keeps the masters and the usage rights from the first cut.",
+      "Volume is the point: thirty creator notes for one launch, ten fresh angles every week on an always-on account, market-specific edits per audience. No seeding-list chase, no rights cleanup after the fact, and the cost-per-variant curve flattens fast.",
     ],
     tags: [
-      'Founder POV posts', 'Executive ghostwriting', 'Thought Leader Ads',
-      'Document essays', 'News commentary', 'Newsletter columns',
-      'Profile carousels', 'Conference takes',
+      'Review notes', 'Hauls', 'Before-and-after',
+      'GRWM notes', 'Dupe comparisons', 'Founder POV',
+      'Wishlist round-ups', 'Always-on KOC',
     ],
   },
   {
     fig: 'E',
     label: 'Avatar',
-    heading: 'Avatar. Camera-ready, every week.',
-    image: '/Images/linkedin-avatar.jpg',
-    alt: 'A laptop screen showing a LinkedIn native video post of an AI avatar presenter speaking to camera in business knitwear, captions and the video scrubber visible in the post interface.',
-    lead: 'Brand-owned synthetic presenters that put a face on LinkedIn video without the calendar fight.',
+    heading: 'Avatar. Spokespeople you own.',
+    image: '/Images/rednote-avatar.jpg',
+    alt: 'A phone screen showing a RedNote video note paused on an AI avatar presenter speaking to camera in neutral knitwear, the progress bar and the heart, star and speech-bubble rail visible in the interface.',
+    lead: 'Bespoke synthetic talent that lives only on your RedNote account, on-brand and fluent in every cut.',
     body: [
-      "Video is the surface most B2B brands underuse on LinkedIn, because the founder cannot film every week and the camera crew is never free. We build and train brand-owned avatars: a founder twin, a product expert, a localised cast per market. They present to camera in native video posts, host webinar and event clips, narrate explainers and deliver the weekly take.",
-      "Lip-sync is studio-tight, the look stays inside the brand book, and the same avatar speaks every language your buyers do. The rights stay with you in perpetuity, with no re-shoot to refresh and no re-book to localise.",
+      "We build and train brand-owned avatars: a founder twin, a brand spokesperson, a product expert. They present to camera in video notes, host live shopping sessions, narrate tutorial swipe notes and front always-on review content. One avatar, every note, with no scheduling around a creator's calendar.",
+      "Lip-sync is studio-tight, the speech is native Mandarin, and the look stays inside the brand book. The rights stay with you in perpetuity, so a seasonal refresh never needs a re-shoot and the account never needs a re-cast.",
     ],
     tags: [
       'Founder twin', 'Brand spokespeople', 'Product expert',
-      'Multi-language video', 'Webinar clips', 'Explainer hosts',
-      'Event recaps', 'Always-on avatar feed',
+      'Video-note hosts', 'Live shopping hosts', 'Tutorial notes',
+      'Localised casts', 'Always-on avatar notes',
     ],
   },
 ];
@@ -131,84 +131,84 @@ const processSteps = [
     short: 'Brief',
     tier: 'Where it is won',
     title: 'Discovery and brief.',
-    body: 'One working session to lock the goal, the buyer, the LinkedIn surfaces in scope, the brand truth and the no-go zones. Output is a one-page strategic brief and an asset map by placement and by service lane.',
-    image: '/Images/linkedin-p1-brief.jpg',
-    alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the LinkedIn Campaign Manager dashboard alongside printed LinkedIn feed and document carousel screenshots.',
+    body: 'One working session to lock the goal, audience, RedNote surfaces in scope, brand truth and no-go zones. Output is a one-page strategic brief and an asset map by surface and by service lane.',
+    image: '/Images/rednote-p1-brief.jpg',
+    alt: 'A creative director and a brand lead at a cluttered Shanghai studio table, tea mugs and sticky notes around a laptop showing the RedNote discovery feed alongside printed photo-note cover frames.',
   },
   {
     short: 'Direction',
     tier: 'Where it is won',
     title: 'Creative direction across the four lanes.',
-    body: 'Visual references locked, tone defined, post structures drafted, AIGC and avatar model selection made per surface and per service. Content, ad creative, thought leadership and avatar each get their own treatment. This is where a campaign becomes ownable.',
-    image: '/Images/linkedin-p2-direction.jpg',
-    alt: 'A storyboard wall with four columns of frame sketches labelled Content, Ads, Thought leadership and Avatar, each column anchored by a printed LinkedIn feed post mock.',
+    body: 'Visual references locked, tone defined, the cover-frame system designed, AIGC and avatar model selection made per surface. Notes, ad creative, KOC and avatar each get their own treatment. This is where a campaign becomes ownable.',
+    image: '/Images/rednote-p2-direction.jpg',
+    alt: 'A storyboard wall with four columns of frame sketches labelled Notes, Ads, KOC and Avatar, each column anchored by a printed RedNote photo-note phone mock.',
   },
   {
     short: 'AIGC',
     tier: 'The rest is execution',
     title: 'AIGC generation and authored finish.',
-    body: 'Per-lane generation across the agreed surfaces. Every post, ad and video goes through the studio edit and brand-check pass before any media plan or content calendar sees it.',
-    image: '/Images/linkedin-p3-aigc.jpg',
-    alt: 'A designer at a calibrated workstation, the main monitor showing a single LinkedIn document carousel page, the side panel showing the LinkedIn Campaign Manager creative library grid of variants.',
+    body: 'Per-lane generation across the agreed surfaces. Every output goes through the studio retouch and brand-check pass, and every title through a search pass, before any media plan sees it.',
+    image: '/Images/rednote-p3-aigc.jpg',
+    alt: 'A motion designer at a calibrated workstation, the main monitor showing a single RedNote photo-note cover frame, the side panel showing a grid of cover variants.',
   },
   {
     short: 'Launch',
     tier: 'The rest is execution',
-    title: 'Launch. Per-placement, per-market.',
-    body: 'Assets handed to the media and social teams in the formats LinkedIn actually serves, with naming, ratios and durations matched to Sponsored Content, Conversation Ads and organic placements. Tracking and creative naming built for downstream reporting.',
-    image: '/Images/linkedin-p4-launch.jpg',
-    alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the LinkedIn Campaign Manager campaign dashboard with Sponsored Content placements live.',
+    title: 'Launch. Per-surface, per-keyword.',
+    body: 'Assets handed to the media team in the formats RedNote actually serves: cover frames, titles and keywords matched to the discovery feed and to search, ratios set for in-feed and splash placements. Tracking and creative naming built for downstream reporting.',
+    image: '/Images/rednote-p4-launch.jpg',
+    alt: 'A media buyer at a daylit Shanghai studio desk, the calibrated monitor showing a RedNote ad campaign dashboard with in-feed and search placements live.',
   },
   {
     short: 'Adapt',
     tier: 'The rest is execution',
     title: 'Adapt. Variants, refresh, season.',
-    body: 'Once the hero is signed off, the variant cascade lands in days. New audiences, new seniorities, new industries, new quarters. The brief stays the same, the variants compound.',
-    image: '/Images/linkedin-p5-adapt.jpg',
-    alt: 'An editor at a calibrated suite, the main reference monitor showing a LinkedIn native video post paused on a presenter frame, the LinkedIn post interface elements visible at the screen edges.',
+    body: 'Once the hero is signed off, the variant cascade lands in days. New audiences, new cities, new festivals, new seasons. The brief stays the same, the variants compound.',
+    image: '/Images/rednote-p5-adapt.jpg',
+    alt: 'A colourist at a calibrated grading suite, the main reference monitor showing a warm RedNote video-note frame paused on a lifestyle still, the note interaction rail visible at the screen edge.',
   },
 ];
 
 const faqs = [
   {
-    q: 'What exactly do you produce for LinkedIn?',
-    a: 'Four lanes, one studio. Content covers organic company-page work: feed posts, document carousels, native video, polls and newsletter editions. Ad creative covers Sponsored Content, Conversation Ads, Dynamic Ads and Lead Gen creative built for Campaign Manager. Thought leadership covers executive ghostwriting and Thought Leader Ads in the founder voice. Avatar covers brand-owned synthetic presenters for native LinkedIn video. The lanes share one creative direction and one finishing pass, so the long tail looks like the hero.',
+    q: 'What exactly do you produce for RedNote?',
+    a: 'Four lanes, one studio. Notes covers organic photo and video notes for the discovery feed and for search. Ad creative covers in-feed sponsored notes, search-led notes and splash frames built for the RedNote auction. KOC covers creator-style notes at volume. Avatar covers brand-owned synthetic spokespeople for video notes and live shopping. The four lanes share one creative direction and one finishing pass, so the long tail looks like the hero.',
   },
   {
-    q: 'How is the thought leadership lane different from regular content?',
-    a: "Content-lane work runs under the company page; thought leadership runs under a person. We ghostwrite for founders and executives from a real working session, so the POV posts, document essays and commentary read in their voice rather than a generic leadership template. When a post earns it, we build the matching Thought Leader Ad so the personal post runs in paid distribution under the executive's name.",
+    q: 'How is the KOC lane different from booking real creators?',
+    a: 'We script the brief, build the creator profile, generate the takes inside the studio and finish them with the same studio pass as the hero. Real hand-held grammar, real product-in-hand frames, no seeding-list chase and no rights cleanup after the fact. You keep the masters and the usage rights from the first cut, and the cost-per-variant curve flattens to near zero by the tenth note.',
   },
   {
-    q: 'Tell me more about the Avatar lane on LinkedIn.',
-    a: 'We build and train a brand-owned synthetic presenter: a founder twin, a product expert or a localised cast per market. The avatar speaks to camera in native video posts, hosts webinar and event clips and narrates explainers, so the brand ships weekly video without the founder ever booking a shoot. Lip-sync is studio-tight, the look stays inside the brand book, and the same avatar runs in every language your buyers speak.',
+    q: 'Tell me more about the Avatar lane.',
+    a: 'We build and train a brand-owned synthetic presenter: a founder twin, a brand spokesperson or a product expert. The avatar speaks to camera in video notes, hosts live shopping sessions and narrates tutorial swipe notes. Lip-sync is studio-tight, the speech is native Mandarin, and the look stays inside the brand book, so the account stays live without a re-shoot.',
   },
   {
-    q: 'Can you produce content at the volume our calendar needs?',
-    a: 'Yes. A single hero shoot or AIGC sprint produces the master, and the variant cascade lands per audience and per market inside days. The cost-per-variation curve flattens fast: the first variant is expensive, the fiftieth is close to free. Custom-trained LoRA models on your brand keep every frame on-brand.',
+    q: 'Why does the cover frame matter so much on RedNote?',
+    a: 'On RedNote the cover is the ad. It is the single image that wins or loses the tap from a crowded discovery feed and from search results, before a reader sees anything else. We treat every cover as a campaign still, A/B the cover separately from the note it sits on, and run the studio retouch pass over it first.',
   },
   {
-    q: 'How do you keep the brand line consistent across the four lanes?',
-    a: 'The hero concept is signed off once, in the direction step. After that, every variant in every lane runs through the same edit pass, the same design system and the same brand-safety check. The studio is what keeps content, ad creative, thought leadership and avatar reading like one campaign rather than four parallel ones.',
+    q: 'Do you write the notes in Chinese?',
+    a: 'Yes. Titles and body copy are written natively in Chinese by Mandarin copywriters, never translated across from an English caption. RedNote is a search engine as much as a feed, so titles are written to be found as well as to be read, with the keywords a buyer actually types.',
   },
   {
-    q: 'What is your turnaround for a feed post or document carousel?',
-    a: 'Organic LinkedIn work on an existing brand can be brief to first cut in 24 to 72 hours. A new brand or a new positioning takes a one-time onboarding to lock the treatment, the voice and the avatar; after that, weekly drops at production-grade quality are the working tempo.',
+    q: 'Can you produce notes at the volume and speed our calendar needs?',
+    a: 'Yes. A single hero shoot or AIGC sprint produces the master, and the variant cascade lands per audience and per city inside days. On an existing brand, brief to first note runs 24 to 72 hours; a new brand takes a one-time onboarding to lock the treatment, the LoRA models and the avatar, after which weekly drops at production-grade quality are the working tempo. Trend-reactive notes can turn around inside a day or two.',
   },
   {
-    q: 'Do you handle LinkedIn Campaign Manager ad formats?',
-    a: 'Yes. We brief the ad creative lane around the format mix the media team is buying: Sponsored Content single image, carousel, document and video, Conversation and Message Ads for the inbox, and Dynamic Ads that personalise off profile data. Variants are produced with the format diversity the testing plan needs and named so the reporting downstream is legible.',
+    q: 'Do you handle RedNote paid placements?',
+    a: 'We produce the creative for them. The ad creative lane is briefed around the in-feed and search placements the media team is buying, with the cover variety the auction needs and the naming the reporting expects. The media buying itself stays with whoever runs your RedNote account, unless you ask us to recommend a partner.',
   },
   {
     q: 'How do you keep the work from feeling AI-generated?',
-    a: 'Every output goes through a studio finishing pass: copy edited by hand, layouts set in the brand design system, video graded and any image retouched with grain and a real colour grade. The image style guide rules out the AI tells: poreless skin, identical bokeh, melted UI, almost-but-not-quite text. The final file passes a human review before any media plan or calendar sees it. This is what closes the gap between an AI asset and a campaign asset.',
+    a: 'Every output goes through a studio retouch pass: dodge and burn, grain, chromatic aberration and a colour grade in Lightroom or Capture One. The image style guide rules out the AI tells: poreless skin, identical bokeh, melted product detail, almost-but-not-quite text. The final file passes a human review before any note goes live. This is what closes the gap between an AI image and a campaign image.',
   },
   {
     q: 'Can you white-label this for our agency?',
-    a: 'Yes. A significant share of our LinkedIn work runs under agency brands, with full white-label delivery and confidential collaboration. The agency owns the relationship and the client communication; we deliver the production capability behind it.',
+    a: 'Yes. A significant share of our RedNote work runs under agency brands, with full white-label delivery and confidential collaboration. The agency owns the relationship and the client communication; we deliver the production capability behind it.',
   },
   {
-    q: 'Who owns the assets, the masters and the trained models?',
-    a: 'You own all finished assets, all masters, and any LoRA, fine-tuned or avatar models trained on your IP. Commercial use rights for AIGC outputs are routed through enterprise tiers that grant commercial use. For full detail on the legal side, see our Copyright and AI guide.',
+    q: 'Who owns the notes, the masters and the trained models?',
+    a: 'You own all finished notes, all masters, and any LoRA, fine-tuned or avatar models trained on your IP. Commercial use rights for AIGC outputs are routed through enterprise tiers that grant commercial use. For full detail on the legal side, see our Copyright and AI guide.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
 ];
@@ -225,8 +225,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="LinkedIn AIGC: B2B Content & Ad Creative at Scale"
-  description="AIGC for LinkedIn. Company page content, document carousels, thought leadership and Campaign Manager ad creative, produced inside a working studio. One brief, every placement."
+  title="RedNote AIGC: Xiaohongshu Notes & Ad Creative at Scale"
+  description="AIGC for RedNote. Photo notes, video notes, KOC and search ad creative for Xiaohongshu, produced inside a working studio. One brief, every surface."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -243,26 +243,26 @@ const faqSchema = {
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
             <span class="kicker__tick"></span>Platform
-            <span class="kicker__sep">/</span> LinkedIn
+            <span class="kicker__sep">/</span> RedNote
           </p>
           <h1 class="hero__title">
             <span class="line"><span class="line__i">Four lanes,</span></span>
-            <span class="line"><span class="line__i serif">one LinkedIn brief.</span></span>
+            <span class="line"><span class="line__i serif">one RedNote brief.</span></span>
             <span class="line"><span class="line__i">AIGC, in scale.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Content. Ad creative. Thought leadership. <em>Avatar.</em>
+            Notes. Ad creative. KOC. <em>Avatar.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              We ship four kinds of work into LinkedIn: organic content for
-              the company page, feed and document carousels; performance ad
-              creative built for Campaign Manager; thought leadership written
-              in the founder voice; and brand-owned avatar presenters for
-              native LinkedIn video.
+              We ship four kinds of work into RedNote: organic photo and video
+              notes for the discovery feed and search; performance ad creative
+              built for the feed and search auctions; creator-style KOC notes
+              at volume; and brand-owned avatar spokespeople that host video
+              notes and live shopping.
             </p>
             <p>
-              One brief, four lanes, every placement. One hero direction, fifty
+              One brief, four lanes, every surface. One hero direction, fifty
               market variants. AIGC inside a working production company, not in
               place of one.
             </p>
@@ -277,20 +277,20 @@ const faqSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Hong Kong + Shanghai <span>/</span> LinkedIn-native creative under one director
+            Hong Kong + Shanghai <span>/</span> RedNote-native creative under one director
           </p>
         </div>
       </div>
       <div class="hero__visual">
         <img
-          src="/Images/linkedin-hero.jpg"
-          alt="A close editorial portrait of a hand holding a phone in warm rim light, the phone screen filled with a LinkedIn feed post including the reaction bar and comment count of the post interface."
+          src="/Images/rednote-hero.jpg"
+          alt="A close editorial portrait of a hand holding a phone in warm rim light, the phone screen filled with the RedNote discovery feed shown as a two-column staggered grid of lifestyle note cards, each card a cover photo with a small heart-shaped like count."
           width="1024"
           height="1024"
           loading="eager"
           fetchpriority="high"
         />
-        <span class="hero__chip">Platform work <span>/</span> LinkedIn</span>
+        <span class="hero__chip">Platform work <span>/</span> RedNote</span>
       </div>
     </section>
 
@@ -305,23 +305,22 @@ const faqSchema = {
           <div class="why__head">
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
             <h2 class="dh r" style="--d:.05s">
-              What we ship<br /><span class="serif">into LinkedIn</span>.
+              What we ship<br /><span class="serif">into RedNote</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              We do four kinds of work for LinkedIn, end to end. Organic
-              content for the company page, feed, document carousels and
-              newsletter. Paid ad creative built for Sponsored Content,
-              Conversation Ads and Dynamic Ads. Thought leadership
-              ghostwritten in the founder voice. Brand-owned avatar
-              presenters for native LinkedIn video.
+              We do four kinds of work for RedNote, end to end. Organic photo
+              and video notes for the discovery feed and for search. Paid ad
+              creative built for the in-feed and search auctions.
+              Creator-style KOC notes at volume. Brand-owned avatar
+              spokespeople that host video notes and live shopping.
             </p>
             <p class="r" style="--d:.16s">
               One creative direction sits across all four. The same studio
-              hands that finish the hero carry every variant in every lane,
-              so the long tail looks like the campaign rather than a thinned
-              clone of it.
+              hands that retouch the hero cover finish every variant in every
+              lane, so the long tail looks like the campaign rather than a
+              thinned clone of it.
             </p>
           </div>
         </div>
@@ -329,8 +328,8 @@ const faqSchema = {
         <figure class="why__shot crop r-clip">
           <div class="crop__inner">
             <img
-              src="/Images/linkedin-roots.jpg"
-              alt="A wide editorial shot of two designers at a daylit studio table, four laptop screens lined up showing the LinkedIn company-page feed, a LinkedIn document carousel, the LinkedIn Campaign Manager creative library and a LinkedIn personal-profile post, one per service lane."
+              src="/Images/rednote-roots.jpg"
+              alt="A wide editorial shot of two designers at a daylit Shanghai studio table, four laptop screens lined up showing the RedNote discovery feed, an open photo note, a RedNote search results page and a vertical video note, one per service lane."
               width="1408"
               height="768"
               loading="lazy"
@@ -341,10 +340,10 @@ const faqSchema = {
 
         <div class="stats">
           <p class="stats__quote r">
-            One LinkedIn brief, four service lanes, every placement. Content,
-            ad creative, thought leadership and avatar finished by the same
-            studio hands, with fifty-plus variants per concept and brief to
-            first cut inside forty-eight hours on organic work.
+            One RedNote brief, four service lanes, every surface. Notes, ad
+            creative, KOC and avatar finished by the same studio hands, with
+            fifty-plus variants per concept and brief to first note inside
+            forty-eight hours on short-form work.
           </p>
           <div class="stats__grid">
             {
@@ -426,9 +425,9 @@ const faqSchema = {
             </h2>
           </div>
           <p class="band__note r" style="--d:.1s">
-            Feed posts, document carousels and Sponsored Content stills
-            produced through the studio pipeline. Every frame is authored
-            work, sized for the surface it ships on.
+            Photo notes, video notes and ad covers produced through the studio
+            pipeline. Every frame is authored work, sized for the surface it
+            ships on.
           </p>
         </header>
 
@@ -462,8 +461,8 @@ const faqSchema = {
           <figure class="source__main crop">
             <div class="crop__inner">
               <img
-                src="/Images/linkedin-hybrid-main.jpg"
-                alt="A producer at a wide reference monitor showing the LinkedIn Campaign Manager creative library, four columns of LinkedIn ad and post variants tagged Content, Ads, Thought leadership and Avatar."
+                src="/Images/rednote-hybrid-main.jpg"
+                alt="A producer at a wide reference monitor showing a RedNote ad creative library, four columns of photo and video notes tagged Notes, Ads, KOC and Avatar."
                 width="1024"
                 height="1024"
                 loading="lazy"
@@ -472,8 +471,8 @@ const faqSchema = {
           </figure>
           <figure class="source__inset">
             <img
-              src="/Images/linkedin-hybrid-inset.jpg"
-              alt="A close cinematic detail of a hand holding a phone vertically against a soft cream background, the screen filled with a LinkedIn feed post including the reaction bar and comment count of the post interface."
+              src="/Images/rednote-hybrid-inset.jpg"
+              alt="A close cinematic detail of a hand holding a phone vertically against a soft cream background, the screen filled with an open RedNote photo note showing the swipe dots and the bottom interaction bar."
               width="1024"
               height="1024"
               loading="lazy"
@@ -481,7 +480,7 @@ const faqSchema = {
           </figure>
           <div class="source__stat">
             <span class="source__stat-num">1 brief</span>
-            <span class="source__stat-cap">Four lanes, every placement, every market</span>
+            <span class="source__stat-cap">Four lanes, every surface, every market</span>
           </div>
         </div>
 
@@ -491,16 +490,16 @@ const faqSchema = {
             Authored creative, <span class="serif">AI volume</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            The LinkedIn brands compounding their pipeline in 2026 are not
-            the ones posting the most. They are the ones running an
-            authored creative process with AIGC inside it.
+            The brands compounding their RedNote results in 2026 are not the
+            ones posting the most. They are the ones running an authored
+            creative process with AIGC inside it.
           </p>
           <p class="source__p r" style="--d:.16s">
             We sit between the technical and the creative: a working studio
-            with editors, designers and colourists alongside the AIGC
-            engineers and the LoRA-training pipeline. Every variant ships
-            with the same brand discipline as the hero, because the same
-            hands sign it off.
+            with directors, retouchers and colourists alongside the AIGC
+            engineers and the LoRA-training pipeline. Every note ships with
+            the same brand discipline as the hero, because the same hands
+            sign it off.
           </p>
           <ul class="creds r" style="--d:.22s">
             {
@@ -530,15 +529,14 @@ const faqSchema = {
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
-        <p class="kicker r"><span class="kicker__tick"></span>How a LinkedIn campaign runs</p>
+        <p class="kicker r"><span class="kicker__tick"></span>How a RedNote campaign runs</p>
         <h2 class="dh r" style="--d:.05s">
           One brief,<br />every <span class="serif">placement</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Feed posts, carousels, video and Sponsored Content share the
-          same brand line, and the same process. The format changes; the
-          discipline stays the same. The work is won in the direction, not
-          in the launch.
+          Notes, ad covers, KOC and avatar share the same brand line, and
+          the same process. The surface changes; the discipline stays the
+          same. The work is won in the direction, not in the launch.
         </p>
         <p class="craft__note r" style="--d:.16s">
           The first two steps are where it is won or lost. The rest is execution.
@@ -658,12 +656,12 @@ const faqSchema = {
       <div class="shell end__inner">
         <p class="kicker kicker--light r"><span class="kicker__tick"></span>Try us</p>
         <h2 class="end__title r" style="--d:.05s">
-          Send the LinkedIn brief.<br />Back in <span class="serif">48 hours</span>.
+          Send the RedNote brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          A placement-by-placement recommendation, a scope outline, an
-          indicative timeline and a few free feed posts or carousel frames
-          so you can see the thinking before any budget commits.
+          A surface-by-surface recommendation, a scope outline, an indicative
+          timeline and a few free photo-note covers so you can see the
+          thinking before any budget commits.
         </p>
         <div class="end__cta r" style="--d:.18s">
           <Button variant="primary" href="/contact">Send the brief</Button>

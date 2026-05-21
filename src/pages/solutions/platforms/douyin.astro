@@ -1,15 +1,17 @@
 ---
 /**
- * LinkedIn · /solutions/platforms/linkedin
+ * Douyin · /solutions/platforms/douyin
  *
- * Editorial layout copied verbatim from /solutions/platforms/meta. Same
- * print-shop primitives (crop marks, calibration colour bar, mono figure
- * labels, dashed rules) and the same eight-section architecture; only the
- * frontmatter data and the section copy change for LinkedIn.
+ * Editorial layout adapted from /solutions/platforms/meta. Same print-shop
+ * primitives (crop marks, calibration colour bar, mono figure labels, dashed
+ * rules) reframed for Douyin: the five service lanes, the AIGC mechanics for
+ * each, the partnership model.
  *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
- * its canonical lowercase-h casing.
+ * its canonical lowercase-h casing. The page sells to international brands,
+ * so the copy is English; the on-screen work content in the imagery is
+ * Mandarin, because Douyin is a Chinese-market platform.
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
@@ -20,36 +22,36 @@ const colourBar = [
 ];
 
 const stats = [
-  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, thought leadership, avatar' },
-  { from: 0, to: 50, suffix: '+', label: 'Variations per concept', note: 'From one signed-off master' },
-  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On feed posts and document carousels' },
+  { from: 0, to: 5, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, UGC, live, avatar' },
+  { from: 0, to: 60, suffix: '+', label: 'Cuts per concept', note: 'From one signed-off master' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On short-form Douyin video' },
 ];
 
 const samples = [
   {
-    src: '/Images/linkedin-sample-feed.jpg',
-    kind: 'Organic · LinkedIn Feed',
-    alt: 'A laptop screen filled with a LinkedIn Feed post, a wide editorial brand image above the post body, the like, celebrate, comment and repost reaction bar visible beneath it.',
+    src: '/Images/douyin-sample-feed.jpg',
+    kind: 'Content · For You feed',
+    alt: 'A vertical phone held in soft window light, the screen filled with a Douyin For You video of a styled product scene in warm tones, the right-side icon rail and bottom navigation bar visible.',
   },
   {
-    src: '/Images/linkedin-sample-sponsored.jpg',
-    kind: 'Ad creative · Sponsored Content',
-    alt: 'A laptop screen showing the LinkedIn Campaign Manager preview panel, a single-image Sponsored Content ad with the Promoted label and a call-to-action button in the placement frame.',
+    src: '/Images/douyin-sample-topview.jpg',
+    kind: 'Ad creative · TopView',
+    alt: 'A phone screen showing a full-screen Douyin TopView ad at app open, a paused fashion frame with a call-to-action button visible in the lower interface.',
   },
   {
-    src: '/Images/linkedin-sample-carousel.jpg',
-    kind: 'Content · Document carousel',
-    alt: 'A phone held vertically showing a LinkedIn document carousel paused mid-swipe, the page-dot indicator and swipe arrows visible along the bottom of the post.',
+    src: '/Images/douyin-sample-ugc.jpg',
+    kind: 'UGC · KOC review',
+    alt: 'A phone screen showing a vertical Douyin video of a creator holding a product to camera in a sunlit bedroom, the caption overlay and the like-comment-share rail visible in the interface.',
   },
   {
-    src: '/Images/linkedin-sample-leader.jpg',
-    kind: 'Thought leadership · Thought Leader Ad',
-    alt: 'A phone screen showing a LinkedIn feed post boosted as a Thought Leader Ad, a head-and-shoulders profile photo with the author name and the Promoted by label above the post body.',
+    src: '/Images/douyin-sample-live.jpg',
+    kind: 'Live commerce · Shop livestream',
+    alt: 'A phone held vertically showing a Douyin Shop livestream, a host gesturing toward a product, floating heart animations rising up the frame and a pinned product card with a shopping cart icon.',
   },
   {
-    src: '/Images/linkedin-sample-avatar.jpg',
-    kind: 'Avatar · Native video',
-    alt: 'A laptop screen showing a LinkedIn native video post of an AI avatar presenter speaking to camera in business knitwear, the video scrubber and reaction bar visible in the post interface.',
+    src: '/Images/douyin-sample-avatar.jpg',
+    kind: 'Avatar · Digital host',
+    alt: 'A phone screen showing a vertical Douyin video of a digital host presenter speaking to camera in neutral knitwear, captions and the For You icon rail visible in the interface.',
   },
 ];
 
@@ -57,69 +59,86 @@ const coverage = [
   {
     fig: 'B',
     label: 'Content',
-    heading: 'Content. Company page, carousels and video.',
-    image: '/Images/linkedin-content.jpg',
-    alt: 'A laptop screen filled with a LinkedIn company-page feed, a brand post with a wide editorial image at the top and the reaction bar beneath, the LinkedIn left-rail navigation visible alongside it.',
-    lead: 'Editorial-grade organic content for every LinkedIn surface, written and produced by the studio.',
+    heading: 'Content. The Douyin-native short-form feed.',
+    image: '/Images/douyin-content.jpg',
+    alt: 'A phone held in both hands, the screen filled with the vertical Douyin For You feed, the right-side icon rail of profile photo, heart, comment and share visible alongside the spinning circular music disc.',
+    lead: 'Editorial-grade short-form video for the For You feed, scripted and produced by the studio.',
     body: [
-      "We plan, write and produce the organic side of a LinkedIn presence: feed posts that read like the brand and not like a press release, document carousels built to be swiped to the last page, native video that holds past the title card, polls that start a real conversation, newsletter editions on a fixed cadence. Each format gets its own structure and its own treatment, never the same announcement reformatted five ways.",
-      "The work is signed off by an editor, designed by the same hand as the campaign, and shipped in the exact formats LinkedIn serves. The calendar stays full, the brand line does not move.",
+      "We script, shoot and finish the organic side of a Douyin presence: product demos that earn the watch-through, lifestyle cuts that look like the rest of the brand book, education pieces built as a weekly rhythm, trend formats caught while the trend is still moving. Every cut is vertical, sound-on, and built to win or lose in the first second.",
+      "The work is signed off by a creative director, retouched by the same hand as the campaign hero, written in native Mandarin from scratch rather than translated, and shipped in the exact 9:16 format the feed serves. The volume rises, the brand line does not move.",
     ],
     tags: [
-      'Feed posts', 'Document carousels', 'Native video',
-      'Polls', 'Newsletter editions', 'Event promo',
-      'Company page banners', 'Always-on calendar',
+      'Product demos', 'Lifestyle video', 'Education cuts',
+      'Trend formats', 'Vertical 9:16', 'Hook-first edits',
+      'Sound-on mix', 'Always-on calendar',
     ],
   },
   {
     fig: 'C',
     label: 'Ad creative',
-    heading: 'Ad creative. Built for Campaign Manager.',
-    image: '/Images/linkedin-ads.jpg',
-    alt: 'A wide monitor showing the LinkedIn Campaign Manager creative library, a grid of Sponsored Content single-image, carousel and video ad variants lined up in the placement preview panel.',
-    lead: 'Performance creative produced at the volume LinkedIn buying actually wants to test.',
+    heading: 'Ad creative. Built for Ocean Engine.',
+    image: '/Images/douyin-ads.jpg',
+    alt: 'A wide monitor showing the Ocean Engine creative library, a grid of vertical In-Feed and TopView ad cuts lined up in the placement preview panel.',
+    lead: "Performance creative produced at the volume Ocean Engine's buying surfaces actually want.",
     body: [
-      "Sponsored Content, Conversation Ads, Dynamic Ads and Lead Gen Forms each reward a wider creative set than most B2B teams ever ship. We brief, generate and finish paid creative around the format mix the media plan is buying: single image, carousel, document and video for the feed, message and conversation creative for the inbox, dynamic frames that personalise off profile data.",
-      "Hook-tested variants, audience-specific cuts and the naming conventions the downstream reporting expects all run through the same studio pass, so the testing set looks like the hero rather than a thinned-out clone of it.",
+      "Ocean Engine keeps getting better the more cuts the system has to learn from. We brief, generate and finish paid creative around the placement set the media team is buying: In-Feed video, TopView, Search and Shop cards, with the format diversity dynamic creative needs and the naming conventions the downstream reporting expects.",
+      "In-Feed conversion video, full-screen TopView, Search units, DOU+ boosts and Branded Effects all run through the same studio pass, so the long tail looks like the hero rather than a thinned-out clone of it.",
     ],
     tags: [
-      'Sponsored Content', 'Conversation Ads', 'Document ads',
-      'Video ads', 'Dynamic Ads', 'Lead-gen creative',
-      'Hook A/B testing', 'Retargeting variants',
+      'In-Feed video', 'TopView', 'Search ads',
+      'DOU+ boosts', 'Shop cards', 'Branded Effects',
+      'Hook A/B testing', 'Retargeting cuts',
     ],
   },
   {
     fig: 'D',
-    label: 'Thought leadership',
-    heading: 'Thought leadership. Authored in the founder voice.',
-    image: '/Images/linkedin-thought.jpg',
-    alt: 'A phone screen showing a LinkedIn personal-profile feed, a long-form text post under a head-and-shoulders profile photo, the reaction count and comment thread visible below the post.',
-    lead: 'Executive content written in the voice of the people behind the brand, not the brand handle.',
+    label: 'UGC',
+    heading: 'UGC. KOC-style at studio scale.',
+    image: '/Images/douyin-ugc.jpg',
+    alt: 'A phone screen showing a vertical Douyin video of a creator filming a product review in a sunlit room, the For You icon rail and the caption overlay visible in the interface.',
+    lead: 'Authored KOC-style content for the feed, without the casting cycle and the rights chase.',
     body: [
-      "The posts that travel furthest on LinkedIn carry a person's name, not a logo. We ghostwrite for founders and executives end to end: POV posts on the category, document essays that argue a position, commentary on the week's news, scripts for the short pieces to camera. Written in the executive's voice from a real working session, never a generic leadership template.",
-      "When a post earns it, we build the matching Thought Leader Ad, so the personal post runs in paid distribution under the executive's name. The same editorial line carries from the profile into the media plan.",
+      "We produce KOC-style content end to end: product reviews, hauls, unboxing, GRWM, founder testimonials and reaction cuts. Real creator briefs, real handheld grammar, native Mandarin captions, finished inside the studio so the brand keeps the masters and the usage rights from the first cut.",
+      "Volume is the point: thirty KOC cuts for one launch, ten new hooks every week on always-on accounts, market-specific edits per audience. The cost-per-cut curve flattens fast.",
     ],
     tags: [
-      'Founder POV posts', 'Executive ghostwriting', 'Thought Leader Ads',
-      'Document essays', 'News commentary', 'Newsletter columns',
-      'Profile carousels', 'Conference takes',
+      'KOC reviews', 'Hauls', 'Unboxing',
+      'GRWM cuts', 'Testimonials', 'Reaction edits',
+      'Native Mandarin', 'Always-on UGC',
     ],
   },
   {
     fig: 'E',
-    label: 'Avatar',
-    heading: 'Avatar. Camera-ready, every week.',
-    image: '/Images/linkedin-avatar.jpg',
-    alt: 'A laptop screen showing a LinkedIn native video post of an AI avatar presenter speaking to camera in business knitwear, captions and the video scrubber visible in the post interface.',
-    lead: 'Brand-owned synthetic presenters that put a face on LinkedIn video without the calendar fight.',
+    label: 'Live commerce',
+    heading: 'Live commerce. The shoppable stream, produced.',
+    image: '/Images/douyin-live.jpg',
+    alt: 'A phone screen showing a Douyin Shop livestream, floating heart animations rising up the frame and a product card pinned in the lower corner with a shopping cart icon.',
+    lead: 'The full visual production behind a Douyin Shop livestream: set, graphics and segments.',
     body: [
-      "Video is the surface most B2B brands underuse on LinkedIn, because the founder cannot film every week and the camera crew is never free. We build and train brand-owned avatars: a founder twin, a product expert, a localised cast per market. They present to camera in native video posts, host webinar and event clips, narrate explainers and deliver the weekly take.",
-      "Lip-sync is studio-tight, the look stays inside the brand book, and the same avatar speaks every language your buyers do. The rights stay with you in perpetuity, with no re-shoot to refresh and no re-book to localise.",
+      "We produce the visual side of a Douyin Shop livestream, not the operations of running one: set design and dressing, on-screen overlays and lower-thirds, product-showcase segment scripts, shoppable card creative, and the replay cut down into short-form afterwards.",
+      "The stream reads like the rest of the brand book rather than a folding-table booth. A digital host from the avatar lane can front it, or a real host can work to a studio run-of-show. Either way the look stays inside the brand.",
     ],
     tags: [
-      'Founder twin', 'Brand spokespeople', 'Product expert',
-      'Multi-language video', 'Webinar clips', 'Explainer hosts',
-      'Event recaps', 'Always-on avatar feed',
+      'Livestream sets', 'Segment scripts', 'On-screen overlays',
+      'Product cards', 'Shop integration', 'Replay cut-downs',
+      'Run-of-show', 'Always-on lives',
+    ],
+  },
+  {
+    fig: 'F',
+    label: 'Avatar',
+    heading: 'Avatar. A digital host you own.',
+    image: '/Images/douyin-avatar.jpg',
+    alt: 'A phone screen showing a vertical Douyin video of a digital host presenting to camera, captions and the For You icon rail visible in the interface.',
+    lead: 'A bespoke digital host that lives only on your channels, in every language Douyin reaches.',
+    body: [
+      "We build and train brand-owned digital hosts: a founder twin, a brand presenter, a product expert, a localised cast per market. They present to camera in short-form video, front the Shop livestream, and host shopping clips. One host, every language, every Douyin surface.",
+      "Lip-sync is studio-tight, the look stays inside the brand book, and the rights stay with you in perpetuity. No re-shoot to refresh, no re-cast to localise.",
+    ],
+    tags: [
+      'Digital host', 'Founder twin', 'Product expert',
+      'Livestream host', 'Multi-language cuts', 'Localised casts',
+      'Shop hosts', 'Always-on avatar',
     ],
   },
 ];
@@ -131,84 +150,84 @@ const processSteps = [
     short: 'Brief',
     tier: 'Where it is won',
     title: 'Discovery and brief.',
-    body: 'One working session to lock the goal, the buyer, the LinkedIn surfaces in scope, the brand truth and the no-go zones. Output is a one-page strategic brief and an asset map by placement and by service lane.',
-    image: '/Images/linkedin-p1-brief.jpg',
-    alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the LinkedIn Campaign Manager dashboard alongside printed LinkedIn feed and document carousel screenshots.',
+    body: 'One working session to lock the goal, audience, Douyin surfaces in scope, brand truth, no-go zones and the platform compliance line. Output is a one-page strategic brief and an asset map by placement and by service lane.',
+    image: '/Images/douyin-p1-brief.jpg',
+    alt: 'A creative director and a brand lead at a studio table in a lived-in Shanghai office, tea mugs and sticky notes around a laptop showing the Ocean Engine planner beside printed Douyin For You feed screenshots.',
   },
   {
     short: 'Direction',
     tier: 'Where it is won',
-    title: 'Creative direction across the four lanes.',
-    body: 'Visual references locked, tone defined, post structures drafted, AIGC and avatar model selection made per surface and per service. Content, ad creative, thought leadership and avatar each get their own treatment. This is where a campaign becomes ownable.',
-    image: '/Images/linkedin-p2-direction.jpg',
-    alt: 'A storyboard wall with four columns of frame sketches labelled Content, Ads, Thought leadership and Avatar, each column anchored by a printed LinkedIn feed post mock.',
+    title: 'Creative direction across the five lanes.',
+    body: 'Visual references locked, tone defined, shot list drafted, AIGC and digital-host model selection made per surface and per service. Content, ad creative, UGC, live commerce and avatar each get their own treatment. This is where a campaign becomes ownable.',
+    image: '/Images/douyin-p2-direction.jpg',
+    alt: 'A storyboard wall in a Shanghai studio with five columns of frame sketches labelled Content, Ads, UGC, Live and Avatar, each column anchored by a printed phone mock of the vertical Douyin feed.',
   },
   {
     short: 'AIGC',
     tier: 'The rest is execution',
     title: 'AIGC generation and authored finish.',
-    body: 'Per-lane generation across the agreed surfaces. Every post, ad and video goes through the studio edit and brand-check pass before any media plan or content calendar sees it.',
-    image: '/Images/linkedin-p3-aigc.jpg',
-    alt: 'A designer at a calibrated workstation, the main monitor showing a single LinkedIn document carousel page, the side panel showing the LinkedIn Campaign Manager creative library grid of variants.',
+    body: 'Per-lane generation across the agreed surfaces. Each output goes through the studio retouch, the brand check and the platform-compliance pass before any media plan sees it.',
+    image: '/Images/douyin-p3-aigc.jpg',
+    alt: 'A Chinese motion designer at a calibrated workstation in a cluttered Shanghai studio, the main monitor showing a single vertical Douyin video frame, the side panel showing the Ocean Engine creative library grid of cuts.',
   },
   {
     short: 'Launch',
     tier: 'The rest is execution',
     title: 'Launch. Per-placement, per-market.',
-    body: 'Assets handed to the media and social teams in the formats LinkedIn actually serves, with naming, ratios and durations matched to Sponsored Content, Conversation Ads and organic placements. Tracking and creative naming built for downstream reporting.',
-    image: '/Images/linkedin-p4-launch.jpg',
-    alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the LinkedIn Campaign Manager campaign dashboard with Sponsored Content placements live.',
+    body: 'Assets handed to the media team in the formats Ocean Engine actually serves, with naming, ratios and durations matched to In-Feed, TopView and Search placements. Tracking and creative naming built for downstream reporting.',
+    image: '/Images/douyin-p4-launch.jpg',
+    alt: 'A Chinese media buyer at a daylit studio desk in Shanghai, the calibrated monitor showing the Ocean Engine campaign dashboard with In-Feed and TopView placements live.',
   },
   {
     short: 'Adapt',
     tier: 'The rest is execution',
-    title: 'Adapt. Variants, refresh, season.',
-    body: 'Once the hero is signed off, the variant cascade lands in days. New audiences, new seniorities, new industries, new quarters. The brief stays the same, the variants compound.',
-    image: '/Images/linkedin-p5-adapt.jpg',
-    alt: 'An editor at a calibrated suite, the main reference monitor showing a LinkedIn native video post paused on a presenter frame, the LinkedIn post interface elements visible at the screen edges.',
+    title: 'Adapt. Cuts, refresh, trend.',
+    body: 'Once the hero is signed off, the cut cascade lands in days. New audiences, new trends, new hashtags, new seasons. The brief stays the same, the cuts compound.',
+    image: '/Images/douyin-p5-adapt.jpg',
+    alt: 'A Chinese colourist at a calibrated grading suite in a Shanghai studio, the reference monitor showing a warm vertical Douyin video frame paused on a product still, the For You icon rail visible at the screen edge.',
   },
 ];
 
 const faqs = [
   {
-    q: 'What exactly do you produce for LinkedIn?',
-    a: 'Four lanes, one studio. Content covers organic company-page work: feed posts, document carousels, native video, polls and newsletter editions. Ad creative covers Sponsored Content, Conversation Ads, Dynamic Ads and Lead Gen creative built for Campaign Manager. Thought leadership covers executive ghostwriting and Thought Leader Ads in the founder voice. Avatar covers brand-owned synthetic presenters for native LinkedIn video. The lanes share one creative direction and one finishing pass, so the long tail looks like the hero.',
+    q: 'What exactly do you produce for Douyin?',
+    a: 'Five lanes, one studio. Content covers organic short-form video for the For You feed: product demos, lifestyle, education and trend-driven formats. Ad creative covers In-Feed, TopView, Search and Shop-card creative built for Ocean Engine. UGC covers KOC-style reviews and hauls at volume. Live commerce covers the full visual production behind a Douyin Shop livestream. Avatar covers a brand-owned digital host that presents across every surface. The lanes share one creative direction and one finishing pass, so the long tail looks like the hero.',
   },
   {
-    q: 'How is the thought leadership lane different from regular content?',
-    a: "Content-lane work runs under the company page; thought leadership runs under a person. We ghostwrite for founders and executives from a real working session, so the POV posts, document essays and commentary read in their voice rather than a generic leadership template. When a post earns it, we build the matching Thought Leader Ad so the personal post runs in paid distribution under the executive's name.",
+    q: 'How is the UGC lane different from sourcing KOCs through Xingtu?',
+    a: 'We script the brief, build the creator profile, generate the takes inside the studio and finish them with the same studio pass as the hero. Real handheld grammar, real product-in-hand frames, native Mandarin written from scratch rather than translated captions, no casting cycle and no rights chase. You keep the masters and the usage rights from the first cut, and the cost-per-cut curve flattens to near zero by the tenth take. When a campaign genuinely needs a named creator and their audience, that is a media decision you run alongside this lane, not instead of it.',
   },
   {
-    q: 'Tell me more about the Avatar lane on LinkedIn.',
-    a: 'We build and train a brand-owned synthetic presenter: a founder twin, a product expert or a localised cast per market. The avatar speaks to camera in native video posts, hosts webinar and event clips and narrates explainers, so the brand ships weekly video without the founder ever booking a shoot. Lip-sync is studio-tight, the look stays inside the brand book, and the same avatar runs in every language your buyers speak.',
+    q: 'Tell me more about the Avatar lane.',
+    a: 'We build and train a brand-owned digital host: a founder twin, a brand presenter, a product expert or a localised cast per market. The host speaks to camera in short-form video, fronts the Shop livestream and narrates shopping clips. Lip-sync is studio-tight, the look stays inside the brand book, and the same host runs in every language Douyin reaches with no re-shoot. The host is yours, trained on your IP, and never appears on another brand channel.',
   },
   {
-    q: 'Can you produce content at the volume our calendar needs?',
-    a: 'Yes. A single hero shoot or AIGC sprint produces the master, and the variant cascade lands per audience and per market inside days. The cost-per-variation curve flattens fast: the first variant is expensive, the fiftieth is close to free. Custom-trained LoRA models on your brand keep every frame on-brand.',
+    q: 'What does the Live commerce lane actually deliver?',
+    a: 'The visual production behind a Douyin Shop livestream, not the operations of running one. We design the set, build the on-screen overlays and lower-thirds, script the product-showcase segments, produce the shoppable card creative, and cut the replay down into short-form afterwards. The stream reads like the rest of the brand book rather than a folding-table booth. A digital host from the avatar lane can front the stream, or a real host can work to a studio run-of-show.',
   },
   {
-    q: 'How do you keep the brand line consistent across the four lanes?',
-    a: 'The hero concept is signed off once, in the direction step. After that, every variant in every lane runs through the same edit pass, the same design system and the same brand-safety check. The studio is what keeps content, ad creative, thought leadership and avatar reading like one campaign rather than four parallel ones.',
+    q: 'How do you keep the brand line consistent across the five lanes?',
+    a: 'The hero concept is signed off once, in the direction step. After that, every cut in every lane runs through the same retouch pass, the same colour grade and the same brand-safety check. The studio is what keeps content, ad creative, UGC, live commerce and avatar reading like one campaign rather than five parallel ones.',
   },
   {
-    q: 'What is your turnaround for a feed post or document carousel?',
-    a: 'Organic LinkedIn work on an existing brand can be brief to first cut in 24 to 72 hours. A new brand or a new positioning takes a one-time onboarding to lock the treatment, the voice and the avatar; after that, weekly drops at production-grade quality are the working tempo.',
+    q: 'What is your turnaround, and can you hit the volume our plan needs?',
+    a: 'Short-form video on an existing brand can be brief to first cut in 24 to 72 hours. A single hero shoot or AIGC sprint produces the master, and the cut cascade lands per audience and per trend inside days: the first cut is expensive, the sixtieth is close to free. A new brand or a new product takes a one-time onboarding to lock the treatment, the LoRA models and the digital host; after that, three to five drops a week at production-grade quality are the working tempo.',
   },
   {
-    q: 'Do you handle LinkedIn Campaign Manager ad formats?',
-    a: 'Yes. We brief the ad creative lane around the format mix the media team is buying: Sponsored Content single image, carousel, document and video, Conversation and Message Ads for the inbox, and Dynamic Ads that personalise off profile data. Variants are produced with the format diversity the testing plan needs and named so the reporting downstream is legible.',
+    q: 'Do you handle Ocean Engine paid placements and dynamic creative?',
+    a: 'Yes. We brief the ad creative lane around the placement set the media team is buying: In-Feed video, TopView, Search ads, DOU+ boosts, Shop cards and Branded Effects. Cuts are produced with the format diversity dynamic creative needs and named so the reporting downstream is legible. The media team owns the buying and the spend; we own the creative behind it.',
   },
   {
     q: 'How do you keep the work from feeling AI-generated?',
-    a: 'Every output goes through a studio finishing pass: copy edited by hand, layouts set in the brand design system, video graded and any image retouched with grain and a real colour grade. The image style guide rules out the AI tells: poreless skin, identical bokeh, melted UI, almost-but-not-quite text. The final file passes a human review before any media plan or calendar sees it. This is what closes the gap between an AI asset and a campaign asset.',
+    a: 'Every output goes through a studio retouch pass: dodge and burn, grain, chromatic aberration and a colour grade in Lightroom or Capture One. The image style guide rules out the AI tells: poreless skin, identical bokeh, melted jewellery, almost-but-not-quite text. The final file passes a human review before any media plan sees it. This is what closes the gap between an AI image and a campaign image.',
   },
   {
     q: 'Can you white-label this for our agency?',
-    a: 'Yes. A significant share of our LinkedIn work runs under agency brands, with full white-label delivery and confidential collaboration. The agency owns the relationship and the client communication; we deliver the production capability behind it.',
+    a: 'Yes. A significant share of our Douyin work runs under agency brands, with full white-label delivery and confidential collaboration. The agency owns the relationship and the client communication; we deliver the production capability behind it.',
   },
   {
     q: 'Who owns the assets, the masters and the trained models?',
-    a: 'You own all finished assets, all masters, and any LoRA, fine-tuned or avatar models trained on your IP. Commercial use rights for AIGC outputs are routed through enterprise tiers that grant commercial use. For full detail on the legal side, see our Copyright and AI guide.',
+    a: 'You own all finished assets, all masters, and any LoRA, fine-tuned or digital-host models trained on your IP. Commercial use rights for AIGC outputs are routed through enterprise tiers that grant commercial use. For full detail on the legal side, see our Copyright and AI guide.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
 ];
@@ -225,8 +244,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="LinkedIn AIGC: B2B Content & Ad Creative at Scale"
-  description="AIGC for LinkedIn. Company page content, document carousels, thought leadership and Campaign Manager ad creative, produced inside a working studio. One brief, every placement."
+  title="Douyin AIGC: For You Feed & Ocean Engine Creative at Scale"
+  description="AIGC for Douyin. Short-form video, Ocean Engine ad creative, livestream and avatar work, produced inside a working studio. One brief, every placement."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -243,27 +262,27 @@ const faqSchema = {
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
             <span class="kicker__tick"></span>Platform
-            <span class="kicker__sep">/</span> LinkedIn
+            <span class="kicker__sep">/</span> Douyin
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Four lanes,</span></span>
-            <span class="line"><span class="line__i serif">one LinkedIn brief.</span></span>
+            <span class="line"><span class="line__i">Five lanes,</span></span>
+            <span class="line"><span class="line__i serif">one Douyin brief.</span></span>
             <span class="line"><span class="line__i">AIGC, in scale.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Content. Ad creative. Thought leadership. <em>Avatar.</em>
+            Content. Ad creative. UGC. Live. <em>Avatar.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              We ship four kinds of work into LinkedIn: organic content for
-              the company page, feed and document carousels; performance ad
-              creative built for Campaign Manager; thought leadership written
-              in the founder voice; and brand-owned avatar presenters for
-              native LinkedIn video.
+              We ship five kinds of work into Douyin: organic short-form video
+              for the For You feed; performance ad creative built for Ocean
+              Engine; KOC-style UGC at volume; the full visual production
+              behind a Douyin Shop livestream; and a brand-owned digital host
+              that presents in every language Douyin reaches.
             </p>
             <p>
-              One brief, four lanes, every placement. One hero direction, fifty
-              market variants. AIGC inside a working production company, not in
+              One brief, five lanes, every placement. One hero direction, sixty
+              market cuts. AIGC inside a working production company, not in
               place of one.
             </p>
           </div>
@@ -277,20 +296,20 @@ const faqSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Hong Kong + Shanghai <span>/</span> LinkedIn-native creative under one director
+            Hong Kong + Shanghai <span>/</span> Douyin-native creative under one director
           </p>
         </div>
       </div>
       <div class="hero__visual">
         <img
-          src="/Images/linkedin-hero.jpg"
-          alt="A close editorial portrait of a hand holding a phone in warm rim light, the phone screen filled with a LinkedIn feed post including the reaction bar and comment count of the post interface."
+          src="/Images/douyin-hero.jpg"
+          alt="A close editorial portrait of a hand holding a phone in warm rim light, the phone screen filled with a paused vertical Douyin video including the right-side icon rail and the spinning circular music disc of the For You interface."
           width="1024"
           height="1024"
           loading="eager"
           fetchpriority="high"
         />
-        <span class="hero__chip">Platform work <span>/</span> LinkedIn</span>
+        <span class="hero__chip">Platform work <span>/</span> Douyin</span>
       </div>
     </section>
 
@@ -305,23 +324,23 @@ const faqSchema = {
           <div class="why__head">
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
             <h2 class="dh r" style="--d:.05s">
-              What we ship<br /><span class="serif">into LinkedIn</span>.
+              What we ship<br /><span class="serif">into Douyin</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              We do four kinds of work for LinkedIn, end to end. Organic
-              content for the company page, feed, document carousels and
-              newsletter. Paid ad creative built for Sponsored Content,
-              Conversation Ads and Dynamic Ads. Thought leadership
-              ghostwritten in the founder voice. Brand-owned avatar
-              presenters for native LinkedIn video.
+              We do five kinds of work for Douyin, end to end. Organic
+              short-form video for the For You feed. Paid ad creative built for
+              Ocean Engine across In-Feed, TopView, Search and Shop cards.
+              KOC-style UGC for the feed at volume. The full visual production
+              behind a Douyin Shop livestream. A brand-owned digital host that
+              fronts every surface Douyin serves.
             </p>
             <p class="r" style="--d:.16s">
-              One creative direction sits across all four. The same studio
-              hands that finish the hero carry every variant in every lane,
-              so the long tail looks like the campaign rather than a thinned
-              clone of it.
+              One creative direction sits across all five. The same studio
+              hands that retouch the hero finish every cut in every lane, so
+              the long tail looks like the campaign rather than a thinned clone
+              of it.
             </p>
           </div>
         </div>
@@ -329,22 +348,22 @@ const faqSchema = {
         <figure class="why__shot crop r-clip">
           <div class="crop__inner">
             <img
-              src="/Images/linkedin-roots.jpg"
-              alt="A wide editorial shot of two designers at a daylit studio table, four laptop screens lined up showing the LinkedIn company-page feed, a LinkedIn document carousel, the LinkedIn Campaign Manager creative library and a LinkedIn personal-profile post, one per service lane."
+              src="/Images/douyin-roots.jpg"
+              alt="A wide editorial shot of two Chinese designers at a daylit table in a lived-in Shanghai studio, four laptop screens lined up showing the Douyin For You feed, the Ocean Engine creative library, a Douyin Shop livestream and a KOC review video, one per service lane."
               width="1408"
               height="768"
               loading="lazy"
             />
           </div>
-          <figcaption class="fig">Four lanes, one creative direction</figcaption>
+          <figcaption class="fig">Five lanes, one creative direction</figcaption>
         </figure>
 
         <div class="stats">
           <p class="stats__quote r">
-            One LinkedIn brief, four service lanes, every placement. Content,
-            ad creative, thought leadership and avatar finished by the same
-            studio hands, with fifty-plus variants per concept and brief to
-            first cut inside forty-eight hours on organic work.
+            One Douyin brief, five service lanes, every placement. Content, ad
+            creative, UGC, live commerce and avatar finished by the same studio
+            hands, with sixty-plus cuts per concept and brief to first cut
+            inside forty-eight hours on short-form work.
           </p>
           <div class="stats__grid">
             {
@@ -374,7 +393,7 @@ const faqSchema = {
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
           <h2 class="dh r" style="--d:.05s">
-            Four lanes, one <span class="serif">brand line</span>.
+            Five lanes, one <span class="serif">brand line</span>.
           </h2>
         </header>
 
@@ -426,9 +445,9 @@ const faqSchema = {
             </h2>
           </div>
           <p class="band__note r" style="--d:.1s">
-            Feed posts, document carousels and Sponsored Content stills
-            produced through the studio pipeline. Every frame is authored
-            work, sized for the surface it ships on.
+            For You feed, TopView and livestream stills produced through the
+            studio pipeline. Every frame is authored work, sized for the
+            surface it ships on.
           </p>
         </header>
 
@@ -462,8 +481,8 @@ const faqSchema = {
           <figure class="source__main crop">
             <div class="crop__inner">
               <img
-                src="/Images/linkedin-hybrid-main.jpg"
-                alt="A producer at a wide reference monitor showing the LinkedIn Campaign Manager creative library, four columns of LinkedIn ad and post variants tagged Content, Ads, Thought leadership and Avatar."
+                src="/Images/douyin-hybrid-main.jpg"
+                alt="A Chinese producer at a wide reference monitor in a Shanghai studio showing the Ocean Engine creative library, five columns of vertical Douyin cuts tagged Content, Ads, UGC, Live and Avatar."
                 width="1024"
                 height="1024"
                 loading="lazy"
@@ -472,8 +491,8 @@ const faqSchema = {
           </figure>
           <figure class="source__inset">
             <img
-              src="/Images/linkedin-hybrid-inset.jpg"
-              alt="A close cinematic detail of a hand holding a phone vertically against a soft cream background, the screen filled with a LinkedIn feed post including the reaction bar and comment count of the post interface."
+              src="/Images/douyin-hybrid-inset.jpg"
+              alt="A close cinematic detail of a hand holding a phone vertically against a soft cream background, the screen filled with a vertical Douyin video including the right-side icon rail and bottom navigation of the For You interface."
               width="1024"
               height="1024"
               loading="lazy"
@@ -481,7 +500,7 @@ const faqSchema = {
           </figure>
           <div class="source__stat">
             <span class="source__stat-num">1 brief</span>
-            <span class="source__stat-cap">Four lanes, every placement, every market</span>
+            <span class="source__stat-cap">Five lanes, every placement, every market</span>
           </div>
         </div>
 
@@ -491,16 +510,16 @@ const faqSchema = {
             Authored creative, <span class="serif">AI volume</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            The LinkedIn brands compounding their pipeline in 2026 are not
-            the ones posting the most. They are the ones running an
-            authored creative process with AIGC inside it.
+            The Douyin brands compounding their results in 2026 are not the
+            ones with the loudest stack. They are the ones running an authored
+            creative process with AIGC inside it.
           </p>
           <p class="source__p r" style="--d:.16s">
             We sit between the technical and the creative: a working studio
-            with editors, designers and colourists alongside the AIGC
-            engineers and the LoRA-training pipeline. Every variant ships
-            with the same brand discipline as the hero, because the same
-            hands sign it off.
+            with directors, retouchers and colourists alongside the AIGC
+            engineers and the LoRA-training pipeline. Every cut ships with the
+            same brand discipline as the hero, because the same hands sign it
+            off.
           </p>
           <ul class="creds r" style="--d:.22s">
             {
@@ -515,10 +534,10 @@ const faqSchema = {
             }
           </ul>
           <p class="source__p r" style="--d:.26s">
-            Everything runs on private infrastructure with hosting in
-            mainland China, Hong Kong, the EU or the US depending on your
-            data sovereignty position. Custom-trained LoRA models stay your
-            property and can be exported if you ever leave.
+            Everything runs on private infrastructure with hosting in mainland
+            China, Hong Kong, the EU or the US depending on your data
+            sovereignty position. Custom-trained LoRA models stay your property
+            and can be exported if you ever leave.
           </p>
           <p class="source__p source__p--quiet r" style="--d:.3s">
             We pick up where you need us and step back where you do not.
@@ -530,15 +549,14 @@ const faqSchema = {
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
-        <p class="kicker r"><span class="kicker__tick"></span>How a LinkedIn campaign runs</p>
+        <p class="kicker r"><span class="kicker__tick"></span>How a Douyin campaign runs</p>
         <h2 class="dh r" style="--d:.05s">
           One brief,<br />every <span class="serif">placement</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Feed posts, carousels, video and Sponsored Content share the
-          same brand line, and the same process. The format changes; the
-          discipline stays the same. The work is won in the direction, not
-          in the launch.
+          Feed video, TopView, livestream and avatar cuts share the same brand
+          line, and the same process. The format changes; the discipline stays
+          the same. The work is won in the direction, not in the launch.
         </p>
         <p class="craft__note r" style="--d:.16s">
           The first two steps are where it is won or lost. The rest is execution.
@@ -658,12 +676,12 @@ const faqSchema = {
       <div class="shell end__inner">
         <p class="kicker kicker--light r"><span class="kicker__tick"></span>Try us</p>
         <h2 class="end__title r" style="--d:.05s">
-          Send the LinkedIn brief.<br />Back in <span class="serif">48 hours</span>.
+          Send the Douyin brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
           A placement-by-placement recommendation, a scope outline, an
-          indicative timeline and a few free feed posts or carousel frames
-          so you can see the thinking before any budget commits.
+          indicative timeline and a few free For You or TopView frames so you
+          can see the thinking before any budget commits.
         </p>
         <div class="end__cta r" style="--d:.18s">
           <Button variant="primary" href="/contact">Send the brief</Button>

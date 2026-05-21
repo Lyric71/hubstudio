@@ -1,11 +1,11 @@
 ---
 /**
- * LinkedIn · /solutions/platforms/linkedin
+ * WeChat · /solutions/platforms/wechat
  *
- * Editorial layout copied verbatim from /solutions/platforms/meta. Same
- * print-shop primitives (crop marks, calibration colour bar, mono figure
- * labels, dashed rules) and the same eight-section architecture; only the
- * frontmatter data and the section copy change for LinkedIn.
+ * Editorial layout adapted from /solutions/platforms/meta. Same print-shop
+ * primitives (crop marks, calibration colour bar, mono figure labels, dashed
+ * rules) reframed for WeChat: the four surfaces we ship creative into, the
+ * AIGC mechanics for each, the partnership model.
  *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
@@ -20,36 +20,36 @@ const colourBar = [
 ];
 
 const stats = [
-  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, thought leadership, avatar' },
+  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, Channels, storefront' },
   { from: 0, to: 50, suffix: '+', label: 'Variations per concept', note: 'From one signed-off master' },
-  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On feed posts and document carousels' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On Moments ads and Channels' },
 ];
 
 const samples = [
   {
-    src: '/Images/linkedin-sample-feed.jpg',
-    kind: 'Organic · LinkedIn Feed',
-    alt: 'A laptop screen filled with a LinkedIn Feed post, a wide editorial brand image above the post body, the like, celebrate, comment and repost reaction bar visible beneath it.',
+    src: '/Images/wechat-sample-a.jpg',
+    kind: 'Content · OA article',
+    alt: 'A vertical phone held in soft window light, the screen showing an open WeChat Official Account article with a wide cover image and the article headline stacked above warm editorial body text.',
   },
   {
-    src: '/Images/linkedin-sample-sponsored.jpg',
-    kind: 'Ad creative · Sponsored Content',
-    alt: 'A laptop screen showing the LinkedIn Campaign Manager preview panel, a single-image Sponsored Content ad with the Promoted label and a call-to-action button in the placement frame.',
+    src: '/Images/wechat-sample-b.jpg',
+    kind: 'Ad creative · Moments',
+    alt: 'A phone screen showing the WeChat Moments feed, a sponsored brand card with image, advertiser name and a call-to-action button sitting between two personal posts.',
   },
   {
-    src: '/Images/linkedin-sample-carousel.jpg',
-    kind: 'Content · Document carousel',
-    alt: 'A phone held vertically showing a LinkedIn document carousel paused mid-swipe, the page-dot indicator and swipe arrows visible along the bottom of the post.',
+    src: '/Images/wechat-sample-c.jpg',
+    kind: 'Ad creative · Channels',
+    alt: 'A phone screen showing a WeChat Channels video, a sponsored in-feed ad frame of a skincare product with the advertiser label and an action button along the lower interface.',
   },
   {
-    src: '/Images/linkedin-sample-leader.jpg',
-    kind: 'Thought leadership · Thought Leader Ad',
-    alt: 'A phone screen showing a LinkedIn feed post boosted as a Thought Leader Ad, a head-and-shoulders profile photo with the author name and the Promoted by label above the post body.',
+    src: '/Images/wechat-sample-d.jpg',
+    kind: 'Channels · Short-form',
+    alt: 'A phone held vertically, the screen showing a WeChat Channels video paused mid-frame, the like, comment and share rail running up the right edge of the interface.',
   },
   {
-    src: '/Images/linkedin-sample-avatar.jpg',
-    kind: 'Avatar · Native video',
-    alt: 'A laptop screen showing a LinkedIn native video post of an AI avatar presenter speaking to camera in business knitwear, the video scrubber and reaction bar visible in the post interface.',
+    src: '/Images/wechat-sample-e.jpg',
+    kind: 'Storefront · Mini Program',
+    alt: 'A phone screen showing a WeChat Mini Program storefront, a campaign banner above a grid of product cards, the rounded capsule menu visible in the top corner of the interface.',
   },
 ];
 
@@ -57,69 +57,69 @@ const coverage = [
   {
     fig: 'B',
     label: 'Content',
-    heading: 'Content. Company page, carousels and video.',
-    image: '/Images/linkedin-content.jpg',
-    alt: 'A laptop screen filled with a LinkedIn company-page feed, a brand post with a wide editorial image at the top and the reaction bar beneath, the LinkedIn left-rail navigation visible alongside it.',
-    lead: 'Editorial-grade organic content for every LinkedIn surface, written and produced by the studio.',
+    heading: 'Content. Official Account articles and feed.',
+    image: '/Images/wechat-content.jpg',
+    alt: 'A phone held in both hands, the screen filled with an open WeChat Official Account article, the cover image and headline at the top and an in-article image stack below, the WeChat chrome visible across the top of the screen.',
+    lead: 'Editorial-grade Official Account articles, written and designed by the studio for the surface readers actually open.',
     body: [
-      "We plan, write and produce the organic side of a LinkedIn presence: feed posts that read like the brand and not like a press release, document carousels built to be swiped to the last page, native video that holds past the title card, polls that start a real conversation, newsletter editions on a fixed cadence. Each format gets its own structure and its own treatment, never the same announcement reformatted five ways.",
-      "The work is signed off by an editor, designed by the same hand as the campaign, and shipped in the exact formats LinkedIn serves. The calendar stays full, the brand line does not move.",
+      "We write, art-direct and build the graphic articles that carry a WeChat Official Account: a cover that earns the tap from a crowded subscription list, a headline that survives the feed, an article laid out as a piece of editorial design rather than a wall of pasted screenshots. Long-form brand storytelling, product features, launch announcements and seasonal pieces, each one set to the brand book.",
+      "Copy is written by native Mandarin writers who publish on WeChat every week, never run through a translation of an English draft. The article is finished image by image, retouched by the same hand as the campaign hero, and delivered ready to schedule. The cadence rises, the brand line does not move.",
     ],
     tags: [
-      'Feed posts', 'Document carousels', 'Native video',
-      'Polls', 'Newsletter editions', 'Event promo',
-      'Company page banners', 'Always-on calendar',
+      'Service Account articles', 'Subscription posts', 'Cover design',
+      'Long-form features', 'Launch announcements', 'Seasonal editorials',
+      'Article image sets', 'Always-on calendar',
     ],
   },
   {
     fig: 'C',
     label: 'Ad creative',
-    heading: 'Ad creative. Built for Campaign Manager.',
-    image: '/Images/linkedin-ads.jpg',
-    alt: 'A wide monitor showing the LinkedIn Campaign Manager creative library, a grid of Sponsored Content single-image, carousel and video ad variants lined up in the placement preview panel.',
-    lead: 'Performance creative produced at the volume LinkedIn buying actually wants to test.',
+    heading: 'Ad creative. Built for Tencent Ads.',
+    image: '/Images/wechat-ads.jpg',
+    alt: 'A wide monitor showing the Tencent Ads creative library, a grid of WeChat Moments and Channels ad variants lined up in the placement preview panel.',
+    lead: 'Performance creative produced for every Tencent Ads surface, at the volume the buying actually wants.',
     body: [
-      "Sponsored Content, Conversation Ads, Dynamic Ads and Lead Gen Forms each reward a wider creative set than most B2B teams ever ship. We brief, generate and finish paid creative around the format mix the media plan is buying: single image, carousel, document and video for the feed, message and conversation creative for the inbox, dynamic frames that personalise off profile data.",
-      "Hook-tested variants, audience-specific cuts and the naming conventions the downstream reporting expects all run through the same studio pass, so the testing set looks like the hero rather than a thinned-out clone of it.",
+      "Moments ads that read as native to the feed rather than an interruption in it. Channels in-feed video built to hold past the first second. Banner placements, Mini Program ads and search creative, all briefed around the placement set the media team is buying. We produce the format diversity the auction needs and the naming conventions the downstream reporting expects.",
+      "Conversion frames, catalogue cards, hook-tested Channels cuts and lead-gen units all run through the same studio pass, so the long tail of variants looks like the hero rather than a thinned-out clone of it.",
     ],
     tags: [
-      'Sponsored Content', 'Conversation Ads', 'Document ads',
-      'Video ads', 'Dynamic Ads', 'Lead-gen creative',
+      'Moments ads', 'Channels in-feed', 'Banner placements',
+      'Mini Program ads', 'Search creative', 'Catalogue cards',
       'Hook A/B testing', 'Retargeting variants',
     ],
   },
   {
     fig: 'D',
-    label: 'Thought leadership',
-    heading: 'Thought leadership. Authored in the founder voice.',
-    image: '/Images/linkedin-thought.jpg',
-    alt: 'A phone screen showing a LinkedIn personal-profile feed, a long-form text post under a head-and-shoulders profile photo, the reaction count and comment thread visible below the post.',
-    lead: 'Executive content written in the voice of the people behind the brand, not the brand handle.',
+    label: 'Channels',
+    heading: 'Channels. Short-form video and livestream.',
+    image: '/Images/wechat-video.jpg',
+    alt: 'A phone screen showing a WeChat Channels video paused mid-frame, the vertical video interface with the like, comment and share rail running up the right edge.',
+    lead: 'Short-form video and livestream creative for WeChat Channels, scripted and finished end to end.',
     body: [
-      "The posts that travel furthest on LinkedIn carry a person's name, not a logo. We ghostwrite for founders and executives end to end: POV posts on the category, document essays that argue a position, commentary on the week's news, scripts for the short pieces to camera. Written in the executive's voice from a real working session, never a generic leadership template.",
-      "When a post earns it, we build the matching Thought Leader Ad, so the personal post runs in paid distribution under the executive's name. The same editorial line carries from the profile into the media plan.",
+      "We script, produce and edit the organic side of a Channels presence: short videos built to hold attention from the opening frame, livestream creative with lower-thirds, product cards and overlays that match the brand, replay cuts and highlight clips that keep working after the stream ends. Channels links straight to the Official Account and the Mini Program, so every video is built to carry a viewer onward.",
+      "The work is signed off by a creative director, graded in the studio and shipped in the vertical format Channels serves. Optional brand-owned avatar presenters host the clips and the livestreams in any language, so the cast never has to be re-booked.",
     ],
     tags: [
-      'Founder POV posts', 'Executive ghostwriting', 'Thought Leader Ads',
-      'Document essays', 'News commentary', 'Newsletter columns',
-      'Profile carousels', 'Conference takes',
+      'Short-form video', 'Livestream creative', 'Lower-thirds and overlays',
+      'Replay highlight cuts', 'Product card frames', 'Avatar presenters',
+      'Vertical edits', 'Always-on calendar',
     ],
   },
   {
     fig: 'E',
-    label: 'Avatar',
-    heading: 'Avatar. Camera-ready, every week.',
-    image: '/Images/linkedin-avatar.jpg',
-    alt: 'A laptop screen showing a LinkedIn native video post of an AI avatar presenter speaking to camera in business knitwear, captions and the video scrubber visible in the post interface.',
-    lead: 'Brand-owned synthetic presenters that put a face on LinkedIn video without the calendar fight.',
+    label: 'Storefront',
+    heading: 'Storefront. Mini Program, designed to sell.',
+    image: '/Images/wechat-miniprogram.jpg',
+    alt: 'A phone screen showing a WeChat Mini Program storefront, a campaign banner above a grid of product cards, the rounded capsule menu in the top corner of the interface.',
+    lead: 'The visual design of a Mini Program storefront: covers, banners, product cards and campaign skins, on-brand and built to convert.',
     body: [
-      "Video is the surface most B2B brands underuse on LinkedIn, because the founder cannot film every week and the camera crew is never free. We build and train brand-owned avatars: a founder twin, a product expert, a localised cast per market. They present to camera in native video posts, host webinar and event clips, narrate explainers and deliver the weekly take.",
-      "Lip-sync is studio-tight, the look stays inside the brand book, and the same avatar speaks every language your buyers do. The rights stay with you in perpetuity, with no re-shoot to refresh and no re-book to localise.",
+      "A Mini Program is a brand's owned commerce surface inside WeChat, and it should look authored rather than assembled from a template. We design the storefront's visual system: the home banner, the category tiles, the product card grid, the campaign landing skins, the seasonal refresh. Product and lifestyle imagery is shot or generated to fill it, sized to the exact frames the Mini Program serves.",
+      "We design the look and produce the imagery; your developers ship the build. Every campaign gets a matching storefront skin, so a launch that runs on Moments lands on a storefront designed inside the same brief.",
     ],
     tags: [
-      'Founder twin', 'Brand spokespeople', 'Product expert',
-      'Multi-language video', 'Webinar clips', 'Explainer hosts',
-      'Event recaps', 'Always-on avatar feed',
+      'Home banners', 'Category tiles', 'Product card imagery',
+      'Campaign landing skins', 'Seasonal refreshes', 'Lifestyle photography',
+      'Promo modules', 'Brand-book system',
     ],
   },
 ];
@@ -131,80 +131,80 @@ const processSteps = [
     short: 'Brief',
     tier: 'Where it is won',
     title: 'Discovery and brief.',
-    body: 'One working session to lock the goal, the buyer, the LinkedIn surfaces in scope, the brand truth and the no-go zones. Output is a one-page strategic brief and an asset map by placement and by service lane.',
-    image: '/Images/linkedin-p1-brief.jpg',
-    alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the LinkedIn Campaign Manager dashboard alongside printed LinkedIn feed and document carousel screenshots.',
+    body: 'One working session to lock the goal, audience, WeChat surfaces in scope, brand truth and no-go zones. Output is a one-page strategic brief and an asset map by surface and by service lane.',
+    image: '/Images/wechat-p1-brief.jpg',
+    alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the WeChat Official Account dashboard alongside printed Moments and Channels screenshots.',
   },
   {
     short: 'Direction',
     tier: 'Where it is won',
     title: 'Creative direction across the four lanes.',
-    body: 'Visual references locked, tone defined, post structures drafted, AIGC and avatar model selection made per surface and per service. Content, ad creative, thought leadership and avatar each get their own treatment. This is where a campaign becomes ownable.',
-    image: '/Images/linkedin-p2-direction.jpg',
-    alt: 'A storyboard wall with four columns of frame sketches labelled Content, Ads, Thought leadership and Avatar, each column anchored by a printed LinkedIn feed post mock.',
+    body: 'Visual references locked, tone defined, the editorial voice set for the Official Account, AIGC and avatar model selection made per surface. Content, ad creative, Channels and storefront each get their own treatment. This is where a campaign becomes ownable.',
+    image: '/Images/wechat-p2-direction.jpg',
+    alt: 'A storyboard wall with four columns of frame sketches labelled Content, Ads, Channels and Storefront, each column anchored by a printed WeChat phone mock.',
   },
   {
     short: 'AIGC',
     tier: 'The rest is execution',
     title: 'AIGC generation and authored finish.',
-    body: 'Per-lane generation across the agreed surfaces. Every post, ad and video goes through the studio edit and brand-check pass before any media plan or content calendar sees it.',
-    image: '/Images/linkedin-p3-aigc.jpg',
-    alt: 'A designer at a calibrated workstation, the main monitor showing a single LinkedIn document carousel page, the side panel showing the LinkedIn Campaign Manager creative library grid of variants.',
+    body: 'Per-lane generation across the agreed surfaces. Every output goes through the studio retouch and brand-check pass before any media plan or publishing calendar sees it.',
+    image: '/Images/wechat-p3-aigc.jpg',
+    alt: 'A motion designer at a calibrated workstation, the main monitor showing a single WeChat Channels hero frame, the side panel showing the Tencent Ads creative library grid of variants.',
   },
   {
     short: 'Launch',
     tier: 'The rest is execution',
-    title: 'Launch. Per-placement, per-market.',
-    body: 'Assets handed to the media and social teams in the formats LinkedIn actually serves, with naming, ratios and durations matched to Sponsored Content, Conversation Ads and organic placements. Tracking and creative naming built for downstream reporting.',
-    image: '/Images/linkedin-p4-launch.jpg',
-    alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the LinkedIn Campaign Manager campaign dashboard with Sponsored Content placements live.',
+    title: 'Launch. Per-surface, per-market.',
+    body: 'Assets handed over in the formats WeChat actually serves: article image sets ready to schedule, Moments and Channels ads named for Tencent Ads, storefront skins sized to the Mini Program frames. Tracking and creative naming built for downstream reporting.',
+    image: '/Images/wechat-p4-launch.jpg',
+    alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the Tencent Ads campaign dashboard with WeChat Moments ad placements live.',
   },
   {
     short: 'Adapt',
     tier: 'The rest is execution',
     title: 'Adapt. Variants, refresh, season.',
-    body: 'Once the hero is signed off, the variant cascade lands in days. New audiences, new seniorities, new industries, new quarters. The brief stays the same, the variants compound.',
-    image: '/Images/linkedin-p5-adapt.jpg',
-    alt: 'An editor at a calibrated suite, the main reference monitor showing a LinkedIn native video post paused on a presenter frame, the LinkedIn post interface elements visible at the screen edges.',
+    body: 'Once the hero is signed off, the variant cascade lands in days. New audiences, new cities, new festivals, new seasons. The brief stays the same, the variants compound.',
+    image: '/Images/wechat-p5-adapt.jpg',
+    alt: 'A colourist at a calibrated grading suite, the main reference monitor showing a warm WeChat Channels frame paused on a product still, the Channels interface elements visible at the screen edges.',
   },
 ];
 
 const faqs = [
   {
-    q: 'What exactly do you produce for LinkedIn?',
-    a: 'Four lanes, one studio. Content covers organic company-page work: feed posts, document carousels, native video, polls and newsletter editions. Ad creative covers Sponsored Content, Conversation Ads, Dynamic Ads and Lead Gen creative built for Campaign Manager. Thought leadership covers executive ghostwriting and Thought Leader Ads in the founder voice. Avatar covers brand-owned synthetic presenters for native LinkedIn video. The lanes share one creative direction and one finishing pass, so the long tail looks like the hero.',
+    q: 'What exactly do you produce for WeChat?',
+    a: 'Four lanes, one studio. Content covers Official Account articles, from the cover image to the full editorial layout, for both Service and Subscription accounts. Ad creative covers Moments ads, Channels in-feed video, banner and Mini Program placements built for Tencent Ads. Channels covers short-form video and livestream creative for the WeChat Channels surface. Storefront covers the visual design of a Mini Program: banners, product cards and campaign skins. The four lanes share one creative direction and one finishing pass, so the long tail looks like the hero.',
   },
   {
-    q: 'How is the thought leadership lane different from regular content?',
-    a: "Content-lane work runs under the company page; thought leadership runs under a person. We ghostwrite for founders and executives from a real working session, so the POV posts, document essays and commentary read in their voice rather than a generic leadership template. When a post earns it, we build the matching Thought Leader Ad so the personal post runs in paid distribution under the executive's name.",
+    q: 'Who writes the Official Account articles?',
+    a: 'Native Mandarin writers who publish on WeChat every week, not translators working from an English document. An article is written for the surface from the first line: a cover that earns the tap, a headline that survives a crowded subscription list, an editorial layout designed image by image rather than pasted together. The English brief sets the strategy; the article itself is authored in Chinese for a Chinese reader.',
   },
   {
-    q: 'Tell me more about the Avatar lane on LinkedIn.',
-    a: 'We build and train a brand-owned synthetic presenter: a founder twin, a product expert or a localised cast per market. The avatar speaks to camera in native video posts, hosts webinar and event clips and narrates explainers, so the brand ships weekly video without the founder ever booking a shoot. Lip-sync is studio-tight, the look stays inside the brand book, and the same avatar runs in every language your buyers speak.',
+    q: 'What does the Storefront lane actually cover?',
+    a: 'The visual design and the imagery, not the back end. We design the Mini Program storefront system, the home banner, the category tiles, the product card grid, the campaign landing skins, and we shoot or generate the product and lifestyle imagery that fills it, sized to the frames the Mini Program serves. Your team or your developer handles registration, verification and the build; we hand over a finished design and a full image set.',
   },
   {
-    q: 'Can you produce content at the volume our calendar needs?',
-    a: 'Yes. A single hero shoot or AIGC sprint produces the master, and the variant cascade lands per audience and per market inside days. The cost-per-variation curve flattens fast: the first variant is expensive, the fiftieth is close to free. Custom-trained LoRA models on your brand keep every frame on-brand.',
+    q: 'Can you produce Channels video at the volume our plan needs?',
+    a: 'Yes. A single hero shoot or AIGC sprint produces the master, and the variant cascade lands per audience and per city inside days. The cost-per-variation curve flattens fast: the first variant is expensive, the fiftieth is close to free. Custom-trained LoRA models on your brand keep every frame on-brand, and optional avatar presenters mean a refresh never needs a re-shoot.',
   },
   {
     q: 'How do you keep the brand line consistent across the four lanes?',
-    a: 'The hero concept is signed off once, in the direction step. After that, every variant in every lane runs through the same edit pass, the same design system and the same brand-safety check. The studio is what keeps content, ad creative, thought leadership and avatar reading like one campaign rather than four parallel ones.',
+    a: 'The hero concept is signed off once, in the direction step. After that, every variant in every lane runs through the same retouch pass, the same colour grade and the same brand-safety check. The studio is what keeps articles, ad creative, Channels video and storefront design reading like one campaign rather than four parallel ones.',
   },
   {
-    q: 'What is your turnaround for a feed post or document carousel?',
-    a: 'Organic LinkedIn work on an existing brand can be brief to first cut in 24 to 72 hours. A new brand or a new positioning takes a one-time onboarding to lock the treatment, the voice and the avatar; after that, weekly drops at production-grade quality are the working tempo.',
+    q: 'What is your turnaround for a Moments ad or a Channels cut?',
+    a: 'Short-form creative on an existing brand can be brief to first cut in 24 to 72 hours. A new brand or a new product takes a one-time onboarding to lock the treatment, the LoRA models and the avatar; after that, weekly drops at production-grade quality are the working tempo. Trend-reactive pieces can turn around inside a day or two when the calendar calls for it.',
   },
   {
-    q: 'Do you handle LinkedIn Campaign Manager ad formats?',
-    a: 'Yes. We brief the ad creative lane around the format mix the media team is buying: Sponsored Content single image, carousel, document and video, Conversation and Message Ads for the inbox, and Dynamic Ads that personalise off profile data. Variants are produced with the format diversity the testing plan needs and named so the reporting downstream is legible.',
+    q: 'Do you handle Tencent Ads placements and dynamic creative?',
+    a: 'Yes. We brief the ad creative lane around the placement set the media team is buying across Tencent Ads, including Moments, Channels, banner and Mini Program units. Variants are produced with the format diversity dynamic creative needs and named so the reporting downstream stays legible. We produce and finish the creative; the media buying itself stays with whoever runs your account.',
   },
   {
     q: 'How do you keep the work from feeling AI-generated?',
-    a: 'Every output goes through a studio finishing pass: copy edited by hand, layouts set in the brand design system, video graded and any image retouched with grain and a real colour grade. The image style guide rules out the AI tells: poreless skin, identical bokeh, melted UI, almost-but-not-quite text. The final file passes a human review before any media plan or calendar sees it. This is what closes the gap between an AI asset and a campaign asset.',
+    a: 'Every output goes through a studio retouch pass: dodge and burn, grain, chromatic aberration and a colour grade in Lightroom or Capture One. The image style guide rules out the AI tells: poreless skin, identical bokeh, melted product detail, almost-but-not-quite text. The final file passes a human review before any media plan or publishing calendar sees it. This is what closes the gap between an AI image and a campaign image.',
   },
   {
     q: 'Can you white-label this for our agency?',
-    a: 'Yes. A significant share of our LinkedIn work runs under agency brands, with full white-label delivery and confidential collaboration. The agency owns the relationship and the client communication; we deliver the production capability behind it.',
+    a: 'Yes. A significant share of our WeChat work runs under agency brands, with full white-label delivery and confidential collaboration. The agency owns the relationship and the client communication; we deliver the production capability behind it.',
   },
   {
     q: 'Who owns the assets, the masters and the trained models?',
@@ -225,8 +225,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="LinkedIn AIGC: B2B Content & Ad Creative at Scale"
-  description="AIGC for LinkedIn. Company page content, document carousels, thought leadership and Campaign Manager ad creative, produced inside a working studio. One brief, every placement."
+  title="WeChat AIGC: Official Account, Channels & Moments Creative at Scale"
+  description="AIGC for WeChat. Official Account articles, Moments ads, Channels video and Mini Program storefront design, produced inside a working studio. One brief, every surface."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -243,26 +243,25 @@ const faqSchema = {
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
             <span class="kicker__tick"></span>Platform
-            <span class="kicker__sep">/</span> LinkedIn
+            <span class="kicker__sep">/</span> WeChat
           </p>
           <h1 class="hero__title">
             <span class="line"><span class="line__i">Four lanes,</span></span>
-            <span class="line"><span class="line__i serif">one LinkedIn brief.</span></span>
+            <span class="line"><span class="line__i serif">one WeChat brief.</span></span>
             <span class="line"><span class="line__i">AIGC, in scale.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Content. Ad creative. Thought leadership. <em>Avatar.</em>
+            Content. Ad creative. Channels. <em>Storefront.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              We ship four kinds of work into LinkedIn: organic content for
-              the company page, feed and document carousels; performance ad
-              creative built for Campaign Manager; thought leadership written
-              in the founder voice; and brand-owned avatar presenters for
-              native LinkedIn video.
+              We ship four kinds of work into WeChat: editorial articles for
+              the Official Account; performance ad creative for Tencent Ads;
+              short-form video and livestream for Channels; and the visual
+              design of a Mini Program storefront.
             </p>
             <p>
-              One brief, four lanes, every placement. One hero direction, fifty
+              One brief, four lanes, every surface. One hero direction, fifty
               market variants. AIGC inside a working production company, not in
               place of one.
             </p>
@@ -277,20 +276,20 @@ const faqSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Hong Kong + Shanghai <span>/</span> LinkedIn-native creative under one director
+            Hong Kong + Shanghai <span>/</span> WeChat-native creative under one director
           </p>
         </div>
       </div>
       <div class="hero__visual">
         <img
-          src="/Images/linkedin-hero.jpg"
-          alt="A close editorial portrait of a hand holding a phone in warm rim light, the phone screen filled with a LinkedIn feed post including the reaction bar and comment count of the post interface."
+          src="/Images/wechat-hero.jpg"
+          alt="A close editorial portrait of a hand holding a phone in warm rim light, the phone screen filled with an open WeChat Official Account article showing the wide cover image and the stacked article headline."
           width="1024"
           height="1024"
           loading="eager"
           fetchpriority="high"
         />
-        <span class="hero__chip">Platform work <span>/</span> LinkedIn</span>
+        <span class="hero__chip">Platform work <span>/</span> WeChat</span>
       </div>
     </section>
 
@@ -305,21 +304,20 @@ const faqSchema = {
           <div class="why__head">
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
             <h2 class="dh r" style="--d:.05s">
-              What we ship<br /><span class="serif">into LinkedIn</span>.
+              What we ship<br /><span class="serif">into WeChat</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              We do four kinds of work for LinkedIn, end to end. Organic
-              content for the company page, feed, document carousels and
-              newsletter. Paid ad creative built for Sponsored Content,
-              Conversation Ads and Dynamic Ads. Thought leadership
-              ghostwritten in the founder voice. Brand-owned avatar
-              presenters for native LinkedIn video.
+              We do four kinds of work for WeChat, end to end. Editorial
+              articles for the Official Account, written by native Mandarin
+              hands. Paid ad creative built for every Tencent Ads surface.
+              Short-form video and livestream for Channels. The visual design
+              of a Mini Program storefront, sized to the frames it serves.
             </p>
             <p class="r" style="--d:.16s">
               One creative direction sits across all four. The same studio
-              hands that finish the hero carry every variant in every lane,
+              hands that retouch the hero finish every variant in every lane,
               so the long tail looks like the campaign rather than a thinned
               clone of it.
             </p>
@@ -329,8 +327,8 @@ const faqSchema = {
         <figure class="why__shot crop r-clip">
           <div class="crop__inner">
             <img
-              src="/Images/linkedin-roots.jpg"
-              alt="A wide editorial shot of two designers at a daylit studio table, four laptop screens lined up showing the LinkedIn company-page feed, a LinkedIn document carousel, the LinkedIn Campaign Manager creative library and a LinkedIn personal-profile post, one per service lane."
+              src="/Images/wechat-roots.jpg"
+              alt="A wide editorial shot of two designers at a daylit studio table, four laptop screens lined up showing a WeChat Official Account article, the Tencent Ads creative library, a WeChat Channels video feed and a Mini Program storefront, one per service lane."
               width="1408"
               height="768"
               loading="lazy"
@@ -341,10 +339,10 @@ const faqSchema = {
 
         <div class="stats">
           <p class="stats__quote r">
-            One LinkedIn brief, four service lanes, every placement. Content,
-            ad creative, thought leadership and avatar finished by the same
-            studio hands, with fifty-plus variants per concept and brief to
-            first cut inside forty-eight hours on organic work.
+            One WeChat brief, four service lanes, every surface. Articles, ad
+            creative, Channels and storefront finished by the same studio
+            hands, with fifty-plus variants per concept and brief to first cut
+            inside forty-eight hours on short-form work.
           </p>
           <div class="stats__grid">
             {
@@ -426,9 +424,9 @@ const faqSchema = {
             </h2>
           </div>
           <p class="band__note r" style="--d:.1s">
-            Feed posts, document carousels and Sponsored Content stills
-            produced through the studio pipeline. Every frame is authored
-            work, sized for the surface it ships on.
+            Articles, Moments ads, Channels cuts and storefront stills produced
+            through the studio pipeline. Every frame is authored work, sized
+            for the surface it ships on.
           </p>
         </header>
 
@@ -462,8 +460,8 @@ const faqSchema = {
           <figure class="source__main crop">
             <div class="crop__inner">
               <img
-                src="/Images/linkedin-hybrid-main.jpg"
-                alt="A producer at a wide reference monitor showing the LinkedIn Campaign Manager creative library, four columns of LinkedIn ad and post variants tagged Content, Ads, Thought leadership and Avatar."
+                src="/Images/wechat-hybrid-main.jpg"
+                alt="A producer at a wide reference monitor showing the Tencent Ads creative library, four columns of WeChat ad variants tagged Content, Ads, Channels and Storefront."
                 width="1024"
                 height="1024"
                 loading="lazy"
@@ -472,8 +470,8 @@ const faqSchema = {
           </figure>
           <figure class="source__inset">
             <img
-              src="/Images/linkedin-hybrid-inset.jpg"
-              alt="A close cinematic detail of a hand holding a phone vertically against a soft cream background, the screen filled with a LinkedIn feed post including the reaction bar and comment count of the post interface."
+              src="/Images/wechat-hybrid-inset.jpg"
+              alt="A close cinematic detail of a hand holding a phone vertically against a soft cream background, the screen filled with an open WeChat Official Account article showing the cover image and the article header."
               width="1024"
               height="1024"
               loading="lazy"
@@ -481,7 +479,7 @@ const faqSchema = {
           </figure>
           <div class="source__stat">
             <span class="source__stat-num">1 brief</span>
-            <span class="source__stat-cap">Four lanes, every placement, every market</span>
+            <span class="source__stat-cap">Four lanes, every surface, every market</span>
           </div>
         </div>
 
@@ -491,16 +489,16 @@ const faqSchema = {
             Authored creative, <span class="serif">AI volume</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            The LinkedIn brands compounding their pipeline in 2026 are not
-            the ones posting the most. They are the ones running an
-            authored creative process with AIGC inside it.
+            The WeChat brands compounding their results in 2026 are not the
+            ones with the loudest stack. They are the ones running an authored
+            creative process with AIGC inside it.
           </p>
           <p class="source__p r" style="--d:.16s">
             We sit between the technical and the creative: a working studio
-            with editors, designers and colourists alongside the AIGC
-            engineers and the LoRA-training pipeline. Every variant ships
-            with the same brand discipline as the hero, because the same
-            hands sign it off.
+            with directors, writers, retouchers and colourists alongside the
+            AIGC engineers and the LoRA-training pipeline. Every variant ships
+            with the same brand discipline as the hero, because the same hands
+            sign it off.
           </p>
           <ul class="creds r" style="--d:.22s">
             {
@@ -515,9 +513,9 @@ const faqSchema = {
             }
           </ul>
           <p class="source__p r" style="--d:.26s">
-            Everything runs on private infrastructure with hosting in
-            mainland China, Hong Kong, the EU or the US depending on your
-            data sovereignty position. Custom-trained LoRA models stay your
+            Everything runs on private infrastructure with hosting in mainland
+            China, Hong Kong, the EU or the US depending on your data
+            sovereignty position. Custom-trained LoRA models stay your
             property and can be exported if you ever leave.
           </p>
           <p class="source__p source__p--quiet r" style="--d:.3s">
@@ -530,15 +528,15 @@ const faqSchema = {
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
-        <p class="kicker r"><span class="kicker__tick"></span>How a LinkedIn campaign runs</p>
+        <p class="kicker r"><span class="kicker__tick"></span>How a WeChat campaign runs</p>
         <h2 class="dh r" style="--d:.05s">
-          One brief,<br />every <span class="serif">placement</span>.
+          One brief,<br />every <span class="serif">surface</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Feed posts, carousels, video and Sponsored Content share the
-          same brand line, and the same process. The format changes; the
-          discipline stays the same. The work is won in the direction, not
-          in the launch.
+          Articles, Moments ads, Channels video and storefront design share
+          the same brand line, and the same process. The format changes; the
+          discipline stays the same. The work is won in the direction, not in
+          the launch.
         </p>
         <p class="craft__note r" style="--d:.16s">
           The first two steps are where it is won or lost. The rest is execution.
@@ -658,12 +656,12 @@ const faqSchema = {
       <div class="shell end__inner">
         <p class="kicker kicker--light r"><span class="kicker__tick"></span>Try us</p>
         <h2 class="end__title r" style="--d:.05s">
-          Send the LinkedIn brief.<br />Back in <span class="serif">48 hours</span>.
+          Send the WeChat brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          A placement-by-placement recommendation, a scope outline, an
-          indicative timeline and a few free feed posts or carousel frames
-          so you can see the thinking before any budget commits.
+          A surface-by-surface recommendation, a scope outline, an indicative
+          timeline and a few free article or Channels frames so you can see
+          the thinking before any budget commits.
         </p>
         <div class="end__cta r" style="--d:.18s">
           <Button variant="primary" href="/contact">Send the brief</Button>
