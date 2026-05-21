@@ -12,7 +12,13 @@ import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 import { caseStudies } from '../../data/case-studies';
 
-const total = caseStudies.length;
+// Shuffle the grid so the page leads with a different project on each
+// build. Fisher-Yates, run once at build time.
+const shuffled = [...caseStudies];
+for (let i = shuffled.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+}
 ---
 
 <Layout
@@ -33,15 +39,36 @@ const total = caseStudies.length;
       <p class="hero__lede">
         Real briefs, real brands, real constraints
       </p>
-      <p class="hero__intro">
-        A fragrance that had to transform on screen. A five-platform campaign
-        with a five-day deadline. A heritage jeweller closing years of digital
-        lag. Each project below started as a problem traditional production
-        could not solve at the speed or the budget the brand needed.
-      </p>
+      <div class="hero__cols">
+        <p class="hero__intro">
+          A fragrance that had to transform on screen. A five-platform
+          campaign with a five-day deadline. A heritage jeweller closing years
+          of digital lag. Each project below started as a problem traditional
+          production could not solve at the speed or the budget the brand
+          needed.
+        </p>
+        <div class="hero__note">
+          <p class="hero__note-text">
+            A lot of what we make never carries our name. We run OEM for
+            agencies and subcontract for brands, so plenty of the work never
+            reaches this page.
+          </p>
+          <a class="hero__note-cta" href="/contact">
+            Ask us to see more case studies
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5 12h13M12 5l7 7-7 7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
       <div class="hero__meta">
-        <span class="hero__meta-item">{total} case studies</span>
-        <span class="hero__meta-item">Fashion, beauty, retail, electronics</span>
         <span class="hero__meta-item">Clients across Europe, Asia and the Americas</span>
       </div>
     </div>
@@ -52,7 +79,7 @@ const total = caseStudies.length;
     <div class="container">
       <ul class="work__grid">
         {
-          caseStudies.map((c, i) => (
+          shuffled.map((c, i) => (
             <li class="work__item" data-reveal style={`--i:${i % 2}`}>
               <a class="study" href={`/work/${c.slug}`}>
                 <div class="study__media">
@@ -222,12 +249,53 @@ const total = caseStudies.length;
     line-height: 1.12;
     max-width: 22ch;
   }
+  .hero__cols {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    align-items: stretch;
+    max-width: 980px;
+  }
   .hero__intro {
-    margin-top: 22px;
-    max-width: 62ch;
+    align-self: center;
     font-size: var(--type-body);
     line-height: 1.64;
     color: rgba(240, 237, 233, 0.82);
+  }
+  .hero__note {
+    display: flex;
+    flex-direction: column;
+    padding: 22px 24px;
+    border: 1px solid rgba(240, 237, 233, 0.14);
+    border-left: 3px solid var(--brand-orange);
+    border-radius: 4px;
+    background: rgba(240, 237, 233, 0.04);
+  }
+  .hero__note-text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.86);
+  }
+  .hero__note-cta {
+    margin-top: auto;
+    padding-top: 16px;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: var(--type-body);
+    color: var(--brand-orange);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+  .hero__note-cta svg {
+    width: 18px;
+    height: 18px;
+  }
+  .hero__note-cta:hover {
+    gap: 12px;
   }
   .hero__meta {
     margin-top: 30px;
@@ -259,6 +327,7 @@ const total = caseStudies.length;
   .hero__w,
   .hero__lede,
   .hero__intro,
+  .hero__note,
   .hero__meta {
     opacity: 0;
     animation: heroRise 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
@@ -268,7 +337,8 @@ const total = caseStudies.length;
   .hero__w:nth-child(2) { animation-delay: 0.32s; }
   .hero__lede { animation-delay: 0.46s; }
   .hero__intro { animation-delay: 0.58s; }
-  .hero__meta { animation-delay: 0.7s; }
+  .hero__note { animation-delay: 0.68s; }
+  .hero__meta { animation-delay: 0.78s; }
   @keyframes heroRise {
     from { opacity: 0; transform: translateY(34px); }
     to { opacity: 1; transform: translateY(0); }
@@ -286,6 +356,10 @@ const total = caseStudies.length;
     .work__grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 40px;
+    }
+    .hero__cols {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px 44px;
     }
   }
 
@@ -477,6 +551,7 @@ const total = caseStudies.length;
     .hero__w,
     .hero__lede,
     .hero__intro,
+    .hero__note,
     .hero__meta {
       opacity: 1 !important;
       transform: none !important;

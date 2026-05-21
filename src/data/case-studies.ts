@@ -70,6 +70,83 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: 'iflytek-anypin',
+    client: 'iFlytek',
+    title: 'A global AI wearable launch, produced in one hybrid build',
+    category: 'Product launch video',
+    industry: 'Consumer electronics',
+    region: 'Global',
+    summary:
+      'iFlytek launched its Anypin AI wearable pin globally. We produced one hybrid film mixing live shooting, CGI and AIGC, then cut it for every channel.',
+    hero: {
+      src: '/Images/work/iflytek-hero.webp',
+      alt: 'A frame from the iFlytek Anypin launch film showing the AI wearable pin clipped to a jacket in a cinematic product moment.',
+    },
+    challenge: [
+      'iFlytek was launching Anypin, a wearable AI pin that listens, records and acts as a personal assistant clipped to a jacket or a shirt. The film had to introduce the product to people who had never seen one, explain what it does in daily life, and build enough trust to turn a curious viewer into a buyer.',
+      'The brief called for hybrid production. Real product footage, because viewers can tell when a launch film does not have a single frame of the actual device. CGI for the interface, the signals and the way Anypin responds to a voice or a tap. AIGC for the world around the product, from a morning commute to a parent in a kitchen or a traveler picking something up at a market.',
+      'A traditional workflow would have split the job across three vendors and a sequential timeline of three to four months end to end. For a global launch with a fixed window, that math does not work.',
+    ],
+    approachLead:
+      'We ran it as one production from the first storyboard: three disciplines, one creative direction, one editorial team holding the cut together.',
+    approach: [
+      {
+        title: 'One visual grammar across three disciplines',
+        desc: 'Live footage, CGI and AIGC scenes shared the same lighting, color palette and camera language. Setting those rules early was the only way to keep the seams hidden.',
+      },
+      {
+        title: 'Live shooting for the product hero',
+        desc: 'A two-day shoot covered the product moments on set: macro work, packaging, the pin in hand and the pin on a jacket.',
+      },
+      {
+        title: 'CGI for the intelligence of the device',
+        desc: 'A small CGI team built the interface and the way the AI responds in a scene, so the product speaks visually without screen captures or static mockups.',
+      },
+      {
+        title: 'AIGC for the world around the product',
+        desc: 'Our AIGC pipeline generated the contextual scenes: several markets and several lifestyle moments at different times of day, with no crews flown to multiple locations.',
+      },
+      {
+        title: 'Modular from the start',
+        desc: 'The hero film was storyboarded so the short cuts came out of the same shoot and the same renders. No reframing, no version-two passes after the fact.',
+      },
+    ],
+    delivered: [
+      'A 90-second hero film for the website and eCommerce product pages',
+      'Six use case vignettes, each running 15 to 30 seconds',
+      'Vertical 9:16, square 1:1 and horizontal 16:9 versions of every cut',
+      'Platform-specific edits for Meta, TikTok, YouTube, Douyin and RedNote',
+      'Localized voiceovers and on-screen text in English, Simplified Chinese and Spanish',
+      'A modular asset library the iFlytek team can re-cut for future campaigns',
+    ],
+    results: [
+      { value: '3 techniques', label: 'Live shooting, CGI and AIGC under one creative direction' },
+      { value: '22 cuts', label: 'Hero film, use case vignettes and platform edits' },
+      {
+        value: 'Weeks, not months',
+        label: 'A sequential three-vendor workflow would have run three to four times longer',
+      },
+    ],
+    services: [
+      'Hybrid creative direction',
+      'Storyboarding',
+      'Live action shoot',
+      'CGI interface design',
+      'AIGC environments',
+      'Editorial & localization',
+    ],
+    gallery: [],
+    videos: [
+      {
+        mp4: '/Video/iflytek-1.mp4',
+        webm: '/Video/iflytek-1.webm',
+        poster: '/Video/iflytek-1-poster.webp',
+        alt: 'iFlytek Anypin hybrid launch film, mixing live shooting, CGI and AIGC.',
+        aspect: '16 / 9',
+      },
+    ],
+  },
+  {
     slug: 'noyz-mylk-de-parfum',
     client: 'Noyz',
     title: 'A fragrance that turns to milk on the skin',
