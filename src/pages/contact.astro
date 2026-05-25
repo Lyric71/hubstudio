@@ -201,11 +201,11 @@ const budgetRanges = [
           </fieldset>
 
           <fieldset class="choice-set">
-            <legend>Interested in design as a subscription <span class="req">*</span></legend>
+            <legend>Interested in design as a subscription <span class="opt-tag">optional</span></legend>
             <div class="choice">
               {subscriptionOptions.map((o) => (
                 <label class="pick-wrap">
-                  <input type="radio" name="subscription" value={o} required />
+                  <input type="radio" name="subscription" value={o} />
                   <span class="pick">{o}</span>
                 </label>
               ))}
