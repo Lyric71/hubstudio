@@ -10,8 +10,8 @@ import { Resend } from 'resend';
 
 export const prerender = false;
 
-const TO = 'hello@hubstudio.ai';
-const FROM = 'hubStudio Contact <hello@hubstudio.ai>';
+const TO = 'cyril.drouin@outlook.com';
+const FROM = 'hubStudio Contact <onboarding@resend.dev>';
 
 /** Escape values before they land in the notification email's HTML. */
 function esc(value: string): string {
