@@ -111,7 +111,8 @@ const commentsReady = kvConfigured();
                       <button
                         type="button"
                         class="db-zoom"
-                        data-zoom={asset.image}
+                        data-zoom={asset.full ?? asset.image}
+                        data-download={asset.original ?? asset.full ?? asset.image}
                         aria-label={`View ${asset.title} full size`}
                       >
                         <img
@@ -628,14 +629,17 @@ const commentsReady = kvConfigured();
   const lbImg = document.querySelector<HTMLImageElement>('[data-lb-img]');
   const lbDownload = document.querySelector<HTMLAnchorElement>('[data-lb-download]');
 
-  function openLightbox(src: string, alt: string): void {
+  // The preview shown on screen and the file the Download button saves are
+  // separate: preview uses `full` (fast to load), download uses `original`
+  // (the untouched full-res model output).
+  let downloadSrc = '';
+
+  function openLightbox(preview: string, download: string, alt: string): void {
     if (!lb || !lbImg) return;
-    lbImg.src = src;
+    lbImg.src = preview;
     lbImg.alt = alt;
-    if (lbDownload) {
-      lbDownload.href = src;
-      lbDownload.setAttribute('download', src.split('/').pop() || 'asset');
-    }
+    downloadSrc = download;
+    if (lbDownload) lbDownload.href = download; // fallback for no-JS / middle-click
     lb.hidden = false;
     document.body.style.overflow = 'hidden';
   }
@@ -647,11 +651,42 @@ const commentsReady = kvConfigured();
     document.body.style.overflow = '';
   }
 
+  // Force a real file save of the original, bypassing the browser's tendency to
+  // navigate to (rather than download) large same-origin assets.
+  async function downloadOriginal(): Promise<void> {
+    if (!downloadSrc) return;
+    const name = downloadSrc.split('/').pop() || 'asset';
+    try {
+      const res = await fetch(downloadSrc);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      // Network failure: fall back to a plain navigation to the file.
+      window.open(downloadSrc, '_blank');
+    }
+  }
+
   document.querySelectorAll<HTMLButtonElement>('.db-zoom').forEach((btn) => {
     btn.addEventListener('click', () => {
       const img = btn.querySelector('img');
-      openLightbox(btn.dataset.zoom ?? '', img?.alt ?? '');
+      openLightbox(
+        btn.dataset.zoom ?? '',
+        btn.dataset.download ?? btn.dataset.zoom ?? '',
+        img?.alt ?? '',
+      );
     });
+  });
+
+  lbDownload?.addEventListener('click', (e) => {
+    e.preventDefault();
+    downloadOriginal();
   });
 
   document.querySelector('[data-lb-close]')?.addEventListener('click', closeLightbox);

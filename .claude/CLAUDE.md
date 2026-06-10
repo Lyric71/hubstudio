@@ -75,6 +75,45 @@ Browser-native `<ol>` numbering counts too: suppress it in these blocks. When
 building or editing any such component, ship it numberless from the start; when
 reviewing existing pages, strip any numeral you find. No exceptions.
 
+## DeBeers review page (PERMANENT)
+
+`/debeers` is a hidden, password-gated asset-review page. These rules are
+binding for it and any page built on the same pattern.
+
+- **Hidden and private.** Server-rendered (`prerender = false`), gated by a
+  password checked server-side in [`src/lib/debeers.ts`](../src/lib/debeers.ts)
+  that sets a signed `httpOnly` session cookie via `/api/debeers/login`. Never
+  downgrade to a client-side-only gate. The page is `noindex`, excluded from the
+  sitemap (`astro.config.mjs` filter) and disallowed in `robots.txt`, and never
+  appears in the nav. Secrets (`DEBEERS_PASSWORD`, `DEBEERS_SESSION_SECRET`)
+  belong in env vars; KV creds in `KV_REST_API_URL` / `KV_REST_API_TOKEN`.
+- **Asset records** live in `src/data/debeers-assets.ts`, one typed entry each:
+  `id`, `title`, `image` (grid thumbnail), optional `full` (enlarge preview),
+  optional `original` (download), `alt`, `description`, `spec`. The `id` is also
+  the Vercel KV key for that asset's comments, so it is stable: never rename or
+  reuse an `id` once comments exist.
+- **Three image tiers, never confused.**
+  - `image` — optimized thumbnail in `public/Images/debeers/` (≤2000px), grid only.
+  - `full` — full-resolution file for click-to-enlarge (lighter webp is fine
+    here; it is only a preview).
+  - `original` — the untouched model output before any optimization (the source
+    PNG). **The Download button MUST serve `original`** (falling back to `full`,
+    then `image`). Never let download hand back the optimized thumbnail.
+- **Originals and previews stay un-optimized.** Both `full` and `original` live
+  in `public/debeers-full/`, deliberately OUTSIDE `public/Images/` so neither the
+  pre-commit optimizer nor `optimize-images-batch.mjs` (both scoped to
+  `public/Images/`) ever downsizes or re-compresses them. Never move either under
+  `public/Images/`, and never point `original`/`full` at an optimized thumbnail.
+- **All tiers must match.** `image`, `full`, and `original` are the same picture
+  at three fidelities, all derived from ONE generation. Never pair a thumbnail
+  with a different original. When regenerating an asset, rebuild all three from
+  the new source PNG in one pass.
+- **Comments** are stored in Vercel KV (Upstash REST, plain `fetch`), one Redis
+  list per asset id; anyone with the password can post. Deleting an asset's
+  comments means deleting its `debeers:comments:<id>` key.
+- Asset images still obey the image style guide below and are produced with
+  `scripts/generate-image*.mjs`.
+
 ## Image style guide (MANDATORY)
 
 `hubstudio-image-style-guide.md` (repo root) is the binding visual standard for
