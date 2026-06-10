@@ -108,16 +108,25 @@ const commentsReady = kvConfigured();
                 {debeersAssets.map((asset) => (
                   <li class="db-asset" id={`asset-${asset.id}`}>
                     <figure class="db-figure">
-                      <img
-                        src={asset.image}
-                        alt={asset.alt}
-                        loading="lazy"
-                        class="db-img"
-                      />
+                      <button
+                        type="button"
+                        class="db-zoom"
+                        data-zoom={asset.image}
+                        aria-label={`View ${asset.title} full size`}
+                      >
+                        <img
+                          src={asset.image}
+                          alt={asset.alt}
+                          loading="lazy"
+                          class="db-img"
+                        />
+                        <span class="db-zoom-hint" aria-hidden="true">Click to enlarge</span>
+                      </button>
                     </figure>
                     <div class="db-body">
                       <h2 class="db-asset-title">{asset.title}</h2>
                       <p class="db-desc">{asset.description}</p>
+                      <p class="db-spec">{asset.spec}</p>
 
                       <div class="db-thread" data-asset={asset.id}>
                         <h3 class="db-thread-h">Comments</h3>
@@ -179,6 +188,18 @@ const commentsReady = kvConfigured();
           </div>
         )
       }
+    </div>
+
+    <div class="db-lightbox" data-lightbox hidden>
+      <div class="db-lightbox-bar">
+        <a class="db-lightbox-btn" data-lb-download href="#" download>
+          Download
+        </a>
+        <button type="button" class="db-lightbox-btn db-lightbox-close" data-lb-close>
+          Close
+        </button>
+      </div>
+      <img class="db-lightbox-img" data-lb-img src="" alt="" />
     </div>
   </section>
 </Layout>
@@ -360,6 +381,12 @@ const commentsReady = kvConfigured();
     line-height: 1.62;
     color: var(--text-ink);
   }
+  .db-spec {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    color: var(--text-mute);
+    letter-spacing: 0.02em;
+  }
 
   /* --- Thread --- */
   .db-thread {
@@ -432,6 +459,85 @@ const commentsReady = kvConfigured();
   }
   .db-form-msg[data-state='ok'] {
     color: var(--text-mute);
+  }
+
+  /* --- Zoomable thumbnail --- */
+  .db-zoom {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    position: relative;
+    cursor: zoom-in;
+  }
+  .db-zoom-hint {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(10, 10, 20, 0.55);
+    backdrop-filter: blur(4px);
+    padding: 6px 10px;
+    border-radius: var(--radius-pill);
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    pointer-events: none;
+  }
+  .db-zoom:hover .db-zoom-hint,
+  .db-zoom:focus-visible .db-zoom-hint {
+    opacity: 1;
+  }
+
+  /* --- Lightbox --- */
+  .db-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px 24px;
+    background: rgba(7, 9, 14, 0.92);
+    backdrop-filter: blur(6px);
+  }
+  .db-lightbox[hidden] {
+    display: none;
+  }
+  .db-lightbox-img {
+    max-width: min(100%, 1400px);
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+  }
+  .db-lightbox-bar {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 12px;
+  }
+  .db-lightbox-btn {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-pill);
+    padding: 9px 20px;
+    transition: background 0.18s ease;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+  .db-lightbox-btn:hover {
+    background: rgba(255, 255, 255, 0.24);
   }
 </style>
 
@@ -512,5 +618,48 @@ const commentsReady = kvConfigured();
         if (btn) btn.disabled = false;
       }
     });
+  });
+
+  /**
+   * Lightbox: click a thumbnail to view the asset full size, with a download
+   * link and close (button, backdrop click, or Escape).
+   */
+  const lb = document.querySelector<HTMLElement>('[data-lightbox]');
+  const lbImg = document.querySelector<HTMLImageElement>('[data-lb-img]');
+  const lbDownload = document.querySelector<HTMLAnchorElement>('[data-lb-download]');
+
+  function openLightbox(src: string, alt: string): void {
+    if (!lb || !lbImg) return;
+    lbImg.src = src;
+    lbImg.alt = alt;
+    if (lbDownload) {
+      lbDownload.href = src;
+      lbDownload.setAttribute('download', src.split('/').pop() || 'asset');
+    }
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(): void {
+    if (!lb || !lbImg) return;
+    lb.hidden = true;
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.db-zoom').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const img = btn.querySelector('img');
+      openLightbox(btn.dataset.zoom ?? '', img?.alt ?? '');
+    });
+  });
+
+  document.querySelector('[data-lb-close]')?.addEventListener('click', closeLightbox);
+  lb?.addEventListener('click', (e) => {
+    // Backdrop click closes; clicks on the image or toolbar do not.
+    if (e.target === lb) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lb && !lb.hidden) closeLightbox();
   });
 </script>
