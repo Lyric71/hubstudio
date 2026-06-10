@@ -84,7 +84,7 @@ export const debeersAssets: DebeersAsset[] = [
     original: '/debeers-full/bloomsbury-garden-square.png',
     alt: 'The model in her white silk shirt and diamond butterfly jewelry seated at an outdoor cafe table in a Bloomsbury garden square, cream Georgian stucco townhouses and leafy plane trees softly blurred behind her.',
     description:
-      'The model placed in a Bloomsbury garden square, seated at an outdoor cafe table. Cream-painted Georgian stucco townhouses with white sash windows and black iron railings sit behind her, framed by soft green plane trees. Subject, jewelry, and lighting kept unchanged from the source.',
+      'The model placed in a Bloomsbury garden square, seated at an outdoor cafe table. Cream-painted Georgian stucco townhouses with white sash windows and black iron railings sit behind her, framed by soft green plane trees. The black panel from the source is replaced by a pale stone tabletop.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -93,9 +93,9 @@ export const debeersAssets: DebeersAsset[] = [
     image: '/Images/debeers/bloomsbury-townhouse-balcony.webp',
     full: '/debeers-full/bloomsbury-townhouse-balcony.webp',
     original: '/debeers-full/bloomsbury-townhouse-balcony.png',
-    alt: 'The model on a wrought-iron Bloomsbury balcony at a small bistro table, pale Portland stone facade and the green canopy of garden-square trees behind her.',
+    alt: 'The model at a small bistro table on a wrought-iron Bloomsbury balcony terrace, pale Portland stone facade and the green canopy of garden-square trees behind her.',
     description:
-      'The model on a wrought-iron Bloomsbury balcony, leaning at a small bistro table. A black iron balustrade, pale Portland stone facade, and the green canopy of the garden square sit behind her under soft diffused morning light.',
+      'The model at a bistro table on a wrought-iron Bloomsbury balcony terrace. A black iron balustrade, pale Portland stone facade, and the green canopy of the garden square sit behind her under soft diffused morning light. A pale stone tabletop replaces the source black panel.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -106,7 +106,7 @@ export const debeersAssets: DebeersAsset[] = [
     original: '/debeers-full/bloomsbury-british-museum.png',
     alt: 'The model seated near the neoclassical colonnade of the British Museum in Bloomsbury, tall fluted limestone columns and pale stone steps softly blurred behind her.',
     description:
-      'The model seated near the British Museum colonnade in Bloomsbury. Tall fluted limestone columns and pale stone steps fall into soft focus behind her, with a hint of green from nearby trees and gentle overcast light.',
+      'The model seated near the British Museum colonnade in Bloomsbury. Tall fluted limestone columns and pale stone steps fall into soft focus behind her, with a hint of green from nearby trees and gentle overcast light. A pale stone balustrade replaces the source black panel.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -117,7 +117,7 @@ export const debeersAssets: DebeersAsset[] = [
     original: '/debeers-full/bloomsbury-cafe-terrace.png',
     alt: 'The model at a marble bistro table on a Bloomsbury cafe terrace, a cream awning, potted bay trees, and pale stone paving softly blurred behind her.',
     description:
-      'The model at a marble bistro table on a Bloomsbury cafe terrace. A cream awning, potted bay trees, and pale stone paving sit softly out of focus behind her, lit by gentle overcast daylight for an intimate editorial mood.',
+      'The model at a marble bistro table on a Bloomsbury cafe terrace. A cream awning, potted bay trees, and pale stone paving sit softly out of focus behind her, lit by gentle overcast daylight for an intimate editorial mood. The pale marble top replaces the source black panel.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -126,9 +126,9 @@ export const debeersAssets: DebeersAsset[] = [
     image: '/Images/debeers/bloomsbury-russell-square.webp',
     full: '/debeers-full/bloomsbury-russell-square.webp',
     original: '/debeers-full/bloomsbury-russell-square.png',
-    alt: 'The model seated on a dark green park bench in Russell Square, Bloomsbury, lush plane trees and manicured lawns softly blurred behind her.',
+    alt: 'The model seated on a pale wooden park bench in Russell Square, Bloomsbury, lush plane trees and manicured lawns softly blurred behind her.',
     description:
-      'The model seated on a dark green bench in Russell Square, Bloomsbury. Mature plane trees and manicured lawns blur softly behind her, dappled with gentle light under a warm overcast sky.',
+      'The model seated on the pale wooden rail of a bench in Russell Square, Bloomsbury. Mature plane trees and manicured lawns blur softly behind her, dappled with gentle light under a warm overcast sky. The light bench surface replaces the source black panel.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -137,9 +137,9 @@ export const debeersAssets: DebeersAsset[] = [
     image: '/Images/debeers/bloomsbury-pergola.webp',
     full: '/debeers-full/bloomsbury-pergola.webp',
     original: '/debeers-full/bloomsbury-pergola.png',
-    alt: 'The model seated beneath a white-painted garden pergola in a Bloomsbury square, climbing greenery and wisteria softly blurred behind her.',
+    alt: 'The model seated at a pale table beneath a white-painted garden pergola in a Bloomsbury square, climbing greenery and wisteria softly blurred behind her.',
     description:
-      'The model seated beneath a white-painted garden pergola in a Bloomsbury square. Climbing greenery and wisteria, pale stone planters, and white timber framing surround her as warm daylight filters through the leaves.',
+      'The model at a pale table beneath a white-painted garden pergola in a Bloomsbury square. Climbing greenery and wisteria, pale stone planters, and white timber framing surround her as warm daylight filters through the leaves. A pale tabletop replaces the source black panel.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -148,9 +148,9 @@ export const debeersAssets: DebeersAsset[] = [
     image: '/Images/debeers/bloomsbury-golden-hour.webp',
     full: '/debeers-full/bloomsbury-golden-hour.webp',
     original: '/debeers-full/bloomsbury-golden-hour.png',
-    alt: 'The model on a Bloomsbury townhouse balcony at golden hour, resting against a black iron railing with warm-lit pale stone facades glowing behind her.',
+    alt: 'The model on a Bloomsbury townhouse balcony at golden hour, a pale ledge under her arm and warm-lit pale stone facades glowing behind her.',
     description:
-      'The model on a Bloomsbury townhouse balcony at golden hour, resting against a black iron railing. Warm-lit pale stone facades and soft tree silhouettes glow in low golden sunlight for a cinematic, warm editorial frame.',
+      'The model on a Bloomsbury townhouse balcony at golden hour. Warm-lit pale stone facades and soft tree silhouettes glow in low golden sunlight for a cinematic, warm editorial frame. A warm-lit pale ledge replaces the source black panel.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -161,7 +161,7 @@ export const debeersAssets: DebeersAsset[] = [
     original: '/debeers-full/bloomsbury-hotel-steps.png',
     alt: 'The model seated on the pale stone entrance steps of an elegant Bloomsbury boutique hotel, white-painted columns and brass door fixtures softly blurred behind her.',
     description:
-      'The model seated on the pale stone entrance steps of an elegant Bloomsbury boutique hotel. White-painted columns and a portico, brass door fixtures, and a stone urn of white flowers fall softly out of focus behind her.',
+      'The model seated on the pale stone entrance steps of an elegant Bloomsbury boutique hotel. White-painted columns and a portico, brass door fixtures, and a stone urn of white flowers fall softly out of focus behind her. A pale stone step replaces the source black panel.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -170,9 +170,9 @@ export const debeersAssets: DebeersAsset[] = [
     image: '/Images/debeers/bloomsbury-mews.webp',
     full: '/debeers-full/bloomsbury-mews.webp',
     original: '/debeers-full/bloomsbury-mews.png',
-    alt: 'The model standing in a charming Bloomsbury mews, pale-painted mews houses in cream, grey, and sage set on light cobblestones softly blurred behind her.',
+    alt: 'The model leaning on a pale ledge in a charming Bloomsbury mews, pale-painted mews houses in cream, grey, and sage set on light cobblestones softly blurred behind her.',
     description:
-      'The model standing in a charming Bloomsbury mews. Pale-painted mews houses in cream, soft grey, and pastel sage line light cobblestones behind her, with climbing greenery and gentle overcast warmth.',
+      'The model leaning on a pale ledge in a charming Bloomsbury mews. Pale-painted mews houses in cream, soft grey, and pastel sage line light cobblestones behind her, with climbing greenery and gentle overcast warmth. The pale ledge replaces the source black panel.',
     spec: 'WebP · 16:9 · click to view original quality',
   },
   {
@@ -183,7 +183,117 @@ export const debeersAssets: DebeersAsset[] = [
     original: '/debeers-full/bloomsbury-conservatory.png',
     alt: 'The model on a balcony beside a Bloomsbury glass conservatory, near a small white iron table, soft reflections in tall glass panes and lush potted greenery behind her.',
     description:
-      'The model on a balcony beside a Bloomsbury glass conservatory, near a small white iron table. Soft reflections in tall glass panes, white-painted iron frames, and lush potted greenery sit behind her in bright, airy overcast light.',
+      'The model on a balcony beside a Bloomsbury glass conservatory, near a small white iron table. Soft reflections in tall glass panes, white-painted iron frames, and lush potted greenery sit behind her in bright, airy overcast light. A pale ledge replaces the source black panel.',
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-bedford-square',
+    title: 'Bloomsbury, Bedford Square facade',
+    image: '/Images/debeers/bloomsbury-bedford-square.webp',
+    full: '/debeers-full/bloomsbury-bedford-square.webp',
+    original: '/debeers-full/bloomsbury-bedford-square.png',
+    alt: 'The model in her white silk shirt and diamond butterfly jewelry in front of a Bedford Square Georgian terrace, brown London stock brick, white sash windows, a white Coade-stone doorcase and black iron railings behind her.',
+    description:
+      'The model set against a Bedford Square Georgian terrace, the definitive Bloomsbury streetscape. Brown London stock brick, white sash windows, a black front door under a white Coade-stone Doric doorcase, and black area railings sit behind her. The black panel from the source is replaced by a pale stone gatepost.',
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-british-museum-portico',
+    title: 'Bloomsbury, British Museum portico',
+    image: '/Images/debeers/bloomsbury-british-museum-portico.webp',
+    full: '/debeers-full/bloomsbury-british-museum-portico.webp',
+    original: '/debeers-full/bloomsbury-british-museum-portico.png',
+    alt: 'The model in front of the British Museum south portico in Bloomsbury, tall fluted Ionic limestone columns and the sculpted pediment rising behind her, pale stone steps below.',
+    description:
+      'The model before the British Museum main entrance, the Greek Revival south portico with its row of fluted Ionic limestone columns and sculpted pediment rising behind her. She rests on a pale stone balustrade in place of the source black panel, under soft overcast light.',
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-senate-house',
+    title: 'Bloomsbury, Senate House tower',
+    image: '/Images/debeers/bloomsbury-senate-house.webp',
+    full: '/debeers-full/bloomsbury-senate-house.webp',
+    original: '/debeers-full/bloomsbury-senate-house.png',
+    alt: 'The model on Malet Street with the Art Deco Senate House rising behind her, its stepped Portland-stone tower and tall vertical window bays softly blurred.',
+    description:
+      'The model on Malet Street with the monumental Art Deco Senate House behind her, its stepped Portland-stone tower and tall vertical bays instantly placing the scene as Bloomsbury. A pale stone ledge replaces the source black panel.',
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-lambs-conduit',
+    title: "Bloomsbury, Lamb's Conduit Street",
+    image: '/Images/debeers/bloomsbury-lambs-conduit.webp',
+    full: '/debeers-full/bloomsbury-lambs-conduit.webp',
+    original: '/debeers-full/bloomsbury-lambs-conduit.png',
+    alt: "The model on Lamb's Conduit Street in Bloomsbury, a sage-green hand-painted independent shopfront with gilded lettering and an awning softly blurred behind her.",
+    description:
+      "The model on Lamb's Conduit Street, the pedestrianised Bloomsbury lane, set against a heritage independent shopfront, a sage-green timber fascia with gilded lettering, paned windows and an awning, painted stucco and buff stock brick beyond. A pale painted windowsill replaces the source black panel.",
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-hotel-russell',
+    title: 'Bloomsbury, Russell Square and Hotel Russell',
+    image: '/Images/debeers/bloomsbury-hotel-russell.webp',
+    full: '/debeers-full/bloomsbury-hotel-russell.webp',
+    original: '/debeers-full/bloomsbury-hotel-russell.png',
+    alt: 'The model at the edge of Russell Square gardens, mature plane trees and the ornate terracotta-and-cream Victorian Gothic facade of Hotel Russell softly blurred behind her.',
+    description:
+      "The model at the edge of Russell Square gardens, the square's signature view behind her: tall plane trees and the ornate terracotta-and-cream Victorian Gothic facade of Hotel Russell with its turreted roofline. She sits on a pale stone rim in place of the source black panel.",
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-gordon-square',
+    title: 'Bloomsbury, Gordon Square railings',
+    image: '/Images/debeers/bloomsbury-gordon-square.webp',
+    full: '/debeers-full/bloomsbury-gordon-square.webp',
+    original: '/debeers-full/bloomsbury-gordon-square.png',
+    alt: 'The model beside the black iron garden railings of Gordon Square, a buff stock-brick Georgian terrace with a round blue heritage plaque and garden greenery behind her.',
+    description:
+      'The model beside the wrought-iron garden railings of Gordon Square, heart of the Bloomsbury Group. A buff stock-brick Georgian terrace, a round blue heritage plaque, and garden greenery sit behind her, with a pale stone gatepost replacing the source black panel.',
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-georgian-doorway',
+    title: 'Bloomsbury, Georgian doorway',
+    image: '/Images/debeers/bloomsbury-georgian-doorway.webp',
+    full: '/debeers-full/bloomsbury-georgian-doorway.webp',
+    original: '/debeers-full/bloomsbury-georgian-doorway.png',
+    alt: 'The model in front of a classic Bloomsbury Georgian doorway, a glossy black six-panel door with fanlight, white Doric pilasters and a Coade-stone doorcase filling the frame behind her.',
+    description:
+      'The model framed by an elegant Bloomsbury Georgian doorway, a glossy black six-panel door with a fanlight, white Doric pilasters and a Coade-stone doorcase, brass furniture and a house number. A pale stone threshold replaces the source black panel; only the door stays black.',
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-brunswick-centre',
+    title: 'Bloomsbury, Brunswick Centre',
+    image: '/Images/debeers/bloomsbury-brunswick-centre.webp',
+    full: '/debeers-full/bloomsbury-brunswick-centre.webp',
+    original: '/debeers-full/bloomsbury-brunswick-centre.png',
+    alt: 'The model at the Brunswick Centre in Bloomsbury, cream-painted modernist concrete terraces rising in stepped tiers softly blurred behind her.',
+    description:
+      'The model at the Brunswick Centre, the cream-painted modernist landmark of Bloomsbury, its stepped ziggurat terraces and rhythmic glazing rising behind her. A pale concrete ledge replaces the source black panel, a contemporary counterpoint to the Georgian squares.',
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-bedford-place',
+    title: 'Bloomsbury, Bedford Place terrace',
+    image: '/Images/debeers/bloomsbury-bedford-place.webp',
+    full: '/debeers-full/bloomsbury-bedford-place.webp',
+    original: '/debeers-full/bloomsbury-bedford-place.png',
+    alt: 'The model on Bedford Place, a long uniform Georgian terrace receding diagonally behind her, white sash windows, white stucco, black railings and lampposts softly blurred.',
+    description:
+      'The model on Bedford Place, a long Bloomsbury Georgian terrace receding diagonally behind her: repeating white sash windows, white stucco over buff stock brick, black railings, white doorcases and matching lampposts. A pale stone sill replaces the source black panel.',
+    spec: 'WebP · 16:9 · click to view original quality',
+  },
+  {
+    id: 'bloomsbury-st-georges',
+    title: "Bloomsbury, St George's portico",
+    image: '/Images/debeers/bloomsbury-st-georges.webp',
+    full: '/debeers-full/bloomsbury-st-georges.webp',
+    original: '/debeers-full/bloomsbury-st-georges.png',
+    alt: "The model in front of St George's Bloomsbury, Hawksmoor's church, tall fluted Corinthian limestone columns and the stepped pyramid tower rising behind her.",
+    description:
+      "The model before St George's Bloomsbury, Hawksmoor's church on Bloomsbury Way, its classical portico of fluted Corinthian limestone columns and distinctive stepped pyramid tower rising behind her. A pale stone plinth replaces the source black panel.",
     spec: 'WebP · 16:9 · click to view original quality',
   },
 ];
