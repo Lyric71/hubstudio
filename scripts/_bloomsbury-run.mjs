@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // One-off batch driver for the Bloomsbury edits: 10 "scene" settings + 10
 // recognizable-landmark settings (20 total). Composes each prompt, drives
-// scripts/edit-image-max.mjs (high/4k) against Model1.jpg with a concurrency
+// scripts/edit-image.mjs (1k, 16:9) against Model1.jpg with a concurrency
 // cap, then writes three tiers per asset:
 //   - original PNG (untouched model output) + native WebP under public/debeers-full/
 //   - 2000px WebP thumbnail under public/Images/debeers/
@@ -204,10 +204,11 @@ function runChild(item) {
     await writeFile(promptFile, prompt);
 
     const args = [
-      "scripts/edit-image-max.mjs",
+      "scripts/edit-image.mjs",
       SRC,
       `--prompt-file=${promptFile}`,
       "--aspect-ratio=16:9",
+      "--resolution=1k",
       `--out=${pngOut}`,
     ];
     console.log(`[start]  ${item.id}`);

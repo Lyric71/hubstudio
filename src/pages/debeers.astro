@@ -112,7 +112,7 @@ const commentsReady = kvConfigured();
                         type="button"
                         class="db-zoom"
                         data-zoom={asset.full ?? asset.image}
-                        data-download={asset.original ?? asset.full ?? asset.image}
+                        data-download={asset.full ?? asset.image}
                         aria-label={`View ${asset.title} full size`}
                       >
                         <img
@@ -629,9 +629,9 @@ const commentsReady = kvConfigured();
   const lbImg = document.querySelector<HTMLImageElement>('[data-lb-img]');
   const lbDownload = document.querySelector<HTMLAnchorElement>('[data-lb-download]');
 
-  // The preview shown on screen and the file the Download button saves are
-  // separate: preview uses `full` (fast to load), download uses `original`
-  // (the untouched full-res model output).
+  // Both the on-screen preview and the Download button use the full-resolution
+  // WebP. The page serves WebP exclusively; the PNG masters are kept local-only
+  // and are never deployed (see .gitignore).
   let downloadSrc = '';
 
   function openLightbox(preview: string, download: string, alt: string): void {
@@ -651,9 +651,9 @@ const commentsReady = kvConfigured();
     document.body.style.overflow = '';
   }
 
-  // Force a real file save of the original, bypassing the browser's tendency to
-  // navigate to (rather than download) large same-origin assets.
-  async function downloadOriginal(): Promise<void> {
+  // Force a real file save of the full-res WebP, bypassing the browser's
+  // tendency to navigate to (rather than download) large same-origin assets.
+  async function downloadFull(): Promise<void> {
     if (!downloadSrc) return;
     const name = downloadSrc.split('/').pop() || 'asset';
     try {
@@ -686,7 +686,7 @@ const commentsReady = kvConfigured();
 
   lbDownload?.addEventListener('click', (e) => {
     e.preventDefault();
-    downloadOriginal();
+    downloadFull();
   });
 
   document.querySelector('[data-lb-close]')?.addEventListener('click', closeLightbox);
