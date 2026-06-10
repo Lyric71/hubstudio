@@ -165,7 +165,10 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/thank-you') && !page.includes('/api/'),
+      filter: (page) =>
+        !page.includes('/thank-you') &&
+        !page.includes('/api/') &&
+        !page.includes('/debeers'),
       changefreq: 'weekly',
       priority: 0.7,
       // Per URL the integration emits, this hook adds two things the defaults

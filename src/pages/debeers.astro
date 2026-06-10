@@ -1,0 +1,516 @@
+---
+/**
+ * DeBeers (`/debeers`) — hidden, password-gated project asset review.
+ *
+ * Not in the nav, not in the sitemap, noindexed. Behind a shared password
+ * (server-checked, signed httpOnly cookie via /api/debeers/login). Once in,
+ * it lists every asset from src/data/debeers-assets.ts: image, description,
+ * and a comment thread anyone with the password can post to (stored in
+ * Vercel KV via /api/debeers/comment).
+ *
+ * Server-rendered on demand so the gate is real; the rest of the site stays
+ * static.
+ */
+export const prerender = false;
+
+import Layout from '../layouts/Layout.astro';
+import { debeersAssets } from '../data/debeers-assets';
+import { isAuthed, getComments, kvConfigured, type Comment } from '../lib/debeers';
+
+const authed = await isAuthed(Astro.request);
+const loginError = Astro.url.searchParams.get('error') === '1';
+
+/** Friendly absolute-ish timestamp for a comment. */
+function when(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  return d.toLocaleString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+  });
+}
+
+// Only fetch comments when the visitor is in, and gather them per asset.
+let threads: Record<string, Comment[]> = {};
+if (authed) {
+  const lists = await Promise.all(debeersAssets.map((a) => getComments(a.id)));
+  threads = Object.fromEntries(debeersAssets.map((a, i) => [a.id, lists[i]]));
+}
+
+const commentsReady = kvConfigured();
+---
+
+<Layout
+  title="DeBeers — Asset review"
+  description="Private DeBeers project asset review."
+  noindex
+>
+  <section class="db-shell">
+    <div class="container">
+      {
+        !authed ? (
+          <div class="db-gate">
+            <p class="db-eyebrow">Private</p>
+            <h1 class="db-title">DeBeers</h1>
+            <p class="db-lead">
+              This page is restricted. Enter the access password to view the
+              project assets.
+            </p>
+            <form class="db-login" method="POST" action="/api/debeers/login">
+              <label class="db-field">
+                <span class="db-label">Password</span>
+                <input
+                  type="password"
+                  name="password"
+                  autocomplete="current-password"
+                  required
+                  autofocus
+                  class="db-input"
+                />
+              </label>
+              {loginError && (
+                <p class="db-error" role="alert">
+                  Wrong password. Try again.
+                </p>
+              )}
+              <button type="submit" class="db-btn">
+                Enter
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div class="db-board">
+            <header class="db-head">
+              <p class="db-eyebrow">Project assets</p>
+              <h1 class="db-title">DeBeers</h1>
+              <p class="db-lead">
+                Every asset created for the project. Leave a comment on any of
+                them — everyone with access sees the thread.
+              </p>
+              {!commentsReady && (
+                <p class="db-note" role="status">
+                  Comment storage is not connected yet, so threads are read-only
+                  and empty. Add the KV integration in Vercel to enable posting.
+                </p>
+              )}
+            </header>
+
+            {debeersAssets.length === 0 ? (
+              <p class="db-empty">
+                No assets yet. Add records to{' '}
+                <code>src/data/debeers-assets.ts</code> and drop the images in{' '}
+                <code>public/Images/debeers/</code>.
+              </p>
+            ) : (
+              <ul class="db-grid">
+                {debeersAssets.map((asset) => (
+                  <li class="db-asset" id={`asset-${asset.id}`}>
+                    <figure class="db-figure">
+                      <img
+                        src={asset.image}
+                        alt={asset.alt}
+                        loading="lazy"
+                        class="db-img"
+                      />
+                    </figure>
+                    <div class="db-body">
+                      <h2 class="db-asset-title">{asset.title}</h2>
+                      <p class="db-desc">{asset.description}</p>
+
+                      <div class="db-thread" data-asset={asset.id}>
+                        <h3 class="db-thread-h">Comments</h3>
+                        <ul class="db-comments" data-comments={asset.id}>
+                          {(threads[asset.id] ?? []).map((c) => (
+                            <li class="db-comment">
+                              <div class="db-comment-meta">
+                                <span class="db-comment-name">{c.name}</span>
+                                <time class="db-comment-time" datetime={c.ts}>
+                                  {when(c.ts)}
+                                </time>
+                              </div>
+                              <p class="db-comment-body">{c.body}</p>
+                            </li>
+                          ))}
+                        </ul>
+                        {(threads[asset.id] ?? []).length === 0 && (
+                          <p class="db-comment-empty" data-empty={asset.id}>
+                            No comments yet.
+                          </p>
+                        )}
+
+                        <form
+                          class="db-comment-form"
+                          method="POST"
+                          action="/api/debeers/comment"
+                          data-form={asset.id}
+                        >
+                          <input type="hidden" name="assetId" value={asset.id} />
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            maxlength="80"
+                            required
+                            class="db-input db-input--sm"
+                          />
+                          <textarea
+                            name="body"
+                            placeholder="Add a comment"
+                            rows="2"
+                            maxlength="2000"
+                            required
+                            class="db-textarea"
+                          />
+                          <div class="db-form-row">
+                            <button type="submit" class="db-btn db-btn--sm">
+                              Post comment
+                            </button>
+                            <span class="db-form-msg" data-msg={asset.id} />
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .db-shell {
+    padding: calc(var(--nav-h) + 64px) 0 var(--section-pad-y-mobile);
+    background: var(--bg-cream);
+    min-height: 80vh;
+  }
+  @media (min-width: 768px) {
+    .db-shell {
+      padding-bottom: var(--section-pad-y-desktop);
+    }
+  }
+
+  .db-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: 12px;
+  }
+  .db-title {
+    font-family: var(--font-serif);
+    font-size: var(--type-h1);
+    line-height: var(--lh-display);
+    margin-bottom: 16px;
+  }
+  .db-lead {
+    font-size: var(--type-lead);
+    color: var(--text-mute);
+    max-width: 56ch;
+  }
+
+  /* --- Login gate --- */
+  .db-gate {
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 0;
+  }
+  .db-gate .db-lead {
+    margin: 0 auto 28px;
+  }
+  .db-login {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+  }
+  .db-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .db-label {
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+  .db-input,
+  .db-textarea {
+    width: 100%;
+    font: inherit;
+    font-size: var(--type-body);
+    color: var(--text-ink);
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    padding: 12px 16px;
+  }
+  .db-input--sm {
+    font-size: var(--type-small);
+    padding: 10px 14px;
+  }
+  .db-textarea {
+    resize: vertical;
+    line-height: 1.5;
+  }
+  .db-input:focus-visible,
+  .db-textarea:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+  .db-error {
+    color: var(--brand-orange-deep);
+    font-size: var(--type-small);
+  }
+  .db-btn {
+    align-self: flex-start;
+    background: var(--brand-orange);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 14px 28px;
+    font-size: var(--type-button);
+    font-weight: 600;
+    transition: background 0.18s ease;
+  }
+  .db-btn:hover {
+    background: var(--brand-orange-deep);
+  }
+  .db-btn--sm {
+    padding: 10px 20px;
+    font-size: var(--type-small);
+  }
+  .db-btn[disabled] {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  /* --- Board --- */
+  .db-head {
+    margin-bottom: 56px;
+    max-width: 720px;
+  }
+  .db-note,
+  .db-empty {
+    margin-top: 20px;
+    font-size: var(--type-small);
+    color: var(--text-mute);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 14px;
+    padding: 14px 18px;
+  }
+  .db-empty code,
+  .db-note code {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+  }
+
+  .db-grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 900px) {
+    .db-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+    }
+  }
+
+  .db-asset {
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .db-figure {
+    margin: 0;
+    background: var(--bg-cream);
+  }
+  .db-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .db-body {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .db-asset-title {
+    font-family: var(--font-serif);
+    font-size: var(--type-h3);
+    line-height: 1.1;
+  }
+  .db-desc {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-ink);
+  }
+
+  /* --- Thread --- */
+  .db-thread {
+    margin-top: 8px;
+    border-top: 1px solid var(--line-hairline);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .db-thread-h {
+    font-size: var(--type-small);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-mute);
+    font-weight: 600;
+  }
+  .db-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .db-comment {
+    background: var(--bg-cream);
+    border-radius: 14px;
+    padding: 12px 16px;
+  }
+  .db-comment-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .db-comment-name {
+    font-weight: 600;
+    font-size: var(--type-small);
+  }
+  .db-comment-time {
+    font-size: var(--type-eyebrow);
+    color: var(--text-mute);
+    font-family: var(--font-mono);
+  }
+  .db-comment-body {
+    font-size: var(--type-body);
+    line-height: 1.55;
+    white-space: pre-wrap;
+  }
+  .db-comment-empty {
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+
+  .db-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .db-form-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .db-form-msg {
+    font-size: var(--type-small);
+  }
+  .db-form-msg[data-state='error'] {
+    color: var(--brand-orange-deep);
+  }
+  .db-form-msg[data-state='ok'] {
+    color: var(--text-mute);
+  }
+</style>
+
+<script>
+  /**
+   * Progressive enhancement for comment forms: post via fetch, append the new
+   * comment, clear the textarea, no full reload. Without JS the form still
+   * posts and the server 303-redirects back to the asset anchor.
+   */
+  function fmtTime(iso: string): string {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '';
+    return d.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+  }
+
+  function esc(s: string): string {
+    const el = document.createElement('div');
+    el.textContent = s;
+    return el.innerHTML;
+  }
+
+  document.querySelectorAll<HTMLFormElement>('.db-comment-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const assetId = form.dataset.form ?? '';
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const msg = document.querySelector<HTMLElement>(`[data-msg="${assetId}"]`);
+      if (btn) btn.disabled = true;
+      if (msg) {
+        msg.textContent = '';
+        msg.removeAttribute('data-state');
+      }
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const data = await res.json();
+        if (!res.ok || !data.ok) throw new Error(data.error || 'Could not post.');
+
+        const list = document.querySelector<HTMLElement>(
+          `[data-comments="${assetId}"]`,
+        );
+        const empty = document.querySelector<HTMLElement>(
+          `[data-empty="${assetId}"]`,
+        );
+        if (empty) empty.remove();
+        if (list) {
+          const c = data.comment;
+          const li = document.createElement('li');
+          li.className = 'db-comment';
+          li.innerHTML =
+            `<div class="db-comment-meta">` +
+            `<span class="db-comment-name">${esc(c.name)}</span>` +
+            `<time class="db-comment-time" datetime="${esc(c.ts)}">${esc(
+              fmtTime(c.ts),
+            )}</time></div>` +
+            `<p class="db-comment-body">${esc(c.body)}</p>`;
+          list.appendChild(li);
+        }
+        const textarea = form.querySelector<HTMLTextAreaElement>(
+          'textarea[name="body"]',
+        );
+        if (textarea) textarea.value = '';
+      } catch (err) {
+        if (msg) {
+          msg.textContent = err instanceof Error ? err.message : 'Could not post.';
+          msg.setAttribute('data-state', 'error');
+        }
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  });
+</script>
