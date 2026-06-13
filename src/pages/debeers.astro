@@ -14,7 +14,7 @@
 export const prerender = false;
 
 import Layout from '../layouts/Layout.astro';
-import { debeersAssets } from '../data/debeers-assets';
+import { debeersAssets, debeersProductKvs } from '../data/debeers-assets';
 import { isAuthed, getComments, kvConfigured, type Comment } from '../lib/debeers';
 
 const authed = await isAuthed(Astro.request);
@@ -32,11 +32,13 @@ function when(iso: string): string {
   });
 }
 
-// Only fetch comments when the visitor is in, and gather them per asset.
+// Only fetch comments when the visitor is in, and gather them per asset across
+// both the Product KVs section and the main assets grid.
 let threads: Record<string, Comment[]> = {};
 if (authed) {
-  const lists = await Promise.all(debeersAssets.map((a) => getComments(a.id)));
-  threads = Object.fromEntries(debeersAssets.map((a, i) => [a.id, lists[i]]));
+  const allAssets = [...debeersProductKvs, ...debeersAssets];
+  const lists = await Promise.all(allAssets.map((a) => getComments(a.id)));
+  threads = Object.fromEntries(allAssets.map((a, i) => [a.id, lists[i]]));
 }
 
 const commentsReady = kvConfigured();
@@ -97,6 +99,93 @@ const commentsReady = kvConfigured();
               )}
             </header>
 
+            {debeersProductKvs.length > 0 && (
+              <section class="db-section" aria-labelledby="db-section-product-kvs">
+                <h2 class="db-section-h" id="db-section-product-kvs">Product KVs</h2>
+                <ul class="db-grid">
+                  {debeersProductKvs.map((asset) => (
+                    <li class="db-asset" id={`asset-${asset.id}`}>
+                      <figure class="db-figure">
+                        <button
+                          type="button"
+                          class="db-zoom"
+                          data-zoom={asset.full ?? asset.image}
+                          data-download={asset.full ?? asset.image}
+                          aria-label={`View ${asset.title} full size`}
+                        >
+                          <img
+                            src={asset.image}
+                            alt={asset.alt}
+                            loading="lazy"
+                            class="db-img"
+                          />
+                          <span class="db-zoom-hint" aria-hidden="true">Click to enlarge</span>
+                        </button>
+                      </figure>
+                      <div class="db-body">
+                        <h3 class="db-asset-title">{asset.title}</h3>
+                        <p class="db-desc">{asset.description}</p>
+                        <p class="db-spec">{asset.spec}</p>
+
+                        <div class="db-thread" data-asset={asset.id}>
+                          <h4 class="db-thread-h">Comments</h4>
+                          <ul class="db-comments" data-comments={asset.id}>
+                            {(threads[asset.id] ?? []).map((c) => (
+                              <li class="db-comment">
+                                <div class="db-comment-meta">
+                                  <span class="db-comment-name">{c.name}</span>
+                                  <time class="db-comment-time" datetime={c.ts}>
+                                    {when(c.ts)}
+                                  </time>
+                                </div>
+                                <p class="db-comment-body">{c.body}</p>
+                              </li>
+                            ))}
+                          </ul>
+                          {(threads[asset.id] ?? []).length === 0 && (
+                            <p class="db-comment-empty" data-empty={asset.id}>
+                              No comments yet.
+                            </p>
+                          )}
+
+                          <form
+                            class="db-comment-form"
+                            method="POST"
+                            action="/api/debeers/comment"
+                            data-form={asset.id}
+                          >
+                            <input type="hidden" name="assetId" value={asset.id} />
+                            <input
+                              type="text"
+                              name="name"
+                              placeholder="Your name"
+                              maxlength="80"
+                              required
+                              class="db-input db-input--sm"
+                            />
+                            <textarea
+                              name="body"
+                              placeholder="Add a comment"
+                              rows="2"
+                              maxlength="2000"
+                              required
+                              class="db-textarea"
+                            />
+                            <div class="db-form-row">
+                              <button type="submit" class="db-btn db-btn--sm">
+                                Post comment
+                              </button>
+                              <span class="db-form-msg" data-msg={asset.id} />
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             {debeersAssets.length === 0 ? (
               <p class="db-empty">
                 No assets yet. Add records to{' '}
@@ -104,87 +193,90 @@ const commentsReady = kvConfigured();
                 <code>public/Images/debeers/</code>.
               </p>
             ) : (
-              <ul class="db-grid">
-                {debeersAssets.map((asset) => (
-                  <li class="db-asset" id={`asset-${asset.id}`}>
-                    <figure class="db-figure">
-                      <button
-                        type="button"
-                        class="db-zoom"
-                        data-zoom={asset.full ?? asset.image}
-                        data-download={asset.full ?? asset.image}
-                        aria-label={`View ${asset.title} full size`}
-                      >
-                        <img
-                          src={asset.image}
-                          alt={asset.alt}
-                          loading="lazy"
-                          class="db-img"
-                        />
-                        <span class="db-zoom-hint" aria-hidden="true">Click to enlarge</span>
-                      </button>
-                    </figure>
-                    <div class="db-body">
-                      <h2 class="db-asset-title">{asset.title}</h2>
-                      <p class="db-desc">{asset.description}</p>
-                      <p class="db-spec">{asset.spec}</p>
-
-                      <div class="db-thread" data-asset={asset.id}>
-                        <h3 class="db-thread-h">Comments</h3>
-                        <ul class="db-comments" data-comments={asset.id}>
-                          {(threads[asset.id] ?? []).map((c) => (
-                            <li class="db-comment">
-                              <div class="db-comment-meta">
-                                <span class="db-comment-name">{c.name}</span>
-                                <time class="db-comment-time" datetime={c.ts}>
-                                  {when(c.ts)}
-                                </time>
-                              </div>
-                              <p class="db-comment-body">{c.body}</p>
-                            </li>
-                          ))}
-                        </ul>
-                        {(threads[asset.id] ?? []).length === 0 && (
-                          <p class="db-comment-empty" data-empty={asset.id}>
-                            No comments yet.
-                          </p>
-                        )}
-
-                        <form
-                          class="db-comment-form"
-                          method="POST"
-                          action="/api/debeers/comment"
-                          data-form={asset.id}
+              <section class="db-section" aria-labelledby="db-section-assets">
+                <h2 class="db-section-h" id="db-section-assets">Backgrounds and locations</h2>
+                <ul class="db-grid">
+                  {debeersAssets.map((asset) => (
+                    <li class="db-asset" id={`asset-${asset.id}`}>
+                      <figure class="db-figure">
+                        <button
+                          type="button"
+                          class="db-zoom"
+                          data-zoom={asset.full ?? asset.image}
+                          data-download={asset.full ?? asset.image}
+                          aria-label={`View ${asset.title} full size`}
                         >
-                          <input type="hidden" name="assetId" value={asset.id} />
-                          <input
-                            type="text"
-                            name="name"
-                            placeholder="Your name"
-                            maxlength="80"
-                            required
-                            class="db-input db-input--sm"
+                          <img
+                            src={asset.image}
+                            alt={asset.alt}
+                            loading="lazy"
+                            class="db-img"
                           />
-                          <textarea
-                            name="body"
-                            placeholder="Add a comment"
-                            rows="2"
-                            maxlength="2000"
-                            required
-                            class="db-textarea"
-                          />
-                          <div class="db-form-row">
-                            <button type="submit" class="db-btn db-btn--sm">
-                              Post comment
-                            </button>
-                            <span class="db-form-msg" data-msg={asset.id} />
-                          </div>
-                        </form>
+                          <span class="db-zoom-hint" aria-hidden="true">Click to enlarge</span>
+                        </button>
+                      </figure>
+                      <div class="db-body">
+                        <h3 class="db-asset-title">{asset.title}</h3>
+                        <p class="db-desc">{asset.description}</p>
+                        <p class="db-spec">{asset.spec}</p>
+
+                        <div class="db-thread" data-asset={asset.id}>
+                          <h4 class="db-thread-h">Comments</h4>
+                          <ul class="db-comments" data-comments={asset.id}>
+                            {(threads[asset.id] ?? []).map((c) => (
+                              <li class="db-comment">
+                                <div class="db-comment-meta">
+                                  <span class="db-comment-name">{c.name}</span>
+                                  <time class="db-comment-time" datetime={c.ts}>
+                                    {when(c.ts)}
+                                  </time>
+                                </div>
+                                <p class="db-comment-body">{c.body}</p>
+                              </li>
+                            ))}
+                          </ul>
+                          {(threads[asset.id] ?? []).length === 0 && (
+                            <p class="db-comment-empty" data-empty={asset.id}>
+                              No comments yet.
+                            </p>
+                          )}
+
+                          <form
+                            class="db-comment-form"
+                            method="POST"
+                            action="/api/debeers/comment"
+                            data-form={asset.id}
+                          >
+                            <input type="hidden" name="assetId" value={asset.id} />
+                            <input
+                              type="text"
+                              name="name"
+                              placeholder="Your name"
+                              maxlength="80"
+                              required
+                              class="db-input db-input--sm"
+                            />
+                            <textarea
+                              name="body"
+                              placeholder="Add a comment"
+                              rows="2"
+                              maxlength="2000"
+                              required
+                              class="db-textarea"
+                            />
+                            <div class="db-form-row">
+                              <button type="submit" class="db-btn db-btn--sm">
+                                Post comment
+                              </button>
+                              <span class="db-form-msg" data-msg={asset.id} />
+                            </div>
+                          </form>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             )}
           </div>
         )
@@ -333,6 +425,23 @@ const commentsReady = kvConfigured();
   .db-note code {
     font-family: var(--font-mono);
     font-size: 0.92em;
+  }
+
+  .db-section {
+    margin-top: 56px;
+  }
+  .db-section:first-of-type {
+    margin-top: 0;
+  }
+  .db-section-h {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-hairline);
   }
 
   .db-grid {

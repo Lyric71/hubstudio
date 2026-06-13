@@ -35,6 +35,34 @@ export interface DebeersAsset {
   spec: string;
 }
 
+/**
+ * Product KV assets — campaign key visuals rendered as a separate section at
+ * the top of /debeers. Same schema as `debeersAssets`; kept in its own list so
+ * the page can group them visually under their own heading.
+ */
+export const debeersProductKvs: DebeersAsset[] = [
+  {
+    id: 'ring-kv-hero',
+    title: 'Ring key visual, hero',
+    image: '/debeers-full/Ring%20kv/1.jpg',
+    full: '/debeers-full/Ring%20kv/1.jpg',
+    alt: 'Diamond ring product key visual, studio composition.',
+    description:
+      'Campaign key visual for the diamond ring, used as the hero composition across the layout system.',
+    spec: 'JPG · source',
+  },
+  {
+    id: 'ring-kv-alt',
+    title: 'Ring key visual, alternate',
+    image: '/debeers-full/Ring%20kv/2.jpg',
+    full: '/debeers-full/Ring%20kv/2.jpg',
+    alt: 'Diamond ring product key visual, alternate studio composition.',
+    description:
+      'Companion key visual for the diamond ring, a second framing of the campaign hero for layouts that need a different crop.',
+    spec: 'JPG · source',
+  },
+];
+
 export const debeersAssets: DebeersAsset[] = [
   {
     id: 'bg-navy-leather',
