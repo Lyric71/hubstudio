@@ -42,6 +42,26 @@ export interface DebeersAsset {
  */
 export const debeersProductKvs: DebeersAsset[] = [
   {
+    id: 'ring-kv-v2-royal',
+    title: 'Butterfly ring key visual, royal blue',
+    image: '/debeers-full/Ring0622/ringKV-V2-1.jpg',
+    full: '/debeers-full/Ring0622/ringKV-V2-1.jpg',
+    alt: 'Two diamond butterfly rings on draped royal-blue leather, one with an open filigree wing set, the other a marquise-centred pavé wing engraved DE BEERS.',
+    description:
+      'Paired diamond butterfly rings staged on draped royal-blue leather. One ring shows the open filigree wing, the other the marquise-centred pavé wing engraved DE BEERS, lit to read as a cooler, brighter campaign frame.',
+    spec: 'JPG · source',
+  },
+  {
+    id: 'ring-kv-v2-navy',
+    title: 'Butterfly ring key visual, deep navy',
+    image: '/debeers-full/Ring0622/ringKV-V2-2.jpg',
+    full: '/debeers-full/Ring0622/ringKV-V2-2.jpg',
+    alt: 'Two diamond butterfly rings on draped deep-navy leather, one with an open filigree wing set, the other a marquise-centred pavé wing engraved DE BEERS.',
+    description:
+      'Companion framing of the paired diamond butterfly rings on draped deep-navy leather. The darker, moodier ground deepens the contrast and gives a richer, more dramatic alternate to the royal-blue key visual.',
+    spec: 'JPG · source',
+  },
+  {
     id: 'ring-kv-hero',
     title: 'Ring key visual, hero',
     image: '/debeers-full/Ring%20kv/1.jpg',
