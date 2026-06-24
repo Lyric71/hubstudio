@@ -83,6 +83,34 @@ export const debeersProductKvs: DebeersAsset[] = [
   },
 ];
 
+/**
+ * Validated concepts — key visuals that have been signed off, shown under the
+ * "Concepts Validated" tab on /debeers. Same schema as `debeersAssets`; kept in
+ * its own list so the page can group them under their own tab.
+ */
+export const debeersValidated: DebeersAsset[] = [
+  {
+    id: 'ring-v2-validated-navy',
+    title: 'Butterfly ring key visual, deep navy',
+    image: '/debeers-full/Ring623/ringKV-V2-2.jpg',
+    full: '/debeers-full/Ring623/ringKV-V2-2.jpg',
+    alt: 'Two diamond butterfly rings on draped deep-navy leather, one with an open filigree wing set, the other a marquise-centred pavé wing engraved DE BEERS.',
+    description:
+      'Validated key visual of the paired diamond butterfly rings on draped deep-navy leather. The darker ground deepens the contrast for a rich, dramatic campaign frame.',
+    spec: 'JPG · source',
+  },
+  {
+    id: 'ring-v2-validated-alt',
+    title: 'Butterfly ring key visual, alternate',
+    image: '/debeers-full/Ring623/ringKV-V2-3.jpg',
+    full: '/debeers-full/Ring623/ringKV-V2-3.jpg',
+    alt: 'Two diamond butterfly rings on draped leather, one with an open filigree wing set, the other a marquise-centred pavé wing engraved DE BEERS, in an alternate framing.',
+    description:
+      'Validated companion framing of the paired diamond butterfly rings, an alternate crop of the signed-off campaign key visual for layouts that need a different composition.',
+    spec: 'JPG · source',
+  },
+];
+
 export const debeersAssets: DebeersAsset[] = [
   {
     id: 'bg-navy-leather',

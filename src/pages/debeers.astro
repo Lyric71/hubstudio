@@ -14,7 +14,7 @@
 export const prerender = false;
 
 import Layout from '../layouts/Layout.astro';
-import { debeersAssets, debeersProductKvs } from '../data/debeers-assets';
+import { debeersAssets, debeersProductKvs, debeersValidated } from '../data/debeers-assets';
 import { isAuthed, getComments, kvConfigured, type Comment } from '../lib/debeers';
 
 const authed = await isAuthed(Astro.request);
@@ -36,7 +36,7 @@ function when(iso: string): string {
 // both the Product KVs section and the main assets grid.
 let threads: Record<string, Comment[]> = {};
 if (authed) {
-  const allAssets = [...debeersProductKvs, ...debeersAssets];
+  const allAssets = [...debeersProductKvs, ...debeersAssets, ...debeersValidated];
   const lists = await Promise.all(allAssets.map((a) => getComments(a.id)));
   threads = Object.fromEntries(allAssets.map((a, i) => [a.id, lists[i]]));
 }
@@ -99,6 +99,38 @@ const commentsReady = kvConfigured();
               )}
             </header>
 
+            <div class="db-tabs" role="tablist" aria-label="Asset stages">
+              <button
+                type="button"
+                class="db-tab"
+                id="db-tab-concepts"
+                role="tab"
+                aria-selected="true"
+                aria-controls="db-panel-concepts"
+                data-tab="concepts"
+              >
+                Design Concepts
+              </button>
+              <button
+                type="button"
+                class="db-tab"
+                id="db-tab-validated"
+                role="tab"
+                aria-selected="false"
+                aria-controls="db-panel-validated"
+                data-tab="validated"
+              >
+                Concepts Validated
+              </button>
+            </div>
+
+            <div
+              class="db-panel"
+              id="db-panel-concepts"
+              role="tabpanel"
+              aria-labelledby="db-tab-concepts"
+              data-panel="concepts"
+            >
             {debeersProductKvs.length > 0 && (
               <section class="db-section" aria-labelledby="db-section-product-kvs">
                 <h2 class="db-section-h" id="db-section-product-kvs">Product KVs</h2>
@@ -278,6 +310,105 @@ const commentsReady = kvConfigured();
                 </ul>
               </section>
             )}
+            </div>
+
+            <div
+              class="db-panel"
+              id="db-panel-validated"
+              role="tabpanel"
+              aria-labelledby="db-tab-validated"
+              data-panel="validated"
+              hidden
+            >
+              {debeersValidated.length === 0 ? (
+                <p class="db-empty">No validated concepts yet.</p>
+              ) : (
+                <section class="db-section" aria-labelledby="db-section-validated">
+                  <h2 class="db-section-h" id="db-section-validated">Validated key visuals</h2>
+                  <ul class="db-grid">
+                    {debeersValidated.map((asset) => (
+                      <li class="db-asset" id={`asset-${asset.id}`}>
+                        <figure class="db-figure">
+                          <button
+                            type="button"
+                            class="db-zoom"
+                            data-zoom={asset.full ?? asset.image}
+                            data-download={asset.full ?? asset.image}
+                            aria-label={`View ${asset.title} full size`}
+                          >
+                            <img
+                              src={asset.image}
+                              alt={asset.alt}
+                              loading="lazy"
+                              class="db-img"
+                            />
+                            <span class="db-zoom-hint" aria-hidden="true">Click to enlarge</span>
+                          </button>
+                        </figure>
+                        <div class="db-body">
+                          <h3 class="db-asset-title">{asset.title}</h3>
+                          <p class="db-desc">{asset.description}</p>
+                          <p class="db-spec">{asset.spec}</p>
+
+                          <div class="db-thread" data-asset={asset.id}>
+                            <h4 class="db-thread-h">Comments</h4>
+                            <ul class="db-comments" data-comments={asset.id}>
+                              {(threads[asset.id] ?? []).map((c) => (
+                                <li class="db-comment">
+                                  <div class="db-comment-meta">
+                                    <span class="db-comment-name">{c.name}</span>
+                                    <time class="db-comment-time" datetime={c.ts}>
+                                      {when(c.ts)}
+                                    </time>
+                                  </div>
+                                  <p class="db-comment-body">{c.body}</p>
+                                </li>
+                              ))}
+                            </ul>
+                            {(threads[asset.id] ?? []).length === 0 && (
+                              <p class="db-comment-empty" data-empty={asset.id}>
+                                No comments yet.
+                              </p>
+                            )}
+
+                            <form
+                              class="db-comment-form"
+                              method="POST"
+                              action="/api/debeers/comment"
+                              data-form={asset.id}
+                            >
+                              <input type="hidden" name="assetId" value={asset.id} />
+                              <input
+                                type="text"
+                                name="name"
+                                placeholder="Your name"
+                                maxlength="80"
+                                required
+                                class="db-input db-input--sm"
+                              />
+                              <textarea
+                                name="body"
+                                placeholder="Add a comment"
+                                rows="2"
+                                maxlength="2000"
+                                required
+                                class="db-textarea"
+                              />
+                              <div class="db-form-row">
+                                <button type="submit" class="db-btn db-btn--sm">
+                                  Post comment
+                                </button>
+                                <span class="db-form-msg" data-msg={asset.id} />
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
           </div>
         )
       }
@@ -408,8 +539,47 @@ const commentsReady = kvConfigured();
 
   /* --- Board --- */
   .db-head {
-    margin-bottom: 56px;
+    margin-bottom: 40px;
     max-width: 720px;
+  }
+
+  /* --- Tabs --- */
+  .db-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .db-tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 12px 4px;
+    margin-bottom: -1px;
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    letter-spacing: 0.06em;
+    color: var(--text-mute);
+    cursor: pointer;
+    transition: color 0.18s ease, border-color 0.18s ease;
+  }
+  .db-tab + .db-tab {
+    margin-left: 20px;
+  }
+  .db-tab:hover {
+    color: var(--text-ink);
+  }
+  .db-tab[aria-selected='true'] {
+    color: var(--brand-orange);
+    border-bottom-color: var(--brand-orange);
+  }
+  .db-tab:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .db-panel[hidden] {
+    display: none;
   }
   .db-note,
   .db-empty {
@@ -657,6 +827,24 @@ const commentsReady = kvConfigured();
    * comment, clear the textarea, no full reload. Without JS the form still
    * posts and the server 303-redirects back to the asset anchor.
    */
+  /**
+   * Tabs: toggle the visible panel and ARIA state. Pure client-side; both
+   * panels are server-rendered so there is no flash and no data refetch.
+   */
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.db-tab');
+  const panels = document.querySelectorAll<HTMLElement>('.db-panel');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach((t) =>
+        t.setAttribute('aria-selected', String(t.dataset.tab === target)),
+      );
+      panels.forEach((p) => {
+        p.hidden = p.dataset.panel !== target;
+      });
+    });
+  });
+
   function fmtTime(iso: string): string {
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return '';
