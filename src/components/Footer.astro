@@ -21,37 +21,49 @@ const navLinks: { label: string; href: string }[] = [
   { label: 'hub4You', href: '/hub4you' },
 ];
 
-/* Sister agencies: the BeyondBorderGroup network. */
+/* Sister agencies: the BearingBridge group network. */
 const network: { name: string; desc: string; logo: string; href: string }[] = [
   {
-    name: 'BeyondBorderGroup.com',
-    desc: 'Market entry consulting for Western brands growing in China.',
-    logo: '/AgencyLogos/beyondbordergroup.png',
-    href: 'https://beyondbordergroup.com',
+    name: 'TheChinaPath.com',
+    desc: 'Full-service China entry. Branding through to ecommerce.',
+    logo: '/AgencyLogos/thechinapath.png',
+    href: 'https://thechinapath.com',
   },
   {
-    name: 'NuvoraStudio.com',
-    desc: 'LinkedIn presence built daily. Content, ads, executive branding.',
-    logo: '/AgencyLogos/nuvora.png',
-    href: 'https://nuvorastudio.com',
+    name: 'BeyondBridge.ai',
+    desc: 'The full pipeline for Chinese brands going overseas.',
+    logo: '/AgencyLogos/beyondbridge.png',
+    href: 'https://beyondbridge.ai',
+  },
+  {
+    name: 'BearingBridge.ai',
+    desc: 'AI adoption consulting. East and West, on your data.',
+    logo: '/AgencyLogos/bearingbridgeai.svg',
+    href: 'https://bearingbridge.ai',
   },
   {
     name: 'ChinaWebFoundry.com',
-    desc: 'Websites built for the Chinese internet. ICP, Baidu SEO, hosting.',
+    desc: 'Websites built for the Chinese web. Baidu, ICP, AI engines.',
     logo: '/AgencyLogos/chinawebfoundry.png',
     href: 'https://chinawebfoundry.com',
   },
   {
-    name: 'BeyondCompass.com',
-    desc: 'Vetted distributor and Tmall partner introductions in China.',
-    logo: '/AgencyLogos/beyondcompass.png',
-    href: 'https://beyondcompass.com',
-  },
-  {
     name: 'TheRedScroll.com',
-    desc: 'Daily WeChat, Douyin, RedNote and Weibo operations from the ground.',
+    desc: 'Chinese social media. WeChat, Douyin, RedNote, Weibo.',
     logo: '/AgencyLogos/theredscroll.png',
     href: 'https://theredscroll.com',
+  },
+  {
+    name: 'Compass',
+    desc: 'A private database of vetted China distributors, Tmall TPs, and Douyin partners.',
+    logo: '/AgencyLogos/compass.svg',
+    href: 'https://compass.bearingbridge.com',
+  },
+  {
+    name: 'Nuvora.studio',
+    desc: 'LinkedIn-only B2B. Strategy, content, ads.',
+    logo: '/AgencyLogos/nuvora.png',
+    href: 'https://nuvora.studio',
   },
 ];
 ---
@@ -85,29 +97,20 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
       {
         network.map((n) => (
           <li class="footer-net__item">
-            <a class="footer-net__card" href={n.href} target="_blank" rel="noopener">
+            <a
+              class="footer-net__card"
+              href={n.href}
+              target="_blank"
+              rel="noopener"
+              title={`${n.name} — ${n.desc}`}
+            >
               <img src={n.logo} alt={`${n.name} logo`} loading="lazy" />
             </a>
-            <p class="footer-net__name">{n.name}</p>
             <p class="footer-net__desc">{n.desc}</p>
           </li>
         ))
       }
     </ul>
-
-    <a class="footer-parent" href="https://www.bearingbridge.com" target="_blank" rel="noopener">
-      <span class="footer-parent__logo">
-        <img src="/AgencyLogos/bearingbridge.svg" alt="BearingBridge logo" loading="lazy" />
-      </span>
-      <span class="footer-parent__body">
-        <span class="footer-parent__eyebrow">Parent group</span>
-        <span class="footer-parent__name">BearingBridge.com</span>
-        <span class="footer-parent__text">
-          The umbrella group connecting our specialised China agencies.
-        </span>
-      </span>
-      <span class="footer-parent__cta">Visit <span aria-hidden="true">&rarr;</span></span>
-    </a>
   </div>
 
   <div class="container site-footer__bottom">
@@ -184,25 +187,26 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
     margin-top: 22px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 28px 24px;
+    gap: 12px;
   }
   @media (min-width: 640px) {
     .footer-net {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
   @media (min-width: 900px) {
     .footer-net {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(7, 1fr);
     }
   }
   .footer-net__card {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px 22px;
+    height: 64px;
+    padding: 12px 16px;
     background: #fff;
-    border-radius: 14px;
+    border-radius: 10px;
     transition: transform 200ms ease-out;
   }
   .footer-net__card:hover {
@@ -210,94 +214,16 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
   }
   .footer-net__card img {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
-  }
-  .footer-net__name {
-    margin-top: 16px;
-    font-size: var(--type-small);
-    font-weight: 600;
-    color: var(--text-on-dark);
   }
   .footer-net__desc {
-    margin-top: 8px;
-    font-size: 13px;
-    line-height: 1.5;
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.45;
     color: rgba(240, 237, 233, 0.55);
-  }
-
-  .footer-parent {
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding: 22px 24px;
-    border-radius: 18px;
-    background: linear-gradient(110deg, #16244d, var(--bg-ink) 78%);
-    border: 1px solid rgba(240, 237, 233, 0.12);
-    transition: border-color 160ms ease-out;
-  }
-  .footer-parent:hover {
-    border-color: rgba(240, 237, 233, 0.3);
-  }
-  .footer-parent__logo {
-    flex: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 132px;
-    height: 92px;
-    background: #fff;
-    border-radius: 12px;
-  }
-  .footer-parent__logo img {
-    width: 100%;
-    height: auto;
-    padding: 0 6px;
-  }
-  .footer-parent__body {
-    display: grid;
-    gap: 5px;
-    flex: 1;
-  }
-  .footer-parent__eyebrow {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #6ea6e6;
-  }
-  .footer-parent__name {
-    font-size: var(--type-h4);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--text-on-dark);
-  }
-  .footer-parent__text {
-    font-size: var(--type-small);
-    color: rgba(240, 237, 233, 0.6);
-  }
-  .footer-parent__cta {
-    flex: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 12px 22px;
-    border: 1px solid rgba(240, 237, 233, 0.3);
-    border-radius: var(--radius-pill);
-    font-size: var(--type-button);
-    font-weight: 600;
-    color: var(--text-on-dark);
-  }
-  @media (max-width: 639px) {
-    .footer-parent {
-      flex-wrap: wrap;
-    }
-    .footer-parent__cta {
-      width: 100%;
-      justify-content: center;
-    }
   }
 
   .site-footer__bottom {
