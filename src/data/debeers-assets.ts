@@ -33,10 +33,16 @@ export interface DebeersAsset {
   description: string;
   /** Technical definition shown as a caption: format, pixel size, weight. */
   spec: string;
+  /**
+   * ISO date (YYYY-MM-DD) the asset was produced. Shown on the card and used to
+   * group assets into date sections on the review page. Optional: assets without
+   * a date fall into an "Undated" group and show no date label.
+   */
+  date?: string;
 }
 
 /**
- * Product KV assets — campaign key visuals rendered as a separate section at
+ * Product KV assets: campaign key visuals rendered as a separate section at
  * the top of /debeers. Same schema as `debeersAssets`; kept in its own list so
  * the page can group them visually under their own heading.
  */
@@ -50,6 +56,7 @@ export const debeersProductKvs: DebeersAsset[] = [
     description:
       'Paired diamond butterfly rings staged on draped royal-blue leather. One ring shows the open filigree wing, the other the marquise-centred pavé wing engraved DE BEERS, lit to read as a cooler, brighter campaign frame.',
     spec: 'JPG · source',
+    date: '2026-06-22',
   },
   {
     id: 'ring-kv-v2-navy',
@@ -60,6 +67,7 @@ export const debeersProductKvs: DebeersAsset[] = [
     description:
       'Companion framing of the paired diamond butterfly rings on draped deep-navy leather. The darker, moodier ground deepens the contrast and gives a richer, more dramatic alternate to the royal-blue key visual.',
     spec: 'JPG · source',
+    date: '2026-06-22',
   },
   {
     id: 'ring-kv-hero',
@@ -70,6 +78,7 @@ export const debeersProductKvs: DebeersAsset[] = [
     description:
       'Campaign key visual for the diamond ring, used as the hero composition across the layout system.',
     spec: 'JPG · source',
+    date: '2026-06-13',
   },
   {
     id: 'ring-kv-alt',
@@ -80,15 +89,27 @@ export const debeersProductKvs: DebeersAsset[] = [
     description:
       'Companion key visual for the diamond ring, a second framing of the campaign hero for layouts that need a different crop.',
     spec: 'JPG · source',
+    date: '2026-06-13',
   },
 ];
 
 /**
- * Validated concepts — key visuals that have been signed off, shown under the
+ * Validated concepts: key visuals that have been signed off, shown under the
  * "Concepts Validated" tab on /debeers. Same schema as `debeersAssets`; kept in
  * its own list so the page can group them under their own tab.
  */
 export const debeersValidated: DebeersAsset[] = [
+  {
+    id: 'ring-0702-validated',
+    title: 'Butterfly ring key visual, paired on navy',
+    image: '/debeers-full/Ring0702.jpg/0702.jpg',
+    full: '/debeers-full/Ring0702.jpg/0702.jpg',
+    alt: 'Two diamond butterfly rings on deep-navy pebbled leather, one with an open filigree wing set, the other a marquise-centred pavé wing engraved DE BEERS.',
+    description:
+      'Latest validated key visual of the paired diamond butterfly rings on deep-navy pebbled leather. One ring shows the open filigree wing, the other the marquise-centred pavé wing engraved DE BEERS, lit against the dark ground for a rich, dramatic campaign frame.',
+    spec: 'JPG · source',
+    date: '2026-07-02',
+  },
   {
     id: 'ring-v2-validated-navy',
     title: 'Butterfly ring key visual, deep navy',
@@ -98,6 +119,7 @@ export const debeersValidated: DebeersAsset[] = [
     description:
       'Validated key visual of the paired diamond butterfly rings on draped deep-navy leather. The darker ground deepens the contrast for a rich, dramatic campaign frame.',
     spec: 'JPG · source',
+    date: '2026-06-23',
   },
   {
     id: 'ring-v2-validated-alt',
@@ -108,10 +130,11 @@ export const debeersValidated: DebeersAsset[] = [
     description:
       'Validated companion framing of the paired diamond butterfly rings, an alternate crop of the signed-off campaign key visual for layouts that need a different composition.',
     spec: 'JPG · source',
+    date: '2026-06-23',
   },
 ];
 
-export const debeersAssets: DebeersAsset[] = [
+export const debeersBackgrounds: DebeersAsset[] = [
   {
     id: 'bg-navy-leather',
     title: 'Background, navy pebbled leather',
@@ -121,6 +144,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'Top-down navy pebbled leather with a single overhead spotlight. The lit pool sits upper-center, grain dissolving into a dark corner vignette. Built for a centred hero crop with negative space around the subject.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bg-brushed-metal',
@@ -131,6 +155,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'Vertical brushed blue-grey metal, satin and non-reflective. A soft light from the right ramps the panel dark-left to bright-right with the peak upper-right. The whole plane sits in gentle soft focus for a premium feel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bg-royal-drape',
@@ -141,7 +166,11 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'Draped royal-blue textured leather with a diagonal light streak from the upper-left grazing the raised ridge. Crests catch the light, valleys fall to deep navy. Cinematic gradient with room for type in the lower-right.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
+];
+
+export const debeersBloomsbury: DebeersAsset[] = [
   {
     id: 'bloomsbury-garden-square',
     title: 'Bloomsbury, Georgian garden square',
@@ -151,6 +180,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model placed in a Bloomsbury garden square, seated at an outdoor cafe table. Cream-painted Georgian stucco townhouses with white sash windows and black iron railings sit behind her, framed by soft green plane trees. The black panel from the source is replaced by a pale stone tabletop.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-townhouse-balcony',
@@ -161,6 +191,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model at a bistro table on a wrought-iron Bloomsbury balcony terrace. A black iron balustrade, pale Portland stone facade, and the green canopy of the garden square sit behind her under soft diffused morning light. A pale stone tabletop replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-british-museum',
@@ -171,6 +202,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model seated near the British Museum colonnade in Bloomsbury. Tall fluted limestone columns and pale stone steps fall into soft focus behind her, with a hint of green from nearby trees and gentle overcast light. A pale stone balustrade replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-cafe-terrace',
@@ -181,6 +213,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model at a marble bistro table on a Bloomsbury cafe terrace. A cream awning, potted bay trees, and pale stone paving sit softly out of focus behind her, lit by gentle overcast daylight for an intimate editorial mood. The pale marble top replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-russell-square',
@@ -191,6 +224,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model seated on the pale wooden rail of a bench in Russell Square, Bloomsbury. Mature plane trees and manicured lawns blur softly behind her, dappled with gentle light under a warm overcast sky. The light bench surface replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-pergola',
@@ -201,6 +235,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model at a pale table beneath a white-painted garden pergola in a Bloomsbury square. Climbing greenery and wisteria, pale stone planters, and white timber framing surround her as warm daylight filters through the leaves. A pale tabletop replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-golden-hour',
@@ -211,6 +246,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model on a Bloomsbury townhouse balcony at golden hour. Warm-lit pale stone facades and soft tree silhouettes glow in low golden sunlight for a cinematic, warm editorial frame. A warm-lit pale ledge replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-hotel-steps',
@@ -221,6 +257,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model seated on the pale stone entrance steps of an elegant Bloomsbury boutique hotel. White-painted columns and a portico, brass door fixtures, and a stone urn of white flowers fall softly out of focus behind her. A pale stone step replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-mews',
@@ -231,6 +268,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model leaning on a pale ledge in a charming Bloomsbury mews. Pale-painted mews houses in cream, soft grey, and pastel sage line light cobblestones behind her, with climbing greenery and gentle overcast warmth. The pale ledge replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-conservatory',
@@ -241,6 +279,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model on a balcony beside a Bloomsbury glass conservatory, near a small white iron table. Soft reflections in tall glass panes, white-painted iron frames, and lush potted greenery sit behind her in bright, airy overcast light. A pale ledge replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-bedford-square',
@@ -251,6 +290,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model set against a Bedford Square Georgian terrace, the definitive Bloomsbury streetscape. Brown London stock brick, white sash windows, a black front door under a white Coade-stone Doric doorcase, and black area railings sit behind her. The black panel from the source is replaced by a pale stone gatepost.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-british-museum-portico',
@@ -261,6 +301,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model before the British Museum main entrance, the Greek Revival south portico with its row of fluted Ionic limestone columns and sculpted pediment rising behind her. She rests on a pale stone balustrade in place of the source black panel, under soft overcast light.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-senate-house',
@@ -271,6 +312,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model on Malet Street with the monumental Art Deco Senate House behind her, its stepped Portland-stone tower and tall vertical bays instantly placing the scene as Bloomsbury. A pale stone ledge replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-lambs-conduit',
@@ -281,6 +323,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       "The model on Lamb's Conduit Street, the pedestrianised Bloomsbury lane, set against a heritage independent shopfront, a sage-green timber fascia with gilded lettering, paned windows and an awning, painted stucco and buff stock brick beyond. A pale painted windowsill replaces the source black panel.",
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-hotel-russell',
@@ -291,6 +334,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       "The model at the edge of Russell Square gardens, the square's signature view behind her: tall plane trees and the ornate terracotta-and-cream Victorian Gothic facade of Hotel Russell with its turreted roofline. She sits on a pale stone rim in place of the source black panel.",
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-gordon-square',
@@ -301,6 +345,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model beside the wrought-iron garden railings of Gordon Square, heart of the Bloomsbury Group. A buff stock-brick Georgian terrace, a round blue heritage plaque, and garden greenery sit behind her, with a pale stone gatepost replacing the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-georgian-doorway',
@@ -311,6 +356,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model framed by an elegant Bloomsbury Georgian doorway, a glossy black six-panel door with a fanlight, white Doric pilasters and a Coade-stone doorcase, brass furniture and a house number. A pale stone threshold replaces the source black panel; only the door stays black.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-brunswick-centre',
@@ -321,6 +367,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model at the Brunswick Centre, the cream-painted modernist landmark of Bloomsbury, its stepped ziggurat terraces and rhythmic glazing rising behind her. A pale concrete ledge replaces the source black panel, a contemporary counterpoint to the Georgian squares.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-bedford-place',
@@ -331,6 +378,7 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       'The model on Bedford Place, a long Bloomsbury Georgian terrace receding diagonally behind her: repeating white sash windows, white stucco over buff stock brick, black railings, white doorcases and matching lampposts. A pale stone sill replaces the source black panel.',
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
   {
     id: 'bloomsbury-st-georges',
@@ -341,5 +389,16 @@ export const debeersAssets: DebeersAsset[] = [
     description:
       "The model before St George's Bloomsbury, Hawksmoor's church on Bloomsbury Way, its classical portico of fluted Corinthian limestone columns and distinctive stepped pyramid tower rising behind her. A pale stone plinth replaces the source black panel.",
     spec: 'WebP · 16:9',
+    date: '2026-06-10',
   },
+];
+
+/**
+ * Every non-KV, non-validated asset in one list. Kept as the union of the
+ * Backgrounds and Bloomsbury concept groups so the comment API and thread
+ * gathering can validate any asset id without caring which group it belongs to.
+ */
+export const debeersAssets: DebeersAsset[] = [
+  ...debeersBackgrounds,
+  ...debeersBloomsbury,
 ];

@@ -1,6 +1,6 @@
 ---
 /**
- * DeBeers (`/debeers`) — hidden, password-gated project asset review.
+ * DeBeers (`/debeers`): hidden, password-gated project asset review.
  *
  * Not in the nav, not in the sitemap, noindexed. Behind a shared password
  * (server-checked, signed httpOnly cookie via /api/debeers/login). Once in,
@@ -14,11 +14,66 @@
 export const prerender = false;
 
 import Layout from '../layouts/Layout.astro';
-import { debeersAssets, debeersProductKvs, debeersValidated } from '../data/debeers-assets';
+import {
+  debeersAssets,
+  debeersBackgrounds,
+  debeersBloomsbury,
+  debeersProductKvs,
+  debeersValidated,
+  type DebeersAsset,
+} from '../data/debeers-assets';
 import { isAuthed, getComments, kvConfigured, type Comment } from '../lib/debeers';
 
 const authed = await isAuthed(Astro.request);
 const loginError = Astro.url.searchParams.get('error') === '1';
+
+/** Human date label for an asset, e.g. "July 2, 2026". Empty for undated. */
+function fmtDate(iso?: string): string {
+  if (!iso) return '';
+  const d = new Date(`${iso}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
+
+/**
+ * Group assets into date sections, newest first, preserving each asset's order
+ * within its date. Undated assets collect under a trailing "Undated" group.
+ */
+function groupByDate(
+  assets: DebeersAsset[],
+): { key: string; label: string; assets: DebeersAsset[] }[] {
+  const groups = new Map<string, DebeersAsset[]>();
+  for (const asset of assets) {
+    const key = asset.date ?? '';
+    const list = groups.get(key);
+    if (list) list.push(asset);
+    else groups.set(key, [asset]);
+  }
+  return [...groups.keys()]
+    .sort((a, b) => {
+      if (a === b) return 0;
+      if (a === '') return 1; // undated last
+      if (b === '') return -1;
+      return b.localeCompare(a); // ISO dates: newest first
+    })
+    .map((key) => ({
+      key: key || 'undated',
+      label: key ? fmtDate(key) : 'Undated',
+      assets: groups.get(key)!,
+    }));
+}
+
+const validatedGroups = groupByDate(debeersValidated);
+const productKvGroups = groupByDate(debeersProductKvs);
+// Design Concepts tab: the location/background concept sections, each date-grouped.
+const conceptSections = [
+  { id: 'backgrounds', heading: 'Backgrounds', groups: groupByDate(debeersBackgrounds) },
+  { id: 'bloomsbury', heading: 'Bloomsbury', groups: groupByDate(debeersBloomsbury) },
+];
 
 /** Friendly absolute-ish timestamp for a comment. */
 function when(iso: string): string {
@@ -45,7 +100,7 @@ const commentsReady = kvConfigured();
 ---
 
 <Layout
-  title="DeBeers — Asset review"
+  title="DeBeers: Asset review"
   description="Private DeBeers project asset review."
   noindex
 >
@@ -89,7 +144,7 @@ const commentsReady = kvConfigured();
               <h1 class="db-title">DeBeers</h1>
               <p class="db-lead">
                 Every asset created for the project. Leave a comment on any of
-                them — everyone with access sees the thread.
+                them. Everyone with access sees the thread.
               </p>
               {!commentsReady && (
                 <p class="db-note" role="status">
@@ -134,8 +189,11 @@ const commentsReady = kvConfigured();
             {debeersProductKvs.length > 0 && (
               <section class="db-section" aria-labelledby="db-section-product-kvs">
                 <h2 class="db-section-h" id="db-section-product-kvs">Product KVs</h2>
-                <ul class="db-grid">
-                  {debeersProductKvs.map((asset) => (
+                {productKvGroups.map((group) => (
+                <div class="db-dategroup">
+                  <h3 class="db-group-h">{group.label}</h3>
+                  <ul class="db-grid">
+                  {group.assets.map((asset) => (
                     <li class="db-asset" id={`asset-${asset.id}`}>
                       <figure class="db-figure">
                         <button
@@ -155,6 +213,9 @@ const commentsReady = kvConfigured();
                         </button>
                       </figure>
                       <div class="db-body">
+                        {asset.date && (
+                          <p class="db-date">{fmtDate(asset.date)}</p>
+                        )}
                         <h3 class="db-asset-title">{asset.title}</h3>
                         <p class="db-desc">{asset.description}</p>
                         <p class="db-spec">{asset.spec}</p>
@@ -214,7 +275,9 @@ const commentsReady = kvConfigured();
                       </div>
                     </li>
                   ))}
-                </ul>
+                  </ul>
+                </div>
+                ))}
               </section>
             )}
 
@@ -225,10 +288,14 @@ const commentsReady = kvConfigured();
                 <code>public/Images/debeers/</code>.
               </p>
             ) : (
-              <section class="db-section" aria-labelledby="db-section-assets">
-                <h2 class="db-section-h" id="db-section-assets">Backgrounds and locations</h2>
-                <ul class="db-grid">
-                  {debeersAssets.map((asset) => (
+              conceptSections.map((section) => (
+              <section class="db-section" aria-labelledby={`db-section-${section.id}`}>
+                <h2 class="db-section-h" id={`db-section-${section.id}`}>{section.heading}</h2>
+                {section.groups.map((group) => (
+                <div class="db-dategroup">
+                  <h3 class="db-group-h">{group.label}</h3>
+                  <ul class="db-grid">
+                  {group.assets.map((asset) => (
                     <li class="db-asset" id={`asset-${asset.id}`}>
                       <figure class="db-figure">
                         <button
@@ -248,6 +315,9 @@ const commentsReady = kvConfigured();
                         </button>
                       </figure>
                       <div class="db-body">
+                        {asset.date && (
+                          <p class="db-date">{fmtDate(asset.date)}</p>
+                        )}
                         <h3 class="db-asset-title">{asset.title}</h3>
                         <p class="db-desc">{asset.description}</p>
                         <p class="db-spec">{asset.spec}</p>
@@ -307,8 +377,11 @@ const commentsReady = kvConfigured();
                       </div>
                     </li>
                   ))}
-                </ul>
+                  </ul>
+                </div>
+                ))}
               </section>
+              ))
             )}
             </div>
 
@@ -325,8 +398,11 @@ const commentsReady = kvConfigured();
               ) : (
                 <section class="db-section" aria-labelledby="db-section-validated">
                   <h2 class="db-section-h" id="db-section-validated">Validated key visuals</h2>
-                  <ul class="db-grid">
-                    {debeersValidated.map((asset) => (
+                  {validatedGroups.map((group) => (
+                  <div class="db-dategroup">
+                    <h3 class="db-group-h">{group.label}</h3>
+                    <ul class="db-grid">
+                    {group.assets.map((asset) => (
                       <li class="db-asset" id={`asset-${asset.id}`}>
                         <figure class="db-figure">
                           <button
@@ -346,6 +422,9 @@ const commentsReady = kvConfigured();
                           </button>
                         </figure>
                         <div class="db-body">
+                          {asset.date && (
+                            <p class="db-date">{fmtDate(asset.date)}</p>
+                          )}
                           <h3 class="db-asset-title">{asset.title}</h3>
                           <p class="db-desc">{asset.description}</p>
                           <p class="db-spec">{asset.spec}</p>
@@ -405,7 +484,9 @@ const commentsReady = kvConfigured();
                         </div>
                       </li>
                     ))}
-                  </ul>
+                    </ul>
+                  </div>
+                  ))}
                 </section>
               )}
             </div>
@@ -614,6 +695,21 @@ const commentsReady = kvConfigured();
     border-bottom: 1px solid var(--line-hairline);
   }
 
+  .db-dategroup {
+    margin-top: 40px;
+  }
+  .db-dategroup:first-of-type {
+    margin-top: 0;
+  }
+  .db-group-h {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: 20px;
+  }
+
   .db-grid {
     display: grid;
     gap: 40px;
@@ -650,6 +746,14 @@ const commentsReady = kvConfigured();
     display: flex;
     flex-direction: column;
     gap: 14px;
+  }
+  .db-date {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: -4px;
   }
   .db-asset-title {
     font-family: var(--font-serif);
