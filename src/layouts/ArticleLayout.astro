@@ -97,8 +97,6 @@ const breadcrumbSchema = {
         <h1 class="headline h1 reveal art-hero__title">{insight.title}</h1>
         <p class="lead art-hero__deck">{insight.deck}</p>
         <p class="art-hero__meta">
-          <span>{insight.author}</span>
-          <span class="art-hero__dot" aria-hidden="true"></span>
           <time datetime={insight.dateISO}>{insight.date}</time>
           <span class="art-hero__dot" aria-hidden="true"></span>
           <span>{insight.readingTime}</span>
@@ -337,6 +335,42 @@ const breadcrumbSchema = {
   }
   .prose :global(.callout > :first-child) {
     margin-top: 0;
+  }
+  .prose :global(.table-wrap) {
+    margin-top: 32px;
+    overflow-x: auto;
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+  }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--type-small);
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    text-align: left;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line-hairline);
+    line-height: 1.5;
+    color: var(--text-mute);
+    vertical-align: top;
+  }
+  .prose :global(thead th) {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+    background: var(--bg-white);
+  }
+  .prose :global(tbody th) {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .prose :global(tbody tr:last-child th),
+  .prose :global(tbody tr:last-child td) {
+    border-bottom: 0;
   }
 
   /* ---- Inline CTA ---- */

@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'ai-content-production-beyond-the-prompt',
+    image: '/Images/insight-ai-content-production-beyond-the-prompt.webp',
+    imageAlt:
+      'A senior art director leaning toward a color-graded monitor in a dim studio, warm screen light across her focused face.',
+    category: 'Production',
+    tone: 'orange',
+    title: 'AI Content Production: Beyond the Prompt',
+    deck: 'A good prompt gets you an image, not a usable brand asset. Here is the real gap between AI generation and directed content production work.',
+    date: 'July 4, 2026',
+    dateISO: '2026-07-04',
+    readingTime: '6 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'AI Content Production: Beyond the Prompt | hubStudio',
+    metaDescription:
+      'Prompts make images. Brands need direction. Why AI content production takes more than a good prompt, and what actually gets you brand-grade work.',
+  },
+  {
     slug: 'ai-search-content-systems',
     image: '/Images/insight-ai-search-content-systems.webp',
     imageAlt:
