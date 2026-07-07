@@ -48,6 +48,17 @@ export interface DebeersAsset {
  */
 export const debeersProductKvs: DebeersAsset[] = [
   {
+    id: 'ring-kv-final-rev1',
+    title: 'Product KV, final concept, Revision 1',
+    image: '/debeers-full/Ring0707/0707.jpg',
+    full: '/debeers-full/Ring0707/0707.jpg',
+    alt: 'Two diamond butterfly rings on dark navy pebbled leather, one an open filigree wing set, the other a marquise- and pear-centred pavé wing engraved DE BEERS, lit by a single soft overhead pool of light.',
+    description:
+      'Final-concept product key visual, Revision 1. The paired diamond butterfly rings sit on dark navy pebbled leather, one showing the open filigree wing, the other the marquise- and pear-centred pavé wing engraved DE BEERS. A single soft overhead light pools around the pair and falls off into near-black corners for a rich, dramatic campaign frame.',
+    spec: 'JPG · source',
+    date: '2026-07-07',
+  },
+  {
     id: 'ring-kv-v2-royal',
     title: 'Butterfly ring key visual, royal blue',
     image: '/debeers-full/Ring0622/ringKV-V2-1.jpg',
