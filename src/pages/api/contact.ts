@@ -76,7 +76,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   if (!apiKey) {
     return fail(
       500,
-      'The contact form is not configured yet. Email hello@hubstudio.ai directly.',
+      'The contact form is not configured yet. Email hello@bearingbridge.com directly.',
     );
   }
 
@@ -122,13 +122,13 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     if (error) {
       return fail(
         502,
-        'We could not send your message. Email hello@hubstudio.ai and we will pick it up.',
+        'We could not send your message. Email hello@bearingbridge.com and we will pick it up.',
       );
     }
   } catch {
     return fail(
       502,
-      'We could not send your message. Email hello@hubstudio.ai and we will pick it up.',
+      'We could not send your message. Email hello@bearingbridge.com and we will pick it up.',
     );
   }
 
