@@ -168,7 +168,8 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/thank-you') &&
         !page.includes('/api/') &&
-        !page.includes('/debeers'),
+        !page.includes('/debeers') &&
+        !page.includes('/sonepar'),
       changefreq: 'weekly',
       priority: 0.7,
       // Per URL the integration emits, this hook adds two things the defaults

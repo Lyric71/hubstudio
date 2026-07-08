@@ -1,0 +1,771 @@
+---
+/**
+ * Sonepar (`/sonepar`): hidden, password-gated project asset review, built on
+ * the same pattern as /debeers.
+ *
+ * Not in the nav, not in the sitemap, noindexed. Behind a shared password
+ * (server-checked, signed httpOnly cookie via /api/sonepar/login). Once in,
+ * it lists every visual concept from src/data/sonepar-assets.ts, one section
+ * per concept and one card per delivery format, each with a comment thread
+ * anyone with the password can post to (stored in Vercel KV via
+ * /api/sonepar/comment).
+ *
+ * Server-rendered on demand so the gate is real; the rest of the site stays
+ * static. Images are served straight from public/sonepar-full/ (untouched
+ * originals, outside the optimizer's scope), so enlarge and download always
+ * hand back the source file.
+ */
+export const prerender = false;
+
+import Layout from '../layouts/Layout.astro';
+import { soneparAssets } from '../data/sonepar-assets';
+import { isAuthed, getComments, kvConfigured, type Comment } from '../lib/sonepar';
+
+const authed = await isAuthed(Astro.request);
+const loginError = Astro.url.searchParams.get('error') === '1';
+
+/** Friendly absolute-ish timestamp for a comment. */
+function when(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  return d.toLocaleString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+  });
+}
+
+// Only fetch comments when the visitor is in.
+let threads: Record<string, Comment[]> = {};
+if (authed) {
+  const lists = await Promise.all(soneparAssets.map((a) => getComments(a.id)));
+  threads = Object.fromEntries(soneparAssets.map((a, i) => [a.id, lists[i]]));
+}
+
+const commentsReady = kvConfigured();
+---
+
+<Layout
+  title="Sonepar: Asset review"
+  description="Private Sonepar project asset review."
+  noindex
+>
+  <section class="db-shell">
+    <div class="container">
+      {
+        !authed ? (
+          <div class="db-gate">
+            <p class="db-eyebrow">Private</p>
+            <h1 class="db-title">Sonepar</h1>
+            <p class="db-lead">
+              This page is restricted. Enter the access password to view the
+              project assets.
+            </p>
+            <form class="db-login" method="POST" action="/api/sonepar/login">
+              <label class="db-field">
+                <span class="db-label">Password</span>
+                <input
+                  type="password"
+                  name="password"
+                  autocomplete="current-password"
+                  required
+                  autofocus
+                  class="db-input"
+                />
+              </label>
+              {loginError && (
+                <p class="db-error" role="alert">
+                  Wrong password. Try again.
+                </p>
+              )}
+              <button type="submit" class="db-btn">
+                Enter
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div class="db-board">
+            <header class="db-head">
+              <p class="db-eyebrow">Project assets</p>
+              <h1 class="db-title">Sonepar</h1>
+              <p class="db-lead">
+                Visual concepts for the outdoor luminaire, one card per
+                setting. Use the format buttons to preview each delivery size
+                of the same visual. Leave a comment on any of them. Everyone
+                with access sees the thread.
+              </p>
+              {!commentsReady && (
+                <p class="db-note" role="status">
+                  Comment storage is not connected yet, so threads are read-only
+                  and empty. Add the KV integration in Vercel to enable posting.
+                </p>
+              )}
+            </header>
+
+            <ul class="db-grid">
+              {soneparAssets.map((asset) => (
+                <li class="db-asset" id={`asset-${asset.id}`}>
+                  <figure class="db-figure">
+                    <button
+                      type="button"
+                      class="db-zoom"
+                      data-zoom={asset.formats[0].file}
+                      data-download={asset.formats[0].file}
+                      aria-label={`View ${asset.title} full size`}
+                    >
+                      <img
+                        src={asset.formats[0].file}
+                        alt={asset.alt}
+                        loading="lazy"
+                        class="db-img"
+                      />
+                      <span class="db-zoom-hint" aria-hidden="true">Click to enlarge</span>
+                    </button>
+                  </figure>
+                  <div class="db-body">
+                    <h2 class="db-asset-title">{asset.title}</h2>
+                    <p class="db-desc">{asset.description}</p>
+                    {asset.formats.length > 1 && (
+                      <div
+                        class="db-formats"
+                        role="group"
+                        aria-label={`${asset.title} formats`}
+                        data-formats={asset.id}
+                      >
+                        {asset.formats.map((f, i) => (
+                          <button
+                            type="button"
+                            class="db-format"
+                            aria-pressed={i === 0 ? 'true' : 'false'}
+                            data-file={f.file}
+                            data-spec={f.spec}
+                          >
+                            {f.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                    <p class="db-spec" data-spec-out={asset.id}>
+                      {asset.formats[0].spec}
+                    </p>
+
+                    <div class="db-thread" data-asset={asset.id}>
+                          <h4 class="db-thread-h">Comments</h4>
+                          <ul class="db-comments" data-comments={asset.id}>
+                            {(threads[asset.id] ?? []).map((c) => (
+                              <li class="db-comment">
+                                <div class="db-comment-meta">
+                                  <span class="db-comment-name">{c.name}</span>
+                                  <time class="db-comment-time" datetime={c.ts}>
+                                    {when(c.ts)}
+                                  </time>
+                                </div>
+                                <p class="db-comment-body">{c.body}</p>
+                              </li>
+                            ))}
+                          </ul>
+                          {(threads[asset.id] ?? []).length === 0 && (
+                            <p class="db-comment-empty" data-empty={asset.id}>
+                              No comments yet.
+                            </p>
+                          )}
+
+                          <form
+                            class="db-comment-form"
+                            method="POST"
+                            action="/api/sonepar/comment"
+                            data-form={asset.id}
+                          >
+                            <input type="hidden" name="assetId" value={asset.id} />
+                            <input
+                              type="text"
+                              name="name"
+                              placeholder="Your name"
+                              maxlength="80"
+                              required
+                              class="db-input db-input--sm"
+                            />
+                            <textarea
+                              name="body"
+                              placeholder="Add a comment"
+                              rows="2"
+                              maxlength="2000"
+                              required
+                              class="db-textarea"
+                            />
+                            <div class="db-form-row">
+                              <button type="submit" class="db-btn db-btn--sm">
+                                Post comment
+                              </button>
+                              <span class="db-form-msg" data-msg={asset.id} />
+                            </div>
+                      </form>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+
+    <div class="db-lightbox" data-lightbox hidden>
+      <div class="db-lightbox-bar">
+        <a class="db-lightbox-btn" data-lb-download href="#" download>
+          Download
+        </a>
+        <button type="button" class="db-lightbox-btn db-lightbox-close" data-lb-close>
+          Close
+        </button>
+      </div>
+      <img class="db-lightbox-img" data-lb-img src="" alt="" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .db-shell {
+    padding: calc(var(--nav-h) + 64px) 0 var(--section-pad-y-mobile);
+    background: var(--bg-cream);
+    min-height: 80vh;
+  }
+  @media (min-width: 768px) {
+    .db-shell {
+      padding-bottom: var(--section-pad-y-desktop);
+    }
+  }
+
+  .db-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: 12px;
+  }
+  .db-title {
+    font-family: var(--font-serif);
+    font-size: var(--type-h1);
+    line-height: var(--lh-display);
+    margin-bottom: 16px;
+  }
+  .db-lead {
+    font-size: var(--type-lead);
+    color: var(--text-mute);
+    max-width: 56ch;
+  }
+
+  /* --- Login gate --- */
+  .db-gate {
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 0;
+  }
+  .db-gate .db-lead {
+    margin: 0 auto 28px;
+  }
+  .db-login {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+  }
+  .db-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .db-label {
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+  .db-input,
+  .db-textarea {
+    width: 100%;
+    font: inherit;
+    font-size: var(--type-body);
+    color: var(--text-ink);
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    padding: 12px 16px;
+  }
+  .db-input--sm {
+    font-size: var(--type-small);
+    padding: 10px 14px;
+  }
+  .db-textarea {
+    resize: vertical;
+    line-height: 1.5;
+  }
+  .db-input:focus-visible,
+  .db-textarea:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+  .db-error {
+    color: var(--brand-orange-deep);
+    font-size: var(--type-small);
+  }
+  .db-btn {
+    align-self: flex-start;
+    background: var(--brand-orange);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 14px 28px;
+    font-size: var(--type-button);
+    font-weight: 600;
+    transition: background 0.18s ease;
+  }
+  .db-btn:hover {
+    background: var(--brand-orange-deep);
+  }
+  .db-btn--sm {
+    padding: 10px 20px;
+    font-size: var(--type-small);
+  }
+  .db-btn[disabled] {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  /* --- Board --- */
+  .db-head {
+    margin-bottom: 40px;
+    max-width: 720px;
+  }
+  .db-note {
+    margin-top: 20px;
+    font-size: var(--type-small);
+    color: var(--text-mute);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 14px;
+    padding: 14px 18px;
+  }
+
+  .db-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .db-format {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-mute);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    padding: 8px 18px;
+    line-height: 1;
+    transition:
+      color 0.18s ease,
+      border-color 0.18s ease,
+      background 0.18s ease;
+  }
+  .db-format:hover {
+    color: var(--text-ink);
+  }
+  .db-format[aria-pressed='true'] {
+    color: #fff;
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+
+  .db-grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 900px) {
+    .db-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+    }
+  }
+
+  .db-asset {
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .db-figure {
+    margin: 0;
+    background: var(--bg-cream);
+  }
+  /* Formats are the subject of the review, so show each image at its own
+     native aspect ratio (banner vs square) instead of forcing one crop. */
+  .db-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .db-body {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .db-asset-title {
+    font-family: var(--font-serif);
+    font-size: var(--type-h3);
+    line-height: 1.1;
+  }
+  .db-desc {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-ink);
+  }
+  .db-spec {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    color: var(--text-mute);
+    letter-spacing: 0.02em;
+  }
+
+  /* --- Thread --- */
+  .db-thread {
+    margin-top: 8px;
+    border-top: 1px solid var(--line-hairline);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .db-thread-h {
+    font-size: var(--type-small);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-mute);
+    font-weight: 600;
+  }
+  .db-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .db-comment {
+    background: var(--bg-cream);
+    border-radius: 14px;
+    padding: 12px 16px;
+  }
+  .db-comment-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .db-comment-name {
+    font-weight: 600;
+    font-size: var(--type-small);
+  }
+  .db-comment-time {
+    font-size: var(--type-eyebrow);
+    color: var(--text-mute);
+    font-family: var(--font-mono);
+  }
+  .db-comment-body {
+    font-size: var(--type-body);
+    line-height: 1.55;
+    white-space: pre-wrap;
+  }
+  .db-comment-empty {
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+
+  .db-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .db-form-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .db-form-msg {
+    font-size: var(--type-small);
+  }
+  .db-form-msg[data-state='error'] {
+    color: var(--brand-orange-deep);
+  }
+  .db-form-msg[data-state='ok'] {
+    color: var(--text-mute);
+  }
+
+  /* --- Zoomable thumbnail --- */
+  .db-zoom {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    position: relative;
+    cursor: zoom-in;
+  }
+  .db-zoom-hint {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(10, 10, 20, 0.55);
+    backdrop-filter: blur(4px);
+    padding: 6px 10px;
+    border-radius: var(--radius-pill);
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    pointer-events: none;
+  }
+  .db-zoom:hover .db-zoom-hint,
+  .db-zoom:focus-visible .db-zoom-hint {
+    opacity: 1;
+  }
+
+  /* --- Lightbox --- */
+  .db-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px 24px;
+    background: rgba(7, 9, 14, 0.92);
+    backdrop-filter: blur(6px);
+  }
+  .db-lightbox[hidden] {
+    display: none;
+  }
+  .db-lightbox-img {
+    max-width: min(100%, 1400px);
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+  }
+  .db-lightbox-bar {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 12px;
+  }
+  .db-lightbox-btn {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-pill);
+    padding: 9px 20px;
+    transition: background 0.18s ease;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+  .db-lightbox-btn:hover {
+    background: rgba(255, 255, 255, 0.24);
+  }
+</style>
+
+<script>
+  /**
+   * Format switch: the pills inside a card swap the preview image, the spec
+   * caption, and the enlarge/download target between delivery sizes of the
+   * same visual. Without JS the default (first) format stays shown.
+   */
+  document.querySelectorAll<HTMLElement>('[data-formats]').forEach((group) => {
+    const id = group.dataset.formats ?? '';
+    const card = document.getElementById(`asset-${id}`);
+    const img = card?.querySelector<HTMLImageElement>('.db-img');
+    const zoom = card?.querySelector<HTMLButtonElement>('.db-zoom');
+    const spec = card?.querySelector<HTMLElement>(`[data-spec-out="${id}"]`);
+
+    group.querySelectorAll<HTMLButtonElement>('.db-format').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const file = pill.dataset.file ?? '';
+        if (!file) return;
+        group
+          .querySelectorAll('.db-format')
+          .forEach((b) => b.setAttribute('aria-pressed', 'false'));
+        pill.setAttribute('aria-pressed', 'true');
+        if (img) img.src = file;
+        if (zoom) {
+          zoom.dataset.zoom = file;
+          zoom.dataset.download = file;
+        }
+        if (spec) spec.textContent = pill.dataset.spec ?? '';
+      });
+    });
+  });
+
+  /**
+   * Progressive enhancement for comment forms: post via fetch, append the new
+   * comment, clear the textarea, no full reload. Without JS the form still
+   * posts and the server 303-redirects back to the asset anchor.
+   */
+  function fmtTime(iso: string): string {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '';
+    return d.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+  }
+
+  function esc(s: string): string {
+    const el = document.createElement('div');
+    el.textContent = s;
+    return el.innerHTML;
+  }
+
+  document.querySelectorAll<HTMLFormElement>('.db-comment-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const assetId = form.dataset.form ?? '';
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const msg = document.querySelector<HTMLElement>(`[data-msg="${assetId}"]`);
+      if (btn) btn.disabled = true;
+      if (msg) {
+        msg.textContent = '';
+        msg.removeAttribute('data-state');
+      }
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const data = await res.json();
+        if (!res.ok || !data.ok) throw new Error(data.error || 'Could not post.');
+
+        const list = document.querySelector<HTMLElement>(
+          `[data-comments="${assetId}"]`,
+        );
+        const empty = document.querySelector<HTMLElement>(
+          `[data-empty="${assetId}"]`,
+        );
+        if (empty) empty.remove();
+        if (list) {
+          const c = data.comment;
+          const li = document.createElement('li');
+          li.className = 'db-comment';
+          li.innerHTML =
+            `<div class="db-comment-meta">` +
+            `<span class="db-comment-name">${esc(c.name)}</span>` +
+            `<time class="db-comment-time" datetime="${esc(c.ts)}">${esc(
+              fmtTime(c.ts),
+            )}</time></div>` +
+            `<p class="db-comment-body">${esc(c.body)}</p>`;
+          list.appendChild(li);
+        }
+        const textarea = form.querySelector<HTMLTextAreaElement>(
+          'textarea[name="body"]',
+        );
+        if (textarea) textarea.value = '';
+      } catch (err) {
+        if (msg) {
+          msg.textContent = err instanceof Error ? err.message : 'Could not post.';
+          msg.setAttribute('data-state', 'error');
+        }
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  });
+
+  /**
+   * Lightbox: click a thumbnail to view the asset full size, with a download
+   * link and close (button, backdrop click, or Escape). Both the preview and
+   * the Download button use the untouched source file from /sonepar-full/.
+   */
+  const lb = document.querySelector<HTMLElement>('[data-lightbox]');
+  const lbImg = document.querySelector<HTMLImageElement>('[data-lb-img]');
+  const lbDownload = document.querySelector<HTMLAnchorElement>('[data-lb-download]');
+
+  let downloadSrc = '';
+
+  function openLightbox(preview: string, download: string, alt: string): void {
+    if (!lb || !lbImg) return;
+    lbImg.src = preview;
+    lbImg.alt = alt;
+    downloadSrc = download;
+    if (lbDownload) lbDownload.href = download; // fallback for no-JS / middle-click
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(): void {
+    if (!lb || !lbImg) return;
+    lb.hidden = true;
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  // Force a real file save of the source file, bypassing the browser's
+  // tendency to navigate to (rather than download) large same-origin assets.
+  async function downloadFull(): Promise<void> {
+    if (!downloadSrc) return;
+    const name = downloadSrc.split('/').pop() || 'asset';
+    try {
+      const res = await fetch(downloadSrc);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      // Network failure: fall back to a plain navigation to the file.
+      window.open(downloadSrc, '_blank');
+    }
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.db-zoom').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const img = btn.querySelector('img');
+      openLightbox(
+        btn.dataset.zoom ?? '',
+        btn.dataset.download ?? btn.dataset.zoom ?? '',
+        img?.alt ?? '',
+      );
+    });
+  });
+
+  lbDownload?.addEventListener('click', (e) => {
+    e.preventDefault();
+    downloadFull();
+  });
+
+  document.querySelector('[data-lb-close]')?.addEventListener('click', closeLightbox);
+  lb?.addEventListener('click', (e) => {
+    // Backdrop click closes; clicks on the image or toolbar do not.
+    if (e.target === lb) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lb && !lb.hidden) closeLightbox();
+  });
+</script>
