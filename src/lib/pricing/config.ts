@@ -1,156 +1,248 @@
 /**
  * Pricing configuration for the AIGC product-image quotation tool.
  *
- * This file is the ONLY place money lives. Every constant below is a current
- * live value; editing them here changes the calculator everywhere, because both
- * the server render and the browser import this same module.
+ * This file is the ONLY place money lives: rates, multipliers, FX. Nothing is
+ * hard-coded in a formula. Editing a constant here changes the calculator
+ * everywhere, because the server render and the browser import this same module.
  *
- * CNY is the base currency. USD and EUR are conversions, display only:
- *   USD = CNY / cnyPerUsd
- *   EUR = (CNY / cnyPerUsd) * eurPerUsd
+ * The model is fully PER IMAGE. There is no project fee and no setup fee. Each
+ * image carries a base production price (set by the delivery option), scaled by
+ * a complexity multiplier, plus whatever add-ons that one image needs.
  *
- * Internal cost mechanics (labor hours, hourly rates, AI token cost) are
- * deliberately absent from the client-facing surface. The resolved rates below
- * already bake them in; see PRICING_DERIVATION for the audit trail, which is
- * kept here for regeneration and is never rendered on the page.
+ * CNY is the base currency and the canonical total. USD and EUR are display
+ * conversions only:
+ *   USD = CNY * usdPerCny
+ *   EUR = CNY * eurPerCny
+ *
+ * Internal cost mechanics (labor hours, hourly rates, AI token cost) never reach
+ * the client-facing surface. The resolved rates below bake them in; see
+ * PRICING_DERIVATION for the audit trail, which is never rendered.
  */
 
 export interface FxRates {
-  /** CNY per 1 USD. */
-  cnyPerUsd: number;
-  /** EUR per 1 USD. */
-  eurPerUsd: number;
+  /** Value of 1 CNY in USD. Live from a currency source; treated as an input. */
+  usdPerCny: number;
+  /** Value of 1 CNY in EUR. */
+  eurPerCny: number;
+}
+
+/** The scene decides complexity, never the product. */
+export type Complexity = 'Low' | 'Medium' | 'High';
+
+export interface ComplexitySpec {
+  id: Complexity;
+  /** Multiplier applied to the base per-image production price. */
+  multiplier: number;
+  /** What earns this level, in the client's terms. */
+  note: string;
 }
 
 export interface PricingConfig {
-  /** Per-project fixed fee, by delivery option. CNY. */
-  fixedBase: { A: number; B: number };
-  /** Per-image fee, by delivery option. CNY. */
-  perImage: { A: number; B: number };
-  /** Uplift applied to the subtotal when a dedicated account manager is added. */
+  /** Base production price per image at Low complexity, by delivery option. */
+  basePerImage: { A: number; B: number };
+  /** One designer hour: the unit behind every hourly add-on. CNY. */
+  designerHour: number;
+  /** Flat price of one product shot / pack shot pack. CNY. */
+  productShotPack: number;
+  /** Uplift applied to the pre-uplift subtotal for a dedicated account manager. */
   accountManagerUpliftPct: number;
+  /** Minimum order quantity, in images. */
+  minimumImages: number;
+  /** Price multiplier per complexity level. */
+  complexityMultiplier: Record<Complexity, number>;
   fx: FxRates;
 }
 
 export const PRICING: PricingConfig = {
-  // Option A: AI scenes + product generated together (product added later is B).
-  fixedBase: { A: 923.48, B: 778.7 },
-  // Option A bakes integration into 3 retouch rounds; Option B is manual
-  // product placement plus 3 retouch rounds, so it carries a higher per-image.
-  perImage: { A: 821.27, B: 1235.29 },
+  basePerImage: { A: 1662.88, B: 1932.12 },
+  designerHour: 273.31,
+  productShotPack: 2500,
   accountManagerUpliftPct: 0.3,
-  fx: { cnyPerUsd: 6.7768, eurPerUsd: 0.8759 },
+  minimumImages: 5,
+  complexityMultiplier: { Low: 1.0, Medium: 1.5, High: 2.0 },
+  fx: { usdPerCny: 0.1475, eurPerCny: 0.1295 },
 };
 
-/** The two ways a product can be put into a scene. */
+/**
+ * Complexity is scored by the SCENE, not the product. Size variations are
+ * mechanical resizes of one master and are never scored: they are an add-on.
+ * A reference mix, from Sonepar Wave 4 and 5: 3 Low, 13 Medium, 19 High across
+ * 35 key visuals.
+ */
+export const COMPLEXITIES: ComplexitySpec[] = [
+  {
+    id: 'Low',
+    multiplier: PRICING.complexityMultiplier.Low,
+    note: 'Colored, graphic, or white background, or an easy generative element. Background generation plus a simple composite.',
+  },
+  {
+    id: 'Medium',
+    multiplier: PRICING.complexityMultiplier.Medium,
+    note: 'The product in a realistic everyday environment (office, parking, hallway, residential). It must look believably installed: matching perspective, scale, and shadows.',
+  },
+  {
+    id: 'High',
+    multiplier: PRICING.complexityMultiplier.High,
+    note: 'Difficult conditions: night scenes with luminaire glow, snow or weather effects, hand-and-plug interaction, or multi-product compositions. Heavy compositing plus retouch.',
+  },
+];
+
+/** The two ways a product gets into a scene. */
 export type DeliveryOption = 'A' | 'B';
 
 export interface DeliveryOptionSpec {
   id: DeliveryOption;
   name: string;
-  /** One-line client-facing summary shown next to the choice. */
   summary: string;
-  /** The constraint the client must understand before choosing. */
   caveat: string;
 }
 
 export const DELIVERY_OPTIONS: DeliveryOptionSpec[] = [
   {
     id: 'A',
-    name: 'AI scene and product together',
-    summary:
-      'The scene and the product are generated together. Faster and cheaper, and scene creativity is wide open.',
-    caveat:
-      'The product may not be a perfect copy and can look slightly different from real life.',
+    name: 'AI-generated scenes',
+    summary: 'Fast, and the scene is wide open creatively.',
+    caveat: 'Minor imperfections are possible: the product may look slightly different from real life.',
   },
   {
     id: 'B',
-    name: 'AI scene, real product placed in by hand',
-    summary:
-      'The scenes are built first, then your real product is placed into them by hand. The product looks exactly right.',
-    caveat:
-      'Scene creativity is more limited: we can only work with the exact angle and quality of the photos you send.',
+    name: 'Real product placed by hand',
+    summary: 'Exact: your real product is placed into the generated scene by hand.',
+    caveat: 'Limited by your photos: we can only work with the angle and quality you send.',
   },
 ];
 
-/** An optional line the client can add to the quotation. */
-export interface AddonSpec {
-  id: AddonId;
+/* --- Per-image add-ons ---------------------------------------------------- */
+
+export type PerImageAddonId = 'extraSizes' | 'upscales' | 'threeDAngles';
+
+export interface PerImageAddonSpec {
+  id: PerImageAddonId;
   label: string;
-  /** What the client is buying, in plain language. */
+  note: string;
+  /** Unit price in CNY: one designer hour. */
+  unitCny: number;
+}
+
+/**
+ * Entered per image, in the grid. These never auto-multiply by the image count:
+ * the client itemizes each image and the totals come from summing the grid.
+ * A size variation is a mechanical resize of one master, which is why it is an
+ * add-on here rather than something complexity is allowed to score.
+ */
+export const PER_IMAGE_ADDONS: PerImageAddonSpec[] = [
+  {
+    id: 'extraSizes',
+    label: 'Extra size',
+    note: 'One more size or crop of that image, resized from the master.',
+    unitCny: PRICING.designerHour,
+  },
+  {
+    id: 'upscales',
+    label: 'Upscale',
+    note: 'One higher resolution of that image, beyond the 2K it ships at.',
+    unitCny: PRICING.designerHour,
+  },
+  {
+    id: 'threeDAngles',
+    label: '3D angle',
+    note: 'A specific angle extracted from your 3D product model, for that image.',
+    unitCny: PRICING.designerHour,
+  },
+];
+
+/* --- Order-level options -------------------------------------------------- */
+
+export type OrderAddonId =
+  | 'productShotPacks'
+  | 'extraRetouchRounds'
+  | 'logo'
+  | 'text'
+  | 'badge'
+  | 'priceTag';
+
+export interface OrderAddonSpec {
+  id: OrderAddonId;
+  label: string;
   note: string;
   /** Unit price in CNY. A zero price means the fee is quoted on request. */
   unitCny: number;
-  /** True when the unit price is charged for every image in the project. */
-  perImage: boolean;
-  /** Label for the quantity being counted (used as the input's unit hint). */
+  /** The quantity's unit, used in the input's accessible name. */
   unit: string;
+  /** Which quotation line this option rolls up into. */
+  group: 'productShot' | 'retouch' | 'postProduction';
 }
 
-export type AddonId =
-  | 'extraConcepts'
-  | 'extraRetouchRounds'
-  | 'extraSizes'
-  | 'threeDProducts'
-  | 'productShoots';
-
 /**
- * Add-on scaling is a pricing rule, not a UI detail, so it is declared here:
- * extra retouch rounds and extra sizes multiply by the image count; extra
- * concepts, 3D angle extraction, and product shoots do not.
+ * Entered once for the whole quote, never per image. A retouch round covers the
+ * order rather than each image, a pack shot is physical photography that stands
+ * apart from the AI work, and the post-production items are one designer hour
+ * each. Background changes and shadow or reflection work are NOT here: they are
+ * part of standard retouch and are already included.
  */
-export const ADDONS: AddonSpec[] = [
+export const ORDER_ADDONS: OrderAddonSpec[] = [
   {
-    id: 'extraConcepts',
-    label: 'Extra scene concept',
-    note: 'One more scene idea to choose from, beyond the ten included.',
-    unitCny: 273.31,
-    perImage: false,
-    unit: 'concepts',
+    id: 'productShotPacks',
+    label: 'Product shot / pack shot',
+    note: 'Physical photography, separate from the AI images. One pack covers 5 products, 5 pictures each, post-production included. Five products is the minimum, so one pack.',
+    unitCny: PRICING.productShotPack,
+    unit: 'packs',
+    group: 'productShot',
   },
   {
     id: 'extraRetouchRounds',
     label: 'Extra retouch round',
-    note: 'One more round of fixes on every image, beyond the three included.',
-    unitCny: 546.61,
-    perImage: true,
+    note: 'One more round of fixes across the whole order, beyond the three included per image.',
+    unitCny: PRICING.designerHour,
     unit: 'rounds',
+    group: 'retouch',
   },
   {
-    id: 'extraSizes',
-    label: 'Extra delivery size',
-    note: 'One more size or crop of every image, beyond the one included.',
-    unitCny: 409.96,
-    perImage: true,
-    unit: 'sizes',
+    id: 'logo',
+    label: 'Add a logo or brand mark',
+    note: 'Your mark laid onto the finished image.',
+    unitCny: PRICING.designerHour,
+    unit: 'items',
+    group: 'postProduction',
   },
   {
-    id: 'threeDProducts',
-    label: '3D angle extraction',
-    note: 'We pull the angles we need from a 3D model you provide, per product.',
-    unitCny: 273.31,
-    perImage: false,
-    unit: 'products',
+    id: 'text',
+    label: 'Add text or a caption',
+    note: 'Copy set onto the finished image.',
+    unitCny: PRICING.designerHour,
+    unit: 'items',
+    group: 'postProduction',
   },
   {
-    id: 'productShoots',
-    label: 'Product shoot',
-    note: 'We photograph the product for you when you have no usable photos.',
-    unitCny: 0,
-    perImage: false,
-    unit: 'shoots',
+    id: 'badge',
+    label: 'Add a promotional badge',
+    note: 'A Sale or New badge, composed onto the image.',
+    unitCny: PRICING.designerHour,
+    unit: 'items',
+    group: 'postProduction',
+  },
+  {
+    id: 'priceTag',
+    label: 'Add a price or price tag',
+    note: 'A price tag set onto the image.',
+    unitCny: PRICING.designerHour,
+    unit: 'items',
+    group: 'postProduction',
   },
 ];
 
-/** The standard scope, included in every project at no extra cost. */
+/** The standard scope, included in every image at no extra cost. */
 export const INCLUDED: string[] = [
-  '10 situation concepts presented, you choose one scene per image',
+  'Situation concepts presented, and you pick one scene per image',
   'Your product placed into the chosen scene',
   '3 rounds of retouch per image',
-  '1 delivery size per image',
-  'Direct chat with your dedicated designer (English or Chinese)',
-  'You provide high-quality photos of your product',
+  '1 delivery size per image, generated at up to 2K resolution',
+  'Direct chat with your dedicated designer',
+  'Background changes, shadows, and reflections, as part of standard retouch',
 ];
+
+/** What the client owes us for the work to be possible at all. */
+export const CLIENT_PROVIDES = 'You provide high-quality photos of your product.';
 
 /** Quotation validity and payment terms, shown in the footer. */
 export const TERMS = {
@@ -159,31 +251,31 @@ export const TERMS = {
 } as const;
 
 /**
- * Internal only. How the resolved rates above were derived, kept so the numbers
- * can be regenerated when labor rates or FX move. Never rendered to the client.
+ * Internal only. How the base per-image prices were derived, kept so they can be
+ * regenerated when labor rates or FX move. Never rendered to the client.
  *
- * Client hourly rates, agency markup included (CNY): account manager 341.63/h,
- * designer 273.31/h.
+ * Rate card (CNY, includes the 2.15 agency markup): designer 273.31/h, account
+ * manager 341.63/h.
  *
- * Labor: briefing and kickoff 1h AM per project; creative direction is
- * client-provided and not included. Option A concepts plus product together,
- * 2h designer per project. Option B concepts only (scenes, no product), 1.5h
- * designer per project. Option A product integration is already inside the
- * concepts, 0h. Option B manual product placement, 1.5h designer per image.
- * Retouch, 3 rounds x 1h = 3h designer per image.
+ * The build-up is per image, all designer labor. Hours per image (Option A /
+ * Option B): briefing and kickoff 1 / 1; situation concepts 2 / 1.5; product
+ * integration or manual placement 0 / 1.5; retouch and edit 3 / 3.
  *
- * AI generation cost (small additive, about 0.68 USD per generation): scene
- * generations 4 per concept x 10 concepts = 40 per project. Option A product
- * generations are baked into the concept batch, per project; Option B is
- * minimal per image; retouch is 2 per image.
+ * AI generation cost is about 0.678 CNY per generation (0.10 USD at about 6.78
+ * CNY per USD): concept proposals 4 per concept x 5 concepts; final-image
+ * generation 12 (Option A) or background 6 (Option B); retouch 2 per image.
  *
- * Resolved: fixedBaseA = briefing + 2h designer + scene gens = 923.48.
- * fixedBaseB = briefing + 1.5h designer + scene gens = 778.70.
- * perImageA = 0h integration + 3h retouch + retouch gens = 821.27.
- * perImageB = 1.5h placement + 3h retouch + product gens + retouch gens = 1235.29.
- * Add-on units are designer hours: concept 1h = 273.31; retouch round 2h =
- * 546.61; size 1.5h = 409.96; 3D 1h = 273.31.
+ * Result:
+ *   Option A = 6h x 273.31 + engine (concepts 13.56 + final image 8.13 +
+ *              retouch 1.36) = 1662.88
+ *   Option B = 7h x 273.31 + engine (concepts 13.56 + background 4.07 +
+ *              retouch 1.36) = 1932.12
+ *
+ * One add-on unit is one designer hour, 273.31. The complexity multiplier scales
+ * the whole per-image production price, not just the labor part of it.
  */
 export const PRICING_DERIVATION = {
-  hourlyCny: { accountManager: 341.63, designer: 273.31 },
+  hourlyCny: { designer: 273.31, accountManager: 341.63 },
+  agencyMarkup: 2.15,
+  generationCny: 0.678,
 } as const;

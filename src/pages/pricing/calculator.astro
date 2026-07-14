@@ -1,37 +1,41 @@
 ---
 /**
- * Product image quotation calculator (`/pricing/calculator`).
+ * AIGC product-image quotation calculator (`/pricing/calculator`).
  *
  * Hidden and password-gated: not in the nav, not in the sitemap, noindexed,
  * disallowed in robots.txt. Server-rendered on demand so the gate is real
  * (signed httpOnly cookie via /api/pricing/login); the rest of the site stays
  * static.
  *
- * The money lives in src/lib/pricing. The same pure module computes the quote
- * here on the server (so the page is correct on first paint and without JS) and
- * again in the browser on every keystroke. Nothing is persisted: no quote ever
- * leaves the visitor's machine.
+ * The money lives in src/lib/pricing, a pure core with no DOM. It computes the
+ * quote here on the server (so the page is correct on first paint and without
+ * JavaScript) and again in the browser on every change. This file is the thin UI
+ * layer over it: it holds no rate, no multiplier, and no formula.
  *
- * Internal cost mechanics (labor hours, hourly rates, token cost) are never
- * rendered. Client prices only.
+ * Nothing is persisted. Client prices only: labor hours, hourly rates, and token
+ * costs never reach the page.
  */
 export const prerender = false;
 
 import Layout from '../../layouts/Layout.astro';
 import { isAuthed } from '../../lib/pricing-gate';
 import {
-  ADDONS,
+  CLIENT_PROVIDES,
+  COMPLEXITIES,
   DELIVERY_OPTIONS,
   INCLUDED,
+  PER_IMAGE_ADDONS,
   PRICING,
   TERMS,
 } from '../../lib/pricing/config';
-import { DEFAULT_INPUTS, computeQuote } from '../../lib/pricing/quote';
+import { DEFAULT_INPUTS, computeQuote, convert } from '../../lib/pricing/quote';
 import {
   CURRENCIES,
+  CURRENCY_NAME,
   DEFAULT_CURRENCY,
   formatDate,
   formatMoney,
+  formatMultiplier,
   formatUnit,
   formatUplift,
 } from '../../lib/pricing/format';
@@ -43,75 +47,85 @@ const loginError = Astro.url.searchParams.get('error') === '1';
 const quote = computeQuote(DEFAULT_INPUTS);
 const today = formatDate(new Date());
 const uplift = formatUplift(PRICING.accountManagerUpliftPct);
+const moq = PRICING.minimumImages;
+const hourUnit = convert(PRICING.designerHour);
 
-/** The quotation summary, in the order the client reads it. */
+/** The quotation, in the order the client reads it. */
 const summaryRows = [
   { id: 'imageProduction', label: 'Image production' },
-  { id: 'addons', label: 'Optional add-ons' },
-  { id: 'subtotal', label: 'Subtotal' },
+  { id: 'optionalAddOns', label: 'Optional add-ons' },
+  { id: 'productShot', label: 'Product shot / pack shot' },
+  { id: 'retouch', label: 'Extra retouch rounds' },
+  { id: 'postProduction', label: 'Post-production options' },
   { id: 'accountManagerUplift', label: `Dedicated account manager (${uplift})` },
   { id: 'total', label: 'Total', emphasis: true },
-  { id: 'perImage', label: 'Price per finished image' },
 ] as const;
 
 /** Money by key, so the server render and the browser share one lookup. */
 const money = {
   imageProduction: quote.imageProduction,
-  addons: quote.addons,
-  subtotal: quote.subtotal,
+  optionalAddOns: quote.optionalAddOns,
+  productShot: quote.productShot,
+  retouch: quote.retouch,
+  postProduction: quote.postProduction,
   accountManagerUplift: quote.accountManagerUplift,
   total: quote.total,
-  perImage: quote.perImage,
-  optionA: quote.optionTotals.A,
-  optionB: quote.optionTotals.B,
 };
+
+/** Order-level options, split into the two panels they belong in. */
+const serviceLines = quote.orderLines.filter((l) => l.spec.group !== 'postProduction');
+const postLines = quote.orderLines.filter((l) => l.spec.group === 'postProduction');
 
 /** Good to know: the assumptions and limits, in plain language. */
 const goodToKnow = [
   {
     heading: 'How we make your pictures',
     points: [
-      'We make nice pictures of your product shown in fun places and scenes.',
-      'First we show you 10 different scene ideas. You pick the one you like best.',
-      'Then we put your product into that scene and make it look good.',
-      'We tidy up each picture up to 3 times, until it looks right.',
+      'We show you scene ideas and you pick one for each picture.',
+      'Then we put your product into that scene and make it look right.',
+      'Every picture gets 3 rounds of fixes, included.',
+      'Background changes, shadows, and reflections are part of that work. They are not extras.',
     ],
   },
   {
     heading: 'Two ways to show your product (you choose one)',
     points: [
-      'Way A: create the scene and product together with AI. Faster and cheaper. Small details may not be perfect, so the product can look a little different from real life.',
-      'Way B: create the scenes first, then place your real product in by hand. The product looks exactly right, but we can only use the exact angle and quality of the photos you send, so scene ideas are simpler. This part is very important.',
+      'Option A: the scene and the product are made together by AI. Fast, and the scene can be anything. Small details may not be perfect, so the product can look a little different from real life.',
+      'Option B: the scene is made first, then your real product is placed in by hand. The product looks exactly right, but we can only use the angle and quality of the photos you send.',
     ],
   },
   {
-    heading: 'What we need from you',
+    heading: 'What complexity means',
     points: [
-      'Clear, good-quality photos of your product. Dark or blurry photos make good pictures hard.',
-      'Tell us what you like when you pick your scene, so we get it right the first time.',
+      'Complexity is about the scene, never about the product.',
+      'A white or graphic background is Low. A believable everyday place (office, parking, hallway) is Medium. Night light, weather, hands touching the product, or several products together is High.',
+      'A different size of the same picture is not complexity. It is a resize of one master, and it is an add-on.',
     ],
   },
   {
-    heading: "What's included and what costs extra",
+    heading: 'How the price works',
     points: [
-      'Included every time: 10 scene ideas, 1 finished picture in 1 size, 3 rounds of fixes.',
-      'Extra scenes, extra fixes, or extra sizes each cost a little more.',
-      'We talk by chat, in English or Chinese. Phone calls plus a dedicated helper add 30%.',
+      `The price is per picture. There is no setup fee and no project fee, so ${moq} pictures cost five times one picture.`,
+      `We start at ${moq} pictures. That is the smallest order we take.`,
+      'Complexity multiplies the price of that one picture: Medium is one and a half times Low, High is twice Low.',
+      'Extra sizes, higher resolutions, and 3D angles are chosen picture by picture, so you pay only for what you ask for.',
+      'Extra rounds of fixes are counted once for the whole order, not for each picture.',
     ],
   },
   {
     heading: 'Honest limits',
     points: [
-      'We are creative but not magic. With Way A the product is not a perfect copy; with Way B scenes are simpler.',
+      'We are creative but not magic. With Option A the product is not a perfect copy; with Option B scenes are simpler.',
       'Your brand and big idea (logos, brand rules, creative direction) come from you.',
-      'One product per picture.',
+      'Pictures are made at up to 2K. Higher resolutions are an add-on, and very high ones may need a tailor-made quote.',
+      CLIENT_PROVIDES,
     ],
   },
   {
     heading: 'Money and rules',
     points: [
-      'Prices are shown in three currencies: CNY, USD, EUR.',
-      'Prices are good for 30 days. Taxes are not included.',
+      'Prices are shown in three currencies. CNY is the real price; USD and EUR follow the exchange rate and can move with it.',
+      `Prices are good for ${TERMS.validityDays} days. Taxes are not included.`,
       'To start, you pay half. You pay the other half when your pictures are finished.',
     ],
   },
@@ -164,31 +178,47 @@ const goodToKnow = [
                 <p class="pc-eyebrow">hubStudio</p>
                 <h1 class="pc-title">Product image quotation</h1>
                 <p class="pc-lead">
-                  Choose how many images you need and how your product goes into
-                  the scene. The price updates as you go, in three currencies.
+                  Every visual is a composite: your real product, placed into an
+                  AI-generated scene. Prices are per image, and the quote updates
+                  as you go.
                 </p>
               </div>
-              <dl class="pc-meta">
-                <div class="pc-meta-row">
-                  <dt>Date</dt>
-                  <dd class="pc-meta-value">{today}</dd>
-                </div>
-                <div class="pc-meta-row">
-                  <dt>Valid for</dt>
-                  <dd class="pc-meta-value">{TERMS.validityDays} days</dd>
-                </div>
-              </dl>
+              <div class="pc-head-side">
+                {/* Sets the currency for every price on the page, so it sits
+                    above the first one the client reads. */}
+                <label class="pc-currency">
+                  <span class="pc-label">Currency</span>
+                  <select class="pc-input pc-select pc-select--sm" id="pc-currency">
+                    {CURRENCIES.map((currency) => (
+                      <option value={currency} selected={currency === DEFAULT_CURRENCY}>
+                        {currency}, {CURRENCY_NAME[currency]}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <dl class="pc-meta">
+                  <div class="pc-meta-row">
+                    <dt>Date</dt>
+                    <dd class="pc-meta-value">{today}</dd>
+                  </div>
+                  <div class="pc-meta-row">
+                    <dt>Valid for</dt>
+                    <dd class="pc-meta-value">{TERMS.validityDays} days</dd>
+                  </div>
+                </dl>
+              </div>
             </header>
 
-            {/* --- Standard scope: what every image already buys, read first. --- */}
+            {/* --- Standard scope, read before any price. --- */}
             <section class="pc-block" aria-labelledby="pc-h-included">
               <h2 class="pc-block-h" id="pc-h-included">What's included</h2>
               <div class="pc-callout">
                 <p class="pc-callout-h">Every price is per finished image</p>
                 <p class="pc-callout-p">
-                  One final, retouched, delivery-ready picture. Not a draft, not a
-                  generation attempt. Every finished image already includes
-                  everything below, at no extra cost.
+                  One final, retouched, delivery-ready picture. There is no setup
+                  fee and no project fee: the order total is the sum of the images
+                  you order. Every image already includes everything below, at no
+                  extra charge.
                 </p>
               </div>
               <ul class="pc-included">
@@ -196,178 +226,303 @@ const goodToKnow = [
                   <li class="pc-included-item">{item}</li>
                 ))}
               </ul>
+              <p class="pc-note">{CLIENT_PROVIDES}</p>
             </section>
 
-            {/* --- Selections --- */}
+            {/* --- Selections: choice fields only, no free typing. --- */}
             <section class="pc-block" aria-labelledby="pc-h-selections">
               <h2 class="pc-block-h" id="pc-h-selections">Your selections</h2>
-
-              <div class="pc-count">
-                <label class="pc-label" for="pc-images">
-                  How many finished images do you need?
+              <div class="pc-fields">
+                <label class="pc-field">
+                  <span class="pc-label">Number of images</span>
+                  <input
+                    type="number"
+                    class="pc-input pc-input--count"
+                    id="pc-images"
+                    name="numberOfImages"
+                    min={moq}
+                    step="1"
+                    value={DEFAULT_INPUTS.numberOfImages}
+                  />
+                  <span class="pc-hint">Minimum order: {moq} images.</span>
                 </label>
-                <input
-                  type="number"
-                  class="pc-input pc-input--count"
-                  id="pc-images"
-                  name="numberOfImages"
-                  min="1"
-                  step="1"
-                  value={DEFAULT_INPUTS.numberOfImages}
-                />
-              </div>
 
-              <fieldset class="pc-options">
-                <legend class="pc-label">
-                  How should your product go into the scene?
-                </legend>
-                <div class="pc-options-grid">
-                  {DELIVERY_OPTIONS.map((option) => (
-                    <label
-                      class="pc-option"
-                      data-option={option.id}
-                      data-selected={String(option.id === DEFAULT_INPUTS.deliveryOption)}
-                    >
-                      <input
-                        type="radio"
-                        name="deliveryOption"
+                <label class="pc-field">
+                  <span class="pc-label">Delivery option</span>
+                  <select class="pc-input pc-select" id="pc-delivery" name="deliveryOption">
+                    {DELIVERY_OPTIONS.map((option) => (
+                      <option
                         value={option.id}
-                        checked={option.id === DEFAULT_INPUTS.deliveryOption}
-                        class="pc-radio"
-                      />
-                      <span class="pc-option-body">
-                        <span class="pc-option-name">{option.name}</span>
-                        <span class="pc-option-text">{option.summary}</span>
-                        <span class="pc-option-caveat">{option.caveat}</span>
-                        <span class="pc-option-total">
-                          <span class="pc-option-total-label">Total for this option</span>
-                          <span
-                            class="pc-option-total-value"
-                            data-out={`option${option.id}`}
-                          >
-                            {formatMoney(
-                              option.id === 'A' ? money.optionA : money.optionB,
-                              DEFAULT_CURRENCY,
-                            )}
-                          </span>
-                          <span class="pc-option-total-alt" data-alt={`option${option.id}`}>
-                            {CURRENCIES.filter((c) => c !== DEFAULT_CURRENCY)
-                              .map((c) =>
-                                formatMoney(
-                                  option.id === 'A' ? money.optionA : money.optionB,
-                                  c,
-                                ),
-                              )
-                              .join(' / ')}
-                          </span>
-                        </span>
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
+                        selected={option.id === DEFAULT_INPUTS.deliveryOption}
+                      >
+                        Option {option.id}: {option.name}
+                      </option>
+                    ))}
+                  </select>
+                  <span class="pc-hint">How your product gets into the scene.</span>
+                </label>
+
+                <label class="pc-field">
+                  <span class="pc-label">Dedicated account manager</span>
+                  <select class="pc-input pc-select" id="pc-am" name="dedicatedAccountManager">
+                    <option value="no" selected>No</option>
+                    <option value="yes">Yes</option>
+                  </select>
+                  <span class="pc-hint">
+                    Phone support and a named contact. Adds {uplift} of the subtotal.
+                  </span>
+                </label>
+              </div>
             </section>
 
-            {/* --- Add-ons --- */}
-            <section class="pc-block" aria-labelledby="pc-h-addons">
-              <h2 class="pc-block-h" id="pc-h-addons">Optional add-ons</h2>
-              <div class="pc-table" role="table" aria-label="Optional add-ons">
-                <div class="pc-tr pc-tr--head" role="row">
-                  <span class="pc-th" role="columnheader">Add-on</span>
-                  <span class="pc-th pc-num" role="columnheader">
-                    Unit price (<span data-currency-label>{DEFAULT_CURRENCY}</span>)
-                  </span>
-                  <span class="pc-th pc-num" role="columnheader">Quantity</span>
-                  <span class="pc-th pc-num" role="columnheader">
-                    Line total (<span data-currency-label>{DEFAULT_CURRENCY}</span>)
-                  </span>
-                </div>
-                {ADDONS.map((addon) => {
-                  const line = quote.addonLines.find((l) => l.spec.id === addon.id)!;
-                  return (
-                    <div class="pc-tr" role="row">
-                      <span class="pc-td pc-td--name" role="cell">
-                        <span class="pc-addon-name">{addon.label}</span>
-                        <span class="pc-addon-note">{addon.note}</span>
-                        {addon.perImage && (
-                          <span class="pc-addon-scale">Charged for every image</span>
-                        )}
-                      </span>
+            {/* --- Delivery option comparison (price per image) --- */}
+            <section class="pc-block" aria-labelledby="pc-h-delivery">
+              <h2 class="pc-block-h" id="pc-h-delivery">Delivery options, price per image</h2>
+              <div class="pc-options-grid">
+                {DELIVERY_OPTIONS.map((option) => (
+                  <article
+                    class="pc-option"
+                    data-option={option.id}
+                    data-selected={String(option.id === DEFAULT_INPUTS.deliveryOption)}
+                  >
+                    <h3 class="pc-option-name">
+                      Option {option.id}: {option.name}
+                    </h3>
+                    <p class="pc-option-text">{option.summary}</p>
+                    <p class="pc-option-caveat">{option.caveat}</p>
+                    <p class="pc-option-total">
+                      <span class="pc-option-total-label">Price per image, Low complexity</span>
                       <span
-                        class="pc-td pc-num"
-                        role="cell"
-                        data-head="Unit price"
-                        data-unit={addon.id}
+                        class="pc-option-total-value"
+                        data-out={`basePerImage${option.id}`}
                       >
-                        {formatUnit(line.unit, DEFAULT_CURRENCY, line.onRequest)}
+                        {formatMoney(quote.basePerImage[option.id], DEFAULT_CURRENCY)}
                       </span>
-                      <span class="pc-td pc-num" role="cell" data-head="Quantity">
-                        <input
-                          type="number"
-                          class="pc-input pc-input--qty"
-                          name={addon.id}
-                          data-addon={addon.id}
-                          min="0"
-                          step="1"
-                          value="0"
-                          aria-label={`${addon.label}, quantity in ${addon.unit}`}
-                        />
+                    </p>
+                  </article>
+                ))}
+              </div>
+              <p class="pc-note">
+                These are the Low-complexity base rates. The actual price of an
+                image rises with the complexity you give it below.
+              </p>
+            </section>
+
+            {/* --- Per-image grid --- */}
+            <section class="pc-block" aria-labelledby="pc-h-grid">
+              <h2 class="pc-block-h" id="pc-h-grid">Image by image</h2>
+              <p class="pc-note pc-note--lead">
+                One row per image. Complexity is scored by the scene, never by the
+                product, and it multiplies that image's production price. Add-ons
+                are chosen per image and cost{' '}
+                <span data-out="designerHour">{formatMoney(hourUnit, DEFAULT_CURRENCY)}</span>{' '}
+                each.
+                Rows past your image count are greyed out and cost nothing.
+              </p>
+
+              <ul class="pc-legend">
+                {COMPLEXITIES.map((level) => (
+                  <li class="pc-legend-item">
+                    <span class="pc-legend-name">
+                      {level.id} ({formatMultiplier(level.multiplier)})
+                    </span>
+                    <span class="pc-legend-note">{level.note}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="pc-table pc-table--grid" role="table" aria-label="Image by image">
+                <div class="pc-tr pc-tr--head" role="row">
+                  <span class="pc-th" role="columnheader">Image</span>
+                  <span class="pc-th" role="columnheader">Complexity</span>
+                  {PER_IMAGE_ADDONS.map((addon) => (
+                    <span class="pc-th pc-num" role="columnheader">{addon.label}</span>
+                  ))}
+                  <span class="pc-th pc-num" role="columnheader">Production</span>
+                  <span class="pc-th pc-num" role="columnheader">Add-ons</span>
+                </div>
+
+                <div data-grid-body>
+                  {quote.imageLines.map((line) => (
+                    <div class="pc-tr" role="row" data-row={line.index}>
+                      <span class="pc-td pc-td--name" role="cell">
+                        <span class="pc-addon-name">Image {line.index + 1}</span>
+                      </span>
+                      <span class="pc-td" role="cell" data-head="Complexity">
+                        <select
+                          class="pc-input pc-select pc-select--sm"
+                          data-cell={`${line.index}.complexity`}
+                          aria-label={`Image ${line.index + 1}, complexity`}
+                        >
+                          {COMPLEXITIES.map((level) => (
+                            <option
+                              value={level.id}
+                              selected={level.id === line.row.complexity}
+                            >
+                              {level.id} ({formatMultiplier(level.multiplier)})
+                            </option>
+                          ))}
+                        </select>
+                      </span>
+                      {PER_IMAGE_ADDONS.map((addon) => (
+                        <span class="pc-td pc-num" role="cell" data-head={addon.label}>
+                          <input
+                            type="number"
+                            class="pc-input pc-input--qty"
+                            min="0"
+                            step="1"
+                            value={line.row[addon.id]}
+                            data-cell={`${line.index}.${addon.id}`}
+                            aria-label={`Image ${line.index + 1}, ${addon.label}`}
+                          />
+                        </span>
+                      ))}
+                      <span
+                        class="pc-td pc-num pc-td--line"
+                        role="cell"
+                        data-head="Production"
+                        data-production={line.index}
+                      >
+                        {formatMoney(line.production, DEFAULT_CURRENCY)}
                       </span>
                       <span
                         class="pc-td pc-num pc-td--line"
                         role="cell"
-                        data-head="Line total"
-                        data-line={addon.id}
+                        data-head="Add-ons"
+                        data-rowaddons={line.index}
                       >
-                        {line.onRequest
-                          ? 'On request'
-                          : formatMoney(line.line, DEFAULT_CURRENCY)}
+                        {formatMoney(line.addOns, DEFAULT_CURRENCY)}
                       </span>
                     </div>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
 
-              <label class="pc-toggle">
-                <input type="checkbox" id="pc-am" name="dedicatedAccountManager" />
-                <span class="pc-toggle-body">
-                  <span class="pc-toggle-name">
-                    Dedicated account manager ({uplift} of subtotal)
+              <ul class="pc-legend">
+                {PER_IMAGE_ADDONS.map((addon) => (
+                  <li class="pc-legend-item">
+                    <span class="pc-legend-name">{addon.label}</span>
+                    <span class="pc-legend-note">{addon.note}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* --- Order-level options --- */}
+            <section class="pc-block" aria-labelledby="pc-h-order">
+              <h2 class="pc-block-h" id="pc-h-order">Options for the whole order</h2>
+              <p class="pc-note pc-note--lead">
+                Counted once for the order, never per image.
+              </p>
+              <div class="pc-table" role="table" aria-label="Order-level options">
+                <div class="pc-tr pc-tr--head" role="row">
+                  <span class="pc-th" role="columnheader">Option</span>
+                  <span class="pc-th pc-num" role="columnheader">
+                    Unit price (<span data-currency-label>{DEFAULT_CURRENCY}</span>)
                   </span>
-                  <span class="pc-toggle-note">
-                    Phone calls and a named contact who runs the project for you,
-                    instead of chat only.
+                  <span class="pc-th pc-num" role="columnheader">Quantity</span>
+                  <span class="pc-th pc-num" role="columnheader">Line total</span>
+                </div>
+                {serviceLines.map((line) => (
+                  <div class="pc-tr" role="row">
+                    <span class="pc-td pc-td--name" role="cell">
+                      <span class="pc-addon-name">{line.spec.label}</span>
+                      <span class="pc-addon-note">{line.spec.note}</span>
+                    </span>
+                    <span
+                      class="pc-td pc-num"
+                      role="cell"
+                      data-head="Unit price"
+                      data-unit={line.spec.id}
+                    >
+                      {formatUnit(line.unit, DEFAULT_CURRENCY, line.onRequest)}
+                    </span>
+                    <span class="pc-td pc-num" role="cell" data-head="Quantity">
+                      <input
+                        type="number"
+                        class="pc-input pc-input--qty"
+                        min="0"
+                        step="1"
+                        value={line.quantity}
+                        data-order={line.spec.id}
+                        aria-label={`${line.spec.label}, quantity in ${line.spec.unit}`}
+                      />
+                    </span>
+                    <span
+                      class="pc-td pc-num pc-td--line"
+                      role="cell"
+                      data-head="Line total"
+                      data-orderline={line.spec.id}
+                    >
+                      {line.onRequest
+                        ? 'On request'
+                        : formatMoney(line.line, DEFAULT_CURRENCY)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* --- Post-production --- */}
+            <section class="pc-block" aria-labelledby="pc-h-post">
+              <h2 class="pc-block-h" id="pc-h-post">Post-production options</h2>
+              <p class="pc-note pc-note--lead">
+                One designer hour each, {formatMoney(hourUnit, 'CNY')}. Background
+                changes and shadow or reflection work are not listed here: they are
+                part of standard retouch and already included.
+              </p>
+              <div class="pc-table" role="table" aria-label="Post-production options">
+                <div class="pc-tr pc-tr--head" role="row">
+                  <span class="pc-th" role="columnheader">Option</span>
+                  <span class="pc-th pc-num" role="columnheader">
+                    Unit price (<span data-currency-label>{DEFAULT_CURRENCY}</span>)
                   </span>
-                </span>
-              </label>
+                  <span class="pc-th pc-num" role="columnheader">Quantity</span>
+                  <span class="pc-th pc-num" role="columnheader">Line total</span>
+                </div>
+                {postLines.map((line) => (
+                  <div class="pc-tr" role="row">
+                    <span class="pc-td pc-td--name" role="cell">
+                      <span class="pc-addon-name">{line.spec.label}</span>
+                      <span class="pc-addon-note">{line.spec.note}</span>
+                    </span>
+                    <span
+                      class="pc-td pc-num"
+                      role="cell"
+                      data-head="Unit price"
+                      data-unit={line.spec.id}
+                    >
+                      {formatUnit(line.unit, DEFAULT_CURRENCY, line.onRequest)}
+                    </span>
+                    <span class="pc-td pc-num" role="cell" data-head="Quantity">
+                      <input
+                        type="number"
+                        class="pc-input pc-input--qty"
+                        min="0"
+                        step="1"
+                        value={line.quantity}
+                        data-order={line.spec.id}
+                        aria-label={`${line.spec.label}, quantity in ${line.spec.unit}`}
+                      />
+                    </span>
+                    <span
+                      class="pc-td pc-num pc-td--line"
+                      role="cell"
+                      data-head="Line total"
+                      data-orderline={line.spec.id}
+                    >
+                      {line.onRequest
+                        ? 'On request'
+                        : formatMoney(line.line, DEFAULT_CURRENCY)}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </section>
 
             {/* --- Quotation --- */}
             <section class="pc-block pc-block--quote" aria-labelledby="pc-h-quote">
-              <div class="pc-quote-head">
-                <h2 class="pc-block-h pc-block-h--flush" id="pc-h-quote">
-                  Your quotation
-                </h2>
-                <fieldset class="pc-currency">
-                  <legend class="pc-currency-legend">Currency</legend>
-                  <div class="pc-seg">
-                    {CURRENCIES.map((currency) => (
-                      <label
-                        class="pc-seg-btn"
-                        data-selected={String(currency === DEFAULT_CURRENCY)}
-                      >
-                        <input
-                          type="radio"
-                          name="currency"
-                          value={currency}
-                          checked={currency === DEFAULT_CURRENCY}
-                        />
-                        <span>{currency}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-              </div>
+              <h2 class="pc-block-h" id="pc-h-quote">Your quotation</h2>
               <div class="pc-disclaimer" role="note">
                 <span class="pc-disclaimer-mark" aria-hidden="true">Note</span>
                 <p>
@@ -390,15 +545,9 @@ const goodToKnow = [
                     data-emphasis={'emphasis' in row && row.emphasis ? 'true' : undefined}
                   >
                     <span class="pc-td pc-td--name" role="cell">
-                      {row.id === 'imageProduction' ? (
-                        <>
-                          <span class="pc-addon-name">{row.label}</span>
-                          <span class="pc-addon-note" data-option-label>
-                            Option A, AI scene and product together
-                          </span>
-                        </>
-                      ) : (
-                        <span class="pc-addon-name">{row.label}</span>
+                      <span class="pc-addon-name">{row.label}</span>
+                      {row.id === 'imageProduction' && (
+                        <span class="pc-addon-note" data-production-note />
                       )}
                     </span>
                     <span
@@ -412,9 +561,9 @@ const goodToKnow = [
                   </div>
                 ))}
               </div>
-              <p class="pc-base-note">
-                CNY is the base currency. USD and EUR are conversions at the
-                current rate and can move with it.
+              <p class="pc-note">
+                CNY is canonical: it is the price we actually charge. USD and EUR
+                are converted from it at the current rate and can move with it.
               </p>
               <div class="pc-actions">
                 <button type="button" class="pc-btn pc-btn--sm" data-print>
@@ -442,9 +591,10 @@ const goodToKnow = [
 
             <footer class="pc-foot">
               <p>
-                Prices are shown in the currency you select above. Quotation valid
-                for {TERMS.validityDays} days. Prices exclude applicable taxes.{' '}
-                {TERMS.depositPct}% deposit to begin production.
+                All prices in CNY (base), with USD and EUR converted at current
+                rates. Quotation valid for {TERMS.validityDays} days. Prices
+                exclude applicable taxes. {TERMS.depositPct}% deposit to begin
+                production.
               </p>
               <p>
                 This page is an indicative estimate for reference only. It is not
@@ -488,7 +638,7 @@ const goodToKnow = [
   .pc-lead {
     font-size: var(--type-lead);
     color: var(--text-mute);
-    max-width: 52ch;
+    max-width: 54ch;
   }
 
   /* --- Login gate --- */
@@ -507,6 +657,22 @@ const goodToKnow = [
     gap: 16px;
     text-align: left;
   }
+  .pc-error {
+    color: var(--brand-orange-deep);
+    font-size: var(--type-small);
+  }
+
+  /* --- Controls --- */
+  .pc-fields {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 800px) {
+    .pc-fields {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+  }
   .pc-field {
     display: flex;
     flex-direction: column;
@@ -516,12 +682,13 @@ const goodToKnow = [
     font-size: var(--type-small);
     color: var(--text-mute);
   }
-  .pc-error {
-    color: var(--brand-orange-deep);
-    font-size: var(--type-small);
+  .pc-hint {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.06em;
+    color: var(--text-mute);
+    line-height: 1.5;
   }
-
-  /* --- Controls --- */
   .pc-input {
     width: 100%;
     font: inherit;
@@ -537,18 +704,48 @@ const goodToKnow = [
     outline-offset: 1px;
     border-color: transparent;
   }
+  .pc-select {
+    cursor: pointer;
+    appearance: none;
+    /* A caret drawn in the box, so the control reads as a dropdown on every
+       platform without shipping an icon file. */
+    background-image: linear-gradient(45deg, transparent 50%, var(--text-mute) 50%),
+      linear-gradient(135deg, var(--text-mute) 50%, transparent 50%);
+    background-position:
+      calc(100% - 19px) calc(50% + 1px),
+      calc(100% - 14px) calc(50% + 1px);
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 40px;
+  }
+  .pc-select--sm {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    padding: 8px 34px 8px 12px;
+    border-radius: 10px;
+    background-position:
+      calc(100% - 16px) calc(50% + 1px),
+      calc(100% - 11px) calc(50% + 1px);
+    min-width: 118px;
+  }
   .pc-input--count {
-    max-width: 160px;
     font-family: var(--font-mono);
   }
   .pc-input--qty {
-    width: 84px;
+    width: 78px;
     padding: 8px 10px;
     text-align: right;
     font-family: var(--font-mono);
     font-size: var(--type-small);
     border-radius: 10px;
   }
+  .pc-input:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
   .pc-btn {
     align-self: flex-start;
     background: var(--brand-orange);
@@ -574,7 +771,6 @@ const goodToKnow = [
     flex-direction: column;
     gap: 28px;
     padding-bottom: 32px;
-    margin-bottom: 8px;
     border-bottom: 1px solid var(--line-hairline);
   }
   @media (min-width: 900px) {
@@ -589,7 +785,8 @@ const goodToKnow = [
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-width: 260px;
+    min-width: 240px;
+    width: 100%;
   }
   .pc-meta-row {
     display: flex;
@@ -623,6 +820,39 @@ const goodToKnow = [
     padding-bottom: 12px;
     border-bottom: 1px solid var(--line-hairline);
   }
+  .pc-note {
+    margin-top: 16px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+    max-width: 82ch;
+  }
+  .pc-note--lead {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  /* --- Currency choice: one currency, every price on the page --- */
+  .pc-head-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    min-width: 260px;
+  }
+  @media (min-width: 900px) {
+    .pc-head-side {
+      align-items: flex-end;
+    }
+  }
+  .pc-currency {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pc-currency .pc-input {
+    width: auto;
+  }
 
   /* The one thing a client must not misread: what a price actually buys. */
   .pc-callout {
@@ -644,100 +874,10 @@ const goodToKnow = [
     max-width: 68ch;
   }
 
-  /* --- Currency switch --- */
-  .pc-quote-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line-hairline);
-  }
-  .pc-block-h--flush {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  .pc-currency {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
-  .pc-currency-legend {
-    float: left;
-    font-family: var(--font-mono);
-    font-size: var(--type-eyebrow);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    padding: 0 12px 0 0;
-    line-height: 30px;
-  }
-  .pc-seg {
-    display: flex;
-    background: var(--bg-white);
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-pill);
-    padding: 3px;
-  }
-  .pc-seg-btn {
-    position: relative;
-    font-family: var(--font-mono);
-    font-size: var(--type-small);
-    letter-spacing: 0.06em;
-    color: var(--text-mute);
-    padding: 6px 16px;
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-    transition:
-      background 0.18s ease,
-      color 0.18s ease;
-  }
-  .pc-seg-btn input {
-    position: absolute;
-    opacity: 0;
-    inset: 0;
-    cursor: pointer;
-  }
-  .pc-seg-btn:hover {
-    color: var(--text-ink);
-  }
-  .pc-seg-btn[data-selected='true'] {
-    background: var(--brand-orange);
-    color: #fff;
-  }
-  .pc-seg-btn:focus-within {
-    outline: 2px solid var(--brand-orange);
-    outline-offset: 2px;
-  }
-  .pc-base-note {
-    margin-top: 12px;
-    font-size: var(--type-small);
-    color: var(--text-mute);
-  }
-
-  .pc-count {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 32px;
-  }
-
-  /* --- Delivery options --- */
-  .pc-options {
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
+  /* --- Delivery option comparison --- */
   .pc-options-grid {
     display: grid;
     gap: 20px;
-    margin-top: 12px;
   }
   .pc-option {
     /* Four rows: name, summary, caveat, price. On desktop the cards borrow the
@@ -746,12 +886,10 @@ const goodToKnow = [
     display: grid;
     grid-template-rows: auto auto auto 1fr;
     gap: 8px;
-    position: relative;
     background: var(--bg-white);
     border: 1px solid var(--line-hairline);
     border-radius: var(--radius-card);
-    padding: 24px 24px 24px 52px;
-    cursor: pointer;
+    padding: 24px;
     transition:
       border-color 0.18s ease,
       background 0.18s ease;
@@ -776,21 +914,6 @@ const goodToKnow = [
   .pc-option[data-option='B'][data-selected='true'] {
     border-color: var(--brand-orange);
     background: #fdf4ee;
-  }
-  .pc-radio {
-    /* Lifted out of the row flow so it cannot stretch or shift the rows it
-       sits beside; it simply marks the card's first line. */
-    position: absolute;
-    left: 24px;
-    top: 30px;
-    accent-color: var(--brand-orange);
-  }
-  .pc-option[data-option='A'] .pc-radio {
-    accent-color: #4a72ad;
-  }
-  /* The body is not a box of its own: its children are the card's grid rows. */
-  .pc-option-body {
-    display: contents;
   }
   .pc-option-name {
     font-family: var(--font-serif);
@@ -825,13 +948,13 @@ const goodToKnow = [
   .pc-option-total-value {
     font-family: var(--font-mono);
     font-size: var(--type-h3);
+    white-space: nowrap;
   }
   .pc-option-total-alt {
-    display: flex;
-    gap: 6px;
     font-family: var(--font-mono);
     font-size: var(--type-small);
     color: var(--text-mute);
+    white-space: nowrap;
   }
 
   /* --- Included --- */
@@ -878,7 +1001,8 @@ const goodToKnow = [
     padding: 20px;
     border-top: 1px solid var(--line-hairline);
   }
-  .pc-tr:first-child {
+  .pc-table > .pc-tr:first-child,
+  [data-grid-body] .pc-tr:first-child {
     border-top: none;
   }
   .pc-tr--head {
@@ -886,13 +1010,21 @@ const goodToKnow = [
   }
   @media (min-width: 900px) {
     .pc-tr {
-      grid-template-columns: minmax(0, 1fr) repeat(3, minmax(140px, max-content));
+      grid-template-columns:
+        minmax(0, 1fr) minmax(130px, max-content) minmax(90px, max-content)
+        minmax(130px, max-content);
       align-items: center;
       gap: 16px;
     }
+    .pc-table--grid .pc-tr {
+      grid-template-columns:
+        minmax(0, 1fr) minmax(130px, max-content) repeat(3, minmax(90px, max-content))
+        repeat(2, minmax(110px, max-content));
+      padding: 12px 20px;
+    }
     .pc-table--quote .pc-tr {
       /* One money column, wide enough to hold the emphasized total on one line. */
-      grid-template-columns: minmax(0, 1fr) minmax(160px, max-content);
+      grid-template-columns: minmax(0, 1fr) minmax(170px, max-content);
     }
     .pc-tr--head {
       display: grid;
@@ -913,7 +1045,7 @@ const goodToKnow = [
   }
   .pc-num {
     font-family: var(--font-mono);
-    /* An amount never breaks across lines: "CNY" and its figure stay together. */
+    /* An amount never breaks across lines: the symbol and its figure stay together. */
     white-space: nowrap;
   }
   @media (min-width: 900px) {
@@ -927,7 +1059,7 @@ const goodToKnow = [
     .pc-td[data-head]::before {
       content: attr(data-head);
       display: inline-block;
-      min-width: 118px;
+      min-width: 130px;
       font-size: var(--type-eyebrow);
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -952,16 +1084,48 @@ const goodToKnow = [
     line-height: 1.6;
     color: var(--text-mute);
   }
-  .pc-addon-scale {
-    font-family: var(--font-mono);
-    font-size: var(--type-eyebrow);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--brand-orange);
-  }
   .pc-td--line {
     font-weight: 600;
   }
+
+  /* A row past the image count: visible, so nothing typed is lost, but plainly
+     out of the quote. */
+  .pc-tr[data-ignored='true'] {
+    opacity: 0.42;
+  }
+
+  .pc-legend {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 20px;
+  }
+  @media (min-width: 800px) {
+    .pc-legend {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+  .pc-legend:last-child {
+    margin: 18px 0 0;
+  }
+  .pc-legend-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .pc-legend-name {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .pc-legend-note {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
   .pc-tr[data-emphasis='true'] {
     background: var(--bg-cream);
   }
@@ -996,38 +1160,6 @@ const goodToKnow = [
   .pc-disclaimer p {
     font-size: var(--type-body);
     line-height: 1.6;
-  }
-
-  /* --- Account manager toggle --- */
-  .pc-toggle {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    margin-top: 20px;
-    background: var(--bg-white);
-    border: 1px solid var(--line-hairline);
-    border-radius: var(--radius-card);
-    padding: 20px;
-    cursor: pointer;
-  }
-  .pc-toggle input {
-    margin-top: 3px;
-    accent-color: var(--brand-orange);
-    flex: none;
-  }
-  .pc-toggle-body {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .pc-toggle-name {
-    font-size: var(--type-body);
-    font-weight: 600;
-  }
-  .pc-toggle-note {
-    font-size: var(--type-body);
-    line-height: 1.6;
-    color: var(--text-mute);
   }
 
   .pc-actions {
@@ -1093,23 +1225,22 @@ const goodToKnow = [
       padding-top: 24px;
       background: #fff;
     }
-    .pc-actions,
-    .pc-radio,
-    .pc-toggle input {
+    .pc-actions {
       display: none;
     }
-    .pc-option:not([data-selected='true']) {
+    .pc-option:not([data-selected='true']),
+    .pc-tr[data-ignored='true'] {
       display: none;
     }
     .pc-table,
-    .pc-option,
-    .pc-toggle {
+    .pc-option {
       break-inside: avoid;
       box-shadow: none;
     }
     .pc-input {
       border: none;
       padding-left: 0;
+      background-image: none;
     }
   }
 </style>
@@ -1119,64 +1250,186 @@ const goodToKnow = [
    * The UI layer: read the controls, hand them to the pricing core, write the
    * numbers back. All money math lives in src/lib/pricing, never here, so the
    * browser and the server can never disagree about a price.
+   *
+   * The grid is the one piece of real UI state: it grows with the image count
+   * and keeps rows that fall past it, so shrinking an order and growing it again
+   * does not throw away what the client typed.
    */
-  import { ADDONS, DELIVERY_OPTIONS } from '../../lib/pricing/config';
-  import { computeQuote, type QuoteInputs } from '../../lib/pricing/quote';
   import {
-    CURRENCIES,
+    COMPLEXITIES,
+    ORDER_ADDONS,
+    PER_IMAGE_ADDONS,
+    PRICING,
+  } from '../../lib/pricing/config';
+  import {
+    computeQuote,
+    emptyOrderAddons,
+    emptyRow,
+    type ImageRow,
+    type QuoteInputs,
+  } from '../../lib/pricing/quote';
+  import {
     DEFAULT_CURRENCY,
     formatMoney,
+    formatMultiplier,
     formatUnit,
     isCurrency,
     type Currency,
   } from '../../lib/pricing/format';
+  import { convert } from '../../lib/pricing/quote';
 
-  const form = document.querySelector<HTMLElement>('.pc-tool');
-  if (form) {
+  const tool = document.querySelector<HTMLElement>('.pc-tool');
+  if (tool) {
     const imagesInput = document.querySelector<HTMLInputElement>('#pc-images');
-    const amInput = document.querySelector<HTMLInputElement>('#pc-am');
-    const optionLabel = document.querySelector<HTMLElement>('[data-option-label]');
+    const deliverySelect = document.querySelector<HTMLSelectElement>('#pc-delivery');
+    const amSelect = document.querySelector<HTMLSelectElement>('#pc-am');
+    const currencySelect = document.querySelector<HTMLSelectElement>('#pc-currency');
+    const gridBody = document.querySelector<HTMLElement>('[data-grid-body]');
+    const productionNote = document.querySelector<HTMLElement>('[data-production-note]');
+
+    /** The one currency every price on the page is displayed in. */
+    function readCurrency(): Currency {
+      return isCurrency(currencySelect?.value) ? currencySelect.value : DEFAULT_CURRENCY;
+    }
+
+    /** How many images the client has asked for, floored at the MOQ. */
+    function imageCount(): number {
+      const n = Math.floor(Number(imagesInput?.value));
+      return Number.isFinite(n) && n >= PRICING.minimumImages ? n : PRICING.minimumImages;
+    }
+
+    /** One grid row, built to the same shape the server renders. */
+    function buildRow(index: number): HTMLElement {
+      const row = document.createElement('div');
+      row.className = 'pc-tr';
+      row.setAttribute('role', 'row');
+      row.dataset.row = String(index);
+
+      const name = document.createElement('span');
+      name.className = 'pc-td pc-td--name';
+      name.setAttribute('role', 'cell');
+      name.innerHTML = `<span class="pc-addon-name">Image ${index + 1}</span>`;
+      row.appendChild(name);
+
+      const complexityCell = document.createElement('span');
+      complexityCell.className = 'pc-td';
+      complexityCell.setAttribute('role', 'cell');
+      complexityCell.dataset.head = 'Complexity';
+      const select = document.createElement('select');
+      select.className = 'pc-input pc-select pc-select--sm';
+      select.dataset.cell = `${index}.complexity`;
+      select.setAttribute('aria-label', `Image ${index + 1}, complexity`);
+      for (const level of COMPLEXITIES) {
+        const option = document.createElement('option');
+        option.value = level.id;
+        option.textContent = `${level.id} (${formatMultiplier(level.multiplier)})`;
+        select.appendChild(option);
+      }
+      complexityCell.appendChild(select);
+      row.appendChild(complexityCell);
+
+      for (const addon of PER_IMAGE_ADDONS) {
+        const cell = document.createElement('span');
+        cell.className = 'pc-td pc-num';
+        cell.setAttribute('role', 'cell');
+        cell.dataset.head = addon.label;
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.className = 'pc-input pc-input--qty';
+        input.min = '0';
+        input.step = '1';
+        input.value = '0';
+        input.dataset.cell = `${index}.${addon.id}`;
+        input.setAttribute('aria-label', `Image ${index + 1}, ${addon.label}`);
+        cell.appendChild(input);
+        row.appendChild(cell);
+      }
+
+      for (const [key, head] of [
+        ['production', 'Production'],
+        ['rowaddons', 'Add-ons'],
+      ] as const) {
+        const cell = document.createElement('span');
+        cell.className = 'pc-td pc-num pc-td--line';
+        cell.setAttribute('role', 'cell');
+        cell.dataset.head = head;
+        cell.dataset[key] = String(index);
+        cell.textContent = '-';
+        row.appendChild(cell);
+      }
+
+      return row;
+    }
+
+    /** Grow the grid to cover the image count. Rows are never deleted: one that
+     *  falls past the count is greyed out and excluded, but keeps its values. */
+    function syncRows(): void {
+      if (!gridBody) return;
+      const needed = imageCount();
+      for (let i = gridBody.querySelectorAll('[data-row]').length; i < needed; i++) {
+        gridBody.appendChild(buildRow(i));
+      }
+      gridBody.querySelectorAll<HTMLElement>('[data-row]').forEach((row, i) => {
+        const ignored = i >= needed;
+        row.dataset.ignored = String(ignored);
+        row
+          .querySelectorAll<HTMLInputElement | HTMLSelectElement>('input, select')
+          .forEach((field) => (field.disabled = ignored));
+      });
+    }
 
     /** Current control state, clamped by the core on every read. */
     function readInputs(): QuoteInputs {
-      const addons = {} as QuoteInputs['addons'];
-      for (const addon of ADDONS) {
-        const el = document.querySelector<HTMLInputElement>(
-          `[data-addon="${addon.id}"]`,
+      const perImage: ImageRow[] = [];
+      document
+        .querySelectorAll<HTMLElement>('[data-grid-body] [data-row]')
+        .forEach((row, i) => {
+          const values = emptyRow();
+          const complexity = row.querySelector<HTMLSelectElement>(
+            `[data-cell="${i}.complexity"]`,
+          );
+          values.complexity = (complexity?.value ?? 'Low') as ImageRow['complexity'];
+          for (const addon of PER_IMAGE_ADDONS) {
+            const input = row.querySelector<HTMLInputElement>(
+              `[data-cell="${i}.${addon.id}"]`,
+            );
+            values[addon.id] = Number(input?.value ?? 0);
+          }
+          perImage.push(values);
+        });
+
+      const orderAddons = emptyOrderAddons();
+      for (const addon of ORDER_ADDONS) {
+        const input = document.querySelector<HTMLInputElement>(
+          `[data-order="${addon.id}"]`,
         );
-        addons[addon.id] = Number(el?.value ?? 0);
+        orderAddons[addon.id] = Number(input?.value ?? 0);
       }
-      const checked = document.querySelector<HTMLInputElement>(
-        'input[name="deliveryOption"]:checked',
-      );
+
       return {
-        numberOfImages: Number(imagesInput?.value ?? 1),
-        deliveryOption: checked?.value === 'B' ? 'B' : 'A',
-        addons,
-        dedicatedAccountManager: Boolean(amInput?.checked),
+        numberOfImages: Number(imagesInput?.value ?? PRICING.minimumImages),
+        deliveryOption: deliverySelect?.value === 'B' ? 'B' : 'A',
+        perImage,
+        orderAddons,
+        dedicatedAccountManager: amSelect?.value === 'yes',
       };
     }
 
-    /** The currency every price on the page is displayed in. */
-    function readCurrency(): Currency {
-      const checked = document.querySelector<HTMLInputElement>(
-        'input[name="currency"]:checked',
-      );
-      return isCurrency(checked?.value) ? checked.value : DEFAULT_CURRENCY;
-    }
-
     function render(): void {
+      syncRows();
       const quote = computeQuote(readInputs());
       const currency = readCurrency();
       const money = {
         imageProduction: quote.imageProduction,
-        addons: quote.addons,
-        subtotal: quote.subtotal,
+        optionalAddOns: quote.optionalAddOns,
+        productShot: quote.productShot,
+        retouch: quote.retouch,
+        postProduction: quote.postProduction,
         accountManagerUplift: quote.accountManagerUplift,
         total: quote.total,
-        perImage: quote.perImage,
-        optionA: quote.optionTotals.A,
-        optionB: quote.optionTotals.B,
+        basePerImageA: quote.basePerImage.A,
+        basePerImageB: quote.basePerImage.B,
+        designerHour: convert(PRICING.designerHour),
       };
 
       document.querySelectorAll<HTMLElement>('[data-out]').forEach((el) => {
@@ -1184,25 +1437,22 @@ const goodToKnow = [
         if (value) el.textContent = formatMoney(value, currency);
       });
 
-      // Under each option total, the same figure in the two other currencies.
-      document.querySelectorAll<HTMLElement>('[data-alt]').forEach((el) => {
-        const value = money[(el.dataset.alt ?? '') as keyof typeof money];
-        if (value) {
-          el.textContent = CURRENCIES.filter((c) => c !== currency)
-            .map((c) => formatMoney(value, c))
-            .join(' / ');
-        }
-      });
-
-      for (const line of quote.addonLines) {
-        const unitCell = document.querySelector<HTMLElement>(
-          `[data-unit="${line.spec.id}"]`,
+      for (const line of quote.imageLines) {
+        const production = document.querySelector<HTMLElement>(
+          `[data-production="${line.index}"]`,
         );
-        if (unitCell) {
-          unitCell.textContent = formatUnit(line.unit, currency, line.onRequest);
-        }
+        if (production) production.textContent = formatMoney(line.production, currency);
+        const addOns = document.querySelector<HTMLElement>(
+          `[data-rowaddons="${line.index}"]`,
+        );
+        if (addOns) addOns.textContent = formatMoney(line.addOns, currency);
+      }
+
+      for (const line of quote.orderLines) {
+        const unit = document.querySelector<HTMLElement>(`[data-unit="${line.spec.id}"]`);
+        if (unit) unit.textContent = formatUnit(line.unit, currency, line.onRequest);
         const cell = document.querySelector<HTMLElement>(
-          `[data-line="${line.spec.id}"]`,
+          `[data-orderline="${line.spec.id}"]`,
         );
         if (cell) {
           cell.textContent = line.onRequest
@@ -1215,39 +1465,34 @@ const goodToKnow = [
       document.querySelectorAll<HTMLElement>('[data-currency-label]').forEach((el) => {
         el.textContent = currency;
       });
-      document.querySelectorAll<HTMLElement>('.pc-seg-btn').forEach((btn) => {
-        const input = btn.querySelector<HTMLInputElement>('input');
-        btn.dataset.selected = String(input?.value === currency);
-      });
 
-      // The chosen option colors its card and names itself on the quotation.
+      // The chosen option colors its card and explains the production line.
       const selected = quote.inputs.deliveryOption;
       document.querySelectorAll<HTMLElement>('.pc-option').forEach((card) => {
         card.dataset.selected = String(card.dataset.option === selected);
       });
-      const spec = DELIVERY_OPTIONS.find((o) => o.id === selected);
-      if (optionLabel && spec) {
-        optionLabel.textContent = `Option ${spec.id}, ${spec.name}`;
+      if (productionNote) {
+        const n = quote.inputs.numberOfImages;
+        const images = n === 1 ? '1 image' : `${n} images`;
+        productionNote.textContent = `${images}, Option ${selected}, each priced at its own complexity`;
       }
 
-      // A rejected value (0 images, a negative quantity) is corrected in place,
-      // so what the client sees is always what was priced.
+      // A rejected value (below the MOQ, a negative quantity) is corrected in
+      // place, so what the client sees is always what was priced.
       if (imagesInput && Number(imagesInput.value) !== quote.inputs.numberOfImages) {
         imagesInput.value = String(quote.inputs.numberOfImages);
       }
-      for (const addon of ADDONS) {
-        const el = document.querySelector<HTMLInputElement>(
-          `[data-addon="${addon.id}"]`,
-        );
-        const clamped = quote.inputs.addons[addon.id];
-        if (el && el.value !== '' && Number(el.value) !== clamped) {
-          el.value = String(clamped);
-        }
-      }
+      document
+        .querySelectorAll<HTMLInputElement>('[data-cell], [data-order]')
+        .forEach((input) => {
+          if (input.type === 'number' && input.value !== '' && Number(input.value) < 0) {
+            input.value = '0';
+          }
+        });
     }
 
-    form.addEventListener('input', render);
-    form.addEventListener('change', render);
+    tool.addEventListener('input', render);
+    tool.addEventListener('change', render);
     document
       .querySelector<HTMLButtonElement>('[data-print]')
       ?.addEventListener('click', () => window.print());
