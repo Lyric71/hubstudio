@@ -220,7 +220,33 @@ const breadcrumbSchema = {
         </div>
 
         <div class="hero__cta">
-          <Button variant="primary" href="/contact" class="js-magnetic">Start a project</Button>
+          {/* The engine is the page's most important action, so it takes the
+              primary slot and the other two step back. Access is granted by
+              request, so it points at the form, not at the gated tool. The "?"
+              carries the explanation, so the hero stays a hero. */}
+          <span class="hero__engine">
+            <Button
+              variant="primary"
+              href="/contact?request=quotation-engine"
+              class="js-magnetic hero__engine-btn">Quotation Engine</Button
+            >
+            <button
+              type="button"
+              class="hero__info"
+              aria-label="What is the Quotation Engine?"
+              aria-describedby="engine-tip"
+            >
+              ?
+            </button>
+            <span class="hero__tip" id="engine-tip" role="tooltip">
+              Prices AI product imagery image by image: set the count, the
+              delivery method, and a complexity level per image, then add sizes,
+              upscales, 3D angles, pack shots, or post-production. It returns a
+              line-by-line quote in your currency. Access is on request, so ask
+              for it through the form.
+            </span>
+          </span>
+          <Button variant="secondary" href="/contact" class="js-magnetic">Start a project</Button>
           <Button variant="secondary" href="#matrix" class="js-magnetic">Compare the three</Button>
         </div>
       </div>
@@ -728,6 +754,90 @@ const breadcrumbSchema = {
     gap: 10px;
     flex-wrap: wrap;
     margin-top: 4px;
+  }
+  /* The Quotation Engine button and its "?" travel together. */
+  .hero__engine {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  /* The loudest thing on the page: bigger than its neighbours, and lifted off
+     the cream by a halo in the brand color rather than a new one. */
+  .hero__engine-btn {
+    font-size: var(--type-button);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 16px 32px;
+    box-shadow:
+      0 10px 24px -10px color-mix(in srgb, var(--brand-orange) 70%, transparent),
+      0 0 0 6px color-mix(in srgb, var(--brand-orange) 12%, transparent);
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+  .hero__engine-btn:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 14px 30px -10px color-mix(in srgb, var(--brand-orange) 80%, transparent),
+      0 0 0 8px color-mix(in srgb, var(--brand-orange) 16%, transparent);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__engine-btn:hover {
+      transform: none;
+    }
+  }
+  .hero__info {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--text-mute);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1;
+    cursor: help;
+    transition:
+      border-color 0.18s ease,
+      color 0.18s ease;
+  }
+  .hero__info:hover,
+  .hero__info:focus-visible {
+    border-color: var(--brand-orange);
+    color: var(--brand-orange);
+  }
+  .hero__tip {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 10px);
+    z-index: 5;
+    width: min(360px, 78vw);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 14px;
+    box-shadow: var(--shadow-card);
+    padding: 14px 16px;
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-ink);
+    /* Hidden by opacity rather than display, so it can fade and so screen
+       readers still reach it through aria-describedby. */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease,
+      visibility 0.18s;
+  }
+  .hero__info:hover + .hero__tip,
+  .hero__info:focus + .hero__tip,
+  .hero__tip:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
   .hero__visual {
     position: relative;

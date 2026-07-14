@@ -231,6 +231,21 @@ const studios = [
           </fieldset>
 
           <fieldset class="choice-set">
+            <legend>Quotation Engine <span class="opt-tag">optional</span></legend>
+            <div class="choice">
+              <label class="pick-wrap">
+                <input
+                  type="checkbox"
+                  id="quotationEngine"
+                  name="quotationEngine"
+                  value="yes"
+                />
+                <span class="pick">I want to access the Quotation Engine</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-set">
             <legend>Interested in design as a subscription <span class="opt-tag">optional</span></legend>
             <div class="choice">
               {subscriptionOptions.map((o) => (
@@ -738,6 +753,16 @@ const studios = [
 </style>
 
 <script>
+  /* Arriving from the Quotation Engine button on /pricing: tick the request for
+     them, so the ask they came to make is already made. */
+  if (new URLSearchParams(window.location.search).get('request') === 'quotation-engine') {
+    const box = document.querySelector<HTMLInputElement>('#quotationEngine');
+    if (box) {
+      box.checked = true;
+      box.closest('.choice-set')?.scrollIntoView({ block: 'center' });
+    }
+  }
+
   /* Reveal headlines on scroll (§10: headlines only). */
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {

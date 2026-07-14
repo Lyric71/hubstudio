@@ -209,6 +209,38 @@ const goodToKnow = [
               </div>
             </header>
 
+            <div class="pc-tabs" role="tablist" aria-label="Quotation type">
+              <button
+                type="button"
+                class="pc-tab"
+                id="pc-tab-image"
+                role="tab"
+                aria-selected="true"
+                aria-controls="pc-panel-image"
+                data-tab="image"
+              >
+                Product Image
+              </button>
+              <button
+                type="button"
+                class="pc-tab"
+                id="pc-tab-video"
+                role="tab"
+                aria-selected="false"
+                aria-controls="pc-panel-video"
+                data-tab="video"
+              >
+                Product Video
+              </button>
+            </div>
+
+            <div
+              class="pc-panel"
+              id="pc-panel-image"
+              role="tabpanel"
+              aria-labelledby="pc-tab-image"
+              data-panel="image"
+            >
             {/* --- Standard scope, read before any price. --- */}
             <section class="pc-block" aria-labelledby="pc-h-included">
               <h2 class="pc-block-h" id="pc-h-included">What's included</h2>
@@ -602,6 +634,39 @@ const goodToKnow = [
                 side. Only a signed quotation is binding.
               </p>
             </footer>
+            </div>
+
+            <div
+              class="pc-panel"
+              id="pc-panel-video"
+              role="tabpanel"
+              aria-labelledby="pc-tab-video"
+              data-panel="video"
+              hidden
+            >
+              <section class="pc-block" aria-labelledby="pc-h-video">
+                <h2 class="pc-block-h" id="pc-h-video">Product video</h2>
+                <div class="pc-callout">
+                  <p class="pc-callout-h">Not priced yet</p>
+                  <p class="pc-callout-p">
+                    Video has no rate card in the pricing core, so this tab shows
+                    nothing rather than an invented number. To switch it on we
+                    need the same shape of spec the image tool was built from: the
+                    base per-unit price and what a unit is (one clip, one second,
+                    one finished cut), the delivery options if there is more than
+                    one way to produce it, the complexity levels and their
+                    multipliers, the add-ons and their unit prices, the
+                    order-level services, the minimum order, and a few acceptance
+                    figures to test against.
+                  </p>
+                </div>
+                <p class="pc-note">
+                  Once those numbers exist, video slots into the same pure core as
+                  images: one config file, the same currency switch, the same
+                  quotation table.
+                </p>
+              </section>
+            </div>
           </div>
         )
       }
@@ -804,6 +869,44 @@ const goodToKnow = [
   .pc-meta-value {
     font-size: var(--type-small);
     font-family: var(--font-mono);
+  }
+
+  /* --- Tabs --- */
+  .pc-tabs {
+    display: flex;
+    gap: 28px;
+    margin-top: 40px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .pc-tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    padding: 12px 2px;
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    letter-spacing: 0.06em;
+    color: var(--text-mute);
+    cursor: pointer;
+    transition:
+      color 0.18s ease,
+      border-color 0.18s ease;
+  }
+  .pc-tab:hover {
+    color: var(--text-ink);
+  }
+  .pc-tab[aria-selected='true'] {
+    color: var(--brand-orange);
+    border-bottom-color: var(--brand-orange);
+  }
+  .pc-tab:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .pc-panel[hidden] {
+    display: none;
   }
 
   /* --- Blocks --- */
@@ -1490,6 +1593,22 @@ const goodToKnow = [
           }
         });
     }
+
+    // Tabs: both panels are server-rendered, so switching is a visibility flip.
+    // Nothing is recomputed and nothing is refetched.
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.pc-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.pc-panel');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        tabs.forEach((t) =>
+          t.setAttribute('aria-selected', String(t.dataset.tab === target)),
+        );
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.panel !== target;
+        });
+      });
+    });
 
     tool.addEventListener('input', render);
     tool.addEventListener('change', render);

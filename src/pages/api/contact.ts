@@ -60,6 +60,9 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const subscription = val('subscription');
   const budget = val('budget');
   const message = val('message');
+  // Access to the gated quotation calculator is granted by hand, so this ask has
+  // to be impossible to miss: it rides in the subject line too.
+  const quotationEngine = val('quotationEngine') === 'yes';
   const services = form
     .getAll('services')
     .map((s) => String(s).trim())
@@ -90,6 +93,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     ['Services', services.length ? services.join(', ') : blank],
     ['Design subscription', subscription || blank],
     ['Budget', budget || blank],
+    ['Quotation Engine', quotationEngine ? 'Requesting access' : 'No'],
   ];
 
   const html = `
@@ -116,7 +120,9 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       from: FROM,
       to: TO,
       replyTo: email,
-      subject: `New brief: ${company} (${firstName} ${lastName})`,
+      subject: quotationEngine
+        ? `Quotation Engine access: ${company} (${firstName} ${lastName})`
+        : `New brief: ${company} (${firstName} ${lastName})`,
       html,
     });
     if (error) {
