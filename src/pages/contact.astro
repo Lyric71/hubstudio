@@ -38,6 +38,24 @@ const budgetRanges = [
   '20–50k USD',
   '50k USD+',
 ];
+
+/* Registered studios. Mirrors the PostalAddress / department nodes in the
+   Organization schema (Layout.astro): a visible address is the trust signal a
+   reader acts on, the schema is the one a crawler reads. Keep the two in sync. */
+const studios = [
+  {
+    city: 'Hong Kong',
+    lines: ["Capitol Centre, 5-19 Jardine's Bazaar", 'Causeway Bay'],
+  },
+  {
+    city: 'Shanghai',
+    lines: ['Trinity Plaza, 19F, 868 Changshou Road', 'Putuo District'],
+  },
+  {
+    city: 'Paris',
+    lines: ['12 rue Curial', '75019'],
+  },
+];
 ---
 
 <Layout
@@ -95,6 +113,18 @@ const budgetRanges = [
         <div class="rail__block">
           <span class="rail__label">Email</span>
           <a class="rail__email" href="mailto:hello@bearingbridge.com">hello@bearingbridge.com</a>
+        </div>
+
+        <div class="rail__block">
+          <span class="rail__label">Studios</span>
+          <ul class="rail__studios">
+            {studios.map((s) => (
+              <li>
+                <span class="rail__city">{s.city}</span>
+                <address class="rail__addr">{s.lines.join(', ')}</address>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div class="rail__block">
@@ -433,6 +463,24 @@ const budgetRanges = [
   .rail__value {
     font-size: var(--type-small);
     line-height: 1.55;
+  }
+  .rail__studios {
+    display: grid;
+    gap: 16px;
+  }
+  .rail__city {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+  .rail__addr {
+    margin-top: 3px;
+    font-size: var(--type-small);
+    font-style: normal;
+    line-height: 1.5;
+    color: var(--text-mute);
   }
   .rail__regions {
     display: flex;

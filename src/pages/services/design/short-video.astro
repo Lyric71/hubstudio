@@ -255,6 +255,31 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/services/design/short-video`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Short Video',
+  description:
+    'Short-form vertical video for TikTok, Reels, Shorts, Douyin and Xiaohongshu. Senior creative leads set the hooks, and edits ship weekly at campaign volume.',
+  serviceType: 'Short video production',
+  url: pageUrl,
+  provider: { '@type': 'Organization', name: 'hubStudio', url: SITE },
+  areaServed: 'Worldwide',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Short Video', item: pageUrl },
+  ],
+};
 ---
 
 <Layout
@@ -262,6 +287,8 @@ const faqSchema = {
   description="AI-native short video studio for brands at scale: TikTok, Reels, Shorts, Douyin, Xiaohongshu. Senior creative leads, hook-tested edits weekly."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 

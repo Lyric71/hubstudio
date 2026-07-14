@@ -167,12 +167,25 @@ const faqs: { c: FaqCategory; q: string; a: string }[] = [
 ];
 
 const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 'Delivery', 'Production', 'Ownership'];
+
+const SITE = 'https://www.hubstudio.ai';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: `${SITE}/pricing` },
+  ],
+};
 ---
 
 <Layout
   title="hubStudio Pricing: Asset, Project, or Retainer"
   description="Three ways to work with hubStudio: pay per asset, scope a project, or keep a creative studio on retainer. No mystery fees and no lock-in."
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
   <!-- ============================================================
        HERO
        ============================================================ -->
@@ -246,8 +259,8 @@ const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 
           <span class="stat-block__label">Project delivery, maximum</span>
         </div>
         <div class="stat-block">
-          <span class="stat-block__num"><span data-count="16">0</span></span>
-          <span class="stat-block__label">Markets we produce in</span>
+          <span class="stat-block__num">Zero</span>
+          <span class="stat-block__label">Surprise line items on the invoice</span>
         </div>
       </div>
     </div>

@@ -25,14 +25,40 @@ type Category = {
   id: string;
   title: string;
   blurb: string;
+  /* What the category actually covers, who briefs it, and what lands. The card
+     grid below sells the format; this paragraph sells the judgment. */
+  intro: string;
   services: Service[];
 };
+
+/* How a brief moves through the studio. Titled blocks, no ordinal numerals
+   (project card rule): the order on the page carries the sequence. */
+const process = [
+  {
+    title: 'Brief and direction',
+    text: 'A producer and a creative director read the brief together, then come back with a point of view rather than a quote. If the format you asked for is the wrong one, we say so before anyone opens a file.',
+  },
+  {
+    title: 'Concept, locked',
+    text: 'Nothing goes into production until the idea is signed off. Locking the concept first is what keeps AI-assisted volume from turning into a pile of on-brand-ish assets nobody chose.',
+  },
+  {
+    title: 'Production',
+    text: 'Shot on set, generated, or both, decided by what the asset needs and not by what is cheapest to make. A human art directs every frame that carries your logo.',
+  },
+  {
+    title: 'Finishing and delivery',
+    text: 'Color, retouch, sound, and cutdowns for every placement you actually publish to. You get the masters and the working files, in the formats your channels ask for.',
+  },
+];
 
 const categories: Category[] = [
   {
     id: 'content-social',
     title: 'Content & Social',
     blurb: 'The assets that ship weekly.',
+    intro:
+      'This is the work with a calendar attached to it. Social, ad creative, short video, and email all run on the same clock: something has to go out this week, in the right ratio, for a feed that punishes anything that looks recycled. Brands come to us when the in-house team can make good work but cannot make enough of it, and when the volume they need would break a traditional per-asset agency quote.',
     services: [
       {
         name: 'Social Media',
@@ -68,6 +94,8 @@ const categories: Category[] = [
     id: 'video-motion',
     title: 'Video & Motion',
     blurb: 'Moving image, long and short.',
+    intro:
+      'Film work, from a scripted brand piece to an ident that has to read in half a second. Some of it we shoot, some of it we generate, and most of it is both: a real plate finished with generated elements, or a generated sequence graded and sound-designed like a shoot. The decision is made per shot, on what the frame needs, and a human directs it either way.',
     services: [
       {
         name: 'Video Production',
@@ -89,6 +117,8 @@ const categories: Category[] = [
     id: 'commerce-web',
     title: 'Commerce & Web',
     blurb: 'Everything that sells or hosts.',
+    intro:
+      'Where the content has a conversion rate attached. Product visuals, storefronts, site pages, and print that has to survive a press check. Catalog scale is the usual reason brands call: hundreds of SKUs, each needing the same product to look like the same product across every market and every placement. Consistency at that volume is a systems problem before it is an aesthetic one, and we build it as one.',
     services: [
       {
         name: 'eCommerce',
@@ -117,6 +147,8 @@ const categories: Category[] = [
     id: 'strategy-direction',
     title: 'Strategy & Direction',
     blurb: 'The thinking before the pixels.',
+    intro:
+      'The work that decides what gets made, and what does not. Positioning, the campaign idea, the frames a film will actually be built from. This is the part of the studio that generative tools have made more valuable rather than less: when anyone can produce a thousand variations overnight, the scarce thing is knowing which one is right and being able to defend it in a room.',
     services: [
       {
         name: 'Marketing Strategy',
@@ -152,6 +184,8 @@ const categories: Category[] = [
     id: 'brand-identity',
     title: 'Brand Identity',
     blurb: 'The system everything else flows from.',
+    intro:
+      'Marks, type, color, illustration, packaging: the rules every other asset on this page inherits. Identity work matters more in an AI-native studio, not less, because a generative pipeline will happily produce a thousand assets that are each individually fine and collectively off-brand. A tight system is what makes volume safe. We build the system, then we build against it.',
     services: [
       {
         name: 'Brand Identity',
@@ -180,6 +214,8 @@ const categories: Category[] = [
     id: 'sales-communications',
     title: 'Sales & Communications',
     blurb: 'Decks, documents, and news.',
+    intro:
+      'The documents a business is judged on when it is not in the room: the investor deck, the annual report, the announcement that either gets picked up or does not. Usually the content already exists somewhere, in a founder’s head or a half-finished file, and what is missing is the structure and the craft. That is the job here, and it is closer to editing than to decorating.',
     services: [
       {
         name: 'Presentation Design',
@@ -236,6 +272,15 @@ const serviceListSchema = {
       },
     })),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+  ],
+};
 ---
 
 <Layout
@@ -243,6 +288,7 @@ const serviceListSchema = {
   description="Twenty creative service lines under one studio: social, video, motion, ecommerce, web, strategy, brand identity, and sales communications."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceListSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- ===== Hero ===== -->
   <section class="svc-hero">
@@ -276,6 +322,7 @@ const serviceListSchema = {
             <header class="svc-cat__head">
               <h2 class="svc-cat__title reveal">{cat.title}</h2>
               <p class="svc-cat__blurb">{cat.blurb}</p>
+              <p class="svc-cat__intro">{cat.intro}</p>
             </header>
             <div class="svc-grid">
               {cat.services.map((svc) => (
@@ -304,6 +351,64 @@ const serviceListSchema = {
       }
     </div>
   </div>
+
+  <!-- ===== How the studio works ===== -->
+  <section class="svc-proc">
+    <div class="container">
+      <header class="svc-proc__head">
+        <span class="eyebrow">How it runs</span>
+        <h2 class="headline h2 reveal svc-proc__title">
+          Every line above moves through the same <span class="accent">studio</span>.
+        </h2>
+        <p class="svc-proc__lead">
+          Twenty service lines, one way of working. What changes between a social
+          post and an annual report is the craft, not the process.
+        </p>
+      </header>
+      <div class="svc-proc__grid">
+        {
+          process.map((step) => (
+            <article class="svc-proc__step">
+              <h3 class="svc-proc__step-title">{step.title}</h3>
+              <p class="svc-proc__step-text">{step.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== What every engagement includes ===== -->
+  <section class="svc-incl">
+    <div class="container svc-incl__inner">
+      <div class="svc-incl__copy">
+        <span class="eyebrow">What you get</span>
+        <h2 class="headline h3 svc-incl__title">The same standard, whichever line you brief.</h2>
+        <p class="svc-incl__text">
+          A named producer who owns the brief end to end. A creative director on
+          every asset, including the generated ones. Working files and masters at
+          handover, not just flattened exports. Revisions scoped into the quote
+          rather than billed as a surprise. If a brief needs a format we do not
+          list, we will tell you that too, and point you somewhere better.
+        </p>
+        <p class="svc-incl__text">
+          Most engagements start with one line and grow into a mix. A brand
+          identity becomes packaging, then the ecommerce shoot, then the social
+          calendar that runs off both. That is the argument for keeping twenty
+          lines under one roof: the system carries across, and nobody has to
+          re-explain the brand to a new vendor every quarter.
+        </p>
+      </div>
+      <aside class="svc-incl__aside card card--white">
+        <h3 class="svc-incl__aside-title">See it on real briefs</h3>
+        <p class="svc-incl__aside-text">
+          The work page shows what these lines look like when they ship, with the
+          brief, the constraint, and what came back.
+        </p>
+        <Button variant="secondary" href="/work">See the work</Button>
+      </aside>
+    </div>
+  </section>
 
   <!-- ===== Closing CTA ===== -->
   <section class="svc-cta">
@@ -389,6 +494,98 @@ const serviceListSchema = {
   }
   .svc-cat__blurb {
     font-size: var(--type-body);
+    color: var(--text-mute);
+  }
+  .svc-cat__intro {
+    margin-top: 14px;
+    max-width: 68ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-ink);
+  }
+
+  /* ---- How the studio works ------------------------------------ */
+  .svc-proc {
+    padding-block: clamp(56px, 7vw, 96px);
+    border-top: 1px solid var(--line-hairline);
+  }
+  .svc-proc__title {
+    margin-top: 16px;
+    max-width: 20ch;
+  }
+  .svc-proc__lead {
+    margin-top: 20px;
+    max-width: 56ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .svc-proc__grid {
+    margin-top: clamp(36px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px 40px;
+  }
+  @media (min-width: 720px) {
+    .svc-proc__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .svc-proc__step {
+    padding-top: 20px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .svc-proc__step-title {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .svc-proc__step-text {
+    margin-top: 10px;
+    max-width: 46ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+
+  /* ---- What every engagement includes -------------------------- */
+  .svc-incl {
+    padding-bottom: clamp(48px, 6vw, 80px);
+  }
+  .svc-incl__inner {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 960px) {
+    .svc-incl__inner {
+      grid-template-columns: 1fr minmax(280px, 360px);
+      gap: 56px;
+      align-items: start;
+    }
+  }
+  .svc-incl__title {
+    margin-top: 14px;
+    max-width: 24ch;
+  }
+  .svc-incl__text {
+    margin-top: 18px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.64;
+  }
+  .svc-incl__aside {
+    padding: 30px 26px;
+  }
+  .svc-incl__aside-title {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .svc-incl__aside-text {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: var(--type-body);
+    line-height: 1.6;
     color: var(--text-mute);
   }
 

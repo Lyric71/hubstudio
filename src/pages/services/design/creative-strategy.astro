@@ -222,6 +222,31 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/services/design/creative-strategy`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Creative Strategy',
+  description:
+    'Creative strategy for the AI production era: positioning, distinctive brand codes, messaging and prompt systems that keep a brand recognizable across a thousand assets.',
+  serviceType: 'Creative strategy',
+  url: pageUrl,
+  provider: { '@type': 'Organization', name: 'hubStudio', url: SITE },
+  areaServed: 'Worldwide',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Creative Strategy', item: pageUrl },
+  ],
+};
 ---
 
 <Layout
@@ -229,6 +254,8 @@ const faqSchema = {
   description="Creative strategy built for the AI production era. Positioning, distinctive codes, messaging, prompt systems that hold the brand across 1,000 assets."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 

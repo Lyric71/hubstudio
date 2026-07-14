@@ -18,8 +18,10 @@ const listSchema = {
   description:
     'Practical, step by step guides for AI-native content production: image editing, decks, AI search, and the systems behind them.',
   url: `${SITE}/resources/how-to`,
+  // Article, not HowTo: Google retired HowTo rich results in 2023. Matches the
+  // type each guide emits from HowtoLayout.astro.
   hasPart: howtos.map((h) => ({
-    '@type': 'HowTo',
+    '@type': 'Article',
     name: h.title,
     description: h.metaDescription,
     datePublished: h.dateISO,

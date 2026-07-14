@@ -248,6 +248,31 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/services/design/motion-design`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Motion Design',
+  description:
+    'Brand-grade motion design at scale: explainers, social cutdowns, product loops and idents. Senior art directors lead the work while AI runs production.',
+  serviceType: 'Motion design and animation',
+  url: pageUrl,
+  provider: { '@type': 'Organization', name: 'hubStudio', url: SITE },
+  areaServed: 'Worldwide',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Motion Design', item: pageUrl },
+  ],
+};
 ---
 
 <Layout
@@ -255,6 +280,8 @@ const faqSchema = {
   description="Brand-grade motion design at scale. Explainers, social cutdowns, product loops, idents. Senior art directors lead, AI runs production, every market."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 

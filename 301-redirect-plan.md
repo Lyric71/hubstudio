@@ -31,7 +31,23 @@ new equivalent.
 - **Real 404 for genuinely dead URLs.** A clean 404 (the new `/404.astro`) is
   better than a misleading redirect.
 
-## 3. Host strategy (www to apex)
+## 3. Host strategy (www is canonical) — SUPERSEDED, see note
+
+> **Shipped reality (2026-07-14).** This section originally planned a move to
+> the apex. The site shipped the other way round: **`www.hubstudio.ai` is the
+> canonical host** and the apex 308-redirects to it (per `CLAUDE.md`). The
+> redirect rules live in `vercel.json` and were written against that reality:
+>
+> - Destinations are **relative** (`/work/mexicash`, not an absolute host).
+>   Vercel keeps the request host, so a `www` request lands on the final `www`
+>   URL in exactly one hop.
+> - The old plan's catch-all `www -> apex` rule was **dropped**. Shipping it
+>   against a www-canonical site would have created a redirect loop.
+> - Old indexed URLs are all on `www` (the WordPress canonical), so they match
+>   the path rules directly. Apex requests cost one extra hop (`308` to `www`,
+>   then the `301`), which only affects the rare hand-typed apex URL.
+>
+> The prose below is kept for the historical rationale. Do not implement it.
 
 The old canonical is `www.hubstudio.ai`; the new canonical is `hubstudio.ai`.
 To keep old links resolving in a **single** 301:
@@ -169,7 +185,13 @@ AI-generator style). The 301s now point at the live ported URLs.
    now a live article under `/resources/insights/` with its own page and
    equity. See 4.3.
 
-## 6. Implementation: `vercel.json`
+## 6. Implementation: `vercel.json` — SHIPPED 2026-07-14
+
+> **Status: live.** The 64 rules are in `vercel.json`. The shipped version
+> differs from the JSON block below in two ways, both required by the
+> www-canonical host (section 3): destinations are **relative** paths, and the
+> trailing `www -> apex` catch-all rule is **absent**. Treat `vercel.json` as
+> the source of truth; the block below is the original draft.
 
 Redirects belong at the Vercel edge so they fire before any static file is
 served and never depend on the Astro build. Add the `redirects` array below to

@@ -247,6 +247,31 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/services/design/ad-creative`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Ad Creative',
+  description:
+    'Performance ad creative for Meta, TikTok, Reels, Shorts, Pinterest, LinkedIn and Xiaohongshu: statics, short-form video and UGC, led by art directors and refreshed at the cadence the platforms now demand.',
+  serviceType: 'Ad creative production',
+  url: pageUrl,
+  provider: { '@type': 'Organization', name: 'hubStudio', url: SITE },
+  areaServed: 'Worldwide',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Ad Creative', item: pageUrl },
+  ],
+};
 ---
 
 <Layout
@@ -254,6 +279,8 @@ const faqSchema = {
   description="Performance ad creative built for Andromeda and Symphony. Statics, video, UGC, platform-native, sized to Meta, TikTok, Reels, Douyin and Xiaohongshu. Art directors leading."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 

@@ -237,13 +237,40 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/services/design/video-production`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Video Production',
+  description:
+    'Brand video production in three modes, studio shoots, location shoots and AIGC video, run under one creative direction with real crew and real cameras.',
+  serviceType: 'Brand video production',
+  url: pageUrl,
+  provider: { '@type': 'Organization', name: 'hubStudio', url: SITE },
+  areaServed: 'Worldwide',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Video Production', item: pageUrl },
+  ],
+};
 ---
 
 <Layout
-  title="Brand Video Production: Studio, Location & AIGC | hubStudio"
+  title="Brand Video Production: Studio and AIGC | hubStudio"
   description="Brand video production at scale. Studio shoots, location shoots and AIGC video under one roof. Real crew, real cameras, AI speed."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 

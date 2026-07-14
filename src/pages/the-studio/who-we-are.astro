@@ -112,12 +112,31 @@ const clientIcons = [
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.8 2.7 15.2 0 18M12 3c-2.7 2.8-2.7 15.2 0 18"/></svg>',
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 21 8l-9 5.2L3 8z"/><path d="M3 12 12 17.2 21 12"/><path d="M3 16 12 21.2 21 16"/></svg>',
 ];
+
+const SITE = 'https://www.hubstudio.ai';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'The Studio', item: `${SITE}/the-studio` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Who We Are',
+      item: `${SITE}/the-studio/who-we-are`,
+    },
+  ],
+};
 ---
 
 <Layout
   title="Who We Are | hubStudio AI Content Studio"
   description="Hybrid AI content studio with teams in China and the Philippines. Founded by ex-Publicis CEO Cyril Drouin. Speed, scale, and creative craft."
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ===== S1: Hero ===== -->

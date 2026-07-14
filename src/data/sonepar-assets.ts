@@ -40,6 +40,54 @@ export interface SoneparAsset {
 
 export const soneparAssets: SoneparAsset[] = [
   {
+    id: 'rusko-with-3d',
+    title: 'With 3D product image source',
+    alt: 'Snow-capped pole-top LED luminaires lighting a snowy lane between a red and a yellow wooden house at night, snow falling through the warm beam.',
+    description:
+      'The snowy residential lane generated from the 3D model of the luminaire: the head geometry, the diffuser ring and the pole taper come straight from the product source, so the fixture holds its exact shape at every crop.',
+    formats: [
+      {
+        label: 'Square',
+        file: '/sonepar-full/RUSKO/1/800-800-1.jpg',
+        spec: 'JPG · 800 × 800',
+      },
+      {
+        label: 'Banner',
+        file: '/sonepar-full/RUSKO/1/1920-555-1.jpg',
+        spec: 'JPG · 1920 × 555',
+      },
+      {
+        label: 'Strip',
+        file: '/sonepar-full/RUSKO/1/600-200-1.jpg',
+        spec: 'JPG · 600 × 200',
+      },
+    ],
+  },
+  {
+    id: 'rusko-without-3d',
+    title: 'Without 3D product image source',
+    alt: 'Snow-capped pole-top luminaires along a snowy lane between a red and a yellow wooden house at night, snow falling through the warm beam.',
+    description:
+      'The same lane generated without the 3D source, working from reference photography of the luminaire alone. Compare the lamp head and pole against the 3D version: the scene reads the same, the fixture is the variable.',
+    formats: [
+      {
+        label: 'Square',
+        file: '/sonepar-full/RUSKO/2/800-800-2.jpg',
+        spec: 'JPG · 800 × 800',
+      },
+      {
+        label: 'Banner',
+        file: '/sonepar-full/RUSKO/2/1920-555-2.jpg',
+        spec: 'JPG · 1920 × 555',
+      },
+      {
+        label: 'Strip',
+        file: '/sonepar-full/RUSKO/2/600-200-2.jpg',
+        spec: 'JPG · 600 × 200',
+      },
+    ],
+  },
+  {
     id: 'residential',
     title: 'Residential street in snowfall',
     alt: 'Snow-capped pole-top LED luminaires lighting a snowy path between red and yellow wooden houses at blue hour, snow falling.',

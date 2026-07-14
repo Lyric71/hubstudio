@@ -156,6 +156,14 @@ export default defineConfig({
   // Vercel strips trailing slashes before applying redirect rules.
   trailingSlash: 'never',
 
+  build: {
+    // Astro's default ('auto') only inlines stylesheets under 4kB, so the two
+    // real ones ship as render-blocking <link>s. Inlining costs ~13kB gzipped
+    // per document and buys back both round trips on first paint, which is the
+    // trade a mostly-cold-traffic marketing site wants.
+    inlineStylesheets: 'always',
+  },
+
   // English at the root, every other locale under a prefix with native slugs.
   i18n: {
     defaultLocale: 'en',
@@ -169,7 +177,8 @@ export default defineConfig({
         !page.includes('/thank-you') &&
         !page.includes('/api/') &&
         !page.includes('/debeers') &&
-        !page.includes('/sonepar'),
+        !page.includes('/sonepar') &&
+        !page.includes('/pricing/calculator'),
       changefreq: 'weekly',
       priority: 0.7,
       // Per URL the integration emits, this hook adds two things the defaults

@@ -1,0 +1,32 @@
+# Ping IndexNow (Bing, Yandex, Seznam, Naver) once a production deploy is live.
+#
+# Trigger is `deployment_status`, not `push`: IndexNow verifies that every URL it
+# is handed already resolves, so submitting at build time would fail on any page
+# the deploy is about to create. Vercel reports a GitHub deployment status, so we
+# wait for that to reach `success` on Production and only then submit.
+#
+# Run it by hand from the Actions tab (workflow_dispatch) after a manual deploy.
+name: IndexNow
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+jobs:
+  submit:
+    # deployment_status fires on every state change (pending, in_progress, error).
+    # Only a successful Production deploy should reach the search engines.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Submit sitemap URLs to IndexNow
+        run: node scripts/submit-indexnow.mjs

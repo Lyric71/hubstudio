@@ -208,21 +208,26 @@ const beliefs = [
     ========================================================== -->
     <section class="hero">
       <div class="hero__bg" aria-hidden="true">
+        <!--
+          The sources are held in data-src and attached by script after the load
+          event: a 3MB autoplaying background loop otherwise competes with LCP
+          for bandwidth. The poster (22kB, also painted as the .hero__bg
+          background) carries first paint, so nothing looks different.
+        -->
         <video
           class="hero__video"
           id="hero-video"
           width="1920"
           height="1080"
-          autoplay
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="none"
           tabindex="-1"
           poster="/Video/home-hero-poster.webp"
         >
-          <source src="/Video/home-hero.webm" type="video/webm" />
-          <source src="/Video/home-hero.mp4" type="video/mp4" />
+          <source data-src="/Video/home-hero.webm" type="video/webm" />
+          <source data-src="/Video/home-hero.mp4" type="video/mp4" />
         </video>
         <div class="hero__scrim"></div>
         <div class="grain hero__grain"></div>
@@ -396,8 +401,8 @@ const beliefs = [
             <img
               src="/Images/who-we-are-office.webp"
               alt="The hubStudio production floor in China, a working studio of editors, directors and AIGC engineers."
-              width="1280"
-              height="1560"
+              width="1050"
+              height="573"
               loading="lazy"
               decoding="async"
               data-parallax
@@ -2780,21 +2785,33 @@ const beliefs = [
 <script>
   const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Hero video: honour reduced motion ------------------------ */
+  /* ---- Hero video: attach off the critical path, honour reduced motion --- */
   const heroVideo = document.getElementById('hero-video') as HTMLVideoElement | null;
   if (heroVideo) {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const apply = () => {
-      if (reduced.matches) {
-        heroVideo.removeAttribute('autoplay');
-        heroVideo.pause();
-      } else {
-        const p = heroVideo.play();
-        if (p && typeof p.catch === 'function') p.catch(() => {});
-      }
+    let attached = false;
+
+    const attach = () => {
+      if (attached || reduced.matches) return;
+      // Respect an explicit data-saver preference: the loop is decoration.
+      const conn = (navigator as { connection?: { saveData?: boolean } }).connection;
+      if (conn?.saveData) return;
+      attached = true;
+      heroVideo.querySelectorAll<HTMLSourceElement>('source[data-src]').forEach((s) => {
+        if (s.dataset.src) s.src = s.dataset.src;
+      });
+      heroVideo.load();
+      const p = heroVideo.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
     };
-    apply();
-    reduced.addEventListener('change', apply);
+
+    if (document.readyState === 'complete') attach();
+    else window.addEventListener('load', attach, { once: true });
+
+    reduced.addEventListener('change', () => {
+      if (reduced.matches) heroVideo.pause();
+      else attach();
+    });
   }
 
   /* ---- Scroll-reveal -------------------------------------------- */

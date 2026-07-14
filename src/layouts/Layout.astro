@@ -69,21 +69,56 @@ const siteSchema = {
       url: SITE,
       description:
         'A creative production house pairing real studio craft with deep AIGC expertise, run out of China, with creative direction on top.',
-      email: 'hello@hubstudio.ai',
+      email: 'hello@bearingbridge.com',
       logo: {
         '@type': 'ImageObject',
         url: `${SITE}/logo/hubstudio-logo.png`,
-        width: 1459,
-        height: 416,
+        width: 358,
+        height: 102,
       },
       image: `${SITE}/og-default.png`,
       areaServed: 'Worldwide',
+      // Registered address. Studios are listed as departments below so each
+      // city carries its own PostalAddress rather than one flattened blob.
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: "Capitol Centre, 5-19 Jardine's Bazaar",
+        addressLocality: 'Causeway Bay',
+        addressRegion: 'Hong Kong',
+        addressCountry: 'HK',
+      },
+      department: [
+        {
+          '@type': 'Organization',
+          name: 'hubStudio Shanghai',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Trinity Plaza, 19F, 868 Changshou Road',
+            addressLocality: 'Putuo District, Shanghai',
+            addressCountry: 'CN',
+          },
+        },
+        {
+          '@type': 'Organization',
+          name: 'hubStudio Paris',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '12 rue Curial',
+            addressLocality: 'Paris',
+            postalCode: '75019',
+            addressCountry: 'FR',
+          },
+        },
+      ],
       contactPoint: {
         '@type': 'ContactPoint',
-        email: 'hello@hubstudio.ai',
+        email: 'hello@bearingbridge.com',
         contactType: 'customer service',
         availableLanguage: ['English', 'French', 'Chinese'],
       },
+      // sameAs: add once an official hubStudio company profile exists (company
+      // LinkedIn, Crunchbase, etc.). The founder's personal profiles belong on
+      // the Person node below, not here.
       parentOrganization: {
         '@type': 'Organization',
         name: 'BeyondBorderGroup',

@@ -60,6 +60,10 @@
   /* Brand */
   --brand-orange: #e94e1b;
   --brand-orange-deep: #c73e10;
+  /* Orange paired with white. --brand-orange against #fff is only 3.77:1 and
+     fails WCAG AA for normal text; this is the nearest hue that clears 4.5:1
+     (4.74:1). Use it wherever orange and white meet as fill and label. */
+  --brand-orange-cta: #d13f12;
   --brand-navy: #1e3a8a;
   --brand-navy-deep: #0e1f4e;
 
@@ -306,12 +310,12 @@ button {
   transform: translateY(0) scale(0.96);
 }
 .btn--primary {
-  background: var(--brand-orange);
+  background: var(--brand-orange-cta);
   color: #fff;
 }
 .btn--primary-inverse {
   background: #fff;
-  color: var(--brand-orange);
+  color: var(--brand-orange-cta);
 }
 .btn--secondary {
   background: transparent;
@@ -339,7 +343,7 @@ button {
   overflow: hidden;
 }
 .card--orange {
-  background: var(--brand-orange);
+  background: var(--brand-orange-cta);
   color: #fff;
 }
 .card--navy {

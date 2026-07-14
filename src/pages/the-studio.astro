@@ -33,16 +33,29 @@ const pages = [
 ];
 
 const stats = [
-  { num: '16', label: 'Markets with creative talent on the ground' },
+  { num: '20', label: 'Service lines under one roof' },
   { num: '50%', label: 'Typical cut in the cost of a finished asset' },
   { num: 'Days', label: 'From brief to delivery, not weeks' },
 ];
+
+const SITE = 'https://www.hubstudio.ai';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'The Studio', item: `${SITE}/the-studio` },
+  ],
+};
 ---
 
 <Layout
   title="The Studio: Talent, Craft & AI Practice | hubStudio"
   description="Inside hubStudio: a creative production house across Hong Kong, Shanghai, Changsha, and the Philippines, pairing real studio craft with deep AIGC expertise."
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
   <!-- ===== Hero ===== -->
   <section class="ts-hero">
     <div class="container">
