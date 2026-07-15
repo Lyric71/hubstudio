@@ -178,6 +178,7 @@ export default defineConfig({
         !page.includes('/api/') &&
         !page.includes('/debeers') &&
         !page.includes('/sonepar') &&
+        // Covers the settings page too: it lives under /pricing/calculator.
         !page.includes('/pricing/calculator'),
       changefreq: 'weekly',
       priority: 0.7,

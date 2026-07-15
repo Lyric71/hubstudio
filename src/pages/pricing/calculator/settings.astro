@@ -1,0 +1,778 @@
+---
+/**
+ * Pricing settings (`/pricing/calculator/settings`).
+ *
+ * Hidden, and behind its OWN password (not the calculator's): seeing a quote and
+ * being able to change what everything costs are different privileges.
+ *
+ * It edits rates, never structure. The shape of both pricing models stays in
+ * code; this page only changes the numbers those models read. Anything left
+ * blank falls back to the default in source, so the calculators keep working
+ * even with no storage connected and nothing saved.
+ *
+ * Exchange rates are pulled from a free public source (the ECB, via
+ * frankfurter.app) and refreshed on load. They can be pinned here when a fixed
+ * internal rate is wanted instead.
+ */
+export const prerender = false;
+
+import Layout from '../../../layouts/Layout.astro';
+import { isAuthed } from '../../../lib/settings-gate';
+import { PRICING } from '../../../lib/pricing/config';
+import { VIDEO_PRICING } from '../../../lib/pricing/video-config';
+import { loadPricingConfigs } from '../../../lib/pricing/settings';
+import { formatDate } from '../../../lib/pricing/format';
+
+const authed = await isAuthed(Astro.request);
+const loginError = Astro.url.searchParams.get('error') === '1';
+const saved = Astro.url.searchParams.get('saved');
+const refreshed = Astro.url.searchParams.get('refreshed');
+
+// Load even when locked out, so the page costs the same either way; the values
+// are only ever rendered behind the gate.
+const { image, video, overrides, fx, persisted } = await loadPricingConfigs();
+
+/** A field on the form: current effective value, and the default behind it. */
+interface Field {
+  name: string;
+  label: string;
+  value: number;
+  fallback: number;
+  step?: string;
+  note?: string;
+}
+
+const imageFields: { heading: string; fields: Field[] }[] = [
+  {
+    heading: 'Per-image production',
+    fields: [
+      {
+        name: 'image.basePerImageA',
+        label: 'Option A, per image (CNY)',
+        value: image.basePerImage.A,
+        fallback: PRICING.basePerImage.A,
+        step: '0.01',
+        note: 'AI scene and product generated together, at Low complexity.',
+      },
+      {
+        name: 'image.basePerImageB',
+        label: 'Option B, per image (CNY)',
+        value: image.basePerImage.B,
+        fallback: PRICING.basePerImage.B,
+        step: '0.01',
+        note: 'Real product placed by hand, at Low complexity.',
+      },
+    ],
+  },
+  {
+    heading: 'Add-on rates',
+    fields: [
+      {
+        name: 'image.designerHour',
+        label: 'One designer hour (CNY)',
+        value: image.designerHour,
+        fallback: PRICING.designerHour,
+        step: '0.01',
+        note: 'Prices every hourly add-on at once: extra size, upscale, 3D angle, extra retouch round, and each post-production item.',
+      },
+      {
+        name: 'image.productShotPack',
+        label: 'Product shot / pack shot, per pack (CNY)',
+        value: image.productShotPack,
+        fallback: PRICING.productShotPack,
+        step: '0.01',
+        note: 'One pack is 5 products. Set to 0 to show it as On request.',
+      },
+    ],
+  },
+  {
+    heading: 'Multipliers and limits',
+    fields: [
+      {
+        name: 'image.accountManagerUpliftPct',
+        label: 'Dedicated account manager (%)',
+        value: image.accountManagerUpliftPct * 100,
+        fallback: PRICING.accountManagerUpliftPct * 100,
+        step: '0.1',
+        note: 'Applied to the whole subtotal.',
+      },
+      {
+        name: 'image.minimumImages',
+        label: 'Minimum order (images)',
+        value: image.minimumImages,
+        fallback: PRICING.minimumImages,
+        step: '1',
+      },
+      {
+        name: 'image.multLow',
+        label: 'Complexity, Low',
+        value: image.complexityMultiplier.Low,
+        fallback: PRICING.complexityMultiplier.Low,
+        step: '0.1',
+      },
+      {
+        name: 'image.multMedium',
+        label: 'Complexity, Medium',
+        value: image.complexityMultiplier.Medium,
+        fallback: PRICING.complexityMultiplier.Medium,
+        step: '0.1',
+      },
+      {
+        name: 'image.multHigh',
+        label: 'Complexity, High',
+        value: image.complexityMultiplier.High,
+        fallback: PRICING.complexityMultiplier.High,
+        step: '0.1',
+      },
+    ],
+  },
+];
+
+const videoFields: { heading: string; fields: Field[] }[] = [
+  {
+    heading: 'Rate card (CNY per hour)',
+    fields: [
+      {
+        name: 'video.rateAccountManager',
+        label: 'Account manager',
+        value: video.rates.accountManager,
+        fallback: VIDEO_PRICING.rates.accountManager,
+        step: '0.01',
+      },
+      {
+        name: 'video.rateJuniorCreativeDirector',
+        label: 'Junior creative director',
+        value: video.rates.juniorCreativeDirector,
+        fallback: VIDEO_PRICING.rates.juniorCreativeDirector,
+        step: '0.01',
+      },
+      {
+        name: 'video.rateAigcProducer',
+        label: 'Motion / video AIGC producer',
+        value: video.rates.aigcProducer,
+        fallback: VIDEO_PRICING.rates.aigcProducer,
+        step: '0.01',
+      },
+      {
+        name: 'video.rateDesigner',
+        label: 'Designer',
+        value: video.rates.designer,
+        fallback: VIDEO_PRICING.rates.designer,
+        step: '0.01',
+      },
+      {
+        name: 'video.rateEditor',
+        label: 'Editor',
+        value: video.rates.editor,
+        fallback: VIDEO_PRICING.rates.editor,
+        step: '0.01',
+      },
+    ],
+  },
+  {
+    heading: 'Structure',
+    fields: [
+      {
+        name: 'video.averageSecondsPerSequence',
+        label: 'Seconds per sequence',
+        value: video.averageSecondsPerSequence,
+        fallback: VIDEO_PRICING.averageSecondsPerSequence,
+        step: '1',
+        note: 'Drives the shot count: shots = length divided by this, rounded up.',
+      },
+      {
+        name: 'video.keyframesPerSequence',
+        label: 'Keyframes per sequence',
+        value: video.engine.keyframesPerSequence,
+        fallback: VIDEO_PRICING.engine.keyframesPerSequence,
+        step: '1',
+      },
+      {
+        name: 'video.includedRevisionRounds',
+        label: 'Revision rounds included',
+        value: video.engine.includedRevisionRounds,
+        fallback: VIDEO_PRICING.engine.includedRevisionRounds,
+        step: '1',
+      },
+      {
+        name: 'video.pmPercent',
+        label: 'Project management (%)',
+        value: video.pmPercent * 100,
+        fallback: VIDEO_PRICING.pmPercent * 100,
+        step: '0.1',
+        note: 'A share of production time, mandatory, split across the parts by their non-AM hours.',
+      },
+    ],
+  },
+  {
+    heading: 'Generation engine',
+    fields: [
+      {
+        name: 'video.costPerImageGenUsd',
+        label: 'Cost per image generation (USD)',
+        value: video.engine.costPerImageGenUsd,
+        fallback: VIDEO_PRICING.engine.costPerImageGenUsd,
+        step: '0.01',
+      },
+      {
+        name: 'video.costPerVideoClipGenUsd',
+        label: 'Cost per video clip generation (USD)',
+        value: video.engine.costPerVideoClipGenUsd,
+        fallback: VIDEO_PRICING.engine.costPerVideoClipGenUsd,
+        step: '0.01',
+      },
+      {
+        name: 'video.imageGensPerKeyframe',
+        label: 'Image generations per keyframe',
+        value: video.engine.imageGensPerKeyframe,
+        fallback: VIDEO_PRICING.engine.imageGensPerKeyframe,
+        step: '1',
+      },
+      {
+        name: 'video.videoClipGensPerSequence',
+        label: 'Clip generations per sequence',
+        value: video.engine.videoClipGensPerSequence,
+        fallback: VIDEO_PRICING.engine.videoClipGensPerSequence,
+        step: '1',
+      },
+      {
+        name: 'video.gensPerRevisionRound',
+        label: 'Generations per revision round',
+        value: video.engine.gensPerRevisionRound,
+        fallback: VIDEO_PRICING.engine.gensPerRevisionRound,
+        step: '1',
+      },
+      {
+        name: 'video.engineUsdToCny',
+        label: 'Engine USD to CNY',
+        value: video.engine.usdToCny,
+        fallback: VIDEO_PRICING.engine.usdToCny,
+        step: '0.01',
+        note: 'Used only to price the engine cost. It is not the display rate below.',
+      },
+    ],
+  },
+  {
+    heading: 'Multipliers and add-ons',
+    fields: [
+      {
+        name: 'video.multLow',
+        label: 'Complexity, Low',
+        value: video.complexityMultiplier.Low,
+        fallback: VIDEO_PRICING.complexityMultiplier.Low,
+        step: '0.1',
+      },
+      {
+        name: 'video.multMedium',
+        label: 'Complexity, Medium',
+        value: video.complexityMultiplier.Medium,
+        fallback: VIDEO_PRICING.complexityMultiplier.Medium,
+        step: '0.1',
+      },
+      {
+        name: 'video.multHigh',
+        label: 'Complexity, High',
+        value: video.complexityMultiplier.High,
+        fallback: VIDEO_PRICING.complexityMultiplier.High,
+        step: '0.1',
+      },
+      {
+        name: 'video.productShotPack',
+        label: 'Product shot / pack shot, per pack (CNY)',
+        value: video.productShotPack,
+        fallback: VIDEO_PRICING.productShotPack,
+        step: '0.01',
+      },
+    ],
+  },
+];
+
+const fxPinned = Boolean(overrides.fx?.pinned);
+const fetchedAt = fx ? new Date(fx.fetchedAt) : null;
+---
+
+<Layout title="Pricing settings" description="Private pricing settings." noindex>
+  <section class="st-shell">
+    <div class="container">
+      {
+        !authed ? (
+          <div class="st-gate">
+            <p class="st-eyebrow">Restricted</p>
+            <h1 class="st-title">Pricing settings</h1>
+            <p class="st-lead">
+              This page changes what work costs. It has its own password, separate
+              from the calculator's.
+            </p>
+            <form class="st-login" method="POST" action="/api/settings/login">
+              <label class="st-field">
+                <span class="st-label">Password</span>
+                <input
+                  type="password"
+                  name="password"
+                  autocomplete="current-password"
+                  required
+                  autofocus
+                  class="st-input"
+                />
+              </label>
+              {loginError && (
+                <p class="st-error" role="alert">
+                  Wrong password. Try again.
+                </p>
+              )}
+              <button type="submit" class="st-btn">
+                Enter
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div class="st-tool">
+            <header class="st-head">
+              <p class="st-eyebrow">Restricted</p>
+              <h1 class="st-title">Pricing settings</h1>
+              <p class="st-lead">
+                These numbers feed both calculators. A field left blank falls back
+                to the default in the code, and the reset button clears everything
+                at once. Rates only: the pricing model itself lives in code.
+              </p>
+              <p class="st-links">
+                <a href="/pricing/calculator">Open the calculator</a>
+              </p>
+            </header>
+
+            {!persisted && (
+              <p class="st-warn" role="status">
+                Storage is not connected, so nothing can be saved yet. Add the KV
+                integration in Vercel (KV_REST_API_URL and KV_REST_API_TOKEN) to
+                make these fields writable. Until then both calculators run on the
+                defaults in the code.
+              </p>
+            )}
+            {saved === '1' && (
+              <p class="st-ok" role="status">
+                Saved. The calculator picks these up on its next load.
+              </p>
+            )}
+            {saved === '0' && (
+              <p class="st-warn" role="status">
+                Could not save. Storage is not connected.
+              </p>
+            )}
+            {refreshed === '1' && (
+              <p class="st-ok" role="status">
+                Exchange rate refreshed.
+              </p>
+            )}
+            {refreshed === '0' && (
+              <p class="st-warn" role="status">
+                Could not reach the rate source. The last known rate is still in
+                use.
+              </p>
+            )}
+
+            {/* --- Exchange rates --- */}
+            <section class="st-block" aria-labelledby="st-h-fx">
+              <h2 class="st-block-h" id="st-h-fx">Exchange rates</h2>
+              <p class="st-note">
+                Pulled from the European Central Bank's published rates (via
+                frankfurter.app, free and keyless) and refreshed automatically
+                when the calculator page is loaded, at most once every six hours.
+                CNY stays canonical: these only convert what is displayed.
+              </p>
+              <dl class="st-fx">
+                <div class="st-fx-row">
+                  <dt>Live USD per CNY</dt>
+                  <dd>{fx ? fx.usdPerCny.toFixed(6) : 'Unavailable'}</dd>
+                </div>
+                <div class="st-fx-row">
+                  <dt>Live EUR per CNY</dt>
+                  <dd>{fx ? fx.eurPerCny.toFixed(6) : 'Unavailable'}</dd>
+                </div>
+                <div class="st-fx-row">
+                  <dt>Last fetched</dt>
+                  <dd>
+                    {fetchedAt
+                      ? `${formatDate(fetchedAt)}, ${fetchedAt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`
+                      : 'Never'}
+                  </dd>
+                </div>
+                <div class="st-fx-row">
+                  <dt>Source</dt>
+                  <dd>{fx ? fx.source : 'Falling back to the rates in code'}</dd>
+                </div>
+                <div class="st-fx-row">
+                  <dt>In use now</dt>
+                  <dd>
+                    USD {image.fx.usdPerCny.toFixed(6)}, EUR{' '}
+                    {image.fx.eurPerCny.toFixed(6)}
+                    {fxPinned ? ' (pinned)' : ' (live)'}
+                  </dd>
+                </div>
+              </dl>
+              <form method="POST" action="/api/settings/save" class="st-inline-form">
+                <input type="hidden" name="action" value="refresh" />
+                <button type="submit" class="st-btn st-btn--ghost">
+                  Refresh the rate now
+                </button>
+              </form>
+            </section>
+
+            <form method="POST" action="/api/settings/save" class="st-form">
+              <input type="hidden" name="action" value="save" />
+
+              {/* --- Image --- */}
+              <section class="st-block" aria-labelledby="st-h-image">
+                <h2 class="st-block-h" id="st-h-image">Product image calculator</h2>
+                {imageFields.map((group) => (
+                  <div class="st-group">
+                    <h3 class="st-group-h">{group.heading}</h3>
+                    <div class="st-grid">
+                      {group.fields.map((field) => (
+                        <label class="st-field">
+                          <span class="st-label">{field.label}</span>
+                          <input
+                            type="number"
+                            class="st-input"
+                            name={field.name}
+                            value={field.value}
+                            step={field.step ?? '0.01'}
+                            min="0"
+                          />
+                          <span class="st-hint">
+                            Default {field.fallback}
+                            {field.note ? `. ${field.note}` : ''}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </section>
+
+              {/* --- Video --- */}
+              <section class="st-block" aria-labelledby="st-h-video">
+                <h2 class="st-block-h" id="st-h-video">Product video calculator</h2>
+                {videoFields.map((group) => (
+                  <div class="st-group">
+                    <h3 class="st-group-h">{group.heading}</h3>
+                    <div class="st-grid">
+                      {group.fields.map((field) => (
+                        <label class="st-field">
+                          <span class="st-label">{field.label}</span>
+                          <input
+                            type="number"
+                            class="st-input"
+                            name={field.name}
+                            value={field.value}
+                            step={field.step ?? '0.01'}
+                            min="0"
+                          />
+                          <span class="st-hint">
+                            Default {field.fallback}
+                            {field.note ? `. ${field.note}` : ''}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </section>
+
+              {/* --- Manual FX --- */}
+              <section class="st-block" aria-labelledby="st-h-manual">
+                <h2 class="st-block-h" id="st-h-manual">Pin the exchange rate</h2>
+                <p class="st-note">
+                  Leave this off to follow the live rate. Turn it on to hold a
+                  fixed internal rate: the calculators then use the two numbers
+                  below and stop following the market.
+                </p>
+                <label class="st-toggle">
+                  <input type="checkbox" name="fx.pinned" checked={fxPinned} />
+                  <span>Pin the rates below and stop fetching live ones</span>
+                </label>
+                <div class="st-grid">
+                  <label class="st-field">
+                    <span class="st-label">USD per CNY</span>
+                    <input
+                      type="number"
+                      class="st-input"
+                      name="fx.usdPerCny"
+                      value={overrides.fx?.usdPerCny ?? PRICING.fx.usdPerCny}
+                      step="0.0001"
+                      min="0"
+                    />
+                    <span class="st-hint">Default {PRICING.fx.usdPerCny}</span>
+                  </label>
+                  <label class="st-field">
+                    <span class="st-label">EUR per CNY</span>
+                    <input
+                      type="number"
+                      class="st-input"
+                      name="fx.eurPerCny"
+                      value={overrides.fx?.eurPerCny ?? PRICING.fx.eurPerCny}
+                      step="0.0001"
+                      min="0"
+                    />
+                    <span class="st-hint">Default {PRICING.fx.eurPerCny}</span>
+                  </label>
+                </div>
+              </section>
+
+              <div class="st-actions">
+                <button type="submit" class="st-btn">
+                  Save settings
+                </button>
+              </div>
+            </form>
+
+            <form method="POST" action="/api/settings/save" class="st-inline-form st-reset">
+              <input type="hidden" name="action" value="reset" />
+              <button type="submit" class="st-btn st-btn--ghost">
+                Reset everything to the defaults in code
+              </button>
+            </form>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .st-shell {
+    padding: calc(var(--nav-h) + 64px) 0 var(--section-pad-y-mobile);
+    background: var(--bg-cream);
+    min-height: 80vh;
+  }
+  @media (min-width: 768px) {
+    .st-shell {
+      padding-bottom: var(--section-pad-y-desktop);
+    }
+  }
+  .st-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: 12px;
+  }
+  .st-title {
+    font-family: var(--font-serif);
+    font-size: var(--type-h1);
+    line-height: var(--lh-display);
+    margin-bottom: 16px;
+  }
+  .st-lead {
+    font-size: var(--type-lead);
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .st-links {
+    margin-top: 16px;
+    font-size: var(--type-body);
+  }
+  .st-links a {
+    color: var(--brand-orange);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .st-gate {
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 0;
+  }
+  .st-gate .st-lead {
+    margin: 0 auto 28px;
+  }
+  .st-login {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+  }
+  .st-error {
+    color: var(--brand-orange-deep);
+    font-size: var(--type-small);
+  }
+
+  .st-head {
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+
+  .st-ok,
+  .st-warn {
+    margin-top: 24px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+  }
+  .st-ok {
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    color: var(--text-ink);
+  }
+  .st-warn {
+    background: #fdf4ee;
+    border: 1px solid var(--brand-orange);
+    color: var(--text-ink);
+  }
+
+  .st-block {
+    margin-top: 56px;
+  }
+  .st-block-h {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .st-note {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+    max-width: 80ch;
+    margin-bottom: 20px;
+  }
+  .st-group {
+    margin-top: 28px;
+  }
+  .st-group-h {
+    font-size: var(--type-body);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .st-grid {
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 720px) {
+    .st-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px 32px;
+    }
+  }
+  @media (min-width: 1100px) {
+    .st-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .st-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .st-label {
+    font-size: var(--type-small);
+    color: var(--text-ink);
+    font-weight: 600;
+  }
+  .st-hint {
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .st-input {
+    width: 100%;
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: var(--type-body);
+    color: var(--text-ink);
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    padding: 10px 14px;
+  }
+  .st-input:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+
+  .st-fx {
+    display: grid;
+    gap: 10px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .st-fx-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .st-fx dt {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .st-fx dd {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+  }
+
+  .st-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: var(--type-body);
+  }
+  .st-toggle input {
+    accent-color: var(--brand-orange);
+  }
+
+  .st-btn {
+    align-self: flex-start;
+    background: var(--brand-orange);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 14px 28px;
+    font-size: var(--type-button);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s ease;
+  }
+  .st-btn:hover {
+    background: var(--brand-orange-deep);
+  }
+  .st-btn--ghost {
+    background: transparent;
+    color: var(--text-ink);
+    border: 1px solid var(--line-strong);
+    padding: 10px 20px;
+    font-size: var(--type-small);
+  }
+  .st-btn--ghost:hover {
+    background: var(--bg-white);
+    border-color: var(--brand-orange);
+    color: var(--brand-orange);
+  }
+  .st-actions {
+    margin-top: 48px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .st-actions .st-btn {
+    padding: 16px 36px;
+  }
+  .st-reset {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-hairline);
+  }
+</style>

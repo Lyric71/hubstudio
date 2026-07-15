@@ -116,12 +116,19 @@ export const DELIVERY_OPTIONS: DeliveryOptionSpec[] = [
 
 export type PerImageAddonId = 'extraSizes' | 'upscales' | 'threeDAngles';
 
+/** Which configured rate an add-on's unit price is read from at compute time. */
+export type RateKey = 'designerHour' | 'productShotPack';
+
 export interface PerImageAddonSpec {
   id: PerImageAddonId;
   label: string;
   note: string;
-  /** Unit price in CNY: one designer hour. */
-  unitCny: number;
+  /**
+   * The config field this add-on is priced from. Resolved when the quote is
+   * computed, never baked in, so a rate edited in the settings page reaches
+   * every line that depends on it.
+   */
+  rate: RateKey;
 }
 
 /**
@@ -135,19 +142,19 @@ export const PER_IMAGE_ADDONS: PerImageAddonSpec[] = [
     id: 'extraSizes',
     label: 'Extra size',
     note: 'One more size or crop of that image, resized from the master.',
-    unitCny: PRICING.designerHour,
+    rate: 'designerHour',
   },
   {
     id: 'upscales',
     label: 'Upscale',
     note: 'One higher resolution of that image, beyond the 2K it ships at.',
-    unitCny: PRICING.designerHour,
+    rate: 'designerHour',
   },
   {
     id: 'threeDAngles',
     label: '3D angle',
     note: 'A specific angle extracted from your 3D product model, for that image.',
-    unitCny: PRICING.designerHour,
+    rate: 'designerHour',
   },
 ];
 
@@ -165,8 +172,8 @@ export interface OrderAddonSpec {
   id: OrderAddonId;
   label: string;
   note: string;
-  /** Unit price in CNY. A zero price means the fee is quoted on request. */
-  unitCny: number;
+  /** The config field this option is priced from, resolved at compute time. */
+  rate: RateKey;
   /** The quantity's unit, used in the input's accessible name. */
   unit: string;
   /** Which quotation line this option rolls up into. */
@@ -185,7 +192,7 @@ export const ORDER_ADDONS: OrderAddonSpec[] = [
     id: 'productShotPacks',
     label: 'Product shot / pack shot',
     note: 'Physical photography, separate from the AI images. One pack covers 5 products, 5 pictures each, post-production included. Five products is the minimum, so one pack.',
-    unitCny: PRICING.productShotPack,
+    rate: 'productShotPack',
     unit: 'packs',
     group: 'productShot',
   },
@@ -193,7 +200,7 @@ export const ORDER_ADDONS: OrderAddonSpec[] = [
     id: 'extraRetouchRounds',
     label: 'Extra retouch round',
     note: 'One more round of fixes across the whole order, beyond the three included per image.',
-    unitCny: PRICING.designerHour,
+    rate: 'designerHour',
     unit: 'rounds',
     group: 'retouch',
   },
@@ -201,7 +208,7 @@ export const ORDER_ADDONS: OrderAddonSpec[] = [
     id: 'logo',
     label: 'Add a logo or brand mark',
     note: 'Your mark laid onto the finished image.',
-    unitCny: PRICING.designerHour,
+    rate: 'designerHour',
     unit: 'items',
     group: 'postProduction',
   },
@@ -209,7 +216,7 @@ export const ORDER_ADDONS: OrderAddonSpec[] = [
     id: 'text',
     label: 'Add text or a caption',
     note: 'Copy set onto the finished image.',
-    unitCny: PRICING.designerHour,
+    rate: 'designerHour',
     unit: 'items',
     group: 'postProduction',
   },
@@ -217,7 +224,7 @@ export const ORDER_ADDONS: OrderAddonSpec[] = [
     id: 'badge',
     label: 'Add a promotional badge',
     note: 'A Sale or New badge, composed onto the image.',
-    unitCny: PRICING.designerHour,
+    rate: 'designerHour',
     unit: 'items',
     group: 'postProduction',
   },
@@ -225,7 +232,7 @@ export const ORDER_ADDONS: OrderAddonSpec[] = [
     id: 'priceTag',
     label: 'Add a price or price tag',
     note: 'A price tag set onto the image.',
-    unitCny: PRICING.designerHour,
+    rate: 'designerHour',
     unit: 'items',
     group: 'postProduction',
   },

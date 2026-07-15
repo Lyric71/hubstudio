@@ -21,6 +21,7 @@ import {
   type OrderAddonSpec,
   type PerImageAddonId,
   type PricingConfig,
+  type RateKey,
 } from './config.ts';
 
 /* --- Inputs -------------------------------------------------------------- */
@@ -125,6 +126,15 @@ export interface Money {
   eur: number;
 }
 
+/**
+ * The unit price of an add-on, in CNY. Read from the config on every call
+ * rather than baked into the spec, so a rate edited in the settings page
+ * reaches every line priced from it.
+ */
+export function unitCnyOf(spec: { rate: RateKey }, config: PricingConfig): number {
+  return config[spec.rate];
+}
+
 /** One CNY amount expressed in all three display currencies. */
 export function convert(cny: number, config: PricingConfig = PRICING): Money {
   return {
@@ -199,7 +209,10 @@ export function computeQuote(
     const production = ignored ? 0 : base * config.complexityMultiplier[row.complexity];
     const addOns = ignored
       ? 0
-      : PER_IMAGE_ADDONS.reduce((sum, addon) => sum + row[addon.id] * addon.unitCny, 0);
+      : PER_IMAGE_ADDONS.reduce(
+          (sum, addon) => sum + row[addon.id] * unitCnyOf(addon, config),
+          0,
+        );
     return {
       index,
       row,
@@ -217,9 +230,9 @@ export function computeQuote(
     return {
       spec,
       quantity,
-      unit: convert(spec.unitCny, config),
-      line: convert(spec.unitCny * quantity, config),
-      onRequest: spec.unitCny === 0,
+      unit: convert(unitCnyOf(spec, config), config),
+      line: convert(unitCnyOf(spec, config) * quantity, config),
+      onRequest: unitCnyOf(spec, config) === 0,
     };
   });
 

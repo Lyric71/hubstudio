@@ -12,6 +12,13 @@
  * JavaScript) and again in the browser on every change. This file is the thin UI
  * layer over it: it holds no rate, no multiplier, and no formula.
  *
+ * Rates come from src/lib/pricing/settings.ts: the defaults in code, plus
+ * whatever /pricing/calculator/settings has overridden, plus a live exchange rate
+ * refreshed on load. The resolved config is shipped to the browser with the page
+ * so client-side math uses the identical numbers the server just used.
+ *
+ * Two tabs: product image and product video, each its own pure core.
+ *
  * Nothing is persisted. Client prices only: labor hours, hourly rates, and token
  * costs never reach the page.
  */
@@ -25,10 +32,21 @@ import {
   DELIVERY_OPTIONS,
   INCLUDED,
   PER_IMAGE_ADDONS,
-  PRICING,
   TERMS,
 } from '../../lib/pricing/config';
+import {
+  MASTER_FORMATS,
+  VIDEO_CLIENT_PROVIDES,
+  VIDEO_COMPLEXITIES,
+  VIDEO_INCLUDED,
+  VIDEO_LIMITATIONS,
+} from '../../lib/pricing/video-config';
 import { DEFAULT_INPUTS, computeQuote, convert } from '../../lib/pricing/quote';
+import {
+  DEFAULT_VIDEO_INPUTS,
+  computeVideoQuote,
+} from '../../lib/pricing/video-quote';
+import { loadPricingConfigs } from '../../lib/pricing/settings';
 import {
   CURRENCIES,
   CURRENCY_NAME,
@@ -43,12 +61,34 @@ import {
 const authed = await isAuthed(Astro.request);
 const loginError = Astro.url.searchParams.get('error') === '1';
 
+// Defaults, plus saved overrides, plus a live exchange rate (refreshed here, on
+// page load). Both cores take a config, so this is the only place rates enter.
+const { image: imageConfig, video: videoConfig } = await loadPricingConfigs();
+
 // First paint (and the no-JS fallback) shows a real quote, not empty cells.
-const quote = computeQuote(DEFAULT_INPUTS);
+const quote = computeQuote(DEFAULT_INPUTS, imageConfig);
+const videoQuote = computeVideoQuote(DEFAULT_VIDEO_INPUTS, videoConfig);
 const today = formatDate(new Date());
-const uplift = formatUplift(PRICING.accountManagerUpliftPct);
-const moq = PRICING.minimumImages;
-const hourUnit = convert(PRICING.designerHour);
+const uplift = formatUplift(imageConfig.accountManagerUpliftPct);
+const moq = imageConfig.minimumImages;
+const hourUnit = convert(imageConfig.designerHour, imageConfig);
+
+/** The video quotation, itemized the way the client reads it. */
+const videoSummary = [
+  { id: 'videoProduction', label: 'Video production' },
+  { id: 'addOnsTotal', label: 'Optional add-ons' },
+  { id: 'total', label: 'Total', emphasis: true },
+] as const;
+
+const videoMoney = {
+  creativeSubtotal: videoQuote.creativeSubtotal,
+  productionSubtotal: videoQuote.productionSubtotal,
+  basePerVideo: videoQuote.basePerVideo,
+  adjustedPerVideo: videoQuote.adjustedPerVideo,
+  videoProduction: videoQuote.videoProduction,
+  addOnsTotal: videoQuote.addOnsTotal,
+  total: videoQuote.total,
+};
 
 /** The quotation, in the order the client reads it. */
 const summaryRows = [
@@ -644,29 +684,489 @@ const goodToKnow = [
               data-panel="video"
               hidden
             >
-              <section class="pc-block" aria-labelledby="pc-h-video">
-                <h2 class="pc-block-h" id="pc-h-video">Product video</h2>
+              {/* --- What a video is --- */}
+              <section class="pc-block" aria-labelledby="pc-h-vincluded">
+                <h2 class="pc-block-h" id="pc-h-vincluded">What's included</h2>
                 <div class="pc-callout">
-                  <p class="pc-callout-h">Not priced yet</p>
+                  <p class="pc-callout-h">Length drives the price</p>
                   <p class="pc-callout-p">
-                    Video has no rate card in the pricing core, so this tab shows
-                    nothing rather than an invented number. To switch it on we
-                    need the same shape of spec the image tool was built from: the
-                    base per-unit price and what a unit is (one clip, one second,
-                    one finished cut), the delivery options if there is more than
-                    one way to produce it, the complexity levels and their
-                    multipliers, the add-ons and their unit prices, the
-                    order-level services, the minimum order, and a few acceptance
-                    figures to test against.
+                    A video is a sequence of shots. Every{' '}
+                    {videoConfig.averageSecondsPerSequence} seconds of finished
+                    film is one shot, and each shot is generated, keyframed, and
+                    composited. The creative work (the brief, the treatment, the
+                    storyboard) is charged once per video and does not grow with
+                    length. Everything below is included at no extra charge.
                   </p>
                 </div>
+                <ul class="pc-included">
+                  {VIDEO_INCLUDED.map((item) => (
+                    <li class="pc-included-item">{item}</li>
+                  ))}
+                </ul>
+                <p class="pc-note">{VIDEO_CLIENT_PROVIDES}</p>
+              </section>
+
+              {/* --- Selections --- */}
+              <section class="pc-block" aria-labelledby="pc-h-vselections">
+                <h2 class="pc-block-h" id="pc-h-vselections">Your selections</h2>
+                <div class="pc-fields">
+                  <label class="pc-field">
+                    <span class="pc-label">Number of videos</span>
+                    <input
+                      type="number"
+                      class="pc-input pc-input--count"
+                      id="pv-videos"
+                      min="1"
+                      step="1"
+                      value={DEFAULT_VIDEO_INPUTS.numberOfVideos}
+                    />
+                  </label>
+
+                  <label class="pc-field">
+                    <span class="pc-label">Video length (seconds)</span>
+                    <input
+                      type="number"
+                      class="pc-input pc-input--count"
+                      id="pv-length"
+                      min="1"
+                      step="1"
+                      value={DEFAULT_VIDEO_INPUTS.videoLengthSeconds}
+                    />
+                    <span class="pc-hint">
+                      The primary driver: length becomes shots.
+                    </span>
+                  </label>
+
+                  <label class="pc-field">
+                    <span class="pc-label">Complexity</span>
+                    <select class="pc-input pc-select" id="pv-complexity">
+                      {VIDEO_COMPLEXITIES.map((level) => (
+                        <option
+                          value={level.id}
+                          selected={level.id === DEFAULT_VIDEO_INPUTS.complexity}
+                        >
+                          {level.id} ({formatMultiplier(
+                            videoConfig.complexityMultiplier[level.id],
+                          )})
+                        </option>
+                      ))}
+                    </select>
+                    <span class="pc-hint">Scored by the scene, not the product.</span>
+                  </label>
+
+                  <label class="pc-field">
+                    <span class="pc-label">Master format</span>
+                    <select class="pc-input pc-select" id="pv-format">
+                      {MASTER_FORMATS.map((format) => (
+                        <option
+                          value={format.id}
+                          selected={format.id === DEFAULT_VIDEO_INPUTS.masterFormat}
+                        >
+                          {format.id}
+                        </option>
+                      ))}
+                    </select>
+                    <span class="pc-hint">
+                      One master is included. This choice has no price impact.
+                    </span>
+                  </label>
+                </div>
+
+                {/* Complexity guide: what each level buys, and what it costs. */}
+                <div class="pc-guide">
+                  {VIDEO_COMPLEXITIES.map((level) => (
+                    <div class="pc-guide-item" data-tone={level.tone}>
+                      <p class="pc-guide-h">
+                        {level.id}
+                        <span class="pc-guide-mult">
+                          {formatMultiplier(videoConfig.complexityMultiplier[level.id])}
+                        </span>
+                      </p>
+                      <p class="pc-guide-note">{level.note}</p>
+                    </div>
+                  ))}
+                </div>
                 <p class="pc-note">
-                  Once those numbers exist, video slots into the same pure core as
-                  images: one config file, the same currency switch, the same
-                  quotation table.
+                  Complexity multiplies the base price of one video (creative plus
+                  production). It never touches the add-ons, and it is not the
+                  number of videos.
                 </p>
               </section>
+
+              {/* --- Derived structure --- */}
+              <section class="pc-block" aria-labelledby="pc-h-vstructure">
+                <h2 class="pc-block-h" id="pc-h-vstructure">Video structure</h2>
+                <div class="pc-stats">
+                  <div class="pc-stat">
+                    <span class="pc-stat-label">Length</span>
+                    <span class="pc-stat-value" data-vout-text="length">
+                      {videoQuote.inputs.videoLengthSeconds} seconds
+                    </span>
+                  </div>
+                  <div class="pc-stat">
+                    <span class="pc-stat-label">Sequences (shots)</span>
+                    <span class="pc-stat-value" data-vout-text="sequences">
+                      {videoQuote.sequences}
+                    </span>
+                    <span class="pc-stat-note" data-vout-text="sequencesNote">
+                      {videoQuote.inputs.videoLengthSeconds} seconds divided by{' '}
+                      {videoConfig.averageSecondsPerSequence}, rounded up
+                    </span>
+                  </div>
+                  <div class="pc-stat">
+                    <span class="pc-stat-label">Keyframes per shot</span>
+                    <span class="pc-stat-value">
+                      {videoConfig.engine.keyframesPerSequence}
+                    </span>
+                    <span class="pc-stat-note">A start frame and an end frame</span>
+                  </div>
+                  <div class="pc-stat">
+                    <span class="pc-stat-label">Revision rounds</span>
+                    <span class="pc-stat-value">
+                      {videoConfig.engine.includedRevisionRounds}
+                    </span>
+                    <span class="pc-stat-note">Included in the price</span>
+                  </div>
+                </div>
+              </section>
+
+              {/* --- Add-ons --- */}
+              <section class="pc-block" aria-labelledby="pc-h-vaddons">
+                <h2 class="pc-block-h" id="pc-h-vaddons">Optional add-ons</h2>
+                <p class="pc-note pc-note--lead">
+                  Explicit quantities: an add-on is never multiplied by the
+                  complexity or by the number of videos. You buy what you type.
+                </p>
+                <div class="pc-table" role="table" aria-label="Video add-ons">
+                  <div class="pc-tr pc-tr--head" role="row">
+                    <span class="pc-th" role="columnheader">Add-on</span>
+                    <span class="pc-th pc-num" role="columnheader">
+                      Unit price (<span data-currency-label>{DEFAULT_CURRENCY}</span>)
+                    </span>
+                    <span class="pc-th pc-num" role="columnheader">Quantity</span>
+                    <span class="pc-th pc-num" role="columnheader">Line total</span>
+                  </div>
+                  {videoQuote.addOnLines.map((line) => (
+                    <div class="pc-tr" role="row">
+                      <span class="pc-td pc-td--name" role="cell">
+                        <span class="pc-addon-name">{line.spec.label}</span>
+                        <span class="pc-addon-note">{line.spec.note}</span>
+                        {line.spec.derived && (
+                          <span class="pc-addon-scale">Moves with the video length</span>
+                        )}
+                      </span>
+                      <span
+                        class="pc-td pc-num"
+                        role="cell"
+                        data-head="Unit price"
+                        data-vunit={line.spec.id}
+                      >
+                        {formatMoney(line.unit, DEFAULT_CURRENCY)}
+                      </span>
+                      <span class="pc-td pc-num" role="cell" data-head="Quantity">
+                        <input
+                          type="number"
+                          class="pc-input pc-input--qty"
+                          min="0"
+                          step="1"
+                          value={line.quantity}
+                          data-vaddon={line.spec.id}
+                          aria-label={`${line.spec.label}, quantity in ${line.spec.unit}`}
+                        />
+                      </span>
+                      <span
+                        class="pc-td pc-num pc-td--line"
+                        role="cell"
+                        data-head="Line total"
+                        data-vline={line.spec.id}
+                      >
+                        {formatMoney(line.line, DEFAULT_CURRENCY)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* --- Quotation --- */}
+              <section class="pc-block" aria-labelledby="pc-h-vquote">
+                <h2 class="pc-block-h" id="pc-h-vquote">Your quotation</h2>
+                <div class="pc-disclaimer" role="note">
+                  <span class="pc-disclaimer-mark" aria-hidden="true">Note</span>
+                  <p>
+                    For reference only. This estimate is not contractual and does
+                    not constitute an offer. Final pricing is confirmed in a signed
+                    quotation once the brief and the references are reviewed.
+                  </p>
+                </div>
+
+                <div class="pc-table pc-table--quote" role="table" aria-label="Video quotation">
+                  <div class="pc-tr pc-tr--head" role="row">
+                    <span class="pc-th" role="columnheader">Line</span>
+                    <span class="pc-th pc-num" role="columnheader" data-currency-label>
+                      {DEFAULT_CURRENCY}
+                    </span>
+                  </div>
+
+                  <div class="pc-tr pc-tr--section" role="row">
+                    <span class="pc-td pc-td--name" role="cell">
+                      <span class="pc-addon-name">Creative</span>
+                      <span class="pc-addon-note">
+                        Charged once per video. It does not grow with length.
+                      </span>
+                    </span>
+                    <span class="pc-td pc-num" role="cell" />
+                  </div>
+                  {videoQuote.creativeLines.map((line, i) => (
+                    <div class="pc-tr pc-tr--item" role="row">
+                      <span class="pc-td pc-td--name" role="cell">
+                        <span class="pc-item-name">{line.label}</span>
+                        <span class="pc-addon-note" data-vdetail={`creative.${i}`}>
+                          {line.detail}
+                        </span>
+                      </span>
+                      <span
+                        class="pc-td pc-num"
+                        role="cell"
+                        data-head="Amount"
+                        data-vitem={`creative.${i}`}
+                      >
+                        {formatMoney(line.amount, DEFAULT_CURRENCY)}
+                      </span>
+                    </div>
+                  ))}
+                  <div class="pc-tr pc-tr--sub" role="row">
+                    <span class="pc-td pc-td--name" role="cell">
+                      <span class="pc-addon-name">Creative subtotal</span>
+                    </span>
+                    <span
+                      class="pc-td pc-num pc-td--line"
+                      role="cell"
+                      data-head="Amount"
+                      data-vout="creativeSubtotal"
+                    >
+                      {formatMoney(videoQuote.creativeSubtotal, DEFAULT_CURRENCY)}
+                    </span>
+                  </div>
+
+                  <div class="pc-tr pc-tr--section" role="row">
+                    <span class="pc-td pc-td--name" role="cell">
+                      <span class="pc-addon-name">Production</span>
+                      <span class="pc-addon-note">
+                        The per-shot work scales with the shot count.
+                      </span>
+                    </span>
+                    <span class="pc-td pc-num" role="cell" />
+                  </div>
+                  {videoQuote.productionLines.map((line, i) => (
+                    <div class="pc-tr pc-tr--item" role="row">
+                      <span class="pc-td pc-td--name" role="cell">
+                        <span class="pc-item-name" data-vlabel={`production.${i}`}>
+                          {line.label}
+                        </span>
+                        <span class="pc-addon-note" data-vdetail={`production.${i}`}>
+                          {line.detail}
+                        </span>
+                      </span>
+                      <span
+                        class="pc-td pc-num"
+                        role="cell"
+                        data-head="Amount"
+                        data-vitem={`production.${i}`}
+                      >
+                        {formatMoney(line.amount, DEFAULT_CURRENCY)}
+                      </span>
+                    </div>
+                  ))}
+                  <div class="pc-tr pc-tr--sub" role="row">
+                    <span class="pc-td pc-td--name" role="cell">
+                      <span class="pc-addon-name">Production subtotal</span>
+                    </span>
+                    <span
+                      class="pc-td pc-num pc-td--line"
+                      role="cell"
+                      data-head="Amount"
+                      data-vout="productionSubtotal"
+                    >
+                      {formatMoney(videoQuote.productionSubtotal, DEFAULT_CURRENCY)}
+                    </span>
+                  </div>
+
+                  <div class="pc-tr pc-tr--item" role="row">
+                    <span class="pc-td pc-td--name" role="cell">
+                      <span class="pc-item-name">Base price per video</span>
+                      <span class="pc-addon-note">Creative plus production</span>
+                    </span>
+                    <span
+                      class="pc-td pc-num"
+                      role="cell"
+                      data-head="Amount"
+                      data-vout="basePerVideo"
+                    >
+                      {formatMoney(videoQuote.basePerVideo, DEFAULT_CURRENCY)}
+                    </span>
+                  </div>
+                  <div class="pc-tr pc-tr--item" role="row">
+                    <span class="pc-td pc-td--name" role="cell">
+                      <span class="pc-item-name">Price per video, at your complexity</span>
+                      <span class="pc-addon-note" data-vout-text="complexityNote">
+                        {videoQuote.inputs.complexity},{' '}
+                        {formatMultiplier(videoQuote.complexityMultiplier)}
+                      </span>
+                    </span>
+                    <span
+                      class="pc-td pc-num"
+                      role="cell"
+                      data-head="Amount"
+                      data-vout="adjustedPerVideo"
+                    >
+                      {formatMoney(videoQuote.adjustedPerVideo, DEFAULT_CURRENCY)}
+                    </span>
+                  </div>
+
+                  {videoSummary.map((row) => (
+                    <div
+                      class="pc-tr"
+                      role="row"
+                      data-emphasis={'emphasis' in row && row.emphasis ? 'true' : undefined}
+                    >
+                      <span class="pc-td pc-td--name" role="cell">
+                        <span class="pc-addon-name">{row.label}</span>
+                        {row.id === 'videoProduction' && (
+                          <span class="pc-addon-note" data-vout-text="videosNote">
+                            {videoQuote.inputs.numberOfVideos} video, at the price
+                            above
+                          </span>
+                        )}
+                      </span>
+                      <span
+                        class="pc-td pc-num"
+                        role="cell"
+                        data-head="Amount"
+                        data-vout={row.id}
+                      >
+                        {formatMoney(videoMoney[row.id], DEFAULT_CURRENCY)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <p class="pc-note">
+                  CNY is canonical: it is the price we actually charge. USD and EUR
+                  are converted from it at the current rate and can move with it.
+                </p>
+                <div class="pc-actions">
+                  <button type="button" class="pc-btn pc-btn--sm" data-print>
+                    Print or save as PDF
+                  </button>
+                </div>
+              </section>
+
+              {/* --- Remarks and limitations --- */}
+              <section class="pc-block" aria-labelledby="pc-h-vlimits">
+                <h2 class="pc-block-h" id="pc-h-vlimits">Remarks and limitations</h2>
+                <p class="pc-note pc-note--lead">
+                  Said plainly and said early, because these are the things that
+                  disappoint a client who learns them late.
+                </p>
+                <ul class="pc-know-list pc-limits">
+                  {VIDEO_LIMITATIONS.map((limit) => (
+                    <li class="pc-know-item">{limit}</li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* --- Good to know --- */}
+              <section class="pc-block" aria-labelledby="pc-h-vknow">
+                <h2 class="pc-block-h" id="pc-h-vknow">Good to know</h2>
+                <div class="pc-know">
+                  <div class="pc-know-group">
+                    <h3 class="pc-know-h">How we make your film</h3>
+                    <ul class="pc-know-list">
+                      <li class="pc-know-item">
+                        We turn your product into a short film, built shot by shot,
+                        then cut together with music, on-screen text, and subtitles.
+                      </li>
+                      <li class="pc-know-item">
+                        First we agree the idea and the storyboard. Then we make each
+                        shot, then we edit them into one film.
+                      </li>
+                      <li class="pc-know-item">
+                        You get two rounds of changes on the edit, the text, and the
+                        timing.
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="pc-know-group">
+                    <h3 class="pc-know-h">Why length matters so much</h3>
+                    <ul class="pc-know-list">
+                      <li class="pc-know-item">
+                        Every {videoConfig.averageSecondsPerSequence} seconds is one
+                        shot, and every shot has to be generated and finished. A film
+                        twice as long has twice the shots.
+                      </li>
+                      <li class="pc-know-item">
+                        The thinking part (brief, treatment, storyboard) is charged
+                        once. It costs the same whether the film is 15 seconds or 60.
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="pc-know-group">
+                    <h3 class="pc-know-h">Other sizes and other cuts</h3>
+                    <ul class="pc-know-list">
+                      <li class="pc-know-item">
+                        One master is included in the shape you choose. A vertical or
+                        square version can be cropped from it cheaply, but going wide
+                        to tall loses a lot of the picture.
+                      </li>
+                      <li class="pc-know-item">
+                        When cropping would cut too much away, we make the other shape
+                        again from scratch. That costs a full production pass.
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="pc-know-group">
+                    <h3 class="pc-know-h">Money and rules</h3>
+                    <ul class="pc-know-list">
+                      <li class="pc-know-item">
+                        Prices are good for {TERMS.validityDays} days. Taxes are not
+                        included.
+                      </li>
+                      <li class="pc-know-item">
+                        To start, you pay half. You pay the other half when the film
+                        is finished.
+                      </li>
+                      <li class="pc-know-item">
+                        CNY is the real price. USD and EUR follow the exchange rate.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <footer class="pc-foot">
+                <p>
+                  All prices in CNY (base), with USD and EUR converted at current
+                  rates. Quotation valid for {TERMS.validityDays} days. Prices
+                  exclude applicable taxes. {TERMS.depositPct}% deposit to begin
+                  production.
+                </p>
+                <p>
+                  This page is an indicative estimate for reference only. It is not
+                  a contract, not an offer, and creates no commitment on either
+                  side. Only a signed quotation is binding.
+                </p>
+              </footer>
             </div>
+
+            {/* The exact rates the server just priced with, handed to the browser
+                so client-side recalculation cannot drift from the server render.
+                Behind the gate, like every other number on this page. */}
+            <script
+              type="application/json"
+              id="pc-config"
+              is:inline
+              set:html={JSON.stringify({ image: imageConfig, video: videoConfig })}
+            />
           </div>
         )
       }
@@ -1229,6 +1729,111 @@ const goodToKnow = [
     color: var(--text-mute);
   }
 
+  /* --- Video: complexity guide --- */
+  .pc-guide {
+    display: grid;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  @media (min-width: 800px) {
+    .pc-guide {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .pc-guide-item {
+    border-left: 3px solid var(--line-strong);
+    padding: 4px 0 4px 16px;
+  }
+  /* Green, amber, red: the level should register before it is read. */
+  .pc-guide-item[data-tone='low'] {
+    border-left-color: #3f7d55;
+  }
+  .pc-guide-item[data-tone='medium'] {
+    border-left-color: #b8801f;
+  }
+  .pc-guide-item[data-tone='high'] {
+    border-left-color: #b3402f;
+  }
+  .pc-guide-h {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: var(--type-body);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .pc-guide-mult {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+  .pc-guide-note {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* --- Video: derived structure --- */
+  .pc-stats {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 800px) {
+    .pc-stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .pc-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    padding: 20px;
+  }
+  .pc-stat-label {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .pc-stat-value {
+    font-family: var(--font-mono);
+    font-size: var(--type-h3);
+  }
+  .pc-stat-note {
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+
+  /* --- Video: itemized quotation --- */
+  .pc-tr--section {
+    background: var(--bg-cream);
+  }
+  .pc-tr--item .pc-item-name {
+    font-size: var(--type-body);
+    line-height: 1.4;
+  }
+  .pc-tr--item .pc-td--name {
+    padding-left: 16px;
+  }
+  .pc-tr--sub {
+    background: color-mix(in srgb, var(--bg-cream) 55%, transparent);
+  }
+  .pc-limits {
+    max-width: 92ch;
+  }
+  .pc-addon-scale {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+
   .pc-tr[data-emphasis='true'] {
     background: var(--bg-cream);
   }
@@ -1363,14 +1968,27 @@ const goodToKnow = [
     ORDER_ADDONS,
     PER_IMAGE_ADDONS,
     PRICING,
+    type PricingConfig,
   } from '../../lib/pricing/config';
   import {
     computeQuote,
+    convert,
     emptyOrderAddons,
     emptyRow,
     type ImageRow,
     type QuoteInputs,
   } from '../../lib/pricing/quote';
+  import {
+    VIDEO_ADDONS,
+    VIDEO_PRICING,
+    type MasterFormat,
+    type VideoPricingConfig,
+  } from '../../lib/pricing/video-config';
+  import {
+    computeVideoQuote,
+    emptyVideoAddOns,
+    type VideoQuoteInputs,
+  } from '../../lib/pricing/video-quote';
   import {
     DEFAULT_CURRENCY,
     formatMoney,
@@ -1379,7 +1997,29 @@ const goodToKnow = [
     isCurrency,
     type Currency,
   } from '../../lib/pricing/format';
-  import { convert } from '../../lib/pricing/quote';
+
+  /**
+   * The rates the server priced with: defaults, plus saved settings, plus the
+   * live exchange rate. Parsed from the page rather than imported, so the client
+   * uses the same numbers the server just used instead of the compiled-in
+   * defaults. If the element is missing or unreadable, fall back to the defaults,
+   * because a working calculator beats a blank one.
+   */
+  function readConfigs(): { image: PricingConfig; video: VideoPricingConfig } {
+    const el = document.querySelector<HTMLScriptElement>('#pc-config');
+    if (!el?.textContent) return { image: PRICING, video: VIDEO_PRICING };
+    try {
+      const parsed = JSON.parse(el.textContent) as {
+        image: PricingConfig;
+        video: VideoPricingConfig;
+      };
+      return { image: parsed.image ?? PRICING, video: parsed.video ?? VIDEO_PRICING };
+    } catch {
+      return { image: PRICING, video: VIDEO_PRICING };
+    }
+  }
+
+  const CONFIG = readConfigs();
 
   const tool = document.querySelector<HTMLElement>('.pc-tool');
   if (tool) {
@@ -1397,8 +2037,9 @@ const goodToKnow = [
 
     /** How many images the client has asked for, floored at the MOQ. */
     function imageCount(): number {
+      const moq = CONFIG.image.minimumImages;
       const n = Math.floor(Number(imagesInput?.value));
-      return Number.isFinite(n) && n >= PRICING.minimumImages ? n : PRICING.minimumImages;
+      return Number.isFinite(n) && n >= moq ? n : moq;
     }
 
     /** One grid row, built to the same shape the server renders. */
@@ -1510,7 +2151,7 @@ const goodToKnow = [
       }
 
       return {
-        numberOfImages: Number(imagesInput?.value ?? PRICING.minimumImages),
+        numberOfImages: Number(imagesInput?.value ?? CONFIG.image.minimumImages),
         deliveryOption: deliverySelect?.value === 'B' ? 'B' : 'A',
         perImage,
         orderAddons,
@@ -1520,8 +2161,9 @@ const goodToKnow = [
 
     function render(): void {
       syncRows();
-      const quote = computeQuote(readInputs());
+      const quote = computeQuote(readInputs(), CONFIG.image);
       const currency = readCurrency();
+      renderVideo(currency);
       const money = {
         imageProduction: quote.imageProduction,
         optionalAddOns: quote.optionalAddOns,
@@ -1532,7 +2174,7 @@ const goodToKnow = [
         total: quote.total,
         basePerImageA: quote.basePerImage.A,
         basePerImageB: quote.basePerImage.B,
-        designerHour: convert(PRICING.designerHour),
+        designerHour: convert(CONFIG.image.designerHour, CONFIG.image),
       };
 
       document.querySelectorAll<HTMLElement>('[data-out]').forEach((el) => {
@@ -1591,6 +2233,118 @@ const goodToKnow = [
           if (input.type === 'number' && input.value !== '' && Number(input.value) < 0) {
             input.value = '0';
           }
+        });
+    }
+
+    /* --- Product video ---------------------------------------------------- */
+
+    const videosInput = document.querySelector<HTMLInputElement>('#pv-videos');
+    const lengthInput = document.querySelector<HTMLInputElement>('#pv-length');
+    const vComplexity = document.querySelector<HTMLSelectElement>('#pv-complexity');
+    const vFormat = document.querySelector<HTMLSelectElement>('#pv-format');
+
+    /** Video control state, clamped by the video core on every read. */
+    function readVideoInputs(): VideoQuoteInputs {
+      const addOns = emptyVideoAddOns();
+      for (const addon of VIDEO_ADDONS) {
+        const input = document.querySelector<HTMLInputElement>(
+          `[data-vaddon="${addon.id}"]`,
+        );
+        addOns[addon.id] = Number(input?.value ?? 0);
+      }
+      return {
+        numberOfVideos: Number(videosInput?.value ?? 1),
+        videoLengthSeconds: Number(
+          lengthInput?.value ?? CONFIG.video.defaultLengthSeconds,
+        ),
+        complexity: (vComplexity?.value ?? 'Low') as VideoQuoteInputs['complexity'],
+        masterFormat: (vFormat?.value ?? '16:9') as MasterFormat,
+        addOns,
+      };
+    }
+
+    /** Write one text node by its data-vout-text key. */
+    function setText(key: string, value: string): void {
+      const el = document.querySelector<HTMLElement>(`[data-vout-text="${key}"]`);
+      if (el) el.textContent = value;
+    }
+
+    function renderVideo(currency: Currency): void {
+      if (!videosInput) return;
+      const quote = computeVideoQuote(readVideoInputs(), CONFIG.video);
+      const money = {
+        creativeSubtotal: quote.creativeSubtotal,
+        productionSubtotal: quote.productionSubtotal,
+        basePerVideo: quote.basePerVideo,
+        adjustedPerVideo: quote.adjustedPerVideo,
+        videoProduction: quote.videoProduction,
+        addOnsTotal: quote.addOnsTotal,
+        total: quote.total,
+      };
+
+      document.querySelectorAll<HTMLElement>('[data-vout]').forEach((el) => {
+        const value = money[(el.dataset.vout ?? '') as keyof typeof money];
+        if (value) el.textContent = formatMoney(value, currency);
+      });
+
+      // The itemized lines: each carries its own label, its own explanation of
+      // how it was arrived at, and its amount.
+      const parts = [
+        ['creative', quote.creativeLines],
+        ['production', quote.productionLines],
+      ] as const;
+      for (const [part, lines] of parts) {
+        lines.forEach((line, i) => {
+          const amount = document.querySelector<HTMLElement>(
+            `[data-vitem="${part}.${i}"]`,
+          );
+          if (amount) amount.textContent = formatMoney(line.amount, currency);
+          const detail = document.querySelector<HTMLElement>(
+            `[data-vdetail="${part}.${i}"]`,
+          );
+          if (detail) detail.textContent = line.detail;
+          const label = document.querySelector<HTMLElement>(
+            `[data-vlabel="${part}.${i}"]`,
+          );
+          if (label) label.textContent = line.label;
+        });
+      }
+
+      for (const line of quote.addOnLines) {
+        const unit = document.querySelector<HTMLElement>(`[data-vunit="${line.spec.id}"]`);
+        if (unit) unit.textContent = formatMoney(line.unit, currency);
+        const cell = document.querySelector<HTMLElement>(`[data-vline="${line.spec.id}"]`);
+        if (cell) cell.textContent = formatMoney(line.line, currency);
+      }
+
+      // The derived structure: how many shots the length just bought.
+      const seconds = quote.inputs.videoLengthSeconds;
+      const videos = quote.inputs.numberOfVideos;
+      setText('length', `${seconds} seconds`);
+      setText('sequences', String(quote.sequences));
+      setText(
+        'sequencesNote',
+        `${seconds} seconds divided by ${CONFIG.video.averageSecondsPerSequence}, rounded up`,
+      );
+      setText(
+        'complexityNote',
+        `${quote.inputs.complexity}, ${formatMultiplier(quote.complexityMultiplier)}`,
+      );
+      setText(
+        'videosNote',
+        `${videos === 1 ? '1 video' : `${videos} videos`}, at the price above`,
+      );
+
+      // Rejected values are corrected in place, so what is shown is what was
+      // priced.
+      if (Number(videosInput.value) !== videos) videosInput.value = String(videos);
+      if (lengthInput && Number(lengthInput.value) !== seconds) {
+        lengthInput.value = String(seconds);
+      }
+      document
+        .querySelectorAll<HTMLInputElement>('[data-vaddon]')
+        .forEach((input) => {
+          if (input.value !== '' && Number(input.value) < 0) input.value = '0';
         });
     }
 
