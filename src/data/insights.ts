@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'your-ai-content-is-about-to-introduce-itself',
+    image: '/Images/insight-your-ai-content-is-about-to-introduce-itself.webp',
+    imageAlt:
+      'An AI content-production workstation glowing in a dark studio: one monitor shows a grid of generated product-shot variations, another a node-based generation workflow, a third the selected frame in a color-grading suite, a GPU tower glowing beneath the desk.',
+    category: 'Content Rights',
+    tone: 'orange',
+    title: 'Your AI content is about to introduce itself',
+    deck: "Provenance stopped being a detection problem. It's a procurement one now.",
+    date: 'July 16, 2026',
+    dateISO: '2026-07-16',
+    readingTime: '6 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Your AI Content Is About to Introduce Itself | hubStudio',
+    metaDescription:
+      'SynthID, C2PA, and Article 50 land August 2. What provenance rules mean for brands, agencies, and procurement teams.',
+  },
+  {
     slug: 'ai-content-production-beyond-the-prompt',
     image: '/Images/insight-ai-content-production-beyond-the-prompt.webp',
     imageAlt:

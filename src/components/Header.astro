@@ -628,6 +628,15 @@ const menu: MenuItem[] = [
   .site-header[data-overlay='true'][data-scrolled='false'] .site-header__burger span {
     background: var(--text-on-dark);
   }
+  /* Secondary CTA ("Talk to us") sits in the actions area over the dark hero,
+     so its ink text and hairline border must lighten too or it vanishes. */
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__actions .btn--secondary {
+    color: var(--text-on-dark);
+    border-color: rgba(240, 237, 233, 0.42);
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__actions .btn--secondary:hover {
+    border-color: var(--text-on-dark);
+  }
 
   /* ---- Desktop menu bar ---------------------------------------- */
   .primary-nav {
