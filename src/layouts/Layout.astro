@@ -166,6 +166,14 @@ const siteSchema = {
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
 
+    <!-- Insights RSS feed autodiscovery (feed readers, LinkedIn, schedulers). -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="hubStudio Insights"
+      href="/resources/insights/rss.xml"
+    />
+
     <!-- Self-hosted fonts: preload the two that paint above the fold. -->
     <link
       rel="preload"

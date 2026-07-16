@@ -176,6 +176,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/thank-you') &&
         !page.includes('/api/') &&
+        !page.includes('/rss.xml') &&
         !page.includes('/debeers') &&
         !page.includes('/sonepar') &&
         // Covers the settings page too: it lives under /pricing/calculator.
