@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'what-aigc-production-actually-is',
+    image: '/Images/insight-what-aigc-production-actually-is.webp',
+    imageAlt:
+      'A senior art director in a dim studio leaning toward a warm-lit monitor filled with a dense grid of near-identical product visuals, one subtly highlighted, her face half in amber light and half in shadow.',
+    category: 'Production',
+    tone: 'navy',
+    title: 'What AIGC Production Actually Is',
+    deck: 'Two capabilities separate a viral demo from a shipped campaign. Here is what each one looks like when real brands run it.',
+    date: 'July 20, 2026',
+    dateISO: '2026-07-20',
+    readingTime: '7 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'What AIGC Production Actually Is | hubStudio',
+    metaDescription:
+      'Past the demo, AI content production is two things: mass individualization and versioning at scale. Here is how it really works.',
+  },
+  {
     slug: 'your-ai-content-is-about-to-introduce-itself',
     image: '/Images/insight-your-ai-content-is-about-to-introduce-itself.webp',
     imageAlt:
