@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'ai-content-quality-argument-over',
+    image: '/Images/insight-ai-content-quality-argument-over.webp',
+    imageAlt:
+      'A convoy of red delivery trucks strung with warm lights moving along a snow-covered rural road at dusk, photographed from the roadside in soft blue evening light.',
+    category: 'Production',
+    tone: 'orange',
+    title: 'AI Content Quality: The Argument Is Over',
+    deck: 'Brands stopped asking whether the output was good enough. What they should be asking instead is harder, and most rosters cannot answer it.',
+    date: 'July 29, 2026',
+    dateISO: '2026-07-29',
+    readingTime: '6 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'AI Content Quality: The Argument Is Over | hubStudio',
+    metaDescription:
+      'AI content quality stopped being the constraint in 2026. Cannes now judges it as craft. Here is what actually limits brands instead.',
+  },
+  {
     slug: 'what-aigc-production-actually-is',
     image: '/Images/insight-what-aigc-production-actually-is.webp',
     imageAlt:
