@@ -12,6 +12,7 @@
  *   <li><strong>Label.</strong> copy   titled list row
  *   <blockquote>                       pull quote
  *   <div class="callout">              emphasised aside box
+ *   <div class="table-wrap"><table>    comparison table, scrolls when narrow
  *   <div class="prompt">               prompt example, with .prompt__label + .prompt__body
  */
 import Layout from './Layout.astro';
@@ -341,6 +342,42 @@ const breadcrumbSchema = {
   }
   .prose :global(.callout > :first-child) {
     margin-top: 0;
+  }
+  .prose :global(.table-wrap) {
+    margin-top: 32px;
+    overflow-x: auto;
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+  }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--type-small);
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    text-align: left;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line-hairline);
+    line-height: 1.5;
+    color: var(--text-mute);
+    vertical-align: top;
+  }
+  .prose :global(thead th) {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+    background: var(--bg-white);
+  }
+  .prose :global(tbody th) {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .prose :global(tbody tr:last-child th),
+  .prose :global(tbody tr:last-child td) {
+    border-bottom: 0;
   }
 
   /* ---- Prompt blocks ---- */

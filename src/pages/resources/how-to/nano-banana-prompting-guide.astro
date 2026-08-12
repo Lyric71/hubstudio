@@ -1,0 +1,158 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+---
+
+<HowtoLayout slug="nano-banana-prompting-guide">
+  <p class="standfirst">The distance between a good AI image and a usable brand asset was never really about the model. It is about the instruction. Google’s prompting guide for the Nano Banana family, published this March, came out of weeks of internal testing against Nano Banana 2 and Nano Banana Pro, and the honest headline is that these models now do what you tell them. Which moves the failure point. Vague direction is the bottleneck now, not the render.</p>
+
+  <p>We run both models on client work every week, on beauty, automotive, consumer tech and retail. So this guide takes Google’s frameworks and adds the part a production floor cares about: what holds up at volume, and what has to be built around the prompt before an asset goes anywhere near a channel.</p>
+
+  <h2>The two models, at a glance</h2>
+  <p>Both models sit on the Gemini 3 family and reason through a prompt before they generate. They are not interchangeable, and picking the wrong one is the cheapest mistake to avoid.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Nano Banana 2 (Gemini 3.1 Flash Image)</th>
+          <th scope="col">Nano Banana Pro (Gemini 3 Pro Image)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Input context</th>
+          <td>131,072 tokens</td>
+          <td>65,536 tokens</td>
+        </tr>
+        <tr>
+          <th scope="row">Output</th>
+          <td>32,768 tokens</td>
+          <td>32,768 tokens</td>
+        </tr>
+        <tr>
+          <th scope="row">Resolutions</th>
+          <td>0.5K, 1K, 2K, 4K</td>
+          <td>1K, 2K, 4K</td>
+        </tr>
+        <tr>
+          <th scope="row">Aspect ratios</th>
+          <td>Ten standard, plus 1:4, 4:1, 1:8, 8:1</td>
+          <td>Ten standard ratios</td>
+        </tr>
+        <tr>
+          <th scope="row">Reference images</th>
+          <td>Up to 14</td>
+          <td>Up to 14</td>
+        </tr>
+        <tr>
+          <th scope="row">Live web data</th>
+          <td>Yes</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <th scope="row">Provenance</th>
+          <td>C2PA plus SynthID</td>
+          <td>C2PA plus SynthID</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote>Both models accept as many as 14 reference object images inside one prompt, and every image they hand back carries C2PA Content Credentials and a SynthID watermark. Source: Google Cloud, March 2026.</blockquote>
+
+  <p>The extra aspect ratios on Nano Banana 2 are more useful than they sound. A 1:8 or 8:1 frame is a banner, a marketplace strip, a header. Those are the formats that usually get cropped out of a hero image and lose their composition on the way.</p>
+
+  <blockquote>Model knowledge stops in January 2025. Anything newer has to arrive through web search or through your own reference images. Source: Google Cloud, March 2026.</blockquote>
+
+  <h2>Four rules that come before any framework</h2>
+  <p>Google’s own list is short, and it holds up in production.</p>
+  <ul>
+    <li><strong>Be specific.</strong> Name the subject, the light, the composition. Anything you leave blank, the model fills in for you.</li>
+    <li><strong>Frame it positively.</strong> Ask for an empty street rather than a street with no cars. Negation is the single most common reason a prompt returns the thing you were trying to remove.</li>
+    <li><strong>Control the camera.</strong> Photographic and cinematic vocabulary works: low angle, aerial view, medium-full shot.</li>
+    <li><strong>Iterate in conversation.</strong> Refine the frame you have instead of starting a fresh one.</li>
+  </ul>
+  <p>One more, and it does more work than it looks like: open the prompt with a strong verb that names the operation. Generate. Edit. Restyle. Upscale. Translate. The model reads that first word as the job, and the rest of the prompt as the brief.</p>
+
+  <h2>Framework 1: generation</h2>
+  <p>Starting from nothing, you are directing. A keyword list won’t get you there. Describe the scene as a scene.</p>
+  <p><strong>Formula:</strong> subject, action, location or context, composition, style.</p>
+  <p>An example in our register:</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">A ceramic serum bottle with a matte oyster-white finish. Standing upright, label facing camera, a single drop caught on the shoulder of the bottle. On a wet slate ledge, water pooling underneath. Tight product shot, centered, shot slightly above eye line. Clinical beauty editorial, soft box from the left, shallow depth of field.</p>
+  </div>
+
+  <p>Each clause does a specific job. Delete the composition clause and the model picks its own crop. Delete the style clause and you get a competent render with no point of view.</p>
+  <p>With references, the shape changes: reference images, then a relationship instruction, then the new scenario. This is the one that matters for brand work, because it is how a real product, a real face, or a real fabric stays consistent across a set. Fourteen references is a lot of room. A pack shot, three angles of the same SKU, a fabric swatch, a color card, and a lighting reference all fit in one call.</p>
+
+  <h2>Framework 2: editing</h2>
+  <p>Editing needs a different head than generating. You already have the frame. The prompt is now about what changes and, just as much, what does not.</p>
+  <ul>
+    <li><strong>Semantic masking.</strong> You define the mask in words instead of drawing it. "Remove the folding chair on the left" is a mask.</li>
+    <li><strong>Say what stays.</strong> Be blunt about it. Keep the product, the label, the lighting and the crop exactly as they are. That’s the line that protects you from a model that helpfully improves something nobody asked it to touch.</li>
+    <li><strong>Style transfer with a reference.</strong> Feed a base image and an object image and tell the model to combine them, or hand it a photograph and ask for the same content rendered in another visual language.</li>
+  </ul>
+  <p>In practice the second bullet is where the QA time goes. The failed edits in our queue are rarely bad renders, they are correct renders of an instruction that never said what to protect.</p>
+
+  <h2>Framework 3: images built on live data</h2>
+  <p>The models can pull from web search and generate against what they find. That is a different prompt shape: you are not describing a fictional scene anymore, you are asking for a retrieval, an interpretation, and then a visual.</p>
+  <p><strong>Formula:</strong> the search or source request, the analytical task, the visual translation.</p>
+  <p>Ask it to check today’s conditions in a city, decide how that changes the scene, then render the result inside a defined visual concept. Weather-reactive social, live pricing tiles, seasonal storefront variants: all of it becomes a template you run rather than a brief you rewrite. Google has flagged that the live-search capability is still landing on Vertex AI, so confirm it in the environment you are actually shipping from before you build a calendar on it.</p>
+
+  <h2>Framework 4: text and localization</h2>
+  <p>Broken typography was the last obvious tell in AI imagery. It is mostly solved, and there are four rules that decide whether you get clean type or mush.</p>
+  <ul>
+    <li><strong>Put the exact words in quotes.</strong> Anything unquoted is a suggestion.</li>
+    <li><strong>Name the typography.</strong> A heavy blocky sans, a thin geometric face, a specific font by name and size.</li>
+    <li><strong>Specify the target language.</strong> Write the prompt in one language, ask for the output text in another. Support runs past ten languages.</li>
+    <li><strong>Write the copy first.</strong> Have a conversation to settle the wording, then ask for the image carrying that wording. Doing both in a single shot is where it degrades.</li>
+  </ul>
+  <p>This is the framework that changes the economics of multi-market work, and it is the one we lean on hardest out of our China floor. A single master visual becomes a RedNote carousel, a Douyin cover, a WeChat article header and a Tmall tile, each with native type in the right character set, without a separate design pass per platform. Do keep a native speaker on the approval step. The model renders Chinese characters correctly far more often than it used to, but line breaks, honorifics and the tone of a short headline are still human calls.</p>
+
+  <h2>Framework 5: direct it, don’t describe it</h2>
+  <p>This is the framework that separates a decent render from something that looks art-directed. Four levers, and they stack.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Lever</th>
+          <th scope="col">What you specify</th>
+          <th scope="col">Example direction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Lighting</th>
+          <td>The setup, not the mood word</td>
+          <td>Three-point softbox, even fill on the pack</td>
+        </tr>
+        <tr>
+          <th scope="row">Camera and lens</th>
+          <td>Body, focal length, aperture</td>
+          <td>Low angle, shallow depth of field at f/1.8</td>
+        </tr>
+        <tr>
+          <th scope="row">Color and stock</th>
+          <td>Grade and film emulation</td>
+          <td>1980s color film, slight grain, muted teal</td>
+        </tr>
+        <tr>
+          <th scope="row">Material</th>
+          <td>Physical makeup of the object</td>
+          <td>Navy tweed, brushed aluminum, matte ceramic</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Naming actual hardware shifts the output more than most people expect. A GoPro reads as immersive and distorted, a Fujifilm body brings its own color science, a disposable camera gives you flat flash and nostalgia. On materials, stop at the noun and you get a generic object. Say navy blue tweed, or ornate plate armor etched with silver leaf, and the model has something to render.</p>
+
+  <h2>What a prompt cannot fix</h2>
+  <p>Everything above gets you a good image. None of it gets you a brand asset, and the difference is the part that never fits in a prompt box.</p>
+  <p>A production lane needs source packs, so the same SKU, face, and fabric go in every time. It needs a prompt library under version control, because the prompt that produced the approved hero is an asset and losing it means regenerating a look from memory. It needs brand rules the prompt inherits rather than repeats. And it needs a QA loop that checks the things a model has no opinion about: legal copy, pack accuracy, whether the hand has the right number of fingers, whether the claim on the label is approved for that market.</p>
+  <p>Provenance belongs in that loop too. C2PA credentials and SynthID watermarks travel with the file now, which means AI usage is becoming a procurement question rather than a detection one. Our note on that, <a href="/resources/insights/your-ai-content-is-about-to-introduce-itself">Your AI content is about to introduce itself</a>, covers where it lands contractually, and the <a href="/resources/copyright-and-ai">Copyright and AI</a> section of Resources has the ground rules. For the editing side of these models, the companion guide <a href="/resources/how-to/nano-banana-pro-photo-editing">Edit photos like a pro with Nano Banana Pro</a> walks through relighting, re-angling and upscaling across a single master frame.</p>
+</HowtoLayout>

@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'nano-banana-prompting-guide',
+    image: '/Images/howto-nano-banana-prompting-guide.webp',
+    imageAlt:
+      'Over the shoulder of a creative director in a dark studio, a monitor shows a short typed prompt beside the product photograph the model rendered from it.',
+    category: 'Image generation',
+    tone: 'navy',
+    title: 'Prompt Nano Banana like a creative director',
+    deck: 'Google stress-tested its own image models for weeks and published what it learned. Here is the working version: the specs that matter, the five frameworks, and the layer that has to sit around the prompt before anything ships.',
+    date: 'August 12, 2026',
+    dateISO: '2026-08-12',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'How to Prompt Nano Banana 2 and Nano Banana Pro | hubStudio',
+    metaDescription:
+      'Google’s prompting frameworks for Nano Banana 2 and Nano Banana Pro, rebuilt as a working method: specs, formulas, and the QA a brand asset needs.',
+  },
+  {
     slug: 'nano-banana-pro-photo-editing',
     image: '/Images/howto-nano-banana-pro.jpg',
     imageAlt:
