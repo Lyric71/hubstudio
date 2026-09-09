@@ -44,8 +44,11 @@
 | 9 | outsourcecreativeworks.com | Vendor blog, outsourcing firm | In-house against outsourcing for creative projects | Seller of one side. No figure carries a method | Undated |
 | 10 | 80lv.gumroad.com | Paid report, game development | Outsourcing against in-house in game art | Different industry, paywalled, method not visible before purchase | Undated listing |
 
-**Vendor-published share of this top ten: 7 of 10. Statistical agency or trade
-body: 0 of 10.**
+**Publisher-type count, query 1.** Sellers with a commercial interest in the
+answer (outsourced production vendors, studios, agencies): **5 of 10**, being
+results 2, 3, 4, 5 and 9. Statistical agency or advertiser trade body: **0 of
+10.** The other five are a software directory, trade press, a template seller,
+an affiliate site and a paid games-industry report.
 
 ### Query 2: `in-house agency cost model`
 
@@ -60,8 +63,10 @@ body: 0 of 10.**
 | 7 | innovationvisual.com | Agency knowledge hub | True costs of agency against in-house digital marketing | Agency-published. No method | Undated |
 | 8 | pegstaff.com | Staffing firm blog | Staffing agency fees against in-house recruitment | Recruitment function, not creative production | Undated |
 
-**Vendor or consultancy published: 7 of 8 readable results. Statistical agency
-or trade body: 0.**
+**Publisher-type count, query 2.** Sellers with a commercial interest
+(agencies, consultancies, staffing firms): **6 of 8**, being results 1, 4, 5, 6,
+7 and 8. Statistical agency or advertiser trade body: **0 of 8.** The two
+remaining are a paywalled analyst document and a personal blog.
 
 ### Query 3: `in-house studio vs agency cost comparison creative production`
 
@@ -76,7 +81,9 @@ or trade body: 0.**
 | 7 | mhigrowthengine.com | Agency blog | Cost, speed and quality for DTC brands | Agency-published. Publishes a breakeven threshold with no derivation | Titled 2026 |
 | 8 | influencers-time.com | Vendor blog | UGC operations at scale, in-house studio against agency | Seller of one side | Undated |
 
-**Vendor or agency published: 8 of 8.**
+**Publisher-type count, query 3.** Sellers with a commercial interest:
+**7 of 8**, every result except the personal Medium post. Statistical agency or
+advertiser trade body: **0 of 8.**
 
 ### Query 4: `cost of running an in-house creative team fully loaded`
 
@@ -91,8 +98,10 @@ or trade body: 0.**
 | 7 | increditors.com | Vendor blog, post-production | How to scale without hiring in-house | Seller of one side | Undated |
 | 8 | influencers-time.com | Vendor blog | Freelance to in-house twelve-month budget plan | Seller-adjacent. No method | Undated |
 
-**Vendor-published: 8 of 8. One of them is a vendor's own model formatted and
-titled as a benchmark report.**
+**Publisher-type count, query 4.** Sellers with a commercial interest:
+**7 of 8**, every result except the personal Medium post, and one of the seven
+is a vendor's own model formatted and titled as a benchmark report.
+Statistical agency or advertiser trade body: **0 of 8.**
 
 ### What the four SERPs share
 
@@ -173,6 +182,7 @@ Anything marked unverified is cut from the outline before writing.
 | Camera operators for television, video and film, median annual wage $74,990, 32,600 jobs, lowest ten percent under $38,520, highest ten percent over $135,180 | Same URL as the row above | May 2025 | National | Same program | Same agency | primary |
 | Graphic design employment is projected to fall about 2 percent from 2025 to 2035, roughly 4,200 positions | bls.gov/ooh/arts-and-design/graphic-designers.htm | Projection decade 2025 to 2035 | National | Employment Projections program | Same agency | primary |
 | 82 percent of member advertisers report having an in-house agency, up from 78 percent in 2018 and 58 percent in 2013 | ana.net/miccontent/show/id/rr-2023-05-rise-in-house-agency (403 to automated fetch); population, fielding window and respondent count confirmed in mediapost.com, marketingdive.com, adweek.com and marketingcharts.com coverage of the same report | Fielded February and March 2023, published May 2023 | 162 respondents | Survey of the trade body's own member advertisers, repeated on a roughly five-year cycle against the same question | US advertiser trade body. Members are advertisers, so the publisher sells neither production model. But the population is self-selected trade-body members, not a random sample of advertisers | triangulated. **Age warning: fielded three and a half years before publication of this article. Cite with the fielding date visible, never as "today"** |
+| 88 percent of companies reported increased workload for their in-house shop, and 67 percent said it had increased a lot | Same study as the row above, confirmed at marketingdive.com 2023-05-08 and mediapost.com 2023-05-03 | Fielded February and March 2023, published May 2023 | 162 respondents | Same survey instrument | US advertiser trade body | triangulated. Same age warning applies |
 | 66 percent of major multinational brands have an in-house agency, 21 percent considering one, up 16 points on 2020; 70 percent hold strategy in-house; 56 percent expect to move more digital production in-house | wfanet.org/knowledge/item/2023/12/20/In-housing-set-for-rapid-and-continued-growth-at-major-multinationals | 2023-12-20 | 45 multinationals, estimated $60bn combined annual global ad spend | Trade body survey of member multinationals | Global advertiser trade body, sells neither model | primary. **Already in the ledger, reuse the logged citation** |
 | Production averaged 19 percent of total marketing budgets, against 24 percent pre-pandemic | wfanet.org/knowledge/item/2025/03/25/wfa-research-reveals-new-trends-showing-how-brands-are-responding-to-changes-in-content-production | 2025-03-25 | 50 global brands, 10+ sectors, senior marketing procurement respondents | Trade body research | Global advertiser trade body | primary. **Already in the ledger, reuse, do not re-source** |
 | Two thirds of brands changed their agency model in the previous four years | Same source as the row above | 2025-03-25 | Same 50-brand survey, benchmarked against the same study run in 2021 | Trade body research | Global advertiser trade body | primary. **Already in the ledger, reuse** |
@@ -231,7 +241,7 @@ inputs.**
 | Graphic designer, median | May 2025 wage series | $62,960 |
 | Graphic designer, median, second seat | May 2025 wage series | $62,960 |
 | Salary subtotal | Sum | $316,190 |
-| Benefits load at the published private-industry ratio | 1.43 multiplier, March 2026 series | $452,152 |
+| Salary plus benefits at the published private-industry ratio | 1.429448 multiplier, March 2026 series | $451,977 |
 
 Rounded, a four-seat unit at published national medians costs about **$452,000
 a year in wages and benefits alone**, before a single line of layer three.
@@ -270,14 +280,15 @@ not a benchmark:
 
 | Share of paid hours that produces originated output | Effective cost of the same $452,000 unit, per productive hour |
 |---|---|
-| 80 percent | about $69 |
-| 60 percent | about $92 |
-| 40 percent | about $138 |
+| 80 percent | about $68 |
+| 60 percent | about $91 |
+| 40 percent | about $136 |
 
 Method for that column, which must appear on the page: four seats at 2,080
-paid hours a year is 8,320 paid hours. $452,152 divided by 8,320 is $54.35 an
+paid hours a year is 8,320 paid hours. $451,977 divided by 8,320 is $54.32 an
 hour paid. Divide that by the utilization share to get cost per productive
-hour. **Every one of those three rows is a hypothetical, not a benchmark.**
+hour ($67.91, $90.54 and $135.81, rounded on the page). **Every one of those
+three rows is a hypothetical, not a benchmark.**
 The article says so in the same breath, in the table caption, not in a footnote.
 
 Only then does the outsourced comparison land: at the managed end of the
@@ -296,6 +307,61 @@ managed band, which is $192,000 committed for the year. Only project-priced
 production is genuinely variable. That is a three-way distinction the SERPs
 collapse into two, and it needs no source beyond the published terms already
 cleared.
+
+## R6. The two conflicts, published as ranges with the reason
+
+The gate requires that where sources disagree, the range is published and the
+reason for the disagreement is stated. Two conflicts matter here, and in both
+cases the reason for the conflict is more useful to the reader than any number
+inside it.
+
+### Conflict 1: the utilization benchmark that does not measure in-house teams
+
+Searched September 2026 for a published utilization or billable-hours
+benchmark for creative staff. Nine results, every one of them published by a
+seller of time-tracking software, agency-management software or agency
+financial consulting. The bands they publish:
+
+| Band published | Population it names |
+|---|---|
+| 60 to 70 percent | "creative agencies" |
+| 70 to 80 percent | "creative agencies", different publisher |
+| 75 to 85 percent | "creative and marketing agencies" |
+| 65 to 80 percent | "creative staff", attributed to a management institute |
+| 60 to 70 percent | designers and strategists, UK |
+| 75 to 85 percent | producers and delivery-impacting roles, attributed to a research firm |
+
+Not one publishes a sample size, a fielding date or an instrument. But the
+disqualifying problem is not the missing method, it is the population.
+**Every one of these bands measures billable utilization at an agency.** An
+in-house studio does not bill. It has no billable hours, no realization rate
+and, in most companies, no timesheet against a client code at all. The number
+being quoted at brands considering an in-house studio was measured on a
+business model the in-house studio does not run.
+
+That is the publishable finding: the utilization benchmark the buyer will be
+shown is measured on the wrong entity. **The bands themselves stay off the
+page.** The article states that agency billability benchmarks exist, that they
+disagree with each other across a fifteen-point spread, that none publishes a
+method, and that none of them measures an in-house team. Then it hands the
+reader the arithmetic to measure their own.
+
+### Conflict 2: cost per hire, three medians from one publisher
+
+The most-cited cost-per-hire source is a US human-resources membership body.
+Three different medians attributed to it are circulating in September 2026:
+about $1,300 for non-executive roles, about $4,700 as an internal cost per
+hire, and about $5,475 as a non-executive benchmark. All three are relayed
+through recruitment-vendor blogs rather than read at the publisher, the
+reference years differ, and the definitions of what the figure counts differ
+with them. None is creative-specific.
+
+**Cut, all three.** A recruitment line belongs in the model because it is
+real, but it goes in with no figure attached, like the other seven layer-three
+lines. The conflict is worth one sentence on the page as evidence for why the
+line is empty: even the most widely quoted staffing benchmark in the market
+appears as three different numbers in the same year, none of them measured on
+a creative role.
 
 ## Cleared for use
 
@@ -334,6 +400,11 @@ company named anywhere.
 
 > 82 percent of member advertisers reported running an in-house agency, up
 > from 78 percent in 2018 and 58 percent in 2013.
+> Source: US advertiser trade body in-house agency study, fielded February and
+> March 2023, 162 respondents drawn from the body's own advertiser members.
+
+> In the same study, 88 percent of companies said the workload on their
+> in-house shop had increased and 67 percent said it had increased a lot.
 > Source: US advertiser trade body in-house agency study, fielded February and
 > March 2023, 162 respondents drawn from the body's own advertiser members.
 
@@ -390,20 +461,24 @@ company named anywhere.
 This is a claim about the evidence base, not a claim about a number, so it is
 publishable and it is the piece's differentiator. Word it close to this:
 
-> Across four buyer phrasings searched in September 2026, every page ranking
-> for the in-house against outsourced production decision published a fully
-> loaded annual figure, and none cited a source for the benefits multiplier it
-> used or stated a utilization rate at all. Twenty-three of the twenty-six
-> readable results were published by a company selling one side of the
-> decision.
+> Across four buyer phrasings searched in September 2026, 25 of the 34 pages
+> returned were published by a company with a commercial interest in the
+> answer, and none of the 34 was published by a statistical agency or an
+> advertiser trade body. Every page that published a fully loaded annual
+> figure did so without citing a source for the benefits multiplier it used,
+> and not one stated a utilization rate.
 > Source: search-results audit run September 2026 across four buyer phrasings,
 > publisher type recorded for every result, no domain named.
 
-Count check for the writer: query 1 had 7 of 10 vendor-published, query 2 had
-7 of 8 readable, query 3 had 8 of 8, query 4 had 8 of 8. Readable results
-total 34; vendor or seller-published total 30. **Use 30 of 34, or express it as
-"nine in ten". Do not use the 23 of 26 phrasing above without recounting it
-against the four tables in this file first.**
+**The count, so the writer never has to guess it.** Query 1: 5 sellers of 10.
+Query 2: 6 of 8. Query 3: 7 of 8. Query 4: 7 of 8. Totals: **25 sellers out of
+34 results, and 0 of 34 from a statistical agency or an advertiser trade
+body.** "Roughly three in four" is the safe verbal form. Do not round it up to
+"nine in ten" and do not write "every page", because nine results were
+personal blogs, trade press, directories or paywalled analyst documents rather
+than sellers. The zero is the stronger half of this finding anyway: the two
+institutions that actually survey this market are absent from all four
+result sets.
 
 ## Do not publish
 
@@ -421,6 +496,9 @@ against the four tables in this file first.**
 | "In-house becomes cost-competitive at about $15,000 to $20,000 a month of production need" | Agency blog, no derivation shown, no definition of production need. It is the right question and the wrong evidence. The article should reach a threshold by showing arithmetic from published inputs, never by citing this |
 | "A mid-market brand needing 40 to 80 creatives a month" | Same page. No definition of a creative, no source for the volume band |
 | Any utilization rate, billable ratio or idle-capacity percentage | Nothing found with a stated method, on either side of the market. This is a hard cut. Any utilization number in the draft must be labeled a reader input in the same sentence, never a benchmark |
+| The circulating billable-utilization bands: 60 to 70 percent, 65 to 80 percent, 70 to 80 percent, 75 to 85 percent | All nine results found in September 2026 were published by sellers of time-tracking software, agency-management software or agency financial consulting. None publishes a sample, a fielding date or an instrument. And all of them measure billability at an agency, which is not a quantity an in-house studio has. Wrong method and wrong population. See the R6 section for how to publish the conflict without publishing the numbers |
+| Cost per hire at about $1,300, about $4,700, or about $5,475 | Three different medians attributed to the same US human-resources membership body inside the same year, every one of them relayed through a recruitment-vendor blog rather than read at the publisher, with different reference years and different definitions of what is counted. None is creative-specific |
+| Staffing agency markups of 30 to 75 percent, direct-hire fees of 15 to 30 percent of first-year salary | Recruitment-vendor blogs, no sample, no method, and they price a service rather than benchmark a cost |
 | Any figure for the share of creative hours spent on trafficking or versioning | Nothing found with a stated method. Every circulating figure is published by a seller of workflow software or of outsourced production |
 | Generic cost-per-hire figures | Not creative-specific, and the most-cited figure is over a decade old. Cut rather than stretched across occupations it was not measured on |
 | Software seat prices per creative | Published, but only by named software vendors on their own rate cards. Citing them means naming companies, which the standing rule forbids. The line is named in the model with no figure |

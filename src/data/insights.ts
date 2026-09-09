@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'questions-to-ask-ai-production-partner',
+    image: '/Images/insight-questions-to-ask-ai-production-partner.webp',
+    imageAlt:
+      'Three identical stacks of prints of the same ceramic jar laid out in a row on a scratched steel table for comparison, beside a handwritten checklist with pencil tick boxes and a hand pointing at one of them.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: '12 Questions for an AI Production Partner',
+    deck: 'Twelve questions and a scoring table you can copy, including two nobody in the category has benchmarked, and the one we answer awkwardly.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '14 min read',
+    author: 'Cyril Drouin',
+    metaTitle: '12 Questions for an AI Production Partner | hubStudio',
+    metaDescription:
+      'A procurement instrument for scoring AI production vendors: twelve questions, what a good answer sounds like, and a scoring table you can copy.',
+  },
+  {
     slug: 'cost-to-localize-a-campaign-for-china',
     image: '/Images/insight-cost-to-localize-a-campaign-for-china.webp',
     imageAlt:

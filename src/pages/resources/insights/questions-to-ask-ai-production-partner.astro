@@ -1,0 +1,318 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I evaluate an AI content production partner?",
+    "a": "Score twelve areas rather than watching a capability demo: model ownership, training data provenance, registrability, likeness releases, label application, ad disclosure, physical capture, surge capacity, revision policy, data residency, external audit, and who actually does the work. Ask three vendors the same questions and compare specificity, not confidence."
+  },
+  {
+    "q": "Who owns a custom-trained brand model?",
+    "a": "Whoever the contract says. No instrument researched here assigns ownership of a fine-tuned model by default, so if it is not a written clause it is not a fact. Ask what happens to the model when the relationship ends: deleted, handed over, or retained by the vendor as a capability."
+  },
+  {
+    "q": "What should I ask about training data provenance?",
+    "a": "Ask for it per asset rather than per project. Rights attach to individual inputs, so a project-level assurance cannot answer which reference image sits behind the frame a rights holder is querying. A usable record names each input, its relationship to the output, and whether it was licensed, owned or a likeness with consent on file."
+  },
+  {
+    "q": "How do I check likeness rights on AI talent?",
+    "a": "Ask for territory, platforms, duration and whether the person was represented. California Labor Code 927 makes a replica clause unenforceable unless the intended uses are described with reasonable specificity and the person had counsel or union representation, and China's Civil Code construes a disputed licence clause in favor of the person portrayed."
+  },
+  {
+    "q": "What questions cover data residency?",
+    "a": "Where files physically sit, what crosses a border, and which threshold applies. China's cross-border provisions trigger a security assessment for important data, for any transfer by a critical information infrastructure operator, and above one million non-sensitive or ten thousand sensitive personal records, with clearances lasting three years."
+  },
+  {
+    "q": "How do I compare three AI vendors fairly?",
+    "a": "Use one instrument on all three and score specificity: zero for no answer, one for a general answer, two for something you could put in a contract. Two areas, surge capacity and revision policy, have no published benchmark in the category at all, so they can only be scored on how specific the answer is."
+  }
+];
+---
+
+<ArticleLayout slug="questions-to-ask-ai-production-partner" ctaLabel="Put us through the list" faq={faq}>
+  <p class="standfirst">Every evaluation checklist that ranks for this question was written to buy software. They ask about integrations, seat counts and model access. None of them asks who owns the model trained on your brand, who signed the release for the face in the ad, or whether the vendor can put a camera in front of your actual product.</p>
+
+  <p>This is a procurement instrument, not a sales page. Score three vendors with it, including us. Two of the questions below are ones hubStudio answers awkwardly, and they are marked.</p>
+
+  <h2>How do I evaluate an AI content production partner?</h2>
+
+  <p>By asking what happens to the things you cannot see: ownership, provenance, rights, labels, and who is actually holding the camera. Capability demos are easy to pass. The questions below are hard to pass, which is the point of them.</p>
+
+  <p>There is a scoring table at the end you can paste into a spreadsheet. Run it across three vendors and the differences show up in the same places every time.</p>
+
+  <h2>Ownership, provenance and what you can actually register</h2>
+
+  <p><strong>Who owns the custom model trained on our brand?</strong></p>
+
+  <p>There is no default answer in law, which surprises people. No instrument assigns ownership of a fine-tuned model, so this is a contract term or it is nothing. Ask for the clause, not the reassurance. Ask what happens to the model if you leave, whether it is deleted, handed over, or quietly retained as a capability the vendor now has.</p>
+
+  <p>hubStudio publishes an answer to this one.</p>
+
+  <blockquote class="evidence">hubStudio publishes that the custom models it trains on a client's brand are the client's property, and that every asset is documented with the model used, the references that trained it and the prompts that produced it. That is hubStudio's published policy, not a legal requirement: no instrument in this article assigns model ownership by default.</blockquote>
+  <p class="source">Source: hubStudio AI excellence page, September 2026.</p>
+
+  <p>That is a policy, published on a page, and you should treat every vendor's version of it the same way: as a commitment to get into the contract rather than a fact about the world.</p>
+
+  <p><strong>What is in the training data, and can you show it per asset?</strong></p>
+
+  <p>Not per project. Per asset. The distinction matters because rights attach to individual inputs, and a project-level answer cannot tell you which reference image sits behind the one frame a rights holder is asking about.</p>
+
+  <p><strong>Can this output be registered, and what will you disclose if we try?</strong></p>
+
+  <p>This is the question that separates vendors who have read the guidance from vendors who have heard of it.</p>
+
+  <blockquote class="evidence">Copyright protects only material that is the product of human creativity, and where a generative system produces the expressive elements of a work, that material is not protected by copyright.</blockquote>
+  <p class="source">Source: US Copyright Office, registration guidance for works containing material generated by artificial intelligence, 88 FR 16190, 16 March 2023, a statement of policy published by the issuing office.</p>
+
+  <p>Prompting is not authorship, and the Office is unusually direct about why.</p>
+
+  <blockquote class="evidence">Users do not exercise ultimate creative control over how a generative system interprets prompts. The guidance puts it this way: prompts "function more like instructions to a commissioned artist. They identify what the prompter wishes to have depicted, but the machine determines how those instructions are implemented."</blockquote>
+  <p class="source">Source: US Copyright Office, registration guidance, 88 FR 16190, 16 March 2023.</p>
+
+  <p>So a vendor promising that you will own the copyright in prompt-only output is promising something that is not theirs to give. There is also a filing duty attached, which a production partner should know about before you do.</p>
+
+  <blockquote class="evidence">Applicants have a duty to disclose the inclusion of AI-generated content in a work submitted for registration, and that content is entered in the Material Excluded field as generated by artificial intelligence rather than claimed as authorship.</blockquote>
+  <p class="source">Source: US Copyright Office, registration guidance, 88 FR 16190, 16 March 2023, registration instructions section.</p>
+
+  <p>None of this makes generated work unusable. It makes the human contribution the thing worth documenting, and it means the record of who directed what is an asset rather than paperwork.</p>
+
+  <blockquote class="evidence">The Office concluded that copyright protection does not extend to the mere provision of prompts, that an output is protected where a human author has determined sufficient expressive elements, that using a generative system as an assistive tool or placing generated material inside a larger human-authored work does not defeat protection, and that "the case has not been made for changes to existing law to provide additional protection for AI-generated outputs."</blockquote>
+  <p class="source">Source: US Copyright Office, announcement of Part 2 of its Copyright and Artificial Intelligence report, 29 January 2025.</p>
+
+  <p><strong>Who signed the likeness release, and what exactly does it cover?</strong></p>
+
+  <p>Ask for territory, platforms, duration and whether the person had representation. Those four are not procurement pedantry. They are the terms the statutes turn on.</p>
+
+  <blockquote class="evidence">California Labor Code section 927, added by AB 2602 and effective 1 January 2025, makes a services contract provision unenforceable as to a new performance fixed by a digital replica of an individual, where the provision lets a replica stand in for work the person would otherwise have performed, unless the intended uses are described with reasonable specificity and the person was represented by counsel or by a labor union.</blockquote>
+  <p class="source">Source: California legislative information, AB 2602, 2023 to 2024 session.</p>
+
+  <p>Unenforceable is a strong word. A broad, vague replica clause is not a weak protection, it is potentially no protection. And for a deceased personality the exposure is priced.</p>
+
+  <blockquote class="evidence">California Civil Code section 3344.1, as amended by AB 1836 and chaptered on 5 September 2024 as chapter 258, creates liability for producing, distributing or making available a digital replica of a deceased personality's voice or likeness in an expressive audiovisual work or sound recording without the rights holder's prior consent, for the greater of 10,000 US dollars or actual damages.</blockquote>
+  <p class="source">Source: California legislative information, AB 1836, 2023 to 2024 session.</p>
+
+  <p>If the work touches China, ambiguity works against you rather than for you.</p>
+
+  <blockquote class="evidence">Under Articles 1019, 1021 and 1022 of China's Civil Code, in force since 1 January 2021, a person's likeness may not be made, used or published without consent; where a licence clause is disputed, it is construed in favor of the person portrayed; and a term that was never agreed or is unclear can be ended on reasonable notice.</blockquote>
+  <p class="source">Source: the Civil Code of the People's Republic of China, articles as numbered, in force since January 2021.</p>
+
+  <h2>Labels, disclosure and what arrives in the file</h2>
+
+  <p><strong>Who applies the labels, and do they survive delivery?</strong></p>
+
+  <p>China requires two, and the second one is the one pipelines lose.</p>
+
+  <blockquote class="evidence">The Measures require two labels on a generated image or video: an explicit label a person can perceive, and an implicit label written into the file metadata carrying the content attribute, the service provider's name or code and a content identifier. Where a provider offers download, copy or export, it must ensure the exported file still contains a conforming explicit label.</blockquote>
+  <p class="source">Source: the instrument, Articles 4 and 5, in force 1 September 2025.</p>
+
+  <p>Read the last sentence as a test you can run. Ask the vendor to send a delivered file and check whether the visible label survived export and whether anything is in the metadata. The duty is generally treated as falling on the generating provider rather than on you, but the file that reaches your ad server is the one that matters, and it is the vendor's pipeline that either carries the label or strips it.</p>
+
+  <p><strong>What disclosure duties attach to the advertisement itself?</strong></p>
+
+  <p>Different question, different answer, and vendors conflate them. Labels travel with the file. Disclosure attaches to the ad. They are separate duties with separate triggers, and a vendor who treats them as one thing has answered neither.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Travels with</th>
+          <th scope="col">Triggered by</th>
+          <th scope="col">Who it lands on</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">File labels</th>
+          <td>The asset itself, including exported copies</td>
+          <td>Generation of synthetic content</td>
+          <td>Generally the generating provider</td>
+        </tr>
+        <tr>
+          <th scope="row">Ad disclosure</th>
+          <td>The placement, not the file</td>
+          <td>A synthetic performer appearing in an advertisement</td>
+          <td>The advertiser, on actual knowledge</td>
+        </tr>
+        <tr>
+          <th scope="row">First-exposure disclosure</th>
+          <td>The viewer's first encounter</td>
+          <td>Deep fake content shown to a person</td>
+          <td>The deployer of the system</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">New York Senate Bill S8420A, chapter 617 of the Laws of 2025, was signed on 11 December 2025 and took effect on 9 June 2026. It requires a covered person to conspicuously disclose that a synthetic performer appears in an advertisement where that person has actual knowledge, and sets a civil penalty of 1,000 US dollars for a first violation and 5,000 US dollars for each subsequent violation.</blockquote>
+  <p class="source">Source: New York State Senate, bill text and status, December 2025.</p>
+
+  <p>Actual knowledge is the trigger, and knowledge lives in the records the vendor hands you. A partner who cannot tell you whether a performer was synthetic is not protecting you from the duty, they are making it harder to discharge.</p>
+
+  <blockquote class="evidence">The transparency obligations in Article 50 of the EU AI Act apply from 2 August 2026, with a grace period running to 2 December 2026, and a deep fake is disclosed to the person exposed to it on first exposure.</blockquote>
+  <p class="source">Source: the European Commission's own FAQ on Article 50 transparency obligations, 24 July 2026.</p>
+
+  <h2>Craft, capacity and the two questions nobody has benchmarked</h2>
+
+  <p><strong>Can you put a camera in front of the actual product?</strong></p>
+
+  <p>The simplest question on this list and the most discriminating. A great deal of what is sold as AI production is adaptation of assets somebody else captured. If the product physically exists, ask who shoots it, where the studio is, and whether they can hold your actual unit. Ask to see a shoot, not a showreel.</p>
+
+  <p><strong>What happens in a surge week?</strong> and <strong>what is the revision policy, and what counts as a new asset rather than a revision?</strong></p>
+
+  <p>These two are grouped because they share a problem. They are the questions that decide whether a relationship survives a launch, and there is no published benchmark for either one anywhere in this category.</p>
+
+  <p>That is not a gap in this page's research. Trade bodies, analysts and vendors were all searched, and nobody publishes a surge-capacity figure or a revision-round norm with a stated method. So you cannot benchmark the answers. What you can do is make them specific and write them down: how many jobs can be live at once, what the escalation path is, who decides whether a change is a revision or a new asset, and what happens to the schedule when that decision goes against you. Then compare three vendors' answers to each other, since there is nothing else to compare them to.</p>
+
+  <h2>Data, residency and what the vendor can be audited against</h2>
+
+  <p><strong>Where does our data live, and what crosses a border?</strong></p>
+
+  <p>Most creative production does not export personal data at all. Product files contain objects, not people. The moment talent, creator content or a customer database enters the work, the thresholds start to matter.</p>
+
+  <blockquote class="evidence">China's Provisions on Promoting and Regulating Cross-border Data Flows, in force since 22 March 2024, trigger a security assessment before export for important data, for any personal information exported by a critical information infrastructure operator, for non-sensitive personal information on more than one million people in a year, and for sensitive personal information on more than ten thousand people. A clearance lasts three years.</blockquote>
+  <p class="source">Source: the instrument, effective March 2024, read through two independent legal analyses that agree on every threshold.</p>
+
+  <p>A vendor who answers this with "our data is secure" has not understood the question. The answer you want names where files sit, what leaves the country, and whether any threshold above is in play.</p>
+
+  <p><strong>What can you be audited against, by someone who is not you?</strong></p>
+
+  <p>Self-declared governance is a marketing artifact. Certification is not.</p>
+
+  <blockquote class="evidence">ISO/IEC 42001, published in December 2023, is the first international management system standard for artificial intelligence, and certification against it is issued by an accredited certification body rather than self-declared.</blockquote>
+  <p class="source">Source: the standard, by designation and edition date, December 2023, confirmed against two independent standards-body records.</p>
+
+  <p>Be careful what you conclude from a certificate. It says a management system exists and was audited. It does not say any output is lawful, and no instrument on this page treats certification as satisfying a legal requirement.</p>
+
+  <h2>Who actually does the work?</h2>
+
+  <p>The last question, and the one this page has to answer about itself.</p>
+
+  <blockquote class="evidence">hubStudio also does white-label production for agencies, and says so on its own site. A buyer running this list should assume some of the vendors in front of it are subcontracting, and should ask the same question of every one of them, hubStudio included.</blockquote>
+  <p class="source">Source: hubStudio AI excellence page, September 2026.</p>
+
+  <p>So there is a real possibility that a brand reading this is already paying for hubStudio production on somebody else's invoice, at somebody else's margin. That is an uncomfortable thing to publish on our own site, and it is the honest answer to question twelve.</p>
+
+  <p>The structural point stands regardless of who benefits from it. Disclosure of who does the work has been a known gap for years.</p>
+
+  <blockquote class="evidence">Fewer than half of the advertisers surveyed required their agency to disclose whether a production job was being bid to an in-house or affiliated production company.</blockquote>
+  <p class="source">Source: US advertiser trade body production transparency study, August 2017, built on a task force of 30 member executives and 12 subject-matter organizations plus a supporting member survey whose respondent count was not published.</p>
+
+  <p>Note the last line of that attribution: the one study measuring production transparency did not publish its own respondent count. And the pressure to get this right has grown since.</p>
+
+  <blockquote class="evidence">Production accounted for an average of 19 percent of total marketing budgets, against 24 percent before the pandemic.</blockquote>
+  <p class="source">Source: global advertiser trade body content production research, March 2025, a survey of 50 global brands across more than ten sectors answered mainly by senior marketing procurement leads.</p>
+
+  <blockquote class="evidence">One third of the brands surveyed now build production relationships directly with the digital platforms.</blockquote>
+  <p class="source">Source: global advertiser trade body content production research, March 2025, same survey of 50 global brands.</p>
+
+  <h2>The scoring table</h2>
+
+  <p>Copy this. Score each vendor zero for no answer, one for a general answer, two for a specific answer you could put in a contract. Run it on three, including whoever wrote the checklist you are reading.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Question</th>
+          <th scope="col">A specific answer sounds like</th>
+          <th scope="col">A weak answer sounds like</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Who owns the custom model</th>
+          <td>A named contract clause, plus what happens to it if we leave</td>
+          <td>"You own your data"</td>
+        </tr>
+        <tr>
+          <th scope="row">What is in the training data</th>
+          <td>A per-asset record of references and their rights status</td>
+          <td>A project-level assurance</td>
+        </tr>
+        <tr>
+          <th scope="row">What can be registered</th>
+          <td>Knows prompts are not authorship, and what goes in Material Excluded</td>
+          <td>"You'll own the copyright"</td>
+        </tr>
+        <tr>
+          <th scope="row">Who signed the release</th>
+          <td>Territory, platforms, duration, representation</td>
+          <td>"We have releases on file"</td>
+        </tr>
+        <tr>
+          <th scope="row">Who applies the labels</th>
+          <td>Sends a delivered file so you can check both labels survived</td>
+          <td>"The platform handles it"</td>
+        </tr>
+        <tr>
+          <th scope="row">Ad disclosure duties</th>
+          <td>Distinguishes file labels from advertisement disclosure</td>
+          <td>Treats them as one thing</td>
+        </tr>
+        <tr>
+          <th scope="row">Camera on the real product</th>
+          <td>Names the studio, offers a shoot visit</td>
+          <td>A showreel, and adaptation examples</td>
+        </tr>
+        <tr>
+          <th scope="row">Surge weeks</th>
+          <td>A concurrency number and a written escalation path</td>
+          <td>"We scale as needed"</td>
+        </tr>
+        <tr>
+          <th scope="row">Revisions versus new assets</th>
+          <td>Who decides, and what it does to the schedule</td>
+          <td>"Unlimited revisions"</td>
+        </tr>
+        <tr>
+          <th scope="row">Data residency</th>
+          <td>Where files sit, what crosses a border, which threshold applies</td>
+          <td>"Our data is secure"</td>
+        </tr>
+        <tr>
+          <th scope="row">External audit</th>
+          <td>An accredited certification, with its scope stated</td>
+          <td>A self-declared policy page</td>
+        </tr>
+        <tr>
+          <th scope="row">Who does the work</th>
+          <td>Names subcontracting where it exists</td>
+          <td>Silence, or an unqualified "we do"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Two rows are unfalsifiable by design, the surge row and the revision row, because no benchmark exists to check an answer against. Score those on specificity alone.</p>
+
+  <p>The <a href="/the-studio/ai-excellence">AI excellence page</a> sets out how hubStudio answers most of these, the <a href="/resources/copyright-and-ai">copyright and AI resource</a> covers the ownership questions in more depth, and the <a href="/contact">contact page</a> is where to send the list if you want it answered on the record.</p>
+
+  <p>Reviewed September 2026. This describes production practice and procurement questions, not legal advice. Every instrument above is cited by its own text and date rather than through commentary.</p>
+
+  <h2>Questions buyers ask about evaluating AI vendors</h2>
+
+  <h3>How do I evaluate an AI content production partner?</h3>
+
+  <p>Score twelve areas rather than watching a capability demo: model ownership, training data provenance, registrability, likeness releases, label application, ad disclosure, physical capture, surge capacity, revision policy, data residency, external audit, and who actually does the work. Ask three vendors the same questions and compare specificity, not confidence.</p>
+
+  <h3>Who owns a custom-trained brand model?</h3>
+
+  <p>Whoever the contract says. No instrument researched here assigns ownership of a fine-tuned model by default, so if it is not a written clause it is not a fact. Ask what happens to the model when the relationship ends: deleted, handed over, or retained by the vendor as a capability.</p>
+
+  <h3>What should I ask about training data provenance?</h3>
+
+  <p>Ask for it per asset rather than per project. Rights attach to individual inputs, so a project-level assurance cannot answer which reference image sits behind the frame a rights holder is querying. A usable record names each input, its relationship to the output, and whether it was licensed, owned or a likeness with consent on file.</p>
+
+  <h3>How do I check likeness rights on AI talent?</h3>
+
+  <p>Ask for territory, platforms, duration and whether the person was represented. California Labor Code 927 makes a replica clause unenforceable unless the intended uses are described with reasonable specificity and the person had counsel or union representation, and China's Civil Code construes a disputed licence clause in favor of the person portrayed.</p>
+
+  <h3>What questions cover data residency?</h3>
+
+  <p>Where files physically sit, what crosses a border, and which threshold applies. China's cross-border provisions trigger a security assessment for important data, for any transfer by a critical information infrastructure operator, and above one million non-sensitive or ten thousand sensitive personal records, with clearances lasting three years.</p>
+
+  <h3>How do I compare three AI vendors fairly?</h3>
+
+  <p>Use one instrument on all three and score specificity: zero for no answer, one for a general answer, two for something you could put in a contract. Two areas, surge capacity and revision policy, have no published benchmark in the category at all, so they can only be scored on how specific the answer is.</p>
+</ArticleLayout>
