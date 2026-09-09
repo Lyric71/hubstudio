@@ -309,3 +309,64 @@ the primary surface. If either figure carries weight in the finished draft,
 capture it manually from a browser before publishing.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-09, after drafting and after the quality pass.
+
+**Twelve blockquotes shipped, all twelve from the "Cleared for use" block**
+with the attribution unchanged, including the self-selection caveat on the
+English index and the non-comparability caveat carried inside the Indian
+earnings citation rather than left to the body copy.
+
+**The structural obligation was met.** India's advantages are argued first, in
+their own section, at length and before any China section. The five India wins
+appear in the order this file sets them out: English, the European working day,
+the lighter data regime, incumbency, and the arts-heavy graduate base.
+
+**All four impossible comparisons are named in the body, not footnoted.** They
+have a section of their own, placed between the India section and the China
+section so a reader cannot reach the China argument without passing through
+them: no design-graduate count on either side, no wage ratio, no published
+physical studio capacity, no manufacturing share by category.
+
+**Both banned arithmetic traps are named on the page rather than merely
+avoided.** The page states that any multiple built from the Chinese wage figure
+and the Indian earnings figure is fabricated, and spells out the three reasons
+(month against year, one named industry against all salaried workers, household
+survey against establishment survey). It states that setting India's 17,431
+certifications against China's 612 features would be dishonest arithmetic, and
+says why the Indian count is broader.
+
+**Two additions during drafting, both using cleared material.**
+
+1. A talent-scale section was added because the China Ministry of Education
+   communique was cleared in this file and unused in the first draft. It
+   compares only what is comparable: enrollment stocks (48.46 million against
+   45.0 million, within about 8 percent) and gross enrollment ratios (60.80
+   percent against about 30 percent). It also names the instrument difference,
+   a compulsory return against a survey at over 90 percent participation.
+2. A "what neither region solves" section was added covering the US working
+   day, origination versus adaptation, and coordination overhead. It carries no
+   figures and makes no claim requiring a source.
+
+**One unsupported comparison was caught in the quality pass and cut.** The
+draft said "China's current annual graduate output is the larger flow." China
+publishes an annual graduate count of 10.5938 million; the Indian release
+publishes no equivalent figure, so the two output flows cannot be compared at
+all. Replaced with an explicit statement that only the enrollment stocks and
+the ratios can be set against each other. This was the same class of error the
+file's own do-not-publish rules exist to prevent, caught late.
+
+**The data section refuses the easy framing.** It concedes that India has the
+lighter regime and says so without hedging, then makes the narrower point that
+both regimes count thresholds in people, so product-only files fall outside
+them entirely. The concession runs before the qualification, not after it.
+
+**No vendor is named in either country,** and no figure is attributed to one.
+Every comparison is regional. Nothing from the do-not-publish list reached the
+draft: no 2000s-era ITO salary pair, no "232 million English speakers" claim,
+no market-size figures, no savings percentage, no adoption percentages, no
+undated trade-body lines, no six-country ranked list, no DPDP assent date, no
+penalty figure, no platform user figure.
+
+**No hubStudio rate appears anywhere.** The page carries no dollar figure at
+all, which the mechanical check confirms.
