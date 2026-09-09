@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'cost-to-localize-a-campaign-for-china',
+    image: '/Images/insight-cost-to-localize-a-campaign-for-china.webp',
+    imageAlt:
+      'A wide landscape photographic print on a scored cutting mat with a tall black card mask laid over it, the discarded side portions of the picture visible beyond the mask and two cut offcut strips lying above it.',
+    category: 'Cost',
+    tone: 'orange',
+    title: 'Cost to Localize a Campaign for China',
+    deck: 'Every page holding this query prices words. The work is a re-shoot and a re-layout. Here is the whole stack, with each line sourced separately.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '13 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Cost to Localize a Campaign for China | hubStudio',
+    metaDescription:
+      'China localization is a re-shoot and re-layout problem, not a translation one. The full cost stack, what a translation quote leaves out, two examples.',
+  },
+  {
     slug: 'china-or-india-for-creative-production',
     image: '/Images/insight-china-or-india-for-creative-production.webp',
     imageAlt:

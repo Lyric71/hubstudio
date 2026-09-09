@@ -521,3 +521,59 @@ file must be reopened and a capture taken first.
    the currency its source publishes.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-09, after drafting and after the quality pass.
+
+**Thirteen blockquotes shipped, all from the "Cleared for use" block** with the
+attribution unchanged. Every compliance instrument is cited by article and
+issuing body rather than through commentary, as the brief requires.
+
+**The examples do not total, by design.** Each line carries its own
+attribution, its own unit and its own currency. No headline sum appears
+anywhere, because a total would read as a hubStudio quote and would imply the
+lines are additively comparable when they come from a single regional rate
+card, a conflicting pair of design cards, and several lines with no published
+benchmark at all.
+
+**The crop figures are labeled as arithmetic in the same paragraph they appear
+in.** The page prints 0.75, 0.8 and 0.5625 divided by 1.778, and 0.5625 divided
+by 2.39, and says in the next sentence that these are ratios divided by ratios
+rather than measurements. No platform pixel spec appears anywhere, which is
+what this device exists to avoid.
+
+**The detail-page conflict is published as a conflict.** The order-of-magnitude
+spread between the 2023 and 2026 cards runs on the page with the reason
+attached: the cards do not agree on what a set contains, none states a sample,
+none states a method. The article then turns that into the scoping advice,
+"define the set", rather than averaging the two into a fake midpoint.
+
+**Casting preference stayed out.** The recast argument runs entirely on Civil
+Code Articles 1019, 1021 and 1022 and on production logistics. The page states
+explicitly that no source supports the claim that locally cast talent performs
+better and that it therefore does not make it.
+
+**The regional rate card is quoted as one book, not a market.** Its region,
+its date and its single-source status appear in the source line and are
+restated in body copy immediately after the quote.
+
+**No Han characters.** The research file glosses platform and term names in
+characters. Under the settled deviation recorded in editorial/CLAUDE.md on
+2026-09-09, published English articles carry none, so the surface table names
+categories rather than glossed platform names, and `check-draft.mjs` now fails
+a draft containing Han or full-width punctuation.
+
+**The nine-line table's honest column is the point.** Six of the nine cost
+lines are marked as having no published benchmark. That is the actual state of
+the category and the reason a translation quote is the only number most buyers
+see, and the table was built to make that visible rather than to imply
+coverage.
+
+**No hubStudio rate appears anywhere,** and the page carries no dollar figure
+except the third-party translation band, which is quoted with its collection
+date and its own admission that the category stops pricing per word once the
+work turns creative.
+
+**Open at publish time.** The two Chinese rate cards in the screenshot
+inventory are still to be captured. Both are single published pages that can
+change or disappear, and the detail-page conflict depends on both being on
+record with their dates.
