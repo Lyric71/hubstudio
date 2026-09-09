@@ -2,7 +2,7 @@
 title: What a Brand Asset Costs in 2026
 slug: what-a-finished-brand-asset-costs
 description: Absolute cost bands per finished brand asset, with the method stated and no email gate: images, social cuts, brand films and campaign adaptations.
-excerpt: Nobody publishes what one finished asset costs. Here are absolute bands, the unit defined first, and where every number came from.
+excerpt: Nobody publishes what one finished asset costs. This page defines the unit first, then gives absolute bands from published cards, each carrying its collection date.
 template: insight
 ---
 
@@ -68,8 +68,8 @@ where that differs from the definition above, the page says so.
 These are read directly from published pricing pages, one card at a time, in
 September 2026. Not aggregated, not estimated, not taken from a roundup.
 
-> Published rate cards in this category put the floor for ecommerce image
-> editing between roughly $0.25 and $1.20 an image, with one card adding a fixed
+> The floor for ecommerce image editing sits between roughly $0.25 and $1.20 an
+> image on published cards in this category, with one card adding a fixed
 > platform fee of about $95 a month on top.
 > Source: published pricing pages in this category, collected September 2026,
 > two independent cards read directly and compared, no vendor named.
@@ -168,9 +168,9 @@ which changes what a low number means.
 > published pricing pages only, no vendor named. The $30,000 dedicated floor
 > appears on a single card.
 
-> Published unlimited-request design subscription tiers run from roughly $700 to
-> roughly $4,500 a month, month to month, with no capture, no talent and no
-> usage included.
+> Unlimited-request design subscription tiers run from roughly $700 to roughly
+> $4,500 a month, month to month, with no capture, no talent and no usage
+> included.
 > Source: published subscription rate cards in this category, September 2026,
 > two independent pricing pages read directly.
 
@@ -212,12 +212,13 @@ anyone published.
 > Source: US advertiser trade body production transparency study, August 2017.
 > The respondent count was never published, which is the point.
 
-Note the last line. The one study measuring production transparency did not
-publish its own sample size.
+Read the source line again. The one study anyone published on production
+transparency withheld its own sample size.
 
 **Software vendors publish only figures that flatter their pricing.** A cost
 comparison from a company selling seats will find that seats are good value.
-That is not dishonesty, it is selection.
+Nobody had to lie for that to happen. The question got chosen before the
+research started.
 
 **Consultancies gate.** The numbers exist behind a form, which means they
 cannot be cited, checked or argued with.
@@ -257,8 +258,10 @@ Every band on this page was read directly from a published pricing page on
 9 September 2026, one card at a time, and is quoted against the unit that card
 states. Bands built from two or more independent cards are given as ranges. A
 band drawn from a single card is labeled as such. No figure on this page comes
-from an aggregator, a roundup or a vendor's estimate of somebody else's prices,
-and no percentage appears without the absolute figure behind it.
+from an aggregator, a roundup or a vendor's estimate of somebody else's prices.
+Where a percentage appears, it is a share of something else, a budget or a set
+of survey respondents, never a cost standing in for a number the source would
+not print.
 
 What that method cannot do, said plainly. Published cards skew toward the
 productized end of the market, because that is the end that publishes. Custom

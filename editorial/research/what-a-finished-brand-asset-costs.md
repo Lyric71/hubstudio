@@ -368,3 +368,51 @@ reference guide PDF, both downloaded 2026-09-09 from the trade body's own site.
 ---
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-09, after drafting and after the quality pass.
+
+**Every figure on the page traces to a cleared row above.** Twelve blockquotes
+shipped. The absolute bands (ecommerce edit $0.25 to $1.20, standard product
+image $39 to $50, model or lifestyle about $95, short video clip about $93, UGC
+video about $89, editing add-on about $49, finished pro edit about $199,
+managed subscription floors $6,000 to $15,000, dedicated from $30,000 plus
+$1,000 software, unlimited-request tiers $700 to $4,500) each carry the
+2026-09-09 collection date in the source line, as R5 requires. No band was
+widened, rounded outward or merged across cards during drafting.
+
+**Nothing was added after research.** No figure entered the draft that is not
+in the cleared table above. The two findings the piece is built on are both
+absences already recorded here: the standard bid form's missing usage line, and
+the 578,750-creative dataset publishing no cost per asset.
+
+**Two things changed during drafting, both subtractive.**
+
+1. The unit definition moved ahead of every number. Research had it as
+   background; the SERP audit showed no competing page defines the unit at all,
+   so it became the first section and the page states its own boundary openly
+   rather than implying an industry consensus that does not exist.
+2. The 30-second brand film FAQ prints no band. The research file's
+   do-not-publish table has the circulating figures at $150 to $500 static and
+   $500 to $2,000 video with no sample and no method, seller-published. The FAQ
+   says plainly that no trustworthy band exists instead of hedging one in.
+
+**A self-contradiction was caught in the quality pass and fixed.** The
+methodology section originally promised "no percentage appears without the
+absolute figure behind it," which the page then broke twice: the 19 percent
+production budget share and the 60 percent rebate figure have no absolutes,
+because their sources publish none. The sentence now says what is actually
+true, that percentages on the page are shares of a budget or of survey
+respondents and never a cost standing in for a number a source withheld.
+
+**No hubStudio rate appears anywhere.** Re-checked line by line after the
+quality pass. Every dollar figure is a third-party published band with a
+collection date and a stated unit.
+
+**Open at publish time, not at draft time.**
+
+- The ten pricing-page captures in the screenshot inventory are still pending.
+  Every band on the page depends on the 2026-09-09 state of a page that can
+  change without notice. Capture before publishing.
+- The page links to /resources/production-cost, the public estimator, which is
+  infrastructure item 5 and is not built. Ship the estimator first or drop that
+  reference. Do not ship a link to a 404.
