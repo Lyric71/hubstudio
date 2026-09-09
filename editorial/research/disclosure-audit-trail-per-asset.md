@@ -474,3 +474,70 @@ populated, exported from the studio's own system and redacted where it names a
 client. That belongs in the worked example section.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-09, after drafting and after the quality pass.
+
+**Ten blockquotes shipped, nine cited plus one policy statement.** All nine
+citations come from the "Cleared for use" block with the attribution unchanged.
+The article cites articles and code sections, never commentary, as the brief
+requires.
+
+**The policy statement carries a source line.** The mechanical check requires
+every blockquote to name a source, and the 90 day retention statement is not a
+citation. It was given an honest line naming it as hubStudio production policy,
+September 2026, published as our own policy rather than as a duty any
+instrument imposes. The words "hubStudio policy, not a legal requirement" and
+the note that the Chinese six months is longer and governs both remain inside
+the same blockquote, as this file requires.
+
+**Field counts were checked against each other.** Eleven instrument-backed
+fields, four practice fields, fifteen total. The intro says eleven, the schema
+table marks four as practice, and the closing FAQ says fifteen. All three
+agree.
+
+**The three overreach traps were all avoided.**
+
+1. The page states plainly that Article 50 sets no record-keeping duty and no
+   retention period, and frames the per-asset record as how you answer an
+   Article 50 question rather than as something the article demands. The FAQ
+   answers "Does the EU AI Act require a per-asset record?" with "No."
+2. The provider and deployer split is named, with the observation that a
+   production studio is usually neither and holds evidence rather than a
+   statutory file.
+3. The California AI Transparency Act is cited as a statutory field list and
+   the million-monthly-user threshold is stated, with the page saying the duty
+   follows the system and is almost certainly not the reader's.
+
+**The six month figure is quarantined correctly.** It appears only against
+Article 9, with the narrow trigger spelled out, and the page says explicitly
+that carrying it to the EU or a US state would be inventing a rule. Article 19
+of the AI Act stays out entirely, as decided at research time, so nothing
+blurs it.
+
+**GB 45438-2025 carries the softer attribution.** The standard's own text sits
+behind the national register's viewer and was not read directly. In the schema
+table its field names are attributed as "the Chinese national standard" without
+quoting field names as if read from the instrument.
+
+**Two overclaims were caught in the quality pass and cut.**
+
+1. "Choosing the wrong one is the single most common error in a provenance
+   record" was a ranking claim with no measurement behind it. This file says
+   only that the distinction is one a retoucher gets wrong. Replaced with "an
+   easy field to get wrong" plus the mechanism.
+2. "This is the most frequent request by a wide margin" about internal
+   versioning requests was an invented frequency. Replaced with the defensible
+   point, that it is not a compliance request at all and is usually what makes
+   the record pay for itself. The same fix was applied in the FAQ answer.
+
+**The worked example is constructed, not a client asset.** No client name,
+brand or figure appears in it. It was built to exercise the composite trap and
+the dual-market label case, and the asset brief records that no sign-off is
+needed.
+
+**Everything in the do-not-publish list stayed out.** No CAC penalty figure, no
+enjoined California elections provision, no Maine political-ad statute, no
+"thirty states" claim, no assertion that C2PA satisfies a legal requirement, no
+metadata-survival claim, no FTC rule, and no effective date for AB 1836. The
+EU wording is attributed to the European Commission's own FAQ and fact page,
+never to the Official Journal, since EUR-Lex returned empty during research.
