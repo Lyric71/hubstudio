@@ -16,6 +16,7 @@
 import Layout from './Layout.astro';
 import Button from '../components/Button.astro';
 import { getInsight, relatedInsights } from '../data/insights';
+import { findAuthorByName, authorPath } from '../data/authors';
 
 interface Props {
   slug: string;
@@ -28,6 +29,11 @@ const related = relatedInsights(slug, 3);
 const SITE = 'https://www.hubstudio.ai';
 const url = `${SITE}/resources/insights/${insight.slug}`;
 
+/* Resolves the byline string to a person with a page. Undefined when the name
+   is not on the roster, in which case the byline renders as plain text rather
+   than linking somewhere that does not exist. */
+const bylineAuthor = findAuthorByName(insight.author);
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -36,7 +42,19 @@ const articleSchema = {
   image: new URL(insight.image, SITE).href,
   datePublished: insight.dateISO,
   dateModified: insight.dateModifiedISO ?? insight.dateISO,
-  author: { '@type': 'Person', name: insight.author },
+  // Point the byline at the author's own page so the Person resolves to one
+  // entity across the site instead of a bare name repeated per article.
+  author: bylineAuthor
+    ? {
+        '@type': 'Person',
+        '@id':
+          bylineAuthor.slug === 'cyril-drouin'
+            ? `${SITE}/#cyril-drouin`
+            : `${SITE}${authorPath(bylineAuthor)}#person`,
+        name: bylineAuthor.name,
+        url: `${SITE}${authorPath(bylineAuthor)}`,
+      }
+    : { '@type': 'Person', name: insight.author },
   publisher: {
     '@type': 'Organization',
     name: 'hubStudio',
@@ -97,6 +115,16 @@ const breadcrumbSchema = {
         <h1 class="headline h1 reveal art-hero__title">{insight.title}</h1>
         <p class="lead art-hero__deck">{insight.deck}</p>
         <p class="art-hero__meta">
+          {
+            bylineAuthor ? (
+              <a class="art-hero__byline" href={authorPath(bylineAuthor)} rel="author">
+                {insight.author}
+              </a>
+            ) : (
+              <span>{insight.author}</span>
+            )
+          }
+          <span class="art-hero__dot" aria-hidden="true"></span>
           <time datetime={insight.dateISO}>{insight.date}</time>
           <span class="art-hero__dot" aria-hidden="true"></span>
           <span>{insight.readingTime}</span>
@@ -491,3 +519,17 @@ const breadcrumbSchema = {
     reveals.forEach((el) => el.classList.add('is-in'));
   }
 </script>
+
+<style>
+  /* Byline in the article hero, linking to the author's page. */
+  .art-hero__byline {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .art-hero__byline:hover,
+  .art-hero__byline:focus-visible {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+  }
+</style>

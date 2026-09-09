@@ -1,14 +1,93 @@
 # hubStudio robots.txt
-# All crawlers welcome, including AI assistants.
+#
+# Split by bot PURPOSE, not by company. The distinction that matters:
+#
+#   Training crawlers      collect text to train a model. Blocking them costs
+#                          nothing in AI answers, because they do not answer
+#                          anything. Blocked below.
+#   Retrieval crawlers     fetch a page at answer time so an assistant can
+#                          read and cite it. Blocking them deletes this site
+#                          from AI answers entirely. Allowed below, explicitly.
+#
+# Being fetchable by the retrieval crawlers is the single highest-scored
+# citation factor in the field, so the allowances below are deliberate
+# declarations, not an accident of a permissive default.
+#
+# Reviewed 2026-09-09. Verify with: node scripts/verify-crawler-access.mjs
+
+# ---------------------------------------------------------------------------
+# Retrieval and search crawlers: ALLOWED, deliberately.
+# These fetch a page when a user asks a question. They are how this site gets
+# read, quoted and linked inside an AI answer.
+# ---------------------------------------------------------------------------
+
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: YouBot
+User-agent: Amazonbot
+Allow: /
+Disallow: /debeers
+Disallow: /sonepar
+Disallow: /pricing/calculator
+Disallow: /api/
+
+# ---------------------------------------------------------------------------
+# Model-training crawlers: BLOCKED.
+# These collect content to train on. They do not retrieve at answer time, so
+# blocking them removes nothing from AI answers.
+# ---------------------------------------------------------------------------
+
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+User-agent: FacebookBot
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
+User-agent: Diffbot
+User-agent: ImagesiftBot
+User-agent: Omgilibot
+User-agent: PanguBot
+User-agent: Timpibot
+User-agent: Kangaroo Bot
+User-agent: Webzio-Extended
+Disallow: /
+
+# ---------------------------------------------------------------------------
+# Everything else.
+# ---------------------------------------------------------------------------
+
 User-agent: *
 Allow: /
 Disallow: /debeers
-Disallow: /api/debeers/
 Disallow: /sonepar
-Disallow: /api/sonepar/
 Disallow: /pricing/calculator
-Disallow: /api/pricing/
-Disallow: /pricing/calculator/settings
-Disallow: /api/settings/
+Disallow: /api/
+
+# ---------------------------------------------------------------------------
+# Notes on the private paths above
+#
+#   /debeers and /sonepar     password-gated asset review pages. Also noindex,
+#                             also excluded from the sitemap.
+#   /pricing/calculator       the internal quoting tool. It returns hubStudio
+#                             rates, which never go on an indexable page. The
+#                             PUBLIC instrument is /resources/production-cost,
+#                             which returns market ranges only and is indexed.
+#   /api/                     endpoints, nothing to read.
+# ---------------------------------------------------------------------------
 
 Sitemap: https://www.hubstudio.ai/sitemap-index.xml

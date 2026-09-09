@@ -1,0 +1,304 @@
+---
+/**
+ * Author page  ·  /the-studio/creative-talents/<slug>
+ *
+ * Infrastructure item 6. The entity graph needs a real, resolvable page per
+ * named person so an article byline has somewhere to point and Person schema
+ * has somewhere to live.
+ *
+ * Deliberately restrained. It renders only what the site already publishes
+ * about each person plus the articles they actually wrote. It does NOT invent
+ * a biography, a market list or a credit list. `authors.ts` explains why:
+ * those fields stay empty until someone supplies them, because plausible
+ * fiction about a real colleague is worse than a short page.
+ *
+ * Body copy uses var(--type-body). No ordinal numerals in repeated blocks.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import { authors, authorPath, type Author } from '../../../data/authors';
+import { insights } from '../../../data/insights';
+
+export function getStaticPaths() {
+  return authors.map((author) => ({
+    params: { slug: author.slug },
+    props: { author },
+  }));
+}
+
+interface Props {
+  author: Author;
+}
+
+const { author } = Astro.props;
+
+const SITE = 'https://www.hubstudio.ai';
+const orgId = `${SITE}/#organization`;
+const url = `${SITE}${authorPath(author)}`;
+
+/* Articles this person actually carries a byline on. */
+const written = insights.filter((i) => i.author === author.name);
+
+/* The founder already has a Person node in the site-wide graph, keyed by
+   this @id. Reusing it keeps one entity rather than creating a duplicate. */
+const isFounder = author.slug === 'cyril-drouin';
+const personId = isFounder ? `${SITE}/#cyril-drouin` : `${url}#person`;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: author.name,
+      jobTitle: author.role,
+      url,
+      worksFor: { '@id': orgId },
+      ...(author.nationality ? { nationality: author.nationality } : {}),
+      ...(author.image ? { image: new URL(author.image, SITE).href } : {}),
+      ...(author.bio ? { description: author.bio } : {}),
+      ...(author.sameAs?.length ? { sameAs: author.sameAs } : {}),
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${url}#profile`,
+      url,
+      name: `${author.name}, ${author.role} at hubStudio`,
+      mainEntity: { '@id': personId },
+      isPartOf: { '@type': 'WebSite', url: SITE },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'The Studio', item: `${SITE}/the-studio` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Creative talents',
+      item: `${SITE}/the-studio/creative-talents`,
+    },
+    { '@type': 'ListItem', position: 4, name: author.name, item: url },
+  ],
+};
+
+const metaTitle = `${author.name}, ${author.role} | hubStudio`;
+const metaDescription = author.bio
+  ? author.bio.slice(0, 155)
+  : `${author.name} is ${author.role.match(/^[AEIOU]/i) ? 'an' : 'a'} ${author.role} at hubStudio${author.nationality ? `, ${author.nationality}` : ''}.`;
+---
+
+<Layout title={metaTitle} description={metaDescription} image={author.image}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <article class="au">
+    <div class="container">
+      <nav class="au-back">
+        <a href="/the-studio/creative-talents">All creative talents</a>
+      </nav>
+
+      <header class="au-head">
+        {author.image && (
+          <img
+            class="au-portrait"
+            src={author.image}
+            alt={`Portrait of ${author.name}, ${author.role} at hubStudio.`}
+            width="320"
+            height="320"
+            loading="eager"
+          />
+        )}
+        <div class="au-headtext">
+          <p class="au-role">{author.role}</p>
+          <h1>{author.name}</h1>
+          {author.nationality && <p class="au-nat">{author.nationality}</p>}
+        </div>
+      </header>
+
+      {author.quote && <blockquote class="au-quote">{author.quote}</blockquote>}
+
+      {author.bio && <p class="au-bio">{author.bio}</p>}
+
+      {author.markets?.length ? (
+        <section class="au-block">
+          <h2>Markets</h2>
+          <p>{author.markets.join(', ')}</p>
+        </section>
+      ) : null}
+
+      {author.credits?.length ? (
+        <section class="au-block">
+          <h2>Selected credits</h2>
+          <ul class="au-list">
+            {author.credits.map((credit) => <li>{credit}</li>)}
+          </ul>
+        </section>
+      ) : null}
+
+      {written.length > 0 && (
+        <section class="au-block">
+          <h2>{written.length === 1 ? 'Article' : 'Articles'}</h2>
+          <ul class="au-list">
+            {written.map((piece) => (
+              <li>
+                <a href={`/resources/insights/${piece.slug}`}>{piece.title}</a>
+                <span class="au-date">{piece.date}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section class="au-block">
+        <h2>Work with the studio</h2>
+        <p>
+          hubStudio's creatives sit inside the markets they make work for. If
+          you have a brief, the contact page reaches a producer, and the work
+          index shows what the team has shipped.
+        </p>
+        <p class="au-links">
+          <a href="/contact">Send a brief</a>
+          <a href="/work">See the work</a>
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .au {
+    padding: clamp(96px, 14vh, 168px) 0 clamp(80px, 12vh, 128px);
+    background: var(--bg-white);
+  }
+  .au-back {
+    margin: 0 0 40px;
+  }
+  .au-back a {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    text-decoration: none;
+  }
+  .au-back a:hover {
+    color: var(--brand-orange-cta);
+  }
+
+  .au-head {
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(24px, 4vw, 48px);
+    flex-wrap: wrap;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .au-portrait {
+    width: clamp(140px, 20vw, 220px);
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 2px;
+    background: var(--bg-cream);
+  }
+  .au-headtext {
+    flex: 1 1 320px;
+  }
+  .au-role {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+    margin: 0 0 12px;
+  }
+  .au-head h1 {
+    font-size: var(--type-h2);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .au-nat {
+    font-size: var(--type-body);
+    color: var(--text-mute);
+    margin: 12px 0 0;
+  }
+
+  .au-quote {
+    font-family: var(--font-serif);
+    font-size: var(--type-h3);
+    line-height: 1.28;
+    max-width: 24ch;
+    margin: 40px 0 0;
+    padding: 0;
+    border: 0;
+  }
+
+  /* Running body copy is --type-body. Never --type-small. */
+  .au-bio,
+  .au-block p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    max-width: 62ch;
+    margin: 24px 0 0;
+  }
+
+  .au-block {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .au-block h2 {
+    font-size: var(--type-h4);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .au-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    max-width: 62ch;
+  }
+  .au-list li {
+    font-size: var(--type-body);
+    line-height: 1.5;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-hairline);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .au-list a {
+    color: var(--text-ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .au-list a:hover {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+  }
+  .au-date {
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    color: var(--text-mute);
+    white-space: nowrap;
+  }
+
+  .au-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .au-links a {
+    font-size: var(--type-body);
+    color: var(--brand-orange-cta);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

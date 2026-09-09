@@ -18,123 +18,8 @@
  * a closing CTA. Motion: hero load stagger, scroll-reveal, scroll-progress bar.
  */
 import Layout from '../../layouts/Layout.astro';
+import { creatives, authorPath } from '../../data/authors';
 import Button from '../../components/Button.astro';
-
-/* The sixteen creatives. `slug` matches /Images/talent-<slug>.png. */
-const creatives = [
-  {
-    slug: 'marcus-sullivan',
-    name: 'Marcus Sullivan',
-    nationality: 'American',
-    role: 'Creative Director',
-    quote: 'I design brand worlds that feel lived-in before they launch.',
-  },
-  {
-    slug: 'lea-moreau',
-    name: 'Léa Moreau',
-    nationality: 'French',
-    role: 'Art Director',
-    quote: "Luxury isn't what you show. It's what you suggest.",
-  },
-  {
-    slug: 'james-whitmore',
-    name: 'James Whitmore',
-    nationality: 'British',
-    role: 'Copywriter',
-    quote: 'The best ideas survive the meeting room and the pub test.',
-  },
-  {
-    slug: 'diego-martinez',
-    name: 'Diego Martinez',
-    nationality: 'American',
-    role: 'Creative Director',
-    quote: "Culture isn't a trend to tap. It's a truth to honor.",
-  },
-  {
-    slug: 'nina-hoffmann',
-    name: 'Nina Hoffmann',
-    nationality: 'German',
-    role: 'Brand Creative',
-    quote: "Precision and poetry aren't opposites. They're partners.",
-  },
-  {
-    slug: 'erik-lindstrom',
-    name: 'Erik Lindström',
-    nationality: 'Swedish',
-    role: 'Film Director',
-    quote: 'Minimalism with a pulse. Function that makes you feel.',
-  },
-  {
-    slug: 'wei-lin-tan',
-    name: 'Wei Lin Tan',
-    nationality: 'Singaporean',
-    role: 'Brand Designer',
-    quote: "East meets West isn't a cliché when you've lived both truths.",
-  },
-  {
-    slug: 'sofia-andersen',
-    name: 'Sofia Andersen',
-    nationality: 'Danish',
-    role: 'Visual Designer',
-    quote: "Hygge isn't an aesthetic. It's emotional architecture.",
-  },
-  {
-    slug: 'jason-liu',
-    name: 'Jason Liu',
-    nationality: 'Chinese',
-    role: 'Digital Art Director',
-    quote: 'I turn five thousand years of aesthetics into pixels that sell.',
-  },
-  {
-    slug: 'aisha-rahman',
-    name: 'Aisha Rahman',
-    nationality: 'Malaysian',
-    role: 'Content Strategist',
-    quote: 'I translate heritage into language Gen Z actually wants to hear.',
-  },
-  {
-    slug: 'sophie-brennan',
-    name: 'Sophie Brennan',
-    nationality: 'Australian',
-    role: 'Social Creative',
-    quote: 'Bold enough to stop the scroll. Real enough to start a conversation.',
-  },
-  {
-    slug: 'maya-patel',
-    name: 'Maya Patel',
-    nationality: 'American',
-    role: 'Creative Systems Lead',
-    quote: 'I build systems that scale creativity, not just content.',
-  },
-  {
-    slug: 'nara-suwan',
-    name: 'Nara Suwan',
-    nationality: 'Thai',
-    role: 'Color & Design Specialist',
-    quote: "Color isn't decoration. It's emotion with a wavelength.",
-  },
-  {
-    slug: 'olivier-dubois',
-    name: 'Olivier Dubois',
-    nationality: 'French',
-    role: 'Creative Director',
-    quote: 'Provocation without purpose is just noise.',
-  },
-  {
-    slug: 'isabella-rossi',
-    name: 'Isabella Rossi',
-    nationality: 'Italian',
-    role: 'Production Designer',
-    quote: "Craft isn't slow. It's intentional.",
-  },
-  {
-    slug: 'finn-korhonen',
-    name: 'Finn Korhonen',
-    nationality: 'Finnish',
-    role: 'Motion Designer',
-    quote: 'Less drama, more impact. That is the Nordic way.',
-  },
-];
 
 /* Distinct nationalities, for the marquee. Order kept editorial, not sorted. */
 const markets = [
@@ -275,6 +160,9 @@ const markets = [
                 <figcaption class="talent__tag">{person.name}</figcaption>
               </figure>
               <div class="talent__body">
+                <a class="talent__link" href={authorPath(person)}>
+                  {person.name}
+                </a>
                 <p class="talent__meta">
                   {person.nationality}
                   <span class="talent__dot" aria-hidden="true" />
@@ -952,3 +840,21 @@ const markets = [
     revealEls.forEach((el) => el.classList.add('is-in'));
   }
 </script>
+
+<style>
+  /* Name links through to the creative's own page (entity graph). */
+  .talent__link {
+    display: inline-block;
+    font-size: var(--type-h4);
+    line-height: 1.2;
+    color: var(--text-ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+    margin-bottom: 10px;
+  }
+  .talent__link:hover,
+  .talent__link:focus-visible {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+  }
+</style>
