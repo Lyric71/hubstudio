@@ -1,8 +1,31 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "How much does it cost to adapt a campaign for China?",
+    "a": "There is no single published figure, and six of the nine cost lines have no public benchmark at all. What is published: translation at roughly 0.08 to 0.18 USD per source word, capture from 80 to 300 RMB an image on one dated regional card, and detail-page layout spanning 200 to 5,000 RMB depending on which card you read."
+  },
+  {
+    "q": "Is China localization just translation?",
+    "a": "No. Translation covers the words, which is roughly one line of a seven-line stack. The frame changes, the on-image text becomes a regulated object under the Advertising Law, an ad mark has to be designed into the layout, and Western talent releases rarely cover Chinese territory or platforms."
+  },
+  {
+    "q": "Why can a Western master not be re-cropped for China?",
+    "a": "Cutting a 16:9 master to a tall frame keeps about 32 to 45 percent of its width, which is ratio arithmetic rather than a measurement. The headline's negative space and the subject's placement both go. Add re-typesetting to remove superlatives, a required ad mark, and talent rights that do not travel."
+  },
+  {
+    "q": "What does a translation quote leave out?",
+    "a": "Re-typesetting every size, the layout rebuild for tall frames, re-shoot or recasting, talent re-clearance, compliance review of on-image claims, AI label application and survival QA, and upload QA per surface. Only the words and sometimes transcreation are inside a translation quote."
+  },
+  {
+    "q": "How many assets does a China adaptation produce?",
+    "a": "More than the master count, because each surface demands a structurally different object rather than a resize: a square catalog frame plus a separate long detail page, a tall video frame with a moving safe area, a cover plus card sequence, an article layout with its own cover crop. Count surfaces first, then assets."
+  }
+];
 ---
 
-<ArticleLayout slug="cost-to-localize-a-campaign-for-china" ctaLabel="Get a market range for your campaign">
+<ArticleLayout slug="cost-to-localize-a-campaign-for-china" ctaLabel="Get a market range for your campaign" faq={faq}>
   <p class="standfirst">Search this and you get translation platforms quoting cents per word. That answer is not wrong so much as aimed at a different problem. The expensive part of a China adaptation is not the words. It is that the picture was composed for a frame China does not use, carrying text that is a legal object here, featuring a person whose release does not cover this territory.</p>
 
   <h2>How much does it cost to adapt a campaign for China?</h2>

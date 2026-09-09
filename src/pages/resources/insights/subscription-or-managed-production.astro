@@ -1,8 +1,31 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is the difference between a design subscription and a production partner?",
+    "a": "A subscription prices access to creative capacity for a period, published as hours a month or as how many jobs may be open at once. Production prices named deliverables against a written specification. The practical consequence is who carries the overrun: with access, the buyer does, and with a delivered asset, the seller does."
+  },
+  {
+    "q": "What am I actually buying with a design subscription?",
+    "a": "Lanes and time. Published cards in September 2026 price 120 to 180 hours a month at the managed end, and one to five concurrent active requests at the unlimited end. No card checked commits to a number of finished assets, so the fee attaches to availability rather than to output."
+  },
+  {
+    "q": "Do design subscriptions work at high volume?",
+    "a": "They work at high volume of small jobs and fail at high concurrency. Published tiers cap active requests at one to five at a time, so a launch needing forty finished assets in two weeks does not fit regardless of how many requests you are allowed to file. Check your worst concurrency week, not your monthly average."
+  },
+  {
+    "q": "When is a subscription the right choice?",
+    "a": "When most briefs start from an asset that already exists and demand is steady rather than spiky. Resizes, decks, social from an existing library and landing page variants all suit the model well. Work that needs photography, filming, casting or rights clearance does not, since none of the cards read in September 2026 lists those as included."
+  },
+  {
+    "q": "What do subscription price bands look like in 2026?",
+    "a": "Two bands, an order of magnitude apart. Unlimited-request tiers publish roughly $700 to $4,500 a month, month to month. Managed tiers publish roughly $6,000 to $15,000 a month, with dedicated teams from about $30,000 on a twelve-month term. Between $4,500 and $5,995, no card checked publishes a tier at all."
+  }
+];
 ---
 
-<ArticleLayout slug="subscription-or-managed-production" ctaLabel="Get a market range for your volume">
+<ArticleLayout slug="subscription-or-managed-production" ctaLabel="Get a market range for your volume" faq={faq}>
   <p class="standfirst">Every comparison of these two models argues about features, turnaround promises and monthly price. None of them starts with the question that decides the outcome: what does the fee actually buy? Answer that and the rest follows, including the part nobody publishes.</p>
 
   <h2>What is the difference between a design subscription and a production partner?</h2>

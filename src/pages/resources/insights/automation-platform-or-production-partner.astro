@@ -1,8 +1,35 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "Can a creative automation platform replace a production studio?",
+    "a": "No, and its own standard says why. The published specification for dynamic content ads requires every creative component to define a fallback asset, because the defined behavior when an asset is missing is to substitute one that exists. There is no mechanism in the standard for producing a new component, since production is not what the layer does."
+  },
+  {
+    "q": "What does creative automation actually do?",
+    "a": "It assembles and serves combinations of creative elements that already exist, using a metadata schema so an ad server can choose which asset to show for a given impression. A trade body describes optimization as coming into play only after multiple versions have been built and tailored to segments, so assembly is stage three rather than stage one."
+  },
+  {
+    "q": "Who makes the master creative?",
+    "a": "Whoever does direction, casting, capture or generation, and finishing. That is a production function whether it sits inside your company, inside an agency, or inside a studio. The automation layer consumes the output of that work and does not perform it."
+  },
+  {
+    "q": "Do I need both a platform and a studio?",
+    "a": "Usually, and most brands already have the platform half. In December 2023, 66 percent of surveyed multinationals ran an in-house agency and 56 percent expected to move more digital production in-house within three years. The practical question is which half of the pipeline is currently under-resourced."
+  },
+  {
+    "q": "When is automation alone enough?",
+    "a": "When your work is genuinely adaptation: a stable set of approved masters, versioned across sizes, languages and audiences, refreshed infrequently. If that describes your year, the origination requirement is small and buying it occasionally is reasonable."
+  },
+  {
+    "q": "Does creative quality really matter more than targeting?",
+    "a": "On the available measurement, yes, by a wide margin. A US measurement study across nearly 450 consumer packaged goods campaigns attributed 49 percent of incremental sales to creative and 11 percent to targeting, and an earlier edition on a different sample put creative at 47 percent. Repetition research adds that strong creative resists wear-out while weak creative declines with exposure."
+  }
+];
 ---
 
-<ArticleLayout slug="automation-platform-or-production-partner" ctaLabel="Talk about the originate layer">
+<ArticleLayout slug="automation-platform-or-production-partner" ctaLabel="Talk about the originate layer" faq={faq}>
   <p class="standfirst">The comparison is usually framed as software against services, which is the wrong axis. The real question is who makes the thing being multiplied, and the automation layer answers that question in its own technical specification.</p>
 
   <h2>Do I need a creative automation platform or a production studio?</h2>

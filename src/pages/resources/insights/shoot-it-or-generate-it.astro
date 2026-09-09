@@ -1,8 +1,35 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "When should a product be photographed instead of generated?",
+    "a": "When the asset has to carry material truth, when a marketplace or a regulator requires the actual product, when a real person is in it, or when physical scale is the message. Those four conditions cover most of what still belongs in front of a camera. Everything else is a judgment call about volume."
+  },
+  {
+    "q": "What can current image generation not do convincingly?",
+    "a": "Physical behavior rather than subject matter. An October 2025 benchmark covering optics, mechanics and state transitions scored eleven current editing models against human-annotated reflection surfaces and contact points, and every open-source model scored below 60. Reflections, contact shadows and material response are where it shows."
+  },
+  {
+    "q": "Do marketplaces allow AI-generated product images?",
+    "a": "It varies, and the direction is toward requiring the image to represent the real item. One Chinese marketplace published a rule in March 2025 naming four AI failure categories including mismatched material and exaggerated effects. A general marketplace's published seller guidelines require AI images to be truthful and accurate and require sellers to use actual product images. Check the specific platform rules before a catalog runs."
+  },
+  {
+    "q": "Does an advertising regulator treat AI imagery differently?",
+    "a": "Not as a separate category. UK regulator guidance from June 2026 states the advertising code is media-neutral: the rules apply regardless of how content was created, and the advertiser remains responsible for AI output used in its ads. In March 2026 the same regulator upheld 22 complaints where footage gave a misleading impression of how realistic a product was."
+  },
+  {
+    "q": "Do I need a disclosure for a generated model or presenter?",
+    "a": "In some markets, yes. A New York statute in force since 9 June 2026 requires an advertisement using a synthetic performer to conspicuously disclose it. EU transparency obligations for synthetic content apply from 2 August 2026 and require deployers of deep fakes to disclose on first exposure. Treat a generated presenter as a paperwork question, not a shortcut around one."
+  },
+  {
+    "q": "What is a sensible starting ratio?",
+    "a": "Most catalogs land near 70 percent generated once a proper set of anchors exists, but the ratio is an output, not a target. Work out which assets meet the four conditions, shoot those, generate what derives from them, and let the percentage fall where it falls. A team that starts from the percentage ends up arguing about the wrong thing."
+  }
+];
 ---
 
-<ArticleLayout slug="shoot-it-or-generate-it" ctaLabel="Talk to the production team">
+<ArticleLayout slug="shoot-it-or-generate-it" ctaLabel="Talk to the production team" faq={faq}>
   <p class="standfirst">Most advice on this splits the world into believers and holdouts. The useful version is narrower. There are four conditions that force a camera, and once you can name them the rest of the catalog stops being an argument.</p>
 
   <h2>When should you shoot a product and when should you generate it?</h2>

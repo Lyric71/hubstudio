@@ -1,8 +1,31 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What should be logged for every AI-generated asset?",
+    "a": "Asset ID, producer, model name and version, creation timestamp, content attribute, label flag, action history, inputs with their rights status, and the prompt. Add named human edits, an approver, destination markets and a retention date as practice. Each of the first group is named in a published instrument or specification rather than invented."
+  },
+  {
+    "q": "How long do provenance records need to be kept?",
+    "a": "Only one instrument sets a period. Article 9 of China's labeling Measures requires at least six months of logs, and only where content was handed over without an explicit label at the user's request. The EU AI Act's Article 50 and the US state statutes set no retention duty at all, so everything else is policy."
+  },
+  {
+    "q": "Who can request an AI disclosure audit trail?",
+    "a": "In practice, a client's legal team at contract or renewal, a distribution platform at upload, a rights holder or performer's representative asking what a likeness was built from, and your own team when an asset needs versioning later. The last is not a compliance request, and it is often the one that justifies keeping the record."
+  },
+  {
+    "q": "Does the EU AI Act require a per-asset record?",
+    "a": "No. Article 50 requires providers to mark synthetic output machine-readably and deployers to disclose deepfakes. Neither the article nor the European Commission's FAQ on it names a file anyone must keep. A per-asset record is how you answer an Article 50 question, not something the article demands."
+  },
+  {
+    "q": "What does a complete provenance record look like?",
+    "a": "One row per asset carrying the fifteen fields above, with content attribute set correctly for composites, rights status recorded per input rather than per project, and destination markets filled in. That last field decides which regime applies, so without it the rest of the row cannot be assessed."
+  }
+];
 ---
 
-<ArticleLayout slug="disclosure-audit-trail-per-asset" ctaLabel="Talk about your pipeline">
+<ArticleLayout slug="disclosure-audit-trail-per-asset" ctaLabel="Talk about your pipeline" faq={faq}>
   <p class="standfirst">Law firm briefings tell you what the rules say. They stop before the part that decides whether you comply: which fields your production workflow writes down, for every asset, on the day it is made. This page is that layer.</p>
 
   <p>A note before anything else. What follows describes production practice, drawn from the published text of the instruments named in it. It is not legal advice, and it does not interpret any regime beyond what the instrument itself says.</p>

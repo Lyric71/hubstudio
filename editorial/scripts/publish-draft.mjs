@@ -45,6 +45,7 @@ function parseArgs(argv) {
     if (!a.startsWith('--')) { out._.push(a); continue; }
     const key = a.slice(2);
     if (key === 'dry') { out.dry = true; continue; }
+    if (key === 'update') { out.update = true; continue; }
     const val = argv[++i];
     if (key === 'drop-link') out.dropLink.push(val);
     else out[key] = val;
@@ -233,6 +234,7 @@ let standfirstDone = false;
 let seenH1 = false;
 let inFaq = false;
 let wordCount = 0;
+const faq = [];
 
 for (const b of bs) {
   if (b.t === 'h1') { seenH1 = true; continue; }
@@ -254,9 +256,14 @@ for (const b of bs) {
     continue;
   }
   if (inFaq && isFaqQuestion(b.v)) {
-    html.push(`  <h3>${inline(b.v.replace(/^\*\*|\*\*$/g, ''))}</h3>`);
+    const q = b.v.replace(/^\*\*|\*\*$/g, '');
+    faq.push({ q, a: '' });
+    html.push(`  <h3>${inline(q)}</h3>`);
     continue;
   }
+  /* The paragraph after an FAQ question is its answer. Captured here so the
+     schema and the visible copy come from one source and cannot drift. */
+  if (inFaq && faq.length && !faq[faq.length - 1].a) faq[faq.length - 1].a = b.v;
   html.push(`  <p>${inline(b.v)}</p>`);
 }
 
@@ -308,11 +315,15 @@ const doc = html.join('\n\n');
 /* ---- the page ---- */
 
 const pagePath = path.join(PAGES, `${fm.slug}.astro`);
+const usableFaq = faq.filter((f) => f.q && f.a);
+const faqConst = usableFaq.length
+  ? `\nconst faq = ${JSON.stringify(usableFaq, null, 2).replace(/\n/g, '\n')};\n`
+  : '';
 const page = `---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
----
+${faqConst}---
 
-<ArticleLayout slug="${fm.slug}"${ctaLabel ? ` ctaLabel="${ctaLabel}"` : ''}>
+<ArticleLayout slug="${fm.slug}"${ctaLabel ? ` ctaLabel="${ctaLabel}"` : ''}${usableFaq.length ? ' faq={faq}' : ''}>
 ${doc}
 </ArticleLayout>
 `;
@@ -340,8 +351,23 @@ const entry = `  {
 `;
 
 const insightsSrc = readFileSync(INSIGHTS, 'utf8');
-if (insightsSrc.includes(`slug: '${fm.slug}'`)) {
-  console.error(`\n  ${fm.slug} is already in insights.ts. Remove it first to republish.\n`);
+const alreadyListed = insightsSrc.includes(`slug: '${fm.slug}'`);
+
+/* --update rewrites the page from the current draft and leaves the insights.ts
+   entry alone. Used when the conversion itself changes, so a published piece
+   picks up the improvement without its publish date or card copy moving. */
+if (args.update) {
+  if (!alreadyListed) {
+    console.error(`\n  ${fm.slug} is not in insights.ts yet. Publish it first, without --update.\n`);
+    process.exit(2);
+  }
+  writeFileSync(pagePath, page, 'utf8');
+  console.log(`  updated ${fm.slug}  (${usableFaq.length} FAQ pairs, ${wired.length} links)`);
+  process.exit(0);
+}
+
+if (alreadyListed) {
+  console.error(`\n  ${fm.slug} is already in insights.ts. Use --update to rewrite the page, or remove the entry to republish.\n`);
   process.exit(2);
 }
 /* The file is checked out with CRLF on Windows, so match the newline rather

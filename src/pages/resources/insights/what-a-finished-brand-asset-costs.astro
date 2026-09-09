@@ -1,8 +1,35 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "How much does one creative asset cost?",
+    "a": "Published studio rate cards collected in September 2026 put a standard product image at $39 to $50, a model or lifestyle image at about $95, a short video clip at about $93 and a finished pro edit at about $199. Bulk ecommerce image editing runs far lower, roughly $0.25 to $1.20 an image, because it retouches an image that already exists rather than capturing one."
+  },
+  {
+    "q": "What counts as one finished asset?",
+    "a": "There is no industry definition. This page uses one deliverable file, in one specified format and one specified duration or dimension, approved and cleared for its channel. Under that definition a resize, a language version and an alternate cut are each new assets, while an alternate take shot in the same session is not."
+  },
+  {
+    "q": "Why do agencies not publish cost per asset?",
+    "a": "A per-asset figure exposes margin. The only published measurement of production transparency, from a US advertiser trade body in August 2017, found fewer than half of respondents required in-house bidding disclosure and more than 60 percent did not require rebates be returned. That study did not publish its own respondent count."
+  },
+  {
+    "q": "Is a subscription cheaper than a production studio?",
+    "a": "It depends what you count. Unlimited-request design subscriptions publish tiers of roughly $700 to $4,500 a month with no capture, no talent and no usage included, while managed subscriptions publish floors of roughly $6,000 to $15,000. A subscription prices access to designers; production prices delivered assets. Compare them per delivered asset, not per month."
+  },
+  {
+    "q": "What does a cost per asset figure usually leave out?",
+    "a": "Usage rights, most often. The US commercial production trade body's standard bid form itemizes a production across sections A to P and carries no line for media usage payments at all. Versioning and trafficking are the other two: under the performers' union agreement effective April 2025, an edit outside defined parameters creates a new commercial with new fees."
+  },
+  {
+    "q": "How much does a 30-second brand film cost?",
+    "a": "No trustworthy published band exists for this at the finished-film level, which is why this page does not print one. The figures circulating are seller estimates without a sample or a method. What can be said from primary sources is that stills, social elements and behind the scenes are bid as separate budgets, so a film number and a campaign number are never the same number."
+  }
+];
 ---
 
-<ArticleLayout slug="what-a-finished-brand-asset-costs" ctaLabel="Get a market range for your volume">
+<ArticleLayout slug="what-a-finished-brand-asset-costs" ctaLabel="Get a market range for your volume" faq={faq}>
   <p class="standfirst">Every page that answers this question gives you a range without telling you what one asset is, where the number came from, or who paid for the research. This one defines the unit first, publishes absolute figures, and shows the method. No email gate.</p>
 
   <h2>What does one finished brand asset cost?</h2>

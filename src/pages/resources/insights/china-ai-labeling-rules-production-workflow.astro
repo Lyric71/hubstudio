@@ -1,8 +1,35 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "Do China's AI labeling rules apply to a foreign brand?",
+    "a": "They attach to content published through services operating in mainland China, not to the nationality of the advertiser. If you publish generated content on a Chinese platform, the declaration duty in Article 10 is engaged regardless of where your team sits. Whether your agency or your studio shares that duty depends on the role each actually plays, which is a question for counsel."
+  },
+  {
+    "q": "What is the difference between an explicit and an implicit label?",
+    "a": "The explicit label is visible: a mark on the image, an opening-frame notice on video, an audio cue. The implicit label is metadata written into the file header, carrying content attribute information, the producing service name or code, and a content ID. Article 4 requires the explicit label to be present in a downloaded or exported file."
+  },
+  {
+    "q": "Does the label have to survive download?",
+    "a": "The explicit one, yes. Article 4 requires a service offering download, copy or export to ensure the file contains a conforming explicit label. The implicit metadata label is not what that clause is about, which is a distinction a lot of secondary commentary loses."
+  },
+  {
+    "q": "Can a studio deliver an unlabeled master?",
+    "a": "Article 9 contemplates it. A provider may hand over content without the explicit label where the user applies for it and the user agreement sets out the user's labeling obligation and liability, and the provider keeps the related logs for at least six months. So the unlabeled master is conditional on paperwork and record keeping, not simply available on request."
+  },
+  {
+    "q": "Where in a production pipeline does the label usually get lost?",
+    "a": "At export, on the evidence of the regulator's own November 2025 enforcement round, which found labels omitted when files were exported and metadata identifying the producer missing. Retouch and batch resizing are the other common points, because both write a new file and few tools carry custom header metadata across."
+  },
+  {
+    "q": "What are the penalties?",
+    "a": "There is no schedule of penalties in the Measures themselves. Enforcement is routed back through authorities and instruments that already existed, and what has been published so far reads as account handling and content clearance rather than financial penalties. If someone quotes you a number, ask which instrument it comes from, because it is not coming from this one."
+  }
+];
 ---
 
-<ArticleLayout slug="china-ai-labeling-rules-production-workflow" ctaLabel="Talk about your pipeline">
+<ArticleLayout slug="china-ai-labeling-rules-production-workflow" ctaLabel="Talk about your pipeline" faq={faq}>
   <p class="standfirst">The rules have been in force since September 2025 and they are well explained. What nobody has published is the part that actually costs you: which stage of your pipeline drops the label, and what has to be in the file you hand over.</p>
 
   <h2>What do China's AI labeling rules require a production workflow to do?</h2>
