@@ -41,7 +41,7 @@ first. They override any conflicting rule inside the skill.
 
 ## The angle
 
-Production has moved from a network-distributed model, where each agency ran its own studio, to centralised units attached to platforms. That is an industry fact, stated without naming anyone. Consolidation triggers roster reviews, and roster reviews are when production budgets move. Be the instrument that runs the review.
+Production has moved from a network-distributed model, where each agency ran its own studio, to centralized units attached to platforms. That is an industry fact, stated without naming anyone. Consolidation triggers roster reviews, and roster reviews are when production budgets move. Be the instrument that runs the review.
 
 ## The research gate, before any drafting
 
@@ -67,7 +67,7 @@ first: if the figure is logged, current and verified twice, reuse the logged
 citation. Append anything new to the ledger before finishing.
 
 - ANA 2017 production transparency study: fewer than half of respondents required in-house bidding disclosure, over 60 percent did not require production rebates returned. Survey date and population stated.
-- The centralisation shift is described as a category pattern with no company named and no figure attached unless one can be sourced to a trade body
+- The centralization shift is described as a category pattern with no company named and no figure attached unless one can be sourced to a trade body
 
 **If a figure cannot be sourced, cut the claim.** Do not estimate, do not
 hedge, do not write "industry sources suggest". A missing number is better
@@ -75,7 +75,7 @@ than an unsourced one.
 
 ## Must include
 
-- What centralisation changes in practice: who your producer reports to, what tooling your assets pass through, how utilisation drives pricing
+- What centralization changes in practice: who your producer reports to, what tooling your assets pass through, how utilization drives pricing
 - The 14 questions in four groups: contract continuity, commercials, bidding conflict, platform and data exit
 - A copyable scoring table
 - The ANA 2017 production transparency findings
@@ -97,7 +97,7 @@ images in body copy.
 
 - The 14 questions, grouped, each with what a good answer sounds like and what a weak one sounds like
 - Copyable scoring table, one row per question, three vendor columns
-- Table: what centralisation changes, before and after
+- Table: what centralization changes, before and after
 - Feature image: see `../SPEC.md`. `hubstudio-image-style-guide.md` at the
   repo root is binding. Never name a real person in the prompt: convert every
   photographer reference into its concrete visual properties.
@@ -126,7 +126,7 @@ Final section only. CTA label: **Book a roster review call**
 | Field | Ceiling | Draft value |
 |---|---|---|
 | Title | 52 chars | 14 Questions for a Production Roster Review (43 chars) |
-| Meta description | 152 chars | Production is consolidating into centralised units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table. (145 chars) |
+| Meta description | 152 chars | Production is consolidating into centralized units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table. (145 chars) |
 | Excerpt | 25 words | generate in the SEO iteration |
 
 The draft values above are approved and inside the ceilings. Use them unless

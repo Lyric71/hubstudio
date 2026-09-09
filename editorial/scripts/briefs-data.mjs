@@ -363,7 +363,7 @@ export const PIECES = [
     angle:
       'The creative spec sheet per format, sourced to Ocean Engine (巨量引擎), with a visible reviewed date. The incumbents answer a specs query with a media-buying article.',
     mustInclude: [
-      'One table per placement covering dimensions, duration, file weight, title and copy limits, landing behaviour',
+      'One table per placement covering dimensions, duration, file weight, title and copy limits, landing behavior',
       'What gets rejected and why',
       'The production implication of each format: open screen needs a first-frame hero, in-feed needs a hook inside 1.5 seconds',
     ],
@@ -417,17 +417,17 @@ export const PIECES = [
       'The only version with screenshots from the live app and a maintained changelog. Win on proof, not on being first.',
     mustInclude: [
       'Note image ratios and counts',
-      'Cover crop behaviour in feed against profile grid',
+      'Cover crop behavior in feed against profile grid',
       'Video note specs',
       'Text safe areas',
       'How the cover is cropped differently in search',
       'A dated changelog block at the foot',
     ],
     stats: [
-      'Ratios and crop behaviour, measured from live app captures with the app version and capture date stated',
+      'Ratios and crop behavior, measured from live app captures with the app version and capture date stated',
     ],
     assets: [
-      'Spec table: surface, ratio, pixel size, crop behaviour',
+      'Spec table: surface, ratio, pixel size, crop behavior',
       'Live app screenshots: feed, profile grid, search, with the crop lines drawn on',
       'Changelog block, dated, updated in place',
     ],
@@ -525,14 +525,14 @@ export const PIECES = [
       'The easiest single win in the set. No live competition at all, so the job is simply to be current, complete and dated.',
     mustInclude: [
       'Post image counts and crops',
-      'Nine-grid behaviour',
+      'Nine-grid behavior',
       'Video specs',
       'Cover images',
       'Weibo (微博) ad placements',
       'What changed since the 2022 guides that still rank',
     ],
     stats: [
-      'Dimensions and crop behaviour, from the Weibo backend and live app captures only',
+      'Dimensions and crop behavior, from the Weibo backend and live app captures only',
     ],
     assets: [
       'Spec table: surface, count, ratio, crop',
@@ -546,7 +546,7 @@ export const PIECES = [
     ],
     seoTitle: 'Weibo Image and Video Specs 2026',
     seoDesc:
-      'Current Weibo specs for brands: post image counts and crops, nine-grid behaviour, video and cover sizes, ad placements, and what changed since 2022.',
+      'Current Weibo specs for brands: post image counts and crops, nine-grid behavior, video and cover sizes, ad placements, and what changed since 2022.',
     faqs: [
       'What size should a Weibo post image be?',
       'How does the Weibo nine-grid crop images?',
@@ -871,7 +871,7 @@ export const PIECES = [
       'The costs in-house teams never book. Recruitment, idle capacity between campaigns, software seats, freelancer surge, and the share of headcount absorbed by trafficking and versioning rather than making anything.',
     mustInclude: [
       'A fully loaded annual model with every line named',
-      'The utilisation question: what share of a salaried creative\'s year is on billable output',
+      'The utilization question: what share of a salaried creative\'s year is on billable output',
       'The fixed against variable argument',
       'When in-house is genuinely right',
       'The hybrid model, platform plus studio, as the third option',
@@ -885,7 +885,7 @@ export const PIECES = [
     assets: [
       'Fully loaded annual model, one table, every line named',
       'Decision table: volume, variation, originated against adapted, which model fits',
-      'Chart: cost per asset against utilisation rate',
+      'Chart: cost per asset against utilization rate',
     ],
     links: [
       ['hub4you platform', '/hub4you'],
@@ -894,11 +894,11 @@ export const PIECES = [
     ],
     seoTitle: 'In-House Studio or Outsourced Production',
     seoDesc:
-      'The fully loaded annual model for an in-house creative studio, the costs nobody books, the utilisation question, and when in-house is genuinely right.',
+      'The fully loaded annual model for an in-house creative studio, the costs nobody books, the utilization question, and when in-house is genuinely right.',
     faqs: [
       'Is an in-house studio cheaper than outsourcing?',
       'What does a fully loaded in-house model include?',
-      'What utilisation rate does an in-house team actually hit?',
+      'What utilization rate does an in-house team actually hit?',
       'When does in-house production make sense?',
       'What is the hybrid platform and studio model?',
     ],
@@ -982,9 +982,9 @@ export const PIECES = [
       'WEAK. Trade news covers the industry shift, nobody has written the buyer\'s instrument',
     words: 2800,
     angle:
-      'Production has moved from a network-distributed model, where each agency ran its own studio, to centralised units attached to platforms. That is an industry fact, stated without naming anyone. Consolidation triggers roster reviews, and roster reviews are when production budgets move. Be the instrument that runs the review.',
+      'Production has moved from a network-distributed model, where each agency ran its own studio, to centralized units attached to platforms. That is an industry fact, stated without naming anyone. Consolidation triggers roster reviews, and roster reviews are when production budgets move. Be the instrument that runs the review.',
     mustInclude: [
-      'What centralisation changes in practice: who your producer reports to, what tooling your assets pass through, how utilisation drives pricing',
+      'What centralization changes in practice: who your producer reports to, what tooling your assets pass through, how utilization drives pricing',
       'The 14 questions in four groups: contract continuity, commercials, bidding conflict, platform and data exit',
       'A copyable scoring table',
       'The ANA 2017 production transparency findings',
@@ -995,12 +995,12 @@ export const PIECES = [
     ],
     stats: [
       'ANA 2017 production transparency study: fewer than half of respondents required in-house bidding disclosure, over 60 percent did not require production rebates returned. Survey date and population stated.',
-      'The centralisation shift is described as a category pattern with no company named and no figure attached unless one can be sourced to a trade body',
+      'The centralization shift is described as a category pattern with no company named and no figure attached unless one can be sourced to a trade body',
     ],
     assets: [
       'The 14 questions, grouped, each with what a good answer sounds like and what a weak one sounds like',
       'Copyable scoring table, one row per question, three vendor columns',
-      'Table: what centralisation changes, before and after',
+      'Table: what centralization changes, before and after',
     ],
     links: [
       ['Brands solutions page', '/solutions/brands'],
@@ -1009,7 +1009,7 @@ export const PIECES = [
     ],
     seoTitle: '14 Questions for a Production Roster Review',
     seoDesc:
-      'Production is consolidating into centralised units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table.',
+      'Production is consolidating into centralized units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table.',
     faqs: [
       'What is a production roster review?',
       'What changes when production consolidates?',
@@ -1448,11 +1448,11 @@ export const PIECES = [
       'A plain line that this describes production practice, not legal advice',
     ],
     doNot: [
-      'Assert a platform behaviour that was not tested. Every row in the survival table states the test date and the file type used.',
+      'Assert a platform behavior that was not tested. Every row in the survival table states the test date and the file type used.',
     ],
     stats: [
       'Every survival table row carries a test date, the file type, and the tool or platform version',
-      'Where a platform behaviour could not be tested, mark it untested rather than inferring it',
+      'Where a platform behavior could not be tested, mark it untested rather than inferring it',
     ],
     assets: [
       'Survival table: stage, survives, degrades or strips, test date, file type',

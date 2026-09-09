@@ -36,7 +36,13 @@ Quotable as bands with the collection date. Never attributed to a firm.
 
 | Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
 |---|---|---|---|---|---|---|---|
-| Fewer than half of respondents required in-house bidding disclosure; over 60 percent did not require production rebates returned | ANA production transparency study, 2017 | ana.net/content/show/id/pr-2017-production-transparency | 2017 | primary | | | 17 |
+| Fewer than half of respondents required in-house bidding disclosure; over 60 percent did not require production rebates returned | "US advertiser trade body production transparency study, August 2017", always with the note that the respondent count was not published | ana.net/content/show/id/pr-2017-production-transparency (403 to automated fetch), confirmed in thedrum.com, marketingdive.com and shootonline.com, 8 and 9 August 2017 | 2017-08 | triangulated | 2026-09-09 | | 17 |
+| Production averaged 19 percent of total marketing budgets, against 24 percent pre-pandemic | "global advertiser trade body content production research, March 2025" | wfanet.org/knowledge/item/2025/03/25/wfa-research-reveals-new-trends-showing-how-brands-are-responding-to-changes-in-content-production, 50 global brands, 10+ sectors, senior marketing procurement respondents | 2025-03-25 | primary | 2026-09-09 | | 17 |
+| Two thirds of brands changed their agency model in the previous four years | "global advertiser trade body content production research, March 2025" | same source, same 50-brand survey, benchmarked against the same study run in 2021 | 2025-03-25 | primary | 2026-09-09 | | 17 |
+| Centralization named as a returning production model, alongside outsourced on-site teams | "global advertiser trade body content production research, March 2025", qualitative trend finding, no figure attached | same source | 2025-03-25 | primary | 2026-09-09 | | 17 |
+| One third of brands build production relationships directly with digital platforms | "global advertiser trade body content production research, March 2025" | same source | 2025-03-25 | primary | 2026-09-09 | | 17 |
+| Nearly two thirds expect to increase social and short-form video production | "global advertiser trade body content production research, March 2025" | same source | 2025-03-25 | primary | 2026-09-09 | | 17 |
+| The largest agency groups folded scattered production teams into centralized production units between 2025 and early 2026 | "trade coverage of the category, February 2026", four reorganizations counted, no group named | digiday.com/marketing/dentsu-is-the-latest-holdco-to-reunite-media-and-creative-production/ | 2026-02-05 | triangulated | 2026-09-09 | | 17 |
 | 82 percent of members run an in-house agency, up from 78 percent in 2018 | ANA | ANA in-house agency research | | primary | | | 15 |
 | CAC Measures for Labeling of AI-Generated Synthetic Content, issued 14 March 2025 by CAC, MIIT, MPS and NRTA, effective 1 September 2025 | the issuing bodies, by name of the instrument | chinalawtranslate.com/en/ai-labeling/ | 2025-03-14 | primary | | | 23, 24, 26 |
 | Mandatory national standard GB 45438-2025 in force 1 September 2025 | the standard, by number | loeb.com/en/insights/publications/2025/03/chinas-ai-labeling-measures-and-mandatory-national-standards-take-effect-september-1 | 2025-03 | triangulated | | | 23, 26 |
@@ -46,6 +52,17 @@ Quotable as bands with the collection date. Never attributed to a firm.
 | Brand mentions correlate with AI visibility at 0.664, backlinks at 0.218 | Zyppy meta-analysis of 54 experiments, 7 May 2026 | ppc.land/23-factors-that-actually-get-your-content-cited-by-ai-search-engines/ | 2026-05-07 | triangulated | | | off-site |
 | 38 percent of Google AI Overview citations come from top-10 pages, down from 76 percent in mid-2025 | Ahrefs | ahrefs.com/blog/ai-overview-citations-top-10 | 2026 | primary | | | infrastructure |
 | 51 percent of 1,076 B2B buyers start research with an AI chatbot more often than Google | G2, March 2026 | learn.g2.com/g2-2026-ai-search-insight-report | 2026-03 | primary | | | infrastructure |
+| Taobao (淘宝) AI fake-image governance rule: material or style mismatch, distorted or exaggerated product effects, obvious cutout and paste look, bodies or scenes breaking physical laws | the platform's own rule announcement, March 2025, reported by Chinese business press | jjckb.xinhuanet.com/20250327/db1aeefb30ba4603b6415560e604ed1e/c.html | 2025-03-27 | triangulated | 2026-09-09 | | 27 |
+| Marketplace seller image guidelines: AI-generated images must be truthful, accurate and not misleading; sellers must use actual product images | "a general marketplace's published seller image guidelines, May 2026" | marketplacelearn.walmart.com product detail page image guidelines | 2026-05-12 | primary | 2026-09-09 | | 27 |
+| UK advertising regulator upheld 22 complaints: real or AI-generated puppy footage implied the product was highly realistic; CAP Code 3.1, 3.7, 3.11 | "a UK advertising regulator ruling, 25 March 2026" | asa.org.uk/rulings/uab-commercecore-g25-1321974-uab-commercecore.html | 2026-03-25 | primary | 2026-09-09 | | 27 |
+| UK advertising code is media-neutral; the advertiser remains responsible for any AI output used in its ads | "UK advertising regulator guidance, June 2026" | asa.org.uk/news/ai-and-deepfakes-four-things-advertisers-need-to-know-before-they-hit-run.html | 2026-06-11 | primary | 2026-09-09 | | 27 |
+| Regulation (EU) No 1169/2011 Article 7(1)(d) and 7(4): appearance and pictorial representations must not mislead; applies to advertising and presentation | the instrument, by number and article | eur-lex.europa.eu/eli/reg/2011/1169/oj/eng | 2011-10-25 | primary | 2026-09-09 | | 27 |
+| Commission Regulation (EU) No 655/2013 honesty criterion: presentations of performance may not go beyond the supporting evidence | the instrument, by number | eur-lex.europa.eu/eli/reg/2013/655/oj/eng | 2013-07-11 | triangulated | 2026-09-09 | | 27 |
+| New York S8420A synthetic performer disclosure, signed 11 December 2025, effective 9 June 2026, penalties 1,000 then 5,000 dollars | the statute, by bill number | nysenate.gov/legislation/bills/2025/S8420/amendment/A | 2025-12-11 | primary | 2026-09-09 | | 27 |
+| EU AI Act Article 50 transparency applies from 2 August 2026, grace period to 2 December 2026; deep fakes disclosed on first exposure | the Commission's own FAQ page | digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act | 2026-07-24 | primary | 2026-09-09 | | 27 |
+| California AB 2602 digital replica contract consent, effective 1 January 2025 | the statute, by bill number | leginfo.legislature.ca.gov AB-2602 | 2025-01-01 | triangulated | 2026-09-09 | | 27 |
+| Image-editing physical-realism benchmark: 900 cases, 8 subdimensions, 11 models; all open-source below 60 | "an image editing physical-realism benchmark, October 2025" | arxiv.org/html/2510.17681v1 | 2025-10-20 | single-source | 2026-09-09 | | 27 |
+| Generated images can be perceptually convincing without being physically plausible; 32 MERL materials, 45/35/40 observers | "Journal of Vision 26(3):7, March 2026" | pmc.ncbi.nlm.nih.gov/articles/PMC13001837/ | 2026-03-16 | primary | 2026-09-09 | | 27 |
 
 ## hubStudio delivery figures
 
@@ -105,4 +122,26 @@ dead end.
 
 | Claim | Where it came from | Why it was cut | Logged |
 |---|---|---|---|
-| | | | |
+| 39 percent of advertisers eligible for state production incentives did not receive them | One outlet only, 2017-08-09 | Single-source, no sample, no method. Two other outlets on the same study omit it | 2026-09-09 |
+| 26.5 percent rise in unique deliverable combinations; one third of clients using 100+ production partners; 20 percent of production budget wasted; 4 to 6x return | Production consultancy essay, 2024-07-11 | Proprietary index, no sample, no period, no method, published by a firm selling the fix | 2026-09-09 |
+| 25 percent decline in high-value video campaigns since 2020 | Same consultancy, 2026-03-04 | No sample, no method | 2026-09-09 |
+| 85 percent of US B2C marketing executives plan to review their agency in 2026 | Analyst prediction via trade coverage, 2025-10-02 | No sample or method disclosed, and it covers media agency contracts, not production. Search summaries drop the word media | 2026-09-09 |
+| Three quarters of global marketers plan deeper media and creative integration in 2026 | Consultancy insight page, 2026-03-02 | Percentage appears only in search summaries, source page 403s, trade body page for the same survey does not carry it. Market count conflicts 16 against 17 | 2026-09-09 |
+| 66 percent increase in outsourced on-site teams | Automated read of the trade body page, 2025-03-25 | Misparse of the two-thirds agency-model figure. The page states no percentage for on-site growth | 2026-09-09 |
+| Centralized units price on studio utilization | Brief 17 angle | No source found on either side of the market. Survives only as a question to ask, never as a claim | 2026-09-09 |
+| Producer reporting lines change after centralization | Brief 17 angle | No source found | 2026-09-09 |
+| Any holding company, production unit, rebrand or executive behind the centralization pattern | Trade coverage 2026-01 and 2026-02 | Standing rule. The pattern is publishable at category level, the instances never are | 2026-09-09 |
+| Photographed products convert at 4.2 percent against 2.8 percent for AI-generated | Tool vendor blogs, brief 27 | No sample, no method, no period, published by a seller of the service | 2026-09-09 |
+| 67 percent of shoppers can identify AI product images; 58 percent less confident buying | Tool vendor blogs, brief 27 | No instrument, no n, no fielding date | 2026-09-09 |
+| Traditional shoot 4,000 to 10,000 dollars for 50 SKUs, 26 to 66 dollars per image | Tool vendor blog, brief 27 | No method, and a price figure | 2026-09-09 |
+| 500 to 2,000 dollars per traditional image | hubStudio site copy, solutions/ai-production/image | Unsourced site copy and a price figure. Site backlog item | 2026-09-09 |
+| Best ecommerce brands run 80 percent AI, 20 percent traditional | Tool vendor blog, brief 27 | Unsourced seller rule of thumb; would make the first-party figure look derivative | 2026-09-09 |
+| Walmart mandatory Real or AI tag for clothing, August 2026 | Two SEO blogs, brief 27 | Contradicted at the primary source: the platform's own May 2026 guidelines contain no such tag | 2026-09-09 |
+| 47 percent of AI product photos need disclosure labels by August | SEO blog, brief 27 | No study, no method, no publisher | 2026-09-09 |
+| Misleading product pages are 27.8 percent of returns, 2026 carrier survey | Statistics roundup blog, brief 27 | Carrier's own site carries no such survey; primary not found | 2026-09-09 |
+| Inaccurate descriptions cause 14 percent of returns | Return-statistics roundups, brief 27 | Circular citation, no traceable primary, no fielding date | 2026-09-09 |
+| FTC AI enforcement unit January 2026, 40 percent enforcement rise, 18m March 2026 judgment | SEO law-adjacent blogs, brief 27 | None confirmed on the regulator's own site | 2026-09-09 |
+| Etsy AI-tagging requirement for listing images, 2026 | Vendor blogs, brief 27 | Platform policy page not reachable, not confirmed | 2026-09-09 |
+| California SB 1050 synthetic performer false advertising | Senate committee analysis PDF, brief 27 | Committee analysis is not an enacted instrument | 2026-09-09 |
+| Amazon main image spec: professional photograph, no mockups, RGB 255, 85 percent fill | Secondary listing-service guides, brief 27 | R3 bars citing an English article for a platform spec; primary page is behind seller login | 2026-09-09 |
+| Amazon contains-synthetic-performer metadata rule, July 2026 | Two secondary reports of the announcement, brief 27 | Credible but unverified at source. Hold back; enacted statutes cover the same point | 2026-09-09 |

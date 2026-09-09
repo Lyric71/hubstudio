@@ -76,7 +76,7 @@ than an unsourced one.
 ## Must include
 
 - A fully loaded annual model with every line named
-- The utilisation question: what share of a salaried creative's year is on billable output
+- The utilization question: what share of a salaried creative's year is on billable output
 - The fixed against variable argument
 - When in-house is genuinely right
 - The hybrid model, platform plus studio, as the third option
@@ -98,7 +98,7 @@ images in body copy.
 
 - Fully loaded annual model, one table, every line named
 - Decision table: volume, variation, originated against adapted, which model fits
-- Chart: cost per asset against utilisation rate
+- Chart: cost per asset against utilization rate
 - Feature image: see `../SPEC.md`. `hubstudio-image-style-guide.md` at the
   repo root is binding. Never name a real person in the prompt: convert every
   photographer reference into its concrete visual properties.
@@ -127,7 +127,7 @@ Final section only. CTA label: **Model it against your volume**
 | Field | Ceiling | Draft value |
 |---|---|---|
 | Title | 52 chars | In-House Studio or Outsourced Production (40 chars) |
-| Meta description | 152 chars | The fully loaded annual model for an in-house creative studio, the costs nobody books, the utilisation question, and when in-house is genuinely right. (150 chars) |
+| Meta description | 152 chars | The fully loaded annual model for an in-house creative studio, the costs nobody books, the utilization question, and when in-house is genuinely right. (150 chars) |
 | Excerpt | 25 words | generate in the SEO iteration |
 
 The draft values above are approved and inside the ceilings. Use them unless
@@ -141,7 +141,7 @@ each in 40 to 70 words. Mark them up in the SCHEMA block.
 
 1. Is an in-house studio cheaper than outsourcing?
 2. What does a fully loaded in-house model include?
-3. What utilisation rate does an in-house team actually hit?
+3. What utilization rate does an in-house team actually hit?
 4. When does in-house production make sense?
 5. What is the hybrid platform and studio model?
 

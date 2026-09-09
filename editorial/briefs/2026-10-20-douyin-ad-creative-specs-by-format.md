@@ -75,7 +75,7 @@ than an unsourced one.
 
 ## Must include
 
-- One table per placement covering dimensions, duration, file weight, title and copy limits, landing behaviour
+- One table per placement covering dimensions, duration, file weight, title and copy limits, landing behavior
 - What gets rejected and why
 - The production implication of each format: open screen needs a first-frame hero, in-feed needs a hook inside 1.5 seconds
 

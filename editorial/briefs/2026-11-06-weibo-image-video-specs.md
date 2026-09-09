@@ -66,7 +66,7 @@ method. Check `../sources/verified-sources.md` and Part 7 of the search spec
 first: if the figure is logged, current and verified twice, reuse the logged
 citation. Append anything new to the ledger before finishing.
 
-- Dimensions and crop behaviour, from the Weibo backend and live app captures only
+- Dimensions and crop behavior, from the Weibo backend and live app captures only
 
 **If a figure cannot be sourced, cut the claim.** Do not estimate, do not
 hedge, do not write "industry sources suggest". A missing number is better
@@ -75,7 +75,7 @@ than an unsourced one.
 ## Must include
 
 - Post image counts and crops
-- Nine-grid behaviour
+- Nine-grid behavior
 - Video specs
 - Cover images
 - Weibo (微博) ad placements
@@ -125,7 +125,7 @@ Final section only. CTA label: **Talk to the production team**
 | Field | Ceiling | Draft value |
 |---|---|---|
 | Title | 52 chars | Weibo Image and Video Specs 2026 (32 chars) |
-| Meta description | 152 chars | Current Weibo specs for brands: post image counts and crops, nine-grid behaviour, video and cover sizes, ad placements, and what changed since 2022. (148 chars) |
+| Meta description | 152 chars | Current Weibo specs for brands: post image counts and crops, nine-grid behavior, video and cover sizes, ad placements, and what changed since 2022. (147 chars) |
 | Excerpt | 25 words | generate in the SEO iteration |
 
 The draft values above are approved and inside the ceilings. Use them unless

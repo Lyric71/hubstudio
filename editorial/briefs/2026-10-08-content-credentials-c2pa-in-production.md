@@ -67,7 +67,7 @@ first: if the figure is logged, current and verified twice, reuse the logged
 citation. Append anything new to the ledger before finishing.
 
 - Every survival table row carries a test date, the file type, and the tool or platform version
-- Where a platform behaviour could not be tested, mark it untested rather than inferring it
+- Where a platform behavior could not be tested, mark it untested rather than inferring it
 
 **If a figure cannot be sourced, cut the claim.** Do not estimate, do not
 hedge, do not write "industry sources suggest". A missing number is better
@@ -88,7 +88,7 @@ than an unsourced one.
 - Write a summary or conclusion section. End on the CTA.
 - Use an em dash anywhere.
 - Print a decorative ordinal inside any repeated titled block.
-- Assert a platform behaviour that was not tested. Every row in the survival table states the test date and the file type used.
+- Assert a platform behavior that was not tested. Every row in the survival table states the test date and the file type used.
 
 ## Assets to brief
 

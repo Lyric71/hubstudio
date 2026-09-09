@@ -66,7 +66,7 @@ method. Check `../sources/verified-sources.md` and Part 7 of the search spec
 first: if the figure is logged, current and verified twice, reuse the logged
 citation. Append anything new to the ledger before finishing.
 
-- Ratios and crop behaviour, measured from live app captures with the app version and capture date stated
+- Ratios and crop behavior, measured from live app captures with the app version and capture date stated
 
 **If a figure cannot be sourced, cut the claim.** Do not estimate, do not
 hedge, do not write "industry sources suggest". A missing number is better
@@ -75,7 +75,7 @@ than an unsourced one.
 ## Must include
 
 - Note image ratios and counts
-- Cover crop behaviour in feed against profile grid
+- Cover crop behavior in feed against profile grid
 - Video note specs
 - Text safe areas
 - How the cover is cropped differently in search
@@ -94,7 +94,7 @@ than an unsourced one.
 Describe each in the ASSET BRIEF block at the end of the file. Do not embed
 images in body copy.
 
-- Spec table: surface, ratio, pixel size, crop behaviour
+- Spec table: surface, ratio, pixel size, crop behavior
 - Live app screenshots: feed, profile grid, search, with the crop lines drawn on
 - Changelog block, dated, updated in place
 - Feature image: see `../SPEC.md`. `hubstudio-image-style-guide.md` at the
