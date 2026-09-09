@@ -585,3 +585,72 @@ so the publisher-type count can be re-verified.
    published as a publisher-type count, never as a list.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-09, after drafting and after the quality pass.
+
+**Twelve blockquotes shipped**, every one from the "Cleared for use" block with
+its attribution unchanged, including the reference period and sample on each.
+
+**The line this file drew is held on the page.** The article states that the
+outsourced side publishes a denominator and the in-house side does not, then
+says in the same paragraph that this is a fact about disclosure and not a
+verdict about cost, and that anyone converting it into "outsourcing is cheaper"
+has swapped a claim about evidence for a claim about money. No sentence in the
+draft makes that move.
+
+**Utilization is labeled an input three times**, as required: in the sentence
+introducing the table ("Every row is a hypothetical you supply, not a measured
+rate"), in the table's own column header ("Utilization you assume, not a
+benchmark"), and in the FAQ answer ("Treat any utilization number, including in
+your own model, as an assumption you are making"). Every circulating band is
+absent, and the reason is given in body copy: they measure billable utilization
+at an agency, and an in-house studio has no billable hours.
+
+**Geography and reference periods are carried on every figure.** The 1.43
+multiplier appears three times and each time it is named as US private-industry
+data from the March 2026 reference period. The wage medians are dated May 2025
+and the page says explicitly that the two are separate instruments a year apart
+and that neither should be described as current in the other's terms.
+
+**The benefits misreading is corrected explicitly.** The page states that the
+30.1 percent figure is benefits as a share of total compensation, not a markup
+on salary, that the circulating multipliers of 1.25 to 1.4 all sit below the
+published figure, and quantifies the error at roughly forty thousand dollars a
+year on a four-seat unit.
+
+**The eight unbenchmarked lines publish empty cells.** No estimate was inserted
+to make the table look complete, and the asset brief carries a warning against a
+later edit doing so.
+
+**The SERP audit wording is exact.** "Roughly three in four" for the 25 of 34
+seller share, with the zero stated as the stronger finding. The draft does not
+inflate to "nine in ten" or "every page", and no domain is named or
+characterized individually.
+
+**The 82 percent figure never runs alone.** It carries "fielded February and
+March 2023" and "162 respondents drawn from the body's own advertiser members"
+in the same blockquote, the body copy repeats the fielding dates and warns to
+read it as direction of travel among trade-body members rather than a census,
+and it is paired with the December 2023 multinational figure.
+
+**One section was added during drafting, from cleared and previously unused
+material.** The hiring-market section uses the 2025 to 2035 employment
+projection and the agency-model churn figure, both cleared in this file and both
+unused in the first draft. The projection is explicitly framed as a projection
+about the occupation as counted rather than a forecast about demand for design,
+and as a mild signal rather than a collapse.
+
+**Everything in the do-not-publish list stayed out**: all six circulating fully
+loaded totals, the 30 to 50 percent outsourced-video claim, the in-house
+monthly-competitiveness claim, staffing markups, software seat prices, the three
+conflicting cost-per-hire medians, the paywalled analyst document, and the
+vendor model titled as a benchmark report, which appears only as an unnamed
+pattern in the sourcing observation.
+
+**No hubStudio rate appears anywhere.** Every dollar figure is a published
+statistic, arithmetic on one shown on the page, or a third-party published
+subscription band with its September 2026 collection date.
+
+**Open at publish time.** Six screenshots pending, four of them SERP captures
+that are perishable evidence for the publisher-mix claim running on the page.
+Capture before that claim ages.

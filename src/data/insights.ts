@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'in-house-studio-vs-outsourced-production',
+    image: '/Images/insight-in-house-studio-vs-outsourced-production.webp',
+    imageAlt:
+      'A long shared studio desk with four identical workstations under task lamps, only the nearest one showing signs of use with an open notebook and a mug, the other three sitting empty with chairs pushed in.',
+    category: 'Cost',
+    tone: 'navy',
+    title: 'In-House Studio or Outsourced Production',
+    deck: 'Every page on this decision uses a benefits multiplier nobody sources. Here is the published one, and the eight cost lines with no benchmark.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '13 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'In-House Studio or Outsourced Production | hubStudio',
+    metaDescription:
+      'The fully loaded annual model for an in-house creative studio, the costs nobody books, the utilization question, and when in-house is genuinely right.',
+  },
+  {
     slug: 'questions-to-ask-ai-production-partner',
     image: '/Images/insight-questions-to-ask-ai-production-partner.webp',
     imageAlt:
