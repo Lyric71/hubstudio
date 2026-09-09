@@ -21,51 +21,12 @@ const navLinks: { label: string; href: string }[] = [
   { label: 'hub4You', href: '/hub4you' },
 ];
 
-/* Sister agencies: the BearingBridge group network. */
-const network: { name: string; desc: string; logo: string; href: string }[] = [
-  {
-    name: 'TheChinaPath.com',
-    desc: 'Full-service China entry. Branding through to ecommerce.',
-    logo: '/AgencyLogos/thechinapath.png',
-    href: 'https://thechinapath.com',
-  },
-  {
-    name: 'BeyondBridge.ai',
-    desc: 'The full pipeline for Chinese brands going overseas.',
-    logo: '/AgencyLogos/beyondbridge.png',
-    href: 'https://beyondbridge.ai',
-  },
-  {
-    name: 'BearingBridge.ai',
-    desc: 'AI adoption consulting. East and West, on your data.',
-    logo: '/AgencyLogos/bearingbridgeai.svg',
-    href: 'https://bearingbridge.ai',
-  },
-  {
-    name: 'ChinaWebFoundry.com',
-    desc: 'Websites built for the Chinese web. Baidu, ICP, AI engines.',
-    logo: '/AgencyLogos/chinawebfoundry.png',
-    href: 'https://chinawebfoundry.com',
-  },
-  {
-    name: 'TheRedScroll.com',
-    desc: 'Chinese social media. WeChat, Douyin, RedNote, Weibo.',
-    logo: '/AgencyLogos/theredscroll.png',
-    href: 'https://theredscroll.com',
-  },
-  {
-    name: 'Compass',
-    desc: 'A private database of vetted China distributors, Tmall TPs, and Douyin partners.',
-    logo: '/AgencyLogos/compass.svg',
-    href: 'https://compass.bearingbridge.com',
-  },
-  {
-    name: 'Nuvora.studio',
-    desc: 'LinkedIn-only B2B. Strategy, content, ads.',
-    logo: '/AgencyLogos/nuvora.png',
-    href: 'https://nuvora.studio',
-  },
-];
+/* Parent group: the BearingBridge AI lockup, rendered as on bearingbridge.com. */
+const parent = {
+  name: 'BearingBridge AI',
+  desc: 'Every team you cannot afford to hire, running inside one app.',
+  href: 'https://www.bearingbridge.com',
+};
 ---
 
 <footer class="site-footer">
@@ -92,26 +53,22 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
   </div>
 
   <div class="container site-footer__network">
-    <p class="site-footer__heading">Our network</p>
-    <ul class="footer-net">
-      {
-        network.map((n) => (
-          <li class="footer-net__item">
-            <a
-              class="footer-net__card"
-              href={n.href}
-              target="_blank"
-              rel="noopener"
-              title={`${n.name}: ${n.desc}`}
-            >
-              <img src={n.logo} alt={`${n.name} logo`} loading="lazy" />
-            </a>
-            <p class="footer-net__desc">{n.desc}</p>
-          </li>
-        ))
-      }
-    </ul>
+    <p class="site-footer__heading">Part of</p>
+    <a
+      class="footer-parent"
+      href={parent.href}
+      target="_blank"
+      rel="noopener"
+      aria-label={parent.name}
+    >
+      <span class="footer-parent__bar" aria-hidden="true"></span>
+      <span class="footer-parent__word"
+        >bearingbridge<span class="footer-parent__ai">ai</span></span
+      >
+    </a>
+    <p class="footer-parent__desc">{parent.desc}</p>
   </div>
+
 
   <div class="container site-footer__bottom">
     <p>&copy; {year} hubStudio. All rights reserved.</p>
@@ -179,48 +136,38 @@ const network: { name: string; desc: string; logo: string; href: string }[] = [
     color: rgba(240, 237, 233, 0.5);
     margin-bottom: 16px;
   }
-  /* ---- Our network ---------------------------------------------- */
+  /* ---- Part of: BearingBridge AI lockup -------------------------- */
   .site-footer__network {
     padding-bottom: 64px;
   }
-  .footer-net {
-    margin-top: 22px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-  @media (min-width: 640px) {
-    .footer-net {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-  @media (min-width: 900px) {
-    .footer-net {
-      grid-template-columns: repeat(7, 1fr);
-    }
-  }
-  .footer-net__card {
-    display: flex;
+  .footer-parent {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    height: 64px;
-    padding: 12px 16px;
-    background: #fff;
-    border-radius: 10px;
-    transition: transform 200ms ease-out;
+    gap: 0.52em;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #eaeaea;
+    transition: opacity 160ms ease-out;
   }
-  .footer-net__card:hover {
-    transform: translateY(-3px);
+  .footer-parent:hover {
+    opacity: 0.78;
   }
-  .footer-net__card img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
+  .footer-parent__bar {
+    flex: none;
+    width: 0.52em;
+    height: 1.354em;
+    background: #1bcde8;
+    transform: skew(-18deg);
   }
-  .footer-net__desc {
-    margin-top: 10px;
+  .footer-parent__ai {
+    margin-left: 0.21em;
+    color: #1bcde8;
+  }
+  .footer-parent__desc {
+    margin-top: 14px;
+    max-width: 42ch;
     font-size: 12px;
     line-height: 1.45;
     color: rgba(240, 237, 233, 0.55);
