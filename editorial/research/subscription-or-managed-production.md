@@ -314,3 +314,54 @@ of these captures on the site: they identify vendors. They exist so the next
 writer can re-verify the band without re-searching it.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-09, after drafting and after the quality pass.
+
+**Every figure on the page traces to a cleared row above.** Nine blockquotes
+shipped, all nine taken from the "Cleared for use" block without rewording the
+attribution. The bands ($700 to $4,500 unlimited, $6,000 to $15,000 managed,
+from $30,000 dedicated), the $50 an hour derivation, the 120 and 180 hour
+blocks, the one-to-five lane cap and the $192,000 annual commitment each carry
+the September 2026 collection date in the source line.
+
+**Nothing was added after research.** No figure entered the draft that is not
+in the claims table. The mid-market arithmetic on the page is the six-step
+calculation from this file, shown rather than summarized, which is what the
+brief asked for.
+
+**The unverified rows stayed out.** The 2025 to 2026 price-rise claim is
+absent, as decided at research time. In its place the page argues the gap
+arithmetically from current published floors, which needs no trend evidence.
+The vendor ROI figures, the two method-less surveys and the aggregated bands
+are all absent.
+
+**The negative observation is worded exactly as the research file requires.**
+The page says "none of the published subscription cards read in this category
+in September 2026 lists photography, filming, talent booking or rights
+clearance as an included service" and then spells out in body copy that this
+does not mean subscriptions never involve capture. The absolute form was never
+written.
+
+**Two arithmetic checks run during the quality pass.**
+
+1. An error was caught and fixed. The draft said "forty times the price"
+   between the bottom of one band and the top of the other. The bands run $700
+   to $15,000, which is twenty-one times, not forty. The 43x figure would only
+   hold against the $30,000 dedicated tier, which is a third band. Corrected to
+   "more than twenty times".
+2. The $50 an hour derivation was recomputed: 5995/120 = 49.96 and 8995/180 =
+   49.97. Both hold. Labeled on the page as arithmetic on one card, per the
+   single-source confidence rating.
+
+**No provider is named or alluded to.** The six quarantined domains appear
+nowhere in the draft. Every figure is attributed to the category and the date.
+The two polluted query strings are absent from every heading, checked against
+the H2 list.
+
+**No hubStudio rate appears anywhere.** Re-checked line by line. Every dollar
+figure is a third-party published band or arithmetic on one.
+
+**Open at publish time.** The six pricing-page captures in the screenshot
+inventory are still pending. One card has already moved to quote-only since
+collection, which is the precise failure mode the captures exist to survive.
+Capture before publishing.
