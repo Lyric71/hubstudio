@@ -66,10 +66,10 @@ One is for people. One is for machines. They behave completely differently in
 a pipeline, and treating them as a single requirement is the most common
 mistake we see.
 
-The explicit label (显式标识) is the visible one: a mark on the image, an
+The explicit label, xianshi biaoshi, is the visible one: a mark on the image, an
 opening-frame notice on video, a spoken or tonal cue on audio.
 
-The implicit label (隐式标识) lives inside the file.
+The implicit label, yinshi biaoshi, lives inside the file.
 
 > Article 5 of the Measures puts the implicit label in the file metadata and
 > says it carries content attribute information, the service provider name or

@@ -57,14 +57,19 @@ hard(emdash === 0, 'No em dash (U+2014)', `${emdash} found`);
 const emdashAnywhere = (raw.match(/—/g) || []).length;
 hard(emdashAnywhere === 0, 'No em dash in the whole file, comments included', `${emdashAnywhere} found`);
 
-// Han characters are allowed only inside a term gloss: English (中文).
-const han = [...body.matchAll(/[一-鿿]+/g)];
-const badHan = han.filter((m) => {
-  const before = body.slice(Math.max(0, m.index - 2), m.index);
-  const after = body.slice(m.index + m[0].length, m.index + m[0].length + 1);
-  return !(before.endsWith('(') && after === ')');
-});
-hard(badHan.length === 0, 'Han characters only inside a term gloss', badHan.length ? `${badHan.length} stray: ${badHan.slice(0, 5).map((m) => m[0]).join(', ')}` : `${han.length} glossed`);
+// No Han characters at all in a published English article, glosses included.
+// The project rule in .claude/CLAUDE.md allows them only in zh-* locale content
+// and makes no exception for terminology, and every article published before
+// this system existed carries none. Romanize instead: "the explicit label,
+// xianshi biaoshi". See "Project wins over runbook" in editorial/CLAUDE.md.
+const han = [...raw.matchAll(/[一-鿿]+/g)];
+hard(han.length === 0, 'No Han characters (romanize Chinese terms instead)',
+  han.length ? `${han.length} found: ${[...new Set(han.map((m) => m[0]))].slice(0, 6).join(' ')}` : 'none');
+
+// Full-width punctuation is banned in English copy by the same rule.
+const fullWidth = [...raw.matchAll(/[　-〿！-～]/g)];
+hard(fullWidth.length === 0, 'No full-width punctuation',
+  fullWidth.length ? `${fullWidth.length} found` : 'none');
 
 // ---- money
 const dollars = [...body.matchAll(/\$[\d,]+/g)].map((m) => m[0]);

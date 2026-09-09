@@ -273,10 +273,10 @@ The bands date fast. Prices change without notice, which is why the collection
 date sits on every figure rather than at the bottom of the page. Reviewed
 September 2026.
 
-For a range against your own volume and formats, the production cost estimator
-takes the inputs you already know and returns market ranges rather than a
-quote. The pricing page sets out how hubStudio scopes work, and the AI
-excellence page covers what changes when generation carries part of the load.
+For a range against your own volume and formats, the quotation calculator takes
+the inputs you already know and returns a range rather than a quote. The pricing
+page sets out how hubStudio scopes work, and the AI excellence page covers what
+changes when generation carries part of the load.
 
 <!-- SECTION: FAQ -->
 
@@ -408,16 +408,18 @@ SCREENSHOTS: ten published pricing pages are listed in the research file's
 DOWNLOADS: the four-layer cost anatomy as a one-page quote-comparison
   checklist, ungated. Gating it would contradict the page's own argument.
 INTERNAL LINKS:
-  production cost estimator -> /resources/production-cost
+  quotation calculator -> /pricing/calculator
   pricing page -> /pricing
   AI excellence page -> /the-studio/ai-excellence
 CLIENT SIGN-OFF NEEDED: none. No client figure is used.
 RESEARCH FILE: editorial/research/what-a-finished-brand-asset-costs.md
 
-DEPENDENCY: this page links to /resources/production-cost, the public
-  estimator, which is infrastructure item 5 and is NOT built yet. Either ship
-  the estimator first or drop that one reference at publish time. Do not ship a
-  link to a 404.
+DEPENDENCY RESOLVED 2026-09-09: this page originally referenced
+  /resources/production-cost, the public estimator, which is infrastructure
+  item 5 and is not built. Rather than ship a link to a 404 or leave a dangling
+  promise in body copy, the reference was repointed to the quotation calculator
+  at /pricing/calculator, which is live and does the same job for the reader.
+  If the dedicated estimator ships later, this reference can move back.
 
 NO hubSTUDIO RATE APPEARS ANYWHERE. Every figure is a third-party published
   band with a collection date. Checked at draft and again after the quality

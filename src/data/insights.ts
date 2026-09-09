@@ -37,6 +37,142 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'china-or-india-for-creative-production',
+    image: '/Images/insight-china-or-india-for-creative-production.webp',
+    imageAlt:
+      'A product photography setup in a working studio, an unbranded bottle on a paper sweep in the foreground, with an open shipping carton of identical bottles in pulp trays on a trolley behind it.',
+    category: 'Buying models',
+    tone: 'navy',
+    title: 'China or India for Creative Production',
+    deck: 'A regional comparison that concedes India\'s advantages first, names four things nobody can compare with public data, and shows the arithmetic behind the rest.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '15 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'China or India for Creative Production | hubStudio',
+    metaDescription:
+      'An honest regional comparison: cost, English fluency, studio capacity, category proximity, IP and data. Where India wins, stated first.',
+  },
+  {
+    slug: 'shoot-it-or-generate-it',
+    image: '/Images/insight-shoot-it-or-generate-it.webp',
+    imageAlt:
+      'A dark green glazed bottle standing on a paper sweep in a working photo studio, lit by one softbox from the left, with a color checker, tweezers and a lens cloth on the bench beside it.',
+    category: 'Production',
+    tone: 'navy',
+    title: 'Shoot It or Generate It: The Decision Rule',
+    deck: 'Four conditions force a real camera. Everything else is a judgment call. The rule a working studio uses, published, asset by asset.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Shoot It or Generate It: The Decision Rule | hubStudio',
+    metaDescription:
+      'The rule a working studio uses, asset by asset: the four conditions that force capture, when generation wins, and what getting it wrong costs.',
+  },
+  {
+    slug: 'china-ai-labeling-rules-production-workflow',
+    image: '/Images/insight-china-ai-labeling-rules-production-workflow.webp',
+    imageAlt:
+      'Two pairs of hands passing a taped hard drive across a dark edit suite desk, lit by a single warm source, with a color grading panel and monitor out of focus behind them.',
+    category: 'Rights',
+    tone: 'orange',
+    title: 'China AI Labeling Rules for Production',
+    deck: 'China labels AI content in two layers. Only one survives a normal production pipeline. Here is where it breaks and what to record.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '12 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'China AI Labeling Rules for Production | hubStudio',
+    metaDescription:
+      'What China\'s AI labeling rules mean for a production workflow: where each label attaches, where it gets stripped, and what a handover pack must carry.',
+  },
+  {
+    slug: 'disclosure-audit-trail-per-asset',
+    image: '/Images/insight-disclosure-audit-trail-per-asset.webp',
+    imageAlt:
+      'Seven identical prints of the same amber bottle laid out on a worn wooden archive table, one of them with a handwritten index card tied to its corner by thread, a hand resting on the card.',
+    category: 'Rights',
+    tone: 'orange',
+    title: 'The AI Disclosure Audit Trail per Asset',
+    deck: 'Three regimes now ask different questions about the same generated asset. Here is the per-asset record that answers all of them from a single row.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'The AI Disclosure Audit Trail per Asset | hubStudio',
+    metaDescription:
+      'What a production pipeline records per asset to survive a disclosure audit: the record schema, retention, and the three regimes it has to satisfy.',
+  },
+  {
+    slug: 'what-a-finished-brand-asset-costs',
+    image: '/Images/insight-what-a-finished-brand-asset-costs.webp',
+    imageAlt:
+      'An amber glass bottle photographed from above on a scratched metal table, surrounded by prints of the same bottle at deliberately different sizes and finishes, one hand reaching in from the frame edge.',
+    category: 'Cost',
+    tone: 'navy',
+    title: 'What a Brand Asset Costs in 2026',
+    deck: 'Nobody publishes what one finished asset costs. This page defines the unit first, then gives absolute bands from published cards, each carrying its collection date.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'What a Brand Asset Costs in 2026 | hubStudio',
+    metaDescription:
+      'Absolute cost bands per finished brand asset, with the method stated and no email gate: images, social cuts, brand films and campaign adaptations.',
+  },
+  {
+    slug: 'automation-platform-or-production-partner',
+    image: '/Images/insight-automation-platform-or-production-partner.webp',
+    imageAlt:
+      'A single freshly pulled print held flat on a printmaker\'s bench beside a tall stack of identical copies, ink-stained hands resting at its edge in window light.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: 'Automation Platform or Production Partner',
+    deck: 'Automation multiplies what exists. Its own standard proves it: a missing asset is a fallback condition, never a request to make one.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Automation Platform or Production Partner | hubStudio',
+    metaDescription:
+      'Automation multiplies assets you already have. It cannot originate the master. Where the handoff sits, what each layer costs, and how to decide.',
+  },
+  {
+    slug: 'production-roster-review-questions',
+    image: '/Images/insight-production-roster-review-questions.webp',
+    imageAlt:
+      'A long studio table covered end to end with overlapping contact sheets and printed layouts in low window light, a person standing at the far end looking down at them, with the Shanghai skyline faint through the window.',
+    category: 'Buying models',
+    tone: 'navy',
+    title: '14 Questions for a Production Roster Review',
+    deck: 'Production supply is consolidating. Here are the fourteen questions to ask every partner on your roster, in four groups, with a scoring table.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: '14 Questions for a Production Roster Review | hubStudio',
+    metaDescription:
+      'Production is consolidating into centralized units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table.',
+  },
+  {
+    slug: 'subscription-or-managed-production',
+    image: '/Images/insight-subscription-or-managed-production.webp',
+    imageAlt:
+      'A long studio bench under window light with three shallow metal trays holding open jobs at the near end, and a tall stack of unopened job envelopes and rolled prints waiting behind them.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: 'Subscription or Managed Production',
+    deck: 'One model sells you hours and lanes. The other sells you finished assets. Published cards show which is which, and where the mid-market falls through.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '12 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Subscription or Managed Production | hubStudio',
+    metaDescription:
+      'A subscription prices access to designers. Production prices delivered assets. What that distinction changes, and where each model actually fits.',
+  },
+  {
     slug: 'ai-content-quality-argument-over',
     image: '/Images/insight-ai-content-quality-argument-over.webp',
     imageAlt:

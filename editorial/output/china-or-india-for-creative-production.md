@@ -241,7 +241,7 @@ nobody publishes.
 
 **Native platform fluency, which is location-bound.**
 
-Douyin (抖音), RedNote (小红书) and Tmall (天猫) are China-domiciled platforms
+Douyin, RedNote and Tmall are China-domiciled platforms
 whose seller backends, rule centers and review queues operate in Chinese. The
 specification that matters is not the one in the English-language help article.
 It is the one in the seller backend, which changes without an English

@@ -68,7 +68,7 @@ be the product. Marketplaces moved first and moved specifically.
 > or style that does not match the real item, distorted or exaggerated product
 > effects, an obvious cutout and paste look, and bodies or scenes that break
 > physical laws.
-> Source: Economic Information Daily (经济参考报), March 2025, reporting the
+> Source: Economic Information Daily, March 2025, reporting the
 > platform's own rule announcement and its detection-model enforcement.
 
 > A general marketplace's seller image guidelines state that images generated

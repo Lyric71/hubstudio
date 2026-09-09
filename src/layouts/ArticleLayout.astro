@@ -11,7 +11,14 @@
  *   <ul><li>                   bullet list (use for sequences too: no numerals)
  *   <li><strong>Label.</strong> copy   titled list row
  *   <blockquote>               pull quote
+ *   <blockquote class="evidence">  cited evidence, set at reading size
+ *   <p class="source">         attribution line under an evidence quote
  *   <div class="callout">      emphasised aside box
+ *
+ * Evidence quotes carry research citations, so they are set at body size
+ * rather than as display type: a 30px italic pull quote is the wrong voice
+ * for a sourced statistic, and these run several lines. Every .evidence
+ * block is followed by a .source line naming publisher, date and method.
  */
 import Layout from './Layout.astro';
 import Button from '../components/Button.astro';
@@ -20,9 +27,12 @@ import { findAuthorByName, authorPath } from '../data/authors';
 
 interface Props {
   slug: string;
+  /** Overrides the closing CTA button label. Editorial pieces each carry their
+      own call to action; without one the generic studio label is used. */
+  ctaLabel?: string;
 }
 
-const { slug } = Astro.props;
+const { slug, ctaLabel = 'Talk to us' } = Astro.props;
 const insight = getInsight(slug);
 const related = relatedInsights(slug, 3);
 
@@ -160,7 +170,7 @@ const breadcrumbSchema = {
           hubStudio builds human-led, AI-native content production: AIGC video and image work,
           structured content engines, and custom studios. Tell us what you need to produce.
         </p>
-        <Button variant="primary-inverse" href="/contact">Talk to us</Button>
+        <Button variant="primary-inverse" href="/contact">{ctaLabel}</Button>
       </aside>
     </div>
   </article>
@@ -352,6 +362,27 @@ const breadcrumbSchema = {
     font-size: clamp(22px, 2.6vw, 30px);
     line-height: 1.32;
     color: var(--text-ink);
+  }
+  /* Cited evidence. Same orange rule as a pull quote so the family reads as
+     one, but roman rather than italic and at reading size, because these are
+     statements of record the reader is meant to read through. */
+  .prose :global(blockquote.evidence) {
+    margin: 36px 0 0;
+    padding: 4px 0 4px 28px;
+    border-left: 3px solid var(--brand-orange);
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-ink);
+  }
+  .prose :global(.source) {
+    margin: 10px 0 0 28px;
+    max-width: 62ch;
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
   }
   .prose :global(.callout) {
     margin-top: 36px;

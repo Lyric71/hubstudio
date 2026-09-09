@@ -77,6 +77,16 @@ Already settled, and different from what the search spec assumes:
    at the repo root, so the whole system sits in one folder.
 5. **The email goes through Resend**, the contact form's provider, to the
    address in `CONTACT_TO_EMAIL`.
+6. **No Han characters in a published English article, glosses included.**
+   Decided 2026-09-09. The project rule in `.claude/CLAUDE.md` allows Han
+   characters and full-width punctuation only in `zh-*` locale content, with no
+   exception for terminology, and all 25 articles published before this system
+   existed carry none. That rule outranks the gloss convention in `SPEC.md`.
+   Write a Chinese term in romanized form instead: "the explicit label, xianshi
+   biaoshi", "Douyin, RedNote and Tmall", "Economic Information Daily". The
+   research files keep the characters, because they are working documents and
+   are never served. `check-draft.mjs` permits a gloss, so this one is on the
+   writer: search any finished draft for Han before publishing.
 
 ## Model quality: no compromise
 

@@ -1,0 +1,334 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout slug="disclosure-audit-trail-per-asset" ctaLabel="Talk about your pipeline">
+  <p class="standfirst">Law firm briefings tell you what the rules say. They stop before the part that decides whether you comply: which fields your production workflow writes down, for every asset, on the day it is made. This page is that layer.</p>
+
+  <p>A note before anything else. What follows describes production practice, drawn from the published text of the instruments named in it. It is not legal advice, and it does not interpret any regime beyond what the instrument itself says.</p>
+
+  <h2>What should be logged for every AI-generated asset?</h2>
+
+  <p>Eleven fields carry the weight, and each one exists because a published instrument or specification names it: asset ID, producer, model name and version, creation timestamp, content attribute, label flag, action history, inputs and their rights status, the prompt, and the distributor identifiers a platform adds later.</p>
+
+  <p>Four more fields have no standard behind them at all. They belong in the record anyway, and this page marks them as practice rather than dressing them up as requirements.</p>
+
+  <h2>The record schema, field by field</h2>
+
+  <p>The point of tracing each field to a source is that you can defend the schema without arguing about it. Every row below either comes from a published instrument or is labeled practice.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Field</th>
+          <th scope="col">What it holds</th>
+          <th scope="col">Where it comes from</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Asset ID</th>
+          <td>One stable identifier, carried in the file and in the record</td>
+          <td>Chinese Measures Article 5, the national standard, and California's "unique identifier"</td>
+        </tr>
+        <tr>
+          <th scope="row">Producer name or code</th>
+          <td>Who generated it</td>
+          <td>Chinese Measures Article 5; California's "name of the covered provider"</td>
+        </tr>
+        <tr>
+          <th scope="row">Model name and version</th>
+          <td>The system and its version at creation</td>
+          <td>California statute, verbatim; the provenance specification's software agent object</td>
+        </tr>
+        <tr>
+          <th scope="row">Created or altered timestamp</th>
+          <td>Date and time of creation or alteration</td>
+          <td>California statute, verbatim; the provenance specification</td>
+        </tr>
+        <tr>
+          <th scope="row">Content attribute</th>
+          <td>Generated, generated then edited, or captured then modified</td>
+          <td>Chinese Measures Article 5; the press vocabulary of digital source types</td>
+        </tr>
+        <tr>
+          <th scope="row">Label flag</th>
+          <td>Whether a label is present, and which kind</td>
+          <td>The Chinese national standard</td>
+        </tr>
+        <tr>
+          <th scope="row">Action history</th>
+          <td>The ordered edit chain, with the agent for each step</td>
+          <td>The provenance specification's actions assertion</td>
+        </tr>
+        <tr>
+          <th scope="row">Inputs and ingredients</th>
+          <td>Reference images and base plates, each with a stated relationship</td>
+          <td>The provenance specification's ingredient assertion</td>
+        </tr>
+        <tr>
+          <th scope="row">Prompt</th>
+          <td>The text that produced the asset</td>
+          <td>The provenance specification's guidance for generative work</td>
+        </tr>
+        <tr>
+          <th scope="row">Rights status per input</th>
+          <td>Licensed, owned, or a likeness with consent on file</td>
+          <td>Split per input. Rights and replica statutes, not one field</td>
+        </tr>
+        <tr>
+          <th scope="row">Distributor identifiers</th>
+          <td>Added by the platform, alongside yours</td>
+          <td>Chinese Measures Article 6 and the national standard</td>
+        </tr>
+        <tr>
+          <th scope="row">Human edits, named</th>
+          <td>Who changed what after generation</td>
+          <td>Practice. No instrument here requires it</td>
+        </tr>
+        <tr>
+          <th scope="row">Approver and date</th>
+          <td>Who signed it off for release</td>
+          <td>Practice</td>
+        </tr>
+        <tr>
+          <th scope="row">Destination markets</th>
+          <td>Where it is scheduled to run</td>
+          <td>Practice, and the field that makes every other row answerable</td>
+        </tr>
+        <tr>
+          <th scope="row">Retention date</th>
+          <td>When the record is due for review</td>
+          <td>Practice at the default, instrument-driven where Article 9 applies</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The last column is doing quiet work. When someone challenges a field, you are not defending a preference, you are pointing at the document that names it.</p>
+
+  <p>Two of these deserve more than a table row.</p>
+
+  <p><strong>Content attribute is where retouchers get caught.</strong> The press industry's vocabulary of digital source types draws a line most workflows blur.</p>
+
+  <blockquote class="evidence">The IPTC Digital Source Type vocabulary defines trainedAlgorithmicMedia as "digital media created algorithmically using an Artificial Intelligence model trained on captured content", and compositeWithTrainedAlgorithmicMedia as "augmentation, correction or enhancement using a Generative AI model, such as with inpainting or outpainting operations".</blockquote>
+  <p class="source">Source: IPTC NewsCodes, Digital Source Type scheme, last modified 23 October 2024.</p>
+
+  <p>A photograph with a generatively extended background is not generated media. It is a composite, and it has its own term. This is an easy field to get wrong, because the person doing the retouch is rarely the person who read the vocabulary, and nothing in the tooling stops them.</p>
+
+  <p><strong>The prompt has somewhere to live.</strong> Workflows tend to lose it, which is avoidable.</p>
+
+  <blockquote class="evidence">The C2PA guidance for artificial intelligence and machine learning says the output's Content Credential may carry the prompt used as an input to the generative model, recorded as an inputTo ingredient, and describes recording base models, training datasets and fine-tuning datasets as ingredients.</blockquote>
+  <p class="source">Source: C2PA specifications, guidance for artificial intelligence and machine learning, version 2.4, retrieved 9 September 2026.</p>
+
+  <p>Worth being precise about what that specification is. It is a technical standard, not a law, and no instrument on this page requires it. It is useful here as a shared field vocabulary, so the same row exports cleanly into whatever a client or a platform asks for next.</p>
+
+  <h2>The three regimes, and what each one actually asks</h2>
+
+  <p>They ask different questions about the same asset, and only one of them asks for a file at all.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">China</th>
+          <th scope="col">European Union</th>
+          <th scope="col">US states</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">In force</th>
+          <td>Measures from 1 September 2025, with the national standard the same day</td>
+          <td>Article 50 applies from 2 August 2026</td>
+          <td>New York from 9 June 2026; California replica provisions from January 2025</td>
+        </tr>
+        <tr>
+          <th scope="row">What it wants</th>
+          <td>An explicit label plus an implicit label in file metadata, and labels that survive export</td>
+          <td>A machine-readable mark on synthetic output, and disclosure of deepfakes by the deployer</td>
+          <td>Conspicuous in-ad disclosure of a synthetic performer, and consent evidence for a likeness</td>
+        </tr>
+        <tr>
+          <th scope="row">Retention duty</th>
+          <td>Six months, in one narrow case only</td>
+          <td>None stated</td>
+          <td>None stated</td>
+        </tr>
+        <tr>
+          <th scope="row">Who it binds</th>
+          <td>Providers, distribution platforms and users</td>
+          <td>Providers mark, deployers disclose</td>
+          <td>Advertisers and producers</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Start with China, because it asks for the most and asks earliest.</p>
+
+  <blockquote class="evidence">Article 5 of the Measures puts the implicit label in the file metadata and says it carries content attribute information, the service provider name or code, and a content ID, among other production element information. The same article defines file metadata as descriptive information embedded in the file header in a specific encoding format.</blockquote>
+  <p class="source">Source: Cyberspace Administration of China, March 2025, instrument text.</p>
+
+  <p>That is a field list inside a legal instrument, which is rare and useful. It is also why the schema above starts where it does.</p>
+
+  <p>The obligation does not stop at the studio door.</p>
+
+  <blockquote class="evidence">Article 10 of the Measures says a user publishing generated synthetic content through a distribution service must proactively declare it and use the labeling function the provider supplies, and that no organization or individual may maliciously delete, alter, forge or conceal a label, or supply tools or services for others to do so.</blockquote>
+  <p class="source">Source: Cyberspace Administration of China, March 2025, instrument text.</p>
+
+  <p>Proactive declaration by the publisher means your client has a duty of their own, and they can only discharge it if you handed over a record that says what the asset is.</p>
+
+  <p>The European position is narrower than most summaries suggest.</p>
+
+  <blockquote class="evidence">The transparency obligations in Article 50 of the EU AI Act apply from 2 August 2026. Providers must apply a machine-readable mark to synthetic content generated or manipulated by AI and enable its detection, with exceptions where the system performs an assistive function for standard editing or does not substantially alter the input data or its semantics.</blockquote>
+  <p class="source">Source: European Commission, quick facts on the AI Act transparency rules, retrieved 9 September 2026.</p>
+
+  <p>Note who that binds. Article 50 splits the duty between the provider of the system, which marks, and the deployer, which discloses. A production studio is usually neither. What a studio holds is evidence, not a statutory file, and any page telling you otherwise has skipped a step.</p>
+
+  <blockquote class="evidence">Article 50 of the EU AI Act sets no record-keeping duty and no retention period. Neither the article nor the European Commission's own FAQ on it names a file a producer has to keep.</blockquote>
+  <p class="source">Source: European Commission, FAQ on the transparency obligations under Article 50 of the AI Act, read in full on 9 September 2026 for a record-keeping or retention statement. None is present.</p>
+
+  <p>So the per-asset record is not an EU requirement. It is how you answer an EU question when someone asks it, which is a different argument and an honest one.</p>
+
+  <p>On the US side, the sharpest instrument is a state advertising law.</p>
+
+  <blockquote class="evidence">The New York statute requires a covered person to "conspicuously disclose in such advertisement that a synthetic performer is in such advertisement, where such person has actual knowledge", and sets a civil penalty of 1,000 US dollars for a first violation and 5,000 US dollars for each subsequent violation.</blockquote>
+  <p class="source">Source: New York State Senate, bill text, December 2025.</p>
+
+  <p>Read the trigger: actual knowledge. Whether you knew is a question about your records, which is the most direct link on this page between a field in a spreadsheet and a penalty in a statute.</p>
+
+  <p>California supplies the clearest published field list anywhere, though it binds someone else.</p>
+
+  <blockquote class="evidence">The California AI Transparency Act says a latent disclosure must convey the name of the covered provider, the name and version number of the generative AI system that created or altered the content, the time and date of the content's creation or alteration, and a unique identifier.</blockquote>
+  <p class="source">Source: California Business and Professions Code section 22757.3(b), code text retrieved 9 September 2026.</p>
+
+  <p>Four fields, named in a statute. That duty follows systems above a million monthly users, so it is almost certainly not yours. The field list still tells you what a legislature considers a complete disclosure, which is worth borrowing.</p>
+
+  <h2>How long do the records have to be kept?</h2>
+
+  <p>This is where confident advice usually goes wrong, so here is the whole picture. One retention period exists across the three regimes. It is six months, it is Chinese, and it applies to almost nothing.</p>
+
+  <blockquote class="evidence">Article 9 of the Measures allows a provider to hand over content without an explicit label where a user applies for it, once the user agreement has set out the user's labeling obligation and liability, and requires the provider to keep the related logs for at least six months.</blockquote>
+  <p class="source">Source: Cyberspace Administration of China, March 2025, instrument text.</p>
+
+  <p>That six months attaches to the logs of one specific transaction: content handed over unlabeled at the user's request. It is not a general provenance retention standard, and carrying it across to the EU or to a US state would be inventing a rule.</p>
+
+  <p>Everywhere else, retention is your policy, and it should be stated as one.</p>
+
+  <blockquote class="evidence">hubStudio keeps the working files behind each delivered asset for 90 days after delivery. That is hubStudio policy, not a legal requirement: no instrument in this article sets a 90 day period. Where a project touches Article 9 of the Chinese Measures, the six month log duty in that article is longer and governs.</blockquote>
+  <p class="source">Source: hubStudio production policy, September 2026. Published here as our own policy, not as a duty any instrument on this page imposes.</p>
+
+  <h2>One asset, every field filled</h2>
+
+  <p>A generated hero image for a skincare launch running in Shanghai and Paris, built from a photographed bottle plate and a generated environment.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Field</th>
+          <th scope="col">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Asset ID</th>
+          <td>Stable ID minted at creation, written into the file and the record</td>
+        </tr>
+        <tr>
+          <th scope="row">Producer</th>
+          <td>Studio name and registered code</td>
+        </tr>
+        <tr>
+          <th scope="row">Model and version</th>
+          <td>Generative model name plus its exact version string at run time</td>
+        </tr>
+        <tr>
+          <th scope="row">Timestamp</th>
+          <td>Creation time, and a second entry for the composite step</td>
+        </tr>
+        <tr>
+          <th scope="row">Content attribute</th>
+          <td>Composite with trained algorithmic media, not generated media, because a real photographic plate is in it</td>
+        </tr>
+        <tr>
+          <th scope="row">Label flag</th>
+          <td>Explicit label applied for the Chinese distribution, implicit label in metadata for both markets</td>
+        </tr>
+        <tr>
+          <th scope="row">Action history</th>
+          <td>Opened, then each edit with its agent and version, in order</td>
+        </tr>
+        <tr>
+          <th scope="row">Inputs</th>
+          <td>The bottle plate with its shoot reference; the environment prompt as an input ingredient</td>
+        </tr>
+        <tr>
+          <th scope="row">Rights per input</th>
+          <td>Plate owned by the client, shoot release on file; no human likeness present, so no replica consent needed</td>
+        </tr>
+        <tr>
+          <th scope="row">Human edits</th>
+          <td>Named retoucher, with the composite step attributed</td>
+        </tr>
+        <tr>
+          <th scope="row">Approver</th>
+          <td>Named approver and the sign-off date</td>
+        </tr>
+        <tr>
+          <th scope="row">Destination markets</th>
+          <td>China and France, which is why both label types exist on one asset</td>
+        </tr>
+        <tr>
+          <th scope="row">Retention</th>
+          <td>Policy default, extended if an Article 9 handover applies</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Look at the destination markets row again. No standard names that field, and without it nobody can tell which of the rows above matter. It is the cheapest field to capture and the one most often missing.</p>
+
+  <p>Notice too what the content attribute row avoids. A photographed plate inside a generated scene is a composite, and calling it generated media would be wrong in the direction that is hardest to walk back.</p>
+
+  <h2>Who can ask for this, and when</h2>
+
+  <p>Not usually a regulator, at least not first. In practice the requests arrive from four directions, and the record answers all of them from the same row.</p>
+
+  <p><strong>Your client's legal team, at contract or at renewal.</strong> Increasingly a schedule to the production agreement rather than a conversation.</p>
+
+  <p><strong>A platform, at upload.</strong> Chinese distribution services apply their own identifiers on top of yours, so your record has to survive alongside theirs rather than be replaced by it.</p>
+
+  <p><strong>A rights holder or a performer's representative,</strong> asking what a likeness was built from. This is the request that fails most often, because rights status lives per input and workflows tend to record it per project.</p>
+
+  <p><strong>Your own team, eighteen months later,</strong> when the asset needs a new version and nobody remembers which plate was licensed. This one is not a compliance request at all, and it is usually the one that makes the record pay for itself.</p>
+
+  <p>The <a href="/the-studio/ai-excellence">AI excellence page</a> sets out how this record sits inside the production pipeline, the <a href="/resources/copyright-and-ai">copyright and AI resource</a> covers the rights questions upstream of it, and the <a href="/solutions/ai-production/image">AI image production</a> page describes where the fields are captured during generation rather than reconstructed afterward.</p>
+
+  <p>Reviewed September 2026.</p>
+
+  <h2>Questions about AI provenance records</h2>
+
+  <h3>What should be logged for every AI-generated asset?</h3>
+
+  <p>Asset ID, producer, model name and version, creation timestamp, content attribute, label flag, action history, inputs with their rights status, and the prompt. Add named human edits, an approver, destination markets and a retention date as practice. Each of the first group is named in a published instrument or specification rather than invented.</p>
+
+  <h3>How long do provenance records need to be kept?</h3>
+
+  <p>Only one instrument sets a period. Article 9 of China's labeling Measures requires at least six months of logs, and only where content was handed over without an explicit label at the user's request. The EU AI Act's Article 50 and the US state statutes set no retention duty at all, so everything else is policy.</p>
+
+  <h3>Who can request an AI disclosure audit trail?</h3>
+
+  <p>In practice, a client's legal team at contract or renewal, a distribution platform at upload, a rights holder or performer's representative asking what a likeness was built from, and your own team when an asset needs versioning later. The last is not a compliance request, and it is often the one that justifies keeping the record.</p>
+
+  <h3>Does the EU AI Act require a per-asset record?</h3>
+
+  <p>No. Article 50 requires providers to mark synthetic output machine-readably and deployers to disclose deepfakes. Neither the article nor the European Commission's FAQ on it names a file anyone must keep. A per-asset record is how you answer an Article 50 question, not something the article demands.</p>
+
+  <h3>What does a complete provenance record look like?</h3>
+
+  <p>One row per asset carrying the fifteen fields above, with content attribute set correctly for composites, rights status recorded per input rather than per project, and destination markets filled in. That last field decides which regime applies, so without it the rest of the row cannot be assessed.</p>
+</ArticleLayout>
