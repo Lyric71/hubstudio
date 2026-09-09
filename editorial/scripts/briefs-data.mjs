@@ -2,7 +2,7 @@
  * The editorial plan as data. One entry per slot in the 12-week calendar.
  *
  * Source of truth for the strategy behind every field:
- * public/content/hubstudio-search-spec.md, Parts 2 and 3.
+ * editorial/SEARCH-SPEC.md, Parts 2 and 3.
  *
  * Briefs 01 to 30 are fully specified and generate a brief file.
  * Briefs 31 to 48 are calendar rows only, briefed in month two
@@ -1553,9 +1553,9 @@ export const PIECES = [
       'shoot or generate decision',
     ],
     verdict: 'VACANT',
-    words: 1500,
+    words: 2000,
     angle:
-      'The rule an actual studio uses, published. The site already says one strong shoot of the hero product then AI for every colour variant, roughly 20 percent shot and 80 percent generated, and 70/30 on ecommerce. Explain when each ratio applies rather than quoting them as slogans.',
+      'The rule an actual studio uses, published. Lead with the four conditions that force capture, not with a ratio: the conditions are what the reader can act on, and three of the four are written into marketplace rules and statutes rather than into model capability. CORRECTED AFTER RESEARCH, 2026-09-09: the site publishes "most catalogs run about 70 percent generated, 30 percent shot" on the ecommerce design service page, and separately frames 20/80 on the who-we-are page as a judgment about "the work". The 20/80 is NOT scoped to color variants and the AI image production page publishes no ratio at all. The two published ratios count different things, so do not present them as one metric at two scopes.',
     mustInclude: [
       'A decision table by asset type',
       'The four conditions that force capture: texture and material truth, regulated categories, talent, physical scale',

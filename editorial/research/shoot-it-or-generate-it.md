@@ -357,13 +357,22 @@ Run 2026-09-09 against `output/shoot-it-or-generate-it.md`.
 | EU Article 50 from 2 August 2026, grace period to 2 December 2026 | Cleared, European Commission FAQ | matches |
 | Roughly 70 percent generated on catalogs | Site's own published line, ecommerce design service page | matches the site's wording. See the flag below |
 
-**The 70 percent figure.** The site publishes "most catalogs run about 70
-percent generated, 30 percent shot" on the ecommerce design service page. No
-method is on file, so the draft labels it in its own voice as a published
-catalog observation rather than a measured average, and the FAQ repeats that
-it is an output rather than a target. `TODO: method statement` is recorded in
-the asset brief. To upgrade it: what counts as one asset, how many
-engagements, over what period, median or mean.
+**The 70 percent figure. RESOLVED 2026-09-09, Cyril: publish it.** The site
+publishes "most catalogs run about 70 percent generated, 30 percent shot" on
+the ecommerce design service page. No method is on file. The draft originally
+hedged it as a published observation rather than a measured average and carried
+a `TODO: method statement`; both are now removed and the figure is stated
+plainly, attributed to the site's own published line. The FAQ still says the
+ratio is an output rather than a target, which is editorial advice and not a
+method hedge, so it stays.
+
+For the record, this overrides the `SPEC.md` rule that a figure without its
+method does not go on the page. That rule continues to bind third-party and
+market figures without exception. The stated exception is a first-party figure
+the site already publishes, where the article makes no claim the site does not
+already make. Supplying the method later (what counts as one asset, how many
+engagements, what period, median or mean) would upgrade it from a published
+figure to a measured one.
 
 **The 20/80 ratio is deliberately absent.** Research established that the site
 frames 20/80 as a judgment about "the work" on the who-we-are page, not as a

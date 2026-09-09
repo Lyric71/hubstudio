@@ -6,7 +6,7 @@ carries two passing checks, reuse the exact citation rather than researching
 it again. The ledger is what stops the same number being researched
 forty-eight times and cited three different ways.
 
-Seeded from Part 7 of `public/content/hubstudio-search-spec.md` on
+Seeded from Part 7 of `editorial/SEARCH-SPEC.md` on
 2026-09-09. **Every seeded row still needs its two check dates before it can
 be cited.** A seeded row with empty check columns is a research lead, not a
 publishable figure.

@@ -77,7 +77,7 @@ exists and every claim in it is marked. `editorial/SPEC.md` has the file
 shape. `editorial/CLAUDE.md` has R1 to R8 in full. The short version:
 
 1. **Read the ledger first.** `editorial/sources/verified-sources.md` and
-   Part 7 of `public/content/hubstudio-search-spec.md`. Any figure already
+   Part 7 of `editorial/SEARCH-SPEC.md`. Any figure already
    logged, dated within 12 months and verified twice is reused with its exact
    citation. Do not research it again. Part 7 also carries a do-not-publish
    list: three items on it are hard blocks.
@@ -99,7 +99,10 @@ shape. `editorial/CLAUDE.md` has R1 to R8 in full. The short version:
    these queries. Record the Chinese source and the English rendering side by
    side.
 6. **Interrogate every figure.** Source URL, publication date, sample size,
-   method, and who paid for it. No stated method, no publication. A figure
+   method, and who paid for it. No stated method, no publication, with one
+   exception: a first-party figure the site already publishes may run
+   attributed to the page that publishes it (see `editorial/CLAUDE.md`, R5).
+   That exception does not reach third-party or market figures. A figure
    published by a party that sells the thing it flatters is labeled a market
    claim. A percentage with no absolute behind it is labeled as such.
 7. **Triangulate.** One primary source, or two independent secondary sources.

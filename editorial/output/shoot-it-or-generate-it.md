@@ -21,12 +21,9 @@ you can name them the rest of the catalog stops being an argument.
 Shoot when the asset has to prove something physical, when a regulator or a
 marketplace requires the real item, when a real person appears, or when scale
 is the point. Generate the variants, the environments, and the repetitions
-around those anchors. hubStudio runs most ecommerce catalogs at roughly 70
-percent generated, and the interesting question is which 30 percent it keeps
-in front of a camera.
-
-That figure is a published observation about catalog mix, not a measured
-average with a stated sample behind it. Treat it as a working ratio.
+around those anchors. hubStudio runs most ecommerce catalogs at about 70
+percent generated and 30 percent shot, and the interesting question is which
+30 percent stays in front of a camera.
 
 | Condition | What forces it | How firm |
 |---|---|---|
@@ -322,8 +319,8 @@ datePublished: 2026-09-18
 TABLES:
   1. The rule by asset type: asset, default, why. Eight rows. The "why" column
      is the load-bearing one and the body tells the reader to read it first.
-CHARTS: none. The 70 percent figure has no series and no stated sample, so
-  charting it would imply a precision the source does not carry.
+CHARTS: none. The 70 percent figure is a single published number with no
+  series behind it, so charting it would imply a precision it does not carry.
 SCREENSHOTS: none required. If the marketplace image-guideline pages are
   captured later, date-stamp them, because both platforms revise these pages.
 DOWNLOADS: the four conditions as a one-page decision card, ungated.
@@ -334,25 +331,24 @@ INTERNAL LINKS:
 CLIENT SIGN-OFF NEEDED: none. No client figure is used.
 RESEARCH FILE: editorial/research/shoot-it-or-generate-it.md
 
-TODO: METHOD STATEMENT NEEDED (blocks nothing, but should be resolved).
-  The piece uses the roughly 70 percent generated catalog figure, which the
-  ecommerce design service page already publishes as "most catalogs run about
-  70 percent generated, 30 percent shot". The draft labels it in its own voice
-  as a published catalog observation rather than a measured average, because
-  no method is on file. To upgrade it to a proper delivery figure, supply:
-  what counts as one asset, how many engagements, over what period, and
-  whether the number is a median or a mean. Then rewrite the qualifier.
-
-LENGTH DEVIATION, FLAGGED FOR REVIEW: the brief targets 1,500 body words and
-  slot D runs 900 to 1,600. This piece lands at roughly 2,090 body words with
-  tables, 1,800 prose only. Two rounds of trimming took out the rhetoric; what
-  is left is nine primary citations (a physical-realism benchmark, two
-  marketplace image rules, an upheld regulator ruling plus that regulator's
+LENGTH, RESOLVED 2026-09-09 (Cyril): keep the citations. The piece runs to
+  roughly 2,090 body words with tables, 1,800 prose only, against slot D's
+  stated 900 to 1,600. The brief's target was raised to 2,000 in
+  briefs-data.mjs and brief 27 regenerated, so the brief and the draft now
+  agree. Nine primary citations carry this page (a physical-realism benchmark,
+  two marketplace image rules, an upheld regulator ruling plus that regulator's
   media-neutrality guidance, EU food and cosmetics rules, a US synthetic
-  performer statute, and the EU Article 50 dates). Cutting to 1,600 means
-  deleting evidence no competing page carries, which is the only reason this
-  page beats the SERP. Recommendation: revise the brief's target to 2,000
-  rather than cut the citations. Decide on review.
+  performer statute, and the EU Article 50 dates). Do not trim them to hit a
+  word count.
+
+THE 70 PERCENT FIGURE, RESOLVED 2026-09-09 (Cyril): publish it. The earlier
+  TODO asking for a method statement is closed. The figure is the site's own
+  published line from the ecommerce design service page, so the article makes
+  no claim the site does not already make, and the hedge calling it an
+  observation rather than a measured average has been removed. Supplying the
+  method later (what counts as one asset, how many engagements, what period,
+  median or mean) would upgrade it from a published figure to a measured one,
+  but it no longer gates this page.
 
 NOTE, CORRECTED FROM THE BRIEF: the brief said the site publishes a 20/80
   shoot-to-generate ratio scoped to color variants. It does not. The

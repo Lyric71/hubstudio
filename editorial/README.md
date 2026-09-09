@@ -5,7 +5,7 @@ drafts them from. Lives in `editorial/` inside the hubstudio repo so the
 pipeline can publish straight into `src/pages/resources/insights/`.
 September 14 to December 4, 2026. Four articles a week.
 
-The strategy behind it is `public/content/hubstudio-search-spec.md`. This
+The strategy behind it is `editorial/SEARCH-SPEC.md`. This
 folder executes it.
 
 ## Start here

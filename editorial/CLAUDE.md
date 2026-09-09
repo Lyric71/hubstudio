@@ -5,7 +5,7 @@ production studio with studios in Shanghai, Changsha, Hong Kong and the
 Philippines. Four articles a week, from a brief file in `briefs/`. Every path
 in this folder is relative to `editorial/` at the repo root.
 
-The plan this system executes is `public/content/hubstudio-search-spec.md`.
+The plan this system executes is `editorial/SEARCH-SPEC.md`.
 That file is the source of truth for strategy: gaps, territory, calendar and
 the 30 briefs. This file is the source of truth for execution.
 
@@ -121,6 +121,14 @@ size, method, and who paid for it. A figure with no stated method does not get
 published. A figure published by a party that sells the thing it flatters gets
 labeled a market claim, not evidence. A percentage with no absolute behind it
 gets labeled as such.
+
+**The one exception, decided 2026-09-09.** A first-party figure the site
+already publishes may run without a method statement, attributed to the page
+that publishes it, because the article then makes no claim the site does not
+already make. This covers the delivery figures in the ledger, and only those.
+It does not reach third-party or market figures, which still need a method or
+they do not go on the page. Supplying the method later upgrades such a figure
+from published to measured, and that is worth doing.
 
 **R6. Triangulate, and publish the disagreement.** One primary source, or two
 independent secondary sources. Where sources conflict, publish the range and

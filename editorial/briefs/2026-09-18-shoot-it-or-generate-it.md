@@ -36,12 +36,12 @@ first. They override any conflicting rule inside the skill.
 | Primary query | `when to shoot vs generate product images` |
 | Secondary queries | `ai generated vs photographed product images`, `when to use ai product photography`, `shoot or generate decision` |
 | SERP verdict | VACANT |
-| Body length | 1,500 words (body only, per the char-count rule) |
+| Body length | 2,000 words (body only, per the char-count rule) |
 | Slot requirement | One number from hubStudio's delivery record with its method stated |
 
 ## The angle
 
-The rule an actual studio uses, published. The site already says one strong shoot of the hero product then AI for every colour variant, roughly 20 percent shot and 80 percent generated, and 70/30 on ecommerce. Explain when each ratio applies rather than quoting them as slogans.
+The rule an actual studio uses, published. Lead with the four conditions that force capture, not with a ratio: the conditions are what the reader can act on, and three of the four are written into marketplace rules and statutes rather than into model capability. CORRECTED AFTER RESEARCH, 2026-09-09: the site publishes "most catalogs run about 70 percent generated, 30 percent shot" on the ecommerce design service page, and separately frames 20/80 on the who-we-are page as a judgment about "the work". The 20/80 is NOT scoped to color variants and the AI image production page publishes no ratio at all. The two published ratios count different things, so do not present them as one metric at two scopes.
 
 ## The research gate, before any drafting
 
