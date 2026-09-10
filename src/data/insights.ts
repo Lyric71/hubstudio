@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'tmall-flagship-store-decoration-specs',
+    image: '/Images/insight-tmall-flagship-store-decoration-specs.webp',
+    imageAlt:
+      'A long panoramic still-life print of ceramic vases and draped linen held flat on a wooden table by two stones, beside a fanned stack of narrow vertical strips of the same scene cut to different widths, with a hand sliding one out.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Tmall Flagship Store Decoration Specs',
+    deck: 'Desktop Tmall store sizes mostly agree. The mobile width depends on when the page was written, and the most repeated figure is among the oldest.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Tmall Flagship Store Decoration Specs | hubStudio',
+    metaDescription:
+      'Tmall store decoration sizes counted across nine sources: where desktop agrees, why mobile width splits by page age, and what no source publishes.',
+  },
+  {
     slug: 'china-ecommerce-content-pack',
     image: '/Images/insight-china-ecommerce-content-pack.webp',
     imageAlt:

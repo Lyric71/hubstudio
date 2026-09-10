@@ -1,0 +1,277 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size is a Tmall store banner?",
+    "a": "On desktop the most published full-screen carousel is 1920 pixels wide, agreed by every source giving a width, with height contested between 400 and 800 pixels and 600 most common. The desktop sign band is 150 pixels tall. These are counted published values rather than figures read from Tmall, so confirm them in the store builder."
+  },
+  {
+    "q": "Do Tmall store modules differ between mobile and PC?",
+    "a": "Yes. Desktop sizes mostly agree across sources. Mobile widths split by publication date: 640 pixels on the oldest material, 750 on pages from 2021 to 2024, 1200 on newer pages, and 1440 found once in 2026. Building mobile modules at the widest published width and exporting down avoids depending on which figure is current."
+  },
+  {
+    "q": "How many assets does a Tmall store refresh need?",
+    "a": "No source publishes a count, because it depends on how many floors and modules a store runs. A refresh touches the store sign and background, navigation, carousel banners and homepage image modules on both desktop and mobile, plus any campaign redress. Take each size from the store builder on the day of production."
+  },
+  {
+    "q": "How does a Singles Day store skin differ from an always-on store?",
+    "a": "No published source gives separate dimensions for a 618 or Singles Day skin. Pages discussing campaign stores cover color, mood and mascots, not module sizes, so a skin is, on the public record, the same modules redressed. The store live tab has no published size at all, so check both directly in the store builder."
+  }
+];
+---
+
+<ArticleLayout slug="tmall-flagship-store-decoration-specs" ctaLabel="Talk to the production team" faq={faq}>
+  <p class="standfirst">Search for Tmall store banner sizes in English and a physical signage printer ranks near the top. The real figures exist in Chinese, and they tell two different stories. Desktop sizes mostly agree. Mobile sizes depend on the year the page was written.</p>
+
+  <h2>What size is a Tmall store banner?</h2>
+
+  <p>On desktop, the most commonly published full-screen carousel banner is 1920 pixels wide, agreed by every source that gives a width, and the store sign band above it is 150 pixels tall. The carousel's height is not settled. On mobile, no single width can be published honestly, and the section on mobile below explains why.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>These specs are not read from a seller backend. Both platform rule centers gate their rule text behind a seller login, so no open source reaches the official value.</p>
+
+  <p>What follows is the most commonly published figure for each spec, collected across 9 independent sources in Chinese on 10 September 2026, with the number of sources that agreed shown per row. No English-language source carried a store decoration size. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own seller backend and confirm it there. Reviewed 10 September 2026.</p>
+
+  <blockquote class="evidence">Tmall does not publish its store decoration sizes where a buyer can read them. On 10 September 2026 the Tmall rule center redirected twice and returned no rule body, and the one platform documentation page on store decoration that loads without a login prints no module size at all. The sizes live inside the store builder in the seller backend. Every figure below is the most commonly published value, not a value read from the platform.</blockquote>
+  <p class="source">Source: 9 independent Chinese-language domains carrying a store decoration figure and 0 English-language, collected 10 September 2026, counted per value with the mode published and the spread kept. Modal value, not a primary reading; the documentation page is a scoped primary reading of what it omits.</p>
+
+  <p>That documentation page is worth a sentence. It is readable, and it is primary, but the only thing it establishes is that the platform does not publish these sizes in the open. It is not the source of any number on this page.</p>
+
+  <h2>Desktop store specs, where the sources agree</h2>
+
+  <blockquote class="evidence">On desktop the published store sign band is 150 pixels tall in total. Most sources split it as a 120 pixel sign over a 30 pixel navigation bar. The sign is published at 950 pixels wide as the standard width, with 990 pixels given for Tmall by the three sources that separate the two, and a full-width background behind it at 1920 by 150 pixels.</blockquote>
+  <p class="source">Source: 5 to 6 independent Chinese-language domains per value, 3 for the Tmall width, pages dated about 2020 to 2026, collected 10 September 2026. Modal value, consensus except the Tmall width, which is contested and has no source newer than 2023. Not a primary reading.</p>
+
+  <blockquote class="evidence">The full-screen carousel on desktop is published at 1920 pixels wide by every source that gives a width. Its height is not settled. The most common figure is 600 pixels, but sources also give 550, a band of 400 to 800, and no limit at all.</blockquote>
+  <p class="source">Source: 5 independent Chinese-language domains for width and 4 for height, collected 10 September 2026. Modal value, consensus for width and contested for height. Not a primary reading.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Most published value</th>
+          <th scope="col">Spread across sources</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Sign band, total height</th>
+          <td>150 pixels</td>
+          <td>Split 120 and 30 on most, 130 and 20 on one</td>
+          <td>5 of 5</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Store sign height</th>
+          <td>120 pixels</td>
+          <td>None beyond the split above</td>
+          <td>4 of 5</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Store sign width, standard</th>
+          <td>950 pixels</td>
+          <td>None</td>
+          <td>6 of 6</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Store sign width, Tmall</th>
+          <td>990 pixels</td>
+          <td>No source newer than 2023</td>
+          <td>3 of 3</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Full-width sign background</th>
+          <td>1920 by 150</td>
+          <td>Height given as 150 on four of five</td>
+          <td>5 of 5</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel width</th>
+          <td>1920 pixels</td>
+          <td>None</td>
+          <td>5 of 5</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel height</th>
+          <td>600 pixels</td>
+          <td>550, 400 to 800, or no limit</td>
+          <td>2 of 4</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Navigation bar height</th>
+          <td>30 pixels</td>
+          <td>One source differs</td>
+          <td>2 of 3</td>
+          <td>contested</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Two rows need their caveats read. The 990 pixel Tmall sign width comes from three sources that separate Tmall from Taobao, and none of them is newer than 2023, so it may not describe the current builder. And the carousel height has four different answers, so it is the row most likely to be quoted to you with a confidence the record does not support.</p>
+
+  <h2>Do Tmall store modules differ between mobile and PC?</h2>
+
+  <p>Yes, and the mobile side is where this page has to be most careful, because it is where the published sizes agree least.</p>
+
+  <blockquote class="evidence">The mobile homepage width depends on when the source was written. The oldest material describes a 640 pixel grid. Pages from 2021 to 2024 give 750 pixels, which is still the most repeated figure. A 2023 Tmall table and 2026 product modules give 1200. One page dated May 2026 quotes a change notice asking for image modules 1440 pixels wide and 144 to 2400 pixels tall, and prints 1400 in its own table. That figure is found once, so treat it as contested, not as the new rule.</blockquote>
+  <p class="source">Source: 6 independent Chinese-language domains giving a mobile width, grouped by publication date before counting, pages dated about 2020 to May 2026, collected 10 September 2026. Modal value by count is 750, contested and split by age. Not a primary reading.</p>
+
+  <p>This is the row where counting alone gives the wrong answer. The most repeated figure, 750, is also among the older ones. The newest figures are wider and rest on fewer pages, including one that contradicts its own table.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Mobile width</th>
+          <th scope="col">Appears on</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">640 pixels</th>
+          <td>The oldest material, about 2020</td>
+          <td>Superseded on newer pages</td>
+        </tr>
+        <tr>
+          <th scope="row">750 pixels</th>
+          <td>Pages from 2021 to 2024</td>
+          <td>Most repeated, not the newest</td>
+        </tr>
+        <tr>
+          <th scope="row">1200 pixels</th>
+          <td>A 2023 Tmall table and 2026 product modules</td>
+          <td>Newer, fewer sources</td>
+        </tr>
+        <tr>
+          <th scope="row">1440 pixels</th>
+          <td>One page, May 2026, quoting a change notice</td>
+          <td>Found once, contested</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>With widths this unsettled, there is one choice that does not depend on which figure is current.</p>
+
+  <blockquote class="evidence">Where published widths disagree, an image built at the widest published width can be scaled down to every narrower one without losing detail. The reverse is not true. A mobile module built at 750 pixels cannot be scaled up to 1440 without softening.</blockquote>
+  <p class="source">Source: reasoning from the mobile width spread in 6 independent Chinese-language domains collected 10 September 2026. Not a platform rule and not a modal value.</p>
+
+  <p>Build mobile modules at the widest published width and export down. That is a production choice made because the record is split, not a Tmall rule.</p>
+
+  <p>The mobile store sign is similarly thin.</p>
+
+  <blockquote class="evidence">The most commonly published mobile store sign is 750 by 580 pixels, under 400KB, in JPG or PNG. Three sources carry it, in near-identical wording, dated 2020, 2024 and 2026, so it may trace to one origin. Other sources give 750 by 254, 642 by 200, and 280 by 50.</blockquote>
+  <p class="source">Source: 6 independent Chinese-language domains giving a mobile store sign size, 3 agreeing, collected 10 September 2026. Modal value, contested. Not a primary reading.</p>
+
+  <p>Three sources in near-identical wording across six years look like agreement and may be one page copied twice. Confirm this one in the store builder before designing to it.</p>
+
+  <p>How much of Tmall's business happens on phones is also less documented than it is assumed to be.</p>
+
+  <blockquote class="evidence">The last mobile share figure found in Alibaba's own results is eleven years old. For the quarter ended September 30, 2015, the company reported that mobile accounted for 62 percent of transaction value on its China retail marketplaces. That is a share of sales across its marketplaces, not a share of Tmall traffic, and no later disclosure of the same figure was found.</blockquote>
+  <p class="source">Source: Alibaba Group quarterly results release filed with the SEC, 27 October 2015, read 10 September 2026. Scoped primary reading, historical.</p>
+
+  <p>Sixty-two percent of sales, across all of the company's China retail marketplaces, in 2015. The share today is widely believed to be far higher, but no later figure with a method was found, so this page does not print one.</p>
+
+  <h2>How does a Singles Day store skin differ from an always-on store?</h2>
+
+  <p>On the published record, not in its dimensions, because nobody publishes separate ones.</p>
+
+  <blockquote class="evidence">No source found publishes a size for the store live tab, and no source publishes a separate set of sizes for a 618 or Singles' Day store skin. The pages that discuss campaign stores discuss color, mood and mascots, not module dimensions.</blockquote>
+  <p class="source">Source: 9 independent Chinese-language domains and one platform documentation page, read in full on 10 September 2026. Stated as an absence, with the search date.</p>
+
+  <p>So a campaign skin is, as far as any public source says, the same modules redressed. The live tab has no published size at all. Both are questions for the store builder, not for a spec sheet.</p>
+
+  <h2>How many assets does a Tmall store refresh need?</h2>
+
+  <p>No source publishes a count, and the right number depends on how many floors and modules a store runs. What can be listed is the set of parts a refresh touches, as production practice rather than a platform list.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Refresh item</th>
+          <th scope="col">Desktop</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Where the size stands</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Store sign and background</th>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Desktop consensus, mobile contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Navigation bar</th>
+          <td>Yes</td>
+          <td>Varies</td>
+          <td>Contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel or hero banners</th>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Width consensus, height contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Homepage image modules</th>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Mobile width split by age</td>
+        </tr>
+        <tr>
+          <th scope="row">Campaign skin redress</th>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>No separate sizes published</td>
+        </tr>
+        <tr>
+          <th scope="row">Live tab</th>
+          <td>No published size</td>
+          <td>No published size</td>
+          <td>Not published</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Plan the refresh from that list, build mobile modules wide, and take each size from the store builder on the day of production rather than from any page, this one included.</p>
+
+  <p>The <a href="/resources/insights/tmall-product-image-requirements">Tmall product image requirements article</a> covers the listing images inside the store, the <a href="/resources/insights/china-ecommerce-content-pack">article on what a China ecommerce content pack contains</a> covers the full deliverable list for a SKU, and the <a href="/solutions/brands">brands solutions page</a> covers running a flagship across campaigns.</p>
+
+  <p>Reviewed 10 September 2026. Confirm every figure in your own seller backend before building a batch to it.</p>
+
+  <h2>Questions about Tmall store decoration</h2>
+
+  <h3>What size is a Tmall store banner?</h3>
+
+  <p>On desktop the most published full-screen carousel is 1920 pixels wide, agreed by every source giving a width, with height contested between 400 and 800 pixels and 600 most common. The desktop sign band is 150 pixels tall. These are counted published values rather than figures read from Tmall, so confirm them in the store builder.</p>
+
+  <h3>Do Tmall store modules differ between mobile and PC?</h3>
+
+  <p>Yes. Desktop sizes mostly agree across sources. Mobile widths split by publication date: 640 pixels on the oldest material, 750 on pages from 2021 to 2024, 1200 on newer pages, and 1440 found once in 2026. Building mobile modules at the widest published width and exporting down avoids depending on which figure is current.</p>
+
+  <h3>How many assets does a Tmall store refresh need?</h3>
+
+  <p>No source publishes a count, because it depends on how many floors and modules a store runs. A refresh touches the store sign and background, navigation, carousel banners and homepage image modules on both desktop and mobile, plus any campaign redress. Take each size from the store builder on the day of production.</p>
+
+  <h3>How does a Singles Day store skin differ from an always-on store?</h3>
+
+  <p>No published source gives separate dimensions for a 618 or Singles Day skin. Pages discussing campaign stores cover color, mood and mascots, not module sizes, so a skin is, on the public record, the same modules redressed. The store live tab has no published size at all, so check both directly in the store builder.</p>
+</ArticleLayout>

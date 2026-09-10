@@ -901,3 +901,33 @@ year and platform. Full working and conflicts in
 | Any production lead time ("two months ahead", "from early September", "10 to 15 days of warm-up") | An agency blog, a vendor explainer, a training-course site | No sample, no method, sellers of preparation | 2026-09-10 |
 | Any festival GMV, growth percentage or brand count | A data firm release, a platform group release, trade press relaying platform claims | No stated method, or a percentage with no absolute | 2026-09-10 |
 | A Douyin AI-label "within the first 5 seconds" rule | An ad-tech agency resource page | No rule document cited | 2026-09-10 |
+
+## One shoot, six platforms: derived figures from the China variant matrix (added 2026-09-10, brief 10)
+
+No new platform value was collected for brief 10. Every spec value it uses is
+already logged above under its own brief, with its own pool and count, and is
+never re-counted or summed across pools. The rows below are the new
+**derivations** the matrix produces: arithmetic on those logged values, each
+labeled derived, never a platform rule. Full inputs in
+`research/one-shoot-six-platforms-china-variant-matrix.md`. This block resolves
+the brief 13 forward dependency logged 2026-09-09: brief 10's count now exists,
+and it is derived arithmetic, not a survey figure.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Vertical composition box on a 1080x1920 master: x 108 to 972, y 420 to 1392 (864x972) | "derived from the published Douyin safe box, the RedNote center-square intersection and bottom reservation, and the Weibo square-upload intersection, assuming centered cuts; not a platform rule" | Briefs 05, 07, 09 derivations, intersected | 2026-09-10 | derived | 2026-09-10 | | 10 |
+| Still composition band on a 1080x1440 3:4 still: full width, y 288 to 1152 (middle 60 percent of height) serves the RedNote cover, a centered square for Tmall, JD, Weibo and WeChat secondary covers, and a centered 5:4 Mini Program share card | "derived from published cover, square and share-card ratios, assuming centered cuts; not a platform rule" | Briefs 01, 04, 07, 08, 09 rows | 2026-09-10 | derived | 2026-09-10 | | 10 |
+| Landscape composition square on a 1920x1080 master: centered about 816x816, x 552 to 1368, y 132 to 948; every published WeChat lead-cover square size (383, 500, 766) equals its cover height | "derived from the published WeChat lead-cover ratio and square-crop sizes and Weibo's horizontal cover ratios; not a platform rule" | Briefs 08, 09 rows | 2026-09-10 | derived | 2026-09-10 | | 10 |
+| Slot count for one SKU across the six platforms: 24 core slots (4 native capture, 8 re-crop, 8 re-export, 4 re-edit), 27 with Douyin in-feed, TopView and open screen; 7 identical-file re-uses, so 17 distinct files core, 19 with Douyin paid | "arithmetic on the slot matrix, one slot per distinct platform surface, a scoping count, not a platform requirement or survey figure" | Brief 10 matrix | 2026-09-10 | derived | 2026-09-10 | | 10, 13 |
+| The 24 core slots need five aspect ratios (1:1, 3:4, 9:16, 2.35:1, 5:4) and four capture set-ups (3:4 still, 9:16 video, wide landscape, white background) | "derived from the slot matrix; arithmetic, not a platform rule" | Brief 10 matrix | 2026-09-10 | derived | 2026-09-10 | | 10, 13 |
+| English and Chinese SERP on four buyer phrasings plus one added English and one Chinese phrasing: no page maps one shoot to platform slots or separates re-crops from captures; the primary query returns platform listicles, two phrasings return venture funds and rocket launches | "own search review, 10 September 2026, every result classified by page type" | Own observation | 2026-09-10 | primary, as an observation about published sources | 2026-09-10 | | 10 |
+
+### Do not publish, added from brief 10
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any per-SKU image total built by summing carousel or note ceilings | Brief 10 asks for a total asset count | Ceilings are not requirements; RedNote 18 against 9 is contested, JD's 5 rests on 2 pages, Weibo 18 originates once. Publish the slot count only | 2026-09-10 |
+| A copy-length matrix per platform | Brief 10 angle ("M copy lengths") | No counted copy-length row per platform exists in the cluster; the rows that exist are API-only, stale, single-source or unsettled | 2026-09-10 |
+| Douyin Shop product listing image sizes (720x1280 main image) and cross-platform text-area rules | A Chinese search summary on the brief 10 query | Not researched in any cluster file; the brief bars any matrix cell not already on a spec page | 2026-09-10 |
+| "40 variants per SKU", "4,200 SKUs into 60,000 variants" | A blog selling dynamic creative guidance | No method, no China platform | 2026-09-10 |
+| RedNote center square "survives an interface overlay" without the bottom caveat | Brief 07 cleared quote 6 | On brief 07's own figures, the lower 15 to 20 percent overlay covers the bottom 36 to 108 px of the center square; use the region above y 1152 | 2026-09-10 |

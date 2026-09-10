@@ -544,3 +544,50 @@ those files.
 | guifan | specification | The class of rule this brief models rather than verifies |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**Eight of the nine cleared blocks shipped as quotations** with attributions
+unchanged: the method, the desktop sign band, the desktop carousel, the mobile
+store sign, the mobile width split by age, the build-to-widest reasoning, the
+absence of live tab and skin sizes, and the 2015 mobile share. Block 9, the
+English-language absence, is used as a sentence in the disclaimer and in the
+introduction rather than as a quotation, with no change to its facts.
+
+**The disclaimer is the marketplace form with NN = 9.** Because no
+English-language source carried a size, "in Chinese and English" became "in
+Chinese", and one sentence states the English absence. The readable platform
+documentation page is named after the block as a scoped primary reading of what
+it omits, and the page says it is not the source of any number.
+
+**The H1, meta, excerpt and angle were changed from the brief.** "Module by module"
+and a sheet "a designer can build from without opening the backend" cannot hold for
+mobile, which is an age-split range, so the H1 now reads "desktop settles, mobile
+does not". The draft meta promised live tab sizes, which no source publishes. During
+the quality check the excerpt and meta were trimmed to their ceilings, and two
+unsupported statements were removed: "where the traffic is" and "the phone is where
+most shoppers are". The only mobile-share evidence is Alibaba's 2015 share of sales.
+
+**The mobile width is published as an age-split table**, never as one current
+width. The 750 figure is labeled most repeated and not newest, and 1440 is labeled
+found once.
+
+**Must-includes met as absences.** The live tab and 618 or Singles Day skins have no
+published sizes. The mobile-first reality is met only by the 2015 SEC filing, scoped
+as a share of transaction value across Alibaba's China retail marketplaces, not Tmall
+traffic, with its date in the quote and the body.
+
+**The refresh checklist is labeled production practice**, with the size status of
+each item carried in its own column.
+
+**Every must-not held**: no size called official or read from the store builder; the
+rule center and documentation page cited only as unreadable or silent; 990 presented
+only with its no-newer-than-2023 caveat; no invented live tab or skin sizes; no
+rejection reasons; no 90-percent mobile traffic claim; no quarantined site; no figure
+from hubStudio's ecommerce design service page; no hubStudio rate.
+
+**Both brief links were missing.** /solutions/platforms/tmall and /resources/specs do
+not exist. The published Tmall product image requirements and China ecommerce content
+pack articles were substituted.
+
+**The hero was accepted on the first generation.**
