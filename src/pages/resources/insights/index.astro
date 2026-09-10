@@ -1,14 +1,34 @@
 ---
 /**
  * /resources/insights: the Insights index.
- * Hero + featured lead article + card grid. All entries from
- * src/data/insights.ts (newest first). No ordinal numerals on cards.
+ * Hero + topic/author filter + featured lead article + card grid. All entries
+ * from src/data/insights.ts (newest first). No ordinal numerals on cards.
+ *
+ * The filter is progressive enhancement: the grid ships every article in the
+ * markup, so with JavaScript off the page reads exactly as it did before, lead
+ * article on top and the archive underneath. The script only hides things.
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
 import { insights } from '../../../data/insights';
 
-const [featured, ...rest] = insights;
+const [featured] = insights;
+
+/**
+ * Filter facets, ordered by how much the archive actually holds on each, so
+ * the bar leads with the subjects the studio has written about most rather
+ * than with whatever happens to sort first alphabetically.
+ */
+function facet(key: 'category' | 'author'): string[] {
+  const counts = new Map<string, number>();
+  for (const item of insights) counts.set(item[key], (counts.get(item[key]) ?? 0) + 1);
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([value]) => value);
+}
+
+const topics = facet('category');
+const authorNames = facet('author');
 
 const SITE = 'https://www.hubstudio.ai';
 const listSchema = {
@@ -51,8 +71,48 @@ const listSchema = {
     </div>
   </section>
 
+  <!-- ===== Filter bar ===== -->
+  <section class="section--filters">
+    <div class="container">
+      <div class="filters" data-filters>
+        <div class="filters__row" role="group" aria-label="Filter insights by topic">
+          <span class="filters__label" id="filter-topic-label">Topic</span>
+          <div class="filters__chips" aria-labelledby="filter-topic-label">
+            <button class="fchip is-on" type="button" data-facet="topic" data-value="all" aria-pressed="true">
+              All topics
+            </button>
+            {topics.map((topic) => (
+              <button class="fchip" type="button" data-facet="topic" data-value={topic} aria-pressed="false">
+                {topic}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="filters__row" role="group" aria-label="Filter insights by author">
+          <span class="filters__label" id="filter-author-label">Author</span>
+          <div class="filters__chips" aria-labelledby="filter-author-label">
+            <button class="fchip is-on" type="button" data-facet="author" data-value="all" aria-pressed="true">
+              All authors
+            </button>
+            {authorNames.map((name) => (
+              <button class="fchip" type="button" data-facet="author" data-value={name} aria-pressed="false">
+                {name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <p class="filters__status">
+          <span data-filter-status>Showing every insight.</span>
+          <button class="filters__clear" type="button" data-filter-clear hidden>Clear filters</button>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Featured lead ===== -->
-  <section class="section--tight">
+  <section class="section--tight" data-featured-section>
     <div class="container">
       <a class={`feat card card--white feat--${featured.tone}`} href={`/resources/insights/${featured.slug}`}>
         <img
@@ -91,8 +151,16 @@ const listSchema = {
       </header>
       <div class="grid">
         {
-          rest.map((item) => (
-            <a class="icard card card--white" href={`/resources/insights/${item.slug}`}>
+          insights.map((item, index) => (
+            <a
+              class="icard card card--white"
+              href={`/resources/insights/${item.slug}`}
+              data-card
+              data-category={item.category}
+              data-author={item.author}
+              data-featured={index === 0 ? '' : undefined}
+              hidden={index === 0}
+            >
               <img
                 class="icard__img"
                 src={item.image}
@@ -106,6 +174,8 @@ const listSchema = {
                 <h3 class="icard__title">{item.title}</h3>
                 <p class="icard__deck">{item.deck}</p>
                 <p class="icard__meta">
+                  <span>{item.author}</span>
+                  <span class="icard__dot" aria-hidden="true"></span>
                   <time datetime={item.dateISO}>{item.date}</time>
                   <span class="icard__dot" aria-hidden="true"></span>
                   <span>{item.readingTime}</span>
@@ -116,6 +186,15 @@ const listSchema = {
           ))
         }
       </div>
+      <nav class="pager" data-pager aria-label="Insights pagination" hidden>
+        <button class="pager__step" type="button" data-page-prev>&larr; Newer</button>
+        <div class="pager__pages" data-page-list></div>
+        <button class="pager__step" type="button" data-page-next>Older &rarr;</button>
+      </nav>
+      <p class="grid-empty" data-filter-empty hidden>
+        Nothing in the archive matches that pair yet. Try a different topic, or
+        clear the author filter to see everything written on it.
+      </p>
     </div>
   </section>
 
@@ -137,6 +216,176 @@ const listSchema = {
 </Layout>
 
 <script>
+  /**
+   * Topic + author filter for the archive.
+   *
+   * Two facets, ANDed, each single-select with an "all" default. The lead
+   * article has its own section at the top, so its grid card stays hidden
+   * while nothing is filtered and joins the grid as soon as something is.
+   * State round-trips through the query string, so a filtered view can be
+   * linked and the back button behaves.
+   */
+  const PER_PAGE = 12;
+
+  const bar = document.querySelector<HTMLElement>('[data-filters]');
+  const featuredEl = document.querySelector<HTMLElement>('[data-featured-section]');
+  const statusEl = document.querySelector<HTMLElement>('[data-filter-status]');
+  const emptyEl = document.querySelector<HTMLElement>('[data-filter-empty]');
+  const clearEl = document.querySelector<HTMLButtonElement>('[data-filter-clear]');
+  const gridEl = document.querySelector<HTMLElement>('.grid');
+  const pagerEl = document.querySelector<HTMLElement>('[data-pager]');
+  const pageListEl = document.querySelector<HTMLElement>('[data-page-list]');
+  const prevEl = document.querySelector<HTMLButtonElement>('[data-page-prev]');
+  const nextEl = document.querySelector<HTMLButtonElement>('[data-page-next]');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-card]'));
+
+  /* Re-bound as non-null locals so the closures below type-check. */
+  if (
+    bar && featuredEl && statusEl && emptyEl && clearEl &&
+    gridEl && pagerEl && pageListEl && prevEl && nextEl && cards.length
+  ) {
+    const featured = featuredEl;
+    const status = statusEl;
+    const empty = emptyEl;
+    const clear = clearEl;
+    const grid = gridEl;
+    const pager = pagerEl;
+    const pageList = pageListEl;
+    const prev = prevEl;
+    const next = nextEl;
+
+    const chips = Array.from(bar.querySelectorAll<HTMLButtonElement>('.fchip'));
+    const valuesFor = (facet: string) =>
+      new Set(chips.filter((c) => c.dataset.facet === facet).map((c) => c.dataset.value ?? ''));
+    const knownTopics = valuesFor('topic');
+    const knownAuthors = valuesFor('author');
+
+    const state = { topic: 'all', author: 'all', page: 1 };
+
+    const matches = (card: HTMLElement) =>
+      (state.topic === 'all' || card.dataset.category === state.topic) &&
+      (state.author === 'all' || card.dataset.author === state.author);
+
+    function render(pushUrl: boolean) {
+      const filtering = state.topic !== 'all' || state.author !== 'all';
+      const matching = cards.filter(matches);
+      /* The lead article already has its own section above the archive, so it
+         only takes a grid slot once a filter has replaced that section. */
+      const inGrid = filtering
+        ? matching
+        : matching.filter((card) => !card.hasAttribute('data-featured'));
+
+      const pages = Math.max(1, Math.ceil(inGrid.length / PER_PAGE));
+      state.page = Math.min(Math.max(state.page, 1), pages);
+      const first = (state.page - 1) * PER_PAGE;
+      const slice = new Set(inGrid.slice(first, first + PER_PAGE));
+
+      for (const card of cards) card.hidden = !slice.has(card);
+
+      featured.hidden = filtering;
+      empty.hidden = matching.length > 0;
+      clear.hidden = !filtering;
+
+      if (!filtering) {
+        status.textContent = 'Showing every insight.';
+      } else {
+        const parts: string[] = [];
+        if (state.topic !== 'all') parts.push(state.topic);
+        if (state.author !== 'all') parts.push(`by ${state.author}`);
+        const noun = matching.length === 1 ? 'insight' : 'insights';
+        status.textContent = `${matching.length} ${noun} on ${parts.join(', ')}.`;
+      }
+
+      for (const chip of chips) {
+        const active = chip.dataset.facet === 'topic' ? state.topic : state.author;
+        const on = chip.dataset.value === active;
+        chip.classList.toggle('is-on', on);
+        chip.setAttribute('aria-pressed', String(on));
+      }
+
+      pager.hidden = pages < 2;
+      prev.disabled = state.page === 1;
+      next.disabled = state.page === pages;
+      pageList.replaceChildren();
+      for (let n = 1; n <= pages; n += 1) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'pager__page';
+        button.dataset.page = String(n);
+        button.textContent = String(n);
+        button.setAttribute('aria-label', `Page ${n} of ${pages}`);
+        if (n === state.page) {
+          button.classList.add('is-on');
+          button.setAttribute('aria-current', 'page');
+        }
+        pageList.append(button);
+      }
+
+      if (pushUrl) {
+        const params = new URLSearchParams();
+        if (state.topic !== 'all') params.set('topic', state.topic);
+        if (state.author !== 'all') params.set('author', state.author);
+        if (state.page > 1) params.set('page', String(state.page));
+        const query = params.toString();
+        history.replaceState(null, '', query ? `?${query}` : location.pathname);
+      }
+    }
+
+    function toPage(n: number) {
+      state.page = n;
+      render(true);
+      grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function readUrl() {
+      const params = new URLSearchParams(location.search);
+      const topic = params.get('topic') ?? 'all';
+      const author = params.get('author') ?? 'all';
+      const page = Number.parseInt(params.get('page') ?? '1', 10);
+      state.topic = knownTopics.has(topic) ? topic : 'all';
+      state.author = knownAuthors.has(author) ? author : 'all';
+      state.page = Number.isFinite(page) && page > 0 ? page : 1;
+    }
+
+    bar.addEventListener('click', (event) => {
+      const chip = (event.target as HTMLElement).closest<HTMLButtonElement>('.fchip');
+      if (!chip || !bar.contains(chip)) return;
+      const value = chip.dataset.value ?? 'all';
+      /* Tapping the chip that is already on turns that facet back off. */
+      if (chip.dataset.facet === 'topic') {
+        state.topic = state.topic === value ? 'all' : value;
+      } else {
+        state.author = state.author === value ? 'all' : value;
+      }
+      /* A narrower archive means the page you were on may not exist. */
+      state.page = 1;
+      render(true);
+    });
+
+    clear.addEventListener('click', () => {
+      state.topic = 'all';
+      state.author = 'all';
+      state.page = 1;
+      render(true);
+    });
+
+    pageList.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>('.pager__page');
+      if (!button) return;
+      toPage(Number.parseInt(button.dataset.page ?? '1', 10));
+    });
+    prev.addEventListener('click', () => toPage(state.page - 1));
+    next.addEventListener('click', () => toPage(state.page + 1));
+
+    window.addEventListener('popstate', () => {
+      readUrl();
+      render(false);
+    });
+
+    readUrl();
+    render(false);
+  }
+
   /* Reveal headlines on scroll (§10: headlines only). */
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
@@ -163,6 +412,154 @@ const listSchema = {
   }
   .section--grid {
     padding-block: 72px 112px;
+  }
+  .section--filters {
+    padding-block: 0 8px;
+  }
+
+  /* ---- Filter bar ---- */
+  .filters {
+    display: grid;
+    gap: 18px;
+    padding: 26px 0 24px;
+    border-top: 1px solid var(--line-hairline);
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .filters__row {
+    display: grid;
+    gap: 12px;
+  }
+  @media (min-width: 900px) {
+    .filters__row {
+      grid-template-columns: 78px 1fr;
+      align-items: baseline;
+      gap: 16px;
+    }
+  }
+  .filters__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .filters__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .fchip {
+    padding: 7px 14px;
+    border: 1px solid var(--line-hairline);
+    border-radius: 999px;
+    background: transparent;
+    font-family: inherit;
+    font-size: var(--type-small);
+    line-height: 1.2;
+    color: var(--text-mute);
+    cursor: pointer;
+    transition:
+      color 160ms ease-out,
+      border-color 160ms ease-out,
+      background-color 160ms ease-out;
+  }
+  .fchip:hover {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+  }
+  .fchip.is-on {
+    background: var(--brand-navy);
+    border-color: var(--brand-navy);
+    color: var(--text-on-dark);
+  }
+  .fchip.is-on:hover {
+    background: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+    color: var(--text-on-dark);
+  }
+  .filters__status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .filters__clear {
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid var(--line-strong);
+    background: transparent;
+    font: inherit;
+    color: var(--text-mute);
+    cursor: pointer;
+  }
+  .filters__clear:hover {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+  }
+  /* ---- Pager ---- */
+  .pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .pager__pages {
+    display: flex;
+    gap: 6px;
+  }
+  .pager__step,
+  .pager__page {
+    border: 1px solid var(--line-hairline);
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+    cursor: pointer;
+    transition:
+      color 160ms ease-out,
+      border-color 160ms ease-out,
+      background-color 160ms ease-out;
+  }
+  .pager__step {
+    padding: 9px 16px;
+    border-radius: 999px;
+  }
+  .pager__page {
+    min-width: 38px;
+    padding: 9px 0;
+    border-radius: 999px;
+    text-align: center;
+  }
+  .pager__step:hover:not(:disabled),
+  .pager__page:hover {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+  }
+  .pager__page.is-on {
+    background: var(--brand-navy);
+    border-color: var(--brand-navy);
+    color: var(--text-on-dark);
+  }
+  .pager__step:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .grid-empty {
+    margin-top: 40px;
+    max-width: 52ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
   }
 
   /* ---- Hero ---- */
@@ -295,6 +692,9 @@ const listSchema = {
     padding: 30px;
     transition: transform 200ms ease-out;
   }
+  .icard[hidden] {
+    display: none;
+  }
   .icard:hover {
     transform: translateY(-4px);
   }
@@ -313,7 +713,7 @@ const listSchema = {
     line-height: 1.3;
   }
   .icard__deck {
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.6;
     color: var(--text-mute);
   }

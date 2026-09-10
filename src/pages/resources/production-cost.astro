@@ -1,0 +1,601 @@
+---
+/**
+ * Production cost estimator (`/resources/production-cost`).
+ *
+ * Infrastructure item 5 of the search plan. The internal quoting tool at
+ * /pricing/calculator returns hubStudio rates and is disallowed in robots.txt.
+ * This is the public, indexable instrument: it returns MARKET ranges read off
+ * published rate cards, never a hubStudio rate and never a quote.
+ *
+ * Every band below is a third-party published figure with a collection date,
+ * traceable to editorial/research/what-a-finished-brand-asset-costs.md and
+ * editorial/research/product-photography-cost-per-sku.md. If a band changes,
+ * change it there first: the research file is the source of truth, this page
+ * is a rendering of it.
+ *
+ * S1 Hero - S2 Estimator - S3 What it excludes - S4 Method - S5 CTA
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+const COLLECTED = 'September 2026';
+
+/* Published category bands. `single` marks a band read off one card only, which
+   the row label states, because a single-card figure is not a range. */
+const lines = [
+  {
+    id: 'retouch',
+    label: 'Retouch of an image you already own',
+    unit: 'per image',
+    low: 0.25,
+    high: 1.2,
+    note: 'No capture. This is the cheapest line here by two orders of magnitude, and the one most often quoted when a buyer asks what content costs.',
+    counts: true,
+  },
+  {
+    id: 'product',
+    label: 'Standard product image, plain background',
+    unit: 'per image',
+    low: 39,
+    high: 50,
+    note: 'Capture of a product you supply.',
+    counts: true,
+  },
+  {
+    id: 'complex',
+    label: 'Styled or complex product image',
+    unit: 'per image',
+    low: 75,
+    high: 190,
+    note: 'Published complexity uplifts above the standard rate.',
+    counts: true,
+  },
+  {
+    id: 'lifestyle',
+    label: 'Model or lifestyle image',
+    unit: 'per image',
+    low: 95,
+    high: 95,
+    single: true,
+    note: 'Capture with a person or a built set.',
+    counts: true,
+  },
+  {
+    id: 'clip',
+    label: 'Short video clip',
+    unit: 'per clip',
+    low: 93,
+    high: 93,
+    single: true,
+    note: 'One clip, one format.',
+  },
+  {
+    id: 'ugc',
+    label: 'Creator-style video',
+    unit: 'per video',
+    low: 89,
+    high: 89,
+    single: true,
+    note: 'One creator-style video.',
+  },
+  {
+    id: 'proedit',
+    label: 'Finished edit',
+    unit: 'per edit',
+    low: 199,
+    high: 199,
+    single: true,
+    note: 'A produced edit rather than a tweak.',
+  },
+  {
+    id: 'addon',
+    label: 'Change to an existing deliverable',
+    unit: 'each',
+    low: 49,
+    high: 49,
+    single: true,
+    note: 'One revision to something already delivered.',
+  },
+];
+
+/* One card's published membership ladder, with the breakevens it implies.
+   Thresholds are annual image counts. The ceiling is the point of the table. */
+const ladder = [
+  { from: 0, off: 0, label: 'List price' },
+  { from: 96, off: 0.1, label: 'First published tier' },
+  { from: 234, off: 0.2, label: 'Second published tier' },
+  { from: 500, off: 0.3, label: 'Ceiling, and it stops here' },
+];
+
+const excluded = [
+  {
+    t: 'Usage and talent',
+    d: 'The trade body standard bid form itemizes a production across sections A through P and carries no line at all for media usage payments. Session fees, renewals and rights sit outside every band above.',
+  },
+  {
+    t: 'Versioning',
+    d: 'Resizes, cutdowns and language versions are usually bid as a separate deck. Under the US performers agreement an edit outside defined parameters creates a new commercial, with new fees.',
+  },
+  {
+    t: 'Sample logistics and reshoots',
+    d: 'Eight published price surfaces were read across two markets and not one of them prices getting the product to the studio, a reshoot, or an approval round that goes to a third pass.',
+  },
+  {
+    t: 'Project management',
+    d: 'Trafficking, QA and coordination are real hours. They appear on almost no published card, which does not make them free.',
+  },
+];
+---
+
+<Layout
+  title="Production Cost Estimator | hubStudio"
+  description="Estimate creative production cost from published market rates, not a quote. Enter your volume and formats and get a category range with every figure dated."
+>
+  <!-- ===== S1: Hero ===== -->
+  <section class="section pc-hero">
+    <div class="container">
+      <span class="eyebrow">Production cost estimator</span>
+      <h1 class="display pc-hero__title">
+        What the market charges, <span class="accent">before anyone quotes you</span>
+      </h1>
+      <p class="pc-hero__lead">
+        Enter what you need. This returns a range built from rate cards published
+        by other people, collected in {COLLECTED}, with the method shown. It is
+        not a quote, it does not ask for your email, and it contains no
+        hubStudio rate.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S2: Estimator ===== -->
+  <section class="section pc-calc">
+    <div class="container">
+      <h2 class="headline">Build your volume</h2>
+      <p class="pc-lede">
+        Leave a row at zero if it does not apply. The ranges are per unit, and
+        the total updates as you type.
+      </p>
+
+      <div class="table-wrap">
+        <table class="pc-table">
+          <thead>
+            <tr>
+              <th scope="col">What you need</th>
+              <th scope="col">Published range</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Line range</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lines.map((l) => (
+              <tr data-row={l.id} data-low={l.low} data-high={l.high} data-counts={l.counts ? '1' : '0'}>
+                <th scope="row">
+                  <span class="pc-label">{l.label}</span>
+                  <span class="pc-note">{l.note}</span>
+                </th>
+                <td class="pc-band">
+                  {l.low === l.high
+                    ? `about $${l.low} ${l.unit}`
+                    : `$${l.low} to $${l.high} ${l.unit}`}
+                  {l.single && <span class="pc-single">one card only</span>}
+                </td>
+                <td>
+                  <label class="pc-qty-label" for={`qty-${l.id}`}>
+                    <span class="visually-hidden">Quantity of {l.label}</span>
+                    <input
+                      class="pc-qty"
+                      id={`qty-${l.id}`}
+                      type="number"
+                      min="0"
+                      step="1"
+                      value="0"
+                      inputmode="numeric"
+                    />
+                  </label>
+                </td>
+                <td class="pc-line" data-line={l.id}>zero</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pc-out card">
+        <p class="pc-out__label">Market range for this volume</p>
+        <p class="pc-out__value" id="pc-total">Enter a quantity to see a range</p>
+        <p class="pc-out__tier" id="pc-tier"></p>
+        <p class="pc-out__caveat">
+          A range, not a quote. Bands come from different cards with different
+          units, so treat the total as the shape of the market rather than as a
+          number anyone has offered you.
+        </p>
+      </div>
+
+      <h3 class="pc-h3">The volume ladder, and where it stops</h3>
+      <p>
+        One card in this category publishes an annual membership ladder. Working
+        its fees back gives the image counts at which each tier pays for itself,
+        and the estimator applies them above. The interesting part is the last
+        row: past the ceiling, buying ten times as much barely moves the unit
+        price.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Images a year</th>
+              <th scope="col">Published discount</th>
+              <th scope="col">What it means</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ladder.map((t) => (
+              <tr>
+                <th scope="row">{t.from === 0 ? 'Under 96' : `${t.from} and up`}</th>
+                <td>{t.off === 0 ? 'None' : `${Math.round(t.off * 100)} percent`}</td>
+                <td>{t.label}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3: What it excludes ===== -->
+  <section class="section pc-excl">
+    <div class="container">
+      <h2 class="headline">What no band above includes</h2>
+      <p class="pc-lede">
+        The published cards price making the file. Four things they do not price,
+        and every one of them is real money.
+      </p>
+      <div class="pc-grid">
+        {excluded.map((e) => (
+          <article class="card pc-card">
+            <h3 class="pc-card__title">{e.t}</h3>
+            <p class="pc-card__body">{e.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4: Method ===== -->
+  <section class="section pc-method">
+    <div class="container">
+      <h2 class="headline">How these numbers were collected</h2>
+      <p>
+        Every band was read directly off a published pricing page in {COLLECTED},
+        one card at a time, and is quoted against the unit that card states.
+        Bands built from two or more independent cards are given as ranges. A
+        band drawn from a single card is labeled on its row, because one card is
+        not a market.
+      </p>
+      <p>
+        Nothing here comes from an aggregator, a roundup, or a vendor's estimate
+        of somebody else's prices. Published cards skew toward the productized
+        end of the market, because that is the end that publishes, so treat
+        these as the floor of the visible market rather than an average of all
+        work done.
+      </p>
+      <p>
+        Prices in this category change without notice, which is why the
+        collection date sits on the page rather than in a footnote. For the
+        reasoning behind the unit definition, and why a resize counts as a new
+        asset here, see the article on what a finished brand asset costs. The
+        product photography cost per SKU article shows the ladder arithmetic in
+        full.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== S5: CTA ===== -->
+  <section class="section pc-cta">
+    <div class="container">
+      <div class="card card--navy pc-cta__card">
+        <span class="eyebrow">Next step</span>
+        <h2 class="headline h3">Get a scoped number against your actual brief</h2>
+        <p class="pc-cta__text">
+          A range tells you whether a quote is sane. It cannot tell you what your
+          work costs, because that depends on the brief. Send us the brief.
+        </p>
+        <Button variant="primary-inverse" href="/contact">Talk to the studio</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  (function () {
+    const fmt = (n) =>
+      n >= 100 ? '$' + Math.round(n).toLocaleString('en-US') : '$' + n.toFixed(2);
+
+    const rows = Array.from(document.querySelectorAll('[data-row]'));
+    const totalEl = document.getElementById('pc-total');
+    const tierEl = document.getElementById('pc-tier');
+
+    /* Thresholds are annual image counts, from one card's published ladder. */
+    const tiers = [
+      { from: 500, off: 0.3, label: 'at the published ceiling of 30 percent off' },
+      { from: 234, off: 0.2, label: 'at the published 20 percent tier' },
+      { from: 96, off: 0.1, label: 'at the published 10 percent tier' },
+      { from: 0, off: 0, label: 'below the first published volume tier' },
+    ];
+
+    function recalc() {
+      let low = 0;
+      let high = 0;
+      let images = 0;
+
+      for (const row of rows) {
+        const input = row.querySelector('.pc-qty');
+        const qty = Math.max(0, parseInt(input.value, 10) || 0);
+        const l = parseFloat(row.dataset.low) * qty;
+        const h = parseFloat(row.dataset.high) * qty;
+        low += l;
+        high += h;
+        if (row.dataset.counts === '1') images += qty;
+
+        const cell = row.querySelector('.pc-line');
+        if (!qty) cell.textContent = 'zero';
+        else if (l === h) cell.textContent = fmt(l);
+        else cell.textContent = fmt(l) + ' to ' + fmt(h);
+      }
+
+      if (low === 0 && high === 0) {
+        totalEl.textContent = 'Enter a quantity to see a range';
+        tierEl.textContent = '';
+        return;
+      }
+
+      const tier = tiers.find((t) => images >= t.from);
+      const dLow = low * (1 - tier.off);
+      const dHigh = high * (1 - tier.off);
+
+      totalEl.textContent =
+        dLow === dHigh ? fmt(dLow) : fmt(dLow) + ' to ' + fmt(dHigh);
+
+      tierEl.textContent = tier.off
+        ? images +
+          ' images a year puts this ' +
+          tier.label +
+          ', applied to the capture and retouch lines.'
+        : images
+          ? images + ' images a year is ' + tier.label + ', so no discount is applied.'
+          : 'No image volume entered, so no volume tier applies.';
+    }
+
+    rows.forEach((r) => r.querySelector('.pc-qty').addEventListener('input', recalc));
+    recalc();
+  })();
+</script>
+
+<style>
+  .pc-hero {
+    padding-top: calc(var(--nav-h) + 56px);
+    background: var(--bg-cream);
+  }
+  .pc-hero__title {
+    margin: 12px 0 0;
+    max-width: 16ch;
+  }
+  .pc-hero__lead {
+    margin: 20px 0 0;
+    max-width: 62ch;
+    font-size: var(--type-lead);
+    line-height: var(--lh-body);
+    color: var(--text-mute);
+  }
+
+  .pc-lede {
+    margin: 12px 0 28px;
+    max-width: 68ch;
+    font-size: var(--type-body);
+    line-height: var(--lh-body);
+    color: var(--text-mute);
+  }
+  .pc-method p,
+  .pc-calc p:not(.pc-lede):not([class*='pc-out']) {
+    max-width: 68ch;
+    font-size: var(--type-body);
+    line-height: var(--lh-body);
+    color: var(--text-mute);
+  }
+
+  .table-wrap {
+    margin-top: 8px;
+    overflow-x: auto;
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    background: var(--bg-white);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--type-body);
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line-hairline);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  thead th {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+  }
+  tbody th {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  tbody tr:last-child th,
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .pc-label {
+    display: block;
+  }
+  .pc-note {
+    display: block;
+    margin-top: 4px;
+    max-width: 46ch;
+    font-size: var(--type-small);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .pc-band {
+    white-space: nowrap;
+  }
+  .pc-single {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    color: var(--text-mute);
+    opacity: 0.85;
+  }
+
+  .pc-qty-label {
+    display: block;
+  }
+  .pc-qty {
+    width: 96px;
+    padding: 8px 10px;
+    font-family: var(--font-mono);
+    font-size: var(--type-body);
+    color: var(--text-ink);
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+  }
+  .pc-qty:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 1px;
+  }
+  .pc-line {
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .pc-out {
+    margin-top: 28px;
+    padding: 28px 32px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .pc-out__label {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .pc-out__value {
+    margin: 8px 0 0;
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.15;
+    color: var(--text-ink);
+  }
+  .pc-out__tier {
+    margin: 10px 0 0;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: var(--lh-body);
+    color: var(--text-ink);
+  }
+  .pc-out__caveat {
+    margin: 14px 0 0;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: var(--lh-body);
+    color: var(--text-mute);
+  }
+
+  .pc-h3 {
+    margin: 56px 0 0;
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: var(--lh-headline);
+    color: var(--text-ink);
+  }
+
+  .pc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap-card);
+  }
+  .pc-card {
+    padding: 28px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .pc-card__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 20px;
+    line-height: var(--lh-headline);
+    color: var(--text-ink);
+  }
+  .pc-card__body {
+    margin: 10px 0 0;
+    font-size: var(--type-body);
+    line-height: var(--lh-body);
+    color: var(--text-mute);
+  }
+
+  .pc-excl {
+    background: var(--bg-cream);
+  }
+
+  .pc-cta__card {
+    display: grid;
+    gap: 14px;
+    justify-items: start;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 44px;
+  }
+  .pc-cta__text {
+    margin: 0;
+    max-width: 54ch;
+    font-size: var(--type-body);
+    line-height: var(--lh-body);
+    color: rgba(240, 237, 233, 0.78);
+  }
+  @media (max-width: 600px) {
+    .pc-cta__card {
+      padding: 32px 24px;
+    }
+    .pc-out {
+      padding: 24px;
+    }
+  }
+</style>

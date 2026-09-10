@@ -346,7 +346,7 @@ hardest to admit to.
 
 The hub4you platform covers running your own team on a stood-up production
 system, the consulting solutions page covers the structure question itself, and
-the quotation calculator will price the variable half against your actual
+the production cost estimator will price the variable half against your actual
 volume.
 
 Reviewed September 2026. Every figure carries its reference period, because two
@@ -475,7 +475,7 @@ DOWNLOADS: the three-layer model as a blank spreadsheet with the eight
 INTERNAL LINKS:
   hub4you platform -> /hub4you
   consulting solutions page -> /solutions/consulting
-  quotation calculator -> /pricing/calculator
+  production cost estimator -> /resources/production-cost
 CLIENT SIGN-OFF NEEDED: none. The four-seat unit is built from published
   national medians, not from any client's team.
 RESEARCH FILE: editorial/research/in-house-studio-vs-outsourced-production.md

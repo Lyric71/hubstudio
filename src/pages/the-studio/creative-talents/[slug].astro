@@ -116,6 +116,16 @@ const metaDescription = author.bio
           <p class="au-role">{author.role}</p>
           <h1>{author.name}</h1>
           {author.nationality && <p class="au-nat">{author.nationality}</p>}
+          {
+            /* Outbound profile, only for the people who supplied one. */
+            author.linkedin && (
+              <p class="au-social">
+                <a href={author.linkedin} rel="noopener" target="_blank">
+                  LinkedIn
+                </a>
+              </p>
+            )
+          }
         </div>
       </header>
 
@@ -187,6 +197,23 @@ const metaDescription = author.bio
   }
   .au-back a:hover {
     color: var(--brand-orange-cta);
+  }
+
+  .au-social {
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    letter-spacing: 0.04em;
+  }
+  .au-social a {
+    color: var(--text-mute);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .au-social a:hover,
+  .au-social a:focus-visible {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
   }
 
   .au-head {

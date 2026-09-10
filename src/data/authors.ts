@@ -6,9 +6,10 @@
  * somewhere to resolve to. `src/data/insights.ts` carries `author` as a
  * display name; `authorBySlug` and `findAuthorByName` map between the two.
  *
- * Single source of truth for the sixteen creatives. The creative-talents
- * index page and the per-author pages both read from here, so the roster
- * cannot drift between them.
+ * Two rosters live here. The sixteen creatives carry portraits and quotes and
+ * feed the creative-talents page. The editorial bench (`editorial: true`) are
+ * studio directors who carry bylines but do not sit on that index. Both get a
+ * per-author page, so every byline resolves to one entity.
  *
  * IMPORTANT, read before editing. Every field below is either already
  * published on the site or is structural (a slug, a URL). Nothing here is
@@ -38,8 +39,19 @@ export interface Author {
   credits?: string[];
   /** External profiles, for schema `sameAs`. */
   sameAs?: string[];
+  /**
+   * Public LinkedIn profile, rendered as a visible link on the author page
+   * and next to the article byline. Only set for people who have actually
+   * given us their profile: never guess a LinkedIn slug for a real person.
+   */
+  linkedin?: string;
   /** True for people who carry article bylines today. */
   bylines?: boolean;
+  /**
+   * Studio directors on the editorial bench. They carry bylines and get an
+   * author page, but they are not part of the sixteen on creative-talents.
+   */
+  editorial?: boolean;
 }
 
 export const authors: Author[] = [
@@ -49,7 +61,31 @@ export const authors: Author[] = [
     role: 'Founder and CEO',
     nationality: 'French',
     bio: 'Founder of hubStudio, which he started in 2024. Previously CEO of Publicis Commerce for China and North Asia. Writes most of what appears under Insights.',
+    linkedin: 'https://www.linkedin.com/in/cyril-d-68835729/',
+    sameAs: ['https://www.linkedin.com/in/cyril-d-68835729/'],
     bylines: true,
+    editorial: true,
+  },
+  {
+    slug: 'echo-peng',
+    name: 'Echo Peng',
+    role: 'Senior Director and Partner',
+    nationality: 'Chinese',
+    bio: 'Eighteen years running eCommerce and digital for global brands in China. Former operations director at Publicis China. Owns the platforms and the day to day on every account.',
+    linkedin: 'https://www.linkedin.com/in/echo-peng-aa241751/',
+    sameAs: ['https://www.linkedin.com/in/echo-peng-aa241751/'],
+    bylines: true,
+    editorial: true,
+  },
+  {
+    slug: 'liyan-ye',
+    name: 'Liyan Ye',
+    role: 'Senior Director',
+    nationality: 'Chinese',
+    linkedin: 'https://www.linkedin.com/in/liyanye/',
+    sameAs: ['https://www.linkedin.com/in/liyanye/'],
+    bylines: true,
+    editorial: true,
   },
   {
     slug: 'marcus-sullivan',
@@ -58,6 +94,7 @@ export const authors: Author[] = [
     role: 'Creative Director',
     quote: 'I design brand worlds that feel lived-in before they launch.',
     image: '/Images/talent-marcus-sullivan.webp',
+    bylines: true,
   },
   {
     slug: 'lea-moreau',
@@ -98,6 +135,7 @@ export const authors: Author[] = [
     role: 'Film Director',
     quote: 'Minimalism with a pulse. Function that makes you feel.',
     image: '/Images/talent-erik-lindstrom.webp',
+    bylines: true,
   },
   {
     slug: 'wei-lin-tan',
@@ -122,6 +160,7 @@ export const authors: Author[] = [
     role: 'Digital Art Director',
     quote: 'I turn five thousand years of aesthetics into pixels that sell.',
     image: '/Images/talent-jason-liu.webp',
+    bylines: true,
   },
   {
     slug: 'aisha-rahman',
@@ -130,6 +169,7 @@ export const authors: Author[] = [
     role: 'Content Strategist',
     quote: 'I translate heritage into language Gen Z actually wants to hear.',
     image: '/Images/talent-aisha-rahman.webp',
+    bylines: true,
   },
   {
     slug: 'sophie-brennan',
@@ -146,6 +186,7 @@ export const authors: Author[] = [
     role: 'Creative Systems Lead',
     quote: 'I build systems that scale creativity, not just content.',
     image: '/Images/talent-maya-patel.webp',
+    bylines: true,
   },
   {
     slug: 'nara-suwan',
@@ -181,8 +222,11 @@ export const authors: Author[] = [
   },
 ];
 
-/** The sixteen creatives, without the founder. Used by the index page. */
-export const creatives = authors.filter((a) => a.slug !== 'cyril-drouin');
+/** The sixteen creatives, without the editorial bench. Used by the index page. */
+export const creatives = authors.filter((a) => !a.editorial);
+
+/** Everyone who carries a byline, in the order bylines should be listed. */
+export const bylineAuthors = authors.filter((a) => a.bylines);
 
 export function authorBySlug(slug: string): Author | undefined {
   return authors.find((a) => a.slug === slug);

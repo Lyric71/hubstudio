@@ -335,3 +335,173 @@ Every condition below traces to a row above.
 The article states these as conditions, in the buyer's words, and never as a
 savings percentage. No percentage on this page stands in for a number a source
 withheld.
+
+---
+
+## Cleared for use
+
+Blockquote-ready. Use the attribution line exactly as written. No company,
+tool, model or platform name appears in any of them.
+
+> Published list prices put a second of generated video between roughly $0.05
+> and $0.60, depending on model tier and resolution, with audio included at the
+> default on one of the two surfaces.
+> Source: published generation price surfaces in this category, read directly
+> on 10 September 2026, one credit card and one API price list, quoted per
+> second of generated video, no vendor named.
+
+> On the credit route the same second works out at about $0.10 to $0.23 once
+> the monthly price is divided by the monthly credit allowance and multiplied
+> by the card's stated 12 credits a second.
+> Source: one published credit card in this category, read directly on 10
+> September 2026, arithmetic shown on the page, single card.
+
+> Neither published price surface says whether a rejected or unusable
+> generation is billed. Both bill the attempt, not the result.
+> Source: the same two published price surfaces, read in full on 10 September
+> 2026. The absence was confirmed at source, not inferred.
+
+> Thirty seconds of finished screen time, generated once with nothing retried,
+> costs between about $1.50 and $18.00 in generation at published list rates.
+> Source: arithmetic on published generation prices in this category, 10
+> September 2026, shown step by step on this page.
+
+> Take the same 30 seconds at four generations for each usable one and the
+> generation bill runs about $6 to $72. Take it at the roughly 300 to 1 ratio
+> one documented production disclosed and the same 30 seconds runs about $450
+> to $5,400.
+> Source: arithmetic on published generation prices in this category, 10
+> September 2026, applied to the two retry ratios that have been published
+> anywhere, both shown with their limits on this page.
+
+> On one documented AI-assisted short film, the post-production lead put the
+> ratio of generated source material to finished footage at about 300 to 1,
+> with hundreds of generations of 10 to 20 seconds each behind roughly 90
+> seconds of finished film.
+> Source: a visual-effects trade publication's interview with the production
+> team, April 2024. One production, the practitioner's own estimate, no
+> counting log published, and the model generation is dated.
+
+> That same production still needed rotoscoping, artifact removal, retiming of
+> clips that had rendered in unintended slow motion, manual cropping to create
+> camera moves, colour grading and an added grain treatment, and it ran at 480p
+> before an external upscale.
+> Source: the same trade-publication interview, April 2024, the team's own
+> account of its post pipeline.
+
+> No independent benchmark of generations per usable shot exists. The only
+> rate published by anyone selling generation tools comes from that seller's
+> own unnamed internal case work, and the only figure from a named practitioner
+> covers a single 2024 production. The two differ by roughly seventy-five
+> times.
+> Source: five buyer queries run in English and Chinese on 10 September 2026,
+> top ten results assessed for each. Four of the top eight on the direct
+> question measure detection of generated video, which is a different
+> quantity on a different population.
+
+> The circulating figure of roughly one to five dollars an AI ad is a market
+> claim. No publisher in that chain states a sample, an instrument or a
+> definition of a finished ad, and every one of them sells generation.
+> Source: a circulating market claim in this category, observed again in
+> September 2026. Quoted as a claim, never as evidence.
+
+> The standard bid form of the US commercial production trade body itemizes a
+> production across sections A through P, from prep crew to breakout talent,
+> and carries no line at all for media usage payments.
+> Source: the trade body's own free bid form, updated January 2023, downloaded
+> and read in full September 2026.
+
+> The same trade body's 2026 bidding guide tells bidders to establish whether a
+> stated budget is all in, and whether stills, social elements and behind the
+> scenes carry separate decks and separate budgets.
+> Source: the trade body's published bidding reference guide, 2026 edition.
+
+> Under the US performers' union commercials agreement effective 1 April 2025,
+> alternate scenes shot for one commercial in the same session are not treated
+> as new commercials, while an edit or lift outside the defined parameters
+> creates a new commercial and new fees.
+> Source: the union commercials agreement effective April 2025, as read by two
+> independent law firms. The union's own rate documents are not machine
+> readable.
+
+> In the United States, the median annual wage was $75,420 for film and video
+> editors, $74,990 for camera operators in television, video and film, and
+> $114,850 for art directors. Loaded at the published private-industry
+> compensation multiplier of about 1.43 and divided by a 2,080-hour year, that
+> is about $52, $52 and $79 an hour.
+> Source: the national occupational employment and wage statistics program, May
+> 2025 reference period, a full establishment survey, with the load taken from
+> the national employer compensation cost series, March 2026 reference period.
+> US data, and the 2,080-hour year is a stated convention.
+
+> Nearly two thirds of brands expect to increase social and short-form video
+> production.
+> Source: global advertiser trade body content production research, March 2025,
+> a survey of 50 global brands across more than ten sectors.
+
+**Method sentence for the methodology box, cleared as written.** Every
+generation price on this page was read directly from a live published price
+surface on 10 September 2026, one surface at a time, and is quoted per second
+of generated video as that surface states it. Bands built from two independent
+surfaces are given as ranges. Arithmetic is shown in full so the reader can
+rerun it on their own rates. Where no figure exists, this page says so and
+prints nothing in its place.
+
+---
+
+## Do not publish
+
+Everything checked that did not clear the bar, with the reason. Names appear
+here and nowhere else.
+
+| Claim or source | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| An expert-led 30-second AI video from $5,000, about 60 percent below traditional at equivalent quality | lemonlight.com, top result on the primary query | No sample, no method, no definition of equivalent quality, and the publisher sells the production being priced | 2026-09-10 |
+| $50 to $200 a video for small projects, $50,000 to $200,000 for 1,000 videos | Circulating across the primary-query result set | No instrument, no unit definition, no publisher willing to state a method | 2026-09-10 |
+| Traditional freelance $1,000 to $5,000 a minute against AI generation at $0.50 to $30 a minute | Tool vendor comparisons on the primary query | A seller pricing both sides of its own comparison. No sample, no method | 2026-09-10 |
+| Brands cutting production cost by 58 to 90 percent with AI video tools | Tool vendor blogs across two queries | A percentage with no absolute, no baseline and no sample. Same failure mode as the 80 percent claim already in the ledger from brief 11 | 2026-09-10 |
+| Under $2 a video, and under $1 a video at $9 a month for 15 or more videos | inreels.ai | A seat price divided by the seller's own output cap. It prices access to a generator, not a delivered asset | 2026-09-10 |
+| Finished AI ads from about $30 for a product swap to about $1,300 for a brand film, UGC near $125, localization near $145 | invideo.io pricing explainer | The publisher's own credit ladder presented as a market. No external sample, no method | 2026-09-10 |
+| A fall in the average cost of a single product video ad from about $200 in late 2024 to under $30 by early 2026 | rewarx.com | A before-and-after with no baseline definition, no sample, no instrument and no stated period at source | 2026-09-10 |
+| $13 to $220 a finished minute at the generation layer | ltx.io | Published by a model vendor, and the iteration rate inside the calculation is an assumption the page states rather than a measurement. Our own arithmetic from list prices replaces it | 2026-09-10 |
+| A full AI campaign at about $33 for 155 credits at about 21 cents each, against an estimated $100,000 plus for a comparable traditional production | Circulating on the campaign query | The $100,000 side is an estimate by the party that wins the comparison. No method on either side | 2026-09-10 |
+| Production cost down about 97 percent from 2020 to early 2026, a $1,500 freelance project rendering for under $15 | Statistics roundup on the campaign query | Roundup of roundups, no traceable primary, no instrument | 2026-09-10 |
+| Roughly 25 percent of generated clips reaching a final edit; yield bands of 60 to 85 percent social, 40 to 60 percent professional narrative, 4 to 5 percent broadcast; 41 clips of 164 on one episode; about 400 generations and $870 on one short | invideo.io FAQ, updated 2026-07-27 | The only yield figures on the open web, and they come from the seller of the generation tool, from unnamed internal case work, with no instrument and no external check. Usable only as the shape of a claim, never as a rate, and never with the publisher named | 2026-09-10 |
+| API uptime figures of 99.9, 99.5 and 99.0 percent with automatic retry on GPU failure | modelslab.com | Measures infrastructure reliability, not creative yield. Citing it as a retry rate would be a category error | 2026-09-10 |
+| Any yield, usability or pass rate taken from the academic generated-video benchmarks | arxiv.org, GenVidBench, VidAudit, V2V-Bench, MTAVG-Bench | These measure detection of generated video and model quality scoring. Wrong quantity, wrong population. They are evidence that no production-yield benchmark exists, and nothing more | 2026-09-10 |
+| RMB per-piece bands of 200 to 500, 800 to 2,500 and 3,000 to 10,000 by tier, and savings of 3,000 to 15,000 RMB on live capture | aigcsdm.com quotation guide, surfaced on the Chinese-language query | A vendor quotation ladder. No sample, no method, no definition of a finished piece, and not read at source in this pass. The structural observation about per-piece pricing with turnaround attached is kept, the numbers are not | 2026-09-10 |
+| Digital-human costs from a few hundred to several hundred thousand RMB | cj.sina.com.cn sponsored column | Sponsored placement, no sample, and a band three orders of magnitude wide carries no information | 2026-09-10 |
+| A 2026 global AI video generation market size of about 296 million dollars growing about 35.16 percent | Chinese-language result set | Figure appears only in a search summary of a sponsored column, the false precision on the growth rate has no instrument behind it, and no primary was reachable | 2026-09-10 |
+| Brand video $1,000 to $16,000, $3,185 for a 60-second ad, $1 to $5 an AI video, $198 a UGC deliverable | sovran.ai, already in the ledger from brief 11 | Aggregated from 20 unnamed external sources, no primary collection, no sample, published by a company selling the remedy. Ranked again here on three of four English queries | 2026-09-10 |
+| Savings of up to 80 percent on video production by switching to AI-assisted workflows | Circulating vendor guides, already in the ledger from brief 11 | Percentage with no absolute and no publisher willing to state a method | 2026-09-10 |
+| A hubStudio retake and selection rate, or any generations-per-usable-shot figure presented as delivery data | Brief 14, statistics-to-source list | The figure is not in the source ledger, so it has no stated method, no sample and no period. Under R5 it cannot be published. Mark `TODO: client sign-off` if the draft needs it, and publish the absence instead | 2026-09-10 |
+| Self-serve AI video tool tiers of roughly $39 to $99 a month | Ledger seed row for brief 14 | Logged as triangulated but carrying no check 1 and no check 2, and it was not re-read at source in this pass. Do not cite until two live cards are read and dated | 2026-09-10 |
+| A single headline percentage for generation cost as a share of total cost | Brief 14, must-include list | The numerator is publishable and the denominator is not, because no defensible published total exists for a delivered 30-second film. Ship the arithmetic and let the reader divide by their own total. Do not print one percentage | 2026-09-10 |
+| The names of every price surface, tool, model, vendor and platform in this file: runway.com, ai.google.dev, invideo.io, inreels.ai, sovran.ai, ltx.io, lemonlight.com, magichour.ai, leadde.ai, vidboard.ai, longstories.ai, heyoz.com, novoads.ai, playcut.ai, rewarx.com, modelslab.com, wavespeed.ai, aigcsdm.com, and the model and product names on any of them | Every row in the claims table and the SERP map | Standing rule. The pattern and the bands publish at category level, the instances never do. This includes the film, the studio and the model in the 300 to 1 disclosure: attribute to a documented production and a trade publication, never by name | 2026-09-10 |
+| Any hubStudio rate, monthly figure or per-item price | Brief 14 | Standing rule. Send the reader to the quotation calculator | 2026-09-10 |
+
+---
+
+## Screenshot inventory
+
+Price surfaces change without notice and every generation figure on the page
+depends on what these said on 10 September 2026. Dated captures are worth
+taking before the draft ships, saved to `research/all-in-cost-of-ai-video/`.
+
+| File | What it shows | Captured | Source surface |
+|---|---|---|---|
+| credit-card-tiers.png | Four published tiers, monthly prices on annual and monthly billing, credit allowances per tier | Pending | Published pricing page, generated video credit route |
+| credit-card-per-second.png | The stated credit rate for each second of generated video, and the per-clip credit prices for the other models on the same card | Pending | Same pricing page, model credit table |
+| api-price-list.png | Per-second list prices by model tier and resolution, and the note that audio is included at the default | Pending | Published API price list, generated video |
+| api-price-no-failure-clause.png | The section where a billing rule for rejected or filtered generations would sit, showing none | Pending | Same API price list |
+| yield-claim-vendor.png | The only published usable-clip rate and its tier bands, with the absence of any cited study visible | Pending | Tool vendor FAQ page, updated July 2026 |
+| practitioner-ratio.png | The 300 to 1 estimate and the surrounding description of the post pipeline | Pending | Trade-publication interview, April 2024 |
+| serp-yield-query.png | The top ten for the direct yield question, showing four academic detection papers and one seller | Pending | Search results page, captured for the absence claim |
+
+Already on disk from earlier passes and reusable here: the trade body standard
+bid form PDF and the 2026 bidding reference guide PDF, both downloaded
+2026-09-09 for brief 11.
+
+---
+
+## R8. Reconciliation (filled after drafting)

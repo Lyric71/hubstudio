@@ -178,3 +178,353 @@ rather than quietly softened into hedges.
 | n | Versioning at volume drops cost per asset by a stated percentage | **Not sourced.** Asserted repeatedly by sellers, never with a denominator or a sample. Cut, see Do not publish |
 | o | AI adaptation pipelines deliver N markets in a stated cycle time | **Not sourced.** Vendor claim, no method. Cut |
 | p | Legal and platform variables differ by market in a documented way | Confirmed for one market only, China, and it is already published. Cite the existing article, do not restate its stack |
+
+## R1 and R5. Claims table
+
+Confidence is one of: primary, triangulated, single-source, unverified, derived.
+Anything marked unverified is cut from the outline before writing. Rows marked
+**reused** were cleared in an earlier brief and carry their original check dates
+from `sources/verified-sources.md`.
+
+### The adaptation unit itself
+
+| Claim | Source URL | Date | Sample size | Method | Who paid | Confidence |
+|---|---|---|---|---|---|---|
+| A published adaptation rate states a starting price of 1,350 EUR excluding VAT for a 15-second commercial adaptation, and defines the deliverable as a new voice-over, new titles, a new packshot, an audio mix and mastering | 2shotmedia.com/en/commercial-adaptation | Read 2026-09-10, no publication date on the page | One card | Published price read directly from the seller's own page | The vendor publishing it | single-source |
+| The same card charges 65 EUR per broadcast master file, separately from the adaptation itself | Same URL | Read 2026-09-10 | One card | Published price read directly | Same | single-source |
+| The same card states that anything outside that inclusion list, including logo changes, actor dubbing and new product recording, is quoted separately before execution | Same URL | Read 2026-09-10 | One card | Published scope note read directly | Same | single-source |
+| No page found across six buyer phrasings publishes a tiered ladder of adaptation levels with a cost attached to each level | Forty-nine results, R2 above | Searched 2026-09-10 | 49 results across 6 queries | Result-by-result assessment, page type and cost content recorded per row | n/a | primary, as an observation about the category |
+| Roughly 82 percent of results for these phrasings are published by a party selling the service, the software or the media described | R2 above | 2026-09-10 | 49 results | Counted by hand from the six SERP tables, 40 of 49 | n/a | primary, arithmetic on the SERP map |
+
+### Tier anchors, reused
+
+| Claim | Source and ledger note | Date | Sample size | Method | Who paid | Confidence |
+|---|---|---|---|---|---|---|
+| Published rate cards put ecommerce image editing between roughly 0.25 and 1.20 USD an image by operation, with one card adding a fixed platform fee of about 95 USD a month | **Reused**, ledger row from brief 11. Two independent published pricing pages read directly | Collected 2026-09, check 1 on 2026-09-09 | Two cards | Published prices read directly and compared | The vendors publishing them | triangulated |
+| Published studio rate cards put a standard product image at 39 to 50 USD, a model or lifestyle image at about 95 USD, a short video clip at about 93 USD and a single UGC video at about 89 USD, with edit add-ons around 49 USD each | **Reused**, ledger row from brief 11. Two independent published pricing pages | Collected 2026-09, check 1 on 2026-09-09 | Two cards | Published prices read directly, quoted as each card states them | The vendors publishing them | triangulated |
+| A published Chinese ecommerce photography rate card lists flat-lay shots at 80 to 150 RMB an image, in-studio model shots at 200 to 300 RMB, retouching at 50 to 200 RMB an image and short video at 3,000 to 15,000 RMB a piece, on a five-style minimum | **Reused**, ledger row from brief 13 | Page dated 2026-07-20, check 1 on 2026-09-09 | One studio's own book, Guangzhou and Pearl River Delta region | The studio's own executing rates, no survey | The studio publishing it | single-source |
+| Published rate cards in the translation category put professional English to Simplified Chinese at roughly 0.08 to 0.18 USD per source word, and price transcreation per hour or per project instead | **Reused**, ledger row from brief 13 | Collected 2026-09, check 1 on 2026-09-09 | Category collection across published pricing pages | Published pricing pages only, no survey behind the band | The vendors publishing them | triangulated as a rate-card band, no method |
+
+### Where the cost stops scaling with markets
+
+| Claim | Source and ledger note | Date | Sample size | Method | Who paid | Confidence |
+|---|---|---|---|---|---|---|
+| The US commercial production trade body's standard bid form itemizes a production across sections A through P, from prep crew to breakout talent, and carries no line at all for media usage payments | **Reused**, ledger row. The trade body's own free bid form, downloaded and full-text searched | Form updated 2023-01, check 1 on 2026-09-09 | The instrument itself | Primary document read in full | The trade body | primary |
+| The same trade body's 2026 bidding guide tells bidders to establish whether a stated budget is all in, and whether stills, social elements and behind the scenes carry separate decks and separate budgets | **Reused**, ledger row. The trade body's published bidding reference guide, 2026 edition | 2026, check 1 on 2026-09-09 | The instrument itself | Primary document | The trade body | primary |
+| Under the US performers' union commercials agreement effective 1 April 2025, alternate scenes shot for one commercial in the same session are not treated as new commercials, while an edit or lift outside the defined parameters creates a new commercial and new fees | **Reused**, ledger row from brief 11. Union PDFs return 403 to automated and direct fetch, read through two independent law firm analyses | Agreement effective 2025-04-01, check 1 on 2026-09-09 | The instrument itself | Secondary reading of a primary instrument, two independent readings compared | The union and the advertisers jointly | triangulated |
+| The UK advertiser trade body's 2025 creative and media agency hourly rate benchmarks are released only to members who contribute their own rates, in aggregated form | **Reused**, ledger row | 2025, check 1 on 2026-09-09 | The access condition itself | The trade body's own published condition | The trade body | primary for the access condition |
+| The largest published creative dataset in this category, 578,750 creatives across 6,015 brands and 1.29 billion USD of ad spend, reports weekly creative volume and expected hit rate and reports no cost per asset in any currency | **Reused**, ledger row from brief 11 | 2026, check 1 on 2026-09-09 | 578,750 creatives, 6,015 brands | Platform data, period covered not stated by the publisher | The platform publishing it | primary for what it measures, single-source for the counts |
+
+### Budget frame
+
+| Claim | Source and ledger note | Date | Sample size | Method | Who paid | Confidence |
+|---|---|---|---|---|---|---|
+| Production averaged 19 percent of total marketing budgets, against 24 percent before the pandemic | **Reused**, ledger row | 2025-03-25, check 1 on 2026-09-09 | 50 global brands, 10+ sectors | Survey of senior marketing procurement respondents | The global advertiser trade body | primary |
+| Nearly two thirds of those brands expect to increase social and short-form video production | **Reused**, ledger row | 2025-03-25, check 1 on 2026-09-09 | Same 50 brands | Same survey | Same | primary |
+| One third of brands build production relationships directly with digital platforms | **Reused**, ledger row | 2025-03-25, check 1 on 2026-09-09 | Same 50 brands | Same survey | Same | primary |
+
+### Derived arithmetic, not a sourced figure
+
+| Claim | Basis | Confidence |
+|---|---|---|
+| Cropping a 16:9 master to a 3:4 frame at full height keeps about 42 percent of the original width, 0.75 divided by 1.778 | Ratio arithmetic, reused from brief 13 | derived |
+| Cropping the same master to 9:16 keeps about 32 percent, 0.5625 divided by 1.778 | Ratio arithmetic, reused | derived |
+| Cropping it to 1:1 keeps about 56 percent, and to 4:5 about 45 percent | Ratio arithmetic, reused | derived |
+| A 2.39:1 cinema master cropped to 9:16 keeps about 24 percent, 0.5625 divided by 2.39 | Ratio arithmetic, reused | derived |
+| One master across 12 markets in 6 format families is 72 market-format slots, 1 x 12 x 6 | Count arithmetic | derived |
+| Twelve markets speaking eight languages puts the language denominator at 8, about 67 percent of the market count | Count arithmetic on a stated assumption | derived, assumption stated on the page |
+
+## The five tiers, and the honest status of the ladder
+
+**This ladder is the article's own definition, not a market standard, and the
+page must say so in the sentence that introduces it.** No published source
+defines these tiers. That is the finding from R2, and proposing a definition is
+the legitimate response to a category that has none. What is sourced is the
+anchor attached to each tier, and each anchor is labeled with the tier it prices
+and the tier it does not.
+
+| Tier | What changes | What does not | The denominator it scales on | Anchor available |
+|---|---|---|---|---|
+| Resize | Frame, dimensions, export | Copy, talent, footage, edit | Format count, times language count where copy is baked into the artwork | Published per-image editing floor, reused |
+| Retitle | On-artwork copy, typesetting, supers, end card | Frame composition, footage, talent | Languages, not markets | Published per-source-word band, reused, plus the ratio arithmetic |
+| Recut | Timeline, voice-over, mix, master, duration set | Principal footage, talent, the shoot | Languages, times duration count | The published adaptation card, single-source |
+| Recast | Talent in shot, product in shot, on-screen presenter | The concept, the setup, the edit structure | Markets with distinct casting or catalog requirements, and the rights grant | Published per-image studio rates, reused, and the union agreement on new commercials |
+| Reshoot | New capture, new setup, new location | The strategy and the master idea | Shoot days, not markets | Published regional photography rate card, reused, single-source |
+
+**The line the whole article turns on.** The first three tiers are file
+operations and scale with counts. The last two are production events and scale
+with shoot days and rights grants. A per-market average that mixes the two is
+not a benchmark, it is an average of unlike things.
+
+## Worked arithmetic, shown step by step
+
+Every step below is arithmetic on stated assumptions or on a published price
+that carries its own attribution. None of it is a survey figure, and the page
+says so in the same breath.
+
+### Step 1. The slot count
+
+One master. Twelve markets. Six format families: a wide film, a vertical film, a
+square social still, a vertical social still, a banner set and a marketplace
+page.
+
+    1 x 12 x 6 = 72 market-format slots
+
+That is the number a buyer imagines when they multiply one quote by twelve. It
+is the ceiling, not the bill.
+
+### Step 2. The language denominator
+
+Assume the twelve markets speak eight languages, because English covers three of
+them and Spanish covers two. The assumption is stated on the page, not hidden.
+
+    8 languages / 12 markets = 0.67
+
+Every line that is really a language line, the retitle and the voice-over, runs
+eight times rather than twelve. A third of those lines is gone before anything
+is negotiated.
+
+### Step 3. The recut line, at the one published price
+
+The published adaptation card starts at 1,350 EUR excluding VAT for a 15-second
+adaptation with a new voice-over, new titles, a new packshot, an audio mix and
+mastering.
+
+    Counted per market:    12 x 1,350 = 16,200 EUR
+    Counted per language:   8 x 1,350 = 10,800 EUR
+    Difference:                          5,400 EUR, a third of the line
+
+The saving is not a discount and it is not a volume effect. It comes from
+counting on the right denominator. The page attributes the 1,350 EUR to a
+published card read on a stated date, and says plainly that it is one card, one
+duration and one inclusion list.
+
+### Step 4. The delivery line, which really is linear
+
+The same card charges 65 EUR per broadcast master file, on top of the
+adaptation.
+
+    2 durations x 12 markets = 24 files
+    24 x 65 = 1,560 EUR
+
+Delivery scales with the file count, cleanly and predictably. It is the only
+line in the stack that behaves the way the per-market mental model expects.
+
+### Step 5. The reframing that is not a resize
+
+Ratio arithmetic, labeled as arithmetic on the page.
+
+    3:4 from 16:9    ->  0.75 / 1.778   = about 42 percent of the width kept
+    9:16 from 16:9   ->  0.5625 / 1.778 = about 32 percent
+    9:16 from 2.39:1 ->  0.5625 / 2.39  = about 24 percent
+
+A master that surrenders two thirds of its width has lost the negative space
+that held the headline and the placement that held the product. The frame gets
+rebuilt, so the job left the resize tier and entered the retitle or the recut
+tier without anyone raising a change order.
+
+### Step 6. The breakpoint, written as a formula
+
+    Total = (slots x file operations)
+          + (languages x copy and voice lines)
+          + (territories in the rights grant x usage lines)
+          + (regulatory regimes x review and rework lines)
+          + (shoot days x capture lines)
+
+Only the first term scales with markets times formats. A thirteenth market that
+shares a language, sits inside an existing rights grant and falls under a regime
+already reviewed moves one term. One that needs its own language, its own talent
+grant and its own legal read moves four of the five. That is the answer to the
+linearity question, and it is arithmetic rather than an opinion.
+
+## Cleared for use
+
+Blockquote-ready, in the exact attribution form they carry on the page. No
+company name appears in any of them. Rows marked reused carry the wording
+already published in an earlier article, unchanged, so the two pages agree
+word for word.
+
+> One published adaptation rate card in this category starts at 1,350 euro
+> excluding VAT for a 15-second commercial adaptation, and states exactly what
+> that buys: a new voice-over, new titles, a new packshot, an audio mix and
+> mastering.
+> Source: a published commercial adaptation rate card, read 10 September 2026.
+> One card, one duration, one inclusion list, and no publication date printed on
+> the page.
+
+> The same card bills broadcast master files separately, at 65 euro per file,
+> and quotes anything outside the inclusion list, logo changes, dubbing an
+> actor, recording a new product line, only after scoping it.
+> Source: the same published adaptation rate card, read 10 September 2026.
+> Published prices read directly from the seller's own page.
+
+> Across six phrasings a buyer would actually type, forty-nine results returned
+> one page that puts a price on an adaptation and says what the price includes.
+> No page in the set defines adaptation as a ladder of levels with a cost
+> attached to each level.
+> Source: search result review conducted 10 September 2026, six queries, every
+> result classified by page type and by whether it publishes a cost.
+
+> Roughly four in five results for these queries are published by a party
+> selling the service, the software or the media being described. Not one is a
+> buyer-side benchmark, a trade body instrument or a survey with a stated
+> sample.
+> Source: search result review conducted 10 September 2026, forty of forty-nine
+> results counted by hand from the six result sets.
+
+> Published rate cards in this category put the floor for ecommerce image
+> editing between roughly $0.25 and $1.20 an image, with one card adding a fixed
+> platform fee of about $95 a month on top.
+> Source: published pricing pages in this category, collected September 2026,
+> two independent cards read directly and compared, no vendor named.
+
+> Published studio rate cards put a standard product image at $39 to $50, a
+> model or lifestyle image at about $95, a short video clip at about $93 and a
+> single UGC video at about $89, with editing add-ons around $49 each.
+> Source: published pricing pages in this category, collected September 2026,
+> two independent cards read directly, prices quoted as each card states them.
+
+> A published Chinese ecommerce photography rate card lists flat-lay shots at 80
+> to 150 RMB an image, in-studio model shots at 200 to 300 RMB, retouching at 50
+> to 200 RMB an image and short video at 3,000 to 15,000 RMB a piece, on a
+> five-style minimum.
+> Source: a published Chinese ecommerce photography rate card, dated 20 July
+> 2026, described by its publisher as its own executing rates for the Guangzhou
+> and Pearl River Delta region. One studio's book, no survey behind it.
+
+> Published rate cards in the translation category put professional English to
+> Simplified Chinese at roughly $0.08 to $0.18 per source word, and price
+> transcreation per hour or per project instead, because source word count does
+> not track the creative work.
+> Source: published pricing pages collected across the category, September 2026,
+> no company named. Rate cards only, no survey and no method published behind
+> the band.
+
+> The US commercial production trade body's standard bid form itemizes a
+> production across sections A through P, from prep crew to breakout talent, and
+> carries no line at all for media usage payments.
+> Source: the trade body's own free bid form, updated January 2023, downloaded
+> and read in full September 2026.
+
+> The same trade body's 2026 bidding guide tells bidders to establish whether a
+> stated budget is all in, and whether stills, social elements and behind the
+> scenes carry separate decks and separate budgets.
+> Source: the trade body's published bidding reference guide, 2026 edition.
+
+> Under the US performers' union commercials agreement effective 1 April 2025,
+> alternate scenes shot for one commercial in the same session are not treated
+> as new commercials, while an edit or lift outside the defined parameters
+> creates a new commercial and new fees.
+> Source: the union commercials agreement effective April 2025, as read by two
+> independent law firms. The union's own rate documents are not machine
+> readable.
+
+> The UK advertiser trade body's 2025 creative and media agency hourly rate
+> benchmarks are released only to members who contribute their own rates, in
+> aggregated form.
+> Source: the trade body's own published access condition, read September 2026.
+
+> The largest creative dataset published in this category, 578,750 creatives
+> across 6,015 brands and $1.29 billion of ad spend, reports weekly creative
+> volume and expected hit rate. It reports no cost per asset in any currency.
+> Source: a creative analytics benchmark in this category, 2026, platform data,
+> period covered not stated by the publisher.
+
+> Production accounted for an average of 19 percent of total marketing budgets,
+> against 24 percent before the pandemic.
+> Source: global advertiser trade body content production research, March 2025,
+> a survey of 50 global brands across more than ten sectors. It publishes no
+> absolute cost per asset.
+
+> Nearly two thirds of those brands expect to increase social and short-form
+> video production, and one in three now builds production relationships
+> directly with digital platforms.
+> Source: global advertiser trade body content production research, March 2025.
+> The same 50-brand survey.
+
+**Arithmetic, labeled as arithmetic on the page, never as a source.**
+
+> One master across twelve markets in six format families is seventy-two
+> market-format slots. Twelve markets that speak eight languages put every
+> language line on a denominator of eight, not twelve. At one published
+> adaptation price of 1,350 euro a version, counting per language rather than
+> per market takes that line from 16,200 euro to 10,800 euro.
+> This is arithmetic on a stated assumption and one published card, not a
+> market benchmark.
+
+> Cropping a 16:9 master to a tall 3:4 frame at full height keeps about 42
+> percent of the original width. Cutting it to a 9:16 frame keeps about 32
+> percent. A 2.39:1 cinema master cut to 9:16 keeps about 24 percent.
+> This is ratio arithmetic, not a measurement: 0.75 and 0.5625 divided by
+> 1.778, and 0.5625 divided by 2.39.
+
+## Do not publish
+
+Everything checked that did not clear the bar, with the reason. Domain names
+appear here and nowhere else.
+
+| Claim | Where it came from | Why it was cut |
+|---|---|---|
+| Versioning and adaptation at scale produce hundreds of variations without a linear cost increase, with cost per asset dropping as volume rises | Vendor and agency pages surfaced on the versioning phrasings | The central claim of the category and nobody publishes a denominator, a sample or a before figure. The article makes the same point with arithmetic on counts instead, which is checkable |
+| AI-driven pipelines handle 3 to 12 markets in a single delivery cycle, all variants inside a five working day window | Vendor page on the versioning phrasing | No method, no sample, no measurement window, published by the seller of the pipeline. Cycle time is not sourced anywhere in this category |
+| Subscription pricing instead of per-project billing cuts per-asset cost by 30 to 40 percent | Vendor page on the versioning phrasing | Percentage with no absolute, no sample, no fielding date, published by a seller of subscriptions. Brief 11 logged the same failure mode |
+| Commercial production at $0 with AI tools, $3,000 to $15,000 local, $15,000 to $50,000 regional, $50,000 to $500,000 national, $500,000 to $1 million with celebrity talent | vidico.com, ranked on three of six phrasings | Already logged in brief 11's do-not-publish. No method, no sample, derived from the publisher's own book of work. It also prices origination, which is not the subject |
+| $150 to $500 a static asset, $500 to $2,000 a video, $150 to $300 an asset inside a monthly package | darkroomagency.com | Already logged in brief 11. No sample, no method, no unit definition, published by the agency selling every service it prices |
+| Royalty-free music at $50 to $500 against licensed popular music at $5,000 to $50,000 and up, and talent fees rising 20 to 100 percent when a social asset moves to national TV | Vendor blog summary surfaced on the adaptation phrasing | Tempting, because the rights section needs exactly this shape of figure. No source was read at origin, no instrument, no sample, no date. The rights point is made from the trade body bid form and the union agreement instead, both of which are cleared |
+| A short campaign at $10,000 to $25,000 and a fully integrated multi-platform campaign above $150,000 to $500,000 | marketveep.com and c-istudios.com, top of the primary query | Mixes media with production, states no method and no sample, and prices a campaign rather than an adaptation. Publishing it would repeat the exact error the article is written to correct |
+| Performance creative tiers of $5,000 to $8,000 a month for 15 to 25 statics and 3 to 5 video edits | Rate-card roundup pages surfaced on the rate card phrasing | Aggregator content restating unnamed cards. No primary collection, no sample, no date |
+| The vocabulary map distinguishing transcreation, versioning, adaptation and localisation | yellowcat.london, ranked second on the definitions phrasing | The URL returned 404 on direct fetch, so the definitions could not be read at source. The article writes its own glossary and says it is its own |
+| Advertising toolkit software pricing from $99 a month | semrush.com, ranked on the toolkit phrasing | Wrong sense of toolkit. It prices software seats, not campaign assets. Recorded so the next writer does not chase it |
+| Any per-market average cost to adapt a campaign | The premise of the query itself | No such figure exists in any source checked, in any currency, from any publisher. Say so on the page. The absence is the finding and it is more useful than a fabricated midpoint |
+| Any tiered ladder of adaptation levels attributed to a third party | R2, all six phrasings | Nobody publishes one. The five-tier ladder in this file is the article's own definition and must be introduced as such, never as an industry standard |
+| Cost per asset falling to a stated figure once AI enters the pipeline | Circulating claims logged in brief 14 and brief 11 | Market claim with no method. If the article touches it at all, it names it as a circulating claim and unpacks what it excludes |
+| China platform pixel dimensions, file size caps, product fill ratios, safe areas | Standing hard block in the ledger, reinforced by brief 13 | Every source is secondary. The reframing point is made from ratio arithmetic instead |
+| A restatement of brief 13's China compliance stack as a general per-market cost driver | The temptation created by the overlap with brief 13 | It is already published. Repeating it splits the two pages against each other in search and duplicates editorial work. Reference the China article by name and move on |
+| A China adaptation multiplies the asset count by a specific factor | Carried over from brief 13's do-not-publish | Still unsourced. The variant matrix piece owns that number when it ships |
+| Any hubStudio rate, monthly figure or per-item price | Standing rule | The page prices a market, not a studio. Send the reader to the quotation calculator |
+| The names of every domain in the SERP map, and the seller behind the adaptation card, the editing cards, the studio cards, the photography card and the translation band | R2 and the claims table | Standing rule. The pattern and the bands publish at category level, the instances never do |
+
+## Screenshot inventory
+
+| File | What it shows | Captured | Source surface |
+|---|---|---|---|
+| (none) | No capture was taken in this session | n/a | n/a |
+
+**R3 note, and the one open item.** The adaptation rate card is a single live
+web page with no publication date printed on it, and it carries the only
+published adaptation price this research found. It should be captured to
+`research/campaign-adaptation-cost-per-market/` with the capture date before the
+article ships, because if the page changes or disappears the article's central
+sourced figure has no evidence behind it. Every other figure on the page is
+already logged in `sources/verified-sources.md` with a check date. No platform
+backend capture is needed, because the article makes no dimensional claim.
+
+## Notes for the writer
+
+1. **The unit definition is the H1's job.** Every ranking page prices something
+   else. Define the unit above the first number, and say in the same breath that
+   the definition is the article's own because the category has not agreed one.
+2. **The five-tier ladder is a proposal, not a standard.** Introduce it as
+   such once, clearly, then use it consistently. Never attribute it to the
+   industry, a trade body or an unnamed source.
+3. **The answer table goes above everything else**, per the spec's cost-page
+   rule: tier, what changes, what it scales on, anchor available or "no
+   published benchmark".
+4. **Say out loud that no per-market average exists.** That admission is the
+   most valuable sentence on the page and no competing page makes it.
+5. **Currency mix.** The adaptation card publishes in euro, the editing and
+   studio cards in dollars, the photography card in RMB. Quote each in the
+   currency its source publishes and do not convert or average across them.
+6. **The China article carries the legal and platform variables.** Reference it
+   by name for the market-specific compliance load and do not rebuild its stack
+   here. This page's job is the general shape, the tiers and the denominators.
+7. **Internal links** are the pricing page, the agencies solutions page and the
+   quotation calculator, as plain-text names, with the URLs in the asset brief.
+8. **No total.** The worked example itemizes and stops. A headline sum reads as
+   a quote, and the lines come from different cards, different currencies and
+   different denominators, so they are not additively comparable.
+9. **Reader stage is budget-holder.** Lead with the decision, which is how to
+   scope a rollout brief so the quote comes back comparable, not with the
+   context.
+
+## R8. Reconciliation (filled after drafting)

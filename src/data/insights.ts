@@ -1,7 +1,14 @@
 /**
  * Insights: single source of truth for the /resources/insights index and
  * every article page. Each article page imports ArticleLayout and passes its
- * slug; the layout reads meta from here. Order: newest first.
+ * slug; the layout reads meta from here. Order: newest first, and the array
+ * order must stay in sync with dateISO: the index takes the first entry as its
+ * featured lead and the home page takes the first four.
+ *
+ * `author` is a display name that must match a `name` in src/data/authors.ts,
+ * so the byline resolves to an author page. The insights index also builds its
+ * topic and author filters from these two fields, so a typo drops an article
+ * out of a filter rather than failing the build.
  */
 
 export type InsightTone = 'orange' | 'navy';
@@ -37,57 +44,6 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
-    slug: 'production-roster-review-questions',
-    image: '/Images/insight-production-roster-review-questions.webp',
-    imageAlt:
-      'A long studio table covered end to end with overlapping contact sheets and printed layouts in low window light, a person standing at the far end looking down at them, with the Shanghai skyline faint through the window.',
-    category: 'Buying models',
-    tone: 'navy',
-    title: '14 Questions for a Production Roster Review',
-    deck: 'Production supply is consolidating. Here are the fourteen questions to ask every partner on your roster, in four groups, with a scoring table.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '11 min read',
-    author: 'Cyril Drouin',
-    metaTitle: '14 Questions for a Production Roster Review | hubStudio',
-    metaDescription:
-      'Production is consolidating into centralized units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table.',
-  },
-  {
-    slug: 'ai-brand-ambassadors-what-you-sign',
-    image: '/Images/insight-ai-brand-ambassadors-what-you-sign.webp',
-    imageAlt:
-      'A semicircular rig of small cameras standing in an empty studio facing a worn T-shaped tape mark on the concrete floor where a person would have stood, with a handwritten page and a pen resting on a metal stool in the foreground.',
-    category: 'Rights',
-    tone: 'orange',
-    title: 'AI Brand Ambassadors: What You Sign',
-    deck: 'One standard form exists, it runs three pages, and it has no field for term, territory, compensation, deletion or sunset. Here is the clause map.',
-    date: 'September 10, 2026',
-    dateISO: '2026-09-10',
-    readingTime: '13 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'AI Brand Ambassadors: What You Sign | hubStudio',
-    metaDescription:
-      'The clause map for an AI ambassador release: scope, term, retraining rights, revocation, sunset and deletion, and how synthetic talent changes it.',
-  },
-  {
-    slug: 'content-credentials-c2pa-in-production',
-    image: '/Images/insight-content-credentials-c2pa-in-production.webp',
-    imageAlt:
-      'Five identical prints of the same grey stone laid in a row on a scratched workbench, each with its paper tag progressively more detached, from neatly tied at one end to a bare print with no tag at the other.',
-    category: 'Rights',
-    tone: 'navy',
-    title: 'Where C2PA Survives in a Real Pipeline',
-    deck: 'The survival tables circulating for Content Credentials come from announcements, not tests. Here is what has been measured, and the bench test to run.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '11 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'Where C2PA Survives in a Real Pipeline | hubStudio',
-    metaDescription:
-      'Content Credentials tested stage by stage: capture, retouch, export, DAM, platform upload. Where they survive, where they strip, and whether to adopt.',
-  },
-  {
     slug: 'in-house-studio-vs-outsourced-production',
     image: '/Images/insight-in-house-studio-vs-outsourced-production.webp',
     imageAlt:
@@ -103,142 +59,6 @@ export const insights: Insight[] = [
     metaTitle: 'In-House Studio or Outsourced Production | hubStudio',
     metaDescription:
       'The fully loaded annual model for an in-house creative studio, the costs nobody books, the utilization question, and when in-house is genuinely right.',
-  },
-  {
-    slug: 'questions-to-ask-ai-production-partner',
-    image: '/Images/insight-questions-to-ask-ai-production-partner.webp',
-    imageAlt:
-      'Three identical stacks of prints of the same ceramic jar laid out in a row on a scratched steel table for comparison, beside a handwritten checklist with pencil tick boxes and a hand pointing at one of them.',
-    category: 'Buying models',
-    tone: 'orange',
-    title: '12 Questions for an AI Production Partner',
-    deck: 'Twelve questions and a scoring table you can copy, including two nobody in the category has benchmarked, and the one we answer awkwardly.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '14 min read',
-    author: 'Cyril Drouin',
-    metaTitle: '12 Questions for an AI Production Partner | hubStudio',
-    metaDescription:
-      'A procurement instrument for scoring AI production vendors: twelve questions, what a good answer sounds like, and a scoring table you can copy.',
-  },
-  {
-    slug: 'cost-to-localize-a-campaign-for-china',
-    image: '/Images/insight-cost-to-localize-a-campaign-for-china.webp',
-    imageAlt:
-      'A wide landscape photographic print on a scored cutting mat with a tall black card mask laid over it, the discarded side portions of the picture visible beyond the mask and two cut offcut strips lying above it.',
-    category: 'Cost',
-    tone: 'orange',
-    title: 'Cost to Localize a Campaign for China',
-    deck: 'Every page holding this query prices words. The work is a re-shoot and a re-layout. Here is the whole stack, with each line sourced separately.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '13 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'Cost to Localize a Campaign for China | hubStudio',
-    metaDescription:
-      'China localization is a re-shoot and re-layout problem, not a translation one. The full cost stack, what a translation quote leaves out, two examples.',
-  },
-  {
-    slug: 'china-or-india-for-creative-production',
-    image: '/Images/insight-china-or-india-for-creative-production.webp',
-    imageAlt:
-      'A product photography setup in a working studio, an unbranded bottle on a paper sweep in the foreground, with an open shipping carton of identical bottles in pulp trays on a trolley behind it.',
-    category: 'Buying models',
-    tone: 'navy',
-    title: 'China or India for Creative Production',
-    deck: 'A regional comparison that concedes India\'s advantages first, names four things nobody can compare with public data, and shows the arithmetic behind the rest.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '15 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'China or India for Creative Production | hubStudio',
-    metaDescription:
-      'An honest regional comparison: cost, English fluency, studio capacity, category proximity, IP and data. Where India wins, stated first.',
-  },
-  {
-    slug: 'shoot-it-or-generate-it',
-    image: '/Images/insight-shoot-it-or-generate-it.webp',
-    imageAlt:
-      'A dark green glazed bottle standing on a paper sweep in a working photo studio, lit by one softbox from the left, with a color checker, tweezers and a lens cloth on the bench beside it.',
-    category: 'Production',
-    tone: 'navy',
-    title: 'Shoot It or Generate It: The Decision Rule',
-    deck: 'Four conditions force a real camera. Everything else is a judgment call. The rule a working studio uses, published, asset by asset.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '9 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'Shoot It or Generate It: The Decision Rule | hubStudio',
-    metaDescription:
-      'The rule a working studio uses, asset by asset: the four conditions that force capture, when generation wins, and what getting it wrong costs.',
-  },
-  {
-    slug: 'china-ai-labeling-rules-production-workflow',
-    image: '/Images/insight-china-ai-labeling-rules-production-workflow.webp',
-    imageAlt:
-      'Two pairs of hands passing a taped hard drive across a dark edit suite desk, lit by a single warm source, with a color grading panel and monitor out of focus behind them.',
-    category: 'Rights',
-    tone: 'orange',
-    title: 'China AI Labeling Rules for Production',
-    deck: 'China labels AI content in two layers. Only one survives a normal production pipeline. Here is where it breaks and what to record.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '12 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'China AI Labeling Rules for Production | hubStudio',
-    metaDescription:
-      'What China\'s AI labeling rules mean for a production workflow: where each label attaches, where it gets stripped, and what a handover pack must carry.',
-  },
-  {
-    slug: 'disclosure-audit-trail-per-asset',
-    image: '/Images/insight-disclosure-audit-trail-per-asset.webp',
-    imageAlt:
-      'Seven identical prints of the same amber bottle laid out on a worn wooden archive table, one of them with a handwritten index card tied to its corner by thread, a hand resting on the card.',
-    category: 'Rights',
-    tone: 'orange',
-    title: 'The AI Disclosure Audit Trail per Asset',
-    deck: 'Three regimes now ask different questions about the same generated asset. Here is the per-asset record that answers all of them from a single row.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '10 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'The AI Disclosure Audit Trail per Asset | hubStudio',
-    metaDescription:
-      'What a production pipeline records per asset to survive a disclosure audit: the record schema, retention, and the three regimes it has to satisfy.',
-  },
-  {
-    slug: 'what-a-finished-brand-asset-costs',
-    image: '/Images/insight-what-a-finished-brand-asset-costs.webp',
-    imageAlt:
-      'An amber glass bottle photographed from above on a scratched metal table, surrounded by prints of the same bottle at deliberately different sizes and finishes, one hand reaching in from the frame edge.',
-    category: 'Cost',
-    tone: 'navy',
-    title: 'What a Brand Asset Costs in 2026',
-    deck: 'Nobody publishes what one finished asset costs. This page defines the unit first, then gives absolute bands from published cards, each carrying its collection date.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '11 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'What a Brand Asset Costs in 2026 | hubStudio',
-    metaDescription:
-      'Absolute cost bands per finished brand asset, with the method stated and no email gate: images, social cuts, brand films and campaign adaptations.',
-  },
-  {
-    slug: 'automation-platform-or-production-partner',
-    image: '/Images/insight-automation-platform-or-production-partner.webp',
-    imageAlt:
-      'A single freshly pulled print held flat on a printmaker\'s bench beside a tall stack of identical copies, ink-stained hands resting at its edge in window light.',
-    category: 'Buying models',
-    tone: 'orange',
-    title: 'Automation Platform or Production Partner',
-    deck: 'Automation multiplies what exists. Its own standard proves it: a missing asset is a fallback condition, never a request to make one.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '11 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'Automation Platform or Production Partner | hubStudio',
-    metaDescription:
-      'Automation multiplies assets you already have. It cannot originate the master. Where the handoff sits, what each layer costs, and how to decide.',
   },
   {
     slug: 'subscription-or-managed-production',
@@ -258,6 +78,193 @@ export const insights: Insight[] = [
       'A subscription prices access to designers. Production prices delivered assets. What that distinction changes, and where each model actually fits.',
   },
   {
+    slug: 'what-a-finished-brand-asset-costs',
+    image: '/Images/insight-what-a-finished-brand-asset-costs.webp',
+    imageAlt:
+      'An amber glass bottle photographed from above on a scratched metal table, surrounded by prints of the same bottle at deliberately different sizes and finishes, one hand reaching in from the frame edge.',
+    category: 'Cost',
+    tone: 'navy',
+    title: 'What a Brand Asset Costs in 2026',
+    deck: 'Nobody publishes what one finished asset costs. This page defines the unit first, then gives absolute bands from published cards, each carrying its collection date.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'What a Brand Asset Costs in 2026 | hubStudio',
+    metaDescription:
+      'Absolute cost bands per finished brand asset, with the method stated and no email gate: images, social cuts, brand films and campaign adaptations.',
+  },
+  {
+    slug: 'production-roster-review-questions',
+    image: '/Images/insight-production-roster-review-questions.webp',
+    imageAlt:
+      'A long studio table covered end to end with overlapping contact sheets and printed layouts in low window light, a person standing at the far end looking down at them, with the Shanghai skyline faint through the window.',
+    category: 'Buying models',
+    tone: 'navy',
+    title: '14 Questions for a Production Roster Review',
+    deck: 'Production supply is consolidating. Here are the fourteen questions to ask every partner on your roster, in four groups, with a scoring table.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: '14 Questions for a Production Roster Review | hubStudio',
+    metaDescription:
+      'Production is consolidating into centralized units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table.',
+  },
+  {
+    slug: 'ai-brand-ambassadors-what-you-sign',
+    image: '/Images/insight-ai-brand-ambassadors-what-you-sign.webp',
+    imageAlt:
+      'A semicircular rig of small cameras standing in an empty studio facing a worn T-shaped tape mark on the concrete floor where a person would have stood, with a handwritten page and a pen resting on a metal stool in the foreground.',
+    category: 'Rights',
+    tone: 'orange',
+    title: 'AI Brand Ambassadors: What You Sign',
+    deck: 'One standard form exists, it runs three pages, and it has no field for term, territory, compensation, deletion or sunset. Here is the clause map.',
+    date: 'August 27, 2026',
+    dateISO: '2026-08-27',
+    readingTime: '13 min read',
+    author: 'Liyan Ye',
+    metaTitle: 'AI Brand Ambassadors: What You Sign | hubStudio',
+    metaDescription:
+      'The clause map for an AI ambassador release: scope, term, retraining rights, revocation, sunset and deletion, and how synthetic talent changes it.',
+  },
+  {
+    slug: 'content-credentials-c2pa-in-production',
+    image: '/Images/insight-content-credentials-c2pa-in-production.webp',
+    imageAlt:
+      'Five identical prints of the same grey stone laid in a row on a scratched workbench, each with its paper tag progressively more detached, from neatly tied at one end to a bare print with no tag at the other.',
+    category: 'Rights',
+    tone: 'navy',
+    title: 'Where C2PA Survives in a Real Pipeline',
+    deck: 'The survival tables circulating for Content Credentials come from announcements, not tests. Here is what has been measured, and the bench test to run.',
+    date: 'August 14, 2026',
+    dateISO: '2026-08-14',
+    readingTime: '11 min read',
+    author: 'Liyan Ye',
+    metaTitle: 'Where C2PA Survives in a Real Pipeline | hubStudio',
+    metaDescription:
+      'Content Credentials tested stage by stage: capture, retouch, export, DAM, platform upload. Where they survive, where they strip, and whether to adopt.',
+  },
+  {
+    slug: 'questions-to-ask-ai-production-partner',
+    image: '/Images/insight-questions-to-ask-ai-production-partner.webp',
+    imageAlt:
+      'Three identical stacks of prints of the same ceramic jar laid out in a row on a scratched steel table for comparison, beside a handwritten checklist with pencil tick boxes and a hand pointing at one of them.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: '12 Questions for an AI Production Partner',
+    deck: 'Twelve questions and a scoring table you can copy, including two nobody in the category has benchmarked, and the one we answer awkwardly.',
+    date: 'July 14, 2026',
+    dateISO: '2026-07-14',
+    readingTime: '14 min read',
+    author: 'Cyril Drouin',
+    metaTitle: '12 Questions for an AI Production Partner | hubStudio',
+    metaDescription:
+      'A procurement instrument for scoring AI production vendors: twelve questions, what a good answer sounds like, and a scoring table you can copy.',
+  },
+  {
+    slug: 'cost-to-localize-a-campaign-for-china',
+    image: '/Images/insight-cost-to-localize-a-campaign-for-china.webp',
+    imageAlt:
+      'A wide landscape photographic print on a scored cutting mat with a tall black card mask laid over it, the discarded side portions of the picture visible beyond the mask and two cut offcut strips lying above it.',
+    category: 'Cost',
+    tone: 'orange',
+    title: 'Cost to Localize a Campaign for China',
+    deck: 'Every page holding this query prices words. The work is a re-shoot and a re-layout. Here is the whole stack, with each line sourced separately.',
+    date: 'June 29, 2026',
+    dateISO: '2026-06-29',
+    readingTime: '13 min read',
+    author: 'Echo Peng',
+    metaTitle: 'Cost to Localize a Campaign for China | hubStudio',
+    metaDescription:
+      'China localization is a re-shoot and re-layout problem, not a translation one. The full cost stack, what a translation quote leaves out, two examples.',
+  },
+  {
+    slug: 'china-or-india-for-creative-production',
+    image: '/Images/insight-china-or-india-for-creative-production.webp',
+    imageAlt:
+      'A product photography setup in a working studio, an unbranded bottle on a paper sweep in the foreground, with an open shipping carton of identical bottles in pulp trays on a trolley behind it.',
+    category: 'Buying models',
+    tone: 'navy',
+    title: 'China or India for Creative Production',
+    deck: 'A regional comparison that concedes India\'s advantages first, names four things nobody can compare with public data, and shows the arithmetic behind the rest.',
+    date: 'June 17, 2026',
+    dateISO: '2026-06-17',
+    readingTime: '15 min read',
+    author: 'Echo Peng',
+    metaTitle: 'China or India for Creative Production | hubStudio',
+    metaDescription:
+      'An honest regional comparison: cost, English fluency, studio capacity, category proximity, IP and data. Where India wins, stated first.',
+  },
+  {
+    slug: 'shoot-it-or-generate-it',
+    image: '/Images/insight-shoot-it-or-generate-it.webp',
+    imageAlt:
+      'A dark green glazed bottle standing on a paper sweep in a working photo studio, lit by one softbox from the left, with a color checker, tweezers and a lens cloth on the bench beside it.',
+    category: 'Production',
+    tone: 'navy',
+    title: 'Shoot It or Generate It: The Decision Rule',
+    deck: 'Four conditions force a real camera. Everything else is a judgment call. The rule a working studio uses, published, asset by asset.',
+    date: 'June 2, 2026',
+    dateISO: '2026-06-02',
+    readingTime: '9 min read',
+    author: 'Maya Patel',
+    metaTitle: 'Shoot It or Generate It: The Decision Rule | hubStudio',
+    metaDescription:
+      'The rule a working studio uses, asset by asset: the four conditions that force capture, when generation wins, and what getting it wrong costs.',
+  },
+  {
+    slug: 'china-ai-labeling-rules-production-workflow',
+    image: '/Images/insight-china-ai-labeling-rules-production-workflow.webp',
+    imageAlt:
+      'Two pairs of hands passing a taped hard drive across a dark edit suite desk, lit by a single warm source, with a color grading panel and monitor out of focus behind them.',
+    category: 'Rights',
+    tone: 'orange',
+    title: 'China AI Labeling Rules for Production',
+    deck: 'China labels AI content in two layers. Only one survives a normal production pipeline. Here is where it breaks and what to record.',
+    date: 'May 19, 2026',
+    dateISO: '2026-05-19',
+    readingTime: '12 min read',
+    author: 'Liyan Ye',
+    metaTitle: 'China AI Labeling Rules for Production | hubStudio',
+    metaDescription:
+      'What China\'s AI labeling rules mean for a production workflow: where each label attaches, where it gets stripped, and what a handover pack must carry.',
+  },
+  {
+    slug: 'disclosure-audit-trail-per-asset',
+    image: '/Images/insight-disclosure-audit-trail-per-asset.webp',
+    imageAlt:
+      'Seven identical prints of the same amber bottle laid out on a worn wooden archive table, one of them with a handwritten index card tied to its corner by thread, a hand resting on the card.',
+    category: 'Rights',
+    tone: 'orange',
+    title: 'The AI Disclosure Audit Trail per Asset',
+    deck: 'Three regimes now ask different questions about the same generated asset. Here is the per-asset record that answers all of them from a single row.',
+    date: 'April 30, 2026',
+    dateISO: '2026-04-30',
+    readingTime: '10 min read',
+    author: 'Liyan Ye',
+    metaTitle: 'The AI Disclosure Audit Trail per Asset | hubStudio',
+    metaDescription:
+      'What a production pipeline records per asset to survive a disclosure audit: the record schema, retention, and the three regimes it has to satisfy.',
+  },
+  {
+    slug: 'automation-platform-or-production-partner',
+    image: '/Images/insight-automation-platform-or-production-partner.webp',
+    imageAlt:
+      'A single freshly pulled print held flat on a printmaker\'s bench beside a tall stack of identical copies, ink-stained hands resting at its edge in window light.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: 'Automation Platform or Production Partner',
+    deck: 'Automation multiplies what exists. Its own standard proves it: a missing asset is a fallback condition, never a request to make one.',
+    date: 'April 1, 2026',
+    dateISO: '2026-04-01',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Automation Platform or Production Partner | hubStudio',
+    metaDescription:
+      'Automation multiplies assets you already have. It cannot originate the master. Where the handoff sits, what each layer costs, and how to decide.',
+  },
+  {
     slug: 'ai-content-quality-argument-over',
     image: '/Images/insight-ai-content-quality-argument-over.webp',
     imageAlt:
@@ -266,10 +273,10 @@ export const insights: Insight[] = [
     tone: 'orange',
     title: 'AI Content Quality: The Argument Is Over',
     deck: 'Brands stopped asking whether the output was good enough. What they should be asking instead is harder, and most rosters cannot answer it.',
-    date: 'July 29, 2026',
-    dateISO: '2026-07-29',
+    date: 'March 4, 2026',
+    dateISO: '2026-03-04',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Marcus Sullivan',
     metaTitle: 'AI Content Quality: The Argument Is Over | hubStudio',
     metaDescription:
       'AI content quality stopped being the constraint in 2026. Cannes now judges it as craft. Here is what actually limits brands instead.',
@@ -283,8 +290,8 @@ export const insights: Insight[] = [
     tone: 'navy',
     title: 'What AIGC Production Actually Is',
     deck: 'Two capabilities separate a viral demo from a shipped campaign. Here is what each one looks like when real brands run it.',
-    date: 'July 20, 2026',
-    dateISO: '2026-07-20',
+    date: 'February 18, 2026',
+    dateISO: '2026-02-18',
     readingTime: '7 min read',
     author: 'Cyril Drouin',
     metaTitle: 'What AIGC Production Actually Is | hubStudio',
@@ -300,10 +307,10 @@ export const insights: Insight[] = [
     tone: 'orange',
     title: 'Your AI content is about to introduce itself',
     deck: "Provenance stopped being a detection problem. It's a procurement one now.",
-    date: 'July 16, 2026',
-    dateISO: '2026-07-16',
+    date: 'February 2, 2026',
+    dateISO: '2026-02-02',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Liyan Ye',
     metaTitle: 'Your AI Content Is About to Introduce Itself | hubStudio',
     metaDescription:
       'SynthID, C2PA, and Article 50 land August 2. What provenance rules mean for brands, agencies, and procurement teams.',
@@ -317,10 +324,10 @@ export const insights: Insight[] = [
     tone: 'orange',
     title: 'AI Content Production: Beyond the Prompt',
     deck: 'A good prompt gets you an image, not a usable brand asset. Here is the real gap between AI generation and directed content production work.',
-    date: 'July 4, 2026',
-    dateISO: '2026-07-04',
+    date: 'January 21, 2026',
+    dateISO: '2026-01-21',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Maya Patel',
     metaTitle: 'AI Content Production: Beyond the Prompt | hubStudio',
     metaDescription:
       'Prompts make images. Brands need direction. Why AI content production takes more than a good prompt, and what actually gets you brand-grade work.',
@@ -337,7 +344,7 @@ export const insights: Insight[] = [
     date: 'December 24, 2025',
     dateISO: '2025-12-24',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Aisha Rahman',
     metaTitle: 'Why AI Search Is Forcing a New Content System | hubStudio',
     metaDescription:
       'AI search is rewriting SEO. As Google prioritizes video, tools, and structured content, brands must shift from text-heavy pages to AI-ready content systems.',
@@ -354,7 +361,7 @@ export const insights: Insight[] = [
     date: 'December 24, 2025',
     dateISO: '2025-12-24',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Marcus Sullivan',
     metaTitle: "Luxury's Quiet AI Phase Is Ending | hubStudio",
     metaDescription:
       'Luxury brands are not slow on AI, they are selective. The real test is building AI-native content systems that protect brand equity, creativity, and control.',
@@ -371,7 +378,7 @@ export const insights: Insight[] = [
     date: 'December 13, 2025',
     dateISO: '2025-12-13',
     readingTime: '8 min read',
-    author: 'Cyril Drouin',
+    author: 'Jason Liu',
     metaTitle: 'Promptable 3D and the Spatial Shift in Content Operations | hubStudio',
     metaDescription:
       'Promptable 3D shifts production from one-off assets to reusable 3D objects. The winners build the QA and creative direction that scale.',
@@ -388,7 +395,7 @@ export const insights: Insight[] = [
     date: 'December 7, 2025',
     dateISO: '2025-12-07',
     readingTime: '7 min read',
-    author: 'Cyril Drouin',
+    author: 'Aisha Rahman',
     metaTitle: 'Where Language AI Actually Delivers for Content Teams | hubStudio',
     metaDescription:
       'Language models have been oversold as universal solutions. Applied to the right creative challenges, AI transforms content teams through focused execution.',
@@ -405,7 +412,7 @@ export const insights: Insight[] = [
     date: 'November 21, 2025',
     dateISO: '2025-11-21',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Erik Lindström',
     metaTitle: 'Foley-Grade Audio for AI Video at Scale | hubStudio',
     metaDescription:
       'AI video looks good but often sounds flat. New AI sound models let hubStudio add Foley-grade audio to AIGC at production scale.',
@@ -422,7 +429,7 @@ export const insights: Insight[] = [
     date: 'November 17, 2025',
     dateISO: '2025-11-17',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Aisha Rahman',
     metaTitle: 'GEO vs SEO: How AI Search Rewrites the Rules | hubStudio',
     metaDescription:
       'Google search is fading fast. ChatGPT, Perplexity, and AI Overviews now control visibility. GEO optimizes for AI recommendation and trust.',
@@ -439,7 +446,7 @@ export const insights: Insight[] = [
     date: 'November 16, 2025',
     dateISO: '2025-11-16',
     readingTime: '7 min read',
-    author: 'Cyril Drouin',
+    author: 'Echo Peng',
     metaTitle: 'Three Years of GenAI: How eCommerce Transformed | hubStudio',
     metaDescription:
       'Three years after ChatGPT launched, eCommerce content production transformed completely. GenAI democratised the tools but not the expertise.',
@@ -507,7 +514,7 @@ export const insights: Insight[] = [
     date: 'September 14, 2025',
     dateISO: '2025-09-14',
     readingTime: '5 min read',
-    author: 'Cyril Drouin',
+    author: 'Erik Lindström',
     metaTitle: 'How AI Avatars Are Transforming Brand Content | hubStudio',
     metaDescription:
       'How businesses use AI avatars for scalable content creation, global localization, personalized outreach, and consistent brand representation.',
@@ -524,7 +531,7 @@ export const insights: Insight[] = [
     date: 'August 19, 2025',
     dateISO: '2025-08-19',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Jason Liu',
     metaTitle: 'Diffusion Models: The Science Behind AI Visuals | hubStudio',
     metaDescription:
       'How diffusion models power AI image generation for brands: the technology behind tools like Midjourney, and the custom AIGC workflows built on it.',
@@ -541,7 +548,7 @@ export const insights: Insight[] = [
     date: 'August 4, 2025',
     dateISO: '2025-08-04',
     readingTime: '6 min read',
-    author: 'Cyril Drouin',
+    author: 'Echo Peng',
     metaTitle: 'Building Custom AIGC Workflows for Every Client | hubStudio',
     metaDescription:
       "Generic AI tools cannot capture a brand's creative DNA. How hubStudio architects custom AIGC workflows around each client's creative territories.",
@@ -558,7 +565,7 @@ export const insights: Insight[] = [
     date: 'July 27, 2025',
     dateISO: '2025-07-27',
     readingTime: '5 min read',
-    author: 'Cyril Drouin',
+    author: 'Maya Patel',
     metaTitle: 'How Agentic AI Is Reshaping Creative Data Work | hubStudio',
     metaDescription:
       'How autonomous AI agents reshape creative analytics, the insights they surface automatically, and how analysts become brand intelligence architects.',
@@ -575,7 +582,7 @@ export const insights: Insight[] = [
     date: 'July 4, 2025',
     dateISO: '2025-07-04',
     readingTime: '9 min read',
-    author: 'Cyril Drouin',
+    author: 'Erik Lindström',
     metaTitle: "Veo 3 Review: An AIGC Studio's Honest Assessment | hubStudio",
     metaDescription:
       'A professional AIGC studio assesses Veo 3: video quality, brand applications, cost, and where it fits in a real production workflow.',
@@ -592,7 +599,7 @@ export const insights: Insight[] = [
     date: 'July 3, 2025',
     dateISO: '2025-07-03',
     readingTime: '7 min read',
-    author: 'Cyril Drouin',
+    author: 'Aisha Rahman',
     metaTitle: 'Cloudflare Pay Per Crawl and AIGC Content Protection | hubStudio',
     metaDescription:
       "Cloudflare's pay-per-crawl model blocks default AI scrapers and forces platforms to pay for access, turning original brand content into a protected asset.",
@@ -609,7 +616,7 @@ export const insights: Insight[] = [
     date: 'June 30, 2025',
     dateISO: '2025-06-30',
     readingTime: '7 min read',
-    author: 'Cyril Drouin',
+    author: 'Echo Peng',
     metaTitle: 'Data-Driven AIGC: Scaling Brand Content That Performs | hubStudio',
     metaDescription:
       'Most brands still prompt and pray. Data-driven AIGC turns performance data into a feedback loop that trains models, scales content, and lifts conversions.',

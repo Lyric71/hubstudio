@@ -286,7 +286,7 @@ acceptable, because it will happen at least twice a year.
 
 The pricing page sets out how hubStudio scopes work against a written spec,
 the brands solutions page covers the campaign shape this comparison keeps
-running into, and the quotation calculator will take your volume and formats
+running into, and the production cost estimator will take your volume and formats
 and return a range rather than a monthly tier.
 
 <!-- SECTION: Sourcing note -->
@@ -431,7 +431,7 @@ DOWNLOADS: the five-step pre-signing check as a one-page worksheet with space
 INTERNAL LINKS:
   pricing page -> /pricing
   brands solutions page -> /solutions/brands
-  quotation calculator -> /pricing/calculator
+  production cost estimator -> /resources/production-cost
 CLIENT SIGN-OFF NEEDED: none. No client figure is used.
 RESEARCH FILE: editorial/research/subscription-or-managed-production.md
 

@@ -354,3 +354,178 @@ The last row is the point of the section. Eight cards were read across two
 markets and not one of them prices getting the product to the studio, sending it
 back, or reshooting a SKU that failed approval. Those costs are real and they sit
 outside every published price on the SERP.
+
+---
+
+## Cleared for use
+
+Blockquote-ready. Use the attribution line exactly as written. No company name
+appears in any of them, and none may be added during drafting.
+
+> Published studio rate cards put standard ecommerce capture between roughly $39
+> and $50 an image, with complexity uplifts on one card to $75 for ghost
+> mannequin or oversized work, $100 for jewelry and watches, $150 for a hand
+> model image and $190 for a full-body model image.
+> Source: published product photography pricing pages in this category, read
+> directly on 10 September 2026, two independent cards, prices quoted against
+> the unit each card states.
+
+> The published volume discount in this category is sold as a membership, not as
+> a lower list price. One card publishes annual memberships at $480, $2,340 and
+> $7,500 a year buying 10, 20 and 30 percent off product work.
+> Source: a published product photography pricing page in this category, read
+> directly on 10 September 2026. The ladder appears on a single card.
+
+> Dividing each annual membership fee by the money it saves on one standard
+> image gives the breakeven: 96 images a year on the 10 percent tier, 234 on the
+> 20 percent tier and 500 on the 30 percent tier.
+> Source: arithmetic on a published pricing page in this category, read 10
+> September 2026. Fee divided by percentage saving on the card's own $50
+> standard image, no other input.
+
+> Carried across the published ladder, effective capture falls from $50 an image
+> at list to about $46.60 at 300 images, $41.25 at 1,200, $37.50 at 3,000,
+> $35.63 at 12,000 and $35.25 at 30,000. A tenfold rise in volume above 3,000
+> images moves the unit price about 6 percent.
+> Source: arithmetic on a published pricing page in this category, read 10
+> September 2026. List price times the card's own discount, plus the annual fee,
+> divided by images. One card, one currency, no market average implied.
+
+> The published discount ladder stops at 30 percent off list. Past roughly 500
+> images a year, buying more photography on a published card does not make
+> photography meaningfully cheaper.
+> Source: published product photography pricing pages in this category, read 10
+> September 2026. The deepest published tier on any card read was 30 percent.
+
+> A separate published card charges $39 a photo plus a fixed $149 studio fee per
+> booking. That fixed fee is about 62 percent of the unit price when six images
+> come out of one booking, $63.83 an image, and under 1 percent at six hundred
+> images, $39.25 an image. The list price never moved.
+> Source: a published product photography pricing page in this category, read 10
+> September 2026, with the fee amortized arithmetically across three run sizes.
+
+> Credit blocks on one published card run $1,500 for 25 credits, $2,500 for 50
+> and $4,500 for 100, which is $60, $50 and $45 a credit. A fourfold larger block
+> buys 25 percent off the unit.
+> Source: a published product photography pricing page in this category, read 10
+> September 2026, block price divided by block size.
+
+> Published ecommerce retouch cards put the floor between roughly $0.25 and
+> $1.20 an image by operation, with one card adding a fixed platform fee of
+> about $95 a month on top.
+> Source: published pricing pages in this category, September 2026, two
+> independent cards read directly and compared, no vendor named.
+
+> Against published capture of $39 to $50 an image, a per-image retouch price of
+> about $0.95 is between 1.9 and 2.4 percent of the capture line, and the full
+> published retouch band runs from about 0.5 to about 3.1 percent of it. Retouch
+> is not production.
+> Source: two published pricing categories, both collected September 2026,
+> divided one into the other. Capture from two studio cards, retouch from two
+> editing cards, all four read directly.
+
+> One published retouch card guarantees 200 edited images a day with
+> next-morning delivery, and declines anyone under 1,000 images a year, sending
+> them to a trial instead. Its $95 monthly platform fee doubles the unit price at
+> 100 images a month and adds about 10 percent at 1,000.
+> Source: a published image editing pricing page in this category, read 10
+> September 2026. The access condition and the fee are stated on the card, the
+> amortization is division.
+
+> A published Chinese ecommerce photography rate card, quoting its own executing
+> rates for the Guangzhou and Pearl River Delta region, prices flat lay at 80 to
+> 150 RMB an image, hanging shots at 100 to 180, in-studio model work at 200 to
+> 300, scene images at 150 to 300 and retouch at 50 to 200, with a five-style
+> minimum and 6 to 10 images per style.
+> Source: a published Chinese ecommerce photography rate card, 20 July 2026, the
+> publisher's own executing rates for one region, read in Chinese.
+
+> A Chinese-language cost comparison published in 2026 prints the same shape of
+> volume ladder found on the English-language cards: 10 to 20 percent off above
+> 100 images, 20 to 30 percent off above 500, on white-background images listed
+> at 30 to 80 RMB, with fine retouch billed separately at 50 to 200 RMB an image
+> and rush turnaround adding 30 percent.
+> Source: a Chinese-language image production cost comparison, 2026, read in
+> Chinese on 10 September 2026. It publishes no sample and is published by a
+> seller of one of the routes it compares, so it is cited for the shape of the
+> ladder, not as a market measurement.
+
+> In both markets read for this piece, the published volume discount tops out at
+> about 30 percent off list.
+> Source: published pricing surfaces in this category in two markets, September
+> 2026. Two independent ladders that agree, not a measured market average.
+
+> No card read for this piece prices sample logistics, reshoots or approval
+> rounds. Eight published price surfaces across two markets, and getting the
+> product to the studio, getting it back, and shooting it again after a failed
+> approval appear on none of them.
+> Source: published pricing pages in this category, two markets, read directly
+> in September 2026. Absence confirmed by reading each card in full.
+
+**Method sentence for the methodology box, cleared as written.** Every band on
+this page was read directly from a published price surface in September 2026,
+one card at a time, and is quoted against the unit that card states. Where a
+figure is derived, the arithmetic is shown on the page and the inputs are named.
+Bands built from two or more independent cards are given as ranges. A band drawn
+from a single card is labeled as such. Nothing here comes from an aggregator, a
+roundup or a vendor's estimate of somebody else's prices.
+
+**The first-party figure, conditions attached.** The 70/30 generated-to-shot mix
+is a hubStudio delivery figure the site already publishes. Under the first-party
+exception of 2026-09-09 it may run attributed to the page that publishes it. It
+may not be presented as a market ratio, it may not be given a sample it does not
+have, and any statement about where the ratio moves needs its own sample and
+period or it is cut. Supplying the sample and the period upgrades it from
+published to measured, and that is worth doing before this piece ships.
+
+---
+
+## Do not publish
+
+Everything checked that did not clear the bar, with the reason. Names appear here
+and nowhere else.
+
+| Claim or source | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| $75 to $200 per item for ecommerce product photography; $25 to $75 for a white-background main image; $300 to $1,200 for a full listing set of 5 to 8 images per SKU | omi.so, nightjar.so, designkit.com and others across the primary query | No sample, no method, no unit definition, and every publisher sells either the photography or the alternative to it. The per-SKU figures are the exact error the piece corrects: they contain an unstated images-per-SKU assumption | 2026-09-10 |
+| $125,000 to $250,000 a year as what mid-size brands actually pay for 500 products after negotiation | nightjar.so | Asserted with no sample, no derivation and no definition of what is inside the total. The article derives a 500-SKU capture figure from published cards instead and shows the arithmetic | 2026-09-10 |
+| Roughly 11,000 images a year for a 500-SKU catalog, built from 5 images a SKU, 4 seasonal refreshes on 40 percent of the catalog, 4 colorways on 30 percent, and 1,500 platform crops | nightjar.so | The model is plausible and the inputs are invented. Not one of the five ratios carries a source. Using it would smuggle an unsourced images-per-SKU constant into the piece | 2026-09-10 |
+| "$20 to $40 an image once you shoot 50 or more SKUs", and "$50 an image at 10 images, $20 an image at 100" | Repeated across nightjar.so, frameonce.io, sproutbox.co and others | Circular. No card anywhere publishes these steps. The real published mechanism is a membership or credit ladder capped at 30 percent off, which none of these pages mentions | 2026-09-10 |
+| The four-band ladder at $100, $85, $70 and $60 an image for 1 to 25, 26 to 100, 101 to 250 and 251 plus | squareshot.com blog, per-image pricing explained, 2026-05-13 | The page states on its face that this is a typical structure and not the publisher's own rates. An illustration is not evidence, even when the publisher also has a real card | 2026-09-10 |
+| Retouching at about $30 an image, turning a $40 image into $84 | omi.so | Contradicted at source. Two published retouch cards read directly put the per-image floor between $0.25 and $1.20. A $30 figure is a different service being called the same name, with no method attached | 2026-09-10 |
+| Studio rental adding $500 to $2,000 a day | nightjar.so and similar | No sample, no method, no geography. One published card prices its studio fee at $149 a booking, which is the only figure of this kind anyone publishes | 2026-09-10 |
+| White-background video with basic rotation at $3 to $5 a SKU, down from $25 three years ago | omi.so | A price and a trend claim, neither sourced, published by a seller of the automated route it flatters. No baseline, no period, no sample | 2026-09-10 |
+| "Traditional photography has a roughly linear cost curve, two times the SKUs means two times the spend" | nightjar.so | Contradicted by the published cards. The curve is not linear, because a membership or credit ladder and a per-booking fixed fee both bend it, and the ladder caps at 30 percent. The article publishes the bend | 2026-09-10 |
+| Product photography conversion-rate statistics presented beside the price bands | rewarx.com | No instrument, no sample, no fielding date. Same failure mode already logged for brief 27, and conversion is not this article's claim | 2026-09-10 |
+| Traditional shoot at $4,000 to $10,000 for 50 SKUs, or $26 to $66 an image | Tool vendor blog, already in the ledger from brief 27 | No method, and the ledger already blocks it. Kept blocked | 2026-09-10 |
+| $500 to $2,000 per traditional image | hubStudio site copy, solutions/ai-production/image | Unsourced site copy and a price figure. Already a site backlog item in the ledger. It must not be recycled into this piece to fill the top of the band | 2026-09-10 |
+| "Best ecommerce brands run 80 percent AI, 20 percent traditional" | Tool vendor blog, already in the ledger from brief 27 | Unsourced seller rule of thumb. It would also make the first-party 70/30 figure look derivative | 2026-09-10 |
+| Any images-per-SKU market average | Sought across all five queries, English and Chinese | Nobody publishes one with a method. Every page that implies one buries it inside a per-SKU range. The article states N as the reader's input and says openly that no source publishes an average | 2026-09-10 |
+| Any reshoot rate, any sample shipping cost, any approval-round cost | Sought on eight published price surfaces across two markets | Not priced on a single card read. Publishable as an absence, never as a number | 2026-09-10 |
+| Any statement about where the 70/30 generated-to-shot ratio moves, by category or by volume | Brief 12 asks for it | The first-party figure carries no sample and no period, so a directional claim built on it would be an invention on top of an unmeasured figure. Publish the mix as published, and say the movement needs the ledger row completed | 2026-09-10 |
+| The names of every price surface that fed a band: squareshot.com, soona.co, pathedits.com, pixelz.com, airmie.cn, istarry.com.cn, and every domain in the SERP map | All rows above and the claims table | Standing rule. The pattern and the bands publish at category level, the instances never do | 2026-09-10 |
+| Any hubStudio rate, monthly figure or per-item price | Brief 12 | Standing rule. Send the reader to the quotation calculator | 2026-09-10 |
+
+---
+
+## Screenshot inventory
+
+Pricing pages change without notice and every band on this page depends on what
+these said on 10 September 2026. Dated captures should be taken before the draft
+ships, saved to `research/product-photography-cost-per-sku/`.
+
+| File | What it shows | Captured | Source surface |
+|---|---|---|---|
+| studio-card-a-prices.png | $50 standard, $75 advanced, $100 complex, $150 hand model, $190 full body, model shoots from $95, retouching and revisions included, 8-day delivery | Pending | Published pricing page, product photography studio |
+| studio-card-a-membership.png | $40, $195 and $625 a month billed annually, buying 10, 20 and 30 percent off product work, plus the $300 non-member minimum | Pending | Same page, membership block |
+| studio-card-a-credits.png | $1,500 for 25 credits, $2,500 for 50, $4,500 for 100 | Pending | Same page, subscription block |
+| studio-card-b-prices.png | $39 a photo, $93 a clip, $89 UGC, $9 premium edit, $199 pro edit, $49 add-ons, $149 studio fee a booking | Pending | Published pricing page, product photography studio |
+| studio-card-b-hourly.png | Styling $149, hand model $79, full body $159, pet $99, foot $99, ghost mannequin styling $129, all per hour | Pending | Same page, pro services block |
+| retouch-card-a.png | $0.25 shadow to $3.99 vector conversion by operation, 24-hour default, the 6 to 96 hour turnaround ladder, 1,200 credits for $1,000 | Pending | Published pricing page, ecommerce image editing |
+| retouch-card-b.png | $0.95 an image, $95 monthly platform fee, 200 images a day, next-morning delivery, the under-1,000-a-year refusal | Pending | Published pricing page, ecommerce image editing |
+| china-card-apparel.png | Flat lay 80 to 150 RMB, hanging 100 to 180, model 200 to 300, scene 150 to 300, retouch 50 to 200, five-style minimum | Pending | Published Chinese photography rate card, 20 July 2026 |
+| china-volume-ladder.png | White-background 30 to 80 RMB, 10 to 20 percent off above 100 images, 20 to 30 percent off above 500, rush plus 30 percent | Pending | Chinese-language cost comparison, 2026 |
+
+---
+
+## R8. Reconciliation (filled after drafting)
