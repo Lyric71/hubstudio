@@ -478,3 +478,60 @@ never has to reach for the characters.
 | nengxiao biaoshi | energy label | The label the appliance slot map puts in the fourth image |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**Nine of the ten cleared blockquotes shipped** with attributions unchanged: the
+main image standard, the five slots, the file weight resolution, the
+white-background slot, the fill ratio spread, the detail page split, category
+variation, the Tmall Global absence, the prohibition list, and the rule-centre
+gating observation. Every one carries its count, languages, date and the
+modal-not-primary statement.
+
+**The disclaimer block from SPEC.md runs verbatim** after the opening answer and
+before the first spec table, with NN = 18 and the date 10 September 2026.
+
+**The H1, meta and angle were changed from the brief, because they overclaimed
+under this method.** "The complete 2026 spec sheet" became "counted across 18
+sources"; "The real Tmall image specs" was removed from the meta; and the brief's
+promise to cite the Taobao Rule Center was dropped, since the rule centre gated
+its text and appears only as the thing that could not be read.
+
+**The brief's ban on the file cap and fill ratio was superseded, on the record.**
+That ban predates deviation 7. This file's list of hard blocks that survive
+deviation 7 does not include either figure, and both were cleared. The 3MB cap
+runs with its count and the resolution that 500KB is a load-speed
+recommendation rather than a competing cap. The fill ratio runs as a contested
+60 to 80 percent band with the statement that no source says where it came
+from. Neither is described as confirmed.
+
+**Every surviving hard block held.** No figure is called verified, official,
+confirmed or required, and "the platform requires" appears nowhere. No number is
+attributed to the Taobao Rule Center. No Tmall Global delta table is published,
+only the counted absence. The 15 and 30 percent overlay caps appear only as one
+source each. The 300dpi and 10MB outliers are absent. No figure is lifted from
+hubStudio's ecommerce design service page. No rejection screenshot or described
+rejection notice appears, and the prohibition list is framed as the most often
+described prohibitions, not as ranked rejection reasons. No traffic claim
+attaches to the 1440 upgrade or to white-background compliance.
+
+**Two tables were needed and the second was built from the spec table.** The
+quality check required a second table. A white-background slot checklist was
+added using only rows and counts already in this file's spec table: slot
+position, background value, size, file weight, compression floor, fill band and
+subject minimum.
+
+**Practical export guidance was derived from cleared ranges and introduces no
+new figure**: export mains under 500KB to satisfy both readings of file weight,
+and cut detail slices no taller than 1500 pixels and no heavier than 500KB to
+sit inside every published slice cap.
+
+**Both brief links were missing.** /solutions/platforms/tmall and
+/resources/specs do not exist. The published JD against Tmall article and the
+retailers solutions page were substituted.
+
+**The Amazon FAQ answers with Tmall figures only.** No Amazon specification was
+researched and none is published.
+
+**Open at publish time.** A live Tmall listing carousel captured in the app needs
+no seller session and would move the five-slot row from modal to observed.

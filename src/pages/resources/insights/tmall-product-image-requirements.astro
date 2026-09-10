@@ -1,0 +1,273 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should a Tmall main image be?",
+    "a": "The most commonly published standard is a 1:1 square at 800 by 800 pixels, given by fourteen of eighteen sources collected on 10 September 2026, with 1000 by 1000 or larger recommended where zoom matters. It is a counted published value, not a figure read from Tmall, so confirm it in your seller backend."
+  },
+  {
+    "q": "How many images can a Tmall listing have?",
+    "a": "Five main images on every domestic source that gives a number. The fifth is most often a pure-white-background image in general categories, while published food and appliance standards move the white image to the second slot. Tmall Global counts are not published consistently enough to state."
+  },
+  {
+    "q": "Why did Tmall reject my product image?",
+    "a": "No source ranks rejection reasons. The most consistently published prohibitions are watermarks, borders, spliced composites, promotional overlay text, QR codes, third-party logos and any model in the white-background slot, agreed by eleven of eighteen sources. Superlative claims are also prohibited, under advertising law as well as platform rules."
+  },
+  {
+    "q": "Do Tmall Global listings use different image rules?",
+    "a": "No publishable comparison exists. Sixteen of eighteen sources never distinguish the cross-border channel from domestic Tmall, and the two that do each give a single uncorroborated figure. Treat the domestic figures as a starting point and confirm Global requirements directly in the Tmall Global seller backend."
+  },
+  {
+    "q": "Can I reuse my Amazon product images on Tmall?",
+    "a": "Only where they meet the Tmall figures on their own. The most published Tmall main image is a 1:1 square at 800 by 800 pixels under 3MB, with a separate pure-white-background image and no overlay text, borders or logos on the mains. Check every reused image against that list rather than assuming it transfers."
+  }
+];
+---
+
+<ArticleLayout slug="tmall-product-image-requirements" ctaLabel="Talk to the production team" faq={faq}>
+  <p class="standfirst">Search for Tmall image requirements in English and the top result is a coding tutorial. The rules exist, mostly in Chinese, scattered across vendor pages that rarely agree and never say where their numbers came from. This page counts them.</p>
+
+  <h2>What size should a Tmall main image be?</h2>
+
+  <p>The most commonly published standard is a 1:1 square at 800 by 800 pixels, given by fourteen of eighteen sources, with 1000 by 1000 or larger recommended where a category supports zoom. A listing carries five main images, and the fifth is a separate white-background deliverable with rules of its own.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>These specs are not read from a seller backend. Both platform rule centres gate their rule text behind a seller login, so no open source reaches the official value.</p>
+
+  <p>What follows is the most commonly published figure for each spec, collected across 18 independent sources in Chinese and English on 10 September 2026, with the number of sources that agreed shown per row. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own seller backend and confirm it there. Reviewed 10 September 2026.</p>
+
+  <blockquote class="evidence">The two platform rule centres a buyer would check are published at public web addresses and serve no rule text without a seller session. On 10 September 2026 the Tmall rule centre redirected twice and returned no rule body, and two different JD merchant rule pages returned the rule-centre heading and nothing else.</blockquote>
+  <p class="source">Source: direct unauthenticated fetches of rule.tmall.com and rule.jd.com, 10 September 2026, four requests across two platforms, redirect chain and response body recorded.</p>
+
+  <p>So the rule centre appears on this page only as the thing that could not be read. None of the numbers below came from it.</p>
+
+  <h2>How many images can a Tmall listing have?</h2>
+
+  <p>Five main images, on every domestic source that gives a number.</p>
+
+  <blockquote class="evidence">The most commonly published Tmall main image standard is a 1:1 square at 800 by 800 pixels, with 1000 by 1000 or larger recommended where a category supports zoom. Fourteen of eighteen independent sources give 800 by 800. The full published spread runs from a 700 by 700 minimum to a 1440 by 1440 upgrade opened in 2025.</blockquote>
+  <p class="source">Source: eighteen independent published specifications collected 10 September 2026, sixteen Chinese-language and two English-language. This is the modal published value with its agreement count, not a reading from the platform.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Most published value</th>
+          <th scope="col">Spread across sources</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Main image ratio</th>
+          <td>1:1 square</td>
+          <td>3:4 available in many categories</td>
+          <td>12 of 18</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Main image size</th>
+          <td>800 by 800</td>
+          <td>700 by 700 to 1440 by 1440</td>
+          <td>14 of 18</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Recommended above standard</th>
+          <td>1000 by 1000</td>
+          <td>1000 to 1500 square</td>
+          <td>5 of 18</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">The 1440 upgrade</th>
+          <td>1440 square or 1440 by 1920</td>
+          <td>Described as opened in 2025</td>
+          <td>3 of 18</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Main image count</th>
+          <td>5</td>
+          <td>5 on every domestic source giving a number</td>
+          <td>9 of 18</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Formats</th>
+          <td>JPG, with PNG</td>
+          <td>PNG on four, GIF and BMP once each</td>
+          <td>8 of 18 for JPG</td>
+          <td>consensus for JPG</td>
+        </tr>
+        <tr>
+          <th scope="row">Listing video cap</th>
+          <td>50MB, MP4</td>
+          <td>MOV accepted on one source</td>
+          <td>3 of 18</td>
+          <td>consensus among sources covering video</td>
+        </tr>
+        <tr>
+          <th scope="row">Listing video ratio</th>
+          <td>1:1</td>
+          <td>3:4, 9:16 and 16:9 also named</td>
+          <td>3 of 18</td>
+          <td>consensus for 1:1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The 1440 upgrade is worth a sentence of its own. Three sources describe it as opened in 2025 and favored since, with 800 by 800 still displaying. That makes it an option rather than a floor, and nothing in the pool supports the traffic claims attached to it, which come from sellers of image production.</p>
+
+  <h2>The five slots, and the white one</h2>
+
+  <blockquote class="evidence">Nine of eighteen sources give the same main image count: five per listing, with the fifth reserved for a pure-white-background image in general categories. Eight of eighteen place the white image in the fifth slot specifically. Category standards move it: reproductions of the food and large-appliance standards both put the white image in the second slot.</blockquote>
+  <p class="source">Source: eighteen independent published specifications collected 10 September 2026, Chinese-language first, counted by domain rather than by page. Modal value with its agreement count, not a reading from the platform.</p>
+
+  <p>The white-background image is not just the fifth photograph. It is a separate deliverable, briefed and checked on its own terms.</p>
+
+  <blockquote class="evidence">The white-background image is published as a separate deliverable with its own limits: pure white at RGB 255 255 255 on nine of eighteen sources, 800 by 800 pixels on six, and a file under 300KB on the four sources that give the slot its own weight cap. Three of those four also state a 38KB floor, which is a compression check rather than a design target.</blockquote>
+  <p class="source">Source: eighteen independent published specifications collected 10 September 2026, sixteen Chinese-language and two English-language, counted by domain. Modal values with their agreement counts, not a reading from the platform.</p>
+
+  <p>How much of that white frame the product should fill is where the sources stop agreeing.</p>
+
+  <blockquote class="evidence">Published guidance on how much of the white-background frame the product should fill does not settle on one number. Four of eighteen sources give 70 to 80 percent, three more give a flat figure of about 70 percent, and the low end of the published spread is 60 percent. Nothing in the pool puts it outside 60 to 80 percent, and nothing in the pool states where the number came from.</blockquote>
+  <p class="source">Source: eighteen independent published specifications collected 10 September 2026, in Chinese and English, reported as the spread rather than averaged. Contested modal value, not a reading from the platform.</p>
+
+  <p>A band of 60 to 80 percent with no stated origin is a working range, not a rule. Aim for the middle of it and confirm against a listing that has already passed.</p>
+
+  <p>Taken together, the white-background image has its own checklist, and it is worth running separately from the other four mains.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">Most published value</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Slot position</th>
+          <td>Fifth, second in food and appliances</td>
+          <td>8 of 18</td>
+          <td>consensus for general categories</td>
+        </tr>
+        <tr>
+          <th scope="row">Background</th>
+          <td>Pure white, RGB 255 255 255</td>
+          <td>9 of 18</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Size</th>
+          <td>800 by 800</td>
+          <td>6 of 18</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">File weight</th>
+          <td>Under 300KB</td>
+          <td>4 of 18</td>
+          <td>consensus among sources giving the slot its own cap</td>
+        </tr>
+        <tr>
+          <th scope="row">Compression floor</th>
+          <td>38KB</td>
+          <td>3 of 18</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Product fill</th>
+          <td>60 to 80 percent of the frame</td>
+          <td>7 of 18 inside the band</td>
+          <td>contested on the exact figure</td>
+        </tr>
+        <tr>
+          <th scope="row">Subject minimum</th>
+          <td>Larger than 300 by 300 inside the frame</td>
+          <td>3 of 18</td>
+          <td>contested, and a floor rather than a target</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>File weight, where the conflict turns out not to be one</h2>
+
+  <p>Two figures circulate, 3MB and 500KB, and they are usually presented as sources contradicting each other. They are not.</p>
+
+  <blockquote class="evidence">The two figures that circulate for Tmall main image weight are not in conflict. Every source that publishes both treats 3MB as the platform cap and keeping the file under 500KB as a load-speed recommendation. Six of eighteen sources give the 3MB cap. Three of eighteen give the 500KB recommendation, and all three frame it as advice rather than as a limit.</blockquote>
+  <p class="source">Source: eighteen independent published specifications collected 10 September 2026, in Chinese and English, with the cap and the recommendation counted separately. Modal values with their agreement counts, not a reading from the platform.</p>
+
+  <p>One number is a ceiling and the other is advice about staying well under it. Export under 500KB and you satisfy both readings at once.</p>
+
+  <h2>Detail page width, mobile against desktop</h2>
+
+  <blockquote class="evidence">Every source that separates desktop from mobile gives the same two detail page widths: 790 pixels for desktop, 750 pixels for mobile. Five of eighteen sources address the split, and all five agree. What they do not agree on is the weight and height of each slice, where published caps run from 200KB to 3MB and from 1500 to 2000 pixels tall.</blockquote>
+  <p class="source">Source: eighteen independent published specifications collected 10 September 2026, Chinese-language first. Modal values with their agreement counts, not a reading from the platform.</p>
+
+  <p>Widths settle and slices do not. One domain gives three different slice heights across its own pages, which says more about the state of published guidance than any single figure could. Cut slices no taller than 1500 pixels and no heavier than 500KB and you sit inside every published cap.</p>
+
+  <h2>Why did Tmall reject my product image?</h2>
+
+  <p>No rejection notice was obtained for this page, and none is reconstructed here. What the sources do agree on is the list of things not to put on a main image, and it is the most consistent row in the whole pool.</p>
+
+  <blockquote class="evidence">Eleven of eighteen sources publish the same prohibition list for main images: no watermarks, no borders, no spliced composites, no promotional overlay text, no QR codes, no third-party logos, and no model or body part in the white-background slot. They do not agree on how much overlay text is tolerable elsewhere, where the published caps sit at 15 percent and 30 percent of frame area on one source each.</blockquote>
+  <p class="source">Source: eighteen independent published specifications collected 10 September 2026, Chinese-language first, counted by domain. Modal position with its agreement count, not a reading from the platform.</p>
+
+  <p>Those are the prohibitions most often described, not a ranking of why listings actually fail, because no source ranks them. Superlative and absolute claims belong on the same list, and three sources note that the rule there comes from advertising law rather than from the platform alone.</p>
+
+  <h2>Category variation, the part nobody translates</h2>
+
+  <blockquote class="evidence">Image rules move by category, and the movement is in the slot map rather than the pixel count. Reproductions of two category standards put the white-background image in the second slot, not the fifth: the food standard follows it with a legible label image showing ingredients and licence number, and the large-appliance standard follows it with the compulsory certification mark and then the energy label. A ratio change dated September 2024 moved roughly 70 categories to square-first display while about ten, including womenswear and watches, held a 3:4 display.</blockquote>
+  <p class="source">Source: published Chinese category standards and a dated platform change report, collected 10 September 2026, one source per specific slot map and four of eighteen sources confirming that category variation exists at all. Contested for each specific map, not a reading from the platform.</p>
+
+  <p>The general five-slot model is the default, not a universal. If you sell food, appliances, apparel or watches, check your own category standard before planning the carousel.</p>
+
+  <h2>Do Tmall Global listings use different image rules?</h2>
+
+  <p>Possibly, and nobody has published enough to say how.</p>
+
+  <blockquote class="evidence">There is no published Tmall Global image delta to work from. Sixteen of eighteen sources carrying a Tmall image figure do not distinguish the cross-border channel from the domestic one at any point. The two that do give one figure each, each on a single source: a 15-image maximum with a 1600 by 1600 minimum, and a cross-border cosmetics slot map of five images plus one video. Neither is corroborated anywhere else in the pool.</blockquote>
+  <p class="source">Source: eighteen independent published specifications collected 10 September 2026, in Chinese and English, counted for whether they distinguish the two channels. Stated as an absence with its count, not as a platform rule.</p>
+
+  <p>A delta table would need at least two sources agreeing on a figure. There are none, so this page publishes the absence rather than two single-source numbers dressed up as a comparison.</p>
+
+  <h2>If you are also selling on JD</h2>
+
+  <p>The <a href="/resources/insights/jd-image-requirements-vs-tmall">article comparing JD image requirements with Tmall</a> covers the one difference between the two that holds up, where the white-background image sits, and the detail-width difference that turns out to be a sourcing artifact. The <a href="/services/design/ecommerce">ecommerce design service page</a> covers producing the full marketplace image set. The <a href="/solutions/retailers">retailers solutions page</a> covers running one catalog across both platforms.</p>
+
+  <p>Reviewed 10 September 2026. Confirm every figure in your own seller backend before building a batch to it.</p>
+
+  <h2>Questions sellers ask about Tmall images</h2>
+
+  <h3>What size should a Tmall main image be?</h3>
+
+  <p>The most commonly published standard is a 1:1 square at 800 by 800 pixels, given by fourteen of eighteen sources collected on 10 September 2026, with 1000 by 1000 or larger recommended where zoom matters. It is a counted published value, not a figure read from Tmall, so confirm it in your seller backend.</p>
+
+  <h3>How many images can a Tmall listing have?</h3>
+
+  <p>Five main images on every domestic source that gives a number. The fifth is most often a pure-white-background image in general categories, while published food and appliance standards move the white image to the second slot. Tmall Global counts are not published consistently enough to state.</p>
+
+  <h3>Why did Tmall reject my product image?</h3>
+
+  <p>No source ranks rejection reasons. The most consistently published prohibitions are watermarks, borders, spliced composites, promotional overlay text, QR codes, third-party logos and any model in the white-background slot, agreed by eleven of eighteen sources. Superlative claims are also prohibited, under advertising law as well as platform rules.</p>
+
+  <h3>Do Tmall Global listings use different image rules?</h3>
+
+  <p>No publishable comparison exists. Sixteen of eighteen sources never distinguish the cross-border channel from domestic Tmall, and the two that do each give a single uncorroborated figure. Treat the domestic figures as a starting point and confirm Global requirements directly in the Tmall Global seller backend.</p>
+
+  <h3>Can I reuse my Amazon product images on Tmall?</h3>
+
+  <p>Only where they meet the Tmall figures on their own. The most published Tmall main image is a 1:1 square at 800 by 800 pixels under 3MB, with a separate pure-white-background image and no overlay text, borders or logos on the mains. Check every reused image against that list rather than assuming it transfers.</p>
+</ArticleLayout>

@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'tmall-product-image-requirements',
+    image: '/Images/insight-tmall-product-image-requirements.webp',
+    imageAlt:
+      'A square print of a white ceramic teapot on a pure white background lying on a light table, a hand measuring its edge with a steel caliper beside a ruler and a loupe, with a second print of the same teapot styled on wood.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Tmall Product Image Requirements 2026',
+    deck: 'Tmall\'s rule centre shows nothing without a seller login. Here is what eighteen published sources say, counted row by row, with the disagreements left in.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Tmall Product Image Requirements 2026 | hubStudio',
+    metaDescription:
+      'Tmall main image size, the five slots, detail page widths, file weight and prohibited elements, counted across 18 published sources and dated.',
+  },
+  {
     slug: 'rednote-note-cover-specs',
     image: '/Images/insight-rednote-note-cover-specs.webp',
     imageAlt:
