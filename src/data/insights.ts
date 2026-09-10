@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'production-roster-review-questions',
+    image: '/Images/insight-production-roster-review-questions.webp',
+    imageAlt:
+      'A long studio table covered end to end with overlapping contact sheets and printed layouts in low window light, a person standing at the far end looking down at them, with the Shanghai skyline faint through the window.',
+    category: 'Buying models',
+    tone: 'navy',
+    title: '14 Questions for a Production Roster Review',
+    deck: 'Production supply is consolidating. Here are the fourteen questions to ask every partner on your roster, in four groups, with a scoring table.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: '14 Questions for a Production Roster Review | hubStudio',
+    metaDescription:
+      'Production is consolidating into centralized units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table.',
+  },
+  {
     slug: 'ai-brand-ambassadors-what-you-sign',
     image: '/Images/insight-ai-brand-ambassadors-what-you-sign.webp',
     imageAlt:
@@ -222,23 +239,6 @@ export const insights: Insight[] = [
     metaTitle: 'Automation Platform or Production Partner | hubStudio',
     metaDescription:
       'Automation multiplies assets you already have. It cannot originate the master. Where the handoff sits, what each layer costs, and how to decide.',
-  },
-  {
-    slug: 'production-roster-review-questions',
-    image: '/Images/insight-production-roster-review-questions.webp',
-    imageAlt:
-      'A long studio table covered end to end with overlapping contact sheets and printed layouts in low window light, a person standing at the far end looking down at them, with the Shanghai skyline faint through the window.',
-    category: 'Buying models',
-    tone: 'navy',
-    title: '14 Questions for a Production Roster Review',
-    deck: 'Production supply is consolidating. Here are the fourteen questions to ask every partner on your roster, in four groups, with a scoring table.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '11 min read',
-    author: 'Cyril Drouin',
-    metaTitle: '14 Questions for a Production Roster Review | hubStudio',
-    metaDescription:
-      'Production is consolidating into centralized units. The 14 questions to ask every partner on your roster, grouped, with a copyable scoring table.',
   },
   {
     slug: 'subscription-or-managed-production',

@@ -155,12 +155,16 @@ function blocks(body) {
   return out;
 }
 
-/** An evidence quote is its statement plus a Source line. The Source line can
-    wrap, so everything from the first "Source:" to the end belongs to it. */
+/** An evidence quote is its statement plus its attribution. House style puts
+    "Source:" at the start of its own line and lets it wrap, but the earliest
+    drafts run it on mid-sentence. Split on the word either way: a quote whose
+    attribution stays inside the blockquote renders as display serif rather
+    than as a source line, which is silently wrong rather than broken. */
 function renderQuote(lines) {
-  const idx = lines.findIndex((l) => /^Source:/.test(l));
-  const said = (idx === -1 ? lines : lines.slice(0, idx)).join(' ').trim();
-  const src = idx === -1 ? '' : lines.slice(idx).join(' ').trim();
+  const joined = lines.join(' ').replace(/\s+/g, ' ').trim();
+  const at = joined.search(/\bSource:/);
+  const said = (at === -1 ? joined : joined.slice(0, at)).trim();
+  const src = at === -1 ? '' : joined.slice(at).trim();
   const parts = [`  <blockquote class="evidence">${inline(said)}</blockquote>`];
   if (src) parts.push(`  <p class="source">${inline(src)}</p>`);
   return parts.join('\n');
