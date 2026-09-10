@@ -550,3 +550,44 @@ failure (PIPL read on cac.gov.cn instead) and scio.gov.cn returned a certificate
 error (holiday notice read on beijing.gov.cn instead).
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality check.
+
+**All 28 blockquotes shipped verbatim** from "Cleared for use", said text and
+Source line both, checked by script against this file.
+
+**The H1 moved from "what it means in 2026" to "what it involves in 2026".** The
+page is an operational account, instrument by instrument, not a definition of a
+market, and "means" promised the second. Title, meta and excerpt follow the same
+reading.
+
+**Length runs over the brief.** About 3,170 words of prose against a 2,600 target,
+because the customs, data, copyright and contract instruments are quoted at the
+length needed to keep their scope intact. No section was padded; the four tables
+carry the comparison work.
+
+**Links.** /the-studio has no index page, so the who we are page replaces it.
+/solutions/agencies and /pricing exist and were kept. The published China or India
+article is added as a fourth link, because this page is its follow-on.
+
+**Every must-not held**: the 40 percent claim is quoted only as a market claim, its
+source neither named nor described, with its gaps in the same quote; no savings ratio
+from wages, and the wage quote carries its own line saying so; samples are never
+called duty and tax free, and the page says the exemption covers tariff only; no
+clearance time, carnet validity or penalty figure; labeling duties are not allocated
+between brand, studio and vendor; data, rights, contracts and payment are framed as
+production practice, not legal advice, in five places; the pilot is introduced as a
+template, not a benchmark; the only first-party facts are the studio locations and
+Hong Kong registration, the 48-hour binding proposal and the 90-day source file
+purge.
+
+**Stated as not covered, because not researched**: import VAT on samples, how a
+studio in China receives foreign currency, Hong Kong and Philippine rules, filming
+permits and crew visas, and whether an ordinary photo of a person counts as
+biometric data.
+
+**The hero was accepted on the first generation**: a hard sample case with a glass
+bottle in cut foam, a blank tag on the handle.
+
+**Distribution:** category Buying models, which reaches the pricing page layer,
+balanced there against Cost, and the home page.

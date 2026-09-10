@@ -606,3 +606,45 @@ sources use them, romanized, with the English the article should print.
    need one.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality check.
+
+**Fourteen blockquotes shipped.** Twelve are verbatim from "Cleared for use",
+said text and Source line both. The two date-arithmetic blocks, counted back
+sixteen weeks from Tmall's 21 May 2026 opening and from its 15 October 2025
+presale, carried their label as a trailing sentence with no Source line, which
+fails the house check that every quotation carries one. That sentence was
+rewritten as a dated Source line ("Source: date arithmetic, 10 September 2026,
+on ..."). The dates, the holiday placement and the words "not a published lead
+time" are unchanged.
+
+**The angle, meta and must-includes were changed from the brief.** No platform
+publishes material submission deadlines, asset counts at each gate or approval
+gates. The one related gate is Tmall's 2026 618 listing rule, as reported, and
+the page scopes it to that cycle. The meta that promised asset counts, approval
+gates and "the two failure modes that cost most" was rewritten. The week-by-week
+must-include is met by a counted-back table labeled as arithmetic, with the
+sixteen-week length described as the brief's working window, not a
+recommendation. The restock milestone is not published by any platform and was
+not invented. The two failure modes are described as mechanisms with no cost
+figure, because none is measured.
+
+**The slot requirement is unmet on purpose.** No hubStudio delivery figure has a
+written method, so none is printed.
+
+**Link substituted.** /solutions/platforms/tmall does not exist; the published
+Tmall product image requirements article replaces it. /solutions/retailers and
+/services/design/ecommerce exist and were kept.
+
+**Every must-not held**: every date carries its platform and year; the page shows
+two counterexamples to the idea that openings only move earlier (Tmall Singles
+Day 2025 and Tmall 618 2026); no 2026 Singles Day date; 12 or 13 May appears only
+as the stated conflict; Tmall's 2026 listing rule is not applied to JD or to
+Singles Day; no contested item from R6; no GMV, growth or cost figure; no named
+agency, vendor, data firm or trade outlet; no Han characters.
+
+**The hero failed once on a network error and was accepted on the second
+generation**: a hand pinning colored markers along a paper timeline strip.
+
+**Distribution:** category Production, which reaches the AI excellence page
+layer and the home page.

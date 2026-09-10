@@ -44,6 +44,40 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'offshore-creative-production-china',
+    image: '/Images/insight-offshore-creative-production-china.webp',
+    imageAlt:
+      'A hand holds open a black hard-shell sample case on a steel studio table, a clear glass bottle and two metal caps set in cut gray foam, a blank tag tied to the handle and white cotton gloves beside it.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: 'Offshore Creative Production in China',
+    deck: 'The pages ranking for offshore production treat China as a name on a list. Here is what running production there involves, instrument by instrument.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '15 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Offshore Creative Production in China | hubStudio',
+    metaDescription:
+      'What running creative production in China involves in 2026: samples through customs, data with people in it, who owns the work, and how to pilot.',
+  },
+  {
+    slug: 'singles-day-618-production-calendar',
+    image: '/Images/insight-singles-day-618-production-calendar.webp',
+    imageAlt:
+      'A hand pins an orange paper marker to a long strip of paper taped along a studio wall, with blue, gray and orange markers spaced out ahead of it toward a red marker at the far end.',
+    category: 'Production',
+    tone: 'navy',
+    title: 'The 11.11 and 618 Production Calendar',
+    deck: 'No platform publishes how long production takes before a sale. What they do publish is dates, and those can be counted backwards.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'The 11.11 and 618 Production Calendar | hubStudio',
+    metaDescription:
+      'Reported Singles Day and 618 milestones for Tmall, JD and Douyin by year, and a production calendar counted back from them, with the arithmetic shown.',
+  },
+  {
     slug: 'tmall-flagship-store-decoration-specs',
     image: '/Images/insight-tmall-flagship-store-decoration-specs.webp',
     imageAlt:
