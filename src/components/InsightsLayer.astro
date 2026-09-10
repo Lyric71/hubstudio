@@ -1,0 +1,302 @@
+---
+/**
+ * InsightsLayer  ·  a "further reading" band of published insights.
+ *
+ * Self-contained on purpose: it brings its own container, tokens and type so it
+ * can drop into any page regardless of that page's local class names or
+ * background. Content comes from src/data/insight-placements.ts, so a newly
+ * published insight appears here without touching the host page.
+ *
+ * Per repo standards: no em-dashes (U+2014), no decorative numerals inside the
+ * cards, deck copy at var(--type-body).
+ */
+import { insightsForPlacement, insightPlacements, type InsightPlacementKey } from '../data/insight-placements';
+
+interface Props {
+  /** Key from insightPlacements. */
+  placement: InsightPlacementKey;
+  /** Band background. Pick the one that contrasts with the section above. */
+  tone?: 'white' | 'cream';
+  /** Optional anchor id for in-page navigation. */
+  id?: string;
+}
+
+const { placement, tone = 'white', id } = Astro.props;
+const meta = insightPlacements[placement];
+const posts = insightsForPlacement(placement);
+---
+
+{
+  posts.length > 0 && (
+    <section class:list={['ilayer', `ilayer--${tone}`]} id={id} aria-labelledby={`ilayer-${placement}`}>
+      <div class="ilayer__inner">
+        <header class="ilayer__head">
+          <div class="ilayer__headline">
+            <span class="ilayer__eyebrow">{meta.eyebrow}</span>
+            <h2 class="ilayer__title" id={`ilayer-${placement}`}>
+              {meta.heading} <em>{meta.emphasis}</em>.
+            </h2>
+          </div>
+          <div class="ilayer__aside">
+            <p class="ilayer__intro">{meta.intro}</p>
+            <a class="ilayer__all" href="/resources/insights">
+              All insights
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M4 10h12M11 5l5 5-5 5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
+        </header>
+
+        <div class="ilayer__grid">
+          {posts.map((post) => (
+            <a class="ilayer__card" href={`/resources/insights/${post.slug}`}>
+              <span class="ilayer__media">
+                <img
+                  src={post.image}
+                  alt={post.imageAlt}
+                  width="1600"
+                  height="1067"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class:list={['ilayer__tag', `ilayer__tag--${post.tone}`]}>{post.category}</span>
+              </span>
+              <span class="ilayer__body">
+                <h3 class="ilayer__card-title">{post.title}</h3>
+                <p class="ilayer__deck">{post.deck}</p>
+                <span class="ilayer__meta">
+                  <span>{post.author}</span>
+                  <span class="ilayer__dot" aria-hidden="true" />
+                  <time datetime={post.dateISO}>{post.date}</time>
+                  <span class="ilayer__dot" aria-hidden="true" />
+                  <span>{post.readingTime}</span>
+                </span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .ilayer {
+    padding-block: clamp(72px, 9vw, 128px);
+    color: var(--text-ink);
+  }
+  .ilayer--white {
+    background: var(--bg-white);
+  }
+  .ilayer--cream {
+    background: var(--bg-cream);
+  }
+
+  .ilayer__inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad-mobile);
+  }
+  @media (min-width: 768px) {
+    .ilayer__inner {
+      padding-inline: var(--container-pad-desktop);
+    }
+  }
+
+  /* --- Head --- */
+  .ilayer__head {
+    display: grid;
+    gap: 24px;
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  @media (min-width: 900px) {
+    .ilayer__head {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: end;
+    }
+  }
+
+  .ilayer__eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: 14px;
+  }
+
+  .ilayer__title {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(30px, 3.6vw, 46px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+  }
+  .ilayer__title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .ilayer__aside {
+    display: grid;
+    gap: 18px;
+    justify-items: start;
+  }
+  .ilayer__intro {
+    margin: 0;
+    max-width: 52ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .ilayer__all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--type-button);
+    font-weight: 500;
+    color: var(--text-ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 3px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .ilayer__all svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+  }
+  .ilayer__all:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .ilayer__all:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* --- Grid --- */
+  .ilayer__grid {
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 720px) {
+    .ilayer__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-card);
+    }
+  }
+
+  .ilayer__card {
+    display: grid;
+    gap: 0;
+    align-content: start;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .ilayer__media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--bg-cream);
+    aspect-ratio: 3 / 2;
+  }
+  .ilayer__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .ilayer__card:hover .ilayer__media img {
+    transform: scale(1.035);
+  }
+
+  .ilayer__tag {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .ilayer__tag--orange {
+    background: var(--brand-orange-cta);
+  }
+  .ilayer__tag--navy {
+    background: var(--brand-navy);
+  }
+
+  .ilayer__body {
+    display: block;
+    padding-top: 18px;
+  }
+  .ilayer__card-title {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--type-h4);
+    font-weight: 600;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+  .ilayer__card:hover .ilayer__card-title {
+    color: var(--brand-orange);
+  }
+  .ilayer__deck {
+    margin: 10px 0 0;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .ilayer__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+  .ilayer__dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ilayer__media img,
+    .ilayer__all svg {
+      transition: none;
+    }
+    .ilayer__card:hover .ilayer__media img {
+      transform: none;
+    }
+  }
+</style>

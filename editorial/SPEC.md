@@ -157,6 +157,39 @@ section. Spec pages carry a spec table.
 Markdown tables only. Aligned in the source. No nested tables, no merged
 cells, no more than five columns.
 
+## The China platform spec disclaimer, verbatim
+
+Every article publishing a China platform spec value carries this block,
+immediately after the opening answer and before the first spec table. Copy it
+word for word, changing only the platform names, the source count and the date.
+See deviation 7 in `CLAUDE.md` for why these numbers are modal rather than
+primary.
+
+```
+<!-- SECTION: How to read these numbers -->
+
+## How to read these numbers
+
+These specs are not read from a seller backend. Both platform rule centres
+gate their rule text behind a seller login, so no open source reaches the
+official value.
+
+What follows is the most commonly published figure for each spec, collected
+across NN independent sources in Chinese and English on DATE, with the number
+of sources that agreed shown per row. Rows marked consensus had broad
+agreement. Rows marked contested did not, and those carry the full spread
+rather than a single number.
+
+Treat this as the best available public reading, not as the rule. Platform
+specs change without announcement and often without an English notice at all.
+Before you build a batch to any number on this page, open your own seller
+backend and confirm it there. Reviewed DATE.
+```
+
+Every spec table under this rule carries a `Sources agreeing` column and a
+`Confidence` column reading `consensus` or `contested`. A value found on one
+source only is `contested`, never `consensus`, and the row says so.
+
 ## Citations
 
 Blockquote format, consistently, every time.

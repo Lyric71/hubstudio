@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'all-in-cost-of-ai-video',
+    image: '/Images/insight-all-in-cost-of-ai-video.webp',
+    imageAlt:
+      'A film cutting bench with one short strip of developed film hanging clipped and lit above a deep metal bin overflowing with discarded strips that spill across the floor.',
+    category: 'Cost',
+    tone: 'navy',
+    title: 'The All-In Cost of AI Video',
+    deck: 'Generation is the one line anyone prices. The number that actually decides the bill, how many generations a usable shot takes, has no benchmark.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '12 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'The All-In Cost of AI Video | hubStudio',
+    metaDescription:
+      'A line-by-line build of a 30-second AI-assisted brand film: what generation actually costs, and what the dollar-an-ad math leaves out.',
+  },
+  {
     slug: 'product-photography-cost-per-sku',
     image: '/Images/insight-product-photography-cost-per-sku.webp',
     imageAlt:

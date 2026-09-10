@@ -75,6 +75,36 @@ Browser-native `<ol>` numbering counts too: suppress it in these blocks. When
 building or editing any such component, ship it numberless from the start; when
 reviewing existing pages, strip any numeral you find. No exceptions.
 
+## Insights distribution (PERMANENT)
+
+Every insight published in `src/data/insights.ts` must surface in two places,
+never one:
+
+1. **The home page.** `src/pages/index.astro` takes the first four entries of
+   the array as its lead plus grid, so the array stays newest first and the
+   order stays in sync with `dateISO`. Publishing a newer article pushes the
+   oldest of the four off automatically. Never hard-code a slug there.
+2. **Every relevant insights layer.** An insights layer is the "further
+   reading" band rendered by `src/components/InsightsLayer.astro`. Which pages
+   carry one, and which categories each one claims, live in
+   `src/data/insight-placements.ts`. Selection is by category and date, not by a
+   hand-written slug list, so a new article reaches the right pages the moment
+   it is added to the insights array.
+
+When publishing an insight, the job is not finished until you have checked its
+`category` against every placement in `insight-placements.ts` and confirmed the
+article lands on the pages where a buyer would want it. If the category is new,
+either add it to the placements that should claim it or add a placement, then
+render `<InsightsLayer placement="<key>" />` on that page. If an article is
+genuinely relevant to a page whose categories do not catch it, pin it with the
+placement's `pinned` field, and keep `pinned` to one slug so new work still
+surfaces.
+
+Layers currently live on `/pricing`, `/solutions/brands`,
+`/solutions/ai-production/video` and `/the-studio/ai-excellence`. The component
+is self-contained (its own container, tokens and type) so it drops into any
+page; pick the `tone` that contrasts with the section above it.
+
 ## DeBeers review page (PERMANENT)
 
 `/debeers` is a hidden, password-gated asset-review page. These rules are

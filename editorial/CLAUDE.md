@@ -87,6 +87,37 @@ Already settled, and different from what the search spec assumes:
    research files keep the characters, because they are working documents and
    are never served. `check-draft.mjs` permits a gloss, so this one is on the
    writer: search any finished draft for Han before publishing.
+7. **China platform specs publish the most commonly published value, with the
+   method stated and a dated disclaimer.** Decided 2026-09-10 by the site
+   owner, overriding R3 and the runbook line that an unverifiable spec does not
+   go on the page.
+
+   The reason the old rule could not hold: both rule centres gate their
+   content. On 2026-09-10 `rule.tmall.com` returned a 302 to a channel page
+   that returned a further 302 and no rule body, and `rule.jd.com` returned the
+   rule-centre heading and nothing else on two separate rule ids. No open
+   source reaches the primary text, in Chinese or English. Waiting for a seller
+   backend capture meant nine briefs never shipping.
+
+   **The method, which is not a guess and must be printed on every page that
+   uses it.** For each spec value, collect every published figure across as many
+   independent sources as can be found, Chinese-language sources first. Record
+   how many sources give each value. Publish the modal value, the one that
+   appears most often, and say how many sources agreed. Where the spread is
+   material, publish the range as well as the mode. Label every row as
+   `consensus` where sources broadly agree or `contested` where they do not.
+
+   **What must never happen under this rule.** Never present a modal value as
+   verified, as official, or as read from the platform. Never cite a rule centre
+   as the source of a number that did not come from it. Never let a single
+   vendor page carry a value alone: one source is not a mode, and a value found
+   once is `contested` at best.
+
+   **Every page carrying these specs opens with the disclaimer block** in
+   `SPEC.md`, carries a visible reviewed date, and tells the reader to confirm
+   against their own seller backend before building to the number. When a
+   backend capture session does happen, those rows get replaced with primary
+   values and the disclaimer narrows to the rows still unverified.
 
 ## Model quality: no compromise
 

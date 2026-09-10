@@ -505,3 +505,67 @@ bid form PDF and the 2026 bidding reference guide PDF, both downloaded
 ---
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**Fourteen blockquotes shipped**, every one from the "Cleared for use" block
+with its attribution unchanged.
+
+**The concession is made early and plainly**, as this file requires. The page
+states that the dollar-an-ad arithmetic is roughly right on the generation line
+alone, invites the reader to run it, and then names the assumptions the claim
+does not state. It wins by adding the other twelve lines rather than by
+counter-claiming a bigger number, and no sentence turns the concession into a
+rebuttal.
+
+**The retry rate is never invented and never averaged.** Both published figures
+appear with their limits: the tool seller's own unnamed internal case work and
+the single named practitioner's roughly 300 to 1 on one dated 2024 production.
+The seventy-five-fold gap is stated, the bill is computed at both, and the draft
+says explicitly that averaging them would describe nothing. The observation that
+price per second varies twelvefold while the retry ratio varies seventy-fivefold
+is the piece's spine.
+
+**No hubStudio retake or selection rate appears.** The brief asked for one. It
+is not in the ledger with a sample, a method or a period, so it was cut, and the
+asset brief records that supplying those would make it citable.
+
+**No headline percentage for generation as a share of total appears anywhere.**
+The methodology section states why: the numerator is publishable and the
+denominator is not, so the percentage would be an invention wearing a decimal
+point.
+
+**Eleven of thirteen rows in the build table say no published price**, and they
+stay empty. Two rows are priced, and the draft points at that ratio directly:
+any all-in figure was built by filling eleven blanks from somewhere.
+
+**Nothing is named.** No tool, model, vendor, platform, film or studio. The 300
+to 1 disclosure is attributed to "a documented production" and "a visual-effects
+trade publication". The brief's separate ban on characterizing a specific vendor
+as understating cost is honored by describing the pattern only: the publishers
+of the cheap figures sell the line they price.
+
+**Geography and conventions are stated at every use.** The wage medians are
+named as US data, the 1.43 load as the published private-industry multiplier,
+and the 2,080-hour year as a stated convention rather than a measurement.
+
+**One section was added during drafting, carrying no new evidence.** The
+selection-time section derives from material already cleared here: the retry
+ratios above and the loaded hourly rates. It argues structurally that cheap
+attempts migrate cost to the reviewing seat, and it explicitly puts no number on
+that time because no published source measures it.
+
+**The link target was changed from the brief.** The brief lists the quotation
+calculator at /pricing/calculator, which returns hubStudio rates and is
+disallowed in robots.txt. Repointed to the public estimator at
+/resources/production-cost.
+
+**Everything in the do-not-publish list stayed out**: the $5,000 expert-led AI
+video, the 58 to 90 percent savings claims, the seat-divided-by-cap arithmetic,
+the $200-to-$30 fall, the $13 to $220 a finished minute band, API uptime figures
+mistaken for retry rates, every academic detection benchmark, and the RMB
+quotation ladder, of which only the structural observation survives. The
+ledger's self-serve AI video tier row remains flagged not citable.
+
+**Open at publish time.** Seven captures pending. Every generation figure
+depends on what those surfaces said on 10 September 2026.
