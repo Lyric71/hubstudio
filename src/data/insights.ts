@@ -44,6 +44,40 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'procurement-guide-buying-ai-content-production',
+    image: '/Images/insight-procurement-guide-buying-ai-content-production.webp',
+    imageAlt:
+      'A hand sets a brass weight on the middle of three identical gray bound volumes laid side by side on an oak table, each with a colored tab, beside a fountain pen, glasses and grid paper.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: 'Procurement\'s Guide to AI Content Production',
+    deck: 'Buying AI content production takes paperwork no ranking page supplies: RFP sections, work units, a weighting method and the clauses that matter.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '16 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Procurement\'s Guide to AI Content Production | hubStudio',
+    metaDescription:
+      'The documents procurement needs to buy AI content production: RFP sections, statement of work units, a weighted scoring table, clauses and cost bands.',
+  },
+  {
+    slug: 'turnaround-days-not-weeks',
+    image: '/Images/insight-turnaround-days-not-weeks.webp',
+    imageAlt:
+      'A worn wooden desk in a studio at dawn, its chair pushed back, a desk lamp still lit beside a wire tray of proof prints showing an amber glass bottle, with a cup of cold tea nearby.',
+    category: 'Production',
+    tone: 'navy',
+    title: 'Content Production Turnaround, Stage by Stage',
+    deck: 'Nobody publishes a measured turnaround benchmark for content production. Here is where the days actually go, stage by stage, and what review rounds add.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '13 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Content Production Turnaround, Stage by Stage | hubStudio',
+    metaDescription:
+      'Where the days go in a content production engagement, stage by stage: what compresses, what cannot, and how review rounds add to the calendar.',
+  },
+  {
     slug: 'one-shoot-six-platforms-china-variant-matrix',
     image: '/Images/insight-one-shoot-six-platforms-china-variant-matrix.webp',
     imageAlt:

@@ -1,0 +1,528 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I write an RFP for AI content production?",
+    "a": "Scope it in units, not hours: masters, assets, variants and adaptations, with volumes and specifications. Add sections on rights, AI tool use and oversight, trained models and training data, data security, labeling per market and an all-in cost breakdown. Publish the evaluation criteria and their weights in the RFP, before any bid arrives."
+  },
+  {
+    "q": "What units should an AI production statement of work use?",
+    "a": "Units that describe accepted results: master, asset, variant, adaptation, revision round, change request, usable second and acceptance. No trade body publishes these definitions, so write them into the statement of work. The 2025 US commercials agreement offers one published boundary: a changed concept or message makes a new commercial."
+  },
+  {
+    "q": "How should procurement score AI production vendors?",
+    "a": "State every criterion and its relative importance before bids arrive, and say how price relates to the rest. US federal rules and UK government guidance both require that. Neither publishes a price-to-quality split for creative services, so set your own weights, test them, and be wary of scoring price against the lowest bid."
+  },
+  {
+    "q": "Which contract clauses matter for AI-generated content?",
+    "a": "Output ownership, ownership and handover of any trained model, a ban on training general models with your material without consent, a third-party infringement guarantee, talent consent, labeling by market, data security by standard, and exit terms covering files, provenance and deletion. This is procurement practice, not legal advice."
+  },
+  {
+    "q": "What does AI content production cost?",
+    "a": "Published category bands in September 2026: managed design subscriptions from roughly $6,000 to $15,000 a month, unlimited-request tiers from roughly $700 to $4,500, and standard ecommerce capture at $39 to $50 an image. Generated video lists at roughly $0.05 to $0.60 a second, billed per attempt. Real numbers come from bids in your units."
+  },
+  {
+    "q": "Who owns models trained during an engagement?",
+    "a": "Whoever the contract says. No instrument read assigns a trained model by default, and copyright does not settle it for prompt-driven output. US federal buyers are told to secure rights to models produced in performance of a contract, with portability. A private buyer can write the same terms into its own agreement."
+  }
+];
+---
+
+<ArticleLayout slug="procurement-guide-buying-ai-content-production" ctaLabel="Send us your RFP" faq={faq}>
+  <p class="standfirst">This page is about commissioning creative assets, meaning images, video and market adaptations, from a production partner that uses AI in the work. It is not about buying AI writing software. The difference matters, because the paperwork for one does not fit the other.</p>
+
+  <h2>How do you procure AI content production?</h2>
+
+  <p>Write the documents before the conversations: an RFP scoped in units, a statement of work that buys accepted results, weights published before bids arrive, and clauses on rights, models, training data and labeling. hubStudio receives RFPs like any studio, so this page scores no supplier and prints no rate of its own.</p>
+
+  <p>What follows is procurement and production practice built on public instruments. It is not legal advice.</p>
+
+  <p>The first decision is which buying model the paperwork is for, because each one sells a different unit.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Buying model</th>
+          <th scope="col">What the fee buys</th>
+          <th scope="col">Where it breaks</th>
+          <th scope="col">Paperwork it needs most</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">In-house studio</th>
+          <td>Salaried hours and tools</td>
+          <td>Peaks, specialist capture, markets without staff</td>
+          <td>Headcount case, tool licenses, rights policy</td>
+        </tr>
+        <tr>
+          <th scope="row">Unlimited-request subscription</th>
+          <td>Access, capped by how many requests run at once</td>
+          <td>Whole campaigns, capture, talent and rights</td>
+          <td>A definition of a request and what counts as delivered</td>
+        </tr>
+        <tr>
+          <th scope="row">Managed subscription</th>
+          <td>A block of creative hours each month</td>
+          <td>Hours that expire unused, work outside the block</td>
+          <td>Hours reporting, rollover terms, scope per month</td>
+        </tr>
+        <tr>
+          <th scope="row">Creative automation software</th>
+          <td>Seats to multiply existing assets</td>
+          <td>Originating the master, physical capture</td>
+          <td>License terms, output rights, data use</td>
+        </tr>
+        <tr>
+          <th scope="row">Production partner</th>
+          <td>Scoped deliverables, from capture to adaptation</td>
+          <td>Vague scope and unpriced change requests</td>
+          <td>Units, acceptance, rights, model and training terms</td>
+        </tr>
+        <tr>
+          <th scope="row">Hybrid</th>
+          <td>Some of each</td>
+          <td>Gaps between contracts</td>
+          <td>A single rights and labeling position across all of them</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>That table is production practice, not a ranking. The rest of this page is written for the production partner row, because that is where the documents are thinnest.</p>
+
+  <h2>How is procurement buying AI content today?</h2>
+
+  <p>Carefully, and mostly before the contracts have caught up.</p>
+
+  <blockquote class="evidence">80 percent of multinational brand owners had concerns about how their creative and media agencies use generative AI, led by legal risk at 66 percent. Only 36 percent had introduced contract terms on partner use of it, and 29 percent had reviewed their agency contracts for AI clauses.</blockquote>
+  <p class="source">Source: global advertiser trade body research, September 2024, a survey of 54 respondents from 48 multinational companies with about 102 billion dollars of combined annual marketing spend.</p>
+
+  <blockquote class="evidence">81 percent of marketing procurement leaders described themselves as tactical users or beginners with AI, and 4 percent as advanced. 20 percent had started to change how they pay agencies and 61 percent planned to, with output-based pay discussed but "no clear trend" yet.</blockquote>
+  <p class="source">Source: global advertiser trade body benchmark survey of marketing procurement leaders, September 2025, 54 respondents at member companies spending 97 billion dollars on marketing.</p>
+
+  <p>The stakes are not small.</p>
+
+  <blockquote class="evidence">Production accounted for an average of 19 percent of total marketing budgets, against 24 percent before the pandemic.</blockquote>
+  <p class="source">Source: global advertiser trade body content production research, March 2025, a survey of 50 global brands across more than ten sectors answered mainly by senior marketing procurement leads.</p>
+
+  <h2>What goes in an RFP for AI content production?</h2>
+
+  <p>The sections below turn the questions a buyer would ask in a meeting into things a supplier has to answer in writing. The conversation stage is covered in the <a href="/resources/insights/questions-to-ask-ai-production-partner">twelve questions to ask an AI production partner article</a>, so this page does not repeat it.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">RFP section</th>
+          <th scope="col">What to ask for</th>
+          <th scope="col">Why it is there</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Background and objectives</th>
+          <td>Business goal, channels, markets, dates</td>
+          <td>Bidders price the job, not a guess at it</td>
+        </tr>
+        <tr>
+          <th scope="row">Scope in units</th>
+          <td>Masters, assets, variants and adaptations, with volumes</td>
+          <td>The statement of work units below make bids comparable</td>
+        </tr>
+        <tr>
+          <th scope="row">Deliverable specifications</th>
+          <td>Formats, dimensions, durations, languages</td>
+          <td>Acceptance needs something to accept against</td>
+        </tr>
+        <tr>
+          <th scope="row">Rights</th>
+          <td>Ownership, term, territory, media, talent</td>
+          <td>Usage is often priced separately, or missed</td>
+        </tr>
+        <tr>
+          <th scope="row">AI use and tools</th>
+          <td>Where AI is used, due diligence on tools, human oversight</td>
+          <td>Transparency between buyer and supplier</td>
+        </tr>
+        <tr>
+          <th scope="row">Models and training data</th>
+          <td>Who owns trained models, what trains them, what never does</td>
+          <td>The contract, not copyright, settles it</td>
+        </tr>
+        <tr>
+          <th scope="row">Data security</th>
+          <td>Standards held, by designation, and data handling</td>
+          <td>Evidence of a process, not proof of compliance</td>
+        </tr>
+        <tr>
+          <th scope="row">Labeling and disclosure</th>
+          <td>How labels are applied per market</td>
+          <td>The allocation of duties is not settled by regulators</td>
+        </tr>
+        <tr>
+          <th scope="row">Commercial model</th>
+          <td>An all-in cost breakdown, in-house bidding disclosure</td>
+          <td>Hidden lines surface after award</td>
+        </tr>
+        <tr>
+          <th scope="row">Evaluation</th>
+          <td>Criteria and weights, published up front</td>
+          <td>Required in public procurement, good practice anywhere</td>
+        </tr>
+        <tr>
+          <th scope="row">Process</th>
+          <td>Shortlist size, timetable, NDA, heads of terms</td>
+          <td>Protects both sides' time and ideas</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Trade body guidance on agency selection backs the process rows.</p>
+
+  <blockquote class="evidence">Buyers are advised to share all judging criteria with the agencies, including any relative weighting across strategy, creativity, culture and chemistry, and commercials, and to build an objective evaluation system on the scoring criteria set at the start.</blockquote>
+  <p class="source">Source: UK advertiser and agency trade bodies' joint best-practice guide to agency search and selection, 2019 edition; guidance written by the two bodies, not a survey.</p>
+
+  <blockquote class="evidence">The same guide calls an RFI to more than 10 agencies usually very wasteful, caps extended credentials at 6 agencies and the pitch list at 3, or 4 with the incumbent, and sets four weeks as the minimum to prepare a full creative pitch.</blockquote>
+  <p class="source">Source: UK advertiser and agency trade bodies' joint best-practice guide to agency search and selection, 2019 edition; recommended practice, not a measured norm.</p>
+
+  <blockquote class="evidence">Budget, basic remuneration and IP ownership belong in a heads of terms agreement settled before the final pitch, a mutual non-disclosure agreement comes before any confidential material is shared, and the ideas of unsuccessful agencies remain theirs.</blockquote>
+  <p class="source">Source: UK advertiser and agency trade bodies' joint best-practice guide to agency search and selection, 2019 edition; recommended practice written by the two bodies.</p>
+
+  <p>The AI use row has its own published principles.</p>
+
+  <blockquote class="evidence">Two UK trade bodies published twelve principles for generative AI in advertising. Three of them bear directly on a contract: "Advertisers and agencies should perform appropriate due diligence on the AI tools they work with," "should ensure appropriate human oversight and accountability in their use of AI," and "should be transparent with each other about their use of AI."</blockquote>
+  <p class="source">Source: joint industry principles for the use of generative AI in advertising, UK advertiser and agency trade bodies, November 2023; published principles, quoted verbatim.</p>
+
+  <p>And the commercial row exists because production costs have hidden in plain sight before.</p>
+
+  <blockquote class="evidence">Fewer than half of the advertisers surveyed required their agency to disclose whether a production job was being bid to an in-house or affiliated production company.</blockquote>
+  <p class="source">Source: US advertiser trade body production transparency study, August 2017, built on a task force of 30 member executives and 12 subject-matter organizations plus a supporting member survey whose respondent count was not published.</p>
+
+  <h2>What units should an AI production statement of work use?</h2>
+
+  <p>Results, not hours. That is the federal rule, and it suits generated work better than most.</p>
+
+  <blockquote class="evidence">Federal buyers are told to describe the work "in terms of the required results rather than either 'how' the work is to be accomplished or the number of hours," and to judge performance against measurable standards.</blockquote>
+  <p class="source">Source: Federal Acquisition Regulation, section 37.602, as in effect 13 March 2026; the rule on performance work statements, read at source.</p>
+
+  <p>The hard part is saying where a variant ends and a new asset begins. The one published line on that comes from a union agreement for filmed commercials.</p>
+
+  <blockquote class="evidence">Under the 2025 US commercials agreement, shorter, longer and same-length versions cut from the same production stay one commercial. An edit that changes the concept, changes the message, adds a new on-camera principal or adds a product not allowed by the rules creates a new commercial.</blockquote>
+  <p class="source">Source: 2025 commercials agreement between the performers' union and the advertiser and agency bargaining body, made 8 May 2025, Section 37; a collective agreement, read in full.</p>
+
+  <blockquote class="evidence">The same section prices the versions: the first and second carry no extra pay, the third one session fee, and the fourth and every one after it 30 percent of a session fee, per performer appearing.</blockquote>
+  <p class="source">Source: 2025 commercials agreement between the performers' union and the advertiser and agency bargaining body, made 8 May 2025, Section 37.B; a collective agreement, read in full.</p>
+
+  <p>No trade body or standards body publishes definitions for the other units. The definitions below are drafted as production practice, so the statement of work can adopt or change them. They borrow the union's line between a version and a new piece.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Unit</th>
+          <th scope="col">Definition to write into the statement of work</th>
+          <th scope="col">Why it matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Master</th>
+          <td>The originated asset approved against the brief, from which variants derive</td>
+          <td>Prices origination apart from multiplication</td>
+        </tr>
+        <tr>
+          <th scope="row">Asset</th>
+          <td>One finished file at one specification: format, dimensions, duration, language</td>
+          <td>The countable deliverable</td>
+        </tr>
+        <tr>
+          <th scope="row">Variant</th>
+          <td>A change to an approved master that keeps its concept and message: resize, crop, cut-down, copy swap</td>
+          <td>Cheap per unit, so it needs a boundary</td>
+        </tr>
+        <tr>
+          <th scope="row">Adaptation</th>
+          <td>A variant for another market that changes language, legal lines, packshot or cast, but not concept or message</td>
+          <td>A changed concept or message makes it a new master</td>
+        </tr>
+        <tr>
+          <th scope="row">Revision round</th>
+          <td>One consolidated set of written feedback from the named approver, answered by one new delivery</td>
+          <td>Stops scattered comments becoming unlimited rounds</td>
+        </tr>
+        <tr>
+          <th scope="row">Change request</th>
+          <td>Any change to the approved brief, specification or scope after sign-off</td>
+          <td>Kept outside revision rounds and priced on its own</td>
+        </tr>
+        <tr>
+          <th scope="row">Usable second</th>
+          <td>A second of footage accepted at final review into a delivered cut</td>
+          <td>Buys what ships, not what was attempted</td>
+        </tr>
+        <tr>
+          <th scope="row">Acceptance</th>
+          <td>Written sign-off against the specification, inside a stated review window</td>
+          <td>Triggers payment and rights transfer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The usable second is there for a reason.</p>
+
+  <blockquote class="evidence">Published list prices for generated video run roughly $0.05 to $0.60 a second by model tier and resolution, and neither price surface read says whether a rejected or unusable generation is billed: both bill the attempt.</blockquote>
+  <p class="source">Source: published generation price surfaces in this category, read directly 10 September 2026, quoted per second of generated video, no vendor named.</p>
+
+  <p>If the tools bill every attempt, a statement of work that buys attempts inherits the waste. Buy accepted seconds, and let the supplier carry the rest.</p>
+
+  <p>How many revision rounds to include is the buyer's call. No method-stated norm exists to copy.</p>
+
+  <h2>How should procurement score AI production vendors?</h2>
+
+  <p>Publish the weights before the bids, say how price relates to everything else, and be careful with formulas that score price against the cheapest bid. Two public procurement systems agree on the first two points.</p>
+
+  <blockquote class="evidence">A US federal solicitation must state every factor that will affect the award and its relative importance, and must say whether all non-price factors combined are significantly more important than, approximately equal to, or significantly less important than price.</blockquote>
+  <p class="source">Source: Federal Acquisition Regulation, section 15.304(d) and (e), as in effect 13 March 2026, read on the regulation's official site; a binding rule for US federal buyers, not a survey.</p>
+
+  <blockquote class="evidence">A tradeoff process lets a buyer award to other than the lowest priced bidder, provided the benefits of the higher priced proposal merit the additional cost and the reasoning is documented in the file.</blockquote>
+  <p class="source">Source: Federal Acquisition Regulation, section 15.101-1, as in effect 13 March 2026; a binding rule for US federal buyers, read at source.</p>
+
+  <blockquote class="evidence">Where a tender has more than one award criterion, the buyer must set out the relative importance of all of them, by weighting, ranking or another description, and "percentage figures could be applied to each criterion." The guidance says none of these methods ranks above the others.</blockquote>
+  <p class="source">Source: UK Cabinet Office guidance on assessing competitive tenders under the Procurement Act 2023, published 2024; government guidance on the statute, read in full from the published document.</p>
+
+  <blockquote class="evidence">Tenders do not have to go to the lowest price, and price does not have to take precedence over other factors. Awarding on price alone is described as "unlikely to be suitable for most contracts."</blockquote>
+  <p class="source">Source: UK Cabinet Office guidance on assessing competitive tenders, 2024; government guidance on the Procurement Act 2023, read in full.</p>
+
+  <blockquote class="evidence">Buyers are told to scenario-test their weightings and to "be particularly aware of the potential negative impacts on value for money of the use of relative scoring mechanisms," where a bidder's price score is derived from the lowest priced tender.</blockquote>
+  <p class="source">Source: UK Cabinet Office guidance on assessing competitive tenders, 2024; government guidance on the Procurement Act 2023, read in full.</p>
+
+  <blockquote class="evidence">A weighting can be published as a range and refined within it. The guidance's own example sets one award criterion at 10 to 30 percent in the tender documents.</blockquote>
+  <p class="source">Source: UK Cabinet Office guidance on assessing competitive tenders, 2024; an illustrative example inside government guidance, not a recommended weight.</p>
+
+  <p>What no public body publishes is a price-to-quality split for creative services. The weight column below is therefore yours to set, before the RFP goes out.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Criterion</th>
+          <th scope="col">Your weight</th>
+          <th scope="col">What scores high</th>
+          <th scope="col">What scores low</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Creative quality against the brief</th>
+          <td>Set before bids</td>
+          <td>Work that answers this brief, from the team that would do it</td>
+          <td>A reel of other clients' work</td>
+        </tr>
+        <tr>
+          <th scope="row">Capability to originate and capture</th>
+          <td>Set before bids</td>
+          <td>Named capture capacity in the markets you need</td>
+          <td>Generation only, capture subcontracted and unnamed</td>
+        </tr>
+        <tr>
+          <th scope="row">Rights, models and training data</th>
+          <td>Set before bids</td>
+          <td>Written positions on ownership, training and portability</td>
+          <td>"Standard terms" with no specifics</td>
+        </tr>
+        <tr>
+          <th scope="row">AI governance and labeling</th>
+          <td>Set before bids</td>
+          <td>Tool due diligence, human review, a labeling method per market</td>
+          <td>No record of which tools touched which asset</td>
+        </tr>
+        <tr>
+          <th scope="row">Data security</th>
+          <td>Set before bids</td>
+          <td>Standards held by designation, with certificates</td>
+          <td>Self-declared security</td>
+        </tr>
+        <tr>
+          <th scope="row">Delivery and acceptance</th>
+          <td>Set before bids</td>
+          <td>Units, review windows and change control in the proposal</td>
+          <td>Timelines with no acceptance step</td>
+        </tr>
+        <tr>
+          <th scope="row">Commercial terms</th>
+          <td>Set before bids</td>
+          <td>All-in pricing in your units, bidding disclosure</td>
+          <td>Day rates with usage priced later</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Which contract clauses matter for AI-generated content?</h2>
+
+  <p>Ownership of the output, ownership of any trained model, what may train on your material, third-party infringement, labeling, data security and exit. Copyright does not settle the first two on its own.</p>
+
+  <blockquote class="evidence">The Copyright Office concluded that protection does not extend to the mere provision of prompts, that an output is protected where a human author has determined sufficient expressive elements, and that using AI to assist does not bar protection.</blockquote>
+  <p class="source">Source: US Copyright Office, announcement of Part 2 of its Copyright and Artificial Intelligence report, 29 January 2025; the Office's own announcement, re-read September 2026.</p>
+
+  <p>Government AI procurement instruments are the clearest published models for the rest.</p>
+
+  <blockquote class="evidence">A US government AI procurement memo tells federal agencies to write contract terms that "clearly delineate the respective ownership and IP rights of the government and the contractor," with extra care "where agency information is used to train, fine tune, and develop the AI system."</blockquote>
+  <p class="source">Source: US Office of Management and Budget memorandum M-25-22, 3 April 2025, Section 3(e); binding on US federal agencies, read in full text.</p>
+
+  <blockquote class="evidence">The same memo requires contracts that "permanently prohibit the use of non-public inputted agency data and outputted results to further train publicly or commercially available AI algorithms," absent explicit agency consent.</blockquote>
+  <p class="source">Source: US Office of Management and Budget memorandum M-25-22, 3 April 2025, Section 3(e)(iv); binding on US federal agencies, read in full text.</p>
+
+  <blockquote class="evidence">Its lock-in protections include knowledge transfer, data and model portability, "rights to code and models produced in performance of a contract," and transparency in licensing and pricing.</blockquote>
+  <p class="source">Source: US Office of Management and Budget memorandum M-25-22, 3 April 2025, contract terms section; binding on US federal agencies, read in full text.</p>
+
+  <blockquote class="evidence">The EU's model contractual clauses for buying AI, updated in March 2025 in a full version, a light version and a commentary, deliberately leave out intellectual property, acceptance, payment, delivery deadlines, applicable law and liability. They are built to be annexed to a contract that already covers those terms.</blockquote>
+  <p class="source">Source: European Commission model contractual clauses for AI procurement and commentary, March 2025; model clauses for public buyers, commentary read in full.</p>
+
+  <blockquote class="evidence">The commentary is blunt about training data: "As a rule, it will not be possible for public organisations to obtain the rights to the Data Sets of Suppliers and third parties used in the development of a generative AI system." What the clauses offer instead is a supplier guarantee that using those data sets will not infringe third parties' rights.</blockquote>
+  <p class="source">Source: European Commission commentary on the model contractual clauses for AI procurement, 2025, Annex B and Article 18; model clauses for public buyers, read in full.</p>
+
+  <p>The EU clauses leave ownership and liability to the main contract, which is exactly why a buyer needs a checklist for the main contract.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Clause</th>
+          <th scope="col">What it should say</th>
+          <th scope="col">What it rests on</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Output ownership</th>
+          <td>Assignment of rights in delivered assets, with the human-authored elements identified</td>
+          <td>Copyright Office position on prompts and human authorship</td>
+        </tr>
+        <tr>
+          <th scope="row">Trained models</th>
+          <td>Who owns any model or adapter trained for the engagement, and whether it can be handed over</td>
+          <td>Federal memo on rights to models and portability</td>
+        </tr>
+        <tr>
+          <th scope="row">Training on your material</th>
+          <td>No training of general models on your inputs or outputs without written consent</td>
+          <td>Federal memo training prohibition</td>
+        </tr>
+        <tr>
+          <th scope="row">Third-party rights</th>
+          <td>A supplier guarantee and indemnity against infringement from the data sets it used</td>
+          <td>EU model clauses, Article 18</td>
+        </tr>
+        <tr>
+          <th scope="row">Talent and versions</th>
+          <td>Consent for likeness and voice, and where a version becomes a new asset</td>
+          <td>2025 commercials agreement, Section 37</td>
+        </tr>
+        <tr>
+          <th scope="row">Labeling and disclosure</th>
+          <td>Which party applies labels in each market, agreed in writing</td>
+          <td>Industry framework; allocation not settled by regulators</td>
+        </tr>
+        <tr>
+          <th scope="row">AI use and oversight</th>
+          <td>Disclosure of tools used, human review before delivery</td>
+          <td>UK industry principles, 2023</td>
+        </tr>
+        <tr>
+          <th scope="row">Data security</th>
+          <td>Standards held, by designation, and data retention limits</td>
+          <td>ISO/IEC 27001 and ISO/IEC 42001</td>
+        </tr>
+        <tr>
+          <th scope="row">Bidding transparency</th>
+          <td>Disclosure of in-house or affiliated production bids</td>
+          <td>US trade body transparency study</td>
+        </tr>
+        <tr>
+          <th scope="row">Exit</th>
+          <td>Handover of files, source files, provenance records and models, then deletion</td>
+          <td>Federal memo on knowledge transfer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Labeling deserves its own line, because no regulator has settled who carries it.</p>
+
+  <blockquote class="evidence">A US advertising trade body's disclosure framework calls for "targeted disclosure rather than universal labeling, particularly when AI use materially affects authenticity, identity or representation," and exempts routine post-production and clearly fantastical imagery. It does not say which party in the supply chain carries the label.</blockquote>
+  <p class="source">Source: US digital advertising trade body AI Transparency and Disclosure Framework, version 2, 18 August 2026; an industry framework, read at the body's own announcement.</p>
+
+  <p>China's labeling rules do not allocate the duty between brand, agency and tool vendor either. When no regulator has said who carries a label, the contract has to.</p>
+
+  <p>Security clauses can cite standards by designation.</p>
+
+  <blockquote class="evidence">ISO/IEC 42001, published in December 2023, is the first international management system standard for artificial intelligence, and certification against it is issued by an accredited certification body rather than self-declared.</blockquote>
+  <p class="source">Source: the standard, by designation and edition date, December 2023, confirmed against two independent standards-body records.</p>
+
+  <blockquote class="evidence">ISO/IEC 27001:2022 is the current edition of the information security management system standard, and certified organizations had until 31 October 2025 to move to it.</blockquote>
+  <p class="source">Source: the standard, by designation, confirmed on the UK national standards body's page, read September 2026; the ISO catalog page refused automated access.</p>
+
+  <p>A certificate is evidence that a management process exists. It is not evidence of legal compliance, and the contract should not treat it as one.</p>
+
+  <h2>What does AI content production cost?</h2>
+
+  <p>The published figures below are category bands, attributed to the category and the date. They set expectations for a budget line. They are not quotes, and no hubStudio figure appears among them.</p>
+
+  <blockquote class="evidence">Managed design subscriptions in this category publish monthly floors between roughly $6,000 and $15,000, with dedicated tiers from roughly $30,000 a month on a twelve-month commitment.</blockquote>
+  <p class="source">Source: category rate cards collected September 2026, published pricing pages read directly, no vendor named.</p>
+
+  <blockquote class="evidence">Unlimited-request design subscriptions in this category publish tiers between roughly $700 and $4,500 a month, billed month to month.</blockquote>
+  <p class="source">Source: category rate cards collected September 2026, published pricing pages read directly, no vendor named.</p>
+
+  <blockquote class="evidence">At the managed end of the category, the monthly fee buys a block of creative hours, published at 120 and 180 hours a month on one card read in September 2026, with unused hours expiring. Divided out, that prices access at almost exactly $50 a creative hour.</blockquote>
+  <p class="source">Source: arithmetic on one published rate card in this category, collected September 2026, no vendor named.</p>
+
+  <blockquote class="evidence">Published seat pricing in this software category runs from roughly $12 to roughly $400 per user per month, most of it billed annually, and every pricing page read carried an enterprise tier with no published price at all.</blockquote>
+  <p class="source">Source: published pricing pages in this software category, collected 9 September 2026, four pages read in full, no vendor named and no vendor contacted.</p>
+
+  <p>That last band is creative automation software, the fourth row of the buying model table. The next two are capture and adaptation.</p>
+
+  <blockquote class="evidence">Standard ecommerce product capture is published at $39 to $50 an image on the cards read, with retouching bands of roughly $0.25 to $1.20 an image by operation on separate editing cards.</blockquote>
+  <p class="source">Source: published product photography and image editing pricing pages in this category, read directly September 2026, prices quoted against the unit each card states, no vendor named.</p>
+
+  <blockquote class="evidence">One published adaptation rate card starts at 1,350 euros excluding VAT for a 15-second commercial adaptation, defined as a new voice-over, new titles, a new packshot, an audio mix and mastering. No per-market average adaptation cost was found in any source checked.</blockquote>
+  <p class="source">Source: a published commercial adaptation rate card, read 10 September 2026, one card, one duration and one inclusion list; the absence from a search result review of six queries the same day.</p>
+
+  <p>Bands like these compare buying models. A real number for a real brief comes from bids priced in the units above. The <a href="/resources/production-cost">production cost estimator</a> returns market ranges for a scoped brief, and the <a href="/pricing">pricing page</a> explains how a binding proposal is built.</p>
+
+  <p>The <a href="/resources/insights/production-roster-review-questions">production roster review article</a> covers the decision that often comes before an RFP, whether to consolidate suppliers at all, and the <a href="/solutions/ai-production/content">AI content production page</a> describes the kind of work these documents buy.</p>
+
+  <p>Reviewed September 2026. This page describes procurement and production practice, not legal advice.</p>
+
+  <h2>Questions procurement asks about AI content production</h2>
+
+  <h3>How do I write an RFP for AI content production?</h3>
+
+  <p>Scope it in units, not hours: masters, assets, variants and adaptations, with volumes and specifications. Add sections on rights, AI tool use and oversight, trained models and training data, data security, labeling per market and an all-in cost breakdown. Publish the evaluation criteria and their weights in the RFP, before any bid arrives.</p>
+
+  <h3>What units should an AI production statement of work use?</h3>
+
+  <p>Units that describe accepted results: master, asset, variant, adaptation, revision round, change request, usable second and acceptance. No trade body publishes these definitions, so write them into the statement of work. The 2025 US commercials agreement offers one published boundary: a changed concept or message makes a new commercial.</p>
+
+  <h3>How should procurement score AI production vendors?</h3>
+
+  <p>State every criterion and its relative importance before bids arrive, and say how price relates to the rest. US federal rules and UK government guidance both require that. Neither publishes a price-to-quality split for creative services, so set your own weights, test them, and be wary of scoring price against the lowest bid.</p>
+
+  <h3>Which contract clauses matter for AI-generated content?</h3>
+
+  <p>Output ownership, ownership and handover of any trained model, a ban on training general models with your material without consent, a third-party infringement guarantee, talent consent, labeling by market, data security by standard, and exit terms covering files, provenance and deletion. This is procurement practice, not legal advice.</p>
+
+  <h3>What does AI content production cost?</h3>
+
+  <p>Published category bands in September 2026: managed design subscriptions from roughly $6,000 to $15,000 a month, unlimited-request tiers from roughly $700 to $4,500, and standard ecommerce capture at $39 to $50 an image. Generated video lists at roughly $0.05 to $0.60 a second, billed per attempt. Real numbers come from bids in your units.</p>
+
+  <h3>Who owns models trained during an engagement?</h3>
+
+  <p>Whoever the contract says. No instrument read assigns a trained model by default, and copyright does not settle it for prompt-driven output. US federal buyers are told to secure rights to models produced in performance of a contract, with portability. A private buyer can write the same terms into its own agreement.</p>
+</ArticleLayout>

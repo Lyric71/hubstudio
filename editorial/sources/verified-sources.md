@@ -931,3 +931,106 @@ and it is derived arithmetic, not a survey figure.
 | Douyin Shop product listing image sizes (720x1280 main image) and cross-platform text-area rules | A Chinese search summary on the brief 10 query | Not researched in any cluster file; the brief bars any matrix cell not already on a spec page | 2026-09-10 |
 | "40 variants per SKU", "4,200 SKUs into 60,000 variants" | A blog selling dynamic creative guidance | No method, no China platform | 2026-09-10 |
 | RedNote center square "survives an interface overlay" without the bottom caveat | Brief 07 cleared quote 6 | On brief 07's own figures, the lower 15 to 20 percent overlay covers the bottom 36 to 108 px of the center square; use the region above y 1152 | 2026-09-10 |
+
+
+## Added 2026-09-10 (ledger rows from brief 39, turnaround-days-not-weeks)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+For the orchestrator. Formats match the ledger's tables. New section heading:
+
+### Production turnaround stages (added 2026-09-10, brief 39)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| 69 percent of marketers and 73 percent of agency respondents agree rebriefs happen too often; 78 percent of marketers against 5 percent of creative agency respondents on clear strategic direction; 83 against 7 on clear language | "global briefing survey released by the UK advertising agency trade body, 13 October 2021, more than 1,700 marketers and agency staff in over 70 countries, self-reported agreement" | ipa.co.uk/news/betterbriefs; decisionmarketing.co.uk/news/messy-briefs-putting-the-skids-on-a-third-of-ad-budgets. Fielding window and per-group counts not published. Mi3, LBB and Marketing Mag returned 403, Campaign Asia a paywall | 2021-10-13 | primary as to the release, single study, perception not time | 2026-09-10 | | 39 |
+| Published image model documentation: "Complex prompts may take up to 2 minutes to process" | "published model documentation in this category, read 10 September 2026, no vendor named", a ceiling not an average | developers.openai.com/api/docs/guides/image-generation, undated | read 2026-09-10 | single-source, primary for the statement | 2026-09-10 | | 39 |
+| Two published video model documentation pages state no generation time | "published model documentation in this category, read 10 September 2026", stated as an absence on those pages | ai.google.dev/gemini-api/docs/video (last updated 2026-06-30); docs.cloud.google.com/vertex-ai/generative-ai/docs/models/veo/3-1-generate | 2026-09-10 | primary, absence on two pages | 2026-09-10 | | 39 |
+| One Chinese ecommerce photography studio's process: 5 to 7 working days for white-background and scene images, 2 to 4 weeks video, two free revisions; stated total runs shoot 1 to 2, selection 1, retouch 2 to 3, delivery 1, with contract 1 day and shipping 1 to 3 days before it | "a Chinese ecommerce photography studio's published eight-step process page, dated 20 July 2026, one studio's own terms; the clock-start reading is arithmetic" | airmie.cn/News/fenxiang/guide-process-2026.html | 2026-07-20 | single-source, seller terms; clock start derived | 2026-09-10 | | 39 |
+| One Chinese video production schedule: about 20 to 24 working days across six stages, post-production stated to exclude the client's review and revisions | "a Chinese video production company's published schedule, dated 7 August 2019, one company's terms, seven years old; total is arithmetic" | sharkvision.com.cn/article/1061.html | 2019-08-07 | single-source, stale; total derived | 2026-09-10 | | 39 |
+| Search-results audit: 35 results across four English buyer phrasings for content production turnaround; 17 production or editing services, 10 software or tool vendors, 6 practitioners or training, 1 content farm, 1 off-intent; 0 trade body, statistical or peer-reviewed; 0 method-stated timing figures. Chinese pass: 9 results, 0 method-stated | "search-results audit run 10 September 2026 across four English buyer phrasings, publisher type recorded for every result, no domain named" | R2 in research/turnaround-days-not-weeks.md | 2026-09-10 | primary observation, re-countable | 2026-09-10 | | 39 |
+| No method-stated benchmark for approval-cycle length or review-round count found | "evidence searches run 10 September 2026 in English and Chinese; a scoped observation, not proof that none exists" | R2 evidence searches; search budget exhausted before trade body bid guidance and operations research could be searched | 2026-09-10 | absence, scoped, search incomplete | 2026-09-10 | | 39 |
+| Review time added = rounds x (wait for consolidated feedback + revision). At three rounds and one day of revision: 6, 12 and 18 working days for 1, 3 and 5 day feedback; 24 at four weekly rounds; 16.5 with revision halved | "arithmetic with illustrative inputs, not measurements" | Derived | 2026-09-10 | derived | 2026-09-10 | | 39 |
+| Existing row "65 percent of in-house teams experimenting with AI ... 40 percent report faster content production": re-read 2026-09-10, respondent count still not stated on the page | unchanged | wfanet.org/knowledge/item/2025/11/04/how-ai-is-changing-in-house-agencies | 2025-11-04 | unchanged; add check 2 2026-09-10 and the note "respondent count not published" | (existing) | 2026-09-10 | 18, 39 |
+
+For the "hubStudio delivery figures" table (format: Figure, Method still needed,
+Used in):
+
+| Figure | Method still needed | Used in |
+|---|---|---|
+| Project first review inside two weeks of kickoff, full delivery inside four weeks maximum (pricing.astro:51, 56, 156; index.astro:157) | Policy. Conflicts with ecommerce.astro:171 (four to six weeks) and with training in projects (pricing.astro:122). Site owner to reconcile | 39 |
+| Three rounds of modification on finalized work, more on retainer (pricing.astro:115-117, 157; llm-info.astro:233; calculator.astro:126). Two rounds on the ad creative concept quote (ad-creative.astro:233) | Policy. Page variance noted | 39, 41 |
+| Model training three to six weeks (ai-excellence.astro:116, 232; llm-info.astro:78) against two to three weeks (short-video.astro:185) | Observed range and engagement count; site owner to reconcile the two lines | 29, 39 |
+| Video production: 24 to 72 hours brief to first cut on simple social and AIGC spots, one to two weeks studio shoots, two to four weeks location (video-production.astro:202) | Policy ranges, no engagement sample | 39 |
+| Ecommerce: about two weeks single-SKU pack, three to four weeks for 20 to 50 SKUs, four to six weeks multi-channel (ecommerce.astro:171) | Policy ranges, no engagement sample | 39 |
+| iFlytek Anypin: a two-day live shoot inside the hybrid production (case-studies.ts:99) | Public case detail | 39 |
+
+Proposed replacement for the line under "Case study figures" (adds exact labels
+and the counterfactual block): "1834 Gin '3 weeks, Zero assets to omnichannel
+launch'; L'infuseur '2 weeks, Full seasonal library delivered'; Mexicash '5 days,
+Concept to finished campaign'; premium SUV '3 weeks' (the 'versus six months
+traditionally' comparator does not run); HiSense '8 weeks, Platform live and
+ready for retail season'. Word-only labels (Days, Hours, Months) are not
+durations and do not run."
+
+For the do-not-publish log:
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Artwork approval averages: 24 days, 6.2 rounds, 2.3 days per extra round, 6.8 stakeholders, email raising revision cycles 52 percent | An approval benchmark titled 2026, brief 39 | No sample of any kind, no publication date, published by a seller of approval workflow software | 2026-09-10 |
+| 33 percent of marketing budget wasted through poor briefs | 2021 briefing survey release, brief 39 | Respondents' self-estimate, no absolute, publisher sells briefing training | 2026-09-10 |
+| Seller stage timelines: "stages two days, handoffs weeks"; AI video 1 to 3 weeks with 2 to 7 days of review; photography 10 to 15 business days typical against 5 | Three seller pages read in full, brief 39 | No method on any, each sells the remedy | 2026-09-10 |
+| Photoshoot and edit durations: 10 to 20 items in 1 to 3 hours; 24 to 72 hour edited delivery; 24 to 48 hours as an agency video standard; articles in one to two weeks with three to four rounds | Search summaries, brief 39 | Practitioner and seller figures, no sample | 2026-09-10 |
+| Any video generation latency range | Brief 39 | Not stated on either model documentation page read | 2026-09-10 |
+| hubStudio "Three days is the floor on most volume work", "Most projects close inside two", "Days, from brief to delivery, not weeks" | hubStudio site copy, brief 39 | Frequency or positioning claims with no count; read as turnaround promises | 2026-09-10 |
+| Case counterfactuals: premium SUV "six months traditionally"; iFlytek "three to four months" and "three to four times longer" | case-studies.ts, brief 39 | Industry timing claims with no method; the iFlytek pair disagree | 2026-09-10 |
+| "Industry benchmark for agency brand strategy is twelve to sixteen weeks" | marketing-strategy.astro:179, brief 39 | Unsourced industry figure in site copy. Site backlog item | 2026-09-10 |
+
+
+## Added 2026-09-10 (ledger rows from brief 37, procurement-guide-buying-ai-content-production)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+Section header for the ledger: **Procurement paperwork: weighting rules, AI
+contract terms, version boundaries (added 2026-09-10, brief 37)**
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| US federal solicitations must state all award factors and their relative importance, and whether non-cost factors combined are significantly more important than, approximately equal to, or significantly less important than price; price evaluated and quality addressed in every source selection | "Federal Acquisition Regulation, section 15.304, as in effect 13 March 2026" | acquisition.gov/far/15.304 | effective 2026-03-13 | primary | 2026-09-10 | | 37 |
+| Tradeoff process permits award to other than the lowest priced offeror where benefits merit the additional cost, rationale documented | "Federal Acquisition Regulation, section 15.101-1, as in effect 13 March 2026" | acquisition.gov/far/15.101-1 | effective 2026-03-13 | primary | 2026-09-10 | | 37 |
+| Describe work in terms of required results, not how or the number of hours; measurable performance standards | "Federal Acquisition Regulation, section 37.602, as in effect 13 March 2026" | acquisition.gov/far/37.602 | effective 2026-03-13 | primary | 2026-09-10 | | 37 |
+| Relative importance of all criteria must be set out by weighting, ranking or another description, percentages allowed, no hierarchy; price alone unlikely to suit most contracts; beware relative price scoring against the lowest tender; weightings may be set as a range, example 10 to 30 percent | "UK Cabinet Office guidance on assessing competitive tenders under the Procurement Act 2023, 2024" | assets.publishing.service.gov.uk/media/668279f497ea0c79abfe4dcf/Guidance-Assessing-Competitive-Tenders-FINAL.pdf | 2024 | primary, guidance not statute | 2026-09-10 | | 37 |
+| Share judging criteria and relative weighting; RFI to more than 10 agencies usually wasteful; no more than 6 extended credentials; pitch list up to 3, or 4 with incumbent; four weeks minimum for a full creative pitch; heads of terms on budget, remuneration and IP; mutual NDA; unsuccessful agencies keep their IP; avoid e-auctions | "UK advertiser and agency trade bodies' joint best-practice guide to agency search and selection, 2019 edition" | ipa.co.uk/media/7916/finding-an-agency-final.pdf; edition year from ipa.co.uk/knowledge/the-good-pitch | 2019 | primary, recommended practice | 2026-09-10 | | 37 |
+| Twelve principles for generative AI in advertising, including tool due diligence, human oversight and accountability, and advertiser-agency transparency on AI use | "joint industry principles, UK advertiser and agency trade bodies, November 2023" | ipa.co.uk/news/industry-principles-for-generative-ai | 2023-11-01 | primary | 2026-09-10 | | 37 |
+| UK creative services framework template reissued with generative AI and reconciliation clauses, replacing the 2015 revision; general terms, supplementary materials, scope of work, guidance note; members-only | "UK advertiser and agency trade bodies' own announcements, November 2025", publication facts only | ipa.co.uk/news/creative-services-framework-agreement; isba.org.uk/knowledge/2025-isbaipa-creative-services-framework-agreement-csfa | 2025-11-27 | primary for publication facts, clause content not read | 2026-09-10 | | 37 |
+| 80 percent of multinational brand owners concerned about agency GenAI use (legal 66, ethical 51, reputation 49); 36 percent introduced terms, 29 percent reviewed contracts; 55 percent plan review, 48 percent plan terms; 9 percent reviewing talent contracts, 46 percent planning | "global advertiser trade body research, September 2024, 54 respondents from 48 companies, about 102 billion dollars combined marketing spend" | wfanet.org/knowledge/item/2024/09/17/eighty-percent-of-brands-have-concerns-about-agency-use-of-genai | 2024-09-17 | primary | 2026-09-10 | | 37 |
+| 81 percent of marketing procurement leaders tactical or beginners with AI, 16 intermediate, 4 advanced; 20 percent started evolving agency remuneration, 61 percent plan to; no clear trend to output-based pay; 22 percent see clear agency AI efficiencies, 32 percent just beginning | "global advertiser trade body benchmark survey of marketing procurement leaders, September 2025, 54 respondents, 97 billion dollars marketing spend" | wfanet.org/knowledge/item/2025/09/24/marketing-procurement-s-early-ai-steps; spend confirmed at mediapost.com article 409345 | 2025-09-24 | primary, triangulated for spend | 2026-09-10 | | 37 |
+| Contract terms must clearly delineate ownership and IP rights of government and contractor, with care where agency data trains or fine-tunes the system; contracts must permanently prohibit use of non-public agency inputs and outputs to further train publicly or commercially available AI absent consent; vendor collects and retains data only when reasonably necessary; lock-in protections include knowledge transfer, data and model portability, rights to code and models produced in performance, transparency in licensing and pricing | "US Office of Management and Budget memorandum M-25-22, 3 April 2025", by section | whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf, Section 3(e) and contract terms section C | 2025-04-03 | primary | 2026-09-10 | | 37 |
+| EU model contractual clauses for AI procurement updated March 2025 (full, light, commentary); they exclude IP, acceptance, payment, deadlines, applicable law and liability; Annex B allocates data set rights; as a rule buyers cannot obtain rights to supplier data sets used to develop generative AI; supplier guarantees no third-party infringement from data sets (Art. 18, Art. 15 light) | "European Commission model contractual clauses for AI procurement and commentary, March 2025" | public-buyers-community.ec.europa.eu resource page and system/files/2025-05/Commentary.pdf | 2025-03-05 (commentary document control 2025-02-12) | primary | 2026-09-10 | | 37 |
+| 2025 US commercials agreement Section 37: versions from the same production are not new commercials; unpermitted edits (concept, message, new on-camera principal outside exceptions, product not allowed) create a new commercial; version pay nil, nil, one session fee, then 30 percent of a session fee each; alternate scenes paid one additional session fee. Multiples only, never the fee amount | "the 2025 commercials agreement between the performers' union and the advertiser and agency bargaining body, Section 37" | jointpolicycommittee.org/wp-content/uploads/2025/05/2025-Commercials-Contract-MOA.pdf | 2025-05-08 | primary. Upgrades the April 2025 union row in "Category market ranges", which was triangulated through law firm analyses | 2026-09-10 | | 37 |
+| AI Transparency and Disclosure Framework version 2: targeted disclosure where AI materially affects authenticity, identity or representation; routine post-production and clearly fantastical imagery exempt; US icon or text label; no inter-party contract guidance | "US digital advertising trade body framework, version 2, 18 August 2026" | iab.com/news/updates-industry-framework-ai-transparency-disclosure-advertising/ | 2026-08-18 | primary | 2026-09-10 | | 37 |
+| ISO/IEC 27001:2022 is the current ISMS edition; transition deadline 31 October 2025 | "the standard, by designation", never with a month or day | bsigroup.com ISO/IEC 27001 page; iso.org, scc-ccn.ca and webstore.ansi.org returned 403 | read 2026-09-10 | single-source standards-body surface | 2026-09-10 | | 37 |
+| Search-results audit: five buyer phrasings for procuring AI content production returned 43 results, 37 from sellers of software, tools or services, 4 template or aggregator sites, 1 law firm, 1 content farm, 0 from a government, trade body or standards body; 0 addressed buying creative production with AI in scope | "search-results audit run 10 September 2026 across five buyer phrasings, publisher type recorded for every result, classified from result extracts, no domain named" | R2 in research/procurement-guide-buying-ai-content-production.md | 2026-09-10 | primary observation, re-countable | 2026-09-10 | | 37 |
+
+**Check 2 dates for existing rows (for the orchestrator to enter, not new rows):**
+managed subscription floors row and unlimited-request tiers row, both re-read
+2026-09-10 on all four cards with every band figure unchanged (the top managed
+card now also shows the $1,000 software fee on the dedicated tier); the global
+advertiser trade body 19 percent production row, re-read 2026-09-10; the US
+Copyright Office Part 2 row, re-read 2026-09-10.
+
+### Do-not-publish rows to append
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any price-to-quality percentage split as a norm for creative or content services, including cost at 10 percent, 15 to 25 percent, "above 30 percent causes 40 percent more failures", creative at 55 to 60 percent | Seller and aggregator pages, brief 37 SERP | No source, no sample; weights set by sellers. No public body read publishes one | 2026-09-10 |
+| "Formal scoring cuts failed implementations by more than 60 percent"; an analyst figure of 12 to 15 percent procurement savings; "30 percent formal, 70 percent informal" selection | Consultancy blogs, brief 37 | Relayed, unnamed or unread analyst sources, no method | 2026-09-10 |
+| A 10 percent minimum social value weighting in UK central government tenders | Vendor explainers, brief 37 | Not found on the three government pages read for the policy note | 2026-09-10 |
+| Statutory text of UK Procurement Act 2023 s23 and EU Directive 2014/24/EU Article 67 | legislation.gov.uk (403), EUR-Lex (empty body three times), mirrors (403), brief 37 | Not read at source. Cite UK Cabinet Office guidance and the US FAR instead | 2026-09-10 |
+| Australian government AI model clauses version 2.0, any clause content | Agency and solicitor pages timed out, law firm mirror 403, brief 37 | Not read | 2026-09-10 |
+| Contents of the 2025 UK creative services framework GenAI clauses and the 2024 UK media agency GenAI contract terms | Trade body and legal press announcements, brief 37 | Members-only clause text, not read | 2026-09-10 |
+| EU AI model clauses usable by private organisations | Law firm summaries, brief 37 | Not stated in the commentary read | 2026-09-10 |
+| ISO/IEC 27001:2022 published 25 October 2022, third edition, 2024 amendment | Seller pages and search extracts, brief 37 | ISO and two national standards surfaces 403; designation only | 2026-09-10 |
+| Only 25 percent of pitch-winning ideas ever run | Pitch consultancy statistic inside a 2019 trade body guide, brief 37 | No method, seller of pitch consulting | 2026-09-10 |
+| January 2026 procurement AI survey wave figures (34, 57 percent, 7 in 10, 3 in 4, nearly 70 percent) | Global advertiser trade body article 2026-01-27, brief 37 | No sample or fielding dates on the page, member-gated | 2026-09-10 |
+| Any trade body or standards body definition of revision round, usable second, usable shot or adaptation | Searched, brief 37 | None exists in sources reached; only the union version and new-commercial rule is published | 2026-09-10 |
