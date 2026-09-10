@@ -752,3 +752,152 @@ deviation 7 in `../CLAUDE.md`. Full tallies in
 | Any CPM or CPE price for Weibo ads | English agency guides | Pricing is off the site and the figures carry no method | 2026-09-10 |
 | "Officially suggested" 1000x562 headline image | One design tool extract | "Official" with no official page | 2026-09-10 |
 | Web-era sizes (120x120 in-stream, 560x260 banner, 120px and 440px thumbnails, 2048px width) as current | 2015 post mirrored on three hosts, English roundups | Eleven years old, web-era layout | 2026-09-10 |
+
+## Offshore production operations in China: customs, data, copyright, payment, calendar (added 2026-09-10, brief 20)
+
+Full working in `research/offshore-creative-production-china.md`. **This block
+upgrades two brief 19 rows.** The Personal Information Protection Law and the
+Provisions on Promoting and Regulating Cross-border Data Flows were read on the
+regulator's own site (cac.gov.cn) on 2026-09-10, so the thresholds row in the
+"Regional comparison" block is now primary, not only triangulated. The seed row
+"Offshore creative production savings around 40 percent" stays a market claim:
+the brief 20 pass found no respondent count on any public page.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Temporary entry goods include samples (13 categories); re-export within 6 months, in original condition apart from normal wear; extension at most 3 times, each at most 6 months; guarantee required for non-carnet goods, the national trade promotion council gives the total guarantee for carnet goods | "China's customs measures on temporary entry and exit goods, Order No. 233, issued 7 December 2017, effective 1 February 2018, Articles 3, 6, 9 and 10" | gov.cn/gongbao/content/2018/content_5260801.htm | 2017-12-07 | primary. Later amending orders not checked | 2026-09-10 | | 20 |
+| China accepts inbound ATA carnets for exhibitions and fairs, professional equipment (including photography, audiovisual and broadcast equipment for filming) and commercial samples; not containers or repair parts | "China's national carnet issuing and guarantee body and a customs Q and A column in the state press, January 2023" | bjlsc.ccpitbj.org/ata/ ; paper.people.com.cn/rmrbhwb/html/2023-01/28/content_25961139.htm | 2023-01-28 | triangulated from search extracts, read one page in full at check 2 | 2026-09-10 | | 20 |
+| Advertising materials and samples of no commercial value exempt from import tariff; specified temporary goods may defer tariff if re-exported within six months; no value threshold in the statute; tariff only | "the Tariff Law, adopted 26 April 2024, in force 1 December 2024, Articles 32 and 37" | fgk.chinatax.gov.cn/zcfgk/c100009/c5234556/content.html | 2024-04-26 | primary | 2026-09-10 | | 20 |
+| No public source publishes a typical customs clearance time for inbound samples | "Chinese-language searches of the customs instruments and clearance statistics, September 2026", publish the absence | Own search review, brief 20 | 2026-09-10 | absence, documented | 2026-09-10 | | 20 |
+| PIPL in force 1 November 2021; sensitive personal information includes biometric identification and all information on children under fourteen (Art. 28); separate consent for sensitive information (Art. 29); four routes abroad (Art. 38); notice plus separate consent for provision abroad (Art. 39); prior impact assessment for sensitive information, entrusted processing and provision abroad (Art. 55) | "the Personal Information Protection Law, by article number" | cac.gov.cn/2021-08/20/c_1631050028355286.htm | 2021-08-20, in force 2021-11-01 | primary | 2026-09-10 | | 20 |
+| Cross-border data provisions, CAC Order No. 16, effective 22 March 2024: exemption for non-CIIO non-sensitive personal information on fewer than 100,000 people a year from 1 January (Art. 5); standard contract or certification at 100,000 to under 1m non-sensitive or under 10,000 sensitive (Art. 8); security assessment at 1m non-sensitive or 10,000 sensitive (Art. 7); result valid 3 years (Art. 9); exemption for personal information collected abroad, processed in China and sent back with nothing domestic added (Art. 4) | "the Cyberspace Administration of China's Provisions on Promoting and Regulating Cross-border Data Flows, Order No. 16, by article number" | cac.gov.cn/2024-03/22/c_1712776611775634.htm | 2024-03-22 | primary. Check 2 confirms Arts. 3 to 5 lift all three mechanisms | 2026-09-10 | | 19, 20 |
+| Derived: the volume exemption covers non-sensitive information only, so a talent file that counts as sensitive has no volume floor | "a reading of Articles 5 and 8 of the 2024 provisions, production practice not legal advice" | Derived from the row above | 2026-09-10 | derived | 2026-09-10 | | 20 |
+| Commissioned works: ownership by contract; if not explicit or no contract, copyright belongs to the commissioned party (Art. 19). Employment works stay with the author, employer priority use (Art. 18). Transfer of economic rights needs a written contract (Art. 27) | "the Copyright Law as amended 11 November 2020, in force 1 June 2021, by article number" | policy.mofcom.gov.cn/claw/clawContent.shtml?id=87976 | 2020-11-11 | primary | 2026-09-10 | | 20 |
+| Foreign-related contracts may choose governing law; default is the habitual residence of the party whose performance best characterizes the contract, or the closest connection | "the Law on the Application of Laws to Foreign-related Civil Relations, Article 41" | gongbao.court.gov.cn/Details/5556b6c60575c047bb77100af04a09.html plus commentary | statute date not confirmed | triangulated | 2026-09-10 | | 20 |
+| China acceded to the New York Convention by NPC Standing Committee decision of 2 December 1986, in force for China 22 April 1987, reciprocity and commercial reservations | "the Supreme People's Court notice implementing the convention" | gongbao.court.gov.cn/Details/e4defa983a153b314590d73e5a0c60.html ; cietac.org/articles/203 | 1987 | triangulated | 2026-09-10 | | 20 |
+| A single outbound payment from China above the equivalent of USD 50,000 for service trade needs a prior tax filing, with listed exceptions. Outbound only | "State Taxation Administration and SAFE Announcement 2013 No. 40, issued 9 July 2013" | safe.gov.cn/tianjin/2024/0430/2469.html | 2013-07-09 | primary | 2026-09-10 | | 20 |
+| Working-day overlap from a nine-to-six Shanghai day: London 1 and 2 hours, Paris or Berlin 2 and 3, Sydney 7 on standard time and 6 on daylight time, Los Angeles 1 in the northern winter and 0 in summer, New York 0 | "published civil time offsets, arithmetic shown, September 2026" | Offset arithmetic in the research file | standing | primary, structural | 2026-09-10 | | 19, 20 |
+| 2026 holidays: Spring Festival 15 to 23 February (9 days, make-up 14 and 28 February); Labor Day 1 to 5 May (make-up 9 May); National Day 1 to 7 October (make-up 20 September and 10 October) | "the State Council General Office notice on 2026 holiday arrangements, issued 4 November 2025" | beijing.gov.cn/zhengce/zhengcefagui/202511/t20251104_4258873.html, matched at politics.people.com.cn | 2025-11-04 | primary | 2026-09-10 | | 20 |
+| No published benchmark for creative production pilot length, gates or success rate | "an English search run 10 September 2026, top nine results reviewed", publish the absence | Own search review, brief 20 | 2026-09-10 | absence, documented | 2026-09-10 | | 20 |
+| hubStudio has studios in Shanghai, Changsha, Hong Kong and the Philippines and is registered in Hong Kong; sends a binding proposal within 48 hours of a brief | "hubStudio's published company information page" and "hubStudio's pricing page", read 10 September 2026, first-party | src/pages/llm-info.astro; src/pages/pricing.astro | 2026-09-10 | first-party, stated as published fact and policy | 2026-09-10 | | 20 |
+
+### Do not publish, added from brief 20
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Up to 80 percent offshore savings; 90 percent adoption; India first for 47 percent of respondents; 81 percent citing lower-cost skills | Offshore creative production benchmark series and its sponsor's blog, brief 20 | No respondent count on any public page, seller-sponsored, "up to 80 percent" is the publisher's own assertion | 2026-09-10 |
+| Import clearance time of 32.97 hours in 2021 as a sample clearance time | News-site search extract of a customs statement, brief 20 | All import cargo, five years old, not samples, extract only | 2026-09-10 |
+| ATA carnet validity of one year | One provincial trade promotion page, search extract, brief 20 | Single-source | 2026-09-10 |
+| Samples enter China duty-free and tax-free | Inference from Tariff Law Art. 32 | Tariff only; import VAT not researched | 2026-09-10 |
+| VAT zero rating of design and film production services invoiced abroad under Caishui 2016 No. 36 Annex 4 | Provincial government policy page, brief 20 | Current status after the VAT Law took effect not checked | 2026-09-10 |
+| Every photo or video of a person is sensitive personal information, or never is | Common framing | PIPL Art. 28 lists biometric identification without defining it; standards and guidance not read | 2026-09-10 |
+| A Hong Kong contracting entity or Philippines studio changes the regime for work done in mainland China | Brief 20 territory | Hong Kong and Philippine regimes not researched | 2026-09-10 |
+| Filming permits, location releases or crew work visas for commercial shoots in China | Brief 20 territory | Not researched | 2026-09-10 |
+| Feature-film co-production categories applied to advertising production | Chinese user essay, brief 20 | Film framework, not read at source, not an advertising instrument | 2026-09-10 |
+| Any pilot length or pilot success rate as a benchmark | Brief 20 must-include | None published | 2026-09-10 |
+
+## Tmall store decoration specs, modal values (added 2026-09-10, brief 03)
+
+Published under deviation 7 in `editorial/CLAUDE.md`. **Every size row below is a
+modal value, not a primary reading.** Source pool: 9 independent Chinese-language
+domains carrying a numeric store decoration figure in a page read in full, 0
+English-language, collected 2026-09-10, Chinese web first. One domain counts
+once. Values seen only in search-result summaries are not counted. Two rows are
+scoped primary readings and say so. Full working in
+`research/tmall-flagship-store-decoration-specs.md`.
+
+**Attribution form for every modal row:** "the most commonly published figure,
+collected across 9 independent Chinese-language sources on 10 September 2026,
+with N agreeing". Never "Tmall requires", never "the rule center states", never
+"verified".
+
+| Figure | Modal value | Range across sources | Sources agreeing | Collected | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|---|
+| Desktop store sign plus nav, total band height | 150px | 120 sign plus 30 nav on 3, 130 plus 20 on 1 | 5 of 5 | 2026-09-10 | consensus, modal not primary, pages about 2020 to 2026 | 2026-09-10 | | 03 |
+| Desktop store sign height alone | 120px | 130 on 1 | 4 of 5 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 03 |
+| Desktop store sign standard width, as published for Taobao | 950px | No other value | 6 of 6 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 03 |
+| Desktop store sign and content width, Tmall | 990px | 790 plus 150 column split on 1 | 3 of 3 separating Tmall | 2026-09-10 | contested (thin), newest source 2023, no 2026 page separates Tmall | 2026-09-10 | | 03 |
+| Desktop full-width header background | 1920 by 150px | Height 120 on 2 | 5 of 5 width, 4 of 5 height | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 03 |
+| Desktop full-screen carousel width | 1920px | No other value | 5 of 5 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 03 |
+| Desktop full-screen carousel height | 600px | 550, 400 to 800, unlimited | 2 of 4 | 2026-09-10 | contested | 2026-09-10 | | 03 |
+| Desktop nav bar height | 30px | 20 on 1 | 2 of 3 | 2026-09-10 | contested | 2026-09-10 | | 03 |
+| Mobile store sign | 750 by 580px, under 400KB, JPG or PNG | 750 by 254 (about 2020), 642 by 200 (2023 to 2024), 280 by 50 (2023) | 3 of 6 | 2026-09-10 | contested; the 3 agreeing pages (2020, 2024, 2026) share wording, likely one origin | 2026-09-10 | | 03 |
+| Mobile homepage module width | 750px by count | 640 (about 2020), 750 on 3 (2021 to 2024), 1200 on 2 (2023 Tmall table, 2026 product modules), 1440 notice with 1400 table on 1 (2026-05-21) | 3 of 6 | 2026-09-10 | contested, split by age; the mode is the older value, never publish 750 or 1440 flatly | 2026-09-10 | | 03 |
+| Mobile image modules, 2026 generation | 1440 wide by 144 to 2400 tall | Found once, same page prints 1400 | 1 of 9 | 2026-09-10 | contested, single source, publish only inside the age-split range | 2026-09-10 | | 03 |
+| Live tab size; promotion skin size set | Not published | 0 of 9 domains, 0 on the platform documentation page | 0 | 2026-09-10 | absence, stated with the search date | 2026-09-10 | | 03 |
+| Taobao open platform decoration documentation: readable without login, last updated 2017-08-08, prints no module dimension, sends sellers to a login to edit; only size is a 640 by 200 code example | "Taobao open platform documentation, read 10 September 2026, scoped to what the page covers" | developer.alibaba.com/docs/doc.htm?treeId=418&articleId=103994 | 2026-09-10 | primary, scoped; evidence of absence, never a source of a current size | 2026-09-10 | | 03 |
+| Mobile GMV 62 percent of total GMV on Alibaba's China retail marketplaces, quarter ended 2015-09-30 | "Alibaba Group quarterly results release filed with the SEC, 27 October 2015" | sec.gov exhibit 99.1, a15-21796 | 2015-10-27, read 2026-09-10 | primary, historical; transaction value across all China retail marketplaces, not Tmall traffic | 2026-09-10 | | 03 |
+
+### Do not publish, added from brief 03
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| "Over 90 percent of Taobao traffic is mobile in 2026" | A 2026 design vendor guide | No method, no sample, vendor claim | 2026-09-10 |
+| 1440 wide as the current mobile module width, or a change dated end of March 2026 | One seller-service page, 2026-05-21 | Found once, contradicts itself with 1400, year of change not printed | 2026-09-10 |
+| The 640 grid with 80px cells, and a 750 by 254 mobile sign, as current | One about-2020 designer post | Retired generation, matches 2017 platform code example | 2026-09-10 |
+| Store sign 80KB cap, 950 safe zone, 80 by 80 logo, 160 category button, 400 by 200 announcement, 1200-wide product modules | One domain each | Single source | 2026-09-10 |
+| Campaign logo kit released a month ahead behind a store login | One seller-service page | Single source, undated | 2026-09-10 |
+| Unattributed search-summary sizes: 1920 by 540 or 500, 750 by 440 mobile banner, 950 to 1280 safe band | Search-result summaries | Not tied to a domain, not counted | 2026-09-10 |
+
+## Brand model training, fine-tuning measurement and training data rules (added 2026-09-10, brief 29)
+
+Full claims table in `research/training-a-brand-model-that-stays-on-brand.md`.
+None of these is a brand approval rate, and none may be restated as one. Model,
+method and encoder names stay off the page: attribute papers to venue and year.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Subject-driven fine-tuning from typically 3 to 5 images; evaluation set of 30 subjects (21 objects, 9 live), 25 prompts, 3,000 generated images; subject fidelity as embedding similarity to real photos: 0.696 (fine-tuned, larger base model), 0.668 (open-weight base model), 0.569 (earlier baseline), real photos against each other 0.774 | "peer-reviewed computer vision conference paper, CVPR 2023, company research lab, automated embedding similarity on a 30-subject evaluation set" | arxiv.org/abs/2208.12242, read via ar5iv.labs.arxiv.org/html/2208.12242 | 2022-08-25, v2 2023-03-15 | primary, adjacent metric only | 2026-09-10 | | 29 |
+| User study in the same paper: 72 users, 1,800 answers, "which of the two images best reproduces the identity" of the reference: 68 percent fine-tuned, 22 percent baseline, 10 percent undecided | Same attribution, "pairwise forced-choice user study, rater expertise not stated" | Same | 2023-03-15 | primary, a preference between research methods, never an approval rate | 2026-09-10 | | 29 |
+| Automated image-similarity scores reach only 50.72 and 60.98 percent of human-to-human agreement on subject preservation, 61.48 percent on prompt following; a multimodal language model judge reaches 83.31 and 98.17 percent. 150 reference images, 1,350 prompts, 7 annotators, each instance rated by at least two | "peer-reviewed machine learning conference paper, ICLR 2025, Pearson correlation with human ratings expressed as a share of human-to-human agreement" | arxiv.org/html/2406.16855v2, Table 4 | 2025-03-09 (v2) | primary. Internal discrepancy: text says 98.71, Table 4 says 98.17; use the table | 2026-09-10 | | 29 |
+| Adapter-style fine-tuning freezes the pretrained weights and trains added rank decomposition matrices. The 10,000 times parameter and 3 times memory reductions were measured on a 175-billion-parameter language model and are not cleared for image models | "2021 research paper introducing low-rank adaptation, method description" | arxiv.org/abs/2106.09685 | 2021-06-17 | primary for the mechanism only | 2026-09-10 | | 29 |
+| Diffusion image models memorize and emit training images; over a thousand training examples extracted, from photographs of individual people to trademarked company logos; hundreds of models trained; much less private than GANs | "peer-reviewed security conference paper, 32nd USENIX Security Symposium, August 2023", always with the limit that it attacked large web-trained models, not brand fine-tunes | arxiv.org/abs/2301.13188; venue on usenix.org conference listing | 2023-01-30, presented 2023-08 | primary | 2026-09-10 | | 29 |
+| Interim Measures for the Administration of Generative AI Services, Order No. 15, seven issuing bodies, adopted 23 May 2023, in force 15 August 2023. Art. 2 covers services to the public in China and excludes organizations that develop or apply the technology without serving the domestic public. Art. 7: lawful-source data and foundation models, no infringement of IP, consent or other lawful basis for personal information, plus data quality measures. Art. 8: clear labeling rules and sampling verification of labeling accuracy | the instrument, by name and article, and the issuing bodies | cac.gov.cn/2023-07/13/c_1690898327029107.htm; Art. 7 quality clause matched at gxt.fujian.gov.cn | 2023-07-13 release | primary for Arts. 2, 7 (sources, IP, consent) and 8; triangulated for the Art. 7 quality clause | 2026-09-10 | | 29 |
+| Search-results audit: four English buyer phrasings for brand model training returned 29 results, 25 published by companies selling training or a tool that does it, 3 affiliate or content-farm, 1 academic preprint; three Chinese phrasings returned 18 tutorials and tool documents; zero across 47 carried an approval or brand-consistency rate with a stated approver, sample and period | "search-results audit run 10 September 2026, publisher type recorded for every result, no domain named" | R2 tables in research/training-a-brand-model-that-stays-on-brand.md | 2026-09-10 | primary observation, re-countable from the research file | 2026-09-10 | | 29 |
+
+### Do not publish, added from brief 29
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| hubStudio internal approval on AI assets from 22 to 78 percent; output scaled about 7x; costs about 60 percent lower | hubStudio AI excellence page and site copy | Still no approver, sample, period, baseline or definition in writing. Blocked for brief 29, whose H1 and meta description carried the figure and must be rewritten | 2026-09-10 |
+| "Cuts production time by 80 percent"; "No client legal review has come back with a problem yet" | hubStudio AI excellence page | No method; a frequency claim with no count | 2026-09-10 |
+| 66.11 percent human preference rate for a brand-style generation method | 2026 computer vision conference paper from the research lab of a company selling custom brand model training | Evaluators, sample, task and baselines not reachable; lab page omits them and the PDF exceeded fetch size twice; seller-published; a preference rate, not approval | 2026-09-10 |
+| Over a quarter million human evaluations of AI-generated marketing images against human-made ones | International Journal of Research in Marketing, 2024, sciencedirect S0167811624000843 | 403 to automated fetch, not read at source, general generators not brand-trained models. Lead | 2026-09-10 |
+| "Percentage of qualified images" human evaluation of ecommerce ad images, rejection on any product size, appearance, position or quality violation | A search summary | Paper not identified; closest analogue to an approval rate, untraceable | 2026-09-10 |
+| "Many brands can achieve 80% consistency with advanced prompt engineering alone" | Affiliate guide | No study, no definition, no sample | 2026-09-10 |
+| "Consistent brands are 3.5 times more likely to enjoy excellent brand visibility", "up to 23%" revenue lift from consistent presentation | Tool vendor learn page, circulating pair | No study, sample or date anywhere in the chain | 2026-09-10 |
+| Training set sizes of 10 to 20, under 30, 10 to 200, 30 to 80 images; training "in 30 minutes to one hour" | Vendor product pages and guides | Read only through search summaries, twentyfold spread, compute time is not an engagement window | 2026-09-10 |
+| Chinese practitioner recipes: rank 64 over 300 to 500 samples, 20 to 40 images, loss ideal at 0.08 to 0.1 | Chinese tutorial and community pages | Recipes with no measured outcome | 2026-09-10 |
+
+## Singles Day and 618 platform milestones (added 2026-09-10, brief 30)
+
+Dates as reported from each platform's own announcement or merchant rules, by
+year. No rule center page was read directly. Every date on a page carries its
+year and platform. Full working and conflicts in
+`research/singles-day-618-production-calendar.md`.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Tmall 2025 Double 11: presale warm-up 15 Oct 2 p.m.; deposits 15 Oct 8 p.m. to 20 Oct 5:59 p.m.; final payment 20 Oct 8 p.m. to 24 Oct; spot warm-up from 17 Oct 00:00; spot sale 20 Oct 8 p.m. to 14 Nov 11:59 p.m. | "Chinese technology and ecommerce trade press reprinting Tmall's published 2025 Double 11 rules, 24 September 2025" | ithome.com/0/885/480.htm; pai.com.cn/p/01k5wr53m7rezpnc9p8fsb1qks | 2025-09-24 | triangulated, primary-reported | 2026-09-10 | | 30 |
+| Tmall Double 11 presale opening: 24 Oct 2023, 14 Oct 2024 (ten days earlier), 15 Oct 2025, all 8 p.m. | "Chinese financial press reporting the platform's announcements, October 2023, October 2024, September 2025" | news.cnstock.com/industry,rdjj-202310-5138163.htm (2023-10-21); stcn.com/article/detail/1348657.html (2024-10-13); the 2025 rows above | 2023 to 2025 | triangulated | 2026-09-10 | | 30 |
+| JD Double 11 opening: 23 Oct 2023 8 p.m. (no presale); 14 Oct 2024 8 p.m. to 11 Nov; 9 Oct 2025 8 p.m. to 14 Nov | "JD's own corporate blog, October 2024, and Chinese press reporting the platform's announcements, October 2023 and September 2025" | jdcorporateblog.com 2024 Singles Day post (2024-10-11); news.cnstock.com as above; finance.sina.com.cn/tech/roll/2025-09-28/doc-infrzitr8974609.shtml | 2023 to 2025 | primary for 2024, triangulated for 2023 and 2025 | 2026-09-10 | | 30 |
+| Douyin 2025 Double 11 sale 9 Oct 00:00 to 11 Nov 11:59 p.m., inside a combined period from 16 Sep | "Chinese ecommerce trade press reporting the platform's schedule, 28 September 2025" | finance.sina.com.cn/tech/roll/2025-09-28/doc-infrzitr8974609.shtml; m.mjzj.com/article/ezeikhpstxq8 | 2025-09-28 | triangulated | 2026-09-10 | | 30 |
+| Tmall 618 opening: presale 26 May 2023; no presale and wave one 20 May 2024 8 p.m. (registration from 6 May, wave two 31 May); presale 13 May 2025 8 p.m. (rules 8 May); 21 May 2026 (rules reported 29 Apr) | "Chinese state-wire, municipal and financial press reporting the platform's announcements, May 2023 to April 2026" | news.cn/fortune/2023-05/24/c_1212191041.htm; news.bjd.com.cn/2024/05/07/10765573.shtml; finance.sina.com.cn/tech/2025-05-08/doc-inevvnky8719770.shtml; finance.sina.com.cn/tech/roll/2026-04-29/doc-inhwefve6787805.shtml | 2023-05-24 to 2026-04-29 | triangulated | 2026-09-10 | | 30 |
+| Tmall 2026 618 structure: presale 21 May to 3 Jun; spot wave one 21 to 30 May, wave two 31 May to 21 Jun; presale items live before presale warm-up, spot items live by 10 p.m. on day one | "Chinese ecommerce trade press reporting the platform's 2026 merchant rules, 29 April 2026" | Same 2026-04-29 URL; news.qq.com/rain/a/20260502A051EH00 | 2026-04-29 | triangulated for dates, single-source for the listing deadlines | 2026-09-10 | | 30 |
+| JD 618: 2025 warm-up 13 May 8 p.m., opening wave 31 May 8 p.m., to 18 Jun; 2026 warm-up 13 to 29 May, opening 30 May 8 p.m., to 21 Jun | "Chinese technology press reporting the platform's schedule, May 2025 and 18 May 2026" | finance.sina.com.cn/tech/roll/2025-05-09/doc-inevyhfu4255049.shtml; ithome.com/0/951/866.htm | 2025-05-09; 2026-05-18 | triangulated (2025 thin) | 2026-09-10 | | 30 |
+| 2026 Spring Festival holiday 15 to 23 Feb, makeup days 14 and 28 Feb; Dragon Boat 19 to 21 Jun; National Day 1 to 7 Oct | "State Council General Office notice on the 2026 public holiday schedule, 4 November 2025" | news.cn/politics/20251104/88bcffd88ae249e58c699b8772548e3d/c.html | 2025-11-04 | primary | 2026-09-10 | | 30 |
+| No platform rule, government notice or survey publishes a creative production lead time before a festival deadline | "search of Chinese- and English-language sources, 10 September 2026, an observation about the published record" | Own search, logged in the research file | 2026-09-10 | primary observation | 2026-09-10 | | 30 |
+| Search-results audit: 32 results across four English phrasings, 7 off-intent, 16 of 25 on-intent from vendors or agencies, 0 printing a sign-up window or listing deadline | "search-results audit, 10 September 2026, publisher type recorded for every result, no domain named" | R2 in the research file | 2026-09-10 | primary observation, re-countable | 2026-09-10 | | 30 |
+
+### Do not publish, added from brief 30
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any 2026 Double 11 date | A consumer page carrying 2023's timetable with the year changed | No 2026 announcement as of 2026-09-10 | 2026-09-10 |
+| Tmall 2025 presale sign-up closing 30 Sep or 14 Oct | Two vendor restatements | Contradict each other, neither links the rule | 2026-09-10 |
+| Tmall 2025 spot sale on 21 Oct | Consumer guides | Rules as reported give 20 Oct 8 p.m. | 2026-09-10 |
+| Tmall 2026 618 opening 12 or 13 May | Consumer guides, local aggregators | Contradicted by reporting of the 2026 rules (21 May). Publish only as the stated conflict | 2026-09-10 |
+| Douyin 2025 sign-up deadline 8 Sep 3 p.m.; JD 2024 618 opening 30 or 31 May; Tmall 2020 to 2022 dates | Aggregators, search summaries, 403 pages | Single-source, conflicting, or not read at source | 2026-09-10 |
+| Any production lead time ("two months ahead", "from early September", "10 to 15 days of warm-up") | An agency blog, a vendor explainer, a training-course site | No sample, no method, sellers of preparation | 2026-09-10 |
+| Any festival GMV, growth percentage or brand count | A data firm release, a platform group release, trade press relaying platform claims | No stated method, or a percentage with no absolute | 2026-09-10 |
+| A Douyin AI-label "within the first 5 seconds" rule | An ad-tech agency resource page | No rule document cited | 2026-09-10 |

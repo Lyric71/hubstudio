@@ -1,0 +1,310 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is in a China ecommerce content pack?",
+    "a": "A main image set with a white-background image inside it, a desktop detail page, a separate mobile detail page, a size and specification chart, store decoration banners, and short video. Eight Chinese production references describe listings from those same parts. The dimensions attached to each part vary by source, so they belong in a dated spec reference rather than a fixed list."
+  },
+  {
+    "q": "How many assets does one SKU need for Tmall and JD?",
+    "a": "No published source gives a verified per-SKU count, and treating any count as a platform requirement would overstate it. What holds is the list of deliverables: the same named parts on both platforms, with the white-background image sitting in a different carousel slot on each. Scope the count with your supplier against the manifest."
+  },
+  {
+    "q": "Should a handover include layered source files?",
+    "a": "If the listing will ever change, yes. Flattened exports upload fine but cannot be edited cleanly, so a later variant means paying to rebuild. Ask in writing whether layered files and raw captures are delivered or retained by the supplier, and take them before any retention window closes."
+  },
+  {
+    "q": "How long are production files retained?",
+    "a": "It is a supplier policy, not a legal requirement, so it varies. hubStudio's published policy is to purge source files 90 days after a project closes unless the client asks for them to be kept. Whatever the supplier, get the window in writing and take delivery of the files you may need before it ends."
+  },
+  {
+    "q": "How do I compare two China content quotes?",
+    "a": "Hold both against the same manifest rows: main images for both platforms, the white-background image, separate desktop and mobile detail pages, the spec chart, banners, video, layered source files, a provenance record and a written retention window. Treat anything a quote does not mention as excluded until confirmed."
+  }
+];
+---
+
+<ArticleLayout slug="china-ecommerce-content-pack" ctaLabel="Get a like-for-like scope" faq={faq}>
+  <p class="standfirst">Ask three studios to quote "China ecommerce content" and you get three prices for three different jobs. Nobody notices until delivery, when one pack has a mobile detail page and another does not. The fix is a shared list, and nobody has published one.</p>
+
+  <h2>What is in a China ecommerce content pack?</h2>
+
+  <p>A listing on Tmall or JD is built from the same named parts: a main image set with a white-background image inside it, a long desktop detail page, a separate mobile detail page, a size and specification chart, store decoration banners, and short video. The parts are stable across the sources that describe them. The dimensions attached to them are not, which is exactly where quotes quietly diverge.</p>
+
+  <blockquote class="evidence">Every Chinese production reference checked builds a listing from the same named parts: a main image set with a pure-white-background image inside it, a long scrolling detail page, a separate mobile detail page, a size and specification chart, store decoration banners, and short video. The parts are stable. The dimensions attached to them are not.</blockquote>
+  <p class="source">Source: eight independent Chinese design, tool and seller-education references collected September 2026, compared on their deliverable lists only, with every number they carried set aside.</p>
+
+  <p>That split, stable parts and unstable numbers, is the whole method of this page. The list below is fixed. The numbers live in separate, counted, dated articles.</p>
+
+  <h2>Why two quotes for the same SKU describe different jobs</h2>
+
+  <p>Partly because the rules a quote should be built to cannot be read from outside a seller account.</p>
+
+  <blockquote class="evidence">The two platform rule centers a buyer would check are published at public web addresses and serve no rule text without a seller session. On 10 September 2026 the Tmall rule center redirected twice and returned no rule body, and two different JD merchant rule pages returned the rule-center heading and nothing else.</blockquote>
+  <p class="source">Source: direct unauthenticated fetches of rule.tmall.com and rule.jd.com, 10 September 2026, four requests across two platforms, redirect chain and response body recorded.</p>
+
+  <p>So each supplier quotes to its own reading of the specs, and to its own idea of what a listing includes. Nobody is being dishonest. They are just not quoting the same thing.</p>
+
+  <blockquote class="evidence">A search across five buyer phrasings in English and Chinese returned no page that itemizes what one China ecommerce SKU needs across Tmall and JD. English results answered for Western marketplaces or for parcel logistics. Chinese results carried numbers with no link to the rule that sets them.</blockquote>
+  <p class="source">Source: five queries run September 2026, English and Chinese, every returned result classified by page type and by what it answered.</p>
+
+  <h2>The manifest for one SKU across Tmall and JD</h2>
+
+  <p>This is a scoping template, not a platform requirement. It names the parts a listing on both platforms is built from, so every quote can be read against the same rows. The counts and sizes for each part are deliberately not printed here, because they are contested and they move. Each row points to where the counted, dated figures live.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Deliverable</th>
+          <th scope="col">What it is</th>
+          <th scope="col">Tmall and JD</th>
+          <th scope="col">Where the counted specs live</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Main image set</th>
+          <td>The carousel of product images at the top of the listing</td>
+          <td>Both</td>
+          <td>Tmall product image requirements; JD against Tmall</td>
+        </tr>
+        <tr>
+          <th scope="row">White-background image</th>
+          <td>A product-only image on pure white, briefed as its own deliverable</td>
+          <td>Both, in a different slot</td>
+          <td>Tmall white-background image rules</td>
+        </tr>
+        <tr>
+          <th scope="row">Desktop detail page</th>
+          <td>The long scrolling page of stacked images below the carousel</td>
+          <td>Both</td>
+          <td>Tmall product image requirements; JD against Tmall</td>
+        </tr>
+        <tr>
+          <th scope="row">Mobile detail page</th>
+          <td>A separate build for phones, not a shrunk desktop page</td>
+          <td>Both</td>
+          <td>Tmall product image requirements</td>
+        </tr>
+        <tr>
+          <th scope="row">Size and specification chart</th>
+          <td>The dimension, material or sizing table as an image</td>
+          <td>Both, where the category needs it</td>
+          <td>Not published as a counted spec</td>
+        </tr>
+        <tr>
+          <th scope="row">Store decoration banners</th>
+          <td>Storefront and campaign banners around the listing</td>
+          <td>Both</td>
+          <td>Not yet counted in this series</td>
+        </tr>
+        <tr>
+          <th scope="row">Short video</th>
+          <td>The listing video in the carousel</td>
+          <td>Both</td>
+          <td>Tmall product image requirements</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>One row is worth pulling out, because it is the only place the two platforms genuinely differ on the evidence published. The article comparing JD image requirements with Tmall counts five of five sources per platform putting the white-background image first in JD's carousel and fifth in Tmall's. The image itself is shared. Only its position changes, which is a re-sequence rather than a second shoot.</p>
+
+  <h2>Naming conventions and file structure</h2>
+
+  <p>No platform publishes a naming standard for these files, so what follows is production practice, not a rule. Its only job is to let a buyer, a supplier and a store operator find the same file without asking.</p>
+
+  <p>A workable convention puts the stable identifiers first and the variable ones last: the SKU code, then the platform, then the deliverable, then the slot or section, then the version. A white-background image for one SKU on JD reads as SKU code, JD, white background, slot one, version two. The same image on Tmall changes one field, the slot, and nothing else.</p>
+
+  <p>Folders follow the same order. One folder per SKU, one subfolder per platform where the files genuinely differ, and one shared folder for everything that is identical on both, so a change to a shared master is made once rather than twice.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Folder</th>
+          <th scope="col">What goes in it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">SKU, shared</th>
+          <td>Masters used on both platforms, including the white-background image</td>
+        </tr>
+        <tr>
+          <th scope="row">SKU, Tmall</th>
+          <td>Tmall-only exports and any Tmall-specific sequencing</td>
+        </tr>
+        <tr>
+          <th scope="row">SKU, JD</th>
+          <td>JD-only exports and any JD-specific sequencing</td>
+        </tr>
+        <tr>
+          <th scope="row">SKU, source</th>
+          <td>Layered working files and raw captures, per the handover terms</td>
+        </tr>
+        <tr>
+          <th scope="row">SKU, record</th>
+          <td>Provenance and approval records for every delivered asset</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What a complete handover contains</h2>
+
+  <p>This is where quotes differ most and where buyers look least. A price for "the listing images" can mean flattened exports only, or everything needed to change them later. Ask which, in writing, before comparing prices.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Handover item</th>
+          <th scope="col">Why it matters</th>
+          <th scope="col">Ask the supplier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Final exports per platform</th>
+          <td>What actually uploads</td>
+          <td>Are both Tmall and JD sets included, or one set</td>
+        </tr>
+        <tr>
+          <th scope="row">Layered source files</th>
+          <td>Editable masters for later changes</td>
+          <td>Are layered files delivered, or kept by the supplier</td>
+        </tr>
+        <tr>
+          <th scope="row">Raw captures</th>
+          <td>The material a future variant is built from</td>
+          <td>Is raw capture included, and in what form</td>
+        </tr>
+        <tr>
+          <th scope="row">Metadata and naming</th>
+          <td>Findability across the SKU range</td>
+          <td>Does the naming follow a stated convention</td>
+        </tr>
+        <tr>
+          <th scope="row">Provenance record</th>
+          <td>What was captured, generated and edited, per asset</td>
+          <td>Is a per-asset record delivered with the files</td>
+        </tr>
+        <tr>
+          <th scope="row">Retention terms</th>
+          <td>How long source files exist after delivery</td>
+          <td>When are working files deleted, and can that be extended</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The provenance row matters more each year. The article on the disclosure audit trail covers what a per-asset record should hold, field by field, and which platform labeling rules it answers.</p>
+
+  <h2>How long are production files retained?</h2>
+
+  <p>As long as each supplier's policy says, because no rule sets it.</p>
+
+  <blockquote class="evidence">Retention of production files is a policy each supplier sets, not a legal requirement. hubStudio purges source files from its working environments 90 days after a project closes unless the client asks for them to be kept.</blockquote>
+  <p class="source">Source: hubStudio's ecommerce design service page, read 10 September 2026, stated as published studio policy rather than as a benchmark.</p>
+
+  <p>That is one studio's policy, and the point of printing it is the question it raises for every other quote. If layered source files are deleted after a fixed window, a buyer who has not taken delivery of them has lost the ability to change the listing without paying for it again. Ask for the retention window in writing, and take the source files before it closes if the listing will need updates.</p>
+
+  <h2>How do I compare two China content quotes?</h2>
+
+  <p>Put both quotes against the same rows. Where one quote is silent on a row, treat it as excluded until the supplier says otherwise.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">Quote A</th>
+          <th scope="col">Quote B</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Main image set, both platforms</th>
+          <td>Included or not</td>
+          <td>Included or not</td>
+        </tr>
+        <tr>
+          <th scope="row">White-background image as its own deliverable</th>
+          <td>Included or not</td>
+          <td>Included or not</td>
+        </tr>
+        <tr>
+          <th scope="row">Desktop and mobile detail pages as separate builds</th>
+          <td>Included or not</td>
+          <td>Included or not</td>
+        </tr>
+        <tr>
+          <th scope="row">Size and specification chart</th>
+          <td>Included or not</td>
+          <td>Included or not</td>
+        </tr>
+        <tr>
+          <th scope="row">Store decoration banners</th>
+          <td>Included or not</td>
+          <td>Included or not</td>
+        </tr>
+        <tr>
+          <th scope="row">Short video</th>
+          <td>Included or not</td>
+          <td>Included or not</td>
+        </tr>
+        <tr>
+          <th scope="row">Layered source files handed over</th>
+          <td>Included or not</td>
+          <td>Included or not</td>
+        </tr>
+        <tr>
+          <th scope="row">Per-asset provenance record</th>
+          <td>Included or not</td>
+          <td>Included or not</td>
+        </tr>
+        <tr>
+          <th scope="row">Retention window in writing</th>
+          <td>Stated or not</td>
+          <td>Stated or not</td>
+        </tr>
+        <tr>
+          <th scope="row">Specs quoted against a dated source</th>
+          <td>Stated or not</td>
+          <td>Stated or not</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The last row is the quiet one. A quote built to specs with no date attached may be built to a figure that has since moved. The counted spec articles in this series carry their collection date for exactly that reason.</p>
+
+  <p>The <a href="/services/design/ecommerce">ecommerce design service page</a> covers producing the full pack, the <a href="/resources/insights/tmall-product-image-requirements">Tmall product image requirements article</a> covers the counted main image and detail page figures, and the <a href="/solutions/platforms/jd">JD platform page</a> covers producing for JD specifically.</p>
+
+  <p>Reviewed September 2026.</p>
+
+  <h2>Questions buyers ask about China content packs</h2>
+
+  <h3>What is in a China ecommerce content pack?</h3>
+
+  <p>A main image set with a white-background image inside it, a desktop detail page, a separate mobile detail page, a size and specification chart, store decoration banners, and short video. Eight Chinese production references describe listings from those same parts. The dimensions attached to each part vary by source, so they belong in a dated spec reference rather than a fixed list.</p>
+
+  <h3>How many assets does one SKU need for Tmall and JD?</h3>
+
+  <p>No published source gives a verified per-SKU count, and treating any count as a platform requirement would overstate it. What holds is the list of deliverables: the same named parts on both platforms, with the white-background image sitting in a different carousel slot on each. Scope the count with your supplier against the manifest.</p>
+
+  <h3>Should a handover include layered source files?</h3>
+
+  <p>If the listing will ever change, yes. Flattened exports upload fine but cannot be edited cleanly, so a later variant means paying to rebuild. Ask in writing whether layered files and raw captures are delivered or retained by the supplier, and take them before any retention window closes.</p>
+
+  <h3>How long are production files retained?</h3>
+
+  <p>It is a supplier policy, not a legal requirement, so it varies. hubStudio's published policy is to purge source files 90 days after a project closes unless the client asks for them to be kept. Whatever the supplier, get the window in writing and take delivery of the files you may need before it ends.</p>
+
+  <h3>How do I compare two China content quotes?</h3>
+
+  <p>Hold both against the same manifest rows: main images for both platforms, the white-background image, separate desktop and mobile detail pages, the spec chart, banners, video, layered source files, a provenance record and a written retention window. Treat anything a quote does not mention as excluded until confirmed.</p>
+</ArticleLayout>

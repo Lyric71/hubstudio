@@ -337,3 +337,49 @@ writer never has to reach for the characters.
 | Weibo | Weibo | Broadcast social surface |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**Four of the five cleared quotes shipped.** Quote 1 (rule-center gating), quote
+3 (the stable taxonomy), quote 4 (the 90-day retention policy) and quote 5 (the
+absence) run with attributions unchanged, except that "rule centres" and "rule
+centre" are spelled "rule centers" and "rule center", and "itemises" is
+"itemizes", for American English site copy.
+
+**Quote 2 was dropped, deliberately.** It describes the Tmall file size cap as a
+conflict between 500KB and 3MB. The later eighteen-source count for brief 01, now
+published, found that every source publishing both figures treats 3MB as the
+platform cap and 500KB as a load-speed recommendation, so they are not in
+conflict. Printing quote 2 would have contradicted a live article on the same
+site. Its fill ratio half is also superseded by the counted figures on the Tmall
+pages. The manifest points to those articles rather than printing any number.
+
+**The manifest is a scoping template, as this file requires.** No per-SKU count,
+pixel dimension, file cap, ratio or fill percentage is presented as a platform
+requirement. The body copy says so directly before the table. The one
+cross-article fact used, the white-background image sitting first on JD and fifth
+on Tmall, is reused from the published JD against Tmall research with its count of
+five of five per platform and attributed to that article.
+
+**Practice is labeled as practice.** The naming convention and folder structure
+have no published standard behind them, and the body copy says so before either
+appears.
+
+**The slot requirement is unmet, on purpose.** The brief asks for one number from
+hubStudio's delivery record with its method stated. None exists with a method. The
+90-day retention figure is a published first-party policy, attributed to the
+ecommerce design service page, and it is not presented as a delivery-record
+measurement.
+
+**The Tmall platform page link does not exist.** /solutions/platforms/tmall was
+replaced by the published Tmall product image requirements article.
+
+**The page ships shorter than the brief's target**, at about 1,330 words of prose
+against 1,600. The cleared evidence is five quotes, and padding would have meant
+either prose without evidence or numbers this file forbids.
+
+**Distribution.** Filed under Buying models, which routes it to the pricing page
+layer. Because it is the most relevant article for a marketplace buyer, it is also
+pinned on the ecommerce design service page layer.
+
+**The hero was accepted on the first generation.**

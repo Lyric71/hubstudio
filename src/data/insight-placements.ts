@@ -119,6 +119,9 @@ export const insightPlacements = {
     intro:
       'Marketplace image specs, counted across published sources and dated, because the platforms gate their own rule text. Read these before a catalog is shot to a number nobody has confirmed.',
     categories: ['Platform specs', 'Cost'],
+    /* Filed under Buying models, so the categories above miss it, and it is the
+       manifest a marketplace buyer on this page needs first. */
+    pinned: ['china-ecommerce-content-pack'],
     /* Nine spec pages are queued behind this one. Keep a cost article visible. */
     balance: true,
     limit: 3,

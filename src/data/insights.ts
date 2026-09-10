@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'china-ecommerce-content-pack',
+    image: '/Images/insight-china-ecommerce-content-pack.webp',
+    imageAlt:
+      'An open gray archive box on a wooden table divided into sections holding square vase prints, folded concertina prints, film negatives and a small hard drive, with a hand lifting out a sleeve of layered acetate sheets.',
+    category: 'Buying models',
+    tone: 'navy',
+    title: 'What a China Content Pack Contains',
+    deck: 'Three quotes for China ecommerce content usually describe three different scopes. Here is the itemized manifest to hold every quote against.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '7 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'What a China Content Pack Contains | hubStudio',
+    metaDescription:
+      'An itemized manifest for one SKU across Tmall and JD, what a complete handover includes, and a checklist for comparing two quotes on the same basis.',
+  },
+  {
     slug: 'weibo-image-video-specs',
     image: '/Images/insight-weibo-image-video-specs.webp',
     imageAlt:
