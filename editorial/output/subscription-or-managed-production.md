@@ -407,7 +407,7 @@ Type: BlogPosting
 FAQPage: yes, 5 questions
 Breadcrumb: Home > Insights > Subscription or managed production: the unit you are buying
 Author: Cyril Drouin
-datePublished: 2026-10-22
+datePublished: 2026-03-19
 -->
 
 <!-- ASSET BRIEF

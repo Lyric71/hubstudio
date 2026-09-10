@@ -404,7 +404,7 @@ Type: BlogPosting
 FAQPage: yes, 6 questions
 Breadcrumb: Home > Insights > China's AI labeling rules: what your production workflow has to do
 Author: Cyril Drouin
-datePublished: 2026-09-17
+datePublished: 2026-05-19
 -->
 
 <!-- ASSET BRIEF

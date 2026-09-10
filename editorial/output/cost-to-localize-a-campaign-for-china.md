@@ -427,7 +427,7 @@ Type: BlogPosting
 FAQPage: yes, 5 questions
 Breadcrumb: Home > Insights > What it costs to localize a global campaign for China
 Author: Cyril Drouin
-datePublished: 2026-10-05
+datePublished: 2026-06-29
 -->
 
 <!-- ASSET BRIEF

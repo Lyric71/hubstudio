@@ -386,7 +386,7 @@ Type: BlogPosting
 FAQPage: yes, 5 questions
 Breadcrumb: Home > Insights > Content Credentials in a real pipeline
 Author: Cyril Drouin
-datePublished: 2026-09-09
+datePublished: 2026-08-14
 -->
 
 <!-- ASSET BRIEF

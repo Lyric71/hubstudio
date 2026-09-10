@@ -491,7 +491,7 @@ Type: BlogPosting
 FAQPage: yes, 5 questions
 Breadcrumb: Home > Insights > China or India for creative production: an honest comparison
 Author: Cyril Drouin
-datePublished: 2026-10-12
+datePublished: 2026-06-17
 -->
 
 <!-- ASSET BRIEF

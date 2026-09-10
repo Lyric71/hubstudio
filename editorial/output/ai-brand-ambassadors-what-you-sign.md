@@ -440,7 +440,7 @@ Type: BlogPosting
 FAQPage: yes, 5 questions
 Breadcrumb: Home > Insights > AI brand ambassadors: what you actually sign
 Author: Cyril Drouin
-datePublished: 2026-09-10
+datePublished: 2026-08-27
 -->
 
 <!-- ASSET BRIEF

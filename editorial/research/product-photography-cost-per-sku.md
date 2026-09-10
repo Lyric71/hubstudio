@@ -529,3 +529,59 @@ ships, saved to `research/product-photography-cost-per-sku/`.
 ---
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**Fourteen blockquotes shipped**, every one from the "Cleared for use" block
+with its attribution unchanged, plus the first-party mix figure carried in the
+shape this file requires.
+
+**The images-per-SKU multiplier is stated as the reader's input three times**,
+as this file demands: in the opening answer ("no market answer... this page
+prices the image and leaves that multiplier to you"), directly above the curve
+table ("Six is not a benchmark"), and in the FAQ. The curve table's column
+header names the assumption rather than hiding it.
+
+**The 70/30 mix runs with its conditions attached and nothing built on it.** It
+is attributed to the page that publishes it and labeled as neither a market
+ratio nor a measurement with a stated sample or period. The brief asked where
+the ratio moves with catalog size. That claim is CUT, and the draft says
+explicitly that no claim is made about movement because no sample and no period
+sit behind it.
+
+**The derived curve is labeled one card's ladder every time it appears**, in the
+blockquote attribution, in the body copy above the table, and again in the
+methodology section. It is never described as a market average.
+
+**No price surface is named.** Six domains fed the cleared bands and none
+reaches the draft. Both the English and Chinese cards are attributed to the
+category, the region and the date.
+
+**The ceiling is the spine of the piece, as intended.** The 30 percent cap
+appears three times: as the published ladder's stopping point, as the two-market
+agreement, and as the arithmetic consequence in the curve table, where the draft
+points at the last two rows and notes that more than doubling the catalog from
+2,000 to 5,000 SKUs saves about two dollars a SKU.
+
+**One section was added during drafting**, using no new evidence. The fixed
+against variable split was required by the brief and was implicit rather than
+stated, so a short passage now names which lines are fixed, which are variable,
+and which scale with session count rather than image count. Its conclusion,
+that consolidating bookings beats negotiating the rate, follows directly from
+the already-cleared booking fee amortization.
+
+**The link target was changed from the brief.** The brief lists the quotation
+calculator at /pricing/calculator. That page returns hubStudio rates and is
+disallowed in robots.txt, which makes it the wrong target for an indexable
+article that publishes no hubStudio rate. Repointed to the public estimator at
+/resources/production-cost, which went live the same day.
+
+**Everything in the do-not-publish list stayed out**: every per-SKU figure
+circulating on the SERP, the "$30 an image retouch" figure two cards read
+directly contradict, the day-rate studio rental band, the claim that the curve
+is linear, any images-per-SKU market average, and the $500 to $2,000 per
+traditional image figure from site copy, which remains a blocked ledger row.
+
+**Open at publish time.** Eight price surfaces across two markets are pending in
+the screenshot inventory. Every band depends on their 10 September 2026 state
+and prices in this category change without notice.

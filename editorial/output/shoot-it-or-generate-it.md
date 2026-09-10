@@ -312,7 +312,7 @@ Type: BlogPosting
 FAQPage: yes, 6 questions
 Breadcrumb: Home > Insights > Shoot it or generate it: the decision rule, asset by asset
 Author: Cyril Drouin
-datePublished: 2026-09-18
+datePublished: 2026-06-02
 -->
 
 <!-- ASSET BRIEF

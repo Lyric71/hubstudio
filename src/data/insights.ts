@@ -44,55 +44,21 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
-    slug: 'in-house-studio-vs-outsourced-production',
-    image: '/Images/insight-in-house-studio-vs-outsourced-production.webp',
+    slug: 'product-photography-cost-per-sku',
+    image: '/Images/insight-product-photography-cost-per-sku.webp',
     imageAlt:
-      'A long shared studio desk with four identical workstations under task lamps, only the nearest one showing signs of use with an open notebook and a mug, the other three sitting empty with chairs pushed in.',
+      'One plain ceramic mug lit on a paper sweep at a studio shooting table, with a long queue of identical unshot mugs receding into shadow beside it and a hand reaching for the next one.',
     category: 'Cost',
-    tone: 'navy',
-    title: 'In-House Studio or Outsourced Production',
-    deck: 'Every page on this decision uses a benefits multiplier nobody sources. Here is the published one, and the eight cost lines with no benchmark.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
+    tone: 'orange',
+    title: 'Product Photography Cost per SKU',
+    deck: 'Published volume discounts stop at 30 percent off list. Past that point, a tenfold rise in volume moves the unit price about six percent.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
     readingTime: '13 min read',
     author: 'Cyril Drouin',
-    metaTitle: 'In-House Studio or Outsourced Production | hubStudio',
+    metaTitle: 'Product Photography Cost per SKU | hubStudio',
     metaDescription:
-      'The fully loaded annual model for an in-house creative studio, the costs nobody books, the utilization question, and when in-house is genuinely right.',
-  },
-  {
-    slug: 'subscription-or-managed-production',
-    image: '/Images/insight-subscription-or-managed-production.webp',
-    imageAlt:
-      'A long studio bench under window light with three shallow metal trays holding open jobs at the near end, and a tall stack of unopened job envelopes and rolled prints waiting behind them.',
-    category: 'Buying models',
-    tone: 'orange',
-    title: 'Subscription or Managed Production',
-    deck: 'One model sells you hours and lanes. The other sells you finished assets. Published cards show which is which, and where the mid-market falls through.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '12 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'Subscription or Managed Production | hubStudio',
-    metaDescription:
-      'A subscription prices access to designers. Production prices delivered assets. What that distinction changes, and where each model actually fits.',
-  },
-  {
-    slug: 'what-a-finished-brand-asset-costs',
-    image: '/Images/insight-what-a-finished-brand-asset-costs.webp',
-    imageAlt:
-      'An amber glass bottle photographed from above on a scratched metal table, surrounded by prints of the same bottle at deliberately different sizes and finishes, one hand reaching in from the frame edge.',
-    category: 'Cost',
-    tone: 'navy',
-    title: 'What a Brand Asset Costs in 2026',
-    deck: 'Nobody publishes what one finished asset costs. This page defines the unit first, then gives absolute bands from published cards, each carrying its collection date.',
-    date: 'September 9, 2026',
-    dateISO: '2026-09-09',
-    readingTime: '11 min read',
-    author: 'Cyril Drouin',
-    metaTitle: 'What a Brand Asset Costs in 2026 | hubStudio',
-    metaDescription:
-      'Absolute cost bands per finished brand asset, with the method stated and no email gate: images, social cuts, brand films and campaign adaptations.',
+      'A real per-SKU cost curve from 50 to 5,000 SKUs, what a day rate hides at volume, and where studio capture plus generation beats pure photography.',
   },
   {
     slug: 'production-roster-review-questions',
@@ -144,6 +110,23 @@ export const insights: Insight[] = [
     metaTitle: 'Where C2PA Survives in a Real Pipeline | hubStudio',
     metaDescription:
       'Content Credentials tested stage by stage: capture, retouch, export, DAM, platform upload. Where they survive, where they strip, and whether to adopt.',
+  },
+  {
+    slug: 'in-house-studio-vs-outsourced-production',
+    image: '/Images/insight-in-house-studio-vs-outsourced-production.webp',
+    imageAlt:
+      'A long shared studio desk with four identical workstations under task lamps, only the nearest one showing signs of use with an open notebook and a mug, the other three sitting empty with chairs pushed in.',
+    category: 'Cost',
+    tone: 'navy',
+    title: 'In-House Studio or Outsourced Production',
+    deck: 'Every page on this decision uses a benefits multiplier nobody sources. Here is the published one, and the eight cost lines with no benchmark.',
+    date: 'July 27, 2026',
+    dateISO: '2026-07-27',
+    readingTime: '13 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'In-House Studio or Outsourced Production | hubStudio',
+    metaDescription:
+      'The fully loaded annual model for an in-house creative studio, the costs nobody books, the utilization question, and when in-house is genuinely right.',
   },
   {
     slug: 'questions-to-ask-ai-production-partner',
@@ -248,6 +231,23 @@ export const insights: Insight[] = [
       'What a production pipeline records per asset to survive a disclosure audit: the record schema, retention, and the three regimes it has to satisfy.',
   },
   {
+    slug: 'what-a-finished-brand-asset-costs',
+    image: '/Images/insight-what-a-finished-brand-asset-costs.webp',
+    imageAlt:
+      'An amber glass bottle photographed from above on a scratched metal table, surrounded by prints of the same bottle at deliberately different sizes and finishes, one hand reaching in from the frame edge.',
+    category: 'Cost',
+    tone: 'navy',
+    title: 'What a Brand Asset Costs in 2026',
+    deck: 'Nobody publishes what one finished asset costs. This page defines the unit first, then gives absolute bands from published cards, each carrying its collection date.',
+    date: 'April 17, 2026',
+    dateISO: '2026-04-17',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'What a Brand Asset Costs in 2026 | hubStudio',
+    metaDescription:
+      'Absolute cost bands per finished brand asset, with the method stated and no email gate: images, social cuts, brand films and campaign adaptations.',
+  },
+  {
     slug: 'automation-platform-or-production-partner',
     image: '/Images/insight-automation-platform-or-production-partner.webp',
     imageAlt:
@@ -263,6 +263,23 @@ export const insights: Insight[] = [
     metaTitle: 'Automation Platform or Production Partner | hubStudio',
     metaDescription:
       'Automation multiplies assets you already have. It cannot originate the master. Where the handoff sits, what each layer costs, and how to decide.',
+  },
+  {
+    slug: 'subscription-or-managed-production',
+    image: '/Images/insight-subscription-or-managed-production.webp',
+    imageAlt:
+      'A long studio bench under window light with three shallow metal trays holding open jobs at the near end, and a tall stack of unopened job envelopes and rolled prints waiting behind them.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: 'Subscription or Managed Production',
+    deck: 'One model sells you hours and lanes. The other sells you finished assets. Published cards show which is which, and where the mid-market falls through.',
+    date: 'March 19, 2026',
+    dateISO: '2026-03-19',
+    readingTime: '12 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Subscription or Managed Production | hubStudio',
+    metaDescription:
+      'A subscription prices access to designers. Production prices delivered assets. What that distinction changes, and where each model actually fits.',
   },
   {
     slug: 'ai-content-quality-argument-over',

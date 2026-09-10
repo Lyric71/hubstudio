@@ -421,7 +421,7 @@ Type: BlogPosting
 FAQPage: yes, 6 questions
 Breadcrumb: Home > Insights > Your production roster is consolidating. The 14 questions to ask now
 Author: Cyril Drouin
-datePublished: 2026-09-14
+datePublished: 2026-09-10
 -->
 
 <!-- ASSET BRIEF

@@ -411,7 +411,7 @@ Type: BlogPosting
 FAQPage: yes, 6 questions
 Breadcrumb: Home > Insights > Automation multiplies, studios originate: platform or production partner
 Author: Cyril Drouin
-datePublished: 2026-09-28
+datePublished: 2026-04-01
 -->
 
 <!-- ASSET BRIEF

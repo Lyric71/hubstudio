@@ -372,7 +372,7 @@ Type: BlogPosting
 FAQPage: yes, 5 questions
 Breadcrumb: Home > Insights > The disclosure audit trail: what a pipeline records per asset
 Author: Cyril Drouin
-datePublished: 2026-09-24
+datePublished: 2026-04-30
 -->
 
 <!-- ASSET BRIEF

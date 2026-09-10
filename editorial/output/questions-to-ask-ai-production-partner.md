@@ -447,7 +447,7 @@ Type: BlogPosting
 FAQPage: yes, 6 questions
 Breadcrumb: Home > Insights > Twelve questions to ask an AI-native production partner
 Author: Cyril Drouin
-datePublished: 2026-09-09
+datePublished: 2026-07-14
 -->
 
 <!-- ASSET BRIEF

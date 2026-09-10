@@ -387,7 +387,7 @@ Type: BlogPosting
 FAQPage: yes, 6 questions
 Breadcrumb: Home > Insights > What a finished brand asset actually costs in 2026
 Author: Cyril Drouin
-datePublished: 2026-09-21
+datePublished: 2026-04-17
 -->
 
 <!-- ASSET BRIEF

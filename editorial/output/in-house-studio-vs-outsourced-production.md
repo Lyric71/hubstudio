@@ -449,7 +449,7 @@ Type: BlogPosting
 FAQPage: yes, 5 questions
 Breadcrumb: Home > Insights > In-house studio or outsourced production: the fully loaded model
 Author: Cyril Drouin
-datePublished: 2026-09-09
+datePublished: 2026-07-27
 -->
 
 <!-- ASSET BRIEF
