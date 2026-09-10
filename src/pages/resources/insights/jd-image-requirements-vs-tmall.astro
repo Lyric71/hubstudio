@@ -1,0 +1,278 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should a JD main image be?",
+    "a": "The most commonly published figure is 800 by 800 pixels at a 1:1 ratio, stated by nine of the ten pages that give a JD main image floor, collected on 10 September 2026. Tmall comes back the same. This is a modal value from published sources, not a figure read from JD, so confirm it in your seller backend."
+  },
+  {
+    "q": "Are JD and Tmall image requirements the same?",
+    "a": "Mostly. Published sources agree the two platforms match on the 800 by 800 floor, the 1:1 ratio, JPG and PNG formats and the five-image carousel. The one difference that holds is the white-background image, first on JD and fifth on Tmall. The widely repeated detail-width difference is a comparison between two sources, not two platforms."
+  },
+  {
+    "q": "What are the JD ad slot image ratios?",
+    "a": "Published creative sizes split by age rather than by disagreement. Five undated seller pages give 350 by 350 pixels at 50KB in JPG, while two pages dated 2026 give 800 by 800 with an 800 by 1200 long form. Treat the older size as superseded and confirm the current one in the JD ad backend."
+  },
+  {
+    "q": "Can I reuse Tmall images on JD?",
+    "a": "Largely. Main images meeting the 800 by 800 and 1:1 figures carry across. Move the white-background image from the fifth slot to the first, reuse the detail page at 790 pixels desktop, and check every image against each platform's list of banned on-image elements, which is what actually forces rework."
+  },
+  {
+    "q": "Which assets have to be reshot for JD?",
+    "a": "On the published evidence, very few for reasons of size. Ad creatives built to the old 350 by 350 figure need rebuilding, and images carrying elements one platform bans need rework. Everything else between these two platforms is a re-sequence or a re-crop rather than new capture."
+  }
+];
+---
+
+<ArticleLayout slug="jd-image-requirements-vs-tmall" ctaLabel="Talk to the production team" faq={faq}>
+  <p class="standfirst">A brand selling on both platforms usually briefs two sets of listing images. Count what the published sources actually say and the case for two sets mostly disappears. One difference holds up. The one everybody acts on does not.</p>
+
+  <h2>What size should a JD main image be?</h2>
+
+  <p>The most commonly published figure is 800 by 800 pixels at a 1:1 ratio, carried by nine of the ten pages that state a JD main image floor. Tmall comes back the same. The real difference between the two platforms is not a size at all. It is where the white-background image sits in the carousel.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>These specs are not read from a seller backend. Both platform rule centres gate their rule text behind a seller login, so no open source reaches the official value.</p>
+
+  <p>What follows is the most commonly published figure for each spec, collected across 24 independent sources in Chinese and English on 10 September 2026, with the number of sources that agreed shown per row. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own seller backend and confirm it there. Reviewed 10 September 2026.</p>
+
+  <blockquote class="evidence">Neither platform publishes its image rules where a buyer can read them. On 10 September 2026 the Tmall rule centre redirected twice and returned no rule body, and two different JD merchant rule pages returned the rule-centre heading and nothing else. Every figure below is the most commonly published value, not a value read from a platform.</blockquote>
+  <p class="source">Source: 24 published pages carrying at least one JD or Tmall image spec, 23 Chinese-language and 1 English-language, collected 10 September 2026, counted per value with the mode published and the spread kept. Modal value, not a primary reading.</p>
+
+  <h2>JD main image and detail page specs</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Most published value</th>
+          <th scope="col">Spread across sources</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Main image floor</th>
+          <td>800 by 800 pixels</td>
+          <td>One page gives another figure</td>
+          <td>9 of 10</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Aspect ratio</th>
+          <td>1:1</td>
+          <td>No conflicting value found</td>
+          <td>6 of 6</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel maximum</th>
+          <td>5 images</td>
+          <td>No conflicting value found</td>
+          <td>2 of 2</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">White-background image slot</th>
+          <td>First in the carousel</td>
+          <td>No contradicting page</td>
+          <td>5 of 5</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Main image file cap</th>
+          <td>1MB</td>
+          <td>500KB to 1MB</td>
+          <td>4 of 6</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Desktop detail page width</th>
+          <td>790 pixels</td>
+          <td>647 to 1000 pixels</td>
+          <td>5 of 9</td>
+          <td>contested</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Two rows are contested, and they are the two a production team is most likely to be told with confidence. Build to the safe end of each and nothing gets rejected on either.</p>
+
+  <p>One spec is missing on purpose. No page in the collection publishes a JD product fill ratio, the share of the frame the product should occupy, so this page prints none. Carrying Tmall's figure across would be inventing one.</p>
+
+  <h2>Are JD and Tmall image requirements the same?</h2>
+
+  <p>Mostly, and the sources are clearer about that than any comparison page is.</p>
+
+  <blockquote class="evidence">Four specs come back the same on both platforms in every source that addresses them: the 800 by 800 pixel floor, the 1:1 square ratio, the accepted JPG and PNG formats, and the five-image carousel maximum. A brand producing for both is not producing two sets of main images at two sizes.</blockquote>
+  <p class="source">Source: between 6 and 10 published pages per spec, Chinese-language, collected 10 September 2026, counted per value. Modal value, not a primary reading.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">JD</th>
+          <th scope="col">Tmall</th>
+          <th scope="col">Same or different</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Main image floor</th>
+          <td>800 by 800, 9 of 10</td>
+          <td>800 by 800, 8 of 9</td>
+          <td>Same</td>
+        </tr>
+        <tr>
+          <th scope="row">Aspect ratio</th>
+          <td>1:1, 6 of 6</td>
+          <td>1:1, 7 of 7</td>
+          <td>Same</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel maximum</th>
+          <td>5, 2 of 2</td>
+          <td>5, 4 of 4</td>
+          <td>Same</td>
+        </tr>
+        <tr>
+          <th scope="row">White-background slot</th>
+          <td>First, 5 of 5</td>
+          <td>Fifth, 5 of 5</td>
+          <td>Different, and the sources agree</td>
+        </tr>
+        <tr>
+          <th scope="row">Desktop detail width</th>
+          <td>790, 5 of 9</td>
+          <td>790, the most common of 6</td>
+          <td>A sourcing artifact, not a platform difference</td>
+        </tr>
+        <tr>
+          <th scope="row">Main image file cap</th>
+          <td>1MB on 4, 500KB on 2</td>
+          <td>500KB on 4, 3MB on 2</td>
+          <td>Unsettled on both</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Read the last column top to bottom. Three rows the same, one genuinely different, one that only looks different, and one nobody can settle from outside a login.</p>
+
+  <h2>The one difference that holds</h2>
+
+  <blockquote class="evidence">The white-background image sits in a different slot on each platform. Every page in the collection that names a slot puts JD's white image first in the carousel and Tmall's fifth. Ten statements across ten pages, no page contradicting.</blockquote>
+  <p class="source">Source: 10 published pages, 5 per platform, Chinese-language, collected 10 September 2026, counted with no contradicting page found. Modal value, not a primary reading.</p>
+
+  <p>Ten statements and not one exception is the strongest row on this page. It also costs almost nothing to act on. The white-background image does not need reshooting for JD. It needs moving from the end of the set to the front.</p>
+
+  <h2>The detail width everybody reshoots for</h2>
+
+  <p>This is the difference that shows up in briefs, and it is the one the sources do not support.</p>
+
+  <blockquote class="evidence">The detail-page width difference between the two platforms may not exist. Across the pages that publish a JD desktop detail width, the figure appears as 647, 750, 790, 990 and 1000 pixels. The most common is 790, carried by five of nine. The most common Tmall desktop figure is also 790, and the pages that publish both platforms usually publish the same pair for both, 790 desktop and 750 mobile.</blockquote>
+  <p class="source">Source: 9 published pages carrying a JD detail width and 6 carrying a Tmall detail width, Chinese-language, collected 10 September 2026, values counted rather than averaged. Modal value, not a primary reading.</p>
+
+  <p>The familiar version, JD at one width and Tmall at another, comes from setting one source's JD figure against a different source's Tmall figure. Pages that publish both platforms side by side mostly give the same pair for each. Much of the widely repeated JD width family also traces back to a single 2018 post that later pages restate, which is how an old number becomes a common one without becoming a verified one.</p>
+
+  <p>The practical consequence is a detail page built once at 790 pixels desktop and 750 mobile, then checked in each backend, rather than two detail pages built to two widths.</p>
+
+  <h2>File size caps, the least reliable rows</h2>
+
+  <blockquote class="evidence">The file size caps do not settle. JD's main image cap appears as 500KB on two pages and 1MB on four. Tmall's appears as 500KB on four and 3MB on two. One design publisher issues three separately dated 2026 guides that give JD 500KB twice and 1MB once.</blockquote>
+  <p class="source">Source: 6 published pages per platform, Chinese-language, collected 10 September 2026, counted per value with the full spread reported. Modal value, not a primary reading.</p>
+
+  <p>One publisher contradicting itself across three dated guides in the same year tells you how much weight a single file cap can carry. Export under the smallest figure in the range for both platforms and the question stops mattering.</p>
+
+  <h2>What are the JD ad slot image ratios?</h2>
+
+  <p>JD sells promoted placements through its own ad products, the ones sellers call Jingzhuntong and Kuaiche. The published creative sizes for those placements do not disagree so much as age.</p>
+
+  <blockquote class="evidence">One circulating advertising creative size is a generation out of date. Five undated seller-service pages give a 350 by 350 pixel creative at 50KB in JPG. Two pages dated 2026 give 800 by 800 with an 800 by 1200 long form. The split is by publication age, not by disagreement, which is what a stale spec looks like when it keeps getting restated.</blockquote>
+  <p class="source">Source: 7 published pages carrying a JD advertising creative size, Chinese-language, collected 10 September 2026, grouped by publication date before counting. Modal value, not a primary reading.</p>
+
+  <p>This is the one place where the most common figure is the wrong one. Five pages carry the old size and two carry the current one, so a straight count would publish the superseded spec. The newer pages win on date, and any ad spec handed to you without a date should be treated as the old one until the ad backend says otherwise.</p>
+
+  <h2>Can I reuse Tmall images on JD?</h2>
+
+  <p>Largely, and the reasoning is short.</p>
+
+  <blockquote class="evidence">On the specs where the sources agree the platforms match, ratio, pixel floor and format, a Tmall main image is a JD main image. On the one spec where the sources agree the platforms differ, the white-background image moves from slot five to slot one, which is a re-sequence rather than a reshoot. What forces new capture is not the platform, it is the content rules: the two platforms describe different lists of banned on-image elements, and neither list traces to a reachable rule page.</blockquote>
+  <p class="source">Source: derived from the spec table above, 24 published pages collected 10 September 2026, reasoning stated openly and resting on modal values rather than primary readings.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Asset</th>
+          <th scope="col">For JD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Main images at 800 by 800, 1:1</th>
+          <td>Reuse</td>
+        </tr>
+        <tr>
+          <th scope="row">White-background image</th>
+          <td>Re-sequence from fifth slot to first</td>
+        </tr>
+        <tr>
+          <th scope="row">Detail page</th>
+          <td>Reuse at 790 desktop and 750 mobile, then confirm in the backend</td>
+        </tr>
+        <tr>
+          <th scope="row">Ad creatives built to 350 by 350</th>
+          <td>Rebuild at the current size</td>
+        </tr>
+        <tr>
+          <th scope="row">Images carrying badges, borders, overlays or on-image text</th>
+          <td>Check against each platform's banned elements before reusing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The last row is where real rework comes from. Dimensions rarely force a reshoot between these two platforms. What each one refuses to show on an image does.</p>
+
+  <h2>Why this has not been published in English</h2>
+
+  <blockquote class="evidence">Four English phrasings of the primary question returned roughly thirty results and not one page carrying a JD image spec table. Most results answered for a different marketplace, several were stock photo listings matching the letters, and one market-entry guide updated in June 2026 carried no numbers at all.</blockquote>
+  <p class="source">Source: 4 English queries run 10 September 2026, every result classified by page type and by what it answered. Stated as an absence, with the search date.</p>
+
+  <p>Twenty-three of the twenty-four sources behind this page are in Chinese. The information exists, it is inconsistent, and nobody has counted it.</p>
+
+  <p>The <a href="/solutions/platforms/jd">JD platform page</a> covers how listings are produced for JD specifically, the <a href="/services/design/ecommerce">ecommerce design service page</a> covers the full marketplace asset set, and the <a href="/solutions/retailers">retailers solutions page</a> covers running a catalog across both platforms at once.</p>
+
+  <p>Reviewed 10 September 2026. Confirm every figure in your own seller backend before building a batch to it.</p>
+
+  <h2>Questions sellers ask about JD and Tmall images</h2>
+
+  <h3>What size should a JD main image be?</h3>
+
+  <p>The most commonly published figure is 800 by 800 pixels at a 1:1 ratio, stated by nine of the ten pages that give a JD main image floor, collected on 10 September 2026. Tmall comes back the same. This is a modal value from published sources, not a figure read from JD, so confirm it in your seller backend.</p>
+
+  <h3>Are JD and Tmall image requirements the same?</h3>
+
+  <p>Mostly. Published sources agree the two platforms match on the 800 by 800 floor, the 1:1 ratio, JPG and PNG formats and the five-image carousel. The one difference that holds is the white-background image, first on JD and fifth on Tmall. The widely repeated detail-width difference is a comparison between two sources, not two platforms.</p>
+
+  <h3>What are the JD ad slot image ratios?</h3>
+
+  <p>Published creative sizes split by age rather than by disagreement. Five undated seller pages give 350 by 350 pixels at 50KB in JPG, while two pages dated 2026 give 800 by 800 with an 800 by 1200 long form. Treat the older size as superseded and confirm the current one in the JD ad backend.</p>
+
+  <h3>Can I reuse Tmall images on JD?</h3>
+
+  <p>Largely. Main images meeting the 800 by 800 and 1:1 figures carry across. Move the white-background image from the fifth slot to the first, reuse the detail page at 790 pixels desktop, and check every image against each platform's list of banned on-image elements, which is what actually forces rework.</p>
+
+  <h3>Which assets have to be reshot for JD?</h3>
+
+  <p>On the published evidence, very few for reasons of size. Ad creatives built to the old 350 by 350 figure need rebuilding, and images carrying elements one platform bans need rework. Everything else between these two platforms is a re-sequence or a re-crop rather than new capture.</p>
+</ArticleLayout>

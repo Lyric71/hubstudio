@@ -9,7 +9,9 @@
  * and date rather than by a hand-written slug list: a new article lands on the
  * relevant pages the moment it is added to the insights array, with no page
  * edits. Use `pinned` only for an evergreen anchor a page cannot do without,
- * and keep it to one slug so new work still surfaces.
+ * and keep it to one slug so new work still surfaces. Set `balance` when a
+ * layer claims categories that answer different questions, so a burst of
+ * articles in one category cannot push the other off the layer.
  *
  * Adding a layer to a new page: add an entry here, then render
  * <InsightsLayer placement="<key>" /> on that page. Adding a new category to
@@ -32,6 +34,11 @@ export interface InsightPlacement {
   categories: string[];
   /** Evergreen anchors placed first. Keep to one so new work still shows. */
   pinned?: string[];
+  /**
+   * Reserve one slot for the newest article of each category, in list order,
+   * before filling the rest by date.
+   */
+  balance?: boolean;
   /** Cards rendered. Three fits the grid on every host page. */
   limit: number;
 }
@@ -44,8 +51,10 @@ export const insightPlacements = {
     heading: 'Read before you',
     emphasis: 'budget',
     intro:
-      'Where the numbers on this page come from. Unit cost as volume rises, what an in-house team actually costs to run, and how to compare one production partner against another.',
+      'Where the numbers on this page come from. What a unit costs as volume rises, what a quoted price actually includes, and how to weigh one way of buying production against another.',
     categories: ['Cost', 'Buying models'],
+    /* Two different buyer questions: keep one of each on the layer. */
+    balance: true,
     limit: 3,
   },
 
@@ -61,15 +70,31 @@ export const insightPlacements = {
     limit: 3,
   },
 
-  /* Video lane. Model capability, sound, and the move into spatial. */
+  /* Video lane. Cost of a usable shot, model capability, sound, spatial. */
   aiVideo: {
     route: '/solutions/ai-production/video',
     eyebrow: 'Further reading',
     heading: 'Notes from the',
     emphasis: 'edit',
     intro:
-      'What the current generation of video models can carry on its own, why sound decides whether a shot is believed, and how promptable 3D is changing the shot list.',
+      'What a usable shot really costs once the discarded takes are counted, what current video models can carry on their own, and where sound and spatial work decide whether a scene is believed.',
     categories: ['AI Video', '3D & Spatial'],
+    /* Filed under Cost, so the categories above miss it. */
+    pinned: ['all-in-cost-of-ai-video'],
+    limit: 3,
+  },
+
+  /* Image lane. Catalog cost, e-commerce and performance imagery. */
+  aiImage: {
+    route: '/solutions/ai-production/image',
+    eyebrow: 'Further reading',
+    heading: 'Before the next',
+    emphasis: 'shoot',
+    intro:
+      'What product imagery costs per SKU once a catalog scales, and how generative work has reshaped e-commerce and performance content, from marketplace tiles to synthetic talent.',
+    categories: ['eCommerce', 'Performance', 'AI Avatars'],
+    /* Filed under Cost, so the categories above miss it. */
+    pinned: ['product-photography-cost-per-sku'],
     limit: 3,
   },
 
@@ -84,35 +109,54 @@ export const insightPlacements = {
     categories: ['Production', 'Creative Strategy', 'AI Foundations', 'Agentic AI'],
     limit: 3,
   },
+
+  /* Marketplace buyers. Platform specs first, then what a catalog costs. */
+  ecommerce: {
+    route: '/services/design/ecommerce',
+    eyebrow: 'Further reading',
+    heading: 'Check the spec before the',
+    emphasis: 'batch',
+    intro:
+      'Marketplace image specs, counted across published sources and dated, because the platforms gate their own rule text. Read these before a catalog is shot to a number nobody has confirmed.',
+    categories: ['Platform specs', 'Cost'],
+    /* Nine spec pages are queued behind this one. Keep a cost article visible. */
+    balance: true,
+    limit: 3,
+  },
 } satisfies Record<string, InsightPlacement>;
 
 export type InsightPlacementKey = keyof typeof insightPlacements;
 
 /**
- * Resolve a placement to its articles: pinned anchors first, then the newest
- * matching insights. `insights` is maintained newest first, so array order is
- * the date order and no sorting is needed here.
+ * Resolve a placement to its articles. Pinned anchors come first. With
+ * `balance`, the newest article of each claimed category is reserved next.
+ * Remaining slots fill with the newest matching insights. `insights` is
+ * maintained newest first, so array order is the date order and the unpinned
+ * picks are returned in that order.
  */
 export function insightsForPlacement(key: InsightPlacementKey): Insight[] {
   const placement: InsightPlacement = insightPlacements[key];
-  const picked: Insight[] = [];
-  const seen = new Set<string>();
+  const anchors = (placement.pinned ?? [])
+    .map((slug) => insights.find((item) => item.slug === slug))
+    .filter((item): item is Insight => item !== undefined)
+    .slice(0, placement.limit);
+  const chosen = new Set(anchors.map((item) => item.slug));
+  const matches = insights.filter(
+    (item) => placement.categories.includes(item.category) && !chosen.has(item.slug),
+  );
 
-  for (const slug of placement.pinned ?? []) {
-    const anchor = insights.find((item) => item.slug === slug);
-    if (anchor) {
-      picked.push(anchor);
-      seen.add(anchor.slug);
+  if (placement.balance) {
+    for (const category of placement.categories) {
+      if (chosen.size >= placement.limit) break;
+      const newest = matches.find((item) => item.category === category && !chosen.has(item.slug));
+      if (newest) chosen.add(newest.slug);
     }
   }
 
-  for (const item of insights) {
-    if (picked.length >= placement.limit) break;
-    if (seen.has(item.slug)) continue;
-    if (!placement.categories.includes(item.category)) continue;
-    picked.push(item);
-    seen.add(item.slug);
+  for (const item of matches) {
+    if (chosen.size >= placement.limit) break;
+    chosen.add(item.slug);
   }
 
-  return picked.slice(0, placement.limit);
+  return [...anchors, ...matches.filter((item) => chosen.has(item.slug))];
 }

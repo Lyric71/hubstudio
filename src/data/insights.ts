@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'jd-image-requirements-vs-tmall',
+    image: '/Images/insight-jd-image-requirements-vs-tmall.webp',
+    imageAlt:
+      'Two identical rows of five prints of the same matte black kettle on a wooden table, the plain white-background print sitting first in the top row and fifth in the bottom row, with a hand resting on it.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'JD Image Requirements vs Tmall',
+    deck: 'Brands selling on JD and Tmall usually produce two image sets. On the published evidence they need one set, in a different running order.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'JD Image Requirements vs Tmall | hubStudio',
+    metaDescription:
+      'JD main image, detail page and ad slot specs, with a side-by-side Tmall delta table showing what has to be reshot and what can be re-cropped.',
+  },
+  {
     slug: 'campaign-adaptation-cost-per-market',
     image: '/Images/insight-campaign-adaptation-cost-per-market.webp',
     imageAlt:

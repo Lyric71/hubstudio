@@ -448,3 +448,55 @@ writer never has to reach for the characters.
 | guize | rule | As in rule centre |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**All eight cleared blockquotes shipped** with their attributions unchanged,
+each carrying its domain count, languages, collection date and the words "Modal
+value, not a primary reading".
+
+**The disclaimer block from SPEC.md runs verbatim** immediately after the
+opening answer and before the first spec table, with NN = 24 and the date 10
+September 2026. A second reminder to confirm in the seller backend sits in the
+closing paragraph and in the first FAQ answer.
+
+**The H1 was changed from the brief, on the evidence.** The brief promised
+"the twelve places they differ from Tmall". This file found one difference that
+holds (the white-background slot), one that is a sourcing artifact (detail
+width) and one that is unsettled (file caps). The H1 now reads "the one place
+they really differ", and the asset brief records the change.
+
+**The spec tables honor the five-column ceiling without dropping counts.** The
+JD table carries a sources-agreeing column and a confidence column as SPEC.md
+requires. The delta table puts the counts inside the JD and Tmall cells so it
+stays at four columns, and its verdict column keeps "a sourcing artifact" and
+"unsettled on both" as distinct verdicts rather than collapsing them to yes and
+no.
+
+**The one row where the mode is wrong is called out on the page.** Advertising
+creative sizes split by publication age: five undated pages carry the superseded
+350 by 350 figure and two dated 2026 pages carry 800 by 800 with an 800 by 1200
+long form. A straight count would publish the stale figure. The draft says so
+and lets the date win.
+
+**Every must-not held.** No JD product fill ratio is printed, and the page states
+that zero of 24 pages publishes one. The detail-width difference is presented
+as a sourcing artifact, with the 2018 origin of the repeated JD width family
+noted. Neither platform's file cap is presented as settled. JD is never called
+stricter on white backgrounds. No rejection reasons are ranked. No figure is
+lifted from hubStudio's own ecommerce design service page, which is referenced
+by name only. Neither rule centre is cited as the source of any number, and no
+value is described as official, required or verified.
+
+**One inference was kept inside its cleared form.** The reuse-and-reshoot
+section rests on cleared quote 8, which is explicitly labeled as reasoning from
+modal values. The reuse table restates that reasoning per asset and introduces
+no new figure.
+
+**The brief's third link does not exist.** /resources/specs, the China spec
+library hub, is not built. The retailers solutions page was substituted.
+
+**Open at publish time.** No annotated screenshot was obtained and none is
+reconstructed. Two captures from the inventory, a live JD listing and a live
+Tmall listing in the apps, need no seller session and would upgrade the
+white-background slot row from modal to observed.

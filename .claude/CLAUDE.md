@@ -98,10 +98,14 @@ either add it to the placements that should claim it or add a placement, then
 render `<InsightsLayer placement="<key>" />` on that page. If an article is
 genuinely relevant to a page whose categories do not catch it, pin it with the
 placement's `pinned` field, and keep `pinned` to one slug so new work still
-surfaces.
+surfaces. When a layer claims categories that answer different questions (cost
+versus buying model), set `balance: true` so a burst of articles in one
+category cannot push the other off the layer. The test: every article in the
+home page's newest four must also appear on at least one layer.
 
 Layers currently live on `/pricing`, `/solutions/brands`,
-`/solutions/ai-production/video` and `/the-studio/ai-excellence`. The component
+`/solutions/ai-production/video`, `/solutions/ai-production/image` and
+`/the-studio/ai-excellence`. The component
 is self-contained (its own container, tokens and type) so it drops into any
 page; pick the `tone` that contrasts with the section above it.
 
