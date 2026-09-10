@@ -1,0 +1,294 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is a white-background image on Tmall?",
+    "a": "A main image with its own rule set, most often published as the fifth image in a general-category listing. Fourteen of fifteen sources collected on 10 September 2026 treat it as a separate deliverable. Category standards move it, with food published at the second slot, and on JD every source naming a slot puts it first."
+  },
+  {
+    "q": "Does the white background have to be pure white?",
+    "a": "Every source describing it says pure white, and every source printing a number gives RGB 255 255 255. Tolerance is contested: one source allows 252 to 255, another says any near-white fails. Clipping to 255 is the only value no published reading rejects, which is a conclusion from the sources, not a rule."
+  },
+  {
+    "q": "Can a model appear in a white-background image?",
+    "a": "No. Seven of fifteen sources rule out a model, and one extends the ban to any body part, including hands. The same record rules out text, watermarks, logos, spliced composites, hangers, mannequins and tags, and six sources prohibit shadows, with a faint contact shadow described as tolerated on only two."
+  },
+  {
+    "q": "Where does Tmall use the white-background image?",
+    "a": "Eight of fifteen sources describe it feeding recommendation and content channels on the Taobao app homepage, and six say a listing without a compliant one loses eligibility for them. No source says it is used in search results, and none puts a number on the exposure lost."
+  }
+];
+---
+
+<ArticleLayout slug="tmall-white-background-image-rules" ctaLabel="Talk to the production team" faq={faq}>
+  <p class="standfirst">Most English guidance treats the fifth Tmall image as a product shot on white. The Chinese sources treat it as something else: a deliverable with its own checks, briefed and retouched on its own terms. No English page explains that it exists.</p>
+
+  <h2>What is a white-background image on Tmall?</h2>
+
+  <p>It is a main image with a rule set of its own, most often published as the fifth image in a general-category listing. Fourteen of fifteen sources that address it treat it as a separate deliverable rather than as a styled main image dropped onto white.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>These specs are not read from a seller backend. Both platform rule centers gate their rule text behind a seller login, so no open source reaches the official value.</p>
+
+  <p>What follows is the most commonly published figure for each spec, collected across 15 independent sources in Chinese and English on 10 September 2026, with the number of sources that agreed shown per row. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own seller backend and confirm it there. Reviewed 10 September 2026.</p>
+
+  <blockquote class="evidence">The two platform rule centers a buyer would check are published at public web addresses and serve no rule text without a seller session. On 10 September 2026 the Tmall rule center redirected twice and returned no rule body, and two different JD merchant rule pages returned the rule-center heading and nothing else.</blockquote>
+  <p class="source">Source: direct unauthenticated fetches of rule.tmall.com and rule.jd.com, 10 September 2026, four requests across two platforms, redirect chain and response body recorded.</p>
+
+  <blockquote class="evidence">Tmall's white-background image is published as a deliverable in its own right, not as a styled main image dropped onto white. Fourteen of fifteen Chinese-language sources that address it give it a rule set separate from the other main images. Ten of fifteen place it in the fifth slot in general categories, as do eight of eighteen sources in a wider Tmall image collection.</blockquote>
+  <p class="source">Source: fifteen independent published sources on the white-background image, fourteen Chinese-language and one English-language, collected 10 September 2026, counted by domain, with a separate eighteen-source Tmall image collection from the same date. Modal values with their agreement counts, not a reading from the platform.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">Most published value</th>
+          <th scope="col">Spread across sources</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Its own deliverable</th>
+          <td>Yes, with a separate rule set</td>
+          <td>One source silent</td>
+          <td>14 of 15</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Slot, general categories</th>
+          <td>Fifth main image</td>
+          <td>Second in food; apparel published as fifth and as first</td>
+          <td>10 of 15</td>
+          <td>consensus for general categories</td>
+        </tr>
+        <tr>
+          <th scope="row">Background, in words</th>
+          <td>Pure white</td>
+          <td>No source allows off-white in words</td>
+          <td>8 of 15</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Background, as a number</th>
+          <td>RGB 255 255 255</td>
+          <td>Printed only on pages dated 2026</td>
+          <td>3 of 15</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Tolerance below pure white</th>
+          <td>None stated</td>
+          <td>Plus or minus 3 on one source, zero on another</td>
+          <td>13 of 15 silent</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Size</th>
+          <td>800 by 800</td>
+          <td>None published against it</td>
+          <td>7 of 15</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Product fill</th>
+          <td>60 to 80 percent, or fill the frame</td>
+          <td>Two generations of guidance pull apart</td>
+          <td>3 numeric, 5 in words</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">File weight</th>
+          <td>38KB to 300KB</td>
+          <td>One 2017 origin repeated twice; 3MB elsewhere</td>
+          <td>3 of 15, one origin</td>
+          <td>contested</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Does the white background have to be pure white?</h2>
+
+  <p>In words, every source that describes it says yes. As a number, the record is younger and thinner than it looks.</p>
+
+  <blockquote class="evidence">The most commonly published background for the white-background image is pure white. Eight of fifteen sources call for pure white, and every source that prints a number prints RGB 255 255 255. The number is recent: every source dated 2017 to 2024 describes pure white in words and prints no value, and all three that print the triplet are dated 2026.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language first, collected 10 September 2026, counted by domain and grouped by publication date. Modal value with its agreement count, not a reading from the platform.</p>
+
+  <p>The harder question for a retoucher is how close to white is close enough, and there the sources split.</p>
+
+  <blockquote class="evidence">Thirteen of fifteen sources state no tolerance at all. One publishes a tolerance of plus or minus 3, counting 252 to 255 on each channel as passing, on a page whose own publisher gives 255 flat on its specification page. One says any near-white fails and describes a background at 254 254 255 as detectable. No source describes any value below 252 as acceptable.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language, collected 10 September 2026, each published tolerance position counted separately. Contested modal position, reported as the spread rather than a single value, not a reading from the platform.</p>
+
+  <p>Put those two positions together and one choice survives both.</p>
+
+  <blockquote class="evidence">RGB 255 255 255 is the only background value that no published reading rejects. A background at 252 passes the one published tolerance and fails the one published zero-tolerance reading. Clipping the background to pure 255 is therefore the one choice the published record does not contradict. That is a conclusion drawn from the spread, not a platform rule.</blockquote>
+  <p class="source">Source: derived from the published tolerance positions above, fifteen independent sources collected 10 September 2026, reasoning stated openly and resting on modal values rather than primary readings.</p>
+
+  <p>Clip to 255. It costs a retoucher nothing, and it is the only value on the published record that nobody says fails.</p>
+
+  <h2>Can a model appear in a white-background image?</h2>
+
+  <p>No, on every source that addresses it, and the prohibitions are the most consistent part of the whole record.</p>
+
+  <blockquote class="evidence">The prohibitions are the most consistent part of the published record. Nine of fifteen sources rule out text, watermarks, logos and promotional overlay. Seven rule out a model, six rule out shadows, six rule out spliced composites, and five rule out hangers, mannequins and tags. One extends the model ban to any body part at all, hands, feet, legs or a head.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language first, collected 10 September 2026, counted by domain for each prohibited element. Modal positions with their agreement counts, not a reading from the platform.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Prohibited element</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Text, watermarks, logos and promotional overlay</th>
+          <td>9 of 15</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">A model</th>
+          <td>7 of 15</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Shadows</th>
+          <td>6 of 15</td>
+          <td>consensus, with the contact shadow contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Spliced composites</th>
+          <td>6 of 15</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Hangers, mannequins and tags</th>
+          <td>5 of 15</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Any body part, including hands</th>
+          <td>1 of 15</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Reflections and glare</th>
+          <td>1 of 15</td>
+          <td>contested</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The shadow row carries a caveat worth reading before a retoucher removes one.</p>
+
+  <blockquote class="evidence">Whether a faint shadow directly under the product survives is not settled. Six of fifteen sources prohibit shadows with no exception. Two, both published in 2026, describe a light contact shadow as tolerated, and one of those two says the opposite on another of its own pages. Reflections and glare are named as prohibited on one source only.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language, collected 10 September 2026, counted by domain with self-contradicting publishers noted. Contested modal position, not a reading from the platform.</p>
+
+  <p>Six sources against two, with one of the two contradicting itself. Remove the shadow.</p>
+
+  <h2>How much of the frame should the product fill?</h2>
+
+  <p>Here the published guidance has changed shape over time, and the two shapes point in different directions.</p>
+
+  <blockquote class="evidence">Published fill guidance for the white-background image comes in two generations. Five pages dated 2017 to 2024 say the product should fill the frame and leave no white margin. Three pages dated 2026 give a number instead, 70 to 80 percent of the frame, which leaves 20 to 30 percent white. The full numeric spread runs from 60 to 80 percent, and no source states where either version came from.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language, collected 10 September 2026, grouped by publication date and reported as the spread rather than averaged. Contested for the figure, not a reading from the platform.</p>
+
+  <p>No margin against a fifth of the frame left white is not a small disagreement. The newer numeric guidance is the more cautious working choice, but neither version has a stated origin, so this page publishes the band and not a cap.</p>
+
+  <h2>A file weight that looks confirmed and is not</h2>
+
+  <blockquote class="evidence">The 38KB to 300KB file weight that circulates for the white-background image traces to a single origin. It appears on three of fifteen sources. The oldest is dated September 2017, and the two later pages repeat that page's size, format and prohibition list almost line for line. Other sources give a 3MB ceiling instead. Three pages restating one page are one data point, not three.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language, collected 10 September 2026, with each figure traced to its earliest dated appearance. Contested, originating once, not a reading from the platform.</p>
+
+  <p>A figure copied twice from a 2017 page looks like agreement in a count and is really one voice. Staying under 300KB satisfies both readings anyway.</p>
+
+  <h2>Where does Tmall use the white-background image?</h2>
+
+  <p>In recommendation, according to the sources. Not in search, according to none of them.</p>
+
+  <blockquote class="evidence">The white-background image is described as feeding recommendation and content channels on the Taobao app homepage. Eight of fifteen sources say so, with the channel names changing as the pages get newer. Six of fifteen say a listing without a compliant white image loses eligibility for those channels. No source in the collection says the image is used in search results, and none puts a number on the exposure lost.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese and English, collected 10 September 2026, counted by domain. Modal position with its agreement count, the absence stated with its count, not a reading from the platform.</p>
+
+  <p>The slot moves by category, and on JD it moves to the front.</p>
+
+  <blockquote class="evidence">Published category standards move the white-background image. A reproduction of the food standard puts it second. A 2017 tutorial puts it second for luggage, and apparel is published both as the fifth image (2017) and as the first (2026). On JD, every page naming a slot puts the white image first, against Tmall's fifth, five of five pages per platform with none contradicting.</blockquote>
+  <p class="source">Source: fifteen independent published sources collected 10 September 2026, one source per category map, and a separate twenty-four-page JD and Tmall collection from the same date. Contested for each category map, consensus for the JD against Tmall slot, not a reading from either platform.</p>
+
+  <h2>Why white-background images fail</h2>
+
+  <p>No rejection notice was obtained for this page, and none is reconstructed. No source ranks the causes either, so what follows is an unranked list.</p>
+
+  <blockquote class="evidence">No published source ranks why white-background images fail. Three of fifteen describe causes, as an unranked list: a background that is not pure white, a shadow, a model, text or a logo, a product too small in the frame, a duplicated product, and rough cutout edges. None says how often any of them occurs.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language, collected 10 September 2026. Stated as an unranked list with its count, not as a platform rejection taxonomy.</p>
+
+  <p>Each listed cause has a corresponding fix. The table below is an illustration of that checklist, built from the causes above, and not a record of any rejected listing.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Near miss</th>
+          <th scope="col">Compliant version</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Background at 250 or 252 on a channel</th>
+          <td>Background clipped to RGB 255 255 255</td>
+        </tr>
+        <tr>
+          <th scope="row">Faint contact shadow under the product</th>
+          <td>Shadow removed entirely</td>
+        </tr>
+        <tr>
+          <th scope="row">Product small in a sea of white</th>
+          <td>Product scaled into the 60 to 80 percent band</td>
+        </tr>
+        <tr>
+          <th scope="row">Brand logo or promotional text on the image</th>
+          <td>Image carries the product only</td>
+        </tr>
+        <tr>
+          <th scope="row">Soft or jagged cutout edge</th>
+          <td>Clean edge at full resolution</td>
+        </tr>
+        <tr>
+          <th scope="row">Product shown twice in one frame</th>
+          <td>One product, one view</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The <a href="/resources/insights/tmall-product-image-requirements">Tmall product image requirements article</a> covers the other four main images and the detail page. The <a href="/resources/insights/jd-image-requirements-vs-tmall">article comparing JD image requirements with Tmall</a> covers the slot difference between the two platforms. The <a href="/solutions/ai-production/image">AI image production page</a> covers producing clean white-background variants from an approved master.</p>
+
+  <p>Reviewed 10 September 2026. Confirm every figure in your own seller backend before building a batch to it.</p>
+
+  <h2>Questions sellers ask about the white-background image</h2>
+
+  <h3>What is a white-background image on Tmall?</h3>
+
+  <p>A main image with its own rule set, most often published as the fifth image in a general-category listing. Fourteen of fifteen sources collected on 10 September 2026 treat it as a separate deliverable. Category standards move it, with food published at the second slot, and on JD every source naming a slot puts it first.</p>
+
+  <h3>Does the white background have to be pure white?</h3>
+
+  <p>Every source describing it says pure white, and every source printing a number gives RGB 255 255 255. Tolerance is contested: one source allows 252 to 255, another says any near-white fails. Clipping to 255 is the only value no published reading rejects, which is a conclusion from the sources, not a rule.</p>
+
+  <h3>Can a model appear in a white-background image?</h3>
+
+  <p>No. Seven of fifteen sources rule out a model, and one extends the ban to any body part, including hands. The same record rules out text, watermarks, logos, spliced composites, hangers, mannequins and tags, and six sources prohibit shadows, with a faint contact shadow described as tolerated on only two.</p>
+
+  <h3>Where does Tmall use the white-background image?</h3>
+
+  <p>Eight of fifteen sources describe it feeding recommendation and content channels on the Taobao app homepage, and six say a listing without a compliant one loses eligibility for them. No source says it is used in search results, and none puts a number on the exposure lost.</p>
+</ArticleLayout>

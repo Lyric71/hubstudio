@@ -27,7 +27,7 @@ where the white-background image sits in the carousel.
 
 ## How to read these numbers
 
-These specs are not read from a seller backend. Both platform rule centres
+These specs are not read from a seller backend. Both platform rule centers
 gate their rule text behind a seller login, so no open source reaches the
 official value.
 
@@ -43,8 +43,8 @@ Before you build a batch to any number on this page, open your own seller
 backend and confirm it there. Reviewed 10 September 2026.
 
 > Neither platform publishes its image rules where a buyer can read them.
-> On 10 September 2026 the Tmall rule centre redirected twice and returned no
-> rule body, and two different JD merchant rule pages returned the rule-centre
+> On 10 September 2026 the Tmall rule center redirected twice and returned no
+> rule body, and two different JD merchant rule pages returned the rule-center
 > heading and nothing else. Every figure below is the most commonly published
 > value, not a value read from a platform.
 > Source: 24 published pages carrying at least one JD or Tmall image spec, 23
@@ -375,7 +375,7 @@ METHOD, PER DEVIATION 7 IN CLAUDE.md: every value is the most commonly published
   figure across 24 pages, 23 Chinese-language, collected 10 September 2026. The
   SPEC.md disclaimer block runs verbatim immediately after the opening answer
   and before the first spec table, with NN = 24. No value is described as
-  official, required, verified or read from a platform, and neither rule centre
+  official, required, verified or read from a platform, and neither rule center
   is cited as the source of any number.
 
 THE AD CREATIVE ROW IS WHERE THE MODE IS WRONG, and the page says so. Five

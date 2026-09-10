@@ -121,7 +121,7 @@ That production also shows what generation does not finish.
 
 > That same production still needed rotoscoping, artifact removal, retiming of
 > clips that had rendered in unintended slow motion, manual cropping to create
-> camera moves, colour grading and an added grain treatment, and it ran at 480p
+> camera moves, color grading and an added grain treatment, and it ran at 480p
 > before an external upscale.
 > Source: the same trade-publication interview, April 2024, the team's own
 > account of its post pipeline.
@@ -211,7 +211,7 @@ because the work is free.
 | Rotoscoping and artifact cleanup | No |
 | Retiming and crop-based camera moves | No |
 | Upscale and finishing | No |
-| Colour grade and grain | No |
+| Color grade and grain | No |
 | Sound design, music and mix | No |
 | Rights clearance and talent releases | No |
 | Versioning and cutdowns | No |

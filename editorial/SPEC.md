@@ -161,16 +161,36 @@ cells, no more than five columns.
 
 Every article publishing a China platform spec value carries this block,
 immediately after the opening answer and before the first spec table. Copy it
-word for word, changing only the platform names, the source count and the date.
-See deviation 7 in `CLAUDE.md` for why these numbers are modal rather than
-primary.
+word for word, changing only the platform names, the source count, the date,
+and the first paragraph, which has two forms. See deviation 7 in `CLAUDE.md`
+for why these numbers are modal rather than primary.
+
+**Which first paragraph.** The marketplace form below is for Tmall, JD and any
+platform that gates rule text behind a seller login. For a social platform
+(RedNote, Douyin, WeChat, Weibo), "seller backend" is wrong and "rule centers"
+is not what failed, so use the social form, and write "creator account" in place
+of "seller backend" in the closing paragraph:
+
+> These specs are not read from a creator backend. PLATFORM's own creator and
+> help surfaces serve no specification text to anyone not logged in, so no open
+> source reaches the official value for the app.
+
+**When a platform page IS readable.** Research has found readable platform text
+on some surfaces: Douyin's upload API documentation, WeChat's Channels help
+center and developer docs, Weibo's help center. Do not rewrite the block to
+cover them, and never let a readable page make the whole article sound verified.
+Keep the block, then add one paragraph directly after it naming each readable
+page, what it covers, and that its rows are labeled primary for that scope only.
+Where the readable page contradicts the social form's claim that nothing is
+served, change that one sentence to say which surfaces were readable and which
+were not, and log the change in the research file's R8.
 
 ```
 <!-- SECTION: How to read these numbers -->
 
 ## How to read these numbers
 
-These specs are not read from a seller backend. Both platform rule centres
+These specs are not read from a seller backend. Both platform rule centers
 gate their rule text behind a seller login, so no open source reaches the
 official value.
 

@@ -44,6 +44,40 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'douyin-video-specs-safe-zones',
+    image: '/Images/insight-douyin-video-specs-safe-zones.webp',
+    imageAlt:
+      'A tall black-and-white print of a young woman in a linen shirt on a wooden bench, under two clear acetate sheets carrying hand-drawn white and orange margin rectangles that do not line up, one corner lifted by a hand.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Douyin Video Specs and Safe Zones',
+    deck: 'Search for Douyin video specs in English and you get TikTok\'s numbers. Here is what Douyin sources publish, and the safe box that clears both.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Douyin Video Specs and Safe Zones | hubStudio',
+    metaDescription:
+      'Douyin video ratio, resolution, duration and file limits, a derived safe box, and why most safe-zone figures online are TikTok\'s.',
+  },
+  {
+    slug: 'tmall-white-background-image-rules',
+    image: '/Images/insight-tmall-white-background-image-rules.webp',
+    imageAlt:
+      'A plain white canvas sneaker on a white paper sweep in a studio, with a hand holding two swatch cards behind it, one pure white and one faintly warm, beside a light stand and a gray card.',
+    category: 'Platform specs',
+    tone: 'orange',
+    title: 'Tmall White Background Image Rules',
+    deck: 'Tmall\'s white-background image is its own deliverable. Fifteen sources agree on what it forbids and split on tolerance, fill and file weight.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Tmall White Background Image Rules | hubStudio',
+    metaDescription:
+      'Tmall\'s white-background image has its own rules: the white value, what it forbids, fill guidance and what failing it costs, counted across 15 sources.',
+  },
+  {
     slug: 'tmall-product-image-requirements',
     image: '/Images/insight-tmall-product-image-requirements.webp',
     imageAlt:
@@ -51,7 +85,7 @@ export const insights: Insight[] = [
     category: 'Platform specs',
     tone: 'navy',
     title: 'Tmall Product Image Requirements 2026',
-    deck: 'Tmall\'s rule centre shows nothing without a seller login. Here is what eighteen published sources say, counted row by row, with the disagreements left in.',
+    deck: 'Tmall\'s rule center shows nothing without a seller login. Here is what eighteen published sources say, counted row by row, with the disagreements left in.',
     date: 'September 10, 2026',
     dateISO: '2026-09-10',
     readingTime: '10 min read',
@@ -64,7 +98,7 @@ export const insights: Insight[] = [
     slug: 'rednote-note-cover-specs',
     image: '/Images/insight-rednote-note-cover-specs.webp',
     imageAlt:
-      'A vertical print of a ceramic cup on a folded napkin lying on a drafting table under three overlapping crop masks, two cardboard frames and a paper strip, so only the centre of the picture stays visible under all of them.',
+      'A vertical print of a ceramic cup on a folded napkin lying on a drafting table under three overlapping crop masks, two cardboard frames and a paper strip, so only the center of the picture stays visible under all of them.',
     category: 'Platform specs',
     tone: 'orange',
     title: 'RedNote Note and Cover Specs 2026',
@@ -183,7 +217,7 @@ export const insights: Insight[] = [
     slug: 'content-credentials-c2pa-in-production',
     image: '/Images/insight-content-credentials-c2pa-in-production.webp',
     imageAlt:
-      'Five identical prints of the same grey stone laid in a row on a scratched workbench, each with its paper tag progressively more detached, from neatly tied at one end to a bare print with no tag at the other.',
+      'Five identical prints of the same gray stone laid in a row on a scratched workbench, each with its paper tag progressively more detached, from neatly tied at one end to a bare print with no tag at the other.',
     category: 'Rights',
     tone: 'navy',
     title: 'Where C2PA Survives in a Real Pipeline',

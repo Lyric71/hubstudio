@@ -138,7 +138,7 @@ If the work touches China, ambiguity works against you rather than for you.
 
 > Under Articles 1019, 1021 and 1022 of China's Civil Code, in force since
 > 1 January 2021, a person's likeness may not be made, used or published without
-> consent; where a licence clause is disputed, it is construed in favor of the
+> consent; where a license clause is disputed, it is construed in favor of the
 > person portrayed; and a term that was never agreed or is unclear can be ended
 > on reasonable notice.
 > Source: the Civil Code of the People's Republic of China, articles as
@@ -373,7 +373,7 @@ Ask for territory, platforms, duration and whether the person was represented.
 California Labor Code 927 makes a replica clause unenforceable unless the
 intended uses are described with reasonable specificity and the person had
 counsel or union representation, and China's Civil Code construes a disputed
-licence clause in favor of the person portrayed.
+license clause in favor of the person portrayed.
 
 **What questions cover data residency?**
 

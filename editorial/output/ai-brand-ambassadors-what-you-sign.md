@@ -424,7 +424,7 @@ in the mid foreground sits a single sheet of cream paper covered in dense
 handwritten lines with a signature line ruled across the bottom, a pen lying
 diagonally across it, the handwriting reading as writing but not legible as any
 language; behind the rig stand a folded reflector, a coiled cable looped over a
-light stand, a stack of empty grey seamless paper rolls against the wall and a
+light stand, a stack of empty gray seamless paper rolls against the wall and a
 draped dust sheet over a second stand; the room is plainly used, with scuffed
 paint, tape residue on the floor and dust in the light; shot on a full frame
 camera with a 35mm prime at f/2.8, sharp on the paper and the nearest cameras

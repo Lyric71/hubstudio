@@ -467,7 +467,7 @@ Guangdong, shot from a low three-quarter angle at about waist height; in the
 foreground on a scratched steel table sits a small unbranded cosmetic bottle on
 a plain sweep of seamless paper, lit by a single softbox just off frame to the
 left that throws one clean directional shadow to the right across the paper; a
-grey card and a folded strip of gaffer tape lie beside it; about two meters
+gray card and a folded strip of gaffer tape lie beside it; about two meters
 behind the table, in soft focus, sits an open cardboard shipping carton on a
 low trolley with more identical unbranded bottles still nested in moulded pulp
 trays, packing foam spilling over the lip, and behind that a roller shutter and
@@ -477,7 +477,7 @@ room rather than a showroom, with a light stand leg, a sandbag and a coiled
 power cable visible at the frame edges; a person stands half out of frame at
 the right, cropped at the shoulder so no face is visible, one hand adjusting
 the bottle on the sweep, sleeves pushed up, short unpainted nails; shot on a
-full frame camera with a 50mm prime at f/2.8, sharp on the bottle and the grey
+full frame camera with a 50mm prime at f/2.8, sharp on the bottle and the gray
 card with the carton and shutter falling well soft, rule-of-thirds framing with
 the upper left third left as plain wall for typography; warm shadows,
 desaturated midtones, lifted black point, fine natural film grain, daylight

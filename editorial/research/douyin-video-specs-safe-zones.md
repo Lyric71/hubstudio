@@ -597,3 +597,59 @@ Chinese term needed for this brief is mapped here.
 | guanfang tuijian | officially recommended | The phrase attached, without a citation, to 1Mbps |
 
 ## R8. Reconciliation (filled after drafting)
+
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**All nine cleared blocks shipped** with attributions unchanged, each carrying
+its count, languages, date, and whether it is modal, a scoped primary reading or
+a derivation.
+
+**The disclaimer block runs after the opening answer** with NN = 12 and the date
+10 September 2026, in the social-platform form now recorded in SPEC.md ("creator
+backend", "creator account"), followed by a short paragraph naming the one
+primary row and its scope.
+
+**The H1, meta and angle were changed from the brief, because they asserted a
+measurement nobody has made.** "Why a TikTok cut fails" and the angle "state
+plainly that Douyin is not TikTok in UI overlay geometry" both claim the two
+apps' interfaces were compared. They were not. Only the published figures
+differ, and the page says exactly that in the substitution section. The draft
+meta, which opened "Douyin is not TikTok" and promised "an annotated safe-zone
+map with pixel offsets", was rewritten.
+
+**The API documentation stays scoped every time it appears.** The 4GB, 300MB
+chunk, MP4 or WebM and 15-minute figures are stated as governing the upload API
+route only in the blockquote, in the body copy after it, in the duration row
+note, and in the duration FAQ answer.
+
+**The pixel-offset diagram became two derived safe boxes**, each labeled as a
+derivation in the blockquote source line and in the body copy after the table.
+No top or bottom pixel figure is printed as Douyin's own, and no right-rail
+width is printed for Douyin anywhere. TikTok figures appear only twice, the
+270-pixel bottom inset inside the caption arithmetic and the 100 to 140 pixel
+rail range in the substitution finding, and both are attributed to TikTok pages.
+
+**One spec row comes from the research spec table rather than a cleared
+blockquote**: maximum resolution, frame rate and codec at one source each,
+labeled contested. It is in this file's table with that count.
+
+**Sound was published as an absence.** None of twelve sources publishes a
+sound-on assumption, and the burned-in caption advice is framed as a production
+choice.
+
+**The re-export checklist is introduced as derivations and production choices,
+not platform instructions.** Every pixel value in it comes from the derived
+boxes or the published insets above.
+
+**The hero was regenerated once.** The first image used a subject who read as
+Western, a poor fit for a Douyin article and for the project's imagery
+direction. The prompt now specifies a young Chinese woman, and the second image
+was accepted.
+
+**The brief's third link does not exist.** /resources/specs was replaced by the
+published RedNote specs article, which covers the same crop problem.
+
+**Nothing from the do-not-publish list reached the draft**: no "1080x1464", no
+"85 percent of traffic", no "22 percent lower completion", no rejection reasons
+written as enforcement, no quarantined domain, and no hubStudio rate.

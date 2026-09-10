@@ -2,7 +2,7 @@
 title: Tmall Product Image Requirements 2026
 slug: tmall-product-image-requirements
 description: Tmall main image size, the five slots, detail page widths, file weight and prohibited elements, counted across 18 published sources and dated.
-excerpt: Tmall's rule centre shows nothing without a seller login. Here is what eighteen published sources say, counted row by row, with the disagreements left in.
+excerpt: Tmall's rule center shows nothing without a seller login. Here is what eighteen published sources say, counted row by row, with the disagreements left in.
 template: insight
 ---
 
@@ -27,7 +27,7 @@ fifth is a separate white-background deliverable with rules of its own.
 
 ## How to read these numbers
 
-These specs are not read from a seller backend. Both platform rule centres
+These specs are not read from a seller backend. Both platform rule centers
 gate their rule text behind a seller login, so no open source reaches the
 official value.
 
@@ -42,16 +42,16 @@ specs change without announcement and often without an English notice at all.
 Before you build a batch to any number on this page, open your own seller
 backend and confirm it there. Reviewed 10 September 2026.
 
-> The two platform rule centres a buyer would check are published at public web
+> The two platform rule centers a buyer would check are published at public web
 > addresses and serve no rule text without a seller session. On 10 September
-> 2026 the Tmall rule centre redirected twice and returned no rule body, and
-> two different JD merchant rule pages returned the rule-centre heading and
+> 2026 the Tmall rule center redirected twice and returned no rule body, and
+> two different JD merchant rule pages returned the rule-center heading and
 > nothing else.
 > Source: direct unauthenticated fetches of rule.tmall.com and rule.jd.com, 10
 > September 2026, four requests across two platforms, redirect chain and
 > response body recorded.
 
-So the rule centre appears on this page only as the thing that could not be
+So the rule center appears on this page only as the thing that could not be
 read. None of the numbers below came from it.
 
 <!-- SECTION: main images -->
@@ -207,7 +207,7 @@ advertising law rather than from the platform alone.
 > Image rules move by category, and the movement is in the slot map rather than
 > the pixel count. Reproductions of two category standards put the
 > white-background image in the second slot, not the fifth: the food standard
-> follows it with a legible label image showing ingredients and licence number,
+> follows it with a legible label image showing ingredients and license number,
 > and the large-appliance standard follows it with the compulsory certification
 > mark and then the energy label. A ratio change dated September 2024 moved
 > roughly 70 categories to square-first display while about ten, including
@@ -332,7 +332,7 @@ teapot styled on a warm wooden surface, partly overlapping the first; a single
 hard daylight source enters from the upper left just outside the frame, throwing
 one clean directional shadow from the caliper, the ruler and the loupe across
 the prints and leaving the lower right of the table frame in warm falloff; the
-table frame around the glass is worn grey metal with scratches, tape residue and
+table frame around the glass is worn gray metal with scratches, tape residue and
 dust; one hand with short unpainted nails enters from the bottom edge, thumb and
 forefinger adjusting the caliper jaw; shot on a full frame camera with a 50mm
 prime at f/4, focus on the caliper and the edge of the square print with the
@@ -380,7 +380,7 @@ H1, META AND EXCERPT CHANGED FROM THE BRIEF: the working H1 was "the complete
   deviation 7 these are counted published values, not a complete or verified
   sheet, so both overclaimed. The H1 now reads "counted across 18 sources" and
   the meta names the count. The brief's angle also promised to cite the Taobao
-  Rule Center. It cannot: the rule centre gated its text, and it appears only as
+  Rule Center. It cannot: the rule center gated its text, and it appears only as
   the thing that could not be read.
 
 THE BRIEF'S FILE-CAP AND FILL-RATIO BAN: the brief said not to publish the file

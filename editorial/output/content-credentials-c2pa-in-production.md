@@ -61,7 +61,7 @@ it, which is exactly the procedure nobody currently runs.
 | Publicly measured | Yes, with dated controlled audits | No, on any platform |
 | How you check it | Look at the post | Download the file back and inspect it |
 | What it tells a viewer | The platform's own label, if shown | Nothing unless a tool reads the file |
-| What it tells your team | How the surface treats your disclosure | Whether your record travelled with the asset |
+| What it tells your team | How the surface treats your disclosure | Whether your record traveled with the asset |
 
 > The photo industry's standing social media metadata test, the one published
 > procedure that uploads a file with known fields, saves it back through the
@@ -358,7 +358,7 @@ IMAGE PROMPT (use verbatim):
 
 An overhead editorial photograph of a narrow workbench in a Shanghai studio,
 shot straight down along its length so the bench runs left to right across the
-frame, showing five identical small photographic prints of the same plain grey
+frame, showing five identical small photographic prints of the same plain gray
 stone laid out in a row at even intervals; the leftmost print has a small cream
 paper tag neatly tied to its corner with waxed thread and lying flat against
 it, the second print has its tag still attached but curling away, the middle

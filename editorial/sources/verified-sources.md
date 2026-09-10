@@ -677,3 +677,78 @@ TikTok figures are excluded from every count. Full tallies in
 | Douyin renders at 1080x1464 on some surfaces | One English sentence in a TikTok cover guide | Single source, no surface, no method | 2026-09-10 |
 | An annotated overlay diagram described as measured from live app captures | Brief 05 slot requirement | No capture exists. Label any diagram as the derived intersection | 2026-09-10 |
 | "85 percent of content traffic is 9:16", "22 percent lower completion" for safe-zone violations | A Chinese design vendor and a TikTok guide | No sample, period or method | 2026-09-10 |
+
+## WeChat specs: Official Account, Channels, Mini Program (added 2026-09-10, brief 08)
+
+Rows marked primary are readings of publicly served WeChat or Tencent pages,
+each scoped to exactly what that page covers. Every other row is a **modal
+published value** under deviation 7 in `../CLAUDE.md`. Full tallies in
+`research/wechat-specs-articles-channels-mini-program.md`.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Channels posting requirements: video 3s to 60 min on the phone, 3s to 8h on the desktop Channels assistant, max 2G, recommended 16:9 or 9:16 at 1080p and above, ratio 0.33 to 3.0, image posts up to 20 images, GIF and HDR not supported, format and codec unrestricted | "WeChat's Channels help centre, read 10 September 2026" | findeross.weixin.qq.com help-centre article on posting requirements for video and image posts | 2026-09-10 (page undated) | primary, scoped to that article. A 30-minute older-device line appeared in one of two renderings, unconfirmed | 2026-09-10 | | 08 |
+| Official Account upload-material API: image 10M (bmp, png, jpeg, jpg, gif), voice 2M and 60s, video 10MB MP4, thumb 64KB JPG, library ceiling 100,000 article and image items, 1,000 other | "WeChat's developer documentation for the Official Account upload API, read 10 September 2026, API route only" | developers.weixin.qq.com/doc/subscription/en/api/material/permanent/api_addmaterial.html, plus the temporary-media page (same limits, 3-day retention) | 2026-09-10 (undated) | primary, API route only. Never the editor's limits | 2026-09-10 | | 08 |
+| Official Account uploadimg API: article body images jpg or png, under 1MB, outside the 100,000 library ceiling | Same, API route only | developers.weixin.qq.com/doc/subscription/en/api/material/permanent/api_uploadimage.html | 2026-09-10 (undated) | primary, API route only | 2026-09-10 | | 08 |
+| Tencent customer-service FAQ on article editing: suggested cover 900x500, compressed to a 640px-wide thumbnail, bmp png jpeg jpg gif, cover and body images within 5M, summary up to 120 characters, first 54 characters used when blank, GIF shown as original | "a Tencent customer-service FAQ, undated, still served 10 September 2026" | kf.qq.com/faq/161220AVNfeI161220AVvAr6.html | 2026-09-10 (undated; never state a year) | primary, stale. Origin of the 900x500 and 5M figures still repeated. Superseded on the cover ratio | 2026-09-10 | | 08 |
+| Mini Program share image: PNG or JPG, displayed at 5:4, default is a page screenshot. No pixel size | "WeChat's Mini Program framework reference, read 10 September 2026" | developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html, onShareAppMessage imageUrl | 2026-09-10 (undated) | primary, scoped to the custom share image | 2026-09-10 | | 08 |
+| Mini Program tabBar icon: 40KB, recommended 81px x 81px, no network images, 2 to 5 tabs | "WeChat's Mini Program configuration documentation, read 10 September 2026" | developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html | 2026-09-10 (undated) | primary, tab bar icons only | 2026-09-10 | | 08 |
+| Moments regular image ads: 800x800 (1:1), 960x1280 (3:4), 1280x960 (4:3), 1280x1024 (5:4), 1024x1280 (4:5), 720x1280 (9:16), 1280x720 (16:9) | "a Tencent Marketing School note dated January 2023" | eschool.qq.com/Solution/ListDetail/pd-7815 | 2023-01-05, read 2026-09-10 | primary, scoped to that note and its date | 2026-09-10 | | 08 |
+| Official Account lead cover 2.35:1 at 900x383: 2.35:1 on 8 of 11 domains, 900x383 on 7, every source dated 2021 or later | "the most commonly published figure across independent sources in Chinese and English, collected September 2026, modal not primary" | 12 domains in the research file | 2026-09-10 | modal, consensus, split by date | 2026-09-10 | | 08 |
+| Secondary article cover 1:1 on 11 of 11 domains, 200x200 on 8 of 10 giving a size | Same method line | 11 domains | 2026-09-10 | modal, consensus | 2026-09-10 | | 08 |
+| Editor cover and body file caps: 5MB on 4 domains (3 dated 2017 to 2020, restating the FAQ), 10MB on 3, 2MB on 1 | "the spread, grouped by page age, collected September 2026" | 6 domains | 2026-09-10 | contested, FAQ echo | 2026-09-10 | | 08 |
+| Body image width 900px on 5 domains (3 dated 2017 to 2020), 1080px on 3 (all 2026), 400px on 1 English | "modal, contested by date, collected September 2026" | 8 domains | 2026-09-10 | contested | 2026-09-10 | | 08 |
+| Centred square cut from the lead cover for some views: principle on 6 domains, no agreement on surface or size (383, 500, 766) | "consensus on the principle only" | 6 domains | 2026-09-10 | consensus on principle, contested on number | 2026-09-10 | | 08 |
+| Channels launch-era figures still published: 1 minute and 30MB (2020), 6:7 at 1080x1260 "official" (2022, restated 2026), 9 images; 1 hour and 2GB reported September 2021 | "an observation about published sources, compared against the help centre, 10 September 2026" | 7 domains | 2026-09-10 | observation | 2026-09-10 | | 08 |
+| Mini Program share card 500x400, avatar 144x144, banner 16:9 or 750x350 | "contested, extracts or one domain each" | 1 fetched domain plus extracts | 2026-09-10 | contested | 2026-09-10 | | 08 |
+
+### Do not publish, added from brief 08
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Official Account API limits (64KB thumb, 1MB uploadimg, 10M image) as editor limits | The API docs, restated as editor rules on vendor pages | The docs govern API routes only | 2026-09-10 |
+| 900x500 as the current Official Account cover | An undated Tencent FAQ and three pages from 2017 to 2020 | Superseded by 2.35:1 before March 2020 on the published record | 2026-09-10 |
+| A year for the 2.35:1 change or for the FAQ | Not found. The FAQ id pattern is an inference | No dated source | 2026-09-10 |
+| 6:7 at 1080x1260 as Channels' official frame, and "Channels crops 9:16" as current fact | Pages from 2020 to 2022, one 2026 vendor page | The Channels help centre now recommends 16:9 or 9:16 | 2026-09-10 |
+| Channels 4GB, 30 minutes on phone, 2 hours on desktop | One 2026 media-service page | Contradicts the help centre on all three | 2026-09-10 |
+| Channels 15 to 60 seconds, under 10MB, 20 minutes, 500MB | English pages and extracts | Ad advice or unsourced extracts | 2026-09-10 |
+| 500x400 or 144x144 as WeChat's own Mini Program sizes | Vendor pages and extracts | The platform states a 5:4 ratio only, and no avatar size was found in a platform doc | 2026-09-10 |
+| Official Account, Channels or Mini Program ad specs | Tencent Ads help centre | Redirected to its root, no rule body reached | 2026-09-10 |
+
+## Weibo image and video specs, primary help-centre readings and modal values (added 2026-09-10, brief 09)
+
+Rows marked **primary** are readings of a platform-owned page fetched
+unauthenticated on 2026-09-10, scoped to what that page covers, with the page's
+own last-updated date. Every other row is a **modal published value** under
+deviation 7 in `../CLAUDE.md`. Full tallies in
+`research/weibo-image-video-specs.md`.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Posting image posts: gif, jpg, png accepted; a single image must be under 20M; images within a 1:3 width-to-height threshold can take a focus point, super-long images cannot | "Weibo's customer service centre article on posting image posts, updated 1 April 2026, read 10 September 2026" | kefu.weibo.com/faqdetail?id=12483 | page 2026-04-01, read 2026-09-10 | primary, scoped to that help article. It does not say what the focus point controls | 2026-09-10 | | 09 |
+| A single image over 30M is compressed; total size across images unlimited; judged per image | "Weibo's help-centre article on the view-original option, updated 19 May 2025" | kefu.weibo.com/faqdetail?id=21265 | page 2025-05-19, read 2026-09-10 | primary, scoped. Does not reconcile with the 20M ceiling on the 2026 page. Publish both with dates | 2026-09-10 | | 09 |
+| Video upload: up to 15G from PC, up to 4G from phone; phone rejects videos under 3 seconds; title at least 6 characters; vertical video cover 3:4, horizontal cover 16:9 or 4:3, no horizontal cover on vertical video; 2K and 4K offered above 1080p subject to unquantified playback thresholds | "Weibo's help-centre video upload FAQ, updated 1 July 2024" | kefu.weibo.com/faqdetail?id=21503 | page 2024-07-01, read 2026-09-10 | primary, scoped. No maximum duration, formats, frame ratio or bitrate on the page | 2026-09-10 | | 09 |
+| Open Platform API docs: statuses/share image under 5M, JPEG GIF PNG, 140 characters (2022-06-09); statuses/upload 5MB, one picture (2012-08-01); upload video file under 1G (2012-08-22); V1 update_profile_image under 700K, over 500px scaled (2011-01-21) | "Weibo Open Platform documentation for the named API, API route only" | open.weibo.com/wiki pages as named | 2011 to 2022, read 2026-09-10 | primary, API routes only. Never an app limit | 2026-09-10 | | 09 |
+| tui.weibo.com help document served a title and no body text | "direct unauthenticated fetch, 10 September 2026" | tui.weibo.com/more/help?document_id=538 | 2026-09-10 | primary, as a negative observation | 2026-09-10 | | 09 |
+| Per-image cap in non-platform pages splits by date: 5MB on 3 domains dated 2015 to 2022 (one an English extract), 20MB on 2 domains dated 2025 to 2026 | "the spread, grouped by page age, collected September 2026" | 5 domains | 2026-09-10 | modal, contested, and the 5MB side matches the API docs | 2026-09-10 | | 09 |
+| Up to 18 images per post: 7 domains, all tracing to one October 2019 launch (accounts over 100,000 followers at launch, feed shows nine) | "published on 7 independent sources, every one tracing to the October 2019 launch, eligibility today unconfirmed" | 7 domains | 2026-09-10 | consensus on 18, originating once; contested on eligibility | 2026-09-10 | | 09 |
+| Multi-image posts of 2 to 9 show square tiles: 2 fetched domains (c. 2016 to 2018 and 2022) plus 2 tutorial extracts; centre crop stated explicitly by 1; no source describes a letterbox grid | "grouped by mechanism, collected September 2026, not a platform reading" | 4 domains | 2026-09-10 | consensus on square tiles, contested on mechanism | 2026-09-10 | | 09 |
+| GIF cap 5MB on 2 domains (2022, 2025); primary help page names no separate GIF cap | Same method line | 2 domains | 2026-09-10 | contested | 2026-09-10 | | 09 |
+| Avatar: 400x400 on 2, 200x200 on 1 plus 1 extract, 180x180 on 1 | Same method line | 4 domains plus 1 extract | 2026-09-10 | contested | 2026-09-10 | | 09 |
+| Homepage cover: 920x300 on 4 (2 extract, fetched pages 2025 to 2026), 980x300 on 3 (1 extract, pages 2022 to 2024), 980x368 on 1 (2022) | "the spread, grouped by page age" | 8 domains | 2026-09-10 | contested, split by date | 2026-09-10 | | 09 |
+| Headline article cover: 980x560 on 3 (1 extract), 980x550, 900x500 and 1000x562 on 1 each; all between 1.75:1 and 1.8:1 | Same method line | 6 domains | 2026-09-10 | contested on pixels, consensus on the ratio band | 2026-09-10 | | 09 |
+| Derived: a 1:1 upload is the only multi-image shape left unchanged under every published grid account | "derived from the grid camps, a safe intersection, not a platform rule" | Derived | 2026-09-10 | derived | 2026-09-10 | | 09 |
+
+### Do not publish, added from brief 09
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Weibo's image cap is 5MB | A 2022 English guide, 2015 and older roundups | Matches 2012 and 2022 API docs. The April 2026 help centre says 20M | 2026-09-10 |
+| 140 characters, 1G video, 700K avatar as Weibo app limits | Open Platform API docs | API routes only, mostly 2011 to 2012 | 2026-09-10 |
+| A maximum video duration (15 minutes) as Weibo's | One extract, publisher not isolated | The help-centre FAQ states no maximum | 2026-09-10 |
+| 500M video cap as current | Undated crowd answers | Contradicted by the 2024 help-centre FAQ (15G PC, 4G phone) | 2026-09-10 |
+| Ad creative specs as Weibo's | One 2023 agency page copied on two more agency sites | Single origin, ad centre unreachable | 2026-09-10 |
+| The 100,000-follower threshold for 18 images as a 2026 rule | 2019 launch news | No later source confirms it | 2026-09-10 |
+| Any CPM or CPE price for Weibo ads | English agency guides | Pricing is off the site and the figures carry no method | 2026-09-10 |
+| "Officially suggested" 1000x562 headline image | One design tool extract | "Official" with no official page | 2026-09-10 |
+| Web-era sizes (120x120 in-stream, 560x260 banner, 120px and 440px thumbnails, 2048px width) as current | 2015 post mirrored on three hosts, English roundups | Eleven years old, web-era layout | 2026-09-10 |

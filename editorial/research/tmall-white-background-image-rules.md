@@ -569,3 +569,50 @@ project rule. Every Chinese term this brief needs is mapped here.
 | fuzhuang | apparel | Fifth on a 2017 page, first on a 2026 page |
 
 ## R8. Reconciliation (filled after drafting)
+
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**All twelve cleared items shipped.** Blocks 1 to 11 run with attributions
+unchanged. Block 12, the rule-center gating quotation reused from brief 01, runs
+verbatim except that "centre" is spelled "center" to match American English site
+copy. Every block carries its count, languages, date and the modal-not-primary
+statement, and block 4 is labeled as a conclusion drawn from the spread.
+
+**The disclaimer block runs after the opening answer** with NN = 15 and the
+date 10 September 2026.
+
+**The H1, meta and angle were changed from the brief.** "The Tmall rule most
+brands fail" asserted a failure frequency no source measures, and became
+"Tmall's separate rule set, counted". The draft meta called the image "a
+separate Tmall requirement", but the sources do not agree it is mandatory, so
+the meta now says it "has its own rules". The brief's angle promised to explain
+what the image does in search. Zero of fifteen sources say it is used in search,
+so the page states that absence in the body and in the FAQ.
+
+**The white value is published exactly as cleared.** Pure white in words on
+eight sources, the RGB 255 triplet printed only on 2026 pages, the tolerance
+split published as a disagreement, and 255 given as the only value no published
+reading rejects, labeled as a derivation. The plus or minus 3 tolerance and the
+contact shadow are never presented as allowed.
+
+**The before-and-after was met with an illustration table**, introduced in body
+copy as built from the published failure causes and not as a record of any
+rejected listing. Every near-miss row maps to a cause in block 11, and the fill
+row points at the contested 60 to 80 percent band rather than a cap.
+
+**Failure causes run as an unranked list.** No rejection notice was obtained,
+none is reconstructed or described, and the page says so.
+
+**The file weight is published as one origin.** The 38KB to 300KB figure is
+described as a 2017 page restated twice, and the page says three restatements
+are one data point.
+
+**Both brief links were missing.** /solutions/platforms/tmall and
+/resources/specs do not exist. The two published Tmall and JD spec articles
+were substituted, alongside the AI image production page.
+
+**Nothing from the do-not-publish list reached the draft**: no traffic figure,
+no 20-character appeal, no 15-day review, no claim that some categories cannot
+list without the image, no figure from hubStudio's ecommerce design service page,
+no quarantined domain, and no hubStudio rate.

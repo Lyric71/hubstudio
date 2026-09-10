@@ -43,11 +43,11 @@ specs change without announcement and often without an English notice at all.
 Before you build a batch to any number on this page, open your own creator
 account and confirm it there. Reviewed 10 September 2026.
 
-> Four platform-owned RedNote surfaces, the creator centre, the advertiser
-> centre, the help centre and the seller and creator school, each returned a
+> Four platform-owned RedNote surfaces, the creator center, the advertiser
+> center, the help center and the seller and creator school, each returned a
 > normal 200 response and a JavaScript application shell to an unauthenticated
 > request on 10 September 2026. No specification text was served. The only pixel
-> values in the delivered help-centre file were stylesheet breakpoints.
+> values in the delivered help-center file were stylesheet breakpoints.
 > Source: direct unauthenticated fetches of four platform-owned surfaces, 10
 > September 2026, response size and body content recorded per request. Primary
 > observation, not a specification.
@@ -109,9 +109,9 @@ not merely disagree on a number here. They disagree on what happens at all.
 
 > Ten published sources describe what RedNote does to a note cover, and they
 > split into three incompatible accounts: that the feed shows the full 3:4 card
-> and the profile grid takes a centre 1:1 crop, that the feed shows the full card
+> and the profile grid takes a center 1:1 crop, that the feed shows the full card
 > with interface chrome laid over the lower 15 to 20 percent, and that the feed
-> itself lifts a centre 1:1 square out of the first image. Four sources back the
+> itself lifts a center 1:1 square out of the first image. Four sources back the
 > first, four the second and two the third.
 > Source: ten independent published references collected 10 September 2026,
 > grouped by the mechanism each claims rather than by the numbers attached to it.
@@ -119,9 +119,9 @@ not merely disagree on a number here. They disagree on what happens at all.
 
 | Account | What happens to the cover | Sources | If you designed for a different account |
 |---|---|---|---|
-| Full card | Feed shows the whole 3:4 card, profile grid takes a centre square | 4 | You centre everything and waste the top and bottom of every feed card |
+| Full card | Feed shows the whole 3:4 card, profile grid takes a center square | 4 | You center everything and waste the top and bottom of every feed card |
 | Occlusion | Feed shows the whole card, then lays the title and author bar over the lower part | 4 | Your low headline survives the crop and sits under the interface |
-| Hard feed crop | The feed itself cuts a centre square out of the cover | 2 | Your top-third headline gets cut off in the feed entirely |
+| Hard feed crop | The feed itself cuts a center square out of the cover | 2 | Your top-third headline gets cut off in the feed entirely |
 
 The asymmetry matters. Under the occlusion account the lower band is covered
 but still there, so a background can run into it. Under the hard-crop account
@@ -132,7 +132,7 @@ Search is murkier still. A single publisher reports search results forcing
 covers into square or 4:3 cards in some layouts. One source is not a mode, so
 this page records the report and does not publish it as a spec.
 
-On the profile grid the sources that mention it agree: the grid lifts a centre
+On the profile grid the sources that mention it agree: the grid lifts a center
 square out of the cover. Most English guides never mention the grid at all.
 
 <!-- SECTION: safe area -->
@@ -141,9 +141,9 @@ square out of the cover. Most English guides never mention the grid at all.
 
 > Whichever of the three published accounts of RedNote cover cropping is
 > correct, one instruction holds under all of them: keep the headline, the face
-> and the product inside the centre square of the cover, which is the middle
+> and the product inside the center square of the cover, which is the middle
 > 1080x1080 pixels of a 1080x1440 frame. It is the only region that survives a
-> centre crop, a grid crop and an interface overlay alike.
+> center crop, a grid crop and an interface overlay alike.
 > Source: derived from the three published crop accounts collected 10 September
 > 2026 by taking the region common to all of them. A safe intersection, not a
 > platform rule.
@@ -244,7 +244,7 @@ single size. Covers taller than 3:4 are reported once as being forced back to
 Published sources describe three incompatible crop behaviors in the feed, and a
 single publisher reports search forcing some cards to square or 4:3. Nothing
 public settles which is live. The one safe instruction is to keep the headline,
-face and product inside the centre 1080 by 1080 square of the cover.
+face and product inside the center 1080 by 1080 square of the cover.
 
 **How many images can a RedNote note have?**
 
@@ -283,18 +283,18 @@ article's featured image and OG image.
 CREATIVE ANGLE (one sentence, for the record): the piece argues that one cover
 file is cropped three different ways by accounts nobody can reconcile, so the
 image is a single vertical print with three different physical crop masks laid
-across it at once, where the only area every mask leaves visible is the centre.
+across it at once, where the only area every mask leaves visible is the center.
 
 IMAGE PROMPT (use verbatim):
 
 An overhead editorial photograph of a single vertical photographic print, taller
-than it is wide, lying on a worn grey drafting table in a Shanghai studio, the
+than it is wide, lying on a worn gray drafting table in a Shanghai studio, the
 print showing a simple still life of a pale ceramic cup and a folded linen
 napkin; laid across the print at the same time are three separate physical crop
 tools that plainly disagree: a pair of black L-shaped cardboard cropping angles
-framing a centred square, a strip of cream paper covering the lower fifth of the
-print, and a second pair of grey L-shaped angles offset slightly higher framing
-a different square; the three overlapping masks leave the centre of the print,
+framing a centered square, a strip of cream paper covering the lower fifth of the
+print, and a second pair of gray L-shaped angles offset slightly higher framing
+a different square; the three overlapping masks leave the center of the print,
 where the cup sits, visible under all of them, while the top and bottom edges
 are covered by one mask or another; a single hard daylight source enters from
 the upper left just outside the frame, throwing one clean directional shadow
@@ -302,8 +302,8 @@ from the raised edges of the cropping angles across the print and leaving the
 lower right of the table in warm falloff; the table surface is genuinely used,
 with fine scratches, pencil marks, a faint coffee ring, tape residue and dust; a
 steel ruler and a pencil lie along the right edge; one hand with short unpainted
-nails enters from the bottom edge, fingertips adjusting the lower grey cropping
-angle; shot on a full frame camera with a 50mm prime at f/4, focus on the centre
+nails enters from the bottom edge, fingertips adjusting the lower gray cropping
+angle; shot on a full frame camera with a 50mm prime at f/4, focus on the center
 of the print with the table edges falling gently soft, framing very slightly
 rotated off square as if handheld, the upper left quadrant left mostly empty as
 clean table surface for typography; warm shadows, desaturated midtones, lifted
@@ -328,7 +328,7 @@ TABLES:
      you designed for another. This is the page's reason to exist. Never
      collapse it into a single "the feed crops to X" statement.
   3. Video note specs with counts and confidence.
-CHARTS: a simple diagram of a 1080 by 1440 frame showing the centre 1080 by 1080
+CHARTS: a simple diagram of a 1080 by 1440 frame showing the center 1080 by 1080
   square and the lowest 288 pixels would help, provided its caption says it
   shows the derived safe intersection and not a platform rule.
 SCREENSHOTS: the slot requirement asks for an annotated screenshot and the brief
@@ -338,7 +338,7 @@ SCREENSHOTS: the slot requirement asks for an annotated screenshot and the brief
   and one set of feed, profile grid and search captures of the same test cover
   would resolve the crop question outright. That is the single most valuable
   capture in the whole China spec cluster.
-DOWNLOADS: a 1080 by 1440 cover template with the centre square and the 288
+DOWNLOADS: a 1080 by 1440 cover template with the center square and the 288
   pixel bottom band marked as layers, labeled as derived guidance, ungated.
 INTERNAL LINKS:
   RedNote platform page -> /solutions/platforms/rednote
@@ -373,7 +373,7 @@ HARD BLOCKS HELD: no single number for maximum images per note (18 against 9 is
   observed a rejection; and no engagement, click or algorithm claim attached to
   3:4, since those carry no sample and are published by sellers of cover tools.
 
-THE CENTRE-SQUARE INSTRUCTION IS DERIVED AND LABELED AS SUCH every time it
+THE Center-SQUARE INSTRUCTION IS DERIVED AND LABELED AS SUCH every time it
   appears: in the cleared quote's source line, in the body copy directly after
   it, in the FAQ, and in the downloads note. It is the safe intersection of three
   published accounts, not a platform rule.

@@ -136,8 +136,8 @@ stamped on at upload.
 **The likeness rights do not travel.**
 
 > Under China's Civil Code, a likeness may not be made, used or published
-> without the portrayed person's consent; where a licence clause is disputed
-> it is construed in favor of the person portrayed; and where the licence term
+> without the portrayed person's consent; where a license clause is disputed
+> it is construed in favor of the person portrayed; and where the license term
 > is unagreed or unclear either party may end it on reasonable notice.
 > Source: Civil Code of the People's Republic of China, Articles 1019, 1021
 > and 1022, in force 1 January 2021. Statutory text.

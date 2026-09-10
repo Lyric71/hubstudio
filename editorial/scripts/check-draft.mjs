@@ -71,6 +71,17 @@ const fullWidth = [...raw.matchAll(/[　-〿！-～]/g)];
 hard(fullWidth.length === 0, 'No full-width punctuation',
   fullWidth.length ? `${fullWidth.length} found` : 'none');
 
+// American English for site copy. Research agents paste source text with
+// British spellings ("rule centre", "licence number", "grey"), and 83 of them
+// reached published pages before this check existed. Comments are stripped
+// first, since the three appended blocks never render.
+const publishable = raw.replace(/<!--[\s\S]*?-->/g, '');
+const british = [...publishable.matchAll(
+  /\b(centre|centres|centred|colour|colours|coloured|grey|greys|licence|licences|travelled|travelling|favour|favourite|favoured|organise|organised|analyse|analysed|catalogue|programme|behaviour|labelled|labelling|modelled|modelling|cancelled|metre|metres|fulfil|optimise|optimised|recognise|recognised)\b/gi,
+)].map((m) => m[0]);
+hard(british.length === 0, 'American spelling in publishable copy',
+  british.length ? `${british.length} found: ${[...new Set(british.map((w) => w.toLowerCase()))].join(', ')}` : 'none');
+
 // ---- money
 const dollars = [...body.matchAll(/\$[\d,]+/g)].map((m) => m[0]);
 soft(dollars.length === 0, 'No dollar figure (each hit needs a category range and a date)', dollars.length ? dollars.join(', ') : 'none');

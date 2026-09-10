@@ -395,7 +395,7 @@ the right across the paper; immediately beside the sweep, running away from the
 camera toward the upper right and slightly out of the lit area, stands a long
 tight queue of the same mug repeated many times in a straight line on the same
 table, dozens of them receding into shadow, each waiting its turn, unlit and
-progressively darker; a grey card, a lint roller and a pair of white cotton
+progressively darker; a gray card, a lint roller and a pair of white cotton
 gloves lie on the table between the sweep and the queue; the table is scratched
 steel with tape marks and dust, and a light stand leg and sandbag are visible
 at the frame edge; a person stands half out of frame at the right, cropped at

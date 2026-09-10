@@ -299,7 +299,7 @@ corner, dust visible on the paper, one hand of a person entering from the right
 edge of the frame with fingers resting lightly on the paper to flatten a
 crease, the rest of the person out of frame; shot on a full frame camera with
 an 85mm prime at f/4, focus exactly on the bottle's shoulder where the
-highlight sits, the background sweep falling into soft warm grey; the right
+highlight sits, the background sweep falling into soft warm gray; the right
 half of the frame is left almost empty, just paper and gradient, held as
 negative space for typography; warm shadows, slightly desaturated midtones,
 lifted black point, fine natural film grain, the palette of daylight negative
