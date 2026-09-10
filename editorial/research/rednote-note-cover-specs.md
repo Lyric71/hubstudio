@@ -498,3 +498,16 @@ short video design service page, which covers the video note half.
 profile grid and search captures of a single test cover would resolve the crop
 question outright, and it is the most valuable capture in the China spec
 cluster.
+
+
+**Correction, 10 September 2026, after publication.** Cleared quote 6 said the
+center 1080 by 1080 square of a 1080 by 1440 cover "is the only region that
+survives a center crop, a grid crop and an interface overlay alike". On this
+file's own figures it does not survive the overlay account in full. The square
+runs from 180 to 1260 pixels down. Chrome over the lowest 15 to 20 percent of the
+frame begins at 1224 or 1152 pixels, so it reaches 36 to 108 pixels into the
+bottom of the square. The region every account leaves clear is the center square
+above the lowest 288 pixels: 180 to 1152 pixels down. The published page, its
+draft, the FAQ and the FAQ schema were corrected, and a dated correction line was
+added to the page's changelog. The error was caught during the brief 10 variant
+matrix research, which intersected this file's figures with other platforms'.

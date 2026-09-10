@@ -141,12 +141,9 @@ square out of the cover. Most English guides never mention the grid at all.
 
 > Whichever of the three published accounts of RedNote cover cropping is
 > correct, one instruction holds under all of them: keep the headline, the face
-> and the product inside the center square of the cover, which is the middle
-> 1080x1080 pixels of a 1080x1440 frame. It is the only region that survives a
-> center crop, a grid crop and an interface overlay alike.
+> and the product inside the center square of the cover and above the lowest 288 pixels of the frame, which on a 1080x1440 cover is the band from 180 to 1152 pixels down. The center square alone is not enough: under the interface overlay account, chrome covering the lower 15 to 20 percent of the frame reaches 36 to 108 pixels into the bottom of that square.
 > Source: derived from the three published crop accounts collected 10 September
-> 2026 by taking the region common to all of them. A safe intersection, not a
-> platform rule.
+> 2026 by taking the region common to all of them, corrected the same day when the overlay depth was checked against the square. A safe intersection, not a platform rule.
 
 That is the working rule this page stands behind, and it is a derivation rather
 than a platform rule. The bottom of the frame gets a direction instead of a
@@ -221,6 +218,8 @@ consensus. Image count, video duration, video file size, bottom safe area and
 the feed crop mechanism stayed contested, and are published as ranges or as
 competing accounts rather than as single figures.
 
+**10 September 2026, correction.** The center-square instruction originally said the middle 1080 by 1080 square survives all three crop accounts. It does not survive the overlay account in full: chrome over the lowest 15 to 20 percent of the frame reaches 36 to 108 pixels into the bottom of that square. The instruction now reads 180 to 1152 pixels down, the band every account leaves clear.
+
 <!-- SECTION: FAQ -->
 
 ## Questions about RedNote specs
@@ -243,8 +242,7 @@ single size. Covers taller than 3:4 are reported once as being forced back to
 
 Published sources describe three incompatible crop behaviors in the feed, and a
 single publisher reports search forcing some cards to square or 4:3. Nothing
-public settles which is live. The one safe instruction is to keep the headline,
-face and product inside the center 1080 by 1080 square of the cover.
+public settles which is live. The one safe instruction is to keep the headline, face and product inside the center square and above the lowest 288 pixels, between 180 and 1152 pixels down a 1080 by 1440 cover.
 
 **How many images can a RedNote note have?**
 

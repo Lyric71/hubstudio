@@ -12,7 +12,7 @@ const faq = [
   },
   {
     "q": "Why is my RedNote cover cropped differently in search?",
-    "a": "Published sources describe three incompatible crop behaviors in the feed, and a single publisher reports search forcing some cards to square or 4:3. Nothing public settles which is live. The one safe instruction is to keep the headline, face and product inside the center 1080 by 1080 square of the cover."
+    "a": "Published sources describe three incompatible crop behaviors in the feed, and a single publisher reports search forcing some cards to square or 4:3. Nothing public settles which is live. The one safe instruction is to keep the headline, face and product inside the center square and above the lowest 288 pixels, between 180 and 1152 pixels down a 1080 by 1440 cover."
   },
   {
     "q": "How many images can a RedNote note have?",
@@ -174,8 +174,8 @@ const faq = [
 
   <h2>The one instruction that survives every account</h2>
 
-  <blockquote class="evidence">Whichever of the three published accounts of RedNote cover cropping is correct, one instruction holds under all of them: keep the headline, the face and the product inside the center square of the cover, which is the middle 1080x1080 pixels of a 1080x1440 frame. It is the only region that survives a center crop, a grid crop and an interface overlay alike.</blockquote>
-  <p class="source">Source: derived from the three published crop accounts collected 10 September 2026 by taking the region common to all of them. A safe intersection, not a platform rule.</p>
+  <blockquote class="evidence">Whichever of the three published accounts of RedNote cover cropping is correct, one instruction holds under all of them: keep the headline, the face and the product inside the center square of the cover and above the lowest 288 pixels of the frame, which on a 1080x1440 cover is the band from 180 to 1152 pixels down. The center square alone is not enough: under the interface overlay account, chrome covering the lower 15 to 20 percent of the frame reaches 36 to 108 pixels into the bottom of that square.</blockquote>
+  <p class="source">Source: derived from the three published crop accounts collected 10 September 2026 by taking the region common to all of them, corrected the same day when the overlay depth was checked against the square. A safe intersection, not a platform rule.</p>
 
   <p>That is the working rule this page stands behind, and it is a derivation rather than a platform rule. The bottom of the frame gets a direction instead of a number.</p>
 
@@ -271,6 +271,8 @@ const faq = [
 
   <p><strong>10 September 2026.</strong> First published under the counted-source method. Twenty sources in Chinese and English. The default cover ratio and size reached consensus. Image count, video duration, video file size, bottom safe area and the feed crop mechanism stayed contested, and are published as ranges or as competing accounts rather than as single figures.</p>
 
+  <p><strong>10 September 2026, correction.</strong> The center-square instruction originally said the middle 1080 by 1080 square survives all three crop accounts. It does not survive the overlay account in full: chrome over the lowest 15 to 20 percent of the frame reaches 36 to 108 pixels into the bottom of that square. The instruction now reads 180 to 1152 pixels down, the band every account leaves clear.</p>
+
   <h2>Questions about RedNote specs</h2>
 
   <h3>What size should a RedNote cover image be?</h3>
@@ -283,7 +285,7 @@ const faq = [
 
   <h3>Why is my RedNote cover cropped differently in search?</h3>
 
-  <p>Published sources describe three incompatible crop behaviors in the feed, and a single publisher reports search forcing some cards to square or 4:3. Nothing public settles which is live. The one safe instruction is to keep the headline, face and product inside the center 1080 by 1080 square of the cover.</p>
+  <p>Published sources describe three incompatible crop behaviors in the feed, and a single publisher reports search forcing some cards to square or 4:3. Nothing public settles which is live. The one safe instruction is to keep the headline, face and product inside the center square and above the lowest 288 pixels, between 180 and 1152 pixels down a 1080 by 1440 cover.</p>
 
   <h3>How many images can a RedNote note have?</h3>
 
