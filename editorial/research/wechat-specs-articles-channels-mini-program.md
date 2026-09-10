@@ -655,3 +655,61 @@ Chinese term needed for this brief is mapped here.
 | Douyin, Douyin kaifang pingtai | Douyin, Douyin Open Platform | For the cut comparison, see brief 05 |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**All twelve cleared blocks shipped** with attributions unchanged, except that
+"help centre" and "centred" are spelled "help center" and "centered" for American
+English site copy. Each carries its count or its source page, the languages, the
+date, and whether it is a counted value or a primary reading scoped to one page.
+
+**The disclaimer follows the readable-page rule added to SPEC.md on 10 September
+2026.** WeChat is the case that rule was written for. The first paragraph names
+which WeChat surfaces were readable (the Channels help center, the Official
+Account API documentation, the Mini Program developer reference) and which were
+not (the Official Account editor rules, cover crops, most image sizes), rather
+than claiming nothing is served. NN is given as "up to 12", the largest counted
+pool in this file, since smaller rows draw on 6 to 8 references. A paragraph after
+the block names each primary page and its scope.
+
+**The title and meta were changed from the brief.** "Mini App" became "Mini
+Program" to match WeChat's own naming and the body copy. The draft meta promised
+"Mini Program banners and Tencent Ads". No published banner size exists and the
+Tencent Ads help center redirected, so neither could be delivered; the meta now
+describes the readable-versus-counted split.
+
+**The "Tencent Ads placements" must-include is met only by the one readable
+note**, the January 2023 Moments image ad sizes, which carry their date in the
+blockquote, the body copy and the section framing. The unreachable placements for
+Official Account, Channels and Mini Program ads are stated as unreachable.
+
+**The API limits stay scoped every time they appear.** The 1MB body image and
+64KB cover figures are tied to the upload API route in the blockquote, in the body
+copy directly after it, and in the article-body FAQ answer.
+
+**One table row comes from this file's spec tables rather than a cleared
+blockquote**: body image formats JPG, PNG and GIF on four sources, consensus.
+
+**One export recommendation is derived from cleared figures**: body images at
+1080 pixels wide and under 2MB sit inside every published width and cap. It
+introduces no new figure.
+
+**Every must-not held.** No counted value is called official or verified. 900 by
+500 is never presented as the current cover, and no year is given for the 2.35:1
+change or the Tencent FAQ. 6:7 is never called the official Channels frame, and
+the Channels crop of 9:16 files is presented only as a contested, stale claim.
+The 4GB, 30-minute and 2-hour Channels figures and the English "15 to 60 seconds,
+10MB" are absent. 500 by 400 is labeled contested and never presented as WeChat's
+own size; 144 by 144 is absent. 81 by 81 is confined to tab bar icons and the page
+says so. No banner size and no Official Account, Channels or Mini Program ad spec
+is printed. No quarantined domain is named, and no hubStudio rate appears.
+
+**Two unconfirmed rows were left out**: the Mini Program design guideline's 390
+pixel responsive canvas and a 30-minute Channels limit for older phones, each
+resting on a single fetch summary.
+
+**Both brief links were missing.** /solutions/platforms/wechat and
+/resources/specs do not exist. The published Douyin and RedNote spec articles were
+substituted alongside the social media design service page.
+
+**The hero was accepted on the first generation.**

@@ -44,6 +44,57 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'weibo-image-video-specs',
+    image: '/Images/insight-weibo-image-video-specs.webp',
+    imageAlt:
+      'A three by three grid of square texture prints on a linen table, among them a sweater, a ceramic bowl, leaves, a paper fan, rice, a brass spoon, a comb, silk and a citrus slice, with a hand setting the last print into place.',
+    category: 'Platform specs',
+    tone: 'orange',
+    title: 'Weibo Image and Video Specs 2026',
+    deck: 'The only English Weibo spec guide is from 2022. Weibo\'s own help center answers most of it, and several of the old numbers have moved.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Weibo Image and Video Specs 2026 | hubStudio',
+    metaDescription:
+      'Weibo image, grid, video and cover specs for brands, from Weibo\'s own readable help pages where they exist and counted sources where they do not.',
+  },
+  {
+    slug: 'wechat-specs-articles-channels-mini-program',
+    image: '/Images/insight-wechat-specs-articles-channels-mini-program.webp',
+    imageAlt:
+      'Three prints of the same steaming ceramic teacup pinned to a cork board, one very wide, one square and one tall and narrow, with a hand pressing a pushpin into the tall one.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'WeChat Specs: Articles, Channels, Mini Program',
+    deck: 'Some WeChat limits are readable on WeChat\'s own pages, and many circulating figures are years out of date. This page keeps the two apart.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'WeChat Specs: Articles, Channels, Mini Program | hubStudio',
+    metaDescription:
+      'WeChat Official Account covers, Channels video and Mini Program images in one dated page, with WeChat\'s own readable limits separated from counted ones.',
+  },
+  {
+    slug: 'douyin-ad-creative-specs-by-format',
+    image: '/Images/insight-douyin-ad-creative-specs-by-format.webp',
+    imageAlt:
+      'A strip of developed film on a light table with its first few frames uncovered and glowing and the rest hidden under a sheet of cream paper held by a hand, beside a pencil and a loupe.',
+    category: 'Platform specs',
+    tone: 'orange',
+    title: 'Douyin Ad Creative Specs by Format',
+    deck: 'The most complete Douyin ad spec sheet anyone can open is a rate card from late 2020. Here is what holds, and what is TikTok\'s.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Douyin Ad Creative Specs by Format | hubStudio',
+    metaDescription:
+      'Douyin ad specs for open screen, TopView and in-feed, counted across 17 sources and dated, including which circulating sizes are six years old.',
+  },
+  {
     slug: 'douyin-video-specs-safe-zones',
     image: '/Images/insight-douyin-video-specs-safe-zones.webp',
     imageAlt:

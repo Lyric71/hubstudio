@@ -719,3 +719,50 @@ Chinese term needed for this brief is mapped here.
 | guize, guifan | rule, specification | |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**All ten cleared blocks shipped** with attributions unchanged, except that "help
+centre", "customer service centre" and "centre crop" are spelled "center" for
+American English site copy. Each carries its source page or count, the
+languages, the date, and whether it is a scoped primary reading, a counted value,
+a derivation or an observation.
+
+**The disclaimer follows SPEC.md's readable-page rule.** Weibo's customer service
+help center is readable, so the first paragraph names it as readable and names the
+advertising help center and account-level profile rules as not. NN is given as "up
+to 8", the largest counted pool in this file. A paragraph after the block names
+the three dated help articles and the developer documentation as the primary rows
+and scopes each to its own page and date.
+
+**The slot requirement is unmet, on purpose.** The brief asks for one number from
+hubStudio's delivery record with its method stated. No such figure exists in this
+file or in the ledger, and the first-party exception covers only figures the site
+already publishes. Nothing was invented to fill the slot.
+
+**The meta was changed from the brief.** It promised "ad placements" as if sizes
+could be given. The ad help center served no text and the circulating ad figures
+trace to one 2023 page copied across three sites, so the meta now describes the
+readable-versus-counted split.
+
+**The comparison table is labeled as comparing dated statements.** The body copy
+directly above it says it does not date the platform's changes, which no source
+does.
+
+**Every must-not held.** The developer API limits appear only as the source of the
+5MB figure that 2022 guides carried, never as posting limits, and the 140
+character, 1G and 700K figures are absent. "20M" never appears without the 30M
+compression page beside it. No maximum video duration and no 500M cap is printed;
+the video table carries a "not stated" row instead. The 3:4, 16:9 and 4:3 figures
+are named as cover ratios, and the body copy says they are not frame ratios. The
+center crop is described as one eight-year-old account, never as current fact, and
+the focus point's effect is left unexplained. The 1:3 line is given no direction.
+The 2019 100,000-follower threshold appears only as history, with eligibility
+marked contested. No ad figure is presented as Weibo's own. No ad prices, web-era
+sizes, quarantined domains or hubStudio rate appear.
+
+**Both brief links were missing.** /solutions/platforms/weibo and
+/resources/specs do not exist. The published RedNote and Douyin spec articles were
+substituted alongside the social media design service page.
+
+**The hero was accepted on the first generation.**

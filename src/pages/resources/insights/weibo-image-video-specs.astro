@@ -1,0 +1,281 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should a Weibo post image be?",
+    "a": "Weibo's help center, updated 1 April 2026, says each image must be under 20M in GIF, JPG or PNG, while a May 2025 help page says images over 30M get compressed. No pixel size is published. Because the grid shows square tiles, a square upload is the one shape no published crop account changes."
+  },
+  {
+    "q": "How does the Weibo nine-grid crop images?",
+    "a": "Sources agree the grid shows square tiles, but only one describes the mechanism, a center crop, and it is about eight years old. Weibo's 2026 help page adds a focus point without saying what it controls. Uploading square images avoids the question, and keeping the ninth tile's lower right corner clear protects the hidden-image count."
+  },
+  {
+    "q": "What are the Weibo video specs?",
+    "a": "Weibo's video FAQ, updated 1 July 2024, allows up to 15G from a PC and 4G from a phone, with a 3-second minimum from the phone. Vertical videos take a 3:4 cover and horizontal videos a 16:9 or 4:3 cover. The FAQ states no maximum duration and no frame ratio, so neither is given here."
+  },
+  {
+    "q": "What changed in Weibo specs since 2022?",
+    "a": "The 5MB image cap in 2022 guides matches Weibo's developer API documents rather than posting limits, and the 2026 help center says under 20M. Current pages add the 18-image post, the square grid and a focus point, and give a 920 by 300 homepage cover where older pages gave 980 by 300. These compare dated statements."
+  },
+  {
+    "q": "What are the Weibo ad placement sizes?",
+    "a": "Weibo's ad help center served no specification text when read. The circulating ad figures, a 5M image cap, image ratios from 3:4 to 16:9 and a one-minute vertical video ceiling, all trace to one 2023 page copied across three sites. Treat them as a single published account and confirm them in your ad account."
+  }
+];
+---
+
+<ArticleLayout slug="weibo-image-video-specs" ctaLabel="Talk to the production team" faq={faq}>
+  <p class="standfirst">The one English guide that answers this is four years old. Weibo's own help center, readable without a login, has since moved several of its numbers. Almost nobody writing about Weibo specs has read it.</p>
+
+  <h2>What size should a Weibo post image be?</h2>
+
+  <p>Weibo's help center says a single image in an image post must be under 20M, as GIF, JPG or PNG. A second, older help page says images over 30M get compressed. Neither page gives pixel dimensions, and the grid shows square tiles, so a square image is the one shape that survives every account of how the grid crops.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>Weibo is the most readable platform in this series. Its customer service help center answers image and video questions openly. Its advertising help center and its account-level profile rules do not, so those rows are counted from published sources instead.</p>
+
+  <p>What follows, for the counted rows, is the most commonly published figure for each spec, collected across up to 8 independent sources in Chinese and English on 10 September 2026, with the number of sources that agreed shown per row. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own account and confirm it there. Reviewed 10 September 2026.</p>
+
+  <p>Rows marked primary come from three Weibo help articles, dated 1 April 2026, 19 May 2025 and 1 July 2024, and from Weibo's developer documentation. Each is primary only for what that page covers, and its date is part of the row.</p>
+
+  <h2>Image posts</h2>
+
+  <blockquote class="evidence">Weibo's own customer service center, in its article on posting image posts last updated on 1 April 2026, states that image files may be GIF, JPG or PNG and that a single image must be under 20M. It adds that a focus point can be set on images within a 1:3 width-to-height ratio, and that super-long images cannot yet take one.</blockquote>
+  <p class="source">Source: kefu.weibo.com help article on posting image posts, page dated 1 April 2026, fetched unauthenticated on 10 September 2026, Chinese-language. Primary reading, scoped to that help article.</p>
+
+  <p>The 20M figure has to be read beside a second help page, because the two do not quite agree.</p>
+
+  <blockquote class="evidence">A second Weibo help article, updated on 19 May 2025, says any single image over 30M is compressed, whether it is posted alone or with others, and that there is no limit on the combined size of a post's images. That threshold sits above the 20M ceiling stated in the newer image article, so the two pages do not fully agree.</blockquote>
+  <p class="source">Source: kefu.weibo.com help articles dated 19 May 2025 and 1 April 2026, both fetched 10 September 2026, Chinese-language. Primary readings, each scoped to its own article.</p>
+
+  <p>Export under 20M and both pages are satisfied. The newer article is also the stricter one.</p>
+
+  <blockquote class="evidence">The most commonly published maximum for a Weibo post is 18 images, on seven independent sources. Every one of them traces back to a single launch in October 2019, when the feature opened to accounts with more than 100,000 followers. The feed shows nine. No source from after 2019 confirms who can post more than nine today.</blockquote>
+  <p class="source">Source: 7 independent published references, Chinese-language, collected 10 September 2026, counted per domain and traced to their origin. Modal value, not a platform reading. Eligibility contested.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Value</th>
+          <th scope="col">Source or spread</th>
+          <th scope="col">Sources</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Formats</th>
+          <td>GIF, JPG, PNG</td>
+          <td>Help article, 1 April 2026</td>
+          <td>platform page</td>
+          <td>primary</td>
+        </tr>
+        <tr>
+          <th scope="row">Single image ceiling</th>
+          <td>Under 20M</td>
+          <td>Help article, 1 April 2026</td>
+          <td>platform page</td>
+          <td>primary</td>
+        </tr>
+        <tr>
+          <th scope="row">Compression threshold</th>
+          <td>Over 30M compressed</td>
+          <td>Help article, 19 May 2025, sits above the newer ceiling</td>
+          <td>platform page</td>
+          <td>primary, pages disagree</td>
+        </tr>
+        <tr>
+          <th scope="row">Focus point</th>
+          <td>Settable within a 1:3 ratio, not on super-long images</td>
+          <td>Help article, 1 April 2026, effect not stated</td>
+          <td>platform page</td>
+          <td>primary</td>
+        </tr>
+        <tr>
+          <th scope="row">Images per post</th>
+          <td>18, with nine in the feed</td>
+          <td>All seven sources trace to one 2019 launch</td>
+          <td>7</td>
+          <td>consensus on 18, eligibility contested</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>How does the Weibo nine-grid crop images?</h2>
+
+  <p>It shows square tiles. How it gets from your image to a square is the part nobody current describes.</p>
+
+  <blockquote class="evidence">Published sources agree that Weibo shows two to nine images as square tiles. Only one describes the mechanism, a center crop that keeps the middle of each image, and it was written about eight years ago. Weibo's own help center now mentions a focus point that can be set on most images, but does not say what it controls. No source in either language describes a grid that pads rather than crops.</blockquote>
+  <p class="source">Source: 4 independent published references and 1 Weibo help-center page dated 1 April 2026, Chinese and English, collected 10 September 2026 and grouped by the mechanism each describes. Consensus on square tiles, contested on the crop.</p>
+
+  <p>An eight-year-old description of a center crop and an undefined focus point are not the same instruction, and nothing public says which one runs now. So the practical answer is to upload the shape that makes the question irrelevant.</p>
+
+  <blockquote class="evidence">Whichever account of the Weibo image grid is right, a square image comes through unchanged: a center crop takes nothing from it, a focus point has nothing to move, and no padding is needed. For a post that runs past nine images, keep the lower right corner of the ninth tile clear, where the hidden-image count sits.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from the published grid accounts and the 2026 help-center focus-point statement. A safe intersection, not a platform rule.</p>
+
+  <p>Square uploads for the grid, and nothing important in the ninth tile's lower right corner. Both are derivations, and both cost nothing.</p>
+
+  <h2>What are the Weibo video specs?</h2>
+
+  <p>Weibo's help center gives the upload limits and the cover ratios. It does not give a maximum duration.</p>
+
+  <blockquote class="evidence">Weibo's video upload FAQ, last updated on 1 July 2024, states that a video uploaded from a PC may be up to 15G and one uploaded from a phone up to 4G, and that the phone will not accept a video shorter than three seconds. Vertical videos take a 3:4 cover and cannot take a horizontal one. Horizontal videos take a 16:9 or 4:3 cover. The page does not state a maximum duration.</blockquote>
+  <p class="source">Source: kefu.weibo.com video upload and publishing FAQ, page dated 1 July 2024, fetched 10 September 2026, Chinese-language. Primary reading, scoped to that FAQ.</p>
+
+  <p>Read the cover rule carefully. Those ratios describe the cover image, not the video frame. A vertical video takes a 3:4 cover. That says nothing about the ratio of the video itself, and the FAQ publishes no frame ratio at all.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Value</th>
+          <th scope="col">Source</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">File size from a PC</th>
+          <td>Up to 15G</td>
+          <td>Video FAQ, 1 July 2024</td>
+          <td>primary</td>
+        </tr>
+        <tr>
+          <th scope="row">File size from a phone</th>
+          <td>Up to 4G</td>
+          <td>Video FAQ, 1 July 2024</td>
+          <td>primary</td>
+        </tr>
+        <tr>
+          <th scope="row">Minimum length from a phone</th>
+          <td>3 seconds</td>
+          <td>Video FAQ, 1 July 2024</td>
+          <td>primary</td>
+        </tr>
+        <tr>
+          <th scope="row">Cover for a vertical video</th>
+          <td>3:4, never horizontal</td>
+          <td>Video FAQ, 1 July 2024</td>
+          <td>primary</td>
+        </tr>
+        <tr>
+          <th scope="row">Cover for a horizontal video</th>
+          <td>16:9 or 4:3</td>
+          <td>Video FAQ, 1 July 2024</td>
+          <td>primary</td>
+        </tr>
+        <tr>
+          <th scope="row">Maximum duration and frame ratio</th>
+          <td>Not stated</td>
+          <td>Not in the FAQ</td>
+          <td>not published</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Cover and profile images</h2>
+
+  <p>These are not on any Weibo page found, and the published figures split by date.</p>
+
+  <blockquote class="evidence">Published Weibo homepage cover sizes split by when the page was written: pages from 2022 and 2023 give 980x300 pixels, pages from 2025 and 2026 give 920x300. Avatar sizes appear as 400x400, 200x200 and 180x180, with 400x400 the most common on two sources. None of these figures comes from a Weibo page.</blockquote>
+  <p class="source">Source: 8 independent published references, Chinese and English, collected 10 September 2026, grouped by publication date before counting. Modal values, contested, not platform readings.</p>
+
+  <p>The newer pages give 920 by 300. Treat it as the current published reading and check the crop in your own profile before committing a design.</p>
+
+  <h2>What changed in Weibo specs since 2022?</h2>
+
+  <p>The table below compares what the 2022 guidance says with what current pages say. It compares dated statements. It does not date the platform's changes, which no source does.</p>
+
+  <blockquote class="evidence">The 5MB image cap still printed in guides from 2022 and earlier matches Weibo's developer documentation for its third-party upload and share APIs, pages dated 2012 and 2022. Every non-platform page found dated 2025 or later gives 20MB, which is also what Weibo's help center says for image posts as of April 2026.</blockquote>
+  <p class="source">Source: Weibo Open Platform API pages dated 1 August 2012 and 9 June 2022, a Weibo help-center page dated 1 April 2026, and 5 independent non-platform references in Chinese and English, all read 10 September 2026 and grouped by publication date. Primary readings for the documents, modal count for the guides.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Topic</th>
+          <th scope="col">What the 2022 guidance says</th>
+          <th scope="col">What current pages say</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Image cap</th>
+          <td>5MB, matching the developer API documents</td>
+          <td>Under 20M in the April 2026 help article</td>
+        </tr>
+        <tr>
+          <th scope="row">Images per post</th>
+          <td>Not covered</td>
+          <td>18, tracing to a 2019 launch, nine in the feed</td>
+        </tr>
+        <tr>
+          <th scope="row">Grid crop</th>
+          <td>Not covered</td>
+          <td>Square tiles, mechanism undescribed, a focus point added</td>
+        </tr>
+        <tr>
+          <th scope="row">Video</th>
+          <td>No specification given</td>
+          <td>15G from PC and 4G from phone, in a 2024 help FAQ</td>
+        </tr>
+        <tr>
+          <th scope="row">Homepage cover</th>
+          <td>980 by 300 on 2022 and 2023 pages</td>
+          <td>920 by 300 on 2025 and 2026 pages</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>That 5MB figure is worth a sentence. It is a real Weibo number, but from the API documents that govern apps posting on a user's behalf. It was never the limit for someone posting through Weibo itself, and the guides that carried it had not read the help center.</p>
+
+  <h2>What are the Weibo ad placement sizes?</h2>
+
+  <p>There is no readable answer from Weibo.</p>
+
+  <blockquote class="evidence">Weibo's advertising help center served no specification text to an open request on 10 September 2026. The ad creative figures in circulation, among them a 5M image cap, five accepted image ratios from 3:4 to 16:9, and a one-minute ceiling for vertical video ads, trace to a single 2023 page repeated across several sites. Treat them as one published account and confirm in the ad account before building.</blockquote>
+  <p class="source">Source: direct fetch of tui.weibo.com on 10 September 2026, plus 1 origin page carried on 3 sites, Chinese-language. Contested, not a platform reading.</p>
+
+  <p>One page copied three times is one source. Those figures are a starting point for a conversation with the ad account manager, not a spec to build a campaign to.</p>
+
+  <h2>Why this page exists</h2>
+
+  <blockquote class="evidence">Five English searches for Weibo image, video, grid and ad specifications returned one Weibo-specific guide, dated 2022. It carries no video specification, no 18-image ceiling and no crop mechanism. Not one English result cited Weibo's help center, which answers several of those questions openly.</blockquote>
+  <p class="source">Source: 5 English queries run 10 September 2026, every result classified by page type and date. An observation about published sources.</p>
+
+  <p>The <a href="/services/design/social-media">social media design service page</a> covers producing across the Chinese social platforms, the <a href="/resources/insights/rednote-note-cover-specs">article on RedNote note and cover specs</a> covers the platform with the most contested crop rules, and the <a href="/resources/insights/douyin-video-specs-safe-zones">article on Douyin video specs and safe zones</a> covers vertical video.</p>
+
+  <p>Reviewed 10 September 2026. Confirm every counted figure in your own account before building a batch to it.</p>
+
+  <h2>Questions about Weibo specs</h2>
+
+  <h3>What size should a Weibo post image be?</h3>
+
+  <p>Weibo's help center, updated 1 April 2026, says each image must be under 20M in GIF, JPG or PNG, while a May 2025 help page says images over 30M get compressed. No pixel size is published. Because the grid shows square tiles, a square upload is the one shape no published crop account changes.</p>
+
+  <h3>How does the Weibo nine-grid crop images?</h3>
+
+  <p>Sources agree the grid shows square tiles, but only one describes the mechanism, a center crop, and it is about eight years old. Weibo's 2026 help page adds a focus point without saying what it controls. Uploading square images avoids the question, and keeping the ninth tile's lower right corner clear protects the hidden-image count.</p>
+
+  <h3>What are the Weibo video specs?</h3>
+
+  <p>Weibo's video FAQ, updated 1 July 2024, allows up to 15G from a PC and 4G from a phone, with a 3-second minimum from the phone. Vertical videos take a 3:4 cover and horizontal videos a 16:9 or 4:3 cover. The FAQ states no maximum duration and no frame ratio, so neither is given here.</p>
+
+  <h3>What changed in Weibo specs since 2022?</h3>
+
+  <p>The 5MB image cap in 2022 guides matches Weibo's developer API documents rather than posting limits, and the 2026 help center says under 20M. Current pages add the 18-image post, the square grid and a focus point, and give a 920 by 300 homepage cover where older pages gave 980 by 300. These compare dated statements.</p>
+
+  <h3>What are the Weibo ad placement sizes?</h3>
+
+  <p>Weibo's ad help center served no specification text when read. The circulating ad figures, a 5M image cap, image ratios from 3:4 to 16:9 and a one-minute vertical video ceiling, all trace to one 2023 page copied across three sites. Treat them as a single published account and confirm them in your ad account.</p>
+</ArticleLayout>

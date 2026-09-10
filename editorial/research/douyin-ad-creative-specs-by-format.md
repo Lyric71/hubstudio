@@ -619,3 +619,47 @@ project rule. Every Chinese term needed for this brief is mapped here.
 | Feishu | Feishu | The document tool the 2020 rate card defers to |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**All ten cleared blocks shipped** with attributions unchanged, except that "help
+centre" in block 1 is spelled "help center" for American English site copy. Each
+carries its count, languages, date, and whether it is modal or an observation.
+
+**The disclaimer block runs after the opening answer** with NN = 17 and the date
+10 September 2026. Douyin ads are bought through an ad platform, so the first
+paragraph names Ocean Engine and an "advertiser backend", and the closing
+paragraph says "advertiser account". This ad-platform form follows the same rule
+as the marketplace and social forms recorded in SPEC.md.
+
+**The angle, meta and two must-includes were changed from the brief.** The angle
+promised specs "sourced to Ocean Engine", which is impossible since Ocean
+Engine's surfaces return no spec text; it appears only as what could not be read.
+The must-include "in-feed needs a hook inside 1.5 seconds" has no source anywhere
+and is not printed; the sourced production implication used instead is TopView's
+3-second unobstructed opening. The draft meta promised "what gets creative
+rejected", which cannot be delivered because no source ranks rejection reasons;
+only the reported notice format appears. The H1 puts open screen first because
+it is the most settled format.
+
+**Several spec rows come from this file's spec table rather than a cleared
+blockquote**, each with its count and labeled contested: the open screen safe
+margins and title length (one source each), the TopView 9:16 ratio (two of five),
+and the in-feed bitrate floor and resolution ceiling (two each), title lengths
+(one source each) and source name field (two of two).
+
+**Every must-not held.** No value is called official, current, required or read
+from Ocean Engine, including anything from the 2020 rate card. TikTok's 540 by
+960 floor, 500MB cap and 100-character title appear only inside the attributed
+TikTok search finding. The separate 540 by 960 in-feed figure appears only as what
+Douyin pages from 2018 to 2021 said. The seven sizes are never presented as TopView
+sizes, and TopView carries a "not published" row instead of borrowed specs. Every
+open screen cap and size carries its 2018 or 2020 date. No single in-feed file cap
+or title limit is published. No rate card price, CPM, click-through rate or cost
+claim appears. No Toutiao or Pangle figure reaches a Douyin row. The image ad
+styles and every single-source Qianchuan row are omitted.
+
+**The brief's third link does not exist.** /resources/specs was replaced by the
+published Douyin video specs and safe zones article.
+
+**The hero was accepted on the first generation.**
