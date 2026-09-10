@@ -523,3 +523,42 @@ the platform. Every row travels with its source count and its confidence label.
 | A 3-second looping dynamic video cover at 1080x1920 | One Chinese spec table | Single-source, and no other reference mentions the feature | 2026-09-10 |
 | Profile background at 1125x630, avatar minimum 300x300, and 2:3 covers force-cropped to 3:4 | One source each | Each is single-source and each is contradicted or unsupported elsewhere | 2026-09-10 |
 | The 10 percent RedNote safe area logged from brief 13 on 2026-09-09 | Chinese design blogs | Still cut. Deviation 7 rescues the 1080x1440 cover as a modal value with a count, but the safe area is one of five figures in circulation, so the range goes on the page instead of any single number | 2026-09-10 |
+
+## JD against Tmall image specs, modal values (added 2026-09-10, brief 04)
+
+Every row below is a **modal published value under deviation 7**, not a primary
+reading. Collection: 24 published pages carrying at least one JD or Tmall image
+spec, 23 Chinese-language and 1 English-language, collected 2026-09-10. Counts
+are pages agreeing, not publishers. Three of the 24 are three dated 2026
+versions from one publisher that contradict each other, which is noted wherever
+it changes the answer. Never cite any of these as official, required, verified
+or read from a seller backend.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Main image pixel floor 800 by 800 on both platforms, 1:1 square | "the most commonly published value, 9 of 10 pages for JD and 8 of 9 for Tmall, collected September 2026, modal not primary" | 24-page collection, brief 04 | 2026-09-10 | modal, consensus | 2026-09-10 | | 04 |
+| The white-background image is the first main image on JD and the fifth on Tmall | "every page in the collection that names a slot, 5 per platform, no contradicting page, collected September 2026, modal not primary" | Same collection | 2026-09-10 | modal, consensus, the strongest row in brief 04 | 2026-09-10 | | 04 |
+| JD desktop detail-page width appears at five values across the collection: 647, 750, 790, 990 and 1000. Mode 790, carried by 5 of 9 | "counted rather than averaged, 9 pages carrying a JD detail width, collected September 2026, modal not primary" | Same collection | 2026-09-10 | modal, contested. The 790, 750 and 990 family traces to a 2018 post later pages restate | 2026-09-10 | | 04 |
+| Tmall desktop detail width mode 790, mobile mode 750, from 6 pages. The pages publishing both platforms mostly publish the same pair for both | "the apparent JD against Tmall width split is a comparison between two sources, not between two platforms, collected September 2026" | Same collection | 2026-09-10 | modal, contested, and a correction rather than a figure | 2026-09-10 | | 04 |
+| JD main image file size cap: 500KB on 2 pages, 1MB on 4. Mode 1MB | "the full spread reported, 6 pages, collected September 2026, modal not primary" | Same collection | 2026-09-10 | modal, contested. One publisher gives 500KB twice and 1MB once across three 2026 versions | 2026-09-10 | | 04 |
+| Tmall main image file size cap: 500KB on 4 pages, 3MB on 2. Mode 500KB. This is hard block 1, still unresolved | "the spread, never a single value, collected September 2026" | Same collection plus the brief 28 collection | 2026-09-10 | modal, contested, and the ledger hard block stands | 2026-09-10 | | 04 |
+| Maximum 5 main images on both platforms | "4 of 4 pages for Tmall, 2 of 2 for JD, collected September 2026, modal not primary. The JD count is thin" | Same collection | 2026-09-10 | modal, consensus on Tmall, contested on JD for thinness | 2026-09-10 | | 04 |
+| Main image video 1:1 or 3:4 on both, JD duration mode 15 to 60 seconds, file size mode 50MB | "3 of 4 pages on ratio, 3 of 5 on JD duration, collected September 2026, modal not primary" | Same collection | 2026-09-10 | modal, contested on duration | 2026-09-10 | | 04 |
+| Tmall product fill ratio in the white slot: 70 to 80 percent on 2 pages, 70 on 1, 60 to 70 on 1. No JD figure exists on any page | "the spread, plus the absence of any published JD figure, collected September 2026" | Same collection | 2026-09-10 | modal, contested for Tmall, not published at all for JD | 2026-09-10 | | 04 |
+| JD advertising creative size splits by page age: 350 by 350 at 50KB JPG on 5 undated seller pages, 800 by 800 with an 800 by 1200 long form on 2 pages dated 2026 | "grouped by publication date before counting, 7 pages, collected September 2026, a stale figure in circulation rather than a live disagreement" | Same collection | 2026-09-10 | modal, contested, and flagged stale | 2026-09-10 | | 04 |
+| The English-language web publishes no JD image spec table. Across roughly 30 results on 4 English phrasings, one page carries any JD image rule and it is a tool vendor landing page | "4 English queries run 10 September 2026, every result classified by page type and by what it answered" | Own search review, brief 04 | 2026-09-10 | primary, as an observation about the category | 2026-09-10 | | 04 |
+| One design publisher issues three separately dated 2026 spec guides contradicting each other on JD file size, JD detail width, Tmall file size and Tmall fill ratio | "three dated versions read side by side, 10 September 2026, no publisher named" | Three vendor pages, brief 04 | 2026-09-10 | primary, as an observation about the sources | 2026-09-10 | | 04 |
+
+### Do not publish, added from brief 04
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any JD product fill ratio for the white-background image | Nowhere. Zero of 24 pages publishes one | Carrying Tmall's percentage across to JD would be a fabricated figure wearing a real-looking number | 2026-09-10 |
+| A clean JD 790 against Tmall 750 detail-width difference | The most repeated claim in the category | The pages publishing both platforms mostly publish the same pair for both. The difference is a sourcing artifact and correcting it is the brief's central job | 2026-09-10 |
+| JD detail widths of 647px and 1000px | One 2026 vendor table and one 2025 seller-service page | Found once each, contradicted by every other page. Report inside the spread only | 2026-09-10 |
+| JD main image video at 6 to 90 seconds | One search extract | Single source, conflicts with the 15 to 60 mode | 2026-09-10 |
+| Tmall 1440 by 1440 for some categories, and Tmall mobile detail limited to 22 images | One tool vendor page each | Single-source, categories unnamed, undated | 2026-09-10 |
+| Tmall detail total height of 8000 to 12000px or a 30000px maximum | Two vendor pages giving different figures | Two sources, two numbers, both phrased as advice | 2026-09-10 |
+| Any claim that JD is stricter than Tmall on white backgrounds | A search summary phrased it that way | The underlying pages support a slot difference, not a strictness ranking | 2026-09-10 |
+| Any advertising creative size published without its age flag | Five undated seller pages still top the obvious Chinese query | The 350 by 350 figure is a generation old and still circulating | 2026-09-10 |
+| Any statement that a spec was confirmed in a seller backend | Nowhere | Nobody in this collection had a seller session, including this researcher | 2026-09-10 |
