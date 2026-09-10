@@ -104,8 +104,9 @@ category cannot push the other off the layer. The test: every article in the
 home page's newest four must also appear on at least one layer.
 
 Layers currently live on `/pricing`, `/solutions/brands`,
-`/solutions/ai-production/video`, `/solutions/ai-production/image` and
-`/the-studio/ai-excellence`. The component
+`/solutions/ai-production/video`, `/solutions/ai-production/image`,
+`/the-studio/ai-excellence`, `/services/design/ecommerce` and
+`/services/design/social-media`. The component
 is self-contained (its own container, tokens and type) so it drops into any
 page; pick the `tone` that contrasts with the section above it.
 
