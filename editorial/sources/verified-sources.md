@@ -562,3 +562,118 @@ or read from a seller backend.
 | Any claim that JD is stricter than Tmall on white backgrounds | A search summary phrased it that way | The underlying pages support a slot difference, not a strictness ranking | 2026-09-10 |
 | Any advertising creative size published without its age flag | Five undated seller pages still top the obvious Chinese query | The 350 by 350 figure is a generation old and still circulating | 2026-09-10 |
 | Any statement that a spec was confirmed in a seller backend | Nowhere | Nobody in this collection had a seller session, including this researcher | 2026-09-10 |
+
+## Tmall white-background image, modal values (added 2026-09-10, brief 02)
+
+Every row below is a **modal published value under deviation 7**, not a primary
+reading. Collection: 15 independent domains carrying white-background image
+content, 14 Chinese-language and 1 English-language, collected 2026-09-10, 10
+read in full and 5 through search extracts only. Counts are domains, not pages.
+Brief 01 white-slot rows (of 18) and the brief 04 slot row are reused, not
+re-counted, so the pools are never added together. Two domains contradict
+themselves across their own pages and are counted once. Never cite any of these
+as official, required, verified or read from a seller backend, and never
+attribute one to the Taobao Rule Center.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| The white-background image is treated as its own deliverable with a separate rule set, 14 of 15; fifth main image in general categories, 10 of 15 (brief 01: 8 of 18) | "the most commonly published position, 14 of 15 and 10 of 15 sources, collected September 2026, modal not primary" | 15-domain collection, brief 02 | 2026-09-10 | modal, consensus | 2026-09-10 | | 02 |
+| Background described as pure white on 8 of 15. Every printed triplet is RGB 255 255 255, on 3 of 15, all dated 2026. Every page dated 2017 to 2024 says pure white in words only | "counted by domain and grouped by publication date, collected September 2026, modal not primary" | Same collection | 2026-09-10 | modal, consensus for pure white, contested for the printed triplet in this pool | 2026-09-10 | | 02 |
+| No modal tolerance. Zero tolerance with #F9F9F9 and 254 254 255 as failing examples on 1; plus or minus 3 (252 to 255 per channel) on 1, contradicted by the same domain's spec page; no tolerance stated on 13 | "each published tolerance position counted separately, collected September 2026, spread reported, modal not primary" | Same collection | 2026-09-10 | modal, contested. The high-value row of brief 02 | 2026-09-10 | | 02 |
+| RGB 255 255 255 is the only background value no published reading rejects | "derived from the published tolerance positions, collected September 2026, reasoning not a platform rule" | Derived from the row above | 2026-09-10 | derived, not counted | 2026-09-10 | | 02 |
+| White-slot file weight 38KB to 300KB on 3 of 15, originating once: a 2017 page restated almost line for line by two 2022 pages. 3MB ceiling on 2 | "traced to its earliest dated appearance, collected September 2026, one origin, modal not primary" | Same collection | 2026-09-10 | modal, contested, originates once. Weakens the brief 01 row of 4 of 18 | 2026-09-10 | | 02 |
+| Format splits by age: JPG only on 3 (the 2017 lineage), JPG or PNG on 3 (2022 and 2026) | "grouped by publication date, collected September 2026" | Same collection | 2026-09-10 | modal, contested | 2026-09-10 | | 02 |
+| Fill in two generations: "fill the frame, no white margin" on 5 pages dated 2017 to 2024; 70 to 80 percent on 3 pages dated 2026; numeric spread 60 to 80 | "grouped by publication date, spread reported rather than averaged, collected September 2026" | Same collection | 2026-09-10 | modal, contested for the figure | 2026-09-10 | | 02 |
+| Shadow prohibited on 6 of 15; a light contact shadow tolerated on 2 of 15, both 2026 tool vendors, one self-contradicting; reflection and glare prohibited on 1 | "counted by domain with self-contradicting publishers noted, collected September 2026" | Same collection | 2026-09-10 | modal, consensus on no shadow, contested on contact shadow | 2026-09-10 | | 02 |
+| Prohibited in the white slot: text, watermark, logo or promotional overlay 9 of 15; model 7; splicing 6; hangers, mannequins and tags 5; border 2; any body part 1 | "counted by domain per element, collected September 2026, modal not primary" | Same collection | 2026-09-10 | modal, consensus except border and body part | 2026-09-10 | | 02 |
+| Slot by category, one source per map: food second (reproduction of a standard dated effective 2018-06-07), luggage second (2017), apparel fifth (2017) against apparel first (2026) | "one source per category map, collected September 2026" | Same collection | 2026-09-10 | modal, contested, apparel self-conflicting across sources | 2026-09-10 | | 02 |
+| Described as feeding recommendation and content channels on the Taobao app homepage, 8 of 15; used in search results, 0 of 15 | "counted by domain, the absence stated with its count, collected September 2026" | Same collection | 2026-09-10 | modal, consensus for recommendation, absence for search | 2026-09-10 | | 02 |
+| Lacking or failing the white image loses eligibility for those channels, 6 of 15. Failure causes described as an unranked list on 3 of 15; 0 of 15 rank them | "counted by domain, stated as an unranked list, collected September 2026" | Same collection | 2026-09-10 | modal, consensus for lost eligibility, no ranking exists | 2026-09-10 | | 02 |
+| The English web publishes no Tmall white-background rule. Across roughly 38 results on 4 English phrasings, one tool vendor page carries one sentence about the white image | "4 English queries run 10 September 2026, every result classified by page type and by what it answered" | Own search review, brief 02 | 2026-09-10 | primary, as an observation about the category | 2026-09-10 | | 02 |
+
+### Do not publish, added from brief 02
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| A plus-or-minus-3 tolerance, or any near-white, as acceptable | One 2026 tool vendor tutorial | Single source, contradicted by the same publisher's spec page and by another domain. Publish the disagreement only | 2026-09-10 |
+| A light contact shadow as allowed | Two 2026 tool vendor pages | One self-contradicting, six sources prohibit shadows | 2026-09-10 |
+| The white image used in Tmall search results | Implied by brief 02's angle | 0 of 15 sources say so | 2026-09-10 |
+| 38KB to 300KB presented as corroborated | Three pages | One 2017 origin restated. One data point | 2026-09-10 |
+| A 20-character appeal with a 3 to 5 business day review | A search summary | Belongs to a different marketplace, not Tmall | 2026-09-10 |
+| Categories that cannot list without a white image; apparel as a first-slot category; a 15-day material review | One extract-only page, one 2026 page against a 2017 page, one 2020 page | Single-source each | 2026-09-10 |
+| A white-background rejection notice, described, reconstructed or illustrated as real; a frequency ranking of failure causes | Brief 02 asks for both | None obtained, no source ranks causes | 2026-09-10 |
+
+## Douyin paid ad creative specs, modal values (added 2026-09-10, brief 06)
+
+Every row below is a **modal published value under deviation 7**, not a primary
+reading. Collection: 17 sources carrying at least one Douyin paid-ad spec value,
+16 Chinese-language and 1 English-language, collected 2026-09-10, counted by
+independent domain. One TikTok help page was read and excluded from every
+Douyin count. The only platform-hosted spec document reachable is a
+fourth-quarter 2020 Douyin rate card that expired 2020-12-31 by its own terms and
+defers to an online sheet that is not public: it counts once, flagged by age.
+Never cite any of these as official, required, verified or read from an
+advertiser backend. Full working in `research/douyin-ad-creative-specs-by-format.md`.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Open screen display time: 3 seconds static, 4 seconds animated, 5 seconds video | "the same three figures on all 5 Chinese-language sources that give display times, pages dated 2018 to 2025, collected September 2026, modal not primary" | 5 domains, brief 06 collection | 2026-09-10 | modal, consensus, stable across seven years of pages | 2026-09-10 | | 06 |
+| Open screen video file: MP4, 5 seconds, 5MB or under, no sound | "2 of 2 sources, both rate card generations (2018 and 2020), collected September 2026, modal not primary and six years old" | 2 domains | 2026-09-10 | modal, contested for thinness and age | 2026-09-10 | | 06 |
+| Open screen static image cap: under 100KB and under 150KB on the 2018 sheet, under 300KB on the 2020 sheet | "split by publication age, one source per generation, collected September 2026, no newer figure found" | 2 domains | 2026-09-10 | modal, contested, flagged stale | 2026-09-10 | | 06 |
+| TopView video duration 10 to 60 seconds, first 3 seconds full screen, conversion component after 3 seconds, feed first position from the 4th second | "4 of 5 Douyin-specific Chinese-language sources, pages dated 2019 to 2021 and 2025, collected September 2026, modal not primary. The fifth gives 5 to 60, TikTok's range" | 5 domains | 2026-09-10 | modal, consensus | 2026-09-10 | | 06 |
+| TopView resolution, file size, format and bitrate: not published on any Douyin-specific source | "stated as an absence, 17-source collection, September 2026. TikTok's TopView figures exist and are not Douyin's" | Brief 06 collection | 2026-09-10 | not published | 2026-09-10 | | 06 |
+| In-feed video minimum resolution 720 by 1280 at 9:16 on 3 of 3 pages dated 2023 or later; 540 by 960 on 2 of 2 pages dated 2018 to 2021 | "grouped by publication date before counting, 5 sources, collected September 2026, modal not primary" | 5 domains | 2026-09-10 | modal, consensus once split by age | 2026-09-10 | | 06 |
+| In-feed video duration: 5 to 60 seconds on 4 pages dated 2019 to 2023 or undated, 4 to 300 seconds on the only page dated 2024, 5 to 30 on a 2018 page | "the full spread with dates, 7 sources, collected September 2026, modal not primary" | 7 domains | 2026-09-10 | modal, contested, split by age | 2026-09-10 | | 06 |
+| In-feed video file cap: 500MB on 2 sources, 1,000MB on the 2024 page, 100MB on one extract | "the spread, never a single value, 4 sources, collected September 2026" | 4 domains | 2026-09-10 | modal, contested | 2026-09-10 | | 06 |
+| The Chinese-language top result for a Douyin TopView spec query is TikTok's own TopView help page, updated June 2026, which does not mention Douyin | "search run 10 September 2026, result read in full" | Own search review, brief 06 | 2026-09-10 | primary, as an observation about the SERP | 2026-09-10 | | 06 |
+| The seven video sizes English guides print as TopView sizes (480 by 800 to 1080 by 2340) match the 5-second open screen video file set in the fourth-quarter 2020 Douyin rate card | "the 2020 document read in full and compared with 2 English search extracts, 10 September 2026" | Brief 06 collection | 2026-09-10 | primary, as an observation about provenance | 2026-09-10 | | 06 |
+
+### Do not publish, added from brief 06
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any TikTok TopView figure applied to Douyin: 540 by 960 floor, 500MB cap, 2,500 kbps bitrate, 100 character title, 9 to 15 second recommendation, no pure white in the first 3 seconds | TikTok's Chinese-language help page, top result on the Douyin query | Different platform. The pure-white rule exists because of TikTok's logo placement | 2026-09-10 |
+| The seven-size list as TopView sizes | English Douyin advertising guides | They are the 2020 open screen 5-second video file set | 2026-09-10 |
+| A 1080 by 1920 open screen safe zone of 145 top, 120 sides, 180 bottom, or a 14 character open screen title | Search extract attributed to an Ocean Engine help host | These match the 2020 Toutiao sheet, not the Douyin sheet | 2026-09-10 |
+| A 150KB open screen image cap with a bottom 20 percent logo area | Search extract | Matches the off-app ad network splash format, not Douyin | 2026-09-10 |
+| Any in-feed title character limit (64, 55, 30) as a rule | Single sources each, one from 2018 | No two sources agree. The platform FAQ gives 15 to 25 as advice, not a limit | 2026-09-10 |
+| Open screen or in-feed click-through averages | A 2019 explainer | Performance claims with no sample and no method, seven years old | 2026-09-10 |
+| AI-generated creative cutting production cost by up to 40 percent | An English agency guide | Market claim with no method | 2026-09-10 |
+| Any rate card price or CPM figure | The 2018 and 2020 rate cards | Pricing is off the site, and these prices are six to eight years old | 2026-09-10 |
+| Any Douyin ad spec described as current official, required, or read from Ocean Engine | The temptation created by a platform-hosted 2020 PDF | That document expired 2020-12-31 by its own terms and defers to an unreachable online sheet | 2026-09-10 |
+
+## Douyin video specs and safe zones, modal values (added 2026-09-10, brief 05)
+
+Every figure in this block is a **modal published value** under deviation 7 in
+`../CLAUDE.md`, except the two rows marked primary, which are readings of the
+Douyin Open Platform upload API documentation and apply to the API route only.
+TikTok figures are excluded from every count. Full tallies in
+`research/douyin-video-specs-safe-zones.md`.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Douyin Open Platform upload API doc states: total size within 4GB, chunked upload above 300MB (recommended above 50MB), MP4 and WebM recommended, 720p and above recommended, duration within 15 minutes | "Douyin's Open Platform documentation for its upload API, read 10 September 2026, API route only" | developer.open-douyin.com, upload-video and video-part-upload-init pages | 2026-09-10 | primary, API route only. Never an app limit | 2026-09-10 | | 05 |
+| creator.douyin.com and ad.oceanengine.com served a title and no specification text to an unauthenticated fetch | "direct unauthenticated fetches, 10 September 2026" | Both surfaces | 2026-09-10 | primary, as a negative observation | 2026-09-10 | | 05 |
+| Native post frame 9:16 at 1080x1920, 4 of 4 domains naming a native ratio | "the most commonly published figure across independent sources in Chinese, collected September 2026, modal not primary" | 4 domains in the research file | 2026-09-10 | modal, consensus | 2026-09-10 | | 05 |
+| MP4 as accepted format, 4 domains | Same method line | 4 domains | 2026-09-10 | modal, consensus | 2026-09-10 | | 05 |
+| File size cap: 4GB on 3 domains (2026, one restating the API doc), 1GB on 2 (2024, one extract), 2GB on 1 extract | "the spread, grouped by page age, collected September 2026, modal not primary" | 6 domains | 2026-09-10 | modal, contested, age split and echo-inflated | 2026-09-10 | | 05 |
+| Duration ceiling: 15 minutes on 4 domains (one an API doc echo), 30, 60, 5 and 1 minute on 1 each | "the spread, with the 2019 ladder flagged, collected September 2026, modal not primary" | 7 domains | 2026-09-10 | modal, contested, weak mode | 2026-09-10 | | 05 |
+| Bitrate: 1Mbps "official" on 2 domains (2024, uncited), 8 to 15Mbps at 1080p on 1 (2026). Fifteenfold spread | "the spread, not averaged, collected September 2026" | 3 domains | 2026-09-10 | contested, no usable mode | 2026-09-10 | | 05 |
+| Cover frame 9:16 at 1080x1920 on 2 domains, 3:4 at 1080x1440 offered as alternate on 1 | Same method line | 2 domains | 2026-09-10 | modal, contested (thin) | 2026-09-10 | | 05 |
+| Douyin-specific safe-zone insets on a 1080x1920 canvas: top 220px and 288px (one domain, two pages), bottom 200px, 288px and 380px (two domains). No mode | "range published, every inset converted to a 1080x1920 canvas, 5 sources addressing a safe zone, collected September 2026, not a platform reading" | 2 domains with Douyin-specific figures, 5 addressing the topic | 2026-09-10 | contested | 2026-09-10 | | 05 |
+| No Chinese source publishes a Douyin right-rail width. Every rail width in circulation (100 to 140px) is from a TikTok page | "every rail figure traced to its page, 10 September 2026" | Own search review, brief 05 | 2026-09-10 | primary, as an observation about published sources | 2026-09-10 | | 05 |
+| The English web publishes no Douyin spec table: 0 across roughly 40 results on 4 English queries, TikTok pages ranking instead | "4 English queries run 10 September 2026, every result classified" | Own search review, brief 05 | 2026-09-10 | primary, as an observation about the category | 2026-09-10 | | 05 |
+| Derived safe intersection: Douyin-only x 108 to 972, y 288 to 1540 (864x1252). Two-app x 108 to 940, y 288 to 1436 (832x1148) | "derived from the largest published inset on each side, a safe intersection, not a platform rule" | Derived from the rows above plus TikTok fingerprint figures | 2026-09-10 | derived, not a figure from any source | 2026-09-10 | | 05 |
+
+### Do not publish, added from brief 05
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| The API doc limits (4GB, 15 minutes, 720p) as Douyin app limits | A 2026 marketing-service page restated them that way, "mp5" typo included | The doc governs the upload API route only | 2026-09-10 |
+| Any right-rail width for Douyin | TikTok pages | No Douyin source publishes one | 2026-09-10 |
+| TikTok figures as Douyin figures: 287.6MB cap, 10 and 60 minutes, 4,000 to 6,000kbps, 270 and 484px bottom | English search synthesis and TikTok guides | Different product. The known error on this query | 2026-09-10 |
+| "Douyin officially recommends 1Mbps" | Two 2024 pages | "Official" with no official page linked | 2026-09-10 |
+| Follower-gated or account-type duration ladder | A 2019 page, restated 2024 | Stale origin | 2026-09-10 |
+| Douyin renders at 1080x1464 on some surfaces | One English sentence in a TikTok cover guide | Single source, no surface, no method | 2026-09-10 |
+| An annotated overlay diagram described as measured from live app captures | Brief 05 slot requirement | No capture exists. Label any diagram as the derived intersection | 2026-09-10 |
+| "85 percent of content traffic is 9:16", "22 percent lower completion" for safe-zone violations | A Chinese design vendor and a TikTok guide | No sample, period or method | 2026-09-10 |

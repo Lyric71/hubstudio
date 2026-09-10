@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'rednote-note-cover-specs',
+    image: '/Images/insight-rednote-note-cover-specs.webp',
+    imageAlt:
+      'A vertical print of a ceramic cup on a folded napkin lying on a drafting table under three overlapping crop masks, two cardboard frames and a paper strip, so only the centre of the picture stays visible under all of them.',
+    category: 'Platform specs',
+    tone: 'orange',
+    title: 'RedNote Note and Cover Specs 2026',
+    deck: 'Every source agrees a RedNote cover is 3:4 at 1080 by 1440. Almost nothing else agrees, least of all how the app crops it.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '8 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'RedNote Note and Cover Specs 2026 | hubStudio',
+    metaDescription:
+      'RedNote cover ratios, image counts, video specs and safe areas, counted across 20 sources, and the three conflicting accounts of how covers get cropped.',
+  },
+  {
     slug: 'jd-image-requirements-vs-tmall',
     image: '/Images/insight-jd-image-requirements-vs-tmall.webp',
     imageAlt:

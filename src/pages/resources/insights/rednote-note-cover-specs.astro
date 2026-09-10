@@ -1,0 +1,295 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should a RedNote cover image be?",
+    "a": "The most commonly published figure is 3:4 vertical at 1080 by 1440 pixels, named by fourteen of fourteen sources giving a default ratio and thirteen giving that size, collected 10 September 2026. It is a counted published value rather than a figure read from RedNote, so confirm it in your own creator account."
+  },
+  {
+    "q": "What aspect ratio does RedNote use?",
+    "a": "3:4 vertical is the published default, with 1:1 and 4:3 named as accepted alternates. Sources that address it advise keeping every image in one note at a single size. Covers taller than 3:4 are reported once as being forced back to 3:4, which is too thin to treat as a rule."
+  },
+  {
+    "q": "Why is my RedNote cover cropped differently in search?",
+    "a": "Published sources describe three incompatible crop behaviors in the feed, and a single publisher reports search forcing some cards to square or 4:3. Nothing public settles which is live. The one safe instruction is to keep the headline, face and product inside the centre 1080 by 1080 square of the cover."
+  },
+  {
+    "q": "How many images can a RedNote note have?",
+    "a": "Published sources split between 18 and 9. Three 2026 specification tables give 18, while two undated seller pages give 9, and no source dates the change. Plan the carousel for nine and confirm any higher limit in your own account before building around it."
+  },
+  {
+    "q": "What are the RedNote video note specs?",
+    "a": "Vertical is agreed, with 9:16 at 1080 by 1920 most published for the frame and 3:4 for the cover. Duration ceilings run from 5 to 30 minutes and file caps from 50 MB to 500 MB across sources. A vertical 1080p MP4 under 50 MB and five minutes clears every published figure."
+  }
+];
+---
+
+<ArticleLayout slug="rednote-note-cover-specs" ctaLabel="Talk to the production team" faq={faq}>
+  <p class="standfirst">The size of a RedNote cover is the one thing the published sources settle. What the app then does to that cover, in the feed, on a profile and in search, is where the guides quietly contradict each other, and it is where a designer loses the headline.</p>
+
+  <h2>What size should a RedNote cover image be?</h2>
+
+  <p>The most commonly published figure is a 3:4 vertical frame at 1080 by 1440 pixels. Fourteen of fourteen sources that name a default ratio name 3:4, and thirteen give 1080 by 1440 as its size. That row is solid. Most of the rows below it are not, and this page says which.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>These specs are not read from a creator backend. RedNote's own creator, advertiser and help surfaces serve an application shell to anyone not logged in, so no open source reaches the official value.</p>
+
+  <p>What follows is the most commonly published figure for each spec, collected across 20 independent sources in Chinese and English on 10 September 2026, with the number of sources that agreed shown per row. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own creator account and confirm it there. Reviewed 10 September 2026.</p>
+
+  <blockquote class="evidence">Four platform-owned RedNote surfaces, the creator centre, the advertiser centre, the help centre and the seller and creator school, each returned a normal 200 response and a JavaScript application shell to an unauthenticated request on 10 September 2026. No specification text was served. The only pixel values in the delivered help-centre file were stylesheet breakpoints.</blockquote>
+  <p class="source">Source: direct unauthenticated fetches of four platform-owned surfaces, 10 September 2026, response size and body content recorded per request. Primary observation, not a specification.</p>
+
+  <p>That is why the guides disagree. None of them is reading the platform either.</p>
+
+  <h2>What aspect ratio does RedNote use?</h2>
+
+  <blockquote class="evidence">The most commonly published RedNote cover format is a 3:4 vertical frame at 1080x1440 pixels. Fourteen of fourteen independent sources that name a default name 3:4, and thirteen give 1080x1440 as its pixel size, with a higher-density 1242-pixel-wide variant appearing on three.</blockquote>
+  <p class="source">Source: 20 independent published references in Chinese and English collected 10 September 2026, counted per domain and reported as the most commonly published figure, not as a value read from the platform.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Most published value</th>
+          <th scope="col">Spread across sources</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Default cover ratio</th>
+          <td>3:4 vertical</td>
+          <td>1:1 and 4:3 named as alternates, never as default</td>
+          <td>14 of 14</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Cover size at 3:4</th>
+          <td>1080 by 1440</td>
+          <td>A 1242-pixel-wide variant on three sources</td>
+          <td>13</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Square alternate</th>
+          <td>1080 by 1080</td>
+          <td>Unanimous where a square size is given</td>
+          <td>7</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Landscape alternate</th>
+          <td>4:3</td>
+          <td>Pixels split across 1080 by 810, 1200 by 900 and 1440 by 1080</td>
+          <td>5 name the ratio</td>
+          <td>contested on pixels</td>
+        </tr>
+        <tr>
+          <th scope="row">Image file ceiling</th>
+          <td>20 MB per image</td>
+          <td>Working advice far lower, 5 MB down to 300 to 800 KB</td>
+          <td>4</td>
+          <td>consensus on the ceiling</td>
+        </tr>
+        <tr>
+          <th scope="row">Image formats</th>
+          <td>JPG and PNG</td>
+          <td>One source adds sRGB rather than Adobe RGB</td>
+          <td>5</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Avatar</th>
+          <td>400 by 400 minimum, circular crop</td>
+          <td>800 by 800 recommended, 300 by 300 once</td>
+          <td>4</td>
+          <td>consensus</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>One practical note sits under the ratio rows. Sources that address it say every image in a note should share one size, and while that is contested as a rule it costs nothing to follow.</p>
+
+  <h2>How many images can a RedNote note have?</h2>
+
+  <p>Somewhere between nine and eighteen, and the published field does not say when that changed.</p>
+
+  <blockquote class="evidence">Published sources do not agree on how many images one RedNote note carries. Three 2026 specification tables give 18. Two undated seller-education pages give 9. No source dates the change or explains it, so the honest reading is a range rather than a number.</blockquote>
+  <p class="source">Source: five independent published references collected 10 September 2026, counted per domain, range published rather than averaged. Not a platform reading.</p>
+
+  <p>The split lines up with publication age, the dated 2026 tables at eighteen and the undated pages at nine, which suggests a limit that rose and a set of pages that were never updated. Plan a carousel for nine and treat anything beyond it as a bonus you confirm in your own account.</p>
+
+  <h2>Why is my RedNote cover cropped differently in search?</h2>
+
+  <p>This is the part of the page worth the visit, because the published sources do not merely disagree on a number here. They disagree on what happens at all.</p>
+
+  <blockquote class="evidence">Ten published sources describe what RedNote does to a note cover, and they split into three incompatible accounts: that the feed shows the full 3:4 card and the profile grid takes a centre 1:1 crop, that the feed shows the full card with interface chrome laid over the lower 15 to 20 percent, and that the feed itself lifts a centre 1:1 square out of the first image. Four sources back the first, four the second and two the third.</blockquote>
+  <p class="source">Source: ten independent published references collected 10 September 2026, grouped by the mechanism each claims rather than by the numbers attached to it. No open source resolves which is live in the app.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Account</th>
+          <th scope="col">What happens to the cover</th>
+          <th scope="col">Sources</th>
+          <th scope="col">If you designed for a different account</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Full card</th>
+          <td>Feed shows the whole 3:4 card, profile grid takes a centre square</td>
+          <td>4</td>
+          <td>You centre everything and waste the top and bottom of every feed card</td>
+        </tr>
+        <tr>
+          <th scope="row">Occlusion</th>
+          <td>Feed shows the whole card, then lays the title and author bar over the lower part</td>
+          <td>4</td>
+          <td>Your low headline survives the crop and sits under the interface</td>
+        </tr>
+        <tr>
+          <th scope="row">Hard feed crop</th>
+          <td>The feed itself cuts a centre square out of the cover</td>
+          <td>2</td>
+          <td>Your top-third headline gets cut off in the feed entirely</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The asymmetry matters. Under the occlusion account the lower band is covered but still there, so a background can run into it. Under the hard-crop account those pixels are gone. Advice written for one account fails under another, and nothing published settles which one the app runs today.</p>
+
+  <p>Search is murkier still. A single publisher reports search results forcing covers into square or 4:3 cards in some layouts. One source is not a mode, so this page records the report and does not publish it as a spec.</p>
+
+  <p>On the profile grid the sources that mention it agree: the grid lifts a centre square out of the cover. Most English guides never mention the grid at all.</p>
+
+  <h2>The one instruction that survives every account</h2>
+
+  <blockquote class="evidence">Whichever of the three published accounts of RedNote cover cropping is correct, one instruction holds under all of them: keep the headline, the face and the product inside the centre square of the cover, which is the middle 1080x1080 pixels of a 1080x1440 frame. It is the only region that survives a centre crop, a grid crop and an interface overlay alike.</blockquote>
+  <p class="source">Source: derived from the three published crop accounts collected 10 September 2026 by taking the region common to all of them. A safe intersection, not a platform rule.</p>
+
+  <p>That is the working rule this page stands behind, and it is a derivation rather than a platform rule. The bottom of the frame gets a direction instead of a number.</p>
+
+  <blockquote class="evidence">Eight published sources tell designers to keep the lower part of a RedNote cover clear, and no two give the same figure. Reserved depths appear as about 144 pixels, 150 pixels, 180 pixels, 200 pixels, and as 15 to 20 percent of frame height, which on a 1440-pixel-tall cover is roughly 216 to 288 pixels.</blockquote>
+  <p class="source">Source: eight independent published references collected 10 September 2026, every reserved depth converted to a common 1080x1440 canvas before comparison. Range published, not averaged, and not read from the platform.</p>
+
+  <p>Eight sources, five figures. Keep text out of the lowest 288 pixels and you are clear of every one of them.</p>
+
+  <h2>What are the RedNote video note specs?</h2>
+
+  <p>The widest spread on the page, so treat every number here as a starting point.</p>
+
+  <blockquote class="evidence">Published RedNote video note limits span a factor of ten. Duration ceilings appear as 5 minutes, 15 minutes and 30 minutes across four sources, and file caps appear as 50 MB, a 200 to 500 MB band, and 500 MB. Only the vertical orientation is agreed.</blockquote>
+  <p class="source">Source: four independent published references carrying a video table, collected 10 September 2026, every published figure recorded and the full spread reported. Modal values, not platform readings.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Most published value</th>
+          <th scope="col">Spread across sources</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Orientation</th>
+          <td>Vertical</td>
+          <td>Agreed everywhere</td>
+          <td>4</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Video frame</th>
+          <td>9:16 at 1080 by 1920</td>
+          <td>Two sources recommend 3:4 for the frame</td>
+          <td>5</td>
+          <td>contested on which vertical</td>
+        </tr>
+        <tr>
+          <th scope="row">Video cover</th>
+          <td>3:4 at 1080 by 1440</td>
+          <td>Matches the image cover</td>
+          <td>4</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Resolution</th>
+          <td>1080p recommended, 720p floor</td>
+          <td>None beyond the two figures</td>
+          <td>4</td>
+          <td>consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Duration ceiling</th>
+          <td>15 minutes</td>
+          <td>5, 15 and 30 minutes all published</td>
+          <td>3</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">File size cap</th>
+          <td>500 MB</td>
+          <td>50 MB to 500 MB</td>
+          <td>2</td>
+          <td>contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Formats</th>
+          <td>MP4, with MOV named twice</td>
+          <td>MP4 unanimous</td>
+          <td>3</td>
+          <td>consensus</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Export a vertical 1080p MP4 under 50 MB and kept to five minutes, and you sit inside the tightest published figure on every contested row.</p>
+
+  <h2>Why this page exists</h2>
+
+  <blockquote class="evidence">Across five buyer phrasings in Chinese and English, no page publishes a source count, a confidence label, or a per-surface crop model for RedNote covers. Two of the fullest Chinese specification tables are close to identical row by row, so the field's apparent agreement is in part an echo rather than independent corroboration.</blockquote>
+  <p class="source">Source: five queries run 10 September 2026, Chinese first, every returned result classified by page type, by what it answers and by what it cites.</p>
+
+  <p>That last sentence is worth holding onto. When two long tables match row for row, the agreement you are looking at may be one source copied, not two sources confirming.</p>
+
+  <p>The <a href="/solutions/platforms/rednote">RedNote platform page</a> covers how brand accounts are produced for the platform, the <a href="/services/design/social-media">social media design service page</a> covers the note and carousel work itself, and the <a href="/services/design/short-video">short video design service page</a> covers the vertical video side.</p>
+
+  <h2>Changelog</h2>
+
+  <p><strong>10 September 2026.</strong> First published under the counted-source method. Twenty sources in Chinese and English. The default cover ratio and size reached consensus. Image count, video duration, video file size, bottom safe area and the feed crop mechanism stayed contested, and are published as ranges or as competing accounts rather than as single figures.</p>
+
+  <h2>Questions about RedNote specs</h2>
+
+  <h3>What size should a RedNote cover image be?</h3>
+
+  <p>The most commonly published figure is 3:4 vertical at 1080 by 1440 pixels, named by fourteen of fourteen sources giving a default ratio and thirteen giving that size, collected 10 September 2026. It is a counted published value rather than a figure read from RedNote, so confirm it in your own creator account.</p>
+
+  <h3>What aspect ratio does RedNote use?</h3>
+
+  <p>3:4 vertical is the published default, with 1:1 and 4:3 named as accepted alternates. Sources that address it advise keeping every image in one note at a single size. Covers taller than 3:4 are reported once as being forced back to 3:4, which is too thin to treat as a rule.</p>
+
+  <h3>Why is my RedNote cover cropped differently in search?</h3>
+
+  <p>Published sources describe three incompatible crop behaviors in the feed, and a single publisher reports search forcing some cards to square or 4:3. Nothing public settles which is live. The one safe instruction is to keep the headline, face and product inside the centre 1080 by 1080 square of the cover.</p>
+
+  <h3>How many images can a RedNote note have?</h3>
+
+  <p>Published sources split between 18 and 9. Three 2026 specification tables give 18, while two undated seller pages give 9, and no source dates the change. Plan the carousel for nine and confirm any higher limit in your own account before building around it.</p>
+
+  <h3>What are the RedNote video note specs?</h3>
+
+  <p>Vertical is agreed, with 9:16 at 1080 by 1920 most published for the frame and 3:4 for the cover. Duration ceilings run from 5 to 30 minutes and file caps from 50 MB to 500 MB across sources. A vertical 1080p MP4 under 50 MB and five minutes clears every published figure.</p>
+</ArticleLayout>

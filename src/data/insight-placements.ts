@@ -123,6 +123,20 @@ export const insightPlacements = {
     balance: true,
     limit: 3,
   },
+
+  /* Social buyers. What the Chinese social platforms do to a post. */
+  socialMedia: {
+    route: '/services/design/social-media',
+    eyebrow: 'Further reading',
+    heading: 'What the platform does to the',
+    emphasis: 'post',
+    intro:
+      'Cover crops, safe areas and video limits for the Chinese social platforms, counted across published sources and dated. Read these before a grid is designed around a number nobody has confirmed.',
+    categories: ['Platform specs'],
+    /* Platform specs also holds marketplace pages. Lead with the social one. */
+    pinned: ['rednote-note-cover-specs'],
+    limit: 3,
+  },
 } satisfies Record<string, InsightPlacement>;
 
 export type InsightPlacementKey = keyof typeof insightPlacements;

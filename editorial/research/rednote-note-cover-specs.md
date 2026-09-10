@@ -447,3 +447,54 @@ writer never has to reach for the characters.
 | guize zhongxin | rule centre | The gated surface pattern seen on the ecommerce platforms |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**All eight cleared blockquotes shipped** with their attributions unchanged, each
+carrying its domain count, its languages, the collection date, and a statement
+that the value is modal, a primary observation, or a derived intersection.
+
+**The disclaimer block from SPEC.md runs after the opening answer** with NN = 20
+and the date 10 September 2026. Two words were substituted because RedNote is a
+social platform rather than a marketplace: "creator backend" for "seller
+backend" and "creator account" for "your own seller backend". The meaning and
+the structure are otherwise verbatim.
+
+**The H1 and meta description were changed from the brief, because both were
+false under this method.** The working H1 read "verified against the live app"
+and the draft meta said "verified against the live app with a changelog". No
+live-app capture was taken. The H1 now reads "and the crop nobody agrees on" and
+the meta names the 20-source count instead.
+
+**Every hard block held.** Maximum images per note is published as the 18
+against 9 range with the age split noted, never as one figure. Video duration,
+video file size and the bottom safe area are each published as ranges. The
+search crop appears only as "a single publisher reports" and never as a spec
+row. No ratio is described as rejected at upload. No engagement, click or
+algorithm claim attaches to 3:4.
+
+**The three crop accounts are published as competing accounts**, with counts
+(four, four, two), a consequences column, and the asymmetry between covering and
+cropping spelled out. The centre-square instruction is labeled as a derived safe
+intersection in its source line, in the body copy after it, and in the FAQ.
+
+**Two practical recommendations were added, both derived from cleared ranges and
+labeled as derived.** Keep text out of the lowest 288 pixels, which clears the
+largest published bottom reservation. Export video as vertical 1080p MP4 under
+50 MB and five minutes, which sits inside the tightest published figure on every
+contested video row. Neither introduces a new figure.
+
+**The echo finding shipped.** Two of the fullest Chinese tables are near
+identical row by row, and the page says that some of the field's agreement is
+copying rather than corroboration.
+
+**The brief's changelog requirement is met** by a dated changelog section placed
+last before the FAQ, since the file must end on the CTA.
+
+**The brief's third link does not exist.** /resources/specs was replaced by the
+short video design service page, which covers the video note half.
+
+**Open at publish time.** No live-app capture was taken. One set of feed,
+profile grid and search captures of a single test cover would resolve the crop
+question outright, and it is the most valuable capture in the China spec
+cluster.
