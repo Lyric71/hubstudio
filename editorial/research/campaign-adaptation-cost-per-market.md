@@ -528,3 +528,52 @@ backend capture is needed, because the article makes no dimensional claim.
    context.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**Eleven blockquotes shipped**, every one from the "Cleared for use" block with
+its attribution unchanged, including the reused rows worded exactly as the
+earlier articles publish them so the pages agree word for word.
+
+**The five-level ladder is attributed to this page in bold**, once before the
+table and again in the closing FAQ answer. It is never called an industry
+standard, a trade body definition or a category convention. The draft says
+plainly that no rate card uses these names.
+
+**No per-market average appears** and the page states that none exists, twice:
+in the opening answer and in the FAQ.
+
+**No currency is converted or averaged.** Euro, dollar and per-word figures each
+stay in the unit their source publishes. The worked twelve-market table carries
+NO TOTAL ROW, and the body copy gives the reason: the lines come from different
+cards, categories and currencies, so a sum would read as a quote and mean
+nothing.
+
+**The non-linear breakpoint is the rights step**, carried from the union
+agreement row, with the bid form's missing usage line next to it to show why it
+is invisible in a production quote. That pairing is the strongest argument on
+the page.
+
+**China is referenced and not rebuilt.** The compliance stack is deferred to the
+already published China localization article by name, so the two pages do not
+compete for the same query. No China pixel spec, file size cap or fill ratio
+appears.
+
+**One section was added during drafting**, using two cleared rows that the first
+draft left unused: the gated UK hourly benchmarks and the 578,750-creative
+dataset that publishes no cost per asset. It explains why no benchmark exists to
+check a quote against, which the piece needed and did not have.
+
+**The link target was changed from the brief**: the quotation calculator at
+/pricing/calculator returns hubStudio rates and is disallowed in robots.txt, so
+it was repointed to the public estimator at /resources/production-cost.
+
+**Everything in the do-not-publish list stayed out**: the "hundreds of
+variations without linear cost increase" claim, the five-working-day rollout
+claim, the 30 to 40 percent subscription saving, the music and talent uplift
+bands never read at origin, and the campaign totals.
+
+**Open at publish time.** The adaptation rate card is single-source AND carries
+no publication date on its own page. It is the only sourced adaptation price on
+the page and the most perishable evidence in the piece. Capture it with a date
+before this ships.

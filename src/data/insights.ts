@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'campaign-adaptation-cost-per-market',
+    image: '/Images/insight-campaign-adaptation-cost-per-market.webp',
+    imageAlt:
+      'One large print of a ceramic vase pinned under brass weights at the head of a layout table, with many smaller derived versions fanned out below it, ranging from simple recrops to a hand-traced outline and a fully collaged rebuild.',
+    category: 'Cost',
+    tone: 'orange',
+    title: 'Campaign Adaptation Cost per Market',
+    deck: 'Across forty-nine results, one page prices an adaptation and says what the price includes. The word covers five different jobs, so here is the ladder.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '12 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Campaign Adaptation Cost per Market | hubStudio',
+    metaDescription:
+      'One master, N markets, M formats. The unit definition, a rate structure by format family, and where adaptation cost stops scaling linearly.',
+  },
+  {
     slug: 'all-in-cost-of-ai-video',
     image: '/Images/insight-all-in-cost-of-ai-video.webp',
     imageAlt:

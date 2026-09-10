@@ -425,3 +425,101 @@ from adjacent categories because adaptation itself publishes nothing.
 | Royalty-free music at $50 to $500 against licensed music at $5,000 to $50,000, and talent fees rising 20 to 100 percent on expanded distribution | Vendor blog summary | Never read at origin, no instrument, no sample, no date. The rights point runs on the trade body bid form and the union agreement instead | 2026-09-10 |
 | Campaign totals of $10,000 to $25,000 and $150,000 to $500,000 | Agency blogs at the top of the primary query | Mixes media with production, no method, no sample, prices a campaign rather than an adaptation | 2026-09-10 |
 | Any per-market average adaptation cost | The premise of the query | Does not exist. Publish the absence, never a midpoint | 2026-09-10 |
+
+## Tmall image specification, modal values (added 2026-09-10, brief 01)
+
+Published under deviation 7 in `editorial/CLAUDE.md`, decided by the site owner
+2026-09-10. **Every row below is a modal value, not a primary reading.** The
+count is the evidence. Source pool: 18 independent domains carrying at least one
+numeric Tmall or Taobao image figure, 16 Chinese-language and 2
+English-language, collected 2026-09-10, Chinese web first. One domain counts
+once however many pages it publishes. Full working in
+`research/tmall-product-image-requirements.md`.
+
+**Attribution form for every row:** "the most commonly published figure,
+collected across 18 independent sources in Chinese and English on 10 September
+2026, with N of 18 agreeing". Never "Tmall requires", never "the rule centre
+states", never "verified".
+
+| Figure | Modal value | Range across sources | Sources agreeing | Collected | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|---|
+| Main image aspect ratio | 1:1 square, 3:4 available by category | 1:1 default, 3:4 held in about ten categories | 12 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| Main image dimensions | 800 by 800 pixels | 700 by 700 to 1440 by 1440 | 14 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| Main image recommended above standard | 1000 by 1000 pixels | 1000 by 1000 to 1500 by 1500 | 5 of 18 | 2026-09-10 | contested | 2026-09-10 | | 01 |
+| The 1440 upgrade | 1440 by 1440 square, 1440 by 1920 vertical, 800 by 800 still displays | Opened 2025, favored since, not a floor | 3 of 18 | 2026-09-10 | contested | 2026-09-10 | | 01 |
+| Main image count | 5 maximum | 5 on every domestic source giving a number; minimum required 3 on 2 sources | 9 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| File weight, platform cap | 3MB per image | 1MB for 3:4 verticals on one source, 10MB on one English outlier | 6 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| File weight, load-speed recommendation | Under 500KB | 200KB to 500KB | 3 of 18 | 2026-09-10 | contested, always labeled a recommendation not a cap | 2026-09-10 | | 01 |
+| White-background slot file weight | Under 300KB, 38KB floor on 3 sources | Under 300KB, or loosely a few hundred KB | 4 of 18 | 2026-09-10 | consensus among sources treating the slot separately | 2026-09-10 | | 01 |
+| Accepted formats | JPG and PNG | JPG universal, PNG on 4, GIF on 1, BMP on 1 | 8 of 18 JPG, 4 of 18 PNG | 2026-09-10 | consensus for JPG, contested beyond | 2026-09-10 | | 01 |
+| White-background slot position | Fifth main image | Fifth in general categories, second in food and appliances | 8 of 18 | 2026-09-10 | consensus general, contested by category | 2026-09-10 | | 01 |
+| White-background value | Pure white, RGB 255 255 255 | RGB stated on 4, pure white without a value on 5 | 9 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| White-background slot dimensions | 800 by 800 pixels | 800 by 800, or 800 by 800 and 1000 by 1000 together | 6 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| Product fill, white-background slot | 70 to 80 percent | 60 to 80 percent, with 3 sources at a flat about 70 percent | 4 of 18 for the band, 3 more inside it | 2026-09-10 | contested for the figure, consensus for the 60 to 80 band | 2026-09-10 | | 01 |
+| Detail page width, desktop | 790 pixels | 790 on all 5 sources that split device | 5 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| Detail page width, mobile | 750 pixels | 750 on all 5 sources that split device | 5 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| Detail page per-slice weight and height | Under 500KB, 1500 pixels tall | 200KB to 3MB, 1500 to 2000 pixels | 2 of 18 each | 2026-09-10 | contested | 2026-09-10 | | 01 |
+| Listing video weight and format | 50MB, MP4 with H.264 | 50MB on all 3 that give one, MOV accepted on 1 | 3 of 18 | 2026-09-10 | consensus among the 3 that address video | 2026-09-10 | | 01 |
+| Listing video duration | 9 to 30 seconds recommended | Platform window given once as 5 seconds to 5 minutes; 15 to 60 on one source | 2 of 18 | 2026-09-10 | contested | 2026-09-10 | | 01 |
+| Main image prohibitions | No watermark, border, splice, promotional overlay, QR code, third-party logo, or model in the white slot | Unanimous in substance | 11 of 18 | 2026-09-10 | consensus, modal not primary | 2026-09-10 | | 01 |
+| Category variation moves the slot map | Food puts white at slot 2 and a legible label at slot 3; appliances put white at slot 2, the certification mark at slot 3, the energy label at slot 4; about 70 categories moved to square-first display from September 2024 while about ten held 3:4 | 4 of 18 confirm variation exists, 1 each for the specific maps | 4 of 18 | 2026-09-10 | consensus that it exists, contested for every map | 2026-09-10 | | 01 |
+| Tmall Global against domestic | No publishable delta. 16 of 18 sources do not distinguish the channels at all | 15 main images and a 1600 by 1600 minimum on 1 source; a cross-border cosmetics slot map on 1 source | 2 of 18 distinguish them | 2026-09-10 | contested, single-source on both figures, publish as an absence | 2026-09-10 | | 01 |
+
+**Hard block 1 is resolved as a category error, not a conflict.** The ledger
+recorded 500KB against 3MB as rival readings of one number. They are not. Every
+source publishing both treats 3MB as the platform cap and 500KB as a load-speed
+recommendation. The fill-ratio half of that block stands: 60 to 80 percent
+remains a genuine spread with no single mode inside it beyond the 70 to 80 band.
+
+### Do not publish, added from brief 01
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any of the modal values above described as verified, official, confirmed, or read from the platform | The temptation created by high agreement counts | Agreement between restatements is evidence of what the market believes, not of what the platform enforces. Deviation 7 permits the belief with its count and nothing more | 2026-09-10 |
+| Any of the modal values above attributed to the Taobao Rule Center or a Tmall rule document | The obvious citation to reach for | The rule centre gated its content on the day of research. Citing it for a number it did not supply is the exact failure deviation 7 names | 2026-09-10 |
+| A Tmall Global delta table | Brief 01 asks for one | 15 images and 1600 by 1600 rest on one domain each. One source is not a mode. Publish the absence with its count instead | 2026-09-10 |
+| A recommended overlay text area percentage | Two Chinese sources, 15 percent and 30 percent | Two sources, two numbers, one each. There is no mode | 2026-09-10 |
+| Tmall main images capped at 10MB, or requiring 300dpi | One English tool-vendor page | Contradicted by the entire Chinese pool. A dpi value is meaningless for a screen asset and marks the page as restating print advice | 2026-09-10 |
+| Main images may be padded with white stripes and branded with a logo | One English developer tutorial ranking on the target query | Directly contradicted by the prohibition list eleven Chinese sources publish. Do not repeat it and do not correct it by name | 2026-09-10 |
+| Failing to upgrade to 1440 pixel mains costs more than 30 percent of traffic; white-background compliance unlocks free recommendation traffic | Self-published practitioner posts and tool vendor pages | No sample, no method, no period, published by sellers of the fix. R5 | 2026-09-10 |
+| A frequency ranking of the three most common rejection reasons | Brief 01 asks for one | No source in the pool ranks rejection reasons by frequency. Write the three prohibitions most often described and say that is what they are | 2026-09-10 |
+| A real rejection notice, described or illustrated | Brief 01 asks for a screenshot of one | None was obtained. Do not reconstruct one and do not write as if one had been seen | 2026-09-10 |
+
+## RedNote note and cover specs (added 2026-09-10, brief 07)
+
+Every figure in this block is a **modal published value**, collected under
+deviation 7 in `../CLAUDE.md`, decided 2026-09-10. None was read from a seller
+backend, a creator backend or an official rule page. Four platform-owned
+surfaces were fetched unauthenticated on 2026-09-10 and none served
+specification text. Never cite any row below as official, verified or read from
+the platform. Every row travels with its source count and its confidence label.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Four platform-owned RedNote surfaces (creator centre, advertiser centre, help centre, seller and creator school) returned HTTP 200 and a JavaScript application shell with no specification text to an unauthenticated request | "direct unauthenticated fetches of four platform-owned surfaces, 10 September 2026, response size and body content recorded per request" | creator.xiaohongshu.com, ad.xiaohongshu.com, www.xiaohongshu.com/help, school.xiaohongshu.com | 2026-09-10 | primary, as a negative observation | 2026-09-10 | | 07 |
+| Default note cover 3:4 vertical, modal value, 14 of 14 sources naming a default | "the most commonly published figure across 14 independent sources in Chinese and English, 10 September 2026, not a platform reading" | 14 domains recorded in research/rednote-note-cover-specs.md | 2026-09-10 | modal, consensus | 2026-09-10 | | 07 |
+| Cover pixel size 1080x1440, modal value, 13 sources, with a 1242-pixel-wide variant on 3 | Same method line, with the count | 16 domains recorded in the research file | 2026-09-10 | modal, consensus | 2026-09-10 | | 07 |
+| Maximum images per note published as both 18 (3 sources) and 9 (2 sources), no source dating the change | "published sources split, range reported rather than averaged, 10 September 2026" | 5 domains recorded in the research file | 2026-09-10 | modal, contested | 2026-09-10 | | 07 |
+| Image file size ceiling 20 MB, 4 sources, with working recommendations of 5 MB and 300 to 800 KB below it | Same method line, with the count | 4 domains | 2026-09-10 | modal, consensus on the ceiling | 2026-09-10 | | 07 |
+| Video note frame 9:16 at 1080x1920 (5 sources), video cover 3:4 at 1080x1440 (4 sources) | Same method line, with both counts | 6 domains | 2026-09-10 | modal, consensus on vertical, contested on which vertical | 2026-09-10 | | 07 |
+| Video duration ceiling published as 5, 15 and 30 minutes; video file cap published as 50 MB, 200 to 500 MB and 500 MB | "a tenfold spread across four independent sources, 10 September 2026, full range published" | 4 domains | 2026-09-10 | modal, contested | 2026-09-10 | | 07 |
+| Cover crop behaviour splits into three mutually exclusive published accounts: full 3:4 feed card with a centre 1:1 profile-grid crop (4 sources), full card with interface chrome over the lower 15 to 20 percent (4 sources), hard centre 1:1 crop in the feed itself (2 sources) | "ten independent published references, 10 September 2026, grouped by the mechanism claimed rather than the number attached" | 10 domains | 2026-09-10 | modal, contested, and the disagreement is the finding | 2026-09-10 | | 07 |
+| The centre 1080x1080 square of a 1080x1440 cover is the only region that survives all three published crop accounts | "derived by intersecting the three published crop accounts collected 10 September 2026. A safe intersection, not a platform rule" | Derived from the 10 domains above | 2026-09-10 | modal, derived | 2026-09-10 | | 07 |
+| Bottom safe area published as about 144 px, 150 px, 180 px, 200 px, and as 15 to 20 percent of frame height (roughly 216 to 288 px on a 1440 px canvas) | "eight independent published references, 10 September 2026, every depth converted to a common 1080x1440 canvas before comparison, range published not averaged" | 8 domains | 2026-09-10 | modal, contested | 2026-09-10 | | 07 |
+| Profile grid renders a centre 1:1 square lifted out of the cover, 4 sources, unaddressed by most English guides | Same method line, with the count | 4 domains | 2026-09-10 | modal, consensus among sources that address it | 2026-09-10 | | 07 |
+| Search results reported to force some cards to 1:1 or 4:3 | "one published account only, 10 September 2026. One source is not a mode" | 1 domain, three pages from one publisher | 2026-09-10 | contested, single-source | 2026-09-10 | | 07 |
+| Avatar 400x400 minimum, 800x800 recommended, circular crop, 4 sources against one giving 300x300 | Same method line, with the count | 5 domains | 2026-09-10 | modal, consensus | 2026-09-10 | | 07 |
+
+### Do not publish, added from brief 07
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any RedNote spec value framed as official, verified, confirmed or read from the platform | The framing every ranking page uses | Deviation 7 permits the modal value and forbids this framing. No open source reaches a RedNote specification | 2026-09-10 |
+| Any RedNote spec attributed to a rule page, help article or creator document | The obvious citation a writer would reach for | Four platform surfaces fetched, none served a specification. The citation would be fabricated | 2026-09-10 |
+| A single figure for maximum images per note, video duration, video file size, or the bottom safe area | The 2026 spec tables | Each of these four is contested with a material spread. Publish the range and the split | 2026-09-10 |
+| The search-results crop as a spec row with a value | One AI tool publisher, across three of its own pages | One publisher is one source, not three. Found once means contested at best | 2026-09-10 |
+| Claims that 3:4 covers convert better or are favoured by the recommendation pool | Chinese cover-tool blogs | No sample, no period, no method, published by sellers of cover-design tools. The feed-area geometry may be stated as geometry | 2026-09-10 |
+| 72 to 150 dpi for RedNote note images | One Chinese spec table | dpi is meaningless for a screen-delivered raster at a fixed pixel size. Publishing it propagates a category error | 2026-09-10 |
+| A 3-second looping dynamic video cover at 1080x1920 | One Chinese spec table | Single-source, and no other reference mentions the feature | 2026-09-10 |
+| Profile background at 1125x630, avatar minimum 300x300, and 2:3 covers force-cropped to 3:4 | One source each | Each is single-source and each is contradicted or unsupported elsewhere | 2026-09-10 |
+| The 10 percent RedNote safe area logged from brief 13 on 2026-09-09 | Chinese design blogs | Still cut. Deviation 7 rescues the 1080x1440 cover as a modal value with a count, but the safe area is one of five figures in circulation, so the range goes on the page instead of any single number | 2026-09-10 |
