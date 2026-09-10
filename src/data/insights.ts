@@ -44,6 +44,40 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'one-shoot-six-platforms-china-variant-matrix',
+    image: '/Images/insight-one-shoot-six-platforms-china-variant-matrix.webp',
+    imageAlt:
+      'A hand slides a wide cut-card window mat over a large print of a pale green ceramic teapot on stone, with square and tall mats already laid across it and a small print of the same teapot on white beside the cutting mat.',
+    category: 'Platform specs',
+    tone: 'orange',
+    title: 'One Shoot, Six Platforms: China Matrix',
+    deck: 'Every ranking page lists China\'s platforms. None maps one shoot to their slots. Here is the matrix, split into crops, re-edits and new capture.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '14 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'One Shoot, Six Platforms: China Matrix | hubStudio',
+    metaDescription:
+      'One product shoot across six Chinese platforms: the variant matrix, a derived slot count per SKU, and what to capture on the day to serve all six.',
+  },
+  {
+    slug: 'training-a-brand-model-that-stays-on-brand',
+    image: '/Images/insight-training-a-brand-model-that-stays-on-brand.webp',
+    imageAlt:
+      'A hand presses a small green dot onto one of about twenty prints of the same pale ceramic vase laid out on a worn wooden studio table, several prints already dotted, a roll of dot stickers and a cup of tea at the far edge.',
+    category: 'AI Foundations',
+    tone: 'navy',
+    title: 'Training a Brand Model That Stays on Brand',
+    deck: 'Every page selling brand model training claims quality. None publishes an approval rate with its method. Here is what that rate should mean.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Training a Brand Model That Stays on Brand | hubStudio',
+    metaDescription:
+      'Nobody publishes an approval rate for a trained brand model with its method. What to demand, the five stages, and what training data must never hold.',
+  },
+  {
     slug: 'offshore-creative-production-china',
     image: '/Images/insight-offshore-creative-production-china.webp',
     imageAlt:

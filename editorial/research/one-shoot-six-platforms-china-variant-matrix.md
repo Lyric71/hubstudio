@@ -661,3 +661,69 @@ captures in the China spec cluster, because they test six platforms with one
 set of files.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality check.
+
+**Sixteen blockquotes shipped. The quoted text of all 16 is verbatim** from
+"Cleared for use", checked by script. **Every Source line changed attribution
+form, and only that.** The cleared lines named research filenames, which mean
+nothing to a reader, so each file is named on the page as its collection: "the
+Tmall product image collection", "the JD against Tmall collection", "the WeChat
+collection", and so on. "This file's matrix" became "this page's matrix", "that
+file's derived safe intersection" became "that collection's", and the Weibo FAQ's
+domain became "Weibo's help-center video FAQ". Counts, pools, dates, scopes and
+every "derived, not a platform rule" label are unchanged. The 70/30 source line
+dropped the repository path, the internal exception date and its closing sentence,
+and keeps the page, the read date, the attribution and the missing sample and
+period.
+
+**The disclaimer is a combined form.** The first paragraph joins the seller
+backend and creator account forms and says the creator and help surfaces "mostly"
+serve no specification text, because four platform pages were readable. NN is
+given as eight collections of 12 to 24 sources each, never summed, with a sentence
+saying counts are never added together. The readable-page paragraph names the four
+pages behind primary rows: WeChat's Channels help-center article, WeChat's Mini
+Program framework reference, Weibo's help-center video FAQ dated 1 July 2024, and
+Douyin's Open Platform upload API documentation.
+
+**The meta was changed.** "The real asset count per SKU" became "a derived slot
+count per SKU", because no per-SKU image total is cleared. Title and H1 kept.
+
+**Must-includes.** The matrix is two five-column tables, platform down, with cell
+values condensed from this file's matrix and counts kept per collection; the pool
+sizes are listed once above the tables, per platform, not summed. The WeChat 3:4
+cell reads "None in the core count", leaving the optional January 2023 Moments ad
+out. The total is the 24 and 27 slot count, labeled arithmetic with its scope. The
+cell-type table has four rows; "new capture" was dropped because no core slot falls
+in it. The shoot-day checklist follows this file's, with capture sizes labeled
+production practice.
+
+**The RedNote flag is carried.** The body explains why the vertical box stops at
+1392, and names the same-day correction to the RedNote cover article.
+
+**Cut and said so on the page**: the copy-length axis. Not mentioned: Douyin Shop
+listing images and every TikTok figure.
+
+**The slot requirement is unmet.** The 70/30 mix runs only attributed to the
+ecommerce design service page, with its missing sample and period in the quote.
+
+**Every must-not held**: no counts added across collections; no modal value called
+verified, official or required; every box, band and count labeled derived; no
+primary row stretched past its page; no image total; no Channels 6:7 cover, Weibo
+organic frame ratio, TopView file spec or undated Moments size; no other hubStudio
+figure and nothing from the ecommerce page's Tmall figures; no quarantined domain;
+no hubStudio rate; no Han characters.
+
+**Length runs over the brief**: about 2,900 words of prose against 1,600, carried
+by the quoted derivations and the two matrix tables.
+
+**Links**: /solutions, /solutions/ai-production/image and /work/diy-european-retailer
+exist and were kept, with no figure lifted from the case study. The RedNote cover
+specs article was added.
+
+**The hero was accepted on the first generation**: cut-card window mats of three
+proportions laid over one print of a ceramic teapot, a white-background print
+beside it.
+
+**Distribution:** category Platform specs, which reaches the ecommerce and social
+media design service page layers and the home page.

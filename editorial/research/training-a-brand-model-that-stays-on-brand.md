@@ -535,3 +535,56 @@ gives it, over what sample and period. It does not exist yet, and until it does
 the approval chart stays out.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality check.
+
+**All 17 blockquotes shipped verbatim** from "Cleared for use", said text and
+Source line both, checked by script against this file. The trailing URL lines
+were left off the page, per the house form for body copy.
+
+**The H1 and meta were rewritten, as this file required.** Both carried the 22 to
+78 percent figure, which has no written approval definition, approver, sample or
+period. The H1 now reads "the rate to ask for" and the meta leads on the absence
+of any published approval rate with a method. The title was kept.
+
+**Must-includes, and how each was met.** What an approval rate measures: a
+five-line definition table, labeled production practice, not a published
+standard. The five-stage pipeline: the first two columns follow the AI excellence
+page's description, and the gate column is labeled production practice. Training
+data: a required, optional, never table. Its required and optional rows are
+production practice; its never rows rest on the 2023 extraction study (with its
+large-model scope stated in the body), the deep synthesis provisions and the 2025
+commercials agreement. The three to six week window: only as the published range
+attributed to the AI excellence page, with its no-sample caveat in the quote.
+Review gates: the gate column, with the approval count placed at the Perfect gate.
+Ownership: the two US Copyright Office quotes, the adapter mechanism with "the
+common adapter approach" and a full fine-tune caveat, and hubStudio's published
+policy in its cleared form.
+
+**The slot requirement is unmet and the approval chart is cut**, because no
+hubStudio delivery figure has a written method.
+
+**Writer's notes honored.** The extraction study is never turned into a leakage
+rate for brand models. China's Interim Measures are described as governing public
+services, with Article 2's exclusion quoted, and the page says a brand training a
+private model is not what they govern. Research metrics keep their metric and
+dataset in the same quote, and the user study quote carries its own "not an
+approval rate" line. No model, method, encoder, tool or vendor is named. guo gao
+lu appears once, romanized, with its English meaning.
+
+**Every must-not held**: no 22, 78, sevenfold or 60 percent figure; no training
+set size from a vendor page; no compute time; no language-model parameter
+reduction; no penalty or labeling allocation; nothing from Part 3 of the Copyright
+Office report; no hubStudio rate; no quarantined domain; no Han characters.
+
+**Length runs over the brief**: about 2,360 words of prose against 1,600, carried
+by the quoted research and instruments.
+
+**Links**: the AI excellence page, the AI image production page and the hub4you
+platform all exist and were kept.
+
+**The hero was accepted on the first generation**: a hand placing green dots on
+prints of one ceramic vase laid across a studio table.
+
+**Distribution:** category AI Foundations, which reaches the AI excellence page
+layer and the home page.

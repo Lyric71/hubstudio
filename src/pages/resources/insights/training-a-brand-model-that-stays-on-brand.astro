@@ -1,0 +1,293 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is an internal approval rate?",
+    "a": "The share of assets a brand model produces that a named approver on the brand side signs off, counted against a definition written before the work starts. It only means something with five lines beside it: what counts as an approval, who approves, the sample, the period and what was excluded. No independent benchmark for brand models publishes one."
+  },
+  {
+    "q": "How long does it take to train a custom brand model?",
+    "a": "hubStudio publishes a range of three to six weeks from brief to a trained model, depending on the depth of the brand library. It is a published range, not a measured benchmark. The window also holds clearing the training set and scoring a test batch, so compare it with other brief-to-model windows, never with a training run's compute time."
+  },
+  {
+    "q": "What training data does a brand model need?",
+    "a": "Brand imagery the brand holds full rights to, photography of the current product library, and written brand codes for color, type and composition, since the approval definition is judged against them. A past campaign archive is optional, as long as every image in it clears the same rights check before it goes in."
+  },
+  {
+    "q": "What must never go into brand model training data?",
+    "a": "Unreleased products, third-party logos and trademarks, faces or voices without the person's consent, and talent work under a contract that bars training. Research has extracted training images, including photos of people and trademarked logos, from large image models. That study did not test small brand models, but it is why these stay out."
+  },
+  {
+    "q": "Who owns the trained model at the end?",
+    "a": "The contract decides, because copyright does not settle it for prompt-driven output. In the common adapter approach, training produces a small set of weights on a base model the brand does not own. hubStudio publishes that models it trains are the client's property. This describes production practice, not legal advice."
+  }
+];
+---
+
+<ArticleLayout slug="training-a-brand-model-that-stays-on-brand" ctaLabel="Talk about a brand model" faq={faq}>
+  <p class="standfirst">A brand model is worth what the brand team signs off. So the honest measure of one is an approval rate: the share of its output that a named person on the brand side approves, against a written definition, over a stated sample and period. Plenty of pages promise a model that stays on brand. Not one of them publishes that rate with its method, and hubStudio has not published one either, so this page prints no rate. What it does instead is define the rate precisely enough for a buyer to ask for it in writing.</p>
+
+  <h2>What is an internal approval rate?</h2>
+
+  <p>It is the share of assets a brand model produces that the brand's own approver signs off, counted against a definition both sides wrote down before the work started. Chinese design teams have a name for the first-round version, guo gao lu, the share of work a client signs off first time. The idea travels. The number only means something if five things are written next to it.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Element</th>
+          <th scope="col">What it must say</th>
+          <th scope="col">What goes wrong without it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">What counts as an approval</th>
+          <td>Approved as delivered, or approved after one round of changes</td>
+          <td>Minor fixes quietly count as approvals</td>
+        </tr>
+        <tr>
+          <th scope="row">Who approves</th>
+          <td>The named role on the brand side, not the studio</td>
+          <td>The supplier grades its own work</td>
+        </tr>
+        <tr>
+          <th scope="row">Sample</th>
+          <td>How many assets, from how many briefs</td>
+          <td>Ten easy assets pass for a track record</td>
+        </tr>
+        <tr>
+          <th scope="row">Period</th>
+          <td>The dates the count covers</td>
+          <td>A good month stands in for a year</td>
+        </tr>
+        <tr>
+          <th scope="row">What is excluded</th>
+          <td>Assets withdrawn, briefs canceled, tests</td>
+          <td>Failures leave the count before it is taken</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>That table is production practice, not a standard anyone publishes. It is also the whole argument for the metric. A quality claim tells you what a supplier thinks of its own work. An approval rate with those five lines tells you what your side thought, and you can audit it.</p>
+
+  <h2>Why nobody can show you a benchmark</h2>
+
+  <p>Because none exists.</p>
+
+  <blockquote class="evidence">No independent, method-stated measurement of approval rates or brand consistency for custom-trained brand image models was found. Four English buyer searches returned 29 results, 25 published by companies selling the training or a tool that does it, and none carried an approval rate with an approver, a sample and a period. Three Chinese-language searches returned 18 practitioner tutorials and tool documents, and none did either.</blockquote>
+  <p class="source">Source: search-results audit run 10 September 2026, publisher type recorded for every result, no domain named; peer-reviewed literature checked for an approval-rate study, none found.</p>
+
+  <p>The closest anyone gets is peer-reviewed fine-tuning research, and it measures something else.</p>
+
+  <blockquote class="evidence">In peer-reviewed fine-tuning research, "staying on subject" is scored by machine, not by a brand team. A 2023 study fine-tuned a text-to-image model on three to five photos of a single subject, generated 3,000 test images across 30 subjects and 25 prompts, and scored fidelity as the average similarity between generated and real photos inside a pretrained image encoder. The fine-tuned model scored 0.696 on that scale, against 0.774 for real photos of the same subject compared with each other.</blockquote>
+  <p class="source">Source: peer-reviewed computer vision conference paper, CVPR 2023, company research lab; automated embedding similarity on a 30-subject evaluation set.</p>
+
+  <blockquote class="evidence">The same study asked 72 people 1,800 paired questions about which image "best reproduces the identity" of a reference object. Raters picked the fine-tuned model's image 68 percent of the time, an earlier method's 22 percent, and could not decide 10 percent of the time. That is a preference between two research methods, not an approval rate for finished work.</blockquote>
+  <p class="source">Source: peer-reviewed computer vision conference paper, CVPR 2023; pairwise forced-choice user study, rater expertise not stated.</p>
+
+  <p>A similarity score against reference photos is not a brand director saying yes. And a second paper shows how loosely those scores follow human judgment.</p>
+
+  <blockquote class="evidence">Automated consistency scores are a weak stand-in for a human reviewer. A 2025 benchmark had seven annotators rate generated images across 150 reference images and 1,350 prompts, then checked how well automated scores tracked them. On whether the subject was preserved, the two common image-similarity scores reached only 50.72 percent and 60.98 percent of the agreement human raters showed with each other.</blockquote>
+  <p class="source">Source: peer-reviewed machine learning conference paper, ICLR 2025; Pearson correlation with human ratings, expressed as a share of human-to-human agreement, each image rated by at least two annotators.</p>
+
+  <blockquote class="evidence">The same benchmark found a multimodal language model used as a judge came closer, at 83.31 percent of human-to-human agreement on subject preservation and 98.17 percent on prompt following, and its authors warn that those results "heavily rely on the advancements of multimodal large language models and require carefully designed system prompts."</blockquote>
+  <p class="source">Source: peer-reviewed machine learning conference paper, ICLR 2025, Table 4 and limitations; the paper's text gives 98.71 percent where its table gives 98.17 percent, and the table value is used here.</p>
+
+  <p>Read together, those findings are the case for a human approval gate. Automated checks can sort output before a person sees it. They cannot stand in for the person, which is why the rate worth asking for is a human one.</p>
+
+  <h2>The five-stage pipeline</h2>
+
+  <p>hubStudio's AI excellence page describes the pipeline in five stages. The first two columns below follow that page. The third is the gate a buyer should ask to see closed before the next stage starts, and it is production practice rather than a published rule.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Stage</th>
+          <th scope="col">What happens</th>
+          <th scope="col">The gate that closes it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Brief</th>
+          <td>Objectives, brand codes, audiences and channels are mapped</td>
+          <td>The written approval definition, signed by the brand's approver</td>
+        </tr>
+        <tr>
+          <th scope="row">Train</th>
+          <td>Custom models are trained on the brand's visual language and product library</td>
+          <td>The training set, cleared line by line against the never list below</td>
+        </tr>
+        <tr>
+          <th scope="row">Create</th>
+          <td>Senior art directors generate options, then narrow them</td>
+          <td>A test batch from real briefs, scored against the approval definition</td>
+        </tr>
+        <tr>
+          <th scope="row">Perfect</th>
+          <td>Studio retouching, copy editing and brand QA, the final human pass</td>
+          <td>Per-asset approval by the named approver, counted</td>
+        </tr>
+        <tr>
+          <th scope="row">Deploy</th>
+          <td>Files delivered in the client's formats</td>
+          <td>Delivery records: model used, training references, prompts</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The approval rate lives at the Perfect gate. Count there, and every other gate either feeds it or explains it.</p>
+
+  <h2>How long does it take to train a custom brand model?</h2>
+
+  <p>The published figure is a range, and it is labeled as one.</p>
+
+  <blockquote class="evidence">hubStudio publishes a window of three to six weeks from brief to a trained custom model, depending on the depth of the brand library. It is a published range, not a measured benchmark: no sample of engagements sits behind it.</blockquote>
+  <p class="source">Source: hubStudio AI excellence page, September 2026.</p>
+
+  <p>Two cautions when you compare that with anything else you read. The time a training run spends computing is not the window from brief to an approved model, which also holds the training set clearance and the test batch. And the three to five images in the 2023 study were photos of one subject for a research method, not a brand library.</p>
+
+  <p>The research is candid about where fine-tuning breaks, which is where the test batch should look first.</p>
+
+  <blockquote class="evidence">The authors list where fine-tuning breaks: rare contexts, the background bleeding into the subject's appearance, overfitting when a prompt resembles the training photos, and the plain admission that "some subjects are easier to learn than others."</blockquote>
+  <p class="source">Source: peer-reviewed computer vision conference paper, CVPR 2023, authors' own limitations section.</p>
+
+  <h2>What training data does a brand model need?</h2>
+
+  <p>Material the brand owns outright, and nothing it cannot account for. The never column matters most, because what goes in can come back out.</p>
+
+  <blockquote class="evidence">Image generation models can reproduce their training data. Researchers extracted more than a thousand training images from large diffusion models, "ranging from photographs of individual people to trademarked company logos," and concluded these models are "much less private than prior generative models."</blockquote>
+  <p class="source">Source: peer-reviewed security conference paper, 32nd USENIX Security Symposium, August 2023, company research labs and universities; generate and filter extraction attack on large pretrained models.</p>
+
+  <p>That study attacked large models trained on the open web, not a small brand model, so it gives no leakage rate for one. It is still the reason the never column exists.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Training data</th>
+          <th scope="col">Status</th>
+          <th scope="col">Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Brand imagery the brand holds full rights to</th>
+          <td>Required</td>
+          <td>It is the visual language the model learns</td>
+        </tr>
+        <tr>
+          <th scope="row">Product photography of the current library</th>
+          <td>Required</td>
+          <td>Products have to come back accurate</td>
+        </tr>
+        <tr>
+          <th scope="row">Written brand codes: color, type, composition rules</th>
+          <td>Required</td>
+          <td>The approval definition is judged against them</td>
+        </tr>
+        <tr>
+          <th scope="row">Past campaign archive, rights checked</th>
+          <td>Optional</td>
+          <td>Widens range, if every image clears</td>
+        </tr>
+        <tr>
+          <th scope="row">Unreleased products</th>
+          <td>Never</td>
+          <td>What goes in can be reproduced</td>
+        </tr>
+        <tr>
+          <th scope="row">Third-party logos and trademarks</th>
+          <td>Never</td>
+          <td>Logos are among what extraction recovered</td>
+        </tr>
+        <tr>
+          <th scope="row">Faces or voices without the person's consent</th>
+          <td>Never</td>
+          <td>Consent rules for likeness and editing apply</td>
+        </tr>
+        <tr>
+          <th scope="row">Talent work under a contract that bars training</th>
+          <td>Never</td>
+          <td>The contract says no</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>China sets rules for the training data behind public generative AI services, and they read as a fair description of a clean training set.</p>
+
+  <blockquote class="evidence">China's Interim Measures for the Administration of Generative Artificial Intelligence Services, Order No. 15, issued by seven bodies led by the Cyberspace Administration of China and in force since 15 August 2023, require a provider's training to use data and foundation models from lawful sources, to respect intellectual property others lawfully hold, and to obtain consent, or another lawful basis, where personal information is involved.</blockquote>
+  <p class="source">Source: the instrument, Article 7, text read on the Cyberspace Administration of China's own site, July 2023 release.</p>
+
+  <blockquote class="evidence">The Measures cover generative AI services offered to the public in China. Article 2 excludes organizations that research, develop or apply the technology without providing those services to the domestic public.</blockquote>
+  <p class="source">Source: the instrument, Article 2, text read on the Cyberspace Administration of China's own site, July 2023 release.</p>
+
+  <p>So a brand training a private model is not what the Measures govern. They still show what regulators think a lawful training set looks like, including a rule for anyone labeling the data.</p>
+
+  <blockquote class="evidence">Where labeling of training data is done during development, providers must set clear, specific and operable labeling rules and run quality assessment and sampling checks on labeling accuracy.</blockquote>
+  <p class="source">Source: the instrument, Article 8, text read on the Cyberspace Administration of China's own site, July 2023 release.</p>
+
+  <p>People are the sharpest line in the never column.</p>
+
+  <blockquote class="evidence">Article 14 of China's Provisions on the Administration of Deep Synthesis of Internet Information Services says that where a deep synthesis service provider or technical supporter offers a function that edits biometric information such as a face or a voice, it must prompt the user to inform the individual being edited in accordance with law and to obtain that individual's separate consent.</blockquote>
+  <p class="source">Source: Cyberspace Administration of China, Provisions on the Administration of Deep Synthesis of Internet Information Services, Article 14, instrument text retrieved 9 September 2026.</p>
+
+  <p>For union performers in US commercials, the contract addresses training directly.</p>
+
+  <blockquote class="evidence">On training, the agreement is short: the producer may not use, or authorize any other party to use, the results and proceeds of services rendered under the contracts to train generative AI systems without the union's consent.</blockquote>
+  <p class="source">Source: 2025 Commercials Contract Memorandum of Agreement, Section XX.1.A.4, agreement text, May 2025.</p>
+
+  <h2>Who owns the trained model at the end?</h2>
+
+  <p>Start with what a brand model physically is.</p>
+
+  <blockquote class="evidence">The most widely used lightweight fine-tuning approach "freezes the pre-trained model weights and injects trainable rank decomposition matrices into each layer." In practice the brand's training produces a separate, small set of weights that sits on top of a base model the brand does not own.</blockquote>
+  <p class="source">Source: 2021 research paper introducing low-rank adaptation, company research lab and academic authors; method description, abstract read at source.</p>
+
+  <p>That holds in the common adapter approach. A full fine-tune rewrites the base model's weights instead, so ask which one you are buying. Either way there are two things to own, the trained weights and the output, and copyright settles neither by default.</p>
+
+  <blockquote class="evidence">Copyright protects only material that is the product of human creativity, and where a generative system produces the expressive elements of a work, that material is not protected by copyright.</blockquote>
+  <p class="source">Source: US Copyright Office, registration guidance for works containing material generated by artificial intelligence, 88 FR 16190, 16 March 2023, a statement of policy published by the issuing office.</p>
+
+  <blockquote class="evidence">The Office concluded that copyright protection does not extend to the mere provision of prompts, that an output is protected where a human author has determined sufficient expressive elements, that using a generative system as an assistive tool or placing generated material inside a larger human-authored work does not defeat protection, and that "the case has not been made for changes to existing law to provide additional protection for AI-generated outputs."</blockquote>
+  <p class="source">Source: US Copyright Office, announcement of Part 2 of its Copyright and Artificial Intelligence report, 29 January 2025.</p>
+
+  <p>When the law does not assign ownership, the contract does. hubStudio's position is published.</p>
+
+  <blockquote class="evidence">hubStudio publishes that the custom models it trains on a client's brand are the client's property, and that every asset is documented with the model used, the references that trained it and the prompts that produced it. That is hubStudio's published policy, not a legal requirement: no instrument in this article assigns model ownership by default.</blockquote>
+  <p class="source">Source: hubStudio AI excellence page, September 2026.</p>
+
+  <p>Whoever you work with, get three things in writing: who owns the trained weights, what the base model's license allows, and whether the delivery records come with the files.</p>
+
+  <p>The <a href="/the-studio/ai-excellence">AI excellence page</a> sets out the pipeline in full, the <a href="/solutions/ai-production/image">AI image production page</a> covers what a trained model feeds, and the <a href="/hub4you">hub4you platform</a> is where approved assets are worked on after delivery.</p>
+
+  <p>Reviewed September 2026. Rights content on this page describes production practice, not legal advice.</p>
+
+  <h2>Questions about training a brand model</h2>
+
+  <h3>What is an internal approval rate?</h3>
+
+  <p>The share of assets a brand model produces that a named approver on the brand side signs off, counted against a definition written before the work starts. It only means something with five lines beside it: what counts as an approval, who approves, the sample, the period and what was excluded. No independent benchmark for brand models publishes one.</p>
+
+  <h3>How long does it take to train a custom brand model?</h3>
+
+  <p>hubStudio publishes a range of three to six weeks from brief to a trained model, depending on the depth of the brand library. It is a published range, not a measured benchmark. The window also holds clearing the training set and scoring a test batch, so compare it with other brief-to-model windows, never with a training run's compute time.</p>
+
+  <h3>What training data does a brand model need?</h3>
+
+  <p>Brand imagery the brand holds full rights to, photography of the current product library, and written brand codes for color, type and composition, since the approval definition is judged against them. A past campaign archive is optional, as long as every image in it clears the same rights check before it goes in.</p>
+
+  <h3>What must never go into brand model training data?</h3>
+
+  <p>Unreleased products, third-party logos and trademarks, faces or voices without the person's consent, and talent work under a contract that bars training. Research has extracted training images, including photos of people and trademarked logos, from large image models. That study did not test small brand models, but it is why these stay out.</p>
+
+  <h3>Who owns the trained model at the end?</h3>
+
+  <p>The contract decides, because copyright does not settle it for prompt-driven output. In the common adapter approach, training produces a small set of weights on a base model the brand does not own. hubStudio publishes that models it trains are the client's property. This describes production practice, not legal advice.</p>
+</ArticleLayout>
