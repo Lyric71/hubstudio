@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'content-credentials-c2pa-in-production',
+    image: '/Images/insight-content-credentials-c2pa-in-production.webp',
+    imageAlt:
+      'Five identical prints of the same grey stone laid in a row on a scratched workbench, each with its paper tag progressively more detached, from neatly tied at one end to a bare print with no tag at the other.',
+    category: 'Rights',
+    tone: 'navy',
+    title: 'Where C2PA Survives in a Real Pipeline',
+    deck: 'The survival tables circulating for Content Credentials come from announcements, not tests. Here is what has been measured, and the bench test to run.',
+    date: 'September 9, 2026',
+    dateISO: '2026-09-09',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Where C2PA Survives in a Real Pipeline | hubStudio',
+    metaDescription:
+      'Content Credentials tested stage by stage: capture, retouch, export, DAM, platform upload. Where they survive, where they strip, and whether to adopt.',
+  },
+  {
     slug: 'in-house-studio-vs-outsourced-production',
     image: '/Images/insight-in-house-studio-vs-outsourced-production.webp',
     imageAlt:

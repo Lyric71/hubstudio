@@ -490,3 +490,66 @@ untested rows into measured ones. That is the recommendation to carry into the
 asset brief.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-09, after drafting and after the quality pass.
+
+**Twelve blockquotes shipped**, every one from the "Cleared for use" block with
+its attribution unchanged, including the statement of absence, which opens the
+article rather than being buried.
+
+**The brief's central deliverable could not be produced, and the article says
+so in its first paragraph.** Brief 25 asks for a stage-by-stage survival table
+with a test date and file type on every row. No such public test exists for the
+survival question, so publishing that table would have required inventing it
+from announcements, which is the exact failure this research documented across
+forty ranked results. The article opens by stating that the page was meant to
+publish that table and does not, and the stage table it does publish marks three
+of eight rows untested and cites the evidence type on every other row.
+
+**The two measurements are never collapsed.** The article gives the reading
+question and the survival question their own section and their own comparison
+table, states that a platform can read and label perfectly while stripping the
+file bare, and explains that the audits all measure the visible half because the
+other half requires downloading the file back.
+
+**No platform is named anywhere,** and no platform behavior is asserted that was
+not measured. The cleared attributions were written as "one video platform",
+"five platforms" and "six Chinese platforms" and the draft keeps that wording.
+The 2024 platform announcement about download behavior was NOT used: it is a
+statement of intent with no independent test behind it, and using it would have
+smuggled an untested survival claim onto the page through a quotation.
+
+**The trust experiment was deliberately left out.** The 6,114-participant study
+is cleared in this file and is absent from the draft. Publishing "provenance
+labels increase trust" next to "nobody has measured whether the label arrives"
+would be the move the article criticizes. It stays here for a future piece.
+
+**The verdict is split rather than hedged.** Implement as an internal record,
+which pays today. Do not implement as a public trust signal, because the
+survival question is unmeasured and the April 2026 formal-methods analysis says
+the standard should not carry high-stakes reliance. Both halves are stated
+plainly and neither is softened.
+
+**No claim that C2PA satisfies a legal requirement.** The page states directly
+that no instrument requires Content Credentials and that implementing them
+discharges no duty, then uses the Chinese export-labeling article and the
+November 2025 enforcement round for what they actually show: that the export
+step is where a regulator found labels going missing.
+
+**The fabricated figure stayed out.** The "95 percent manifest survival after
+social media transcoding" line offered by a search summary does not exist in the
+paper it was attributed to, and the paper says the opposite. It is logged in the
+ledger's do-not-publish. Also absent: coalition labeling volume claims,
+conformance product counts, the sourceless "platforms strip all metadata"
+line, and every metadata-removal vendor blog.
+
+**One addition during the quality pass.** A second table was added contrasting
+reading-and-labeling against manifest survival on four axes: whether it is
+publicly measured, how you check it, what it tells a viewer, and what it tells
+your team. It introduces no new evidence and makes the article's central
+distinction checkable at a glance.
+
+**Open at publish time.** The March 2026 audit percentages are conditionally
+cleared only. Check 2 must re-read the audit page; if it is gated, the numbers
+come out and the qualitative finding stays. The draft as written leans on the
+qualitative finding, so that removal would not disturb the argument.
