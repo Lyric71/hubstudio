@@ -709,3 +709,69 @@ The capture that separates this page from the ranking set is the rider's Table
 of that box makes the argument faster than a paragraph does.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-10, after drafting and after the quality pass.
+
+**Nineteen blockquotes shipped**, every one from the "Cleared for use" block
+with its attribution unchanged. Each is a statute section or an agreement
+section, never a commentary, as this file requires.
+
+**The forbidden sentence never appears.** The page does not say California
+requires a reasonably specific description. It states section 927 as a test:
+the statute withdraws enforceability from a clause meeting three conditions at
+once, and only as to a performance fixed on or after 1 January 2025. The draft
+then spells out the practical consequence of "all at once", that a strong
+description survives an unrepresented signer while a thin one survives
+counsel-negotiated terms, and it keeps the (a)(2)(B) carve-out that most
+summaries drop.
+
+**The union agreement is framed as a standard, not as law.** A dedicated
+paragraph says it binds signatories to it, in one market, for one kind of work,
+that it is not law, and that it is used because it is the most detailed
+published standard anybody has written. Every sentence drawn from it says "the
+agreement" rather than "the law".
+
+**No session fee amount appears.** Compensation is described as a multiple, and
+the clause map's compensation row says "as a multiple" for that reason. The
+underlying dollar figure stays blocked.
+
+**The ninety day deletion certificate carries both halves**, in the sentence
+immediately after the quotation: it is a contract term under one agreement
+rather than a general legal requirement, and deleting the model does not unmake
+commercials already produced with it.
+
+**Postmortem terms are only the two verified at source.** California at 70
+years and New York at 40, with New York's domicile condition and registration
+precondition both stated. The page says other states differ and publishes no
+span it could not read on a primary surface. The ten-year, hundred-year and
+indefinite figures circulating elsewhere are absent.
+
+**The eighteen-row clause map was grouped to ten.** At the brief's word count an
+eighteen-row table stops being scannable. The grouping preserves every
+substantive clause and adds a third column, where the published standard puts
+it, whose "Neither. You write these" rows are the table's actual argument.
+
+**The published rider's absence is quoted rather than summarized**, because it
+is the strongest finding in the file: three columns on the signed page, and no
+field for term, territory, media, exclusivity, compensation, revocation,
+retraining, deletion or sunset.
+
+**Nothing reads as a signable document.** The deliverable is a clause map and,
+in the asset brief, a worksheet with a column for who drafts each clause in the
+reader's own paperwork. The page states twice that it describes production
+practice rather than legal advice, and says plainly that the document a
+production signs is drafted and approved by a lawyer.
+
+**Only the New York penalty pair is used** of the three permitted dollar
+figures, written as US dollars rather than with a symbol. The mechanical check
+confirms no dollar sign in the file.
+
+**Everything in the do-not-publish list stayed out**: no CAC penalty figure, no
+California Elections Code 20012, no effective date for AB 1836, no judicial
+gloss on "reasonably specific" (none exists), no federal digital replica right
+in any tense, the agreement's own generative AI definition (its text names six
+products by brand), and every law firm alert and template vendor from the SERP
+map.
+
+**No Han characters.** The Chinese instruments are named in English by their
+official translated titles and cited to the regulator's own release.

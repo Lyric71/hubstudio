@@ -37,6 +37,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'ai-brand-ambassadors-what-you-sign',
+    image: '/Images/insight-ai-brand-ambassadors-what-you-sign.webp',
+    imageAlt:
+      'A semicircular rig of small cameras standing in an empty studio facing a worn T-shaped tape mark on the concrete floor where a person would have stood, with a handwritten page and a pen resting on a metal stool in the foreground.',
+    category: 'Rights',
+    tone: 'orange',
+    title: 'AI Brand Ambassadors: What You Sign',
+    deck: 'One standard form exists, it runs three pages, and it has no field for term, territory, compensation, deletion or sunset. Here is the clause map.',
+    date: 'September 10, 2026',
+    dateISO: '2026-09-10',
+    readingTime: '13 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'AI Brand Ambassadors: What You Sign | hubStudio',
+    metaDescription:
+      'The clause map for an AI ambassador release: scope, term, retraining rights, revocation, sunset and deletion, and how synthetic talent changes it.',
+  },
+  {
     slug: 'content-credentials-c2pa-in-production',
     image: '/Images/insight-content-credentials-c2pa-in-production.webp',
     imageAlt:
