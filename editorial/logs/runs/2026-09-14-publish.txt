@@ -1,0 +1,19 @@
+﻿2026-09-14T04:00:03 start publish (model fable)
+2026-09-14T04:00:03 model attempt 1/4, cycle 1: Fable
+2026-09-14T04:01:09 fable: read editorial/CLAUDE.md, SPEC.md, RUNBOOK.md, schedule.csv, the daily log editorial/logs/2026-09-14.md and the draft run log. Run log held only the two start lines: no earlier model made progress, no error to correct.
+2026-09-14T04:01:09 fable: schedule.csv parsed, 48 rows. Rows with status image_ready: one, brief 31 (amazon-tmall-jd-one-product-three-listings), publish_date 2026-10-23. Today is 2026-09-14, so that row is not due. Rows with publish_date on or before today: brief 17 (2026-09-14), already published on 2026-09-09, page exists at src/pages/resources/insights/production-roster-review-questions.astro. Result: zero rows due for publishing.
+2026-09-14T04:01:09 fable: decision: nothing to publish. /createblogarticle not run, npm run build and npm run check not run (nothing changed to verify), no commit, no push, no notify email (the prompt sends mail only after a successful push or on a build failure, and neither happened). Brief 31 stays at image_ready awaiting a human review and either its 2026-10-23 slot or an explicit Publish command.
+2026-09-14T04:01:09 fable: working tree left as found: run-daily.ps1 modification, verified-sources.md and schedule.csv edits from the 00:30 draft run, the untracked brief 31 draft, research, captures and hero webp, and the other untracked batch-two research and output files. Nothing staged, nothing committed.
+Run complete. Nothing was due, so nothing was published.
+
+**What I found.** The schedule has 48 rows. Exactly one sits at `image_ready`: brief 31, the Amazon, Tmall and JD listing piece drafted by the 00:30 run this morning. Its publish date is 2026-10-23, five weeks out, so it does not meet the "today or earlier" criterion. Every row dated on or before today is already `published`, and today's own row, brief 17, has its page on disk and its entry in the insights register. There was no earlier model progress or error in the run log to correct.
+
+**What I did.**
+- Appended the scan result and the decision to the console run log at `editorial/logs/runs/2026-09-14-publish.txt`.
+- Added a short "Publish run, 04:00" section to the daily log at `editorial/logs/2026-09-14.md` so the reviewer sees the outcome next to the draft report.
+
+**What I deliberately did not do.** No `/createblogarticle`, no build or check, no commit, no push, and no notify email. The prompt only sends mail after a successful push or on a build failure, and neither occurred. The working tree is exactly as the draft run left it: the modified runner script, the ledger and schedule edits, and the untracked brief 31 draft, research, captures and hero image, plus the other batch-two research and output files. Nothing is staged.
+
+**Next.** Brief 31 waits for a human review. It publishes either when its 2026-10-23 slot comes due in this daily run, or earlier if someone issues an explicit `Publish amazon-tmall-jd-one-product-three-listings`.
+2026-09-14T04:01:24 model Fable completed successfully
+2026-09-14T04:01:24 end publish exit 0

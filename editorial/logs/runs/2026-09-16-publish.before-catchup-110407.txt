@@ -1,0 +1,34 @@
+﻿2026-09-16T10:08:21 start publish (model fable)
+2026-09-16T10:08:21 model attempt 1/4, cycle 1: Opus
+2026-09-16T10:10:30 opus: read editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md, editorial/schedule.csv, the canonical prompt (SHA-256 matches AE9F37F63BAC4AEBCB0556FB3AFE9EE82CDC288A490ADCCCCC38FCDBAC09B0C5), the shared manifest and this run log. The log held only the two start lines, so no earlier model made progress and there was no error to correct.
+2026-09-16T10:10:30 opus: schedule.csv parsed with Import-Csv, 48 rows: 32 published, 2 image_ready, 14 not_started. Rows with status image_ready: brief 31 (amazon-tmall-jd-one-product-three-listings, publish_date 2026-10-23) and brief 32 (meta-tiktok-against-douyin-rednote, publish_date 2026-10-30). Both publish dates fall after today, 2026-09-16, so neither is due. Rows with publish_date on or before today: brief 17 (2026-09-14) and brief 01 (2026-09-15), both already published. Eligible rows (image_ready and publish_date on or before today): 0.
+2026-09-16T10:10:30 opus: verified the two past-dated rows are genuinely published rather than mislabeled. src/pages/resources/insights/production-roster-review-questions.astro and src/pages/resources/insights/tmall-product-image-requirements.astro both exist and are committed, and both carry an entry in src/data/insights.ts (57 slugs total). Confirmed no partial publish work exists for the two image_ready slugs: no .astro page and no insights.ts entry for either.
+2026-09-16T10:10:30 opus: working tree inspected and left exactly as found. The modifications to editorial/schedule.csv, editorial/scripts/run-daily.ps1 and editorial/sources/verified-sources.md, plus the untracked batch-two drafts, research files, captures, hero webps and daily logs, all predate this run and come from the 09-14 and 09-15 draft passes. The only files touched today are this run's own prompt, manifest and log. Nothing staged, nothing modified by this pass.
+2026-09-16T10:10:30 opus: decision: successful no-op, consistent with the 2026-09-14 and 2026-09-15 publish runs. With zero eligible rows there is no /createblogarticle step, so npm run build and npm run check were not run (nothing changed to verify), no schedule status was advanced, nothing was committed and nothing was pushed. No notification email was sent: the prompt sends mail only after a successful push or on a build failure, and neither occurred. Both image_ready drafts stay at image_ready awaiting their own slots or an explicit Publish command.
+Run complete. Nothing was due, so nothing was published.
+Run complete: **nothing was due, so nothing was published.**
+
+**What I found**
+
+`editorial/schedule.csv` has 48 rows: 32 published, 2 `image_ready`, 14 `not_started`. The two `image_ready` rows are both scheduled in the future, so neither meets the "publish_date is today or earlier" test for 2026-09-16:
+
+| Brief | Slug | publish_date | Due? |
+|---|---|---|---|
+| 31 | `amazon-tmall-jd-one-product-three-listings` | 2026-10-23 | no |
+| 32 | `meta-tiktok-against-douyin-rednote` | 2026-10-30 | no |
+
+The only rows dated on or before today (2026-09-14 and 2026-09-15) are already `published`, and I confirmed that on disk rather than trusting the status column: both `.astro` pages exist and are committed, and both have entries in `src/data/insights.ts`. I also confirmed no partial publish work exists for the two `image_ready` slugs (no page, no `insights.ts` entry), so there was nothing half-finished to repair.
+
+**State of the run when I picked it up**
+
+The run log held only its two start lines, so no earlier model in the fallback chain made progress or left an error to correct. The working tree matches its pre-run snapshot: the `schedule.csv`, `run-daily.ps1` and `verified-sources.md` edits, plus the untracked batch-two drafts, research files, captures and hero webps, all come from the 09-14 and 09-15 draft passes. The only files touched today are this run's own prompt, manifest and log.
+
+**What I did not do, and why**
+
+With zero eligible rows there was no `/createblogarticle` step, so `npm run build` and `npm run check` were not run (nothing changed to verify), no status was advanced, and nothing was committed or pushed. No email went out: the prompt sends mail only after a successful push or on a build failure, and neither happened. This matches the 2026-09-14 and 2026-09-15 publish runs, which reached the same conclusion.
+
+The full decision record is appended to `editorial/logs/runs/2026-09-16-publish.txt`, verified free of em-dashes per the editorial rule. Both drafts stay at `image_ready`, awaiting their own slots or an explicit publish command.
+
+One note for when you're next at the keyboard: this is the third consecutive publish run with nothing due, because drafting has been running ahead of the calendar (pieces drafted on 09-14 and 09-15 are slotted for late October). The daily publish job will keep no-opping until 2026-09-17 unless you want those two published early.
+2026-09-16T10:10:46 model Opus completed successfully
+2026-09-16T10:10:46 end publish exit 0

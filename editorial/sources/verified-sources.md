@@ -139,13 +139,17 @@ platform numbers: Amazon 2,000px RGB 255 mains, Tmall 800x800 mains,
 750x1,000 verticals, white slot under 300KB, titles inside 200 characters.
 These need re-verification against the backend before they are repeated on a
 spec page, because they are the numbers the spec cluster is supposed to
-supersede.
+supersede. Brief 31 (2026-09-14) checked the Amazon figures against Amazon's
+own help articles: RGB 255 matches; "2,000 pixels for zoom" does not appear on
+any Amazon page read (1,000 or more enables zoom); the page's "fifteen to
+thirty seconds for Amazon" video line conflicts with the Shoppable video
+guide (1 to 12 minutes). Site backlog item.
 
 ## China platform rule access and ecommerce deliverables, brief 28
 
 | Figure | Attribution to use | Source type | Collected | Confidence | Check 1 | Check 2 | Used in |
 |---|---|---|---|---|---|---|---|
-| Both platform rule centres publish at public URLs and serve no rule text to an unauthenticated request. rule.tmall.com/tdetail-11423.htm returned 302 to rulechannel.tmall.com/tmall, which returned a further 302 and no rule body; rule.jd.com/rule/ruleDetail.action returned the rule-centre heading only, on two different rule ids | "direct unauthenticated fetches of the two platform rule centres, 10 September 2026, four requests across two platforms" | Own observation, primary. Redirect chain and response body recorded | 2026-09-10 | primary | 2026-09-10 | | 28 |
+| Both platform rule centres publish at public URLs and serve no rule text to an unauthenticated request. rule.tmall.com/tdetail-11423.htm returned 302 to rulechannel.tmall.com/tmall, which returned a further 302 and no rule body; rule.jd.com/rule/ruleDetail.action returned the rule-centre heading only, on two different rule ids | "direct unauthenticated fetches of the two platform rule centres, 10 September 2026, four requests across two platforms" | Own observation, primary. Redirect chain and response body recorded | 2026-09-10 | primary | 2026-09-10 | 2026-09-14 | 28 |
 | The China listing asset taxonomy is stable across published Chinese production references: main image set, pure-white-background image inside it, long detail page, separate mobile detail page, size and specification chart, store decoration banners, short video | "published Chinese production references collected September 2026, compared on their deliverable lists only, with every number they carried set aside", no publisher named | Eight independent Chinese design, tool and seller-education pages | 2026-09 | triangulated for the taxonomy, unverified for every number attached to it | 2026-09-10 | | 28 |
 | hubStudio purges source files from working environments 90 days after project close unless the client asks for them to be kept | "hubStudio's ecommerce design service page, read 10 September 2026", stated as published studio policy, never as a benchmark | First-party site copy, src/pages/services/design/ecommerce.astro FAQ | 2026-09-10 | primary as a statement of policy | 2026-09-10 | | 24, 28 |
 | Tmall main-image conflict re-observed: five further 2026 Chinese vendor spec pages carry values inside the same unresolved 500KB against 3MB and 60 percent against 70 to 80 percent fill conflict already logged as hard block 1 | "published Chinese design and tool references collected September 2026, values reported as a range rather than averaged", no publisher named | Vendor content pages, none carrying a rule link or a method | 2026-09-10 | triangulated as a conflict, unverified as a value | 2026-09-10 | | 28 |
@@ -205,8 +209,8 @@ dead end.
 | FTC AI enforcement unit January 2026, 40 percent enforcement rise, 18m March 2026 judgment | SEO law-adjacent blogs, brief 27 | None confirmed on the regulator's own site | 2026-09-09 |
 | Etsy AI-tagging requirement for listing images, 2026 | Vendor blogs, brief 27 | Platform policy page not reachable, not confirmed | 2026-09-09 |
 | California SB 1050 synthetic performer false advertising | Senate committee analysis PDF, brief 27 | Committee analysis is not an enacted instrument | 2026-09-09 |
-| Amazon main image spec: professional photograph, no mockups, RGB 255, 85 percent fill | Secondary listing-service guides, brief 27 | R3 bars citing an English article for a platform spec; primary page is behind seller login | 2026-09-09 |
-| Amazon contains-synthetic-performer metadata rule, July 2026 | Two secondary reports of the announcement, brief 27 | Credible but unverified at source. Hold back; enacted statutes cover the same point | 2026-09-09 |
+| Amazon main image spec: professional photograph, no mockups, RGB 255, 85 percent fill | Secondary listing-service guides, brief 27 | R3 bars citing an English article for a platform spec; primary page is behind seller login. Corrected 2026-09-14 (brief 31): the page is not behind a login, it renders client-side; RGB 255 and 85 percent are now primary from Amazon's Product image guide G1881. "No mockups" is still not Amazon's wording | 2026-09-09 |
+| Amazon contains-synthetic-performer metadata rule, July 2026 | Two secondary reports of the announcement, brief 27 | Credible but unverified at source. Hold back; enacted statutes cover the same point. Update 2026-09-14 (brief 31): the rule text is now read at source in G1881 and the video and A+ guides; the July 2026 date stays unverified, no date on the pages | 2026-09-09 |
 | Localization can be up to 30 percent of a company's marketing budget | Localization staffing resource page, brief 13 | No method, no sample, no date, and the publisher sells localization staffing | 2026-09-09 |
 | Full localization gives up to 60 percent higher conversion on local ecommerce platforms, attributed to a named consultancy | Translation vendor blog, brief 13 | The consultancy report is never named, no date, no sample. Uncheckable second-hand attribution | 2026-09-09 |
 | Transcreation returns 3 to 5x ROI, 156 percent higher engagement, 73 percent better conversion | Transcreation vendor blog, brief 13 | No study, no instrument, no sample, no fielding date, published by a seller of transcreation | 2026-09-09 |
@@ -1034,3 +1038,115 @@ Copyright Office Part 2 row, re-read 2026-09-10.
 | Only 25 percent of pitch-winning ideas ever run | Pitch consultancy statistic inside a 2019 trade body guide, brief 37 | No method, seller of pitch consulting | 2026-09-10 |
 | January 2026 procurement AI survey wave figures (34, 57 percent, 7 in 10, 3 in 4, nearly 70 percent) | Global advertiser trade body article 2026-01-27, brief 37 | No sample or fielding dates on the page, member-gated | 2026-09-10 |
 | Any trade body or standards body definition of revision round, usable second, usable shot or adaptation | Searched, brief 37 | None exists in sources reached; only the union version and new-commercial rule is published | 2026-09-10 |
+
+
+## Added 2026-09-14 (ledger rows from brief 31, amazon-tmall-jd-one-product-three-listings)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+Proposed block for `sources/verified-sources.md`, in its table format. The
+orchestrator appends; this file does not edit the ledger.
+
+### Amazon listing rules and three-marketplace carry-over (added 2026-09-10, brief 31)
+
+Amazon rows are primary readings of Seller Central help articles for the US
+store, rendered in a logged-out browser and captured to
+`research/amazon-tmall-jd-one-product-three-listings/`. No Tmall or JD value is
+new: every China figure used by brief 31 is already logged under briefs 01, 02,
+04, 10 and 28 and is not re-counted. **This block corrects two brief 27 rows** (see
+the notes after the table).
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Four Seller Central help articles serve full text to a logged-out browser; a plain HTTP fetch returns a 167,309 to 167,319 byte application shell with no article text | "direct fetches and a logged-out browser render of four Amazon Seller Central help articles, 10 September 2026, response size and body text recorded" | sellercentral.amazon.com/help/hub/reference/external/G1881, G9FUUH87RBNXGKB7, GLG4RQK2Y2RJADU4, GWJRQF3C34G4PRA2 | 2026-09-10 | primary, an observation about access | 2026-09-10 | 2026-09-14 | 31 |
+| MAIN image: pure white RGB 255, 255, 255; "Show the product as 85% of the image"; entire product; shown once; one unit; no props not included; no part of a mannequin; packaging only as a feature | "Amazon's Seller Central Product image guide, US store, read 10 September 2026, page undated" | .../external/G1881 | read 2026-09-10 | primary, US store | 2026-09-10 | 2026-09-14 | 31 |
+| Product image files: JPEG, TIFF, PNG or non-animated GIF, JPEG recommended; 500 to 10,000 pixels on the longest side; 1,000 or more enables zoom; RGB preferred; one compliant main image required, six additional images and one video recommended; no aspect ratio, file cap or maximum count stated | Same attribution | .../external/G1881 | read 2026-09-10 | primary, US store, absences read in full | 2026-09-10 | 2026-09-14 | 31 |
+| MAIN by category: adult clothing on a standing model; footwear a single shoe facing left at 45 degrees; clothing accessories and multipacks flat without a model | Same attribution | .../external/G1881 | read 2026-09-10 | primary, category-scoped | 2026-09-10 | 2026-09-14 | 31 |
+| All product images: no customer reviews, five-star imagery, claims or selling partner information; text and pricing rule scoped to swatch images; no Amazon logos, trademarks or badges; photorealistic fully AI-generated people tagged contains-synthetic-performer in dc:subject (XMP) | Same attribution | .../external/G1881 | read 2026-09-10 | primary, no effective date on the page | 2026-09-10 | 2026-09-14 | 27, 31 |
+| Minimal or no compression; JPEG at highest quality; no TIFF compression; remove layers; CMYK converted to RGB; EPS, BMP, PDF and application files such as PSD refused | "Amazon's Seller Central Technical image file requirements, US store, read 10 September 2026, page undated" | .../external/G9FUUH87RBNXGKB7 | read 2026-09-10 | primary, US store | 2026-09-10 | 2026-09-14 | 31 |
+| A+ Basic: 970 x 300 images, 5 modules, 14 to choose from, no video. Premium: 1464 x 600, 7 modules, 19 to choose from, video, hotspots, carousel. Brand story up to 19 cards. Files .jpg, .bmp, .png, RGB, under 2 MB. No GIFs, HTML, CMYK, watermarks, QR codes or hyperlinks. Not acceptable: pricing or promotional language, time-sensitive references, warranty and guarantee information, shipping details, external links or contact information, gallery duplicates. Review up to seven business days. No added cost or eligibility for Premium | "Amazon's Seller Central A+ Content guide, US store, read 10 September 2026, page undated" | .../external/GLG4RQK2Y2RJADU4 | read 2026-09-10 | primary, US store | 2026-09-10 | 2026-09-14 | 31 |
+| Shoppable video: MOV or MP4; 5 GB; up to 1080p; 16 x 9 or 9 x 16; 1 to 12 minutes; thumbnail JPEG, PNG, GIF or BMP under 5 MB; account active more than three months; softlines listings with six or more images have the video suppressed on desktop; US-Canada shared listings sync, no other marketplace sharing; review 1 to 7 business days | "Amazon's Seller Central Shoppable video guide, US store, read 10 September 2026, page undated" | .../external/GWJRQF3C34G4PRA2 | read 2026-09-10 | primary, US store | 2026-09-10 | 2026-09-14 | 31 |
+| Amazon fill restated as "85% or more of the frame" (Dec 2024), "85-100%" (Feb 2026, moderator) and "at least 80 percent of the image area" (2018, Australia) | "Amazon-owned seller surfaces, dated as shown, read 10 September 2026, spread reported against the help article" | sell.amazon.com/blog/product-photos; sellercentral.amazon.com/seller-forums/discussions/t/0149bdb3-2056-42ce-b0bb-9eef94e3d2b8; m.media-amazon.com/images/G/01/rainier/help/Selling_on_Amazon_Quick_Start_Style_Guide_2018.pdf | 2018 to 2026 | supporting, for the conflict only | 2026-09-10 | 2026-09-14 | 31 |
+| Derived carry-over: a shadowless, front-view Amazon MAIN re-exports as the Tmall and JD white-background image; adult clothing and footwear need a new white frame; clean additional images re-crop to the China carousels; text and composite slides re-edit; video needs two edits from one footage, the China cut at 15 to 30 seconds; A+ is rebuilt as one China detail page for both marketplaces; China mains exported under 500KB clear every published weight | "derived from Amazon's Seller Central help articles (US store) and the Tmall, JD and variant collections, 10 September 2026, reasoning not a platform rule" | research/amazon-tmall-jd-one-product-three-listings.md | 2026-09-10 | derived | 2026-09-10 | 2026-09-14 | 31 |
+| One capture day, four core set-ups: shadowless white background, text-free square-safe stills, A+ and detail page frames kept out of the gallery, one video master; category extras for clothing, footwear and labels | Same derived attribution | Same file | 2026-09-10 | derived | 2026-09-10 | 2026-09-14 | 31 |
+| Search-results audit: six buyer phrasings (four English, two Chinese), 42 results, 27 from companies with a commercial interest, 0 setting Amazon beside counted Tmall and JD values, 0 separating carry-over from rebuild; 16 of 29 English results answer Amazon alone; the English reuse phrasing returns affiliate licensing pages | "search-results audit run 10 and 14 September 2026 across six buyer phrasings, publisher type recorded for every result, no domain named" | R2 in the research file | 2026-09-10, extended 2026-09-14 | primary observation, re-countable | 2026-09-10 | 2026-09-14 | 31 |
+
+**Corrections to existing rows.**
+
+1. Do-not-publish row "Amazon main image spec: professional photograph, no mockups,
+   RGB 255, 85 percent fill" (brief 27): the reason "primary page is behind seller
+   login" no longer holds. RGB 255 and 85 percent are now primary (G1881). "No
+   mockups" is still not Amazon's wording: the guide says "realistic,
+   professional-quality image" and "No placeholders".
+2. Do-not-publish row "Amazon contains-synthetic-performer metadata rule, July 2026"
+   (brief 27): the rule text is now read at source (G1881, GWJRQF3C34G4PRA2,
+   GLG4RQK2Y2RJADU4). The July 2026 date is still unverified; no date is on the pages.
+3. Section "Platform specs already on the site": the Amazon "RGB 255" figure now
+   matches G1881. "2,000px" does not appear on any Amazon page read (1,000 or more
+   enables zoom). The ecommerce page's "fifteen to thirty seconds for Amazon" video
+   line conflicts with G1881's companion video guide (1 to 12 minutes).
+4. Brief 28's failed-bar row "Amazon image counts and A+ module counts": A+ module
+   counts are now primary (GLG4RQK2Y2RJADU4); Amazon publishes a recommended image
+   count and no maximum (G1881).
+
+### Do not publish, added from brief 31
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Videos lift sales 23.8 percent | Amazon's Shoppable video guide, "Amazon internal historical data, January through June 2024" | No sample, no method, published by the seller of the feature | 2026-09-10 |
+| A+ lifts sales up to 8 percent, Premium up to 20 percent | Amazon's A+ design guide blog (Sep 2025) and A+ best practices PDF (Mar 2023) | Same failure | 2026-09-10 |
+| Amazon 72 dpi | Amazon's Product image guide and A+ Content guide | Printed by Amazon, meaningless for a fixed-pixel screen image; the cluster cuts dpi everywhere | 2026-09-10 |
+| Amazon 10MB image cap, 2000 by 2000 recommended, a seven-image recipe, a 30 percent conversion lift | Search extracts from vendor and agency pages, brief 31 | Absent from Amazon's help articles; no study behind the conversion figure | 2026-09-10 |
+| Amazon main image 500 by 500 under 1MB; JD six main images | A Chinese search summary, brief 31 | Uncounted, contradicted by G1881 and by J's modal 5 | 2026-09-10 |
+| A+ per-module sizes from Amazon's standard module template PDF; A+ images at 970 by 600 | Undated Amazon-hosted PDF; seller forum threads | No date or marketplace printed; seller-written and contradicted by the A+ Content guide | 2026-09-10 |
+| Amazon video usable across global Amazon stores; Premium A+ gated by eligibility criteria | Amazon seller blog posts, May and September 2025 | Contradicted by the help articles | 2026-09-10 |
+| hubStudio ecommerce page "2,000 pixels for zoom" and "fifteen to thirty seconds for Amazon" | hubStudio site copy | Conflict with Amazon's help articles; site backlog item, never quoted | 2026-09-10 |
+| hubStudio platform page counters "48h brief to first cut", "50+" and "60+" variants per concept | hubStudio site copy, Amazon, JD and Tmall platform pages | Not ledger delivery figures, no method, inconsistent across pages | 2026-09-10 |
+| Any cross-marketplace reuse percentage or saving | Brief 31 SERP | None published on 34 results | 2026-09-10 |
+
+
+## Added 2026-09-15 (ledger rows from brief 32, meta-tiktok-against-douyin-rednote)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+For the orchestrator. New block, in the ledger's table format.
+
+### Meta and TikTok ad specs, primary readings; RedNote ad documentation access (added 2026-09-10, brief 32)
+
+Meta and TikTok rows are primary readings of each platform's own page, scoped to
+the placement, objective or buying type named. Douyin and RedNote values used by
+brief 32 are reuses of the brief 05, 06 and 07 blocks and are not duplicated here.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Instagram Reels video ads (Awareness): MP4 or MOV, 9:16, 1440x2560, min width 250 px under 30 s and 500 px at 30 s or more, 4GB, 0 s to 15 min, primary text 44 characters, sound strongly recommended, leave at least 14% top, 35% bottom, 6% each side free of text, logos and key elements | "Meta's Facebook Ads Guide, Instagram Reels video ad specs, read 10 September 2026" | facebook.com/business/ads-guide/update/video/instagram-reels | page undated, read 2026-09-10 | primary, Awareness, that placement | 2026-09-10 | 2026-09-15 | 32 |
+| Facebook Reels video ads (Awareness): MP4, MOV, GIF, 9:16, 1440x2560, 4GB, no maximum duration, primary text 40, headline 55, same 14/35/6 safe zone | "Meta's Facebook Ads Guide, Facebook Reels video ad specs, read 10 September 2026" | facebook.com/business/ads-guide/update/video/facebook-facebook-reels | undated, read 2026-09-10 | primary, scoped | 2026-09-10 | 2026-09-15 | 32 |
+| Instagram Stories video ads (Awareness): 9:16, 1440x2560, min width 250 px, 4GB, 1 s to 60 min, primary text 125, 14/35/6 safe zone; Instagram Stories image ads 9:16, 1440x2560, min width 500 px, 30MB, same safe zone | "Meta's Facebook Ads Guide, Instagram Stories video and image ad specs, read 10 September 2026" | .../video/instagram-story; .../image/instagram-story | undated, read 2026-09-10 | primary, scoped | 2026-09-10 | 2026-09-15 | 32 |
+| Facebook Stories video ads (Awareness): 9:16, 1440x2560, 4GB, 1 s to 3 min, primary text 125, headline 40, safe zone 14% (250 px) top and 20% (340 px) bottom; percentages and pixels do not reconcile on a 1920 or 2560 canvas | "Meta's Facebook Ads Guide, Facebook Stories video ad specs, read 10 September 2026", quoted as written | .../video/facebook-story | undated, read 2026-09-10 | primary, scoped, internal inconsistency noted | 2026-09-10 | 2026-09-15 | 32 |
+| Facebook Feed video ads (Awareness): MP4, MOV or GIF, 4:5, 1440x1800, min 120x120, 4GB, 1 s to 241 min, primary text 50-150, headline 27; Facebook Feed image ads 4:5, 1440x1800, min 600x750, 30MB; Instagram Feed video ads 9:16, 1080x1920, 1 s to 60 min, 125 characters | "Meta's Facebook Ads Guide, Feed video and image ad specs, read 10 September 2026" | .../video/facebook-feed; .../image/facebook-feed; .../video/instagram-feed | undated, read 2026-09-10 | primary, scoped | 2026-09-10 | 2026-09-15 | 32 |
+| Meta's "About text overlays and the safe zone for ads in Stories and Reels" help article served a title only to unauthenticated requests on 2026-09-10 (mobile host HTTP 500); on 2026-09-15 it served a body that states the safe zone in words for 9:16 ads in Stories, Reels, Feed and in-stream reels, says 9:16 Instagram Feed video follows the Reels and Stories guidance, warns that taller screens may zoom and crop outside the safe zone, and gives one figure: a Reels ad carrying a disclaimer leaves the bottom 40 percent free. No top or side percentage printed | "Meta Business Help Center, About text overlays and the safe zone for ads in Stories and Reels, read 15 September 2026"; never the source of 14/35/6 | facebook.com/business/help/980593475366490 | page undated, read 2026-09-15 | primary, that article only | 2026-09-10 (title only) | 2026-09-15 (body read) | 32 |
+| TikTok auction in-feed (Non-Spark): 9:16 at or above 540x960 recommended, 16:9 at or above 960x540, 1:1 at or above 640x640; mp4, mov, mpeg, 3gp, avi; up to 10 minutes; 500 MB or less; 516 kbps or more; Spark pull duration unrestricted; safe zone as downloadable files | "TikTok ads help center, auction in-feed ad specifications, updated June 2026" | ads.tiktok.com/help/article/tiktok-auction-in-feed-ads | 2026-06, read 2026-09-10 | primary, auction in-feed only | 2026-09-10 | 2026-09-15 | 32 |
+| TikTok reservation in-feed: 5 to 60 s, recommend 9 to 15 s; 500 MB or less; 2,500kbps or more; all video creatives must have sound; captions 4 lines displayed, suggested 50 CJK or 100 other characters | "TikTok ads help center, reservation in-feed ad specifications, updated July 2025" | ads.tiktok.com/help/article/tiktok-reservation-in-feed-ads-reach-frequency | 2025-07, read 2026-09-10 | primary, reservation only | 2026-09-10 | 2026-09-15 | 32 |
+| TikTok TopView: 9:16 at or above 540x960; 5 to 60 s, recommend 9 to 15 s; 500 MB; 2,500kbps; caption max 100 characters; no plain white in the first 3 seconds because of the TikTok logo; not completely silent | "TikTok ads help center, TopView ad specifications, updated June 2026". Never on a Douyin row | ads.tiktok.com/help/article/tiktok-reservation-topview | 2026-06, read 2026-09-10 | primary, TikTok TopView only. Upgrades the brief 06 observation row, which recorded the Chinese-language version | 2026-09-10 | 2026-09-15 | 32 |
+| TikTok creative best practices: 9:16, at least 720P and sound as basics; proposition in the first 3 seconds and hook in the first 6 as recommendations | "TikTok ads help center, creative best practices for performance ads, updated June 2025", always as recommendations | ads.tiktok.com/help/article/creative-best-practices | 2025-06, read 2026-09-10 | primary for the recommendation, not a measured effect | 2026-09-10 | 2026-09-15 | 32 |
+| No TikTok in-feed or TopView spec page prints a safe-zone inset; size varies with orientation, caption length and add-ons. Five third-party TikTok inset sets checked disagree | "three TikTok ads help center pages read in full, and five third-party inset sets traced to their pages, 10 September 2026", no publisher named | Same three TikTok pages; third-party pages in research/meta-tiktok-against-douyin-rednote.md | 2026-09-10 | primary by absence; observation about third-party sources | 2026-09-10 | 2026-09-15 | 32 |
+| Five RedNote-owned advertising and creator-marketplace surfaces (Juguang root, help home, a help document, open API documentation, Pugongying help) served a title only to unauthenticated requests on 2026-09-10; on 2026-09-15 they served a login and marketing page, a chatbot prompt, an empty-article notice with "no login information", a Marketing API onboarding note and an empty page, and no advertising creative spec | "direct unauthenticated fetches, 10 September 2026 and 15 September 2026, response content recorded per request" | ad.xiaohongshu.com; /help/home; /help/docs?id=2767; /openApiDoc?articleId=2777; pgy.xiaohongshu.com/help/docs?id=3063 | 2026-09-10 | primary, negative observation; extends the brief 07 row of four surfaces | 2026-09-10 | 2026-09-15 | 32 |
+| Search-results audit: four English buyer phrasings on adapting TikTok or Meta campaigns for Douyin or RedNote returned 30 results, 24 from a company with a commercial interest in the answer, 0 setting platform help-center specs beside Douyin or RedNote figures, 1 printing Douyin numbers (2022, misattributed); three Chinese phrasings returned 22 results, 0 about moving a TikTok cut to Douyin | "search-results audit run 10 September 2026, publisher type recorded for every result, no domain named" | R2 tables in research/meta-tiktok-against-douyin-rednote.md | 2026-09-10 | primary observation, re-countable | 2026-09-10 | 2026-09-15 | 32 |
+| Derived: four-platform composition box x 108 to 972, y 420 to 1248 (864x828) on 1080x1920, from Meta's Reels percentages, the brief 05 Douyin box and the brief 10 vertical box; TikTok contributes no figure | "derived from Meta's published Reels safe zone and published Douyin and RedNote figures, 10 September 2026, assuming centered cuts; not a platform rule" | Arithmetic in the research file | 2026-09-10 | derived | 2026-09-10 | 2026-09-15 | 32 |
+| Derived: 10 to 60 seconds is the only cut length inside every duration row used except Douyin open screen; a 9-second cut sits below Douyin TopView's 10-second floor | "derived by intersecting TikTok's published reservation and TopView ranges with published Douyin and RedNote ranges, 10 September 2026" | Arithmetic in the research file | 2026-09-10 | derived | 2026-09-10 | 2026-09-15 | 32 |
+| Derived: a 60-second MP4 encoded at 2.5 to 6.6 Mbps weighs about 19 to 50 MB and fits TikTok's 2,500kbps floor and the smallest published RedNote video cap | "arithmetic on TikTok's published bitrate floor and published RedNote video caps, 10 September 2026, decimal megabytes" | Arithmetic in the research file | 2026-09-10 | derived, contested RedNote input | 2026-09-10 | 2026-09-15 | 32 |
+
+### Do not publish, added from brief 32
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any TikTok safe-zone inset (130/484/44/140; about 1080x1420; central 80 to 90 percent; 108/320/60/120) | A Chinese tool page, an English tool page, an agency blog, a user-video aggregation extract | Not on any TikTok help page; TikTok's zone varies with caption length; five sets disagree | 2026-09-10 |
+| "RedNote publishes no distinct ad-unit pixel spec; an in-feed ad is a promoted note" | One marketer spec roundup, 403 | Single-source, unread at source | 2026-09-10 |
+| RedNote video 1GB and 15 seconds to 5 minutes; RedNote images 1080x1350 | Seller-media search extracts | Outside the brief 07 pool, extract only, contradicts the counted RN rows | 2026-09-10 |
+| Juguang video cap 500MB, bitrate 6Mbps or more, and 2026 review-policy details | Search summary over quarantined vendor pages and a self-published finance account post | Not a platform reading; Juguang help served titles only | 2026-09-10 |
+| Vertical video completion 27 percent higher and engagement 34 percent higher | Chinese search extract on a TikTok safe-zone query | No sample, no method, no publisher isolated | 2026-09-10 |
+| "Hook viewers within the first two seconds" on Douyin | Consultancy blog | No method | 2026-09-10 |
+| Facebook Stories 250 px and 340 px as insets on a stated canvas | Meta's own Facebook Stories ads guide page | Percentages and pixels do not reconcile; quote as written or use the three consistent 14/35/6 pages | 2026-09-10 |
+| The 516 kbps figure shared by TikTok auction in-feed and two Douyin in-feed sources as evidence of one spec | Coincidence noticed during brief 32 | Cannot distinguish a shared backend from restatement | 2026-09-10 |
+| hubStudio "brief to first cut in 24 to 72 hours"; "10x content output velocity"; "70% cost reduction"; "30 percent hook rate floor"; "15 to 30 variants" | hubStudio platform and ad creative service pages | No method; not ledger delivery figures, so the first-party exception does not reach them | 2026-09-10 |
+| Any language, subtitle or voice-over requirement for Douyin or RedNote ads | Agency guides on the SERP | Not researched at any primary or counted source | 2026-09-10 |

@@ -1,0 +1,38 @@
+﻿2026-09-16T11:04:08 start publish (model fable)
+2026-09-16T11:04:08 model attempt 1/4, cycle 1: Opus
+2026-09-16T11:05:23 opus: CATCH-UP RUN. Relaunch-MissedTasks.ps1 restarted the 2026-09-16 publish job. Read the canonical prompt (SHA-256 matches 88C02DCE996972BE100077832D309C4EA7CB457DFE231BF650497D02FD27D388, which differs from the 10:08 prompt only by the appended operator catch-up note), the shared manifest, this run log, editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md and editorial/schedule.csv.
+2026-09-16T11:05:23 opus: prior state inspected. The pre-catchup log, saved as editorial/logs/runs/2026-09-16-publish.before-catchup-110407.txt, shows the 10:08 run reached the same conclusion and ended with exit 0. It was a clean no-op, not an error, so there is nothing to correct and no partial work to finish. The new log held only its two start lines.
+2026-09-16T11:05:23 opus: schedule.csv re-parsed independently with Import-Csv, 48 rows: 32 published, 2 image_ready, 14 not_started. The two image_ready rows are brief 31 (amazon-tmall-jd-one-product-three-listings, publish_date 2026-10-23) and brief 32 (meta-tiktok-against-douyin-rednote, publish_date 2026-10-30). Both dates fall after today, 2026-09-16, so neither passes the due test of publish_date today or earlier. The only rows dated on or before today are brief 17 (2026-09-14) and brief 01 (2026-09-15), both already published. Eligible rows: 0.
+2026-09-16T11:05:23 opus: verified on disk rather than trusting the status column. production-roster-review-questions.astro and tmall-product-image-requirements.astro both exist under src/pages/resources/insights/ with entries in src/data/insights.ts and heroes in public/Images/. For the two image_ready slugs there is no .astro page and no insights.ts entry, only the hero webp each draft pass produced, which is the correct image_ready state. Nothing was half published.
+2026-09-16T11:05:23 opus: git state clean for the purpose of this run. main and origin/main are both at c7fa71d, so no commit from an earlier attempt is sitting unpushed. The 34 modified and untracked paths match the snapshot taken at the start of this run and come from the 09-14 and 09-15 draft passes. Nothing was staged, modified or deleted by this pass.
+2026-09-16T11:05:23 opus: decision: successful no-op, the same outcome the catch-up was meant to guarantee. With zero eligible rows there was no /createblogarticle step, so npm run build and npm run check were not run, no status advanced, nothing was committed and nothing was pushed. No email was sent, because the prompt sends mail only after a successful push or on a build failure and neither happened. Both drafts stay at image_ready awaiting their slots or an explicit Publish command.
+2026-09-16T11:05:23 opus: standing note for the operator. This is the third consecutive publish run with nothing due. Drafting is running ahead of the calendar, so the daily publish job will keep no-opping until the next dated slot arrives, unless those two pieces are deliberately published early.
+Catch-up run complete. Nothing was due, so nothing was published.
+Catch-up run complete: **nothing was due, so nothing was published.**
+
+**What the catch-up found**
+
+The 2026-09-16 publish job had already run at 10:08 and exited 0 as a clean no-op. Its log was preserved as `editorial/logs/runs/2026-09-16-publish.before-catchup-110407.txt`. There was no error to correct and no partial work to finish, so I re-derived the due set independently rather than trusting that conclusion.
+
+`editorial/schedule.csv` has 48 rows: 32 `published`, 2 `image_ready`, 14 `not_started`. Both `image_ready` rows are scheduled in the future:
+
+| Brief | Slug | publish_date | Due on 2026-09-16? |
+|---|---|---|---|
+| 31 | `amazon-tmall-jd-one-product-three-listings` | 2026-10-23 | no |
+| 32 | `meta-tiktok-against-douyin-rednote` | 2026-10-30 | no |
+
+The only rows dated on or before today (2026-09-14, 2026-09-15) are already published, confirmed on disk: both `.astro` pages exist under `src/pages/resources/insights/`, both have `src/data/insights.ts` entries, both heroes are in `public/Images/`. Eligible rows: **0**.
+
+**No half-finished state**
+
+Neither `image_ready` slug has an `.astro` page or an `insights.ts` entry, only the hero webp its draft pass produced, which is exactly what `image_ready` should look like. `main` and `origin/main` are both at `c7fa71d`, so no earlier attempt left an unpushed commit. The 34 modified and untracked paths are unchanged from the run's opening snapshot and all come from the 09-14 and 09-15 draft passes.
+
+**What I did not do**
+
+No `/createblogarticle`, no `npm run build` or `npm run check` (nothing changed to verify), no status advanced, no commit, no push. No email: the prompt sends mail only after a successful push or on a build failure, and neither occurred. Working tree left exactly as found; the only file I touched is the run log.
+
+The full decision record is appended to `editorial/logs/runs/2026-09-16-publish.txt`, marked as a catch-up run and verified free of em-dashes.
+
+One thing worth your attention: this is the third consecutive publish run with nothing due. Drafting is running well ahead of the calendar, so the daily job will keep no-opping until the next dated slot arrives unless you want briefs 31 and 32 published early.
+2026-09-16T11:05:34 model Opus completed successfully
+2026-09-16T11:05:34 end publish exit 0
