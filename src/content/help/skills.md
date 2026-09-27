@@ -8,7 +8,7 @@ order: 6
 updated: 2026-09-27
 appPaths: ["/skills", "/skills/organization", "/skills/catalog"]
 audience: "Everyone; team skills are for administrators"
-related: ["create-an-image", "create-a-video", "social-networks", "your-team"]
+related: ["create-an-image", "create-a-video", "linkedin", "x", "your-team"]
 shots:
   - file: "/Images/help/skills-my-skills.webp"
     route: "/skills"
@@ -55,7 +55,7 @@ The Catalog groups the standard skills in sections, with a search box and one ch
 - **Video camera movement vocabulary**, **Video shot pacing and duration**, **Animating a still (image to video)** and **Short vertical video ad**.
 - **Avoid list: hands, text artifacts, watermarks**.
 
-The **Social networks** section holds the posting rules of each network (LinkedIn, X, Instagram, Facebook, TikTok): length, hashtags, tone. These skills are already in your own list, and each network module picks its own format skill for every draft. See [Social networks](/help/social-networks#write-the-brief-linkedin-facebook-x).
+The **Social networks** section holds the posting rules of each network (LinkedIn, X, Instagram, Facebook, TikTok): length, hashtags, tone. These skills are already in your own list, and each network module picks its own format skill for every draft. See, for example, [LinkedIn](/help/linkedin#write-the-brief).
 
 To take a skill:
 

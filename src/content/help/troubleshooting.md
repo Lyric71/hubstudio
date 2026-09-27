@@ -4,11 +4,11 @@ seoTitle: "Troubleshooting and error messages | hubStudio Help"
 description: "What hubStudio's messages mean and what to do: credits used up, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, clients, validation, posts and connections, and more."
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
-order: 14
+order: 18
 updated: 2026-09-27
 appPaths: ["/content/image-generate", "/content/video", "/history", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
 audience: "Everyone"
-related: ["credits-and-payments", "create-an-image", "create-a-video", "your-team", "validation", "social-networks", "client-space", "account-and-sign-in"]
+related: ["credits-and-payments", "create-an-image", "create-a-video", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
 shots: []
 sources: ["src/lib/credits.ts", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckBand.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
 ---

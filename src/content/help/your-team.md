@@ -4,7 +4,7 @@ seoTitle: "Your team, its roles and its clients | hubStudio Help"
 description: "Working alone or in a team, the Admin, Creator, Viewer and Client roles, inviting people, answering requests to join, daily limits, pausing a login, adding clients and giving their people a login, invoice details and the sign-in code."
 excerpt: "A team shares one pool of credits and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
-order: 9
+order: 13
 updated: 2026-09-27
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
@@ -129,7 +129,7 @@ Nothing reaches a client until you say it was made for them. Creators and admins
 
 - in the image and video studios, before the run. See [Create an image](/help/create-an-image#made-for-a-client) and [Create a video](/help/create-a-video#made-for-a-client);
 - on a card in [History](/help/history#made-for-a-client), at any time;
-- on a post in a network module. See [Social networks](/help/social-networks#made-for-a-client).
+- on a post in a network module: [LinkedIn](/help/linkedin#made-for-a-client), [Instagram](/help/instagram#made-for-a-client), [Facebook](/help/facebook#made-for-a-client), [TikTok](/help/tiktok#made-for-a-client) or [X](/help/x#made-for-a-client).
 
 Pick **No client: the team only** (on History, **No client**) to take a piece back from a client. The team keeps seeing everything it made, whoever it was made for.
 

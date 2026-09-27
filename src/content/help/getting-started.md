@@ -8,7 +8,7 @@ order: 1
 updated: 2026-09-27
 appPaths: ["/signup", "/login", "/explore"]
 audience: "Everyone"
-related: ["explore", "create-an-image", "social-networks", "validation", "credits-and-payments", "your-team", "account-and-sign-in", "client-space"]
+related: ["explore", "create-an-image", "linkedin", "validation", "credits-and-payments", "your-team", "account-and-sign-in", "client-space"]
 shots:
   - file: "/Images/help/getting-started-menu.webp"
     route: "/explore"
@@ -62,7 +62,7 @@ The menu on the left holds the studio first, then the networks and Validation, t
 | **Image** | The image studio: text to image, image editing, upscaling. See [Create an image](/help/create-an-image). |
 | **Video** | The video studio. See [Create a video](/help/create-a-video). |
 | **History** | Everything you and your team made. See [History](/help/history). |
-| **LinkedIn**, **Instagram**, **Facebook**, **TikTok** (with a **Beta** badge) and **X** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. See [Social networks](/help/social-networks). |
+| **LinkedIn**, **Instagram**, **Facebook**, **TikTok** (with a **Beta** badge) and **X** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. See [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok) and [X](/help/x). |
 | **Validation** | The work waiting for someone's approval, and what you sent for approval. See [Validation](/help/validation). |
 | **Skills** | **My skills**, **Team skills** (administrators only) and the **Catalog**. See [Skills](/help/skills). |
 | **Partner** | Only for commercial partners. See [Partners](/help/partners). |

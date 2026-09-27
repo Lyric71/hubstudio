@@ -1,0 +1,158 @@
+---
+title: "TikTok"
+seoTitle: "Make, schedule and publish TikTok videos | hubStudio Help"
+description: "The TikTok module (Beta): connect your TikTok account, start from the video, write its caption, brief a video in depth, say which client it is for, send it for approval, then schedule it or publish it."
+excerpt: "Start from the video, add a caption with AI or by hand, or brief a video in depth, and publish it on your TikTok account, now or on schedule."
+section: "social"
+order: 10
+updated: 2026-09-27
+appPaths: ["/social/tiktok/posts", "/social/tiktok/brief", "/my-connections"]
+audience: "Creators and admins; viewers read"
+related: ["linkedin", "instagram", "facebook", "x", "validation", "create-a-video", "history"]
+shots:
+  - file: "/Images/help/tiktok-video.webp"
+    route: "/social/tiktok/posts"
+    alt: "The TikTok module on a new post: the Posts and Brief tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer"
+    captured: 2026-09-27
+  - file: "/Images/help/tiktok-brief.webp"
+    route: "/social/tiktok/brief"
+    alt: "The Brief tab of TikTok: Title of this piece, Language, The brief, Post type, Video length, Caption style, Call to action, Audience, Register, Must appear and Must not appear"
+    captured: 2026-09-27
+sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/TikTokBriefPanel.astro", "src/pages/social/tiktok/brief.astro", "src/scripts/socialContent.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
+---
+
+**TikTok** in the menu, marked **Beta**, holds your TikTok videos, from the first clip to the published post. On TikTok a post is a video and the words are its caption: you render, pick or upload the clip, then write its caption with AI or by hand, and publish it on your account, now or at a time you pick. Or you post it yourself on TikTok.
+
+## Before you start
+
+**To publish from hubStudio, connect your account.** Social accounts are personal: you connect your own TikTok on **My Connections**, in the menu under your picture. Nobody else can post with it, and you can't post with a teammate's. See [Account and sign-in](/help/account-and-sign-in#my-connections-your-social-accounts).
+
+Making a post, and publishing it yourself on TikTok, need no connected account.
+
+**Who does what.** Creators and admins make, render and publish. Viewers can open the module and read the posts they can see. Client logins don't see the module at all: a post reaches a client through [Made for](#made-for-a-client).
+
+## Open the module
+
+Click **TikTok** in the menu. It has two tabs: **Posts**, where every video is made and published, and **Brief**, to brief one video in depth (see [Brief a video in depth](#brief-a-video-in-depth)).
+
+On **Posts**, the dark band at the top holds:
+
+- the post list button, which shows the open post's title (or **All posts**) and how many posts there are;
+- **How this page works**, a short note about TikTok;
+- **New script**, which clears the form for a fresh post;
+- the three steps of the open post as tiles: **01 The video**, **02 The caption** and **03 Publishing**. Each tile shows its state (done, in progress, to do or not needed); click it to open that step. There is no brief step: what the video shows is the brief.
+
+Click the post list button to open every post in a panel over the page. Type in the search box to match words of the title or the caption, a status or a date, or keep the posts written between two days. Click a row to open that post.
+
+![The TikTok module on a new post: the Posts and Brief tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer](/Images/help/tiktok-video.webp)
+
+## Who sees a post
+
+A post belongs to the person who made it. Until you share it, only you see it. On the band, the line under the title says who can see the post; click **Who sees it**, pick **Only me** or **Everyone in the team**, then **Save**.
+
+A post made for a client is also shown to that client's people, whoever it is shared with inside the team. See [Made for a client](#made-for-a-client).
+
+## 01 The video
+
+Pick one of three ways in:
+
+- **Render with AI**. Write the prompt; **Improve with AI** rewrites it for you. Pick the **Engine**, the **Aspect**, the length, the resolution and the sound. The price is on the button before you press.
+- **Pick from the library**: a clip already in your [History](/help/history).
+- **Upload from your computer**. The file is saved in your History and put on the post.
+
+The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A clip takes a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. **Render again** makes a new one.
+
+TikTok takes one MP4, MOV or WEBM clip of 3 seconds to 10 minutes. Your account may allow less: when a clip runs longer than your account can post, the publishing step says so.
+
+## 02 The caption
+
+The caption step writes the words for the video. Under **Write the caption**, say anything it has to carry (an offer, a date, a call to action), pick the model and click **Write it with AI**: left empty, the caption is written from the clip alone. Or just type the caption in the editor. The skill **TikTok script format** is already picked; it carries TikTok's posting rules. See [Skills](/help/skills).
+
+Whatever sits in the editor is what goes out. TikTok keeps up to 2,200 characters, and a counter under the box shows how much room is left.
+
+- **It saves itself** about a second after you stop typing, when you leave the field, and when you close the tab. A line next to **Save** says **Saving…**, **Saved** or **Not saved:** with the reason.
+- **Add an emoticon** opens an emoji picker.
+- **Versions.** Every version of the caption is kept. Type what to change under **Another version** ("shorter", "end on a question"), pick a model, and click **Write another version**. Once there are two or more, click a version to load it, **Use this version** to make it the one that goes out, or **Delete** to drop it.
+- **Rewrite one passage.** Highlight a passage and click **Rewrite with AI** beside it. Pick a quick edit or type your own instruction; only that passage is rewritten, as a new version.
+
+## Brief a video in depth
+
+The **Brief** tab is the long way to start a TikTok post. Under **Brief a TikTok post**:
+
+![The Brief tab of TikTok: Title of this piece, Language, The brief, Post type, Video length, Caption style, Call to action, Audience, Register, Must appear and Must not appear](/Images/help/tiktok-brief.webp)
+
+1. Give it a **Title of this piece**, pick the **Language**, and write **The brief** the way you'd brief a creator: the angle, who it is for, what the viewer should do or feel.
+2. Pick the **Video length** and the **Caption style**: **Short and punchy (150 to 300 characters)** or **TikTok SEO (keyword-rich, 300 to 600 characters)**.
+3. Add what helps, all optional: **Call to action**, **Audience**, **Register**, **Must appear** and **Must not appear**.
+4. Under **Skills and material**, add **Files**, **Pages to read** and **Keywords to target**. **TikTok script format** is already picked.
+5. Click **Draft the post**.
+
+You get the whole package: the hook, a timed script, the on-screen text and the caption with its hashtags, kept inside TikTok's rules (the hook in the first 80 characters, 3 to 5 hashtags, no links). The result is saved as a draft in **Posts**, where you add the video.
+
+## Made for a client
+
+When your team works for clients, creators and admins see **Made for** on the band of an open post. Pick the client the post is for: it is saved at once, and the post's video follows. That client's people then find the post in their [Client space](/help/client-space), where they see whether it is planned or published. Pick **No client: the team only** to take it back.
+
+The line appears once your team has at least one client. See [Your team](/help/your-team#clients).
+
+## Send it for approval
+
+On the publishing step, the bar under the phone preview holds **Send for validation**. Name a teammate, or one of the client's people for a post made for a client. See [Validation](/help/validation).
+
+While it waits, the post is locked: the band reads **Waiting for validation: this post is locked until the validator decides.** Nothing on it can be changed, deleted or published until they decide. Approved, it can go out; sent back, it returns to draft for another round.
+
+## Publish automatically
+
+Open **Publishing** and stay on the **Publish automatically** tab. hubStudio posts through TikTok itself, in the name of the account you tick.
+
+1. Under **Who it goes out as**, tick one or more of your accounts. Nothing is ticked when the step opens. Without a connected TikTok account, the tab offers a button that opens My Connections in a new tab.
+2. Open **Posting to TikTok**. Its choices come from TikTok itself, for the account you ticked:
+   - **Who can see this post**: **Everyone**, **Friends**, **Followers** or **Only me**, as your account allows. Nothing is picked for you.
+   - **Allow people to**: **Comment**, **Duet** and **Stitch**. A choice turned off in your own TikTok settings is grayed out.
+   - **Disclose post content**, when the video promotes a brand, a product or a service. Then tick **Your brand** (you promote yourself or your own business), **Branded content** (you promote another brand or a third party), or both. Branded content can't be private, so **Only me** is off while it is ticked.
+3. Click **Publish now** to send it this second. To send it later, click **Schedule**: a **When it goes out** block opens. Pick a day and a time, or a chip: **In an hour**, **Tonight, 18:00**, **Tomorrow, 09:00** or **Monday, 09:00**. Then click **Schedule it**.
+
+The buttons stay locked until an account is ticked: the badge next to the tabs reads **Off until you tick one**, then **Ready when you are**. The time is read in your own time zone, set in **User Settings**. A scheduled time must be at least a couple of minutes ahead and no more than a year away, and one post can go to up to 20 accounts. TikTok itself caps how many posts an account sends a day, about 15.
+
+hubStudio looks at the queue every five minutes, so a post set for 09:00 goes out between 09:00 and 09:05. It checks the post against TikTok's limits again before sending.
+
+## Publish manually
+
+The **Publish manually** tab needs nothing connected.
+
+1. Click **Publish interactively**.
+2. TikTok's upload page opens in a new tab, with the caption on your clipboard.
+3. Follow **How it goes, press by press**: drag in the clip you downloaded, paste the caption, and post it there.
+
+If the caption arrives cut short, click **Copy the text** and paste it again. **What you give up by posting it yourself** lists the trade-offs: you can't pick an hour, and hubStudio is never told the post went out. Once it's live, set the status yourself under **Where it stands**: pick published, type the address in **Published URL (once live)**, and click **Save**.
+
+## Follow the queue
+
+Everything you schedule or send lands under **In the queue**, one row per account:
+
+| Status | What it means | What you can do |
+|---|---|---|
+| Scheduled | Waiting for its time | **Cancel** |
+| Sending now | Going out | Wait |
+| Published | Live, with **View live** | Edit or delete it on TikTok itself |
+| Did not go out | Refused, or waiting to retry | **Try again now**, **Cancel** |
+
+A temporary problem on TikTok's side is retried by itself, three attempts in all. A content problem (a clip too long, a wrong file type) or an account that needs reconnecting is not retried, and the person who queued the post receives an email saying what TikTok said. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
+
+## Take a post to other networks
+
+**Re-purpose for other networks**, at the foot of the publishing step, turns this post into posts for [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook) or [X](/help/x). Tick the networks, then pick a way:
+
+- **Manually**: each network opens in its own tab with this post as the brief. Nothing is drafted until you press Draft there.
+- **Draft at once**: hubStudio drafts each network's post, and opens each draft in its own tab. Each draft is billed like one draft with AI on that network.
+- **Publish automatically**: the same drafts, then sent on the accounts you tick for each network.
+
+## What it costs
+
+Each paid step shows its price where you work: on the button before a render, and on the status line after a draft, a new version or a rewrite. These are paid: **Write it with AI**, **Draft the post** on the Brief tab, **Write another version**, a rewritten passage, **Improve with AI**, and each clip rendered (per second).
+
+These cost nothing: writing the caption yourself, typing in the editor, and publishing on TikTok, through hubStudio or by hand. Files you upload are kept in History and count toward storage. Every charge is listed in **Credits** > **Usage**.
+
+## Delete a post
+
+**Delete** on the band removes the post from hubStudio for good, after you confirm. A post already out stays on TikTok. Admins can delete any post. You can delete your own post while it is still **Only me**. Nobody can delete a post while it waits for validation.
