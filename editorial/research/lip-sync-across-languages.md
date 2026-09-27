@@ -957,3 +957,110 @@ link-target pages the brief names (AI video and video production) carry the
 conflicting counts themselves: linking is fine, quoting their numbers is not.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-27, after drafting, against the claims table and "Cleared
+for use". Draft: `editorial/output/lip-sync-across-languages.md`.
+
+**Quotes.** 23 blockquotes on the page, all copied verbatim from "Cleared for
+use", said text and Source line both; `verify-quotes.mjs` reports 0 not
+verbatim. Trailing URL lines were left out. The Article 14 quote keeps its
+opening "Article 14 of those Provisions" unchanged: the sentence before it names
+the Provisions on the Administration of Deep Synthesis of Internet Information
+Services in full, as the writer note allows. Cleared quotes not used, to hold
+length: the 2020 scores definition, the 2023 overlap quote, the W3C interface
+string quote, the on-screen text caption quote, the California replica
+definition and condition quotes, the union permitted-change (Section 37.C),
+notice, description and deletion quotes, New York 50-f, EU Article 50, the
+translation band, the second adaptation card quote and the Tennessee liability
+quote. The consent table restates the notice, description, deletion,
+California and Article 50 rows without a figure other than the 2 August 2026
+date, which is plain restatement of the cleared Article 50 quote.
+
+**Spelling normalizations.** None needed. No British spelling appears in any
+cleared quote used, so the research file's quotes are unchanged.
+
+**Numbers.** `verify-numbers.mjs` reports 52 distinct numbers, 0 not found in
+this file. Every figure sits inside a cleared quote or restates one: 81 and 99
+percent, 0.2 seconds (2016 network); 615 clips (2025 benchmark); 45, 125, 90 and
+185 ms (ITU); 40 and 60 ms, 50 percent (EBU); 25 fps and 40 ms (arithmetic);
+319.57 hours, 12.4 percent, 54 titles (TACL); 14 evaluators and 1 to 5 scales
+(2020); 60, 50, 10, 53, 42 and 30 percent (TACL length); 120 maps (viseme
+paper); 42 characters, 20 and 17 a second (streaming guide, English only); 2024
+and 2025 dates on the Tennessee and China instruments; $0.33 to $3.00, $0.78 to
+$3.00, about $10, $1.56 to $4.80, $3.12 to $9.60, 2,000 to 10,000 and 13,500
+credits (price pages, 10 September 2026); 1,350 euro and 15 seconds (adaptation
+card). The derived range sentence (early sound 40 to 90 ms, late sound 60 to
+185) is the R6 range. Every `$` in the body is one of the cleared category
+bands above, read 10 September 2026, no vendor named. No hubStudio rate, price,
+language count or market count appears.
+
+**H1, title, meta, excerpt.** H1 changed from "Lip sync across languages: what
+breaks and what it costs" to "AI lip sync for video localization: what breaks
+and what it costs", so it carries the primary query in the buyer's words (SPEC
+structure rule 1); this overrides the R2 note to keep the working H1. Title
+changed from "AI Lip Sync for Video: What Breaks, What It Costs" (49) to "AI
+Video Lip Sync: What Breaks, What It Costs" (45), so the meta title with
+" | hubStudio" stays under 60. Meta description kept as approved (148).
+Excerpt written: 25 words. First-H2 answer 59 words, names hubStudio once.
+FAQ answers 54 to 63 words.
+
+**Must-includes.**
+- Failure mode table: met, nine rows, five columns, kinds of failure only. The
+  intro line states that no source publishes a failure rate. Teeth and tongue
+  appear only as mouth-region blur.
+- Per-language QA checklist: met, eleven rows, runnable by a non-speaker; the
+  translator marks p, b, m, f and v with timecodes. Identity and gesture and
+  culture rows are labeled "Practice". The subtitle row is marked English only,
+  and the line under the table repeats it.
+- Consent chain: met, eight rows reusing brief 26 rows (union XX.C.1, XX.C.2,
+  replica examples, XX.D.7; California 927) and brief 29's Article 14 row, plus
+  Tennessee and the China Article 4 label forms. The section states it is
+  production practice, not legal advice, and the mouth-only alteration question
+  is left open for counsel.
+- Cost section: met for machine layers only, five-row table with category bands,
+  unit, basis and read date, each band blockquoted with its method. Human
+  voice-over and human lip-sync dubbing are published as an absence ("no
+  readable published rate card"), and human review as unpriced on every page
+  read. The one adaptation card runs as the only human-side price.
+
+**Left out on purpose.** Any human dubbing or voice-over band; any failure
+rate; per-model scores, success rates and preference percentages; the market
+size, savings and "$2 to $20 a minute" seller bands; the Civil Code voice
+article and the Beijing court lead; a per-language dialogue expansion figure
+beyond German and Spanish; the W3C single-word ratios; the Tennessee
+tool-distribution clause; the union session fee; the site's "effectively
+solved" sync claim.
+
+**Every must-not held.** No competitor, dubbing or localization vendor, voice or
+lip-sync tool, model, platform or studio named, described or alluded to; papers
+cited by venue and year, price pages by category and date; the TACL study's
+sponsor and the NeurIPS paper's affiliation not described. No hubStudio rate or
+language or market count. No 22 to 78 percent or 7x figure. No labeling duty
+allocated: the page says who applies a label is a question for counsel. No em
+dash (0 in the file). No Han characters or full-width punctuation. No markdown
+links or HTML in body copy. No summary or conclusion section; the file ends on
+"CTA: Test a language pair". No decorative ordinals. American spelling passes.
+`check-draft.mjs`: all hard checks passed. `check-quarantine.mjs`: 0 found.
+
+**Search-limit caveats carried.** The session search budget ran out after the
+four SERP queries and no Chinese-language search ran. The page therefore
+scopes its absences to "this research" and "any page read" (human rate cards,
+human review pricing, the mouth-only replica question), makes no claim about
+Chinese law protecting the voice, and runs the gesture row as practice with no
+source.
+
+**Length.** Body with tables 4,084 words, prose including
+blockquotes 3,130, prose outside quotes and tables 1,168, against a
+1,900-word brief. The overrun is evidence: 23 verbatim quotes and four tables.
+Flagged for the orchestrator.
+
+**Internal links.** AI video production, video production service, AI brand
+ambassadors, cost to localize a campaign for China, campaign adaptation cost
+per market, and the Douyin platform page, all verified in `src/pages` on
+2026-09-27. The TikTok page is avoided because it prints a third form of the
+language count.
+
+**Distribution.** Category AI Video, which reaches the insights layer on
+/solutions/ai-production/video.
+
+**Hero:** a marked-up script on a music stand in a recording booth, pencil circles on the lines that break, accepted on the first generation.

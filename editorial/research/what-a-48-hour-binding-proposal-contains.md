@@ -837,3 +837,148 @@ progress): do not reference it.
   without the pricing page's "on finalized work, more on retainer" qualifier.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-27 against `editorial/output/what-a-48-hour-binding-proposal-contains.md`.
+
+### Quotes
+
+- 38 blockquotes on the page. Every one is copied verbatim from "Cleared for
+  use", quoted text and `Source:` line both, rewrapped only.
+  `verify-quotes.mjs` reports 38 blockquotes, 0 not verbatim.
+- Cleared quotes used: FAR 13.004, 16.202-1, 16.301-1, 16.601, 37.602; 49 CFR
+  375.403; the trade body's firm bid or cost-plus question, deliverables and
+  aspect ratios, all-in budget, post-production specifications, firm bid as
+  minimum, cost-plus, overage, unapproved change, contract or PO before work,
+  75/25 with its caveat, cancellation schedule, bid form with no usage line,
+  uncleared materials, working files, tariffs; Circular 30; China Copyright Law
+  Articles 19 and 27; the union commercials agreement edit rule; the revision
+  and proposal-speed absences; four ledger cost bands plus the eight-surface
+  absence; seven hubStudio policy quotes (48-hour binding proposal, revised
+  before signing, three rounds, usage assumption, payment terms, 30-day
+  validity, ownership on payment).
+- Cleared but not used, to hold length: FAR 2.101 (restated in prose without a
+  figure: an offer is what binds), FAR 52.243-1, bid form contingencies, award
+  in writing (restated in prose), bid IP until award, digital replica consent,
+  the 31-result search audit as a standalone quote (its count survives inside
+  the speed-absence quote's Source line).
+
+### Spelling normalizations
+
+None needed. The cleared quotes already use American spelling (no centre,
+catalogue, organisation or similar), so no cleared quote in this file was
+changed and draft and research stay identical. `check-draft.mjs` American
+spelling check passes.
+
+### Numbers
+
+`verify-numbers.mjs`: 40 distinct numeric tokens, 0 not found in this file.
+Every figure sits inside a cleared quote except these plain restatements, each
+of a cleared quote on the same page:
+
+- "48 hours" (intro answer, FAQ 6): the hubStudio pricing-page quote, run as
+  published policy, never a benchmark.
+- "30 days" (binding section, FAQ 3): the hubStudio validity quote.
+- "three rounds of modification on finalized work, more on retainer" (FAQ 4):
+  the hubStudio revision quote.
+- "Eight published price surfaces" (FAQ 5): the ledger absence quote.
+- Every `$` on the page sits inside one of the four cost-band quotes, ledger
+  category ranges from briefs 11, 12 and 21, attributed to the category and
+  the date. The one `$49` outside them is in the ASSET BRIEF comment (site
+  conflict note) and never renders.
+
+Nothing from "Do not publish" reached the page. No hubStudio rate, deposit
+percentage or sample price. No 22 or 78 percent figure, no 7x figure. Nothing
+from the internal quoting tool or its settings.
+
+### H1, title, meta, excerpt
+
+- H1 changed, as the Notes for the writer flagged: "What a 48-hour binding
+  proposal contains" became "What a binding creative production proposal
+  should include". It carries the query words and the gap word "binding", and
+  keeps a policy figure out of the headline. Slug unchanged.
+- First H2 restates the primary query exactly: "What should a creative
+  production proposal include?" The answer under it is 58 words and names
+  hubStudio once.
+- Title kept as approved: "What a Binding Production Proposal Contains", 43
+  characters (55 with " | hubStudio").
+- Meta kept as approved, 146 characters.
+- Excerpt written, 23 words.
+
+### Must-includes
+
+- Decision table: met. Binding proposal or firm bid, estimate or cost-plus,
+  time and materials (added, FAR 16.601 cleared), retainer. The retainer row
+  says no primary definition was read, per Notes for the writer.
+- Proposal anatomy table: met, twelve rows, four columns. Timeline and validity
+  rows say no instrument read defines them.
+- Exclusions checklist: met, ten plain bullets, no ordinals, no figures.
+- Cost-band section: met from ledger category bands only, plus a unit table
+  with no figures. The trade body bid form carries no prices, so it enters the
+  page as the missing usage line, not as a band.
+- FAQ: the brief's six questions, 56 to 64 words each.
+- Revision rounds and proposal speed: published as absences, with hubStudio's
+  lines as policy only.
+- Production-practice, not-legal-advice framing: stated in the intro, the
+  rights section and FAQ 3.
+- Internal links: pricing, production cost estimator, what a finished brand
+  asset costs, procurement's guide to buying AI content production, copyright
+  and AI, AI brand ambassadors, video production service page, Tmall platform
+  page, contact as the CTA target. All verified in `src/pages` on 2026-09-27.
+  The procurement guide now has a page, so the Notes line "do not reference
+  it" is superseded.
+
+### Left out on purpose
+
+Any jurisdiction beyond US federal, the US trade body and China's Copyright
+Law (UK, China Civil Code and Ontario were not read); the non-binding estimate
+limit; a definition of a revision round (none published; the page says so and
+tells the buyer to write one); a typical payment split; a "typical" turnaround;
+air dates or other timeline rules (not in the claims table); the questions to
+ask and subscription-or-managed articles as links (not needed, length).
+
+### Must-nots held
+
+- No competitor, vendor, studio, agency, platform vendor, subscription or
+  proposal software named, described or alluded to. `check-quarantine.mjs`: 28
+  stems, 0 found; manual grep for the quarantined names also clean.
+- "Binding" never presented as a single legal term of art: the page says there
+  is no single legal meaning and uses R6 conflicts 1 and 2.
+- FAR and 49 CFR 375.403 labeled by scope (federal procurement; a different
+  industry, analogy only).
+- 75/25 carries its not-a-recommendation caveat; the cancellation schedule is
+  labeled post-production guidance; the working-files position is labeled a
+  suppliers' trade body's position.
+- hubStudio's 48 hours and three rounds run only as attributed policy, never as
+  a norm or an advantage. The unmeasured "rarely happens" and "zero surprise
+  line items" lines are not used.
+- No em dash, no Han characters, no full-width punctuation, no markdown links,
+  no HTML in body copy, no summary section, no decorative ordinals. Ends on
+  `CTA: Get a binding proposal`.
+
+### Search-limit caveats carried
+
+- The revision-round absence rests on the brief 22 search plus this SERP; not
+  re-searched (budget exhausted). The quote's Source line carries its scope.
+- The proposal-speed absence carries "a review of 31 search results on four
+  buyer phrasings" in its Source line.
+- The page states that other jurisdictions were not checked.
+- Check 2 is still owed: every external row carries check 1 only. The eight
+  trade body and government documents should be re-fetched and saved into
+  `research/what-a-48-hour-binding-proposal-contains/` before publish.
+
+### Length
+
+Body with tables 4,616 words against the brief's 2,800; writer's prose outside
+blockquotes and tables 1,779 words; blockquotes 2,131 words. The overrun is
+the 38 cleared quotes the money-page structure needs, in line with the
+procurement guide (4,473 against 3,000).
+
+### Distribution
+
+Category: Buying models, which reaches the pricing page layer.
+
+### Check 2 and hero (orchestrator, 2026-09-27)
+
+**Check 2.** Done 2026-09-27. All eight trade body and government documents re-downloaded from the same URLs; text extracts saved to `research/what-a-48-hour-binding-proposal-contains/`. The best-practices file 403s at the logged `/PDFs/` path and was fetched from the editor root. 24 quoted fragments in the claims rows matched against the extracts: 21 exact, 3 differing only in nested quote marks, 0 failures.
+
+**Hero:** a set being taped out on a studio floor, a hand pressing down the last corner, accepted on the first generation.

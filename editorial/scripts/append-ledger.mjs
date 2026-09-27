@@ -35,7 +35,9 @@ if (start === -1) {
   console.error(`${slug}: no "## Ledger rows to append" section`);
   process.exit(1);
 }
-let end = lines.findIndex((l, i) => i > start && /^##\s/.test(l));
+/* A ledger block may carry its own level-two heading ("## X (added 2026-09-10,
+   brief 43)"); only a heading without "(added" ends the section. */
+let end = lines.findIndex((l, i) => i > start && /^##\s/.test(l) && !/\(added\b/i.test(l));
 if (end === -1) end = lines.length;
 
 const body = lines.slice(start + 1, end).join('\n').trim();
@@ -45,7 +47,7 @@ if (readFileSync(LEDGER, 'utf8').includes(marker)) {
   process.exit(0);
 }
 // U+2014 named by codepoint so this file stays clean of the character itself.
-if (body.includes('—')) {
+if (body.includes('\u2014')) {
   console.error(`${slug}: ledger rows contain an em dash`);
   process.exit(1);
 }

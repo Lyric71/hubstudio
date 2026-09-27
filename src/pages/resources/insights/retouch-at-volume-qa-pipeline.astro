@@ -1,0 +1,416 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "How do you quality check thousands of retouched images?",
+    "a": "Not one by one at the end. Build gates into the pipeline: a file check at ingest, a signed spec, a color-managed retouch, a second person behind the retoucher, then a random sample sized by ISO 2859-1. At general inspection level II the standard checks 80 images from a batch of 501 to 1,200, and the batch fails on the rejection number, not on a feeling."
+  },
+  {
+    "q": "What sample size should image QA use?",
+    "a": "It depends on batch size, not on a percentage. ISO 2859-1 sets the sample from the size of the batch through code letters, at general inspection level II unless something else is specified. A batch of 3,201 to 10,000 images takes a sample of 200. A flat 10 percent rule would call for at least 1,000 at 10,000 images. You choose the acceptance quality limit."
+  },
+  {
+    "q": "What goes in a retouching spec?",
+    "a": "The asset and slot, output size and format, color space with an embedded profile, background value, cutout standard, color reference and viewing condition, cleanup list, what must never change about the product, retouch limits, prohibited elements, defect classes with an AQL for each, naming and metadata, and who signs at each gate. No published body issues a template, so treat this one as production practice."
+  },
+  {
+    "q": "How much does product photo retouching cost?",
+    "a": "Published ecommerce retouch cards put the floor between roughly $0.25 and $1.20 an image by operation, and one card adds a fixed platform fee of about $95 a month, as read in September 2026. That is a category figure, not a quote. It prices the operation, not the checks around it, so ask which gates a quote covers before comparing two."
+  },
+  {
+    "q": "Why do marketplaces reject retouched product images?",
+    "a": "For something the slot forbids, or for retouching that misrepresents the product. On Tmall's white-background image, nine of fifteen published sources rule out text, watermarks, logos and overlay, seven a model and six shadows, and none ranks the causes. Taobao's March 2025 rule adds four failures: mismatched material or style, over-beautified effects, distorted scenes and poor quality such as cutout white edges."
+  }
+];
+---
+
+<ArticleLayout slug="retouch-at-volume-qa-pipeline" ctaLabel="Run a retouch pilot" faq={faq}>
+  <p class="standfirst">A product photo retouching quality control process is a chain of gates, not a final look at the finished batch. Only the sampling and color gates have a published standard behind them, and the sampling gate is where a published table can replace a guess.</p>
+
+  <h2>How does a product photo retouching quality control process work?</h2>
+
+  <p>Run retouching at volume as a chain of gates, each with a check, a pass rule and an owner: ingest, spec lock, color-managed retouch, a second check, sampling inspection, marketplace compliance and final approval. Size the sample from ISO 2859-1, the published standard, not a gut percentage. hubStudio's gate design is production practice; only sampling and color rest on standards.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>These specs are not read from a seller backend. Both platform rule centers gate their rule text behind a seller login, so no open source reaches the official value.</p>
+
+  <p>What follows is the most commonly published figure for each spec, collected across 15 independent sources in Chinese and English on 10 September 2026, with the number of sources that agreed shown per row. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own seller backend and confirm it there. Reviewed 10 September 2026.</p>
+
+  <p>That disclaimer covers the marketplace values only. The sampling plans and the color standards on this page are read from the standards' own text, by designation and date, and carry no modal count.</p>
+
+  <h2>What are the gates in a retouch QA pipeline?</h2>
+
+  <p>Seven gates, from arrival to sign-off. The standards named in the table cover sampling, color encoding, color profiles and viewing conditions. Every other pass rule, and every owner, is production practice, not an industry standard: a starting point to adapt.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Gate</th>
+          <th scope="col">Check</th>
+          <th scope="col">Standard or tool</th>
+          <th scope="col">Pass rule</th>
+          <th scope="col">Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Ingest</th>
+          <td>Files open; format, size and bit depth match the spec; profile embedded</td>
+          <td>ICC.1:2022 profiles; photography trade coalition guidelines, 2008</td>
+          <td>Every file passes before retouch starts</td>
+          <td>Production operations</td>
+        </tr>
+        <tr>
+          <th scope="row">Spec lock</th>
+          <td>Retouch spec agreed per channel and slot</td>
+          <td>Production practice, no published standard</td>
+          <td>No batch starts on an unsigned spec</td>
+          <td>Producer and client</td>
+        </tr>
+        <tr>
+          <th scope="row">Color-managed retouch</th>
+          <td>Instrument-calibrated, profiled monitor; profile kept; sRGB for screen delivery</td>
+          <td>IEC 61966-2-1; ICC.1:2022; ISO 3664:2009 for comparison with a physical sample</td>
+          <td>Calibration logged each session</td>
+          <td>Retoucher</td>
+        </tr>
+        <tr>
+          <th scope="row">Self-check and second check</th>
+          <td>Retoucher checks every image; a second person checks the batch</td>
+          <td>US federal digitization guideline, 2023; industrial inspection research</td>
+          <td>The second person signs off</td>
+          <td>Retoucher, then QC lead</td>
+        </tr>
+        <tr>
+          <th scope="row">Sampling inspection</th>
+          <td>Random sample; nonconforming images counted by defect class</td>
+          <td>ISO 2859-1:1999, Tables 1 and 2-A, level II</td>
+          <td>Accept or reject on the plan's numbers; a rejected batch is re-examined in full before it returns</td>
+          <td>QC lead; the AQL is set by the responsible authority, in practice the client</td>
+        </tr>
+        <tr>
+          <th scope="row">Marketplace compliance</th>
+          <td>Slot prohibitions, white value, the Taobao rule's four failures</td>
+          <td>Published modal values, 15 sources, September 2026; Taobao rule, March 2025</td>
+          <td>Zero prohibited elements in the slot</td>
+          <td>Marketplace operator</td>
+        </tr>
+        <tr>
+          <th scope="row">Final approval</th>
+          <td>Delivered batch checked against the spec</td>
+          <td>Production practice</td>
+          <td>Signed against the spec</td>
+          <td>Client</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The order matters more than the tools. A spec locked before retouch starts gives every later gate something to check against. A sample drawn at the end gives the batch a pass rule instead of an opinion.</p>
+
+  <h2>How many images should you check in a batch?</h2>
+
+  <p>A fixed share of the batch feels fair. The published standard for sampling inspection works the other way.</p>
+
+  <blockquote class="evidence">The published standard for sampling inspection by attributes, ISO 2859-1:1999 as amended in 2011, sets how many items to check from the size of the batch, through a table of code letters, and uses general inspection level II unless something else is specified. Its reasoning: what a sample tells you depends on how many items you check, not on what share of the batch they are.</blockquote>
+  <p class="source">Source: ISO 2859-1:1999 with Amendment 1:2011, September 2026, clause 10.1 and Table 1 read in the Bureau of Indian Standards' identical adoption IS 2500 (Part 1):2000, with the same code letters printed in China's identical adoption GB/T 2828.1-2012.</p>
+
+  <p>Resolved into plans for the batch sizes a catalog runs at, its tables give the figures below. This is the standard's table, not a house rule: ISO 2859-1:1999 single sampling plans, normal inspection, general inspection level II. Each cell reads sample size, then accept on or fewer, reject on or more.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Images in the batch</th>
+          <th scope="col">Code letter</th>
+          <th scope="col">AQL 1.0</th>
+          <th scope="col">AQL 2.5</th>
+          <th scope="col">AQL 4.0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">26 to 50</th>
+          <td>D</td>
+          <td>13 checked, accept 0, reject 1</td>
+          <td>5 checked, accept 0, reject 1</td>
+          <td>13 checked, accept 1, reject 2</td>
+        </tr>
+        <tr>
+          <th scope="row">51 to 90</th>
+          <td>E</td>
+          <td>13 checked, accept 0, reject 1</td>
+          <td>20 checked, accept 1, reject 2</td>
+          <td>13 checked, accept 1, reject 2</td>
+        </tr>
+        <tr>
+          <th scope="row">91 to 150</th>
+          <td>F</td>
+          <td>13 checked, accept 0, reject 1</td>
+          <td>20 checked, accept 1, reject 2</td>
+          <td>20 checked, accept 2, reject 3</td>
+        </tr>
+        <tr>
+          <th scope="row">151 to 280</th>
+          <td>G</td>
+          <td>50 checked, accept 1, reject 2</td>
+          <td>32 checked, accept 2, reject 3</td>
+          <td>32 checked, accept 3, reject 4</td>
+        </tr>
+        <tr>
+          <th scope="row">281 to 500</th>
+          <td>H</td>
+          <td>50 checked, accept 1, reject 2</td>
+          <td>50 checked, accept 3, reject 4</td>
+          <td>50 checked, accept 5, reject 6</td>
+        </tr>
+        <tr>
+          <th scope="row">501 to 1,200</th>
+          <td>J</td>
+          <td>80 checked, accept 2, reject 3</td>
+          <td>80 checked, accept 5, reject 6</td>
+          <td>80 checked, accept 7, reject 8</td>
+        </tr>
+        <tr>
+          <th scope="row">1,201 to 3,200</th>
+          <td>K</td>
+          <td>125 checked, accept 3, reject 4</td>
+          <td>125 checked, accept 7, reject 8</td>
+          <td>125 checked, accept 10, reject 11</td>
+        </tr>
+        <tr>
+          <th scope="row">3,201 to 10,000</th>
+          <td>L</td>
+          <td>200 checked, accept 5, reject 6</td>
+          <td>200 checked, accept 10, reject 11</td>
+          <td>200 checked, accept 14, reject 15</td>
+        </tr>
+        <tr>
+          <th scope="row">10,001 to 35,000</th>
+          <td>M</td>
+          <td>315 checked, accept 7, reject 8</td>
+          <td>315 checked, accept 14, reject 15</td>
+          <td>315 checked, accept 21, reject 22</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The three AQL columns are illustrative choices for this page. The standard recommends no limit for images. The buyer sets it.</p>
+
+  <p>Some cells look wrong and are not. At 26 to 50 images and an AQL of 2.5, the plan checks 5 images, fewer than at 1.0. Where a code letter has no plan at a given limit, the standard's arrows send it to the nearest plan above or below, with that plan's sample size. The table follows the arrows as printed.</p>
+
+  <p>Choosing the limit comes with a caution attached.</p>
+
+  <blockquote class="evidence">The standard is blunt about the acceptance quality limit: "The designation of an AQL shall not imply that the supplier has the right knowingly to supply any nonconforming item."</blockquote>
+  <p class="source">Source: ISO 2859-1:1999, clause 5.1, September 2026, quoted verbatim from the identical national adoption IS 2500 (Part 1):2000.</p>
+
+  <p>Two more rules keep the sample honest.</p>
+
+  <blockquote class="evidence">The sample is drawn "by simple random sampling", in proportion to size where a batch is made of distinct sub-batches. Defects are graded: the most serious class gets a very small acceptance quality limit, less serious classes larger ones.</blockquote>
+  <p class="source">Source: ISO 2859-1:1999, clauses 8.1 and 3.1.6, September 2026, standard text read in the identical national adoption IS 2500 (Part 1):2000.</p>
+
+  <p>On a retouch job, that grading translates cleanly. One class covers defects that misrepresent the product or break a marketplace rule, held to a very small limit. Another covers cosmetic defects, held to a larger one. The split is production practice. The principle is the standard's.</p>
+
+  <h2>What happens when a batch fails inspection?</h2>
+
+  <p>The standard leaves that decision with the buyer, and sets one hard condition.</p>
+
+  <blockquote class="evidence">ISO 2859-1 does not choose the quality limit for you. The inspection level and the acceptance quality limit are set by the responsible authority, and so is what happens to a rejected batch: scrapped, sorted, reworked, re-evaluated or held. A rejected batch comes back for inspection only after every item has been re-examined and the nonconforming ones removed, replaced or corrected.</blockquote>
+  <p class="source">Source: ISO 2859-1:1999, clauses 7.2, 7.4 and 10.1, September 2026, standard text read in the identical national adoption IS 2500 (Part 1):2000.</p>
+
+  <p>Write the disposition into the spec before the first batch ships. A failure then triggers a known action, not a negotiation.</p>
+
+  <p>The standard also watches the trend, not only the batch.</p>
+
+  <blockquote class="evidence">Normal inspection switches to tightened inspection as soon as two of five or fewer consecutive batches are rejected on first inspection. After five rejected batches under tightened inspection, acceptance sampling stops until the supplier has acted to improve quality and the responsible authority agrees the action is likely to work.</blockquote>
+  <p class="source">Source: ISO 2859-1:1999, clauses 9.3.1 and 9.4, September 2026, standard text read in the identical national adoption IS 2500 (Part 1):2000.</p>
+
+  <p>Tightened inspection is the warning light. Two rejections in a short run mean the process needs fixing, not the sample.</p>
+
+  <h2>Is checking 10 percent of a batch enough?</h2>
+
+  <p>It is a published rule. It was not written for catalogs.</p>
+
+  <blockquote class="evidence">A US federal imaging guideline recommends inspecting at least 10 images or 10 percent of each batch, whichever is larger, at 100 percent magnification on a profiled workstation, with a second person checking after the technician. If more than 1 percent of the batch is found defective in that random sample, the whole batch is re-inspected.</blockquote>
+  <p class="source">Source: Federal Agencies Digital Guidelines Initiative, Technical Guidelines for Digitizing Cultural Heritage Materials, third edition, May 2023, chapter 10, an interagency guideline for cultural heritage digitization that describes itself as informative, not prescriptive.</p>
+
+  <p>Set the two side by side and the gap opens with volume.</p>
+
+  <blockquote class="evidence">The two published approaches agree on small batches and split on large ones. For 500 images, the federal guideline's 10 percent and ISO 2859-1's level II both mean checking 50. For 10,000 images, the guideline calls for at least 1,000 and the standard for 200.</blockquote>
+  <p class="source">Source: arithmetic on the federal digitization guideline's 10 percent rule, May 2023, and ISO 2859-1:1999 Table 1 at general inspection level II, September 2026, each step shown in the research file.</p>
+
+  <p>Neither is the industry standard for ecommerce retouching. The guideline serves one-off heritage digitization. ISO 2859-1 is built for a continuing series of batches, with switching rules that react to a supplier's record. A catalog shipping weekly batches looks like the second case.</p>
+
+  <h2>Why add a second checker, and why not a tired one?</h2>
+
+  <p>Sampling catches a bad batch. It cannot fix a tired inspector. The evidence on human checkers below comes from industrial inspection research, in factories, aviation and security, not from image retouching. Read it as a pattern, not as a retouch figure.</p>
+
+  <blockquote class="evidence">Field studies outside aviation found hit rates falling 13 to 45 percent with time on task. In one study, ten experienced inspectors lost 27 percent of their hits between the first and second 15 minutes of a 30-minute session.</blockquote>
+  <p class="source">Source: a US national laboratory review of 212 published visual inspection studies, October 2012, reporting field studies summarized in 2002 and a 1977 study of industrial inspection, not image retouching.</p>
+
+  <p>A second person helps. The same industrial review spells out the limit.</p>
+
+  <blockquote class="evidence">Two inspectors beat one in every arrangement tested except splitting the batch between them, and detection was best when both inspected every item and both had to reject it. The same review warns that re-inspection only gives a lower bound on performance, because both inspectors can miss whole classes of defects.</blockquote>
+  <p class="source">Source: a US national laboratory review of 212 published visual inspection studies, October 2012, reporting a 1986 study of industrial inspection plus the review's own assessment, not image retouching.</p>
+
+  <p>A second checker is supported. A second checker as a guarantee is not. On a retouch desk, that means short review sessions, the signed spec open beside the checker, and a sample drawn after the second check, not instead of it. That is production practice built on industrial evidence.</p>
+
+  <h2>What goes in a retouch spec?</h2>
+
+  <p>No trade or professional body publishes an ecommerce retouch specification. The template below is production practice. Its cleanup and file fields lean on two published guidelines, and its marketplace fields on the counted collections covered further down. Fill it in per channel and per slot, and get it signed before the batch starts.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Field</th>
+          <th scope="col">What to specify</th>
+          <th scope="col">Where the rule comes from</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Asset and slot</th>
+          <td>SKU, channel, slot: main, white-background, detail or campaign</td>
+          <td>Production practice</td>
+        </tr>
+        <tr>
+          <th scope="row">Output</th>
+          <td>Pixel size, format, file weight cap, bit depth, color space with embedded profile</td>
+          <td>Platform values with their counts; IEC 61966-2-1; ICC.1:2022</td>
+        </tr>
+        <tr>
+          <th scope="row">Background</th>
+          <td>RGB 255 255 255 in the white-background slot, the one value no published reading rejects; no shadow in that slot, the modal reading</td>
+          <td>Published modal values, 15 sources, September 2026, the white value derived</td>
+        </tr>
+        <tr>
+          <th scope="row">Cutout</th>
+          <td>Clean edges, no white fringe, no pasted-on look</td>
+          <td>Published modal values; Taobao rule</td>
+        </tr>
+        <tr>
+          <th scope="row">Color</th>
+          <td>The approved reference (physical sample or master), how it is compared, under which viewing condition, and the tolerance</td>
+          <td>ISO 3664:2009 for viewing; production practice for the tolerance</td>
+        </tr>
+        <tr>
+          <th scope="row">Cleanup</th>
+          <td>Dust, scratches, lint, seams, sensor spots, banding, moire, noise</td>
+          <td>Photography trade coalition guidelines, 2008; US federal digitization guideline, 2023</td>
+        </tr>
+        <tr>
+          <th scope="row">Product truth</th>
+          <td>No change to shape, material, texture, color, markings or on-pack text</td>
+          <td>Taobao rule; production practice</td>
+        </tr>
+        <tr>
+          <th scope="row">Retouch limits</th>
+          <td>Moderate beautification; no excessive skin smoothing on models</td>
+          <td>Taobao rule</td>
+        </tr>
+        <tr>
+          <th scope="row">Prohibited elements</th>
+          <td>Text, watermark, logo, overlay, model, splice, border, hanger, per slot</td>
+          <td>Published modal values</td>
+        </tr>
+        <tr>
+          <th scope="row">Defect classes and AQL</th>
+          <td>A serious class (product truth, prohibited element) and a cosmetic class, with an AQL for each</td>
+          <td>ISO 2859-1 clause 3.1.6 for the classes; the AQL is the client's choice</td>
+        </tr>
+        <tr>
+          <th scope="row">Metadata and naming</th>
+          <td>File name pattern, embedded rights metadata, an AI label where an image is generated</td>
+          <td>Photography trade coalition guidelines, 2008; production practice</td>
+        </tr>
+        <tr>
+          <th scope="row">Sign-off</th>
+          <td>Who approves at which gate</td>
+          <td>Production practice</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The <a href="/services/design/ecommerce">ecommerce design service page</a> takes the same line on catalog work: specs are built into the brief from day one.</p>
+
+  <h2>How do you keep color consistent across thousands of images?</h2>
+
+  <p>Keep the profile with the file, calibrate screens with an instrument, and know which standard governs which comparison.</p>
+
+  <blockquote class="evidence">Photography's trade coalition guidelines say monitors used for image editing should be "calibrated and profiled with a hardware device", because "visual calibration is not adequate for professional image editing", and that color profiles "should always be attached to the image when saving, and preserved when opening."</blockquote>
+  <p class="source">Source: Universal Photographic Digital Imaging Guidelines, version 4.0, September 2008, the consensus of a coalition of 21 photography and picture-industry trade groups, read September 2026.</p>
+
+  <p>Those guidelines date from 2008: read them for the principle. Screen delivery has its own standard, sRGB, published as IEC 61966-2-1. Judging against a physical sample needs another.</p>
+
+  <blockquote class="evidence">ISO 3664:2009, now in its third edition, sets viewing conditions for judging prints, transparencies and images on monitors. It uses CIE illuminant D50 as its reference and specifies two light levels, a higher one for critical comparison and a lower one for practical appraisal, including routine inspection. It also warns that meeting its monitor conditions does not make a screen match a print without proper color management.</blockquote>
+  <p class="source">Source: ISO 3664:2009, Graphic technology and photography, Viewing conditions, April 2009, foreword, introduction and scope read in ISO's own preview text in September 2026.</p>
+
+  <p>So the two standards split the work. Screen delivery follows the sRGB encoding, with the profile embedded. Judging against a physical sample follows ISO 3664 viewing. Neither sets a color tolerance for retouched product images. That number goes in the spec, and the client owns it.</p>
+
+  <h2>Why do marketplaces reject retouched product images?</h2>
+
+  <p>Two published sets of reasons apply: what the frame contains, and whether the retouching tells the truth. The first comes from counted sources on Tmall's white-background image, under the method set out at the top of this page.</p>
+
+  <blockquote class="evidence">The prohibitions are the most consistent part of the published record. Nine of fifteen sources rule out text, watermarks, logos and promotional overlay. Seven rule out a model, six rule out shadows, six rule out spliced composites, and five rule out hangers, mannequins and tags. One extends the model ban to any body part at all, hands, feet, legs or a head.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language first, collected 10 September 2026, counted by domain for each prohibited element. Modal positions with their agreement counts, not a reading from the platform.</p>
+
+  <p>None of the fifteen says how often each failure happens.</p>
+
+  <blockquote class="evidence">No published source ranks why white-background images fail. Three of fifteen describe causes, as an unranked list: a background that is not pure white, a shadow, a model, text or a logo, a product too small in the frame, a duplicated product, and rough cutout edges. None says how often any of them occurs.</blockquote>
+  <p class="source">Source: fifteen independent published sources, Chinese-language, collected 10 September 2026. Stated as an unranked list with its count, not as a platform rejection taxonomy.</p>
+
+  <p>One conclusion survives the disagreement over the white value, and it belongs in the spec.</p>
+
+  <blockquote class="evidence">RGB 255 255 255 is the only background value that no published reading rejects. A background at 252 passes the one published tolerance and fails the one published zero-tolerance reading. Clipping the background to pure 255 is therefore the one choice the published record does not contradict. That is a conclusion drawn from the spread, not a platform rule.</blockquote>
+  <p class="source">Source: derived from the published tolerance positions, fifteen independent sources collected 10 September 2026, reasoning stated openly and resting on modal values rather than primary readings.</p>
+
+  <p>The <a href="/resources/insights/tmall-white-background-image-rules">Tmall white-background image rules article</a> covers that slot in full, and the <a href="/solutions/platforms/tmall">Tmall platform page</a> covers the wider channel.</p>
+
+  <p>The second set is newer. It is the one platform rule located that names retouching directly.</p>
+
+  <blockquote class="evidence">Taobao's rule against AI fake product images, announced in March 2025, says product images should rest on real photographs of the product and that retouching should be moderate and avoid distortion. It names four failures: material or style that does not match the product, over-beautified effects such as excessive skin smoothing, distorted or impossible scenes, and poor image quality such as white edges left by a cutout or an obvious pasted-on look.</blockquote>
+  <p class="source">Source: Economic Information Daily, 27 March 2025, business press reporting the platform's own announcement on its official account, re-read in Chinese in September 2026.</p>
+
+  <p>Each failure maps to a line in the spec. Material and style go to product truth. Over-beautified effects go to retouch limits. Impossible scenes need a physics check. Cutout edges go to the cutout field.</p>
+
+  <p>For generated images, the product-truth line carries the most weight. The <a href="/solutions/ai-production/image">AI image production page</a> describes review before delivery, and the <a href="/resources/insights/training-a-brand-model-that-stays-on-brand">article on training a brand model that stays on brand</a> covers keeping generated output consistent from the start.</p>
+
+  <h2>What does product photo retouching cost at volume?</h2>
+
+  <p>Published rate cards give a category band, not a quote.</p>
+
+  <blockquote class="evidence">Published ecommerce retouch cards put the floor between roughly $0.25 and $1.20 an image by operation, with one card adding a fixed platform fee of about $95 a month on top.</blockquote>
+  <p class="source">Source: published pricing pages in this category, September 2026, two independent cards read directly and compared, no vendor named.</p>
+
+  <p>The band prices the operation, not the gates around it, so ask which gates a quote covers before comparing two. The <a href="/resources/insights/product-photography-cost-per-sku">product photography cost per SKU article</a> covers the capture side of the same budget.</p>
+
+  <h2>Questions about retouching QA</h2>
+
+  <h3>How do you quality check thousands of retouched images?</h3>
+
+  <p>Not one by one at the end. Build gates into the pipeline: a file check at ingest, a signed spec, a color-managed retouch, a second person behind the retoucher, then a random sample sized by ISO 2859-1. At general inspection level II the standard checks 80 images from a batch of 501 to 1,200, and the batch fails on the rejection number, not on a feeling.</p>
+
+  <h3>What sample size should image QA use?</h3>
+
+  <p>It depends on batch size, not on a percentage. ISO 2859-1 sets the sample from the size of the batch through code letters, at general inspection level II unless something else is specified. A batch of 3,201 to 10,000 images takes a sample of 200. A flat 10 percent rule would call for at least 1,000 at 10,000 images. You choose the acceptance quality limit.</p>
+
+  <h3>What goes in a retouching spec?</h3>
+
+  <p>The asset and slot, output size and format, color space with an embedded profile, background value, cutout standard, color reference and viewing condition, cleanup list, what must never change about the product, retouch limits, prohibited elements, defect classes with an AQL for each, naming and metadata, and who signs at each gate. No published body issues a template, so treat this one as production practice.</p>
+
+  <h3>How much does product photo retouching cost?</h3>
+
+  <p>Published ecommerce retouch cards put the floor between roughly $0.25 and $1.20 an image by operation, and one card adds a fixed platform fee of about $95 a month, as read in September 2026. That is a category figure, not a quote. It prices the operation, not the checks around it, so ask which gates a quote covers before comparing two.</p>
+
+  <h3>Why do marketplaces reject retouched product images?</h3>
+
+  <p>For something the slot forbids, or for retouching that misrepresents the product. On Tmall's white-background image, nine of fifteen published sources rule out text, watermarks, logos and overlay, seven a model and six shadows, and none ranks the causes. Taobao's March 2025 rule adds four failures: mismatched material or style, over-beautified effects, distorted scenes and poor quality such as cutout white edges.</p>
+</ArticleLayout>

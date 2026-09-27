@@ -44,6 +44,74 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'lip-sync-across-languages',
+    image: '/Images/insight-lip-sync-across-languages.webp',
+    imageAlt:
+      'A hand holds a pencil over a script page on a music stand in a recording booth, small pencil circles marking lines under a desk lamp.',
+    category: 'AI Video',
+    tone: 'orange',
+    title: 'AI Video Lip Sync: What Breaks, What It Costs',
+    deck: 'Timing slips and blurred mouths show before imperfect mouth shapes do. What breaks in lip-synced localization, how to check each language, and what it costs.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '15 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'AI Video Lip Sync: What Breaks, What It Costs | hubStudio',
+    metaDescription:
+      'What breaks when brand video is lip-synced into other languages, how to check each language before it ships, and what lip-synced localization costs.',
+  },
+  {
+    slug: 'running-a-tmall-flagship-content',
+    image: '/Images/insight-running-a-tmall-flagship-content.webp',
+    imageAlt:
+      'A studio assistant pulls pale green backdrop paper down from a wall of colored paper rolls over last season\'s red sheet, with a vase on a concrete plinth in front.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Running a Tmall Flagship\'s Content by Month',
+    deck: 'Tmall\'s promotion dates move every year, and the reported rules ask for scores and deadlines, not creative. The content calendar is yours to build.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Running a Tmall Flagship\'s Content by Month | hubStudio',
+    metaDescription:
+      'A year of Tmall flagship content, month by month: the platform\'s reported promotion calendar, what its rules ask of a store, and a refresh plan.',
+  },
+  {
+    slug: 'retouch-at-volume-qa-pipeline',
+    image: '/Images/insight-retouch-at-volume-qa-pipeline.webp',
+    imageAlt:
+      'A hand draws one paper slip from a celadon bowl of identical slips beside stacks of product proof prints and a loupe on a worn worktable.',
+    category: 'eCommerce',
+    tone: 'orange',
+    title: 'Retouch at Volume: The QA Pipeline',
+    deck: 'Retouching thousands of product images needs gates with pass rules, a sample sized by the published standard, and a spec agreed before work starts.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '14 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Retouch at Volume: The QA Pipeline | hubStudio',
+    metaDescription:
+      'The QA pipeline for retouching product images at catalog volume: the gates, sampling plans from the published standard, and rejection rules.',
+  },
+  {
+    slug: 'what-a-48-hour-binding-proposal-contains',
+    image: '/Images/insight-what-a-48-hour-binding-proposal-contains.webp',
+    imageAlt:
+      'A hand presses down the last strip of cream tape marking a rectangle on a studio floor around an apple box and a ceramic vase, with a light stand and sneakers left outside the line.',
+    category: 'Buying models',
+    tone: 'navy',
+    title: 'What a Binding Production Proposal Contains',
+    deck: 'What a production proposal should state, section by section, what binding actually commits a supplier to, and what the quote usually leaves out.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '19 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'What a Binding Production Proposal Contains | hubStudio',
+    metaDescription:
+      'What a binding creative production proposal should spell out: units, inclusions, exclusions, revision rounds, rights, timeline and change control.',
+  },
+  {
     slug: 'hisense-self-serve-content-platform',
     image: '/Images/insight-hisense-self-serve-content-platform.webp',
     imageAlt:

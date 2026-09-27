@@ -391,6 +391,24 @@ No rule center page was read (deviation 7; `rule.tmall.com` gates its text).
 | New Year goods festival sale opening by year | 17 January 2024, 6 January 2025, 4 January 2026 (spot) | Three reported dates |
 | Dated platform-wide sale windows, October 2025 to September 2026, with a reported date | Five: Tmall Double 11 (presale 15 October 2025), Taobao Double 12 (8 to 12 December 2025), Tmall New Year goods festival (spot 4 January to 11 February 2026), Tmall March promotion (24 February to 9 March 2026), Tmall 618 (from 21 May 2026) | Count of events with a reported date, not a full list of platform activity |
 
+### Tmall Double 11 2026, recheck (added 2026-09-27, orchestrator)
+
+Note 9's recheck, run on 27 September 2026 before publish. One web search, then
+both articles fetched and read. The 2026 rules were reported on 22 September
+2026, twelve days after research first closed.
+
+| Claim | Source URL | Date | Sample size | Method | Who paid | Confidence |
+|---|---|---|---|---|---|---|
+| 2026 Double 11 presale: warm-up 0:00 to 19:59 on 15 October, deposits from 8 p.m. 15 October to 17:59 on 20 October, balance payments from 8 p.m. 20 October to 25 October. Verbatim: "10月15日0点至19点59分为预热时间，10月15日晚8点至20日17点59分为付定金阶段，10月20日晚8点至25日为尾款支付时间" | finance.sina.com.cn/tech/roll/2026-09-25/doc-iniszmmx4463810.shtml | 2026-09-25, read 2026-09-27 | n/a | Fetched and read | Portal technology desk, credits a Chinese ecommerce trade outlet | reported, one origin |
+| 2026 Double 11 spot sale: warm-up 17 to 20 October, sale 20 October to 13 November. Verbatim: "10月17日至20日19点59分为预热期，20日至11月13日为现货售卖时间" | Same | Same | n/a | Same | Same | reported |
+| Same spot sale window, second outlet: "天猫现货售卖时间统一为10月20日20:00至11月13日23:59，现货售卖期近25天" | guandian.cn/article/20260922/605453.html | 2026-09-22 11:21, read 2026-09-27 | n/a | Fetched and read | Chinese business news site, credits the 2026 merchant rules | reported. Two outlets agree on the dates; treat as one origin, the merchant rules as reported |
+| Merchant sign-up deadlines: presale goods to 19:59 on 15 October, spot goods to 19 October. Verbatim: "预售商品报名时间到15日19点59分结束；现货商品报名截止至19日" | Sina, as above | 2026-09-25 | n/a | Same | Same | single outlet |
+| Rules ask for price protection, free shipping, dispatch within 48 hours, and weigh a store experience score. Verbatim: "活动商品需要提供价保服务、包邮服务", "48小时内发货并确保物流单号有揽收记录", "店铺真实体验分要求" | Sina, as above | 2026-09-25 | n/a | Same | Same | single outlet. Names no creative asset, which extends claim d to Double 11 2026 |
+
+Derived: the 2026 rules were reported 23 days before the 15 October presale
+(22 September to 15 October). The 2026 spot sale closes on 13 November, one day
+earlier than 2025's 14 November.
+
 ## R6. Where sources conflict, and why
 
 1. **Tmall New Year goods festival 2025: 6 January against 17 January.** An
@@ -866,6 +884,12 @@ duplicated. Full working in `research/running-a-tmall-flagship-content.md`.
 | 500,000 RMB per-merchant rebate (March 2026); 15 to 50 percent 618 instant discount (2025); "2025 transactions grew more than 15-fold" | News roundups and press | Not needed; money and growth figures with no method or absolute | 2026-09-10 |
 | Content of the Taobao merchant learning site rule pages (Double 12 2025) | Search index titles | Titles only; content never read | 2026-09-10 |
 
+### Update to the brief 30 block: Tmall Double 11 2026 (added 2026-09-27, brief 46 recheck)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Tmall Double 11 2026: deposits from 8 p.m. 15 October, spot sale 20 October to 13 November; presale sign-up closes 19:59 on 15 October, spot sign-up 19 October | "Chinese press reporting the platform's 2026 Double 11 merchant rules, September 2026" | finance.sina.com.cn/tech/roll/2026-09-25/doc-iniszmmx4463810.shtml; guandian.cn/article/20260922/605453.html | 2026-09-22 and 2026-09-25 | reported; two outlets, one origin; sign-up deadlines single outlet | 2026-09-27 (WebFetch) | 2026-09-27 (curl, raw HTML) | 46 |
+
 ## Notes for the writer
 
 1. **Reader stage is practitioner. Lead with the thing that breaks.** The
@@ -1007,3 +1031,108 @@ duplicated. Full working in `research/running-a-tmall-flagship-content.md`.
 | Guowuyuan bangongting | State Council General Office | "China's State Council" |
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-27 against `editorial/output/running-a-tmall-flagship-content.md`.
+
+**Scripts.** `check-draft.mjs`: all hard checks passed. `verify-quotes.mjs`: 11
+blockquotes, 0 not verbatim. `verify-numbers.mjs`: 30 distinct numbers, 0 not
+found. `check-quarantine.mjs`: 37 stems checked, 0 found. U+2014: 0 in the
+whole file. Han characters and full-width punctuation: 0.
+
+**Quotes, 11, all verbatim with their Source lines.** Cleared for use 4, 5, 9,
+11, 10, 12, 13, 14 and 7, in that page order, plus two reused blocks: the brief
+30 lead-time absence block and the brief 28 quote 3 listing-parts block. No
+trailing URL lines. No word changed.
+
+**Spelling normalizations.** None needed. None of the 11 quotes carried a
+British spelling, so no cleared quote in this file was edited.
+
+**Figures outside blockquotes, each a restatement of a cleared quote.**
+
+| Where on the page | Figure | Cleared basis |
+|---|---|---|
+| Annual table, New Year goods festival | 17 Jan to 31 Jan 2024; 6 Jan 2025; warm-up 1 Jan and spot 4 Jan to 11 Feb 2026 | Cleared quotes 1, 2, 3 and 4 |
+| Annual table, March promotion | 24 Feb to 3 Mar and 24 Feb to 9 Mar 2026 | Cleared quote 6 |
+| Annual table, 618 | 20 May 2024 (no presale), 13 May 2025, 21 May 2026; presale to 3 Jun, spot to 21 Jun 2026 | Reused brief 30 618 opening and 2026 rules blocks |
+| Annual table, Double 11 | 14 Oct 2024; 15 Oct 2025, spot 20 Oct to 14 Nov 2025; 2026 not reported as of 10 Sep 2026 | Reused brief 30 opening and 2025 timetable blocks; R1 row n |
+| Annual table, Double 12 | Sign-up noon 25 Nov; warm-up 6 to 7 Dec; sale 8 to 12 Dec 2025 | Cleared quote 8 |
+| Annual promotions prose | "eight days later in 2026 than in 2025" | Reused brief 30 618 opening block |
+| Gaps prose | 51 days, 22 more; 21 days | Cleared quote 15; reused brief 30 21-day block |
+| Monthly plan | Holiday dates 15 to 23 Feb, 19 to 21 Jun, 1 to 7 Oct 2026; 24 Sep 2025 rules | Reused brief 30 holiday block; reused Double 11 opening block source line |
+| FAQ | Five sales Oct 2025 to Sep 2026; 21 and 22 days | Cleared quote 16; reused 21-day block; cleared quote 15 |
+
+Date arithmetic appears only as the research labels it (quotes 4, 7, 14 and
+15 and the 21-day block), and the page says so in the gaps section. No GMV,
+sales, growth, rebate or discount figure. No hubStudio rate. No 22 to 78
+percent or 7x figure. No spec value.
+
+**H1, title, meta, excerpt.**
+- H1 changed from the working "Running a Tmall flagship's content, month by
+  month" to "The Tmall store content calendar, month by month", so the H1 carries
+  the primary query in the buyer's words. The query also opens the first 100
+  words and the first H2.
+- Title kept as approved: "Running a Tmall Flagship's Content by Month", 43
+  characters, 55 with " | hubStudio".
+- Meta replaced with the recommended line from note 8, 144 characters: "what its
+  rules ask of a store" in place of "what each cycle asks of the store".
+- Excerpt written, 24 words.
+- Template set to `spec` (visible reviewed date, update in place).
+
+**Must-includes.**
+- Annual promotion table: met. Six rows, platform named on every row, year in
+  every date cell, "Not dated" where no usable source dates a year, the 2026
+  Double 11 cell reading "Not reported as of 10 Sep 2026".
+- Month-by-month plan: met, introduced as production practice above the table,
+  every anchor cell carrying platform and year.
+- Reuse or rebuild: met as derived analysis, every row labeled Derived or
+  Practice, built only from the bases in note 6.
+- Refresh checklist: met, ten items, labeled production practice, no numerals.
+- FAQ: the brief's five questions, 55 to 61 words each.
+- Visible "Reviewed 27 September 2026" line: met.
+
+**Slot requirements not met, on purpose.** No spec table and no disclaimer,
+because the page carries no spec value (said in the ASSET BRIEF). No annotated
+screenshot, because none was captured. No rejection reasons, because no
+campaign rejection data exists; the main-image prohibition list is referred to
+only as "the most published main-image prohibition list".
+
+**Left out on purpose.** Cleared quotes 1, 2, 3, 6, 8, 15 and 16 and the reused
+618, Double 11, 2026 618 rules, holiday, brief 03 block 7 and brief 02 block 10
+blocks run as table or prose restatements, or not at all, to hold length. Labor
+Day 2026 (in the claims table, in no cleared quote). The Double 12 seller steps
+and the 2026 festival store-level discount rule (not in a cleared quote). Every
+spec size and image count. Livestream as evidence: it appears once, in the
+August practice cell, as a production choice.
+
+**Must-nots held.** No competitor, studio, agency, partner service provider,
+creative platform, software vendor or press outlet named, described or alluded
+to; outlets appear only by category and date. No date without platform and
+year. No 2026 Double 11 date. The plan, reuse table and checklist are never
+called a platform requirement, and "the platform requires" appears nowhere. No
+statement that the platform does or does not expect livestream or short video
+beyond quote 12's scoped observation. No September sale date, no "Super 88", no
+March 2024 or 2025 dates, no Double 12 2024 dates, no "41 days". The 17 to 31
+January 2025, 19 to 31 January 2026 and 14 December 2025 dates appear only
+inside cleared quotes 5 and 9. No production lead time. No summary section; the
+file ends on "CTA: Plan the year with us". No markdown links or HTML in body
+copy. No echo of the Tmall platform page's partner delivery FAQ.
+
+**Search-limit caveats carried.** The table note and several Source lines say
+no value was read from a rule center. Quote 12 keeps "an observation about the
+reporting, not a reading of the full rule text". The September sale, summer
+promotions and brand days are stated as "no dated platform reporting found",
+never as events that did not happen. The 2026 Double 11 absence is dated to 10
+September 2026, "when research for this page closed". The note 9 recheck (2026
+Double 11 and Double 12 rules, a 2027 festival timetable, the 2027 holiday
+notice) was not run at drafting; it must run before publish, and any new row
+enters this file with its source first.
+
+**Length.** Prose 2,176 words, body with tables 3,035, against a 1,800-word
+target: about 21 percent over, driven by 11 blockquotes, three tables and a
+five-question FAQ.
+
+**Distribution.** Platform specs.
+
+**Recheck, run 2026-09-27 before publish.** The 2026 Double 11 rules were reported on 22 September 2026. Two outlets read in full; rows added under "Tmall Double 11 2026, recheck". The draft's table cell, the closing line of the calendar section, the lead-time sentence and the September to November plan rows were updated from those rows. Double 12 2026, the 2027 festival and the 2027 holiday notice were not searched in this recheck (one search only); the page dates those rows to earlier years and claims nothing for them.
+
+**Hero:** seamless paper rolls in seasonal colors, the celadon roll pulled down over last cycle's red. Second generation: the first had the sheet emerging from behind the lowest roll, so the prompt was reordered to put celadon lowest and in front.

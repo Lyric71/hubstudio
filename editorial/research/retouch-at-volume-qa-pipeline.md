@@ -1006,3 +1006,116 @@ pages are the natural layers.
 - Search the finished draft for Han characters and for U+2014.
 
 ## R8. Reconciliation (filled after drafting)
+
+Draft: `editorial/output/retouch-at-volume-qa-pipeline.md`, drafted 2026-09-27.
+
+**Quotes.** 16 blockquotes, all verbatim from "Cleared for use", quoted text
+and Source line both (verify-quotes.mjs: 16 blockquotes, 0 not verbatim). Used,
+by cleared number: 1, 3, 4, 5, 6, 7, 8, 11, 12, 14, 17, 19, 20, 22, 23, 24.
+Lines rewrapped only; no word changed; trailing URL lines not present in the
+cleared quotes, none added.
+
+**Spelling normalizations.** None needed. Every cleared quote used was already
+in American spelling, so no quote in this file was edited. check-draft.mjs
+reports 0 British spellings in publishable copy.
+
+**Numbers.** verify-numbers.mjs: 71 distinct numbers, 0 not found in this file.
+Every figure on the page sits inside one of the 16 cleared quotes, is a
+sampling-table value copied exactly from "The sampling plan table for the page,
+arrows resolved" (labeled on the page as ISO 2859-1:1999 single sampling plans,
+normal inspection, general inspection level II, AQL columns described as
+illustrative), is a standard designation or clause number from "Standards
+read", or is the disclaimer's NN = 15 and DATE = 10 September 2026. FAQ figures
+restate on-page material only: 80 from 501 to 1,200 and 200 from 3,201 to
+10,000 (sampling table rows J and L), at least 1,000 at 10,000 (quote 8), the
+rate band (quote 24), the prohibition counts (quote 20), no ranking (quote 23),
+the four Taobao failures (quote 19). `$` hits: 6 tokens, all quote 24, in its
+blockquote and its FAQ restatement. Nothing on the page is absent from this
+file.
+
+**H1, title, meta, excerpt.** H1 changed from "Retouch at volume: the QA
+pipeline, gate by gate" to "Product photo retouching at volume: the quality
+control process, gate by gate", because the working H1 did not carry the
+primary query; "at volume" and "gate by gate" kept. The first H2 restates the
+query and the hero line carries it in the first 100 words. Title "Retouch at
+Volume: The QA Pipeline" (34 characters) and the approved meta (140 characters)
+unchanged. Excerpt generated, 24 words. Opening answer 60 words, names hubStudio
+once, as author of the gate design, labeled production practice.
+
+**Must-includes.**
+- Gate table: met. Five columns (gate, check, standard or tool, pass rule,
+  owner), seven rows, introduced as production practice except the standards
+  named in it; the sampling row's accept and reject rule is the standard's.
+- Sampling plan table: met, from the standard text through IS 2500, labeled as
+  the standard's, arrow cells explained, AQL columns called illustrative and the
+  AQL left to the buyer (quotes 3 and 4).
+- Retouch spec template: met, twelve rows, labeled production practice, with
+  the statement that no trade or professional body publishes one.
+- Per-image retouch rate band: met, quote 24 as a category figure, in the body
+  and the cost FAQ. No hubStudio rate.
+- Marketplace rejection reasons and the Taobao rule: met as counted
+  prohibitions (quote 20), unranked causes (quote 23), the derived 255 value
+  (quote 22) and the Taobao AI fake-image rule (quote 19). Cannot be ranked, no
+  rejection notice exists, and color inaccuracy has no counted row, so none of
+  those is claimed. The SPEC.md marketplace disclaimer runs after the opening
+  answer with NN = 15 and DATE = 10 September 2026, verbatim, followed by one
+  added paragraph saying it covers the marketplace values only.
+
+**Left out on purpose.**
+- Quote 2: its values appear in the sampling table and the FAQ.
+- Quotes 9 and 10: cut for length. ICC.1:2022 and IEC 61966-2-1 appear by
+  designation only; dropping quote 10 also keeps the sRGB reference conditions
+  from reading as a review-desk rule.
+- Quotes 13, 15, 16 and 18: cut for length. Quotes 14 and 17 carry the human
+  inspection argument, each flanked by an "industrial inspection, not image
+  retouching" sentence.
+- Quote 21: the contact shadow is not discussed; the spec template says no
+  shadow in the white slot as the modal reading, supported by quote 20.
+- Quotes 25 and 26: cut for length.
+- Quote 27, the search-results audit: it describes the ranking pages as
+  published by sellers of retouching and editing tools. Left out under the
+  drafting instruction never to describe a retouching service or tool vendor,
+  even as a category.
+- The federal Delta E table, ITU-R BT.500, the Codex table, the R6 arithmetic
+  table beyond quote 8's two points, and every first-party review statement
+  except the ecommerce design page's line that specs are built into the brief
+  from day one (line 141, paraphrased, no figure).
+- Revision policy: not stated (two pages publish different policies).
+
+**Must-nots held.** No 22 or 78 percent approval figure, no 7x figure, no
+approval figure or ecommerce-page stat; no hubStudio rate, monthly, hourly or
+per-image figure; gate design, owners and practice pass rules never presented
+as an industry standard; no AQL presented as the standard's value for images;
+no claim that ISO 2859-1 requires 100 percent rework; no Codex values; no
+edition number and no "current" status for ISO 2859-1 or ISO 3664; no ISO 3664
+lux values and no Delta E tolerance; sRGB reference conditions not presented as
+a review setup; inspection research never presented as retouch figures; no
+ranking of rejection causes and no color-accuracy row; no "first" and no
+"detection model" for the Taobao rule; no contact shadow or sub-255 tolerance
+presented as allowed; no quarantined domain, studio, retouching service,
+clipping-path vendor, tool vendor or creative platform named, described or
+alluded to; no em dash; no Han characters; no markdown links or HTML in body
+copy; no summary section; no decorative ordinals.
+
+**Search-limit caveats carried.** iso.org returned 403, so ISO 2859-1 is cited
+as "1999 as amended in 2011" and read through its identical national adoptions,
+with no edition number, no "current", and no ISO 3664 illuminance values. The
+Taobao rule is carried as press-reported (its Source line says so), since the
+platform's own post was not captured. Marketplace rows carry the modal-method
+disclaimer and its reviewed date of 10 September 2026. The exhausted web search
+budget affected only the SERP map, whose audit quote is not on the page.
+
+**Checks, 2026-09-27.** check-draft.mjs: all hard checks passed (body 3,853
+words with tables, 2,899 prose, against a 1,900-word target). verify-quotes.mjs:
+0 not verbatim. verify-numbers.mjs: 0 not found. check-quarantine.mjs: 0 found,
+but the script cannot detect a hit: its word-boundary escape inside a template
+literal compiles to a backspace, and a test file containing two quarantined
+names also returned 0. A corrected run over the same 60 domain stems found only
+"color", from color.org, the ICC's own domain, a standards body and a false
+positive.
+
+**Distribution.** Category eCommerce, claimed by the AI image production page
+layer, which the article links to. The ecommerce design page layer claims
+Platform specs and Cost, so it catches this article only if pinned.
+
+**Hero:** a hand drawing one slip from a bowl of identical slips beside stacks of proof prints, the random sample, accepted on the first generation.
