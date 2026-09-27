@@ -19,6 +19,8 @@ const navLinks: { label: string; href: string }[] = [
   { label: 'Work', href: '/work' },
   { label: 'Resources', href: '/resources' },
   { label: 'hub4You', href: '/hub4you' },
+  // English only, so never localized: the app's help center.
+  { label: 'Help center', href: '/help' },
 ];
 
 /* Parent group: the BearingBridge AI lockup, rendered as on bearingbridge.com. */
@@ -44,7 +46,7 @@ const parent = {
         {
           navLinks.map((link) => (
             <li>
-              <a href={lp(link.href)}>{link.label}</a>
+              <a href={link.href === '/help' ? link.href : lp(link.href)}>{link.label}</a>
             </li>
           ))
         }
@@ -76,6 +78,9 @@ const parent = {
       <a href={lp('/privacy')}>Privacy</a>
       <a href={lp('/terms')}>Terms</a>
       <a href={lp('/cookies')}>Cookies</a>
+      <a class="site-footer__tool" href="/pricing/calculator" rel="nofollow"
+        >Quotation engine</a
+      >
     </div>
   </div>
 </footer>
@@ -189,5 +194,13 @@ const parent = {
   }
   .site-footer__legal a:hover {
     color: var(--brand-orange);
+  }
+  /* Internal quoting tool: password-gated, so it reads as instrumentation
+     rather than another legal page. */
+  .site-footer__tool {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.38);
   }
 </style>

@@ -2,7 +2,7 @@
 /**
  * Resources hub  ·  /resources
  *
- * Top-level hub for the resources section: links the four resource areas,
+ * Top-level hub for the resources section: links the five resource areas,
  * then previews the latest insights. No ordinal numerals on the card grids
  * (project card rule).
  */
@@ -25,6 +25,11 @@ const areas = [
     name: 'Glossary',
     href: '/resources/glossary',
     desc: 'The vocabulary of AI-generated content, defined in plain language.',
+  },
+  {
+    name: 'Help center',
+    href: '/help',
+    desc: 'Guides to the hubStudio app: images, videos, social posts, approvals, teams, clients and credits.',
   },
   {
     name: 'Copyright and AI',
@@ -159,6 +164,10 @@ const latest = insights.slice(0, 3);
   @media (min-width: 720px) {
     .rs-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+    /* An odd last card takes the whole row. */
+    .rs-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
     }
   }
   .rs-card {

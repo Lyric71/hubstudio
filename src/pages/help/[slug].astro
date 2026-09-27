@@ -1,0 +1,584 @@
+---
+/**
+ * /help/<slug>: one article of the hubStudio help center.
+ * Three columns on wide screens: every guide on the left (grouped as on
+ * /help), the article in the middle, "On this page" on the right. Below
+ * 1000px the guide list folds into a disclosure above the article and the
+ * outline is dropped. Previous and next follow the reading order.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import { formatDate, helpArticles, helpGroups, type HelpArticle } from '../../lib/help';
+
+export function getStaticPaths() {
+  return helpArticles.map((a) => ({ params: { slug: a.slug } }));
+}
+
+const APP_URL = 'https://hubstudio.bearingbridge.com';
+const SITE = 'https://www.hubstudio.ai';
+
+const { slug } = Astro.params;
+const i = helpArticles.findIndex((a) => a.slug === slug);
+const article = helpArticles[i] as HelpArticle;
+const prev = helpArticles[i - 1];
+const next = helpArticles[i + 1];
+const { Content } = article;
+const outline = article.headings.filter((h) => h.depth === 2);
+const updated = formatDate(article.updated);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'TechArticle',
+      headline: article.title,
+      description: article.description,
+      url: `${SITE}/help/${article.slug}`,
+      ...(article.updated ? { dateModified: article.updated } : {}),
+      publisher: { '@type': 'Organization', name: 'hubStudio', url: SITE },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Help center', item: `${SITE}/help` },
+        { '@type': 'ListItem', position: 2, name: article.title, item: `${SITE}/help/${article.slug}` },
+      ],
+    },
+  ],
+};
+---
+
+<Layout title={article.seoTitle} description={article.description} ogType="article" modifiedTime={article.updated ?? undefined}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <div class="container hp">
+    <!-- ===== Every guide ===== -->
+    <aside class="hp-nav">
+      <details class="hp-nav__fold">
+        <summary>All guides</summary>
+        <nav aria-label="Help center">
+          {
+            helpGroups.map((g) => (
+              <div class="hp-nav__group">
+                <p class="hp-nav__head">{g.title}</p>
+                <ul>
+                  {g.articles.map((a) => (
+                    <li>
+                      <a href={`/help/${a.slug}`} aria-current={a.slug === article.slug ? 'page' : undefined}>
+                        {a.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </nav>
+      </details>
+    </aside>
+
+    <!-- ===== The article ===== -->
+    <article class="hp-main">
+      <header class="hp-head">
+        <nav class="hp-crumb" aria-label="Breadcrumb">
+          <a href="/help">Help center</a>
+          <span aria-hidden="true">/</span>
+          <span>{article.group}</span>
+        </nav>
+        <h1 class="headline hp-title">{article.title}</h1>
+        <p class="lead hp-lead">{article.excerpt}</p>
+        {
+          (updated || article.audience) && (
+            <p class="hp-meta">
+              {updated && <span>Updated {updated}</span>}
+              {article.audience && <span>For {article.audience.charAt(0).toLowerCase() + article.audience.slice(1)}</span>}
+            </p>
+          )
+        }
+      </header>
+
+      <div class="hp-prose">
+        <Content />
+      </div>
+
+      <nav class="hp-pager" aria-label="More guides">
+        {
+          prev ? (
+            <a class="hp-pager__link" href={`/help/${prev.slug}`}>
+              <span class="hp-pager__dir">&larr; Previous</span>
+              <span class="hp-pager__title">{prev.title}</span>
+            </a>
+          ) : (
+            <span />
+          )
+        }
+        {
+          next && (
+            <a class="hp-pager__link hp-pager__link--next" href={`/help/${next.slug}`}>
+              <span class="hp-pager__dir">Next &rarr;</span>
+              <span class="hp-pager__title">{next.title}</span>
+            </a>
+          )
+        }
+      </nav>
+
+      <aside class="card card--navy hp-cta">
+        <span class="eyebrow hp-cta__eyebrow">Try it now</span>
+        <h2 class="headline h3 hp-cta__title">Open <span class="accent">hubStudio</span> and follow along.</h2>
+        <div class="hp-cta__actions">
+          <Button variant="primary" href={APP_URL}>Open hubStudio</Button>
+          <Button variant="on-dark" href="/contact">Contact us</Button>
+        </div>
+      </aside>
+    </article>
+
+    <!-- ===== On this page ===== -->
+    {
+      outline.length > 1 && (
+        <aside class="hp-toc" aria-label="On this page">
+          <p class="hp-nav__head">On this page</p>
+          <ul>
+            {outline.map((h) => (
+              <li>
+                <a href={`#${h.slug}`} data-toc={h.slug}>
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )
+    }
+  </div>
+</Layout>
+
+<script>
+  // Wide screens show every guide at once; narrow ones keep the list folded.
+  const fold = document.querySelector<HTMLDetailsElement>('.hp-nav__fold');
+  const wide = window.matchMedia('(min-width: 1000px)');
+  const sync = () => {
+    if (fold) fold.open = wide.matches;
+  };
+  sync();
+  wide.addEventListener('change', sync);
+
+  // "On this page" follows the section being read.
+  const links = new Map(
+    Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-toc]')).map((a) => [a.dataset.toc, a]),
+  );
+  if (links.size) {
+    const seen = new Set<string>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) (e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id));
+        const first = Array.from(links.keys()).find((id) => id && seen.has(id));
+        if (!first) return;
+        for (const [id, a] of links) a.classList.toggle('is-on', id === first);
+      },
+      { rootMargin: '-80px 0px -60% 0px' },
+    );
+    for (const id of links.keys()) {
+      const h = id ? document.getElementById(id) : null;
+      if (h) io.observe(h);
+    }
+  }
+</script>
+
+<style>
+  .hp {
+    display: grid;
+    gap: 32px;
+    padding-top: clamp(32px, 5vw, 64px);
+    padding-bottom: clamp(64px, 9vw, 128px);
+  }
+  @media (min-width: 1000px) {
+    .hp {
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 56px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .hp {
+      grid-template-columns: 240px minmax(0, 720px) 220px;
+      justify-content: space-between;
+    }
+  }
+
+  /* ---- Guide list ---- */
+  .hp-nav__fold {
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+    padding: 14px 20px;
+  }
+  .hp-nav__fold summary {
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+  }
+  @media (min-width: 1000px) {
+    .hp-nav {
+      position: sticky;
+      top: 104px;
+      align-self: start;
+      max-height: calc(100vh - 128px);
+      overflow-y: auto;
+    }
+    .hp-nav__fold {
+      background: none;
+      border: 0;
+      padding: 0;
+    }
+    .hp-nav__fold summary {
+      display: none;
+    }
+  }
+  .hp-nav__group {
+    margin-top: 22px;
+  }
+  @media (min-width: 1000px) {
+    .hp-nav__group:first-child {
+      margin-top: 0;
+    }
+  }
+  .hp-nav__head {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .hp-nav ul,
+  .hp-toc ul {
+    display: grid;
+    gap: 2px;
+    margin-top: 10px;
+  }
+  .hp-nav a,
+  .hp-toc a {
+    display: block;
+    padding: 6px 12px;
+    border-left: 2px solid transparent;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--text-mute);
+    transition: color 140ms ease-out, border-color 140ms ease-out;
+  }
+  .hp-nav a:hover,
+  .hp-toc a:hover {
+    color: var(--text-ink);
+  }
+  .hp-nav a[aria-current='page'] {
+    border-left-color: var(--brand-orange);
+    color: var(--text-ink);
+    font-weight: 600;
+  }
+
+  /* ---- On this page ---- */
+  .hp-toc {
+    display: none;
+  }
+  @media (min-width: 1280px) {
+    .hp-toc {
+      display: block;
+      position: sticky;
+      top: 104px;
+      align-self: start;
+      max-height: calc(100vh - 128px);
+      overflow-y: auto;
+    }
+  }
+  .hp-toc a {
+    font-size: 13px;
+  }
+  .hp-toc a.is-on {
+    border-left-color: var(--brand-orange);
+    color: var(--brand-orange);
+  }
+
+  /* ---- Head ---- */
+  .hp-main {
+    min-width: 0;
+  }
+  .hp-crumb {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .hp-crumb a:hover {
+    color: var(--brand-orange);
+  }
+  .hp-title {
+    margin-top: 20px;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.04;
+  }
+  .hp-lead {
+    margin-top: 18px;
+    max-width: 62ch;
+  }
+  .hp-meta {
+    display: grid;
+    gap: 6px;
+    margin-top: 24px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--line-hairline);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .hp-meta span:first-child::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    vertical-align: middle;
+  }
+
+  /* ---- Prose ---- */
+  .hp-prose {
+    padding-top: 40px;
+  }
+  .hp-prose :global(p),
+  .hp-prose :global(li) {
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .hp-prose :global(p) {
+    margin-top: 18px;
+  }
+  .hp-prose > :global(:first-child) {
+    margin-top: 0;
+  }
+  .hp-prose :global(strong) {
+    color: var(--text-ink);
+    font-weight: 600;
+  }
+  .hp-prose :global(a) {
+    color: var(--brand-orange);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hp-prose :global(code) {
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: rgba(10, 10, 20, 0.06);
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    color: var(--text-ink);
+  }
+  .hp-prose :global(h2) {
+    margin-top: 56px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    font-size: clamp(24px, 2.4vw, 32px);
+    color: var(--text-ink);
+    scroll-margin-top: 104px;
+  }
+  .hp-prose :global(h3) {
+    margin-top: 36px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    scroll-margin-top: 104px;
+  }
+  .hp-prose :global(h2 + p),
+  .hp-prose :global(h3 + p) {
+    margin-top: 12px;
+  }
+  .hp-prose :global(ul),
+  .hp-prose :global(ol) {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .hp-prose :global(ul > li) {
+    position: relative;
+    padding-left: 24px;
+  }
+  .hp-prose :global(ul > li::before) {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 11px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    opacity: 0.7;
+  }
+  .hp-prose :global(ol) {
+    counter-reset: step;
+  }
+  .hp-prose :global(ol > li) {
+    position: relative;
+    padding-left: 40px;
+    counter-increment: step;
+  }
+  .hp-prose :global(ol > li::before) {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(233, 78, 27, 0.1);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--brand-orange);
+  }
+  .hp-prose :global(li > ul),
+  .hp-prose :global(li > ol) {
+    margin-top: 10px;
+  }
+  .hp-prose :global(blockquote) {
+    margin-top: 24px;
+    padding: 18px 22px;
+    background: var(--bg-white);
+    border-left: 3px solid var(--brand-orange);
+    border-radius: 6px;
+  }
+  .hp-prose :global(blockquote p) {
+    margin-top: 0;
+  }
+  .hp-prose :global(table) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-top: 28px;
+    border-collapse: collapse;
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+    background: var(--bg-white);
+    font-size: var(--type-small);
+  }
+  .hp-prose :global(th),
+  .hp-prose :global(td) {
+    text-align: left;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line-hairline);
+    line-height: 1.55;
+    color: var(--text-mute);
+    vertical-align: top;
+  }
+  .hp-prose :global(thead th) {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+    white-space: nowrap;
+  }
+  .hp-prose :global(tbody tr:last-child td) {
+    border-bottom: 0;
+  }
+  .hp-prose :global(tbody td:first-child) {
+    color: var(--text-ink);
+  }
+  .hp-prose :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 28px;
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+    box-shadow: 0 18px 48px rgba(14, 22, 51, 0.12);
+    background: var(--bg-white);
+  }
+  .hp-prose :global(p:has(> img:only-child)) {
+    margin-top: 28px;
+  }
+  .hp-prose :global(hr) {
+    margin-top: 40px;
+    border: 0;
+    border-top: 1px solid var(--line-hairline);
+  }
+
+  /* ---- Previous / next ---- */
+  .hp-pager {
+    display: grid;
+    gap: 16px;
+    margin-top: 64px;
+  }
+  @media (min-width: 640px) {
+    .hp-pager {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .hp-pager__link {
+    display: grid;
+    gap: 6px;
+    padding: 22px 26px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+    transition: border-color 160ms ease-out, transform 160ms ease-out;
+  }
+  .hp-pager__link:hover {
+    border-color: rgba(233, 78, 27, 0.4);
+    transform: translateY(-2px);
+  }
+  .hp-pager__link--next {
+    text-align: right;
+    grid-column: 2;
+  }
+  @media (max-width: 639px) {
+    .hp-pager__link--next {
+      grid-column: auto;
+    }
+  }
+  .hp-pager__dir {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .hp-pager__title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+
+  /* ---- Into the app ---- */
+  .hp-cta {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+    margin-top: 40px;
+    padding: clamp(32px, 4vw, 48px);
+  }
+  .hp-cta__eyebrow {
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .hp-cta__title {
+    color: var(--text-on-dark);
+  }
+  .hp-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+  }
+</style>
