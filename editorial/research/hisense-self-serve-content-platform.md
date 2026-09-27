@@ -726,3 +726,26 @@ Publishing note: whichever category the article takes, check it against
 `src/data/insight-placements.ts` so it lands on a layer, per the repo rule.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-27 at publish, by script and review.
+
+**Quotes.** 17 blockquotes, 0 not verbatim in research: every blockquote on the page matches
+this file's cleared text and Source line.
+
+**Numbers.** 24 distinct numbers, 0 not found in the research file: every numeric token in the
+publishable body appears in this file.
+
+**Competitors.** 10 quarantined stems checked, 0 found on the page: no quarantined domain's
+name appears on the page.
+
+**House checks.** check-draft passed: title, meta and excerpt inside their
+ceilings, a Source line with a year under every quote, American spelling, no em
+dash. No Han characters in the draft.
+
+**As published.** Title "HiSense: A Self-Serve Content Platform in 8 Weeks". H1 "A self-serve AI content platform for brands: HiSense, live in eight weeks". Changes from the brief, the
+must-includes met or cut, and what the page never does are recorded in the
+draft's ASSET BRIEF block, which was read at publish and left unchanged.
+
+**Hero:** silicone molds and cast replicas beside the real product, accepted on the first generation.
+
+**Distribution:** category Production, which reaches the AI excellence page layer.

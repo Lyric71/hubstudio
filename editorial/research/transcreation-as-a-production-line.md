@@ -715,3 +715,26 @@ must reach the page by another route or leave the row out.
    online browsing preview and reopen item e of R1.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-27 at publish, by script and review.
+
+**Quotes.** 23 blockquotes, 0 not verbatim in research: every blockquote on the page matches
+this file's cleared text and Source line.
+
+**Numbers.** 29 distinct numbers, 0 not found in the research file: every numeric token in the
+publishable body appears in this file.
+
+**Competitors.** 32 quarantined stems checked, 0 found on the page: no quarantined domain's
+name appears on the page.
+
+**House checks.** check-draft passed: title, meta and excerpt inside their
+ceilings, a Source line with a year under every quote, American spelling, no em
+dash. No Han characters in the draft.
+
+**As published.** Title "Transcreation as a Production Line". H1 "The transcreation process for marketing, run as a production line". Changes from the brief, the
+must-includes met or cut, and what the page never does are recorded in the
+draft's ASSET BRIEF block, which was read at publish and left unchanged.
+
+**Hero:** proof prints on a line across a studio, one fallen to the floor, accepted on the first generation.
+
+**Distribution:** category Production, which reaches the AI excellence page layer.

@@ -2,7 +2,7 @@
 title: Digital Humans in China: Cost and Rules
 slug: digital-humans-in-china
 description: What a brand digital human costs in China to build and to run, from published Chinese rate cards, plus the consent, labeling and livestream rules.
-excerpt: Chinese rate cards price a digital human from hundreds of RMB to hundreds of thousands. What each price buys, and the rules for going on air.
+excerpt: Chinese rate cards price a digital human from hundreds of RMB to hundreds of thousands. What each buys, and the rules for going on air.
 template: insight
 ---
 

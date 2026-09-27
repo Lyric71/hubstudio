@@ -1,0 +1,479 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is the best AI model for product images?",
+    "a": "There is no single best on the dated evidence. On two public blind-vote leaderboards read in September 2026, GPT Image 2 was the highest-placed released text-to-image model, but the boards disagreed below it and neither publishes a product-still score. Test candidates against your own product: label, logo, shape, color and material."
+  },
+  {
+    "q": "Which AI video model is best for ads?",
+    "a": "No single board settles it. On two public blind-vote video leaderboards read in September 2026, Seedance 2.0 placed fifth and seventh for text to video, MiniMax H3 fourth and eighth, and Veo 3.1 fifteenth and twelfth. For image to video, MiniMax H3 ranked first and third. Choose by what the shot needs: references, length, speech. Then test it."
+  },
+  {
+    "q": "Can AI-generated images be used commercially?",
+    "a": "Read the terms for the exact model first. On 10 September 2026, Google's and Runway's terms said they claim no ownership of output, Runway's said it does not restrict commercial use, and the FLUX.2 [dev] license allowed outputs for commercial purposes. OpenAI's, Midjourney's and Kling's terms could not be read that day. Copyright covers only what a human authored. Production practice, not legal advice."
+  },
+  {
+    "q": "How often do AI production models change?",
+    "a": "The latest release of each of the fifteen roster models with a dated maker page falls between 28 July 2025 and 31 July 2026, nine of them in 2026. On the day of reading, the public leaderboards already listed newer versions from three of the same makers. A roster needs a dated review, not a permanent answer."
+  },
+  {
+    "q": "Why do studios use more than one AI model?",
+    "a": "Because the evidence points different ways by asset. The public image leaderboards read in September 2026 disagree below the top spot, makers admit different weaknesses, from small faces to short speech segments, and terms differ by maker. hubStudio's video production page describes model choice as a creative decision per shot, not a vendor lock-in."
+  }
+];
+---
+
+<ArticleLayout slug="the-2026-model-roster" ctaLabel="See the roster at work" faq={faq}>
+  <p class="standfirst">No single model is best at everything a brand needs made. The honest answer is a roster: one model per asset type, picked on dated evidence, with its known limits written beside it.</p>
+
+  <p>Reviewed 10 September 2026.</p>
+
+  <h2>What is the best AI model for product images in 2026?</h2>
+
+  <p>No single model wins on the dated evidence. On two public blind-vote leaderboards read in September 2026, GPT Image 2 placed highest among released text-to-image models, the boards disagreed below it, and neither scores product stills. hubStudio assigns a model per asset type and tests it against the physical product before work moves to it.</p>
+
+  <blockquote class="evidence">On two public blind-vote image leaderboards read in September 2026, GPT Image 2 was the highest-placed released text-to-image model on both: first on one board, and third on the other behind two preliminary variants from the same maker.</blockquote>
+  <p class="source">Source: two public blind-vote leaderboards, one updated 7 September 2026 with 6,142,759 votes across 78 models, the other read 10 September 2026; voters chose between two anonymous images made from the same prompt, and votes were aggregated with a Bradley-Terry model.</p>
+
+  <p>A preference vote on general prompts tells you which image anonymous voters liked. It does not tell you whether the label on your bottle came back right.</p>
+
+  <blockquote class="evidence">No method-stated study measuring how faithfully current named models reproduce a physical product's label, logo, shape and color was found in the sources reviewed, and neither public leaderboard read publishes a product-still score, although one lists retail and ecommerce among its prompt categories.</blockquote>
+  <p class="source">Source: two public leaderboards and twelve research papers and abstracts reviewed 10 September 2026; stated as an absence in those sources, not as proof that none exists.</p>
+
+  <p>Search results do not fill the gap. In an audit run for this page on 10 September 2026, none of 27 results across four English buyer searches was a model maker's own page, and none carried an evaluation with a stated method and date.</p>
+
+  <p>So the useful answer is a roster. The asset column below is where the roster points each model, and that is production practice. The third column is what the maker claims. The last column is the maker's own stated limitation where it published one, and a failure class documented in research where it did not.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Asset</th>
+          <th scope="col">Model</th>
+          <th scope="col">What the maker says it does well</th>
+          <th scope="col">Known limitation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Product still</th>
+          <td>GPT Image 2</td>
+          <td>Generation and editing from text and image input, with inpainting</td>
+          <td>None stated in the maker's documentation; long text in the frame is a documented failure class</td>
+        </tr>
+        <tr>
+          <th scope="row">Product still from many references</th>
+          <td>Nano Banana Pro</td>
+          <td>Blends up to 14 images, keeps up to five people consistent, outputs at 2K and 4K, edits angle, focus and color grade locally</td>
+          <td>Maker says small faces, accurate spelling and fine details; complex edits can produce artifacts</td>
+        </tr>
+        <tr>
+          <th scope="row">Product consistency, open weights</th>
+          <td>FLUX.2</td>
+          <td>Up to 10 reference images for character, product or style consistency; editing up to 4 megapixels; the [dev] version published as open weights</td>
+          <td>None stated; the [dev] license is non-commercial for the model itself, though outputs may be used commercially</td>
+        </tr>
+        <tr>
+          <th scope="row">On-model and lifestyle</th>
+          <td>Nano Banana 2</td>
+          <td>Resemblance of up to five characters and fidelity of up to 14 objects in one workflow; 512 pixels to 4K; translates text inside an image</td>
+          <td>None stated; hands are a documented failure class to check</td>
+        </tr>
+        <tr>
+          <th scope="row">Layouts with dense text, layered edits</th>
+          <td>Seedream 5.0 Pro</td>
+          <td>Turns dense text and data into layouts; separates an image into more than 10 editable layers; renders text in more than ten languages</td>
+          <td>Maker says finer-grained text rendering and pixel-level editing consistency still have room to improve</td>
+        </tr>
+        <tr>
+          <th scope="row">Environment and art direction</th>
+          <td>Midjourney V8.1</td>
+          <td>Better adherence to detailed prompts and better text; HD mode at four times the resolution of V7</td>
+          <td>Omni-reference still ran on V7 on 11 June 2026; a generated scene is not tied to physical parameters</td>
+        </tr>
+        <tr>
+          <th scope="row">Text-heavy stills, open weights</th>
+          <td>Qwen-Image line</td>
+          <td>Complex text rendering and precise image editing; weights under Apache 2.0</td>
+          <td>None stated; on long text, open-source models trailed proprietary ones in a 2025 benchmark</td>
+        </tr>
+        <tr>
+          <th scope="row">Short video from many references</th>
+          <td>Seedance 2.0</td>
+          <td>Up to nine images, three video clips and three audio clips in one instruction; 15-second multi-shot video with dual-channel audio</td>
+          <td>Maker names detail stability, occasional audio distortion, multi-subject consistency, text rendering and complex edits</td>
+        </tr>
+        <tr>
+          <th scope="row">Storyboarded shots with speech</th>
+          <td>Kling 3.0</td>
+          <td>Up to 15 seconds; native speech in English, Chinese, Japanese, Korean and Spanish plus accents and dialects; multi-shot storyboard; signage, captions and branded elements retained</td>
+          <td>None stated; physics, commonsense and anatomy are documented failure classes in video models</td>
+        </tr>
+        <tr>
+          <th scope="row">Image to video with sound</th>
+          <td>MiniMax H3</td>
+          <td>Up to 15 seconds at 2K with native stereo, from mixed video, image and audio references</td>
+          <td>Maker says visual detail can still be improved in certain scenarios</td>
+        </tr>
+        <tr>
+          <th scope="row">Reference and frame control</th>
+          <td>Veo 3.1</td>
+          <td>Up to three reference images; extension to a minute or more; first and last frame; 1080p and 4K with native audio</td>
+          <td>Maker says natural spoken audio in shorter speech segments is still in development</td>
+        </tr>
+        <tr>
+          <th scope="row">Motion-led shots</th>
+          <td>Runway Gen-4.5</td>
+          <td>Motion quality, prompt adherence and visual fidelity</td>
+          <td>Maker says effects can precede causes, objects can vanish across frames, and actions succeed too easily</td>
+        </tr>
+        <tr>
+          <th scope="row">Open-weight video</th>
+          <td>Wan 2.2</td>
+          <td>Weights under Apache 2.0, including a speech-to-video variant; 720P at 24 FPS on its 5B model</td>
+          <td>None stated; physics, commonsense and anatomy are documented failure classes in video models</td>
+        </tr>
+        <tr>
+          <th scope="row">Lip sync and talking head</th>
+          <td>OmniHuman 1.5</td>
+          <td>Animates a character from one image and a voice track, syncing lips, emotions and gestures; group dialogue from separate audio tracks; 1080p</td>
+          <td>None stated; lip sync on arbitrary faces in real video is a documented failure class</td>
+        </tr>
+        <tr>
+          <th scope="row">Voice</th>
+          <td>Eleven v3</td>
+          <td>The maker's most advanced text-to-speech model; more than 70 languages</td>
+          <td>Maker points real-time use to a separate conversational model</td>
+        </tr>
+        <tr>
+          <th scope="row">Upscale</th>
+          <td>Native high resolution, or an open restoration model</td>
+          <td>Up to 4K natively on Nano Banana 2, Nano Banana Pro and Veo 3.1; 2x to 4x open upscaling under BSD-3-Clause</td>
+          <td>Generative restoration carries a fidelity issue; the portable open build can show block inconsistency from tiles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Which model for product stills, on-model images and environments?</h2>
+
+  <p>Start with the makers that publish their own weak spots. Google does, for Nano Banana Pro.</p>
+
+  <blockquote class="evidence">Google's own model page says Nano Banana Pro may struggle with small faces, accurate spelling and fine details, and that complex edits can produce unnatural results, visual artifacts or disjointed scenes.</blockquote>
+  <p class="source">Source: Google DeepMind model page for Gemini 3 Pro Image, read 10 September 2026; the maker's stated limitations.</p>
+
+  <p>Small faces, spelling and fine detail are what a packshot or an on-model image has to get right. ByteDance is just as direct about its newest image model.</p>
+
+  <blockquote class="evidence">ByteDance says Seedream 5.0 Pro, released 8 July 2026, turns dense text and data into layouts, separates an image into more than 10 editable layers, and renders text in more than ten languages. The same post says "there is still room to improve in finer-grained text rendering and pixel-level editing consistency."</blockquote>
+  <p class="source">Source: ByteDance Seed launch post, 8 July 2026; maker claim and the maker's own stated limitation.</p>
+
+  <p>Two lines on the roster publish open weights, FLUX.2 [dev] and Qwen-Image. Open weights can be fine-tuned on a brand's own material, which is production practice rather than a maker claim. The FLUX.2 [dev] license keeps the model itself non-commercial, and the terms section covers what that means for output.</p>
+
+  <p>On-model work adds people, and people add hands.</p>
+
+  <blockquote class="evidence">Diffusion image models have a documented failure with human hands, "such as incorrect finger counts or irregular shapes", serious enough that researchers built dedicated repair steps for it.</blockquote>
+  <p class="source">Source: HandRefiner, arXiv 2311.17957, November 2023; a research paper on 2023-generation models, cited for the failure class and not for a current rate.</p>
+
+  <p>That paper tested older models. It names the check, not today's failure rate, so hands stay on the test list for every new version.</p>
+
+  <p>For environments and art direction, the roster points to Midjourney V8.1. Its maker says HD mode renders at four times the resolution of V7. Its omni-reference feature was still running on V7 when V8.1 became the default on 11 June 2026.</p>
+
+  <p>Any generated set carries one more caution, from research published in March 2026. An image can look convincing without being physically plausible, because it never came from a three-dimensional scene.</p>
+
+  <p>Whether a product still should be generated at all, or shot, is a separate call. The <a href="/resources/insights/shoot-it-or-generate-it">Shoot it or generate it article</a> works through that decision.</p>
+
+  <h2>Can AI models handle edits and text in the frame?</h2>
+
+  <p>On editing, a public vote cannot separate the leading models.</p>
+
+  <blockquote class="evidence">On one public image-editing leaderboard the ten highest-rated models sat inside a 31-point band, and the confidence intervals of GPT Image 2, Nano Banana 2, Seedream 5.0 Pro and Nano Banana Pro overlapped, so the vote could not separate them.</blockquote>
+  <p class="source">Source: a public blind-vote image-editing leaderboard read 10 September 2026; pairwise preference votes aggregated with a Bradley-Terry model and reported with 95 percent confidence intervals.</p>
+
+  <p>Preference is not physics. Reflections and contact points are where edits break.</p>
+
+  <blockquote class="evidence">Physical realism, not semantic accuracy, is where current image generation still breaks: a 900-case benchmark covering optics, mechanics and state transition scored eleven current image editing models against human-annotated reflection surfaces and contact points, and every open-source model scored below 60, with only two closed systems slightly above it.</blockquote>
+  <p class="source">Source: an image editing physical-realism benchmark, October 2025; 900 human-annotated editing cases scored for physical consistency across eleven models.</p>
+
+  <p>Text is the other test. Long copy inside an image is a documented failure.</p>
+
+  <blockquote class="evidence">Long passages of text inside generated images remain "a persistent challenge": a 3,000-image human-improved test set posed significant challenges even for the most advanced proprietary model tested, and open-source models trailed further.</blockquote>
+  <p class="source">Source: TextAtlas5M, arXiv 2502.07870, February 2025, revised November 2025; a benchmark across three data domains, testing models of that generation.</p>
+
+  <p>That benchmark tested an older generation. Three current makers still list text among their own limitations. Google names accurate spelling for Nano Banana Pro. ByteDance names finer-grained text rendering for Seedream 5.0 Pro, and text rendering accuracy for Seedance 2.0.</p>
+
+  <p>So every line of pack copy gets read by a person at final size, in every language, before a file moves on.</p>
+
+  <h2>Which AI video model is best for ads in 2026?</h2>
+
+  <p>The video boards do not name one. They split by task, and they disagree.</p>
+
+  <blockquote class="evidence">For text to video, Seedance 2.0 placed fifth and seventh on two public boards, MiniMax H3 fourth and eighth, Sora 2 fourteenth and eleventh, and Veo 3.1 fifteenth and twelfth. Kling 3.0 placed tenth on one board and outside the top fifteen on the other.</blockquote>
+  <p class="source">Source: two public blind-vote video leaderboards, one updated 4 September 2026 with 668,045 votes across 48 models, the other read 10 September 2026 in its text-to-video-with-audio arena; pairwise preference votes aggregated with a Bradley-Terry model.</p>
+
+  <blockquote class="evidence">For image to video, MiniMax H3 ranked first on one public board and third on the other, Seedance 2.0 fifth and second, and Veo 3.1 twelfth and eleventh.</blockquote>
+  <p class="source">Source: two public blind-vote video leaderboards, one updated 2 September 2026 with 1,906,002 votes across 47 models, the other read 10 September 2026 in its image-to-video-with-audio arena; pairwise preference votes aggregated with a Bradley-Terry model.</p>
+
+  <p>For an ad brief, the maker claims in the roster map straight onto the shot list. How many references does the model take? How long does a clip run? Does sound come out with the picture? The limitations map onto the review, and two makers publish theirs in detail.</p>
+
+  <blockquote class="evidence">The same launch post says Seedance 2.0 still needs work on detail stability, occasional audio distortion, multi-subject consistency, text rendering accuracy and complex editing effects.</blockquote>
+  <p class="source">Source: ByteDance Seed launch post, 12 February 2026; the maker's stated limitations.</p>
+
+  <blockquote class="evidence">Runway lists three known failure modes for Gen-4.5, released 1 December 2025: effects sometimes precede causes, objects may disappear or appear unexpectedly across frames, and actions disproportionately succeed, such as a poorly aimed kick still scoring a goal.</blockquote>
+  <p class="source">Source: Runway research post, 1 December 2025; the maker's stated limitations.</p>
+
+  <p>Research finds the same pattern across video models.</p>
+
+  <blockquote class="evidence">A 2025 video benchmark found that while models score increasingly well on surface measures such as per-frame aesthetics and temporal consistency, "they still struggle to generate videos that are not just visually plausible but fundamentally realistic", falling short on physical laws, commonsense reasoning, anatomical correctness and compositional integrity.</blockquote>
+  <p class="source">Source: VBench-2.0, arXiv 2503.21755, March 2025, revised August 2025; a five-dimension benchmark using automatic evaluators aligned with human annotation.</p>
+
+  <p>Those were 2025 models. The finding still decides how a clip gets reviewed: through every second of motion, never on a single good frame.</p>
+
+  <p>The AI video production page covers how this work is made for clients.</p>
+
+  <h2>Which model for lip sync, voice and upscaling?</h2>
+
+  <p>No public blind-vote leaderboard with a published method was read for these three asset types. This part of the roster rests on maker claims and research.</p>
+
+  <p>Kling 3.0, Veo 3.1 and Seedance 2.0 generate sound with the picture, by their makers' account. One of those makers flags where speech still slips.</p>
+
+  <blockquote class="evidence">Google's own Veo page says "creating videos with natural and consistent spoken audio, particularly for shorter speech segments, remains an area of active development."</blockquote>
+  <p class="source">Source: Google DeepMind Veo model page, October 2025 edition, read 10 September 2026; the maker's stated limitation.</p>
+
+  <p>For a talking head built from a still image, the roster points to OmniHuman 1.5, which its maker says syncs lips, emotions and gestures to a voice track. The research on how sync fails is older, and precise.</p>
+
+  <blockquote class="evidence">A 2020 paper that introduced lip-sync accuracy metrics for real video named the failure precisely: earlier approaches failed "to accurately morph the lip movements of arbitrary identities in dynamic, unconstrained talking face videos."</blockquote>
+  <p class="source">Source: Wav2Lip, ACM Multimedia 2020, arXiv 2008.10010; a research paper introducing lip-sync metrics and benchmarks for unconstrained video.</p>
+
+  <p>No method-stated benchmark of lip sync across languages for the current commercial models was found in the sources reviewed. So sync gets tested on the real presenter, in the real language, with short lines as well as long ones.</p>
+
+  <p>For voice, ElevenLabs says Eleven v3 supports more than 70 languages. Its documentation points real-time use to a separate conversational model.</p>
+
+  <p>Upscaling starts with a question: does the model already output at the size the job needs? By their makers' account, Nano Banana 2, Nano Banana Pro and Veo 3.1 reach 4K. Where an upscale is still needed, an open restoration model offers 2x to 4x under a BSD-3-Clause license.</p>
+
+  <p>Generative restoration has a known fidelity problem. A CVPR 2024 paper built its sampling method specifically to suppress it. An upscaled packshot gets checked against the original before it ships.</p>
+
+  <h2>Why do AI model leaderboards disagree?</h2>
+
+  <p>Because they measure preference, and each measures it its own way.</p>
+
+  <blockquote class="evidence">The leaderboards measure preference, and they publish how. One shows a voter two anonymous outputs from the same prompt, requires a minimum viewing time, and aggregates the picks with a Bradley-Terry model, running separate video arenas with and without audio and recomputing video ratings hourly. The other removes about 10 percent of submitted votes as duplicates and labels a new model's score preliminary until enough fresh votes arrive.</blockquote>
+  <p class="source">Source: the two leaderboard publishers' own methodology pages, read 10 September 2026, and changelog entries dated July to September 2025; published method statements, not an audit.</p>
+
+  <blockquote class="evidence">Below the top spot the same two boards disagree. Nano Banana 2 placed fourth on one and ninth on the other, Nano Banana Pro ninth and fourteenth, and Seedream 5.0 Pro thirteenth and tenth.</blockquote>
+  <p class="source">Source: the same two public blind-vote text-to-image leaderboards, updated 7 September 2026 and read 10 September 2026; ranks compared rather than scores, because each board rescales its ratings independently.</p>
+
+  <p>Scores do not convert between boards. Compare ranks, and check whether the confidence intervals overlap before reading anything into a gap.</p>
+
+  <blockquote class="evidence">Anonymity on these boards can be broken. Researchers identified which model made an image from where it fell in an image-embedding space, across 22 models, 280 prompts and 150,000 images, and said the findings expose fundamental security flaws in text-to-image leaderboards.</blockquote>
+  <p class="source">Source: arXiv preprint 2601.09647, submitted 14 January 2026; a centroid-based clustering method applied to model outputs, not yet peer reviewed.</p>
+
+  <p>The preprint shows anonymity can be broken. It does not show that any ranking was manipulated.</p>
+
+  <p>Ranks also age.</p>
+
+  <blockquote class="evidence">In October 2025 Google reported that Veo 3.1 performed best on overall preference in its own comparison across 1,003 text-to-video prompts. On the public video leaderboards read in September 2026, Veo 3.1 ranked between eleventh and fifteenth.</blockquote>
+  <p class="source">Source: Google DeepMind's Veo model page, charts dated October 2025, a maker-run preference comparison with raters not stated (maker claim); and two public blind-vote video leaderboards updated 2 to 4 September 2026 and read 10 September 2026.</p>
+
+  <p>Both statements can be true on their dates. That is why every rank on this page carries one.</p>
+
+  <h2>What do AI model makers' terms allow for commercial use?</h2>
+
+  <p>This section is production practice, not legal advice. It records what each maker's terms said when read on 10 September 2026. Read the current version before relying on any line of it.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Maker and models</th>
+          <th scope="col">Terms read</th>
+          <th scope="col">What they say about output</th>
+          <th scope="col">Training and reuse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Google: Nano Banana 2, Nano Banana Pro, Veo 3.1</th>
+          <td>Gemini API terms, updated 28 April 2026</td>
+          <td>Google won't claim ownership of generated content</td>
+          <td>Content on unpaid services is used to improve Google products; prompts and responses on paid services are not</td>
+        </tr>
+        <tr>
+          <th scope="row">Runway: Gen-4.5</th>
+          <td>Terms of Use, updated 11 May 2026</td>
+          <td>No ownership claimed; commercial use of outputs not restricted</td>
+          <td>Inputs and outputs may be used to train its models</td>
+        </tr>
+        <tr>
+          <th scope="row">ElevenLabs: Eleven v3</th>
+          <td>Terms of Service outside the EEA, updated 31 March 2026</td>
+          <td>The user retains all rights in output</td>
+          <td>A perpetual license to use content to improve its services</td>
+        </tr>
+        <tr>
+          <th scope="row">Black Forest Labs: FLUX.2 [dev]</th>
+          <td>FLUX Non-Commercial License v2.1</td>
+          <td>Outputs usable for any purpose, including commercial; no ownership claimed; the model itself is non-commercial</td>
+          <td>Outputs may not be used to train a competing model</td>
+        </tr>
+        <tr>
+          <th scope="row">Alibaba: Qwen-Image line, Wan 2.2</th>
+          <td>Apache 2.0 on the code repositories</td>
+          <td>Wan 2.2 repository says its maker claims no rights over generated content</td>
+          <td>Not stated in the repositories read</td>
+        </tr>
+        <tr>
+          <th scope="row">OpenAI: GPT Image 2, Sora 2</th>
+          <td>Terms pages returned access errors</td>
+          <td>Not read</td>
+          <td>Not read</td>
+        </tr>
+        <tr>
+          <th scope="row">Midjourney: V8.1</th>
+          <td>Terms pages returned access errors</td>
+          <td>Not read</td>
+          <td>Not read</td>
+        </tr>
+        <tr>
+          <th scope="row">Kuaishou: Kling 3.0</th>
+          <td>Terms page served no clause text</td>
+          <td>Not read</td>
+          <td>Not read</td>
+        </tr>
+        <tr>
+          <th scope="row">ByteDance: Seedance 2.0, Seedream 5.0 Pro, OmniHuman 1.5</th>
+          <td>General cloud terms, updated 23 August 2022</td>
+          <td>No clause on AI-generated output</td>
+          <td>A broad perpetual license to data you upload, for purposes relating to the services</td>
+        </tr>
+        <tr>
+          <th scope="row">MiniMax: H3</th>
+          <td>Terms not located</td>
+          <td>Not read</td>
+          <td>Not read</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Runway's terms say it "does not claim ownership of any of your Inputs or Outputs" and "does not restrict your commercial use of your Outputs", and that inputs and outputs "may be used by the Company to train and improve its AI models."</blockquote>
+  <p class="source">Source: Runway Terms of Use, last updated 11 May 2026; the terms text read at source.</p>
+
+  <p>Training use is the clause to read twice. Runway's terms let it train on inputs and outputs. ElevenLabs takes a perpetual license to use content to improve its services. Google uses content sent to its unpaid services to improve its products, and says prompts and responses on paid services are not used that way.</p>
+
+  <blockquote class="evidence">Not every maker's terms could be read. On 10 September 2026 OpenAI's and Midjourney's terms pages returned access errors to an automated request, Kling's served no clause text, and the general cloud terms covering Seedance, Seedream and OmniHuman, last updated in 2022, contain no clause on AI-generated output.</blockquote>
+  <p class="source">Source: direct requests to each maker's published terms URLs, 10 September 2026; the result recorded per surface.</p>
+
+  <p>Where terms could not be read, the table says so instead of guessing. Read them at the source before work starts.</p>
+
+  <p>Provenance marking differs by maker too. OpenAI's system card for Sora 2 says all its assets carry C2PA metadata, and that videos downloaded from its site and app carry a visible moving watermark.</p>
+
+  <p>Terms can grant use. They cannot create copyright.</p>
+
+  <blockquote class="evidence">Copyright protects only material that is the product of human creativity, and where a generative system produces the expressive elements of a work, that material is not protected by copyright.</blockquote>
+  <p class="source">Source: US Copyright Office, registration guidance for works containing material generated by artificial intelligence, 88 FR 16190, 16 March 2023, a statement of policy published by the issuing office.</p>
+
+  <h2>How is an AI model roster tested and re-tested?</h2>
+
+  <p>Against the job, not the leaderboard. The table below is production practice, not a published standard, and no row carries a pass rate.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Test</th>
+          <th scope="col">What gets checked</th>
+          <th scope="col">Why it is on the list</th>
+          <th scope="col">When it reruns</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Product truth</th>
+          <td>Label, logo, shape, color and material against the physical product and its approved shot</td>
+          <td>No product-fidelity study was found in the sources reviewed, and an editing benchmark shows physical realism breaking</td>
+          <td>Every new maker version, before product work moves to it</td>
+        </tr>
+        <tr>
+          <th scope="row">Text in the frame</th>
+          <td>Full pack copy and every localized line at final size, read by a person</td>
+          <td>Long text is a documented failure class, and three makers list text among their own limitations</td>
+          <td>Every new version and every new language</td>
+        </tr>
+        <tr>
+          <th scope="row">People</th>
+          <td>Hands, small faces, identity held across a set or a clip</td>
+          <td>Hands are a documented failure class, and one maker names small faces</td>
+          <td>Every new version</td>
+        </tr>
+        <tr>
+          <th scope="row">Motion and physics</th>
+          <td>Cause and effect, objects that persist, anatomy through the whole clip</td>
+          <td>A 2025 benchmark and one maker's own failure list</td>
+          <td>Every new version</td>
+        </tr>
+        <tr>
+          <th scope="row">Speech and sync</th>
+          <td>The real presenter, the real language, short lines as well as long</td>
+          <td>Lip sync on arbitrary faces is a documented failure, and one maker flags short speech</td>
+          <td>Every new version and every new language</td>
+        </tr>
+        <tr>
+          <th scope="row">Terms and provenance</th>
+          <td>Output ownership, commercial use and training use, read on the date; provenance marks</td>
+          <td>Terms differ by maker, and several could not be read</td>
+          <td>When terms update or a model changes</td>
+        </tr>
+        <tr>
+          <th scope="row">Human sign-off</th>
+          <td>An art director reviews candidates; similarity scores are advisory only</td>
+          <td>Automated scores track people at about half to three fifths of human-to-human agreement</td>
+          <td>Always</td>
+        </tr>
+        <tr>
+          <th scope="row">Dated rank check</th>
+          <td>Read date, method, overlapping intervals, preliminary labels</td>
+          <td>The boards disagree below the top, and ranks move</td>
+          <td>Every roster review</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The human sign-off row is there because an automated score is the easiest thing to trust.</p>
+
+  <blockquote class="evidence">Automated consistency scores are a weak stand-in for a human reviewer. A 2025 benchmark had seven annotators rate generated images across 150 reference images and 1,350 prompts, then checked how well automated scores tracked them. On whether the subject was preserved, the two common image-similarity scores reached only 50.72 percent and 60.98 percent of the agreement human raters showed with each other.</blockquote>
+  <p class="source">Source: peer-reviewed machine learning conference paper, ICLR 2025; Pearson correlation with human ratings, expressed as a share of human-to-human agreement, each image rated by at least two annotators.</p>
+
+  <p>Re-testing matters because the roster moves under you.</p>
+
+  <blockquote class="evidence">The latest release of each of the fifteen models on this roster with a dated maker page falls between 28 July 2025 and 31 July 2026, and nine of the fifteen came out in 2026. On the day those pages were read, the public leaderboards already listed newer versions from three of the same makers.</blockquote>
+  <p class="source">Source: model makers' own launch posts, model cards and repositories, read 10 September 2026, compared with two public leaderboards updated 2 to 7 September 2026; a count of the pages read, not a measure of the market.</p>
+
+  <p>A new maker version goes back through the product and text checks before any work moves to it. That is also why this page carries a review date.</p>
+
+  <p>The <a href="/solutions/ai-production/image">AI image production page</a> and the <a href="/solutions/ai-production/video">AI video production page</a> describe the services this roster supports, and the <a href="/the-studio/ai-excellence">AI excellence page</a> sets out the studio's wider approach to AI work.</p>
+
+  <h2>Questions about the 2026 model roster</h2>
+
+  <h3>What is the best AI model for product images?</h3>
+
+  <p>There is no single best on the dated evidence. On two public blind-vote leaderboards read in September 2026, GPT Image 2 was the highest-placed released text-to-image model, but the boards disagreed below it and neither publishes a product-still score. Test candidates against your own product: label, logo, shape, color and material.</p>
+
+  <h3>Which AI video model is best for ads?</h3>
+
+  <p>No single board settles it. On two public blind-vote video leaderboards read in September 2026, Seedance 2.0 placed fifth and seventh for text to video, MiniMax H3 fourth and eighth, and Veo 3.1 fifteenth and twelfth. For image to video, MiniMax H3 ranked first and third. Choose by what the shot needs: references, length, speech. Then test it.</p>
+
+  <h3>Can AI-generated images be used commercially?</h3>
+
+  <p>Read the terms for the exact model first. On 10 September 2026, Google's and Runway's terms said they claim no ownership of output, Runway's said it does not restrict commercial use, and the FLUX.2 [dev] license allowed outputs for commercial purposes. OpenAI's, Midjourney's and Kling's terms could not be read that day. Copyright covers only what a human authored. Production practice, not legal advice.</p>
+
+  <h3>How often do AI production models change?</h3>
+
+  <p>The latest release of each of the fifteen roster models with a dated maker page falls between 28 July 2025 and 31 July 2026, nine of them in 2026. On the day of reading, the public leaderboards already listed newer versions from three of the same makers. A roster needs a dated review, not a permanent answer.</p>
+
+  <h3>Why do studios use more than one AI model?</h3>
+
+  <p>Because the evidence points different ways by asset. The public image leaderboards read in September 2026 disagree below the top spot, makers admit different weaknesses, from small faces to short speech segments, and terms differ by maker. hubStudio's video production page describes model choice as a creative decision per shot, not a vendor lock-in.</p>
+</ArticleLayout>

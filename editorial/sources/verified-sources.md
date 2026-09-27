@@ -1452,3 +1452,211 @@ sentences. Enter 2026-09-10 in its Check 2 column.
 | Any vehicle logistics or location shoot cost figure; any CGI adoption share in automotive marketing | Brief 38 statistics list | No method-stated source found; searches incomplete | 2026-09-10 |
 | The 2023 Toyota ruling as the first environmental car ad ban; the 2012 virtual-city ruling details | Trade and car press, brief 38 | Press characterization; 2012 ruling unread | 2026-09-10 |
 | Australia's motor vehicle advertising code content as relayed by 2019 advocacy news | Advocacy news 2019, brief 38 | Not read at source. SUPERSEDED 2026-09-24: the code itself was read at source and has its own row above; cite the code, never the relay | 2026-09-10 |
+
+
+## Added 2026-09-10 (ledger rows from brief 40, the-2026-model-roster)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+For the orchestrator to append to `sources/verified-sources.md`. Rows follow
+the ledger's table formats. Check 1 is this session's read; check 2 is left
+empty. Also add `40` to the "Used in" column of four existing rows: the
+image-editing physical-realism benchmark (brief 27), the Journal of Vision
+perception study (brief 27), the ICLR 2025 automated-score row (brief 29), and
+the two US Copyright Office rows (88 FR 16190 and the Part 2 announcement).
+
+```markdown
+
+
+## Added 2026-09-10 (ledger rows from brief 42, consumer-electronics-launch-content)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+Format matches the "Industry and regulatory" table. Check 1 is 2026-09-10 for
+every row; check 2 is blank.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| ASA upheld a complaint on a dash cam web page: a night image was a stock photo with readable number plates added, which consumers would read as a screen grab from the product; CAP 3.1, 3.7, 3.11 | "UK advertising regulator ruling, 5 June 2024" | asa.org.uk/rulings/portable-multimedia-ltd.html | 2024-06-05 | primary | 2026-09-10 | | 42 |
+| ASA guidance: images should not be altered to exaggerate what the product can do; small print such as "Not representative of actual gameplay" generally unlikely to prevent an ad misleading | "UK advertising regulator guidance on misleading imagery, 11 September 2025" | asa.org.uk/news/a-picture-says-a-thousand-words-avoiding-misleading-imagery-in-ads.html | 2025-09-11 | primary | 2026-09-10 | | 42 |
+| ASA upheld a complaint on a portable cooler ad claiming "Cool Any Room in Seconds": no evidence, unsubstantiated; CAP 3.1, 3.7, 3.11 | "UK advertising regulator ruling, 26 November 2025" | asa.org.uk/rulings/ecom7-ltd-a25-1303251-ecom7-ltd.html | 2025-11-26 | primary | 2026-09-10 | | 42 |
+| CAP 3.1, 3.3, 3.7, 3.9, 3.10, 3.11 and BCAP 3.1, 3.8, 3.9, 3.10, 3.11, 3.12 text; BCAP 3.8 concerns very brief images, not screen simulation | the codes, by rule number | asa.org.uk/type/non_broadcast/code_section/03.html; asa.org.uk/type/broadcast/code_section/03.html | read 2026-09-10 (pages undated) | primary | 2026-09-10 | | 42 |
+| FTC v. Colgate-Palmolive, 380 U.S. 374: undisclosed mock-up presented as visual proof is a material deceptive practice; props not prohibited where the ad rests on the seller's word | the decision, by citation, 5 April 1965 | law.cornell.edu/supremecourt/text/380/374 (justia and loc.gov 403) | 1965-04-05 | primary, extract-level quotes | 2026-09-10 | | 42 |
+| FTC Deception Policy Statement: net impression, visual imagery scrutinized, fine print may be insufficient, pro forma disclaimers may not cure | "FTC Policy Statement on Deception, 14 October 1983" | ftc.gov/system/files/documents/public_statements/410531/831014deceptionstmt.pdf, full text lines 141 to 161 | 1983-10-14 | primary | 2026-09-10 | | 42 |
+| FTC substantiation statement: objective claims need a reasonable basis; express "tests prove" claims need at least the advertised level | "FTC Policy Statement Regarding Advertising Substantiation, 23 November 1984" | ftc.gov/legal-library/browse/ftc-policy-statement-regarding-advertising-substantiation | 1984-11-23 | primary | 2026-09-10 | | 42 |
+| FTC proposed repeal of the 1966 Picture Tube Rule on screen size representations, vote 2-0, comments to 14 May 2018 | "FTC press release, 13 March 2018", proposal only | ftc.gov/node/45757 | 2018-03-13 | primary for the proposal; final status not read | 2026-09-10 | | 42 |
+| Advertising Law Arts. 8, 11, 28(2) to (4): performance, function, specification and quality information accurate; cited data sourced; false ad where it does not match reality with material effect, or rests on fabricated or unverifiable data | the statute, by article number | policy.mofcom.gov.cn/claw/clawContent.shtml?id=90361 | 2021-04-29 amendment | primary | 2026-09-10 | | 42 |
+| Advertising Law Art. 55: false ad fine 3 to 5 times the ad fee, or 200,000 to 1,000,000 RMB where incalculable or clearly low; 5 to 10 times, or 1m to 2m RMB, for three violations in two years or serious circumstances | the statute, by article number | Same | 2021-04-29 amendment | primary | 2026-09-10 | | 42 |
+| Provisions on Compulsory Product Certification, AQSIQ Order 117 as amended by SAMR Order 61 (2022-09-29): Art. 2 certified and marked before leaving factory, sale, import or business use; Art. 32 holder uses the mark correctly on product, packaging, ads and product introductions; Art. 33 no forging, altering, misusing, buying or transferring marks | the instrument, by order number and article | amr.sz.gov.cn/xxgk/qt/ztlm/jljcrz/zcfg/content/post_10585633.html | 2022-09-29 amendment | primary, regional regulator host | 2026-09-10 | | 42 |
+| CNCA Announcement 2023 No. 12 on certificate and mark management, dated 8 August 2023, revised mark requirements in force 1 January 2024 | the announcement, by number, dates only | amr.sz.gov.cn/xxgk/qt/ztlm/jljcrz/hyzx/content/post_10782254.html | 2023-08-08 | primary for dates; annex not read | 2026-09-10 | | 42 |
+| Energy Efficiency Label Measures, Order 35, published 2016-02-29, in force 2016-06-01: Art. 6 label conspicuous on the main product information page for online sales, scaled labels allowed in advertising; Art. 17 no forging, misuse or false publicity; Art. 27 penalty via Energy Conservation Law Art. 73 (amounts not read) | the instrument, by order number and article | samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2023/art_3fd2290ff58a40a8805f9d4af4af4e94.html | 2016-02-29 | primary | 2026-09-10 | | 42 |
+| EU electronic displays: Delegated Regulation 2019/2013 from 1 March 2021, A to G; visual ads for a specific model, online included, show class and range; technical promotional material shows class | "European Commission product page for electronic displays, read 10 September 2026" | energy-efficient-products.ec.europa.eu/product-list/electronic-displays_en | read 2026-09-10 (undated) | primary for the Commission statement; instrument text blocked | 2026-09-10 | | 42 |
+| 47 CFR 2.803: marketing includes advertising; pre-authorization display disclosure; conditional sales disclosures | the rule, by section, as amended 25 November 2025 | law.cornell.edu/cfr/text/47/2.803 (ecfr.gov blocked) | 90 FR 53236, 2025-11-25 | primary via mirror, extract-level; confirm the sentence | 2026-09-10 | | 42 |
+| 47 CFR 2.935 electronic labeling within three steps, plus packaging or removable label; 47 CFR 2.1074(b) voluntary FCC logo for SDoC devices | the rules, by section | law.cornell.edu/cfr/text/47/2.935 and /2.1074 | 82 FR 50827 and 50829, 2017-11-02 | primary via mirror | 2026-09-10 | | 42 |
+| CE marking is a manufacturer declaration after conformity assessment, not an EU safety approval; two Commission pages say nothing on advertising use | "European Commission CE marking page, 25 October 2021, and the EU business portal, last checked 17 July 2026" | single-market-economy.ec.europa.eu/single-market/ce-marking_en; europa.eu/youreurope/business/product-requirements/labels-markings/ce-marking/index_en.htm | 2021-10-25; 2026-07-17 | primary for what they state; absence on advertising | 2026-09-10 | | 42 |
+| Search-results audit: four buyer phrasings, 32 results, 21 seller-published, 1 regulator page (a 2018 screen-size repeal proposal); 0 of 6 read addressed marks, labels or imagery rulings | "search-results audit run 10 September 2026, publisher type recorded for every result, no domain named" | R2 in research/consumer-electronics-launch-content.md | 2026-09-10 | primary observation, re-countable | 2026-09-10 | | 42 |
+| iFlytek AnyPin: 22 cuts, 3 techniques, 90-second hero film, six 15 to 30 second vignettes, 9:16 1:1 16:9 versions, five platform edits, three languages, two-day shoot, "Weeks, not months" | "hubStudio's iFlytek AnyPin case study page", first-party, no method | src/data/case-studies.ts slug iflytek-anypin | read 2026-09-10 | first-party | 2026-09-10 | | 42 |
+
+### Do-not-publish additions from brief 42
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| "HiSense, the world's second-largest TV brand" | hubStudio HiSense case page | Third-party ranking that moves by tracker, period and segment; Omdia Q4 2024 units (via Yicai Global) against Counterpoint premium 2024 (via invidis); no method read. Site backlog item | 2026-09-10 |
+| Any fixed week count for a launch content build, including "compress six-month content timelines into weeks" | Brief 42 note; manufacturers page | No benchmark exists in anything read; site copy has no method | 2026-09-10 |
+| "Most manufacturers see 50 to 70% cost reduction" | src/pages/solutions/manufacturers.astro | Unsourced site copy, percentage with no absolute. Site backlog item | 2026-09-10 |
+| iFlytek "three to four months" against "three to four times longer" as a benchmark or a derived week count | iFlytek case page | Internally inconsistent, one engagement, counterfactual | 2026-09-10 |
+| HiSense 8 weeks as a content build duration | HiSense case page | Measures a platform deployment | 2026-09-10 |
+| A rule or ruling on "screen images simulated" | Brief 42 angle | None found in what was read; apply general image rules as analogy | 2026-09-10 |
+| FTC Picture Tube Rule as current, or its "horizontal" wording | ftc.gov 2018 proposal | Repeal proposed; final outcome and wording not confirmed | 2026-09-10 |
+| CCC false-certification-text rule; CCC electronic mark forms; any CCC fine | sd.ccic.com, jd-link.com, extracts of Order 117 | Single-source or unread instrument; penalty extracts disagree | 2026-09-10 |
+| Energy Conservation Law Art. 73 fine amounts; EU nested-display annex details; any 2017/1369 article text; any rule on the CE marking in ads | Unread instruments | EUR-Lex challenge page, legislation.gov.uk 403, not read | 2026-09-10 |
+| Battery life, brightness, refresh rate or screen size rulings; Chinese TV or phone spec enforcement cases | Brief 42 statistics list | Search budget exhausted before found. Open lead | 2026-09-10 |
+| EU food and cosmetics pictorial and honesty rows applied to electronics | Ledger, brief 27 | Wrong instruments for the category | 2026-09-10 |
+| Launch playbook reviewer and review-count figures | PR agency research page, April 2026 | Seller-published, no method | 2026-09-10 |
+
+
+## Added 2026-09-10 (ledger rows from brief 44, transcreation-as-a-production-line)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+### Industry and regulatory rows (brief 44)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Transcreation of advertising and marketing content defined as a professional practice combining translation, copywriting and intercultural consultancy that usually, but not always, involves adaptation; a translation-related activity, not a type of translation; as a process, taking an agreed brief and producing at least one option | "Institute of Translation and Interpreting, Transcreation Code of Practice, August 2026" | iti.org.uk/resource/transcreation-code-of-practice-august-2026.html, PDF pp.3 to 4. Member survey October 2024 to April 2025, focus groups January to September 2025, 11 collaborators, respondent count not published | 2026-08-07 | primary | 2026-09-10 | | 44 |
+| Transcreation paid by the project as a flat fee (fixed versions or deliverables including back translation, rationale and feedback rounds), by the hour with retainers sometimes, or by the day; "never paid per word"; priced like copywriting and usually above traditional translation; clients still ask for per-word quotes | "Institute of Translation and Interpreting, Transcreation Code of Practice, August 2026" | Same PDF pp.4 and 7 | 2026-08-07 | primary | 2026-09-10 | | 44 |
+| Six-step transcreation workflow: agree brief; gather and analyse; produce; feedback and amend; finalise and sign off; keep records. Brief inputs include the master copy including visuals, audience, tone, formats, restrictions, a cross-cultural audit and an agreed number of options and feedback rounds; back translation and rationale per option; at least two options, bolder and safer; two feedback rounds common practice | "Institute of Translation and Interpreting, Transcreation Code of Practice, August 2026" | Same PDF pp.4 to 7 | 2026-08-07 | primary | 2026-09-10 | | 44 |
+| Qualitative: most clients think transcreation means translating a few words while keeping the same visuals; visual and space constraints in the source copy named as a challenge. No count published | "Institute of Translation and Interpreting, Transcreation Code of Practice, August 2026, qualitative finding" | Same PDF pp.7 to 8 | 2026-08-07 | primary, qualitative, never a share | 2026-09-10 | | 44 |
+| Position: generative AI "is not useful for transcreation work"; says GenAI has taken a share of the transcreation market, no figure | "Institute of Translation and Interpreting, Transcreation Code of Practice, August 2026, a position statement, no data" | Same PDF pp.8 to 10 | 2026-08-07 | primary as a position only | 2026-09-10 | | 44 |
+| "The cost of transcreation is the cost of the time it takes to come up with the final copy"; brief should specify purpose, audience, tone, desired response, brand values, USP, media, format, images | "Institute of Translation and Interpreting guidance article, November 2023, updated August 2026" | iti.org.uk/resource/transcreation-explained.html | 2023-11-29, updated 2026-08 | primary | 2026-09-10 | | 44 |
+| ISO 17100:2015 Translation services, Requirements for translation services, published 2015-04-24; Amd 1:2017 published 2017-09-05; scope: core processes, resources and other aspects for a quality translation service meeting applicable specifications | "the standard, by designation and edition date" | en-standard.eu catalogue records; iso.org 403 on 2026-09-10; designation confirmed at tac-online.org.cn node_1015759 and content_42939091 | 2015-04-24; 2017-09-05 | triangulated for the designation, single-source for the dates and scope | 2026-09-10 | | 44 |
+| ISO 18587:2017 Translation services, Post-editing of machine translation output, Requirements, published 2017-04-12; scope: full, human post-editing and post-editors' competences | "the standard, by designation and edition date" | en-standard.eu catalogue record; designation confirmed at tac-online.org.cn content_42939103 | 2017-04-12 | triangulated for the designation, single-source for the date and scope | 2026-09-10 | | 44 |
+| GB/T 19363.1-2022 adopts ISO 17100:2015, replaces GB/T 19363.1-2008, first issued 2003, second revision, SAC/TC 62; GB/T 40036-2021 identical adoption of ISO 18587:2017 by translation, SAC/TC 62 and TAC | "the national standards, by designation, forewords as reproduced by the Translators Association of China" | tac-online.org.cn/2024-10/18/content_42939091.html and content_42939103.html | 2022; 2021 | primary for the forewords, single surface, implementation dates not read | 2026-09-10 | | 44 |
+| ISO 5060:2024 Translation services, Evaluation of translation output, General guidance, published 2024-02-13; human, post-edited and raw MT output; error categorization and penalty scoring | "the standard, by designation and edition date" | en-standard.eu catalogue record | 2024-02-13 | single-source | 2026-09-10 | | 44 |
+| T/TAC 2-2017 basic competences of translators and interpreters: foreign language, translation or interpreting, language processing, domain, research, information retrieval and processing, cultural, technical; assessed on documentary evidence | "Translators Association of China group standard T/TAC 2-2017, foreword" | tac-online.org.cn/2024-10/18/content_42937062.html | 2017 | primary for the foreword | 2026-09-10 | | 44 |
+| T/TAC 5-2020 names factors affecting translation and interpreting QUALITY (not price): translator qualifications and scarcity, workflow design, project management, QA system, technical means, content type and specialization, delivery cycle; providers negotiate price with clients by reference to the guide | "Translators Association of China pricing guide T/TAC 5-2020, foreword" | tac-online.org.cn/2024-10/18/content_42937055.html | 2020 | primary for the foreword, pricing units member-only | 2026-09-10 | | 44 |
+| ZYF 001-2013 localization quotation specification, first released 2013-10-31, appendices on unit price against translation memory match rate and a localization quotation model | "Translators Association of China, localization services quotation specification, October 2013, appendix titles only" | tac-online.org.cn/2024-10/18/content_42939445.html | 2013-10-31 | primary for the titles | 2026-09-10 | | 44 |
+| Search-results audit: four buyer phrasings on transcreation process, difference, workflow and pricing returned 31 results, 28 from sellers of translation or localization software or services or practitioners selling the service, 1 professional association, 2 trade media, 0 standards bodies; 0 of 3 read in full cite a standard | "search-results audit run 10 September 2026, publisher type recorded for every result, no domain named" | R2 in research/transcreation-as-a-production-line.md | 2026-09-10 | primary observation, re-countable | 2026-09-10 | | 44 |
+| hubStudio publishes that transcreation is written by people who write natively in the target language; ecommerce Chinese copy is written in-region with the visual system adapted to match; transcreation sits in the asset-based buying model | "hubStudio's pricing page and ecommerce design service page, read 10 September 2026", first-party statement of practice, no figure | src/pages/pricing.astro:16, :21, :158; src/pages/services/design/ecommerce.astro:220 | 2026-09-10 | first-party, stated as practice | 2026-09-10 | | 44 |
+
+**Note on an existing row.** The global advertiser trade body GenAI translation
+row (34 percent, 23 percent planning) could not be re-read on 2026-09-10: the
+fetch tool refused wfanet.org. Its check 1 stays 2026-09-09. Check 2 for brief 44
+must reach the page by another route or leave the row out.
+
+### Do-not-publish additions from brief 44
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Any ISO 17100 role, competence, qualification route or mandatory-revision requirement | Recall; iso.org, ANSI, ASTM 403; catalogue and TAC pages show scope and foreword only | Not read at any surface. Re-open only with the standard's text | 2026-09-10 |
+| A standards-body or association definition of localization | T/TAC 13-2025 gated; GALA page 404 | Not reached; the TAC standard's co-drafters are companies | 2026-09-10 |
+| "No standard for transcreation exists" | FAQ temptation, brief 44 | Absence unverifiable in the session. Say no standard read names transcreation in its scope | 2026-09-10 |
+| 2026 China translation industry totals (701.2 billion yuan output, 6.867 million workers, 1.135 million full-time translators, 2,183 AI translation enterprises) | TAC annual conference release, 2026-04-28 | No method on the page. An automated read turned 686.7万 into 686.7 million; correct is 6.867 million | 2026-09-10 |
+| Any share or count behind the ITI code's qualitative findings, or any ITI member survey statistic | ITI Transcreation Code of Practice, August 2026 | The code publishes none | 2026-09-10 |
+| The ITI code's legal and technical assertions about AI stated as fact (cannot be trademarked, sued for IP, self-training on mistakes, gender and race bias in prompts) | ITI code pp.9 to 10 | Association position paper citing articles, not an authority | 2026-09-10 |
+| Company affiliations of the ITI code's collaborators, and the practitioner credited for its example brief | ITI code pp.5, 11 | Standing rule | 2026-09-10 |
+| hubStudio lip-sync counts (40-plus, 47, fifty-market) and working-language counts (5, 6, 9) | video.astro:36; video-production.astro:67, :115, :210, :388; tiktok.astro:193; pricing.astro:158; who-we-are.astro:29; storyboard.astro:228 | Conflicting first-party counts, no method. Site backlog | 2026-09-10 |
+| hubStudio 22 to 78 approval framed as brand-copy approval after AI-assisted transcreation | where-language-ai-delivers.astro:14 | Same numbers defined as AI-asset approval on ai-excellence.astro:48 and :523 to 524. Two definitions, no method | 2026-09-10 |
+| "Subtitled Western edits generally underperform by 60 to 70 percent on conversion" | motion-design.astro:234 | Unsourced first-party figure. Site backlog | 2026-09-10 |
+| ISO/TS 11669:2012 as current guidance | Catalogue record | Marked no longer valid | 2026-09-10 |
+
+
+## Added 2026-09-10 (ledger rows from brief 45, digital-humans-in-china)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+### Industry and regulatory (same columns as that table)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Measures for the Administration of Online Live Streaming Marketing (Trial), seven issuing bodies, released 23 April 2021, in force 25 May 2021, notice 国信办发文〔2021〕5号 dated 16 April 2021, 30 articles. Art. 13: platform security assessment and conspicuous labeling where a virtual image shown through AI, digital vision, VR or speech synthesis is used for livestream marketing. Art. 25: consent of the portrait right holder where another's likeness is used as a virtual image, no forging by information technology, voice protected the same way. Art. 18: no false or misleading information, no faked traffic data | the instrument, by name and article | cac.gov.cn/2021-04/22/c_1620670982951092.htm (bodies, dates); full text amr.hunan.gov.cn/amr/zwx/xxgkmlx/ywx/spjwl/202111/t20211110_21027838.html, matched at bj148.org/ztk/2021zt/2021xgsd/5y/jjsszcfg/202104/t20210425_1604916.html | 2021-04-16, in force 2021-05-25 | primary for dates, triangulated for article text | 2026-09-10 | | 45 |
+| Code of Conduct for Online Hosts, NRTA and Ministry of Culture and Tourism, 广电发〔2022〕36号, dated 8 June 2022, published 22 June 2022. Art. 1: AI-synthesized virtual hosts and their content follow the code by reference. Art. 14 items 25 and 26: counterfeit goods and faked traffic; exaggerated promotion, false promises, absolute terms. Item 8: deepfake face swapping of leaders, martyrs, history. No effective date on the page | the instrument, by name and article | nrta.gov.cn/art/2022/6/22/art_113_60757.html | 2022-06-08 | primary | 2026-09-10 | | 45 |
+| Deep synthesis provisions Art. 23 item (six): deep synthesis technology includes 3D reconstruction and digital simulation that generate or edit digital persons and virtual scenes. Art. 25 in force 10 January 2023 | the instrument, by name and article | cac.gov.cn/2022-12/11/c_1672221949354811.htm | 2022-12-11 | primary | 2026-09-10 | | 45 |
+| Check 2 for the brief 26 deep synthesis row (Arts. 14, 17, 18): text re-read, unchanged | as logged | same URL | 2026-09-10 | primary | (brief 26) 2026-09-09 | 2026-09-10 | 26, 45 |
+| CAC labeling measures Art. 3 content types include audio, video and virtual scenes; Art. 4 video label at opening frame and around playback, audio by voice or rhythm cue, virtual scene at opening frame; Art. 13 refers violations to existing authorities; the text never uses the words digital human, virtual human or livestream | the instrument, by name and article | cac.gov.cn/2025-03/14/c_1743654684782215.htm | 2025-03-14, in force 2025-09-01 | primary, including the negative finding | 2026-09-10 | | 45 |
+| Advertising Law (2021 amendment) Art. 2: endorser is a natural person, legal person or other organization recommending or certifying in its own name or image; Art. 38: must rest on facts, may not recommend goods not used or services not received | the statute, by article number | policy.mofcom.gov.cn/claw/clawContent.shtml?id=90361 | amended 2021-04-29 | primary | 2026-09-10 | | 45 |
+| Check 2 for the brief 13 Internet Advertising Measures row: Art. 19 re-read, unchanged; no article mentions virtual or AI | as logged | policy.mofcom.gov.cn/claw/clawContent.shtml?id=97881 | 2026-09-10 | primary | (brief 13) 2026-09-09 | 2026-09-10 | 13, 45 |
+| Check 2 for the brief 20 PIPL row: Art. 28 biometric identification listed as sensitive; Art. 29 separate consent; in force 1 November 2021 (Art. 74) | as logged | cac.gov.cn/2021-08/20/c_1631050028355286.htm | 2026-09-10 | primary | (brief 20) 2026-09-10 | 2026-09-10 | 20, 45 |
+| CAC Qinglang campaign against AI application abuses, 30 April 2026, phase one targets include unauthorized AI face-swap and voice-imitation services and stealing another's likeness to livestream or create through digital virtual human technology; phase two includes impersonating public figures by AI face and voice swapping, including for marketing profit | "Cyberspace Administration of China, campaign notice, 30 April 2026" | cac.gov.cn/2026-04/30/c_1779289298718765.htm | 2026-04-30 | primary | 2026-09-10 | | 45 |
+| CAC February 2026 release describes AI face swapping and voice cloning used to impersonate athletes, actors, hosts, entrepreneurs and other public figures | "Cyberspace Administration of China, 12 February 2026" | cac.gov.cn/2026-02/12/c_1772636033171974.htm | 2026-02-12 | primary | 2026-09-10 | | 23, 45 |
+| Douyin's trust center (95152.douyin.com) and ecommerce learning center (school.jinritemai.com) served no rule text to an unauthenticated fetch | "direct unauthenticated fetches, 10 September 2026" | both surfaces | 2026-09-10 | primary, as a negative observation | 2026-09-10 | | 45 |
+
+### Category market ranges (same columns as that table)
+
+| Figure | Attribution to use | Source type | Collected | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Self-serve likeness clone of a real person: 398 RMB on one seller's card (undated), 1,680 RMB single-use on a relayed card (November 2025); voice clone 9.9 RMB (undated card) to 75 and 599 RMB (relayed November 2025); about 20 minutes of single-person footage required | "published Chinese digital human rate cards, one undated and one relayed November 2025, collected September 2026, no vendor named" | t-9.cn/home/customized; shanjian.tv/ziyuan/blog/shuziren-18/ | 2026-09-10 | market claim, two cards | 2026-09-10 | | 45 |
+| High-end managed digital human service from 49,999 RMB | "published Chinese digital human rate cards relayed in a seller's comparison, November 2025" | shanjian.tv/ziyuan/blog/shuziren-18/ | 2026-09-10 | market claim, single source, second-hand | 2026-09-10 | | 45 |
+| Build bands: template 2D 0 to 5,000 RMB (1 to 3 days); custom 2D real-person capture 8,000 to 30,000 RMB (5 to 10 days); 2.5D 30,000 to 80,000 RMB (10 to 15 days); photoreal 3D 80,000 to 300,000 RMB and up (20 to 45 days); real-time interaction +10,000 to 50,000 RMB; +3,000 to 10,000 RMB a language | "a Chinese sourcing intermediary's published price table, April 2026" | aigcsdm.com/news/96, dated 2026-04-22 | 2026-09-10 | market claim, single source | 2026-09-10 | | 45 |
+| Photoreal 3D character 20,000 to 100,000 RMB; film-grade motion capture 100,000 to 1,000,000 RMB; one-time licence 980 to 9,980 RMB; private deployment from 120,000 RMB; per-minute generation 0.5 to 7 RMB; individual monthly 28 to 300 RMB; enterprise annual from 2,980 RMB | "a Chinese digital human software price review, July 2026, published by a site affiliated with a seller" | qishijinka.com/humanclone/18683/, dated 2026-07-11 | 2026-09-10 | market claim, single domain | 2026-09-10 | | 45 |
+| Photoreal 3D conflicts: 20,000 to 100,000 RMB (July 2026) against 80,000 to 300,000 RMB and up (April 2026); publish the conflict, never a midpoint | "two Chinese price tables, April and July 2026, published as a conflict" | the two rows above | 2026-09-10 | market claim, conflict | 2026-09-10 | | 45 |
+| 2022 practitioner bands: anime-style about 100,000 RMB average; high fidelity 300,000 to 500,000 RMB; photoreal ceiling 2 to 3 million RMB | "Chinese industry media feature, August 2022, figures quoted from founders of companies selling these builds", year always in the sentence | woshipm.com/ai/5577992.html | 2026-09-10 | market claim, age warning | 2026-09-10 | | 45 |
+| Monthly video packages 999 RMB (50 videos), 2,999 RMB (200), 7,999 RMB (unlimited, about 4 RMB a video by the seller's division) | "a Chinese seller's published package card, May 2026" | gitcode.csdn.net/6a1032d710ee7a33f2746e12.html | 2026-09-10 | market claim, single source | 2026-09-10 | | 45 |
+| Livestream digital human reference case: 65,000 RMB build, 30,000 RMB server, 12,000 RMB a year maintenance | "a Chinese sourcing intermediary's published price table, April 2026, a reference case not a measured project" | aigcsdm.com/news/96 | 2026-09-10 | market claim, single source | 2026-09-10 | | 45 |
+| No per-hour, per-month or per-account digital human livestream licence price and no method-stated staffing cost read at source | "research review of Chinese rate cards, 10 September 2026, three buyer queries, eleven price pages read", publish the absence | Research file R2 and claims table; search capped by session budget | 2026-09-10 | primary, as an absence, provisional | 2026-09-10 | | 45 |
+| Search-results audit: 12 of 18 unique results on three Chinese digital human price queries seller-published or seller-affiliated, 0 from government, institute or trade body, 0 stating a method | "search-results audit run 10 September 2026, publisher type recorded for every result, no domain named" | R2 in this file | 2026-09-10 | primary observation, re-countable | 2026-09-10 | | 45 |
+
+### Do-not-publish log (same columns as that table)
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| 7,980 RMB a likeness clone | Search summary, brief 45 | Seller's own page reads 398 RMB | 2026-09-10 |
+| Celebrity digital double at 100,000 to 200,000 RMB a minute | 2022 media feature quoting one practitioner, brief 45 | Single source, no method, four years old | 2026-09-10 |
+| Virtual ecommerce host at tens of yuan a day; light-scan double for 100 RMB in five minutes | 2022 media feature quoting sellers, brief 45 | Seller quotes, no method, stale | 2026-09-10 |
+| 2022 service tiers of 599 RMB a month, 4,999 and 7,999 RMB a year, 180,000 RMB a year, 280,000 RMB buyout | 2022 media feature, brief 45 | One service's card, stale, identifies a vendor by description | 2026-09-10 |
+| Digital human video "99 percent cheaper"; traditional video 5,000 to 20,000 RMB each | Seller-promoted post, May 2026, brief 45 | Seller builds both sides of the comparison, no baseline | 2026-09-10 |
+| Digital human livestream accounts netting 25,000 to 98,000 RMB a month; one employee running three accounts | Monetized handbook, March 2026, brief 45 | Anecdote, unverifiable, seller of consulting | 2026-09-10 |
+| Mandatory "AI digital human host" label from June 2026; real-person takeover rule; AI hosts banned in medical aesthetics, education, finance, healthcare | Same handbook, brief 45 | No rule, platform, date or link | 2026-09-10 |
+| Clone limits and prices for nine named tools | Seller-authored "test", July 2026, brief 45 | Seller author, tool names are the content | 2026-09-10 |
+| Cloud providers' pricing models as the source of bespoke build bands | Intermediary price table, April 2026, brief 45 | Compute price lists cannot price bespoke builds, and the attribution names companies | 2026-09-10 |
+| Civil Code Art. 1023 voice by reference to portrait rules | Brief 45 consent chain | npc.gov.cn TLS failure and gov.cn 404, not read. Livestream measures Art. 25 covers voice for livestream marketing | 2026-09-10 |
+| A digital human, or the person cloned, as an advertising endorser | Inference, brief 45 | No instrument read settles it. Publish the definition and the open question only | 2026-09-10 |
+| A dedicated national rule on digital human livestreams; any platform rule on them | Brief 45 framing | None read; platform surfaces were app shells | 2026-09-10 |
+| Any digital human market size | Brief 45 statistics list | No method-stated report read; institute list page 412; search budget exhausted | 2026-09-10 |
+
+
+## Added 2026-09-10 (ledger rows from brief 48, hisense-self-serve-content-platform)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+### HiSense self-serve platform proof page (added 2026-09-10, brief 48)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| HiSense case study results: "8 weeks" (Platform live and ready for retail season), "1000s/week" (Brand assets produced after launch), "Day one" (Teams generating with no ramp-up). No start point, count, period, asset definition or team count published | "hubStudio HiSense case study page, read [date], published client result, no method stated" | src/data/case-studies.ts lines 426 to 428; live /work/hisense matched the repo on 2026-09-10; entry unchanged since commit cb714d9, 2026-05-19 | page undated | first-party, published, no method | 2026-09-10 | | 48 |
+| HiSense case study qualitative claims cleared as description: deployment for internal teams and outside agencies in North America; product-specific LoRA models per category; custom agents and workflows; brand-trained generation tuned to North American preferences; baseline of separate shoots, an agency briefed per campaign and long approval cycles | Same attribution, "published client description" | src/data/case-studies.ts lines 389 to 423 | page undated | first-party description | 2026-09-10 | | 48 |
+| TrendForce 1Q26: branded TV shipments 47.12 million units; top five Samsung, TCL, Hisense, LGE, Xiaomi in that order | "a global market intelligence firm's TV shipment release, 21 May 2026, branded shipments in units, first quarter 2026" | trendforce.com/presscenter/news/20260521-13055.html | 2026-05-21 | primary for the release, method thin (no scope paragraph) | 2026-09-10 | | 48 (evidence for a cut only) |
+| TrendForce 1H26: global TV shipments 93.74 million units, up 1.3 percent; Samsung 17.6m, TCL 15.08m, Hisense 14.23m (up 3 percent), LGE 11.3m | "a global market intelligence firm's TV shipment release, 21 August 2026, units, first half 2026" | trendforce.com/presscenter/news/20260821-13193.html | 2026-08-21 | primary for the release, method thin | 2026-09-10 | | 48 (evidence for a cut only) |
+| Counterpoint July 2026: single-month shipment ranking Samsung, Hisense, LGE, TCL; global TV shipments up 1 percent year on year | "a market research firm's monthly TV shipment tracker summary, 2 September 2026, units, July 2026 only, full data paywalled" | counterpointresearch.com/en/reports/monthly-global-tv-shipments-tracker-july-2026 | 2026-09-02 | single-source, one month | 2026-09-10 | | 48 (evidence for a cut only) |
+| NIST AI RMF 1.0 released 26 January 2023 for voluntary use; NIST AI 600-1 Generative AI Profile, July 2024, a companion resource whose suggested actions primarily address governance, content provenance, pre-deployment testing and incident disclosure | "NIST AI 600-1, Generative Artificial Intelligence Profile, July 2024", voluntary guidance, never a requirement | nist.gov/itl/ai-risk-management-framework; nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf section 1 | 2023-01-26; 2024-07 | primary | 2026-09-10 | | 48 |
+| NIST AI 600-1 suggested actions GV-1.3-002 (minimum thresholds reviewed as part of go or no-go deployment approval), MS-2.3-003 (share pre-deployment testing results with those holding system release approval authority), GV-1.5-001 (responsibilities for periodic review of content provenance); A.1.2 (use of generative AI may warrant additional human review, tracking and documentation, and greater management oversight); A.1.4 (current pre-deployment testing processes may be inadequate, non-systematically applied, or mismatched to deployment contexts) | "NIST AI 600-1, July 2024, by action ID or appendix section, voluntary guidance" | same PDF | 2024-07 | primary | 2026-09-10 | | 48 |
+| FTC Endorsement Guides Q and A page contains no material on virtual influencers, computer-generated endorsers or AI-generated content | "the FTC's Endorsement Guides question-and-answer page, read 10 September 2026", a negative finding about that page only | ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking | page undated | primary, negative, single page | 2026-09-10 | | 48 |
+
+### Check 2 dates for existing rows
+
+| Existing row | Check 2 | Result |
+|---|---|---|
+| ISO/IEC 42001:2023 (Industry and regulatory block) | 2026-09-10 | iso.org/standard/42001 returned 403 again. AI Standards Hub record read: BS ISO/IEC 42001:2023, "Information Technology, Artificial intelligence, Management system", published 18 December 2023, status published. Designation, title and date still match. The accredited-certification clause was not re-read today |
+| Adapter-style fine-tuning mechanism (brief 29 block) | 2026-09-10 | arxiv.org/abs/2106.09685 abstract re-read, quoted clause and 17 June 2021 submission date match |
+| New York S8420A synthetic performer disclosure (Industry and regulatory block) | 2026-09-10 | Bill page re-read: signed 11 December 2025, chapter 617, disclosure sentence, definition, 1,000 and 5,000 dollar penalties, 180-day effective clause all match |
+
+### Delivery figures table, amend the case-study line
+
+Add under "Case study figures": HiSense "8 weeks" still needs the start point
+and the definition of live; "1000s/week" still needs the count, the weeks
+covered and what counts as an asset (generation, approved asset or published
+asset); "Day one" still needs the number of teams and what ramp-up means. Until
+then they run under the first-party exception only and cannot satisfy a slot
+requirement for a number with its method stated.
+
+### Do-not-publish additions from brief 48
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| HiSense is "the world's second-largest TV brand" | hubStudio HiSense case study page, challenge paragraph | Undated, no tracker, period or metric. TrendForce puts HiSense third by branded units in 1Q26 and 1H26; Counterpoint second in July 2026 only; Omdia 403; three Chinese trackers unreachable. Site copy needs correcting or sourcing | 2026-09-10 |
+| Any tracker rank or unit figure for HiSense on an article | TrendForce and Counterpoint releases | Adds a HiSense detail the case page does not publish, and contradicts the case page | 2026-09-10 |
+| "1000s/week" as any number; the eight weeks split into training and rollout; "Day one" as an onboarding time | HiSense case study results band | No count, start point or definition published. Arithmetic across unmethod first-party figures is invention | 2026-09-10 |
+| HiSense models "accurate to the actual product, never an approximation"; output that "resonates by default" | HiSense case study approach cards | Absolute accuracy and outcome claims with no measurement | 2026-09-10 |
+| ISO/IEC 42001 certification or NIST alignment for hubStudio, hub4You or a client deployment | Temptation of the governance section | No such claim on the site; certification is issued by an accredited body | 2026-09-10 |
+| Any FTC instrument requiring disclosure of AI-generated product imagery | Brief 48 North America check | Endorsement Guides Q and A silent on AI content; rule text and blog not reached; still nothing at source | 2026-09-10 |
+| The integration software names on the hub4you page | hubStudio site copy | Software vendors; describe the systems by role | 2026-09-10 |

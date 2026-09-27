@@ -1,0 +1,307 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is a self-serve AI content platform?",
+    "a": "A platform trained on one brand's products and visual language, which the brand's own teams and chosen agencies operate themselves instead of briefing a studio for every asset. The HiSense case study lists self-serve access for internal teams and external agencies. The trained models, the workflows and the approval rules are what make the platform the brand's own."
+  },
+  {
+    "q": "How long does it take to deploy a brand AI content platform?",
+    "a": "The one published figure here covers one deployment. hubStudio's HiSense case study says the platform was live, and ready for retail season, eight weeks in, without saying when the clock started. hubStudio separately publishes three to six weeks from brief to a trained custom model. Neither is a benchmark, and the two are never added or subtracted."
+  },
+  {
+    "q": "Can agencies use a brand's AI content platform?",
+    "a": "On this deployment, yes. The HiSense case study lists self-serve access for external agencies alongside internal teams. In production practice the agency works inside the brand's trained models and private environment, access is scoped by role, and release approval stays with the brand. The case page does not say who approves HiSense assets or which agencies use the platform."
+  },
+  {
+    "q": "How are brand models kept accurate to real products?",
+    "a": "By training a separate model per product category, then having a person check the output against real product photography. Fine-tuning still breaks in known ways, and in a 2025 benchmark, automated similarity scores reached only 50.72 and 60.98 percent of the agreement human raters showed with each other. The model narrows the output. The person confirms it."
+  },
+  {
+    "q": "Who approves assets generated on a self-serve platform?",
+    "a": "The HiSense case study does not say. In production practice the brand holds release approval, and an agency generating on the platform does not sign off its own work. The US generative AI profile from NIST, which is voluntary guidance, suggests sharing pre-deployment test results with whoever holds release approval authority. This is production practice, not legal advice."
+  }
+];
+---
+
+<ArticleLayout slug="hisense-self-serve-content-platform" ctaLabel="See hub4You" faq={faq}>
+  <p class="standfirst">The HiSense case study publishes three results: a self-serve content platform live in eight weeks, thousands of brand assets a week after launch, and teams generating from day one. None comes with a method, so this page sets out what the deployment involved and what those figures can and cannot tell a buyer.</p>
+
+  <h2>What is a self-serve AI content platform for brands?</h2>
+
+  <p>It is a generation platform trained on one brand's products and visual language, which the brand's own teams, and the agencies it chooses, operate without briefing a studio for each asset. On hubStudio's hub4You, the studio builds and trains the platform, and the brand runs it on private infrastructure.</p>
+
+  <blockquote class="evidence">hubStudio's hub4You page describes the platform as custom AI agents trained on a brand and its products, on private infrastructure, operated by the brand's own team: "The studio builds it. You run it."</blockquote>
+  <p class="source">Source: hubStudio hub4You page, read 10 September 2026, published product description.</p>
+
+  <h2>What did the HiSense deployment include?</h2>
+
+  <p>Start with the brief, as the case page states it.</p>
+
+  <blockquote class="evidence">hubStudio's HiSense case study describes the brief as a deployment of the hub4You platform, customized so HiSense's internal teams and outside agencies could independently produce thousands of assets a week for North America, and operational within two months to support major retail partnerships.</blockquote>
+  <p class="source">Source: hubStudio HiSense case study page, read 10 September 2026, the client's published brief as the page states it, no method stated.</p>
+
+  <blockquote class="evidence">hubStudio's HiSense case study lists what was delivered: the hub4You platform customized for HiSense, product-specific LoRA models per category, custom AI agents and production workflows, brand-trained generation tuned to North American preferences, and self-serve access for internal teams and external agencies.</blockquote>
+  <p class="source">Source: hubStudio HiSense case study page, read 10 September 2026, published deliverables list, no method stated.</p>
+
+  <p>The table splits the deployment in two. The middle column is what the case page publishes. The right column is production practice: what a buyer should expect to agree for a deployment like this one. It is not a description of the HiSense setup.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Element</th>
+          <th scope="col">What the case page publishes</th>
+          <th scope="col">Production practice, not on the case page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Timeline</th>
+          <td>Live and ready for retail season at eight weeks; start not stated</td>
+          <td>Agree in writing when the clock starts and what counts as live</td>
+        </tr>
+        <tr>
+          <th scope="row">Volume</th>
+          <td>Thousands of brand assets a week after launch</td>
+          <td>Agree a counting rule: generations, approved assets or published assets</td>
+        </tr>
+        <tr>
+          <th scope="row">Models</th>
+          <td>Product-specific models per category</td>
+          <td>A small trained adapter per product line, accepted by a person before use</td>
+        </tr>
+        <tr>
+          <th scope="row">Brand and market</th>
+          <td>Brand-trained generation tuned to North American preferences</td>
+          <td>Document the reference sets and preference inputs each model learned from</td>
+        </tr>
+        <tr>
+          <th scope="row">Agents and workflows</th>
+          <td>Custom AI agents and production workflows</td>
+          <td>Map each workflow step to an approval gate</td>
+        </tr>
+        <tr>
+          <th scope="row">Users</th>
+          <td>Self-serve access for internal teams and external agencies</td>
+          <td>Scope access by role, so no team releases its own output unchecked</td>
+        </tr>
+        <tr>
+          <th scope="row">Approval</th>
+          <td>Not published</td>
+          <td>See the gates table below</td>
+        </tr>
+        <tr>
+          <th scope="row">Provenance and disclosure</th>
+          <td>Not published</td>
+          <td>Check metadata and disclosure at every export</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What does self-serve mean for internal teams and outside agencies?</h2>
+
+  <p>It changes who holds the brief.</p>
+
+  <blockquote class="evidence">hubStudio's HiSense case study describes the setup the platform replaced as separate product shoots, an agency briefed for every campaign, and approval cycles that ran long. The page gives no durations.</blockquote>
+  <p class="source">Source: hubStudio HiSense case study page, read 10 September 2026, published client description, no method stated.</p>
+
+  <p>The case page does not walk through the new workflow. What follows is production practice, one way a self-serve deployment divides the work.</p>
+
+  <p>Internal teams generate inside models already trained on the brand's products, instead of commissioning a separate shoot. Outside agencies work inside the same models, instead of taking a fresh brief and starting from nothing. The brand decides who can generate, who can change a workflow and who can release an asset.</p>
+
+  <p>That last right does not travel. An agency with self-serve access makes more of the work. It should not approve it.</p>
+
+  <p>The <a href="/hub4you">hub4You page</a> describes where that work happens.</p>
+
+  <blockquote class="evidence">The same page says the platform runs on dedicated GPU pipelines and a private model environment, and that a brand's product data and brand training "stay yours, isolated from any shared or public model."</blockquote>
+  <p class="source">Source: hubStudio hub4You page, read 10 September 2026, published product description, no audit or certification cited.</p>
+
+  <p>For an agency, the practical difference is location. It works on the brand's data inside the brand's environment, rather than carrying product files back to its own.</p>
+
+  <h2>How are brand models kept accurate to real products?</h2>
+
+  <p>With two things: a model per product category, and a person who checks it. The case page names the first. Here is what that model physically is.</p>
+
+  <blockquote class="evidence">The most widely used lightweight fine-tuning approach "freezes the pre-trained model weights and injects trainable rank decomposition matrices into each layer." In practice the brand's training produces a separate, small set of weights that sits on top of a base model the brand does not own.</blockquote>
+  <p class="source">Source: 2021 research paper introducing low-rank adaptation, company research lab and academic authors; method description, abstract read at source 10 September 2026.</p>
+
+  <p>A category model narrows what comes back. It does not guarantee it, and the research is plain about where fine-tuning slips.</p>
+
+  <blockquote class="evidence">The authors list where fine-tuning breaks: rare contexts, the background bleeding into the subject's appearance, overfitting when a prompt resembles the training photos, and the plain admission that "some subjects are easier to learn than others."</blockquote>
+  <p class="source">Source: peer-reviewed computer vision conference paper, CVPR 2023, authors' own limitations section.</p>
+
+  <p>Scoring software can sort output before anyone looks at it. It cannot stand in for the look.</p>
+
+  <blockquote class="evidence">Automated consistency scores are a weak stand-in for a human reviewer. A 2025 benchmark had seven annotators rate generated images across 150 reference images and 1,350 prompts, then checked how well automated scores tracked them. On whether the subject was preserved, the two common image-similarity scores reached only 50.72 percent and 60.98 percent of the agreement human raters showed with each other.</blockquote>
+  <p class="source">Source: peer-reviewed machine learning conference paper, ICLR 2025; Pearson correlation with human ratings, expressed as a share of human-to-human agreement, each image rated by at least two annotators.</p>
+
+  <p>So the check is a person comparing generated assets with real product photography, once before a category model goes live and again before assets ship. The <a href="/resources/insights/training-a-brand-model-that-stays-on-brand">training a brand model article</a> sets out how that approval is defined and counted.</p>
+
+  <h2>What approval gates does a self-serve platform need?</h2>
+
+  <p>The HiSense case study does not describe an approval process. The only approval it mentions is the old one, with cycles that ran long. Everything in this section is production practice anchored to published guidance, and none of it is legal advice.</p>
+
+  <p>Self-serve moves generation out of the studio. Release approval should stay where it was. The closest published anchor for that is a voluntary US document, the generative AI profile from the National Institute of Standards and Technology.</p>
+
+  <blockquote class="evidence">Among the profile's suggested actions: set minimum performance or assurance thresholds and review them as part of deployment approval, a go or no-go decision, and share the results of pre-deployment testing with the people who hold system release approval authority.</blockquote>
+  <p class="source">Source: NIST AI 600-1, July 2024, suggested actions GV-1.3-002 and MS-2.3-003, read 10 September 2026; voluntary guidance, not a regulation.</p>
+
+  <blockquote class="evidence">The same profile notes that an organization's use of generative AI "may also warrant additional human review, tracking and documentation, and greater management oversight," and suggests defining who is responsible for periodic review of content provenance.</blockquote>
+  <p class="source">Source: NIST AI 600-1, July 2024, Appendix A.1.2 and suggested action GV-1.5-001, read 10 September 2026; voluntary guidance.</p>
+
+  <p>Those two quotes translate into six gates. The anchor column names published guidance where one exists. Every other cell is practice, and no row describes HiSense.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Gate</th>
+          <th scope="col">What is checked</th>
+          <th scope="col">Who decides, in practice</th>
+          <th scope="col">Published anchor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Training data intake</th>
+          <td>Rights and consent on every reference image; no unreleased products or third-party logos</td>
+          <td>Brand legal and the brand team</td>
+          <td>None; practice only</td>
+        </tr>
+        <tr>
+          <th scope="row">Model acceptance per product line</th>
+          <td>Output compared with real product photography by a person</td>
+          <td>The brand's product owner</td>
+          <td>Automated scores track human judgment only in part, ICLR 2025</td>
+        </tr>
+        <tr>
+          <th scope="row">Deployment go or no-go</th>
+          <td>Minimum thresholds agreed before launch</td>
+          <td>Whoever holds release approval</td>
+          <td>NIST generative AI profile, voluntary</td>
+        </tr>
+        <tr>
+          <th scope="row">Asset release</th>
+          <td>Sign-off before anything publishes</td>
+          <td>The brand, never the generating agency alone</td>
+          <td>None; practice only</td>
+        </tr>
+        <tr>
+          <th scope="row">Export check</th>
+          <td>Metadata survives export; disclosure where a generated person appears in an ad</td>
+          <td>Brand and agency operations</td>
+          <td>Content Credentials deployment guidance; New York synthetic performer law</td>
+        </tr>
+        <tr>
+          <th scope="row">Periodic review</th>
+          <td>Provenance and incidents, on a set cadence</td>
+          <td>A named owner</td>
+          <td>NIST generative AI profile; ISO/IEC 42001</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>For a buyer who wants that review cadence audited rather than promised, there is a certifiable route.</p>
+
+  <blockquote class="evidence">ISO/IEC 42001, published in December 2023, is the first international management system standard for artificial intelligence, and certification against it is issued by an accredited certification body rather than self-declared.</blockquote>
+  <p class="source">Source: the standard, by designation and edition date, December 2023, confirmed on two independent standards-body records, the second read 10 September 2026.</p>
+
+  <p>Neither document is a legal duty. Both are fair questions to put to any platform provider: which one it follows, and what evidence it can show.</p>
+
+  <h2>What happens to provenance and disclosure at export?</h2>
+
+  <p>Self-serve multiplies the number of people exporting files. Every export is a chance to lose the record of how an asset was made.</p>
+
+  <blockquote class="evidence">The standards body's own deployment guidance, version 1.0 of 8 July 2026, tells adopters to avoid screen-shotting or re-exporting a file through tools that remove metadata, because that can strip the embedded Content Credentials, and to require any vendor demonstration to reflect the actual workflow in use rather than an idealized or one-off scenario.</blockquote>
+  <p class="source">Source: Content Credentials: Deployment Guidance, version 1.0, 8 July 2026, read in full 9 September 2026.</p>
+
+  <p>Disclosure is narrower. One US state rule applies only where an ad contains a synthetic performer, a generated person who is not any real performer.</p>
+
+  <blockquote class="evidence">New York's synthetic performer disclosure law, Senate Bill S8420A, chapter 617 of the Laws of 2025, requires a covered person to "conspicuously disclose in such advertisement that a synthetic performer is in such advertisement, where such person has actual knowledge", and sets a civil penalty of 1,000 US dollars for a first violation and 5,000 US dollars for each subsequent violation. It took effect on 9 June 2026.</blockquote>
+  <p class="source">Source: New York State Senate, bill text and status, December 2025, re-read 10 September 2026.</p>
+
+  <p>The case page does not say whether HiSense assets depict people or carry credentials, so this page ties neither to the deployment. For an agency generating people for North American ads, it is one more check at export. This page does not settle who carries a labeling duty across brand, agency and platform. It describes production practice, not legal advice.</p>
+
+  <h2>What do the published HiSense figures measure, and what do they not?</h2>
+
+  <p>Each is a client result as the case page publishes it. None comes with a method.</p>
+
+  <blockquote class="evidence">hubStudio's HiSense case study publishes that the self-serve content platform was live, and ready for retail season, eight weeks into the deployment. The page does not say when those eight weeks started.</blockquote>
+  <p class="source">Source: hubStudio HiSense case study page, read 10 September 2026, published client result, no method stated.</p>
+
+  <blockquote class="evidence">hubStudio's HiSense case study publishes "1000s/week" of brand assets produced after launch. The page gives no count, no period and no definition of an asset, so the figure reads as an order of magnitude, not a tally.</blockquote>
+  <p class="source">Source: hubStudio HiSense case study page, read 10 September 2026, published client result, no method stated.</p>
+
+  <blockquote class="evidence">hubStudio's HiSense case study publishes that teams were generating from day one, with no ramp-up.</blockquote>
+  <p class="source">Source: hubStudio HiSense case study page, read 10 September 2026, published client result, no method stated.</p>
+
+  <p>Read them as claims with gaps, and ask for the gap.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Figure</th>
+          <th scope="col">What the case page calls it</th>
+          <th scope="col">What it does not tell you</th>
+          <th scope="col">What to ask for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">8 weeks</th>
+          <td>Platform live and ready for retail season</td>
+          <td>When the clock started, what live meant, how many product lines were trained by then</td>
+          <td>The start date and the written definition of live</td>
+        </tr>
+        <tr>
+          <th scope="row">1000s/week</th>
+          <td>Brand assets produced after launch</td>
+          <td>A count, which weeks, whether an asset is a generation, an approved file or a published one</td>
+          <td>The counting rule and the weekly log behind it</td>
+        </tr>
+        <tr>
+          <th scope="row">Day one</th>
+          <td>Teams generating with no ramp-up</td>
+          <td>How many teams, and what ramp-up means</td>
+          <td>How many users were active in the first week</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The studio publishes a separate window for training a model.</p>
+
+  <blockquote class="evidence">hubStudio publishes a window of three to six weeks from brief to a trained custom model, depending on the depth of the brand library. It is a published range, not a measured benchmark: no sample of engagements sits behind it.</blockquote>
+  <p class="source">Source: hubStudio AI excellence page, read 10 September 2026, published range, no method stated.</p>
+
+  <p>That range and the eight weeks sit on different pages and measure different things. Neither has a method. So this page does not subtract one from the other, and the eight weeks should not be read as training plus rollout.</p>
+
+  <p>The <a href="/work/hisense">HiSense case study</a> holds the published results in full, the <a href="/the-studio/ai-excellence">AI excellence page</a> sets out the studio pipeline and its training window, and the <a href="/work">work index</a> lists the other case studies.</p>
+
+  <h2>Questions about self-serve AI content platforms</h2>
+
+  <h3>What is a self-serve AI content platform?</h3>
+
+  <p>A platform trained on one brand's products and visual language, which the brand's own teams and chosen agencies operate themselves instead of briefing a studio for every asset. The HiSense case study lists self-serve access for internal teams and external agencies. The trained models, the workflows and the approval rules are what make the platform the brand's own.</p>
+
+  <h3>How long does it take to deploy a brand AI content platform?</h3>
+
+  <p>The one published figure here covers one deployment. hubStudio's HiSense case study says the platform was live, and ready for retail season, eight weeks in, without saying when the clock started. hubStudio separately publishes three to six weeks from brief to a trained custom model. Neither is a benchmark, and the two are never added or subtracted.</p>
+
+  <h3>Can agencies use a brand's AI content platform?</h3>
+
+  <p>On this deployment, yes. The HiSense case study lists self-serve access for external agencies alongside internal teams. In production practice the agency works inside the brand's trained models and private environment, access is scoped by role, and release approval stays with the brand. The case page does not say who approves HiSense assets or which agencies use the platform.</p>
+
+  <h3>How are brand models kept accurate to real products?</h3>
+
+  <p>By training a separate model per product category, then having a person check the output against real product photography. Fine-tuning still breaks in known ways, and in a 2025 benchmark, automated similarity scores reached only 50.72 and 60.98 percent of the agreement human raters showed with each other. The model narrows the output. The person confirms it.</p>
+
+  <h3>Who approves assets generated on a self-serve platform?</h3>
+
+  <p>The HiSense case study does not say. In production practice the brand holds release approval, and an agency generating on the platform does not sign off its own work. The US generative AI profile from NIST, which is voluntary guidance, suggests sharing pre-deployment test results with whoever holds release approval authority. This is production practice, not legal advice.</p>
+</ArticleLayout>

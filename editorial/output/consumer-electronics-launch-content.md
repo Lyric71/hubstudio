@@ -1,5 +1,5 @@
 ---
-title: Consumer Electronics Launch Content, Asset by Asset
+title: Electronics Launch Content, Asset by Asset
 slug: consumer-electronics-launch-content
 description: What a consumer electronics launch needs: the asset list, what must be accurate on screens, marks and specs, what can be generated, and the build.
 excerpt: Launch checklists skip the rules. Here is the consumer electronics asset list, what screens, marks, specs and energy labels must get right, and the build.

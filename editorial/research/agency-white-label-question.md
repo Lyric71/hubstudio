@@ -1044,3 +1044,26 @@ agencies page as the cluster anchor and the insights index at
   figures in the cleared set are percentages; no dollar amount is cleared.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-27 at publish, by script and review.
+
+**Quotes.** 22 blockquotes, 0 not verbatim in research: every blockquote on the page matches
+this file's cleared text and Source line.
+
+**Numbers.** 24 distinct numbers, 0 not found in the research file: every numeric token in the
+publishable body appears in this file.
+
+**Competitors.** 28 quarantined stems checked, 0 found on the page: no quarantined domain's
+name appears on the page.
+
+**House checks.** check-draft passed: title, meta and excerpt inside their
+ceilings, a Source line with a year under every quote, American spelling, no em
+dash. No Han characters in the draft.
+
+**As published.** Title "White-Label Production for Agencies: The Rules". H1 "White-label creative production for agencies: the NDA, contact rules and margin per asset". Changes from the brief, the
+must-includes met or cut, and what the page never does are recorded in the
+draft's ASSET BRIEF block, which was read at publish and left unchanged.
+
+**Hero:** a hand lifting a sheet of carbon paper to show the pencil tracing beneath it, made by the daily runner and reviewed at publish.
+
+**Distribution:** category Buying models, which reaches the pricing page layer.

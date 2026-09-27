@@ -851,3 +851,26 @@ needed; if one is added, state the rate and date).
 - Optional: `src/pages/resources/insights/all-in-cost-of-ai-video.astro` and `src/pages/resources/insights/cost-to-localize-a-campaign-for-china.astro` (the latter carries the Art. 19 livestream row)
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-27 at publish, by script and review.
+
+**Quotes.** 30 blockquotes, 0 not verbatim in research: every blockquote on the page matches
+this file's cleared text and Source line.
+
+**Numbers.** 61 distinct numbers, 0 not found in the research file: every numeric token in the
+publishable body appears in this file.
+
+**Competitors.** 17 quarantined stems checked, 0 found on the page: no quarantined domain's
+name appears on the page.
+
+**House checks.** check-draft passed: title, meta and excerpt inside their
+ceilings, a Source line with a year under every quote, American spelling, no em
+dash. No Han characters in the draft.
+
+**As published.** Title "Digital Humans in China: Cost and Rules". H1 "Digital humans in China: build cost, run cost and labeling rules". Changes from the brief, the
+must-includes met or cut, and what the page never does are recorded in the
+draft's ASSET BRIEF block, which was read at publish and left unchanged.
+
+**Hero:** a face being marked with capture dots against a dark backdrop, accepted on the first generation.
+
+**Distribution:** category Cost, which reaches the pricing page and ecommerce design layers.

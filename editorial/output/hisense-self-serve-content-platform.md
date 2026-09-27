@@ -1,5 +1,5 @@
 ---
-title: HiSense: A Self-Serve Content Platform in 8 Weeks
+title: HiSense: Self-Serve Content Platform in 8 Weeks
 slug: hisense-self-serve-content-platform
 description: How HiSense went live on a self-serve, brand-trained content platform in eight weeks, what the published figures measure, and what deployment involves.
 excerpt: The HiSense case study publishes a self-serve platform live in eight weeks. What that figure measures, what it omits, and what deployment involves.
@@ -369,7 +369,7 @@ watermark.
 <!-- SCHEMA
 Type: BlogPosting
 FAQPage: yes, 5 questions
-Breadcrumb: Home > Insights > HiSense: A Self-Serve Content Platform in 8 Weeks
+Breadcrumb: Home > Insights > HiSense: Self-Serve Content Platform in 8 Weeks
 Author: Cyril Drouin
 datePublished: 2026-09-10
 -->

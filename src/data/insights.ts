@@ -44,6 +44,108 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'hisense-self-serve-content-platform',
+    image: '/Images/insight-hisense-self-serve-content-platform.webp',
+    imageAlt:
+      'A hand holds a real remote control beside a cast replica, next to green silicone molds and a tray of gray cast remotes on a workbench.',
+    category: 'Production',
+    tone: 'orange',
+    title: 'HiSense: Self-Serve Content Platform in 8 Weeks',
+    deck: 'The HiSense case study publishes a self-serve platform live in eight weeks. What that figure measures, what it omits, and what deployment involves.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'HiSense: Self-Serve Content Platform in 8 Weeks | hubStudio',
+    metaDescription:
+      'How HiSense went live on a self-serve, brand-trained content platform in eight weeks, what the published figures measure, and what deployment involves.',
+  },
+  {
+    slug: 'the-2026-model-roster',
+    image: '/Images/insight-the-2026-model-roster.webp',
+    imageAlt:
+      'A hand chooses one brush from a rack of Chinese calligraphy brushes above three test sheets, each marked with a different stroke.',
+    category: 'AI Foundations',
+    tone: 'navy',
+    title: 'The 2026 AI Model Roster for Brand Assets',
+    deck: 'There is no single best AI model. Here is a roster by asset type, with dated leaderboard readings, maker-admitted limits and commercial terms.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '15 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'The 2026 AI Model Roster for Brand Assets | hubStudio',
+    metaDescription:
+      'Which AI model for which brand asset in 2026: product stills, on-model images, environments, short video and lip sync, with what each model gets wrong.',
+  },
+  {
+    slug: 'digital-humans-in-china',
+    image: '/Images/insight-digital-humans-in-china.webp',
+    imageAlt:
+      'A woman sits against a dark backdrop as a hand paints small white tracking dots on her face, with light stands and cables in the studio behind her.',
+    category: 'Cost',
+    tone: 'orange',
+    title: 'Digital Humans in China: Cost and Rules',
+    deck: 'Chinese rate cards price a digital human from hundreds of RMB to hundreds of thousands. What each buys, and the rules for going on air.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '19 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Digital Humans in China: Cost and Rules | hubStudio',
+    metaDescription:
+      'What a brand digital human costs in China to build and to run, from published Chinese rate cards, plus the consent, labeling and livestream rules.',
+  },
+  {
+    slug: 'agency-white-label-question',
+    image: '/Images/insight-agency-white-label-question.webp',
+    imageAlt:
+      'A hand lifts a sheet of carbon paper to show a faint pencil tracing beneath it on a wooden desk, beside an enamel mug, a roll of tape and a kraft envelope.',
+    category: 'Buying models',
+    tone: 'navy',
+    title: 'White-Label Production for Agencies: The Rules',
+    deck: 'An agency buying white-label production signs two contracts. Here is what the NDA, contact rules, ownership and margin need to say in each.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '18 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'White-Label Production for Agencies: The Rules | hubStudio',
+    metaDescription:
+      'What an agency buying white-label production needs in writing: the NDA, client contact rules, who owns the work and model, and how to structure margin.',
+  },
+  {
+    slug: 'transcreation-as-a-production-line',
+    image: '/Images/insight-transcreation-as-a-production-line.webp',
+    imageAlt:
+      'Proof prints of a green teapot hang from a line across a quiet studio, one fallen card lying open on the concrete floor in the morning light.',
+    category: 'Production',
+    tone: 'orange',
+    title: 'Transcreation as a Production Line',
+    deck: 'A professional code says transcreation is never paid per word. What follows from that: the stages, the standards, a brief template and the review loop.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '14 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Transcreation as a Production Line | hubStudio',
+    metaDescription:
+      'Transcreation run as a production line, not a per-word translation buy: the stages, roles, standards, brief and review loop that keep meaning intact.',
+  },
+  {
+    slug: 'consumer-electronics-launch-content',
+    image: '/Images/insight-consumer-electronics-launch-content.webp',
+    imageAlt:
+      'A hand uses tweezers to place a blank label on a white home camera beside a plaster mock-up of the same device, with a loupe and masking tape on the table.',
+    category: 'Production',
+    tone: 'navy',
+    title: 'Electronics Launch Content, Asset by Asset',
+    deck: 'Launch checklists skip the rules. Here is the consumer electronics asset list, what screens, marks, specs and energy labels must get right, and the build.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '15 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Electronics Launch Content, Asset by Asset | hubStudio',
+    metaDescription:
+      'What a consumer electronics launch needs: the asset list, what must be accurate on screens, marks and specs, what can be generated, and the build.',
+  },
+  {
     slug: 'real-cost-of-brand-content-2026',
     image: '/Images/insight-real-cost-of-brand-content-2026.webp',
     imageAlt:

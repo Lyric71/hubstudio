@@ -1267,3 +1267,26 @@ rank and the unconfirmed Kling frame rate) until the site backlog fixes them.
 6. Veo 3 review and diffusion explainer insights carry unmethoded percentages.
 
 ## R8. Reconciliation (filled after drafting)
+
+Reconciled 2026-09-27 at publish, by script and review.
+
+**Quotes.** 24 blockquotes, 0 not verbatim in research: every blockquote on the page matches
+this file's cleared text and Source line.
+
+**Numbers.** 55 distinct numbers, 0 not found in the research file: every numeric token in the
+publishable body appears in this file.
+
+**Competitors.** 86 quarantined stems checked, 0 found on the page: no quarantined domain's
+name appears on the page.
+
+**House checks.** check-draft passed: title, meta and excerpt inside their
+ceilings, a Source line with a year under every quote, American spelling, no em
+dash. No Han characters in the draft.
+
+**As published.** Title "The 2026 AI Model Roster for Brand Assets". H1 "The 2026 model roster: which AI model for which asset". Changes from the brief, the
+must-includes met or cut, and what the page never does are recorded in the
+draft's ASSET BRIEF block, which was read at publish and left unchanged.
+
+**Hero:** a hand choosing one brush from a rack of calligraphy brushes above three test strokes, accepted on the first generation.
+
+**Distribution:** category AI Foundations, which reaches the AI excellence page layer.
