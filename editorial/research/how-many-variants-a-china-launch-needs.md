@@ -840,4 +840,84 @@ page; consider downgrading it to market claim. (5) The delivery-figure row
   headline figures sourced in a code comment to a creative analytics vendor's
   blog, outside the ledger and with no method.
 
-## R8. Reconciliation (filled after drafting)
+## R8. Reconciliation
+
+Filled 2026-09-22 at iteration 8 of the draft run, against
+`output/how-many-variants-a-china-launch-needs.md`.
+
+### Source check 2, re-fetched 2026-09-22
+
+| Source | Check 2 result |
+|---|---|
+| developers.e.qq.com/v3.0/pages/dynamic_creatives/add | **Pass.** Still says 100 creatives per ad, and 3 copy, 3 landing page, 15 image and video components per dynamic creative. Still undated |
+| developers.e.qq.com/docs/guide/ads/dc | **Pass.** Still caps each element at 3 and video at 3, still shows 2x2=4 and 2x2x2=8, still says the system selects the best combination for exposure. Still undated |
+| oceanengine.com/baike/juliangguanggaoshengjiban.html | **Pass.** Still dated 2023-04-11, still describes automatic combination, online selection and full exploration, still carries no count |
+| niaogebiji.com/article-191346-1.html | **Pass.** Still 2022-09-25, still 10 assets per ad, 4 to 6 videos plus 6 or more titles, 2 to 3 when testing, 20 landing pages. Re-confirmed that it cites no platform page and presents the figures as the authors' own testing |
+| 27sem.com/article/7310 | **Pass.** Same text, dated 2022-09-22, credited to the same originating outlet. Confirms the republication, and therefore the single origin |
+| morketing.com/detail/23691 | **Pass.** Still 2022-12-29, still 4 or more videos and 5 to 6 titles on one ad in an advertiser case |
+| pkg.go.dev/github.com/geiqin/oceanengine/marketing-api/api/creative | **Pass.** Still v1.0.3, published 2022-05-23, still 10 titles, 12 images, 10 videos, 10 custom creatives per plan, 500 a day |
+| open.oceanengine.com/labels/7/docs/1740868093375503 | **Pass, negative observation holds.** Still serves the title "API interface, commercial open platform" and no body |
+| research.monash.edu, JAMS 2016 | **Pass.** Both quoted phrases still in the abstract verbatim, 2x2x3 between-subjects design, 44(3) 334 to 349 |
+| gwern.net/doc/economics/2013-braun.pdf, Marketing Science 2013 | **Pass, full text re-extracted.** Wearout definition verbatim; repetition against copy wearout and restoration present; 12.7 and 13.8 percent confirmed in the abstract, the introduction and the simulation section; 5,803 individuals; one automobile brand; 15 creatives; 10 weeks, 15 June to 23 August 2009; 32(5) 753 to 767 |
+| hernanbruno.com/uploads/Chae_Bruno_Feinberg.pdf, JMR 2019 | **Pass, full text re-extracted.** About 24 percent of the sample weary; profiling and capping up to 15 percent; more than 12,000 users, 473 distinct websites; French credit and loan firm; 72 days, 20 May to 31 July 2013; 56(1) 57 to 75; authors report no financial support |
+| ucrisportal.univie.ac.at, Journal of Advertising 2015 | **Pass.** Attitude peaks at about ten exposures, recall linear through at least the eighth, effects decay over time, 44(4) 415 to 428. The number of studies pooled is still not on the page, so the caveat stays |
+| src/pages/the-studio/who-we-are.astro | **Pass.** Quote verbatim at line 329, the footwear launch of twelve colorways in four markets at line 321, the 20 and 80 bar labels at lines 340 and 344 |
+| fe-video-qc.xhscdn.com Juguang manual PDF | **Partial.** The document is live at the same URL and still 4.3MB. Local text extraction in this run returned Latin text and numbers only, including the ad.xiaohongshu.com and partner.xiaohongshu.com links that identify it as RedNote's own advertising platform manual, but the Chinese body text did not extract, so the structure claims could not be re-read today. The 2026-09-10 full-text reading stands, and the page dates its reading to 10 September 2026, so nothing on the page overstates. Logged as a partial check 2 in the ledger |
+
+### Every number in the draft, traced
+
+| Figure on the page | Claims table row | Status |
+|---|---|---|
+| 100 creatives per ad; 3 copy, 3 landing page, 15 image and video components | A, Tencent v3.0 | primary, re-checked |
+| 3 uploads per element, 3 videos; 2x2=4; 2x2x2=8 | A, Tencent guide | primary, re-checked |
+| 10 assets per ad; 4 to 6 videos; 6 or more titles; 2 to 3 when testing | A, trade origin | modal, contested, re-checked |
+| 4 or more videos and 5 to 6 titles in one case | A, second trade article | single-source, re-checked |
+| 10 titles, 12 images, 10 videos; 10 custom per plan; 500 a day | A, code library | single-source, legacy, re-checked |
+| 11 platform pages, 48 Chinese search results, seven phrasings | A, absence observation | primary, own observation |
+| Two days to a month, a year or more | R6 refresh conflict row | published as a spread only, no number adopted |
+| 12.7 and 13.8 percent; 5,803; 15 creatives; 2009 | C, Marketing Science 2013 | primary with limits, re-checked |
+| About 24 percent; up to 15 percent; more than 12,000 users; more than 400 websites; 72 days; 2013 | C, JMR 2019 | primary with limits, re-checked |
+| About ten exposures; at least the eighth | C, Journal of Advertising 2015 | single-source for the figure, re-checked, caveat printed |
+| 8 combinations from 6 uploads; 27 from 9; 24 to 36 pairings | Derived arithmetic | derived, labeled derived, assumptions printed |
+| Twelve colorways, four markets, 20 and 80 | D, who we are page | first-party exception, attributed, no arithmetic done on it |
+| 4 independent non-platform sources | Access table plus claims table A | own count: 3 trade pages carrying 2 articles, plus 1 code library |
+
+Nothing appears in the draft that is not in this file. Nothing was sourced
+retroactively.
+
+### Cut from the draft after the research file was written
+
+| Cut | Why |
+|---|---|
+| Cleared 14, the dynamic content ad standard quote | A definition rather than a finding, and the page already explains combinations through Tencent's own guide. Removed to hold the length |
+| Cleared 15, the trade body whitepaper sentence on optimization order | Same reason. It also carried the British spelling problem flagged under cleared 15, which is now moot |
+| Cleared 17, the Google responsive search ad contrast | Cut at iteration 4 for length. The page loses nothing: the contrast was optional and the disclaimer already says which surfaces were readable |
+| Cleared 18, the English search-results audit | Cut for length. It buried the first-party material behind a methodology observation |
+| Cleared 1 as a blockquote | The figures stay, moved into prose carrying the same source, date and scope, because the table row beside them already prints the same numbers |
+| Cleared 11 as a blockquote | The figure stays, in the wear-out table row with its method and its limits. Printing it twice on one page was the duplication, not the citation |
+
+### Deviations logged from this draft
+
+1. **Disclaimer, first paragraph scoped to Douyin.** SPEC.md allows the first
+   paragraph to change by form. The ad-platform form from brief 06 is used, but
+   the sentence that no open source reaches the official value is scoped to
+   Douyin rather than to all three platforms, because Tencent Ads and RedNote do
+   serve readable documents. SPEC.md requires exactly this change where a
+   readable page contradicts the blanket claim, and the readable-document
+   paragraph follows the block.
+2. **Table placement.** The research outline put the platform table directly
+   under the opening answer. SPEC.md requires the disclaimer immediately after
+   the opening answer and before the first spec table, so the table moved below
+   the disclaimer. SPEC.md wins.
+3. **NN is 4**, counting the non-platform sources behind the Ocean Engine rows:
+   3 trade pages carrying 2 articles, plus 1 code library.
+4. **Reviewed date is 22 September 2026**, the date of check 2, rather than the
+   10 September 2026 collection date. Both dates appear on the page.
+5. **Slot requirement unmet.** Slot D asks for one hubStudio delivery number
+   with its method stated. Claim 16 broke at research time and nothing changed at
+   draft time. The 20 and 80 split runs under the first-party exception as an
+   attributed illustration, and the asset brief says so.
+6. **The wear-out table is the citation apparatus** for that section, each row
+   carrying publisher, date, method and limits, with one blockquote kept for the
+   verbatim quotation. The platform table does not carry dates per row, so the
+   platform figures keep their blockquotes.

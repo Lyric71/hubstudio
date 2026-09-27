@@ -1,0 +1,422 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "Can car ads use CGI or AI-generated images?",
+    "a": "Yes. No code or ruling read for this page bans them. The UK regulator calls its code media-neutral, meaning the rules apply however the content was made, and it has upheld complaints against car ads built largely or completely in CGI. The advertiser stays responsible for whatever an AI tool produces."
+  },
+  {
+    "q": "What must be accurate in generated automotive imagery?",
+    "a": "Two layers. Rule-driven items: belted occupants, no blur or dust speed cues, no weaving, figures matched to the model shown, sourced range claims in China and labels on generated frames there. Vehicle items, which are production practice: paint, badges, grille, wheels, plates, driving side and reflections that agree with the scene."
+  },
+  {
+    "q": "When does an automotive shoot still need a real car?",
+    "a": "When reflective paint, chrome or glass carries the frame, when a named driver or contracted location is part of the brief, and for the high-touch brand moments a launch leans on. No rule cited here forces a shoot. The choice comes down to what generation still gets wrong, and reflections top that list."
+  },
+  {
+    "q": "What are the rules for showing driving in car ads?",
+    "a": "In the UK, CAP Code Section 19 and BCAP Code Section 20 bar unsafe driving and speed as the main message, and safety features can't be sold as a license to drive faster. Australia's industry code bars unsafe driving wherever it is depicted. The EU and the US regulate the fuel and emissions figures an ad prints. China's Advertising Law requires sourced data."
+  },
+  {
+    "q": "How long does generated automotive content take?",
+    "a": "One published example: the premium SUV case page reports global assets in 3 weeks, against six months traditionally, for a launch across 15 markets. That is one engagement, not a market benchmark, and no method-stated benchmark was found. Timing depends on how many markets, formats and captured assets a launch needs."
+  }
+];
+---
+
+<ArticleLayout slug="automotive-content-without-shipping-a-car" ctaLabel="Brief a vehicle launch" faq={faq}>
+  <p class="standfirst">You can launch a vehicle in fifteen markets without putting it on a ship. What you cannot do is leave the motoring rules behind. Regulators judge the driving in the picture, however the picture was made.</p>
+
+  <h2>Can car advertising use CGI with no photoshoot?</h2>
+
+  <p>Yes. No advertising code or ruling read for this piece bars a generated or CGI car ad. The UK regulator has judged a fully computer-generated car poster under its ordinary rules and upheld the complaint against it. hubStudio generates environments around a vehicle, and the driving shown still has to pass the same tests as film.</p>
+
+  <p>This page describes production practice, not legal advice. The codes and rulings are cited so your compliance team can read them at source. Reviewed September 24, 2026.</p>
+
+  <p>Start with the asset list, because the answer changes line by line.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Asset</th>
+          <th scope="col">Treatment</th>
+          <th scope="col">Why</th>
+          <th scope="col">Where the call comes from</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Market environments: roads, cities, dunes, coastlines</th>
+          <td>Generate</td>
+          <td>Built rather than traveled to, matched to each market</td>
+          <td>hubStudio premium SUV case page</td>
+        </tr>
+        <tr>
+          <th scope="row">Weather, season and time of day</th>
+          <td>Generate</td>
+          <td>Snow, rain, golden hour and blue hour on demand, held consistent</td>
+          <td>hubStudio premium SUV case page</td>
+        </tr>
+        <tr>
+          <th scope="row">Format versions: print, social, web, digital</th>
+          <td>Generate from one set</td>
+          <td>One production feeds every format</td>
+          <td>hubStudio premium SUV case page</td>
+        </tr>
+        <tr>
+          <th scope="row">Paint, chrome and glass close-ups</th>
+          <td>Shoot</td>
+          <td>The studio still shoots reflective and luxury surfaces</td>
+          <td>hubStudio ecommerce design FAQ</td>
+        </tr>
+        <tr>
+          <th scope="row">A named driver, talent or a specific real location</th>
+          <td>Hybrid</td>
+          <td>Live capture, then generated post-production</td>
+          <td>hubStudio AI excellence FAQ</td>
+        </tr>
+        <tr>
+          <th scope="row">Any frame carrying fuel, range or CO2 figures</th>
+          <td>Either, but match the model</td>
+          <td>The car shown must be the car the figures describe</td>
+          <td>FTC guidance and EU rules, below</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What are the rules for showing driving in car ads?</h2>
+
+  <p>Of the markets covered here, the UK and Australia have detailed codes on how driving may be shown. Elsewhere the binding rules mostly govern the numbers an ad prints.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Market</th>
+          <th scope="col">Instrument</th>
+          <th scope="col">What it says</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">UK, non-broadcast</th>
+          <td>CAP Code rule 19.2</td>
+          <td>No condoning unsafe or irresponsible driving; track driving allowed if clearly not a public road</td>
+          <td>Read Sept. 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">UK, non-broadcast</th>
+          <td>CAP Code rules 19.3 and 19.4</td>
+          <td>No speed that might encourage irresponsible driving; speed or acceleration never the main message</td>
+          <td>Read Sept. 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">UK, broadcast</th>
+          <td>BCAP Code rules 20.1, 20.3, 20.5</td>
+          <td>No dangerous or competitive driving; power and handling only in a clear context of safety; safety features not a license to go faster</td>
+          <td>Read Sept. 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Australia</th>
+          <td>Industry code, clause 2</td>
+          <td>No unsafe driving or speeding, wherever the driving is depicted; no belt-free occupants</td>
+          <td>2020 version</td>
+        </tr>
+        <tr>
+          <th scope="row">EU</th>
+          <td>Car labeling directive 1999/94/EC</td>
+          <td>Promotional literature carries official fuel consumption and CO2 data</td>
+          <td>Commission summary, Dec. 2025</td>
+        </tr>
+        <tr>
+          <th scope="row">EU</th>
+          <td>Proposal COM/2025/995</td>
+          <td>Would repeal the directive and redefine promotional material</td>
+          <td>Tabled Dec. 16, 2025; a proposal as of Aug. 2026, plenary vote expected Nov. 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">US</th>
+          <td>FTC guide, 16 CFR Part 259</td>
+          <td>Fuel economy claims disclose the EPA estimate; no borrowing another model's figures</td>
+          <td>Sept. 2017</td>
+        </tr>
+        <tr>
+          <th scope="row">China</th>
+          <td>Advertising Law, Arts. 4 and 11</td>
+          <td>No misleading content; cited data must be true, accurate and sourced</td>
+          <td>2021 amendment</td>
+        </tr>
+        <tr>
+          <th scope="row">China</th>
+          <td>Industry ministry and market regulator notice No. 45</td>
+          <td>Carmakers must standardize marketing and promotion</td>
+          <td>Feb. 25, 2025</td>
+        </tr>
+        <tr>
+          <th scope="row">China</th>
+          <td>AI content labeling measures</td>
+          <td>Generated images and video carry a visible label and a metadata label</td>
+          <td>In force Sept. 1, 2025</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The EU row is the one most likely to move. Check the proposal's status before building an EU campaign to the current directive.</p>
+
+  <blockquote class="evidence">UK advertising rules bar car ads from condoning or encouraging unsafe or irresponsible driving, from showing speed in a way that might encourage motorists to drive irresponsibly or break the law, and from making speed or acceleration the main message.</blockquote>
+  <p class="source">Source: UK non-broadcast advertising code (CAP Code), Section 19, rules 19.2 to 19.4, read September 2026. Rule text read at source on the UK advertising regulator's site. https://www.asa.org.uk/type/non_broadcast/code_section/19.html</p>
+
+  <p>This review found no federal code on how driving may be shown in US car ads. A US safety institute explains who fills the gap.</p>
+
+  <blockquote class="evidence">A US highway safety research institute says that in the United States, broadcasters rather than regulators set standards for car ads, and describes those standards as ambiguous and easily circumvented.</blockquote>
+  <p class="source">Source: Insurance Institute for Highway Safety news release, May 12, 2026. The institute's own statement accompanying its content analysis; the institute is funded by auto insurers. https://www.iihs.org/news/detail/more-car-ads-promote-vehicle-performance-despite-dangers-of-speed</p>
+
+  <p>China's statutes bear on what an ad claims rather than how it shows the driving. The most specific driving rules found come from a platform, not a regulator.</p>
+
+  <blockquote class="evidence">Xingtu, the creator marketing platform in the Ocean Engine family that sells Douyin ads, flags car content that acts out or tests driving on public roads, films while driving, or shows drifting and stunts away from a professional venue. It also flags an unbelted driver and a driver on a phone, and asks for a line telling viewers the scene is ad creative and to obey traffic rules.</blockquote>
+  <p class="source">Source: Xingtu marketing service platform, automotive content review guide, June 12, 2026. The platform's own published review rules, read at source in Chinese; a platform rule, not a regulator's, and silent on generated content. https://www.xingtu.cn/help-center/author/133668</p>
+
+  <p>On the numbers, a city regulator made the statute concrete with a showroom board.</p>
+
+  <blockquote class="evidence">A Chinese city regulator fined a car dealership 30,000 yuan in October 2023 for a showroom ad promising 520 km of real driving range without stating where the figure came from.</blockquote>
+  <p class="source">Source: Fujian Provincial Administration for Market Regulation typical-case notice, May 20, 2024, reporting a penalty by the Longyan municipal regulator under Article 11 of the Advertising Law. Published enforcement notice read at source in Chinese. https://scjgj.fj.gov.cn/zw/tzgg/202406/t20240603_6459455.htm</p>
+
+  <p>China's fuel consumption label rules, by contrast, govern the sticker on the car at sale and say nothing about ads. Any figure an ad does print falls under Article 11.</p>
+
+  <p>On driver assistance, the instrument is broad and the ministry's spoken line is blunter.</p>
+
+  <blockquote class="evidence">China's industry ministry and market regulator told carmakers in February 2025 to standardize how they market their products, and at an April 2025 meeting the ministry told them not to make exaggerated or false claims and to meet their duty to inform buyers.</blockquote>
+  <p class="source">Source: Ministry of Industry and Information Technology and State Administration for Market Regulation, notice No. 45, February 25, 2025, read in two official copies; Beijing Daily's report of the ministry's April 16, 2025, meeting, read in Chinese. https://www.gov.cn/zhengce/zhengceku/202503/content_7009422.htm and https://news.bjd.com.cn/2025/04/17/11134350.shtml</p>
+
+  <p>A list of banned driver-assistance terms has circulated in Chinese business press since then. It is not printed here, because no instrument carrying it could be read.</p>
+
+  <h2>Does a CGI or AI setting change how the rules apply?</h2>
+
+  <p>No. The UK regulator has said so for more than a decade.</p>
+
+  <blockquote class="evidence">The UK advertising regulator's motoring advice cites a sports coupe ad set in a virtual animated world and says that, because the car was shown driving in a way that would be dangerous and irresponsible in the real world, the ad was problematic.</blockquote>
+  <p class="source">Source: UK advertising regulator (ASA and CAP) advice on motoring, July 16, 2014. Published advice read at source; the ruling it summarizes was not read. https://www.asa.org.uk/advice-online/motoring.html</p>
+
+  <p>It repeated the principle for generative tools in 2026.</p>
+
+  <blockquote class="evidence">The UK advertising code is media-neutral: the rules apply regardless of how the content was created, and the advertiser remains responsible for any AI output used in its ads.</blockquote>
+  <p class="source">Source: UK advertising regulator guidance, June 2026. Published guidance on AI and deepfakes, read at source. https://www.asa.org.uk/news/ai-and-deepfakes-four-things-advertisers-need-to-know-before-they-hit-run.html</p>
+
+  <p>The rulings show how the argument plays out. Advertisers keep pleading fantasy (a toy-car world, a swarm of identical SUVs, a chase that ends in a stack of cars). It mostly fails.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Ruling</th>
+          <th scope="col">What was shown</th>
+          <th scope="col">Outcome and reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Fiat Chrysler Automobiles UK, Oct. 24, 2018</th>
+          <td>Substantial CGI, cars racing on spiral ramps and underwater tunnels, closed-course disclaimer</td>
+          <td>Upheld. Speed was the main message, many scenes resembled real driving, the disclaimer did not cure it</td>
+        </tr>
+        <tr>
+          <th scope="row">Nissan Motor (GB), Oct. 24, 2018</th>
+          <td>TV ad for automatic emergency braking</td>
+          <td>Upheld. Implied a rushed or distracted driver could rely on the system</td>
+        </tr>
+        <tr>
+          <th scope="row">Suzuki GB, 2018, summarized Nov. 2019</th>
+          <td>Maneuvers in a clearly fantastical setting</td>
+          <td>Not upheld. Viewers would not read the scenes as real driving</td>
+        </tr>
+        <tr>
+          <th scope="row">Toyota (GB), Nov. 22, 2023</th>
+          <td>A poster of about 50 SUVs on rocky terrain, created completely by CGI</td>
+          <td>Upheld. Condoned driving that disregarded the impact on nature</td>
+        </tr>
+        <tr>
+          <th scope="row">Mars Wrigley Confectionery UK, June 11, 2025</th>
+          <td>A car chase in a chocolate ad, then a physics-defying finale</td>
+          <td>Upheld. The chase would be dangerous if copied in real life</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The regulator's own guidance names the line and admits it is hard to hold.</p>
+
+  <blockquote class="evidence">UK regulator guidance says a scenario so clearly fantastical that viewers are unlikely to see it as a real demonstration of speed or handling is more likely to be acceptable, and calls that a difficult line to tread.</blockquote>
+  <p class="source">Source: UK advertising regulator (ASA and CAP) guidance on motoring ads, November 9, 2023. Published guidance read at source. https://www.asa.org.uk/news/strap-in-for-some-useful-advice-on-motoring-ads.html</p>
+
+  <p>Australia's industry code shuts the same door in writing, and goes further on disclaimers.</p>
+
+  <blockquote class="evidence">Australia's motor vehicle advertising code bars unsafe driving that would break road safety law if it happened on a road, "regardless of where the driving is depicted in the advertisement". Its explanatory notes say fantasy, humor and self-evident exaggeration may not be used to circumvent the code, and that controlled-conditions, expert-driver or do-not-attempt disclaimers cannot justify material that otherwise breaches it.</blockquote>
+  <p class="source">Source: Federal Chamber of Automotive Industries, Voluntary Code of Practice for Motor Vehicle Advertising, clause 2(a) and explanatory notes, 2020 version, read September 2026. Industry self-regulatory code applied by Australia's ad standards panel, read at source. https://www.fcai.com.au/wp-content/uploads/2023/02/fcai_voluntary_advertising_code_of_practice.pdf</p>
+
+  <p>The test the rulings apply is simple to state. Would a viewer read this as real driving? And does the realistic part carry the ad? A photoreal generated road answers yes to both, and photoreal is the whole point of a launch campaign.</p>
+
+  <p>That leaves a launch campaign very little room for the fantasy argument.</p>
+
+  <h2>What must be accurate in generated automotive imagery?</h2>
+
+  <p>The rule-driven checks are sourced. The vehicle checks mostly aren't. No method-stated study of vehicle-specific failures in generated imagery was found for this piece, as of September 2026: nothing measuring paint, bodywork reflections, badges, wheels, plates or driving side. The vehicle rows below are production practice, labeled as such.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">What to look for</th>
+          <th scope="col">Basis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Seatbelts</th>
+          <td>Every occupant visibly belted</td>
+          <td>UK guidance, 2023; Australian code; Xingtu guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Driver behavior</th>
+          <td>No phone in hand, no stunts on a public road</td>
+          <td>Australian code; Xingtu guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Speed cues</th>
+          <td>No blurred lights, blurred backgrounds or dust clouds on a road scene</td>
+          <td>UK regulator guidance, Nov. 2023</td>
+        </tr>
+        <tr>
+          <th scope="row">Lane discipline</th>
+          <td>No sharp overtaking, weaving or competitive driving</td>
+          <td>CAP Code 19.2 and guidance</td>
+        </tr>
+        <tr>
+          <th scope="row">Disclaimers</th>
+          <td>No reliance on a closed-course or do-not-attempt line</td>
+          <td>Fiat ruling, 2018; Australian code notes</td>
+        </tr>
+        <tr>
+          <th scope="row">Off-road scenes</th>
+          <td>Terrain use with an evident purpose, no damage to nature</td>
+          <td>Toyota ruling, Nov. 2023</td>
+        </tr>
+        <tr>
+          <th scope="row">Assistance features</th>
+          <td>Driver attentive and in control, never relying on the system</td>
+          <td>BCAP Code 20.5; Nissan ruling, 2018</td>
+        </tr>
+        <tr>
+          <th scope="row">Figures in frame</th>
+          <td>Model shown matches the model whose fuel, range or CO2 figures run</td>
+          <td>FTC Part 259; EU directive</td>
+        </tr>
+        <tr>
+          <th scope="row">Figure sources in China</th>
+          <td>Range or efficiency figures state their source</td>
+          <td>Advertising Law Art. 11</td>
+        </tr>
+        <tr>
+          <th scope="row">Labels in China</th>
+          <td>Visible label and metadata label on generated images</td>
+          <td>AI content labeling measures, 2025</td>
+        </tr>
+        <tr>
+          <th scope="row">Physics</th>
+          <td>Reflections and contact points agree with the scene</td>
+          <td>Benchmark evidence, below</td>
+        </tr>
+        <tr>
+          <th scope="row">Paint</th>
+          <td>Color and finish match the market's production palette</td>
+          <td>Production practice</td>
+        </tr>
+        <tr>
+          <th scope="row">Badges and grille</th>
+          <td>Model script, badge and grille reproduced exactly</td>
+          <td>Production practice</td>
+        </tr>
+        <tr>
+          <th scope="row">Wheels</th>
+          <td>Same wheel design and spoke count from every angle</td>
+          <td>Production practice</td>
+        </tr>
+        <tr>
+          <th scope="row">Plates</th>
+          <td>Market format, non-identifying</td>
+          <td>Production practice</td>
+        </tr>
+        <tr>
+          <th scope="row">Driving side</th>
+          <td>Steering wheel, road markings and signage language match the market</td>
+          <td>Production practice</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Sixteen rows is a lot. Three of them need more than a glance.</p>
+
+  <p>A generated set can fail the figures row without anyone noticing. A car that drifts toward another trim, with the wrong wheels or grille, can put the right number beside the wrong model.</p>
+
+  <blockquote class="evidence">Federal Trade Commission guidance says advertisers citing mileage ratings for certain models "should ensure that the rating applies to the model type depicted in the advertisement", and calls it deceptive to imply a rated figure applies to a featured vehicle of a model type it does not cover.</blockquote>
+  <p class="source">Source: FTC Guide Concerning Fuel Economy Advertising for New Automobiles, 16 CFR 259.4(h), September 19, 2017, read verbatim in the electronic Code of Federal Regulations. Guidance rather than a rule: practices inconsistent with it may draw FTC action under Section 5 of the FTC Act. https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-259</p>
+
+  <p>The driving-side row is just as easy to miss in a multi-market set. The premium SUV case page lists German autobahns and Japanese mountain routes among the settings its markets wanted, and Japan drives on the left.</p>
+
+  <p>Give reflections the most review time. The research is clearest there.</p>
+
+  <blockquote class="evidence">Current image generation still breaks on physical realism. A 900-case benchmark covering optics, mechanics and state transition scored eleven image editing models against human-annotated reflection surfaces and contact points, and every open-source model scored below 60, with only two closed systems slightly above it.</blockquote>
+  <p class="source">Source: PICABench, image editing physical-realism benchmark, October 2025. A human-annotated benchmark preprint, reused from the source ledger. https://arxiv.org/html/2510.17681v1</p>
+
+  <p>A Chinese marketplace wrote the same failures into its own rule for product images, which makes a useful second standard.</p>
+
+  <blockquote class="evidence">A Chinese marketplace's rule on AI fake product images names four failure categories: product material or style that does not match the real item, distorted or exaggerated product effects, an obvious cutout and paste look, and bodies or scenes that break physical laws.</blockquote>
+  <p class="source">Source: Economic Information Daily, March 2025, reporting the platform's own rule announcement and its detection-model enforcement. http://jjckb.xinhuanet.com/20250327/db1aeefb30ba4603b6415560e604ed1e/c.html</p>
+
+  <p>Generated frames bound for China also carry the labels the AI content labeling measures require. The <a href="/resources/insights/china-ai-labeling-rules-production-workflow">China AI labeling article</a> sets out that workflow, and the <a href="/solutions/platforms/douyin">Douyin platform page</a> covers producing for the platform itself.</p>
+
+  <h2>When does an automotive shoot still need a real car?</h2>
+
+  <p>None of the rules cited here requires a camera. The case for a shoot is craft.</p>
+
+  <p>hubStudio's own pages draw the line in three places. Luxury and "anything with reflective or transparent surfaces" still get shot, says the <a href="/services/design/ecommerce">ecommerce design FAQ</a>, and a car is both. Where a job needs a specific talent or location, the <a href="/the-studio/ai-excellence">AI excellence FAQ</a> recommends live capture finished with generated post-production. And high-touch brand moments, per the <a href="/solutions/ai-production/image">AI image production page</a>, still call for traditional photography. In practice that means shooting the paint close-up, the interior with a real driver's hands and any location the brand has contracted.</p>
+
+  <p>Everything around them can be generated.</p>
+
+  <h2>What did the premium SUV launch produce without shipping a car?</h2>
+
+  <p>The <a href="/work/premium-suv">premium SUV case study</a> is the working example. The client, a luxury manufacturer, is not named on the case page and is not named here.</p>
+
+  <blockquote class="evidence">On hubStudio's premium SUV case study, launch imagery for a new SUV across 15 markets was produced with more than 20 generated environments and zero vehicle shipping, with the budget cut by 70 percent against location photography and global assets delivered in 3 weeks against six months traditionally.</blockquote>
+  <p class="source">Source: hubStudio premium SUV case study page, read September 2026. First-party figures as the case page publishes them; the page publishes no base budget, currency or method, so the 70 percent has no absolute behind it. https://www.hubstudio.ai/work/premium-suv</p>
+
+  <p>The set ran from mountains and deserts to coastlines and forests, through snow, rain and autumn color, from golden hour to midday. The page says the environments were generated. It doesn't say how the vehicle was sourced, and this article won't guess. The <a href="/solutions/manufacturers">manufacturers solutions page</a> describes the same pattern for industrial products: the machine shown in the plant where the buyer works, with nothing transported. One thing the page cannot settle is what the shipping would have cost: no method-stated figure for moving a car to a location shoot was found, so none is printed here.</p>
+
+  <h2>Questions about CGI and AI car advertising</h2>
+
+  <h3>Can car ads use CGI or AI-generated images?</h3>
+
+  <p>Yes. No code or ruling read for this page bans them. The UK regulator calls its code media-neutral, meaning the rules apply however the content was made, and it has upheld complaints against car ads built largely or completely in CGI. The advertiser stays responsible for whatever an AI tool produces.</p>
+
+  <h3>What must be accurate in generated automotive imagery?</h3>
+
+  <p>Two layers. Rule-driven items: belted occupants, no blur or dust speed cues, no weaving, figures matched to the model shown, sourced range claims in China and labels on generated frames there. Vehicle items, which are production practice: paint, badges, grille, wheels, plates, driving side and reflections that agree with the scene.</p>
+
+  <h3>When does an automotive shoot still need a real car?</h3>
+
+  <p>When reflective paint, chrome or glass carries the frame, when a named driver or contracted location is part of the brief, and for the high-touch brand moments a launch leans on. No rule cited here forces a shoot. The choice comes down to what generation still gets wrong, and reflections top that list.</p>
+
+  <h3>What are the rules for showing driving in car ads?</h3>
+
+  <p>In the UK, CAP Code Section 19 and BCAP Code Section 20 bar unsafe driving and speed as the main message, and safety features can't be sold as a license to drive faster. Australia's industry code bars unsafe driving wherever it is depicted. The EU and the US regulate the fuel and emissions figures an ad prints. China's Advertising Law requires sourced data.</p>
+
+  <h3>How long does generated automotive content take?</h3>
+
+  <p>One published example: the premium SUV case page reports global assets in 3 weeks, against six months traditionally, for a launch across 15 markets. That is one engagement, not a market benchmark, and no method-stated benchmark was found. Timing depends on how many markets, formats and captured assets a launch needs.</p>
+</ArticleLayout>

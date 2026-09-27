@@ -1,0 +1,40 @@
+﻿2026-09-26T04:00:02 start publish (model claude-opus-5-5)
+2026-09-26T04:00:03 model attempt 1/4, cycle 1: Opus 5.5
+2026-09-26T04:05 scheduled publish run for 2026-09-26 (Saturday). Model: Opus 5.5, attempt 1, cycle 1.
+2026-09-26T04:05 prompt check: SHA-256 of 2026-09-26-publish.prompt.txt matches the manifest (AE9F37F6...09B0C5).
+2026-09-26T04:05 earlier progress: none. This log held only the runner's two start lines; no earlier model in the chain ran today, so nothing partial to correct or preserve.
+2026-09-26T04:05 read editorial/CLAUDE.md and editorial/RUNBOOK.md, and the 2026-09-25 publish log for the carried-forward state.
+2026-09-26T04:05 repo state: main in sync with origin/main after git fetch. No change under src/. Working tree carries the uncommitted draft artifacts of the 09-17, 09-18, 09-21, 09-22 and 09-24 draft runs, left untouched.
+2026-09-26T04:05 schedule scan (editorial/schedule.csv parsed as CSV): 32 published, 7 image_ready, 9 not_started. No row is dated 2026-09-26. No image_ready row has a publish_date on or before 2026-09-26. The seven waiting: 31 amazon-tmall-jd-one-product-three-listings (2026-10-23), 32 meta-tiktok-against-douyin-rednote (2026-10-30), 33 real-cost-of-brand-content-2026 (2026-11-09), 34 beauty-content-production-china (2026-11-10), 35 agency-white-label-question (2026-11-12), 36 how-many-variants-a-china-launch-needs (2026-11-13), 38 automotive-content-without-shipping-a-car (2026-11-17).
+2026-09-26T04:05 decision: nothing to publish. Not run, deliberately: /createblogarticle, npm run build, npm run check, git add, commit, push, notify-publish.mjs. The email fires only after a successful push or on a build or check failure; neither happened. Same handling as the 09-19 to 09-25 runs.
+2026-09-26T04:05 open findings carried forward, none resolved by this run:
+  1. Research (33), Playbook (34, 38) and Data (36) are claimed by no placement in src/data/insight-placements.ts, so those articles would reach the home page but no insights layer. Map them or add a placement before 2026-11-09.
+  2. Brief 35 has two complete drafts (output/agency-white-label-question.md and .ALT-2026-09-21.md). A person must pick which ships before 2026-11-12.
+  3. Draft artifacts from five draft runs stay uncommitted until the next publish commit on or after 2026-10-23.
+2026-09-26T04:05 end of Opus 5.5 decision record. This log file is the only file this run modified.
+Nothing was published in today's run (2026-09-26) because no article was due.
+
+This was the first attempt today, and the run log was empty apart from the runner's start lines, so there was no earlier partial work to fix. The prompt file's checksum matches the manifest, and the local `main` is in sync with `origin/main`.
+
+**Why nothing published:** No schedule row is dated 2026-09-26. Seven drafts are marked `image_ready`, but all of them are dated later:
+
+| Brief | Slug | Due |
+|---|---|---|
+| 31 | `amazon-tmall-jd-one-product-three-listings` | 2026-10-23 |
+| 32 | `meta-tiktok-against-douyin-rednote` | 2026-10-30 |
+| 33 | `real-cost-of-brand-content-2026` | 2026-11-09 |
+| 34 | `beauty-content-production-china` | 2026-11-10 |
+| 35 | `agency-white-label-question` | 2026-11-12 |
+| 36 | `how-many-variants-a-china-launch-needs` | 2026-11-13 |
+| 38 | `automotive-content-without-shipping-a-car` | 2026-11-17 |
+
+With nothing to publish, I didn't run the publish skill, the build, the check, a commit, a push or the notification email. The email only goes out after a push or a failed build. The only file I changed is the run log, `editorial/logs/runs/2026-09-26-publish.txt`, where every decision is recorded.
+
+**Three things still need your attention, carried over from earlier runs:**
+1. **Articles that won't show up in any "further reading" section.** Briefs 33, 34, 36 and 38 use categories (Research, Playbook, Data) that no entry in `src/data/insight-placements.ts` picks up. They would appear on the home page but nowhere else. This needs fixing before 2026-11-09.
+2. **Brief 35 has two finished drafts.** Someone has to choose between `output/agency-white-label-question.md` and its `.ALT-2026-09-21.md` version before 2026-11-12.
+3. **Draft files from five draft runs are still uncommitted.** They'll go in with the next publish, on or after 2026-10-23.
+
+Separately, the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need signing in again in your claude.ai connector settings. This run didn't need them.
+2026-09-26T04:00:48 model Opus 5.5 completed successfully
+2026-09-26T04:00:48 end publish exit 0

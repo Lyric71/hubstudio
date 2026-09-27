@@ -1,0 +1,324 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "Can I use Amazon product images on Tmall?",
+    "a": "Some of them, as your own assets. A shadowless, front-view Amazon main image re-exports as the Tmall white-background image, which sits fifth in the carousel. Clean additional images re-crop to a 1:1 square. Slides built on text, badges or composites need a re-edit first, because the most commonly published Tmall rules bar promotional overlay text. Confirm in your seller backend."
+  },
+  {
+    "q": "What is the difference between Amazon and Tmall main images?",
+    "a": "Amazon states a pure white background, 85 percent fill, 500 to 10,000 pixels on the longest side and no aspect ratio, in its public US help article. The most commonly published Tmall main image is a 1:1 square at 800 by 800, with the white image in the fifth slot and a 70 to 80 percent fill on pages dated 2026. Those Tmall figures are modal, not official."
+  },
+  {
+    "q": "Does JD accept the same images as Tmall?",
+    "a": "On the published record, yes. Both come back as a 1:1 square at 800 by 800 pixels, on 12 and 14 of 18 sources for Tmall and 6 of 6 and 9 of 10 pages for JD. The one difference every page agrees on is order: the white-background image is first on JD and fifth on Tmall. Move it, do not reshoot it."
+  },
+  {
+    "q": "Is Amazon A+ Content the same as a Tmall detail page?",
+    "a": "No. A+ is a module system: five modules with 970 by 300 images on Basic, seven with 1464 by 600 on Premium, under 2 MB a file. The most commonly published Tmall detail page is a long scrolling page built twice, 790 pixels wide for desktop and 750 for mobile. The A+ photography carries over as raw material. The page itself is rebuilt."
+  },
+  {
+    "q": "How do I shoot one product for Amazon, Tmall and JD?",
+    "a": "Plan four set-ups on one day: a shadowless white-background frame with white to spare, text-free styled stills that survive a centered square crop, a separate set of frames for A+ and the China detail page, and one video master cut twice. Add a flat or front-view white frame for clothing and footwear, and label close-ups where the category asks for them."
+  }
+];
+---
+
+<ArticleLayout slug="amazon-tmall-jd-one-product-three-listings" ctaLabel="Plan a three-marketplace build" faq={faq}>
+  <p class="standfirst">Amazon publishes its product image requirements where anyone can read them. Tmall and JD do not. Set the three side by side and a finished Amazon build sorts itself into what re-exports, what gets re-cropped, and what has to be built again.</p>
+
+  <h2>Can one Amazon image set serve Tmall and JD?</h2>
+
+  <p>Partly. On the published record, a shadowless Amazon main image re-exports as the Tmall and JD white-background image, and clean additional images re-crop to square for both China carousels. The video and the detail page do not travel: both are rebuilt, once, for both marketplaces. The one-day capture plan hubStudio builds around that split closes this page.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>These specs are not read from a seller backend. Both platform rule centers gate their rule text behind a seller login, so no open source reaches the official value.</p>
+
+  <p>What follows is the most commonly published figure for each spec, collected across three separate collections of 18, 15 and 24 independent sources in Chinese and English on 10 September 2026, with the number of sources that agreed shown per row. Counts from different collections are never added together. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own seller backend and confirm it there. Reviewed 14 September 2026.</p>
+
+  <p>Amazon is the exception. Its Seller Central help center serves its rules to logged-out readers, and four articles were read on 10 September 2026 and read again on 14 September: the Product image guide, Technical image file requirements, the A+ Content guide and the Shoppable video guide. Each says it applies to selling in the United States, and none prints a date. Amazon rows on this page are primary readings for the US store only. They aren't stretched to any other Amazon store, or to the clothing and multipack detail the guide hands off to separate style guides.</p>
+
+  <blockquote class="evidence">The two platform rule centers a buyer would check are published at public web addresses and serve no rule text without a seller session. On 10 September 2026 the Tmall rule center redirected twice and returned no rule body, and two different JD merchant rule pages returned the rule-center heading and nothing else.</blockquote>
+  <p class="source">Source: direct unauthenticated fetches of rule.tmall.com and rule.jd.com, 10 September 2026, four requests across two platforms, redirect chain and response body recorded.</p>
+
+  <h2>Amazon, Tmall and JD image requirements side by side</h2>
+
+  <p>Six rows a production team briefs from. The Amazon column is what the help article says. The Tmall and JD columns give the most commonly published figure and the number of sources that agreed, each count belonging to its own collection.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Amazon, US store</th>
+          <th scope="col">Tmall, most published</th>
+          <th scope="col">JD, most published</th>
+          <th scope="col">Confidence, Tmall / JD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Background, main or white image</th>
+          <td>Pure white, RGB 255, 255, 255</td>
+          <td>Pure white, RGB 255, 255, 255, 9 of 18</td>
+          <td>Pure white; the triplet printed on 2 of 5</td>
+          <td>consensus / contested</td>
+        </tr>
+        <tr>
+          <th scope="row">Product fill</th>
+          <td>85 percent of the image</td>
+          <td>70 to 80 percent on pages dated 2026, 3 of 15; fill the frame on older pages, 5 of 15</td>
+          <td>Not published, 0 of 24</td>
+          <td>contested / not published</td>
+        </tr>
+        <tr>
+          <th scope="row">Size and ratio</th>
+          <td>500 to 10,000 pixels on the longest side, 1,000 or more for zoom; no ratio stated</td>
+          <td>1:1 at 800 by 800, 12 of 18 and 14 of 18</td>
+          <td>1:1 at an 800 by 800 floor, 6 of 6 and 9 of 10</td>
+          <td>consensus / consensus</td>
+        </tr>
+        <tr>
+          <th scope="row">Image count</th>
+          <td>One compliant main image required; six additional images and one video recommended; no maximum stated</td>
+          <td>5 maximum, 9 of 18</td>
+          <td>5 maximum, 2 of 2</td>
+          <td>consensus / contested, thin</td>
+        </tr>
+        <tr>
+          <th scope="row">Format and weight</th>
+          <td>JPEG recommended, also TIFF, PNG and non-animated GIF; no file cap; minimal or no compression</td>
+          <td>JPG, 8 of 18; 3MB cap, 6 of 18; under 500KB advised, 3 of 18</td>
+          <td>JPG and PNG, 5 of 7; 1MB, 4 of 6; 500KB, 2 of 6</td>
+          <td>format consensus, weight contested / same</td>
+        </tr>
+        <tr>
+          <th scope="row">Video</th>
+          <td>MOV or MP4, 16:9 or 9:16, up to 1080p, 5 GB, 1 to 12 minutes</td>
+          <td>1:1 MP4 under 50MB, 3 of 18; 9 to 30 seconds advised, 2 of 18</td>
+          <td>1:1 or 3:4, 3 of 4; 15 to 60 seconds, 3 of 5; 50MB, 2 of 3</td>
+          <td>contested / contested</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Amazon's main image rules are specific. The background must be pure white, RGB 255, 255, 255. The product should take up 85 percent of the image, appear whole, appear once and appear as a single unit, with no props that are not included and no part of a mannequin. Files run from 500 to 10,000 pixels on the longest side, and 1,000 pixels or more turns on zoom.</blockquote>
+  <p class="source">Source: Amazon Seller Central help, Product image guide, US store, read 10 September 2026, page undated, a primary reading scoped to the US store. https://sellercentral.amazon.com/help/hub/reference/external/G1881</p>
+
+  <p>What Amazon leaves open matters as much. The guide sets no aspect ratio, no file size cap and no maximum number of listing images. The China side is the reverse: a square, a floor, a ceiling of five, and a file weight nobody can settle from outside a login. The one thing the two Chinese marketplaces don't share is order. Every page that names a slot puts the white-background image fifth on Tmall and first on JD.</p>
+
+  <h2>Does the Amazon main image work as the Tmall and JD white-background image?</h2>
+
+  <p>Usually. Two things break it: a shadow, and the category.</p>
+
+  <blockquote class="evidence">An Amazon main image and the Tmall and JD white-background image are close to the same picture, but they do not sit in the same place. Amazon's pure white main image comes first on the listing. JD's white image is its first carousel image and Tmall's is its fifth, on 5 of 5 pages per platform. Amazon and the most commonly published Tmall rules agree on a white ground, the whole product, one view and no mannequin. Tmall's rules also bar shadows, on 6 of 15 sources, and models, on 7 of 15. Amazon's guide does not mention shadows and mentions models only for clothing. A shadowless, front-view Amazon main image can be re-exported to both. One with a shadow needs a retouch.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from Amazon's Product image guide (US store, primary) and the Tmall white-background and JD against Tmall collections (15 domains and 24 pages, collected 10 September 2026), counts kept per collection; the re-export conclusion is reasoning, not a platform rule.</p>
+
+  <p>Category is the harder break, because Amazon's own rules push two categories away from the China frame.</p>
+
+  <blockquote class="evidence">Two Amazon categories cannot reuse their main image as the China white-background image. Amazon puts adult clothing on a standing model and shows footwear as one shoe at a 45-degree angle. The most commonly published Tmall white-background rules bar models, on 7 of 15 sources, and call for a front view, on 4 of 15. Those products need a separate white-background frame on the shoot day.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from Amazon's Product image guide (US store, primary) and the Tmall white-background collection (15 domains, collected 10 September 2026), modal counts; the separate-frame conclusion is reasoning, not a platform rule.</p>
+
+  <p>Then fill. It is the one number in the main image table that the three marketplaces do not share.</p>
+
+  <blockquote class="evidence">Fill is the main image number that pulls the builds apart. Amazon's guide says the product should take up 85 percent of the image. Tmall white-background guidance published in 2026 gives 70 to 80 percent, on 3 of 15 sources, while pages dated 2017 to 2024 say fill the frame, on 5 of 15. JD pages publish no fill figure, 0 of 24. Framing with white to spare and cropping tighter for Amazon keeps both readings available from one frame.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from Amazon's Product image guide (US store, primary) and the Tmall white-background and JD against Tmall collections (15 domains and 24 pages, collected 10 September 2026), contested on the Tmall side; a framing practice drawn from the spread, not a platform rule.</p>
+
+  <p>Whether Tmall rejects an 85 percent frame isn't published anywhere, so this page does not say it does. Neither Amazon page says whether 85 percent means area or width, so no pixel arithmetic is offered either.</p>
+
+  <h2>Which Amazon assets carry over, and which get rebuilt?</h2>
+
+  <p>Four kinds of work, using the cell types from the China variant matrix. Re-export is the same file, resized or re-sequenced. Re-crop changes the geometry of an existing frame. Re-edit covers retouch, a new cut, or a page build on existing material. New capture is anything the Amazon build cannot supply. The direction is Amazon outward: a finished US listing, and what each asset becomes. This is the table a producer needs on the shoot day, so it runs asset by asset.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Amazon asset</th>
+          <th scope="col">Becomes on Tmall</th>
+          <th scope="col">Becomes on JD</th>
+          <th scope="col">Work, Tmall / JD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Main image, shadowless, front view</th>
+          <td>White-background image, fifth slot</td>
+          <td>White-background image, first slot</td>
+          <td>re-export / re-export, same file</td>
+        </tr>
+        <tr>
+          <th scope="row">Main image with a shadow</th>
+          <td>White-background image</td>
+          <td>White-background image</td>
+          <td>re-edit / re-export of the Tmall edit</td>
+        </tr>
+        <tr>
+          <th scope="row">Main image, adult clothing on a model, or footwear at 45 degrees</th>
+          <td>White-background image</td>
+          <td>White-background image</td>
+          <td>new capture / re-export of the Tmall capture</td>
+        </tr>
+        <tr>
+          <th scope="row">Additional images, clean photographs</th>
+          <td>Main images one to four</td>
+          <td>Main images two to five</td>
+          <td>re-crop / re-export, re-sequenced</td>
+        </tr>
+        <tr>
+          <th scope="row">Additional images carrying text, callouts or composites</th>
+          <td>Carousel slots, or the detail page</td>
+          <td>Carousel slots, or the detail page</td>
+          <td>re-edit / shared with Tmall</td>
+        </tr>
+        <tr>
+          <th scope="row">Ingredient, energy guide and safety images</th>
+          <td>Category label slots, food and large appliances only</td>
+          <td>None found</td>
+          <td>new capture / none</td>
+        </tr>
+        <tr>
+          <th scope="row">Shoppable video</th>
+          <td>Listing video</td>
+          <td>Listing video</td>
+          <td>re-edit / re-export of the Tmall cut</td>
+        </tr>
+        <tr>
+          <th scope="row">A+ Content, Basic or Premium</th>
+          <td>Detail page, desktop and mobile</td>
+          <td>Detail page</td>
+          <td>re-edit, a page build / re-export of the Tmall build</td>
+        </tr>
+        <tr>
+          <th scope="row">Brand story carousel</th>
+          <td>Store decoration</td>
+          <td>Store decoration</td>
+          <td>excluded, a store-level asset</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The additional images row is where most of the rework hides. The reason is a difference in what each side allows on the picture itself.</p>
+
+  <blockquote class="evidence">Amazon leaves its additional images more room than Tmall does. Amazon's guide scopes its text rule to swatch images, and an Amazon moderator's 2026 guidance invites size comparisons and usage instructions. Tmall's most commonly published main image rules, on 11 of 18 sources, bar watermarks, borders, spliced composites, promotional overlay text, QR codes and third-party logos. Clean photographs move to Tmall with a square crop. Slides built on text and composites need a re-edit first.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from Amazon's Product image guide (US store, primary), an Amazon moderator's seller forum post (February 2026, scoped to that post) and the Tmall product image collection (18 domains, prohibition list on 11 of 18, collected 10 September 2026); the re-edit conclusion is reasoning, not a platform rule.</p>
+
+  <p>Export settings pull in opposite directions as well. Amazon asks for files saved with minimal or no compression. The China figures ask for small files (and disagree on how small).</p>
+
+  <blockquote class="evidence">One export setting clears every published Tmall and JD main image weight. The most commonly published figures run from a 3MB Tmall cap down to a 500KB Tmall recommendation, and JD pages give 500KB or 1MB. A main image under 500KB sits inside all of them. Amazon asks for the opposite at upload: files saved with minimal or no compression.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from Amazon's Technical image file requirements article (US store, primary), the Tmall product image collection (3MB on 6 of 18, 500KB on 3 of 18) and the JD against Tmall collection (JD 1MB on 4 of 6, 500KB on 2 of 6; Tmall 500KB on 4 of 6, 3MB on 2 of 6), collected 10 September 2026; arithmetic on published figures, not a platform rule.</p>
+
+  <p>Video shares nothing but the footage.</p>
+
+  <blockquote class="evidence">The Amazon video and the Tmall and JD video share footage, not a file. Amazon's guide asks for 16:9 or 9:16 at 1 to 12 minutes and up to 5 GB. The most commonly published Tmall listing video is a 1:1 square under 50MB, on 3 of 18 sources, and JD pages give 1:1 or 3:4, on 3 of 4. A square cut of 15 to 30 seconds sits inside Tmall's most published recommendation and JD's most published window, and below Amazon's one-minute floor. One shoot, two edits.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from Amazon's Shoppable video guide (US store, primary), the Tmall product image collection (1:1 and 50MB on 3 of 18; 9 to 30 seconds on 2 of 18, contested) and the JD against Tmall collection (1:1 or 3:4 on 3 of 4; 15 to 60 seconds on 3 of 5, contested), collected 10 September 2026; the window is arithmetic on contested inputs, not a platform rule.</p>
+
+  <h2>Is Amazon A+ Content the same as a Tmall or JD detail page?</h2>
+
+  <p>No. One is a module system with fixed image sizes. The other is a long page built twice.</p>
+
+  <blockquote class="evidence">Amazon's A+ Content is a module system. Basic A+ allows five modules on a detail page, with images at 970 by 300 pixels. Premium A+ allows seven, with images at 1464 by 600, and adds video and hotspots. Image files must be JPG, BMP or PNG in RGB and under 2 MB, and A+ images are not supposed to duplicate the image gallery.</blockquote>
+  <p class="source">Source: Amazon Seller Central help, A+ Content guide, US store, read 10 September 2026, page undated, a primary reading scoped to the US store. https://sellercentral.amazon.com/help/hub/reference/external/GLG4RQK2Y2RJADU4</p>
+
+  <p>A+ images are banner-shaped: 970 by 300 is about 3.2 to 1, and 1464 by 600 about 2.4 to 1. A China detail slice is the opposite shape, narrow and stacked.</p>
+
+  <blockquote class="evidence">An A+ build does not re-export to Tmall or JD as a page. Amazon's guide caps it at five modules with 970 by 300 pixel images, or seven with 1464 by 600 on Premium. The most commonly published Tmall detail page is a long scrolling page built twice, 790 pixels wide for desktop and 750 for mobile, on 5 of 18 sources each, and JD's published widths show no real difference from Tmall's. The A+ photography carries over as raw material. The page is rebuilt, once, for both China marketplaces.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from Amazon's A+ Content guide (US store, primary), the Tmall product image collection (18 domains), the JD against Tmall collection (24 pages; JD desktop 790 on 5 of 9, the split a sourcing artifact) and the China ecommerce content pack collection (8 references, taxonomy only), collected 10 September 2026; the rebuild conclusion is reasoning, not a platform rule, and one build should be confirmed in both seller backends.</p>
+
+  <p>A+ carries content rules of its own: no pricing or promotional language, no shipping details, no warranty or guarantee information, no time-sensitive references. No collection in this cluster counts a China detail page content rule, so this page makes no claim about whether those bans travel. The rebuild is argued on shape alone. The <a href="/resources/insights/jd-image-requirements-vs-tmall">JD image requirements article</a> carries the full width spread. The <a href="/resources/insights/tmall-product-image-requirements">Tmall product image requirements article</a> carries the detail page rows behind it.</p>
+
+  <h2>How do you shoot one product for Amazon, Tmall and JD?</h2>
+
+  <p>Four core set-ups on one day, each framed so its crops survive. Category extras get added only where the category asks. Every constraint below names its input, and none is a platform requirement.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Set-up</th>
+          <th scope="col">Feeds Amazon</th>
+          <th scope="col">Feeds Tmall and JD</th>
+          <th scope="col">Constraint carried</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">White background, shadowless</th>
+          <td>Main image</td>
+          <td>White-background image, fifth on Tmall, first on JD</td>
+          <td>Pure white at export. Whole product, shown once, one unit, no props, no mannequin, no model, no shadow, front view, centered. Frame with white to spare, then crop twice: 85 percent for Amazon, looser for Tmall. Square crop at 1,000 pixels or more, clearing Amazon's zoom threshold and the 800 floor</td>
+        </tr>
+        <tr>
+          <th scope="row">White background, category extra</th>
+          <td>Nothing extra</td>
+          <td>White-background image for adult clothing, flat, and footwear, front view</td>
+          <td>Amazon puts adult clothing on a model and footwear at 45 degrees; the Tmall rules bar models and favor a front view</td>
+        </tr>
+        <tr>
+          <th scope="row">Styled and detail stills, text-free, square-safe</th>
+          <td>Additional images</td>
+          <td>Main images one to four on Tmall, two to five on JD</td>
+          <td>Keep the product and any later text inside a centered square. Capture no text; add Amazon callouts in the edit only, because Tmall bars promotional overlay text</td>
+        </tr>
+        <tr>
+          <th scope="row">A+ and detail page frames</th>
+          <td>A+ module images, 970 by 300 or 1464 by 600</td>
+          <td>Detail page slices, 790 desktop and 750 mobile, one build for both</td>
+          <td>A+ must not duplicate the gallery, so these are extra frames. Shoot with room on both axes: A+ crops wide, China slices narrow and stacked</td>
+        </tr>
+        <tr>
+          <th scope="row">Video, one master</th>
+          <td>Shoppable video, 16:9 or 9:16, 1 to 12 minutes</td>
+          <td>Listing video, a 1:1 cut, MP4, under 50MB</td>
+          <td>Keep the product inside a centered square of the frame. Plan two edits: at least one minute for Amazon, 15 to 30 seconds for China, on contested inputs</td>
+        </tr>
+        <tr>
+          <th scope="row">Category label close-ups</th>
+          <td>Ingredient, energy guide and safety slots where the category has them</td>
+          <td>Food label image; appliance certification mark and energy label</td>
+          <td>Separate close-ups of each market's label artwork, in those categories only</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">One shoot day can feed all three listings from four set-ups. A shadowless white-background set-up gives Amazon's main image and the Tmall and JD white-background image. Text-free styled stills, framed so a centered square survives, give Amazon's additional images and both China carousels. A separate set of frames feeds the A+ modules and the China detail page, because Amazon does not want A+ to duplicate the gallery. One video master gives the Amazon edit and a square China cut. Clothing, footwear and labeled categories add their own frames.</blockquote>
+  <p class="source">Source: derived 10 September 2026 from Amazon's Product image, A+ Content and Shoppable video guides (US store, primary) and the Tmall product image, Tmall white-background, JD against Tmall and China variant matrix collections (collected 10 September 2026); a production plan built from published figures, not a platform requirement.</p>
+
+  <p>The plan doesn't ask whether a frame is photographed or generated, only whether it clears the crop. hubStudio publishes its own split for this work.</p>
+
+  <blockquote class="evidence">hubStudio publishes that most of its ecommerce catalogs run about 70 percent generated and 30 percent shot.</blockquote>
+  <p class="source">Source: hubStudio's ecommerce design service page, read 10 September 2026, a published first-party delivery mix attributed to that page, not a measurement with a stated sample or period.</p>
+
+  <p>The <a href="/solutions/platforms/amazon">Amazon platform page</a>, the <a href="/solutions/platforms/tmall">Tmall platform page</a> and the <a href="/solutions/platforms/jd">JD platform page</a> cover how listings are produced for each marketplace. The <a href="/services/design/ecommerce">ecommerce design service page</a> covers the full marketplace asset set, and the <a href="/resources/insights/one-shoot-six-platforms-china-variant-matrix">China variant matrix</a> carries the same shoot on to the Chinese social platforms.</p>
+
+  <p>Reviewed 14 September 2026. Confirm every Tmall and JD figure in your own seller backend before building a batch to it.</p>
+
+  <h2>Questions buyers ask about listing one product on Amazon, Tmall and JD</h2>
+
+  <h3>Can I use Amazon product images on Tmall?</h3>
+
+  <p>Some of them, as your own assets. A shadowless, front-view Amazon main image re-exports as the Tmall white-background image, which sits fifth in the carousel. Clean additional images re-crop to a 1:1 square. Slides built on text, badges or composites need a re-edit first, because the most commonly published Tmall rules bar promotional overlay text. Confirm in your seller backend.</p>
+
+  <h3>What is the difference between Amazon and Tmall main images?</h3>
+
+  <p>Amazon states a pure white background, 85 percent fill, 500 to 10,000 pixels on the longest side and no aspect ratio, in its public US help article. The most commonly published Tmall main image is a 1:1 square at 800 by 800, with the white image in the fifth slot and a 70 to 80 percent fill on pages dated 2026. Those Tmall figures are modal, not official.</p>
+
+  <h3>Does JD accept the same images as Tmall?</h3>
+
+  <p>On the published record, yes. Both come back as a 1:1 square at 800 by 800 pixels, on 12 and 14 of 18 sources for Tmall and 6 of 6 and 9 of 10 pages for JD. The one difference every page agrees on is order: the white-background image is first on JD and fifth on Tmall. Move it, do not reshoot it.</p>
+
+  <h3>Is Amazon A+ Content the same as a Tmall detail page?</h3>
+
+  <p>No. A+ is a module system: five modules with 970 by 300 images on Basic, seven with 1464 by 600 on Premium, under 2 MB a file. The most commonly published Tmall detail page is a long scrolling page built twice, 790 pixels wide for desktop and 750 for mobile. The A+ photography carries over as raw material. The page itself is rebuilt.</p>
+
+  <h3>How do I shoot one product for Amazon, Tmall and JD?</h3>
+
+  <p>Plan four set-ups on one day: a shadowless white-background frame with white to spare, text-free styled stills that survive a centered square crop, a separate set of frames for A+ and the China detail page, and one video master cut twice. Add a flat or front-view white frame for clothing and footwear, and label close-ups where the category asks for them.</p>
+</ArticleLayout>

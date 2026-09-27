@@ -1057,3 +1057,199 @@ in robots.txt, the same repointing briefs 12, 14 and 16 made.
   /pricing layer is the obvious placement).
 
 ## R8. Reconciliation (filled after drafting)
+
+## Source check 2, run 2026-09-17
+
+Check 1 was 9 and 10 September 2026. Every URL behind a figure that reaches the
+page was re-fetched on 17 September 2026. Results below. Two surfaces moved.
+
+| Surface (never named on the page) | Check 2 result |
+|---|---|
+| US wage program, photographers | Unchanged. $44,660 a year, $21.47 an hour, tenth under $14.82, ninetieth over $44.14, 145,000 jobs, projected decline 1 percent 2025 to 2035, May 2025 |
+| US wage program, interpreters and translators | Unchanged. $60,170 a year, $28.93 an hour, tenth under $37,070, ninetieth over $103,660, 73,900 jobs, self-employed excluded, May 2025 |
+| US wage program, graphic designers | Unchanged. $62,960 a year, tenth under $39,520, ninetieth over $104,910, May 2025 |
+| US wage program, film and video editors, camera operators | Unchanged. $75,420 and $74,990, May 2025 |
+| US wage program, art directors | Unchanged. $114,850, May 2025 |
+| US employer compensation cost series | Superseded. A newer reference period, June 2026, was released 9 September 2026: private industry $46.89 an hour worked, $32.82 wages, $14.07 benefits. The March 2026 figures behind the cleared quotes were $46.60, $32.60 and $14.01. The load moves from 1.4294 to 1.4287, which is 1.43 either way, so no derived figure on the page changes. See the decision below |
+| Studio card A (per photo, per clip) | Unchanged. $39 a photo, $93 a clip, $89 a UGC video, $9 and up a premium photo edit, $199 a pro edit, $49 an add-on, $149 studio fee a booking, styling $149 an hour, full-body model $159 an hour, hand model $79 an hour |
+| Studio card B (per image, membership) | Changed. See the failed row below |
+| Editing card A (per operation) | Unchanged in substance. Shadow $0.25, clipping path and background removal $0.39, photo retouching $0.69, ghost mannequin $0.89, image masking and multi-clipping $1.19. Two specialty operations sit above the cleared band, symmetrical edit $2.99 and vector conversion $3.99, and were outside it at check 1 too |
+| Editing card B (per image plus platform fee) | Unchanged. $0.95 an image, $95 a month, under 1,000 images a year declined to a trial, 200 images a day guaranteed, next-morning delivery |
+| Managed subscription card, hours blocks | Unchanged. $5,995 for 120 hours, $8,995 for 180 hours, custom from $6,000, unused hours do not roll over, $995 for a two-week pause once a quarter |
+| Managed subscription card, floors and dedicated tier | Unchanged. $15,000 monthly minimum on an annual term plus a $1,000 monthly software fee; dedicated from $30,000 a month on a twelve-month term plus the same fee |
+| Unlimited-request card A | Unchanged. $699, $1,199, $1,399 and $2,599 a month; yearly billing $559 to $2,079; caps read "1 daily output", "2 daily outputs", "1 part-time designer", "2 part-time designers" |
+| Unlimited-request card B | Unchanged. $995, $1,995 and $4,500 a month; caps read "2 Active Workstreams", "3 Active Workstreams", "4 Active Workstreams" |
+| Chinese photography card | Prices unchanged. Flat lay 80 to 150 RMB, hanging 100 to 180, in-studio model 200 to 300, scene 150 to 300, retouch 50 to 200, short video 15 to 60 seconds at 3,000 to 15,000 RMB a piece, five-set minimum, 200 to 500 RMB travel in the Pearl River Delta, page dated 20 July 2026. One input behind a derived row did not survive. See PI-5 below |
+| Trade press, survey discontinued | Unchanged. 11 February 2014, 25 years, last data year 2011, 30-second spot averaged $354,000 |
+| Generation price surface A | Unchanged. $0.05 and $0.08 a second lite at 720p and 1080p, $0.10, $0.12 and $0.30 fast, $0.40 and $0.60 standard, audio included at the default |
+| Generation price surface B (credits) | Unchanged. $12 for 625 credits, $28 for 2,250, $76 for 9,500 a month on annual billing ($15, $35, $95 monthly), 12 credits a second of generated video |
+| Global advertiser trade body content production research | Unchanged. 19 percent of total marketing budgets against 24 percent pre-pandemic, 50 multinational brands, more than ten sectors, 25 March 2025 |
+| Creative analytics benchmark | Unchanged. 578,750 creatives, 6,015 brands, $1.29 billion of ad spend, no cost per asset in any currency, period covered not stated |
+| UK advertiser trade body hourly rate benchmarks | Unchanged. 2025 benchmarks, released only to members who contribute their own rates, aggregated, no figure published openly |
+
+### The one row that failed check 2: PI-2
+
+At check 1 the second studio card published complexity uplifts as dollar
+figures: $75 advanced, $100 complex (jewelry and watches), $150 hand model,
+$190 full-body model. On 17 September 2026 none of those four figures appears
+anywhere on the card. The same complexity ladder is now published as credit
+multipliers, 1 credit standard, 1.5 advanced (ghost mannequin, stuffed,
+oversized), 2 complex (jewelry, watches), 3 hand model, 4 full-body model,
+against headline rates of "From $50 per image" for product work and "From $95
+per image" for model work, with project minimums of $300 for product and five
+outfits or twenty images for model shoots.
+
+**Decision.** The four dollar uplifts are cut from the page. What replaces them
+is what the card publishes today: the two headline per-image floors, both
+already cleared (PI-1 at $50, LM-1 at $95), and the credit ladder as a
+complexity ladder with no dollar figure attached. Multiplying the multipliers
+by the $50 floor would reproduce three of the four old numbers, but "From $50"
+is a floor rather than a rate, so that arithmetic would publish a price the card
+does not. The membership ladder ($480, $2,340, $7,500 a year for 10, 20 and 30
+percent off product work) and the credit blocks ($1,500 for 25, $2,500 for 50,
+$4,500 for 100) are unchanged and stay. One new detail: the discount is now
+split by work type, 10, 20 and 30 percent on product and catalog work against 5,
+10 and 15 percent on creative and model work. The breakevens at 96, 234 and 500
+images a year are computed on product work and are unaffected.
+
+This change is itself publishable, and it is the strongest single piece of
+evidence the page has for its own method: a card that set a load-bearing band in
+this category restated its price structure inside seven days.
+
+### The one derived row that is cut: PI-5
+
+PI-5 derived a 30 to 50 image minimum order, and a 2,400 to 7,500 RMB entry
+ticket for flat lay alone, from "five sets minimum" times "6 to 10 images a set"
+times the published per-image band. On the 17 September re-read the five-set
+minimum is a binding term of the card, but the 6 to 10 images figure sits in the
+page's FAQ as general ecommerce practice (main image, side, back, detail,
+scene), not as the card's own commitment. Multiplying a general-practice figure
+by a specific card's price produces a number neither source publishes, and this
+file's own do-not-publish log rejects exactly that move on a Chinese short video
+ladder.
+
+**Decision. PI-5 is cut in full.** The page prints the five-set minimum, which
+the card does bind, and prints no entry-ticket total. The ledger row proposed for
+PI-5 is withdrawn, and the ledger's existing brief 13 row should have "6 to 10
+images a style" relabeled as the page's general-practice note rather than a term
+of the card.
+
+### The employer compensation decision
+
+The cleared quotes carry the March 2026 reference period and the arithmetic
+"$46.60 divided by $32.60 is 1.43". Sibling articles already in the output folder
+print that sentence word for word, and the ledger row says March 2026. The newer
+June 2026 reference period gives 1.4287 against 1.4294, so every derived figure
+on this page ($52, $52, $79, $31, $41 and $54.32 an hour, about $452,000 a year)
+is identical at the precision printed.
+
+**Decision. Keep the cleared quotes verbatim with the March 2026 reference
+period, and add one dated sentence saying the series has since published a June
+2026 reference period that puts the same load at 1.43.** That keeps this page
+word for word with its siblings, which is the ledger's whole purpose, and still
+tells the reader the current reading. The June 2026 row goes to the ledger so the
+next cost article can adopt it and all of them can move together.
+
+### Check-2 dates to write into the ledger
+
+Every row listed in the table above takes check 2 = 2026-09-17, except the
+compensation row, which takes check 2 = 2026-09-17 with the note that the
+reference period advanced, and the two rows resolved above (PI-2 failed, PI-5
+withdrawn).
+
+### Check 2 addendum, 2026-09-17: three more surfaces, one correction
+
+| Surface | Check 2 result |
+|---|---|
+| Commercial adaptation card | Unchanged and confirmed. 1,350 EUR ex VAT for a 15-second adaptation, including a new voice-over, titles, packshot, audio mix and mastering; broadcast master files 65 EUR ex VAT each; still no publication date printed on the page |
+| Chinese detail-page card, 2023 | Unchanged. Published 12 June 2023. Freelance designers "200 to 300 RMB" for mass-market products; a professional designer around 500 RMB, and 1,000 to 3,000 RMB for higher-positioned products; a template route at 90 RMB for desktop and mobile together |
+| Chinese detail-page page, 2026 | Prices unchanged, 1,500 to 5,000 RMB a set, published 30 April 2026, and confirmed as sponsored content on a user-upload platform. **Correction below** |
+
+**Correction to the cleared detail-page quote.** The cleared quote says "None of
+them states what a set contains." That is no longer accurate for the 2026 page,
+which defines its set as 20 pieces: main images, the detail-page cover image,
+scene images and detail shots. The quote is fixed rather than dropped.
+
+This changes the finding materially and for the better. Dividing the published
+set price by the published set size gives 75 to 250 RMB an asset inside the set,
+which overlaps the 2023 page's 200 to 300 RMB. The order-of-magnitude gap is
+mostly a unit difference, not a price difference, and that is the page's own
+thesis demonstrated on a live pair of sources. Both inputs are published on the
+same page and the operation is one division, so it clears the inclusion rule.
+
+Two limits travel with it. The 2023 figure is a price for one detail page, while
+the 2026 set mixes main images, a cover, scene images and detail shots, so the
+two are still not the same unit and the page must say so. And the 2026 page is
+sponsored content for a tool that prices the same 20-piece set far lower;
+**that comparison figure is not published here**, because it is a seller pricing
+both sides of its own comparison, already an exclusion in this file.
+
+**Three rows where check 2 could not be run, and why.**
+
+| Row | Why | What to do about it |
+|---|---|---|
+| UK earnings survey, Table 14.7a | The evidence is a dated workbook release (2025 provisional, released 23 October 2025), not a live page. A fixed statistical release cannot change without a new release | Treat check 1 as standing. Re-check when the 2026 provisional edition lands |
+| China average wages 2024 | Same, and the release is captured locally at research/china-or-india-for-creative-production/nbs-2024-average-wages.html | Treat check 1 as standing |
+| Translation rate-card band, $0.08 to $0.18 a source word | The ledger records the source as "multiple vendor pricing pages collected 2026-09-09, no company named", with no URL list. Check 2 is not runnable as recorded | **Ledger defect.** The row needs its URL list recorded so the band can be re-checked. Logged for the orchestrator. The band still publishes, carrying its existing label: a rate-card band with no method behind it |
+
+Filled 2026-09-17 after drafting and after the 18-pass quality loop.
+
+**Method.** Every numeric token in the finished body was extracted by script and
+traced to a row in the claims table, the master inventory, or a cleared quote.
+147 dollar tokens were audited one at a time against this file. Nothing in the
+draft is sourced retroactively.
+
+### Figures removed from the draft during reconciliation
+
+| Figure | Where it was | Why it was removed |
+|---|---|---|
+| "$342,000" and "$387,000", the two figures labeled as 2025 commercial production survey results | The conflicts table | This file's conflicts section already ruled that the 2025 figures are cut and only the discontinuation and the dated 2011 average publish. The table row now names them as two higher figures labeled 2025 and prints neither amount. They survive only in the asset brief's record of what was excluded, which does not render |
+| The $75, $100, $150 and $190 complexity uplifts | Would have been the master table and the product image section | Failed source check 2 on 2026-09-17. They appear once in the body, inside the section on re-checking, explicitly named as a superseded reading the card stopped publishing. They are not carried as a price anywhere |
+| The 30 to 50 image minimum order and the 2,400 to 7,500 RMB entry ticket (PI-5) | Would have been the product image section and the decision table | Withdrawn on 2026-09-17. The images-per-set input is a general-practice note in the card's FAQ, not a term the card binds. The page prints the five-set minimum only |
+| "the single most misquoted band in this category" | The product image section | An unsourced superlative. Replaced with the checkable statement: quoted whole and without the caveat, the band reads more solid than the evidence under it |
+| "the single largest downstream cost attached to using the work" | The exclusions section | An unsourced superlative about media usage payments. Replaced with "the payments that running the work then triggers", which is what the bid form's absence actually shows |
+
+### Arithmetic errors caught and corrected
+
+| Claim as first drafted | Correction | Where |
+|---|---|---|
+| Retouch services are priced "four orders of magnitude apart" | Wrong by two orders. The retouch spread runs from $0.25 an operation to about 200 RMB, roughly $30, which is about a hundredfold, not ten thousandfold. Corrected to "more than a hundredfold apart" in both places it appeared, the retouch section and FAQ 5 | Retouch section, FAQ |
+
+### New figures published in this piece and not in an earlier article
+
+| Figure | Basis | Confidence |
+|---|---|---|
+| Studio card B publishes "from $50 per image" against a $300 project minimum, and "from $95 per image" for model work against a five-outfit or twenty-image minimum | Read at source 2026-09-17 | primary, single card |
+| The same card now expresses complexity as credit multipliers of 1, 1.5, 2, 3 and 4 rather than as dollar uplifts | Read at source 2026-09-17, compared against the 2026-09-10 reading | primary, single card, and a dated change |
+| The top of the per-operation editing band reads $1.19 on the 2026-09-17 re-read, with two specialty operations above it at $2.99 and $3.99 | Read at source 2026-09-17 | primary, single card |
+| The 2026 Chinese detail-page source defines its set as twenty pieces: main images, the detail-page cover, scene images and detail shots | Read at source 2026-09-17 | primary, single page, sponsored content |
+| Dividing that published set price by that published set size gives 75 to 250 RMB an asset, overlapping the 2023 page's 200 to 300 RMB | Arithmetic on two figures published on the same page, operation shown on the article | derived, single card, and the unit caveat travels with it |
+| The employer compensation series published a June 2026 reference period on 9 September 2026, putting the load at 1.43 | Read at source 2026-09-17 | primary |
+
+### Cleared quotes altered, and why
+
+| Quote | Change | Reason |
+|---|---|---|
+| The capture band quote (PI-1 and PI-2 combined) | Rewritten. Keeps $39 to $50, drops the four uplifts, adds the $149 booking fee and the $300 project minimum, and redates the source line to 17 September 2026 | Half the original quote failed check 2. SPEC directs that a failed re-fetch is fixed or cut, never shipped as written |
+| The detail-page conflict quote | "None of them states what a set contains" replaced with the set definition the 2026 page does publish, and both page dates plus the 17 September re-read added to the source line | The original sentence is no longer accurate. The correction strengthens the finding rather than weakening it |
+| The dedicated-tier quote (SA-6) | Source line now reads "read 10 September 2026 and re-read 17 September 2026" | Accuracy. The card was re-read for check 2 |
+
+Every other quote is carried verbatim from the research file named above it, so
+this page agrees word for word with its siblings.
+
+### Sources on the page where check 2 could not be run
+
+Three, each disclosed above under the check-2 addendum: the UK earnings workbook
+and the Chinese wage release, both fixed dated publications rather than live
+pages, and the translation rate-card band, whose ledger row records no URL list.
+The first two keep check 1 standing. The third is logged as a ledger defect for
+the orchestrator and is published carrying its existing label, a rate-card band
+with no method behind it.
+
+### Slot and brief requirements
+
+Every must-include in the brief is met, with the three exceptions this file
+predicted and the page prints as stated absences: no USD or EUR detail-page
+band, no absolute transcreation figure, and single-source labeling on the model
+image rows. The four tests are printed with the independence miss in plain
+words, as required.

@@ -1,0 +1,2466 @@
+﻿2026-09-25T04:00:02 start publish (model claude-opus-5-5)
+2026-09-25T04:00:02 model attempt 1/4, cycle 1: Opus 5.5
+Failed to authenticate. API Error: 403 Request not allowed
+2026-09-25T04:00:05 model Opus 5.5 exited 1; immediately trying Fable
+2026-09-25T04:00:05 model attempt 2/4, cycle 1: Fable
+Failed to authenticate. API Error: 403 Request not allowed
+2026-09-25T04:00:08 model Fable exited 1; immediately trying GPT-6 Astra
+2026-09-25T04:00:08 model attempt 3/4, cycle 1: GPT-6 Astra
+codex.exe : 2026-09-24T20:00:15.734165Z ERROR codex_models_manager::manager: failed to refresh available models: 
+request timed out
+At C:\Users\cyril\Project\automation\scripts\Invoke-ProjectAgent.ps1:38 char:16
++   $InputText | & $Executable @Arguments 2>&1 | ForEach-Object {
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-09-24T20:0...quest timed out:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-09-24T20:00:15.749071Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+OpenAI Codex v0.155.0-alpha.16.3
+--------
+workdir: C:\Users\cyril\Project\hubstudio
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: high
+reasoning summaries: none
+session id: 01a0d501-1f85-7682-b456-546a1f36c9aa
+--------
+user
+This is an unattended scheduled run. Use the repository at C:\Users\cyril\Project\hubstudio.
+The canonical task prompt is C:\Users\cyril\Project\hubstudio\editorial\logs\runs\2026-09-25-publish.prompt.txt 
+(SHA-256 AE9F37F63BAC4AEBCB0556FB3AFE9EE82CDC288A490ADCCCCC38FCDBAC09B0C5), and the shared
+run manifest is C:\Users\cyril\Project\hubstudio\editorial\logs\runs\2026-09-25-publish.prompt.txt.context.json. Read 
+the current run log at C:\Users\cyril\Project\hubstudio\editorial\logs\runs\2026-09-25-publish.txt and inspect
+the current working tree before acting: an earlier model may have made partial
+progress or exited with an error. Correct that error, continue only incomplete
+work, preserve valid completed work, and record every decision in the run log.
+Do not abandon the task or ask a question. The same prompt, files, workspace,
+log, and manifest are supplied to every model in this fallback chain.
+Publish every reviewed draft that is due.
+
+Read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md first.
+In editorial/schedule.csv, find every row whose status is image_ready and
+whose publish_date is today or earlier. For each one, in date order, run the
+publish step: /createblogarticle on the output file. That creates
+src/pages/resources/insights/<slug>.astro, adds the entry to
+src/data/insights.ts, converts the plain-text internal references into links,
+wires the hero image and updates every listing surface. Insights are English
+only on this repo, so there is no locale propagation and no /deep-translate
+pass.
+
+Then run npm run build and npm run check. When both pass: set the row to
+published with published_on, then git add everything the article touched (the
+article page, src/data/insights.ts, the hero image, listing surfaces,
+editorial/output, editorial/research, editorial/logs, editorial/schedule.csv,
+editorial/sources) and commit on main with a conventional commit message
+(feat(insights): publish <slug>), then git push origin main. Only after the
+push succeeds, run node editorial/scripts/notify-publish.mjs with the slug,
+title, build result, log path and the commit hash in --note.
+
+This run is unattended: never ask a question. If the build or the check fails,
+do not commit, do not push, leave the row at image_ready, put the error in the
+run log, and send the email with --build failed and the error in --note.
+
+2026-09-24T20:00:30.574013Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when 
+Client(HttpRequest(HttpRequest("http/request failed: error sending request for url 
+(https://chatgpt.com/backend-api/ps/mcp)")))
+2026-09-24T20:00:45.376396Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when 
+Client(HttpRequest(HttpRequest("http/request failed: error sending request for url 
+(https://chatgpt.com/backend-api/ps/mcp)")))
+2026-09-24T20:01:00.585169Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when 
+Client(HttpRequest(HttpRequest("http/request failed: error sending request for url 
+(https://chatgpt.com/backend-api/ps/mcp)")))
+2026-09-24T20:01:01.187143Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+2026-09-24T20:01:15.383329Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when 
+Client(HttpRequest(HttpRequest("http/request failed: error sending request for url 
+(https://chatgpt.com/backend-api/ps/mcp)")))
+2026-09-24T20:01:15.929358Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 2/5
+2026-09-24T20:01:30.887293Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 3/5
+2026-09-24T20:01:46.220241Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 4/5
+2026-09-24T20:02:02.360591Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 5/5
+2026-09-24T20:02:20.046785Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+warning: Falling back from WebSockets to HTTPS transport. stream disconnected before completion: No connection could 
+be made because the target machine actively refused it. (os error 10061)
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:04:50.757858Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:09:25.769092Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:14:00.788355Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:18:35.810510Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:23:10.834678Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:27:45.846963Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:32:20.868270Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:36:55.891043Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:41:30.913571Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:46:05.923176Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:50:40.939752Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:55:15.955452Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:59:50.973996Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:04:25.991073Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:09:01.013907Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:13:36.024351Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:18:11.052306Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:22:46.075928Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:27:21.101711Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:31:56.130148Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:36:31.144959Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:41:06.153524Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:45:41.163665Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:50:16.184743Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:54:51.200947Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:59:26.217416Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:04:01.225741Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:08:36.248268Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:13:11.262756Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:17:46.290296Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:22:21.307564Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:26:56.319687Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:31:31.336563Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:36:06.359986Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:40:41.386159Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:45:16.392021Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:49:51.405820Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:54:26.413885Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:59:01.442759Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:03:36.466261Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:08:11.489025Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:12:46.504949Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:17:21.529059Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:21:56.545707Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:26:31.551139Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:31:06.568003Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:35:41.580042Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:40:16.599670Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:44:51.628494Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:49:26.646516Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:54:01.663348Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:58:36.684903Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:03:11.716579Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:07:46.747756Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:12:21.765996Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:16:56.786360Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:21:31.809564Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:26:06.830727Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:30:41.858680Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:35:16.872866Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+codex
+IΓÇÖll read the editorial instructions, run log, and working tree, then publish the due drafts and record the results 
+in the run log.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content editorial/CLAUDE.md; 
+Get-Content editorial/SPEC.md; Get-Content editorial/RUNBOOK.md' in C:\Users\cyril\Project\hubstudio
+ succeeded in 328ms:
+# hubStudio editorial system
+
+You are drafting articles for **hubstudio.ai**, an AI-native creative
+production studio with studios in Shanghai, Changsha, Hong Kong and the
+Philippines. Four articles a week, from a brief file in `briefs/`. Every path
+in this folder is relative to `editorial/` at the repo root.
+
+The plan this system executes is `editorial/SEARCH-SPEC.md`.
+That file is the source of truth for strategy: gaps, territory, calendar and
+the 30 briefs. This file is the source of truth for execution.
+
+Read this file and `SPEC.md` before every draft. **These two files override
+any conflicting rule inside the createarticle, content-quality-us,
+generate-image-openai and createblogarticle skills.** The repo's
+`.claude/CLAUDE.md` and `hubstudio-image-style-guide.md` still apply on top.
+
+## The standing rule that governs everything
+
+**No competitor is ever named, described, compared to, or alluded to.** No
+conquest pages, no "X alternatives", no "us against them" tables, no named
+rate cards, no commentary on another company's rebrand, layoffs, results or
+website. This applies to articles, image captions, FAQ answers, the run log
+and the commit message.
+
+Where a market figure is needed, attribute it to the category and the date,
+never to a company.
+
+Correct: "published subscription rate cards in this category start between
+roughly $6,000 and $15,000 a month, September 2026."
+
+Incorrect: naming whose card it is.
+
+Comparison content still gets written. It compares **models of buying**
+(subscription, in-house, platform, studio) and **regions**, never firms.
+
+## The pipeline, in order
+
+Every article goes through these steps. None is optional.
+
+| Step | Skill or tool | What it does | Status it sets in `schedule.csv` |
+|---|---|---|---|
+| 0. Research | The research gate below, then `research/<slug>.md` | Primary sources only for anything with a number 
+in it, Chinese-language web first | `researched`, `researched_on` |
+| 1. Draft | `/createarticle` | 13 iterations from the brief to `output/<slug>.md` | `drafted`, `drafted_on` |
+| 2. Quality | `/content-quality-us` | 18-pass loop on the draft, in place | `quality_passed`, `quality_passed_on` |
+| 3. Image | `/generate-image-openai` | Hero image from the feature-image block | `image_ready`, `image_generated_on` |
+| 4. Publish | `/createblogarticle` + build + git | Creates the article page and the `insights.ts` entry, wires the 
+image, runs `npm run build` and `npm run check`, commits on main, pushes to origin | `published`, `published_on` |
+| 5. Notify | `editorial/scripts/notify-publish.mjs` (Resend) | Emails a publish summary to Cyril | (noted in the run 
+log) |
+
+"Draft today's article." runs steps 0 to 3 and stops. Step 4 runs only when a
+person says "Publish <slug>" after reviewing the draft. Step 5 follows step 4
+automatically. Nothing publishes itself.
+
+Step 2 runs on all 48 articles, not a selection. Step 3 uses the
+`generate-image-openai` skill only, never `scripts/generate-image.mjs`.
+
+## Project wins over runbook
+
+When `RUNBOOK.md` or `SPEC.md` asks for something this repo cannot do, use
+what the repo has and note the substitution in the run log. Do not stall, do
+not invent a tool, do not ask.
+
+Already settled, and different from what the search spec assumes:
+
+1. **Insights are Astro pages, not a content collection.** An article
+   publishes as `src/pages/resources/insights/<slug>.astro` plus one entry in
+   `src/data/insights.ts`. The spec's `template:` frontmatter field is
+   metadata for the publish step, not a collection key.
+2. **Hero images go to `public/Images/insight-<slug>.webp`** and are
+   referenced as `/Images/insight-<slug>.webp`. The spec says
+   `public/images/insights/<slug>.webp`. The repo convention wins, because
+   `src/data/insights.ts` and the pre-commit optimizer both key on it.
+3. **English only.** There is no French insights section under
+   `src/pages/fr/`, so there is no locale propagation and no `/deep-translate`
+   pass on an insight. If the section is built later, publishing gains that
+   step and this line gets rewritten.
+4. **Research files live at `editorial/research/<slug>.md`**, not `research/`
+   at the repo root, so the whole system sits in one folder.
+5. **The email goes through Resend**, the contact form's provider, to the
+   address in `CONTACT_TO_EMAIL`.
+6. **No Han characters in a published English article, glosses included.**
+   Decided 2026-09-09. The project rule in `.claude/CLAUDE.md` allows Han
+   characters and full-width punctuation only in `zh-*` locale content, with no
+   exception for terminology, and all 25 articles published before this system
+   existed carry none. That rule outranks the gloss convention in `SPEC.md`.
+   Write a Chinese term in romanized form instead: "the explicit label, xianshi
+   biaoshi", "Douyin, RedNote and Tmall", "Economic Information Daily". The
+   research files keep the characters, because they are working documents and
+   are never served. `check-draft.mjs` permits a gloss, so this one is on the
+   writer: search any finished draft for Han before publishing.
+7. **China platform specs publish the most commonly published value, with the
+   method stated and a dated disclaimer.** Decided 2026-09-10 by the site
+   owner, overriding R3 and the runbook line that an unverifiable spec does not
+   go on the page.
+
+   The reason the old rule could not hold: both rule centres gate their
+   content. On 2026-09-10 `rule.tmall.com` returned a 302 to a channel page
+   that returned a further 302 and no rule body, and `rule.jd.com` returned the
+   rule-centre heading and nothing else on two separate rule ids. No open
+   source reaches the primary text, in Chinese or English. Waiting for a seller
+   backend capture meant nine briefs never shipping.
+
+   **The method, which is not a guess and must be printed on every page that
+   uses it.** For each spec value, collect every published figure across as many
+   independent sources as can be found, Chinese-language sources first. Record
+   how many sources give each value. Publish the modal value, the one that
+   appears most often, and say how many sources agreed. Where the spread is
+   material, publish the range as well as the mode. Label every row as
+   `consensus` where sources broadly agree or `contested` where they do not.
+
+   **What must never happen under this rule.** Never present a modal value as
+   verified, as official, or as read from the platform. Never cite a rule centre
+   as the source of a number that did not come from it. Never let a single
+   vendor page carry a value alone: one source is not a mode, and a value found
+   once is `contested` at best.
+
+   **Every page carrying these specs opens with the disclaimer block** in
+   `SPEC.md`, carries a visible reviewed date, and tells the reader to confirm
+   against their own seller backend before building to the number. When a
+   backend capture session does happen, those rows get replaced with primary
+   values and the disclaimer narrows to the rows still unverified.
+
+## Model quality: no compromise
+
+Every step runs on the most capable model available at the time. Drafting,
+the quality loop and review run on the best Claude model in this environment,
+never a faster or smaller mode. Image generation uses `gpt-image-2` at high
+quality. If a step is offered a cheaper path, decline it and say so in the log.
+
+## The research gate, mandatory before any drafting
+
+`createarticle` fetches the target website. That is context, not research.
+No piece is drafted until the gate has been passed and
+`research/<slug>.md` exists on disk.
+
+Roughly 45 to 90 minutes of active research per money page, two to four hours
+per spec page including capture. If a piece took less, it was not researched,
+it was recalled, and recall is where fabricated specifications come from.
+
+**R1. Map what has to be true.** List every factual claim the piece will need
+before looking anything up. Anything unverifiable gets cut from the outline,
+not softened in the copy.
+
+**R2. Map the SERP you are beating.** Run the target query plus at least three
+phrasings a buyer would type. Record the top ten per query: domain, page type,
+what it answers, what it misses, how old it is. Two outputs: the specific gap
+in one sentence, and the bar for length, depth and table count. If the ranking
+pages all miss the same thing, that thing is the H1.
+
+**R3. Primary sources only, for anything with a number in it.** For China
+platform specs that means the seller backend, the live app and the official
+rule pages. Screenshot everything, timestamp it, save it to
+`research/<slug>/`. A spec taken from another English article is not
+evidence, it is a rumor with a citation.
+
+**R4. Search in Chinese.** For anything China-related, search the
+Chinese-language web before the English one. English coverage of Chinese
+platforms is stale by two to four years on most queries in this plan. Record
+the Chinese source and the English rendering side by side.
+
+**R5. Interrogate every figure.** Record source URL, publication date, sample
+size, method, and who paid for it. A figure with no stated method does not get
+published. A figure published by a party that sells the thing it flatters gets
+labeled a market claim, not evidence. A percentage with no absolute behind it
+gets labeled as such.
+
+**The one exception, decided 2026-09-09.** A first-party figure the site
+already publishes may run without a method statement, attributed to the page
+that publishes it, because the article then makes no claim the site does not
+already make. This covers the delivery figures in the ledger, and only those.
+It does not reach third-party or market figures, which still need a method or
+they do not go on the page. Supplying the method later upgrades such a figure
+from published to measured, and that is worth doing.
+
+**R6. Triangulate, and publish the disagreement.** One primary source, or two
+independent secondary sources. Where sources conflict, publish the range and
+say why. False precision is worse than a stated range.
+
+**R7. Write the research file before the article.** See `SPEC.md` for its
+shape. Gate: no drafting starts until it exists and every claim in it is
+marked. Unverified claims are cut from the outline before writing, not hedged
+during it.
+
+**R8. Reconcile after drafting.** Every number in the finished draft is
+checked back against the claims table. Anything in the draft that is not in
+the research file is removed, not sourced retroactively.
+
+**Parallelism.** Research the week's four pieces as four parallel subagents,
+each returning a completed research file. Draft them sequentially afterward,
+because the pieces cross-link.
+
+## Two rules that override everything else
+
+1. **Publish market figures, never hubStudio rate figures.** Cost content
+   cites third-party benchmarks and category-level ranges. hubStudio's own
+   numbers stay in the calculator output and the first call. Search the
+   finished file for `$` and check every hit.
+2. **China platform specs come from primary evidence only.** Seller backend
+   screenshots, live app captures, real rejection notices. If it cannot be
+   verified, it does not go on the page. Publish the range and the conflict
+   instead.
+
+## The one conflict you must resolve
+
+The upstream CreateArticle skill plants deliberate typos in iteration 7. The
+house copy at `.claude/skills/createarticle/` replaces that with a cadence
+pass, and the rule stands on its own: **no deliberate errors, ever.** No
+planted misspellings, no missing apostrophes, no then/than swaps. Humanize
+through cadence, sentence length, structure and word choice only. Say in the
+log that iteration 7 ran as the cadence variant.
+
+If a draft contains planted errors, the skill was ignored. Rerun iteration 7.
+
+## Three smaller conflicts, already decided
+
+1. **SEO ceilings.** `content-quality-us` says title under 60 and meta under
+   156. The house ceilings are tighter: title 52, meta 152, excerpt 25 words.
+   The tighter number wins. Count, do not estimate.
+2. **Body text size.** The repo's permanent rule is that running body copy uses
+   `var(--type-body)`, never `var(--type-small)`. That binds the publish step
+   when it writes the `.astro` page.
+3. **No numbers in cards.** The repo's permanent rule bans a decorative ordinal
+   inside any repeated titled block. That binds any card grid, step list or
+   accordion the publish step generates from an article.
+
+## Voice
+
+American English, US daily-newspaper journalist style. The reference is a
+business desk, not a trade blog.
+
+Short sentences carry the load. One idea each. Write for a budget holder who
+is smart, busy, and has read four vendor pages already today.
+
+## Absolute rules
+
+- **No em dashes.** Not one, anywhere, including the run log. Commas, periods,
+  parentheses or colons.
+- **No competitor named, described, compared to or alluded to.** Ever.
+- **No deliberate errors.** See above.
+- **No summary or conclusion section.** End on the CTA.
+- **No "why work with us" paragraph.** No agency self-promotion framing.
+- **No fabricated figures.** If it cannot be sourced, cut the claim.
+- **No markdown links in body copy.** Internal references are plain-text
+  names. The publish step converts them to links.
+- **No HTML in body copy.** HTML comments for section labels are the exception.
+- **No decorative ordinals** in any repeated titled block.
+- **No Han characters outside a Chinese term gloss.** The repo bans stray
+  Chinese characters in English copy. A term gloss like RedNote (├Ñ┬░┬Å├º┬║┬ó├ñ┬╣┬ª) is the
+  sanctioned exception.
+
+## Brand vocabulary
+
+| Always say | Never say |
+|---|---|
+| hubStudio | Hubstudio, HubStudio, Hub Studio |
+| Clients | Partners |
+| Production, creative production | Solutions |
+| We produce the assets | We manage / handle / leverage your content |
+| RedNote (├Ñ┬░┬Å├º┬║┬ó├ñ┬╣┬ª) on first reference, RedNote after | Xiaohongshu as the primary term |
+| Book a call | Schedule a complimentary consultation |
+
+hubStudio keeps its canonical casing everywhere, including at the start of a
+sentence and inside a title. Do not title-case it.
+
+## What hubStudio actually sells
+
+Do not invent services. Take service names from the live pages under
+`src/pages/services/` and `src/pages/solutions/`. The site covers design and
+production (ecommerce, ad creative, short video, social media, video
+production), AI production (image, video), consulting, and the hub4you
+self-serve platform. Platform pages exist for Douyin, RedNote, Tmall, JD,
+WeChat and Weibo alongside Amazon, Shopify, TikTok and Meta.
+
+## The positioning, in one line
+
+An AI-native studio that originates the master, not a platform that
+multiplies assets someone else made. Physical capture in China plus generation,
+in one pipeline, with the provenance recorded per asset.
+
+## Audience
+
+Every article in this plan uses createarticle `audience = people out of China`.
+The site is English-language and sells to international brands and agencies.
+
+Each brief adds a **reader stage** that drives the opening and the CTA:
+
+- `budget-holder`: has money and a decision to make this quarter. Lead with
+  the decision, not the context. CTA is a first call.
+- `practitioner`: a producer, designer or ops lead who has to make it work.
+  Lead with the thing that breaks. CTA is the relevant tool or spec page.
+- `procurement`: running a review or a bid. Lead with the instrument. CTA is
+  the scoring table itself, then a call.
+
+## Chinese terms
+
+English first, characters in parentheses, on first reference in each section.
+No pinyin.
+
+RedNote (├Ñ┬░┬Å├º┬║┬ó├ñ┬╣┬ª), Douyin (├ª┼áΓÇô├⌐┼╕┬│), Tmall (├Ñ┬ñ┬⌐├º┼Æ┬½), Taobao (├ª┬╖╦£├Ñ┬«┬¥), JD (├ñ┬║┬¼├ñ┬╕┼ô),
+WeChat (├Ñ┬╛┬«├ñ┬┐┬í), Weibo (├Ñ┬╛┬«├Ñ┬ì┼í), WeChat Channels (├¿┬ºΓÇá├⌐┬óΓÇÿ├Ñ┬Å┬╖), Qianniu (├Ñ┬ì╞Æ├ºΓÇ░ΓÇ║),
+Ocean Engine (├Ñ┬╖┬¿├⌐ΓÇí┬Å├Ñ┬╝ΓÇó├ªΓÇ£┼╜), Singles' Day (├Ñ┬Å┼Æ├Ñ┬ì┬ü├ñ┬╕Γé¼), 618 (├ÑΓÇª┬¡├ñ┬╕Γé¼├ÑΓÇª┬½),
+white-background image (├ºΓäó┬╜├Ñ┬║ΓÇó├ÑΓÇ║┬╛), Taobao Rule Center (├ª┬╖╦£├Ñ┬«┬¥├¿┬ºΓÇ₧├Ñ╦åΓäó├ñ┬╕┬¡├Ñ┬┐╞Æ).
+
+## Statistics
+
+Every figure gets a blockquote with a source name, a date and a one-sentence
+method.
+
+> Managed design subscriptions in this category publish monthly floors between
+> roughly $6,000 and $15,000, with dedicated tiers from roughly $30,000.
+> Source: category rate cards collected September 2026, published pricing
+> pages only, no vendor named.
+
+**Check `sources/verified-sources.md` before researching.** If the figure is
+logged, still current and verified twice, reuse the logged citation. If you
+find a new one, append it to the ledger before you finish. The ledger is what
+stops the same number being researched forty-eight times and cited three
+different ways.
+
+## Facts vault
+
+Part 7 of the search spec holds the verified figures cleared for reuse, plus a
+**do not publish without primary confirmation** list. Read it before
+researching a cost or spec piece. Three items on that list are hard blocks:
+
+1. Tmall file size cap and product fill ratio. Chinese sources conflict, 500KB
+   against 3MB, 60 percent against 70 to 80 percent fill, and none separates
+   Tmall Global from domestic or accounts for category variation.
+2. Allocation of AI-labeling duties between brand, agency and tool vendor
+   under the CAC Measures. Law-firm interpretation, not a regulator statement.
+   Write "generally treated as", never "requires".
+3. Penalties under the CAC Measures. Not specified as a new schedule. Do not
+   publish a fine figure.
+
+## Publish notification
+
+When step 4 finishes, run from the repo root:
+
+```
+node editorial/scripts/notify-publish.mjs --slug <slug> --title "<title>" --build passed --log 
+editorial/logs/YYYY-MM-DD.md --todo "<any open item>"
+```
+
+It sends one email through Resend (`RESEND_API_KEY` in `.env`) to the address
+in `CONTACT_TO_EMAIL` with the live URL, the hero image path, build status,
+open TODOs and the run log path. Add `--dry-run` to preview. If the send
+fails, say so in the run log and the final message instead of skipping
+silently.
+
+## Where files go
+
+| What | Where |
+|---|---|
+| Today's brief | `briefs/YYYY-MM-DD-slug.md` |
+| Research file | `research/<slug>.md`, captures in `research/<slug>/` |
+| Finished draft | `output/<slug>.md` |
+| Hero image | `../public/Images/insight-<slug>.webp` |
+| Published article | `../src/pages/resources/insights/<slug>.astro` |
+| Published metadata | one entry in `../src/data/insights.ts` |
+| Source ledger | `sources/verified-sources.md` |
+| Site profile cache | `sources/site-profile.md` |
+| Run log | `logs/YYYY-MM-DD.md` |
+| Schedule and status | `schedule.csv` |
+
+## Site fetch
+
+createarticle Step 0 requires learning the website first. Do not fetch it
+forty-eight times. `sources/site-profile.md` caches the voice, service names,
+page inventory and internal link targets. Read it instead. **Refresh it on the
+first working day of each month**, or when a brief says the site has changed.
+The repo is ground truth: `src/pages/` for the inventory, `src/data/insights.ts`
+for existing articles.
+# Article output spec
+
+The contract every finished article meets. `CLAUDE.md` covers voice, rules and
+the pipeline. This file covers structure, format and the checks.
+
+## The research file, written before the article
+
+`research/<slug>.md`. It is committed. It is the evidence trail for every
+number that reaches the page, and it is what makes the annual spec refresh a
+twenty-minute job instead of a rebuild.
+
+```markdown
+# Research: <slug>
+
+| Field | Value |
+|---|---|
+| Brief | 00X |
+| Target query | |
+| Gap statement (one sentence) | |
+| Research time spent | |
+| Written | YYYY-MM-DD |
+
+## R2. SERP map
+
+Query: <the target query>
+
+| # | Domain | Page type | What it answers | What it misses | Age |
+|---|---|---|---|---|---|
+
+(repeat for at least three more buyer phrasings)
+
+**The bar:** length, depth and table count the ranking pages set.
+**The gap, in one sentence:**
+
+## R1 and R5. Claims table
+
+| Claim | Source URL | Date | Sample size | Method | Who paid | Confidence |
+|---|---|---|---|---|---|---|
+
+Confidence is one of: primary, triangulated, single-source, unverified.
+Anything marked unverified is cut from the outline before writing.
+
+## Cleared for use
+
+Verbatim quotes and figures ready to drop into blockquotes, in the exact
+attribution form they will carry on the page.
+
+## Do not publish
+
+Everything checked that did not clear the bar, with the reason. This list is
+as valuable as the cleared list, because it stops the next writer
+re-researching the same dead end.
+
+## Screenshot inventory
+
+| File | What it shows | Captured | Source surface |
+|---|---|---|---|
+
+## R8. Reconciliation (filled after drafting)
+
+Every number in the draft, checked back against the claims table. Anything in
+the draft that is not here was removed.
+```
+
+## File shape
+
+Filename equals the slug. `output/<slug>.md`. Hard-wrap body lines at about 80
+characters.
+
+```markdown
+---
+title: <= 52 characters
+slug: <slug>
+description: <= 152 characters
+excerpt: <= 25 words
+template: insight
+---
+
+<!-- HERO SECTION -->
+
+<H1 carrying the target query in the buyer's words>
+
+<one or two sentences that state the answer, not the promise>
+
+<!-- INTRODUCTION -->
+
+<First H2 restates the query. Directly under it, a 40 to 60 word answer that
+makes sense lifted out of the page on its own, and that names hubStudio once.
+For cost pieces the answer table goes here, above everything else.>
+
+<!-- SECTION: <name> -->
+
+<body, one question per H2>
+
+<!-- SECTION: FAQ -->
+
+<5 to 8 questions in the words buyers type, 40 to 70 words each>
+
+<!-- CTA -->
+
+CTA: <label from the brief>
+
+<!-- FEATURE IMAGE block -->
+<!-- SCHEMA block -->
+<!-- ASSET BRIEF block -->
+```
+
+`template` values: `insight` for `/resources/insights/`, `spec` for a China
+spec page, `howto` for `/resources/how-to/`. All three render through the same
+Astro layouts today. A `spec` page differs in two ways only: it carries a
+visible reviewed date, and it is updated in place at the same URL, never at a
+new one.
+
+The publish step maps this frontmatter onto the `Insight` interface in
+`src/data/insights.ts`: `slug`, `category`, `tone`, `title`, `deck`, `date`,
+`dateISO`, `dateModifiedISO`, `readingTime`, `author`, `metaTitle`,
+`metaDescription`, `image`, `imageAlt`.
+
+## Structure, non-negotiable
+
+1. H1 carries the target query in the buyer's words.
+2. First H2 restates the query. A 40 to 60 word self-contained answer sits
+   directly under it and names hubStudio once.
+3. One question per H2. No answer split across three sections. Retrieval is
+   chunk-level.
+4. Every figure named, dated and attributed inline, with the method in one
+   sentence. Blockquote the important ones. Attribute to a category and a date,
+   never to a company.
+5. Tables for anything with values.
+6. FAQ block of 5 to 8 questions in the words buyers type.
+7. Spec pages carry a visible "Reviewed" date and update in place. Money pages
+   hide the publication date.
+8. Author byline pointing at a real person on the team.
+9. Three internal links minimum: cluster hub, one service page, one platform
+   page. Plain-text references by name in body copy, never markdown links.
+10. Rights and disclosure pieces state plainly that they describe production
+    practice, not legal advice.
+11. No summary or conclusion section, ever. End on the CTA.
+
+## Length
+
+Word counts in briefs are body only. Exclude frontmatter and all HTML
+comments, per the createarticle char-count rule. Report both prose-only and
+body-with-tables counts at the end, then land on target.
+
+Being 10 percent under is fine. Being 25 percent under means a section was
+skipped.
+
+## Tables
+
+Minimum two per article. Money pages carry a decision table and a cost-band
+section. Spec pages carry a spec table.
+
+1. A comparison or answer table in the first screen.
+2. A topical table inside the densest section.
+
+Markdown tables only. Aligned in the source. No nested tables, no merged
+cells, no more than five columns.
+
+## The China platform spec disclaimer, verbatim
+
+Every article publishing a China platform spec value carries this block,
+immediately after the opening answer and before the first spec table. Copy it
+word for word, changing only the platform names, the source count, the date,
+and the first paragraph, which has two forms. See deviation 7 in `CLAUDE.md`
+for why these numbers are modal rather than primary.
+
+**Which first paragraph.** The marketplace form below is for Tmall, JD and any
+platform that gates rule text behind a seller login. For a social platform
+(RedNote, Douyin, WeChat, Weibo), "seller backend" is wrong and "rule centers"
+is not what failed, so use the social form, and write "creator account" in place
+of "seller backend" in the closing paragraph:
+
+> These specs are not read from a creator backend. PLATFORM's own creator and
+> help surfaces serve no specification text to anyone not logged in, so no open
+> source reaches the official value for the app.
+
+**When a platform page IS readable.** Research has found readable platform text
+on some surfaces: Douyin's upload API documentation, WeChat's Channels help
+center and developer docs, Weibo's help center. Do not rewrite the block to
+cover them, and never let a readable page make the whole article sound verified.
+Keep the block, then add one paragraph directly after it naming each readable
+page, what it covers, and that its rows are labeled primary for that scope only.
+Where the readable page contradicts the social form's claim that nothing is
+served, change that one sentence to say which surfaces were readable and which
+were not, and log the change in the research file's R8.
+
+```
+<!-- SECTION: How to read these numbers -->
+
+## How to read these numbers
+
+These specs are not read from a seller backend. Both platform rule centers
+gate their rule text behind a seller login, so no open source reaches the
+official value.
+
+What follows is the most commonly published figure for each spec, collected
+across NN independent sources in Chinese and English on DATE, with the number
+of sources that agreed shown per row. Rows marked consensus had broad
+agreement. Rows marked contested did not, and those carry the full spread
+rather than a single number.
+
+Treat this as the best available public reading, not as the rule. Platform
+specs change without announcement and often without an English notice at all.
+Before you build a batch to any number on this page, open your own seller
+backend and confirm it there. Reviewed DATE.
+```
+
+Every spec table under this rule carries a `Sources agreeing` column and a
+`Confidence` column reading `consensus` or `contested`. A value found on one
+source only is `contested`, never `consensus`, and the row says so.
+
+## Citations
+
+Blockquote format, consistently, every time.
+
+> Figure and claim in one sentence, with the method in the same breath.
+> Source: Publisher or category, Month Year. https://url
+
+Rules:
+
+- A source with no date is not a source. Find the date or cut the claim.
+- Research in Chinese first for anything China-related. The cited source may
+  be Chinese-language. Give the publisher name in English with the Chinese
+  name in parentheses on first use.
+- Every source is validated twice: at research time (check 1) and again in
+  iteration 8 by re-fetching the URL (check 2). Both dates go in the ledger.
+  One check is not enough.
+- Never cite another English article as the source for a platform spec. Go to
+  the platform's own documentation, the seller backend, or the live app.
+- A percentage with no absolute behind it is labeled as such on the page.
+- Where sources conflict, publish the range and say why they conflict.
+- **Never name the company behind a market figure.** Category and date only.
+
+## Internal links
+
+Plain-text references by name in body copy. No markdown links.
+
+Good: "The ecommerce design service page lists the current Tmall dimensions."
+Bad: "The [ecommerce design page](/services/design/ecommerce) lists them."
+
+List the actual URLs in the ASSET BRIEF block so the publish step can wire
+them. Every piece links to its cluster hub, one service page and one platform
+page. The brief names the specific targets.
+
+## The three appended blocks
+
+All three are HTML comments. None render. None count toward the word target.
+
+### 1. Feature image
+
+```
+<!-- =====================================================================
+FEATURE IMAGE: INSTRUCTION FOR CLAUDE CODE
+
+Generate the feature (hero) image from the prompt below with the
+generate-image-openai skill, convert to webp, then wire it in as the
+article's featured image and OG image.
+
+- Save to:    public/Images/insight-<slug>.webp
+- Reference:  /Images/insight-<slug>.webp
+- Format:     .webp, landscape 3:2, under ~250 KB, max 2000px wide
+- Style rule: hubstudio-image-style-guide.md is binding. Authored editorial
+              campaign photography, one light source, one shadow, prime-lens
+              framing, f/2.8 to f/5.6, warm-shadow film grade, lifted black
+              point, subtle grain, rule-of-thirds with negative space for
+              typography. No named person in the prompt.
+
+IMAGE PROMPT (use verbatim):
+
+<single unbroken prose block>
+===================================================================== -->
+```
+
+**Image rules for this project, binding.**
+
+- `hubstudio-image-style-guide.md` at the repo root is the standard. Read it,
+  do not paraphrase it from memory.
+- **Never name a real person in the prompt.** The image model rejects prompts
+  naming photographers, artists, directors or celebrities and the job fails.
+  The photographer references in the style guide are internal art-direction
+  shorthand. Convert every one into its concrete visual properties: lens,
+  light direction and quality, color grade, grain, composition, distance,
+  mood. Describe the look, never the name.
+- **Team and studio scenes use Chinese subjects in a lived-in Chinese
+  office**, not a Western or gallery-clean space. hubStudio's studios are in
+  Shanghai, Changsha, Hong Kong and the Philippines. Rotate the setting.
+- Authored editorial campaign photography, 2024 to 2026 era. Never the AI
+  generator default. No glossy plastic skin, no perfect bokeh halos, no
+  impossible reflections, no symmetrical poreless faces.
+- One light source, one shadow. Directional natural light or a single softbox.
+- Every asset carries a creative angle and can defend its place in one
+  sentence. When the obvious choice is generic, redesign it or cut it.
+- No text, no logos, no watermark, no diagrams, no infographics in the image.
+- Every image gets a final human pass against the AI-tells checklist in the
+  style guide before it goes live.
+
+The image is generated with `generate-image-openai` in step 3: landscape 3:2,
+high quality, then converted to webp with sharp (quality about 78, max width
+2000, no enlargement). Intermediates stay in the session scratchpad. The
+generated image is opened and looked at before it is saved to the repo.
+
+### 2. Schema
+
+```
+<!-- SCHEMA
+Type: BlogPosting
+FAQPage: yes, <n> questions
+Breadcrumb: Home > Insights > <title>
+Author: <real person on the team>
+datePublished: YYYY-MM-DD
+Reviewed (spec pages only): YYYY-MM-DD
+-->
+```
+
+`ArticleLayout.astro` already emits BlogPosting and BreadcrumbList correctly.
+Match what is there. Do not invent new types. Ship schema for entity
+resolution, not for a citation lift: the evidence says there is none.
+
+### 3. Asset brief
+
+```
+<!-- ASSET BRIEF
+TABLES: <list, with the data each needs>
+CHARTS: <type, axes, data source, what it must show>
+SCREENSHOTS: <what to capture, what to blur>
+DOWNLOADS: <file, format, gate or no gate>
+INTERNAL LINKS: <anchor text> -> <url>, one per line
+CLIENT SIGN-OFF NEEDED: <any client figure used>
+RESEARCH FILE: editorial/research/<slug>.md
+-->
+```
+
+## SEO
+
+| Field | Ceiling | How |
+|---|---|---|
+| Title | 52 characters | Count it. Do not estimate. |
+| Meta description | 152 characters | Count it. |
+| Excerpt | 25 words | Count it. |
+
+These override the looser ceilings inside `content-quality-us` (60 / 156).
+When that skill's iteration 8 or 17 proposes longer fields, trim them back.
+
+The brief supplies an approved title and description already inside the
+ceilings. Use them. Only rewrite if the finished article makes them
+inaccurate, then stay inside the ceilings and note the change in the log.
+
+Primary query appears in the H1, the first 100 words, and one H2. Do not force
+it anywhere else.
+
+## The iteration workflow
+
+Run createarticle's 13 iterations in order. Print the tracker. State what
+changed at each step. No approval pauses.
+
+**Iteration 7 is a cadence pass.** Vary sentence length deliberately, break at
+least three parallel structures, let one paragraph run long and the next run
+to a single line. No planted errors. Say in the log that the cadence variant
+ran.
+
+**Iteration 8** includes source check 2: re-fetch every cited URL, and the R8
+reconciliation against the claims table.
+
+**Iteration 13** produces five visual concepts, then one photorealistic
+feature image prompt.
+
+Then run `content-quality-us` (18 passes) on the same file, in place, before
+the image step.
+
+## Status values in schedule.csv
+
+| Status | Set when |
+|---|---|
+| `not_started` | Default |
+| `researched` | `research/<slug>.md` written, every claim marked |
+| `drafted` | createarticle finished, `output/<slug>.md` saved |
+| `quality_passed` | content-quality-us finished on the file |
+| `image_ready` | hero image checked and saved to `public/Images/` |
+| `published` | article page live, build passed, email sent |
+| `blocked` | stopped on one of the flag conditions, see `notes` |
+
+## Definition of done (steps 0 to 3)
+
+Verify each by counting or checking, not by assuming.
+
+- [ ] `research/<slug>.md` written before drafting, every claim marked.
+- [ ] Chinese-language sources searched first for anything China-related.
+- [ ] Every cited source passed check 1 and check 2, both dates in the ledger.
+- [ ] R8 reconciliation done: nothing in the draft that is not in the research
+      file.
+- [ ] Zero em dashes. Search the file for the character.
+- [ ] No competitor named, described, compared to or alluded to.
+- [ ] Zero deliberate typos or planted errors.
+- [ ] No summary or conclusion section. File ends on the CTA plus the blocks.
+- [ ] No "why work with us" framing.
+- [ ] No hubStudio rate, monthly figure or per-item price anywhere. Search for
+      `$` and check every hit.
+- [ ] Every statistic in a blockquote with a source, a date and a method.
+- [ ] New figures appended to `sources/verified-sources.md`.
+- [ ] Chinese terms as English (├ñ┬╕┬¡├ªΓÇôΓÇí) on first reference per section, and no
+      stray Han characters anywhere else.
+- [ ] No decorative ordinal in any repeated titled block.
+- [ ] Title, meta and excerpt counted and inside ceilings, after the quality
+      pass too.
+- [ ] At least two markdown tables.
+- [ ] Three internal references present as plain text, URLs in the asset brief.
+- [ ] Feature image, schema and asset brief blocks all present.
+- [ ] Body character count reported.
+- [ ] Saved as `output/<slug>.md`.
+- [ ] content-quality-us run, all 18 passes shown.
+- [ ] Hero image generated, looked at, saved as
+      `public/Images/insight-<slug>.webp`.
+- [ ] `schedule.csv` row updated with status and the dates.
+- [ ] `logs/YYYY-MM-DD.md` written.
+
+## When to stop and ask
+
+Draft without pausing, with five exceptions. In each case write the draft up
+to that point, leave a clear marker, and flag it in the log.
+
+1. **A required figure cannot be sourced.** Cut the claim, mark
+   `TODO: unsourced claim removed`, and say which section is now thinner.
+2. **A spec number cannot be captured from a backend or the live app.** Do not
+   publish it from a secondary source. Publish the range, say why the sources
+   conflict, and mark `TODO: backend capture needed`. On a spec page where the
+   whole table depends on it, set the row to `blocked` instead.
+3. **A client number is needed and is not in the ledger.** Mark
+   `TODO: client sign-off` and leave the sentence incomplete rather than
+   estimating.
+4. **The brief would require naming a company.** Rewrite the passage on the
+   pattern instead. This one is not negotiable, and it never blocks: there is
+   always a category-level way to say it.
+5. **The brief conflicts with what the site actually says.** The site wins.
+   Note the conflict so the brief can be corrected.
+# Daily runbook
+
+Four articles a week, Monday, Tuesday, Thursday, Friday. Forty-eight articles,
+September 14 to December 4, 2026. Batch one (briefs 01 to 30) publishes weeks
+1 to 8. Batch two (31 to 48) is briefed in month two and publishes weeks 6
+to 12.
+
+## The daily command
+
+Open Claude Code at the repo root and paste:
+
+```
+Draft today's article.
+```
+
+That is the whole prompt. `CLAUDE.md` says what "today's article" means. For a
+specific one:
+
+```
+Draft brief 05B.
+```
+
+To publish a reviewed draft:
+
+```
+Publish douyin-video-specs-safe-zones
+```
+
+## What Claude does, in order
+
+1. Reads `CLAUDE.md` and `SPEC.md`.
+2. Finds today's row in `schedule.csv`. If today has no row, takes the oldest
+   row with status `not_started` and says so.
+3. Reads that brief file in `briefs/`.
+4. Reads `sources/site-profile.md` instead of fetching the site, unless the
+   profile is more than a month old.
+5. Reads `sources/verified-sources.md` and Part 7 of the search spec, and
+   reuses any figure already logged and verified twice.
+6. Runs the research gate R1 to R7. Chinese-language web first for anything
+   China-related, primary sources only for anything with a number in it.
+   Writes `research/<slug>.md`. No body copy before this file exists.
+7. Runs `/createarticle` (13 iterations, iteration 7 as the cadence variant,
+   iteration 8 re-fetches every cited URL for check 2 and runs the R8
+   reconciliation), printing the tracker. Writes `output/<slug>.md`.
+8. Runs `/content-quality-us` on `output/<slug>.md` (18 passes, in place).
+   House SEO ceilings (52 / 152 / 25 words) override the skill's own.
+9. Runs `/generate-image-openai` with the prompt from the feature-image block,
+   looks at the image, converts it to webp, saves it to
+   `public/Images/insight-<slug>.webp`.
+10. Appends new figures to `sources/verified-sources.md` with both check dates.
+11. Updates the `schedule.csv` row to `image_ready` with the four dates filled.
+12. Writes `logs/YYYY-MM-DD.md`.
+
+Then it stops. A person reviews the draft and asks for publication.
+
+## Weekly slots
+
+Fixed, so the mix cannot drift back to commentary. Commentary is the content
+type the category audit found ranks for nothing.
+
+| Day | Slot | Job | Words | Mandatory elements |
+|---|---|---|---|---|
+| Monday | A | The money page: buying models, cost, evaluation | 2,500 to 3,500 | Decision table, cost-band section, 
+FAQ block |
+| Tuesday | B | The spec page: China platform requirements from primary evidence | 1,200 to 2,000 | Spec table, 
+annotated screenshot, rejection reasons, visible reviewed date |
+| Thursday | C | The operations page: rights, provenance, procurement, workflow | 1,500 to 2,200 | A workflow, 
+checklist or document structure the reader can use tomorrow |
+| Friday | D | The proof page: craft, data, case | 900 to 1,600 | One number from hubStudio's delivery record with its 
+method stated |
+
+Slot B doubles up in weeks 6 to 8 while the spec queue is hot, and slot D
+takes the overflow. That is the only planned deviation.
+
+If a week slips, drop slot D. Never drop slot A. If two weeks slip, run A and
+B only and accept a slower build.
+
+## The blocking task before cluster 1 ships
+
+The Tmall specs cannot be verified from open sources. The Taobao Rule Center
+(├ª┬╖╦£├Ñ┬«┬¥├¿┬ºΓÇ₧├Ñ╦åΓäó├ñ┬╕┬¡├Ñ┬┐╞Æ) blocks external access. The three Chinese spec sites that
+publish them agree on 800 by 800 and the five-image maximum but conflict on
+file size caps (500KB against 3MB) and product fill ratio, and none
+distinguishes Tmall Global from domestic Tmall or accounts for category
+variation.
+
+**Someone with Qianniu (├Ñ┬ì╞Æ├ºΓÇ░ΓÇ║) seller-backend access must capture the current
+Tmall, JD, Douyin, RedNote, WeChat and Weibo rule pages and upload screens
+before brief 01 is drafted.** Captures go to `research/<slug>/` with a capture
+date. That verification is the moat. No ranking English page has done it.
+
+Until that capture exists, brief 01 stays `blocked` and the schedule shifts
+the next unblocked spec piece into slot B. Do not draft a spec table from
+secondary sources to fill a slot. Publishing a spec number that was not
+captured from a backend is the single most damaging thing this system can do:
+it converts the only asset a rival cannot copy into an ordinary blog.
+
+**The single highest-leverage half-day in this plan is one capture session
+covering all six platforms.** Booking it early is what makes sprint mode
+possible.
+
+## Sprint mode
+
+Baseline is four editorial pieces a week. The binding constraint is not
+writing speed, it is verification. Going past five a week means shipping specs
+that were not verified.
+
+Be more aggressive on sequencing and on assets, not on article count.
+
+- **Front-load the spec cluster into weeks 1 to 3.** All ten China spec pages
+  instead of spread across eight weeks. They are the fastest pages here to
+  rank, six to ten weeks, so shipping them five weeks earlier pulls the whole
+  curve forward by five weeks. Works only if the backend capture for all six
+  platforms happens in one session before week 1.
+- **Pull both builds forward.** Calculator live in week 2 instead of month 2.
+  Benchmark published in week 6 instead of month 3.
+- **Add a fifth weekly slot that is programmatic, not editorial.** Once the
+  capture exists, one verified data table generates twenty to thirty
+  platform-by-placement spec sub-pages that cost hours rather than days. Thin
+  but correct, each answering one long-tail query, all feeding the spec
+  library hub. It does not compete with the research gate because the research
+  is already done.
+
+Sprint mode needs one more person or a compressed capture session, and it
+front-loads roughly three extra weeks of work into month one. If that is
+available, take it. If not, the baseline calendar still wins the vacant
+ground, four weeks later.
+
+## Build schedule alongside the calendar
+
+| Week | Build |
+|---|---|
+| W1 to W2 | The eight infrastructure items below |
+| W3 to W4 | China spec library hub page and shared table format |
+| W5 to W8 | Public quotation engine, plus 16 author pages |
+| W9 to W12 | The Real Cost of Brand Content 2026 benchmark |
+
+### The eight infrastructure items, before week one
+
+Prerequisites for the calendar, not parallel work.
+
+| # | Item | Effort |
+|---|---|---|
+| 1 | Split robots.txt by bot purpose. Blocking training bots costs nothing in AI answers. Blocking retrieval bots 
+deletes the site from AI answers entirely. Today's allow-all works by accident, not declaration | 1 hour |
+| 2 | Verify retrieval bots actually reach the site. Fetch a live URL with each retrieval bot's user agent and confirm 
+a 200, not a 403 or a challenge. Check the CDN, WAF and host rules, not just robots.txt | 30 min |
+| 3 | Build `/llm-info` as a crawlable HTML page carrying Organization schema | 1 day |
+| 4 | Extend llms.txt with a positioning section and a "what we are not" section, written to be lifted verbatim into 
+an answer | 2 hours |
+| 5 | Publish the quotation engine. It exists at `/pricing/calculator` and is blocked in robots.txt. Publish an 
+indexable public version with market inputs and no hubStudio rate card in the output | 1 week |
+| 6 | Author pages for the 16 named creatives. Every article gets a byline linking to a real person with real markets 
+and credits | 3 days |
+| 7 | Rank tracker plus AI-answer monitoring. 60 target queries tracked, 25 buyer prompts run monthly across five AI 
+surfaces, logged | 1 day |
+| 8 | Claim directory profiles. Best reading of the evidence is an eligibility gate. Claim the profiles, do not build 
+a program | 1 day |
+
+## Publishing a reviewed draft
+
+`Publish <slug>` runs `/createblogarticle` on `output/<slug>.md`. That skill
+creates `src/pages/resources/insights/<slug>.astro`, adds the entry to
+`src/data/insights.ts`, converts the plain-text internal references into
+links, wires the hero image, and updates every listing surface. Insights are
+English only today, so there is no locale propagation and no `/deep-translate`
+pass. If a French insights section is built later, publishing gains that step.
+
+Then, in this order, and only when each step passes: `npm run build`,
+`npm run check`, `git add` of everything the article touched (the page, the
+data file, the hero image, listing surfaces, `editorial/output`,
+`editorial/research`, `editorial/logs`, `schedule.csv`, `editorial/sources`),
+one commit on main (`feat(insights): publish <slug>`), `git push origin main`.
+A failed build or check means no commit, no push, the row stays at
+`image_ready`, and the email reports the failure. Vercel deploys from main, so
+the push is what puts the article live.
+
+Then run `editorial/scripts/notify-publish.mjs` from the repo root. It sends
+one email through Resend to the address in `CONTACT_TO_EMAIL`: subject
+`Published: <title>`, body with the live URL, hero image path, build status,
+open TODOs and the run log path. If the send fails, say so instead of skipping
+silently.
+
+Nothing publishes itself. Drafts wait in `output/` until someone says so.
+
+## Reviewing a draft
+
+Five checks that catch most problems in under ten minutes.
+
+1. **Search the file for the em dash character.** Zero results, or it goes
+   back.
+2. **Search for a company name.** Any competitor named, described or alluded
+   to is an automatic reject, whatever else the piece does well.
+3. **Read every blockquote.** Each needs a source, a date and a method. A
+   blockquote with no date is a fail. Spot-check two against the ledger: both
+   check dates present, URL live.
+4. **Search for `$`.** Every hit is either a category range with a collection
+   date or it does not belong on the page. No hubStudio rate, ever.
+5. **Read the first sixty words under the first H2.** If that block does not
+   answer the query on its own, lifted out of the page, the introduction is
+   doing the wrong job.
+
+Then check the length. Being 25 percent under target means a section was
+skipped. Then open the hero image in `public/Images/`. Run it against the
+AI-tells checklist in `hubstudio-image-style-guide.md`.
+
+## Calendar exceptions
+
+| When | What | What to do |
+|---|---|---|
+| Sept 25 to 27 | Mid-Autumn Festival | China-side capture and review finish Thursday Sept 24. |
+| Oct 1 to 7 | National Day Golden Week | Four slots fall inside it: Oct 1, 2, 5 and 6. Draft all four during the week 
+of Sept 28 and schedule them. |
+| Nov 11 | Singles' Day (├Ñ┬Å┼Æ├Ñ┬ì┬ü├ñ┬╕Γé¼) | Brief 30, the production calendar, publishes Oct 9 so it lands before 
+the cycle it describes. |
+| Dec 4 | Plan ends | Week 13 onward continues the cadence or moves to the refresh cycle for the spec library. |
+
+To batch the Golden Week four:
+
+```
+Draft briefs 02B, 28, 13 and 04. One at a time, full pipeline on each.
+Do not merge them into one run.
+```
+
+## Three pieces that need an early start
+
+| Brief | Publishes | Start | Why |
+|---|---|---|---|
+| 01 Tmall image requirements | Sept 15 | Before week 1 | Needs the Qianniu backend capture session. Blocked without 
+it. |
+| 11 What a finished brand asset costs | Sept 21 | Week 1 | The flagship. Needs the widest research pass in the plan. |
+| 29 Training a brand model | Oct 16 | Week 3 | Needs the internal approval-rate method written down and cleared. |
+
+## Measurement
+
+| When | What to check | Pass mark |
+|---|---|---|
+| Before week 1 | Instrumentation live | All eight infrastructure items shipped |
+| Week 4 | Indexation and crawl | 16 of 16 indexed inside 7 days each. Retrieval bots seen in logs on new URLs |
+| Week 8 | First rankings on the vacant cluster | 4 or more China spec queries in the top 20. First AI-answer citation 
+on any of the 25 prompts |
+| Week 12 | Commercial layer working | First page-one position. Calculator live and converting. Benchmark published 
+with 5 or more external citations |
+| Week 16 | Lagging measures | Non-branded organic sessions, calculator completions, attributable enquiries, referring 
+domains to the benchmark |
+
+AI-answer visibility has to be measured by running the prompts and logging the
+answers. There is no rank tracker for it. Brand mentions and cited domains
+overlap by as little as 30 percent on some platforms, and being named without
+being linked is a different outcome that still moves deals.
+
+## If something goes wrong
+
+| Problem | What to do |
+|---|---|
+| A spec number cannot be captured from a backend | The row goes to `blocked`. Do not fill the slot from secondary 
+sources. Book the capture session. |
+| Sources conflict on a figure | Publish the range and say why they conflict. That passage is more credible than false 
+precision, and it is the kind of thing that gets cited. |
+| A figure cannot be sourced at all | Claude cuts the claim and marks it. Decide whether the section still stands. |
+| A source fails check 2 (page changed or gone) | Claude fixes the blockquote or cuts the claim. Never ship a citation 
+that failed re-fetch. |
+| A client number is missing | Claude leaves `TODO: client sign-off`. Chase it, do not guess. |
+| The draft names or alludes to a company | Reject it. Point at the standing rule and rewrite the passage on the 
+pattern. |
+| Claude planted a typo | It ignored `CLAUDE.md` and the house skill. Point at the conflict section and rerun 
+iteration 7. |
+| The draft reads generic | The angle field was skipped. Rerun with `Reread the angle in the brief and rewrite.` |
+| Two articles cite the same figure differently | The ledger was not updated. Fix the ledger, then both files. |
+| Image generation fails on a name | The prompt named a real person. Convert the reference to its visual properties 
+and retry. |
+| Image has text, a logo or an AI tell | Regenerate. Never wire in an unchecked image. |
+| The quality pass loosened the SEO fields past 52 / 152 | The skill's own ceilings leaked through. Recount and trim. |
+| No publish email arrived | Rerun the notify script with `--dry-run` to see the payload, then without it. Check 
+`RESEND_API_KEY` in `.env`. |
+
+## Automating it
+
+The pipeline runs on Cyril's machine through Windows Task Scheduler and the
+local Claude Code CLI. Local on purpose: the user-level skills, the `.env`
+keys and the full model are all here, and a cloud routine has none of them.
+
+| Task | When (Shanghai) | What | Default |
+|---|---|---|---|
+| hubStudio Editorial Draft | Mon, Tue, Thu, Fri 00:30 | `run-daily.ps1 -Mode draft`: steps 0 to 3, stops at 
+`image_ready` | enabled |
+| hubStudio Editorial Publish | every day 04:00 | `run-daily.ps1 -Mode publish`: publishes every due `image_ready` 
+row, builds, commits, pushes, emails | disabled until the first week has been reviewed by hand |
+
+Scripts live in `editorial/scripts/`. `register-tasks.ps1` creates or updates
+both tasks. Each run writes its console output to
+`logs/runs/<date>-<mode>.txt`. The machine has to be on, or asleep with wake
+allowed, at the run time. A missed run fires as soon as the machine is back.
+
+**Sleep kills a run in progress.** A run can take an hour or more, so the
+machine must stay awake from 00:30 until the run finishes. Set the power plan
+to never sleep on AC. The runner retries transient API errors (overloaded,
+rate limit, 5xx) up to three times, five minutes apart, on the same model.
+
+To enable unattended publishing once the first week looks right:
+
+```
+Enable-ScheduledTask -TaskName 'hubStudio Editorial Publish'
+```
+
+To pause it again:
+
+```
+Disable-ScheduledTask -TaskName 'hubStudio Editorial Publish'
+```
+
+Runs use `--dangerously-skip-permissions` so nothing pauses for approval, and
+pin the most capable model. Never lower the model to speed a run up.
+
+## Before the first run
+
+1. Book the Qianniu (├Ñ┬ì╞Æ├ºΓÇ░ΓÇ║) capture session. Brief 01 is blocked until it
+   happens, and the whole spec cluster depends on it.
+2. `OPENAI_API_KEY` must be in `.env` at the repo root for
+   `generate-image-openai`. `RESEND_API_KEY` and `CONTACT_TO_EMAIL` are
+   already there.
+3. Seed `sources/verified-sources.md` from Part 7 of the search spec. Every
+   seeded entry still needs its two check dates before it can be cited.
+4. Ship the eight infrastructure items. Item 2, confirming retrieval bots get
+   a 200, is thirty minutes and is the highest-scored citation factor in the
+   field. Do it first.
+5. Decide the byline policy. The spec requires an author byline pointing at a
+   real person, and `src/data/insights.ts` has an `author` field. Author pages
+   are infrastructure item 6.
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content 
+editorial/logs/runs/2026-09-25-publish.prompt.txt; Get-Content 
+editorial/logs/runs/2026-09-25-publish.prompt.txt.context.json; Get-Content 
+editorial/logs/runs/2026-09-25-publish.txt; git status --short --branch; Get-FileHash 
+editorial/logs/runs/2026-09-25-publish.prompt.txt -Algorithm SHA256; rg -n "hubstudio|fallback|scheduled" 
+C:/Users/cyril/.codex/memories/MEMORY.md' in C:\Users\cyril\Project\hubstudio
+ exited 1 in 672ms:
+Publish every reviewed draft that is due.
+
+Read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md first.
+In editorial/schedule.csv, find every row whose status is image_ready and
+whose publish_date is today or earlier. For each one, in date order, run the
+publish step: /createblogarticle on the output file. That creates
+src/pages/resources/insights/<slug>.astro, adds the entry to
+src/data/insights.ts, converts the plain-text internal references into links,
+wires the hero image and updates every listing surface. Insights are English
+only on this repo, so there is no locale propagation and no /deep-translate
+pass.
+
+Then run npm run build and npm run check. When both pass: set the row to
+published with published_on, then git add everything the article touched (the
+article page, src/data/insights.ts, the hero image, listing surfaces,
+editorial/output, editorial/research, editorial/logs, editorial/schedule.csv,
+editorial/sources) and commit on main with a conventional commit message
+(feat(insights): publish <slug>), then git push origin main. Only after the
+push succeeds, run node editorial/scripts/notify-publish.mjs with the slug,
+title, build result, log path and the commit hash in --note.
+
+This run is unattended: never ask a question. If the build or the check fails,
+do not commit, do not push, leave the row at image_ready, put the error in the
+run log, and send the email with --build failed and the error in --note.
+{
+    "schema":  1,
+    "run_name":  "hubStudio publish",
+    "repository":  "C:\\Users\\cyril\\Project\\hubstudio",
+    "prompt_file":  "C:\\Users\\cyril\\Project\\hubstudio\\editorial\\logs\\runs\\2026-09-25-publish.prompt.txt",
+    "prompt_sha256":  "AE9F37F63BAC4AEBCB0556FB3AFE9EE82CDC288A490ADCCCCC38FCDBAC09B0C5",
+    "run_log":  "C:\\Users\\cyril\\Project\\hubstudio\\editorial\\logs\\runs\\2026-09-25-publish.txt",
+    "started_at":  "2026-09-25T04:00:02.2688254+08:00",
+    "model_order":  [
+                        "claude-opus-5-5",
+                        "fable",
+                        "gpt-6-astra",
+                        "gpt-5.6-sol"
+                    ]
+}
+2026-09-25T04:00:02 start publish (model claude-opus-5-5)
+2026-09-25T04:00:02 model attempt 1/4, cycle 1: Opus 5.5
+Failed to authenticate. API Error: 403 Request not allowed
+2026-09-25T04:00:05 model Opus 5.5 exited 1; immediately trying Fable
+2026-09-25T04:00:05 model attempt 2/4, cycle 1: Fable
+Failed to authenticate. API Error: 403 Request not allowed
+2026-09-25T04:00:08 model Fable exited 1; immediately trying GPT-6 Astra
+2026-09-25T04:00:08 model attempt 3/4, cycle 1: GPT-6 Astra
+codex.exe : 2026-09-24T20:00:15.734165Z ERROR codex_models_manager::manager: failed to refresh available models: 
+request timed out
+At C:\Users\cyril\Project\automation\scripts\Invoke-ProjectAgent.ps1:38 char:16
++   $InputText | & $Executable @Arguments 2>&1 | ForEach-Object {
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-09-24T20:0...quest timed out:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-09-24T20:00:15.749071Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+OpenAI Codex v0.155.0-alpha.16.3
+--------
+workdir: C:\Users\cyril\Project\hubstudio
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: high
+reasoning summaries: none
+session id: 01a0d501-1f85-7682-b456-546a1f36c9aa
+--------
+user
+This is an unattended scheduled run. Use the repository at C:\Users\cyril\Project\hubstudio.
+The canonical task prompt is C:\Users\cyril\Project\hubstudio\editorial\logs\runs\2026-09-25-publish.prompt.txt 
+(SHA-256 AE9F37F63BAC4AEBCB0556FB3AFE9EE82CDC288A490ADCCCCC38FCDBAC09B0C5), and the shared
+run manifest is C:\Users\cyril\Project\hubstudio\editorial\logs\runs\2026-09-25-publish.prompt.txt.context.json. Read 
+the current run log at C:\Users\cyril\Project\hubstudio\editorial\logs\runs\2026-09-25-publish.txt and inspect
+the current working tree before acting: an earlier model may have made partial
+progress or exited with an error. Correct that error, continue only incomplete
+work, preserve valid completed work, and record every decision in the run log.
+Do not abandon the task or ask a question. The same prompt, files, workspace,
+log, and manifest are supplied to every model in this fallback chain.
+Publish every reviewed draft that is due.
+
+Read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md first.
+In editorial/schedule.csv, find every row whose status is image_ready and
+whose publish_date is today or earlier. For each one, in date order, run the
+publish step: /createblogarticle on the output file. That creates
+src/pages/resources/insights/<slug>.astro, adds the entry to
+src/data/insights.ts, converts the plain-text internal references into links,
+wires the hero image and updates every listing surface. Insights are English
+only on this repo, so there is no locale propagation and no /deep-translate
+pass.
+
+Then run npm run build and npm run check. When both pass: set the row to
+published with published_on, then git add everything the article touched (the
+article page, src/data/insights.ts, the hero image, listing surfaces,
+editorial/output, editorial/research, editorial/logs, editorial/schedule.csv,
+editorial/sources) and commit on main with a conventional commit message
+(feat(insights): publish <slug>), then git push origin main. Only after the
+push succeeds, run node editorial/scripts/notify-publish.mjs with the slug,
+title, build result, log path and the commit hash in --note.
+
+This run is unattended: never ask a question. If the build or the check fails,
+do not commit, do not push, leave the row at image_ready, put the error in the
+run log, and send the email with --build failed and the error in --note.
+
+2026-09-24T20:00:30.574013Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when 
+Client(HttpRequest(HttpRequest("http/request failed: error sending request for url 
+(https://chatgpt.com/backend-api/ps/mcp)")))
+2026-09-24T20:00:45.376396Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when 
+Client(HttpRequest(HttpRequest("http/request failed: error sending request for url 
+(https://chatgpt.com/backend-api/ps/mcp)")))
+2026-09-24T20:01:00.585169Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when 
+Client(HttpRequest(HttpRequest("http/request failed: error sending request for url 
+(https://chatgpt.com/backend-api/ps/mcp)")))
+2026-09-24T20:01:01.187143Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+2026-09-24T20:01:15.383329Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when 
+Client(HttpRequest(HttpRequest("http/request failed: error sending request for url 
+(https://chatgpt.com/backend-api/ps/mcp)")))
+2026-09-24T20:01:15.929358Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 2/5
+2026-09-24T20:01:30.887293Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 3/5
+2026-09-24T20:01:46.220241Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 4/5
+2026-09-24T20:02:02.360591Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 5/5
+2026-09-24T20:02:20.046785Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: 
+No connection could be made because the target machine actively refused it. (os error 10061), url: 
+wss://chatgpt.com/backend-api/codex/responses
+warning: Falling back from WebSockets to HTTPS transport. stream disconnected before completion: No connection could 
+be made because the target machine actively refused it. (os error 10061)
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:04:50.757858Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:09:25.769092Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:14:00.788355Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:18:35.810510Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:23:10.834678Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:27:45.846963Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:32:20.868270Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:36:55.891043Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:41:30.913571Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:46:05.923176Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:50:40.939752Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:55:15.955452Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T20:59:50.973996Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:04:25.991073Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:09:01.013907Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:13:36.024351Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:18:11.052306Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:22:46.075928Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:27:21.101711Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:31:56.130148Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:36:31.144959Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:41:06.153524Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:45:41.163665Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:50:16.184743Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:54:51.200947Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T21:59:26.217416Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:04:01.225741Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:08:36.248268Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:13:11.262756Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:17:46.290296Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:22:21.307564Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:26:56.319687Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:31:31.336563Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:36:06.359986Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:40:41.386159Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:45:16.392021Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:49:51.405820Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:54:26.413885Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T22:59:01.442759Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:03:36.466261Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:08:11.489025Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:12:46.504949Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:17:21.529059Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:21:56.545707Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:26:31.551139Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:31:06.568003Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:35:41.580042Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:40:16.599670Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:44:51.628494Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:49:26.646516Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:54:01.663348Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-24T23:58:36.684903Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:03:11.716579Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:07:46.747756Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:12:21.765996Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:16:56.786360Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:21:31.809564Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:26:06.830727Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:30:41.858680Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+ERROR: Reconnecting... waiting for network
+ERROR: Reconnecting... waiting for network
+2026-09-25T00:35:16.872866Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+codex
+I╬ô├ç├ûll read the editorial instructions, run log, and working tree, then publish the due drafts and record the 
+results 
+in the run log.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content editorial/CLAUDE.md; 
+Get-Content editorial/SPEC.md; Get-Content editorial/RUNBOOK.md' in C:\Users\cyril\Project\hubstudio
+ succeeded in 328ms:
+# hubStudio editorial system
+
+You are drafting articles for **hubstudio.ai**, an AI-native creative
+production studio with studios in Shanghai, Changsha, Hong Kong and the
+Philippines. Four articles a week, from a brief file in `briefs/`. Every path
+in this folder is relative to `editorial/` at the repo root.
+
+The plan this system executes is `editorial/SEARCH-SPEC.md`.
+That file is the source of truth for strategy: gaps, territory, calendar and
+the 30 briefs. This file is the source of truth for execution.
+
+Read this file and `SPEC.md` before every draft. **These two files override
+any conflicting rule inside the createarticle, content-quality-us,
+generate-image-openai and createblogarticle skills.** The repo's
+`.claude/CLAUDE.md` and `hubstudio-image-style-guide.md` still apply on top.
+
+## The standing rule that governs everything
+
+**No competitor is ever named, described, compared to, or alluded to.** No
+conquest pages, no "X alternatives", no "us against them" tables, no named
+rate cards, no commentary on another company's rebrand, layoffs, results or
+website. This applies to articles, image captions, FAQ answers, the run log
+and the commit message.
+
+Where a market figure is needed, attribute it to the category and the date,
+never to a company.
+
+Correct: "published subscription rate cards in this category start between
+roughly $6,000 and $15,000 a month, September 2026."
+
+Incorrect: naming whose card it is.
+
+## main...origin/main
+ M editorial/research/automotive-content-without-shipping-a-car.md
+ M editorial/research/beauty-content-production-china.md
+ M editorial/research/how-many-variants-a-china-launch-needs.md
+ M editorial/research/real-cost-of-brand-content-2026.md
+ M editorial/schedule.csv
+ M editorial/scripts/run-daily.ps1
+ M editorial/sources/verified-sources.md
+?? editorial/logs/2026-09-17.md
+?? editorial/logs/2026-09-18.md
+?? editorial/logs/2026-09-21.md
+?? editorial/logs/2026-09-22.md
+?? editorial/logs/2026-09-24.md
+?? editorial/logs/runs/2026-09-17-draft.prompt.txt
+?? editorial/logs/runs/2026-09-17-draft.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-17-draft.txt
+?? editorial/logs/runs/2026-09-17-publish.prompt.txt
+?? editorial/logs/runs/2026-09-17-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-17-publish.txt
+?? editorial/logs/runs/2026-09-18-draft.prompt.txt
+?? editorial/logs/runs/2026-09-18-draft.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-18-draft.txt
+?? editorial/logs/runs/2026-09-18-publish.prompt.txt
+?? editorial/logs/runs/2026-09-18-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-18-publish.txt
+?? editorial/logs/runs/2026-09-19-publish.prompt.txt
+?? editorial/logs/runs/2026-09-19-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-19-publish.txt
+?? editorial/logs/runs/2026-09-20-publish.prompt.txt
+?? editorial/logs/runs/2026-09-20-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-20-publish.txt
+?? editorial/logs/runs/2026-09-21-draft.prompt.txt
+?? editorial/logs/runs/2026-09-21-draft.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-21-draft.txt
+?? editorial/logs/runs/2026-09-21-publish.prompt.txt
+?? editorial/logs/runs/2026-09-21-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-21-publish.txt
+?? editorial/logs/runs/2026-09-22-draft.prompt.txt
+?? editorial/logs/runs/2026-09-22-draft.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-22-draft.txt
+?? editorial/logs/runs/2026-09-22-publish.before-catchup-111227.txt
+?? editorial/logs/runs/2026-09-22-publish.before-catchup-124537.txt
+?? editorial/logs/runs/2026-09-22-publish.prompt.txt
+?? editorial/logs/runs/2026-09-22-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-22-publish.txt
+?? editorial/logs/runs/2026-09-23-publish.prompt.txt
+?? editorial/logs/runs/2026-09-23-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-23-publish.txt
+?? editorial/logs/runs/2026-09-24-draft.prompt.txt
+?? editorial/logs/runs/2026-09-24-draft.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-24-draft.txt
+?? editorial/logs/runs/2026-09-24-publish.prompt.txt
+?? editorial/logs/runs/2026-09-24-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-24-publish.txt
+?? editorial/logs/runs/2026-09-25-draft.prompt.txt
+?? editorial/logs/runs/2026-09-25-draft.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-25-draft.txt
+?? editorial/logs/runs/2026-09-25-publish.prompt.txt
+?? editorial/logs/runs/2026-09-25-publish.prompt.txt.context.json
+?? editorial/logs/runs/2026-09-25-publish.txt
+?? editorial/output/agency-white-label-question.ALT-2026-09-21.md
+?? editorial/output/automotive-content-without-shipping-a-car.md
+?? editorial/output/beauty-content-production-china.md
+?? editorial/output/how-many-variants-a-china-launch-needs.md
+?? editorial/output/real-cost-of-brand-content-2026.md
+?? editorial/research/agency-white-label-question.ALT-2026-09-21.md
+?? editorial/research/agency-white-label-question/
+?? editorial/research/automotive-content-without-shipping-a-car/
+?? public/Images/insight-agency-white-label-question.webp
+?? public/Images/insight-automotive-content-without-shipping-a-car.webp
+?? public/Images/insight-beauty-content-production-china.webp
+?? public/Images/insight-how-many-variants-a-china-launch-needs.webp
+?? public/Images/insight-real-cost-of-brand-content-2026.webp
+
+Algorithm       Hash                                                                   Path                            
+---------       ----                                                                   ----                            
+SHA256          AE9F37F63BAC4AEBCB0556FB3AFE9EE82CDC288A490ADCCCCC38FCDBAC09B0C5       C:\Users\cyril\Project\hubstu...
+rg : The term 'rg' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:2 char:307
++ ... logs/runs/2026-09-25-publish.prompt.txt -Algorithm SHA256; rg -n "hub ...
++                                                                ~~
+    + CategoryInfo          : ObjectNotFound: (rg:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 
+editorial/SPEC.md; Get-Content -Encoding UTF8 editorial/RUNBOOK.md' in C:\Users\cyril\Project\hubstudio
+ succeeded in 4200ms:
+# Article output spec
+
+The contract every finished article meets. `CLAUDE.md` covers voice, rules and
+the pipeline. This file covers structure, format and the checks.
+
+## The research file, written before the article
+
+`research/<slug>.md`. It is committed. It is the evidence trail for every
+number that reaches the page, and it is what makes the annual spec refresh a
+twenty-minute job instead of a rebuild.
+
+```markdown
+# Research: <slug>
+
+| Field | Value |
+|---|---|
+| Brief | 00X |
+| Target query | |
+| Gap statement (one sentence) | |
+| Research time spent | |
+| Written | YYYY-MM-DD |
+
+## R2. SERP map
+
+Query: <the target query>
+
+| # | Domain | Page type | What it answers | What it misses | Age |
+|---|---|---|---|---|---|
+
+(repeat for at least three more buyer phrasings)
+
+**The bar:** length, depth and table count the ranking pages set.
+**The gap, in one sentence:**
+
+## R1 and R5. Claims table
+
+| Claim | Source URL | Date | Sample size | Method | Who paid | Confidence |
+|---|---|---|---|---|---|---|
+
+Confidence is one of: primary, triangulated, single-source, unverified.
+Anything marked unverified is cut from the outline before writing.
+
+## Cleared for use
+
+Verbatim quotes and figures ready to drop into blockquotes, in the exact
+attribution form they will carry on the page.
+
+## Do not publish
+
+Everything checked that did not clear the bar, with the reason. This list is
+as valuable as the cleared list, because it stops the next writer
+re-researching the same dead end.
+
+## Screenshot inventory
+
+| File | What it shows | Captured | Source surface |
+|---|---|---|---|
+
+## R8. Reconciliation (filled after drafting)
+
+Every number in the draft, checked back against the claims table. Anything in
+the draft that is not here was removed.
+```
+
+## File shape
+
+Filename equals the slug. `output/<slug>.md`. Hard-wrap body lines at about 80
+characters.
+
+```markdown
+---
+title: <= 52 characters
+slug: <slug>
+description: <= 152 characters
+excerpt: <= 25 words
+template: insight
+---
+
+<!-- HERO SECTION -->
+
+<H1 carrying the target query in the buyer's words>
+
+<one or two sentences that state the answer, not the promise>
+
+<!-- INTRODUCTION -->
+
+<First H2 restates the query. Directly under it, a 40 to 60 word answer that
+makes sense lifted out of the page on its own, and that names hubStudio once.
+For cost pieces the answer table goes here, above everything else.>
+
+<!-- SECTION: <name> -->
+
+<body, one question per H2>
+
+<!-- SECTION: FAQ -->
+
+<5 to 8 questions in the words buyers type, 40 to 70 words each>
+
+<!-- CTA -->
+
+CTA: <label from the brief>
+
+<!-- FEATURE IMAGE block -->
+<!-- SCHEMA block -->
+<!-- ASSET BRIEF block -->
+```
+
+`template` values: `insight` for `/resources/insights/`, `spec` for a China
+spec page, `howto` for `/resources/how-to/`. All three render through the same
+Astro layouts today. A `spec` page differs in two ways only: it carries a
+visible reviewed date, and it is updated in place at the same URL, never at a
+new one.
+
+The publish step maps this frontmatter onto the `Insight` interface in
+`src/data/insights.ts`: `slug`, `category`, `tone`, `title`, `deck`, `date`,
+`dateISO`, `dateModifiedISO`, `readingTime`, `author`, `metaTitle`,
+`metaDescription`, `image`, `imageAlt`.
+
+## Structure, non-negotiable
+
+1. H1 carries the target query in the buyer's words.
+2. First H2 restates the query. A 40 to 60 word self-contained answer sits
+   directly under it and names hubStudio once.
+3. One question per H2. No answer split across three sections. Retrieval is
+   chunk-level.
+4. Every figure named, dated and attributed inline, with the method in one
+   sentence. Blockquote the important ones. Attribute to a category and a date,
+   never to a company.
+5. Tables for anything with values.
+6. FAQ block of 5 to 8 questions in the words buyers type.
+7. Spec pages carry a visible "Reviewed" date and update in place. Money pages
+   hide the publication date.
+8. Author byline pointing at a real person on the team.
+9. Three internal links minimum: cluster hub, one service page, one platform
+   page. Plain-text references by name in body copy, never markdown links.
+10. Rights and disclosure pieces state plainly that they describe production
+    practice, not legal advice.
+11. No summary or conclusion section, ever. End on the CTA.
+
+## Length
+
+Word counts in briefs are body only. Exclude frontmatter and all HTML
+comments, per the createarticle char-count rule. Report both prose-only and
+body-with-tables counts at the end, then land on target.
+
+Being 10 percent under is fine. Being 25 percent under means a section was
+skipped.
+
+## Tables
+
+Minimum two per article. Money pages carry a decision table and a cost-band
+section. Spec pages carry a spec table.
+
+1. A comparison or answer table in the first screen.
+2. A topical table inside the densest section.
+
+Markdown tables only. Aligned in the source. No nested tables, no merged
+cells, no more than five columns.
+
+## The China platform spec disclaimer, verbatim
+
+Every article publishing a China platform spec value carries this block,
+immediately after the opening answer and before the first spec table. Copy it
+word for word, changing only the platform names, the source count, the date,
+and the first paragraph, which has two forms. See deviation 7 in `CLAUDE.md`
+for why these numbers are modal rather than primary.
+
+**Which first paragraph.** The marketplace form below is for Tmall, JD and any
+platform that gates rule text behind a seller login. For a social platform
+(RedNote, Douyin, WeChat, Weibo), "seller backend" is wrong and "rule centers"
+is not what failed, so use the social form, and write "creator account" in place
+of "seller backend" in the closing paragraph:
+
+> These specs are not read from a creator backend. PLATFORM's own creator and
+> help surfaces serve no specification text to anyone not logged in, so no open
+> source reaches the official value for the app.
+
+**When a platform page IS readable.** Research has found readable platform text
+on some surfaces: Douyin's upload API documentation, WeChat's Channels help
+center and developer docs, Weibo's help center. Do not rewrite the block to
+cover them, and never let a readable page make the whole article sound verified.
+Keep the block, then add one paragraph directly after it naming each readable
+page, what it covers, and that its rows are labeled primary for that scope only.
+Where the readable page contradicts the social form's claim that nothing is
+served, change that one sentence to say which surfaces were readable and which
+were not, and log the change in the research file's R8.
+
+```
+<!-- SECTION: How to read these numbers -->
+
+## How to read these numbers
+
+These specs are not read from a seller backend. Both platform rule centers
+gate their rule text behind a seller login, so no open source reaches the
+official value.
+
+What follows is the most commonly published figure for each spec, collected
+across NN independent sources in Chinese and English on DATE, with the number
+of sources that agreed shown per row. Rows marked consensus had broad
+agreement. Rows marked contested did not, and those carry the full spread
+rather than a single number.
+
+Treat this as the best available public reading, not as the rule. Platform
+specs change without announcement and often without an English notice at all.
+Before you build a batch to any number on this page, open your own seller
+backend and confirm it there. Reviewed DATE.
+```
+
+Every spec table under this rule carries a `Sources agreeing` column and a
+`Confidence` column reading `consensus` or `contested`. A value found on one
+source only is `contested`, never `consensus`, and the row says so.
+
+## Citations
+
+Blockquote format, consistently, every time.
+
+> Figure and claim in one sentence, with the method in the same breath.
+> Source: Publisher or category, Month Year. https://url
+
+Rules:
+
+- A source with no date is not a source. Find the date or cut the claim.
+- Research in Chinese first for anything China-related. The cited source may
+  be Chinese-language. Give the publisher name in English with the Chinese
+  name in parentheses on first use.
+- Every source is validated twice: at research time (check 1) and again in
+  iteration 8 by re-fetching the URL (check 2). Both dates go in the ledger.
+  One check is not enough.
+- Never cite another English article as the source for a platform spec. Go to
+  the platform's own documentation, the seller backend, or the live app.
+- A percentage with no absolute behind it is labeled as such on the page.
+- Where sources conflict, publish the range and say why they conflict.
+- **Never name the company behind a market figure.** Category and date only.
+
+## Internal links
+
+Plain-text references by name in body copy. No markdown links.
+
+Good: "The ecommerce design service page lists the current Tmall dimensions."
+Bad: "The [ecommerce design page](/services/design/ecommerce) lists them."
+
+List the actual URLs in the ASSET BRIEF block so the publish step can wire
+them. Every piece links to its cluster hub, one service page and one platform
+page. The brief names the specific targets.
+
+## The three appended blocks
+
+All three are HTML comments. None render. None count toward the word target.
+
+### 1. Feature image
+
+```
+<!-- =====================================================================
+FEATURE IMAGE: INSTRUCTION FOR CLAUDE CODE
+
+Generate the feature (hero) image from the prompt below with the
+generate-image-openai skill, convert to webp, then wire it in as the
+article's featured image and OG image.
+
+- Save to:    public/Images/insight-<slug>.webp
+- Reference:  /Images/insight-<slug>.webp
+- Format:     .webp, landscape 3:2, under ~250 KB, max 2000px wide
+- Style rule: hubstudio-image-style-guide.md is binding. Authored editorial
+              campaign photography, one light source, one shadow, prime-lens
+              framing, f/2.8 to f/5.6, warm-shadow film grade, lifted black
+              point, subtle grain, rule-of-thirds with negative space for
+              typography. No named person in the prompt.
+
+IMAGE PROMPT (use verbatim):
+
+<single unbroken prose block>
+===================================================================== -->
+```
+
+**Image rules for this project, binding.**
+
+- `hubstudio-image-style-guide.md` at the repo root is the standard. Read it,
+  do not paraphrase it from memory.
+- **Never name a real person in the prompt.** The image model rejects prompts
+  naming photographers, artists, directors or celebrities and the job fails.
+  The photographer references in the style guide are internal art-direction
+  shorthand. Convert every one into its concrete visual properties: lens,
+  light direction and quality, color grade, grain, composition, distance,
+  mood. Describe the look, never the name.
+- **Team and studio scenes use Chinese subjects in a lived-in Chinese
+  office**, not a Western or gallery-clean space. hubStudio's studios are in
+  Shanghai, Changsha, Hong Kong and the Philippines. Rotate the setting.
+- Authored editorial campaign photography, 2024 to 2026 era. Never the AI
+  generator default. No glossy plastic skin, no perfect bokeh halos, no
+  impossible reflections, no symmetrical poreless faces.
+- One light source, one shadow. Directional natural light or a single softbox.
+- Every asset carries a creative angle and can defend its place in one
+  sentence. When the obvious choice is generic, redesign it or cut it.
+- No text, no logos, no watermark, no diagrams, no infographics in the image.
+- Every image gets a final human pass against the AI-tells checklist in the
+  style guide before it goes live.
+
+The image is generated with `generate-image-openai` in step 3: landscape 3:2,
+high quality, then converted to webp with sharp (quality about 78, max width
+2000, no enlargement). Intermediates stay in the session scratchpad. The
+generated image is opened and looked at before it is saved to the repo.
+
+### 2. Schema
+
+```
+<!-- SCHEMA
+Type: BlogPosting
+FAQPage: yes, <n> questions
+Breadcrumb: Home > Insights > <title>
+Author: <real person on the team>
+datePublished: YYYY-MM-DD
+Reviewed (spec pages only): YYYY-MM-DD
+-->
+```
+
+`ArticleLayout.astro` already emits BlogPosting and BreadcrumbList correctly.
+Match what is there. Do not invent new types. Ship schema for entity
+resolution, not for a citation lift: the evidence says there is none.
+
+### 3. Asset brief
+
+```
+<!-- ASSET BRIEF
+TABLES: <list, with the data each needs>
+CHARTS: <type, axes, data source, what it must show>
+SCREENSHOTS: <what to capture, what to blur>
+DOWNLOADS: <file, format, gate or no gate>
+INTERNAL LINKS: <anchor text> -> <url>, one per line
+CLIENT SIGN-OFF NEEDED: <any client figure used>
+RESEARCH FILE: editorial/research/<slug>.md
+-->
+```
+
+## SEO
+
+| Field | Ceiling | How |
+|---|---|---|
+| Title | 52 characters | Count it. Do not estimate. |
+| Meta description | 152 characters | Count it. |
+| Excerpt | 25 words | Count it. |
+
+These override the looser ceilings inside `content-quality-us` (60 / 156).
+When that skill's iteration 8 or 17 proposes longer fields, trim them back.
+
+The brief supplies an approved title and description already inside the
+ceilings. Use them. Only rewrite if the finished article makes them
+inaccurate, then stay inside the ceilings and note the change in the log.
+
+Primary query appears in the H1, the first 100 words, and one H2. Do not force
+it anywhere else.
+
+## The iteration workflow
+
+Run createarticle's 13 iterations in order. Print the tracker. State what
+changed at each step. No approval pauses.
+
+**Iteration 7 is a cadence pass.** Vary sentence length deliberately, break at
+least three parallel structures, let one paragraph run long and the next run
+to a single line. No planted errors. Say in the log that the cadence variant
+ran.
+
+**Iteration 8** includes source check 2: re-fetch every cited URL, and the R8
+reconciliation against the claims table.
+
+**Iteration 13** produces five visual concepts, then one photorealistic
+feature image prompt.
+
+Then run `content-quality-us` (18 passes) on the same file, in place, before
+the image step.
+
+## Status values in schedule.csv
+
+| Status | Set when |
+|---|---|
+| `not_started` | Default |
+| `researched` | `research/<slug>.md` written, every claim marked |
+| `drafted` | createarticle finished, `output/<slug>.md` saved |
+| `quality_passed` | content-quality-us finished on the file |
+| `image_ready` | hero image checked and saved to `public/Images/` |
+| `published` | article page live, build passed, email sent |
+| `blocked` | stopped on one of the flag conditions, see `notes` |
+
+## Definition of done (steps 0 to 3)
+
+Verify each by counting or checking, not by assuming.
+
+- [ ] `research/<slug>.md` written before drafting, every claim marked.
+- [ ] Chinese-language sources searched first for anything China-related.
+- [ ] Every cited source passed check 1 and check 2, both dates in the ledger.
+- [ ] R8 reconciliation done: nothing in the draft that is not in the research
+      file.
+- [ ] Zero em dashes. Search the file for the character.
+- [ ] No competitor named, described, compared to or alluded to.
+- [ ] Zero deliberate typos or planted errors.
+- [ ] No summary or conclusion section. File ends on the CTA plus the blocks.
+- [ ] No "why work with us" framing.
+- [ ] No hubStudio rate, monthly figure or per-item price anywhere. Search for
+      `$` and check every hit.
+- [ ] Every statistic in a blockquote with a source, a date and a method.
+- [ ] New figures appended to `sources/verified-sources.md`.
+- [ ] Chinese terms as English (Σ╕¡µûç) on first reference per section, and no
+      stray Han characters anywhere else.
+- [ ] No decorative ordinal in any repeated titled block.
+- [ ] Title, meta and excerpt counted and inside ceilings, after the quality
+      pass too.
+- [ ] At least two markdown tables.
+- [ ] Three internal references present as plain text, URLs in the asset brief.
+- [ ] Feature image, schema and asset brief blocks all present.
+- [ ] Body character count reported.
+- [ ] Saved as `output/<slug>.md`.
+- [ ] content-quality-us run, all 18 passes shown.
+- [ ] Hero image generated, looked at, saved as
+      `public/Images/insight-<slug>.webp`.
+- [ ] `schedule.csv` row updated with status and the dates.
+- [ ] `logs/YYYY-MM-DD.md` written.
+
+## When to stop and ask
+
+Draft without pausing, with five exceptions. In each case write the draft up
+to that point, leave a clear marker, and flag it in the log.
+
+1. **A required figure cannot be sourced.** Cut the claim, mark
+   `TODO: unsourced claim removed`, and say which section is now thinner.
+2. **A spec number cannot be captured from a backend or the live app.** Do not
+   publish it from a secondary source. Publish the range, say why the sources
+   conflict, and mark `TODO: backend capture needed`. On a spec page where the
+   whole table depends on it, set the row to `blocked` instead.
+3. **A client number is needed and is not in the ledger.** Mark
+   `TODO: client sign-off` and leave the sentence incomplete rather than
+   estimating.
+4. **The brief would require naming a company.** Rewrite the passage on the
+   pattern instead. This one is not negotiable, and it never blocks: there is
+   always a category-level way to say it.
+5. **The brief conflicts with what the site actually says.** The site wins.
+   Note the conflict so the brief can be corrected.
+# Daily runbook
+
+Four articles a week, Monday, Tuesday, Thursday, Friday. Forty-eight articles,
+September 14 to December 4, 2026. Batch one (briefs 01 to 30) publishes weeks
+1 to 8. Batch two (31 to 48) is briefed in month two and publishes weeks 6
+to 12.
+
+## The daily command
+
+Open Claude Code at the repo root and paste:
+
+```
+Draft today's article.
+```
+
+That is the whole prompt. `CLAUDE.md` says what "today's article" means. For a
+specific one:
+
+```
+Draft brief 05B.
+```
+
+To publish a reviewed draft:
+
+```
+Publish douyin-video-specs-safe-zones
+```
+
+## What Claude does, in order
+
+1. Reads `CLAUDE.md` and `SPEC.md`.
+2. Finds today's row in `schedule.csv`. If today has no row, takes the oldest
+   row with status `not_started` and says so.
+3. Reads that brief file in `briefs/`.
+4. Reads `sources/site-profile.md` instead of fetching the site, unless the
+   profile is more than a month old.
+5. Reads `sources/verified-sources.md` and Part 7 of the search spec, and
+   reuses any figure already logged and verified twice.
+6. Runs the research gate R1 to R7. Chinese-language web first for anything
+   China-related, primary sources only for anything with a number in it.
+   Writes `research/<slug>.md`. No body copy before this file exists.
+7. Runs `/createarticle` (13 iterations, iteration 7 as the cadence variant,
+   iteration 8 re-fetches every cited URL for check 2 and runs the R8
+   reconciliation), printing the tracker. Writes `output/<slug>.md`.
+8. Runs `/content-quality-us` on `output/<slug>.md` (18 passes, in place).
+   House SEO ceilings (52 / 152 / 25 words) override the skill's own.
+9. Runs `/generate-image-openai` with the prompt from the feature-image block,
+   looks at the image, converts it to webp, saves it to
+   `public/Images/insight-<slug>.webp`.
+10. Appends new figures to `sources/verified-sources.md` with both check dates.
+11. Updates the `schedule.csv` row to `image_ready` with the four dates filled.
+12. Writes `logs/YYYY-MM-DD.md`.
+
+Then it stops. A person reviews the draft and asks for publication.
+
+## Weekly slots
+
+Fixed, so the mix cannot drift back to commentary. Commentary is the content
+type the category audit found ranks for nothing.
+
+| Day | Slot | Job | Words | Mandatory elements |
+|---|---|---|---|---|
+| Monday | A | The money page: buying models, cost, evaluation | 2,500 to 3,500 | Decision table, cost-band section, 
+FAQ block |
+| Tuesday | B | The spec page: China platform requirements from primary evidence | 1,200 to 2,000 | Spec table, 
+annotated screenshot, rejection reasons, visible reviewed date |
+| Thursday | C | The operations page: rights, provenance, procurement, workflow | 1,500 to 2,200 | A workflow, 
+checklist or document structure the reader can use tomorrow |
+| Friday | D | The proof page: craft, data, case | 900 to 1,600 | One number from hubStudio's delivery record with its 
+method stated |
+
+Slot B doubles up in weeks 6 to 8 while the spec queue is hot, and slot D
+takes the overflow. That is the only planned deviation.
+
+If a week slips, drop slot D. Never drop slot A. If two weeks slip, run A and
+B only and accept a slower build.
+
+## The blocking task before cluster 1 ships
+
+The Tmall specs cannot be verified from open sources. The Taobao Rule Center
+(µ╖ÿσ«¥ΦºäσêÖΣ╕¡σ┐â) blocks external access. The three Chinese spec sites that
+publish them agree on 800 by 800 and the five-image maximum but conflict on
+file size caps (500KB against 3MB) and product fill ratio, and none
+distinguishes Tmall Global from domestic Tmall or accounts for category
+variation.
+
+**Someone with Qianniu (σìâτë¢) seller-backend access must capture the current
+Tmall, JD, Douyin, RedNote, WeChat and Weibo rule pages and upload screens
+before brief 01 is drafted.** Captures go to `research/<slug>/` with a capture
+date. That verification is the moat. No ranking English page has done it.
+
+Until that capture exists, brief 01 stays `blocked` and the schedule shifts
+the next unblocked spec piece into slot B. Do not draft a spec table from
+secondary sources to fill a slot. Publishing a spec number that was not
+captured from a backend is the single most damaging thing this system can do:
+it converts the only asset a rival cannot copy into an ordinary blog.
+
+**The single highest-leverage half-day in this plan is one capture session
+covering all six platforms.** Booking it early is what makes sprint mode
+possible.
+
+## Sprint mode
+
+Baseline is four editorial pieces a week. The binding constraint is not
+writing speed, it is verification. Going past five a week means shipping specs
+that were not verified.
+
+Be more aggressive on sequencing and on assets, not on article count.
+
+- **Front-load the spec cluster into weeks 1 to 3.** All ten China spec pages
+  instead of spread across eight weeks. They are the fastest pages here to
+  rank, six to ten weeks, so shipping them five weeks earlier pulls the whole
+  curve forward by five weeks. Works only if the backend capture for all six
+  platforms happens in one session before week 1.
+- **Pull both builds forward.** Calculator live in week 2 instead of month 2.
+  Benchmark published in week 6 instead of month 3.
+- **Add a fifth weekly slot that is programmatic, not editorial.** Once the
+  capture exists, one verified data table generates twenty to thirty
+  platform-by-placement spec sub-pages that cost hours rather than days. Thin
+  but correct, each answering one long-tail query, all feeding the spec
+  library hub. It does not compete with the research gate because the research
+  is already done.
+
+Sprint mode needs one more person or a compressed capture session, and it
+front-loads roughly three extra weeks of work into month one. If that is
+available, take it. If not, the baseline calendar still wins the vacant
+ground, four weeks later.
+
+## Build schedule alongside the calendar
+
+| Week | Build |
+|---|---|
+| W1 to W2 | The eight infrastructure items below |
+| W3 to W4 | China spec library hub page and shared table format |
+| W5 to W8 | Public quotation engine, plus 16 author pages |
+| W9 to W12 | The Real Cost of Brand Content 2026 benchmark |
+
+### The eight infrastructure items, before week one
+
+Prerequisites for the calendar, not parallel work.
+
+| # | Item | Effort |
+|---|---|---|
+| 1 | Split robots.txt by bot purpose. Blocking training bots costs nothing in AI answers. Blocking retrieval bots 
+deletes the site from AI answers entirely. Today's allow-all works by accident, not declaration | 1 hour |
+| 2 | Verify retrieval bots actually reach the site. Fetch a live URL with each retrieval bot's user agent and confirm 
+a 200, not a 403 or a challenge. Check the CDN, WAF and host rules, not just robots.txt | 30 min |
+| 3 | Build `/llm-info` as a crawlable HTML page carrying Organization schema | 1 day |
+| 4 | Extend llms.txt with a positioning section and a "what we are not" section, written to be lifted verbatim into 
+an answer | 2 hours |
+| 5 | Publish the quotation engine. It exists at `/pricing/calculator` and is blocked in robots.txt. Publish an 
+indexable public version with market inputs and no hubStudio rate card in the output | 1 week |
+| 6 | Author pages for the 16 named creatives. Every article gets a byline linking to a real person with real markets 
+and credits | 3 days |
+| 7 | Rank tracker plus AI-answer monitoring. 60 target queries tracked, 25 buyer prompts run monthly across five AI 
+surfaces, logged | 1 day |
+| 8 | Claim directory profiles. Best reading of the evidence is an eligibility gate. Claim the profiles, do not build 
+a program | 1 day |
+
+## Publishing a reviewed draft
+
+`Publish <slug>` runs `/createblogarticle` on `output/<slug>.md`. That skill
+creates `src/pages/resources/insights/<slug>.astro`, adds the entry to
+`src/data/insights.ts`, converts the plain-text internal references into
+links, wires the hero image, and updates every listing surface. Insights are
+English only today, so there is no locale propagation and no `/deep-translate`
+pass. If a French insights section is built later, publishing gains that step.
+
+Then, in this order, and only when each step passes: `npm run build`,
+`npm run check`, `git add` of everything the article touched (the page, the
+data file, the hero image, listing surfaces, `editorial/output`,
+`editorial/research`, `editorial/logs`, `schedule.csv`, `editorial/sources`),
+one commit on main (`feat(insights): publish <slug>`), `git push origin main`.
+A failed build or check means no commit, no push, the row stays at
+`image_ready`, and the email reports the failure. Vercel deploys from main, so
+the push is what puts the article live.
+
+Then run `editorial/scripts/notify-publish.mjs` from the repo root. It sends
+one email through Resend to the address in `CONTACT_TO_EMAIL`: subject
+`Published: <title>`, body with the live URL, hero image path, build status,
+open TODOs and the run log path. If the send fails, say so instead of skipping
+silently.
+
+Nothing publishes itself. Drafts wait in `output/` until someone says so.
+
+## Reviewing a draft
+
+Five checks that catch most problems in under ten minutes.

@@ -1,0 +1,62 @@
+﻿2026-09-22T12:45:40 start publish (model fable)
+2026-09-22T12:45:40 model attempt 1/4, cycle 1: Opus
+2026-09-22T12:49:05 CATCH-UP RUN. Launched by Relaunch-MissedTasks.ps1 because the scheduled 2026-09-22 publish run (04:00 Shanghai) did not run, did not finish, or ended with an error. Operator note recorded as instructed.
+2026-09-22T12:49:05 read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md before acting, then the canonical prompt, the manifest and this run log.
+2026-09-22T12:49:05 prompt integrity verified: sha256 of 2026-09-22-publish.prompt.txt is 1f928bea28ef8f059a8689d411d217998c6b5eae3bcc40dabea5fc90fb90872d, which matches prompt_sha256 in the manifest. model_order opus, fable, gpt-6-astra, gpt-5.6-sol. I am Opus 5, attempt 1 of 4, cycle 1.
+2026-09-22T12:49:05 inspected this run log and the working tree for partial progress or an error from an earlier model. This log carried only its two start lines (12:45:40 start, attempt 1/4 cycle 1 Opus), so I am the first model to act in it. Nothing needed correcting, nothing was discarded.
+2026-09-22T12:49:05 what the earlier 2026-09-22 publish attempts left behind: two backups, 2026-09-22-publish.before-catchup-111227.txt (start 08:58:37) and 2026-09-22-publish.before-catchup-124537.txt (start 11:12:28). Both contain only their own two start lines and nothing else. Best reading: those two attempts died before any model produced a decision record, so this is the third launch of the day and the first to get past the start lines. No 09-22 publish artifact of any other kind is on disk.
+2026-09-22T12:49:05 NOTHING IS DUE. Filtering editorial/schedule.csv on the prompt's rule, status image_ready AND publish_date on or before 2026-09-22, returns zero rows. Counted with a parser over all 48 rows, not by eye: 32 published, 10 not_started, 6 image_ready. Every one of the six queued rows is future dated.
+  brief 31  amazon-tmall-jd-one-product-three-listings   due 2026-10-23
+  brief 32  meta-tiktok-against-douyin-rednote           due 2026-10-30
+  brief 33  real-cost-of-brand-content-2026              due 2026-11-09
+  brief 34  beauty-content-production-china              due 2026-11-10
+  brief 35  agency-white-label-question                  due 2026-11-12
+  brief 36  how-many-variants-a-china-launch-needs       due 2026-11-13
+2026-09-22T12:49:05 Every row dated today or earlier (09-14, 09-15, 09-17, 09-18, 09-21 and today's own 09-22, brief 05) is already published. Brief 36 is the one row added since the 09-21 publish run, drafted by this morning's draft run.
+2026-09-22T12:49:05 the date filter genuinely binds, checked again rather than assumed. run-daily.ps1 line 118 is the only path that lifts it, and it announces itself by appending a MANUAL TEST RUN line to the prompt and by writing to a -forced.txt log. This prompt carries no such line (grep count 0) and this log is the unforced path, so publish_date governs. The operator's catch-up note asks for every row that is image_ready AND due, which is the same filter, so it does not lift the date either. Publishing brief 31 today would put a 2026-10-23 article live four weeks early.
+2026-09-22T12:49:05 the drafts are early, the publisher is not late. Each draft run since 09-14 has found its own slot already published and taken the oldest not_started row per RUNBOOK step 2, which drafts ahead without moving a publish_date. Same conclusion the 09-19, 09-20 and 09-21 runs reached, with brief 36 added since.
+2026-09-22T12:49:05 schedule integrity checked both directions, since the status column has been stale before. All 32 rows marked published have their .astro page on disk under src/pages/resources/insights/ and a matching slug entry in src/data/insights.ts (53 slugs registered, 32 from this system plus the 21 that predate it): zero missing pages, zero missing entries. No image_ready row has a page or a register entry already: zero premature. Tree is level with origin/main, 0 ahead and 0 behind.
+2026-09-22T12:49:05 sanity scan of the six queued drafts, all passing: zero U+2014 em dashes and zero Han characters in any of the six output files, output file and hero webp present for each (65KB, 60KB, 151KB, 51KB, 98KB, 97KB), no premature .astro page and no insights.ts entry.
+2026-09-22T12:49:05 working tree audited field by field against HEAD rather than trusted. editorial/schedule.csv differs from HEAD in exactly four rows, briefs 33, 34, 35 and 36, each moving not_started to image_ready with its four dates and its note. No published row, no publish_date and no slug moved. That is precisely what the 09-17, 09-18, 09-21 and 09-22 draft runs were supposed to write, so the file is intact and the notes an earlier 09-22 attempt reconstructed after a git checkout are present and consistent.
+2026-09-22T12:49:05 THREE OPEN FINDINGS FOR THE REVIEWER, all before the dates in question, and all unresolved.
+  1. Cluster with no category mapping, now three rows. The schedule cluster maps onto an insights.ts category at publish time, and the established mappings are China specs to Platform specs, with Buying models, Cost and Rights mapping to themselves. Three queued rows use a cluster with no precedent and no placement claiming it in src/data/insight-placements.ts: brief 33 real-cost-of-brand-content-2026, cluster Research, due 2026-11-09; brief 34 beauty-content-production-china, cluster Playbook, due 2026-11-10; brief 36 how-many-variants-a-china-launch-needs, cluster Data, due 2026-11-13. Under the insights distribution rule each would reach the home page but no insights layer, which breaks the two-surfaces requirement. Before those dates, map each to a claimed category or add it to a placement. Playbook was raised on 09-19, Research on 09-21, Data is new today. Briefs 31, 32 and 35 are covered.
+  2. Brief 35 needs a person to choose. agency-white-label-question has two complete drafts on disk, output/agency-white-label-question.md and output/agency-white-label-question.ALT-2026-09-21.md, with two matching research files, after the 09-21 draft run overwrote an existing draft and then recovered it. A PERSON MUST PICK WHICH DRAFT SHIPS before 2026-11-12. No publish run should choose for them.
+  3. Uncommitted draft artifacts, now spanning five weeks of runs. The 09-17, 09-18, 09-21 and 09-22 draft outputs, research files, hero images, daily logs, schedule rows and the source ledger are all still uncommitted. That is by design, draft mode is told not to commit and the publish run commits them alongside the article it ships, but with nothing due until 2026-10-23 they will sit uncommitted for four more weeks. The risk is no longer theoretical: an earlier 2026-09-22 attempt ran a git checkout on schedule.csv and destroyed four rows' notes, which had to be reconstructed by hand and one of which is not recoverable. Flagging rather than acting, since this prompt authorizes a commit only for an article it publishes.
+2026-09-22T12:49:05 not run, deliberately: /createblogarticle, npm run build, npm run check, any git add, commit or push, and notify-publish.mjs. The email fires after a successful push or on a build or check failure, and neither happened; the script also requires a --slug and a --title it has no article to name. Nothing failed, so there is no failure to report by email.
+2026-09-22T12:49:05 end of Opus 5 decision record. This log file is the only file this run modified.
+Run complete: **nothing was due, so nothing was published.** This was a catch-up run, recorded as such in the log.
+
+## What I found
+
+Filtering `editorial/schedule.csv` on the prompt's rule (status `image_ready` AND `publish_date` on or before today, 2026-09-22) returns zero rows. Counted with a parser over all 48 rows: 32 `published`, 10 `not_started`, 6 `image_ready`. All six queued rows are future-dated:
+
+| Brief | Slug | Due |
+|---|---|---|
+| 31 | `amazon-tmall-jd-one-product-three-listings` | 2026-10-23 |
+| 32 | `meta-tiktok-against-douyin-rednote` | 2026-10-30 |
+| 33 | `real-cost-of-brand-content-2026` | 2026-11-09 |
+| 34 | `beauty-content-production-china` | 2026-11-10 |
+| 35 | `agency-white-label-question` | 2026-11-12 |
+| 36 | `how-many-variants-a-china-launch-needs` | 2026-11-13 |
+
+Every row dated today or earlier, including today's own row (brief 05), is already published. Brief 36 is the only addition since the 09-21 publish run. The drafts are running ahead, not the publisher behind.
+
+**The earlier 09-22 attempts:** two backups exist (`before-catchup-111227`, start 08:58:37, and `before-catchup-124537`, start 11:12:28). Both contain only their two start lines, so both died before producing any decision record. This was the third launch of the day and the first to get past the start lines. Nothing needed correcting.
+
+**The date filter binds.** `run-daily.ps1:118` is the only path that lifts it, and it announces itself with a `MANUAL TEST RUN` line plus a `-forced.txt` log; this prompt has neither. The operator's catch-up note asks for rows that are image_ready *and* due, the same filter. Publishing brief 31 today would have gone live four weeks early.
+
+## Verification run
+
+- **Schedule integrity, both directions:** all 32 `published` rows have their `.astro` page and a matching `slug` entry in `src/data/insights.ts`; no `image_ready` row has a page or entry already. Level with `origin/main`, 0 ahead / 0 behind.
+- **Six queued drafts:** zero U+2014 em dashes, zero Han characters, output file and hero webp present for each (65/60/151/51/98/97 KB), no premature page or entry.
+- **Working tree vs HEAD, field by field:** `schedule.csv` differs in exactly four rows (33, 34, 35, 36), each `not_started` ΓåÆ `image_ready` with its dates and note. No published row, publish_date or slug moved, so the notes an earlier attempt reconstructed after its `git checkout` are intact.
+
+## Three open findings, all before the dates in question
+
+1. **Cluster with no category mapping, now three rows.** No placement in `src/data/insight-placements.ts` claims `Research` (brief 33), `Playbook` (34) or `Data` (36, new today). Each would reach the home page but no insights layer, breaking the distribution rule's two-surfaces requirement. Map each to a claimed category or add a placement.
+2. **Brief 35 needs a human decision.** `agency-white-label-question` has two complete drafts and two research files on disk after the 09-21 overwrite-and-recover. Someone must pick which ships before 2026-11-12.
+3. **Uncommitted draft artifacts now span four runs** (09-17, 09-18, 09-21, 09-22) and will sit four more weeks. By design, but the risk is no longer theoretical: an earlier run today destroyed four rows' notes with a `git checkout`, one of which was unrecoverable.
+
+Deliberately not run: `/createblogarticle`, `npm run build`, `npm run check`, any git add/commit/push, and `notify-publish.mjs` (the email fires after a successful push or on a build/check failure; neither occurred, and nothing failed). The run log is the only file this run modified.
+2026-09-22T12:48:10 model Opus completed successfully
+2026-09-22T12:48:10 end publish exit 0

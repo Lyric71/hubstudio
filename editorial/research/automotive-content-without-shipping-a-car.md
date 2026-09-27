@@ -631,11 +631,63 @@ a finding:
 6. 轻型汽车燃料消耗量标示管理规定 (China's light vehicle fuel consumption labeling rules) and whether they reach advertising.
 7. The UK ruling pages for the three February 2024 zero emissions investigations and the 2012 virtual-city ruling.
 
+## Check 2 and supplementary research, 2026-09-24
+
+Run on 2026-09-24 by the drafting session (Opus 5.5), through a verification
+subagent plus two independent re-fetches by the drafting session itself.
+
+**Check 2 results.** 27 cited or cleared URLs re-fetched. 22 passed unchanged.
+Five needed a wording fix, none a reversal:
+
+| Source | Result | What changed on the page |
+|---|---|---|
+| CAP Code Section 19 | pass, with a note | The code page prints no edition number. "Edition 12" comes from the rulings and is no longer printed as read from the code page |
+| BCAP Code Section 20 | pass, with a correction | "Driving safely is staid or boring" is not in the rule text returned. Cut from the rules table |
+| ASA motoring advice, 16 July 2014 | changed wording | The advice makes the CGI point through one sports coupe example, not as a general statement. Blockquote rewritten to the example |
+| ASA in-car technology guidance, 13 August 2020 | partial | No "not a substitute for attention" line. Not cited in the draft |
+| IIHS release and bibliography | split | 2,938 and the decimals are in the bibliography; the 2018 to 2022 trends are in the release. The content-analysis blockquote was cut from the draft for length; the institute's statement on broadcasters stays, cited to the release |
+| CAC measures | URL swap | The logged URL is the press release. Full text at c_1743654684782215.htm carries the image and video labeling articles |
+
+EU tracker: still a proposal, "Information updated as of 01/08/2026", draft
+committee report 17 April 2026, plenary vote expected 23 November 2026, Council
+general approach expected 11 December 2026. The article is scheduled for 17
+November 2026 and says "a proposal as of Aug. 2026". Recheck the tracker at
+publish.
+
+**R4, Chinese production-side SERP, now mapped (2026-09-24).** Queries: AI
+generated car ad CGI shoot replacement; car CGI ad shooting; AIGC car ad
+without a real shoot, all in Chinese. Results were agency case posts (one
+reporting a car TVC made with AIGC in 2.78 days, April 2024), a trade-press post
+by a VFX company (April 2025), a car-platform tech team blog on AIGC ad
+workflows (about April 2024), an ad-platform training page with no extractable
+content, social posts debating whether a car stunt ad was AI or real footage, a
+tutorial and a content-farm Q&A. **None cites a rule, a code or a regulator.**
+The Chinese SERP misses the same thing the English one does. One content-farm
+snippet claimed CGI-simulated data must be labeled as laboratory test results:
+no source, failed TLS, do not publish. No domain from this set is named on the
+page.
+
+**Chinese rule on depicting dangerous driving: still none found in statute or
+regulator guidance.** The Advertising Law has no vehicle-specific driving rule;
+only Art. 9(7) is general. The broadcast advertising measures (in force 2010,
+amended 2011) Art. 8 banned-content list does not mention driving. The closest
+rule is a platform's: Xingtu's automotive content review guide, 12 June 2026
+(ledger row added), read at source and confirmed by an independent re-fetch.
+
+**Australia, read at source.** FCAI Voluntary Code of Practice for Motor
+Vehicle Advertising, PDF created 1 July 2020, text extracted locally and saved
+as `research/automotive-content-without-shipping-a-car/fcai-code-text-2026-09-24.txt`.
+Ad Standards' own page returned 403. This lifts Australia off the do-not-publish
+list: the 2019 advocacy relay stays cut, the code itself now runs.
+
+**China fuel consumption labeling.** Label only, not advertising (ledger row
+added). The article says so in one sentence.
+
 ## Screenshot inventory
 
 | File | What it shows | Captured | Source surface |
 |---|---|---|---|
-| (none) | | | |
+| fcai-code-text-2026-09-24.txt | Full text of the FCAI voluntary code and explanatory notes, extracted from the PDF | 2026-09-24 | fcai.com.au PDF, created 1 July 2020 |
 
 Nothing was captured. No platform spec is involved, so R3 capture is not
 required for the rules. The brief's slot requirement asks for an annotated
@@ -652,27 +704,32 @@ brief 38" block) in the ledger's format.
 
 | Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
 |---|---|---|---|---|---|---|---|
-| CAP Code Section 19 Motoring: 19.2 no unsafe or irresponsible driving and no depiction likely to encourage a breach of Highway Code legal requirements on a public road or space, track demonstrations allowed; 19.3 no speed depicted to encourage irresponsible or unlawful driving; 19.4 speed or acceleration not the main message; 19.5 no exaggerated or unsubstantiated absolute safety claims | "UK non-broadcast advertising code (CAP Code, Edition 12), Section 19, by rule number" | asa.org.uk/type/non_broadcast/code_section/19.html | page undated, read 2026-09-10 | primary | 2026-09-10 | | 38 |
-| BCAP Code Section 20 Motoring: 20.1 no dangerous, competitive, inconsiderate or irresponsible driving, safe driving not staid or boring; 20.2 no Highway Code breach; 20.3 power, acceleration or handling only in a clear context of safety; 20.4 speed not the main selling message; 20.5 no exaggerated safety features | "UK broadcast advertising code (BCAP Code), Section 20, by rule number" | asa.org.uk/type/broadcast/code_section/20.html | page undated, read 2026-09-10 | primary | 2026-09-10 | | 38 |
-| Ads set in virtual or CGI environments face scrutiny if the driving would be dangerous in reality | "UK advertising regulator (ASA and CAP) advice on motoring, July 2014" | asa.org.uk/advice-online/motoring.html | 2014-07-16 | primary for the advice; 2012 ruling unread | 2026-09-10 | | 38 |
-| Sharp overtaking, competitive driving and weaving risk breach even in a somewhat fantastical context; seatbelts shown worn; avoid blurred lights, blurred images and dust clouds; clearly fantastical scenarios more likely acceptable, "a difficult line to tread" | "UK advertising regulator (ASA and CAP) guidance on motoring ads, 9 November 2023, refreshed 9 July 2026" | asa.org.uk/news/strap-in-for-some-useful-advice-on-motoring-ads.html; asa.org.uk/news/on-the-road-to-motoring-ads-compliance.html | 2023-11-09; 2026-07-09 | primary | 2026-09-10 | | 38 |
-| Toyota (GB) plc A23-1191673: poster created completely by CGI; fantastical argument rejected; ads condoned vehicle use disregarding impact on nature and the environment; CAP 1.3; must not appear again | "UK advertising regulator ruling on Toyota (GB) plc, 22 November 2023" | asa.org.uk/rulings/toyota--gb--plc-a23-1191673-toyota--gb--plc.html | 2023-11-22 | primary | 2026-09-10 | | 38 |
-| Fiat Chrysler Automobiles UK Ltd A18-449228: substantial CGI and a fantastical toy-car concept; speed the main message; scenes resembled real driving; closed-course disclaimer inadequate; CAP 19.2, 19.3, 19.4 | "UK advertising regulator ruling on Fiat Chrysler Automobiles UK Ltd, 24 October 2018" | asa.org.uk/rulings/fiat-chrysler-automobiles-uk-ltd-a18-449228.html | 2018-10-24 | primary | 2026-09-10 | | 38 |
-| Mars Wrigley Confectionery UK Ltd G25-1285557: car chase dangerous if emulated in real life despite a fantastical-world argument; BCAP 20.1, 20.2; CAP 19.2, 19.3; five complainants | "UK advertising regulator ruling on Mars Wrigley Confectionery UK Ltd, 11 June 2025" | asa.org.uk/rulings/mars-wrigley-confectionery-uk-ltd-g25-1285557-mars-wrigley-confectionery-uk-ltd.html | 2025-06-11 | primary | 2026-09-10 | | 38 |
-| Nissan Motor (GB) Ltd A18-452330: emergency braking ad implied the driver could drive at speed rushed or distracted and rely on the system; BCAP 20.1, 20.5 | "UK advertising regulator ruling on Nissan Motor (GB) Ltd, 24 October 2018" | asa.org.uk/rulings/nissan-motor--gb--ltd-a18-452330.html | 2018-10-24 | primary | 2026-09-10 | | 38 |
-| Zero emissions claims acceptable for pure EVs only with while-driving and powertrain context; BMW (UK) Ltd and MG Motor UK Ltd breached, Ford Motor Company Ltd compliant, 7 February 2024 | "UK advertising regulator (ASA and CAP) advice on zero emissions claims, 9 July 2024" | asa.org.uk/advice-online/motoring-zero-emissions-claims.html | 2024-07-09 | primary for the advice; ruling pages unread | 2026-09-10 | | 38 |
-| Images of products must not mislead about the product customers will receive, and must not be altered to exaggerate what the product can do | "UK advertising regulator (ASA and CAP) guidance on misleading imagery, 11 September 2025" | asa.org.uk/news/a-picture-says-a-thousand-words-avoiding-misleading-imagery-in-ads.html | 2025-09-11 | primary | 2026-09-10 | | 38 |
-| Directive 1999/94/EC: all promotional literature for new cars contains official fuel consumption and CO2 data for the models referred to, plus label, poster or display, yearly guide | "European Commission summary of Directive 1999/94/EC, page updated December 2025", never an article number | climate.ec.europa.eu/areas-action/transport-decarbonisation/road-transport/car-labelling_en. Directive text unreached (EUR-Lex empty, legislation.gov.uk 403) | 2025-12-19 | primary as the Commission's statement | 2026-09-10 | | 38 |
-| COM/2025/995 final, tabled 16 December 2025: amends Regulation (EU) 2019/631, new vehicle labelling provisions with definitions of point of sale and promotional material, repeals Directive 1999/94/EC; status tabled | "European Parliament Legislative Train Schedule, updated August 2026" | europarl.europa.eu legislative-train entry for the file | 2026-08-01 | primary for status | 2026-09-10 | | 38 |
-| FTC Guide Concerning Fuel Economy Advertising for New Automobiles, 16 CFR Part 259, source 82 FR 43687 (19 September 2017): administrative interpretations of Section 5, basis for voluntary compliance; 259.4 EPA estimate disclosed with general fuel economy claims, identified as estimate and EPA as source, no applying one model type's figures to an ad depicting another | "FTC guidance, 16 CFR Part 259", paraphrase only until verbatim check | law.cornell.edu/cfr/text/16/part-259, /259.1, /259.4 (ecfr.gov bot-blocked) | 2017-09-19 | primary, paraphrase for 259.4 | 2026-09-10 | | 38 |
-| US: "broadcasters, rather than regulators, set standards" for car ads, "ambiguous and easily circumvented" | "Insurance Institute for Highway Safety news release, 12 May 2026", with the funding note | iihs.org/news/detail/more-car-ads-promote-vehicle-performance-despite-dangers-of-speed | 2026-05-12 | single-source statement | 2026-09-10 | | 38 |
-| 2,938 automobile ads (2018 n=539, 2020 n=1,186, 2022 n=1,213): performance theme 42.7 percent, speed 16.3, safety 8.1; speed-focused 14 to 19 percent and traction 20 to 38 percent while safety 11 to 3 percent, 2018 to 2022 | "Insurance Institute for Highway Safety content analysis, May 2026, ten trained coders, 23 themes, weighted by ad spend; institute funded by auto insurers" | iihs.org/research-areas/bibliography/ref/2367 | 2026-05 | primary | 2026-09-10 | | 38 |
-| Advertising Law (2021 amendment) Art. 4 no false or misleading content, advertiser responsible; Art. 9(7) public order and good morals; Art. 11 cited data true, accurate, sourced; Art. 28 false advertising defined | the statute, by article number | policy.mofcom.gov.cn/claw/clawContent.shtml?id=90361 | 2021-04-29 | primary | 2026-09-10 | | 38 |
-| Longyan municipal regulator fined a car dealership 30,000 RMB, October 2023, for a showroom ad claiming 520 km real range without a source, Art. 11 | "Fujian Provincial Administration for Market Regulation typical-case notice, 20 May 2024" | scjgj.fj.gov.cn/zw/tzgg/202406/t20240603_6459455.htm | 2024-05-20 | primary | 2026-09-10 | | 38 |
-| MIIT and SAMR notice 工信部联通装〔2025〕45号, dated 25 February 2025, item (九): enterprises standardize marketing and promotion. The naming clause reported by financial press is NOT in the body text of either official copy | the instrument, by name and number, (九) wording only | gov.cn/zhengce/zhengceku/202503/content_7009422.htm; ncsti.gov.cn/zcfg/zcwj/202503/t20250303_197224.html | 2025-02-25 | primary | 2026-09-10 | | 38 |
-| MIIT Equipment Industry Department No. 1 meeting, 16 April 2025: no exaggerated or false promotion, fulfil disclosure duties | "Beijing Daily report of the ministry meeting, 17 April 2025" | news.bjd.com.cn/2025/04/17/11134350.shtml, matched by the nbd.com.cn headline the same day | 2025-04-17 | triangulated | 2026-09-10 | | 38 |
-| Search-results audit: four buyer phrasings for making car ads without a shoot returned 32 slots (28 unique URLs); 19 belong to sellers of CGI, AI generation or photography; the 4 regulator results all sit on the rules query; 0 of 8 production-query pages read in full cite a code, regulator, ruling or fuel-information instrument, and 0 carry a vehicle accuracy checklist | "search-results audit run 10 September 2026, publisher type recorded for every result, no domain named" | R2 in research/automotive-content-without-shipping-a-car.md | 2026-09-10 | primary observation, re-countable | 2026-09-10 | | 38 |
-| No method-stated study of vehicle-specific failures in generated imagery (paint, bodywork reflections, badges, wheels, plates, driving side) was found | "publish as none found, September 2026, never as none exists"; checklist labeled production practice | One academic search and three abstracts read; search budget exhausted before a wider pass | 2026-09-10 | primary as a partial absence | 2026-09-10 | | 38 |
+| CAP Code Section 19 Motoring: 19.2 no unsafe or irresponsible driving and no depiction likely to encourage a breach of Highway Code legal requirements on a public road or space, track demonstrations allowed; 19.3 no speed depicted to encourage irresponsible or unlawful driving; 19.4 speed or acceleration not the main message; 19.5 no exaggerated or unsubstantiated absolute safety claims | "UK non-broadcast advertising code (CAP Code), Section 19, by rule number". The code page shows no edition number; the 2023 and 2025 rulings cite Edition 12, so the edition is never printed as read from the code page | asa.org.uk/type/non_broadcast/code_section/19.html | page undated, read 2026-09-10 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| BCAP Code Section 20 Motoring: 20.1 no dangerous, competitive, inconsiderate or irresponsible driving (the "staid or boring" wording was NOT found in the rule text at check 2 and is cut); 20.2 no Highway Code breach; 20.3 power, acceleration or handling only in a clear context of safety; 20.4 speed not the main selling message; 20.5 no exaggerated safety features | "UK broadcast advertising code (BCAP Code), Section 20, by rule number" | asa.org.uk/type/broadcast/code_section/20.html | page undated, read 2026-09-10 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| The advice makes the point through one example, a sports coupe ad set in a virtual animated world, problematic because the driving would be dangerous and irresponsible in the real world. It states no general rule about virtual or CGI environments (corrected at check 2) | "UK advertising regulator (ASA and CAP) advice on motoring, July 2014" | asa.org.uk/advice-online/motoring.html | 2014-07-16 | primary for the advice; 2012 ruling unread | 2026-09-10 | 2026-09-24 | 38 |
+| Sharp overtaking, competitive driving and weaving risk breach even in a somewhat fantastical context; seatbelts shown worn; avoid blurred lights, blurred images and dust clouds; clearly fantastical scenarios more likely acceptable, "a difficult line to tread" | "UK advertising regulator (ASA and CAP) guidance on motoring ads, 9 November 2023, refreshed 9 July 2026" | asa.org.uk/news/strap-in-for-some-useful-advice-on-motoring-ads.html; asa.org.uk/news/on-the-road-to-motoring-ads-compliance.html | 2023-11-09; 2026-07-09 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| Toyota (GB) plc A23-1191673: poster created completely by CGI; fantastical argument rejected; ads condoned vehicle use disregarding impact on nature and the environment; CAP 1.3; must not appear again | "UK advertising regulator ruling on Toyota (GB) plc, 22 November 2023" | asa.org.uk/rulings/toyota--gb--plc-a23-1191673-toyota--gb--plc.html | 2023-11-22 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| Fiat Chrysler Automobiles UK Ltd A18-449228: substantial CGI and a fantastical toy-car concept; speed the main message; scenes resembled real driving; closed-course disclaimer inadequate; CAP 19.2, 19.3, 19.4 | "UK advertising regulator ruling on Fiat Chrysler Automobiles UK Ltd, 24 October 2018" | asa.org.uk/rulings/fiat-chrysler-automobiles-uk-ltd-a18-449228.html | 2018-10-24 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| Mars Wrigley Confectionery UK Ltd G25-1285557: car chase dangerous if emulated in real life despite a fantastical-world argument; BCAP 20.1, 20.2; CAP 19.2, 19.3; five complainants | "UK advertising regulator ruling on Mars Wrigley Confectionery UK Ltd, 11 June 2025" | asa.org.uk/rulings/mars-wrigley-confectionery-uk-ltd-g25-1285557-mars-wrigley-confectionery-uk-ltd.html | 2025-06-11 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| Nissan Motor (GB) Ltd A18-452330: emergency braking ad implied the driver could drive at speed rushed or distracted and rely on the system; BCAP 20.1, 20.5 | "UK advertising regulator ruling on Nissan Motor (GB) Ltd, 24 October 2018" | asa.org.uk/rulings/nissan-motor--gb--ltd-a18-452330.html | 2018-10-24 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| Zero emissions claims acceptable for pure EVs only with while-driving and powertrain context; BMW (UK) Ltd and MG Motor UK Ltd breached, Ford Motor Company Ltd compliant, 7 February 2024 | "UK advertising regulator (ASA and CAP) advice on zero emissions claims, 9 July 2024" | asa.org.uk/advice-online/motoring-zero-emissions-claims.html | 2024-07-09 | primary for the advice; ruling pages unread | 2026-09-10 | 2026-09-24 | 38 |
+| Images of products must not mislead about the product customers will receive, and must not be altered to exaggerate what the product can do | "UK advertising regulator (ASA and CAP) guidance on misleading imagery, 11 September 2025" | asa.org.uk/news/a-picture-says-a-thousand-words-avoiding-misleading-imagery-in-ads.html | 2025-09-11 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| Directive 1999/94/EC: all promotional literature for new cars contains official fuel consumption and CO2 data for the models referred to, plus label, poster or display, yearly guide | "European Commission summary of Directive 1999/94/EC, page updated December 2025", never an article number | climate.ec.europa.eu/areas-action/transport-decarbonisation/road-transport/car-labelling_en. Directive text unreached (EUR-Lex empty, legislation.gov.uk 403) | 2025-12-19 | primary as the Commission's statement | 2026-09-10 | 2026-09-24 | 38 |
+| COM/2025/995 final, tabled 16 December 2025: amends Regulation (EU) 2019/631, new vehicle labelling provisions with definitions of point of sale and promotional material, repeals Directive 1999/94/EC; status tabled | "European Parliament Legislative Train Schedule, updated August 2026" | europarl.europa.eu legislative-train entry for the file | 2026-08-01 | primary for status | 2026-09-10 | 2026-09-24 | 38 |
+| FTC Guide Concerning Fuel Economy Advertising for New Automobiles, 16 CFR Part 259, source 82 FR 43687 (19 September 2017): administrative interpretations of Section 5, basis for voluntary compliance; 259.4 EPA estimate disclosed with general fuel economy claims, identified as estimate and EPA as source, no applying one model type's figures to an ad depicting another | "FTC guidance, 16 CFR Part 259", paraphrase only until verbatim check | law.cornell.edu/cfr/text/16/part-259, /259.1, /259.4 (ecfr.gov bot-blocked) | 2017-09-19 | primary, paraphrase for 259.4 | 2026-09-10 | 2026-09-24 | 38 |
+| US: "broadcasters, rather than regulators, set standards" for car ads, "ambiguous and easily circumvented" | "Insurance Institute for Highway Safety news release, 12 May 2026", with the funding note | iihs.org/news/detail/more-car-ads-promote-vehicle-performance-despite-dangers-of-speed | 2026-05-12 | single-source statement | 2026-09-10 | 2026-09-24 | 38 |
+| 2,938 automobile ads (2018 n=539, 2020 n=1,186, 2022 n=1,213): performance theme 42.7 percent, speed 16.3, safety 8.1. The 14 to 19 percent speed and 11 to 3 percent safety trends are in the news release, not this abstract (corrected at check 2); cite each to its own page. Not used in the brief 38 draft | "Insurance Institute for Highway Safety content analysis, May 2026, ten trained coders, 23 themes, weighted by ad spend; institute funded by auto insurers" | iihs.org/research-areas/bibliography/ref/2367 | 2026-05 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| Advertising Law (2021 amendment) Art. 4 no false or misleading content, advertiser responsible; Art. 9(7) public order and good morals; Art. 11 cited data true, accurate, sourced; Art. 28 false advertising defined | the statute, by article number | policy.mofcom.gov.cn/claw/clawContent.shtml?id=90361 | 2021-04-29 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| Longyan municipal regulator fined a car dealership 30,000 RMB, October 2023, for a showroom ad claiming 520 km real range without a source, Art. 11 | "Fujian Provincial Administration for Market Regulation typical-case notice, 20 May 2024" | scjgj.fj.gov.cn/zw/tzgg/202406/t20240603_6459455.htm | 2024-05-20 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| MIIT and SAMR notice 工信部联通装〔2025〕45号, dated 25 February 2025, item (九): enterprises standardize marketing and promotion. The naming clause reported by financial press is NOT in the body text of either official copy | the instrument, by name and number, (九) wording only | gov.cn/zhengce/zhengceku/202503/content_7009422.htm; ncsti.gov.cn/zcfg/zcwj/202503/t20250303_197224.html | 2025-02-25 | primary | 2026-09-10 | 2026-09-24 | 38 |
+| MIIT Equipment Industry Department No. 1 meeting, 16 April 2025: no exaggerated or false promotion, fulfil disclosure duties | "Beijing Daily report of the ministry meeting, 17 April 2025" | news.bjd.com.cn/2025/04/17/11134350.shtml, matched by the nbd.com.cn headline the same day | 2025-04-17 | triangulated | 2026-09-10 | 2026-09-24 | 38 |
+| Search-results audit: four buyer phrasings for making car ads without a shoot returned 32 slots (28 unique URLs); 19 belong to sellers of CGI, AI generation or photography; the 4 regulator results all sit on the rules query; 0 of 8 production-query pages read in full cite a code, regulator, ruling or fuel-information instrument, and 0 carry a vehicle accuracy checklist | "search-results audit run 10 September 2026, publisher type recorded for every result, no domain named" | R2 in research/automotive-content-without-shipping-a-car.md | 2026-09-10 | primary observation, re-countable | 2026-09-10 | 2026-09-24 | 38 |
+| No method-stated study of vehicle-specific failures in generated imagery (paint, bodywork reflections, badges, wheels, plates, driving side) was found | "publish as none found, September 2026, never as none exists"; checklist labeled production practice | One academic search and three abstracts read; search budget exhausted before a wider pass | 2026-09-10 | primary as a partial absence | 2026-09-10 | 2026-09-24 | 38 |
+| Australia, FCAI Voluntary Code of Practice for Motor Vehicle Advertising: clause 2(a) bars unsafe, reckless or menacing driving that would breach road safety law if it occurred on a road "regardless of where the driving is depicted in the advertisement"; 2(b) speeds over the limit; 2(c) examples include hand-held phones and no seatbelts; 2(e) deliberate and significant environmental damage; explanatory notes: fantasy, humour and self-evident exaggeration may not "contradict, circumvent or undermine" the code, and controlled-conditions, expert-driver or do-not-emulate disclaimers "should be avoided" and cannot justify non-complying material | "Federal Chamber of Automotive Industries voluntary code, 2020 version, clause number or explanatory notes" | fcai.com.au/wp-content/uploads/2023/02/fcai_voluntary_advertising_code_of_practice.pdf (PDF created 1 July 2020); text capture saved to research/automotive-content-without-shipping-a-car/fcai-code-text-2026-09-24.txt | 2020-07-01 | primary (industry self-regulatory code applied by Ad Standards) | 2026-09-24 | 2026-09-24 (independent re-fetch and local text extraction) | 38 |
+| Xingtu (Ocean Engine creator marketing platform) automotive content review guide lists as problems: acting out or testing on public roads, filming while driving, drifting or stunts outside professional venues; driving without a seatbelt; phone use while driving; frequently looking at the camera while driving; asks for the line "for ad creative only, obey traffic rules, drive safely". Silent on AI or generated content | "Xingtu marketing service platform, automotive content review guide, 12 June 2026", always labeled a platform rule, not a regulator's | xingtu.cn/help-center/author/133668 | 2026-06-12 | primary for the platform's own published rule | 2026-09-24 | 2026-09-24 (independent re-fetch) | 38 |
+| FTC 16 CFR 259.4(h), verbatim: "advertisers citing MPG ratings for certain models should ensure that the rating applies to the model type depicted in the advertisement. It is deceptive to state or imply that a rated fuel economy figure applies to a vehicle featured in an advertisement if the estimate does not apply to vehicles of that model type." Model type means a unique combination of car line, basic engine and transmission class | "FTC Guide Concerning Fuel Economy Advertising for New Automobiles, 16 CFR 259.4(h)", guidance, may result in corrective action under Section 5 | ecfr.gov part 259 (read verbatim through the eCFR API); LII returns paraphrase only | 2017-09-19 | primary, verbatim | 2026-09-24 | 2026-09-24 | 38 |
+| China's light vehicle fuel consumption labeling rules (MIIT, in force 1 January 2010) and the 2024 MIIT and SAMR notice (19 July 2024) govern the label affixed at sale; neither text contains the words for advertising or promotion. No Chinese counterpart to the EU promotional-literature duty was found | "China's fuel consumption labeling rules, read September 2026", as an absence: they govern the sticker, not the ad | miit.gov.cn/jgsj/zbys/qcgy/art/2020/art_3fa9c86d1d6d4339a3dca85de7cdacfa.html; gov.cn/zhengce/zhengceku/202407/content_6964208.htm | 2010-01-01; 2024-07-19 | primary, read by the check 2 agent; one read only | 2026-09-24 | | 38 |
+| CAC labeling measures, full text: Art. 4 explicit label on images and at the start of video; Art. 5 implicit label in file metadata; Art. 14 in force 1 September 2025. The ledger's existing URL (c_1743654685899683) is the press release, which does not list images or video; cite the full text | "Measures for Labeling AI-Generated Synthetic Content, March 2025, in force 1 September 2025" | cac.gov.cn/2025-03/14/c_1743654684782215.htm | 2025-03-14 | primary | 2026-09-24 | 2026-09-24 | 38 |
 
 **Check 2 to record on an existing row:** the UK regulator AI and deepfakes
 guidance row (June 2026) was re-fetched 2026-09-10 and still carries both
@@ -816,3 +873,41 @@ verbatim on the LII page (or ecfr.gov if it unblocks) before quoting any of
 its wording.
 
 ## R8. Reconciliation (filled after drafting)
+
+Filled 2026-09-24, after createarticle iteration 8. Every number and dated
+claim in `output/automotive-content-without-shipping-a-car.md` checked back
+against the claims table above and the 2026-09-24 additions.
+
+| Number or claim in the draft | Claims-table row | Status |
+|---|---|---|
+| CAP 19.2, 19.3, 19.4 wording | UK, CAP Code Section 19 | matches, check 2 pass |
+| BCAP 20.1, 20.3, 20.5 wording | UK, BCAP Code Section 20 | matches after the "staid or boring" cut |
+| Australia code clause 2, "regardless of where the driving is depicted", fantasy and disclaimer notes, 2020 version | 2026-09-24 ledger row | matches the saved text capture |
+| EU directive 1999/94/EC, promotional literature, Commission page Dec. 2025 | EU rows | matches |
+| COM/2025/995, 16 December 2025, a proposal as of August 2026 | EU rows, check 2 | matches |
+| FTC 16 CFR Part 259, September 2017; 259.4(h) quoted verbatim | US rows plus 2026-09-24 verbatim row | matches; the paraphrase-only restriction is lifted for (h) only |
+| IIHS statement on broadcasters, 12 May 2026 | US rows | matches the release |
+| Advertising Law Arts. 4 and 11, 2021 amendment | China rows | matches |
+| Longyan, 30,000 yuan, October 2023, 520 km, notice 20 May 2024 | China rows | matches |
+| Notice No. 45, 25 February 2025; meeting 16 April 2025, reported 17 April 2025 | China rows | matches; no naming clause attributed |
+| CAC labeling measures, in force 1 September 2025 | China rows, full-text URL | matches |
+| Xingtu guide, 12 June 2026 | 2026-09-24 ledger row | matches |
+| China fuel label rules govern the sticker, not the ad | 2026-09-24 ledger row | matches |
+| Five UK rulings: dates, what was shown, outcomes | UK rulings rows | matches; Suzuki dated 2018 per its ruling number, summarized 22 November 2019 |
+| 2014 advice sports coupe example, 16 July 2014 | UK row, corrected | matches the corrected row |
+| June 2026 media-neutral guidance | UK row | matches |
+| November 2023 guidance: seatbelts, blur, dust, fantastical, difficult line | UK row | matches |
+| PICABench, 900 cases, eleven models, below 60 | Generated imagery rows | matches |
+| Chinese marketplace AI fake-image rule, four categories, March 2025 | Generated imagery rows | matches; the platform is not named |
+| No method-stated vehicle-failure study found, September 2026 | Generated imagery rows | matches, phrased as "none found", never "none exists" |
+| Premium SUV: 15 markets, 20+ environments, zero shipping, 70 percent, 3 weeks against six months | First-party rows | matches; client unnamed; 70 percent carries its no-absolute note |
+| Environments, weather, light, formats list | R0 | matches, American spelling |
+| "German autobahns and Japanese mountain routes" among the settings markets wanted | R0 challenge 1 | matches |
+| Japan drives on the left | none | general fact, not a figure; retained as common knowledge and logged here |
+| Site copy: ecommerce FAQ on reflective and luxury, AI excellence FAQ on hybrid capture, AI image page on high-touch moments, manufacturers page pattern | R0 tension note and site files read 2026-09-24 | matches the repo |
+
+Removed from the draft at R8 or check 2: the IIHS content-analysis blockquote
+(2,938 ads, 42.7, 16.3, 8.1 percent, trends) for length after its sources were
+found split across two pages; "Edition 12" as a code-page reading; the BCAP
+"staid or boring" paraphrase; the 2014 advice framed as a general CGI rule.
+Nothing in the draft is absent from this file.

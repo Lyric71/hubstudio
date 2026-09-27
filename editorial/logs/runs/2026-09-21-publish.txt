@@ -1,0 +1,110 @@
+﻿2026-09-21T04:00:05 start publish (model fable)
+2026-09-21T04:00:06 model attempt 1/4, cycle 1: Opus
+
+2026-09-21T04:02:31 Opus 5 took the run. Prior state: log had only the two runner start
+lines, so no earlier model made partial progress and there was no error to
+correct. Working tree inspected before acting.
+
+2026-09-21T04:02:31 Read editorial/CLAUDE.md, SPEC.md and RUNBOOK.md, then filtered
+schedule.csv on the prompt's rule: status image_ready AND publish_date today
+or earlier. Today is 2026-09-21.
+
+2026-09-21T04:02:31 DECISION: nothing is due. Zero rows qualify, so no article was
+published. Five rows sit at image_ready and every one is future dated:
+
+  brief 31 amazon-tmall-jd-one-product-three-listings  2026-10-23  4 weeks out
+  brief 32 meta-tiktok-against-douyin-rednote          2026-10-30  5 weeks out
+  brief 33 real-cost-of-brand-content-2026             2026-11-09  7 weeks out
+  brief 34 beauty-content-production-china             2026-11-10  7 weeks out
+  brief 35 agency-white-label-question                 2026-11-12  7 weeks out
+
+Every row dated today or earlier (09-14, 09-15, 09-17, 09-18, 09-21) is
+already published. This repeats the 09-19 finding with brief 35 added, which
+the 09-21 draft run moved to image_ready overnight.
+
+2026-09-21T04:02:31 Why the date filter binds rather than publishing the queue early. The
+-Force path in run-daily.ps1:118 is what lifts it, and it announces itself by
+appending a MANUAL TEST RUN line to the prompt and redirecting the log to
+-publish-forced.txt. This prompt carries no such line (grep count 0) and the
+log is the unforced path, so publish_date governs. Publishing brief 31 today
+would put a 2026-10-23 article live four weeks early.
+
+2026-09-21T04:02:31 The drafts are early, the publisher is not late. Each draft run since
+09-14 found its own slot already published and took the oldest not_started row
+per RUNBOOK step 2, which drafts ahead without moving a publish_date.
+
+2026-09-21T04:02:31 Schedule integrity checked both directions, since the status column has
+been stale before. Every one of the 23 rows marked published has its .astro
+page on disk and a matching slug entry in src/data/insights.ts: zero missing.
+No image_ready row has a page or a register entry already: zero premature.
+Tree is level with origin/main, 0 ahead and 0 behind.
+
+2026-09-21T04:02:31 Sanity scan of the five queued drafts, all passing: zero U+2014 em
+dashes in any of the five output files, output file and hero webp present for
+each (65KB, 60KB, 151KB, 51KB, 98KB), no premature .astro page and no
+insights.ts entry.
+
+2026-09-21T04:02:31 TWO OPEN FINDINGS FOR THE REVIEWER, both before the dates in question.
+The schedule cluster maps onto an insights.ts category at publish time, and
+the established mappings are China specs to Platform specs, Buying models,
+Cost and Rights to themselves. Two queued rows use a cluster with no
+precedent and no placement claiming it in src/data/insight-placements.ts:
+
+  brief 33 real-cost-of-brand-content-2026  cluster Research  due 2026-11-09
+  brief 34 beauty-content-production-china  cluster Playbook  due 2026-11-10
+
+Under the insights distribution rule each would reach the home page but no
+insights layer, which breaks the two-surfaces requirement. Before those dates,
+map each to a claimed category or add it to a placement. The Playbook half of
+this was raised on 09-19 and is still open. Briefs 31, 32 and 35 are covered.
+
+2026-09-21T04:02:31 Not run, deliberately: /createblogarticle, npm run build, npm run check,
+any git add, commit or push, and notify-publish.mjs. The email fires after a
+successful push or on a build or check failure, and neither happened; the
+script also requires a --slug and a --title it has no article to name.
+
+2026-09-21T04:02:31 The 09-17, 09-18 and 09-21 draft artifacts are still uncommitted, which
+is by design: draft mode is told not to commit, and the publish run commits
+them alongside the article it ships. With nothing due until 2026-10-23 they
+will sit uncommitted for four more weeks. Flagging it rather than acting,
+since this prompt authorizes a commit only for an article it publishes.
+
+2026-09-21T04:02:31 end of Opus 5 decision record. This log file is the only file this run
+modified.
+Run complete: **nothing was due, so nothing was published.**
+
+## What I found
+
+Filtering `editorial/schedule.csv` on the prompt's rule (status `image_ready` AND `publish_date` today or earlier, today being 2026-09-21) returns zero rows. All five queued rows are future-dated:
+
+| Brief | Slug | Publish date |
+|---|---|---|
+| 31 | `amazon-tmall-jd-one-product-three-listings` | 2026-10-23 |
+| 32 | `meta-tiktok-against-douyin-rednote` | 2026-10-30 |
+| 33 | `real-cost-of-brand-content-2026` | 2026-11-09 |
+| 34 | `beauty-content-production-china` | 2026-11-10 |
+| 35 | `agency-white-label-question` | 2026-11-12 |
+
+Every row dated today or earlier is already published. The drafts are running ahead, not the publisher behind: each draft run finds its own slot already published and takes the oldest `not_started` row per RUNBOOK step 2, which drafts ahead without moving a `publish_date`. This matches the 09-19 run's conclusion, with brief 35 added overnight.
+
+I confirmed the date filter genuinely binds: `run-daily.ps1:118` is the only path that lifts it, and it announces itself with a `MANUAL TEST RUN` line plus a `-publish-forced.txt` log. This prompt has neither, so publishing brief 31 today would have put an article live four weeks early.
+
+## Verification I did run
+
+- **Schedule integrity, both directions** (the status column has been stale before): all 23 `published` rows have their `.astro` page and a matching `slug:` entry in `src/data/insights.ts`; no `image_ready` row has a page or register entry already. Tree is level with `origin/main`, 0 ahead / 0 behind.
+- **Queued draft scan**, all clean: zero U+2014 em dashes, output file and hero webp present for each (65/60/151/51/98 KB), no premature page or insights entry.
+
+## Two findings worth your attention before those dates
+
+The schedule `cluster` maps onto an `insights.ts` category at publish time (`China specs` ΓåÆ `Platform specs`; `Buying models`, `Cost`, `Rights` map to themselves). Two queued rows use a cluster with no precedent and no placement claiming it in `src/data/insight-placements.ts`:
+
+- brief 33 `real-cost-of-brand-content-2026`, cluster **Research**, due 2026-11-09
+- brief 34 `beauty-content-production-china`, cluster **Playbook**, due 2026-11-10
+
+Each would reach the home page but no insights layer, breaking the distribution rule's two-surfaces requirement. Either map them to a claimed category or add a placement. The Playbook half was raised on 09-19 and is still open.
+
+Separately: the 09-17, 09-18 and 09-21 draft artifacts remain uncommitted. That's by design (draft mode doesn't commit; the publish run commits them alongside its article), but with nothing due until 2026-10-23 they'll sit uncommitted four more weeks. I flagged it rather than acting, since this prompt authorizes a commit only for an article it publishes.
+
+Deliberately not run: `/createblogarticle`, `npm run build`, `npm run check`, any git add/commit/push, and `notify-publish.mjs` (the email fires after a successful push or on a build/check failure; neither occurred, and the script requires a `--slug`/`--title` it has no article to name). The run log is the only file this run modified.
+2026-09-21T04:02:43 model Opus completed successfully
+2026-09-21T04:02:43 end publish exit 0

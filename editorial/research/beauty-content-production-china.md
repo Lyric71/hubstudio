@@ -988,4 +988,322 @@ Insight distribution note for the publish step: check the article's category
 against `src/data/insight-placements.ts`; the ecommerce and social media design
 service layers are the likely fits.
 
+## Source check 2, run 2026-09-18
+
+Check 1 was 2026-09-10. Every cited URL was re-fetched on 2026-09-18 before any
+body copy was written. Results below; the ledger rows carry both dates.
+
+| Surface | Check 2 | Effect on the page |
+|---|---|---|
+| beijing.gov.cn Regulation, Arts. 4, 16, 22, 37, 43, 61, 62, 67, 69 | PASS | Art. 62 serious-case band, 30,000 to 50,000 RMB with suspension, appeared in this read as well. Two of three reads now carry it. **LIFTED** from cut to publishable |
+| nmpa.gov.cn efficacy standard, both URL forms | **FAIL, HTTP 412 again** | Unchanged from check 1. The standard is cited by name and announcement number only. Arts. 7, 9, 10, 11 and 12 numbers stay off the page, and the sensitive-skin, tear-free, new-efficacy and qualified-institution rows stay cut |
+| gov.cn gazette, labeling measures Arts. 19 and 23 | PASS | No change |
+| policy.mofcom.gov.cn Advertising Law, Arts. 11, 17, 28, 38, 55, 57, 58, 61 | PASS | See the two corrections below |
+| policy.mofcom.gov.cn Internet Advertising Measures, Arts. 9 and 19 | PASS | Art. 9 paragraph 3 read verbatim this time, purchase-link disclosure confirmed as the third paragraph rather than the article as a whole |
+| policy.mofcom.gov.cn SAMR medical aesthetics guideline, Art. 5 | PASS | All eight items read |
+| beijing.gov.cn Beijing guideline and the regulator interpretation | PASS | Third read confirms the absence: no clause on before-and-after, retouching or filters. Document number added, Announcement 2025 No. 26 |
+| fgw.sh.gov.cn Shanghai guideline, Arts. 16, 22, 27, 28, 29, 31 | PASS | Art. 28 sentence 2 confirmed on the Shanghai government host. **LIFTED**. One new finding and one correction, below |
+| scjgj.xinjiang.gov.cn bulletin, cases 8 and 10 | PASS | New detail: case 8 ran on WeChat, case 10 on Douyin. Both fines unchanged |
+| xingtu.cn beauty content review manual | PASS | Page date 2026-09-02 holds. **The operator tie is still not stated on the page**, which references Ocean Engine support resources only. The article names the Xingtu platform and never calls the manual Douyin's |
+| agree.xiaohongshu.com community standards | PASS as a negative observation | Still serves the platform name and no rule text |
+| jjckb.xinhuanet.com Taobao AI fake-image rule | **FAIL, timed out a third time** | Citation moved, see below |
+
+### Three rows lifted by check 2
+
+1. **Regulation Art. 62 serious-case band.** Cut at check 1 because it showed in
+   one read and not the other. This read carries it, so two independent reads of
+   the government-hosted text now agree: 10,000 to 30,000 RMB, rising to 30,000
+   to 50,000 RMB with suspension in serious cases. Publishable.
+2. **Advertising Law Art. 55 selection conditions.** Held at check 1 because the
+   conditions were never read verbatim. Now read: the higher band attaches where
+   there are three or more violations in two years or other serious
+   circumstances. Publishable with its condition, which is the part that matters
+   to a production reader.
+3. **Shanghai Art. 28 sentence 2.** Single-surface at check 1. Confirmed on the
+   Shanghai government host. Publishable.
+
+### Two corrections check 2 forced
+
+1. **Advertising Law Art. 58 was recorded incompletely.** Check 1 recorded
+   "100,000 to 200,000 RMB, rising to 200,000 to 1,000,000 in serious cases".
+   The full article reads: 1 to 3 times the advertising fee, or 100,000 to
+   200,000 RMB where the fee cannot be calculated or is obviously low; in
+   serious cases 3 to 5 times the fee, or 200,000 to 1,000,000 RMB on the same
+   condition, with possible revocation. The check 1 figures were the
+   fee-not-calculable branch quoted as if it were the whole rule. The page
+   publishes the complete structure. Item (2) of the article was also checked
+   directly and does cover a breach of Art. 17, so the medical-terms ban and
+   this penalty are correctly paired.
+2. **Shanghai Art. 31 detail is withdrawn.** Check 1 recorded it as barring
+   endorsers under ten and endorsers with a record of illegal or unethical
+   conduct. The text served on the government host at check 2 is a shorter
+   article about strengthening the management of commercial endorsement in line
+   with the relevant guidance. The detail is cut. The endorser rules on the page
+   rest on Advertising Law Arts. 38 and 61 and the Beijing guideline, all of
+   which are read verbatim and hold.
+
+### One new finding
+
+Article 28 of the Shanghai guideline opens with a sentence check 1 did not
+record, and it is a permission rather than a prohibition:
+
+> 化妆品广告可以使用适度的艺术渲染展现化妆品的功效。
+
+"A cosmetics advertisement may use moderate artistic rendering to show the
+product's efficacy." The restriction on retouching and the ban on fabricated
+before-and-after footage are the second and third sentences of the same article.
+This matters more to a production reader than either prohibition on its own,
+because it is the only line in any instrument read that tells a studio where the
+boundary sits rather than only what is forbidden. It leads the retouching
+section. Cleared blockquote:
+
+> Shanghai's cosmetics advertising guideline opens its rule on showing product
+> effects by allowing moderate artistic rendering of a cosmetic's efficacy. The
+> same article then requires any depiction of use effects to be true, bars
+> misleading consumers through excessive retouching, editing, software
+> processing or special shooting techniques, and bars fabricated or edited
+> before-and-after images or video.
+> Source: Shanghai Cosmetics Industry Advertising Compliance Guideline, Article
+> 28, issued 28 February 2024 by the Shanghai Administration for Market
+> Regulation and the Shanghai Medical Products Administration, read on the
+> Shanghai government host of the text, September 2026. A local guideline, not
+> a national rule.
+
+### Cleared quotes as they ship, superseding their check 1 wording
+
+The thirteen blockquotes below are the versions that appear on the page. Each
+differs from its wording in Cleared for use above, and every difference comes
+from check 2 or from an editorial rule this project already carries. Nothing
+here introduces a claim that is not in the claims table. Reasons, in order:
+the first adds the State Council order number to the attribution; the second
+moves the effective date out of the said text into the Source line; the third
+carries the corrected Article 58 structure; the fourth adds the Article 62
+serious-case band and the second read that confirmed it; the fifth adds the
+platform detail check 2 surfaced for the two 2025 cases; the sixth Americanizes
+"licence" exactly as the check 1 note permitted; the seventh and eighth record
+that Articles 9 and 19 were read verbatim, with Article 19 narrowed to the duty
+the served text actually states; the ninth is a one-word connective change; the
+tenth merges the two Xingtu reads to the wording both support; the eleventh
+records that RedNote was fetched on two dates; and the last two carry the
+18 September re-read of the first-party pages.
+
+> Products for hair dyeing, perming, spot removal and whitening, sun
+> protection and hair-loss prevention, and any product claiming a new
+> efficacy, are special cosmetics, teshu huazhuangpin, which are registered
+> with the drug regulator. All other cosmetics are filed.
+> Source: Cosmetics Supervision and Administration Regulation, State Council
+> Order No. 727, Articles 4 and 16, in force 1 January 2021. Statutory text
+> read on two government surfaces, September 2026.
+
+> China's Cosmetics Supervision and Administration Regulation bars cosmetics
+> advertising from stating or implying a medical effect, and bars false or
+> misleading content that deceives or misleads consumers.
+> Source: Cosmetics Supervision and Administration Regulation, Article 43,
+> published 29 June 2020, in force 1 January 2021. Statutory text read on the
+> State Council release and a Beijing government portal, September 2026.
+
+> Outside medical, drug and medical device advertising, no ad in China may
+> refer to a disease treatment function or use medical terms, or terms that
+> confuse the product with a drug or a medical device. A breach draws a fine
+> of one to three times the advertising fee, or 100,000 to 200,000 RMB where
+> the fee cannot be calculated or is obviously low, rising to three to five
+> times the fee, or 200,000 to 1,000,000 RMB, in serious cases.
+> Source: Advertising Law of the People's Republic of China, Articles 17 and
+> 58, as amended 29 April 2021. Statutory text read in full on the Ministry of
+> Commerce law database, September 2026.
+
+> Failing to publish that summary draws a fine of 10,000 to 30,000 RMB, rising
+> to 30,000 to 50,000 RMB with suspension of production or operations in
+> serious cases. A cosmetics ad that breaks the Regulation is penalized under
+> the Advertising Law.
+> Source: Cosmetics Supervision and Administration Regulation, Articles 62 and
+> 69, in force 1 January 2021. Statutory text read on a Beijing government
+> portal on two separate occasions, September 2026.
+
+> In February 2025 a regional market regulator published two cases against
+> cosmetics sellers over before-and-after images. One advertised a hair
+> product on a messaging platform with before-and-after pictures and the line
+> "many white hairs before use, none after," and was fined 6,000 RMB for false
+> advertising. The other posted on a short-video platform a face with obvious
+> spots before a whitening mask and none after, alongside skin-improvement
+> percentages with no stated source, and was fined 5,000 RMB.
+> Source: Xinjiang Uygur Autonomous Region Administration for Market
+> Regulation, ten typical illegal advertising cases, 21 February 2025. The
+> regulator's own case bulletin, citing Advertising Law Articles 11 and 28 and
+> Cosmetics Regulation Article 43. Two small regional cases, not a measure of
+> national enforcement.
+
+> Under China's Civil Code, a likeness may not be made, used or published
+> without the portrayed person's consent; where a license clause is disputed
+> it is construed in favor of the person portrayed; and where the license term
+> is unagreed or unclear either party may end it on reasonable notice.
+> Source: Civil Code of the People's Republic of China, Articles 1019, 1021
+> and 1022, in force 1 January 2021. Statutory text.
+
+> Under China's Measures for the Administration of Internet Advertising, in
+> force 1 May 2023, an advertisement must be identifiable as one, and any post
+> that promotes goods through knowledge introductions, experience sharing or
+> consumer reviews while carrying a purchase link must be conspicuously marked
+> "advertisement."
+> Source: Measures for the Administration of Internet Advertising, Article 9,
+> State Administration for Market Regulation Order No. 72, issued 25 February
+> 2023, third paragraph read verbatim, September 2026.
+
+> The same Measures put advertiser duties on a seller who promotes by
+> livestream, and advertising operator or publisher duties on the room
+> operator providing design, production, agency or publishing services.
+> Source: Measures for the Administration of Internet Advertising, Article 19,
+> in force 1 May 2023. Statutory text read verbatim, September 2026.
+
+> Shanghai's cosmetics advertising guideline applies those internet
+> advertising rules to seeding posts, reviews and store-visit content used to
+> advertise cosmetics on internet platforms.
+> Source: Shanghai Cosmetics Industry Advertising Compliance Guideline,
+> Article 29, issued 28 February 2024, read on two hosts of the text,
+> September 2026. A local guideline, not a national rule.
+
+> A beauty industry content review manual on a Chinese creator-marketing
+> platform's help center, dated September 2026, bars creator content from
+> medical-effect wording, from comparing a product with medical aesthetics
+> treatments, from claims such as "suits all skin types," and from wrinkle and
+> aging wording. It requires authorization for a celebrity's likeness and
+> proof for any data, patent or award a post cites.
+> Source: Xingtu marketing service platform help center, beauty industry
+> content review manual, page dated 2 September 2026, read unauthenticated on
+> two occasions in September 2026. A primary reading for that page's scope
+> only.
+
+> RedNote's community standards page returned no rule text to an
+> unauthenticated request on two dates in September 2026, matching four
+> earlier requests to its creator, advertiser, help and school surfaces.
+> Source: direct unauthenticated fetches of RedNote's own surfaces, September
+> 2026, response content recorded per request. A primary observation, not a
+> rule.
+
+> hubStudio produced campaign key visuals, a brand launch video and a
+> model-driven asset library with diverse model representation for RQ PYOLOGY,
+> the medical aesthetics brand Shiseido launched in China for post-procedure
+> care and clinical-grade skincare, with variations for medical-partner and
+> consumer channels.
+> Source: hubStudio's Shiseido RQ PYOLOGY case study page, read September
+> 2026, first-party and published.
+
+> For categories where it really matters, including beauty hero shots and
+> anything with reflective or transparent surfaces, hubStudio still shoots,
+> and hybrid is the working model.
+> Source: hubStudio's ecommerce design service page, read September 2026,
+> stated as published studio practice.
+
+### Taobao AI fake-image rule, citation moved
+
+The Economic Information Daily URL timed out on 2026-09-10 and twice more on
+2026-09-18, so it fails check 2 and is not cited. The rule itself re-verified on
+independent reachable state-media surfaces, which carry the same four
+categories. The citation moves to Science and Technology Daily, 28 March 2025,
+read in full. New detail from that read: enforcement runs through a detection
+model with source interception, stock cleanup and labeling prompts, close to
+100,000 images had been intercepted at the time of the report, and the platform
+said an AI-synthesis notice would appear on product detail pages. Replacement
+blockquote, superseding the one in Cleared for use:
+
+> A Chinese marketplace published what was reported as the sector's first rule
+> aimed specifically at AI fake product images, in force 27 March 2025, naming
+> four failure categories: product material or style that does not match the
+> real item, distorted or exaggerated product effects, an obvious cutout and
+> paste look, and bodies or scenes that break physical laws. It is enforced by a
+> detection model that intercepts images at upload, and the platform said a
+> notice marking AI synthesis would appear on product detail pages.
+> Source: Science and Technology Daily, 28 March 2025, reporting Taobao's own
+> rule announcement and its detection-model enforcement.
+> https://www.stdaily.com/web/gdxw/2025-03/28/content_316284.html
+
+### Xingtu manual, second read
+
+The check 2 read returns the same shape as check 1 and adds banned examples:
+acid peeling, capillary repair, skin renewal and "purely natural", alongside the
+medical-effect wording, the medical aesthetics comparisons, "suits all skin
+types" and the absolute terms. Wrinkle and aging wording is constrained in both
+reads, which is the point the page makes: a filed catalog category can still be
+refused in platform review. The page carries the categories both reads support,
+never one read's word list.
+
+### First-party re-read, 2026-09-18
+
+`src/data/case-studies.ts` and `src/pages/services/design/ecommerce.astro`
+re-read in the repo. The RQ PYOLOGY entry, the age20 entry and the ecommerce FAQ
+line are unchanged from check 1. The RQ PYOLOGY page's "clear pharmaceutical-grade
+approval" wording is marketing copy about a creative standard and is not
+restated on the page as a regulatory fact, per the do-not-publish list.
+
 ## R8. Reconciliation (filled after drafting)
+
+Run 2026-09-18 against the drafted `output/beauty-content-production-china.md`.
+Every number in the draft was extracted by script and checked back to the claims
+table. Result: **every figure in the draft traces to a cleared row. Nothing was
+sourced retroactively, and nothing in the draft is absent from this file.**
+
+| Figure group in the draft | Traces to | Status |
+|---|---|---|
+| Order No. 727 and Arts. 4, 16, 22, 43, 62, 69; dates 29 June 2020 and 1 January 2021 | Regulation claims table | primary, check 2 passed |
+| Art. 62 bands, 10,000 to 30,000 and 30,000 to 50,000 RMB with suspension | Regulation row, lifted at check 2 | primary, two agreeing reads |
+| Labeling Measures Announcement 2021 No. 77, Art. 19, in force 1 May 2022 | Labeling claims table | primary |
+| Advertising Law Arts. 9(3), 11, 17, 28, 38, 57, 58, 61; amended 29 April 2021 | Advertising Law claims table | primary |
+| Art. 58 structure: 1 to 3 times the fee, 100,000 to 200,000 RMB fallback, 3 to 5 times and 200,000 to 1,000,000 RMB in serious cases | Check 2 correction 1 | primary, full article read |
+| Efficacy standard Announcement 2021 No. 50, in force 1 May 2021, six human-test claims, sensory and physical exemptions | Efficacy claims table | triangulated. **No article number printed**, per the standing instruction |
+| HTTP 412 on the regulator's site, two attempts eight days apart | Check 1 and check 2 observations | primary observation |
+| Catalog Announcement 2021 No. 49, 26 categories plus new efficacy | Efficacy claims table | triangulated for the count |
+| Shanghai guideline Arts. 28 and 29, issued 28 February 2024 | Regulator guidance table plus check 2 | primary, local. Art. 28 all three sentences confirmed |
+| Xinjiang bulletin 21 February 2025, fines of 6,000 and 5,000 RMB, Arts. 11, 28 and 43 | Enforcement row | primary. Platform detail added at check 2 |
+| SAMR Announcement 2021 No. 37, 1 November 2021 | Medical aesthetics row | primary |
+| Beijing guideline, 27 June 2025, and its confirmed absence on before-and-after | Beijing rows | primary, local, absence confirmed on three reads |
+| Civil Code Arts. 1019, 1021, 1022 | Reused ledger row | reused, triangulated |
+| Deep synthesis Art. 14, in force 10 January 2023 | Reused ledger row | reused, primary |
+| Internet Advertising Measures Order No. 72, Arts. 9 and 19, issued 25 February 2023, in force 1 May 2023 | Reused row, re-read at check 2 | primary, Art. 9 third paragraph verbatim |
+| CAC labeling Measures, issued 14 March 2025, in force 1 September 2025 | Reused ledger row | reused, primary |
+| Taobao AI fake-image rule, 27 March 2025, four categories | Check 2 replacement citation | triangulated on reachable state media |
+| Tmall rows: 800 by 800 (14 of 18), five images (9 of 18), white image fifth (8 of 18), cross-border cosmetics map (1 of 18), 16 of 18 no channel distinction, 15-image maximum, 1600 by 1600 | Reused brief 01 ledger block | modal, deviation 7, counts unchanged |
+| Douyin rows: 9:16 at 1080x1920 (4 of 4), safe box x 108 to 972 and y 288 to 1540 derived from 5 | Reused brief 05 ledger block | modal and derived |
+| RedNote rows: 3:4 at 1080x1440 (14 of 14 and 13), 18 against 9 (3 against 2), center 1080x1080 from 3 accounts | Reused brief 07 ledger block | modal and contested where stated |
+| Xingtu manual page dated 2 September 2026 | Platform claims table, read twice | primary, scoped |
+| Douyin 2022 standards, in force 17 May 2022 | Platform claims table | triangulated, dated, current version unverified |
+| Eight Chinese references behind the listing taxonomy | Reused brief 28 row | reused, triangulated |
+
+### Cut from the draft at R8, or never written into it
+
+- Every efficacy standard article number. The instrument is named and numbered,
+  never cited by article.
+- The qualified-institution requirement, the sensitive-skin and tear-free rule,
+  the new-efficacy two-institution rule, and the per-category catalog wordings.
+  All four rest on one reference surface and the regulator's site stayed
+  blocked, so none reached the page.
+- The Shanghai Art. 31 endorser detail, withdrawn at check 2.
+- The second platform's 2022 before-and-after condition, and the platform
+  itself. Absent from the page entirely.
+- Regulation Art. 61, Advertising Law Arts. 55 and 56, and Shanghai Arts. 16, 22
+  and 27. Cleared or partly cleared but not needed by any section, so not
+  printed. Art. 55 was lifted at check 2 and remains available for a future
+  piece.
+- The RQ PYOLOGY budget line, the pharmaceutical-grade approval wording as a
+  regulatory fact, and the age20 case. The age20 quote was cleared but is not a
+  China engagement, so it was left out rather than risk implying one.
+- Every figure on the do-not-publish list. None appears.
+
+### Slot and brief requirements not met, decided unattended
+
+- **Annotated screenshot.** Not shipped. No capture session has happened and no
+  platform rejection notice exists. The page says so in the rejection section
+  instead of reconstructing one.
+- **Rejection reasons as a ranking.** Not possible. The page publishes stated
+  grounds with their level and says plainly that this is not a frequency count.
+- **The brief's Han-character gloss instruction.** Overridden by deviation 6.
+  Terms run romanized.
+
+### Disclaimer block form used
+
+The combined form, as the research file's note directed: the marketplace first
+paragraph for the Tmall rows, then the social form's sentence for Douyin and
+RedNote, "creator account" carried into the closing paragraph, then the
+readable-surface paragraph naming the Xingtu manual and the Douyin upload API
+documentation and stating that neither fed the table. Per-row source counts are
+printed because the three pools differ in size, and the block says so rather
+than printing one misleading total.

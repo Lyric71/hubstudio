@@ -44,6 +44,108 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'real-cost-of-brand-content-2026',
+    image: '/Images/insight-real-cost-of-brand-content-2026.webp',
+    imageAlt:
+      'Three price quotes on different paper stocks laid side by side on a worn wooden desk, a curling thermal strip, a coffee-stained cream sheet and a pink carbon slip, with a ceramic mug behind them.',
+    category: 'Cost',
+    tone: 'orange',
+    title: 'The Real Cost of Brand Content in 2026',
+    deck: 'Nobody publishes what brand content costs with a method attached. This page compiles every absolute figure readable at source, dated, with the conflicts left in.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '24 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'The Real Cost of Brand Content in 2026 | hubStudio',
+    metaDescription:
+      'Published cost bands for brand content in 2026, by asset type, ungated, with the source, date and method behind every figure and nothing averaged.',
+  },
+  {
+    slug: 'automotive-content-without-shipping-a-car',
+    image: '/Images/insight-automotive-content-without-shipping-a-car.webp',
+    imageAlt:
+      'A single oxblood car wing on a steel stand in a working photo studio, one long softbox highlight bending along the paint, as an assistant\'s hand holds a gray card against it.',
+    category: 'Production',
+    tone: 'navy',
+    title: 'Automotive Content Without Shipping a Car',
+    deck: 'A generated car ad answers to the same motoring rules as a filmed one. What to generate, what to shoot, and what regulators have ruled.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Automotive Content Without Shipping a Car | hubStudio',
+    metaDescription:
+      'Car launch imagery without moving the car: what generated scenes must get right, where a real shoot still wins, and the rules on depicting driving.',
+  },
+  {
+    slug: 'beauty-content-production-china',
+    image: '/Images/insight-beauty-content-production-china.webp',
+    imageAlt:
+      'A hand model with visible skin texture rests her forearm on a scuffed steel table in late window light, an open skincare jar and a smeared swatch card in front of her.',
+    category: 'Rights',
+    tone: 'navy',
+    title: 'Beauty Content Production in China',
+    deck: 'Beauty is the most regulated thing a studio can shoot in China. The rules sit at four levels, and half are local or platform-only.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '23 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Beauty Content Production in China | hubStudio',
+    metaDescription:
+      'What beauty content in China has to do: efficacy claims, banned terms, before-and-after rules, creator disclosure and the deliverables per platform.',
+  },
+  {
+    slug: 'how-many-variants-a-china-launch-needs',
+    image: '/Images/insight-how-many-variants-a-china-launch-needs.webp',
+    imageAlt:
+      'A production lead in a Changsha studio holds a printed frame up to the window light, with five more prints from the same shoot laid in a short row along the work bench in front of her.',
+    category: 'Performance',
+    tone: 'orange',
+    title: 'How Many Ad Variants a China Launch Needs',
+    deck: 'No Chinese ad platform publishes a launch variant count. Here is what one of them does publish, and what the wear-out research actually measured.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'How Many Ad Variants a China Launch Needs | hubStudio',
+    metaDescription:
+      'What China\'s ad platforms publish on creatives per ad, what none say about refresh, and what wear-out research says a launch needs.',
+  },
+  {
+    slug: 'amazon-tmall-jd-one-product-three-listings',
+    image: '/Images/insight-amazon-tmall-jd-one-product-three-listings.webp',
+    imageAlt:
+      'A stylist clips three proof prints of the same terracotta bottle, each cropped to a different shape, along the edge of a white paper sweep where the bottle itself stands in soft side light.',
+    category: 'Platform specs',
+    tone: 'orange',
+    title: 'Amazon, Tmall, JD: One Product, Three Listings',
+    deck: 'Amazon publishes its image rules. Tmall and JD do not. Which Amazon assets carry over, which get rebuilt, and one shoot that feeds all three.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '14 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Amazon, Tmall, JD: One Product, Three Listings | hubStudio',
+    metaDescription:
+      'One product listed on Amazon, Tmall and JD: which images carry over, which need rebuilding, and one capture plan that serves all three marketplaces.',
+  },
+  {
+    slug: 'meta-tiktok-against-douyin-rednote',
+    image: '/Images/insight-meta-tiktok-against-douyin-rednote.webp',
+    imageAlt:
+      'Two identical vertical prints of a young woman in a dark jacket pinned side by side on a gray plaster studio wall, the right one taped into a shorter frame with a small square print pinned below it, as a producer presses the tape flat.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Meta and TikTok vs Douyin and RedNote Specs',
+    deck: 'Meta and TikTok publish ad specs. Douyin and RedNote don\'t. Where a Western 9:16 cut survives the move, where it fails, what to shoot once.',
+    date: 'September 27, 2026',
+    dateISO: '2026-09-27',
+    readingTime: '15 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Meta and TikTok vs Douyin and RedNote Specs | hubStudio',
+    metaDescription:
+      'One campaign built for Meta and TikTok, then again for Douyin and RedNote: which cuts survive the move, which fail, and what to capture once for both.',
+  },
+  {
     slug: 'procurement-guide-buying-ai-content-production',
     image: '/Images/insight-procurement-guide-buying-ai-content-production.webp',
     imageAlt:

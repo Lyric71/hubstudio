@@ -1,0 +1,41 @@
+﻿2026-09-18T04:00:02 start publish (model fable)
+2026-09-18T04:00:02 model attempt 1/4, cycle 1: Opus
+2026-09-18T04:01:59 read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md in full before acting
+2026-09-18T04:01:59 inspected working tree and this run log: no partial publish work and no error from an earlier model in the fallback chain. The log carried only the two start lines, so this is the first model to act. Nothing needed correcting and nothing was discarded.
+2026-09-18T04:01:59 uncommitted files, all accounted for: the 09-17 and 09-18 draft runs' own artifacts (two output drafts, two modified research files, two hero images, the schedule row, the source ledger, the daily logs) plus the 09-17 and 09-18 run prompts, manifests and logs. Draft mode is told not to commit, so that is the expected state.
+2026-09-18T04:01:59 schedule.csv parsed as real CSV (the notes column carries quoted commas, so a line-split would mis-field it), 48 rows: 34 published, 4 image_ready, 10 not_started
+2026-09-18T04:01:59 DUE SET IS EMPTY. No row is both image_ready and dated today or earlier.
+2026-09-18T04:01:59   image_ready rows and their publish_date: 2026-10-23 brief 31 amazon-tmall-jd-one-product-three-listings; 2026-10-30 brief 32 meta-tiktok-against-douyin-rednote; 2026-11-09 brief 33 real-cost-of-brand-content-2026; 2026-11-10 brief 34 beauty-content-production-china. All four are ahead of today by 5 to 8 weeks.
+2026-09-18T04:01:59   rows dated today or earlier: 2026-09-14 production-roster-review-questions, 2026-09-15 tmall-product-image-requirements, 2026-09-17 china-ai-labeling-rules-production-workflow, 2026-09-18 shoot-it-or-generate-it. All four already carry status published, today's own row included.
+2026-09-18T04:01:59 why the four drafts are early rather than the publisher being late: each draft run since 09-14 found its own slot already published and took the oldest not_started row instead, per RUNBOOK step 2. That drafts ahead of the calendar without moving a publish_date, so each draft waits for its own slot. The 09-18 draft run added brief 34 to the queue on that rule and logged it.
+2026-09-18T04:01:59 decision: publish nothing. This run was not launched with -Force, so the prompt carries no MANUAL TEST RUN line and the publish_date filter binds (run-daily.ps1, the Force block that would otherwise instruct the model to ignore publish_date). Publishing brief 31 today would put a 2026-10-23 article live five weeks early and out of calendar order.
+2026-09-18T04:01:59 verified the four due-and-published rows are genuinely complete, so nothing was silently skipped: each has src/pages/resources/insights/<slug>.astro on disk and tracked in git, exactly one matching slug entry in src/data/insights.ts, and its hero at public/Images/insight-<slug>.webp. Working tree is level with origin/main, 0 ahead and 0 behind.
+2026-09-18T04:01:59 pre-publish sanity scan on all four queued drafts, so a blocker is found now rather than on their publish day: zero em dash characters and zero Han characters in every one, and all four hero images are on disk (68KB, 64KB, 152KB, 52KB). All four remain publishable when their slots arrive.
+2026-09-18T04:01:59 not run, and why: /createblogarticle (no due draft), npm run build and npm run check (nothing was published, and the repo rule is build on demand), git add / commit / push (the prompt authorizes a commit only for a published article), notify-publish.mjs (the prompt fires the email after a successful push or on a build or check failure, and neither happened).
+2026-09-18T04:01:59 note carried forward for brief 33, real-cost-of-brand-content-2026, before it publishes on 2026-11-09: the 14 pricing captures listed in its research screenshot inventory are still not taken, and a studio card restated its whole price structure between 10 and 17 September 2026, so figures cleared on the earlier date are already unverifiable. Also check its category against src/data/insight-placements.ts; /pricing is the obvious layer.
+2026-09-18T04:01:59 note carried forward for brief 34, beauty-content-production-china, before it publishes on 2026-11-10: its draft log flags the annotated screenshot in the slot B requirement as not shipping, no capture session having happened, and asks for a browser read of the drug regulator's efficacy standard and the February 2025 case bulletin, which would lift four currently cut rows to primary.
+2026-09-18T04:01:59 publish run complete, no article published, no commit, no push, no email
+**Publish run for 2026-09-18: nothing was due. No article published.**
+
+**What the schedule says.** I parsed `editorial/schedule.csv` as real CSV (the notes column carries quoted commas, so a line-split mis-fields it). 48 rows: 34 `published`, 4 `image_ready`, 10 `not_started`.
+
+| `image_ready` row | publish_date | due today? |
+|---|---|---|
+| brief 31 `amazon-tmall-jd-one-product-three-listings` | 2026-10-23 | no, 5 weeks out |
+| brief 32 `meta-tiktok-against-douyin-rednote` | 2026-10-30 | no, 6 weeks out |
+| brief 33 `real-cost-of-brand-content-2026` | 2026-11-09 | no, 7 weeks out |
+| brief 34 `beauty-content-production-china` | 2026-11-10 | no, 8 weeks out |
+
+Every row dated today or earlier (09-14, 09-15, 09-17, 09-18) is already `published`, today's own slot included. The due set is empty.
+
+**Why the drafts are early rather than the publisher being late.** Each draft run since 09-14 found its own slot already published and took the oldest `not_started` row instead, per RUNBOOK step 2. That drafts ahead of the calendar but does not move a `publish_date`. This run carries no MANUAL TEST RUN line, so it was not launched with `-Force` and the `publish_date` filter binds. Publishing brief 31 today would have put a 2026-10-23 article live five weeks early and out of calendar order, so I did not.
+
+**Checks I did run.** The four due-and-published slugs each have their `.astro` page on disk and tracked in git, exactly one matching `slug:` entry in `src/data/insights.ts`, and a hero at `public/Images/insight-<slug>.webp`. The tree is level with `origin/main`, 0 ahead and 0 behind. This run log held only its two start lines, so no earlier model in the chain left partial work or an error to correct; the uncommitted files are the 09-17 and 09-18 draft runs' own artifacts, which draft mode is told not to commit.
+
+I also ran a pre-publish sanity scan on all four queued drafts rather than waiting for their publish days: **zero em dashes and zero Han characters in every one**, and all four hero images are on disk (68KB, 64KB, 152KB, 52KB). All four are still publishable when their slots arrive.
+
+**Not run, deliberately:** `/createblogarticle`, `npm run build`, `npm run check`, any `git add`/commit/push, and `notify-publish.mjs`. The email fires after a successful push or on a build/check failure. Neither happened, so no mail was sent. Every decision is timestamped into `editorial/logs/runs/2026-09-18-publish.txt`; nothing else was modified.
+
+**Two things queued for your attention.** Brief 33 still has 14 uncaptured pricing surfaces, and a studio card restated its whole price structure between 10 and 17 September, so figures cleared on the 10th are already unverifiable. Brief 34 ships without the annotated screenshot its slot B requirement asks for, because no capture session has happened; a browser read of the drug regulator's efficacy standard would lift four currently cut rows to primary.
+2026-09-18T04:02:11 model Opus completed successfully
+2026-09-18T04:02:11 end publish exit 0

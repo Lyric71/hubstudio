@@ -1,0 +1,259 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "How many creatives should a Douyin ad plan have?",
+    "a": "Plan is the older Ocean Engine level; the upgraded tool uses project and ad. The most specific figure in circulation caps one ad at 10 assets, with 4 to 6 videos and 6 or more titles advised, and 2 to 3 while testing. It traces to one 2022 trade article, so treat it as contested and confirm it in your advertiser account."
+  },
+  {
+    "q": "How often should China ad creatives be refreshed?",
+    "a": "No Chinese ad platform publishes an interval. None of the 11 platform-owned pages read on 10 September 2026 gives one, and the figures in circulation come from agency pages with no stated sample. The research supports judgment, not a calendar: strong creative holds up under repetition, weak creative decays, and part of any audience turns weary on volume alone."
+  },
+  {
+    "q": "How many ad variations should I test in China?",
+    "a": "Tencent Ads caps each dynamic creative element at 3 uploads in its developer guide, and its API version 3.0 reference allows 15 image and video components with 3 lines of copy. Ocean Engine advice in circulation says 2 to 3 assets per ad while testing, a contested figure that dates from 2022. The plan above is derived, not a rule."
+  },
+  {
+    "q": "What is creative fatigue in paid social?",
+    "a": "Advertising research calls it wearout, the decreased effectiveness of advertising copy over time. It splits in two: repetition wearout from seeing the same ad again, and copy wearout from time passing. In one 2019 field study a class of users, about 24 percent of the sample, made fewer site visits as exposures rose."
+  },
+  {
+    "q": "How many variants can one shoot produce?",
+    "a": "No platform and no study publishes a number, and the counts in One Shoot, Six Platforms: China Matrix are platform placements per product, a different figure. hubStudio's who we are page describes a footwear launch of twelve colorways in four markets as one hero shoot, with generation for every variant after it."
+  }
+];
+---
+
+<ArticleLayout slug="how-many-variants-a-china-launch-needs" ctaLabel="Plan the variant set" faq={faq}>
+  <p class="standfirst">Ask the three big Chinese ad platforms and one of them answers. Tencent Ads publishes how many creatives an ad may hold. RedNote publishes the structure without a number, and Ocean Engine publishes neither. None of them says how often to replace a creative, and the wear-out research that might tell you was run on Western display campaigns in 2009 and 2013.</p>
+
+  <h2>How many ad creatives does a China launch need?</h2>
+
+  <p>Nobody publishes a launch total. Tencent Ads is the only one of the three that publishes a creative count per ad, RedNote publishes the ad structure without a number, Ocean Engine's figure circulates from a single 2022 trade article, and none publishes a refresh interval. hubStudio sizes variant sets per ad unit instead.</p>
+
+  <h2>How to read these numbers</h2>
+
+  <p>Douyin's numbers are not read from an advertiser backend. Ocean Engine, the platform that sells Douyin ads, served a page title and no body from both developer pages for its upgraded ad tool, so no open source reaches its per-ad figure. Tencent Ads and RedNote are the exception, though only in part. Each serves documentation anyone can read, one of them with counts in it and one without, and rows taken from those documents are labeled primary for that document's scope only.</p>
+
+  <p>The Ocean Engine rows below are the most commonly published figures, collected across 4 independent non-platform sources in Chinese and English on 10 September 2026, with the number of sources that agreed shown per row. Rows marked consensus had broad agreement. Rows marked contested did not, and those carry the full spread rather than a single number. On this page no row reached consensus, which is itself part of the answer. The cap of 10 assets per ad is contested for a specific reason: it originates once, in one 2022 trade article republished on a second site.</p>
+
+  <p>Treat this as the best available public reading, not as the rule. Platform specs change without announcement and often without an English notice at all. Before you build a batch to any number on this page, open your own advertiser account and confirm it there. Reviewed 22 September 2026.</p>
+
+  <p>Three platform-owned documents were readable. Tencent Ads publishes a dynamic creative reference for API version 3.0 and a developer guide to the same workflow, and the two disagree. RedNote's Juguang manual, a PDF on RedNote's own content server, sets out the ad structure. Ocean Engine's encyclopedia entry describes how its upgraded tool combines assets. Each is primary for what that document covers and nothing else.</p>
+
+  <h2>What does each Chinese ad platform publish?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Ad platform</th>
+          <th scope="col">Creative count published</th>
+          <th scope="col">Refresh interval</th>
+          <th scope="col">Sources agreeing</th>
+          <th scope="col">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Tencent Ads, which sells WeChat inventory</th>
+          <td>Up to 100 creatives per ad; per dynamic creative up to 3 copy, 3 landing page and 15 image and video components on API v3.0; 3 per element and 3 videos in the guide</td>
+          <td>Not published</td>
+          <td>2 Tencent developer pages, which disagree by version</td>
+          <td>primary, scoped to each document</td>
+        </tr>
+        <tr>
+          <th scope="row">Ocean Engine, Douyin, upgraded ads</th>
+          <td>Up to 10 assets per ad; 4 to 6 videos plus 6 or more titles advised; 2 to 3 per ad when testing</td>
+          <td>Not published</td>
+          <td>3 trade pages carrying 2 articles, 2022; no platform page served text</td>
+          <td>contested, originates once</td>
+        </tr>
+        <tr>
+          <th scope="row">Ocean Engine, before the upgrade</th>
+          <td>Programmatic creative up to 10 titles, 12 images, 10 videos; 10 custom creatives per plan; 500 a day</td>
+          <td>Not published</td>
+          <td>1 open-source code library, May 2022</td>
+          <td>contested, single source, older product generation</td>
+        </tr>
+        <tr>
+          <th scope="row">Qianchuan, Douyin ecommerce</th>
+          <td>Not published</td>
+          <td>Not published</td>
+          <td>0 platform pages reached</td>
+          <td>not published</td>
+        </tr>
+        <tr>
+          <th scope="row">Juguang, RedNote</th>
+          <td>Multiple creatives per unit, no maximum; an automatically bid plan holds one unit</td>
+          <td>Not published</td>
+          <td>1 platform manual, May 2022</td>
+          <td>primary for structure, count not published</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Tencent is the only one of the three that prints a creative count a brand can read without an account. Its dynamic creative reference for API version 3.0, read unauthenticated on 10 September 2026 and undated, allows up to 100 creatives under one ad and, inside a single dynamic creative, 3 copy components, 3 landing page components and 15 image and video components combined. Read those as primary figures for that API version and for no other page. The mechanism matters more than the ceiling.</p>
+
+  <blockquote class="evidence">In Tencent Ads' dynamic creative guide, uploads multiply rather than add. Two images and two lines of copy become four creatives; two videos, two images and two lines of copy become eight. The system picks the best-performing combination and shows it. That guide caps each element at 3 uploads and video at 3, a lower ceiling than the version 3.0 reference.</blockquote>
+  <p class="source">Source: Tencent Ads developer guide to dynamic creative ads, read 10 September 2026, undated. A primary reading scoped to that guide; the gap between the two documents is an observation, not an explanation.</p>
+
+  <p>The same machinery turns up on the Douyin side, minus the number. Ocean Engine's encyclopedia entry for its upgraded ad tool, dated 11 April 2023 and read on 10 September 2026, says the system combines videos, images, titles and landing pages automatically, selects among them online and explores the full set. What it never says is how many assets one ad may hold.</p>
+
+  <p>So where does the Douyin figure everyone quotes come from?</p>
+
+  <blockquote class="evidence">The most specific Douyin figure in circulation is a cap of 10 creative assets per ad in Ocean Engine's upgraded ad tool, with advice of 4 to 6 videos and at least 6 titles per ad, and 2 to 3 when testing new creative. All of it traces to one Chinese trade article from September 2022, republished on a second site. A separate December 2022 article describes 4 or more videos and 5 to 6 titles on one ad.</blockquote>
+  <p class="source">Source: 3 Chinese-language trade media pages carrying 2 independent articles, September and December 2022, plus 2 Ocean Engine developer pages that served no text, all read 10 September 2026. Modal values from one origin, contested.</p>
+
+  <p>RedNote publishes the shape and leaves the number out. Its Juguang manual, read in full on 10 September 2026, sets out an ad as a plan, units and creatives: a manually bid plan holds several units, an automatically bid plan one, and every unit holds several creatives. Full-text search finds no maximum anywhere. Qianchuan, the ecommerce ad product on Douyin, is a blank, because no page it owns was reachable.</p>
+
+  <h2>How often do the platforms say to refresh creative?</h2>
+
+  <p>They don't. Not one of them.</p>
+
+  <blockquote class="evidence">None of the 11 pages read from Ocean Engine, Tencent Ads and RedNote says how often a creative should be replaced. The refresh intervals that circulate in Chinese come from agency and practitioner pages, and none of them states a sample.</blockquote>
+  <p class="source">Source: 11 pages owned by three Chinese ad platforms, fetched unauthenticated 10 September 2026, plus 48 Chinese-language search results on seven phrasings classified by publisher type. An absence confirmed at source, not a figure.</p>
+
+  <p>Across five agency and practitioner pages dated 2024 to 2026, those intervals run from two days to a month, and one of them puts a good RedNote note at a year or more. None of those pages states a sample. The spread covers two orders of magnitude, and that's why no number of days appears here. Which leaves the question of what does govern the decision.</p>
+
+  <h2>What does wear-out research actually measure?</h2>
+
+  <p>Advertising research uses a narrower word than the creative fatigue label in ad tools. Wearout, as a 2013 Marketing Science paper defines it, is the decreased effectiveness of advertising copy over time. It comes in two kinds: repetition wearout from seeing the same ad again, and copy wearout from the passage of time.</p>
+
+  <p>Four studies carry the useful findings. All four are Western, and none of them touches Douyin, WeChat or RedNote. Read them for the mechanism, not for a number.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Published in</th>
+          <th scope="col">Method and sample</th>
+          <th scope="col">What it found</th>
+          <th scope="col">What it cannot tell you</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Journal of the Academy of Marketing Science, 2016</th>
+          <td>Between-subjects repetition experiment across six dependent variables</td>
+          <td>High divergence and relevance ads wear in at once and barely wear out; low-creativity ads follow an inverted U</td>
+          <td>It's a lab experiment, not a live campaign, and not a Chinese platform</td>
+        </tr>
+        <tr>
+          <th scope="row">Marketing Science, September 2013</th>
+          <td>Hierarchical Bayesian model on 5,803 randomly sampled people from one automobile brand's 10-week 2009 banner campaign with 15 creatives</td>
+          <td>Rotating creative by each person's exposure history simulated 12.7 percent more expected visits and 13.8 percent more conversions</td>
+          <td>One brand, one 2009 desktop campaign, and the lift is simulated rather than tested</td>
+        </tr>
+        <tr>
+          <th scope="row">Journal of Marketing Research, 2019</th>
+          <td>Latent-class model of site visits across more than 12,000 users and more than 400 websites, 72-day 2013 campaign</td>
+          <td>One class of users, about 24 percent of the sample, visited less as exposures rose; capping could have improved deployment by up to 15 percent</td>
+          <td>Visits rather than sales, and one financial services advertiser</td>
+        </tr>
+        <tr>
+          <th scope="row">Journal of Advertising, 2015</th>
+          <td>Meta-analysis of experimental repetition studies</td>
+          <td>Attitude peaks near ten exposures, recall rises through at least the eighth, and both decay over time</td>
+          <td>Experimental settings only, and the number of studies pooled was not confirmed at source</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The first row gets skipped most often, and for a production plan it is the one that pays.</p>
+
+  <blockquote class="evidence">In a controlled repetition experiment, ads high in divergence and relevance "wear in immediately and show little sign of wearing-out even over repeated exposures", while low-creativity ads followed "the classic inverted U-Shape" and declined with repeated exposure.</blockquote>
+  <p class="source">Source: Journal of the Academy of Marketing Science, volume 44 issue 3, pages 334 to 349, 2016. A two-by-two-by-three between-subjects experiment across six dependent variables.</p>
+
+  <p>A strong master survives volume. A weak one gets worse the more you spend behind it. Variety still earns its keep, for the reason in the second row rather than freshness for its own sake: delivery can rotate a set against what each person has already seen, and rotation is the mechanism that bought the modeled lift there. The fourth row sets the other boundary, somewhere past ten exposures.</p>
+
+  <h2>What does a variant plan look like per ad unit?</h2>
+
+  <p>Start with the arithmetic. Every line below is derived from the published limits above, not published by any platform.</p>
+
+  <p>- <strong>Tencent, from its guide's own example.</strong> Two videos, two images and two lines of copy multiply to 8 combinations out of 6 uploads. - <strong>Tencent, at the guide's caps.</strong> Three of each element multiplies to 27 combinations out of 9 uploads, assuming all three types are used and multiply as the guide's example shows. - <strong>Douyin, at the circulating advice.</strong> Cross 4 to 6 videos with 6 titles and you get 24 to 36 pairings per ad. Two assumptions ride on that, though: that titles cross every video, and that they do not count against the 10-asset cap. No source says either.</p>
+
+  <p>Combinations are cheap, and the platform builds them. What a production plan controls is the count of distinct masters going in, and on both platforms that is a single-digit or low-teens figure per ad unit. Hence the plan below, derived from the published limits and the wear-out research, sized per ad unit rather than per launch because no source supplies ad units, a budget or a flight length.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Phase</th>
+          <th scope="col">Douyin, per ad</th>
+          <th scope="col">WeChat, per dynamic creative</th>
+          <th scope="col">RedNote, per unit</th>
+          <th scope="col">Why, from the sources above</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Test</th>
+          <td>2 to 3 new masters, inside the 10-asset cap</td>
+          <td>2 of each element, 8 combinations</td>
+          <td>Several creatives, no count published, sized to budget</td>
+          <td>Few masters, many platform-made combinations; a weak master decays under repetition, so find the strong ones first</td>
+        </tr>
+        <tr>
+          <th scope="row">Scale</th>
+          <td>Fill a proven ad toward 10: 4 to 6 videos plus 6 or more titles</td>
+          <td>Up to 15 visuals and 3 lines of copy on v3.0, or 3 per element on the guide</td>
+          <td>Add creatives to the units that deliver; automatically bid plans hold one unit</td>
+          <td>Variety lets delivery rotate creatives against each person's exposure history</td>
+        </tr>
+        <tr>
+          <th scope="row">Sustain</th>
+          <td>Replace the weakest master when the account's own data shows decline</td>
+          <td>Same</td>
+          <td>Same</td>
+          <td>No platform publishes an interval; strong creative lasts longer, and a share of users turns weary on volume, so cap exposure as well as refresh</td>
+        </tr>
+        <tr>
+          <th scope="row">Brand formats</th>
+          <td>TopView and open screen cut from the same vertical master</td>
+          <td>n/a</td>
+          <td>n/a</td>
+          <td>Re-edits of the master, not new shoots</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The last row is not a phase. Douyin's brand formats get cut from the master the first three rows produce, so they add editing time rather than another shoot.</p>
+
+  <p>Print the assumptions with that table, every time. The ad unit is the counting unit, not the campaign. The 10-asset cap and the 4 to 6 video advice rest on one 2022 trade article. The Tencent limits come from developer documentation, not the ad manager interface. And no refresh interval appears because none is published.</p>
+
+  <p>If you're sizing a set this week, count masters rather than combinations, then open the account and check the cap before anything goes into production.</p>
+
+  <p><a href="/resources/insights/one-shoot-six-platforms-china-variant-matrix">One Shoot, Six Platforms: China Matrix</a> holds the platform slot count per product (a different number, and one that should never be read as a variant count). The <a href="/solutions/platforms/douyin">Douyin platform page</a> covers how the formats are bought; the <a href="/services/design/ad-creative">ad creative design service page</a> covers how a set gets built and trafficked.</p>
+
+  <p>Masters are where the cost sits.</p>
+
+  <blockquote class="evidence">hubStudio's studio page describes a footwear launch of twelve colorways across four markets as one strong shoot of the hero product, then generation for every color variant, market adaptation and ecommerce angle: "The real work is knowing which 20% to shoot and which 80% to build from there."</blockquote>
+  <p class="source">Source: hubStudio's who we are page, read 10 September 2026. A published first-party illustration of the shoot-to-build split, with no sample or period published behind it.</p>
+
+  <h2>Questions about China ad variant counts</h2>
+
+  <h3>How many creatives should a Douyin ad plan have?</h3>
+
+  <p>Plan is the older Ocean Engine level; the upgraded tool uses project and ad. The most specific figure in circulation caps one ad at 10 assets, with 4 to 6 videos and 6 or more titles advised, and 2 to 3 while testing. It traces to one 2022 trade article, so treat it as contested and confirm it in your advertiser account.</p>
+
+  <h3>How often should China ad creatives be refreshed?</h3>
+
+  <p>No Chinese ad platform publishes an interval. None of the 11 platform-owned pages read on 10 September 2026 gives one, and the figures in circulation come from agency pages with no stated sample. The research supports judgment, not a calendar: strong creative holds up under repetition, weak creative decays, and part of any audience turns weary on volume alone.</p>
+
+  <h3>How many ad variations should I test in China?</h3>
+
+  <p>Tencent Ads caps each dynamic creative element at 3 uploads in its developer guide, and its API version 3.0 reference allows 15 image and video components with 3 lines of copy. Ocean Engine advice in circulation says 2 to 3 assets per ad while testing, a contested figure that dates from 2022. The plan above is derived, not a rule.</p>
+
+  <h3>What is creative fatigue in paid social?</h3>
+
+  <p>Advertising research calls it wearout, the decreased effectiveness of advertising copy over time. It splits in two: repetition wearout from seeing the same ad again, and copy wearout from time passing. In one 2019 field study a class of users, about 24 percent of the sample, made fewer site visits as exposures rose.</p>
+
+  <h3>How many variants can one shoot produce?</h3>
+
+  <p>No platform and no study publishes a number, and the counts in One Shoot, Six Platforms: China Matrix are platform placements per product, a different figure. hubStudio's <a href="/the-studio/who-we-are">who we are page</a> describes a footwear launch of twelve colorways in four markets as one hero shoot, with generation for every variant after it.</p>
+</ArticleLayout>

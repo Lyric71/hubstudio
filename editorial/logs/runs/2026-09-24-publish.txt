@@ -1,0 +1,39 @@
+﻿2026-09-24T04:00:02 start publish (model claude-opus-5-5)
+2026-09-24T04:00:02 model attempt 1/4, cycle 1: Opus 5.5
+2026-09-24T04:05 Opus 5.5 decision record, attempt 1/4.
+2026-09-24T04:05 state on entry: run log held only the runner's two start lines, so no earlier model made partial progress in this run. Prompt SHA-256 matches the manifest (ae9f37f6...b09b0c5). No MANUAL TEST RUN line in the prompt and no -forced log, so the date filter binds. Tree level with origin/main after fetch, 0 ahead, 0 behind.
+2026-09-24T04:05 read editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md.
+2026-09-24T04:05 due rows: filtered schedule.csv (CSV-parsed, 48 rows) on status image_ready AND publish_date <= 2026-09-24. Zero rows. Today's row (brief 24, disclosure-audit-trail-per-asset) is already published (published_on 2026-09-09). All seven image_ready rows are future-dated: 31 amazon-tmall-jd-one-product-three-listings 2026-10-23; 32 meta-tiktok-against-douyin-rednote 2026-10-30; 33 real-cost-of-brand-content-2026 2026-11-09; 34 beauty-content-production-china 2026-11-10; 35 agency-white-label-question 2026-11-12; 36 how-many-variants-a-china-launch-needs 2026-11-13; 38 automotive-content-without-shipping-a-car 2026-11-17 (new, drafted by today's 00:30 draft run).
+2026-09-24T04:05 decision: nothing to publish. Not run, deliberately: /createblogarticle, npm run build, npm run check, git add, commit, push, notify-publish.mjs. The email fires after a successful push or on a build or check failure; neither happened, and the script needs a --slug and --title it has no article to name. Same handling as the 09-19 to 09-23 runs.
+2026-09-24T04:05 open findings carried forward, none resolved by this run:
+  1. Cluster with no insights-layer category: Research (33), Playbook (34, and now 38), Data (36). None is claimed in src/data/insight-placements.ts, so each would reach the home page but no insights layer. Map or add a placement before 2026-11-09.
+  2. Brief 35 has two complete drafts on disk (output/agency-white-label-question.md and .ALT-2026-09-21.md). A person must pick which ships before 2026-11-12.
+  3. Draft artifacts from the 09-17, 09-18, 09-21, 09-22 and 09-24 draft runs remain uncommitted, by design, until the next publish commit on or after 2026-10-23. Flagged, not acted on: this prompt authorizes a commit only for an article it publishes.
+2026-09-24T04:05 end of Opus 5.5 decision record. This log file is the only file this run modified.
+Nothing was due today, so nothing was published.
+
+No draft marked `image_ready` in `editorial/schedule.csv` has a publish date of 2026-09-24 or earlier. Today's row (brief 24) went out on 2026-09-09. The seven drafts waiting to publish are all scheduled later:
+
+| Brief | Slug | Due |
+|---|---|---|
+| 31 | `amazon-tmall-jd-one-product-three-listings` | 2026-10-23 |
+| 32 | `meta-tiktok-against-douyin-rednote` | 2026-10-30 |
+| 33 | `real-cost-of-brand-content-2026` | 2026-11-09 |
+| 34 | `beauty-content-production-china` | 2026-11-10 |
+| 35 | `agency-white-label-question` | 2026-11-12 |
+| 36 | `how-many-variants-a-china-launch-needs` | 2026-11-13 |
+| 38 | `automotive-content-without-shipping-a-car` | 2026-11-17 (new from today's draft run) |
+
+This was the first attempt in today's log, so no earlier model had left work half done. The prompt's hash matches the run manifest, the run was not a forced test run, and the local repo is in sync with `origin/main`.
+
+Because nothing was due, I didn't run the publish skill, the build, the check, any commit or push, or the notification email. The email only goes out after a push or a failed build, and neither happened. The only file I changed is the run log, `editorial/logs/runs/2026-09-24-publish.txt`, where I recorded these decisions.
+
+Three things need your attention, all carried over from earlier runs:
+
+1. **Articles that won't appear in any "further reading" section.** Briefs 33 (Research), 34 and 38 (Playbook) and 36 (Data) use categories that no page's "further reading" section picks up (`src/data/insight-placements.ts` has none of them). They would appear on the home page but nowhere else, which breaks the rule that every article appears in both places. This needs fixing before 2026-11-09.
+2. **Brief 35 has two finished drafts.** Someone has to choose which one ships before 2026-11-12.
+3. **Draft files are still uncommitted.** Files from five draft runs are not in git and won't be until the next publish on or after 2026-10-23.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need signing in again in your claude.ai connector settings. This run didn't use them.
+2026-09-24T04:00:58 model Opus 5.5 completed successfully
+2026-09-24T04:00:58 end publish exit 0

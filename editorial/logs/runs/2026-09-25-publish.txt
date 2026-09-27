@@ -1,0 +1,40 @@
+﻿2026-09-25T09:43:31 start publish (model claude-opus-5-5)
+2026-09-25T09:43:31 model attempt 1/4, cycle 1: Opus 5.5
+2026-09-25T09:50 CATCH-UP RUN, started by Relaunch-MissedTasks.ps1 for the missed 2026-09-25 (Friday) publish run. Model: Opus 5.5.
+2026-09-25T09:50 prompt check: SHA-256 of 2026-09-25-publish.prompt.txt matches the manifest (5872E9E7...B1A0C0).
+2026-09-25T09:50 earlier attempt reviewed (2026-09-25-publish.before-catchup-094330.txt): Opus 5.5 and Fable exited 1 on "API Error: 403 Request not allowed"; GPT-6 Astra then hit repeated model-refresh and websocket timeouts and got no further than reading editorial/CLAUDE.md, SPEC.md and RUNBOOK.md. It made no edits: git status shows no change under src/ and no new insight page, and the schedule rows match the 2026-09-24 publish log. Nothing partial to correct or preserve.
+2026-09-25T09:50 repo state: main in sync with origin/main after git fetch. Working tree carries the uncommitted draft artifacts of the 09-17, 09-18, 09-21, 09-22 and 09-24 draft runs, left untouched.
+2026-09-25T09:50 schedule scan (editorial/schedule.csv parsed as CSV): 32 published, 7 image_ready, 9 not_started. Today's row (brief 10, one-shoot-six-platforms-china-variant-matrix) was published 2026-09-10. No image_ready row has a publish_date on or before 2026-09-25. The seven waiting: 31 amazon-tmall-jd-one-product-three-listings (2026-10-23), 32 meta-tiktok-against-douyin-rednote (2026-10-30), 33 real-cost-of-brand-content-2026 (2026-11-09), 34 beauty-content-production-china (2026-11-10), 35 agency-white-label-question (2026-11-12), 36 how-many-variants-a-china-launch-needs (2026-11-13), 38 automotive-content-without-shipping-a-car (2026-11-17).
+2026-09-25T09:50 decision: nothing to publish. Not run, deliberately: /createblogarticle, npm run build, npm run check, git add, commit, push, notify-publish.mjs. The email fires only after a successful push or on a build or check failure; neither happened, and the script needs a slug and title it has no article to name. Same handling as the 09-19 to 09-24 runs.
+2026-09-25T09:50 the 2026-09-25 draft catch-up was relaunched at the same time (09:43:29) and may still be running, so this run touched no shared file.
+2026-09-25T09:50 open findings carried forward, none resolved by this run:
+  1. Research (33), Playbook (34, 38) and Data (36) are claimed by no placement in src/data/insight-placements.ts, so those articles would reach the home page but no insights layer. Map them or add a placement before 2026-11-09.
+  2. Brief 35 has two complete drafts (output/agency-white-label-question.md and .ALT-2026-09-21.md). A person must pick which ships before 2026-11-12.
+  3. Draft artifacts from five draft runs stay uncommitted until the next publish commit on or after 2026-10-23.
+2026-09-25T09:50 end of Opus 5.5 decision record. This log file is the only file this run modified.
+Nothing was due, so nothing was published in this catch-up run for 2026-09-25.
+
+**What went wrong with the missed 04:00 run:** Opus 5.5 and Fable both failed to start with "API Error: 403 Request not allowed". GPT-6 Astra then started but kept timing out while connecting, and only got as far as reading the editorial rules. It changed no files, so there was nothing half-done to fix or keep.
+
+**Why nothing published:** Today's scheduled article (brief 10, the China variant matrix) already went out on 2026-09-10. Seven drafts are marked `image_ready`, but all are dated later:
+
+| Brief | Slug | Due |
+|---|---|---|
+| 31 | `amazon-tmall-jd-one-product-three-listings` | 2026-10-23 |
+| 32 | `meta-tiktok-against-douyin-rednote` | 2026-10-30 |
+| 33 | `real-cost-of-brand-content-2026` | 2026-11-09 |
+| 34 | `beauty-content-production-china` | 2026-11-10 |
+| 35 | `agency-white-label-question` | 2026-11-12 |
+| 36 | `how-many-variants-a-china-launch-needs` | 2026-11-13 |
+| 38 | `automotive-content-without-shipping-a-car` | 2026-11-17 |
+
+Because nothing was published, I didn't run the publish skill, the build, the check, a commit, a push or the notification email. The email only goes out after a push or a failed build. The local repo matches `origin/main`. The only file I changed is the run log, `editorial/logs/runs/2026-09-25-publish.txt`, which records all of this and says it was a catch-up run. The draft catch-up run was relaunched at the same moment and may still be going, so I left the schedule and draft files alone.
+
+**Three things need your attention, carried over from earlier runs:**
+1. **Articles that won't show up in any "further reading" section.** Briefs 33, 34, 36 and 38 use categories (Research, Playbook, Data) that no entry in `src/data/insight-placements.ts` picks up. They would appear on the home page but nowhere else. This needs fixing before 2026-11-09.
+2. **Brief 35 has two finished drafts.** Someone has to choose which one ships before 2026-11-12.
+3. **Draft files from five draft runs are still uncommitted.** They'll go in with the next publish, on or after 2026-10-23.
+
+The 403 errors from the Claude models at 04:00 are worth checking in case the scheduled runs keep failing to sign in. Separately, the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need signing in again in your claude.ai connector settings. This run didn't need them.
+2026-09-25T09:44:47 model Opus 5.5 completed successfully
+2026-09-25T09:44:47 end publish exit 0
