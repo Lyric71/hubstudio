@@ -130,6 +130,8 @@ function blocks(body) {
 
     if (/^#\s/.test(line)) { out.push({ t: 'h1', v: line.replace(/^#\s+/, '') }); i++; continue; }
     if (/^##\s/.test(line)) { out.push({ t: 'h2', v: line.replace(/^##\s+/, '') }); i++; continue; }
+    /* Later drafts write FAQ questions as ### headings rather than bold lines. */
+    if (/^###\s/.test(line)) { out.push({ t: 'h3', v: line.replace(/^###\s+/, '') }); i++; continue; }
     if (/^CTA:\s/.test(line)) { out.push({ t: 'cta', v: line.replace(/^CTA:\s+/, '') }); i++; continue; }
 
     if (/^>\s?/.test(line)) {
@@ -150,6 +152,9 @@ function blocks(body) {
     while (i < lines.length && lines[i].trim() && !/^[#>|]/.test(lines[i]) && !/^<!--/.test(lines[i]) && !/^CTA:\s/.test(lines[i])) {
       buf.push(lines[i].trim()); i++;
     }
+    /* A line no branch above recognizes (a #### heading, say) would otherwise
+       never advance the cursor, and the loop would run until the heap is gone. */
+    if (!buf.length) { buf.push(lines[i].trim()); i++; }
     out.push({ t: 'p', v: buf.join(' ') });
   }
   return out;
@@ -247,6 +252,11 @@ for (const b of bs) {
   if (b.t === 'h2') {
     inFaq = /^Questions?\b/i.test(b.v) || /\bask\b/i.test(b.v);
     html.push(`  <h2>${inline(b.v)}</h2>`);
+    continue;
+  }
+  if (b.t === 'h3') {
+    if (inFaq && /\?$/.test(b.v.trim())) faq.push({ q: b.v.trim(), a: '' });
+    html.push(`  <h3>${inline(b.v)}</h3>`);
     continue;
   }
   if (b.t === 'quote') { html.push(renderQuote(b.v)); wordCount += b.v.join(' ').split(/\s+/).length; continue; }

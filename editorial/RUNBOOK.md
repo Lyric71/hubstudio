@@ -259,7 +259,7 @@ keys and the full model are all here, and a cloud routine has none of them.
 | Task | When (Shanghai) | What | Default |
 |---|---|---|---|
 | hubStudio Editorial Draft | Mon, Tue, Thu, Fri 00:30 | `run-daily.ps1 -Mode draft`: steps 0 to 3, stops at `image_ready` | enabled |
-| hubStudio Editorial Publish | every day 04:00 | `run-daily.ps1 -Mode publish`: publishes every due `image_ready` row, builds, commits, pushes, emails | disabled until the first week has been reviewed by hand |
+| hubStudio Editorial Publish | every day 04:00 | `run-daily.ps1 -Mode publish`: publishes every `image_ready` row whatever its `publish_date`, builds, commits, pushes, emails | enabled |
 
 Scripts live in `editorial/scripts/`. `register-tasks.ps1` creates or updates
 both tasks. Each run writes its console output to

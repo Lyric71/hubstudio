@@ -11,9 +11,10 @@
     draft    "Draft today's article."  Steps 0 to 3 of the pipeline. Stops at
              image_ready. Runs Mon, Tue, Thu, Fri.
     publish  Publishes every row in editorial/schedule.csv whose status is
-             image_ready and whose publish_date is today or earlier, then
-             sends the Resend email. Disabled until the first week has been
-             reviewed by hand.
+             image_ready, then sends the Resend email. A finished draft goes
+             live the next morning rather than waiting for its publish_date:
+             that column is the drafting calendar, and waiting on it left
+             finished drafts sitting unpublished for weeks.
 
   Output of each run is written to editorial/logs/runs/<date>-<mode>.txt.
   Register with editorial/scripts/register-tasks.ps1.
@@ -24,8 +25,7 @@
 param(
   [ValidateSet('draft', 'publish')]
   [string]$Mode = 'draft',
-  # Manual test run: ignore the plan-start date, the weekday guard and, in
-  # publish mode, the publish_date filter.
+  # Manual test run: ignore the plan-start date and the weekday guard.
   [switch]$Force,
   # Optional extra instructions appended to the prompt (for example a resume
   # note after an interrupted run).
@@ -57,8 +57,8 @@ if ($Mode -eq 'draft' -and -not $Force) {
   }
 }
 
-# The shared runner uses: Fable, Opus, GPT-6 Astra, then GPT-5.6 Sol.
-$Model = 'fable'
+# The shared runner uses: Opus 5.5, then Fable, GPT-6 Astra and GPT-5.6 Sol as fallbacks.
+$Model = 'claude-opus-5-5'
 
 if ($Mode -eq 'draft') {
   $Prompt = @'
@@ -84,17 +84,23 @@ the decision in the run log.
 '@
 } else {
   $Prompt = @'
-Publish every reviewed draft that is due.
+Publish every finished draft.
 
 Read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md first.
-In editorial/schedule.csv, find every row whose status is image_ready and
-whose publish_date is today or earlier. For each one, in date order, run the
+In editorial/schedule.csv, find every row whose status is image_ready,
+whatever its publish_date: publish_date is the drafting calendar, not a
+release date, so a finished draft never waits for it. Skip only a row whose
+notes say a person must decide something before it ships, and name it in the
+run log. For each remaining row, in publish_date order, run the
 publish step: /createblogarticle on the output file. That creates
 src/pages/resources/insights/<slug>.astro, adds the entry to
 src/data/insights.ts, converts the plain-text internal references into links,
 wires the hero image and updates every listing surface. Insights are English
 only on this repo, so there is no locale propagation and no /deep-translate
-pass.
+pass. File each article under an insights.ts category that at least one
+placement in src/data/insight-placements.ts already claims, choosing the one
+whose page a buyer of that topic would read. Never invent a category no layer
+claims: the schedule's cluster (Research, Playbook, Data) is not a category.
 
 Then run npm run build and npm run check. When both pass: set the row to
 published with published_on, then git add everything the article touched (the
@@ -116,7 +122,7 @@ if ($Extra) {
 }
 
 if ($Force) {
-  $Prompt += "`n`nMANUAL TEST RUN: ignore the publish_date. Process every row whose status is image_ready (publish mode) or take the oldest not_started row that is not blocked (draft mode). Say in the run log that this was a forced test run."
+  $Prompt += "`n`nMANUAL TEST RUN: process every row whose status is image_ready (publish mode) or take the oldest not_started row that is not blocked (draft mode). Say in the run log that this was a forced test run."
   $RunLog = Join-Path $RunLogDir "$Stamp-$Mode-forced.txt"
 }
 
