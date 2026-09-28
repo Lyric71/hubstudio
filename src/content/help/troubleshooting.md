@@ -5,12 +5,12 @@ description: "What hubStudio's messages mean and what to do: credits used up, an
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
 order: 18
-updated: 2026-09-27
+updated: 2026-09-28
 appPaths: ["/content/image-generate", "/content/video", "/history", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
 audience: "Everyone"
 related: ["credits-and-payments", "create-an-image", "create-a-video", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
 shots: []
-sources: ["src/lib/credits.ts", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckBand.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
+sources: ["src/lib/credits.ts", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
 ---
 
 Find the message you see in the first column. In the messages below, a name in square brackets stands for your own file, engine or amount.
@@ -134,7 +134,7 @@ A run that fails is never charged. A run that succeeds is charged the price show
 | **Schedule** and **Publish now** stay locked | No account is ticked under **Who it goes out as**. | Tick at least one account. |
 | Your account isn't in the list | Only this network's accounts are listed, and only the ones you connected. | Connect it on **My Connections**. See [Account and sign-in](/help/account-and-sign-in#my-connections-your-social-accounts). |
 | **Reconnect** on an account's tile | The connection ran out or was revoked. | Click **Connect again** on its row on My Connections. |
-| **Some connections need attention** in a band over the page | The check after sign-in found an account that no longer lets hubStudio in. | Click **Reconnect**, sign in again on the card that opens, then **Check again** on the band. |
+| **Some connections need attention** in a notification at the bottom right of the screen | The check after sign-in found an account that no longer lets hubStudio in. | Click **Reconnect**, sign in again on the card that opens, then **Check again** on the notification. |
 
 ## Still stuck?
 

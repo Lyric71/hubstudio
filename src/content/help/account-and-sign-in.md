@@ -5,7 +5,7 @@ description: "Your name, picture, sign-in email and password, the sign-in code s
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
 order: 16
-updated: 2026-09-27
+updated: 2026-09-28
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"
 related: ["getting-started", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "credits-and-payments", "troubleshooting"]
@@ -24,7 +24,7 @@ shots:
     clip: "#appearance"
     alt: "The Appearance card in Settings, with the System, Light and Dark choices and a preview"
     captured: 2026-09-27
-sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckBand.ts", "src/pages/connections-check.astro", "src/lib/app.ts"]
+sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts"]
 ---
 
 Open **User Settings** from the menu under your picture, at the top right of every page. The band at the top of the page shows who is signed in, your role and your team, then three figures: **Available now**, **Spent today** and **Spent this month**. The sections are listed on the left.
@@ -107,17 +107,17 @@ Each row carries a status line: **Connected**, **Connected, 45 days left** (the 
 
 Once you're in, hubStudio checks the social accounts you connected and switched on. An access can stop working without a sound, when you change a password or withdraw an access on the network, and you'd otherwise find out only when a post fails.
 
-The check never holds you up. Your first page opens at once, the check runs in the background as a **Connection check** row in **Activity**, and the answer comes to you on whatever page you're on, as a band laid over the page:
+The check never holds you up. Your first page opens at once, the check runs in the background as a **Connection check** row in **Activity**, and the answer comes to you on whatever page you're on, as a notification in the bottom right corner of the screen. It never covers the page, so you can keep working while it's there:
 
-| Answer | What the band shows |
+| Answer | What the notification shows |
 |---|---|
-| Everything works | **Every connection works**. The band leaves on its own after a few seconds. |
-| Something needs attention | **Some connections need attention**, then one line per account with its name, its handle and what went wrong. The band follows you from page to page in that tab until you close it, or until a new check finds nothing wrong. |
+| Everything works | **Every connection works**. A thin line along its bottom edge runs down, and the notification leaves on its own after about seven seconds. |
+| Something needs attention | **Some connections need attention**, then one line per account with its name, its handle and what went wrong. The notification follows you from page to page in that tab until you close it, or until a new check finds nothing wrong. |
 | The check failed | **The connection check could not be completed**. Your connections weren't tested. |
 
-On an account that needs attention, **Reconnect** opens My Connections in a new tab, on that account's card. Sign in there, come back, and click **Check again** on the band. **Details** opens the full check, **Your connections**, in a new tab and tests everything again.
+On an account that needs attention, **Reconnect** opens My Connections in a new tab, on that account's card. Sign in there, come back, and click **Check again** on the notification. When the check needs attention or failed, the notification also holds **Details**, which opens the full check, **Your connections**, in a new tab and tests everything again.
 
-To close the band, click the cross in its corner (its tooltip reads **Dismiss**) or press Escape.
+To close the notification, click the cross in its corner (its tooltip reads **Dismiss**) or press Escape.
 
 Accounts you switched off aren't tested. With nothing connected, there's no check. The check runs once per sign-in.
 

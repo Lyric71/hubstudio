@@ -5,7 +5,7 @@ description: "What hubStudio is, how to create your account alone or with a team
 excerpt: "Create your account, find your way around the menu and render your first image in a few minutes."
 section: "getting-started"
 order: 1
-updated: 2026-09-27
+updated: 2026-09-28
 appPaths: ["/signup", "/login", "/explore"]
 audience: "Everyone"
 related: ["explore", "create-an-image", "linkedin", "validation", "credits-and-payments", "your-team", "account-and-sign-in", "client-space"]
@@ -50,7 +50,7 @@ Type your **Login** (your email address) and your **Password**, then click **Sig
 
 New teams also ask for a second step: a 6-digit sign-in code sent to your email address, valid for 10 minutes. Type it under **Sign-in code** and click **Confirm and sign in**. Leave **Trust this browser for 30 days, so it only asks for my password.** ticked on a computer you use every day. See [Account and sign-in](/help/account-and-sign-in) for the details.
 
-Once you're in, hubStudio checks your connected social accounts in the background. If one needs reconnecting, a band over the page says so. See [Account and sign-in](/help/account-and-sign-in#the-connection-check-after-you-sign-in).
+Once you're in, hubStudio checks your connected social accounts in the background. If one needs reconnecting, a notification in the bottom right corner of the screen says so. See [Account and sign-in](/help/account-and-sign-in#the-connection-check-after-you-sign-in).
 
 ## Find your way around
 
