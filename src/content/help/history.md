@@ -1,25 +1,27 @@
 ---
 title: "History"
 seoTitle: "Find, download and reuse your images and videos | hubStudio Help"
-description: "Everything you and your team made, newest first: find a piece, open it full size, download it, reuse its prompt, say which client it was made for, delete it, and what storing files costs."
+description: "Everything you and your team made, newest first: find a piece, open it full size, download it, edit a picture, reuse its prompt, say which client it was made for, delete it, and what storing files costs."
 excerpt: "Every image and video rendered in the studios, with its prompt, engine and cost, ready to download or to reuse."
 section: "library"
 order: 5
-updated: 2026-09-27
+updated: 2026-09-28
 appPaths: ["/history"]
 audience: "Everyone"
-related: ["create-an-image", "create-a-video", "your-team", "client-space", "validation", "credits-and-payments"]
+related: ["assets-library", "create-an-image", "create-a-video", "your-team", "client-space", "validation", "credits-and-payments"]
 shots:
   - file: "/Images/help/history-page.webp"
     route: "/history"
     alt: "The History page with the All, Images and Videos filters, the Team and Mine switch and the prompt search, on a team that has not made anything yet"
     captured: 2026-09-27
-sources: ["src/pages/history.astro", "src/scripts/historyPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/storage-billing.ts", "src/scripts/usagePanel.ts", "src/scripts/clientPick.ts", "src/lib/team-clients.ts", "src/lib/stored-files.ts"]
+sources: ["src/pages/history.astro", "src/scripts/historyPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/storage-billing.ts", "src/scripts/usagePanel.ts", "src/scripts/clientPick.ts", "src/lib/team-clients.ts", "src/lib/stored-files.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/lightbox.ts"]
 ---
 
 **History** holds every image and video rendered in the studios, newest first, grouped by day. Each piece carries its prompt, the engine that made it and what it cost. What your teammates make is here too.
 
-A render is saved in History the moment it is done, whichever browser made it. Files you upload in the video studio as frames or references, or in a network module for a post, are kept here as well.
+A render is saved in History the moment it is done, whichever browser made it.
+
+History shows what the studios render. The same renders are also in the [Assets Library](/help/assets-library), next to everything else your team keeps: the files you upload (frames and references in the video studio, pictures for a post) and the pictures you edit. The library sorts them in folders; History lists the renders with their prompt, engine and cost.
 
 ## Find a piece
 
@@ -37,13 +39,19 @@ When nothing matches, the page says **Nothing matches. Clear the search or pick 
 
 ## Open a piece
 
-Click the picture or the clip to see it full size. A link to a piece of History, such as the picture links a post carries when it is sent for validation, opens that piece full size as the page loads.
+Click the picture or the clip to see it full size. On a picture, the viewer also has **Edit**. A link to a piece of History, such as the picture links a post carries when it is sent for validation, opens that piece full size as the page loads.
 
 ## Download
 
 **Download** saves the original file to your computer.
 
 Downloads are billed like any download of a stored file: a small transfer charge, taken from your credits and listed in **Credits** > **Usage** as **File download (transfer)**.
+
+## Edit a picture
+
+**Edit** on a picture's card, or in the full-size viewer, opens it in the Image editor: crop it to the format of a network, adjust its light and colors, apply a look, write a caption, draw an arrow or a box, place a logo. Editing is free and happens in your browser.
+
+When you save, the edited copy goes into the [Assets Library](/help/assets-library), next to the render, which stays as it was. Because it is an edit and not a render, the copy shows in the library, not in History. You can also download it without keeping it. Creators and admins see **Edit**; a clip has none. See [The Image editor](/help/assets-library#the-image-editor) for every panel.
 
 ## Use this prompt
 

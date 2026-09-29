@@ -4,11 +4,11 @@ seoTitle: "Make, schedule and publish TikTok videos | hubStudio Help"
 description: "The TikTok module (Beta): connect your TikTok account, start from the video, write its caption, brief a video in depth, say which client it is for, send it for approval, then schedule it or publish it."
 excerpt: "Start from the video, add a caption with AI or by hand, or brief a video in depth, and publish it on your TikTok account, now or on schedule."
 section: "social"
-order: 10
-updated: 2026-09-27
+order: 11
+updated: 2026-09-28
 appPaths: ["/social/tiktok/posts", "/social/tiktok/brief", "/my-connections"]
 audience: "Creators and admins; viewers read"
-related: ["linkedin", "instagram", "facebook", "x", "validation", "create-a-video", "history"]
+related: ["linkedin", "instagram", "facebook", "x", "validation", "create-a-video", "history", "assets-library"]
 shots:
   - file: "/Images/help/tiktok-video.webp"
     route: "/social/tiktok/posts"
@@ -57,8 +57,8 @@ A post made for a client is also shown to that client's people, whoever it is sh
 Pick one of three ways in:
 
 - **Render with AI**. Write the prompt; **Improve with AI** rewrites it for you. Pick the **Engine**, the **Aspect**, the length, the resolution and the sound. The price is on the button before you press.
-- **Pick from the library**: a clip already in your [History](/help/history).
-- **Upload from your computer**. The file is saved in your History and put on the post.
+- **Pick from the library**: a clip already in your [Assets Library](/help/assets-library).
+- **Upload from your computer**. The file is saved in your Assets Library and put on the post.
 
 The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A clip takes a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. **Render again** makes a new one.
 
@@ -151,7 +151,7 @@ A temporary problem on TikTok's side is retried by itself, three attempts in all
 
 Each paid step shows its price where you work: on the button before a render, and on the status line after a draft, a new version or a rewrite. These are paid: **Write it with AI**, **Draft the post** on the Brief tab, **Write another version**, a rewritten passage, **Improve with AI**, and each clip rendered (per second).
 
-These cost nothing: writing the caption yourself, typing in the editor, and publishing on TikTok, through hubStudio or by hand. Files you upload are kept in History and count toward storage. Every charge is listed in **Credits** > **Usage**.
+These cost nothing: writing the caption yourself, typing in the editor, and publishing on TikTok, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Every charge is listed in **Credits** > **Usage**.
 
 ## Delete a post
 

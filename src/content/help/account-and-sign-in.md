@@ -1,10 +1,10 @@
 ---
 title: "Account and sign-in"
 seoTitle: "Your account settings and signing in | hubStudio Help"
-description: "Your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the engines in your lists, voice input, and how to reset a forgotten password."
+description: "The sign-in page in your language, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the engines in your lists, voice input, and how to reset a forgotten password."
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
-order: 16
+order: 17
 updated: 2026-09-28
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"
@@ -24,7 +24,12 @@ shots:
     clip: "#appearance"
     alt: "The Appearance card in Settings, with the System, Light and Dark choices and a preview"
     captured: 2026-09-27
-sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts"]
+  - file: "/Images/help/account-and-sign-in-language.webp"
+    route: "/login"
+    clip: "the sign-in card, in a browser set to French"
+    alt: "The sign-in card as a browser set to French shows it, with English, Français and 中文 under the card and Français picked"
+    captured: 2026-09-28
+sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro"]
 ---
 
 Open **User Settings** from the menu under your picture, at the top right of every page. The band at the top of the page shows who is signed in, your role and your team, then three figures: **Available now**, **Spent today** and **Spent this month**. The sections are listed on the left.
@@ -49,6 +54,14 @@ Under **Profile picture**, drop a picture on the box or click **Upload picture**
 Your current password is checked again before either change is applied.
 
 ![The Sign-in and security card in Settings, with the Login email, Password and Sign-in code tabs](/Images/help/account-and-sign-in-security.webp)
+
+## The sign-in page in your language
+
+The sign-in page greets you in your own language: English, French or Chinese. It follows the language you picked there last time, or else the language your browser prefers. To change it, click **English**, **Français** or **中文** under the sign-in card; the page reloads in that language and remembers it on this browser.
+
+Only the sign-in page changes language. Once you're signed in, hubStudio is in English.
+
+![The sign-in card as a browser set to French shows it, with English, Français and 中文 under the card and Français picked](/Images/help/account-and-sign-in-language.webp)
 
 ## The sign-in code by email
 

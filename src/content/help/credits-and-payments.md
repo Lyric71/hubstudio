@@ -4,7 +4,7 @@ seoTitle: "Credits, payments, invoices and usage | hubStudio Help"
 description: "How credits work in hubStudio: 1 credit = 1 USD, the team's pool first and then your own credits, buying by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log."
 excerpt: "Prepaid credits pay for every run. Buy them by card, Alipay or WeChat Pay, top up automatically, and find every invoice and every charge."
 section: "billing"
-order: 15
+order: 16
 updated: 2026-09-27
 appPaths: ["/billing", "/billing/payment", "/billing/invoices", "/billing/usage"]
 audience: "Everyone, especially team administrators"

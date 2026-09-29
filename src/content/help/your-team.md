@@ -4,11 +4,11 @@ seoTitle: "Your team, its roles and its clients | hubStudio Help"
 description: "Working alone or in a team, the Admin, Creator, Viewer and Client roles, inviting people, answering requests to join, daily limits, pausing a login, adding clients and giving their people a login, invoice details and the sign-in code."
 excerpt: "A team shares one pool of credits and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
-order: 13
-updated: 2026-09-27
+order: 14
+updated: 2026-09-28
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
-related: ["getting-started", "credits-and-payments", "history", "validation", "client-space", "skills"]
+related: ["getting-started", "credits-and-payments", "history", "assets-library", "validation", "client-space", "skills"]
 shots:
   - file: "/Images/help/your-team-members.webp"
     route: "/team"
@@ -50,8 +50,8 @@ hubStudio has four roles.
 | Role | What they do |
 |---|---|
 | **Admin** | Runs the team: invites people, answers requests to join, chooses each person's role, sets each creator's daily limit, can pause a login, renames the team, adds clients and gives their people a login, buys credits for the team and writes team skills. Admins have no daily limit. |
-| **Creator** | Makes the work: images, videos and posts, paid from the team's credits within the daily limit an admin may set. Can also buy credits of their own. Says which client a piece is made for, and sends work for approval in [Validation](/help/validation). |
-| **Viewer** | Sees the team's work. Creates nothing and spends nothing. |
+| **Creator** | Makes the work: images, videos and posts, paid from the team's credits within the daily limit an admin may set. Can also buy credits of their own. Retouches pictures in the [Image editor](/help/assets-library#the-image-editor), says which client a piece is made for, and sends work for approval in [Validation](/help/validation). |
+| **Viewer** | Sees the team's work, in History and in the Assets Library. Creates nothing and spends nothing. |
 | **Client** | A person at one of the companies the team works for, given a login by an admin. Sees only what was made for their company, in their [Client space](/help/client-space): downloads it, comments on it and approves it. Holds no credits and spends nothing. |
 
 The person who creates a team is its first admin. Your own role is shown in **User Settings**, with a line that says what it allows.

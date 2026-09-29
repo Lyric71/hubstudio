@@ -1,20 +1,20 @@
 ---
 title: "Create an image"
 seoTitle: "Create, edit and upscale images | hubStudio Help"
-description: "Render a picture from a prompt, edit pictures you upload or upscale one, choose the engine and its options, read the price before the run, use Improve with AI, and say which client a picture is made for."
+description: "Render a picture from a prompt, edit pictures you upload or upscale one, choose the engine and its options, read the price before the run, use Improve with AI, retouch a result in the Image editor, and say which client a picture is made for."
 excerpt: "The image studio: three jobs, a choice of engines, every option priced before the run, and each result saved in your History."
 section: "studio"
 order: 3
-updated: 2026-09-27
+updated: 2026-09-28
 appPaths: ["/content/image-generate"]
 audience: "Everyone"
-related: ["explore", "create-a-video", "history", "validation", "your-team", "skills", "credits-and-payments"]
+related: ["explore", "create-a-video", "history", "assets-library", "validation", "your-team", "skills", "credits-and-payments"]
 shots:
   - file: "/Images/help/create-an-image-studio.webp"
     route: "/content/image-generate"
     alt: "The image studio: the Image and Video switch in the dark band, the engine and its price with the three jobs, the prompt box on the left and the empty results panel on the right"
     captured: 2026-09-27
-sources: ["src/pages/content/image-generate.astro", "src/scripts/imageGenerate.ts", "src/pages/api/content/image-generate.ts", "src/lib/image-models.ts", "src/scripts/promptImprove.ts", "src/pages/api/content/prompt-improve.ts", "src/lib/prompt-craft.ts", "src/components/ContentNav.astro", "src/components/ClientPick.astro", "src/scripts/clientPick.ts", "src/scripts/validationRequest.ts"]
+sources: ["src/pages/content/image-generate.astro", "src/scripts/imageGenerate.ts", "src/pages/api/content/image-generate.ts", "src/lib/image-models.ts", "src/scripts/promptImprove.ts", "src/pages/api/content/prompt-improve.ts", "src/lib/prompt-craft.ts", "src/components/ContentNav.astro", "src/components/ClientPick.astro", "src/scripts/clientPick.ts", "src/scripts/validationRequest.ts", "src/scripts/imageEditorLauncher.ts"]
 ---
 
 The image studio renders pictures from your words, rewrites pictures you upload, or re-renders one larger and sharper. Open it from **Image** in the menu, or from a card in [Explore](/help/explore), which opens it already set on that engine.
@@ -113,14 +113,23 @@ A tab shows where its run stands: **Generating** with the seconds elapsed, **Rea
 
 - **Download image** saves the file.
 - **Download clean copy** re-encodes the picture in your browser with all metadata and AI-generation markers removed, under a neutral file name.
-- **Open large** shows the picture full screen.
+- **Open large** shows the picture full screen, with **Edit** in its bar.
+- **Edit** opens the picture in the Image editor. See [Edit a picture](#edit-a-picture).
 - **Send for validation** asks a teammate, or one of the client's people, to approve the picture. The picture already saved in History is attached as version 1, nothing is uploaded again, and the thread opens in a new tab. See [Validation](/help/validation).
 - **Reuse prompt** (or **Reuse settings**) puts the run's prompt and settings back in the form. Nothing runs until you click the button again.
 - **Run again** (or **Retry** on a failed run) starts a new run with the same settings, and bills it again.
 
-A run that returned several pictures shows them side by side, each with its own **Download image**, **Download clean copy** and **Send for validation**.
+A run that returned several pictures shows them side by side, each with its own **Download image**, **Download clean copy**, **Edit** and **Send for validation**.
 
 Close a tab with its ✕. Closing a tab that is still rendering does not cancel the render: it keeps running and is still billed. **Close all** closes every finished tab at once. Your tabs come back when you reload the page, for a day.
+
+## Edit a picture
+
+The engines render what you describe; the Image editor handles the finishing touches that need no new run. Click **Edit** on a ready picture to crop it to the format of a network (square, portrait 4:5, story 9:16, wide, link), adjust its light and colors, apply a look, write a caption, draw an arrow or a box, or place your logo in a corner.
+
+Editing is free and happens in your browser. When you save, the edited copy goes into the [Assets Library](/help/assets-library), next to the render, which stays as it was. You can also download the edited picture without keeping it. See [The Image editor](/help/assets-library#the-image-editor) for every panel.
+
+To change what is in the picture itself (a background, an object, a style), use the **Edit an image** job instead: that is a new, paid run.
 
 ## Where results go
 

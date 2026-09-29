@@ -1,14 +1,14 @@
 ---
 title: "Troubleshooting"
 seoTitle: "Troubleshooting and error messages | hubStudio Help"
-description: "What hubStudio's messages mean and what to do: credits used up, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, clients, validation, posts and connections, and more."
+description: "What hubStudio's messages mean and what to do: credits used up, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, the Assets Library and the Image editor, clients, validation, posts and connections, and more."
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
-order: 18
+order: 19
 updated: 2026-09-28
-appPaths: ["/content/image-generate", "/content/video", "/history", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
+appPaths: ["/content/image-generate", "/content/video", "/history", "/files", "/files/tools/image-editor", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
 audience: "Everyone"
-related: ["credits-and-payments", "create-an-image", "create-a-video", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
+related: ["credits-and-payments", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
 shots: []
 sources: ["src/lib/credits.ts", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
 ---
@@ -78,6 +78,18 @@ A run that fails is never charged. A run that succeeds is charged the price show
 |---|---|---|
 | **Only the person who added this asset can delete it.** | Only the person who made a piece can delete it. | Ask them to delete it. |
 | **The download link could not be made.** | The download could not start. | Try again in a moment. |
+
+## Assets Library and the Image editor
+
+| Message | What it means | What to do |
+|---|---|---|
+| **This folder holds assets added by other people. Only the person who added an asset can delete it.** | A folder can be deleted only when every file inside it is yours. | Ask the people who added the other files to move or delete them, then delete the folder. |
+| **That file is not a picture the editor can open. Try a JPG, PNG or WebP file.** | The file you dropped on Tools is not a picture, or is in a format the editor can't read. | Convert it to JPG, PNG or WebP. |
+| **Your browser cannot open this picture. Try a JPG, PNG or WebP file.** | Your browser can't read this kind of picture. | Convert it to JPG, PNG or WebP. |
+| **That picture could not be opened for editing.** | The picture could not be read from the library. | Close the editor and try again in a moment. |
+| **That picture could not be added.** | The logo or picture you placed over yours could not be read. | Try another file, a PNG or a JPG. |
+| **The picture could not be written. Try a smaller size.** | The picture is too large for your browser to save at that size. | Lower the **Width** or pick 50% under **Size**, then save again. |
+| **Leave the editor?** | You are closing the editor with changes that aren't saved. | **Keep editing**, then **Save**; or **Leave without saving** to drop them. |
 
 ## Signing up and signing in
 

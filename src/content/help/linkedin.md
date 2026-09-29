@@ -4,17 +4,17 @@ seoTitle: "Write, schedule and publish LinkedIn posts | hubStudio Help"
 description: "The LinkedIn module: connect your LinkedIn account, brief and draft a post, add its pictures, say which client it is for, send it for approval, then schedule it or publish it."
 excerpt: "Draft a LinkedIn post with AI or by hand, give it a picture or a carousel, and publish it on your account, now or on schedule."
 section: "social"
-order: 7
-updated: 2026-09-27
+order: 8
+updated: 2026-09-28
 appPaths: ["/social/linkedin/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
-related: ["instagram", "facebook", "tiktok", "x", "validation", "account-and-sign-in", "skills", "history"]
+related: ["instagram", "facebook", "tiktok", "x", "validation", "account-and-sign-in", "skills", "history", "assets-library"]
 shots:
   - file: "/Images/help/linkedin-brief.webp"
     route: "/social/linkedin/posts"
     alt: "The LinkedIn module on a new post: the band with All posts, New post and the four step tiles, and the brief with Format, Emoticons, Language, Model, Draft with AI and Write it myself"
     captured: 2026-09-27
-sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
+sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
 ---
 
 **LinkedIn** in the menu holds your LinkedIn posts, from the first draft to the published post. You write a post with AI or by hand, give it a picture or a carousel, and publish it on your LinkedIn account, now or at a time you pick. Or you post it yourself in LinkedIn's own composer.
@@ -76,10 +76,12 @@ The copy step has one editor, with a working title on top and the copy under it.
 The pictures step starts with the shape, which you can change at any time: text only, one image, or a carousel of 2 to 8 slides. LinkedIn takes no video from hubStudio yet. Then pick one of three ways in:
 
 - **Render with AI** (**Render again** once there's a picture). Write the prompt, or leave it empty to have it written from the post; **Improve with AI** rewrites it for you. Pick the **Engine** and the **Aspect**. The price is on the button before you press.
-- **Pick from the library**: a picture already in your [History](/help/history).
-- **Upload from your computer**. The file is saved in your History and put on the post.
+- **Pick from the library**: a picture already in your [Assets Library](/help/assets-library).
+- **Upload from your computer**. The file is saved in your Assets Library and put on the post.
 
-A picture takes a minute or two. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in History.
+A picture takes a minute or two. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library.
+
+**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor: crop it to **Square** or to **Link** (1.91:1), the shapes LinkedIn shows best, adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
 
 LinkedIn takes JPG, PNG and GIF pictures, not WebP, up to 10 MB each.
 
@@ -147,7 +149,7 @@ A network that can't take the post is grayed out: Instagram needs a picture and 
 
 Each paid step shows its price where you work: on the button before a render, and on the status line after a draft, a new version or a rewrite. These are paid: **Draft with AI**, **Draft again**, **Write another version**, a rewritten passage, **Improve with AI**, and each picture rendered.
 
-These cost nothing: **Write it myself**, typing in the editor, and publishing on LinkedIn, through hubStudio or by hand. Files you upload are kept in History and count toward storage. Every charge is listed in **Credits** > **Usage**.
+These cost nothing: **Write it myself**, typing in the editor, and publishing on LinkedIn, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Editing a picture in the Image editor is free. Every charge is listed in **Credits** > **Usage**.
 
 ## Delete a post
 

@@ -5,10 +5,10 @@ description: "Render a clip from a prompt, open it on a picture of yours, or fee
 excerpt: "The video studio: text to video, image to video and references, priced per second before the render, with every clip saved in your History."
 section: "studio"
 order: 4
-updated: 2026-09-27
+updated: 2026-09-28
 appPaths: ["/content/video"]
 audience: "Everyone"
-related: ["explore", "create-an-image", "history", "validation", "your-team", "skills", "credits-and-payments", "troubleshooting"]
+related: ["explore", "create-an-image", "history", "assets-library", "validation", "your-team", "skills", "credits-and-payments", "troubleshooting"]
 shots:
   - file: "/Images/help/create-a-video-studio.webp"
     route: "/content/video"
@@ -62,11 +62,11 @@ Most engines take more than words. Under **What the render is fed**, pick one of
 
 It is one or the other. An engine given a frame ignores the references, so the form makes you choose rather than letting a paid render drop half of what you attached. Switching tabs removes what the other tab held. **Remove all** clears everything.
 
-To attach a frame, use **Choose from the library** (a file already in your History), **Upload a picture**, or **Paste a link** (the address of a picture already published on a website; it must start with https://). For references, the buttons are **Add pictures**, **Add clips**, **Add sound**, **Upload a file** and **Paste a link**. A counter shows how many pictures, clips and sound files you attached against what the engine takes.
+To attach a frame, use **Choose from the library** (a file already in your Assets Library), **Upload a picture**, or **Paste a link** (the address of a picture already published on a website; it must start with https://). For references, the buttons are **Add pictures**, **Add clips**, **Add sound**, **Upload a file** and **Paste a link**. A counter shows how many pictures, clips and sound files you attached against what the engine takes.
 
 Each engine has its own rules on formats, file size, length and frame size, and the form states them under the block. A file the engine can't use is refused before it is uploaded or paid for, with a sentence that names the rule, for example that a clip runs too long and needs trimming.
 
-Files you upload here are stored like any file of your team, so they appear in [History](/help/history) and count toward storage. When a render succeeds, the files it was fed are billed like a download, because the engine fetches them from storage.
+Files you upload here are stored like any file of your team, so they appear in the [Assets Library](/help/assets-library) and count toward storage. When a render succeeds, the files it was fed are billed like a download, because the engine fetches them from storage.
 
 On some engines, attaching a reference clip lowers the price of the whole render. The price next to the button follows.
 
