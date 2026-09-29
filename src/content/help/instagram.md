@@ -19,7 +19,7 @@ shots:
     clip: "the picture step of a post"
     alt: "The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer"
     captured: 2026-09-28
-sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
+sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
 ---
 
 **Instagram** in the menu holds your Instagram posts, from the first picture to the published post. On Instagram the visual comes first: you render, pick or upload a picture, a carousel or a clip, then write its caption with AI or by hand, and publish it on your account, now or at a time you pick. Or you post it yourself in Instagram.
@@ -61,9 +61,11 @@ Pick the shape first: **One image**, **Carousel** (2 to 8 slides when rendered) 
 
 The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A picture takes a minute or two, a clip a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library. **Render again** makes a new one.
 
-**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor: crop it to **Square**, **Portrait** (4:5) or **Story** (9:16), adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
+**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor, on its **Social** panel set to Instagram: pick **Feed portrait**, **Square**, **Landscape**, **Story** or another placement, crop it or fit it whole over a blurred background, see what Instagram covers and how the profile grid shows it, then click **Apply the format**. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
 
 ![The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer](/Images/help/instagram-picture-edit.webp)
+
+**Edit the clip of a Reel.** The pencil on the clip opens it in the [Video editor](/help/assets-library#the-video-editor), with Instagram's safe zone drawn over it: set it to 9:16, trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. **Save and use it in the post** puts the edited video in place of the clip; the original stays in the Assets Library. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
 
 You don't need to prepare the files: every picture is turned into a JPEG Instagram accepts on the way out, whatever you picked. A Reel is an MP4 or MOV clip of 3 seconds to 15 minutes.
 
@@ -139,7 +141,7 @@ A network that can't take the post is grayed out: TikTok needs a video.
 
 Each paid step shows its price where you work: on the button before a render, and on the status line after a draft, a new version or a rewrite. These are paid: **Write it with AI**, **Write another version**, a rewritten passage, **Improve with AI**, and each render (per picture, or per second of clip).
 
-These cost nothing: writing the caption yourself, typing in the editor, and publishing on Instagram, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Editing a picture in the Image editor is free. Every charge against your balance is listed in **Usage**, under **Credits** in the menu.
+These cost nothing: writing the caption yourself, typing in the editor, and publishing on Instagram, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Editing a picture in the Image editor, or a clip in the Video editor, is free; only the Video editor's fast captions are billed, at the price shown before you start. Every charge against your balance is listed in **Usage**, under **Credits** in the menu.
 
 ## Delete a post
 

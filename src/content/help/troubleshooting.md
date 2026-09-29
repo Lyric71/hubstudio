@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting"
 seoTitle: "Troubleshooting and error messages | hubStudio Help"
-description: "What hubStudio's messages mean and what to do: an empty balance, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, the Assets Library and the Image editor, clients, validation, posts and connections, and more."
+description: "What hubStudio's messages mean and what to do: an empty balance, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, the Assets Library, the Image editor and the Video editor, clients, validation, posts and connections, and more."
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
 order: 19
@@ -10,7 +10,7 @@ appPaths: ["/content/image-generate", "/content/video", "/history", "/files", "/
 audience: "Everyone"
 related: ["balance-and-payments", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
 shots: []
-sources: ["src/lib/credits.ts", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
+sources: ["src/lib/credits.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorCaptions.ts", "src/pages/files/tools/video-editor.astro", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
 ---
 
 Find the message you see in the first column. In the messages below, a name in square brackets stands for your own file, engine or amount.
@@ -90,6 +90,18 @@ A run that fails is never charged. A run that succeeds is charged the price show
 | **That picture could not be added.** | The logo or picture you placed over yours could not be read. | Try another file, a PNG or a JPG. |
 | **The picture could not be written. Try a smaller size.** | The picture is too large for your browser to save at that size. | Lower the **Width** or pick 50% under **Size**, then save again. |
 | **Leave the editor?** | You are closing the editor with changes that aren't saved. | **Keep editing**, then **Save**; or **Leave without saving** to drop them. |
+
+## The Video editor
+
+| Message | What it means | What to do |
+|---|---|---|
+| **That file is not a video the editor can open. Try an MP4, MOV or WebM file.** | The file you dropped on Tools is not a video the editor takes. | Use an MP4, MOV or WebM file. |
+| **… is in a format this browser cannot cut (often HEVC from a phone).** | The video was filmed in a format your browser can't cut. | Open it in Chrome or Edge on a recent computer, or save it as H.264 first. |
+| **… is larger than 2 GB, too heavy to edit in a browser.** | The video is over the editor's limit. | Trim or compress it before opening it. |
+| **This browser cannot write video files.** | Your browser can't write an MP4. | Use a recent Chrome, Edge or Safari. |
+| **The free speech model could not be downloaded.** | The free captions need to download their model once, and the download failed. | Check your connection and try again, or pick **Fast, billed**. |
+| **These clips carry no sound: there is nothing to caption.** | The clips have no sound track. | Nothing to do: captions need speech. |
+| **Stopped. Nothing was saved.** | You clicked **Stop writing the video**, or left while it was being written. | Click **Save it in the Assets Library** or **Download** again, and keep the tab open until it is done. |
 
 ## Signing up and signing in
 

@@ -1,7 +1,7 @@
 ---
 title: "Account and sign-in"
 seoTitle: "Your account settings and signing in | hubStudio Help"
-description: "The sign-in page in your language, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the engines in your lists, voice input, and how to reset a forgotten password."
+description: "The sign-in page in your language, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the weekly digest of what changed, the engines in your lists, voice input, and how to reset a forgotten password."
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
 order: 17
@@ -29,7 +29,12 @@ shots:
     clip: "the sign-in card, in a browser set to French"
     alt: "The sign-in card as a browser set to French shows it, with English, Français and 中文 under the card and Français picked"
     captured: 2026-09-28
-sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro"]
+  - file: "/Images/help/account-and-sign-in-digest.webp"
+    route: "/settings"
+    clip: "#digest"
+    alt: "The Weekly digest card in Settings: Send me the weekly digest of what's new and Email me when a new AI model is added, both on, the unsubscribe note, See what's new and Manage all your emails"
+    captured: 2026-09-29
+sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro", "src/lib/changelog-digest.ts", "src/pages/api/changelog-digest/cron.ts", "src/lib/email-preferences.ts"]
 ---
 
 Open **User Settings** from the menu under your picture, at the top right of every page. The band at the top of the page shows who is signed in, your role and your team, then three figures: **Available now**, **Spent today** and **Spent this month**. The sections are listed on the left.
@@ -147,6 +152,19 @@ Under **Date and time**, pick your **Time zone** (or **Follow this device**), a 
 ## Home page
 
 Under **Home page**, pick the page you land on when you sign in. You can also click the house button in the top bar on any page to make it your home page. Without a choice of your own, you land on **Explore**.
+
+## Weekly digest
+
+Every Monday, hubStudio can email you what changed in hubStudio during the past week, in plain language: the same entries as **What's new**, at the bottom of every page. A week without changes sends nothing.
+
+Under **Weekly digest**:
+
+- **Send me the weekly digest of what's new**: on, the Monday email comes to you; off, it stops.
+- **Email me when a new AI model is added**: an email when a new engine joins your lists.
+
+Each switch is saved the moment you flip it. Every digest also carries an unsubscribe link, so you can stop it from your inbox without signing in. **See what's new** opens the list of changes, and **Manage all your emails** opens the page where you choose every optional email we send you.
+
+![The Weekly digest card in Settings: Send me the weekly digest of what's new and Email me when a new AI model is added, both on, the unsubscribe note, See what's new and Manage all your emails](/Images/help/account-and-sign-in-digest.webp)
 
 ## My models
 

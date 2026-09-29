@@ -5,10 +5,10 @@ description: "Send an image, a video, a post or a file for approval to a teammat
 excerpt: "Send your work for approval, keep every version and comment on one thread, and let a client approve what was made for them."
 section: "validation"
 order: 13
-updated: 2026-09-27
+updated: 2026-09-29
 appPaths: ["/validation", "/validation/[id]"]
 audience: "Everyone; clients approve what was made for them"
-related: ["linkedin", "instagram", "facebook", "tiktok", "x", "create-an-image", "create-a-video", "your-team", "client-space", "history"]
+related: ["linkedin", "instagram", "facebook", "tiktok", "x", "create-an-image", "create-a-video", "your-team", "client-space", "history", "assets-library"]
 shots:
   - file: "/Images/help/validation-page.webp"
     route: "/validation"
@@ -65,7 +65,7 @@ A **Send for validation** button appears:
 - on a ready tab of the video studio. See [Create a video](/help/create-a-video);
 - on the publishing step of a post, in each network module: [LinkedIn](/help/linkedin#send-it-for-approval), [Instagram](/help/instagram#send-it-for-approval), [Facebook](/help/facebook#send-it-for-approval), [TikTok](/help/tiktok#send-it-for-approval) or [X](/help/x#send-it-for-approval).
 
-The dialog opens already filled in. A picture or a clip already in your History is attached as it is: nothing is uploaded again. A post goes with its copy and a link to each of its pictures in History.
+The dialog opens already filled in. A picture or a clip already in your History is attached as it is: nothing is uploaded again. A post goes with its copy and a link to each of its pictures in the Assets Library, which opens on the picture's folder with its row lit up.
 
 1. Check the **Title**.
 2. Pick the **Validator**: a teammate, or one of a client's people, listed under **Client:** and the client's name.

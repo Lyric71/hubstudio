@@ -62,7 +62,7 @@ The menu on the left holds the studio first, then the networks and Validation, t
 | **Image** | The image studio: text to image, image editing, upscaling. See [Create an image](/help/create-an-image). |
 | **Video** | The video studio. See [Create a video](/help/create-a-video). |
 | **History** | Everything you and your team made. See [History](/help/history). |
-| **Assets Library** | **Assets**: every file of your team, uploads and renders, in folders. **Tools**: the Image editor (crop to each network's format, write, draw, place a logo) and the Image anonymizer. See [Assets Library and its Tools](/help/assets-library). |
+| **Assets Library** | **Assets**: every file of your team, uploads and renders, in folders. **Tools**: the Image editor (frame a picture for X, Instagram or LinkedIn, write, draw, place a logo), the Video editor (Reels and TikToks: 9:16, trims, texts, captions word by word, music) and the Image anonymizer. See [Assets Library and its Tools](/help/assets-library). |
 | **LinkedIn**, **Instagram**, **Facebook**, **TikTok** and **X** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. See [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok) and [X](/help/x). |
 | **Validation** | The work waiting for someone's approval, and what you sent for approval. See [Validation](/help/validation). |
 | **Skills** | **My skills**, **Team skills** (administrators only) and the **Catalog**. See [Skills](/help/skills). |

@@ -18,7 +18,7 @@ shots:
     route: "/social/x/posts"
     alt: "How it goes out on X: Shape, Hashtags, Mentions, Link to share and the switch that puts the link in a follow-up post"
     captured: 2026-09-27
-sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
+sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
 ---
 
 **X** in the menu holds your posts for X, from the first draft to the published post. You write a post or a thread with AI or by hand, give it pictures, and publish it on your X account, now or at a time you pick. Or you post it yourself in X's own composer. A post already out can be updated or deleted from hubStudio.
@@ -92,7 +92,7 @@ The pictures step starts with the shape, which you can change at any time: text 
 
 A picture takes a minute or two. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library.
 
-**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor: crop it to **Wide** (16:9), adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
+**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor, on its **Social** panel set to X: pick **Post, wide** (16:9, shown whole), **Post, square**, **Post, portrait** or **One of two**, crop it or fit it whole over a blurred background, see how X crops it beside other pictures, then click **Apply the format**. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
 
 X takes JPG, PNG, WebP and GIF pictures up to 5 MB each. An animated GIF (up to 15 MB) goes out alone, as the only picture of its post.
 

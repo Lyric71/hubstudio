@@ -50,7 +50,7 @@ hubStudio has four roles.
 | Role | What they do |
 |---|---|
 | **Admin** | Runs the team: invites people, answers requests to join, chooses each person's role, sets each creator's daily limit, can pause a login, renames the team, adds clients and gives their people a login, tops up the team balance and writes team skills. Admins have no daily limit. |
-| **Creator** | Makes the work: images, videos and posts, charged against the team balance within the daily limit an admin may set. Can also top up a balance of their own. Retouches pictures in the [Image editor](/help/assets-library#the-image-editor), says which client a piece is made for, and sends work for approval in [Validation](/help/validation). |
+| **Creator** | Makes the work: images, videos and posts, charged against the team balance within the daily limit an admin may set. Can also top up a balance of their own. Retouches pictures in the [Image editor](/help/assets-library#the-image-editor) and cuts videos in the [Video editor](/help/assets-library#the-video-editor), says which client a piece is made for, and sends work for approval in [Validation](/help/validation). |
 | **Viewer** | Sees the team's work, in History and in the Assets Library. Creates nothing and spends nothing. |
 | **Client** | A person at one of the companies the team works for, given a login by an admin. Sees only what was made for their company, in their [Client space](/help/client-space): downloads it, comments on it and approves it. Holds no balance and spends nothing. |
 

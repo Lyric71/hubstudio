@@ -1,7 +1,7 @@
 ---
 title: "TikTok"
 seoTitle: "Make, schedule and publish TikTok videos | hubStudio Help"
-description: "The TikTok module: connect your TikTok account, start from the video, write its caption, brief a video in depth, say which client it is for, send it for approval, then schedule it or publish it."
+description: "The TikTok module: connect your TikTok account, start from the video, edit it for TikTok in the Video editor, write its caption, brief a video in depth, say which client it is for, send it for approval, then schedule it or publish it."
 excerpt: "Start from the video, add a caption with AI or by hand, or brief a video in depth, and publish it on your TikTok account, now or on schedule."
 section: "social"
 order: 11
@@ -18,7 +18,7 @@ shots:
     route: "/social/tiktok/brief"
     alt: "The Brief tab of TikTok: Title of this piece, Language, The brief, Post type, Video length, Caption style, Call to action, Audience, Register, Must appear and Must not appear"
     captured: 2026-09-29
-sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/TikTokBriefPanel.astro", "src/pages/social/tiktok/brief.astro", "src/scripts/socialContent.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts", "src/lib/tiktok-constraints.ts", "src/pages/api/social-content/draft.ts", "src/lib/social/publishers.ts"]
+sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/TikTokBriefPanel.astro", "src/pages/social/tiktok/brief.astro", "src/scripts/socialContent.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts", "src/lib/tiktok-constraints.ts", "src/pages/api/social-content/draft.ts", "src/lib/social/publishers.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditor.ts"]
 ---
 
 **TikTok** in the menu holds your TikTok videos, from the first clip to the published post. On TikTok a post is a video and the words are its caption: you render, pick or upload the clip, then write its caption with AI or by hand, and publish it on your account, now or at a time you pick. Or you post it yourself on TikTok.
@@ -61,6 +61,8 @@ Pick one of three ways in:
 - **Upload from your computer**. The file is saved in your Assets Library and put on the post.
 
 The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A clip takes a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. **Render again** makes a new one.
+
+**Edit the clip.** Point at the clip of the post and click the pencil under the **×** (its tooltip starts **Edit this clip**). The clip opens in the [Video editor](/help/assets-library#the-video-editor), with TikTok's safe zone drawn over it: set it to 9:16, trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. Then click **Save** and **Save and use it in the post**: the edited video takes the place of the clip in the post, and the original stays in the Assets Library. Editing is free; only the fast captions are billed, at the price shown before you start. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
 
 TikTok takes one MP4, MOV or WEBM clip of 3 seconds to 10 minutes. Your account may allow less: when a clip runs longer than your account can post, the publishing step says so.
 
@@ -105,7 +107,7 @@ The line appears once your team has at least one client. See [Your team](/help/y
 
 ## Send it for approval
 
-On the publishing step, the phone shows the post the way TikTok shows it: the clip full screen, your account name, the caption and the sound line over the bottom of it, and the likes, comments, saves and shares on the right edge. Tap the clip to play it with its sound, tap again to pause, and use the bar along the bottom to jump to any moment. The caption on the phone takes typing, and the labels TikTok adds (**Paid partnership**, **Promotional content**, **Creator labeled as AI-generated**) show under it as you choose them.
+On the publishing step, the phone shows the post the way TikTok shows it: the clip full screen, your account name, the caption and the sound line over the bottom of it, and the likes, comments, saves and shares on the right edge. Tap the clip to play it with its sound, tap again to pause, and use the bar along the bottom to jump to any moment. **Play** under the phone does the same, and reads **Pause** while the clip plays. The caption on the phone takes typing, and the labels TikTok adds (**Paid partnership**, **Promotional content**, **Creator labeled as AI-generated**) show under it as you choose them.
 
 The bar under the phone preview holds **Send for validation**. Name a teammate, or one of the client's people for a post made for a client. See [Validation](/help/validation).
 
@@ -162,7 +164,7 @@ A temporary problem on TikTok's side is retried by itself, three attempts in all
 
 Each paid step shows its price where you work: on the button before a render, and on the status line after a draft, a new version or a rewrite. These are paid: **Write it with AI**, **Draft the post** on the Brief tab, **Write another version**, a rewritten passage, **Improve with AI**, and each clip rendered (per second).
 
-These cost nothing: writing the caption yourself, typing in the editor, and publishing on TikTok, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Every charge against your balance is listed in **Usage**, under **Credits** in the menu.
+These cost nothing: writing the caption yourself, typing in the editor, editing the clip in the Video editor (apart from the fast captions), and publishing on TikTok, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Every charge against your balance is listed in **Usage**, under **Credits** in the menu.
 
 ## Delete a post
 

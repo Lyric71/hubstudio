@@ -14,7 +14,7 @@ shots:
     route: "/social/linkedin/posts"
     alt: "The LinkedIn module on a new post: the band with All posts, New post and the four step tiles, and the brief with Format, Emoticons, Language, Model, Draft with AI and Write it myself"
     captured: 2026-09-27
-sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
+sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
 ---
 
 **LinkedIn** in the menu holds your LinkedIn posts, from the first draft to the published post. You write a post with AI or by hand, give it a picture or a carousel, and publish it on your LinkedIn account, now or at a time you pick. Or you post it yourself in LinkedIn's own composer.
@@ -81,7 +81,7 @@ The pictures step starts with the shape, which you can change at any time: text 
 
 A picture takes a minute or two. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library.
 
-**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor: crop it to **Square** or to **Link** (1.91:1), the shapes LinkedIn shows best, adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
+**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor, on its **Social** panel set to LinkedIn: pick **Post, portrait** (the one that takes the most room on phones), **Post, square** or **Post, landscape**, crop it or fit it whole over a blurred background, then click **Apply the format**. The panel checks the size, the file and the words before you save. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
 
 LinkedIn takes JPG, PNG and GIF pictures, not WebP, up to 10 MB each.
 

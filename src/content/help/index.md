@@ -1,7 +1,7 @@
 ---
 title: "hubStudio Help"
 seoTitle: "hubStudio Help Center"
-description: "Guides for hubStudio: getting started, the Explore gallery, the image and video studios, History, the Assets Library and its Image editor, skills, LinkedIn, Instagram, Facebook, TikTok and X, Validation, teams and their clients, the Client space, your balance and payments, your account and troubleshooting."
+description: "Guides for hubStudio: getting started, the Explore gallery, the image and video studios, History, the Assets Library with its Image editor and Video editor, skills, LinkedIn, Instagram, Facebook, TikTok and X, Validation, teams and their clients, the Client space, your balance and payments, your account and troubleshooting."
 excerpt: "Everything you need to make images, videos and posts with hubStudio, alone or with your team, and to deliver them to your clients."
 section: "home"
 order: 0
@@ -25,7 +25,7 @@ hubStudio makes images and videos with the AI engines of several makers, turns t
 3. [Create an image](/help/create-an-image): text to image, editing and upscaling, choosing an engine, the options, the price line, Improve with AI, several images per run, and Made for.
 4. [Create a video](/help/create-a-video): text to video, image to video, references, duration, resolution or mode, sound, the price per second, rendering time, and Made for.
 5. [History](/help/history): finding, opening, downloading, editing, reusing a prompt, saying which client a piece was made for, deleting, and what storing files costs.
-6. [Assets Library and its Tools](/help/assets-library): every file of the team in folders, finding, tagging and moving them, the Image editor (crop to each network's format, adjust, looks, text, arrows and shapes, a logo, saving a copy or a new version) and the Image anonymizer.
+6. [Assets Library and its Tools](/help/assets-library): every file of the team in folders, finding, tagging and moving them, the Image editor (framing for X, Instagram or LinkedIn, crop, adjust, looks, text, arrows and shapes, a logo, saving a copy or a new version), the Video editor (Reels and TikToks: the 9:16 frame, trims, speed, texts, captions word by word, music, a cover) and the Image anonymizer.
 7. [Skills](/help/skills): the instructions that shape Improve with AI and the drafts of your posts, the Catalog, your own skills and team skills.
 
 ## Publish and get approval
