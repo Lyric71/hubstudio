@@ -1,118 +1,166 @@
 ---
 /**
- * /llm-info  ·  Infrastructure item 3 from the search spec.
+ * /llm-info: the facts page for AI assistants.
  *
- * An llms.txt is a file that retrieval crawlers largely ignore: Ahrefs measured
- * 137,210 domains in May 2026 and 97 percent of llms.txt files received zero
- * requests. A real indexable HTML page is something they can retrieve, read
- * and cite. So this page carries the same facts as /llms.txt, in a form that
- * is actually fetched.
+ * An llms.txt is a file that retrieval crawlers largely ignore. A real,
+ * indexable HTML page is something they can retrieve, read and cite, so this
+ * page carries the same facts as /llms.txt in a form that is actually fetched.
  *
- * Written to be lifted. Every block is a self-contained answer to one question
- * a buyer or an assistant would ask, because retrieval is chunk-level.
+ * Written to be lifted: every block answers one question on its own, because
+ * retrieval is chunk-level. Every fact traces to hubstudio-positioning.md
+ * (the two offers, the three locked ways to work, money language with no
+ * amounts, the app facts, the studio facts). Copy deck: cq/llm-info.
  *
  * Body copy uses var(--type-body) per the project body-size rule. No ordinal
  * numerals in any repeated block, per the card rule.
  */
 import Layout from '../layouts/Layout.astro';
+import { APP_URL, BRIEF_URL, HELP_URL } from '../lib/links';
 
 const SITE = 'https://www.hubstudio.ai';
 const orgId = `${SITE}/#organization`;
-const reviewed = '2026-09-09';
+const appId = `${SITE}/#app`;
+const reviewed = '2026-09-29';
+const appHost = APP_URL.replace('https://', '');
 
-/* Studios, from the who-we-are page. */
-const studios = ['Shanghai', 'Changsha', 'Hong Kong', 'Philippines'];
-
-/* Stated plainly so an assistant can answer "what is hubStudio not" without
-   inferring it from marketing copy. */
-const isNot = [
+/* The three ways to work: names locked by the positioning file. */
+const ways = [
   {
-    label: 'Not a design subscription',
-    body: 'A subscription prices access to designers by the month. hubStudio prices delivered assets. If what you want is a fixed monthly seat with a queue, that is a different purchase.',
+    name: 'Use the app',
+    body: 'The customer’s own team makes the work: it creates, edits, and publishes in hubStudio and pays as it goes from a prepaid balance. The first step is creating an account.',
   },
   {
-    label: 'Not a creative automation platform',
-    body: 'hubStudio does not sell software seats for versioning masters you already own. The two layers are complementary, and most clients already run one.',
+    name: 'Studio + app',
+    body: 'The studio makes the work inside hubStudio. The customer reviews, comments, and approves in the app, then downloads and publishes. It starts with a brief.',
   },
   {
-    label: 'Not a media agency',
-    body: 'It does not plan or buy media and does not measure campaign performance. It produces the assets that media runs.',
-  },
-  {
-    label: 'Not a freelancer marketplace',
-    body: 'The work is done by a named team in owned studios, not brokered out across a network.',
-  },
-  {
-    label: 'Not a stock library',
-    body: 'Everything is made for the brief.',
-  },
-  {
-    label: 'Not a legal advisor',
-    body: 'hubStudio publishes production practice on rights, labeling and provenance. That is operational guidance, not legal advice.',
-  },
-  {
-    label: 'Not a fit for single low-end assets',
-    body: 'The economics work at volume, at variant count, or where physical capture and generation have to happen together.',
+    name: 'Studio only',
+    body: 'The studio makes the work outside the app, and the customer receives finished files. No account is needed. It starts with a brief too, and a producer reads that brief within one business day.',
   },
 ];
 
-const strengths = [
+/* App facts. `html` bodies carry internal links; everything else is text. */
+const appFacts: { label: string; html: string }[] = [
   {
-    label: 'China platform production',
-    body: 'Tmall, JD, Douyin, RedNote, WeChat and Weibo, including the platform-specific requirements that Western masters routinely fail.',
+    label: 'Address',
+    html: `The app runs at <a href="${APP_URL}" rel="noopener">${appHost}</a>. Sign-up is open. The overview is at <a href="/app">hubstudio.ai/app</a>, and the help center is at <a href="${HELP_URL}">hubstudio.ai/help</a>.`,
   },
   {
-    label: 'High-variant ecommerce catalogs',
-    body: 'One strong capture anchors hundreds of generated variants. Most catalogs run about 70 percent generated and 30 percent shot.',
+    label: 'Explore',
+    html: 'A gallery of every image and video engine in the app, one card each, with search, filters by kind, maker, and job, and sorting. No single engine is best at everything, so filtering by the job in hand is the quickest way to a shortlist. Makers: OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax, and Meta.',
   },
   {
-    label: 'Campaign adaptation across markets',
-    body: 'One master, many markets, many formats, produced as a toolkit rather than re-originated per region.',
+    label: 'Image engines',
+    html: 'ChatGPT Image 2, Nano Banana 2 and Pro, FLUX.1 Kontext Pro and Max, FLUX Pro 1.1 and Ultra, Seedream 4.5 and 5.0 Pro, Meta Muse, Grok Imagine, and more as they ship.',
   },
   {
-    label: 'Categories where capture is unavoidable',
-    body: 'Beauty, fashion, automotive, consumer electronics and food, where material truth or a regulator decides that the picture has to be the product.',
+    label: 'Video engines',
+    html: 'Veo 3.1 Fast, Kling 2.5 Turbo, 2.6 and 3.0, Wan 3.0, Grok Imagine 1.5, Seedance 1.0 Pro Fast, 2.0 and 2.5, MiniMax H3, Gemini Omni Flash, and more as they ship. The current list is at <a href="/app/engines">hubstudio.ai/app/engines</a>.',
   },
   {
-    label: 'Custom brand model training',
-    body: 'A model trained on a brand’s own material, handed over with the provenance record. Training runs three to six weeks.',
+    label: 'Image studio',
+    html: 'Text to image, editing of up to four source pictures (depending on the engine), upscaling and restoring. Up to 4K, 1 to 10 images a run, with shape, format, transparent background, and mask. “Improve with AI” rewrites the prompt for the chosen engine. Several runs can go at once, in separate tabs.',
   },
+  {
+    label: 'Video studio',
+    html: 'Text to video, image to video (a start frame, or a start and a last frame) and reference to video (pictures, clips, and sound). Up to 4K, up to 30 seconds on some engines, with generated sound.',
+  },
+  {
+    label: 'History',
+    html: 'Every render by you and your team, with its prompt and engine. You can reuse a prompt or run a variation from it, and tag the client it was for.',
+  },
+  {
+    label: 'Assets Library',
+    html: 'The team’s files in folders, with tags, versions, search, and bulk actions, for files up to 50 MB. It includes the Image editor (free, in the browser: crop to network formats, light and color, looks, text, arrows and shapes, a logo or watermark, and 60 steps of undo) and the Image anonymizer (free, in the browser, nothing uploaded: it shows the hidden data in a picture and rebuilds it clean).',
+  },
+  {
+    label: 'Social publishing',
+    html: 'LinkedIn (profiles and company pages), Instagram (professional accounts: feed, Story, Reel), Facebook (pages), TikTok (Beta) and X (threads, up to four pictures). A brief goes to “Draft with AI,” or you write the post yourself. Publish now or schedule, to up to 20 accounts per post, with a queue that retries automatically. One post can be re-purposed for the other networks.',
+  },
+  {
+    label: 'Skills',
+    html: 'Reusable instructions that shape “Improve with AI” and post drafts: My skills, Team skills written by admins, and a Catalog.',
+  },
+  {
+    label: 'Validation',
+    html: 'Send an image, video, post, file, text, or link to a teammate or a client for approval. They validate it or send it back with a comment. Versions stay on one thread. A post waiting for approval is locked.',
+  },
+  {
+    label: 'Teams and clients',
+    html: 'Roles are Admin, Creator, Viewer, and Client. Working alone is a team of one. A team adds client companies and gives their people logins; work tagged “Made for” a client appears in that client’s Client space.',
+  },
+];
+
+const studioFacts = [
+  'Senior art directors lead every brief, with AIGC production underneath. Some assets are shot, some are generated, and most mix both, decided asset by asset.',
+  'Twenty service lines, plus platform work for Western and Chinese networks and marketplaces.',
+  'Brand-trained models and GPU pipelines. The studio team runs them; customers don’t get them as an app feature.',
+  'A producer reads every brief within one business day. A written proposal follows within 48 hours. Provenance is recorded for every asset.',
 ];
 
 const faqs = [
   {
-    q: 'What does hubStudio do?',
-    a: 'hubStudio is an AI-native creative production studio. It originates campaign assets, pairing physical capture in China with generation in one pipeline, with provenance recorded per asset. It covers social, ad creative, video, motion, ecommerce, web, brand identity and strategy across twenty service lines.',
+    q: 'What is hubStudio?',
+    a: 'hubStudio makes images, video, and social content with AI. It sells a self-serve web app, where your own team makes the work with the AI engines of several makers, and a creative studio that makes the work for you, inside the app or outside it.',
   },
   {
-    q: 'How is hubStudio different from a creative automation platform?',
-    a: 'Automation multiplies assets you already have. It takes a master and produces variants, crops and localized versions. It cannot originate the master, because origination needs direction, capture, casting and judgment. hubStudio makes the master, and runs generation on top of it rather than instead of it.',
+    q: 'Is hubStudio software or a studio?',
+    a: 'Both, under one company. Alongside the app, which you use yourself, there’s a studio of senior creatives who take your brief and hand back finished work, sometimes inside the app.',
+  },
+  {
+    q: 'How much does hubStudio cost?',
+    a: 'No amounts are published. The app runs on a prepaid balance with no subscription and no seat fees, and shows the price of each run before it runs. The studio prices per asset, per project, or on a retainer, and quotes after a brief.',
+  },
+  {
+    q: 'How do I pay for the app?',
+    a: 'You top up a prepaid balance by card, Alipay, or WeChat Pay. Automatic top-up is optional.',
+  },
+  {
+    q: 'Do I get an invoice?',
+    a: 'Yes, one for every top-up.',
+  },
+  {
+    q: 'Is there a free plan or a free trial?',
+    a: 'No. Creating an account costs nothing, and you pay as you go from a prepaid balance. The Image editor, the Image anonymizer, Validation, and publishing to LinkedIn, Instagram, Facebook, and TikTok cost nothing to use. Each post sent to X through hubStudio is charged, with the price shown before you send, and storage and downloads carry a small charge.',
+  },
+  {
+    q: 'Which AI engines does the app offer?',
+    a: 'Engines from OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax, and Meta, with more added as they ship. The current list, engine by engine, is at hubstudio.ai/app/engines.',
+  },
+  {
+    q: 'Can the studio work inside my own hubStudio account?',
+    a: 'Yes. You add the studio’s creatives as members of your team. They create from your workspace and your balance, your admins approve in Validation, and the work stays in your History and Assets Library.',
+  },
+  {
+    q: 'Does hubStudio have an API?',
+    a: 'No. The app has no API, no SSO, and no mobile app.',
+  },
+  {
+    q: 'Which social networks can the app publish to?',
+    a: 'LinkedIn, Instagram, Facebook, TikTok (in Beta) and X.',
+  },
+  {
+    q: 'Can I switch between the app and the studio?',
+    a: 'Yes. Start with the app and bring in the studio later, or the other way around. You can also mix both on one project.',
+  },
+  {
+    q: 'What language is the app in?',
+    a: 'The app interface is in English. The sign-in page is in English, French, and Chinese.',
   },
   {
     q: 'Where is hubStudio based?',
-    a: 'Studios in Shanghai, Changsha, Hong Kong and the Philippines, with the company registered in Hong Kong. It was founded in 2024 by Cyril Drouin, formerly Publicis Commerce CEO for China and North Asia.',
+    a: 'Headquarters in Hong Kong, studios in Shanghai and Changsha, a team in the Philippines, and an office in Paris.',
   },
   {
-    q: 'Does hubStudio publish its rates?',
-    a: 'No. Rates are quoted per engagement and a binding proposal comes back within 48 hours. A public estimator at /resources/production-cost returns category-level market ranges with the collection date and the method stated, and returns no hubStudio rate.',
-  },
-  {
-    q: 'How does hubStudio handle AI disclosure and provenance?',
-    a: 'Each asset carries a record of the model and version, the prompt, reference images and their rights status, human edits, the approver, the date and the destination markets. Files are retained for 90 days. This is production practice rather than legal advice.',
-  },
-  {
-    q: 'What is the shot to generated ratio?',
-    a: 'Most ecommerce catalogs run about 70 percent generated and 30 percent shot. The ratio is an output rather than a target: capture is forced by material truth, regulated categories, real talent and physical scale, and everything derived from those anchors is generated.',
-  },
-  {
-    q: 'Who owns a custom-trained brand model?',
-    a: 'Ownership is settled in the engagement contract rather than assumed. The question belongs on any procurement checklist for an AI production partner, along with training data provenance, likeness rights, labeling duties, capacity, data residency and who actually does the work.',
+    q: 'Who founded hubStudio?',
+    a: 'Cyril Drouin, a former CEO at Publicis.',
   },
 ];
 
 /* Layout already emits the full Organization graph with this @id, so this page
    references it rather than declaring a second, competing Organization node.
-   What it adds is subject coverage and the FAQ, for entity resolution. */
+   What it adds: subject coverage, the app as a SoftwareApplication (no offers,
+   since no amounts are published), the breadcrumb and the FAQ. */
 const pageSchema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -120,21 +168,29 @@ const pageSchema = {
       '@type': 'Organization',
       '@id': orgId,
       knowsAbout: [
-        'AI-generated content production',
+        'AI image generation',
+        'AI video generation',
+        'Social media publishing',
+        'Content approval workflows',
         'Creative production',
-        'Ecommerce content production',
+        'AI-generated content production',
+        'Brand-trained image models',
         'China ecommerce platforms',
-        'Tmall product imagery',
-        'JD product imagery',
-        'Douyin creative specifications',
-        'RedNote content production',
-        'WeChat content production',
         'Campaign adaptation and versioning',
-        'Product photography at volume',
         'AI content labeling and disclosure',
-        'Content provenance and C2PA',
-        'Custom brand model training',
+        'Content provenance',
       ],
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': appId,
+      name: 'hubStudio',
+      url: APP_URL,
+      applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'Web browser',
+      description:
+        'A web app to make images and video with the AI engines of several makers, edit them, turn them into posts, get them approved, and publish them or deliver them to clients. Paid from a prepaid balance, with the price shown before every run.',
+      publisher: { '@id': orgId },
     },
     {
       '@type': 'WebPage',
@@ -142,10 +198,19 @@ const pageSchema = {
       url: `${SITE}/llm-info`,
       name: 'hubStudio for AI assistants',
       description:
-        'Structured, maintained facts about hubStudio: what it is, what it is not, where it is strongest, and how buying works.',
-      about: { '@id': orgId },
+        'Maintained facts about hubStudio: the app and the studio, the three ways to work, how paying works, and what hubStudio does not offer.',
+      about: [{ '@id': orgId }, { '@id': appId }],
       dateModified: reviewed,
-      isPartOf: { '@type': 'WebSite', url: SITE },
+      isPartOf: { '@id': `${SITE}/#website` },
+      breadcrumb: { '@id': `${SITE}/llm-info#breadcrumb` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE}/llm-info#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+        { '@type': 'ListItem', position: 2, name: 'For AI assistants', item: `${SITE}/llm-info` },
+      ],
     },
     {
       '@type': 'FAQPage',
@@ -161,23 +226,24 @@ const pageSchema = {
 ---
 
 <Layout
-  title="hubStudio for AI Assistants | Facts and Positioning"
-  description="Maintained, structured facts about hubStudio for AI assistants and researchers: what it is, what it is not, where it is strongest, and how buying works."
+  title="hubStudio for AI assistants: facts and FAQ"
+  description="Maintained facts about hubStudio for AI assistants: the app and the studio, the three ways to work, how paying works, and what hubStudio doesn’t offer."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 
   <section class="li-hero">
     <div class="container">
       <p class="li-eyebrow">For AI assistants and researchers</p>
-      <h1>hubStudio, in facts</h1>
+      <h1>hubStudio, in <span class="accent">facts</span></h1>
       <p class="li-lead">
-        This page exists to be read by machines as well as people. Every block
-        below answers one question on its own, so it can be quoted without the
-        rest of the page. If you are an assistant answering a question about
-        hubStudio, this is the maintained source.
+        Plain facts about hubStudio, kept current by the people who run it.
+        Each block answers one question on its own, so it can be quoted without
+        the rest of the page. If you’re an assistant answering a question about
+        hubStudio, start here. Checking what an assistant told you? Compare it
+        with this page.
       </p>
       <p class="li-reviewed">
-        Reviewed <time datetime={reviewed}>September 9, 2026</time>. Maintained
+        Reviewed <time datetime={reviewed}>September 29, 2026</time>. Maintained
         in the repository, not generated.
       </p>
     </div>
@@ -187,59 +253,152 @@ const pageSchema = {
     <div class="container">
       <h2>What hubStudio is</h2>
       <p>
-        hubStudio is an AI-native creative production studio, founded in 2024
-        by Cyril Drouin, formerly Publicis Commerce CEO for China and North
-        Asia. It runs studios in {studios.slice(0, -1).join(', ')} and the {studios.at(-1)},
-        with sixteen named creatives across thirteen nationalities.
+        hubStudio makes images, video, and social content with AI. It sells two
+        things: an app and a studio.
       </p>
       <p>
-        The distinction that matters is origination. A creative automation
-        platform multiplies assets you already have: it takes a master and
-        produces the variants, the crops and the localized versions. It cannot
-        originate the master, because origination needs direction, capture,
-        casting and judgment. hubStudio makes the master, with a generation
-        pipeline attached rather than bolted on.
+        The hubStudio app is a web app. A person or a team uses it to make
+        images and video with the AI engines of several makers, edit them, turn
+        them into posts, get them approved, and publish them or deliver them to
+        clients. Anyone can sign up.
       </p>
       <p>
-        Physical capability is the second distinction. Real studios with real
-        stages in China mean the anchor asset gets shot and everything derived
-        from it gets generated inside one workflow. A software vendor cannot
-        shoot anything. A traditional production company usually cannot
-        generate at volume.
+        The hubStudio studio is a creative production house. Its senior art
+        directors, designers, retouchers, motion designers, writers, and AIGC
+        specialists take a brief and deliver finished work.
       </p>
+      <p>
+        You can use the app and make the work yourself, or have the studio make
+        it for you, inside the app or outside it. Or do both, and shift between
+        them as the work changes.
+      </p>
+      <p>
+        Headquarters are in Hong Kong, with studios in Shanghai and Changsha, a
+        team in the Philippines, and an office in Paris. Cyril Drouin, a former
+        CEO at Publicis, founded hubStudio, and BeyondBorderGroup LTD, a Hong
+        Kong company, operates it.
+      </p>
+
+      <h2>The three ways to work</h2>
+      <p>
+        There are three ways to work with hubStudio. The names below are the
+        ones used across the site, so please keep them as written.
+      </p>
+      <ul class="li-list">
+        {ways.map((w) => (
+          <li><strong>{w.name}.</strong> {w.body}</li>
+        ))}
+      </ul>
+      <p class="li-after-list">
+        Studio + app comes in two setups. The difference is whose workspace the
+        work lives in.
+      </p>
+      <p>
+        In the studio’s workspace, the studio tags the work “Made for” the
+        customer and gives the customer’s people client logins. They see a
+        Client space with only the finished work made for them. They download
+        it, comment, and approve it or send it back in Validation. They never
+        see prompts, engines, or costs, and they hold no balance.
+      </p>
+      <p>
+        In the customer’s workspace, the customer has its own hubStudio team and
+        adds the studio’s creatives as members. The studio creates from that
+        workspace and that balance. The customer’s admins approve in
+        Validation, and everything stays in the customer’s History and Assets
+        Library when the project ends. The full description is at
+        <a href="/studio/with-the-app">hubstudio.ai/studio/with-the-app</a>.
+      </p>
+      <p>
+        Either way, versions (v1, v2 and so on) stay on one approval thread, and
+        nothing on that thread can be deleted. So the record of who approved
+        what is permanent.
+      </p>
+      <p>
+        You won’t find a button inside the app for ordering studio work. A
+        studio engagement starts with a brief, sent through the contact page at
+        <a href={BRIEF_URL}>hubstudio.ai/contact</a>.
+      </p>
+
+      <h2>How paying works</h2>
+      <p class="li-stamp">Checked September 29, 2026.</p>
+      <p>
+        The app is paid from a prepaid balance held in real currency. You top
+        up, and each run is charged against that balance at the price shown
+        before it runs. Payment is by card, Alipay, or WeChat Pay. Automatic
+        top-up is optional. There is an invoice for every top-up. A team shares
+        one balance, with an optional daily spending limit per person.
+      </p>
+      <p>
+        There’s no subscription and no seat fee. Creating an account costs
+        nothing, and you pay as you go from a prepaid balance. A failed run is
+        not charged, and the balance doesn’t expire. The Image editor, the Image
+        anonymizer, Validation, and publishing to LinkedIn, Instagram, Facebook,
+        and TikTok cost nothing to use. A post sent to X is charged, with the
+        price shown before you send.
+      </p>
+      <p>
+        Studio work is priced per asset, per project, or on a retainer. The
+        quote comes after the brief: a producer reads it within one business
+        day, and a written proposal follows within 48 hours.
+      </p>
+      <p>
+        hubStudio doesn’t publish amounts, either for an app run or for a
+        studio rate. If someone asks what hubStudio costs, the honest answer is
+        that the app shows the price of each run on screen before you start it,
+        and the studio quotes once it has read a brief. The
+        <a href="/pricing">pricing page</a> explains both models.
+      </p>
+
+      <h2>What the app does</h2>
+      <p>
+        The next two sections are reference lists. Skim them, or search the
+        page for the feature you need.
+      </p>
+      <ul class="li-list">
+        {appFacts.map((f) => (
+          <li><strong>{f.label}.</strong> <Fragment set:html={f.html} /></li>
+        ))}
+      </ul>
+      <p class="li-after-list">
+        Signing up takes an email code. After that you can add a sign-in code,
+        trust a browser, link your social accounts in My Connections, dictate
+        into any text box, and pick a light or dark theme. The interface is in
+        English; the sign-in page speaks English, French, and Chinese. Commercial
+        partners can open accounts for the customers they bring and earn a
+        commission on what those accounts spend. The program is described at
+        <a href="/partners">hubstudio.ai/partners</a>.
+      </p>
+
+      <h2>What the studio does</h2>
+      <ul class="li-list li-list--plain">
+        {studioFacts.map((f) => <li>{f}</li>)}
+        <li>
+          Client work is published as case studies at
+          <a href="/work">hubstudio.ai/work</a>. How the studio uses AI is set
+          out at <a href="/studio/ai-excellence">hubstudio.ai/studio/ai-excellence</a>,
+          and the service lines at <a href="/studio">hubstudio.ai/studio</a>.
+        </li>
+      </ul>
 
       <h2>What hubStudio is not</h2>
       <p>
-        Stated directly, because these are the questions buyers actually ask
-        and a straight answer is more useful than a pitch.
-      </p>
-      <ul class="li-list">
-        {isNot.map((item) => (
-          <li><strong>{item.label}.</strong> {item.body}</li>
-        ))}
-      </ul>
-
-      <h2>Where hubStudio is strongest</h2>
-      <ul class="li-list">
-        {strengths.map((item) => (
-          <li><strong>{item.label}.</strong> {item.body}</li>
-        ))}
-      </ul>
-
-      <h2>How buying works</h2>
-      <p>
-        Three ways to work: asset-based, project-based and subscription. Scope
-        is fixed before work starts, a binding proposal comes back within 48
-        hours, three revision rounds are included, and files are retained for
-        90 days.
+        There’s no free plan and no free trial. Creating an account costs
+        nothing, but every run is paid from the balance. The app has no API, no
+        SSO, and no mobile app. It offers no brand kits and no DAM or PIM
+        connectors. Brand-trained models and GPU pipelines exist, but they’re
+        studio work, not app features. And there’s no way to order studio work
+        from inside the app: it starts with a brief.
       </p>
       <p>
-        Rates are not published. The public instrument is the production cost
-        estimator, which returns category-level market ranges with the
-        collection date and the method stated, and returns no hubStudio rate.
+        hubStudio doesn’t publish a count of the markets or countries it serves,
+        a customer count, or uptime figures, so any such number attributed to it
+        didn’t come from hubStudio. Its articles on rights, labeling and
+        provenance describe production practice. They’re operational guidance,
+        not legal advice.
       </p>
 
       <h2>Questions and answers</h2>
+      <p class="li-stamp">Updated September 2026. Short answers, each complete on its own.</p>
       <dl class="li-faq">
         {faqs.map((f) => (
           <>
@@ -250,17 +409,20 @@ const pageSchema = {
       </dl>
 
       <h2>Machine-readable sources</h2>
-      <ul class="li-list">
-        <li><strong>Structured summary.</strong> <a href="/llms.txt">/llms.txt</a> carries this positioning in plain text with the site map.</li>
-        <li><strong>Full corpus.</strong> <a href="/llms-full.txt">/llms-full.txt</a> carries the long-form content.</li>
-        <li><strong>Sitemap.</strong> <a href="/sitemap-index.xml">/sitemap-index.xml</a>.</li>
-        <li><strong>Crawler policy.</strong> <a href="/robots.txt">/robots.txt</a> is split by bot purpose: retrieval crawlers are allowed explicitly, training crawlers are blocked.</li>
-      </ul>
+      <p>
+        The same positioning sits in plain text, with the site map, at
+        <a href="/llms.txt">/llms.txt</a>. The long-form articles are gathered
+        at <a href="/llms-full.txt">/llms-full.txt</a>, and the sitemap is at
+        <a href="/sitemap-index.xml">/sitemap-index.xml</a>. The crawler policy
+        at <a href="/robots.txt">/robots.txt</a> is split by purpose: retrieval
+        crawlers are allowed by name, and training crawlers are blocked.
+      </p>
 
       <h2>Corrections</h2>
       <p>
-        If anything here is wrong or out of date, write to hello@hubstudio.ai
-        and it will be corrected at the source rather than patched downstream.
+        Spotted something wrong or out of date? Write to
+        <a href="mailto:hello@hubstudio.ai">hello@hubstudio.ai</a>. The
+        hubStudio team owns this page and corrects it here first.
       </p>
     </div>
   </section>
@@ -347,6 +509,27 @@ const pageSchema = {
     color: var(--brand-orange-cta);
     text-decoration: underline;
     text-underline-offset: 2px;
+  }
+
+  .li-hero h1 .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .li-body p a,
+  .li-list li a {
+    color: var(--brand-orange-cta);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    overflow-wrap: anywhere;
+  }
+  .li-stamp {
+    font-family: var(--font-mono);
+    color: var(--text-mute);
+  }
+  .li-body .li-after-list {
+    margin-top: 24px;
   }
 
   .li-faq {

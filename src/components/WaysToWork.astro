@@ -1,0 +1,347 @@
+---
+/**
+ * WaysToWork: the three ways to work with hubStudio, as one band.
+ *
+ * The locked names come from hubstudio-positioning.md: Use the app,
+ * Studio + app, Studio only. Every page that presents the choice renders this
+ * component rather than rewording it, so the offer reads the same everywhere.
+ * No ordinal numerals: the order on the page carries the sequence.
+ *
+ * Self-contained (own container, tokens, type), so it drops into any page.
+ * `tone` picks the band background to contrast with the section above;
+ * `highlight` lifts one card when a page is about that way of working.
+ */
+import { APP_SIGNUP, BRIEF_URL } from '../lib/links';
+
+type Way = 'app' | 'studio-app' | 'studio';
+
+interface Props {
+  tone?: 'cream' | 'white' | 'ink';
+  highlight?: Way;
+  eyebrow?: string;
+  /** Headline pieces: pre + italic accent + post. */
+  pre?: string;
+  accent?: string;
+  post?: string;
+  lead?: string;
+  id?: string;
+}
+
+const {
+  tone = 'white',
+  highlight,
+  eyebrow = 'Three ways to work',
+  pre = 'Make it yourself, or have us ',
+  accent = 'make it',
+  post = '.',
+  lead = 'The app and the studio are one company. Start with either one, mix them on a single project, or move from one to the other when the work changes.',
+  id = 'ways-to-work',
+} = Astro.props;
+
+const ways: {
+  key: Way;
+  tag: string;
+  name: string;
+  body: string;
+  points: string[];
+  cta: { label: string; href: string; external?: boolean };
+  more: { label: string; href: string };
+}[] = [
+  {
+    key: 'app',
+    tag: 'Self-serve',
+    name: 'Use the app',
+    body: 'Your team makes the work in hubStudio. Pick an engine, see the price, run it, then edit, approve, and publish without leaving the app.',
+    points: [
+      'The leading image and video engines in one place',
+      'Pay as you go from a prepaid balance, with no seat fees',
+      'Post to LinkedIn, Instagram, Facebook, TikTok, and X',
+    ],
+    cta: { label: 'Create your account', href: APP_SIGNUP, external: true },
+    more: { label: 'Tour the app', href: '/app' },
+  },
+  {
+    key: 'studio-app',
+    tag: 'Managed',
+    name: 'Studio + app',
+    body: 'Our creatives make the work inside hubStudio. You see it there, comment on it, approve it, and download it. Every version stays on record.',
+    points: [
+      'Senior art directors lead every brief',
+      'Approvals run on one thread, version by version',
+      'We work in our workspace or in yours',
+    ],
+    cta: { label: 'Send a brief', href: `${BRIEF_URL}?way=studio-app` },
+    more: { label: 'How it works', href: '/studio/with-the-app' },
+  },
+  {
+    key: 'studio',
+    tag: 'Full service',
+    name: 'Studio only',
+    body: "Send us a brief and get finished files back. You don't need an account or any software. The studio runs the job from start to finish.",
+    points: [
+      'Twenty service lines under one roof',
+      'A written proposal within 48 hours',
+      'Priced per asset, per project, or on retainer',
+    ],
+    cta: { label: 'Send a brief', href: `${BRIEF_URL}?way=studio` },
+    more: { label: 'Meet the studio', href: '/studio' },
+  },
+];
+---
+
+<section class:list={['wtw', `wtw--${tone}`]} id={id}>
+  <div class="wtw__container">
+    <header class="wtw__head">
+      <span class="wtw__eyebrow">{eyebrow}</span>
+      <h2 class="wtw__title">
+        {pre}<span class="wtw__accent">{accent}</span>{post}
+      </h2>
+      {lead && <p class="wtw__lead">{lead}</p>}
+    </header>
+
+    <div class="wtw__grid">
+      {
+        ways.map((w) => (
+          <article class:list={['wtw__card', w.key === highlight && 'is-hi']} data-way={w.key}>
+            <span class="wtw__tag">
+              <span class="wtw__dot" aria-hidden="true" />
+              {w.tag}
+            </span>
+            <h3 class="wtw__name">{w.name}</h3>
+            <p class="wtw__body">{w.body}</p>
+            <ul class="wtw__points">
+              {w.points.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ul>
+            <div class="wtw__actions">
+              <a
+                class="wtw__btn"
+                href={w.cta.href}
+                {...(w.cta.external ? { rel: 'noopener' } : {})}
+              >
+                {w.cta.label}
+              </a>
+              <a class="wtw__more" href={w.more.href}>
+                {w.more.label} <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .wtw {
+    --wtw-bg: var(--bg-white);
+    --wtw-card: var(--bg-cream);
+    --wtw-text: var(--text-ink);
+    --wtw-mute: var(--text-mute);
+    --wtw-line: var(--line-strong);
+    background: var(--wtw-bg);
+    color: var(--wtw-text);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .wtw--cream {
+    --wtw-bg: var(--bg-cream);
+    --wtw-card: var(--bg-white);
+    --wtw-line: var(--line-hairline);
+  }
+  .wtw--ink {
+    --wtw-bg: var(--bg-ink);
+    --wtw-card: rgba(240, 237, 233, 0.05);
+    --wtw-text: var(--text-on-dark);
+    --wtw-mute: rgba(240, 237, 233, 0.74);
+    --wtw-line: rgba(240, 237, 233, 0.16);
+  }
+  .wtw__container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad-mobile);
+  }
+  @media (min-width: 768px) {
+    .wtw__container {
+      padding-inline: var(--container-pad-desktop);
+    }
+  }
+  .wtw__head {
+    display: grid;
+    gap: 14px;
+    max-width: 760px;
+    margin-bottom: clamp(36px, 5vw, 60px);
+  }
+  .wtw__eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--wtw-mute);
+  }
+  .wtw--ink .wtw__eyebrow {
+    color: var(--brand-orange);
+  }
+  .wtw__title {
+    font-size: var(--type-h2);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: var(--lh-headline);
+  }
+  .wtw__accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .wtw__lead {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--wtw-mute);
+    max-width: 58ch;
+  }
+  .wtw__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 960px) {
+    .wtw__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .wtw__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(28px, 3vw, 38px);
+    background: var(--wtw-card);
+    border: 1px solid var(--wtw-line);
+    border-radius: var(--radius-card);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .wtw__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.12);
+  }
+  /* The highlighted way: the ink card on light bands, the orange card on ink. */
+  .wtw__card.is-hi {
+    background: var(--bg-ink);
+    border-color: var(--bg-ink);
+    color: var(--text-on-dark);
+    --wtw-mute: rgba(240, 237, 233, 0.76);
+  }
+  .wtw--ink .wtw__card.is-hi {
+    background: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+    --wtw-mute: rgba(255, 255, 255, 0.86);
+  }
+  .wtw__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 6px 12px;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.82;
+  }
+  .wtw__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .wtw--ink .wtw__card.is-hi .wtw__dot {
+    background: #fff;
+  }
+  .wtw__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .wtw__body {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--wtw-mute);
+  }
+  .wtw__points {
+    display: grid;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--wtw-line);
+  }
+  .wtw__card.is-hi .wtw__points {
+    border-top-color: rgba(240, 237, 233, 0.2);
+  }
+  .wtw__points li {
+    position: relative;
+    padding-left: 20px;
+    font-size: var(--type-body);
+    line-height: 1.5;
+  }
+  .wtw__points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 10px;
+    height: 2px;
+    background: var(--brand-orange);
+  }
+  .wtw--ink .wtw__card.is-hi .wtw__points li::before {
+    background: #fff;
+  }
+  .wtw__actions {
+    margin-top: auto;
+    padding-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 20px;
+  }
+  .wtw__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 22px;
+    border-radius: var(--radius-pill);
+    background: var(--brand-orange-cta);
+    color: #fff;
+    font-size: var(--type-button);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: transform 120ms ease-out;
+  }
+  .wtw__btn:hover {
+    transform: translateY(-3px);
+  }
+  .wtw--ink .wtw__card.is-hi .wtw__btn {
+    background: #fff;
+    color: var(--brand-orange-cta);
+  }
+  .wtw__more {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .wtw__card.is-hi .wtw__more,
+  .wtw--ink .wtw__more {
+    color: inherit;
+  }
+  .wtw__more span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .wtw__more:hover span {
+    transform: translateX(5px);
+  }
+</style>

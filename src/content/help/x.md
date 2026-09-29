@@ -5,10 +5,10 @@ description: "The X module: connect your X account, brief and draft a post or a 
 excerpt: "Draft a post or a thread for X with AI or by hand, add up to four pictures, and publish it on your account, now or on schedule."
 section: "social"
 order: 12
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/social/x/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
-related: ["linkedin", "instagram", "facebook", "tiktok", "validation", "account-and-sign-in", "skills", "credits-and-payments", "assets-library"]
+related: ["linkedin", "instagram", "facebook", "tiktok", "validation", "account-and-sign-in", "skills", "balance-and-payments", "assets-library"]
 shots:
   - file: "/Images/help/x-brief.webp"
     route: "/social/x/posts"
@@ -159,7 +159,7 @@ A network that can't take the post is grayed out: Instagram needs a picture and 
 
 Each paid step shows its price where you work: on the button before a render, and on the status line after a draft, a new version or a rewrite. These are paid: **Draft with AI**, **Draft again**, **Write another version**, a rewritten passage, **Improve with AI**, each picture rendered, and each post sent to X through hubStudio (the price shows under the buttons before you send).
 
-These cost nothing: **Write it myself**, typing in the editor, and publishing on X by hand. Files you upload are kept in the Assets Library and count toward storage. Editing a picture in the Image editor is free. Every charge is listed in **Credits** > **Usage**.
+These cost nothing: **Write it myself**, typing in the editor, and publishing on X by hand. Files you upload are kept in the Assets Library and count toward storage. Editing a picture in the Image editor is free. Every charge against your balance is listed in **Usage**, under **Credits** in the menu.
 
 ## Delete a post
 

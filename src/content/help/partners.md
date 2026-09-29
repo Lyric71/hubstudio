@@ -5,10 +5,10 @@ description: "What a hubStudio commercial partner sees: creating teams and peopl
 excerpt: "For commercial partners only: create teams and people, invite prospects, and follow your commissions."
 section: "partner"
 order: 18
-updated: 2026-09-27
+updated: 2026-09-29
 appPaths: ["/partner/users", "/partner/invitations", "/partner/commissions"]
 audience: "Commercial partners"
-related: ["getting-started", "your-team", "credits-and-payments"]
+related: ["getting-started", "your-team", "balance-and-payments"]
 shots: []
 sources: ["src/pages/partner/users.astro", "src/pages/partner/invitations.astro", "src/pages/partner/commissions.astro", "src/lib/partners.ts", "src/lib/partner-invites.ts", "src/pages/signup.astro", "src/layouts/Layout.astro", "src/lib/auth.ts", "src/lib/app.ts"]
 ---
@@ -25,7 +25,7 @@ On **Partner** > **Users**, you create the customer accounts you bring.
 2. Type the person's **First name**, **Last name** and **Email**, and pick their **Role**: an admin, or a creator who makes the work. **What each role can do** explains the four roles of hubStudio: Admin, Creator, Viewer and Client.
 3. Click **Create the user**.
 
-Every person belongs to a team. The first person of a new team is its administrator, who runs the team and buys its credits. The person receives a welcome email with a link to choose their password. Viewers, and the logins of the team's clients, are added afterwards by the team's admins on the Team page. See [Your team](/help/your-team).
+Every person belongs to a team. The first person of a new team is its administrator, who runs the team and tops up its balance. The person receives a welcome email with a link to choose their password. Viewers, and the logins of the team's clients, are added afterwards by the team's admins on the Team page. See [Your team](/help/your-team).
 
 Below the form, the table lists your teams and their people, with what each spent this month and to date, what they paid, and your commission.
 
@@ -41,8 +41,8 @@ The page shows how many invitations you can send a day and how many you sent in 
 
 **Partner** > **Commissions** shows what your accounts paid and your share of it. The tiles at the top give **Your rate**, how many teams and users you created, **They paid us** and **You earned**.
 
-Your commission is a share of what your accounts pay: their credit purchases and automatic top-ups, with any refund deducted. It is money in, not usage, so an account that bought credits has already earned you your share before it spends them.
+Your commission is a share of what your accounts pay: their top-ups, manual and automatic, with any refund deducted. It is money in, not usage, so an account that topped up its balance has already earned you your share before it spends it.
 
-An account earns from the day you create it, or the day your prospect opens it through your invitation. The rate in force that day is frozen on the account, so a later change to your terms never rewrites what you already earned. Free credit granted by hubStudio is not a payment and earns no commission.
+An account earns from the day you create it, or the day your prospect opens it through your invitation. The rate in force that day is frozen on the account, so a later change to your terms never rewrites what you already earned. A free amount added by hubStudio is not a payment and earns no commission.
 
 The table **Your accounts** has one line per team and per person, with **Earning since**, **They paid**, **Rate** and **You earned**, and a total at the bottom.

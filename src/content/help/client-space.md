@@ -5,7 +5,7 @@ description: "For the people of a team's clients: signing in, what your Client s
 excerpt: "The team you work with made something for your company. Here is how to find it, download it, comment on it and approve it."
 section: "clients"
 order: 15
-updated: 2026-09-27
+updated: 2026-09-29
 appPaths: ["/client", "/validation", "/validation/[id]", "/settings", "/invite"]
 audience: "Client logins"
 related: ["validation", "account-and-sign-in", "your-team"]
@@ -19,7 +19,7 @@ sources: ["src/pages/client.astro", "src/scripts/clientSpace.ts", "src/pages/api
 
 This article is for you if a team that uses hubStudio works for your company and gave you a login. Your login has the role **Client**. It shows you what the team made for your company, and nothing else of the team's work. You download it, comment on it, and approve it when the team asks you to.
 
-A client login creates nothing and spends nothing. You have no credits and see no prices.
+A client login creates nothing and spends nothing. You have no balance and see no prices.
 
 ## Sign in for the first time
 

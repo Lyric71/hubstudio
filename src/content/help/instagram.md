@@ -5,7 +5,7 @@ description: "The Instagram module: connect your professional account, start fro
 excerpt: "Start from the visual, add a caption with AI or by hand, and publish a feed post, a carousel, a Story or a Reel, now or on schedule."
 section: "social"
 order: 9
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/social/instagram/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "facebook", "tiktok", "x", "validation", "create-an-image", "create-a-video", "history", "assets-library"]
@@ -139,7 +139,7 @@ A network that can't take the post is grayed out: TikTok needs a video.
 
 Each paid step shows its price where you work: on the button before a render, and on the status line after a draft, a new version or a rewrite. These are paid: **Write it with AI**, **Write another version**, a rewritten passage, **Improve with AI**, and each render (per picture, or per second of clip).
 
-These cost nothing: writing the caption yourself, typing in the editor, and publishing on Instagram, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Editing a picture in the Image editor is free. Every charge is listed in **Credits** > **Usage**.
+These cost nothing: writing the caption yourself, typing in the editor, and publishing on Instagram, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Editing a picture in the Image editor is free. Every charge against your balance is listed in **Usage**, under **Credits** in the menu.
 
 ## Delete a post
 

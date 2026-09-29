@@ -3,7 +3,7 @@
  * Email Design  ·  /services/design/email-design
  *
  * Sibling to /services/design/packaging-merch-design and print-design. Same
- * "Pressroom" art direction (crop marks, calibration colour bar, mono figure
+ * "Pressroom" art direction (crop marks, calibration color bar, mono figure
  * labels) since the language of prepress also reads as the language of
  * render-testing: matrix, swatches, proofs. Copy adapted from
  * hubstudio-email-page.md.
@@ -13,6 +13,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Studio samples, each with an invented brand mark spanning the format list
    called out in the source brief. */
@@ -55,7 +58,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip used as a section divider. */
+/* Calibration color bar: a printer's strip used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -92,7 +95,7 @@ const coverage = [
     label: 'Systems & interactive',
     heading: 'The library behind the program.',
     image: '/Images/email-cover-systems.jpg',
-    alt: 'A 27-inch iMac showing an email design system library, a tidy grid of nine reusable modules in muted brand colours.',
+    alt: 'A 27-inch iMac showing an email design system library, a tidy grid of nine reusable modules in muted brand colors.',
     lead: 'Modular components your marketing team can assemble without touching code.',
     body: [
       'Design systems with header variants, hero blocks, product cards, CTA styles, footers and dark-mode tokens, tested across every component and handed over with documentation. Interactive and kinetic builds covering AMP forms, polls, carousels, accordions, hover states and animated frames, with graceful fallbacks for the clients that do not support them.',
@@ -251,6 +254,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/email-design`;
 
@@ -271,7 +277,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Email Design', item: pageUrl },
   ],
 };
@@ -297,7 +303,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Email
           </p>
           <h1 class="hero__title">
@@ -319,7 +325,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See sample work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -374,7 +380,7 @@ const breadcrumbSchema = {
             </p>
             <p class="why__clients r" style="--d:.22s">
               <strong>60.66% of marketing emails still contain critical
-              accessibility issues</strong>. Most failures trace back to colour
+              accessibility issues</strong>. Most failures trace back to color
               contrast, missing alt text and broken heading structure.
               <span class="why__src">Email Markup Consortium, 2025.</span>
             </p>
@@ -702,6 +708,38 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Email stays in the "
+      accent="studio"
+      post="."
+      intro="You won’t find an email builder in the hubStudio app. (If a template tool is what you were after, this page isn’t it.) Our team designs and codes every template, then tests how it renders."
+      columns={[
+        {
+          label: 'Studio only',
+          title: 'How most email jobs run',
+          body: [
+            'You send the brief, and a producer reads it within one business day. Our designers and developers build the templates, test them in the inboxes your list actually opens, and hand over the HTML with the source files. You don’t need an account.',
+          ],
+        },
+        {
+          label: 'Studio + app',
+          title: 'Where the app helps',
+          body: [
+            'If a lot of people sign off on your email, we can run the approvals in hubStudio. Each layout goes to your approvers in Validation as a file or a link. They approve it or send it back with a comment, and every version stays on one thread.',
+          ],
+        },
+      ]}
+      shot={appShots.validation}
+      shotPath="/validation"
+      shotCaption="Validation before the first request: what waits for you, what you sent, and every asset in review."
+      links={[
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio"
+      ways={{ pre: 'Brief us, then approve in the ', accent: 'app', post: ' if you like.' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -714,7 +752,7 @@ const breadcrumbSchema = {
             What brands ask before the first call.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -766,11 +804,12 @@ const breadcrumbSchema = {
           Send us an email job. Inside one week: two layout directions and a
           render test report. No retainer, no commitment. Yours to keep, even
           if you walk.
+          Making hero images or social posts in-house? The hubStudio app handles those, and there’s no fee to sign up.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -785,6 +824,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1004,7 +1054,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

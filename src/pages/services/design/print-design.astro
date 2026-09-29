@@ -3,7 +3,7 @@
  * Print Design  ·  /services/design/print-design
  *
  * Sibling to /services/design/packaging-merch-design. Same "Pressroom"
- * art direction (crop marks, calibration colour bar, mono figure labels,
+ * art direction (crop marks, calibration color bar, mono figure labels,
  * dieline rules) since the language of prepress is the literal subject of
  * this page. Copy adapted from print-design-page.md.
  *
@@ -13,6 +13,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Studio samples, each with an invented brand mark spanning the format
    list called out in the source brief. */
@@ -55,7 +58,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip used as a section divider. */
+/* Calibration color bar: a printer's strip used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -139,7 +142,7 @@ const processSteps = [
     title: 'Refinement and prepress.',
     body: 'Typography, master pages, color management, dielines, ink coverage, preflight on the final PDF.',
     image: '/Images/print-p4-prepress.jpg',
-    alt: 'A printer’s hands inspecting a press sheet at a lightbox with a loupe, crop marks and a colour bar at the edge.',
+    alt: 'A printer’s hands inspecting a press sheet at a lightbox with a loupe, crop marks and a color bar at the edge.',
   },
   {
     short: 'Adaptation',
@@ -219,6 +222,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/print-design`;
 
@@ -239,7 +245,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Print Design', item: pageUrl },
   ],
 };
@@ -265,7 +271,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Print
           </p>
           <h1 class="hero__title">
@@ -285,7 +291,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See sample work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -483,7 +489,7 @@ const breadcrumbSchema = {
             <div class="crop__inner">
               <img
                 src="/Images/print-pressroom.jpg"
-                alt="A four-colour offset press in mid-run with a freshly printed sheet being lifted at the delivery end."
+                alt="A four-color offset press in mid-run with a freshly printed sheet being lifted at the delivery end."
                 width="1024"
                 height="1024"
                 loading="lazy"
@@ -663,6 +669,38 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Press-ready files come from the "
+      accent="studio"
+      post="."
+      intro="Layout and prepress don’t happen in the hubStudio app. Print runs here, with our designers."
+      columns={[
+        {
+          label: 'Studio only',
+          title: 'How most print jobs run',
+          body: [
+            'A producer reads your brief within one business day. Our designers then set the layouts, run prepress, and hand over press-ready PDFs with the open files. No account needed.',
+          ],
+        },
+        {
+          label: 'Studio + app',
+          title: 'Where the app helps on proofs',
+          body: [
+            'Proof rounds get lost in email threads. We send each layout to your approvers in Validation as a file. They approve it or send it back with a note, and every version stays on a thread nobody can delete.',
+          ],
+        },
+      ]}
+      shot={appShots.validationSend}
+      shotPath="/validation"
+      shotCaption
+      links={[
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio"
+      ways={{ pre: 'Pick how the proofs ', accent: 'travel', post: '.' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -675,7 +713,7 @@ const breadcrumbSchema = {
             What brands ask before the first call.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -726,11 +764,12 @@ const breadcrumbSchema = {
         <p class="end__p r" style="--d:.12s">
           Send us a print job. Inside two weeks: three layout directions and
           a production estimate. Yours to keep, even if you walk.
+          Making social images between print runs? Do it in the hubStudio app; opening an account costs nothing.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -745,6 +784,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -964,7 +1014,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

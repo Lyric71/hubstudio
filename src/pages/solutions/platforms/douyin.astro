@@ -15,6 +15,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import PlatformAppBand from '../../../components/PlatformAppBand.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../../../lib/links';
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
@@ -245,6 +248,16 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+const SITE = 'https://www.hubstudio.ai';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'Douyin', item: `${SITE}/solutions/platforms/douyin` },
+  ],
+};
 ---
 
 <Layout
@@ -252,6 +265,7 @@ const faqSchema = {
   description="We make Douyin short-form video, Ocean Engine ad creative, livestream and digital-host work in a working studio. One brief, every placement."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -550,6 +564,21 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- APP OR STUDIO -->
+    <PlatformAppBand
+      pre={'Douyin work comes from the '}
+      accent={'studio'}
+      post={'.'}
+      paras={[
+        'Brands ask this early, so here it is up front. The short-form video, Ocean Engine creative, livestream kits and digital hosts on this page are studio work. Your media agency or your local operator puts them live. The hubStudio app does not publish to Douyin. Its TikTok module covers TikTok alone, and it’s still in Beta.',
+        'Your team can still make images and video in the app, then pass them to us to finish or to the people who run your account. We deliver every cut finished and named for its placement.',
+      ]}
+      actions={[
+        { label: 'Send a brief', href: `${BRIEF_URL}?way=studio`, kind: 'primary' },
+        { label: 'What the app makes', href: '/app/create' },
+      ]}
+    />
+
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
@@ -671,6 +700,8 @@ const faqSchema = {
       </div>
     </section>
 
+    <WaysToWork tone="white" highlight="studio" />
+
     <!-- S8 · CLOSE -->
     <section class="end">
       <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
@@ -683,19 +714,20 @@ const faqSchema = {
           Send the Douyin brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          You get a placement-by-placement recommendation, a scope outline, a
-          rough timeline, and a few For You or TopView frames on us, so you can
-          judge the thinking before any budget is on the line.
+          A producer reads your brief within one business day, and the proposal that comes back gives you a recommendation for each placement, plus a scope outline and rough timing. Some teams make their first visuals in the app. Creating an account costs nothing, and you pay only for what you run.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Send the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF_URL}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
         </div>
+        <p class="end__signin r" style="--d:.22s">
+          Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+        </p>
       </div>
       <div class="cbar cbar--end" aria-hidden="true">
         {colourBar.map((c) => <span style={`background:${c}`}></span>)}
@@ -944,6 +976,8 @@ const faqSchema = {
   .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
   .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
   .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .end__signin { font-size: var(--type-small); color: rgba(240, 237, 233, 0.62); }
+  .end__signin a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 </style>
 
 <script>

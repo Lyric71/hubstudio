@@ -1,0 +1,922 @@
+---
+/**
+ * /app/create: Explore, the Image studio, the Video studio, History and Skills.
+ *
+ * Facts come from src/content/help/explore.md, create-an-image.md,
+ * create-a-video.md, history.md and skills.md; button and panel names are
+ * quoted from there. Every picture is a real capture from src/data/app-shots.ts
+ * (History is an empty state and is captioned as one). Money is only ever
+ * "the price is shown before every run, a failed run is never charged": no
+ * amount, no rate.
+ *
+ * Copy: content-quality-us deck, scratchpad cq/app-create/final.md.
+ * No ordinal numerals in any repeated block; the run walkthrough is an <ol>
+ * with its markers suppressed.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import WaysToWork from '../../components/WaysToWork.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP } from '../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+
+const makers = [
+  'OpenAI',
+  'Google',
+  'Black Forest Labs',
+  'ByteDance',
+  'Kling',
+  'Alibaba',
+  'xAI',
+  'MiniMax',
+  'Meta',
+];
+
+const imageJobs = [
+  {
+    name: 'Text to image',
+    text: 'A picture from your description. Write it the way you’d brief a photographer: the subject, the light, the surface, the mood.',
+  },
+  {
+    name: 'Edit an image',
+    text: 'Changes pictures you upload. Swap a background, remove an object, restyle a product shot, or merge references. Some engines take up to four source pictures.',
+  },
+  {
+    name: 'Upscale & restore',
+    text: 'One picture re-rendered larger and sharper, without compression noise and without changing what’s in it.',
+  },
+];
+
+const videoInputs = [
+  {
+    name: 'Text to video',
+    text: 'Nothing attached. Write the scene as a shot. Say what moves and what the camera does.',
+  },
+  {
+    name: 'Image to video',
+    text: 'The clip opens on your picture. Engines that take a start and last frame render the movement between the two.',
+  },
+  {
+    name: 'Reference to video',
+    text: 'Pictures, clips, and sound the engine imitates rather than shows, for a character, a product, a style, or a voice.',
+  },
+];
+
+const runSteps = [
+  {
+    title: 'Pick the job and the engine',
+    text: 'Or click a card in Explore and land on it.',
+  },
+  {
+    title: 'Describe what you want',
+    text: 'Brief a picture the way you’d brief a photographer; for a clip, describe the shot.',
+  },
+  {
+    title: 'Let Improve with AI rewrite the prompt, if you want',
+    text: 'Undo is one click.',
+  },
+  {
+    title: 'Set the options and read the price next to the button',
+    text: 'It moves with each setting you change.',
+  },
+  {
+    title: 'Run it',
+    text: 'The result opens in its own tab, and History keeps a copy. From the tab, download it, edit it, send it for validation, reuse the prompt, or run it again.',
+  },
+];
+
+type Faq = { q: string; a: string; link?: { match: string; href: string } };
+
+const faqs: Faq[] = [
+  {
+    q: 'Which engines can I use?',
+    a: 'Image and video engines from OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax, and Meta. More join as they ship. Explore lists all of them. The engines page sorts them by maker.',
+    link: { match: 'The engines page', href: '/app/engines' },
+  },
+  {
+    q: 'How do I pay for a run?',
+    a: 'From a prepaid balance held in real currency. You top up by card, Alipay, or WeChat Pay, and each run is charged at the price shown before it runs. The price follows your settings: the engine, the quality or resolution, the shape, and the number of pictures, or for a clip the length, resolution, and sound. A failed run is never charged. There’s no subscription and no seat fee, and the balance doesn’t expire. See how pricing works.',
+    link: { match: 'how pricing works', href: '/pricing' },
+  },
+  {
+    q: 'Is there a free plan or a trial?',
+    a: 'No. Creating an account costs nothing, and you pay only for what you run, from a balance you top up yourself. The Image editor is free to use.',
+  },
+  {
+    q: 'Do small fixes need a new run?',
+    a: 'No. Cropping to a network’s format, adjusting light and color, and adding text or a logo all happen in the Image editor, which is free and runs in your browser. Changing what’s in the picture, like a background or an object, is a new run.',
+    link: { match: 'the Image editor', href: '/app/library' },
+  },
+  {
+    q: 'How long can a video be?',
+    a: 'It depends on the engine: from a second or two up to 30 seconds on the longest. The Duration menu shows the steps each engine offers, and the price next to the button follows the length.',
+  },
+  {
+    q: 'Do I lose a render if I close the page?',
+    a: 'No. It’s saved in History the moment it’s done. Closing a tab doesn’t cancel the render, either: it keeps running, it’s still billed, and it lands in History when it finishes.',
+  },
+  {
+    q: 'Can my team see what I make?',
+    a: 'Yes. History shows the whole team’s work, with a filter for your own. Clients see only what was made for them, in their Client space.',
+    link: { match: 'Client space', href: '/app/review' },
+  },
+  {
+    q: 'Is the app in my language?',
+    a: 'The app is in English. The sign-in page speaks English, French, and Chinese.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Create', item: `${SITE}/app/create` },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Create AI images and video in one app | hubStudio"
+  description="Pick an image or video engine from OpenAI, Google, ByteDance, and more, see the price before you run, and keep every render in History."
+  preloadImage={appShots.explore.src}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="cr-hero">
+    <div class="container cr-hero__grid">
+      <div class="cr-hero__copy">
+        <nav class="cr-crumbs" aria-label="Breadcrumb">
+          <a href="/app">The app</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Create</span>
+        </nav>
+        <h1 class="headline h1 cr-hero__title">
+          Make images and video, and see the price before you <span class="accent">run</span>.
+        </h1>
+        <p class="lead cr-hero__lead">
+          Explore lists the image and video engines of OpenAI, Google, ByteDance, Kling, and other
+          makers. You run them in the Image studio or the Video studio. History keeps what comes
+          out, and Skills teach the AI how your team writes a prompt.
+        </p>
+        <div class="cr-hero__cta">
+          <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          <Button variant="secondary" href="/app/engines">See the engines</Button>
+        </div>
+        <p class="cr-note">Every screen on this page is a real capture of the app.</p>
+      </div>
+      <div class="cr-hero__shot">
+        <AppShot shot={appShots.explore} path="/explore" eager caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Explore ===== -->
+  <section class="cr-sheet cr-sheet--white" id="explore">
+    <div class="container">
+      <header class="cr-head">
+        <span class="eyebrow">Explore</span>
+        <h2 class="headline h2 reveal">One card per <span class="accent">engine</span>.</h2>
+      </header>
+      <div class="cr-cols">
+        <div>
+          <p class="cr-p">
+            Explore is where the app opens after you sign in: one card for each engine you can
+            use. Each card says who makes the engine, what it’s good at, and which jobs it can do.
+          </p>
+          <p class="cr-p">
+            Search by name, maker, or use. Narrow the list to images or video, to one maker, or
+            to one job. Sort by featured, by price, or by the newest first. Click a card and its
+            studio opens, already set on that engine.
+          </p>
+        </div>
+        <div>
+          <p class="cr-p">
+            The makers, as of September 2026, are OpenAI, Google, Black Forest Labs, ByteDance,
+            Kling, Alibaba, xAI, MiniMax, and Meta. New engines join as they ship.
+          </p>
+          <ul class="cr-makers" aria-label="Makers in Explore">
+            {
+              makers.map((m) => (
+                <li class="chip cr-maker">
+                  <span class="chip__dot" aria-hidden="true" />
+                  {m}
+                </li>
+              ))
+            }
+          </ul>
+          <a class="cr-arrow" href="/app/engines">
+            See the engines by maker <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Image studio ===== -->
+  <section class="cr-sheet cr-sheet--cream" id="image-studio">
+    <div class="container">
+      <header class="cr-head">
+        <span class="eyebrow">Image studio</span>
+        <h2 class="headline h2 reveal">Pick the job before the <span class="accent">engine</span>.</h2>
+        <p class="cr-p">
+          Open <strong class="cr-ui">Image</strong> from the menu and pick the job first. Engines
+          that can’t do it drop off the list, and the studio moves to the least expensive one that
+          can. Change it if you prefer another.
+        </p>
+      </header>
+
+      <div class="cr-split">
+        <div class="cr-split__shot">
+          <AppShot shot={appShots.imageStudio} path="/content/image-generate" caption />
+        </div>
+        <div class="cr-jobs">
+          {
+            imageJobs.map((j) => (
+              <article class="cr-job reveal">
+                <h3 class="cr-job__name">{j.name}</h3>
+                <p class="cr-job__text">{j.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="cr-cols cr-more">
+        <div>
+          <p class="cr-p">
+            Under <strong class="cr-ui">How it is rendered</strong>, you only see what the engine
+            offers. That can mean quality and resolution up to 4K, a shape from square to panorama,
+            PNG, JPG, or WebP, and a transparent background for a product you’ll drop onto a
+            layout. When you edit, a mask keeps the change inside one area. Some engines return up
+            to ten pictures from one run.
+          </p>
+          <p class="cr-p">
+            Which one to pick? The ChatGPT Image engines follow long written briefs and set legible
+            text inside a picture. Nano Banana 2 is fast and dependable on an existing photo. The
+            FLUX.1 Kontext engines change exactly what you name and leave the rest alone. Seedream
+            renders natively up to 4K, which makes it the pick for a 4K upscale.
+          </p>
+        </div>
+        <div>
+          <p class="cr-p">
+            <strong class="cr-ui">Improve with AI</strong> rewrites your prompt for the engine, the
+            job, and the shape you picked. It won’t touch your settings, though if another engine
+            would suit the brief better, it says so in its notes. <strong class="cr-ui">Undo</strong>
+            puts your own words back.
+          </p>
+          <p class="cr-p">
+            Each run opens its own tab. Start the next one while the first renders.
+          </p>
+          <p class="cr-p">
+            If your team works for clients, creators and admins can use
+            <strong class="cr-ui">Made for</strong>, which tags the run for one of them. That
+            client’s people then find the picture in their Client space, and nothing else of yours.
+          </p>
+          <a class="cr-arrow" href="/app/review">
+            How clients review work <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Video studio ===== -->
+  <section class="cr-sheet cr-sheet--white" id="video-studio">
+    <div class="container">
+      <header class="cr-head">
+        <span class="eyebrow">Video studio</span>
+        <h2 class="headline h2 reveal">Start a clip from words, or from a <span class="accent">picture</span>.</h2>
+        <p class="cr-p">
+          The Video studio renders short clips, and what you attach decides the kind of render.
+        </p>
+      </header>
+
+      <div class="cr-split cr-split--flip">
+        <div class="cr-jobs">
+          {
+            videoInputs.map((v) => (
+              <article class="cr-job cr-job--line reveal">
+                <h3 class="cr-job__name">{v.name}</h3>
+                <p class="cr-job__text">{v.text}</p>
+              </article>
+            ))
+          }
+        </div>
+        <div class="cr-split__shot">
+          <AppShot shot={appShots.videoStudio} path="/content/video" caption />
+        </div>
+      </div>
+
+      <div class="cr-cols cr-more">
+        <aside class="cr-rule">
+          <span class="cr-rule__label">One or the other</span>
+          <p class="cr-p">
+            A frame and references are one or the other. An engine given a frame ignores
+            references, so the form makes you choose before you pay for a render that drops half
+            of what you sent.
+          </p>
+        </aside>
+        <p class="cr-p">
+          Set the duration, the resolution (up to 4K), the shape, and generated sound where the
+          engine offers it. Some engines run to 30 seconds. A clip takes a few minutes, and the
+          <strong class="cr-ui">Activity</strong> button follows it from any page. The form warns
+          you when a long clip risks running out of time. Wan 3.0 and MiniMax H3 are among the
+          slower engines, so keep their clips short.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How a run works ===== -->
+  <section class="cr-sheet cr-sheet--ink grain" id="how-a-run-works">
+    <div class="container cr-run">
+      <header class="cr-head cr-run__head">
+        <span class="eyebrow cr-eyebrow--dark">A run, start to finish</span>
+        <h2 class="headline h2 reveal">What happens when you press <span class="accent">Generate</span>.</h2>
+        <p class="cr-p cr-p--dark">
+          New to briefing an engine? This is the part to read. It’s the same in both studios.
+        </p>
+      </header>
+      <ol class="cr-steps">
+        {
+          runSteps.map((s) => (
+            <li class="cr-step reveal">
+              <span class="cr-step__dot" aria-hidden="true" />
+              <h3 class="cr-step__title">{s.title}</h3>
+              <p class="cr-step__text">{s.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="cr-money">
+        The price is shown before every run, and a failed run is never charged.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== History ===== -->
+  <section class="cr-sheet cr-sheet--cream" id="history">
+    <div class="container cr-split cr-split--copy">
+      <div>
+        <header class="cr-head">
+          <span class="eyebrow">History</span>
+          <h2 class="headline h2 reveal">Every render, <span class="accent">kept</span>.</h2>
+        </header>
+        <p class="cr-p">
+          History holds every image and video your team renders, newest first, grouped by day.
+          Each piece keeps its prompt and the engine that made it, and a teammate’s work carries
+          their name. If it was made for a client, the card says which one.
+        </p>
+        <p class="cr-p">
+          A render lands in History the moment it’s done, even if you closed the tab. Filter by
+          images or videos, by your work or the team’s, or search the prompts.
+        </p>
+        <p class="cr-p">
+          <strong class="cr-ui">Use this prompt</strong> opens the studio on the same engine with
+          the prompt already in the box. Change a word and run a variation. On a picture,
+          <strong class="cr-ui">Edit</strong> opens the Image editor, which is free; the edited
+          copy goes to the Assets Library and the render stays as it was.
+        </p>
+        <a class="cr-arrow" href="/app/library">
+          The Assets Library <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+      <div class="cr-split__shot">
+        <AppShot
+          shot={appShots.history}
+          path="/history"
+          caption="History on a new team: nothing made yet, so the page points back to Explore."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section class="cr-sheet cr-sheet--white" id="skills">
+    <div class="container">
+      <header class="cr-head">
+        <span class="eyebrow">Skills</span>
+        <h2 class="headline h2 reveal">Teach the AI your <span class="accent">house style</span>.</h2>
+        <p class="cr-p">
+          Once you’ve typed the same instructions into a prompt for the third time, it’s time for
+          a skill.
+        </p>
+      </header>
+      <div class="cr-cols">
+        <div>
+          <p class="cr-p">
+            A skill is a set of instructions the AI follows, such as a method or your house rules.
+            You write it once, and it applies to every rewrite after that. Skills shape
+            <strong class="cr-ui">Improve with AI</strong> and the drafts in the social modules.
+          </p>
+          <a class="cr-arrow" href="/app/publish">
+            How posts are drafted <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <div>
+          <p class="cr-p">
+            <strong class="cr-ui">My skills</strong> is your own list: the skills you took and the
+            ones you wrote. <strong class="cr-ui">Team skills</strong> come from your admins and
+            apply to everyone, before each person’s own. The <strong class="cr-ui">Catalog</strong>
+            holds the standard set: e-commerce packshot, lifestyle product scene, consistent
+            character across images, legible text inside an image, camera movement, short vertical
+            video ad, a posting format for each network, and more.
+          </p>
+          <p class="cr-p">
+            Add a skill from the Catalog and you get your own copy to edit. Switch any skill off
+            without deleting it. Keep them short and specific, since the AI reads them in full each
+            time.
+          </p>
+        </div>
+      </div>
+      <div class="cr-duo">
+        <AppShot shot={appShots.skillsCatalog} path="/skills/catalog" caption />
+        <AppShot shot={appShots.mySkills} path="/skills" caption />
+      </div>
+    </div>
+  </section>
+
+  <WaysToWork
+    tone="cream"
+    highlight="app"
+    lead="Rather not run the engines yourself? Our studio makes the same work for you, inside the app or outside it."
+  />
+
+  <!-- ===== FAQ ===== -->
+  <section class="cr-faq" id="faq">
+    <div class="container cr-faq__grid">
+      <header class="cr-faq__head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">Before your first <span class="accent">run</span>.</h2>
+        <p class="cr-updated">Updated September 2026</p>
+      </header>
+      <div class="cr-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="cr-qa">
+              <summary>
+                <h3 class="cr-qa__q">{f.q}</h3>
+                <span class="cr-qa__icon" aria-hidden="true" />
+              </summary>
+              <p class="cr-qa__a">
+                {f.link ? (
+                  <>
+                    {f.a.split(f.link.match)[0]}
+                    <a href={f.link.href}>{f.link.match}</a>
+                    {f.a.split(f.link.match).slice(1).join(f.link.match)}
+                  </>
+                ) : (
+                  f.a
+                )}
+              </p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <DualCta />
+</Layout>
+
+<style>
+  /* ---- Shared ------------------------------------------------ */
+  .cr-p {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .cr-p + .cr-p {
+    margin-top: 18px;
+  }
+  .cr-p--dark {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .cr-ui {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .cr-eyebrow--dark {
+    color: var(--brand-orange);
+  }
+  .headline .accent {
+    color: var(--brand-orange);
+  }
+  .cr-head {
+    display: grid;
+    gap: 14px;
+    max-width: 780px;
+    margin-bottom: clamp(32px, 4vw, 52px);
+  }
+  .cr-head .cr-p {
+    margin-top: 6px;
+  }
+  .cr-cols {
+    display: grid;
+    gap: 18px 56px;
+  }
+  @media (min-width: 900px) {
+    .cr-cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .cr-more {
+    margin-top: clamp(44px, 5vw, 72px);
+  }
+  .cr-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .cr-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .cr-arrow:hover span {
+    transform: translateX(6px);
+  }
+
+  /* Sheet stacking: each section overlaps the one above it. */
+  .cr-sheet {
+    position: relative;
+    margin-top: -48px;
+    padding-block: clamp(88px, 10vw, 150px) clamp(96px, 11vw, 168px);
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+  }
+  .cr-sheet--white {
+    background: var(--bg-white);
+  }
+  .cr-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .cr-sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+
+  /* ---- Hero -------------------------------------------------- */
+  .cr-hero {
+    background: var(--bg-cream);
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(96px, 10vw, 150px);
+  }
+  .cr-hero__grid {
+    display: grid;
+    gap: clamp(44px, 6vw, 72px);
+  }
+  @media (min-width: 1080px) {
+    .cr-hero__grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+    }
+  }
+  .cr-crumbs {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .cr-crumbs a:hover {
+    color: var(--brand-orange);
+  }
+  .cr-hero__title {
+    margin-top: 18px;
+    max-width: 16ch;
+    font-size: clamp(44px, 5.4vw, 76px);
+    letter-spacing: -0.035em;
+  }
+  .cr-hero__lead {
+    margin-top: 24px;
+    max-width: 52ch;
+  }
+  .cr-hero__cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cr-note {
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--text-mute);
+  }
+
+  /* ---- Explore ----------------------------------------------- */
+  .cr-makers {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cr-maker {
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    color: var(--text-ink);
+  }
+  .cr-maker .chip__dot {
+    background: var(--brand-orange);
+  }
+
+  /* ---- Split: a capture beside a stack of cards --------------- */
+  .cr-split {
+    display: grid;
+    gap: clamp(32px, 4vw, 56px);
+  }
+  @media (min-width: 1000px) {
+    .cr-split {
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+    }
+    .cr-split--flip {
+      grid-template-columns: 0.75fr 1.25fr;
+    }
+    .cr-split--copy {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+  }
+  .cr-jobs {
+    display: grid;
+    gap: 14px;
+  }
+  .cr-job {
+    padding: clamp(22px, 2.4vw, 30px);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  /* Video inputs: a lighter treatment, a rule instead of a card, so the two
+     studio sections don't read as one template twice. */
+  .cr-job--line {
+    padding: 4px 0 18px 22px;
+    background: none;
+    border: none;
+    border-left: 2px solid var(--line-strong);
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .cr-job--line:hover {
+    border-left-color: var(--brand-orange);
+  }
+  .cr-job__name {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .cr-job__text {
+    margin-top: 8px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* ---- Video rule -------------------------------------------- */
+  .cr-rule {
+    padding: clamp(22px, 2.4vw, 30px);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+  .cr-rule__label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+  }
+
+  /* ---- How a run works --------------------------------------- */
+  .cr-run__head .eyebrow {
+    color: var(--brand-orange);
+  }
+  .cr-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    max-width: 860px;
+  }
+  .cr-step {
+    position: relative;
+    display: grid;
+    gap: 6px;
+    padding: 22px 0 22px 40px;
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .cr-step:last-child {
+    border-bottom: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  /* The sequence reads from the order and a thin rail, never from a numeral. */
+  .cr-step::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(240, 237, 233, 0.16);
+  }
+  .cr-step__dot {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg-ink);
+    border: 2px solid var(--brand-orange);
+  }
+  .cr-step:last-child .cr-step__dot {
+    background: var(--brand-orange);
+  }
+  .cr-step__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    color: var(--text-on-dark);
+  }
+  .cr-step__text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.74);
+    max-width: 62ch;
+  }
+  .cr-money {
+    margin-top: clamp(32px, 4vw, 48px);
+    display: inline-block;
+    padding: 14px 22px;
+    border: 1px solid rgba(233, 78, 27, 0.5);
+    border-radius: var(--radius-pill);
+    font-size: var(--type-body);
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text-on-dark);
+  }
+
+  /* ---- Skills ------------------------------------------------ */
+  .cr-duo {
+    margin-top: clamp(44px, 5vw, 72px);
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 900px) {
+    .cr-duo {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  /* ---- FAQ --------------------------------------------------- */
+  .cr-faq {
+    background: var(--bg-white);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .cr-faq__grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 1000px) {
+    .cr-faq__grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .cr-faq__head {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+  }
+  .cr-faq__head {
+    display: grid;
+    gap: 14px;
+  }
+  .cr-updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .cr-qa {
+    border-top: 1px solid var(--line-strong);
+  }
+  .cr-qa:last-child {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .cr-qa summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .cr-qa summary::-webkit-details-marker {
+    display: none;
+  }
+  .cr-qa__q {
+    font-size: clamp(17px, 1.6vw, 21px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+    transition: color 160ms ease-out;
+  }
+  .cr-qa summary:hover .cr-qa__q {
+    color: var(--brand-orange);
+  }
+  .cr-qa__icon {
+    position: relative;
+    flex: none;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+  }
+  .cr-qa__icon::before,
+  .cr-qa__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 1.5px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 200ms ease-out;
+  }
+  .cr-qa__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .cr-qa[open] .cr-qa__icon::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .cr-qa__a {
+    padding-bottom: 24px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+  .cr-qa__a a {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

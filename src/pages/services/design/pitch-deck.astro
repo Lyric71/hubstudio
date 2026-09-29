@@ -4,7 +4,7 @@
  *
  * Mirrors /services/design/packaging-merch-design and
  * /services/design/creative-strategy: same "Pressroom" art direction (crop
- * marks, calibration colour bar, mono figure labels) adapted to pitch-deck
+ * marks, calibration color bar, mono figure labels) adapted to pitch-deck
  * work. Copy from pitch-deck-page.md.
  *
  * The page lives alongside /services/design/presentation-design, which
@@ -17,6 +17,8 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Six invented sample pitch decks, one per category named in the source
    studio-samples list. Each maps to a real engagement pattern: Series B,
@@ -60,7 +62,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -185,7 +187,7 @@ const faqs = [
   },
   {
     q: 'How much does it cost?',
-    a: 'We do not publish a rate card because scope ranges too widely. A single investor deck for a Series A founder is a different engagement than a quarterly board deck system for a growth-stage company with regional variants. We sit in the middle of the market: more than a freelancer on Upwork, less than a Tier-1 agency. We quote firm after the first call once the scope is clear, and we will tell you in the same call whether what you need is something we should be doing or something a template could handle.',
+    a: 'We do not publish a rate card because scope ranges too widely. A single investor deck for a Series A founder is a different engagement than a quarterly board deck system for a growth-stage company with regional variants. We sit in the middle of the market: more than a freelancer, less than a Tier-1 agency. We quote firm after the first call once the scope is clear, and we will tell you in the same call whether what you need is something we should be doing or something a template could handle.',
   },
   {
     q: 'Do you work on project or retainer?',
@@ -252,7 +254,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Pitch Deck', item: pageUrl },
   ],
 };
@@ -278,7 +280,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Pitch Deck Design
           </p>
           <h1 class="hero__title">
@@ -303,7 +305,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See sample work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -515,7 +517,7 @@ const breadcrumbSchema = {
           <figure class="source__inset">
             <img
               src="/Images/pitch-room-inset.jpg"
-              alt="Two hands annotating a printed pitch-deck slide with a red pencil, a colour chip book at the edge of the frame."
+              alt="Two hands annotating a printed pitch-deck slide with a red pencil, a color chip book at the edge of the frame."
               width="1024"
               height="1024"
               loading="lazy"
@@ -533,8 +535,8 @@ const breadcrumbSchema = {
             AI made the slides cheap.<br />The <span class="serif">story</span> is where it is still won.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            Any founder with a credit card can spin up a deck in Gamma in
-            forty minutes. The output looks fine. It also looks like every
+            Any founder with a credit card can spin up a deck in an AI deck
+            tool in forty minutes. The output looks fine. It also looks like every
             other deck the partner read this morning.
           </p>
           <p class="source__p r" style="--d:.16s">
@@ -543,7 +545,7 @@ const breadcrumbSchema = {
             slide that should hold one idea. TAM numbers pulled from a
             research report the founder cannot defend if you ask one
             follow-up. Section headers that read like template fill-ins.
-            Five Gamma layouts on rotation across every deck in the inbox
+            The same five AI-template layouts on rotation across every deck in the inbox
             this week.
           </p>
           <ul class="creds r" style="--d:.22s">
@@ -714,6 +716,29 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <section class="fit">
+      <div class="shell fit__grid fit__grid--solo">
+        <div class="fit__copy">
+          <p class="kicker r"><span class="kicker__tick"></span>App or studio</p>
+          <h2 class="dh r" style="--d:.05s">
+            Investors read the <span class="serif">story</span>.
+          </h2>
+          <p class="fit__p r" style="--d:.10s">
+            They read it first and look at the slides second. Our team finds the story, writes it and designs the deck around it, starting on the first call.
+          </p>
+          <p class="fit__p r" style="--d:.14s">
+            There’s still a job for the app. We can render product shots and scene imagery for the deck in the Image studio. And if your team keeps making visuals after the raise, it can do that in hubStudio itself.
+          </p>
+          <p class="fit__p r" style="--d:.18s">
+            Most founders want files, not another login. That’s the Studio only way: send the deck and the meeting date, and you get a written proposal within 48 hours.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <WaysToWork tone="ink" highlight="studio" pre="Just the files, or the app " accent="too" post="." />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -727,7 +752,7 @@ const breadcrumbSchema = {
             put it in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
           </div>
         </aside>
 
@@ -780,11 +805,12 @@ const breadcrumbSchema = {
           Inside one week you get a story diagnosis, a rewrite plan, and
           two redesigned hero slides. No retainer, no commitment. Whatever
           we produce is yours to keep, even if you walk.
+          For the product visuals that come after the raise, the app is open, and creating an account costs nothing.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -1018,7 +1044,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;
@@ -2014,6 +2040,51 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     align-items: center;
     gap: 14px 26px;
+  }
+  /* ===================== App or studio (S7b) ===================== */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease-out;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+  .fit {
+    background: var(--bg-white);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .fit__grid {
+    display: grid;
+    gap: clamp(40px, 5vw, 72px);
+    align-items: center;
+  }
+  @media (min-width: 1000px) {
+    .fit__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    }
+    .fit__grid--solo {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .fit__copy {
+    display: grid;
+    gap: 20px;
+    max-width: 640px;
+  }
+  .fit__copy .dh {
+    margin-bottom: 6px;
+  }
+  .fit__p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .fit__link {
+    justify-self: start;
+    margin-top: 6px;
   }
 </style>
 

@@ -1,7 +1,7 @@
 /**
  * Contact form endpoint (`POST /api/contact`).
- * Receives the project brief from /contact, sends it to the studio inbox via
- * Resend. Server-rendered on demand (Vercel function), so the rest of the
+ * Receives a studio brief or an app question from /contact, sends it to the
+ * inbox via Resend, with how the sender wants to work in the subject line. Server-rendered on demand (Vercel function), so the rest of the
  * site stays static. JS submits with `Accept: application/json` and reads the
  * JSON reply; a plain form post (no JS) is answered with a 303 to /thank-you.
  */
@@ -12,6 +12,15 @@ export const prerender = false;
 
 const TO = 'cyril.drouin@outlook.com';
 const FROM = 'hubStudio Contact <onboarding@resend.dev>';
+
+/** "How do you want to work?" values from the form, and how the email names them. */
+const WAYS: Record<string, { label: string; subject: string }> = {
+  'studio-app': { label: 'Studio + app', subject: 'New brief (Studio + app)' },
+  studio: { label: 'Studio only', subject: 'New brief (Studio only)' },
+  app: { label: 'The app, I have a question', subject: 'App question' },
+  partner: { label: 'Partner', subject: 'Partner inquiry' },
+  unsure: { label: 'Not sure yet', subject: 'New message (Not sure yet)' },
+};
 
 /** Escape values before they land in the notification email's HTML. */
 function esc(value: string): string {
@@ -57,8 +66,9 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const company = val('company');
   const website = val('website');
   const clientType = val('clientType');
-  const subscription = val('subscription');
-  const budget = val('budget');
+  const way = WAYS[val('way')];
+  const retainer = val('retainer');
+  const scope = val('scope');
   const message = val('message');
   // Access to the gated quotation calculator is granted by hand, so this ask has
   // to be impossible to miss: it rides in the subject line too.
@@ -69,7 +79,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     .filter(Boolean);
 
   if (!firstName || !lastName || !email || !company || !message) {
-    return fail(422, 'Please fill in your name, work email, company, and project details.');
+    return fail(422, 'Please fill in your name, work email, company, and message.');
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return fail(422, 'That email address does not look right.');
@@ -89,16 +99,17 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     ['Work email', email],
     ['Company', company],
     ['Website', website || blank],
+    ['How they want to work', way ? way.label : blank],
     ['Client type', clientType || blank],
     ['Services', services.length ? services.join(', ') : blank],
-    ['Design subscription', subscription || blank],
-    ['Budget', budget || blank],
+    ['Monthly retainer', retainer || blank],
+    ['Size of the work', scope || blank],
     ['Quotation Engine', quotationEngine ? 'Requesting access' : 'No'],
   ];
 
   const html = `
     <div style="font-family:Inter,Arial,sans-serif;color:#0a0a14;max-width:560px">
-      <h2 style="margin:0 0 4px;font-size:18px">New project brief</h2>
+      <h2 style="margin:0 0 4px;font-size:18px">${esc(way ? way.subject : 'New message')}</h2>
       <p style="margin:0 0 18px;color:#6b6b73;font-size:13px">Submitted via hubstudio.ai/contact</p>
       <table style="border-collapse:collapse;width:100%;font-size:14px">
         ${rows
@@ -110,7 +121,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
           )
           .join('')}
       </table>
-      <h3 style="margin:22px 0 6px;font-size:14px">Project</h3>
+      <h3 style="margin:22px 0 6px;font-size:14px">Brief or question</h3>
       <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap">${esc(message)}</p>
     </div>`;
 
@@ -122,7 +133,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       replyTo: email,
       subject: quotationEngine
         ? `Quotation Engine access: ${company} (${firstName} ${lastName})`
-        : `New brief: ${company} (${firstName} ${lastName})`,
+        : `${way ? way.subject : 'New message'}: ${company} (${firstName} ${lastName})`,
       html,
     });
     if (error) {

@@ -1,0 +1,1467 @@
+---
+/**
+ * The studio hub  ·  /studio
+ *
+ * The Studio pillar of the site: what the studio is, the two studio ways to
+ * work (Studio + app, Studio only) inside the shared WaysToWork band, the
+ * twenty service lines grouped six ways (each group carries an anchor id, and
+ * each line links to its /services/design/* page), how a project runs, who
+ * works on it, proof from src/data/case-studies.ts, the platforms we produce
+ * for, an FAQ and the closing DualCta with the studio door first.
+ *
+ * Replaces the old /services index (/services now 301s here). Copy comes from
+ * the content-quality-us deck `studio` (final.md). No ordinal numerals in any
+ * card, step or repeated block; sequence is carried by order alone.
+ */
+import Layout from '../../layouts/Layout.astro';
+import WaysToWork from '../../components/WaysToWork.astro';
+import DualCta from '../../components/DualCta.astro';
+import InsightsLayer from '../../components/InsightsLayer.astro';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+import { caseStudies } from '../../data/case-studies';
+
+type Service = { name: string; href: string; img: string; alt: string; desc: string };
+type Category = { id: string; title: string; blurb: string; intro: string; services: Service[] };
+
+const categories: Category[] = [
+  {
+    id: 'content-social',
+    title: 'Content & Social',
+    blurb: 'The assets that ship every week.',
+    intro:
+      'This is work with a calendar attached. Social posts, ad creative, short video, and email run on the same clock: something has to go out this week, in the right format, for a feed that punishes anything recycled. Brands call us when their team makes good work but not enough of it.',
+    services: [
+      {
+        name: 'Social Media',
+        href: '/services/design/social-media',
+        img: '/Images/sm-hero.jpg',
+        alt: 'A content creator in a sunlit Shanghai loft holding a vertical smartphone close to her face.',
+        desc: 'Posts, carousels, and stories made for each feed.',
+      },
+      {
+        name: 'Ad Creative',
+        href: '/services/design/ad-creative',
+        img: '/Images/ac-hero.jpg',
+        alt: 'Overhead view of a creative workspace with a phone showing a paused vertical-video ad.',
+        desc: 'Ads built in variants, so you can test and keep the winners.',
+      },
+      {
+        name: 'Short Video',
+        href: '/services/design/short-video',
+        img: '/Images/sv-hero.jpg',
+        alt: 'A short-video creator filming on a tripod-mounted phone in a warm-lit Shanghai studio.',
+        desc: 'Vertical video for TikTok, Reels, and Douyin.',
+      },
+      {
+        name: 'Email Design',
+        href: '/services/design/email-design',
+        img: '/Images/emd-p4-build.jpg',
+        alt: 'A laptop showing an HTML email code editor beside a live email preview.',
+        desc: 'Campaigns and lifecycle emails, designed and coded.',
+      },
+    ],
+  },
+  {
+    id: 'video-motion',
+    title: 'Video & Motion',
+    blurb: 'Moving images, long and short.',
+    intro:
+      'Film work, from a scripted brand piece to an ident that has to read in half a second. Much of it is hybrid: a real plate finished with generated elements, or a generated sequence graded like a shoot. A director signs off on every cut.',
+    services: [
+      {
+        name: 'Video Production',
+        href: '/services/design/video-production',
+        img: '/Images/vp-hero.jpg',
+        alt: 'A director of photography behind a cinema camera on a darkened studio set.',
+        desc: 'Script to final cut, shot on set, generated, or both.',
+      },
+      {
+        name: 'Motion Design',
+        href: '/services/design/motion-design',
+        img: '/Images/md-ident.jpg',
+        alt: 'A frosted glass fragrance bottle wrapped in drifting incense smoke under a warm sidelight.',
+        desc: 'Idents, explainers, and motion graphics.',
+      },
+    ],
+  },
+  {
+    id: 'commerce-web',
+    title: 'Commerce & Web',
+    blurb: 'Everything that sells or hosts.',
+    intro:
+      'Content with a conversion rate attached: product visuals, storefronts, site pages, and print. Catalog scale is the usual reason brands call. Think a few hundred products that have to look identical on a marketplace listing and in a paid ad. We set up the rules before we make the pictures.',
+    services: [
+      {
+        name: 'eCommerce',
+        href: '/services/design/ecommerce',
+        img: '/Images/ecom-hero.jpg',
+        alt: 'A single matte white ceramic skincare bottle on a soft warm beige paper backdrop.',
+        desc: 'Product visuals for listings, storefronts, and ads.',
+      },
+      {
+        name: 'Website Design',
+        href: '/services/design/website-design',
+        img: '/Images/wd-hero.jpg',
+        alt: 'A 16-inch laptop on a warm walnut desk in a sunlit studio.',
+        desc: 'Pages designed for every screen size.',
+      },
+      {
+        name: 'Print Design',
+        href: '/services/design/print-design',
+        img: '/Images/print-hero.jpg',
+        alt: 'A hardcover monograph and a bound editorial catalog open on a plaster worktable.',
+        desc: 'Press-ready catalogs, brochures, and editorial.',
+      },
+    ],
+  },
+  {
+    id: 'strategy-direction',
+    title: 'Strategy & Direction',
+    blurb: 'The thinking before the pixels.',
+    intro:
+      'The work that decides what gets made, from where a brand sits in its market down to the frames a film will be built from. Anyone can now produce a thousand variations overnight. Picking the right one, and being able to say why, is the hard part.',
+    services: [
+      {
+        name: 'Marketing Strategy',
+        href: '/services/design/marketing-strategy',
+        img: '/Images/ms-hero.jpg',
+        alt: 'A marketing strategist working at a long oak table in a Shanghai studio.',
+        desc: 'The plan behind the content, market by market.',
+      },
+      {
+        name: 'Creative Strategy',
+        href: '/services/design/creative-strategy',
+        img: '/Images/cs-hero.jpg',
+        alt: 'A strategy wall in a Shanghai studio pinned with a printed positioning statement.',
+        desc: 'One idea that every asset ties back to.',
+      },
+      {
+        name: 'Concept Creation',
+        href: '/services/design/concept-creation',
+        img: '/Images/cc-hero.jpg',
+        alt: 'A creative director reviewing printed campaign key-visual mockups pinned to a wall.',
+        desc: 'The campaign idea, locked before production starts.',
+      },
+      {
+        name: 'Storyboard',
+        href: '/services/design/storyboard',
+        img: '/Images/sb-hero.jpg',
+        alt: 'A senior art director marking a pinned storyboard frame in warm afternoon light.',
+        desc: 'Frames that map a film before the first shot.',
+      },
+    ],
+  },
+  {
+    id: 'brand-identity',
+    title: 'Brand Identity',
+    blurb: 'The system everything else follows.',
+    intro:
+      'Marks, type, color, illustration, and packaging: the rules every other asset inherits. A generative pipeline can turn out a thousand assets that are each fine and together off-brand. A tight system is what keeps high volume on-brand, so we usually build it first.',
+    services: [
+      {
+        name: 'Brand Identity',
+        href: '/services/design/brand-identity',
+        img: '/Images/bi-hero.jpg',
+        alt: 'A printed brand identity board on a warm plaster ledge.',
+        desc: 'Logos, systems, and guidelines built to scale.',
+      },
+      {
+        name: 'Illustration Design',
+        href: '/services/design/illustration-design',
+        img: '/Images/illustration-hero.jpg',
+        alt: 'An illustrator’s worktable with a graphics tablet showing an editorial illustration.',
+        desc: 'Custom illustration drawn in your brand’s style.',
+      },
+      {
+        name: 'Packaging & Merch Design',
+        href: '/services/design/packaging-merch-design',
+        img: '/Images/packaging-merch-aurele.jpg',
+        alt: 'A serum bottle and carton styled as one art-directed shot on a plaster ledge.',
+        desc: 'Packaging and merchandise, from dieline to shelf.',
+      },
+    ],
+  },
+  {
+    id: 'sales-communications',
+    title: 'Sales & Communications',
+    blurb: 'Decks, documents, and news.',
+    intro:
+      'The documents a business is judged on when it isn’t in the room, like the investor deck or the announcement that either gets picked up or doesn’t. Usually the content exists somewhere. What’s missing is the structure and the design.',
+    services: [
+      {
+        name: 'Presentation Design',
+        href: '/services/design/presentation-design',
+        img: '/Images/presentation-design-hero.jpg',
+        alt: 'An open laptop showing a clean deck slide with a minimalist growth chart.',
+        desc: 'Sales and board decks with a clear argument.',
+      },
+      {
+        name: 'Pitch Deck',
+        href: '/services/design/pitch-deck',
+        img: '/Images/pitch-hero.jpg',
+        alt: 'A founder pitching to two investors in a quiet meeting room.',
+        desc: 'Investor and client pitches, story first.',
+      },
+      {
+        name: 'Ebook and Digital Reports',
+        href: '/services/design/ebook-digital-reports',
+        img: '/Images/edr-hero.jpg',
+        alt: 'A hardcover bound annual report lying open on a warm walnut desk.',
+        desc: 'Long-form reports and guides, laid out to be read.',
+      },
+      {
+        name: 'Press Release',
+        href: '/services/design/press-release',
+        img: '/Images/pr-hero.jpg',
+        alt: 'A journalist reading a printed multi-page press release at a sunlit newsroom desk.',
+        desc: 'Announcements written and designed for editors.',
+      },
+    ],
+  },
+];
+
+const facts = [
+  'A producer reads your brief within one business day.',
+  'A written proposal follows within 48 hours.',
+  'The provenance of every asset is recorded.',
+  'Priced per asset, per project, or on retainer.',
+];
+
+/* How a studio project runs. Titled steps, no numerals: order carries it. */
+const steps = [
+  {
+    title: 'Brief',
+    text: 'You tell us what you need, where it will run, and by when. A producer reads it within one business day.',
+  },
+  {
+    title: 'Proposal',
+    text: 'Within 48 hours you get a written proposal with the approach, deliverables, timeline, and price. We price per asset, per project, or on retainer.',
+  },
+  {
+    title: 'Production',
+    text: 'An art director leads. The team shoots, generates, or does both, depending on the asset.',
+  },
+  {
+    title: 'Review',
+    text: 'You comment on the work. With Studio + app, each version goes to your approvers in the app’s Validation.',
+  },
+  {
+    title: 'Delivery',
+    text: 'You get finished files in the formats each channel needs, with the provenance of each asset recorded.',
+  },
+];
+
+const proofSlugs = ['iflytek-anypin', 'mexicash', 'camper', '1834-gin'];
+const proof = proofSlugs
+  .map((slug) => caseStudies.find((c) => c.slug === slug))
+  .filter((c): c is (typeof caseStudies)[number] => Boolean(c));
+
+const platformsWest = [
+  { name: 'Meta', href: '/solutions/platforms/meta' },
+  { name: 'TikTok', href: '/solutions/platforms/tiktok' },
+  { name: 'LinkedIn', href: '/solutions/platforms/linkedin' },
+  { name: 'Amazon', href: '/solutions/platforms/amazon' },
+  { name: 'Shopify', href: '/solutions/platforms/shopify' },
+  { name: 'Brand website', href: '/solutions/platforms/brand-website' },
+  { name: 'Ecommerce website', href: '/solutions/platforms/ecommerce-website' },
+];
+const platformsChina = [
+  { name: 'WeChat', href: '/solutions/platforms/wechat' },
+  { name: 'Douyin', href: '/solutions/platforms/douyin' },
+  { name: 'RedNote', href: '/solutions/platforms/rednote' },
+  { name: 'Weibo', href: '/solutions/platforms/weibo' },
+  { name: 'Tmall', href: '/solutions/platforms/tmall' },
+  { name: 'JD', href: '/solutions/platforms/jd' },
+];
+
+/* FAQ: `a` is plain text for the JSON-LD; `html` adds the in-page links. */
+const faqs: { q: string; a: string; html?: string }[] = [
+  {
+    q: 'How much does a studio project cost?',
+    a: 'It depends on the work, and we quote after reading your brief. There are three ways to price it. Per asset suits a defined list of deliverables. Per project suits a campaign or a launch. A retainer suits content you need every month. The written proposal arrives within 48 hours. We don’t publish rates, but the pricing page explains each model.',
+    html: 'It depends on the work, and we quote after reading your brief. There are three ways to price it. Per asset suits a defined list of deliverables. Per project suits a campaign or a launch. A retainer suits content you need every month. The written proposal arrives within 48 hours. We don’t publish rates, but <a href="/pricing">the pricing page</a> explains each model.',
+  },
+  {
+    q: 'What should a brief include?',
+    a: 'What you need, where it will run, the deadline, and any brand material you have: guidelines, past work, product shots. A short brief is fine. The producer will ask for what’s missing.',
+  },
+  {
+    q: 'Do I need a hubStudio account?',
+    a: 'Not for Studio only: you send a brief and receive files. For Studio + app, your people get client logins in our workspace, or you add our creatives to your own hubStudio team.',
+    html: 'Not for Studio only: you send a brief and receive files. For <a href="/studio/with-the-app">Studio + app</a>, your people get client logins in our workspace, or you add our creatives to your own hubStudio team.',
+  },
+  {
+    q: 'How long does a project take?',
+    a: 'That depends on the scope, and the proposal gives you a date for each deliverable. For a sense of pace, the Mexicash campaign went from brief to five platforms in five days.',
+    html: 'That depends on the scope, and the proposal gives you a date for each deliverable. For a sense of pace, <a href="/work/mexicash">the Mexicash campaign</a> went from brief to five platforms in five days.',
+  },
+  {
+    q: 'Is the work shot or generated?',
+    a: 'Both. We decide asset by asset. Some assets are shot, some are generated, and most mix the two.',
+  },
+  {
+    q: 'What do you record about each asset?',
+    a: 'Its provenance. For every asset we deliver, we record how it was made and what went into it.',
+  },
+  {
+    q: 'Can the studio make content for Chinese platforms?',
+    a: 'Yes. We produce for WeChat, Douyin, RedNote, Weibo, Tmall, and JD. The app doesn’t publish there, so we deliver files ready to post.',
+  },
+  {
+    q: 'Can we move from the studio to the app later?',
+    a: 'Yes. You can start with the studio and make more of the work yourself in the app over time, or go the other way.',
+    html: 'Yes. You can start with the studio and make more of the work yourself <a href="/app">in the app</a> over time, or go the other way.',
+  },
+  {
+    q: 'Do you work with agencies?',
+    a: 'Yes. Agencies brief the studio like any other client. With Studio + app, we can work inside your agency’s own hubStudio team, and your clients can approve the work there with client logins.',
+  },
+];
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/studio`;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: pageUrl },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+/* The studio as a ProfessionalService. No price range, by policy. */
+const studioSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${pageUrl}#studio`,
+  name: 'hubStudio',
+  url: pageUrl,
+  description:
+    'The hubStudio studio: senior art directors and AIGC specialists who make images, video, and social content from a brief, across twenty service lines, inside the hubStudio app or outside it.',
+  image: `${SITE}/Images/studio-hero.webp`,
+  parentOrganization: { '@id': `${SITE}/#organization` },
+  founder: { '@id': `${SITE}/#cyril-drouin` },
+  address: { '@type': 'PostalAddress', addressLocality: 'Hong Kong', addressCountry: 'HK' },
+  areaServed: 'Worldwide',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'hubStudio creative services',
+    itemListElement: categories.map((cat) => ({
+      '@type': 'OfferCatalog',
+      name: cat.title,
+      itemListElement: cat.services.map((svc) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: svc.name,
+          description: svc.desc,
+          url: `${SITE}${svc.href}`,
+          provider: { '@id': `${SITE}/#organization` },
+        },
+      })),
+    })),
+  },
+};
+---
+
+<Layout
+  title="AI creative studio: images, video, social | hubStudio"
+  description="Senior art directors and AIGC specialists make your images, video, and social content across twenty service lines, in the hubStudio app or outside it."
+  image="/Images/studio-hero.webp"
+  preloadImage="/Images/studio-hero.webp"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(studioSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="st-hero">
+    <figure class="st-hero__media">
+      <img
+        src="/Images/studio-hero.webp"
+        alt="Two hubStudio art directors at a wall of pinned proofs; one circles a sneaker print in red pencil beside the notes “crop tighter” and “lift shadows.”"
+        width="2000"
+        height="1333"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </figure>
+    <div class="container st-hero__inner">
+      <div class="st-hero__copy">
+        <nav class="st-crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Studio</span>
+        </nav>
+        <span class="eyebrow st-hero__eyebrow">The studio</span>
+        <h1 class="headline h1 st-hero__title">
+          Send the brief. Our <span class="accent">studio</span> makes the work.
+        </h1>
+        <p class="lead st-hero__lead">
+          Our art directors and AIGC specialists make the images, video, and social content,
+          and hand it back finished. We can work inside the hubStudio app, where you approve
+          each version, or we can leave the app out and just send you the files.
+        </p>
+        <div class="st-hero__cta">
+          <a class="btn btn--primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</a>
+          <a class="btn btn--secondary" href="#services">See the twenty services</a>
+        </div>
+        <p class="st-hero__alt">
+          Prefer to make it yourself? <a href={APP_SIGNUP} rel="noopener">Create your account</a>
+        </p>
+        <ul class="st-hero__meta">
+          <li>Senior art directors on every brief</li>
+          <li>Hong Kong, Shanghai, Changsha, the Philippines, and Paris</li>
+          <li>Founded by Cyril Drouin, former CEO at Publicis</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How the studio works ===== -->
+  <section class="st-sheet st-sheet--white st-how">
+    <div class="container st-how__grid">
+      <div class="st-how__copy">
+        <span class="eyebrow">How we work</span>
+        <h2 class="headline h2 reveal st-how__title">
+          A senior art director on every <span class="accent">brief</span>.
+        </h2>
+        <p class="st-p">
+          Every project is led by a senior art director. Under them, AIGC specialists run the
+          production on brand-trained models and GPU pipelines that the studio team operates
+          itself. We train on the brand because a general model gets a product almost right,
+          and almost right is what a brand manager sends back.
+        </p>
+        <p class="st-p">
+          The first thing most clients ask is whether the work is shot or made with AI.
+          Usually it’s both: some assets are shot, some are generated, and most combine the
+          two. We make that call asset by asset, based on what the picture needs, not on a
+          house style.
+        </p>
+        <p class="st-p">
+          The studio is headquartered in Hong Kong, with studios in Shanghai and Changsha, a
+          team in the Philippines, and an office in Paris. Cyril Drouin, former CEO at
+          Publicis, founded it.
+        </p>
+        <a class="st-arrow" href="/studio/ai-excellence">
+          How we use AI <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+      <aside class="st-facts" aria-label="Studio facts">
+        <span class="eyebrow">What to expect</span>
+        <ul class="st-facts__list">
+          {facts.map((f) => <li>{f}</li>)}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== Ways to work (shared band) ===== -->
+  <div class="st-ways">
+    <WaysToWork tone="cream" highlight="studio-app" />
+  </div>
+
+  <!-- ===== The two studio ways, explained ===== -->
+  <section class="st-sheet st-sheet--white st-two">
+    <div class="container">
+      <header class="st-head">
+        <span class="eyebrow">Two ways to hire us</span>
+        <h2 class="headline h2 reveal">
+          What changes between the two studio <span class="accent">ways</span>
+        </h2>
+        <p class="st-head__lead">
+          Both get you the same studio and the same art directors. The difference is where you
+          see the work and what stays on record.
+        </p>
+      </header>
+      <div class="st-two__grid">
+        <article class="st-way st-way--hi">
+          <span class="st-way__tag"><span class="st-dot" aria-hidden="true"></span>Managed</span>
+          <h3 class="st-way__name">Studio + app</h3>
+          <p class="st-way__text">
+            You see the work in hubStudio, one approval thread per piece. Your people either get
+            client logins in our workspace, or you add our creatives to your own team. Every
+            version, v1, v2, and on, stays on that thread, and nothing on it can be deleted. You
+            see the finished work. Our prompts, engines, and costs stay on our side.
+          </p>
+          <a class="st-arrow" href="/studio/with-the-app">
+            How Studio + app works <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+        <article class="st-way">
+          <span class="st-way__tag"><span class="st-dot" aria-hidden="true"></span>Full service</span>
+          <h3 class="st-way__name">Studio only</h3>
+          <p class="st-way__text">
+            Your producer sends each round for your comments and runs the job from the first
+            call to delivery. Nobody on your side needs an account or has to learn any software.
+            You get finished files in the formats each channel needs.
+          </p>
+          <a class="st-arrow" href={`${BRIEF_URL}?way=studio`}>
+            Send a brief <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Services catalog ===== -->
+  <section class="st-sheet st-sheet--cream st-svc" id="services">
+    <div class="container">
+      <header class="st-head">
+        <span class="eyebrow">Services</span>
+        <h2 class="headline h2 reveal">
+          Twenty service lines, one <span class="accent">studio</span>.
+        </h2>
+        <p class="st-head__lead">
+          The same art directors run every line. A brand identity, its packaging, and next
+          month’s social calendar can all come from one team, and you only brief your brand once.
+        </p>
+        <nav class="st-jump" aria-label="Service groups">
+          {
+            categories.map((cat) => (
+              <a class="st-jump__link" href={`#${cat.id}`}>
+                {cat.title}
+              </a>
+            ))
+          }
+        </nav>
+      </header>
+
+      {
+        categories.map((cat) => (
+          <section class="st-cat" id={cat.id} aria-labelledby={`${cat.id}-title`}>
+            <header class="st-cat__head">
+              <h3 class="st-cat__title" id={`${cat.id}-title`}>
+                {cat.title}
+              </h3>
+              <p class="st-cat__blurb">{cat.blurb}</p>
+              <p class="st-cat__intro">{cat.intro}</p>
+            </header>
+            <div class="st-grid">
+              {cat.services.map((svc) => (
+                <a class="st-card" href={svc.href}>
+                  <div class="st-card__media">
+                    <img src={svc.img} alt={svc.alt} loading="lazy" decoding="async" />
+                  </div>
+                  <div class="st-card__body">
+                    <h4 class="st-card__name">{svc.name}</h4>
+                    <p class="st-card__desc">{svc.desc}</p>
+                    <span class="st-card__cta">
+                      View service <span aria-hidden="true">&rarr;</span>
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+
+      <p class="st-svc__aside">
+        Can’t tell which line fits? Describe the problem in <a href={`${BRIEF_URL}?way=studio`}>your brief</a>.
+        Sorting it into the right service is the producer’s job, not yours.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== How a studio project runs ===== -->
+  <section class="st-sheet st-sheet--ink st-run grain">
+    <div class="container">
+      <header class="st-head st-head--dark">
+        <span class="eyebrow">How it runs</span>
+        <h2 class="headline h2 reveal">From brief to <span class="accent">delivery</span></h2>
+        <p class="st-head__lead">
+          Here is what happens after you send it. A social calendar and an annual report need
+          different people, but the steps are the same.
+        </p>
+      </header>
+      <ul class="st-steps">
+        {
+          steps.map((s, i) => (
+            <li class="st-step reveal" style={`--i:${i}`}>
+              <span class="st-step__mark" aria-hidden="true" />
+              <h3 class="st-step__title">{s.title}</h3>
+              <p class="st-step__text">{s.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Who works on it ===== -->
+  <section class="st-sheet st-sheet--white st-people">
+    <div class="container st-people__grid">
+      <figure class="st-people__figure">
+        <img
+          src="/Team/team-photo.webp"
+          alt="The hubStudio team together on the studio floor."
+          width="1050"
+          height="586"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div class="st-people__copy">
+        <span class="eyebrow">The people</span>
+        <h2 class="headline h2 reveal">Who works on your <span class="accent">brief</span></h2>
+        <p class="st-p">
+          The team mixes senior art directors, designers, retouchers, motion designers, writers,
+          and AIGC specialists. They work from Hong Kong, Shanghai, Changsha, the Philippines,
+          and Paris. One producer stays with your project from brief to delivery, and that’s who
+          you call.
+        </p>
+        <p class="st-p">The team profiles show who they are and what they’ve made.</p>
+        <a class="st-arrow" href="/about/team">Meet the team <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Proof ===== -->
+  <section class="st-sheet st-sheet--cream st-proof">
+    <div class="container">
+      <header class="st-head">
+        <span class="eyebrow">Recent work</span>
+        <h2 class="headline h2 reveal">What the studio has <span class="accent">shipped</span></h2>
+        <p class="st-head__lead">
+          Four projects that show the range. iFlytek mixed a live shoot with CGI and AIGC.
+          Mexicash went from brief to five platforms in five days. Camper adapted a global
+          library for China. 1834 Gin started with no pictures at all.
+        </p>
+      </header>
+      <div class="st-proof__grid">
+        {
+          proof.map((c) => (
+            <a class="st-case" href={`/work/${c.slug}`}>
+              <div class="st-case__media">
+                <img src={c.hero.src} alt={c.hero.alt} loading="lazy" decoding="async" />
+              </div>
+              <div class="st-case__body">
+                <span class="st-case__client">
+                  {c.client} <span aria-hidden="true">·</span> {c.industry}
+                </span>
+                <h3 class="st-case__title">{c.title}</h3>
+                <span class="st-card__cta">
+                  Read the case <span aria-hidden="true">&rarr;</span>
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      <a class="st-arrow st-proof__all" href="/work">See all the work <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- ===== Platforms ===== -->
+  <section class="st-sheet st-sheet--white st-plat">
+    <div class="container st-plat__grid">
+      <div>
+        <span class="eyebrow">Platforms</span>
+        <h2 class="headline h2 reveal">Made for the platforms you <span class="accent">sell</span> on</h2>
+        <p class="st-p">
+          We produce for Western and Chinese networks and marketplaces, in each one’s own formats
+          and ratios.
+        </p>
+        <p class="st-p">
+          The hubStudio app publishes to LinkedIn, Instagram, Facebook, TikTok (in Beta), and X.
+          It doesn’t publish to Chinese platforms. For WeChat, Douyin, RedNote, Weibo, Tmall, and
+          JD, the studio makes the work and delivers files ready to post.
+        </p>
+        <a class="st-arrow" href="/solutions">All solutions <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="st-plat__groups">
+        <div class="st-plat__group">
+          <h3 class="st-plat__label">Western networks, stores, and sites</h3>
+          <ul class="st-chips">
+            {platformsWest.map((p) => <li><a class="st-chip" href={p.href}>{p.name}</a></li>)}
+          </ul>
+        </div>
+        <div class="st-plat__group">
+          <h3 class="st-plat__label">Chinese networks and marketplaces</h3>
+          <ul class="st-chips">
+            {platformsChina.map((p) => <li><a class="st-chip" href={p.href}>{p.name}</a></li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="st-sheet st-sheet--cream st-faq">
+    <div class="container st-faq__inner">
+      <header class="st-head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">Questions about the <span class="accent">studio</span></h2>
+        <p class="st-faq__updated">Updated September 2026</p>
+      </header>
+      <div class="st-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="st-qa">
+              <summary class="st-qa__q">
+                <span>{f.q}</span>
+                <span class="st-qa__sign" aria-hidden="true" />
+              </summary>
+              <div class="st-qa__a">
+                <p set:html={f.html ?? f.a} />
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Further reading (placement `studio` in insight-placements.ts) ===== -->
+  <InsightsLayer placement="studio" tone="white" id="reading" />
+
+  <DualCta lead="studio" />
+</Layout>
+
+<style>
+  /* ---- Sheets: each section overlaps the one above (style guide 3) ---- */
+  .st-sheet {
+    position: relative;
+    margin-top: calc(-1 * clamp(28px, 3.6vw, 60px));
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    padding-block: clamp(88px, 10vw, 150px);
+  }
+  .st-sheet--white {
+    background: var(--bg-white);
+  }
+  .st-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .st-sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+
+  .st-head {
+    display: grid;
+    gap: 14px;
+    max-width: 760px;
+    margin-bottom: clamp(36px, 4vw, 56px);
+  }
+  .st-head__lead {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .st-head--dark .eyebrow {
+    color: var(--brand-orange);
+  }
+  .st-head--dark .headline {
+    color: #fff;
+  }
+  .st-head--dark .st-head__lead {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .st-p {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .st-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .st-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .st-arrow:hover span {
+    transform: translateX(6px);
+  }
+  .st-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* ---- Hero ---------------------------------------------------- */
+  .st-hero {
+    position: relative;
+    padding-bottom: clamp(88px, 10vw, 140px);
+  }
+  .st-hero__media {
+    margin: 0;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+  .st-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 30% 50%;
+  }
+  .st-hero__copy {
+    padding-top: 36px;
+    max-width: 640px;
+  }
+  .st-crumbs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .st-crumbs a:hover {
+    color: var(--brand-orange);
+  }
+  .st-hero__title {
+    margin-top: 14px;
+    letter-spacing: -0.035em;
+  }
+  .st-hero__title .accent {
+    color: var(--brand-orange);
+  }
+  .st-hero__lead {
+    margin-top: 22px;
+    max-width: 52ch;
+  }
+  .st-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .st-hero__alt {
+    margin-top: 16px;
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+  .st-hero__alt a {
+    color: var(--text-ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .st-hero__meta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+  }
+  .st-hero__meta li {
+    position: relative;
+    padding-left: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--text-mute);
+  }
+  .st-hero__meta li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 7px;
+    height: 7px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  /* Wide screens: the picture fills the band and the copy sits in the
+     empty right third of the frame, over the plain studio wall. */
+  @media (min-width: 1000px) {
+    .st-hero {
+      min-height: clamp(640px, 66vw, 900px);
+      display: flex;
+      align-items: center;
+      padding-block: 120px 160px;
+    }
+    .st-hero__media {
+      position: absolute;
+      inset: 0;
+      aspect-ratio: auto;
+    }
+    .st-hero__media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(240, 237, 233, 0) 38%,
+        rgba(240, 237, 233, 0.72) 58%,
+        rgba(240, 237, 233, 0.9) 100%
+      );
+    }
+    .st-hero__inner {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .st-hero__copy {
+      padding-top: 0;
+      max-width: 520px;
+    }
+    .st-hero__title {
+      font-size: clamp(48px, 5vw, 76px);
+    }
+  }
+
+  /* ---- How we work --------------------------------------------- */
+  .st-how__grid {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 960px) {
+    .st-how__grid {
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .st-how__title {
+    margin-top: 14px;
+    max-width: 18ch;
+  }
+  .st-facts {
+    padding: clamp(28px, 3vw, 38px);
+    border-radius: var(--radius-card);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  .st-facts__list {
+    margin-top: 16px;
+    display: grid;
+  }
+  .st-facts__list li {
+    position: relative;
+    padding: 16px 0 16px 22px;
+    border-top: 1px solid var(--line-strong);
+    font-size: var(--type-body);
+    line-height: 1.5;
+  }
+  .st-facts__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 24px;
+    width: 8px;
+    height: 8px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+
+  /* The shared band becomes a sheet too: clipped to the same top radius. */
+  .st-ways {
+    position: relative;
+    margin-top: calc(-1 * clamp(28px, 3.6vw, 60px));
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    overflow: hidden;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+  }
+
+  /* ---- The two studio ways ------------------------------------- */
+  .st-two__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 820px) {
+    .st-two__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .st-way {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(28px, 3.4vw, 44px);
+    border-radius: var(--radius-card);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  .st-way--hi {
+    background: var(--bg-white);
+    border-color: var(--line-hairline);
+    box-shadow: 0 24px 50px -30px rgba(10, 10, 20, 0.35);
+    outline: 2px solid var(--brand-orange);
+    outline-offset: -2px;
+  }
+  .st-way__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+  }
+  .st-way__name {
+    margin-top: 16px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .st-way__text {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+  .st-way .st-arrow {
+    margin-top: auto;
+    padding-top: 22px;
+  }
+
+  /* ---- Services ------------------------------------------------ */
+  .st-jump {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .st-jump__link {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--type-small);
+    font-weight: 500;
+    color: var(--text-ink);
+    transition: color 120ms ease-out, border-color 120ms ease-out;
+  }
+  .st-jump__link:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .st-cat {
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .st-cat + .st-cat {
+    margin-top: clamp(64px, 8vw, 104px);
+  }
+  .st-cat__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 32px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+    margin-bottom: 32px;
+  }
+  .st-cat__title {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(28px, 3.2vw, 44px);
+  }
+  .st-cat__blurb {
+    font-size: var(--type-body);
+    color: var(--text-mute);
+  }
+  .st-cat__intro {
+    margin-top: 12px;
+    max-width: 68ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-ink);
+  }
+  .st-grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 640px) {
+    .st-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .st-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .st-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .st-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.12);
+  }
+  .st-card__media {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--bg-cream);
+  }
+  .st-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms ease-out;
+  }
+  .st-card:hover .st-card__media img {
+    transform: scale(1.04);
+  }
+  .st-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px 24px 24px;
+  }
+  .st-card__name {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .st-card__desc {
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .st-card__cta {
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .st-card__cta span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .st-card:hover .st-card__cta span,
+  .st-case:hover .st-card__cta span {
+    transform: translateX(4px);
+  }
+  .st-svc__aside {
+    margin-top: clamp(48px, 6vw, 72px);
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+    font-size: var(--type-body);
+    line-height: 1.6;
+    max-width: 62ch;
+  }
+  .st-svc__aside a {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+  }
+
+  /* ---- How it runs --------------------------------------------- */
+  .st-run {
+    overflow: hidden;
+  }
+  .st-steps {
+    display: grid;
+    gap: 0;
+  }
+  @media (min-width: 900px) {
+    .st-steps {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 28px;
+    }
+  }
+  .st-step {
+    position: relative;
+    padding: 26px 0;
+    border-top: 1px solid rgba(240, 237, 233, 0.16);
+  }
+  .st-step__mark {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .st-step__title {
+    margin-top: 18px;
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .st-step__text {
+    margin-top: 10px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.78);
+  }
+
+  /* ---- People -------------------------------------------------- */
+  .st-people__grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .st-people__grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 72px;
+    }
+  }
+  .st-people__figure {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: var(--shadow-card);
+  }
+  .st-people__figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .st-people__copy .headline {
+    margin-top: 14px;
+  }
+
+  /* ---- Proof --------------------------------------------------- */
+  .st-proof__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 640px) {
+    .st-proof__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .st-proof__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .st-case {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .st-case:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.12);
+  }
+  .st-case__media {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--bg-cream);
+  }
+  .st-case__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .st-case__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px 22px 24px;
+  }
+  .st-case__client {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .st-case__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .st-proof__all {
+    margin-top: 36px;
+  }
+
+  /* ---- Platforms ----------------------------------------------- */
+  .st-plat__grid {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 960px) {
+    .st-plat__grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 72px;
+      align-items: center;
+    }
+  }
+  .st-plat__grid .headline {
+    margin-top: 14px;
+  }
+  .st-plat__groups {
+    display: grid;
+    gap: 32px;
+  }
+  .st-plat__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .st-chips {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .st-chip {
+    display: inline-flex;
+    padding: 10px 18px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    font-size: var(--type-small);
+    font-weight: 500;
+    transition: color 120ms ease-out, border-color 120ms ease-out;
+  }
+  .st-chip:hover {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+
+  /* ---- FAQ ----------------------------------------------------- */
+  .st-faq__inner {
+    max-width: 880px;
+  }
+  .st-faq__updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+  .st-faq__list {
+    display: grid;
+    gap: 12px;
+  }
+  .st-qa {
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+    background: var(--bg-white);
+    overflow: hidden;
+  }
+  .st-qa[open] {
+    border-color: var(--line-strong);
+  }
+  .st-qa__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 26px;
+    cursor: pointer;
+    font-size: clamp(17px, 1.5vw, 20px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    list-style: none;
+  }
+  .st-qa__q::-webkit-details-marker {
+    display: none;
+  }
+  .st-qa__sign {
+    position: relative;
+    flex: none;
+    width: 20px;
+    height: 20px;
+  }
+  .st-qa__sign::before,
+  .st-qa__sign::after {
+    content: '';
+    position: absolute;
+    background: var(--brand-orange);
+    border-radius: 2px;
+    transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .st-qa__sign::before {
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+  }
+  .st-qa__sign::after {
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+  .st-qa[open] .st-qa__sign::after {
+    transform: translateX(-50%) scaleY(0);
+  }
+  .st-qa__a {
+    padding: 0 26px 24px;
+  }
+  .st-qa__a p {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 64ch;
+  }
+  .st-qa__a :global(a) {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .st-card,
+    .st-case,
+    .st-card__media img {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

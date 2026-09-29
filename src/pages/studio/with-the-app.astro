@@ -1,0 +1,832 @@
+---
+/**
+ * Studio + app  ·  /studio/with-the-app
+ *
+ * The managed offer: our studio makes the work inside hubStudio and the
+ * customer reviews and approves it there. Described only as
+ * hubstudio-positioning.md allows: two setups (our workspace with client
+ * logins and a Client space; the customer's workspace with our creatives as
+ * members, working from their balance), Validation versions on one thread
+ * that can't be deleted, clients never seeing prompts, engines or costs in
+ * our workspace, and the handover. There is no order button in the app: a
+ * project starts with a brief (BRIEF_URL?way=studio-app).
+ *
+ * Captures are real (src/data/app-shots.ts); the empty states are captioned
+ * as empty. Copy comes from the content-quality-us deck `studio-with-app`.
+ * No ordinal numerals in any repeated block.
+ */
+import Layout from '../../layouts/Layout.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { APP_SIGNIN, BRIEF_URL, HELP_URL } from '../../lib/links';
+import { appShots } from '../../data/app-shots';
+
+const briefHref = `${BRIEF_URL}?way=studio-app`;
+
+const suits = [
+  {
+    title: 'Teams that need an audit trail',
+    text: 'It suits teams that want studio quality and an audit trail. Say legal or a regional office asks who approved a picture, and when. The answer is on the thread, with the date.',
+  },
+  {
+    title: 'Teams moving work in-house',
+    text: 'It also works as a way in for teams that plan to bring the work in-house. Start with the studio in your own workspace. Your people see how we work, then make more of it themselves.',
+  },
+  {
+    title: 'Agencies',
+    text: 'And agencies use it to run client work: we work inside your agency’s hubStudio team, and your clients approve the work with their own client logins. Each client sees only what was made for it, so you can run several accounts from one team.',
+  },
+];
+
+/* FAQ: `a` is plain text for the JSON-LD; `html` adds the in-page links. */
+const faqs: { q: string; a: string; html?: string }[] = [
+  {
+    q: 'How is Studio + app priced?',
+    a: 'Like any studio project: per asset, per project, or on retainer, quoted after we read your brief. The written proposal sets out what you get, by when, and for what price. We don’t publish rates. The pricing page explains the models.',
+    html: 'Like any studio project: per asset, per project, or on retainer, quoted after we read your brief. The written proposal sets out what you get, by when, and for what price. We don’t publish rates. <a href="/pricing">The pricing page</a> explains the models.',
+  },
+  {
+    q: 'Who pays for the engine runs?',
+    a: 'In our workspace, the studio does, and it’s part of our quote. In your workspace, runs are charged to your team’s balance, at the price shown before each run.',
+  },
+  {
+    q: 'Can I order studio work from inside the app?',
+    a: 'No. There’s no order button in the app. Send a brief, and a producer reads it within one business day.',
+    html: 'No. There’s no order button in the app. <a href="/contact?way=studio-app">Send a brief</a>, and a producer reads it within one business day.',
+  },
+  {
+    q: 'Do my people pay anything for their client logins?',
+    a: 'No. A client login creates nothing and spends nothing.',
+  },
+  {
+    q: 'Can our clients or other companies see each other’s work?',
+    a: 'No. A client login sees only what was made for its own company.',
+  },
+  {
+    q: 'Can we delete a version or a comment?',
+    a: 'No. Nothing on an approval thread can be deleted. If a request is no longer needed, say so in the thread.',
+  },
+  {
+    q: 'Can we switch to making the work ourselves?',
+    a: 'Yes. You can move between the studio and the app at any point, or run both on the same project.',
+    html: 'Yes. You can move between the studio and <a href="/app">the app</a> at any point, or run both on the same project.',
+  },
+  {
+    q: 'What language is the app in?',
+    a: 'The app’s interface is in English. The sign-in page speaks English, French, and Chinese.',
+  },
+];
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/studio/with-the-app`;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
+    { '@type': 'ListItem', position: 3, name: 'Studio + app', item: pageUrl },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Studio + app',
+  serviceType: 'Creative production with in-app review and approval',
+  url: pageUrl,
+  description:
+    'The hubStudio studio makes images, video, and posts inside the hubStudio app, in its own workspace or the customer’s, and the customer approves each version on one approval thread that cannot be deleted.',
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: 'Worldwide',
+};
+---
+
+<Layout
+  title="Studio + app: creative studio with approvals | hubStudio"
+  description="Our studio makes your images, video, and posts inside hubStudio, in our workspace or yours. You approve each version on a thread nobody can delete."
+  image="/Images/studio-on-app.webp"
+  preloadImage="/Images/studio-on-app.webp"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="wa-hero">
+    <div class="container wa-hero__grid">
+      <div class="wa-hero__copy">
+        <nav class="wa-crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="/studio">Studio</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Studio + app</span>
+        </nav>
+        <span class="eyebrow wa-hero__eyebrow">Studio + app</span>
+        <h1 class="headline h1 wa-hero__title">
+          We make the work, and you sign off in the <span class="accent">app</span>.
+        </h1>
+        <p class="lead wa-hero__lead">
+          Our creatives make your images, video, and posts inside hubStudio. Your team reviews
+          each version there and either approves it or sends it back with a note. Every decision
+          stays on record.
+        </p>
+        <div class="wa-hero__cta">
+          <a class="btn btn--primary" href={briefHref}>Send a brief</a>
+          <a class="btn btn--secondary" href="#setups">See the two setups</a>
+        </div>
+        <ul class="wa-hero__meta">
+          <li>Senior art directors on every brief</li>
+          <li>A written proposal within 48 hours</li>
+          <li>Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a></li>
+        </ul>
+      </div>
+      <figure class="wa-hero__figure">
+        <img
+          src="/Images/studio-on-app.webp"
+          alt="A hubStudio producer on a video call at his desk, a checked shot list and a laptop in front of him."
+          width="1600"
+          height="1200"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== How it starts ===== -->
+  <section class="wa-sheet wa-sheet--white">
+    <div class="container wa-start">
+      <div>
+        <span class="eyebrow">How it starts</span>
+        <h2 class="headline h2 reveal wa-start__title">
+          Every project starts with a <span class="accent">brief</span>
+        </h2>
+      </div>
+      <div>
+        <p class="wa-p wa-p--first">
+          Send us a brief: what you need, where it will run, and by when. A producer reads it
+          within one business day, and a written proposal follows within 48 hours. Once you
+          agree, we set up the workspace, ours or yours.
+        </p>
+        <p class="wa-note">
+          One thing people often look for: a way to order studio work from inside the app. There
+          isn’t one. Every Studio + app project starts with <a href={briefHref}>a brief</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Two setups ===== -->
+  <section class="wa-sheet wa-sheet--cream" id="setups">
+    <div class="container">
+      <header class="wa-head">
+        <span class="eyebrow">Two setups</span>
+        <h2 class="headline h2 reveal">In our workspace, or in <span class="accent">yours</span></h2>
+        <p class="wa-head__lead">
+          You get the same studio either way, and approvals work the same. What changes is whose
+          hubStudio team the work lives in, and who holds the balance.
+        </p>
+      </header>
+
+      <div class="wa-setups">
+        <article class="wa-setup">
+          <span class="wa-setup__tag"><span class="wa-dot" aria-hidden="true"></span>Our team, your logins</span>
+          <h3 class="wa-setup__name">In our workspace</h3>
+          <p class="wa-p">
+            The studio works in its own hubStudio team. We tag each piece “Made for” your company
+            and give your people client logins.
+          </p>
+          <p class="wa-p">
+            When they sign in, they land on a Client space that holds only the finished work made
+            for your company. They download it, comment on it, and approve it or send it back in
+            Validation. A client login creates nothing and spends nothing, so your people hold no
+            balance.
+          </p>
+          <p class="wa-setup__fit">
+            <strong>Pick this if</strong> you want finished work and a clean approval trail, and
+            nobody on your side has time to run an account.
+          </p>
+        </article>
+        <article class="wa-setup">
+          <span class="wa-setup__tag"><span class="wa-dot" aria-hidden="true"></span>Your team, our creatives</span>
+          <h3 class="wa-setup__name">In your workspace</h3>
+          <p class="wa-p">
+            You have your own hubStudio team and add our creatives as members. An admin on your
+            side sends the invitations, and you decide their role. We create from your workspace
+            and from your balance, and your admins approve in Validation.
+          </p>
+          <p class="wa-p">
+            Your own people keep working in the same team, next to ours. If your designer wants to
+            run a variation of one of our images, it’s right there in History, prompt included.
+            When the project ends, the images, videos, and posts are already in your History and
+            your Assets Library.
+          </p>
+          <p class="wa-setup__fit">
+            This is the better fit if you already use the app, or you’d like your team to take on
+            more of the work over time.
+          </p>
+        </article>
+      </div>
+
+      <div class="wa-shots">
+        <span class="eyebrow wa-shots__label">In our workspace, as your people and our admin see it</span>
+        <AppShot
+          shot={appShots.clientSpace}
+          path="/client"
+          caption="What your people see: the Client space and Validation, here for a demo company with nothing shared yet."
+        />
+        <AppShot
+          shot={appShots.teamClients}
+          path="/team"
+          caption="On our side, an admin adds your company as a client and gives your people their logins."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Validation ===== -->
+  <section class="wa-sheet wa-sheet--ink grain wa-val">
+    <div class="container">
+      <header class="wa-head wa-head--dark">
+        <span class="eyebrow">Approvals</span>
+        <h2 class="headline h2 reveal">Every version on one <span class="accent">thread</span></h2>
+        <p class="wa-head__lead">
+          Whichever setup you pick, approvals work the same way, and this is the part your team
+          will use most.
+        </p>
+      </header>
+      <div class="wa-val__grid">
+        <div class="wa-val__copy">
+          <p class="wa-p">
+            We send each piece to your approver through Validation. You tell us who that is: one
+            of your admins or, in our workspace, one of your people with a client login. They get
+            an email with a link, open the piece, and click Validate, or Send back with a comment.
+          </p>
+          <p class="wa-p">
+            If it comes back, we answer with a new version on the same thread: v1, v2, and so on.
+            Nothing on that thread can be deleted, including comments and decisions, so the record
+            of who approved what, and when, is permanent.
+          </p>
+          <p class="wa-p">
+            A post waiting for approval is locked. Until the approver decides, nobody can edit,
+            publish, or delete it.
+          </p>
+          <a class="wa-arrow" href={`${HELP_URL}/validation`}>
+            Validation in the help center <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <div class="wa-val__send">
+          <AppShot
+            shot={appShots.validationSend}
+            path="/validation"
+            dark
+            caption="How a piece reaches you: the title, the validator, and a note from us."
+          />
+        </div>
+      </div>
+      <div class="wa-val__page">
+        <AppShot
+          shot={appShots.validation}
+          path="/validation"
+          dark
+          caption="The Validation page, before any request: the Waiting for me, My requests, and All assets tabs."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== What your people see + Handover ===== -->
+  <section class="wa-sheet wa-sheet--white">
+    <div class="container wa-pair">
+      <div>
+        <span class="eyebrow">What you see</span>
+        <h2 class="headline h3 reveal wa-pair__title">The work, not the <span class="accent">machinery</span></h2>
+        <p class="wa-p">
+          In our workspace, your people see the finished images, videos, posts, and files. They
+          never see our prompts, the engines we picked, or what the runs cost. Choosing and paying
+          for those is the studio’s job, and in our experience a review goes faster when the
+          people approving look only at the picture.
+        </p>
+        <p class="wa-p">
+          In your workspace it’s your team, so your History shows every render with its prompt and
+          engine, and each run’s price is shown before it runs.
+        </p>
+      </div>
+      <div>
+        <span class="eyebrow">Handover</span>
+        <h2 class="headline h3 reveal wa-pair__title">What you keep when the project <span class="accent">ends</span></h2>
+        <p class="wa-p">
+          If we worked in your workspace, there’s nothing to hand over. The work is already in your
+          History and your Assets Library, and the approval threads stay in your Validation.
+        </p>
+        <p class="wa-p">
+          If we worked in ours, your people download the finished files from their Client space,
+          and the approval threads, every version and comment, stay in Validation where they can
+          open them.
+        </p>
+        <p class="wa-p">
+          You can also start in our workspace and open your own later. Plenty of the work can move
+          between the studio and the app as your team grows.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Who it suits ===== -->
+  <section class="wa-sheet wa-sheet--cream">
+    <div class="container">
+      <header class="wa-head">
+        <span class="eyebrow">Who it suits</span>
+        <h2 class="headline h2 reveal">Who picks Studio + <span class="accent">app</span></h2>
+        <p class="wa-head__lead">
+          Still weighing it against Studio only? Three kinds of team tend to choose it.
+        </p>
+      </header>
+      <div class="wa-suits">
+        {
+          suits.map((s) => (
+            <article class="wa-suit">
+              <h3 class="wa-suit__title">{s.title}</h3>
+              <p class="wa-p">{s.text}</p>
+            </article>
+          ))
+        }
+      </div>
+      <p class="wa-suits__more">
+        Want finished files with no app at all? That’s <a href="/studio">Studio only</a>. Want to
+        make the work yourself? That’s <a href="/app">the app</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="wa-sheet wa-sheet--white">
+    <div class="container wa-faq">
+      <header class="wa-head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">Questions about Studio + <span class="accent">app</span></h2>
+        <p class="wa-faq__updated">Updated September 2026</p>
+      </header>
+      <div class="wa-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="wa-qa">
+              <summary class="wa-qa__q">
+                <span>{f.q}</span>
+                <span class="wa-qa__sign" aria-hidden="true" />
+              </summary>
+              <div class="wa-qa__a">
+                <p set:html={f.html ?? f.a} />
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <DualCta lead="studio" briefQuery="way=studio-app" />
+</Layout>
+
+<style>
+  /* ---- Sheets (style guide 3) ---------------------------------- */
+  .wa-sheet {
+    position: relative;
+    margin-top: calc(-1 * clamp(28px, 3.6vw, 60px));
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    padding-block: clamp(88px, 10vw, 150px);
+  }
+  .wa-sheet--white {
+    background: var(--bg-white);
+  }
+  .wa-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .wa-sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+
+  .wa-head {
+    display: grid;
+    gap: 14px;
+    max-width: 760px;
+    margin-bottom: clamp(36px, 4vw, 56px);
+  }
+  .wa-head__lead {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .wa-head--dark .eyebrow {
+    color: var(--brand-orange);
+  }
+  .wa-head--dark .headline {
+    color: #fff;
+  }
+  .wa-head--dark .wa-head__lead {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .wa-p {
+    margin-top: 16px;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .wa-sheet--ink .wa-p {
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .wa-arrow {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 24px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .wa-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .wa-arrow:hover span {
+    transform: translateX(6px);
+  }
+  .wa-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* ---- Hero ---------------------------------------------------- */
+  .wa-hero {
+    padding-top: clamp(40px, 6vw, 88px);
+    padding-bottom: clamp(96px, 11vw, 160px);
+  }
+  .wa-hero__grid {
+    display: grid;
+    gap: 44px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .wa-hero__grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+    }
+  }
+  .wa-crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .wa-crumbs a:hover {
+    color: var(--brand-orange);
+  }
+  .wa-hero__title {
+    margin-top: 14px;
+    font-size: clamp(44px, 5.6vw, 80px);
+    letter-spacing: -0.035em;
+  }
+  .wa-hero__title .accent {
+    color: var(--brand-orange);
+  }
+  .wa-hero__lead {
+    margin-top: 22px;
+    max-width: 50ch;
+  }
+  .wa-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .wa-hero__meta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+  }
+  .wa-hero__meta li {
+    position: relative;
+    padding-left: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+  .wa-hero__meta li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 7px;
+    height: 7px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .wa-hero__meta a {
+    color: var(--text-ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .wa-hero__figure {
+    position: relative;
+    margin: 0;
+  }
+  .wa-hero__figure::before {
+    content: '';
+    position: absolute;
+    inset: 18px -14px -14px 18px;
+    border-radius: var(--radius-card);
+    background: var(--brand-orange);
+    z-index: 0;
+  }
+  .wa-hero__figure img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* ---- How it starts ------------------------------------------- */
+  .wa-start {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 900px) {
+    .wa-start {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .wa-start__title {
+    margin-top: 14px;
+  }
+  .wa-p--first {
+    margin-top: 0;
+  }
+  .wa-note {
+    margin-top: 24px;
+    padding: 20px 24px;
+    border-left: 3px solid var(--brand-orange);
+    background: var(--bg-cream);
+    border-radius: 0 16px 16px 0;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    max-width: 62ch;
+  }
+  .wa-note a {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+  }
+
+  /* ---- Two setups ---------------------------------------------- */
+  .wa-setups {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 860px) {
+    .wa-setups {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .wa-setup {
+    padding: clamp(28px, 3.4vw, 44px);
+    border-radius: var(--radius-card);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .wa-setup__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+  }
+  .wa-setup__name {
+    margin-top: 14px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .wa-setup__fit {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-hairline);
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-ink);
+  }
+  .wa-shots {
+    margin-top: clamp(48px, 6vw, 80px);
+    display: grid;
+    gap: 36px;
+  }
+  .wa-shots__label {
+    margin-bottom: -12px;
+  }
+
+  /* ---- Validation ---------------------------------------------- */
+  .wa-val__grid {
+    display: grid;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .wa-val__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 64px;
+    }
+  }
+  .wa-val__copy .wa-p:first-child {
+    margin-top: 0;
+  }
+  .wa-val__send {
+    max-width: 400px;
+  }
+  .wa-val__page {
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+
+  /* ---- What you see + Handover --------------------------------- */
+  .wa-pair {
+    display: grid;
+    gap: 56px;
+  }
+  @media (min-width: 900px) {
+    .wa-pair {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+  }
+  .wa-pair__title {
+    margin-top: 14px;
+  }
+
+  /* ---- Who it suits -------------------------------------------- */
+  .wa-suits {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 900px) {
+    .wa-suits {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+  }
+  .wa-suit {
+    padding-top: 22px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .wa-suit__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .wa-suits__more {
+    margin-top: clamp(36px, 4vw, 56px);
+    font-size: var(--type-body);
+    line-height: 1.6;
+  }
+  .wa-suits__more a {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+  }
+
+  /* ---- FAQ ----------------------------------------------------- */
+  .wa-faq {
+    max-width: 880px;
+  }
+  .wa-faq__updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+  .wa-faq__list {
+    display: grid;
+    gap: 12px;
+  }
+  .wa-qa {
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+    background: var(--bg-cream);
+    overflow: hidden;
+  }
+  .wa-qa[open] {
+    border-color: var(--line-strong);
+  }
+  .wa-qa__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 26px;
+    cursor: pointer;
+    font-size: clamp(17px, 1.5vw, 20px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    list-style: none;
+  }
+  .wa-qa__q::-webkit-details-marker {
+    display: none;
+  }
+  .wa-qa__sign {
+    position: relative;
+    flex: none;
+    width: 20px;
+    height: 20px;
+  }
+  .wa-qa__sign::before,
+  .wa-qa__sign::after {
+    content: '';
+    position: absolute;
+    background: var(--brand-orange);
+    border-radius: 2px;
+    transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .wa-qa__sign::before {
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+  }
+  .wa-qa__sign::after {
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+  .wa-qa[open] .wa-qa__sign::after {
+    transform: translateX(-50%) scaleY(0);
+  }
+  .wa-qa__a {
+    padding: 0 26px 24px;
+  }
+  .wa-qa__a p {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 64ch;
+  }
+  .wa-qa__a :global(a) {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

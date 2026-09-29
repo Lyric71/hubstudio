@@ -1,6 +1,8 @@
 ---
 /**
- * Our Creative Talents (`/the-studio/creative-talents`).
+ * Our Creative Talents (`/about/team`), moved from /the-studio/creative-talents
+ * (301 in vercel.json). Intro copy: content-quality-us deck, scratchpad
+ * cq/about-team/final.md.
  * Presents the studio's creative bench. The sixteen creatives, their names,
  * nationalities, roles and quotes are sourced from the team carousel on the
  * live hubstudio.ai homepage. The two headline lines ("Creatives Who Already
@@ -20,6 +22,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { creatives, authorPath } from '../../data/authors';
 import Button from '../../components/Button.astro';
+import { BRIEF_URL } from '../../lib/links';
 
 /* Distinct nationalities, for the marquee. Order kept editorial, not sorted. */
 const markets = [
@@ -37,12 +40,26 @@ const markets = [
   'Italian',
   'Finnish',
 ];
+
+const SITE = 'https://www.hubstudio.ai';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE}/about` },
+    { '@type': 'ListItem', position: 3, name: 'Creative talents', item: `${SITE}/about/team` },
+  ],
+};
 ---
 
 <Layout
-  title="Our Creative Talents | hubStudio AI Content Studio"
-  description="Meet the hubStudio creative bench: sixteen directors, designers and writers recruited close to the markets they create for, for cultural fluency and market instinct."
+  title="Our creative talents | hubStudio"
+  description="Meet the hubStudio creative bench: sixteen directors, designers, and writers hired close to the markets they create for."
+  preloadImage="/Team/team-photo.webp"
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ===== S1: Hero ===== -->
@@ -51,7 +68,7 @@ const markets = [
       <img
         class="hero__bg"
         src="/Team/team-photo.webp"
-        alt="The hubStudio creative team gathered in the studio."
+        alt="Members of the hubStudio team talking over coffee in the studio break area."
         width="1050"
         height="586"
         fetchpriority="high"
@@ -61,19 +78,23 @@ const markets = [
     </div>
 
     <div class="container hero__inner">
-      <p class="eyebrow hero__kicker">The Studio</p>
+      <p class="eyebrow hero__kicker">
+        <a href="/about">About hubStudio</a> <span aria-hidden="true">&middot;</span> Creative talents
+      </p>
       <h1 class="hero__title">
-        <span class="hero__w">Creatives Who Already</span>
-        <span class="hero__w">Speak Your</span>
-        <span class="hero__w hero__w--accent">Language</span>
+        <span class="hero__w">Creatives who already</span>
+        <span class="hero__w">speak your</span>
+        <span class="hero__w hero__w--accent">language</span>
       </h1>
       <p class="hero__lede">
-        We recruit talent who share your culture, your aesthetic, your market
-        instincts.
+        We hire creatives close to the markets they create for, so the one reading
+        your brief knows your market from living in it. They’re who you work with
+        in our studio, and their work reaches you as files or inside the hubStudio
+        app.
       </p>
       <div class="hero__meta">
         <span class="hero__meta-item">Sixteen creatives on the bench</span>
-        <span class="hero__meta-item">Thirteen nationalities</span>
+        <span class="hero__meta-item">Hired close to the market</span>
         <span class="hero__meta-item">One studio standard</span>
       </div>
     </div>
@@ -223,8 +244,8 @@ const markets = [
         it, and come back with sample work tailored to your brand.
       </p>
       <div class="closing__cta" data-reveal>
-        <Button variant="primary" href="/contact">Contact us</Button>
-        <Button variant="on-dark" href="/the-studio/who-we-are">Meet the studio</Button>
+        <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
+        <Button variant="on-dark" href="/about">About hubStudio</Button>
       </div>
       <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
         <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
@@ -322,6 +343,9 @@ const markets = [
     position: relative;
     padding-left: 46px;
   }
+  .hero__kicker a {
+    color: inherit;
+  }
   .hero__kicker::before {
     content: '';
     position: absolute;
@@ -354,11 +378,11 @@ const markets = [
   }
   .hero__lede {
     margin-top: 22px;
-    font-size: clamp(19px, 2vw, 28px);
+    font-size: clamp(18px, 1.6vw, 23px);
     font-weight: 500;
-    letter-spacing: -0.015em;
-    line-height: 1.32;
-    max-width: 30ch;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    max-width: 46ch;
     color: rgba(240, 237, 233, 0.92);
   }
   .hero__meta {

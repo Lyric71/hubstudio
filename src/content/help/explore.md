@@ -5,10 +5,10 @@ description: "How the Explore gallery works: what each type of engine does, how 
 excerpt: "Every image and video engine you can use, in one gallery, with who makes it, what it does and what one run costs."
 section: "studio"
 order: 2
-updated: 2026-09-27
+updated: 2026-09-29
 appPaths: ["/explore"]
 audience: "Everyone"
-related: ["create-an-image", "create-a-video", "account-and-sign-in", "credits-and-payments"]
+related: ["create-an-image", "create-a-video", "account-and-sign-in", "balance-and-payments"]
 shots:
   - file: "/Images/help/explore-gallery.webp"
     route: "/explore"
@@ -67,7 +67,7 @@ Every price is the price you pay, shown before you run anything:
 - A video engine shows **from** its price per second of clip at the cheapest setting, and under it the price of a 5 second clip at that rate.
 - **Priced after the run** means the engine has no price per second. Its maker bills it by what it actually used, so the exact cost appears on the result once the clip is back.
 
-Every run is paid from your credits, your team's first. See [Credits and payments](/help/credits-and-payments).
+Every run is charged against your balance, the team balance first. See [Balance and payments](/help/balance-and-payments).
 
 ## Why an engine may be missing
 

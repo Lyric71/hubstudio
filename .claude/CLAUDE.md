@@ -3,6 +3,18 @@
 Astro static site, deployed to Vercel. Canonical host: https://www.hubstudio.ai
 (the apex hubstudio.ai 301-redirects to www).
 
+## Positioning (PERMANENT)
+
+The site sells two offers: the **hubStudio app** (self-serve, at
+`https://hubstudio.bearingbridge.com`) first, and the **hubStudio studio**
+second, presented as three ways to work: Use the app, Studio + app, Studio
+only. `hubstudio-positioning.md` (repo root) is binding for every page: the
+locked names, the only app facts allowed, and the money language (a prepaid
+balance in real currency, never "credits", never an amount). App links come
+from `src/lib/links.ts`; the choice is rendered by `WaysToWork.astro`, the
+closing by `DualCta.astro`, app screens by `AppShot.astro` with the real
+captures in `src/data/app-shots.ts`. hub4You is retired: never mention it.
+
 ## Stack
 
 - **Framework:** Astro 6.x (static site generation)
@@ -103,10 +115,10 @@ versus buying model), set `balance: true` so a burst of articles in one
 category cannot push the other off the layer. The test: every article in the
 home page's newest four must also appear on at least one layer.
 
-Layers currently live on `/pricing`, `/solutions/brands`,
-`/solutions/ai-production/video`, `/solutions/ai-production/image`,
-`/the-studio/ai-excellence`, `/services/design/ecommerce` and
-`/services/design/social-media`. The component
+Layers currently live on `/app`, `/studio`, `/pricing`, `/solutions/brands`,
+`/solutions/agencies`, `/solutions/ai-production/video`,
+`/solutions/ai-production/image`, `/studio/ai-excellence`,
+`/services/design/ecommerce` and `/services/design/social-media`. The component
 is self-contained (its own container, tokens and type) so it drops into any
 page; pick the `tone` that contrasts with the section above it.
 

@@ -1,0 +1,1015 @@
+---
+/**
+ * /app/review: approvals, clients and teams in the hubStudio app.
+ *
+ * The page agencies read. Three app areas, each documented in the help
+ * center and quoted from it: Validation (src/content/help/validation.md),
+ * the Client space (client-space.md) and Your team (your-team.md). Every
+ * picture is a real capture from src/data/app-shots.ts; the empty states are
+ * captioned as empty states. The agency case stays inside what the app does:
+ * no custom branding, no custom domain. The studio bridge points to
+ * /studio/with-the-app, because our own studio delivers through the same
+ * Client space.
+ *
+ * Copy: content-quality-us deck, scratchpad cq/app-review/final.md.
+ * No ordinal numerals anywhere: the steps list is an <ol> for meaning, with
+ * its markers switched off.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import WaysToWork from '../../components/WaysToWork.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+
+const steps = [
+  {
+    title: 'You send it',
+    text: 'Name the validator and add a note: what to look at, the deadline.',
+  },
+  {
+    title: 'They get an email',
+    text: 'It carries a link that opens the thread.',
+  },
+  {
+    title: 'They decide',
+    text: 'Validate, or Send back with a comment. The comment is required to send it back.',
+  },
+  {
+    title: 'You send a new version',
+    text: 'v2 lands on the same thread, and the validator gets another email.',
+  },
+];
+
+const facts = [
+  'Nothing on a thread can be deleted: not a version, not a comment, not the request.',
+  'Versions v1, v2 and so on sit in tabs on one page, so anyone can compare them.',
+  'A post waiting for approval is locked. Nobody can change, delete or publish it until the validator decides. Once it’s approved it can go out. If it’s sent back, it returns to draft.',
+  'An admin can decide in the validator’s place when the validator is out.',
+  'Validation costs nothing to use, and no AI runs in it.',
+];
+
+const sees = [
+  'The images, videos, posts and files made for their company, newest first.',
+  'Where each post stands: published, planned for a date, or last updated, with a link to see it live.',
+  'The Validation threads of their own company.',
+];
+
+const neverSees = [
+  'Your prompts, your engines or your costs.',
+  'The work of your other clients.',
+  'Anything your team made for nobody in particular.',
+];
+
+const roles = [
+  {
+    name: 'Admin',
+    text: 'Runs the team. Invites people, answers requests to join, sets roles and daily limits, adds clients and gives their people logins.',
+  },
+  {
+    name: 'Creator',
+    text: 'Makes the images, videos and posts, paid from the team balance, within a daily limit when an admin sets one.',
+  },
+  {
+    name: 'Viewer',
+    text: 'Sees the team’s work in History and the Assets Library. Creates nothing and spends nothing.',
+  },
+  {
+    name: 'Client',
+    text: 'A person at a client company. Sees only what was made for them, downloads it, comments on it and approves it.',
+  },
+];
+
+type Faq = { q: string; a: string; link?: { match: string; href: string } };
+
+const faqs: Faq[] = [
+  {
+    q: 'Does Validation cost anything?',
+    a: 'No. Sending a piece costs nothing, and neither does deciding on it or commenting. No AI is involved. A file you upload to a thread is kept with your team’s files and counts toward storage like any upload.',
+  },
+  {
+    q: 'Do we pay per seat or per client login?',
+    a: 'No. hubStudio has no subscription and no seat fees. Inviting teammates and giving clients a login costs nothing. The team pays only for what it runs, from a prepaid balance, at the price shown before each run.',
+  },
+  {
+    q: 'Who pays when a client downloads a file?',
+    a: 'Your team. A client’s download is charged to the team balance like any download, and the price shows in the app.',
+  },
+  {
+    q: 'What can a client see and do?',
+    a: 'A client login opens the Client space, Validation and its own settings, nothing more. It shows finished work only; prompts, engines and costs stay with your team. A client creates nothing and spends nothing.',
+  },
+  {
+    q: 'Can we delete a thread or take back a request?',
+    a: 'No, and that’s deliberate. Threads, versions and comments are kept, so the record of who approved what can’t be edited after the fact. If a request no longer matters, say so in the thread.',
+  },
+  {
+    q: 'Who can approve a piece?',
+    a: 'The person named as validator, or an admin of the team. A viewer can be named but can’t record a decision, so pick a creator, an admin or a client’s person.',
+  },
+  {
+    q: 'Can we put our agency’s logo on the Client space?',
+    a: 'No. The app carries the hubStudio name, and there are no custom domains. What your client sees inside it is your work, tagged for their company.',
+  },
+  {
+    q: 'We bring clients to hubStudio. Is there a partner program?',
+    a: 'Yes. Commercial partners open accounts for the customers they bring and earn a commission on what those accounts spend. See Partners.',
+    link: { match: 'Partners', href: '/partners' },
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Review', item: `${SITE}/app/review` },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+/** Split an answer around its one linked phrase (the last occurrence). */
+function splitLink(f: Faq): [string, string] | null {
+  if (!f.link) return null;
+  const i = f.a.lastIndexOf(f.link.match);
+  if (i < 0) return null;
+  return [f.a.slice(0, i), f.a.slice(i + f.link.match.length)];
+}
+---
+
+<Layout
+  title="Approvals, client logins and team roles | hubStudio"
+  description="Send images, videos and posts for approval on one thread, give each client a login to see only its own work, and run your team with roles and limits."
+  preloadImage={appShots.validation.src}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="rv-hero">
+    <div class="container">
+      <nav class="rv-crumbs" aria-label="Breadcrumb">
+        <a href="/app">The app</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Review</span>
+      </nav>
+      <h1 class="headline h1 rv-hero__title">
+        Get work approved without the email <span class="accent">chain</span>.
+      </h1>
+      <p class="lead rv-hero__lead">
+        For in-house teams and agencies. In hubStudio, a teammate or a client approves the work
+        right where it was made. Each client sees just the work you made for them, and every
+        version and comment stays on one thread.
+      </p>
+      <div class="rv-hero__cta">
+        <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+        <Button variant="secondary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
+        <a class="rv-arrow" href="/app">See the whole app <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="container rv-hero__shot">
+      <AppShot
+        shot={appShots.validation}
+        path="/validation"
+        eager
+        caption="The Validation page, where every request lands. This team has none waiting yet."
+      />
+    </div>
+  </section>
+
+  <!-- ===== Validation ===== -->
+  <section class="rv-sheet rv-sheet--white rv-val" id="validation">
+    <div class="container">
+      <div class="rv-val__grid">
+        <div class="rv-val__copy">
+          <span class="eyebrow">Validation</span>
+          <h2 class="headline h2 reveal">Every approval, on the <span class="accent">record</span>.</h2>
+          <p class="rv-p">
+            Validation is how a piece gets a yes before it goes out. You send it to a teammate, or
+            to a person at the client it was made for, and the answer comes back on a thread that
+            holds every version and every comment. If someone asks months later who signed off,
+            you can send them the thread.
+          </p>
+          <p class="rv-p">
+            You can send an image, a video, a post, a file, a text or a link. A Send for
+            validation button sits under each finished render in the image and video studios, and
+            on the publishing step of every post, so the form opens already filled in. For work
+            made somewhere else, the Validation page takes an upload, a pasted text or a web
+            address.
+          </p>
+        </div>
+        <div class="rv-val__shot">
+          <AppShot
+            shot={appShots.validationSend}
+            path="/validation"
+            caption="Send for validation: the piece, the validator and a note."
+          />
+        </div>
+      </div>
+
+      <ol class="rv-steps" aria-label="The approval round trip">
+        {
+          steps.map((s) => (
+            <li class="rv-step reveal">
+              <span class="rv-step__mark" aria-hidden="true" />
+              <h3 class="rv-step__title">{s.title}</h3>
+              <p class="rv-step__text">{s.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="rv-facts">
+        <ul class="rv-facts__list">
+          {facts.map((f) => <li>{f}</li>)}
+        </ul>
+        <a class="rv-arrow" href="/help/validation">
+          Validation, step by step <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Clients ===== -->
+  <section class="rv-sheet rv-sheet--cream rv-clients" id="clients">
+    <div class="container">
+      <header class="rv-head">
+        <span class="eyebrow">Client space</span>
+        <h2 class="headline h2 reveal">Each client sees only its <span class="accent">own</span> work.</h2>
+      </header>
+      <div class="rv-cols">
+        <p class="rv-p">
+          Start by adding the companies you work for. Then give their people a login. Each person
+          gets an invitation by email, chooses a password and lands in the Client space for their
+          company. The link is good for a week, and your team can require a six-digit code by
+          email at every sign-in. Your client won’t have to learn the app: their menu has two
+          entries.
+        </p>
+        <p class="rv-p">
+          Nothing reaches a client until you say it was made for them. You tag a piece “Made for”
+          a client in the image or video studio before the run, on its card in History, or on a
+          post. From then on, that client’s people find it in their space. They can open it and
+          download the original, and leave a comment if something’s off. When you need their
+          approval, they get an email, and a card at the top of their space lists what waits.
+        </p>
+      </div>
+
+      <div class="rv-compare">
+        <div class="rv-compare__col rv-compare__col--sees">
+          <h3 class="rv-compare__title">What a client sees</h3>
+          <ul>{sees.map((s) => <li>{s}</li>)}</ul>
+        </div>
+        <div class="rv-compare__col rv-compare__col--never">
+          <h3 class="rv-compare__title">What a client never sees</h3>
+          <ul>{neverSees.map((s) => <li>{s}</li>)}</ul>
+        </div>
+      </div>
+      <p class="rv-note">A client holds no balance and spends nothing.</p>
+
+      <div class="rv-clients__shots">
+        <AppShot
+          shot={appShots.teamClients}
+          path="/team"
+          caption="Your team, Clients: add a company, then give its people a login."
+        />
+        <AppShot
+          shot={appShots.clientSpace}
+          path="/client"
+          caption="A new client’s space, before anything is shared. The menu holds only Client space and Validation."
+        />
+      </div>
+      <a class="rv-arrow" href="/help/client-space">
+        The Client space, as your client sees it <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== For agencies ===== -->
+  <section class="rv-sheet rv-sheet--ink rv-agency grain" id="agencies">
+    <div class="container rv-agency__grid">
+      <header class="rv-agency__head">
+        <span class="eyebrow rv-eyebrow--dark">For agencies</span>
+        <h2 class="headline h2 reveal">Run every client from <span class="accent">one</span> app.</h2>
+      </header>
+      <div class="rv-agency__body">
+        <p class="rv-p rv-p--dark">
+          An agency juggles several brands at once, and every one of them wants to see its work
+          and sign off on it. In hubStudio, your team makes all of it in the same app, and each
+          client signs in to its own space to approve its own work. The history is kept client by
+          client.
+        </p>
+        <p class="rv-p rv-p--dark">
+          Your clients see the finished pieces and a place to approve them. They don’t see how you
+          made them or what they cost you. When an account ends, you delete the client: the work
+          stays with your team, and their logins are paused. One thing to know up front: the app
+          carries the hubStudio name, not yours. There’s no custom logo or custom domain for the
+          Client space.
+        </p>
+        <p class="rv-p rv-p--dark">
+          One team serves every client, and each person at each client gets a login of their own.
+          A piece made for one client can only go to that client’s people or to your teammates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Your team ===== -->
+  <section class="rv-sheet rv-sheet--white rv-team" id="team">
+    <div class="container">
+      <header class="rv-head">
+        <span class="eyebrow">Your team</span>
+        <h2 class="headline h2 reveal">Four roles and one shared <span class="accent">balance</span>.</h2>
+        <p class="rv-p">
+          All of this rests on how your own team is set up. A team is the people who share one
+          balance, and everything a creator makes is paid from it. If you work alone, you’re a
+          team of one. Invite people when you need them.
+        </p>
+      </header>
+
+      <div class="rv-roles">
+        {
+          roles.map((r) => (
+            <article class:list={['rv-role', r.name === 'Client' && 'rv-role--client']}>
+              <h3 class="rv-role__name">{r.name}</h3>
+              <p class="rv-role__text">{r.text}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="rv-team__foot">
+        <p class="rv-p">
+          Admins invite people by email and pick their role. If someone signs up and asks to join,
+          the request waits until an admin accepts or declines it. Admins can also cap what each
+          creator spends in a day. Once a creator hits the cap, the team balance stops paying for
+          their runs until the next day. Each module of the app can be switched on or off per
+          person, and a login can be paused without losing any of that person’s work.
+        </p>
+        <div class="rv-team__shot">
+          <AppShot
+            shot={appShots.teamInvite}
+            path="/team"
+            caption="Your team: invite someone by email and choose their role."
+          />
+          <a class="rv-arrow" href="/help/your-team">
+            Roles and limits in detail <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Studio bridge ===== -->
+  <section class="rv-sheet rv-sheet--cream rv-bridge" id="studio">
+    <div class="container rv-bridge__grid">
+      <figure class="rv-bridge__figure">
+        <img
+          src="/Images/studio-on-app.webp"
+          alt="A hubStudio producer talks through a shot list on a call, his laptop open to a grid of pictures on a desk by the window."
+          width="1600"
+          height="1200"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div class="rv-bridge__copy">
+        <span class="eyebrow">Studio + app</span>
+        <h2 class="headline h2 reveal">
+          When our studio makes it, you approve it <span class="accent">here</span>.
+        </h2>
+        <p class="rv-p">
+          When our studio makes the work for you inside hubStudio, you review it exactly the way a
+          client of yours would. We work in our own team and give your people client logins, or we
+          join your team as members and work from your balance. Either way, your people approve
+          the work in Validation.
+        </p>
+        <a class="rv-arrow" href="/studio/with-the-app">
+          How Studio + app works <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <WaysToWork tone="white" highlight="studio-app" />
+
+  <!-- ===== FAQ ===== -->
+  <section class="rv-faq" id="faq">
+    <div class="container rv-faq__grid">
+      <header class="rv-faq__head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">What teams ask about <span class="accent">approvals</span>.</h2>
+        <p class="rv-updated">Updated September 2026</p>
+      </header>
+      <div class="rv-faq__list">
+        {
+          faqs.map((f) => {
+            const parts = splitLink(f);
+            return (
+              <details class="rv-qa">
+                <summary>
+                  <h3 class="rv-qa__q">{f.q}</h3>
+                  <span class="rv-qa__icon" aria-hidden="true" />
+                </summary>
+                <p class="rv-qa__a">
+                  {parts && f.link ? (
+                    <>
+                      {parts[0]}
+                      <a href={f.link.href}>{f.link.match}</a>
+                      {parts[1]}
+                    </>
+                  ) : (
+                    f.a
+                  )}
+                </p>
+              </details>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <DualCta briefQuery="way=studio-app" />
+</Layout>
+
+<style>
+  /* ---- Shared ------------------------------------------------ */
+  .rv-p {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .rv-p + .rv-p {
+    margin-top: 18px;
+  }
+  .rv-p--dark {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .rv-eyebrow--dark {
+    color: var(--brand-orange);
+  }
+  .rv-head {
+    display: grid;
+    gap: 14px;
+    max-width: 760px;
+    margin-bottom: clamp(32px, 4vw, 52px);
+  }
+  .rv-head .rv-p {
+    margin-top: 6px;
+  }
+  .headline .accent {
+    color: var(--brand-orange);
+  }
+  .rv-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .rv-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .rv-arrow:hover span {
+    transform: translateX(6px);
+  }
+
+  /* Sheet stacking: each section overlaps the one above it. */
+  .rv-sheet {
+    position: relative;
+    margin-top: -48px;
+    padding-block: clamp(88px, 10vw, 150px) clamp(96px, 11vw, 168px);
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+  }
+  .rv-sheet--white {
+    background: var(--bg-white);
+  }
+  .rv-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .rv-sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+
+  /* ---- Hero -------------------------------------------------- */
+  .rv-hero {
+    background: var(--bg-cream);
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(96px, 10vw, 150px);
+  }
+  .rv-crumbs {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .rv-crumbs a:hover {
+    color: var(--brand-orange);
+  }
+  .rv-hero__title {
+    margin-top: 18px;
+    max-width: 15ch;
+    letter-spacing: -0.035em;
+  }
+  .rv-hero__lead {
+    margin-top: 24px;
+    max-width: 58ch;
+  }
+  .rv-hero__cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+  }
+  .rv-hero__shot {
+    margin-top: clamp(44px, 6vw, 76px);
+  }
+
+  /* ---- Validation -------------------------------------------- */
+  .rv-val__grid {
+    display: grid;
+    gap: clamp(40px, 5vw, 72px);
+  }
+  @media (min-width: 960px) {
+    .rv-val__grid {
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: start;
+    }
+  }
+  .rv-val__copy {
+    display: grid;
+    gap: 14px;
+  }
+  .rv-val__copy .rv-p:first-of-type {
+    margin-top: 10px;
+  }
+  .rv-val__shot {
+    max-width: 420px;
+    width: 100%;
+    justify-self: center;
+  }
+
+  .rv-steps {
+    list-style: none;
+    margin: clamp(56px, 7vw, 96px) 0 0;
+    padding: 0;
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 720px) {
+    .rv-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .rv-steps {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+  }
+  .rv-step {
+    position: relative;
+    padding-top: 26px;
+    padding-right: 24px;
+  }
+  /* A rule that runs through every step: the thread the piece travels on. */
+  .rv-step::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--line-strong);
+  }
+  .rv-step__mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--bg-white);
+    border: 2px solid var(--brand-orange);
+  }
+  .rv-step:last-child .rv-step__mark {
+    background: var(--brand-orange);
+  }
+  .rv-step__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .rv-step__text {
+    margin-top: 8px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  .rv-facts {
+    margin-top: clamp(48px, 6vw, 80px);
+    padding: clamp(28px, 3.4vw, 44px);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    display: grid;
+    gap: 22px;
+  }
+  .rv-facts__list {
+    display: grid;
+    gap: 14px 40px;
+  }
+  @media (min-width: 900px) {
+    .rv-facts__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .rv-facts__list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+  }
+  .rv-facts__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 10px;
+    height: 2px;
+    background: var(--brand-orange);
+  }
+
+  /* ---- Clients ----------------------------------------------- */
+  .rv-cols {
+    display: grid;
+    gap: 18px 56px;
+  }
+  @media (min-width: 900px) {
+    .rv-cols {
+      grid-template-columns: 1fr 1fr;
+    }
+    .rv-cols .rv-p + .rv-p {
+      margin-top: 0;
+    }
+  }
+  .rv-compare {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .rv-compare {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .rv-compare__col {
+    padding: clamp(26px, 3vw, 38px);
+    border-radius: var(--radius-card);
+  }
+  .rv-compare__col--sees {
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .rv-compare__col--never {
+    border: 1px dashed var(--line-strong);
+  }
+  .rv-compare__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .rv-compare ul {
+    display: grid;
+    gap: 12px;
+  }
+  .rv-compare li {
+    position: relative;
+    padding-left: 26px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+  }
+  .rv-compare__col--sees li::before,
+  .rv-compare__col--never li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .rv-compare__col--sees li::before {
+    background: var(--brand-orange);
+  }
+  .rv-compare__col--never li {
+    color: var(--text-mute);
+  }
+  .rv-compare__col--never li::before {
+    border: 1.5px solid var(--text-mute);
+    background: linear-gradient(
+      135deg,
+      transparent calc(50% - 0.75px),
+      var(--text-mute) calc(50% - 0.75px),
+      var(--text-mute) calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    );
+  }
+  .rv-note {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    font-weight: 600;
+  }
+  .rv-clients__shots {
+    margin: clamp(48px, 6vw, 80px) 0 24px;
+    display: grid;
+    gap: clamp(28px, 4vw, 48px);
+  }
+  @media (min-width: 1080px) {
+    .rv-clients__shots {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: start;
+    }
+  }
+
+  /* ---- Agencies ---------------------------------------------- */
+  .rv-agency::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: -30%;
+    width: 60%;
+    height: 90%;
+    background: radial-gradient(closest-side, rgba(233, 78, 27, 0.26), transparent);
+    filter: blur(24px);
+    pointer-events: none;
+  }
+  .rv-agency__grid {
+    position: relative;
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 960px) {
+    .rv-agency__grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .rv-agency__head {
+    display: grid;
+    gap: 14px;
+  }
+  .rv-agency__head .headline {
+    color: var(--text-on-dark);
+  }
+
+  /* ---- Team -------------------------------------------------- */
+  .rv-roles {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 720px) {
+    .rv-roles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .rv-roles {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .rv-role {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: clamp(26px, 2.6vw, 34px);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .rv-role:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.1);
+  }
+  .rv-role--client {
+    background: var(--bg-ink);
+    border-color: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .rv-role__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .rv-role__text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .rv-role--client .rv-role__text {
+    color: rgba(240, 237, 233, 0.76);
+  }
+  .rv-team__foot {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 960px) {
+    .rv-team__foot {
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+  }
+  .rv-team__shot {
+    display: grid;
+    gap: 18px;
+    justify-items: start;
+  }
+
+  /* ---- Studio bridge ----------------------------------------- */
+  .rv-bridge__grid {
+    display: grid;
+    gap: clamp(36px, 5vw, 72px);
+  }
+  @media (min-width: 960px) {
+    .rv-bridge__grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  .rv-bridge__figure {
+    position: relative;
+    margin: 0;
+  }
+  /* The editorial offset block behind the key figure. */
+  .rv-bridge__figure::before {
+    content: '';
+    position: absolute;
+    inset: 24px -18px -18px 24px;
+    background: var(--brand-orange);
+    border-radius: var(--radius-card);
+  }
+  .rv-bridge__figure img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .rv-bridge__copy {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+  }
+
+  /* ---- FAQ --------------------------------------------------- */
+  .rv-faq {
+    background: var(--bg-cream);
+    padding-block: clamp(88px, 10vw, 150px);
+  }
+  .rv-faq__grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 960px) {
+    .rv-faq__grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .rv-faq__head {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+  }
+  .rv-faq__head {
+    display: grid;
+    gap: 14px;
+  }
+  .rv-updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .rv-faq__list {
+    border-top: 1px solid var(--line-strong);
+  }
+  .rv-qa {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .rv-qa summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+    cursor: pointer;
+  }
+  .rv-qa summary::-webkit-details-marker {
+    display: none;
+  }
+  .rv-qa__q {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+  .rv-qa summary:hover .rv-qa__q {
+    color: var(--brand-orange-cta);
+  }
+  .rv-qa__icon {
+    position: relative;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+  }
+  .rv-qa__icon::before,
+  .rv-qa__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 1.5px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 200ms ease-out;
+  }
+  .rv-qa__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .rv-qa[open] .rv-qa__icon::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .rv-qa__a {
+    padding-bottom: 24px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+  .rv-qa__a a {
+    color: var(--brand-orange-cta);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

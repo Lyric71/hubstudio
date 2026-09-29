@@ -5,10 +5,10 @@ description: "Render a picture from a prompt, edit pictures you upload or upscal
 excerpt: "The image studio: three jobs, a choice of engines, every option priced before the run, and each result saved in your History."
 section: "studio"
 order: 3
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/content/image-generate"]
 audience: "Everyone"
-related: ["explore", "create-a-video", "history", "assets-library", "validation", "your-team", "skills", "credits-and-payments"]
+related: ["explore", "create-a-video", "history", "assets-library", "validation", "your-team", "skills", "balance-and-payments"]
 shots:
   - file: "/Images/help/create-an-image-studio.webp"
     route: "/content/image-generate"
@@ -93,7 +93,7 @@ Admins also see **Manage clients**, which opens the Team page in a new tab. You 
 
 ## The price line
 
-Under the job and the engine, a line reads **This setup costs $X per image.** Next to the button, the total repeats it, or reads **$X for N images** when you ask for several. Inside the **Quality** and **Resolution** lists, each option shows its own price for the shape you picked, so you can compare before you choose.
+Under the job and the engine, a line gives the price of one image with this setup. Next to the button, the total repeats it, or gives the price of all of them when you ask for several images. Inside the **Quality** and **Resolution** lists, each option shows its own price for the shape you picked, so you can compare before you choose.
 
 The price follows everything that changes it: the engine, the quality, the resolution, the shape and the number of images. What you see is what you pay. A run is charged only when it succeeds, and when you ask for several images you pay for the images that came back.
 

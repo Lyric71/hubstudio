@@ -4,7 +4,7 @@
  *
  * Mirrors /services/design/packaging-merch-design and
  * /services/design/creative-strategy: same "Pressroom" art direction
- * (crop marks, calibration colour bar, mono figure labels) adapted to
+ * (crop marks, calibration color bar, mono figure labels) adapted to
  * marketing strategy work. Copy from marketing-strategy-page.md, folded
  * into the existing nine-section layout. Process step numerals dropped
  * per the no-numbers rule. Pricing softened per the no-pricing rule.
@@ -13,6 +13,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Six invented sample brands, one per category named in the source
    studio-samples line: FMCG launch into Indonesia and Vietnam, luxury
@@ -57,7 +60,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -151,7 +154,7 @@ const processSteps = [
     title: 'Pressure test against panels and creative.',
     body: 'Each direction tested against synthetic respondent panels for comparative work, then rendered as actual creative so you see how the strategy lands as an ad, not as an adjective.',
     image: '/Images/ms-p4-pressuretest.jpg',
-    alt: 'A printed synthetic panel scorecard beside a fabric board showing six campaign creative variants, three of them tagged with coloured stickers.',
+    alt: 'A printed synthetic panel scorecard beside a fabric board showing six campaign creative variants, three of them tagged with colored stickers.',
   },
   {
     short: 'GTM plan',
@@ -238,6 +241,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/marketing-strategy`;
 
@@ -258,7 +264,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Marketing Strategy', item: pageUrl },
   ],
 };
@@ -284,7 +290,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Strategy service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Marketing Strategy
           </p>
           <h1 class="hero__title">
@@ -311,7 +317,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See the work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -726,6 +732,38 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Strategy comes from "
+      accent="people"
+      post="."
+      intro="There’s no strategy button in the hubStudio app. Research and positioning come from our strategists, and so does the launch plan."
+      columns={[
+        {
+          label: 'Studio only',
+          title: 'How a strategy engagement runs',
+          body: [
+            'It starts with your brief, which a producer reads within one business day. We run the research, build the positioning, test it with creative, and hand over the plan with the launch pack. No account needed.',
+          ],
+        },
+        {
+          label: 'Studio + app',
+          title: 'Where the app fits',
+          body: [
+            'We can make the launch creative inside hubStudio. Your team sees it in the Client space and approves each piece in Validation, so you can always see who approved what, and when.',
+          ],
+        },
+      ]}
+      shot={appShots.clientSpace}
+      shotPath="/client"
+      shotCaption="The Client space as a client sees it, before anything is shared: only the work made for them, and Validation."
+      links={[
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio"
+      ways={{ pre: 'Pick how the launch creative ', accent: 'arrives', post: '.' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -739,7 +777,7 @@ const breadcrumbSchema = {
             here, put it in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -783,11 +821,12 @@ const breadcrumbSchema = {
           creative pack. No retainer attached, no commitment to keep
           working with us. Whatever we deliver in those three weeks is
           yours regardless.
+          After launch, your own team can keep the always-on content coming in the hubStudio app. There’s no charge to open an account.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -802,6 +841,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1021,7 +1071,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

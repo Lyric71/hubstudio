@@ -13,8 +13,17 @@
  */
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import WaysToWork from '../../components/WaysToWork.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL, HELP_URL } from '../../lib/links';
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/solutions/training`;
+const briefHref = `${BRIEF_URL}?way=studio`;
+
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -36,7 +45,7 @@ const reasons = [
   {
     label: 'Future-proof skills',
     title: 'Skills the next model release does not break.',
-    body: 'Models change every quarter. The underlying craft does not. The curriculum builds the visual judgement, prompt engineering and workflow architecture that survive each new release rather than getting rebuilt by it.',
+    body: 'Models change every quarter. The underlying craft does not. The curriculum builds the visual judgment, prompt engineering and workflow architecture that survive each new release rather than getting rebuilt by it.',
   },
 ];
 
@@ -55,7 +64,7 @@ const audiences = [
   {
     label: 'Creative directors',
     title: 'Design and creative leadership.',
-    body: 'Directors building an AI-fluent studio without losing the brand voice. The course foregrounds craft, judgement and the editorial pass models still skip.',
+    body: 'Directors building an AI-fluent studio without losing the brand voice. The course foregrounds craft, judgment and the editorial pass models still skip.',
   },
   {
     label: 'Procurement & operations',
@@ -72,18 +81,17 @@ const lanes = [
     label: 'AIGC for beginners',
     heading: 'AIGC for beginners.',
     image: '/Images/training-beginner.jpg',
-    alt: 'A daylit hubStudio workshop with a participant generating brand visuals on a colour-calibrated monitor, a printed brief on the desk beside the keyboard.',
+    alt: 'A daylit hubStudio workshop with a participant generating brand visuals on a color-calibrated monitor, a printed brief on the desk beside the keyboard.',
     lead: 'Two days inside the studio. Real tools, real briefs, work that ships.',
     body: [
-      "Fundamentals first: an intuition for diffusion models, prompt engineering, parameter optimisation, brand-safety guardrails and the legal frameworks every team now has to work inside. The theory is short, the workshop is long.",
-      'Then the tool tour: MidJourney, Gemini, ChatGPT-4o, Flux, Wan and Veo, with three real brand-case workshops running alongside. The cohort leaves with a motion module, a starter prompt library tuned to their brand voice and a portfolio of pieces they generated themselves.',
+      "Fundamentals first: an intuition for diffusion models, prompt engineering, parameter optimization, brand-safety guardrails and the legal frameworks every team now has to work inside. The theory is short, the workshop is long.",
+      'Then the tool tour: image and video engines such as ChatGPT Image 2, Nano Banana, FLUX, Seedream, Kling, Veo and Wan, with three real brand-case workshops running alongside. The cohort leaves with a motion module, a starter prompt library tuned to its brand voice and a portfolio of pieces it generated itself.',
     ],
     tags: [
       'Diffusion fundamentals', 'Prompt engineering',
-      'Parameter optimisation', 'Brand-safety guardrails',
+      'Parameter optimization', 'Brand-safety guardrails',
       'Legal frameworks',
-      'MidJourney / Gemini / ChatGPT-4o',
-      'Flux / Wan / Veo',
+      'Image and video engines',
       'Three brand-case workshops', 'Motion module',
       'Prompt library starter',
     ],
@@ -96,7 +104,7 @@ const lanes = [
     lead: 'ComfyUI, ControlNet and Stable Diffusion treated as a production stack.',
     body: [
       'Node-based logic, sampling techniques, AnimateDiff for motion and high-resolution processing pipelines. The curriculum is the workflow itself, taught by the engineers who built and run hubStudio production every week.',
-      'Then the enterprise layer: character consistency at scale, scalable asset production, brand-voice fine-tuning, export optimisation and the integration patterns that connect AIGC into existing creative software, asset management and approval chains. Built for teams already shipping content and ready to industrialise it.',
+      'Then the enterprise layer: character consistency at scale, scalable asset production, brand-voice fine-tuning, export optimization and the integration patterns that connect AIGC into existing creative software, asset management and approval chains. Built for teams already shipping content and ready to industrialise it.',
     ],
     tags: [
       'ComfyUI', 'ControlNet', 'Stable Diffusion',
@@ -109,11 +117,28 @@ const lanes = [
   },
 ];
 
+/* The setup a cohort leaves with when it trains on the hubStudio app. A
+   checklist, so no numerals: the order on the page carries it. */
+const onApp = [
+  {
+    title: 'Accounts and roles',
+    body: 'Everyone gets an account in your team, with the right role: Admin, Creator or Viewer. Admins learn to invite people and set a daily spending limit for each creator. Runs are paid from the team\u2019s prepaid balance, at the price shown before each one.',
+  },
+  {
+    title: 'Team skills',
+    body: 'Your brand rules get written as Team skills, together, so \u201cImprove with AI\u201d and every social post drafted with AI follow them from the first day.',
+  },
+  {
+    title: 'An approval flow',
+    body: 'A real piece goes through Validation: who reviews it, who approves it, what happens when it\u2019s sent back. Your team runs each step on its own accounts.',
+  },
+];
+
 /* FAQ: phrasing held close to the source page, restructured for the repo
    standard (no em-dashes, native phrasing). */
-const faqs = [
+const faqs: { q: string; a: string; link?: { label: string; href: string } }[] = [
   {
-    q: 'Can you customise the AIGC training for our specific industry?',
+    q: 'Can you customize the AIGC training for our specific industry?',
     a: 'Yes. The curriculum is shaped by sector: beauty, automotive, luxury, food and beverage, technology, with industry-specific case studies and a preliminary consultation that aligns the cohort with the work your team actually ships.',
   },
   {
@@ -142,7 +167,11 @@ const faqs = [
   },
   {
     q: 'What languages is the training available in?',
-    a: 'English and Mandarin Chinese. The trainer team is international, with cultural perspectives baked into the case studies rather than treated as a translation step.',
+    a: 'English and Mandarin Chinese. The trainer team is international, and the case studies come from more than one market. The hubStudio app itself has an English interface; its sign-in page speaks English, French and Chinese.',
+  },
+  {
+    q: 'Can the training run on the hubStudio app?',
+    a: 'Yes. It makes the most sense for teams that plan to produce in-house. Tell us in the brief and we\u2019ll plan the sessions around your own accounts. Training is quoted per cohort after we read the brief; we don\u2019t publish rates.',
   },
   {
     q: 'What will participants take away from the training?',
@@ -150,7 +179,8 @@ const faqs = [
   },
   {
     q: 'Do you offer consulting services beyond training?',
-    a: 'Yes. AIGC implementation consulting covers content audits, workflow optimisation, tool selection, brand-safety protocols and ongoing creative direction. Many clients start with a training cohort and continue with a consulting engagement on the studio side.',
+    a: 'Yes. Consulting covers what training doesn\u2019t, such as the approval chain and a rollout plan for the whole team. Many teams start with a cohort and continue with a consulting engagement.',
+    link: { label: 'See AI consulting', href: '/solutions/consulting' },
   },
 ];
 
@@ -163,13 +193,24 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'AI training', item: pageUrl },
+  ],
+};
 ---
 
 <Layout
   title="AIGC Training for Marketing Teams & Agencies | hubStudio"
-  description="Professional AIGC training for marketing teams and agencies. Master AI content creation tools with expert-led courses and hands-on workshops at hubStudio."
+  description="Hands-on AI training for marketing teams and agencies in our Shanghai studio. Train on the hubStudio app and leave with your setup in place."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -192,13 +233,12 @@ const faqSchema = {
             <span class="line"><span class="line__i serif">intelligence.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Transform your brand's content production with cutting-edge AI
-            technologies and human creativity, <em>working in concert</em>.
+            The tools, and the craft that makes them <em>worth using</em>.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
               Most AI training stops at prompt syntax. The teams pulling ahead
-              learn the whole loop: tooling, judgement, brand safety and the
+              learn the whole loop: tooling, judgment, brand safety and the
               production pipeline that turns a generated frame into a campaign
               asset.
             </p>
@@ -210,7 +250,7 @@ const faqSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start a training brief</Button>
+            <Button variant="primary" href={briefHref}>Start a training brief</Button>
             <a class="ghost-link ghost-link--light" href="#curriculum">
               See the curriculum
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -362,6 +402,61 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- ============ S4b · ON THE APP ============ -->
+    <section class="onapp" id="on-the-app">
+      <div class="shell onapp__grid">
+        <div class="onapp__copy">
+          <p class="kicker r"><span class="kicker__tick"></span>On the hubStudio app</p>
+          <h2 class="dh r" style="--d:.05s">
+            Leave with a working <span class="serif">setup</span>.
+          </h2>
+          <p class="onapp__lead r" style="--d:.1s">
+            One more option, for teams that will make the work themselves.
+            Training can run on the hubStudio app. Your team learns on the
+            tool it will use at work, and the setup is in place by the time
+            the cohort ends.
+          </p>
+          <p class="onapp__p r" style="--d:.14s">
+            After a course, someone usually has to set everything up alone,
+            back at the desk. When the cohort runs on hubStudio, we build that
+            setup during the sessions, with your people at the keyboard.
+          </p>
+          <ul class="onapp__list">
+            {
+              onApp.map((item, i) => (
+                <li class="onapp__item r" style={`--d:${0.18 + i * 0.06}s`}>
+                  <h3 class="onapp__title">{item.title}</h3>
+                  <p class="onapp__p">{item.body}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="onapp__media">
+          <div class="r" style="--d:.1s">
+            <AppShot shot={appShots.exploreApp} path="/explore" caption />
+          </div>
+          <div class="onapp__cta r" style="--d:.2s">
+            <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+            <a class="ghost-link" href={HELP_URL}>
+              Read the help center
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <p class="onapp__note r" style="--d:.24s">
+            Creating an account costs nothing. The app&rsquo;s interface is in English.
+          </p>
+          <p class="onapp__p r" style="--d:.28s">
+            Want help past the last session, with the approval chain and a
+            rollout for the whole team?
+            <a class="inline-link" href="/solutions/consulting">See AI consulting</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ S5 · TRAINERS ============ -->
     <section class="source">
       <div class="shell source__grid">
@@ -389,9 +484,10 @@ const faqSchema = {
             Elite creative and<br />technical <span class="serif">experts</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            Former CEOs and creative directors from Publicis Commerce paired
-            with the AIGC engineers who run hubStudio's production stack.
-            Trainers who have shipped both sides of the table.
+            Our senior creative directors teach alongside the AIGC
+            specialists who run hubStudio&rsquo;s production. hubStudio&rsquo;s
+            founder, Cyril Drouin, is a former CEO at Publicis. And the people
+            teaching the course make client work in the same studio every week.
           </p>
           <p class="source__p r" style="--d:.16s">
             Years of brand and campaign work for global accounts, plus the
@@ -400,7 +496,7 @@ const faqSchema = {
             shipped that morning, not last year's deck.
           </p>
           <p class="source__p r" style="--d:.22s">
-            The curriculum is customisable for beauty, automotive, luxury,
+            The curriculum is customizable for beauty, automotive, luxury,
             food and beverage, technology. A preliminary consultation aligns
             the cohort with your category, your toolchain and the formats you
             already ship to.
@@ -435,6 +531,9 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- ============ S5b · WAYS TO WORK ============ -->
+    <WaysToWork tone="white" highlight="app" />
+
     <!-- ============ S6 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -447,8 +546,9 @@ const faqSchema = {
             The questions teams ask before a cohort starts. If yours is not
             below, put it in the brief.
           </p>
+          <p class="faq__fresh r" style="--d:.13s">Updated September 2026</p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start a training brief</Button>
+            <Button variant="primary" href={briefHref}>Start a training brief</Button>
           </div>
         </aside>
 
@@ -465,7 +565,15 @@ const faqSchema = {
                 </button>
                 <div class="acc__a">
                   <div class="acc__a-inner">
-                    <p>{faq.a}</p>
+                    <p>
+                      {faq.a}
+                      {faq.link && (
+                        <>
+                          {' '}
+                          <a class="inline-link" href={faq.link.href}>{faq.link.label}</a>.
+                        </>
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -476,36 +584,15 @@ const faqSchema = {
     </section>
 
     <!-- ============ S7 · CLOSING ============ -->
-    <section class="end">
-      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
-        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
-      </svg>
-      <div class="shell end__inner">
-        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Train with us</p>
-        <h2 class="end__title r" style="--d:.05s">
-          Train with<br /><span class="serif">us</span>.
-        </h2>
-        <p class="end__p r" style="--d:.12s">
-          Send a roster, a desired window or just the gap you want to close.
-          A senior lead reads it inside two working days and replies with a
-          curriculum, format and outcome plan, plus an honest read on whether
-          training, consulting or production is the right starting line.
-        </p>
-        <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start a training brief</Button>
-          <a class="ghost-link ghost-link--light" href="/the-studio">
-            See the studio
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="cbar cbar--end" aria-hidden="true">
-        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
-      </div>
-    </section>
+    <DualCta
+      eyebrow="Next cohort"
+      pre="Train with "
+      accent="us"
+      post="."
+      text="Send a roster, a date window or just the gap you want to close. A producer reads it within one business day and replies with a curriculum and a format. Or open the app and look around first."
+      lead="studio"
+      briefQuery="way=studio"
+    />
   </div>
 </Layout>
 
@@ -729,7 +816,7 @@ const faqSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;
@@ -1310,47 +1397,93 @@ const faqSchema = {
     color: var(--text-mute);
   }
 
-  /* ===================== S7 · Closing ===================== */
-  .end {
-    position: relative;
-    background: var(--ink);
-    color: var(--text-on-dark);
-    padding-top: clamp(80px, 11vw, 150px);
-    overflow: clip;
+  /* ===================== On the app ===================== */
+  .onapp {
+    background: #ffffff;
+    padding-block: clamp(80px, 10vw, 150px);
   }
-  .end__reg {
-    position: absolute;
-    width: clamp(300px, 36vw, 560px);
-    top: -16%;
-    right: -9%;
-    color: rgba(240, 237, 233, 0.05);
-    pointer-events: none;
-  }
-  .end__inner {
-    position: relative;
+  .onapp__grid {
     display: grid;
-    justify-items: start;
-    gap: 22px;
+    gap: 48px;
   }
-  .end__title {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: clamp(40px, 6.6vw, 96px);
-    line-height: 0.98;
-    letter-spacing: -0.04em;
+  @media (min-width: 980px) {
+    .onapp__grid {
+      grid-template-columns: 1fr 1.05fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .onapp__media {
+      position: sticky;
+      top: 96px;
+    }
   }
-  .end__p {
-    max-width: 54ch;
+  .onapp__copy .dh {
+    margin-top: 16px;
+  }
+  .onapp__lead {
+    margin-top: 20px;
     font-size: var(--type-lead);
     line-height: 1.5;
-    color: rgba(240, 237, 233, 0.78);
+    color: var(--text-ink);
   }
-  .end__cta {
+  .onapp__p {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .onapp__list {
+    margin-top: 28px;
+    display: grid;
+    list-style: none;
+    padding: 0;
+  }
+  .onapp__item {
+    padding-block: 22px;
+    border-top: 1.5px dashed var(--line-strong);
+  }
+  .onapp__item:last-child {
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  .onapp__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(20px, 1.8vw, 24px);
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+  .onapp__item .onapp__p {
     margin-top: 8px;
+  }
+  .onapp__cta {
+    margin-top: 28px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 14px 26px;
+  }
+  .onapp__note {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .inline-link {
+    color: var(--brand-orange);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .faq__fresh {
+    margin-bottom: 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
   }
 </style>
 

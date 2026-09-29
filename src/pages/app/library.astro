@@ -1,0 +1,802 @@
+---
+/**
+ * /app/library: the Assets Library, the Image editor and the Image anonymizer.
+ *
+ * Facts come from src/content/help/assets-library.md and history.md; button
+ * and panel names are quoted from there. Every picture is a real capture from
+ * src/data/app-shots.ts. The anonymizer is framed as privacy and clean
+ * delivery files, never as a way to hide AI use, and the page says plainly
+ * that labeling AI-made content stays the user's job.
+ *
+ * Copy: content-quality-us deck, scratchpad cq/app-library/final.md.
+ * No ordinal numerals in any repeated block.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+
+/** Crop formats of the Image editor. Each chip draws its frame at the true ratio. */
+const rawFormats: { name: string; ratio: string; w?: number; h?: number }[] = [
+  { name: 'Square', ratio: '1:1', w: 1, h: 1 },
+  { name: 'Portrait', ratio: '4:5', w: 4, h: 5 },
+  { name: 'Story', ratio: '9:16', w: 9, h: 16 },
+  { name: 'Wide', ratio: '16:9', w: 16, h: 9 },
+  { name: 'Link', ratio: '1.91:1', w: 1.91, h: 1 },
+  { name: 'Photo', ratio: '3:2', w: 3, h: 2 },
+  { name: 'Screen', ratio: '4:3', w: 4, h: 3 },
+  { name: 'Free', ratio: 'any shape' },
+  { name: 'Original', ratio: 'as it came' },
+];
+const BOX = 18;
+const formats = rawFormats.map((f) => {
+  if (!f.w || !f.h) return { ...f, style: undefined };
+  const k = BOX / Math.max(f.w, f.h);
+  return { ...f, style: `width: ${(f.w * k).toFixed(1)}px; height: ${(f.h * k).toFixed(1)}px` };
+});
+
+const panels = [
+  {
+    title: 'Crop',
+    text: 'Pick the network’s format in one click, then turn or mirror the picture if it needs it.',
+    shot: appShots.editorCrop,
+  },
+  {
+    title: 'Light and looks',
+    text: 'Set light and color on eight sliders under Adjust, then lay one look on top under Effects, such as Mono, Noir, Sepia or Vintage.',
+    shot: appShots.editorEffects,
+  },
+  {
+    title: 'Draw and write',
+    text: 'Add captions in the font you want, and draw arrows, lines, boxes and circles that stay editable until you save.',
+    shot: appShots.editorDraw,
+  },
+  {
+    title: 'Save',
+    text: 'Keep a copy in the library, replace an uploaded file with a new version, or just download it as PNG, JPG or WebP.',
+    shot: appShots.editorSave,
+  },
+];
+
+const hidden = ['Camera data', 'Location', 'Editing records', 'Content credentials'];
+
+const nextLinks = [
+  { lead: 'Make the pictures and clips', name: 'Create', href: '/app/create' },
+  { lead: 'Post them', name: 'Publish', href: '/app/publish' },
+  { lead: 'Get them approved', name: 'Review', href: '/app/review' },
+];
+
+const faqs = [
+  {
+    q: 'Are the Image editor and the Image anonymizer really free?',
+    a: 'Yes. Editing a picture and cleaning one cost nothing. If you save the result to the library, it’s stored like any other file.',
+  },
+  {
+    q: 'Does the anonymizer upload my pictures?',
+    a: 'No. The picture is read and rebuilt on the page, in your browser. The clean copy exists only on that page until you download it.',
+  },
+  {
+    q: 'What does storing files cost?',
+    a: 'The team pays a small daily charge for the space its files take, and a small charge when a file is downloaded, both from the team balance. Each charge is listed on the usage page in the app. Delete what you don’t need and the charge drops the next day. There’s no subscription and no seat fee; the team tops up a prepaid balance and pays as it goes.',
+  },
+  {
+    q: 'How large can a file be?',
+    a: 'Up to 50 MB per file. The Image editor works on pictures up to 4,096 pixels on the long side; a larger picture is edited at that size, and the Save panel says so.',
+  },
+  {
+    q: 'Which pictures can the editor open?',
+    a: 'JPG, PNG, WebP, GIF and AVIF. It saves as PNG, JPG or WebP.',
+  },
+  {
+    q: 'Can the editor work on video?',
+    a: 'No, it edits pictures only. A clip in History or the library has no Edit button. Clips come from the Video studio.',
+  },
+  {
+    q: 'Can our clients see the library?',
+    a: 'No. A client login doesn’t see the Assets Library. What you make for a client reaches them in their Client space.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Library', item: `${SITE}/app/library` },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Assets Library, Image editor and anonymizer | hubStudio"
+  description="Keep your team’s files in folders with tags, versions and search, then crop, adjust and clean pictures in two free tools that run in your browser."
+  preloadImage={appShots.library.src}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="lb-hero">
+    <div class="container lb-hero__grid">
+      <div class="lb-hero__copy">
+        <nav class="lb-crumbs" aria-label="Breadcrumb">
+          <a href="/app">The app</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Library</span>
+        </nav>
+        <h1 class="headline h1 lb-hero__title">
+          From render to ready file, in the same <span class="accent">app</span>.
+        </h1>
+        <p class="lead lb-hero__lead">
+          The Assets Library keeps every file your team makes or uploads. Beside it, the Image
+          editor gets a picture into shape for each network, and the Image anonymizer cleans out
+          the data hidden in the file. Both run in your browser, and neither costs anything.
+        </p>
+        <div class="lb-hero__cta">
+          <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          <Button variant="secondary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
+          <a class="lb-arrow" href="/app">See the whole app <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="lb-hero__shot">
+        <AppShot
+          shot={appShots.library}
+          path="/files"
+          eager
+          caption="The Assets Library: every file of the team, in folders, searchable and tagged."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The library ===== -->
+  <section class="lb-sheet lb-sheet--white" id="assets-library">
+    <div class="container">
+      <header class="lb-head">
+        <span class="eyebrow">Assets Library</span>
+        <h2 class="headline h2 reveal">The team’s files, in folders you <span class="accent">choose</span>.</h2>
+      </header>
+      <div class="lb-cols">
+        <p class="lb-p">
+          Every render your team makes lands in the library on its own. So does every file you
+          upload, whether it’s a reference frame in the video studio or a picture for a post.
+          Anyone on the team can see what the others added, so nobody has to ask where last week’s
+          packshot went.
+        </p>
+        <p class="lb-p">
+          You sort it into folders, drag a file onto a folder to move it, and tag it with your own
+          words: “spring launch,” “approved,” a client’s name. Search reads file names, prompts,
+          texts and tags across the whole library. Filters narrow it by type, date, tag or who
+          added it. Tick several files and you can move or tag them in one go. Deleting works the
+          same way. Each file’s Actions menu covers the rest: view it, download it, open it in the
+          editor, upload a new version, rename it or move it.
+        </p>
+      </div>
+
+      <div class="lb-rules">
+        <div class="lb-rules__copy">
+          <p class="lb-p">
+            Two rules worth knowing. Only the person who added a file can delete it. That means a
+            folder holding a teammate’s files can’t be deleted by you, and deleting any folder
+            takes everything inside with it. And only files you upload take versions: upload a
+            newer one and the old one moves under Versions. Renders don’t. Each file can weigh up
+            to 50 MB.
+          </p>
+          <p class="lb-p">
+            If you’ve used History, the renders here will look familiar. History lists them with
+            the prompt, engine and cost of each; the library files them with your uploads, in your
+            folders.
+          </p>
+          <a class="lb-arrow" href="/help/assets-library">
+            The Assets Library in detail <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <AppShot
+          shot={appShots.libraryActions}
+          path="/files"
+          caption="The Actions menu: view, download, edit, version, tag, rename, move."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The Image editor ===== -->
+  <section class="lb-sheet lb-sheet--cream" id="image-editor">
+    <div class="container">
+      <header class="lb-head">
+        <span class="eyebrow">Image editor</span>
+        <h2 class="headline h2 reveal">
+          Crop it for the network, then finish it <span class="accent">here</span>.
+        </h2>
+        <p class="lb-p">
+          Once you’ve found the picture, it often needs a change before it ships: a different
+          shape for Stories, a caption, the client’s logo. The Image editor opens from wherever the
+          picture is: the Tools page, a file in the library, a card in History, a finished render
+          in the image studio, or a picture on a post. It’s free and runs in your browser. Nothing
+          leaves your computer until you save.
+        </p>
+      </header>
+
+      <ul class="lb-formats" aria-label="Crop formats">
+        {
+          formats.map((f) => (
+            <li class="lb-format">
+              <span
+                class:list={['lb-format__shape', !f.style && 'lb-format__shape--open']}
+                style={f.style}
+                aria-hidden="true"
+              />
+              <span class="lb-format__name">{f.name}</span>
+              <span class="lb-format__ratio">{f.ratio}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="lb-panels">
+        {
+          panels.map((p) => (
+            <article class="lb-panel reveal">
+              <AppShot shot={p.shot} path="/files" />
+              <h3 class="lb-panel__title">{p.title}</h3>
+              <p class="lb-panel__text">{p.text}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="lb-cols lb-editor__more">
+        <p class="lb-p">
+          You can also put a logo over a picture and send it to one of nine spots, from top left
+          to bottom right. A light logo in a corner makes a watermark. Undo covers the last 60
+          steps.
+        </p>
+        <p class="lb-p">
+          On a post, the pencil on a picture opens the editor right there, in the LinkedIn,
+          Instagram, Facebook and X modules. Save, and the edited copy takes the old picture’s
+          place in the post, while the original stays in the library.
+        </p>
+      </div>
+      <a class="lb-arrow" href="/help/assets-library#the-image-editor">
+        Every panel of the Image editor <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== The Image anonymizer ===== -->
+  <section class="lb-sheet lb-sheet--ink grain" id="image-anonymizer">
+    <div class="container lb-anon__grid">
+      <div class="lb-anon__copy">
+        <span class="eyebrow lb-eyebrow--dark">Image anonymizer</span>
+        <h2 class="headline h2 reveal">
+          See what a file carries before you <span class="accent">send</span> it.
+        </h2>
+        <ul class="lb-hidden" aria-label="What the anonymizer shows">
+          {
+            hidden.map((h) => (
+              <li class="chip lb-hidden__chip">
+                <span class="chip__dot" aria-hidden="true" />
+                {h}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="lb-p lb-p--dark">
+          This part is easy to skip, and shouldn’t be. A picture file can hold a lot more than the
+          picture. A phone photo can carry the place it was taken. Many files name the camera that
+          took them. Some keep a record of how they were edited, or hold content credentials. Most
+          of the time, you don’t want any of that going to a client or onto a public feed.
+        </p>
+        <p class="lb-p lb-p--dark">
+          The Image anonymizer shows you that hidden data first. Then it rebuilds the picture,
+          pixel by pixel, into a new file that carries none of it, under a neutral file name. It
+          all happens in your browser. Nothing is uploaded or stored, and the clean copy lives on
+          the page until you download it.
+        </p>
+        <p class="lb-p lb-p--dark">
+          It cleans what’s written into the file, not the picture itself, so a watermark drawn
+          into the pixels stays. Use it only on pictures you have the rights to. And if a platform
+          or a law asks you to label AI-made content, that labeling is still your job.
+        </p>
+      </div>
+      <div class="lb-anon__shot">
+        <AppShot
+          shot={appShots.libraryTools}
+          path="/files/tools/image-editor"
+          dark
+          caption="The Tools page, open on the Image editor. The Tool switch at the top moves to the anonymizer."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The rest of the app ===== -->
+  <section class="lb-next">
+    <div class="container">
+      <h2 class="lb-next__label">Where the files come from, and where they go</h2>
+      <div class="lb-next__grid">
+        {
+          nextLinks.map((l) => (
+            <a class="lb-next__card" href={l.href}>
+              <span class="lb-next__lead">{l.lead}</span>
+              <span class="lb-next__name">
+                {l.name} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="lb-faq" id="faq">
+    <div class="container lb-faq__grid">
+      <header class="lb-faq__head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">What people ask about the <span class="accent">library</span>.</h2>
+        <p class="lb-updated">Updated September 2026</p>
+      </header>
+      <div class="lb-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="lb-qa">
+              <summary>
+                <h3 class="lb-qa__q">{f.q}</h3>
+                <span class="lb-qa__icon" aria-hidden="true" />
+              </summary>
+              <p class="lb-qa__a">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <DualCta />
+</Layout>
+
+<style>
+  /* ---- Shared ------------------------------------------------ */
+  .lb-p {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .lb-p + .lb-p {
+    margin-top: 18px;
+  }
+  .lb-p--dark {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .lb-eyebrow--dark {
+    color: var(--brand-orange);
+  }
+  .headline .accent {
+    color: var(--brand-orange);
+  }
+  .lb-head {
+    display: grid;
+    gap: 14px;
+    max-width: 780px;
+    margin-bottom: clamp(32px, 4vw, 52px);
+  }
+  .lb-head .lb-p {
+    margin-top: 6px;
+  }
+  .lb-cols {
+    display: grid;
+    gap: 18px 56px;
+  }
+  @media (min-width: 900px) {
+    .lb-cols {
+      grid-template-columns: 1fr 1fr;
+    }
+    .lb-cols .lb-p + .lb-p {
+      margin-top: 0;
+    }
+  }
+  .lb-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .lb-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .lb-arrow:hover span {
+    transform: translateX(6px);
+  }
+
+  /* Sheet stacking: each section overlaps the one above it. */
+  .lb-sheet {
+    position: relative;
+    margin-top: -48px;
+    padding-block: clamp(88px, 10vw, 150px) clamp(96px, 11vw, 168px);
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+  }
+  .lb-sheet--white {
+    background: var(--bg-white);
+  }
+  .lb-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .lb-sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+
+  /* ---- Hero -------------------------------------------------- */
+  .lb-hero {
+    background: var(--bg-cream);
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(96px, 10vw, 150px);
+  }
+  .lb-hero__grid {
+    display: grid;
+    gap: clamp(44px, 6vw, 72px);
+  }
+  @media (min-width: 1080px) {
+    .lb-hero__grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+    }
+  }
+  .lb-crumbs {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .lb-crumbs a:hover {
+    color: var(--brand-orange);
+  }
+  .lb-hero__title {
+    margin-top: 18px;
+    max-width: 13ch;
+    letter-spacing: -0.035em;
+  }
+  /* Two columns leave the headline half the width: scale it to fit. */
+  @media (min-width: 1080px) {
+    .lb-hero__title {
+      font-size: clamp(56px, 5.6vw, 78px);
+    }
+  }
+  .lb-hero__lead {
+    margin-top: 24px;
+    max-width: 52ch;
+  }
+  .lb-hero__cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+  }
+
+  /* ---- Library ----------------------------------------------- */
+  .lb-rules {
+    margin-top: clamp(48px, 6vw, 80px);
+    display: grid;
+    gap: clamp(36px, 5vw, 64px);
+  }
+  @media (min-width: 960px) {
+    .lb-rules {
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: center;
+    }
+  }
+  .lb-rules__copy {
+    display: grid;
+    justify-items: start;
+    gap: 0;
+  }
+  .lb-rules__copy .lb-arrow {
+    margin-top: 22px;
+  }
+
+  /* ---- Image editor ------------------------------------------ */
+  .lb-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: clamp(44px, 5vw, 68px);
+  }
+  .lb-format {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px 9px 12px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-pill);
+  }
+  /* Each chip draws its own frame at the true ratio, inside an 18px box. */
+  .lb-format__shape {
+    flex: none;
+    border: 1.5px solid var(--brand-orange);
+    border-radius: 2px;
+  }
+  .lb-format__shape--open {
+    width: 18px;
+    height: 14px;
+    border-style: dashed;
+    border-color: var(--text-mute);
+  }
+  .lb-format__name {
+    font-size: var(--type-small);
+    font-weight: 600;
+  }
+  .lb-format__ratio {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+
+  .lb-panels {
+    display: grid;
+    gap: clamp(36px, 4vw, 52px) var(--gap-card);
+  }
+  @media (min-width: 860px) {
+    .lb-panels {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .lb-panel__title {
+    margin-top: 22px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .lb-panel__text {
+    margin-top: 8px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+    max-width: 52ch;
+  }
+  .lb-editor__more {
+    margin: clamp(48px, 6vw, 80px) 0 24px;
+  }
+
+  /* ---- Anonymizer -------------------------------------------- */
+  .lb-sheet--ink::before {
+    content: '';
+    position: absolute;
+    left: -12%;
+    bottom: -30%;
+    width: 60%;
+    height: 90%;
+    background: radial-gradient(closest-side, rgba(233, 78, 27, 0.24), transparent);
+    filter: blur(24px);
+    pointer-events: none;
+  }
+  .lb-anon__grid {
+    position: relative;
+    display: grid;
+    gap: clamp(40px, 5vw, 72px);
+  }
+  @media (min-width: 1020px) {
+    .lb-anon__grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  .lb-anon__copy {
+    display: grid;
+    gap: 14px;
+  }
+  .lb-anon__copy .headline {
+    color: var(--text-on-dark);
+  }
+  .lb-anon__copy .lb-p + .lb-p {
+    margin-top: 4px;
+  }
+  .lb-hidden {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 12px;
+  }
+  .lb-hidden__chip {
+    border: 1px solid rgba(240, 237, 233, 0.22);
+    color: var(--text-on-dark);
+  }
+  .lb-hidden__chip .chip__dot {
+    background: var(--brand-orange);
+  }
+
+  /* ---- Rest of the app --------------------------------------- */
+  .lb-next {
+    background: var(--bg-white);
+    padding-block: clamp(64px, 8vw, 110px);
+  }
+  .lb-next__label {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 22px;
+  }
+  .lb-next__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .lb-next__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .lb-next__card {
+    display: grid;
+    gap: 10px;
+    padding: clamp(24px, 2.6vw, 32px);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .lb-next__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.1);
+  }
+  .lb-next__lead {
+    font-size: var(--type-body);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .lb-next__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .lb-next__name span {
+    display: inline-block;
+    color: var(--brand-orange);
+    transition: transform 160ms ease-out;
+  }
+  .lb-next__card:hover .lb-next__name span {
+    transform: translateX(6px);
+  }
+
+  /* ---- FAQ --------------------------------------------------- */
+  .lb-faq {
+    background: var(--bg-cream);
+    padding-block: clamp(88px, 10vw, 150px);
+  }
+  .lb-faq__grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 960px) {
+    .lb-faq__grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .lb-faq__head {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+  }
+  .lb-faq__head {
+    display: grid;
+    gap: 14px;
+  }
+  .lb-updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .lb-faq__list {
+    border-top: 1px solid var(--line-strong);
+  }
+  .lb-qa {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .lb-qa summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+    cursor: pointer;
+  }
+  .lb-qa summary::-webkit-details-marker {
+    display: none;
+  }
+  .lb-qa__q {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+  .lb-qa summary:hover .lb-qa__q {
+    color: var(--brand-orange-cta);
+  }
+  .lb-qa__icon {
+    position: relative;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+  }
+  .lb-qa__icon::before,
+  .lb-qa__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 1.5px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 200ms ease-out;
+  }
+  .lb-qa__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .lb-qa[open] .lb-qa__icon::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .lb-qa__a {
+    padding-bottom: 24px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

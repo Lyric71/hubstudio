@@ -44,6 +44,49 @@ export interface InsightPlacement {
 }
 
 export const insightPlacements = {
+  /* App buyers. Which engines lead and how they work, before a first run. */
+  app: {
+    route: '/app',
+    eyebrow: 'Further reading',
+    heading: 'Know the engines before you',
+    emphasis: 'run',
+    intro:
+      'Which image and video models lead this year, how they work under the hood, and what a usable shot takes. Background for picking an engine in Explore.',
+    categories: ['AI Foundations', 'AI Video'],
+    /* The roster is the page's natural companion: it names the engines. */
+    pinned: ['the-2026-model-roster'],
+    limit: 3,
+  },
+
+  /* Studio buyers. Run the tools yourself or hand the work over, and how. */
+  studio: {
+    route: '/studio',
+    eyebrow: 'Further reading',
+    heading: 'Choosing how to',
+    emphasis: 'buy',
+    intro:
+      'Whether to run the tools yourself or hand the work to a studio, what a proposal should hold, and how production runs once the brief is signed.',
+    categories: ['Buying models', 'Production'],
+    /* The app-or-studio question, answered at length. */
+    pinned: ['automation-platform-or-production-partner'],
+    /* Buying models and Production answer different questions: keep both. */
+    balance: true,
+    limit: 3,
+  },
+
+  /* Agency buyers. White-label production and serving clients from one app. */
+  agencies: {
+    route: '/solutions/agencies',
+    eyebrow: 'Further reading',
+    heading: 'Before you put us behind your',
+    emphasis: 'name',
+    intro:
+      'How agencies buy production they sell under their own brand, and the questions to ask any production partner before the first client brief goes out.',
+    categories: ['Buying models'],
+    pinned: ['agency-white-label-question'],
+    limit: 3,
+  },
+
   /* Buying decision. Cost method and the model comparison. */
   pricing: {
     route: '/pricing',
@@ -51,7 +94,7 @@ export const insightPlacements = {
     heading: 'Read before you',
     emphasis: 'budget',
     intro:
-      'Where the numbers on this page come from. What a unit costs as volume rises, what a quoted price actually includes, and how to weigh one way of buying production against another.',
+      'What a unit costs as volume rises, what a quoted price actually includes, and how to weigh one way of buying production against another.',
     categories: ['Cost', 'Buying models'],
     /* Two different buyer questions: keep one of each on the layer. */
     balance: true,
@@ -100,7 +143,7 @@ export const insightPlacements = {
 
   /* Studio method. The long-form version of how the pipeline runs. */
   aiExcellence: {
-    route: '/the-studio/ai-excellence',
+    route: '/studio/ai-excellence',
     eyebrow: 'Further reading',
     heading: 'How the work gets',
     emphasis: 'made',

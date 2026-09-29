@@ -31,7 +31,7 @@ new equivalent.
 - **Real 404 for genuinely dead URLs.** A clean 404 (the new `/404.astro`) is
   better than a misleading redirect.
 
-## 3. Host strategy (www is canonical) — SUPERSEDED, see note
+## 3. Host strategy (www is canonical): SUPERSEDED, see note
 
 > **Shipped reality (2026-07-14).** This section originally planned a move to
 > the apex. The site shipped the other way round: **`www.hubstudio.ai` is the
@@ -99,7 +99,7 @@ match, confirm before launch. **C** = no successor, routed to the section hub.
 | `/howto/` | `/resources/how-to` | A |
 | `/ai-content-copyright-legal-faq-guide/` | `/resources/copyright-and-ai` | A |
 | `/ai-content-creation-solutions-for-fashion-brands-taylor-made-aigc-framework/` | `/solutions/brands` | B |
-| `/hub4you-taylor-made-aigc-agent-solution-is-saas-model/` | `/solutions` | B |
+| `/hub4you-taylor-made-aigc-agent-solution-is-saas-model/` | `/app` | B |
 
 **No rule needed** (path unchanged, host/slash normalization handles it):
 `/the-studio/` -> `/the-studio`, `/partner-program/` -> `/partner-program`,
@@ -171,10 +171,9 @@ AI-generator style). The 301s now point at the live ported URLs.
 ## 5. Decisions (resolved)
 
 1. **`/hub4you-taylor-made-aigc-agent-solution-is-saas-model/`** routes to
-   `/solutions`. No dedicated hub4you / SaaS-platform page exists; the
-   topically relevant section hub was chosen over the homepage to avoid a
-   soft-404. If a hub4you page ships later, repoint this rule, the URL was a
-   named product and likely carries backlinks.
+   `/app`, the hubStudio app page. The old product name is retired; the
+   legacy URL was a named product and likely carries backlinks, so it points
+   at the app page (as `/hub4you` does) rather than at a section hub.
 2. **`/ai-content-creation-solutions-for-fashion-brands-...`** routes to
    `/solutions/brands`. No industry-specific solution page exists; the audience
    hub is the closest relevant target. Repoint if a fashion page ships.
@@ -185,7 +184,7 @@ AI-generator style). The 301s now point at the live ported URLs.
    now a live article under `/resources/insights/` with its own page and
    equity. See 4.3.
 
-## 6. Implementation: `vercel.json` — SHIPPED 2026-07-14
+## 6. Implementation: `vercel.json`: SHIPPED 2026-07-14
 
 > **Status: live.** The 64 rules are in `vercel.json`. The shipped version
 > differs from the JSON block below in two ways, both required by the
@@ -217,7 +216,7 @@ come first and the `www` catch-all comes last.
     { "source": "/linkedin-aigc-for-b2b-transform-content-marketing-with-ai-generated-results", "destination": "https://hubstudio.ai/solutions/platforms/linkedin", "statusCode": 301 },
     { "source": "/ai-tiktok-video-creation-aigc-studio-services-solutions", "destination": "https://hubstudio.ai/solutions/platforms/tiktok", "statusCode": 301 },
     { "source": "/ai-content-creation-solutions-for-fashion-brands-taylor-made-aigc-framework", "destination": "https://hubstudio.ai/solutions/brands", "statusCode": 301 },
-    { "source": "/hub4you-taylor-made-aigc-agent-solution-is-saas-model", "destination": "https://hubstudio.ai/solutions", "statusCode": 301 },
+    { "source": "/hub4you-taylor-made-aigc-agent-solution-is-saas-model", "destination": "https://hubstudio.ai/app", "statusCode": 301 },
     { "source": "/aigc-image-creation", "destination": "https://hubstudio.ai/solutions/ai-production/image", "statusCode": 301 },
     { "source": "/aigc-video-creation", "destination": "https://hubstudio.ai/solutions/ai-production/video", "statusCode": 301 },
     { "source": "/aigc-content-creation-ai-copywriting-studio-hubstudio", "destination": "https://hubstudio.ai/solutions/ai-production/content", "statusCode": 301 },

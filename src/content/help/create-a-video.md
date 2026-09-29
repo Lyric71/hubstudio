@@ -5,10 +5,10 @@ description: "Render a clip from a prompt, open it on a picture of yours, or fee
 excerpt: "The video studio: text to video, image to video and references, priced per second before the render, with every clip saved in your History."
 section: "studio"
 order: 4
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/content/video"]
 audience: "Everyone"
-related: ["explore", "create-an-image", "history", "assets-library", "validation", "your-team", "skills", "credits-and-payments", "troubleshooting"]
+related: ["explore", "create-an-image", "history", "assets-library", "validation", "your-team", "skills", "balance-and-payments", "troubleshooting"]
 shots:
   - file: "/Images/help/create-a-video-studio.webp"
     route: "/content/video"
@@ -25,7 +25,7 @@ The page has three parts: the **Engine** on top, the form on the left with one t
 
 ## Choose an engine
 
-The **Engine** list shows each engine with its lowest price per second (**from $X/s**). One engine reads **priced per token** instead: see [Engines priced after the run](#engines-priced-after-the-run). The studio opens on the least expensive engine.
+The **Engine** list shows each engine with its lowest price per second, after the word **from**. One engine reads **priced per token** instead: see [Engines priced after the run](#engines-priced-after-the-run). The studio opens on the least expensive engine.
 
 Engines are added over time, so your list may hold more than this table.
 
@@ -87,7 +87,7 @@ Creators and admins see **Made for** among the options, as in the image studio. 
 
 ## The price per second
 
-Video is priced per second of clip. Next to the button, the total reads **$X for a Ns clip**: the price per second of your setup times the duration. It follows the engine, the resolution or mode, the sound and the length. What you see is what you pay, and a render is charged only when it succeeds.
+Video is priced per second of clip. Next to the button, the total gives the price of the clip at its length: the price per second of your setup times the duration. It follows the engine, the resolution or mode, the sound and the length. What you see is what you pay, and a render is charged only when it succeeds.
 
 ### Engines priced after the run
 

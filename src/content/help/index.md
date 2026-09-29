@@ -1,11 +1,11 @@
 ---
 title: "hubStudio Help"
 seoTitle: "hubStudio Help Center"
-description: "Guides for hubStudio: getting started, the Explore gallery, the image and video studios, History, the Assets Library and its Image editor, skills, LinkedIn, Instagram, Facebook, TikTok and X, Validation, teams and their clients, the Client space, credits, your account and troubleshooting."
+description: "Guides for hubStudio: getting started, the Explore gallery, the image and video studios, History, the Assets Library and its Image editor, skills, LinkedIn, Instagram, Facebook, TikTok and X, Validation, teams and their clients, the Client space, your balance and payments, your account and troubleshooting."
 excerpt: "Everything you need to make images, videos and posts with hubStudio, alone or with your team, and to deliver them to your clients."
 section: "home"
 order: 0
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: []
 audience: "Everyone"
 related: []
@@ -13,7 +13,7 @@ shots: []
 sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/middleware.ts"]
 ---
 
-hubStudio makes images and videos with the AI engines of several makers, turns them into posts for LinkedIn, Instagram, Facebook, TikTok and X, and delivers them to the clients your team works for, for you alone or for your whole team, paid from one balance of prepaid credits. These guides follow the menu, from your first render to your team, your clients and your invoices.
+hubStudio makes images and videos with the AI engines of several makers, turns them into posts for LinkedIn, Instagram, Facebook, TikTok and X, and delivers them to the clients your team works for, for you alone or for your whole team, paid from one prepaid balance. These guides follow the menu, from your first render to your team, your clients and your invoices.
 
 ## Start here
 
@@ -44,7 +44,7 @@ hubStudio makes images and videos with the AI engines of several makers, turns t
 
 ## Your money and your account
 
-16. [Credits and payments](/help/credits-and-payments): 1 credit = 1 USD, the team's pool then your own credits, buying by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log.
+16. [Balance and payments](/help/balance-and-payments): a prepaid balance in US dollars, the team balance then your own, topping up by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log.
 17. [Account and sign-in](/help/account-and-sign-in): the sign-in page in your language, your name, picture, email and password, the sign-in code by email, your social accounts on My Connections, the connection check, light or dark, date and time, My models, voice input and password reset.
 18. [Partners](/help/partners): the partner area, for commercial partners only.
 

@@ -5,10 +5,10 @@ description: "What hubStudio is, how to create your account alone or with a team
 excerpt: "Create your account, find your way around the menu and render your first image in a few minutes."
 section: "getting-started"
 order: 1
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/signup", "/login", "/explore"]
 audience: "Everyone"
-related: ["explore", "create-an-image", "assets-library", "linkedin", "validation", "credits-and-payments", "your-team", "account-and-sign-in", "client-space"]
+related: ["explore", "create-an-image", "assets-library", "linkedin", "validation", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
 shots:
   - file: "/Images/help/getting-started-menu.webp"
     route: "/explore"
@@ -20,15 +20,15 @@ sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/lib/auth.ts", "src/
 
 hubStudio is a studio for images, video and social posts made with AI. It gathers the image and video engines of several makers (OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax and Meta) in one place. You pick an engine, describe what you want, see the price, and run it. Everything you make is saved in your History and in the Assets Library, where you can also edit a picture. From there, you can write posts for LinkedIn, Instagram, Facebook, TikTok and X and publish them on your own accounts, have work approved in Validation, and deliver it to the clients your team works for.
 
-Every run is paid from prepaid credits. One credit equals one US dollar. You can work alone, or in a team that shares one pool of credits.
+Every run is charged against a prepaid balance held in US dollars. You can work alone, or in a team that shares one balance.
 
 ## Create your account
 
 1. On the sign-in page, click **Create an account**.
 2. Type your **First name**, **Last name** and **Email**.
 3. Under **How you work**, pick one of the three options:
-   - **Just me**: "Create on your own, with your own credits. You can invite people later." hubStudio opens a team of one for you, named after you, and you are its administrator.
-   - **Create a team**: "You run it: invite people, and they create from one shared pool of credits." A name field appears: type the name of your team.
+   - **Just me**: you create on your own, paid from your own balance, and can invite people later. hubStudio opens a team of one for you, named after you, and you are its administrator.
+   - **Create a team**: you run it, invite people, and they create from one shared balance. A name field appears: type the name of your team.
    - **Join a team**: "Your team already uses hubStudio: an admin lets you in." A field appears where you type your team's name or your admin's email address.
 4. Tick the box to accept the Terms of Service.
 5. Click **Send my code**. hubStudio emails you a 6-digit code. Nothing is created before you enter it.
@@ -67,8 +67,8 @@ The menu on the left holds the studio first, then the networks and Validation, t
 | **Validation** | The work waiting for someone's approval, and what you sent for approval. See [Validation](/help/validation). |
 | **Skills** | **My skills**, **Team skills** (administrators only) and the **Catalog**. See [Skills](/help/skills). |
 | **Partner** | Only for commercial partners. See [Partners](/help/partners). |
-| **Team** | The people who share your credits, and your clients. See [Your team](/help/your-team). |
-| **Credits** | **Buy credits**, **Invoices** and **Usage**. See [Credits and payments](/help/credits-and-payments). |
+| **Team** | The people who share your balance, and your clients. See [Your team](/help/your-team). |
+| **Credits** | Your balance: **Buy credits** to top it up, **Invoices** and **Usage**. See [Balance and payments](/help/balance-and-payments). |
 
 A client login sees a much shorter menu: **Client space** and **Validation**. See [Client space](/help/client-space).
 
@@ -77,7 +77,7 @@ A client login sees a much shorter menu: **Client space** and **Validation**. Se
 The bar at the top of every page holds:
 
 - **Activity**: the renders, drafts and checks running for you, and how they ended. It keeps following a run while you move to another page.
-- Your credits: the amount you can spend right now. Click it to buy more. A client login has no credits, so it sees no amount here.
+- Your balance: the amount you can spend right now. Click it to top up. A client login has no balance, so it sees no amount here.
 - A sun or moon button that switches between light and dark.
 - Your picture, which opens a menu with **User Settings**, **Billing & credits**, **Team**, **My Connections** (your social accounts) and **Sign out**.
 
@@ -85,7 +85,7 @@ The footer links to the **Help center**, **Report a bug**, **Contact us** and **
 
 ## Your first render
 
-1. Make sure you have credits. The amount in the top bar is what you can spend. If it's at zero, open **Credits** > **Buy credits** first. See [Credits and payments](/help/credits-and-payments).
+1. Make sure your balance isn't empty. The amount in the top bar is what you can spend. If it's at zero, top up first on **Credits** > **Buy credits**. See [Balance and payments](/help/balance-and-payments).
 2. Open **Explore** and pick an image engine. Each card shows what one run costs. Click the card: the image studio opens, already set on that engine.
 3. In the box **Describe your image**, write what you want to see: the subject, the light, the surface, the mood.
 4. Look at the price next to the **Generate image** button. It is what the run will cost.

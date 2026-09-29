@@ -5,10 +5,10 @@ description: "Everything you and your team made, newest first: find a piece, ope
 excerpt: "Every image and video rendered in the studios, with its prompt, engine and cost, ready to download or to reuse."
 section: "library"
 order: 5
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/history"]
 audience: "Everyone"
-related: ["assets-library", "create-an-image", "create-a-video", "your-team", "client-space", "validation", "credits-and-payments"]
+related: ["assets-library", "create-an-image", "create-a-video", "your-team", "client-space", "validation", "balance-and-payments"]
 shots:
   - file: "/Images/help/history-page.webp"
     route: "/history"
@@ -45,7 +45,7 @@ Click the picture or the clip to see it full size. On a picture, the viewer also
 
 **Download** saves the original file to your computer.
 
-Downloads are billed like any download of a stored file: a small transfer charge, taken from your credits and listed in **Credits** > **Usage** as **File download (transfer)**.
+Downloads are billed like any download of a stored file: a small transfer charge against your balance, listed in **Usage** (under **Credits** in the menu) as **File download (transfer)**.
 
 ## Edit a picture
 
@@ -73,6 +73,6 @@ You can delete the pieces you made yourself. Deleting a file also stops its stor
 
 ## What storing files costs
 
-Files are kept until someone deletes them. Storing them has a small rent, paid from your team's credits: hubStudio charges it once a day for the space the team's files take up. It shows in **Credits** > **Usage** as **File storage (daily)**.
+Files are kept until someone deletes them. Storing them has a small rent, charged against the team balance: hubStudio charges it once a day for the space the team's files take up. It shows in **Usage** as **File storage (daily)**.
 
-The rent follows the size of what you keep, so large clips cost more to store than small pictures. Delete what you no longer need and the rent goes down from the next day. When there are no credits left, new files can't be uploaded until you buy more; the files you already have stay where they are.
+The rent follows the size of what you keep, so large clips cost more to store than small pictures. Delete what you no longer need and the rent goes down from the next day. When the balance is empty, new files can't be uploaded until you top up; the files you already have stay where they are.

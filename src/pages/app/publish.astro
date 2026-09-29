@@ -1,0 +1,921 @@
+---
+/**
+ * /app/publish: social publishing for LinkedIn, Instagram, Facebook, TikTok
+ * (Beta) and X, with scheduling, the queue, re-purposing, approval and
+ * My Connections.
+ *
+ * Facts come from src/content/help/linkedin.md, instagram.md, facebook.md,
+ * tiktok.md, x.md, account-and-sign-in.md and validation.md; button and panel
+ * names are quoted from there. Every picture is a real capture from
+ * src/data/app-shots.ts. TikTok carries its Beta label everywhere it is named.
+ * Chinese platforms are not published from the app: the page says so and
+ * points to the studio's platform pages. No price amount anywhere; the only
+ * paid send (a post to X) is described as "shows its price before you send".
+ *
+ * Copy: content-quality-us deck, scratchpad cq/app-publish/final.md.
+ * No ordinal numerals in any repeated block; the flow is an <ol> with its
+ * markers suppressed.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import type { AppShot as Shot } from '../../data/app-shots';
+import { APP_SIGNUP } from '../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+
+const flow = [
+  {
+    title: 'Brief it',
+    text: 'Say the angle and who it’s for. Attach files or web pages for the AI to read, and keywords to target. Then click Draft with AI, or Write it myself, which calls no AI and costs nothing.',
+  },
+  {
+    title: 'Shape the copy',
+    text: 'Every version is kept. Ask for another version (“shorter”, “end on a question”), or highlight one passage and rewrite only that.',
+  },
+  {
+    title: 'Add the pictures',
+    text: 'Render with AI, pick from the Assets Library, or upload from your computer. One picture or a carousel, or a video where the network takes one.',
+  },
+  {
+    title: 'Get it approved, if you need to',
+    text: 'Send for validation locks the post until the validator decides.',
+  },
+  {
+    title: 'Publish now or schedule it',
+    text: 'Send it to up to 20 accounts at once. Then follow it in the queue.',
+  },
+];
+
+type Network = {
+  id: string;
+  name: string;
+  beta?: boolean;
+  body: string;
+  body2: string;
+  shots: { shot: Shot; path: string }[];
+  studio?: { label: string; href: string };
+};
+
+const networks: Network[] = [
+  {
+    id: 'linkedin',
+    name: 'LinkedIn',
+    body: 'Post on your profile and on the company pages LinkedIn lists you as an admin of. Text only, one image, or a carousel of up to eight slides. Publish as a feed post, or as an article with a link. Choose who sees it (anyone on LinkedIn, or connections only) and turn off reposts if you want. Only the first lines show before “see more,” so put the point up top.',
+    body2: 'Video doesn’t go to LinkedIn from hubStudio yet.',
+    shots: [{ shot: appShots.linkedin, path: '/social/linkedin/posts' }],
+    studio: { label: 'Want the studio to run LinkedIn for you?', href: '/solutions/platforms/linkedin' },
+  },
+  {
+    id: 'instagram',
+    name: 'Instagram',
+    body: 'Instagram starts from the visual, whether that’s one image, a carousel, or a Reel. Then write the caption with AI or by hand; leave the brief empty and it’s written from the picture alone. Publish a feed post or a Story. A video always goes out as a Reel. You don’t need to prepare files: every picture is converted to a JPEG Instagram accepts.',
+    body2: 'You’ll need a professional account, Business or Creator. No Facebook page is required.',
+    shots: [{ shot: appShots.instagram, path: '/social/instagram/posts' }],
+    studio: { label: 'The studio on Instagram and Facebook', href: '/solutions/platforms/meta' },
+  },
+  {
+    id: 'facebook',
+    name: 'Facebook',
+    body: 'hubStudio posts to Facebook pages, not personal profiles. Text only, pictures, a carousel, or one video. Add a first comment for the links, photo attributions, or hashtags you’d rather keep out of the post itself.',
+    body2: 'A post carries up to 10 pictures, or one clip of up to 20 minutes, never both.',
+    shots: [{ shot: appShots.facebook, path: '/social/facebook/posts' }],
+    studio: { label: 'The studio on Instagram and Facebook', href: '/solutions/platforms/meta' },
+  },
+  {
+    id: 'tiktok',
+    name: 'TikTok',
+    beta: true,
+    body: 'On TikTok the post is the video. Render a clip, pick one from the library, or upload it, then write the caption. The Brief tab goes further: it drafts the hook, a timed script, the on-screen text, and the caption with its hashtags, inside TikTok’s rules. At publishing, TikTok’s settings appear: who can see the post, whether people can comment, duet, or stitch, and whether it promotes a brand.',
+    body2: 'Those choices come from your TikTok account, so anything you switched off in TikTok stays grayed out here.',
+    shots: [
+      { shot: appShots.tiktok, path: '/social/tiktok/brief' },
+      { shot: appShots.tiktokVideo, path: '/social/tiktok/posts' },
+    ],
+    studio: { label: 'Want the studio to run TikTok for you?', href: '/solutions/platforms/tiktok' },
+  },
+  {
+    id: 'x',
+    name: 'X',
+    body: 'Write one post or a thread, with up to four pictures. Choose the hashtags (the app recommends none; on X, three or more cut reach) and the accounts to mention. A link can go in a short follow-up post instead of the first one, because X cuts the reach of posts that open with an outside link. Once a post is live, update it or delete it on X from hubStudio. An update keeps the replies and likes; the link changes, and the old one forwards.',
+    body2: 'X lets only Premium accounts edit a post, and only within an hour of posting. Video doesn’t go to X from hubStudio yet.',
+    shots: [
+      { shot: appShots.x, path: '/social/x/posts' },
+      { shot: appShots.xKnobs, path: '/social/x/posts' },
+    ],
+  },
+];
+
+const statuses = ['Scheduled', 'Sending now', 'Published', 'Did not go out'];
+
+const studioPlatforms = [
+  { name: 'LinkedIn', href: '/solutions/platforms/linkedin' },
+  { name: 'Meta', href: '/solutions/platforms/meta' },
+  { name: 'TikTok', href: '/solutions/platforms/tiktok' },
+];
+
+const chinaPlatforms = [
+  { name: 'WeChat', href: '/solutions/platforms/wechat' },
+  { name: 'RedNote', href: '/solutions/platforms/rednote' },
+  { name: 'Douyin', href: '/solutions/platforms/douyin' },
+  { name: 'Weibo', href: '/solutions/platforms/weibo' },
+];
+
+type Faq = { q: string; a: string; link?: { match: string; href: string } };
+
+const faqs: Faq[] = [
+  {
+    q: 'Which accounts can I publish to?',
+    a: 'LinkedIn profiles and the company pages you manage, Instagram professional accounts (Business or Creator), Facebook pages, TikTok accounts, and X accounts. TikTok is in Beta.',
+  },
+  {
+    q: 'Does publishing cost anything?',
+    a: 'Publishing to LinkedIn, Instagram, Facebook, and TikTok costs nothing, and so does writing a post yourself. Drafting with AI and rendering pictures or clips are paid runs, charged to your prepaid balance and priced where you work. On X, each post sent through hubStudio shows its price under the buttons before you send. There’s no subscription and no seat fee. See how pricing works.',
+    link: { match: 'how pricing works', href: '/pricing' },
+  },
+  {
+    q: 'Can a teammate post with my account?',
+    a: 'No. Connections are personal. Nobody else in your team can see or use yours, admins included, and you can’t use theirs.',
+  },
+  {
+    q: 'What happens if a post fails?',
+    a: 'A temporary problem on the network’s side is retried automatically, three attempts in all. If the network refuses the post, say it’s too long or the file type is wrong, you get an email with the reason, and Try again now sits on its row in the queue.',
+  },
+  {
+    q: 'Can I publish one post everywhere?',
+    a: 'Yes. Re-purpose for other networks turns a post into drafts for the other networks, rewritten for each. A network that can’t take the post is grayed out: Instagram needs a picture, TikTok a video.',
+  },
+  {
+    q: 'Can a client approve a post before it goes out?',
+    a: 'Yes, when the post is made for that client. Send it for validation and name one of their people. The post stays locked until they decide.',
+    link: { match: 'Send it for validation', href: '/app/review' },
+  },
+  {
+    q: 'How many accounts can one post go to?',
+    a: 'Up to 20 per post. Each shows as a separate row in the queue.',
+  },
+  {
+    q: 'Can I publish to WeChat, RedNote, Douyin, or Weibo?',
+    a: 'Not from the app. Our studio produces for those platforms as a service.',
+    link: { match: 'Our studio produces for those platforms', href: '#studio' },
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Publish', item: `${SITE}/app/publish` },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Publish to LinkedIn, Instagram, Facebook, and X | hubStudio"
+  description="Draft posts with AI or by hand, get them approved, then publish or schedule them to LinkedIn, Instagram, Facebook, TikTok (Beta), and X."
+  preloadImage={appShots.linkedin.src}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="pb-hero">
+    <div class="container pb-hero__grid">
+      <div class="pb-hero__copy">
+        <nav class="pb-crumbs" aria-label="Breadcrumb">
+          <a href="/app">The app</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Publish</span>
+        </nav>
+        <h1 class="headline h1 pb-hero__title">
+          Post to five networks without leaving the <span class="accent">app</span>.
+        </h1>
+        <p class="lead pb-hero__lead">
+          hubStudio drafts and publishes posts for LinkedIn, Instagram, Facebook, TikTok (Beta),
+          and X. Write with AI or by hand, add the pictures you made in the studios, get sign-off
+          if you need it, then post now or on a schedule, in your own name.
+        </p>
+        <div class="pb-hero__cta">
+          <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          <Button variant="secondary" href="/app/review">How approval works</Button>
+        </div>
+        <p class="pb-note">Every screen on this page is a real capture of the app.</p>
+      </div>
+      <div class="pb-hero__shot">
+        <AppShot shot={appShots.linkedin} path="/social/linkedin/posts" eager caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The flow ===== -->
+  <section class="pb-sheet pb-sheet--white" id="flow">
+    <div class="container pb-flow">
+      <header class="pb-head">
+        <span class="eyebrow">How a post goes out</span>
+        <h2 class="headline h2 reveal">The same steps on every <span class="accent">network</span>.</h2>
+        <p class="pb-p">
+          LinkedIn, Instagram, Facebook, TikTok, and X each have an entry in the menu. Inside, the
+          work runs the same way.
+        </p>
+      </header>
+      <ol class="pb-steps">
+        {
+          flow.map((s) => (
+            <li class="pb-step reveal">
+              <h3 class="pb-step__title">{s.title}</h3>
+              <p class="pb-step__text">{s.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="pb-p pb-flow__skills">
+        Each network’s module starts with that network’s format skill already picked, so drafts
+        follow its rules on length and hashtags. Add your own skills on top.
+      </p>
+      <a class="pb-arrow" href="/app/create#skills">
+        How skills work <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== The five networks ===== -->
+  <section class="pb-sheet pb-sheet--cream" id="networks">
+    <div class="container">
+      <header class="pb-head">
+        <span class="eyebrow">Network by network</span>
+        <h2 class="headline h2 reveal">What each network <span class="accent">takes</span>.</h2>
+        <p class="pb-p">
+          The steps are the same everywhere, but each network sets its rules and the formats it
+          accepts.
+        </p>
+      </header>
+      <div class="pb-nets">
+        {
+          networks.map((n) => (
+            <article class="pb-net" id={n.id}>
+              <div class="pb-net__copy">
+                <h3 class="pb-net__name">
+                  {n.name}
+                  {n.beta && <span class="pb-beta">Beta</span>}
+                </h3>
+                <p class="pb-p">{n.body}</p>
+                <p class="pb-p">{n.body2}</p>
+                {n.studio && (
+                  <a class="pb-arrow" href={n.studio.href}>
+                    {n.studio.label} <span aria-hidden="true">&rarr;</span>
+                  </a>
+                )}
+              </div>
+              <div class:list={['pb-net__shots', n.shots.length > 1 && 'is-pair']}>
+                {n.shots.map((s) => (
+                  <AppShot shot={s.shot} path={s.path} caption />
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Scheduling and the queue ===== -->
+  <section class="pb-sheet pb-sheet--white" id="schedule">
+    <div class="container">
+      <header class="pb-head">
+        <span class="eyebrow">Scheduling</span>
+        <h2 class="headline h2 reveal">Schedule it, then watch the <span class="accent">queue</span>.</h2>
+        <p class="pb-p">
+          That’s the network-by-network detail. From here on, everything applies to all five.
+        </p>
+      </header>
+      <div class="pb-cols">
+        <div>
+          <p class="pb-p">
+            Click <strong class="pb-ui">Publish now</strong>, or <strong class="pb-ui">Schedule</strong>
+            and pick a day and time. The chips cover the usual slots: “In an hour”, “Tonight,
+            18:00”, “Tomorrow, 09:00”, and “Monday, 09:00”. Times follow the time zone in your
+            settings, and you can schedule up to a year ahead. One post can go to up to 20
+            accounts.
+          </p>
+          <p class="pb-p">
+            hubStudio checks the queue every five minutes, so a post set for 09:00 goes out by
+            09:05. Plan around that for anything timed to the minute. Each send has its own row:
+          </p>
+          <ul class="pb-status" aria-label="Queue statuses">
+            {
+              statuses.map((s) => (
+                <li class="chip pb-status__chip">
+                  <span class="chip__dot" aria-hidden="true" />
+                  {s}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="pb-p">
+            A published row carries a <strong class="pb-ui">View live</strong> link. A temporary
+            problem on the network’s side is retried by itself, three attempts in all. A content
+            problem isn’t: the person who queued the post gets an email with what the network said.
+            To change a post that’s already live, edit it on the network itself, except on X, where
+            hubStudio can update it for you.
+          </p>
+        </div>
+        <div>
+          <div class="pb-box">
+            <h3 class="pb-box__title">One post, every network</h3>
+            <p class="pb-p">
+              <strong class="pb-ui">Re-purpose for other networks</strong> turns one post into
+              posts for the others. Open each as a new brief, have hubStudio draft them all at
+              once, or draft and publish them in one go.
+            </p>
+          </div>
+          <div class="pb-box">
+            <h3 class="pb-box__title">Publish it yourself</h3>
+            <p class="pb-p">
+              Don’t want to connect an account? <strong class="pb-ui">Publish manually</strong>
+              opens the network with your copy ready, and you post it there. You give up the
+              schedule, and hubStudio won’t know the post went out until you mark it published.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Private, shared, approved ===== -->
+  <section class="pb-sheet pb-sheet--ink grain" id="approval">
+    <div class="container pb-approve">
+      <header class="pb-head">
+        <span class="eyebrow pb-eyebrow--dark">Team and approval</span>
+        <h2 class="headline h2 reveal">Who sees it, and who signs <span class="accent">off</span>.</h2>
+      </header>
+      <div class="pb-cols">
+        <p class="pb-p pb-p--dark">
+          A post is yours alone until you share it with the team. Tag it
+          <strong class="pb-ui pb-ui--dark">Made for</strong> a client and that client’s people see
+          it in their Client space, planned or published.
+        </p>
+        <div>
+          <p class="pb-p pb-p--dark">
+            <strong class="pb-ui pb-ui--dark">Send for validation</strong> and it’s locked: nobody
+            can change, delete, or publish it until the validator decides. Once it’s approved it
+            can go out, and a post sent back returns to draft for another round.
+          </p>
+          <a class="pb-arrow pb-arrow--dark" href="/app/review">
+            How approval works <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== My Connections ===== -->
+  <section class="pb-sheet pb-sheet--white" id="connections">
+    <div class="container pb-split">
+      <div>
+        <header class="pb-head">
+          <span class="eyebrow">My Connections</span>
+          <h2 class="headline h2 reveal">Your accounts stay <span class="accent">yours</span>.</h2>
+          <p class="pb-p">One setup step comes before any automatic publishing.</p>
+        </header>
+        <p class="pb-p">
+          You connect your own accounts on <strong class="pb-ui">My Connections</strong>. You sign
+          in on the network itself, so hubStudio never sees your password. Nobody else in the team
+          can post with your account, admins included, and connecting publishes nothing. One X
+          quirk: only the account signed in to X in your browser connects, so use a private window
+          to add a second one.
+        </p>
+        <p class="pb-p">
+          A LinkedIn connection lasts 60 days, and one click renews it. After you sign in,
+          hubStudio checks your connections in the background and tells you if one needs
+          attention, before a post fails on it.
+        </p>
+      </div>
+      <div>
+        <AppShot shot={appShots.connections} path="/my-connections" caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== When the studio runs it ===== -->
+  <section class="pb-sheet pb-sheet--cream" id="studio">
+    <div class="container">
+      <header class="pb-head">
+        <span class="eyebrow">When the studio runs it</span>
+        <h2 class="headline h2 reveal">Rather hand the channel to <span class="accent">us</span>?</h2>
+      </header>
+      <div class="pb-cols">
+        <div>
+          <p class="pb-p">
+            Our studio produces for LinkedIn, Meta, and TikTok as a service. It can work inside
+            your hubStudio team, so you still approve every post in Validation.
+          </p>
+          <a class="pb-arrow" href="/studio/with-the-app">
+            How Studio + app works <span aria-hidden="true">&rarr;</span>
+          </a>
+          <ul class="pb-links" aria-label="Studio platform pages">
+            {
+              studioPlatforms.map((p) => (
+                <li>
+                  <a class="pb-link" href={p.href}>
+                    {p.name} <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="pb-china">
+          <p class="pb-p">
+            WeChat, RedNote, Douyin, and Weibo aren’t published from the app. The studio produces
+            for them.
+          </p>
+          <ul class="pb-links" aria-label="Chinese platforms, through the studio">
+            {
+              chinaPlatforms.map((p) => (
+                <li>
+                  <a class="pb-link" href={p.href}>
+                    {p.name} <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="pb-faq" id="faq">
+    <div class="container pb-faq__grid">
+      <header class="pb-faq__head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">Before you <span class="accent">post</span>.</h2>
+        <p class="pb-updated">Updated September 2026</p>
+      </header>
+      <div class="pb-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="pb-qa">
+              <summary>
+                <h3 class="pb-qa__q">{f.q}</h3>
+                <span class="pb-qa__icon" aria-hidden="true" />
+              </summary>
+              <p class="pb-qa__a">
+                {f.link ? (
+                  <>
+                    {f.a.split(f.link.match)[0]}
+                    <a href={f.link.href}>{f.link.match}</a>
+                    {f.a.split(f.link.match).slice(1).join(f.link.match)}
+                  </>
+                ) : (
+                  f.a
+                )}
+              </p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <DualCta />
+</Layout>
+
+<style>
+  /* ---- Shared ------------------------------------------------ */
+  .pb-p {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .pb-p + .pb-p {
+    margin-top: 18px;
+  }
+  .pb-p--dark {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .pb-ui {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .pb-ui--dark {
+    color: var(--text-on-dark);
+  }
+  .pb-eyebrow--dark {
+    color: var(--brand-orange);
+  }
+  .headline .accent {
+    color: var(--brand-orange);
+  }
+  .pb-head {
+    display: grid;
+    gap: 14px;
+    max-width: 780px;
+    margin-bottom: clamp(32px, 4vw, 52px);
+  }
+  .pb-head .pb-p {
+    margin-top: 6px;
+  }
+  .pb-cols {
+    display: grid;
+    gap: 28px 56px;
+  }
+  @media (min-width: 900px) {
+    .pb-cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .pb-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .pb-arrow--dark {
+    color: var(--brand-orange);
+  }
+  .pb-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .pb-arrow:hover span {
+    transform: translateX(6px);
+  }
+
+  /* Sheet stacking: each section overlaps the one above it. */
+  .pb-sheet {
+    position: relative;
+    margin-top: -48px;
+    padding-block: clamp(88px, 10vw, 150px) clamp(96px, 11vw, 168px);
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    scroll-margin-top: var(--nav-h);
+  }
+  .pb-sheet--white {
+    background: var(--bg-white);
+  }
+  .pb-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .pb-sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+
+  /* ---- Hero -------------------------------------------------- */
+  .pb-hero {
+    background: var(--bg-cream);
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(96px, 10vw, 150px);
+  }
+  .pb-hero__grid {
+    display: grid;
+    gap: clamp(44px, 6vw, 72px);
+  }
+  @media (min-width: 1080px) {
+    .pb-hero__grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+    }
+  }
+  .pb-crumbs {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .pb-crumbs a:hover {
+    color: var(--brand-orange);
+  }
+  .pb-hero__title {
+    margin-top: 18px;
+    max-width: 16ch;
+    font-size: clamp(44px, 5.4vw, 76px);
+    letter-spacing: -0.035em;
+  }
+  .pb-hero__lead {
+    margin-top: 24px;
+    max-width: 52ch;
+  }
+  .pb-hero__cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pb-note {
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--text-mute);
+  }
+
+  /* ---- Flow -------------------------------------------------- */
+  .pb-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 900px) {
+    .pb-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .pb-step:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+  /* The order carries the sequence: a rule on the left, never a numeral. */
+  .pb-step {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    padding: clamp(22px, 2.4vw, 30px);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-left: 3px solid var(--brand-orange);
+    border-radius: 18px;
+  }
+  .pb-step__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .pb-step__text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .pb-flow__skills {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  /* ---- Networks ---------------------------------------------- */
+  .pb-nets {
+    display: grid;
+    gap: clamp(56px, 7vw, 104px);
+  }
+  .pb-net {
+    display: grid;
+    gap: clamp(28px, 4vw, 52px);
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  @media (min-width: 1000px) {
+    .pb-net {
+      grid-template-columns: 0.8fr 1.2fr;
+      align-items: center;
+    }
+    .pb-net:nth-child(even) .pb-net__copy {
+      order: 2;
+    }
+  }
+  .pb-net__name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .pb-beta {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 11px;
+    border: 1px solid var(--brand-orange-cta);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+  }
+  .pb-net__shots {
+    display: grid;
+    gap: 20px;
+  }
+
+  /* ---- Scheduling -------------------------------------------- */
+  .pb-status {
+    margin: 16px 0 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pb-status__chip {
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    color: var(--text-ink);
+  }
+  .pb-status__chip .chip__dot {
+    background: var(--brand-orange);
+  }
+  .pb-box {
+    padding: clamp(24px, 2.6vw, 32px);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+  .pb-box + .pb-box {
+    margin-top: 16px;
+  }
+  .pb-box__title {
+    margin-bottom: 10px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---- Connections ------------------------------------------- */
+  .pb-split {
+    display: grid;
+    gap: clamp(36px, 5vw, 64px);
+  }
+  @media (min-width: 1000px) {
+    .pb-split {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+    }
+  }
+
+  /* ---- Studio band ------------------------------------------- */
+  .pb-links {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pb-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--type-button);
+    font-weight: 600;
+    transition: border-color 160ms ease-out, color 160ms ease-out;
+  }
+  .pb-link:hover {
+    border-color: var(--brand-orange);
+    color: var(--brand-orange-cta);
+  }
+  .pb-china {
+    padding: clamp(24px, 2.6vw, 32px);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .pb-china .pb-link {
+    background: var(--bg-cream);
+  }
+
+  /* ---- FAQ --------------------------------------------------- */
+  .pb-faq {
+    background: var(--bg-white);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .pb-faq__grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 1000px) {
+    .pb-faq__grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .pb-faq__head {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+  }
+  .pb-faq__head {
+    display: grid;
+    gap: 14px;
+  }
+  .pb-updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .pb-qa {
+    border-top: 1px solid var(--line-strong);
+  }
+  .pb-qa:last-child {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .pb-qa summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .pb-qa summary::-webkit-details-marker {
+    display: none;
+  }
+  .pb-qa__q {
+    font-size: clamp(17px, 1.6vw, 21px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+    transition: color 160ms ease-out;
+  }
+  .pb-qa summary:hover .pb-qa__q {
+    color: var(--brand-orange);
+  }
+  .pb-qa__icon {
+    position: relative;
+    flex: none;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+  }
+  .pb-qa__icon::before,
+  .pb-qa__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 1.5px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 200ms ease-out;
+  }
+  .pb-qa__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .pb-qa[open] .pb-qa__icon::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .pb-qa__a {
+    padding-bottom: 24px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+  .pb-qa__a a {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

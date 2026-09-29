@@ -1,0 +1,928 @@
+---
+/**
+ * About hubStudio  ·  /about
+ *
+ * The company page. Merges the old studio hub (/the-studio, founder story)
+ * and /the-studio/who-we-are (vision, hybrid production, locations, values)
+ * into one page about hubStudio as a whole: a company that builds the
+ * hubStudio app and runs the creative studio that works in it.
+ *
+ * Copy: content-quality-us deck, scratchpad cq/about/final.md. Facts are
+ * limited to hubstudio-positioning.md and copy already published on the site;
+ * addresses mirror src/pages/contact.astro and the Organization node in
+ * Layout.astro.
+ *
+ * The founder story keeps the #story anchor: the header's "Founder story"
+ * link points at /about#story. No ordinal numerals in any card or repeated
+ * block. Body copy at var(--type-body).
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import WaysToWork from '../../components/WaysToWork.astro';
+import DualCta from '../../components/DualCta.astro';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+import { creatives, authorPath } from '../../data/authors';
+
+const SITE = 'https://www.hubstudio.ai';
+const PAGE = `${SITE}/about`;
+
+const facts = [
+  'Founded by Cyril Drouin, former CEO at Publicis',
+  'Studios in Shanghai and Changsha',
+  'A team in the Philippines, an office in Paris',
+];
+
+const appPoints = [
+  'Every image and video engine in one gallery, from OpenAI, Google, Kling, ByteDance, and more as they ship',
+  'The price shown before each run, paid from a prepaid balance with no subscription, and a failed run is never charged',
+  'Files kept in the Assets Library, with folders, tags, and versions',
+  'Approvals in Validation, on one thread where nothing can be deleted',
+  'Publishing to LinkedIn, Instagram, Facebook, TikTok (Beta), and X',
+];
+
+/* Addresses match contact.astro; Changsha and the Philippines publish none. */
+const places = [
+  {
+    city: 'Hong Kong',
+    role: 'Headquarters',
+    line: 'Capitol Centre, 5-19 Jardine’s Bazaar, Causeway Bay',
+    address: true,
+  },
+  {
+    city: 'Shanghai',
+    role: 'Studio',
+    line: 'Trinity Plaza, 19F, 868 Changshou Road, Putuo District',
+    address: true,
+  },
+  { city: 'Changsha', role: 'Studio', line: 'Production studio in Hunan province', address: false },
+  { city: 'Philippines', role: 'Team', line: 'Creative and post-production', address: false },
+  { city: 'Paris', role: 'Office', line: '12 rue Curial, 75019 Paris', address: true },
+];
+
+const values = [
+  {
+    name: 'Creative excellence',
+    note: 'Work worth signing.',
+    image: '/Images/value-creative-excellence.jpg',
+    body: 'We make bold creative calls, grounded in the brand and the culture it sells into.',
+  },
+  {
+    name: 'Tech mastery',
+    note: 'Tech earns its place.',
+    image: '/Images/value-tech-mastery.jpg',
+    body: 'We keep learning the newest image and video models and build our own workflows around them, and we share what we learn across the team.',
+  },
+  {
+    name: 'People first, always',
+    note: 'Look after the team.',
+    image: '/Images/value-people-first.jpg',
+    body: 'We take care of our creatives and engineers. Relationships with the team, our clients, and the creative community come before any single job.',
+  },
+  {
+    name: 'Relentless ambition',
+    note: 'Hand up, every role.',
+    image: '/Images/value-relentless-ambition.jpg',
+    body: 'Everyone owns their craft and the client’s result. If something doesn’t feel right, creatively or technically, we say so.',
+  },
+];
+
+const faces = creatives.slice(0, 4);
+
+/* AboutPage node. The Organization and founder Person nodes live in the
+   site-wide graph in Layout.astro; they are referenced by @id, not repeated. */
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': `${PAGE}#webpage`,
+  url: PAGE,
+  name: 'About hubStudio',
+  description:
+    'hubStudio builds an AI app for images, video, and social posts, and runs the creative studio that works in it. Based in Hong Kong.',
+  isPartOf: { '@id': `${SITE}/#website` },
+  about: { '@id': `${SITE}/#organization` },
+  mainEntity: { '@id': `${SITE}/#organization` },
+  mentions: [{ '@id': `${SITE}/#cyril-drouin` }],
+  primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}/Team/team-photo.webp` },
+  breadcrumb: { '@id': `${PAGE}#breadcrumb` },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  '@id': `${PAGE}#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'About', item: PAGE },
+  ],
+};
+---
+
+<Layout
+  title="About hubStudio | The AI app and the creative studio"
+  description="hubStudio builds an AI app for images, video, and social posts, and runs the creative studio that works in it. Based in Hong Kong."
+  preloadImage="/Team/team-photo.webp"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="ab-hero">
+    <div class="container">
+      <span class="eyebrow">About hubStudio</span>
+      <h1 class="headline h1 reveal ab-hero__title">
+        One company. An app and a <span class="accent">studio</span>.
+      </h1>
+      <p class="lead ab-hero__lead">
+        hubStudio makes images, video, and social content with AI. We build the
+        hubStudio app for teams that make their own, and we run the creative studio
+        for brands that would rather send a brief. It’s one company, headquartered
+        in Hong Kong.
+      </p>
+      <ul class="ab-hero__facts">
+        {facts.map((f) => <li>{f}</li>)}
+      </ul>
+      <div class="ab-hero__cta">
+        <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+        <Button variant="secondary" href={BRIEF_URL}>Send a brief</Button>
+      </div>
+    </div>
+    <div class="container">
+      <figure class="ab-hero__figure">
+        <img
+          src="/Team/team-photo.webp"
+          alt="Members of the hubStudio team talking over coffee in the studio break area."
+          width="1050"
+          height="586"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== Three ways to work (locked copy) ===== -->
+  <WaysToWork tone="white" />
+
+  <!-- ===== Founder story ===== -->
+  <section class="ab-sheet ab-sheet--cream ab-story" id="story">
+    <div class="container ab-story__grid">
+      <figure class="ab-story__figure">
+        <img
+          src="/Team/cyril-drouin.jpg"
+          alt="Cyril Drouin, founder and CEO of hubStudio."
+          width="500"
+          height="800"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div class="ab-story__body">
+        <span class="eyebrow">Founder story</span>
+        <h2 class="headline h2 reveal ab-story__title">
+          Built for what content <span class="accent">became</span>.
+        </h2>
+        <p class="ab-p">
+          Cyril Drouin, a former CEO at Publicis, started hubStudio from one
+          observation. The studios that brands relied on were never built for the
+          volume they now need. A traditional shoot can’t answer a calendar that
+          asks for hundreds of on-brand assets a month, across markets, in days.
+        </p>
+        <p class="ab-p">
+          So he kept the people. The art directors, editors, and retouchers stayed,
+          and a generation layer went in under them: brand-trained models and the
+          GPU pipelines that run them, operated by the studio team.
+        </p>
+        <p class="ab-p">
+          Some assets get shot. Some get generated. Most mix both, and the studio
+          decides asset by asset.
+        </p>
+        <blockquote class="ab-quote">
+          <p>Not every shot needs a shoot. And not every brand story can be told by a prompt.</p>
+          <cite>Cyril Drouin, founder and CEO</cite>
+        </blockquote>
+        <p class="ab-p">
+          A studio that works that way needs one place for the engines and the
+          files, plus a record of who approved what. That’s the hubStudio app.
+        </p>
+        <figure class="ab-story__sign">
+          <img
+            src="/Team/cyril-drouin-signature.png"
+            alt="Signature of Cyril Drouin."
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+          <figcaption>Cyril Drouin, Founder and CEO</figcaption>
+        </figure>
+        <p class="ab-story__links">
+          <a href="https://www.linkedin.com/in/cyril-d-68835729/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://cyrildrouin.substack.com/" target="_blank" rel="noopener">Substack</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why we build the app ===== -->
+  <section class="ab-sheet ab-sheet--white ab-app">
+    <div class="container ab-split">
+      <div class="ab-split__copy">
+        <span class="eyebrow">Why we build the app</span>
+        <h2 class="headline h2 reveal">
+          The tool our studio <span class="accent">works</span> in.
+        </h2>
+        <p class="ab-p">
+          Make hundreds of assets a month with AI and the same questions come up
+          every day. Which engine suits this shot, and what will the run cost? Where
+          did the approved version go? The hubStudio app puts the answers in one
+          place.
+        </p>
+        <ul class="ab-list">
+          {appPoints.map((p) => <li>{p}</li>)}
+        </ul>
+        <p class="ab-aside">You don’t need a sales call to start.</p>
+        <p class="ab-p">
+          Our studio works in hubStudio. So can you, alone or with a team, and
+          creating an account costs nothing. How the app and the studio are paid for
+          is on our <a class="ab-inline" href="/pricing">pricing page</a>.
+        </p>
+        <p class="ab-links">
+          <a class="ab-arrow" href="/app">See the app <span aria-hidden="true">&rarr;</span></a>
+          <a class="ab-arrow" href="/studio">Meet the studio <span aria-hidden="true">&rarr;</span></a>
+        </p>
+      </div>
+      <figure class="ab-split__media ab-frame ab-frame--43">
+        <img
+          src="/Images/studio-on-app.webp"
+          alt="A hubStudio producer on a call at his desk, a printed shot list beside the laptop."
+          width="1600"
+          height="1200"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== How the studio works ===== -->
+  <section class="ab-sheet ab-sheet--ink ab-hybrid grain">
+    <div class="container ab-split ab-split--flip">
+      <figure class="ab-split__media">
+        <div class="ab-frame ab-frame--hybrid">
+          <img
+            src="/Images/who-we-are-hybrid.jpg"
+            alt="A single cream leather sneaker on a warm plaster ledge under hard directional light."
+            width="1152"
+            height="912"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="ab-caption">The hero product, shot once.</figcaption>
+      </figure>
+      <div class="ab-split__copy">
+        <span class="eyebrow ab-eyebrow--dark">How the studio works</span>
+        <h2 class="headline h2 reveal ab-hybrid__title">
+          One strong shoot, then every <span class="accent">variant</span>.
+        </h2>
+        <p class="ab-p ab-p--dark">
+          Say a footwear brand launches twelve colorways in four markets. Done the
+          old way, that’s a full shoot per market and weeks of post. We’d shoot the
+          hero product once, properly, then build each colorway, market version, and
+          ecommerce angle with AI.
+        </p>
+        <p class="ab-p ab-p--dark">
+          The hard part is knowing which shots need a real set and which can be
+          built from there. Senior art directors lead every brief and make that call.
+          We record the provenance of every asset, so you know what was shot and what
+          was generated.
+        </p>
+        <p class="ab-links">
+          <a class="ab-arrow ab-arrow--dark" href="/work">See the work <span aria-hidden="true">&rarr;</span></a>
+          <a class="ab-arrow ab-arrow--dark" href="/studio/ai-excellence">How the studio uses AI <span aria-hidden="true">&rarr;</span></a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Where we are ===== -->
+  <section class="ab-sheet ab-sheet--cream ab-places">
+    <div class="container ab-places__grid">
+      <div class="ab-places__intro">
+        <span class="eyebrow">Where we are</span>
+        <h2 class="headline h2 reveal">Our studios and <span class="accent">offices</span>.</h2>
+        <p class="ab-p">
+          hubStudio is headquartered in Hong Kong. Our studios are in Shanghai and
+          Changsha, we have a team in the Philippines, and we keep an office in
+          Paris. Wherever a brief lands, a producer reads it within one business day.
+          A written proposal follows within 48 hours.
+        </p>
+        <figure class="ab-frame ab-frame--square ab-places__media">
+          <img
+            src="/Images/hubstudio-shanghai-studio.webp"
+            alt="hubStudio colleagues at a window desk in the Shanghai studio, reviewing a layout on a laptop."
+            width="1024"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+      <ul class="ab-places__list">
+        {
+          places.map((p) => (
+            <li class="ab-place">
+              <span class="ab-place__role">{p.role}</span>
+              <h3 class="ab-place__city">{p.city}</h3>
+              {p.address ? (
+                <address class="ab-place__line">{p.line}</address>
+              ) : (
+                <p class="ab-place__line">{p.line}</p>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Values ===== -->
+  <section class="ab-sheet ab-sheet--white ab-values">
+    <div class="container">
+      <header class="ab-head">
+        <span class="eyebrow">What we value</span>
+        <h2 class="headline h2 reveal">The values we <span class="accent">live</span> by.</h2>
+        <p class="ab-p ab-head__p">
+          Creative comes first. A model earns its place by helping the work, and when
+          it doesn’t help, we leave it out.
+        </p>
+      </header>
+      <div class="ab-values__grid">
+        {
+          values.map((v) => (
+            <article class="ab-value">
+              <img
+                class="ab-value__img"
+                src={v.image}
+                alt=""
+                width="1024"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 class="ab-value__name">{v.name}</h3>
+              <p class="ab-value__note">{v.note}</p>
+              <p class="ab-value__body">{v.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The people ===== -->
+  <section class="ab-sheet ab-sheet--cream ab-team">
+    <div class="container ab-team__grid">
+      <div class="ab-team__copy">
+        <span class="eyebrow">The people</span>
+        <h2 class="headline h2 reveal">Meet the <span class="accent">creatives</span>.</h2>
+        <p class="ab-p">
+          All of that runs on people: directors, designers, writers, and motion
+          designers, hired close to the markets they create for. They’re the ones
+          behind the studio’s work. Each one has a page of their own.
+        </p>
+        <div class="ab-team__cta">
+          <Button variant="primary" href="/about/team">Meet the team</Button>
+        </div>
+        <p class="ab-team__partners">
+          Bringing us clients, or customers for the app?
+          <a class="ab-inline" href="/partners">See our partner programs</a>.
+        </p>
+      </div>
+      <ul class="ab-faces">
+        {
+          faces.map((person) => (
+            <li>
+              <a class="ab-face" href={authorPath(person)}>
+                <img
+                  src={person.image}
+                  alt={`Portrait of ${person.name}, ${person.role} at hubStudio.`}
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="ab-face__name">{person.name}</span>
+                <span class="ab-face__role">{person.role}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <DualCta eyebrow="Work with us" />
+</Layout>
+
+<style>
+  /* ---- Shared ------------------------------------------------- */
+  .ab-p {
+    margin-top: 20px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .ab-p--dark {
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .ab-eyebrow--dark {
+    color: var(--brand-orange);
+  }
+  .ab-inline {
+    color: var(--brand-orange);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .ab-links {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+  }
+  .ab-arrow {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .ab-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .ab-arrow:hover span {
+    transform: translateX(6px);
+  }
+  .ab-arrow--dark {
+    color: #ff8a5c;
+  }
+  .ab-head {
+    display: grid;
+    gap: 14px;
+    max-width: 760px;
+  }
+  .ab-head__p {
+    margin-top: 6px;
+  }
+
+  /* Sheet stacking: each section overlaps the one above it. */
+  .ab-sheet {
+    position: relative;
+    margin-top: -48px;
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    padding-block: clamp(96px, 11vw, 168px);
+  }
+  .ab-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .ab-sheet--white {
+    background: var(--bg-white);
+  }
+  .ab-sheet--ink {
+    background:
+      radial-gradient(90% 70% at 100% 0%, rgba(233, 78, 27, 0.22) 0%, rgba(14, 22, 51, 0) 60%),
+      var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+
+  /* Image frames */
+  .ab-frame {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow:
+      0 2px 8px rgba(10, 10, 20, 0.08),
+      0 30px 60px -28px rgba(10, 10, 20, 0.4);
+  }
+  .ab-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ab-frame--43 {
+    aspect-ratio: 4 / 3;
+  }
+  .ab-frame--square {
+    aspect-ratio: 1 / 1;
+  }
+  .ab-frame--hybrid {
+    aspect-ratio: 1152 / 912;
+  }
+  .ab-caption {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 233, 0.6);
+  }
+
+  /* Two-column split */
+  .ab-split {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .ab-split {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 72px;
+    }
+    .ab-split--flip {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+  }
+  .ab-split__copy .headline {
+    margin-top: 14px;
+  }
+  .ab-split__media {
+    margin: 0;
+  }
+
+  /* ---- Hero --------------------------------------------------- */
+  .ab-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(88px, 10vw, 140px);
+    background: var(--bg-cream);
+  }
+  .ab-hero__title {
+    margin-top: 16px;
+    max-width: 16ch;
+  }
+  .ab-hero__title .accent {
+    color: var(--brand-orange);
+  }
+  .ab-hero__lead {
+    margin-top: 22px;
+    max-width: 60ch;
+  }
+  .ab-hero__facts {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .ab-hero__facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+  }
+  .ab-hero__facts li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .ab-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ab-hero__figure {
+    margin: clamp(40px, 6vw, 72px) 0 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 1050 / 586;
+    box-shadow: var(--shadow-card);
+  }
+  .ab-hero__figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---- Founder story ----------------------------------------- */
+  .ab-story {
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .ab-story__grid {
+    display: grid;
+    gap: 44px;
+  }
+  @media (min-width: 900px) {
+    .ab-story__grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .ab-story__figure {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 5 / 8;
+    max-width: 440px;
+    box-shadow: var(--shadow-card);
+  }
+  @media (min-width: 900px) {
+    .ab-story__figure {
+      position: sticky;
+      top: calc(var(--nav-h) + 40px);
+    }
+  }
+  .ab-story__figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ab-story__title {
+    margin-top: 12px;
+  }
+  .ab-quote {
+    margin: 32px 0 8px;
+    padding: 4px 0 4px 24px;
+    border-left: 3px solid var(--brand-orange);
+    max-width: 52ch;
+  }
+  .ab-quote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.3;
+    color: var(--text-ink);
+  }
+  .ab-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .ab-story__sign {
+    margin: 32px 0 0;
+  }
+  .ab-story__sign img {
+    width: 168px;
+    height: auto;
+  }
+  .ab-story__sign figcaption {
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .ab-story__links {
+    margin-top: 16px;
+    display: flex;
+    gap: 20px;
+    font-size: var(--type-small);
+    font-weight: 600;
+  }
+  .ab-story__links a {
+    color: var(--brand-orange);
+  }
+
+  /* ---- Why we build the app ---------------------------------- */
+  .ab-list {
+    margin-top: 22px;
+    display: grid;
+    gap: 12px;
+    max-width: 60ch;
+  }
+  .ab-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-ink);
+  }
+  .ab-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 7px;
+    height: 7px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .ab-aside {
+    margin-top: 22px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--brand-orange);
+  }
+
+  /* ---- How the studio works (ink) ---------------------------- */
+  .ab-hybrid__title {
+    color: #fff;
+  }
+  .ab-hybrid__title .accent {
+    color: var(--brand-orange);
+  }
+
+  /* ---- Where we are ------------------------------------------ */
+  .ab-places__grid {
+    display: grid;
+    gap: 48px;
+  }
+  @media (min-width: 900px) {
+    .ab-places__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+  }
+  .ab-places__intro .headline {
+    margin-top: 14px;
+  }
+  .ab-places__media {
+    margin-top: 36px;
+    max-width: 480px;
+  }
+  .ab-places__list {
+    display: grid;
+    gap: 14px;
+  }
+  .ab-place {
+    padding: 24px 28px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .ab-place__role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .ab-place__city {
+    margin-top: 6px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .ab-place__line {
+    margin-top: 6px;
+    font-style: normal;
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+
+  /* ---- Values ------------------------------------------------ */
+  .ab-values__grid {
+    margin-top: 48px;
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 640px) {
+    .ab-values__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .ab-values__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .ab-value {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 28px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+  .ab-value__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  .ab-value__name {
+    margin-top: 22px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .ab-value__note {
+    margin-top: 6px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--brand-orange);
+  }
+  .ab-value__body {
+    margin-top: 12px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* ---- The people -------------------------------------------- */
+  .ab-team__grid {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .ab-team__grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 64px;
+    }
+  }
+  .ab-team__copy .headline {
+    margin-top: 14px;
+  }
+  .ab-team__cta {
+    margin-top: 28px;
+  }
+  .ab-team__partners {
+    margin-top: 22px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .ab-faces {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .ab-face {
+    display: grid;
+    gap: 4px;
+  }
+  .ab-face img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+    transition: transform 200ms ease-out;
+  }
+  .ab-face:hover img {
+    transform: translateY(-4px);
+  }
+  .ab-face__name {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-ink);
+  }
+  .ab-face__role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ab-arrow span,
+    .ab-face img {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  /* Headline reveal on scroll, as on the other company pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

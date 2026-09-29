@@ -9,9 +9,9 @@ export const defaultLocale: Locale = 'en';
 
 export const ui = {
   en: {
-    'meta.defaultTitle': 'hubStudio, a production house built for what content has become',
+    'meta.defaultTitle': 'hubStudio | The AI production app, and the studio behind it',
     'meta.defaultDescription':
-      'hubStudio is a full production house. We shoot, direct, and generate hundreds of on-brand assets a month, or deploy a content platform your own team runs.',
+      'Make images, video and social posts with the leading AI engines in the hubStudio app, or have our studio make them for you. Pay as you go, no seat fees.',
     'nav.skipToContent': 'Skip to content',
     'footer.rights': '© {year} hubStudio. All rights reserved.',
   },

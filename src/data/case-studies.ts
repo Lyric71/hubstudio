@@ -386,17 +386,17 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Consumer electronics',
     region: 'North America',
     summary:
-      'HiSense needed its teams and agencies to generate thousands of assets a week for North America. We deployed hub4You with custom-trained models and had it live before retail season.',
+      'HiSense needed its teams and agencies to generate thousands of assets a week for North America. We built them a self-serve content platform with custom-trained models and had it live before retail season.',
     hero: {
       src: '/Images/work/hisense-hero.webp',
       alt: 'A HiSense television staged in a contemporary living room, lit for a North American retail audience.',
     },
     challenge: [
       'HiSense, the world’s second-largest TV brand, was pushing hard into North America. To compete across thousands of retail touchpoints it needed asset velocity its existing setup could not give: separate product shoots, an agency briefed for every campaign, and approval cycles that ran long.',
-      'The ask was a deployment of hub4You, our SaaS platform, customised so internal teams and outside agencies could independently produce thousands of weekly assets. It had to understand HiSense products, brand visuals and North American taste, and it had to be operational within two months to support major retail partnerships.',
+      'The ask was a self-serve content platform, built for HiSense, so internal teams and outside agencies could independently produce thousands of weekly assets. It had to understand HiSense products, brand visuals and North American taste, and it had to be operational within two months to support major retail partnerships.',
     ],
     approachLead:
-      'We delivered hub4You as a bespoke platform, not a generic tool with a logo on it.',
+      'We built the platform for HiSense alone, not a generic tool with a logo on it.',
     approach: [
       {
         title: 'Models trained per product line',
@@ -416,7 +416,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     delivered: [
-      'hub4You SaaS platform, customised for HiSense',
+      'A self-serve content platform hubStudio built for HiSense',
       'Product-specific LoRA models per category',
       'Custom AIGC agents and production workflows',
       'Brand-trained generation tuned to North American preferences',
@@ -427,7 +427,7 @@ export const caseStudies: CaseStudy[] = [
       { value: '1000s/week', label: 'Brand assets produced after launch' },
       { value: 'Day one', label: 'Teams generating with no ramp-up' },
     ],
-    services: ['hub4You platform', 'Custom model training', 'AIGC agents', 'Workflow design'],
+    services: ['Custom content platform', 'Custom model training', 'AIGC agents', 'Workflow design'],
     gallery: [],
   },
   {
@@ -438,10 +438,10 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Home improvement retail',
     region: 'Europe',
     summary:
-      'A European home improvement retailer had thousands of SKUs and basic product shots. We turned them into seasonal lifestyle imagery across catalogue, eCommerce and store.',
+      'A European home improvement retailer had thousands of SKUs and basic product shots. We turned them into seasonal lifestyle imagery across catalog, eCommerce and store.',
     hero: {
       src: '/Images/work/diy-retailer-hero.webp',
-      alt: 'A home improvement product shown in a realistic renovated-room setting, generated from a basic catalogue shot.',
+      alt: 'A home improvement product shown in a realistic renovated-room setting, generated from a basic catalog shot.',
     },
     challenge: [
       'A large European DIY retailer faced a merchandising problem that did not scale. Thousands of SKUs each needed contextualised imagery for catalogues, eCommerce pages and seasonal in-store promotions, and the starting point was basic product shots, many of them low resolution.',
@@ -467,13 +467,13 @@ export const caseStudies: CaseStudy[] = [
       'Thousands of contextualised product images from basic shots',
       'Seasonal promotional visuals for in-store merchandising',
       'eCommerce product imagery showing real-world use',
-      'Catalogue-ready lifestyle photography across categories',
+      'Catalog-ready lifestyle photography across categories',
       'Product usage and installation video',
     ],
     results: [
       { value: '1000s', label: 'SKUs given lifestyle context' },
       { value: '4 seasons', label: 'Promotional calendars covered without reshoots' },
-      { value: 'Omnichannel', label: 'Catalogue, eCommerce and store kept consistent' },
+      { value: 'Omnichannel', label: 'Catalog, eCommerce and store kept consistent' },
     ],
     services: ['AIGC merchandising', 'Lifestyle imagery', 'Seasonal assets', 'Omnichannel content'],
     gallery: [],
@@ -482,7 +482,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'camper',
     client: 'Camper',
     title: 'Mediterranean character, reimagined for China’s Gen Z',
-    category: 'Localised content',
+    category: 'Localized content',
     industry: 'Footwear',
     region: 'China market',
     summary:
@@ -492,7 +492,7 @@ export const caseStudies: CaseStudy[] = [
       alt: 'Camper footwear styled within a contemporary Chinese setting that reads to a Gen Z audience.',
     },
     challenge: [
-      'Camper, the Spanish contemporary footwear brand, needed localised content for China’s Gen Z that kept its Mediterranean heritage while genuinely resonating locally. It was working from a limited library of global assets.',
+      'Camper, the Spanish contemporary footwear brand, needed localized content for China’s Gen Z that kept its Mediterranean heritage while genuinely resonating locally. It was working from a limited library of global assets.',
       'It needed product imagery, lifestyle visuals set in Chinese contexts, and engaging video. Location shoots in China with local crews, separate sessions per content type, heavy post: at the volume required, the maths did not work for consistent monthly output.',
     ],
     approachLead:
@@ -512,14 +512,14 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     delivered: [
-      'Product imagery localised to Chinese cultural contexts',
+      'Product imagery localized to Chinese cultural contexts',
       'Lifestyle visuals for Gen Z-relevant scenarios',
       'Brand video carrying Mediterranean character through a Chinese lens',
-      'Animated product showcases optimised for mobile',
+      'Animated product showcases optimized for mobile',
       'Seasonal campaign assets adapting the global brand language',
     ],
     results: [
-      { value: 'China-ready', label: 'Global library localised for Gen Z' },
+      { value: 'China-ready', label: 'Global library localized for Gen Z' },
       { value: 'Days', label: 'Turnaround per concept, not weeks' },
       { value: 'Dozens', label: 'Variations explored for each visual' },
     ],
@@ -543,17 +543,17 @@ export const caseStudies: CaseStudy[] = [
     slug: 'age20',
     client: 'age20',
     title: 'One K-beauty brand, every market’s language',
-    category: 'Campaign localisation',
+    category: 'Campaign localization',
     industry: 'K-beauty',
     region: 'Asia-Pacific',
     summary:
-      'age20 needed hyper-localised campaign content across Asian markets on aggressive timelines. We turned product photography into on-model campaigns in hours, brand DNA intact.',
+      'age20 needed hyper-localized campaign content across Asian markets on aggressive timelines. We turned product photography into on-model campaigns in hours, brand DNA intact.',
     hero: {
       src: '/Images/work/age20-hero.webp',
       alt: 'An age20 beauty campaign visual with an on-model styled look in clean editorial light.',
     },
     challenge: [
-      'age20 works in fast-moving K-beauty, where campaigns have to deploy across markets from Korea to Southeast Asia while holding a youthful, distinct brand identity. Each market needs hyper-localised variations that reflect regional beauty standards and cultural moments, all on aggressive timelines.',
+      'age20 works in fast-moving K-beauty, where campaigns have to deploy across markets from Korea to Southeast Asia while holding a youthful, distinct brand identity. Each market needs hyper-localized variations that reflect regional beauty standards and cultural moments, all on aggressive timelines.',
       'Gen Z audiences spot generic or culturally tone-deaf messaging immediately. Traditional production forced a choice no brand wants to make: separate creative per region, multiple shoots and long post cycles that miss the trending moment, or geographic reach at the cost of creative quality.',
     ],
     approachLead:
@@ -576,7 +576,7 @@ export const caseStudies: CaseStudy[] = [
       'Multi-market brand campaign assets with cultural customisation',
       'Social-first content library for Instagram, TikTok and local platforms',
       'Animated product showcases for platform-native consumption',
-      'Hyper-localised variations for regional beauty aesthetics',
+      'Hyper-localized variations for regional beauty aesthetics',
       'Rapid-turnaround campaign adaptations on the promotional calendar',
     ],
     results: [
@@ -584,7 +584,7 @@ export const caseStudies: CaseStudy[] = [
       { value: 'Seoul→Singapore', label: 'Markets served from one brand system' },
       { value: 'Days', label: 'Campaign deployment, in time for the moment' },
     ],
-    services: ['Campaign localisation', 'On-model imagery', 'Motion content', 'Social libraries'],
+    services: ['Campaign localization', 'On-model imagery', 'Motion content', 'Social libraries'],
     gallery: [
       {
         src: '/Images/work/age20-1.webp',
@@ -630,7 +630,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: 'Agents that know fashion',
-        desc: 'Bespoke AIGC agents are trained on seasonal aesthetics and brand standards, and understand colour stories, fabric draping and styling conventions.',
+        desc: 'Bespoke AIGC agents are trained on seasonal aesthetics and brand standards, and understand color stories, fabric draping and styling conventions.',
       },
       {
         title: 'A team trained to run it',
@@ -640,7 +640,7 @@ export const caseStudies: CaseStudy[] = [
     delivered: [
       'Custom virtual model library for target demographics',
       'Automated look-generation workflow',
-      'hub4You platform integration with brand customisation',
+      'A content platform integrated and customized for the brand',
       'Bespoke AIGC agents trained on brand standards',
       'Multi-phase internal team training',
     ],
@@ -649,7 +649,7 @@ export const caseStudies: CaseStudy[] = [
       { value: 'Hours', label: 'Product shot to styled imagery' },
       { value: 'In-house', label: 'Teams produce without outside studios' },
     ],
-    services: ['Virtual model library', 'hub4You platform', 'AIGC agents', 'Team training'],
+    services: ['Virtual model library', 'Custom content platform', 'AIGC agents', 'Team training'],
     gallery: [
       {
         src: '/Images/work/global-fashion-1.webp',
@@ -803,7 +803,7 @@ export const caseStudies: CaseStudy[] = [
     delivered: [
       'Lifestyle product images for Instagram, Facebook and the website',
       'Seasonal context visuals: tea moments, wellness settings, ingredient showcases',
-      'eCommerce product detail shots optimised for product pages',
+      'eCommerce product detail shots optimized for product pages',
     ],
     results: [
       { value: '2 weeks', label: 'Full seasonal library delivered' },
@@ -856,7 +856,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: 'Weather and light on command',
-        desc: 'Snow, rain, clear skies, autumn colour, plus golden hour, blue hour and midday, all consistent and all controlled.',
+        desc: 'Snow, rain, clear skies, autumn color, plus golden hour, blue hour and midday, all consistent and all controlled.',
       },
       {
         title: 'Every format from one set',
@@ -875,7 +875,7 @@ export const caseStudies: CaseStudy[] = [
       { value: '3 weeks', label: 'Global assets, versus six months traditionally' },
       { value: '15 markets', label: '20+ environments, zero vehicle shipping' },
     ],
-    services: ['AIGC environments', 'Campaign imagery', 'Localisation', 'Multi-format delivery'],
+    services: ['AIGC environments', 'Campaign imagery', 'Localization', 'Multi-format delivery'],
     gallery: [
       {
         src: '/Images/work/premium-suv-1.webp',

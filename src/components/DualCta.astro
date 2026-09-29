@@ -1,0 +1,188 @@
+---
+/**
+ * DualCta: the closing band that offers both doors.
+ *
+ * The app door comes first (create an account, or sign in), the studio door
+ * second (send a brief). Pages about the studio can flip the order with
+ * `lead="studio"`; the two doors are always both present.
+ */
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../lib/links';
+
+interface Props {
+  eyebrow?: string;
+  pre?: string;
+  accent?: string;
+  post?: string;
+  text?: string;
+  lead?: 'app' | 'studio';
+  tone?: 'ink' | 'cream';
+  /** Query string for the brief link, e.g. "way=studio-app". */
+  briefQuery?: string;
+}
+
+const {
+  eyebrow = 'Two ways in',
+  pre = 'Open the app, or send us the ',
+  accent = 'brief',
+  post = '.',
+  text = 'Creating an account costs nothing, and you pay as you go from a prepaid balance. For a studio project, a producer reads your brief within one business day.',
+  lead = 'app',
+  tone = 'ink',
+  briefQuery = '',
+} = Astro.props;
+
+const briefHref = briefQuery ? `${BRIEF_URL}?${briefQuery}` : BRIEF_URL;
+---
+
+<section class:list={['dcta', `dcta--${tone}`]}>
+  <div class="dcta__container">
+    <div class="dcta__card">
+      <span class="dcta__eyebrow">{eyebrow}</span>
+      <h2 class="dcta__title">
+        {pre}<span class="dcta__accent">{accent}</span>{post}
+      </h2>
+      <p class="dcta__text">{text}</p>
+      <div class:list={['dcta__actions', lead === 'studio' && 'is-studio-first']}>
+        <a class="dcta__btn dcta__btn--app" href={APP_SIGNUP} rel="noopener">Create your account</a>
+        <a class="dcta__btn dcta__btn--brief" href={briefHref}>Send a brief</a>
+      </div>
+      <p class="dcta__signin">
+        Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dcta {
+    padding-block: clamp(72px, 9vw, 140px);
+    background: var(--bg-cream);
+  }
+  .dcta__container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad-mobile);
+  }
+  @media (min-width: 768px) {
+    .dcta__container {
+      padding-inline: var(--container-pad-desktop);
+    }
+  }
+  .dcta__card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding: clamp(44px, 6vw, 84px) clamp(24px, 5vw, 64px);
+    border-radius: var(--radius-card);
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  /* A warm glow bleeding off the top edge: the ink card's one light source. */
+  .dcta__card::before {
+    content: '';
+    position: absolute;
+    inset: -40% 20% auto;
+    height: 80%;
+    background: radial-gradient(closest-side, rgba(233, 78, 27, 0.32), transparent);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+  .dcta--cream .dcta__card {
+    background: var(--bg-white);
+    color: var(--text-ink);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .dcta--cream .dcta__card::before {
+    background: radial-gradient(closest-side, rgba(233, 78, 27, 0.12), transparent);
+  }
+  .dcta__card > * {
+    position: relative;
+  }
+  .dcta__eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .dcta__title {
+    max-width: 20ch;
+    font-size: var(--type-h2);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: var(--lh-headline);
+  }
+  .dcta__accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+  .dcta__text {
+    max-width: 52ch;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .dcta--cream .dcta__text {
+    color: var(--text-mute);
+  }
+  .dcta__actions {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .dcta__actions.is-studio-first {
+    flex-direction: row-reverse;
+  }
+  .dcta__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    font-size: var(--type-button);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border: 1px solid transparent;
+    transition: transform 120ms ease-out;
+  }
+  .dcta__btn:hover {
+    transform: translateY(-4px);
+  }
+  .dcta__btn--app {
+    background: var(--brand-orange-cta);
+    color: #fff;
+  }
+  .dcta__btn--brief {
+    color: inherit;
+    border-color: rgba(240, 237, 233, 0.36);
+  }
+  .dcta--cream .dcta__btn--brief {
+    border-color: var(--line-strong);
+  }
+  .dcta__signin {
+    font-size: var(--type-small);
+    color: rgba(240, 237, 233, 0.6);
+  }
+  .dcta--cream .dcta__signin {
+    color: var(--text-mute);
+  }
+  .dcta__signin a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .dcta__signin a:hover {
+    color: var(--brand-orange);
+  }
+</style>

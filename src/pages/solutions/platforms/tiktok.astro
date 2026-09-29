@@ -12,6 +12,10 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import PlatformAppBand from '../../../components/PlatformAppBand.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../../../lib/links';
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
@@ -19,39 +23,34 @@ const colourBar = [
 ];
 
 const stats = [
-  { from: 0, to: 10, suffix: 'x', label: 'Content output velocity', note: 'Hundreds of assets per concept' },
-  { from: 0, to: 70, suffix: '%', label: 'Lower creative cost', note: 'Versus traditional UGC production' },
-  { from: 0, to: 5, suffix: 'x', label: 'Higher engagement', note: 'AI-tuned vs generic creative' },
+  { from: 0, to: 3, suffix: '', label: 'Lanes we ship', note: 'Algorithm, authenticity, trends' },
+  { from: 0, to: 50, suffix: '+', label: 'Variants per concept', note: 'From one signed-off master' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On short-form vertical work' },
 ];
 
 const samples = [
   {
     src: '/Images/tt-sample-arlen.jpg',
-    brand: 'Arlen',
     kind: 'Beauty · UGC-style',
     alt: 'A close cinematic still of a young creator holding a small skincare product to soft window daylight, eyes off-camera.',
   },
   {
     src: '/Images/tt-sample-briar.jpg',
-    brand: 'Briar',
     kind: 'Food · Lifestyle Reel',
     alt: 'Two friends laughing while preparing breakfast on a sunlit kitchen counter, one filming vertically.',
   },
   {
     src: '/Images/tt-sample-callan.jpg',
-    brand: 'Callan',
     kind: 'Footwear · Street',
     alt: 'A low-angle still of a chestnut leather sneaker stepping onto wet city pavement at dusk under a warm street lamp.',
   },
   {
     src: '/Images/tt-sample-dane.jpg',
-    brand: 'Dane',
     kind: 'Tech · Tabletop',
     alt: 'A matte black wireless earbuds case on warm sand-colored concrete, a hand placing one earbud beside it.',
   },
   {
     src: '/Images/tt-sample-elin.jpg',
-    brand: 'Elin',
     kind: 'Apparel · Motion',
     alt: 'A dancer in a warm studio mid-spin, motion-blurred fabric, soft single softbox, deep navy backdrop.',
   },
@@ -103,7 +102,7 @@ const coverage = [
     ],
     tags: [
       'Trend-watch ops', 'Sound-led edits', 'Hashtag adaptations',
-      'Challenge participation', 'Cultural localisation',
+      'Challenge participation', 'Cultural localization',
       'Same-day refresh', 'Creator-style variants',
       'Multi-market drops',
     ],
@@ -161,16 +160,16 @@ const faqs = [
     a: 'TikTok rewards volume that feels native and freshness that arrives weekly, not quarterly. Traditional production tops out at one polished spot per cycle; AIGC inside an authored process gives the algorithm dozens of variants per concept, each one tuned to a trend, an audience or an audio. The platform itself has reported TikTok users are 1.4 times more likely to look forward to generative AI in ads, which means the surface is asking for this work, not resisting it.',
   },
   {
-    q: 'How do you reach a 10x content output velocity?',
-    a: 'AI-assisted planning explores hundreds of concept variants where a traditional team would explore five, and the cost-per-variation curve flattens fast: the first variant is expensive, the fiftieth is close to free. The studio still signs off every frame, which is what keeps the volume on-brand rather than just on-feed.',
+    q: 'How do you produce that much TikTok content?',
+    a: 'AI-assisted planning explores far more concept variants than a traditional team has time for, and the cost per variant drops fast once the master is signed off. The studio still signs off every frame, which is what keeps the volume on-brand rather than just on-feed.',
   },
   {
     q: 'What TikTok formats can your AIGC actually produce?',
     a: 'In-Feed creative, TopView takeovers, Spark Ads, branded AR effects, vertical micro-videos, talking-head UGC, dance and challenge participation, sound-led brand edits, and Shopping content for TikTok Shop. Each surface gets its own crop, tempo and audio treatment, not the same square asset stretched vertical.',
   },
   {
-    q: 'How does the 70% cost reduction actually work?',
-    a: 'The expensive part of TikTok production at scale is the per-shoot setup: talent booking, location, crew day rate, retouch hours. AIGC inside an authored process moves the budget from per-asset cost to per-concept cost. Once the LoRA models are trained and the treatment is locked, the variant cascade lands without booking a fresh shoot per drop.',
+    q: 'Why does the cost per asset fall?',
+    a: 'The expensive part of TikTok production at scale is the per-shoot setup: talent booking, location, crew day rate, retouch hours. AIGC inside an authored process moves the budget from per-asset cost to per-concept cost. Once the brand models are trained and the treatment is locked, new variants land without booking a fresh shoot for each drop.',
   },
   {
     q: 'Can you actually move at trend speed?',
@@ -189,8 +188,13 @@ const faqs = [
     a: 'A one-time onboarding to train brand-specific LoRA models on your approved talent, your sonic identity, your color grade and your visual references. After that, every variant runs through the trained pipeline, and every output sits inside the brand book without a fresh prompt cycle per piece.',
   },
   {
-    q: 'Do you handle global TikTok campaigns and localisation?',
-    a: 'Yes. One hero concept, every market. Phoneme-level lip-sync across forty-plus languages from a single filmed master, culturally adapted scripts, market-specific trend variants. The hero ships once; the localisation cascade lands inside days.',
+    q: 'Do you handle global TikTok campaigns and localization?',
+    a: 'Yes. One hero concept, every market. Lip-sync in the languages each market needs from a single filmed master, culturally adapted scripts, market-specific trend variants. The hero ships once; the localization cascade lands inside days.',
+  },
+  {
+    q: 'Can we post to TikTok ourselves?',
+    a: 'Yes, with the hubStudio app, where TikTok publishing is in Beta. Connect your TikTok account in My Connections. Render the video with AI or bring your own, and let the app draft the caption within TikTok’s limits. Publish now or schedule it, to up to 20 accounts. TikTok itself caps how many posts an account sends a day. For anything that needs a studio finish, send us the brief.',
+    link: { match: 'hubStudio app', href: '/app/publish' },
   },
   {
     q: 'Who owns the assets, the masters and the trained models?',
@@ -208,13 +212,24 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+const SITE = 'https://www.hubstudio.ai';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'TikTok', item: `${SITE}/solutions/platforms/tiktok` },
+  ],
+};
 ---
 
 <Layout
   title="TikTok AIGC Creative Production | hubStudio"
-  description="AIGC for TikTok. Native-feeling vertical creative at the pace the algorithm rewards, produced inside a working studio. Trend velocity, brand intact."
+  description="Vertical TikTok creative from a working studio, at the pace the feed rewards. Or post to TikTok yourself from the hubStudio app, now in Beta."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -305,11 +320,6 @@ const faqSchema = {
               2026 are the ones running an authored process with AIGC
               inside it.
             </p>
-            <p class="why__clients r" style="--d:.22s">
-              Recent TikTok-side campaigns for <strong>Shiseido</strong>,
-              <strong>Camper</strong>, <strong>HiSense</strong>,
-              <strong>age20</strong> and <strong>Mexicash</strong>.
-            </p>
           </div>
         </div>
 
@@ -328,9 +338,9 @@ const faqSchema = {
 
         <div class="stats">
           <p class="stats__quote r">
-            Hundreds of native-feeling variants per concept, cost-per-asset
-            cut by seventy percent, brief to first cut inside forty-eight
-            hours, and the brand grammar still intact at the fiftieth drop.
+            Dozens of native-feeling variants per concept, a first cut
+            inside two days, and the brand still intact at the fiftieth
+            drop.
           </p>
           <div class="stats__grid">
             {
@@ -432,7 +442,6 @@ const faqSchema = {
                   />
                 </div>
                 <figcaption class="shot__cap">
-                  <span class="shot__brand">{s.brand}</span>
                   <span class="shot__kind">{s.kind}</span>
                 </figcaption>
               </figure>
@@ -512,6 +521,42 @@ const faqSchema = {
         </div>
       </div>
     </section>
+
+    <!-- APP OR STUDIO -->
+    <PlatformAppBand
+      pre={'Run it '}
+      accent={'yourself'}
+      post={' in the app, or have the studio run it.'}
+      paras={[
+        'TikTok publishing in the hubStudio app is in Beta. It works today: your team renders or uploads a video, writes the caption with AI and posts it to its own account, now or on schedule. Publishing itself costs nothing. Bring the studio in when a job needs talent on camera or a hand finish.',
+      ]}
+      columns={[
+        {
+          title: 'What your team does in the app',
+          items: [
+            'Renders the video with AI, picks it from the library or uploads it',
+            'Drafts the caption within TikTok’s caption and hashtag limits',
+            'Posts now or schedules it, to up to 20 accounts',
+            'Re-purposes a post for LinkedIn, Instagram, Facebook or X',
+          ],
+        },
+        {
+          title: 'What the studio adds',
+          items: [
+            'Creator-style edits and sound-led cuts, with synthetic talent when a brief needs it',
+            'In-Feed, TopView and Spark Ads versions of each concept',
+            'Dozens of variants per concept, each finished by hand',
+          ],
+        },
+      ]}
+      shot={appShots.tiktok}
+      path="/social/tiktok/brief"
+      actions={[
+        { label: 'Create your account', href: APP_SIGNUP, kind: 'primary', external: true },
+        { label: 'How publishing works', href: '/app/publish' },
+        { label: 'Read the help article', href: '/help/tiktok' },
+      ]}
+    />
 
     <!-- PROCESS -->
     <section class="craft" id="craft">
@@ -600,6 +645,7 @@ const faqSchema = {
           <div class="r" style="--d:.16s">
             <Button variant="primary" href="/contact">Send the brief</Button>
           </div>
+          <p class="fig r" style="--d:.2s">Reviewed September 2026</p>
         </aside>
 
         <div class="acc">
@@ -635,6 +681,8 @@ const faqSchema = {
       </div>
     </section>
 
+    <WaysToWork tone="white" highlight="studio-app" />
+
     <!-- CLOSE -->
     <section class="end">
       <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
@@ -647,19 +695,20 @@ const faqSchema = {
           Send the TikTok brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          A surface-by-surface recommendation, a scope outline, an
-          indicative timeline and a few free vertical frames so you can
-          see the thinking before any budget commits.
+          A producer reads your brief within one business day, and the proposal that comes back gives you a recommendation for each surface, with a scope outline and timing. Want to post some of it yourself? Creating an account costs nothing, and you pay only for what you run.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Send the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF_URL}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
         </div>
+        <p class="end__signin r" style="--d:.22s">
+          Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+        </p>
       </div>
       <div class="cbar cbar--end" aria-hidden="true">
         {colourBar.map((c) => <span style={`background:${c}`}></span>)}
@@ -896,6 +945,8 @@ const faqSchema = {
   .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
   .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
   .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .end__signin { font-size: var(--type-small); color: rgba(240, 237, 233, 0.62); }
+  .end__signin a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 </style>
 
 <script>

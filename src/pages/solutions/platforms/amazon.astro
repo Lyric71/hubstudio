@@ -17,6 +17,10 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import PlatformAppBand from '../../../components/PlatformAppBand.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../../../lib/links';
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
@@ -171,7 +175,7 @@ const faqs = [
   },
   {
     q: 'Can you produce listing and ad creative at the volume our catalog needs?',
-    a: 'Yes. A single hero shoot or AIGC sprint produces the master, and the variant cascade lands per ASIN, per marketplace and per ad placement inside days. The cost-per-variation curve flattens fast: the first variant is expensive, the fiftieth is close to free. Custom-trained LoRA models on your products keep every frame on-brand across the catalog.',
+    a: 'Yes. A single hero shoot or AIGC sprint produces the master, and the variant cascade lands per ASIN, per marketplace and per ad placement inside days. The cost per variation falls fast: the first variant carries most of the work, and each one after it costs far less. Custom-trained LoRA models on your products keep every frame on-brand across the catalog.',
   },
   {
     q: 'How do you keep the brand line consistent across a large catalog?',
@@ -209,13 +213,24 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+const SITE = 'https://www.hubstudio.ai';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'Amazon', item: `${SITE}/solutions/platforms/amazon` },
+  ],
+};
 ---
 
 <Layout
-  title="Amazon AIGC: Listing, Store & Ad Creative at Scale | hubStudio"
+  title="Amazon AIGC: Listing, Store & Ad Creative | hubStudio"
   description="AIGC for Amazon. Product detail pages, A+ Content, Brand Store and Sponsored Brands creative, produced inside a working studio. One brief, every ASIN."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -514,6 +529,24 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- APP OR STUDIO -->
+    <PlatformAppBand
+      pre={'Make the images '}
+      accent={'yourself'}
+      post={', or hand us the listing.'}
+      paras={[
+        'Your team can make listing images and short video in the hubStudio app. The Image studio renders a packshot or a lifestyle scene, up to 4K. The Video studio turns a product photo into a clip. Then the Image editor, which costs nothing to use, crops the result to square 1:1 or portrait 4:5. You download the files and upload them to Seller Central yourself. The app doesn’t connect to Amazon.',
+        'The full listing is studio work: the image stack, A+ Content, the Brand Store and the Sponsored Brands creative. We write it, finish it to one brand line, ASIN after ASIN, and deliver files ready for Seller Central.',
+      ]}
+      shot={appShots.editorCrop}
+      path="/files/tools/image-editor"
+      actions={[
+        { label: 'Send a brief', href: `${BRIEF_URL}?way=studio`, kind: 'primary' },
+        { label: 'Create your account', href: APP_SIGNUP, kind: 'secondary', external: true },
+        { label: 'What the app makes', href: '/app/create' },
+      ]}
+    />
+
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
@@ -636,6 +669,8 @@ const faqSchema = {
       </div>
     </section>
 
+    <WaysToWork tone="white" highlight="studio" />
+
     <!-- S8 · CLOSE -->
     <section class="end">
       <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
@@ -648,19 +683,20 @@ const faqSchema = {
           Send the Amazon brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          A placement-by-placement recommendation, a scope outline, an
-          indicative timeline and a few free listing images or A+ frames so
-          you can see the thinking before any budget commits.
+          A producer reads your brief within one business day, and the proposal that comes back gives you a recommendation for each placement, with a scope outline and timing. Want to make some images yourself? Creating an account costs nothing, and you pay only for what you run.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Send the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF_URL}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
         </div>
+        <p class="end__signin r" style="--d:.22s">
+          Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+        </p>
       </div>
       <div class="cbar cbar--end" aria-hidden="true">
         {colourBar.map((c) => <span style={`background:${c}`}></span>)}
@@ -909,6 +945,8 @@ const faqSchema = {
   .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
   .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
   .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .end__signin { font-size: var(--type-small); color: rgba(240, 237, 233, 0.62); }
+  .end__signin a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 </style>
 
 <script>

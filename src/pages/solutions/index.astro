@@ -2,18 +2,25 @@
 /**
  * Solutions index  ·  /solutions
  *
- * A visual hub that introduces every solution, grouped to mirror the
- * Solutions mega menu in Header.astro: Clients, Consulting, AI
- * Production, and Platforms (with Social / eCommerce / Brand
- * subgroups). Each solution is a card: image, name, one-line intro,
- * and a link through to its own page. No ordinal numerals anywhere
- * (project card rule).
+ * The "who it is for" hub. Each audience card says which of the three ways to
+ * work usually fits and links onward; a two-column band shows the real app
+ * (a capture) and the real studio (a photograph); the three ways band follows
+ * with Use the app highlighted, the site's first door. The rest of the page
+ * is a map to consulting, training, AI production and platform work, grouped
+ * to mirror the Solutions mega menu in Header.astro.
+ * Copy from the content-quality-us deck (cq/solutions).
  *
- * Images are reused from the individual solution pages; no new raster
- * assets are added here.
+ * No ordinal numerals anywhere (project card rule). Images are reused from
+ * the individual solution pages and the studio set; no new raster assets.
  */
 import Layout from '../../layouts/Layout.astro';
-import Button from '../../components/Button.astro';
+import WaysToWork from '../../components/WaysToWork.astro';
+import DualCta from '../../components/DualCta.astro';
+import AppShot from '../../components/AppShot.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
 
 type Solution = {
   name: string;
@@ -21,6 +28,10 @@ type Solution = {
   img: string;
   alt: string;
   desc: string;
+  /** The way to work that usually fits this audience (locked names). */
+  fit?: 'Use the app' | 'Studio + app' | 'Studio only';
+  /** Link label; defaults to "Explore". */
+  cta?: string;
 };
 type SubGroup = {
   /** null renders a plain grid with no sub-heading (flat categories). */
@@ -34,51 +45,61 @@ type Category = {
   subgroups: SubGroup[];
 };
 
+const audiences: Category = {
+  id: 'who',
+  title: 'Who it’s for',
+  blurb:
+    'Where each kind of team usually starts. It’s a pattern we see, and plenty of teams end up using more than one way.',
+  subgroups: [
+    {
+      heading: null,
+      items: [
+        {
+          name: 'Brands',
+          href: '/solutions/brands',
+          img: '/Images/brands-hero.jpg',
+          alt: 'A hubStudio creative floor with a model under window light and brand variations pinned for review.',
+          desc: 'Your team keeps the daily posts in the app. Our studio makes the campaigns inside it, so nobody hunts through email for who approved what.',
+          fit: 'Studio + app',
+          cta: 'How brand teams use it',
+        },
+        {
+          name: 'Agencies',
+          href: '/solutions/agencies',
+          img: '/Images/agencies-hero.jpg',
+          alt: 'Two creative directors reviewing a wall of pinned campaign variations on an agency production floor.',
+          desc: 'Give each client a login and a space of its own, and get the client’s sign-off in the app. When a launch lands, the studio can produce behind your name.',
+          fit: 'Use the app',
+          cta: 'The agency setup',
+        },
+        {
+          name: 'Retailers',
+          href: '/solutions/retailers',
+          img: '/Images/retailers-hero.jpg',
+          alt: 'A retail product still life on a sunlit kitchen counter in late-afternoon window light.',
+          desc: 'Your team turns out variants and schedules posts the same day. The studio takes the seasonal campaign and the marketplace pages.',
+          fit: 'Use the app',
+          cta: 'Retail, season by season',
+        },
+        {
+          name: 'Manufacturers',
+          href: '/solutions/manufacturers',
+          img: '/Images/manufacturers-hero.jpg',
+          alt: 'A partially assembled industrial product under tall window light on a daylit shop floor.',
+          desc: 'You send CAD files or product data, and we send back finished images and film. Marketing can still use the app for its own posts.',
+          fit: 'Studio only',
+          cta: 'From CAD to content',
+        },
+      ],
+    },
+  ],
+};
+
 const categories: Category[] = [
   {
-    id: 'clients',
-    title: 'Clients',
-    blurb: 'Who we work with.',
-    subgroups: [
-      {
-        heading: null,
-        items: [
-          {
-            name: 'Brands',
-            href: '/solutions/brands',
-            img: '/Images/brands-hero.jpg',
-            alt: 'A hubStudio creative floor with a model under window light and brand variations pinned for review.',
-            desc: 'Scale your content output without scaling the team.',
-          },
-          {
-            name: 'Agencies',
-            href: '/solutions/agencies',
-            img: '/Images/agencies-hero.jpg',
-            alt: 'Two creative directors reviewing a wall of pinned campaign variations on an agency production floor.',
-            desc: 'White-label production capacity that flexes with your roster.',
-          },
-          {
-            name: 'Retailers',
-            href: '/solutions/retailers',
-            img: '/Images/retailers-hero.jpg',
-            alt: 'A retail product still life on a sunlit kitchen counter in late-afternoon window light.',
-            desc: 'Catalog-scale visuals for every SKU and every channel.',
-          },
-          {
-            name: 'Manufacturers',
-            href: '/solutions/manufacturers',
-            img: '/Images/manufacturers-hero.jpg',
-            alt: 'A partially assembled industrial product under tall window light on a daylit shop floor.',
-            desc: 'Turn product lines into content that sells them.',
-          },
-        ],
-      },
-    ],
-  },
-  {
     id: 'consulting',
-    title: 'Consulting',
-    blurb: 'Build the capability in-house.',
+    title: 'Consulting and training',
+    blurb: 'For teams that would rather build the skill themselves.',
     subgroups: [
       {
         heading: null,
@@ -88,14 +109,14 @@ const categories: Category[] = [
             href: '/solutions/consulting',
             img: '/Images/who-we-are-office.webp',
             alt: 'A client workshop in a sunlit meeting room with a printed twelve-month roadmap pinned to the wall.',
-            desc: 'An advisory track to stand up your own AI content engine.',
+            desc: 'Advice on setting up your own AI content team: who does what, and how the work gets approved.',
           },
           {
             name: 'Training',
             href: '/solutions/training',
             img: '/Images/training-hero.jpg',
             alt: 'A senior trainer at a whiteboard with four participants reviewing AIGC frames at workstations.',
-            desc: 'Hands-on programs that upskill your team on AIGC craft.',
+            desc: 'Hands-on sessions that teach your team to brief, generate, and review the work.',
           },
         ],
       },
@@ -103,8 +124,8 @@ const categories: Category[] = [
   },
   {
     id: 'ai-production',
-    title: 'AI Production',
-    blurb: 'The generation craft, three ways.',
+    title: 'AI production',
+    blurb: 'The craft behind the studio’s images, video, and copy.',
     subgroups: [
       {
         heading: null,
@@ -114,7 +135,7 @@ const categories: Category[] = [
             href: '/solutions/ai-production/image',
             img: '/Images/aiprod-image-hero.jpg',
             alt: 'A creative director reviewing brand image variations on calibrated monitors in a daylit studio.',
-            desc: 'Brand-trained image generation, art-directed to ship.',
+            desc: 'Brand-trained image work, art-directed before it ships.',
           },
           {
             name: 'Video',
@@ -128,7 +149,7 @@ const categories: Category[] = [
             href: '/solutions/ai-production/content',
             img: '/Images/aiprod-content-hero.jpg',
             alt: 'A strategist reviewing campaign copy variations on a calibrated monitor beside printed proofs.',
-            desc: 'Copy and content systems built around your brand voice.',
+            desc: 'Copy and content written around your brand voice.',
           },
         ],
       },
@@ -137,7 +158,8 @@ const categories: Category[] = [
   {
     id: 'platforms',
     title: 'Platforms',
-    blurb: 'Made native to where you publish.',
+    blurb:
+      'Studio work made for where you publish and sell, on Western and Chinese networks and marketplaces.',
     subgroups: [
       {
         heading: 'Social',
@@ -147,35 +169,35 @@ const categories: Category[] = [
             href: '/solutions/platforms/meta',
             img: '/Images/meta-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a paused Instagram Reels frame.',
-            desc: 'Feed, Stories, and Reels creative tuned for Meta.',
+            desc: 'Feed, Stories, and Reels creative sized and paced for Meta.',
           },
           {
             name: 'TikTok',
             href: '/solutions/platforms/tiktok',
             img: '/Images/tt-hero.jpg',
             alt: 'A young creator filming themselves on a tripod-mounted phone in soft window daylight.',
-            desc: 'Native short video built for how TikTok ranks.',
+            desc: 'Short vertical video, shot and cut the way people watch TikTok.',
           },
           {
             name: 'LinkedIn',
             href: '/solutions/platforms/linkedin',
             img: '/Images/linkedin-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a LinkedIn feed post.',
-            desc: 'B2B content that earns attention in a professional feed.',
+            desc: 'B2B posts, carousels, and video for a professional feed.',
           },
           {
             name: 'WeChat',
             href: '/solutions/platforms/wechat',
             img: '/Images/wechat-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing an open WeChat Official Account article.',
-            desc: 'Articles, mini-program assets, and Moments for WeChat.',
+            desc: 'Official Account articles, mini-program assets, and Moments.',
           },
           {
             name: 'RedNote',
             href: '/solutions/platforms/rednote',
             img: '/Images/rednote-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing the RedNote discovery feed.',
-            desc: 'Lifestyle content that performs on Xiaohongshu.',
+            desc: 'Lifestyle notes and images for Xiaohongshu.',
           },
           {
             name: 'Douyin',
@@ -201,35 +223,35 @@ const categories: Category[] = [
             href: '/solutions/platforms/ecommerce-website',
             img: '/Images/ecommerce-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing an online store product detail page.',
-            desc: 'Conversion-built storefronts that turn traffic into orders.',
+            desc: 'Product, category, and campaign visuals for your own store.',
           },
           {
             name: 'Amazon',
             href: '/solutions/platforms/amazon',
             img: '/Images/amazon-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing an Amazon product detail page.',
-            desc: 'A+ content and listings that win the buy box.',
+            desc: 'Listing images and A+ content for Amazon.',
           },
           {
             name: 'Tmall',
             href: '/solutions/platforms/tmall',
             img: '/Images/tmall-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a Tmall flagship store homepage.',
-            desc: 'Flagship store visuals built for Tmall shoppers.',
+            desc: 'Flagship store visuals and detail pages for Tmall.',
           },
           {
             name: 'JD',
             href: '/solutions/platforms/jd',
             img: '/Images/jd-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a JD product detail page.',
-            desc: 'Product and store content tuned for JD.',
+            desc: 'Product and store content for JD.',
           },
           {
             name: 'Shopify',
             href: '/solutions/platforms/shopify',
             img: '/Images/shopify-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a Shopify storefront product page.',
-            desc: 'Storefront and product visuals made for Shopify.',
+            desc: 'Storefront and product visuals for Shopify.',
           },
         ],
       },
@@ -241,35 +263,56 @@ const categories: Category[] = [
             href: '/solutions/platforms/brand-website',
             img: '/Images/brand-website-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a company website homepage.',
-            desc: 'An editorial brand site built to be found and remembered.',
+            desc: 'An editorial brand site, designed and written.',
           },
         ],
       },
     ],
   },
 ];
+
+const jump = [
+  { id: 'who', label: 'Who it’s for' },
+  { id: 'offers', label: 'The app and the studio' },
+  { id: 'consulting', label: 'Consulting and training' },
+  { id: 'ai-production', label: 'AI production' },
+  { id: 'platforms', label: 'Platforms' },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+  ],
+};
 ---
 
 <Layout
-  title="Solutions for Brands, Agencies & Retailers | hubStudio"
-  description="How hubStudio plugs into your brand: the clients we serve, consulting and training, AI production, and platform-native content for social, ecommerce, and web."
+  title="hubStudio solutions: find the way that fits your team"
+  description="Brands, agencies, retailers, and manufacturers use hubStudio three ways: the app, the studio, or both. See which one usually fits your team."
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
   <!-- ===== Hero ===== -->
   <section class="sol-hero">
     <div class="container">
       <span class="eyebrow">Solutions</span>
       <h1 class="headline h1 reveal sol-hero__title">
-        Built around how your brand <span class="accent">sells</span>.
+        Images, video, and posts, made the way your team <span class="accent">works</span>.
       </h1>
       <p class="lead sol-hero__lead">
-        Who we work with, the consulting we run, and the platforms we produce for:
-        every solution matched to your market and the way you sell.
+        hubStudio is an app and a studio, from one company. You can use the
+        app and make the work yourself, have our studio make it inside the
+        app, or send a brief and get finished files back. The cards below say
+        who usually picks which.
       </p>
-      <nav class="sol-jump" aria-label="Solution categories">
+      <nav class="sol-jump" aria-label="On this page">
         {
-          categories.map((cat) => (
-            <a class="sol-jump__link" href={`#${cat.id}`}>
-              {cat.title}
+          jump.map((j) => (
+            <a class="sol-jump__link" href={`#${j.id}`}>
+              {j.label}
             </a>
           ))
         }
@@ -277,9 +320,114 @@ const categories: Category[] = [
     </div>
   </section>
 
-  <!-- ===== Categories ===== -->
+  <!-- ===== Who it's for ===== -->
+  <div class="sol-cats sol-cats--top">
+    <div class="container">
+      <section class="sol-cat" id={audiences.id}>
+        <header class="sol-cat__head">
+          <h2 class="sol-cat__title reveal">{audiences.title}</h2>
+          <p class="sol-cat__blurb">{audiences.blurb}</p>
+        </header>
+        <div class="sol-grid sol-grid--four">
+          {
+            audiences.subgroups[0].items.map((s) => (
+              <a class="sol-card" href={s.href}>
+                <div class="sol-card__media">
+                  <img class="sol-card__img" src={s.img} alt={s.alt} loading="lazy" decoding="async" />
+                </div>
+                <div class="sol-card__body">
+                  {s.fit && (
+                    <span class="sol-card__fit">
+                      <span class="sol-card__dot" aria-hidden="true" />
+                      Usual fit: {s.fit}
+                    </span>
+                  )}
+                  <h3 class="sol-card__name">{s.name}</h3>
+                  <p class="sol-card__desc">{s.desc}</p>
+                  <span class="sol-card__cta">
+                    {s.cta ?? 'Explore'} <span aria-hidden="true">&rarr;</span>
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+        <p class="sol-aside">
+          Not on this list? Most teams still fit one of the three ways.
+          <a href={APP_SIGNUP} rel="noopener">Open an account and try the app</a>, or
+          <a href={BRIEF_URL}>send a brief</a> and a producer will tell you which way fits.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <!-- ===== The app and the studio ===== -->
+  <section class="sol-offers" id="offers">
+    <div class="container">
+      <span class="eyebrow">See both</span>
+      <h2 class="headline h2 sol-offers__title reveal">
+        What the app looks like, and who works in the <span class="accent">studio</span>.
+      </h2>
+      <div class="sol-offers__grid">
+        <article class="sol-offer">
+          <p class="sol-offer__label">The hubStudio app</p>
+          <AppShot shot={appShots.exploreApp} path="/explore" caption />
+          <p class="sol-offer__text">
+            Your team picks an engine, sees the price, and runs it, then
+            edits, gets approval, and publishes. You pay as you go from a
+            prepaid balance, with no subscription and no seat fees.
+          </p>
+          <p class="sol-offer__links">
+            <a href="/app">Tour the app <span aria-hidden="true">&rarr;</span></a>
+            <a href="/help">Help center <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </article>
+        <article class="sol-offer">
+          <p class="sol-offer__label">The hubStudio studio</p>
+          <figure class="sol-offer__photo">
+            <img
+              src="/Images/studio-hero.webp"
+              alt="An art director marks a pinned proof with a red pencil while a colleague holds another print, in front of a wall of campaign prints at the hubStudio studio."
+              width="2000"
+              height="1333"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <p class="sol-offer__text">
+            Senior art directors, designers, retouchers, motion designers, and
+            writers take a brief and deliver finished work. Founded by Cyril
+            Drouin, former CEO at Publicis, and headquartered in Hong Kong,
+            with studios in Shanghai and Changsha. A producer reads every brief
+            within one business day.
+          </p>
+          <p class="sol-offer__links">
+            <a href="/studio">Meet the studio <span aria-hidden="true">&rarr;</span></a>
+            <a href="/work">See the work <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </article>
+      </div>
+      <p class="sol-offers__price">
+        The app is pay as you go; the studio is quoted after a brief.
+        <a href="/pricing">How pricing works</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Three ways to work ===== -->
+  <WaysToWork
+    tone="white"
+    highlight="app"
+    lead="Each card above points to one of these three. Start with either offer and switch when the work changes."
+  />
+
+  <!-- ===== The map: consulting, AI production, platforms ===== -->
   <div class="sol-cats">
     <div class="container">
+      <p class="sol-transition">
+        The rest of this page is a map. If you already know what you need
+        (advice, training, a craft, or a platform), jump straight to it.
+      </p>
       {
         categories.map((cat) => (
           <section class="sol-cat" id={cat.id}>
@@ -306,7 +454,7 @@ const categories: Category[] = [
                         <h3 class="sol-card__name">{s.name}</h3>
                         <p class="sol-card__desc">{s.desc}</p>
                         <span class="sol-card__cta">
-                          Explore <span aria-hidden="true">&rarr;</span>
+                          {s.cta ?? 'Explore'} <span aria-hidden="true">&rarr;</span>
                         </span>
                       </div>
                     </a>
@@ -320,20 +468,15 @@ const categories: Category[] = [
     </div>
   </div>
 
-  <!-- ===== Closing CTA ===== -->
-  <section class="sol-cta">
-    <div class="container">
-      <div class="sol-cta__card card card--orange grain">
-        <span class="eyebrow sol-cta__eyebrow">Where to start</span>
-        <h2 class="headline h3 sol-cta__title">Not sure where your brand fits?</h2>
-        <p class="sol-cta__text">
-          Tell us your market and what you sell. We will map the right solution, or
-          shape one around the way you work.
-        </p>
-        <Button variant="primary-inverse" href="/contact">Talk to us</Button>
-      </div>
-    </div>
-  </section>
+  <!-- ===== Closing ===== -->
+  <DualCta
+    eyebrow="Where to start"
+    pre="Open the app, or send us a "
+    accent="brief"
+    post="."
+    text="Creating an account costs nothing, and you pay only for what you run. For studio work, a producer reads your brief within one business day and sends a written proposal within 48 hours."
+    lead="app"
+  />
 </Layout>
 
 <style>
@@ -344,14 +487,14 @@ const categories: Category[] = [
   }
   .sol-hero__title {
     margin-top: 16px;
-    max-width: 18ch;
+    max-width: 20ch;
   }
   .sol-hero__lead {
     margin-top: 22px;
-    max-width: 58ch;
+    max-width: 60ch;
   }
 
-  /* Category jump links */
+  /* Section jump links */
   .sol-jump {
     margin-top: 32px;
     display: flex;
@@ -376,7 +519,11 @@ const categories: Category[] = [
 
   /* ---- Category sections --------------------------------------- */
   .sol-cats {
+    padding-top: clamp(64px, 8vw, 112px);
     padding-bottom: clamp(64px, 8vw, 112px);
+  }
+  .sol-cats--top {
+    padding-top: 0;
   }
   .sol-cat {
     scroll-margin-top: 96px;
@@ -402,8 +549,30 @@ const categories: Category[] = [
     font-size: clamp(28px, 3.2vw, 46px);
   }
   .sol-cat__blurb {
+    max-width: 56ch;
     font-size: var(--type-body);
+    line-height: 1.6;
     color: var(--text-mute);
+  }
+  .sol-transition {
+    max-width: 60ch;
+    margin-bottom: clamp(36px, 5vw, 56px);
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .sol-aside {
+    margin-top: 28px;
+    max-width: 70ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .sol-aside a {
+    color: var(--brand-orange);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   /* ---- Subgroups (Platforms) ----------------------------------- */
@@ -436,6 +605,11 @@ const categories: Category[] = [
   @media (min-width: 1024px) {
     .sol-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 1180px) {
+    .sol-grid--four {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -474,6 +648,27 @@ const categories: Category[] = [
     gap: 8px;
     padding: 22px 24px 24px;
   }
+  .sol-card__fit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+  }
+  .sol-card__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
   .sol-card__name {
     font-family: var(--font-sans);
     font-size: var(--type-h4);
@@ -483,7 +678,7 @@ const categories: Category[] = [
   }
   .sol-card__desc {
     font-size: var(--type-body);
-    line-height: 1.55;
+    line-height: 1.6;
     color: var(--text-mute);
   }
   .sol-card__cta {
@@ -501,31 +696,76 @@ const categories: Category[] = [
     transform: translateX(4px);
   }
 
-  /* ---- Closing CTA -------------------------------------------- */
-  .sol-cta {
-    padding-bottom: clamp(80px, 10vw, 150px);
+  /* ---- The app and the studio ---------------------------------- */
+  .sol-offers {
+    scroll-margin-top: 96px;
+    padding-block: clamp(80px, 10vw, 140px);
+    background: var(--bg-white);
   }
-  .sol-cta__card {
+  .sol-offers__title {
+    margin-top: 16px;
+    max-width: 22ch;
+  }
+  .sol-offers__grid {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: grid;
+    gap: clamp(48px, 6vw, 72px);
+  }
+  @media (min-width: 960px) {
+    .sol-offers__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+  }
+  .sol-offer {
+    display: grid;
+    gap: 18px;
+  }
+  .sol-offer__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .sol-offer__photo {
+    margin: 0;
+    border-radius: clamp(14px, 1.6vw, 22px);
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    box-shadow: 0 30px 60px -24px rgba(14, 22, 51, 0.32);
+  }
+  .sol-offer__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sol-offer__text {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-ink);
+    max-width: 56ch;
+  }
+  .sol-offer__links {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 14px;
-    padding: clamp(40px, 6vw, 76px) clamp(24px, 5vw, 64px);
-    color: #fff;
+    flex-wrap: wrap;
+    gap: 10px 24px;
   }
-  .sol-cta__eyebrow {
-    color: rgba(255, 255, 255, 0.72);
+  .sol-offer__links a,
+  .sol-offers__price a {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
   }
-  .sol-cta__title {
-    color: #fff;
-  }
-  .sol-cta__text {
-    max-width: 46ch;
-    color: rgba(255, 255, 255, 0.86);
-  }
-  .sol-cta__card .btn {
-    margin-top: 10px;
+  .sol-offers__price {
+    margin-top: clamp(36px, 4vw, 52px);
+    padding-top: 22px;
+    border-top: 1px solid var(--line-hairline);
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
   }
 </style>
 

@@ -1,33 +1,89 @@
 ---
 /**
  * Pricing (`/pricing`).
- * Editorial treatment: hero, stat strip, three chapter spreads, two
- * pull-quote interludes, comparison matrix, filtered FAQ, dark closing.
- * Scroll-linked motion, magnetic CTAs, drawing-on-scroll timeline.
  *
- * SEO excerpt (25 words): hubStudio offers three pricing models: pay per
- * asset, scope a fixed project, or keep a creative studio on monthly
- * retainer. No mystery fees, no lock-in.
+ * How you pay for the two offers, with no amounts anywhere: the app runs on a
+ * prepaid balance held in real currency (price shown before every run), the
+ * studio quotes from a brief (asset-based, project-based, or retainer). Then
+ * Studio + app (who pays for the runs), the three ways to work, a comparison
+ * table, the FAQ, the insights layer, and both doors.
+ *
+ * Money language follows hubstudio-positioning.md: balance, top-up, run.
+ * Never an amount, a currency code, a rate, or the old unit names.
+ *
+ * SEO excerpt (25 words): hubStudio's app runs on a prepaid balance, and every
+ * run shows its price first. Studio work is quoted per asset, per project, or
+ * on retainer.
  */
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import InsightsLayer from '../components/InsightsLayer.astro';
+import WaysToWork from '../components/WaysToWork.astro';
+import DualCta from '../components/DualCta.astro';
+import { APP_SIGNUP, BRIEF_URL, HELP_URL } from '../lib/links';
 
-const models = ['Asset-Based', 'Project-Based', 'Subscription'];
-
-const assetVolume = [
-  { k: 'Image production', d: 'Briefed, finalized, ready to ship.' },
-  { k: 'Short video', d: 'Vertical, fast, made for the feed.' },
-  { k: 'Product copy & transcreation', d: 'Written natively, market by market.' },
-  { k: 'Social captions', d: 'Tone-of-voice locked across channels.' },
+const jumps = [
+  { label: 'The app', href: '#app' },
+  { label: 'The studio', href: '#studio' },
+  { label: 'Studio + app', href: '#studio-app' },
+  { label: 'Compare', href: '#compare' },
 ];
 
-const assetProject = [
-  'Brand identity', 'Website design', 'Packaging & merch', 'Motion design',
-  'Illustration', 'Storyboard', 'Presentation & pitch decks',
-  'Ebooks & reports', 'Press releases', 'Concept creation',
-  'Creative & marketing strategy', 'Long-form video',
-  'Live photo & video shoots', '3D & CGI',
+const paid = [
+  { k: 'Image and video runs', d: 'Every engine has its own price, and the button shows it before you run.' },
+  { k: 'AI drafts and “Improve with AI” rewrites', d: 'A post drafted for you, a new version, a rewritten prompt.' },
+  { k: 'Voice input', d: 'Speech turned into text by an AI model, in any text box.' },
+  { k: 'Storage', d: 'A small daily charge for the files your team keeps.' },
+  { k: 'Downloads', d: 'A transfer charge when a stored file is downloaded.' },
+];
+
+const free = [
+  'Creating an account',
+  'Adding people to your team',
+  'The Image editor',
+  'The Image anonymizer',
+  'Validation',
+  'Publishing to LinkedIn, Instagram, Facebook, and TikTok',
+];
+
+const teamCells = [
+  {
+    k: 'One team balance',
+    d: 'Working alone, you’re a team of one. In a team, everyone draws on one shared balance. Admins can set a daily spending limit for each creator. Viewers and clients spend nothing, and clients hold no balance at all.',
+  },
+  {
+    k: 'Card, Alipay, or WeChat Pay',
+    d: 'You pay on Stripe’s own page, so your payment details are never typed into hubStudio.',
+  },
+  {
+    k: 'Automatic top-up',
+    d: 'It’s optional and needs a saved card. You pick the level that triggers a top-up, and a cap on what can be charged automatically in one day.',
+  },
+  {
+    k: 'Invoices and usage',
+    d: 'You get an invoice for every top-up. The usage log lists every paid action, and admins see it person by person.',
+  },
+];
+
+const studioModels = [
+  {
+    id: 'asset-based',
+    tag: 'Asset-based',
+    title: 'Pay for finished assets.',
+    body: 'You order finished assets. Volume formats, such as product images, short vertical video, product copy, and social captions, carry minimum order quantities. Bespoke formats, such as brand identity, packaging, motion, 3D, or a live shoot, are quoted one by one with no minimum. It suits volume that rises and falls from month to month.',
+  },
+  {
+    id: 'project-based',
+    tag: 'Project-based',
+    title: 'A team around one launch.',
+    body: 'We put a team around your brief: a creative director, an art director, an AIGC engineer, a copywriter, and a producer. You get one quote and one schedule, and we bill by milestone. A launch or a seasonal campaign usually fits here, since both come with a clear scope and a date.',
+  },
+  {
+    id: 'retainer',
+    tag: 'Retainer',
+    title: 'A studio team, month after month.',
+    body: 'A fixed monthly fee buys a dedicated team and an agreed monthly volume, mixed across our twenty service lines. The team keeps your prompt library and brand-trained models, so it doesn’t relearn your brand on every job. Terms run three, six, or twelve months. It suits steady work across channels that doesn’t stop between campaigns.',
+  },
 ];
 
 const projectTimeline = [
@@ -38,136 +94,141 @@ const projectTimeline = [
   },
   {
     label: 'Proposal',
-    note: '48-hour binding response.',
+    note: 'In writing, within 48 hours.',
     icon: 'M4 12l4 4 12-12',
   },
   {
     label: 'Production',
-    note: 'Creative director, art director, AIGC engineer, copywriter, producer.',
+    note: 'Art directors lead, AIGC production underneath.',
     icon: 'M4 12a8 8 0 1 0 8-8 M12 8v4l3 2',
   },
   {
-    label: 'First review',
-    note: 'Inside two weeks of kickoff.',
+    label: 'Review',
+    note: 'You comment, we revise.',
     icon: 'M3 12s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6z M12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z',
   },
   {
     label: 'Delivery',
-    note: 'Full delivery inside four weeks maximum.',
+    note: 'Finished files, with provenance recorded for each asset.',
     icon: 'M5 13l4 4L19 7',
   },
 ];
 
-const projectIncluded = [
-  'Creative direction and concept development',
-  'Production across image, video, text, motion, design, and live shoots',
-  'AI model fine-tuning when the brand calls for it, Lora stays your property',
-  'Post-production, rounds of modification, final asset packaging',
-  'Project management with a single point of contact',
-];
-
-const projectUseCases = [
-  'Product launches and seasonal campaigns',
-  'eCommerce content packs across SKUs and platforms',
-  'Pitch work for new business',
-  'Brand identity refreshes paired with full asset libraries',
-  'Multi-market campaign adaptations',
-];
-
-const retainerIncluded = [
-  { k: 'Dedicated team', d: 'Creative director, art director, AIGC engineer.' },
-  { k: 'Monthly volume', d: 'Agreed upfront, rolls over inside the quarter.' },
-  { k: 'Across 20 services', d: 'Mix-and-match every format your brand needs.' },
-  { k: 'Brand guardrails', d: 'Prompt library, consistency sets, brand-trained models.' },
-  { k: 'Weekly cadence', d: 'Published SLA we share with your team.' },
-  { k: 'Live shoot days', d: 'Bundled inside the retainer when the brief calls for it.' },
-];
-
-const retainerTerms = [
-  { months: '3 months', sub: 'Pilot a workflow.' },
-  { months: '6 months', sub: 'Lock in a season.' },
-  { months: '12 months', sub: 'Build a content engine.' },
-];
-
-const currencies = ['USD', 'EUR', 'GBP', 'HKD', 'CNY'];
-
 const matrixRows = [
   {
+    feature: 'Who does the work',
+    app: 'Your own team, in hubStudio',
+    both: 'Our studio, inside hubStudio',
+    studio: 'Our studio, outside the app',
+  },
+  {
+    feature: 'How you pay',
+    app: 'From a prepaid balance, at the price shown before each run.',
+    both: 'A studio fee, quoted from your brief. In our workspace the fee covers the runs; in yours they come from your balance.',
+    studio: 'A studio fee, quoted from your brief: per asset, per project, or on retainer.',
+  },
+  {
+    feature: 'What you see',
+    app: 'Everything: prompts, engines, prices, History, and the usage log.',
+    both: 'A Client space with your finished work, or your whole workspace if we work in it.',
+    studio: 'The finished files we deliver.',
+  },
+  {
+    feature: 'Approvals',
+    app: 'Validation, between teammates or with your clients.',
+    both: 'Validation, version by version, on one thread.',
+    studio: 'You review drafts with our team directly. No login needed.',
+  },
+  {
+    feature: 'What you need to start',
+    app: 'An account, which costs nothing.',
+    both: 'A brief.',
+    studio: 'A brief. No account needed.',
+  },
+  {
     feature: 'Best for',
-    a: 'Volume work, scaling up or down each month',
-    p: 'Defined campaigns with a clear scope and deadline',
-    s: 'Continuous content across markets and channels',
-  },
-  {
-    feature: 'Commitment',
-    a: 'Per order, no lock-in',
-    p: 'Per brief, milestone-based',
-    s: '3, 6, or 12-month terms',
-  },
-  {
-    feature: 'First delivery',
-    a: 'In days, on most volume work',
-    p: 'First review in two weeks',
-    s: 'Weekly cadence, priority queue',
-  },
-  {
-    feature: 'Rounds of modification',
-    a: 'Three on finalized work',
-    p: 'Three on finalized work',
-    s: 'More, on retainer',
-  },
-  {
-    feature: 'Lora training',
-    a: 'Add-on when it fits',
-    p: 'Included when the brand calls for it',
-    s: 'Included, with prompt library',
-  },
-  {
-    feature: 'Asset ownership',
-    a: 'Yours on payment',
-    p: 'Yours on payment',
-    s: 'Yours on payment',
-  },
-  {
-    feature: 'Surge capacity',
-    a: 'Larger order with priority',
-    p: 'Re-scope mid-flight',
-    s: 'Double volume, no renegotiation',
-  },
-  {
-    feature: 'Single point of contact',
-    a: 'Producer on the order',
-    p: 'Project lead, kickoff to delivery',
-    s: 'Dedicated team, embedded',
+    app: 'Teams that want to make the work and control every run.',
+    both: 'Brands that want studio work with approvals and files in one place.',
+    studio: 'Launches and bespoke work handed over end to end.',
   },
 ];
 
-type FaqCategory = 'Engagement' | 'Ownership' | 'Pricing' | 'Delivery' | 'Production';
+type FaqTopic = 'app' | 'studio' | 'both';
 
-const faqs: { c: FaqCategory; q: string; a: string }[] = [
-  { c: 'Engagement', q: 'Can we start small and grow into a subscription?', a: 'Yes, and most clients do exactly that. They place an Asset-Based order or run one Project first, then move to a Studio Retainer once the volume earns it. Moving over is simple. The brand assets, the prompts, and the models we trained for you all come with you.' },
-  { c: 'Engagement', q: 'Do you sign annual contracts?', a: 'Only when it works in your favor. Asset and Project work has no lock-in at all. Studio Retainers run on three, six, or twelve-month terms, and the longer ones bring the rate per asset down.' },
-  { c: 'Ownership', q: 'Who owns the assets and the prompts?', a: 'You do. The finished assets and the prompts behind them become yours the moment the invoice is paid. The one exception is the AI models and Loras trained on your products: those stay with hubStudio by default, though you can license them outright if you want them, quoted case by case.' },
-  { c: 'Ownership', q: 'What about confidentiality and IP protection?', a: 'We sign an NDA on request, before a single brief changes hands. Anything we build for you is trained only on your shots, your references, and your guidelines. None of it feeds a public model, and none of it gets reused for another client.' },
-  { c: 'Pricing', q: 'Why are there no prices on this page?', a: 'Because an honest number depends on the brief. A launch across five markets and a single batch of social images are not the same job, and a fixed rate card would overcharge the small order while underquoting the big one. Send the brief and the figure you get back reflects the actual work, with nothing padded and nothing buried.' },
-  { c: 'Pricing', q: 'How is pricing set?', a: 'Your quote reflects scope, complexity, volume, and the deadline you are working to. We send a binding proposal within 48 hours of getting your brief. Asset, Project, and Subscription rates are all laid out plainly once we know what you need.' },
-  { c: 'Pricing', q: 'How do we budget for this internally?', a: 'Send the brief early, even a rough version. Because the proposal is binding and comes back within 48 hours, you can take a real number into a budget conversation rather than a guess. If the scope changes later, we revise the proposal before anything gets signed.' },
-  { c: 'Pricing', q: 'What does the MOQ actually mean? Can I order one image?', a: 'MOQs exist because the briefing, the onboarding, and the quality checks cost the same whether you order ten assets or one. Below the minimum, the math stops working for both sides. If your need really is a one-off, we can fold it into a Project quote or point you to a freelancer who suits it better.' },
-  { c: 'Delivery', q: 'How fast can you deliver?', a: 'Three days is the floor on most volume work, and it is the rule rather than the exception. Projects hit their first review within two weeks of kickoff and wrap inside four weeks at the outside. Retainer clients get a weekly delivery rhythm and skip the queue.' },
-  { c: 'Delivery', q: 'What if the first delivery is not right?', a: 'Every asset includes rounds of modification (three on finalized work, more on retainer). If we miss the brief, we redo the work, no extra charge. The brief alignment call happens before any production starts, which is why this rarely happens.' },
-  { c: 'Production', q: 'Do you cover languages and markets outside English?', a: 'Yes. We work in English, French, German, Spanish, and Chinese. Operations run from China and the Philippines, with creative talent producing for clients across multiple markets. Transcreation is handled by people who write natively in the target language, not translated into it.' },
-  { c: 'Production', q: 'Do you actually shoot, or only generate?', a: 'Both. We run a live-action studio for real photo and video shoots, the kind brands selling worldwide rely on. Plenty of briefs are better generated, or built as a hybrid of the two. We will tell you which makes sense before you commit. Where AI generation fits, the savings are real, and we pass them through to you.' },
-  { c: 'Production', q: 'What inputs do you need from us to get started?', a: 'For images: a creative brief, your brand visual identity, product shots if applicable. For video: the above plus a finalized script (or we write one). For copy: tone-of-voice guide and product information. For shoots: brief, brand guidelines, product, talent direction if any. We have a one-page brief template that does the heavy lifting.' },
-  { c: 'Production', q: 'Can you integrate with our DAM, PIM, or eCommerce platform?', a: 'Yes, on the hub4You Private Platform. We build connectors to Salsify, Akeneo, Bynder, Adobe Commerce, Shopify Plus, Salesforce Commerce Cloud, and most enterprise systems. Integration scope is part of the setup quote.' },
-  { c: 'Pricing', q: 'What payment terms do you offer?', a: 'Asset orders take a deposit upfront, with the balance due on delivery. Project billing follows the milestones as they land. Retainers are invoiced monthly, in advance. Established clients and listed companies can ask us for Net 30.' },
-  { c: 'Pricing', q: 'Which currencies do you bill in?', a: 'USD by default. We also invoice in EUR, GBP, HKD, and CNY on request. Cross-border invoicing runs through Beyond Border Group Limited in Hong Kong.' },
-  { c: 'Ownership', q: 'Do you take usage rights into account?', a: 'Every quote assumes unlimited commercial use across your owned and paid channels. A few things sit outside that: broadcast TV, out-of-home at scale, and talent-likeness licensing for AI brand ambassadors get quoted separately. Tell us where the work will run, and we will be upfront about any uplift.' },
-  { c: 'Engagement', q: 'What happens to my retainer volume if we do not use it?', a: 'Unused volume rolls into the next month, as long as it stays inside the same quarter. Anything past that resets. We would rather flag a slow month early and rebalance the plan than watch your budget quietly go to waste.' },
-  { c: 'Delivery', q: 'Can you scale up for a peak season or product launch?', a: 'Yes. Retainer clients have a published surge clause that lets them double volume for one to two months without renegotiating the contract. Asset clients can simply place a bigger order with priority handling for a small uplift.' },
-  { c: 'Engagement', q: 'What is the first step?', a: 'Send a brief, or just a rough idea, to hello@hubstudio.ai. You will hear back inside 24 hours. We come back with a proposal, three to five sample visuals at no charge, and whatever questions the brief raised for us, so you can judge the work before committing to it.' },
+const topicLabel: Record<FaqTopic, string> = {
+  app: 'The app',
+  studio: 'The studio',
+  both: 'Both',
+};
+
+const faqs: { c: FaqTopic; q: string; a: string }[] = [
+  {
+    c: 'both',
+    q: 'Why doesn’t this page list prices?',
+    a: 'Every engine in the app has its own price, and the price moves with the settings you pick: the size, the number of images, the length of a clip. No table on this page could keep up with every combination. The app shows the exact price on the button before every run. Studio work depends on the brief, so we quote it in writing after we’ve read it.',
+  },
+  {
+    c: 'app',
+    q: 'Is there a subscription, a seat fee, or a free trial?',
+    a: 'No. There’s no subscription, no seat fee, and no free trial. Creating an account costs nothing, and so do the Image editor, the Image anonymizer, Validation, and publishing to LinkedIn, Instagram, Facebook, and TikTok. Runs need money on the balance, and a small first top-up is enough to try the engines you care about.',
+  },
+  {
+    c: 'app',
+    q: 'What happens when a run fails?',
+    a: 'You pay nothing for it. A run is charged only when it succeeds, at the price you saw before it started. One exception: a video clip longer than 15 seconds can time out after the engine has billed it, and the form warns you before you run it.',
+  },
+  {
+    c: 'app',
+    q: 'Does the balance expire?',
+    a: 'No. It stays there until you spend it. Top-ups aren’t refunded, though, so add what you expect to use.',
+  },
+  {
+    c: 'app',
+    q: 'How do I keep an eye on what my team spends?',
+    a: 'Admins can set a daily spending limit for each creator. The usage log shows every paid action, and admins can see it person by person. Viewers and client logins spend nothing.',
+  },
+  {
+    c: 'app',
+    q: 'How can I pay?',
+    a: 'By card, Alipay, or WeChat Pay, on Stripe’s page. Automatic top-up is optional and works with a saved card.',
+  },
+  {
+    c: 'app',
+    q: 'Do I get an invoice?',
+    a: 'Yes, one for every top-up, automatic ones included. It’s made out to your team or to you.',
+  },
+  {
+    c: 'studio',
+    q: 'How do you price studio work?',
+    a: 'Per asset, per project, or on a monthly retainer. The quote depends on the scope, the method, the deadline, and where the work will run. You get it as a written proposal within 48 hours of your brief.',
+  },
+  {
+    c: 'studio',
+    q: 'When the studio works in the app, who pays for the runs?',
+    a: 'It depends on whose workspace we’re in. When we work in our own, the runs come out of our balance and your studio fee covers them. Inside your workspace, our creatives are members like anyone else, so their runs are charged to your balance at the price shown before each one.',
+  },
+  {
+    c: 'studio',
+    q: 'What are the payment terms for studio work?',
+    a: 'Asset orders take a deposit up front, with the rest due on delivery. Projects are billed at milestones. Retainers are invoiced monthly, in advance. Established clients can ask for Net 30.',
+  },
+  {
+    c: 'studio',
+    q: 'Who owns the finished work?',
+    a: 'You do. The finished assets and the prompts behind them are yours once the invoice is paid. Models trained on your products stay with hubStudio by default, and they’re never used for another client. If you want to own one, we quote a license case by case.',
+  },
+  {
+    c: 'both',
+    q: 'Can we start with the app and bring in the studio later?',
+    a: 'Yes. You can make everyday work in the app and hand a launch to the studio, or the other way around. Send a brief whenever you want us to take a job on. If you’d rather we work inside your own workspace, say so in the brief.',
+  },
 ];
 
-const faqCategories: ('All' | FaqCategory)[] = ['All', 'Engagement', 'Pricing', 'Delivery', 'Production', 'Ownership'];
+const faqFilters: { key: 'all' | 'app' | 'studio'; label: string }[] = [
+  { key: 'all', label: 'All' },
+  { key: 'app', label: 'The app' },
+  { key: 'studio', label: 'The studio' },
+];
 
 const SITE = 'https://www.hubstudio.ai';
 
@@ -179,13 +240,25 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 2, name: 'Pricing', item: `${SITE}/pricing` },
   ],
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <Layout
-  title="hubStudio Pricing: Asset, Project, or Retainer"
-  description="Three ways to work with hubStudio: pay per asset, scope a project, or keep a creative studio on retainer. No mystery fees and no lock-in."
+  title="hubStudio pricing: the app and the studio"
+  description="How you pay for hubStudio: a prepaid balance for the app, with the price shown before every run, and studio work quoted from your brief."
+  preloadImage="/Images/pricing-hero.webp"
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- ============================================================
        HERO
@@ -195,60 +268,30 @@ const breadcrumbSchema = {
       <div class="hero__copy">
         <span class="hero__tag">Pricing</span>
         <h1 class="hero__display reveal">
-          Three ways to work with us. One <em>studio</em>.
+          How you pay for the app and the <span class="accent">studio</span>.
         </h1>
         <p class="hero__lead">
-          Some brands need a steady drip of content. Others need everything at
-          once for a launch. Pick the model that matches how your team really
-          works, not how a studio would prefer to bill you. No forced plans,
-          and no contract that takes a lawyer to read.
+          In the app, every run shows its price before you start it, and you
+          pay from a prepaid balance. Studio work gets a written quote once
+          we’ve read your brief. You won’t find a rate card on this page.
+          Engine prices change with the settings you pick, and studio work
+          changes with the brief.
         </p>
 
-        <div class="hero__picker" role="tablist" aria-label="Pricing models">
+        <nav class="hero__picker" aria-label="On this page">
           {
-            models.map((m) => (
-              <a
-                class="hero__picker-item"
-                role="tab"
-                href={`#${m === 'Subscription' ? 'subscription' : m === 'Asset-Based' ? 'asset-based' : 'project-based'}`}
-                data-model={m}
-              >
-                <span class="hero__picker-dot" aria-hidden="true"></span>
-                {m}
+            jumps.map((j) => (
+              <a class="hero__picker-item" href={j.href}>
+                <span class="hero__picker-dot" aria-hidden="true" />
+                {j.label}
               </a>
             ))
           }
-        </div>
+        </nav>
 
         <div class="hero__cta">
-          {/* The engine is the page's most important action, so it takes the
-              primary slot and the other two step back. Access is granted by
-              request, so it points at the form, not at the gated tool. The "?"
-              carries the explanation, so the hero stays a hero. */}
-          <span class="hero__engine">
-            <Button
-              variant="primary"
-              href="/contact?request=quotation-engine"
-              class="js-magnetic hero__engine-btn">Quotation Engine</Button
-            >
-            <button
-              type="button"
-              class="hero__info"
-              aria-label="What is the Quotation Engine?"
-              aria-describedby="engine-tip"
-            >
-              ?
-            </button>
-            <span class="hero__tip" id="engine-tip" role="tooltip">
-              Prices AI product imagery image by image: set the count, the
-              delivery method, and a complexity level per image, then add sizes,
-              upscales, 3D angles, pack shots, or post-production. It returns a
-              line-by-line quote in your currency. Access is on request, so ask
-              for it through the form.
-            </span>
-          </span>
-          <Button variant="secondary" href="/contact" class="js-magnetic">Start a project</Button>
-          <Button variant="secondary" href="#matrix" class="js-magnetic">Compare the three</Button>
+          <Button variant="primary" href={APP_SIGNUP} class="js-magnetic">Create your account</Button>
+          <Button variant="secondary" href={BRIEF_URL} class="js-magnetic">Send a brief</Button>
         </div>
       </div>
 
@@ -262,67 +305,73 @@ const breadcrumbSchema = {
           height="1125"
           fetchpriority="high"
         />
-        <span class="hero__visual-chip">48-hour binding proposal</span>
+        <span class="hero__visual-chip">Price shown before every run</span>
       </figure>
     </div>
   </section>
 
   <!-- ============================================================
-       STAT STRIP
+       FACT STRIP (word-stats, no counters)
        ============================================================ -->
-  <section class="stats" id="manifesto">
+  <section class="stats" aria-label="The short version">
     <div class="container">
       <div class="stats__grid">
         <div class="stat-block">
-          <span class="stat-block__num" data-count="20">0</span>
-          <span class="stat-block__label">Service lines under one roof</span>
+          <span class="stat-block__word">Nothing</span>
+          <span class="stat-block__label">Creating an account costs nothing</span>
         </div>
         <div class="stat-block">
-          <span class="stat-block__num"><span data-count="48">0</span>h</span>
-          <span class="stat-block__label">Binding proposal from brief</span>
+          <span class="stat-block__word">Upfront</span>
+          <span class="stat-block__label">Every run shows its price before it starts</span>
         </div>
         <div class="stat-block">
-          <span class="stat-block__num">&lt;<span data-count="4">0</span>w</span>
-          <span class="stat-block__label">Project delivery, maximum</span>
+          <span class="stat-block__word">Never</span>
+          <span class="stat-block__label">A failed run is never charged</span>
         </div>
         <div class="stat-block">
-          <span class="stat-block__num">Zero</span>
-          <span class="stat-block__label">Surprise line items on the invoice</span>
+          <span class="stat-block__num">48h</span>
+          <span class="stat-block__label">To a written studio proposal</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       CHAPTER: ASSET-BASED
+       THE APP: prepaid balance
        ============================================================ -->
-  <section class="chapter chapter--light" id="asset-based">
+  <section class="chapter chapter--light" id="app">
     <div class="container chapter__grid">
       <header class="chapter__head">
-        <span class="chapter__tag">Asset-Based</span>
+        <span class="chapter__tag">The app</span>
         <h2 class="chapter__display reveal">
-          Pay for what <em>you ship</em>.
+          A prepaid balance, spent one <span class="accent">run</span> at a time.
         </h2>
         <p class="chapter__lead">
-          You send the brief. We produce the work. Twenty service lines, the
-          formats your brand reaches for, turned around in a few days instead
-          of a few weeks. Some of it we generate, some we shoot, and plenty of
-          briefs land somewhere in between. We will tell you which is right
-          before you spend anything.
+          A run is one job for the AI: an image, a clip, a post draft, or a
+          rewritten prompt. You add money to a balance held in real currency,
+          and each run is charged against it at the price shown before it
+          starts. There’s no subscription and no seat fee, and the balance
+          doesn’t expire.
         </p>
       </header>
 
-      <figure class="chapter__photo chapter__photo--asset js-tilt" data-tilt="6">
-        <img src="/Images/pricing-asset.webp" alt="A concrete worktable covered with finished printed brand materials laid out in a loose grid" loading="lazy" width="1184" height="880" />
-        <span class="chapter__photo-chip">Volume + per-project · One studio</span>
+      <figure class="chapter__photo js-tilt" data-tilt="5">
+        <img
+          src="/Images/app-desk.webp"
+          alt="A small in-house team gathered at a laptop, working in hubStudio"
+          loading="lazy"
+          width="1600"
+          height="1200"
+        />
+        <span class="chapter__photo-chip">Pay as you go</span>
       </figure>
 
       <div class="chapter__body">
         <div class="pillar-row">
-          <article class="pillar js-spotlight">
-            <p class="pillar__head"><span></span>Volume formats, MOQs apply</p>
+          <article class="pillar">
+            <h3 class="pillar__head"><span aria-hidden="true"></span>What costs money</h3>
             <ul class="pillar__list">
-              {assetVolume.map((it) => (
+              {paid.map((it) => (
                 <li>
                   <span class="pillar__list-k">{it.k}</span>
                   <span class="pillar__list-d">{it.d}</span>
@@ -330,41 +379,53 @@ const breadcrumbSchema = {
               ))}
             </ul>
             <p class="pillar__note">
-              Every asset arrives finished and ready to use, with rounds of
-              modification built in. Ask for the full MOQ list and we will send
-              it over.
+              All of it shows up in the usage log, line by line, with the name
+              of whoever ran it.
             </p>
           </article>
 
-          <article class="pillar js-spotlight">
-            <p class="pillar__head"><span></span>Quoted per project, no MOQ</p>
-            <ul class="chip-cluster">
-              {assetProject.map((it) => <li class="chip-cluster__chip">{it}</li>)}
+          <article class="pillar pillar--free">
+            <h3 class="pillar__head"><span aria-hidden="true"></span>What costs nothing</h3>
+            <ul class="pillar__free">
+              {free.map((it) => <li>{it}</li>)}
             </ul>
             <p class="pillar__note">
-              Pre- and post-production are quoted as add-ons on any format:
-              scripting, voice-over, editing, subtitles, sound design,
-              retouching, and talent direction.
+              Posts sent to X through hubStudio are the exception. The price
+              shows before you send.
             </p>
           </article>
         </div>
+        <p class="asof">What’s charged and what’s free, as of September 2026.</p>
+
+        <div class="team-grid">
+          {teamCells.map((c) => (
+            <article class="team-cell">
+              <h3 class="team-cell__k">{c.k}</h3>
+              <p class="team-cell__d">{c.d}</p>
+            </article>
+          ))}
+        </div>
 
         <div class="chapter__cta">
-          <Button variant="primary" href="/contact" class="js-magnetic">Get a quote on an asset order</Button>
+          <Button variant="primary" href={APP_SIGNUP} class="js-magnetic">Create your account</Button>
+          <a class="arrow-link" href={HELP_URL}>
+            Read the app’s help center <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       INTERLUDE: pricing principle
+       INTERLUDE: how we price
        ============================================================ -->
   <section class="interlude">
     <div class="container">
       <blockquote class="interlude__quote">
         <p>
-          We quote the job in front of us. Not a number picked to look tidy on a
-          web page, and not a plan you have to grow into.
+          You see the price of a run on the button before you press it. A
+          studio job gets its price in writing, before anyone on our side
+          starts work.
         </p>
         <cite class="interlude__cite">hubStudio, on how we price</cite>
       </blockquote>
@@ -372,30 +433,48 @@ const breadcrumbSchema = {
   </section>
 
   <!-- ============================================================
-       CHAPTER: PROJECT-BASED
+       THE STUDIO: asset-based, project-based, retainer
        ============================================================ -->
-  <section class="chapter chapter--cream" id="project-based">
+  <section class="chapter chapter--light" id="studio">
     <div class="container chapter__grid chapter__grid--reverse">
       <header class="chapter__head">
-        <span class="chapter__tag">Project-Based</span>
+        <span class="chapter__tag">The studio</span>
         <h2 class="chapter__display reveal">
-          Built for your next <em>launch</em>.
+          Studio work, quoted from your <span class="accent">brief</span>.
         </h2>
         <p class="chapter__lead">
-          We assemble the team around your brief: a creative director, an art
-          director, an AIGC engineer, a copywriter, a producer. You deal with
-          one quote and one schedule, and the invoice comes once. Our live-action
-          crew has shot for brands including Mazda, Nescafe, and Marriott.
+          Send us a brief and a producer reads it within one business day; the
+          written proposal follows within 48 hours. Every job is led by a
+          senior art director, with AIGC production underneath. We price the
+          work in one of three ways, and you can move from one to another as
+          your needs change.
         </p>
       </header>
 
-      <figure class="chapter__photo chapter__photo--project js-tilt" data-tilt="-5">
-        <img src="/Images/pricing-project.webp" alt="A small creative team gathered around a long studio worktable reviewing a printed campaign rollout" loading="lazy" width="1184" height="880" />
-        <span class="chapter__photo-chip chapter__photo-chip--right">One team · One invoice</span>
+      <figure class="chapter__photo js-tilt" data-tilt="-5">
+        <img
+          src="/Images/studio-brief.webp"
+          alt="Hands annotating a printed creative brief with a pencil"
+          loading="lazy"
+          width="1600"
+          height="1200"
+        />
+        <span class="chapter__photo-chip chapter__photo-chip--right">Senior art direction on every brief</span>
       </figure>
 
       <div class="chapter__body">
+        <div class="models">
+          {studioModels.map((m) => (
+            <article class="model" id={m.id}>
+              <span class="model__tag"><span aria-hidden="true"></span>{m.tag}</span>
+              <h3 class="model__title">{m.title}</h3>
+              <p class="model__body">{m.body}</p>
+            </article>
+          ))}
+        </div>
+
         <div class="timeline" data-timeline>
+          <h3 class="timeline__title">From brief to delivery</h3>
           <svg class="timeline__path" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
             <path d="M40 40 C 220 0, 320 80, 500 40 S 780 0, 960 40" />
           </svg>
@@ -414,120 +493,124 @@ const breadcrumbSchema = {
           </ol>
         </div>
 
-        <div class="pair-row">
-          <article class="pair-card pair-card--white">
-            <p class="pair-card__head"><span></span>Included by default</p>
-            <ul class="pair-card__list">
-              {projectIncluded.map((it) => <li>{it}</li>)}
-            </ul>
-          </article>
-          <article class="pair-card pair-card--white">
-            <p class="pair-card__head"><span></span>Typical use cases</p>
-            <ul class="pair-card__list">
-              {projectUseCases.map((it) => <li>{it}</li>)}
-            </ul>
-          </article>
+        <div class="drivers">
+          <h3 class="drivers__title">What drives a quote</h3>
+          <p class="drivers__text">
+            A quote starts with scope: how many assets, in which formats. Then
+            method, because some assets are shot, some are generated, and most
+            mix both; we decide that asset by asset. A tight deadline changes
+            the team we need. So does a model trained on your products. Last
+            comes usage. Our quotes assume your owned and paid channels, and
+            broadcast, large out-of-home campaigns, or a real person’s likeness
+            in AI work are quoted separately.
+          </p>
         </div>
 
         <div class="chapter__cta">
-          <Button variant="primary" href="/contact" class="js-magnetic">Brief us on a project</Button>
+          <Button variant="primary" href={`${BRIEF_URL}?way=studio`} class="js-magnetic">Send a brief</Button>
+          <Button variant="secondary" href="/studio" class="js-magnetic">Meet the studio</Button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       INTERLUDE: ownership
+       STUDIO + APP: who pays for the runs (dark)
        ============================================================ -->
-  <section class="interlude interlude--alt">
-    <div class="container">
-      <blockquote class="interlude__quote">
-        <p>
-          You own the brief, the finished files, and the prompts behind them the
-          day the invoice clears.
-        </p>
-        <cite class="interlude__cite">hubStudio, on what you keep</cite>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       CHAPTER: SUBSCRIPTION (dark immersive)
-       ============================================================ -->
-  <section class="chapter chapter--dark" id="subscription">
+  <section class="chapter chapter--dark" id="studio-app">
     <div class="chapter__dark-bg" aria-hidden="true">
       <div class="chapter__dark-blob chapter__dark-blob--a"></div>
       <div class="chapter__dark-blob chapter__dark-blob--b"></div>
     </div>
 
-    <div class="container subscription__inner">
-      <header class="chapter__head chapter__head--center">
-        <span class="chapter__tag chapter__tag--on-dark">Subscription</span>
-        <h2 class="chapter__display chapter__display--center reveal">
-          Your studio <em>on retainer</em>.
+    <div class="container chapter__grid">
+      <header class="chapter__head">
+        <span class="chapter__tag chapter__tag--on-dark">Studio + app</span>
+        <h2 class="chapter__display chapter__display--on-dark reveal">
+          When our studio works inside <span class="accent">hubStudio</span>.
         </h2>
         <p class="chapter__lead chapter__lead--on-dark">
-          A fixed monthly cost, and a team that gets faster the longer it works
-          with you, because it stops relearning your brand on every job. It
-          runs like an in-house studio you never had to hire for. Mix and match
-          across all twenty service lines, on a weekly schedule we put in
-          writing.
+          Our creatives can make your work in the app, and you review and
+          approve it there. Who pays for the runs? That depends on whose
+          workspace we use.
         </p>
       </header>
 
-      <div class="retainer">
-        <div class="retainer__grid">
-          {retainerIncluded.map((it) => (
-            <article class="retainer__cell">
-              <p class="retainer__cell-k">{it.k}</p>
-              <p class="retainer__cell-d">{it.d}</p>
-            </article>
-          ))}
+      <figure class="chapter__photo chapter__photo--dark">
+        <img
+          src="/Images/studio-on-app.webp"
+          alt="A producer at a desk on a call, reviewing work on screen"
+          loading="lazy"
+          width="1600"
+          height="1200"
+        />
+      </figure>
+
+      <div class="chapter__body">
+        <div class="ws-row">
+          <article class="ws">
+            <h3 class="ws__k">In our workspace</h3>
+            <p class="ws__d">
+              We create in our own hubStudio team and tag the work “Made for”
+              your company. The runs come out of our workspace, and the studio
+              fee in your proposal covers them. Your people get client logins
+              and a Client space that shows only the finished work made for
+              them. They download it, comment on it, and approve it or send it
+              back in Validation. They never see prompts, engines, or costs,
+              and they hold no balance.
+            </p>
+          </article>
+          <article class="ws">
+            <h3 class="ws__k">In your workspace</h3>
+            <p class="ws__d">
+              You add our creatives as members of your team. We create from
+              your workspace and your balance, at the price shown before each
+              run. Your proposal covers our team’s time. Your admins approve in
+              Validation, and everything stays in your History and Assets
+              Library when the project ends.
+            </p>
+          </article>
         </div>
 
-        <div class="retainer__terms">
-          <p class="retainer__terms-head">Terms that fit how you scale</p>
-          <div class="retainer__terms-row">
-            {retainerTerms.map((t) => (
-              <button class="retainer__term" data-term type="button">
-                <span class="retainer__term-mo">{t.months}</span>
-                <span class="retainer__term-sub">{t.sub}</span>
-              </button>
-            ))}
-          </div>
-        </div>
+        <p class="ws-note">
+          Either way, every version stays on one approval thread, and nothing
+          on it can be deleted. There’s no “order from the studio” button in
+          the app. A studio job starts with a brief.
+        </p>
 
-        <div class="retainer__currencies">
-          <span class="retainer__currencies-label">Billed in</span>
-          <div class="retainer__currencies-row">
-            {currencies.map((c) => <span class="retainer__currency">{c}</span>)}
-          </div>
-        </div>
-
-        <div class="chapter__cta chapter__cta--center">
-          <Button variant="primary" href="/contact" class="js-magnetic">Scope a retainer</Button>
+        <div class="chapter__cta">
+          <Button variant="primary" href={`${BRIEF_URL}?way=studio-app`} class="js-magnetic">Send a brief</Button>
+          <Button variant="on-dark" href="/studio/with-the-app" class="js-magnetic">How Studio + app works</Button>
         </div>
       </div>
     </div>
-
-    <figure class="subscription__photo" aria-hidden="true">
-      <img src="/Images/pricing-subscription.webp" alt="" loading="lazy" width="1184" height="880" />
-    </figure>
   </section>
 
   <!-- ============================================================
-       S7 : COMPARISON MATRIX
+       THREE WAYS TO WORK (shared band)
        ============================================================ -->
-  <section class="matrix" id="matrix">
+  <WaysToWork
+    tone="cream"
+    eyebrow="Three ways to work"
+    pre="Pick how you want to "
+    accent="work"
+    post="."
+    lead="Still deciding? The app and the studio are one company. Start with either one and move between them when the work changes."
+  />
+
+  <!-- ============================================================
+       COMPARISON MATRIX
+       ============================================================ -->
+  <section class="matrix" id="compare">
     <div class="container">
       <header class="matrix__head">
-        <span class="chapter__tag">At a glance</span>
+        <span class="chapter__tag">Side by side</span>
         <h2 class="chapter__display reveal">
-          Three models, <em>side by side</em>.
+          The three ways, <span class="accent">compared</span>.
         </h2>
         <p class="section-note">
-          Still weighing them up? This is the quickest way to see where the
-          three differ before you talk to us.
+          The big differences are who makes the work and how you pay for it.
+          Read across a row to compare.
         </p>
       </header>
 
@@ -535,21 +618,27 @@ const breadcrumbSchema = {
         <table class="matrix__table">
           <thead>
             <tr>
-              <th scope="col" class="matrix__th matrix__th--feature">&nbsp;</th>
-              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--orange">Asset-Based</span></th>
-              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--navy">Project-Based</span></th>
-              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--ink">Subscription</span></th>
+              <th scope="col" class="matrix__th matrix__th--feature"><span class="sr-only">Question</span></th>
+              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--orange">Use the app</span></th>
+              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--navy">Studio + app</span></th>
+              <th scope="col" class="matrix__th"><span class="matrix__th-chip matrix__th-chip--ink">Studio only</span></th>
             </tr>
           </thead>
           <tbody>
             {matrixRows.map((row) => (
               <tr class="matrix__row">
                 <th scope="row" class="matrix__feature">{row.feature}</th>
-                <td>{row.a}</td>
-                <td>{row.p}</td>
-                <td>{row.s}</td>
+                <td>{row.app}</td>
+                <td>{row.both}</td>
+                <td>{row.studio}</td>
               </tr>
             ))}
+            <tr class="matrix__row matrix__row--cta">
+              <th scope="row" class="matrix__feature">Start here</th>
+              <td><a class="arrow-link" href={APP_SIGNUP} rel="noopener">Create your account <span aria-hidden="true">&rarr;</span></a></td>
+              <td><a class="arrow-link" href={`${BRIEF_URL}?way=studio-app`}>Send a brief <span aria-hidden="true">&rarr;</span></a></td>
+              <td><a class="arrow-link" href={`${BRIEF_URL}?way=studio`}>Send a brief <span aria-hidden="true">&rarr;</span></a></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -557,40 +646,41 @@ const breadcrumbSchema = {
   </section>
 
   <!-- ============================================================
-       S8 : FAQ (filtered)
+       FAQ (filtered by offer)
        ============================================================ -->
   <section class="faq" id="faq">
     <div class="container">
       <header class="faq__head">
-        <span class="chapter__tag">Frequently asked</span>
+        <span class="chapter__tag">Questions</span>
         <h2 class="chapter__display reveal">
-          The questions buyers <em>always</em> ask.
+          What buyers ask before they <span class="accent">pay</span>.
         </h2>
+        <p class="faq__updated">Updated September 2026</p>
         <p class="section-note">
-          Filter by what you need to know. If your question is not here, email
-          hello@hubstudio.ai and we will answer it directly.
+          Filter by offer, or read them all. If your question isn’t here,
+          write to <a href="mailto:hello@hubstudio.ai">hello@hubstudio.ai</a>
+          and a person will answer it.
         </p>
       </header>
 
-      <div class="faq__filter" role="tablist" aria-label="FAQ categories">
-        {faqCategories.map((cat, i) => (
+      <div class="faq__filter" role="group" aria-label="Filter questions by offer">
+        {faqFilters.map((f, i) => (
           <button
             class="faq__filter-btn"
             type="button"
-            role="tab"
-            data-filter={cat}
-            aria-selected={i === 0 ? 'true' : 'false'}
+            data-filter={f.key}
+            aria-pressed={i === 0 ? 'true' : 'false'}
           >
-            {cat}
+            {f.label}
           </button>
         ))}
       </div>
 
       <div class="faq__list">
         {faqs.map((item) => (
-          <details class="faq__item" data-category={item.c}>
+          <details class="faq__item" data-topic={item.c}>
             <summary class="faq__q">
-              <span class="faq__cat">{item.c}</span>
+              <span class="faq__cat">{topicLabel[item.c]}</span>
               <span class="faq__q-text">{item.q}</span>
               <svg class="faq__chev" viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
@@ -604,56 +694,65 @@ const breadcrumbSchema = {
   </section>
 
   <!-- ============================================================
-       S8b : INSIGHTS LAYER (cost method, buying models)
+       INSIGHTS LAYER (cost method, buying models)
        ============================================================ -->
   <InsightsLayer placement="pricing" tone="white" id="reading" />
 
   <!-- ============================================================
-       S9 : CLOSING (dark, immersive, animated cube)
+       CLOSING: both doors
        ============================================================ -->
-  <section class="cta">
-    <div class="cta__bg" aria-hidden="true">
-      <div class="cta__blob cta__blob--a"></div>
-      <div class="cta__blob cta__blob--b"></div>
-      <div class="cta__grain"></div>
-    </div>
-
-    <div class="container cta__inner">
-      <svg class="cta__cube js-cube" viewBox="0 0 120 130" aria-hidden="true">
-        <path d="M60 8 L112 38 L60 68 L8 38 Z" fill="var(--brand-orange)" />
-        <path d="M8 38 L60 68 L60 122 L8 92 Z" fill="var(--brand-navy)" />
-        <path d="M112 38 L60 68 L60 122 L112 92 Z" fill="var(--brand-navy-deep)" />
-      </svg>
-
-      <span class="chapter__tag chapter__tag--on-dark">Ready when you are</span>
-      <h2 class="cta__display reveal">
-        Let's build something <em>worth paying for</em>.
-      </h2>
-      <p class="cta__lead">
-        Send a brief, or just a question. You will get a clear proposal back,
-        a few sample visuals at no charge, and a candid take on which of the
-        three models suits your team.
-      </p>
-
-      <div class="cta__buttons">
-        <Button variant="primary" href="/contact" class="js-magnetic">Start a project</Button>
-        <Button variant="on-dark" href="/contact" class="js-magnetic">Book a 30-minute call</Button>
-      </div>
-
-      <p class="cta__hello">
-        <a href="mailto:hello@hubstudio.ai" class="cta__hello-link">hello@hubstudio.ai</a>
-      </p>
-      <p class="cta__fine">All quotes valid 30 days. Tax excluded where applicable. Pricing models last reviewed May 2026.</p>
-    </div>
-  </section>
+  <DualCta
+    eyebrow="Two ways in"
+    pre="Open an account, or send us the "
+    accent="brief"
+    post="."
+    text="Creating an account costs nothing, and every run shows its price first. For studio work, a producer reads your brief within one business day."
+  />
 </Layout>
 
 <style>
   /* ============================================================
-     PRICING PAGE : editorial 2026 treatment
-     Tokens come from global.css. Local rules below add depth,
-     parallax, marquee, sticky rail, drawing timeline, matrix.
+     PRICING PAGE
+     Design variables come from global.css. Local rules add the hero, the
+     chapters, the drawing timeline, the matrix, and the FAQ.
      ============================================================ */
+
+  /* One Playfair italic accent word per headline. */
+  .hero__display .accent,
+  .chapter__display .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--brand-orange);
+    font-weight: 600;
+    font-size: var(--type-button);
+  }
+  .arrow-link span {
+    transition: transform 200ms ease-out;
+  }
+  .arrow-link:hover span {
+    transform: translateX(6px);
+  }
 
   /* ----------------------------------------------------------------
      Hero
@@ -707,13 +806,6 @@ const breadcrumbSchema = {
     color: var(--text-ink);
     margin: 0;
   }
-  .hero__display em {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--brand-orange);
-  }
   .hero__lead {
     font-size: var(--type-lead);
     line-height: 1.5;
@@ -761,90 +853,6 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     margin-top: 4px;
   }
-  /* The Quotation Engine button and its "?" travel together. */
-  .hero__engine {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  /* The loudest thing on the page: bigger than its neighbours, and lifted off
-     the cream by a halo in the brand color rather than a new one. */
-  .hero__engine-btn {
-    font-size: var(--type-button);
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    padding: 16px 32px;
-    box-shadow:
-      0 10px 24px -10px color-mix(in srgb, var(--brand-orange) 70%, transparent),
-      0 0 0 6px color-mix(in srgb, var(--brand-orange) 12%, transparent);
-    transition:
-      transform 0.18s ease,
-      box-shadow 0.18s ease;
-  }
-  .hero__engine-btn:hover {
-    transform: translateY(-1px);
-    box-shadow:
-      0 14px 30px -10px color-mix(in srgb, var(--brand-orange) 80%, transparent),
-      0 0 0 8px color-mix(in srgb, var(--brand-orange) 16%, transparent);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero__engine-btn:hover {
-      transform: none;
-    }
-  }
-  .hero__info {
-    width: 22px;
-    height: 22px;
-    flex: none;
-    border-radius: 50%;
-    border: 1px solid var(--line-strong);
-    background: transparent;
-    color: var(--text-mute);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    line-height: 1;
-    cursor: help;
-    transition:
-      border-color 0.18s ease,
-      color 0.18s ease;
-  }
-  .hero__info:hover,
-  .hero__info:focus-visible {
-    border-color: var(--brand-orange);
-    color: var(--brand-orange);
-  }
-  .hero__tip {
-    position: absolute;
-    left: 0;
-    bottom: calc(100% + 10px);
-    z-index: 5;
-    width: min(360px, 78vw);
-    background: var(--bg-white);
-    border: 1px solid var(--line-hairline);
-    border-radius: 14px;
-    box-shadow: var(--shadow-card);
-    padding: 14px 16px;
-    font-size: var(--type-small);
-    line-height: 1.55;
-    color: var(--text-ink);
-    /* Hidden by opacity rather than display, so it can fade and so screen
-       readers still reach it through aria-describedby. */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(4px);
-    transition:
-      opacity 0.18s ease,
-      transform 0.18s ease,
-      visibility 0.18s;
-  }
-  .hero__info:hover + .hero__tip,
-  .hero__info:focus + .hero__tip,
-  .hero__tip:hover {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
   .hero__visual {
     position: relative;
     margin: 0;
@@ -882,7 +890,7 @@ const breadcrumbSchema = {
   }
 
   /* ----------------------------------------------------------------
-     Stat strip
+     Fact strip
      ---------------------------------------------------------------- */
   .stats {
     padding-block: 56px;
@@ -906,15 +914,24 @@ const breadcrumbSchema = {
   .stat-block {
     display: grid;
     gap: 10px;
+    align-content: start;
   }
   .stat-block__num {
     font-family: var(--font-sans);
-    font-weight: 600;
-    letter-spacing: -0.03em;
+    font-weight: 700;
+    letter-spacing: -0.04em;
     font-size: clamp(40px, 4vw, 56px);
     line-height: 1;
     color: var(--text-ink);
     font-variant-numeric: tabular-nums;
+  }
+  .stat-block__word {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(40px, 4vw, 56px);
+    line-height: 1;
+    color: var(--brand-orange);
   }
   .stat-block__label {
     font-size: var(--type-small);
@@ -924,15 +941,13 @@ const breadcrumbSchema = {
   }
 
   /* ----------------------------------------------------------------
-     CHAPTER (shared)
+     Chapters (shared)
      ---------------------------------------------------------------- */
   .chapter {
     position: relative;
     padding-block: clamp(72px, 9vw, 128px);
   }
   .chapter--light { background: var(--bg-white); }
-  .chapter--cream { background: var(--bg-cream); }
-  .chapter--dark { overflow: hidden; }
 
   .chapter__tag {
     display: inline-flex;
@@ -947,6 +962,7 @@ const breadcrumbSchema = {
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+    width: fit-content;
   }
   .chapter__tag--on-dark {
     background: rgba(255, 255, 255, 0.1);
@@ -957,29 +973,18 @@ const breadcrumbSchema = {
     font-family: var(--font-sans);
     font-weight: 500;
     letter-spacing: -0.025em;
-    line-height: 1.02;
+    line-height: 1.04;
     font-size: clamp(34px, 4.2vw, 56px);
     margin: 0;
     max-width: 20ch;
   }
-  .chapter__display em {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--brand-orange);
-  }
-  .chapter__display--center {
-    margin-inline: auto;
-    text-align: center;
-    max-width: 24ch;
-  }
+  .chapter__display--on-dark { color: var(--text-on-dark); }
 
   .chapter__lead {
     font-size: clamp(17px, 1.3vw, 20px);
-    line-height: 1.55;
+    line-height: 1.6;
     color: var(--text-mute);
-    max-width: 52ch;
+    max-width: 54ch;
     margin-top: 28px;
   }
   .chapter__lead--on-dark {
@@ -990,21 +995,18 @@ const breadcrumbSchema = {
     gap: 4px;
     align-content: start;
   }
-  .chapter__head--center {
-    text-align: center;
-    justify-items: center;
-  }
   .chapter__head .chapter__tag {
     margin-bottom: 24px;
   }
-  .chapter__cta { margin-top: 48px; }
-  .chapter__cta--center {
-    text-align: center;
+  .chapter__cta {
+    margin-top: 48px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 24px;
   }
 
-  /* Chapter grid: head + photo on row 1, body full-width on row 2 */
+  /* Head + photo on row 1, body full width on row 2. */
   .chapter__grid {
     display: grid;
     gap: 40px;
@@ -1038,6 +1040,9 @@ const breadcrumbSchema = {
     transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
     box-shadow: 0 30px 80px rgba(10, 10, 20, 0.16);
   }
+  .chapter__photo--dark {
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  }
   .chapter__photo img {
     width: 100%;
     height: auto;
@@ -1068,9 +1073,10 @@ const breadcrumbSchema = {
     right: 20px;
   }
 
-  /* Pillar row (Asset chapter) */
+  /* ----------------------------------------------------------------
+     App: what costs money, what costs nothing
+     ---------------------------------------------------------------- */
   .pillar-row {
-    margin-top: 56px;
     display: grid;
     gap: 28px;
   }
@@ -1078,30 +1084,13 @@ const breadcrumbSchema = {
     .pillar-row { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
   .pillar {
-    position: relative;
     padding: 32px;
-    border-radius: 24px;
+    border-radius: 28px;
     background: var(--bg-cream);
-    border: 1px solid var(--line-hairline);
-    isolation: isolate;
-    overflow: hidden;
-    transition: transform 240ms ease-out, box-shadow 240ms ease-out;
+    border: 1px solid var(--line-strong);
+    display: flex;
+    flex-direction: column;
   }
-  .pillar:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(10, 10, 20, 0.08);
-  }
-  .js-spotlight::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    pointer-events: none;
-    z-index: -1;
-    background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(233, 78, 27, 0.18), transparent 65%);
-    opacity: 0;
-    transition: opacity 240ms;
-  }
-  .js-spotlight:hover::before { opacity: 1; }
   .pillar__head {
     display: flex;
     align-items: center;
@@ -1112,7 +1101,7 @@ const breadcrumbSchema = {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-mute);
-    margin-bottom: 22px;
+    margin: 0 0 22px;
   }
   .pillar__head span {
     width: 8px;
@@ -1120,12 +1109,18 @@ const breadcrumbSchema = {
     border-radius: 50%;
     background: var(--brand-orange);
   }
+  .pillar--free .pillar__head span {
+    background: var(--brand-navy);
+  }
   .pillar__list {
     display: grid;
-    gap: 16px;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
   .pillar__list li {
-    padding-block: 12px;
+    padding-block: 14px;
     border-top: 1px solid var(--line-hairline);
     display: grid;
     gap: 4px;
@@ -1137,52 +1132,161 @@ const breadcrumbSchema = {
     color: var(--text-ink);
   }
   .pillar__list-d {
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     color: var(--text-mute);
-    line-height: 1.5;
+    line-height: 1.6;
+  }
+  .pillar__free {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .pillar__free li {
+    position: relative;
+    padding-left: 28px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-ink);
+  }
+  /* A drawn tick, in the navy that marks the free column. */
+  .pillar__free li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 7px;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid var(--brand-navy);
+    border-bottom: 2px solid var(--brand-navy);
+    transform: rotate(-45deg);
+  }
+  /* The note sits at the foot of its card, so both notes line up. */
+  .pillar__list,
+  .pillar__free {
+    margin-bottom: 24px;
   }
   .pillar__note {
-    margin-top: 24px;
-    padding-top: 18px;
+    margin: auto 0 0;
+    padding-top: 24px;
     border-top: 1px solid var(--line-hairline);
-    font-size: var(--type-small);
-    line-height: 1.55;
+    font-size: var(--type-body);
+    line-height: 1.6;
     color: var(--text-mute);
   }
-  .chip-cluster {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .chip-cluster__chip {
-    padding: 8px 14px;
-    border-radius: var(--radius-pill);
-    background: #fff;
-    border: 1px solid var(--line-hairline);
-    font-size: var(--type-small);
-    color: var(--text-ink);
-    transition: background-color 200ms, color 200ms, border-color 200ms, transform 200ms;
-  }
-  .chip-cluster__chip:hover {
-    background: var(--brand-orange);
-    color: #fff;
-    border-color: var(--brand-orange);
-    transform: translateY(-2px);
+  .asof {
+    margin: 16px 0 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
   }
 
-  /* Project chapter : Timeline */
+  .team-grid {
+    margin-top: 56px;
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 768px) {
+    .team-grid { grid-template-columns: 1fr 1fr; column-gap: 48px; }
+  }
+  .team-cell {
+    padding-top: 22px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .team-cell__k {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+  .team-cell__d {
+    margin: 0;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+
+  /* ----------------------------------------------------------------
+     Studio: the three models
+     ---------------------------------------------------------------- */
+  .models {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 900px) {
+    .models { grid-template-columns: repeat(3, 1fr); }
+  }
+  .model {
+    padding: 32px;
+    border-radius: 28px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    scroll-margin-top: 96px;
+  }
+  .model__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .model__tag span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .model__title {
+    margin: 0;
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-ink);
+  }
+  .model__body {
+    margin: 0;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* Timeline (drawn on scroll) */
   .timeline {
     position: relative;
-    margin-top: 56px;
-    padding-block: 16px 8px;
+    margin-top: 72px;
+    padding-block: 0 8px;
+  }
+  .timeline__title,
+  .drivers__title {
+    margin: 0 0 28px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
   }
   .timeline__path {
     position: absolute;
-    inset: 0;
+    left: 0;
     width: 100%;
     height: 80px;
     pointer-events: none;
-    top: 18px;
+    top: 64px;
+  }
+  @media (max-width: 799px) {
+    .timeline__path { display: none; }
   }
   .timeline__path path {
     fill: none;
@@ -1197,6 +1301,9 @@ const breadcrumbSchema = {
   .timeline__list {
     position: relative;
     z-index: 1;
+    list-style: none;
+    margin: 0;
+    padding: 16px 0 0;
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
@@ -1250,77 +1357,35 @@ const breadcrumbSchema = {
     color: var(--text-ink);
   }
   .timeline__note {
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     color: var(--text-mute);
-    line-height: 1.45;
+    line-height: 1.5;
     max-width: 22ch;
   }
 
-  /* Pair row (Project chapter included + use cases) */
-  .pair-row {
-    margin-top: 56px;
-    display: grid;
-    gap: 24px;
+  /* What drives a quote: prose, not another list */
+  .drivers {
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line-hairline);
+    max-width: 68ch;
   }
-  @media (min-width: 768px) {
-    .pair-row { grid-template-columns: 1fr 1fr; }
-  }
-  .pair-card {
-    padding: 32px;
-    border-radius: 24px;
-  }
-  .pair-card--white {
-    background: #fff;
-    border: 1px solid var(--line-hairline);
-    box-shadow: var(--shadow-card);
-  }
-  .pair-card__head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    margin-bottom: 22px;
-  }
-  .pair-card__head span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--brand-orange);
-  }
-  .pair-card__list {
-    display: grid;
-    gap: 12px;
-  }
-  .pair-card__list li {
-    position: relative;
-    padding-left: 24px;
+  .drivers__title { margin-bottom: 14px; }
+  .drivers__text {
+    margin: 0;
     font-size: var(--type-body);
-    line-height: 1.55;
-  }
-  .pair-card__list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--brand-orange);
-    opacity: 0.7;
+    line-height: 1.66;
+    color: var(--text-ink);
   }
 
   /* ----------------------------------------------------------------
-     Subscription chapter (dark immersive)
+     Studio + app (dark)
      ---------------------------------------------------------------- */
   .chapter--dark {
     background: var(--bg-ink);
     color: var(--text-on-dark);
     isolation: isolate;
+    overflow: hidden;
   }
   .chapter__dark-bg {
     position: absolute;
@@ -1350,168 +1415,54 @@ const breadcrumbSchema = {
     background: radial-gradient(circle, rgba(233, 78, 27, 0.42), transparent 70%);
     animation: float-b 20s ease-in-out infinite;
   }
-
-  .subscription__inner {
-    position: relative;
-    z-index: 1;
+  @keyframes float-a {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(60px, 40px); }
+  }
+  @keyframes float-b {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-50px, -30px); }
+  }
+  .ws-row {
     display: grid;
-    gap: 64px;
+    gap: 24px;
   }
-  .retainer {
-    max-width: 1080px;
-    margin-inline: auto;
-    width: 100%;
-    display: grid;
-    gap: 48px;
-    padding: 48px;
-    border-radius: 32px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+  @media (min-width: 900px) {
+    .ws-row { grid-template-columns: 1fr 1fr; }
   }
-  @media (max-width: 767px) {
-    .retainer { padding: 28px; }
-  }
-  .retainer__grid {
-    display: grid;
-    gap: 28px 32px;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 700px) {
-    .retainer__grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1000px) {
-    .retainer__grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  .retainer__cell {
-    display: grid;
-    gap: 8px;
-    padding-block: 4px;
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
-    padding-top: 24px;
-  }
-  .retainer__cell-k {
-    font-size: var(--type-body);
-    font-weight: 600;
-    color: #fff;
-  }
-  .retainer__cell-d {
-    font-size: var(--type-small);
-    line-height: 1.55;
-    color: rgba(240, 237, 233, 0.72);
-  }
-
-  .retainer__terms {
-    display: grid;
-    gap: 16px;
-  }
-  .retainer__terms-head {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(240, 237, 233, 0.6);
-  }
-  .retainer__terms-row {
-    display: grid;
-    gap: 12px;
-  }
-  @media (min-width: 700px) {
-    .retainer__terms-row { grid-template-columns: repeat(3, 1fr); }
-  }
-  .retainer__term {
-    text-align: left;
-    padding: 22px 24px;
-    border-radius: 18px;
+  .ws {
+    padding: 32px;
+    border-radius: 28px;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: #fff;
-    display: grid;
-    gap: 6px;
-    transition: background-color 220ms, border-color 220ms, transform 220ms;
-    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
-  .retainer__term:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
-  }
-  .retainer__term[data-active='true'] {
-    background: var(--brand-orange);
-    border-color: var(--brand-orange);
-    transform: translateY(-2px);
-    box-shadow: 0 16px 36px rgba(233, 78, 27, 0.3);
-  }
-  .retainer__term-mo {
-    font-size: 24px;
+  .ws__k {
+    margin: 0 0 12px;
+    font-size: clamp(22px, 2vw, 28px);
     font-weight: 600;
     letter-spacing: -0.02em;
+    color: #fff;
   }
-  .retainer__term-sub {
-    font-size: 13px;
-    color: rgba(240, 237, 233, 0.7);
-  }
-  .retainer__term[data-active='true'] .retainer__term-sub { color: rgba(255, 255, 255, 0.9); }
-
-  .retainer__currencies {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
-  }
-  .retainer__currencies-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(240, 237, 233, 0.55);
-  }
-  .retainer__currencies-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .retainer__currency {
-    padding: 6px 12px;
-    border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: rgba(240, 237, 233, 0.85);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-  }
-
-  .subscription__photo {
-    position: absolute;
-    right: -10%;
-    bottom: -15%;
-    width: 40vw;
-    max-width: 480px;
-    aspect-ratio: 4 / 3;
+  .ws__d {
     margin: 0;
-    border-radius: 24px;
-    overflow: hidden;
-    opacity: 0.22;
-    transform: rotate(4deg);
-    z-index: 0;
-    pointer-events: none;
-    mask-image: linear-gradient(135deg, #000 60%, transparent 100%);
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.78);
   }
-  .subscription__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ws-note {
+    margin: 32px 0 0;
+    max-width: 68ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.78);
+  }
 
   /* ----------------------------------------------------------------
-     Interlude pull-quotes
+     Interlude pull quote
      ---------------------------------------------------------------- */
   .interlude {
     background: var(--bg-cream);
     padding-block: clamp(56px, 8vw, 104px);
-  }
-  .interlude--alt {
-    background: var(--bg-white);
   }
   .interlude__quote {
     max-width: 940px;
@@ -1541,7 +1492,7 @@ const breadcrumbSchema = {
   }
 
   /* ----------------------------------------------------------------
-     S7 : Matrix
+     Comparison matrix
      ---------------------------------------------------------------- */
   .matrix {
     padding-block: clamp(72px, 9vw, 120px);
@@ -1556,9 +1507,13 @@ const breadcrumbSchema = {
     font-size: var(--type-body);
     line-height: 1.6;
     color: var(--text-mute);
-    max-width: 56ch;
+    max-width: 60ch;
+    margin: 0;
   }
-  .matrix__head .chapter__tag { align-self: start; justify-self: start; }
+  .section-note a {
+    color: var(--brand-orange);
+    font-weight: 600;
+  }
   .matrix__wrap {
     overflow-x: auto;
     border-radius: 28px;
@@ -1583,36 +1538,30 @@ const breadcrumbSchema = {
     background: #fff;
     border-bottom: 1px solid var(--line-hairline);
     font-weight: 500;
-    color: var(--text-mute);
-    font-size: var(--type-small);
-    font-family: var(--font-mono);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
   }
   .matrix__th--feature {
-    width: 22%;
+    width: 20%;
   }
   .matrix__th-chip {
     display: inline-flex;
     padding: 8px 16px;
     border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
     font-size: 12px;
     color: #fff;
     letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   .matrix__th-chip--orange { background: var(--brand-orange); }
   .matrix__th-chip--navy { background: var(--brand-navy); }
   .matrix__th-chip--ink { background: var(--text-ink); }
 
   .matrix__feature {
-    width: 22%;
+    width: 20%;
     font-weight: 600;
     color: var(--text-ink);
     background: rgba(0, 0, 0, 0.015);
     font-size: var(--type-body);
-    font-family: var(--font-sans);
-    text-transform: none;
-    letter-spacing: -0.005em;
   }
   .matrix__row {
     border-top: 1px solid var(--line-hairline);
@@ -1623,11 +1572,15 @@ const breadcrumbSchema = {
   }
   .matrix__row td {
     color: var(--text-mute);
-    line-height: 1.5;
+    line-height: 1.6;
+  }
+  .matrix__row--cta td,
+  .matrix__row--cta:hover {
+    background: #fff;
   }
 
   /* ----------------------------------------------------------------
-     S8 : FAQ
+     FAQ
      ---------------------------------------------------------------- */
   .faq {
     padding-block: clamp(72px, 9vw, 120px);
@@ -1637,6 +1590,15 @@ const breadcrumbSchema = {
     display: grid;
     gap: 18px;
     margin-bottom: 40px;
+  }
+  .faq__head .chapter__tag { justify-self: start; }
+  .faq__updated {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
   }
   .faq__filter {
     display: flex;
@@ -1658,7 +1620,7 @@ const breadcrumbSchema = {
     transition: background-color 200ms, color 200ms, border-color 200ms, transform 200ms;
   }
   .faq__filter-btn:hover { transform: translateY(-2px); border-color: var(--line-strong); }
-  .faq__filter-btn[aria-selected='true'] {
+  .faq__filter-btn[aria-pressed='true'] {
     background: var(--brand-orange);
     color: #fff;
     border-color: var(--brand-orange);
@@ -1669,7 +1631,6 @@ const breadcrumbSchema = {
   }
   .faq__item {
     border-bottom: 1px solid var(--line-hairline);
-    transition: opacity 240ms, max-height 240ms;
   }
   .faq__item[data-hide='true'] {
     display: none;
@@ -1678,13 +1639,14 @@ const breadcrumbSchema = {
     list-style: none;
     cursor: pointer;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 96px 1fr auto;
     align-items: center;
     gap: 18px;
     padding-block: 22px;
   }
   .faq__q::-webkit-details-marker { display: none; }
   .faq__cat {
+    justify-self: start;
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.14em;
@@ -1693,7 +1655,11 @@ const breadcrumbSchema = {
     background: rgba(233, 78, 27, 0.1);
     padding: 5px 10px;
     border-radius: var(--radius-pill);
-    flex: none;
+    white-space: nowrap;
+  }
+  @media (max-width: 599px) {
+    .faq__q { grid-template-columns: 1fr auto; }
+    .faq__cat { grid-column: 1 / -1; }
   }
   .faq__q-text {
     font-size: var(--type-body);
@@ -1711,109 +1677,14 @@ const breadcrumbSchema = {
   .faq__item[open] .faq__chev { transform: rotate(180deg); color: var(--brand-orange); }
   .faq__a {
     padding: 4px 0 24px;
-    margin-left: 0;
+    margin: 0;
     max-width: 72ch;
     font-size: var(--type-body);
     line-height: 1.6;
     color: var(--text-mute);
   }
-  @media (min-width: 700px) {
-    .faq__a { margin-left: 90px; }
-  }
-
-  /* ----------------------------------------------------------------
-     S9 : Closing CTA (dark)
-     ---------------------------------------------------------------- */
-  .cta {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background: var(--bg-ink);
-    color: var(--text-on-dark);
-    padding-block: clamp(96px, 11vw, 160px);
-    text-align: center;
-  }
-  .cta__bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-  .cta__blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.55; }
-  .cta__blob--a {
-    width: 480px; height: 480px; top: -120px; left: 10%;
-    background: radial-gradient(circle, rgba(233, 78, 27, 0.6), transparent 70%);
-    animation: float-a 18s ease-in-out infinite;
-  }
-  .cta__blob--b {
-    width: 560px; height: 560px; bottom: -160px; right: 5%;
-    background: radial-gradient(circle, rgba(30, 58, 138, 0.7), transparent 70%);
-    animation: float-b 22s ease-in-out infinite;
-  }
-  .cta__grain {
-    position: absolute; inset: 0; opacity: 0.18; mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
-  }
-  .cta__inner {
-    display: grid;
-    justify-items: center;
-    gap: 24px;
-  }
-  .cta__cube {
-    width: 96px;
-    height: 96px;
-    margin-bottom: 16px;
-    transform-style: preserve-3d;
-    animation: cube-rotate 20s linear infinite;
-  }
-  @keyframes cube-rotate {
-    from { transform: rotateY(0deg) rotateX(8deg); }
-    to { transform: rotateY(360deg) rotateX(8deg); }
-  }
-  .cta__display {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    letter-spacing: -0.025em;
-    line-height: 1.04;
-    font-size: clamp(36px, 5vw, 72px);
-    max-width: 18ch;
-    margin: 0;
-  }
-  .cta__display em {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 500;
-    color: var(--brand-orange);
-  }
-  .cta__lead {
-    max-width: 56ch;
-    color: rgba(240, 237, 233, 0.78);
-    font-size: clamp(16px, 1.2vw, 19px);
-    line-height: 1.55;
-  }
-  .cta__buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 8px;
-  }
-  .cta__hello {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 24px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: rgba(240, 237, 233, 0.55);
-  }
-  .cta__hello-link { color: rgba(240, 237, 233, 0.9); }
-  .cta__hello-link:hover { color: var(--brand-orange); }
-  .cta__hello-sep { opacity: 0.5; }
-  .cta__fine {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: rgba(240, 237, 233, 0.4);
-    margin-top: 8px;
+  @media (min-width: 600px) {
+    .faq__a { margin-left: 114px; }
   }
 
   /* ----------------------------------------------------------------
@@ -1840,10 +1711,10 @@ const breadcrumbSchema = {
 
 <script>
   /* ============================================================
-     Pricing page : scroll-linked motion + interaction
+     Pricing page: scroll-linked motion and interaction
      ============================================================ */
 
-  // 1) Reveal-on-scroll (headlines, components, timeline drawing)
+  // Reveal on scroll (headlines, timeline drawing)
   const reveals = document.querySelectorAll('.reveal, [data-timeline]');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(
@@ -1862,31 +1733,7 @@ const breadcrumbSchema = {
     reveals.forEach((el) => el.classList.add('is-in'));
   }
 
-  // 2) Count-up numbers on first view
-  const counters = document.querySelectorAll<HTMLElement>('[data-count]');
-  if ('IntersectionObserver' in window) {
-    const cio = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target as HTMLElement;
-        const target = Number(el.dataset.count || 0);
-        const duration = 1400;
-        const start = performance.now();
-        const tick = (now: number) => {
-          const t = Math.min(1, (now - start) / duration);
-          const ease = 1 - Math.pow(1 - t, 3);
-          el.textContent = Math.floor(target * ease).toString();
-          if (t < 1) requestAnimationFrame(tick);
-          else el.textContent = String(target);
-        };
-        requestAnimationFrame(tick);
-        cio.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach((el) => cio.observe(el));
-  }
-
-  // 4) Parallax on hero image
+  // Parallax on the hero image
   const parallaxEls = document.querySelectorAll<HTMLElement>('.js-parallax');
   let parallaxRaf = 0;
   const onScrollParallax = () => {
@@ -1907,17 +1754,7 @@ const breadcrumbSchema = {
     );
   }
 
-  // 5) Cursor-follow spotlight inside pillar cards
-  const spotlights = document.querySelectorAll<HTMLElement>('.js-spotlight');
-  spotlights.forEach((el) => {
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      el.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-  });
-
-  // 6) Tilt on chapter photos (gentle, pointer-based)
+  // Gentle pointer tilt on chapter photos
   const tilters = document.querySelectorAll<HTMLElement>('.js-tilt');
   tilters.forEach((el) => {
     const max = Number(el.dataset.tilt || 5);
@@ -1932,7 +1769,7 @@ const breadcrumbSchema = {
     });
   });
 
-  // 7) Magnetic CTAs
+  // Magnetic buttons
   const magnetic = document.querySelectorAll<HTMLElement>('.js-magnetic');
   magnetic.forEach((el) => {
     el.addEventListener('pointermove', (e) => {
@@ -1946,23 +1783,24 @@ const breadcrumbSchema = {
     });
   });
 
-  // 8) FAQ category filter
+  // FAQ filter by offer. Questions about both offers show under either filter.
   const filterBtns = document.querySelectorAll<HTMLButtonElement>('.faq__filter-btn');
   const faqItems = document.querySelectorAll<HTMLDetailsElement>('.faq__item');
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach((b) => b.setAttribute('aria-selected', 'false'));
-      btn.setAttribute('aria-selected', 'true');
+      filterBtns.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
       const filter = btn.dataset.filter;
       faqItems.forEach((item) => {
-        const hide = filter !== 'All' && item.dataset.category !== filter;
+        const topic = item.dataset.topic;
+        const hide = filter !== 'all' && topic !== 'both' && topic !== filter;
         item.dataset.hide = hide ? 'true' : 'false';
         if (hide) item.open = false;
       });
     });
   });
 
-  // 9) FAQ accordion: one open at a time
+  // FAQ accordion: one open at a time
   faqItems.forEach((item) => {
     item.addEventListener('toggle', () => {
       if (item.open) {
@@ -1973,17 +1811,7 @@ const breadcrumbSchema = {
     });
   });
 
-  // 10) Retainer term toggle
-  const termBtns = document.querySelectorAll<HTMLButtonElement>('.retainer__term');
-  termBtns.forEach((btn, i) => {
-    if (i === 1) btn.setAttribute('data-active', 'true');
-    btn.addEventListener('click', () => {
-      termBtns.forEach((b) => b.removeAttribute('data-active'));
-      btn.setAttribute('data-active', 'true');
-    });
-  });
-
-  // 11) Smooth scroll for anchor links
+  // Smooth scroll for in-page links
   document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
       const href = a.getAttribute('href');

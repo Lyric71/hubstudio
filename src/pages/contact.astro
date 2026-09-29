@@ -4,16 +4,35 @@
  * Layout principle borrowed from beyondbordergroup.com/contact, rebuilt in the
  * hubStudio design system: S1 dark image hero · S2 contact rail + project form
  * (posts to /api/contact, Resend) · S3 closing band.
+ *
+ * One form for both offers: a studio brief and a question about the app. The
+ * first question ("How do you want to work?") uses the three locked ways plus
+ * Partner and Not sure yet, and is preselected from `?way=`. Copy deck:
+ * cq/contact. No amounts anywhere on the page (the old budget ranges carried
+ * dollar figures, which the positioning rules out).
  */
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import { APP_SIGNUP, APP_SIGNIN, HELP_URL } from '../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+
+/* "How do you want to work?": values match the `?way=` query and the labels
+   the API writes into the email. */
+const ways = [
+  { value: 'studio-app', label: 'Studio + app' },
+  { value: 'studio', label: 'Studio only' },
+  { value: 'app', label: 'The app, I have a question' },
+  { value: 'partner', label: 'Partner' },
+  { value: 'unsure', label: 'Not sure yet' },
+];
 
 /* Multilingual hello: a nod to producing for brands worldwide (Latin scripts
    only: Han characters never leak onto a non-Chinese page). */
 const greetings = ['Hello', 'Bonjour', 'Hola', 'Ciao', 'Hallo', 'Olá'];
 
 /* "You are": Solutions > Clients, from the header nav. */
-const clientTypes = ['Brand', 'Agency', 'Retailer', 'Manufacturer'];
+const clientTypes = ['Brand', 'Agency', 'Retailer', 'Manufacturer', 'Other'];
 
 /* "Services you are looking for": the twenty design service lines plus the
    three consulting lines, mirroring the header Services + Solutions menus. */
@@ -26,18 +45,28 @@ const designServices = [
 ];
 const consultingServices = ['Consulting', 'Agentic-Design', 'Training'];
 
-const subscriptionOptions = [
-  'Yes, that is what we want',
+const retainerOptions = [
+  'Yes, that’s what we want',
   'Maybe, tell me more',
   'No, project by project',
 ];
 
-const budgetRanges = [
-  'Less than 5k USD',
-  '5–20k USD',
-  '20–50k USD',
-  '50k USD+',
+/* Size of the work, in words: the site never prints an amount. */
+const scopeOptions = [
+  'A handful of assets',
+  'A project or campaign',
+  'Ongoing production, month after month',
+  'Too early to say',
 ];
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: `${SITE}/contact` },
+  ],
+};
 
 /* Registered studios. Mirrors the PostalAddress / department nodes in the
    Organization schema (Layout.astro): a visible address is the trust signal a
@@ -60,9 +89,11 @@ const studios = [
 
 <Layout
   heroOverlay
-  title="Contact | hubStudio"
-  description="Send a brief, ask about pricing, or tell us what you are trying to make. A producer reads every message at hubStudio and replies within one business day."
+  title="Contact hubStudio: send a brief or ask about the app"
+  description="Send our studio a brief, or ask a question about the hubStudio app. A person reads every message and replies within one business day."
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
   <!-- ===== S1: Hero ===== -->
   <section class="c-hero">
     <div class="c-hero__media" aria-hidden="true">
@@ -73,15 +104,19 @@ const studios = [
       <div class="c-hero__copy">
         <span class="eyebrow c-hero__eyebrow">Contact</span>
         <h1 class="headline h1 reveal c-hero__title">
-          Let's talk about the content your brand actually <span class="accent">needs</span>.
+          Tell us what you want to <span class="accent">make</span>.
         </h1>
         <p class="lead c-hero__lead">
-          Send a brief, ask about pricing, or just tell us what you are trying to
-          make. A producer reads every message, replies within one business day,
-          and tells you straight whether to shoot it, generate it, or both.
+          Send the studio a brief, or ask us about the app. The form first asks
+          how you’d like to work, so your message reaches the right person. A
+          producer reads every brief within one business day and sends a written
+          proposal within 48 hours. Got a question about the app instead? You’ll
+          hear back within one business day too, and opening an account costs
+          nothing.
         </p>
         <div class="c-hero__cta">
-          <Button variant="primary" href="#brief">Start a brief</Button>
+          <Button variant="primary" href="#brief">Send a brief</Button>
+          <a class="c-hero__mail" href={APP_SIGNUP} rel="noopener">Create your account</a>
           <a class="c-hero__mail" href="mailto:hello@bearingbridge.com">hello@bearingbridge.com</a>
         </div>
       </div>
@@ -102,12 +137,11 @@ const studios = [
       <aside class="rail">
         <span class="eyebrow">Reach us directly</span>
         <h2 class="headline h3 rail__head">
-          One studio, every market you sell into.
+          One <span class="accent">inbox</span> for the app and the studio.
         </h2>
         <p class="rail__intro">
-          hubStudio runs as a single production house with creatives drawn from
-          the cultures our clients sell into. Wherever the brief lands, the same
-          team picks it up.
+          Briefs for the studio and questions about the app come to the same
+          inbox, and a person reads every one. You won’t get a bot.
         </p>
 
         <div class="rail__block">
@@ -133,6 +167,16 @@ const studios = [
         </div>
 
         <div class="rail__block">
+          <span class="rail__label">Using the app</span>
+          <p class="rail__text">
+            The help center answers most app questions faster than we can. Read
+            the <a href={HELP_URL}>guides there</a>, or
+            <a href={APP_SIGNIN} rel="noopener">sign in</a> and pick up where you
+            left off.
+          </p>
+        </div>
+
+        <div class="rail__block">
           <span class="rail__label">Where we produce</span>
           <ul class="rail__regions">
             <li>Greater China</li>
@@ -145,16 +189,18 @@ const studios = [
         </div>
 
         <p class="rail__note">
-          Exploring a referral partnership instead?
-          <a href="/partner-program">See the partner program &rarr;</a>
+          Looking for prices? The <a href="/pricing">pricing page</a> explains
+          how the app and the studio charge. Bringing us clients for the studio,
+          or customers for the app? The <a href="/partners">partner page</a>
+          covers both.
         </p>
       </aside>
 
       <!-- Project form -->
       <div class="form-card card card--white">
-        <span class="chip form-card__chip"><span class="chip__dot"></span>Tell us about your project</span>
+        <span class="chip form-card__chip"><span class="chip__dot"></span>Your brief or your question</span>
         <h2 class="headline h3 form-card__head">
-          The more you share, the sharper our first reply.
+          Share what you can, and our first <span class="accent">reply</span> will be more useful.
         </h2>
 
         <form
@@ -197,6 +243,22 @@ const studios = [
           </div>
 
           <fieldset class="choice-set">
+            <legend>How do you want to work? <span class="req">*</span></legend>
+            <div class="choice">
+              {ways.map((w) => (
+                <label class="pick-wrap">
+                  <input type="radio" name="way" value={w.value} required />
+                  <span class="pick">{w.label}</span>
+                </label>
+              ))}
+            </div>
+            <p class="choice-hint">
+              What’s the difference? <a href="/studio#ways-to-work">Compare the three ways to work</a>,
+              or pick “Not sure yet” and we’ll suggest one.
+            </p>
+          </fieldset>
+
+          <fieldset class="choice-set">
             <legend>You are <span class="req">*</span></legend>
             <div class="choice">
               {clientTypes.map((c) => (
@@ -207,6 +269,12 @@ const studios = [
               ))}
             </div>
           </fieldset>
+
+          <div class="studio-only" id="studio-only">
+          <p class="choice-cue">
+            The next few questions help the studio scope a brief. Skip any that
+            don’t apply.
+          </p>
 
           <fieldset class="choice-set">
             <legend>Services you are looking for <span class="opt-tag">select any</span></legend>
@@ -230,7 +298,9 @@ const studios = [
             </div>
           </fieldset>
 
-          <fieldset class="choice-set">
+          <!-- Internal, gated tool: shown only to visitors who arrive with
+               ?request=quotation-engine. Never a public call to action. -->
+          <fieldset class="choice-set" id="quotation-set" hidden>
             <legend>Quotation Engine <span class="opt-tag">optional</span></legend>
             <div class="choice">
               <label class="pick-wrap">
@@ -246,11 +316,11 @@ const studios = [
           </fieldset>
 
           <fieldset class="choice-set">
-            <legend>Interested in design as a subscription <span class="opt-tag">optional</span></legend>
+            <legend>Interested in a monthly retainer <span class="opt-tag">optional</span></legend>
             <div class="choice">
-              {subscriptionOptions.map((o) => (
+              {retainerOptions.map((o) => (
                 <label class="pick-wrap">
-                  <input type="radio" name="subscription" value={o} />
+                  <input type="radio" name="retainer" value={o} />
                   <span class="pick">{o}</span>
                 </label>
               ))}
@@ -258,32 +328,33 @@ const studios = [
           </fieldset>
 
           <fieldset class="choice-set">
-            <legend>Your budget <span class="req">*</span></legend>
+            <legend>Size of the work <span class="opt-tag">optional</span></legend>
             <div class="choice">
-              {budgetRanges.map((b) => (
+              {scopeOptions.map((o) => (
                 <label class="pick-wrap">
-                  <input type="radio" name="budget" value={b} required />
-                  <span class="pick">{b}</span>
+                  <input type="radio" name="scope" value={o} />
+                  <span class="pick">{o}</span>
                 </label>
               ))}
             </div>
           </fieldset>
+          </div>
 
           <div class="field">
-            <label for="message">Tell us about your project <span class="req">*</span></label>
+            <label for="message">Your brief or your question <span class="req">*</span></label>
             <textarea
               id="message"
               name="message"
               rows="5"
               required
-              placeholder="What are you making, for which markets, and by when?"
+              placeholder="What are you making, and by when? Tell us the markets too. If it’s about the app, just ask."
             ></textarea>
           </div>
 
           <div class="form-foot">
-            <button type="submit" class="btn btn--primary form-submit">Send the brief</button>
+            <button type="submit" class="btn btn--primary form-submit">Send your message</button>
             <p class="form-fine">
-              We reply within one business day. No newsletter, no resale of your details.
+              A person reads it and replies within one business day. No newsletter, no resale of your details.
             </p>
           </div>
 
@@ -296,11 +367,17 @@ const studios = [
   <!-- ===== S3: Closing band ===== -->
   <section class="closing">
     <div class="container closing__inner">
-      <span class="eyebrow">While you are here</span>
+      <span class="eyebrow">While you’re here</span>
       <h2 class="headline h2 reveal closing__head">
-        See the work before you send the <span class="accent">brief</span>.
+        Not ready to write? Look around the <span class="accent">app</span>.
       </h2>
-      <Button variant="primary" href="/work">See real brand work</Button>
+      <p class="closing__text">
+        Or read the case studies first. They show what the studio makes for brands.
+      </p>
+      <div class="closing__cta">
+        <Button variant="primary" href="/app">Tour the app</Button>
+        <Button variant="on-dark" href="/work">See the work</Button>
+      </div>
       <p class="closing__line">hello@bearingbridge.com</p>
       <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
         <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
@@ -447,9 +524,21 @@ const studios = [
   }
   .rail__intro {
     margin-top: 14px;
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.6;
     color: var(--text-mute);
+  }
+  .rail__text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .rail__text a {
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .rail__text a:hover {
+    text-decoration: underline;
   }
   .rail__block {
     margin-top: 28px;
@@ -513,7 +602,7 @@ const studios = [
     margin-top: 28px;
     padding-top: 22px;
     border-top: 1px solid var(--line-hairline);
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.55;
     color: var(--text-mute);
   }
@@ -643,6 +732,32 @@ const studios = [
   .choice-sub:first-of-type {
     margin-top: 0;
   }
+  .choice-hint {
+    margin-top: 12px;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .choice-hint a {
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .choice-hint a:hover {
+    text-decoration: underline;
+  }
+  /* Studio-only questions: they step aside for app and partner messages. */
+  .studio-only {
+    display: grid;
+    gap: inherit;
+  }
+  .studio-only[hidden] {
+    display: none;
+  }
+  .choice-cue {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
   .choice {
     display: flex;
     flex-wrap: wrap;
@@ -740,6 +855,18 @@ const studios = [
   .closing__head {
     max-width: 18ch;
   }
+  .closing__text {
+    max-width: 52ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
   .closing__line {
     font-family: var(--font-mono);
     font-size: 12px;
@@ -753,15 +880,35 @@ const studios = [
 </style>
 
 <script>
-  /* Arriving from the Quotation Engine button on /pricing: tick the request for
-     them, so the ask they came to make is already made. */
-  if (new URLSearchParams(window.location.search).get('request') === 'quotation-engine') {
+  const params = new URLSearchParams(window.location.search);
+
+  /* Arriving with ?request=quotation-engine (the gated calculator's own link):
+     reveal the request and tick it, so the ask they came to make is already
+     made. The box stays hidden for everyone else. */
+  if (params.get('request') === 'quotation-engine') {
+    const set = document.getElementById('quotation-set');
     const box = document.querySelector<HTMLInputElement>('#quotationEngine');
-    if (box) {
+    if (set && box) {
+      set.hidden = false;
       box.checked = true;
-      box.closest('.choice-set')?.scrollIntoView({ block: 'center' });
+      set.scrollIntoView({ block: 'center' });
     }
   }
+
+  /* "How do you want to work?": preselect from ?way=, and move the studio-only
+     questions out of the way for app questions and partners. */
+  const wayInputs = document.querySelectorAll<HTMLInputElement>('input[name="way"]');
+  const studioOnly = document.getElementById('studio-only');
+  const syncWay = () => {
+    const picked = Array.from(wayInputs).find((i) => i.checked)?.value;
+    if (studioOnly) studioOnly.hidden = picked === 'app' || picked === 'partner';
+  };
+  const wayParam = params.get('way');
+  wayInputs.forEach((input) => {
+    if (input.value === wayParam) input.checked = true;
+    input.addEventListener('change', syncWay);
+  });
+  syncWay();
 
   /* Reveal headlines on scroll (§10: headlines only). */
   const reveals = document.querySelectorAll('.reveal');

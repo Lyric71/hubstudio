@@ -1,0 +1,122 @@
+---
+/**
+ * AppShot: a real capture of the hubStudio app, framed as a window.
+ *
+ * The frame's address bar prints the app's real host and the screen's route
+ * (hubstudio.bearingbridge.com/explore), so the picture reads as the live
+ * product rather than a mockup. Captures come from src/data/app-shots.ts and
+ * are cropped so no price or balance ever shows on the marketing site.
+ */
+import type { AppShot as Shot } from '../data/app-shots';
+
+interface Props {
+  shot: Shot;
+  /** The app route shown in the address bar, e.g. "/explore". */
+  path?: string;
+  /** Show the capture's caption under the frame. */
+  caption?: boolean | string;
+  /** Load eagerly (above the fold). */
+  eager?: boolean;
+  /** Dark frame for ink sections. */
+  dark?: boolean;
+  class?: string;
+}
+
+const { shot, path = '', caption = false, eager = false, dark = false, class: extra = '' } =
+  Astro.props;
+const host = 'hubstudio.bearingbridge.com';
+const captionText = typeof caption === 'string' ? caption : caption ? shot.caption : '';
+---
+
+<figure class:list={['appshot', dark && 'appshot--dark', extra]}>
+  <div class="appshot__frame">
+    <div class="appshot__bar" aria-hidden="true">
+      <span class="appshot__live"></span>
+      <span class="appshot__url">{host}<b>{path}</b></span>
+    </div>
+    <img
+      src={shot.src}
+      alt={shot.alt}
+      width={shot.width}
+      height={shot.height}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+  </div>
+  {captionText && <figcaption class="appshot__cap">{captionText}</figcaption>}
+</figure>
+
+<style>
+  .appshot {
+    margin: 0;
+  }
+  .appshot__frame {
+    border-radius: clamp(14px, 1.6vw, 22px);
+    overflow: hidden;
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    box-shadow:
+      0 2px 6px rgba(10, 10, 20, 0.05),
+      0 30px 60px -24px rgba(14, 22, 51, 0.32);
+  }
+  .appshot--dark .appshot__frame {
+    border-color: rgba(240, 237, 233, 0.16);
+    box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6);
+  }
+  .appshot__bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--bg-cream);
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .appshot--dark .appshot__bar {
+    background: #151c38;
+    border-bottom-color: rgba(240, 237, 233, 0.1);
+  }
+  /* The one orange mark: a live dot, the app is running, not drawn. */
+  .appshot__live {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    box-shadow: 0 0 0 4px rgba(233, 78, 27, 0.14);
+  }
+  .appshot__url {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: var(--text-mute);
+  }
+  .appshot__url b {
+    font-weight: 500;
+    color: var(--text-ink);
+  }
+  .appshot--dark .appshot__url {
+    color: rgba(240, 237, 233, 0.55);
+  }
+  .appshot--dark .appshot__url b {
+    color: var(--text-on-dark);
+  }
+  .appshot img {
+    width: 100%;
+    height: auto;
+  }
+  .appshot__cap {
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--text-mute);
+  }
+  .appshot--dark .appshot__cap {
+    color: rgba(240, 237, 233, 0.6);
+  }
+</style>

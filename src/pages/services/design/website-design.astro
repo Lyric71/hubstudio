@@ -4,7 +4,7 @@
  *
  * Art direction shared with the "Pressroom" template (see
  * packaging-merch-design.astro): editorial typography, crop marks, a
- * calibration colour bar, mono figure labels, dashed dieline rules. Same
+ * calibration color bar, mono figure labels, dashed dieline rules. Same
  * structure, adapted for marketing sites, landing pages, eCom and multi-market
  * builds. Imagery shows real device + design contexts, not packaging.
  *
@@ -14,6 +14,8 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Studio website samples, each with an invented brand mark. */
 const samples = [
@@ -55,7 +57,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -100,12 +102,12 @@ const coverage = [
     lead: 'Shopify, Shopify Plus, Salesforce Commerce Cloud and headless.',
     body: [
       'Devialet roughly doubled conversion on a headless rebuild, depending on which page you measure. Paula\'s Choice reported a 53.6% lift. The pattern is consistent: the right architecture, the right art direction, and pages engineered for Core Web Vitals from the wireframe, not bolted on at QA.',
-      'For brands that need it, hub4You generates on-brand category and PDP variants on demand and connects to your DAM and PIM so output lands where your team already works.',
+      'For large catalogs, the studio makes category and PDP imagery in volume with brand-trained models, and delivers the files ready to load into your DAM and PIM.',
     ],
     tags: [
       'Shopify', 'Shopify Plus', 'Salesforce Commerce Cloud',
       'Headless commerce', 'Next.js + Sanity', 'Subscription flows',
-      'PDP and PLP systems', 'Checkout optimisation', 'Catalogue at scale',
+      'PDP and PLP systems', 'Checkout optimization', 'Catalog at scale',
     ],
   },
   {
@@ -257,6 +259,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/website-design`;
 
@@ -277,7 +282,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Website Design', item: pageUrl },
   ],
 };
@@ -303,7 +308,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Website Design
           </p>
           <h1 class="hero__title">
@@ -341,7 +346,7 @@ const breadcrumbSchema = {
             </span>Two-week launch on standard scopes</li>
           </ul>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See sample work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -811,6 +816,35 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="A website is a "
+      accent="studio"
+      post=" job."
+      intro="hubStudio’s app makes images, video, and social posts. It doesn’t design or build websites, so this service runs in the studio from the conversion brief to launch."
+      columns={[
+        {
+          label: 'Studio only',
+          title: 'How most web projects run',
+          body: [
+            'A producer reads your brief within one business day. From there, our art directors, designers, and developers take it from wireframes to a live site, then hand over the code and a documented design system. No account needed.',
+          ],
+        },
+        {
+          label: 'Studio + app',
+          title: 'What the app can still do here',
+          body: [
+            'Sites need images, and a big build needs a lot of them. We can make those in hubStudio, where your team approves each one in Validation. A link to the staging site can go through Validation too, so every sign-off on design and imagery is on record in one place.',
+          ],
+        },
+      ]}
+      links={[
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio"
+      ways={{ pre: 'Pick how we ', accent: 'work', post: ' together.' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -824,7 +858,7 @@ const breadcrumbSchema = {
             put it in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -877,11 +911,12 @@ const breadcrumbSchema = {
           Core Web Vitals scored, WCAG-audited and GEO-baselined. No retainer,
           no commitment. The work is yours either way, whether you decide to
           move forward with us or hand the files to another team.
+          Making your own campaign images or social posts? That part lives in the hubStudio app, which costs nothing to join.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -896,6 +931,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1165,7 +1211,7 @@ const breadcrumbSchema = {
     color: var(--brand-orange);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

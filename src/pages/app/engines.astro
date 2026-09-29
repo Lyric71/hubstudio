@@ -1,0 +1,818 @@
+---
+/**
+ * The engines  ·  /app/engines
+ *
+ * Every image and video engine hubStudio offers, grouped by maker, from
+ * src/data/engines.ts (itself built only from the help center). Filterable by
+ * kind and job with a small progressive-enhancement script: without
+ * JavaScript every engine shows and the filter bar stays hidden.
+ * Copy: cq/app-engines/final.md (content-quality-us loop). No prices, no
+ * quality comparison between makers beyond what the help center says.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { enginesByMaker, jobs, jobLabel } from '../../data/engines';
+import { APP_SIGNUP, APP_SIGNIN, HELP_URL } from '../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+const title = 'AI image and video engines in hubStudio, by maker';
+const description =
+  'ChatGPT Image, Nano Banana, FLUX, Seedream, Veo, Kling, Seedance, Wan, and more: every engine in hubStudio, the jobs it does, and how to pick one.';
+
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Engines', item: `${SITE}/app/engines` },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="en">
+    <!-- ===== Hero ===== -->
+    <section class="en-hero">
+      <div class="container">
+        <div class="en-hero__copy">
+          <span class="eyebrow">The engines</span>
+          <h1 class="headline h1 en-hero__title">
+            Every image and video engine, by <span class="accent">maker</span>.
+          </h1>
+          <p class="lead en-hero__lead">
+            One hubStudio account runs all of them: ChatGPT Image, Nano Banana, FLUX, Seedream, Veo,
+            Kling, Seedance, Wan, and the others. Below, each one is listed under the company that
+            makes it, with the jobs it does and its main specs.
+          </p>
+          <div class="en-hero__cta">
+            <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+            <Button variant="secondary" href={APP_SIGNIN}>Sign in</Button>
+            <a class="en-arrow" href="#engines">Jump to the list <span aria-hidden="true">&darr;</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="container en-hero__shot">
+        <AppShot
+          shot={appShots.explore}
+          path="/explore"
+          eager
+          caption="Explore, the page you land on after signing in."
+        />
+      </div>
+    </section>
+
+    <!-- ===== How Explore works ===== -->
+    <section class="sheet sheet--light en-section" id="explore">
+      <div class="container en-split">
+        <header class="en-head">
+          <span class="eyebrow">Inside the app</span>
+          <h2 class="headline h2 reveal">How Explore <span class="accent">works</span>.</h2>
+          <p class="en-aside">
+            Came for one engine? The list is further down. This part explains the gallery you’ll use
+            to find it in the app.
+          </p>
+        </header>
+        <div class="en-prose">
+          <p class="en-body">
+            Explore is the first page you see after you sign in. Every engine you can use gets a
+            card: the maker’s name and an Image or Video badge on top, a one-line description under
+            the engine’s name, and a chip for each job it can do.
+          </p>
+          <p class="en-body">
+            The search box reads the engine’s name, its maker, its description, and its jobs, and
+            every word you type has to match. Next to it, All, Image, and Video switch between the
+            two kinds, and a maker menu narrows the gallery to one company.
+          </p>
+          <p class="en-body">
+            Job chips narrow it further: click one or several, and an engine shows when it does at
+            least one of them. Sorting starts on Featured, the gallery’s own order. You can sort by
+            price instead, or bring the newest engines up. Those carry a New tag, which marks an
+            engine released or first offered in the last 60 days.
+          </p>
+          <p class="en-body">
+            Click a card and its studio opens, already set on that engine, ready for your prompt. An
+            engine you never use can be switched off in User Settings under My models. It disappears
+            from your lists only, and your teammates still see it.
+          </p>
+          <p class="en-body en-note">
+            We don’t publish rates on this site. In the app, each card shows a starting price, and
+            the studio shows the exact price of your setup before you run it. Video is priced per
+            second of clip, and every run is paid from your prepaid balance.
+            <a class="en-inline" href="/pricing">Pricing</a> explains how the balance works.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== The six jobs ===== -->
+    <section class="sheet sheet--cream en-section" id="jobs">
+      <div class="container">
+        <header class="en-head en-head--wide">
+          <span class="eyebrow">The jobs</span>
+          <h2 class="headline h2 reveal">Six jobs behind every <span class="accent">filter</span>.</h2>
+          <p class="en-intro">
+            Every engine does one or more of these jobs. They’re the chips you filter by in Explore.
+            In the studios, the job you pick decides which engines stay on the list.
+          </p>
+        </header>
+        <dl class="en-jobs">
+          {
+            jobs.map((j) => (
+              <div class="en-job reveal">
+                <dt class="en-job__name">
+                  {j.label}
+                  <span class="en-kind">{j.kind === 'image' ? 'Image' : 'Video'}</span>
+                </dt>
+                <dd class="en-body">{j.does}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== Every engine ===== -->
+    <section class="sheet sheet--light en-section" id="engines">
+      <div class="container">
+        <header class="en-head en-head--wide">
+          <span class="eyebrow">The list</span>
+          <h2 class="headline h2 reveal">Who makes <span class="accent">what</span>.</h2>
+          <p class="en-intro">
+            This list follows <a class="en-inline" href={`${HELP_URL}/explore`}>our help center</a> as
+            of September 2026. Makers ship new engines and retire old ones. The app may already hold
+            an engine this page doesn’t list yet, and one listed here may be gone. The filters above
+            the list cut it down to the kind and the job you have in mind.
+          </p>
+        </header>
+
+        <div class="en-filters" data-filters hidden>
+          <div class="en-filters__row" role="group" aria-label="Kind">
+            <span class="en-filters__label">Kind</span>
+            <button type="button" class="en-pill" data-kind-btn="all" aria-pressed="true">All</button>
+            <button type="button" class="en-pill" data-kind-btn="image" aria-pressed="false">Image</button>
+            <button type="button" class="en-pill" data-kind-btn="video" aria-pressed="false">Video</button>
+          </div>
+          <div class="en-filters__row" role="group" aria-label="Job">
+            <span class="en-filters__label">Job</span>
+            {
+              jobs.map((j) => (
+                <button
+                  type="button"
+                  class="en-pill"
+                  data-job-btn={j.key}
+                  data-job-kind={j.kind}
+                  aria-pressed="false"
+                >
+                  {j.label}
+                </button>
+              ))
+            }
+            <button type="button" class="en-clear" data-clear>Clear filters</button>
+          </div>
+        </div>
+
+        <p class="en-empty" data-empty hidden role="status">
+          No engine matches. Clear a filter to see more.
+        </p>
+
+        <div class="en-makers">
+          {
+            enginesByMaker.map((group) => (
+              <section class="en-maker" data-maker aria-labelledby={`maker-${slug(group.maker)}`}>
+                <h3 class="en-maker__name" id={`maker-${slug(group.maker)}`}>
+                  {group.maker}
+                </h3>
+                <div class="en-grid">
+                  {group.engines.map((e) => (
+                    <article
+                      class="en-card"
+                      id={slug(e.name)}
+                      data-engine
+                      data-kind={e.kind}
+                      data-jobs={e.jobs.join(' ')}
+                    >
+                      <div class="en-card__top">
+                        <h4 class="en-card__name">{e.name}</h4>
+                        <span class:list={['en-kind', e.kind === 'video' && 'en-kind--video']}>
+                          {e.kind === 'image' ? 'Image' : 'Video'}
+                        </span>
+                      </div>
+                      <ul class="en-card__jobs" aria-label="Jobs">
+                        {e.jobs.map((job) => (
+                          <li class="en-tag">{jobLabel(job)}</li>
+                        ))}
+                      </ul>
+                      {e.note && <p class="en-body en-card__note">{e.note}</p>}
+                      <ul class="en-card__specs">
+                        {e.specs.map((s) => (
+                          <li>{s}</li>
+                        ))}
+                      </ul>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How to pick an engine ===== -->
+    <section class="sheet sheet--cream en-section" id="choosing">
+      <div class="container">
+        <header class="en-head en-head--wide">
+          <span class="eyebrow">Choosing</span>
+          <h2 class="headline h2 reveal">How to pick an engine for the <span class="accent">job</span>.</h2>
+          <p class="en-intro">
+            Pick the job first. The studio then shows only the engines that can do it. These notes
+            from our help center narrow it from there.
+          </p>
+        </header>
+
+        <div class="en-pick">
+          <div class="en-pick__col">
+            <h3 class="en-pick__title">For pictures</h3>
+            <p class="en-body">
+              Long briefs and words inside the picture suit the ChatGPT Image engines. They’re also
+              the only ones here with a transparent background, 1 to 10 images per run, and a mask
+              for edits.
+            </p>
+            <p class="en-body">
+              For a quick, dependable edit of an existing photo, try Nano Banana 2. When only one
+              thing should change, FLUX.1 Kontext Pro and Max touch what you name and leave the rest
+              alone. Merging several pictures takes an engine that accepts up to four source images:
+              the ChatGPT Image engines, Nano Banana 2 and Pro, or Seedream 4.5 and 5.0 Pro.
+            </p>
+            <p class="en-body">
+              Four engines upscale: Nano Banana 2, Nano Banana Pro, Seedream 4.5, and Seedream 5.0
+              Pro. For 4K, go with Seedream, which renders natively at that size.
+            </p>
+          </div>
+
+          <div class="en-pick__col">
+            <h3 class="en-pick__title">For video</h3>
+            <p class="en-body">
+              Every video engine starts from your description. Kling 2.5 Turbo, Kling 2.6, Kling
+              3.0, and Gemini Omni Flash work from the prompt alone, with nothing attached.
+            </p>
+            <div class="en-callouts">
+              <div class="en-callout">
+                <h4 class="en-callout__title">A clip that opens on your picture</h4>
+                <p class="en-body">
+                  Veo 3.1 Fast, Wan 3.0, Seedance 2.0, Seedance 2.5, and MiniMax H3 take a start
+                  frame and a last frame, and render the movement between them. Grok Imagine 1.5 and
+                  Seedance 1.0 Pro Fast take a start image.
+                </p>
+              </div>
+              <div class="en-callout">
+                <h4 class="en-callout__title">A clip that follows references</h4>
+                <p class="en-body">
+                  Attach pictures, clips, or sound, and the engine borrows a character, a product, a
+                  style, or a voice from them. Seedance 2.5 takes the most: up to 30 pictures, 10
+                  clips, and 2 sound files.
+                </p>
+                <p class="en-body">
+                  Wan 3.0, Seedance 2.0, MiniMax H3, and Grok Imagine 1.5 take references too. Veo
+                  3.1 Fast takes up to 3 reference pictures. An engine given a frame ignores
+                  references, so the form makes you choose one or the other.
+                </p>
+              </div>
+            </div>
+            <p class="en-body">
+              Wan 3.0 and Seedance 2.5 go up to 30 seconds. Veo 3.1 Fast, Kling 3.0, and Seedance
+              2.0 go up to 4K. Each render gets about five minutes. A clip over 15 seconds can run
+              past that, which is why the form warns you when you set a long one. Most engines can
+              generate sound. Seedance 1.0 Pro Fast can’t, and Kling 2.6 does it only in Pro mode.
+            </p>
+            <p class="en-body">
+              “Improve with AI” also helps with the choice. It rewrites your prompt for the engine
+              you picked, and its notes say so when another engine would suit your brief better.
+            </p>
+          </div>
+        </div>
+
+        <div class="en-next">
+          <p class="en-body">
+            Create your account and open Explore, or
+            <a class="en-inline" href="/app/create">see how the studios work</a> first. Every option,
+            engine by engine, is in the help center:
+            <a class="en-inline" href={`${HELP_URL}/create-an-image`}>Create an image</a> and
+            <a class="en-inline" href={`${HELP_URL}/create-a-video`}>Create a video</a>.
+          </p>
+          <div class="en-next__cta">
+            <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+            <Button variant="secondary" href="/app">Back to the app overview</Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <DualCta />
+  </div>
+</Layout>
+
+<style>
+  .en {
+    --shadow-sheet: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    overflow-x: clip;
+  }
+  [id] {
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+
+  /* ---- Sheets ------------------------------------------------- */
+  .sheet {
+    position: relative;
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    margin-top: clamp(-60px, -4.6vw, -40px);
+  }
+  .sheet--light {
+    background: var(--bg-white);
+    box-shadow: var(--shadow-sheet);
+  }
+  .sheet--cream {
+    background: var(--bg-cream);
+    box-shadow: var(--shadow-sheet);
+  }
+  .en-section {
+    padding-block: clamp(88px, 10vw, 152px);
+  }
+
+  /* ---- Shared type -------------------------------------------- */
+  .en-head {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+  }
+  .en-head--wide {
+    max-width: 760px;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+  .en-intro {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .en-aside {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+    max-width: 38ch;
+  }
+  .en-body {
+    margin: 0;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+    max-width: 64ch;
+  }
+  .en-inline {
+    color: var(--text-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 3px;
+  }
+  .en-inline:hover {
+    color: var(--brand-orange);
+    text-decoration-color: currentColor;
+  }
+  .en-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 4px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .en-arrow span {
+    display: inline-block;
+    transition: transform 160ms var(--ease);
+  }
+  .en-arrow:hover span {
+    transform: translateY(3px);
+  }
+
+  /* ---- Hero --------------------------------------------------- */
+  .en-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(96px, 11vw, 150px);
+  }
+  .en-hero__copy {
+    max-width: 860px;
+  }
+  .en-hero__title {
+    margin-top: 16px;
+    letter-spacing: -0.035em;
+    max-width: 16ch;
+  }
+  .en-hero__title .accent {
+    color: var(--brand-orange);
+  }
+  .en-hero__lead {
+    margin-top: 24px;
+    max-width: 60ch;
+  }
+  .en-hero__cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+  }
+  .en-hero__shot {
+    margin-top: clamp(44px, 6vw, 80px);
+  }
+
+  /* ---- Explore ------------------------------------------------ */
+  .en-split {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 960px) {
+    .en-split {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(40px, 5vw, 88px);
+      align-items: start;
+    }
+    .en-split .en-head {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+  }
+  .en-prose {
+    display: grid;
+    gap: 20px;
+  }
+  .en-note {
+    padding: 22px 24px;
+    border-radius: 20px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+
+  /* ---- Jobs --------------------------------------------------- */
+  .en-jobs {
+    margin: 0;
+    display: grid;
+    gap: 2px 40px;
+  }
+  @media (min-width: 720px) {
+    .en-jobs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1040px) {
+    .en-jobs {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .en-job {
+    display: grid;
+    gap: 8px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line-strong);
+  }
+  .en-job__name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--type-h4, 20px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .en-kind {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+    border: 1px solid var(--line-strong);
+    background: var(--bg-white);
+  }
+  .en-kind--video {
+    background: var(--bg-ink);
+    border-color: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+
+  /* ---- Filters ------------------------------------------------ */
+  .en-filters {
+    display: grid;
+    gap: 12px;
+    margin-bottom: clamp(32px, 4vw, 48px);
+    padding: 18px 20px;
+    border-radius: 22px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  .en-filters[hidden] {
+    display: none;
+  }
+  .en-filters__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .en-filters__label {
+    min-width: 44px;
+    margin-right: 4px;
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .en-pill {
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line-strong);
+    background: var(--bg-white);
+    color: var(--text-ink);
+    font-size: var(--type-small);
+    font-weight: 500;
+    line-height: 1.2;
+    transition:
+      background-color 140ms var(--ease),
+      color 140ms var(--ease),
+      transform 140ms var(--ease);
+  }
+  .en-pill:hover {
+    transform: translateY(-2px);
+  }
+  .en-pill[aria-pressed='true'] {
+    background: var(--bg-ink);
+    border-color: var(--bg-ink);
+    color: #fff;
+    box-shadow: 0 6px 14px -6px rgba(14, 22, 51, 0.5);
+  }
+  .en-pill[hidden] {
+    display: none;
+  }
+  .en-clear {
+    margin-left: auto;
+    padding: 8px 6px;
+    border: 0;
+    background: none;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .en-empty {
+    margin-bottom: 32px;
+    font-size: var(--type-body);
+    color: var(--text-ink);
+  }
+
+  /* ---- Engine list -------------------------------------------- */
+  .en-makers {
+    display: grid;
+    gap: clamp(44px, 5vw, 64px);
+  }
+  .en-maker[hidden],
+  .en-card[hidden],
+  .en-empty[hidden] {
+    display: none;
+  }
+  .en-maker__name {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-strong);
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .en-grid {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 720px) {
+    .en-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .en-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .en-card {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+    padding: 24px;
+    border-radius: 22px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .en-card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .en-card__name {
+    font-size: var(--type-h4, 20px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .en-card__jobs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .en-tag {
+    padding: 5px 10px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-ink);
+  }
+  .en-card__note {
+    color: var(--text-ink);
+  }
+  .en-card__specs {
+    display: grid;
+    gap: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .en-card__specs li {
+    position: relative;
+    padding-left: 14px;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .en-card__specs li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+
+  /* ---- Choosing ----------------------------------------------- */
+  .en-pick {
+    display: grid;
+    gap: clamp(40px, 5vw, 64px);
+  }
+  @media (min-width: 960px) {
+    .en-pick {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(40px, 5vw, 88px);
+      align-items: start;
+    }
+  }
+  .en-pick__col {
+    display: grid;
+    gap: 20px;
+  }
+  .en-pick__title {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .en-callouts {
+    display: grid;
+    gap: 14px;
+  }
+  .en-callout {
+    display: grid;
+    gap: 10px;
+    padding: 22px 24px;
+    border-radius: 22px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .en-callout__title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+  .en-next {
+    margin-top: clamp(48px, 6vw, 80px);
+    padding-top: 32px;
+    border-top: 1px solid var(--line-strong);
+    display: grid;
+    gap: 22px;
+  }
+  .en-next__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* Engine filters. Progressive enhancement: the bar is hidden in the
+     markup and only shown here, so without JavaScript every engine stays
+     visible. Kind is single choice; jobs are multi-choice, and an engine
+     shows when it does at least one of the picked jobs (as in Explore). */
+  const bar = document.querySelector<HTMLElement>('[data-filters]');
+  if (bar) {
+    bar.hidden = false;
+    const kindBtns = Array.from(bar.querySelectorAll<HTMLButtonElement>('[data-kind-btn]'));
+    const jobBtns = Array.from(bar.querySelectorAll<HTMLButtonElement>('[data-job-btn]'));
+    const clearBtn = bar.querySelector<HTMLButtonElement>('[data-clear]');
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-engine]'));
+    const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-maker]'));
+    const empty = document.querySelector<HTMLElement>('[data-empty]');
+
+    let kind = 'all';
+    const picked = new Set<string>();
+
+    const apply = () => {
+      kindBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.kindBtn === kind)));
+      jobBtns.forEach((b) => {
+        const off = kind !== 'all' && b.dataset.jobKind !== kind;
+        b.hidden = off;
+        if (off) picked.delete(b.dataset.jobBtn ?? '');
+        b.setAttribute('aria-pressed', String(picked.has(b.dataset.jobBtn ?? '')));
+      });
+
+      let shown = 0;
+      cards.forEach((c) => {
+        const jobs = (c.dataset.jobs ?? '').split(' ');
+        const kindOk = kind === 'all' || c.dataset.kind === kind;
+        const jobOk = picked.size === 0 || jobs.some((j) => picked.has(j));
+        c.hidden = !(kindOk && jobOk);
+        if (!c.hidden) shown += 1;
+      });
+      groups.forEach((g) => {
+        g.hidden = !g.querySelector('[data-engine]:not([hidden])');
+      });
+      if (empty) empty.hidden = shown > 0;
+    };
+
+    kindBtns.forEach((b) =>
+      b.addEventListener('click', () => {
+        kind = b.dataset.kindBtn ?? 'all';
+        apply();
+      }),
+    );
+    jobBtns.forEach((b) =>
+      b.addEventListener('click', () => {
+        const key = b.dataset.jobBtn ?? '';
+        if (picked.has(key)) picked.delete(key);
+        else picked.add(key);
+        apply();
+      }),
+    );
+    clearBtn?.addEventListener('click', () => {
+      kind = 'all';
+      picked.clear();
+      apply();
+    });
+    apply();
+  }
+</script>

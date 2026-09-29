@@ -3,7 +3,7 @@
  * Ebooks & Digital Reports  ·  /services/design/ebook-digital-reports
  *
  * Art direction: "Editorial proof." The page reads like a publisher's
- * register sheet. Crop marks, a calibration colour bar, mono figure
+ * register sheet. Crop marks, a calibration color bar, mono figure
  * labels and dashed rules frame editorial typography and the studio's
  * own report and whitepaper photography.
  *
@@ -14,6 +14,10 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import AppShot from '../../../components/AppShot.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Studio report photography, each with an invented brand mark. */
 const samples = [
@@ -55,7 +59,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a publisher's strip, used as a section divider. */
+/* Calibration color bar: a publisher's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -249,7 +253,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Ebook and Digital Reports', item: pageUrl },
   ],
 };
@@ -275,7 +279,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Ebooks &amp; Digital Reports
           </p>
           <h1 class="hero__title">
@@ -298,7 +302,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See the work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -704,6 +708,35 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <section class="fit">
+      <div class="shell fit__grid">
+        <div class="fit__copy">
+          <p class="kicker r"><span class="kicker__tick"></span>App or studio</p>
+          <h2 class="dh r" style="--d:.05s">
+            A report is an editor’s <span class="serif">job</span>.
+          </h2>
+          <p class="fit__p r" style="--d:.10s">
+            Structure, editing, data visualization and accessible PDF output: senior editors and designers own every page. The app doesn’t lay out a report or write one.
+          </p>
+          <p class="fit__p r" style="--d:.14s">
+            It helps at the edges. Cover art and chapter openers can be rendered in the Image studio. Proofs can go to your reviewers through Validation as files. When we work Studio + app from our workspace, the final PDF waits in your Client space for download. Nothing on an approval thread can be deleted, either, so if legal asks who cleared the final chart, the answer is still there.
+          </p>
+          <a class="ghost-link fit__link r" href="/studio/with-the-app" style="--d:.24s">
+            How Studio + app works
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+        <div class="fit__shot r" style="--d:.12s">
+          <AppShot shot={appShots.clientSpace} path="/client" caption />
+        </div>
+      </div>
+    </section>
+
+    <WaysToWork tone="ink" highlight="studio-app" pre="Proofs, approvals and the final PDF in one " accent="place" post="." />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -717,7 +750,7 @@ const breadcrumbSchema = {
             put it in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
           </div>
         </aside>
 
@@ -770,11 +803,12 @@ const breadcrumbSchema = {
           and a sample spread. No retainer, no commitment. The work is yours
           to keep either way, and if you decide to go elsewhere it gives you
           a sharper brief to hand to the next studio.
+          Making the next edition’s cover art in-house? Do it in the app. The account costs nothing.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -1008,7 +1042,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;
@@ -2010,6 +2044,51 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     align-items: center;
     gap: 14px 26px;
+  }
+  /* ===================== App or studio (S7b) ===================== */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease-out;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+  .fit {
+    background: var(--bg-white);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .fit__grid {
+    display: grid;
+    gap: clamp(40px, 5vw, 72px);
+    align-items: center;
+  }
+  @media (min-width: 1000px) {
+    .fit__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    }
+    .fit__grid--solo {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .fit__copy {
+    display: grid;
+    gap: 20px;
+    max-width: 640px;
+  }
+  .fit__copy .dh {
+    margin-bottom: 6px;
+  }
+  .fit__p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .fit__link {
+    justify-self: start;
+    margin-top: 6px;
   }
 </style>
 

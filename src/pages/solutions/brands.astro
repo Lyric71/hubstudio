@@ -1,177 +1,130 @@
 ---
 /**
- * AIGC for Brands  ·  /solutions/brands
+ * hubStudio for brands  ·  /solutions/brands
  *
- * Built around the existing AIGC-for-Brands content: hyper-relevance, the
- * five industry-ready model families and the production logic that follows.
- * Shares the print-shop typographic frame, calibration bars and editorial
- * display headings used across the other solutions pages.
+ * In-house brand teams: the app for the daily run, the studio for campaigns,
+ * and Studio + app when they want both with every approval on record. The
+ * page highlights Studio + app in the three ways band and closes with the
+ * studio door first. Copy from the content-quality-us deck (cq/sol-brands).
  *
- * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
+ * Keeps the print-shop frame of the solutions pages (calibration bars, crop
+ * marks, editorial display headings) and the brands insights layer, which is
+ * permanent (see CLAUDE.md, insights distribution).
+ *
+ * Per repo standards: no em dash character, no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
  * its canonical lowercase-h casing.
  */
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 import InsightsLayer from '../../components/InsightsLayer.astro';
+import WaysToWork from '../../components/WaysToWork.astro';
+import DualCta from '../../components/DualCta.astro';
+import AppShot from '../../components/AppShot.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
 ];
 
-/* Why-it-matters reasons, drawn from the source page's hyper-relevance
-   imperative and creative-destiny sections. No ordinals; the visual order
-   and headings do the sequencing. */
+/* The brand team's week: three problems. No ordinals; the labels carry them. */
 const reasons = [
   {
-    label: 'Hyper-relevance',
-    title: 'Modern audiences expect more than personalisation.',
-    body: 'They expect content tuned to a platform, an audience, a cultural moment, a single interaction. Templates with swapped variables no longer pass. AIGC makes that level of specificity not just possible, but practical, at the volume modern brands need.',
+    label: 'Volume',
+    title: 'Every network wants its own shape.',
+    body: 'One campaign visual becomes a square, a Story, a banner, and a LinkedIn post. The resizing and rewriting eats the week.',
   },
   {
-    label: 'Past scarcity',
-    title: 'Traditional production runs on scarcity. AIGC removes the limit.',
-    body: 'Limited budgets, finite timelines, constrained exploration. The old equation does not deliver hundreds of authentic variations. The new one does, so creative teams move from execution gatekeepers to curators of brilliance.',
+    label: 'Craft',
+    title: 'A launch still needs an art director’s eye.',
+    body: 'Off-the-shelf AI output looks like everyone else’s, and the product’s shape or color drifts from one shot to the next.',
   },
   {
-    label: 'Creative destiny',
-    title: 'A brand that speaks fluently in a thousand voices.',
-    body: 'AIGC does not just generate content, it architects experiences that resonate across every touchpoint. Tokyo, Sao Paulo, Stockholm, each interaction crafted for that culture and that moment, without losing the line that makes the brand the brand.',
+    label: 'Sign-off',
+    title: 'Approvals scatter across email and chat.',
+    body: 'Six weeks later, nobody can say who signed off on which version.',
   },
 ];
 
-/* Industry-ready models, each with a tag list of the underlying workflow
-   blocks. The tag list replaces numbered sub-headings, satisfying the
-   no-numbers rule while preserving the substance. */
+/* Categories the studio sees most with brand teams. Images kept from the
+   previous page; each lane is prose now, with a case link where one exists. */
 const lanes = [
   {
     label: 'Fashion',
-    heading: 'Pre-fine-tuned models for style innovation.',
+    heading: 'Lookbooks, drops, and seasonal campaigns.',
     image: '/Images/hub4fashion.jpg',
     alt: 'A daylit fashion editorial frame with a model in a sculpted coat against a warm-grey wall, prime-lens shallow focus, soft window light from camera left.',
-    lead: 'Trained on seasonal trends, colour psychology and global style preferences. Sophisticated fashion content from day one.',
-    body: [
-      "Ready workflows for editorial storytelling, social commerce visuals, seasonal campaigns and lifestyle content. The model already speaks the language of the category, so the team moves to direction rather than starting at zero.",
-      'The output is built to slot into an existing fashion calendar: lookbooks, drop adaptations, performance creative and cultural variations, all tracked against your brand voice rather than the generic editorial defaults of the public tools.',
-    ],
-    tags: [
-      'Editorial storytelling', 'Social commerce visuals',
-      'Seasonal campaigns', 'Lifestyle content',
-      'Lookbook adaptations', 'Drop creative',
-      'Performance variants', 'Cultural localisation',
-    ],
+    body: 'We keep fit, fabric, and color true from the first frame to the last, whether it ends up on a billboard or a product page.',
   },
   {
     label: 'Automotive',
-    heading: 'Pre-built workflows for vehicle marketing.',
+    heading: 'The vehicle in context, without shipping it anywhere.',
     image: '/Images/md-launch.jpg',
     alt: 'A wide cinematic vehicle frame on a quiet coastal road at the end of the afternoon, single low-angle sun source, warm shadow grade, restrained negative space for headline copy.',
-    lead: 'Fine-tuned on vehicle specifications, lifestyle benefits and regional preferences. Compelling narratives, immediately.',
-    body: [
-      "Ready deployments cover product showcases, lifestyle integration, technical presentations and emotional storytelling. The same launch ships from spec-sheet detail to wide cinematic context without rebriefing the team.",
-      'Regional variants account for the way each market actually drives, parks and lives with the vehicle, so a single hero idea adapts to the climate and culture it lands in rather than reading as a translated press kit.',
-    ],
-    tags: [
-      'Product showcases', 'Lifestyle integration',
-      'Technical presentations', 'Emotional storytelling',
-      'Regional variants', 'Spec-sheet visualisation',
-      'Launch campaigns', 'Configurator stills',
-    ],
+    body: 'We build the road and the weather around the car, market by market.',
+    caseStudy: { label: 'A premium SUV, shown without shipping a car', href: '/work/premium-suv' },
   },
   {
     label: 'Electronics',
-    heading: 'Plug-and-play models for tech brands.',
+    heading: 'Launch films and product explainers.',
     image: '/Images/md-saas.jpg',
     alt: 'A clean tech product still life on a matte-grey surface, single softbox from camera right, lifted black point, subtle film grain on the highlights.',
-    lead: 'Pre-trained on technical benefit and lifestyle integration. Make the product accessible from the first campaign.',
-    body: [
-      "Ready workflows for product demonstrations, lifestyle contexts, technical simplification and feature-benefit translation. The model already knows how to make a circuit board read as a benefit rather than a brochure.",
-      'Useful where category friction is highest: the dense spec sheet, the unfamiliar feature, the launch where the team has to teach and sell at the same time. AIGC absorbs the heavy lifting so the campaign can lead with the human payoff.',
-    ],
-    tags: [
-      'Product demonstrations', 'Lifestyle contexts',
-      'Feature-benefit translation', 'Technical simplification',
-      'Launch creative', 'Spec to story',
-      'Tutorial visuals', 'Comparative frames',
-    ],
+    body: 'They turn a spec sheet into something a buyer understands. The feature list becomes a scene someone can picture at home.',
+    caseStudy: { label: 'A global AI wearable launch for iFlytek', href: '/work/iflytek-anypin' },
   },
   {
-    label: 'Food',
-    heading: 'Ready-made models for culinary brands.',
+    label: 'Food and drink',
+    heading: 'Appetite, texture, and season.',
     image: '/Images/md-ooh.jpg',
     alt: 'A close food editorial frame, ingredients with imperfect surfaces, hard side light raking across texture, warm shadow grade.',
-    lead: 'Pre-fine-tuned on flavour profiles, cultural preference and appetite psychology. Irresistible content across diverse markets.',
-    body: [
-      "Ready workflows for photography enhancement, cultural adaptation, seasonal menus and social content. The model already understands the difference between a tasting menu and a quick-service hero, and what each market expects from each.",
-      'Useful across the full calendar: launch campaigns, seasonal pushes, recipe content, partnership creative and the relentless social drip in between. One brand voice, many authentic local expressions, all tracked against the same standard.',
-    ],
-    tags: [
-      'Photography enhancement', 'Cultural adaptation',
-      'Seasonal menus', 'Social content',
-      'Recipe visualisation', 'Partnership creative',
-      'Appetite-led variants', 'In-format social drops',
-    ],
+    body: 'We light food for texture and restage it when the menu changes.',
+    caseStudy: { label: 'A gin launch built from zero assets', href: '/work/1834-gin' },
   },
   {
     label: 'B2B',
-    heading: 'Enterprise-ready AI for business communication.',
+    heading: 'Decks, case-study visuals, and sales material in one voice.',
     image: '/Images/hub4presentation.jpg',
     alt: 'A small client workshop in a sunlit meeting room with a printed campaign roadmap on the wall and three people discussing a phase, documentary in-studio register.',
-    lead: 'Pre-trained on industry terminology, decision-making frameworks and professional communication.',
-    body: [
-      "Ready workflows for solution presentations, case-study visualisation, technical documentation and stakeholder communication. The same model writes the deck, the leave-behind and the field-sales asset, in the same voice.",
-      'Useful where the audience is technical, the buying cycle is long and the channel mix includes a sales team. AIGC industrialises the visual layer so the sellers spend their time selling rather than waiting on creative.',
-    ],
-    tags: [
-      'Solution presentations', 'Case-study visualisation',
-      'Technical documentation', 'Stakeholder communication',
-      'Field-sales enablement', 'Deck design',
-      'Whitepaper visuals', 'Account-based variants',
-    ],
+    body: 'The deck and the trade-show panel end up looking like one company made them.',
   },
 ];
 
 const faqs = [
   {
-    q: 'Is AI training mandatory for every brand project?',
-    a: 'Yes. AI training is essential to unlock authentic, brand-safe AIGC. Generic AI does not reflect your colour, your style or your tone. Custom training ensures every generated asset captures the brand and stays consistent across channels. One training is valid for one product and one specific AIGC model.',
+    q: 'Should our team use the app or the studio?',
+    a: 'Usually both. The daily content runs in the app, and the studio takes launches and seasonal campaigns. If you want the two joined up, Studio + app puts our creatives inside hubStudio and your people approve there.',
   },
   {
-    q: 'How do you protect our brand data and intellectual property?',
-    a: 'We maintain complete privacy through a closed-loop system. Your data never goes to public AI models, all prompts are anonymised and we use open-source models installed on private servers. You get your own dedicated AI engine based on custom models. Servers can be located in China, the USA or Europe depending on your requirements.',
+    q: 'Does the app learn our brand?',
+    a: 'Not the way a trained model does. In the app, Team skills written by your admins shape the AI’s post drafts and prompt rewrites. Brand-trained models are studio work: our team trains them and runs them on the studio’s own pipelines.',
   },
   {
-    q: "What's included in your industry-specific solutions?",
-    a: 'Each industry package includes pre-fine-tuned AI models and ready-to-deploy workflows. Fashion gets editorial storytelling and social commerce templates. Automotive includes product showcases and emotional storytelling frameworks. Electronics features technical simplification and lifestyle integration. Food offers cultural adaptation and appetite-driven content. B2B provides solution presentations and stakeholder communication workflows.',
+    q: 'How do approvals work?',
+    a: 'In Validation. You send an image, a video, a post, a file, or a link to a colleague or a client, and they approve it or send it back with a comment. Versions stay on one thread, and nothing on that thread can be deleted.',
   },
   {
-    q: 'How quickly can we start generating content?',
-    a: 'With the pre-trained industry models, sophisticated content can launch from day one. No long training period, no learning curve. The standard workflows are immediately deployable, so creative output speed transforms without sacrificing quality or brand authenticity.',
+    q: 'What does it cost?',
+    a: 'The app runs on a prepaid balance in real currency. You see the price before every run, a failed run is never charged, there are no seat fees, and the balance doesn’t expire. You top up by card, Alipay, or WeChat Pay and get an invoice every time. The studio is priced per asset, per project, or on retainer, and quoted after a brief.',
   },
   {
-    q: "What's the difference between your solution and using ChatGPT or MidJourney directly?",
-    a: 'Public tools generate generic content that does not reflect your brand identity. Our approach combines custom AI training with industry-specific expertise, so every asset feels authentically yours. We architect complete brand experiences, not just individual pieces of content, with built-in brand safety and consistency controls.',
+    q: 'Can we start with the studio and move to the app later?',
+    a: 'Yes. If we worked in your workspace, the files are already in your History and Assets Library. If we worked in ours, you download the finished work and carry on in your own account.',
   },
   {
-    q: 'Can AIGC handle multiple markets and cultural adaptations simultaneously?',
-    a: 'Yes. Multi-market transcreation lets your brand speak authentically to audiences in Tokyo, Sao Paulo and Stockholm at the same time. Each interaction feels personally crafted for that culture and context, going past translation to true cultural adaptation while keeping the core brand essence intact.',
+    q: 'Who sees our work?',
+    a: 'In the app, your team and the people you invite. A client login sees only what was made for its company, never a prompt, an engine, or a cost. Brand-trained models are run by the studio team on its own GPU pipelines.',
   },
   {
-    q: 'What types of content formats can you generate?',
-    a: 'Comprehensive brand assets including bold visuals, short videos, eCommerce packs, campaign adaptations, social content, technical documentation, lifestyle contexts and seasonal campaigns. The AI handles everything from product photography enhancement to emotional storytelling frameworks, all tuned to the brand.',
+    q: 'Can the app start from our own product photos?',
+    a: 'Yes. In the Image studio, choose Edit an image and drop in your product photo; some engines take up to four at once. Keep the originals in the Assets Library. For a hero campaign, the studio can shoot new ones.',
   },
   {
-    q: 'How do you ensure content quality and brand compliance?',
-    a: 'The process includes strategic planning, AI creation with creative direction, extensive prompt fine-tuning, quality control checkpoints and post-production refinement. Every asset goes through client QC before delivery. Brand governance runs on filtering systems, compliance controls and usage-policy frameworks.',
-  },
-  {
-    q: "What's the investment range for AIGC implementation?",
-    a: 'Pricing varies with scope, complexity, volume and creative considerations. We provide a customised proposal after assessing the project. Published prices are indicative, with actual project pricing reflecting the specific requirements and the outcome.',
-  },
-  {
-    q: 'How does AIGC integrate with our existing creative workflows?',
-    a: 'AIGC enhances rather than replaces the creative process. Teams become curators of brilliance instead of being limited by production constraints. We work alongside your creative strategy, amplifying the team and enabling exploration of concepts that were previously impossible on the timeline or the budget. The technology serves the creativity, not the other way around.',
+    q: 'How quickly can the studio start?',
+    a: 'A producer reads every brief within one business day and sends a written proposal within 48 hours.',
   },
 ];
 
@@ -184,18 +137,29 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'Brands', item: `${SITE}/solutions/brands` },
+  ],
+};
 ---
 
 <Layout
-  title="AIGC for Brands: Industry-Specific Models | hubStudio"
-  description="Pre-trained AIGC models for fashion, automotive, electronics, food and B2B. Custom brand training, multi-market content and instant deployment from hubStudio."
+  title="hubStudio for brands: daily content, campaigns, approvals"
+  description="In-house brand teams use the hubStudio app for daily content and our studio for campaigns, with every approval kept on one record."
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
   <div class="page">
-    <!-- ============ S1 · HERO ============ -->
+    <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="hero__panel">
         <svg class="hero__reg" viewBox="0 0 100 100" aria-hidden="true">
@@ -208,38 +172,37 @@ const faqSchema = {
             <span class="kicker__sep">/</span> Brands
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">AIGC built</span></span>
-            <span class="line"><span class="line__i">around the</span></span>
-            <span class="line"><span class="line__i serif">brand.</span></span>
+            <span class="line"><span class="line__i">Daily content in</span></span>
+            <span class="line"><span class="line__i">the app. Campaigns</span></span>
+            <span class="line"><span class="line__i">from the <span class="serif">studio.</span></span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Where creative intelligence meets <em>brand excellence</em>.
+            Or both, with every approval <em>on record</em>.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              Modern audiences no longer settle for personalisation. They
-              expect content tuned to a platform, an audience, a moment, a
-              single interaction. Traditional production cannot deliver that
-              level of specificity at scale.
+              A brand team does two kinds of work. The daily run: posts,
+              resizes, product variants for this week’s promotion. And the
+              campaign, where the brand has to look its best.
             </p>
             <p>
-              We architect AIGC capability around the brand: industry-trained
-              models, custom training on your visual DNA, multi-market output,
-              all run inside an active studio. The same line shows up in
-              fifty places and reads native in every one.
+              hubStudio covers both. Your team makes the daily work in the
+              app. Our studio makes the campaign, led by a senior art
+              director, and if we work inside the app your people review it
+              all in one place.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start a brand brief</Button>
-            <a class="ghost-link ghost-link--light" href="#industries">
-              See the industry models
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
+            <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+              Create your account
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Shanghai studio <span>/</span> 35+ markets, private model hosting
+            Hong Kong HQ <span>/</span> Studios in Shanghai and Changsha <span>/</span> Paris office
           </p>
         </div>
       </div>
@@ -252,7 +215,7 @@ const faqSchema = {
           loading="eager"
           fetchpriority="high"
         />
-        <span class="hero__chip">Shanghai <span>/</span> Brand floor</span>
+        <span class="hero__chip">Brand team <span>/</span> Review wall</span>
       </div>
     </section>
 
@@ -260,21 +223,19 @@ const faqSchema = {
       {colourBar.map((c) => <span style={`background:${c}`}></span>)}
     </div>
 
-    <!-- ============ S2 · WHY ============ -->
+    <!-- ============ WHY ============ -->
     <section class="why">
       <div class="shell">
         <header class="band band--split">
           <div>
-            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>The brand team’s week</p>
             <h2 class="dh r" style="--d:.05s">
-              The hyper-relevance<br />imperative, <span class="serif">made practical</span>.
+              More channels to fill,<br />and the same <span class="serif">team</span>.
             </h2>
           </div>
           <p class="band__note band__note--light r" style="--d:.1s">
-            Traditional production economics never delivered hyper-relevance.
-            AIGC does, when it is architected around the brand rather than
-            bought as a tool. The output reads native because the model was
-            trained that way.
+            Channels multiplied faster than headcount. Most brand teams we
+            meet run into the same three problems.
           </p>
         </header>
 
@@ -295,19 +256,149 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ============ S3 · INDUSTRY LANES ============ -->
-    <section class="cover" id="industries">
+    <!-- ============ THE APP AND THE STUDIO ============ -->
+    <section class="fit" id="app-and-studio">
+      <div class="shell">
+        <article class="fit__row">
+          <div class="fit__media r">
+            <AppShot shot={appShots.linkedin} path="/social/linkedin/posts" caption />
+          </div>
+          <div class="fit__body">
+            <p class="kicker r"><span class="kicker__tick"></span>Use the app</p>
+            <h2 class="dh dh--sm r" style="--d:.05s">The daily run, in your team’s <span class="serif">hands</span>.</h2>
+            <p class="fit__p r" style="--d:.1s">
+              Your team picks an engine in Explore, sees the price, and runs
+              it. Need the product in a spring scene for Friday’s post?
+              That’s a few minutes of work, and nobody books a photographer.
+            </p>
+            <p class="fit__p r" style="--d:.14s">
+              The Image editor crops to each network’s format and adds your
+              logo. Posts go to LinkedIn, Instagram, Facebook, TikTok (Beta),
+              and X, now or on a schedule. Team skills, written by your
+              admins, shape the AI’s post drafts and prompt rewrites, so the
+              tone stays yours.
+            </p>
+            <p class="fit__links r" style="--d:.18s">
+              <a class="ghost-link" href="/app">
+                See what the app does
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </p>
+          </div>
+        </article>
+
+        <article class="fit__row fit__row--rev">
+          <figure class="fit__media crop r-clip">
+            <div class="crop__inner fit__photo">
+              <img
+                src="/Images/studio-hero.webp"
+                alt="An art director marks a pinned proof with a red pencil while a colleague holds another print, in front of a wall of campaign prints at the hubStudio studio."
+                width="2000"
+                height="1333"
+                loading="lazy"
+              />
+            </div>
+            <figcaption class="fig">The studio <span>/</span> Proof wall</figcaption>
+          </figure>
+          <div class="fit__body">
+            <p class="kicker r"><span class="kicker__tick"></span>Studio only</p>
+            <h2 class="dh dh--sm r" style="--d:.05s">Campaigns that stay on brand, shot after <span class="serif">shot</span>.</h2>
+            <p class="fit__p r" style="--d:.1s">
+              For a launch or a seasonal campaign, send us a brief. A senior
+              art director leads it from the first frame to the last file.
+            </p>
+            <p class="fit__p r" style="--d:.14s">
+              Our team trains models on your brand and runs them on the
+              studio’s own GPU pipelines. That’s what keeps a product, a face,
+              or a palette the same across a whole campaign. Some pictures
+              are shot, some generated, and most mix both, decided asset by
+              asset.
+            </p>
+            <p class="fit__links r" style="--d:.18s">
+              <a class="ghost-link" href="/work/elizabeth-gage">
+                The content we made for Elizabeth Gage, a heritage London jeweler
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a class="ghost-link" href="/studio">
+                Meet the studio
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ THREE WAYS TO WORK ============ -->
+    <WaysToWork
+      tone="white"
+      highlight="studio-app"
+      pre="Pick the way that fits the "
+      accent="job"
+      post="."
+      lead="Plenty of brand teams use all three in a year: the daily run in the app, a launch from the studio, and a steady retainer where we work inside hubStudio and your people approve there."
+    />
+
+    <!-- ============ STUDIO + APP: APPROVALS ON RECORD ============ -->
+    <section class="record" id="approvals">
+      <div class="shell record__grid">
+        <div class="record__body">
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Studio + app</p>
+          <h2 class="dh r" style="--d:.05s">
+            Who approved what,<br />and <span class="serif">when</span>.
+          </h2>
+          <p class="record__p r" style="--d:.1s">
+            With Studio + app, our creatives make the work inside hubStudio.
+            Your marketing lead reviews it in Validation, and so can legal or
+            the regional team. Each person approves it or sends it back with
+            a comment.
+          </p>
+          <p class="record__p r" style="--d:.14s">
+            A new version lands on the same thread as the last one, and
+            nothing on that thread can be deleted. When someone asks who
+            approved the spring key visual, you open the thread and look.
+          </p>
+          <p class="record__p r" style="--d:.18s">
+            We can work in our own workspace and give your people client
+            logins, so they see only the finished work made for them and hold
+            no balance. Or we join your workspace as members, work from your
+            balance, and everything stays in your History and Assets Library
+            when the project ends.
+          </p>
+          <p class="r" style="--d:.22s">
+            <a class="ghost-link ghost-link--light" href="/studio/with-the-app">
+              How Studio + app works
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </p>
+        </div>
+        <div class="record__media r" style="--d:.1s">
+          <AppShot shot={appShots.validation} path="/validation" caption dark />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATEGORIES ============ -->
+    <section class="cover" id="categories">
       <div class="shell">
         <header class="band">
-          <p class="kicker r"><span class="kicker__tick"></span>Industry-ready models</p>
+          <p class="kicker r"><span class="kicker__tick"></span>Categories</p>
           <h2 class="dh r" style="--d:.05s">
-            Five categories, one <span class="serif">operating model</span>.
+            Five categories we know <span class="serif">well</span>.
           </h2>
           <p class="band__note r" style="--d:.1s">
-            Each industry package ships with pre-fine-tuned models and
-            ready-to-deploy workflows tuned to the category. Most clients
-            start in one lane, then expand to the adjacent ones as the
-            content operation matures.
+            One detour before the questions. The studio works across many
+            categories. These five come up most with brand teams, and any of
+            the three ways works for each: a fashion team might post daily
+            from the app and bring us the lookbook.
           </p>
         </header>
 
@@ -316,34 +407,27 @@ const faqSchema = {
             <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
               <figure class="feature__media crop r-clip">
                 <div class="crop__inner">
-                  <img
-                    src={c.image}
-                    alt={c.alt}
-                    width="1024"
-                    height="820"
-                    loading="lazy"
-                  />
+                  <img src={c.image} alt={c.alt} width="1024" height="820" loading="lazy" />
                 </div>
                 <figcaption class="fig">{c.label}</figcaption>
               </figure>
               <div class="feature__body">
                 <p class="feature__idx r">
                   <span class="feature__tick"></span>
-                  Industry model
+                  {c.label}
                 </p>
                 <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
-                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
-                {c.body.map((para, pi) => (
-                  <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
-                    {para}
+                <p class="feature__p r" style="--d:.1s">{c.body}</p>
+                {c.caseStudy && (
+                  <p class="feature__case r" style="--d:.16s">
+                    <a class="ghost-link" href={c.caseStudy.href}>
+                      {c.caseStudy.label}
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </a>
                   </p>
-                ))}
-                <p class="feature__scope r" style="--d:.24s">In scope</p>
-                <ul class="chips r" style="--d:.28s">
-                  {c.tags.map((t) => (
-                    <li class="chip">{t}</li>
-                  ))}
-                </ul>
+                )}
               </div>
             </article>
           ))
@@ -351,7 +435,7 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ============ S4 · WHY HUBSTUDIO ============ -->
+    <!-- ============ WHY HUBSTUDIO ============ -->
     <section class="source">
       <div class="shell source__grid">
         <div class="source__visual">
@@ -367,66 +451,49 @@ const faqSchema = {
             </div>
           </figure>
           <div class="source__stat">
-            <span class="source__stat-num">One studio</span>
-            <span class="source__stat-cap">Creative and technical, under one roof</span>
+            <span class="source__stat-num">48 hours</span>
+            <span class="source__stat-cap">A written proposal after your brief</span>
           </div>
         </div>
 
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why hubStudio</p>
           <h2 class="dh r" style="--d:.05s">
-            Deep technical AIGC expertise<br />with creative <span class="serif">sensibility</span>.
+            Creative judgment, with<br />the AI <span class="serif">underneath</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            Most partners come from one side of the divide: a systems
-            integrator who has never authored a campaign, or a creative
-            agency adding "AI" to the deck cover. The engagement then bends
-            toward whichever side wrote the proposal.
+            Senior art directors lead every brief, and the AI production runs
+            under their direction.
           </p>
           <p class="source__p r" style="--d:.16s">
-            We sit on both. The consulting and production practices run
-            inside one active content studio, so AI implementation enhances
-            rather than disrupts the creative culture it lands in. The
-            methodology is proven on the studio's own work first, then handed
-            to clients.
+            The same company builds the app your team uses and runs the
+            studio that makes your campaigns. So moving a job from one to the
+            other doesn’t mean starting over.
           </p>
-          <p class="source__p r" style="--d:.22s">
-            That positions the brand at the front of rapidly evolving AI
-            capability while building a content operation that survives the
-            next model release rather than being rebuilt by it.
+          <p class="source__p r" style="--d:.2s">
+            We record the provenance of every asset, so you know what was
+            shot, what was generated, and what was retouched. The studio was
+            founded by Cyril Drouin, former CEO at Publicis, and has its
+            headquarters in Hong Kong.
           </p>
-          <ul class="creds r" style="--d:.28s">
-            <li class="cred">
-              <svg viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              Custom-trained models
-            </li>
-            <li class="cred">
-              <svg viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              Private hosting
-            </li>
-            <li class="cred">
-              <svg viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              35+ markets shipped
-            </li>
-            <li class="cred">
-              <svg viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              NDA in place
-            </li>
+          <ul class="creds r" style="--d:.26s">
+            {
+              ['Senior art directors', 'Brand-trained models', 'Provenance per asset', 'Twenty service lines'].map((c) => (
+                <li class="cred">
+                  <svg viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  {c}
+                </li>
+              ))
+            }
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============ S5 · FAQ ============ -->
-    <section class="faq">
+    <!-- ============ FAQ ============ -->
+    <section class="faq" id="faq">
       <div class="shell faq__grid">
         <aside class="faq__intro">
           <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
@@ -434,11 +501,12 @@ const faqSchema = {
             Before the<br />first <span class="serif">brief</span>.
           </h2>
           <p class="faq__sub r" style="--d:.1s">
-            The questions brand teams ask before we begin. If yours is not
-            below, put it in the brief.
+            What brand teams ask us first. If yours isn’t here, put it in the
+            brief.
           </p>
+          <p class="faq__updated r" style="--d:.12s">Updated September 2026</p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start a brand brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
           </div>
         </aside>
 
@@ -465,40 +533,18 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ============ S5b · INSIGHTS LAYER ============ -->
+    <!-- ============ INSIGHTS LAYER (permanent) ============ -->
     <InsightsLayer placement="brands" tone="white" id="reading" />
 
-    <!-- ============ S6 · CLOSING ============ -->
-    <section class="end">
-      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
-        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
-      </svg>
-      <div class="shell end__inner">
-        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Build with us</p>
-        <h2 class="end__title r" style="--d:.05s">
-          Architect with<br /><span class="serif">us</span>.
-        </h2>
-        <p class="end__p r" style="--d:.12s">
-          Send a brief, a current state or just the question that prompted
-          this page. A senior lead reads it inside two working days and
-          replies with a scope, a phased plan and an honest read on which
-          industry model is the right starting line.
-        </p>
-        <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start a brand brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See client work
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="cbar cbar--end" aria-hidden="true">
-        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
-      </div>
-    </section>
+    <!-- ============ CLOSING ============ -->
+    <DualCta
+      lead="studio"
+      briefQuery="way=studio-app"
+      pre="Send a brief, or open the "
+      accent="app"
+      post="."
+      text="Tell us about the campaign, and a producer replies within one business day. Or create an account today, at no cost, and your team can start on the daily run."
+    />
   </div>
 </Layout>
 
@@ -543,9 +589,10 @@ const faqSchema = {
   .crop__inner { overflow: hidden; border-radius: 4px; }
   .crop__inner img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .fig { margin-top: 14px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mute); }
+  .fig span { color: var(--brand-orange); }
 
   .ghost-link { display: inline-flex; align-items: center; gap: 9px; font-size: var(--type-small); font-weight: 600; color: var(--text-ink); }
-  .ghost-link svg { width: 19px; height: 19px; transition: transform 0.24s ease-out; }
+  .ghost-link svg { flex: none; width: 19px; height: 19px; transition: transform 0.24s ease-out; }
   .ghost-link:hover svg { transform: translateX(5px); }
   .ghost-link--light { color: var(--text-on-dark); }
 
@@ -560,14 +607,13 @@ const faqSchema = {
 
   .cbar { display: flex; height: 12px; }
   .cbar span { flex: 1; }
-  .cbar--end { margin-top: clamp(60px, 8vw, 110px); }
 
   .hero { display: grid; background: var(--ink); color: var(--text-on-dark); }
   @media (min-width: 900px) { .hero { grid-template-columns: 1fr 1fr; } }
   .hero__panel { position: relative; display: flex; align-items: center; padding: clamp(40px, 4.4vw, 72px) clamp(24px, 5vw, 64px); overflow: clip; }
   .hero__reg { position: absolute; width: clamp(240px, 28vw, 420px); right: -12%; bottom: -14%; color: rgba(240, 237, 233, 0.055); pointer-events: none; }
   .hero__panel-in { position: relative; width: 100%; max-width: 600px; }
-  .hero__title { margin-top: 24px; font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.02; letter-spacing: -0.045em; }
+  .hero__title { margin-top: 24px; font-family: var(--font-sans); font-weight: 600; font-size: clamp(38px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.045em; }
   .hero__title .line { display: block; overflow: hidden; padding: 0.22em 0.14em; margin: -0.22em -0.14em; }
   .hero__title .line__i { display: block; transform: translateY(145%); transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
   .hero__title .line:nth-child(1) .line__i { transition-delay: 0.12s; }
@@ -578,7 +624,7 @@ const faqSchema = {
   @media (prefers-reduced-motion: reduce) { .hero__title .line__i { transform: none; } }
   .hero__tag { margin-top: 26px; font-size: clamp(18px, 1.5vw, 23px); font-weight: 600; letter-spacing: -0.02em; }
   .hero__tag em { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--brand-orange); }
-  .hero__lead { margin-top: 20px; display: grid; gap: 13px; max-width: 46ch; }
+  .hero__lead { margin-top: 20px; display: grid; gap: 13px; max-width: 48ch; }
   .hero__lead p { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
   .hero__cta { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
   .hero__meta { margin-top: 34px; padding-top: 20px; border-top: 1.5px dashed rgba(240, 237, 233, 0.2); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240, 237, 233, 0.5); }
@@ -594,11 +640,33 @@ const faqSchema = {
   .why { background: var(--ink); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
   .reasons { display: grid; gap: 28px; }
   @media (min-width: 820px) { .reasons { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
-  .reason { padding-top: 26px; border-top: 1.5px solid rgba(240, 237, 233, 0.18); display: grid; gap: 14px; }
+  .reason { padding-top: 26px; border-top: 1.5px solid rgba(240, 237, 233, 0.18); display: grid; gap: 14px; align-content: start; }
   .reason__label { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
   .reason__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
   .reason__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(22px, 2vw, 28px); line-height: 1.18; letter-spacing: -0.02em; color: var(--text-on-dark); }
   .reason__body { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
+
+  /* The app and the studio, side by side as two editorial rows. */
+  .fit { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
+  .fit__row { display: grid; gap: 36px; align-items: center; }
+  .fit__row + .fit__row { margin-top: clamp(64px, 8vw, 120px); padding-top: clamp(56px, 7vw, 100px); border-top: 1.5px dashed var(--line-strong); }
+  @media (min-width: 940px) {
+    .fit__row { grid-template-columns: 1.1fr 0.9fr; gap: 72px; }
+    .fit__row--rev { grid-template-columns: 0.9fr 1.1fr; }
+    .fit__row--rev .fit__media { order: 2; }
+  }
+  .fit__photo { aspect-ratio: 3 / 2; }
+  .fit__body .dh { margin-top: 16px; }
+  .fit__p { margin-top: 16px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); max-width: 60ch; }
+  .fit__links { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 14px 28px; }
+
+  /* Studio + app: approvals on record, on ink with a dark app capture. */
+  .record { background: var(--ink); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
+  .record__grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 980px) { .record__grid { grid-template-columns: 0.9fr 1.1fr; gap: 72px; } }
+  .record__body .dh { margin-top: 16px; }
+  .record__p { margin-top: 16px; font-size: var(--type-body); line-height: 1.66; color: rgba(240, 237, 233, 0.78); max-width: 58ch; }
+  .record__body > p:last-child { margin-top: 26px; }
 
   .cover { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
   .feature { display: grid; gap: 36px; align-items: center; padding-block: clamp(40px, 5vw, 72px); border-top: 1.5px dashed var(--line-strong); }
@@ -611,12 +679,8 @@ const faqSchema = {
   .feature__idx { display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
   .feature__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
   .feature__body .dh { margin-top: 16px; }
-  .feature__lead { margin-top: 14px; font-size: var(--type-lead); line-height: 1.42; color: var(--text-ink); font-weight: 500; }
   .feature__p { margin-top: 14px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
-  .feature__scope { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line-hairline); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
-  .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 12px; font-weight: 500; transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
-  .chip:hover { background: var(--brand-orange); border-color: var(--brand-orange); color: #fff; }
+  .feature__case { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line-hairline); }
 
   .source { background: var(--navy); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
   .source__grid { display: grid; gap: 52px; }
@@ -641,7 +705,8 @@ const faqSchema = {
     .faq__intro { position: sticky; top: 96px; }
   }
   .faq__intro .dh { margin-top: 18px; }
-  .faq__sub { margin-top: 18px; margin-bottom: 26px; font-size: var(--type-body); line-height: 1.62; color: var(--text-mute); }
+  .faq__sub { margin-top: 18px; font-size: var(--type-body); line-height: 1.62; color: var(--text-mute); }
+  .faq__updated { margin-top: 12px; margin-bottom: 26px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mute); }
   .acc { display: grid; }
   .acc__row { border-top: 1.5px solid var(--ink); }
   .acc__row:last-child { border-bottom: 1.5px solid var(--ink); }
@@ -658,13 +723,6 @@ const faqSchema = {
   .acc__q[aria-expanded='true'] + .acc__a { grid-template-rows: 1fr; }
   .acc__a-inner { overflow: hidden; }
   .acc__a-inner p { padding: 0 0 26px 41px; max-width: 64ch; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
-
-  .end { position: relative; background: var(--ink); color: var(--text-on-dark); padding-top: clamp(80px, 11vw, 150px); overflow: clip; }
-  .end__reg { position: absolute; width: clamp(300px, 36vw, 560px); top: -16%; right: -9%; color: rgba(240, 237, 233, 0.05); pointer-events: none; }
-  .end__inner { position: relative; display: grid; justify-items: start; gap: 22px; }
-  .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
-  .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
-  .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
 </style>
 
 <script>

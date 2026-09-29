@@ -1,85 +1,170 @@
 ---
 /**
- * Home (`/`): cinematic editorial rebuild from hubstudio-homepage-content.md.
+ * Home (`/`): both offers on one page, the hubStudio app first and the studio
+ * a close second (hubstudio-positioning.md). Copy from the content-quality-us
+ * deck (cq/home/final.md).
  *
  * Design system layered on top of the global tokens:
  *  - Sheet stacking: every section is a rounded panel that overlaps the
  *    previous one, so the page reads as depth, not flat bands.
- *  - Scroll engine: progress bar, hero scale/parallax, [data-parallax]
- *    layers, [data-reveal] staggered reveals, count-up, kinetic type.
+ *  - Scroll engine: progress bar, [data-parallax] layers, [data-reveal]
+ *    staggered reveals, count-up, kinetic manifesto headline.
  *  - Tactile components: 3D pointer tilt, magnetic buttons, pointer glow,
  *    tabbed audience switcher. All gated on prefers-reduced-motion.
  *
- * S1 Hero . S2 Produce (bento) . S3 Who we are (sticky) .
- * S4 Solutions (tabs) . S5 Consulting + Training (feature rows) .
- * S6 How to engage (dark) . S7 Selected work . S8 Believe (manifesto) .
- * S9 Insights . S10 Closing.
+ * Hero (app capture) . The app (four stages) . Engines . Ways to work .
+ * The studio . Services (bento) . Studio + app . Selected work .
+ * Who it's for (tabs) . Pricing . Manifesto . Insights . Closing (DualCta).
+ *
+ * Insights: the first four entries of src/data/insights.ts, lead plus grid,
+ * never a hard-coded slug (CLAUDE.md, Insights distribution).
  */
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import AppShot from '../components/AppShot.astro';
+import WaysToWork from '../components/WaysToWork.astro';
+import DualCta from '../components/DualCta.astro';
+import { appShots } from '../data/app-shots';
 import { caseStudies } from '../data/case-studies';
 import { insights } from '../data/insights';
+import { APP_URL, APP_SIGNUP, APP_SIGNIN, BRIEF_URL, HELP_URL } from '../lib/links';
 
-/* S2: six service categories, mapped to the /services section anchors. */
-const categories = [
+const SITE = 'https://www.hubstudio.ai';
+
+/* The app in four stages. Order carries the sequence; no numerals. */
+const stages = [
   {
-    id: 'content-social',
-    name: 'Content & Social',
-    summary: 'The assets that ship weekly. Social posts, ad creative, short video, email.',
-    span: 'w7',
-    tone: 'ink',
-    icon: 'content',
+    title: 'Make images and video',
+    body: 'Pick an engine in Explore and it opens in the right studio. The Image studio turns text into pictures, edits up to four source pictures and upscales, up to 4K. The Video studio starts from text, from a start frame or from references, and can generate the sound too.',
+    link: { label: 'How making works', href: '/app/create' },
+    shot: appShots.videoStudio,
+    path: '/content/video',
+    narrow: false,
   },
   {
-    id: 'video-motion',
-    name: 'Video & Motion',
-    summary: 'Moving image, long and short. Scripted, shot, edited, animated.',
-    span: 'w5',
-    tone: 'white',
-    icon: 'video',
+    title: 'Keep and polish the files',
+    body: 'Every render lands in History with its prompt and engine. The Assets Library holds the team’s files in folders, with tags and versions. The Image editor crops a picture to each network’s format and fixes its light and color, and you can put text or a logo on top. It runs in your browser and is free to use.',
+    link: { label: 'See the Assets Library', href: '/app/library' },
+    shot: appShots.editorCrop,
+    path: '/files/tools/image-editor',
+    narrow: false,
   },
   {
-    id: 'commerce-web',
-    name: 'Commerce & Web',
-    summary: 'Everything that sells or hosts the brand. Ecommerce visuals, websites, print.',
-    span: 'w5',
-    tone: 'white',
-    icon: 'commerce',
+    title: 'Post to five networks',
+    body: 'Write the post yourself or give a brief to Draft with AI. Add pictures or a carousel, then publish it now or schedule it, to as many as 20 accounts in one go. hubStudio posts to LinkedIn, Instagram, Facebook, X and TikTok (in Beta).',
+    link: { label: 'How publishing works', href: '/app/publish' },
+    shot: appShots.linkedin,
+    path: '/social/linkedin/posts',
+    narrow: false,
   },
   {
-    id: 'strategy-direction',
-    name: 'Strategy & Direction',
-    summary: 'The thinking before the pixels. Marketing and creative strategy, concept, storyboard.',
-    span: 'w7',
-    tone: 'orange',
-    icon: 'strategy',
-  },
-  {
-    id: 'brand-identity',
-    name: 'Brand Identity',
-    summary: 'The system everything else flows from. Logos, illustration, packaging and merch.',
-    span: 'w6',
-    tone: 'white',
-    icon: 'brand',
-  },
-  {
-    id: 'sales-communications',
-    name: 'Sales & Communications',
-    summary: 'Decks, docs, news. Presentations, pitch decks, reports, press releases.',
-    span: 'w6',
-    tone: 'cream',
-    icon: 'sales',
+    title: 'Send it for approval, then deliver',
+    body: 'Send an image, a video or a post to a teammate or a client in Validation. They approve it or send it back with a comment, and every version stays on one thread. Each client gets logins and a Client space that shows only the work made for it.',
+    link: { label: 'How approval works', href: '/app/review' },
+    shot: appShots.validationSend,
+    path: '/validation',
+    narrow: true,
   },
 ];
 
-/* S4: the four audiences, each a tab panel. */
+/* The makers in Explore, as plain text. No logos. */
+const makers = [
+  'OpenAI',
+  'Google',
+  'Black Forest Labs',
+  'ByteDance',
+  'Kling',
+  'Alibaba',
+  'xAI',
+  'MiniMax',
+  'Meta',
+];
+
+/* Six service groups, each listing its /services/design/* lines. */
+const categories = [
+  {
+    name: 'Content and social',
+    summary: 'The assets that ship every week.',
+    span: 'w7',
+    tone: 'ink',
+    icon: 'content',
+    lines: [
+      { name: 'Social media', href: '/services/design/social-media' },
+      { name: 'Ad creative', href: '/services/design/ad-creative' },
+      { name: 'Short video', href: '/services/design/short-video' },
+      { name: 'Email design', href: '/services/design/email-design' },
+    ],
+  },
+  {
+    name: 'Video and motion',
+    summary: 'Film and animation, long and short.',
+    span: 'w5',
+    tone: 'white',
+    icon: 'video',
+    lines: [
+      { name: 'Video production', href: '/services/design/video-production' },
+      { name: 'Motion design', href: '/services/design/motion-design' },
+    ],
+  },
+  {
+    name: 'Commerce and web',
+    summary: 'The pages and prints that sell the product.',
+    span: 'w5',
+    tone: 'white',
+    icon: 'commerce',
+    lines: [
+      { name: 'eCommerce', href: '/services/design/ecommerce' },
+      { name: 'Website design', href: '/services/design/website-design' },
+      { name: 'Print design', href: '/services/design/print-design' },
+    ],
+  },
+  {
+    name: 'Strategy and direction',
+    summary: 'The thinking before anything gets made.',
+    span: 'w7',
+    tone: 'orange',
+    icon: 'strategy',
+    lines: [
+      { name: 'Marketing strategy', href: '/services/design/marketing-strategy' },
+      { name: 'Creative strategy', href: '/services/design/creative-strategy' },
+      { name: 'Concept creation', href: '/services/design/concept-creation' },
+      { name: 'Storyboard', href: '/services/design/storyboard' },
+    ],
+  },
+  {
+    name: 'Brand identity',
+    summary: 'The system the rest comes from.',
+    span: 'w6',
+    tone: 'white',
+    icon: 'brand',
+    lines: [
+      { name: 'Brand identity', href: '/services/design/brand-identity' },
+      { name: 'Illustration design', href: '/services/design/illustration-design' },
+      { name: 'Packaging and merch design', href: '/services/design/packaging-merch-design' },
+    ],
+  },
+  {
+    name: 'Sales and communications',
+    summary: 'Decks, reports and news.',
+    span: 'w6',
+    tone: 'cream',
+    icon: 'sales',
+    lines: [
+      { name: 'Presentation design', href: '/services/design/presentation-design' },
+      { name: 'Pitch deck', href: '/services/design/pitch-deck' },
+      { name: 'Ebooks and digital reports', href: '/services/design/ebook-digital-reports' },
+      { name: 'Press release', href: '/services/design/press-release' },
+    ],
+  },
+];
+
+/* The four audiences, each a tab panel that speaks to both offers. */
 const audiences = [
   {
     id: 'brands',
     name: 'Brands',
-    tagline: 'AIGC built around the brand.',
-    body: 'Industry-trained models, custom training on your visual DNA, and multi-market output. The same line shows up in fifty places and reads native in every one.',
-    chips: ['Industry-trained models', 'Visual-DNA training', 'Multi-market output'],
+    tagline: 'Your team in the app, the studio on the big jobs.',
+    body: 'Your marketers make the weekly posts in the app and publish them to five networks from one place, paying as they go. For a campaign or a launch, hand the brief to the studio. An art director runs it, using the studio’s brand-trained models where they help.',
     href: '/solutions/brands',
     img: '/Images/brands-hero.jpg',
     alt: 'A brand marketing team reviewing a wall of multi-market campaign visuals in a sunlit studio.',
@@ -87,9 +172,8 @@ const audiences = [
   {
     id: 'agencies',
     name: 'Agencies',
-    tagline: 'Your invisible production team.',
-    body: 'You own the client, the strategy, and the creative direction. We handle visuals, video, and adaptations at AIGC speed, delivered under your name.',
-    chips: ['White-label delivery', 'Visuals and video', 'AIGC speed'],
+    tagline: 'More hands, and you keep the client.',
+    body: 'Give your creatives the app. Add each client, give its people a login, and they approve in their Client space. Or pass the overflow to our studio while you keep the client, the strategy and the creative lead.',
     href: '/solutions/agencies',
     img: '/Images/agencies-hero.jpg',
     alt: 'An agency creative director directing a project from a laptop in a busy open studio.',
@@ -97,9 +181,8 @@ const audiences = [
   {
     id: 'retailers',
     name: 'Retailers',
-    tagline: 'Every product, every market.',
-    body: 'Thousands of brand-correct assets a month across categories, channels, and seasons. Every touchpoint covered, without breaking the calendar.',
-    chips: ['Thousands a month', 'Every channel', 'Every season'],
+    tagline: 'Every product, every season.',
+    body: 'Retail teams tend to run the volume work in the app: packshots, lifestyle scenes, crops for each network and posts scheduled weeks ahead. When a season needs a shoot, a full catalog or marketplace pages, the studio produces it and hands back finished files.',
     href: '/solutions/retailers',
     img: '/Images/retailers-hero.jpg',
     alt: 'A retail content team managing a large catalog of product visuals across multiple screens.',
@@ -108,67 +191,14 @@ const audiences = [
     id: 'manufacturers',
     name: 'Manufacturers',
     tagline: 'Product reality, made sellable.',
-    body: 'From the spec sheet to the marketplace tile, the trade-show booth to the launch reel, product reality is turned into content the channel can sell. All on one production line.',
-    chips: ['Spec sheet to tile', 'Booth to launch reel', 'One production line'],
+    body: 'Product marketers can turn a product photo into clean visuals and a launch post in the app. The Image anonymizer clears camera and location data out of a file before it ships. For launch films, trade-show material and marketplace pages, the studio works from your spec sheet and sends back the finished work.',
     href: '/solutions/manufacturers',
     img: '/Images/manufacturers-hero.jpg',
     alt: 'A manufacturing product shown as polished marketing content beside its technical reference.',
   },
 ];
 
-/* S5: consulting and training, alternating editorial feature rows. */
-const programs = [
-  {
-    kind: 'Consulting',
-    title: 'Architect the studio inside your business.',
-    body: 'Infrastructure, integration, governance, and team development, run by senior leads from our active production practice. From pilot to operating capability, with a roadmap that survives the next model release.',
-    points: ['Infrastructure and integration', 'Governance at scale', 'Pilot to operating capability'],
-    href: '/solutions/consulting',
-    img: '/Images/cs-strategy-room.jpg',
-    alt: 'A strategy room where senior leads map out an AIGC studio build on a printed wall plan.',
-    accent: 'orange',
-  },
-  {
-    kind: 'Training',
-    title: 'Past prompt demos, into production muscle.',
-    body: 'Cohorts learn inside the studio, on real briefs, with the engineers and creative directors who ship hubStudio work every week. Beginner and advanced modules, English and Mandarin, customized by industry.',
-    points: ['Real briefs, live studio', 'Beginner and advanced modules', 'English and Mandarin'],
-    href: '/solutions/training',
-    img: '/Images/cyril-masterclass-AIGC.jpg',
-    alt: 'Cyril Drouin presenting a masterclass on AIGC and creative production.',
-    accent: 'navy',
-  },
-];
-
-/* S6: the three ways to work. Middle model is visually featured. */
-const ways = [
-  {
-    name: 'Asset-Based',
-    tagline: 'Pay for what you ship.',
-    body: 'You send the brief, we produce the work. Volume formats with MOQs, plus per-project items quoted on scope. Some of it we generate, some we shoot, and plenty of briefs land in between.',
-    facts: ['Volume formats', 'No lock-in'],
-    href: '/pricing#asset-based',
-    featured: false,
-  },
-  {
-    name: 'Project-Based',
-    tagline: 'Built for your next launch.',
-    body: 'We assemble the team around your brief: creative director, art director, AIGC engineer, copywriter, producer. One quote, one schedule, one invoice.',
-    facts: ['First review in two weeks', 'Full delivery in four'],
-    href: '/pricing#project-based',
-    featured: true,
-  },
-  {
-    name: 'Subscription',
-    tagline: 'Your studio on retainer.',
-    body: 'A fixed monthly cost, and a team that gets faster the longer it works with you, because it stops relearning your brand on every job. Mix and match across every service line.',
-    facts: ['Three, six or twelve-month terms', 'Every service line'],
-    href: '/pricing#subscription',
-    featured: false,
-  },
-];
-
-/* S7: four selected case studies, image and alt sourced from data. */
+/* Four selected case studies, image and alt sourced from data. */
 const pick = (slug: string) => caseStudies.find((c) => c.slug === slug)!;
 const cases = [
   { name: 'HiSense', tag: 'Consumer tech', line: 'Product visuals across every channel and format', slug: 'hisense' },
@@ -180,111 +210,306 @@ const cases = [
   return { ...c, img: d.hero.src, alt: d.hero.alt };
 });
 
-/* S9: latest insights. */
+/* Insights: the four newest entries, lead plus grid. */
 const [leadInsight, ...restInsights] = insights.slice(0, 4);
 
-/* S8: belief headline split for kinetic reveal, plus the manifesto lines. */
+/* Manifesto: headline split for the kinetic reveal, plus the lines. */
 const beliefWords = ['Creative', 'intelligence', 'is', 'the', 'only', 'thing', 'left', 'that'];
 const beliefs = [
-  'Culture cannot be briefed.',
-  'Speed is the new craft.',
-  'Anyone can generate a passable image now, so the work that counts is the direction behind it.',
-  'We hire creatives from the cultures our clients sell into. No translation layer, no briefing the brief.',
+  'Culture can’t be briefed.',
+  'Speed counts, but only when the work still looks like the brand.',
+  'Anyone can generate a passable image. What counts is the direction behind it.',
+  'The engines should be open to your team as much as to ours.',
 ];
 
+const pageTitle = 'hubStudio: AI image and video app, plus a creative studio';
+const pageDescription =
+  'Make AI images, video and social posts in the hubStudio app, with engines from OpenAI, Google and more. Or send a brief and our studio makes them for you.';
+
+const homeSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${SITE}/#webpage`,
+      url: SITE,
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: { '@id': `${SITE}/#website` },
+      about: { '@id': `${SITE}/#organization` },
+      mainEntity: { '@id': `${SITE}/#app` },
+      breadcrumb: { '@id': `${SITE}/#breadcrumb` },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE}/#breadcrumb`,
+      itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE }],
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': `${SITE}/#app`,
+      name: 'hubStudio',
+      url: APP_URL,
+      applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'Web browser',
+      description:
+        'A web app to make images and video with the AI engines of several makers, edit them, turn them into posts, get them approved, and publish them to LinkedIn, Instagram, Facebook, X and TikTok.',
+      publisher: { '@id': `${SITE}/#organization` },
+    },
+  ],
+};
 ---
 
 <Layout
   heroOverlay
-  title="hubStudio | AI-Native Content Production House"
-  description="Real studio craft, deep AIGC expertise, and creative direction on top. Send the brief or run the platform. The work ships in days and looks like your brand."
-  preloadImage="/Video/home-hero-poster.webp"
+  title={pageTitle}
+  description={pageDescription}
+  preloadImage={appShots.exploreApp.src}
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
+
   <div class="scrollbar" aria-hidden="true"><span class="scrollbar__fill"></span></div>
 
   <div class="home">
     <!-- ==========================================================
-         S1  Hero
+         Hero: both offers in one line, the app first
     ========================================================== -->
     <section class="hero">
       <div class="hero__bg" aria-hidden="true">
-        <!--
-          The sources are held in data-src and attached by script after the load
-          event: a 3MB autoplaying background loop otherwise competes with LCP
-          for bandwidth. The poster (22kB, also painted as the .hero__bg
-          background) carries first paint, so nothing looks different.
-        -->
-        <video
-          class="hero__video"
-          id="hero-video"
-          width="1920"
-          height="1080"
-          muted
-          loop
-          playsinline
-          preload="none"
-          tabindex="-1"
-          poster="/Video/home-hero-poster.webp"
-        >
-          <source data-src="/Video/home-hero.webm" type="video/webm" />
-          <source data-src="/Video/home-hero.mp4" type="video/mp4" />
-        </video>
-        <div class="hero__scrim"></div>
         <div class="grain hero__grain"></div>
         <div class="hero__glow"></div>
       </div>
 
       <div class="container hero__inner">
-        <div class="hero__content">
-          <h1 class="hero__title">
-            <span class="line"><span>A production house</span></span>
-            <span class="line"><span>built for what content</span></span>
-            <span class="line"><span>has <em class="accent">become</em>.</span></span>
-          </h1>
+        <div class="hero__top">
+          <div class="hero__head">
+            <span class="eyebrow eyebrow--orange hero__eyebrow">The hubStudio app and studio</span>
+            <h1 class="hero__title">
+              <span class="line"><span>Make images and video</span></span>
+              <span class="line"><span>in our app, or let our</span></span>
+              <span class="line"><span><em class="accent">studio</em> make them.</span></span>
+            </h1>
+          </div>
 
-          <p class="hero__lead">
-            We pair real studio craft with deep AIGC expertise, run out of China where the
-            production economics still work, and put creative direction on top of both.
-            Send the brief, or run the platform yourself. Either way, the work ships in
-            days and looks like it belongs to your brand.
-          </p>
-
-          <div class="hero__cta">
-            <Button variant="primary" href="/contact">Talk to us</Button>
-            <Button variant="on-dark" href="/work">See real brand work</Button>
+          <div class="hero__side">
+            <p class="hero__lead">
+              hubStudio makes images, video and social posts with AI. Your team can make them
+              in the app and take them all the way to a published post. Or you send a brief and
+              our art directors make them for you, inside the app or out.
+            </p>
+            <div class="hero__actions">
+              <div class="hero__cta">
+                <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+                <Button variant="on-dark" href={BRIEF_URL}>Send a brief</Button>
+              </div>
+              <p class="hero__micro">
+                Creating an account costs nothing. Already on hubStudio?
+                <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <a class="hero__scroll" href="#produce" aria-label="Scroll to what we produce">
-        <span>Scroll</span>
-        <span class="hero__scroll-line" aria-hidden="true"></span>
-      </a>
+        <div class="hero__shot">
+          <AppShot
+            shot={appShots.exploreApp}
+            path="/explore"
+            caption="Explore is where you land after signing in: every engine on one page, the menu down the left."
+            eager
+            dark
+          />
+        </div>
+      </div>
     </section>
 
     <!-- ==========================================================
-         S2  What we produce
+         The app in brief
     ========================================================== -->
-    <section class="sheet sheet--light sheet--first section" id="produce">
+    <section class="sheet sheet--light sheet--first section" id="app">
       <div class="container">
         <header class="s-head">
-          <span class="eyebrow" data-reveal>Services</span>
+          <span class="eyebrow" data-reveal>The hubStudio app</span>
+          <h2 class="headline h2" data-reveal>
+            One app, from the first prompt to the <span class="accent">published</span> post.
+          </h2>
+          <p class="s-head__intro" data-reveal>
+            hubStudio is a web app for people and teams who make their own content. You pick an
+            engine, check the price and run it. The result stays with your team, and you finish
+            the job in the same app.
+          </p>
+        </header>
+
+        <div class="stages">
+          {
+            stages.map((s, i) => (
+              <article class="stage" data-reveal style={`--i:${i % 2}`}>
+                <div class="stage__text">
+                  <h3 class="stage__title">{s.title}</h3>
+                  <p class="stage__body">{s.body}</p>
+                  <a class="arrow-link" href={s.link.href}>
+                    {s.link.label} <span class="arrow" aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+                <div class:list={['stage__peek', s.narrow && 'stage__peek--narrow']}>
+                  <AppShot shot={s.shot} path={s.path} />
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="app__foot" data-reveal>
+          <p class="app__aside">
+            You don’t need all four. Making images and downloading them is a perfectly good way
+            to use it.
+          </p>
+          <div class="app__links">
+            <a class="arrow-link" href="/app">
+              Tour the app <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="arrow-link" href={HELP_URL}>
+              Read the help center <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         The engines
+    ========================================================== -->
+    <section class="sheet sheet--cream section" id="engines">
+      <div class="container engines">
+        <div class="engines__text">
+          <span class="eyebrow" data-reveal>Engines</span>
+          <h2 class="headline h2" data-reveal>
+            The engines you’ve heard of, side by <span class="accent">side</span>.
+          </h2>
+          <p class="engines__body" data-reveal>
+            No single engine wins every job. Some are good at readable text inside a picture;
+            others do better with skin and fabric, or with camera moves. Explore puts them next
+            to each other so you can choose per run. Our creatives pick from the same list when
+            they work in the app on a Studio + app job.
+          </p>
+          <p class="engines__body" data-reveal>
+            That means ChatGPT Image 2 from OpenAI, Nano Banana and Veo from Google, FLUX from
+            Black Forest Labs, Seedream and Seedance from ByteDance, the Kling video engines, Wan
+            from Alibaba, and more as they ship.
+          </p>
+          <a class="arrow-link" href="/app/engines" data-reveal>
+            See every engine by maker <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <ul class="makers" aria-label="Makers whose engines are in hubStudio">
+          {
+            makers.map((m, i) => (
+              <li class="maker" data-reveal style={`--i:${i % 3}`}>
+                {m}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Three ways to work (shared, locked copy)
+    ========================================================== -->
+    <WaysToWork tone="ink" highlight="app" />
+
+    <!-- ==========================================================
+         The studio
+    ========================================================== -->
+    <section class="sheet sheet--cream section" id="studio">
+      <div class="container who">
+        <figure class="who__figure">
+          <div class="who__accent" aria-hidden="true"></div>
+          <div class="who__media">
+            <img
+              src="/Images/studio-hero.webp"
+              alt="Two hubStudio art directors mark up printed proofs pinned to a studio wall, one circling a sneaker shot with a red pencil next to the note “crop tighter”."
+              width="2000"
+              height="1333"
+              loading="lazy"
+              decoding="async"
+              data-parallax
+              data-speed="0.12"
+            />
+          </div>
+          <figcaption class="who__cap">
+            <span class="who__cap-dot" aria-hidden="true"></span>
+            Hong Kong / Shanghai / Changsha / Philippines / Paris
+          </figcaption>
+        </figure>
+
+        <div class="who__text">
+          <span class="eyebrow" data-reveal>The hubStudio studio</span>
+          <h2 class="who__statement" data-reveal>
+            When the job needs a studio, ours makes it <span class="accent">for you</span>.
+          </h2>
+          <p class="who__body" data-reveal>
+            The studio is the human side of hubStudio: senior art directors, designers,
+            retouchers, motion designers, writers and AIGC specialists, working across twenty
+            service lines. An art director leads every brief. Some assets get shot and some get
+            generated. Most mix the two, and we decide asset by asset.
+          </p>
+          <p class="who__body" data-reveal>
+            We’re headquartered in Hong Kong, with studios in Shanghai and Changsha, a team in
+            the Philippines and an office in Paris. Cyril Drouin, a former CEO at Publicis,
+            founded the company. The studio team runs brand-trained models on GPU pipelines it
+            manages, and records how each asset was made.
+          </p>
+
+          <div class="who__stats">
+            <div class="who-stat" data-reveal style="--i:0">
+              <span class="who-stat__num who-stat__num--word">One</span>
+              <span class="who-stat__label">Business day for a producer to read your brief</span>
+            </div>
+            <div class="who-stat" data-reveal style="--i:1">
+              <span class="who-stat__num"><span class="count" data-to="48">48</span></span>
+              <span class="who-stat__label">Hours for a written proposal</span>
+            </div>
+          </div>
+
+          <p class="who__proof" data-reveal>
+            Recent studio clients include HiSense, Shiseido, Camper and iFlytek.
+            <a href="/work">See the work</a>
+          </p>
+
+          <div class="who__cta" data-reveal>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
+            <a class="arrow-link" href="/studio">
+              Meet the studio <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Studio services (bento)
+    ========================================================== -->
+    <section class="sheet sheet--light section" id="services">
+      <div class="container">
+        <header class="s-head">
+          <span class="eyebrow" data-reveal>Studio services</span>
           <h2 class="headline h2" data-reveal>
             Twenty service lines, <span class="accent">one studio</span>.
           </h2>
           <p class="s-head__intro" data-reveal>
-            From a single social post to a full campaign system, every format your brand
-            reaches for, produced and finalized in days. Six categories, twenty service
-            lines, one team running them on shared brand rules.
+            From one social post to a full campaign system. The twenty service lines fall into
+            six groups, and one team runs them all on the same brand rules.
           </p>
         </header>
 
         <div class="bento">
           {
             categories.map((cat, i) => (
-              <a
+              <div
                 class={`tile tile--${cat.span} tile--${cat.tone}`}
-                href={`/services#${cat.id}`}
                 data-reveal
                 data-tilt
                 style={`--i:${i}`}
@@ -380,98 +605,152 @@ const beliefs = [
                   <h3 class="tile__name">{cat.name}</h3>
                   <p class="tile__summary">{cat.summary}</p>
                 </div>
-                <span class="tile__cta">
-                  Explore <span class="arrow" aria-hidden="true">&rarr;</span>
-                </span>
+                <ul class="tile__lines">
+                  {cat.lines.map((l) => (
+                    <li>
+                      <a href={l.href}>{l.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="block-more" data-reveal>
+          <Button variant="secondary" href="/studio">See the studio</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Studio + app
+    ========================================================== -->
+    <section class="sheet sheet--navy section" id="studio-app" data-spot>
+      <div class="grain sheet__grain" aria-hidden="true"></div>
+      <div class="container sa">
+        <div class="sa__text">
+          <span class="eyebrow eyebrow--orange" data-reveal>Studio + app</span>
+          <h2 class="headline h2 sa__title" data-reveal>
+            Our studio makes it in the app, and you <span class="accent">approve</span> it there.
+          </h2>
+          <p class="sa__body" data-reveal>
+            With Studio + app, our creatives make the work inside hubStudio. Your people get
+            client logins and a Client space that shows only what was made for them. They
+            download it, comment on it, and approve it or send it back in Validation. They never
+            see prompts, engines or costs.
+          </p>
+          <p class="sa__body" data-reveal>
+            If your team already uses hubStudio, we can work in your workspace instead. You add
+            our creatives as members, we create from your balance, and your admins approve. The
+            files stay in your History and Assets Library when the project ends. In both setups
+            the versions stay on one approval thread, and nothing on it can be deleted.
+          </p>
+          <a class="arrow-link arrow-link--light" href="/studio/with-the-app" data-reveal>
+            How Studio + app works <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="sa__visual" data-reveal>
+          <div class="sa__photo">
+            <img
+              src="/Images/studio-on-app.webp"
+              alt="A hubStudio producer talks through a shot list on a video call at a desk by a window, a laptop open beside him."
+              width="1600"
+              height="1200"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sa__shot">
+            <AppShot
+              shot={appShots.clientSpace}
+              path="/client"
+              caption="The Client space as a client sees it: the work made for them, and Validation."
+              dark
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Selected work
+    ========================================================== -->
+    <section class="sheet sheet--light section" id="work">
+      <div class="container">
+        <header class="s-head s-head--row">
+          <div>
+            <span class="eyebrow" data-reveal>Selected work</span>
+            <h2 class="headline h2" data-reveal>
+              Work the studio has <span class="accent">shipped</span>.
+            </h2>
+          </div>
+          <p class="s-head__intro" data-reveal>
+            Four recent studio projects, in beauty, automotive and consumer tech. Each case study
+            shows the brief and what came back.
+          </p>
+        </header>
+
+        <div class="work-grid">
+          {
+            cases.map((c, i) => (
+              <a
+                class={`study study--${i % 2 === 0 ? 'a' : 'b'}`}
+                href={`/work/${c.slug}`}
+                data-reveal
+                style={`--i:${i % 2}`}
+              >
+                <div class="study__media">
+                  <img
+                    src={c.img}
+                    alt={c.alt}
+                    width="1280"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="study__scrim" aria-hidden="true" />
+                </div>
+                <div class="study__overlay">
+                  <span class="study__tag">{c.tag}</span>
+                  <h3 class="study__client">{c.name}</h3>
+                  <p class="study__line">{c.line}</p>
+                  <span class="study__cta">
+                    See the work <span class="arrow" aria-hidden="true">&rarr;</span>
+                  </span>
+                </div>
               </a>
             ))
           }
         </div>
-      </div>
-    </section>
 
-    <!-- ==========================================================
-         S3  Who we are
-    ========================================================== -->
-    <section class="sheet sheet--cream section" id="studio">
-      <div class="container who">
-        <figure class="who__figure">
-          <div class="who__accent" aria-hidden="true"></div>
-          <div class="who__media">
-            <img
-              src="/Images/who-we-are-office.webp"
-              alt="The hubStudio production floor in China, a working studio of editors, directors and AIGC engineers."
-              width="1050"
-              height="573"
-              loading="lazy"
-              decoding="async"
-              data-parallax
-              data-speed="0.12"
-            />
-          </div>
-          <figcaption class="who__cap">
-            <span class="who__cap-dot" aria-hidden="true"></span>
-            Shanghai / Changsha / Hong Kong / Philippines
-          </figcaption>
-        </figure>
-
-        <div class="who__text">
-          <span class="eyebrow" data-reveal>Who we are</span>
-          <p class="who__statement" data-reveal>
-            The studios shipping hundreds of assets a month for global brands now were
-            not built for that volume. <span class="accent">We were.</span>
-          </p>
-          <p class="who__body" data-reveal>
-            hubStudio is a full production house, headquartered in Hong Kong with
-            studios in Shanghai, Changsha, and the Philippines. We shoot, we direct,
-            we retouch, we edit, the same way a traditional studio does. What sits on top is a generation layer most
-            studios have not built yet:
-            dedicated GPU infrastructure, brand-trained models, and pipelines our team
-            runs every day.
-          </p>
-          <p class="who__body" data-reveal>
-            That mix is where the economics change. A blended team in China, on hybrid
-            pipelines that decide per asset whether to shoot it or generate it, brings
-            the cost of a finalized asset down by half or more without trading off what
-            lands on the page. The savings are real, and we pass them through.
-          </p>
-
-          <div class="who__stats">
-            <div class="who-stat" data-reveal style="--i:0">
-              <span class="who-stat__num"><span class="count" data-to="50">0</span><i>%</i></span>
-              <span class="who-stat__bar" aria-hidden="true"></span>
-              <span class="who-stat__label">Typical cut in the cost of a finalized asset</span>
-            </div>
-            <div class="who-stat" data-reveal style="--i:1">
-              <span class="who-stat__num who-stat__num--word">Days</span>
-              <span class="who-stat__bar" aria-hidden="true"></span>
-              <span class="who-stat__label">From brief to delivery, not weeks</span>
-            </div>
-          </div>
+        <div class="block-more" data-reveal>
+          <Button variant="secondary" href="/work">See all case studies</Button>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================
-         S4  Who we work with
+         Who it's for
     ========================================================== -->
-    <section class="sheet sheet--light section" id="solutions">
+    <section class="sheet sheet--cream section" id="solutions">
       <div class="container">
         <header class="s-head">
-          <span class="eyebrow" data-reveal>Solutions</span>
+          <span class="eyebrow" data-reveal>Who it’s for</span>
           <h2 class="headline h2" data-reveal>
-            Built around how your brand <span class="accent">sells</span>.
+            What it looks like for your <span class="accent">team</span>.
           </h2>
           <p class="s-head__intro" data-reveal>
-            The content problem looks different depending on where you sit. A brand fights
-            for relevance across markets. An agency needs invisible capacity. A retailer
-            ships thousands of assets a season. A manufacturer turns product reality into
-            something the channel can sell. The engagement is shaped for the side you are on.
+            Brands, agencies, retailers and manufacturers each come to hubStudio with a different
+            problem. You can run the app with your own team or hand the job to the studio. On a
+            big project, you can do both. Pick your kind of team to see how the two split the
+            work.
           </p>
         </header>
 
         <div class="tabs" data-reveal>
-          <div class="tabs__list" role="tablist" aria-label="Who we work with">
+          <div class="tabs__list" role="tablist" aria-label="Who it’s for">
             {
               audiences.map((a, i) => (
                 <button
@@ -482,7 +761,7 @@ const beliefs = [
                   aria-selected={i === 0 ? 'true' : 'false'}
                   tabindex={i === 0 ? '0' : '-1'}
                 >
-                  <span class="tab__dot" aria-hidden="true"></span>
+                  <span class="tab__dot" aria-hidden="true" />
                   {a.name}
                 </button>
               ))
@@ -513,13 +792,8 @@ const beliefs = [
                   <div class="panel__body">
                     <p class="panel__tagline">{a.tagline}</p>
                     <p class="panel__text">{a.body}</p>
-                    <ul class="panel__chips">
-                      {a.chips.map((c) => (
-                        <li>{c}</li>
-                      ))}
-                    </ul>
                     <a class="arrow-link" href={a.href}>
-                      Explore {a.name} <span class="arrow" aria-hidden="true">&rarr;</span>
+                      Explore {a.name.toLowerCase()} <span class="arrow" aria-hidden="true">&rarr;</span>
                     </a>
                   </div>
                 </div>
@@ -527,191 +801,80 @@ const beliefs = [
             }
           </div>
         </div>
+
+        <p class="for__aside" data-reveal>
+          Building your own AI content team? See <a href="/solutions/consulting">consulting</a>
+          and <a href="/solutions/training">training</a>.
+        </p>
       </div>
     </section>
 
     <!-- ==========================================================
-         S5  Consulting and Training
+         How paying works (no amounts)
     ========================================================== -->
-    <section class="sheet sheet--cream section" id="consulting">
+    <section class="sheet sheet--light section" id="pricing">
       <div class="container">
         <header class="s-head">
-          <span class="eyebrow" data-reveal>Consulting</span>
+          <span class="eyebrow" data-reveal>Pricing</span>
           <h2 class="headline h2" data-reveal>
-            Or build the studio inside your <span class="accent">own walls</span>.
+            Two offers, two ways to <span class="accent">pay</span>.
           </h2>
+          <p class="pay__updated" data-reveal>
+            Updated <time datetime="2026-09">September 2026</time>
+          </p>
           <p class="s-head__intro" data-reveal>
-            Not every brand needs the production lane. Some need help standing up their own
-            AIGC operation, training the team to run it, and writing the governance that
-            keeps it brand-safe at scale. We do that work too, taught and led by the same
-            people running our production floor every day.
+            The app runs on a prepaid balance you top up, while the studio quotes each job once
+            it has read your brief. We don’t publish rates here, but you never have to guess: in
+            the app, each engine’s card in Explore shows what one run costs, and the price shows
+            again before you run it. Creating an account costs nothing, so you can see every
+            price before you top up.
           </p>
         </header>
 
-        <div class="features">
-          {
-            programs.map((p) => (
-              <article class={`feature feature--${p.accent}`} data-reveal>
-                <div class="feature__visual">
-                  <div class="feature__shape" aria-hidden="true"></div>
-                  <div class="feature__media">
-                    <img
-                      src={p.img}
-                      alt={p.alt}
-                      width="1280"
-                      height="1040"
-                      loading="lazy"
-                      decoding="async"
-                      data-parallax
-                      data-speed="0.1"
-                    />
-                  </div>
-                  <span class="feature__kind">{p.kind}</span>
-                </div>
-                <div class="feature__panel">
-                  <span class="feature__eyebrow">{p.kind}</span>
-                  <h3 class="feature__title">{p.title}</h3>
-                  <p class="feature__text">{p.body}</p>
-                  <ul class="feature__points">
-                    {p.points.map((pt) => (
-                      <li>
-                        <span class="feature__tick" aria-hidden="true">
-                          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M2.5 6.4 5 9l4.5-6" stroke-linecap="round" stroke-linejoin="round" />
-                          </svg>
-                        </span>
-                        {pt}
-                      </li>
-                    ))}
-                  </ul>
-                  <a class="arrow-link" href={p.href}>
-                    Explore {p.kind} <span class="arrow" aria-hidden="true">&rarr;</span>
-                  </a>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+        <div class="pay">
+          <article class="pay__card pay__card--app" data-reveal style="--i:0">
+            <h3 class="pay__title">The app: a prepaid balance</h3>
+            <p class="pay__text">
+              You top up by card, Alipay or WeChat Pay and get an invoice each time. Every run is
+              charged against that balance at the price you saw before running it, and a failed
+              run is never charged.
+            </p>
+            <p class="pay__text">
+              There’s no subscription and no seat fee, and the balance doesn’t expire. The whole
+              team draws on one balance, and an admin can set a daily limit per person. The Image
+              editor, the Image anonymizer and Validation cost nothing to use.
+            </p>
+            <div class="pay__cta">
+              <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+            </div>
+          </article>
 
-    <!-- ==========================================================
-         S6  How to engage
-    ========================================================== -->
-    <section class="sheet sheet--navy section" id="engage" data-spot>
-      <div class="grain sheet__grain" aria-hidden="true"></div>
-      <div class="container">
-        <header class="s-head s-head--dark">
-          <span class="eyebrow eyebrow--orange" data-reveal>How to engage</span>
-          <h2 class="headline h2" data-reveal>
-            Three ways to work with us. <span class="accent">One studio</span>.
-          </h2>
-          <p class="s-head__intro" data-reveal>
-            Some brands need a steady drip of content. Others need everything at once for a
-            launch. Pick the model that matches how your team really works, not how a studio
-            would prefer to bill you.
-          </p>
-        </header>
-
-        <div class="ways">
-          {
-            ways.map((w, i) => (
-              <a
-                class={`way${w.featured ? ' way--featured' : ''}`}
-                href={w.href}
-                data-reveal
-                data-glow
-                style={`--i:${i}`}
-              >
-                {w.featured && <span class="way__flag">Built for launches</span>}
-                <span class="way__name">{w.name}</span>
-                <span class="way__tagline">{w.tagline}</span>
-                <p class="way__body">{w.body}</p>
-                <ul class="way__facts">
-                  {w.facts.map((f) => (
-                    <li>
-                      <span class="way__tick" aria-hidden="true">
-                        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M2.5 6.4 5 9l4.5-6" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                      </span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <span class="way__cta">
-                  See {w.name} <span class="arrow" aria-hidden="true">&rarr;</span>
-                </span>
-              </a>
-            ))
-          }
+          <article class="pay__card pay__card--studio" data-reveal style="--i:1">
+            <h3 class="pay__title">The studio: per asset, per project or on retainer</h3>
+            <p class="pay__text">
+              Send a brief and a producer reads it within one business day. A written proposal
+              follows within 48 hours, with the scope and the price.
+            </p>
+            <p class="pay__text">
+              Volume formats are usually priced per asset, launches per project. A retainer suits
+              teams that need new work every week.
+            </p>
+            <div class="pay__cta">
+              <Button variant="secondary" href={BRIEF_URL}>Send a brief</Button>
+            </div>
+          </article>
         </div>
 
-        <div class="engage__compare" data-reveal>
-          <a class="arrow-link arrow-link--light" href="/pricing#matrix">
-            Compare all three side by side <span class="arrow" aria-hidden="true">&rarr;</span>
+        <div class="block-more" data-reveal>
+          <a class="arrow-link pay__more" href="/pricing">
+            See how pricing works <span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================
-         S7  Selected work
-    ========================================================== -->
-    <section class="sheet sheet--light section" id="work">
-      <div class="container">
-        <header class="s-head s-head--row">
-          <div>
-            <span class="eyebrow" data-reveal>Selected work</span>
-            <h2 class="headline h2" data-reveal>Real brand <span class="accent">work</span>.</h2>
-          </div>
-          <p class="s-head__intro" data-reveal>
-            A sample of what we have shipped recently across beauty, automotive, consumer
-            tech, and retail.
-          </p>
-        </header>
-
-        <div class="work-grid">
-          {
-            cases.map((c, i) => (
-              <a
-                class={`study study--${i % 2 === 0 ? 'a' : 'b'}`}
-                href={`/work/${c.slug}`}
-                data-reveal
-                style={`--i:${i % 2}`}
-              >
-                <div class="study__media">
-                  <img
-                    src={c.img}
-                    alt={c.alt}
-                    width="1280"
-                    height="1024"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="study__scrim" aria-hidden="true"></div>
-                </div>
-                <div class="study__overlay">
-                  <span class="study__tag">{c.tag}</span>
-                  <h3 class="study__client">{c.name}</h3>
-                  <p class="study__line">{c.line}</p>
-                  <span class="study__cta">
-                    See the work <span class="arrow" aria-hidden="true">&rarr;</span>
-                  </span>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-
-        <div class="block-more" data-reveal>
-          <Button variant="secondary" href="/work">See all case studies</Button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================
-         S8  What we believe
+         What we believe
     ========================================================== -->
     <section class="sheet sheet--ink believe">
       <div class="grain sheet__grain" aria-hidden="true"></div>
@@ -763,7 +926,7 @@ const beliefs = [
           {
             beliefs.map((b, i) => (
               <div class="belief" data-reveal style={`--i:${i}`}>
-                <span class="belief__line" aria-hidden="true"></span>
+                <span class="belief__line" aria-hidden="true" />
                 <p class="belief__text">{b}</p>
               </div>
             ))
@@ -773,7 +936,7 @@ const beliefs = [
     </section>
 
     <!-- ==========================================================
-         S9  Insights
+         Insights: the four newest entries, lead plus grid
     ========================================================== -->
     <section class="sheet sheet--cream section" id="insights">
       <div class="container">
@@ -783,8 +946,7 @@ const beliefs = [
             <h2 class="headline h2" data-reveal>Worth <span class="accent">reading</span>.</h2>
           </div>
           <p class="s-head__intro" data-reveal>
-            Practitioner notes on AI-native content, written by the people running the
-            pipelines.
+            Notes from the people who do the work, on what AI content takes in practice.
           </p>
         </header>
 
@@ -813,7 +975,7 @@ const beliefs = [
               <span>{leadInsight.readingTime}</span>
             </p>
             <span class="arrow-link">
-              Read insight <span class="arrow" aria-hidden="true">&rarr;</span>
+              Read the insight <span class="arrow" aria-hidden="true">&rarr;</span>
             </span>
           </div>
         </a>
@@ -855,33 +1017,12 @@ const beliefs = [
         </div>
       </div>
     </section>
-
-    <!-- ==========================================================
-         S10  Closing CTA
-    ========================================================== -->
-    <section class="sheet sheet--ink closing" data-spot>
-      <div class="grain sheet__grain" aria-hidden="true"></div>
-      <div class="closing__glow" aria-hidden="true"></div>
-      <div class="container closing__inner">
-        <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
-          <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
-          <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
-          <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
-        </svg>
-        <span class="eyebrow eyebrow--orange" data-reveal>Get started</span>
-        <h2 class="headline closing__head" data-reveal>
-          The production house brands choose when the old way
-          <span class="accent">stops working</span>.
-        </h2>
-        <div class="closing__cta" data-reveal>
-          <Button variant="primary" href="/contact">Talk to us</Button>
-        </div>
-        <a class="closing__mail" href="mailto:hello@hubstudio.ai" data-reveal>
-          hello@hubstudio.ai
-        </a>
-      </div>
-    </section>
   </div>
+
+  <!-- ==========================================================
+       Closing: both doors (shared component)
+  ========================================================== -->
+  <DualCta />
 </Layout>
 
 <style>
@@ -897,7 +1038,7 @@ const beliefs = [
       0 36px 64px -24px rgba(10, 10, 20, 0.28);
     --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     position: relative;
-    /* Decorative bleeds (who__accent, feature__shape) sit in cream sheets
+    /* Decorative bleeds (who__accent) sit in cream sheets
        that are not clipped; on narrow screens they push past the viewport
        gutter. clip kills the horizontal scroll without becoming a scroll
        container, so the sticky who__figure still resolves against the page. */
@@ -1061,21 +1202,16 @@ const beliefs = [
   }
 
   /* ============================================================
-     S1  Hero
+     Hero: headline, both doors, and a real capture of the app
   ============================================================ */
   .hero {
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: clamp(620px, 95vh, 1080px);
-    min-height: clamp(620px, 95svh, 1080px);
     overflow: hidden;
     background: var(--bg-ink);
     color: var(--text-on-dark);
     margin-top: -64px;
-    padding-bottom: 48px;
+    padding-bottom: clamp(100px, 9vw, 150px);
   }
   @media (min-width: 1024px) {
     .hero {
@@ -1084,81 +1220,51 @@ const beliefs = [
   }
   .hero__bg {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 100%;
-    z-index: 0;
-    background: var(--bg-ink) url('/Video/home-hero-poster.webp') center / cover no-repeat;
-    will-change: transform;
-    transform-origin: 50% 40%;
-  }
-  .hero__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero__video {
-      display: none;
-    }
-  }
-  .hero__scrim {
-    position: absolute;
     inset: 0;
+    z-index: 0;
     background:
-      linear-gradient(
-        92deg,
-        rgba(8, 12, 28, 0.96) 0%,
-        rgba(8, 12, 28, 0.62) 48%,
-        rgba(8, 12, 28, 0.18) 100%
-      ),
-      linear-gradient(
-        180deg,
-        rgba(8, 12, 28, 0.7) 0%,
-        rgba(8, 12, 28, 0.08) 32%,
-        rgba(8, 12, 28, 0.92) 100%
-      );
+      radial-gradient(90% 70% at 88% 0%, rgba(30, 58, 138, 0.5), transparent 62%),
+      var(--bg-ink);
   }
   .hero__grain {
     position: absolute;
     inset: 0;
     opacity: 0.5;
   }
+  /* One warm light source, low behind the capture. */
   .hero__glow {
     position: absolute;
-    width: 64vw;
-    height: 64vw;
-    max-width: 760px;
-    max-height: 760px;
-    right: -12%;
-    bottom: -24%;
-    background: radial-gradient(circle, rgba(233, 78, 27, 0.46), transparent 62%);
+    width: 70vw;
+    height: 70vw;
+    max-width: 900px;
+    max-height: 900px;
+    left: 50%;
+    bottom: -30%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(233, 78, 27, 0.34), transparent 62%);
     filter: blur(24px);
     pointer-events: none;
   }
   .hero__inner {
     position: relative;
     z-index: 1;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding-top: calc(var(--nav-h) + 16px);
-    padding-bottom: 40px;
+    padding-top: calc(var(--nav-h) + clamp(40px, 6vw, 84px));
   }
-  .hero__content {
-    max-width: 1040px;
-    will-change: transform, opacity;
+  .hero__top {
+    display: grid;
+    gap: clamp(24px, 3vw, 36px);
+  }
+  .hero__eyebrow {
+    margin-bottom: 20px;
   }
   .hero__title {
     margin: 0;
-    max-width: 21ch;
     color: #fff;
     font-family: var(--font-sans);
     font-weight: 600;
     letter-spacing: -0.035em;
     line-height: 1;
-    font-size: clamp(40px, 6.3vw, 86px);
+    font-size: clamp(40px, 6.2vw, 84px);
   }
   .hero__title .line {
     display: block;
@@ -1171,68 +1277,57 @@ const beliefs = [
   .hero__title .accent {
     color: var(--brand-orange);
   }
+  .hero__side {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 960px) {
+    .hero__side {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 56px;
+    }
+  }
   .hero__lead {
-    margin-top: 20px;
-    max-width: 58ch;
+    max-width: 54ch;
     font-size: var(--type-lead);
     line-height: 1.55;
     color: rgba(240, 237, 233, 0.86);
   }
   .hero__cta {
-    margin-top: 26px;
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
   }
-  .hero__scroll {
-    position: absolute;
-    right: var(--container-pad-desktop);
-    bottom: 84px;
-    z-index: 2;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(240, 237, 233, 0.6);
+  .hero__micro {
+    margin-top: 14px;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: rgba(240, 237, 233, 0.66);
   }
-  @media (min-width: 1024px) {
-    .hero__scroll {
-      display: flex;
-    }
+  .hero__micro a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  .hero__scroll-line {
-    width: 1px;
-    height: 56px;
-    background: rgba(240, 237, 233, 0.26);
-    position: relative;
-    overflow: hidden;
+  .hero__micro a:hover {
+    color: var(--brand-orange);
   }
-  .hero__scroll-line::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--brand-orange);
-    animation: scrollcue 2s ease-in-out infinite;
-  }
-  @keyframes scrollcue {
-    0% {
-      transform: translateY(-100%);
-    }
-    60%,
-    100% {
-      transform: translateY(100%);
-    }
+  .hero__shot {
+    margin-top: clamp(40px, 5vw, 64px);
   }
 
   /* Hero load stagger */
+  .hero__eyebrow,
   .hero__lead,
-  .hero__cta {
+  .hero__actions,
+  .hero__shot {
     opacity: 0;
     animation: heroFade 0.95s var(--ease) forwards;
+  }
+  .hero__eyebrow {
+    animation-delay: 0.12s;
   }
   .hero__title .line:nth-child(1) > span {
     animation: heroLine 1s cubic-bezier(0.16, 0.84, 0.3, 1) 0.24s both;
@@ -1244,10 +1339,13 @@ const beliefs = [
     animation: heroLine 1s cubic-bezier(0.16, 0.84, 0.3, 1) 0.48s both;
   }
   .hero__lead {
-    animation-delay: 0.66s;
+    animation-delay: 0.62s;
   }
-  .hero__cta {
-    animation-delay: 0.78s;
+  .hero__actions {
+    animation-delay: 0.72s;
+  }
+  .hero__shot {
+    animation-delay: 0.84s;
   }
   @keyframes heroLine {
     from {
@@ -1268,21 +1366,174 @@ const beliefs = [
     }
   }
   @media (prefers-reduced-motion: reduce) {
+    .hero__eyebrow,
     .hero__lead,
-    .hero__cta,
+    .hero__actions,
+    .hero__shot,
     .hero__title .line > span {
       opacity: 1;
       animation: none;
       transform: none;
     }
-    .ping::after,
-    .hero__scroll-line::after {
-      animation: none;
-    }
   }
 
   /* ============================================================
-     S2  What we produce, bento
+     The app in four stages
+  ============================================================ */
+  .stages {
+    display: grid;
+    gap: clamp(18px, 2.2vw, 28px);
+  }
+  @media (min-width: 900px) {
+    .stages {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .stage {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: clamp(22px, 2.4vw, 32px);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    transition:
+      opacity 0.8s var(--ease),
+      transform 0.4s var(--ease),
+      box-shadow 0.4s ease;
+  }
+  .stage:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hi);
+  }
+  .stage__text {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(28px, 3vw, 40px) clamp(26px, 3vw, 40px) 0;
+  }
+  .stage__title {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  .stage__body {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+    max-width: 58ch;
+  }
+  /* The capture rises from the bottom edge of the card and is cut by it,
+     so four screens of different shapes sit on one baseline. */
+  .stage__peek {
+    margin-top: auto;
+    height: clamp(250px, 25vw, 350px);
+    padding: clamp(26px, 3vw, 36px) clamp(22px, 3vw, 40px) 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, transparent, rgba(233, 78, 27, 0.07));
+  }
+  .stage__peek :global(.appshot) {
+    transition: transform 0.5s var(--ease);
+  }
+  .stage:hover .stage__peek :global(.appshot) {
+    transform: translateY(-10px);
+  }
+  .stage__peek--narrow {
+    display: flex;
+    justify-content: center;
+  }
+  .stage__peek--narrow :global(.appshot) {
+    width: min(300px, 78%);
+  }
+  .app__foot {
+    margin-top: clamp(40px, 5vw, 64px);
+    padding-top: 28px;
+    border-top: 1px solid var(--line-hairline);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 40px;
+  }
+  .app__aside {
+    max-width: 52ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .app__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 28px;
+  }
+  .app__links .arrow-link {
+    align-self: center;
+  }
+
+  /* ============================================================
+     Engines: the makers as plain type, no logos
+  ============================================================ */
+  .engines {
+    display: grid;
+    gap: clamp(40px, 6vw, 88px);
+  }
+  @media (min-width: 960px) {
+    .engines {
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+    }
+  }
+  .engines__text {
+    display: grid;
+    gap: 20px;
+    align-content: start;
+  }
+  .engines__body {
+    max-width: 58ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .makers {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    row-gap: 6px;
+    padding: clamp(30px, 3.6vw, 48px);
+    border-radius: clamp(22px, 2.4vw, 32px);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .maker {
+    font-size: clamp(26px, 3vw, 44px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: var(--text-ink);
+    transition:
+      opacity 0.8s var(--ease),
+      transform 0.8s var(--ease),
+      color 0.2s ease;
+  }
+  .maker::after {
+    content: '/';
+    margin: 0 0.3em;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--brand-orange);
+  }
+  .maker:last-child::after {
+    content: none;
+  }
+  .maker:hover {
+    color: var(--brand-orange);
+  }
+
+  /* ============================================================
+     Studio services, bento
   ============================================================ */
   .bento {
     display: grid;
@@ -1472,25 +1723,230 @@ const beliefs = [
   .tile--orange .tile__summary {
     color: rgba(240, 237, 233, 0.82);
   }
-  .tile__cta {
+
+  /* Service lines inside each bento tile: the links to /services/design/*. */
+  .tile__lines {
     position: relative;
     z-index: 1;
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    font-size: var(--type-small);
-    font-weight: 600;
-    color: var(--brand-orange);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
-  .tile--orange .tile__cta {
+  .tile__lines a {
+    display: inline-flex;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.55);
+    font-size: var(--type-small);
+    font-weight: 500;
+    color: var(--text-ink);
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .tile__lines a:hover {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
     color: #fff;
   }
-  .tile:hover .tile__cta .arrow {
-    transform: translateX(6px);
+  .tile--ink .tile__lines a,
+  .tile--orange .tile__lines a {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+  .tile--ink .tile__lines a:hover {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .tile--orange .tile__lines a:hover {
+    background: #fff;
+    border-color: #fff;
+    color: var(--brand-orange);
+  }
+
+  /* Studio block additions */
+  .who__media img {
+    object-position: 10% 50%;
+  }
+  .who__proof {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-ink);
+  }
+  .who__proof a {
+    margin-left: 4px;
+    font-weight: 600;
+    color: var(--brand-orange);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .who__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 28px;
+  }
+  .who__cta .arrow-link {
+    align-self: center;
   }
 
   /* ============================================================
-     S3  Who we are
+     Studio + app
+  ============================================================ */
+  .sheet--navy::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    left: var(--sx, 50%);
+    top: var(--sy, 30%);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(233, 78, 27, 0.16), transparent 62%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+  .sheet--navy[data-lit]::before {
+    opacity: 1;
+  }
+  .sa {
+    display: grid;
+    gap: clamp(44px, 6vw, 80px);
+  }
+  @media (min-width: 1000px) {
+    .sa {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  .sa__text {
+    display: grid;
+    gap: 22px;
+    align-content: start;
+  }
+  .sa__title {
+    color: #fff;
+  }
+  .sa__title .accent {
+    color: var(--brand-orange);
+  }
+  .sa__body {
+    max-width: 58ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .sa__visual {
+    position: relative;
+  }
+  .sa__photo {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border-radius: clamp(20px, 2.4vw, 32px);
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.7);
+  }
+  .sa__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* The client's view laid over the photo's lower edge: the producer works,
+     the client sees only the finished work. */
+  .sa__shot {
+    position: relative;
+    width: 94%;
+    margin: -12% 0 0 auto;
+  }
+  @media (min-width: 1000px) {
+    .sa__shot {
+      width: 104%;
+      margin-right: -8%;
+    }
+  }
+
+  /* Audience tabs sit on a cream sheet here: lift the track to white. */
+  .sheet--cream .tabs__list {
+    background: var(--bg-white);
+  }
+  .for__aside {
+    margin-top: 28px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .for__aside a {
+    font-weight: 600;
+    color: var(--brand-orange);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ============================================================
+     Pricing: how paying works, no amounts
+  ============================================================ */
+  .pay__updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .pay {
+    display: grid;
+    gap: clamp(18px, 2.2vw, 28px);
+  }
+  @media (min-width: 900px) {
+    .pay {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .pay__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: clamp(30px, 3.4vw, 48px);
+    border-radius: clamp(22px, 2.4vw, 32px);
+  }
+  .pay__card--app {
+    background:
+      radial-gradient(120% 120% at 100% 0%, rgba(30, 58, 138, 0.5), transparent 60%),
+      var(--bg-ink);
+    color: var(--text-on-dark);
+    box-shadow: var(--shadow-card-hi);
+  }
+  .pay__card--studio {
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  .pay__title {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+  }
+  .pay__text {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+  .pay__card--app .pay__text {
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .pay__cta {
+    margin-top: auto;
+    padding-top: 10px;
+  }
+  .pay__more {
+    align-self: center;
+  }
+
+  /* ============================================================
+     The studio
   ============================================================ */
   .who {
     display: grid;
@@ -1613,15 +2069,6 @@ const beliefs = [
     letter-spacing: -0.01em;
     color: var(--brand-orange);
   }
-  .who-stat__bar {
-    grid-row: 1 / 3;
-    grid-column: 1;
-    align-self: stretch;
-    width: 0;
-    margin-top: 6px;
-    height: calc(100% - 12px);
-    display: none;
-  }
   .who-stat__label {
     grid-column: 2;
     font-size: var(--type-small);
@@ -1631,7 +2078,7 @@ const beliefs = [
   }
 
   /* ============================================================
-     S4  Who we work with, tabs
+     Who it's for, tabs
   ============================================================ */
   .tabs__list {
     display: flex;
@@ -1761,21 +2208,6 @@ const beliefs = [
     line-height: 1.66;
     color: var(--text-mute);
   }
-  .panel__chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .panel__chips li {
-    padding: 9px 15px;
-    border-radius: var(--radius-pill);
-    background: var(--bg-cream);
-    border: 1px solid var(--line-hairline);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: var(--text-ink);
-  }
   .panel__body .arrow-link {
     margin-top: 4px;
   }
@@ -1825,340 +2257,7 @@ const beliefs = [
   }
 
   /* ============================================================
-     S5  Consulting and Training, editorial feature rows
-  ============================================================ */
-  .features {
-    display: grid;
-    gap: clamp(72px, 9vw, 152px);
-  }
-  .feature {
-    position: relative;
-    display: grid;
-    gap: 0;
-  }
-  @media (min-width: 880px) {
-    .feature {
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-    }
-    .feature:nth-child(even) .feature__visual {
-      order: 2;
-    }
-  }
-  .feature__visual {
-    position: relative;
-    isolation: isolate;
-  }
-  .feature__shape {
-    position: absolute;
-    z-index: 0;
-    width: 58%;
-    height: 64%;
-    border-radius: clamp(20px, 2.4vw, 32px);
-  }
-  .feature--orange .feature__shape {
-    right: -6%;
-    top: -8%;
-    background: var(--brand-orange);
-  }
-  .feature--navy .feature__shape {
-    left: -6%;
-    bottom: -8%;
-    background: var(--brand-navy);
-  }
-  .feature__media {
-    position: relative;
-    z-index: 1;
-    border-radius: clamp(20px, 2.4vw, 34px);
-    overflow: hidden;
-    aspect-ratio: 5 / 4;
-    background: var(--bg-cream);
-    box-shadow: var(--shadow-card-hi);
-  }
-  .feature__media img {
-    width: 100%;
-    height: 116%;
-    object-fit: cover;
-    will-change: transform;
-  }
-  .feature__kind {
-    position: absolute;
-    z-index: 2;
-    left: 18px;
-    top: 18px;
-    padding: 9px 16px;
-    border-radius: var(--radius-pill);
-    background: var(--brand-orange);
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .feature--navy .feature__kind {
-    background: var(--brand-navy);
-  }
-  .feature__panel {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: clamp(30px, 3.4vw, 48px);
-    border-radius: clamp(20px, 2.4vw, 32px);
-    background: var(--bg-white);
-    border: 1px solid var(--line-hairline);
-    box-shadow: var(--shadow-card-hi);
-  }
-  @media (min-width: 880px) {
-    .feature__panel {
-      margin: 0;
-    }
-    .feature:nth-child(odd) .feature__panel {
-      margin-left: -72px;
-    }
-    .feature:nth-child(even) .feature__panel {
-      margin-right: -72px;
-    }
-    /* Even feature: the panel overlaps the visual's left edge, so anchor
-       the badge to the right so it never sits under the panel. */
-    .feature:nth-child(even) .feature__kind {
-      left: auto;
-      right: 18px;
-    }
-  }
-  @media (max-width: 879px) {
-    .feature__panel {
-      margin: -56px 16px 0;
-    }
-  }
-  .feature__eyebrow {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--brand-orange);
-  }
-  .feature--navy .feature__eyebrow {
-    color: var(--brand-navy);
-  }
-  .feature__title {
-    font-size: clamp(26px, 2.9vw, 40px);
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.12;
-  }
-  .feature__text {
-    font-size: var(--type-body);
-    line-height: 1.66;
-    color: var(--text-mute);
-  }
-  .feature__points {
-    display: grid;
-    gap: 11px;
-    margin-top: 2px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line-hairline);
-  }
-  .feature__points li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: var(--type-small);
-    font-weight: 500;
-    color: var(--text-ink);
-  }
-  .feature__tick {
-    display: grid;
-    place-items: center;
-    width: 22px;
-    height: 22px;
-    flex: none;
-    border-radius: 50%;
-    background: rgba(233, 78, 27, 0.12);
-    color: var(--brand-orange);
-  }
-  .feature--navy .feature__tick {
-    background: rgba(30, 58, 138, 0.12);
-    color: var(--brand-navy);
-  }
-  .feature__tick svg {
-    width: 12px;
-    height: 12px;
-  }
-  .feature__panel .arrow-link {
-    margin-top: 8px;
-  }
-
-  /* ============================================================
-     S6  How to engage
-  ============================================================ */
-  .sheet--navy::before {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    left: var(--sx, 50%);
-    top: var(--sy, 30%);
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(233, 78, 27, 0.16), transparent 62%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-  }
-  .sheet--navy[data-lit]::before {
-    opacity: 1;
-  }
-  .ways {
-    display: grid;
-    gap: clamp(16px, 2vw, 24px);
-  }
-  @media (min-width: 900px) {
-    .ways {
-      grid-template-columns: repeat(3, 1fr);
-      align-items: start;
-    }
-  }
-  .way {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: clamp(28px, 2.8vw, 38px);
-    border-radius: clamp(20px, 2vw, 28px);
-    background: linear-gradient(
-      180deg,
-      rgba(240, 237, 233, 0.075),
-      rgba(240, 237, 233, 0.025)
-    );
-    border: 1px solid rgba(240, 237, 233, 0.13);
-    transition:
-      transform 0.34s var(--ease),
-      border-color 0.34s ease,
-      box-shadow 0.34s ease;
-  }
-  .way::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    opacity: 0;
-    border-radius: inherit;
-    transition: opacity 0.35s ease;
-    background: radial-gradient(
-      320px circle at var(--mx, 50%) var(--my, 0%),
-      rgba(233, 78, 27, 0.22),
-      transparent 72%
-    );
-  }
-  .way:hover {
-    transform: translateY(-8px);
-    border-color: rgba(233, 78, 27, 0.5);
-    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
-  }
-  .way:hover::before {
-    opacity: 1;
-  }
-  @media (min-width: 900px) {
-    .way--featured {
-      transform: translateY(-22px);
-    }
-    .way--featured:hover {
-      transform: translateY(-30px);
-    }
-  }
-  .way--featured {
-    background: linear-gradient(
-      180deg,
-      rgba(233, 78, 27, 0.2),
-      rgba(233, 78, 27, 0.04)
-    );
-    border-color: rgba(233, 78, 27, 0.44);
-    box-shadow: 0 30px 70px -34px rgba(233, 78, 27, 0.6);
-  }
-  .way__flag {
-    align-self: flex-start;
-    padding: 6px 13px;
-    border-radius: var(--radius-pill);
-    background: var(--brand-orange);
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .way__name {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--brand-orange);
-  }
-  .way__tagline {
-    font-size: var(--type-h3);
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.12;
-    color: #fff;
-  }
-  .way__body {
-    font-size: var(--type-body);
-    line-height: 1.62;
-    color: rgba(240, 237, 233, 0.74);
-  }
-  .way__facts {
-    display: grid;
-    gap: 10px;
-    margin-top: 4px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(240, 237, 233, 0.14);
-  }
-  .way__facts li {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    font-size: var(--type-small);
-    color: rgba(240, 237, 233, 0.9);
-  }
-  .way__tick {
-    display: grid;
-    place-items: center;
-    width: 20px;
-    height: 20px;
-    flex: none;
-    border-radius: 50%;
-    background: rgba(233, 78, 27, 0.2);
-    color: var(--brand-orange);
-  }
-  .way__tick svg {
-    width: 11px;
-    height: 11px;
-  }
-  .way__cta {
-    margin-top: 16px;
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    font-size: var(--type-small);
-    font-weight: 600;
-    color: #fff;
-  }
-  .way:hover .way__cta .arrow {
-    transform: translateX(6px);
-  }
-  .engage__compare {
-    margin-top: 48px;
-    text-align: center;
-  }
-  .engage__compare .arrow-link {
-    align-self: center;
-  }
-
-  /* ============================================================
-     S7  Selected work
+     Selected work
   ============================================================ */
   .work-grid {
     display: grid;
@@ -2280,7 +2379,7 @@ const beliefs = [
   }
 
   /* ============================================================
-     S8  What we believe
+     What we believe
   ============================================================ */
   .believe {
     padding-block: clamp(108px, 13vw, 196px);
@@ -2511,7 +2610,7 @@ const beliefs = [
   }
 
   /* ============================================================
-     S9  Insights
+     Insights
   ============================================================ */
   .lead-ins {
     display: grid;
@@ -2589,7 +2688,7 @@ const beliefs = [
   }
   /* Three cards: stay single column until there is room for a comfortable
      three-up. A two-up would orphan the third card, and 640px left each
-     card too narrow for its 20px heading. Matches the .ways breakpoint. */
+     card too narrow for its 20px heading. Matches the .pay breakpoint. */
   @media (min-width: 900px) {
     .ins-grid {
       grid-template-columns: repeat(3, 1fr);
@@ -2691,128 +2790,10 @@ const beliefs = [
     border-radius: 50%;
     background: currentColor;
   }
-
-  /* ============================================================
-     S10  Closing
-  ============================================================ */
-  .closing {
-    padding-block: clamp(100px, 12vw, 176px);
-  }
-  .sheet--ink.closing::before {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    left: var(--sx, 50%);
-    top: var(--sy, 40%);
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(233, 78, 27, 0.16), transparent 62%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-  }
-  .sheet--ink.closing[data-lit]::before {
-    opacity: 1;
-  }
-  .closing__glow {
-    position: absolute;
-    left: 50%;
-    bottom: -40%;
-    width: 80vw;
-    height: 80vw;
-    max-width: 900px;
-    max-height: 900px;
-    transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(233, 78, 27, 0.2), transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .closing__inner {
-    position: relative;
-    z-index: 1;
-    max-width: 920px;
-    margin-inline: auto;
-    text-align: center;
-    display: grid;
-    justify-items: center;
-    gap: 22px;
-  }
-  .closing__cube {
-    width: 56px;
-    margin-bottom: 6px;
-    animation: cubeFloat 6s ease-in-out infinite;
-  }
-  @keyframes cubeFloat {
-    0%,
-    100% {
-      transform: translateY(0) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-14px) rotate(9deg);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .closing__cube {
-      animation: none;
-    }
-  }
-  .closing__head {
-    max-width: 17ch;
-    color: #fff;
-    font-family: var(--font-sans);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.06;
-    font-size: clamp(38px, 5.4vw, 76px);
-  }
-  .closing__head .accent {
-    color: var(--brand-orange);
-  }
-  .closing__mail {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    color: rgba(240, 237, 233, 0.6);
-    transition: color 160ms ease;
-  }
-  .closing__mail:hover {
-    color: var(--brand-orange);
-  }
 </style>
 
 <script>
   const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- Hero video: attach off the critical path, honour reduced motion --- */
-  const heroVideo = document.getElementById('hero-video') as HTMLVideoElement | null;
-  if (heroVideo) {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let attached = false;
-
-    const attach = () => {
-      if (attached || reduced.matches) return;
-      // Respect an explicit data-saver preference: the loop is decoration.
-      const conn = (navigator as { connection?: { saveData?: boolean } }).connection;
-      if (conn?.saveData) return;
-      attached = true;
-      heroVideo.querySelectorAll<HTMLSourceElement>('source[data-src]').forEach((s) => {
-        if (s.dataset.src) s.src = s.dataset.src;
-      });
-      heroVideo.load();
-      const p = heroVideo.play();
-      if (p && typeof p.catch === 'function') p.catch(() => {});
-    };
-
-    if (document.readyState === 'complete') attach();
-    else window.addEventListener('load', attach, { once: true });
-
-    reduced.addEventListener('change', () => {
-      if (reduced.matches) heroVideo.pause();
-      else attach();
-    });
-  }
 
   /* ---- Scroll-reveal -------------------------------------------- */
   const reveals = document.querySelectorAll('[data-reveal]');
@@ -2889,10 +2870,8 @@ const beliefs = [
     counts.forEach((el) => (el.textContent = el.dataset.to || '0'));
   }
 
-  /* ---- Scroll engine: progress, hero, parallax ----------------- */
+  /* ---- Scroll engine: progress, parallax ----------------------- */
   const fill = document.querySelector<HTMLElement>('.scrollbar__fill');
-  const heroBg = document.querySelector<HTMLElement>('.hero__bg');
-  const heroContent = document.querySelector<HTMLElement>('.hero__content');
   const parallax = document.querySelectorAll<HTMLElement>('[data-parallax]');
   let ticking = false;
   const onScroll = () => {
@@ -2901,14 +2880,6 @@ const beliefs = [
     const max = document.documentElement.scrollHeight - vh;
     if (fill) fill.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
     if (!RM) {
-      if (y < vh) {
-        const p = y / vh;
-        if (heroBg) heroBg.style.transform = `scale(${1 + p * 0.16})`;
-        if (heroContent) {
-          heroContent.style.transform = `translateY(${p * -72}px)`;
-          heroContent.style.opacity = String(Math.max(0, 1 - p * 1.32));
-        }
-      }
       parallax.forEach((img) => {
         const speed = Number(img.dataset.speed || '0.1');
         const rect = img.getBoundingClientRect();
@@ -2977,7 +2948,7 @@ const beliefs = [
   /* ---- Magnetic buttons ---------------------------------------- */
   if (!RM && window.matchMedia('(pointer: fine)').matches) {
     document
-      .querySelectorAll<HTMLElement>('.hero__cta .btn, .closing__cta .btn')
+      .querySelectorAll<HTMLElement>('.hero__cta .btn')
       .forEach((btn) => {
         btn.addEventListener('pointermove', (e) => {
           const r = btn.getBoundingClientRect();

@@ -19,6 +19,10 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import PlatformAppBand from '../../../components/PlatformAppBand.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../../../lib/links';
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
@@ -164,7 +168,7 @@ const processSteps = [
     title: 'Editorial direction across the five lanes.',
     body: 'We set the voice, the messaging order and the content model: how a page is built, what each template has to carry, the keyword and query map behind the SEO and GEO lanes. References go up on the wall. The tone gets a name. We pick the AI models for each lane. This is the step that makes the site sound like you and nobody else.',
     image: '/Images/brand-website-p2-direction.jpg',
-    alt: 'A storyboard wall with five columns of page sketches labeled Core pages, Offerings, Editorial, SEO and GEO, each column anchored by a printed mock of that page.',
+    alt: 'A storyboard wall with five columns of page sketches labeled Core pages, Offerings, Editorial, SEO and GEO, each column anchored by a printed mock of that page, a creative director pinning a sketch to the last column.',
   },
   {
     short: 'AIGC',
@@ -249,13 +253,24 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+const SITE = 'https://www.hubstudio.ai';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'Brand website', item: `${SITE}/solutions/platforms/brand-website` },
+  ],
+};
 ---
 
 <Layout
-  title="Brand Website Content: Pages, SEO & GEO at Scale | hubStudio"
+  title="Brand Website Content: Pages, SEO & GEO | hubStudio"
   description="We write your company website: core pages, offerings, blog, SEO and GEO content. One brief, every page, made in a working studio."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -561,6 +576,24 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- APP OR STUDIO -->
+    <PlatformAppBand
+      pre={'Make the pictures '}
+      accent={'yourself'}
+      post={', or hand us the site.'}
+      paras={[
+        'Your team can make the pictures for a page or an article in the hubStudio app. The Image studio renders them up to 4K, and the free Image editor crops to wide 16:9 for a header or link 1.91:1 for the preview a link shows when it is shared. You download the files and add them to your site yourself. The app doesn’t publish to websites.',
+        'The pages themselves are studio work. We write and structure them, and we build the SEO and GEO content around them, so every page sounds like the same company.',
+      ]}
+      shot={appShots.imageStudio}
+      path="/content/image-generate"
+      actions={[
+        { label: 'Send a brief', href: `${BRIEF_URL}?way=studio`, kind: 'primary' },
+        { label: 'Create your account', href: APP_SIGNUP, kind: 'secondary', external: true },
+        { label: 'What the app makes', href: '/app/create' },
+      ]}
+    />
+
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
@@ -684,6 +717,8 @@ const faqSchema = {
       </div>
     </section>
 
+    <WaysToWork tone="white" highlight="studio" />
+
     <!-- S8 · CLOSE -->
     <section class="end">
       <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
@@ -696,19 +731,20 @@ const faqSchema = {
           Send the website brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          You get a sitemap recommendation, a scope broken down by lane, a
-          rough timeline, and a couple of sample pages written for free, so
-          you can see how we think before any budget is on the table.
+          A producer reads your brief within one business day, and the proposal that comes back gives you a sitemap recommendation and a scope broken down by lane, with rough timing. Want to make the pictures yourself? Creating an account costs nothing, and you pay only for what you run.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Send the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF_URL}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
         </div>
+        <p class="end__signin r" style="--d:.22s">
+          Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+        </p>
       </div>
       <div class="cbar cbar--end" aria-hidden="true">
         {colourBar.map((c) => <span style={`background:${c}`}></span>)}
@@ -957,6 +993,8 @@ const faqSchema = {
   .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
   .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
   .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .end__signin { font-size: var(--type-small); color: rgba(240, 237, 233, 0.62); }
+  .end__signin a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 </style>
 
 <script>

@@ -21,7 +21,7 @@
  */
 
 export interface Author {
-  /** URL segment under /the-studio/creative-talents/ */
+  /** URL segment under /about/team/ */
   slug: string;
   name: string;
   role: string;
@@ -243,5 +243,5 @@ export function findAuthorByName(name: string): Author | undefined {
 }
 
 export function authorPath(author: Author): string {
-  return `/the-studio/creative-talents/${author.slug}`;
+  return `/about/team/${author.slug}`;
 }

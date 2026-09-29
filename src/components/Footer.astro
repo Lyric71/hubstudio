@@ -5,20 +5,24 @@
  */
 import Logo from './Logo.astro';
 import { getLocaleFromUrl, localizePath } from '../i18n/utils';
+import { APP_SIGNUP, APP_SIGNIN } from '../lib/links';
 
 const locale = getLocaleFromUrl(Astro.url);
 const lp = (p: string) => localizePath(p, locale);
 const year = new Date().getFullYear();
 
-/* Header top-level entries, plus the hub4You platform. No mega-menu links. */
+/* The two offers first, then the rest of the header, then the company.
+   Absolute links (the app) are never localized. */
 const navLinks: { label: string; href: string }[] = [
-  { label: 'Services', href: '/services' },
+  { label: 'The app', href: '/app' },
+  { label: 'The studio', href: '/studio' },
   { label: 'Solutions', href: '/solutions' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'The Studio', href: '/the-studio' },
   { label: 'Work', href: '/work' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'Resources', href: '/resources' },
-  { label: 'hub4You', href: '/hub4you' },
+  { label: 'About', href: '/about' },
+  { label: 'Partners', href: '/partners' },
+  { label: 'Contact', href: '/contact' },
   // English only, so never localized: the app's help center.
   { label: 'Help center', href: '/help' },
 ];
@@ -36,7 +40,12 @@ const parent = {
     <div class="site-footer__brand">
       <a href={lp('/')} aria-label="hubStudio home"><Logo tone="dark" /></a>
       <p class="site-footer__line">
-        A production house built for what content has become.
+        An AI production app, and the studio that runs on it.
+      </p>
+      <p class="site-footer__app">
+        <a href={APP_SIGNUP} rel="noopener">Create your account</a>
+        <span aria-hidden="true">/</span>
+        <a href={APP_SIGNIN} rel="noopener">Sign in</a>
       </p>
       <p class="site-footer__loc">Working worldwide</p>
     </div>
@@ -107,6 +116,22 @@ const parent = {
     font-size: var(--type-small);
     line-height: 1.55;
     color: rgba(240, 237, 233, 0.72);
+  }
+  .site-footer__app {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+    font-size: var(--type-small);
+    font-weight: 600;
+  }
+  .site-footer__app a {
+    color: var(--brand-orange);
+  }
+  .site-footer__app a:hover {
+    color: #fff;
+  }
+  .site-footer__app span {
+    color: rgba(240, 237, 233, 0.3);
   }
   .site-footer__loc {
     margin-top: 14px;

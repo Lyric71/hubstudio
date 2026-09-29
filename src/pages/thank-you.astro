@@ -8,12 +8,14 @@
  */
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import { HELP_URL } from '../lib/links';
 
 /* Multilingual thanks: a nod to producing for brands worldwide (Latin scripts
    only: Han characters never leak onto a non-Chinese page). */
 const thanks = ['Thanks', 'Merci', 'Gracias', 'Grazie', 'Danke', 'Obrigado'];
 
-/* "While you wait" reading, pulled from the header Resources / Studio menus. */
+/* "While you wait" reading: one for each reader (studio brief, company,
+   app question). Copy deck: cq/hubs. */
 const reading = [
   {
     eyebrow: 'Insights',
@@ -22,10 +24,16 @@ const reading = [
     href: '/resources/insights',
   },
   {
-    eyebrow: 'The Studio',
+    eyebrow: 'About',
     title: 'Who we are',
-    text: 'The studio behind the work, how we run production, and why brands move their content operation here.',
-    href: '/the-studio/who-we-are',
+    text: 'The company behind the app and the studio, who founded it, and how we run production.',
+    href: '/about',
+  },
+  {
+    eyebrow: 'The app',
+    title: 'Help center',
+    text: 'The quickest answer to most app questions: step-by-step guides from your first image to publishing and approvals.',
+    href: HELP_URL,
   },
 ];
 ---
@@ -33,8 +41,8 @@ const reading = [
 <Layout
   heroOverlay
   noindex
-  title="Brief received | hubStudio"
-  description="Your project brief has reached the hubStudio team. A producer will read it today and reply within one business day."
+  title="Message received | hubStudio"
+  description="Your message has reached the hubStudio team. A person will read it and reply within one business day."
 >
   <!-- ===== S1: Hero ===== -->
   <section class="ty-hero">
@@ -44,23 +52,23 @@ const reading = [
 
     <div class="container ty-hero__inner">
       <div class="ty-hero__copy">
-        <span class="eyebrow ty-hero__eyebrow">Brief received</span>
+        <span class="eyebrow ty-hero__eyebrow">Message received</span>
         <h1 class="headline h1 reveal ty-hero__title">
           Thanks for <span class="accent">writing in</span>.
         </h1>
         <p class="lead ty-hero__lead">
-          Your brief just landed with a producer. They will read it today and
-          reply within one business day, Monday to Friday. We read every message
-          in person, no auto-responder triage, and we will tell you straight
-          whether to shoot it, generate it, or both.
+          Your message just landed with our team, and a person will reply within
+          one business day. If you already use the app, keep going. Nothing there
+          waits on us. Sent a studio brief? A producer picks it up, and a written
+          proposal follows within 48 hours.
         </p>
         <p class="ty-hero__note">
           Time-sensitive? Reach us directly at
           <a href="mailto:hello@hubstudio.ai">hello@hubstudio.ai</a>.
         </p>
         <div class="ty-hero__cta">
-          <Button variant="primary" href="/work">See real brand work</Button>
-          <Button variant="on-dark" href="/">Back to home</Button>
+          <Button variant="primary" href="/work">See the work</Button>
+          <Button variant="on-dark" href="/app">Tour the app</Button>
         </div>
       </div>
     </div>
@@ -231,6 +239,11 @@ const reading = [
       grid-template-columns: repeat(2, 1fr);
     }
   }
+  @media (min-width: 1024px) {
+    .wait__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
   .wait__card {
     display: flex;
     flex-direction: column;
@@ -246,7 +259,7 @@ const reading = [
   .wait__card-text {
     margin-top: 12px;
     flex: 1;
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.6;
     color: var(--text-mute);
   }

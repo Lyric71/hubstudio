@@ -17,6 +17,10 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import PlatformAppBand from '../../../components/PlatformAppBand.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../../../lib/links';
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
@@ -211,6 +215,11 @@ const faqs = [
     a: 'Every file goes through a studio finish: dodge and burn, grain, a little chromatic aberration, a color grade in Lightroom or Capture One. Our image style guide names the usual giveaways, the poreless skin, the identical bokeh, the jewelry that melts into a hand, the text that is almost but not quite words. A person checks the final frame against that list before it ships. That last pass is what separates an AI image from a campaign image.',
   },
   {
+    q: 'Can we post to Facebook and Instagram ourselves?',
+    a: 'Yes, in the hubStudio app. Connect your Facebook page or your Instagram professional account in My Connections. Draft the post with AI or write it yourself, then publish it now or schedule it. One post can go to up to 20 accounts, and Re-purpose for other networks turns it into posts for LinkedIn, TikTok or X. And if our creatives work inside your hubStudio team, the approved files are already sitting in your library.',
+    link: { match: 'hubStudio app', href: '/app/publish' },
+  },
+  {
     q: 'Can you white-label this for our agency?',
     a: 'Yes. A good share of our Meta work ships under agency brands, with full white-label delivery and a confidentiality agreement in place. The agency keeps the client relationship. We supply the production capacity behind it.',
   },
@@ -230,13 +239,24 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+const SITE = 'https://www.hubstudio.ai';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'Meta', item: `${SITE}/solutions/platforms/meta` },
+  ],
+};
 ---
 
 <Layout
   title="Meta Ad Creative, UGC & Avatars at Scale | hubStudio"
-  description="hubStudio makes Meta content, ad creative, UGC and avatar video for Facebook and Instagram. One brief, four lanes, finished in a working studio."
+  description="Meta content, ad creative, UGC and avatar video from our studio. Or post to Facebook and Instagram yourself from the hubStudio app."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -534,6 +554,43 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- APP OR STUDIO -->
+    <PlatformAppBand
+      pre={'Run it '}
+      accent={'yourself'}
+      post={' in the app, or have the studio run it.'}
+      paras={[
+        'One thing before the process: you can keep the account in-house. The hubStudio app publishes to Facebook pages and to Instagram professional accounts, as a feed post, a Story or a Reel, so your team runs the weekly posts from there and calls us for the work that needs a studio. Publishing itself costs nothing.',
+      ]}
+      columns={[
+        {
+          title: 'What your team does in the app',
+          items: [
+            'Renders the picture or the Reel with AI, or picks it from the library',
+            'Drafts the caption with AI, or writes it by hand',
+            'Publishes now or schedules it, to up to 20 accounts per post',
+            'Re-purposes one post for LinkedIn, TikTok or X',
+          ],
+        },
+        {
+          title: 'What the studio adds',
+          items: [
+            'Concepts, shoots, UGC and avatar work',
+            'Reels hooks and ad sets built for Advantage+ placements',
+            'Fifty variants that still look like the campaign',
+          ],
+        },
+      ]}
+      shot={appShots.instagram}
+      path="/social/instagram/posts"
+      actions={[
+        { label: 'Create your account', href: APP_SIGNUP, kind: 'primary', external: true },
+        { label: 'How publishing works', href: '/app/publish' },
+        { label: 'Read the Instagram help', href: '/help/instagram' },
+        { label: 'Read the Facebook help', href: '/help/facebook' },
+      ]}
+    />
+
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
@@ -621,7 +678,7 @@ const faqSchema = {
           <div class="r" style="--d:.16s">
             <Button variant="primary" href="/contact">Send the brief</Button>
           </div>
-          <p class="fig r" style="--d:.2s">Reviewed May 2026</p>
+          <p class="fig r" style="--d:.2s">Reviewed September 2026</p>
         </aside>
 
         <div class="acc">
@@ -657,6 +714,8 @@ const faqSchema = {
       </div>
     </section>
 
+    <WaysToWork tone="white" highlight="studio-app" />
+
     <!-- S8 · CLOSE -->
     <section class="end">
       <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
@@ -669,19 +728,20 @@ const faqSchema = {
           Send the Meta brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          You get a recommendation for each placement, a rough scope and
-          timeline, and a couple of sample Reels or Feed frames, made for
-          free, so you can see how we think before any money is on the table.
+          A producer reads your brief within one business day, and the proposal that comes back gives you a recommendation for each placement, with the scope and the timing. Want to make some of it yourself? Creating an account costs nothing, and you pay only for what you run.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Send the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF_URL}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
         </div>
+        <p class="end__signin r" style="--d:.22s">
+          Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+        </p>
       </div>
       <div class="cbar cbar--end" aria-hidden="true">
         {colourBar.map((c) => <span style={`background:${c}`}></span>)}
@@ -930,6 +990,8 @@ const faqSchema = {
   .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
   .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
   .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .end__signin { font-size: var(--type-small); color: rgba(240, 237, 233, 0.62); }
+  .end__signin a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 </style>
 
 <script>

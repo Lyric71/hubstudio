@@ -7,16 +7,16 @@
  */
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
+import { APP_URL } from '../../lib/links';
 import { helpArticles, helpGroups, helpIntro } from '../../lib/help';
 
-const APP_URL = 'https://hubstudio.bearingbridge.com';
 const SITE = 'https://www.hubstudio.ai';
 
 const listSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'hubStudio Help Center',
-  description: 'Guides for the hubStudio app: images, videos, social posts, validation, teams, clients, credits and your account.',
+  description: 'Guides for the hubStudio app: images, videos, social posts, validation, teams, clients, payments and your account.',
   url: `${SITE}/help`,
   hasPart: helpArticles.map((a) => ({
     '@type': 'TechArticle',
@@ -29,7 +29,7 @@ const listSchema = {
 
 <Layout
   title="hubStudio Help Center: Guides for the App"
-  description="Guides for the hubStudio app: explore the engines, create images and videos, publish on social networks, get approval, run your team and clients, and manage credits."
+  description="Guides for the hubStudio app: explore the engines, create images and videos, publish on social networks, get approval, run your team and clients, and manage your balance."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(listSchema)} />
 
@@ -45,7 +45,7 @@ const listSchema = {
       <label class="hc-search" for="hc-filter">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></svg>
         <span class="sr-only">Search the guides</span>
-        <input id="hc-filter" type="search" placeholder="Search the guides: credits, clients, TikTok…" autocomplete="off" />
+        <input id="hc-filter" type="search" placeholder="Search the guides: clients, invoices, TikTok…" autocomplete="off" />
       </label>
       <p class="hc-empty" hidden>No guide matches. Try another word, or <a href="/contact">ask us</a>.</p>
     </div>

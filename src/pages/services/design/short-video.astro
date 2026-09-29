@@ -3,7 +3,7 @@
  * Short Video Content  ·  /services/design/short-video
  *
  * Layout twin of /services/design/packaging-merch-design. The visual frame
- * stays identical: crop marks, calibration colour bar, mono figure labels,
+ * stays identical: crop marks, calibration color bar, mono figure labels,
  * editorial typography. The subject swaps from packaging proofs to short-form
  * video production. Copy is adapted from short-video-content-page.md and
  * follows the project's permanent rules (no numerals inside cards or step
@@ -11,6 +11,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Studio short-video samples, each with an invented brand mark for the
    contact-sheet grid. */
@@ -53,7 +56,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, kept as the editorial divider. */
+/* Calibration color bar: a printer's strip, kept as the editorial divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -94,7 +97,7 @@ const coverage = [
     lead: 'Calendar work most brands underestimate until the feed has gone quiet.',
     body: [
       "Brand films get the slowest treatment in the studio: cinematic vignettes cut down without losing the idea. Educational and how-to is what Bilibili and Xiaohongshu reward most, with numbered steps lifting retention 34% when the numbering doesn't feel listy. Always-on social ships within 48 hours of a trend breaking.",
-      "Live commerce and short drama didn't exist three years ago. China's short drama market hit RMB 63.4B by mid-2025 and is projected at RMB 100B by 2027 (Media Partners Asia). Helena Rubinstein's broadcast drama lifted brand awareness from 26.1% to 79.3% during the run. We handle the full stack from one brief, warm-up clips through to store-livestream funnel.",
+      "Live commerce and short drama didn't exist three years ago. Media Partners Asia expects China's short drama market to grow by more than half between mid-2025 and 2027. Helena Rubinstein's broadcast drama lifted brand awareness from 26.1% to 79.3% during the run. We handle the full stack from one brief, warm-up clips through to store-livestream funnel.",
     ],
     tags: [
       'Educational', 'How-to', 'Brand films',
@@ -256,6 +259,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/short-video`;
 
@@ -276,7 +282,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Short Video', item: pageUrl },
   ],
 };
@@ -302,7 +308,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Short Video Content
           </p>
           <h1 class="hero__title">
@@ -326,7 +332,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See sample work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -725,6 +731,40 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Render the clip yourself, or hand us the "
+      accent="edit"
+      post="."
+      intro="The hubStudio app makes short video. It won’t script a hook test or cast a creator, and it won’t cut forty versions against a retention curve."
+      columns={[
+        {
+          title: 'What you can make in the app',
+          body: [
+            'The Video studio renders clips from text, from a start frame or from reference pictures and clips, on engines from several makers, with more as they ship. Some engines go to 30 seconds, some to 4K, and many add generated sound. The clip can go straight into a TikTok post (Beta), an Instagram Reel on a professional account, or a Facebook page video, published now or scheduled. Each render is charged to a prepaid balance at the price shown before it runs.',
+          ],
+        },
+        {
+          label: 'From the studio',
+          title: 'What the studio does',
+          body: [
+            'We write the scripts and the hook directions. We cast real creators where trust matters more than volume. Our editors handle the cut, subtitles, voice-over, and finishing, and they check every cut against its first three seconds. Douyin, Xiaohongshu, Bilibili, and livestream funnels are studio work too.',
+          ],
+        },
+      ]}
+      shot={appShots.tiktokVideo}
+      shotPath="/social/tiktok/posts"
+      shotCaption="TikTok (Beta) in hubStudio: start from a clip rendered with AI, taken from the library or uploaded."
+      links={[
+        { label: 'What the app publishes', href: '/app/publish' },
+        { label: 'TikTok, step by step', href: '/help/tiktok' },
+        { label: 'How the app is paid', href: '/pricing' },
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio"
+      ways={{ pre: 'Who cuts the ', accent: 'video', post: '?' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -738,7 +778,7 @@ const breadcrumbSchema = {
             in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -781,11 +821,12 @@ const breadcrumbSchema = {
           product and target platform, plus a production estimate against your
           scope. The work is yours whether you decide to keep working with us
           or not.
+          Want to render a few test clips yourself first? Your account costs nothing to open.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -800,6 +841,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1019,7 +1071,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

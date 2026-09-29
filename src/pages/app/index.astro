@@ -1,0 +1,877 @@
+---
+/**
+ * The hubStudio app  ·  /app
+ *
+ * The product overview and the main sign-up page. The app door comes first
+ * (Create your account, Sign in); the studio door stays visible in the hero,
+ * the ways-to-work band and the closing band. Every capture is a real screen
+ * from src/data/app-shots.ts. Copy: cq/app/final.md (content-quality-us loop).
+ * No amounts anywhere, no ordinal numerals in the journey or the role blocks.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import WaysToWork from '../../components/WaysToWork.astro';
+import DualCta from '../../components/DualCta.astro';
+import InsightsLayer from '../../components/InsightsLayer.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_URL, APP_SIGNUP, APP_SIGNIN, BRIEF_URL, HELP_URL } from '../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+const title = 'The hubStudio app: AI images, video and posts';
+const description =
+  'Make images and video with AI engines from OpenAI, Google, ByteDance, and more, then edit, approve, and publish them. Pay as you go, no subscription.';
+
+const chips = ['No subscription', 'No seat fees', 'No cost to create an account'];
+
+const audiences = [
+  {
+    name: 'Solo creators',
+    body: 'Sign up with Just me and you get a team of one, with yourself as admin. Everything you make lands in your History, and the balance is yours. If the work grows, invite people later.',
+  },
+  {
+    name: 'In-house brand teams',
+    body: 'One shared balance pays for the team’s work. Admins invite creators and viewers, set a daily spending limit per person, and switch modules on or off per person. Posts go out on the brand’s own accounts, and a manager can sign off in Validation first.',
+  },
+  {
+    name: 'Agencies serving clients',
+    body: 'Add each client company and give its people a login. Tag work “Made for” a client and it shows up in their Client space, where they can download it, and approve it or send it back. They never see your prompts, engines, or costs.',
+  },
+];
+
+const journey = [
+  {
+    label: 'Explore',
+    title: 'Pick an engine from one gallery',
+    body: 'Explore is the page you land on after you sign in. It shows every image and video engine you can use, one card each, from OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax, and Meta. Search by name, filter by kind, maker, or job, and sort. Click a card and its studio opens, already set on that engine.',
+    link: { label: 'See every engine', href: '/app/engines' },
+    shot: appShots.explore,
+    path: '/explore',
+    caption: true,
+  },
+  {
+    label: 'Create',
+    title: 'Render images and clips in two studios',
+    body: 'The Image studio makes a picture from a prompt, edits pictures you upload, and upscales them, up to 4K. The Video studio films a prompt, animates a still, or follows the pictures, clips, and sound you attach, with clips up to 30 seconds on some engines and generated sound. “Improve with AI” rewrites your prompt for the engine you picked, and Skills let you save the instructions you use every time.',
+    link: { label: 'Inside the Image and Video studios', href: '/app/create' },
+    shot: appShots.imageStudio,
+    path: '/content/image-generate',
+    caption: true,
+  },
+  {
+    label: 'Refine',
+    title: 'Fix up and file what you made',
+    body: 'Every render lands in History with its prompt and engine, so you can reuse a prompt or run a variation. The Assets Library holds the team’s files in folders, with tags, versions, and search. Its Image editor crops to each network’s format, adjusts light and color, adds text, arrows, or a logo, and saves a copy or a new version. The Image anonymizer shows the hidden data in a picture, such as camera data and location, and rebuilds a clean file. Both tools run in your browser and cost nothing.',
+    link: { label: 'Tour the Assets Library', href: '/app/library' },
+    shot: appShots.editorCrop,
+    path: '/files/tools/image-editor',
+    caption: true,
+  },
+  {
+    label: 'Publish',
+    title: 'Five networks, one place to post',
+    body: 'Write for LinkedIn, Instagram, Facebook, TikTok (in Beta), and X. Hand a brief to “Draft with AI” or write the post yourself, add pictures or a carousel, then publish now or schedule it. One post can go to up to 20 accounts. If a network doesn’t take a post, the queue tries again on its own. You can also re-purpose a post written for one network for the others.',
+    link: { label: 'How publishing works', href: '/app/publish' },
+    shot: appShots.linkedin,
+    path: '/social/linkedin/posts',
+    caption: true,
+  },
+  {
+    label: 'Approve and deliver',
+    title: 'Get sign-off, then hand over the work',
+    body: 'In Validation, send an image, a video, a post, a file, a text, or a link to a teammate or a client. They approve it or send it back with a comment. New versions stay on the same thread, and a post waiting for approval is locked. Clients see only the finished work made for them, in their Client space.',
+    link: { label: 'How approvals work', href: '/app/review' },
+    shot: appShots.clientSpace,
+    path: '/client',
+    caption:
+      'A client’s Client space before any work is shared: the menu holds only Client space and Validation.',
+  },
+];
+
+const roles = [
+  {
+    name: 'Admin',
+    body: 'Runs the team. Invites people, answers requests to join, sets roles and daily limits, adds clients and gives their people logins, and tops up the team balance.',
+  },
+  {
+    name: 'Creator',
+    body: 'Makes the work. Renders images and video, writes posts, and sends work for approval, within the daily limit an admin sets.',
+  },
+  {
+    name: 'Viewer',
+    body: 'Sees the team’s work in History and the Assets Library. Creates nothing and spends nothing.',
+  },
+  {
+    name: 'Client',
+    body: 'Someone at a company the team works for. Sees only the work made for that company, and can download it or sign off on it. Spends nothing.',
+  },
+];
+
+const faqs: { q: string; a: string; link?: { label: string; href: string } }[] = [
+  {
+    q: 'Is there a subscription or a fee to sign up?',
+    a: 'No. Creating an account costs nothing, and there’s no subscription or seat fee. When you’re ready to run something, you top up a prepaid balance, and it doesn’t expire.',
+  },
+  {
+    q: 'How do I know what a run will cost?',
+    a: 'The price sits next to the button before you run anything. It follows the engine, the quality, the resolution, the shape, and the number of images. Video is priced per second of clip. One video engine, Gemini Omni Flash, is billed on what it actually used, so its cost shows when the clip is back.',
+  },
+  {
+    q: 'What happens if a run fails?',
+    a: 'You’re not charged. A run is charged only when it succeeds, and when you ask for several images, you pay for the images that came back. One exception: a video clip longer than 15 seconds can time out after the engine has billed it, and the form warns you before you run it.',
+  },
+  {
+    q: 'What happens when my balance runs out?',
+    a: 'New runs are refused until you top up, and everything you made stays in History. Automatic top-up by card keeps a long run from being cut short.',
+  },
+  {
+    q: 'Which AI engines can I use?',
+    a: 'Engines from OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax, and Meta. Among them are ChatGPT Image 2, Nano Banana 2, FLUX.1 Kontext, Seedream, Veo 3.1 Fast, Kling 3.0, Seedance, and Wan 3.0, with more added as makers ship them. The engines page lists them all.',
+    link: { label: 'See every engine', href: '/app/engines' },
+  },
+  {
+    q: 'How do I pay, and do I get invoices?',
+    a: 'Top up by card, Alipay, or WeChat Pay. Every top-up comes with an invoice, and automatic top-up works with a saved card. Admins see the team’s invoices; everyone sees their own.',
+  },
+  {
+    q: 'How do my clients review and approve work?',
+    a: 'An admin adds the client company and gives its people a login. Work tagged “Made for” that client shows up in their Client space. They download it, comment on it, and approve it or send it back in Validation. They never see prompts, engines, or costs.',
+    link: { label: 'How approvals work', href: '/app/review' },
+  },
+  {
+    q: 'Which social networks can I publish to?',
+    a: 'LinkedIn, Instagram, Facebook, TikTok (in Beta), and X. You connect your own accounts, then publish now or schedule, on up to 20 accounts per post.',
+    link: { label: 'How publishing works', href: '/app/publish' },
+  },
+  {
+    q: 'Does hubStudio work in languages other than English?',
+    a: 'Partly. The sign-in page speaks English, French, and Chinese. Once you’re signed in, the app is in English.',
+  },
+  {
+    q: 'Can your studio do the work inside the app?',
+    a: 'Yes. That’s Studio + app: our creatives make the work in hubStudio and you review, approve, and download it there. It starts with a brief sent through our contact page. There’s no order button inside the app.',
+    link: { label: 'How Studio + app works', href: '/studio/with-the-app' },
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+  ],
+};
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'hubStudio',
+  applicationCategory: 'DesignApplication',
+  operatingSystem: 'Web',
+  url: APP_URL,
+  description,
+  publisher: { '@id': `${SITE}/#organization` },
+  inLanguage: 'en',
+  featureList: [
+    'Image and video engines from several makers in one gallery',
+    'Image studio: text to image, image editing, upscale',
+    'Video studio: text to video, image to video, reference to video',
+    'Assets Library with an Image editor and an Image anonymizer',
+    'Publishing to LinkedIn, Instagram, Facebook, TikTok (Beta), and X',
+    'Validation and a Client space for approvals and delivery',
+    'Teams with Admin, Creator, Viewer, and Client roles',
+  ],
+  offers: {
+    '@type': 'Offer',
+    url: APP_SIGNUP,
+    description:
+      'Creating an account costs nothing. No subscription and no seat fees: pay as you go from a prepaid balance, at the price shown before each run.',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="ap">
+    <!-- ===== Hero ===== -->
+    <section class="ap-hero">
+      <div class="container">
+        <div class="ap-hero__copy">
+          <span class="eyebrow">The hubStudio app</span>
+          <h1 class="headline h1 ap-hero__title">
+            Make images and video with AI, then post them from the same <span class="accent">place</span>.
+          </h1>
+          <p class="lead ap-hero__lead">
+            hubStudio is a web app that puts the AI engines of several makers in one place. You make
+            images and video with them, then finish the files and post them or send them for
+            approval, on your own or with a team. You pay as you go from a prepaid balance, and you
+            see the price before every run.
+          </p>
+          <div class="ap-hero__cta">
+            <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+            <Button variant="secondary" href={APP_SIGNIN}>Sign in</Button>
+          </div>
+          <p class="ap-hero__studio">
+            Rather have our studio make it for you, inside the app? See
+            <a href="/studio/with-the-app">how Studio + app works</a>, or
+            <a href={`${BRIEF_URL}?way=studio-app`}>send a brief</a>.
+          </p>
+          <ul class="ap-hero__chips" aria-label="How the app is paid for">
+            {
+              chips.map((c) => (
+                <li class="chip ap-chip">
+                  <span class="chip__dot" aria-hidden="true" />
+                  {c}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="container ap-hero__shot">
+        <AppShot
+          shot={appShots.exploreApp}
+          path="/explore"
+          eager
+          caption="hubStudio opens on Explore, with the menu that runs the rest of the app."
+        />
+      </div>
+    </section>
+
+    <!-- ===== Who it's for ===== -->
+    <section class="sheet sheet--light ap-section" id="who">
+      <div class="container">
+        <header class="ap-head">
+          <span class="eyebrow">Who it’s for</span>
+          <h2 class="headline h2 reveal">
+            One app for a freelancer, a brand team, or an <span class="accent">agency</span>.
+          </h2>
+          <p class="ap-head__intro">
+            The sign-up is the same for all three. The difference shows up later, in who you invite
+            and what you switch on.
+          </p>
+        </header>
+        <div class="ap-who">
+          {
+            audiences.map((a) => (
+              <article class="ap-who__card reveal">
+                <h3 class="ap-who__name">{a.name}</h3>
+                <p class="ap-body">{a.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== The journey ===== -->
+    <section class="sheet sheet--cream ap-section" id="how-it-works">
+      <div class="container">
+        <header class="ap-head">
+          <span class="eyebrow">How it works</span>
+          <h2 class="headline h2 reveal">
+            From the first prompt to the final <span class="accent">sign-off</span>.
+          </h2>
+          <p class="ap-head__intro">
+            The menu on the left runs in the order you work. These are real screens from the app,
+            one stop at a time, and each stop links to a page with the detail.
+          </p>
+        </header>
+        <div class="ap-steps">
+          {
+            journey.map((s) => (
+              <article class="ap-step">
+                <div class="ap-step__copy">
+                  <span class="ap-step__label">{s.label}</span>
+                  <h3 class="ap-step__title">{s.title}</h3>
+                  <p class="ap-body">{s.body}</p>
+                  <a class="ap-arrow" href={s.link.href}>
+                    {s.link.label} <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+                <div class="ap-step__shot reveal">
+                  <AppShot shot={s.shot} path={s.path} caption={s.caption} />
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Teams and roles ===== -->
+    <section class="sheet sheet--ink ap-section" id="roles">
+      <div class="grain ap-grain" aria-hidden="true"></div>
+      <div class="container">
+        <header class="ap-head">
+          <span class="eyebrow ap-eyebrow--dark">Teams and roles</span>
+          <h2 class="headline h2 reveal">Four roles, in plain <span class="accent">words</span>.</h2>
+          <p class="ap-head__intro ap-head__intro--dark">
+            Every account belongs to a team, even when the team is just you. The person who creates
+            it is its first admin.
+          </p>
+        </header>
+        <dl class="ap-roles">
+          {
+            roles.map((r) => (
+              <div class="ap-role reveal">
+                <dt class="ap-role__name">{r.name}</dt>
+                <dd class="ap-role__body">{r.body}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <div class="ap-roles__foot">
+          <p class="ap-role__body">
+            Admins invite people by email. Joining a team that already uses hubStudio? Pick Join a
+            team when you sign up, and one of its admins lets you in.
+          </p>
+          <AppShot shot={appShots.teamInvite} path="/team" caption dark />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How paying works ===== -->
+    <section class="sheet sheet--light ap-section" id="paying">
+      <div class="container ap-pay">
+        <div class="ap-pay__copy">
+          <span class="eyebrow">Paying</span>
+          <h2 class="headline h2 reveal">
+            A prepaid balance, and a price before every <span class="accent">run</span>.
+          </h2>
+          <p class="ap-fresh">Checked against the app, September 2026</p>
+          <p class="ap-body">
+            This is usually the first question, so here’s the short version. There’s no
+            subscription and no seat fee, and creating an account costs nothing. You top up a
+            balance held in real currency, and each run comes out of it at the price you saw before
+            you clicked. If a run fails, you aren’t charged.
+          </p>
+          <p class="ap-body">
+            Top up by card, Alipay, or WeChat Pay, and an invoice comes with every top-up. Automatic
+            top-up is there if you want it; it uses a saved card. The balance doesn’t expire.
+          </p>
+          <p class="ap-body">
+            The team shares one balance, and admins can set a daily spending limit for each person.
+            Viewers and client logins spend nothing.
+          </p>
+        </div>
+        <aside class="ap-pay__card reveal" aria-label="What costs what">
+          <div class="ap-pay__item">
+            <h3 class="ap-pay__label">Free to use</h3>
+            <p class="ap-body">
+              The Image editor, the Image anonymizer, Validation, and publishing.
+            </p>
+          </div>
+          <div class="ap-pay__item">
+            <h3 class="ap-pay__label">Also drawn from the balance</h3>
+            <p class="ap-body">
+              A small daily charge for the files the team stores, and a small charge when a stored
+              file is downloaded. Delete what you don’t need and the storage charge drops the next
+              day.
+            </p>
+          </div>
+          <div class="ap-pay__links">
+            <a class="ap-arrow" href="/pricing">See pricing <span aria-hidden="true">&rarr;</span></a>
+            <a class="ap-arrow" href={`${HELP_URL}/balance-and-payments`}>
+              Payments in the help center <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== Good to know ===== -->
+    <section class="sheet sheet--cream ap-section ap-section--tight" id="good-to-know">
+      <div class="container">
+        <header class="ap-head">
+          <span class="eyebrow">Good to know</span>
+          <h2 class="headline h2 reveal">What to know before you <span class="accent">sign up</span>.</h2>
+        </header>
+        <div class="ap-know">
+          <p class="ap-body">
+            The app is in English. The sign-in page speaks English, French, and Chinese, but every
+            screen after it is in English. TikTok publishing works and carries a Beta label in the
+            app; the other four networks don’t.
+          </p>
+          <p class="ap-body">
+            To publish, you connect your own social accounts on My Connections. They’re personal, so
+            nobody else on the team can post with yours. The engine list moves too: makers ship new
+            engines and retire old ones, and the gallery follows.
+          </p>
+          <p class="ap-body">
+            Every screen is documented. <a class="ap-inline" href={HELP_URL}>The help center</a> walks
+            through the app page by page, with real captures and the exact button names.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <WaysToWork tone="white" highlight="app" />
+
+    <!-- ===== FAQ ===== -->
+    <section class="ap-faq ap-section" id="faq">
+      <div class="container ap-faq__grid">
+        <header class="ap-head ap-faq__head">
+          <span class="eyebrow">Questions</span>
+          <h2 class="headline h2 reveal">Before you create your <span class="accent">account</span>.</h2>
+        </header>
+        <div class="ap-faq__list">
+          {
+            faqs.map((f) => (
+              <details class="ap-faq__item">
+                <summary class="ap-faq__q">
+                  <span>{f.q}</span>
+                  <svg class="ap-faq__chev" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </summary>
+                <div class="ap-faq__a">
+                  <p class="ap-body">{f.a}</p>
+                  {f.link && (
+                    <a class="ap-arrow" href={f.link.href}>
+                      {f.link.label} <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  )}
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <InsightsLayer placement="app" tone="cream" />
+
+    <DualCta />
+  </div>
+</Layout>
+
+<style>
+  .ap {
+    --shadow-sheet: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    --shadow-sheet-dark: 0 -36px 80px -34px rgba(0, 0, 0, 0.62);
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    overflow-x: clip;
+  }
+  [id] {
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+
+  /* ---- Sheets ------------------------------------------------- */
+  .sheet {
+    position: relative;
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    margin-top: clamp(-60px, -4.6vw, -40px);
+  }
+  .sheet--light {
+    background: var(--bg-white);
+    box-shadow: var(--shadow-sheet);
+  }
+  .sheet--cream {
+    background: var(--bg-cream);
+    box-shadow: var(--shadow-sheet);
+  }
+  .sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    box-shadow: var(--shadow-sheet-dark);
+    overflow: hidden;
+  }
+  .ap-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .sheet .container {
+    position: relative;
+    z-index: 1;
+  }
+  .ap-section {
+    padding-block: clamp(88px, 10vw, 152px);
+  }
+  .ap-section--tight {
+    padding-bottom: clamp(96px, 10vw, 140px);
+  }
+
+  /* ---- Shared type -------------------------------------------- */
+  .ap-head {
+    display: grid;
+    gap: 16px;
+    max-width: 760px;
+    margin-bottom: clamp(40px, 5vw, 72px);
+  }
+  .ap-head__intro {
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .ap-head__intro--dark {
+    color: rgba(240, 237, 233, 0.75);
+  }
+  .ap-eyebrow--dark {
+    color: var(--brand-orange);
+  }
+  .ap-body {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .ap-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .ap-arrow span {
+    display: inline-block;
+    transition: transform 160ms var(--ease);
+  }
+  .ap-arrow:hover span {
+    transform: translateX(6px);
+  }
+  .ap-inline {
+    color: var(--text-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .ap-inline:hover {
+    color: var(--brand-orange);
+  }
+
+  /* ---- Hero --------------------------------------------------- */
+  .ap-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(96px, 11vw, 150px);
+  }
+  .ap-hero__copy {
+    max-width: 880px;
+  }
+  .ap-hero__title {
+    margin-top: 16px;
+    letter-spacing: -0.035em;
+    max-width: 17ch;
+  }
+  .ap-hero__title .accent {
+    color: var(--brand-orange);
+  }
+  .ap-hero__lead {
+    margin-top: 24px;
+    max-width: 60ch;
+  }
+  .ap-hero__cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ap-hero__studio {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .ap-hero__studio a {
+    color: var(--text-ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 3px;
+  }
+  .ap-hero__studio a:hover {
+    color: var(--brand-orange);
+    text-decoration-color: currentColor;
+  }
+  .ap-hero__chips {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .ap-chip {
+    border: 1px solid var(--line-strong);
+    color: var(--text-ink);
+  }
+  .ap-chip .chip__dot {
+    background: var(--brand-orange);
+  }
+  .ap-hero__shot {
+    margin-top: clamp(44px, 6vw, 80px);
+  }
+
+  /* ---- Who it's for ------------------------------------------- */
+  .ap-who {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 900px) {
+    .ap-who {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .ap-who__card {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+    padding: clamp(28px, 3vw, 40px);
+    border-radius: var(--radius-card);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  .ap-who__name {
+    font-size: var(--type-h4, 20px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  /* ---- Journey ------------------------------------------------ */
+  .ap-steps {
+    display: grid;
+    gap: clamp(64px, 9vw, 128px);
+  }
+  .ap-step {
+    display: grid;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .ap-step {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(40px, 5vw, 80px);
+    }
+    .ap-step:nth-child(even) .ap-step__copy {
+      order: 2;
+    }
+  }
+  .ap-step__copy {
+    display: grid;
+    align-content: start;
+    justify-items: start;
+    gap: 14px;
+  }
+  .ap-step__label {
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .ap-step__title {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    max-width: 18ch;
+  }
+  .ap-step__copy .ap-arrow {
+    margin-top: 6px;
+  }
+
+  /* ---- Roles -------------------------------------------------- */
+  .ap-roles {
+    margin: 0;
+    display: grid;
+    gap: 2px;
+  }
+  @media (min-width: 760px) {
+    .ap-roles {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: clamp(32px, 5vw, 72px);
+    }
+  }
+  .ap-role {
+    display: grid;
+    gap: 10px;
+    padding: 26px 0;
+    border-top: 1px solid rgba(240, 237, 233, 0.16);
+  }
+  .ap-role__name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(26px, 2.4vw, 34px);
+    line-height: 1.1;
+    color: var(--text-on-dark);
+  }
+  .ap-role__body {
+    margin: 0;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.75);
+    max-width: 52ch;
+  }
+  .ap-roles__foot {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: grid;
+    gap: 24px;
+  }
+
+  /* ---- Paying ------------------------------------------------- */
+  .ap-pay {
+    display: grid;
+    gap: clamp(40px, 5vw, 72px);
+  }
+  @media (min-width: 960px) {
+    .ap-pay {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      align-items: start;
+    }
+  }
+  .ap-pay__copy {
+    display: grid;
+    gap: 18px;
+  }
+  .ap-fresh {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .ap-pay__card {
+    display: grid;
+    gap: 26px;
+    padding: clamp(28px, 3vw, 40px);
+    border-radius: var(--radius-card);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  @media (min-width: 960px) {
+    .ap-pay__card {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+  }
+  .ap-pay__item {
+    display: grid;
+    gap: 8px;
+  }
+  .ap-pay__label {
+    font-size: var(--type-h4, 20px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .ap-pay__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  /* ---- Good to know ------------------------------------------- */
+  .ap-know {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 900px) {
+    .ap-know {
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(32px, 4vw, 56px);
+    }
+  }
+  .ap-know .ap-body {
+    padding-top: 22px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  /* ---- FAQ ---------------------------------------------------- */
+  .ap-faq {
+    background: var(--bg-cream);
+  }
+  .ap-faq__grid {
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 960px) {
+    .ap-faq__grid {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: clamp(40px, 5vw, 80px);
+      align-items: start;
+    }
+    .ap-faq__head {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+  }
+  .ap-faq__list {
+    border-top: 1px solid var(--line-strong);
+  }
+  .ap-faq__item {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .ap-faq__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: clamp(18px, 1.5vw, 21px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+  .ap-faq__q::-webkit-details-marker {
+    display: none;
+  }
+  .ap-faq__q:hover {
+    color: var(--brand-orange);
+  }
+  .ap-faq__chev {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    transition: transform 200ms var(--ease);
+  }
+  .ap-faq__item[open] .ap-faq__chev {
+    transform: rotate(180deg);
+  }
+  .ap-faq__a {
+    display: grid;
+    justify-items: start;
+    gap: 12px;
+    padding-bottom: 26px;
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

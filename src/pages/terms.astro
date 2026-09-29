@@ -7,14 +7,20 @@
  */
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import { APP_URL } from '../lib/links';
 
-const updated = '18 May 2026';
+/** The app's own Terms of Service, shown at sign-up. */
+const APP_TERMS = `${APP_URL}/terms`;
+
+const updated = '29 September 2026';
 
 interface Block {
   p?: string;
   sub?: string;
   list?: string[];
   note?: string;
+  /** A link appended to the end of a `p` block. */
+  link?: { href: string; label: string };
   table?: { head: string[]; rows: string[][] };
 }
 interface Section {
@@ -32,7 +38,7 @@ const sections: Section[] = [
         p: 'hubStudio is a content production studio operated by BeyondBorderGroup LTD, a company registered in the Hong Kong Special Administrative Region. In these terms, "hubStudio", "we", "us", and "our" refer to that company. "You" refers to the visitor, client, or platform user accepting these terms.',
       },
       {
-        p: 'By visiting hubstudio.ai, creating a hub4You account, or commissioning work from us, you agree to these terms. If you accept them on behalf of a company, you confirm you are authorised to bind that company.',
+        p: 'By visiting hubstudio.ai, creating a hubStudio app account, or commissioning work from us, you agree to these terms. If you accept them on behalf of a company, you confirm you are authorised to bind that company.',
       },
     ],
   },
@@ -41,7 +47,11 @@ const sections: Section[] = [
     title: 'The services we provide',
     blocks: [
       {
-        p: 'hubStudio produces commercial content across four practices: image production, video production, live-action studio work, and 3D, CGI, and motion. We also operate hub4You, a platform for briefing, reviewing, and managing content production.',
+        p: 'hubStudio produces commercial content across four practices: image production, video production, live-action studio work, and 3D, CGI, and motion. We also operate the hubStudio app, a web app for making, editing, reviewing, and publishing images, video, and social content.',
+      },
+      {
+        p: 'The hubStudio app is also governed by its own Terms of Service, which are shown when you create an account and are available at',
+        link: { href: APP_TERMS, label: APP_TERMS.replace('https://', '') },
       },
       {
         p: 'We use AI-assisted tools as part of our production process. Where AI contributes to a deliverable, we apply documented human authorship and review so the final work meets professional and legal standards. The scope, format, and timeline of any engagement are set out in a separate proposal or statement of work, which prevails over these terms where the two conflict.',
@@ -56,14 +66,14 @@ const sections: Section[] = [
       {
         list: [
           'Use the site or platform for any unlawful purpose or in breach of these terms',
-          'Attempt to gain unauthorised access to any account, server, or system we operate',
+          'Attempt to gain unauthorized access to any account, server, or system we operate',
           'Scrape, copy, or harvest content or data without our written permission',
           'Upload malware or interfere with the security or operation of the site or platform',
           'Send spam or unsolicited communications through any contact channel we provide',
         ],
       },
       {
-        p: 'We may suspend or withdraw access to the website or hub4You at any time, without notice, where we reasonably believe these terms have been broken.',
+        p: 'We may suspend or withdraw access to the website or the hubStudio app at any time, without notice, where we reasonably believe these terms have been broken.',
       },
     ],
   },
@@ -72,7 +82,7 @@ const sections: Section[] = [
     title: 'Intellectual property',
     blocks: [
       {
-        p: 'All content on the hubStudio website and the hub4You platform, including text, design, code, logos, and showreels, belongs to hubStudio or its licensors and is protected by intellectual property law. Nothing in these terms transfers that ownership to you.',
+        p: 'All content on the hubStudio website and the hubStudio app, including text, design, code, logos, and showreels, belongs to hubStudio or its licensors and is protected by intellectual property law. Nothing in these terms transfers that ownership to you.',
       },
       {
         p: 'Work we produce for you is different. Ownership of the final deliverables in a paid engagement transfers to you once we have received full payment of all applicable fees, unless your engagement agreement states otherwise. Until payment is complete, we retain all rights in the work.',
@@ -130,7 +140,7 @@ const sections: Section[] = [
     title: 'Warranties and limitation of liability',
     blocks: [
       {
-        p: 'We provide the website, the hub4You platform, and our services with reasonable skill and care. Beyond that, and to the fullest extent permitted by law, they are provided "as is" without further warranties of any kind, express or implied.',
+        p: 'We provide the website, the hubStudio app, and our services with reasonable skill and care. Beyond that, and to the fullest extent permitted by law, they are provided "as is" without further warranties of any kind, express or implied.',
       },
       {
         note: 'To the fullest extent permitted by law, our total liability arising from or connected to an engagement is limited to the fees you paid for the specific service that gave rise to the claim. We are not liable for indirect or consequential loss, including lost profit, lost revenue, or loss of data. Nothing in these terms limits liability that cannot be limited by law.',
@@ -142,7 +152,7 @@ const sections: Section[] = [
     title: 'Term and termination',
     blocks: [
       {
-        p: 'These terms apply for as long as you use our website, hold a hub4You account, or have an active engagement with us. Either party may end an engagement in line with the notice terms in the relevant statement of work.',
+        p: 'These terms apply for as long as you use our website, hold a hubStudio app account, or have an active engagement with us. Either party may end an engagement in line with the notice terms in the relevant statement of work.',
       },
       {
         p: 'On termination, you remain liable for fees covering work completed or committed up to the termination date. The clauses on intellectual property, confidentiality, liability, and governing law survive termination.',
@@ -166,7 +176,7 @@ const sections: Section[] = [
     title: 'Changes to these terms',
     blocks: [
       {
-        p: 'We may update these terms as our services and legal obligations change. The current version always sits on this page with its effective date. Significant changes to an active engagement will be communicated to you directly. Continued use of our website, the platform, or our services after an update means you accept the revised terms.',
+        p: 'We may update these terms as our services and legal obligations change. The current version always sits on this page with its effective date. Significant changes to an active engagement will be communicated to you directly. Continued use of our website, the hubStudio app, or our services after an update means you accept the revised terms.',
       },
     ],
   },
@@ -190,7 +200,7 @@ const related = [
 
 <Layout
   title="Terms of Service | hubStudio"
-  description="The terms that govern your use of the hubStudio website, the hub4You platform, and our content production services."
+  description="The terms that govern your use of the hubStudio website, the hubStudio app, and our content production services."
 >
   <!-- ===== Hero ===== -->
   <section class="section legal-hero">
@@ -201,8 +211,9 @@ const related = [
           Terms of <span class="accent">Service</span>.
         </h1>
         <p class="lead legal-hero__lead">
-          These terms govern your use of the hubStudio website, the hub4You platform, and the
-          content production services we provide. Please read them before you engage us.
+          These terms govern your use of the hubStudio website, the hubStudio app, and the
+          content production services we provide. The app also has its own Terms of Service,
+          shown at sign-up. Please read them before you engage us.
         </p>
         <span class="chip legal-hero__chip">
           <span class="chip__dot"></span>Last updated {updated}
@@ -239,7 +250,14 @@ const related = [
                 <h2 class="legal-sec__title">{sec.title}</h2>
                 {sec.blocks.map((b) =>
                   b.p ? (
-                    <p class="legal-p">{b.p}</p>
+                    <p class="legal-p">
+                      {b.p}
+                      {b.link && (
+                        <>
+                          {' '}<a href={b.link.href} rel="noopener">{b.link.label}</a>.
+                        </>
+                      )}
+                    </p>
                   ) : b.note ? (
                     <p class="legal-note">{b.note}</p>
                   ) : b.sub ? (
@@ -398,9 +416,15 @@ const related = [
   }
   .legal-p {
     margin-top: 14px;
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.7;
     color: var(--text-mute);
+  }
+  .legal-p a {
+    color: var(--text-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
   }
   .legal-sub {
     margin-top: 18px;
@@ -416,7 +440,7 @@ const related = [
   .legal-list li {
     position: relative;
     padding-left: 22px;
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.6;
     color: var(--text-mute);
   }
@@ -437,7 +461,7 @@ const related = [
     border-radius: 16px;
     background: var(--bg-cream);
     border: 1px solid var(--line-hairline);
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.65;
     color: var(--text-mute);
   }

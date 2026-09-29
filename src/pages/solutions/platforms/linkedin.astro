@@ -14,6 +14,10 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import PlatformAppBand from '../../../components/PlatformAppBand.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../../../lib/links';
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
@@ -204,6 +208,11 @@ const faqs = [
     a: 'Every output goes through a studio finishing pass. Copy is edited by hand. Layouts are set in the brand design system. Video gets graded, and any image gets retouched with grain and a real color grade. Our image style guide rules out the usual AI tells: poreless skin, identical bokeh, melted interface text, words that are almost but not quite words. A person reviews the final file before a media plan or a calendar ever sees it. That last pass is the difference between an AI asset and a campaign asset.',
   },
   {
+    q: 'Can we publish to LinkedIn ourselves?',
+    a: 'Yes, from the hubStudio app. Connect your LinkedIn account in My Connections and it brings back your profile and any company page you administer. Brief the post and click Draft with AI, or write it yourself. Add a picture or a carousel, then publish now or schedule it, to up to 20 accounts at once. Re-purpose for other networks turns the same post into posts for Instagram, Facebook, TikTok or X. The carousels and the video in it can come from the studio.',
+    link: { match: 'hubStudio app', href: '/app/publish' },
+  },
+  {
     q: 'Can you white-label this for our agency?',
     a: 'Yes. A good share of our LinkedIn work runs under agency brands, fully white-labeled and kept confidential. The agency keeps the client relationship and all the communication. We are the production capacity behind it.',
   },
@@ -223,13 +232,24 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+const SITE = 'https://www.hubstudio.ai';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'LinkedIn', item: `${SITE}/solutions/platforms/linkedin` },
+  ],
+};
 ---
 
 <Layout
-  title="LinkedIn AIGC: B2B Content & Ad Creative at Scale | hubStudio"
-  description="AIGC for LinkedIn: organic content, document carousels, thought leadership, and Campaign Manager ad creative, made inside a working studio."
+  title="LinkedIn AIGC: B2B Content & Ad Creative | hubStudio"
+  description="LinkedIn posts, carousels, thought leadership and ad creative from our studio. Or publish to your profile and company pages from the hubStudio app."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -531,6 +551,42 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- APP OR STUDIO -->
+    <PlatformAppBand
+      pre={'Run it '}
+      accent={'yourself'}
+      post={' in the app, or have the studio run it.'}
+      paras={[
+        'The hubStudio app publishes to LinkedIn, on your own profile and on the company pages you administer. Your team can keep the weekly calendar going from there. Call us in for the pieces that need a studio. Publishing itself costs nothing.',
+      ]}
+      columns={[
+        {
+          title: 'What your team does in the app',
+          items: [
+            'Turns a brief into a draft with Draft with AI, or writes the post by hand',
+            'Adds a picture or a carousel',
+            'Publishes now or on a schedule, to up to 20 accounts per post',
+            'Re-purposes the post for Instagram, Facebook, TikTok or X',
+          ],
+        },
+        {
+          title: 'What the studio adds',
+          items: [
+            'Document carousels and avatar video',
+            'Thought-leadership pieces written and designed for the feed',
+            'Campaign Manager ad creative, cut to spec',
+          ],
+        },
+      ]}
+      shot={appShots.linkedin}
+      path="/social/linkedin/posts"
+      actions={[
+        { label: 'Create your account', href: APP_SIGNUP, kind: 'primary', external: true },
+        { label: 'How publishing works', href: '/app/publish' },
+        { label: 'Read the help article', href: '/help/linkedin' },
+      ]}
+    />
+
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
@@ -618,6 +674,7 @@ const faqSchema = {
           <div class="r" style="--d:.16s">
             <Button variant="primary" href="/contact">Send the brief</Button>
           </div>
+          <p class="fig r" style="--d:.2s">Reviewed September 2026</p>
         </aside>
 
         <div class="acc">
@@ -653,6 +710,8 @@ const faqSchema = {
       </div>
     </section>
 
+    <WaysToWork tone="white" highlight="studio-app" />
+
     <!-- S8 · CLOSE -->
     <section class="end">
       <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
@@ -665,20 +724,20 @@ const faqSchema = {
           Send the LinkedIn brief.<br />Back in <span class="serif">48 hours</span>.
         </h2>
         <p class="end__p r" style="--d:.12s">
-          You will get a placement-by-placement recommendation, a scope
-          outline, a rough timeline, and a few free feed posts or carousel
-          frames, so you can see how we think before any budget is on the
-          line.
+          A producer reads your brief within one business day, and the proposal that comes back gives you a recommendation for each placement, with a scope outline and timing. Want to run part of it yourself? Creating an account costs nothing, and you pay only for what you run.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Send the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF_URL}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
         </div>
+        <p class="end__signin r" style="--d:.22s">
+          Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+        </p>
       </div>
       <div class="cbar cbar--end" aria-hidden="true">
         {colourBar.map((c) => <span style={`background:${c}`}></span>)}
@@ -927,6 +986,8 @@ const faqSchema = {
   .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
   .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
   .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .end__signin { font-size: var(--type-small); color: rgba(240, 237, 233, 0.62); }
+  .end__signin a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 </style>
 
 <script>

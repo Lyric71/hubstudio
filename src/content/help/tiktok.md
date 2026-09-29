@@ -5,7 +5,7 @@ description: "The TikTok module (Beta): connect your TikTok account, start from 
 excerpt: "Start from the video, add a caption with AI or by hand, or brief a video in depth, and publish it on your TikTok account, now or on schedule."
 section: "social"
 order: 11
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/social/tiktok/posts", "/social/tiktok/brief", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "instagram", "facebook", "x", "validation", "create-a-video", "history", "assets-library"]
@@ -151,7 +151,7 @@ A temporary problem on TikTok's side is retried by itself, three attempts in all
 
 Each paid step shows its price where you work: on the button before a render, and on the status line after a draft, a new version or a rewrite. These are paid: **Write it with AI**, **Draft the post** on the Brief tab, **Write another version**, a rewritten passage, **Improve with AI**, and each clip rendered (per second).
 
-These cost nothing: writing the caption yourself, typing in the editor, and publishing on TikTok, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Every charge is listed in **Credits** > **Usage**.
+These cost nothing: writing the caption yourself, typing in the editor, and publishing on TikTok, through hubStudio or by hand. Files you upload are kept in the Assets Library and count toward storage. Every charge against your balance is listed in **Usage**, under **Credits** in the menu.
 
 ## Delete a post
 

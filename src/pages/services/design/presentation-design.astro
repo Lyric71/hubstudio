@@ -7,15 +7,20 @@
  * studio-authored proof sheet. Copy is the v2 brief for presentation design:
  * sales decks, investor pitches, keynotes and QBRs, written in the studio's
  * editorial voice (Publicis-era anecdote, Shiseido font story, Storydoc /
- * Gartner / Templafy data, three industry shifts).
+ * Gartner data). Since the site reorg the page sits under the Studio pillar;
+ * the old "three shifts" section is replaced by the app-or-studio answer.
  *
  * Process step numerals are intentionally dropped per the repo's no-numbers
- * rule. Shift cards likewise carry no ordinal labels: tool names only. All
+ * rule. All
  * imagery sits in /public/Images and is presentation-design context (slide
  * decks, presenters, boardrooms, multi-market variants).
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import AppShot from '../../../components/AppShot.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Studio sample decks, each with an invented brand mark and a deck type. */
 const samples = [
@@ -57,7 +62,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -136,7 +141,7 @@ const processSteps = [
     short: 'AI exploration',
     tier: 'The rest is execution',
     title: 'AI exploration.',
-    body: 'Three to five visual directions generated in parallel using Midjourney, custom LoRAs and Beautiful.ai. The client picks one from a short PDF, not from a live tool.',
+    body: 'Three to five visual directions generated in parallel using Midjourney and custom LoRAs. The client picks one from a short PDF, not from a live tool.',
     image: '/Images/pd-p3-aigc.jpg',
     alt: 'A wide studio monitor displaying a grid of nine slide layout variations of the same title slide.',
   },
@@ -155,26 +160,6 @@ const processSteps = [
     body: 'Multi-language versions plus market variants. Aspect-ratio swaps for the stage cut, the print version and the social cutdown. Edge-case slides to cover the sales team\'s awkward outliers.',
     image: '/Images/pd-p5-adapt.jpg',
     alt: 'Four printed deck proof sheets and two tablets arranged in a soft fan on a warm walnut desk, each showing the same slide in a different language and aspect ratio.',
-  },
-];
-
-/* Three real shifts from the last eighteen months. No ordinals: tool names
-   carry the structure per the no-numbers rule. */
-const shifts = [
-  {
-    tool: 'Microsoft Copilot',
-    title: 'Narrative Builder went mainstream.',
-    body: 'Microsoft shipped Narrative Builder inside PowerPoint Copilot in late 2024 and rolled it broadly into enterprise tenants through 2025. It generates an outline from a Word brief, then populates layouts using imagery from the client\'s SharePoint asset library. Templafy, which works alongside it, has reported investor-deck build cycles dropping sharply on accounts running both tools together.',
-  },
-  {
-    tool: 'Gamma 3.0',
-    title: 'Variant generation got cheap, and obvious.',
-    body: 'Gamma launched 3.0 in September 2025 and repositioned itself from "AI slides" to a full visual storytelling platform. The headline feature, Gamma Agent, is an AI design partner that restyles decks through natural-language prompts. Enterprise adoption followed, then the reviews started catching up: Capterra has it at 3.7, Trustpilot at 2.0. The pattern is consistent: output starts to look the same after the third or fourth deck. Which is exactly the problem dedicated design still solves.',
-  },
-  {
-    tool: 'Beautiful.ai + Claude',
-    title: 'Iteration replaced one-shot generation.',
-    body: 'Beautiful.ai integrated Anthropic\'s Claude models last year and rebuilt its Create with AI workflow around iterative refinement: low-fidelity outline first, lock the structure, then commit to design. The shift matters because it admits something the first generation of these tools got wrong. Nobody nails the deck on the first try, and the value sits in the second pass or the third.',
   },
 ];
 
@@ -213,7 +198,7 @@ const faqs = [
   },
   {
     q: 'Can you handle a multi-market campaign, or just one deck?',
-    a: "Both. The smallest engagement is a single twelve-slide pitch deck. The biggest we have run was a sales enablement library across fourteen EMEA markets with localized imagery, properly transcreated copy and four aspect-ratio variants per slide. The language work happens in-region, not in a single translation pass.",
+    a: "Both. The smallest engagement is a single twelve-slide pitch deck. The biggest we have run was a sales enablement library across EMEA with localized imagery, properly transcreated copy and four aspect-ratio variants per slide. The language work happens in-region, not in a single translation pass.",
   },
   {
     q: 'Editable files, or just PDFs?',
@@ -221,7 +206,7 @@ const faqs = [
   },
   {
     q: 'Where are you based?',
-    a: 'Production teams in Shanghai and the Philippines, with senior creative leads in Paris and Hong Kong. The overlap between those four locations means there is working coverage across roughly fourteen hours of every weekday. We ship into around thirty-five markets, and where languages need cultural review (not just translation) we bring in-region reviewers rather than rely on a single linguist.',
+    a: 'Headquarters are in Hong Kong. Our studios are in Shanghai and Changsha, with a team in the Philippines and an office in Paris. Between those time zones there’s working coverage across roughly fourteen hours of every weekday. Where languages need cultural review (not just translation), we bring on in-region reviewers rather than rely on a single linguist.',
   },
   {
     q: "What if the deck doesn't land?",
@@ -267,7 +252,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Presentation Design', item: pageUrl },
   ],
 };
@@ -275,7 +260,7 @@ const breadcrumbSchema = {
 
 <Layout
   title="AI-Native Presentation Design | hubStudio"
-  description="AI-native presentation design for sales decks, investor pitches, and keynotes. Senior leads, editable PowerPoint and Keynote, 35+ markets."
+  description="Presentation design for sales decks, investor pitches and keynotes. Senior leads, editable PowerPoint and Keynote, in the language the room speaks."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
@@ -293,7 +278,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Presentation
           </p>
           <h1 class="hero__title">
@@ -320,7 +305,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See the work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -329,7 +314,7 @@ const breadcrumbSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Shanghai studio <span>/</span> PowerPoint &amp; Keynote, 35+ markets
+            Shanghai studio <span>/</span> Editable PowerPoint &amp; Keynote
           </p>
         </div>
       </div>
@@ -553,15 +538,15 @@ const breadcrumbSchema = {
             />
           </figure>
           <div class="source__stat">
-            <span class="source__stat-num">35+ mkts</span>
-            <span class="source__stat-cap">Editable files in every language we ship</span>
+            <span class="source__stat-num">RTL</span>
+            <span class="source__stat-cap">Right-to-left layouts built into the master</span>
           </div>
         </div>
 
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Built-in capability</p>
           <h2 class="dh r" style="--d:.05s">
-            Need it in fourteen markets?<br />Same <span class="serif">team</span>.
+            Need it in Arabic and Japanese?<br />Same <span class="serif">team</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
             Most brands run language work through a separate translation
@@ -589,7 +574,7 @@ const breadcrumbSchema = {
           </ul>
           <p class="source__p r" style="--d:.26s">
             The biggest engagement we have run is a sales enablement library
-            across fourteen EMEA markets with localized imagery, properly
+            across EMEA with localized imagery, properly
             transcreated copy and four aspect-ratio variants per slide. The
             smallest is a single twelve-slide pitch deck.
           </p>
@@ -676,51 +661,37 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <!-- ============ S7 · THREE SHIFTS / hub4You ============ -->
-    <section class="math">
-      <div class="shell">
-        <header class="band">
-          <p class="kicker kicker--light r"><span class="kicker__tick"></span>What changed</p>
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <section class="fit">
+      <div class="shell fit__grid">
+        <div class="fit__copy">
+          <p class="kicker r"><span class="kicker__tick"></span>App or studio</p>
           <h2 class="dh r" style="--d:.05s">
-            Three shifts that<br />changed <span class="serif">deck design</span>.
+            The narrative comes <span class="serif">first</span>.
           </h2>
-          <p class="band__note band__note--light r" style="--d:.1s">
-            The deck-design business has changed more in 2024 and 2025 than
-            it did in the previous decade. Three shifts in particular shape
-            what we charge for now, and where the work actually adds value.
+          <p class="fit__p r" style="--d:.10s">
+            A fair question by now: does the hubStudio app build any of this? No. A senior art director and a writer build the narrative first, then the master template, with charts linked to your data. You get editable PowerPoint and Keynote files.
           </p>
-        </header>
-
-        <div class="shifts">
-          {
-            shifts.map((s, i) => (
-              <article class="shift r" style={`--d:${i * 0.08}s`}>
-                <span class="shift__tag">{s.tool}</span>
-                <h3 class="shift__title">{s.title}</h3>
-                <p class="shift__body">{s.body}</p>
-              </article>
-            ))
-          }
+          <p class="fit__p r" style="--d:.14s">
+            The app shows up in two places. We render slide imagery in its Image studio, so a hero picture is made for the slide instead of pulled from stock. And approvals can run through Validation: we send the deck as a file, the person who signs off validates it or sends it back with a comment, and v1, v2 and v3 sit on the same thread.
+          </p>
+          <p class="fit__p r" style="--d:.18s">
+            Rather skip the login? Send the brief and the deck comes back as editable files, no account needed. A producer reads every brief within one business day.
+          </p>
+          <a class="ghost-link fit__link r" href="/studio/with-the-app" style="--d:.24s">
+            How Studio + app works
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
         </div>
-
-        <figure class="pullquote r" style="--d:.2s">
-          <blockquote>
-            The fastest I could create a solid PowerPoint for a client was
-            five days. Now it is cut in half.
-          </blockquote>
-          <figcaption>
-            <span class="pullquote__cite">Templafy customer testimonial</span>
-            <span class="pullquote__src">AI Pitch Deck whitepaper, 2025</span>
-          </figcaption>
-        </figure>
-
-        <p class="shifts__close r" style="--d:.24s">
-          The tools shortened production. They did not shorten the thinking.
-          That is what we still sell.
-        </p>
-
+        <div class="fit__shot fit__shot--portrait r" style="--d:.12s">
+          <AppShot shot={appShots.validationSend} path="/validation" caption />
+        </div>
       </div>
     </section>
+
+    <WaysToWork tone="ink" highlight="studio-app" pre="One deck, one approval " accent="thread" post="." />
 
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
@@ -735,7 +706,7 @@ const breadcrumbSchema = {
             it in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
           </div>
         </aside>
 
@@ -788,11 +759,12 @@ const breadcrumbSchema = {
           finished deck in editable PowerPoint and Keynote, with the source
           files and the linked data. No retainer. No commitment. Whatever we
           produce is yours.
+          If your team makes its own slide imagery, it can do that in the app, and creating an account costs nothing.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -1026,7 +998,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;
@@ -1996,6 +1968,57 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     align-items: center;
     gap: 14px 26px;
+  }
+  /* ===================== App or studio (S7b) ===================== */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease-out;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+  .fit {
+    background: var(--bg-white);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .fit__grid {
+    display: grid;
+    gap: clamp(40px, 5vw, 72px);
+    align-items: center;
+  }
+  @media (min-width: 1000px) {
+    .fit__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    }
+    .fit__grid--solo {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .fit__copy {
+    display: grid;
+    gap: 20px;
+    max-width: 640px;
+  }
+  .fit__copy .dh {
+    margin-bottom: 6px;
+  }
+  .fit__p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .fit__link {
+    justify-self: start;
+    margin-top: 6px;
+  }
+  /* The send dialog is a portrait capture: keep it at a readable size. */
+  .fit__shot--portrait {
+    width: 100%;
+    max-width: 420px;
+    justify-self: center;
   }
 </style>
 

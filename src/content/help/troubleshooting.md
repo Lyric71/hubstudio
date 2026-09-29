@@ -1,14 +1,14 @@
 ---
 title: "Troubleshooting"
 seoTitle: "Troubleshooting and error messages | hubStudio Help"
-description: "What hubStudio's messages mean and what to do: credits used up, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, the Assets Library and the Image editor, clients, validation, posts and connections, and more."
+description: "What hubStudio's messages mean and what to do: an empty balance, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, the Assets Library and the Image editor, clients, validation, posts and connections, and more."
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
 order: 19
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/content/image-generate", "/content/video", "/history", "/files", "/files/tools/image-editor", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
 audience: "Everyone"
-related: ["credits-and-payments", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
+related: ["balance-and-payments", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
 shots: []
 sources: ["src/lib/credits.ts", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
 ---
@@ -17,15 +17,15 @@ Find the message you see in the first column. In the messages below, a name in s
 
 A run that fails is never charged. A run that succeeds is charged the price shown before it started.
 
-## Credits
+## Balance
 
 | Message | What it means | What to do |
 |---|---|---|
-| **You are out of AI credits ([amount] left). Buy credits from Billing to keep using AI features.** | Your balance is empty, so runs are refused. | Open **Credits** > **Buy credits**. See [Credits and payments](/help/credits-and-payments). |
-| **Your team is out of AI credits ([amount] left) and you have no credits of your own.** | The team's pool is empty and you have none of your own. | Ask an admin to buy credits for the team, or buy your own on **Credits** > **Buy credits**. |
-| **You have used today's allowance of your team's credits** | You reached the daily limit an admin set you on the team's credits. | Wait for the reset at midnight UTC, buy your own credits, or ask an admin to raise your limit. See [Your team](/help/your-team#daily-limit-on-the-teams-credits). |
-| **You have no allowance on your team's credits yet** | An admin set your daily limit to zero. | Ask an admin to set a limit on the Team page, or buy your own credits. |
-| **Only an administrator can buy credits for [team].** | Only admins buy for the team; creators buy for their own account. | Pick **Your account**, or ask an admin. |
+| **You are out of AI credits ([amount] left). Buy credits from Billing to keep using AI features.** | Your balance is empty, so runs are refused. | Top up on **Credits** > **Buy credits**. See [Balance and payments](/help/balance-and-payments). |
+| **Your team is out of AI credits ([amount] left) and you have no credits of your own.** | The team balance is empty and your own balance is too. | Ask an admin to top up the team balance, or top up your own. |
+| **You have used today's allowance of your team's credits** | You reached the daily limit an admin set you on the team balance. | Wait for the reset at midnight UTC, top up your own balance, or ask an admin to raise your limit. See [Your team](/help/your-team#daily-limit-on-the-team-balance). |
+| **You have no allowance on your team's credits yet** | An admin set your daily limit to zero. | Ask an admin to set a limit on the Team page, or top up your own balance. |
+| **Only an administrator can buy credits for [team].** | Only admins top up the team balance; creators top up their own account. | Pick **Your account**, or ask an admin. |
 | **Automatic top-up is paused.** | The saved card was declined. | Check the card, then click **Try again**, or **Replace card**. |
 | **Please accept the Terms of Service to continue.** | The box before your first purchase is not ticked. | Tick it, then click **Buy**. |
 

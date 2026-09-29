@@ -5,10 +5,10 @@ description: "The sign-in page in your language, your name, picture, sign-in ema
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
 order: 17
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"
-related: ["getting-started", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "credits-and-payments", "troubleshooting"]
+related: ["getting-started", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "balance-and-payments", "troubleshooting"]
 shots:
   - file: "/Images/help/account-and-sign-in-security.webp"
     route: "/settings"
@@ -34,7 +34,7 @@ sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts",
 
 Open **User Settings** from the menu under your picture, at the top right of every page. The band at the top of the page shows who is signed in, your role and your team, then three figures: **Available now**, **Spent today** and **Spent this month**. The sections are listed on the left.
 
-Your role is one of **Admin**, **Creator**, **Viewer** or **Client**, with a line that says what it allows. See [Your team](/help/your-team#the-four-roles). A client login holds no credits, so its band shows no balance.
+Your role is one of **Admin**, **Creator**, **Viewer** or **Client**, with a line that says what it allows. See [Your team](/help/your-team#the-four-roles). A client login holds no balance, so its band shows none.
 
 ## Your name
 
@@ -166,7 +166,7 @@ Click **Save**. Each dictation is billed by the second like any other run, and i
 
 ## Invoices
 
-Under **Invoices**, type the **Name on the invoice** and the **Address** printed on the invoices for credits you buy for your own account, then click **Save**. See [Credits and payments](/help/credits-and-payments#invoices).
+Under **Invoices**, type the **Name on the invoice** and the **Address** printed on the invoices for the top-ups of your own balance, then click **Save**. See [Balance and payments](/help/balance-and-payments#invoices).
 
 ## Activity log
 

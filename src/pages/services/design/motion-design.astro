@@ -3,7 +3,7 @@
  * Motion Design  ·  /services/design/motion-design
  *
  * Art direction continues the "Pressroom" language of the Packaging & Merch
- * page: crop marks, a calibration colour bar, mono figure labels, registration
+ * page: crop marks, a calibration color bar, mono figure labels, registration
  * marks, dashed dividers. The subject moves to motion stills, timeline detail
  * and variant grids, but the visual grammar of the design vertical holds.
  *
@@ -13,6 +13,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Studio motion stills, each with an invented brand mark. */
 const samples = [
@@ -54,7 +57,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -136,7 +139,7 @@ const processSteps = [
     title: 'AI exploration.',
     body: 'Style frames and motion tests in parallel, often a dozen directions inside the first week.',
     image: '/Images/md-p3-aigc.jpg',
-    alt: 'A studio monitor showing a clean grid of twelve AI motion exploration thumbnails, each a colour and lighting variation of the same scene.',
+    alt: 'A studio monitor showing a clean grid of twelve AI motion exploration thumbnails, each a color and lighting variation of the same scene.',
   },
   {
     short: 'Hero build',
@@ -150,7 +153,7 @@ const processSteps = [
     short: 'Variants',
     tier: 'The rest is execution',
     title: 'Variant production at scale.',
-    body: 'Cutdowns, aspect ratios, language localisation, regional swaps, all through the brand-trained pipeline. Captions and end cards built in.',
+    body: 'Cutdowns, aspect ratios, language localization, regional swaps, all through the brand-trained pipeline. Captions and end cards built in.',
     image: '/Images/md-p5-adapt.jpg',
     alt: 'A studio wall of five monitors at different aspect ratios, each showing the same hero scene adapted to fit.',
   },
@@ -162,7 +165,7 @@ const processSteps = [
 const oldPhases = [
   { label: 'Hero animation', dur: 'Two weeks', span: 2 },
   { label: 'Cutdowns by hand', dur: 'Three weeks', span: 3 },
-  { label: 'Localisation', dur: 'One week', span: 1 },
+  { label: 'Localization', dur: 'One week', span: 1 },
 ];
 
 /* FAQ: wording from the source markdown. One answer links to the Copyright
@@ -249,6 +252,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/motion-design`;
 
@@ -269,7 +275,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Motion Design', item: pageUrl },
   ],
 };
@@ -295,7 +301,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Motion
           </p>
           <h1 class="hero__title">
@@ -320,7 +326,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See the work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -695,7 +701,7 @@ const breadcrumbSchema = {
               </div>
               <p class="vs__p">
                 Brief an agency, two weeks on the hero, three more for cutdowns
-                by hand, a final week for language localisation. By the time
+                by hand, a final week for language localization. By the time
                 the variants ship the fatigue window has already closed on the
                 hero. Two animators on After Effects, one tired team.
               </p>
@@ -730,6 +736,38 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Animate a still, or build a motion "
+      accent="system"
+      post="."
+      intro="The hubStudio app can put a picture in motion. It can’t build an ident, an explainer, or a kinetic type system."
+      columns={[
+        {
+          title: 'What the app can animate',
+          body: [
+            'Give the Video studio a start frame, or a start and a last frame, and describe the move. The Skills catalog has ready-made camera moves and a vertical video ad format; they shape the prompt when you use Improve with AI. That’s enough for a product loop or a social teaser.',
+          ],
+        },
+        {
+          title: 'What our motion designers add',
+          body: [
+            'The motion system comes first, worked out in storyboards and styleframes. Our motion designers build the hero piece by hand, with the type, the logo animation, and the sound design. The variant pipeline then cuts the approved hero into every format and language on the plan.',
+          ],
+        },
+      ]}
+      shot={appShots.videoStudio}
+      shotPath="/content/video"
+      shotCaption="The Video studio: start from a frame, describe the move, render the clip."
+      links={[
+        { label: 'See the Video studio', href: '/app/create' },
+        { label: 'Create a video, step by step', href: '/help/create-a-video' },
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio"
+      ways={{ pre: 'Who puts it in ', accent: 'motion', post: '?' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -743,7 +781,7 @@ const breadcrumbSchema = {
             in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -796,11 +834,12 @@ const breadcrumbSchema = {
           frames, a 15-second hero animatic, and a production estimate for the
           full variant matrix. No retainer, no commitment, and whatever we
           produce is yours to keep regardless of whether you go ahead with us.
+          Only need a quick product loop? You can make it yourself in the app, and the account costs nothing.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -815,6 +854,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1034,7 +1084,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

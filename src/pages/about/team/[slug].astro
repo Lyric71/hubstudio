@@ -1,6 +1,6 @@
 ---
 /**
- * Author page  ·  /the-studio/creative-talents/<slug>
+ * Author page  ·  /about/team/<slug>
  *
  * Infrastructure item 6. The entity graph needs a real, resolvable page per
  * named person so an article byline has somewhere to point and Person schema
@@ -74,12 +74,12 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'The Studio', item: `${SITE}/the-studio` },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE}/about` },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Creative talents',
-      item: `${SITE}/the-studio/creative-talents`,
+      item: `${SITE}/about/team`,
     },
     { '@type': 'ListItem', position: 4, name: author.name, item: url },
   ],
@@ -98,7 +98,7 @@ const metaDescription = author.bio
   <article class="au">
     <div class="container">
       <nav class="au-back">
-        <a href="/the-studio/creative-talents">All creative talents</a>
+        <a href="/about/team">All creative talents</a>
       </nav>
 
       <header class="au-head">

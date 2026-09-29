@@ -3,7 +3,7 @@
  * Social Media Content  ·  /services/design/social-media
  *
  * Art direction inherited from packaging-merch-design: a "pressroom"
- * editorial frame (crop marks, calibration colour bar, mono figure
+ * editorial frame (crop marks, calibration color bar, mono figure
  * labels) wraps social content samples and process imagery. The brief
  * is the feed: ship more, ship faster, ship to two platform cultures
  * at once (Meta and TikTok in the West, Xiaohongshu and Douyin in
@@ -15,6 +15,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 import InsightsLayer from '../../../components/InsightsLayer.astro';
 
 /* Studio campaign samples, each with an invented brand mark. */
@@ -57,7 +60,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar, used as a section divider. */
+/* Calibration color bar, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -139,7 +142,7 @@ const processSteps = [
     title: 'AI training and exploration.',
     body: 'Brand-trained models on your existing assets. Dozens of variants in parallel, in days not weeks.',
     image: '/Images/sm-p3-ai.jpg',
-    alt: 'A designer monitor showing a grid of twelve AI-generated vertical social ad variants in different colour treatments.',
+    alt: 'A designer monitor showing a grid of twelve AI-generated vertical social ad variants in different color treatments.',
   },
   {
     short: 'Production',
@@ -236,6 +239,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/social-media`;
 
@@ -256,7 +262,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Social Media', item: pageUrl },
   ],
 };
@@ -282,7 +288,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Social Media Content
           </p>
           <h1 class="hero__title">
@@ -307,7 +313,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See sample work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -478,7 +484,7 @@ const breadcrumbSchema = {
           </div>
           <p class="band__note r" style="--d:.1s">
             Frames from recent social engagements: TikTok testing
-            programs, always-on Xiaohongshu, AI UGC across nine markets,
+            programs, always-on Xiaohongshu, AI UGC in several markets,
             luxury Reels, Douyin livestream and cross-platform
             automotive. Every image is authored work, not a stock pull.
           </p>
@@ -726,6 +732,42 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Post it yourself, or have us run the "
+      accent="feed"
+      post="."
+      intro="Much of the day-to-day fits in the hubStudio app. Your team can make the pictures and write the post, then publish it without us. Keeping a feed good for months is where the studio comes in."
+      columns={[
+        {
+          label: 'In the app',
+          title: 'What your team can do on its own',
+          body: [
+            'Make images in the Image studio and short clips in the Video studio. Crop each picture to the network’s format in the Image editor. Draft the caption with AI or write it yourself, then publish now or schedule it to LinkedIn, Instagram, Facebook, TikTok (Beta), and X, up to 20 accounts per post. One post can be re-purposed for the other networks. You pay for each run from a prepaid balance, and the price shows before you press.',
+          ],
+        },
+        {
+          label: 'From the studio',
+          title: 'What we add',
+          body: [
+            'A senior art director sets the look and the idea that holds a series together. We mix creator shoots with generation and decide which one each asset needs. Nothing goes out before a retoucher has been over it. We also cover the platforms the app doesn’t publish to: Xiaohongshu, Douyin, WeChat, and Bilibili.',
+            'You can also split the job. We work in your hubStudio workspace, your admins approve each post in Validation, and it goes out from your own connected accounts.',
+          ],
+        },
+      ]}
+      shot={appShots.instagram}
+      shotPath="/social/instagram/posts"
+      shotCaption="Instagram in hubStudio: start from the picture or the video, then write the caption."
+      links={[
+        { label: 'What the app publishes', href: '/app/publish' },
+        { label: 'Instagram, step by step', href: '/help/instagram' },
+        { label: 'How the app is paid', href: '/pricing' },
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio-app"
+      ways={{ pre: 'Pick who makes the ', accent: 'feed', post: '.' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -739,7 +781,7 @@ const breadcrumbSchema = {
             put it in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -796,11 +838,12 @@ const breadcrumbSchema = {
           direction document, fifteen to twenty variants and a
           production estimate. No retainer, no commitment. Whatever we
           produce is yours either way.
+          Rather make the weekly posts yourself? Open a hubStudio account. It costs nothing to start.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -815,6 +858,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1034,7 +1088,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

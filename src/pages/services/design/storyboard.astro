@@ -3,7 +3,7 @@
  * Storyboard  ·  /services/design/storyboard
  *
  * Same art-direction system as /services/design/packaging-merch-design (the
- * "pressroom" layout): mono labels, dieline crop marks, a calibration colour
+ * "pressroom" layout): mono labels, dieline crop marks, a calibration color
  * bar, editorial typography, alternating media features. Adapted for
  * pre-production: six format lanes instead of two, a "where AI breaks"
  * spread in place of the sourcing block, and a 2-3 week vs 3-5 day timeline.
@@ -14,6 +14,10 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import AppShot from '../../../components/AppShot.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Selected studio samples, each tied to a project type. */
 const samples = [
@@ -55,7 +59,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -65,7 +69,7 @@ const colourBar = [
 const stats = [
   { from: 0, to: 5, suffix: ' days', label: 'First-cut delivery', note: 'On a 30-second spot' },
   { from: 0, to: 70, suffix: '%', label: 'Faster pre-production', note: 'Average across campaigns' },
-  { from: 0, to: 6, suffix: ' markets', label: 'Average campaign reach', note: 'Last twelve months' },
+  { from: 0, to: 10, suffix: '', label: 'Frame directions', note: 'In the time one is drawn by hand' },
 ];
 
 /* Trust signals shown as a thin strip below the hero. */
@@ -106,7 +110,7 @@ const lanes = [
     label: 'Explainer and product film',
     image: '/Images/sb-sample-explainer.jpg',
     alt: 'A laptop showing a product UI storyboard panel beside a voiceover script and a script-to-frame timeline.',
-    lead: 'Where most B2B and SaaS work lives. Voiceover-driven, with UI screen states or product visualisation at the centre.',
+    lead: 'Where most B2B and SaaS work lives. Voiceover-driven, with UI screen states or product visualization at the center.',
     body: 'Boards carry script-to-frame sync down to the syllable, so the editor cuts to the word and not around it.',
     tags: ['B2B films', 'SaaS demos', 'UI screen states', 'Script-to-frame sync', 'VO timing'],
   },
@@ -192,7 +196,7 @@ const faqs = [
   },
   {
     q: 'Why is this more expensive than a freelance storyboard artist?',
-    a: "A freelancer quotes per frame on the work as drawn. Our setup includes creative direction from a senior art director, AI iteration that puts ten directions in front of you in the time it takes a freelance artist to draw one, character and product consistency tooling, animatic-ready file structure, and the handoff to the production company. For a single thumbnail, we are not the cheap option. For a campaign that has to ship across multiple formats and markets, the per-frame math usually works out in our favour.",
+    a: "A freelancer quotes per frame on the work as drawn. Our setup includes creative direction from a senior art director, AI iteration that puts ten directions in front of you in the time it takes a freelance artist to draw one, character and product consistency tooling, animatic-ready file structure, and the handoff to the production company. For a single thumbnail, we are not the cheap option. For a campaign that has to ship across multiple formats and markets, the per-frame math usually works out in our favor.",
   },
   {
     q: 'How does this compare to using AI tools in-house?',
@@ -263,7 +267,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Storyboard', item: pageUrl },
   ],
 };
@@ -289,7 +293,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Services
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Pre-production
           </p>
           <h1 class="hero__title">
@@ -314,7 +318,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See sample work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -558,7 +562,7 @@ const breadcrumbSchema = {
           <p class="source__lead r" style="--d:.1s">
             Image models are probabilistic by design. Without a tight reference
             setup they drift between frames. Facial features morph. Hair
-            changes colour. Product labels rotate on their own.
+            changes color. Product labels rotate on their own.
           </p>
           <p class="source__p r" style="--d:.16s">
             That is the failure mode you cannot ship to a director. Our setup
@@ -752,6 +756,38 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <section class="fit">
+      <div class="shell fit__grid">
+        <div class="fit__copy">
+          <p class="kicker r"><span class="kicker__tick"></span>App or studio</p>
+          <h2 class="dh r" style="--d:.05s">
+            Boards need an art <span class="serif">director</span>.
+          </h2>
+          <p class="fit__p r" style="--d:.10s">
+            Shot grammar, pacing and what the camera does between frames: that judgment is why directors and agencies send us scripts. A senior art director leads the boards from the first frame to the handoff.
+          </p>
+          <p class="fit__p r" style="--d:.14s">
+            The app is how we get there faster. We render frames in the hubStudio Image studio, and a key frame can become a short moving test in the Video studio, from a start frame or from a start and a last frame. It’s a quick check on timing before anyone books a shoot.
+          </p>
+          <p class="fit__p r" style="--d:.18s">
+            This part matters if you sign off from a different city than the director. Working Studio + app, you review each round in the app and approve or send back frames in Validation. Every version stays together, so everyone reads the same record, the director included.
+          </p>
+          <a class="ghost-link fit__link r" href="/studio/with-the-app" style="--d:.24s">
+            How Studio + app works
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+        <div class="fit__shot r" style="--d:.12s">
+          <AppShot shot={appShots.videoStudio} path="/content/video" caption />
+        </div>
+      </div>
+    </section>
+
+    <WaysToWork tone="ink" highlight="studio-app" pre="Every frame on one " accent="thread" post="." />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -765,7 +801,7 @@ const breadcrumbSchema = {
             it in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
           </div>
         </aside>
 
@@ -818,11 +854,12 @@ const breadcrumbSchema = {
           opening sequence and a board estimate for the full spot. No
           retainer, no commitment. Whatever we produce is yours to keep,
           regardless of where the conversation goes.
+          Prefer to render your own frames? Open an account in the app. It costs nothing to create.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -1056,7 +1093,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;
@@ -2103,6 +2140,51 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     align-items: center;
     gap: 14px 26px;
+  }
+  /* ===================== App or studio (S7b) ===================== */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease-out;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+  .fit {
+    background: var(--bg-white);
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .fit__grid {
+    display: grid;
+    gap: clamp(40px, 5vw, 72px);
+    align-items: center;
+  }
+  @media (min-width: 1000px) {
+    .fit__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    }
+    .fit__grid--solo {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .fit__copy {
+    display: grid;
+    gap: 20px;
+    max-width: 640px;
+  }
+  .fit__copy .dh {
+    margin-bottom: 6px;
+  }
+  .fit__p {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+  }
+  .fit__link {
+    justify-self: start;
+    margin-top: 6px;
   }
 </style>
 

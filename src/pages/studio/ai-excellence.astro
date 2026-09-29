@@ -1,99 +1,88 @@
 ---
 /**
- * AI Excellence (`/the-studio/ai-excellence`).
- * Narrative content sourced from ai-excellence-page.md. Brand name normalised
- * to the canonical "hubStudio" casing throughout. No ordinal numerals in any
- * card or repeated block, per the permanent no-numbers-in-cards rule: the
- * five-stage pipeline carries its sequence through stage names and visual
- * order only. Stat figures are data display (units attached), not ordinals.
+ * How we use AI  ·  /studio/ai-excellence (moved from the old studio path,
+ * which 301s here).
  *
- * Layout mirrors who-we-are.astro: layered editorial. Image hero, overlapping
- * stat card, an image-backed capabilities trio, asymmetric splits, an audience
- * grid, a vertical pipeline flow, service cards, an FAQ accordion and a
- * closing CTA. Motion:
- * page-load stagger in the hero, scroll-reveal elsewhere, parallax on section
- * media, count-up on stats, plus a scroll-progress bar.
+ * How the STUDIO uses AI: brand-trained models on GPU pipelines, human
+ * direction and QA, the economics, the legal trail, and how the studio works
+ * inside the hubStudio app. Copy comes from the content-quality-us deck
+ * `studio-ai-excellence` (final.md). No ordinal numerals in any card or
+ * repeated block: the five-stage pipeline carries its sequence through stage
+ * names and visual order only, in an unnumbered list. Fact-band figures are
+ * data with units attached, not ordinals, and come from the positioning file.
+ *
+ * Layout: image hero, overlapping fact card, an image-backed pillar trio,
+ * asymmetric splits, an audience grid, a vertical pipeline, service cards, the
+ * studio-inside-the-app split, engagement models, an FAQ, the insights layer
+ * and the shared DualCta. Motion: page-load stagger in the hero,
+ * scroll-reveal elsewhere, parallax on section media, count-up on the numeric
+ * facts, plus a scroll-progress bar.
  */
 import Layout from '../../layouts/Layout.astro';
-import Button from '../../components/Button.astro';
 import InsightsLayer from '../../components/InsightsLayer.astro';
+import DualCta from '../../components/DualCta.astro';
+import { BRIEF_URL } from '../../lib/links';
 
 const heroChips = [
   'AIGC image',
   'AIGC video',
   'AIGC content',
-  'Custom model training',
+  'Brand-trained models',
   'Prompt engineering',
 ];
 
-/* S3: the three capabilities that fold into one studio. */
+/* Fact band. Figures from hubstudio-positioning.md only; a word-fact is set
+   in the Playfair italic accent, per the style guide. */
+const facts: { count?: number; suffix?: string; word?: string; label: string }[] = [
+  { count: 48, suffix: 'h', label: 'From brief to a written proposal' },
+  { word: 'One day', label: 'Until a producer has read your brief' },
+  { count: 20, label: 'Service lines under one roof' },
+  { word: 'Per asset', label: 'Provenance recorded on everything we deliver' },
+];
+
+/* The three crafts that make one studio. */
 const unitePillars = [
   {
-    name: 'Best in class creative',
-    desc: 'A strong creative and design team drawn from 4A agencies, mixing international and Chinese talent.',
+    name: 'Senior creative',
+    desc: 'Art directors and designers from international agencies and the Chinese market.',
   },
   {
-    name: 'AIGC technical experts',
-    desc: 'AIGC engineers with deep hands-on experience, running our own dedicated GPU infrastructure.',
+    name: 'AIGC specialists',
+    desc: 'Engineers who run the studio’s GPU pipelines and train models on each brand.',
   },
   {
     name: 'Studio capabilities',
-    desc: 'Account services, media, and live photo and video shooting, all under one roof.',
+    desc: 'Producers, retouchers, and live photo and video shoots when a picture needs a camera. See it in client work like the iFlytek launch, which mixed a live shoot, CGI, and AIGC.',
   },
 ];
 
-const stats = [
-  { value: 60, suffix: '%', label: 'Below traditional studio production cost' },
-  { value: 7, suffix: 'x', label: 'Output scaled for brands working this way' },
-  { value: 78, suffix: '%', label: 'Internal approval rate on AI assets, up from 22%' },
-  { value: 6, suffix: 'wk', label: 'From brief to a trained custom model, at most' },
-];
-
-/* S4: the three-way market position. The hubStudio card is the resolved
-   answer, so it carries the accent treatment. */
-const stance = [
-  {
-    kind: 'Traditional studios',
-    line: 'Craft, but too slow and too expensive for the volume marketing teams need now.',
-  },
-  {
-    kind: 'Generic AI tools',
-    line: 'Fast and cheap, weak on cultural nuance and brand voice. They hand you a tool, not an output.',
-  },
-  {
-    kind: 'hubStudio',
-    line: 'AI does the heavy lifting. Senior creatives make sure the result is something the brand can put its name on.',
-    lead: true,
-  },
-];
-
-/* S6: who we work with. One creative angle each, written for hubStudio. */
+/* Who we work with. One creative angle each, written for hubStudio. */
 const audiences = [
   {
     name: 'Agencies',
-    desc: 'White-label production capacity for groups that need to scale output without scaling headcount.',
+    desc: 'Production capacity when the work grows faster than the headcount.',
   },
   {
     name: 'Brand marketing teams',
-    desc: 'HiSense in consumer electronics, age20 in beauty, both running always-on content programs through the studio.',
+    desc: 'Always-on content, from launch films to the weekly feed.',
   },
   {
     name: 'Retailers and eCommerce',
-    desc: 'Thousands of SKUs across an almost infinite set of format requirements, held to one brand standard.',
+    desc: 'Thousands of SKUs in every format a marketplace asks for, held to one brand standard.',
   },
   {
     name: 'Manufacturers',
-    desc: 'Global product libraries localized so regional sales teams sell with assets that fit their market.',
+    desc: 'Global product libraries adapted so regional sales teams get assets that fit their market.',
   },
   {
     name: 'Procurement leads',
-    desc: 'Predictable monthly spend, clear deliverables, quarterly advance billing for budget clarity.',
+    desc: 'A clear price model (per asset, per project, or retainer) and a provenance record on every file you pay for.',
   },
 ];
 
-/* S6 icon set: one consistent 1.7px stroke system drawn for hubStudio.
+/* Audience icon set: one consistent 1.7px stroke system drawn for hubStudio.
    Interlocking frames, campaign horn, price tag, product box, billing
-   calendar. currentColor lets each card recolour them. */
+   calendar. currentColor lets each card recolor them. */
 const audienceIcons = [
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="3" width="12" height="12" rx="2.6"/><rect x="9" y="9" width="12" height="12" rx="2.6"/></svg>',
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a2 2 0 0 0 2 2h1l1.6 4.6"/><path d="M4 12 17 5.4v13.2L4 12Z"/><path d="M17.4 9.4a3.2 3.2 0 0 1 0 5.2"/></svg>',
@@ -102,49 +91,37 @@ const audienceIcons = [
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="4.6" width="17.2" height="16" rx="2.6"/><path d="M3.4 9.6h17.2"/><path d="M8 2.8v3.6M16 2.8v3.6"/><path d="M7.8 14.4 10.2 16.8 16 11"/></svg>',
 ];
 
-/* S7: the production pipeline. Five stages, sequence carried by name and
-   order, no ordinal numerals. */
+/* The production pipeline. Five stages, sequence carried by name and order,
+   no ordinal numerals. */
 const pipeline = [
   {
     name: 'Brief',
-    desc: 'We sit with the client team to map objectives, brand codes, audiences and channels.',
+    desc: 'We map objectives, brand codes, audiences, and channels with your team.',
     meta: 'One or two working sessions',
   },
   {
     name: 'Train',
-    desc: 'Engineers train custom AI models, including LoRA, on the brand’s visual language and product library.',
-    meta: 'Three to six weeks',
+    desc: 'Engineers train custom models, including LoRA, on your visual language and product library. The point is that the bottle on screen is your bottle, not a close cousin. For Noyz, we trained a model on fluid physics so its perfume’s mist-to-milk effect looked real on screen.',
+    meta: 'Before volume production',
   },
   {
     name: 'Create',
-    desc: 'Senior art directors generate options at volume, then narrow to the strongest cuts.',
-    meta: 'A hundred concepts down to ten',
+    desc: 'Art directors generate options at volume, then narrow them to the strongest.',
+    meta: 'Wide exploration, tight selection',
   },
   {
     name: 'Perfect',
-    desc: 'Studio retouching, copy editing and brand QA before anything leaves the building.',
+    desc: 'Retouching, copy editing, and brand QA before anything leaves the studio.',
     meta: 'Final human pass',
   },
   {
     name: 'Deploy',
-    desc: 'Files delivered in client formats, ready for social, eCommerce, paid media and CRM.',
+    desc: 'Files delivered in your formats, ready for social, eCommerce, paid media, and CRM.',
     meta: 'Channel-ready output',
   },
 ];
 
-/* S8: what collapsing production costs unlock for brands. */
-const unlocks = [
-  'A hundred concepts to test instead of five',
-  'Native relevance for every audience, culture and platform, not a global creative that lands nowhere specific',
-  'Bold ideas tested without production risk',
-  'No props, no talent fees, no crew on standby',
-  'Data feedback that improves the next round of assets',
-  'Multi-market transcreation that respects local nuance, not a translated headline on a Western image',
-  'Output at scale and speed, without the brand becoming unrecognizable in the process',
-];
-
-/* S9: the three AIGC service lines. Service detail pages are not yet live, so
-   each card links to the work index rather than a dead route. */
+/* The three AIGC service lines, each linked to its solution page. */
 const services = [
   {
     name: 'AIGC Image',
@@ -152,8 +129,10 @@ const services = [
     w: 1440,
     h: 1920,
     alt: 'A Camper footwear campaign visual adapted across markets by hubStudio.',
-    lead: 'Hundreds of on-brand product shots, lifestyle visuals and campaign assets, delivered in days.',
-    detail: 'Product photography, seasonal campaigns, market adaptations, social assets. Cuts production time by 80 percent.',
+    lead: 'Product shots, lifestyle visuals, and campaign assets that stay on brand.',
+    detail: 'Product photography, seasonal campaigns, market adaptations, social assets.',
+    href: '/solutions/ai-production/image',
+    cta: 'AI image production',
   },
   {
     name: 'AIGC Video',
@@ -161,8 +140,10 @@ const services = [
     w: 1800,
     h: 1350,
     alt: 'A HiSense brand video frame produced through the hubStudio AIGC pipeline.',
-    lead: 'Premium brand storytelling without the constraints of traditional video production.',
-    detail: 'Short-form social, brand films, campaign cutdowns, built for the feed they ship to.',
+    lead: 'Brand films, product videos, and social cuts, made with or without a camera.',
+    detail: 'Short-form social, brand films, campaign cutdowns, cut for the feed they run in.',
+    href: '/solutions/ai-production/video',
+    cta: 'AI video production',
   },
   {
     name: 'AIGC Content',
@@ -170,90 +151,93 @@ const services = [
     w: 1800,
     h: 2423,
     alt: 'An age20 beauty campaign asset created by the hubStudio content team.',
-    lead: 'PR articles, campaign storyboards, video scripts, email copy, product naming, website pages.',
-    detail: 'Brand voice held steady across every format. Days, not weeks.',
+    lead: 'PR articles, storyboards, video scripts, email copy, product names, and web pages.',
+    detail: 'One brand voice across every format.',
+    href: '/solutions/ai-production/content',
+    cta: 'AI content production',
   },
 ];
 
-/* S10: how clients engage. Three models, most use a combination. */
+/* How studio work is scoped. Three models, most clients combine them. */
 const engage = [
   {
     kicker: 'One-off',
     name: 'Creative AI Setup',
-    desc: 'The studio defines the client’s visual language and trains custom AI models, including LoRA, on the brand. A one-time engagement that becomes the foundation for everything after.',
+    desc: 'We define your visual language and train custom models, including LoRA, on the brand. It’s the foundation for everything after.',
   },
   {
     kicker: 'Monthly retainer',
-    name: 'Ongoing Content Production',
-    desc: 'A predictable monthly flow of text, images and video. Scoped to the channel mix, paced to the editorial calendar, billed quarterly in advance for budget clarity.',
+    name: 'Ongoing content production',
+    desc: 'A steady flow of text, images, and video, scoped to your channel mix and paced to your calendar.',
   },
   {
     kicker: 'Project-based',
-    name: 'Studio Services',
-    desc: 'Live photo and video shoots when AIGC alone is not the right call, product image cleanup so AI output starts from a stronger base, plus distribution across social, web and eCommerce.',
+    name: 'Studio services',
+    desc: 'Live photo and video shoots when AI alone isn’t the right call, product image cleanup so generation starts from a better base, and delivery across social, web, and eCommerce.',
   },
 ];
 
-/* S11: what clients are actually paying for. Authored 1.8px line icons:
-   four-point spark, code brackets, node graph, curation funnel. */
-const payoff = [
-  {
-    name: 'Creative expertise',
-    desc: 'People who know what works for your audience, not just what looks impressive on a render.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.4 14.9 9.1 21.6 12 14.9 14.9 12 21.6 9.1 14.9 2.4 12 9.1 9.1Z"/></svg>',
-  },
-  {
-    name: 'Prompt engineering',
-    desc: 'Writing instructions so the model produces what the brand needs the first time, not the fortieth.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7.2 4.4 12 9 16.8"/><path d="M15 7.2 19.6 12 15 16.8"/></svg>',
-  },
-  {
-    name: 'Custom model training',
-    desc: 'Teaching generation models the brand’s specific style, a visual intelligence off-the-shelf tools cannot match.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.3 7.3 16.7 11M7.3 16.7 16.7 13"/></svg>',
-  },
-  {
-    name: 'Intelligent curation',
-    desc: 'Hundreds of options get generated. The ten that actually perform are the ones we ship.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 5h17.2l-6.6 7.7V20l-4 1.6v-8.9Z"/></svg>',
-  },
-];
-
-const ipPoints = [
-  'Every asset documented: which model was used, which references trained it, which prompts produced it.',
-  'The custom models we train on your brand are your property, not ours. Full stop.',
-  'For commercial work, we use models with clear licensing terms.',
-  'An audit trail any legal team can verify. No client legal review has come back with a problem yet.',
-];
-
-const faqs = [
+/* FAQ: `a` is plain text for the JSON-LD; `html` adds the in-page links. */
+const faqs: { q: string; a: string; html?: string }[] = [
   {
     q: 'How long does a Creative AI Setup take?',
-    a: 'Three to six weeks from brief to trained model, depending on the depth of the brand library.',
+    a: 'It depends mostly on your brand library: how many products, how many looks, and how clean the reference images are. In our experience, a clean catalog shot on one background is quicker to train on than years of mixed campaign photography. The proposal gives a timeline once we’ve seen what you have.',
   },
   {
     q: 'What does monthly content production cost?',
-    a: 'Honestly, it depends. Retainers start in the low four figures per month for smaller brands and scale up from there based on volume. We price around the actual asset mix you need, not a fixed package, because no two brands run the same channel mix. Happy to walk you through what your numbers would look like on a call.',
+    a: 'It depends on the volume and the mix of images, video, and copy. We price around what you actually need rather than a fixed package, quote after reading your brief, and send a written proposal within 48 hours. We don’t publish rates.',
+    html: 'It depends on the volume and the mix of images, video, and copy. We price around what you actually need rather than a fixed package, quote after reading your brief, and send a written proposal within 48 hours. We don’t publish rates, but <a href="/pricing">the pricing page</a> explains each model.',
   },
   {
     q: 'Can you match the quality of a traditional photo shoot?',
-    a: 'For most product, lifestyle and campaign work, yes, easily. Where it gets more interesting is high-end fashion editorial, or shoots that need a specific talent or location. There we usually recommend a hybrid approach: live capture combined with AIGC post-production. The two are not mutually exclusive.',
+    a: 'For most product, lifestyle, and campaign work, yes. High-end fashion, or a shoot that needs a specific person or place, is different. There we usually recommend a hybrid: live capture, finished with AIGC.',
   },
   {
-    q: 'Do you work with agencies on a white-label basis?',
-    a: 'Yes. White-label production for agencies is one of the studio’s largest service lines.',
+    q: 'Can the studio work inside our hubStudio workspace?',
+    a: 'Yes. Add our creatives as members of your team. We create from your balance, your admins approve in Validation, and everything stays in your History and Assets Library.',
+    html: 'Yes. Add our creatives as members of your team. We create from your balance, your admins approve in Validation, and everything stays in your History and Assets Library. <a href="/studio/with-the-app">Studio + app</a> explains both setups.',
+  },
+  {
+    q: 'Do you work with agencies?',
+    a: 'Yes. Agencies brief the studio like any client. With Studio + app, we can work inside your agency’s hubStudio team, and your clients approve with their own logins. Our partner program covers referrals.',
+    html: 'Yes. Agencies brief the studio like any client. With Studio + app, we can work inside your agency’s hubStudio team, and your clients approve with their own logins. <a href="/partners">Our partner program</a> covers referrals.',
   },
   {
     q: 'Where is your team based?',
-    a: 'The studio is based in China, with creatives drawn from both Western 4A agencies and the Chinese market. Clients are across Asia, Europe and the Americas.',
+    a: 'The studio is headquartered in Hong Kong, with studios in Shanghai and Changsha, a team in the Philippines, and an office in Paris.',
   },
 ];
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/studio/ai-excellence`;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
+    { '@type': 'ListItem', position: 3, name: 'How we use AI', item: pageUrl },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <Layout
-  title="AI Excellence | hubStudio AIGC Content Studio"
-  description="AI-native content studio with senior creatives, prompt engineers and GPU power. On-brand assets at scale, in days, at a fraction of traditional production cost."
+  title="How our AI content studio works | hubStudio"
+  description="How the hubStudio studio uses AI: GPU pipelines, brand-trained models, human QA, and a legal trail for every asset, in the app or outside it."
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ===== S1: Hero ===== -->
@@ -274,26 +258,31 @@ const faqs = [
     </div>
 
     <div class="container hero__inner">
-      <p class="eyebrow hero__kicker">The Studio</p>
+      <nav class="hero__crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/studio">Studio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">How we use AI</span>
+      </nav>
+      <p class="eyebrow hero__kicker">The studio</p>
       <h1 class="hero__title">
-        <span class="hero__w">AI</span>
-        <span class="hero__w hero__w--accent">Excellence</span>
+        <span class="hero__w">How we use</span>
+        <span class="hero__w hero__w--accent">AI</span>
       </h1>
-      <p class="hero__lede">
-        Creative intelligence is the new moat
-      </p>
+      <p class="hero__lede">Models trained on your brand, directed by people who know it.</p>
       <p class="hero__intro">
-        When every brand has the same AI tools, the work that wins is the work
-        humans choose to ship. hubStudio is an AI-native content studio built
-        for exactly that.
+        The hubStudio studio runs its own AI production. Our engineers maintain the pipelines,
+        we train models on your brand, and senior art directors decide what ships. This page
+        walks through how it works, including when we work inside the hubStudio app.
       </p>
       <ul class="hero__chips">
         {heroChips.map((c) => <li class="hero__chip">{c}</li>)}
       </ul>
       <div class="hero__meta">
-        <span class="hero__meta-item">A studio first, an AI company second</span>
+        <span class="hero__meta-item">Senior art directors on every brief</span>
         <span class="hero__meta-item">
-          Clients across Asia, Europe and the Americas
+          Hong Kong, Shanghai, Changsha, the Philippines, and Paris
         </span>
       </div>
     </div>
@@ -310,17 +299,23 @@ const faqs = [
     </svg>
   </section>
 
-  <!-- ===== S2: Stats (overlapping card) ===== -->
+  <!-- ===== S2: Facts (overlapping card) ===== -->
   <section class="stats">
     <div class="container">
       <div class="stats__card">
         {
-          stats.map((s, i) => (
+          facts.map((s, i) => (
             <article class="stat" data-reveal style={`--i:${i}`}>
-              <span class="stat__num">
-                <span class="stat__count" data-count={s.value}>0</span>
-                <span class="stat__suffix">{s.suffix}</span>
-              </span>
+              {s.count !== undefined ? (
+                <span class="stat__num">
+                  <span class="stat__count" data-count={s.count}>
+                    {s.count}
+                  </span>
+                  {s.suffix && <span class="stat__suffix">{s.suffix}</span>}
+                </span>
+              ) : (
+                <span class="stat__num stat__num--word">{s.word}</span>
+              )}
               <span class="stat__label">{s.label}</span>
             </article>
           ))
@@ -329,7 +324,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S3: We unite all as one studio ===== -->
+  <!-- ===== S3: Three crafts, one studio ===== -->
   <section class="unite" id="one-studio">
     <div class="unite__media">
       <img
@@ -349,11 +344,11 @@ const faqs = [
       <header class="unite__head">
         <p class="eyebrow unite__eyebrow" data-reveal>Human-led, AI-generated</p>
         <h2 class="unite__title" data-reveal>
-          We unite all as <span class="accent">one studio</span>
+          Three crafts, one <span class="accent">studio</span>
         </h2>
         <p class="unite__intro" data-reveal>
-          Senior creatives, AIGC engineers and a working studio, pulling in the
-          same direction on every brief.
+          The people who direct the work and the people who run the models sit on the same
+          brief.
         </p>
       </header>
       <ul class="unite__pillars">
@@ -370,38 +365,30 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S4: A human-led AI studio ===== -->
+  <!-- ===== S4: Where we fit ===== -->
   <section class="section studio">
     <div class="container studio__grid">
       <div class="studio__copy">
-        <p class="eyebrow accent-eyebrow" data-reveal>Positioning</p>
+        <p class="eyebrow accent-eyebrow" data-reveal>Where we fit</p>
         <h2 class="headline h2 studio__head" data-reveal>
-          A <span class="accent">human-led</span> AI studio, not another
-          generic tool
+          Anyone can use the engines. Knowing what to <span class="accent">ship</span> is the
+          hard part.
         </h2>
         <p class="studio__p" data-reveal>
-          Most traditional studios are too slow and too expensive for the
-          volume brands actually need now. Walk into any marketing department
-          in November and ask how the year's content backlog is going. You will
-          get your answer.
+          The leading image and video engines are open to anyone now, including in
+          <a href="/app">the hubStudio app</a>, where your own team can use them. So the engine
+          isn’t what sets the work apart anymore.
         </p>
         <p class="studio__p" data-reveal>
-          Generic AI platforms are fast and cheap. They also fall short on
-          cultural nuance, brand voice and creative judgment. They hand a
-          marketing team a tool, not an output the team can ship without a
-          rework. And that rework is usually where the savings evaporate.
+          Direction does. Somebody has to pick the output that fits the brand and fix the one
+          that’s almost right.
         </p>
-
-        <div class="stance" data-reveal>
-          {
-            stance.map((s) => (
-              <article class:list={['stance__card', s.lead && 'stance__card--lead']}>
-                <span class="stance__kind">{s.kind}</span>
-                <p class="stance__line">{s.line}</p>
-              </article>
-            ))
-          }
-        </div>
+        <p class="studio__p" data-reveal>
+          Traditional studios have the craft, but their pace and cost don’t fit a weekly content
+          calendar. Your own team in the app is fast and fully in your hands, and that’s the
+          right call when you have people who can direct the engines. The studio sits between the
+          two: our art directors direct the engines for you and sign off on every asset.
+        </p>
       </div>
 
       <figure class="studio__media" data-reveal>
@@ -440,29 +427,25 @@ const faqs = [
       <div class="markets__copy">
         <p class="eyebrow accent-eyebrow" data-reveal>Two ecosystems</p>
         <h2 class="headline h2 markets__head" data-reveal>
-          East and West, under <span class="accent">one roof</span>
+          East and West, under one <span class="accent">roof</span>
         </h2>
         <p class="markets__lead" data-reveal>
           Most studios know one ecosystem. We work in both.
         </p>
         <p class="markets__p" data-reveal>
-          Western platforms: Google, Meta and the global creative stack you
-          would expect. Chinese platforms: Alibaba, ByteDance, Tencent and the
-          local AIGC tooling that outside teams rarely navigate well, even when
-          they think they do.
+          On the Western side, Google, Meta, and the global creative stack. On the Chinese side,
+          Alibaba, ByteDance, Tencent, and the local AIGC tools that outside teams rarely use
+          well.
         </p>
         <p class="markets__p" data-reveal>
-          Our creative bench mixes 4A agency veterans with Chinese designers and
-          art directors. The studio is led by founder Cyril Drouin, former CEO
-          of Publicis Commerce for China and North Asia, who spent two decades
-          running digital and commerce operations across both markets before
-          launching hubStudio in 2024.
+          Our bench mixes international agency veterans with Chinese designers and art
+          directors. The studio’s founder, Cyril Drouin, is a former CEO at Publicis.
         </p>
         <blockquote class="pull-quote pull-quote--inline" data-reveal>
           <p class="pull-quote__text">
-            After twenty years going back and forth between Western and Chinese
-            digital ecosystems, one thing is obvious. You cannot brief your way
-            to cultural relevance. You have to hire it.
+            After twenty years going back and forth between Western and Chinese digital
+            ecosystems, one thing is obvious. You cannot brief your way to cultural relevance.
+            You have to hire it.
           </p>
           <footer class="pull-quote__by">Cyril Drouin, Founder, hubStudio</footer>
         </blockquote>
@@ -502,10 +485,11 @@ const faqs = [
           How the <span class="accent">pipeline</span> works
         </h2>
         <p class="pipeline__intro" data-reveal>
-          Five stages. Each one has a clear owner and a clear output.
+          Five stages. Each one has a named owner, and each one ends with something you can look
+          at.
         </p>
       </header>
-      <ol class="flow">
+      <ul class="flow">
         {
           pipeline.map((stage, i) => (
             <li class="stage" data-reveal style={`--i:${i % 3}`}>
@@ -518,10 +502,10 @@ const faqs = [
             </li>
           ))
         }
-      </ol>
+      </ul>
       <p class="pipeline__close" data-reveal>
-        Brands working with us this way have moved internal approval rates from
-        22% to 78% on AI-generated assets, and scaled output by roughly 7x.
+        Working inside the hubStudio app? Then each version also passes through Validation, where
+        your approvers sign off on one thread.
       </p>
     </div>
   </section>
@@ -535,28 +519,25 @@ const faqs = [
           Why AIGC changes the <span class="accent">economics</span> of content
         </h2>
         <p class="economics__p" data-reveal>
-          Production costs are collapsing. Props, talent fees, location rentals,
-          crew, post-production: the line items that defined the old model are
-          shrinking or, in some cases, gone entirely. What replaces them is
-          infrastructure, talent direction and creative judgment.
-        </p>
-        <p class="economics__p" data-reveal>
-          Hyper-relevance is the new baseline. Content needs to fit every
-          platform, every audience, every market. The old production models
-          cannot keep up, and patching them with one AI tool here and a
-          freelancer there will not fix the problem.
+          Anyone who has budgeted a shoot knows the line items: props, talent fees, location
+          rentals, crew. On more and more of our briefs, those lines shrink. On some, they go
+          away. The money goes into GPUs, trained models, and the people who direct them instead.
         </p>
       </div>
-      <ul class="unlocks">
-        {
-          unlocks.map((u, i) => (
-            <li class="unlock" data-reveal style={`--i:${i % 2}`}>
-              <span class="unlock__mark" aria-hidden="true" />
-              <span>{u}</span>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="economics__side">
+        <p class="economics__p" data-reveal>
+          That changes what you can afford to make, because each platform now wants its own cut,
+          and each market its own version. A plan built around one big shoot a quarter can’t keep
+          up. More output only helps if someone keeps it on-brand.
+        </p>
+        <p class="economics__p" data-reveal>
+          In practice, that buys room. You can test a hundred concepts instead of five, or try a
+          bold idea without betting a shoot on it. Each market can get its own version that
+          respects local habits, not a translated headline on a Western picture. Nobody rents
+          props or keeps a crew on standby, and what you learn from one round of assets shapes
+          the next. The brand still has to be recognizable at the end of all that.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -574,20 +555,14 @@ const faqs = [
           services.map((svc, i) => (
             <article class="svc" data-reveal style={`--i:${i}`}>
               <div class="svc__media">
-                <img
-                  src={svc.img}
-                  alt={svc.alt}
-                  width={svc.w}
-                  height={svc.h}
-                  loading="lazy"
-                />
+                <img src={svc.img} alt={svc.alt} width={svc.w} height={svc.h} loading="lazy" />
               </div>
               <div class="svc__body">
                 <h3 class="svc__name">{svc.name}</h3>
                 <p class="svc__lead">{svc.lead}</p>
                 <p class="svc__detail">{svc.detail}</p>
-                <a class="svc__link" href="/work">
-                  See it in the work
+                <a class="svc__link" href={svc.href}>
+                  {svc.cta}
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
                       d="M5 12h13M12 5l7 7-7 7"
@@ -603,19 +578,66 @@ const faqs = [
           ))
         }
       </div>
+      <a class="services__all" href="/work" data-reveal>
+        See the finished work <span aria-hidden="true">&rarr;</span>
+      </a>
     </div>
   </section>
 
-  <!-- ===== S10: How we engage ===== -->
+  <!-- ===== S10: Inside the hubStudio app ===== -->
+  <section class="section inapp">
+    <div class="container inapp__grid">
+      <figure class="inapp__media" data-reveal>
+        <div class="media-frame media-frame--four">
+          <img
+            src="/Images/studio-brief.webp"
+            alt="Hands annotating a printed creative brief with a black pen, next to proof prints and a fan of color swatches."
+            width="1600"
+            height="1200"
+            loading="lazy"
+          />
+        </div>
+      </figure>
+      <div class="inapp__copy">
+        <p class="eyebrow accent-eyebrow" data-reveal>Studio + app</p>
+        <h2 class="headline h2 inapp__head" data-reveal>
+          The same studio, inside the <span class="accent">app</span>
+        </h2>
+        <p class="inapp__p" data-reveal>
+          Everything on this page can also run inside the hubStudio app. We either work in our
+          own workspace and give your people client logins, or you add our creatives to your
+          team and we work from your balance.
+        </p>
+        <p class="inapp__p" data-reveal>
+          Your approvers see each version in Validation, on one thread nothing can be deleted
+          from. In our workspace, they see the work and never our prompts, engines, or costs.
+          Brand-trained models are a studio service: we train and run them for you, and they run
+          on the studio’s pipelines, not in the app.
+        </p>
+        <p class="inapp__p" data-reveal>
+          It starts the same way as any studio project: send a brief and say you want to work in
+          the app.
+        </p>
+        <div class="inapp__cta" data-reveal>
+          <a class="btn btn--primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</a>
+          <a class="btn btn--secondary" href="/studio/with-the-app">How Studio + app works</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S11: How studio work is scoped ===== -->
   <section class="section engage">
     <div class="container">
       <header class="engage__head">
         <p class="eyebrow accent-eyebrow" data-reveal>How we engage</p>
         <h2 class="headline h2" data-reveal>
-          Three ways to <span class="accent">work</span> with us
+          How studio work is <span class="accent">scoped</span>
         </h2>
         <p class="engage__intro" data-reveal>
-          Three models. Most clients use a combination.
+          Per asset, per project, or on retainer. Most clients combine them. We quote after
+          reading your brief, the written proposal comes within 48 hours, and we don’t publish
+          rates. <a href="/pricing">The pricing page</a> explains each model.
         </p>
       </header>
       <div class="engage__grid">
@@ -632,36 +654,34 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S11: What you are actually paying for ===== -->
+  <!-- ===== S12: What you are paying for ===== -->
   <section class="payoff">
     <div class="payoff__glow" aria-hidden="true"></div>
-    <div class="container">
+    <div class="container payoff__inner">
       <header class="payoff__head">
         <p class="eyebrow payoff__eyebrow" data-reveal>The real product</p>
         <h2 class="payoff__title" data-reveal>
           What you are actually <span class="accent">paying for</span>
         </h2>
-        <p class="payoff__intro" data-reveal>
-          When every brand can access the same generation tools, the tools stop
-          being the differentiator. What separates work that performs from work
-          that just renders is what happens around the model.
-        </p>
       </header>
-      <div class="payoff__grid">
-        {
-          payoff.map((p, i) => (
-            <article class="payoff-card" data-reveal style={`--i:${i % 2}`}>
-              <span class="payoff-card__icon" set:html={p.icon} />
-              <h3 class="payoff-card__name">{p.name}</h3>
-              <p class="payoff-card__desc">{p.desc}</p>
-            </article>
-          ))
-        }
+      <div class="payoff__copy">
+        <p class="payoff__intro" data-reveal>
+          When every brand can reach the same engines, the engines stop being the difference.
+          What separates work that performs from work that just renders is what happens around
+          the model.
+        </p>
+        <p class="payoff__p" data-reveal>
+          First, creative expertise: people who know what works for your audience, not just what
+          looks impressive in a render. Then prompt engineering, so the model gets close to what
+          the brand needs early, not after forty tries. Custom model training teaches an engine
+          your brand’s look, which off-the-shelf tools can’t do on their own. And curation: we
+          generate hundreds of options and ship the few that work.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ===== S12: Copyright and IP ===== -->
+  <!-- ===== S13: Copyright and IP ===== -->
   <section class="section ip">
     <div class="container ip__inner">
       <div class="ip__copy">
@@ -670,54 +690,44 @@ const faqs = [
           AI content raises real legal questions. We take them
           <span class="accent">seriously</span>.
         </h2>
+      </div>
+      <div class="ip__body">
+        <p class="ip__lead" data-reveal>
+          If you’re reading this for your legal team, this is the section to forward.
+        </p>
         <p class="ip__p" data-reveal>
-          We work with models that have clear licensing terms for commercial
-          use, and we keep an audit trail any legal team can verify. We would
-          rather over-document than leave a client exposed.
+          We use models with clear licensing terms for commercial work, and we keep an audit
+          trail any legal team can check. We’d rather over-document than leave a client exposed.
+        </p>
+        <p class="ip__p" data-reveal>
+          Every asset we deliver is documented: which model made it, which references trained
+          that model, and which prompts produced it. That provenance record is kept per asset.
+          The custom models we train on your brand belong to you.
         </p>
       </div>
-      <ul class="ip__list">
-        {
-          ipPoints.map((point, i) => (
-            <li class="ip__item" data-reveal style={`--i:${i % 2}`}>
-              <span class="ip__check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M5 12.5 10 17.5 19 7"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </span>
-              <span>{point}</span>
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </section>
 
-  <!-- ===== S13: FAQ ===== -->
+  <!-- ===== S14: FAQ ===== -->
   <section class="section faq">
     <div class="container faq__inner">
       <header class="faq__head">
         <p class="eyebrow accent-eyebrow" data-reveal>Questions</p>
         <h2 class="headline h2" data-reveal>
-          Frequently asked <span class="accent">questions</span>
+          What clients ask about our <span class="accent">AI</span> work
         </h2>
+        <p class="faq__updated">Updated September 2026</p>
       </header>
       <div class="faq__list">
         {
           faqs.map((item) => (
-            <details class="qa" data-reveal>
+            <details class="qa">
               <summary class="qa__q">
                 <span>{item.q}</span>
                 <span class="qa__sign" aria-hidden="true" />
               </summary>
               <div class="qa__a">
-                <p>{item.a}</p>
+                <p set:html={item.html ?? item.a} />
               </div>
             </details>
           ))
@@ -726,36 +736,11 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ===== S13b: Insights layer ===== -->
+  <!-- ===== S14b: Insights layer ===== -->
   <InsightsLayer placement="aiExcellence" tone="white" id="reading" />
 
-  <!-- ===== S14: Closing CTA ===== -->
-  <section class="closing">
-    <div class="closing__glow" aria-hidden="true"></div>
-    <div class="container closing__inner">
-      <p class="eyebrow closing__eyebrow" data-reveal>Let's build your edge</p>
-      <h2 class="headline h2 closing__head" data-reveal>
-        See the output before you commit to <span class="accent">anything</span>
-      </h2>
-      <p class="closing__p" data-reveal>
-        Book a 30-minute call with Cyril and the team. We will walk you through
-        real client work, show the pipeline end to end, and generate a few free
-        visuals on your own brand.
-      </p>
-      <p class="closing__p closing__p--mute" data-reveal>
-        No pitch deck. No commitment. Just the work.
-      </p>
-      <div class="closing__cta" data-reveal>
-        <Button variant="primary" href="/contact">Contact us</Button>
-        <Button variant="on-dark" href="/work">See use cases</Button>
-      </div>
-      <svg class="closing__cube" viewBox="0 0 32 35" aria-hidden="true">
-        <path d="M16 4 28 11 16 18 4 11Z" fill="var(--brand-orange)" />
-        <path d="M4 11 16 18 16 31 4 24Z" fill="var(--brand-navy)" />
-        <path d="M28 11 16 18 16 31 28 24Z" fill="var(--brand-navy-deep)" />
-      </svg>
-    </div>
-  </section>
+  <!-- ===== S15: Closing, both doors ===== -->
+  <DualCta lead="studio" />
 </Layout>
 
 <style>
@@ -886,6 +871,20 @@ const faqs = [
     position: relative;
     color: var(--text-on-dark);
   }
+  .hero__crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.62);
+  }
+  .hero__crumbs a:hover {
+    color: var(--brand-orange);
+  }
   .hero__kicker {
     color: var(--brand-orange);
     position: relative;
@@ -906,7 +905,7 @@ const faqs = [
     font-weight: 600;
     letter-spacing: -0.03em;
     line-height: 0.92;
-    font-size: clamp(60px, 11vw, 168px);
+    font-size: clamp(56px, 9vw, 140px);
     color: #fff;
     display: flex;
     flex-wrap: wrap;
@@ -1111,6 +1110,14 @@ const faqs = [
   .stat__suffix {
     color: var(--brand-orange);
   }
+  /* A word-fact takes the Playfair italic accent in orange (style guide 2). */
+  .stat__num--word {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
   .stat__label {
     font-size: 13px;
     line-height: 1.45;
@@ -1233,7 +1240,7 @@ const faqs = [
   }
   .upillar__desc {
     margin-top: 14px;
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.65;
     color: rgba(240, 237, 233, 0.78);
   }
@@ -1260,43 +1267,11 @@ const faqs = [
     color: var(--text-mute);
     max-width: 56ch;
   }
-  .stance {
-    margin-top: 34px;
-    display: grid;
-    gap: 12px;
-  }
-  .stance__card {
-    padding: 22px 24px;
-    border-radius: 16px;
-    background: var(--bg-white);
-    border: 1px solid var(--line-hairline);
-  }
-  .stance__card--lead {
-    background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-deep));
-    border-color: transparent;
-    color: #fff;
-    box-shadow: 0 24px 44px -28px rgba(233, 78, 27, 0.7);
-  }
-  .stance__kind {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-  }
-  .stance__card--lead .stance__kind {
-    color: rgba(255, 255, 255, 0.85);
-  }
-  .stance__line {
-    margin-top: 8px;
-    font-size: 15px;
-    line-height: 1.55;
+  .studio__p a {
     color: var(--text-ink);
-  }
-  .stance__card--lead .stance__line {
-    color: #fff;
-    font-weight: 500;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   .studio__media {
     position: relative;
@@ -1428,7 +1403,7 @@ const faqs = [
   }
   .aud__desc {
     margin-top: 8px;
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.6;
     color: var(--text-mute);
   }
@@ -1526,7 +1501,7 @@ const faqs = [
     color: #fff;
   }
   .stage__desc {
-    font-size: clamp(15px, 1.1vw, 17px);
+    font-size: var(--type-body);
     line-height: 1.62;
     color: rgba(240, 237, 233, 0.78);
     max-width: 52ch;
@@ -1579,6 +1554,11 @@ const faqs = [
   .economics__head {
     margin-top: 14px;
   }
+  @media (min-width: 940px) {
+    .economics__side {
+      padding-top: 64px;
+    }
+  }
   .economics__p {
     margin-top: 18px;
     font-size: var(--type-body);
@@ -1586,31 +1566,6 @@ const faqs = [
     color: var(--text-mute);
     max-width: 54ch;
   }
-  .unlocks {
-    display: grid;
-    gap: 2px;
-  }
-  .unlock {
-    display: flex;
-    gap: 16px;
-    padding: 18px 0;
-    border-top: 1px solid var(--line-hairline);
-    font-size: clamp(15px, 1.2vw, 18px);
-    line-height: 1.55;
-    color: var(--text-ink);
-  }
-  .unlock:last-child {
-    border-bottom: 1px solid var(--line-hairline);
-  }
-  .unlock__mark {
-    flex: none;
-    margin-top: 7px;
-    width: 10px;
-    height: 10px;
-    background: var(--brand-orange);
-    transform: rotate(45deg);
-  }
-
   /* ============ S9 Services ============ */
   .services__head {
     max-width: 720px;
@@ -1668,14 +1623,14 @@ const faqs = [
   }
   .svc__lead {
     margin-top: 12px;
-    font-size: 15px;
+    font-size: var(--type-body);
     font-weight: 500;
     line-height: 1.55;
     color: var(--text-ink);
   }
   .svc__detail {
     margin-top: 10px;
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.6;
     color: var(--text-mute);
   }
@@ -1698,7 +1653,62 @@ const faqs = [
     transform: translateX(5px);
   }
 
-  /* ============ S10 Engage ============ */
+  .services__all {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 32px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .services__all span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .services__all:hover span {
+    transform: translateX(6px);
+  }
+
+  /* ============ S10 Inside the app ============ */
+  .inapp {
+    background: var(--bg-cream);
+  }
+  .inapp__grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .inapp__grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 72px;
+    }
+  }
+  .media-frame--four {
+    aspect-ratio: 4 / 3;
+  }
+  .media-frame--four img {
+    inset: 0;
+    height: 100%;
+  }
+  .inapp__head {
+    margin-top: 14px;
+  }
+  .inapp__p {
+    margin-top: 18px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+    max-width: 58ch;
+  }
+  .inapp__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ============ S11 Engage ============ */
   .engage {
     background: var(--bg-white);
   }
@@ -1709,9 +1719,14 @@ const faqs = [
     margin-bottom: 36px;
   }
   .engage__intro {
-    font-size: var(--type-lead);
-    line-height: 1.5;
+    font-size: var(--type-body);
+    line-height: 1.64;
     color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .engage__intro a {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
   }
   .engage__grid {
     display: grid;
@@ -1758,7 +1773,7 @@ const faqs = [
   }
   .engage-card__desc {
     margin-top: 12px;
-    font-size: var(--type-small);
+    font-size: var(--type-body);
     line-height: 1.65;
     color: var(--text-mute);
   }
@@ -1819,56 +1834,33 @@ const faqs = [
     line-height: 1.55;
     color: rgba(240, 237, 233, 0.8);
   }
-  .payoff__grid {
+  .payoff__inner {
     position: relative;
     display: grid;
-    gap: var(--gap-card);
+    gap: 32px;
   }
-  @media (min-width: 720px) {
-    .payoff__grid {
-      grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 980px) {
+    .payoff__inner {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 72px;
+      align-items: end;
+    }
+    .payoff__head {
+      margin-bottom: 0;
     }
   }
-  .payoff-card {
-    padding: 34px 32px;
-    border: 1px solid rgba(240, 237, 233, 0.14);
-    border-radius: 22px;
-    background: rgba(240, 237, 233, 0.04);
-    transition:
-      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
-      border-color 220ms ease-out,
-      background-color 220ms ease-out;
+  .payoff__copy {
+    display: grid;
+    gap: 20px;
   }
-  .payoff-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(233, 78, 27, 0.5);
-    background: rgba(233, 78, 27, 0.07);
-  }
-  .payoff-card__icon {
-    display: block;
-    width: 48px;
-    height: 48px;
-    color: var(--brand-orange);
-  }
-  .payoff-card__icon :global(svg) {
-    width: 100%;
-    height: 100%;
-  }
-  .payoff-card__name {
-    margin-top: 22px;
-    font-size: var(--type-h3);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: #fff;
-  }
-  .payoff-card__desc {
-    margin-top: 10px;
-    font-size: 15px;
-    line-height: 1.62;
+  .payoff__p {
+    font-size: var(--type-body);
+    line-height: 1.66;
     color: rgba(240, 237, 233, 0.78);
+    max-width: 60ch;
   }
 
-  /* ============ S12 Copyright and IP ============ */
+  /* ============ S13 Copyright and IP ============ */
   .ip {
     background: var(--bg-white);
   }
@@ -1886,6 +1878,13 @@ const faqs = [
   .ip__head {
     margin-top: 14px;
   }
+  .ip__lead {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--type-h4);
+    line-height: 1.35;
+    color: var(--text-ink);
+  }
   .ip__p {
     margin-top: 18px;
     font-size: var(--type-body);
@@ -1893,38 +1892,7 @@ const faqs = [
     color: var(--text-mute);
     max-width: 52ch;
   }
-  .ip__list {
-    display: grid;
-    gap: 2px;
-  }
-  .ip__item {
-    display: flex;
-    gap: 16px;
-    padding: 20px 0;
-    border-top: 1px solid var(--line-hairline);
-    font-size: clamp(15px, 1.2vw, 18px);
-    line-height: 1.55;
-    color: var(--text-ink);
-  }
-  .ip__item:last-child {
-    border-bottom: 1px solid var(--line-hairline);
-  }
-  .ip__check {
-    flex: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: rgba(233, 78, 27, 0.12);
-    color: var(--brand-orange);
-  }
-  .ip__check svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  /* ============ S13 FAQ ============ */
+  /* ============ S14 FAQ ============ */
   .faq__inner {
     max-width: 880px;
     margin-inline: auto;
@@ -1933,6 +1901,11 @@ const faqs = [
     display: grid;
     gap: 14px;
     margin-bottom: 36px;
+  }
+  .faq__updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
   }
   .faq__list {
     display: grid;
@@ -2004,69 +1977,9 @@ const faqs = [
     color: var(--text-mute);
     max-width: 64ch;
   }
-
-  /* ============ S14 Closing ============ */
-  .closing {
-    position: relative;
-    background: var(--bg-ink);
-    color: var(--text-on-dark);
-    overflow: hidden;
-  }
-  .closing__glow {
-    position: absolute;
-    width: 680px;
-    height: 680px;
-    left: 50%;
-    bottom: -380px;
-    transform: translateX(-50%);
-    background: radial-gradient(
-      circle,
-      rgba(233, 78, 27, 0.42) 0%,
-      rgba(233, 78, 27, 0) 66%
-    );
-    pointer-events: none;
-  }
-  .closing__inner {
-    position: relative;
-    text-align: center;
-    padding-block: var(--section-pad-y-mobile);
-    display: grid;
-    justify-items: center;
-    gap: 20px;
-  }
-  @media (min-width: 768px) {
-    .closing__inner {
-      padding-block: var(--section-pad-y-desktop);
-    }
-  }
-  .closing__eyebrow {
-    color: rgba(240, 237, 233, 0.6);
-  }
-  .closing__head {
-    max-width: 20ch;
-    color: #fff;
-  }
-  .closing__p {
-    max-width: 56ch;
-    font-size: var(--type-lead);
-    line-height: 1.55;
-    color: rgba(240, 237, 233, 0.82);
-  }
-  .closing__p--mute {
-    font-size: var(--type-small);
-    color: rgba(240, 237, 233, 0.55);
-  }
-  .closing__cta {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-  .closing__cube {
-    width: 46px;
-    margin-top: 14px;
-    animation: cubeFloat 7s ease-in-out infinite;
+  .qa__a :global(a) {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
   }
 
   /* ============ Reduced motion ============ */
@@ -2084,7 +1997,6 @@ const faqs = [
       animation: none !important;
     }
     .hero__cube,
-    .closing__cube,
     .hero__cue-line::after {
       animation: none;
     }

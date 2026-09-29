@@ -1,0 +1,842 @@
+---
+/**
+ * Partners  ·  /partners
+ *
+ * Merges the studio referral program (was /partner-program, 301 in
+ * vercel.json) with the app partner program described in
+ * src/content/help/partners.md. Two tracks: refer a studio client, or bring
+ * customers to the app.
+ *
+ * The studio tier terms come from /partner-program with every money amount
+ * removed (no-pricing rule): commission rates stay, thresholds and bonuses are
+ * shared with a partner on joining. The app partner rate is agreed per
+ * partner and is never published here.
+ *
+ * Copy: content-quality-us deck, scratchpad cq/partners/final.md.
+ * No ordinal numerals in any card or repeated block (the old "Tier 1/2/3"
+ * badges are gone; the tier names carry the order). Body copy at
+ * var(--type-body).
+ */
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import DualCta from '../components/DualCta.astro';
+import { BRIEF_URL, HELP_URL } from '../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+const PARTNER_BRIEF = `${BRIEF_URL}?way=partner`;
+
+const tracks = [
+  {
+    tone: 'orange',
+    name: 'Refer a studio client',
+    body: 'For people who know brands, agencies, and retailers that need content made for them. You make the introduction, and we pitch and make the work. You earn commission on each deal and a residual when the client renews.',
+    link: { label: 'How studio referrals work', href: '#studio' },
+  },
+  {
+    tone: 'ink',
+    name: 'Bring customers to the app',
+    body: 'For people whose customers would rather make the work themselves. You open their teams in hubStudio or invite them in your own words, and you earn a share of what those accounts pay.',
+    link: { label: 'How app partners work', href: '#app' },
+  },
+];
+
+const steps = [
+  {
+    title: 'You introduce',
+    body: 'Put us in touch with a brand, agency, or retailer that needs a steady flow of content.',
+  },
+  {
+    title: 'We deliver',
+    body: 'We run the pitch and the proposal, then produce and deliver the work. We’ll keep you posted as it moves.',
+  },
+  {
+    title: 'You earn',
+    body: 'You’re paid commission on every deal that closes, plus residuals when clients renew. There are no quotas and no minimum commitments.',
+  },
+];
+
+/* Partner terms from /partner-program, without money amounts. */
+const tiers = [
+  {
+    variant: 'orange',
+    name: 'Introduction Partner',
+    eligibility: 'Starting tier for all new partners.',
+    earn: [
+      '15% commission on your first deal',
+      '12% commission on deals 2–5',
+      'Immediate payment once the client pays us',
+    ],
+    advance: 'Advance after 6 closed deals, or once your deals reach a set level of gross margin. We share the figure when you join.',
+  },
+  {
+    variant: 'navy',
+    name: 'Active Partner',
+    eligibility: 'Unlocked after 6 closed deals, or the equivalent in gross margin.',
+    earn: [
+      '15% commission on every deal',
+      '5% residual on client renewals for 12 months',
+      'A cash bonus for every 5 closed deals',
+      'Early commission draws after your third deal',
+    ],
+    advance: 'Advance once your deals reach the annual gross-margin level set for Elite Partners.',
+  },
+  {
+    variant: 'white',
+    name: 'Elite Partner',
+    eligibility: 'Unlocked at a set level of annual gross margin for hubStudio.',
+    earn: ['20% commission on every deal', '10% residual on renewals for 24 months'],
+    advance:
+      'Best for seasoned business development professionals building a serious revenue stream alongside us.',
+  },
+];
+
+const fit = [
+  'Former agency professionals with deep client relationships',
+  'Marketing consultants advising brands on content strategy',
+  'Creative directors who have gone independent',
+  'Business development professionals in retail or ecommerce',
+  'Anyone with access to marketing decision-makers who need content at scale',
+];
+
+/* The three pages of the Partner menu in the app (help: partners.md). */
+const appPages = [
+  {
+    name: 'Users',
+    body: 'Create a team for each customer, add its people, and pick each person’s role. The first person in a new team is its admin, who runs the team and tops up its balance. Everyone gets a welcome email to choose a password.',
+  },
+  {
+    name: 'Invitations',
+    body: 'Write to a prospect in your own words. The email goes out from hubStudio’s domain, which keeps it out of spam folders, and your address is the reply-to, so answers come to you. The link opens sign-up with their email already filled in. The day they finish creating the account, it’s yours, just as if you’d created it.',
+  },
+  {
+    name: 'Commissions',
+    body: 'See what your accounts paid and your share of it. Your commission is a share of what they pay in (top-ups and automatic top-ups), less any refund. The rate in force the day an account is created stays fixed on that account, so a later change to your terms never rewrites what you’ve earned.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What commission do app partners earn?',
+    a: 'We agree the rate with each partner, and we don’t publish it. Once you’re set up, you see it as Your rate on the Commissions page, and each account keeps the rate in force the day it was created.',
+  },
+  {
+    q: 'When is a studio commission paid?',
+    a: 'For Introduction Partners, as soon as the client pays us. Active Partners can also draw commission early after their third deal.',
+  },
+  {
+    q: 'Do I have to sell or run the work?',
+    a: 'No. On the studio track, we handle the client relationship ourselves. On the app track, your customers make their own work in hubStudio.',
+  },
+  {
+    q: 'What do the customers I bring pay?',
+    a: 'App customers top up a prepaid balance and pay only for what they run, and creating an account costs nothing. Studio clients get a written proposal after their brief.',
+    link: { label: 'Our pricing page explains both, without amounts', href: '/pricing' },
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Partners', item: `${SITE}/partners` },
+  ],
+};
+---
+
+<Layout
+  title="Partner with hubStudio | Studio referrals and app partners"
+  description="Two ways to partner with hubStudio: refer brands to our creative studio for commission, or bring customers to the app and earn on what they pay."
+  preloadImage="/Images/partner-program-hero.webp"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="pt-hero">
+    <div class="container pt-hero__grid">
+      <div class="pt-hero__copy">
+        <span class="eyebrow">Partners</span>
+        <h1 class="headline h1 reveal pt-hero__title">
+          Two ways to <span class="accent">partner</span> with hubStudio.
+        </h1>
+        <p class="lead pt-hero__lead">
+          hubStudio runs two partner programs, one for each half of the company.
+          Refer a brand to our creative studio and earn commission when the deal
+          closes. Or bring customers to the hubStudio app, open their accounts or
+          invite them in, and earn a share of what those accounts pay.
+        </p>
+        <div class="pt-hero__cta">
+          <Button variant="primary" href="#studio">Refer a studio client</Button>
+          <Button variant="secondary" href="#app">Bring customers to the app</Button>
+        </div>
+      </div>
+      <figure class="pt-hero__visual">
+        <img
+          src="/Images/partner-program-hero.webp"
+          alt="Orange and navy cubes branching out into a network."
+          width="1408"
+          height="768"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== Two tracks ===== -->
+  <section class="pt-sheet pt-sheet--white">
+    <div class="container">
+      <header class="pt-head">
+        <span class="eyebrow">Two tracks</span>
+        <h2 class="headline h2 reveal">It depends on what your contacts <span class="accent">want</span>.</h2>
+        <p class="pt-p">
+          hubStudio is one company with two halves: a creative studio and the app it
+          works in (<a class="pt-inline" href="/about">more about us</a>). So there
+          are two tracks. If your contacts want finished work made for them, that’s
+          the studio track. If they’d rather make it themselves, it’s the app track.
+          Not sure? Tell us about your contacts and we’ll say which fits.
+        </p>
+      </header>
+      <div class="pt-tracks">
+        {
+          tracks.map((t) => (
+            <a class:list={['pt-track', `pt-track--${t.tone}`, 'grain']} href={t.link.href}>
+              <h3 class="pt-track__name">{t.name}</h3>
+              <p class="pt-track__body">{t.body}</p>
+              <span class="pt-track__cta">
+                {t.link.label} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The studio track ===== -->
+  <section class="pt-sheet pt-sheet--cream pt-anchor" id="studio">
+    <div class="container">
+      <header class="pt-head">
+        <span class="eyebrow">The studio track</span>
+        <h2 class="headline h2 reveal">
+          Make the <span class="accent">introduction</span>, and we take it from there.
+        </h2>
+      </header>
+      <div class="pt-steps">
+        {
+          steps.map((s) => (
+            <article class="pt-step">
+              <h3 class="pt-step__title">{s.title}</h3>
+              <p class="pt-step__body">{s.body}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <header class="pt-head pt-head--tiers">
+        <span class="eyebrow">Commission structure</span>
+        <h2 class="headline h2 reveal">
+          Commission that grows as your deals <span class="accent">close</span>.
+        </h2>
+        <p class="pt-p">
+          Every partner starts as an Introduction Partner and moves up as deals
+          close. These are the terms in force today.
+        </p>
+      </header>
+      <div class="pt-tiers">
+        {
+          tiers.map((tier) => (
+            <article class:list={['pt-tier', 'card', `card--${tier.variant}`, tier.variant === 'orange' && 'grain']}>
+              <h3 class="pt-tier__name">{tier.name}</h3>
+              <p class="pt-tier__eligibility">{tier.eligibility}</p>
+              <span class="pt-tier__label">What you earn</span>
+              <ul class="pt-tier__items">
+                {tier.earn.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="pt-tier__advance">{tier.advance}</p>
+            </article>
+          ))
+        }
+      </div>
+      <p class="pt-updated">Terms updated September 2026</p>
+      <div class="pt-bonus">
+        <span class="chip pt-bonus__chip">Fast-start bonus, studio track</span>
+        <p class="pt-bonus__text">
+          Close your first deal within 60 days of joining and we add a
+          <strong>fast-start bonus</strong> to your commission.
+        </p>
+      </div>
+
+      <div class="pt-pair">
+        <article class="pt-pair__card">
+          <span class="chip pt-pair__chip">What we handle</span>
+          <h3 class="pt-pair__title">Once you make the introduction</h3>
+          <p class="pt-p">
+            We take the first discovery calls and work out what the client needs. We
+            write the proposal, run the project, deliver it, and look after the client
+            relationship from then on.
+          </p>
+        </article>
+        <article class="pt-pair__card">
+          <span class="chip pt-pair__chip">Who we look for</span>
+          <h3 class="pt-pair__title">People who already know the buyers</h3>
+          <ul class="pt-list">
+            {fit.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The app track ===== -->
+  <section class="pt-sheet pt-sheet--ink pt-anchor pt-app grain" id="app">
+    <div class="container">
+      <header class="pt-head">
+        <span class="eyebrow pt-app__eyebrow">The app track</span>
+        <p class="pt-app__turn">The second track works inside the app itself.</p>
+        <h2 class="headline h2 reveal pt-app__title">
+          Open accounts for the customers you <span class="accent">bring</span>.
+        </h2>
+        <p class="pt-p pt-p--dark">
+          Commercial partners get a Partner menu in the hubStudio app. It shows up
+          once we’ve set up your partner account, and it holds three pages.
+        </p>
+      </header>
+      <div class="pt-app__pages">
+        {
+          appPages.map((page) => (
+            <article class="pt-app__page">
+              <h3 class="pt-app__name">{page.name}</h3>
+              <p class="pt-p pt-p--dark">{page.body}</p>
+            </article>
+          ))
+        }
+      </div>
+      <p class="pt-app__help">
+        Already a partner?
+        <a class="pt-arrow" href={`${HELP_URL}/partners`}>
+          The help center walks through each page <span aria-hidden="true">&rarr;</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Questions ===== -->
+  <section class="pt-sheet pt-sheet--white">
+    <div class="container pt-faq">
+      <header class="pt-head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">Questions partners <span class="accent">ask</span>.</h2>
+        <p class="pt-p">The short answers, before you get in touch.</p>
+      </header>
+      <div class="pt-faq__list">
+        {
+          faqs.map((f) => (
+            <article class="pt-faq__item">
+              <h3 class="pt-faq__q">{f.q}</h3>
+              <p class="pt-p">
+                {f.a}
+                {f.link && (
+                  <>
+                    {' '}
+                    <a class="pt-inline" href={f.link.href}>{f.link.label}</a>.
+                  </>
+                )}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact path ===== -->
+  <section class="pt-sheet pt-sheet--cream pt-contact">
+    <div class="container pt-contact__inner">
+      <span class="eyebrow">Get started</span>
+      <h2 class="headline h2 reveal">Tell us about your <span class="accent">network</span>.</h2>
+      <p class="pt-p">
+        Send us a short note through the contact form: who you know, and which track
+        you have in mind. We’ll set up a call.
+      </p>
+      <Button variant="primary" href={PARTNER_BRIEF}>Talk to us about partnering</Button>
+    </div>
+  </section>
+
+  <DualCta tone="ink" />
+</Layout>
+
+<style>
+  /* ---- Shared ------------------------------------------------- */
+  .pt-p {
+    margin-top: 16px;
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .pt-p--dark {
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .pt-inline {
+    color: var(--brand-orange);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .pt-arrow {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: #ff8a5c;
+  }
+  .pt-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .pt-arrow:hover span {
+    transform: translateX(6px);
+  }
+  .pt-head {
+    display: grid;
+    gap: 14px;
+    max-width: 780px;
+    margin-bottom: 48px;
+  }
+  .pt-head .pt-p {
+    margin-top: 0;
+  }
+  .pt-anchor {
+    scroll-margin-top: calc(var(--nav-h) + 16px);
+  }
+
+  /* Sheet stacking */
+  .pt-sheet {
+    position: relative;
+    margin-top: -48px;
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    padding-block: clamp(96px, 11vw, 160px);
+  }
+  .pt-sheet--white {
+    background: var(--bg-white);
+  }
+  .pt-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .pt-sheet--ink {
+    background:
+      radial-gradient(90% 70% at 0% 0%, rgba(233, 78, 27, 0.22) 0%, rgba(14, 22, 51, 0) 60%),
+      var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+
+  /* ---- Hero --------------------------------------------------- */
+  .pt-hero {
+    background: var(--bg-cream);
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(96px, 11vw, 150px);
+  }
+  .pt-hero__grid {
+    display: grid;
+    gap: 44px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .pt-hero__grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+    }
+  }
+  .pt-hero__title {
+    margin-top: 18px;
+    font-size: clamp(40px, 5vw, 72px);
+  }
+  .pt-hero__title .accent {
+    color: var(--brand-orange);
+  }
+  .pt-hero__lead {
+    margin-top: 22px;
+    max-width: 54ch;
+  }
+  .pt-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pt-hero__visual {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 1408 / 768;
+    box-shadow: var(--shadow-card);
+  }
+  .pt-hero__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---- Two tracks --------------------------------------------- */
+  .pt-tracks {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 820px) {
+    .pt-tracks {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .pt-track {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(30px, 3.4vw, 44px);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .pt-track:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.16);
+  }
+  .pt-track--orange {
+    background: var(--brand-orange-cta);
+    color: #fff;
+  }
+  .pt-track--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .pt-track__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+  .pt-track__body {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+  .pt-track__cta {
+    margin-top: auto;
+    padding-top: 10px;
+    font-size: var(--type-body);
+    font-weight: 600;
+  }
+  .pt-track__cta span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .pt-track:hover .pt-track__cta span {
+    transform: translateX(6px);
+  }
+
+  /* ---- Studio track: steps ------------------------------------ */
+  .pt-steps {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .pt-steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .pt-step {
+    padding: 32px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .pt-step__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .pt-step__body {
+    margin-top: 10px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* ---- Studio track: tiers ------------------------------------ */
+  .pt-head--tiers {
+    margin-top: clamp(80px, 9vw, 128px);
+  }
+  .pt-tiers {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 900px) {
+    .pt-tiers {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .pt-tier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+  }
+  .pt-tier__name {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+  .pt-tier__eligibility {
+    margin-top: 10px;
+    font-size: var(--type-body);
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+  .pt-tier__label {
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.72;
+  }
+  .pt-tier__items {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+    flex: 1;
+  }
+  .pt-tier__items li {
+    position: relative;
+    padding-left: 20px;
+    font-size: var(--type-body);
+    line-height: 1.45;
+  }
+  .pt-tier__items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+  }
+  .pt-tier__advance {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    font-size: var(--type-body);
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+  .card--white .pt-tier__advance {
+    border-top-color: var(--line-strong);
+  }
+  .pt-updated {
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .pt-bonus {
+    margin-top: var(--gap-card);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+  }
+  @media (min-width: 768px) {
+    .pt-bonus {
+      flex-direction: row;
+      align-items: center;
+      gap: 28px;
+    }
+  }
+  .pt-bonus__chip,
+  .pt-pair__chip {
+    align-self: flex-start;
+    flex: none;
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .pt-bonus__text {
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .pt-bonus__text strong {
+    color: var(--text-ink);
+  }
+
+  /* ---- Studio track: pair ------------------------------------- */
+  .pt-pair {
+    margin-top: clamp(56px, 7vw, 96px);
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .pt-pair {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .pt-pair__card {
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .pt-pair__title {
+    margin-top: 18px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .pt-list {
+    margin-top: 18px;
+    display: grid;
+    gap: 12px;
+  }
+  .pt-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-body);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .pt-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+
+  /* ---- App track (ink) ---------------------------------------- */
+  .pt-app__eyebrow {
+    color: var(--brand-orange);
+  }
+  .pt-app__turn {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: rgba(240, 237, 233, 0.75);
+  }
+  .pt-app__title {
+    color: #fff;
+  }
+  .pt-app__title .accent {
+    color: var(--brand-orange);
+  }
+  .pt-app__pages {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 900px) {
+    .pt-app__pages {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .pt-app__page {
+    padding: 30px;
+    border: 1px solid rgba(240, 237, 233, 0.16);
+    border-radius: var(--radius-card);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .pt-app__name {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    color: #fff;
+  }
+  .pt-app__page .pt-p {
+    margin-top: 10px;
+  }
+  .pt-app__help {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    font-size: var(--type-body);
+    color: rgba(240, 237, 233, 0.8);
+  }
+
+  /* ---- FAQ ---------------------------------------------------- */
+  .pt-faq__list {
+    display: grid;
+    gap: 0;
+    max-width: 860px;
+  }
+  .pt-faq__item {
+    padding: 26px 0;
+    border-top: 1px solid var(--line-strong);
+  }
+  .pt-faq__item:last-child {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .pt-faq__q {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .pt-faq__item .pt-p {
+    margin-top: 10px;
+  }
+
+  /* ---- Contact path ------------------------------------------- */
+  .pt-contact__inner {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  .pt-contact__inner .pt-p {
+    margin: 0 0 12px;
+  }
+  .pt-contact .headline .accent {
+    color: var(--brand-orange);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pt-track,
+    .pt-track__cta span,
+    .pt-arrow span {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  /* Headline reveal on scroll. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

@@ -6,6 +6,10 @@
  * the source page's "what just became possible" framing, the economics
  * section and the four content lanes the studio actually ships.
  *
+ * Repositioned for the two offers: the studio makes the film, or the
+ * customer's own team makes clips in the hubStudio app (Video studio,
+ * Explore). Copy deck: scratchpad cq/aiprod-video/final.md.
+ *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
  * its canonical lowercase-h casing.
@@ -13,6 +17,15 @@
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
 import InsightsLayer from '../../../components/InsightsLayer.astro';
+import AppShot from '../../../components/AppShot.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import DualCta from '../../../components/DualCta.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL, HELP_URL } from '../../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/solutions/ai-production/video`;
+const briefHref = `${BRIEF_URL}?way=studio`;
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
@@ -23,7 +36,7 @@ const reasons = [
   {
     label: 'What became possible',
     title: 'Create what was previously impossible.',
-    body: 'Underwater product reveals. Zero-gravity demonstrations. Environments that do not exist. Talent in locations they have never visited. Every impossible creative idea is now a storyboard away from reality.',
+    body: 'Underwater product reveals. Places that don\u2019t exist. Talent in cities they\u2019ve never visited. Ideas that were out of reach can now go on the storyboard.',
   },
   {
     label: 'Test before invest',
@@ -32,8 +45,8 @@ const reasons = [
   },
   {
     label: 'Scale and speed',
-    title: 'One concept, one thousand variations, at the speed of culture.',
-    body: 'Hit the master story once, then ship it in 47 languages with lip-sync precision and 12 platform cuts. Trending topic Tuesday, branded response Wednesday. The marginal cost of the next variation approaches zero.',
+    title: 'One concept, many versions, on the news cycle.',
+    body: 'Get the master story right once, then cut it for each platform and adapt it for each market, with lip-sync where it matters. A trending topic on Tuesday can have a branded answer by Wednesday. Every extra version is quicker to make than the first.',
   },
 ];
 
@@ -43,7 +56,7 @@ const lanes = [
     heading: 'Short-form social video.',
     image: '/Images/sb-sample-digital.jpg',
     alt: 'A daylit edit suite frame with vertical short-form variations laid out in the timeline panel and a master cut paused on the main monitor, warm shadow grade.',
-    lead: 'Platform-optimised content for TikTok, Reels and Shorts, with native pacing and rhythm.',
+    lead: 'Platform-optimized content for TikTok, Reels and Shorts, with native pacing and rhythm.',
     body: [
       "Product demonstrations, unboxing experiences, lifestyle-driven brand storytelling and UGC-style adaptations. Each cut is built for the platform it will live on, not retrofitted from a master that was made for somewhere else.",
       'Useful where the channel demands constant new creative and the team cannot afford to wait for a shoot every time a new angle is on the table.',
@@ -77,7 +90,7 @@ const lanes = [
     alt: 'A cinematic narrative-driven brand video paused on a large calibrated monitor with the master storyboard pinned along the wall to the right, warm shadow grade.',
     lead: 'Narrative-driven brand stories, concept testing and ambassador content, with multi-language lip-sync adaptation.',
     body: [
-      "Concept visualisation through to finished master film. Multi-language adaptation with lip-sync, so the brand ambassador is recognisable in every market without re-shooting.",
+      "Concept visualization through to finished master film. Multi-language adaptation with lip-sync, so the brand ambassador is recognizable in every market without re-shooting.",
       'Useful for global campaigns where the master idea has to travel across languages and cultures while keeping the line that made it work in the first place.',
     ],
     tags: [
@@ -91,10 +104,10 @@ const lanes = [
     heading: 'Long-form to short-form adaptation.',
     image: '/Images/sb-sample-branded.jpg',
     alt: 'A daylit edit-suite frame of an editor selecting key moments from a long-form master timeline and assembling them into short-form social cuts, warm shadow grade.',
-    lead: 'Intelligent editing that identifies key moments and assembles the social cuts automatically.',
+    lead: 'Editors pick the moments that matter. AI helps cut and reformat them for each platform.',
     body: [
-      'Multiple social cuts generated from a single master file, platform-specific formatting and seamless integration of brand elements and messaging.',
-      'Useful for maximising the ROI of existing video: the keynote that becomes the social series, the interview that becomes the always-on content engine, the launch film that keeps feeding the channel for the next two quarters.',
+      'Several social cuts from one master file, each formatted for its platform, with your brand elements and messages placed the same way every time.',
+      'Useful for getting more out of video you already own: the keynote that becomes a social series, the interview that feeds the channel for months, the launch film that keeps working after launch week.',
     ],
     tags: [
       'Key-moment selection', 'Auto social cuts',
@@ -104,30 +117,48 @@ const lanes = [
   },
 ];
 
-const faqs = [
+/* The two routes side by side, plain lists, no numerals. */
+const appSide = [
+  'Pick the engine for each clip',
+  'A price on every run, shown first',
+  'Start from a picture in the Assets Library or one you upload',
+  'Tag a clip \u201cMade for\u201d a client, so it lands in their Client space',
+  'Send a clip for approval in Validation',
+  'Post to TikTok (Beta), Instagram or Facebook from the app',
+];
+const studioSide = [
+  'A director and a storyboard, shot by shot',
+  'A shoot when the film needs one, generation when it doesn\u2019t, or both',
+  'Editing and sound design, with lip-sync for other languages',
+  'Brand-trained models on our own GPU pipelines',
+  'A record of how each asset was made',
+];
+
+const faqs: { q: string; a: string; link?: { label: string; href: string } }[] = [
   {
     q: 'How does AI video generation compare to traditional video production?',
-    a: 'AI video generation excels at creating scalable, cost-effective content for digital platforms, product demonstrations and social. Traditional production remains ideal for complex narratives that require actors, elaborate sets or specific cinematographic technique. AI generation offers unmatched speed and versatility for most brand video needs.',
+    a: 'AI video is strong at scalable content for digital platforms, product demos and social. Traditional production is still the better call for complex stories that need actors, big sets or a specific camera technique. For most brand video, AI gets you there sooner and lets you try more versions.',
   },
   {
     q: 'What types of video content work best with AI generation?',
-    a: 'Product showcases, social content, e-commerce video, brand storytelling, explainer content and adaptations perform exceptionally well. AI generation is particularly powerful for creating multiple variations, platform-specific formats and localised content at scale.',
+    a: 'Product showcases, social content, e-commerce video, brand storytelling, explainer content and adaptations perform exceptionally well. AI generation is particularly powerful for creating multiple variations, platform-specific formats and localized content at scale.',
   },
   {
     q: 'How long does it take to produce AI-generated videos?',
-    a: 'Simple video content can be generated within 24 to 48 hours. Complex projects requiring custom training or extensive post-production typically take 3 to 5 days. That is a significant time advantage over traditional video production, which often takes weeks or months.',
+    a: 'It depends on the brief. A producer reads it within one business day, and a written proposal with the schedule follows within 48 hours. Simple clips move much faster than projects that need a brand-trained model or heavy post-production.',
   },
   {
     q: 'Can you create videos featuring real people, or only AI-generated characters?',
-    a: 'Both. We can work with footage of real people (actors, brand ambassadors, employees) and enhance it with AI, or create entirely AI-generated characters and spokespersons. We also specialise in lip-sync technology for multi-language adaptation of existing content.',
+    a: 'Both. We can work with footage of real people (actors, brand ambassadors, employees) and enhance it with AI, or create entirely AI-generated characters and spokespersons. We also specialize in lip-sync technology for multi-language adaptation of existing content.',
   },
   {
     q: 'How do you handle data privacy and confidentiality?',
-    a: 'Strict data privacy protocols. All client data is processed on private servers, never shared with public AI models, and prompts are anonymised. We can deploy dedicated servers in your preferred geography and provide detailed data-handling agreements.',
+    a: 'Work you brief to the studio stays with the studio team, under NDA, and brand-trained models run on our own GPU pipelines. When your own team works in the app, what it renders stays in its History and Assets Library.',
   },
   {
-    q: 'What is included in your video generation training programs?',
-    a: 'Training covers video-specific AI tools (Wan, Veo, Flux, Suno), motion-prompt engineering, video workflow architecture, platform optimisation and hands-on workshops. Beginner and advanced levels are available; participants leave with practical video assets and reusable workflows.',
+    q: 'What is included in your video training programs?',
+    a: 'The course covers the video engines, how to prompt for motion and how to build a video workflow, with hands-on workshops at beginner and advanced levels. Participants leave with clips they made and workflows they can reuse.',
+    link: { label: 'See AI training', href: '/solutions/training' },
   },
   {
     q: 'What video formats and platforms do you support?',
@@ -135,23 +166,27 @@ const faqs = [
   },
   {
     q: 'How do you ensure brand consistency across AI-generated videos?',
-    a: 'Custom AI models trained on your brand visual identity, colour palette, typography and style guidelines. Creative directors oversee every project to ensure brand consistency, and the QC process verifies that every video aligns with the brand standard before delivery.',
+    a: 'Custom AI models trained on your brand visual identity, color palette, typography and style guidelines. Creative directors oversee every project to ensure brand consistency, and the QC process verifies that every video aligns with the brand standard before delivery.',
   },
   {
     q: 'Can you adapt existing long-form video into short-form content?',
-    a: 'Yes. Intelligent AI editing identifies key moments, creates multiple social cuts from the master and formats them for different platforms automatically. Particularly valuable for maximising the ROI of existing video content.',
+    a: 'Yes. Our editors pick the key moments, and AI helps cut them into several social versions formatted for each platform. It\u2019s one of the best ways to get more out of video you already own.',
   },
   {
     q: 'What about music and sound design for AI-generated video?',
-    a: 'Comprehensive audio: AI-generated background music, sound effects, voiceovers in multiple languages and text-to-speech. All audio content is cleared for commercial use and can be customised to match the brand audio identity.',
+    a: 'We handle the audio too: background music, sound effects, voiceovers in several languages and text-to-speech, matched to your brand\u2019s sound. We clear the audio for the uses in your brief.',
   },
   {
     q: 'Can AI-generated video be used across all marketing channels?',
     a: 'Yes, with proper licensing and compliance considerations. We ensure all generated content meets platform requirements and provide guidance on usage rights. The video is designed for multi-channel deployment across paid, social, web and e-commerce.',
   },
   {
-    q: 'How do you price video generation projects?',
-    a: 'Pricing depends on video complexity, length, customisation and volume. Simple social video starts at a different price point than complex brand narrative that requires custom training. We provide detailed quotes based on your specific project scope and deliverables.',
+    q: 'How do you price video projects?',
+    a: 'In the app, you pay per run from a prepaid balance, at the price shown before each run, and a failed run is never charged. There\u2019s no subscription, and the balance doesn\u2019t expire. Studio work is priced per asset, per project or on retainer, and quoted after we read your brief. We don\u2019t publish rates.',
+  },
+  {
+    q: 'Can our own team make the videos instead?',
+    a: 'Yes, for clips that don\u2019t need a director. Create an account in the hubStudio app and your team works in the Video studio. The account costs nothing and there\u2019s no subscription. When a film needs a storyboard and a director, that\u2019s where we come in.',
   },
 ];
 
@@ -164,13 +199,24 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'AI video production', item: pageUrl },
+  ],
+};
 ---
 
 <Layout
   title="AIGC Video Production for Brands | hubStudio"
-  description="Studio-grade AIGC video production at hubStudio. Short-form social, e-commerce, brand campaigns and long-to-short adaptation with director-led storyboards."
+  description="AI video production for brands: director-led films from our studio, or clips your own team makes in the hubStudio app’s Video studio."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -187,31 +233,30 @@ const faqSchema = {
             <span class="kicker__sep">/</span> Video
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">From brief to</span></span>
-            <span class="line"><span class="line__i">first cut in</span></span>
-            <span class="line"><span class="line__i serif">48 hours.</span></span>
+            <span class="line"><span class="line__i">Direct the film</span></span>
+            <span class="line"><span class="line__i">you couldn&rsquo;t</span></span>
+            <span class="line"><span class="line__i serif">shoot.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
             The narrative arc is still <em>everything</em>.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              The constraints that defined video production for decades
-              just disappeared. Studio shoots that cost six figures, talent
-              fees, location rentals: gone. The new question is not what
-              we can afford, it is what we should create.
+              For decades, video was defined by what it cost to shoot:
+              studio days, talent fees and location permits. Much of that
+              list can now go. So the first question is what to make, not
+              what it will cost.
             </p>
             <p>
-              AIGC is the execution engine. Human vision stays
-              irreplaceable. Creative directors design every shot. AIGC
-              ships them across formats, languages and markets at the
-              pace the channel demands.
+              The thinking stays with people. Our directors design every
+              shot, and AI helps ship it in every format and language as fast
+              as each channel needs them.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start a video brief</Button>
-            <a class="ghost-link ghost-link--light" href="#lanes">
-              See the work
+            <Button variant="primary" href={briefHref}>Start a video brief</Button>
+            <a class="ghost-link ghost-link--light" href="#app">
+              Or make it in the app
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -249,10 +294,10 @@ const faqSchema = {
             </h2>
           </div>
           <p class="band__note band__note--light r" style="--d:.1s">
-            Production cost vanishes. Speed becomes strategy. Testing
-            costs nothing. Abundance replaces constraints. The brands
-            that build a video-first content engine compound an
-            advantage their static-reliant competitors cannot copy.
+            Production gets cheaper, and speed becomes part of the strategy.
+            Testing an idea now costs a fraction of what it did. The brands
+            that build video into their weekly routine pull ahead of the ones
+            still waiting for a shoot.
           </p>
         </header>
 
@@ -327,6 +372,81 @@ const faqSchema = {
       </div>
     </section>
 
+    <section class="onapp" id="app">
+      <div class="shell">
+        <div class="onapp__grid">
+          <div class="onapp__copy">
+            <p class="kicker r"><span class="kicker__tick"></span>Or make it yourself</p>
+            <h2 class="dh r" style="--d:.05s">
+              Your team can make clips in the <span class="serif">app</span>.
+            </h2>
+            <p class="onapp__lead r" style="--d:.1s">
+              That&rsquo;s the studio side, and a director-led film belongs
+              there. A quick product clip or a social loop is often something
+              your own team can make, in hubStudio&rsquo;s Video studio, paying
+              only for what it runs.
+            </p>
+            <p class="onapp__p r" style="--d:.14s">
+              The Video studio does three jobs. Text to video starts from a
+              description. Image to video starts from a picture, as the first
+              frame or as the first and last frames. Reference to video works
+              from pictures, clips and sound you supply. Clips go up to 4K, up
+              to 30 seconds on some engines, with generated sound. Length and
+              resolution vary by engine, so check both before you write a long
+              prompt.
+            </p>
+            <p class="onapp__p r" style="--d:.18s">
+              Engines include Veo 3.1 Fast, Kling, Seedance, Wan, MiniMax and
+              Grok Imagine, with more as they ship. Each run shows its price
+              before it starts, it&rsquo;s paid from a prepaid balance, and
+              every clip lands in History.
+            </p>
+            <div class="onapp__cta r" style="--d:.22s">
+              <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+              <a class="ghost-link" href={`${HELP_URL}/create-a-video`}>
+                How the Video studio works
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="onapp__media onapp__shots">
+            <div class="r" style="--d:.1s">
+              <AppShot shot={appShots.videoStudio} path="/content/video" caption />
+            </div>
+            <div class="r" style="--d:.16s">
+              <AppShot shot={appShots.explore} path="/explore" caption />
+            </div>
+          </div>
+        </div>
+
+        <div class="adds">
+          <div class="adds__col r">
+            <p class="adds__tag">In the app</p>
+            <h3 class="adds__title">Your team decides.</h3>
+            <ul class="adds__list">
+              {appSide.map((t) => <li>{t}</li>)}
+            </ul>
+          </div>
+          <div class="adds__col adds__col--studio r" style="--d:.08s">
+            <p class="adds__tag">With the studio</p>
+            <h3 class="adds__title">What we add.</h3>
+            <ul class="adds__list">
+              {studioSide.map((t) => <li>{t}</li>)}
+            </ul>
+          </div>
+        </div>
+        <p class="onapp__p onapp__both r">
+          Or both at once: our studio can make the work inside hubStudio, and
+          you approve it there.
+          <a class="inline-link" href="/studio/with-the-app">How Studio + app works</a>.
+        </p>
+      </div>
+    </section>
+
+    <WaysToWork tone="cream" highlight="studio-app" />
+
     <section class="source">
       <div class="shell source__grid">
         <div class="source__visual">
@@ -359,14 +479,18 @@ const faqSchema = {
             No AI makes these decisions.
           </p>
           <p class="source__p r" style="--d:.16s">
-            The same product in ten different room styles. A brand
-            ambassador in Paris, Tokyo and New York without travel. A
-            winter campaign reshot for the summer season. The storyboard
-            process stays the same; the execution becomes infinitely
-            more flexible and affordable.
+            The same product in ten different rooms. A brand ambassador in
+            Paris, Tokyo and New York without a flight. A winter campaign
+            reworked for summer. We storyboard it the same way; what changes
+            is how it gets made.
           </p>
           <p class="source__p r" style="--d:.22s">
-            Video is no longer the last resort. It is the first answer.
+            Choose how you receive it: finished files with Studio only, or
+            reviews and approvals in hubStudio with Studio + app.
+          </p>
+          <p class="source__p r" style="--d:.25s">
+            The work we&rsquo;ve shipped is on the
+            <a class="inline-link inline-link--light" href="/work">Work page</a>.
           </p>
           <ul class="creds r" style="--d:.28s">
             <li class="cred">
@@ -379,13 +503,13 @@ const faqSchema = {
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Lip-sync localisation
+              Lip-sync localization
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Private hosting
+              Provenance per asset
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
@@ -409,8 +533,9 @@ const faqSchema = {
             The questions brand and performance leads ask before we begin.
             If yours is not below, put it in the brief.
           </p>
+          <p class="faq__fresh r" style="--d:.13s">Updated September 2026</p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start a video brief</Button>
+            <Button variant="primary" href={briefHref}>Start a video brief</Button>
           </div>
         </aside>
 
@@ -427,7 +552,15 @@ const faqSchema = {
                 </button>
                 <div class="acc__a">
                   <div class="acc__a-inner">
-                    <p>{faq.a}</p>
+                    <p>
+                      {faq.a}
+                      {faq.link && (
+                        <>
+                          {' '}
+                          <a class="inline-link" href={faq.link.href}>{faq.link.label}</a>.
+                        </>
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -439,36 +572,15 @@ const faqSchema = {
 
     <InsightsLayer placement="aiVideo" tone="white" id="reading" />
 
-    <section class="end">
-      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
-        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
-      </svg>
-      <div class="shell end__inner">
-        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Build with us</p>
-        <h2 class="end__title r" style="--d:.05s">
-          Shoot less.<br /><span class="serif">Ship more</span>.
-        </h2>
-        <p class="end__p r" style="--d:.12s">
-          Send a storyboard, a master film or just the campaign you keep
-          wanting to extend. A senior lead reads it inside two working
-          days and replies with a phased plan, a cost shape and an
-          honest read on which lane starts first.
-        </p>
-        <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start a video brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See client work
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="cbar cbar--end" aria-hidden="true">
-        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
-      </div>
-    </section>
+    <DualCta
+      eyebrow="Build with us"
+      pre="Shoot less. Ship "
+      accent="more"
+      post="."
+      text="Send a storyboard, a master film or the campaign you keep wanting to extend. A producer reads it within one business day, and a written proposal follows within 48 hours. Or open the app and render the first clip yourself."
+      lead="studio"
+      briefQuery="way=studio"
+    />
   </div>
 </Layout>
 
@@ -609,12 +721,163 @@ const faqSchema = {
   .acc__q[aria-expanded='true'] + .acc__a { grid-template-rows: 1fr; }
   .acc__a-inner { overflow: hidden; }
   .acc__a-inner p { padding: 0 0 26px 41px; max-width: 64ch; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
-  .end { position: relative; background: var(--ink); color: var(--text-on-dark); padding-top: clamp(80px, 11vw, 150px); overflow: clip; }
-  .end__reg { position: absolute; width: clamp(300px, 36vw, 560px); top: -16%; right: -9%; color: rgba(240, 237, 233, 0.05); pointer-events: none; }
-  .end__inner { position: relative; display: grid; justify-items: start; gap: 22px; }
-  .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
-  .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
-  .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  /* ===================== On the app ===================== */
+  .onapp {
+    background: #ffffff;
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .onapp__grid {
+    display: grid;
+    gap: 48px;
+  }
+  @media (min-width: 980px) {
+    .onapp__grid {
+      grid-template-columns: 1fr 1.05fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .onapp__media {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .onapp__copy .dh {
+    margin-top: 16px;
+  }
+  .onapp__lead {
+    margin-top: 20px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-ink);
+  }
+  .onapp__p {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .onapp__list {
+    margin-top: 28px;
+    display: grid;
+    list-style: none;
+    padding: 0;
+  }
+  .onapp__item {
+    padding-block: 22px;
+    border-top: 1.5px dashed var(--line-strong);
+  }
+  .onapp__item:last-child {
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  .onapp__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(20px, 1.8vw, 24px);
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+  .onapp__item .onapp__p {
+    margin-top: 8px;
+  }
+  .onapp__shots {
+    display: grid;
+    gap: 28px;
+  }
+  .onapp__cta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 26px;
+  }
+  .onapp__note {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .inline-link {
+    color: var(--brand-orange);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .faq__fresh {
+    margin-bottom: 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  /* The studio adds: two columns side by side, app and studio. */
+  .adds {
+    margin-top: clamp(56px, 7vw, 96px);
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 860px) {
+    .adds {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .adds__col {
+    padding: clamp(26px, 3vw, 40px);
+    border-radius: 20px;
+    background: var(--paper, #f0ede9);
+    border: 1px solid var(--line-hairline);
+  }
+  .adds__col--studio {
+    background: var(--ink, #0e1633);
+    color: var(--text-on-dark);
+    border-color: transparent;
+  }
+  .adds__tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .adds__title {
+    margin-top: 12px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+  }
+  .adds__list {
+    margin-top: 18px;
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+  }
+  .adds__list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .adds__col--studio .adds__list li {
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .adds__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 10px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .onapp__both { margin-top: 26px; }
+  .inline-link--light { color: #f7a07f; }
 </style>
 
 <script>

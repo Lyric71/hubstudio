@@ -8,13 +8,13 @@
  */
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
+import { APP_URL } from '../../lib/links';
 import { formatDate, helpArticles, helpGroups, type HelpArticle } from '../../lib/help';
 
 export function getStaticPaths() {
   return helpArticles.map((a) => ({ params: { slug: a.slug } }));
 }
 
-const APP_URL = 'https://hubstudio.bearingbridge.com';
 const SITE = 'https://www.hubstudio.ai';
 
 const { slug } = Astro.params;

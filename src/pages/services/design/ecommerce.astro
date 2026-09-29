@@ -3,7 +3,7 @@
  * eCommerce Content  ·  /services/design/ecommerce
  *
  * Mirrors the "Pressroom" art direction of /services/design/packaging-merch-design.
- * Print-production language (crop marks, calibration colour bar, mono figure
+ * Print-production language (crop marks, calibration color bar, mono figure
  * labels, dashed dieline rules) frames bold editorial typography and the
  * studio's own product photography. Adapted to marketplace content: hero
  * product shots, mobile detail pages, marketplace dashboards.
@@ -14,6 +14,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 import InsightsLayer from '../../../components/InsightsLayer.astro';
 
 /* Studio product photography, each with an invented brand mark. */
@@ -28,7 +31,7 @@ const samples = [
     src: '/Images/ecom-stride.jpg',
     brand: 'Stride',
     kind: 'Footwear, Shopify catalog',
-    alt: 'A beige minimalist low-top sneaker on warm sand-coloured paper, three-quarter angle, Shopify catalog hero.',
+    alt: 'A beige minimalist low-top sneaker on warm sand-colored paper, three-quarter angle, Shopify catalog hero.',
   },
   {
     src: '/Images/ecom-velve.jpg',
@@ -56,7 +59,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -132,7 +135,7 @@ const processSteps = [
     title: 'AIGC production.',
     body: 'Variants across crops, backgrounds and markets, faster than a traditional shoot day.',
     image: '/Images/ecom-p3-aigc.jpg',
-    alt: 'A nine-frame grid of the same skincare bottle photographed against different coloured seamless backdrops.',
+    alt: 'A nine-frame grid of the same skincare bottle photographed against different colored seamless backdrops.',
   },
   {
     short: 'Marketplace files',
@@ -239,6 +242,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/ecommerce`;
 
@@ -259,7 +265,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'eCommerce', item: pageUrl },
   ],
 };
@@ -285,7 +291,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> eCommerce Content
           </p>
           <h1 class="hero__title">
@@ -309,7 +315,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See the work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -539,7 +545,7 @@ const breadcrumbSchema = {
             the files to their internal ops team.
           </p>
           <p class="source__p r" style="--d:.16s">
-            If you do not have one, we run upload and listing optimisation
+            If you do not have one, we run upload and listing optimization
             alongside the content across Amazon, Shopify, Tmall, JD and Douyin:
             keyword research, Rufus-aware copy structuring, variation trees,
             image slot sequencing, A+ assembly, mobile detail page slicing.
@@ -708,6 +714,41 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Make the listing images yourself, or have us ship the "
+      accent="catalog"
+      post="."
+      intro="A small catalog can run a lot of this in the hubStudio app. Large ones, and anything headed for Tmall or JD, usually need the studio."
+      columns={[
+        {
+          title: 'What a small team can handle in the app',
+          body: [
+            'Put a product into a new scene in the Image studio, on engines from several makers, by editing up to four source pictures, with a transparent background when the marketplace asks for one. Upscale and restore old packshots. Crop each image in the Image editor and save it as a new version in the Assets Library. The Skills catalog has packshot and lifestyle-scene instructions to start from. No subscription and no seat fees: each run is paid from a prepaid balance.',
+          ],
+        },
+        {
+          label: 'From the studio',
+          title: 'What changes at catalog scale',
+          body: [
+            'An art director looks after the whole catalog, not one SKU at a time. We shoot the products that need it and generate the rest, retouch to each marketplace’s rules, and write the detail pages and copy in-region. The files pass preflight on Amazon, Tmall, JD, Shopify, and Douyin.',
+            'Big catalogs often run as Studio + app. We make the images inside hubStudio, and your team sees them in the Client space and approves each one in Validation, so every SKU sign-off stays on record.',
+          ],
+        },
+      ]}
+      shot={appShots.editorCrop}
+      shotPath="/files/tools/image-editor"
+      shotCaption
+      links={[
+        { label: 'See the Image editor', href: '/app/library' },
+        { label: 'Assets Library, step by step', href: '/help/assets-library' },
+        { label: 'How the app is paid', href: '/pricing' },
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio-app"
+      ways={{ pre: 'Who fills the ', accent: 'catalog', post: '?', lead: 'A catalog doesn’t have to pick one. You can split it by SKU.' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -721,7 +762,7 @@ const breadcrumbSchema = {
             in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -779,11 +820,12 @@ const breadcrumbSchema = {
           full listing pack ready to upload, plus a production estimate for the
           rest of the catalog. No retainer, no commitment, whatever we ship is
           yours to keep regardless.
+          Want to try a few product images yourself first? Opening a hubStudio account costs nothing.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -798,6 +840,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1017,7 +1070,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

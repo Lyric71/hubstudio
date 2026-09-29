@@ -2,18 +2,18 @@
 title: "Your team"
 seoTitle: "Your team, its roles and its clients | hubStudio Help"
 description: "Working alone or in a team, the Admin, Creator, Viewer and Client roles, inviting people, answering requests to join, daily limits, pausing a login, adding clients and giving their people a login, invoice details and the sign-in code."
-excerpt: "A team shares one pool of credits and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
+excerpt: "A team shares one balance and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
 order: 14
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
-related: ["getting-started", "credits-and-payments", "history", "assets-library", "validation", "client-space", "skills"]
+related: ["getting-started", "balance-and-payments", "history", "assets-library", "validation", "client-space", "skills"]
 shots:
   - file: "/Images/help/your-team-members.webp"
     route: "/team"
     clip: "the team and Members cards"
-    alt: "The team card with the team name and the team credits, above the Members card listing each person with their role and daily limit"
+    alt: "The team card with the team name and the team balance, above the Members card listing each person with their role and daily limit"
     captured: 2026-09-27
   - file: "/Images/help/your-team-invite.webp"
     route: "/team"
@@ -33,15 +33,15 @@ shots:
 sources: ["src/pages/team.astro", "src/scripts/teamPanel.ts", "src/pages/api/team.ts", "src/pages/api/team/clients.ts", "src/pages/api/team/clients/[id].ts", "src/lib/team-clients.ts", "src/lib/invitations.ts", "src/lib/user-admin.ts", "src/lib/app.ts", "src/lib/features.ts", "src/pages/settings.astro", "src/pages/invite/[token].astro", "src/lib/credits.ts", "src/pages/signup.astro", "src/components/ClientPick.astro"]
 ---
 
-In hubStudio, a **team** is a group of people who share one pool of credits. Everything the team creates is paid from the team's credits first. A team can also work for **clients**: the companies it makes images, videos and posts for. Open **Team** in the menu, or **Team** in the menu under your picture.
+In hubStudio, a **team** is a group of people who share one balance. Everything the team creates is charged against the team balance first. A team can also work for **clients**: the companies it makes images, videos and posts for. Open **Team** in the menu, or **Team** in the menu under your picture.
 
 ## Working alone or in a team
 
-**Working alone?** You are a team of one, and nothing changes for you: the credits you buy pay for what you create. The Team page says **Just you, for now**. Invite someone and they start sharing the pool with you.
+**Working alone?** You are a team of one, and nothing changes for you: the balance you top up pays for what you create. The Team page says **Just you, for now**. Invite someone and they start sharing the balance with you.
 
-**In a team**, the page says how many people share the team's credits, and lists them under **Members**.
+**In a team**, the page says how many people share the team balance, and lists them under **Members**.
 
-![The team card with the team name and the team credits, above the Members card listing each person with their role and daily limit](/Images/help/your-team-members.webp)
+![The team card with the team name and the team balance, above the Members card listing each person with their role and daily limit](/Images/help/your-team-members.webp)
 
 ## The four roles
 
@@ -49,10 +49,10 @@ hubStudio has four roles.
 
 | Role | What they do |
 |---|---|
-| **Admin** | Runs the team: invites people, answers requests to join, chooses each person's role, sets each creator's daily limit, can pause a login, renames the team, adds clients and gives their people a login, buys credits for the team and writes team skills. Admins have no daily limit. |
-| **Creator** | Makes the work: images, videos and posts, paid from the team's credits within the daily limit an admin may set. Can also buy credits of their own. Retouches pictures in the [Image editor](/help/assets-library#the-image-editor), says which client a piece is made for, and sends work for approval in [Validation](/help/validation). |
+| **Admin** | Runs the team: invites people, answers requests to join, chooses each person's role, sets each creator's daily limit, can pause a login, renames the team, adds clients and gives their people a login, tops up the team balance and writes team skills. Admins have no daily limit. |
+| **Creator** | Makes the work: images, videos and posts, charged against the team balance within the daily limit an admin may set. Can also top up a balance of their own. Retouches pictures in the [Image editor](/help/assets-library#the-image-editor), says which client a piece is made for, and sends work for approval in [Validation](/help/validation). |
 | **Viewer** | Sees the team's work, in History and in the Assets Library. Creates nothing and spends nothing. |
-| **Client** | A person at one of the companies the team works for, given a login by an admin. Sees only what was made for their company, in their [Client space](/help/client-space): downloads it, comments on it and approves it. Holds no credits and spends nothing. |
+| **Client** | A person at one of the companies the team works for, given a login by an admin. Sees only what was made for their company, in their [Client space](/help/client-space): downloads it, comments on it and approves it. Holds no balance and spends nothing. |
 
 The person who creates a team is its first admin. Your own role is shown in **User Settings**, with a line that says what it allows.
 
@@ -66,7 +66,7 @@ Admins see the card **Invite someone**. It is for the people of your team; a cli
 2. Pick the **Role**: **Creator**, **Viewer** or **Admin**.
 3. Click **Send the invitation**.
 
-They receive an email with a link to choose their password and join the team. On that page they tick the Terms of Service and click **Join and sign in**. A new creator shares the pool with no limit until an admin sets one.
+They receive an email with a link to choose their password and join the team. On that page they tick the Terms of Service and click **Join and sign in**. A new creator shares the team balance with no limit until an admin sets one.
 
 Pending invitations are listed under **Waiting for an answer**, each with its role and **Link valid until** and a date, or **The link has expired**. An invitation stays valid for a week. **Cancel the invitation** stops its link from working. To invite someone again after the link expired, send a new invitation.
 
@@ -79,11 +79,11 @@ When someone signs up with **Join a team** and names your team or your email add
 - **Accept as creator**: they receive an invitation by email, where they choose their password.
 - **Decline**: the request is dropped.
 
-## Daily limit on the team's credits
+## Daily limit on the team balance
 
-For each creator, an admin can set a daily limit, in US dollars, on the team's credits. Type the amount in the person's row and click **Save**. Leave the field empty for no limit. Under the field, **Used today** shows what they have drawn from the team's credits today.
+For each creator, an admin can set a daily limit, in US dollars, on the team balance. Type the amount in the person's row and click **Save**. Leave the field empty for no limit. Under the field, **Used today** shows what they have drawn from the team balance today.
 
-The limit resets at midnight UTC. A creator who reaches it continues on their own credits, if they bought some. Otherwise their runs are refused until the next day, and they see a message that starts with **You have used today's allowance of your team's credits**.
+The limit resets at midnight UTC. A creator who reaches it continues on their own balance, if they topped one up. Otherwise their runs are refused until the next day, and they see a message saying they have used today's allowance. See [Troubleshooting](/help/troubleshooting#balance).
 
 Admins have no daily limit, and their row says **No limit for admins**. A viewer's row says **A viewer spends nothing**.
 
@@ -137,7 +137,7 @@ When you send a piece made for a client to [Validation](/help/validation), you c
 
 ### What a client sees
 
-A client login lands on its **Client space**, titled after its company. It holds what the team made for that company, newest first: images, videos, posts and files. It never shows a prompt, an engine or a cost. Its menu has only **Client space** and **Validation**, and it has no credits. Downloads by a client are paid from the team's credits, like any download. See [Client space](/help/client-space).
+A client login lands on its **Client space**, titled after its company. It holds what the team made for that company, newest first: images, videos, posts and files. It never shows a prompt, an engine or a cost. Its menu has only **Client space** and **Validation**, and it has no balance. Downloads by a client are charged against the team balance, like any download. See [Client space](/help/client-space).
 
 ### Delete a client
 
@@ -147,7 +147,7 @@ A client login lands on its **Client space**, titled after its company. It holds
 
 The **Invoices and sign-in** card, for admins, holds two decisions the team takes for itself.
 
-- **Invoiced to (a person or the company)**, **Invoices sent to** and **Billing address**: what every invoice for the team's credits says. Click **Save the invoice details**; the next invoice carries them.
+- **Invoiced to (a person or the company)**, **Invoices sent to** and **Billing address**: what every invoice for the team balance says. Click **Save the invoice details**; the next invoice carries them.
 - **Ask for a code sent by email at each sign-in**: after the password, everyone types a 6-digit code mailed to them. A browser they choose to trust skips it for 30 days. See [Account and sign-in](/help/account-and-sign-in#the-sign-in-code-by-email).
 
 ![The Invoices and sign-in card: who the invoices are made out to, where they are sent, the billing address, and the sign-in code switch](/Images/help/your-team-invoices-and-sign-in.webp)
@@ -156,4 +156,4 @@ The **Invoices and sign-in** card, for admins, holds two decisions the team take
 
 Admins see the team's name in an editable field at the top of the page. Change it and click **Save the name**. A team name needs at least 2 characters.
 
-The same card shows the **Team credits** balance to admins, with a **Buy credits** button. See [Credits and payments](/help/credits-and-payments).
+The same card shows admins the team balance, under **Team credits**, with a **Buy credits** button to top it up. See [Balance and payments](/help/balance-and-payments).

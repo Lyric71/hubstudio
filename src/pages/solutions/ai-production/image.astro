@@ -6,6 +6,10 @@
  * AIGC at the back. Drawn from the source page's volume / timeline /
  * budget framing and the content categories the studio actually ships.
  *
+ * Repositioned for the two offers: the studio makes the work, or the
+ * customer's own team makes it in the hubStudio app (Image studio, Explore).
+ * Copy deck: scratchpad cq/aiprod-image/final.md.
+ *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
  * its canonical lowercase-h casing.
@@ -13,6 +17,15 @@
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
 import InsightsLayer from '../../../components/InsightsLayer.astro';
+import AppShot from '../../../components/AppShot.astro';
+import WaysToWork from '../../../components/WaysToWork.astro';
+import DualCta from '../../../components/DualCta.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL, HELP_URL } from '../../../lib/links';
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/solutions/ai-production/image`;
+const briefHref = `${BRIEF_URL}?way=studio`;
 
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
@@ -22,19 +35,37 @@ const colourBar = [
 const reasons = [
   {
     label: 'Volume',
-    title: 'Marketing now demands 500 to 5,000 assets a month.',
-    body: 'Traditional studios were built for 50 to 100 per cycle. The gap is unbridgeable with headcount, location days and prop budgets. AIGC closes the gap without forcing the team to compromise on craft.',
+    title: 'Marketing needs far more images than a shoot can supply.',
+    body: 'Every channel, format and market wants its own version. A studio built for a few dozen frames per campaign can\u2019t keep up by adding people and location days. AI closes that gap without asking the team to drop its standards.',
   },
   {
     label: 'Timeline',
     title: 'Marketing wants days, not months.',
-    body: 'Six to eight weeks of traditional production no longer fits inside the calendar. Campaigns now ship inside a week. AIGC runs at that pace because the bottleneck is not the studio, it is the brief.',
+    body: 'A traditional shoot takes weeks to book, light and deliver. Campaigns now move faster than that. AI works at the new pace, because the slow part is now the brief, not the camera.',
   },
   {
     label: 'Budget',
-    title: 'Flat budgets, fivefold demand. Ideas die from cost.',
-    body: 'Five hundred to two thousand dollars per traditional image stops being economic at scale. AIGC bends the cost curve so the team can produce the variations the campaign deserves rather than the ones the line item allows.',
+    title: 'Flat budgets, rising demand.',
+    body: 'When every image needs its own set and crew, the budget decides how many ideas get made. AI takes a large part of that cost out, so the team can make the variations a campaign deserves instead of the few a line item allows.',
   },
+];
+
+/* The two routes side by side: what the customer's team does in the app,
+   and what the studio adds. Plain lists, no numerals. */
+const appSide = [
+  'Pick the engine for each job',
+  'A price on every run, shown first',
+  'Find every render in History, with its prompt',
+  'Edit, crop and add a logo in the free Image editor',
+  'Send a picture for approval in Validation',
+  'Keep every file in the Assets Library',
+];
+const studioSide = [
+  'A senior art director on the brief',
+  'The concept behind the picture',
+  'A shoot when the picture needs one, generation when it doesn\u2019t, or both',
+  'Brand-trained models on our own GPU pipelines',
+  'Retouching by hand',
 ];
 
 const lanes = [
@@ -59,7 +90,7 @@ const lanes = [
     heading: 'E-commerce and product imagery.',
     image: '/Images/ecom-imagery.jpg',
     alt: 'A daylit product still life on a calibrated background with the hero shot pinned beside the in-context lifestyle frame and the marketplace tile, warm shadow grade.',
-    lead: 'Hero product, context and lifestyle, demos with and without models, marketplace-optimised assets. The library that closes the sale.',
+    lead: 'Hero product, context and lifestyle, demos with and without models, marketplace-optimized assets. The library that closes the sale.',
     body: [
       "The same starting asset becomes the hero, the editorial frame and the marketplace tile, all under the same brand standard. The PDP, the A+ content and the configurator stay in step.",
       'Useful for retailers and DTC brands shipping high volumes of product variations across multiple marketplaces, where consistency is the moat and speed is the constraint.',
@@ -67,7 +98,7 @@ const lanes = [
     tags: [
       'Hero product images', 'Lifestyle context',
       'Product descriptions', 'Demos with and without models',
-      'Marketplace-optimised', '360-degree views',
+      'Marketplace-optimized', '360-degree views',
     ],
   },
   {
@@ -103,10 +134,10 @@ const lanes = [
     ],
   },
   {
-    label: 'Product visualisation',
-    heading: 'Product visualisation and campaign adaptation.',
+    label: 'Product visualization',
+    heading: 'Product visualization and campaign adaptation.',
     image: '/Images/ecom-listings.jpg',
-    alt: 'A daylit product-visualisation review with 360-degree views and technical illustrations on calibrated monitors, real-photography grade, lifted black point.',
+    alt: 'A daylit product-visualization review with 360-degree views and technical illustrations on calibrated monitors, real-photography grade, lifted black point.',
     lead: '360-degree views, technical illustrations, packaging variants and multi-market campaign adaptations.',
     body: [
       "From the master campaign idea to the local adaptation, the seasonal variant, the format multiplication and the A/B testing variant. One brief, many on-brand expressions.",
@@ -115,7 +146,7 @@ const lanes = [
     tags: [
       '360-degree product views', 'Technical illustrations',
       'Assembly instructions', 'Packaging design',
-      'Multi-market localisation', 'Format adaptations',
+      'Multi-market localization', 'Format adaptations',
       'A/B testing variants',
     ],
   },
@@ -124,11 +155,11 @@ const lanes = [
 const faqs = [
   {
     q: 'Who owns the copyright to AI-generated images?',
-    a: 'AI-generated images cannot be copyrighted in most jurisdictions, including the US, because copyright law requires human authorship. However, as the client commissioning the work, you typically own usage rights through the service agreement. We provide clear ownership documentation for every generated asset and confirm full commercial usage rights.',
+    a: 'AI-generated images can\u2019t be copyrighted in most jurisdictions, including the US, because copyright law requires human authorship. As the client commissioning the work, you get usage rights through the service agreement, and we record the provenance of every asset we deliver.',
   },
   {
-    q: 'Is my brand data safe and private when using AIGC services?',
-    a: 'Yes. We never send brand data to public AI platforms such as ChatGPT or MidJourney. All content is processed on private, dedicated servers using open-source AI models. Prompts are anonymised, trained models remain exclusively yours, and hosting options cover China, the USA or Europe to meet data sovereignty requirements.',
+    q: 'Is my brand data safe with you?',
+    a: 'Work you brief to the studio stays with the studio team, under NDA, and brand-trained models run on our own GPU pipelines. In the app, your team picks the engine for each run and keeps the results in its own History and Assets Library. For clean delivery files, the free Image anonymizer shows the hidden data in a picture (camera data, location, content credentials) and rebuilds it clean without uploading it.',
   },
   {
     q: 'Could AI-generated images infringe on existing copyrights?',
@@ -136,15 +167,15 @@ const faqs = [
   },
   {
     q: 'How do you ensure brand safety and quality control?',
-    a: 'Brand safety is paramount. The process includes initial brand DNA analysis, human creative oversight during generation, brand compliance review and final QC before delivery. Creative directors from top agencies guide every project to ensure outputs align with the brand standard.',
+    a: 'A senior art director leads every brief. The process runs from a first read of your brand to human direction during generation, a brand compliance review and a final check before delivery.',
   },
   {
-    q: 'Can AI really create content that is relevant to my brand and audience?',
-    a: 'Yes, but only with proper training and human guidance. We create custom AI models trained on the brand visual identity, products and style guidelines. AI is the tool. Creative strategists develop the concept and ensure every generated image serves the brand and resonates with the audience.',
+    q: 'Can AI really create content that fits my brand and audience?',
+    a: 'Yes, with the right setup and people. For studio work we use models trained on your brand\u2019s look, products and guidelines. AI is the tool. Our creative team develops the concept and decides what serves the brand.',
   },
   {
-    q: 'What happens if the AI generates inappropriate or off-brand content?',
-    a: 'Multi-layer quality control prevents this. We use prompt-engineering best practice, content filtering and human review at every stage. If something unsuitable slips through, we run rapid correction and regenerate at no additional cost. Revisions are unlimited until the brief is met.',
+    q: 'What happens if the AI generates something off-brand?',
+    a: 'We catch it before you see it. Prompt craft, content filters and human review run at every stage, and nothing reaches you without a person signing it off. If something slips through, we fix it.',
   },
   {
     q: 'How much human involvement is there in the AI generation process?',
@@ -153,6 +184,14 @@ const faqs = [
   {
     q: 'Will AIGC replace traditional photography and design for our brand?',
     a: 'No. AIGC complements traditional creative rather than replacing it. It excels at scaling content production, rapid iteration and exploring concept cost-effectively. Certain campaigns, high-touch brand moments and authentic human stories still require traditional photography. We help determine the optimal mix per project.',
+  },
+  {
+    q: 'Can our own team make the images instead?',
+    a: 'Yes. Create an account in the hubStudio app and your team works in the Image studio, with engines from several makers in one place. Creating the account costs nothing, there\u2019s no subscription, and each run shows its price before it starts. When a job needs an art director, send it to us instead.',
+  },
+  {
+    q: 'How is image production priced?',
+    a: 'In the app, you pay per run from a prepaid balance, at the price shown before each run, and a failed run is never charged. There\u2019s no subscription, and the balance doesn\u2019t expire. Studio work is priced per asset, per project or on retainer, and quoted after we read your brief. A written proposal follows within 48 hours. We don\u2019t publish rates.',
   },
 ];
 
@@ -165,13 +204,24 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'AI image production', item: pageUrl },
+  ],
+};
 ---
 
 <Layout
   title="AIGC Image Production for Brands | hubStudio"
-  description="Studio-grade AI image creation with custom models, private infrastructure, and senior creative direction. Brand, performance, and eCommerce visuals at scale."
+  description="AI image production for brands. Our studio makes it with senior art direction, or your own team makes it in the hubStudio app. Or mix the two."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <div class="prog" aria-hidden="true"><span class="prog__bar"></span></div>
 
@@ -202,23 +252,23 @@ const faqSchema = {
               resonates with an audience. That is still human work.
             </p>
             <p>
-              We pair creative directors from top global agencies with
-              custom AI models trained on your brand. AI serves the vision,
-              never dictates it. The output reads like a campaign because
-              a campaign is what we made.
+              Senior art directors lead every brief, and our studio runs
+              models trained on your brand. The idea comes first, and AI is
+              how we get it made. The output reads like a campaign because a
+              campaign is what we made.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start an image brief</Button>
-            <a class="ghost-link ghost-link--light" href="#lanes">
-              See the work
+            <Button variant="primary" href={briefHref}>Start an image brief</Button>
+            <a class="ghost-link ghost-link--light" href="#app">
+              Or make it in the app
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Shanghai studio <span>/</span> Custom-trained models, private hosting
+            Shanghai studio <span>/</span> Brand-trained models, senior art direction
           </p>
         </div>
       </div>
@@ -328,6 +378,83 @@ const faqSchema = {
       </div>
     </section>
 
+    <section class="onapp" id="app">
+      <div class="shell">
+        <div class="onapp__grid">
+          <div class="onapp__copy">
+            <p class="kicker r"><span class="kicker__tick"></span>Or make it yourself</p>
+            <h2 class="dh r" style="--d:.05s">
+              Your team can make it in the <span class="serif">app</span>.
+            </h2>
+            <p class="onapp__lead r" style="--d:.1s">
+              Everything above is studio work. Some images need an art
+              director, and plenty don&rsquo;t. For the second kind, your own
+              team can make the pictures in hubStudio, our app, and pay only
+              for what it runs.
+            </p>
+            <p class="onapp__p r" style="--d:.14s">
+              The Image studio does three jobs: text to image, editing up to
+              four of your own pictures (depending on the engine), and
+              upscaling or restoring a picture. It renders up to 4K and one to
+              ten images a run. You set the shape and the format, and add a
+              transparent background or a mask when you need one.
+              &ldquo;Improve with AI&rdquo; rewrites your prompt for the engine
+              you picked.
+            </p>
+            <p class="onapp__p r" style="--d:.18s">
+              Engines come from OpenAI, Google, Black Forest Labs, ByteDance,
+              Meta and others, and you can browse them all in Explore: ChatGPT
+              Image 2, Nano Banana 2 and Pro, FLUX, Seedream and more as they
+              ship. They differ, so it pays to test two on the same prompt.
+              Each run shows its price before it starts, and it&rsquo;s paid
+              from a prepaid balance.
+            </p>
+            <div class="onapp__cta r" style="--d:.22s">
+              <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+              <a class="ghost-link" href={`${HELP_URL}/create-an-image`}>
+                How the Image studio works
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="onapp__media onapp__shots">
+            <div class="r" style="--d:.1s">
+              <AppShot shot={appShots.imageStudio} path="/content/image-generate" caption />
+            </div>
+            <div class="r" style="--d:.16s">
+              <AppShot shot={appShots.explore} path="/explore" caption />
+            </div>
+          </div>
+        </div>
+
+        <div class="adds">
+          <div class="adds__col r">
+            <p class="adds__tag">In the app</p>
+            <h3 class="adds__title">Your team decides.</h3>
+            <ul class="adds__list">
+              {appSide.map((t) => <li>{t}</li>)}
+            </ul>
+          </div>
+          <div class="adds__col adds__col--studio r" style="--d:.08s">
+            <p class="adds__tag">With the studio</p>
+            <h3 class="adds__title">What we add.</h3>
+            <ul class="adds__list">
+              {studioSide.map((t) => <li>{t}</li>)}
+            </ul>
+          </div>
+        </div>
+        <p class="onapp__p onapp__both r">
+          Or both at once: our studio can make the work inside hubStudio, and
+          you approve it there.
+          <a class="inline-link" href="/studio/with-the-app">How Studio + app works</a>.
+        </p>
+      </div>
+    </section>
+
+    <WaysToWork tone="cream" highlight="studio-app" />
+
     <section class="source">
       <div class="shell source__grid">
         <div class="source__visual">
@@ -343,8 +470,8 @@ const faqSchema = {
             </div>
           </figure>
           <div class="source__stat">
-            <span class="source__stat-num">Private</span>
-            <span class="source__stat-cap">Custom-trained models on dedicated servers</span>
+            <span class="source__stat-num">Asset by asset</span>
+            <span class="source__stat-cap">Shot, generated or both, decided image by image</span>
           </div>
         </div>
 
@@ -354,39 +481,41 @@ const faqSchema = {
             Studio execution<br />at AI <span class="serif">speed</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            We combine agency strengths (strategic creativity, brand
-            expertise) with AIGC capability (infinite iteration, instant
-            variation, exponential scale). One partner gives you both
-            creative intelligence and production power.
+            We bring an agency&rsquo;s instincts and a production floor that
+            runs AI every day, under one roof.
           </p>
           <p class="source__p r" style="--d:.16s">
-            No public platforms. We build proprietary AI models trained
-            exclusively on your visual identity, hosted on dedicated
-            servers in the geography you choose (China, USA, Europe). Your
-            brand intelligence stays entirely yours.
+            For work you brief to us, our studio trains models on your brand
+            and runs them on its own GPU pipelines. The team that runs them is
+            the team that art-directs your work.
           </p>
           <p class="source__p r" style="--d:.22s">
-            What you receive are finished assets, not software to learn.
-            The complexity stays on our side of the brief.
+            Choose how you receive it. With Studio only, you get finished files
+            and need no account. Choose Studio + app and you review, comment
+            on and approve the work in hubStudio.
+          </p>
+          <p class="source__p r" style="--d:.25s">
+            The work we&rsquo;ve shipped is on the
+            <a class="inline-link inline-link--light" href="/work">Work page</a>.
           </p>
           <ul class="creds r" style="--d:.28s">
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Custom-trained models
+              Brand-trained models
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Private hosting
+              Provenance per asset
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Senior creative direction
+              Senior art direction
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
@@ -410,8 +539,9 @@ const faqSchema = {
             The questions brand and performance leads ask before we begin.
             If yours is not below, put it in the brief.
           </p>
+          <p class="faq__fresh r" style="--d:.13s">Updated September 2026</p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start an image brief</Button>
+            <Button variant="primary" href={briefHref}>Start an image brief</Button>
           </div>
         </aside>
 
@@ -440,36 +570,15 @@ const faqSchema = {
 
     <InsightsLayer placement="aiImage" tone="white" id="reading" />
 
-    <section class="end">
-      <svg class="end__reg" viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1.4" />
-        <path d="M50 4v92M4 50h92" stroke="currentColor" stroke-width="1.4" />
-      </svg>
-      <div class="shell end__inner">
-        <p class="kicker kicker--light r"><span class="kicker__tick"></span>Build with us</p>
-        <h2 class="end__title r" style="--d:.05s">
-          Make ten times<br /><span class="serif">the work</span>.
-        </h2>
-        <p class="end__p r" style="--d:.12s">
-          Send a campaign brief, a content gap or the channel you keep
-          underfeeding. A senior lead reads it inside two working days and
-          replies with a phased plan, a cost shape and an honest read on
-          which lane starts first.
-        </p>
-        <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start an image brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See client work
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="cbar cbar--end" aria-hidden="true">
-        {colourBar.map((c) => <span style={`background:${c}`}></span>)}
-      </div>
-    </section>
+    <DualCta
+      eyebrow="Build with us"
+      pre="Brief us, or open the "
+      accent="app"
+      post="."
+      text="Send a campaign brief, a content gap or the channel you keep underfeeding. A producer reads it within one business day, and a written proposal follows within 48 hours. Or open the app and make the first images yourself."
+      lead="studio"
+      briefQuery="way=studio"
+    />
   </div>
 </Layout>
 
@@ -610,12 +719,163 @@ const faqSchema = {
   .acc__q[aria-expanded='true'] + .acc__a { grid-template-rows: 1fr; }
   .acc__a-inner { overflow: hidden; }
   .acc__a-inner p { padding: 0 0 26px 41px; max-width: 64ch; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
-  .end { position: relative; background: var(--ink); color: var(--text-on-dark); padding-top: clamp(80px, 11vw, 150px); overflow: clip; }
-  .end__reg { position: absolute; width: clamp(300px, 36vw, 560px); top: -16%; right: -9%; color: rgba(240, 237, 233, 0.05); pointer-events: none; }
-  .end__inner { position: relative; display: grid; justify-items: start; gap: 22px; }
-  .end__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.98; letter-spacing: -0.04em; }
-  .end__p { max-width: 54ch; font-size: var(--type-lead); line-height: 1.5; color: rgba(240, 237, 233, 0.78); }
-  .end__cta { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  /* ===================== On the app ===================== */
+  .onapp {
+    background: #ffffff;
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .onapp__grid {
+    display: grid;
+    gap: 48px;
+  }
+  @media (min-width: 980px) {
+    .onapp__grid {
+      grid-template-columns: 1fr 1.05fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .onapp__media {
+      position: sticky;
+      top: 96px;
+    }
+  }
+  .onapp__copy .dh {
+    margin-top: 16px;
+  }
+  .onapp__lead {
+    margin-top: 20px;
+    font-size: var(--type-lead);
+    line-height: 1.5;
+    color: var(--text-ink);
+  }
+  .onapp__p {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .onapp__list {
+    margin-top: 28px;
+    display: grid;
+    list-style: none;
+    padding: 0;
+  }
+  .onapp__item {
+    padding-block: 22px;
+    border-top: 1.5px dashed var(--line-strong);
+  }
+  .onapp__item:last-child {
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  .onapp__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(20px, 1.8vw, 24px);
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+  .onapp__item .onapp__p {
+    margin-top: 8px;
+  }
+  .onapp__shots {
+    display: grid;
+    gap: 28px;
+  }
+  .onapp__cta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 26px;
+  }
+  .onapp__note {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .inline-link {
+    color: var(--brand-orange);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .faq__fresh {
+    margin-bottom: 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  /* The studio adds: two columns side by side, app and studio. */
+  .adds {
+    margin-top: clamp(56px, 7vw, 96px);
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 860px) {
+    .adds {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .adds__col {
+    padding: clamp(26px, 3vw, 40px);
+    border-radius: 20px;
+    background: var(--paper, #f0ede9);
+    border: 1px solid var(--line-hairline);
+  }
+  .adds__col--studio {
+    background: var(--ink, #0e1633);
+    color: var(--text-on-dark);
+    border-color: transparent;
+  }
+  .adds__tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .adds__title {
+    margin-top: 12px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+  }
+  .adds__list {
+    margin-top: 18px;
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+  }
+  .adds__list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .adds__col--studio .adds__list li {
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .adds__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 10px;
+    height: 0;
+    border-top: 1.5px solid var(--brand-orange);
+  }
+  .onapp__both { margin-top: 26px; }
+  .inline-link--light { color: #f7a07f; }
 </style>
 
 <script>

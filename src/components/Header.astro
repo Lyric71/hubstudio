@@ -12,6 +12,7 @@
 import Logo from './Logo.astro';
 import { localizePath } from '../i18n/utils';
 import { getLocaleFromUrl } from '../i18n/utils';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../lib/links';
 
 const locale = getLocaleFromUrl(Astro.url);
 const lp = (p: string) => localizePath(p, locale);
@@ -49,19 +50,65 @@ type MenuItem = {
   serviceGroups?: ServiceGroup[];
   /** When set, the item renders the Solutions panel (grouped columns). */
   solutionCols?: SolutionCol[];
+  /** Short link list under the intro column (the Studio panel's own pages). */
+  introLinks?: FlatLink[];
 };
 
 const menu: MenuItem[] = [
   {
-    label: 'Services',
-    href: '/services',
+    label: 'App',
+    href: '/app',
     intro: {
-      eyebrow: 'Services',
+      eyebrow: 'The hubStudio app',
+      pre: 'Every engine, one ',
+      accent: 'app',
+      post: '.',
+      text: 'Make images and video with the leading AI engines, then edit, approve, and publish them. You pay as you go, and there are no seat fees.',
+    },
+    groups: [
+      {
+        heading: 'Make',
+        links: [
+          { title: 'Create', desc: 'Explore, the Image and Video studios, Skills', href: '/app/create' },
+          { title: 'Engines', desc: 'Every image and video engine, by maker', href: '/app/engines' },
+          { title: 'Assets Library', desc: 'Files, the Image editor, the anonymizer', href: '/app/library' },
+        ],
+      },
+      {
+        heading: 'Ship',
+        links: [
+          { title: 'Publish', desc: 'LinkedIn, Instagram, Facebook, TikTok, X', href: '/app/publish' },
+          { title: 'Review and clients', desc: 'Validation, Client space, your team', href: '/app/review' },
+          { title: 'Help center', desc: 'Step-by-step guides to every screen', href: '/help' },
+        ],
+      },
+    ],
+    featured: {
+      variant: 'navy',
+      eyebrow: 'Open sign-up',
+      title: 'Create your hubStudio account',
+      text: 'The account is free. You pay only for what you run.',
+      cta: { label: 'Create your account', href: APP_SIGNUP },
+      image: '/Images/app/explore.webp',
+    },
+  },
+  {
+    label: 'Studio',
+    href: '/studio',
+    intro: {
+      eyebrow: 'The hubStudio studio',
       pre: 'Twenty service lines. One ',
       accent: 'studio',
       post: '.',
-      text: 'From a single social post to a full campaign system: every format your brand needs, produced in days, not weeks.',
+      text: 'Senior art directors and AIGC specialists who take the brief and deliver the work, inside the app or outside it.',
     },
+    introLinks: [
+      { label: 'Studio + app', href: '/studio/with-the-app' },
+      { label: 'How we use AI', href: '/studio/ai-excellence' },
+      { label: 'Who we are', href: '/about' },
+      { label: 'Creative talents', href: '/about/team' },
+      { label: 'Partners', href: '/partners' },
+    ],
     serviceGroups: [
       {
         heading: 'Content & Social',
@@ -123,11 +170,11 @@ const menu: MenuItem[] = [
       pre: 'Built around how your brand ',
       accent: 'sells',
       post: '.',
-      text: 'Who we work with, the consulting we run, and the platforms we produce for, matched to your market.',
+      text: 'Who we work with, the consulting we run, and the platforms we produce for, in the app and in the studio.',
     },
     solutionCols: [
       {
-        heading: 'Clients',
+        heading: 'Who it is for',
         links: [
           { label: 'Brands', href: '/solutions/brands' },
           { label: 'Agencies', href: '/solutions/agencies' },
@@ -186,42 +233,12 @@ const menu: MenuItem[] = [
     ],
   },
   {
-    label: 'Pricing',
-    href: '/pricing',
-  },
-  {
-    label: 'The Studio',
-    href: '/the-studio',
-    intro: {
-      eyebrow: 'The Studio',
-      pre: 'A production ',
-      accent: 'house',
-      post: '.',
-      text: 'Who we are, how we work, and why brands move their content operation here.',
-    },
-    groups: [
-      {
-        heading: 'About',
-        links: [
-          { title: 'Who we are', desc: 'The studio behind the work', href: '/the-studio/who-we-are' },
-          { title: 'Our creative talents', desc: 'The directors, designers and writers', href: '/the-studio/creative-talents' },
-          { title: 'Our AI excellence', desc: 'Generation, used at studio level', href: '/the-studio/ai-excellence' },
-          { title: 'Partner program', desc: 'Build alongside hubStudio', href: '/partner-program' },
-        ],
-      },
-    ],
-    featured: {
-      variant: 'orange',
-      eyebrow: 'Founder story',
-      title: 'Built for what content became',
-      text: 'Why we rebuilt the studio model from the ground up.',
-      cta: { label: 'Read the story', href: '/the-studio#story' },
-      image: '/Team/cyril-drouin-card.webp',
-    },
-  },
-  {
     label: 'Work',
     href: '/work',
+  },
+  {
+    label: 'Pricing',
+    href: '/pricing',
   },
   {
     label: 'Resources',
@@ -231,7 +248,7 @@ const menu: MenuItem[] = [
       pre: 'Worth ',
       accent: 'reading',
       post: '.',
-      text: 'Perspectives, practical guides, and the legal ground rules for AI-native content.',
+      text: 'Perspectives, practical guides, the legal ground rules for AI content, and the app help center.',
     },
     groups: [
       {
@@ -243,15 +260,11 @@ const menu: MenuItem[] = [
         ],
       },
       {
-        heading: 'Legal',
+        heading: 'Rights and help',
         links: [
           { title: 'Copyright & AI', desc: 'Using AI without risk', href: '/resources/copyright-and-ai' },
-        ],
-      },
-      {
-        heading: 'The app',
-        links: [
           { title: 'Help center', desc: 'Guides to the hubStudio app', href: '/help' },
+          { title: 'About hubStudio', desc: 'The company and the people', href: '/about' },
         ],
       },
     ],
@@ -321,6 +334,17 @@ const menu: MenuItem[] = [
                           {item.intro!.post}
                         </p>
                         <p class="mega__intro-text">{item.intro!.text}</p>
+                        {item.introLinks && (
+                          <ul class="mega__intro-list">
+                            {item.introLinks.map((l) => (
+                              <li>
+                                <a class="sol-link" href={lp(l.href)}>
+                                  {l.label}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                         <a class="mega__intro-link" href={lp(item.href)}>
                           All of {item.label} &rarr;
                         </a>
@@ -416,7 +440,7 @@ const menu: MenuItem[] = [
                       {item.featured && (
                         <a
                           class={`mega__feat card card--${item.featured.variant}`}
-                          href={lp(item.featured.cta.href)}
+                          href={/^https?:/.test(item.featured.cta.href) ? item.featured.cta.href : lp(item.featured.cta.href)}
                         >
                           {item.featured.image ? (
                             <img
@@ -448,13 +472,13 @@ const menu: MenuItem[] = [
       </nav>
 
       <div class="site-header__actions">
-        {/* The most important action in the bar. Access is granted by request,
-            so it points at the form, not at the gated tool. */}
-        <a
-          class="btn btn--primary site-header__engine"
-          href={lp('/contact') + '?request=quotation-engine'}>Quotation Engine</a
+        {/* The app door first (sign in, create an account), the studio door
+            second (send a brief). See hubstudio-positioning.md. */}
+        <a class="site-header__signin" href={APP_SIGNIN} rel="noopener">Sign in</a>
+        <a class="btn btn--primary site-header__engine" href={APP_SIGNUP} rel="noopener"
+          >Create account</a
         >
-        <a class="btn btn--secondary" href={lp('/contact')}>Talk to us</a>
+        <a class="btn btn--secondary site-header__brief" href={lp(BRIEF_URL)}>Send a brief</a>
         <button
           class="site-header__burger"
           id="nav-burger"
@@ -499,6 +523,19 @@ const menu: MenuItem[] = [
                 <div class="m-acc__panel">
                   <div class="m-acc__inner">
                     <p class="m-acc__intro">{item.intro!.text}</p>
+
+                    {item.introLinks && (
+                      <div class="m-acc__group">
+                        <p class="mega__group-head">{item.label}</p>
+                        <ul class="m-acc__group-list">
+                          {item.introLinks.map((l) => (
+                            <li>
+                              <a href={lp(l.href)}>{l.label}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
                     {item.serviceGroups &&
                       item.serviceGroups.map((group) => (
@@ -568,11 +605,9 @@ const menu: MenuItem[] = [
         }
       </div>
       <div class="mobile-drawer__foot container">
-        <a
-          class="btn btn--primary"
-          href={lp('/contact') + '?request=quotation-engine'}>Quotation Engine</a
-        >
-        <a class="btn btn--secondary" href={lp('/contact')}>Talk to us</a>
+        <a class="btn btn--primary" href={APP_SIGNUP} rel="noopener">Create account</a>
+        <a class="btn btn--secondary" href={lp(BRIEF_URL)}>Send a brief</a>
+        <a class="mobile-drawer__signin" href={APP_SIGNIN} rel="noopener">Already on hubStudio? Sign in</a>
       </div>
     </div>
   </div>
@@ -734,6 +769,11 @@ const menu: MenuItem[] = [
     color: var(--text-mute);
     font-size: var(--type-small);
     line-height: 1.5;
+  }
+  .mega__intro-list {
+    display: grid;
+    gap: 1px;
+    margin-top: 14px;
   }
   .mega__intro-link {
     display: inline-block;
@@ -949,6 +989,39 @@ const menu: MenuItem[] = [
       box-shadow: 0 0 0 6px color-mix(in srgb, var(--brand-orange) 20%, transparent);
     }
   }
+  /* Sign in: a quiet text link, the returning user's door. The brief button
+     needs the widest bar, so it steps back to the drawer below 1200px. */
+  .site-header__signin {
+    display: none;
+    padding: 8px 6px;
+    font-size: var(--type-button);
+    font-weight: 500;
+    color: var(--text-ink);
+    white-space: nowrap;
+    transition: color 120ms ease-out;
+  }
+  .site-header__signin:hover {
+    color: var(--brand-orange);
+  }
+  .site-header__brief {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .site-header__signin {
+      display: inline-flex;
+    }
+  }
+  @media (min-width: 1200px) {
+    .site-header__brief {
+      display: inline-flex;
+    }
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__signin {
+    color: var(--text-on-dark);
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] .site-header__signin:hover {
+    color: var(--brand-orange);
+  }
   .site-header__burger {
     display: inline-flex;
     flex-direction: column;
@@ -1036,6 +1109,15 @@ const menu: MenuItem[] = [
   }
   .mobile-drawer__foot .btn {
     width: 100%;
+  }
+  .mobile-drawer__signin {
+    padding-top: 4px;
+    text-align: center;
+    font-size: var(--type-small);
+    color: var(--text-mute);
+  }
+  .mobile-drawer__signin:hover {
+    color: var(--brand-orange);
   }
   .m-acc {
     border-bottom: 1px solid var(--line-hairline);

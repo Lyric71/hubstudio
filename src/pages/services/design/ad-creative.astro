@@ -4,7 +4,7 @@
  *
  * Art direction reuses the "Pressroom" template from
  * /services/design/packaging-merch-design: print-shop crop marks, calibration
- * colour bar, mono figure labels, editorial typography. The packaging proof
+ * color bar, mono figure labels, editorial typography. The packaging proof
  * motif is repurposed here for ad-creative variants, which read like printed
  * storyboard cards rather than packaging sheets.
  *
@@ -14,6 +14,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Sample ad-creative case studies. Each tile is an invented brand mark,
    shown as a phone-format ad mockup rather than a packaging shot. */
@@ -56,7 +59,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -248,6 +251,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/ad-creative`;
 
@@ -268,7 +274,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Ad Creative', item: pageUrl },
   ],
 };
@@ -276,7 +282,7 @@ const breadcrumbSchema = {
 
 <Layout
   title="Ad Creative Services | AI-Native Studio | hubStudio"
-  description="Performance ad creative built for Andromeda and Symphony. Statics, video, UGC, platform-native, sized to Meta, TikTok, Reels, Douyin and Xiaohongshu. Art directors leading."
+  description="Performance ad creative for Meta, TikTok, Reels, Douyin, and Xiaohongshu: statics, video, and UGC, led by senior art directors, refreshed on your cadence."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
@@ -294,7 +300,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Ad Creative
           </p>
           <h1 class="hero__title">
@@ -319,7 +325,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See the work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -725,6 +731,41 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Make the statics in-house, or bring us the "
+      accent="test plan"
+      post="."
+      intro="A lot of ad production can start in the hubStudio app. The app won’t tell you which ideas deserve a test budget, and it doesn’t buy media."
+      columns={[
+        {
+          label: 'In the app',
+          title: 'What your team can run in-house',
+          body: [
+            'Generate statics in the Image studio, 1 to 10 images a run, on engines from OpenAI, Google, Black Forest Labs, and more as they ship. Edit up to four source pictures, your own product shot included. It works best when you start from a clean product photo. Crop to each placement in the Image editor, add the headline and the logo, and keep the set in the Assets Library. You pay per run from a prepaid balance, with no subscription. hubStudio publishes organic posts, not paid campaigns, so you download the files and load them into your ad manager.',
+          ],
+        },
+        {
+          label: 'From the studio',
+          title: 'What the studio adds',
+          body: [
+            'We write the concept territories and hooks against your media plan, and a senior art director makes sure variant forty still looks like your brand. When a generated bottle won’t get past legal, we shoot the real one. A retoucher finishes every file. We also know the placements on Meta and TikTok, and on Douyin and Xiaohongshu, which sit outside the app.',
+          ],
+        },
+      ]}
+      shot={appShots.imageStudio}
+      shotPath="/content/image-generate"
+      shotCaption
+      links={[
+        { label: 'See the Image studio', href: '/app/create' },
+        { label: 'Create an image, step by step', href: '/help/create-an-image' },
+        { label: 'How the app is paid', href: '/pricing' },
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio"
+      ways={{ pre: 'Who makes the ', accent: 'creative', post: '?' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -738,7 +779,7 @@ const breadcrumbSchema = {
             here, put it in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Start the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -791,11 +832,12 @@ const breadcrumbSchema = {
           batch and a refresh-cycle estimate sized to your media plan. No
           retainer, no commitment. Whatever we produce is yours to keep, even
           if you walk.
+          Want your team to run the next round of statics in-house? Signing up for the app costs nothing.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Start the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -810,6 +852,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1029,7 +1082,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

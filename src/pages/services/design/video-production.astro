@@ -3,7 +3,7 @@
  * Video Production  ·  /services/design/video-production
  *
  * Mirrors the "Pressroom" art direction of /services/design/packaging-merch-design.
- * Same primitives (crop marks, calibration colour bar, mono figure labels,
+ * Same primitives (crop marks, calibration color bar, mono figure labels,
  * dashed dieline rules) used here as a film-production proof sheet rather
  * than a packaging proof. Print-shop language becomes set-and-screen
  * language: contact sheet, slate, timeline.
@@ -14,6 +14,9 @@
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
+import ServiceAppOrStudio from '../../../components/ServiceAppOrStudio.astro';
+import { appShots } from '../../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../../lib/links';
 
 /* Studio sample frames, each with an invented brand mark. */
 const samples = [
@@ -55,7 +58,7 @@ const samples = [
   },
 ];
 
-/* Calibration colour bar: a printer's strip, used as a section divider. */
+/* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
   '#e94e1b', '#c73e10', '#1e3a8a', '#0e1f4e', '#0e1633',
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
@@ -109,7 +112,7 @@ const coverage = [
     label: 'AIGC',
     heading: 'AIGC video production.',
     image: '/Images/vp-aigc.jpg',
-    alt: 'A colourist at a multi-monitor workstation reviewing a grid of AI-generated video frames in a darkened suite.',
+    alt: 'A colorist at a multi-monitor workstation reviewing a grid of AI-generated video frames in a darkened suite.',
     lead: 'When the shot is impossible, the volume is too high, or the deadline is yesterday.',
     body: [
       "AIGC video has flipped the economics of brand production over the last eighteen months. Impossible environments. Brand ambassadors placed in cities they've never visited. Fifty-market localization with lip-sync in every language. Fifteen creative concepts A/B tested in a single week. Seasonal reshoots in days.",
@@ -157,7 +160,7 @@ const processSteps = [
     short: 'Production',
     tier: 'The rest is execution',
     title: 'Production. Shoot day or AIGC sprint.',
-    body: 'Director on set or directing the pipeline. Live colour reference, live client review, same-day rushes.',
+    body: 'Director on set or directing the pipeline. Live color reference, live client review, same-day rushes.',
     image: '/Images/vp-p4-production.jpg',
     alt: 'A director watching the live monitor on a film set, DOP behind the cinema camera, gaffer adjusting a flag.',
   },
@@ -165,9 +168,9 @@ const processSteps = [
     short: 'Post & delivery',
     tier: 'The rest is execution',
     title: 'Post-production and delivery.',
-    body: 'Edit, colour grade, sound design, music, voice-over, motion graphics, subtitles, multi-language adaptation, platform reformatting. Every format the campaign needs.',
+    body: 'Edit, color grade, sound design, music, voice-over, motion graphics, subtitles, multi-language adaptation, platform reformatting. Every format the campaign needs.',
     image: '/Images/vp-p5-post.jpg',
-    alt: 'A colourist at a calibrated grading suite with a film frame on the main reference monitor and waveform scopes.',
+    alt: 'A colorist at a calibrated grading suite with a film frame on the main reference monitor and waveform scopes.',
   },
 ];
 
@@ -238,6 +241,9 @@ const faqSchema = {
   })),
 };
 
+/** The studio door: the brief form, pre-set to a studio request. */
+const BRIEF = `${BRIEF_URL}?way=studio`;
+
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/services/design/video-production`;
 
@@ -258,7 +264,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services` },
+    { '@type': 'ListItem', position: 2, name: 'Studio', item: `${SITE}/studio` },
     { '@type': 'ListItem', position: 3, name: 'Video Production', item: pageUrl },
   ],
 };
@@ -284,7 +290,7 @@ const breadcrumbSchema = {
         </svg>
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
-            <span class="kicker__tick"></span>Design service
+            <span class="kicker__tick"></span><a class="kicker__crumb" href="/studio">Studio</a>
             <span class="kicker__sep">/</span> Video Production
           </p>
           <h1 class="hero__title">
@@ -308,7 +314,7 @@ const breadcrumbSchema = {
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href="/contact">Send the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href="#proof">
               See the work
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -374,7 +380,7 @@ const breadcrumbSchema = {
           <div class="crop__inner">
             <img
               src="/Images/vp-roots.jpg"
-              alt="A wide editorial shot of a director and a colourist reviewing dailies on twin reference monitors in a darkened post suite."
+              alt="A wide editorial shot of a director and a colorist reviewing dailies on twin reference monitors in a darkened post suite."
               width="1408"
               height="768"
               loading="lazy"
@@ -385,7 +391,7 @@ const breadcrumbSchema = {
 
         <div class="stats">
           <p class="stats__quote r">
-            One filmed master, forty-plus markets with frame-accurate lip-sync,
+            One filmed master, localized with frame-accurate lip-sync for every market on the plan,
             cost-per-variation cut by 60%, brief to first cut inside 48 hours
             on short-form work.
           </p>
@@ -516,7 +522,7 @@ const breadcrumbSchema = {
           <figure class="source__inset">
             <img
               src="/Images/vp-hybrid-inset.jpg"
-              alt="A close-up of an editor's hands adjusting a colour-grading panel on a console."
+              alt="A close-up of an editor's hands adjusting a color-grading panel on a console."
               width="1024"
               height="1024"
               loading="lazy"
@@ -541,7 +547,7 @@ const breadcrumbSchema = {
           </p>
           <p class="source__p r" style="--d:.16s">
             Shoot the product hero in studio, then drop it into AIGC
-            environments across a dozen markets. Film the brand ambassador once
+            environments built for each market. Film the brand ambassador once
             on location, then generate every regional variation, every seasonal
             reshoot, every platform cutdown without booking the talent again.
             The shoot day stays small. The output multiplies. The budget mostly
@@ -709,6 +715,39 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S7b · APP OR STUDIO ============ -->
+    <ServiceAppOrStudio
+      pre="Generate a clip, or produce a "
+      accent="film"
+      post="."
+      intro="The Video studio in the hubStudio app renders short clips. A brand film with a crew, a set, and a script is studio work. Many projects need both."
+      columns={[
+        {
+          title: 'What the Video studio does',
+          body: [
+            'Pick an engine from Google, Kling, ByteDance, Alibaba, and more as they ship. Write the scene, or feed it a start frame, reference clips, and sound. Some engines render in 4K, some run to 30 seconds. Short, simple shots come out best; dialogue or a face people know still calls for a set. Every render lands in History with its prompt, so anyone on the team can run a variation. There’s no subscription: you pay per render from a prepaid balance.',
+          ],
+        },
+        {
+          title: 'What a production adds',
+          body: [
+            'We write the script, draw the storyboard, and direct the shoot, in a studio or on location, with a real crew. On hybrid jobs one shoot day feeds the generated variants. We cut and grade the film, mix the sound, and make the call on which mode each shot needs.',
+          ],
+        },
+      ]}
+      shot={appShots.videoStudio}
+      shotPath="/content/video"
+      shotCaption
+      links={[
+        { label: 'See the Video studio', href: '/app/create' },
+        { label: 'Create a video, step by step', href: '/help/create-a-video' },
+        { label: 'How the app is paid', href: '/pricing' },
+        { label: 'How Studio + app works', href: '/studio/with-the-app' },
+      ]}
+      highlight="studio"
+      ways={{ pre: 'Who shoots the ', accent: 'film', post: '?', lead: 'Not sure which your project needs? Send the brief anyway. The producer who reads it will tell you.' }}
+    />
+
     <!-- ============ S8 · FAQ ============ -->
     <section class="faq">
       <div class="shell faq__grid">
@@ -722,7 +761,7 @@ const breadcrumbSchema = {
             in the brief.
           </p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href="/contact">Send the brief</Button>
+            <Button variant="primary" href={BRIEF}>Send a brief</Button>
           </div>
         </aside>
 
@@ -775,11 +814,12 @@ const breadcrumbSchema = {
           timeline, and a few free visuals or storyboard frames so you can see
           the thinking before any budget commits. No deck, no long sales pitch,
           just a working proposal.
+          Need a few short clips this week rather than a production? Make them in the app. Signing up costs nothing.
         </p>
         <div class="end__cta r" style="--d:.18s">
-          <Button variant="primary" href="/contact">Send the brief</Button>
-          <a class="ghost-link ghost-link--light" href="/work">
-            See more work
+          <Button variant="primary" href={BRIEF}>Send a brief</Button>
+          <a class="ghost-link ghost-link--light" href={APP_SIGNUP} rel="noopener">
+            Create your account
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -794,6 +834,17 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  /* Hero kicker breadcrumb: the Studio parent, as a quiet link. */
+  .kicker__crumb {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .kicker__crumb:hover {
+    color: var(--brand-orange);
+  }
+
   /* ===================== Foundations ===================== */
   .page {
     --ink: #0e1633;
@@ -1013,7 +1064,7 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.76);
   }
 
-  /* Calibration colour bar */
+  /* Calibration color bar */
   .cbar {
     display: flex;
     height: 12px;

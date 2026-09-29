@@ -5,10 +5,10 @@ description: "Every file of your team in one place, in folders: uploads, renders
 excerpt: "Your team's files in folders, and two picture Tools that run in your browser for free: the Image editor and the Image anonymizer."
 section: "library"
 order: 6
-updated: 2026-09-28
+updated: 2026-09-29
 appPaths: ["/files", "/files/tools/image-editor", "/files/tools/image-anonymizer"]
 audience: "Everyone except client logins"
-related: ["history", "create-an-image", "linkedin", "instagram", "facebook", "x", "credits-and-payments"]
+related: ["history", "create-an-image", "linkedin", "instagram", "facebook", "x", "balance-and-payments"]
 shots:
   - file: "/Images/help/assets-library-page.webp"
     route: "/files"
@@ -101,7 +101,7 @@ Each row has an **Actions** menu. What it offers depends on the file:
 
 ### What files cost
 
-Keeping files has a small daily rent, and downloading one has a small transfer charge, both paid from the team's credits, exactly as described in [History](/help/history#what-storing-files-costs). Delete what you no longer need and the rent goes down from the next day. When there are no credits left, new files can't be uploaded until you buy more.
+Keeping files has a small daily rent, and downloading one has a small transfer charge, both charged against the team balance, exactly as described in [History](/help/history#what-storing-files-costs). Delete what you no longer need and the rent goes down from the next day. When the balance is empty, new files can't be uploaded until you top up.
 
 ## Tools
 
