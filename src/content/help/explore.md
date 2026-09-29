@@ -13,12 +13,12 @@ shots:
   - file: "/Images/help/explore-gallery.webp"
     route: "/explore"
     alt: "The Explore page: the search box, the Image and Video counts, the maker and sort menus, the job chips, and the first engine cards"
-    captured: 2026-09-27
+    captured: 2026-09-29
   - file: "/Images/help/explore-card.webp"
     route: "/explore"
     clip: "the first engine card"
-    alt: "One engine card: the maker and the Image badge on top, the engine name and its description, the job chips, the price per image and Try it"
-    captured: 2026-09-27
+    alt: "One engine card: the OpenAI logo, the maker and the Image badge on top, the engine name and its description, the job chips, the price per image and Try it"
+    captured: 2026-09-29
 sources: ["src/pages/explore.astro", "src/lib/explore.ts", "src/lib/image-models.ts", "src/lib/video-models.ts", "src/lib/model-access.ts"]
 ---
 
@@ -28,13 +28,13 @@ sources: ["src/pages/explore.astro", "src/lib/explore.ts", "src/lib/image-models
 
 ## What a card shows
 
-- The maker (for example Google, OpenAI or ByteDance) and whether the engine makes an **Image** or a **Video**.
+- The maker's logo and name (for example Google, OpenAI or ByteDance), and whether the engine makes an **Image** or a **Video**.
 - A **New** tag on engines released or first offered in the last 60 days.
 - The engine's name and a short description of what it is good at.
 - One chip per type of job it can do (see below).
 - The price line, and **Try it** to open the studio.
 
-![One engine card: the maker and the Image badge on top, the engine name and its description, the job chips, the price per image and Try it](/Images/help/explore-card.webp)
+![One engine card: the OpenAI logo, the maker and the Image badge on top, the engine name and its description, the job chips, the price per image and Try it](/Images/help/explore-card.webp)
 
 ## What each type means
 
