@@ -1,0 +1,112 @@
+﻿2026-09-29T10:08:24 start draft (model claude-opus-5-5)
+2026-09-29T10:08:25 model attempt 1/4, cycle 1: Opus 5.5
+
+## Run notes, Opus 5.5 (attempt 1), CATCH-UP RUN
+
+This was a catch-up run, started by Relaunch-MissedTasks.ps1 for the missed
+2026-09-25 (Friday) and 2026-09-29 (Tuesday) draft runs.
+
+Checksum: the prompt file on disk hashes to 4DB2FA24...0D96, which matches
+the manifest. The launch message quoted AB8B6527...A99D instead. The file's
+text is identical to the task text in the launch message minus the operator
+addendum, so the quoted hash most likely covers prompt plus addendum. Treated
+the on-disk file and manifest as canonical; no content conflict.
+
+Pre-flight: this run log held only the runner's two start lines, so no
+earlier model made partial progress today. HEAD is 97426de (help center work,
+nothing editorial). schedule.csv and briefs/ are unchanged since b9bc92b
+(2026-09-27). The working tree holds only runner files under logs/runs/.
+Nothing to correct.
+
+Rows processed, in date order:
+1. 2026-09-25, brief 10, one-shoot-six-platforms-china-variant-matrix.
+   Status published. Re-verified on disk: output draft, research file,
+   src/pages/resources/insights/<slug>.astro, public/Images/insight-<slug>.webp
+   and the src/data/insights.ts entry all exist. Past image_ready, skipped.
+2. 2026-09-29 (today), brief 02, tmall-white-background-image-rules.
+   Status published, same five artifacts present. Past image_ready, skipped.
+
+No other row is eligible: all 48 schedule rows parse as published, and all
+48 files in briefs/ are scheduled. RUNBOOK step 2 allows only today's row, or
+the oldest not_started row when today has none; there is none. No authority
+to invent a brief, redraft a published article or start the Dec 4 refresh
+cycle.
+
+Not done, and why:
+- Research gate R1 to R7, /createarticle, /content-quality-us,
+  /generate-image-openai: no eligible row.
+- schedule.csv: not changed, every row already correct.
+- logs/2026-09-29.md from TEMPLATE.md: not written, no article pipeline ran.
+  This runner log is the record.
+- No commit, no publish, per the prompt.
+
+Open item for a person: brief a batch three or decide on the refresh cycle.
+Until then every draft run ends here. The relauncher also queued 2026-09-25
+again although that row was published on 2026-09-10 and was already cleared
+by yesterday's catch-up run; worth checking why it treats it as missed.
+I didn't draft anything in this catch-up run, because both rows it was meant to process are already published.
+
+- **2026-09-25, `one-shoot-six-platforms-china-variant-matrix`:** marked `published`. Its draft, research file, live page, hero image and `insights.ts` entry are all in the repo. It is past `image_ready`, so I skipped it.
+- **2026-09-29 (today), `tmall-white-background-image-rules`:** also `published`, with all five of the same files present. Skipped.
+- **No other row qualifies.** All 48 rows in `schedule.csv` are `published`, and every brief in `briefs/` has a row. The runbook doesn't let a draft run invent a brief or redraft a published article.
+
+No earlier model had started work today, so there was nothing to fix. I didn't change `schedule.csv`, didn't write `logs/2026-09-29.md` (no article went through the pipeline) and didn't commit. The only file I changed is `editorial/logs/runs/2026-09-29-draft.txt`, which records all of this and says it was a catch-up run.
+
+The launch message gave a different checksum for the prompt file than the one the file actually has. The file's hash matches the run manifest, and its text is the same as the task in the launch message without the operator's extra instructions. The quoted checksum probably covers the prompt plus those instructions. I treated the file as the correct version and noted the mismatch in the log.
+
+**Decisions for you:**
+- **Next work:** write a third batch of briefs, or decide to start refreshing the published spec pages. Until one of those happens, every draft run will stop here.
+- **Relauncher:** `Relaunch-MissedTasks.ps1` queued 2026-09-25 again, even though that row was published on 2026-09-10 and yesterday's catch-up run had already handled it. It's worth finding out why it treats that run as missed.
+
+Also, the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be reconnected in your claude.ai connector settings. This run didn't need them.
+2026-09-29T10:09:17 model Opus 5.5 completed successfully
+2026-09-29T10:09:17 end draft exit 0
+
+## Run notes, Opus 5.5 (attempt 1)
+
+Prompt checksum matches the manifest (4DB2FA24...0D96). This run log held
+only the runner's two start lines, so no earlier model made partial progress
+and there was no error to correct. HEAD is 97426de (help center work, nothing
+editorial since b9bc92b). The working tree holds only untracked files under
+logs/runs/.
+
+Read editorial/CLAUDE.md, SPEC.md, RUNBOOK.md and logs/TEMPLATE.md.
+
+Today's row: 2026-09-29, Tue, slot B, brief 02,
+tmall-white-background-image-rules. Status published (published_on
+2026-09-10). Verified on disk, not taken from the CSV alone: output draft,
+research file, src/pages/resources/insights/<slug>.astro,
+public/Images/insight-<slug>.webp and the src/data/insights.ts entry all
+exist. Past image_ready, so steps 0 to 3 do not apply. Skipped.
+
+Fallback per RUNBOOK step 2 (oldest not_started row): none. All 48 rows parse
+as published (csv DictReader on the status column). All 48 briefs in briefs/
+map to a schedule row, no unscheduled brief exists, and every row's output,
+research, page and hero files are present.
+
+Decision: nothing to draft. There is no authority to invent a brief, redraft
+a published article, or start the spec refresh cycle from a draft run.
+
+Not done, and why:
+- Research gate R1 to R7, /createarticle, /content-quality-us,
+  /generate-image-openai: no eligible row.
+- schedule.csv: not changed, every row already correct.
+- logs/2026-09-29.md from TEMPLATE.md: not written, no article went through
+  the pipeline. This runner log is the record.
+- No publish, no commit, per the prompt.
+
+Open item for a person, unchanged since 2026-09-28: brief a batch three or
+decide on the spec refresh cycle. Until then every draft run ends here.
+Nothing was drafted today because every scheduled article is already published.
+
+- **Today's slot (2026-09-29, brief 02, `tmall-white-background-image-rules`):** marked `published` since 2026-09-10. I checked the files rather than trusting the schedule: the draft, the research file, the live page, the hero image and its `insights.ts` entry are all there.
+- **Nothing else to draft:** when today's article is done, the runbook says to take the oldest `not_started` row, but there isn't one. All 48 rows in `schedule.csv` are `published`, and every brief file matches a row. The runbook doesn't let a draft run make up a brief or redo a published article.
+- **Earlier attempts:** the run log had only the runner's start lines, so no earlier model had made progress and there was no error to fix.
+
+I didn't change `schedule.csv`, didn't write `logs/2026-09-29.md` (no article went through the pipeline) and didn't commit or publish anything. The only file I changed is `editorial/logs/runs/2026-09-29-draft.txt`, which now records these decisions.
+
+**Decision for you:** every draft run will keep stopping here until someone writes a third batch of briefs or decides to start refreshing the published spec pages.
+
+Separately, the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be reconnected in your claude.ai connector settings. This run didn't need them.
+2026-09-29T10:09:36 model Opus 5.5 completed successfully
+2026-09-29T10:09:36 end draft exit 0

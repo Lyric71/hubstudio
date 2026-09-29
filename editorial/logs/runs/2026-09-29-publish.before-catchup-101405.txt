@@ -1,0 +1,19 @@
+﻿2026-09-29T10:08:24 start publish (model claude-opus-5-5)
+2026-09-29T10:08:25 model attempt 1/4, cycle 1: Opus 5.5
+2026-09-29T10:09:28 read editorial/CLAUDE.md, SPEC.md, RUNBOOK.md; prompt SHA-256 verified (A59FC2EF...3E58); run log held only the start lines, so no earlier partial progress to recover
+2026-09-29T10:09:28 schedule.csv: 48 rows, all status=published; zero rows at image_ready, so there is nothing to publish this run
+2026-09-29T10:09:28 cross-check: every editorial/output/*.md has a page under src/pages/resources/insights/ except agency-white-label-question.ALT-2026-09-21.md, the alternate draft kept beside the published agency-white-label-question (row 35, published 2026-09-27); it is not a schedule row and its row note says a person must pick which draft ships, so it is left untouched
+2026-09-29T10:09:28 no article created, so no build/check, no commit, no push; notify-publish.mjs not sent because the prompt ties it to a successful push and it needs a slug
+2026-09-29T10:09:28 end publish: nothing to publish
+Nothing was published this run because there were no finished drafts waiting.
+
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are already `published`. None are at `image_ready`, so no article page was created.
+- **Earlier attempts:** the run log only had its start lines and nothing in the working tree had been changed, so there was no half-finished work to pick up or fix.
+- **Build, commit, push, email:** none of these ran. The prompt ties the build and commit to publishing an article, and the notification email only goes out after a successful push.
+- **Cross-check:** every draft in `editorial/output/` has a live page except `agency-white-label-question.ALT-2026-09-21.md`. That file is the second version of the agency white-label article, kept alongside the one that went live; it has no schedule row of its own, so I left it alone.
+
+**One thing for you:** the agency white-label row (row 35) was published on 2026-09-27, but its note still says a person must choose which of the two versions ships. Please check that the version now live is the one you want.
+
+Every decision is recorded in `editorial/logs/runs/2026-09-29-publish.txt`.
+2026-09-29T10:09:34 model Opus 5.5 completed successfully
+2026-09-29T10:09:34 end publish exit 0

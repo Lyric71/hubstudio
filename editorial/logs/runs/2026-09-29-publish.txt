@@ -1,0 +1,33 @@
+﻿2026-09-29T11:00:25 start publish (model claude-opus-5-5)
+2026-09-29T11:00:25 model attempt 1/4, cycle 1: Opus 5.5
+2026-09-29T11:01:44 Opus 5.5 decision record (CATCH-UP RUN, started by Relaunch-MissedTasks.ps1 for the publish runs of 2026-09-28 and 2026-09-29)
+State on entry:
+- Prompt SHA-256 matches the manifest (24BA05C5...C5B3).
+- This log held only the runner's two start lines: no earlier model in this attempt made partial progress or left an error. Earlier 2026-09-29 publish runs (copies 2026-09-29-publish.before-catchup-101405.txt and -110023.txt) both ended "end publish exit 0" with nothing to publish.
+- git fetch: local main even with origin/main, HEAD 97426de. Working tree: run logs only (plus 2026-09-25-draft.txt, modified by today's draft catch-up). Nothing half-published.
+Read: editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md (publish section).
+Eligibility:
+- editorial/schedule.csv parsed as CSV: 48 rows, all status published. Zero rows at image_ready, so zero rows to publish and none skipped for a pending human decision.
+Why this run was launched at all (no fix needed): Desktop\Relaunch-MissedTasks.log shows a relauncher pass planned at 10:08:16, when 2026-09-28-publish.txt still had no end line and the 2026-09-29 scheduled run was in progress. A second pass at 10:12:24 ran the 10:14 catch-up, which closed 2026-09-28-publish.txt with "end publish exit 0". The 10:08 pass kept its stale plan and ran its queue one by one, reaching hubStudio publish at 11:00:23. Both date logs now end "end publish exit 0" (this one gets its end line from the runner), so the next relauncher pass should class both dates as finished. The two relauncher passes overlapping is the underlying cause; a person may want Relaunch-MissedTasks.ps1 to re-check a task's outcome just before launching it.
+Not done, and why:
+- /createblogarticle, npm run build, npm run check: no eligible row.
+- schedule.csv: unchanged, every row already correct.
+- git add / commit / push: nothing to publish; run logs are not committed outside a publish.
+- notify-publish.mjs: not sent. It goes out only after a successful push or a failed build/check; neither happened.
+Open item for a person: the schedule is exhausted (48 of 48 published). Every publish run ends here until batch three is briefed and drafted or the refresh cycle starts.
+2026-09-29T11:01:44 end of Opus 5.5 decision record.
+This catch-up run for 2026-09-28 and 2026-09-29 published nothing, because no finished draft is waiting.
+
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are already `published`. None are at `image_ready`, so no row needed skipping either.
+- **Starting state:** no earlier model had left half-finished work or an error. The prompt's checksum matches the run file, and local `main` matches `origin/main`. The two earlier publish runs today also ended cleanly with nothing to publish.
+- **Not done:** I didn't run the publish skill, build, type check, commit, push or email. The email only goes out after a push or a failed build, and neither happened.
+
+**Why this run happened:** two passes of `Relaunch-MissedTasks.ps1` overlapped this morning. The first one made its list at 10:08, before the 2026-09-28 log was closed. It then launched its tasks one at a time and got to hubStudio publish at 11:00, even though another pass had already handled it at 10:14. Both logs, 2026-09-28 and 2026-09-29, now end with a success line, so the next relauncher pass should mark both dates as done. I changed nothing outside the run log. To stop this happening again, the relauncher could check each task's result again just before it launches it.
+
+**Decision for you:** every row in the schedule is published, so every publish run will stop here until someone writes a third batch of briefs or decides to start updating the pages already published.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be reconnected in your claude.ai connector settings. This run didn't need them.
+
+The full record is in `editorial/logs/runs/2026-09-29-publish.txt`, which notes that this was a catch-up run.
+2026-09-29T11:01:51 model Opus 5.5 completed successfully
+2026-09-29T11:01:51 end publish exit 0

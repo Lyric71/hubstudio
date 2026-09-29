@@ -1,0 +1,61 @@
+﻿2026-09-28T12:02:43 start draft (model claude-opus-5-5)
+2026-09-28T12:02:43 model attempt 1/4, cycle 1: Opus 5.5
+
+## Run notes, Opus 5.5 (attempt 1), CATCH-UP RUN
+
+This was a catch-up run, started by Relaunch-MissedTasks.ps1 for the missed
+2026-09-25 (Friday) draft run, then today's row.
+
+Prompt checksum matches the manifest (C33C01E3...6B5B). This run log held
+only the runner's two start lines. The working tree held only this run's
+files under logs/runs/ (including the earlier non-catch-up log of today,
+2026-09-28-draft.before-catchup-120242.txt), so there was no partial work to
+correct.
+
+What happened on 2026-09-25: logs/runs/2026-09-25-draft.txt shows Opus 5.5
+and Fable failing with "API Error: 403 Request not allowed" and GPT-6 Astra
+stalling on repeated codex model-refresh timeouts. That run produced no work.
+
+Rows processed, in date order:
+1. 2026-09-25, brief 10, one-shoot-six-platforms-china-variant-matrix.
+   Status published (all four dates 2026-09-10). Verified on disk: the output
+   draft, the research file, src/pages/resources/insights/<slug>.astro,
+   public/Images/insight-<slug>.webp and the src/data/insights.ts entry all
+   exist. Already past image_ready, so skipped per the operator instruction.
+2. 2026-09-28 (today), brief 18, automation-platform-or-production-partner.
+   Status published, same five artifacts verified present. Skipped.
+
+No other row is eligible: all 48 schedule rows read published (checked by
+parsing schedule.csv, status column), and schedule.csv is unchanged since
+b9bc92b. RUNBOOK step 2 allows only today's row, or the oldest not_started
+row when today has none; there is no not_started row, and no authority to
+invent a brief or redraft a published article. Same conclusion as the
+earlier run of today.
+
+Not done, and why:
+- Research gate, /createarticle, /content-quality-us, /generate-image-openai:
+  no eligible row.
+- schedule.csv: not changed, every row already correct.
+- logs/2026-09-28.md from TEMPLATE.md: not written, no article pipeline ran.
+  This runner log is the record.
+- No commit, no publish, per the prompt.
+
+Open items for a person: brief a batch three or decide on the refresh cycle,
+so draft runs have work again. Separately, the 2026-09-25 failures (403 on
+both Anthropic models, codex timeouts) point at the runner's credentials or
+network that night and are worth a look if they recur.
+I didn't draft anything in this catch-up run: both rows it covered were already published.
+
+- **2026-09-25 (the missed run), `one-shoot-six-platforms-china-variant-matrix`:** the row reads `published`. The draft, research file, live page, hero image and `insights.ts` entry are all in the repo, so I skipped it. The original run on that date did no work. Opus 5.5 and Fable both failed with "403 Request not allowed", and GPT-6 Astra then stalled on repeated timeouts.
+- **2026-09-28 (today), `automation-platform-or-production-partner`:** also `published` with the same five files in place, so I skipped it too.
+- **No other row qualifies.** All 48 rows in `schedule.csv` read `published`, and the runbook doesn't let a draft run invent a brief or redraft a published article. An earlier run this morning reached the same conclusion.
+
+`schedule.csv` is unchanged. I didn't write `logs/2026-09-28.md` because no article went through the pipeline. Nothing was committed or published. The run log `editorial/logs/runs/2026-09-28-draft.txt` records all of this, says it was a catch-up run, and is the only file I changed.
+
+**Decisions for you:**
+- Write a third batch of briefs, or decide to start refreshing the published pages. Until then, every draft run will stop the same way.
+- If the 403 errors come back, check the scheduled runner's credentials or network.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be authorized again in your claude.ai connector settings. This run didn't need them.
+2026-09-28T12:03:30 model Opus 5.5 completed successfully
+2026-09-28T12:03:30 end draft exit 0

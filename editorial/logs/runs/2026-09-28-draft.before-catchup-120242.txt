@@ -1,0 +1,59 @@
+﻿2026-09-28T11:44:53 start draft (model claude-opus-5-5)
+2026-09-28T11:44:53 model attempt 1/4, cycle 1: Opus 5.5
+
+## Run notes, Opus 5.5 (attempt 1)
+
+Prompt checksum matches the manifest (4DB2FA24...0D96). The run log held only
+the runner's two start lines, and the working tree held only this run's three
+files, so there was no partial work from an earlier model to correct.
+
+Read editorial/CLAUDE.md, SPEC.md, RUNBOOK.md and logs/TEMPLATE.md.
+
+Finding today's article (RUNBOOK "What Claude does", step 2):
+- Today's row is 2026-09-28, brief 18,
+  automation-platform-or-production-partner. Status: published.
+- No row in schedule.csv has status not_started. All 48 rows read published.
+- Verified against the repo rather than trusting the CSV (the stale-status
+  risk runs both ways): for all 48 slugs the output file, the page
+  src/pages/resources/insights/<slug>.astro, the hero
+  public/Images/insight-<slug>.webp and the src/data/insights.ts entry all
+  exist. schedule.csv was last changed in b9bc92b (2026-09-27), the commit
+  that published the last batch two articles.
+- 48 briefs in briefs/, each with a schedule row. No unscheduled brief.
+- One stray file, output/agency-white-label-question.ALT-2026-09-21.md, is an
+  alternate of an already published article. Left untouched.
+
+Decision: nothing to draft. The plan's 48 briefs are all published, and the
+runbook allows a draft run to take only today's row or the oldest not_started
+row. It gives no authority to invent a brief, re-draft a published article or
+start the spec refresh cycle (RUNBOOK calendar: "Dec 4, plan ends, week 13
+onward continues the cadence or moves to the refresh cycle", a decision for a
+person, with no brief written for it). Drafting a new topic without a brief
+would skip the approved title, description and angle the SPEC requires.
+
+Not done, and why:
+- Research gate, /createarticle, /content-quality-us, /generate-image-openai:
+  no eligible brief.
+- schedule.csv: not changed. Every row is already correct.
+- logs/2026-09-28.md from TEMPLATE.md: not written. The template records one
+  article's pipeline, and no article ran. This runner log is the record.
+- No commit, no publish, per the prompt.
+
+Open item for a person: brief a batch three, or decide on the refresh cycle,
+so the Monday, Tuesday, Thursday and Friday draft runs have work again. Until
+then every draft run will end the same way.
+I didn't draft an article today because nothing in the schedule was left to draft.
+
+- **Today's slot is already done.** The 2026-09-28 row is brief 18, `automation-platform-or-production-partner`. It was published before this run.
+- **All 48 rows in `editorial/schedule.csv` are marked published, and none is `not_started`.** I didn't take the CSV at its word. For every one of the 48 articles, the draft, the live page, the hero image and the `insights.ts` entry all exist in the repo.
+- **No earlier model had started anything.** The run log held only the two start lines. The prompt checksum matches the manifest, and the working tree held only this run's three files.
+
+The runbook only lets a draft run take today's row or the oldest unstarted row. It doesn't allow making up a new brief or redrafting a published article. So I skipped the research, drafting, quality pass and hero image. I left `schedule.csv` unchanged, didn't write `logs/2026-09-28.md` (that template records one article's pipeline, and none ran), and didn't commit. All of these decisions are written in `editorial/logs/runs/2026-09-28-draft.txt`, which is the only file I changed.
+
+**Decision for you:** write a third batch of briefs, or decide to start refreshing the published spec pages. Until one of those happens, every scheduled draft run will stop the same way.
+
+There's also a spare copy, `output/agency-white-label-question.ALT-2026-09-21.md`, an alternate version of an article that's already live. I left it alone.
+
+Separately, the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be authorized again in your claude.ai connector settings. This run didn't need them.
+2026-09-28T11:45:55 model Opus 5.5 completed successfully
+2026-09-28T11:45:55 end draft exit 0

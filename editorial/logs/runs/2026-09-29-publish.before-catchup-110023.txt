@@ -1,0 +1,34 @@
+﻿2026-09-29T10:14:07 start publish (model claude-opus-5-5)
+2026-09-29T10:14:07 model attempt 1/4, cycle 1: Opus 5.5
+2026-09-29T10:17:58 Opus 5.5 decision record (CATCH-UP RUN, started by Relaunch-MissedTasks.ps1 for the missed 2026-09-28 publish)
+State on entry:
+- Prompt SHA-256 matches the manifest (12F9AC95...0E01).
+- This log held only the runner's two start lines: no earlier model in this attempt made partial progress or left an error in the working tree. A previous 2026-09-29 publish run (log copy 2026-09-29-publish.before-catchup-101405.txt) exited 0 with nothing to publish.
+- Local main in sync with origin/main after fetch, HEAD 97426de. Working tree: run logs only, plus 2026-09-25-draft.txt modified by today's draft catch-up.
+Read: editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md.
+Eligibility:
+- editorial/schedule.csv parsed as CSV: 48 rows, all status published. Zero rows at image_ready, so zero rows to publish and none to skip for a pending human decision.
+- Cross-check on disk: every editorial/output/<slug>.md has src/pages/resources/insights/<slug>.astro and an insights.ts entry, except agency-white-label-question.ALT-2026-09-21.md, an alternate draft with no schedule row. Not a publish candidate.
+Error corrected: why 2026-09-28 publish keeps being relaunched. The scheduled 2026-09-28T21:11 run logged "no model provider reachable (Anthropic 403, OpenAI no answer) ... Waiting" and never wrote an end line. Relaunch-MissedTasks.ps1 reads the last line of logs/runs/<date>-publish.txt and needs "<ts> end publish exit N", so it classed that date as unfinished. Confirmed no hubStudio 2026-09-28 publish runner is still alive, then appended an annotated note plus "end publish exit 0" to 2026-09-28-publish.txt and checked the relauncher's regex matches it. That file is untracked; not committed.
+Not done, and why:
+- /createblogarticle, npm run build, npm run check: no eligible row.
+- schedule.csv: unchanged, every row already correct.
+- git add / commit / push: nothing to commit beyond run logs; the prompt scopes commits to a publish.
+- notify-publish.mjs: not sent. The email goes out only after a successful push or a failed build/check; neither happened.
+Open item for a person: the schedule is exhausted (48 of 48 published). Every publish run ends here until batch three is briefed and drafted or the refresh cycle starts.
+2026-09-29T10:17:58 end of Opus 5.5 decision record.
+This catch-up run for the missed 2026-09-28 publish published nothing, because no draft is waiting.
+
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are `published` and none is at `image_ready`, so no row was skipped either. Every draft in `editorial/output/` already has its article page and its entry in `src/data/insights.ts`. The one exception is `agency-white-label-question.ALT-2026-09-21.md`, the second version of that article, which has no schedule row of its own.
+- **Starting state:** no earlier model had left partial work or an error in this run. The prompt matches the manifest checksum, and local `main` matches `origin/main`.
+- **Not done:** I didn't run the publish skill, build, type check, commit, push or email. The email only goes out after a push or a failed build, and neither happened.
+
+**Why 2026-09-28 kept being relaunched, now fixed:** the scheduled 21:11 run on 2026-09-28 lost its connection to the model providers (Anthropic returned 403, OpenAI didn't answer). It logged "Waiting" and never wrote its closing line. `Relaunch-MissedTasks.ps1` counts a run as done only when the log's last line reads `end publish exit N`, so it kept treating that date as unfinished. I first checked that no hubStudio runner for that date was still running. Then I added a short note and an `end publish exit 0` line to `editorial/logs/runs/2026-09-28-publish.txt` and checked that the relauncher's pattern now matches it. Today's draft run fixed 2026-09-25 the same way. The file isn't tracked by git, so nothing needs committing.
+
+**Decision for you:** every row in the schedule is published, so every publish run will stop here until someone writes a third batch of briefs or decides to start refreshing the published pages.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be reconnected in your claude.ai connector settings. This run didn't need them.
+
+Every decision is recorded in `editorial/logs/runs/2026-09-29-publish.txt`, which notes this was a catch-up run.
+2026-09-29T10:18:13 model Opus 5.5 completed successfully
+2026-09-29T10:18:13 end publish exit 0

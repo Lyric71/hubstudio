@@ -1,0 +1,33 @@
+﻿2026-09-28T13:11:31 start publish (model claude-opus-5-5)
+2026-09-28T13:11:31 model attempt 1/4, cycle 1: Opus 5.5
+2026-09-28T13:20 Opus 5.5 decision record (CATCH-UP RUN, started by Relaunch-MissedTasks.ps1 for the missed 2026-09-28 publish)
+State on entry:
+- Prompt SHA-256 matches the manifest (12F9AC95...0E01).
+- This log held only the runner's two start lines: no earlier model made partial progress or left an error to correct.
+- Working tree: only untracked run-log files under editorial/logs/runs/. Local main is in sync with origin/main (fetched). HEAD 156cafd.
+Read: editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md.
+Eligibility:
+- editorial/schedule.csv parsed as CSV: 48 rows, all status published. Zero rows at image_ready, so zero rows to publish and none to skip for a pending human decision.
+- Cross-check: every editorial/output/<slug>.md has src/pages/resources/insights/<slug>.astro and an insights.ts entry, except agency-white-label-question.ALT-2026-09-21.md, which is an alternate draft with no schedule row (the main draft is the published one). Not a publish candidate.
+Not done, and why:
+- /createblogarticle, npm run build, npm run check: no eligible row.
+- schedule.csv: unchanged, every row already correct.
+- git add / commit / push: nothing to commit beyond run logs; the prompt scopes commits to a publish.
+- notify-publish.mjs: not sent. The email goes out only after a successful push or a failed build/check; neither happened. Same handling as the 2026-09-27 catch-up run.
+Open items for a person:
+- The schedule is exhausted (48 of 48 published). Every publish run will end here until batch three is briefed and drafted, or the refresh cycle starts.
+- Relaunch-MissedTasks.ps1 keeps re-queuing 2026-09-28 runs that exited cleanly; worth checking why it treats them as missed.
+2026-09-28T13:20 end of Opus 5.5 decision record. This log file is the only file this run modified.
+This catch-up run for 2026-09-28 published nothing, because no draft was waiting. All 48 rows in `editorial/schedule.csv` are already `published`, and none is at `image_ready`.
+
+- **Starting state:** the run log held only the two start lines from the runner. No earlier model had started work or left an error. The prompt file matches the checksum in the manifest, and local `main` matches `origin/main`.
+- **Cross-check:** every draft in `editorial/output/` already has its article page and its entry in `src/data/insights.ts`. The one exception is `agency-white-label-question.ALT-2026-09-21.md`. It's an alternate draft with no row in the schedule, and the other version of that article is the one that went live.
+- **Not done:** I didn't run the publish skill, the build, the type check, a commit, a push or the email. The email only goes out after a push or a failed build, and neither happened. The only file I changed is the run log, `editorial/logs/runs/2026-09-28-publish.txt`. It says this was a catch-up run and records each of these decisions.
+
+**Decisions for you:**
+1. **Nothing left to publish:** every row in the schedule is published. Until someone writes and drafts a third batch of briefs, or decides to start refreshing the published pages, every publish run will stop here.
+2. **Repeated re-runs:** `Relaunch-MissedTasks.ps1` keeps starting new runs for 2026-09-28 even though the earlier runs today finished without errors. It's worth finding out why it treats them as missed.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be authorized again in your claude.ai connector settings. This run didn't need them.
+2026-09-28T13:12:24 model Opus 5.5 completed successfully
+2026-09-28T13:12:24 end publish exit 0

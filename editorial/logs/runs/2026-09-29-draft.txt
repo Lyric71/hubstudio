@@ -1,0 +1,61 @@
+﻿2026-09-29T10:12:27 start draft (model claude-opus-5-5)
+2026-09-29T10:12:28 model attempt 1/4, cycle 1: Opus 5.5
+
+## Run notes, Opus 5.5 (attempt 1), CATCH-UP RUN (third run today)
+
+This was a catch-up run, started by Relaunch-MissedTasks.ps1 for the missed
+2026-09-25 (Friday) draft run.
+
+Checksum: prompt file hashes to C33C01E3...6B5B, matching the manifest and the
+launch message. This log held only the runner's two start lines, so no earlier
+model made partial progress in this attempt. Two earlier runs today (log copy
+2026-09-29-draft.before-catchup-101226.txt) exited 0 with the same result.
+HEAD is still 97426de; nothing editorial changed since b9bc92b.
+
+Rows processed, in date order (verified on disk, not from the CSV alone):
+1. 2026-09-25, brief 10, one-shoot-six-platforms-china-variant-matrix.
+   Status published (2026-09-10). Output draft, research file, page .astro,
+   hero webp and insights.ts entry all present. Past image_ready, skipped.
+2. 2026-09-29 (today), brief 02, tmall-white-background-image-rules.
+   Status published (2026-09-10), same five artifacts present. Skipped.
+No other row is eligible: all 48 rows are published, no not_started row
+exists for the RUNBOOK step 2 fallback, all 48 briefs are scheduled.
+
+Error corrected: why 2026-09-25 keeps being relaunched. Relaunch-MissedTasks
+reads the last non-blank line of logs/runs/<date>-draft.txt and needs
+"<ts> end draft exit N". 2026-09-25-draft.txt has a start line but no end
+line (the fallback models hung on timeouts), so it is classed "unfinished"
+forever: the relauncher log shows relaunch attempt 6 for that date. Appended
+an annotated note plus "end draft exit 0" to 2026-09-25-draft.txt, and checked
+that the relauncher's own regex now matches the last line. That file is
+git-tracked, so it now shows as modified; not committed. Revert with
+git checkout -- editorial/logs/runs/2026-09-25-draft.txt if unwanted.
+
+Not done, and why:
+- Research gate R1 to R7, /createarticle, /content-quality-us,
+  /generate-image-openai: no eligible row.
+- schedule.csv: not changed, every row already correct.
+- logs/2026-09-29.md from TEMPLATE.md: not written, no article went through
+  the pipeline. This runner log is the record.
+- No publish, no commit, per the prompt.
+
+Open item for a person: brief a batch three or decide on the spec refresh
+cycle. Until then every draft run ends here.
+Nothing was drafted in this catch-up run: both rows it had to process are already published. I did find and fix why the relauncher keeps sending the 2026-09-25 run back.
+
+**Rows** (I checked the files on disk, not just the schedule):
+- **2026-09-25, `one-shoot-six-platforms-china-variant-matrix`:** published on 2026-09-10. Its draft, research file, page, hero image and `insights.ts` entry are all there. Skipped.
+- **2026-09-29 (today), `tmall-white-background-image-rules`:** published on 2026-09-10, with the same five files in place. Skipped.
+- **No other row qualifies.** All 48 rows in `schedule.csv` are `published`, and there's no `not_started` row for the runbook to fall back to.
+
+**Why 2026-09-25 keeps coming back:** `Relaunch-MissedTasks.ps1` only treats a run as done if the last line of its run log says `end draft exit N`. On 2026-09-25 the models timed out and that line was never written, so the relauncher counts the run as unfinished. This was its 6th relaunch of that date. I added a note and an `end draft exit 0` line to the end of `editorial/logs/runs/2026-09-25-draft.txt`, and checked that the relauncher's own pattern now matches it.
+
+That file is tracked by git, so it now shows as modified and isn't committed. If you'd rather not change an old run log, `git checkout -- editorial/logs/runs/2026-09-25-draft.txt` undoes it, but the relauncher will then keep re-running that date.
+
+I didn't change `schedule.csv`, write `logs/2026-09-29.md`, publish or commit. Everything above is recorded in `editorial/logs/runs/2026-09-29-draft.txt`, which says it was a catch-up run.
+
+**Decision for you:** every draft run will stop here until someone writes a third batch of briefs or decides to start refreshing the published spec pages.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors also need to be reconnected in your claude.ai connector settings. This run didn't need them.
+2026-09-29T10:14:00 model Opus 5.5 completed successfully
+2026-09-29T10:14:00 end draft exit 0
