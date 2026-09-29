@@ -69,7 +69,7 @@ You don't need to prepare the files: every picture is turned into a JPEG Instagr
 
 ## 02 The caption
 
-The caption step writes the words for the visual. Under **Write the caption**, say anything it has to carry (an offer, a date, a call to action), pick the model and click **Write it with AI**: left empty, the caption is written from the picture alone. Or just type the caption in the editor. The skill **Instagram caption format** is already picked; it carries Instagram's posting rules. See [Skills](/help/skills).
+The caption step writes the words for the visual. While the caption is empty, it opens on the **Have AI write the caption** box: check the model and the skills at the top, say under **Your brief for the AI** (optional) anything the caption has to carry (an offer, a date, a call to action), then click **Write it with AI**. Left empty, the brief lets the caption be written from the picture alone. Or just type the caption in the editor. The skill **Instagram caption format** is already picked; it carries Instagram's posting rules. See [Skills](/help/skills).
 
 Whatever sits in the editor is what goes out. Instagram keeps up to 2,200 characters, 30 hashtags and 20 @ tags, and a counter under the box shows how much room is left.
 
