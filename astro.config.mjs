@@ -156,6 +156,12 @@ export default defineConfig({
   // Vercel strips trailing slashes before applying redirect rules.
   trailingSlash: 'never',
 
+  // Astro 7 changed the default to 'jsx', which drops whitespace between tags
+  // that sit on separate source lines and glues inline links and spans to the
+  // words around them. Every page is authored with that whitespace meaning a
+  // space, so keep the Astro 6 behavior.
+  compressHTML: true,
+
   build: {
     // Astro's default ('auto') only inlines stylesheets under 4kB, so the two
     // real ones ship as render-blocking <link>s. Inlining costs ~13kB gzipped
