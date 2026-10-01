@@ -4,7 +4,7 @@ seoTitle: "Skills that shape Improve with AI | hubStudio Help"
 description: "What a skill is, how to take one from the Catalog, edit it or write your own, how team skills work, and how skills shape the Improve with AI rewrite."
 excerpt: "Reusable instructions that Improve with AI follows every time it rewrites a prompt for an image or a video."
 section: "skills"
-order: 7
+order: 8
 updated: 2026-09-27
 appPaths: ["/skills", "/skills/organization", "/skills/catalog"]
 audience: "Everyone; team skills are for administrators"

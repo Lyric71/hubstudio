@@ -4,8 +4,8 @@ seoTitle: "Write, schedule and publish Facebook page posts | hubStudio Help"
 description: "The Facebook module: connect your Facebook page, brief and draft a post, add its pictures or its video, say which client it is for, send it for approval, then schedule it or publish it."
 excerpt: "Draft a Facebook page post with AI or by hand, give it pictures or a video, and publish it on your page, now or on schedule."
 section: "social"
-order: 10
-updated: 2026-09-29
+order: 11
+updated: 2026-10-01
 appPaths: ["/social/facebook/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "instagram", "tiktok", "x", "validation", "account-and-sign-in", "skills", "history", "assets-library"]
@@ -14,7 +14,7 @@ shots:
     route: "/social/facebook/posts"
     alt: "The Facebook module on a new post: the band with the four step tiles, and the brief with Text only, + Image, + Carousel and Video, Emoticons, Language, Model, Draft with AI and Write it myself"
     captured: 2026-09-27
-sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
+sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
 ---
 
 **Facebook** in the menu holds the posts for your Facebook page, from the first draft to the published post. You write a post with AI or by hand, give it pictures or a video, and publish it on your page, now or at a time you pick. Or you post it yourself on Facebook.
@@ -82,6 +82,8 @@ The pictures step starts with the shape, which you can change at any time: text 
 A picture takes a minute or two, a clip a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library.
 
 **Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor: crop it to **Link** (1.91:1) or **Square**, adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
+
+**Edit the clip.** On a video post, the pencil on the clip opens it in the [Video editor](/help/assets-library#the-video-editor), on its **Social** panel set to a Facebook **Reel**: every Facebook video is shared as a reel. Pick **Reel**, **Story**, **Feed portrait** or **Square**, click **Apply the format**, see in red what Facebook covers, and read the checks. You can also trim it, add texts, captions timed word by word and music. **Save and use it in the post** puts the edited video in place of the clip; the original stays in the Assets Library. Editing is free; only the fast captions are billed, at the price shown before you start. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
 
 Facebook takes up to 10 pictures a post (JPG, PNG or GIF, up to 10 MB each), or one MP4 or MOV clip of up to 20 minutes.
 

@@ -4,8 +4,8 @@ seoTitle: "Your team, its roles and its clients | hubStudio Help"
 description: "Working alone or in a team, the Admin, Creator, Viewer and Client roles, inviting people, answering requests to join, daily limits, pausing a login, adding clients and giving their people a login, invoice details and the sign-in code."
 excerpt: "A team shares one balance and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
-order: 14
-updated: 2026-09-29
+order: 15
+updated: 2026-10-01
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
 related: ["getting-started", "balance-and-payments", "history", "assets-library", "validation", "client-space", "skills"]
@@ -50,9 +50,11 @@ hubStudio has four roles.
 | Role | What they do |
 |---|---|
 | **Admin** | Runs the team: invites people, answers requests to join, chooses each person's role, sets each creator's daily limit, can pause a login, renames the team, adds clients and gives their people a login, tops up the team balance and writes team skills. Admins have no daily limit. |
-| **Creator** | Makes the work: images, videos and posts, charged against the team balance within the daily limit an admin may set. Can also top up a balance of their own. Retouches pictures in the [Image editor](/help/assets-library#the-image-editor) and cuts videos in the [Video editor](/help/assets-library#the-video-editor), says which client a piece is made for, and sends work for approval in [Validation](/help/validation). |
+| **Creator** | Makes the work: images, videos and posts, charged against the team balance within the daily limit an admin may set. Can also top up a balance of their own. Retouches pictures in the [Image editor](/help/assets-library#the-image-editor), cuts videos in the [Video editor](/help/assets-library#the-video-editor) and turns long videos into shorts with [Shorts autopilot](/help/shorts-autopilot), says which client a piece is made for, and sends work for approval in [Validation](/help/validation). |
 | **Viewer** | Sees the team's work, in History and in the Assets Library. Creates nothing and spends nothing. |
 | **Client** | A person at one of the companies the team works for, given a login by an admin. Sees only what was made for their company, in their [Client space](/help/client-space): downloads it, comments on it and approves it. Holds no balance and spends nothing. |
+
+A person's menu can also leave out some modules, such as the Image editor, the Video editor or Shorts autopilot, for someone who doesn't need them. To switch a module off or back on for someone, write to us through **Contact us** in the footer.
 
 The person who creates a team is its first admin. Your own role is shown in **User Settings**, with a line that says what it allows.
 

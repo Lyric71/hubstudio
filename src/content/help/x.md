@@ -4,7 +4,7 @@ seoTitle: "Write, schedule and publish posts and threads on X | hubStudio Help"
 description: "The X module: connect your X account, brief and draft a post or a thread, add its pictures, say which client it is for, send it for approval, schedule it or publish it, then update or delete it on X."
 excerpt: "Draft a post or a thread for X with AI or by hand, add up to four pictures, and publish it on your account, now or on schedule."
 section: "social"
-order: 12
+order: 13
 updated: 2026-09-29
 appPaths: ["/social/x/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"

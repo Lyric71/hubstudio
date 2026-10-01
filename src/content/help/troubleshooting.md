@@ -4,8 +4,8 @@ seoTitle: "Troubleshooting and error messages | hubStudio Help"
 description: "What hubStudio's messages mean and what to do: an empty balance, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, the Assets Library, the Image editor and the Video editor, clients, validation, posts and connections, and more."
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
-order: 19
-updated: 2026-09-29
+order: 20
+updated: 2026-10-01
 appPaths: ["/content/image-generate", "/content/video", "/history", "/files", "/files/tools/image-editor", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
 audience: "Everyone"
 related: ["balance-and-payments", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
@@ -84,7 +84,7 @@ A run that fails is never charged. A run that succeeds is charged the price show
 | Message | What it means | What to do |
 |---|---|---|
 | **This folder holds assets added by other people. Only the person who added an asset can delete it.** | A folder can be deleted only when every file inside it is yours. | Ask the people who added the other files to move or delete them, then delete the folder. |
-| **That file is not a picture the editor can open. Try a JPG, PNG or WebP file.** | The file you dropped on Tools is not a picture, or is in a format the editor can't read. | Convert it to JPG, PNG or WebP. |
+| **That file is not a picture the editor can open. Try a JPG, PNG or WebP file.** | The file you dropped on the Image editor's page is not a picture, or is in a format the editor can't read. | Convert it to JPG, PNG or WebP. |
 | **Your browser cannot open this picture. Try a JPG, PNG or WebP file.** | Your browser can't read this kind of picture. | Convert it to JPG, PNG or WebP. |
 | **That picture could not be opened for editing.** | The picture could not be read from the library. | Close the editor and try again in a moment. |
 | **That picture could not be added.** | The logo or picture you placed over yours could not be read. | Try another file, a PNG or a JPG. |
@@ -95,13 +95,24 @@ A run that fails is never charged. A run that succeeds is charged the price show
 
 | Message | What it means | What to do |
 |---|---|---|
-| **That file is not a video the editor can open. Try an MP4, MOV or WebM file.** | The file you dropped on Tools is not a video the editor takes. | Use an MP4, MOV or WebM file. |
+| **That file is not a video the editor can open. Try an MP4, MOV or WebM file.** | The file you dropped on the Video editor's page is not a video the editor takes. | Use an MP4, MOV or WebM file. |
 | **… is in a format this browser cannot cut (often HEVC from a phone).** | The video was filmed in a format your browser can't cut. | Open it in Chrome or Edge on a recent computer, or save it as H.264 first. |
 | **… is larger than 2 GB, too heavy to edit in a browser.** | The video is over the editor's limit. | Trim or compress it before opening it. |
 | **This browser cannot write video files.** | Your browser can't write an MP4. | Use a recent Chrome, Edge or Safari. |
 | **The free speech model could not be downloaded.** | The free captions need to download their model once, and the download failed. | Check your connection and try again, or pick **Fast, billed**. |
 | **These clips carry no sound: there is nothing to caption.** | The clips have no sound track. | Nothing to do: captions need speech. |
 | **Stopped. Nothing was saved.** | You clicked **Stop writing the video**, or left while it was being written. | Click **Save it in the Assets Library** or **Download** again, and keep the tab open until it is done. |
+
+## Shorts autopilot
+
+| Message | What it means | What to do |
+|---|---|---|
+| **That file is not a video. Pick an MP4, MOV or WebM file.** | The file you dropped is not a video the autopilot takes. | Use an MP4, MOV or WebM file. |
+| **This video is short: the autopilot works best on videos of several minutes, an interview, a talk, a podcast, a live.** | The video lasts under 45 seconds. | You can still go on, or pick a longer video. |
+| **This video has no sound: the autopilot picks moments from what is said, so it cannot work on it.** | The video has no sound track. | Pick a video where someone speaks. |
+| **Almost nothing was heard in this video. Check its language, or try the other way of listening.** | Too few words were heard to pick moments. | Set **Language spoken** to the language of the video, or switch between a fast way and **Free, in this browser**. |
+| **No moment of this video fits the length asked. Try another length.** | No stretch of the video tells a complete idea in the length you picked. | Pick another **Length of each short**. |
+| **Stopped. The shorts written so far are below.** | You clicked **Stop the autopilot**. | The shorts already written are kept. Click **Make the shorts** to start again. |
 
 ## Signing up and signing in
 

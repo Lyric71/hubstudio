@@ -4,7 +4,7 @@ seoTitle: "Write, schedule and publish LinkedIn posts | hubStudio Help"
 description: "The LinkedIn module: connect your LinkedIn account, brief and draft a post, add its pictures, say which client it is for, send it for approval, then schedule it or publish it."
 excerpt: "Draft a LinkedIn post with AI or by hand, give it a picture or a carousel, and publish it on your account, now or on schedule."
 section: "social"
-order: 8
+order: 9
 updated: 2026-09-29
 appPaths: ["/social/linkedin/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"

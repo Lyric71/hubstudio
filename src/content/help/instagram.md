@@ -4,8 +4,8 @@ seoTitle: "Make, schedule and publish Instagram posts and Reels | hubStudio Help
 description: "The Instagram module: connect your professional account, start from the picture or the video, write its caption, say which client it is for, send it for approval, then schedule it or publish it as a feed post, a Story or a Reel."
 excerpt: "Start from the visual, add a caption with AI or by hand, and publish a feed post, a carousel, a Story or a Reel, now or on schedule."
 section: "social"
-order: 9
-updated: 2026-09-29
+order: 10
+updated: 2026-10-01
 appPaths: ["/social/instagram/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "facebook", "tiktok", "x", "validation", "create-an-image", "create-a-video", "history", "assets-library"]
@@ -19,7 +19,7 @@ shots:
     clip: "the picture step of a post"
     alt: "The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer"
     captured: 2026-09-28
-sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
+sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
 ---
 
 **Instagram** in the menu holds your Instagram posts, from the first picture to the published post. On Instagram the visual comes first: you render, pick or upload a picture, a carousel or a clip, then write its caption with AI or by hand, and publish it on your account, now or at a time you pick. Or you post it yourself in Instagram.
@@ -65,7 +65,9 @@ The post is created the moment you render, pick or upload: until then nothing ex
 
 ![The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer](/Images/help/instagram-picture-edit.webp)
 
-**Edit the clip of a Reel.** The pencil on the clip opens it in the [Video editor](/help/assets-library#the-video-editor), with Instagram's safe zone drawn over it: set it to 9:16, trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. **Save and use it in the post** puts the edited video in place of the clip; the original stays in the Assets Library. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
+**Edit the clip of a Reel.** The pencil on the clip opens it in the [Video editor](/help/assets-library#the-video-editor), on its **Social** panel set to an Instagram **Reel**: pick **Reel**, **Story**, **Feed portrait** or **Square**, click **Apply the format**, see in red what Instagram covers and how the profile grid shows the cover, and read the checks. You can also trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. **Save and use it in the post** puts the edited video in place of the clip; the original stays in the Assets Library. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
+
+**Reels from a long video.** [Shorts autopilot](/help/shorts-autopilot) cuts an interview, a talk or a podcast into vertical shorts by itself, captioned, with an Instagram caption for each one. They land in the Assets Library, ready to pick here.
 
 You don't need to prepare the files: every picture is turned into a JPEG Instagram accepts on the way out, whatever you picked. A Reel is an MP4 or MOV clip of 3 seconds to 15 minutes.
 

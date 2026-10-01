@@ -4,7 +4,7 @@ seoTitle: "Get images, videos and posts approved | hubStudio Help"
 description: "Send an image, a video, a post or a file for approval to a teammate or to one of your client's people, decide on it, submit new versions and comment, all on one thread."
 excerpt: "Send your work for approval, keep every version and comment on one thread, and let a client approve what was made for them."
 section: "validation"
-order: 13
+order: 14
 updated: 2026-09-29
 appPaths: ["/validation", "/validation/[id]"]
 audience: "Everyone; clients approve what was made for them"

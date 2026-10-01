@@ -5,7 +5,7 @@ description: "Everything you and your team made, newest first: find a piece, ope
 excerpt: "Every image and video rendered in the studios, with its prompt, engine and cost, ready to download or to reuse."
 section: "library"
 order: 5
-updated: 2026-09-29
+updated: 2026-10-01
 appPaths: ["/history"]
 audience: "Everyone"
 related: ["assets-library", "create-an-image", "create-a-video", "your-team", "client-space", "validation", "balance-and-payments"]
@@ -52,9 +52,11 @@ Downloads are billed like any download of a stored file: a small transfer charge
 **Edit** on a card, or in the full-size viewer, opens the piece in an editor. Editing is free and happens in your browser.
 
 - **A picture** opens in the Image editor: frame it for X, Instagram or LinkedIn, crop it, adjust its light and colors, apply a look, write a caption, draw an arrow or a box, place a logo. See [The Image editor](/help/assets-library#the-image-editor).
-- **A video** opens in the Video editor: turn it into a Reel or a TikTok at 9:16, trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. See [The Video editor](/help/assets-library#the-video-editor).
+- **A video** opens in the Video editor: frame it for Instagram, TikTok or Facebook on its **Social** panel, trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. See [The Video editor](/help/assets-library#the-video-editor).
 
 When you save, the edited copy goes into the [Assets Library](/help/assets-library), next to the render, which stays as it was. Because it is an edit and not a render, the copy shows in the library, not in History. You can also download it without keeping it. Creators and admins see **Edit**; viewers and client logins don't.
+
+To cut a long video into shorts, open it from the Assets Library: **Make shorts** in its **Actions** menu starts [Shorts autopilot](/help/shorts-autopilot). The shorts are files you made, like an edit: they go into the library, not into History.
 
 ## Use this prompt
 

@@ -1,14 +1,14 @@
 ---
 title: "Assets Library and its Tools"
 seoTitle: "Assets Library, Image editor, Video editor and Image anonymizer | hubStudio Help"
-description: "Every file of your team in one place, in folders: uploads, renders, edited pictures and edited videos. Find, tag, move and download them, then work on them with the Tools: the Image editor (frame a picture for X, Instagram or LinkedIn, crop, adjust, apply a look, write, draw, place a logo), the Video editor (Reels and TikToks: the 9:16 frame, trims, speed, texts, captions word by word, music, a cover) and the Image anonymizer."
-excerpt: "Your team's files in folders, and three Tools that run in your browser: the Image editor, the Video editor for Reels and TikToks, and the Image anonymizer."
+description: "Every file of your team in one place, in folders: uploads, renders, edited pictures, edited videos and shorts. Find, tag, move and download them, then work on them with the Image editor (frame a picture for X, Instagram or LinkedIn, crop, adjust, apply a look, write, draw, place a logo), the Video editor (frame a video for Instagram, TikTok or Facebook, trims, speed, texts, captions word by word, music, a cover) and the Image anonymizer."
+excerpt: "Your team's files in folders, and three tools that run in your browser: the Image editor, the Video editor for Reels, TikToks and Facebook reels, and the Image anonymizer."
 section: "library"
 order: 6
-updated: 2026-09-29
+updated: 2026-10-01
 appPaths: ["/files", "/files/tools/image-editor", "/files/tools/video-editor", "/files/tools/image-anonymizer"]
 audience: "Everyone except client logins"
-related: ["history", "create-an-image", "create-a-video", "linkedin", "instagram", "facebook", "tiktok", "x", "balance-and-payments"]
+related: ["history", "shorts-autopilot", "create-an-image", "create-a-video", "linkedin", "instagram", "facebook", "tiktok", "x", "balance-and-payments"]
 shots:
   - file: "/Images/help/assets-library-page.webp"
     route: "/files"
@@ -22,13 +22,13 @@ shots:
   - file: "/Images/help/assets-library-video-actions.webp"
     route: "/files"
     clip: "the list with a video's Actions menu open"
-    alt: "The Actions menu of a video in the Assets Library: View, Download, Edit video, Upload a new version, Tags, Rename, Move and Delete"
-    captured: 2026-09-29
+    alt: "The Actions menu of a video in the Assets Library: View, Download, Edit video, Make shorts, Upload a new version, Tags, Rename and Move"
+    captured: 2026-10-01
   - file: "/Images/help/assets-library-tools.webp"
-    route: "/files/tools/image-editor"
+    route: "/files/tools/image-anonymizer"
     clip: "the Tool switch open"
-    alt: "Tools, open on the Image editor, with the Tool switch open on Pictures and videos: Image editor, Video editor and Image anonymizer, above the box to drop a picture and the four steps"
-    captured: 2026-09-29
+    alt: "Tools, open on the Image anonymizer, with the Tool switch open on Pictures and videos: Image editor, Video editor, Shorts autopilot and Image anonymizer; in the menu, Image editor, Video editor and Shorts autopilot under the Assets Library"
+    captured: 2026-10-01
   - file: "/Images/help/image-editor-social.webp"
     route: "/files/tools/image-editor"
     clip: "the Image editor, Social panel"
@@ -56,30 +56,42 @@ shots:
     captured: 2026-09-28
   - file: "/Images/help/video-editor-tools.webp"
     route: "/files/tools/video-editor"
-    alt: "Tools, open on the Video editor: the box to drop a video, From the Assets Library, and the three steps Open a video, Cut it for the network and Save it"
-    captured: 2026-09-29
+    alt: "Video editor lit in the menu, its page open: the box to drop a video, From the Assets Library, and the three steps Open a video, Cut it for the network and Save it"
+    captured: 2026-10-01
+  - file: "/Images/help/video-editor-social.webp"
+    route: "/files/tools/video-editor"
+    clip: "the Video editor, Social panel"
+    alt: "The Social panel of the Video editor on Instagram, Reel picked and applied with Fit it whole: the red zones Name and progress bar and Caption, reply box and buttons over the preview, the dashed Profile grid crop, and the Zones switch on in the top bar"
+    captured: 2026-10-01
+  - file: "/Images/help/video-editor-social-checks.webp"
+    route: "/files/tools/video-editor"
+    clip: "the Video editor, Social panel, lower half"
+    alt: "The lower half of the Social panel: How it will show with Full screen and On the profile grid, the Checks with Make the captions under the warning on captions, Save for Instagram and Good practice on Instagram"
+    captured: 2026-10-01
   - file: "/Images/help/video-editor-format.webp"
     route: "/files/tools/video-editor"
     clip: "the Video editor, Format panel"
-    alt: "The Video editor on a wide product clip set to Vertical 9:16 and Fit, blurred, with the TikTok safe zone shown over the preview, the transport bar and the clip on the timeline"
-    captured: 2026-09-29
+    alt: "The Video editor on a wide product clip set to Vertical 9:16 and Fit, blurred, with Social first on the rail, the transport bar and the clip on the timeline"
+    captured: 2026-10-01
   - file: "/Images/help/video-editor-save.webp"
     route: "/files/tools/video-editor"
     clip: "the Video editor, Save panel"
-    alt: "The Save the video panel: the name, 1080p or 720p, the file details, the checks for Instagram Reel, Instagram Story and TikTok, then Save it in the Assets Library and Download"
-    captured: 2026-09-29
+    alt: "The Save the video panel after Apply the format: Made for Instagram, Reel with its Checks button, the name ending in (Instagram Reel), 1080p or 720p, the file details, Fits for Instagram Reel, Instagram Story, Facebook and TikTok, then Save it in the Assets Library and Download"
+    captured: 2026-10-01
   - file: "/Images/help/instagram-picture-edit.webp"
     route: "/social/instagram/posts"
     clip: "the picture step of a post"
     alt: "The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer"
     captured: 2026-09-28
-sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/pages/files/index.astro", "src/scripts/filesPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/pages/api/files/folders/[id].ts", "src/pages/api/files/captions.ts", "src/lib/stored-files.ts", "src/lib/asset-tools.ts", "src/components/AssetToolsNav.astro", "src/pages/files/tools/index.astro", "src/pages/files/tools/image-editor.astro", "src/pages/files/tools/video-editor.astro", "src/pages/files/tools/image-anonymizer.astro", "src/scripts/imageEditor.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorModel.ts", "src/scripts/videoEditorCaptions.ts", "src/scripts/videoEditorAudio.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorLauncher.ts", "src/lib/video-captions.ts", "src/lib/social/limits.ts", "src/scripts/lightbox.ts", "src/scripts/historyPanel.ts", "src/scripts/imageGenerate.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
+sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/pages/files/index.astro", "src/scripts/filesPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/pages/api/files/folders/[id].ts", "src/pages/api/files/captions.ts", "src/lib/stored-files.ts", "src/lib/asset-tools.ts", "src/components/AssetToolsNav.astro", "src/pages/files/tools/index.astro", "src/pages/files/tools/image-editor.astro", "src/pages/files/tools/video-editor.astro", "src/pages/files/tools/image-anonymizer.astro", "src/scripts/imageEditor.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/videoEditorModel.ts", "src/scripts/videoEditorCaptions.ts", "src/scripts/videoEditorAudio.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorLauncher.ts", "src/lib/video-captions.ts", "src/lib/social/limits.ts", "src/scripts/lightbox.ts", "src/scripts/historyPanel.ts", "src/scripts/imageGenerate.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
 ---
 
-The **Assets Library** holds every file of your team in one place, in folders: the pictures and clips you upload, the ones the studios render, and the pictures and videos you edit. **Assets Library** in the menu opens on two entries:
+The **Assets Library** holds every file of your team in one place, in folders: the pictures and clips you upload, the ones the studios render, the pictures and videos you edit, and the shorts [Shorts autopilot](/help/shorts-autopilot) makes. **Assets Library** in the menu opens on two entries:
 
 - **Assets**: the library itself.
-- **Tools**: work on a picture or a video you already have, with the **Image editor**, the **Video editor** or the **Image anonymizer**.
+- **Tools**: the **Image anonymizer**, and the **Tool** switch to every tool that works on a file you already have.
+
+Right under it, the menu has three entries of their own for the tools you use most: the **Image editor**, the **Video editor** and **Shorts autopilot**. The editors are described below; Shorts autopilot has [its own article](/help/shorts-autopilot).
 
 [History](/help/history) and the Assets Library show the same renders in two ways. History lists what the studios made, newest first, with the prompt, the engine and the cost of each piece. The library holds everything, renders and uploads alike, in the folders you choose.
 
@@ -116,6 +128,7 @@ Each row has an **Actions** menu. What it offers depends on the file:
 | **Download** | Saves the original file to your computer. |
 | **Edit image** | Opens the picture in the [Image editor](#the-image-editor). Shown on the pictures a browser can edit, such as JPG, PNG, WebP, GIF and AVIF. |
 | **Edit video** | Opens the video in the [Video editor](#the-video-editor). Shown on MP4, MOV and WebM videos. |
+| **Make shorts** | Opens [Shorts autopilot](/help/shorts-autopilot) with the video already picked, to cut its best moments into vertical shorts. Shown on MP4, MOV and WebM videos. |
 | **Versions** | Lists the earlier versions of a file, once it has more than one. |
 | **Upload a new version** | Replaces a file you uploaded with a newer one. The earlier one stays under **Versions**. Renders don't take versions. |
 | **Tags** | Your own words, such as "spring launch" or "approved". Click a tag anywhere to filter on it. |
@@ -125,9 +138,9 @@ Each row has an **Actions** menu. What it offers depends on the file:
 
 ![The Actions menu of a picture in the Assets Library: View, Download, Edit image, Upload a new version, Tags, Rename, Move and Delete](/Images/help/assets-library-actions.webp)
 
-On a video, the same menu reads **Edit video** where a picture reads **Edit image**:
+On a video, the same menu reads **Edit video** where a picture reads **Edit image**, and adds **Make shorts**:
 
-![The Actions menu of a video in the Assets Library: View, Download, Edit video, Upload a new version, Tags, Rename, Move and Delete](/Images/help/assets-library-video-actions.webp)
+![The Actions menu of a video in the Assets Library: View, Download, Edit video, Make shorts, Upload a new version, Tags, Rename and Move](/Images/help/assets-library-video-actions.webp)
 
 ### What files cost
 
@@ -135,9 +148,11 @@ Keeping files has a small daily rent, and downloading one has a small transfer c
 
 ## Tools
 
-**Tools** opens on the Image editor. The **Tool** switch at the top right of the dark band lists the three tools under **Pictures and videos**: the **Image editor**, the **Video editor** and the **Image anonymizer**. All three run in your own browser and are free: the band says **Runs in your browser · Free**. The one paid option is the fast captions of the Video editor, which show their price before you start.
+**Tools** opens on the Image anonymizer. The **Tool** switch at the top right of the dark band lists four tools under **Pictures and videos**: the **Image editor**, the **Video editor**, **Shorts autopilot** and the **Image anonymizer**. The first three are also entries of the menu, and open the same pages.
 
-![Tools, open on the Image editor, with the Tool switch open on Pictures and videos: Image editor, Video editor and Image anonymizer, above the box to drop a picture and the four steps](/Images/help/assets-library-tools.webp)
+The Image editor, the Video editor and the Image anonymizer run in your own browser and are free: the band says **Runs in your browser · Free**. Two things are paid, each with its price shown before you start: the fast captions of the Video editor, and the run of [Shorts autopilot](/help/shorts-autopilot#what-it-costs).
+
+![Tools, open on the Image anonymizer, with the Tool switch open on Pictures and videos: Image editor, Video editor, Shorts autopilot and Image anonymizer; in the menu, Image editor, Video editor and Shorts autopilot under the Assets Library](/Images/help/assets-library-tools.webp)
 
 ### The Image anonymizer
 
@@ -157,7 +172,7 @@ The editor opens from wherever the picture is:
 
 | From | How |
 |---|---|
-| **Tools** | Drop a picture on **Drop a picture here, or click to choose one**, or click **From the Assets Library** and pick one. |
+| **Image editor** in the menu | Drop a picture on **Drop a picture here, or click to choose one**, or click **From the Assets Library** and pick one. The **Tool** switch of the Assets Library's **Tools** opens the same page. |
 | The Assets Library | **Edit image** in a picture's **Actions** menu, or **Edit** in the full-size viewer. |
 | [History](/help/history#edit-a-picture-or-a-video) | **Edit** on a picture's card, or in the full-size viewer. |
 | The image studio | **Edit** on a ready picture, or in the full-size viewer. See [Create an image](/help/create-an-image#edit-a-picture). |
@@ -290,30 +305,63 @@ Click the ✕ at the top left, or press Escape. If you have changes that aren't 
 
 ## The Video editor
 
-The Video editor turns a clip into an Instagram Reel or a TikTok: the 9:16 frame of a phone's screen (or 4:5 and 1:1 for the Instagram feed), trims and splits on a timeline, the speed of each clip, several clips one after the other, texts that show for a stretch of time, captions timed word by word, music under the sound, and the cover. It writes an MP4 that Instagram and TikTok both take. Editing is free and happens in your browser.
+The Video editor turns a clip into an Instagram Reel, a TikTok or a Facebook reel: a frame made for one place on one network (the 9:16 of a phone's screen, or 4:5 and 1:1 for the feed), trims and splits on a timeline, the speed of each clip, several clips one after the other, texts that show for a stretch of time, captions timed word by word, music under the sound, and the cover. It writes an MP4 that Instagram, TikTok and Facebook all take. Editing is free and happens in your browser.
 
 ### Open a video
 
 | From | How |
 |---|---|
-| **Tools** | Pick **Video editor** in the **Tool** switch. Drop a video on **Drop a video here, or click to choose one**, or click **From the Assets Library** and pick one. |
+| **Video editor** in the menu | Drop a video on **Drop a video here, or click to choose one**, or click **From the Assets Library** and pick one. The **Tool** switch of the Assets Library's **Tools** opens the same page. |
 | The Assets Library | **Edit video** in a video's **Actions** menu, or **Edit** in the full-size viewer. |
 | [History](/help/history#edit-a-picture-or-a-video) | **Edit** on a video's card, or in the full-size viewer. |
-| A post | The pencil on the clip of a video post, in the TikTok and Instagram modules. See [Edit the clip of a post](#edit-the-clip-of-a-post). |
+| A post | The pencil on the clip of a video post. On an Instagram, TikTok or Facebook post, the editor opens on its **Social** panel, set to that network. See [Edit the clip of a post](#edit-the-clip-of-a-post). |
+| [Shorts autopilot](/help/shorts-autopilot#the-shorts) | **Edit in the Video editor** on one of the shorts it made. |
 
 The editor takes MP4, MOV and WebM videos up to 2 GB. Chrome and Edge open the most formats. A video filmed in HEVC on a phone may not open in some browsers: the editor says so and suggests Chrome or Edge on a recent computer.
 
-![Tools, open on the Video editor: the box to drop a video, From the Assets Library, and the three steps Open a video, Cut it for the network and Save it](/Images/help/video-editor-tools.webp)
+![Video editor lit in the menu, its page open: the box to drop a video, From the Assets Library, and the three steps Open a video, Cut it for the network and Save it](/Images/help/video-editor-tools.webp)
 
 ### The workspace
 
-The top bar shows the video's name, **Undo** and **Redo**, the **Safe zone** switch (**Off**, **TikTok** or **Instagram**) and **Save**. The preview sits in the middle, with the transport bar under it: back to the start, one frame back, play or pause, one frame on, the time, **Split** and **Delete**, and the timeline zoom. The timeline shows the clips, the texts, the captions and the music on their own rows. Click the timeline to move the playhead.
+The top bar shows the video's name, **Undo** and **Redo**, the **Zones** switch once the video is framed for a network (see [Social](#social-made-for-a-network)), and **Save**. The preview sits in the middle, with the transport bar under it: back to the start, one frame back, play or pause, one frame on, the time, **Split** and **Delete**, and the timeline zoom. The timeline shows the clips, the texts, the captions and the music on their own rows. Click the timeline to move the playhead.
 
-The rail on the left opens one panel at a time: **Format**, **Clips**, **Text**, **Captions**, **Sound** and **Cover**. **Save** opens **Save the video**.
+The rail on the left opens one panel at a time: **Social**, **Format**, **Clips**, **Text**, **Captions**, **Sound** and **Cover**. **Save** opens **Save the video**. The editor opens on **Format**, or on **Social** when you edit the clip of an Instagram, TikTok or Facebook post, or a short made by Shorts autopilot.
 
-The **Safe zone** draws over the preview where TikTok's or Instagram's buttons, name and caption will cover the video. Keep your texts and captions out of it. When you edit the clip of a TikTok or Instagram post, the editor opens with that network's safe zone already on.
+![The Video editor on a wide product clip set to Vertical 9:16 and Fit, blurred, with Social first on the rail, the transport bar and the clip on the timeline](/Images/help/video-editor-format.webp)
 
-![The Video editor on a wide product clip set to Vertical 9:16 and Fit, blurred, with the TikTok safe zone shown over the preview, the transport bar and the clip on the timeline](/Images/help/video-editor-format.webp)
+### Social: made for a network
+
+The **Social** panel prepares the video for one place on one network: the shape, the framing, what the network's buttons cover, and the checks before you save.
+
+1. Pick the network at the top: **Instagram**, **TikTok** or **Facebook**.
+2. Under **Where it goes**, pick the placement. **Best** marks the network's own recommendation.
+
+| Network | Placements |
+|---|---|
+| Instagram | **Reel** (9:16, 1080 × 1920, Best), **Story** (9:16), **Feed portrait** (4:5) and **Square** (1:1). Every video posted to Instagram is shared as a reel. |
+| TikTok | **Video** (9:16, 1080 × 1920, Best) and **Square** (1:1, shown with bands above and below). |
+| Facebook | **Reel** (9:16, 1080 × 1920, Best), **Story** (9:16), **Feed portrait** (4:5) and **Square** (1:1). |
+
+3. Under **Frame it**, pick how every clip gets that shape:
+   - **Crop to fill**: every clip fills the frame and what overflows is cut. Drag the picture in the preview to choose what shows.
+   - **Fit it whole**: nothing is cut. The space around each clip is filled, under **Around the video**, with a **Blurred video** of itself or a plain color.
+4. Leave **Show what the network covers** on to see, in red over the preview, where the network's name, caption, reply box and buttons sit, with a dashed line around the safe area, and in dashed lines the **Profile grid**: the part of the cover that Instagram's and TikTok's profile grid shows. Keep your texts and captions inside the safe area.
+5. Click **Apply the format**. Every clip takes the placement's shape and framing, the video is written in 1080p, and its name says the network and the placement, such as "(Instagram Reel)". Once the video has the shape, the button reads **Apply to every clip**.
+
+![The Social panel of the Video editor on Instagram, Reel picked and applied with Fit it whole: the red zones Name and progress bar and Caption, reply box and buttons over the preview, the dashed Profile grid crop, and the Zones switch on in the top bar](/Images/help/video-editor-social.webp)
+
+The **Zones** switch in the top bar, **On** or **Off**, shows or hides the same zones from any panel, so you can place a text or move the captions while you see them.
+
+Once a placement is picked, the panel also shows:
+
+- **How it will show**: small previews of the video as the network shows it, full screen, in the story or in the feed, and **On the profile grid**, which shows the cover frame.
+- **Checks**: the shape, the length against what the placement takes, the picture and the file, the weight of the file against the network's limit, whether captions or texts sit under the network's buttons or fall outside the grid's crop, whether the words are large enough to read on a phone, and whether the video has captions and sound. A reel or a TikTok over 3 minutes gets a word on its reach.
+- **Save for Instagram** (or TikTok, or Facebook): opens the Save panel.
+- **Good practice on Instagram** (or TikTok, or Facebook): a few short rules for that network.
+
+Many checks carry a button that fixes what they found: **Apply the format**, **Cut it at** the longest length taken, **Write it in 1080p**, **Move the captions into the safe area**, **Move the words into the safe area**, **Make the captions** (opens the Captions panel) and **Add music** (opens the Sound panel).
+
+![The lower half of the Social panel: How it will show with Full screen and On the profile grid, the Checks with Make the captions under the warning on captions, Save for Instagram and Good practice on Instagram](/Images/help/video-editor-social-checks.webp)
 
 ### Format
 
@@ -370,9 +418,10 @@ The cover is the frame shown before the video plays, on your profile grid and in
 
 Click **Save** at the top right. The **Save the video** panel shows:
 
-- **Name**: the original name followed by "(edited)", which you can change.
+- **Made for**, once a placement is applied in **Social**: the network and the placement, such as **Instagram · Reel**, with **Checks** to go back to the Social panel.
+- **Name**: the original name followed by "(edited)", or by the network and the placement after **Apply the format**. You can change it.
 - **Quality**: **1080p** or **720p**, with the file's size, length and weight.
-- **For each network**: a check for **Instagram Reel**, **Instagram Story** and **TikTok**, which says whether the video fits the length each one takes and whether its shape fills the phone's screen.
+- **For each network**: a check for **Instagram Reel**, **Instagram Story**, **Facebook** and **TikTok**, which says whether the video fits the length each one takes and whether its shape fills the phone's screen.
 
 Then pick how to keep it:
 
@@ -381,7 +430,7 @@ Then pick how to keep it:
 
 Your browser writes the video, which takes about as long as the video lasts. Keep the tab open until it is done; **Stop writing the video** cancels it. Once saved, the panel says **Saved.** with a link, **Open it in the Assets Library**. A video saved in the library counts toward your storage like any upload. **Back to editing** returns to the panel you were on.
 
-![The Save the video panel: the name, 1080p or 720p, the file details, the checks for Instagram Reel, Instagram Story and TikTok, then Save it in the Assets Library and Download](/Images/help/video-editor-save.webp)
+![The Save the video panel after Apply the format: Made for Instagram, Reel with its Checks button, the name ending in (Instagram Reel), 1080p or 720p, the file details, Fits for Instagram Reel, Instagram Story, Facebook and TikTok, then Save it in the Assets Library and Download](/Images/help/video-editor-save.webp)
 
 An edited video is a file you made, not a render: it sits in the Assets Library, not in History.
 
@@ -413,6 +462,6 @@ Edit the picture, then open **Save**. The main button reads **Save and use it in
 
 ## Edit the clip of a post
 
-On a TikTok post, or an Instagram Reel, the clip carries the same two buttons: the **×** takes the clip off the post, and the pencil, **Edit this clip**, opens it in the Video editor with that network's safe zone on.
+On a video post, the clip carries the same two buttons: the **×** takes the clip off the post, and the pencil, **Edit this clip**, opens it in the Video editor. On a TikTok, Instagram or Facebook post, the editor opens on its **Social** panel, set to that network's best placement (a TikTok video, an Instagram Reel, a Facebook reel), so you can apply its format and see what the network covers straight away.
 
 Edit the clip, then open **Save**. The main button reads **Save and use it in the post**: the edited MP4 is saved in the Assets Library next to the original, takes the place of the clip in the post, and the editor closes. The step then says **The edited video is in the post. The original stays in the Assets Library.**

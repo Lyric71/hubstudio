@@ -4,7 +4,7 @@ seoTitle: "Your client space: see, download and approve | hubStudio Help"
 description: "For the people of a team's clients: signing in, what your Client space holds, opening and downloading the work, approving it or sending it back in Validation, and your account."
 excerpt: "The team you work with made something for your company. Here is how to find it, download it, comment on it and approve it."
 section: "clients"
-order: 15
+order: 16
 updated: 2026-09-29
 appPaths: ["/client", "/validation", "/validation/[id]", "/settings", "/invite"]
 audience: "Client logins"

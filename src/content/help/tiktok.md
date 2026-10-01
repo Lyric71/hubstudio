@@ -4,8 +4,8 @@ seoTitle: "Make, schedule and publish TikTok videos | hubStudio Help"
 description: "The TikTok module: connect your TikTok account, start from the video, edit it for TikTok in the Video editor, write its caption, brief a video in depth, say which client it is for, send it for approval, then schedule it or publish it."
 excerpt: "Start from the video, add a caption with AI or by hand, or brief a video in depth, and publish it on your TikTok account, now or on schedule."
 section: "social"
-order: 11
-updated: 2026-09-29
+order: 12
+updated: 2026-10-01
 appPaths: ["/social/tiktok/posts", "/social/tiktok/brief", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "instagram", "facebook", "x", "validation", "create-a-video", "history", "assets-library"]
@@ -18,7 +18,7 @@ shots:
     route: "/social/tiktok/brief"
     alt: "The Brief tab of TikTok: Title of this piece, Language, The brief, Post type, Video length, Caption style, Call to action, Audience, Register, Must appear and Must not appear"
     captured: 2026-09-29
-sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/TikTokBriefPanel.astro", "src/pages/social/tiktok/brief.astro", "src/scripts/socialContent.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts", "src/lib/tiktok-constraints.ts", "src/pages/api/social-content/draft.ts", "src/lib/social/publishers.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditor.ts"]
+sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/TikTokBriefPanel.astro", "src/pages/social/tiktok/brief.astro", "src/scripts/socialContent.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts", "src/lib/tiktok-constraints.ts", "src/pages/api/social-content/draft.ts", "src/lib/social/publishers.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/pages/files/tools/shorts.astro"]
 ---
 
 **TikTok** in the menu holds your TikTok videos, from the first clip to the published post. On TikTok a post is a video and the words are its caption: you render, pick or upload the clip, then write its caption with AI or by hand, and publish it on your account, now or at a time you pick. Or you post it yourself on TikTok.
@@ -62,7 +62,9 @@ Pick one of three ways in:
 
 The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A clip takes a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. **Render again** makes a new one.
 
-**Edit the clip.** Point at the clip of the post and click the pencil under the **×** (its tooltip starts **Edit this clip**). The clip opens in the [Video editor](/help/assets-library#the-video-editor), with TikTok's safe zone drawn over it: set it to 9:16, trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. Then click **Save** and **Save and use it in the post**: the edited video takes the place of the clip in the post, and the original stays in the Assets Library. Editing is free; only the fast captions are billed, at the price shown before you start. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
+**Edit the clip.** Point at the clip of the post and click the pencil under the **×** (its tooltip starts **Edit this clip**). The clip opens in the [Video editor](/help/assets-library#the-video-editor), on its **Social** panel set to a TikTok **Video**: click **Apply the format** for the 9:16 frame, see in red where TikTok's caption, sound and buttons cover the video, and read the checks, each with a button to fix what it found. You can also trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. Then click **Save** and **Save and use it in the post**: the edited video takes the place of the clip in the post, and the original stays in the Assets Library. Editing is free; only the fast captions are billed, at the price shown before you start. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
+
+**Start from a long video.** An interview, a talk or a podcast can become several TikToks at once: [Shorts autopilot](/help/shorts-autopilot) picks its best moments, frames them at 9:16, captions them and saves each one in the Assets Library, with a TikTok caption to copy. Then pick one from the library here.
 
 TikTok takes one MP4, MOV or WEBM clip of 3 seconds to 10 minutes. Your account may allow less: when a clip runs longer than your account can post, the publishing step says so.
 

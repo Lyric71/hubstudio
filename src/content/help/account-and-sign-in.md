@@ -4,7 +4,7 @@ seoTitle: "Your account settings and signing in | hubStudio Help"
 description: "The sign-in page in your language, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the weekly digest of what changed, the engines in your lists, voice input, and how to reset a forgotten password."
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
-order: 17
+order: 18
 updated: 2026-09-29
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"

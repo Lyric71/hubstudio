@@ -4,7 +4,7 @@ seoTitle: "Balance, payments, invoices and usage | hubStudio Help"
 description: "How your hubStudio balance works: a prepaid balance held in US dollars, the team balance first and then your own, topping up by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log."
 excerpt: "A prepaid balance pays for every run. Top it up by card, Alipay or WeChat Pay, or automatically, and find every invoice and every charge."
 section: "billing"
-order: 16
+order: 17
 updated: 2026-09-29
 appPaths: ["/billing", "/billing/payment", "/billing/invoices", "/billing/usage"]
 audience: "Everyone, especially team administrators"

@@ -4,7 +4,7 @@ seoTitle: "The partner area | hubStudio Help"
 description: "What a hubStudio commercial partner sees: creating teams and people, inviting prospects in their own words, and the commissions earned on what those accounts pay."
 excerpt: "For commercial partners only: create teams and people, invite prospects, and follow your commissions."
 section: "partner"
-order: 18
+order: 19
 updated: 2026-09-29
 appPaths: ["/partner/users", "/partner/invitations", "/partner/commissions"]
 audience: "Commercial partners"
