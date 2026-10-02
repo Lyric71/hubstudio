@@ -553,7 +553,7 @@ RESEARCH FILE: editorial/research/the-2026-model-roster.md
 
 CHANGES FROM THE BRIEF, WITH REASONS:
   Slot requirement unmet, on purpose: no hubStudio delivery figure has a written method,
-    so no delivery number appears and no TODO marker is left on the page.
+    so no delivery number appears and no placeholder is left on the page.
   Roster column "known failure" became "known limitation", because each cell is either
     the maker's own stated limitation or a research-documented failure class, and the
     two are labeled apart.

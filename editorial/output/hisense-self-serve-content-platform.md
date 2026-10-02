@@ -403,8 +403,10 @@ PLATFORM PAGE NOT LINKED, ON PURPOSE: the case page names no sales platform, so
   agencies page was also left out: it covers white-label production for agencies, not
   agencies working on a brand's platform.
 CLIENT SIGN-OFF NEEDED: none for the page as written; the three case results are quoted
-  as the case page publishes them. TODO: client sign-off for the slot requirement (one
-  delivery-record number with its method stated), which the page does not meet.
+  as the case page publishes them. The slot D requirement (one delivery-record number
+  with its method stated) is closed under the settled fallback in editorial/CLAUDE.md:
+  no delivery figure on this topic has a written method, so the page carries none and
+  runs only the case figures the site already publishes, attributed to the case page.
 RESEARCH FILE: editorial/research/hisense-self-serve-content-platform.md
 
 SERP MAP MISSING: R2 was not run (the session search budget was exhausted on

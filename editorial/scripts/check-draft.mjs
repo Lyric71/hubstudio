@@ -12,6 +12,7 @@
  */
 
 import { readFileSync } from 'node:fs';
+import { findMarkers } from '../../scripts/check-content-todo.mjs';
 
 const file = process.argv[2];
 if (!file) {
@@ -81,6 +82,13 @@ const british = [...publishable.matchAll(
 )].map((m) => m[0]);
 hard(british.length === 0, 'American spelling in publishable copy',
   british.length ? `${british.length} found: ${[...new Set(british.map((w) => w.toLowerCase()))].join(', ')}` : 'none');
+
+// No TODO leaves a run (editorial/CLAUDE.md). The whole file is checked,
+// appended blocks included: the publish step reads them, and an open item
+// parked in the asset brief is still an open item.
+const markers = findMarkers(raw);
+hard(markers.length === 0, 'No TODO, FIXME, TBD or placeholder marker anywhere in the file',
+  markers.length ? `line ${markers.map((m) => m.line).join(', ')}` : 'none');
 
 // ---- money
 const dollars = [...body.matchAll(/\$[\d,]+/g)].map((m) => m[0]);

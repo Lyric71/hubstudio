@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "prebuild": "node --experimental-strip-types scripts/generate-llms-full.mjs",
+    "prebuild": "node scripts/check-content-todo.mjs && node --experimental-strip-types scripts/generate-llms-full.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -21,6 +21,7 @@
     "edit": "node scripts/edit-image.mjs",
     "edit:max": "node scripts/edit-image-max.mjs",
     "help:sync": "node scripts/sync-help.mjs",
+    "content:todo": "node scripts/check-content-todo.mjs",
     "llms:full": "node --experimental-strip-types scripts/generate-llms-full.mjs",
     "indexnow": "node scripts/submit-indexnow.mjs"
   },

@@ -31,6 +31,7 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
+import { findMarkers } from '../../scripts/check-content-todo.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z]:)/, '$1'), '..', '..');
 const INSIGHTS = path.join(ROOT, 'src', 'data', 'insights.ts');
@@ -219,6 +220,18 @@ if (!['orange', 'navy'].includes(args.tone)) {
 }
 
 const raw = readFileSync(draftPath, 'utf8');
+
+/* No TODO leaves a run (editorial/CLAUDE.md). A draft carrying a marker, in
+   the body or in an appended block, has an item still open, so it does not
+   publish. Close the item, then run this again. */
+const markers = findMarkers(raw);
+if (markers.length) {
+  console.error('\n  Refusing to publish: the draft carries a TODO-style marker.\n');
+  for (const m of markers) console.error(`  line ${m.line}: ${m.text}`);
+  console.error('\n  Close each item in this run, or set the row to blocked. See "No TODO leaves a run".\n');
+  process.exit(2);
+}
+
 const { fm, body } = splitFrontmatter(raw);
 const assetBrief = commentBlock(raw, 'ASSET BRIEF');
 const schema = commentBlock(raw, 'SCHEMA');

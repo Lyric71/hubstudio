@@ -9,7 +9,15 @@
  *   node editorial/scripts/notify-publish.mjs --slug <slug> --title "<title>"
  *        [--to <email>] [--image /Images/insight-<slug>.webp]
  *        [--build passed|failed] [--log editorial/logs/YYYY-MM-DD.md]
- *        [--todo "<text>"]... [--note "<text>"] [--dry-run]
+ *        [--note "<text>"] [--dry-run]
+ *
+ * There is no TODO or open items section, by rule (editorial/CLAUDE.md, "No
+ * TODO leaves a run"): a run closes every item before it publishes, or the row
+ * is blocked and does not publish. The script refuses to send when --todo is
+ * passed, or when --title or --note carries a TODO, FIXME or TBD marker or an
+ * "open items" list, and exits 2 without sending. On --build failed the note
+ * is the error and may quote the marker that failed the build, so only the
+ * title is checked.
  *
  * The live URL is derived from the article page that exists for the slug:
  * src/pages/resources/insights/<slug>.astro -> /resources/insights/<slug>.
@@ -38,7 +46,7 @@ function loadEnv() {
 }
 
 function parseArgs(argv) {
-  const out = { todo: [] };
+  const out = {};
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (!a.startsWith('--')) continue;
@@ -46,7 +54,7 @@ function parseArgs(argv) {
     if (key === 'dry-run') { out.dryRun = true; continue; }
     const val = argv[i + 1];
     if (val === undefined || val.startsWith('--')) { out[key] = true; continue; }
-    if (key === 'todo') out.todo.push(val); else out[key] = val;
+    out[key] = val;
     i++;
   }
   return out;
@@ -65,6 +73,24 @@ function inRegister(slug) {
   return readFileSync(file, 'utf8').includes(`slug: '${slug}'`);
 }
 
+/** A publish email never carries an open item. Refuse rather than send one. */
+const OPEN_ITEM = /\b(TODO|FIXME|TBD|TKTK)\b|\bopen items?\b|\bfor a person\b|\bdecisions? for you\b/i;
+function refuseOpenItems(args) {
+  const problems = [];
+  if (args.todo !== undefined) problems.push('--todo is not an option: close the item in the run, or block the row');
+  // A failed build reports its error, which may quote the marker that failed it.
+  const keys = args.build === 'failed' ? ['title'] : ['title', 'note'];
+  for (const key of keys) {
+    if (typeof args[key] === 'string' && OPEN_ITEM.test(args[key])) problems.push(`--${key} carries an open item: "${args[key]}"`);
+  }
+  if (problems.length) {
+    console.error('Refusing to send. A publish email has no TODO or open items section.');
+    for (const p of problems) console.error(`  ${p}`);
+    console.error('See "No TODO leaves a run" in editorial/CLAUDE.md.');
+    process.exit(2);
+  }
+}
+
 function esc(s) {
   return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
@@ -76,6 +102,7 @@ async function main() {
     console.error('Usage: node editorial/scripts/notify-publish.mjs --slug <slug> --title "<title>" [options]');
     process.exit(2);
   }
+  refuseOpenItems(args);
   const to = args.to || process.env.CONTACT_TO_EMAIL || FALLBACK_TO;
   const url = liveUrl(args.slug);
   const registered = inRegister(args.slug);
@@ -98,7 +125,6 @@ async function main() {
     '',
     ...rows.map(([k, v]) => `${k}: ${v}`),
   ];
-  if (args.todo.length) lines.push('', 'Open TODOs:', ...args.todo.map((t) => `  - ${t}`));
   if (args.note) lines.push('', `Note: ${args.note}`);
   const text = lines.join('\n');
 
@@ -112,7 +138,6 @@ async function main() {
       k === 'Live URL' && url ? `<a href="${url}" style="color:#C2410C;text-decoration:none;">${esc(url)}</a>` : esc(v)
     }</td></tr>`).join('')}
   </table>
-  ${args.todo.length ? `<p style="font-size:14px;margin:24px 0 8px;color:#5C5750;">Open TODOs</p><ul style="font-size:14px;line-height:1.6;margin:0;padding-left:20px;">${args.todo.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
   ${args.note ? `<p style="font-size:14px;line-height:1.6;margin:24px 0 0;">${esc(args.note)}</p>` : ''}
 </div>`;
 

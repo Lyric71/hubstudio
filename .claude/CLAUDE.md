@@ -33,6 +33,18 @@ captures in `src/data/app-shots.ts`. hub4You is retired: never mention it.
   default. It is slow and not wanted. Only capture screenshots / verify
   responsive at 375px, 768px, 1280px when the user explicitly asks for it.
 
+## Publishing jobs leave no TODO (PERMANENT)
+
+No publishing job (the editorial draft and publish runs, a help sync, the
+notification email) leaves a TODO behind: no TODO, FIXME or TBD marker, no
+"open items" or "for a person" list, no "Phase 2" deferral. Every item is
+closed inside the run that found it, or the row is blocked and does not
+publish. The full rule and its settled fallbacks are in `editorial/CLAUDE.md`,
+"No TODO leaves a run". `scripts/check-content-todo.mjs` (`npm run
+content:todo`) runs in `prebuild` and fails the build on a marker in published
+content: the insights pages, `src/data/insights.ts`, `src/content/help/` and
+`editorial/output/`. Code comments in application source are out of its scope.
+
 ## Git conventions
 
 - Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, `style:`.
@@ -78,11 +90,11 @@ No exceptions, every page, every locale.
 ## No numbers in cards (PERMANENT)
 
 Never print a decorative ordinal numeral (`01`, `02`, `03`, …, or a bare `1`,
-`2`, `3`) inside a card or any repeated content block — card grids, step
+`2`, `3`) inside a card or any repeated content block: card grids, step
 lists, feature rows, "how it works" sequences, accordion rows. The heading and
 the visual order carry the sequence; a numeral label never appears. This holds
 regardless of whether the block uses the `.card` class, an `<article>`, an
-`<li>`, or a plain `<div>` — if it is a repeated titled block, no number.
+`<li>`, or a plain `<div>`: if it is a repeated titled block, no number.
 Browser-native `<ol>` numbering counts too: suppress it in these blocks. When
 building or editing any such component, ship it numberless from the start; when
 reviewing existing pages, strip any numeral you find. No exceptions.
@@ -140,10 +152,10 @@ binding for it and any page built on the same pattern.
   the Vercel KV key for that asset's comments, so it is stable: never rename or
   reuse an `id` once comments exist.
 - **Three image tiers, never confused.**
-  - `image` — optimized thumbnail in `public/Images/debeers/` (≤2000px), grid only.
-  - `full` — full-resolution file for click-to-enlarge (lighter webp is fine
+  - `image`: optimized thumbnail in `public/Images/debeers/` (≤2000px), grid only.
+  - `full`: full-resolution file for click-to-enlarge (lighter webp is fine
     here; it is only a preview).
-  - `original` — the untouched model output before any optimization (the source
+  - `original`: the untouched model output before any optimization (the source
     PNG). **The Download button MUST serve `original`** (falling back to `full`,
     then `image`). Never let download hand back the optimized thumbnail.
 - **Originals and previews stay un-optimized.** Both `full` and `original` live
@@ -183,14 +195,14 @@ open tab on the account.
 every image AND every asset that ships on the site. The rule fires whenever you
 generate, source, select, crop, retouch, design, or replace any visual: photos
 and campaign images (heroes, case studies, process shots, team portraits,
-lifestyle, concept art) AND every other asset — SVG icons, illustrations, logos
+lifestyle, concept art) AND every other asset: SVG icons, illustrations, logos
 and marks, diagrams, backgrounds, textures, dividers, favicons, animation.
 
 Non-negotiables from that guide:
 
 - **Creative is the product, so every asset carries a creative angle.** Nothing
-  visual is allowed to be merely functional or generic. Each asset — SVGs
-  included — expresses a deliberate idea, is authored by one hand for
+  visual is allowed to be merely functional or generic. Each asset, SVGs
+  included, expresses a deliberate idea, is authored by one hand for
   hubStudio, and can defend its place in one sentence. No off-the-shelf icon
   sets used raw, no stock/library defaults dropped in to fill space. When the
   obvious choice is generic, redesign it or cut it.
@@ -288,7 +300,8 @@ commit messages, or PR descriptions.
   native ones, drop English-shaped clauses and noun chains, replace nominal
   constructions with verbal ones where the target language prefers verbs, use
   the language's natural rhythm and connectors, vary sentence length the way a
-  native journalist would. See `HUMANIZER.md` for the AI-writing tells to strip.
+  native journalist would. Use the `humanizer` skill for the AI-writing tells
+  to strip (see the note at the end of the em dash rule below).
 
 **Diacritics (never optional):** never ship unaccented copy. FR:
 `é è ê à â ç ù û ü ô î ï ÿ`, capitals keep accents. ES: `á é í ó ú ñ ü`,
@@ -355,7 +368,12 @@ When you would reach for an em-dash, do one of these instead:
 - restructure the sentence so no dash is needed.
 
 This is also an AI-writing tell: stripping it makes copy read as human-authored.
-See `HUMANIZER.md` for the wider set of tells.
+The `humanizer` skill carries the wider set of tells (29 patterns, version
+2.5.1, the same text the sibling repos keep as `HUMANIZER.md`). There is no
+`HUMANIZER.md` in this repo on purpose: its worked examples quote the banned
+character, which this rule does not allow in a Markdown file. Settled
+2026-10-02 after two editorial runs found the old file reference pointing
+nowhere; use the skill and do not raise the missing file again.
 
 Allowed and untouched: the hyphen-minus `-` (compounds, ranges in code), the
 en-dash `–` in numeric ranges (`2024–2026`, `60–80%`), and arrows (`→`). Only

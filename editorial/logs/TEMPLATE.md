@@ -70,12 +70,20 @@ the house ceiling afterward.
 - New figures added to the ledger, with both check dates:
 - Rows added to the do-not-publish log:
 
-## Flags
+## Closed in this run
 
-- TODO: client sign-off items:
-- TODO: backend capture needed:
+Every item this run met, and how it was closed. There is no open items or TODO
+section in this log: an item is closed here, or the row is `blocked` with the
+question in `notes` (see "No TODO leaves a run" in `editorial/CLAUDE.md`).
+
+- First-party figures used, each with the site page that already publishes it:
+- Spec rows published under deviation 7 (modal value, counts, label):
 - Claims cut and which section is now thinner:
-- Conflicts between the brief and the live site:
+- Briefs amended because the research or the live site proved them wrong:
+- Live articles corrected because this piece contradicted them (with the new
+  `dateModifiedISO`):
+- Rows added to `watch.csv`:
+- Settled fallbacks applied (number from the list in `editorial/CLAUDE.md`):
 - Runbook substitutions (what the repo could not do, what was used instead):
 
 ## SEO counts (after the quality pass)

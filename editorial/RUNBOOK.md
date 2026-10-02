@@ -155,8 +155,9 @@ links, wires the hero image, and updates every listing surface. Insights are
 English only today, so there is no locale propagation and no `/deep-translate`
 pass. If a French insights section is built later, publishing gains that step.
 
-Then, in this order, and only when each step passes: `npm run build`,
-`npm run check`, `git add` of everything the article touched (the page, the
+Then, in this order, and only when each step passes: `npm run build` (its
+`prebuild` runs `scripts/check-content-todo.mjs`, which fails the build on any
+TODO, FIXME or TBD marker in published content), `npm run check`, `git add` of everything the article touched (the page, the
 data file, the hero image, listing surfaces, `editorial/output`,
 `editorial/research`, `editorial/logs`, `schedule.csv`, `editorial/sources`),
 one commit on main (`feat(insights): publish <slug>`), `git push origin main`.
@@ -166,9 +167,19 @@ the push is what puts the article live.
 
 Then run `editorial/scripts/notify-publish.mjs` from the repo root. It sends
 one email through Resend to the address in `CONTACT_TO_EMAIL`: subject
-`Published: <title>`, body with the live URL, hero image path, build status,
-open TODOs and the run log path. If the send fails, say so instead of skipping
-silently.
+`Published: <title>`, body with the live URL, hero image path, build status
+and the run log path. There is no TODO or open items section, and the script
+refuses to send if one is passed: every item is closed in the run, or the row
+is `blocked` and does not publish (see "No TODO leaves a run" in
+`CLAUDE.md`). If the send fails, say so instead of skipping silently.
+
+The same publish run also works through `watch.csv`. Every row whose
+`due_date` is today or earlier is rechecked against its source. If the fact
+moved, the live page and its draft are corrected, `dateModifiedISO` is set on
+the article's entry in `src/data/insights.ts`, and the change goes through the
+same build, check, commit (`fix(insights): update <slug>`) and push. Then the
+row is removed, or replaced with a new dated row if the matter is still
+pending. A watch row is never reported as an open item.
 
 Nothing publishes itself. Drafts wait in `output/` until someone says so.
 
@@ -236,11 +247,13 @@ being linked is a different outcome that still moves deals.
 
 | Problem | What to do |
 |---|---|
-| A spec number cannot be captured from a backend | The row goes to `blocked`. Do not fill the slot from secondary sources. Book the capture session. |
+| A spec number cannot be captured from a backend | Publish it under deviation 7 in `CLAUDE.md` (modal value, source counts, the disclaimer), never as verified. The row goes to `blocked` only when no method supports the value. A capture session is a later refresh, not an open item. |
 | Sources conflict on a figure | Publish the range and say why they conflict. That passage is more credible than false precision, and it is the kind of thing that gets cited. |
-| A figure cannot be sourced at all | Claude cuts the claim and marks it. Decide whether the section still stands. |
+| A figure cannot be sourced at all | Claude cuts the claim, records the cut in the research file and the run log (never a marker on the page), and decides in the same run whether the section still stands. |
 | A source fails check 2 (page changed or gone) | Claude fixes the blockquote or cuts the claim. Never ship a citation that failed re-fetch. |
-| A client number is missing | Claude leaves `TODO: client sign-off`. Chase it, do not guess. |
+| A client number is missing | Claude cuts the sentence or rewrites it without the number. Never a guess, never a `TODO` marker. A first-party figure the site already publishes may run, attributed to its page. |
+| A fact on a live page will go stale on a known date | Claude adds a row to `watch.csv`. The publish run rechecks it when it falls due. |
+| Every schedule row is published | The run records that nothing is eligible and ends. Not an open item; new briefs are a planning change. |
 | The draft names or alludes to a company | Reject it. Point at the standing rule and rewrite the passage on the pattern. |
 | Claude planted a typo | It ignored `CLAUDE.md` and the house skill. Point at the conflict section and rerun iteration 7. |
 | The draft reads generic | The angle field was skipped. Rerun with `Reread the angle in the brief and rewrite.` |

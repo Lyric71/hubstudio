@@ -81,6 +81,18 @@ spec table.
 
 This run is unattended: never ask a question, decide from the specs and note
 the decision in the run log.
+
+No TODO leaves this run (editorial/CLAUDE.md, "No TODO leaves a run"). Close
+every item you meet inside the run: research a missing or unverified fact to
+the source standard or cut the claim; fix in this run any live article the new
+piece contradicts, setting its dateModifiedISO; amend at the source a brief the
+research proved wrong, and every later brief repeating the error; apply the
+settled fallbacks listed there instead of raising them; put a future recheck in
+editorial/watch.csv. Never leave a TODO, FIXME or TBD marker in the draft,
+including its appended blocks, and run editorial/scripts/check-draft.mjs, which
+fails on one. The run log and your final message carry no open items, TODO,
+"for a person" or "decisions for you" list. If only Cyril can decide
+something, set the row to blocked with the question in its notes and stop.
 '@
 } else {
   $Prompt = @'
@@ -111,9 +123,25 @@ editorial/sources) and commit on main with a conventional commit message
 push succeeds, run node editorial/scripts/notify-publish.mjs with the slug,
 title, build result, log path and the commit hash in --note.
 
+Then work through editorial/watch.csv: for every row whose due_date is today
+or earlier, recheck the fact against its source. If it moved, correct the live
+page and its draft in editorial/output, set dateModifiedISO on the article's
+entry in src/data/insights.ts, and put the change through the same build,
+check, commit (fix(insights): update <slug>) and push. Then remove the row, or
+replace it with a new dated row if the matter is still pending.
+
 This run is unattended: never ask a question. If the build or the check fails,
 do not commit, do not push, leave the row at image_ready, put the error in the
 run log, and send the email with --build failed and the error in --note.
+
+No TODO leaves this run (editorial/CLAUDE.md, "No TODO leaves a run"). The
+build fails on any TODO, FIXME or TBD marker in published content; close the
+item and build again, never strip the marker without closing it. Never publish
+a row with an open item attached: if only Cyril can decide it, set the row to
+blocked with the question in its notes and publish the others. notify-publish
+has no --todo option and refuses a note carrying a marker. The run log and
+your final message carry no open items, TODO, "for a person" or "decisions for
+you" list; when nothing is eligible, say so and end.
 '@
 }
 

@@ -119,6 +119,71 @@ Already settled, and different from what the search spec assumes:
    backend capture session does happen, those rows get replaced with primary
    values and the disclaimer narrows to the rows still unverified.
 
+## No TODO leaves a run (standing, Cyril, 2026-10-02)
+
+A publishing job never leaves a TODO behind. That covers every step: the
+research gate, drafting, the quality pass, the image, the publish run and the
+notification email. No TODO, FIXME or TBD marker, no "open items" list, no
+"for a person" or "decisions for you" list, no "Phase 2" deferral, in the
+draft, the page, the schedule notes, the run log or the email. Every item a
+run finds is closed inside that run:
+
+- **A missing or unverified fact** is researched to this file's source
+  standard (R3 to R6, check 2) or the claim is cut. Never a marker in a body,
+  table, caption, asset brief or frontmatter.
+- **An existing article the new piece contradicts** is fixed in the same run:
+  its page, its draft in `output/`, and `dateModifiedISO` on its entry in
+  `src/data/insights.ts`.
+- **A brief, the search spec or this pipeline's rules, proved wrong by the
+  research,** is amended at the source in the same run, including every later
+  brief that repeats the error.
+- **A missing link target, slug or asset** is created when the destination can
+  be verified. Otherwise the settled fallback below applies.
+- **A future watch item** (an expected vote, a rule coming into force, a date
+  a figure goes stale) becomes a row in `editorial/watch.csv`, never a line in
+  the email or the log. The publish run works through every row that is due.
+- **The email has no TODO or open items section.** `notify-publish.mjs`
+  refuses to send if one is passed.
+
+If something genuinely cannot be closed without Cyril's decision, the run sets
+that row to `blocked` with the question in its `notes` and does not publish
+it. It never publishes with a TODO attached. `scripts/check-content-todo.mjs`
+runs before every build and fails it on any marker in published content.
+
+**Settled fallbacks.** These were raised as open items by earlier runs and are
+now decided. A run applies them and does not raise them again.
+
+1. **Slot D with no delivery figure that has a written method.** The piece
+   ships without one. A first-party figure the site already publishes runs
+   under the R5 exception, attributed to its page, never as measured delivery
+   data. Decided by publishing briefs 36 and 48 on that basis, 2026-09-27.
+2. **A spec or slot B page without a backend capture.** The page ships under
+   deviation 7 (modal value, counts, `consensus` or `contested`, the
+   disclaimer) and without the annotated screenshot, which is never
+   reconstructed. A capture session is a refresh, not an open item.
+3. **A client number that is not in the ledger.** The sentence is cut or
+   rewritten without the number. Nothing is estimated and nothing is left
+   incomplete.
+4. **Length over the brief's target.** Targets are floors (`SPEC.md`,
+   Length). Overage made of mandated disclaimers, verbatim primary quotes and
+   tables ships as it is. Prose is never padded and citations are never cut to
+   hit a number.
+5. **An internal link whose target page does not exist.** The reference stays
+   plain text (`publish-draft.mjs --drop-link`). Never a link to a 404.
+6. **An insights category no layer claims.** The publish step files the
+   article under a category a placement already claims (see the publish
+   prompt in `run-daily.ps1`).
+7. **No eligible row.** When every schedule row is published and no watch row
+   is due, the run records that and ends. It is not an open item. Extending
+   the calendar past brief 48 is a planning change made in `schedule.csv` and
+   the briefs, not something a run asks for.
+8. **Files named `*.ALT-YYYY-MM-DD.md` in `output/` or `research/`** are
+   archived alternates of a slug already published. They are never drafts
+   awaiting publication and a run ignores them.
+9. **Anything outside this repo** (the shared runner, Task Scheduler, the
+   relauncher, connector sign ins) is recorded as a plain fact in the run log
+   when it affected the run, not as a request.
+
 ## Model quality: no compromise
 
 Every step runs on the most capable model available at the time. Drafting,
@@ -239,6 +304,8 @@ is smart, busy, and has read four vendor pages already today.
 - **No summary or conclusion section.** End on the CTA.
 - **No "why work with us" paragraph.** No agency self-promotion framing.
 - **No fabricated figures.** If it cannot be sourced, cut the claim.
+- **No TODO left behind.** Not in the draft, the page, the log or the email.
+  Close the item in the run or block the row. See "No TODO leaves a run".
 - **No markdown links in body copy.** Internal references are plain-text
   names. The publish step converts them to links.
 - **No HTML in body copy.** HTML comments for section labels are the exception.
@@ -336,14 +403,17 @@ researching a cost or spec piece. Three items on that list are hard blocks:
 When step 4 finishes, run from the repo root:
 
 ```
-node editorial/scripts/notify-publish.mjs --slug <slug> --title "<title>" --build passed --log editorial/logs/YYYY-MM-DD.md --todo "<any open item>"
+node editorial/scripts/notify-publish.mjs --slug <slug> --title "<title>" --build passed --log editorial/logs/YYYY-MM-DD.md --note "<commit hash>"
 ```
 
 It sends one email through Resend (`RESEND_API_KEY` in `.env`) to the address
-in `CONTACT_TO_EMAIL` with the live URL, the hero image path, build status,
-open TODOs and the run log path. Add `--dry-run` to preview. If the send
-fails, say so in the run log and the final message instead of skipping
-silently.
+in `CONTACT_TO_EMAIL` with the live URL, the hero image path, build status
+and the run log path. It has no TODO or open items section: the `--todo`
+option is gone, and the script refuses to send if it is passed or if the note
+carries a TODO, FIXME or TBD marker. Anything still open was supposed to be
+closed in the run (see "No TODO leaves a run"). Add `--dry-run` to preview. If
+the send fails, say so in the run log and the final message instead of
+skipping silently.
 
 ## Where files go
 
@@ -359,6 +429,7 @@ silently.
 | Site profile cache | `sources/site-profile.md` |
 | Run log | `logs/YYYY-MM-DD.md` |
 | Schedule and status | `schedule.csv` |
+| Future rechecks on live articles | `watch.csv` |
 
 ## Site fetch
 

@@ -146,6 +146,10 @@ body-with-tables counts at the end, then land on target.
 Being 10 percent under is fine. Being 25 percent under means a section was
 skipped.
 
+The target is a floor, not a ceiling. Overage made of mandated disclaimers,
+verbatim primary quotes and tables ships as it is: report it, never raise it
+as an open item, never cut a citation to hit a number, never pad prose.
+
 ## Tables
 
 Minimum two per article. Money pages carry a decision table and a cost-band
@@ -326,7 +330,7 @@ CHARTS: <type, axes, data source, what it must show>
 SCREENSHOTS: <what to capture, what to blur>
 DOWNLOADS: <file, format, gate or no gate>
 INTERNAL LINKS: <anchor text> -> <url>, one per line
-CLIENT SIGN-OFF NEEDED: <any client figure used>
+FIRST-PARTY FIGURES: <each one used, and the site page that already publishes it>
 RESEARCH FILE: editorial/research/<slug>.md
 -->
 ```
@@ -378,7 +382,7 @@ the image step.
 | `quality_passed` | content-quality-us finished on the file |
 | `image_ready` | hero image checked and saved to `public/Images/` |
 | `published` | article page live, build passed, email sent |
-| `blocked` | stopped on one of the flag conditions, see `notes` |
+| `blocked` | the row cannot ship as it stands (a spec value no method supports, or a question only Cyril can answer); the reason is in `notes`, and the row does not publish until it is resolved |
 
 ## Definition of done (steps 0 to 3)
 
@@ -414,22 +418,35 @@ Verify each by counting or checking, not by assuming.
 - [ ] `schedule.csv` row updated with status and the dates.
 - [ ] `logs/YYYY-MM-DD.md` written.
 
-## When to stop and ask
+## When a claim cannot stand
 
-Draft without pausing, with five exceptions. In each case write the draft up
-to that point, leave a clear marker, and flag it in the log.
+Draft without pausing. No marker is ever left in a draft: not `TODO`, `FIXME`,
+`TBD` or any placeholder, in the body, a table, a caption, the frontmatter or
+the asset brief. `check-draft.mjs` fails a draft that carries one, and
+`scripts/check-content-todo.mjs` fails the build. Each case below is closed in
+the run that meets it (see "No TODO leaves a run" in `CLAUDE.md`).
 
-1. **A required figure cannot be sourced.** Cut the claim, mark
-   `TODO: unsourced claim removed`, and say which section is now thinner.
+1. **A required figure cannot be sourced.** Cut the claim. Record the cut in
+   the research file's R8 section and the run log's "Closed in this run"
+   list, saying which section is now thinner.
 2. **A spec number cannot be captured from a backend or the live app.** Do not
-   publish it from a secondary source. Publish the range, say why the sources
-   conflict, and mark `TODO: backend capture needed`. On a spec page where the
-   whole table depends on it, set the row to `blocked` instead.
-3. **A client number is needed and is not in the ledger.** Mark
-   `TODO: client sign-off` and leave the sentence incomplete rather than
-   estimating.
+   publish it from a secondary source as verified. Publish it under deviation
+   7 (modal value, source counts, `consensus` or `contested`, the disclaimer),
+   or publish the range and say why the sources conflict. On a spec page where
+   the whole table depends on a value no method can support, set the row to
+   `blocked` instead.
+3. **A client number is needed and is not in the ledger.** Cut the sentence or
+   rewrite it without the number. Never estimate, never leave it incomplete.
 4. **The brief would require naming a company.** Rewrite the passage on the
    pattern instead. This one is not negotiable, and it never blocks: there is
    always a category-level way to say it.
 5. **The brief conflicts with what the site actually says.** The site wins.
-   Note the conflict so the brief can be corrected.
+   Amend the brief file in the same run, and every later brief that repeats
+   the error, and record the amendment in the run log.
+6. **The new piece contradicts an article already live.** Fix the live
+   article in the same run (page, draft and `dateModifiedISO`).
+7. **A fact on the page will go stale on a known date.** Add a row to
+   `editorial/watch.csv` with the due date, the slug, what to recheck and the
+   source.
+8. **Only Cyril can decide it.** Set the row to `blocked` with the question in
+   `notes`. The row does not publish until the question is answered.

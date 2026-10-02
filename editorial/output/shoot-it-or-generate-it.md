@@ -342,7 +342,7 @@ LENGTH, RESOLVED 2026-09-09 (Cyril): keep the citations. The piece runs to
   word count.
 
 THE 70 PERCENT FIGURE, RESOLVED 2026-09-09 (Cyril): publish it. The earlier
-  TODO asking for a method statement is closed. The figure is the site's own
+  request for a method statement is closed. The figure is the site's own
   published line from the ecommerce design service page, so the article makes
   no claim the site does not already make, and the hedge calling it an
   observation rather than a measured average has been removed. Supplying the
