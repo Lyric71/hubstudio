@@ -1,0 +1,24 @@
+﻿2026-10-02T10:39:49 start publish (model claude-opus-5-5)
+2026-10-02T10:39:49 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-02T10:45:00 Opus 5.5 decision record (CATCH-UP RUN started by Relaunch-MissedTasks.ps1).
+This was a catch-up run. Missed date named by the relauncher: 2026-10-02 (Friday).
+- Prompt SHA-256 verified against the manifest: 3FAEBD569FD3E4A7532A2F796C2AC6BE488F18F4FC5ED078CC63B5717A2100C9, match.
+- Run log state on entry: only the start and attempt lines, no partial progress from an earlier model. Working tree on entry: clean apart from untracked run logs and prompts under editorial/logs/runs/. HEAD dadbf16 equals origin/main, 0 unpushed commits.
+- Read editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md.
+- editorial/schedule.csv parsed as CSV: 48 rows, all status published. Zero rows at image_ready, so zero rows to publish and none skipped for a pending human decision.
+- Stale-status check: every row's output file has a page under src/pages/resources/insights/, an entry in src/data/insights.ts and a hero at public/Images/insight-<slug>.webp. The one output file without a page, output/agency-white-label-question.ALT-2026-09-21.md, is the alternative draft kept on purpose by the 2026-09-21 draft run for the reviewer; the canonical agency-white-label-question is already published. Not a finished draft to ship, left untouched.
+- /createblogarticle, npm run build, npm run check: not run, nothing to publish.
+- git add / commit / push: nothing to publish; run logs are not committed outside a publish.
+- notify-publish.mjs: not sent. It goes out only after a successful push or a failed build/check; neither happened.
+This catch-up run for Friday 2026-10-02 published nothing, because there was nothing waiting to publish.
+
+- **No earlier progress:** the run log had only its start lines, so no earlier model had left work unfinished. The working tree was clean apart from untracked run logs, and local `main` matches `origin/main`.
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are already `published` and none is at `image_ready`. So there was nothing to publish and nothing held back for someone to decide.
+- **Stale-status check:** each of the 48 rows has its article page, its entry in `insights.ts` and its hero image. The only draft without a page is `output/agency-white-label-question.ALT-2026-09-21.md`. The 2026-09-21 draft run kept it on purpose as a second version for review, and the main version of that article is already published, so I left it alone.
+- **Not done:** `/createblogarticle`, the build and the check didn't run, and there was no commit, push or email. The email only goes out after a successful push or a failed build or check, and neither happened. The only file I changed is the run log, where I added a decision record that names this as a catch-up run.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be re-authorized in your claude.ai connector settings; this run didn't need them.
+
+The full record is in `editorial/logs/runs/2026-10-02-publish.txt`.
+2026-10-02T10:40:55 model Opus 5.5 completed successfully
+2026-10-02T10:40:55 end publish exit 0

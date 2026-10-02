@@ -1,0 +1,32 @@
+﻿2026-10-01T08:51:30 start publish (model claude-opus-5-5)
+2026-10-01T08:51:30 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-01T08:52:10 Opus 5.5 decision record.
+State on entry:
+- Prompt SHA-256 matches the manifest (A59FC2EF...3E58).
+- This log held only the runner's two start lines: no earlier model made partial progress or left an error.
+- git fetch: local main even with origin/main, HEAD f2026b6. Working tree: untracked run logs only (2026-09-30 publish, 2026-10-01 draft, 2026-10-01 publish). Nothing half-published.
+- A draft run (2026-10-01-draft.txt) started one second before this one and holds only its start lines; it had changed no file when checked at 08:52.
+Read: editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md (publish section).
+Eligibility:
+- editorial/schedule.csv parsed as CSV: 48 rows, all status published (latest published_on 2026-09-27). Zero rows at image_ready, so zero rows to publish and none skipped for a pending human decision.
+Not done, and why:
+- /createblogarticle, npm run build, npm run check: no eligible row.
+- schedule.csv: unchanged.
+- git add / commit / push: nothing to publish; run logs are not committed outside a publish.
+- notify-publish.mjs: not sent. It goes out only after a successful push or a failed build/check; neither happened.
+Open item for a person: the schedule is still exhausted (48 of 48 published), same as the 2026-09-30 run. Publish runs end here until batch three is briefed and drafted or the refresh cycle starts.
+2026-10-01T08:52:10 end of Opus 5.5 decision record.
+No article went out today because no finished draft is waiting.
+
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are already `published` (the last on 2026-09-27). None is at `image_ready`, so nothing needed publishing and nothing was held back for someone to decide.
+- **Starting state:** the run log had only the runner's start lines, so no earlier model left partial work or an error. The prompt's checksum matches the manifest, and local `main` matches `origin/main` at `f2026b6`.
+- **Not done, on purpose:** I didn't run the publish skill, the build, the type check, a commit, a push or the email, because there was nothing to publish. The email only goes out after a push or a failed build or check, and neither happened. The only file I changed is this run's log.
+- **Draft run:** today's draft run started one second before this one and hadn't changed any file when I checked. Anything it finishes will be picked up by the next publish run.
+
+**Decision for you:** this is the second day in a row the schedule has been empty. Publish runs will keep stopping here until someone writes a third batch of briefs or starts updating the articles already published.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be re-authorized in your claude.ai connector settings. This run didn't need them.
+
+The full record is in `editorial/logs/runs/2026-10-01-publish.txt`.
+2026-10-01T08:52:21 model Opus 5.5 completed successfully
+2026-10-01T08:52:21 end publish exit 0

@@ -1,0 +1,32 @@
+Publish every finished draft.
+
+Read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md first.
+In editorial/schedule.csv, find every row whose status is image_ready,
+whatever its publish_date: publish_date is the drafting calendar, not a
+release date, so a finished draft never waits for it. Skip only a row whose
+notes say a person must decide something before it ships, and name it in the
+run log. For each remaining row, in publish_date order, run the
+publish step: /createblogarticle on the output file. That creates
+src/pages/resources/insights/<slug>.astro, adds the entry to
+src/data/insights.ts, converts the plain-text internal references into links,
+wires the hero image and updates every listing surface. Insights are English
+only on this repo, so there is no locale propagation and no /deep-translate
+pass. File each article under an insights.ts category that at least one
+placement in src/data/insight-placements.ts already claims, choosing the one
+whose page a buyer of that topic would read. Never invent a category no layer
+claims: the schedule's cluster (Research, Playbook, Data) is not a category.
+
+Then run npm run build and npm run check. When both pass: set the row to
+published with published_on, then git add everything the article touched (the
+article page, src/data/insights.ts, the hero image, listing surfaces,
+editorial/output, editorial/research, editorial/logs, editorial/schedule.csv,
+editorial/sources) and commit on main with a conventional commit message
+(feat(insights): publish <slug>), then git push origin main. Only after the
+push succeeds, run node editorial/scripts/notify-publish.mjs with the slug,
+title, build result, log path and the commit hash in --note.
+
+This run is unattended: never ask a question. If the build or the check fails,
+do not commit, do not push, leave the row at image_ready, put the error in the
+run log, and send the email with --build failed and the error in --note.
+
+ADDITIONAL INSTRUCTIONS FROM THE OPERATOR: CATCH-UP RUN started by Relaunch-MissedTasks.ps1. The scheduled publish run(s) of 2026-10-02 (Friday) did not run, did not finish, or ended with an error. Publish every row that is image_ready and due, as usual, and say in the run log that this was a catch-up run.

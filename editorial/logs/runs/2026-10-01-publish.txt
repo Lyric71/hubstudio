@@ -1,0 +1,39 @@
+﻿2026-10-01T09:40:40 start publish (model claude-opus-5-5)
+2026-10-01T09:40:41 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-01T09:44:00 Opus 5.5 decision record (CATCH-UP RUN started by Relaunch-MissedTasks.ps1).
+This was a catch-up run. Missed date named by the relauncher: 2026-10-01 (Thursday).
+State on entry:
+- Prompt SHA-256 matches the manifest (846B5C3B...0520).
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct.
+- The earlier publish run today (08:51 to 08:52, kept as 2026-10-01-publish.before-catchup-094040.txt) finished with exit 0 and found zero image_ready rows. Like today's catch-up draft run, this launch is a duplicate from a queued relauncher pass, not a recovery from a failure.
+- git fetch: local main even with origin/main, HEAD f2026b6. Working tree: untracked run logs only. Nothing half-published.
+- The catch-up draft run (09:39 to 09:40) ended exit 0 and changed no article file, so it produced no new finished draft.
+Read: editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md.
+Eligibility:
+- editorial/schedule.csv parsed as CSV: 48 rows, all status published. Zero rows at image_ready, so zero rows to publish and none skipped for a pending human decision.
+- Cross-check of editorial/output: 49 files. 48 have a live page under src/pages/resources/insights/. The 49th, agency-white-label-question.ALT-2026-09-21.md, is an alternate version of a slug already published (commit ff9ed56), referenced in logs/2026-09-21.md. It has no schedule row and is not a finished draft awaiting publish, so it was left untouched.
+Not done, and why:
+- /createblogarticle, npm run build, npm run check: no eligible row.
+- schedule.csv: unchanged.
+- git add / commit / push: nothing published; run logs are not committed outside a publish.
+- notify-publish.mjs: not sent. It goes out only after a successful push or a failed build or check; neither happened.
+Open items for a person:
+1. The schedule is exhausted (48 of 48 published). Publish runs end here until batch three is briefed and drafted or the refresh cycle starts.
+2. Relaunch-MissedTasks.ps1 relaunched a publish run that had already finished with exit 0. Re-checking the outcome just before each queued launch would stop these duplicates. The script is outside this repo and was left untouched.
+2026-10-01T09:44:00 end of Opus 5.5 decision record.
+This catch-up run published nothing, because no finished draft is waiting.
+
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are already `published`. None is at `image_ready`, so there was nothing to publish and nothing held back for someone to decide.
+- **Leftover draft:** I checked `editorial/output` for drafts that never went live. The only one is `agency-white-label-question.ALT-2026-09-21.md`, an alternate version of an article that is already live. It has no schedule row, so I left it alone.
+- **Why this run happened:** it was a duplicate launch, not a recovery from a failure. Today's 08:51 publish run already finished cleanly and found the same empty schedule. The relauncher had queued this copy before that run finished and launched it anyway. The checksum matched the manifest, and no earlier model in this chain had left partial work or an error to fix.
+- **Not done, on purpose:** with nothing to publish, I didn't run `/createblogarticle`, the build, the type check, a commit, a push or the email. The email only goes out after a push or a failed build or check, and neither happened. The only file I changed is the run log, where I added a decision record that marks this as a catch-up run.
+
+**Two things need you:**
+1. **The schedule has run out.** Publish runs will keep stopping here until someone writes a third batch of briefs or starts updating the articles already published.
+2. **The relauncher starts duplicate runs.** `Relaunch-MissedTasks.ps1` should check each queued run's outcome again just before launching it. The script is outside the repo, so I didn't touch it.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be re-authorized in your claude.ai connector settings. This run didn't need them.
+
+The full record is in `editorial/logs/runs/2026-10-01-publish.txt`.
+2026-10-01T09:41:41 model Opus 5.5 completed successfully
+2026-10-01T09:41:41 end publish exit 0

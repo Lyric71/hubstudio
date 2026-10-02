@@ -1,0 +1,41 @@
+﻿2026-10-01T09:39:24 start draft (model claude-opus-5-5)
+2026-10-01T09:39:24 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-01T09:40:27 Opus 5.5 decision record (CATCH-UP RUN started by Relaunch-MissedTasks.ps1).
+This was a catch-up run. Missed dates named by the relauncher: 2026-10-01 (Thursday).
+State on entry:
+- Prompt SHA-256 matches the manifest (7744D0DE...9CD6).
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct.
+- The earlier draft run today (08:51 to 08:52, kept as 2026-10-01-draft.before-catchup-093923.txt) finished with exit 0 and found nothing eligible.
+- HEAD f2026b6. Working tree: untracked run logs only. No half-written research file, draft or hero image.
+Read: editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md (steps 1 to 12).
+Missed-date rows, in date order:
+- 2026-10-01, slot C, brief 26, ai-brand-ambassadors-what-you-sign: status published (published_on 2026-09-10). Re-verified on disk: output draft, research file, src/pages/resources/insights/<slug>.astro, public/Images/insight-<slug>.webp and the src/data/insights.ts entry all exist. Already past image_ready, skipped as the catch-up note requires.
+Today's row: the same 2026-10-01 row, already done, skipped.
+Fallback (RUNBOOK step 2): only applies when today has no row. Today has one. For the record, schedule.csv still has 48 rows, all published, no not_started row.
+Why this run happened: the 08:46 relauncher pass queued this draft as missed (no 2026-10-01-draft.txt existed then). The 08:51 run completed with exit 0 and the 08:55 pass logged hubStudio Editorial Draft as OK, but the 08:46 pass worked through its queue serially and launched this stale entry at 09:39 without checking the outcome again. It's a duplicate launch, not a failure. Relaunch-MissedTasks.ps1 lives outside this repo and was left untouched.
+Not done, and why:
+- Research gate R1 to R7, /createarticle, /content-quality-us, /generate-image-openai: no eligible row.
+- schedule.csv: unchanged, every row already correct.
+- logs/2026-10-01.md from TEMPLATE.md: not written, no article went through the pipeline (same decision as the earlier run today). This runner log is the record.
+- No publish, no commit, per the prompt.
+Open items for a person:
+1. The schedule is exhausted (48 of 48 published). Every draft run ends here until batch three is briefed or the spec refresh cycle is started.
+2. Relaunch-MissedTasks.ps1 can relaunch a run that finished while its pass was still queued. Re-checking Get-Outcome just before each launch would stop these duplicate launches.
+2026-10-01T09:40:27 end of Opus 5.5 decision record.
+I didn't draft anything in this catch-up run because nothing was eligible.
+
+- **Missed date (2026-10-01):** that day's row is brief 26, `ai-brand-ambassadors-what-you-sign`, and it was published on 2026-09-10. Its draft, research file, live page, hero image and `insights.ts` entry are all on disk, so I skipped it as the catch-up note requires. It is also today's row, so there was nothing else to handle.
+- **No fallback:** the runbook's fallback only applies when today has no row. Even if it did apply, all 48 rows in `editorial/schedule.csv` are `published`.
+- **Starting state:** the prompt's checksum matches the manifest. No model earlier in this chain had left partial work or an error to fix.
+
+**Why this run happened:** it was a duplicate launch, not a failure. The relauncher pass that started at 08:46 found no draft log for today and queued this run. A draft run at 08:51 then finished with exit 0, and the next pass at 08:55 recorded the draft as OK. The 08:46 pass still launched its queued copy at 09:39, because it doesn't re-check a run's outcome before launching it.
+
+I didn't run any pipeline step (research, draft, quality pass, hero image). I didn't change `schedule.csv`, write `logs/2026-10-01.md`, publish or commit. The only file I changed is `editorial/logs/runs/2026-10-01-draft.txt`, where I added the decision record and marked this as a catch-up run.
+
+**Two things need you:**
+1. **The schedule has run out.** Every draft run will stop here until someone writes a third batch of briefs or decides to start updating the spec pages already published.
+2. **The relauncher can start duplicate runs.** `Desktop\Relaunch-MissedTasks.ps1` should re-check each run's outcome (`Get-Outcome`) right before launching it. That script is outside the repo, so I didn't touch it.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be re-authorized in your claude.ai connector settings. This run didn't need them.
+2026-10-01T09:40:38 model Opus 5.5 completed successfully
+2026-10-01T09:40:38 end draft exit 0
