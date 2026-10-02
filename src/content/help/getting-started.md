@@ -5,7 +5,7 @@ description: "What hubStudio is, how to create your account alone or with a team
 excerpt: "Create your account, find your way around the menu and render your first image in a few minutes."
 section: "getting-started"
 order: 1
-updated: 2026-10-01
+updated: 2026-10-02
 appPaths: ["/signup", "/login", "/explore"]
 audience: "Everyone"
 related: ["explore", "create-an-image", "assets-library", "shorts-autopilot", "linkedin", "validation", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
@@ -13,8 +13,8 @@ shots:
   - file: "/Images/help/getting-started-menu.webp"
     route: "/explore"
     clip: "#side-nav"
-    alt: "The menu on the left: Explore, Image, Video, History, Assets Library, Image editor, Video editor, Shorts autopilot, the five networks, Validation and Skills, with Team and Credits at the foot"
-    captured: 2026-10-01
+    alt: "The menu on the left: Explore, Image, Video, History, Assets Library, Image editor, Video editor, Shorts autopilot, Image anonymizer, the five networks, Validation and Skills, with Team and Credits at the foot"
+    captured: 2026-10-02
 sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/lib/auth.ts", "src/middleware.ts", "src/pages/signup.astro", "src/lib/signup.ts", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/invite/[token].astro", "src/pages/explore.astro"]
 ---
 
@@ -62,10 +62,11 @@ The menu on the left holds the studio first, then the networks and Validation, t
 | **Image** | The image studio: text to image, image editing, upscaling. See [Create an image](/help/create-an-image). |
 | **Video** | The video studio. See [Create a video](/help/create-a-video). |
 | **History** | Everything you and your team made. See [History](/help/history). |
-| **Assets Library** | **Assets**: every file of your team, uploads and renders, in folders. **Tools**: the Image anonymizer, and a switch to every tool. See [Assets Library and its Tools](/help/assets-library). |
+| **Assets Library** | Every file of your team, uploads and renders, in folders. See [Assets Library and the tools](/help/assets-library). |
 | **Image editor** | Frame a picture for X, Instagram or LinkedIn, write, draw, place a logo. See [The Image editor](/help/assets-library#the-image-editor). |
 | **Video editor** | Frame a video for Instagram, TikTok or Facebook, trim it, add texts, captions word by word and music. See [The Video editor](/help/assets-library#the-video-editor). |
 | **Shorts autopilot** | A long video cut into vertical shorts by itself: the best moments, framed, captioned and saved. See [Shorts autopilot](/help/shorts-autopilot). |
+| **Image anonymizer** | See what is hidden inside a picture (camera, place, AI tags), then download a clean copy. See [The Image anonymizer](/help/assets-library#the-image-anonymizer). |
 | **LinkedIn**, **Instagram**, **Facebook**, **TikTok** and **X** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. See [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok) and [X](/help/x). |
 | **Validation** | The work waiting for someone's approval, and what you sent for approval. See [Validation](/help/validation). |
 | **Skills** | **My skills**, **Team skills** (administrators only) and the **Catalog**. See [Skills](/help/skills). |
@@ -75,7 +76,7 @@ The menu on the left holds the studio first, then the networks and Validation, t
 
 A client login sees a much shorter menu: **Client space** and **Validation**. See [Client space](/help/client-space).
 
-![The menu on the left: Explore, Image, Video, History, Assets Library, Image editor, Video editor, Shorts autopilot, the five networks, Validation and Skills, with Team and Credits at the foot](/Images/help/getting-started-menu.webp)
+![The menu on the left: Explore, Image, Video, History, Assets Library, Image editor, Video editor, Shorts autopilot, Image anonymizer, the five networks, Validation and Skills, with Team and Credits at the foot](/Images/help/getting-started-menu.webp)
 
 The bar at the top of every page holds:
 

@@ -1,11 +1,11 @@
 ---
-title: "Assets Library and its Tools"
+title: "Assets Library and the tools"
 seoTitle: "Assets Library, Image editor, Video editor and Image anonymizer | hubStudio Help"
 description: "Every file of your team in one place, in folders: uploads, renders, edited pictures, edited videos and shorts. Find, tag, move and download them, then work on them with the Image editor (frame a picture for X, Instagram or LinkedIn, crop, adjust, apply a look, write, draw, place a logo), the Video editor (frame a video for Instagram, TikTok or Facebook, trims, speed, texts, captions word by word, music, a cover) and the Image anonymizer."
-excerpt: "Your team's files in folders, and three tools that run in your browser: the Image editor, the Video editor for Reels, TikToks and Facebook reels, and the Image anonymizer."
+excerpt: "Your team's files in folders, and three tools that run in your browser, each with its own entry in the menu: the Image editor, the Video editor for Reels, TikToks and Facebook reels, and the Image anonymizer."
 section: "library"
 order: 6
-updated: 2026-10-01
+updated: 2026-10-02
 appPaths: ["/files", "/files/tools/image-editor", "/files/tools/video-editor", "/files/tools/image-anonymizer"]
 audience: "Everyone except client logins"
 related: ["history", "shorts-autopilot", "create-an-image", "create-a-video", "linkedin", "instagram", "facebook", "tiktok", "x", "balance-and-payments"]
@@ -24,11 +24,10 @@ shots:
     clip: "the list with a video's Actions menu open"
     alt: "The Actions menu of a video in the Assets Library: View, Download, Edit video, Make shorts, Upload a new version, Tags, Rename and Move"
     captured: 2026-10-01
-  - file: "/Images/help/assets-library-tools.webp"
+  - file: "/Images/help/image-anonymizer-page.webp"
     route: "/files/tools/image-anonymizer"
-    clip: "the Tool switch open"
-    alt: "Tools, open on the Image anonymizer, with the Tool switch open on Pictures and videos: Image editor, Video editor, Shorts autopilot and Image anonymizer; in the menu, Image editor, Video editor and Shorts autopilot under the Assets Library"
-    captured: 2026-10-01
+    alt: "Image anonymizer lit in the menu, its page open: the box to drop a picture, the Output format list, and the three steps Drop a picture, See what it carries and Download the clean copy"
+    captured: 2026-10-02
   - file: "/Images/help/image-editor-social.webp"
     route: "/files/tools/image-editor"
     clip: "the Image editor, Social panel"
@@ -57,7 +56,7 @@ shots:
   - file: "/Images/help/video-editor-tools.webp"
     route: "/files/tools/video-editor"
     alt: "Video editor lit in the menu, its page open: the box to drop a video, From the Assets Library, and the three steps Open a video, Cut it for the network and Save it"
-    captured: 2026-10-01
+    captured: 2026-10-02
   - file: "/Images/help/video-editor-social.webp"
     route: "/files/tools/video-editor"
     clip: "the Video editor, Social panel"
@@ -86,12 +85,9 @@ shots:
 sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/pages/files/index.astro", "src/scripts/filesPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/pages/api/files/folders/[id].ts", "src/pages/api/files/captions.ts", "src/lib/stored-files.ts", "src/lib/asset-tools.ts", "src/components/AssetToolsNav.astro", "src/pages/files/tools/index.astro", "src/pages/files/tools/image-editor.astro", "src/pages/files/tools/video-editor.astro", "src/pages/files/tools/image-anonymizer.astro", "src/scripts/imageEditor.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/videoEditorModel.ts", "src/scripts/videoEditorCaptions.ts", "src/scripts/videoEditorAudio.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorLauncher.ts", "src/lib/video-captions.ts", "src/lib/social/limits.ts", "src/scripts/lightbox.ts", "src/scripts/historyPanel.ts", "src/scripts/imageGenerate.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
 ---
 
-The **Assets Library** holds every file of your team in one place, in folders: the pictures and clips you upload, the ones the studios render, the pictures and videos you edit, and the shorts [Shorts autopilot](/help/shorts-autopilot) makes. **Assets Library** in the menu opens on two entries:
+The **Assets Library** holds every file of your team in one place, in folders: the pictures and clips you upload, the ones the studios render, the pictures and videos you edit, and the shorts [Shorts autopilot](/help/shorts-autopilot) makes. **Assets Library** in the menu opens it.
 
-- **Assets**: the library itself.
-- **Tools**: the **Image anonymizer**, and the **Tool** switch to every tool that works on a file you already have.
-
-Right under it, the menu has three entries of their own for the tools you use most: the **Image editor**, the **Video editor** and **Shorts autopilot**. The editors are described below; Shorts autopilot has [its own article](/help/shorts-autopilot).
+The tools that work on a file you already have are features of their own, each with its own entry in the menu, right under the Assets Library: the **Image editor**, the **Video editor**, **Shorts autopilot** and the **Image anonymizer**. Each page is named after its tool in the dark band at the top. The editors and the Image anonymizer are described below; Shorts autopilot has [its own article](/help/shorts-autopilot).
 
 [History](/help/history) and the Assets Library show the same renders in two ways. History lists what the studios made, newest first, with the prompt, the engine and the cost of each piece. The library holds everything, renders and uploads alike, in the folders you choose.
 
@@ -146,15 +142,15 @@ On a video, the same menu reads **Edit video** where a picture reads **Edit imag
 
 Keeping files has a small daily rent, and downloading one has a small transfer charge, both charged against the team balance, exactly as described in [History](/help/history#what-storing-files-costs). Delete what you no longer need and the rent goes down from the next day. When the balance is empty, new files can't be uploaded until you top up.
 
-## Tools
+## What the tools cost
 
-**Tools** opens on the Image anonymizer. The **Tool** switch at the top right of the dark band lists four tools under **Pictures and videos**: the **Image editor**, the **Video editor**, **Shorts autopilot** and the **Image anonymizer**. The first three are also entries of the menu, and open the same pages.
+The Image editor, the Video editor and the Image anonymizer run in your own browser and are free: their band says **Runs in your browser · Free**. Two things are paid, each with its price shown before you start: the fast captions of the Video editor, and the run of [Shorts autopilot](/help/shorts-autopilot#what-it-costs).
 
-The Image editor, the Video editor and the Image anonymizer run in your own browser and are free: the band says **Runs in your browser · Free**. Two things are paid, each with its price shown before you start: the fast captions of the Video editor, and the run of [Shorts autopilot](/help/shorts-autopilot#what-it-costs).
+## The Image anonymizer
 
-![Tools, open on the Image anonymizer, with the Tool switch open on Pictures and videos: Image editor, Video editor, Shorts autopilot and Image anonymizer; in the menu, Image editor, Video editor and Shorts autopilot under the Assets Library](/Images/help/assets-library-tools.webp)
+**Image anonymizer** in the menu opens it.
 
-### The Image anonymizer
+![Image anonymizer lit in the menu, its page open: the box to drop a picture, the Output format list, and the three steps Drop a picture, See what it carries and Download the clean copy](/Images/help/image-anonymizer-page.webp)
 
 Drop a picture on the box, or click it to choose one. The tool first lists what is hidden inside the file: camera data, the place it was taken, editing records, content credentials and the tags AI engines write into their pictures. It then rebuilds the picture pixel by pixel into a new file that carries none of it, under a neutral file name.
 
@@ -172,7 +168,7 @@ The editor opens from wherever the picture is:
 
 | From | How |
 |---|---|
-| **Image editor** in the menu | Drop a picture on **Drop a picture here, or click to choose one**, or click **From the Assets Library** and pick one. The **Tool** switch of the Assets Library's **Tools** opens the same page. |
+| **Image editor** in the menu | Drop a picture on **Drop a picture here, or click to choose one**, or click **From the Assets Library** and pick one. |
 | The Assets Library | **Edit image** in a picture's **Actions** menu, or **Edit** in the full-size viewer. |
 | [History](/help/history#edit-a-picture-or-a-video) | **Edit** on a picture's card, or in the full-size viewer. |
 | The image studio | **Edit** on a ready picture, or in the full-size viewer. See [Create an image](/help/create-an-image#edit-a-picture). |
@@ -311,7 +307,7 @@ The Video editor turns a clip into an Instagram Reel, a TikTok or a Facebook ree
 
 | From | How |
 |---|---|
-| **Video editor** in the menu | Drop a video on **Drop a video here, or click to choose one**, or click **From the Assets Library** and pick one. The **Tool** switch of the Assets Library's **Tools** opens the same page. |
+| **Video editor** in the menu | Drop a video on **Drop a video here, or click to choose one**, or click **From the Assets Library** and pick one. |
 | The Assets Library | **Edit video** in a video's **Actions** menu, or **Edit** in the full-size viewer. |
 | [History](/help/history#edit-a-picture-or-a-video) | **Edit** on a video's card, or in the full-size viewer. |
 | A post | The pencil on the clip of a video post. On an Instagram, TikTok or Facebook post, the editor opens on its **Social** panel, set to that network. See [Edit the clip of a post](#edit-the-clip-of-a-post). |

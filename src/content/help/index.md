@@ -5,7 +5,7 @@ description: "Guides for hubStudio: getting started, the Explore gallery, the im
 excerpt: "Everything you need to make images, videos and posts with hubStudio, alone or with your team, and to deliver them to your clients."
 section: "home"
 order: 0
-updated: 2026-10-01
+updated: 2026-10-02
 appPaths: []
 audience: "Everyone"
 related: []
@@ -25,7 +25,7 @@ hubStudio makes images and videos with the AI engines of several makers, turns t
 3. [Create an image](/help/create-an-image): text to image, editing and upscaling, choosing an engine, the options, the price line, Improve with AI, several images per run, and Made for.
 4. [Create a video](/help/create-a-video): text to video, image to video, references, duration, resolution or mode, sound, the price per second, rendering time, and Made for.
 5. [History](/help/history): finding, opening, downloading, editing, reusing a prompt, saying which client a piece was made for, deleting, and what storing files costs.
-6. [Assets Library and its Tools](/help/assets-library): every file of the team in folders, finding, tagging and moving them, the Image editor (framing for X, Instagram or LinkedIn, crop, adjust, looks, text, arrows and shapes, a logo, saving a copy or a new version), the Video editor (framing for Instagram, TikTok or Facebook with what each network covers and its checks, trims, speed, texts, captions word by word, music, a cover) and the Image anonymizer.
+6. [Assets Library and the tools](/help/assets-library): every file of the team in folders, finding, tagging and moving them, the Image editor (framing for X, Instagram or LinkedIn, crop, adjust, looks, text, arrows and shapes, a logo, saving a copy or a new version), the Video editor (framing for Instagram, TikTok or Facebook with what each network covers and its checks, trims, speed, texts, captions word by word, music, a cover) and the Image anonymizer.
 7. [Shorts autopilot](/help/shorts-autopilot): a long video cut into vertical shorts by itself, for YouTube Shorts, TikTok and Instagram Reels: the choices, the run, the shorts it saves and what it costs.
 8. [Skills](/help/skills): the instructions that shape Improve with AI and the drafts of your posts, the Catalog, your own skills and team skills.
 

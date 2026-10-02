@@ -5,7 +5,7 @@ description: "Shorts autopilot turns a long video into vertical 9:16 shorts for 
 excerpt: "Give it an interview, a talk or a podcast: it picks the moments that work on their own and saves each one as a vertical short, captioned and ready to post."
 section: "library"
 order: 7
-updated: 2026-10-01
+updated: 2026-10-02
 appPaths: ["/files/tools/shorts"]
 audience: "Creators and admins"
 related: ["assets-library", "tiktok", "instagram", "history", "balance-and-payments"]
@@ -13,7 +13,7 @@ shots:
   - file: "/Images/help/shorts-autopilot-page.webp"
     route: "/files/tools/shorts"
     alt: "Shorts autopilot in the menu, its page open on The long video: the box to drop a video, From the Assets Library, and the four steps It listens, It picks the best moments, It frames them and It writes and saves them"
-    captured: 2026-10-01
+    captured: 2026-10-02
   - file: "/Images/help/shorts-autopilot-settings.webp"
     route: "/files/tools/shorts"
     clip: "The shorts card, once a video is picked"
@@ -28,10 +28,7 @@ It works best on several minutes of someone speaking. It picks its moments from 
 
 ## Open it
 
-Shorts autopilot has its own entry in the menu, under the Assets Library and the two editors. You can also reach it:
-
-- from the **Actions** menu of a video in the Assets Library: **Make shorts** opens the page with that video already picked;
-- from the **Tool** switch of the Assets Library's **Tools**, under **Pictures and videos**.
+Shorts autopilot has its own entry in the menu, under the Assets Library and the two editors. You can also reach it from the **Actions** menu of a video in the Assets Library: **Make shorts** opens the page with that video already picked.
 
 ![Shorts autopilot in the menu, its page open on The long video: the box to drop a video, From the Assets Library, and the four steps It listens, It picks the best moments, It frames them and It writes and saves them](/Images/help/shorts-autopilot-page.webp)
 
