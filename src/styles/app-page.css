@@ -1,0 +1,532 @@
+/*
+ * The App pages that tour one part of the hubStudio app: /app/library,
+ * /app/image-tools and /app/video-tools. Stacked sheets, a two-column hero
+ * with a real capture, panel grids, an ink section, next links and the FAQ.
+ * Global on purpose (prefix apg-), so the three pages read as one set; the
+ * accent color of a headline is scoped to .apg-page, the wrapper each page
+ * puts its sections in.
+ */
+/* ---- Shared ------------------------------------------------ */
+.apg-p {
+  font-size: var(--type-body);
+  line-height: 1.64;
+  color: var(--text-mute);
+  max-width: 62ch;
+}
+.apg-p + .apg-p {
+  margin-top: 18px;
+}
+.apg-p--dark {
+  color: rgba(240, 237, 233, 0.78);
+}
+.apg-eyebrow--dark {
+  color: var(--brand-orange);
+}
+.apg-page .headline .accent {
+  color: var(--brand-orange);
+}
+.apg-head {
+  display: grid;
+  gap: 14px;
+  max-width: 780px;
+  margin-bottom: clamp(32px, 4vw, 52px);
+}
+.apg-head .apg-p {
+  margin-top: 6px;
+}
+.apg-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px 56px;
+}
+@media (min-width: 900px) {
+  .apg-cols {
+    grid-template-columns: 1fr 1fr;
+  }
+  .apg-cols .apg-p + .apg-p {
+    margin-top: 0;
+  }
+}
+.apg-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--type-small);
+  font-weight: 600;
+  color: var(--brand-orange-cta);
+}
+.apg-arrow span {
+  display: inline-block;
+  transition: transform 160ms ease-out;
+}
+.apg-arrow:hover span {
+  transform: translateX(6px);
+}
+
+/* Sheet stacking: each section overlaps the one above it. */
+.apg-sheet {
+  position: relative;
+  margin-top: -48px;
+  padding-block: clamp(88px, 10vw, 150px) clamp(96px, 11vw, 168px);
+  border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+  box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+}
+.apg-sheet--white {
+  background: var(--bg-white);
+}
+.apg-sheet--cream {
+  background: var(--bg-cream);
+}
+.apg-sheet--ink {
+  background: var(--bg-ink);
+  color: var(--text-on-dark);
+  overflow: hidden;
+}
+
+/* ---- Hero -------------------------------------------------- */
+.apg-hero {
+  background: var(--bg-cream);
+  padding-top: clamp(56px, 8vw, 104px);
+  padding-bottom: clamp(96px, 10vw, 150px);
+}
+.apg-hero__grid {
+  display: grid;
+  /* minmax(0, 1fr): a wide capture or caption must not widen the column past a phone. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(44px, 6vw, 72px);
+}
+@media (min-width: 1080px) {
+  .apg-hero__grid {
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+  }
+}
+.apg-crumbs {
+  display: flex;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--type-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+.apg-crumbs a:hover {
+  color: var(--brand-orange);
+}
+.apg-hero__title {
+  margin-top: 18px;
+  max-width: 13ch;
+  letter-spacing: -0.035em;
+}
+/* Two columns leave the headline half the width: scale it to fit. */
+@media (min-width: 1080px) {
+  .apg-hero__title {
+    font-size: clamp(56px, 5.6vw, 78px);
+  }
+}
+.apg-hero__lead {
+  margin-top: 24px;
+  max-width: 52ch;
+}
+.apg-hero__cta {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+/* ---- Library ----------------------------------------------- */
+.apg-rules {
+  margin-top: clamp(48px, 6vw, 80px);
+  display: grid;
+  gap: clamp(36px, 5vw, 64px);
+}
+@media (min-width: 960px) {
+  .apg-rules {
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+  }
+}
+.apg-rules__copy {
+  display: grid;
+  justify-items: start;
+  gap: 0;
+}
+.apg-rules__copy .apg-arrow {
+  margin-top: 22px;
+}
+
+/* ---- Image editor ------------------------------------------ */
+.apg-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: clamp(44px, 5vw, 68px);
+}
+.apg-format {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px 9px 12px;
+  background: var(--bg-white);
+  border: 1px solid var(--line-hairline);
+  border-radius: var(--radius-pill);
+}
+/* Each chip draws its own frame at the true ratio, inside an 18px box. */
+.apg-format__shape {
+  flex: none;
+  border: 1.5px solid var(--brand-orange);
+  border-radius: 2px;
+}
+.apg-format__shape--open {
+  width: 18px;
+  height: 14px;
+  border-style: dashed;
+  border-color: var(--text-mute);
+}
+.apg-format__name {
+  font-size: var(--type-small);
+  font-weight: 600;
+}
+.apg-format__ratio {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+}
+
+.apg-panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(36px, 4vw, 52px) var(--gap-card);
+}
+@media (min-width: 860px) {
+  .apg-panels {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.apg-panel__title {
+  margin-top: 22px;
+  font-size: var(--type-h4);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.apg-panel__text {
+  margin-top: 8px;
+  font-size: var(--type-body);
+  line-height: 1.6;
+  color: var(--text-mute);
+  max-width: 52ch;
+}
+.apg-editor__more {
+  margin: clamp(48px, 6vw, 80px) 0 24px;
+}
+
+/* ---- Anonymizer -------------------------------------------- */
+.apg-sheet--ink::before {
+  content: '';
+  position: absolute;
+  left: -12%;
+  bottom: -30%;
+  width: 60%;
+  height: 90%;
+  background: radial-gradient(closest-side, rgba(233, 78, 27, 0.24), transparent);
+  filter: blur(24px);
+  pointer-events: none;
+}
+.apg-anon__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 72px);
+}
+@media (min-width: 1020px) {
+  .apg-anon__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+.apg-anon__copy {
+  display: grid;
+  gap: 14px;
+}
+.apg-anon__copy .headline {
+  color: var(--text-on-dark);
+}
+.apg-anon__copy .apg-p + .apg-p {
+  margin-top: 4px;
+}
+.apg-hidden {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+.apg-hidden__chip {
+  border: 1px solid rgba(240, 237, 233, 0.22);
+  color: var(--text-on-dark);
+}
+.apg-hidden__chip .chip__dot {
+  background: var(--brand-orange);
+}
+
+/* ---- Rest of the app --------------------------------------- */
+.apg-next {
+  background: var(--bg-white);
+  padding-block: clamp(64px, 8vw, 110px);
+}
+.apg-next__label {
+  font-family: var(--font-mono);
+  font-size: var(--type-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 22px;
+}
+.apg-next__grid {
+  display: grid;
+  gap: var(--gap-card);
+}
+@media (min-width: 768px) {
+  .apg-next__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.apg-next__card {
+  display: grid;
+  gap: 10px;
+  padding: clamp(24px, 2.6vw, 32px);
+  background: var(--bg-cream);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+.apg-next__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(10, 10, 20, 0.1);
+}
+.apg-next__lead {
+  font-size: var(--type-body);
+  line-height: 1.5;
+  color: var(--text-mute);
+}
+.apg-next__name {
+  font-size: var(--type-h3);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.apg-next__name span {
+  display: inline-block;
+  color: var(--brand-orange);
+  transition: transform 160ms ease-out;
+}
+.apg-next__card:hover .apg-next__name span {
+  transform: translateX(6px);
+}
+
+/* ---- FAQ --------------------------------------------------- */
+.apg-faq {
+  background: var(--bg-cream);
+  padding-block: clamp(88px, 10vw, 150px);
+}
+.apg-faq__grid {
+  display: grid;
+  gap: 40px;
+}
+@media (min-width: 960px) {
+  .apg-faq__grid {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .apg-faq__head {
+    position: sticky;
+    top: calc(var(--nav-h) + 32px);
+  }
+}
+.apg-faq__head {
+  display: grid;
+  gap: 14px;
+}
+.apg-updated {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+}
+.apg-faq__list {
+  border-top: 1px solid var(--line-strong);
+}
+.apg-qa {
+  border-bottom: 1px solid var(--line-strong);
+}
+.apg-qa summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  cursor: pointer;
+}
+.apg-qa summary::-webkit-details-marker {
+  display: none;
+}
+.apg-qa__q {
+  font-size: var(--type-h4);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+.apg-qa summary:hover .apg-qa__q {
+  color: var(--brand-orange-cta);
+}
+.apg-qa__icon {
+  position: relative;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+}
+.apg-qa__icon::before,
+.apg-qa__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1.5px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform 200ms ease-out;
+}
+.apg-qa__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.apg-qa[open] .apg-qa__icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.apg-qa__a {
+  padding-bottom: 24px;
+  max-width: 62ch;
+  font-size: var(--type-body);
+  line-height: 1.64;
+  color: var(--text-mute);
+}
+
+/* ---- Steps: a numbered run (Shorts autopilot) --------------- */
+.apg-steps {
+  display: grid;
+  gap: var(--gap-card);
+  margin-top: clamp(36px, 4vw, 52px);
+}
+@media (min-width: 640px) {
+  .apg-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1080px) {
+  .apg-steps {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.apg-step {
+  padding: 22px 22px 24px;
+  background: var(--bg-white);
+  border: 1px solid var(--line-hairline);
+  border-radius: var(--radius-card);
+}
+.apg-step__n {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--brand-orange);
+}
+.apg-step__t {
+  margin-top: 10px;
+  font-size: var(--type-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.apg-step__b {
+  margin-top: 6px;
+  font-size: var(--type-small);
+  line-height: 1.55;
+  color: var(--text-mute);
+}
+.apg-sheet--ink .apg-step {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(240, 237, 233, 0.16);
+}
+.apg-sheet--ink .apg-step__t {
+  color: var(--text-on-dark);
+}
+.apg-sheet--ink .apg-step__b {
+  color: rgba(240, 237, 233, 0.7);
+}
+
+/* ---- Two-up: a capture beside its copy ---------------------- */
+.apg-duo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 64px);
+  margin-top: clamp(48px, 6vw, 80px);
+}
+@media (min-width: 960px) {
+  .apg-duo {
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+  }
+  .apg-duo--flip {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+  .apg-duo--flip > :first-child {
+    order: 2;
+  }
+}
+.apg-duo__copy {
+  display: grid;
+  justify-items: start;
+}
+.apg-duo__copy .apg-arrow {
+  margin-top: 22px;
+}
+.apg-duo__title {
+  font-size: var(--type-h3);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+@media (min-width: 768px) {
+  .apg-next__grid--two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- A rail of named panels --------------------------------- */
+.apg-rail {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.apg-rail li {
+  padding: 12px 16px;
+  background: var(--bg-cream);
+  border: 1px solid var(--line-hairline);
+  border-radius: 14px;
+  font-size: var(--type-small);
+  line-height: 1.5;
+  color: var(--text-mute);
+}
+.apg-rail strong {
+  display: inline-block;
+  min-width: 5.5em;
+  color: var(--text-ink);
+  font-weight: 600;
+}

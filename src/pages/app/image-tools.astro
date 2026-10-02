@@ -1,0 +1,385 @@
+---
+/**
+ * /app/image-tools: the Image editor and the Image anonymizer, the two
+ * picture tools of the hubStudio app. Each is a menu entry of its own in the
+ * app since 2 October 2026; this page gives them their entry on the site.
+ *
+ * Facts come from src/content/help/assets-library.md ("The Image editor",
+ * "The Image anonymizer", "What the tools cost"); button and panel names are
+ * quoted from there. Every picture is a real capture from
+ * src/data/app-shots.ts, with no price in frame. The anonymizer is framed as
+ * privacy and clean delivery files, never as a way to hide AI use, and the
+ * page says plainly that labeling AI-made content stays the user's job.
+ * Layout and styles: src/styles/app-page.css.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+import '../../styles/app-page.css';
+
+const SITE = 'https://www.hubstudio.ai';
+
+/** Placements of the Social panel, per network, as the help lists them. */
+const networks = [
+  { name: 'Instagram', best: 'Feed portrait, 1080 × 1350', more: 'Square, Landscape, Grid portrait, Story, Reel cover, Profile photo' },
+  { name: 'X', best: 'Post, wide, 1600 × 900', more: 'Post, square, Post, portrait, One of two, Header photo, Profile photo, Link card' },
+  { name: 'LinkedIn', best: 'Post, portrait, 1080 × 1350', more: 'Post, square, Post, landscape, Profile banner, Page cover, Profile photo' },
+];
+
+/** Crop formats of the Image editor. Each chip draws its frame at the true ratio. */
+const rawFormats: { name: string; ratio: string; w?: number; h?: number }[] = [
+  { name: 'Square', ratio: '1:1', w: 1, h: 1 },
+  { name: 'Portrait', ratio: '4:5', w: 4, h: 5 },
+  { name: 'Story', ratio: '9:16', w: 9, h: 16 },
+  { name: 'Wide', ratio: '16:9', w: 16, h: 9 },
+  { name: 'Link', ratio: '1.91:1', w: 1.91, h: 1 },
+  { name: 'Photo', ratio: '3:2', w: 3, h: 2 },
+  { name: 'Screen', ratio: '4:3', w: 4, h: 3 },
+  { name: 'Free', ratio: 'any shape' },
+  { name: 'Original', ratio: 'as it came' },
+];
+const BOX = 18;
+const formats = rawFormats.map((f) => {
+  if (!f.w || !f.h) return { ...f, style: undefined };
+  const k = BOX / Math.max(f.w, f.h);
+  return { ...f, style: `width: ${(f.w * k).toFixed(1)}px; height: ${(f.h * k).toFixed(1)}px` };
+});
+
+const panels = [
+  {
+    title: 'Crop',
+    text: 'Pick a format in one click, or drag the corners, then turn or mirror the picture if it needs it.',
+    shot: appShots.editorCrop,
+  },
+  {
+    title: 'Light and looks',
+    text: 'Set light and color on eight sliders under Adjust, then lay one look on top under Effects, such as Mono, Noir, Sepia or Vintage.',
+    shot: appShots.editorEffects,
+  },
+  {
+    title: 'Draw and write',
+    text: 'Add captions in the font you want, and draw arrows, lines, boxes and circles that stay editable until you save.',
+    shot: appShots.editorDraw,
+  },
+  {
+    title: 'Save',
+    text: 'Keep a copy in the library, replace an uploaded file with a new version, or just download it as PNG, JPG or WebP.',
+    shot: appShots.editorSave,
+  },
+];
+
+const hidden = ['Camera data', 'Location', 'Editing records', 'Content credentials', 'AI tags'];
+
+const nextLinks = [
+  { lead: 'Cut a clip for Reels and TikTok', name: 'Video tools', href: '/app/video-tools' },
+  { lead: 'Where every file is kept', name: 'Assets Library', href: '/app/library' },
+  { lead: 'Post the picture', name: 'Publish', href: '/app/publish' },
+];
+
+const faqs = [
+  {
+    q: 'Are the Image editor and the Image anonymizer really free?',
+    a: 'Yes. Both run in your browser, and editing or cleaning a picture costs nothing. If you save the result to the library, it’s stored like any other file.',
+  },
+  {
+    q: 'Where do I open them?',
+    a: 'Each has its own entry in the app’s menu. The Image editor also opens from a picture wherever it is: Edit image in the Assets Library, Edit on a card in History or on a finished render in the image studio, and the pencil on a picture of a post.',
+  },
+  {
+    q: 'Which pictures can the editor open?',
+    a: 'JPG, PNG, WebP, GIF and AVIF. It saves as PNG, JPG or WebP. A picture larger than 4,096 pixels on its long side is edited at 4,096 pixels, and the Save panel says so.',
+  },
+  {
+    q: 'Does the anonymizer upload my pictures?',
+    a: 'No. The picture is read and rebuilt on the page, in your browser. The clean copy exists only on that page until you download it.',
+  },
+  {
+    q: 'Does the anonymizer remove a watermark?',
+    a: 'No. It cleans what is written into the file, not the picture itself, so a watermark drawn into the pixels stays.',
+  },
+  {
+    q: 'Can I edit a video the same way?',
+    a: 'Yes, in the Video editor: a frame for each network, trims, texts, captions, music and a cover. See the Video tools page.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Image tools', item: `${SITE}/app/image-tools` },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Image editor and Image anonymizer | hubStudio"
+  description="Frame a picture for Instagram, X or LinkedIn, crop, adjust, write and draw on it, then strip camera, GPS and AI tags. Free, in your browser."
+  preloadImage={appShots.editorSocial.src}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="apg-page">
+  <!-- ===== Hero ===== -->
+  <section class="apg-hero">
+    <div class="container apg-hero__grid">
+      <div class="apg-hero__copy">
+        <nav class="apg-crumbs" aria-label="Breadcrumb">
+          <a href="/app">The app</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Image tools</span>
+        </nav>
+        <h1 class="headline h1 apg-hero__title">
+          Ready for the feed, and clean before it <span class="accent">ships</span>.
+        </h1>
+        <p class="lead apg-hero__lead">
+          Two picture tools, each with its own entry in the app’s menu. The Image editor frames a
+          picture to the pixels a network wants, then crops, adjusts, writes and draws on it. The
+          Image anonymizer shows the data hidden in a file and hands back a clean copy. Both run
+          in your browser, and neither costs anything.
+        </p>
+        <div class="apg-hero__cta">
+          <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          <Button variant="secondary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
+          <a class="apg-arrow" href="/app">See the whole app <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="apg-hero__shot">
+        <AppShot shot={appShots.editorSocial} path="/files/tools/image-editor" eager caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Social: framed for a network ===== -->
+  <section class="apg-sheet apg-sheet--white" id="image-editor">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">Image editor</span>
+        <h2 class="headline h2 reveal">
+          The size each network wants, and what its buttons <span class="accent">cover</span>.
+        </h2>
+        <p class="apg-p">
+          Open a picture and start on Social. Pick the network and the place the picture goes;
+          Best marks the network’s own pick for a post. Crop to fill, or fit it whole over a blur
+          of itself. Red zones show where the network’s name, caption and buttons sit, so your
+          words and your logo stay clear of them. Apply the format, and the Save panel is set to
+          the file that network takes.
+        </p>
+      </header>
+
+      <div class="apg-cols">
+        {
+          networks.map((n) => (
+            <p class="apg-p">
+              <strong>{n.name}.</strong> {n.best}, marked Best. Also {n.more}.
+            </p>
+          ))
+        }
+      </div>
+
+      <div class="apg-cols apg-editor__more">
+        <p class="apg-p">
+          Under the placements, Checks read the picture the way the network will: the shape,
+          whether it’s sharp enough for the size, the file format and weight, anything sitting
+          under the network’s buttons, and words too small to read on a phone. Small previews
+          show it in the feed, on the profile grid, or in a circle for a profile photo.
+        </p>
+        <p class="apg-p">
+          Edit the picture of a LinkedIn, Instagram or X post and the editor opens on Social,
+          already set to that network. Save for the network applies the format if you haven’t,
+          and opens the Save panel.
+        </p>
+      </div>
+      <a class="apg-arrow" href="/help/assets-library#social-frame-it-for-a-network">
+        The Social panel in detail <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== The other panels ===== -->
+  <section class="apg-sheet apg-sheet--cream" id="panels">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">Image editor</span>
+        <h2 class="headline h2 reveal">
+          Crop it, light it, write on it, then <span class="accent">save</span>.
+        </h2>
+        <p class="apg-p">
+          The editor opens from wherever the picture is: its entry in the menu, a file in the
+          library, a card in History, a finished render in the image studio, or a picture on a
+          post. Nothing leaves your computer until you save.
+        </p>
+      </header>
+
+      <ul class="apg-formats" aria-label="Crop formats">
+        {
+          formats.map((f) => (
+            <li class="apg-format">
+              <span
+                class:list={['apg-format__shape', !f.style && 'apg-format__shape--open']}
+                style={f.style}
+                aria-hidden="true"
+              />
+              <span class="apg-format__name">{f.name}</span>
+              <span class="apg-format__ratio">{f.ratio}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="apg-panels">
+        {
+          panels.map((p) => (
+            <article class="apg-panel reveal">
+              <AppShot shot={p.shot} path="/files/tools/image-editor" />
+              <h3 class="apg-panel__title">{p.title}</h3>
+              <p class="apg-panel__text">{p.text}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="apg-cols apg-editor__more">
+        <p class="apg-p">
+          You can also put a logo over a picture and send it to one of nine spots, from top left
+          to bottom right. A light logo in a corner makes a watermark. Everything you add stays a
+          separate piece until you save, and Undo covers the last 60 steps.
+        </p>
+        <p class="apg-p">
+          On a post, the pencil on a picture opens the editor right there, in the LinkedIn,
+          Instagram, Facebook and X modules. Save, and the edited copy takes the old picture’s
+          place in the post, while the original stays in the library.
+        </p>
+      </div>
+      <a class="apg-arrow" href="/help/assets-library#the-image-editor">
+        Every panel of the Image editor <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== The Image anonymizer ===== -->
+  <section class="apg-sheet apg-sheet--ink grain" id="image-anonymizer">
+    <div class="container apg-anon__grid">
+      <div class="apg-anon__copy">
+        <span class="eyebrow apg-eyebrow--dark">Image anonymizer</span>
+        <h2 class="headline h2 reveal">
+          See what a file carries before you <span class="accent">send</span> it.
+        </h2>
+        <ul class="apg-hidden" aria-label="What the anonymizer shows">
+          {
+            hidden.map((h) => (
+              <li class="chip apg-hidden__chip">
+                <span class="chip__dot" aria-hidden="true" />
+                {h}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="apg-p apg-p--dark">
+          A picture file can hold a lot more than the picture. A phone photo can carry the place
+          it was taken. Many files name the camera that took them. Some keep a record of how they
+          were edited, hold content credentials, or carry the tags an AI engine writes into its
+          pictures. Most of the time, you don’t want any of that going to a client or onto a
+          public feed.
+        </p>
+        <p class="apg-p apg-p--dark">
+          Drop a picture on the Image anonymizer and it lists that hidden data first. Then it
+          rebuilds the picture, pixel by pixel, into a new file that carries none of it, under a
+          neutral file name. Nothing is uploaded or stored: the clean copy lives on the page until
+          you download it.
+        </p>
+        <p class="apg-p apg-p--dark">
+          It cleans what’s written into the file, not the picture itself, so a watermark drawn
+          into the pixels stays. Use it only on pictures you have the rights to. And if a platform
+          or a law asks you to label AI-made content, that labeling is still your job.
+        </p>
+      </div>
+      <div class="apg-anon__shot">
+        <AppShot shot={appShots.anonymizer} path="/files/tools/image-anonymizer" dark caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The rest of the app ===== -->
+  <section class="apg-next">
+    <div class="container">
+      <h2 class="apg-next__label">Before and after the picture</h2>
+      <div class="apg-next__grid">
+        {
+          nextLinks.map((l) => (
+            <a class="apg-next__card" href={l.href}>
+              <span class="apg-next__lead">{l.lead}</span>
+              <span class="apg-next__name">
+                {l.name} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="apg-faq" id="faq">
+    <div class="container apg-faq__grid">
+      <header class="apg-faq__head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">What people ask about the <span class="accent">picture tools</span>.</h2>
+        <p class="apg-updated">Updated October 2026</p>
+      </header>
+      <div class="apg-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="apg-qa">
+              <summary>
+                <h3 class="apg-qa__q">{f.q}</h3>
+                <span class="apg-qa__icon" aria-hidden="true" />
+              </summary>
+              <p class="apg-qa__a">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <DualCta />
+</Layout>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

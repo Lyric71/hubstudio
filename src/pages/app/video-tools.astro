@@ -1,0 +1,320 @@
+---
+/**
+ * /app/video-tools: the Video editor and Shorts autopilot, the two video
+ * tools of the hubStudio app. Each is a menu entry of its own in the app
+ * since 2 October 2026; this page gives them their entry on the site.
+ *
+ * Facts come from src/content/help/assets-library.md ("The Video editor",
+ * "What the tools cost") and shorts-autopilot.md; button and panel names are
+ * quoted from there. Every picture is a real capture from
+ * src/data/app-shots.ts, with no price in frame (the Shorts autopilot price
+ * line is taken out of its capture). The site never publishes rates: the
+ * paid parts are named, with the rule that the price shows before the run.
+ * Layout and styles: src/styles/app-page.css.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+import '../../styles/app-page.css';
+
+const SITE = 'https://www.hubstudio.ai';
+
+/** The rail of the Video editor, in its order, each with what it does. */
+const rail = [
+  { k: 'Social', t: 'Instagram, TikTok or Facebook, the placement, the zones, the checks' },
+  { k: 'Format', t: 'Vertical 9:16, Portrait 4:5 or Square 1:1, and how each clip fills it' },
+  { k: 'Clips', t: 'Trim, split, speed from 0.5x to 2x, more clips one after the other' },
+  { k: 'Text', t: 'Words that show for a stretch of time, in a box, outlined or plain' },
+  { k: 'Captions', t: 'The words said, timed word by word, in five looks' },
+  { k: 'Sound', t: 'The level of every clip, and music under it that fades out' },
+  { k: 'Cover', t: 'The frame shown before the video plays, on the grid and in the feed' },
+];
+
+const steps = [
+  { t: 'Listening', b: 'Every word of the video, timed to the word.' },
+  { t: 'Picking the best moments', b: 'Each opens on a hook, tells one idea and ends on a payoff, never mid-sentence.' },
+  { t: 'Framing each moment', b: 'The 9:16 crop follows the person speaking, moment by moment.' },
+  { t: 'Writing the shorts', b: 'Captions word by word and a hook line over the first seconds.' },
+  { t: 'Saving them', b: 'Each short, an MP4 at 1080 × 1920, next to the original in the library.' },
+];
+
+const nextLinks = [
+  { lead: 'Frame and clean a picture', name: 'Image tools', href: '/app/image-tools' },
+  { lead: 'Film a clip from a prompt', name: 'Create', href: '/app/create' },
+  { lead: 'Post the Reel or the TikTok', name: 'Publish', href: '/app/publish' },
+];
+
+const faqs = [
+  {
+    q: 'Is the Video editor free?',
+    a: 'Yes. Editing runs in your browser and costs nothing, and so does writing the MP4. Only the fast captions are paid, by the second of sound, with the price shown before you make them. Captions written in your browser are free.',
+  },
+  {
+    q: 'What does Shorts autopilot cost?',
+    a: 'Listening, picking the moments and framing them are charged against your balance, and the total shows before you start. Listening is free if you pick Free, in this browser. Writing the videos costs nothing, and each saved short counts toward your storage like any upload.',
+  },
+  {
+    q: 'Which videos can I open?',
+    a: 'MP4, MOV and WebM, up to 2 GB. Chrome and Edge open the most formats. A video filmed in HEVC on a phone may not open in some browsers, and the editor says so.',
+  },
+  {
+    q: 'Does my video leave my computer?',
+    a: 'The Video editor keeps it on your computer until you save it to the library; only the fast captions send its sound. Shorts autopilot sends only the sound of the video (unless you listen for free in your browser) and a few frames of each moment, and keeps only the shorts.',
+  },
+  {
+    q: 'What kind of video works with Shorts autopilot?',
+    a: 'Several minutes of someone speaking: an interview, a talk, a podcast, a webinar or a live. It picks its moments from what is said, so a video with no sound can’t be used.',
+  },
+  {
+    q: 'Can I touch up a short afterward?',
+    a: 'Yes. Edit in the Video editor opens it on the Social panel, set to TikTok or Instagram, to trim it, move the captions, add music or pick a cover.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Video tools', item: `${SITE}/app/video-tools` },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Video editor and Shorts autopilot | hubStudio"
+  description="Cut a clip into a Reel or a TikTok with captions, text and music, free in your browser, or let Shorts autopilot turn a long video into shorts."
+  preloadImage={appShots.videoSocial.src}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="apg-page">
+  <!-- ===== Hero ===== -->
+  <section class="apg-hero">
+    <div class="container apg-hero__grid">
+      <div class="apg-hero__copy">
+        <nav class="apg-crumbs" aria-label="Breadcrumb">
+          <a href="/app">The app</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Video tools</span>
+        </nav>
+        <h1 class="headline h1 apg-hero__title">
+          From one clip, or one long talk, to <span class="accent">Reels</span>.
+        </h1>
+        <p class="lead apg-hero__lead">
+          Two video tools, each with its own entry in the app’s menu. The Video editor cuts a clip
+          for Instagram, TikTok or Facebook, with texts, captions, music and a cover, free in your
+          browser. Shorts autopilot takes a long video and turns it into vertical shorts by
+          itself, captioned and saved in the library.
+        </p>
+        <div class="apg-hero__cta">
+          <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          <Button variant="secondary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
+          <a class="apg-arrow" href="/app">See the whole app <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="apg-hero__shot">
+        <AppShot shot={appShots.videoSocial} path="/files/tools/video-editor" eager caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The Video editor ===== -->
+  <section class="apg-sheet apg-sheet--white" id="video-editor">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">Video editor</span>
+        <h2 class="headline h2 reveal">
+          A frame made for one place on one <span class="accent">network</span>.
+        </h2>
+        <p class="apg-p">
+          Pick Instagram, TikTok or Facebook, then where the video goes: a Reel, a Story, the
+          feed. Every clip takes that shape, cropped to fill or fitted whole over a blur of
+          itself, and the video is written in 1080p. Red zones over the preview show where the
+          network’s name, caption, reply box and buttons sit, so your texts and captions stay in
+          the safe area. The Zones switch keeps them on screen from any panel.
+        </p>
+      </header>
+
+      <div class="apg-cols">
+        <p class="apg-p">
+          Checks then read the video the way the network will: the shape, the length against what
+          the placement takes, the weight of the file, captions or texts under the buttons, words
+          too small for a phone, and whether it has captions and sound. Many checks carry the fix:
+          Cut it at the longest length taken, Write it in 1080p, Move the captions into the safe
+          area, Make the captions, Add music.
+        </p>
+        <p class="apg-p">
+          The editor opens from its entry in the menu, from a video in the Assets Library or
+          History, from the pencil on the clip of a post, and from a short made by Shorts
+          autopilot. It takes MP4, MOV and WebM up to 2 GB, and nothing leaves your computer
+          until you save.
+        </p>
+      </div>
+
+      <div class="apg-duo">
+        <div class="apg-duo__copy">
+          <h3 class="apg-duo__title">Seven panels on one rail</h3>
+          <ul class="apg-rail" aria-label="The panels of the Video editor">
+            {
+              rail.map((r) => (
+                <li>
+                  <strong>{r.k}</strong> {r.t}
+                </li>
+              ))
+            }
+          </ul>
+          <a class="apg-arrow" href="/help/assets-library#the-video-editor">
+            Every panel of the Video editor <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <AppShot shot={appShots.videoFormat} path="/files/tools/video-editor" caption />
+      </div>
+
+      <div class="apg-duo apg-duo--flip">
+        <div class="apg-duo__copy">
+          <h3 class="apg-duo__title">Captions most Reels and TikToks carry</h3>
+          <p class="apg-p">
+            The words said, on screen as they are said, timed word by word. Write them free in
+            your browser, or in a few seconds with a fast model, billed by the second of sound
+            with its price shown first. Pick one of five looks: Classic, Karaoke, where the word
+            said lights up, One word, Boxed or Highlight. Correct any line by hand, or download
+            the captions as an SRT file.
+          </p>
+          <p class="apg-p">
+            Save writes an MP4 that Instagram, TikTok and Facebook all take, in 1080p or 720p,
+            with a check for each network. Keep it in the library next to the original, or
+            download it.
+          </p>
+        </div>
+        <AppShot shot={appShots.videoSave} path="/files/tools/video-editor" caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Shorts autopilot ===== -->
+  <section class="apg-sheet apg-sheet--ink grain" id="shorts-autopilot">
+    <div class="container">
+      <div class="apg-anon__grid">
+        <div class="apg-anon__copy">
+          <span class="eyebrow apg-eyebrow--dark">Shorts autopilot</span>
+          <h2 class="headline h2 reveal">
+            One long video in, a set of shorts <span class="accent">out</span>.
+          </h2>
+          <p class="apg-p apg-p--dark">
+            Give it an interview, a talk, a podcast, a webinar or a live. Shorts autopilot listens
+            to every word, keeps the moments that stand on their own, frames each one at 9:16
+            around the person speaking, and writes the captions and a hook line. Each short lands
+            in the Assets Library, next to the original.
+          </p>
+          <p class="apg-p apg-p--dark">
+            You choose the networks (YouTube Shorts, TikTok, Instagram Reels), how many shorts
+            (3, 5, 8 or 10), how long (15 to 30, 30 to 60 or 60 to 90 seconds), the framing, the
+            caption look and the hook. The price shows before you start.
+          </p>
+          <p class="apg-p apg-p--dark">
+            Each short comes back with a score out of 100, where it sits in the original, a title,
+            a line on why it was picked, and a caption for each network you kept, ready to copy.
+          </p>
+        </div>
+        <div class="apg-anon__shot">
+          <AppShot shot={appShots.shortsSettings} path="/files/tools/shorts" dark caption />
+        </div>
+      </div>
+
+      <ol class="apg-steps" aria-label="What Shorts autopilot does">
+        {
+          steps.map((s, i) => (
+            <li class="apg-step">
+              <span class="apg-step__n">Step {i + 1}</span>
+              <p class="apg-step__t">{s.t}</p>
+              <p class="apg-step__b">{s.b}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== The rest of the app ===== -->
+  <section class="apg-next">
+    <div class="container">
+      <h2 class="apg-next__label">Before and after the video</h2>
+      <div class="apg-next__grid">
+        {
+          nextLinks.map((l) => (
+            <a class="apg-next__card" href={l.href}>
+              <span class="apg-next__lead">{l.lead}</span>
+              <span class="apg-next__name">
+                {l.name} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="apg-faq" id="faq">
+    <div class="container apg-faq__grid">
+      <header class="apg-faq__head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">What people ask about the <span class="accent">video tools</span>.</h2>
+        <p class="apg-updated">Updated October 2026</p>
+      </header>
+      <div class="apg-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="apg-qa">
+              <summary>
+                <h3 class="apg-qa__q">{f.q}</h3>
+                <span class="apg-qa__icon" aria-hidden="true" />
+              </summary>
+              <p class="apg-qa__a">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <DualCta />
+</Layout>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>
