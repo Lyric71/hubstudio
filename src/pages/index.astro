@@ -12,7 +12,7 @@
  *  - Tactile components: 3D pointer tilt, magnetic buttons, pointer glow,
  *    tabbed audience switcher. All gated on prefers-reduced-motion.
  *
- * Hero (app capture) . The app (four stages) . Engines . Ways to work .
+ * Hero (app capture) . The app (module tour) . Engines . Ways to work .
  * The studio . Services (bento) . Studio + app . Selected work .
  * Who it's for (tabs) . Pricing . Manifesto . Insights . Closing (DualCta).
  *
@@ -25,47 +25,324 @@ import AppShot from '../components/AppShot.astro';
 import WaysToWork from '../components/WaysToWork.astro';
 import DualCta from '../components/DualCta.astro';
 import { appShots } from '../data/app-shots';
+import type { AppShot as Shot } from '../data/app-shots';
 import { caseStudies } from '../data/case-studies';
 import { insights } from '../data/insights';
 import { APP_URL, APP_SIGNUP, APP_SIGNIN, BRIEF_URL, HELP_URL } from '../lib/links';
 
 const SITE = 'https://www.hubstudio.ai';
 
-/* The app in four stages. Order carries the sequence; no numerals. */
-const stages = [
+/*
+ * The app tour: the modules as the /app pages split them, and every feature
+ * of each module with its own real capture. A feature opens on a hook (the
+ * moment it answers, in the reader's words or as a situation), then its name,
+ * then two plain sentences. Every fact is taken from the /app page the module
+ * links to, which is itself quoted from the help center. Without JavaScript
+ * the modules and features render stacked; the script turns them into a
+ * module switcher and a feature list beside one framed screen.
+ */
+type Feature = {
+  id: string;
+  hook: string;
+  name: string;
+  body: string;
+  shot: Shot;
+  path: string;
+  /** Caption override, for captures that show an empty state. */
+  caption?: string;
+};
+type Module = {
+  id: string;
+  name: string;
+  lede: string;
+  link: { label: string; href: string };
+  features: Feature[];
+};
+
+const modules: Module[] = [
   {
-    title: 'Make images and video',
-    body: 'Pick an engine in Explore and it opens in the right studio. The Image studio turns text into pictures, edits up to four source pictures and upscales, up to 4K. The Video studio starts from text, from a start frame or from references, and can generate the sound too.',
+    id: 'create',
+    name: 'Create',
+    lede: 'Explore lists the engines, and the Image and Video studios run them. The price shows before every run, and a failed run is never charged.',
     link: { label: 'How making works', href: '/app/create' },
-    shot: appShots.videoStudio,
-    path: '/content/video',
-    narrow: false,
+    features: [
+      {
+        id: 'explore',
+        hook: 'You know the job. You don’t know which engine does it best.',
+        name: 'Explore',
+        body: 'One card per image and video engine, from OpenAI, Google, ByteDance, Kling and other makers, each saying what it’s good at. Search, filter by kind, maker or job, then click a card and its studio opens already set on that engine.',
+        shot: appShots.explore,
+        path: '/explore',
+      },
+      {
+        id: 'image-studio',
+        hook: '“Same bottle, on marble this time, lit from the left.”',
+        name: 'Image studio',
+        body: 'Pick the job first: Text to image, Edit an image (up to four source pictures on some engines) or Upscale & restore, up to 4K. Improve with AI rewrites your prompt for the engine you chose, and Undo puts your own words back.',
+        shot: appShots.imageStudio,
+        path: '/content/image-generate',
+      },
+      {
+        id: 'video-studio',
+        hook: 'You have the still. Now it needs to move.',
+        name: 'Video studio',
+        body: 'Start a clip from words, from a start frame (or a start and a last frame), or from pictures, clips and sound to imitate. Clips go up to 4K and, on some engines, up to 30 seconds, with generated sound where the engine offers it.',
+        shot: appShots.videoStudio,
+        path: '/content/video',
+      },
+      {
+        id: 'skills',
+        hook: 'The third time you paste the same house rules into a prompt.',
+        name: 'Skills',
+        body: 'A skill is a set of instructions the AI follows every time, in Improve with AI and in post drafts. Take one from the Catalog, such as packshot, lifestyle scene or a format per network, write your own, or follow the Team skills your admins write.',
+        shot: appShots.skillsCatalog,
+        path: '/skills/catalog',
+      },
+    ],
   },
   {
-    title: 'Keep and polish the files',
-    body: 'Every render lands in History with its prompt and engine. The Assets Library holds the team’s files in folders, with tags and versions. The Image editor crops a picture to each network’s format and fixes its light and color, and you can put text or a logo on top. The Video editor cuts a clip into a Reel or a TikTok, and Shorts autopilot turns a long video into shorts. The editors run in your browser and are free to use.',
-    link: { label: 'See the image and video tools', href: '/app/image-tools' },
-    shot: appShots.editorCrop,
-    path: '/files/tools/image-editor',
-    narrow: false,
+    id: 'library',
+    name: 'Library',
+    lede: 'Where everything the team makes or uploads ends up, with the prompt that made it.',
+    link: { label: 'The Assets Library', href: '/app/library' },
+    features: [
+      {
+        id: 'history',
+        hook: 'Which prompt made the good one on Tuesday?',
+        name: 'History',
+        body: 'Every image and video the team renders, newest first, with its prompt, its engine and who made it. Use this prompt reopens the studio with the prompt in the box, so a variation is one changed word away.',
+        shot: appShots.history,
+        path: '/history',
+        caption: 'History on a new team: nothing made yet, so the page points back to Explore.',
+      },
+      {
+        id: 'assets-library',
+        hook: '“Where did last week’s packshot go?”',
+        name: 'Assets Library',
+        body: 'Every render lands here on its own, next to every file you upload, in folders you choose and with your own tags. One search reads file names, prompts, texts and tags, and filters narrow it by type, date, tag or who added it.',
+        shot: appShots.library,
+        path: '/files',
+      },
+      {
+        id: 'versions',
+        hook: 'The client sent the logo again. Corrected, they say.',
+        name: 'Versions and actions',
+        body: 'Upload the newer file and the old one moves under Versions. Each file’s Actions menu views, downloads, edits, tags, renames or moves it, and ticking several files moves or tags them in one go.',
+        shot: appShots.libraryActions,
+        path: '/files',
+      },
+    ],
   },
   {
-    title: 'Post to five networks',
-    body: 'Write the post yourself or give a brief to Draft with AI. Add pictures or a carousel, then publish it now or schedule it, to as many as 20 accounts in one go. hubStudio posts to LinkedIn, Instagram, Facebook, X and TikTok (in Beta).',
+    id: 'image-tools',
+    name: 'Image tools',
+    lede: 'Two picture tools, each with its own entry in the menu. Both run in your browser and cost nothing to use.',
+    link: { label: 'See the image tools', href: '/app/image-tools' },
+    features: [
+      {
+        id: 'image-social',
+        hook: 'Every network wants its own size, then covers part of it with buttons.',
+        name: 'Image editor: Social',
+        body: 'Pick Instagram, X or LinkedIn and the place the picture goes, and red zones show where the network’s name, caption and buttons sit. Checks then read the picture the way the network will: the shape, the sharpness, the file, and words too small for a phone.',
+        shot: appShots.editorSocial,
+        path: '/files/tools/image-editor',
+      },
+      {
+        id: 'image-crop',
+        hook: 'The client wants it square by noon.',
+        name: 'Crop',
+        body: 'Square, Portrait 4:5, Story 9:16, Wide, Link, Photo or Screen in one click, or drag the corners yourself. Turn or mirror the picture while you’re there.',
+        shot: appShots.editorCrop,
+        path: '/files/tools/image-editor',
+      },
+      {
+        id: 'image-effects',
+        hook: 'Right picture. Flat light.',
+        name: 'Light and looks',
+        body: 'Eight sliders under Adjust set the light and color, and Effects lays one look on top, from Mono and Noir to Sepia or Polaroid. It’s a fix in the editor, not a new run.',
+        shot: appShots.editorEffects,
+        path: '/files/tools/image-editor',
+      },
+      {
+        id: 'image-draw',
+        hook: '“Can you circle the part you mean?”',
+        name: 'Draw and write',
+        body: 'Add captions in the font you want, and arrows, lines, boxes and circles that stay editable until you save. A logo goes to one of nine spots, and Undo covers the last 60 steps.',
+        shot: appShots.editorDraw,
+        path: '/files/tools/image-editor',
+      },
+      {
+        id: 'image-save',
+        hook: 'Keep the original, or replace it?',
+        name: 'Save',
+        body: 'Save a copy in the Assets Library, save a new version of a file you uploaded, or download it as PNG, JPG or WebP. Nothing leaves your computer until you save.',
+        shot: appShots.editorSave,
+        path: '/files/tools/image-editor',
+      },
+      {
+        id: 'anonymizer',
+        hook: 'A phone photo can carry the place it was taken.',
+        name: 'Image anonymizer',
+        body: 'Drop a picture and it lists the data hidden in the file, such as camera data, location and content credentials, then rebuilds a clean copy without any of it. It runs in your browser, so nothing is uploaded.',
+        shot: appShots.anonymizer,
+        path: '/files/tools/image-anonymizer',
+      },
+    ],
+  },
+  {
+    id: 'video-tools',
+    name: 'Video tools',
+    lede: 'The Video editor is free and runs in your browser. Shorts autopilot is a paid run, priced before it starts.',
+    link: { label: 'See the video tools', href: '/app/video-tools' },
+    features: [
+      {
+        id: 'video-social',
+        hook: 'The caption you wrote sits right under TikTok’s buttons.',
+        name: 'Video editor: Social',
+        body: 'Pick Instagram, TikTok or Facebook and where the video goes, a Reel, a Story or the feed, and red zones show what the network covers. Checks flag the length, the weight, captions under the buttons and missing sound, and many carry their own fix.',
+        shot: appShots.videoSocial,
+        path: '/files/tools/video-editor',
+      },
+      {
+        id: 'video-format',
+        hook: 'Shot horizontal. Needed vertical.',
+        name: 'Format and clips',
+        body: 'Vertical 9:16 for Reels and TikTok, Portrait 4:5 or Square 1:1 for the feed, each clip cropped to fill or fitted whole over a blur of itself. Trim, split, change the speed and add more clips one after the other.',
+        shot: appShots.videoFormat,
+        path: '/files/tools/video-editor',
+      },
+      {
+        id: 'video-save',
+        hook: 'Cut and captioned. Now, one file each network takes.',
+        name: 'Captions and save',
+        body: 'Captions are timed word by word in five looks, written free in your browser or in seconds by a fast model that shows its price first. Save writes an MP4 in 1080p or 720p, checked for each network, to the library or to your downloads.',
+        shot: appShots.videoSave,
+        path: '/files/tools/video-editor',
+      },
+      {
+        id: 'shorts',
+        hook: 'The interview ran long. The best ninety seconds are in there somewhere.',
+        name: 'Shorts autopilot',
+        body: 'It listens to every word, keeps the moments that stand on their own and frames each at 9:16 around the person speaking, with captions and a hook line. Choose YouTube Shorts, TikTok or Instagram Reels, 3, 5, 8 or 10 shorts and their length.',
+        shot: appShots.shortsSettings,
+        path: '/files/tools/shorts',
+      },
+    ],
+  },
+  {
+    id: 'publish',
+    name: 'Publish',
+    lede: 'Five networks, one place to post. Publish now or schedule it, to up to 20 accounts a post, and the queue retries on its own.',
     link: { label: 'How publishing works', href: '/app/publish' },
-    shot: appShots.linkedin,
-    path: '/social/linkedin/posts',
-    narrow: false,
+    features: [
+      {
+        id: 'linkedin',
+        hook: 'Only the first lines show before “see more.”',
+        name: 'LinkedIn',
+        body: 'Post to your profile and the company pages you manage: text, one image or a carousel of up to eight slides. Give a brief to Draft with AI or write it yourself, and keep the point up top.',
+        shot: appShots.linkedin,
+        path: '/social/linkedin/posts',
+      },
+      {
+        id: 'instagram',
+        hook: 'Instagram starts from the visual. So does this form.',
+        name: 'Instagram',
+        body: 'Start from one image, a carousel or a Reel: render it with AI, pick it from the library or upload it, then write the caption with AI or by hand. It takes a professional account, and no Facebook page is required.',
+        shot: appShots.instagram,
+        path: '/social/instagram/posts',
+      },
+      {
+        id: 'facebook',
+        hook: 'Links and hashtags you’d rather keep out of the post.',
+        name: 'Facebook',
+        body: 'Post to your Facebook pages: text, up to 10 pictures, a carousel or one video. A first comment carries the links, photo credits or hashtags, and the post itself stays clean.',
+        shot: appShots.facebook,
+        path: '/social/facebook/posts',
+      },
+      {
+        id: 'tiktok',
+        hook: 'The video is the post. The script comes first.',
+        name: 'TikTok (Beta)',
+        body: 'The Brief tab drafts the hook, a timed script, the on-screen text and the caption with its hashtags, inside TikTok’s limits. Then render the clip, pick it from the library or upload it.',
+        shot: appShots.tiktok,
+        path: '/social/tiktok/brief',
+      },
+      {
+        id: 'x',
+        hook: 'X cuts the reach of a post that opens with an outside link.',
+        name: 'X',
+        body: 'Write one post or a thread with up to four pictures, choose the hashtags and mentions, and send the link in a short follow-up post. Each post sent to X shows its price before you send.',
+        shot: appShots.xKnobs,
+        path: '/social/x/posts',
+      },
+      {
+        id: 'connections',
+        hook: 'Posting in your name shouldn’t mean handing over your password.',
+        name: 'My Connections',
+        body: 'You connect your own accounts by signing in on the network itself, so hubStudio never sees the password. Nobody else on the team can post with your account, admins included.',
+        shot: appShots.connections,
+        path: '/my-connections',
+      },
+    ],
   },
   {
-    title: 'Send it for approval, then deliver',
-    body: 'Send an image, a video or a post to a teammate or a client in Validation. They approve it or send it back with a comment, and every version stays on one thread. Each client gets logins and a Client space that shows only the work made for it.',
+    id: 'review',
+    name: 'Review',
+    lede: 'Approvals, clients and your own team. Validation costs nothing to use, and no AI runs in it.',
     link: { label: 'How approval works', href: '/app/review' },
-    shot: appShots.validationSend,
-    path: '/validation',
-    narrow: true,
+    features: [
+      {
+        id: 'validation',
+        hook: 'Six months on, someone asks who approved it.',
+        name: 'Validation',
+        body: 'The validator approves the piece or sends it back with a comment, and v1, v2 and every comment stay on one thread. Nothing on a thread can be deleted, so the record holds.',
+        shot: appShots.validation,
+        path: '/validation',
+        caption: 'The Validation page, where every request lands. This team has none waiting yet.',
+      },
+      {
+        id: 'send',
+        hook: 'It’s ready, but it isn’t yours to sign off.',
+        name: 'Send for validation',
+        body: 'Send an image, a video, a post, a file, a text or a link, with a validator and a note. A post waiting for approval is locked until the validator decides.',
+        shot: appShots.validationSend,
+        path: '/validation',
+      },
+      {
+        id: 'clients',
+        hook: 'A new client signs. Their marketing lead needs a login.',
+        name: 'Clients',
+        body: 'Add the companies you work for and give their people a login, which costs nothing. Tag a piece Made for a client, in a studio, in History or on a post, and it reaches that client’s people.',
+        shot: appShots.teamClients,
+        path: '/team',
+      },
+      {
+        id: 'client-space',
+        hook: 'Your client wants the files, not your prompts.',
+        name: 'Client space',
+        body: 'A client login opens two entries, Client space and Validation, to download, comment on and approve the work made for that client. Your prompts, engines and costs stay with your team.',
+        shot: appShots.clientSpace,
+        path: '/client',
+        caption: 'A new client’s space, before anything is shared. The menu holds only Client space and Validation.',
+      },
+      {
+        id: 'team',
+        hook: 'Bringing in a freelancer for one campaign?',
+        name: 'Your team',
+        body: 'Invite people by email as Admin, Creator or Viewer, cap what each creator spends in a day and switch modules on or off per person. When the job ends, pause the login and the work stays.',
+        shot: appShots.teamInvite,
+        path: '/team',
+      },
+    ],
   },
 ];
+
+/* The tallest landscape capture of a module (smallest width / height) sets
+   its stage height on desktop; portrait captures are capped in width. */
+const stageRatio = (m: Module) =>
+  Math.min(
+    ...m.features.map((f) => f.shot.width / f.shot.height).filter((r) => r >= 1),
+  );
 
 /* The makers in Explore, as plain text. No logos. */
 const makers = [
@@ -336,33 +613,77 @@ const homeSchema = {
           <p class="s-head__intro" data-reveal>
             hubStudio is a web app for people and teams who make their own content. You pick an
             engine, check the price and run it. The result stays with your team, and you finish
-            the job in the same app.
+            the job in the same app. Pick a module, then a feature: every screen here is a real
+            capture of the app.
           </p>
         </header>
 
-        <div class="stages">
+        <div class="tour" data-tour data-reveal>
+          <div class="tour__tabs" role="tablist" aria-label="Modules of the hubStudio app" hidden>
+            {
+              modules.map((m, i) => (
+                <button
+                  type="button"
+                  class="tab tour__tab"
+                  role="tab"
+                  id={`tab-mod-${m.id}`}
+                  aria-controls={`mod-${m.id}`}
+                  aria-selected={i === 0 ? 'true' : 'false'}
+                  tabindex={i === 0 ? '0' : '-1'}
+                >
+                  <span class="tab__dot" aria-hidden="true" />
+                  {m.name}
+                </button>
+              ))
+            }
+          </div>
+
           {
-            stages.map((s, i) => (
-              <article class="stage" data-reveal style={`--i:${i % 2}`}>
-                <div class="stage__text">
-                  <h3 class="stage__title">{s.title}</h3>
-                  <p class="stage__body">{s.body}</p>
-                  <a class="arrow-link" href={s.link.href}>
-                    {s.link.label} <span class="arrow" aria-hidden="true">&rarr;</span>
+            modules.map((m) => (
+              <section class="mod" id={`mod-${m.id}`} aria-labelledby={`mod-name-${m.id}`}>
+                <header class="mod__head">
+                  <h3 class="mod__name" id={`mod-name-${m.id}`}>
+                    {m.name}
+                  </h3>
+                  <p class="mod__lede">{m.lede}</p>
+                  <a class="arrow-link" href={m.link.href}>
+                    {m.link.label} <span class="arrow" aria-hidden="true">&rarr;</span>
                   </a>
+                </header>
+
+                <div class="mod__body" data-glow style={`--rmin:${stageRatio(m).toFixed(3)}`}>
+                  <div class="tour__desk" aria-hidden="true" />
+                  <div class="feats">
+                    {m.features.map((f) => (
+                      <div class="feat">
+                        <div class="feat__head">
+                          <p class="feat__hook">{f.hook}</p>
+                          <h4 class="feat__name">{f.name}</h4>
+                        </div>
+                        <div class="feat__more" id={`feat-${m.id}-${f.id}`}>
+                          <div class="feat__more-inner">
+                            <p class="feat__body">{f.body}</p>
+                          </div>
+                        </div>
+                        <div
+                          class:list={['feat__shot', f.shot.width < f.shot.height && 'feat__shot--tall']}
+                          id={`shot-${m.id}-${f.id}`}
+                        >
+                          <AppShot shot={f.shot} path={f.path} caption={f.caption ?? true} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div class:list={['stage__peek', s.narrow && 'stage__peek--narrow']}>
-                  <AppShot shot={s.shot} path={s.path} />
-                </div>
-              </article>
+              </section>
             ))
           }
         </div>
 
         <div class="app__foot" data-reveal>
           <p class="app__aside">
-            You don’t need all four. Making images and downloading them is a perfectly good way
-            to use it.
+            You don’t need every module. Making images and downloading them is a perfectly good
+            way to use it.
           </p>
           <div class="app__links">
             <a class="arrow-link" href="/app">
@@ -1378,72 +1699,374 @@ const homeSchema = {
   }
 
   /* ============================================================
-     The app in four stages
+     The app tour: a module switcher, then the module's features
+     beside one framed screen that swaps when a feature is picked.
+     The base rules are the no-JS layout (every module and every
+     feature stacked, each with its capture). The script adds
+     .is-live, and every instrument rule hangs off it.
   ============================================================ */
-  .stages {
+  .tour {
     display: grid;
-    gap: clamp(18px, 2.2vw, 28px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(64px, 8vw, 112px);
   }
-  @media (min-width: 900px) {
-    .stages {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .tour__tabs[hidden],
+  .mod[hidden] {
+    display: none;
   }
-  .stage {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border-radius: clamp(22px, 2.4vw, 32px);
-    background: var(--bg-cream);
-    border: 1px solid var(--line-strong);
-    transition:
-      opacity 0.8s var(--ease),
-      transform 0.4s var(--ease),
-      box-shadow 0.4s ease;
+
+  /* Module header */
+  .mod__head {
+    display: grid;
+    gap: 12px;
+    max-width: 64ch;
+    margin-bottom: clamp(28px, 3.4vw, 44px);
   }
-  .stage:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-card-hi);
-  }
-  .stage__text {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: clamp(28px, 3vw, 40px) clamp(26px, 3vw, 40px) 0;
-  }
-  .stage__title {
+  .mod__name {
     font-size: var(--type-h3);
     font-weight: 600;
     letter-spacing: -0.025em;
     line-height: 1.1;
   }
-  .stage__body {
+  .mod__lede {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+
+  /* Features, stacked */
+  /* minmax(0, 1fr): a long address in a capture bar must never widen
+     the column past the screen. */
+  .feats {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(44px, 5vw, 64px);
+  }
+  .feat {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+  }
+  .feat__head {
+    position: relative;
+    display: grid;
+    gap: 10px;
+  }
+  /* The hook opens the feature: the moment it answers, in plain words. */
+  .feat__hook {
+    font-size: clamp(19px, 1.5vw, 21px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.32;
+    color: var(--text-ink);
+    max-width: 40ch;
+  }
+  .feat__name {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .feat__name::before {
+    content: '';
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+    transition:
+      opacity 220ms ease,
+      background-color 220ms ease;
+  }
+  .feat__body {
+    padding-top: 12px;
     font-size: var(--type-body);
     line-height: 1.62;
     color: var(--text-mute);
-    max-width: 58ch;
+    max-width: 56ch;
   }
-  /* The capture rises from the bottom edge of the card and is cut by it,
-     so four screens of different shapes sit on one baseline. */
-  .stage__peek {
-    margin-top: auto;
-    height: clamp(250px, 25vw, 350px);
-    padding: clamp(26px, 3vw, 36px) clamp(22px, 3vw, 40px) 0;
-    overflow: hidden;
-    background: linear-gradient(180deg, transparent, rgba(233, 78, 27, 0.07));
+  .feat__shot {
+    margin-top: 22px;
+    max-width: 880px;
   }
-  .stage__peek :global(.appshot) {
-    transition: transform 0.5s var(--ease);
+  .feat__shot--tall :global(.appshot) {
+    width: min(100%, 340px);
   }
-  .stage:hover .stage__peek :global(.appshot) {
-    transform: translateY(-10px);
+
+  /* ---- Live: the switcher ------------------------------------- */
+  .tour.is-live {
+    gap: clamp(28px, 3.4vw, 44px);
   }
-  .stage__peek--narrow {
+  .tour__tabs {
+    position: relative;
     display: flex;
-    justify-content: center;
+    gap: 8px;
+    padding: 7px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
   }
-  .stage__peek--narrow :global(.appshot) {
-    width: min(300px, 78%);
+  /* Six modules do not share one row below desktop: the chips scroll
+     inside their own track, never the page. */
+  @media (max-width: 999.98px) {
+    .tour__tabs {
+      overflow-x: auto;
+      border-radius: 20px;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+    }
+    .tour__tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .tour__tab {
+      flex: none;
+    }
+  }
+  .tour.is-live .mod.is-active {
+    animation: modIn 0.55s var(--ease) both;
+  }
+  .tour.is-live .mod__name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .tour.is-live .mod__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px 40px;
+    max-width: none;
+  }
+  .tour.is-live .mod__lede {
+    max-width: 62ch;
+  }
+
+  /* ---- Live: the feature list --------------------------------- */
+  .tour.is-live .feats {
+    gap: 0;
+  }
+  /* A rail down the left edge of the list; the open feature lights it. */
+  .tour.is-live .feat {
+    padding: 20px 0 20px 22px;
+    border-top: 1px solid var(--line-hairline);
+    box-shadow: inset 2px 0 0 var(--line-hairline);
+    transition: box-shadow 300ms ease;
+  }
+  .tour.is-live .feat:last-child {
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .tour.is-live .feat.is-on {
+    box-shadow: inset 2px 0 0 var(--brand-orange);
+  }
+  .tour.is-live .feat__hook {
+    font-size: clamp(18px, 1.4vw, 20px);
+    color: var(--text-mute);
+    transition: color 220ms ease;
+  }
+  .tour.is-live .feat.is-on .feat__hook,
+  .tour.is-live .feat__head:hover .feat__hook {
+    color: var(--text-ink);
+  }
+  .tour.is-live .feat__name::before {
+    background: currentColor;
+    opacity: 0.4;
+  }
+  .tour.is-live .feat.is-on .feat__name {
+    color: var(--text-ink);
+  }
+  .tour.is-live .feat.is-on .feat__name::before {
+    background: var(--brand-orange);
+    opacity: 1;
+  }
+  /* The name becomes the button; its hit area covers the hook too.
+     The button is created by the script, so it is styled globally. */
+  .tour :global(.feat__btn) {
+    appearance: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    text-align: left;
+    color: inherit;
+    cursor: pointer;
+  }
+  .tour :global(.feat__btn)::after {
+    content: '';
+    position: absolute;
+    inset: -12px -14px;
+    border-radius: 16px;
+  }
+  .tour :global(.feat__btn):focus-visible {
+    outline: none;
+  }
+  .tour :global(.feat__btn):focus-visible::after {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 2px;
+  }
+  /* The body folds open under the picked feature. */
+  .tour.is-live .feat__more {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s var(--ease);
+  }
+  .tour.is-live .feat__more-inner {
+    min-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: visibility 0s linear 0.45s;
+  }
+  .tour.is-live .feat.is-on .feat__more {
+    grid-template-rows: 1fr;
+  }
+  .tour.is-live .feat.is-on .feat__more-inner {
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  /* Phones and tablets: the open feature shows its screen in place. */
+  .tour.is-live .feat__shot {
+    display: none;
+    margin-top: 18px;
+  }
+  .tour.is-live .feat.is-on .feat__shot {
+    display: block;
+    animation: shotIn 0.5s var(--ease) both;
+  }
+  .tour__desk {
+    display: none;
+  }
+
+  /* ---- Live, desktop: list left, one framed screen right ------- */
+  /* Width wins: every capture fills the stage, less a small inset. The
+     stage is as tall as the tallest landscape capture of its module
+     needs (--rmin, set per module from the data), so it never changes
+     height between the features of one module. A portrait capture is
+     held to 360px wide, which the 450px floor makes room for. The .mod
+     is the size container, so 62cqw is the stage's share of the row. */
+  @media (min-width: 1000px) {
+    .tour.is-live .mod {
+      container-type: inline-size;
+    }
+    .tour.is-live .mod__body {
+      --pad: 26px;
+      --stage-w: calc(62cqw - 28px);
+      --stage-h: calc(
+        max((var(--stage-w) - 2 * var(--pad)) / var(--rmin), 450px) + 2 * var(--pad) + 96px
+      );
+      position: relative;
+      min-height: var(--stage-h);
+    }
+    .tour.is-live .feats {
+      width: calc(38% - 28px);
+    }
+    .tour.is-live .tour__desk,
+    .tour.is-live .feat__shot {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: var(--stage-w);
+      height: var(--stage-h);
+    }
+    /* The desk the screens sit on: cream, a faint dot grid, and a warm
+       light that follows the pointer (data-glow sets --mx / --my). */
+    .tour.is-live .tour__desk {
+      display: block;
+      overflow: hidden;
+      border-radius: clamp(22px, 2.4vw, 32px);
+      border: 1px solid var(--line-strong);
+      background:
+        radial-gradient(
+          520px circle at var(--mx, 78%) var(--my, 18%),
+          rgba(233, 78, 27, 0.11),
+          transparent 62%
+        ),
+        var(--bg-cream);
+    }
+    .tour__desk::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(10, 10, 20, 0.09) 1px, transparent 1px);
+      background-size: 22px 22px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000, transparent 85%);
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000, transparent 85%);
+    }
+    .tour.is-live .feat__shot {
+      margin: 0;
+      padding: var(--pad);
+    }
+    .tour.is-live .feat.is-on .feat__shot,
+    .tour.is-live .feat__shot.is-leaving {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tour.is-live .feat__shot.is-leaving {
+      animation: shotOut 0.36s var(--ease) both;
+      pointer-events: none;
+    }
+    .tour.is-live .feat__shot :global(.appshot) {
+      width: 100%;
+    }
+    .tour.is-live .feat__shot--tall :global(.appshot) {
+      width: min(100%, 360px);
+    }
+  }
+
+  @keyframes shotIn {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes shotOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.985);
+    }
+  }
+  @keyframes modIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tour.is-live .mod.is-active,
+    .tour.is-live .feat.is-on .feat__shot,
+    .tour.is-live .feat__shot.is-leaving {
+      animation: none;
+    }
+    .tour.is-live .feat__more,
+    .tour.is-live .feat__more-inner {
+      transition: none;
+    }
   }
   .app__foot {
     margin-top: clamp(40px, 5vw, 64px);
@@ -3004,5 +3627,134 @@ const homeSchema = {
         }
       });
     });
+  }
+
+  /* ---- App tour: modules, then features ------------------------- */
+  /* Without this script every module and feature stays stacked with its
+     capture. With it, the modules become tabs, each feature name becomes a
+     button, and only the picked feature shows its body and its screen. */
+  const tour = document.querySelector<HTMLElement>('[data-tour]');
+  const tourList = tour?.querySelector<HTMLElement>('.tour__tabs');
+  if (tour && tourList) {
+    const modTabs = Array.from(tourList.querySelectorAll<HTMLButtonElement>('.tour__tab'));
+    const mods = Array.from(tour.querySelectorAll<HTMLElement>('.mod'));
+
+    /* A screen that is not shown is display:none, so its lazy image waits.
+       Hovering a feature starts its download a beat before the click. */
+    const warm = (shot: HTMLElement | null) => {
+      const img = shot?.querySelector('img');
+      if (img && img.loading === 'lazy') img.loading = 'eager';
+    };
+
+    mods.forEach((mod, mi) => {
+      mod.setAttribute('role', 'tabpanel');
+      mod.setAttribute('aria-labelledby', modTabs[mi]?.id ?? '');
+
+      const feats = Array.from(mod.querySelectorAll<HTMLElement>('.feat'));
+      const shots = feats.map((f) => f.querySelector<HTMLElement>('.feat__shot'));
+      const timers = new Map<HTMLElement, number>();
+
+      const btns = feats.map((feat, i) => {
+        const name = feat.querySelector<HTMLElement>('.feat__name')!;
+        const more = feat.querySelector<HTMLElement>('.feat__more');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'feat__btn';
+        btn.setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-controls', [more?.id, shots[i]?.id].filter(Boolean).join(' '));
+        btn.append(...Array.from(name.childNodes));
+        name.append(btn);
+        return btn;
+      });
+
+      const pick = (index: number, focus = false, user = true) => {
+        feats.forEach((feat, i) => {
+          const on = i === index;
+          const shot = shots[i];
+          const wasOn = feat.classList.contains('is-on');
+          feat.classList.toggle('is-on', on);
+          btns[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+          if (!shot) return;
+          const t = timers.get(shot);
+          if (t) window.clearTimeout(t);
+          shot.classList.remove('is-leaving');
+          /* The outgoing screen fades out over the incoming one. */
+          if (wasOn && !on && !RM) {
+            shot.classList.add('is-leaving');
+            timers.set(
+              shot,
+              window.setTimeout(() => shot.classList.remove('is-leaving'), 380),
+            );
+          }
+        });
+        if (user) warm(shots[index]);
+        if (focus) btns[index].focus();
+      };
+
+      btns.forEach((btn, i) => {
+        btn.addEventListener('click', () => pick(i));
+        btn.addEventListener('pointerenter', () => warm(shots[i]));
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            pick((i + 1) % btns.length, true);
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            pick((i - 1 + btns.length) % btns.length, true);
+          }
+        });
+      });
+
+      pick(0, false, false);
+    });
+
+    const show = (index: number, focus = false) => {
+      modTabs.forEach((tab, i) => {
+        const selected = i === index;
+        tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+        tab.tabIndex = selected ? 0 : -1;
+        if (selected) {
+          /* Keep the picked chip in view inside its own scroller. */
+          const left = tab.offsetLeft - (tourList.clientWidth - tab.offsetWidth) / 2;
+          tourList.scrollTo({ left, behavior: RM ? 'auto' : 'smooth' });
+          if (focus) tab.focus();
+        }
+      });
+      mods.forEach((mod, i) => {
+        mod.classList.remove('is-active');
+        mod.hidden = i !== index;
+      });
+      const active = mods[index];
+      if (active) {
+        void active.offsetWidth;
+        active.classList.add('is-active');
+      }
+    };
+
+    modTabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => show(i));
+      tab.addEventListener('pointerenter', () =>
+        warm(mods[i]?.querySelector<HTMLElement>('.feat.is-on .feat__shot') ?? null),
+      );
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          show((i + 1) % modTabs.length, true);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          show((i - 1 + modTabs.length) % modTabs.length, true);
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          show(0, true);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          show(modTabs.length - 1, true);
+        }
+      });
+    });
+
+    tourList.hidden = false;
+    tour.classList.add('is-live');
+    show(0);
   }
 </script>
