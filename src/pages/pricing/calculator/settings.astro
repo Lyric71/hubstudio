@@ -342,10 +342,10 @@ const fetchedAt = fx ? new Date(fx.fetchedAt) : null;
 
             {!persisted && (
               <p class="st-warn" role="status">
-                Storage is not connected, so nothing can be saved yet. Add the KV
-                integration in Vercel (KV_REST_API_URL and KV_REST_API_TOKEN) to
-                make these fields writable. Until then both calculators run on the
-                defaults in the code.
+                Storage is not connected, so nothing can be saved yet. Set
+                SUPABASE_URL and SUPABASE_SECRET_KEY (the hubStudio Supabase
+                project) in Vercel to make these fields writable. Until then both
+                calculators run on the defaults in the code.
               </p>
             )}
             {saved === '1' && (

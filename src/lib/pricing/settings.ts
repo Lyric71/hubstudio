@@ -5,7 +5,7 @@
  * module layers three things on top of them, in order:
  *
  *   1. defaults, from source
- *   2. overrides, saved from /pricing/calculator/settings into Vercel KV
+ *   2. overrides, saved from /pricing/calculator/settings into Supabase
  *   3. exchange rates, fetched from a free public source and cached
  *
  * `loadPricingConfigs()` returns the resolved configs. The calculator page calls
@@ -13,7 +13,7 @@
  * cores, and ships the same object to the browser, so the client math and the
  * server math are always using the identical numbers.
  *
- * Nothing here is required for the calculators to work: with no KV and no
+ * Nothing here is required for the calculators to work: with no storage and no
  * network, both fall back to the defaults in source, which is the behaviour that
  * matters when the tool has to work at all costs.
  */
@@ -81,14 +81,20 @@ export interface ResolvedPricing {
   video: VideoPricingConfig;
   overrides: PricingOverrides;
   fx: FxSnapshot | null;
-  /** True when settings are persisted; false when KV is not connected. */
+  /** True when settings are persisted; false when storage is not connected. */
   persisted: boolean;
 }
 
-/* --- Storage (Vercel KV / Upstash Redis REST) ---------------------------- */
+/* --- Storage (Supabase, hubStudio app database) -------------------------- */
 
-const KV_URL = import.meta.env.KV_REST_API_URL;
-const KV_TOKEN = import.meta.env.KV_REST_API_TOKEN;
+/**
+ * One row per key in the `website_settings` table of the hubStudio app's
+ * Supabase project (schema in db/website_settings.sql), reached through its
+ * REST API with plain fetch. The secret key stays on the server: RLS is on and
+ * the publishable key has no grant on the table.
+ */
+const SUPABASE_URL = import.meta.env.SUPABASE_URL;
+const SUPABASE_SECRET_KEY = import.meta.env.SUPABASE_SECRET_KEY;
 
 const SETTINGS_KEY = 'pricing:overrides';
 const FX_KEY = 'pricing:fx';
@@ -96,48 +102,58 @@ const FX_KEY = 'pricing:fx';
 /** How long a fetched rate is trusted before we go and ask again. */
 const FX_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
-/** Settings persist only once the KV integration is connected. */
-export function kvConfigured(): boolean {
-  return Boolean(KV_URL && KV_TOKEN);
+/** Settings persist only once the Supabase keys are set. */
+export function storageConfigured(): boolean {
+  return Boolean(SUPABASE_URL && SUPABASE_SECRET_KEY);
 }
 
-async function kv(command: (string | number)[]): Promise<unknown> {
-  const res = await fetch(KV_URL as string, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${KV_TOKEN}`,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify(command),
-  });
-  if (!res.ok) throw new Error(`KV ${res.status}`);
-  const json = (await res.json()) as { result: unknown };
-  return json.result;
+function storageUrl(query: string): string {
+  return `${SUPABASE_URL}/rest/v1/website_settings?${query}`;
 }
 
-async function kvGet<T>(key: string): Promise<T | null> {
-  if (!kvConfigured()) return null;
+function storageHeaders(): Record<string, string> {
+  return {
+    apikey: SUPABASE_SECRET_KEY as string,
+    'content-type': 'application/json',
+  };
+}
+
+async function storageGet<T>(key: string): Promise<T | null> {
+  if (!storageConfigured()) return null;
   try {
-    const raw = (await kv(['GET', key])) as string | null;
-    return raw ? (JSON.parse(raw) as T) : null;
+    const res = await fetch(
+      storageUrl(`key=eq.${encodeURIComponent(key)}&select=value`),
+      { headers: storageHeaders(), signal: AbortSignal.timeout(2500) },
+    );
+    if (!res.ok) return null;
+    const rows = (await res.json()) as { value: T }[];
+    return rows[0]?.value ?? null;
   } catch {
     return null;
   }
 }
 
-async function kvSet(key: string, value: unknown): Promise<void> {
-  if (!kvConfigured()) throw new Error('Settings storage is not connected.');
-  await kv(['SET', key, JSON.stringify(value)]);
+async function storageSet(key: string, value: unknown): Promise<void> {
+  if (!storageConfigured()) throw new Error('Settings storage is not connected.');
+  const res = await fetch(storageUrl('on_conflict=key'), {
+    method: 'POST',
+    headers: {
+      ...storageHeaders(),
+      Prefer: 'resolution=merge-duplicates,return=minimal',
+    },
+    body: JSON.stringify({ key, value, updated_at: new Date().toISOString() }),
+  });
+  if (!res.ok) throw new Error(`Settings storage ${res.status}`);
 }
 
 /** The saved overrides, or an empty set. */
 export async function getOverrides(): Promise<PricingOverrides> {
-  return (await kvGet<PricingOverrides>(SETTINGS_KEY)) ?? {};
+  return (await storageGet<PricingOverrides>(SETTINGS_KEY)) ?? {};
 }
 
-/** Persist a full set of overrides. Throws when KV is not connected. */
+/** Persist a full set of overrides. Throws when storage is not connected. */
 export async function saveOverrides(overrides: PricingOverrides): Promise<void> {
-  await kvSet(SETTINGS_KEY, overrides);
+  await storageSet(SETTINGS_KEY, overrides);
 }
 
 /* --- Exchange rates ------------------------------------------------------ */
@@ -183,7 +199,7 @@ async function fetchFx(): Promise<FxSnapshot | null> {
  * the same six hours.
  */
 export async function getFx(pinned: boolean): Promise<FxSnapshot | null> {
-  const cached = await kvGet<FxSnapshot>(FX_KEY);
+  const cached = await storageGet<FxSnapshot>(FX_KEY);
   if (pinned) return cached;
 
   const age = cached ? Date.now() - Date.parse(cached.fetchedAt) : Infinity;
@@ -191,9 +207,9 @@ export async function getFx(pinned: boolean): Promise<FxSnapshot | null> {
 
   const fresh = await fetchFx();
   if (!fresh) return cached; // stale beats nothing
-  if (kvConfigured()) {
+  if (storageConfigured()) {
     try {
-      await kvSet(FX_KEY, fresh);
+      await storageSet(FX_KEY, fresh);
     } catch {
       // Not being able to cache it is not a reason not to use it.
     }
@@ -204,9 +220,9 @@ export async function getFx(pinned: boolean): Promise<FxSnapshot | null> {
 /** Force a refresh, ignoring the TTL. Used by the settings page's button. */
 export async function refreshFx(): Promise<FxSnapshot | null> {
   const fresh = await fetchFx();
-  if (fresh && kvConfigured()) {
+  if (fresh && storageConfigured()) {
     try {
-      await kvSet(FX_KEY, fresh);
+      await storageSet(FX_KEY, fresh);
     } catch {
       /* ignore */
     }
@@ -343,6 +359,6 @@ export async function loadPricingConfigs(): Promise<ResolvedPricing> {
     video: resolveVideoConfig(overrides, fx),
     overrides,
     fx,
-    persisted: kvConfigured(),
+    persisted: storageConfigured(),
   };
 }
