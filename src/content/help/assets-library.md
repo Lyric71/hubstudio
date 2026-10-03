@@ -61,22 +61,22 @@ shots:
     route: "/files/tools/video-editor"
     clip: "the Video editor, Social panel"
     alt: "The Social panel of the Video editor on Instagram, Reel picked and applied with Fit it whole: the red zones Name and progress bar and Caption, reply box and buttons over the preview, the dashed Profile grid crop, and the Zones switch on in the top bar"
-    captured: 2026-10-01
+    captured: 2026-10-03
   - file: "/Images/help/video-editor-social-checks.webp"
     route: "/files/tools/video-editor"
     clip: "the Video editor, Social panel, lower half"
-    alt: "The lower half of the Social panel: How it will show with Full screen and On the profile grid, the Checks with Make the captions under the warning on captions, Save for Instagram and Good practice on Instagram"
-    captured: 2026-10-01
+    alt: "The lower half of the Social panel: How it will show with Full screen and On the profile grid, the Checks with Add music under the warning on a clip with no sound, Save for Instagram and Good practice on Instagram"
+    captured: 2026-10-03
   - file: "/Images/help/video-editor-format.webp"
     route: "/files/tools/video-editor"
     clip: "the Video editor, Format panel"
     alt: "The Video editor on a wide product clip set to Vertical 9:16 and Fit, blurred, with Social first on the rail, the transport bar and the clip on the timeline"
-    captured: 2026-10-01
+    captured: 2026-10-03
   - file: "/Images/help/video-editor-save.webp"
     route: "/files/tools/video-editor"
     clip: "the Video editor, Save panel"
     alt: "The Save the video panel after Apply the format: Made for Instagram, Reel with its Checks button, the name ending in (Instagram Reel), 1080p or 720p, the file details, Fits for Instagram Reel, Instagram Story, Facebook and TikTok, then Save it in the Assets Library and Download"
-    captured: 2026-10-01
+    captured: 2026-10-03
   - file: "/Images/help/instagram-picture-edit.webp"
     route: "/social/instagram/posts"
     clip: "the picture step of a post"
@@ -357,7 +357,7 @@ Once a placement is picked, the panel also shows:
 
 Many checks carry a button that fixes what they found: **Apply the format**, **Cut it at** the longest length taken, **Write it in 1080p**, **Move the captions into the safe area**, **Move the words into the safe area**, **Make the captions** (opens the Captions panel) and **Add music** (opens the Sound panel).
 
-![The lower half of the Social panel: How it will show with Full screen and On the profile grid, the Checks with Make the captions under the warning on captions, Save for Instagram and Good practice on Instagram](/Images/help/video-editor-social-checks.webp)
+![The lower half of the Social panel: How it will show with Full screen and On the profile grid, the Checks with Add music under the warning on a clip with no sound, Save for Instagram and Good practice on Instagram](/Images/help/video-editor-social-checks.webp)
 
 ### Format
 
