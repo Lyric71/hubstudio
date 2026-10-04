@@ -5,7 +5,7 @@ description: "What hubStudio is, how to create your account alone or with a team
 excerpt: "Create your account, find your way around the menu and render your first image in a few minutes."
 section: "getting-started"
 order: 1
-updated: 2026-10-02
+updated: 2026-10-03
 appPaths: ["/signup", "/login", "/explore"]
 audience: "Everyone"
 related: ["explore", "create-an-image", "assets-library", "shorts-autopilot", "linkedin", "validation", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
@@ -46,7 +46,7 @@ Nothing arriving? Check the spam folder, or click **start again** to correct the
 
 ## Sign in
 
-Type your **Login** (your email address) and your **Password**, then click **Sign in**. The sign-in page speaks your browser's language, English, French or Chinese, and the language names under the card switch it; hubStudio itself is in English once you're in. You land on **Explore**, or on the home page you chose in **User Settings**. A client login always lands on its **Client space**.
+Type your **Login** (your email address) and your **Password**, then click **Sign in**. The sign-in page speaks your browser's language, English, French or Chinese, and the language names under the card switch it. Once you're in, hubStudio speaks your language too; change it any time in **User Settings**, under **Language**. You land on **Explore**, or on the home page you chose in **User Settings**. A client login always lands on its **Client space**.
 
 New teams also ask for a second step: a 6-digit sign-in code sent to your email address, valid for 10 minutes. Type it under **Sign-in code** and click **Confirm and sign in**. Leave **Trust this browser for 30 days, so it only asks for my password.** ticked on a computer you use every day. See [Account and sign-in](/help/account-and-sign-in) for the details.
 

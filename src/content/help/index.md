@@ -5,7 +5,7 @@ description: "Guides for hubStudio: getting started, the Explore gallery, the im
 excerpt: "Everything you need to make images, videos and posts with hubStudio, alone or with your team, and to deliver them to your clients."
 section: "home"
 order: 0
-updated: 2026-10-02
+updated: 2026-10-04
 appPaths: []
 audience: "Everyone"
 related: []
@@ -40,13 +40,13 @@ hubStudio makes images and videos with the AI engines of several makers, turns t
 
 ## Your team and your clients
 
-15. [Your team](/help/your-team): working alone or in a team, the Admin, Creator, Viewer and Client roles, invitations, requests to join, daily limits, pausing a login, clients and their logins, invoice details and renaming the team.
+15. [Your team](/help/your-team): working alone or in a team, the Admin, Creator, Viewer and Client roles, invitations, requests to join, daily limits, pausing a login, clients and their logins, invoice details, the interface languages and renaming the team.
 16. [Client space](/help/client-space): for the people of your clients: what they see, downloading, and approving the team's work.
 
 ## Your money and your account
 
 17. [Balance and payments](/help/balance-and-payments): a prepaid balance in US dollars, the team balance then your own, topping up by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log.
-18. [Account and sign-in](/help/account-and-sign-in): the sign-in page in your language, your name, picture, email and password, the sign-in code by email, your social accounts on My Connections, the connection check, light or dark, date and time, My models, voice input and password reset.
+18. [Account and sign-in](/help/account-and-sign-in): the interface in English, French or Chinese, your name, picture, email and password, the sign-in code by email, your social accounts on My Connections, the connection check, light or dark, date and time, My models, voice input and password reset.
 19. [Partners](/help/partners): the partner area, for commercial partners only.
 
 ## When something goes wrong

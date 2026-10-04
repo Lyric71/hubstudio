@@ -1,11 +1,11 @@
 ---
 title: "Account and sign-in"
 seoTitle: "Your account settings and signing in | hubStudio Help"
-description: "The sign-in page in your language, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the weekly digest of what changed, the engines in your lists, voice input, and how to reset a forgotten password."
+description: "The interface in English, French or Chinese, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the weekly digest of what changed, the engines in your lists, voice input, and how to reset a forgotten password."
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
 order: 18
-updated: 2026-09-29
+updated: 2026-10-04
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"
 related: ["getting-started", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "balance-and-payments", "troubleshooting"]
@@ -60,11 +60,17 @@ Your current password is checked again before either change is applied.
 
 ![The Sign-in and security card in Settings, with the Login email, Password and Sign-in code tabs](/Images/help/account-and-sign-in-security.webp)
 
-## The sign-in page in your language
+## Your language
 
-The sign-in page greets you in your own language: English, French or Chinese. It follows the language you picked there last time, or else the language your browser prefers. To change it, click **English**, **Français** or **中文** under the sign-in card; the page reloads in that language and remembers it on this browser.
+hubStudio speaks English, French and Chinese. The language changes the interface only: the menus, buttons and messages. Your prompts, posts, files and everything your team writes stay in the language they were written in.
 
-Only the sign-in page changes language. Once you're signed in, hubStudio is in English.
+You can pick any language your team offers. A new team offers all three; an admin changes the list on the Team page, under **Languages** (see [Your team](/help/your-team#languages)). When your team offers English only, **User Settings** says so under **Language**, with an **Open the Team page** link.
+
+You pick it in three places:
+
+- **User Settings**, under **Language**: choose it in **My language** and click **Save**. The page reloads in that language. The choice is saved on your account, so it follows you to every browser and device you sign in from, and the emails hubStudio sends you are written in it too.
+- The menu under your picture, at the top right of every page: the **Language · Langue · 语言** row holds **English**, **Français** and **中文**. Click one and the page reloads in it; your account remembers it as well.
+- The sign-in page, before you sign in: it greets you in the language you picked there last time, or else the one your browser prefers. To change it, click **English**, **Français** or **中文** under the sign-in card; the page reloads in that language and remembers it on this browser.
 
 ![The sign-in card as a browser set to French shows it, with English, Français and 中文 under the card and Français picked](/Images/help/account-and-sign-in-language.webp)
 

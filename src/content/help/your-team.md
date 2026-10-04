@@ -1,11 +1,11 @@
 ---
 title: "Your team"
 seoTitle: "Your team, its roles and its clients | hubStudio Help"
-description: "Working alone or in a team, the Admin, Creator, Viewer and Client roles, inviting people, answering requests to join, daily limits, pausing a login, adding clients and giving their people a login, invoice details and the sign-in code."
+description: "Working alone or in a team, the Admin, Creator, Viewer and Client roles, inviting people, answering requests to join, daily limits, pausing a login, adding clients and giving their people a login, invoice details, the sign-in code and the interface languages."
 excerpt: "A team shares one balance and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
 order: 15
-updated: 2026-10-01
+updated: 2026-10-04
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
 related: ["getting-started", "balance-and-payments", "history", "assets-library", "validation", "client-space", "skills"]
@@ -153,6 +153,10 @@ The **Invoices and sign-in** card, for admins, holds two decisions the team take
 - **Ask for a code sent by email at each sign-in**: after the password, everyone types a 6-digit code mailed to them. A browser they choose to trust skips it for 30 days. See [Account and sign-in](/help/account-and-sign-in#the-sign-in-code-by-email).
 
 ![The Invoices and sign-in card: who the invoices are made out to, where they are sent, the billing address, and the sign-in code switch](/Images/help/your-team-invoices-and-sign-in.webp)
+
+## Languages
+
+The **Languages** card, for admins, sets the interface languages your team can switch to. **English** is always on. Tick **Français** or **中文** to offer French or Chinese: every member then finds it in the menu under their picture and in **User Settings**, under **Language**. Untick one to take it away; the change shows on each member's next page. Only the interface changes: what the team writes and makes stays in the language it was written in. See [Account and sign-in](/help/account-and-sign-in#your-language).
 
 ## Rename the team
 
