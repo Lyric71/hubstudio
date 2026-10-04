@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "prebuild": "node scripts/check-content-todo.mjs && node --experimental-strip-types scripts/generate-llms-full.mjs",
+    "prebuild": "node scripts/check-content-todo.mjs && node --experimental-strip-types --no-warnings scripts/i18n-guard.mjs && node --experimental-strip-types scripts/generate-llms-full.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -23,7 +23,11 @@
     "help:sync": "node scripts/sync-help.mjs",
     "content:todo": "node scripts/check-content-todo.mjs",
     "llms:full": "node --experimental-strip-types scripts/generate-llms-full.mjs",
-    "indexnow": "node scripts/submit-indexnow.mjs"
+    "indexnow": "node scripts/submit-indexnow.mjs",
+    "i18n": "node --experimental-strip-types --no-warnings scripts/i18n.mjs",
+    "i18n:local": "node --experimental-strip-types --no-warnings scripts/i18n-local.mjs",
+    "i18n:tx": "node --experimental-strip-types --no-warnings scripts/i18n-tx.mjs",
+    "i18n:guard": "node --experimental-strip-types --no-warnings scripts/i18n-guard.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -32,6 +36,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "dotenv": "^18.0.4",
+    "node-html-parser": "^9.0.4",
     "resend": "^6.31.0",
     "tailwindcss": "^4.3.3"
   },

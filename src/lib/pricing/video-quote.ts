@@ -21,6 +21,7 @@ import {
   type VideoPricingConfig,
 } from './video-config.ts';
 import type { Money } from './quote.ts';
+import { fillTemplate, type Translate } from './format.ts';
 
 /* --- Inputs -------------------------------------------------------------- */
 
@@ -158,10 +159,14 @@ export function sequencesFor(
 /**
  * Price a video project. The one entry point: inputs in, every number the
  * quotation needs out, each already expressed in CNY, USD, and EUR.
+ *
+ * `tr` writes the line labels and details: English by default, t() in the
+ * browser on a French or Chinese page. Each one is a whole template.
  */
 export function computeVideoQuote(
   rawInputs: Partial<VideoQuoteInputs>,
   config: VideoPricingConfig = VIDEO_PRICING,
+  tr: Translate = fillTemplate,
 ): VideoQuote {
   const inputs = normalizeVideoInputs(rawInputs, config);
   const { rates, hours, pmPercent } = config;
@@ -179,18 +184,18 @@ export function computeVideoQuote(
 
   const creativeLines: VideoLine[] = [
     {
-      label: 'Brief and kickoff',
-      detail: `${hours.briefKickoffAm} h account manager`,
+      label: tr('Brief and kickoff'),
+      detail: tr('{hours} h account manager', { hours: hours.briefKickoffAm }),
       amount: money(briefCny),
     },
     {
-      label: 'Creative treatment and storyboard',
-      detail: `${hours.creativeTreatmentJcd} h creative director`,
+      label: tr('Creative treatment and storyboard'),
+      detail: tr('{hours} h creative director', { hours: hours.creativeTreatmentJcd }),
       amount: money(treatmentCny),
     },
     {
-      label: 'Project management',
-      detail: `${Math.round(pmPercent * 100)}% of the creative time`,
+      label: tr('Project management'),
+      detail: tr('{percent}% of the creative time', { percent: Math.round(pmPercent * 100) }),
       amount: money(pmCreativeCny),
     },
   ];
@@ -220,36 +225,38 @@ export function computeVideoQuote(
     pmPercent * (perVideoNonAmHours + shots * perSequenceNonAmHours);
   const pmProductionCny = pmProductionHours * rates.accountManager;
 
-  const shotLabel = shots === 1 ? '1 shot' : `${shots} shots`;
+  const one = shots === 1;
   const productionLines: VideoLine[] = [
     {
-      label: 'Sequence keyframes',
-      detail: `${shotLabel}, a start and an end frame each`,
+      label: tr('Sequence keyframes'),
+      detail: one
+        ? tr('1 shot, a start and an end frame each')
+        : tr('{shots} shots, a start and an end frame each', { shots }),
       amount: money(keyframesCny),
     },
     {
-      label: 'AI scene generation',
-      detail: `${shotLabel}`,
+      label: tr('AI scene generation'),
+      detail: one ? tr('1 shot') : tr('{shots} shots', { shots }),
       amount: money(aiSceneCny),
     },
     {
-      label: 'Compositing and edit',
-      detail: `${hours.compositingEditorPerVideo} h editor, per video`,
+      label: tr('Compositing and edit'),
+      detail: tr('{hours} h editor, per video', { hours: hours.compositingEditorPerVideo }),
       amount: money(compositingCny),
     },
     {
-      label: `${config.engine.includedRevisionRounds} revision rounds`,
-      detail: 'Edit, text, and timing',
+      label: tr('{rounds} revision rounds', { rounds: config.engine.includedRevisionRounds }),
+      detail: tr('Edit, text, and timing'),
       amount: money(revisionsCny),
     },
     {
-      label: 'Delivery',
-      detail: 'Masters, subtitles, thumbnail',
+      label: tr('Delivery'),
+      detail: tr('Masters, subtitles, thumbnail'),
       amount: money(deliveryCny),
     },
     {
-      label: 'Project management',
-      detail: `${Math.round(pmPercent * 100)}% of the production time`,
+      label: tr('Project management'),
+      detail: tr('{percent}% of the production time', { percent: Math.round(pmPercent * 100) }),
       amount: money(pmProductionCny),
     },
   ];

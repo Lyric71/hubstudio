@@ -24,11 +24,18 @@ import { isAuthed, getComments, kvConfigured, type Comment } from '../lib/sonepa
 const authed = await isAuthed(Astro.request);
 const loginError = Astro.url.searchParams.get('error') === '1';
 
+/**
+ * Comment timestamps are live data that no dictionary can hold, so they are
+ * written in the page's language here (the French and Chinese pages render
+ * this English page, Astro.locals.locale says which).
+ */
+const COMMENT_DATE_LOCALE = { en: 'en-US', fr: 'fr-FR', zh: 'zh-CN' }[Astro.locals.locale ?? 'en'];
+
 /** Friendly absolute-ish timestamp for a comment. */
 function when(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return '';
-  return d.toLocaleString('en-US', {
+  return d.toLocaleString(COMMENT_DATE_LOCALE, {
     month: 'short',
     day: 'numeric',
     hour: 'numeric',
@@ -155,13 +162,13 @@ const commentsReady = kvConfigured();
                           <ul class="db-comments" data-comments={asset.id}>
                             {(threads[asset.id] ?? []).map((c) => (
                               <li class="db-comment">
-                                <div class="db-comment-meta">
+                                <div class="db-comment-meta" data-no-i18n>
                                   <span class="db-comment-name">{c.name}</span>
                                   <time class="db-comment-time" datetime={c.ts}>
                                     {when(c.ts)}
                                   </time>
                                 </div>
-                                <p class="db-comment-body">{c.body}</p>
+                                <p class="db-comment-body" data-no-i18n>{c.body}</p>
                               </li>
                             ))}
                           </ul>
@@ -586,6 +593,8 @@ const commentsReady = kvConfigured();
 </style>
 
 <script>
+  import { numberLocale, t } from '../scripts/i18n';
+
   /**
    * Format switch: the pills inside a card swap the preview image, the spec
    * caption, and the enlarge/download target between delivery sizes of the
@@ -624,7 +633,7 @@ const commentsReady = kvConfigured();
   function fmtTime(iso: string): string {
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return '';
-    return d.toLocaleString('en-US', {
+    return d.toLocaleString(numberLocale(), {
       month: 'short',
       day: 'numeric',
       hour: 'numeric',
@@ -657,7 +666,7 @@ const commentsReady = kvConfigured();
           body: new FormData(form),
         });
         const data = await res.json();
-        if (!res.ok || !data.ok) throw new Error(data.error || 'Could not post.');
+        if (!res.ok || !data.ok) throw new Error(data.error || t('Could not post.'));
 
         const list = document.querySelector<HTMLElement>(
           `[data-comments="${assetId}"]`,
@@ -685,7 +694,7 @@ const commentsReady = kvConfigured();
         if (textarea) textarea.value = '';
       } catch (err) {
         if (msg) {
-          msg.textContent = err instanceof Error ? err.message : 'Could not post.';
+          msg.textContent = err instanceof Error ? err.message : t('Could not post.');
           msg.setAttribute('data-state', 'error');
         }
       } finally {

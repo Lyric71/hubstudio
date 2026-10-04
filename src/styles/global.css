@@ -112,6 +112,32 @@
   --shadow-card: 0 4px 24px rgba(10, 10, 20, 0.06);
 }
 
+/* Chinese pages (<html lang="zh-CN">): public/fonts only carries Latin
+   subsets, so every stack gets the system CJK faces before its generic family.
+   Latin text keeps Inter, Playfair Display and JetBrains Mono; other
+   languages are untouched. */
+html:lang(zh) {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans SC", "Source Han Sans SC", sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC",
+    serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Code",
+    Menlo, Consolas, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans SC", "Source Han Sans SC", monospace;
+  /* Chinese characters fill the whole em box: solid display leading would
+     make the lines touch. */
+  --lh-display: 1.2;
+  --lh-headline: 1.22;
+}
+
+/* Chinese has no italic: a slanted character reads as a rendering fault.
+   Emphasis keeps its colour and face, upright. */
+html:lang(zh) * {
+  font-style: normal !important;
+}
+
 /* --- Reset / base -------------------------------------------- */
 *,
 *::before,

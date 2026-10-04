@@ -6,6 +6,7 @@
  * demand (Vercel function); the rest of the site stays static.
  */
 import type { APIRoute } from 'astro';
+import { localizedBack } from '../../../lib/referer-locale';
 import { checkPassword, sessionCookie } from '../../../lib/debeers';
 
 export const prerender = false;
@@ -15,18 +16,19 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   try {
     form = await request.formData();
   } catch {
-    return redirect('/debeers?error=1', 303);
+    return redirect(localizedBack(request, '/debeers', '?error=1'), 303);
   }
 
   const password = ((form.get('password') as string) ?? '').trim();
   if (!checkPassword(password)) {
-    return redirect('/debeers?error=1', 303);
+    return redirect(localizedBack(request, '/debeers', '?error=1'), 303);
   }
 
   return new Response(null, {
     status: 303,
     headers: {
-      Location: '/debeers',
+      // Back to the page in the language it was opened in.
+      Location: localizedBack(request, '/debeers'),
       'Set-Cookie': await sessionCookie(),
     },
   });

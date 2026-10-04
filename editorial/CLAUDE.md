@@ -44,6 +44,7 @@ Every article goes through these steps. None is optional.
 | 2. Quality | `/content-quality-us` | 18-pass loop on the draft, in place | `quality_passed`, `quality_passed_on` |
 | 3. Image | `/generate-image-openai` | Hero image from the feature-image block | `image_ready`, `image_generated_on` |
 | 4. Publish | `/createblogarticle` + build + git | Creates the article page and the `insights.ts` entry, wires the image, runs `npm run build` and `npm run check`, commits on main, pushes to origin | `published`, `published_on` |
+| 4b. French and Chinese | `src/i18n/TRANSLATING.md` | Inside step 4, before the build: French slug in `src/i18n/routes.ts`, extract, three-pass translation of every new French and Chinese entry (the article and the pages that list it), localized captures if it shows the app, `npm run i18n:local -- check` and `npm run i18n:guard` passing, dictionaries in the same commit | (none: a row is `published` only in three languages) |
 | 5. Notify | `editorial/scripts/notify-publish.mjs` (Resend) | Emails a publish summary to Cyril | (noted in the run log) |
 
 "Draft today's article." runs steps 0 to 3 and stops. Step 4 runs only when a
@@ -69,10 +70,19 @@ Already settled, and different from what the search spec assumes:
    referenced as `/Images/insight-<slug>.webp`. The spec says
    `public/images/insights/<slug>.webp`. The repo convention wins, because
    `src/data/insights.ts` and the pre-commit optimizer both key on it.
-3. **English only.** There is no French insights section under
-   `src/pages/fr/`, so there is no locale propagation and no `/deep-translate`
-   pass on an insight. If the section is built later, publishing gains that
-   step and this line gets rewritten.
+3. **Every article publishes in English, French and Chinese.** Decided
+   2026-10-04: the site is trilingual and all languages are updated with
+   every change. The article stays English in `output/` and in its `.astro`
+   page, the only source; French and Chinese come from the site's
+   dictionaries, so `/createblogarticle`'s locale steps (its Step 3, a copy of
+   the post per locale, and its Step 5) do not apply here. They are replaced
+   by step 4b: the French slug in the `ARTICLES` map of `src/i18n/routes.ts`
+   (native French, chosen by the run, never changed once live), then
+   `src/i18n/TRANSLATING.md` from extract to check, the three passes of
+   `/deep-translate` included, on the article and on every page that lists
+   it. A row whose translation cannot be finished is not published: it stays
+   at `image_ready`, the run log and the email say why, and the next run
+   takes it again. Never publish it in English only.
 4. **Research files live at `editorial/research/<slug>.md`**, not `research/`
    at the repo root, so the whole system sits in one folder.
 5. **The email goes through Resend**, the contact form's provider, to the
@@ -183,6 +193,13 @@ now decided. A run applies them and does not raise them again.
 9. **Anything outside this repo** (the shared runner, Task Scheduler, the
    relauncher, connector sign ins) is recorded as a plain fact in the run log
    when it affected the run, not as a request.
+10. **The French slug and the French and Chinese wording are the run's
+    call.** They follow `src/i18n/TRANSLATING.md` and the glossaries in
+    `src/i18n/glossary/`; a run never asks for them. A term the run settles
+    for later pages goes into the glossary in the same commit.
+11. **The dev server for the translation step** is started by
+    `npm run i18n:local` itself. A run never waits for one, and never
+    publishes without the check because one was missing.
 
 ## Model quality: no compromise
 
@@ -312,7 +329,10 @@ is smart, busy, and has read four vendor pages already today.
 - **No decorative ordinals** in any repeated titled block.
 - **No Han characters outside a Chinese term gloss.** The repo bans stray
   Chinese characters in English copy. A term gloss like RedNote (小红书) is the
-  sanctioned exception.
+  sanctioned exception. The Chinese dictionaries (`src/i18n/dict/zh/`) are
+  Chinese content and are written entirely in Chinese.
+- **No English-only article.** Every article ships with its French slug and
+  its French and Chinese translations (step 4b), or does not ship.
 
 ## Brand vocabulary
 
@@ -425,6 +445,10 @@ skipping silently.
 | Hero image | `../public/Images/insight-<slug>.webp` |
 | Published article | `../src/pages/resources/insights/<slug>.astro` |
 | Published metadata | one entry in `../src/data/insights.ts` |
+| French address | one line in `ARTICLES`, `../src/i18n/routes.ts` |
+| French and Chinese text | `../src/i18n/dict/fr/` and `dict/zh/`, `pages/resources/insights/<slug>.json`, plus the dictionaries of the pages that list it |
+| Translator guide and glossaries | `../src/i18n/TRANSLATING.md`, `../src/i18n/glossary/` |
+| Translation work files | `../.i18n-work/` (ignored by git; `changes.md` of each pass copied into the run log) |
 | Source ledger | `sources/verified-sources.md` |
 | Site profile cache | `sources/site-profile.md` |
 | Run log | `logs/YYYY-MM-DD.md` |

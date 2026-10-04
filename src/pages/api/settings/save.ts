@@ -11,6 +11,7 @@
  *   reset   drop every override and go back to the defaults in source
  */
 import type { APIRoute } from 'astro';
+import { localizedBack } from '../../../lib/referer-locale';
 import { isAuthed } from '../../../lib/settings-gate';
 import {
   refreshFx,
@@ -32,14 +33,14 @@ function num(form: FormData, key: string): number | undefined {
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   if (!(await isAuthed(request))) {
-    return redirect(`${PAGE}?error=1`, 303);
+    return redirect(localizedBack(request, PAGE, `?error=1`), 303);
   }
 
   let form: FormData;
   try {
     form = await request.formData();
   } catch {
-    return redirect(`${PAGE}?saved=0`, 303);
+    return redirect(localizedBack(request, PAGE, `?saved=0`), 303);
   }
 
   const action = ((form.get('action') as string) ?? 'save').trim();
@@ -47,12 +48,12 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   try {
     if (action === 'refresh') {
       const fx = await refreshFx();
-      return redirect(`${PAGE}?${fx ? 'refreshed=1' : 'refreshed=0'}`, 303);
+      return redirect(localizedBack(request, PAGE, `?${fx ? 'refreshed=1' : 'refreshed=0'}`), 303);
     }
 
     if (action === 'reset') {
       await saveOverrides({});
-      return redirect(`${PAGE}?saved=1`, 303);
+      return redirect(localizedBack(request, PAGE, `?saved=1`), 303);
     }
 
     const overrides: PricingOverrides = {
@@ -101,10 +102,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     };
 
     await saveOverrides(overrides);
-    return redirect(`${PAGE}?saved=1`, 303);
+    return redirect(localizedBack(request, PAGE, `?saved=1`), 303);
   } catch {
     // The only realistic failure is KV not being connected.
-    return redirect(`${PAGE}?saved=0`, 303);
+    return redirect(localizedBack(request, PAGE, `?saved=0`), 303);
   }
 };
 

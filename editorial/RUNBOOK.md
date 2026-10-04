@@ -151,19 +151,40 @@ Prerequisites for the calendar, not parallel work.
 `Publish <slug>` runs `/createblogarticle` on `output/<slug>.md`. That skill
 creates `src/pages/resources/insights/<slug>.astro`, adds the entry to
 `src/data/insights.ts`, converts the plain-text internal references into
-links, wires the hero image, and updates every listing surface. Insights are
-English only today, so there is no locale propagation and no `/deep-translate`
-pass. If a French insights section is built later, publishing gains that step.
+links, wires the hero image, and updates every listing surface. The skill's
+own locale steps (a post copy per locale, its Step 5) do not apply: this site
+translates from dictionaries.
+
+Then the French and Chinese versions, by `src/i18n/TRANSLATING.md` (step 4b in
+`CLAUDE.md`):
+
+1. The French slug: one line in the `ARTICLES` map of `src/i18n/routes.ts`,
+   native French, accents stripped, alphabetical, never changed once live.
+2. `npm run i18n:local -- extract --context .i18n-work/ctx` (every page; it
+   starts and stops its own dev server when none runs; allow ten minutes).
+3. `npm run i18n:tx -- pending fr` and `pending zh`: the article's dictionary
+   and those of the pages that list it (home, insights index, insights
+   layers) come back with empty entries.
+4. Each one translated with the three passes (pass files, `changes.md`,
+   `npm run i18n:tx -- build`), French and Chinese as two parallel subagents.
+   Each `changes.md` goes into the run log.
+5. Localized captures when the article shows the app (insight heroes carry no
+   text and need none).
+6. `npm run i18n:local -- check` and `npm run i18n:guard` both print ✓.
 
 Then, in this order, and only when each step passes: `npm run build` (its
 `prebuild` runs `scripts/check-content-todo.mjs`, which fails the build on any
-TODO, FIXME or TBD marker in published content), `npm run check`, `git add` of everything the article touched (the page, the
-data file, the hero image, listing surfaces, `editorial/output`,
-`editorial/research`, `editorial/logs`, `schedule.csv`, `editorial/sources`),
-one commit on main (`feat(insights): publish <slug>`), `git push origin main`.
-A failed build or check means no commit, no push, the row stays at
-`image_ready`, and the email reports the failure. Vercel deploys from main, so
-the push is what puts the article live.
+TODO, FIXME or TBD marker in published content, and `scripts/i18n-guard.mjs`,
+which fails it on a page without a French address or an empty translation),
+`npm run check`, `git add` of everything the article touched (the page, the
+data file, the hero image, listing surfaces, `src/i18n/routes.ts`,
+`src/i18n/dict`, any localized capture and `src/i18n/localized-images.json`,
+`editorial/output`, `editorial/research`, `editorial/logs`, `schedule.csv`,
+`editorial/sources`), one commit on main (`feat(insights): publish <slug>`),
+`git push origin main`. A failed translation, i18n check, build or check means
+no commit, no push, the row stays at `image_ready`, and the email reports the
+failure. Never publish the English alone. Vercel deploys from main, so the
+push is what puts the article live in all three languages.
 
 Then run `editorial/scripts/notify-publish.mjs` from the repo root. It sends
 one email through Resend to the address in `CONTACT_TO_EMAIL`: subject
@@ -176,8 +197,9 @@ is `blocked` and does not publish (see "No TODO leaves a run" in
 The same publish run also works through `watch.csv`. Every row whose
 `due_date` is today or earlier is rechecked against its source. If the fact
 moved, the live page and its draft are corrected, `dateModifiedISO` is set on
-the article's entry in `src/data/insights.ts`, and the change goes through the
-same build, check, commit (`fix(insights): update <slug>`) and push. Then the
+the article's entry in `src/data/insights.ts`, the changed sentences are
+translated in French and Chinese (extract, three passes, i18n check), and the
+change goes through the same build, check, commit (`fix(insights): update <slug>`) and push. Then the
 row is removed, or replaced with a new dated row if the matter is still
 pending. A watch row is never reported as an open item.
 
@@ -261,6 +283,8 @@ being linked is a different outcome that still moves deals.
 | Image generation fails on a name | The prompt named a real person. Convert the reference to its visual properties and retry. |
 | Image has text, a logo or an AI tell | Regenerate. Never wire in an unchecked image. |
 | The quality pass loosened the SEO fields past 52 / 152 | The skill's own ceilings leaked through. Recount and trim. |
+| The translation step fails (no dev server, `check` will not pass) | No commit, no push, the row stays at `image_ready`, the email reports it with `--build failed`. The next publish run takes the row again. `npm run i18n:local` starts its own dev server; when it says the running one predates the last `.env` change, rerun it with `--restart`. |
+| An article shows the app and its French or Chinese capture cannot be taken | Same as a failed translation: the row waits. Captures need the hubStudio app running (`npm run dev:hubstudio` in the BearingBridge repository, port 4324). |
 | No publish email arrived | Rerun the notify script with `--dry-run` to see the payload, then without it. Check `RESEND_API_KEY` in `.env`. |
 
 ## Automating it
@@ -298,6 +322,12 @@ Disable-ScheduledTask -TaskName 'hubStudio Editorial Publish'
 
 Runs use `--dangerously-skip-permissions` so nothing pauses for approval, and
 pin the most capable model. Never lower the model to speed a run up.
+
+The publish run needs no dev server left open: `npm run i18n:local` starts
+one from the repository for the translation step and stops it afterwards.
+Each model attempt of the shared runner is stopped after 120 minutes; the run
+translates French and Chinese as two parallel subagents to stay inside it, and
+a stopped attempt resumes from the pass files in `.i18n-work/`.
 
 ## Before the first run
 

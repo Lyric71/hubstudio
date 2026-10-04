@@ -309,19 +309,58 @@ const excluded = [
 
 <script is:inline>
   (function () {
-    const fmt = (n) =>
-      n >= 100 ? '$' + Math.round(n).toLocaleString('en-US') : '$' + n.toFixed(2);
+    /* French and Chinese pages carry their strings in window.__i18n (the
+       middleware puts it there); English is the fallback. {name} placeholders
+       are filled after the lookup, so each key is a whole sentence. */
+    const t = (s, vars) =>
+      ((window.__i18n && window.__i18n[s]) || s).replace(/\{(\w+)\}/g, (w, k) =>
+        vars && k in vars ? String(vars[k]) : w,
+      );
+    const lang = document.documentElement.lang.toLowerCase();
+    const locale = lang.startsWith('fr') ? 'fr-FR' : lang.startsWith('zh') ? 'zh-CN' : 'en-US';
+    const money = (digits) =>
+      new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: 'USD',
+        currencyDisplay: 'narrowSymbol',
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits,
+      });
+    const whole = money(0);
+    const cents = money(2);
+    const fmt = (n) => (n >= 100 ? whole.format(Math.round(n)) : cents.format(n));
+    const range = (a, b) => t('{low} to {high}', { low: fmt(a), high: fmt(b) });
 
     const rows = Array.from(document.querySelectorAll('[data-row]'));
     const totalEl = document.getElementById('pc-total');
     const tierEl = document.getElementById('pc-tier');
 
-    /* Thresholds are annual image counts, from one card's published ladder. */
+    /* Thresholds are annual image counts, from one card's published ladder.
+       Each tier carries its whole sentence, {n} being the image count. */
     const tiers = [
-      { from: 500, off: 0.3, label: 'at the published ceiling of 30 percent off' },
-      { from: 234, off: 0.2, label: 'at the published 20 percent tier' },
-      { from: 96, off: 0.1, label: 'at the published 10 percent tier' },
-      { from: 0, off: 0, label: 'below the first published volume tier' },
+      {
+        from: 500,
+        off: 0.3,
+        sentence:
+          '{n} images a year puts this at the published ceiling of 30 percent off, applied to the capture and retouch lines.',
+      },
+      {
+        from: 234,
+        off: 0.2,
+        sentence:
+          '{n} images a year puts this at the published 20 percent tier, applied to the capture and retouch lines.',
+      },
+      {
+        from: 96,
+        off: 0.1,
+        sentence:
+          '{n} images a year puts this at the published 10 percent tier, applied to the capture and retouch lines.',
+      },
+      {
+        from: 0,
+        off: 0,
+        sentence: '{n} images a year is below the first published volume tier, so no discount is applied.',
+      },
     ];
 
     function recalc() {
@@ -339,32 +378,26 @@ const excluded = [
         if (row.dataset.counts === '1') images += qty;
 
         const cell = row.querySelector('.pc-line');
-        if (!qty) cell.textContent = 'zero';
+        if (!qty) cell.textContent = t('zero');
         else if (l === h) cell.textContent = fmt(l);
-        else cell.textContent = fmt(l) + ' to ' + fmt(h);
+        else cell.textContent = range(l, h);
       }
 
       if (low === 0 && high === 0) {
-        totalEl.textContent = 'Enter a quantity to see a range';
+        totalEl.textContent = t('Enter a quantity to see a range');
         tierEl.textContent = '';
         return;
       }
 
-      const tier = tiers.find((t) => images >= t.from);
+      const tier = tiers.find((x) => images >= x.from);
       const dLow = low * (1 - tier.off);
       const dHigh = high * (1 - tier.off);
 
-      totalEl.textContent =
-        dLow === dHigh ? fmt(dLow) : fmt(dLow) + ' to ' + fmt(dHigh);
+      totalEl.textContent = dLow === dHigh ? fmt(dLow) : range(dLow, dHigh);
 
-      tierEl.textContent = tier.off
-        ? images +
-          ' images a year puts this ' +
-          tier.label +
-          ', applied to the capture and retouch lines.'
-        : images
-          ? images + ' images a year is ' + tier.label + ', so no discount is applied.'
-          : 'No image volume entered, so no volume tier applies.';
+      tierEl.textContent = images
+        ? t(tier.sentence, { n: images })
+        : t('No image volume entered, so no volume tier applies.');
     }
 
     rows.forEach((r) => r.querySelector('.pc-qty').addEventListener('input', recalc));

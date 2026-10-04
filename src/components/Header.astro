@@ -10,12 +10,8 @@
  * the mobile drawer.
  */
 import Logo from './Logo.astro';
-import { localizePath } from '../i18n/utils';
-import { getLocaleFromUrl } from '../i18n/utils';
+import LangSwitch from './LangSwitch.astro';
 import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../lib/links';
-
-const locale = getLocaleFromUrl(Astro.url);
-const lp = (p: string) => localizePath(p, locale);
 
 interface Props {
   /** When true the bar sits transparently over a dark hero: light text /
@@ -295,7 +291,7 @@ const menu: MenuItem[] = [
 >
   <div class="site-header__bar">
     <div class="container site-header__inner">
-      <a class="site-header__logo" href={lp('/')} aria-label="hubStudio home">
+      <a class="site-header__logo" href="/" aria-label="hubStudio home">
         <Logo class="logo--light" />
         <Logo tone="dark" class="logo--dark" />
       </a>
@@ -308,7 +304,7 @@ const menu: MenuItem[] = [
               if (!item.groups && !item.serviceGroups && !item.solutionCols) {
                 return (
                   <li class="nav-item">
-                    <a class="nav-item__trigger" href={lp(item.href)}>
+                    <a class="nav-item__trigger" href={item.href}>
                       {item.label}
                     </a>
                   </li>
@@ -316,7 +312,7 @@ const menu: MenuItem[] = [
               }
               return (
                 <li class="nav-item">
-                  <a class="nav-item__trigger" href={lp(item.href)} aria-haspopup="true">
+                  <a class="nav-item__trigger" href={item.href} aria-haspopup="true">
                     {item.label}
                     <svg class="nav-item__chevron" viewBox="0 0 12 12" aria-hidden="true">
                       <path d="M2 4 6 8 10 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
@@ -345,14 +341,14 @@ const menu: MenuItem[] = [
                           <ul class="mega__intro-list">
                             {item.introLinks.map((l) => (
                               <li>
-                                <a class="sol-link" href={lp(l.href)}>
+                                <a class="sol-link" href={l.href}>
                                   {l.label}
                                 </a>
                               </li>
                             ))}
                           </ul>
                         )}
-                        <a class="mega__intro-link" href={lp(item.href)}>
+                        <a class="mega__intro-link" href={item.href}>
                           All of {item.label} &rarr;
                         </a>
                       </div>
@@ -366,7 +362,7 @@ const menu: MenuItem[] = [
                               <ul class="mega__svc-list">
                                 {group.links.map((l) => (
                                   <li>
-                                    <a class="sol-link" href={lp(l.href)}>
+                                    <a class="sol-link" href={l.href}>
                                       {l.label}
                                     </a>
                                   </li>
@@ -389,7 +385,7 @@ const menu: MenuItem[] = [
                                   <ul class="mega__sol-list">
                                     {col.links!.map((l) => (
                                       <li>
-                                        <a class="sol-link" href={lp(l.href)}>
+                                        <a class="sol-link" href={l.href}>
                                           {l.label}
                                         </a>
                                       </li>
@@ -410,7 +406,7 @@ const menu: MenuItem[] = [
                                       <ul class="mega__sol-list">
                                         {sg.links.map((l) => (
                                           <li>
-                                            <a class="sol-link" href={lp(l.href)}>
+                                            <a class="sol-link" href={l.href}>
                                               {l.label}
                                             </a>
                                           </li>
@@ -433,7 +429,7 @@ const menu: MenuItem[] = [
                               <ul>
                                 {group.links.map((link) => (
                                   <li>
-                                    <a class="mega__link" href={lp(link.href)}>
+                                    <a class="mega__link" href={link.href}>
                                       <span class="mega__link-title">{link.title}</span>
                                       <span class="mega__link-desc">{link.desc}</span>
                                     </a>
@@ -447,7 +443,7 @@ const menu: MenuItem[] = [
                       {item.featured && (
                         <a
                           class={`mega__feat card card--${item.featured.variant}`}
-                          href={/^https?:/.test(item.featured.cta.href) ? item.featured.cta.href : lp(item.featured.cta.href)}
+                          href={/^https?:/.test(item.featured.cta.href) ? item.featured.cta.href : item.featured.cta.href}
                         >
                           {item.featured.image ? (
                             <img
@@ -481,11 +477,12 @@ const menu: MenuItem[] = [
       <div class="site-header__actions">
         {/* The app door first (sign in, create an account), the studio door
             second (send a brief). See hubstudio-positioning.md. */}
+        <LangSwitch class="site-header__lang" />
         <a class="site-header__signin" href={APP_SIGNIN} rel="noopener">Sign in</a>
         <a class="btn btn--primary site-header__engine" href={APP_SIGNUP} rel="noopener"
           >Create account</a
         >
-        <a class="btn btn--secondary site-header__brief" href={lp(BRIEF_URL)}>Send a brief</a>
+        <a class="btn btn--secondary site-header__brief" href={BRIEF_URL}>Send a brief</a>
         <button
           class="site-header__burger"
           id="nav-burger"
@@ -513,7 +510,7 @@ const menu: MenuItem[] = [
             if (!item.groups && !item.serviceGroups && !item.solutionCols) {
               return (
                 <div class="m-acc">
-                  <a class="m-acc__trigger m-acc__trigger--link" href={lp(item.href)}>
+                  <a class="m-acc__trigger m-acc__trigger--link" href={item.href}>
                     {item.label}
                   </a>
                 </div>
@@ -537,7 +534,7 @@ const menu: MenuItem[] = [
                         <ul class="m-acc__group-list">
                           {item.introLinks.map((l) => (
                             <li>
-                              <a href={lp(l.href)}>{l.label}</a>
+                              <a href={l.href}>{l.label}</a>
                             </li>
                           ))}
                         </ul>
@@ -551,7 +548,7 @@ const menu: MenuItem[] = [
                           <ul class="m-acc__group-list">
                             {group.links.map((l) => (
                               <li>
-                                <a href={lp(l.href)}>{l.label}</a>
+                                <a href={l.href}>{l.label}</a>
                               </li>
                             ))}
                           </ul>
@@ -566,7 +563,7 @@ const menu: MenuItem[] = [
                             <ul class="m-acc__group-list">
                               {col.links.map((l) => (
                                 <li>
-                                  <a href={lp(l.href)}>{l.label}</a>
+                                  <a href={l.href}>{l.label}</a>
                                 </li>
                               ))}
                             </ul>
@@ -578,7 +575,7 @@ const menu: MenuItem[] = [
                                 <ul class="m-acc__group-list">
                                   {sg.links.map((l) => (
                                     <li>
-                                      <a href={lp(l.href)}>{l.label}</a>
+                                      <a href={l.href}>{l.label}</a>
                                     </li>
                                   ))}
                                 </ul>
@@ -594,14 +591,14 @@ const menu: MenuItem[] = [
                           <ul class="m-acc__group-list">
                             {group.links.map((link) => (
                               <li>
-                                <a href={lp(link.href)}>{link.title}</a>
+                                <a href={link.href}>{link.title}</a>
                               </li>
                             ))}
                           </ul>
                         </div>
                       ))}
 
-                    <a class="m-acc__all" href={lp(item.href)}>
+                    <a class="m-acc__all" href={item.href}>
                       All of {item.label} &rarr;
                     </a>
                   </div>
@@ -613,8 +610,9 @@ const menu: MenuItem[] = [
       </div>
       <div class="mobile-drawer__foot container">
         <a class="btn btn--primary" href={APP_SIGNUP} rel="noopener">Create account</a>
-        <a class="btn btn--secondary" href={lp(BRIEF_URL)}>Send a brief</a>
+        <a class="btn btn--secondary" href={BRIEF_URL}>Send a brief</a>
         <a class="mobile-drawer__signin" href={APP_SIGNIN} rel="noopener">Already on hubStudio? Sign in</a>
+        <LangSwitch variant="row" class="mobile-drawer__lang" />
       </div>
     </div>
   </div>
@@ -718,6 +716,7 @@ const menu: MenuItem[] = [
     color: var(--brand-orange);
   }
   .nav-item__chevron {
+    flex: none;
     width: 11px;
     height: 11px;
     transition: transform 180ms ease-out;
@@ -1013,9 +1012,39 @@ const menu: MenuItem[] = [
   .site-header__brief {
     display: none;
   }
+  /* French labels run longer (Réalisations, Créer un compte, Envoyer un
+     brief): between 1200 and 1535 px the French bar sits tighter so it
+     still fits on one line. */
+  @media (min-width: 1200px) and (max-width: 1535px) {
+    .site-header:lang(fr) .nav-item__trigger {
+      padding-inline: 7px;
+    }
+    .site-header:lang(fr) .site-header__inner,
+    .site-header:lang(fr) .site-header__actions {
+      gap: 6px;
+    }
+    .site-header:lang(fr) .site-header__actions .btn {
+      padding-inline: 18px;
+    }
+  }
+  /* Language switcher (LangSwitch.astro): same colour rules as Sign in. */
+  .site-header :global(.site-header__lang) {
+    display: none;
+    color: var(--text-ink);
+  }
+  .site-header[data-overlay='true'][data-scrolled='false'] :global(.site-header__lang) {
+    color: var(--text-on-dark);
+  }
+  .mobile-drawer__foot :global(.mobile-drawer__lang) {
+    justify-content: center;
+    margin-top: 8px;
+  }
   @media (min-width: 1024px) {
     .site-header__signin {
       display: inline-flex;
+    }
+    .site-header :global(.site-header__lang) {
+      display: block;
     }
   }
   @media (min-width: 1200px) {

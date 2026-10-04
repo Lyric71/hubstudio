@@ -21,9 +21,12 @@ import { isAuthed } from '../../../lib/settings-gate';
 import { PRICING } from '../../../lib/pricing/config';
 import { VIDEO_PRICING } from '../../../lib/pricing/video-config';
 import { loadPricingConfigs } from '../../../lib/pricing/settings';
-import { formatDate } from '../../../lib/pricing/format';
+import { NUMBER_LOCALE, formatDate } from '../../../lib/pricing/format';
 
 const authed = await isAuthed(Astro.request);
+// A fetch time is live data no dictionary can hold: it is written in the page
+// language here (the French and Chinese addresses render this page).
+const numLocale = NUMBER_LOCALE[Astro.locals.locale ?? 'en'];
 const loginError = Astro.url.searchParams.get('error') === '1';
 const saved = Astro.url.searchParams.get('saved');
 const refreshed = Astro.url.searchParams.get('refreshed');
@@ -391,9 +394,13 @@ const fetchedAt = fx ? new Date(fx.fetchedAt) : null;
                 <div class="st-fx-row">
                   <dt>Last fetched</dt>
                   <dd>
-                    {fetchedAt
-                      ? `${formatDate(fetchedAt)}, ${fetchedAt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`
-                      : 'Never'}
+                    {fetchedAt ? (
+                      <span data-no-i18n>
+                        {`${formatDate(fetchedAt, numLocale)}, ${fetchedAt.toLocaleTimeString(numLocale, { hour: 'numeric', minute: '2-digit' })}`}
+                      </span>
+                    ) : (
+                      'Never'
+                    )}
                   </dd>
                 </div>
                 <div class="st-fx-row">

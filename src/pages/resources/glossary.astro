@@ -1662,6 +1662,8 @@ const breadcrumbSchema = {
 </style>
 
 <script>
+  import { t } from '../../scripts/i18n';
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- Reading progress bar ------------------------------------ */
@@ -1793,7 +1795,9 @@ const breadcrumbSchema = {
     const q = (search?.value || '').trim().toLowerCase();
     let shown = 0;
     terms.forEach((term) => {
-      const hit = q === '' || (term.dataset.search || '').includes(q);
+      // data-search is English: a French or Chinese page searches what it shows.
+      const hay = document.documentElement.lang === 'en' ? term.dataset.search || '' : (term.textContent || '').toLowerCase();
+      const hit = q === '' || hay.includes(q);
       term.classList.toggle('is-hidden', !hit);
       if (hit) shown += 1;
     });
@@ -1803,7 +1807,7 @@ const breadcrumbSchema = {
       const link = azLinks.get(group.id);
       if (link) link.classList.toggle('is-disabled', !visible);
     });
-    if (countEl) countEl.textContent = q ? `${shown} of ${total}` : `${total} terms`;
+    if (countEl) countEl.textContent = q ? t('{shown} of {total}', { shown, total }) : t('{total} terms', { total });
     if (emptyEl) emptyEl.hidden = shown > 0;
     if (clearBtn) clearBtn.hidden = q === '';
   };

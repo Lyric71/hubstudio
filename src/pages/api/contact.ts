@@ -7,6 +7,8 @@
  */
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
+import { pathIn, tr } from '../../i18n/index';
+import { refererLocale } from '../../lib/referer-locale';
 
 export const prerender = false;
 
@@ -29,6 +31,8 @@ function esc(value: string): string {
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   const wantsJson = (request.headers.get('accept') ?? '').includes('application/json');
+  // Errors and the thank-you page follow the language of the contact page.
+  const locale = refererLocale(request);
 
   const ok = () =>
     wantsJson
@@ -36,15 +40,17 @@ export const POST: APIRoute = async ({ request, redirect }) => {
           status: 200,
           headers: { 'content-type': 'application/json' },
         })
-      : redirect('/thank-you', 303);
+      : redirect(pathIn('/thank-you', locale) ?? '/thank-you', 303);
 
-  const fail = (status: number, error: string) =>
-    wantsJson
+  const fail = (status: number, english: string) => {
+    const error = tr(locale, english);
+    return wantsJson
       ? new Response(JSON.stringify({ ok: false, error }), {
           status,
           headers: { 'content-type': 'application/json' },
         })
-      : new Response(error, { status });
+      : new Response(error, { status, headers: { 'content-type': 'text/plain; charset=utf-8' } });
+  };
 
   let form: FormData;
   try {

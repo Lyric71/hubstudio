@@ -51,6 +51,7 @@ import {
   CURRENCIES,
   CURRENCY_NAME,
   DEFAULT_CURRENCY,
+  NUMBER_LOCALE,
   formatDate,
   formatMoney,
   formatMultiplier,
@@ -68,7 +69,10 @@ const { image: imageConfig, video: videoConfig } = await loadPricingConfigs();
 // First paint (and the no-JS fallback) shows a real quote, not empty cells.
 const quote = computeQuote(DEFAULT_INPUTS, imageConfig);
 const videoQuote = computeVideoQuote(DEFAULT_VIDEO_INPUTS, videoConfig);
-const today = formatDate(new Date());
+// Digits and the date follow the page language (the French and Chinese
+// addresses render this page); the browser formats the same way.
+const numLocale = NUMBER_LOCALE[Astro.locals.locale ?? 'en'];
+const today = formatDate(new Date(), numLocale);
 const uplift = formatUplift(imageConfig.accountManagerUpliftPct);
 const moq = imageConfig.minimumImages;
 const hourUnit = convert(imageConfig.designerHour, imageConfig);
@@ -368,7 +372,7 @@ const goodToKnow = [
                         class="pc-option-total-value"
                         data-out={`basePerImage${option.id}`}
                       >
-                        {formatMoney(quote.basePerImage[option.id], DEFAULT_CURRENCY)}
+                        {formatMoney(quote.basePerImage[option.id], DEFAULT_CURRENCY, numLocale)}
                       </span>
                     </p>
                   </article>
@@ -387,7 +391,7 @@ const goodToKnow = [
                 One row per image. Complexity is scored by the scene, never by the
                 product, and it multiplies that image's production price. Add-ons
                 are chosen per image and cost{' '}
-                <span data-out="designerHour">{formatMoney(hourUnit, DEFAULT_CURRENCY)}</span>{' '}
+                <span data-out="designerHour">{formatMoney(hourUnit, DEFAULT_CURRENCY, numLocale)}</span>{' '}
                 each.
                 Rows past your image count are greyed out and cost nothing.
               </p>
@@ -396,7 +400,7 @@ const goodToKnow = [
                 {COMPLEXITIES.map((level) => (
                   <li class="pc-legend-item">
                     <span class="pc-legend-name">
-                      {level.id} ({formatMultiplier(level.multiplier)})
+                      {level.id} ({formatMultiplier(level.multiplier, numLocale)})
                     </span>
                     <span class="pc-legend-note">{level.note}</span>
                   </li>
@@ -431,7 +435,7 @@ const goodToKnow = [
                               value={level.id}
                               selected={level.id === line.row.complexity}
                             >
-                              {level.id} ({formatMultiplier(level.multiplier)})
+                              {level.id} ({formatMultiplier(level.multiplier, numLocale)})
                             </option>
                           ))}
                         </select>
@@ -455,7 +459,7 @@ const goodToKnow = [
                         data-head="Production"
                         data-production={line.index}
                       >
-                        {formatMoney(line.production, DEFAULT_CURRENCY)}
+                        {formatMoney(line.production, DEFAULT_CURRENCY, numLocale)}
                       </span>
                       <span
                         class="pc-td pc-num pc-td--line"
@@ -463,7 +467,7 @@ const goodToKnow = [
                         data-head="Add-ons"
                         data-rowaddons={line.index}
                       >
-                        {formatMoney(line.addOns, DEFAULT_CURRENCY)}
+                        {formatMoney(line.addOns, DEFAULT_CURRENCY, numLocale)}
                       </span>
                     </div>
                   ))}
@@ -507,7 +511,7 @@ const goodToKnow = [
                       data-head="Unit price"
                       data-unit={line.spec.id}
                     >
-                      {formatUnit(line.unit, DEFAULT_CURRENCY, line.onRequest)}
+                      {formatUnit(line.unit, DEFAULT_CURRENCY, line.onRequest, numLocale)}
                     </span>
                     <span class="pc-td pc-num" role="cell" data-head="Quantity">
                       <input
@@ -528,7 +532,7 @@ const goodToKnow = [
                     >
                       {line.onRequest
                         ? 'On request'
-                        : formatMoney(line.line, DEFAULT_CURRENCY)}
+                        : formatMoney(line.line, DEFAULT_CURRENCY, numLocale)}
                     </span>
                   </div>
                 ))}
@@ -539,7 +543,7 @@ const goodToKnow = [
             <section class="pc-block" aria-labelledby="pc-h-post">
               <h2 class="pc-block-h" id="pc-h-post">Post-production options</h2>
               <p class="pc-note pc-note--lead">
-                One designer hour each, {formatMoney(hourUnit, 'CNY')}. Background
+                One designer hour each, {formatMoney(hourUnit, 'CNY', numLocale)}. Background
                 changes and shadow or reflection work are not listed here: they are
                 part of standard retouch and already included.
               </p>
@@ -564,7 +568,7 @@ const goodToKnow = [
                       data-head="Unit price"
                       data-unit={line.spec.id}
                     >
-                      {formatUnit(line.unit, DEFAULT_CURRENCY, line.onRequest)}
+                      {formatUnit(line.unit, DEFAULT_CURRENCY, line.onRequest, numLocale)}
                     </span>
                     <span class="pc-td pc-num" role="cell" data-head="Quantity">
                       <input
@@ -585,7 +589,7 @@ const goodToKnow = [
                     >
                       {line.onRequest
                         ? 'On request'
-                        : formatMoney(line.line, DEFAULT_CURRENCY)}
+                        : formatMoney(line.line, DEFAULT_CURRENCY, numLocale)}
                     </span>
                   </div>
                 ))}
@@ -628,7 +632,7 @@ const goodToKnow = [
                       data-head="Amount"
                       data-out={row.id}
                     >
-                      {formatMoney(money[row.id], DEFAULT_CURRENCY)}
+                      {formatMoney(money[row.id], DEFAULT_CURRENCY, numLocale)}
                     </span>
                   </div>
                 ))}
@@ -747,6 +751,7 @@ const goodToKnow = [
                         >
                           {level.id} ({formatMultiplier(
                             videoConfig.complexityMultiplier[level.id],
+                            numLocale,
                           )})
                         </option>
                       ))}
@@ -779,7 +784,7 @@ const goodToKnow = [
                       <p class="pc-guide-h">
                         {level.id}
                         <span class="pc-guide-mult">
-                          {formatMultiplier(videoConfig.complexityMultiplier[level.id])}
+                          {formatMultiplier(videoConfig.complexityMultiplier[level.id], numLocale)}
                         </span>
                       </p>
                       <p class="pc-guide-note">{level.note}</p>
@@ -861,7 +866,7 @@ const goodToKnow = [
                         data-head="Unit price"
                         data-vunit={line.spec.id}
                       >
-                        {formatMoney(line.unit, DEFAULT_CURRENCY)}
+                        {formatMoney(line.unit, DEFAULT_CURRENCY, numLocale)}
                       </span>
                       <span class="pc-td pc-num" role="cell" data-head="Quantity">
                         <input
@@ -880,7 +885,7 @@ const goodToKnow = [
                         data-head="Line total"
                         data-vline={line.spec.id}
                       >
-                        {formatMoney(line.line, DEFAULT_CURRENCY)}
+                        {formatMoney(line.line, DEFAULT_CURRENCY, numLocale)}
                       </span>
                     </div>
                   ))}
@@ -930,7 +935,7 @@ const goodToKnow = [
                         data-head="Amount"
                         data-vitem={`creative.${i}`}
                       >
-                        {formatMoney(line.amount, DEFAULT_CURRENCY)}
+                        {formatMoney(line.amount, DEFAULT_CURRENCY, numLocale)}
                       </span>
                     </div>
                   ))}
@@ -944,7 +949,7 @@ const goodToKnow = [
                       data-head="Amount"
                       data-vout="creativeSubtotal"
                     >
-                      {formatMoney(videoQuote.creativeSubtotal, DEFAULT_CURRENCY)}
+                      {formatMoney(videoQuote.creativeSubtotal, DEFAULT_CURRENCY, numLocale)}
                     </span>
                   </div>
 
@@ -973,7 +978,7 @@ const goodToKnow = [
                         data-head="Amount"
                         data-vitem={`production.${i}`}
                       >
-                        {formatMoney(line.amount, DEFAULT_CURRENCY)}
+                        {formatMoney(line.amount, DEFAULT_CURRENCY, numLocale)}
                       </span>
                     </div>
                   ))}
@@ -987,7 +992,7 @@ const goodToKnow = [
                       data-head="Amount"
                       data-vout="productionSubtotal"
                     >
-                      {formatMoney(videoQuote.productionSubtotal, DEFAULT_CURRENCY)}
+                      {formatMoney(videoQuote.productionSubtotal, DEFAULT_CURRENCY, numLocale)}
                     </span>
                   </div>
 
@@ -1002,7 +1007,7 @@ const goodToKnow = [
                       data-head="Amount"
                       data-vout="basePerVideo"
                     >
-                      {formatMoney(videoQuote.basePerVideo, DEFAULT_CURRENCY)}
+                      {formatMoney(videoQuote.basePerVideo, DEFAULT_CURRENCY, numLocale)}
                     </span>
                   </div>
                   <div class="pc-tr pc-tr--item" role="row">
@@ -1010,7 +1015,7 @@ const goodToKnow = [
                       <span class="pc-item-name">Price per video, at your complexity</span>
                       <span class="pc-addon-note" data-vout-text="complexityNote">
                         {videoQuote.inputs.complexity},{' '}
-                        {formatMultiplier(videoQuote.complexityMultiplier)}
+                        {formatMultiplier(videoQuote.complexityMultiplier, numLocale)}
                       </span>
                     </span>
                     <span
@@ -1019,7 +1024,7 @@ const goodToKnow = [
                       data-head="Amount"
                       data-vout="adjustedPerVideo"
                     >
-                      {formatMoney(videoQuote.adjustedPerVideo, DEFAULT_CURRENCY)}
+                      {formatMoney(videoQuote.adjustedPerVideo, DEFAULT_CURRENCY, numLocale)}
                     </span>
                   </div>
 
@@ -1044,7 +1049,7 @@ const goodToKnow = [
                         data-head="Amount"
                         data-vout={row.id}
                       >
-                        {formatMoney(videoMoney[row.id], DEFAULT_CURRENCY)}
+                        {formatMoney(videoMoney[row.id], DEFAULT_CURRENCY, numLocale)}
                       </span>
                     </div>
                   ))}
@@ -1976,6 +1981,7 @@ const goodToKnow = [
     emptyOrderAddons,
     emptyRow,
     type ImageRow,
+    type Money,
     type QuoteInputs,
   } from '../../lib/pricing/quote';
   import {
@@ -1991,12 +1997,31 @@ const goodToKnow = [
   } from '../../lib/pricing/video-quote';
   import {
     DEFAULT_CURRENCY,
-    formatMoney,
-    formatMultiplier,
-    formatUnit,
+    formatMoney as formatMoneyIn,
+    formatMultiplier as formatMultiplierIn,
+    formatUnit as formatUnitIn,
     isCurrency,
     type Currency,
+    type Translate,
   } from '../../lib/pricing/format';
+  import { numberLocale, t } from '../../scripts/i18n';
+
+  /* French and Chinese pages: digits follow the page language and every
+     sentence written here goes through t() (src/i18n/dict/<locale>/js.json).
+     Numbers inside a template are formatted the same way, so "1.5 h" reads
+     "1,5 h" in French. English stays exactly as before. */
+  const LOCALE = numberLocale();
+  const num = (v: string | number) =>
+    typeof v === 'number' ? v.toLocaleString(LOCALE, { maximumFractionDigits: 10, useGrouping: false }) : v;
+  const tr: Translate = (english, vars) =>
+    t(english, vars && Object.fromEntries(Object.entries(vars).map(([k, v]) => [k, num(v)])));
+  const formatMoney = (money: Money, currency: Currency) => formatMoneyIn(money, currency, LOCALE);
+  const formatMultiplier = (multiplier: number) => formatMultiplierIn(multiplier, LOCALE);
+  const formatUnit = (money: Money, currency: Currency, onRequest: boolean) =>
+    formatUnitIn(money, currency, onRequest, LOCALE, tr);
+  /** A complexity level as the selectors show it, e.g. "Medium (x1.5)". */
+  const complexityLabel = (id: string, multiplier: number) =>
+    tr('{complexity} ({multiplier})', { complexity: tr(id), multiplier: formatMultiplier(multiplier) });
 
   /**
    * The rates the server priced with: defaults, plus saved settings, plus the
@@ -2052,21 +2077,25 @@ const goodToKnow = [
       const name = document.createElement('span');
       name.className = 'pc-td pc-td--name';
       name.setAttribute('role', 'cell');
-      name.innerHTML = `<span class="pc-addon-name">Image ${index + 1}</span>`;
+      const nameText = document.createElement('span');
+      nameText.className = 'pc-addon-name';
+      nameText.textContent = tr('Image {n}', { n: index + 1 });
+      name.appendChild(nameText);
       row.appendChild(name);
 
       const complexityCell = document.createElement('span');
       complexityCell.className = 'pc-td';
       complexityCell.setAttribute('role', 'cell');
-      complexityCell.dataset.head = 'Complexity';
+      complexityCell.dataset.head = tr('Complexity');
       const select = document.createElement('select');
       select.className = 'pc-input pc-select pc-select--sm';
       select.dataset.cell = `${index}.complexity`;
-      select.setAttribute('aria-label', `Image ${index + 1}, complexity`);
+      select.setAttribute('aria-label', tr('Image {n}, complexity', { n: index + 1 }));
       for (const level of COMPLEXITIES) {
+        // The value stays the English id the pricing core reads.
         const option = document.createElement('option');
         option.value = level.id;
-        option.textContent = `${level.id} (${formatMultiplier(level.multiplier)})`;
+        option.textContent = complexityLabel(level.id, level.multiplier);
         select.appendChild(option);
       }
       complexityCell.appendChild(select);
@@ -2076,7 +2105,7 @@ const goodToKnow = [
         const cell = document.createElement('span');
         cell.className = 'pc-td pc-num';
         cell.setAttribute('role', 'cell');
-        cell.dataset.head = addon.label;
+        cell.dataset.head = tr(addon.label);
         const input = document.createElement('input');
         input.type = 'number';
         input.className = 'pc-input pc-input--qty';
@@ -2084,7 +2113,7 @@ const goodToKnow = [
         input.step = '1';
         input.value = '0';
         input.dataset.cell = `${index}.${addon.id}`;
-        input.setAttribute('aria-label', `Image ${index + 1}, ${addon.label}`);
+        input.setAttribute('aria-label', tr('Image {n}, {addon}', { n: index + 1, addon: tr(addon.label) }));
         cell.appendChild(input);
         row.appendChild(cell);
       }
@@ -2096,7 +2125,7 @@ const goodToKnow = [
         const cell = document.createElement('span');
         cell.className = 'pc-td pc-num pc-td--line';
         cell.setAttribute('role', 'cell');
-        cell.dataset.head = head;
+        cell.dataset.head = tr(head);
         cell.dataset[key] = String(index);
         cell.textContent = '-';
         row.appendChild(cell);
@@ -2201,7 +2230,7 @@ const goodToKnow = [
         );
         if (cell) {
           cell.textContent = line.onRequest
-            ? 'On request'
+            ? tr('On request')
             : formatMoney(line.line, currency);
         }
       }
@@ -2218,8 +2247,10 @@ const goodToKnow = [
       });
       if (productionNote) {
         const n = quote.inputs.numberOfImages;
-        const images = n === 1 ? '1 image' : `${n} images`;
-        productionNote.textContent = `${images}, Option ${selected}, each priced at its own complexity`;
+        productionNote.textContent =
+          n === 1
+            ? tr('1 image, Option {option}, each priced at its own complexity', { option: selected })
+            : tr('{n} images, Option {option}, each priced at its own complexity', { n, option: selected });
       }
 
       // A rejected value (below the MOQ, a negative quantity) is corrected in
@@ -2271,7 +2302,7 @@ const goodToKnow = [
 
     function renderVideo(currency: Currency): void {
       if (!videosInput) return;
-      const quote = computeVideoQuote(readVideoInputs(), CONFIG.video);
+      const quote = computeVideoQuote(readVideoInputs(), CONFIG.video, tr);
       const money = {
         creativeSubtotal: quote.creativeSubtotal,
         productionSubtotal: quote.productionSubtotal,
@@ -2320,19 +2351,25 @@ const goodToKnow = [
       // The derived structure: how many shots the length just bought.
       const seconds = quote.inputs.videoLengthSeconds;
       const videos = quote.inputs.numberOfVideos;
-      setText('length', `${seconds} seconds`);
+      setText('length', tr('{seconds} seconds', { seconds }));
       setText('sequences', String(quote.sequences));
       setText(
         'sequencesNote',
-        `${seconds} seconds divided by ${CONFIG.video.averageSecondsPerSequence}, rounded up`,
+        tr('{seconds} seconds divided by {per}, rounded up', {
+          seconds,
+          per: CONFIG.video.averageSecondsPerSequence,
+        }),
       );
       setText(
         'complexityNote',
-        `${quote.inputs.complexity}, ${formatMultiplier(quote.complexityMultiplier)}`,
+        tr('{complexity}, {multiplier}', {
+          complexity: tr(quote.inputs.complexity),
+          multiplier: formatMultiplier(quote.complexityMultiplier),
+        }),
       );
       setText(
         'videosNote',
-        `${videos === 1 ? '1 video' : `${videos} videos`}, at the price above`,
+        videos === 1 ? tr('1 video, at the price above') : tr('{n} videos, at the price above', { n: videos }),
       );
 
       // Rejected values are corrected in place, so what is shown is what was

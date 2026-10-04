@@ -223,24 +223,53 @@ Non-negotiables from that guide:
 Read the full file before any image work and follow it; do not paraphrase from
 memory. Treat it like the Translation rules: a permanent project standard.
 
+## Every page ships in French and Chinese (PERMANENT)
+
+All languages are updated with every change. Every new or changed English
+page ships, in the same commit, with:
+
+1. its **French slug** in `src/i18n/routes.ts` (native French, lowercase,
+   hyphens, accents stripped, never changed once live: a 301 in `vercel.json`
+   if it ever must move);
+2. its **French and Chinese dictionaries** (`src/i18n/dict/<fr|zh>/`), every
+   new sentence translated with the **three passes** of `/deep-translate`,
+   on its own page and on every page that lists it (home, insights index,
+   insights layers);
+3. **localized screenshots** (`x.fr.webp`, `x.zh.webp`, listed in
+   `src/i18n/localized-images.json`) for every capture of the app it shows;
+4. a passing **`npm run i18n:local -- check`** (reads the pages from a dev
+   server it starts itself when none runs) and **`npm run i18n:guard`**
+   (offline; also runs in `prebuild` and fails the build on an English page
+   without a French address, a non-native slug or an empty translation).
+
+The procedure, the commands, the house rules and the three passes are in
+`src/i18n/TRANSLATING.md`; the settled terms in `src/i18n/glossary/fr.md` and
+`zh.md`. A change whose translation cannot be finished does not ship: no
+English-only page goes live, no English pasted into a dictionary, no marker
+left behind. The editorial publish run applies all of this to every article
+(`editorial/CLAUDE.md`).
+
 ## i18n architecture
 
-English at the root, every other locale under a prefix, with **native-language
-slugs per locale** (not the English slug with a prefix slapped on).
+English `.astro` pages at the root are the only page sources. French lives at
+a native slug under `/fr`, Chinese at `/zh` + the English path. A French or
+Chinese page is the English page rendered, then rewritten by the middleware
+(`src/middleware.ts`, engine in `src/i18n/core.ts`, shared word for word with
+the bearingbridge.com repository) from English-keyed dictionaries:
 
-- `src/i18n/ui.ts`: shared chrome strings (header, footer, meta) per locale.
-  English is the source of truth for key names; every locale defines the same
-  keys. Page-level content stays inside each locale's `.astro` file.
-- `src/i18n/utils.ts`: `getLocaleFromUrl`, `stripLocale`, `localizePath`,
-  `useTranslations`. Portable: keep as-is across projects.
-- `src/i18n/page-slugs.ts`: per-locale EN<->native slug maps. Add an entry
-  here whenever a page ships in a new locale.
-- `src/pages/index.astro` etc.: EN pages at root.
-- `src/pages/fr/<native-slug>.astro`: FR pages with native slugs.
-
-`localizePath(path, locale)` round-trips a URL in either direction using the
-slug maps; unknown slugs fall back to the locale home so the language switcher
-never 404s.
+- `src/i18n/routes.ts`: every English page and its French address
+  (`FR_PATHS`, built from the `ARTICLES`, `HOWTOS`, `HELP`, `DESIGN`,
+  `PLATFORMS`, `WORK` and `TEAM` maps), plus `ON_DEMAND`, the server-rendered
+  pages, whose French and Chinese routes are the small files under
+  `src/pages/fr` and `src/pages/zh`. Every other translation is served by the
+  prerendered catch-all `src/pages/[locale]/[...path].astro`.
+- `src/i18n/paths.ts`: locale detection, `pathIn`, hreflang alternates.
+- `src/i18n/dict/<fr|zh>/pages/<page-id>.json`, `common.json` (a sentence on
+  three pages or more), `js.json` (client scripts), `server.json` (API
+  answers). Filled by `npm run i18n:local -- extract` and the translator's
+  bench `npm run i18n:tx` (pending, show, build).
+- `data-no-i18n` opts a subtree out of translation, `data-no-localize` a link
+  out of address localization.
 
 ## Translation rules (MANDATORY)
 
@@ -249,7 +278,7 @@ native journalist in the target language wrote it originally, not like a
 translated English page.
 
 **When the rule fires:** any time you edit, draft, translate, or fix content in
-`src/pages/<locale>/`, any non-English string in `src/i18n/`, or any
+`src/pages/<locale>/` or `src/i18n/dict/`, any non-English string in `src/i18n/`, or any
 non-English alt text, meta description, OpenGraph copy, slug label, button
 label, form label, error message, microcopy, blog post, email, or caption. It
 does NOT fire for code, identifiers, file paths, console logs, code comments,
@@ -288,7 +317,9 @@ commit messages, or PR descriptions.
 6. Do not change SEO-sensitive elements (title, meta description, H1, slugs)
    without flagging it first.
 
-**Two-step rewrite for any new or rewritten section:**
+**Three passes for any new or rewritten section** (`/deep-translate`, as
+`src/i18n/TRANSLATING.md` runs it with pass files; the two steps below are
+its first two passes, and a third, the native editor's finish, follows):
 
 - *Step 1: Humanized translation.* Translate from English, hit the native
   journalistic register, match register to audience, apply locale conventions
@@ -331,13 +362,11 @@ market stay in their canonical English form. Do not translate them, do not
 invent localized versions, do not retitle-case them. "hubStudio" keeps its
 canonical casing everywhere.
 
-**Single-locale default: no auto-translate.** When the user requests a content
-change, edit ONLY the file(s) they referenced. Do not propagate the same change
-to other locales until the user explicitly says so (e.g. "translate this",
-"do all locales", "propagate"). When editing the English version, end with a
-one-line offer to propagate. Shared infrastructure changes (CSS, shared
-components, route helpers, layout files, `astro.config.mjs`) are global by
-nature and exempt from this.
+**Every change reaches every locale (replaces the old single-locale
+default).** An English change is translated in the same change: extract, then
+translate the new or changed sentences in French and Chinese, as "Every page
+ships in French and Chinese" says. There is no English-only edit to offer to
+propagate later.
 
 **Slug localisation (permanent).** Every page slug under a non-English locale
 must be in that locale's language. No English slugs under `/fr/`, `/de/`, etc.

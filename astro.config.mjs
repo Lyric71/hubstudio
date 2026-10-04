@@ -10,7 +10,7 @@ import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
-import { getTranslatedLocales, localizePath, toCanonical } from './src/i18n/utils';
+import { alternates, pageId, resolvePath } from './src/i18n/paths';
 
 const SITE = 'https://www.hubstudio.ai';
 
@@ -170,23 +170,26 @@ export default defineConfig({
     inlineStylesheets: 'always',
   },
 
-  // English at the root, every other locale under a prefix with native slugs.
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'fr'],
-    routing: { prefixDefaultLocale: false },
-  },
+  // English at the root, French at native slugs under /fr, Chinese under /zh
+  // with the English slugs. The routing lives in src/i18n (no Astro `i18n`
+  // block: its prefix routing cannot do native slugs).
 
   integrations: [
     sitemap({
-      filter: (page) =>
-        !page.includes('/thank-you') &&
-        !page.includes('/api/') &&
-        !page.includes('/rss.xml') &&
-        !page.includes('/debeers') &&
-        !page.includes('/sonepar') &&
-        // Covers the settings page too: it lives under /pricing/calculator.
-        !page.includes('/pricing/calculator'),
+      // Matched on the English address, so the French and Chinese copies of
+      // a filtered page are filtered too.
+      filter: (url) => {
+        const page = resolvePath(toPath(url))?.enPath ?? toPath(url);
+        return (
+          !page.includes('/thank-you') &&
+          !page.includes('/api/') &&
+          !page.includes('/rss.xml') &&
+          !page.includes('/debeers') &&
+          !page.includes('/sonepar') &&
+          // Covers the settings page too: it lives under /pricing/calculator.
+          !page.includes('/pricing/calculator')
+        );
+      },
       changefreq: 'weekly',
       priority: 0.7,
       // Per URL the integration emits, this hook adds two things the defaults
@@ -196,28 +199,23 @@ export default defineConfig({
         const ownPath = toPath(item.url);
 
         // <lastmod>: newest git commit touching the page's own source (and,
-        // for case studies, the data file they render from). Stable across
-        // rebuilds, so it moves only when the page actually changes, which is
-        // what makes the date trustworthy to Google.
-        const stamp = newestCommit(sourceFiles(ownPath));
+        // for case studies, the data file they render from; for a French or
+        // Chinese page, its dictionary too). Stable across rebuilds, so it
+        // moves only when the page actually changes, which is what makes the
+        // date trustworthy to Google.
+        const found = resolvePath(ownPath);
+        const enPath = found?.enPath ?? ownPath;
+        const files = sourceFiles(enPath);
+        if (found && found.locale !== 'en') {
+          files.push(`src/i18n/dict/${found.locale}/pages/${pageId(enPath)}.json`);
+        }
+        const stamp = newestCommit(files);
         if (stamp) item.lastmod = stamp;
 
-        // Hreflang via native per-locale slugs. The built-in `i18n` option
-        // only does prefix routing (it would point /fr/<english-slug> at
-        // pages that do not exist) and emits no x-default, so we resolve
-        // alternates here: map each URL back to its canonical English path,
-        // then emit one <xhtml:link> per locale the page genuinely ships in
-        // (per src/i18n/page-slugs.ts) plus x-default. English-only pages get
-        // no alternates at all, rather than alternates that 404.
-        const enPath = toCanonical(ownPath);
-        const locales = getTranslatedLocales(enPath);
-        if (locales.length < 2) return item;
-
-        item.links = locales.map((locale) => ({
-          lang: locale,
-          url: absolute(localizePath(enPath, locale)),
-        }));
-        item.links.push({ lang: 'x-default', url: absolute(enPath) });
+        // Hreflang: every language the page ships in, plus x-default, the
+        // same set as the page's own <link rel="alternate"> tags.
+        const links = alternates(enPath, SITE);
+        if (links.length) item.links = links.map((a) => ({ lang: a.lang, url: a.href }));
         return item;
       },
     }),

@@ -211,6 +211,8 @@ const listSchema = {
 </Layout>
 
 <script>
+  import { t } from '../../../scripts/i18n';
+
   /**
    * Topic + author filter for the archive.
    *
@@ -254,6 +256,11 @@ const listSchema = {
       new Set(chips.filter((c) => c.dataset.facet === facet).map((c) => c.dataset.value ?? ''));
     const knownTopics = valuesFor('topic');
     const knownAuthors = valuesFor('author');
+    /* Topic and author values stay English (they match the cards and go in
+       the URL); what the status line shows is the chip's own text, which the
+       middleware has already translated on French and Chinese pages. */
+    const labelOf = (facet: string, value: string) =>
+      chips.find((c) => c.dataset.facet === facet && c.dataset.value === value)?.textContent?.trim() || value;
 
     const state = { topic: 'all', author: 'all', page: 1 };
 
@@ -282,13 +289,24 @@ const listSchema = {
       clear.hidden = !filtering;
 
       if (!filtering) {
-        status.textContent = 'Showing every insight.';
+        status.textContent = t('Showing every insight.');
       } else {
-        const parts: string[] = [];
-        if (state.topic !== 'all') parts.push(state.topic);
-        if (state.author !== 'all') parts.push(`by ${state.author}`);
-        const noun = matching.length === 1 ? 'insight' : 'insights';
-        status.textContent = `${matching.length} ${noun} on ${parts.join(', ')}.`;
+        const vars = {
+          count: matching.length,
+          topic: labelOf('topic', state.topic),
+          author: labelOf('author', state.author),
+        };
+        const one = matching.length === 1;
+        /* One whole sentence per case, so each language can order it freely. */
+        if (state.topic !== 'all' && state.author !== 'all') {
+          status.textContent = one
+            ? t('{count} insight on {topic}, by {author}.', vars)
+            : t('{count} insights on {topic}, by {author}.', vars);
+        } else if (state.topic !== 'all') {
+          status.textContent = one ? t('{count} insight on {topic}.', vars) : t('{count} insights on {topic}.', vars);
+        } else {
+          status.textContent = one ? t('{count} insight by {author}.', vars) : t('{count} insights by {author}.', vars);
+        }
       }
 
       for (const chip of chips) {
@@ -308,7 +326,7 @@ const listSchema = {
         button.className = 'pager__page';
         button.dataset.page = String(n);
         button.textContent = String(n);
-        button.setAttribute('aria-label', `Page ${n} of ${pages}`);
+        button.setAttribute('aria-label', t('Page {n} of {pages}', { n, pages }));
         if (n === state.page) {
           button.classList.add('is-on');
           button.setAttribute('aria-current', 'page');

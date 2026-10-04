@@ -1,0 +1,19 @@
+---
+/**
+ * Every prerendered French and Chinese page. The English page renders in
+ * its place and the middleware translates it (src/i18n/paths.ts). Pages
+ * rendered on demand have their own small files under src/pages/fr and zh.
+ */
+import { TRANSLATED_PATHS, isOnDemand, pathIn, type Locale } from '../../i18n/index';
+
+export function getStaticPaths() {
+  return (['fr', 'zh'] as Locale[]).flatMap((locale) =>
+    TRANSLATED_PATHS.filter((en) => !isOnDemand(en)).map((en) => ({
+      params: { locale, path: pathIn(en, locale)!.split('/').slice(2).join('/') || undefined },
+      props: { en },
+    })),
+  );
+}
+
+return Astro.rewrite(Astro.props.en);
+---

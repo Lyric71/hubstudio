@@ -2,13 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import {
-  getLocaleFromUrl,
-  localizePath,
-  getTranslatedLocales,
-  useTranslations,
-} from '../i18n/utils';
-import { locales, defaultLocale } from '../i18n/ui';
+import { HTML_LANG, LOCALES, OG_LOCALE, alternates, pathIn } from '../i18n/paths';
 
 interface Props {
   title?: string;
@@ -30,8 +24,9 @@ interface Props {
 
 const SITE = 'https://www.hubstudio.ai';
 
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
+// A French or Chinese page renders this English page (Astro.url is the
+// English address) and the middleware translates it; locals say which.
+const locale = Astro.locals.locale ?? 'en';
 
 const {
   title,
@@ -44,17 +39,19 @@ const {
   modifiedTime,
   preloadImage,
 } = Astro.props;
-const pageTitle = title ?? t('meta.defaultTitle');
-const pageDescription = description ?? t('meta.defaultDescription');
+const pageTitle = title ?? 'hubStudio | The AI production app, and the studio behind it';
+const pageDescription =
+  description ??
+  'Make images, video and social posts with the leading AI engines in the hubStudio app, or have our studio make them for you. Pay as you go, no seat fees.';
 
 const path = Astro.url.pathname;
-const canonical = new URL(localizePath(path, locale), SITE).href;
+const canonical = new URL(pathIn(path, locale) ?? path, SITE).href;
 const ogImage = new URL(image, SITE).href;
-const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
+const ogLocale = OG_LOCALE[locale];
 
-// hreflang: emit alternates only for locales where the page genuinely exists.
-// An English-only page emits none, rather than pointing fr at a fallback home.
-const altLocales = getTranslatedLocales(path);
+// hreflang: every language the page ships in, plus x-default. A page with no
+// translation (none today) emits none rather than alternates that 404.
+const hreflang = noindex ? [] : alternates(path, SITE);
 
 // Site-wide identity, carried on every page so any page can anchor the brand.
 const orgId = `${SITE}/#organization`;
@@ -145,14 +142,14 @@ const siteSchema = {
       description:
         'The hubStudio app for AI image, video and social production, and the hubStudio studio, which makes the work for you.',
       publisher: { '@id': orgId },
-      inLanguage: [...locales],
+      inLanguage: LOCALES.map((l) => HTML_LANG[l]),
     },
   ],
 };
 ---
 
 <!doctype html>
-<html lang={locale}>
+<html lang={HTML_LANG[locale]}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -195,25 +192,7 @@ const siteSchema = {
       )
     }
 
-    {
-      altLocales.length > 1 &&
-        altLocales.map((loc) => (
-          <link
-            rel="alternate"
-            hreflang={loc}
-            href={new URL(localizePath(path, loc), SITE).href}
-          />
-        ))
-    }
-    {
-      altLocales.length > 1 && (
-        <link
-          rel="alternate"
-          hreflang="x-default"
-          href={new URL(localizePath(path, defaultLocale), SITE).href}
-        />
-      )
-    }
+    {hreflang.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="hubStudio" />
@@ -245,7 +224,7 @@ const siteSchema = {
     />
   </head>
   <body>
-    <a class="skip-link" href="#main">{t('nav.skipToContent')}</a>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <Header overlay={heroOverlay} />
 

@@ -1001,6 +1001,8 @@ const breadcrumbSchema = {
 </style>
 
 <script>
+  import { t } from '../../../scripts/i18n';
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const progBar = document.querySelector<HTMLElement>('.prog__bar');
@@ -1037,9 +1039,11 @@ const breadcrumbSchema = {
   const runCount = (el: HTMLElement) => {
     const from = Number(el.dataset.from || 0);
     const to = Number(el.dataset.to || 0);
+    // The number goes into a whole template ({n} days, {n}h) so a language
+    // can translate the unit and place it where it reads naturally.
     const suffix = el.dataset.suffix || '';
     if (reduceMotion.matches) {
-      el.textContent = `${to}${suffix}`;
+      el.textContent = t(`{n}${suffix}`, { n: to });
       return;
     }
     const dur = 1500;
@@ -1047,7 +1051,7 @@ const breadcrumbSchema = {
     const tick = (now: number) => {
       const p = Math.min(1, (now - t0) / dur);
       const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = `${Math.round(from + (to - from) * eased)}${suffix}`;
+      el.textContent = t(`{n}${suffix}`, { n: Math.round(from + (to - from) * eased) });
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);

@@ -108,7 +108,12 @@ const listSchema = {
   const empty = document.querySelector<HTMLElement>('.hc-empty');
   input?.addEventListener('input', () => {
     const words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
-    for (const c of cards) c.hidden = !words.every((w) => (c.dataset.hcText ?? '').includes(w));
+    // data-hc-text is English: a French or Chinese page searches what it shows.
+    const en = document.documentElement.lang === 'en';
+    for (const c of cards) {
+      const hay = en ? (c.dataset.hcText ?? '') : (c.textContent ?? '').toLowerCase();
+      c.hidden = !words.every((w) => hay.includes(w));
+    }
     for (const g of groups) g.hidden = !g.querySelector('[data-hc-card]:not([hidden])');
     if (empty) empty.hidden = cards.some((c) => !c.hidden);
   });

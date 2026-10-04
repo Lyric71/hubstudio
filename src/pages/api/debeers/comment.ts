@@ -6,6 +6,8 @@
  * to /debeers#<assetId>.
  */
 import type { APIRoute } from 'astro';
+import { tr } from '../../../i18n/index';
+import { localizedBack, refererLocale } from '../../../lib/referer-locale';
 import { addComment, isAuthed, kvConfigured } from '../../../lib/debeers';
 import { debeersAssets } from '../../../data/debeers-assets';
 
@@ -16,14 +18,18 @@ const MAX_BODY = 2000;
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   const wantsJson = (request.headers.get('accept') ?? '').includes('application/json');
+  // Errors answer in the language of the page the comment was posted from.
+  const locale = refererLocale(request);
 
-  const fail = (status: number, error: string) =>
-    wantsJson
+  const fail = (status: number, english: string) => {
+    const error = tr(locale, english);
+    return wantsJson
       ? new Response(JSON.stringify({ ok: false, error }), {
           status,
           headers: { 'content-type': 'application/json' },
         })
-      : new Response(error, { status });
+      : new Response(error, { status, headers: { 'content-type': 'text/plain; charset=utf-8' } });
+  };
 
   if (!(await isAuthed(request))) {
     return fail(401, 'Your session has expired. Reload the page and sign in again.');
@@ -63,5 +69,5 @@ export const POST: APIRoute = async ({ request, redirect }) => {
         status: 200,
         headers: { 'content-type': 'application/json' },
       })
-    : redirect(`/debeers#asset-${assetId}`, 303);
+    : redirect(localizedBack(request, '/debeers', `#asset-${assetId}`), 303);
 };

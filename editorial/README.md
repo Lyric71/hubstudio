@@ -42,7 +42,9 @@ Draft today's article.
 Research gate (primary sources, Chinese first, every claim marked),
 `/createarticle`, `/content-quality-us` on every article,
 `/generate-image-openai` for the hero, then `/createblogarticle` on request,
-then an email when the publish is done. `CLAUDE.md` has the table.
+the French and Chinese versions (French slug, dictionaries translated in three
+passes, `src/i18n/TRANSLATING.md`), then an email when the publish is done.
+`CLAUDE.md` has the table.
 
 ## The rule that shapes everything
 

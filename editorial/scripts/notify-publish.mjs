@@ -21,7 +21,11 @@
  *
  * The live URL is derived from the article page that exists for the slug:
  * src/pages/resources/insights/<slug>.astro -> /resources/insights/<slug>.
- * Insights are English only on this repo, so there is one URL per article.
+ * Every article also ships in French and Chinese (editorial/CLAUDE.md, step
+ * 4b): the French URL comes from the article's line in the ARTICLES map of
+ * src/i18n/routes.ts, the Chinese one is /zh + the English path, and the
+ * email shows how many entries each language's dictionary holds, so a
+ * missing translation is visible.
  *
  * RESEND_API_KEY and CONTACT_TO_EMAIL are read from .env.local / .env in the
  * current directory, or from the environment.
@@ -66,6 +70,29 @@ function liveUrl(slug) {
   return existsSync(page) ? `${SITE}/resources/insights/${slug}` : null;
 }
 
+/** The article's French slug, from the ARTICLES map of src/i18n/routes.ts. */
+function frenchSlug(slug) {
+  const file = path.join('src', 'i18n', 'routes.ts');
+  if (!existsSync(file)) return null;
+  const src = readFileSync(file, 'utf8');
+  const start = src.indexOf('const ARTICLES');
+  if (start < 0) return null;
+  const block = src.slice(start, src.indexOf('};', start));
+  if (!/^[a-z0-9-]+$/.test(slug)) return null;
+  const m = new RegExp(`(?:'${slug}'|(?<![\\w-])${slug}(?![\\w-]))\\s*:\\s*'([a-z0-9-]+)'`).exec(block);
+  return m ? m[1] : null;
+}
+
+/** Entries of the article's dictionary in one language, empty ones counted. */
+function dictStatus(locale, slug) {
+  const file = path.join('src', 'i18n', 'dict', locale, 'pages', 'resources', 'insights', `${slug}.json`);
+  if (!existsSync(file)) return 'NO dictionary';
+  const dict = JSON.parse(readFileSync(file, 'utf8'));
+  const total = Object.keys(dict).length;
+  const empty = Object.values(dict).filter((v) => !v).length;
+  return empty ? `${total} entries, ${empty} EMPTY` : `${total} entries`;
+}
+
 /** Confirm the slug actually landed in the insights register, not just on disk. */
 function inRegister(slug) {
   const file = path.join('src', 'data', 'insights.ts');
@@ -105,6 +132,9 @@ async function main() {
   refuseOpenItems(args);
   const to = args.to || process.env.CONTACT_TO_EMAIL || FALLBACK_TO;
   const url = liveUrl(args.slug);
+  const fr = frenchSlug(args.slug);
+  const frUrl = url && fr ? `${SITE}/fr/ressources/analyses/${fr}` : null;
+  const zhUrl = url ? `${SITE}/zh/resources/insights/${args.slug}` : null;
   const registered = inRegister(args.slug);
   const image = args.image || `/Images/insight-${args.slug}.webp`;
   const imageOnDisk = existsSync(path.join('public', 'Images', `insight-${args.slug}.webp`));
@@ -114,6 +144,9 @@ async function main() {
     ['Slug', args.slug],
     ['Time (Shanghai)', when],
     ['Live URL', url || 'no article page found for this slug'],
+    ['French URL', frUrl || 'NO French address in src/i18n/routes.ts'],
+    ['Chinese URL', zhUrl || 'no article page found for this slug'],
+    ['Translations', `French ${dictStatus('fr', args.slug)}; Chinese ${dictStatus('zh', args.slug)}`],
     ['In insights.ts', registered ? 'yes' : 'NO, the register entry is missing'],
     ['Hero image', `${image}${imageOnDisk ? '' : '  (NOT FOUND on disk)'}`],
     ['Build', args.build || 'not reported'],
@@ -135,7 +168,7 @@ async function main() {
   <h1 style="font-size:22px;font-weight:600;line-height:1.25;margin:0 0 24px;">Published: ${esc(args.title)}</h1>
   <table style="width:100%;border-collapse:collapse;font-size:14px;">
     ${rows.map(([k, v]) => `<tr><td style="${cell}color:#5C5750;width:140px;">${esc(k)}</td><td style="${cell}">${
-      k === 'Live URL' && url ? `<a href="${url}" style="color:#C2410C;text-decoration:none;">${esc(url)}</a>` : esc(v)
+      /^(Live|French|Chinese) URL$/.test(k) && /^https:/.test(v) ? `<a href="${esc(v)}" style="color:#C2410C;text-decoration:none;">${esc(v)}</a>` : esc(v)
     }</td></tr>`).join('')}
   </table>
   ${args.note ? `<p style="font-size:14px;line-height:1.6;margin:24px 0 0;">${esc(args.note)}</p>` : ''}
