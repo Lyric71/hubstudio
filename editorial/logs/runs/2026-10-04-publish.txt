@@ -1,0 +1,15 @@
+﻿2026-10-04T04:00:03 start publish (model claude-opus-5-5)
+2026-10-04T04:00:04 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-04T04:00:40 read editorial/CLAUDE.md, SPEC.md and RUNBOOK.md; working tree clean apart from this run's prompt, manifest and log, so no partial progress from an earlier attempt to correct.
+2026-10-04T04:00:40 schedule.csv: 48 rows, all at status published; no row at image_ready, so nothing to publish. Cross-check: every draft in editorial/output (ALT archives excluded) already has its page under src/pages/resources/insights, so no finished draft sits behind a stale row.
+2026-10-04T04:00:40 watch.csv: 1 row (automotive-content-without-shipping-a-car, due 2026-11-24); not due today, left in place.
+2026-10-04T04:00:40 no eligible row and no due watch row (settled fallback 7): no build, no commit, no push, no notification email. Run ends.
+Nothing was eligible to publish this run, so nothing was published, built, committed or emailed.
+
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are already published, so none is at image_ready. To rule out a finished draft hiding behind an out-of-date status, I checked every draft in `editorial/output/` (archived ALT files excluded). Each one already has a live page under `src/pages/resources/insights/`.
+- **Watch list:** `editorial/watch.csv` has one row, for `automotive-content-without-shipping-a-car`. It isn't due until 2026-11-24, so I left it as it is.
+- **Run log:** these decisions are recorded in `editorial/logs/runs/2026-10-04-publish.txt`. The runbook (`RUNBOOK.md:256`) says that when every row is published, the run records that and ends, so that's where it stopped.
+
+The log file is left uncommitted, like the 3 October logs before they were committed.
+2026-10-04T04:00:49 model Opus 5.5 completed successfully
+2026-10-04T04:00:49 end publish exit 0
