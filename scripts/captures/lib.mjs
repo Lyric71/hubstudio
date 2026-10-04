@@ -29,7 +29,7 @@
  *
  * The language cookie rewrites the signed-in account's own language
  * (user_profiles.ui_lang): every account used is put back to English at the
- * end, in hubStudio's database and in BearingBridge's when it exists there.
+ * end, by its user id, in hubStudio's database only.
  */
 import { createRequire } from 'node:module';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -63,10 +63,8 @@ function envOf(files) {
 }
 // hubStudio has its own users database (.env.hubstudio over .env).
 const HUB = envOf(['.env', '.env.hubstudio']);
-const BBI = envOf(['.env']);
 const hubAdmin = createClient(HUB.SUPABASE_URL, HUB.SUPABASE_SECRET_KEY, { auth: { persistSession: false } });
 const hubAnon = createClient(HUB.SUPABASE_URL, HUB.SUPABASE_KEY, { auth: { persistSession: false } });
-const bbiAdmin = createClient(BBI.SUPABASE_URL, BBI.SUPABASE_SECRET_KEY, { auth: { persistSession: false } });
 
 const sessions = new Map();
 async function sessionOf(email) {
@@ -80,19 +78,11 @@ async function sessionOf(email) {
 }
 
 async function resetLanguages() {
+  // Only the accounts this run signed in as, by their user id, in hubStudio's
+  // database (the one the app writes ui_lang to). No other account is touched.
   for (const [email, s] of sessions) {
     const { error } = await hubAdmin.from('user_profiles').update({ ui_lang: 'en' }).eq('user_id', s.user.id);
-    console.log(error ? `ui_lang reset failed (hubStudio) ${email}: ${error.message}` : `ui_lang en (hubStudio) ${email}`);
-    let twin = null;
-    for (let attempt = 0; attempt < 3 && !twin; attempt++) {
-      const { data, error: le } = await bbiAdmin.auth.admin.listUsers({ perPage: 1000 });
-      if (le) { console.log(`  BearingBridge user list failed (${le.message}), retrying`); continue; }
-      twin = data.users.find((u) => u.email?.toLowerCase() === email.toLowerCase()) ?? false;
-    }
-    if (twin) {
-      const { error: e2 } = await bbiAdmin.from('user_profiles').update({ ui_lang: 'en' }).eq('user_id', twin.id);
-      console.log(e2 ? `ui_lang reset failed (BearingBridge) ${email}: ${e2.message}` : `ui_lang en (BearingBridge) ${email}`);
-    }
+    console.log(error ? `ui_lang reset failed (hubStudio) ${email}: ${error.message}` : `ui_lang en (hubStudio) ${email} ${s.user.id}`);
   }
 }
 

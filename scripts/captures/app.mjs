@@ -47,24 +47,28 @@ const MAIN = (top, bottom) => [260, top, 1412, bottom];
 const shots = [
   // A crop of a help shot taken again at 1424 px, prices hidden.
   { name: 'explore', from: 'explore-gallery', width: NARROW, crop: MAIN(76, 594) },
-  { name: 'imageStudio', from: 'create-an-image-studio', width: NARROW, crop: MAIN(76, 520) },
-  { name: 'videoStudio', from: 'create-a-video-studio', width: NARROW, crop: MAIN(76, 828) },
+  { name: 'imageStudio', from: 'create-an-image-studio', width: NARROW, crop: { en: MAIN(76, 520), fr: MAIN(76, 465), zh: MAIN(76, 445) }, extend: 'copy' },
+  { name: 'videoStudio', from: 'create-a-video-studio', width: NARROW, crop: { en: MAIN(76, 828), fr: MAIN(76, 791), zh: MAIN(76, 751) }, extend: 'copy' },
   { name: 'history', from: 'history-page', width: NARROW, crop: MAIN(76, 386) },
   { name: 'library', from: 'assets-library-page', width: NARROW, crop: MAIN(76, 996) },
   { name: 'libraryActions', from: 'assets-library-actions', width: NARROW },
   { name: 'linkedin', from: 'linkedin-brief', width: NARROW, crop: MAIN(76, 900) },
   { name: 'instagram', from: 'instagram-picture', width: NARROW, crop: MAIN(76, 858) },
   { name: 'facebook', from: 'facebook-brief', width: NARROW, crop: MAIN(76, 900) },
-  { name: 'tiktok', from: 'tiktok-brief', width: NARROW, crop: MAIN(76, 846) },
-  { name: 'tiktokVideo', from: 'tiktok-video', width: NARROW, crop: MAIN(76, 874) },
+  { name: 'tiktok', from: 'tiktok-brief', width: NARROW, crop: { en: MAIN(76, 846), fr: MAIN(76, 831), zh: MAIN(76, 815) }, extend: 'copy' },
+  { name: 'tiktokVideo', from: 'tiktok-video', width: NARROW, crop: { en: MAIN(76, 874), fr: MAIN(76, 844) }, extend: 'copy' },
   { name: 'x', from: 'x-brief', width: NARROW, crop: MAIN(76, 852) },
-  { name: 'xKnobs', from: 'x-knobs', width: NARROW },
+  { name: 'xKnobs', from: 'x-knobs', width: NARROW, fit: true },
   { name: 'validationSend', from: 'validation-send-dialog' },
   { name: 'skillsCatalog', from: 'skills-catalog', width: NARROW, crop: MAIN(76, 900) },
   { name: 'mySkills', from: 'skills-my-skills', width: NARROW, crop: MAIN(76, 852) },
   { name: 'teamClients', from: 'your-team-clients', width: NARROW },
   { name: 'teamInvite', from: 'your-team-invite', width: NARROW },
-  { name: 'connections', from: 'account-and-sign-in-my-connections', width: NARROW, crop: MAIN(76, 730) },
+  // French: at 1424 px the network cards ran past the English frame and cut
+  // the foot of the Connect buttons. The page is taken wider (1560 px, a
+  // 1288 px column) and the crop, the English frame scaled to that width, is
+  // brought back to the English size: everything shows, about 11% smaller.
+  { name: 'connections', from: 'account-and-sign-in-my-connections', width: NARROW, wide: { fr: 1560 }, crop: { en: MAIN(76, 730), fr: [260, 76, 1548, 807], zh: MAIN(76, 649) }, extend: 'copy' },
 
   // The localized help capture itself, cropped or whole.
   { name: 'validation', file: 'validation-page', crop: [0, 68, 1440, 452] },
@@ -103,8 +107,12 @@ const enSize = async (name) => {
   return { width: m.width, height: m.height };
 };
 
-/** Bring a capture to the English file's exact size: cut what is over, fill what is short with the edge color. */
-async function toSize(buf, size) {
+/**
+ * Bring a capture to the English file's exact size: cut what is over, fill
+ * what is short with the edge color, or (extend: 'copy') with the last row
+ * and column repeated, so a card cut at a blank line runs on to the edge.
+ */
+async function toSize(buf, size, extend) {
   const m = await sharp(buf).metadata();
   let img = sharp(buf);
   if (m.width > size.width || m.height > size.height) {
@@ -115,14 +123,24 @@ async function toSize(buf, size) {
     const { data } = await sharp(await img.toBuffer()).raw().toBuffer({ resolveWithObject: true });
     const ch = n.channels;
     const background = { r: data[0], g: data[1], b: data[2], alpha: ch === 4 ? data[3] / 255 : 1 };
-    img = sharp(await img.extend({ right: size.width - n.width, bottom: size.height - n.height, background }).toBuffer());
+    const pad = { right: size.width - n.width, bottom: size.height - n.height };
+    img = sharp(await img.extend(extend === 'copy' ? { ...pad, extendWith: 'copy' } : { ...pad, background }).toBuffer());
   }
   if (m.width !== size.width || m.height !== size.height) console.log(`  fitted ${m.width}x${m.height} to ${size.width}x${size.height}`);
   return img.toBuffer();
 }
 
+/**
+ * A shot's crop: one box for every language, or one per language
+ * ({ en, fr, zh }) where a translation moves the page (the compact page band
+ * shows more below it): each language is cut at a blank line between two
+ * elements, never through a line of text, and runs on to the English height.
+ */
+const cropOf = (shot, lang) => (!shot.crop || Array.isArray(shot.crop) ? shot.crop : shot.crop[lang] ?? shot.crop.en);
+
 async function make(browser, shot, lang) {
   const size = await enSize(shot.name);
+  const crop = cropOf(shot, lang);
   let buf;
   let k = 1;
   if (shot.file) {
@@ -139,6 +157,11 @@ async function make(browser, shot, lang) {
       : h.clip;
     const fitted = async (page) => {
       const r = await box(page);
+      // Larger than the English frame (a longer translation): the whole
+      // card or dialog, 8 px around it, brought down to the frame below.
+      if (shot.fit && (r.width > size.width || r.height > size.height)) {
+        return { x: Math.max(0, Math.round(r.x - 8)), y: Math.max(0, Math.round(r.y - 8)), width: Math.round(r.width + 16), height: Math.round(r.height + 16) };
+      }
       return {
         x: Math.max(0, Math.round(r.x - (size.width - r.width) / 2)),
         y: Math.max(0, Math.round(r.y - (size.height - r.height) / 2)),
@@ -146,17 +169,25 @@ async function make(browser, shot, lang) {
         height: size.height,
       };
     };
-    buf = await capture(browser, { ...h, width: shot.width ?? 1440, element: undefined, clip: shot.crop ? undefined : fitted }, lang, NO_PRICES);
+    buf = await capture(browser, { ...h, width: shot.wide?.[lang] ?? shot.width ?? 1440, element: undefined, clip: crop ? undefined : fitted }, lang, NO_PRICES);
+    const m = await sharp(buf).metadata();
+    if (!crop && (m.width > size.width || m.height > size.height)) {
+      const { data } = await sharp(buf).raw().toBuffer({ resolveWithObject: true });
+      const background = { r: data[0], g: data[1], b: data[2], alpha: 1 };
+      buf = await sharp(buf).resize({ width: size.width, height: size.height, fit: 'contain', background }).toBuffer();
+      console.log(`  scaled ${m.width}x${m.height} into ${size.width}x${size.height}`);
+    }
   } else {
     k = shot.own.dpr ?? 1;
     buf = await capture(browser, shot.own, lang, NO_PRICES);
   }
-  if (shot.crop) {
-    const [x0, y0, x1, y1] = shot.crop;
+  if (crop) {
+    const [x0, y0, x1, y1] = crop;
     buf = await sharp(buf).extract({ left: x0 * k, top: y0 * k, width: (x1 - x0) * k, height: (y1 - y0) * k }).toBuffer();
   }
-  if (k !== 1) buf = await sharp(buf).resize({ width: size.width }).toBuffer();
-  buf = await toSize(buf, size);
+  // A 2x shot, or a page taken wider for one language (wide), back to the English width.
+  if (k !== 1 || (crop && shot.wide?.[lang])) buf = await sharp(buf).resize({ width: size.width }).toBuffer();
+  buf = await toSize(buf, size, shot.extend);
   return sharp(buf).webp({ quality: shot.quality ?? 84, effort: 6 }).toBuffer();
 }
 
