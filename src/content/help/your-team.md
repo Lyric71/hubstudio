@@ -54,7 +54,10 @@ hubStudio has four roles.
 | **Viewer** | Sees the team's work, in History and in the Assets Library. Creates nothing and spends nothing. |
 | **Client** | A person at one of the companies the team works for, given a login by an admin. Sees only what was made for their company, in their [Client space](/help/client-space): downloads it, comments on it and approves it. Holds no balance and spends nothing. |
 
-A person's menu can also leave out some modules, such as the Image editor, the Video editor or Shorts autopilot, for someone who doesn't need them. To switch a module off or back on for someone, write to us through **Contact us** in the footer.
+Beyond the role, each person's access can be fitted more finely, on their own page: on the Team page, an admin clicks **Details** in their row, adjusts the cards below, then clicks **Save changes**. **Back to the team** returns to the list.
+
+- **Modules**: a module switched off for someone disappears for them entirely, menu and pages, such as the Image editor, the Video editor or Shorts autopilot for someone who doesn't need them.
+- **Rights, module by module**: what a person may do in each area (see it, create in it, change it, delete from it), graded on **Image**, **Video**, **Assets**, **Image editor**, **Video editor**, **Shorts autopilot**, **Posts**, **Publishing and scheduling**, **Validation**, **Skills**, **Team members**, **Team settings** and **Shared credits**. Each right follows the person's role until it is changed for them. Nobody can change their own rights.
 
 The person who creates a team is its first admin. Your own role is shown in **User Settings**, with a line that says what it allows.
 
