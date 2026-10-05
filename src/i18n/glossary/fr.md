@@ -42,6 +42,7 @@ Draft with AI / Draft at once / Write it myself -> Rédiger avec l’IA / Rédig
 Brand voice -> Voix de la marque
 Publish now / Schedule / Schedule it -> Publier maintenant / Programmer / Le programmer
 Publish automatically / Publish manually -> Publier automatiquement / Publier manuellement
+YouTube module: Videos / Channel (tabs) -> Vidéos / Chaîne; channel kit -> kit de chaîne; Publish interactively -> Publier vous-même; Write the kit with AI -> Rédiger le kit avec l’IA; Short (YouTube) -> Short
 In the queue / Scheduled / Published -> Dans la file d’attente / Planifié / Publié
 caption -> légende; prompt -> prompt; brief -> brief (verb: briefer)
 network (social) -> réseau

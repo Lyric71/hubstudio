@@ -2,10 +2,11 @@
 /**
  * /app/publish: social publishing for LinkedIn, Instagram, Facebook, TikTok
  * (Beta) and X, with scheduling, the queue, re-purposing, approval and
- * My Connections.
+ * My Connections; and YouTube, which the app prepares and the person uploads
+ * in YouTube Studio (no scheduling, no queue, no connection).
  *
  * Facts come from src/content/help/linkedin.md, instagram.md, facebook.md,
- * tiktok.md, x.md, account-and-sign-in.md and validation.md; button and panel
+ * tiktok.md, youtube.md, x.md, account-and-sign-in.md and validation.md; button and panel
  * names are quoted from there. Every picture is a real capture from
  * src/data/app-shots.ts. TikTok carries its Beta label everywhere it is named.
  * Chinese platforms are not published from the app: the page says so and
@@ -97,6 +98,16 @@ const networks: Network[] = [
     studio: { label: 'Want the studio to run TikTok for you?', href: '/solutions/platforms/tiktok' },
   },
   {
+    id: 'youtube',
+    name: 'YouTube',
+    body: 'A YouTube post is the video with its title and description, written to YouTube’s rules: the subject and the search words first, hashtags at the end, nothing YouTube would refuse. YouTube keeps every upload from an app it hasn’t audited private, so the upload is yours: Publish interactively downloads the video, opens YouTube Studio and puts the title on your clipboard, and the description follows with one more click.',
+    body2: 'Nothing to connect. The Channel tab prepares the channel itself, from its name and handle to a banner and a profile picture at YouTube’s sizes, then opens each YouTube page in turn.',
+    shots: [
+      { shot: appShots.youtube, path: '/social/youtube/posts' },
+      { shot: appShots.youtubeChannel, path: '/social/youtube/channel' },
+    ],
+  },
+  {
     id: 'x',
     name: 'X',
     body: 'Write one post or a thread, with up to four pictures. Choose the hashtags (the app recommends none; on X, three or more cut reach) and the accounts to mention. A link can go in a short follow-up post instead of the first one, because X cuts the reach of posts that open with an outside link. Once a post is live, update it or delete it on X from hubStudio. An update keeps the replies and likes; the link changes, and the old one forwards.',
@@ -128,11 +139,11 @@ type Faq = { q: string; a: string; link?: { match: string; href: string } };
 const faqs: Faq[] = [
   {
     q: 'Which accounts can I publish to?',
-    a: 'LinkedIn profiles and the company pages you manage, Instagram professional accounts (Business or Creator), Facebook pages, TikTok accounts, and X accounts. TikTok is in Beta.',
+    a: 'LinkedIn profiles and the company pages you manage, Instagram professional accounts (Business or Creator), Facebook pages, TikTok accounts, and X accounts. TikTok is in Beta. YouTube needs no connection: hubStudio prepares the video and its words, and you upload it in YouTube Studio.',
   },
   {
     q: 'Does publishing cost anything?',
-    a: 'Publishing to LinkedIn, Instagram, Facebook, and TikTok costs nothing, and so does writing a post yourself. Drafting with AI and rendering pictures or clips are paid runs, charged to your prepaid balance and priced where you work. On X, each post sent through hubStudio shows its price under the buttons before you send. There’s no subscription and no seat fee. See how pricing works.',
+    a: 'Publishing to LinkedIn, Instagram, Facebook, TikTok, and YouTube costs nothing, and so does writing a post yourself. Drafting with AI and rendering pictures or clips are paid runs, charged to your prepaid balance and priced where you work. On X, each post sent through hubStudio shows its price under the buttons before you send. There’s no subscription and no seat fee. See how pricing works.',
     link: { match: 'how pricing works', href: '/pricing' },
   },
   {
@@ -145,7 +156,7 @@ const faqs: Faq[] = [
   },
   {
     q: 'Can I publish one post everywhere?',
-    a: 'Yes. Re-purpose for other networks turns a post into drafts for the other networks, rewritten for each. A network that can’t take the post is grayed out: Instagram needs a picture, TikTok a video.',
+    a: 'Yes. Re-purpose for other networks turns a post into drafts for the other networks, rewritten for each. A network that can’t take the post is grayed out: Instagram needs a picture, TikTok and YouTube a video.',
   },
   {
     q: 'Can a client approve a post before it goes out?',
@@ -186,7 +197,7 @@ const faqSchema = {
 
 <Layout
   title="Publish to LinkedIn, Instagram, Facebook, and X | hubStudio"
-  description="Draft posts with AI or by hand, get them approved, then publish or schedule them to LinkedIn, Instagram, Facebook, TikTok (Beta), and X."
+  description="Draft posts with AI or by hand, get them approved, then publish them to LinkedIn, Instagram, Facebook, TikTok (Beta) and X, or upload to YouTube."
   preloadImage={appShots.linkedin.src}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -206,7 +217,7 @@ const faqSchema = {
         </h1>
         <p class="lead pb-hero__lead">
           hubStudio drafts and publishes posts for LinkedIn, Instagram, Facebook, TikTok (Beta),
-          and X. Write with AI or by hand, add the pictures you made in the studios, get sign-off
+          and X, and gets YouTube videos ready for YouTube Studio. Write with AI or by hand, add the pictures you made in the studios, get sign-off
           if you need it, then post now or on a schedule, in your own name.
         </p>
         <div class="pb-hero__cta">
@@ -228,8 +239,8 @@ const faqSchema = {
         <span class="eyebrow">How a post goes out</span>
         <h2 class="headline h2 reveal">The same steps on every <span class="accent">network</span>.</h2>
         <p class="pb-p">
-          LinkedIn, Instagram, Facebook, TikTok, and X each have an entry in the menu. Inside, the
-          work runs the same way.
+          LinkedIn, Instagram, Facebook, TikTok, YouTube, and X each have an entry in the menu.
+          Inside, the work runs the same way, up to the moment it goes out.
         </p>
       </header>
       <ol class="pb-steps">
@@ -252,7 +263,7 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- ===== The five networks ===== -->
+  <!-- ===== The networks ===== -->
   <section class="pb-sheet pb-sheet--cream" id="networks">
     <div class="container">
       <header class="pb-head">
@@ -299,7 +310,8 @@ const faqSchema = {
         <span class="eyebrow">Scheduling</span>
         <h2 class="headline h2 reveal">Schedule it, then watch the <span class="accent">queue</span>.</h2>
         <p class="pb-p">
-          That’s the network-by-network detail. From here on, everything applies to all five.
+          That’s the network-by-network detail. From here on, everything applies to the five
+          networks hubStudio posts to itself; YouTube goes up in YouTube Studio.
         </p>
       </header>
       <div class="pb-cols">

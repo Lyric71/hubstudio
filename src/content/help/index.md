@@ -1,11 +1,11 @@
 ---
 title: "hubStudio Help"
 seoTitle: "hubStudio Help Center"
-description: "Guides for hubStudio: getting started, the Explore gallery, the image and video studios, History, the Assets Library with its Image editor and Video editor, Shorts autopilot, skills, LinkedIn, Instagram, Facebook, TikTok and X, Validation, teams and their clients, the Client space, your balance and payments, your account and troubleshooting."
+description: "Guides for hubStudio: getting started, the Explore gallery, the image and video studios, History, the Assets Library with its Image editor and Video editor, Shorts autopilot, skills, LinkedIn, Instagram, Facebook, TikTok, YouTube and X, Validation, teams and their clients, the Client space, your balance and payments, your account and troubleshooting."
 excerpt: "Everything you need to make images, videos and posts with hubStudio, alone or with your team, and to deliver them to your clients."
 section: "home"
 order: 0
-updated: 2026-10-04
+updated: 2026-10-05
 appPaths: []
 audience: "Everyone"
 related: []
@@ -13,7 +13,7 @@ shots: []
 sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/middleware.ts"]
 ---
 
-hubStudio makes images and videos with the AI engines of several makers, turns them into posts for LinkedIn, Instagram, Facebook, TikTok and X, and delivers them to the clients your team works for, for you alone or for your whole team, paid from one prepaid balance. These guides follow the menu, from your first render to your team, your clients and your invoices.
+hubStudio makes images and videos with the AI engines of several makers, turns them into posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X, and delivers them to the clients your team works for, for you alone or for your whole team, paid from one prepaid balance. These guides follow the menu, from your first render to your team, your clients and your invoices.
 
 ## Start here
 
@@ -35,20 +35,21 @@ hubStudio makes images and videos with the AI engines of several makers, turns t
 10. [Instagram](/help/instagram): the picture, the carousel or the Reel first, then its caption, then a feed post, a Story or a Reel.
 11. [Facebook](/help/facebook): a page post with pictures or a video, and its first comment.
 12. [TikTok](/help/tiktok): the video first, then its caption, the in-depth Brief, and TikTok's own posting choices.
-13. [X](/help/x): a post or a thread with up to four pictures, then updating or deleting it on X.
-14. [Validation](/help/validation): sending an image, a video, a post or a file for approval, deciding, new versions, comments, and your clients as validators.
+13. [YouTube](/help/youtube): the video first, then its title and description, the upload in YouTube Studio, and the channel kit: name, handle, description, links, banner and profile picture.
+14. [X](/help/x): a post or a thread with up to four pictures, then updating or deleting it on X.
+15. [Validation](/help/validation): sending an image, a video, a post or a file for approval, deciding, new versions, comments, and your clients as validators.
 
 ## Your team and your clients
 
-15. [Your team](/help/your-team): working alone or in a team, the Admin, Creator, Viewer and Client roles, invitations, requests to join, daily limits, pausing a login, clients and their logins, invoice details, the interface languages and renaming the team.
-16. [Client space](/help/client-space): for the people of your clients: what they see, downloading, and approving the team's work.
+16. [Your team](/help/your-team): working alone or in a team, the Admin, Creator, Viewer and Client roles, invitations, requests to join, daily limits, pausing a login, clients and their logins, invoice details, the interface languages and renaming the team.
+17. [Client space](/help/client-space): for the people of your clients: what they see, downloading, and approving the team's work.
 
 ## Your money and your account
 
-17. [Balance and payments](/help/balance-and-payments): a prepaid balance in US dollars, the team balance then your own, topping up by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log.
-18. [Account and sign-in](/help/account-and-sign-in): the interface in English, French or Chinese, your name, picture, email and password, the sign-in code by email, your social accounts on My Connections, the connection check, light or dark, date and time, My models, voice input and password reset.
-19. [Partners](/help/partners): the partner area, for commercial partners only.
+18. [Balance and payments](/help/balance-and-payments): a prepaid balance in US dollars, the team balance then your own, topping up by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log.
+19. [Account and sign-in](/help/account-and-sign-in): the interface in English, French or Chinese, your name, picture, email and password, the sign-in code by email, your social accounts on My Connections, the connection check, light or dark, date and time, My models, voice input and password reset.
+20. [Partners](/help/partners): the partner area, for commercial partners only.
 
 ## When something goes wrong
 
-20. [Troubleshooting](/help/troubleshooting): the messages hubStudio shows, what they mean and what to do.
+21. [Troubleshooting](/help/troubleshooting): the messages hubStudio shows, what they mean and what to do.

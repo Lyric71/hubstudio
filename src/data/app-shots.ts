@@ -169,6 +169,20 @@ export const appShots = {
     alt: 'The TikTok post studio in hubStudio, starting from "The video": Render with AI, Pick from the library or Upload from your computer, then a prompt box with engine (Veo 3.1 Fast), vertical 9:16 aspect and 8-second length menus.',
     caption: 'TikTok: start from the video, rendered with AI, taken from History or uploaded.',
   },
+  youtube: {
+    src: '/Images/app/youtube.webp',
+    width: 1152,
+    height: 749,
+    alt: 'The publishing step of a YouTube post in hubStudio: the Videos and Channel tabs, the three steps (the video, the title and description, publishing), the Publish interactively button and the first steps of the upload in YouTube Studio, beside the post shown as YouTube’s watch page.',
+    caption: 'YouTube: the video, its title and description, then the upload in YouTube Studio, step by step.',
+  },
+  youtubeChannel: {
+    src: '/Images/app/youtubeChannel.webp',
+    width: 1152,
+    height: 522,
+    alt: 'The Channel tab of YouTube in hubStudio: what the channel is about, with language, model, Brand voice and Write the kit with AI, beside a preview of the channel page with its banner, picture, name, handle and description.',
+    caption: 'YouTube Channel: the channel prepared in hubStudio, then opened on YouTube.',
+  },
   x: {
     src: '/Images/app/x.webp',
     width: 1152,

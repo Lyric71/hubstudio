@@ -5,7 +5,7 @@ description: "Working alone or in a team, the Admin, Creator, Viewer and Client 
 excerpt: "A team shares one balance and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
 order: 15
-updated: 2026-10-04
+updated: 2026-10-05
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
 related: ["getting-started", "balance-and-payments", "history", "assets-library", "validation", "client-space", "skills"]
@@ -131,7 +131,7 @@ Nothing reaches a client until you say it was made for them. Creators and admins
 
 - in the image and video studios, before the run. See [Create an image](/help/create-an-image#made-for-a-client) and [Create a video](/help/create-a-video#made-for-a-client);
 - on a card in [History](/help/history#made-for-a-client), at any time;
-- on a post in a network module: [LinkedIn](/help/linkedin#made-for-a-client), [Instagram](/help/instagram#made-for-a-client), [Facebook](/help/facebook#made-for-a-client), [TikTok](/help/tiktok#made-for-a-client) or [X](/help/x#made-for-a-client).
+- on a post in a network module: [LinkedIn](/help/linkedin#made-for-a-client), [Instagram](/help/instagram#made-for-a-client), [Facebook](/help/facebook#made-for-a-client), [TikTok](/help/tiktok#made-for-a-client), [YouTube](/help/youtube#made-for-a-client) or [X](/help/x#made-for-a-client).
 
 Pick **No client: the team only** (on History, **No client**) to take a piece back from a client. The team keeps seeing everything it made, whoever it was made for.
 

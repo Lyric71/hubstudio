@@ -111,6 +111,7 @@ const HELP: Record<string, string> = {
   validation: 'validation',
   x: 'x',
   'your-team': 'votre-equipe',
+  youtube: 'youtube',
 };
 
 const DESIGN: Record<string, string> = {

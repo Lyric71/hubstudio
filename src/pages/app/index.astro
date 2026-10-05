@@ -70,7 +70,7 @@ const journey = [
   {
     label: 'Publish',
     title: 'Five networks, one place to post',
-    body: 'Write for LinkedIn, Instagram, Facebook, TikTok (in Beta), and X. Hand a brief to “Draft with AI” or write the post yourself, add pictures or a carousel, then publish now or schedule it. One post can go to up to 20 accounts. If a network doesn’t take a post, the queue tries again on its own. You can also re-purpose a post written for one network for the others.',
+    body: 'Write for LinkedIn, Instagram, Facebook, TikTok (in Beta), and X. Hand a brief to “Draft with AI” or write the post yourself, add pictures or a carousel, then publish now or schedule it. One post can go to up to 20 accounts. If a network doesn’t take a post, the queue tries again on its own. You can also re-purpose a post written for one network for the others. YouTube videos get their title and description here too, then go up in YouTube Studio.',
     link: { label: 'How publishing works', href: '/app/publish' },
     shot: appShots.linkedin,
     path: '/social/linkedin/posts',
@@ -140,7 +140,7 @@ const faqs: { q: string; a: string; link?: { label: string; href: string } }[] =
   },
   {
     q: 'Which social networks can I publish to?',
-    a: 'LinkedIn, Instagram, Facebook, TikTok (in Beta), and X. You connect your own accounts, then publish now or schedule, on up to 20 accounts per post.',
+    a: 'LinkedIn, Instagram, Facebook, TikTok (in Beta), and X. You connect your own accounts, then publish now or schedule, on up to 20 accounts per post. For YouTube, hubStudio prepares the video, its title and description, and the channel itself, and you upload in YouTube Studio.',
     link: { label: 'How publishing works', href: '/app/publish' },
   },
   {
@@ -180,7 +180,7 @@ const appSchema = {
     'Assets Library: the team’s files in folders, with tags and versions',
     'Image tools: Image editor and Image anonymizer',
     'Video tools: Video editor and Shorts autopilot',
-    'Publishing to LinkedIn, Instagram, Facebook, TikTok (Beta), and X',
+    'Publishing to LinkedIn, Instagram, Facebook, TikTok (Beta), and X, and YouTube videos made ready for YouTube Studio',
     'Validation and a Client space for approvals and delivery',
     'Teams with Admin, Creator, Viewer, and Client roles',
   ],
@@ -407,7 +407,7 @@ const faqSchema = {
           <p class="ap-body">
             The app runs in English, French, and Chinese, sign-in page included, and each person
             picks theirs in Settings. TikTok publishing works and carries a Beta label in the
-            app; the other four networks don’t.
+            app; the other networks don’t.
           </p>
           <p class="ap-body">
             To publish, you connect your own social accounts on My Connections. They’re personal, so

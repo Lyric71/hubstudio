@@ -39,6 +39,7 @@ Crop -> 裁剪; Story (format) -> 快拍; Reel -> Reels; Carousel -> 轮播
 The brief / The copy / The pictures / Publishing (post steps) -> 内容简报 / 文案 / 图片 / 发布
 Draft with AI -> AI 起草; Draft at once -> 一键起草; Rewrite with AI -> 用 AI 重写
 Publish now / Schedule / Schedule it -> 立即发布 / 定时发布 / 确认定时发布
+YouTube module: Videos / Channel (tabs) -> 视频 / 频道; channel kit -> 频道资料包; Publish interactively -> 自行发布; Write the kit with AI -> 用 AI 撰写频道资料包; Short (YouTube) -> Shorts
 Publish automatically / Publish manually / Publish interactively -> 自动发布 / 手动发布 / 自行发布
 In the queue -> 排队中; Scheduled (post) -> 已定时; Published -> 已发布
 Who sees it / Only me / Everyone in the team -> 可见范围 / 仅自己 / 团队内所有成员

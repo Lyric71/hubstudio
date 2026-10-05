@@ -5,7 +5,7 @@ description: "The X module: connect your X account, brief and draft a post or a 
 excerpt: "Draft a post or a thread for X with AI or by hand, add up to four pictures, and publish it on your account, now or on schedule."
 section: "social"
 order: 13
-updated: 2026-09-29
+updated: 2026-10-05
 appPaths: ["/social/x/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "instagram", "facebook", "tiktok", "validation", "account-and-sign-in", "skills", "balance-and-payments", "assets-library"]
@@ -147,13 +147,13 @@ A temporary problem on X's side is retried by itself, three attempts in all. A c
 
 ## Take a post to other networks
 
-**Re-purpose for other networks**, at the foot of the publishing step, turns this post into posts for [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook) or [TikTok](/help/tiktok). Tick the networks, then pick a way:
+**Re-purpose for other networks**, at the foot of the publishing step, turns this post into posts for [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok) or [YouTube](/help/youtube). Tick the networks, then pick a way:
 
 - **Manually**: each network opens in its own tab with this post as the brief. Nothing is drafted until you press Draft there.
 - **Draft at once**: hubStudio drafts each network's post, and opens each draft in its own tab. Each draft is billed like one **Draft with AI**.
-- **Publish automatically**: the same drafts, then sent on the accounts you tick for each network.
+- **Publish automatically**: the same drafts, then sent on the accounts you tick for each network. YouTube can't be ticked there: you publish on YouTube yourself.
 
-A network that can't take the post is grayed out: Instagram needs a picture and TikTok a video.
+A network that can't take the post is grayed out: Instagram needs a picture, TikTok and YouTube a video.
 
 ## What it costs
 

@@ -5,7 +5,7 @@ description: "The LinkedIn module: connect your LinkedIn account, brief and draf
 excerpt: "Draft a LinkedIn post with AI or by hand, give it a picture or a carousel, and publish it on your account, now or on schedule."
 section: "social"
 order: 9
-updated: 2026-09-29
+updated: 2026-10-05
 appPaths: ["/social/linkedin/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["instagram", "facebook", "tiktok", "x", "validation", "account-and-sign-in", "skills", "history", "assets-library"]
@@ -137,13 +137,13 @@ A temporary problem on LinkedIn's side is retried by itself, three attempts in a
 
 ## Take a post to other networks
 
-**Re-purpose for other networks**, at the foot of the publishing step, turns this post into posts for [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok) or [X](/help/x). Tick the networks, then pick a way:
+**Re-purpose for other networks**, at the foot of the publishing step, turns this post into posts for [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok), [YouTube](/help/youtube) or [X](/help/x). Tick the networks, then pick a way:
 
 - **Manually**: each network opens in its own tab with this post as the brief. Nothing is drafted until you press Draft there.
 - **Draft at once**: hubStudio drafts each network's post, and opens each draft in its own tab. Each draft is billed like one **Draft with AI**.
-- **Publish automatically**: the same drafts, then sent on the accounts you tick for each network.
+- **Publish automatically**: the same drafts, then sent on the accounts you tick for each network. YouTube can't be ticked there: you publish on YouTube yourself.
 
-A network that can't take the post is grayed out: Instagram needs a picture and TikTok a video.
+A network that can't take the post is grayed out: Instagram needs a picture, TikTok and YouTube a video.
 
 ## What it costs
 

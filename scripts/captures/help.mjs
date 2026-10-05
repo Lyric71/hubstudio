@@ -12,7 +12,9 @@
  * Kept from capture to capture: the demo files of the BearingBridge team
  * (Maya Chen's four pictures, the Spring campaign folder, the
  * lumera-essence-teaser.mp4 clip, her Instagram draft with the Lumera
- * packshot). The video tools are fed the clips in ./files.
+ * packshot, her YouTube post with the teaser, the team's YouTube channel kit
+ * "Lumera Skincare" with its banner and picture fitted from the packshot).
+ * The video tools are fed the clips in ./files.
  */
 import { join } from 'node:path';
 import { ADMIN, DANA, HELP_IMAGES, MAYA, capture, click, png, run } from './lib.mjs';
@@ -20,16 +22,19 @@ import { ADMIN, DANA, HELP_IMAGES, MAYA, capture, click, png, run } from './lib.
 const PACKSHOT = '407aab76-d79e-4861-ad3f-1ea15e6d3b71'; // lumera-essence-packshot.jpg
 const TEASER = 'lumera-essence-teaser.mp4';
 const IG_DRAFT = 'fac4760b-f7a4-4a59-a5ec-2a7c98ec554d'; // Maya's Instagram draft with the packshot
+const YT_POST = 'ff4d2cf0-00d9-4da7-8323-036a291f7aee'; // Maya's YouTube post with the teaser clip
+/** The banner and the picture of the team's YouTube channel kit, fitted copies kept in the library. */
+const YT_COPY = /-youtube-(banner|picture)-\d+x\d+\.jpg$/;
 
 /** The library as it stood for the English captures: the four pictures and the folder, before the teaser clip. */
 const libraryBeforeTeaser = {
   path: '/api/files',
   transform: (d) => {
-    const gone = (d.files ?? []).filter((f) => f.name === TEASER);
+    const gone = (d.files ?? []).filter((f) => f.name === TEASER || YT_COPY.test(f.name ?? ''));
     const bytes = gone.reduce((n, f) => n + (Number(f.sizeBytes ?? f.size) || 0), 0);
     return {
       ...d,
-      files: (d.files ?? []).filter((f) => f.name !== TEASER),
+      files: (d.files ?? []).filter((f) => !gone.includes(f)),
       usage: { ...d.usage, files: d.usage.files - gone.length, bytes: d.usage.bytes - bytes, totalBytes: d.usage.totalBytes - bytes },
     };
   },
@@ -319,6 +324,21 @@ const shots = [
   { name: 'facebook-brief', route: '/social/facebook/posts' },
   { name: 'tiktok-video', route: '/social/tiktok/posts' },
   { name: 'tiktok-brief', route: '/social/tiktok/brief' },
+  { name: 'youtube-video', route: '/social/youtube/posts' },
+  { name: 'youtube-publish', route: `/social/youtube/posts#item=${YT_POST}&step=publish`, as: MAYA, height: 1100, wait: '.sc-yt' },
+  { name: 'youtube-channel', route: '/social/youtube/channel', as: MAYA, wait: '[data-project-panel]:not(.hidden) .yc-page' },
+  {
+    name: 'youtube-channel-art',
+    route: '/social/youtube/channel',
+    as: MAYA,
+    height: 1100,
+    wait: '[data-project-panel]:not(.hidden) .yc-page',
+    css: '.yc__savebar { display: none !important; }',
+    steps: async (page) => {
+      await page.waitForFunction(() => [...document.querySelectorAll('[data-project-panel]:not(.hidden) .yc__arts img')].every((i) => i.complete && i.naturalWidth > 0), null, { timeout: 30000 });
+    },
+    element: '[data-project-panel]:not(.hidden) section:has(.yc__arts)',
+  },
   { name: 'x-brief', route: '/social/x/posts' },
   { name: 'x-knobs', route: '/social/x/posts', steps: scrollTo('[data-sc-x-knobs]', 200), element: '[data-sc-x-knobs]' },
 

@@ -232,7 +232,7 @@ const modules: Module[] = [
   {
     id: 'publish',
     name: 'Publish',
-    lede: 'Five networks, one place to post. Publish now or schedule it, to up to 20 accounts a post, and the queue retries on its own.',
+    lede: 'Five networks, one place to post, and YouTube videos made ready for YouTube Studio. Publish now or schedule it, to up to 20 accounts a post, and the queue retries on its own.',
     link: { label: 'How publishing works', href: '/app/publish' },
     features: [
       {
@@ -266,6 +266,14 @@ const modules: Module[] = [
         body: 'The Brief tab drafts the hook, a timed script, the on-screen text and the caption with its hashtags, inside TikTok’s limits. Then render the clip, pick it from the library or upload it.',
         shot: appShots.tiktok,
         path: '/social/tiktok/brief',
+      },
+      {
+        id: 'youtube',
+        hook: 'YouTube keeps an app’s uploads private. So the upload is yours, with everything ready.',
+        name: 'YouTube',
+        body: 'Start from the video, then have its title and description written to YouTube’s rules. Publish interactively downloads the video, opens YouTube Studio and puts the title on your clipboard. The Channel tab prepares the channel itself: name, handle, description, banner and profile picture.',
+        shot: appShots.youtube,
+        path: '/social/youtube/posts',
       },
       {
         id: 'x',
@@ -531,7 +539,7 @@ const homeSchema = {
       applicationCategory: 'MultimediaApplication',
       operatingSystem: 'Web browser',
       description:
-        'A web app to make images and video with the AI engines of several makers, edit them, turn them into posts, get them approved, and publish them to LinkedIn, Instagram, Facebook, X and TikTok.',
+        'A web app to make images and video with the AI engines of several makers, edit them, turn them into posts, get them approved, and publish them to LinkedIn, Instagram, Facebook, X and TikTok, or make them ready for YouTube.',
       publisher: { '@id': `${SITE}/#organization` },
     },
   ],

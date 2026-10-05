@@ -57,6 +57,9 @@ const shots = [
   { name: 'facebook', from: 'facebook-brief', width: NARROW, crop: MAIN(76, 900) },
   { name: 'tiktok', from: 'tiktok-brief', width: NARROW, crop: { en: MAIN(76, 846), fr: MAIN(76, 831), zh: MAIN(76, 815) }, extend: 'copy' },
   { name: 'tiktokVideo', from: 'tiktok-video', width: NARROW, crop: { en: MAIN(76, 874), fr: MAIN(76, 844) }, extend: 'copy' },
+  // The publishing step cut at the blank line above the third step, the same in the three languages.
+  { name: 'youtube', from: 'youtube-publish', width: NARROW, crop: MAIN(76, 825) },
+  { name: 'youtubeChannel', from: 'youtube-channel', width: NARROW, crop: { en: MAIN(76, 598), zh: MAIN(76, 582) }, extend: 'copy' },
   { name: 'x', from: 'x-brief', width: NARROW, crop: MAIN(76, 852) },
   { name: 'xKnobs', from: 'x-knobs', width: NARROW, fit: true },
   { name: 'validationSend', from: 'validation-send-dialog' },

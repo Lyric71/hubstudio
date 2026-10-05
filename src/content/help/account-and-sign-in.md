@@ -5,7 +5,7 @@ description: "The interface in English, French or Chinese, your name, picture, s
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
 order: 18
-updated: 2026-10-04
+updated: 2026-10-05
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"
 related: ["getting-started", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "balance-and-payments", "troubleshooting"]
@@ -88,7 +88,7 @@ The **Sign-in code** tab in **Sign-in and security** lists the browsers you told
 
 ## My Connections: your social accounts
 
-To publish posts from hubStudio, connect your own social accounts. Click your picture at the top right, then **My Connections**. In hubStudio the page holds one card, **Your social accounts**, so that the posts you write in LinkedIn, Instagram, Facebook, TikTok and X go out in your name.
+To publish posts from hubStudio, connect your own social accounts. Click your picture at the top right, then **My Connections**. In hubStudio the page holds one card, **Your social accounts**, so that the posts you write in LinkedIn, Instagram, Facebook, TikTok and X go out in your name. YouTube has no card: you publish there yourself, in YouTube Studio (see [YouTube](/help/youtube)).
 
 What you connect is yours alone. Nobody else in your team, admins included, can see it or publish with it, and you can't publish on a teammate's account either. Connecting publishes nothing.
 

@@ -5,10 +5,10 @@ description: "Shorts autopilot turns a long video into vertical 9:16 shorts for 
 excerpt: "Give it an interview, a talk or a podcast: it picks the moments that work on their own and saves each one as a vertical short, captioned and ready to post."
 section: "library"
 order: 7
-updated: 2026-10-02
+updated: 2026-10-05
 appPaths: ["/files/tools/shorts"]
 audience: "Creators and admins"
-related: ["assets-library", "tiktok", "instagram", "history", "balance-and-payments"]
+related: ["assets-library", "tiktok", "instagram", "youtube", "history", "balance-and-payments"]
 shots:
   - file: "/Images/help/shorts-autopilot-page.webp"
     route: "/files/tools/shorts"
@@ -82,7 +82,7 @@ The shorts appear as they are written, best first, each with:
 
 Each short is an MP4 at 1080 × 1920, saved in the same folder as the original video (at the top of the library for a video from your computer), under its name followed by "short 1", "short 2" and so on. **Edit in the Video editor** opens it on the editor's **Social** panel, set to TikTok (or to Instagram when TikTok wasn't kept), for a last touch: trim it, move the captions, add music, pick a cover. See [The Video editor](/help/assets-library#the-video-editor).
 
-A short is a file you made, not a render: it sits in the Assets Library, not in [History](/help/history). To post it, pick it from the library in the [TikTok](/help/tiktok) or [Instagram](/help/instagram) module, or download it.
+A short is a file you made, not a render: it sits in the Assets Library, not in [History](/help/history). To post it, pick it from the library in the [TikTok](/help/tiktok), [Instagram](/help/instagram) or [YouTube](/help/youtube) module, or download it.
 
 ## What it costs
 

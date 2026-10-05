@@ -5,7 +5,7 @@ description: "What a skill is, how to take one from the Catalog, edit it or writ
 excerpt: "Reusable instructions that Improve with AI follows every time it rewrites a prompt for an image or a video."
 section: "skills"
 order: 8
-updated: 2026-09-27
+updated: 2026-10-05
 appPaths: ["/skills", "/skills/organization", "/skills/catalog"]
 audience: "Everyone; team skills are for administrators"
 related: ["create-an-image", "create-a-video", "linkedin", "x", "your-team"]
@@ -55,7 +55,7 @@ The Catalog groups the standard skills in sections, with a search box and one ch
 - **Video camera movement vocabulary**, **Video shot pacing and duration**, **Animating a still (image to video)** and **Short vertical video ad**.
 - **Avoid list: hands, text artifacts, watermarks**.
 
-The **Social networks** section holds the posting rules of each network (LinkedIn, X, Instagram, Facebook, TikTok): length, hashtags, tone. These skills are already in your own list, and each network module picks its own format skill for every draft. See, for example, [LinkedIn](/help/linkedin#write-the-brief).
+The **Social networks** section holds the posting rules of each network (LinkedIn, X, Instagram, Facebook, TikTok, YouTube): length, hashtags, tone. These skills are already in your own list, and each network module picks its own format skill for every draft. See, for example, [LinkedIn](/help/linkedin#write-the-brief).
 
 To take a skill:
 

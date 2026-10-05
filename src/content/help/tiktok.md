@@ -5,10 +5,10 @@ description: "The TikTok module: connect your TikTok account, start from the vid
 excerpt: "Start from the video, add a caption with AI or by hand, or brief a video in depth, and publish it on your TikTok account, now or on schedule."
 section: "social"
 order: 12
-updated: 2026-10-01
+updated: 2026-10-05
 appPaths: ["/social/tiktok/posts", "/social/tiktok/brief", "/my-connections"]
 audience: "Creators and admins; viewers read"
-related: ["linkedin", "instagram", "facebook", "x", "validation", "create-a-video", "history", "assets-library"]
+related: ["linkedin", "instagram", "facebook", "youtube", "x", "validation", "create-a-video", "history", "assets-library"]
 shots:
   - file: "/Images/help/tiktok-video.webp"
     route: "/social/tiktok/posts"
@@ -156,11 +156,11 @@ A temporary problem on TikTok's side is retried by itself, three attempts in all
 
 ## Take a post to other networks
 
-**Re-purpose for other networks**, at the foot of the publishing step, turns this post into posts for [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook) or [X](/help/x). Tick the networks, then pick a way:
+**Re-purpose for other networks**, at the foot of the publishing step, turns this post into posts for [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [YouTube](/help/youtube) or [X](/help/x). Tick the networks, then pick a way:
 
 - **Manually**: each network opens in its own tab with this post as the brief. Nothing is drafted until you press Draft there.
 - **Draft at once**: hubStudio drafts each network's post, and opens each draft in its own tab. Each draft is billed like one draft with AI on that network.
-- **Publish automatically**: the same drafts, then sent on the accounts you tick for each network.
+- **Publish automatically**: the same drafts, then sent on the accounts you tick for each network. YouTube can't be ticked there: you publish on YouTube yourself.
 
 ## What it costs
 
