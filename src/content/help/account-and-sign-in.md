@@ -107,9 +107,9 @@ To add a second account on the same network, click **Connect another account** o
 | Network | What to know before you connect |
 |---|---|
 | LinkedIn | Your profile comes back, along with any company page LinkedIn lists you as an administrator of. Keep the ones you post on and remove the others. |
-| Instagram | Switch the account to Business or Creator first, in the Instagram app. No Facebook page is needed. |
-| Facebook | You need a Facebook page. Facebook asks which pages to include; each page you tick comes back as its own row. With no page, nothing comes back. |
-| TikTok | The account comes back with what TikTok allows it: who may see your posts and how many it takes a day. The publishing form offers only that. |
+| Instagram | Switch the account to Business or Creator first, in the Instagram app. No Facebook page is needed. Instagram asks you to sign in and confirm at every connection, so you can pick another professional account. |
+| Facebook | You need a Facebook page. Facebook asks which pages to include; each page you tick comes back as its own row. With no page, nothing comes back. Connecting again offers the pages and permissions you left out the last time. |
+| TikTok | The account comes back with what TikTok allows it: who may see your posts and how many it takes a day. The publishing form offers only that. TikTok shows its permission page at every connection, even for an account you connected before. |
 | X | Only the account signed in to X in this browser comes back. To connect a second one, sign in as it (a private window helps) and connect again. |
 
 ### Your connected accounts
