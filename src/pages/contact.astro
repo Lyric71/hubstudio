@@ -59,6 +59,16 @@ const scopeOptions = [
   'Too early to say',
 ];
 
+/* "How did you hear about us?": values are the slugs the API whitelists (the
+   same five on every site); `detail` reveals the optional "Which one?" box. */
+const sources = [
+  { value: 'google', label: 'Google or another search engine' },
+  { value: 'ai', label: 'An AI assistant (ChatGPT, Gemini, Claude, Perplexity…)' },
+  { value: 'exhibition', label: 'An exhibition or a trade show', detail: true },
+  { value: 'referral', label: 'A referral, someone recommended us', detail: true },
+  { value: 'other', label: 'Somewhere else', detail: true },
+];
+
 const breadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -351,6 +361,37 @@ const studios = [
               placeholder="What are you making, and by when? Tell us the markets too. If it’s about the app, just ask."
             ></textarea>
           </div>
+
+          <fieldset class="choice-set">
+            <legend>How did you hear about us? <span class="req">*</span></legend>
+            <div class="choice">
+              {sources.map((s) => (
+                <label class="pick-wrap">
+                  <input
+                    type="radio"
+                    name="source"
+                    value={s.value}
+                    data-detail={s.detail ? 'yes' : undefined}
+                    required
+                  />
+                  <span class="pick">{s.label}</span>
+                </label>
+              ))}
+            </div>
+            <!-- Shown for an exhibition, a referral or somewhere else; without
+                 JS it simply stays visible. -->
+            <div class="field source-detail" id="source-detail">
+              <label for="sourceDetail">Which one? <span class="opt-tag">optional</span></label>
+              <input
+                id="sourceDetail"
+                name="sourceDetail"
+                type="text"
+                maxlength="120"
+                autocomplete="off"
+                placeholder="The name, so we can thank them"
+              />
+            </div>
+          </fieldset>
 
           <div class="form-foot">
             <button type="submit" class="btn btn--primary form-submit">Send your message</button>
@@ -801,6 +842,12 @@ const studios = [
     outline: 2px solid var(--brand-orange);
     outline-offset: 2px;
   }
+  .source-detail {
+    margin-top: 16px;
+  }
+  .source-detail[hidden] {
+    display: none;
+  }
 
   /* Footer of the form */
   .form-foot {
@@ -912,6 +959,17 @@ const studios = [
     input.addEventListener('change', syncWay);
   });
   syncWay();
+
+  /* "How did you hear about us?": the "Which one?" box only for the answers
+     that have a name to give (an exhibition, a referral, somewhere else). */
+  const sourceInputs = document.querySelectorAll<HTMLInputElement>('input[name="source"]');
+  const sourceDetail = document.getElementById('source-detail');
+  const syncSource = () => {
+    const picked = Array.from(sourceInputs).find((i) => i.checked);
+    if (sourceDetail) sourceDetail.hidden = !picked?.dataset.detail;
+  };
+  sourceInputs.forEach((input) => input.addEventListener('change', syncSource));
+  syncSource();
 
   /* Reveal headlines on scroll (§10: headlines only). */
   const reveals = document.querySelectorAll('.reveal');

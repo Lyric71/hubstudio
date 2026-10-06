@@ -1,7 +1,8 @@
 /**
  * Contact form endpoint (`POST /api/contact`).
  * Receives a studio brief or an app question from /contact, sends it to the
- * inbox via Resend, with how the sender wants to work in the subject line. Server-rendered on demand (Vercel function), so the rest of the
+ * inbox via Resend, with how the sender wants to work in the subject line and
+ * how they heard about us in the table. Server-rendered on demand (Vercel function), so the rest of the
  * site stays static. JS submits with `Accept: application/json` and reads the
  * JSON reply; a plain form post (no JS) is answered with a 303 to /thank-you.
  */
@@ -22,6 +23,16 @@ const WAYS: Record<string, { label: string; subject: string }> = {
   app: { label: 'The app, I have a question', subject: 'App question' },
   partner: { label: 'Partner', subject: 'Partner inquiry' },
   unsure: { label: 'Not sure yet', subject: 'New message (Not sure yet)' },
+};
+
+/** "How did you hear about us?" values from the form (the whitelist), and how
+ *  the email names them. `detail` marks the answers that may carry a name. */
+const SOURCES: Record<string, { label: string; detail?: true }> = {
+  google: { label: 'Google or another search engine' },
+  ai: { label: 'An AI assistant (ChatGPT, Gemini, Claude, Perplexity…)' },
+  exhibition: { label: 'An exhibition or a trade show', detail: true },
+  referral: { label: 'A referral, someone recommended us', detail: true },
+  other: { label: 'Somewhere else', detail: true },
 };
 
 /** Escape values before they land in the notification email's HTML. */
@@ -76,6 +87,9 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const retainer = val('retainer');
   const scope = val('scope');
   const message = val('message');
+  const source = SOURCES[val('source')];
+  // "Which one?" only counts for the answers that ask it, capped like the input.
+  const sourceDetail = source?.detail ? val('sourceDetail').slice(0, 120) : '';
   // Access to the gated quotation calculator is granted by hand, so this ask has
   // to be impossible to miss: it rides in the subject line too.
   const quotationEngine = val('quotationEngine') === 'yes';
@@ -89,6 +103,9 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return fail(422, 'That email address does not look right.');
+  }
+  if (!source) {
+    return fail(422, 'Please tell us how you heard about us.');
   }
 
   const apiKey = import.meta.env.RESEND_API_KEY;
@@ -111,6 +128,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     ['Monthly retainer', retainer || blank],
     ['Size of the work', scope || blank],
     ['Quotation Engine', quotationEngine ? 'Requesting access' : 'No'],
+    ['Heard about us via', sourceDetail ? `${source.label}: ${sourceDetail}` : source.label],
   ];
 
   const html = `
