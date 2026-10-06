@@ -103,6 +103,10 @@ const tagOf = (el: HTMLElement) => (el.rawTagName || '').toLowerCase();
 const isSkipped = (el: HTMLElement) =>
   SKIP.has(tagOf(el)) || el.hasAttribute('data-no-i18n') || el.getAttribute('translate') === 'no';
 
+/** A <textarea>: what is typed in it is the visitor's, its placeholder is ours. */
+const isAttrsOnly = (el: HTMLElement) =>
+  tagOf(el) === 'textarea' && !el.hasAttribute('data-no-i18n') && el.getAttribute('translate') !== 'no';
+
 /** An element that can sit inside a translated run. */
 function isInline(node: Node): boolean {
   if (node instanceof TextNode) return true;
@@ -155,8 +159,18 @@ export function collectUnits(root: HTMLElement, opts: CoreOptions = {}): Unit[] 
   };
 
   const walk = (el: HTMLElement) => {
+    if (isAttrsOnly(el)) {
+      pushAttrs(el);
+      return;
+    }
     if (isSkipped(el)) return;
     pushAttrs(el);
+    // A <select> is opaque, except one marked data-i18n-options: its options
+    // are our words (a country list is not, so it stays unmarked).
+    if (tagOf(el) === 'select' && el.hasAttribute('data-i18n-options')) {
+      for (const c of el.childNodes) if (c instanceof HTMLElement) walk(c);
+      return;
+    }
     if (ATOMIC.has(tagOf(el))) return;
 
     const kids = el.childNodes;
@@ -191,10 +205,10 @@ export function collectUnits(root: HTMLElement, opts: CoreOptions = {}): Unit[] 
         const key = norm(serializeRun(run, slots));
         if (hasLetters(key)) {
           units.push({ kind: 'block', key, tag: tagOf(el), el, start: s, end: e, slots });
-          for (const slot of slots.values()) if (!isSkipped(slot)) pushAttrsDeep(slot);
+          for (const slot of slots.values()) if (!isSkipped(slot) || isAttrsOnly(slot)) pushAttrsDeep(slot);
         } else for (const n of run) if (n instanceof HTMLElement) pushAttrsDeep(n);
       } else {
-        for (const n of run) if (n instanceof HTMLElement && !isSkipped(n)) pushAttrsDeep(n);
+        for (const n of run) if (n instanceof HTMLElement && (!isSkipped(n) || isAttrsOnly(n))) pushAttrsDeep(n);
       }
       i = j;
     }
