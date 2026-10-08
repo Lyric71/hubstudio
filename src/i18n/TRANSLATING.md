@@ -3,7 +3,8 @@
 Every English page of this site ships in French (`/fr/<native slug>`) and
 Simplified Chinese (`/zh/<English path>`). This guide is binding for every
 change that adds or edits an English page: an editorial publish run, a help
-sync, a page built by hand. Nothing goes live in English only.
+sync, a changelog sync, a page built by hand. Nothing goes live in English
+only.
 
 The glossaries next to this file, `glossary/fr.md` and `glossary/zh.md`, hold
 the terms already settled in the shared dictionary. Read the one for your

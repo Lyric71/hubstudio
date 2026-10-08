@@ -134,6 +134,42 @@ Layers currently live on `/app`, `/studio`, `/pricing`, `/solutions/brands`,
 is self-contained (its own container, tokens and type) so it drops into any
 page; pick the `tone` that contrasts with the section above it.
 
+## RSS feeds (PERMANENT)
+
+Every resource the site publishes reaches readers by RSS, in three languages:
+`/resources/rss.xml`, `/fr/ressources/rss.xml` and `/zh/resources/rss.xml`,
+all built by `src/lib/resources-feed.ts` from `src/data/insights.ts` and
+`src/data/howtos.ts`, newest first. A new insight or how-to enters the feeds
+by being added to its data file; there is nothing else to update. The French
+and Chinese items read their title, deck and category from the page
+dictionaries and their link from `src/i18n/routes.ts`; a missing translation
+fails the build instead of shipping English. A new kind of dated resource
+joins `resources()` in that file. `Layout.astro` advertises the feed of the
+page's language, and the footer ("RSS feed") and the Resources hub link it. The older English
+insights-only feed (`/resources/insights/rss.xml`) stays: the LinkedIn
+auto-poster reads it.
+
+## What's new: the app changelog (PERMANENT)
+
+`/app/whats-new` (French `/fr/application/nouveautes`) is the public copy of
+the app's changelog, linked from the footer; the home page's "What's new"
+band shows its four newest entries. The source is the app repository's
+`hubstudio-site/changelog.md`, written by its changelog generator; never
+edit `src/data/changelog.json` by hand. To publish new entries:
+
+1. `npm run changelog:sync` (from a worktree, pass the path to
+   `BearingBridgeIntelligence/hubstudio-site/changelog.md`).
+2. The sync refuses an entry that says "credits" or "tokens", prints an
+   amount, holds an em dash or names hub4You, and any public edit whose
+   source entry changed upstream. The settled fix is a public edit in
+   `src/data/changelog-edits.json` (the entry's id, the `sourceHash` the sync
+   prints, the replacement `blocks`, and `why`); a claim the site does not
+   make (TikTok out of Beta, for one) is edited out the same way. Sync again
+   until it passes.
+3. Translate like any page: extract, the three passes on `app/whats-new`,
+   then `npm run changelog:sync -- --fill-home` copies the same translations
+   into `home.json` for the band.
+
 ## DeBeers review page (PERMANENT)
 
 `/debeers` is a hidden, password-gated asset-review page. These rules are

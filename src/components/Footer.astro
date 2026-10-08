@@ -7,6 +7,7 @@
 import Logo from './Logo.astro';
 import LangSwitch from './LangSwitch.astro';
 import { APP_SIGNUP, APP_SIGNIN } from '../lib/links';
+import { RESOURCES_FEED } from '../lib/resources-feed';
 
 const year = new Date().getFullYear();
 
@@ -25,6 +26,9 @@ const navLinks: { label: string; href: string }[] = [
   { label: 'Partners', href: '/partners' },
   { label: 'Contact', href: '/contact' },
   { label: 'Help center', href: '/help' },
+  { label: 'What’s new', href: '/app/whats-new' },
+  /* The feed of the page's language: links to files are never localized. */
+  { label: 'RSS feed', href: RESOURCES_FEED[Astro.locals.locale ?? 'en'] },
 ];
 
 /* Parent group: the BearingBridge AI lockup, rendered as on bearingbridge.com. */

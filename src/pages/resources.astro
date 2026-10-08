@@ -11,6 +11,7 @@ import Layout from '../layouts/Layout.astro';
 import DualCta from '../components/DualCta.astro';
 import { HELP_URL } from '../lib/links';
 import { insights } from '../data/insights';
+import { RESOURCES_FEED } from '../lib/resources-feed';
 
 const SITE = 'https://www.hubstudio.ai';
 const breadcrumb = {
@@ -56,6 +57,9 @@ const areas = [
 ];
 
 const latest = insights.slice(0, 3);
+
+/* The feed of the page's language: links to files are never localized. */
+const feed = RESOURCES_FEED[Astro.locals.locale ?? 'en'];
 ---
 
 <Layout
@@ -75,6 +79,9 @@ const latest = insights.slice(0, 3);
         Essays and step-by-step guides on making AI content for brands. You’ll
         also find the legal ground rules, and the help center for the hubStudio app.
       </p>
+      <a class="rs-hero__feed" href={feed}>
+        Get every new insight and guide by RSS <span aria-hidden="true">&rarr;</span>
+      </a>
     </div>
   </section>
 
@@ -162,6 +169,21 @@ const latest = insights.slice(0, 3);
   .rs-hero__lead {
     margin-top: 22px;
     max-width: 58ch;
+  }
+  .rs-hero__feed {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 22px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .rs-hero__feed span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .rs-hero__feed:hover span {
+    transform: translateX(4px);
   }
 
   /* ---- Areas -------------------------------------------------- */

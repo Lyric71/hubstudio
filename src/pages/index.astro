@@ -28,6 +28,7 @@ import { appShots } from '../data/app-shots';
 import type { AppShot as Shot } from '../data/app-shots';
 import { caseStudies } from '../data/case-studies';
 import { insights } from '../data/insights';
+import { changes, changeDate, changeHtml, KIND_LABEL } from '../data/changelog';
 import { APP_URL, APP_SIGNUP, APP_SIGNIN, BRIEF_URL, HELP_URL } from '../lib/links';
 
 const SITE = 'https://www.hubstudio.ai';
@@ -668,6 +669,12 @@ const cases = [
 /* Insights: the four newest entries, lead plus grid. */
 const [leadInsight, ...restInsights] = insights.slice(0, 4);
 
+/* The four newest changelog entries, each with its opening paragraph. */
+const latestChanges = changes.slice(0, 4).map((c) => ({
+  ...c,
+  lede: c.blocks.find((b): b is { text: string } => 'text' in b)?.text,
+}));
+
 /* Manifesto: headline split for the kinetic reveal, plus the lines. */
 const beliefWords = ['Creative', 'intelligence', 'is', 'the', 'only', 'thing', 'left', 'that'];
 const beliefs = [
@@ -918,6 +925,47 @@ const homeSchema = {
             ))
           }
         </ul>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         What's new in the app: the four newest changelog entries
+    ========================================================== -->
+    <section class="sheet sheet--light section" id="whats-new">
+      <div class="container">
+        <header class="s-head s-head--row">
+          <div>
+            <span class="eyebrow" data-reveal>What’s new</span>
+            <h2 class="headline h2" data-reveal>
+              Just shipped in the <span class="accent">app</span>.
+            </h2>
+          </div>
+          <p class="s-head__intro" data-reveal>
+            The latest changes to hubStudio, in the plain words its users read inside the app.
+          </p>
+        </header>
+
+        <div class="news">
+          {
+            latestChanges.map((c, i) => (
+              <a class="news__item" href={`/app/whats-new#${c.id}`} data-reveal style={`--i:${i}`}>
+                <p class="news__meta">
+                  <span class={`news__kind news__kind--${c.kind}`}>{KIND_LABEL[c.kind]}</span>
+                  <time datetime={c.dateISO}>{changeDate(c.dateISO)}</time>
+                </p>
+                <h3 class="news__title">{c.title}</h3>
+                {c.lede && <p class="news__text" set:html={changeHtml(c.lede)} />}
+                <span class="news__more">
+                  Read what changed <span aria-hidden="true">&rarr;</span>
+                </span>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="block-more" data-reveal>
+          <Button variant="secondary" href="/app/whats-new">See every change</Button>
+        </div>
       </div>
     </section>
 
@@ -2356,6 +2404,97 @@ const homeSchema = {
   }
   .app__links .arrow-link {
     align-self: center;
+  }
+
+  /* ============================================================
+     What's new: the four newest changes, a two-by-two list
+  ============================================================ */
+  .news {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--gap-card);
+  }
+  @media (min-width: 820px) {
+    .news {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .news__item {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(26px, 2.8vw, 36px);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-hairline);
+    border-radius: 22px;
+    transition:
+      transform 200ms var(--ease),
+      border-color 200ms var(--ease);
+  }
+  .news__item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(233, 78, 27, 0.35);
+  }
+  .news__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .news__kind {
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+  }
+  .news__kind--new {
+    background: var(--brand-orange);
+    color: #fff;
+  }
+  .news__kind--improved {
+    background: rgba(30, 58, 138, 0.1);
+    color: var(--brand-navy);
+  }
+  .news__kind--fixed {
+    border: 1px solid var(--line-strong);
+  }
+  .news__title {
+    font-size: clamp(22px, 2vw, 26px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.22;
+  }
+  .news__text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .news__text :global(strong) {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .news__more {
+    margin-top: auto;
+    padding-top: 6px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .news__more span {
+    display: inline-block;
+    transition: transform 200ms var(--ease);
+  }
+  .news__item:hover .news__more span {
+    transform: translateX(6px);
   }
 
   /* ============================================================

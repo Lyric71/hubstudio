@@ -132,12 +132,25 @@ A studio engagement starts with a brief sent through `/contact`.
   creation form; listed by name in the side menu; a Campaign filter in the
   library. A LinkedIn, Facebook or X post can be drafted from a campaign: it
   reads the brief, the file list (name, type, prompt of a render) and the
-  text of up to 20 documents, never the pictures themselves. No Ask, no
-  agents in hubStudio. Rights row Campaigns (under Assets Library); clients
-  never see Campaigns. Free to use.
+  text of up to 20 documents, never the pictures themselves. No Ask in
+  hubStudio. Rights row Campaigns (under Assets Library); clients never see
+  Campaigns. Free to use.
+- **Agents** (added October 8, 2026, help article `agents`): an agent watches
+  part of the team's work on a schedule and reports what changed as findings
+  (real dates, networks, post titles, a suggested next step). The standard
+  one, the Social publishing watcher, re-reads the publishing on every
+  network about once a day: silent networks, empty schedules, failed or
+  missed posts, stale drafts, posts waiting for approval. People can build
+  their own agents over their posts, campaigns and library; run now or on a
+  schedule; results by email. A run that reaches the AI is charged against
+  the balance; a run with nothing new to read costs nothing.
 - **Social publishing:** LinkedIn (profiles and company pages), Instagram
   (professional accounts: feed, Story, Reel), Facebook (pages), TikTok (Beta:
-  always label it Beta), X (threads, up to four pictures). A brief goes to
+  always label it Beta), X (threads, up to four pictures), YouTube (added
+  October 5, 2026: AI writes the title and description to YouTube's rules,
+  the video is then published by hand in YouTube Studio, never scheduled in
+  hubStudio; a Channel tab prepares the channel's name, handle, banner and
+  profile picture). A brief goes to
   "Draft with AI" or you write the post yourself; pictures and carousels;
   publish now or schedule, up to 20 accounts per post; a queue with automatic
   retries; re-purpose one post for the other networks.

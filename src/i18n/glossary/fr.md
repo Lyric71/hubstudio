@@ -134,3 +134,20 @@ Units: Mbps, kbps, fps -> Mbit/s, kbit/s, i/s; MB, GB -> Mo, Go; sizes 1 080 × 
 English or French version (of a help page) -> version anglaise / version française; both versions given side by side when they disagree
 Content ID: a claimed Short -> un Short revendiqué; claim lifted -> levée de la revendication; lose its monetization -> perdre sa monétisation (never « coûter la monétisation »)
 carousel slides -> diapositives (not « visuels »)
+
+## Changelog, What's new (settled 2026-10-08)
+What's new (app page, footer link, /app/whats-new) -> Nouveautés (app label); "What’s new in hubStudio" -> Les nouveautés de hubStudio
+kind chips New / Improved / Fixed -> Nouveau / Amélioré / Corrigé; All changes (filter) -> Toutes les modifications; See every change -> Voir toutes les nouveautés; Read what changed -> Lire le détail
+release dates -> 7 octobre 2026, 1er octobre 2026
+Attach the clean picture -> « Joindre l’image nettoyée »; From the Assets Library (anonymizer button) -> « Dans la Bibliothèque de contenus »; drop box -> zone de dépôt
+Content Credentials -> kept; CR badge -> badge CR
+User Settings -> « Paramètres du compte »; My Connections -> « Mes connexions »; Languages (Team card) -> « Langues »; Details / Back to the team -> « Détails » / « Retour à l’équipe »
+Check voice -> « Vérifier la voix »; Brand (column) -> « Marque »
+Publish interactively / Copy the description (YouTube) -> « Publier vous-même » / « Copier la description »
+Social panel (Image and Video editors) -> panneau « Réseaux sociaux »; Zones switch -> interrupteur « Zones »; Save panel -> panneau « Enregistrer »
+Make shorts / Actions menu -> « Créer des shorts » / menu « Actions »; Edit video / Edit -> « Modifier la vidéo » / « Modifier »; Play -> « Lire »; PDF Tools -> « Outils PDF »; Report a bug -> « Signaler un bug »
+full size viewer -> visionneuse en plein format; uploads (library) -> imports
+material (saved with a post, beside the Skills) -> supports
+client login -> compte client (to give a login: attribuer des identifiants)
+Escape key -> touche Échap
+RSS link (Resources) -> « Recevoir par RSS chaque nouvelle analyse et chaque nouveau guide »

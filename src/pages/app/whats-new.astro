@@ -1,0 +1,278 @@
+---
+/**
+ * /app/whats-new: every change to the hubStudio app, newest first, grouped
+ * by release day. The public copy of the app's own What's new page, which
+ * sits behind sign-in.
+ *
+ * Entries come from src/data/changelog.ts (npm run changelog:sync, from the
+ * app repository's hubstudio-site/changelog.md, with the public edits of
+ * src/data/changelog-edits.json). Each entry keeps its id as an anchor, so
+ * the home page band links straight to it. The footer links here.
+ * No ordinal numerals on the entries, no amounts.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import DualCta from '../../components/DualCta.astro';
+import { APP_SIGNUP, HELP_URL } from '../../lib/links';
+import { changesByDay, changeDate, changeHtml, KIND_LABEL, type ChangeKind } from '../../data/changelog';
+import '../../styles/app-page.css';
+
+const SITE = 'https://www.hubstudio.ai';
+const days = changesByDay();
+const filters: { kind: ChangeKind | 'all'; label: string }[] = [
+  { kind: 'all', label: 'All changes' },
+  { kind: 'new', label: KIND_LABEL.new },
+  { kind: 'improved', label: KIND_LABEL.improved },
+  { kind: 'fixed', label: KIND_LABEL.fixed },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'What’s new', item: `${SITE}/app/whats-new` },
+  ],
+};
+---
+
+<Layout
+  title="What’s new in the hubStudio app | hubStudio"
+  description="Every change to the hubStudio app, newest first, in plain language: new modules, improvements and fixes, dated to the day they shipped."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="apg-page">
+    <!-- ===== Hero ===== -->
+    <section class="apg-hero wn-hero">
+      <div class="container">
+        <nav class="apg-crumbs" aria-label="Breadcrumb">
+          <a href="/app">The app</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">What’s new</span>
+        </nav>
+        <h1 class="headline h1 apg-hero__title wn-hero__title">
+          What’s new in <span class="accent">hubStudio</span>.
+        </h1>
+        <p class="lead apg-hero__lead">
+          Every change to the hubStudio app, newest first, in plain language. The same list sits
+          under What’s new inside the app, and anyone with an account can get it by email every
+          Monday.
+        </p>
+        <div class="apg-hero__cta">
+          <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          <a class="apg-arrow" href={HELP_URL}>Read the help center <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== The changes, by release day ===== -->
+    <section class="apg-sheet apg-sheet--white wn-log">
+      <div class="container">
+        <div class="wn-filter" role="group" aria-label="Show">
+          {
+            filters.map((f) => (
+              <button
+                type="button"
+                class="wn-filter__btn"
+                data-wn-filter={f.kind}
+                aria-pressed={f.kind === 'all' ? 'true' : 'false'}
+              >
+                {f.label}
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="wn-days">
+          {
+            days.map((day) => (
+              <section class="wn-day" data-wn-day>
+                <h2 class="wn-day__date">
+                  <time datetime={day.dateISO}>{changeDate(day.dateISO)}</time>
+                </h2>
+                <div class="wn-day__list">
+                  {day.items.map((c) => (
+                    <article class="wn-entry" id={c.id} data-wn-kind={c.kind}>
+                      <span class={`wn-kind wn-kind--${c.kind}`}>{KIND_LABEL[c.kind]}</span>
+                      <h3 class="wn-entry__title">{c.title}</h3>
+                      {c.blocks.map((b) =>
+                        'list' in b ? (
+                          <ul class="wn-entry__list">
+                            {b.list.map((item) => (
+                              <li set:html={changeHtml(item)} />
+                            ))}
+                          </ul>
+                        ) : (
+                          <p class="wn-entry__text" set:html={changeHtml(b.text)} />
+                        ),
+                      )}
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <DualCta />
+</Layout>
+
+<script>
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-wn-filter]'));
+  const entries = Array.from(document.querySelectorAll<HTMLElement>('[data-wn-kind]'));
+  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-wn-day]'));
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      const kind = button.dataset.wnFilter;
+      for (const b of buttons) b.setAttribute('aria-pressed', String(b === button));
+      for (const e of entries) e.hidden = kind !== 'all' && e.dataset.wnKind !== kind;
+      for (const d of days) d.hidden = !d.querySelector('[data-wn-kind]:not([hidden])');
+    });
+  }
+</script>
+
+<style>
+  .wn-hero__title {
+    max-width: 16ch;
+  }
+
+  /* ---- Filter ---- */
+  .wn-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+  .wn-filter__btn {
+    padding: 10px 18px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    font: inherit;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-ink);
+    cursor: pointer;
+    transition: background 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out;
+  }
+  .wn-filter__btn:hover {
+    border-color: var(--brand-orange);
+  }
+  .wn-filter__btn[aria-pressed='true'] {
+    background: var(--bg-ink);
+    border-color: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .wn-filter__btn:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 3px;
+  }
+
+  /* ---- Days ---- */
+  .wn-day {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding-block: clamp(32px, 4vw, 48px);
+    border-top: 1px solid var(--line-hairline);
+  }
+  .wn-day[hidden],
+  .wn-entry[hidden] {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .wn-day {
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 48px;
+    }
+    .wn-day__date {
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+      align-self: start;
+    }
+  }
+  .wn-day__date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+    padding-top: 6px;
+  }
+  .wn-day__date::before {
+    content: '//';
+    margin-right: 10px;
+    color: var(--brand-orange);
+  }
+  .wn-day__list {
+    display: grid;
+    gap: clamp(32px, 3.6vw, 44px);
+  }
+
+  /* ---- Entry ---- */
+  .wn-entry {
+    display: grid;
+    gap: 12px;
+    max-width: 68ch;
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .wn-entry:target .wn-entry__title {
+    text-decoration: underline;
+    text-decoration-color: var(--brand-orange);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+  .wn-kind {
+    justify-self: start;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .wn-kind--new {
+    background: var(--brand-orange);
+    color: #fff;
+  }
+  .wn-kind--improved {
+    background: rgba(30, 58, 138, 0.1);
+    color: var(--brand-navy);
+  }
+  .wn-kind--fixed {
+    border: 1px solid var(--line-strong);
+    color: var(--text-mute);
+  }
+  .wn-entry__title {
+    font-size: clamp(22px, 2vw, 26px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.22;
+  }
+  .wn-entry__text,
+  .wn-entry__list {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+  .wn-entry__list {
+    display: grid;
+    gap: 10px;
+    padding-left: 1.1em;
+    list-style: disc;
+  }
+  .wn-entry__list li::marker {
+    color: var(--brand-orange);
+  }
+  .wn-entry :global(strong) {
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+</style>

@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { HTML_LANG, LOCALES, OG_LOCALE, alternates, pathIn } from '../i18n/paths';
+import { RESOURCES_FEED, RESOURCES_FEED_TITLE } from '../lib/resources-feed';
 
 interface Props {
   title?: string;
@@ -163,13 +164,24 @@ const siteSchema = {
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
 
-    <!-- Insights RSS feed autodiscovery (feed readers, LinkedIn, schedulers). -->
+    <!-- RSS autodiscovery: every insight and how-to guide, in the page's
+         language; the English insights-only feed feeds the LinkedIn poster. -->
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="hubStudio Insights"
-      href="/resources/insights/rss.xml"
+      title={RESOURCES_FEED_TITLE[locale]}
+      href={RESOURCES_FEED[locale]}
     />
+    {
+      locale === 'en' && (
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="hubStudio Insights"
+          href="/resources/insights/rss.xml"
+        />
+      )
+    }
 
     <!-- Self-hosted fonts: preload the two that paint above the fold. -->
     <link

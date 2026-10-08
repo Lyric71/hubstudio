@@ -199,6 +199,7 @@ export const FR_PATHS: Record<string, string> = {
   '/app/publish': '/fr/application/publier',
   '/app/review': '/fr/application/validation',
   '/app/video-tools': '/fr/application/outils-video',
+  '/app/whats-new': '/fr/application/nouveautes',
   '/contact': '/fr/contact',
   '/cookies': '/fr/cookies',
   '/debeers': '/fr/debeers',

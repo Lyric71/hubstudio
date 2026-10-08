@@ -137,3 +137,17 @@ Seller Central -> Amazon 卖家平台（Seller Central）; YouTube Help -> YouTu
 English page / French page (YouTube Help versions) -> 英文版页面 / 法文版页面; versions disagree -> 口径不一; both versions given -> 两说并列
 Content ID: blocked worldwide -> 全球屏蔽; no longer blocked automatically -> 不再自动屏蔽; lose monetization -> 失去获利资格（表格内：无法获利）
 Sound panel (Video editor) -> 音频面板（应用界面标签 Sound 为“音频”）
+
+## Changelog and app labels (settled 2026-10-08, /app/whats-new)
+What's new (page, footer link, app menu) -> 更新日志; filter All changes -> 全部更新; filter group label Show -> 筛选
+Kind chips New / Improved / Fixed -> 新功能 / 改进 / 修复
+Just shipped in the app (home band) -> 刚刚在应用中上线; Read what changed -> 查看具体改动; See every change -> 查看全部更新
+Get every new insight and guide by RSS -> 通过 RSS 获取每一篇新发布的洞察和指南
+Attach the clean picture -> “附上清理后的图片”; From the Assets Library -> “来自素材库”; CR badge (LinkedIn) -> CR 标识
+Make shorts (Actions menu) / Actions -> “生成短视频” / “操作”; Edit video -> “编辑视频”
+Social panel (Image editor, Video editor) -> “社交媒体”面板; Zones switch -> “遮挡区域”开关; Profile grid -> 主页网格; full size viewer -> 全尺寸查看器
+Brand voice / Check voice / Brand column -> “品牌语气” / “核对口吻” / “品牌”列
+My Connections -> 我的连接; User Settings -> 账户设置; Languages card -> “语言”卡片; Details / Back to the team -> “详情” / “返回团队”
+Report a bug -> 反馈问题; AI-generated content (TikTok choice) -> “AI 生成内容”; Play -> 播放; Copy the description -> “复制说明”
+Weekly digest -> 每周摘要 (Monday mail: 每周一发出的更新摘要)
+Inactive logins warned then deactivated -> 闲置账号先提醒，后停用
