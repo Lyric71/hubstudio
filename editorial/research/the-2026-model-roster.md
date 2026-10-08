@@ -1290,3 +1290,21 @@ draft's ASSET BRIEF block, which was read at publish and left unchanged.
 **Hero:** a hand choosing one brush from a rack of calligraphy brushes above three test strokes, accepted on the first generation.
 
 **Distribution:** category AI Foundations, which reaches the AI excellence page layer.
+
+## Amended 2026-10-08 (GPT Image limitation)
+
+The research for brief 61 (`research/readable-text-in-ai-images.md`, captures
+in `research/readable-text-in-ai-images/excerpts-2026-10-08.md`) read OpenAI's
+image generation guide on 2026-10-08. Its Limitations section, which covers
+the GPT Image models, says: "Although significantly improved, the model can
+still struggle with precise text placement and clarity." Row 6 above ("Pages
+for gpt-image-2 docs ... state none") no longer holds for OpenAI.
+
+| Claim | Source | Confidence |
+|---|---|---|
+| GPT Image models "can still struggle with precise text placement and clarity" | developers.openai.com/api/docs/guides/image-generation, read 2026-10-08 (brief 61 claims table and capture) | primary, the maker's stated limitation |
+
+Page and draft changed the same day: the GPT Image 2 "Known limitation" cell
+and the closing paragraph of "Can AI models handle edits and text in the
+frame?" ("Current makers still list text ... OpenAI names text placement and
+clarity for its GPT Image models.").

@@ -42,11 +42,16 @@ const ARTICLES: Record<string, string> = {
   'disclosure-audit-trail-per-asset': 'mention-ia-et-tracabilite-par-contenu',
   'douyin-ad-creative-specs-by-format': 'douyin-specifications-publicitaires-par-format',
   'douyin-video-specs-safe-zones': 'douyin-specifications-video-et-zones-de-securite',
+  'eu-ai-act-labeling-brand-content': 'ai-act-l-etiquetage-ia-des-contenus-de-marque',
   'geo-vs-seo': 'geo-ou-seo',
   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
+  'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',
   'in-house-studio-vs-outsourced-production': 'studio-interne-ou-production-externalisee',
+  'instagram-post-sizes-2026': 'instagram-formats-des-publications-et-carrousels-2026',
+  'instagram-reels-stories-specs': 'instagram-formats-des-reels-et-des-stories',
   'jd-image-requirements-vs-tmall': 'exigences-images-jd-face-a-tmall',
+  'linkedin-post-specs': 'linkedin-specifications-des-publications',
   'lip-sync-across-languages': 'synchronisation-labiale-d-une-langue-a-l-autre',
   'luxury-ai-content-systems': 'luxe-et-systemes-de-contenu-ia',
   'meta-tiktok-against-douyin-rednote': 'meta-et-tiktok-face-a-douyin-et-rednote',
@@ -66,6 +71,7 @@ const ARTICLES: Record<string, string> = {
   'subscription-or-managed-production': 'abonnement-ou-production-geree',
   'the-2026-model-roster': 'les-modeles-ia-de-2026',
   'three-years-of-genai-ecommerce': 'trois-ans-d-ia-generative-dans-l-e-commerce',
+  'tiktok-video-specs': 'tiktok-specifications-video-et-zones-de-securite',
   'tmall-flagship-store-decoration-specs': 'tmall-specifications-de-decoration-de-boutique',
   'tmall-product-image-requirements': 'tmall-exigences-pour-les-images-produit',
   'tmall-white-background-image-rules': 'tmall-regles-des-images-sur-fond-blanc',
@@ -81,13 +87,22 @@ const ARTICLES: Record<string, string> = {
   'where-language-ai-delivers': 'la-ou-l-ia-linguistique-tient-ses-promesses',
   'without-creatives-aigc-is-nothing': 'sans-creatifs-l-aigc-n-est-rien',
   'your-ai-content-is-about-to-introduce-itself': 'votre-contenu-ia-va-bientot-se-presenter',
+  'youtube-shorts-specs': 'youtube-shorts-specifications',
+  'youtube-video-thumbnail-specs': 'youtube-specifications-video-et-miniatures',
 };
 
 const HOWTOS: Record<string, string> = {
   'ai-search-content-systems-win': 'gagner-la-recherche-ia-avec-un-systeme-de-contenu',
+  'ai-white-background-packshot': 'packshot-sur-fond-blanc-avec-l-ia',
+  'chatgpt-image-2-product-prompting-guide': 'chatgpt-image-2-guide-des-prompts-produit',
+  'consistent-character-ai-images-video': 'un-personnage-coherent-en-images-et-videos-ia',
+  'long-video-to-shorts': 'd-une-video-longue-a-des-formats-courts',
   'nano-banana-pro-photo-editing': 'retouche-photo-avec-nano-banana-pro',
   'nano-banana-prompting-guide': 'guide-des-prompts-nano-banana',
   'notebooklm-decks-and-infographics': 'presentations-et-infographies-avec-notebooklm',
+  'product-photo-to-lifestyle-image': 'd-une-photo-produit-a-une-photo-d-ambiance',
+  'readable-text-in-ai-images': 'du-texte-lisible-dans-une-image-ia',
+  'vertical-video-ad-from-product-image': 'une-publicite-video-verticale-a-partir-d-une-photo-produit',
 };
 
 const HELP: Record<string, string> = {
@@ -202,6 +217,7 @@ export const FR_PATHS: Record<string, string> = {
     Object.entries(ARTICLES).map(([en, fr]) => [`/resources/insights/${en}`, `/fr/ressources/analyses/${fr}`]),
   ),
   '/resources/production-cost': '/fr/ressources/cout-de-production',
+  '/resources/specs': '/fr/ressources/formats-des-plateformes',
   ...Object.fromEntries(
     Object.entries(DESIGN).map(([en, fr]) => [`/services/design/${en}`, `/fr/services/design/${fr}`]),
   ),

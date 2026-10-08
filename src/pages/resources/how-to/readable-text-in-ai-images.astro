@@ -1,0 +1,267 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "Can AI image generators spell text correctly?",
+    "a": "Often, yes. OpenAI, Google and ByteDance all document text rendering for their current engines, and all three publish caveats: OpenAI on placement and clarity, Google on spelling, ByteDance on finer-grained text. A quoted, verbatim prompt gives the engine its best chance. Then a person proofs every word before anything ships."
+  },
+  {
+    "q": "Which AI image generator is best for text?",
+    "a": "This guide doesn't rank them. What it can report is what each maker documents: the ChatGPT Image, Nano Banana and Seedream engines all claim legible text, and Seedream 5.0 Pro claims text-rich layouts. In hubStudio, Reuse prompt puts a run back in the form, so you can try another engine and keep the cleanest result."
+  },
+  {
+    "q": "How do I get exact words into an AI image?",
+    "a": "Put the words in quotation marks, ask for them verbatim with no extra characters, describe the lettering in plain terms (condensed serif, bold sans serif) and say where it sits. Spell a brand name letter by letter, and ask for the text to appear once. Use medium or high quality when the type is small."
+  },
+  {
+    "q": "Should I add text to an AI image afterwards instead?",
+    "a": "Yes, when the words must be exact: brand type, prices, dates, legal lines and anything you'll translate. Generate a clean plate with space left for the headline, then set the words in an editor. Render the text in the image only when it belongs to the scene, like a sign or a label."
+  },
+  {
+    "q": "Can AI translate the text inside an image?",
+    "a": "Some engines document it. Google says Nano Banana 2 translates and localizes text within an image, and OpenAI's guide shows a translation edit that keeps the layout. Google also warns its model may get grammar, spelling and idiom wrong. Treat the result as a draft, and have a native speaker read it."
+  },
+  {
+    "q": "Can I use my brand font in an AI image?",
+    "a": "Not by rendering. The engines take a prompt and source pictures, not a font file, so they draw letters in a style you describe. For exact brand type, set the line in your own design file, export it as a transparent PNG and place it on the picture in the Image editor, the same way you'd place a logo."
+  }
+];
+---
+
+<HowtoLayout slug="readable-text-in-ai-images" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">Today's image engines can letter a poster headline, a bottle label or a shop sign. They still slip, mostly on spelling and small type, and their makers say so. Render the words when they belong to the scene. Set them on top when they have to be exact.</p>
+
+  <h2>How do you make an AI image with text?</h2>
+
+  <p>Put the exact words in quotes, describe the lettering and say where it sits. Let the engine render text that lives in the scene: a sign, a label, a concept headline. Set brand type, prices, legal lines and translations on top afterwards. In hubStudio that means the image studio for the render and the free Image editor for the words.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">The text is...</th>
+          <th scope="col">Render it in the image</th>
+          <th scope="col">Set it on top in the editor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Part of the scene: a storefront sign, a label on a curved bottle</th>
+          <td>Yes</td>
+          <td>No, flat type reads as pasted on</td>
+        </tr>
+        <tr>
+          <th scope="row">A concept headline for an internal review</th>
+          <td>Yes</td>
+          <td>Later, for the final file</td>
+        </tr>
+        <tr>
+          <th scope="row">The brand's own typeface or wordmark</th>
+          <td>No</td>
+          <td>Yes, place the real artwork</td>
+        </tr>
+        <tr>
+          <th scope="row">A price, a date, a percentage, a URL</th>
+          <td>No</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <th scope="row">Offer terms, a disclaimer, a trademark line</th>
+          <td>No</td>
+          <td>Yes, from the approved copy</td>
+        </tr>
+        <tr>
+          <th scope="row">Going out in several languages</th>
+          <td>Only with a native proof</td>
+          <td>Yes, one master, one layer per market</td>
+        </tr>
+        <tr>
+          <th scope="row">Likely to change next week</th>
+          <td>No</td>
+          <td>Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A rendered word is part of the picture, so fixing one letter means a new run. A word set on top stays editable until you save.</p>
+
+  <h2>Which AI image generators document text rendering?</h2>
+
+  <p>Not every engine claims it, and the ones that do also publish where it breaks. This is what each maker says on its own pages, for the engines offered in the app. It's the maker's word, not an independent test.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Engine in the app</th>
+          <th scope="col">Maker</th>
+          <th scope="col">What the maker documents</th>
+          <th scope="col">The maker's own caveat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">ChatGPT Image 2</th>
+          <td>OpenAI</td>
+          <td>"Reliable text rendering with crisp lettering"; translating the text in an existing image</td>
+          <td>Can "still struggle with precise text placement and clarity"</td>
+        </tr>
+        <tr>
+          <th scope="row">Nano Banana 2</th>
+          <td>Google</td>
+          <td>"Accurate, legible text"; translating and localizing text within an image</td>
+          <td>Best results in the languages Google lists</td>
+        </tr>
+        <tr>
+          <th scope="row">Nano Banana Pro</th>
+          <td>Google</td>
+          <td>Legible text, "a short tagline, or a long paragraph"</td>
+          <td>May struggle with "accurate spelling" and with grammar in translation</td>
+        </tr>
+        <tr>
+          <th scope="row">FLUX.1 Kontext Pro and Max</th>
+          <td>Black Forest Labs</td>
+          <td>Replacing text in "signs, posters, and labels" while keeping the styling</td>
+          <td>Recommends a newer model, with "better text editing," for new projects</td>
+        </tr>
+        <tr>
+          <th scope="row">FLUX Pro 1.1 and Ultra</th>
+          <td>Black Forest Labs</td>
+          <td>No text-rendering claim on the model page</td>
+          <td>None stated</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedream 4.5</th>
+          <td>ByteDance</td>
+          <td>Enhanced "typography and dense text rendering," readable small text for posters</td>
+          <td>None stated</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedream 5.0 Pro</th>
+          <td>ByteDance</td>
+          <td>Text-rich images, native generation in over ten languages</td>
+          <td>"Room to improve in finer-grained text rendering"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Sources: OpenAI prompting guide (April 21, 2026) and image generation guide; Google's launch posts for Nano Banana 2 (February 26, 2026) and Nano Banana Pro (November 20, 2025), its DeepMind model page and the Gemini API image documentation; Black Forest Labs' Kontext and FLUX1.1 documentation; ByteDance Seed's Seedream 4.5 page and Seedream 5.0 Pro launch post (July 8, 2026). Every page was read October 8, 2026.</p>
+
+  <p>Two of those caveats matter most for brand work. Proof anyway, whichever engine you pick.</p>
+
+  <blockquote class="evidence">OpenAI's image generation guide lists text among its GPT Image models' limitations: "Although significantly improved, the model can still struggle with precise text placement and clarity."</blockquote>
+  <p class="source">Source: OpenAI image generation guide, read October 2026, the maker's stated limitations. https://developers.openai.com/api/docs/guides/image-generation</p>
+
+  <blockquote class="evidence">Google's model page for Nano Banana Pro says it "can still struggle with small faces, accurate spelling, and fine details," and tells users to check every image they create, the text in it included, for accuracy.</blockquote>
+  <p class="source">Source: Google DeepMind, Nano Banana Pro model page, read October 2026, the maker's stated limitations. https://deepmind.google/models/gemini-image/pro/</p>
+
+  <p>The <a href="/app/engines">engines page</a> lists every engine offered in the app, by maker, and the list grows as new ones ship. Two of the <a href="/resources/how-to">how-to guides</a> go further on prompting the Nano Banana engines.</p>
+
+  <h2>How do you prompt an AI image generator for exact words?</h2>
+
+  <p>The makers agree on the method. Quote the words, describe the type in plain language, and say where it goes.</p>
+
+  <blockquote class="evidence">OpenAI's prompting guide for its image models: "Put literal text in quotes or ALL CAPS and specify typography details (font style, size, color, placement) as constraints." It adds that brand names and uncommon spellings should be spelled out letter by letter.</blockquote>
+  <p class="source">Source: OpenAI, GPT Image prompting guide, April 2026, guidance drawn from the maker's alpha testing. https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide</p>
+
+  <p>Google's documentation gives the same advice in a template: name the text, describe the font style, then the design. Black Forest Labs asks for quotation marks around any text to be changed. The examples below follow that order (they're starting points, so swap in your own product and words).</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example: a poster headline</p>
+    <p class="prompt__body">Editorial poster for a spring linen collection, a folded linen shirt on a pale oak table, soft window light from the left. Headline text, exact and verbatim, no extra characters: "SLOW SUMMER". Typography: tall condensed serif, warm off-white, set in the top third, left aligned, generous letter spacing. The text appears once. No other words, no logos.</p>
+  </div>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example: a label that belongs to the scene</p>
+    <p class="prompt__body">Close-up of an amber glass dropper bottle on wet slate, overcast daylight. The paper label reads exactly "NORDA" on the first line and "Night serum, 30 ml" on the second, in a clean geometric sans serif, black ink, centered, following the curve of the bottle. Spell the brand: N-O-R-D-A.</p>
+  </div>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example: a clean plate for type you'll set yourself</p>
+    <p class="prompt__body">Same linen shirt on the pale oak table, same light. Leave the top third of the frame as plain, even, out-of-focus wall for a headline added later. No text, no letters, no signage, no logos anywhere in the frame.</p>
+  </div>
+
+  <p>Two app features do part of this for you. The Catalog in Skills includes a skill called Legible text inside an image, written for headlines, labels and posters, and an Avoid list for hands, text artifacts and watermarks. Add them to My skills and Improve with AI follows them each time it rewrites a prompt. OpenAI's guide also recommends medium or high quality for small text, so pick the quality before you run and read the price next to the button. A failed run isn't charged.</p>
+
+  <h2>How do you add text to an AI image afterwards?</h2>
+
+  <p>Open the render in the Image editor. It's free, runs in your browser and opens from the image studio, History or the Assets Library.</p>
+
+  <ul>
+    <li><strong>Text panel.</strong> Add text, then pick the font and size, bold, italic or underline, alignment, color and a highlight behind the words. A dark outline or a soft shadow keeps light words readable on a light picture.</li>
+    <li><strong>Picture panel.</strong> Place a logo from your computer or the library (a PNG with a transparent background works best), set its opacity and send it to one of nine positions. A light logo in a corner makes a watermark.</li>
+    <li><strong>Social panel.</strong> Frame the picture for Instagram, X or LinkedIn. Its checks flag words too small to read on a phone and anything you added that sits under the network's own buttons.</li>
+  </ul>
+
+  <p>The editor sets type from its own font list. When the brand typeface has to be exact, export the line from the brand's design file as a transparent PNG and place it like a logo. That's also how an approved legal line goes on: as the legal team's artwork, never retyped. The <a href="/app/image-tools">Image editor page</a> shows every panel, and the <a href="/app/library">Assets Library page</a> explains where the saved copy lands, next to the original render.</p>
+
+  <h2>How do you translate the text inside an AI image?</h2>
+
+  <p>There are two routes. Ask an engine to translate the words in place, or keep one textless master and set each language on top.</p>
+
+  <p>The engine route is now documented. Google says Nano Banana 2 can "translate and localize text within an image," and OpenAI's guide shows a translation edit that keeps the typography, placement and spacing and changes only the words. In the app that's the Edit an image job, with a prompt such as this.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example: a translation edit</p>
+    <p class="prompt__body">Replace "SLOW SUMMER" with "VERANO LENTO". Keep the same typeface, size, color, letter spacing and position. Change nothing else in the image.</p>
+  </div>
+
+  <p>The same replace prompt fixes a single misspelled word in a render, without starting over. Either way, a native speaker reads the result. Google is blunt about why.</p>
+
+  <blockquote class="evidence">Google's Nano Banana Pro model page says the model "is capable of generating and translating text in many languages, but it may struggle with grammar, spelling, cultural nuances, or idiomatic phrases."</blockquote>
+  <p class="source">Source: Google DeepMind, Nano Banana Pro model page, read October 2026, the maker's stated limitations. https://deepmind.google/models/gemini-image/pro/</p>
+
+  <p>Language coverage differs by engine, too.</p>
+
+  <blockquote class="evidence">Google's API documentation lists 15 languages "for best performance," among them EN, fr-FR, de-DE, es-MX, ja-JP and zh-CN. ByteDance says Seedream 5.0 Pro generates in over ten languages besides Chinese and English, and in the same post that "there is still room to improve in finer-grained text rendering."</blockquote>
+  <p class="source">Source: Google Gemini API image generation documentation, last updated October 2026; ByteDance Seed launch post, July 2026. Both are the makers' own statements. https://ai.google.dev/gemini-api/docs/image-generation</p>
+
+  <p>Past two or three markets, the overlay route is easier to control. You keep one approved master and save one copy per language, each with its own text layer, so a typo in the German version never touches the French one. A headline that has to be rewritten for a market, not translated, is transcreation, and the <a href="/resources/insights/transcreation-as-a-production-line">transcreation article</a> walks through that line.</p>
+
+  <h2>What should you check before an AI image with text ships?</h2>
+
+  <p>Read the file, not the prompt. Proof it against the approved copy deck at the size it will run.</p>
+
+  <ul>
+    <li>Every word read letter by letter against the copy deck, brand names first.</li>
+    <li>No extra characters, doubled words or stray lettering in the background.</li>
+    <li>Even letter spacing and a steady baseline; no letters touching or drifting on a curved label.</li>
+    <li>Accents, apostrophes and punctuation right for each language, read by a native speaker.</li>
+    <li>Prices, dates, percentages, phone numbers and URLs matched to the source sheet.</li>
+    <li>Legal lines, offer terms and trademark symbols placed from the approved artwork, never generated.</li>
+    <li>The logo is the real file, not a rendered lookalike.</li>
+    <li>Words readable on a phone and clear of the network's buttons.</li>
+    <li>Sent through Validation to the person who signs off, with each version kept on one thread.</li>
+  </ul>
+
+  <p>This checklist describes production practice, not legal advice. When a campaign runs to dozens of formats and languages, the studio can make the set for you through its <a href="/services/design/ad-creative">ad creative design service</a>.</p>
+
+  <h2>Questions about text in AI images</h2>
+
+  <h3>Can AI image generators spell text correctly?</h3>
+
+  <p>Often, yes. OpenAI, Google and ByteDance all document text rendering for their current engines, and all three publish caveats: OpenAI on placement and clarity, Google on spelling, ByteDance on finer-grained text. A quoted, verbatim prompt gives the engine its best chance. Then a person proofs every word before anything ships.</p>
+
+  <h3>Which AI image generator is best for text?</h3>
+
+  <p>This guide doesn't rank them. What it can report is what each maker documents: the ChatGPT Image, Nano Banana and Seedream engines all claim legible text, and Seedream 5.0 Pro claims text-rich layouts. In hubStudio, Reuse prompt puts a run back in the form, so you can try another engine and keep the cleanest result.</p>
+
+  <h3>How do I get exact words into an AI image?</h3>
+
+  <p>Put the words in quotation marks, ask for them verbatim with no extra characters, describe the lettering in plain terms (condensed serif, bold sans serif) and say where it sits. Spell a brand name letter by letter, and ask for the text to appear once. Use medium or high quality when the type is small.</p>
+
+  <h3>Should I add text to an AI image afterwards instead?</h3>
+
+  <p>Yes, when the words must be exact: brand type, prices, dates, legal lines and anything you'll translate. Generate a clean plate with space left for the headline, then set the words in an editor. Render the text in the image only when it belongs to the scene, like a sign or a label.</p>
+
+  <h3>Can AI translate the text inside an image?</h3>
+
+  <p>Some engines document it. Google says Nano Banana 2 translates and localizes text within an image, and OpenAI's guide shows a translation edit that keeps the layout. Google also warns its model may get grammar, spelling and idiom wrong. Treat the result as a draft, and have a native speaker read it.</p>
+
+  <h3>Can I use my brand font in an AI image?</h3>
+
+  <p>Not by rendering. The engines take a prompt and source pictures, not a font file, so they draw letters in a style you describe. For exact brand type, set the line in your own design file, export it as a transparent PNG and place it on the picture in the Image editor, the same way you'd place a logo.</p>
+</HowtoLayout>

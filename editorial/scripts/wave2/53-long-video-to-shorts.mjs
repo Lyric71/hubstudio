@@ -1,0 +1,76 @@
+// editorial/scripts/wave2/53-long-video-to-shorts.mjs
+export default {
+  id: '53',
+  date: '2026-10-08',
+  family: 'howto',
+  template: 'howto',
+  brief: true,
+  status: 'not_started',
+  cluster: 'How-to',
+  contentType: 'How-to guide',
+  readerStage: 'practitioner',
+  slug: 'long-video-to-shorts',
+  h1: 'How to turn one long video into Shorts, Reels and TikToks',
+  query: 'turn long video into shorts',
+  secondary: [
+    'repurpose a podcast into YouTube Shorts and Reels',
+    'cut an interview into vertical clips with captions',
+    'how long can a YouTube Short be',
+    'webinar to TikTok clips',
+  ],
+  verdict:
+    'Clipping-tool vendors own the query with product pages; most still print the 60-second Shorts cap retired on October 15, 2024, none cite a platform help page with a date, and none mention the one-minute Content ID block on Shorts or that the TikTok length an app can post depends on the account.',
+  words: 1600,
+  angle:
+    'An interview, webinar, podcast or live becomes a week of vertical clips: what makes a moment stand alone, the hook in the first seconds, framing the speaker at 9:16, word-by-word captions, then publishing. The app part is Shorts autopilot and the Video editor, described only from the help center. YouTube Shorts are published by hand in YouTube Studio. Platform limits come from each platform\'s own pages, cited and dated.',
+  mustInclude: [
+    'A table of the three destinations: max length, ratio, caption need, how hubStudio publishes it',
+    'The step list, from the long video to the scheduled clips',
+    'What to pick as the source video',
+    'A QA list before anything goes out',
+    'The existing localized captures /Images/help/shorts-autopilot-page.webp and /Images/help/shorts-autopilot-settings.webp (fr and zh siblings exist)',
+    'TikTok labeled Beta wherever hubStudio publishing to TikTok is named',
+  ],
+  doNot: [
+    'No amount, no "credits": the prepaid balance only, prices shown before a run',
+    'No claim that hubStudio uploads to YouTube: the person publishes in YouTube Studio',
+    'No app feature beyond shorts-autopilot.md, assets-library.md, youtube.md, tiktok.md, instagram.md and hubstudio-positioning.md',
+    'No platform limit from a third-party article; no view-through or sound-off statistic without a method',
+    'No competitor or clipping tool named, described or alluded to',
+  ],
+  stats: [
+    'YouTube Shorts up to three minutes, square or vertical, uploads on or after October 15, 2024 (YouTube Help)',
+    'A Short over one minute with an active Content ID claim is blocked globally per the English help page; the French version of the same page says new Shorts under three minutes are no longer blocked automatically from September 24, 2026: publish both (YouTube Help)',
+    'All TikTok creators can post 3-minute videos through the Content Posting API, some 5 or 10 (TikTok for Developers, updated August 4, 2026)',
+    'Instagram reels up to 20 minutes, over 3 minutes not recommended to new audiences (Instagram, Reels feature page)',
+    'Instagram makes low-resolution, watermarked, bordered, majority-text or already-posted reels less visible (Instagram, May 31, 2023)',
+    'TikTok ads guidance: proposition in 3 seconds, hook in 6, captions or text overlays (TikTok Ads help, June 2025)',
+  ],
+  assets: [
+    '/Images/help/shorts-autopilot-page.webp (+ .fr.webp, .zh.webp)',
+    '/Images/help/shorts-autopilot-settings.webp (+ .fr.webp, .zh.webp)',
+    'Hero /Images/howto-long-video-to-shorts.webp',
+  ],
+  links: [
+    ['the publish page of the app', '/app/publish'],
+    ['the short video service', '/services/design/short-video'],
+    ['the TikTok platform page', '/solutions/platforms/tiktok'],
+    ['the Shorts autopilot help article', '/help/shorts-autopilot'],
+    ['the how-to guides', '/resources/how-to'],
+  ],
+  seoTitle: 'Turn a long video into Shorts, Reels and TikToks',
+  seoDesc:
+    'Cut an interview, webinar or podcast into vertical clips: the moments, the hook, 9:16 framing, word-by-word captions and each platform\'s length limit.',
+  faqs: [
+    'How long can a YouTube Short be?',
+    'How long can a TikTok be when an app posts it?',
+    'How long can an Instagram Reel be?',
+    'Can I post the same clip on all three platforms?',
+    'Do Shorts and Reels need burned-in captions?',
+    'Can I put music on a short?',
+    'Does hubStudio post my Shorts to YouTube?',
+  ],
+  cta: 'Create your account',
+  notes:
+    'Captures reused from the help center (fr and zh exist). The showcase clip follows settled fallback 12. Not China-related: R4 Chinese-first search not applicable.',
+};

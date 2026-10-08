@@ -1,0 +1,423 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should an Instagram Reel be in 2026?",
+    "a": "Make it 9:16. Instagram accepts Reels from 1.91:1 to 9:16 at 720 pixels or more and 30 frames per second, and its Help Center names no pixel size. For ads, Meta's ads guide recommends 1440 by 2560. A 1080 by 1920 export clears every floor Instagram and Meta print, and so does 1440 by 2560."
+  },
+  {
+    "q": "How long can an Instagram Reel be?",
+    "a": "It depends on how you post. In the app you can record and edit up to 20 minutes. Through the API, a Reel runs 3 seconds to 15 minutes. A Reels ad runs up to 15 minutes, and a boosted Reel must be 90 seconds or less. Instagram says Reels over 3 minutes won't be recommended to new audiences."
+  },
+  {
+    "q": "How long can an Instagram Story video be?",
+    "a": "On Instagram's help page, a Story video up to 60 seconds plays as one clip, and longer videos are split into several clips. Through the API, a Story video runs 3 to 60 seconds and 100MB at most. A Stories ad can run 1 second to 60 minutes, split into cards from 16 seconds."
+  },
+  {
+    "q": "What is the Instagram Reels safe zone?",
+    "a": "Meta's figure is for ads: leave at least 14 percent of the top, 35 percent of the bottom and 6 percent of each side free of text and logos. On a 1080 by 1920 frame that is about 269 pixels at the top, 672 at the bottom and 65 on each side, by our arithmetic. Reels ads with a disclaimer keep the bottom 40 percent clear."
+  },
+  {
+    "q": "Does Instagram publish a safe zone for organic Reels?",
+    "a": "No. The Instagram Help Center pages on Reels and Stories print no safe zone, in percent or in pixels. The only figure Meta publishes sits on its ads pages. Using it for organic Reels is a sound habit, but any organic pixel inset you see online is someone else's measurement, not Instagram's rule."
+  },
+  {
+    "q": "What size is an Instagram Reel cover?",
+    "a": "Instagram's Help Center recommends 420 by 654 pixels, a 1:1.55 ratio, and says a cover can't be changed after upload. Meta's developer reference recommends 9:16, crops other shapes to their middle 9:16 rectangle, and shows the middle square when the Reel is shared to feed. Keep the subject centered."
+  },
+  {
+    "q": "Why can't I boost my Reel?",
+    "a": "Instagram's help pages list the reasons: the Reel runs over 90 seconds, isn't full-screen 9:16, uses licensed music, was already shared to Facebook, or carries face or camera effects, GIFs, product tags or tappable elements. A video whose resolution is too low is refused as well."
+  }
+];
+---
+
+<ArticleLayout slug="instagram-reels-stories-specs" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">Instagram's own help pages on Reels and Stories don't print 1080 by 1920. They print a ratio range, a quality floor and a length. The only pixel sizes and the only safe zone Meta publishes sit on its ads pages, and they govern ads.</p>
+
+  <p>Reviewed October 8, 2026.</p>
+
+  <h2>What is the Instagram Reel size in 2026?</h2>
+
+  <p>Shoot and export 9:16. Instagram accepts Reels anywhere from 1.91:1 to 9:16, at 720 pixels or more and 30 frames per second, and prints no pixel size for an organic post. Meta's ads guide recommends 1440 by 2560 for Reels ads. hubStudio's Video editor writes a Reel at 1080 by 1920, which clears every size floor on this page.</p>
+
+  <blockquote class="evidence">Instagram's help page on Reel size accepts any aspect ratio between 1.91:1 and 9:16, asks for a minimum frame rate of 30 frames per second and a minimum resolution of 720 pixels, and prints no recommended pixel size.</blockquote>
+  <p class="source">Source: Instagram Help Center, "Reel size &amp; aspect ratios on Instagram," read October 8, 2026, full page text. https://help.instagram.com/1038071743007909</p>
+
+  <p>Everything below was read on Instagram's and Meta's own pages on October 8, 2026: the Instagram Help Center, the Meta Business Help Center, the Meta Ads Guide and Instagram's developer reference. Where Meta publishes nothing on a point, the table says so rather than filling the gap.</p>
+
+  <h2>Every Reels and Stories spec Meta publishes, by surface</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Surface</th>
+          <th scope="col">Ratio</th>
+          <th scope="col">Size and file</th>
+          <th scope="col">Length</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Reel, posted in the app</th>
+          <td>1.91:1 to 9:16</td>
+          <td>No pixel size printed; 720 px and 30 FPS minimum</td>
+          <td>Up to 20 min recorded</td>
+          <td>Instagram Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Reel, posted through the API</th>
+          <td>0.01:1 to 10:1, 9:16 advised</td>
+          <td>Up to 1,920 px wide; 300MB</td>
+          <td>3 s to 15 min</td>
+          <td>Instagram developer reference</td>
+        </tr>
+        <tr>
+          <th scope="row">Reel cover</th>
+          <td>1:1.55, or 9:16 via the API</td>
+          <td>420 x 654 px; JPEG up to 8MB via the API</td>
+          <td>Still image</td>
+          <td>Help Center; developer reference</td>
+        </tr>
+        <tr>
+          <th scope="row">Story, posted in the app</th>
+          <td>Not printed</td>
+          <td>Not printed</td>
+          <td>One clip up to 60 s</td>
+          <td>Instagram Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Story, through the API</th>
+          <td>9:16 advised</td>
+          <td>Image JPEG 8MB; video 100MB</td>
+          <td>Video 3 s to 60 s</td>
+          <td>Instagram developer reference</td>
+        </tr>
+        <tr>
+          <th scope="row">Reels ad, video</th>
+          <td>9:16</td>
+          <td>1440 x 2560; 4GB</td>
+          <td>0 s to 15 min</td>
+          <td>Meta Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Reels ad, image</th>
+          <td>9:16</td>
+          <td>1440 x 2560; 30MB</td>
+          <td>Still image</td>
+          <td>Meta Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Stories ad, video</th>
+          <td>9:16</td>
+          <td>1440 x 2560, or 1080 x 1920; 4GB</td>
+          <td>1 s to 60 min</td>
+          <td>Ads Guide; Business Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Stories ad, image</th>
+          <td>9:16</td>
+          <td>1440 x 2560; 30MB</td>
+          <td>Shows 5 to 16 s</td>
+          <td>Meta Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Boosted Reel</th>
+          <td>9:16, full screen</td>
+          <td>Not printed</td>
+          <td>90 s or less</td>
+          <td>Instagram Help Center</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Length is where most spec sheets slip. There are five numbers, and each one governs a different way of posting.</p>
+
+  <blockquote class="evidence">Reels can be recorded and edited up to 20 minutes, and Reels over 3 minutes won't be recommended to new audiences. To be boosted, a Reel must run 90 seconds or less in a full-screen 9:16 frame.</blockquote>
+  <p class="source">Source: Instagram Help Center, "Record a reel on Instagram" and "Boost an Instagram Reel," read October 8, 2026, full page text. https://help.instagram.com/2720958398006062</p>
+
+  <blockquote class="evidence">Through the API, a Reel runs 3 seconds to 15 minutes and 300MB at most, and a Story video runs 3 to 60 seconds and 100MB at most, in MP4 or MOV with H.264 or HEVC, 23 to 60 frames per second.</blockquote>
+  <p class="source">Source: Instagram developer reference, "IG User Media," read October 8, 2026, specification sections. https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media</p>
+
+  <p>Read together: 20 minutes is what the app lets you record. Fifteen minutes caps an API upload, and an ad. Past 3 minutes a Reel isn't recommended to new audiences, so that's the line to watch if the goal is reach. Ninety seconds only matters if you plan to boost.</p>
+
+  <p>Stories split the other way.</p>
+
+  <blockquote class="evidence">A Story video up to 60 seconds plays as one clip, and longer videos are broken up into multiple clips.</blockquote>
+  <p class="source">Source: Instagram Help Center, "Share a photo or video to your Instagram story," iPhone app help, read October 8, 2026, full page text. https://help.instagram.com/1257341144298972</p>
+
+  <p>A Stories ad can run an hour, though Meta says a video ad of 16 seconds or more may be shown as one, two or three cards, tailored to each viewer.</p>
+
+  <blockquote class="evidence">Meta's ads guide sets Stories video ads at 9:16 and 1440 by 2560 pixels, 1 second to 60 minutes and up to 4GB. A separate Meta help article recommends 1080 by 1920 for Stories ads, with 600 by 1067 as the minimum.</blockquote>
+  <p class="source">Source: Meta Ads Guide, Awareness video ad specs on Instagram Stories, and Meta Business Help Center, "Design requirements for Instagram Stories ads," both read October 8, 2026. https://www.facebook.com/business/ads-guide/update/video/instagram-story</p>
+
+  <p>That's two recommended sizes for one placement, from one company. Both are 9:16, so either fills the screen.</p>
+
+  <h2>What is the Instagram Reels safe zone?</h2>
+
+  <p>Meta publishes one safe zone, and it is written for ads. Instagram's Help Center prints none for an organic Reel or Story.</p>
+
+  <blockquote class="evidence">Meta asks advertisers to consider leaving at least 14 percent of the top, 35 percent of the bottom and 6 percent of each side of a Reels ad free of text, logos and other important elements, so they are not cropped, covered by the profile icon or call to action, or pushed against the edge of a screen taller than 9:16. The Stories ad pages give the same three figures.</blockquote>
+  <p class="source">Source: Meta Ads Guide, Awareness video ad specs on Instagram Reels and on Instagram Stories, read October 8, 2026, figures as printed on each page. https://www.facebook.com/business/ads-guide/update/video/instagram-reels</p>
+
+  <p>Meta's help article on text overlays adds two rules, and the second one explains why the margins exist at all.</p>
+
+  <blockquote class="evidence">A Reels ad that carries a disclaimer should leave the bottom 40 percent free of text, logos and other key elements. On a screen taller than 9:16, Meta may zoom the creative to fill it, cropping what sits outside the safe zone, or show it at 9:16 on a black background.</blockquote>
+  <p class="source">Source: Meta Business Help Center, "About text overlays and the safe zone for ads in Stories and Reels," read October 8, 2026, full article text. https://www.facebook.com/business/help/980593475366490</p>
+
+  <p>Meta prints percentages, not pixels. The pixels below are our arithmetic on those percentages, not a figure Meta publishes.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Canvas</th>
+          <th scope="col">Top kept clear</th>
+          <th scope="col">Bottom kept clear</th>
+          <th scope="col">Each side</th>
+          <th scope="col">Safe box left</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1080 x 1920</th>
+          <td>268.8 px</td>
+          <td>672 px</td>
+          <td>64.8 px</td>
+          <td>950.4 x 979.2 px</td>
+        </tr>
+        <tr>
+          <th scope="row">1440 x 2560</th>
+          <td>358.4 px</td>
+          <td>896 px</td>
+          <td>86.4 px</td>
+          <td>1267.2 x 1305.6 px</td>
+        </tr>
+        <tr>
+          <th scope="row">1080 x 1920, ad with disclaimer</th>
+          <td>268.8 px</td>
+          <td>768 px</td>
+          <td>64.8 px</td>
+          <td>950.4 x 883.2 px</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Using the ad zone on an organic Reel is a sensible production habit. It is not a rule Instagram states, and any organic safe-zone pixel figure you find online did not come from Instagram.</p>
+
+  <h2>How do organic Reels and Stories differ from Reels and Stories ads?</h2>
+
+  <p>They are written in different documents, and the numbers don't match.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Point</th>
+          <th scope="col">Organic Reel or Story</th>
+          <th scope="col">Reels or Stories ad</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Recommended size</th>
+          <td>None printed</td>
+          <td>1440 x 2560 (Stories also 1080 x 1920)</td>
+          <td>Help Center; Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Reel length</th>
+          <td>20 min recorded; 15 min by API</td>
+          <td>0 s to 15 min; boost 90 s</td>
+          <td>Help Center; Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Story length</th>
+          <td>60 s per clip</td>
+          <td>1 s to 60 min, cards from 16 s</td>
+          <td>Help Center; Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">File size</th>
+          <td>300MB Reel, 100MB Story, 8MB image by API</td>
+          <td>4GB video, 30MB image</td>
+          <td>Developer reference; Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Safe zone</th>
+          <td>None published</td>
+          <td>14% top, 35% bottom, 6% sides</td>
+          <td>Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Music</th>
+          <td>Music allowed in Reels</td>
+          <td>No licensed music in Reels ads or boosts</td>
+          <td>Help Center; Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Text</th>
+          <td>Caption 2,200 characters, 30 hashtags</td>
+          <td>Primary text 44 (Reels), 125 (Stories)</td>
+          <td>Developer reference; Ads Guide</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A Reel made for organic posting can fail as an ad on music alone. Meta's Reels ad page also bars Reels published before October 15, 2021, face or camera effects, GIFs and product tags.</p>
+
+  <h2>What size is an Instagram Reel cover?</h2>
+
+  <p>Instagram's Help Center and its developer reference don't agree on the shape.</p>
+
+  <blockquote class="evidence">The recommended size for cover photos is 420 by 654 pixels (1:1.55), and a cover can't be edited after it is uploaded. Through the API, a cover is a JPEG up to 8MB; a non-9:16 image is cropped to its middle 9:16 rectangle, and to its middle square for a Reel shared to feed.</blockquote>
+  <p class="source">Source: Instagram Help Center, "Reel size &amp; aspect ratios on Instagram," and Instagram developer reference, "IG User Media," read October 8, 2026. https://help.instagram.com/1038071743007909</p>
+
+  <p>The cover is also the one thing you can't fix later. Build it as a 9:16 frame and keep the face or the product in the middle third (vertically and horizontally). That way it survives both crops the developer reference describes, the 9:16 rectangle and the feed's center square.</p>
+
+  <h2>Why do Reels and Stories get refused or cropped?</h2>
+
+  <p>Instagram's and Meta's help pages spell out most of the failures, some of them word for word in the error message.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">What goes wrong</th>
+          <th scope="col">What Meta says</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Boost refused</th>
+          <td>Over 90 seconds, not 9:16, licensed music, or already shared to Facebook</td>
+          <td>Instagram Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Boost refused</th>
+          <td>"This video's resolution is too low and can't be used"</td>
+          <td>Instagram Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Boost refused</th>
+          <td>"Reels containing tappable elements cannot be boosted"</td>
+          <td>Instagram Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Story cut into clips</th>
+          <td>Organic video over 60 seconds is split</td>
+          <td>Instagram Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Cover cropped</th>
+          <td>A non-9:16 cover loses its edges; a feed share shows its middle square</td>
+          <td>Developer reference</td>
+        </tr>
+        <tr>
+          <th scope="row">Text cropped on tall phones</th>
+          <td>Meta may zoom the creative and crop outside the safe zone</td>
+          <td>Business Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Ad video blurry</th>
+          <td>Usually size: Meta asks for at least 600 px of width</td>
+          <td>Business Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Ad upload fails</th>
+          <td>Over 4GB; ad files should carry no edit lists or special boxes</td>
+          <td>Business Help Center; Ads Guide</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>How do you publish a Reel or a Story from hubStudio?</h2>
+
+  <p>In the hubStudio app, Instagram in the menu holds every post. Connect an Instagram professional account, Business or Creator, on My Connections first. Then pick the shape: One image, Carousel or Reel. Render the clip with AI, pick it from the Assets Library, or upload it.</p>
+
+  <p>The pencil on the clip opens it in the Video editor, on its Social panel, set to an Instagram Reel at 9:16 and 1080 by 1920. Story, Feed portrait and Square are the other placements, and Crop to fill or Fit it whole decides how every clip takes the shape.</p>
+
+  <p>Leave Show what the network covers on. It draws, in red, where Instagram's name, caption, reply box and buttons sit, with a dashed line around the safe area and another for the profile grid crop. The Checks flag text under those zones, a length the placement won't take or a file that's too heavy, and most of them carry a fix button, such as Move the captions into the safe area.</p>
+
+  <p>The Cover panel picks the frame shown before the video plays and saves it as a JPG, ready for Instagram's own cover picker. Save and use it in the post swaps the edit in as a new version; the original stays in the Assets Library. Editing is free. Only the editor's fast captions are billed from your prepaid balance, at the price shown before you start.</p>
+
+  <p>On the publishing step, a picture goes out as a Feed post or a Story. A video always goes out as a Reel, from 3 seconds to 15 minutes. Publish now or schedule it (one post can go to up to 20 accounts), and publishing to Instagram through hubStudio costs nothing. <a href="/app/publish">The app's publishing page</a> covers every network the app posts to.</p>
+
+  <p>Would you rather a studio cut the Reels? The <a href="/services/design/short-video">short video design service</a> and the <a href="/solutions/platforms/meta">Meta platform page</a> describe how our team produces for Meta's apps.</p>
+
+  <h2>What is the China counterpart to Reels?</h2>
+
+  <p>Douyin runs on the same vertical frame, but its creator surfaces serve no spec text to a reader who isn't logged in. Our <a href="/resources/insights/douyin-video-specs-safe-zones">Douyin video specs and safe zones</a> guide publishes the figure most sources agree on, with the count and a disclaimer. Read it before the same 9:16 master goes to China.</p>
+
+  <h2>Changelog</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">October 8, 2026</th>
+          <td>Page published. Every row read on Instagram's and Meta's pages that day.</td>
+        </tr>
+        <tr>
+          <th scope="row">July 9, 2025</th>
+          <td>Meta's developer reference adds user tags on image and video Stories published through the API.</td>
+        </tr>
+        <tr>
+          <th scope="row">March 24, 2025</th>
+          <td>Meta adds alt text for image posts through the API; Reels and Stories are not supported.</td>
+        </tr>
+        <tr>
+          <th scope="row">October 15, 2021</th>
+          <td>The cutoff Meta still applies: Reels published before it can't run as Reels ads or be boosted.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The next scheduled review is January 2027.</p>
+
+  <h2>Questions about Instagram Reels and Stories specs</h2>
+
+  <h3>What size should an Instagram Reel be in 2026?</h3>
+
+  <p>Make it 9:16. Instagram accepts Reels from 1.91:1 to 9:16 at 720 pixels or more and 30 frames per second, and its Help Center names no pixel size. For ads, Meta's ads guide recommends 1440 by 2560. A 1080 by 1920 export clears every floor Instagram and Meta print, and so does 1440 by 2560.</p>
+
+  <h3>How long can an Instagram Reel be?</h3>
+
+  <p>It depends on how you post. In the app you can record and edit up to 20 minutes. Through the API, a Reel runs 3 seconds to 15 minutes. A Reels ad runs up to 15 minutes, and a boosted Reel must be 90 seconds or less. Instagram says Reels over 3 minutes won't be recommended to new audiences.</p>
+
+  <h3>How long can an Instagram Story video be?</h3>
+
+  <p>On Instagram's help page, a Story video up to 60 seconds plays as one clip, and longer videos are split into several clips. Through the API, a Story video runs 3 to 60 seconds and 100MB at most. A Stories ad can run 1 second to 60 minutes, split into cards from 16 seconds.</p>
+
+  <h3>What is the Instagram Reels safe zone?</h3>
+
+  <p>Meta's figure is for ads: leave at least 14 percent of the top, 35 percent of the bottom and 6 percent of each side free of text and logos. On a 1080 by 1920 frame that is about 269 pixels at the top, 672 at the bottom and 65 on each side, by our arithmetic. Reels ads with a disclaimer keep the bottom 40 percent clear.</p>
+
+  <h3>Does Instagram publish a safe zone for organic Reels?</h3>
+
+  <p>No. The Instagram Help Center pages on Reels and Stories print no safe zone, in percent or in pixels. The only figure Meta publishes sits on its ads pages. Using it for organic Reels is a sound habit, but any organic pixel inset you see online is someone else's measurement, not Instagram's rule.</p>
+
+  <h3>What size is an Instagram Reel cover?</h3>
+
+  <p>Instagram's Help Center recommends 420 by 654 pixels, a 1:1.55 ratio, and says a cover can't be changed after upload. Meta's developer reference recommends 9:16, crops other shapes to their middle 9:16 rectangle, and shows the middle square when the Reel is shared to feed. Keep the subject centered.</p>
+
+  <h3>Why can't I boost my Reel?</h3>
+
+  <p>Instagram's help pages list the reasons: the Reel runs over 90 seconds, isn't full-screen 9:16, uses licensed music, was already shared to Facebook, or carries face or camera effects, GIFs, product tags or tappable elements. A video whose resolution is too low is refused as well.</p>
+</ArticleLayout>

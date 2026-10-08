@@ -3,8 +3,11 @@
   Registers (or re-registers) the two Windows scheduled tasks that run the
   hubStudio editorial pipeline on this machine.
 
-  hubStudio Editorial Draft    Mon, Tue, Thu, Fri at 00:30 local (Shanghai, night)
-  hubStudio Editorial Publish  every day at 04:00 local, DISABLED by default
+  hubStudio Editorial Draft    Mon to Fri at 00:30 and 12:30 local (Shanghai);
+                               each run drafts one due row (wave two has up
+                               to two rows a day)
+  hubStudio Editorial Publish  every day at 04:00 and 16:30 local, DISABLED by
+                               default unless -EnablePublish is passed
 
   Publishing starts disabled on purpose. The first week gets reviewed by hand:
   a spec page that shipped an unverified number is the one failure this system
@@ -23,7 +26,9 @@
 #>
 param(
   [string]$DraftTime = '00:30',
+  [string]$DraftTime2 = '12:30',
   [string]$PublishTime = '04:00',
+  [string]$PublishTime2 = '16:30',
   # Pass -EnablePublish once the first week has been reviewed by hand.
   [switch]$EnablePublish
 )
@@ -46,10 +51,17 @@ function Register([string]$Name, [string]$Mode, $Trigger, [bool]$Enabled) {
   Write-Host "$Name registered ($(if ($Enabled) {'enabled'} else {'disabled'}))"
 }
 
-$DraftTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday, Tuesday, Thursday, Friday -At $DraftTime
+$Weekdays = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'
+$DraftTrigger = @(
+  (New-ScheduledTaskTrigger -Weekly -DaysOfWeek $Weekdays -At $DraftTime),
+  (New-ScheduledTaskTrigger -Weekly -DaysOfWeek $Weekdays -At $DraftTime2)
+)
 Register 'hubStudio Editorial Draft' 'draft' $DraftTrigger $true
 
-$PublishTrigger = New-ScheduledTaskTrigger -Daily -At $PublishTime
+$PublishTrigger = @(
+  (New-ScheduledTaskTrigger -Daily -At $PublishTime),
+  (New-ScheduledTaskTrigger -Daily -At $PublishTime2)
+)
 Register 'hubStudio Editorial Publish' 'publish' $PublishTrigger ([bool]$EnablePublish)
 
 Get-ScheduledTask -TaskName 'hubStudio Editorial *' | Format-Table TaskName, State -AutoSize

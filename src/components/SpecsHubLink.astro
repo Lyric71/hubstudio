@@ -1,0 +1,53 @@
+---
+/**
+ * SpecsHubLink: one-line band pointing to the platform specs hub
+ * (/resources/specs). Sits under the card grid on the how-to and insights
+ * indexes, inside their container, so it carries no container of its own.
+ * Self-contained styles; the sentence is running copy, so it takes
+ * --type-body.
+ */
+---
+
+<aside class="specs-link">
+  <a class="specs-link__row card card--white" href="/resources/specs">
+    <span class="eyebrow specs-link__eyebrow">Platform specs</span>
+    <span class="specs-link__text">
+      Image sizes, video lengths and file rules for each network and marketplace,
+      grouped on one page.
+    </span>
+    <span class="specs-link__cta">See every spec &rarr;</span>
+  </a>
+</aside>
+
+<style>
+  .specs-link {
+    margin-top: 56px;
+  }
+  .specs-link__row {
+    display: grid;
+    gap: 10px 28px;
+    align-items: baseline;
+    padding: 26px 30px;
+    border-left: 3px solid var(--brand-orange);
+    transition: transform 200ms ease-out;
+  }
+  .specs-link__row:hover {
+    transform: translateY(-2px);
+  }
+  @media (min-width: 860px) {
+    .specs-link__row {
+      grid-template-columns: auto 1fr auto;
+    }
+  }
+  .specs-link__text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .specs-link__cta {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+    white-space: nowrap;
+  }
+</style>

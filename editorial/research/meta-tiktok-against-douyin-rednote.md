@@ -1033,3 +1033,22 @@ app name, RedNote paid ad specs, the 516 kbps match as evidence, copy-length
 limits for Douyin or RedNote, any performance claim, any hubStudio delivery
 figure (slot D requirement unmet, see the run log), any hubStudio rate.
 
+
+## Amended 2026-10-08 (TikTok template files)
+
+The research for brief 57 (`research/tiktok-video-specs.md`) and brief 55
+(`research/vertical-video-ad-from-product-image.md`) downloaded the template
+files TikTok's auction in-feed spec page links and read the insets TikTok
+prints on them. "Any TikTok inset" above meant a third-party set; TikTok's own
+values are now cleared, with these rows taken from those two files:
+
+| Claim | Source | Confidence |
+|---|---|---|
+| Standard in-feed template, 720 x 1280: 160 px top, 440 bottom, 80 each side, a 120 px right column from y 560; scaled to 1080 x 1920: 240 top, 660 bottom, 120 each side, 300 at the right below y 840 | research/tiktok-video-specs.md, template rows; research/vertical-video-ad-from-product-image.md, template row (file dated 2025-04-15, MD5 6d2918b2cc2f1488c2370e2a89e368a1) | primary for the file, derived for the scaled values |
+| Anchor templates, 540 x 960: bottom 406, 439, 473, 507 for one to four caption lines; scaled: 812, 878, 946, 1014; top 252; 240 at the right below y 360 | research/tiktok-video-specs.md, anchor rows | primary for the files, derived for the scaled values |
+| Box clearing every vertical TikTok template: x 120 to 780, y 252 to 906 | research/tiktok-video-specs.md, derived box row | derived |
+| This page's box (x 108 to 972, y 420 to 1248) intersected with that box: x 120 to 780, y 420 to 906 | arithmetic | derived |
+
+Page and draft changed the same day: the FAQ on TikTok and Douyin safe zones,
+the line and blockquote on what TikTok prints, the box blockquote and its
+source line, the box lead-in, and the TikTok safe-zone cell of the spec table.

@@ -152,13 +152,17 @@ The surfaces are not treated consistently either.
 > Four English searches for Douyin video specifications returned roughly forty
 > results and not one page carrying a Douyin spec table. TikTok guides filled
 > the space. Every right-side button-rail width in circulation, between 100 and
-> 140 pixels, comes from a TikTok page.
+> 140 pixels, comes from a TikTok page. TikTok's own template files draw a wider
+> column: scaled to 1080 by 1920, they keep 300 pixels clear at the right edge
+> on the standard in-feed file and 240 on the anchor files.
 > Source: 4 English queries run 10 September 2026, every result classified by
 > platform and page type, and every rail figure traced to its page. Stated as an
-> observation about published sources.
+> observation about published sources. TikTok's column: its in-feed template
+> files, downloaded from the auction in-feed spec page 8 October 2026 and scaled
+> to 1080x1920.
 
-So the rail width you have seen quoted for Douyin is TikTok's. That does not mean
-the two apps differ. It means only one of them has had its interface measured in
+So the rail width you have seen quoted for Douyin comes from TikTok guides, and
+it is narrower than TikTok's own files. That does not mean the two apps differ. It means only one of them has had its interface measured in
 public, and nobody has published a side-by-side of both.
 
 <!-- SECTION: safe box -->
@@ -171,17 +175,19 @@ published figure leaves clear.
 > Whichever published account of the Douyin overlay is correct, a layout that
 > keeps text, faces and calls to action between 108 and 972 pixels across and
 > between 288 and 1540 pixels down a 1080x1920 frame clears every Douyin inset
-> in circulation. To clear the published TikTok insets as well, narrow it to 108
-> to 940 across and 288 to 1436 down.
+> in circulation. To clear TikTok's own in-feed templates as well, narrow it to
+> 120 to 780 across and 288 to 906 down.
 > Source: derived 10 September 2026 by taking the largest inset on each side
-> from every published Douyin figure, and for the two-app box every published
-> TikTok figure, across 5 Douyin and 11 TikTok sources. A safe intersection, not
-> a platform rule.
+> from every published Douyin figure, across 5 Douyin sources; the two-app box
+> revised 8 October 2026 to TikTok's in-feed template files, standard and
+> anchor, downloaded from the auction in-feed spec page and scaled to
+> 1080x1920. It also clears the 11 third-party TikTok sets collected in
+> September. A safe intersection, not a platform rule.
 
 | Box | Across | Down | Size | Clears |
 |---|---|---|---|---|
 | Douyin box | 108 to 972 | 288 to 1540 | 864 by 1252 | Every published Douyin inset |
-| Two-app box | 108 to 940 | 288 to 1436 | 832 by 1148 | Every published Douyin and TikTok inset |
+| Two-app box | 120 to 780 | 288 to 906 | 660 by 618 | Every published Douyin inset and TikTok's own in-feed templates |
 
 Both boxes are derivations from published numbers, not measurements of either
 app. If one master has to run on both platforms, design to the two-app box and
@@ -191,14 +197,18 @@ you are clear of every figure anyone has printed.
 
 ## Where do Douyin captions and end cards get covered?
 
-On the published numbers, lower than a TikTok layout assumes.
+On the published numbers, lower than the third-party TikTok insets assume.
 
-> On the published figures, a caption placed just above a 270-pixel TikTok
-> bottom inset sits about 110 pixels inside the 380-pixel bottom band that one
-> Chinese source gives for Douyin. That is a comparison of two sets of published
-> numbers, not a measurement of either app.
-> Source: arithmetic on published TikTok and Douyin inset figures collected 10
-> September 2026. Derived, contested on both inputs.
+> On the published figures, a caption placed just above the 270-pixel bottom
+> inset that third-party TikTok guides publish sits about 110 pixels inside the
+> 380-pixel bottom band that one Chinese source gives for Douyin. TikTok's own
+> template keeps the bottom 660 pixels clear, 812 to 1,014 with an anchor,
+> deeper than every published Douyin bottom band, 200 to 380. That is a
+> comparison of published numbers, not a measurement of either app.
+> Source: arithmetic on published third-party TikTok and Douyin inset figures
+> collected 10 September 2026, and on TikTok's in-feed template files,
+> downloaded 8 October 2026 and scaled to 1080x1920. Derived; the Douyin and
+> third-party TikTok inputs are contested.
 
 End cards follow the same logic. A call to action placed in the lower fifth of a
 TikTok cut sits inside the largest published Douyin bottom band. Lift it into the
@@ -219,9 +229,9 @@ published numbers or a production choice, not a platform instruction.
 | Check | What to do |
 |---|---|
 | Frame | 9:16 at 1080 by 1920 |
-| Captions and on-screen text | Inside the two-app box, 108 to 940 across and 288 to 1436 down |
+| Captions and on-screen text | Inside the two-app box, 120 to 780 across and 288 to 906 down |
 | End card and call to action | Out of the lowest 380 pixels and the top 288 pixels |
-| Right side of frame | Keep faces and text left of 940 pixels, since no Douyin rail width is published |
+| Right side of frame | Keep faces and text left of 780 pixels, clear of TikTok's own right column, since no Douyin rail width is published |
 | Cover | Export a separate 9:16 cover at 1080 by 1920 |
 | File | MP4, sized well under 1GB, the smallest cap in circulation |
 | Duration | Confirm the ceiling in your own account before cutting a long edit |
@@ -248,9 +258,11 @@ and 288 and 1540 down clears every published Douyin figure, as a derivation.
 **Can I upload a TikTok video to Douyin?**
 
 The frame carries over: published Douyin figures give 9:16 at 1080 by 1920. What
-needs moving is text. On published numbers, a caption just above TikTok's
-270-pixel bottom inset sits inside the largest Douyin bottom band. Lift captions
-and end cards into the two-app safe box before re-exporting.
+needs moving is text. A caption placed to TikTok's own template, which keeps the
+bottom 660 pixels clear, already clears every published Douyin bottom band; a
+caption placed just above the 270-pixel bottom inset that third-party TikTok
+guides publish sits inside the largest one. Lift captions and end cards into the
+two-app safe box before re-exporting.
 
 **What aspect ratio does Douyin use?**
 
@@ -270,8 +282,8 @@ pages still carry a one-minute limit from a 2019 rollout. The API documentation'
 
 Published Douyin bottom bands run from 200 to 380 pixels and top bands from 220
 to about 288 pixels, with no right-rail width published for Douyin. Captions
-placed for TikTok can fall inside the largest Douyin bottom band. Keep text and
-calls to action inside the derived two-app box.
+placed to the third-party TikTok insets can fall inside the largest Douyin bottom
+band. Keep text and calls to action inside the derived two-app box.
 
 <!-- CTA -->
 
@@ -383,8 +395,10 @@ WHAT THE PAGE NEVER DOES: call any value official, verified or required; present
   API limits as app limits; print a single top or bottom pixel figure as
   Douyin's; print any right-rail width for Douyin; put a TikTok figure on a
   Douyin row (287.6MB, 10 and 60 minutes, 4,000 to 6,000kbps, 270 or 484 pixel
-  bottom, 100 to 140 pixel rail appear only as TikTok's, and only the 270 and the
-  rail range are mentioned at all); say Douyin's overlay "is" different from
+  bottom, 100 to 140 pixel rail appear only as third-party TikTok figures, and
+  only the 270 and the rail range are mentioned at all; TikTok's own template
+  values, 660 and 812 to 1,014 at the bottom, 300 and 240 at the right, appear
+  only as TikTok's); say Douyin's overlay "is" different from
   TikTok's; describe the boxes as measured; write rejection reasons as
   enforcement; or use the "1080x1464", "85 percent of traffic" or "22 percent
   lower completion" claims.

@@ -1,0 +1,75 @@
+// editorial/scripts/wave2/77-amazon-product-image-requirements.mjs
+export default {
+  id: "77",
+  date: "2026-10-23",
+  family: "spec",
+  template: "spec",
+  brief: true,
+  status: "not_started",
+  cluster: "Platform specs",
+  contentType: "Spec page",
+  readerStage: "practitioner",
+  slug: "amazon-product-image-requirements",
+  h1: "Amazon product image requirements for 2026",
+  query: "amazon product image requirements",
+  secondary: [
+    "amazon main image requirements white background",
+    "amazon image size for zoom",
+    "amazon product image rejected reasons",
+    "amazon secondary image rules",
+    "amazon image file name format",
+  ],
+  verdict:
+    "SECONDHAND. The SERP is photo-studio and tool blogs paraphrasing Seller Central, each with small disagreements (85 percent fill, minimum sizes, allowed formats) and few links to Amazon's own page; none separates the main image rules from category exceptions or explains the common suppression reasons from Amazon's text.",
+  words: 1500,
+  angle:
+    "Amazon's own Seller Central product image requirements, quoted and dated, with the main image, additional images and category exceptions kept apart, and a rejection table built from the reasons Amazon states. Visible Reviewed date, quarterly recheck.",
+  mustInclude: [
+    "Main image table: background (pure white), fill of the frame, what may not appear (text, logos, watermarks, props, inset images), minimum and recommended pixels for zoom, formats, color mode, file naming, each quoted from Seller Central",
+    "Additional images: what Amazon allows (lifestyle, infographics, size charts) and what it still forbids",
+    "Category exceptions Amazon documents (apparel on model, for example), from Amazon's own pages",
+    "Rejection and suppression reasons table: the reason as Amazon states it, the fix",
+    "A visible Reviewed date and a dated changelog block at the foot",
+    "Making compliant files in hubStudio: the E-commerce packshot skill in the Catalog shapes Improve with AI; ChatGPT Image 2 renders up to 4K with an opaque or transparent background; Edit an image changes the scene of your own product photo; the Image editor crops Square 1:1 and saves PNG or JPG at a chosen size",
+    "One line on AI-generated product images pointing to Amazon's own policy wording if it exists at research time; otherwise say nothing about it",
+  ],
+  doNot: [
+    "Take any value from a third-party blog or tool page",
+    "Name any seller tool, photo studio or competitor",
+    "Claim hubStudio uploads to Amazon or connects to Seller Central",
+    "Print a hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "Every requirement: Amazon Seller Central help, Product image requirements page, quoted verbatim, URL and both check dates; if Seller Central gates the page behind a login, use the public Amazon seller help version and say which surface was read",
+    "Category style guides: Amazon's own downloadable style guides, dated, only for the categories quoted",
+    "hubStudio facts: create-an-image.md, skills.md, assets-library.md",
+  ],
+  assets: [
+    "Main image spec table: rule, Amazon's value, source",
+    "Additional images table: allowed, not allowed",
+    "Rejection reasons table: reason, what Amazon says, the fix",
+    "Changelog block, dated, updated in place",
+  ],
+  links: [
+    ["Amazon platform page", "/solutions/platforms/amazon"],
+    ["One product, three listings", "/resources/insights/amazon-tmall-jd-one-product-three-listings"],
+    ["AI white-background packshot", "/resources/how-to/ai-white-background-packshot"],
+    ["Ecommerce design service", "/services/design/ecommerce"],
+    ["Product photo to lifestyle image", "/resources/how-to/product-photo-to-lifestyle-image"],
+  ],
+  seoTitle: "Amazon Product Image Requirements for 2026",
+  seoDesc:
+    "Amazon main and additional image rules for 2026: white background, frame fill, zoom size, formats and rejection reasons, quoted from Seller Central.",
+  faqs: [
+    "What are Amazon's main image requirements?",
+    "What size should Amazon product images be?",
+    "Does the Amazon main image have to be on white?",
+    "Why was my Amazon image rejected or suppressed?",
+    "Can I add text or logos to Amazon product images?",
+    "Can I use AI-generated images on Amazon?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Spec page: Amazon Seller Central help only. Watch row due 2027-01-23. AI image policy is covered in depth by the marketplace-policies piece later in the wave: keep it to one line here.",
+};

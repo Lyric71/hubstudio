@@ -1,0 +1,310 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "Can AI put my product in a lifestyle scene without changing it?",
+    "a": "It can come close, and you check the rest. Run an edit with your packshot as the first source picture, a sentence naming everything that must stay, and the label text in quotation marks. Then compare each result with the packshot. Engine makers list text and brand elements among the things their models can still get wrong, so the check belongs to the method."
+  },
+  {
+    "q": "Which AI engine is best for product lifestyle images?",
+    "a": "There isn't one answer. That's why you run several. In hubStudio's help center, the ChatGPT Image engines follow long written briefs and write legible text, Nano Banana 2 is fast and dependable on an existing photo, and the FLUX.1 Kontext engines change exactly what you name and keep the rest. Send the same brief to three and keep the one that held the label."
+  },
+  {
+    "q": "Can I use AI lifestyle images on Amazon?",
+    "a": "In the additional image slots, yes, provided the image accurately represents the product and matches its title, as Amazon's product image guide requires of every image. The main image stays on pure white for most product types. If the scene shows a photorealistic person made entirely by AI, Amazon asks for the contains-synthetic-performer tag in the file's metadata."
+  },
+  {
+    "q": "Why does AI mess up the text on my product label?",
+    "a": "Lettering is one of the hardest things for an image engine to draw, and its makers list it among their limits. Small print gives it little to work with. Crop the source tight, add a close crop of the label as a second picture where the engine allows it, and put the exact words in quotation marks. If a letter still comes back wrong, rerun. Don't patch it by hand."
+  },
+  {
+    "q": "Do AI product images need to be labeled?",
+    "a": "It depends on where they run. Google Merchant Center requires images made with generative AI to keep metadata saying so, such as the IPTC DigitalSourceType tag. Amazon's product image guide asks for a tag when a photorealistic person in the image was made entirely by AI. This is production practice, not legal advice; check the rules of each place you publish."
+  },
+  {
+    "q": "What makes a good source photo for an AI lifestyle image?",
+    "a": "A sharp packshot with the whole product in frame, even light, no harsh reflections, and a label you can read at full size. Crop it close, because the Image studio sends source pictures at 1,536 pixels on the long side at most. Shoot or request a separate close-up of the label if the print is small."
+  },
+  {
+    "q": "How many versions should I generate?",
+    "a": "Enough to compare engines, not so many that nobody checks them. A practical start is one run per engine on two or three engines, plus a run of several images on a ChatGPT Image engine. The price shows before every run, so you decide each one knowing what it costs against your balance."
+  }
+];
+---
+
+<HowtoLayout slug="product-photo-to-lifestyle-image" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">The scene is the easy part. What breaks is the product: a label that comes back misspelled, a cap that changed shape, an amber bottle gone orange. This is the method that keeps it true.</p>
+
+  <h2>How do you turn a product photo into a lifestyle image?</h2>
+
+  <p>Treat the packshot as the reference every result is judged against. Pick the scene for the place it will run, list what may not change, and write an edit brief that names it. Run that brief on several engines, fix framing in an editor, then check each result against the packshot. hubStudio does all of it in one app.</p>
+
+  <p>Here is the sequence, start to finish:</p>
+
+  <ul>
+    <li><strong>Pick the scene for a slot.</strong> Decide where the picture will run before you decide what goes in it, because the slot sets the rules.</li>
+    <li><strong>Lock the product.</strong> Shape, label, color, finish, count, scale: write them down.</li>
+    <li><strong>Prepare the source.</strong> A sharp packshot with the whole product in frame, plus a close crop of the label when the engine takes a second picture.</li>
+    <li><strong>Write the brief.</strong> Scene, light and placement, then one full sentence on what stays.</li>
+    <li><strong>Run it on several engines.</strong> Same brief, same source.</li>
+    <li><strong>Fix what needs no new run.</strong> Crop, light and format belong in the Image editor; anything on the product itself means another run.</li>
+    <li><strong>Check it against the packshot</strong>, line by line, before anyone approves it.</li>
+  </ul>
+
+  <h2>What must stay fixed, and what can the scene change?</h2>
+
+  <p>Everything a buyer will hold in their hand stays as it was shot. Everything around it is yours to change.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">What it covers</th>
+          <th scope="col">Keep fixed</th>
+          <th scope="col">The scene may change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Shape</th>
+          <td>Silhouette, cap, edges, proportions</td>
+          <td>Nothing on the product itself</td>
+        </tr>
+        <tr>
+          <th scope="row">Label and print</th>
+          <td>Every word, its order, typeface, size and position</td>
+          <td>Nothing: a garbled label is a rerun</td>
+        </tr>
+        <tr>
+          <th scope="row">Color and finish</th>
+          <td>Product color, glass tint, matte or gloss</td>
+          <td>Only the warmth of the light, and only a touch</td>
+        </tr>
+        <tr>
+          <th scope="row">Logo and marks</th>
+          <td>One logo, in its place, never mirrored</td>
+          <td>No new marks on props or background</td>
+        </tr>
+        <tr>
+          <th scope="row">Count and parts</th>
+          <td>One unit, only the parts that ship with it</td>
+          <td>Props that clearly are not the product</td>
+        </tr>
+        <tr>
+          <th scope="row">Scale</th>
+          <td>Real size against hands, shelves, towels</td>
+          <td>Camera distance and crop</td>
+        </tr>
+        <tr>
+          <th scope="row">Setting</th>
+          <td>Nothing</td>
+          <td>Surface, room, props, season, time of day</td>
+        </tr>
+        <tr>
+          <th scope="row">Light</th>
+          <td>One source, one shadow, the same on product and set</td>
+          <td>Direction, warmth and softness</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The angle is the trap. An engine can only show sides of the product that the packshot shows. Ask for the back of a box shot from the front and it will invent one.</p>
+
+  <h2>Where will the lifestyle image run?</h2>
+
+  <p>Settle this before the brief, because the destination decides what the file may carry. A marketplace main image and a social post live under different rules.</p>
+
+  <blockquote class="evidence">Amazon's product image guide requires a pure white background on the main image and lets only a limited number of product types use a lifestyle image there; scenes of the product in use go in the additional image slots, coded PT01 to PT99.</blockquote>
+  <p class="source">Source: Amazon Seller Central, Product image guide, US store, page undated, read October 8, 2026.</p>
+
+  <p>The same guide says every product image must accurately represent the product being sold and match its title. A generated scene is held to that line like any photograph.</p>
+
+  <blockquote class="evidence">Google Merchant Center takes up to five lifestyle images per product, at least 600 by 600 pixels, with no promotional text, watermark, logo overlay or border, and requires images made with generative AI to keep metadata saying so, such as the IPTC DigitalSourceType tag.</blockquote>
+  <p class="source">Source: Google Merchant Center Help, lifestyle image link attribute, page undated, read October 8, 2026.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Destination</th>
+          <th scope="col">What it accepts</th>
+          <th scope="col">Rule source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Amazon main image</th>
+          <td>White background; lifestyle only for some types</td>
+          <td>Amazon product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Amazon additional images</th>
+          <td>Product in use, angles, details</td>
+          <td>Amazon product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Google Merchant Center lifestyle</th>
+          <td>Up to five, no text or overlays, AI metadata kept</td>
+          <td>Merchant Center Help</td>
+        </tr>
+        <tr>
+          <th scope="row">Instagram feed post</th>
+          <td>Feed portrait, 1080 by 1350 pixels</td>
+          <td>Marked Best in the Image editor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What makes a packshot a good source?</h2>
+
+  <p>Sharp focus, the whole product in frame, even light, and a label you can read at full size. If you can't read it on the packshot, the engine can't copy it.</p>
+
+  <p>Then mind the size. The Image studio resizes source pictures in your browser to 1,536 pixels on the long side before sending them, which also removes the original file's metadata. Small print on a wide packshot loses detail at that size. Crop the packshot close to the product, and on an engine that takes several source pictures, add a tight crop of the label as the second one.</p>
+
+  <p>Pick the job <strong>Edit an image</strong>. ChatGPT Image 2, Nano Banana 2 and Pro, and Seedream 4.5 and 5.0 Pro take up to four source pictures. FLUX.1 Kontext Pro and Max take one. The shape of the result follows the first picture you upload, so put the packshot first and change <strong>Shape</strong> if the slot needs another. <a href="/help/create-an-image">The Create an image help article</a> lists every option per engine.</p>
+
+  <h2>How do you write the brief?</h2>
+
+  <p>Write it as an edit instruction, not a description of a new picture. Name the scene and the light, and say where the product sits. Then give a full sentence to what stays. One engine maker spells this out.</p>
+
+  <blockquote class="evidence">Google's image generation documentation tells users that to preserve critical details such as a logo during an edit, they should "describe them in great detail along with your edit request."</blockquote>
+  <p class="source">Source: Gemini API image generation documentation, the maker's own page, last updated October 6, 2026.</p>
+
+  <p>A working example, for a serum bottle shot on white:</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Using the provided images, place the bottle from image 1 on a pale limestone bathroom shelf beside a folded linen towel. Early morning window light from the left, one soft shadow falling to the right.</p>
+    <p class="prompt__body">Keep the bottle exactly as it is in image 1: amber glass, black dropper cap, the same proportions. The white label reads "DAILY SERUM" above "30 ml", same typeface, size and position; use image 2 for its detail. No other text, no logos, no second bottle.</p>
+    <p class="prompt__body">The bottle fills about a third of the frame height, lower right, shelf edge running out of frame. Portrait 4:5, real photograph, no glossy retouching.</p>
+  </div>
+
+  <p>Put the label's words in quotation marks. Black Forest Labs, which makes the FLUX.1 Kontext engines, says in its own editing guide that quotation marks around the specific text are the most effective way to edit text in a picture.</p>
+
+  <h2>Where do the Lifestyle product scene skill and Improve with AI fit?</h2>
+
+  <p>They save you from writing the same rules into every brief. Open <strong>Skills</strong>, then <strong>Catalog</strong>, find <strong>Lifestyle product scene</strong>, read it with <strong>View details</strong> and click <strong>Add to my skills</strong>. From then on, every skill switched on for <strong>Images and video</strong> rides along when <strong>Improve with AI</strong> rewrites a prompt.</p>
+
+  <p>Improve with AI rewrites what you typed for the engine you picked. It knows the job, so an edit comes back as an edit instruction. It never changes your settings. Under the box you get <strong>Prompt rewritten</strong>, a short list of what changed, and <strong>Undo</strong>. Each rewrite is a small paid call against your prepaid balance.</p>
+
+  <p>Read the rewrite before you run it. If your keep sentence got shorter, put it back.</p>
+
+  <h2>Why run the same brief on several engines?</h2>
+
+  <p>Because they fail differently, and you won't know which one holds your label until you see it. Each run opens its own tab, newest first, and you can start the next run while the first renders. The price shows before each run; a run that fails is not charged.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Engine</th>
+          <th scope="col">Source pictures per edit</th>
+          <th scope="col">What the help center says it does well</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">ChatGPT Image 2 (OpenAI)</th>
+          <td>Up to 4</td>
+          <td>Follows long briefs, writes legible text</td>
+        </tr>
+        <tr>
+          <th scope="row">Nano Banana 2 (Google)</th>
+          <td>Up to 4</td>
+          <td>Fast and dependable on an existing photo</td>
+        </tr>
+        <tr>
+          <th scope="row">FLUX.1 Kontext Pro and Max</th>
+          <td>1</td>
+          <td>Changes exactly what you name, keeps the rest</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedream 4.5 and 5.0 Pro</th>
+          <td>Up to 4</td>
+          <td>Renders natively up to 4K</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>On the ChatGPT Image engines, ask for several images in one run (one to ten) and keep the best. You pay for the images that come back.</p>
+
+  <p>No engine guarantees the label, and its makers say as much.</p>
+
+  <blockquote class="evidence">OpenAI lists text rendering among its image model's limitations and says the model "may occasionally struggle to maintain visual consistency for recurring characters or brand elements across multiple generations."</blockquote>
+  <p class="source">Source: OpenAI image generation guide, the maker's own documentation, page undated, read October 8, 2026.</p>
+
+  <h2>What can you fix in the editor, and what needs a new run?</h2>
+
+  <p>Click <strong>Edit</strong> on a ready picture and the Image editor opens. It is free and runs in your browser. Use it for what sits around the product: crop to a network format in <strong>Social</strong> or <strong>Crop</strong>, adjust light and color, then save a copy to the Assets Library next to the render.</p>
+
+  <p>Go easy in <strong>Adjust</strong>. Warmth and saturation move the whole picture, product included, so check the label color again afterwards.</p>
+
+  <p>Anything on the product itself needs a new run with the <strong>Edit an image</strong> job: a wrong letter, a changed cap, a second logo. On the ChatGPT Image engines you can add a <strong>Mask</strong>, a PNG whose transparent areas mark what may change in the first picture. Leave the product solid and the background transparent. Then check the product's edge anyway.</p>
+
+  <blockquote class="evidence">OpenAI's guide says the model "uses the mask as guidance, but may not follow its exact shape with complete precision."</blockquote>
+  <p class="source">Source: OpenAI image generation guide, page undated, read October 8, 2026.</p>
+
+  <h2>How do you check product fidelity before it ships?</h2>
+
+  <p>Open the result and the packshot side by side at the same size, then go down the list. A failure on shape or label sends the picture back for a rerun. Do not letter a label back in by hand: you would be drawing the product, not showing it.</p>
+
+  <ul>
+    <li><strong>Silhouette.</strong> Same outline, cap, edges and proportions.</li>
+    <li><strong>Label.</strong> Every word spelled as printed, in the same order, typeface and position. Nothing added.</li>
+    <li><strong>Color.</strong> Product and finish match the packshot on the same screen, after any edit in Adjust.</li>
+    <li><strong>Logo.</strong> Once, in its place, not mirrored, not repeated on a prop.</li>
+    <li><strong>Count.</strong> One unit, and only the parts that ship with it.</li>
+    <li><strong>Scale.</strong> The size reads right against the towel, the hand, the shelf.</li>
+    <li><strong>Light.</strong> One direction. The shadow falls away from it, and glass reflects the room it sits in.</li>
+    <li><strong>Edges.</strong> No halo or cut-out line where the product meets the scene.</li>
+    <li><strong>People.</strong> If the scene shows a person, count the fingers. On Amazon, a photorealistic person made entirely by AI needs a tag.</li>
+    <li><strong>File.</strong> For Google's lifestyle slot, no text or logo overlay, and the AI metadata still in the file.</li>
+  </ul>
+
+  <blockquote class="evidence">Amazon asks sellers to add the keyword contains-synthetic-performer to the dc:subject (XMP) field when an image shows photorealistic people entirely generated by AI, and not when the image shows no people.</blockquote>
+  <p class="source">Source: Amazon Seller Central, Product image guide, US store, page undated, read October 8, 2026.</p>
+
+  <p>To see what a file carries, drop it in the Image anonymizer: it lists the hidden data first. For a Google lifestyle image, stop there. The clean copy it offers is exactly what that slot does not want.</p>
+
+  <p>When the list passes, click <strong>Send for validation</strong> on the tab. The render goes to a teammate or a client as version 1 of an approval thread. Every render also stays in History with its prompt and engine, so the next product in the range starts from <strong>Reuse prompt</strong>, not from a blank box.</p>
+
+  <h2>When should you photograph the scene instead?</h2>
+
+  <p>When the picture is the claim. A texture close-up, the drape of a fabric, a cream's finish on skin: those prove something about the product, and generation has nothing real to prove it with. The <a href="/resources/insights/shoot-it-or-generate-it">Shoot it or generate it</a> insight sets the rule asset by asset. Shoot the anchor; generate the scenes that repeat.</p>
+
+  <p>If you'd rather hand over the whole listing set, shot and generated, <a href="/services/design/ecommerce">the ecommerce design service</a> and <a href="/solutions/ai-production/image">AI image production</a> pages describe how the studio takes it on. To run the method yourself, <a href="/app/create">the create page of the app</a> shows the Image studio and the Skills catalog.</p>
+
+  <h2>FAQ</h2>
+
+  <h3>Can AI put my product in a lifestyle scene without changing it?</h3>
+
+  <p>It can come close, and you check the rest. Run an edit with your packshot as the first source picture, a sentence naming everything that must stay, and the label text in quotation marks. Then compare each result with the packshot. Engine makers list text and brand elements among the things their models can still get wrong, so the check belongs to the method.</p>
+
+  <h3>Which AI engine is best for product lifestyle images?</h3>
+
+  <p>There isn't one answer. That's why you run several. In hubStudio's help center, the ChatGPT Image engines follow long written briefs and write legible text, Nano Banana 2 is fast and dependable on an existing photo, and the FLUX.1 Kontext engines change exactly what you name and keep the rest. Send the same brief to three and keep the one that held the label.</p>
+
+  <h3>Can I use AI lifestyle images on Amazon?</h3>
+
+  <p>In the additional image slots, yes, provided the image accurately represents the product and matches its title, as Amazon's product image guide requires of every image. The main image stays on pure white for most product types. If the scene shows a photorealistic person made entirely by AI, Amazon asks for the contains-synthetic-performer tag in the file's metadata.</p>
+
+  <h3>Why does AI mess up the text on my product label?</h3>
+
+  <p>Lettering is one of the hardest things for an image engine to draw, and its makers list it among their limits. Small print gives it little to work with. Crop the source tight, add a close crop of the label as a second picture where the engine allows it, and put the exact words in quotation marks. If a letter still comes back wrong, rerun. Don't patch it by hand.</p>
+
+  <h3>Do AI product images need to be labeled?</h3>
+
+  <p>It depends on where they run. Google Merchant Center requires images made with generative AI to keep metadata saying so, such as the IPTC DigitalSourceType tag. Amazon's product image guide asks for a tag when a photorealistic person in the image was made entirely by AI. This is production practice, not legal advice; check the rules of each place you publish.</p>
+
+  <h3>What makes a good source photo for an AI lifestyle image?</h3>
+
+  <p>A sharp packshot with the whole product in frame, even light, no harsh reflections, and a label you can read at full size. Crop it close, because the Image studio sends source pictures at 1,536 pixels on the long side at most. Shoot or request a separate close-up of the label if the print is small.</p>
+
+  <h3>How many versions should I generate?</h3>
+
+  <p>Enough to compare engines, not so many that nobody checks them. A practical start is one run per engine on two or three engines, plus a run of several images on a ChatGPT Image engine. The price shows before every run, so you decide each one knowing what it costs against your balance.</p>
+</HowtoLayout>

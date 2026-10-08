@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/75-word-by-word-video-captions.mjs
+export default {
+  id: "75",
+  date: "2026-10-22",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "word-by-word-video-captions",
+  h1: "How to add word-by-word captions to a video",
+  query: "add captions to video",
+  secondary: [
+    "word by word captions",
+    "karaoke style captions",
+    "auto captions for reels and tiktok",
+    "how to make an SRT file",
+    "captions safe zone tiktok",
+  ],
+  verdict:
+    "TOOL LANDING PAGES. The SERP is caption-generator landing pages selling upload, transcribe, export; none covers placement against the network's own buttons, correcting names and jargon, burned-in captions versus a subtitle file, or keeping the audio private.",
+  words: 1700,
+  angle:
+    "Word-by-word captions are easy to make and easy to get wrong: they land under the network's buttons, misspell the product name, or go out burned in when a subtitle file was needed. This guide does it properly in the hubStudio Video editor, including the free route where the speech model runs in your own browser and nothing is sent.",
+  mustInclude: [
+    "Burned-in captions versus a subtitle file (SRT): when each is right; the editor does both (Download as SRT)",
+    "Two ways to make them: Free, in your browser (speech model Quick about 40 MB, Balanced about 80 MB, Accurate about 250 MB, downloaded once; nothing sent, nothing billed) or Fast, billed (a few seconds, priced per minute of sound with the price shown before you start)",
+    "Language spoken, or Detect it",
+    "The five looks: Classic, Karaoke (the word said lights up), One word, Boxed, Highlight; Words at once, Size, Height on the screen, colors, font, capitals",
+    "Correct every line under The words: names, product terms, numbers",
+    "Placement: the Social panel shows in red what Instagram, TikTok or Facebook covers, with a dashed safe area; the Checks offer Move the captions into the safe area",
+    "Many short clips at once: Shorts autopilot captions each short word by word in one of the same five looks, with a hook line over the first seconds",
+    "Accessibility in one paragraph: captions for prerecorded video under WCAG 2.2 success criterion 1.2.2, from the W3C's own text",
+    "Save as MP4 in 1080p or 720p to the Assets Library or download; the original stays",
+  ],
+  doNot: [
+    "Name any caption tool or competitor",
+    "Print the unsourced 'most people watch without sound' statistic; any viewing-habit figure needs a network's own page or a survey with a method",
+    "Print a price per minute or any hubStudio amount",
+    "Claim the Video editor publishes to YouTube or LinkedIn video",
+    "Use an em dash or numbered cards",
+  ],
+  stats: [
+    "WCAG 2.2 success criterion 1.2.2 Captions (Prerecorded): W3C, quoted",
+    "Network caption features and safe areas: TikTok and Instagram help pages, dated, only if used",
+    "Every app behavior: assets-library.md (Video editor, Captions) and shorts-autopilot.md in the help center",
+  ],
+  assets: [
+    "Table: free in browser versus fast billed (speed, privacy, cost model, best for)",
+    "Table: the five caption looks and where each works",
+    "Existing help captures: video-editor-social, video-editor-save, shorts-autopilot-settings",
+  ],
+  links: [
+    ["Video editor and Shorts autopilot", "/app/video-tools"],
+    ["Long video to shorts", "/resources/how-to/long-video-to-shorts"],
+    ["TikTok video specs", "/resources/insights/tiktok-video-specs"],
+    ["Instagram Reels and Stories specs", "/resources/insights/instagram-reels-stories-specs"],
+    ["Short video service", "/services/design/short-video"],
+  ],
+  seoTitle: "How to Add Word-by-Word Captions to a Video",
+  seoDesc:
+    "Add word-by-word captions to Reels and TikToks: free in-browser or fast transcription, five looks, safe-zone placement, corrections and SRT export.",
+  faqs: [
+    "How do I add word-by-word captions to a video?",
+    "Can I add captions to a video for free?",
+    "How do I make karaoke-style captions?",
+    "Where should captions go on a TikTok or Reel?",
+    "How do I get an SRT file from my video?",
+    "Are auto captions accurate enough to publish?",
+    "Can I caption a video in another language?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Help sources: assets-library.md (Video editor: Social, Captions, Save), shorts-autopilot.md. The Video editor targets Instagram, TikTok and Facebook in its Social panel.",
+};

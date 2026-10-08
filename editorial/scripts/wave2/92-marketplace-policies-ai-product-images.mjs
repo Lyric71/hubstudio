@@ -1,0 +1,76 @@
+// editorial/scripts/wave2/92-marketplace-policies-ai-product-images.mjs
+export default {
+  id: "92",
+  date: "2026-11-09",
+  family: "insight",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Insights",
+  contentType: "Insight",
+  readerStage: "practitioner",
+  slug: "marketplace-policies-ai-product-images",
+  h1: "What Amazon and Google Shopping allow for AI-generated product images",
+  query: "AI generated product images Amazon policy",
+  secondary: [
+    "Amazon AI generated images policy",
+    "Google Merchant Center AI generated images",
+    "contains-synthetic-performer Amazon",
+    "IPTC trainedAlgorithmicMedia Google Shopping",
+    "can I use AI images on Amazon",
+  ],
+  verdict:
+    "Amazon seller-service blogs and trade news rank on Amazon's synthetic-performer disclosure; Google's metadata rule is covered separately by feed specialists; nobody puts both in one table with what each asks of the file, plus the misrepresentation rules that apply whether or not AI was used.",
+  words: 2300,
+  angle:
+    "Both marketplaces allow AI images, both punish misrepresentation, and each asks something different of the file. Amazon wants a synthetic-performer keyword when a photorealistic AI person appears; Google wants the AI metadata kept. The practical result is one file workflow that writes one tag and keeps another. Primary pages only.",
+  mustInclude: [
+    "A side-by-side table: what each marketplace allows, requires in the file, forbids, and the page that says so",
+    "Amazon: the synthetic-performer disclosure, its exact keyword and metadata field, its scope and exclusions, the date it began, from Seller Central help; the main-image rules that still apply",
+    "The New York synthetic performer law behind it (General Business Law section 396-b), from the statute, with its effective date",
+    "Google: keep the IPTC DigitalSourceType metadata that marks an AI image, from Merchant Center Help; the misrepresentation policy",
+    "What both forbid regardless of AI: an image that shows a different product, features it lacks or accessories not included",
+    "File handling: keep the engine-written metadata; in hubStudio, download the original for a marketplace file, never the clean copy or the Image anonymizer output (both remove AI-generation markers); History keeps the prompt and engine of every render as a record",
+    "A line stating the piece describes production practice, not legal advice",
+  ],
+  doNot: [
+    "Cite a seller-service blog or trade news as the source of a rule",
+    "Name an Amazon consultancy, feed tool or vendor",
+    "Advise stripping metadata from a marketplace file",
+    "Claim hubStudio writes IPTC keywords, or connects to Seller Central or Merchant Center",
+    "Use an em dash",
+  ],
+  stats: [
+    "Amazon synthetic-performer requirement (keyword, field, scope, start date): sellercentral.amazon.com help, read on both check dates",
+    "New York GBL section 396-b text and effective date: the New York State Senate's statute page",
+    "Google's rule and the DigitalSourceType value names: Merchant Center Help and the IPTC vocabulary",
+    "No enforcement count unless the marketplace itself publishes one",
+  ],
+  assets: [
+    "Side-by-side policy table",
+    "File checklist: the tag to add, the tag to keep, what never to do",
+    "A dated box per rule",
+  ],
+  links: [
+    ["Amazon product image requirements", "/resources/insights/amazon-product-image-requirements"],
+    ["Google Merchant Center image requirements", "/resources/insights/google-merchant-center-image-requirements"],
+    ["content credentials in production", "/resources/insights/content-credentials-c2pa-in-production"],
+    ["disclosure audit trail per asset", "/resources/insights/disclosure-audit-trail-per-asset"],
+    ["Amazon platform page", "/solutions/platforms/amazon"],
+    ["US AI disclosure rules", "/resources/insights/us-ai-disclosure-rules-brands"],
+  ],
+  seoTitle: "AI Product Images: Amazon and Google Shopping Rules",
+  seoDesc:
+    "Amazon and Google Shopping both allow AI product images. What each asks of the file: the synthetic-performer tag, the metadata to keep, what is banned.",
+  faqs: [
+    "Can I use AI-generated images on Amazon?",
+    "Does Amazon require disclosure of AI-generated models?",
+    "Does Google Shopping allow AI-generated product images?",
+    "What is contains-synthetic-performer on Amazon?",
+    "Will Amazon remove my listing for AI images?",
+    "Should I remove AI metadata from product images?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "The marketplaces' own policy pages only. Watch row three months out (2027-02-09): both policies are new and likely to move.",
+};

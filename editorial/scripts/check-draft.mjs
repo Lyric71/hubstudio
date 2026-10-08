@@ -52,10 +52,10 @@ const soft = (ok, label, detail) => results.push({ ok, label, detail, hard: fals
 
 // ---- banned characters
 // U+2014 is matched by codepoint so this file stays clean of the character.
-const emdash = (body.match(/—/g) || []).length;
+const emdash = (body.match(/\u2014/g) || []).length;
 hard(emdash === 0, 'No em dash (U+2014)', `${emdash} found`);
 
-const emdashAnywhere = (raw.match(/—/g) || []).length;
+const emdashAnywhere = (raw.match(/\u2014/g) || []).length;
 hard(emdashAnywhere === 0, 'No em dash in the whole file, comments included', `${emdashAnywhere} found`);
 
 // No Han characters at all in a published English article, glosses included.
@@ -133,11 +133,13 @@ hard(/<!--\s*SCHEMA/.test(joined), 'Schema block present');
 hard(/<!--\s*ASSET BRIEF/.test(joined), 'Asset brief block present');
 hard(/RESEARCH FILE:/.test(joined), 'Asset brief names the research file');
 
-// Image path must follow this repo's convention, not the spec's.
-const imgPath = joined.match(/public\/Images\/insight-[a-z0-9-]+\.webp/);
-hard(!!imgPath, 'Hero image path follows public/Images/insight-<slug>.webp', imgPath ? imgPath[0] : 'missing or wrong');
+// Image path must follow this repo's convention, not the spec's: how-to and
+// engine guides (template howto) use howto-<slug>, everything else insight-<slug>.
+const heroPrefix = field('template') === 'howto' ? 'howto' : 'insight';
+const imgPath = joined.match(new RegExp(`public/Images/${heroPrefix}-[a-z0-9-]+\\.webp`));
+hard(!!imgPath, `Hero image path follows public/Images/${heroPrefix}-<slug>.webp`, imgPath ? imgPath[0] : 'missing or wrong');
 if (imgPath && field('slug')) {
-  hard(imgPath[0] === `public/Images/insight-${field('slug')}.webp`, 'Hero image path matches the slug', imgPath[0]);
+  hard(imgPath[0] === `public/Images/${heroPrefix}-${field('slug')}.webp`, 'Hero image path matches the slug', imgPath[0]);
 }
 
 // ---- links

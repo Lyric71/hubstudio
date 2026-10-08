@@ -1,0 +1,72 @@
+// editorial/scripts/wave2/91-ai-content-jewelry-watches.mjs
+export default {
+  id: "91",
+  date: "2026-11-06",
+  family: "industry",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Industries",
+  contentType: "Industry page",
+  readerStage: "budget-holder",
+  slug: "ai-content-jewelry-watches",
+  h1: "AI content for jewelry and watch brands",
+  query: "AI jewelry product photography",
+  secondary: [
+    "AI jewelry photography",
+    "AI generated jewelry images",
+    "AI watch product photography",
+    "jewelry product video AI",
+  ],
+  verdict:
+    "Single-purpose product-photo apps and freelancer listings rank; one designer guide names the real failures (reflections in polished metal, chain links, prongs that move), but none covers watches, the rules on describing metals and stones, or when a piece has to be shot.",
+  words: 1800,
+  angle:
+    "In jewelry and watches the piece is the product and the buyer zooms in. Generate the world around the piece, never the piece: the setting, the light, the season, the model. Keep stones, settings, metal, dial and hands from a real capture. A macro fidelity checklist, and the rules on how metals and stones may be described.",
+  mustInclude: [
+    "What fails in generated jewelry and watches: reflections in polished metal, prong counts, chain links, stone cut and color, dial text, hands at an impossible time, crown and bracelet geometry",
+    "A decision table: asset, shot, generated, mixed",
+    "The FTC Guides for the Jewelry, Precious Metals, and Pewter Industries (16 CFR Part 23) on describing lab-grown stones and metals, from the eCFR and FTC pages",
+    "The Elizabeth Gage case study, only as written: a heritage London jeweller; product imagery, video and social at scale; detail that survives the macro crop; years of digital catch-up compressed into months",
+    "Luxury context, pointing to the luxury AI content piece",
+    "The three ways to work: a heritage house usually picks Studio + app or Studio only, approving in Validation",
+    "Disclosure when a synthetic model wears the piece, pointing to the US disclosure piece",
+    "A line stating the piece describes production practice, not legal advice",
+  ],
+  doNot: [
+    "Present a generated stone, setting or dial as an accurate depiction of a real piece",
+    "Name a jewelry or watch brand other than the case-study client, or any tool or agency",
+    "Add anything to the case study beyond src/data/case-studies.ts",
+    "Print an amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "FTC Jewelry Guides text and the date of the last revision: eCFR 16 CFR Part 23 and the FTC's own announcement",
+    "Any market or return-rate figure only with a stated method; otherwise cut",
+  ],
+  assets: [
+    "Fidelity checklist table: element, what goes wrong, the check",
+    "Decision table: asset, shot, generated, mixed",
+    "Case-study pull from the Elizabeth Gage page",
+  ],
+  links: [
+    ["Elizabeth Gage case study", "/work/elizabeth-gage"],
+    ["luxury AI content systems", "/resources/insights/luxury-ai-content-systems"],
+    ["retouching at volume", "/resources/insights/retouch-at-volume-qa-pipeline"],
+    ["eCommerce design service", "/services/design/ecommerce"],
+    ["US AI disclosure rules", "/resources/insights/us-ai-disclosure-rules-brands"],
+  ],
+  seoTitle: "AI Content for Jewelry and Watch Brands",
+  seoDesc:
+    "Where AI works for jewelry and watches: generate the world, keep the piece real. A macro fidelity checklist, the FTC rules on stones and metals, a case.",
+  faqs: [
+    "Can AI generate realistic jewelry product photos?",
+    "Why do AI jewelry images look wrong?",
+    "Is it legal to use AI images for jewelry listings?",
+    "Can AI put my jewelry on a model?",
+    "How do I photograph jewelry for AI editing?",
+    "Can AI make watch product videos?",
+  ],
+  cta: "Send a brief",
+  notes: "Category Production. Case study: elizabeth-gage in src/data/case-studies.ts, as written.",
+};

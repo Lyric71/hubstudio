@@ -1,0 +1,277 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "Can AI make a video ad from one product photo?",
+    "a": "Yes, if the engine takes a start frame. In hubStudio, Veo 3.1 Fast, the Seedance engines, MiniMax H3, Wan 3.0 and Grok Imagine 1.5 open the clip on your picture, and most of them take a last frame too. The engine animates what the still shows, so start from a sharp photo with room around the product."
+  },
+  {
+    "q": "What length should a vertical video ad be?",
+    "a": "Nine to 15 seconds works on all four placements. TikTok recommends 9 to 15 for reservation in-feed ads, Shorts plays only the first 60 seconds in the feed, and Demand Gen needs at least 5. Keep each render at 15 seconds or under, because a longer clip can time out after the engine has billed it."
+  },
+  {
+    "q": "What is the safe zone for Reels, TikTok and Shorts ads?",
+    "a": "Meta suggests keeping 14 percent of the top, 35 percent of the bottom and 6 percent of each side clear on Reels. TikTok's standard template and Google's Shorts template draw their zones in pixels. On a 1080 by 1920 frame, words placed inside x 120 to 780 and y 288 to 1248 clear all three networks. A TikTok ad with an anchor link card needs the bottom edge at y 906."
+  },
+  {
+    "q": "Should the ad have sound?",
+    "a": "Yes. TikTok requires sound on reservation in-feed creatives and lists it among the basics for performance ads. Meta calls audio optional but strongly recommended on Reels ads. Generate sound in the video studio composes the clip's own audio, and the Video editor can lay licensed music under it."
+  },
+  {
+    "q": "Will the label on my product stay readable?",
+    "a": "Not always. Engines can redraw small type as the product moves. Keep the label large in the still, ask for one slow move, say the label must stay as in the first frame, and compare the last frame with the first before you send the clip for approval. Brand words go in the editor, never in the render."
+  },
+  {
+    "q": "What does a clip cost in hubStudio?",
+    "a": "Video runs are priced per second, and the total shows next to the button before you render. You pay from a prepaid balance, and a failed render isn't charged. The exception is a clip over 15 seconds, which can time out after the engine has billed it. The Video editor is free; its fast captions are billed, price shown first."
+  },
+  {
+    "q": "Can hubStudio run the ad for me?",
+    "a": "No. The app makes the file, edits it and gets it approved; the ad goes up in each network's own ads manager. If you would rather have the studio build the whole set, the ad creative service takes a brief, and the AI video production page shows how the studio works on video."
+  }
+];
+---
+
+<HowtoLayout slug="vertical-video-ad-from-product-image" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">An AI video ad from a product image takes a few minutes to render. The upload is where it breaks: a headline under the like button, a length the placement won't take, silence where TikTok wants sound, or a render past 15 seconds that timed out after it was billed. So start from the placement and work back.</p>
+
+  <h2>Can AI make a video ad from one product image?</h2>
+
+  <p>Yes. In hubStudio's video studio, attach the still as the start frame (or add a last frame too), set the shape to 9:16, describe the camera move, switch on generated sound and keep the clip to 15 seconds or less. Then add words and an end card in the Video editor, inside every placement's safe zone.</p>
+
+  <h2>What does each placement take?</h2>
+
+  <p>These are the four vertical placements this guide builds for. Every figure comes from the network's own ads help page or its own downloadable file; <a href="/solutions/platforms/tiktok">the TikTok platform page</a> and <a href="/solutions/platforms/meta">the Meta platform page</a> cover the rest of each network. Specs reviewed October 8, 2026.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Placement</th>
+          <th scope="col">Frame</th>
+          <th scope="col">Length</th>
+          <th scope="col">Keep clear (on the network's own frame)</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Instagram Reels ads</th>
+          <td>9:16, 1440 x 2560</td>
+          <td>0 seconds to 15 minutes</td>
+          <td>14% top, 35% bottom, 6% each side</td>
+          <td>Meta Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Facebook Reels ads</th>
+          <td>9:16, 1440 x 2560</td>
+          <td>No maximum</td>
+          <td>14% top, 35% bottom, 6% each side</td>
+          <td>Meta Ads Guide</td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok in-feed ads</th>
+          <td>9:16 recommended, 540 x 960 or more</td>
+          <td>Up to 10 minutes at auction; 5 to 60 seconds on reservation, 9 to 15 recommended</td>
+          <td>160 px top, 440 bottom, 80 each side, a 120 px right rail over the lower 720 (720 x 1280 template); more at the bottom with an anchor</td>
+          <td>TikTok ads help center</td>
+        </tr>
+        <tr>
+          <th scope="row">YouTube Shorts ads</th>
+          <td>9:16, 1080 x 1920 recommended</td>
+          <td>Up to 3 minutes; the feed plays the first 60 seconds; 5 seconds minimum on Demand Gen</td>
+          <td>288 px top, 672 bottom, 48 left, 192 right</td>
+          <td>Google Ads Help</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Instagram Reels video ads take 9:16 at 1440 by 2560 and run from 0 seconds to 15 minutes. Meta suggests leaving at least 14 percent of the top, 35 percent of the bottom and 6 percent of each side free of text, logos and key elements, and its Facebook Reels page gives the same zone with no maximum length.</blockquote>
+  <p class="source">Source: Meta Ads Guide, Instagram Reels and Facebook Reels video ad specs, Awareness objective, read October 2026. https://www.facebook.com/business/ads-guide/update/video/instagram-reels</p>
+
+  <blockquote class="evidence">TikTok prints no safe-zone number on its in-feed spec page. It says the zone depends on the shape, the caption length and any add-ons, and it links template files instead. The standard in-feed file, drawn on a 720 by 1280 frame, keeps 160 pixels at the top, 440 at the bottom and 80 on each side clear, plus a 120-pixel rail on the right over the lower 720 pixels.</blockquote>
+  <p class="source">Source: TikTok ads help center, auction in-feed ad specifications (updated June 2026), standard safe-zone file dated April 2025, downloaded and measured October 2026. https://ads.tiktok.com/help/article/tiktok-auction-in-feed-ads</p>
+
+  <blockquote class="evidence">Shorts ads can run up to 3 minutes, but only the first 60 seconds play in the Shorts feed, and Google recommends staying under 60. Demand Gen video needs at least 5 seconds. Google's vertical template on a 1080 by 1920 frame leaves 288 pixels at the top, 672 at the bottom, 48 on the left and 192 on the right.</blockquote>
+  <p class="source">Source: Google Ads Help, YouTube Shorts ads asset specs, Demand Gen asset specs and About video ad specs, read October 2026. https://support.google.com/google-ads/answer/16041697</p>
+
+  <p>Lay the three zones over one 1080 by 1920 frame and a single box clears them all.</p>
+
+  <blockquote class="evidence">Keep words and the logo inside x 120 to 780 and y 288 to 1248 on a 1080 by 1920 frame, a box 660 pixels wide and 960 tall, and they clear every zone above. Above y 840 the box can run right to x 888.</blockquote>
+  <p class="source">Source: derived October 2026 from Meta's percentages (about 269 pixels top, 672 bottom, 65 a side), TikTok's template scaled by 1.5 (240 top, 660 bottom, 120 a side, a 180-pixel rail from y 840) and Google's template, taking the largest inset on each side. Arithmetic, not a platform rule.</p>
+
+  <p>That box is built for standard in-feed placements. A TikTok ad that carries an anchor, the link card TikTok draws just above the username, needs more room at the bottom.</p>
+
+  <blockquote class="evidence">TikTok's anchor templates, on a 540 by 960 frame, give the bottom 406, 439, 473 or 507 pixels as the caption grows from one line to four: 812 to 1,014 pixels on a 1080 by 1920 frame. With an anchor, keep words and the logo inside x 120 to 780 and y 288 to 906, and drop the step to x 888.</blockquote>
+  <p class="source">Source: TikTok's In-Feed with Anchor LTR templates, linked from the auction in-feed spec page (updated June 2026), downloaded October 8, 2026; dimension labels printed in the files, scaled by 2 and laid over the box above. Arithmetic on TikTok's files, not a TikTok rule.</p>
+
+  <h2>Start frame, or start and last frame?</h2>
+
+  <p>A start frame is enough when the ad is one move: the camera pulls back, say, or the light slides across the bottle. The clip opens on your picture and the engine invents what follows.</p>
+
+  <p>Add a last frame when the ad has to land somewhere exact, like the end card's composition. With both pictures attached, the engine renders the movement between them, so you finish on a framing you chose, with room left for words.</p>
+
+  <p>Not every engine takes a picture. The help center lists these:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Engine</th>
+          <th scope="col">What it takes</th>
+          <th scope="col">Length</th>
+          <th scope="col">Generated sound</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Veo 3.1 Fast</th>
+          <td>Start and last frame</td>
+          <td>4, 6 or 8 seconds</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedance 2.0</th>
+          <td>Start and last frame</td>
+          <td>4 to 15 seconds</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedance 2.5</th>
+          <td>Start and last frame</td>
+          <td>4 to 30 seconds</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <th scope="row">MiniMax H3</th>
+          <td>Start and last frame</td>
+          <td>4 to 15 seconds</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <th scope="row">Wan 3.0</th>
+          <td>Start and last frame</td>
+          <td>2 to 30 seconds</td>
+          <td>No switch in the form</td>
+        </tr>
+        <tr>
+          <th scope="row">Grok Imagine 1.5</th>
+          <td>Start image</td>
+          <td>1 to 15 seconds</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedance 1.0 Pro Fast</th>
+          <td>Start image</td>
+          <td>2 to 12 seconds</td>
+          <td>No</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The Kling engines and Gemini Omni Flash take a prompt only, so they can't start from your still. More engines arrive as they ship.</p>
+
+  <p>Choose the still with the crop in mind. A 9:16 frame is tall and narrow. A packshot shot wide loses its sides, and a product that fills the frame has nowhere to go when the camera pulls back. Give it room above and below, keep the label large and square to the lens, and pick a photo lit from one direction, which the engine can carry through the move. (If the still needs reframing first, the <a href="/app/image-tools">Image editor</a>'s Crop panel has a 9:16 Story format.)</p>
+
+  <h2>How do you make the clip, step by step?</h2>
+
+  <p>The video studio, covered on <a href="/app/create">the create page of the app</a>, handles everything up to the render.</p>
+
+  <ul>
+    <li><strong>Add the skills.</strong> In Skills, open the Catalog and add Video camera movement vocabulary, Animating a still (image to video) and Short vertical video ad to My skills. Improve with AI follows every skill you switch on.</li>
+    <li><strong>Pick the engine.</strong> Open Video and choose one from the table above.</li>
+    <li><strong>Attach the still.</strong> Under What the render is fed, pick Start image or Start and last frame, then Choose from the library, Upload a picture or Paste a link.</li>
+    <li><strong>Write the scene.</strong> In Describe your video, write a shot rather than a subject: what moves, where the light comes from, how the camera behaves. The box takes 2,500 characters. Improve with AI then rewrites it for that engine, that length and that sound choice.</li>
+    <li><strong>Set the options.</strong> Vertical (9:16) under Shape where the engine offers it, the Duration, the resolution, Generate sound, and Made for when the clip is for a client.</li>
+    <li><strong>Read the price, then render.</strong> The total beside Generate video is your setup's price per second times the length. A render that fails costs nothing.</li>
+    <li><strong>Review and send it on.</strong> Open large plays the clip full screen; Send for validation puts it in front of a teammate or a client.</li>
+  </ul>
+
+  <h2>How should the motion prompt read?</h2>
+
+  <p>One continuous move, slow enough that the label survives it. Say what stays fixed as plainly as what moves. Engines can redraw small type on a moving product, so ask for less motion near the label, not more.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Vertical 9:16 product shot. A matte white serum bottle stands on a pale stone block, label facing the camera. The camera starts close on the cap and pulls back slowly and evenly to a medium shot, leaving clear space above the bottle. Late-afternoon window light from the left; the bottle's shadow lengthens a little across the stone. Fine dust drifts through the light. The bottle, its label and its color stay exactly as in the first frame. No new objects, no text on screen, no cuts. Soft room tone, then a single glass chime as the move ends.</p>
+  </div>
+
+  <p>That last line is for Generate sound, which composes the clip's own audio. Leave the headline out of the prompt. It goes in later, through the editor's Text panel.</p>
+
+  <h2>How long should the clip be?</h2>
+
+  <p>Nine to 15 seconds fits every placement in the table. It sits inside TikTok's recommended window for reservation in-feed and clears the 5-second floor of Google's Demand Gen campaigns, which serve Shorts. The Reels and Shorts ceilings are nowhere near.</p>
+
+  <blockquote class="evidence">TikTok's reservation in-feed ads run 5 to 60 seconds, with 9 to 15 seconds recommended, and every video creative must carry sound. Its creative guidance asks for the proposition in the first 3 seconds and the hook in the first 6.</blockquote>
+  <p class="source">Source: TikTok ads help center, reservation in-feed ad specifications (updated July 2025) and creative best practices (updated June 2025), read October 2026. https://ads.tiktok.com/help/article/tiktok-reservation-in-feed-ads-reach-frequency</p>
+
+  <p>Render at 15 seconds or less. The app gives a render about five minutes, and a clip over 15 seconds can run longer and fail after the engine has billed it. The form says so under Duration. Wan 3.0 and MiniMax H3 are among the slower engines: keep their clips short.</p>
+
+  <p>Want more than the 8 seconds Veo 3.1 Fast stops at? Render two clips from the same still, a wide pull-back and a close detail, and join them in the Video editor.</p>
+
+  <p>Video is priced per second, and the total shows before you click. On some engines, sound costs more per second. Closing a tab doesn't cancel a render, and Run again bills again. Budget for more than one run per keeper; <a href="/resources/insights/all-in-cost-of-ai-video">the all-in cost of AI video</a> explains why nobody publishes how many runs a usable shot takes.</p>
+
+  <h2>How do you add words, captions, an end card and sound?</h2>
+
+  <p>Open the clip from History with Edit, or from the Assets Library with Edit video. The Video editor, on <a href="/app/video-tools">the video tools page</a>, runs in your browser and costs nothing to use.</p>
+
+  <p>Start in Social. Pick Instagram, TikTok or Facebook and the Reel or Video placement (9:16, 1080 x 1920), leave Show what the network covers on, and click Apply the format. The red zones now sit over the preview. Shorts isn't in that panel, so for YouTube use Format, Vertical, and hold to the box above.</p>
+
+  <ul>
+    <li><strong>Words.</strong> In Text, click Add a text, set Appears at and Disappears at, and pick Box, Outlined or Plain. Put the claim in the first 3 seconds.</li>
+    <li><strong>Captions.</strong> These write spoken words on screen, word by word, either free in your browser or fast and billed, with the price shown first. A clip carrying only music and room tone needs Text, not Captions.</li>
+    <li><strong>End card.</strong> Hold the closing seconds on the product with the brand line and the offer in Text, inside the safe box. A clip rendered to a last frame already ends on that framing.</li>
+    <li><strong>Sound.</strong> Keep the generated audio and set Level of every clip, or add music under Sound. Use only music you hold rights to: TikTok and Instagram mute or block a video whose music they don't license.</li>
+  </ul>
+
+  <p>Last, pick the frame for Cover, then Save. The editor writes a 1080p MP4 and checks the fit for Instagram Reel, Instagram Story, Facebook and TikTok.</p>
+
+  <p>For the ad itself, hubStudio stops at the file. It goes up in each network's own ads manager, and for Shorts, Google wants the video on YouTube first, public or unlisted.</p>
+
+  <h2>What should you check before you upload?</h2>
+
+  <ul>
+    <li>9:16, and the 1080p MP4 the Video editor wrote.</li>
+    <li>Between 9 and 15 seconds, with no single render past 15.</li>
+    <li>Sound on. TikTok's reservation in-feed ads require it.</li>
+    <li>The claim inside the first 3 seconds.</li>
+    <li>Every word and the logo inside x 120 to 780, y 288 to 1248 (y 288 to 906 on a TikTok ad with an anchor).</li>
+    <li>The label reading the same in the last frame as in the first.</li>
+    <li>Licensed music, or none.</li>
+    <li>An end card that holds long enough to read.</li>
+    <li>Sign-off in Validation when a client or a teammate approves the work.</li>
+  </ul>
+
+  <h2>FAQ</h2>
+
+  <h3>Can AI make a video ad from one product photo?</h3>
+
+  <p>Yes, if the engine takes a start frame. In hubStudio, Veo 3.1 Fast, the Seedance engines, MiniMax H3, Wan 3.0 and Grok Imagine 1.5 open the clip on your picture, and most of them take a last frame too. The engine animates what the still shows, so start from a sharp photo with room around the product.</p>
+
+  <h3>What length should a vertical video ad be?</h3>
+
+  <p>Nine to 15 seconds works on all four placements. TikTok recommends 9 to 15 for reservation in-feed ads, Shorts plays only the first 60 seconds in the feed, and Demand Gen needs at least 5. Keep each render at 15 seconds or under, because a longer clip can time out after the engine has billed it.</p>
+
+  <h3>What is the safe zone for Reels, TikTok and Shorts ads?</h3>
+
+  <p>Meta suggests keeping 14 percent of the top, 35 percent of the bottom and 6 percent of each side clear on Reels. TikTok's standard template and Google's Shorts template draw their zones in pixels. On a 1080 by 1920 frame, words placed inside x 120 to 780 and y 288 to 1248 clear all three networks. A TikTok ad with an anchor link card needs the bottom edge at y 906.</p>
+
+  <h3>Should the ad have sound?</h3>
+
+  <p>Yes. TikTok requires sound on reservation in-feed creatives and lists it among the basics for performance ads. Meta calls audio optional but strongly recommended on Reels ads. Generate sound in the video studio composes the clip's own audio, and the Video editor can lay licensed music under it.</p>
+
+  <h3>Will the label on my product stay readable?</h3>
+
+  <p>Not always. Engines can redraw small type as the product moves. Keep the label large in the still, ask for one slow move, say the label must stay as in the first frame, and compare the last frame with the first before you send the clip for approval. Brand words go in the editor, never in the render.</p>
+
+  <h3>What does a clip cost in hubStudio?</h3>
+
+  <p>Video runs are priced per second, and the total shows next to the button before you render. You pay from a prepaid balance, and a failed render isn't charged. The exception is a clip over 15 seconds, which can time out after the engine has billed it. The Video editor is free; its fast captions are billed, price shown first.</p>
+
+  <h3>Can hubStudio run the ad for me?</h3>
+
+  <p>No. The app makes the file, edits it and gets it approved; the ad goes up in each network's own ads manager. If you would rather have the studio build the whole set, <a href="/services/design/ad-creative">the ad creative service</a> takes a brief, and <a href="/solutions/ai-production/video">the AI video production page</a> shows how the studio works on video.</p>
+</HowtoLayout>

@@ -57,7 +57,7 @@ published one, and a failure class documented in research where it did not.
 
 | Asset | Model | What the maker says it does well | Known limitation |
 |---|---|---|---|
-| Product still | GPT Image 2 | Generation and editing from text and image input, with inpainting | None stated in the maker's documentation; long text in the frame is a documented failure class |
+| Product still | GPT Image 2 | Generation and editing from text and image input, with inpainting | Maker's guide says GPT Image models can still struggle with precise text placement and clarity |
 | Product still from many references | Nano Banana Pro | Blends up to 14 images, keeps up to five people consistent, outputs at 2K and 4K, edits angle, focus and color grade locally | Maker says small faces, accurate spelling and fine details; complex edits can produce artifacts |
 | Product consistency, open weights | FLUX.2 | Up to 10 reference images for character, product or style consistency; editing up to 4 megapixels; the [dev] version published as open weights | None stated; the [dev] license is non-commercial for the model itself, though outputs may be used commercially |
 | On-model and lifestyle | Nano Banana 2 | Resemblance of up to five characters and fidelity of up to 14 objects in one workflow; 512 pixels to 4K; translates text inside an image | None stated; hands are a documented failure class to check |
@@ -160,8 +160,9 @@ Text is the other test. Long copy inside an image is a documented failure.
 > Source: TextAtlas5M, arXiv 2502.07870, February 2025, revised November 2025; a
 > benchmark across three data domains, testing models of that generation.
 
-That benchmark tested an older generation. Three current makers still list text
-among their own limitations. Google names accurate spelling for Nano Banana Pro.
+That benchmark tested an older generation. Current makers still list text among
+their own limitations. OpenAI names text placement and clarity for its GPT Image
+models. Google names accurate spelling for Nano Banana Pro.
 ByteDance names finer-grained text rendering for Seedream 5.0 Pro, and text
 rendering accuracy for Seedance 2.0.
 

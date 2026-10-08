@@ -1,0 +1,141 @@
+URL: https://support.google.com/merchants/answer/9103186?hl=en
+Rendered: 2026-10-08T07:16:15.282Z
+
+Skip to main content
+Google Merchant Center Help
+Sign in
+Help Center
+Community
+Announcements
+Google Merchant Center
+Get to know Merchant CenterBusiness settingsUpload your productsProduct data specificationMarket your productsAdd-ons and additional featuresUnderstand your performanceTroubleshoot3rd party platform integrations
+Lifestyle image link [lifestyle_image_link]
+
+Use the lifestyle image link [lifestyle_image_link] attribute to include the URL for a lifestyle image for your product. Lifestyle images for your products can be shown to potential customers in free listings for your product, and are commonly used to build awareness or showcase products in a natural and authentic setting.
+
+On this page
+
+When to use
+Format
+URL guidelines
+Image guidelines
+Best practices
+When to use
+
+ Optional for each product
+
+Lifestyle images submitted with the lifestyle image link [lifestyle_image_link] attribute are used to showcase your product in a real world context, for example, clothing worn by a model, furniture staged within a room, multiple products displayed as a complete set, or products shown with vivid background colors or presented in playful situations.
+
+Format
+
+Follow these formatting guidelines to make sure Google understands the data you're submitting. Learn when and how to submit your product data.
+
+Formatting specifications
+Technical name	lifestyle_image_link
+Type	URL (including http or https), ASCII characters only, and RFC 3986 compliant
+Limits	1–2,000 characters
+Supported file formats	
+
+JPEG (.jpg/.jpeg), WebP (.webp), PNG (.png), GIF (.gif), BMP (.bmp), and TIFF (.tif/.tiff)
+
+The file extensions for these images should correspond to their format.
+
+
+Repeated field (What's this?)	Include up to 5 lifestyle images
+Schema.org property (What’s this?)	No
+File format examples
+
+To ensure your attribute is recognized correctly, use the formatting specific to your data source type.
+
+Data source format	Examples
+Text data sources	
+
+To submit one image, submit the (encoded) URL:
+
+https://www.example.com/image2.jpg
+
+To submit more than one image (up to 5), separate each URL with a comma ( , ):
+
+https://www.example.com/image2.jpg,https://www.example.com/image3.jpg
+
+Make sure to encode any commas (as %2C) within the URL, but don’t encode the comma that you use to separate each image URL:
+
+https://www.example.com/image2%2C3.jpg,https://www.example.com/image2%2C4.jpg
+
+Alternatively, you can enclose each individual URL with quotation marks (“”), and separate the URLs with commas, for example:
+
+“https://www.example.com/image2,3.jpg","https://www.example.com/image2,4.jpg”
+
+Note that content in the quoted values is treated as a single value. Learn more about Quoted attributes.
+
+
+XML data sources	<g:lifestyle_image_link>https://www.example.com/image2.jpg </g:lifestyle_image_link> <g:lifestyle_image_link>https://www.example.com/image3.jpg </g:lifestyle_image_link>
+Merchant API	To format your data, check the Merchant API resource.
+ 
+URL Guidelines
+
+Follow these guidelines to make sure your image URL is formatted so we can understand it.
+
+Minimum requirements
+
+These are the requirements you'll need to meet to allow Google to show the image to potential shoppers. If you don't follow these requirements, we won’t be able to show your image and will let you know in your Merchant Center account.
+
+Use a URL that points to an image in a supported file format.
+Start with http or https and comply with RFC 3986. For example: http://www.example.com/image1.jpg.
+Replace any symbols or spaces with URL encoded entities. For example, if your URL contains an ampersand ( & ), then replace it with %26. If your URL contains a comma ( , ), then replace it with %2C.
+Make sure Google can crawl your URL. For example, ensure your robots.txt file is configured correctly. Learn more about robots.txt files.
+Best practices
+
+These best practices can help you go beyond the basic requirements to optimize your product data for performance.
+
+Use a stable URL. The URL you include shouldn’t change unless your image moves or is replaced. For example, don’t use URLs with timestamps or parts that could change each time you submit your product data. Whenever you change your URL, your image will need to be crawled and evaluated. This process could cause an unnecessary load on your servers.
+Let Google know when you've added or updated an image, so we can crawl the image and get it to show as soon as possible.
+Add an image for a new product. Before submitting new products, test some of your image links using the URL Inspection Tool, which is available through Google Search Console. If you’re submitting a lot of new products, using this tool on a few links can help you detect issues before submitting product data. After you submit your product data, the image will be crawled within 3 days. Learn more About Search Console.
+Change an image for an existing product. If you need to change an image of an existing product, submit a new URL for the new image. When you submit a new URL, the image will be crawled within 3 days. Keep in mind that if you change the image, but keep the same URL, it might take up to 6 weeks to detect and then crawl the new image.
+Image guidelines
+Follow these guidelines to make sure your lifestyle image meets our requirements and is optimized for best performance.
+Minimum requirements
+These are the requirements you'll need to meet to show lifestyle images for your products. If you don't follow these requirements, we won’t be able to show your image and will let you know in your Merchant Center account.
+	Use an image with a minimum resolution of 600 x 600 pixels and an aspect ratio between 2:0 and 2:3.
+	Don't use an image that contains promotional elements or other text. Examples of promotional elements include:
+calls to action, for example: buy
+service-related information such as extended warranty
+free shipping
+price information
+promotional adjectives, for example: best, cheap
+condition or compatibility, for example: new, 2-piece, adaptable
+any overlay, for example: watermarks, brand names, logos
+barcodes
+retailer name
+retailer logo
+
+	Don't use an image with a border or use padding to meet aspect ratio requirements. To ensure that your image works with a variety of design elements, don’t include borders or padding around your image.
+	
+
+All images created using generative AI must contain meta data indicating that the image was AI-generated (for example, the IPTC DigitalSourceTypeTrainedAlgorithmicMedia metadata tag). Don't remove embedded metadata tags such as the IPTC DigitalSourceType property from images created using generative AI tools, for example Product Studio. The following IPTC NewsCodes specify the type of digital source that was used to create the image, and should be preserved:
+
+TrainedAlgorithmicMedia: The image was created using a model derived from sampled content.
+CompositeSynthetic: The image is a composite that includes synthetic elements.
+AlgorithmicMedia: The image was created purely by an algorithm not based on any sampled training data (for example, an image created by software using a mathematical formula).
+Best practices
+These are best practices that can help you go beyond the basic requirements to optimize your product data for performance.
+	Use an image that focuses on one product or a set of products.
+
+You can show the product on its own or in use.
+
+
+	Choose an image that focuses on your product being used or showcased in a real world context. Don’t just show the product on a white background, instead think about how to grab a consumer’s attention with images that are distinctive, colorful, and beautiful and then showcase the product in use.
+	Ensure best performance by using the highest quality images. Submit the largest, highest resolution, full-size images you have for the product, up to 64 megapixels and 16MB file size.
+	Don't scale up an image or submit a thumbnail. Scaled-up images appear blurry and lower performance.
+Note: You can increase resolution, remove backgrounds, and generate a scene for your products using Product Studio which is available for Merchant Center users and within the Google & YouTube app in Shopify.
+Give feedback about this article
+Was this helpful?
+Need more help?
+Post to the help community
+Get answers from community members
+Contact us
+Tell us more and we’ll help you get there
+©2026 Google
+Privacy Policy
+Terms of Service
+English‎

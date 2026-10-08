@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/70-x-image-video-specs.mjs
+export default {
+  id: "70",
+  date: "2026-10-16",
+  family: "spec",
+  template: "spec",
+  brief: true,
+  status: "not_started",
+  cluster: "Platform specs",
+  contentType: "Spec page",
+  readerStage: "practitioner",
+  slug: "x-image-video-specs",
+  h1: "X image and video specs for 2026",
+  query: "X image size 2026",
+  secondary: [
+    "twitter image size 2026",
+    "x post image aspect ratio",
+    "x video length and size limit",
+    "x header photo size",
+    "x ads image specs",
+  ],
+  verdict:
+    "STALE AND UNCITED. Tool and marketing blogs recycle 1200 x 675 and 1500 x 500 from the Twitter years, mix ads specs with organic posts, and rarely link to X's own Help Center or Business specs; none explains how X crops several pictures in one post.",
+  words: 1500,
+  angle:
+    "X's own Help Center and Business specs, read and dated, organic and ads kept apart, plus the thing that actually ruins X images: how a post with two, three or four pictures is cropped in the timeline. Visible Reviewed date, quarterly recheck.",
+  mustInclude: [
+    "Spec table for post images: supported formats, file size limits, recommended ratios, from X Help Center",
+    "Multi-picture posts: up to four pictures, how the timeline crops two, three and four, and how to keep the subject inside the crop",
+    "Video: formats, length, size and ratio limits from X's own pages, organic and ads separately",
+    "Profile photo and header photo sizes from X Help Center",
+    "Ads specs from X Business, flagged as ads only",
+    "A visible Reviewed date and a dated changelog block at the foot",
+    "How hubStudio fits, from the help center only: the X module posts a single post or a thread with up to four pictures (JPG, PNG, WebP and GIF up to 5 MB each; an animated GIF up to 15 MB goes out alone); the Image editor's Social panel for X offers Post wide 1600 x 900 marked Best, square, portrait and One of two, and shows how X crops beside other pictures",
+    "Each post sent to X through hubStudio is charged, with the price shown before you send; posting by hand costs nothing",
+    "The X module publishes pictures, not video: say so plainly",
+  ],
+  doNot: [
+    "Take any value from a third-party blog",
+    "Claim hubStudio posts video to X",
+    "Print the price of an X post or any hubStudio amount",
+    "Name any competitor or design tool",
+    "Use an em dash",
+  ],
+  stats: [
+    "Image formats, file limits and video limits: X Help Center pages on posting photos, GIFs and videos, dated",
+    "Ads specs: X Business ad format specifications, dated",
+    "Profile and header sizes: X Help Center, dated",
+    "hubStudio limits: x.md and assets-library.md in the help center",
+  ],
+  assets: [
+    "Spec table: surface, ratio, recommended pixels, file limits, source page",
+    "Multi-picture crop table: number of pictures, how each is shown, where to keep the subject",
+    "Video table: organic versus ads, length, size, ratio",
+    "Changelog block, dated, updated in place",
+  ],
+  links: [
+    ["LinkedIn post specs", "/resources/insights/linkedin-post-specs"],
+    ["Instagram post sizes for 2026", "/resources/insights/instagram-post-sizes-2026"],
+    ["Publishing in the hubStudio app", "/app/publish"],
+    ["Social media design service", "/services/design/social-media"],
+    ["X help in hubStudio", "/help/x"],
+  ],
+  seoTitle: "X Image and Video Specs for 2026",
+  seoDesc:
+    "X post image sizes, multi-picture crops, video limits, profile and header photos for 2026, read from X's own Help Center and Business specs, dated.",
+  faqs: [
+    "What is the best image size for X in 2026?",
+    "How does X crop a post with several pictures?",
+    "How long can a video on X be?",
+    "What is the X header photo size?",
+    "What file types does X accept for images?",
+    "How many pictures can I add to one post on X?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Spec page: X Help Center and X Business only. Watch row due 2027-01-16. No platform-wide video claim that is not on X's own pages.",
+};

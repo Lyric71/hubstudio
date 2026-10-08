@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/84-ai-content-beauty-skincare.mjs
+export default {
+  id: "84",
+  date: "2026-10-30",
+  family: "industry",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Industries",
+  contentType: "Industry page",
+  readerStage: "budget-holder",
+  slug: "ai-content-beauty-skincare",
+  h1: "AI content for beauty and skincare brands",
+  query: "AI content for beauty brands",
+  secondary: [
+    "AI generated skincare product images",
+    "AI beauty product photography",
+    "AI models in beauty ads",
+    "cosmetics advertising claims rules AI images",
+  ],
+  verdict:
+    "Tool vendors, translation firms and market-data houses rank with adoption talk and volume promises; none says where generated imagery is risky in beauty (the on-skin result, the before and after, the retouched complexion) or how the US, the EU, the UK and China each treat it.",
+  words: 1800,
+  angle:
+    "In beauty the line is not generated against shot, it is atmosphere against efficacy. Texture, packaging, ingredient stories, settings and casting can be generated; anything that shows what the product does to skin is a claim, and a claim needs the proof the regulator asks for. Map which assets sit on which side, market by market, with China as one market among four.",
+  mustInclude: [
+    "A decision table: asset (packshot, texture swatch, ingredient visual, model campaign, on-skin result, before and after) against how to make it and the claim risk",
+    "US: the FDA line between a cosmetic claim and a drug claim, from FDA's own page; the FTC on substantiation",
+    "EU: Regulation (EC) No 1223/2009, Article 20, and the common criteria for cosmetic claims in Commission Regulation (EU) No 655/2013, from EUR-Lex",
+    "UK: the ASA ruling and guidance on beauty filters in ads, from asa.org.uk",
+    "China as one market: the efficacy claim evaluation rules under the Cosmetics Supervision and Administration Regulation, from NMPA (Chinese-language first), with the China beauty piece linked for depth",
+    "Synthetic people: Amazon's synthetic-performer disclosure and New York's synthetic performer law, each from its own page",
+    "Case studies, only as written in src/data/case-studies.ts: Noyz (a model trained on fluid physics for the mist-to-milk transformation, one master film cut for every feed), age20 (product photography into on-model campaigns across Asian markets in hours), Shiseido RQ PYOLOGY (campaign visuals and brand video holding clinical credibility and luxury appeal in China's medical aesthetics market)",
+    "The three ways to work, with Studio + app for a brand whose regulatory reviewer approves in Validation",
+    "A line stating the piece describes production practice, not legal advice",
+  ],
+  doNot: [
+    "Present a generated on-skin result or before and after as acceptable proof of efficacy",
+    "Invent a client, a quote or a result beyond case-studies.ts",
+    "Name a beauty brand other than the case-study clients, or any tool vendor or agency",
+    "Print a hubStudio amount",
+    "Use an em dash or Han characters",
+  ],
+  stats: [
+    "FDA: the cosmetic and drug definitions (FD&C Act section 201), from the FDA page on whether a product is a cosmetic, a drug or both",
+    "EU 655/2013: the six common criteria (legal compliance, truthfulness, evidential support, honesty, fairness, informed decision-making), from EUR-Lex",
+    "ASA: the filters ruling and its date, from asa.org.uk",
+    "NMPA: the cosmetics efficacy claim evaluation standard and the date it took effect, from nmpa.gov.cn",
+    "Any adoption or market figure only from a source with a stated method; a vendor survey without one is cut",
+  ],
+  assets: [
+    "Decision table: asset, generated or shot or mixed, claim risk, who signs off",
+    "Market table: US, EU, UK, China, the rule, the regulator page, what it means for an image",
+    "Case-study strip with three links",
+  ],
+  links: [
+    ["beauty content production in China", "/resources/insights/beauty-content-production-china"],
+    ["Noyz case study", "/work/noyz-mylk-de-parfum"],
+    ["age20 case study", "/work/age20"],
+    ["EU AI Act labeling for brand content", "/resources/insights/eu-ai-act-labeling-brand-content"],
+    ["AI image production", "/solutions/ai-production/image"],
+    ["Studio + app", "/studio/with-the-app"],
+  ],
+  seoTitle: "AI Content for Beauty and Skincare Brands",
+  seoDesc:
+    "Where AI fits in beauty content: what to generate, what must be shot, and how claims rules in the US, EU, UK and China treat on-skin results.",
+  faqs: [
+    "Can beauty brands use AI-generated images in ads?",
+    "Can I show AI-generated before and after skincare results?",
+    "Do AI models in beauty ads need to be disclosed?",
+    "Is AI skin retouching allowed in cosmetics advertising?",
+    "What beauty content can AI make well?",
+    "How do cosmetics claims rules differ in the EU and the US?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "Category Production. Not legal advice: say so on the page. Regulators' own pages only for every rule; China is one market among four, not the frame.",
+};

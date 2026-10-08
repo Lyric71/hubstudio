@@ -1,0 +1,75 @@
+// editorial/scripts/wave2/71-cost-of-social-content-week.mjs
+export default {
+  id: "71",
+  date: "2026-10-19",
+  family: "insight",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Insights",
+  contentType: "Insight",
+  readerStage: "budget-holder",
+  slug: "cost-of-social-content-week",
+  h1: "What a week of social content really costs: in-house, freelance, agency or an app",
+  query: "cost of social media content creation",
+  secondary: [
+    "how much does social media content cost per month",
+    "social media manager salary vs agency cost",
+    "freelance social media content rates",
+    "in-house vs agency social media cost",
+  ],
+  verdict:
+    "VENDOR-PRICED. The ranking pages are scheduler and agency blogs quoting wide, unsourced ranges (hourly rates, monthly retainers) built to make their own plan look cheap; none uses official wage statistics, none counts the hidden costs (approval rounds, rework, tools), and none prices one defined week of output.",
+  words: 2300,
+  angle:
+    "Price one defined week (say, ten posts across four networks, with pictures, two short videos and client approval) under four ways of working, using official wage statistics for in-house, published rate surveys for freelance and category-level retainer ranges for agencies. Then show what an app-based week costs in structure (a prepaid balance charged per run, the price shown before each run, nothing for editing, approval or publishing to four networks) without printing a hubStudio figure.",
+  mustInclude: [
+    "The defined week as a spec at the top (posts, networks, visuals, videos, approval rounds), so every route is priced on the same output",
+    "Answer table: route (in-house, freelance, agency retainer, app run by your team, studio) against what you pay for, fixed or variable, hidden costs, who carries the risk of rework",
+    "In-house: loaded cost from official wage data (US Bureau of Labor Statistics occupational wages; Eurostat or national statistics office for Europe), with the employer-cost uplift method stated",
+    "Freelance and agency: published rate surveys and category-level retainer ranges, attributed to category and date, never to a named firm",
+    "Hidden costs every route carries: approval rounds, rework, tool seats, stock licenses, the hours of a manager reviewing",
+    "The app route in structure only: no subscription, no seat fees, a prepaid balance in real currency, the price shown before every run, a failed run never charged; the Image editor, Validation, Campaigns and publishing to LinkedIn, Instagram, Facebook and TikTok cost nothing; each post sent to X is charged, with the price shown before you send",
+    "When a studio makes more sense than any of the four, and the three ways to work (Use the app, Studio + app, Studio only)",
+  ],
+  doNot: [
+    "Print any hubStudio amount, per-image rate or studio rate, or call the money anything but a prepaid balance in real currency",
+    "Name any agency, freelance marketplace, scheduler or competitor, or quote a named firm's rate card",
+    "Use a vendor blog's range as evidence; label any vendor-published range a market claim",
+    "Mention the onboarding offer price",
+    "Use an em dash",
+  ],
+  stats: [
+    "US: BLS Occupational Employment and Wage Statistics, latest May release, median and percentile wages for the relevant occupations (marketing specialists, graphic designers, public relations specialists), with the BLS Employer Costs for Employee Compensation ratio for the loaded-cost uplift",
+    "Europe: Eurostat structure of earnings or national statistics office data (INSEE, Destatis) for a comparable occupation, dated",
+    "Freelance hourly rates: a published rate survey with sample size and method, attributed to category and date; cut if no method",
+    "Agency retainer ranges: category-level, collected from published price pages on a stated date, no vendor named",
+  ],
+  assets: [
+    "The defined week spec, as a short table",
+    "Answer table: route by cost structure, five columns maximum",
+    "Cost band table: route, low and high weekly band, source category and date, method in one line",
+    "Hidden-cost table: cost item, which routes carry it",
+  ],
+  links: [
+    ["The real cost of brand content in 2026", "/resources/insights/real-cost-of-brand-content-2026"],
+    ["In-house studio or outsourced production", "/resources/insights/in-house-studio-vs-outsourced-production"],
+    ["Subscription or managed production", "/resources/insights/subscription-or-managed-production"],
+    ["Pricing", "/pricing"],
+    ["Social media design service", "/services/design/social-media"],
+  ],
+  seoTitle: "What a Week of Social Content Really Costs",
+  seoDesc:
+    "One defined week of social posts priced four ways (in-house, freelance, agency, an app) from official wage data and dated rate surveys, hidden costs in.",
+  faqs: [
+    "How much does social media content creation cost?",
+    "Is it cheaper to hire a social media manager or an agency?",
+    "What do freelancers charge for social media content?",
+    "What are the hidden costs of social media content?",
+    "How does pay-as-you-go pricing work for AI content apps?",
+    "When should a brand use a studio instead of doing social content in-house?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "Budget-holder: lead with the answer table. Every $ hit is a market figure with category, date and method; zero hubStudio figures. Search the finished file for $ and check every hit.",
+};

@@ -1,0 +1,75 @@
+// editorial/scripts/wave2/67-carousel-post-guide.mjs
+export default {
+  id: "67",
+  date: "2026-10-14",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "carousel-post-guide",
+  h1: "How to make a carousel post people swipe through, on Instagram and LinkedIn",
+  query: "how to make a carousel post",
+  secondary: [
+    "instagram carousel size",
+    "linkedin carousel post how to",
+    "linkedin document post vs image carousel",
+    "how many slides in an instagram carousel",
+  ],
+  verdict:
+    "TOOL-LED. The top pages are carousel-maker vendors teaching their own editor, several dated 2021 to 2023; they treat a LinkedIn carousel as a PDF only and skip why people stop swiping (a first slide that does not promise the next, inconsistent crops between slides).",
+  words: 1700,
+  angle:
+    "Carousels fail on slide one and on the crop, not on the template. This guide starts with the swipe logic (a cover that promises, one idea per slide, a last slide that asks), then the two networks' own rules, and is honest about the LinkedIn split: a PDF document post and a multi-picture post are different formats, and the hubStudio app publishes the picture kind.",
+  mustInclude: [
+    "Swipe logic: cover slide, one idea per slide, consistent framing, a closing slide with one ask",
+    "Instagram's own carousel rules (number of items, ratios, mixed photo and video) from the Instagram Help Center",
+    "LinkedIn's document post (PDF) and multi-image post, from LinkedIn Help, with the difference stated plainly",
+    "In hubStudio: Instagram and LinkedIn carousels of 2 to 8 slides when rendered; or pick slides from the Assets Library or upload them; each slide keeps its own pencil into the Image editor",
+    "Image editor Social panel: Instagram Feed portrait 1080 x 1350 marked Best, the dashed Profile grid crop; LinkedIn Post, portrait 1080 x 1350; Apply the format, then Save and use it in the post",
+    "LinkedIn takes JPG, PNG and GIF pictures, not WebP, up to 10 MB each, through hubStudio; Instagram pictures are turned into JPEG on the way out",
+    "The LinkedIn module has no document format: a PDF carousel is posted on LinkedIn directly",
+    "Picture versions: each render, edit or upload is kept as a version; Use this version brings a set back",
+  ],
+  doNot: [
+    "Name any carousel maker, design tool or competitor",
+    "Claim hubStudio publishes LinkedIn document (PDF) posts",
+    "Print engagement statistics for carousels unless the network's own page publishes them with a date",
+    "Print a hubStudio amount",
+    "Number the slides advice as cards",
+    "Use an em dash",
+  ],
+  stats: [
+    "Instagram carousel item count, ratios and video length: Instagram Help Center, dated",
+    "LinkedIn document post file types, page and size limits, and multi-image post limits: LinkedIn Help, dated",
+    "hubStudio facts: instagram.md, linkedin.md, assets-library.md in the help center",
+  ],
+  assets: [
+    "Table: network, carousel kind, slides, ratio, file rules, how it is published (hubStudio or by hand)",
+    "Slide plan table: slide role, what it says, what it shows",
+    "Existing help captures: instagram-picture, instagram-picture-edit, image-editor-social",
+  ],
+  links: [
+    ["Instagram post sizes for 2026", "/resources/insights/instagram-post-sizes-2026"],
+    ["LinkedIn post specs", "/resources/insights/linkedin-post-specs"],
+    ["LinkedIn platform page", "/solutions/platforms/linkedin"],
+    ["Publishing in the hubStudio app", "/app/publish"],
+    ["Social media design service", "/services/design/social-media"],
+  ],
+  seoTitle: "How to Make a Carousel Post People Swipe Through",
+  seoDesc:
+    "Build Instagram and LinkedIn carousels that hold the swipe: a cover that promises, one idea per slide, the right ratio, and the PDF or picture split.",
+  faqs: [
+    "How do I make a carousel post on Instagram?",
+    "How do I post a carousel on LinkedIn?",
+    "What size should carousel slides be?",
+    "How many slides can a carousel have?",
+    "Should a LinkedIn carousel be a PDF or images?",
+    "Can I mix photos and videos in one carousel?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Help sources: instagram.md, linkedin.md, facebook.md (carousel of 2 to 8 when rendered, up to 10 pictures per post), assets-library.md.",
+};

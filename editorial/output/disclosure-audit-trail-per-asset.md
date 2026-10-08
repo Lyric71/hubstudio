@@ -144,9 +144,11 @@ The European position is narrower than most summaries suggest.
 > retrieved 9 September 2026.
 
 Note who that binds. Article 50 splits the duty between the provider of the
-system, which marks, and the deployer, which discloses. A production studio is
-usually neither. What a studio holds is evidence, not a statutory file, and any
-page telling you otherwise has skipped a step.
+system, which marks, and the deployer, which discloses. A studio that decides how
+AI is used on the work is usually the deployer, and a brand that only commissions
+it is not; neither duty is a duty to keep a file. What a studio holds is
+evidence, not a statutory file, and any page telling you otherwise has skipped a
+step.
 
 > Article 50 of the EU AI Act sets no record-keeping duty and no retention
 > period. Neither the article nor the European Commission's own FAQ on it names

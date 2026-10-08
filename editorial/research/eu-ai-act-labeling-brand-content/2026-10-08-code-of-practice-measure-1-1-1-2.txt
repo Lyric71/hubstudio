@@ -1,0 +1,168 @@
+Measure 1.1: Machine-readable marking techniques
+
+Signatories will implement a marking solution that consists of at least one machine-readable
+marking technique, as detailed below, which, in conjunction with their respective detection
+mechanism, meets the level of effectiveness, reliability, robustness, and interoperability
+required by Article 50(2) AI Act and Commitment 3 of the Code.
+
+So long as no single marking technique can, under the state of the art, ensure by itself
+compliance with the four requirements in Article 50(2) AI Act of effectiveness, interoperability,
+robustness, and reliability for audio, images, video, and containerised text, in particular for
+content that can be disseminated online, Signatories will implement a multi-layered marking
+approach to ensure that the outputs of their generative AI systems are marked with at least two
+layers of machine-readable marking, as specified in Sub-measures 1.1.1 and 1.1.2 below.
+
+To enable a proportionate implementation of the above requirements, a single layer of marking
+will be considered sufficient in specific cases where a generative AI system is embedded in
+physical products capable of generating synthetic outputs in a technically controlled and closed
+environment mainly instructive in nature. This applies to the extent effective technical measures
+are embedded in the product to prevent the output from leaving the environment of the
+product, for example by being captured or exported and disseminated externally. Moreover,
+given that free-form text cannot transport metadata, a single-layer of marking as described in
+Sub-measure 1.1.2 is considered sufficient to comply with the requirements of Article 50(2) AI
+Act for this specific type of content.
+
+In the future, Signatories will also be able to demonstrate compliance with Article 50(2) AI Act
+through the use of alternative marking technique(s) (possibly a single marking technique),
+provided that they can prove to the competent market surveillance authorities, based on
+recognised performance evaluation methods and benchmarks, that their technique(s) achieve
+at least the same, if not superior, level of robustness, reliability, effectiveness, and
+interoperability, as required by Article 50(2) AI Act and Commitment 3 of the Code. Pending the
+emergence of recognised performance evaluation methods and benchmarks, and as specified
+in Measure 4.2, Signatories may demonstrate compliance through documented internal testing
+against the requirements in Commitment 3, subject to review by the competent market
+surveillance authorities.
+
+                                                            8
+The marking techniques may be implemented at different stages of the value chain (e.g., by the
+provider of the AI system itself or by an upstream model provider) and may also be provided by
+third parties (in particular, technology providers specialised in marking techniques and detection
+mechanisms for AI transparency). Signatories may rely on those third-party technical solutions
+without prejudice to the Signatories' own responsibility under the AI Act and the Code to ensure
+that the outputs of their AI systems are suitably and compliantly marked.
+
+Sub-measure 1.1.1: Digitally signed metadata
+If content is generated, manipulated or exported in a data format that supports attaching
+metadata (e.g., an audio, image, video, or containerised text), Signatories will record information
+in the metadata on whether the content is AI-generated or manipulated.
+
+All recorded information will be digitally signed and time-stamped (on systems where time
+information is available) in a secure and tamper-evident manner. Signatories will adopt means
+for ensuring the secure usage of the signing certificates and the confidentiality of the associated
+private keys, except in circumstances where the deployment context does not permit the secure
+handling or provisioning of the key, for example in a local deployment scenario.
+
+Signatories are encouraged to implement richer metadata in accordance with Measure 1.3., ,
+without including privacy-sensitive or business-sensitive information. In cases where such
+information is strictly necessary or inserted upon request of an end-user, it will be compliant
+with applicable EU data protection law and is encouraged to be placed in a metadata
+placeholder separate from the AI transparency metadata.
+
+Sub-measure 1.1.2: Imperceptible watermarking
+Signatories will ensure that AI-generated or manipulated content is marked with an
+imperceptible watermark, with the exception of very short text. For free-form text longer than
+200 tokens, watermarking still needs to be applied, even though it may have lower reliability
+compared to that of watermarking very long text. To compensate for the potential lower
+reliability of watermarking for free-form text, access to the corresponding detection solution
+may be restricted to verified expert users as detailed in Sub-measure 2.1.2.
+
+The imperceptible watermark will be embedded within the content in a manner that is difficult
+for it to be separated from the content. The watermark is intended to serve as a robust
+mechanism to complement the digitally signed metadata under Sub-measure 1.1.1.
+
+The state of the art provides several strategies to embed watermarks in AI-generated or
+manipulated content, for instance, applying the watermarking technique once the content has
+been generated or manipulated (i.e. `post-hoc watermarking') or having the watermark
+introduced during the inference operation of the generative AI system (i.e. `model
+watermarking'). Signatories who provide generative AI models are encouraged to implement
+watermarking at the model level and to enable the smooth integration of the watermarking at
+the AI system's inference process, to facilitate compliance of downstream providers of
+generative AI systems built on those models, in particular in a manner that helps these
+downstream providers meet the quality requirements specified in Article 50(2) AI Act and in
+Commitment 3 and that enables them to demonstrate compliance in line with Commitment 4.
+
+Sub-measure 1.1.3: Fingerprinting or logging (optional)
+Where appropriate and taking into account potential trade-offs related to privacy and security,
+as well as scalability challenges and costs, Signatories may implement as an optional
+supplementary measure fingerprinting or logging solutions for AI-generated or manipulated
+
+                                                            9
+content which allow for checking whether content has been generated or manipulated by their
+AI system. For example, direct logging may be appropriate for text content, whereas
+fingerprinting approaches may be preferable for audio and visual content.
+
+The use of such techniques may be a supplementary solution to meet the quality requirements
+specified in Article 50(2) AI Act and in Commitment 3 or to help reduce the cost of the detection
+mechanism outlined in Commitment 2. However, relying on fingerprinting or logging alone is
+not considered sufficient to meet the quality requirements specified in Article 50(2) AI Act and
+in Commitment 3.
+
+Where Signatories implement fingerprinting or logging, they will ensure that it is limited to the
+output data and that it is implemented in a secure and privacy-preserving manner, in compliance
+with EU data protection law and respect for media freedom, editorial independence and
+journalistic source protection obligations. Deployers and other users of the generative AI
+systems will be given access to the logging policies and granted control over what is logged and
+how data is stored, accessed and how long it is retained, with clear procedures for limited
+retention periods, access controls, security and other safeguards for data minimisation, as well
+as secure and immediate deletion of logs containing output data after its intended purpose has
+been fulfilled.
+
+This Sub-measure is confined to the Signatory's own design and implementation of the AI system
+and shall in no way be interpreted as creating a general commitment to log, monitor, or retain
+prompts for the AI-generated or manipulated content or for user interactions.
+
+Measure 1.2: Non-removal of markings
+
+Without prejudice to the robustness requirement in Commitment 3, Signatories will make best
+efforts to preserve metadata markings on input data and content generated or manipulated by
+their AI system by applying the following cumulative measures:
+
+a) Signatories will, to the extent technically feasible and recognisable as per open standards,
+     retain, and abstain from intentionally altering or removing, existing metadata markings,
+     where such content is used as input and subsequently transformed by their AI system into
+     an output. This does not affect good faith, legitimate processing where the modification,
+     transformation or replacement of existing metadata is necessary to maintain accurate and
+     functional information following downstream processing or specific legitimate processing,
+     such as for security audits and research purposes.
+
+b) While Signatories recognise that downstream compliance and enforcement cannot be
+     guaranteed, they will nevertheless include in the acceptable use policy, terms and
+     conditions or the documentation accompanying their generative AI system a prohibition of
+     the intentional removal of or tampering with metadata markings by deployers or any other
+     third party. Exceptions to such a prohibition are the legitimate purposes referred to in point
+     a). For AI systems and models provided under free and open-source licenses, it is sufficient
+     for Signatories to alert users to this best practice in the documentation accompanying the
+     AI system or model, without prejudice to the free and open-source nature of the license.
+
+Measures specified in point a) above do not imply the responsibility of the Signatory for third-
+party metadata markings, nor for compliance of third parties with the conditions specified in
+point b).
+
+                                                           10
+Furthermore, Signatories will neither place or make available on the market, nor promote or
+advertise the use of tools whose purpose is to circumvent the machine-readable markings
+added to the AI-generated or manipulated content for transparency.
+
+Signatories who operate an online platform or search engine, or who otherwise disseminate
+content to the public, are encouraged to ensure that the online platform or the search engine
+preserves metadata markings for AI-generated or manipulated content.
+
+Measure 1.3: Transparency of the provenance information (optional)
+
+Signatories are encouraged to incorporate richer information in the metadata pursuant to
+Measure 1.1.1, to provide additional context and thereby contribute to increased integrity and
+trust in the information ecosystem. In particular, Signatories are encouraged to consider relevant
+standards to provide further information about the origin of AI-generated or manipulated
+content across workflows, where technically feasible.
+
+Signatories are encouraged to add or record relevant content provenance information within
+content generated or manipulated by their AI systems, in particular the name of the AI system,
+the company name of the AI provider, and a timestamp indicating when the content was
+generated or manipulated. Additionally, Signatories may also include the underlying AI model
+identifier and version number.
+
+For AI-manipulated content, Signatories are encouraged to record information about the type
+of operations performed by their AI system to modify the content (e.g., object removal).
+Multiple discrete operations carried out by the AI system are recommended to be encoded into
+a single metadata marker to limit complexity and reduce burden.
+

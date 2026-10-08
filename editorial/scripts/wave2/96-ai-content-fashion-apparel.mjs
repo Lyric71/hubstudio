@@ -1,0 +1,72 @@
+// editorial/scripts/wave2/96-ai-content-fashion-apparel.mjs
+export default {
+  id: "96",
+  date: "2026-11-13",
+  family: "industry",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Industries",
+  contentType: "Industry page",
+  readerStage: "budget-holder",
+  slug: "ai-content-fashion-apparel",
+  h1: "AI content for fashion and apparel brands",
+  query: "AI fashion product photography",
+  secondary: [
+    "AI model photography clothing",
+    "flat lay to on-model AI",
+    "AI generated fashion models ecommerce",
+    "AI apparel product images",
+  ],
+  verdict:
+    "Flat-lay-to-model apps rank with speed and diversity claims; none deals with fit fidelity (drape, length, size on the body), color accuracy against returns, the disclosure rules that now reach synthetic models, or France's retouched-photo label.",
+  words: 1800,
+  angle:
+    "Fashion buyers send back what does not match. So the test for AI apparel content is fidelity, not looks: color, print scale, drape, length and fit on a stated size. Generate the model, the setting and the season; keep the garment true. With the disclosure rules that now reach synthetic models.",
+  mustInclude: [
+    "Formats (on-model, flat lay, ghost mannequin, detail, video): which suit generation and which need a real capture",
+    "A fidelity checklist: color, print scale, drape, hem length, fit on a stated size, logo and care label",
+    "Disclosure: Amazon's synthetic-performer keyword, New York GBL section 396-b, and France's retouched-photo label (decree 2017-738 on Légifrance), stating from the text alone whether it reaches a generated model",
+    "Case studies, only as written in src/data/case-studies.ts: the global fashion brand (an in-house AI studio, a custom virtual model library, product shots into styled looks, a team trained to run it) and Camper (Mediterranean identity reworked for China's Gen Z, a full China-ready set of images and video)",
+    "Casting across sizes and ages as a production choice, without invented results",
+    "The three ways to work: the studio builds model libraries; the app serves teams producing their own variants (edit with up to four source pictures, the Consistent character across images skill)",
+  ],
+  doNot: [
+    "Invent a client, a result or a figure",
+    "Name a fashion brand outside the case studies, or any tool vendor or agency",
+    "Claim the app trains models or holds a model library: that is the studio",
+    "Cite an apparel return rate without a stated method",
+    "Use an em dash",
+  ],
+  stats: [
+    "Apparel return rates only from official statistics or a peer-reviewed study with method; otherwise cut",
+    "Decree 2017-738 text and date in force: legifrance.gouv.fr",
+    "Amazon synthetic-performer rule: Seller Central help; New York GBL 396-b: the statute",
+  ],
+  assets: [
+    "Format decision table",
+    "Fidelity checklist",
+    "Disclosure table by market",
+  ],
+  links: [
+    ["global fashion brand case study", "/work/global-fashion-brand"],
+    ["Camper case study", "/work/camper"],
+    ["consistent character guide", "/resources/how-to/consistent-character-ai-images-video"],
+    ["product photography cost per SKU", "/resources/insights/product-photography-cost-per-sku"],
+    ["eCommerce design service", "/services/design/ecommerce"],
+    ["marketplace policies on AI product images", "/resources/insights/marketplace-policies-ai-product-images"],
+  ],
+  seoTitle: "AI Content for Fashion and Apparel Brands",
+  seoDesc:
+    "AI fashion content judged on fidelity: color, drape and fit on a stated size. Which formats to generate, which to shoot, and the synthetic model rules.",
+  faqs: [
+    "Can AI put my clothes on a model?",
+    "Is AI fashion photography accurate enough for ecommerce?",
+    "Do I have to disclose AI models in fashion ads?",
+    "Can AI turn a flat lay into an on-model photo?",
+    "Will AI images increase returns?",
+    "Can AI show clothes on different body sizes?",
+  ],
+  cta: "Send a brief",
+  notes: "Category Production. No invented client: only global-fashion-brand and camper, as written.",
+};

@@ -1,0 +1,432 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is the YouTube thumbnail size in 2026?",
+    "a": "YouTube recommends 3840 by 2160 pixels in a 16:9 ratio, at least 640 pixels wide, saved as JPG or PNG. From a computer the file can reach 50MB; from a phone, 2MB. The older 1280 by 720 figure still matters in one place: below it, YouTube's A/B test drops every thumbnail in the test to 854 by 480."
+  },
+  {
+    "q": "Why can't I upload a custom thumbnail on YouTube?",
+    "a": "Check verification first. Custom thumbnails are an intermediate feature, and you get them by verifying a phone number in YouTube Studio under Settings, Channel, Feature eligibility. YouTube's pages name other causes: the daily custom thumbnail limit (try again in 24 hours), Community Guidelines strikes, which cut how many you can upload, and the 2MB cap on a phone."
+  },
+  {
+    "q": "What is the maximum thumbnail file size on YouTube?",
+    "a": "It depends on the device. YouTube allows 50MB for video, Shorts and podcast thumbnails uploaded from a computer. From a phone, the limit is 2MB for a video thumbnail and 10MB for a podcast. A full-size thumbnail over 2MB has to go up from a computer."
+  },
+  {
+    "q": "What resolution should I upload to YouTube?",
+    "a": "For the default 16:9 shape, YouTube lists eight sizes, from 426 by 240 up to 7680 by 4320, including 1920 by 1080 for 1080p and 3840 by 2160 for 4K. Other shapes are fine: don't add black bars to reach 16:9, because the player sizes itself to the video. New 4K uploads play in 4K only where VP9 is supported."
+  },
+  {
+    "q": "What are YouTube's recommended upload settings?",
+    "a": "MP4 with the moov atom at the front, H.264 High Profile, progressive scan, closed GOP of half the frame rate, variable bitrate, 4:2:0, and AAC-LC or Opus audio at 48kHz. Keep the frame rate you shot at. For reference, YouTube lists 8 Mbps for 1080p and 35 to 45 Mbps for 4K at standard frame rates, SDR."
+  },
+  {
+    "q": "What size is a YouTube banner and where is the safe area?",
+    "a": "Upload at least 2048 by 1152, at 16:9; YouTube recommends 2560 by 1440 and a file of 6MB or less. At the minimum size, YouTube's safe area for text and logos is 1235 by 338 pixels. The rest of the image gets cropped on certain views and devices, YouTube warns, and it recommends the larger size especially for TV."
+  },
+  {
+    "q": "How long can a YouTube video be?",
+    "a": "Fifteen minutes until the account is verified with a phone number. After that, YouTube takes uploads up to 256GB or 12 hours, whichever is less. YouTube notes that limits changed in the past, so some older videos run longer than 12 hours. For files over 20GB, it asks for an up-to-date browser."
+  }
+];
+---
+
+<ArticleLayout slug="youtube-video-thumbnail-specs" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">YouTube now recommends custom thumbnails at 3840 by 2160 pixels, three times the width most spec sheets still print. Before the pixels matter, though, the account has to qualify: no phone verification, no custom thumbnail.</p>
+
+  <p>Reviewed October 8, 2026. Every spec below is read from YouTube's own help pages, and each row names the page it came from.</p>
+
+  <h2>What is the YouTube thumbnail size in 2026?</h2>
+
+  <p>YouTube recommends 3840 by 2160 pixels for a video thumbnail: 16:9, at least 640 pixels wide, as JPG or PNG. The file can weigh up to 50MB from a computer but only 2MB from a phone, and only a phone-verified account can upload one. In hubStudio, you render it in the Image studio and crop it in the Image editor.</p>
+
+  <h2>What are YouTube's custom thumbnail rules?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">YouTube's figure</th>
+          <th scope="col">Source page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Recommended size, videos</th>
+          <td>3840 x 2160</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">Minimum width</th>
+          <td>640 pixels</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">Ratio</th>
+          <td>16:9 for videos, 9:16 for Shorts, 1:1 for podcast playlists</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">Formats</th>
+          <td>JPG or PNG</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">File size, from a computer</th>
+          <td>50MB</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">File size, from a phone</th>
+          <td>2MB (10MB for podcasts)</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">Who can upload one</th>
+          <td>Phone-verified accounts (intermediate features)</td>
+          <td>Feature access for creators</td>
+        </tr>
+        <tr>
+          <th scope="row">A/B test floor</th>
+          <td>One test thumbnail under 1280 x 720 drops all of them to 854 x 480</td>
+          <td>A/B test titles and thumbnails</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">YouTube recommends custom video thumbnails at 3840 by 2160 pixels, at least 640 pixels wide, in a 16:9 ratio, as JPG or PNG, under 50MB from a computer or 2MB from a phone.</blockquote>
+  <p class="source">Source: YouTube Help, "Add custom thumbnails on YouTube," read on YouTube's own page October 8, 2026. https://support.google.com/youtube/answer/72431</p>
+
+  <p>So 1280 by 720 isn't wrong, exactly. It has simply stopped being the recommendation, and it now survives on YouTube's pages in one role only: the floor for A/B tests. The thumbnail also doubles as the preview image in the embedded player, which is why YouTube asks for it as large as possible.</p>
+
+  <p>Then there's the gate. Custom thumbnails sit in YouTube's intermediate tier, which opens once you verify a phone number in YouTube Studio under Settings, Channel, Feature eligibility. Videos longer than 15 minutes sit in the same tier, so one verification clears both.</p>
+
+  <h2>Where should text go on a YouTube thumbnail?</h2>
+
+  <p>YouTube doesn't publish a safe area for thumbnails. Any pixel inset you've seen quoted as YouTube's rule came from somewhere else.</p>
+
+  <p>What can be measured is the badge YouTube lays over thumbnails in search results and on channel pages: the video's running time, in the lower right corner.</p>
+
+  <blockquote class="evidence">On a 500-pixel-wide desktop search result, the duration badge measured 36 to 42 pixels wide and 20 pixels tall, set 8 pixels in from the right and bottom edges.</blockquote>
+  <p class="source">Source: hubStudio capture of youtube.com search results, October 8, 2026, signed out, 1366 by 900 window, two thumbnails measured from the page layout. An observation, not a YouTube rule.</p>
+
+  <p>Call it the bottom-right tenth of the frame, in both directions. Keep words, logos and faces out of it.</p>
+
+  <p>Vertical video is its own case. A vertical video carrying a 16:9 custom thumbnail gets an automatically generated 4:5 thumbnail on the home, explore and subscription pages, YouTube says, while the custom one keeps showing in the watch feed, in watch history and on computers. And an upload of three minutes or less that's square or taller counts as a Short. For those, see the <a href="/resources/insights/youtube-shorts-specs">YouTube Shorts specs page</a>.</p>
+
+  <p>One check costs nothing. Design at 3840 wide, then shrink the file to 640 wide, the smallest YouTube accepts. Words that don't read there are too small.</p>
+
+  <h2>What are YouTube's recommended upload settings?</h2>
+
+  <p>YouTube keeps its encoding advice on one page, the one its supported-formats page sends you to for the details. Oddly, that page now opens with a note that its features are only available to partners who use YouTube Studio Content Manager. The settings themselves are plain export choices, and they're the reference this page uses.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Setting</th>
+          <th scope="col">YouTube's recommendation</th>
+          <th scope="col">Source page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Container</th>
+          <td>MP4, no edit lists, moov atom at the front (Fast Start)</td>
+          <td>Recommended upload encoding settings</td>
+        </tr>
+        <tr>
+          <th scope="row">Video codec</th>
+          <td>H.264, progressive scan, High Profile, 2 consecutive B frames, closed GOP of half the frame rate, CABAC, variable bitrate, 4:2:0</td>
+          <td>Recommended upload encoding settings</td>
+        </tr>
+        <tr>
+          <th scope="row">Audio</th>
+          <td>AAC-LC, Opus or Eclipsa Audio; 48kHz; stereo, or stereo plus 5.1</td>
+          <td>Recommended upload encoding settings</td>
+        </tr>
+        <tr>
+          <th scope="row">Frame rate</th>
+          <td>The rate it was shot at; 24, 25, 30, 48, 50 and 60 are common</td>
+          <td>Recommended upload encoding settings</td>
+        </tr>
+        <tr>
+          <th scope="row">Color, SDR</th>
+          <td>BT.709</td>
+          <td>Recommended upload encoding settings</td>
+        </tr>
+        <tr>
+          <th scope="row">Aspect ratio</th>
+          <td>16:9 on a computer; the player adapts to other shapes</td>
+          <td>Video resolution and aspect ratios</td>
+        </tr>
+        <tr>
+          <th scope="row">File types</th>
+          <td>MOV, MPEG-1, MPEG-2, MPEG4, MP4, MPG, AVI, WMV, MPEGPS, FLV, 3GPP, WebM, DNxHR, ProRes, CineForm, HEVC (H.265)</td>
+          <td>Supported YouTube file formats</td>
+        </tr>
+        <tr>
+          <th scope="row">Largest upload</th>
+          <td>256GB or 12 hours, whichever is less</td>
+          <td>Upload videos longer than 15 minutes</td>
+        </tr>
+        <tr>
+          <th scope="row">Longest video, unverified account</th>
+          <td>15 minutes</td>
+          <td>Upload videos longer than 15 minutes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>YouTube sets no bitrate limit. The figures below are its reference values, in megabits per second, with the 16:9 pixel size it lists for each resolution.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Resolution</th>
+          <th scope="col">16:9 pixels</th>
+          <th scope="col">SDR, 24 to 30 fps</th>
+          <th scope="col">SDR, 48 to 60 fps</th>
+          <th scope="col">HDR, 24 to 30 fps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">8K</th>
+          <td>7680 x 4320</td>
+          <td>80 to 160</td>
+          <td>120 to 240</td>
+          <td>100 to 200</td>
+        </tr>
+        <tr>
+          <th scope="row">4K</th>
+          <td>3840 x 2160</td>
+          <td>35 to 45</td>
+          <td>53 to 68</td>
+          <td>44 to 56</td>
+        </tr>
+        <tr>
+          <th scope="row">1440p</th>
+          <td>2560 x 1440</td>
+          <td>16</td>
+          <td>24</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <th scope="row">1080p</th>
+          <td>1920 x 1080</td>
+          <td>8</td>
+          <td>12</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">720p</th>
+          <td>1280 x 720</td>
+          <td>5</td>
+          <td>7.5</td>
+          <td>6.5</td>
+        </tr>
+        <tr>
+          <th scope="row">480p</th>
+          <td>854 x 480</td>
+          <td>2.5</td>
+          <td>4</td>
+          <td>Not supported</td>
+        </tr>
+        <tr>
+          <th scope="row">360p</th>
+          <td>640 x 360</td>
+          <td>1</td>
+          <td>1.5</td>
+          <td>Not supported</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">YouTube's reference bitrates for SDR uploads at standard frame rates run from 1 Mbps at 360p to 80 to 160 Mbps at 8K, with 8 Mbps at 1080p and 35 to 45 Mbps at 4K. Audio: 128 kbps mono, 384 kbps stereo, 512 kbps for 5.1.</blockquote>
+  <p class="source">Source: YouTube Help, "YouTube recommended upload encoding settings," read on YouTube's own page October 8, 2026, with pixel sizes from "Video resolution &amp; aspect ratios." https://support.google.com/youtube/answer/1722171</p>
+
+  <p>Two footnotes from the same pages. New 4K uploads play in 4K only on a browser or device that supports VP9. And since 2022, YouTube has been removing playback at resolutions between 4K and 8K, so a 5K master may not play at 5K.</p>
+
+  <h2>What size is a YouTube banner and profile picture?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Asset</th>
+          <th scope="col">YouTube's figure</th>
+          <th scope="col">Source page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Banner, minimum</th>
+          <td>2048 x 1152, 16:9</td>
+          <td>Manage your channel branding</td>
+        </tr>
+        <tr>
+          <th scope="row">Banner, recommended</th>
+          <td>2560 x 1440, especially for TV</td>
+          <td>Manage your channel branding</td>
+        </tr>
+        <tr>
+          <th scope="row">Banner safe area</th>
+          <td>1235 x 338 for text and logos, at the minimum size</td>
+          <td>Manage your channel branding</td>
+        </tr>
+        <tr>
+          <th scope="row">Banner file size</th>
+          <td>6MB or smaller</td>
+          <td>Manage your channel branding</td>
+        </tr>
+        <tr>
+          <th scope="row">Profile picture</th>
+          <td>JPG, GIF, BMP or PNG, no animated GIF, up to 15MB, shown at 98 x 98</td>
+          <td>Manage your channel branding</td>
+        </tr>
+        <tr>
+          <th scope="row">Video watermark</th>
+          <td>Square, at least 150 x 150, under 1MB</td>
+          <td>Manage your channel branding</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">The banner's minimum upload is 2048 by 1152 pixels at 16:9, with a safe area for text and logos of 1235 by 338 at that size. YouTube recommends 2560 by 1440 and caps the file at 6MB.</blockquote>
+  <p class="source">Source: YouTube Help, "Manage your channel branding," read on YouTube's own page October 8, 2026. https://support.google.com/youtube/answer/10456525</p>
+
+  <p>The 1546 by 423 safe area that circulates widely isn't on YouTube's page. It looks like YouTube's figure scaled up to the 2560 canvas: 1235 by 338 times 1.25 comes to roughly 1544 by 423. That's our arithmetic, not YouTube's.</p>
+
+  <p>YouTube uses the same banner on computers, phones and TVs, shown differently on each, and warns that it gets cropped on certain views and devices. It also asks for no shadows, borders or frames around the image.</p>
+
+  <h2>What breaks a YouTube upload or thumbnail?</h2>
+
+  <p>Each row below is a problem YouTube's own help pages describe, with the fix they give.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Symptom</th>
+          <th scope="col">What YouTube says</th>
+          <th scope="col">Source page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">No option to upload a thumbnail</th>
+          <td>Custom thumbnails need a verified account</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">Upload stops at 15 minutes</th>
+          <td>Unverified accounts are capped at 15 minutes</td>
+          <td>Upload videos longer than 15 minutes</td>
+        </tr>
+        <tr>
+          <th scope="row">"Daily custom thumbnail limit reached"</th>
+          <td>Try again in 24 hours; limits vary by country, region and channel history</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">Thumbnail too heavy on a phone</th>
+          <td>Phones take 2MB for a video thumbnail; computers take 50MB</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">Soft A/B test thumbnails</th>
+          <td>One thumbnail under 1280 x 720 downscales all of them to 854 x 480</td>
+          <td>A/B test titles and thumbnails</td>
+        </tr>
+        <tr>
+          <th scope="row">Bars around the picture</th>
+          <td>Don't add padding or black bars; the player sizes itself to the video</td>
+          <td>Video resolution and aspect ratios</td>
+        </tr>
+        <tr>
+          <th scope="row">Interlaced footage</th>
+          <td>Deinterlace before uploading: 1080i60 becomes 1080p30</td>
+          <td>Recommended upload encoding settings</td>
+        </tr>
+        <tr>
+          <th scope="row">No end screen offered</th>
+          <td>The video has to run 25 seconds or longer</td>
+          <td>Upload YouTube videos</td>
+        </tr>
+        <tr>
+          <th scope="row">Video went up private</th>
+          <td>Closing the upload window before choosing visibility saves it as private</td>
+          <td>Upload YouTube videos</td>
+        </tr>
+        <tr>
+          <th scope="row">Thumbnail rejected with a strike</th>
+          <td>Nudity, hate speech, violence or harmful content; repeat offenses lose custom thumbnails for 30 days</td>
+          <td>Add custom thumbnails</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>One more, for anyone working with generative engines. YouTube asks creators to disclose realistic content that AI generated or meaningfully altered. Its upload page still calls that setting Altered content; its disclosure policy page calls it AI use, under Attributes. Same question, two labels, so look for either one.</p>
+
+  <blockquote class="evidence">YouTube lists using generative AI to create or improve a thumbnail, title or script as production assistance that creators don't need to disclose. Realistic content that AI generated or meaningfully altered must be disclosed.</blockquote>
+  <p class="source">Source: YouTube Help, "Disclosing use of GenAI content," read on YouTube's own page October 8, 2026. https://support.google.com/youtube/answer/14328491</p>
+
+  <h2>How does hubStudio fit with YouTube?</h2>
+
+  <p>hubStudio doesn't upload to YouTube, and the reason is YouTube's own rule.</p>
+
+  <blockquote class="evidence">Videos uploaded through YouTube's upload API from unverified API projects created after July 28, 2020 are restricted to private viewing until the project passes an audit.</blockquote>
+  <p class="source">Source: YouTube Data API reference, "Videos: insert," read on Google's own developer page October 8, 2026. https://developers.google.com/youtube/v3/docs/videos/insert</p>
+
+  <p>So hubStudio doesn't connect to your channel at all. Its YouTube module prepares the post instead. You render, pick or upload the video, have the title (100 characters at most) and the description (5,000) written with AI or type them yourself, and send the post for approval if your team works that way. Then Publish interactively puts the title on your clipboard, opens YouTube Studio and downloads the video. You publish from your own channel.</p>
+
+  <p>The Channel tab handles the channel art. It crops the banner to 2560 by 1440, with a dashed frame over the middle strip every screen shows, and the profile picture to an 800 by 800 square.</p>
+
+  <p>The thumbnail is the part you build. Render it in the Image studio in a widescreen shape at the 4K setting, which goes up to 3840 pixels on the ChatGPT Image engines. Open it in the Image editor, crop it to Wide (16:9), add your words (a dark outline keeps light lettering readable on a light picture), and save it as JPG or PNG. The editor is free. The render is charged to your prepaid balance, at the price shown before it runs. The saved copy sits in your Assets Library (the <a href="/app/library">Assets Library page</a> explains folders and versions), and you add it in YouTube Studio during the upload.</p>
+
+  <p>The <a href="/help/youtube">YouTube help article</a> walks through every step, press by press. A team that would rather hand off the whole film can brief the studio instead, through the <a href="/services/design/video-production">video production service</a>.</p>
+
+  <h2>Changelog</h2>
+
+  <p><strong>October 8, 2026.</strong> First published. Every figure read from YouTube Help Center pages and YouTube's API reference, fetched October 8, 2026, plus one labeled capture of the duration badge on youtube.com. The thumbnail recommendation is recorded at 3840 by 2160 with a 50MB desktop limit and a 2MB phone limit; 1280 by 720 appears only as the A/B test floor. Next scheduled review: January 8, 2027.</p>
+
+  <h2>Questions about YouTube specs</h2>
+
+  <h3>What is the YouTube thumbnail size in 2026?</h3>
+
+  <p>YouTube recommends 3840 by 2160 pixels in a 16:9 ratio, at least 640 pixels wide, saved as JPG or PNG. From a computer the file can reach 50MB; from a phone, 2MB. The older 1280 by 720 figure still matters in one place: below it, YouTube's A/B test drops every thumbnail in the test to 854 by 480.</p>
+
+  <h3>Why can't I upload a custom thumbnail on YouTube?</h3>
+
+  <p>Check verification first. Custom thumbnails are an intermediate feature, and you get them by verifying a phone number in YouTube Studio under Settings, Channel, Feature eligibility. YouTube's pages name other causes: the daily custom thumbnail limit (try again in 24 hours), Community Guidelines strikes, which cut how many you can upload, and the 2MB cap on a phone.</p>
+
+  <h3>What is the maximum thumbnail file size on YouTube?</h3>
+
+  <p>It depends on the device. YouTube allows 50MB for video, Shorts and podcast thumbnails uploaded from a computer. From a phone, the limit is 2MB for a video thumbnail and 10MB for a podcast. A full-size thumbnail over 2MB has to go up from a computer.</p>
+
+  <h3>What resolution should I upload to YouTube?</h3>
+
+  <p>For the default 16:9 shape, YouTube lists eight sizes, from 426 by 240 up to 7680 by 4320, including 1920 by 1080 for 1080p and 3840 by 2160 for 4K. Other shapes are fine: don't add black bars to reach 16:9, because the player sizes itself to the video. New 4K uploads play in 4K only where VP9 is supported.</p>
+
+  <h3>What are YouTube's recommended upload settings?</h3>
+
+  <p>MP4 with the moov atom at the front, H.264 High Profile, progressive scan, closed GOP of half the frame rate, variable bitrate, 4:2:0, and AAC-LC or Opus audio at 48kHz. Keep the frame rate you shot at. For reference, YouTube lists 8 Mbps for 1080p and 35 to 45 Mbps for 4K at standard frame rates, SDR.</p>
+
+  <h3>What size is a YouTube banner and where is the safe area?</h3>
+
+  <p>Upload at least 2048 by 1152, at 16:9; YouTube recommends 2560 by 1440 and a file of 6MB or less. At the minimum size, YouTube's safe area for text and logos is 1235 by 338 pixels. The rest of the image gets cropped on certain views and devices, YouTube warns, and it recommends the larger size especially for TV.</p>
+
+  <h3>How long can a YouTube video be?</h3>
+
+  <p>Fifteen minutes until the account is verified with a phone number. After that, YouTube takes uploads up to 256GB or 12 hours, whichever is less. YouTube notes that limits changed in the past, so some older videos run longer than 12 hours. For files over 20GB, it asks for an up-to-date browser.</p>
+</ArticleLayout>

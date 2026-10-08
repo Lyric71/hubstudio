@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/83-google-merchant-center-image-requirements.mjs
+export default {
+  id: "83",
+  date: "2026-10-29",
+  family: "spec",
+  template: "spec",
+  brief: true,
+  status: "not_started",
+  cluster: "Platform specs",
+  contentType: "Spec page",
+  readerStage: "practitioner",
+  slug: "google-merchant-center-image-requirements",
+  h1: "Google Merchant Center image requirements for 2026",
+  query: "google shopping image requirements",
+  secondary: [
+    "google merchant center image size",
+    "google shopping image size 2026",
+    "merchant center image disapproved",
+    "google shopping lifestyle image requirements",
+  ],
+  verdict:
+    "Feed-tool vendors and agency blogs hold the top ten, each repeating one list of minimum size, file cap and formats with no date; a few report the 500 x 500 minimum from January 31, 2027, almost none separates image_link, additional_image_link and lifestyle_image_link, and none puts Google's AI image metadata rule next to the size rules.",
+  words: 1500,
+  angle:
+    "The page that maps every rule to the attribute it governs (image_link, additional_image_link, lifestyle_image_link) and to the disapproval it triggers, carries the January 31, 2027 minimum-size change with Google's own wording and date, and states Google's rule on AI-generated product images: keep the metadata the engine wrote. Read from Merchant Center Help only, with a visible Reviewed date.",
+  mustInclude: [
+    "A spec table per attribute (image_link, additional_image_link, lifestyle_image_link): minimum size, recommended size, file size cap, accepted formats, background rule",
+    "The minimum-size change Google announced for January 31, 2027, in Google's words, with the date of the announcement and what happens to a product that misses it",
+    "What gets an image disapproved, each tied to the Merchant Center Help page that states it: promotional overlays, watermarks, borders, placeholder or generic images, several products in a main image, an image that misrepresents the product",
+    "Google's rule on generative AI images in Merchant Center, quoted: keep the IPTC DigitalSourceType tag (trainedAlgorithmicMedia, or the composite value for an AI background on a real photo) that marks the file, never strip it",
+    "Google's own automatic image improvements in Merchant Center, only as Google describes them",
+    "Any separate rule Merchant Center Help states for apparel and for variants",
+    "How the hubStudio app fits, inside its facts: renders up to 4K in the Image studio, a transparent background on the ChatGPT Image engines, the free Image editor to crop; for a feed, download the original file, never the clean copy or the Image anonymizer output, because both remove the AI-generation markers Google asks you to keep",
+    "A visible Reviewed date under the H1 and a dated changelog block at the foot",
+  ],
+  doNot: [
+    "Cite anything but Merchant Center Help, Google Ads Help or Google's own announcements for a number",
+    "Recommend the Image anonymizer or Download clean copy for a file bound for a product feed",
+    "Claim hubStudio connects to Merchant Center or submits a feed: it does neither",
+    "Present the 2027 minimum as enforced before January 31, 2027",
+    "Name a feed tool, a plugin, a photo app or an agency",
+    "Use an em dash",
+  ],
+  stats: [
+    "Minimum, recommended and maximum image size, file size cap and formats: Merchant Center Help, the image_link attribute page (support.google.com/merchants/answer/6324350), read on check 1 and check 2",
+    "The 500 x 500 pixel minimum from January 31, 2027: Google's own Merchant Center announcement or help text with its date; the vendor posts reporting it are leads, not sources",
+    "Additional and lifestyle image rules: the Merchant Center Help pages for additional_image_link and lifestyle_image_link",
+    "The generative AI rule and the DigitalSourceType value names: Merchant Center Help image requirements, and the IPTC NewsCodes digital source type vocabulary for the exact values",
+    "Product fill or framing figures only if Google's own page prints one; the 75 to 90 percent figure on vendor blogs is cut unless Google states it",
+  ],
+  assets: [
+    "Spec table: attribute, minimum size, recommended size, file cap, formats",
+    "Disapproval table: what Google rejects, the policy page that says so, the fix",
+    "Dated box: the January 31, 2027 minimum-size change",
+    "Changelog block, dated, updated in place",
+  ],
+  links: [
+    ["Amazon product image requirements", "/resources/insights/amazon-product-image-requirements"],
+    ["Shopify product image sizes", "/resources/insights/shopify-product-image-sizes"],
+    ["white background packshot guide", "/resources/how-to/ai-white-background-packshot"],
+    ["eCommerce design service", "/services/design/ecommerce"],
+    ["Image studio", "/app/create"],
+  ],
+  seoTitle: "Google Merchant Center Image Requirements 2026",
+  seoDesc:
+    "Google Shopping image rules per attribute: sizes, file caps, formats, what gets disapproved, the 500 px minimum from January 2027 and the AI image rule.",
+  faqs: [
+    "What size should Google Shopping images be?",
+    "Why was my Google Merchant Center image disapproved?",
+    "Can I use AI-generated images in Google Shopping?",
+    "What is the minimum image size for Google Merchant Center in 2027?",
+    "Do Google Shopping images need a white background?",
+    "What is a lifestyle image in Merchant Center?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Primary sources only: Merchant Center Help and Google's own announcements. Watch rows: the quarterly recheck due 2027-01-29, and the 500 x 500 enforcement date 2027-01-31 (rewrite the dated box once it is in force).",
+};

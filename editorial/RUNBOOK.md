@@ -295,8 +295,12 @@ keys and the full model are all here, and a cloud routine has none of them.
 
 | Task | When (Shanghai) | What | Default |
 |---|---|---|---|
-| hubStudio Editorial Draft | Mon, Tue, Thu, Fri 00:30 | `run-daily.ps1 -Mode draft`: steps 0 to 3, stops at `image_ready` | enabled |
-| hubStudio Editorial Publish | every day 04:00 | `run-daily.ps1 -Mode publish`: publishes every `image_ready` row whatever its `publish_date`, builds, commits, pushes, emails | enabled |
+| hubStudio Editorial Draft | Mon to Fri 00:30 and 12:30 | `run-daily.ps1 -Mode draft`: one run drafts one row, the earliest `not_started` row due today or earlier; steps 0 to 3, stops at `image_ready` | enabled |
+| hubStudio Editorial Publish | every day 04:00 and 16:30 | `run-daily.ps1 -Mode publish`: publishes every `image_ready` row whatever its `publish_date`, by its template (insight, spec or howto), builds, commits, pushes, emails | enabled |
+
+Wave two (12 October to 20 November 2026) puts up to two rows on one day,
+Monday to Friday, which is why the draft task fires twice a weekday. Its
+families and where each publishes are in `CLAUDE.md`, "Wave two".
 
 Scripts live in `editorial/scripts/`. `register-tasks.ps1` creates or updates
 both tasks. Each run writes its console output to

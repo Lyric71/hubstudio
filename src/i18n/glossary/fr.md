@@ -97,3 +97,30 @@ Gen Z -> génération Z
 ## Platforms and names (unchanged)
 RedNote, WeChat, Douyin, Weibo, Tmall, JD, Amazon, Shopify, Meta, TikTok, LinkedIn, X, Instagram, Facebook; 11.11, 618, Singles Day kept.
 Nationality lines on team pages -> country names (France, États-Unis, Chine), gender neutral.
+
+## Platform specs, ads, prompting and regulation (settled 2026-10-08, wave two)
+Reels / Stories (Meta products) -> Reels / Stories (capitalized); a reel, a story (ordinary nouns) -> un reel, une story
+feed -> fil; Feed post -> post dans le fil; profile grid / grid tile -> grille du profil / vignette de la grille
+organic (post) -> organique; boosted Reel -> reel boosté
+slide (carousel) -> diapositive
+in-feed ad (TikTok), auction / reservation -> publicité in-feed aux enchères / en réservation; anchor (link card) -> ancre
+ad set -> ensemble de publicités; learning phase (Meta) -> phase d’apprentissage; landing page -> page de destination
+ads manager (generic) -> gestionnaire de publicités; call to action button -> bouton d’appel à l’action; disclaimer (ad) -> mention légale
+safe zone (platform) -> zone de sécurité; safe box (derived text area) -> rectangle de sécurité; template (safe-zone file) -> gabarit
+custom thumbnail -> miniature personnalisée; handle (YouTube) -> identifiant; Content ID claim -> revendication Content ID
+end card -> carton de fin; clean plate -> fond vierge; start frame / last frame -> première image / dernière image (app labels)
+lifestyle image -> photo d’ambiance (in prose: mise en situation); fill (share of the frame) -> occupation du cadre; cutout -> détourage
+keep list (prompting) -> liste des éléments à conserver; masked edit -> retouche masquée; reference sheet -> planche de référence; drift -> dérive
+burned-in captions -> sous-titres incrustés; hook / payoff (short video) -> accroche / chute
+engine maker -> concepteur (as in "par concepteur")
+App skills (Catalog) -> Packshot e-commerce / Produit en situation / Texte lisible dans l’image / Même personnage d’une image à l’autre
+Shape (Image studio selector) -> Format
+provider / deployer (EU AI Act) -> fournisseur / déployeur; deep fake -> deepfake (« hypertrucage » named once at most)
+machine-readable mark -> marquage lisible par machine; visible AI label -> étiquette IA visible
+code of practice -> code de bonnes pratiques; Commission guidelines -> lignes directrices; AI Omnibus -> omnibus IA
+paid social -> publicité sociale (prose: publicités sur les réseaux sociaux); moment (holiday calendar) -> temps fort
+Platform specs hub -> Formats des plateformes; China platforms -> Plateformes chinoises
+Units: Mbps, kbps, fps -> Mbit/s, kbit/s, i/s; MB, GB -> Mo, Go; sizes 1 080 × 1 920; ratios 1,91:1
+English or French version (of a help page) -> version anglaise / version française; both versions given side by side when they disagree
+Content ID: a claimed Short -> un Short revendiqué; claim lifted -> levée de la revendication; lose its monetization -> perdre sa monétisation (never « coûter la monétisation »)
+carousel slides -> diapositives (not « visuels »)

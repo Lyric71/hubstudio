@@ -1,0 +1,350 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should a YouTube Short be?",
+    "a": "Vertical 9:16 at 1080p, which works out to 1080 by 1920 pixels. YouTube's help center says Shorts upload at a maximum resolution of 1080p and that any square or vertical video up to three minutes counts as a Short. The pixel pair is arithmetic on that 1080p figure, not a number YouTube prints."
+  },
+  {
+    "q": "How long can a YouTube Short be?",
+    "a": "Up to three minutes, for videos uploaded on or after October 15, 2024. Videos uploaded before that date stay long-form even if they would qualify today. One catch: YouTube's English help page says a Short over one minute with an active Content ID claim is blocked worldwide; the French page says new ones under three minutes are no longer blocked automatically from September 24, 2026. Clear the audio either way."
+  },
+  {
+    "q": "Does a YouTube Short have to be 9:16?",
+    "a": "No. YouTube's rule is a square or vertical aspect ratio, so 1:1 qualifies as well as 9:16. Vertical fills the phone screen, which is why most teams export 9:16. A horizontal 16:9 video is never classified as a Short, however short it is, and a horizontal Shorts ad is served with blurred bars above and below."
+  },
+  {
+    "q": "Can I upload a YouTube Short in 4K?",
+    "a": "YouTube's help pages say you can upload Short videos at a maximum resolution of 1080p. Export at 1080 by 1920 and you're working at the ceiling YouTube states. The custom Shorts thumbnail is a separate file and can be larger: YouTube asks for 2160 by 3840 pixels at 9:16, at least 640 pixels tall."
+  },
+  {
+    "q": "Can I upload YouTube Shorts from a computer?",
+    "a": "Yes. In YouTube Studio, click Create, then Upload videos, and pick a square or vertical file of three minutes or less. You can select up to 15 at a time, then complete each draft's details before publishing. On a phone, the YouTube app's Shorts camera records clips that add up to three minutes, or uploads a vertical video."
+  },
+  {
+    "q": "How do I change a YouTube Shorts thumbnail?",
+    "a": "Pick a frame from the Short, before or after upload, and add text or filters. For a custom image, use YouTube Studio on a computer with a verified account: Content, then Shorts, then the Short, then Upload file under Thumbnail. Make it 9:16. A 16:9 thumbnail on a vertical video is swapped for an automatic 4:5 crop on some pages."
+  },
+  {
+    "q": "How long can a YouTube Shorts ad be?",
+    "a": "Up to three minutes, but only the first 60 seconds play in the Shorts feed, so Google's ad help recommends ads under 60 seconds. Use 9:16. The ads run in Demand Gen, Video view, Video reach, Performance Max, App and Reservation campaigns, between organic Shorts, and the viewer can swipe past at once."
+  },
+  {
+    "q": "Why is my YouTube Short over a minute blocked?",
+    "a": "YouTube's English help page says any Short over one minute with an active Content ID claim, manual claims included, is blocked globally: it can't be played, recommended or monetized. The French version says new Shorts under three minutes are no longer blocked automatically from September 24, 2026. If yours is blocked, remove the claimed audio, cut it under 60 seconds or resolve the claim. Blocked or not, a claim can cost the Short its monetization."
+  }
+];
+---
+
+<ArticleLayout slug="youtube-shorts-specs" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">The YouTube Shorts size rule fits in one line: any square or vertical video of three minutes or less, uploaded at up to 1080p. Every platform value below comes from YouTube's own help pages, Google's ad help and, for the comparison, each network's own documentation.</p>
+
+  <p>Reviewed October 8, 2026.</p>
+
+  <h2>What size is a YouTube Short?</h2>
+
+  <p>Shoot and export vertical 9:16 at 1080p, which is 1080 by 1920 pixels. YouTube accepts any square or vertical video up to three minutes as a Short and says the maximum upload resolution for Shorts is 1080p. In hubStudio, Shorts autopilot writes each clip at exactly that size, and the YouTube module marks it Short.</p>
+
+  <p>The frame is the easy part. Teams get caught on what sits around it: the thumbnail, a music claim on a clip that runs past a minute, and the ad that only plays its first 60 seconds.</p>
+
+  <h2>The YouTube Shorts spec sheet</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Value</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Aspect ratio</th>
+          <td>Square or vertical</td>
+          <td>YouTube Help, Upload YouTube Shorts</td>
+        </tr>
+        <tr>
+          <th scope="row">Length</th>
+          <td>Up to 3 minutes</td>
+          <td>YouTube Help, Upload YouTube Shorts</td>
+        </tr>
+        <tr>
+          <th scope="row">Applies to</th>
+          <td>Uploads on or after October 15, 2024</td>
+          <td>YouTube Help, three-minute Shorts</td>
+        </tr>
+        <tr>
+          <th scope="row">Maximum upload resolution</th>
+          <td>1080p (1080 x 1920 at 9:16, derived)</td>
+          <td>YouTube Help, Get started with Shorts</td>
+        </tr>
+        <tr>
+          <th scope="row">Container and codecs</th>
+          <td>MP4, H.264, AAC-LC or Opus at 48 kHz</td>
+          <td>YouTube Help, upload encoding settings</td>
+        </tr>
+        <tr>
+          <th scope="row">Bitrate at 1080p (SDR)</th>
+          <td>8 Mbps at 24 to 30 fps, 12 Mbps at 48 to 60 fps</td>
+          <td>YouTube Help, upload encoding settings</td>
+        </tr>
+        <tr>
+          <th scope="row">File cap, all uploads</th>
+          <td>256 GB or 12 hours, whichever is less</td>
+          <td>YouTube Help, upload limits</td>
+        </tr>
+        <tr>
+          <th scope="row">Batch upload from a computer</th>
+          <td>Up to 15 Shorts at a time</td>
+          <td>YouTube Help, Upload YouTube Shorts</td>
+        </tr>
+        <tr>
+          <th scope="row">Music in a 3-minute Short</th>
+          <td>Most songs up to 90 s, some 60 or 30 s</td>
+          <td>YouTube Help, three-minute Shorts</td>
+        </tr>
+        <tr>
+          <th scope="row">Over one minute with a Content ID claim</th>
+          <td>Blocked worldwide (English page); new Shorts under 3 minutes no longer blocked automatically from September 24, 2026 (French page)</td>
+          <td>YouTube Help, three-minute Shorts, English and French versions</td>
+        </tr>
+        <tr>
+          <th scope="row">Custom thumbnail</th>
+          <td>9:16, 2160 x 3840, at least 640 px tall, JPG or PNG, 50 MB on desktop</td>
+          <td>YouTube Help, Add custom thumbnails</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The 1080 by 1920 figure is arithmetic. YouTube writes "1080p"; a 9:16 frame at 1080p is 1080 pixels wide and 1920 tall. The encoding and file-cap rows cover every YouTube upload, Shorts included, not Shorts alone.</p>
+
+  <h2>What makes YouTube treat an upload as a Short?</h2>
+
+  <p>Two things, the shape and the running time. YouTube's upload page lists no other condition and no separate button: a square or vertical file of three minutes or less goes in through the ordinary upload.</p>
+
+  <blockquote class="evidence">YouTube categorizes any video uploaded on or after October 15, 2024 with a square or vertical aspect ratio, up to three minutes long, as a Short. Videos uploaded before that date stay long-form videos.</blockquote>
+  <p class="source">Source: YouTube Help, "Understand three-minute YouTube Shorts," read October 2026, platform's own help text. https://support.google.com/youtube/answer/15424877</p>
+
+  <p>Plenty of guides still give 60 seconds. YouTube's own pages say three minutes, a change announced on October 3, 2024, for "videos that are square or taller in aspect ratio." A square 1:1 video counts. A 16:9 video never does, however short.</p>
+
+  <p>The same help page carries the rule most guides skip, and its English and French versions don't agree on it.</p>
+
+  <blockquote class="evidence">"Any Short that is over one minute in duration with an active Content ID claim of any type, including manual claims, will be blocked globally on YouTube." A blocked Short can't be played, recommended or monetized.</blockquote>
+  <p class="source">Source: YouTube Help, "Understand three-minute YouTube Shorts," English version, undated, read October 2026, platform's own help text. https://support.google.com/youtube/answer/15424877</p>
+
+  <blockquote class="evidence">From September 24, 2026, new Shorts longer than one minute but under three minutes with an active Content ID claim are no longer blocked automatically and can stay available on YouTube. Shorts blocked worldwide still can't be monetized.</blockquote>
+  <p class="source">Source: YouTube Help, French version of the same page, read October 2026, platform's own help text, our translation. https://support.google.com/youtube/answer/15424877?hl=fr</p>
+
+  <p>The English page carries no date, the French one does, so both are given here until they match. Under either, clear the music rights before you post: blocked or not, a Short with a claim can lose its monetization until the claim is resolved. Songs picked from the Shorts audio library are a different case: most can play for up to 90 seconds in a three-minute Short, though some tracks stop at 60 or 30.</p>
+
+  <h2>How do you upload a Short from a computer or a phone?</h2>
+
+  <p>There are three ways in. On a phone, the Shorts camera in the YouTube app records one or more clips that add up to three minutes, or you upload a vertical file you already have. On a computer, YouTube Studio takes it like any video: Create, then Upload videos, then a square or vertical file of three minutes or less. You can pick up to 15 at once, then finish each draft before it goes live.</p>
+
+  <p>There's no Shorts switch anywhere in that flow. The file's shape and length decide.</p>
+
+  <h2>How do Shorts thumbnails work?</h2>
+
+  <p>You can pick a frame from the Short as its thumbnail, before or after upload, and add text and filters. A custom image is a desktop job.</p>
+
+  <blockquote class="evidence">"Custom thumbnails for Shorts are currently only available to add in YouTube Studio on a computer. Your account must be verified to use this feature." Shorts thumbnails should be 9:16, 2160 x 3840 pixels, at least 640 pixels tall, JPG or PNG.</blockquote>
+  <p class="source">Source: YouTube Help, "Add custom thumbnails on YouTube," read October 2026, platform's own help text. https://support.google.com/youtube/answer/72431</p>
+
+  <p>The path is Content, then Shorts, then the Short, then Upload file under Thumbnail. One warning from the same page: a vertical video given a 16:9 custom thumbnail gets that thumbnail replaced by an automatic 4:5 crop on the home, Explore and subscription pages, so the thumbnail wants the same tall frame as the video.</p>
+
+  <h2>What are the specs for YouTube Shorts ads?</h2>
+
+  <p>Shorts ads play between Shorts in the feed, on every device, and the viewer can swipe past them at once. Google's ad help sets the format.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Spec</th>
+          <th scope="col">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Aspect ratio</th>
+          <td>9:16 recommended; horizontal serves with blurred top and bottom</td>
+        </tr>
+        <tr>
+          <th scope="row">Length</th>
+          <td>Up to 3 minutes, only the first 60 seconds play in the Shorts feed</td>
+        </tr>
+        <tr>
+          <th scope="row">Recommended length</th>
+          <td>Under 60 seconds</td>
+        </tr>
+        <tr>
+          <th scope="row">Channel description</th>
+          <td>90 characters</td>
+        </tr>
+        <tr>
+          <th scope="row">Call-to-action button</th>
+          <td>At 3 s (Performance Max, App, Demand Gen), 10 s (Video view, Video reach)</td>
+        </tr>
+        <tr>
+          <th scope="row">Campaign types</th>
+          <td>Demand Gen, Video view, Video reach, Performance Max, App, Reservation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">"Video ads can be up to 3 minutes long, though only the first 60 seconds will play on the Shorts feed."</blockquote>
+  <p class="source">Source: Google Ads Help, "Your guide to YouTube Shorts ads," read October 2026, platform's own ads help. https://support.google.com/google-ads/answer/16041697</p>
+
+  <p>Google's Display &amp; Video 360 help counts a view after 10 seconds of autoplay or a click. In practice the product, and whatever the ad is asking for, belong in those first 10 seconds.</p>
+
+  <h2>How do Shorts compare with Reels and TikTok?</h2>
+
+  <p>Each network documents itself differently, so each row below is scoped to the page it came from. Read the scope column before comparing two cells.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Network</th>
+          <th scope="col">Length</th>
+          <th scope="col">Aspect ratio</th>
+          <th scope="col">Scope of the source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">YouTube Shorts</th>
+          <td>Up to 3 minutes</td>
+          <td>Square or vertical</td>
+          <td>YouTube Help, organic uploads</td>
+        </tr>
+        <tr>
+          <th scope="row">Instagram Reels</th>
+          <td>Up to 20 minutes; over 3 minutes not recommended to new audiences</td>
+          <td>1.91:1 to 9:16</td>
+          <td>Instagram Help Center, organic reels</td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok, in the app</th>
+          <td>Up to 10 minutes recorded, up to 60 minutes uploaded</td>
+          <td>Not stated on that page</td>
+          <td>TikTok Help Center, Camera tools, read October 8, 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok, posted by an app</th>
+          <td>3 minutes for every creator; 5 or 10 minutes for some</td>
+          <td>Not stated on that page</td>
+          <td>TikTok for Developers, posting through its API, updated August 4, 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">YouTube Shorts ads</th>
+          <td>Up to 3 minutes, first 60 s play</td>
+          <td>9:16 recommended</td>
+          <td>Google Ads Help</td>
+        </tr>
+        <tr>
+          <th scope="row">Instagram Reels ads</th>
+          <td>0 s to 15 minutes</td>
+          <td>9:16</td>
+          <td>Meta Ads Guide, Reels placement</td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok in-feed ads</th>
+          <td>Up to 10 minutes</td>
+          <td>9:16 recommended; 16:9, 1:1 accepted</td>
+          <td>TikTok Ads Help, auction in-feed, June 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>TikTok's own help page on making a post prints no length at all. It tells you to "select a maximum length" in the app. Its Camera tools page does give one: 10 minutes for a video recorded in TikTok, 60 for one uploaded. A clip that an app posts for you falls under the developer documentation's figure instead.</p>
+
+  <p>Put the rows side by side and one file clears every limit on the table: 9:16, 1080 by 1920, under 60 seconds. It sits inside YouTube's three minutes, under the three-minute mark past which Instagram stops showing a reel to new audiences, inside the three minutes TikTok gives every creator, and it plays whole in a Shorts ad slot. Instagram also asks for at least 720 pixels and 30 frames per second, which that file meets.</p>
+
+  <h2>Where does hubStudio fit?</h2>
+
+  <p>Shorts autopilot, in the hubStudio app, starts from a long video: an interview, a talk, a webinar. It picks the moments that stand on their own and frames each at 9:16 around the speaker. Captions go on word by word, plus an optional hook line. Each short is saved in the Assets Library as an MP4 at 1080 x 1920, with a caption for each network you kept (YouTube Shorts, TikTok, Instagram Reels).</p>
+
+  <p>You choose 3, 5, 8 or 10 shorts, at 15 to 30, 30 to 60 or 60 to 90 seconds. Pick the longest band and the Content ID rule above applies, so leave claimed music out.</p>
+
+  <p>The YouTube module then carries the Short to YouTube. Pick the clip from the library, write the title (100 characters at most) and the description (5,000) with AI or by hand, and send it for approval. hubStudio doesn't upload it. YouTube keeps uploads from apps it hasn't audited private, so Publish interactively copies the title, opens YouTube Studio and downloads the video, and you publish from your own channel. <a href="/help/youtube">The YouTube help article</a> walks it press by press, including the Altered content question for realistic AI footage.</p>
+
+  <p>The module's Channel tab prepares the channel itself: name and handle, description, keywords, links, a 2560 x 1440 banner and an 800 x 800 profile picture. The same clips go out to Instagram, and to TikTok (in Beta), from <a href="/app/publish">the app's publishing page</a>. For TikTok creative beyond the clip, see the <a href="/solutions/platforms/tiktok">TikTok platform page</a>; for Shorts made by our studio, the <a href="/services/design/short-video">short video design service</a>.</p>
+
+  <h2>Changelog</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">What changed</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">October 3, 2024</th>
+          <td>YouTube announces Shorts up to 3 minutes, square or taller</td>
+          <td>YouTube blog</td>
+        </tr>
+        <tr>
+          <th scope="row">October 15, 2024</th>
+          <td>Three-minute Shorts take effect; earlier uploads stay long-form</td>
+          <td>YouTube Help</td>
+        </tr>
+        <tr>
+          <th scope="row">October 8, 2026</th>
+          <td>Page published; every value read from the platform pages that day</td>
+          <td>This page</td>
+        </tr>
+        <tr>
+          <th scope="row">October 8, 2026</th>
+          <td>Content ID rule corrected: the English page still says a claimed Short over 1 minute is blocked worldwide; the French page says new ones under 3 minutes are no longer blocked automatically from September 24, 2026. Both are now given</td>
+          <td>YouTube Help, English and French versions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>This page is updated in place. The next scheduled review is January 8, 2027.</p>
+
+  <h2>FAQ</h2>
+
+  <h3>What size should a YouTube Short be?</h3>
+
+  <p>Vertical 9:16 at 1080p, which works out to 1080 by 1920 pixels. YouTube's help center says Shorts upload at a maximum resolution of 1080p and that any square or vertical video up to three minutes counts as a Short. The pixel pair is arithmetic on that 1080p figure, not a number YouTube prints.</p>
+
+  <h3>How long can a YouTube Short be?</h3>
+
+  <p>Up to three minutes, for videos uploaded on or after October 15, 2024. Videos uploaded before that date stay long-form even if they would qualify today. One catch: YouTube's English help page says a Short over one minute with an active Content ID claim is blocked worldwide; the French page says new ones under three minutes are no longer blocked automatically from September 24, 2026. Clear the audio either way.</p>
+
+  <h3>Does a YouTube Short have to be 9:16?</h3>
+
+  <p>No. YouTube's rule is a square or vertical aspect ratio, so 1:1 qualifies as well as 9:16. Vertical fills the phone screen, which is why most teams export 9:16. A horizontal 16:9 video is never classified as a Short, however short it is, and a horizontal Shorts ad is served with blurred bars above and below.</p>
+
+  <h3>Can I upload a YouTube Short in 4K?</h3>
+
+  <p>YouTube's help pages say you can upload Short videos at a maximum resolution of 1080p. Export at 1080 by 1920 and you're working at the ceiling YouTube states. The custom Shorts thumbnail is a separate file and can be larger: YouTube asks for 2160 by 3840 pixels at 9:16, at least 640 pixels tall.</p>
+
+  <h3>Can I upload YouTube Shorts from a computer?</h3>
+
+  <p>Yes. In YouTube Studio, click Create, then Upload videos, and pick a square or vertical file of three minutes or less. You can select up to 15 at a time, then complete each draft's details before publishing. On a phone, the YouTube app's Shorts camera records clips that add up to three minutes, or uploads a vertical video.</p>
+
+  <h3>How do I change a YouTube Shorts thumbnail?</h3>
+
+  <p>Pick a frame from the Short, before or after upload, and add text or filters. For a custom image, use YouTube Studio on a computer with a verified account: Content, then Shorts, then the Short, then Upload file under Thumbnail. Make it 9:16. A 16:9 thumbnail on a vertical video is swapped for an automatic 4:5 crop on some pages.</p>
+
+  <h3>How long can a YouTube Shorts ad be?</h3>
+
+  <p>Up to three minutes, but only the first 60 seconds play in the Shorts feed, so Google's ad help recommends ads under 60 seconds. Use 9:16. The ads run in Demand Gen, Video view, Video reach, Performance Max, App and Reservation campaigns, between organic Shorts, and the viewer can swipe past at once.</p>
+
+  <h3>Why is my YouTube Short over a minute blocked?</h3>
+
+  <p>YouTube's English help page says any Short over one minute with an active Content ID claim, manual claims included, is blocked globally: it can't be played, recommended or monetized. The French version says new Shorts under three minutes are no longer blocked automatically from September 24, 2026. If yours is blocked, remove the claimed audio, cut it under 60 seconds or resolve the claim. Blocked or not, a claim can cost the Short its monetization.</p>
+</ArticleLayout>

@@ -1,0 +1,277 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How long can a YouTube Short be?",
+    "a": "Up to three minutes. YouTube treats a square or vertical video of three minutes or less, uploaded on or after October 15, 2024, as a Short. One catch: YouTube's English help page says a Short over one minute with an active Content ID claim is blocked everywhere; the French page says new ones under three minutes are no longer blocked automatically from September 24, 2026. Either way, a longer Short needs music you own or no music at all."
+  },
+  {
+    "q": "How long can a TikTok be when an app posts it?",
+    "a": "TikTok's developer documentation says every creator can post 3-minute videos through an app, and some accounts can post 5 or 10 minutes. hubStudio publishing to TikTok is in Beta and takes clips of 3 seconds to 10 minutes; when a clip runs longer than your account allows, the publishing step tells you."
+  },
+  {
+    "q": "How long can an Instagram Reel be?",
+    "a": "Instagram lets reels add up to 20 minutes, but says reels over 3 minutes are not recommended to new audiences. For clips cut from a long video, that makes three minutes the practical ceiling. Through hubStudio, a Reel can run from 3 seconds to 15 minutes, posted on a professional account."
+  },
+  {
+    "q": "Can I post the same clip on all three platforms?",
+    "a": "Yes. All three take a 9:16 file, and Shorts autopilot saves one MP4 at 1080 by 1920 that fits each. Keep it under a minute if its music could draw a Content ID claim, and give each network its own caption: the autopilot writes one per network you select. Upload the clean file everywhere, never a copy saved back from another app."
+  },
+  {
+    "q": "Do Shorts and Reels need burned-in captions?",
+    "a": "TikTok's own creative guidance recommends captions or text overlays. YouTube can add automatic captions, but viewers switch them on and YouTube warns they can misread speech. Captions burned into the picture are the ones you checked and every viewer sees. Shorts autopilot burns them in, timed word by word, in one of five looks."
+  },
+  {
+    "q": "Can I put music on a short?",
+    "a": "Yes, in the Video editor's Sound panel, from your computer or the library. Use only music you have the rights to. TikTok and Instagram mute or block a video whose music they don't license, and on YouTube a Content ID claim can block a Short over one minute or cost it its monetization."
+  },
+  {
+    "q": "Does hubStudio post my Shorts to YouTube?",
+    "a": "No. YouTube keeps uploads from apps it hasn't audited private, so hubStudio prepares the post instead: the video, a title and a description written to YouTube's rules. Publish interactively copies the title, opens YouTube Studio and downloads the video, and you publish or schedule it there."
+  }
+];
+---
+
+<HowtoLayout slug="long-video-to-shorts" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">A forty-minute interview already holds a week of short videos. What breaks the job is rarely the cutting. It's a clip that makes no sense without the question before it, or one that runs past the length a platform will take.</p>
+
+  <h2>How do you turn a long video into Shorts?</h2>
+
+  <p>Start from a recording of someone talking for several minutes. Find the moments that make sense with no setup, open each on its strongest line, crop it to 9:16 around the speaker, burn in captions timed word by word, then check each platform's limit. In hubStudio, Shorts autopilot does the cutting and the app gets every clip ready to post.</p>
+
+  <p>The three destinations take the same vertical file. They disagree on almost everything else.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Destination</th>
+          <th scope="col">Longest clip</th>
+          <th scope="col">Shape</th>
+          <th scope="col">Captions</th>
+          <th scope="col">How hubStudio publishes it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">YouTube Shorts</th>
+          <td>3 minutes; past 1 minute, no claimed music</td>
+          <td>Square or vertical</td>
+          <td>Automatic captions exist, review them; burn in your own</td>
+          <td>Prepared in the YouTube module, published by you in YouTube Studio</td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok</th>
+          <td>3 minutes for every account posting through an app, 5 or 10 for some</td>
+          <td>9:16</td>
+          <td>TikTok's guidance asks for captions or text overlays</td>
+          <td>Posted now or scheduled from the TikTok module (Beta), on your connected account</td>
+        </tr>
+        <tr>
+          <th scope="row">Instagram Reels</th>
+          <td>20 minutes, but past 3 minutes no reach to new audiences</td>
+          <td>9:16</td>
+          <td>Burned in, same file as the others</td>
+          <td>Posted now or scheduled from the Instagram module, on a professional account</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">YouTube counts a square or vertical video of up to three minutes, uploaded on or after October 15, 2024, as a Short. Its English help page says a Short over one minute with an active Content ID claim of any type is blocked globally; the French version says that from September 24, 2026, new Shorts under three minutes with a claim are no longer blocked automatically.</blockquote>
+  <p class="source">Source: YouTube Help, "Understand three-minute YouTube Shorts", English and French versions, read October 2026, the platform's own rule page.</p>
+
+  <blockquote class="evidence">All TikTok creators can post 3-minute videos through an app, and some can post 5 or 10 minutes.</blockquote>
+  <p class="source">Source: TikTok for Developers, Content Posting API media transfer guide, updated August 2026, the platform's own developer documentation.</p>
+
+  <blockquote class="evidence">Reels can add up to 20 minutes, but reels over 3 minutes are not recommended to new audiences.</blockquote>
+  <p class="source">Source: Instagram, Reels feature page, read October 2026, the platform's own feature description.</p>
+
+  <p>Every limit above was read on the platform's own page on October 8, 2026. They move without much notice. Check again before a big batch.</p>
+
+  <h2>What long video works best as a source?</h2>
+
+  <p>One or two people talking, for several minutes, with clean sound. Interviews, webinar Q&amp;As, video podcasts and recorded lives all qualify. A montage set to music doesn't, because there's nothing said to cut on.</p>
+
+  <p>Shorts autopilot picks its moments from speech, so a silent video can't be used at all, and anything under 45 seconds gets a warning. It takes MP4, MOV and WebM files up to 2 GB. Free listening in your browser works best on recordings under 20 minutes; past that, pick one of the fast ways, billed by the minute of sound.</p>
+
+  <p>Start from the best master you have, not a copy downloaded back from a platform, which can come out both softer and watermarked.</p>
+
+  <blockquote class="evidence">Instagram makes low-resolution, watermarked, muted, bordered or majority-text reels, and reels already posted on Instagram, less visible.</blockquote>
+  <p class="source">Source: Instagram, "Instagram Ranking Explained", May 2023, the platform's own account of how it ranks reels.</p>
+
+  <p>A screen recording with a voice-over still works. There's no face to follow, so frame it from the center.</p>
+
+  <h2>What makes a moment stand alone?</h2>
+
+  <p>A stranger scrolling past has heard none of the first half hour. The clip has to carry one complete idea from its first word to its last.</p>
+
+  <p>That's the brief Shorts autopilot works to. Each moment it keeps opens on a hook (a surprising claim, a question, a number), tells one idea through, and ends on a payoff, never in the middle of a sentence. Moments never overlap, so two clips don't repeat each other.</p>
+
+  <p>When you judge one yourself, listen for words that point backward: "as I said," "going back to that," "the second reason." Each one is a sign the moment leans on context the viewer doesn't have. Cut before it, or drop the clip.</p>
+
+  <p>Length follows the idea, not the other way around. The autopilot offers 15 to 30 seconds, 30 to 60 or 60 to 90. A tight answer to a sharp question fits the first band; a story with a turn in it needs the longer ones.</p>
+
+  <h2>Why do the first seconds decide the clip?</h2>
+
+  <p>Because that's when the scroll stops, or doesn't.</p>
+
+  <blockquote class="evidence">TikTok's guidance for ads puts the proposition in the first 3 seconds and the hook in the first 6, and recommends captions or text overlays.</blockquote>
+  <p class="source">Source: TikTok Ads Help Center, creative best practices, updated June 2025, recommendations for ads rather than a measured result.</p>
+
+  <p>Organic clips face the same thumb. Two things help. Start on the line, not the breath before it. Then put the point on screen: the autopilot's hook option writes a short line, drawn from the moment, in a white box at the top of the first few seconds. Read it against the clip. If it promises more than the speaker delivers, set the hook to None and write your own line with the Video editor's Text panel.</p>
+
+  <h2>How do you frame a speaker at 9:16?</h2>
+
+  <p>Crop a 16:9 interview to 9:16 at full height and you keep about a third of its width. The question is which third.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Framing</th>
+          <th scope="col">What it does</th>
+          <th scope="col">Use it for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Follow the speaker</th>
+          <td>Places the 9:16 crop on the person talking, moment by moment, read from three frames of each moment</td>
+          <td>One speaker, or a two-shot where people take turns</td>
+        </tr>
+        <tr>
+          <th scope="row">Center</th>
+          <td>Keeps the middle of the picture</td>
+          <td>Slides, screen recordings, a centered single shot</td>
+        </tr>
+        <tr>
+          <th scope="row">Whole picture, blurred around</th>
+          <td>Cuts nothing; the video sits over a blurred copy of itself</td>
+          <td>A wide shot a crop would ruin</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The blurred fill keeps everyone in frame. It can also read as a border, and Instagram says it shows bordered reels less, so keep it for the shot nothing else can save. A video already shot upright reads Already vertical and skips the step.</p>
+
+  <p>Then mind the edges. On a phone, the network's name, caption, reply box and buttons sit on top of the picture. The Video editor shows those zones in red, flags captions that sit under them, and offers a button to move them into the safe area.</p>
+
+  <h2>Why burn in captions timed word by word?</h2>
+
+  <p>Because a muted viewer still reads. Captions burned into the picture are the only ones every viewer sees, on every network, without touching a setting.</p>
+
+  <blockquote class="evidence">YouTube's automatic captions can misrepresent speech through mispronunciations, accents, dialects or background noise, and YouTube says to review and edit them.</blockquote>
+  <p class="source">Source: YouTube Help, "Use automatic captioning", read October 2026, the platform's own help page.</p>
+
+  <p>Burned-in captions carry the same risk, so read them. Names and numbers are where a speech model slips most. The autopilot offers the Video editor's five looks: Classic, Karaoke (the word being said lights up), One word, Boxed and Highlight. Set the Language spoken, or let it detect it.</p>
+
+  <h2>How do you make the clips in hubStudio?</h2>
+
+  <p>That's the craft. Here is the same job in the app, which <a href="/help/shorts-autopilot">the Shorts autopilot help article</a> shows screen by screen:</p>
+
+  <ul>
+    <li><strong>Open Shorts autopilot.</strong> It has its own entry in the menu. From the Assets Library, Make shorts in a video's Actions menu opens it with that video picked.</li>
+    <li><strong>Pick the long video.</strong> Drop it on the page, or choose it From the Assets Library. A file from your computer stays there: only its sound (unless you listen for free in the browser) and a few frames of each moment leave it.</li>
+    <li><strong>Set the choices.</strong> The networks under For, how many shorts (3, 5, 8 or 10), their length, the framing, the caption look, the hook line, the way of listening and the language. A price line, starting with About, shows the total before you start.</li>
+    <li><strong>Make the shorts.</strong> The autopilot listens, picks, frames, writes and saves. Keep the tab open, since your browser writes the videos. Stop the autopilot keeps whatever is already written.</li>
+    <li><strong>Review them.</strong> Each short arrives with a Score out of 100 (how strongly it should work alone), a line on why it was picked, and a caption for each network with a Copy button. Each is an MP4 at 1080 by 1920, saved next to the original.</li>
+    <li><strong>Finish in the Video editor.</strong> Edit in the Video editor opens a short on its Social panel, set to TikTok: trim it, move the captions, add music, pick a cover. Editing is free.</li>
+    <li><strong>Post it.</strong> In the TikTok (Beta) or Instagram module, use Pick from the library, paste the caption, then publish now or schedule. For YouTube, see the next section.</li>
+  </ul>
+
+  <p>The run is charged against your prepaid balance: listening by the minute (or free in your browser), then one charge each for picking and framing. Writing the videos costs nothing.</p>
+
+  <h2>How do the clips go out over a week?</h2>
+
+  <p>TikTok and Instagram can run on a schedule. In each module, pick a day and a time; hubStudio checks its queue every five minutes and posts on your connected account. TikTok needs your own account on My Connections, and caps an account at about 15 posts a day. Instagram needs a professional account, and any video goes out as a Reel. <a href="/app/publish">The publish page of the app</a> sets out how each network goes out.</p>
+
+  <p>YouTube is different on purpose. YouTube keeps every upload from an app it hasn't audited private, so hubStudio doesn't upload there. The YouTube module takes the short from the library and writes its title and description; an upright or square video of three minutes or less is marked Short. Publish interactively copies the title, opens YouTube Studio and downloads the video. You upload it, answer YouTube's questions, and pick Public or Schedule there.</p>
+
+  <p>Spread the batch. Post the strongest clip first and give each network its own caption, which the autopilot already wrote. Don't post the same clip on Instagram twice: Instagram shows reels already posted there less. A clip that needs sign-off can go to a teammate or a client through Send for validation first.</p>
+
+  <h2>What should you check before a clip goes out?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">Why it matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Length fits every destination</th>
+          <td>Past 3 minutes, only some TikTok accounts can take it through an app, and Instagram stops showing it to new audiences</td>
+        </tr>
+        <tr>
+          <th scope="row">Music is licensed, or there is none</th>
+          <td>YouTube's English page blocks a claimed Short over 1 minute worldwide; its French page lifts the automatic block for new ones under 3 minutes from September 24, 2026; either way a claim can cost monetization. TikTok and Instagram mute or block unlicensed music</td>
+        </tr>
+        <tr>
+          <th scope="row">The first second is the first line</th>
+          <td>The hook window is a few seconds wide</td>
+        </tr>
+        <tr>
+          <th scope="row">The hook line matches what is said</th>
+          <td>An opening the clip doesn't pay off reads as bait</td>
+        </tr>
+        <tr>
+          <th scope="row">Every caption reads right, inside the safe area</th>
+          <td>Speech models slip on names and numbers; the buttons cover the edges</td>
+        </tr>
+        <tr>
+          <th scope="row">The clip ends on a full sentence</th>
+          <td>A cut mid-thought reads as a mistake</td>
+        </tr>
+        <tr>
+          <th scope="row">The file is the clean master</th>
+          <td>Instagram shows watermarked and low-resolution reels less</td>
+        </tr>
+        <tr>
+          <th scope="row">YouTube Studio's questions are answered</th>
+          <td>Every upload asks whether it's made for kids, and asks about realistic altered content</td>
+        </tr>
+        <tr>
+          <th scope="row">Manual posts are marked published</th>
+          <td>hubStudio isn't told when you post on YouTube yourself</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>If you'd rather hand the whole job over, <a href="/services/design/short-video">the short video service</a> is the studio cutting the same recording to a brief. <a href="/solutions/platforms/tiktok">The TikTok platform page</a> covers what the studio makes for TikTok, and <a href="/resources/how-to">the how-to guides</a> carry the other workflows.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>How long can a YouTube Short be?</h3>
+
+  <p>Up to three minutes. YouTube treats a square or vertical video of three minutes or less, uploaded on or after October 15, 2024, as a Short. One catch: YouTube's English help page says a Short over one minute with an active Content ID claim is blocked everywhere; the French page says new ones under three minutes are no longer blocked automatically from September 24, 2026. Either way, a longer Short needs music you own or no music at all.</p>
+
+  <h3>How long can a TikTok be when an app posts it?</h3>
+
+  <p>TikTok's developer documentation says every creator can post 3-minute videos through an app, and some accounts can post 5 or 10 minutes. hubStudio publishing to TikTok is in Beta and takes clips of 3 seconds to 10 minutes; when a clip runs longer than your account allows, the publishing step tells you.</p>
+
+  <h3>How long can an Instagram Reel be?</h3>
+
+  <p>Instagram lets reels add up to 20 minutes, but says reels over 3 minutes are not recommended to new audiences. For clips cut from a long video, that makes three minutes the practical ceiling. Through hubStudio, a Reel can run from 3 seconds to 15 minutes, posted on a professional account.</p>
+
+  <h3>Can I post the same clip on all three platforms?</h3>
+
+  <p>Yes. All three take a 9:16 file, and Shorts autopilot saves one MP4 at 1080 by 1920 that fits each. Keep it under a minute if its music could draw a Content ID claim, and give each network its own caption: the autopilot writes one per network you select. Upload the clean file everywhere, never a copy saved back from another app.</p>
+
+  <h3>Do Shorts and Reels need burned-in captions?</h3>
+
+  <p>TikTok's own creative guidance recommends captions or text overlays. YouTube can add automatic captions, but viewers switch them on and YouTube warns they can misread speech. Captions burned into the picture are the ones you checked and every viewer sees. Shorts autopilot burns them in, timed word by word, in one of five looks.</p>
+
+  <h3>Can I put music on a short?</h3>
+
+  <p>Yes, in the Video editor's Sound panel, from your computer or the library. Use only music you have the rights to. TikTok and Instagram mute or block a video whose music they don't license, and on YouTube a Content ID claim can block a Short over one minute or cost it its monetization.</p>
+
+  <h3>Does hubStudio post my Shorts to YouTube?</h3>
+
+  <p>No. YouTube keeps uploads from apps it hasn't audited private, so hubStudio prepares the post instead: the video, a title and a description written to YouTube's rules. Publish interactively copies the title, opens YouTube Studio and downloads the video, and you publish or schedule it there.</p>
+</HowtoLayout>

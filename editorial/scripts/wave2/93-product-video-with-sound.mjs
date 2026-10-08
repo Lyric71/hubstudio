@@ -1,0 +1,71 @@
+// editorial/scripts/wave2/93-product-video-with-sound.mjs
+export default {
+  id: "93",
+  date: "2026-11-10",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "product-video-with-sound",
+  h1: "How to make a product video with generated sound",
+  query: "AI video with sound",
+  secondary: [
+    "AI video generator with audio",
+    "add sound to AI video",
+    "AI product video with sound effects",
+    "native audio AI video",
+  ],
+  verdict:
+    "Model resellers and aggregator pages rank with lists of engines that make audio; none shows how to write sound into a product prompt, when generated sound beats a music bed, or the rights question on music.",
+  words: 1700,
+  angle:
+    "Sound is part of the prompt, not a later step. Name the effect, the ambience, and whether there is music or silence, and the engine composes it with the picture. For product video that means the click, the pour, the room, and knowing when to leave a captioned feed clip silent. Taught with Generate sound in the Video studio and music in the Video editor.",
+  mustInclude: [
+    "Three kinds of sound (effects tied to an action, ambience, voice) and what generated sound does poorly: an exact line, a brand jingle, licensed music",
+    "Writing sound into the prompt: effects in their own sentence, silence asked for explicitly",
+    "In the app, per the help center: the Generate sound option shows only when the engine and the mode offer sound; on some engines sound costs more per second; Kling 2.6 offers sound in Pro mode only; Seedance 1.0 Pro Fast has none; Wan 3.0 has no switch",
+    "Reference to video with sound files on the engines that take them (Wan 3.0, Seedance 2.0 and 2.5, Grok Imagine 1.5, MiniMax H3), per the help center",
+    "Music after the render: the Video editor's Sound panel (level of each clip, music from the computer or the library, start point, fade out) and the rule: use only music you hold the rights to, since TikTok and Instagram mute or block unlicensed music",
+    "Captions for sound-off viewing: word-by-word captions in the Video editor",
+    "Three worked prompts: a pour, a mechanical click, an ambient lifestyle scene",
+  ],
+  doNot: [
+    "Name a music library, an audio tool or a reseller",
+    "Claim voice cloning or lip sync in the app",
+    "Print a price per second",
+    "Use an em dash",
+  ],
+  stats: [
+    "App behavior: create-a-video.md and assets-library.md",
+    "Platform muting rules: TikTok and Instagram help pages, dated, if the article states more than the help center does",
+    "Any sound-off viewing figure only from a platform's own page with its date and method",
+  ],
+  assets: [
+    "Table: engine, sound option, note (from the help center)",
+    "Prompt anatomy with a sound line",
+    "Three prompt blocks",
+  ],
+  links: [
+    ["AI sound for video", "/resources/insights/ai-sound-for-video"],
+    ["Video studio", "/app/create"],
+    ["word-by-word captions guide", "/resources/how-to/word-by-word-video-captions"],
+    ["animate a product photo", "/resources/how-to/animate-product-photo"],
+    ["short video service", "/services/design/short-video"],
+  ],
+  seoTitle: "How to Make a Product Video with Generated Sound",
+  seoDesc:
+    "Write sound into the prompt: effects, ambience, silence. Which engines generate audio, when to add music instead, and the rights rule on music.",
+  faqs: [
+    "Can AI generate video with sound?",
+    "How do I add sound effects to an AI video?",
+    "Which AI video generators create audio?",
+    "Can I add my own music to an AI-generated video?",
+    "Why was my video muted on Instagram or TikTok?",
+    "Does generated sound cost more?",
+  ],
+  cta: "Create your account",
+  notes: "Help: create-a-video.md (Generate sound), assets-library.md (Sound and Captions panels).",
+};

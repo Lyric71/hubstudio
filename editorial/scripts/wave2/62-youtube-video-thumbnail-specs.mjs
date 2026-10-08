@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/62-youtube-video-thumbnail-specs.mjs
+export default {
+  id: '62',
+  date: '2026-10-08',
+  family: 'spec',
+  template: 'spec',
+  brief: true,
+  status: 'not_started',
+  cluster: 'Platform specs',
+  contentType: 'Spec page',
+  readerStage: 'practitioner',
+  slug: 'youtube-video-thumbnail-specs',
+  h1: 'YouTube thumbnail size and video specs for 2026',
+  query: 'youtube thumbnail size 2026',
+  secondary: [
+    'youtube video specs',
+    'youtube recommended upload settings',
+    'youtube banner size',
+    'youtube video resolution',
+  ],
+  verdict:
+    'Page one is tool-vendor and design-blog spec sheets: most still print 1280x720 and a 2MB cap as the thumbnail rule while YouTube Help now recommends 3840x2160 with a 50MB desktop limit, banner guides print a 1546x423 safe area YouTube does not publish, and none cites the Help Center page per row or covers the verification gate, the 4:5 replacement on vertical videos or the A/B test downscale.',
+  words: 1500,
+  angle:
+    'Long-form video specs (the recommended upload encoding settings, the 16:9 resolution ladder, aspect ratio handling, size and length limits), custom thumbnail rules (size, ratio, file size by device, formats, the phone verification requirement), the channel banner and profile picture, all read from YouTube Help Center pages only, each row with its source page. Visible "Reviewed October 8, 2026". Primary readings, so no deviation 7 disclaimer.',
+  mustInclude: [
+    'A video spec table with a source column',
+    'A thumbnail spec table with a source column',
+    'A channel art table (banner, profile picture, watermark) with a source column',
+    'The thumbnail safe area for text: YouTube publishes none, the duration badge observed on the live site, the banner safe area as YouTube publishes it',
+    'Common failures, each taken from an official YouTube Help page',
+    'How hubStudio fits: the YouTube module (video, title and description, then Publish interactively in YouTube Studio), the Channel tab kit at 2560x1440 and 800x800, a thumbnail made in the Image studio and finished in the Image editor; facts only from src/content/help/youtube.md, create-an-image.md, assets-library.md and hubstudio-positioning.md',
+    'A dated changelog block',
+  ],
+  doNot: [
+    'Name or describe any spec-sheet publisher, tool vendor or scheduling product',
+    'Print 1280x720 or 2MB as the current YouTube thumbnail recommendation',
+    'Print 1546x423 as a YouTube safe area: YouTube publishes 1235x338 at the minimum banner size',
+    'Print GIF or BMP as YouTube thumbnail formats: the Help page names JPG and PNG',
+    'Claim hubStudio uploads to YouTube, connects to a YouTube account, schedules on YouTube or sets a thumbnail',
+    'Print a price, an amount or the word credits',
+  ],
+  stats: [
+    'YouTube Help, custom thumbnails: 3840x2160 for videos, minimum width 640; JPG or PNG; 2MB on mobile, 50MB on desktop; 16:9; account must be verified',
+    'YouTube Help, custom thumbnails: vertical videos with 16:9 custom thumbnails replaced by an auto-generated 4:5 thumbnail on home, explore and subscriptions',
+    'YouTube Help, A/B test: a thumbnail under 1280x720 downscales every test thumbnail to 854x480',
+    'YouTube Help, encoding settings: MP4, H.264 High Profile, AAC-LC or Opus, 48kHz; bitrates per resolution (1080p 8 and 12 Mbps SDR, 4K 35 to 45 and 53 to 68 Mbps)',
+    'YouTube Help, resolution: 16:9 ladder from 426x240 to 7680x4320',
+    'YouTube Help, longer than 15 minutes: 256GB or 12 hours, whichever is less; over 15 minutes needs verification',
+    'YouTube Help, channel branding: banner 2048x1152 minimum, 2560x1440 recommended, safe area 1235x338 at the minimum, 6MB; profile picture JPG GIF BMP PNG, 15MB, renders at 98x98; watermark 150x150 minimum, under 1MB',
+  ],
+  assets: [
+    'Hero image: public/Images/insight-youtube-video-thumbnail-specs.webp',
+    'App shots reused from src/data/app-shots.ts: youtube, youtubeChannel',
+  ],
+  links: [
+    ['video production service', '/services/design/video-production'],
+    ['YouTube help article', '/help/youtube'],
+    ['Assets Library page', '/app/library'],
+    ['YouTube Shorts specs', '/resources/insights/youtube-shorts-specs'],
+  ],
+  seoTitle: 'YouTube Thumbnail Size 2026: Video and Banner Specs',
+  seoDesc:
+    'YouTube thumbnail, video and banner specs read from YouTube Help: 3840x2160 thumbnails, upload encoding settings, banner safe area, and what breaks.',
+  faqs: [
+    'What is the YouTube thumbnail size in 2026?',
+    'Why can\'t I upload a custom thumbnail on YouTube?',
+    'What is the maximum thumbnail file size on YouTube?',
+    'What resolution should I upload to YouTube?',
+    'What are YouTube\'s recommended upload settings?',
+    'What size is a YouTube banner and where is the safe area?',
+    'How long can a YouTube video be?',
+  ],
+  cta: 'Create your account',
+  notes:
+    'Primary Western spec page: Reviewed date visible, watch row 2027-01-08 for the quarterly recheck. Author Erik Lindström (Film Director). Companion: youtube-shorts-specs, published the same day.',
+};

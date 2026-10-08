@@ -1,0 +1,71 @@
+// editorial/scripts/wave2/87-design-templates-vs-generative-ai.mjs
+export default {
+  id: "87",
+  date: "2026-11-03",
+  family: "comparison",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Comparisons",
+  contentType: "Comparison",
+  readerStage: "budget-holder",
+  slug: "design-templates-vs-generative-ai",
+  h1: "Template design tools or generative AI for product visuals",
+  query: "design templates vs AI product images",
+  secondary: [
+    "AI vs templates for social media graphics",
+    "template tool vs AI image generator",
+    "templates or AI for ecommerce images",
+    "editable AI designs vs flat images",
+  ],
+  verdict:
+    "Vendors of AI layout and template products rank, each arguing for its own hybrid, with speed and satisfaction claims that carry no method; the honest split by job is missing: templates own layout, live text and repeatability, generation owns the picture itself, and the real question is where the handoff sits.",
+  words: 2000,
+  angle:
+    "Templates and generation do different jobs. A template is a layout you refill: type, price, logo and legal line stay editable and identical. Generation makes the picture a template can only hold. Compare them job by job (product picture, lifestyle scene, sale banner, carousel, localized variant) and show where the handoff happens.",
+  mustInclude: [
+    "A job-by-job decision table: job, template, generation, both",
+    "What templates do that generation does not: live, editable text; exact brand type; legal lines that never change; batch refills",
+    "What generation does that templates cannot: a new scene, angle, model or season without a shoot",
+    "The failure modes of each: template sameness across a feed; text fused into a generated picture; drift across runs",
+    "The handoff as the hubStudio app supports it: generate in the Image studio, then add text, a logo or a watermark and crop to network formats in the free Image editor; Skills carry the house style into Improve with AI; Validation for sign-off",
+    "Cost models side by side, by category and date: seat subscriptions against paying per run; hubStudio is paid from a prepaid balance with the price shown before each run, no subscription, no seat fees, no amount printed",
+    "When a studio is the better answer: a campaign system rather than a template",
+  ],
+  doNot: [
+    "Name any template tool, design platform or AI vendor",
+    "Quote a speed or satisfaction figure from a vendor page",
+    "Claim brand kits, templates or a layout editor in hubStudio",
+    "Print any hubStudio amount, or describe the balance as anything but a prepaid balance in real currency",
+    "Use an em dash",
+  ],
+  stats: [
+    "Category seat-price ranges for template tools, only from published pricing pages collected on a stated date, attributed to the category, never to a company",
+    "No speed, satisfaction or conversion percentage without a source that states its method",
+  ],
+  assets: [
+    "Decision table by job",
+    "Cost model table: per seat, per run, studio",
+    "Handoff diagram described in the ASSET BRIEF",
+  ],
+  links: [
+    ["readable text in AI images", "/resources/how-to/readable-text-in-ai-images"],
+    ["Image tools", "/app/image-tools"],
+    ["stock photos or AI images", "/resources/insights/stock-photos-vs-ai-images"],
+    ["one app or a stack of tools", "/resources/insights/one-app-vs-tool-stack-social-content"],
+    ["social media design service", "/services/design/social-media"],
+  ],
+  seoTitle: "Design Templates or Generative AI for Products",
+  seoDesc:
+    "Templates own layout and live text, generation owns the picture. A job-by-job comparison for product visuals, with costs by category and the handoff.",
+  faqs: [
+    "Is AI better than design templates for product images?",
+    "Can AI images replace templates for social posts?",
+    "Why does text look wrong in AI-generated images?",
+    "Can I edit text in an AI-generated image?",
+    "Are design templates cheaper than AI image tools?",
+    "How do I keep AI images consistent with my brand templates?",
+  ],
+  cta: "Create your account",
+  notes: "Category Buying models. Compares ways of working, never a named tool.",
+};

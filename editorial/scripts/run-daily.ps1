@@ -50,10 +50,11 @@ if (-not $Force -and (Get-Date).Date -lt $PlanStart) {
   exit 0
 }
 
-# Slots are Mon, Tue, Thu, Fri. The schedule has no rows on Wednesday or the weekend.
+# Wave two has rows Monday to Friday, two on the busiest days, so the draft
+# task fires twice each weekday and each run takes one row. No weekend rows.
 if ($Mode -eq 'draft' -and -not $Force) {
   $Dow = (Get-Date).DayOfWeek
-  if ($Dow -in 'Saturday', 'Sunday', 'Wednesday') {
+  if ($Dow -in 'Saturday', 'Sunday') {
     "$(Get-Date -Format s) no draft on $Dow" | Out-File $RunLog -Encoding utf8
     exit 0
   }
@@ -66,13 +67,21 @@ if ($Mode -eq 'draft') {
   $Prompt = @'
 Draft today's article.
 
-Read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md first and
-follow them exactly. Run steps 0 to 3 of the pipeline: the research gate R1 to
-R7 writing editorial/research/<slug>.md before any body copy, then
-/createarticle, then /content-quality-us on the finished draft, then
-/generate-image-openai for the hero image. Update editorial/schedule.csv and
-write the run log from editorial/logs/TEMPLATE.md. Stop at image_ready. Do not
-publish. Do not commit.
+Read editorial/CLAUDE.md (its "Wave two" section included), editorial/SPEC.md,
+editorial/RUNBOOK.md and hubstudio-positioning.md first and follow them
+exactly. Take ONE row from editorial/schedule.csv: the earliest row whose
+status is not_started and whose publish_date is today or earlier. If none
+qualifies, record that nothing is due and end. Its brief is the brief_file of
+that row, rendered from editorial/scripts/wave2/<id>-<slug>.mjs for wave two.
+Run steps 0 to 3 of the pipeline: the research gate R1 to R7 writing
+editorial/research/<slug>.md before any body copy, then /createarticle, then
+/content-quality-us on the finished draft, then /generate-image-openai for the
+hero image, saved to public/Images/howto-<slug>.webp for template howto and
+public/Images/insight-<slug>.webp otherwise. A how-to that shows the app uses
+only facts from hubstudio-positioning.md and src/content/help, and names
+existing localized captures in its ASSET BRIEF. Update editorial/schedule.csv
+and write the run log from editorial/logs/TEMPLATE.md. Stop at image_ready. Do
+not publish. Do not commit.
 
 Three rules that override everything: no competitor is ever named, described,
 compared to or alluded to; no hubStudio rate is ever published; no China
@@ -115,6 +124,16 @@ from dictionaries, in the step below. File each article under an insights.ts cat
 placement in src/data/insight-placements.ts already claims, choosing the one
 whose page a buyer of that topic would read. Never invent a category no layer
 claims: the schedule's cluster (Research, Playbook, Data) is not a category.
+
+Wave two rows (editorial/CLAUDE.md, "Wave two") publish by their template.
+template howto (how-to and engine guides): node editorial/scripts/publish-draft.mjs
+on the output file, which writes src/pages/resources/how-to/<slug>.astro and the
+entry at the top of src/data/howtos.ts; its French slug goes in the HOWTOS map
+of src/i18n/routes.ts. template spec: publish as an insight under the category
+Platform specs (the specs hub at /resources/specs lists it by itself).
+Comparisons file under Buying models, industry pages under Production. Embed
+the localized app captures a how-to's ASSET BRIEF names; a showcase clip that
+does not exist yet follows settled fallback 12.
 
 Then publish it in French and Chinese too (step 4b in editorial/CLAUDE.md),
 following src/i18n/TRANSLATING.md exactly: give the article its French slug in

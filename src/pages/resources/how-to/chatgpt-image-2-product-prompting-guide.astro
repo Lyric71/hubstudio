@@ -1,0 +1,345 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "Can ChatGPT Image 2 make a transparent background?",
+    "a": "OpenAI lists transparent backgrounds on gpt-image-2 as a preview, PNG or WebP only. When we asked its API for one on October 8, 2026, it refused with \"Transparent background is not supported for this model.\" For a cutout you need now, use ChatGPT Image 2.5 Flare or Sunburst, where OpenAI documents it without the preview label, and check the alpha channel of the file."
+  },
+  {
+    "q": "How many reference images can ChatGPT Image 2 take?",
+    "a": "OpenAI's edits endpoint accepts up to 16 input images for its GPT Image models, and gpt-image-2 reads every one at high fidelity. In hubStudio's Image studio, an edit on ChatGPT Image 2 takes up to four. Label them in the prompt, \"Image 1: product photo,\" and say what each one is for. A mask, if you add one, applies to the first image."
+  },
+  {
+    "q": "What is the maximum resolution of ChatGPT Image 2?",
+    "a": "The long edge can reach 3,840 pixels, with up to 8,294,400 pixels in total and a ratio no wider than 3:1. OpenAI treats anything above 2,560 by 1,440 as experimental, because results vary more up there. In hubStudio that's the 4K setting, so check a 4K render at full size before you approve it."
+  },
+  {
+    "q": "Can ChatGPT Image 2 put readable text on a product label?",
+    "a": "Short text, yes. In our test the headline, product name and volume came back exact when quoted in the prompt. A nine-name ingredient list in small type had two names misspelled, which fits OpenAI's own limitation on text clarity. Quote the headlines and spell brand names out. Small legal copy belongs in a layout tool."
+  },
+  {
+    "q": "Does a mask keep the rest of the image unchanged?",
+    "a": "Not exactly. OpenAI calls masking on these models prompt-based: the engine uses the mask as guidance and may not follow its shape precisely. In our test the new object ran past the mask edge, and pixels across the rest of the frame shifted slightly. If the rest must stay identical, composite the masked area back onto the original file."
+  },
+  {
+    "q": "Should I use ChatGPT Image 2 or ChatGPT Image 2.5?",
+    "a": "OpenAI now points new integrations to its GPT Image 2.5 models: Sunburst \"where editing precision matters most,\" Flare for \"fast, high-quality everyday image generation.\" Both add higher quality settings and support transparency without the preview label. ChatGPT Image 2 still runs in hubStudio. Test your own product on each before you settle a workflow."
+  },
+  {
+    "q": "Do ChatGPT Image 2 images carry AI metadata?",
+    "a": "Every file we got back on October 8, 2026 carried C2PA Content Credentials: signed metadata naming gpt-image-2 and marking the picture as made by a trained algorithm. OpenAI notes that editing, converting or sharing a file can remove that metadata, so agree on your disclosure policy before files leave the team."
+  }
+];
+---
+
+<HowtoLayout slug="chatgpt-image-2-product-prompting-guide" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">ChatGPT Image 2 follows a written product brief closely and sets short label text cleanly. It still slips on small print, re-renders the whole frame on a masked edit, and on October 8, 2026, it refused to return a transparent background.</p>
+
+  <h2>How do you write ChatGPT Image 2 prompts for product images?</h2>
+
+  <p>Write the prompt like a shot list: what the image is for, the scene, the product, every word on the pack in quotes, one light, the lens, then what must not change. If the product already exists, start from its photo instead of describing it. In hubStudio, ChatGPT Image 2 runs in the Image studio, and Improve with AI rewrites your prompt for it.</p>
+
+  <p>What follows comes from two places only. One is OpenAI's own documentation for the engine, read October 8, 2026. The other is six test runs we made the same day for a fictional serum brand called Orren. Where the two disagree, you'll see both.</p>
+
+  <h2>What can ChatGPT Image 2 do, according to OpenAI?</h2>
+
+  <p>ChatGPT Image 2 is the name the engine carries in hubStudio. OpenAI's API calls it gpt-image-2, and its current snapshot is dated April 21, 2026. The model page calls it a model "for fast, high-quality image generation and editing," which is the maker's own claim. The limits below are what a production team plans around.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Capability</th>
+          <th scope="col">What OpenAI documents</th>
+          <th scope="col">In the hubStudio Image studio</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Sizes</th>
+          <td>Edges in multiples of 16 px, long edge up to 3,840 px, ratio up to 3:1</td>
+          <td>1K, 2K or 4K (up to 3,840 px); Panorama 3:1 and Tall 1:3</td>
+          <td>OpenAI guide; hubStudio help center</td>
+        </tr>
+        <tr>
+          <th scope="row">Reliable range</th>
+          <td>Anything above 2,560 by 1,440 is "experimental"</td>
+          <td>The 4K setting sits in that band</td>
+          <td>OpenAI guide and prompting guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Quality</th>
+          <td>Low, medium, high, or auto</td>
+          <td>Low, Medium, High</td>
+          <td>OpenAI guide; help center</td>
+        </tr>
+        <tr>
+          <th scope="row">Images per request</th>
+          <td>1 to 10</td>
+          <td>1 to 10 per run</td>
+          <td>OpenAI API reference; help center</td>
+        </tr>
+        <tr>
+          <th scope="row">Reference images</th>
+          <td>Up to 16 per edit, always read at high fidelity</td>
+          <td>Up to 4 per edit, resized to 1,536 px on the long side</td>
+          <td>OpenAI API reference; help center</td>
+        </tr>
+        <tr>
+          <th scope="row">Prompt length</th>
+          <td>32,000 characters</td>
+          <td>4,000 characters</td>
+          <td>OpenAI API reference; help center</td>
+        </tr>
+        <tr>
+          <th scope="row">Mask</th>
+          <td>A file with an alpha channel, same size and format as the image, under 50 MB</td>
+          <td>An optional mask PNG on an edit</td>
+          <td>OpenAI guide; help center</td>
+        </tr>
+        <tr>
+          <th scope="row">Transparent background</th>
+          <td>In preview; PNG or WebP only</td>
+          <td>Background: Auto, Opaque or Transparent</td>
+          <td>OpenAI API reference; help center</td>
+        </tr>
+        <tr>
+          <th scope="row">File formats</th>
+          <td>PNG by default, JPEG, WebP, with compression for JPEG and WebP</td>
+          <td>PNG, JPG, WebP, with File quality</td>
+          <td>OpenAI guide; help center</td>
+        </tr>
+        <tr>
+          <th scope="row">Content filter</th>
+          <td>Auto, or low for less restrictive filtering</td>
+          <td>Less strict content filter</td>
+          <td>OpenAI guide; help center</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">OpenAI documents gpt-image-2 sizes as any width and height in multiples of 16 pixels, up to 3,840 pixels on the long edge, a ratio no wider than 3:1 and 655,360 to 8,294,400 pixels in total. It calls anything above 2,560 by 1,440 experimental, because "results can be more variable above this size."</blockquote>
+  <p class="source">Source: OpenAI image generation guide and GPT Image prompting guide, read October 8, 2026, the maker's API documentation.</p>
+
+  <p>Two rows change how you work. The 4K setting is real, but it lives in the band OpenAI calls experimental, so a 4K master gets inspected at full size before anyone signs it off. And the engine reads every reference image at high fidelity on its own: OpenAI's guide says there's no fidelity setting to change on this model, so the detail you get back depends on the photo you put in.</p>
+
+  <h2>What does OpenAI say the engine still gets wrong?</h2>
+
+  <p>OpenAI publishes four limitations for its GPT Image models, and it's worth reading them as a product team would.</p>
+
+  <blockquote class="evidence">Complex prompts can take up to two minutes. The model "can still struggle with precise text placement and clarity," may drift on "recurring characters or brand elements across multiple generations," and may place elements imprecisely in "structured or layout-sensitive compositions."</blockquote>
+  <p class="source">Source: OpenAI image generation guide, "Limitations," read October 8, 2026, the maker's own list.</p>
+
+  <p>Two of the four decide whether a product image ships. Text decides whether the label survives. Consistency decides whether your fifth render still shows the same bottle as your first. Both turned up in our runs.</p>
+
+  <h2>What happened when we ran it?</h2>
+
+  <p>We ran six tests through OpenAI's Images API on October 8, 2026, all on gpt-image-2 at high quality. The product was a 50 ml amber dropper bottle and a white carton for the same fictional brand.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Test</th>
+          <th scope="col">What we asked</th>
+          <th scope="col">What came back</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Packshot from text</th>
+          <td>The bottle, two quoted label lines, one softbox, 85mm, an off-white sweep</td>
+          <td>Both label lines exact, one shadow, the product centered</td>
+        </tr>
+        <tr>
+          <th scope="row">Lifestyle from text</th>
+          <td>The same bottle described in words, on a windowsill, with a hand</td>
+          <td>A usable frame, but the label came back in a serif and the bottle reshaped</td>
+        </tr>
+        <tr>
+          <th scope="row">Text on pack</th>
+          <td>A carton with three quoted front lines and a nine-name ingredient list</td>
+          <td>Front lines exact; two of the nine ingredient names misspelled</td>
+        </tr>
+        <tr>
+          <th scope="row">Reference edit</th>
+          <td>The packshot as Image 1, a new setting, a list of what to keep</td>
+          <td>Label text and typeface held; the new light direction followed</td>
+        </tr>
+        <tr>
+          <th scope="row">Transparent background</th>
+          <td>The bottle isolated, background set to transparent, PNG</td>
+          <td>Refused, twice, under both model names</td>
+        </tr>
+        <tr>
+          <th scope="row">Masked edit</th>
+          <td>The lifestyle frame, a mask over a dish, linen in its place</td>
+          <td>Dish replaced; the linen ran past the mask and the rest shifted slightly</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">OpenAI lists transparent backgrounds on gpt-image-2 as a preview. Our direct API request for one was refused: "Transparent background is not supported for this model."</blockquote>
+  <p class="source">Source: OpenAI API reference and prompting guide, read October 8, 2026; hubStudio test runs, two requests to the Images API, October 8, 2026.</p>
+
+  <blockquote class="evidence">In our masked edit, 2.4 percent of the pixels outside the mask moved by more than 20 levels out of 255, and the new object ran past the mask edge.</blockquote>
+  <p class="source">Source: hubStudio test run, one gpt-image-2 edit at high quality, October 8, 2026, measured by comparing the input and output files pixel by pixel.</p>
+
+  <p>The mask result is what OpenAI's guide predicts. It says masking on these models "is entirely prompt-based" and that the model "may not follow its exact shape with complete precision." So a mask tells the engine where to work. It isn't a stencil.</p>
+
+  <p>The two bottle shots carry the real lesson. Don't describe your product twice. Render or shoot one approved hero, then hand it back as the reference for every other shot (in our run, the label survived the move to a new set intact).</p>
+
+  <h2>What's the prompt formula for a product shot?</h2>
+
+  <p>OpenAI's prompting guide asks for the scene, the subject, the key details and the constraints, in that order, plus what the image is for, with short labeled lines once a prompt gets long. For product work we add two slots of our own: the text, and what to keep.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Use: where the image runs (product page, social post, banner)<br />Scene: surface, background, time of day<br />Subject: the product, its material and finish, which side faces the camera<br />Text: every word on the pack, in quotes, with typeface, size and placement<br />Light and camera: one light source and its side, lens, height, aperture, framing<br />Constraints: no props, no extra text, no watermark<br />Keep (edits only): what must not change, repeated on every follow-up</p>
+  </div>
+
+  <p>A few habits from the same guide do more than they look like. Write the word "photorealistic": OpenAI says it helps "to strongly engage the model's photorealistic mode." Put every word that should appear on the pack in quotes or capitals, and spell an unusual brand name letter by letter.</p>
+
+  <p>When you feed it pictures, number them ("Image 1: product photo. Image 2: style reference.") and say what moves where. Then change one thing per follow-up. Warmer light first, a lower angle after that, with the keep list repeated every time, because a long list of changes in one pass is hard to debug when something drifts.</p>
+
+  <p>Quality is the other dial. OpenAI's guide suggests low quality for quick drafts and a comparison of the higher settings for final assets. In hubStudio each Quality option shows its own price before you pick it, so draft at low, then finish at high.</p>
+
+  <h2>Prompt examples for product work</h2>
+
+  <p>These are the prompts we ran.</p>
+
+  <h3>Packshot</h3>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Photorealistic studio packshot for an ecommerce product page. Subject: a 50 ml frosted amber glass dropper bottle with a matte black cap, front label facing the camera. Label text, exact and verbatim: "ORREN" in a thin geometric sans-serif, all caps, centered; below it "NIGHT SERUM 50 ML" in small type.<br />Background: seamless warm off-white paper sweep. Lighting: one large softbox from camera left, one soft shadow falling to the right. Camera: 85mm lens, eye level, f/8, product centered and filling about 70 percent of the frame height.<br />Constraints: no props, no extra text, no watermark, no reflections other than the softbox highlight.</p>
+  </div>
+
+  <p>Both label lines rendered exact, in the typeface we asked for.</p>
+
+  <h3>Lifestyle scene from your packshot</h3>
+
+  <p>Run this as an edit, with the approved packshot as the first image.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Image 1 is the product photo. Place the exact bottle from Image 1 on a wet dark slate ledge beside a sprig of fresh rosemary, early-morning window light from camera right, one shadow. Change only the setting and the light. Keep the bottle shape, proportions, glass color, cap and label exactly as in Image 1, including the label text "ORREN" and "NIGHT SERUM 50 ML" and their typeface. Photorealistic, 85mm lens, f/4, bottle on the right third. No extra text, no watermark.</p>
+  </div>
+
+  <p>The keep list did its job here. The same bottle described in words alone, in a separate run, ended up with a different label typeface.</p>
+
+  <h3>Text on pack</h3>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Photorealistic product photograph of a matte white folding carton for a face cream, standing upright on a pale gray stone surface, front panel square to the camera. Front panel text, exact and verbatim, in this order: headline "ORREN" in a thin geometric sans-serif, all caps; under it "Barrier Repair Cream"; under that "50 ml / 1.7 fl oz". Side panel, turned slightly toward the camera, carries an ingredient list in 6 point type, exact and verbatim: "Aqua, Glycerin, Squalane, Niacinamide, Ceramide NP, Panthenol, Tocopherol, Sodium Hyaluronate, Phenoxyethanol." One softbox from the upper left, one shadow. 85mm lens, f/8. No other text, no logos, no watermark.</p>
+  </div>
+
+  <p>Run as written, it gives you what we got: three exact front lines and an ingredient list with two names spelled wrong. For a file that ships, keep the quoted headline lines, drop the small print from the prompt, and set legal copy in a layout tool where every letter is typed, not drawn.</p>
+
+  <h2>When should you pick another engine?</h2>
+
+  <p>ChatGPT Image 2 is a strong default for written briefs and short pack copy. Some jobs fit another engine in the app better. OpenAI itself now files gpt-image-2 under "Earlier GPT Image models" and points new integrations to its two GPT Image 2.5 models, which hubStudio also offers.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">The job</th>
+          <th scope="col">Engine to try in hubStudio</th>
+          <th scope="col">Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">A cutout on a transparent background</th>
+          <td>ChatGPT Image 2.5 Flare or Sunburst</td>
+          <td>OpenAI documents transparency on both without the preview label</td>
+        </tr>
+        <tr>
+          <th scope="row">An edit where precision comes first</th>
+          <td>ChatGPT Image 2.5 Sunburst</td>
+          <td>OpenAI's advice: "Choose Sunburst for workflows where editing precision matters most"</td>
+        </tr>
+        <tr>
+          <th scope="row">Change one thing, keep the rest</th>
+          <td>FLUX.1 Kontext Pro or Max</td>
+          <td>They change exactly what you name and leave the rest alone</td>
+        </tr>
+        <tr>
+          <th scope="row">A quick edit of an existing photo</th>
+          <td>Nano Banana 2</td>
+          <td>Fast and dependable on a photo you already have</td>
+        </tr>
+        <tr>
+          <th scope="row">A 4K master or a 4K upscale</th>
+          <td>Seedream 4.5 or 5.0 Pro</td>
+          <td>They render natively up to 4K; ChatGPT Image 2 has no upscale job in the app</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><a href="/app/engines">The engines page</a> sorts every engine by maker, and Explore in the app has a card for each. For Google's two image models, <a href="/resources/how-to/nano-banana-prompting-guide">our Nano Banana prompting guide</a> covers the same ground. <a href="/resources/insights/the-2026-model-roster">The 2026 model roster</a> explains how we assign an engine per asset type and test it against the physical product first.</p>
+
+  <h2>How do you run it in hubStudio?</h2>
+
+  <ul>
+    <li><strong>Open Image from the menu.</strong> Pick Text to image, or Edit an image when you start from a product photo, then choose ChatGPT Image 2 under Engine.</li>
+    <li><strong>Add your references.</strong> An edit takes up to four PNG, JPEG or WebP files. The app resizes them to 1,536 pixels on the long side before sending.</li>
+    <li><strong>Paste the prompt.</strong> The box holds 4,000 characters. Improve with AI rewrites what you typed for the engine you picked. Skills you've added shape that rewrite, and the Catalog has E-commerce packshot, Lifestyle product scene and Legible text inside an image.</li>
+    <li><strong>Set the options.</strong> Quality, Resolution, Shape, Format, Background and Images per run, from 1 to 10. A mask goes in on an edit.</li>
+    <li><strong>Check the price, then run.</strong> The price shows next to the button before anything renders, and a failed run isn't charged. Each picture lands in History with its prompt and engine.</li>
+  </ul>
+
+  <p><a href="/app/create">The app's create page</a> walks through the whole studio.</p>
+
+  <h2>What should you check before a product image ships?</h2>
+
+  <ul>
+    <li><strong>Label text.</strong> Read it letter by letter at full size against the approved artwork, small print first.</li>
+    <li><strong>The product itself.</strong> Cap, shoulder, proportions and color, checked against the physical product or the reference photo.</li>
+    <li><strong>The set.</strong> Lay every render beside the hero. Drift shows up between frames, not inside one.</li>
+    <li><strong>Light.</strong> One source, and every shadow falling the same way.</li>
+    <li><strong>Hands and contact.</strong> Count the fingers. Then look hard at the spot where the product meets the surface, because that's where a render gives itself away.</li>
+    <li><strong>Masked edits.</strong> Compare everything outside the mask with the original. If it has to stay pixel-exact, paste the masked area back onto the original.</li>
+    <li><strong>Transparency.</strong> Open the file and confirm it has a real alpha channel before you build a layout on it.</li>
+    <li><strong>4K files.</strong> Inspect at 100 percent. That size is in OpenAI's experimental band.</li>
+    <li><strong>Claims.</strong> Anything printed on a pack must be a claim approved for that market, and only a person can sign that off.</li>
+    <li><strong>Provenance.</strong> Every file we got back carried C2PA Content Credentials naming gpt-image-2. OpenAI notes that editing, converting or sharing a file can remove that metadata, so decide your disclosure before export.</li>
+  </ul>
+
+  <h2>FAQ</h2>
+
+  <h3>Can ChatGPT Image 2 make a transparent background?</h3>
+
+  <p>OpenAI lists transparent backgrounds on gpt-image-2 as a preview, PNG or WebP only. When we asked its API for one on October 8, 2026, it refused with "Transparent background is not supported for this model." For a cutout you need now, use ChatGPT Image 2.5 Flare or Sunburst, where OpenAI documents it without the preview label, and check the alpha channel of the file.</p>
+
+  <h3>How many reference images can ChatGPT Image 2 take?</h3>
+
+  <p>OpenAI's edits endpoint accepts up to 16 input images for its GPT Image models, and gpt-image-2 reads every one at high fidelity. In hubStudio's Image studio, an edit on ChatGPT Image 2 takes up to four. Label them in the prompt, "Image 1: product photo," and say what each one is for. A mask, if you add one, applies to the first image.</p>
+
+  <h3>What is the maximum resolution of ChatGPT Image 2?</h3>
+
+  <p>The long edge can reach 3,840 pixels, with up to 8,294,400 pixels in total and a ratio no wider than 3:1. OpenAI treats anything above 2,560 by 1,440 as experimental, because results vary more up there. In hubStudio that's the 4K setting, so check a 4K render at full size before you approve it.</p>
+
+  <h3>Can ChatGPT Image 2 put readable text on a product label?</h3>
+
+  <p>Short text, yes. In our test the headline, product name and volume came back exact when quoted in the prompt. A nine-name ingredient list in small type had two names misspelled, which fits OpenAI's own limitation on text clarity. Quote the headlines and spell brand names out. Small legal copy belongs in a layout tool.</p>
+
+  <h3>Does a mask keep the rest of the image unchanged?</h3>
+
+  <p>Not exactly. OpenAI calls masking on these models prompt-based: the engine uses the mask as guidance and may not follow its shape precisely. In our test the new object ran past the mask edge, and pixels across the rest of the frame shifted slightly. If the rest must stay identical, composite the masked area back onto the original file.</p>
+
+  <h3>Should I use ChatGPT Image 2 or ChatGPT Image 2.5?</h3>
+
+  <p>OpenAI now points new integrations to its GPT Image 2.5 models: Sunburst "where editing precision matters most," Flare for "fast, high-quality everyday image generation." Both add higher quality settings and support transparency without the preview label. ChatGPT Image 2 still runs in hubStudio. Test your own product on each before you settle a workflow.</p>
+
+  <h3>Do ChatGPT Image 2 images carry AI metadata?</h3>
+
+  <p>Every file we got back on October 8, 2026 carried C2PA Content Credentials: signed metadata naming gpt-image-2 and marking the picture as made by a trained algorithm. OpenAI notes that editing, converting or sharing a file can remove that metadata, so agree on your disclosure policy before files leave the team.</p>
+</HowtoLayout>

@@ -95,6 +95,7 @@ wrong-footed the year it does not.
 | Tmall Singles Day 2023 | Presale 24 October, 8:00 p.m. | |
 | Tmall Singles Day 2024 | Presale 14 October, 8:00 p.m. | Ten days earlier than 2023 |
 | Tmall Singles Day 2025 | Presale 15 October, 8:00 p.m. | Rules public 24 September; spot sale 20 October |
+| Tmall Singles Day 2026 | Deposits 15 October, 8:00 p.m. | Rules reported 22 September; spot sale 20 October to 13 November |
 | JD Singles Day 2023 | Sale 23 October, 8:00 p.m. | No presale |
 | JD Singles Day 2024 | Sale 14 October, 8:00 p.m. | |
 | JD Singles Day 2025 | Sale 9 October, 8:00 p.m. | Runs to 14 November |
@@ -104,9 +105,14 @@ In 2025 JD and Douyin both opened on 9 October, six days before Tmall's presale.
 brand selling on all three is not producing to one date. It is producing to the
 earliest one.
 
-No platform has announced 2026 Singles Day dates as of 10 September 2026. In 2025
-the Tmall rules came out on 24 September, so the 2026 dates may land within weeks of
-this page's review date. Check before planning to them.
+> Tmall's 2026 Singles Day rules open deposits at 8:00 p.m. on 15 October and run
+> the spot sale from 8:00 p.m. on 20 October to 13 November. Presale goods must be
+> signed up by 7:59 p.m. on 15 October, spot goods by 19 October.
+> Source: Chinese press reporting the platform's 2026 Double 11 merchant rules, 22
+> and 25 September 2026. Dates as reported; two outlets agree, treated as one origin.
+
+The 2026 rules were reported 23 days before the presale opened, against 21 days in
+2025. Check JD's and Douyin's own 2026 announcements before planning to them.
 
 <!-- SECTION: 618 milestones -->
 
@@ -247,8 +253,9 @@ planning to any date on this page.
 
 Before each platform's opening. For 2025, JD and Douyin opened on 9 October and
 Tmall's presale opened at 8:00 p.m. on 15 October, with Tmall's rules published only
-21 days earlier. No platform publishes a separate asset deadline for Singles Day, and
-no 2026 dates were announced as of 10 September 2026.
+21 days earlier. No platform publishes a separate asset deadline for Singles Day.
+For 2026, Tmall's rules as reported in September 2026 open deposits at 8:00 p.m. on
+15 October and the spot sale on 20 October, running to 13 November.
 
 **How long before 618 should production start?**
 
@@ -375,8 +382,9 @@ LINK CHANGED FROM THE BRIEF: /solutions/platforms/tmall does not exist. Substitu
 
 WHAT THE PAGE NEVER DOES: print a date without its year and platform; say the start moves
   earlier every year (the page shows two counterexamples); present the counted-back table
-  as anything but arithmetic; use any 2026 Singles Day date (none announced as of 10
-  September 2026, and one page showing "2026" dates is 2023's timetable relabeled); use 12
+  as anything but arithmetic; use any 2026 Singles Day date other than Tmall's, as
+  reported on 22 and 25 September 2026 (one page showing "2026" dates is 2023's
+  timetable relabeled); use 12
   or 13 May for Tmall's 2026 618 except as the stated conflict; apply Tmall's 2026 listing
   rule to JD or to Singles Day; cite the contested items (when Tmall's 2025 sign-up closed,
   Douyin's 2025 sign-up deadline, JD's 2024 618 start, Tmall dates for 2020 to 2022, Tmall's

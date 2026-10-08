@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/74-kling-3-product-video-guide.mjs
+export default {
+  id: "74",
+  date: "2026-10-21",
+  family: "engine",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "Engine guides",
+  contentType: "Engine guide",
+  readerStage: "practitioner",
+  slug: "kling-3-product-video-guide",
+  h1: "Kling 3.0 for product video: prompts, camera moves, lengths",
+  query: "kling 3.0 prompts",
+  secondary: [
+    "kling 3.0 prompt guide",
+    "kling camera movement prompts",
+    "kling 3.0 vs kling 2.6",
+    "kling 3.0 video length",
+    "AI product video prompt",
+  ],
+  verdict:
+    "RESELLER-WRITTEN. The ranking guides come from API resellers and video apps, built around ready-to-copy prompt lists for people and cinematic scenes; they rarely link the maker's own documentation, and none deals with product video, where the object has to stay the same object for the whole clip.",
+  words: 1800,
+  angle:
+    "Kling 3.0 from the maker's own documentation, applied to product video: how to write the shot so the product stays consistent, which camera moves hold up, and how to pick a length from 3 to 15 seconds. Honest about the boundary: in the hubStudio app the Kling engines take a prompt only, so when the clip must show your exact product from a photo, the guide says which start-frame engines to switch to.",
+  mustInclude: [
+    "What Kling 3.0 is and what changed from 2.6 and 2.5 Turbo, from the maker's own pages only",
+    "A prompt structure for product shots: the product described precisely (material, color, label, scale), the surface, one light source, one camera move, the pace",
+    "Camera move vocabulary the maker documents (push in, pull out, pan, tilt, orbit, tracking) with what each does to a product and which to avoid on reflective or labeled products",
+    "Length choice: the app offers 3 to 15 seconds on Kling 3.0, and 5 or 10 seconds on Kling 2.6 and 2.5 Turbo; what each length suits",
+    "Settings in the hubStudio video studio: Mode Standard or Pro (sharper), frame size 720p, 1080p or 4K on Kling 3.0 (frame size does not change the price), shape, optional generated sound; on Kling 2.6 sound comes with Pro only",
+    "The boundary: Kling engines in the app are prompt only; for a clip that opens on your product photo, use a start-frame engine such as Veo 3.1 Fast, Seedance 2.0 or Wan 3.0",
+    "Improve with AI rewrites the prompt for this engine, length and sound choice; Catalog skills Video camera movement vocabulary and Video shot pacing and duration shape the rewrite",
+    "Price per second shown before the render; a render is charged only when it succeeds; every clip saved in History with prompt and engine",
+    "Three worked product prompts (a bottle, a shoe, a watch) as plain text blocks, each with what to expect",
+  ],
+  doNot: [
+    "Cite any source other than the maker's own documentation for engine behavior",
+    "Name a reseller, another app or any competitor",
+    "Claim image-to-video or reference input for Kling inside hubStudio",
+    "Print a price per second or any hubStudio amount",
+    "Name an engine that is not offered in the app",
+    "Use an em dash",
+  ],
+  stats: [
+    "Kling 3.0 capabilities and limits as the maker states them: Kling AI's own site, user guide and release notes, dated",
+    "In-app lengths, modes, frame sizes and sound: create-a-video.md in the help center",
+  ],
+  assets: [
+    "Engine table: Kling 3.0, 2.6, 2.5 Turbo against length, mode, frame size, sound (from the help center)",
+    "Camera move table: move, prompt wording, what it does to a product, risk",
+    "Three worked prompts as text blocks",
+    "Existing capture: create-a-video-studio",
+  ],
+  links: [
+    ["Engines in the hubStudio app", "/app/engines"],
+    ["The all-in cost of AI video", "/resources/insights/all-in-cost-of-ai-video"],
+    ["Vertical video ad from a product image", "/resources/how-to/vertical-video-ad-from-product-image"],
+    ["Short video service", "/services/design/short-video"],
+    ["AI video production", "/solutions/ai-production/video"],
+  ],
+  seoTitle: "Kling 3.0 Prompts for Product Video",
+  seoDesc:
+    "Kling 3.0 prompts that keep a product consistent: shot structure, camera moves that hold up, lengths from 3 to 15 seconds, and when to switch engines.",
+  faqs: [
+    "How do I write a good Kling 3.0 prompt?",
+    "How long can a Kling 3.0 video be?",
+    "What camera movements work in Kling?",
+    "What is the difference between Kling 3.0 and Kling 2.6?",
+    "Can Kling make a video from my product photo?",
+    "Does Kling 3.0 generate sound?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Engine guide: maker's own docs only. Engines named only from the in-app list in hubstudio-positioning.md. Kling in the app is prompt only (create-a-video.md).",
+};

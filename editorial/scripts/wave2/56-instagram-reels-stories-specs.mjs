@@ -1,0 +1,72 @@
+// editorial/scripts/wave2/56-instagram-reels-stories-specs.mjs
+export default {
+  id: '56',
+  date: '2026-10-08',
+  family: 'spec',
+  template: 'spec',
+  brief: true,
+  status: 'not_started',
+  cluster: 'Platform specs',
+  contentType: 'Spec page',
+  readerStage: 'practitioner',
+  slug: 'instagram-reels-stories-specs',
+  h1: 'Instagram Reel and Story size in 2026: lengths, limits and safe zones',
+  query: 'instagram reel size 2026',
+  secondary: ['instagram story size', 'reels safe zone', 'instagram reel length limit'],
+  verdict:
+    'Page one is tool-vendor and creator-blog spec sheets that print 1080x1920 as official, disagree on length (90 seconds, 3, 15 or 20 minutes) and on safe-zone pixels, and none quotes or links the Instagram Help Center or the Meta Ads Guide, or separates organic posts from ads.',
+  words: 1500,
+  angle:
+    'Reels and Stories specs read only from Instagram\'s and Meta\'s own pages (Instagram Help Center, Meta Business Help Center, the Meta Ads Guide for the Reels and Stories placements, and the Instagram Platform developer reference for posts published through the API): ratio, recommended size, length limits for organic posts and for ads, file limits, the safe zone as Meta publishes it, and the Reel cover. Where Meta publishes nothing on a point, the page says so. Visible "Reviewed October 8, 2026". Primary readings, so no deviation 7 disclaimer.',
+  mustInclude: [
+    'A spec table: surface, ratio, size, length, source',
+    'A safe-zone section built only on Meta\'s published wording and percentages, with the pixel arithmetic labeled as arithmetic',
+    'An organic against ads differences table',
+    'Common rejection and crop failures, each taken from an official help or developer page',
+    'How hubStudio publishes a Reel or a Story to an Instagram professional account and frames the clip in the Video editor, from src/content/help/instagram.md and assets-library.md only',
+    'A dated changelog block',
+    'The Douyin video specs and safe zones insight as the China counterpart',
+  ],
+  doNot: [
+    'Name or describe any spec-sheet publisher, tool vendor or scheduling product',
+    'Print 1080x1920 as Instagram\'s published organic Reels size: no Instagram page prints it',
+    'Print any safe-zone pixel inset as Instagram\'s own for organic posts',
+    'Print a price, an amount or the word credits',
+    'Leave TikTok unlabeled if it is mentioned: TikTok (Beta)',
+  ],
+  stats: [
+    'Instagram Help Center: Reels from 1.91:1 to 9:16, at least 30 FPS and 720 pixels; up to 20 minutes recorded; over 3 minutes not recommended to new audiences',
+    'Instagram Help Center: cover photo 420 by 654 pixels (1:1.55), not editable after upload',
+    'Instagram Help Center: Story videos up to 60 seconds show as one clip, longer ones split',
+    'Instagram Help Center: boosting needs 90 seconds or less and 9:16',
+    'Meta Ads Guide: Reels and Stories ads 9:16, 1440 by 2560; Reels ads 0 seconds to 15 minutes; Stories video ads 1 second to 60 minutes; 4GB; images 30MB',
+    'Meta Ads Guide: leave 14 percent top, 35 percent bottom, 6 percent each side free',
+    'Meta Business Help Center: Reels ads with disclaimers leave the bottom 40 percent free; taller screens may zoom and crop outside the safe zone',
+    'Instagram Platform reference: Reels 3 seconds to 15 minutes, 300MB; Stories 3 to 60 seconds, 100MB; images JPEG 8MB; cover JPEG 8MB, center 9:16 crop, center 1:1 for feed',
+  ],
+  assets: [
+    'Hero image: public/Images/insight-instagram-reels-stories-specs.webp',
+    'App shots reused from src/data/app-shots.ts: videoSocial, videoSave, instagram',
+  ],
+  links: [
+    ['Meta platform page', '/solutions/platforms/meta'],
+    ['short video design service', '/services/design/short-video'],
+    ['the app\'s publishing page', '/app/publish'],
+    ['Douyin video specs and safe zones', '/resources/insights/douyin-video-specs-safe-zones'],
+  ],
+  seoTitle: 'Instagram Reel Size 2026: Stories, Length, Safe Zone',
+  seoDesc:
+    'Instagram Reels and Stories specs from Meta\'s own pages: ratio, size, length for posts and ads, file limits, the ad safe zone and the Reel cover.',
+  faqs: [
+    'What size should an Instagram Reel be in 2026?',
+    'How long can an Instagram Reel be?',
+    'How long can an Instagram Story video be?',
+    'What is the Instagram Reels safe zone?',
+    'Does Instagram publish a safe zone for organic Reels?',
+    'What size is an Instagram Reel cover?',
+    'Why can\'t I boost my Reel?',
+  ],
+  cta: 'Create your account',
+  notes:
+    'Primary Western spec page: Reviewed date visible, watch row 2027-01-08 for the quarterly recheck. Author Sophie Brennan (Social Creative).',
+};

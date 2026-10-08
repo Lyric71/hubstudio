@@ -1,0 +1,76 @@
+// editorial/scripts/wave2/65-plan-week-social-posts.mjs
+export default {
+  id: "65",
+  date: "2026-10-13",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "plan-week-social-posts",
+  h1: "How to plan and schedule a week of social posts in one afternoon",
+  query: "plan a week of social media posts",
+  secondary: [
+    "how to batch social media content",
+    "schedule social media posts for the week",
+    "weekly social media content plan template",
+    "how to repurpose one post for multiple platforms",
+  ],
+  verdict:
+    "GENERIC. Scheduler blogs and creator posts promise a week in an hour, then stop at a content-mix list and a calendar grid; none deals with the real afternoon killers (making the visuals, adapting one idea to five networks, getting sign-off, and each network's daily posting caps).",
+  words: 1700,
+  angle:
+    "The calendar is the easy part. What eats the afternoon is making the pictures and clips, rewriting one idea for five networks and waiting for approval. This guide runs the afternoon in four blocks (plan, make, adapt, schedule) and shows each one in the hubStudio app, with the networks' own limits stated where they bite.",
+  mustInclude: [
+    "A one-screen plan: the week as a table (day, network, idea, visual, status) built from one campaign brief",
+    "Block one, plan: put the week's files and brief in a Campaign; a LinkedIn, Facebook or X post can be drafted from a campaign (it reads the brief, the file list and the text of up to 20 documents, never the pictures)",
+    "Block two, make: Draft with AI or write it yourself; render pictures, carousels or clips in the post itself, with the price on the button before you press; Shorts autopilot for clips cut from one long video",
+    "Block three, adapt: Re-purpose for other networks (Manually, Draft at once, or Publish automatically); each network's own format skill shapes every draft",
+    "Block four, approve and schedule: Send for validation locks the post until the validator decides; then Schedule with a day and time or a chip, up to 20 accounts per post, read in your own time zone, a queue checked every five minutes with automatic retries",
+    "The networks hubStudio publishes to: LinkedIn, Instagram, Facebook, TikTok (Beta) and X; YouTube is published by hand in YouTube Studio",
+    "Network caps that shape a week: Instagram allows 100 posts a day per account (a carousel counts as one), TikTok caps an account at about 15 a day, X posts sent through hubStudio are charged with the price shown before you send",
+    "What costs nothing: Write it myself, the Image editor, Validation, Campaigns, publishing to LinkedIn, Instagram, Facebook and TikTok",
+  ],
+  doNot: [
+    "Name any scheduler, design tool or competitor",
+    "Print any hubStudio amount, or call the money anything but a prepaid balance in real currency",
+    "Publish a 'best time to post' or posting-frequency figure unless a network's own help or business page states it",
+    "Forget the Beta label on TikTok",
+    "Claim hubStudio publishes to YouTube automatically, or to any network not listed",
+    "Use an em dash or a numbered card",
+  ],
+  stats: [
+    "Instagram daily post limit and TikTok daily cap: quote from the hubStudio help (instagram.md, tiktok.md) and confirm on Instagram's and TikTok's own developer or help pages",
+    "Character limits per network (LinkedIn 3,000, Instagram 2,200, TikTok 2,200): from the hubStudio help, confirmed on each network's help page",
+    "No third-party engagement or frequency statistic unless it comes from the network's own business page, dated",
+  ],
+  assets: [
+    "Week plan table: day, network, idea, visual, status",
+    "Afternoon timeline table: block, what you do, where in hubStudio, what it costs (free or priced before you run)",
+    "Network limits table: network, caption limit, pictures per post, daily cap, how hubStudio publishes",
+    "Existing help captures only (linkedin-brief, facebook-brief, x-brief, instagram-picture); no new capture",
+  ],
+  links: [
+    ["Publishing in the hubStudio app", "/app/publish"],
+    ["Campaigns", "/app/campaigns"],
+    ["Social media design service", "/services/design/social-media"],
+    ["Holiday content calendar 2026", "/resources/insights/holiday-content-calendar-2026"],
+    ["Instagram post sizes for 2026", "/resources/insights/instagram-post-sizes-2026"],
+  ],
+  seoTitle: "Plan a Week of Social Posts in One Afternoon",
+  seoDesc:
+    "Plan, make, adapt and schedule a week of posts for LinkedIn, Instagram, Facebook, TikTok and X in one sitting, with approval built in and caps stated.",
+  faqs: [
+    "How do I plan a week of social media posts?",
+    "How far in advance can I schedule social posts?",
+    "How do I turn one post into posts for every network?",
+    "How many posts a day can I publish on Instagram?",
+    "Can a client approve posts before they are scheduled?",
+    "Can I schedule YouTube videos from the same place?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Help sources: linkedin.md, instagram.md, facebook.md, x.md, tiktok.md, youtube.md, campaigns.md, validation.md, shorts-autopilot.md. Steps as a sequence of blocks, never numbered cards.",
+};

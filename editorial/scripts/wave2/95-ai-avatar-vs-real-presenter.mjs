@@ -1,0 +1,72 @@
+// editorial/scripts/wave2/95-ai-avatar-vs-real-presenter.mjs
+export default {
+  id: "95",
+  date: "2026-11-12",
+  family: "comparison",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Comparisons",
+  contentType: "Comparison",
+  readerStage: "budget-holder",
+  slug: "ai-avatar-vs-real-presenter",
+  h1: "An AI avatar or a real presenter for product explainers",
+  query: "AI avatar vs real presenter",
+  secondary: [
+    "AI avatar video vs real person",
+    "are AI avatars good for product videos",
+    "AI presenter video trust",
+    "AI spokesperson vs human",
+  ],
+  verdict:
+    "Avatar software vendors rank with speed claims and a one-line nod to real presenters; one cites trust research; none covers the contract side (likeness, voice, term, territory) or the disclosure rules, which decide most brand cases.",
+  words: 2000,
+  angle:
+    "Decide by what the explainer has to carry: information or trust. Avatars win on updates, languages and volume; a real presenter wins where the face is the proof. Then the paperwork: a likeness license, a voice, a term, a disclosure. Compared by job and by contract, never by vendor.",
+  mustInclude: [
+    "A decision table by job: product tour, onboarding, multilingual update, testimonial, founder message, regulated claims",
+    "Trust evidence only from peer-reviewed or preregistered studies, with sample and method stated",
+    "Contracts: likeness and voice rights, term, territory, usage, pointing to the brand ambassadors piece",
+    "Disclosure: New York's synthetic performer law, the EU AI Act transparency duty for deepfakes (Article 50), platform labels; pointing to the EU and US disclosure pieces",
+    "Localization: lip sync across languages, pointing to the lip-sync piece",
+    "Cost by pricing model: presenter fees and usage by category and date, avatar pricing models by category; no hubStudio amount",
+    "How the app fits, inside its facts: reference to video with pictures, clips and sound on the engines that take them; the Consistent character across images skill; Validation for approvals; the studio runs avatar programs and their contracts",
+  ],
+  doNot: [
+    "Name an avatar vendor",
+    "Claim the app makes talking avatars or lip sync",
+    "Repeat a vendor's speed-saving claim",
+    "Give legal advice: say the piece describes production practice",
+    "Use an em dash",
+  ],
+  stats: [
+    "Trust: the preregistered experiments on AI-mediated video and trust, from the journal page, with sample size and method",
+    "Presenter fees: union scale or published rate cards by category and date, from the union's own pages",
+    "New York GBL 396-b and EU AI Act Article 50: official texts",
+  ],
+  assets: [
+    "Decision table by job",
+    "Contract checklist table",
+    "Cost model table",
+  ],
+  links: [
+    ["AI avatars in brand content", "/resources/insights/ai-avatars-brand-content"],
+    ["AI brand ambassadors: what you sign", "/resources/insights/ai-brand-ambassadors-what-you-sign"],
+    ["lip sync across languages", "/resources/insights/lip-sync-across-languages"],
+    ["EU AI Act labeling for brand content", "/resources/insights/eu-ai-act-labeling-brand-content"],
+    ["video production service", "/services/design/video-production"],
+  ],
+  seoTitle: "AI Avatar or Real Presenter for Product Explainers",
+  seoDesc:
+    "When an AI avatar does the job and when a real presenter must: a decision by job, the trust evidence, the contract terms and the disclosure rules.",
+  faqs: [
+    "Are AI avatars good for product explainer videos?",
+    "Do viewers trust AI avatars?",
+    "Do I need to disclose an AI avatar in an ad?",
+    "Is an AI avatar cheaper than hiring a presenter?",
+    "Can an AI avatar speak several languages?",
+    "What rights do I need to make an avatar of a real person?",
+  ],
+  cta: "Create your account",
+  notes: "Category Buying models. Compares ways of working, never a named tool.",
+};

@@ -1,0 +1,334 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is the best image size for a LinkedIn post in 2026?",
+    "a": "LinkedIn recommends a photo 1080 pixels wide and accepts shapes from 3:1 to 4:5. A portrait at 1080 by 1350 is exactly 4:5, the tallest shape the feed shows without cropping. Keep the file under 5MB, the limit LinkedIn's photo help gives for an upload."
+  },
+  {
+    "q": "What size is the LinkedIn company page banner?",
+    "a": "LinkedIn's Page image help lists 1512 by 256 pixels as both the minimum and the recommended cover, as a PNG or JPEG of 3MB or less. The article was updated about two months before October 8, 2026. Older figures of 1128 by 191 and 4200 by 700 still circulate; neither appears on LinkedIn's current page."
+  },
+  {
+    "q": "How long can a LinkedIn video be?",
+    "a": "LinkedIn's video troubleshooting article gives 15 minutes, with a 3-second minimum on desktop and 2 seconds in the mobile app. An older article for Pages and Career Pages says 10 minutes. Video ads run longer: three seconds to 30 minutes, with 15 to 30 seconds recommended so the ad qualifies for every placement."
+  },
+  {
+    "q": "What size should a LinkedIn carousel PDF be?",
+    "a": "LinkedIn sets no pixel size for documents. It caps them at 100MB and 300 pages, asks for every page at the same size, and lists standard layouts such as Letter and A4 for document ads. Flatten the PDF's layers first. Animations and video inside the file show as still images."
+  },
+  {
+    "q": "Can I post MOV files on LinkedIn?",
+    "a": "Yes, by LinkedIn's newest page. Its media file types article, updated about two weeks before October 8, 2026, lists MOV on desktop, iOS and Android. An older article for Pages still says MOV isn't supported. Apple ProRes is the problem codec: it may upload, LinkedIn says, but it won't process."
+  },
+  {
+    "q": "What is the LinkedIn character limit for a post?",
+    "a": "3,000 characters, according to LinkedIn's help article on posting updates. Anything longer, LinkedIn suggests, belongs in an article. Ads count differently: introductory text truncates after 150 characters on single image, video and document ads, and a headline truncates at 70."
+  },
+  {
+    "q": "Can hubStudio publish carousels to a LinkedIn company page?",
+    "a": "Yes. Connect LinkedIn on My Connections, and every company page LinkedIn lists you as an admin of comes back next to your profile. A post can carry one image or a carousel of 2 to 8 slides, published now or on a schedule, to up to 20 accounts at once. Video and document posts go through LinkedIn's own composer."
+  }
+];
+---
+
+<ArticleLayout slug="linkedin-post-specs" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">LinkedIn's help page for company page images, updated about two months ago, lists the cover at 1512 by 256 pixels. Plenty of size guides still print an older number.</p>
+
+  <h2>What image size does LinkedIn want in 2026?</h2>
+
+  <p>The LinkedIn image size for a feed post in 2026: at least 552 by 276 pixels, 1080 wide recommended, any shape from 3:1 to 4:5, and no more than 5MB. A portrait at 1080 by 1350 fills the whole 4:5 frame. hubStudio's Image editor marks that size Best for a LinkedIn post.</p>
+
+  <p>Reviewed October 8, 2026. Every number on this page comes from a LinkedIn Help Center or LinkedIn Marketing Solutions page, read directly that day. The help center shows each article's age instead of a date ("updated 2 months ago"), so each row carries that age as it stood on October 8. Where two LinkedIn pages disagree, both are printed, and the newer one is named.</p>
+
+  <h2>LinkedIn post specs: image, multi-image, video and document</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Post type</th>
+          <th scope="col">LinkedIn's limit</th>
+          <th scope="col">Source, age on October 8, 2026</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Post text</th>
+          <td>3,000 characters; longer goes in an article</td>
+          <td>Post and share updates, about 3 weeks</td>
+        </tr>
+        <tr>
+          <th scope="row">Single photo</th>
+          <td>5MB; at least 552 x 276; 1080 wide recommended; 3:1 to 4:5</td>
+          <td>Share photos on LinkedIn, about 2 years</td>
+        </tr>
+        <tr>
+          <th scope="row">Multi-photo post</th>
+          <td>Up to 20 photos; shown at most 4:5, for example 640 x 800</td>
+          <td>Share photos on LinkedIn, about 2 years</td>
+        </tr>
+        <tr>
+          <th scope="row">Image files</th>
+          <td>GIF, JPEG, PNG, WEBP; up to 36 megapixels; a GIF up to 500 frames</td>
+          <td>Media file types supported, about 2 weeks</td>
+        </tr>
+        <tr>
+          <th scope="row">Video</th>
+          <td>75KB to 5GB; 3 seconds (2 in the mobile app) to 15 minutes</td>
+          <td>Video sharing troubleshooting, about 2 years</td>
+        </tr>
+        <tr>
+          <th scope="row">Video frame</th>
+          <td>256 x 144 to 4096 x 2304; 1:2.4 to 2.4:1; 10 to 60 fps; 192Kbps to 30Mbps</td>
+          <td>Video sharing troubleshooting, about 2 years</td>
+        </tr>
+        <tr>
+          <th scope="row">Video files</th>
+          <td>MP4 and MOV on desktop, iOS and Android; WEBM and MKV on fewer</td>
+          <td>Media file types supported, about 2 weeks</td>
+        </tr>
+        <tr>
+          <th scope="row">Document</th>
+          <td>PDF, PPT, PPTX, DOC, DOCX; 100MB; 300 pages; one per post</td>
+          <td>Upload and share documents, about 3 years</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">LinkedIn's photo help says a post photo can range from 3:1 to 4:5, width to height, and that a taller one "will be centered and cropped to fit the max ratio." Read directly from the help article, which showed an age of about two years.</blockquote>
+  <p class="source">Source: LinkedIn Help, "Share photos on LinkedIn," read October 2026. https://www.linkedin.com/help/linkedin/answer/a527229</p>
+
+  <p>One figure in circulation needs untangling. The 1200 by 627 size printed in many guides as "the LinkedIn post image" is LinkedIn's spec for the custom image on a Page post that carries a link. A photo post follows the 3:1 to 4:5 rule above instead.</p>
+
+  <h2>How long can a LinkedIn video be?</h2>
+
+  <p>Fifteen minutes, by the newer of two LinkedIn pages. They don't agree.</p>
+
+  <blockquote class="evidence">LinkedIn's video troubleshooting article, about two years old, gives a 15-minute maximum. Its video specs article for Pages and Career Pages, about four years old, gives 10 minutes and says: "We no longer support AVI, QuickTime, or MOV files." The file types article, updated about two weeks before this read, lists MOV on desktop, iOS and Android.</blockquote>
+  <p class="source">Source: LinkedIn Help articles a548372, a1311816 and a564109, read directly, October 2026. https://www.linkedin.com/help/linkedin/answer/a548372</p>
+
+  <p>An MP4 under 10 minutes satisfies all three pages. That's the safe build. MOV is fine by the newest page; ProRes is the real trap, covered under failures below.</p>
+
+  <h2>What size is the LinkedIn company page banner?</h2>
+
+  <p>1512 by 256 pixels, as both the minimum and the recommended size. Every Page image is a PNG or JPEG of 3MB or less.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Slot</th>
+          <th scope="col">Size LinkedIn gives</th>
+          <th scope="col">Files</th>
+          <th scope="col">Source, age on October 8, 2026</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Page cover</th>
+          <td>1512 x 256, minimum and recommended</td>
+          <td>PNG or JPEG, 3MB</td>
+          <td>Image specs for Pages, about 2 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Page logo</th>
+          <td>268 x 268 minimum, 400 x 400 recommended</td>
+          <td>PNG or JPEG, 3MB</td>
+          <td>Image specs for Pages, about 2 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Life tab main image</th>
+          <td>1128 x 376</td>
+          <td>PNG or JPEG, 3MB</td>
+          <td>Image specs for Pages, about 2 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Life tab custom module</th>
+          <td>502 x 282</td>
+          <td>PNG or JPEG, 3MB</td>
+          <td>Image specs for Pages, about 2 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Life tab company photo</th>
+          <td>264 x 176 minimum, 900 x 600 recommended</td>
+          <td>PNG or JPEG, 3MB</td>
+          <td>Image specs for Pages, about 2 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Page post link image</th>
+          <td>1.91:1, 1200 x 627; wider than 200 px</td>
+          <td>PNG or JPEG, 3MB</td>
+          <td>Image specs for Pages, about 2 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Profile cover</th>
+          <td>1584 x 396 recommended</td>
+          <td>JPG or PNG, under 8MB</td>
+          <td>Profile cover image, about 7 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Profile photo</th>
+          <td>400 x 400 to 7680 x 4320</td>
+          <td>PNG or JPG, 8MB, no GIF</td>
+          <td>Photo won't upload, about 2 years</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">LinkedIn's Page image help lists the company cover at 1512 by 256 pixels as both minimum and recommended, PNG or JPEG, up to 3MB, on an article updated about two months before it was read.</blockquote>
+  <p class="source">Source: LinkedIn Help, "Image specifications for your LinkedIn Pages and Career Pages," read October 2026. https://www.linkedin.com/help/linkedin/answer/a563309</p>
+
+  <p>The Life tab slots exist only on Pages that have Career Pages. The same help page asks you to test the logo on light and dark backgrounds, since a transparent logo is shown on white.</p>
+
+  <h2>What crops in the LinkedIn feed on mobile?</h2>
+
+  <p>LinkedIn's pages give five rules for what survives in the feed. Two are written for mobile. The other three apply on every screen, phones included.</p>
+
+  <ul>
+    <li><strong>The 4:5 ceiling.</strong> A photo taller than 4:5 is centered and cropped. A 9:16 story frame loses its top and bottom, and text placed there goes with them.</li>
+    <li><strong>The first picture sets the grid.</strong> In a multi-photo post, a landscape first image sits on top with the rest side by side below it; a portrait or square one takes the left column. When the rows run past 4:5, the bottom row is cropped.</li>
+    <li><strong>Link images pad, they don't crop.</strong> On a Page post with a link, mobile shows a 1.91:1 image whole. Other shapes get thin white padding.</li>
+    <li><strong>Vertical ads are phone-only.</strong> LinkedIn's single image ad specs say paid vertical assets serve on mobile devices only, and square or vertical ad images may be cropped when the ad is shared organically.</li>
+    <li><strong>Video edges belong to the interface.</strong> Keep text and logos off the top, bottom and sides, where LinkedIn's own controls can cover them.</li>
+  </ul>
+
+  <p>The company cover is trimmed too, horizontally or vertically depending on the screen. LinkedIn says to keep key details in the center and away from the lower-right corner.</p>
+
+  <h2>LinkedIn ad specs: single image, video and document ads</h2>
+
+  <p>Paid specs live on a separate help center, LinkedIn Marketing Solutions, and they don't track the organic ones. A video ad can run twice as long as an organic video, yet it has to weigh a tenth as much.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Ad format</th>
+          <th scope="col">Files and weight</th>
+          <th scope="col">Shapes and pixels</th>
+          <th scope="col">Length or pages</th>
+          <th scope="col">Source, age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Single image</th>
+          <td>JPG, PNG, GIF (250 frames); 5MB</td>
+          <td>1.91:1 at 1200 x 628; 1:1 at 1200 x 1200; 4:5 at 720 x 900</td>
+          <td>n/a</td>
+          <td>Single image ads specs, about 2 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Video</th>
+          <td>MP4, H.264 or VP8; 75KB to 500MB</td>
+          <td>16:9 at 1920 x 1080; 1:1 up to 1920 x 1920; 4:5 at 720 x 900; 9:16 at 720 x 1280</td>
+          <td>3 seconds to 30 minutes</td>
+          <td>Video ads specs, about 2 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Document</th>
+          <td>PDF, PPT, PPTX, DOC, DOCX; 100MB</td>
+          <td>One page size throughout</td>
+          <td>300 pages; 1 million words</td>
+          <td>Document ads specs, about 11 months</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel</th>
+          <td>JPG, PNG, still GIF; 10MB a card</td>
+          <td>1:1 at 1080 x 1080, max 4320 x 4320</td>
+          <td>2 to 10 cards</td>
+          <td>Carousel ads specs, about 11 months</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">LinkedIn's video ad specs set a length of three seconds to 30 minutes and recommend 15 to 30 seconds "so they can qualify for all possible placements," with files between 75KB and 500MB. Read directly from the help article, about two months old.</blockquote>
+  <p class="source">Source: LinkedIn Marketing Solutions Help, "Video ads advertising specifications," read October 2026. https://www.linkedin.com/help/lms/answer/a424737</p>
+
+  <p>Ad copy has two numbers per field: where it truncates and where it stops. Introductory text truncates after 150 characters on all three formats. Headlines truncate at 70 and stop at 200. Single image ads under 401 pixels wide show as a thumbnail.</p>
+
+  <p>Document ads with a lead generation objective take PDFs only. Links inside a document work only after the viewer downloads it. LinkedIn's business spec page for document ads recommends staying under 10 pages.</p>
+
+  <h2>Why LinkedIn uploads fail</h2>
+
+  <p>LinkedIn's help pages name the common causes, and each one below comes from them.</p>
+
+  <ul>
+    <li><strong>ProRes.</strong> It may upload, LinkedIn says, "but it will not be able to process." Video ads don't take it at all.</li>
+    <li><strong>iCloud and a backgrounded app.</strong> The mobile app can't upload a video stored in iCloud, and an upload from iOS can stall if the app goes to the background.</li>
+    <li><strong>Layered or mixed-size PDFs.</strong> Flatten the layers. Fit every page to one size. Animations and embedded video play as still images.</li>
+    <li><strong>No title.</strong> LinkedIn's checklist for a failed document upload ends on it: make sure the document has a title.</li>
+    <li><strong>Editing after posting.</strong> A posted photo can't be resized or edited, and a posted document can't be swapped. Delete the post and start again.</li>
+    <li><strong>A link and a picture together.</strong> A post carries one or the other.</li>
+    <li><strong>Video ads from a phone.</strong> Campaign Manager takes video uploads from a desktop only, 25 in 24 hours.</li>
+  </ul>
+
+  <p>LinkedIn gives document pages in inches, not pixels. Its document ad guidance lists standard layouts such as Letter, A4 and Legal, and asks for one page size throughout. Put the layout and that rule in the brief, whether the deck comes from your own team or from the <a href="/services/design/presentation-design">presentation design service</a>.</p>
+
+  <h2>How hubStudio publishes to LinkedIn profiles and company pages</h2>
+
+  <p>Connect LinkedIn once on My Connections. Your profile comes back, along with every company page LinkedIn lists you as an admin of. The connection lasts 60 days and renews with one click.</p>
+
+  <p>In the LinkedIn module, pick a format (text only, one image, or a carousel of 2 to 8 slides), write a brief, and click Draft with AI, or Write it myself to type it with no AI run. The LinkedIn post format skill, picked by default, carries LinkedIn's posting rules. The editor counts down from 3,000 characters.</p>
+
+  <p>Pictures come from a render, the Assets Library or an upload. The Image editor's LinkedIn panel offers Post, portrait at 1080 by 1350, plus square, landscape, Profile banner and Page cover, and checks size, file and wording before you save. Through hubStudio, LinkedIn takes JPG, PNG and GIF, not WebP, up to 10MB each. LinkedIn's own composer caps a photo at 5MB, so export under 5MB and both routes accept the file.</p>
+
+  <p>Then publish now or schedule it, on up to 20 accounts per post. The queue is checked every five minutes, and a temporary error on LinkedIn's side is retried, three attempts in all. A post can go through Validation first, and it stays locked while it waits.</p>
+
+  <p>Two shapes stay outside the app. Video doesn't go to LinkedIn from hubStudio yet, and a document post isn't one of its formats: publish those in LinkedIn's own composer. The <a href="/app/publish">publishing page of the app</a> covers the other networks.</p>
+
+  <p>Publishing to LinkedIn costs nothing. Drafts and renders are charged to your prepaid balance, with the price shown before each run. Teams that would rather hand the whole channel over can read the <a href="/solutions/platforms/linkedin">LinkedIn platform page</a>, or brief the <a href="/services/design/social-media">social media design service</a>.</p>
+
+  <h2>Changelog</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">What changed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">October 8, 2026</th>
+          <td>Page published. Every row read from LinkedIn's help pages that day. Company cover at 1512 x 256 (Page image help, updated about two months earlier). MOV listed on desktop, iOS and Android (file types help, updated about two weeks earlier). Next review January 8, 2027.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>FAQ</h2>
+
+  <h3>What is the best image size for a LinkedIn post in 2026?</h3>
+
+  <p>LinkedIn recommends a photo 1080 pixels wide and accepts shapes from 3:1 to 4:5. A portrait at 1080 by 1350 is exactly 4:5, the tallest shape the feed shows without cropping. Keep the file under 5MB, the limit LinkedIn's photo help gives for an upload.</p>
+
+  <h3>What size is the LinkedIn company page banner?</h3>
+
+  <p>LinkedIn's Page image help lists 1512 by 256 pixels as both the minimum and the recommended cover, as a PNG or JPEG of 3MB or less. The article was updated about two months before October 8, 2026. Older figures of 1128 by 191 and 4200 by 700 still circulate; neither appears on LinkedIn's current page.</p>
+
+  <h3>How long can a LinkedIn video be?</h3>
+
+  <p>LinkedIn's video troubleshooting article gives 15 minutes, with a 3-second minimum on desktop and 2 seconds in the mobile app. An older article for Pages and Career Pages says 10 minutes. Video ads run longer: three seconds to 30 minutes, with 15 to 30 seconds recommended so the ad qualifies for every placement.</p>
+
+  <h3>What size should a LinkedIn carousel PDF be?</h3>
+
+  <p>LinkedIn sets no pixel size for documents. It caps them at 100MB and 300 pages, asks for every page at the same size, and lists standard layouts such as Letter and A4 for document ads. Flatten the PDF's layers first. Animations and video inside the file show as still images.</p>
+
+  <h3>Can I post MOV files on LinkedIn?</h3>
+
+  <p>Yes, by LinkedIn's newest page. Its media file types article, updated about two weeks before October 8, 2026, lists MOV on desktop, iOS and Android. An older article for Pages still says MOV isn't supported. Apple ProRes is the problem codec: it may upload, LinkedIn says, but it won't process.</p>
+
+  <h3>What is the LinkedIn character limit for a post?</h3>
+
+  <p>3,000 characters, according to LinkedIn's help article on posting updates. Anything longer, LinkedIn suggests, belongs in an article. Ads count differently: introductory text truncates after 150 characters on single image, video and document ads, and a headline truncates at 70.</p>
+
+  <h3>Can hubStudio publish carousels to a LinkedIn company page?</h3>
+
+  <p>Yes. Connect LinkedIn on My Connections, and every company page LinkedIn lists you as an admin of comes back next to your profile. A post can carry one image or a carousel of 2 to 8 slides, published now or on a schedule, to up to 20 accounts at once. Video and document posts go through LinkedIn's own composer.</p>
+</ArticleLayout>

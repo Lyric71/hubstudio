@@ -200,6 +200,17 @@ now decided. A run applies them and does not raise them again.
 11. **The dev server for the translation step** is started by
     `npm run i18n:local` itself. A run never waits for one, and never
     publishes without the check because one was missing.
+12. **A showcase clip that has not been made yet.** The acquisition plan
+    embeds a showcase clip in every wave two page, but clips are screen
+    recordings made by the team in the app, and a run cannot make one. The
+    page ships with its hero image and, for a how-to, the existing localized
+    app captures. The clip is embedded when the showcase piece exists, by the
+    run that publishes that piece; the page is never held for it and it is
+    never raised as an open item. Decided 2026-10-08.
+13. **A piece that needs results only the team can produce** (the One brief,
+    five engines test run on several engines in the app). It is not put on
+    the automated schedule; it is written when the test exists. Decided
+    2026-10-08.
 
 ## Model quality: no compromise
 
@@ -315,7 +326,10 @@ is smart, busy, and has read four vendor pages already today.
 ## Absolute rules
 
 - **No em dashes.** Not one, anywhere, including the run log. Commas, periods,
-  parentheses or colons.
+  parentheses or colons. Source captures saved under `research/` are no
+  exception: the long dash in a captured page is replaced by a spaced hyphen
+  (" - ") when the capture is saved, and every other character stays verbatim
+  (settled 2026-10-08).
 - **No competitor named, described, compared to or alluded to.** Ever.
 - **No deliberate errors.** See above.
 - **No summary or conclusion section.** End on the CTA.
@@ -350,18 +364,49 @@ sentence and inside a title. Do not title-case it.
 
 ## What hubStudio actually sells
 
+`hubstudio-positioning.md` at the repo root is binding and wins over anything
+in this folder. Two offers: the **hubStudio app** first (self-serve, primary
+action Create your account) and the **hubStudio studio** second (primary
+action Send a brief), presented as Use the app, Studio + app, Studio only. App
+features may be described only with the facts listed in that file and in the
+help center (`src/content/help/`). Money is a prepaid balance in real
+currency, never "credits", never an amount. hub4You is retired: never mention
+it.
+
 Do not invent services. Take service names from the live pages under
-`src/pages/services/` and `src/pages/solutions/`. The site covers design and
-production (ecommerce, ad creative, short video, social media, video
-production), AI production (image, video), consulting, and the hub4you
-self-serve platform. Platform pages exist for Douyin, RedNote, Tmall, JD,
-WeChat and Weibo alongside Amazon, Shopify, TikTok and Meta.
+`src/pages/services/` and `src/pages/solutions/`. Platform pages exist for
+Douyin, RedNote, Tmall, JD, WeChat and Weibo alongside Amazon, Shopify,
+TikTok, Meta and LinkedIn.
 
 ## The positioning, in one line
 
-An AI-native studio that originates the master, not a platform that
-multiplies assets someone else made. Physical capture in China plus generation,
-in one pipeline, with the provenance recorded per asset.
+Make images, video and social content with AI: in the hubStudio app yourself,
+or with the studio making it for you, inside the app or outside it.
+
+## Wave two (from 2026-10-08)
+
+The first 48 slots are all published. Wave two widens the plan beyond China:
+how-to guides, platform specs for the Western networks and marketplaces,
+engine guides, comparisons of ways of working, industry pages and insights,
+for buyers everywhere, with China as one market among several. Its briefs are
+data modules in `scripts/wave2/`, rendered by `generate-briefs.mjs` like the
+first 48, and its rows sit in the same `schedule.csv`.
+
+| Family (`template`) | Publishes as | Home | CTA |
+|---|---|---|---|
+| How-to (`howto`) | how-to guide, `src/data/howtos.ts` | `/resources/how-to/<slug>` | Create your account |
+| Engine guide (`howto`) | how-to guide | `/resources/how-to/<slug>` | Create your account |
+| Platform specs (`spec`) | insight, category Platform specs, listed on the specs hub | `/resources/insights/<slug>`, hub `/resources/specs` | Create your account |
+| Comparison (`insight`) | insight, category Buying models | `/resources/insights/<slug>` | Create your account |
+| Industry page (`insight`) | insight, category Production | `/resources/insights/<slug>` | Send a brief |
+| Insight (`insight`) | insight | `/resources/insights/<slug>` | Send a brief |
+
+Western platform specs come from each network's own help or business pages,
+which are readable, so they are primary: no deviation 7 disclaimer, but a
+visible Reviewed date and a `watch.csv` row three months out for the
+quarterly recheck. How-to guides that show the app reuse the existing
+localized captures (help center and `src/data/app-shots.ts`), never a new
+capture of a feature the help center does not document.
 
 ## Audience
 

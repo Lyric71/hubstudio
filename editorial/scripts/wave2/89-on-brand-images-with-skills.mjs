@@ -1,0 +1,73 @@
+// editorial/scripts/wave2/89-on-brand-images-with-skills.mjs
+export default {
+  id: "89",
+  date: "2026-11-05",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "on-brand-images-with-skills",
+  h1: "How to keep AI images on brand with reusable instructions",
+  query: "on brand AI images",
+  secondary: [
+    "consistent brand style AI images",
+    "AI image brand guidelines prompt",
+    "how to make AI images match my brand",
+    "reusable prompt instructions for brand style",
+  ],
+  verdict:
+    "Tool vendors and marketing blogs rank, nearly all selling a brand kit feature and quoting an uncited revenue-from-consistency percentage; few show the instructions themselves: what to write, how long, and how to stop a style rule leaking into the wrong brief.",
+  words: 1700,
+  angle:
+    "Brand drift comes from retyping the brief. Write the house style once as short, testable instructions, scope each one to when it applies, and let every prompt rewrite carry it. Shown with Skills in hubStudio: My skills, Team skills written by admins, the Catalog, and the When line that keeps a rule out of the wrong brief.",
+  mustInclude: [
+    "What makes an instruction on brand: light, palette described in words, surfaces, framing, crop, what to avoid; written as rules, not adjectives",
+    "Skills as the help center describes them: they shape Improve with AI and post drafts; team skills apply first, then your own; a skill never changes the engine or the settings",
+    "The When: line that tells the rewriter to ignore a skill when the brief is about something else",
+    "Team skills written by admins for everyone; members read them, Add to my skills or Duplicate",
+    "Catalog skills worth starting from: E-commerce packshot, Lifestyle product scene, Consistent character across images, Illustration and brand style consistency, the Avoid list",
+    "Instructions hold up to 8,000 characters, but short is better: skills add tokens to every rewrite",
+    "Reference pictures: edit with up to four source pictures (engine dependent) to anchor a product or a look",
+    "Catching drift: History to reuse a prompt and compare runs; Validation for sign-off",
+    "A worked skill written out in full for a fictional brand, labeled fictional",
+  ],
+  doNot: [
+    "Claim a brand kit, a logo lock, brand asset upload or style training in the app (positioning forbids it)",
+    "Claim custom model training in the app: brand-trained models belong to the studio",
+    "Name a tool vendor",
+    "Use the circulating consistency-revenue percentage unless its primary study and method are found",
+    "Use an em dash",
+  ],
+  stats: [
+    "App limits and behavior: skills.md and create-an-image.md only",
+    "Any brand consistency figure only from its primary study with method and sample; otherwise cut",
+  ],
+  assets: [
+    "Table: brand element, weak instruction, strong instruction",
+    "Worked skill block for a fictional brand",
+    "Existing localized captures: skills-my-skills.webp and skills-catalog.webp",
+  ],
+  links: [
+    ["consistent character in AI images and video", "/resources/how-to/consistent-character-ai-images-video"],
+    ["training a brand model that stays on brand", "/resources/insights/training-a-brand-model-that-stays-on-brand"],
+    ["Image studio and Skills", "/app/create"],
+    ["brand identity service", "/services/design/brand-identity"],
+    ["ChatGPT Image 2 product prompting guide", "/resources/how-to/chatgpt-image-2-product-prompting-guide"],
+  ],
+  seoTitle: "How to Keep AI Images On Brand",
+  seoDesc:
+    "Write your house style once as short, scoped instructions and let every prompt carry it: what to write, how to scope it, and how to catch drift.",
+  faqs: [
+    "How do I make AI images match my brand?",
+    "How do I write brand guidelines for AI image prompts?",
+    "Why do my AI images look different every time?",
+    "Can I save a prompt style and reuse it?",
+    "How long should brand instructions for AI be?",
+    "How do I share brand rules with my team for AI images?",
+  ],
+  cta: "Create your account",
+  notes: "Help: skills.md. No brand kit claim. Reuse the existing localized Skills captures.",
+};

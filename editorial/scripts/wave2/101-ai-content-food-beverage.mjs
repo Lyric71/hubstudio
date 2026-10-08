@@ -1,0 +1,71 @@
+// editorial/scripts/wave2/101-ai-content-food-beverage.mjs
+export default {
+  id: "101",
+  date: "2026-11-20",
+  family: "industry",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Industries",
+  contentType: "Industry page",
+  readerStage: "budget-holder",
+  slug: "ai-content-food-beverage",
+  h1: "AI content for food and beverage brands",
+  query: "AI food photography",
+  secondary: [
+    "AI food photography for brands",
+    "AI generated food images advertising rules",
+    "AI beverage product photography",
+    "AI packaging images food",
+  ],
+  verdict:
+    "Single-purpose food-photo apps and prompt pages from model resellers rank, aimed at restaurants and menus; none deals with the brand problems: packaging fidelity, appetite appeal that does not overstate the product, and the claims and labeling rules regulators set for food and alcohol advertising.",
+  words: 1800,
+  angle:
+    "In food and beverage the picture sits close to a claim: portion, ingredients, freshness. Generate the table, the light and the season; keep the pack and the product true; never show what is not in the box. With the regulators' own rules on food claims and alcohol advertising in the US and the EU, and two case studies.",
+  mustInclude: [
+    "Appetite appeal without overstatement: what generation does well (steam, condensation, light, setting) and what it gets wrong (pack text, portion size, ingredients the product does not contain)",
+    "A packaging fidelity checklist: label text, nutrition panel, color, shape",
+    "US: FDA rules on food labeling and claims; the FTC on food advertising; TTB rules for alcohol advertising (27 CFR Parts 4, 5 and 7), each from its own pages",
+    "EU: Regulation (EC) No 1924/2006 on nutrition and health claims and Regulation (EU) No 1169/2011 on food information, from EUR-Lex",
+    "Case studies, only as written in src/data/case-studies.ts: 1834 Gin (a 46-second brand film made with AIGC and CGI, from zero assets to omnichannel content in three weeks) and L'infuseur (a seasonal library in two weeks, trained on the brand's aesthetic codes)",
+    "The three ways to work: the studio for launches; the app for seasonal variants (Image studio edits from source pictures, the Lifestyle product scene skill)",
+    "A line stating the piece describes production practice, not legal advice",
+  ],
+  doNot: [
+    "Show or describe an ingredient or portion the product does not contain",
+    "Name a food or drink brand outside the case studies, or any tool vendor",
+    "Print an amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "FDA, FTC and TTB pages, each with its date",
+    "EUR-Lex texts for 1924/2006 and 1169/2011",
+    "Any market adoption figure only with a stated method",
+  ],
+  assets: [
+    "Decision table: asset, generate, shoot, mixed",
+    "Rules table by market: the rule, the regulator page, what it means for an image",
+    "Case-study strip with two links",
+  ],
+  links: [
+    ["1834 Gin case study", "/work/1834-gin"],
+    ["L'infuseur case study", "/work/linfuseur"],
+    ["product photo to lifestyle image", "/resources/how-to/product-photo-to-lifestyle-image"],
+    ["packaging design service", "/services/design/packaging-merch-design"],
+    ["holiday content calendar 2026", "/resources/insights/holiday-content-calendar-2026"],
+  ],
+  seoTitle: "AI Content for Food and Beverage Brands",
+  seoDesc:
+    "Where AI fits in food and beverage content: appetite appeal without overstatement, packaging fidelity, and the US and EU claims and alcohol ad rules.",
+  faqs: [
+    "Can food brands use AI-generated images in ads?",
+    "Is AI food photography realistic enough for packaging?",
+    "What are the rules for food advertising images?",
+    "Can I use AI images to advertise alcohol?",
+    "How do I keep my packaging accurate in AI images?",
+    "Do I need to disclose AI-generated food images?",
+  ],
+  cta: "Send a brief",
+  notes: "Category Production. Regulators' own pages only; case studies 1834-gin and linfuseur as written.",
+};

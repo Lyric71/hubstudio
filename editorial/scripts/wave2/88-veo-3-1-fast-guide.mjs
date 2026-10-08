@@ -1,0 +1,73 @@
+// editorial/scripts/wave2/88-veo-3-1-fast-guide.mjs
+export default {
+  id: "88",
+  date: "2026-11-04",
+  family: "engine",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "Engine guides",
+  contentType: "Engine guide",
+  readerStage: "practitioner",
+  slug: "veo-3-1-fast-guide",
+  h1: "Veo 3.1 Fast for product and social video",
+  query: "veo 3.1 prompts",
+  secondary: [
+    "veo 3.1 fast vs veo 3.1",
+    "veo 3.1 prompt examples product",
+    "veo 3.1 first and last frame",
+    "veo 3.1 reference images",
+  ],
+  verdict:
+    "Reseller and aggregator blogs dominate with copy-paste prompt lists, and Google's own Cloud blog prompting guide ranks among them; few separate Fast from the full model, and none teaches product shots: label fidelity, packaging, the 8-second ceiling.",
+  words: 1800,
+  angle:
+    "Veo 3.1 Fast is a short-clip engine: 4, 6 or 8 seconds. Write for that length: one action, one camera move, the sound named. For product work two controls matter most: a start and last frame, and up to three reference pictures. Built only from Google's own documentation and applied to products.",
+  mustInclude: [
+    "What Veo 3.1 Fast is and how it differs from the full Veo 3.1 model, as Google states it",
+    "Google's prompt structure from its own Veo 3.1 prompting guide, rewritten with product examples",
+    "Audio in the prompt as Google documents it: dialogue in quotes, effects and ambience named",
+    "In the app, per the help center: 4, 6 or 8 seconds; 720p, 1080p or 4K; sound optional; a start and last frame, or up to 3 reference pictures, one or the other",
+    "Three worked product prompts: a packshot push-in, a pour or texture shot, a vertical social opener",
+    "Failure modes and fixes: label drift, extra hands, packaging that morphs",
+    "The price per second shown before the render; on some engines sound costs more per second",
+    "A pointer to the Veo 3 studio review for the studio's view of the engine family",
+  ],
+  doNot: [
+    "Cite any non-Google source for a capability or a limit",
+    "Name a reseller, an aggregator or a tool vendor",
+    "Compare against engines that are not in the app",
+    "Print a price",
+    "Use an em dash",
+  ],
+  stats: [
+    "Fast against standard model, durations, resolutions, reference image limit: Google AI for Developers and Vertex AI Veo model pages",
+    "Prompt structure: Google Cloud's Veo 3.1 prompting guide and the Vertex AI video prompt guide",
+    "App limits: create-a-video.md",
+  ],
+  assets: [
+    "Prompt anatomy table: element, product example, why it matters",
+    "Settings table in the app: length, resolution, sound, inputs",
+    "Three prompt blocks",
+  ],
+  links: [
+    ["Veo 3 studio review", "/resources/insights/veo-3-studio-review"],
+    ["AI sound for video", "/resources/insights/ai-sound-for-video"],
+    ["engines page", "/app/engines"],
+    ["Kling 3.0 product video guide", "/resources/how-to/kling-3-product-video-guide"],
+    ["YouTube Shorts specs", "/resources/insights/youtube-shorts-specs"],
+  ],
+  seoTitle: "Veo 3.1 Fast Prompts for Product and Social Video",
+  seoDesc:
+    "How to prompt Veo 3.1 Fast for product clips: shot structure, sound in the prompt, start and last frame, reference pictures, and three worked examples.",
+  faqs: [
+    "How do I write a good Veo 3.1 prompt?",
+    "What is the difference between Veo 3.1 and Veo 3.1 Fast?",
+    "How long can a Veo 3.1 video be?",
+    "Can Veo 3.1 use a start and end frame?",
+    "Does Veo 3.1 generate sound?",
+    "How do I keep my product consistent in Veo 3.1?",
+  ],
+  cta: "Create your account",
+  notes: "Google's own documentation only. Only engines offered in the app are named.",
+};

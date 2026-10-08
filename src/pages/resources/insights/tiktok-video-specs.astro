@@ -1,0 +1,377 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should a TikTok video be?",
+    "a": "TikTok's ads help asks for a vertical 9:16 video at 540 by 960 pixels or more, and its creative best practices recommend at least 720p. For ordinary posts, TikTok's help center prints no size at all. A 9:16 file that clears the ad floors, with text inside the template safe zone, is the safe build for both."
+  },
+  {
+    "q": "How long can a TikTok video be in 2026?",
+    "a": "Up to 10 minutes when you record in the TikTok app and up to 60 minutes when you upload, per TikTok's help center on October 8, 2026. A sound picked first caps the length at the sound's length. Auction in-feed ads run up to 10 minutes, while reservation in-feed ads and TopView run 5 to 60 seconds."
+  },
+  {
+    "q": "What is the TikTok safe zone in pixels?",
+    "a": "On TikTok's standard in-feed template, scaled to 1080 by 1920, keep text out of the top 240 pixels, the bottom 660 and 120 on each side, plus a 300-pixel right margin below the 840 mark. Anchor templates push the bottom up to 1,014 pixels with a four-line caption."
+  },
+  {
+    "q": "What are the TikTok in-feed ad specs?",
+    "a": "Auction in-feed ads take 9:16 at 540 by 960 or more, 16:9 at 960 by 540 or 1:1 at 640 by 640, in MP4, MOV, MPEG, 3GP or AVI. Files run up to 10 minutes, 500 MB and at least 516 kbps. Reservation ads run 5 to 60 seconds at 2,500 kbps or more, with sound."
+  },
+  {
+    "q": "How many photos can a TikTok post have?",
+    "a": "Up to 35, per TikTok's help page on making a post. One editing session takes up to 35 photos and videos combined, up to 8 overlays and one sound. Carousel ads take 2 to 35 images in JPG or PNG at 720 by 1280, 640 by 640 or 1200 by 628, with music required."
+  },
+  {
+    "q": "Why won't my TikTok video upload?",
+    "a": "TikTok's own fixes: switch between Wi-Fi and mobile data, clear the app's video cache, restart the app and the phone, and update the app. On a computer, refresh the page and restart the browser. A clip that came out shorter than planned may have been capped by the sound you picked first."
+  },
+  {
+    "q": "Can hubStudio post to TikTok for me?",
+    "a": "Yes, in Beta. Connect your TikTok account in My Connections, then publish a clip of 3 seconds to 10 minutes now or on a schedule, with the caption, the privacy setting and the AI-generated label set in the app. Publishing costs nothing. Renders are charged to your prepaid balance at the price shown first."
+  }
+];
+---
+
+<ArticleLayout slug="tiktok-video-specs" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">TikTok prints its safe zone. Not in the text of any help page, but on the template files those pages hand out, in pixels, and almost nobody quotes them.</p>
+
+  <h2>What are TikTok's video specs in 2026?</h2>
+
+  <p>TikTok video specs for 2026, from TikTok's own pages: record up to 10 minutes in the app, upload up to 60. Auction in-feed ads take a vertical 9:16 video at 540 by 960 pixels or more, up to 10 minutes and 500 MB. hubStudio publishes one clip of 3 seconds to 10 minutes to TikTok, a feature still in Beta.</p>
+
+  <p>Reviewed October 8, 2026. Every number below comes from TikTok's Help Center, its Ads Manager help pages, or the template files those pages link, read that day. The consumer help center prints no update date, so its rows carry the read date. The ads pages print a month, and each row shows it.</p>
+
+  <p>One absence matters before the tables. TikTok's help center publishes no aspect ratio, resolution, file size, format or bitrate for an ordinary post. Size guides that print one are quoting another source.</p>
+
+  <h2>TikTok video size and length, by surface</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Surface</th>
+          <th scope="col">Ratio</th>
+          <th scope="col">Resolution</th>
+          <th scope="col">Length</th>
+          <th scope="col">Source, date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Post recorded in the app</th>
+          <td>Not published</td>
+          <td>Not published</td>
+          <td>Up to 10 minutes</td>
+          <td>Help Center, Camera tools, read Oct. 8, 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Post uploaded</th>
+          <td>Not published</td>
+          <td>Not published</td>
+          <td>Up to 60 minutes</td>
+          <td>Help Center, Camera tools, read Oct. 8, 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Photo post</th>
+          <td>Not published</td>
+          <td>Not published</td>
+          <td>Up to 35 photos</td>
+          <td>Help Center, Making a post, read Oct. 8, 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Auction in-feed ad</th>
+          <td>9:16 (recommended), 16:9, 1:1</td>
+          <td>540x960, 960x540, 640x640 or more</td>
+          <td>Up to 10 minutes</td>
+          <td>Ads help, June 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Spark Ads (pulled from a post)</th>
+          <td>As posted</td>
+          <td>As posted</td>
+          <td>No restriction</td>
+          <td>Ads help, June 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Reservation in-feed ad</th>
+          <td>9:16, 16:9, 1:1</td>
+          <td>540x960, 960x540, 640x640 or more</td>
+          <td>5 to 60 seconds, 9 to 15 recommended</td>
+          <td>Ads help, July 2025</td>
+        </tr>
+        <tr>
+          <th scope="row">TopView</th>
+          <td>9:16 only</td>
+          <td>540x960 or more</td>
+          <td>5 to 60 seconds, 9 to 15 recommended</td>
+          <td>Ads help, June 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel ad</th>
+          <td>Vertical, square, horizontal</td>
+          <td>720x1280, 640x640, 1200x628</td>
+          <td>2 to 35 images</td>
+          <td>Ads help, September 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">TikTok's help center says videos recorded in the app can run up to 10 minutes and uploaded videos up to 60 minutes. Pick a sound first and the sound's length sets the video's length.</blockquote>
+  <p class="source">Source: TikTok Help Center, Camera tools, read October 8, 2026 (the page carries no date). A primary reading of the platform's own page.</p>
+
+  <p>The nearest thing TikTok offers for an ordinary post is advice on its ads side: sound or music, vertical 9:16, at least 720p, and content kept inside the safe zone. Its creative best practices page, last updated June 2025, files those under the basics. They're recommendations, not upload limits.</p>
+
+  <h2>TikTok file formats, file size and bitrate</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Surface</th>
+          <th scope="col">Formats</th>
+          <th scope="col">File size</th>
+          <th scope="col">Bitrate</th>
+          <th scope="col">Sound</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Auction in-feed ad</th>
+          <td>MP4, MOV, MPEG, 3GP, AVI</td>
+          <td>500 MB or less</td>
+          <td>516 kbps or more</td>
+          <td>Clear audio required at review</td>
+        </tr>
+        <tr>
+          <th scope="row">Reservation in-feed ad</th>
+          <td>MP4, MOV, MPEG, 3GP</td>
+          <td>500 MB or less</td>
+          <td>2,500 kbps or more</td>
+          <td>Must have sound</td>
+        </tr>
+        <tr>
+          <th scope="row">TopView</th>
+          <td>MP4, MOV, MPEG, 3GP</td>
+          <td>500 MB or less</td>
+          <td>2,500 kbps or more</td>
+          <td>Not completely silent</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel ad</th>
+          <td>JPG, JPEG, PNG</td>
+          <td>100 KB or less suggested</td>
+          <td>Not applicable</td>
+          <td>MP3 music required, 2 seconds or more</td>
+        </tr>
+        <tr>
+          <th scope="row">Ordinary post</th>
+          <td>Not published</td>
+          <td>Not published</td>
+          <td>Not published</td>
+          <td>Not published</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Auction in-feed ads take a vertical 9:16 video at 540 by 960 pixels or more, 16:9 and 1:1 too, in MP4, MOV, MPEG, 3GP or AVI, up to 10 minutes, 500 MB or less, at 516 kbps or more.</blockquote>
+  <p class="source">Source: TikTok Ads Manager help, TikTok Auction In-Feed Ads, last updated June 2026, read October 8, 2026. A primary reading of the spec page.</p>
+
+  <p>Most guides print organic file caps by device, a web upload ceiling, or a minimum pixel count. None of those figures appears on a TikTok help page we read. The web uploader itself, TikTok Studio, sits behind a login.</p>
+
+  <h2>Organic post against in-feed ad: what changes</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Rule</th>
+          <th scope="col">Organic post</th>
+          <th scope="col">In-feed ad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Length</th>
+          <td>10 minutes recorded, 60 uploaded</td>
+          <td>Auction up to 10 minutes; reservation 5 to 60 seconds</td>
+        </tr>
+        <tr>
+          <th scope="row">Shape and size</th>
+          <td>Not published</td>
+          <td>9:16, 16:9 or 1:1, at 540x960, 960x540 or 640x640 or more</td>
+        </tr>
+        <tr>
+          <th scope="row">Caption</th>
+          <td>Your own words</td>
+          <td>White, one font; auction captions take no links, @ or hashtags</td>
+        </tr>
+        <tr>
+          <th scope="row">Sound</th>
+          <td>A sound picked first caps the length</td>
+          <td>Clear audio at review; reservation ads must have sound</td>
+        </tr>
+        <tr>
+          <th scope="row">Safe zone</th>
+          <td>Not published</td>
+          <td>Template files that shrink as the caption grows</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Reservation ads add their own rules on the same page: no watermarks, including TikTok's own, nothing that mimics the TikTok interface, and no white or transparent backgrounds, because the app's names, captions and icons are white. Captions show four lines before "See more." TikTok suggests staying within 100 characters, or 50 in Chinese, Japanese or Korean.</p>
+
+  <blockquote class="evidence">Reservation in-feed ads and TopView run 5 to 60 seconds, with 9 to 15 recommended, at 2,500 kbps or more, and every reservation creative must carry sound. TopView bans plain white in the first 3 seconds because the TikTok logo disappears against it.</blockquote>
+  <p class="source">Source: TikTok Ads Manager help, reservation in-feed specifications (July 2025) and TopView specifications (June 2026), read October 8, 2026.</p>
+
+  <h2>The TikTok safe zone, measured from TikTok's own templates</h2>
+
+  <p>TikTok's spec pages describe the safe zone in words. Its size depends on the shape of the video, the caption length and any add-ons, and "the longer the caption, the smaller the safe zone will be." The numbers live in the zip files the auction in-feed page links, and TikTok prints them on the templates.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Template, on 1080x1920</th>
+          <th scope="col">Top</th>
+          <th scope="col">Bottom</th>
+          <th scope="col">Left</th>
+          <th scope="col">Right</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">In-feed standard</th>
+          <td>240</td>
+          <td>660</td>
+          <td>120</td>
+          <td>120, then 300 below y 840</td>
+        </tr>
+        <tr>
+          <th scope="row">With anchor, 1 caption line</th>
+          <td>252</td>
+          <td>812</td>
+          <td>120</td>
+          <td>120, then 240 below y 360</td>
+        </tr>
+        <tr>
+          <th scope="row">With anchor, 2 lines</th>
+          <td>252</td>
+          <td>878</td>
+          <td>120</td>
+          <td>120, then 240 below y 360</td>
+        </tr>
+        <tr>
+          <th scope="row">With anchor, 3 lines</th>
+          <td>252</td>
+          <td>946</td>
+          <td>120</td>
+          <td>120, then 240 below y 360</td>
+        </tr>
+        <tr>
+          <th scope="row">With anchor, 4 lines</th>
+          <td>252</td>
+          <td>1014</td>
+          <td>120</td>
+          <td>120, then 240 below y 360</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">TikTok's in-feed standard template, a 720 by 1280 frame, shades 160 pixels at the top, 440 at the bottom and a column 120 pixels wide on the right from 560 pixels down, plus an 80-pixel strip down each side.</blockquote>
+  <p class="source">Source: TikTok's In-Feed Standard LTR template, downloaded from the auction in-feed spec page (June 2026) on October 8, 2026; dimension labels in the file, shaded areas checked pixel by pixel.</p>
+
+  <blockquote class="evidence">TikTok's anchor templates, on a 540 by 960 frame, keep 126 pixels at the top and 60 at each side, then give the bottom 406, 439, 473 or 507 pixels as the caption grows from one line to four.</blockquote>
+  <p class="source">Source: TikTok's In-Feed with Anchor LTR templates, the same page, October 8, 2026; dimension labels printed in the four vertical files.</p>
+
+  <p>The table scales both files to 1080 by 1920. That step is our arithmetic, a straight multiplication, not a TikTok figure. The standard file shades its side strips in a different color from the top, bottom and button column, and carries no legend, so we treat every shaded area as off limits for text and logos. In the anchor files, the anchor is drawn as a link card just above the username. The Arabic files mirror the layout, button column on the left.</p>
+
+  <p>Put the two families together and one box clears every vertical template, whatever the caption length: 120 to 780 pixels across, 252 to 906 down. That box is derived from TikTok's files, not published by TikTok.</p>
+
+  <p>TopView adds a second stage. The first 3 seconds play full screen, then the ad settles into the feed, and TikTok's page says the in-feed safe zone is the stricter of the two. It also says text left in the areas its preview tool marks red "should be rejected."</p>
+
+  <p>There is no organic safe zone on any TikTok page. The ad templates are the only map TikTok itself draws, and they show the same furniture an ordinary post carries: the username, the caption, the sound line and the button column.</p>
+
+  <h2>Why a TikTok upload fails, in TikTok's own words</h2>
+
+  <p>TikTok's help pages list only a handful of causes. These are the ones it states.</p>
+
+  <ul>
+    <li><strong>The sound cut the clip.</strong> Pick a sound before you record or upload, and the video's length becomes the sound's length.</li>
+    <li><strong>The web upload took the whole file.</strong> A browser upload sends the entire video. To trim it, TikTok says to upload in the app.</li>
+    <li><strong>The app stalled.</strong> TikTok's fix list: switch between Wi-Fi and mobile data, clear the app's video cache, restart the app and the phone, and update to the latest version. A new post missing from your profile may be set to private.</li>
+    <li><strong>The browser stalled.</strong> Refresh the page, then restart the browser.</li>
+    <li><strong>Realistic AI content went out unlabeled.</strong> TikTok requires the label and may remove content without it. Files that carry Content Credentials can be labeled automatically, and that label can't be taken off.</li>
+  </ul>
+
+  <p>The ads side is stricter. The review checklist, last updated February 2025, requires clear audio in video ads and rules out prompts for actions the app doesn't support, such as swiping up or a mouse cursor. Media has to meet the specs. The creative has to match the landing page. The reservation notes ask for video that isn't stretched or compressed, and TopView rules out QR codes, phone numbers and addresses.</p>
+
+  <h2>How hubStudio publishes to TikTok (Beta)</h2>
+
+  <p>TikTok publishing in the hubStudio app is in Beta. You connect your own TikTok account in My Connections, and nobody else on the team can post with it. A post carries one MP4, MOV or WEBM clip of 3 seconds to 10 minutes. Some accounts are allowed less, and the publishing step says so before you send. That window is shorter than TikTok's 60-minute upload, so a longer cut goes up through TikTok's own uploader.</p>
+
+  <p>The clip can be rendered with AI, picked from the Assets Library or uploaded. The Video editor applies the 9:16 frame and shows in red where TikTok's caption, sound line and buttons cover the picture. The caption editor holds up to 2,200 characters. On the publishing step you set who can see the post, whether people can comment, duet or stitch, any brand disclosure, and the AI-generated label, which comes already ticked for a clip rendered with AI in hubStudio.</p>
+
+  <p>Then publish now or schedule it. The queue is checked every five minutes. A temporary problem on TikTok's side is retried, three attempts in all. A content problem isn't, and the person who queued the post gets an email with what TikTok said. No connected account? Publish manually: TikTok's upload page opens with the caption on your clipboard.</p>
+
+  <p>Publishing costs nothing. A render is charged against your prepaid balance, at the price shown before you run it.</p>
+
+  <p>The <a href="/app/publish">publishing page of the app</a> lists the other networks. If you'd rather the studio made the videos, start with the <a href="/services/design/short-video">short video design service</a>; the <a href="/solutions/platforms/tiktok">TikTok platform page</a> sets out both routes.</p>
+
+  <h2>Douyin is a different spec sheet</h2>
+
+  <p>Douyin, the Chinese app from the same parent company, is a separate product with separate specs. Don't build a Douyin cut to the numbers on this page, and don't trust a Douyin guide that quotes them. <a href="/resources/insights/douyin-video-specs-safe-zones">Douyin video specs and safe zones</a> covers the organic frame, and <a href="/resources/insights/douyin-ad-creative-specs-by-format">Douyin ad creative specs by format</a> covers paid placements. Both sit with this page on the <a href="/resources/specs">platform specs hub</a>.</p>
+
+  <h2>Changelog</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">What changed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">October 8, 2026</th>
+          <td>Page published. Lengths and photo limits read from the TikTok Help Center that day (pages undated). Ad specs from Ads Manager help: auction in-feed and TopView June 2026, reservation July 2025, carousel September 2026. Safe zone measured from TikTok's in-feed template files. Next review January 8, 2027.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>FAQ</h2>
+
+  <h3>What size should a TikTok video be?</h3>
+
+  <p>TikTok's ads help asks for a vertical 9:16 video at 540 by 960 pixels or more, and its creative best practices recommend at least 720p. For ordinary posts, TikTok's help center prints no size at all. A 9:16 file that clears the ad floors, with text inside the template safe zone, is the safe build for both.</p>
+
+  <h3>How long can a TikTok video be in 2026?</h3>
+
+  <p>Up to 10 minutes when you record in the TikTok app and up to 60 minutes when you upload, per TikTok's help center on October 8, 2026. A sound picked first caps the length at the sound's length. Auction in-feed ads run up to 10 minutes, while reservation in-feed ads and TopView run 5 to 60 seconds.</p>
+
+  <h3>What is the TikTok safe zone in pixels?</h3>
+
+  <p>On TikTok's standard in-feed template, scaled to 1080 by 1920, keep text out of the top 240 pixels, the bottom 660 and 120 on each side, plus a 300-pixel right margin below the 840 mark. Anchor templates push the bottom up to 1,014 pixels with a four-line caption.</p>
+
+  <h3>What are the TikTok in-feed ad specs?</h3>
+
+  <p>Auction in-feed ads take 9:16 at 540 by 960 or more, 16:9 at 960 by 540 or 1:1 at 640 by 640, in MP4, MOV, MPEG, 3GP or AVI. Files run up to 10 minutes, 500 MB and at least 516 kbps. Reservation ads run 5 to 60 seconds at 2,500 kbps or more, with sound.</p>
+
+  <h3>How many photos can a TikTok post have?</h3>
+
+  <p>Up to 35, per TikTok's help page on making a post. One editing session takes up to 35 photos and videos combined, up to 8 overlays and one sound. Carousel ads take 2 to 35 images in JPG or PNG at 720 by 1280, 640 by 640 or 1200 by 628, with music required.</p>
+
+  <h3>Why won't my TikTok video upload?</h3>
+
+  <p>TikTok's own fixes: switch between Wi-Fi and mobile data, clear the app's video cache, restart the app and the phone, and update the app. On a computer, refresh the page and restart the browser. A clip that came out shorter than planned may have been capped by the sound you picked first.</p>
+
+  <h3>Can hubStudio post to TikTok for me?</h3>
+
+  <p>Yes, in Beta. Connect your TikTok account in My Connections, then publish a clip of 3 seconds to 10 minutes now or on a schedule, with the caption, the privacy setting and the AI-generated label set in the app. Publishing costs nothing. Renders are charged to your prepaid balance at the price shown first.</p>
+</ArticleLayout>

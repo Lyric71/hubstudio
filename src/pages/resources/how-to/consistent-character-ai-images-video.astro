@@ -1,0 +1,388 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I keep the same character in AI images?",
+    "a": "Build a reference sheet of five angles, write a fixed description of the face, hair, build and outfit, and paste it unchanged into every prompt. Then use an engine's edit or reference mode and attach the sheet pictures every time. Approve one hero still first and treat it as the master for everything that follows."
+  },
+  {
+    "q": "How many reference images should I use for a consistent character?",
+    "a": "As many clean angles as the engine accepts, and only angles that show the character alone. In hubStudio most image engines take up to four source pictures per edit, so a front view, a three-quarter view, a full length and a face close-up fill it. Google documents up to five character images for Nano Banana Pro through its own API."
+  },
+  {
+    "q": "How do I keep a character consistent in AI video?",
+    "a": "Start each clip from an approved still rather than from words. Attach it as the start image, keep the camera move small and the clip short, and keep the character description on top with only the motion described below it. For shots no still covers, switch to references and attach the sheet. Then check a late frame of the clip against the reference sheet."
+  },
+  {
+    "q": "Is image to video or reference to video better for consistency?",
+    "a": "Image to video, whenever the shot can open on a picture you have approved, because the first frame is that picture. Reference to video is for new settings and entrances where no still exists. You cannot mix them in one render in hubStudio: an engine given a frame ignores the references, so the form asks you to choose."
+  },
+  {
+    "q": "Do reference images make a render cost more?",
+    "a": "In hubStudio the price sits next to the button before every run and follows the engine and the settings you pick. Files fed to a video render are billed like a download once the render succeeds, and on some engines attaching a reference clip lowers the price of the whole render. A run that fails is not charged."
+  },
+  {
+    "q": "Why does my AI character's face change between images?",
+    "a": "Because each render is a new draw and words leave room. A paraphrased description, a new synonym or a busy reference picture lets the engine read the character fresh. Lock the description word for word, attach clean single-person references every time, and fix drift by changing the input rather than retouching one output."
+  },
+  {
+    "q": "Can I use a real person as an AI character reference?",
+    "a": "Yes, with their written consent for the specific uses, media and term, signed before the first render. Some makers add their own rules: ByteDance asks for identity verification or prior legal authorization for real portraits, and Google's Veo generates adults only in reference runs. This is production practice, not legal advice."
+  }
+];
+---
+
+<HowtoLayout slug="consistent-character-ai-images-video" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">A character drifts because every render is a fresh draw. It holds when the same pictures and the same words go into every run, the clips start from approved stills, and someone checks the face before anything ships.</p>
+
+  <h2>How do you keep a consistent character in AI images and video?</h2>
+
+  <p>Lock the character before you make anything: a reference sheet of approved angles, a fixed description pasted word for word into every prompt, and reference images fed to an engine whose maker documents them. Render the stills first, animate them from a start frame, then check face, outfit and proportions. In the hubStudio app, the image and video studios take those references directly.</p>
+
+  <p>Start by splitting the character in two: what never moves, and what each new picture is allowed to change.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Element</th>
+          <th scope="col">Lock in every run</th>
+          <th scope="col">May vary by scene</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Face</th>
+          <td>Bone structure, eye color and shape, brows, nose, skin tone, marks such as a mole or a scar</td>
+          <td>Expression</td>
+        </tr>
+        <tr>
+          <th scope="row">Hair</th>
+          <td>Color, length, parting, hairline</td>
+          <td>Movement from wind or action</td>
+        </tr>
+        <tr>
+          <th scope="row">Body</th>
+          <td>Build, height, head-to-body proportion</td>
+          <td>Pose, gesture, action</td>
+        </tr>
+        <tr>
+          <th scope="row">Outfit</th>
+          <td>The signature garment, its colors, where a logo sits</td>
+          <td>A coat or apron added for a scene, if approved</td>
+        </tr>
+        <tr>
+          <th scope="row">Age</th>
+          <td>Apparent age</td>
+          <td>Nothing</td>
+        </tr>
+        <tr>
+          <th scope="row">Style</th>
+          <td>Rendering style of an illustrated mascot: line weight, palette, shading</td>
+          <td>Nothing</td>
+        </tr>
+        <tr>
+          <th scope="row">Scene</th>
+          <td>Nothing</td>
+          <td>Setting, light, time of day, lens, camera angle</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Anything you leave off the lock column, the engine decides for you, and not the same way twice.</p>
+
+  <h2>Why does an AI character change between images?</h2>
+
+  <p>Because words leave room. "Short dark hair" can come back as a bob in one run and a crop in the next, and both obey the prompt. Swap a synonym, reorder the sentence or add a new scene detail, and the engine reads the whole description fresh.</p>
+
+  <p>Video adds time. A clip that opens on the right face has several seconds in which to wander, and a fast camera move or a turn of the head gives it the chance. Even the makers say so. ByteDance's own launch post for Seedance 2.0 lists "room for optimization regarding multi-subject consistency" among the model's open issues.</p>
+
+  <p>So the fix is mechanical. The engine needs pictures to look at and the same words every time. Then a person has to check what comes back.</p>
+
+  <h2>How do you build a consistent character, step by step?</h2>
+
+  <p>Nine steps, in this order. The <a href="/app/create">create page</a> shows where each studio sits in the app.</p>
+
+  <ul>
+    <li><strong>Build the reference sheet.</strong> Five pictures of the character, one file each: front, three-quarter, profile, full length, and a face close-up. Plain background, flat even light, the signature outfit, nothing in the hands. Google's Gemini documentation describes the same move as a "360 view": render one angle at a time and "include previously generated images in subsequent prompts to maintain consistency." Keep the angles as separate files rather than one grid, because the image studio resizes every upload to 1,536 pixels on its long side, and a face in a nine-panel grid arrives tiny.</li>
+    <li><strong>Write the fixed descriptor.</strong> Fifty to eighty words that name every locked row in the table above. Paste it unchanged at the top of every prompt. Never paraphrase it, and never edit it mid-project.</li>
+    <li><strong>Teach the rewrite.</strong> Improve with AI rewrites everything in the box, descriptor included, so check that the description comes back intact, and click Undo when it does not. The Catalog skill Consistent character across images exists to keep the same person or mascot recognizable across a series; add it so every rewrite follows it. The <a href="/help/skills">Skills help article</a> shows where it lives. An admin can also write the descriptor into a team skill, opened by a "When:" line so it joins only the rewrites that mention the character.</li>
+    <li><strong>File the set.</strong> One Assets Library folder for the sheet and the descriptor, tagged with the character's name. Otherwise someone pulls last month's face out of History.</li>
+    <li><strong>Render the stills with references attached.</strong> In the image studio, pick Edit an image, attach the sheet pictures the engine takes (four on most engines, the face close-up first), and write the scene under the descriptor. The result takes the shape of the first picture attached, so set Shape yourself.</li>
+    <li><strong>Approve the stills.</strong> Send them for validation before any video exists. A clip made from an unapproved still inherits its flaws.</li>
+    <li><strong>Animate from a start frame.</strong> In the video studio, open What the render is fed, pick Start image, and attach the approved still. The clip opens on it. Add a last frame on the engines that take one when the move must end on a known pose.</li>
+    <li><strong>Use references for the shots you cannot start from a still.</strong> A wide shot in a new place, or the character walking in mid-clip. Pick References instead. The form makes you choose: an engine given a frame ignores references. Files fed to a render are billed like a download when it succeeds, a small charge against your prepaid balance.</li>
+    <li>Then run the drift check below on every image and clip before it goes out.</li>
+  </ul>
+
+  <h2>What does a consistent-character prompt look like?</h2>
+
+  <p>Two blocks: the descriptor, which never changes, and the scene, which always does. The character below is invented for this guide.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">CHARACTER (paste unchanged in every run): Mara, a woman in her early thirties. Oval face, warm olive skin, dark brown almond-shaped eyes, straight black brows, a small mole above the left corner of the mouth. Shoulder-length straight black hair parted on the left, tucked behind the right ear. Slim build. Rust-colored wool overshirt, open, over a white crew-neck T-shirt; dark indigo jeans; no jewelry. The attached pictures show this same woman: the first is her face, the others her outfit and build.</p>
+    <p class="prompt__body">SCENE (changes every run): Mara stands behind a bakery counter at eight in the morning, reaching for a paper bag. Soft window light from camera left, 35mm lens, waist-up framing, eye level. Calm, half smile.</p>
+  </div>
+
+  <p>For the clip, the approved bakery still goes in as the start image. The character block stays on top, unchanged, and the scene block describes motion only:</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">SCENE (video, start image attached): She lifts the paper bag, turns a quarter toward the window and smiles. Slow push-in, no cut. Ambient room sound, a coffee machine in the distance.</p>
+  </div>
+
+  <p>Say what each attached picture is for. Several makers document the habit: Alibaba's Wan documentation has prompts call them "Image 1" and "Image 2", and a MiniMax example reads "have the character in Image 2 sing."</p>
+
+  <h2>Which AI engines support reference images?</h2>
+
+  <p>The makers' own documentation, read on October 8, 2026, against what the hubStudio app takes per engine. The app column comes from the <a href="/help/create-an-image">Create an image help article</a> and the <a href="/help/create-a-video">Create a video help article</a>; the <a href="/app/engines">engines page</a> lists every engine by maker. The app's limit can sit below the maker's, so plan the sheet around the app's number. This is the table worth bookmarking; the rest of the page is method.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Engine (maker)</th>
+          <th scope="col">What the maker's documentation says</th>
+          <th scope="col">What the app takes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Nano Banana Pro (Google)</th>
+          <td>Up to 14 reference images, up to 5 of them characters</td>
+          <td>Up to 4 source pictures per edit</td>
+        </tr>
+        <tr>
+          <th scope="row">Nano Banana 2 (Google)</th>
+          <td>Up to 14 in all; up to 4 character images and 10 object images per request</td>
+          <td>Up to 4 source pictures per edit</td>
+        </tr>
+        <tr>
+          <th scope="row">ChatGPT Image 2 (OpenAI)</th>
+          <td>Up to 16 input images on the edit endpoint, each read at high fidelity</td>
+          <td>Up to 4 source pictures per edit</td>
+        </tr>
+        <tr>
+          <th scope="row">FLUX.1 Kontext Pro and Max (Black Forest Labs)</th>
+          <td>One input image; holds character consistency across repeated edits</td>
+          <td>1 source picture</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedream 4.5 and 5.0 Pro (ByteDance)</th>
+          <td>4.5 preserves the reference's facial features; 5.0 Pro fuses several reference pictures; no count on the pages read</td>
+          <td>Up to 4 source pictures per edit</td>
+        </tr>
+        <tr>
+          <th scope="row">Veo 3.1 Fast (Google)</th>
+          <td>Up to 3 reference images of a person, character or product; the clip must run 8 seconds</td>
+          <td>Start and last frame, or up to 3 reference pictures</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedance 2.0 (ByteDance)</th>
+          <td>Up to 9 images, 3 video clips and 3 audio clips</td>
+          <td>Start and last frame, or 9 pictures, 3 clips, 1 sound file</td>
+        </tr>
+        <tr>
+          <th scope="row">Seedance 2.5 (ByteDance)</th>
+          <td>"Understands reference videos more precisely"; no count on the page read</td>
+          <td>Start and last frame, or 30 pictures, 10 clips, 2 sound files</td>
+        </tr>
+        <tr>
+          <th scope="row">Grok Imagine 1.5 (xAI)</th>
+          <td>Up to 7 reference images, at 720p at most</td>
+          <td>Start image, or 7 pictures and 1 sound file</td>
+        </tr>
+        <tr>
+          <th scope="row">Wan 3.0 (Alibaba)</th>
+          <td>Multiple reference images, videos and audio; no count on the page read</td>
+          <td>Start and last frame, or 10 pictures, 5 clips, 1 sound file</td>
+        </tr>
+        <tr>
+          <th scope="row">MiniMax H3 (MiniMax)</th>
+          <td>Mixed image, video and audio references in one instruction; no count on the page read</td>
+          <td>Start and last frame, or 9 pictures, 3 clips, 1 sound file</td>
+        </tr>
+        <tr>
+          <th scope="row">Kling 2.5 Turbo, 2.6 and 3.0 (KlingAI); Gemini Omni Flash (Google)</th>
+          <td>Not covered: the app runs them from words alone</td>
+          <td>Prompt only: no frame, no references</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Google's Gemini API documentation lets Nano Banana 2 take up to 4 character images and up to 10 object images in one request, and Nano Banana Pro up to 5 character images and 6 object images, out of 14 reference images in all. Google's February 2026 launch post for Nano Banana 2 put it at five characters and 14 objects "in a single workflow", a count across several steps rather than one request.</blockquote>
+  <p class="source">Source: Google AI for Developers, image generation documentation, last updated October 2026, and the Google blog, February 2026; maker documentation.</p>
+
+  <blockquote class="evidence">Google's documentation says Veo 3.1 accepts up to 3 reference images of a person, character or product "to preserve the subject's appearance in the output video", and fixes a reference-image clip at 8 seconds.</blockquote>
+  <p class="source">Source: Google AI for Developers, Veo documentation, last updated September 2026; maker documentation.</p>
+
+  <blockquote class="evidence">ByteDance says Seedance 2.0 takes up to 9 images, 3 video clips and 3 audio clips in a single request.</blockquote>
+  <p class="source">Source: ByteDance Seed, Seedance 2.0 launch post, February 2026; maker claim.</p>
+
+  <blockquote class="evidence">xAI's documentation allows up to 7 reference images per reference-to-video request, at a maximum resolution of 720p. OpenAI's API reference lets its GPT Image models take up to 16 images in one edit. Black Forest Labs documents FLUX.1 Kontext as editing from a single input image.</blockquote>
+  <p class="source">Source: xAI documentation, last updated September 2026; OpenAI API reference and Black Forest Labs documentation, both read October 2026; maker documentation.</p>
+
+  <p>A higher limit is room, not a target. What helps is clean, well-lit angles of one person and nothing else in the frame. Alibaba's Wan documentation asks that a reference used for a main character "contain only a single character," and that is good practice on any engine. The <a href="/resources/how-to">how-to guides</a> go deeper on single engines.</p>
+
+  <h2>Image to video or reference to video: which keeps a character better?</h2>
+
+  <p>A start frame wins whenever the shot can begin on a picture you have already approved. Google's documentation says Veo "uses the input image as the initial frame," so the first frame is your approved face. References cover the rest, mostly shots where the character turns up somewhere no approved still exists.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Method</th>
+          <th scope="col">What the engine does</th>
+          <th scope="col">Use it for</th>
+          <th scope="col">Watch for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Start image</th>
+          <td>Opens the clip on your still</td>
+          <td>Close-ups, dialogue, a product in hand</td>
+          <td>Drift late in the clip: keep moves small</td>
+        </tr>
+        <tr>
+          <th scope="row">Start and last frame</th>
+          <td>Renders the movement between two stills</td>
+          <td>A turn, a sit-down, a walk between two approved poses</td>
+          <td>Both stills must already match</td>
+        </tr>
+        <tr>
+          <th scope="row">References</th>
+          <td>Imitates the pictures without locking the first frame</td>
+          <td>Wide shots, new locations, an entrance mid-clip</td>
+          <td>Lower ceilings on some engines: 720p on Grok Imagine 1.5, 8 seconds on Veo 3.1</td>
+        </tr>
+        <tr>
+          <th scope="row">Prompt only</th>
+          <td>Invents the character from words</td>
+          <td>Nothing that recurs</td>
+          <td>A new face every time</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Alibaba's Model Studio documentation adds a chaining trick for longer sequences: "Setting the last frame of one clip as the first frame of the next creates seamless transitions." The same logic works in the app without a frame grab: short clips, each opening on an approved still, give the face fewer seconds to wander.</p>
+
+  <h2>What should you check for character drift?</h2>
+
+  <p>Look at every image and clip at full size, side by side with the front view of the reference sheet. On a clip, pause near the end and check the face there, not just in the opening frame.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">What drift looks like</th>
+          <th scope="col">Fix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Face shape</th>
+          <td>Jaw wider, cheeks rounder, face younger</td>
+          <td>Re-run with the face close-up attached first</td>
+        </tr>
+        <tr>
+          <th scope="row">Eyes and brows</th>
+          <td>Color shifts, eyes set wider, brows arched</td>
+          <td>Name them in the descriptor, unchanged</td>
+        </tr>
+        <tr>
+          <th scope="row">Marks</th>
+          <td>The mole moves sides or disappears</td>
+          <td>State its side and place in words</td>
+        </tr>
+        <tr>
+          <th scope="row">Hair</th>
+          <td>Parting flips, length changes, hairline moves</td>
+          <td>Attach the three-quarter view</td>
+        </tr>
+        <tr>
+          <th scope="row">Skin tone</th>
+          <td>Lighter or darker than the sheet under scene light</td>
+          <td>Name the skin tone and the light direction</td>
+        </tr>
+        <tr>
+          <th scope="row">Outfit</th>
+          <td>Collar changes, buttons appear, the logo jumps</td>
+          <td>Attach the full-length view; describe the garment exactly</td>
+        </tr>
+        <tr>
+          <th scope="row">Proportions</th>
+          <td>Head too large for the body, height changes against props</td>
+          <td>Attach the full-length view; give a height</td>
+        </tr>
+        <tr>
+          <th scope="row">Hands</th>
+          <td>Extra or fused fingers, jewelry that was never there</td>
+          <td>Re-render; keep hands out of tight close-ups</td>
+        </tr>
+        <tr>
+          <th scope="row">Style (mascot)</th>
+          <td>Line weight, palette or shading changes</td>
+          <td>Attach a style frame; lock the rendering style in words</td>
+        </tr>
+        <tr>
+          <th scope="row">Voice (video with sound)</th>
+          <td>A different voice from one clip to the next</td>
+          <td>Use the same engine and a sound reference where the engine takes one</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>When something fails, fix the input and re-run. Do not patch a face by hand in one frame and hope the next clip matches it. Send what passes for validation, so a second person signs off on the face before anything publishes.</p>
+
+  <h2>Can you use a real person as a character reference?</h2>
+
+  <p>Only with their written consent, for the uses you name. This section describes production practice, not legal advice.</p>
+
+  <p>A real presenter, model or employee used as a reference becomes the face of every image and clip you make with it, for as long as the files exist, in places nobody planned when the first picture was taken. Get a signed release before the first render that names the person, the uses, the media, the term and what happens to the reference pictures when the term ends. The <a href="/resources/insights/ai-brand-ambassadors-what-you-sign">AI brand ambassadors insight</a> maps the clauses such a release needs.</p>
+
+  <p>Keep the signed release in the same folder as the reference sheet.</p>
+
+  <blockquote class="evidence">ByteDance states that anyone who wants to use real human portraits as subject references for Seedance 2.0 video needs "identity verification or prior legal authorization."</blockquote>
+  <p class="source">Source: ByteDance Seed, Seedance 2.0 launch post, February 2026; maker statement.</p>
+
+  <p>Some engines also limit who can appear. Google's Veo documentation sets person generation to adults only for image to video, first and last frame, and reference image runs. An invented mascot or presenter avoids the question, which is one reason brands build one. The <a href="/resources/insights/ai-avatars-brand-content">AI avatars insight</a> covers when a synthetic presenter is the better choice.</p>
+
+  <h2>Consistent character AI: questions buyers ask</h2>
+
+  <h3>How do I keep the same character in AI images?</h3>
+
+  <p>Build a reference sheet of five angles, write a fixed description of the face, hair, build and outfit, and paste it unchanged into every prompt. Then use an engine's edit or reference mode and attach the sheet pictures every time. Approve one hero still first and treat it as the master for everything that follows.</p>
+
+  <h3>How many reference images should I use for a consistent character?</h3>
+
+  <p>As many clean angles as the engine accepts, and only angles that show the character alone. In hubStudio most image engines take up to four source pictures per edit, so a front view, a three-quarter view, a full length and a face close-up fill it. Google documents up to five character images for Nano Banana Pro through its own API.</p>
+
+  <h3>How do I keep a character consistent in AI video?</h3>
+
+  <p>Start each clip from an approved still rather than from words. Attach it as the start image, keep the camera move small and the clip short, and keep the character description on top with only the motion described below it. For shots no still covers, switch to references and attach the sheet. Then check a late frame of the clip against the reference sheet.</p>
+
+  <h3>Is image to video or reference to video better for consistency?</h3>
+
+  <p>Image to video, whenever the shot can open on a picture you have approved, because the first frame is that picture. Reference to video is for new settings and entrances where no still exists. You cannot mix them in one render in hubStudio: an engine given a frame ignores the references, so the form asks you to choose.</p>
+
+  <h3>Do reference images make a render cost more?</h3>
+
+  <p>In hubStudio the price sits next to the button before every run and follows the engine and the settings you pick. Files fed to a video render are billed like a download once the render succeeds, and on some engines attaching a reference clip lowers the price of the whole render. A run that fails is not charged.</p>
+
+  <h3>Why does my AI character's face change between images?</h3>
+
+  <p>Because each render is a new draw and words leave room. A paraphrased description, a new synonym or a busy reference picture lets the engine read the character fresh. Lock the description word for word, attach clean single-person references every time, and fix drift by changing the input rather than retouching one output.</p>
+
+  <h3>Can I use a real person as an AI character reference?</h3>
+
+  <p>Yes, with their written consent for the specific uses, media and term, signed before the first render. Some makers add their own rules: ByteDance asks for identity verification or prior legal authorization for real portraits, and Google's Veo generates adults only in reference runs. This is production practice, not legal advice.</p>
+</HowtoLayout>

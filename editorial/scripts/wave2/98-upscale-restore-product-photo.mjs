@@ -1,0 +1,72 @@
+// editorial/scripts/wave2/98-upscale-restore-product-photo.mjs
+export default {
+  id: "98",
+  date: "2026-11-17",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "upscale-restore-product-photo",
+  h1: "How to upscale and restore an old product photo",
+  query: "upscale product photo AI",
+  secondary: [
+    "AI image upscaler for product photos",
+    "restore old product photos",
+    "increase resolution of a product image",
+    "upscale image to 4K",
+  ],
+  verdict:
+    "Upscaler apps and freelancer gigs rank with multiplier claims (2x to 16x); none explains what an upscale can invent, when restoration crosses into changing the product, or which source to start from.",
+  words: 1700,
+  angle:
+    "An upscale re-renders; it does not recover. It can sharpen and clean, and it can also invent: label text, stitching, a new edge. So the method is control: start from the best source, ask for restoration and not change, check the label and the edges, keep the original. Taught with Upscale & restore in the Image studio.",
+  mustInclude: [
+    "What upscaling does and what it invents; when to reshoot instead",
+    "The Upscale & restore job: one source image, the prompt optional (the box reads Anything to add? (optional)); it re-renders the picture larger, sharper and free of compression noise without changing what is in it",
+    "Engines that upscale in the app: Nano Banana 2, Nano Banana Pro, Seedream 4.5 and Seedream 5.0 Pro; Seedream renders natively up to 4K and is the pick for a 4K upscale",
+    "Source images are resized in the browser to 1,536 pixels on the long side at most before they are sent, which also removes their metadata: what that means for the source you pick",
+    "Improve with AI returns a careful restoration note for an upscale; the Catalog skill Upscaling and restoration",
+    "The check after the run (label text, edges, texture, color), then the free Image editor for light and color",
+    "Keep the original in the Assets Library and save the result as a new version",
+    "The price shown before the run; a failed run is not charged",
+  ],
+  doNot: [
+    "Claim a multiplier (2x, 4x, 16x) for the app: it renders to sizes",
+    "Promise the upscale recovers detail the original never held",
+    "Name an upscaler app",
+    "Print a price",
+    "Use an em dash",
+  ],
+  stats: [
+    "App behavior: create-an-image.md and assets-library.md",
+    "Marketplace minimum sizes: link the spec pages rather than restating them without a source",
+  ],
+  assets: [
+    "Table: engine, resolutions, upscale (from the help center)",
+    "Check table: what to inspect after the upscale and the fix",
+    "Existing localized capture create-an-image-studio.webp",
+  ],
+  links: [
+    ["Image studio", "/app/create"],
+    ["white background packshot guide", "/resources/how-to/ai-white-background-packshot"],
+    ["Amazon product image requirements", "/resources/insights/amazon-product-image-requirements"],
+    ["retouching at volume", "/resources/insights/retouch-at-volume-qa-pipeline"],
+    ["eCommerce design service", "/services/design/ecommerce"],
+  ],
+  seoTitle: "How to Upscale and Restore an Old Product Photo",
+  seoDesc:
+    "Upscale a low-resolution product photo without inventing detail: pick the source, ask for restoration, check labels and edges, keep the original.",
+  faqs: [
+    "How do I upscale a product photo without losing quality?",
+    "Can AI restore an old product photo?",
+    "Does AI upscaling add fake details?",
+    "How do I make a product image 4K?",
+    "Can I upscale a blurry product photo for Amazon?",
+    "What resolution should a product photo be?",
+  ],
+  cta: "Create your account",
+  notes: "Help: create-an-image.md (Upscale & restore). Reuse the existing localized Image studio capture.",
+};

@@ -1,0 +1,72 @@
+// editorial/scripts/wave2/63-linkedin-post-specs.mjs
+export default {
+  id: '63',
+  date: '2026-10-08',
+  family: 'spec',
+  template: 'spec',
+  brief: true,
+  status: 'not_started',
+  cluster: 'Platform specs',
+  contentType: 'Spec page',
+  readerStage: 'practitioner',
+  slug: 'linkedin-post-specs',
+  h1: 'LinkedIn image, video and document post specs for 2026',
+  query: 'linkedin image size 2026',
+  secondary: [
+    'linkedin video specs',
+    'linkedin document post size',
+    'linkedin carousel pdf',
+    'linkedin company page banner size',
+  ],
+  verdict:
+    'Size-guide blogs and tool vendors rank; none cites the LinkedIn Help Center article it copies, most mix ad specs into organic posts (1200 x 627 is the link-preview spec, 1200 x 1200 the square ad), and the company cover is split three ways (1128 x 191, 4200 x 700, 1512 x 256) because the help page changed around August 2026.',
+  words: 1500,
+  angle:
+    'Organic post specs (single image, multi-image, video, document), company page images, and ad specs (single image, video, document), from LinkedIn Help Center and LinkedIn Marketing Solutions pages only, each row with its source and the page age LinkedIn shows. Where two LinkedIn pages disagree (video length, MOV support), print both and say which is newer. Visible Reviewed October 8, 2026. Primary, so no deviation 7 disclaimer.',
+  mustInclude: [
+    'Organic spec table with source column',
+    'Ads spec table with source column',
+    'Company page table with source column',
+    'What crops in the feed on mobile: the 4:5 ceiling, multi-image layout, link-image padding, vertical ads mobile only, cover trimming',
+    'Common failures from official help: document checklist, ProRes, iCloud, layered PDFs, mixed page sizes, logo on dark backgrounds',
+    'How hubStudio publishes to LinkedIn profiles and company pages: pictures and carousels (2 to 8 slides), scheduling, Draft with AI, no video from the app yet; facts only from src/content/help/linkedin.md and hubstudio-positioning.md',
+    'A dated changelog block',
+  ],
+  doNot: [
+    'Cite a third-party size guide as the source of any number',
+    'Name a size-guide publisher, scheduler or design tool',
+    'Claim hubStudio publishes documents, PDFs or video to LinkedIn',
+    'Print a price or say credits',
+    'Use an em dash or Han characters',
+  ],
+  stats: [
+    'LinkedIn Help Center: a527229 photos, a564109 media file types, a548372 video troubleshooting, a1311816 Page video specs, a518909 and a523054 documents, a563309 Page images, a568217 and a549049 profile images, a528176 post length',
+    'LinkedIn Marketing Solutions help: a426534 single image ads, a424737 video ads, a493903 document ads, a726534 document ad best practices; business.linkedin.com ad spec pages as a second read',
+  ],
+  assets: [
+    'Organic spec table',
+    'Company page and profile image table',
+    'Ads spec table',
+    'Changelog block',
+  ],
+  links: [
+    ['LinkedIn platform page', '/solutions/platforms/linkedin'],
+    ['social media design service', '/services/design/social-media'],
+    ['publishing page of the app', '/app/publish'],
+    ['presentation design service', '/services/design/presentation-design'],
+  ],
+  seoTitle: 'LinkedIn Image, Video and Document Specs 2026',
+  seoDesc:
+    'LinkedIn post, company page and ad specs for 2026, from LinkedIn Help Center pages only: image sizes, video limits, PDF documents, mobile crops.',
+  faqs: [
+    'What is the best image size for a LinkedIn post in 2026?',
+    'What size is the LinkedIn company page banner?',
+    'How long can a LinkedIn video be?',
+    'What size should a LinkedIn carousel PDF be?',
+    'Can I post MOV files on LinkedIn?',
+    'What is the LinkedIn character limit for a post?',
+    'Can hubStudio publish carousels to a LinkedIn company page?',
+  ],
+  cta: 'Create your account',
+  notes: 'Quarterly recheck due 2027-01-08 (watch row). Company cover changed to 1512 x 256 on the help page about two months before 2026-10-08.',
+};

@@ -653,3 +653,23 @@ published RedNote specs article, which covers the same crop problem.
 **Nothing from the do-not-publish list reached the draft**: no "1080x1464", no
 "85 percent of traffic", no "22 percent lower completion", no rejection reasons
 written as enforcement, no quarantined domain, and no hubStudio rate.
+
+## Amended 2026-10-08 (TikTok template files)
+
+The research for brief 57 (`research/tiktok-video-specs.md`) read the insets
+TikTok prints on the template files its auction in-feed spec page links. The
+"published TikTok insets" this file collected on 10 September are third-party
+sets; TikTok's own values replace them in the two-app box:
+
+| Claim | Source | Confidence |
+|---|---|---|
+| TikTok standard in-feed template scaled to 1080 x 1920: bottom 660, right 300 below y 840, sides 120, top 240 | research/tiktok-video-specs.md, template rows | primary for the file, derived for the scaled values |
+| TikTok anchor templates scaled to 1080 x 1920: bottom 812, 878, 946, 1014 for one to four caption lines; right 240 below y 360; top 252 | research/tiktok-video-specs.md, anchor rows | primary for the files, derived for the scaled values |
+| Two-app box: the Douyin box (x 108 to 972, y 288 to 1540) intersected with TikTok's x 120 to 780, y 252 to 906 gives x 120 to 780, y 288 to 906, 660 by 618 | arithmetic | derived |
+| The new box sits inside the old two-app box (x 108 to 940, y 288 to 1436), so it still clears the 11 third-party TikTok sets | arithmetic | derived |
+| TikTok's own bottom inset (660, up to 1,014 with an anchor) is deeper than every published Douyin bottom band (200 to 380) | arithmetic on the rows above and this file's Douyin rows | derived |
+
+Page and draft changed the same day: the rail blockquote and its source, the
+rail paragraph, the box blockquote and its source, the box table, the caption
+section lead, blockquote and source, the re-export table rows, both FAQ
+answers that cited the 270-pixel inset, and the asset brief's never-do list.

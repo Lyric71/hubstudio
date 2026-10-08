@@ -1,0 +1,76 @@
+// editorial/scripts/wave2/79-holiday-visuals-from-product-photos.mjs
+export default {
+  id: "79",
+  date: "2026-10-27",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "holiday-visuals-from-product-photos",
+  h1: "How to make Black Friday and holiday visuals from the product photos you already have",
+  query: "black friday product images AI",
+  secondary: [
+    "holiday product photos with AI",
+    "christmas product images from existing photos",
+    "black friday ad images",
+    "AI background for product photos holiday",
+  ],
+  verdict:
+    "TOOL PROMOS. The SERP is background-generator vendors with seasonal landing pages; they show one festive backdrop and stop, and none covers keeping the product identical (label, color, scale), the price-claim rules a sale visual triggers, or the formats the season's placements need.",
+  words: 1700,
+  angle:
+    "The season needs dozens of visuals in three weeks, and the product must stay exactly the product. Start from the photos you already have, change the scene and never the object, add the offer as an editable overlay rather than baked-in text, and check the price claim against the rules before it goes out. Black Friday 2026 is Friday, November 27.",
+  mustInclude: [
+    "The season's dates in one table: Thanksgiving November 26, Black Friday November 27, Cyber Monday November 30, 2026, plus the European dates from the holiday calendar piece",
+    "Edit an image in the Image studio: your product photo as a source picture (up to four, engine dependent), a prompt that names what changes (scene, props, light) and what must not (label, color, shape)",
+    "The Lifestyle product scene and E-commerce packshot skills from the Catalog shaping Improve with AI",
+    "A fidelity check after every render: label text, logo, color, proportions; reject and rerun rather than retouch a wrong product",
+    "Offer text as an overlay in the free Image editor (Text panel, outline or shadow for legibility), never rendered into the picture, so the discount can change without a new run",
+    "Price claims: the FTC Guides Against Deceptive Pricing (16 CFR Part 233) for former-price comparisons in the US, and the EU prior-price rule (lowest price in the previous 30 days) for Europe",
+    "Formats for the season's placements via the Image editor's Social panel and crop presets; keep everything for the launch together in a Campaign",
+    "Several runs at once, each in its own tab; 1 to 10 images a run on the ChatGPT Image engines; the price shown before every run; a failed run never charged",
+  ],
+  doNot: [
+    "Name any background generator, tool or competitor",
+    "Bake a discount figure into a generated image",
+    "Print conversion-lift statistics from vendor blogs",
+    "Print a hubStudio amount",
+    "Use an em dash or numbered cards",
+  ],
+  stats: [
+    "2026 dates: computed from the calendar (Thanksgiving is the fourth Thursday of November) and cross-checked against the holiday calendar piece",
+    "FTC Guides Against Deceptive Pricing, 16 CFR Part 233, ecfr.gov",
+    "EU prior-price rule: Directive 98/6/EC Article 6a as inserted by Directive (EU) 2019/2161, EUR-Lex",
+    "App facts: create-an-image.md, skills.md, assets-library.md, campaigns.md",
+  ],
+  assets: [
+    "Season dates table",
+    "Prompt pattern table: what changes, what stays, example wording",
+    "Fidelity checklist as a plain list",
+    "Existing captures: create-an-image-studio, image-editor-draw",
+  ],
+  links: [
+    ["Holiday content calendar 2026", "/resources/insights/holiday-content-calendar-2026"],
+    ["Product photo to lifestyle image", "/resources/how-to/product-photo-to-lifestyle-image"],
+    ["Readable text in AI images", "/resources/how-to/readable-text-in-ai-images"],
+    ["Create in the hubStudio app", "/app/create"],
+    ["Ecommerce design service", "/services/design/ecommerce"],
+  ],
+  seoTitle: "Black Friday Visuals From Your Product Photos",
+  seoDesc:
+    "Turn the product photos you have into Black Friday and holiday visuals: change the scene not the product, keep offers editable and check price claims.",
+  faqs: [
+    "How do I make Black Friday product images with AI?",
+    "Can AI put my product in a holiday scene without changing it?",
+    "Should I put the discount in the image or on top of it?",
+    "When is Black Friday 2026?",
+    "What are the rules for showing a sale price in an ad?",
+    "How many holiday visuals do I need for the season?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Holiday piece publishes October 27, a month before Black Friday. Engines named only from the in-app list.",
+};

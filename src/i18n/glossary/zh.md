@@ -100,3 +100,26 @@ rate card -> 报价单 (Douyin ad rate card -> 刊例); trade body -> 行业协�
 Source: (citation line) -> 来源：
 cost line (table header "Line") -> 成本项; "Model" header -> 模式; "Term" header -> 条款; "Treatment" -> 创意阐述; "Capture" -> 拍摄; "Practice" -> 行业惯例
 Cyberspace Administration of China -> 国家互联网信息办公室
+
+## Platform specs, ads, prompting and regulation (settled 2026-10-08, wave two)
+Black Friday -> 黑色星期五（下称黑五），之后用 黑五; Cyber Monday -> 网络星期一; Boxing Day -> 节礼日
+feed -> 动态 (app term; ad-industry prose may use 信息流); in-feed ads -> 信息流广告
+organic (post) -> 自然发布; boost -> 加速推广; paid social -> 付费社交广告
+ad set -> 广告组; learning phase (Meta) -> 学习期; Ads Manager -> 广告管理工具; call-to-action button -> 行动号召按钮
+TikTok auction / reservation in-feed -> 竞价 / 合约信息流广告; anchor (link card) -> 锚点链接（锚点链接卡片）; caption (TikTok) -> 配文
+safe box -> 安全框; keep clear -> 留空区域; template files -> 模板文件
+custom thumbnail -> 自定义缩略图; Content ID claim -> Content ID 版权主张; end screen -> 片尾画面
+end card -> 落版; clean plate -> 干净底图; start frame / last frame -> 首帧 / 尾帧 (app labels 首帧图片, 首帧与尾帧; not 起始帧/结束帧)
+lifestyle image -> 场景图 (skill keeps 产品生活场景图); fill -> 主体占比; cutout -> 抠图; master file -> 母版文件
+reference sheet -> 参考图集; character drift -> 角色漂移; still -> 静帧; masked edit -> 蒙版编辑; keep list -> 保留清单
+burned-in captions -> 硬字幕; hook line -> 开头钩子文案
+Content Credentials -> 内容凭证（Content Credentials）; AI metadata -> AI 元数据
+provider / deployer (EU AI Act) -> 提供者 / 部署者; deep fake -> 深度伪造; code of practice -> 行为准则
+AI Omnibus -> 《人工智能综合法案》（欧盟第 2026/1744 号条例）
+Reviewed <date> -> 审订于 2026 年 10 月 8 日
+Platform specs hub -> 平台规格; China platforms -> 中国平台; Across platforms -> 跨平台
+Campaign (app) -> 营销活动
+Seller Central -> Amazon 卖家平台（Seller Central）; YouTube Help -> YouTube 帮助中心; Meta Business Help Center -> Meta 商务帮助中心
+English page / French page (YouTube Help versions) -> 英文版页面 / 法文版页面; versions disagree -> 口径不一; both versions given -> 两说并列
+Content ID: blocked worldwide -> 全球屏蔽; no longer blocked automatically -> 不再自动屏蔽; lose monetization -> 失去获利资格（表格内：无法获利）
+Sound panel (Video editor) -> 音频面板（应用界面标签 Sound 为“音频”）

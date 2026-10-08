@@ -1,0 +1,423 @@
+---
+/**
+ * /resources/specs: the platform specs hub.
+ *
+ * Lists every insight whose category is "Platform specs", grouped by network.
+ * Nothing here is hand-listed: the page reads src/data/insights.ts at build
+ * time, so a spec page published by the editorial run appears here the moment
+ * its entry lands in the array.
+ *
+ * The network comes from the slug. The first network named in it decides the
+ * group (`jd-image-requirements-vs-tmall` files under JD); a slug that names
+ * both a Western and a China platform compares markets, and one that names no
+ * network at all is not about one platform, so both go under More. Western
+ * networks come first, then the marketplaces, then China platforms as one
+ * group, then More. Inside a group the array order holds: newest first.
+ *
+ * No ordinal numerals on cards (project rule). Body copy and card decks use
+ * --type-body. Closes on the shared DualCta, app first.
+ */
+import Layout from '../../layouts/Layout.astro';
+import DualCta from '../../components/DualCta.astro';
+import { insights, type Insight } from '../../data/insights';
+
+interface Network {
+  /** Slug token(s) that name the network, hyphen-joined. */
+  key: string;
+  /** Display name, as the platform writes it. */
+  name: string;
+  region: 'west' | 'china';
+}
+
+/* Order is display order: social networks, then marketplaces and commerce,
+   then China platforms (shown as one group, sub-ordered the same way). */
+const NETWORKS: Network[] = [
+  { key: 'instagram', name: 'Instagram', region: 'west' },
+  { key: 'tiktok', name: 'TikTok', region: 'west' },
+  { key: 'youtube', name: 'YouTube', region: 'west' },
+  { key: 'linkedin', name: 'LinkedIn', region: 'west' },
+  { key: 'facebook', name: 'Facebook', region: 'west' },
+  { key: 'x', name: 'X', region: 'west' },
+  { key: 'pinterest', name: 'Pinterest', region: 'west' },
+  { key: 'amazon', name: 'Amazon', region: 'west' },
+  { key: 'shopify', name: 'Shopify', region: 'west' },
+  { key: 'google-merchant', name: 'Google Merchant Center', region: 'west' },
+  { key: 'douyin', name: 'Douyin', region: 'china' },
+  { key: 'rednote', name: 'RedNote', region: 'china' },
+  { key: 'wechat', name: 'WeChat', region: 'china' },
+  { key: 'weibo', name: 'Weibo', region: 'china' },
+  { key: 'tmall', name: 'Tmall', region: 'china' },
+  { key: 'jd', name: 'JD', region: 'china' },
+];
+
+/** Every network named in a slug, in the order the slug names them. */
+function networksIn(slug: string): Network[] {
+  const tokens = slug.split('-');
+  const hits: { at: number; net: Network }[] = [];
+  for (const net of NETWORKS) {
+    const parts = net.key.split('-');
+    for (let i = 0; i + parts.length <= tokens.length; i++) {
+      if (parts.every((p, n) => tokens[i + n] === p)) {
+        hits.push({ at: i, net });
+        break;
+      }
+    }
+  }
+  return hits.sort((a, b) => a.at - b.at).map((h) => h.net);
+}
+
+interface Card {
+  item: Insight;
+  /** The network chip on the card, or the category when it spans several. */
+  tag: string;
+  network?: Network;
+}
+
+interface Group {
+  id: string;
+  name: string;
+  cards: Card[];
+}
+
+const specs = insights.filter((i) => i.category === 'Platform specs');
+
+const west = new Map<string, Card[]>();
+const china: Card[] = [];
+const more: Card[] = [];
+
+for (const item of specs) {
+  const named = networksIn(item.slug);
+  const regions = new Set(named.map((n) => n.region));
+  const first = named[0];
+  if (!first || regions.size > 1) {
+    more.push({ item, tag: named.length ? named.map((n) => n.name).join(', ') : 'Across platforms' });
+  } else if (first.region === 'china') {
+    china.push({ item, tag: first.name, network: first });
+  } else {
+    west.set(first.key, [...(west.get(first.key) ?? []), { item, tag: first.name, network: first }]);
+  }
+}
+
+/* China cards stay together by platform, then newest first (a stable sort
+   keeps the array's date order inside each platform). */
+const order = (n?: Network) => (n ? NETWORKS.indexOf(n) : NETWORKS.length);
+china.sort((a, b) => order(a.network) - order(b.network));
+
+const groups: Group[] = [
+  ...NETWORKS.filter((n) => west.has(n.key)).map((n) => ({
+    id: n.key,
+    name: n.name,
+    cards: west.get(n.key) ?? [],
+  })),
+  ...(china.length ? [{ id: 'china-platforms', name: 'China platforms', cards: china }] : []),
+  ...(more.length ? [{ id: 'more', name: 'More platform specs', cards: more }] : []),
+];
+
+const SITE = 'https://www.hubstudio.ai';
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: `${SITE}/resources` },
+    { '@type': 'ListItem', position: 3, name: 'Platform specs', item: `${SITE}/resources/specs` },
+  ],
+};
+const collection = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Platform specs',
+  description:
+    'Image sizes, video lengths and file rules for the social networks and marketplaces brands publish to, grouped by platform.',
+  url: `${SITE}/resources/specs`,
+  hasPart: specs.map((i) => ({
+    '@type': 'BlogPosting',
+    headline: i.title,
+    description: i.metaDescription,
+    datePublished: i.dateISO,
+    dateModified: i.dateModifiedISO ?? i.dateISO,
+    url: `${SITE}/resources/insights/${i.slug}`,
+  })),
+};
+---
+
+<Layout
+  title="Platform specs: sizes and formats by network | hubStudio"
+  description="Image sizes, video lengths and file rules for the social networks and marketplaces brands publish to, from Instagram and Amazon to Douyin and Tmall."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(collection)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="sp-hero">
+    <div class="container sp-hero__inner">
+      <nav class="sp-crumb" aria-label="Breadcrumb">
+        <a href="/resources">Resources</a>
+        <span aria-hidden="true">/</span>
+        <span>Platform specs</span>
+      </nav>
+      <h1 class="headline h1 reveal sp-hero__title">
+        Build it to <span class="accent">spec</span> the first time.
+      </h1>
+      <p class="sp-hero__lead">
+        Image sizes, video lengths, file limits and safe zones for the networks and
+        marketplaces brands publish to, one page per platform. Where a platform publishes
+        its own rules, the numbers come from its help pages. Where a China platform keeps
+        them behind a seller login, the page says so and shows how many sources agree.
+      </p>
+      {
+        groups.length > 1 && (
+          <nav class="sp-jump" aria-label="Jump to a platform">
+            {groups.map((g) => (
+              <a class="sp-jump__chip" href={`#${g.id}`}>
+                {g.name}
+              </a>
+            ))}
+          </nav>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- ===== Groups ===== -->
+  <section class="sp-groups">
+    <div class="container">
+      {
+        groups.length === 0 && (
+          <p class="sp-empty">
+            The first spec pages are on their way. Until then, the
+            <a href="/resources/insights">insights archive</a> covers the platforms we produce for.
+          </p>
+        )
+      }
+      {
+        groups.map((g) => (
+          <section class="sp-group" id={g.id} aria-labelledby={`${g.id}-title`}>
+            <h2 class="sp-group__title" id={`${g.id}-title`}>
+              {g.name}
+            </h2>
+            <div class="sp-grid">
+              {g.cards.map(({ item, tag }) => (
+                <a class="sp-card card card--white" href={`/resources/insights/${item.slug}`}>
+                  <img
+                    class="sp-card__img"
+                    src={item.image}
+                    alt={item.imageAlt}
+                    width="2000"
+                    height="1333"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="sp-card__body">
+                    <span class={`chip sp-card__tag sp-card__tag--${item.tone}`}>{tag}</span>
+                    <h3 class="sp-card__title">{item.title}</h3>
+                    <p class="sp-card__deck">{item.deck}</p>
+                    <p class="sp-card__meta">
+                      <time datetime={item.dateISO}>{item.date}</time>
+                      <span class="sp-card__dot" aria-hidden="true" />
+                      <span>{item.readingTime}</span>
+                    </p>
+                    <span class="sp-card__more">Read the specs &rarr;</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ===== Closing: both doors, app first ===== -->
+  <DualCta
+    eyebrow="Next step"
+    pre="Make it to spec in the "
+    accent="app"
+    post=", or send us the brief."
+  />
+</Layout>
+
+<script>
+  /* Reveal headline on scroll (headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>
+
+<style>
+  /* ---- Hero ---- */
+  .sp-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(32px, 5vw, 56px);
+  }
+  .sp-hero__inner {
+    max-width: 880px;
+  }
+  .sp-crumb {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .sp-crumb a:hover {
+    color: var(--brand-orange);
+  }
+  .sp-hero__title {
+    margin-top: 20px;
+  }
+  .sp-hero__lead {
+    margin-top: 24px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .sp-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+  .sp-jump__chip {
+    padding: 7px 14px;
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-pill);
+    font-size: var(--type-small);
+    line-height: 1.2;
+    color: var(--text-mute);
+    transition:
+      color 160ms ease-out,
+      border-color 160ms ease-out;
+  }
+  .sp-jump__chip:hover {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+  }
+
+  /* ---- Groups ---- */
+  .sp-groups {
+    padding-block: 16px 112px;
+  }
+  .sp-group {
+    padding-top: 48px;
+    border-top: 1px solid var(--line-hairline);
+    scroll-margin-top: 96px;
+  }
+  .sp-group + .sp-group {
+    margin-top: 64px;
+  }
+  .sp-group__title {
+    margin-bottom: 28px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .sp-empty {
+    max-width: 56ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .sp-grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .sp-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .sp-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ---- Card (same pattern as the insights index) ---- */
+  .sp-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 30px;
+    transition: transform 200ms ease-out;
+  }
+  .sp-card:hover {
+    transform: translateY(-4px);
+  }
+  .sp-card__img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .sp-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+  .sp-card__tag--orange {
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange);
+  }
+  .sp-card__tag--navy {
+    background: rgba(30, 58, 138, 0.1);
+    color: var(--brand-navy);
+  }
+  .sp-card__title {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .sp-card__deck {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .sp-card__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+  .sp-card__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .sp-card__more {
+    margin-top: auto;
+    padding-top: 6px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+</style>

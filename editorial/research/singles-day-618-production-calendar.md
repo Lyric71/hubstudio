@@ -648,3 +648,22 @@ generation**: a hand pinning colored markers along a paper timeline strip.
 
 **Distribution:** category Production, which reaches the AI excellence page
 layer and the home page.
+
+## Amended 2026-10-08 (Tmall Double 11 2026 dates)
+
+Note 4 above asked for Double 11 2026 to be rechecked. The recheck ran on
+2026-09-27 for brief 46 and is recorded in
+`research/running-a-tmall-flagship-content.md`, "Tmall Double 11 2026,
+recheck": two outlets read in full, the 2026 merchant rules as reported.
+
+| Claim | Source | Confidence |
+|---|---|---|
+| Tmall Double 11 2026: deposits from 8 p.m. 15 October to 17:59 on 20 October; spot sale 20 October to 13 November; presale sign-up to 19:59 on 15 October, spot sign-up to 19 October | finance.sina.com.cn/tech/roll/2026-09-25/doc-iniszmmx4463810.shtml; guandian.cn/article/20260922/605453.html (read 2026-09-27) | reported, two outlets, one origin |
+| Derived: the 2026 rules were reported 23 days before the 15 October presale, against 21 days in 2025 (24 September to 15 October) | arithmetic on the row above and this file's 2025 rows | derived |
+
+Page and draft changed on 2026-10-08: the first FAQ answer, a Tmall Singles
+Day 2026 row in the Singles Day table, the paragraph after the table (now a
+cited blockquote and one line of arithmetic), and the asset brief's
+never-do list. JD and Douyin 2026 dates were not researched in this run; the
+page tells the reader to check their own announcements, and a watch.csv row
+(due 2026-10-12) rechecks them.

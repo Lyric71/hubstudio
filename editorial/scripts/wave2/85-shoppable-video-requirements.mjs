@@ -1,0 +1,75 @@
+// editorial/scripts/wave2/85-shoppable-video-requirements.mjs
+export default {
+  id: "85",
+  date: "2026-11-02",
+  family: "insight",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Insights",
+  contentType: "Insight",
+  readerStage: "practitioner",
+  slug: "shoppable-video-requirements",
+  h1: "Shoppable video: what TikTok Shop, Instagram and YouTube Shopping each need from a product video",
+  query: "shoppable video requirements",
+  secondary: [
+    "TikTok Shop video requirements",
+    "how to tag products in Instagram Reels",
+    "YouTube Shopping product tagging requirements",
+    "shoppable video specs",
+  ],
+  verdict:
+    "Shoppable-video software vendors rank with TikTok-only how-tos built around their own integrations; nobody puts the three platforms side by side on eligibility, where each operates, the catalog connection and what the clip itself has to do.",
+  words: 2300,
+  angle:
+    "The file is the easy part. Each platform gates shopping behind its own eligibility, its own market list and its own catalog connection, and each rewards a different clip. One master, three cuts, three checklists, read from each platform's own seller and creator help, dated.",
+  mustInclude: [
+    "A side-by-side table: TikTok Shop, Instagram product tagging, YouTube Shopping: who can tag, eligibility, where it operates per the platform's own page, catalog source, the formats it applies to",
+    "For each platform, what the product video itself needs: length and format, the product in frame early, and the commerce content rules from the platform's own policy page",
+    "Disclosure: TikTok's commercial content disclosure, Instagram's paid partnership label, YouTube's paid promotion setting, each from its own help",
+    "Where each operates, only as each platform lists it, with the date read",
+    "One master to three cuts, pointing to the TikTok, Reels and Shorts spec pages",
+    "How the hubStudio app fits, inside its facts: render the clip in the Video studio, frame it for a Reel or a TikTok in the Video editor with the network's zones shown, publish to Instagram and to TikTok (Beta, always labeled), and prepare a YouTube video that hubStudio hands to YouTube Studio; product tags are added on each platform, never in hubStudio",
+    "Where the studio comes in: shoppable cutdowns run as a production line",
+  ],
+  doNot: [
+    "Claim hubStudio adds product tags, links a catalog or connects to a shop",
+    "Use a follower threshold or an eligibility rule from anything but the platform's own page",
+    "Name a shoppable-video vendor, plugin, consultancy or agency",
+    "Drop the Beta label when TikTok publishing from the app is mentioned",
+    "Use an em dash",
+  ],
+  stats: [
+    "TikTok Shop seller and creator eligibility and markets: TikTok Shop Seller Center or Academy and TikTok's own help, dated",
+    "Instagram product tagging eligibility and markets: Meta Business Help Center (commerce eligibility, product tags in Reels)",
+    "YouTube Shopping eligibility, markets and product tagging rules: YouTube Help (YouTube Shopping, the Shopping affiliate program)",
+    "Any conversion or adoption figure only with a stated method; vendor claims are cut",
+  ],
+  assets: [
+    "Platform table, five columns at most",
+    "Clip checklist per platform",
+    "One master, three cuts diagram, described in the ASSET BRIEF",
+  ],
+  links: [
+    ["TikTok video specs", "/resources/insights/tiktok-video-specs"],
+    ["Instagram Reels and Stories specs", "/resources/insights/instagram-reels-stories-specs"],
+    ["YouTube Shorts specs", "/resources/insights/youtube-shorts-specs"],
+    ["short video service", "/services/design/short-video"],
+    ["TikTok platform page", "/solutions/platforms/tiktok"],
+    ["Video tools", "/app/video-tools"],
+  ],
+  seoTitle: "Shoppable Video: TikTok, Instagram, YouTube Needs",
+  seoDesc:
+    "What TikTok Shop, Instagram product tags and YouTube Shopping each require: eligibility, markets, catalog link, disclosure and the clip itself.",
+  faqs: [
+    "What is a shoppable video?",
+    "How do I tag products in an Instagram Reel?",
+    "What are the requirements for TikTok Shop videos?",
+    "Who can use YouTube Shopping?",
+    "Can one product video work on TikTok Shop, Instagram and YouTube?",
+    "Do shoppable videos need an ad disclosure?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "Each platform's own seller or creator help only. Eligibility and market lists move: add a watch row three months out (2027-02-02) for the recheck.",
+};

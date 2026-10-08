@@ -1,0 +1,76 @@
+// editorial/scripts/wave2/81-seedream-5-pro-guide.mjs
+export default {
+  id: "81",
+  date: "2026-10-28",
+  family: "engine",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "Engine guides",
+  contentType: "Engine guide",
+  readerStage: "practitioner",
+  slug: "seedream-5-pro-guide",
+  h1: "Seedream 5.0 Pro for product and campaign images",
+  query: "seedream 5.0 prompts",
+  secondary: [
+    "seedream 5.0 pro prompt guide",
+    "seedream 4.5 vs 5.0",
+    "seedream image editing multiple reference images",
+    "seedream 4K upscale",
+  ],
+  verdict:
+    "RESELLER GUIDES. API resellers and video apps rank with prompt libraries, mostly for the Lite variant and art prompts; they rarely cite ByteDance's own Seed or Volcano Engine documentation, and none covers product work: multi-image edits that keep a product, native 4K, or the file-format limits that matter for packshots.",
+  words: 1800,
+  angle:
+    "Seedream 5.0 Pro from ByteDance's own documentation, applied to product and campaign images: how to prompt it, how to use up to four source pictures to keep a product while changing everything around it, and when its native 4K and upscale make it the right pick. Honest about the limits that matter in production, such as JPG-only output in the app, so no transparent background.",
+  mustInclude: [
+    "What Seedream 5.0 Pro is and what changed from 4.5, from ByteDance's own pages only",
+    "A prompt structure for product and campaign images (subject, setting, light, camera, finish) and how the maker says to write text inside the image",
+    "Edit an image with up to four source pictures: the product plus a scene, a style or a second product; what to name as fixed",
+    "Upscale and restore: Seedream re-renders up to 4K and is the pick for a 4K upscale",
+    "Settings in the hubStudio Image studio: 2K or 4K, JPG output; for a transparent background use a ChatGPT Image engine with PNG or WebP instead",
+    "Seedream 4.5 versus 5.0 Pro: when the older engine is enough",
+    "Improve with AI rewrites the prompt for the chosen engine; Catalog skills (E-commerce packshot, Lifestyle product scene, Legible text inside an image) shape it",
+    "The price shown before every run; a failed run is never charged; every render in History with prompt and engine",
+    "Three worked prompts (a packshot, a lifestyle scene from a product photo, a campaign key visual with a headline) as text blocks",
+  ],
+  doNot: [
+    "Cite any source other than ByteDance's own documentation for engine behavior",
+    "Name a reseller, another app or any competitor",
+    "Claim a transparent PNG from Seedream in hubStudio",
+    "Print any hubStudio amount",
+    "Name an engine that is not offered in the app",
+    "Use an em dash",
+  ],
+  stats: [
+    "Seedream 5.0 Pro capabilities, resolutions and input limits as ByteDance states them: the Seed team's own pages and Volcano Engine documentation, dated",
+    "In-app jobs, source-picture count, resolutions and formats: create-an-image.md",
+  ],
+  assets: [
+    "Engine table: Seedream 4.5 and 5.0 Pro against jobs, source pictures, resolution, format (from the help center)",
+    "Prompt structure table: slot, what to write, example",
+    "Three worked prompts as text blocks",
+    "Existing capture: create-an-image-studio",
+  ],
+  links: [
+    ["Engines in the hubStudio app", "/app/engines"],
+    ["ChatGPT Image 2 product prompting guide", "/resources/how-to/chatgpt-image-2-product-prompting-guide"],
+    ["Product photo to lifestyle image", "/resources/how-to/product-photo-to-lifestyle-image"],
+    ["Nano Banana prompting guide", "/resources/how-to/nano-banana-prompting-guide"],
+    ["AI image production", "/solutions/ai-production/image"],
+  ],
+  seoTitle: "Seedream 5.0 Pro Prompts for Product Images",
+  seoDesc:
+    "Prompt Seedream 5.0 Pro for product and campaign images: prompt structure, multi-image edits that keep the product, native 4K, upscale and limits.",
+  faqs: [
+    "How do I write prompts for Seedream 5.0?",
+    "What is the difference between Seedream 4.5 and 5.0 Pro?",
+    "Can Seedream edit my product photo?",
+    "How many reference images can Seedream use?",
+    "Can Seedream render text inside an image?",
+    "Can Seedream make an image with a transparent background?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Engine guide: ByteDance's own docs only. Engines named only from the in-app list.",
+};

@@ -1,0 +1,75 @@
+// editorial/scripts/wave2/66-facebook-post-specs.mjs
+export default {
+  id: "66",
+  date: "2026-10-13",
+  family: "spec",
+  template: "spec",
+  brief: true,
+  status: "not_started",
+  cluster: "Platform specs",
+  contentType: "Spec page",
+  readerStage: "practitioner",
+  slug: "facebook-post-specs",
+  h1: "Facebook post, Reel and Story specs for 2026",
+  query: "facebook post size 2026",
+  secondary: [
+    "facebook image size 2026",
+    "facebook reel size",
+    "facebook story size and safe zone",
+    "facebook link preview image size",
+    "facebook carousel image size",
+  ],
+  verdict:
+    "SATURATED, UNCITED. Tool blogs and resizer pages repeat 1080 x 1350 and 1200 x 630 with no link to Meta, mix organic posts with ads specs, and give no review date; none separates what Meta's Ads Guide states from what organic page posts accept.",
+  words: 1500,
+  angle:
+    "Every figure read from Meta's own pages, organic page posts and ads kept apart, with a visible Reviewed date and a quarterly recheck. The ranking pages blend the two and cite nobody; this one says which surface each number comes from, and where Meta gives a range rather than a single size.",
+  mustInclude: [
+    "Spec table for feed images: ratio, recommended pixels, minimum, file type and weight, with the Meta page each row comes from",
+    "Reels and Stories: 9:16, recommended size, length limits, and the safe zones Meta's Ads Guide gives for text and logos",
+    "Link previews, carousels and video in feed, each from Meta's own page",
+    "Organic page posts versus ads: where the specs differ, said plainly",
+    "A visible Reviewed date and a dated changelog block at the foot",
+    "How hubStudio fits, from the help center only: the Facebook module posts to pages (text only, one image, a carousel of 2 to 8 slides when rendered, or one video; up to 10 pictures, JPG, PNG or GIF up to 10 MB each, or one MP4 or MOV clip up to 20 minutes); the Image editor crops to Link 1.91:1 or Square; the Video editor's Social panel frames a Facebook Reel 9:16 at 1080 x 1920, a Story, Feed portrait 4:5 or Square and shows what the network covers",
+    "Publishing to Facebook through hubStudio costs nothing; scheduling goes to up to 20 pages per post",
+  ],
+  doNot: [
+    "Take any value from a third-party blog or resizer page",
+    "Claim hubStudio publishes Facebook Stories or Reels as such: the module publishes page posts with pictures or one video",
+    "Name any competitor or design tool",
+    "Print any hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "Every dimension, ratio, file limit and length: Meta Ads Guide (facebook.com/business/ads-guide) per placement, and Meta Business Help Center for organic page posts; record URL and both check dates",
+    "Story and Reel safe zones (top and bottom margins free of text): Meta Ads Guide, quoted as Meta states them",
+    "hubStudio limits: facebook.md and assets-library.md in the help center",
+  ],
+  assets: [
+    "Spec table: surface, ratio, recommended pixels, file limits, source page",
+    "Reels and Stories table: ratio, size, length, safe zone, source page",
+    "Organic versus ads table: where the two differ",
+    "Changelog block, dated, updated in place",
+  ],
+  links: [
+    ["Meta platform page", "/solutions/platforms/meta"],
+    ["Instagram post sizes for 2026", "/resources/insights/instagram-post-sizes-2026"],
+    ["Instagram Reels and Stories specs", "/resources/insights/instagram-reels-stories-specs"],
+    ["Social media design service", "/services/design/social-media"],
+    ["Image editor", "/app/image-tools"],
+  ],
+  seoTitle: "Facebook Post, Reel and Story Specs 2026",
+  seoDesc:
+    "Facebook feed image, carousel, link preview, Reel and Story sizes for 2026, from Meta's own pages, organic and ads kept apart, with a Reviewed date.",
+  faqs: [
+    "What size is a Facebook post image in 2026?",
+    "What is the best aspect ratio for Facebook feed posts?",
+    "What size should a Facebook Reel be?",
+    "What is the safe zone on a Facebook Story?",
+    "What size is a Facebook link preview image?",
+    "How many pictures can a Facebook post have?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Spec page: primary sources only (Meta Business Help Center, Meta Ads Guide). Visible Reviewed date. Watch row due 2027-01-13 for the quarterly recheck.",
+};

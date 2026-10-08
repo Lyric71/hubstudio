@@ -82,7 +82,7 @@ No cell mixes two apps.
 | Spec | Meta, ads guide | TikTok, ads help center | Douyin, most published | RedNote, most published |
 |---|---|---|---|---|
 | Frame | Reels and Stories 9:16 at 1440 by 2560; Facebook Feed video 4:5 at 1440 by 1800 | In-feed 9:16 recommended at 540 by 960 or more; 16:9 and 1:1 accepted | Post 9:16 at 1080 by 1920, 4 of 4, consensus; in-feed floor 720 by 1280 on pages dated 2023 or later, 3 of 3, consensus | Cover 3:4 on 14 of 14, at 1080 by 1440 on 13, consensus; video note 9:16 on 5, contested on which vertical |
-| Safe zone | Reels and Instagram Stories: 14 percent top, 35 percent bottom, 6 percent each side | No figure printed; downloadable templates that shrink as the caption grows | Top 220 or 288 pixels, bottom 200, 288 or 380, 5 sources, contested; no rail width published | Bottom band 144 to 288 pixels on a 1440 canvas, 8 sources, contested; three crop accounts, 10 sources, contested |
+| Safe zone | Reels and Instagram Stories: 14 percent top, 35 percent bottom, 6 percent each side | No figure in the page text; downloadable templates print the insets, which grow as the caption grows | Top 220 or 288 pixels, bottom 200, 288 or 380, 5 sources, contested; no rail width published | Bottom band 144 to 288 pixels on a 1440 canvas, 8 sources, contested; three crop accounts, 10 sources, contested |
 | Duration | Instagram Reels 0 seconds to 15 minutes; Facebook Reels no maximum; Facebook Stories 1 second to 3 minutes | Auction in-feed up to 10 minutes; reservation in-feed and TikTok TopView 5 to 60 seconds, 9 to 15 recommended | In-feed 5 to 60 seconds on 4 pages dated 2019 to 2023, 4 to 300 on the one 2024 page, contested; TopView 10 to 60, 4 of 5, consensus | Video ceiling 5, 15 or 30 minutes, 4 sources, contested |
 | File | Video 4GB; image 30MB | 500 MB; bitrate 516 kbps or more at auction, 2,500 kbps or more for reservation and TopView | In-feed 100, 500 or 1,000MB, 4 sources, contested; open screen 5MB on the 2018 and 2020 sheets, contested | Video 50 MB, 200 to 500 MB or 500 MB, 4 sources, contested; image ceiling 20 MB, 4, consensus |
 | Cover | None set on the video ad pages read | None set on the in-feed pages read | 9:16 at 1080 by 1920, 2 of 2, contested and thin | 3:4 at 1080 by 1440, 14 of 14, consensus; a center 1:1 square shows in the profile grid, 4 |
@@ -158,17 +158,21 @@ in the other direction.
 > collection of 10 September 2026. Primary reading of the TikTok page; the
 > Douyin side is an absence in a counted collection.
 
-Then there is the safe zone, which TikTok does not publish as a number at all.
+Then there is the safe zone, which TikTok prints in no page text, only on the
+template files its spec pages link.
 
 > TikTok does not print a safe-zone inset on its in-feed or TopView spec pages.
 > It says the safe zone shrinks as the caption gets longer and changes with
-> orientation and add-ons, and it supplies template files instead. The pixel
-> insets that circulate for TikTok come from other publishers, and five sets
-> checked for this page did not match one another.
+> orientation and add-ons, and it supplies template files instead. Those files
+> draw the insets: the standard in-feed file keeps 160 pixels at the top, 440
+> at the bottom, 80 at each side and a 120-pixel right column clear on a 720 by
+> 1280 frame. Most pixel insets in circulation are other publishers', and five
+> sets checked for this page did not match one another.
 > Source: three TikTok ads help center specification pages read in full on 10
 > and 15 September 2026, plus five third-party TikTok inset sets traced to their
-> pages. Primary reading for what TikTok publishes, and an observation about the
-> figures others publish.
+> pages; TikTok's in-feed template files, downloaded from the auction in-feed
+> spec page and measured 8 October 2026. Primary reading for what TikTok
+> publishes, and an observation about the figures others publish.
 
 So a producer arrives at Douyin with a TikTok template that TikTok says moves
 with the caption (the downloaded file is the only way to check that half), and
@@ -223,19 +227,21 @@ and a full page on 15 September, adds one figure the ads guide does not.
 RedNote changes the shape of the question rather than the margin. Its feed
 shows a 3:4 cover first, and the published accounts of how that cover is
 cropped disagree with each other, so the region that survives all of them is
-the center square. One box clears everything published for the four apps.
+the center square. One box clears everything published for Meta, Douyin and
+RedNote, and TikTok's templates narrow it.
 
 > On a 1080 by 1920 vertical master, keeping text, faces and product between 108
 > and 972 pixels across and between 420 and 1248 pixels down clears Meta's Reels
 > safe zone, every Douyin inset in circulation, and the center of a 3:4 RedNote
-> cover above its deepest published bottom band. TikTok adds no number, because
-> TikTok publishes none: check the file against its template for the caption you
-> plan to run.
+> cover above its deepest published bottom band. TikTok's own in-feed templates
+> are stricter at the right and bottom: to clear them too, keep the box between
+> 120 and 780 pixels across and 420 and 906 down.
 > Source: derived 15 September 2026 from Meta's Reels safe-zone percentages
 > (ads guide, primary), a Douyin safe box from five sources, and a RedNote
 > center square and 288-pixel bottom reservation from ten and eight sources,
-> assuming centered cuts. A composition rule derived from published figures,
-> not a platform rule.
+> assuming centered cuts; TikTok's in-feed template files, downloaded 8 October
+> 2026, scaled to 1080 by 1920. A composition rule derived from published
+> figures, not a platform rule.
 
 That box is 864 by 828 pixels, smaller than any one platform asks for on its
 own. Shooting once costs that margin.
@@ -370,11 +376,12 @@ note figures.
 
 **How do TikTok and Douyin safe zones differ?**
 
-TikTok publishes no inset. Its help pages say the safe zone shrinks with
-caption length and supply template files instead, and every TikTok pixel figure
-in circulation is third-party. Douyin has no official figure either, and the
-published Chinese insets span 220 to 288 pixels at the top and 200 to 380 at
-the bottom. Build to the largest, then check the TikTok template.
+TikTok prints no inset in its page text, but the template files its spec pages
+link do: scaled to 1080 by 1920, 240 pixels at the top, 660 at the bottom, 120
+at each side and 300 on the right below the 840 mark, more at the bottom as the
+caption grows. Douyin has no official figure, and the published Chinese insets
+span 220 to 288 pixels at the top and 200 to 380 at the bottom. Build to the
+largest, then check the TikTok template.
 
 **How do I shoot one campaign for Western and Chinese platforms?**
 
@@ -508,8 +515,8 @@ LENGTH: body with tables runs past the brief's 1,600 because sixteen cited
 
 WHAT THE PAGE NEVER DOES: put a TikTok figure on a Douyin row or a Douyin
   figure on a TikTok row; write TopView without the app name; publish any
-  TikTok safe-zone inset; call a Douyin or RedNote value verified, official,
-  required or read from the platform; add counts across collections; present
+  third-party TikTok safe-zone inset as TikTok's; call a Douyin or RedNote
+  value verified, official, required or read from the platform; add counts across collections; present
   the composition box, duration window, file window or any verdict as a
   platform rule; print a RedNote paid ad spec; claim a Western cut performs
   worse anywhere; print a hook-rate, completion or engagement figure; print a

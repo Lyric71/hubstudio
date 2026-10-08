@@ -1,0 +1,72 @@
+// editorial/scripts/wave2/86-animate-product-photo.mjs
+export default {
+  id: "86",
+  date: "2026-11-03",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "animate-product-photo",
+  h1: "How to animate a still product photo",
+  query: "animate product photo AI",
+  secondary: [
+    "image to video product",
+    "turn product photo into video",
+    "product photo to video AI",
+    "start and end frame AI video",
+  ],
+  verdict:
+    "Single-purpose animator tools and app-store listings rank with feature pages; none explains why a product warps in motion, which engines take a start frame or a start and last frame, or how to keep a label readable through a camera move.",
+  words: 1700,
+  angle:
+    "Animating a still breaks in one place: the product drifts. The fix is control: an engine that takes a start frame, or a start and a last frame; the camera moves, the product does not; one move per clip; short lengths; a label check on the last frame. Taught in the Video studio with its real options.",
+  mustInclude: [
+    "Which jobs suit image to video (a slow push-in, a turntable feel, light moving across a surface, steam, a pour) and which do not (hands handling the product, text that must stay readable through big motion)",
+    "In the Video studio, under What the render is fed: Start image, or Start and last frame on the engines that take both; attach the frame with Choose from the library, Upload a picture or Paste a link",
+    "Which engines in the app take a frame, per the help center: Veo 3.1 Fast, Wan 3.0, Seedance 2.0 and 2.5 and MiniMax H3 take a start and last frame; Seedance 1.0 Pro Fast and Grok Imagine 1.5 a start image; the Kling engines run from a prompt only in the app",
+    "The prompt as a shot: what moves, where the light comes from, what the camera does; one move per clip; Improve with AI and the Catalog skill Animating a still (image to video)",
+    "Length and the timeout: a clip over 15 seconds can fail after being billed, and the form warns; keep product clips short",
+    "The price per second shown before the render; a failed render is not charged, with the long-clip exception stated",
+    "After the render: the Video editor frames it for a Reel or a TikTok with the network's zones and saves it to the Assets Library",
+    "A fidelity checklist: logo, label, color and proportion on the first, middle and last frame",
+  ],
+  doNot: [
+    "Claim a Kling engine takes a start frame in the app",
+    "Name an animator app, a plugin or a tool vendor",
+    "Print a price per second or any amount",
+    "Promise a count of engines: say more ship over time",
+    "Use an em dash",
+  ],
+  stats: [
+    "Engine lengths, resolutions and inputs: the help center, create-a-video.md, read on the draft date",
+    "No market statistic is needed; any figure used carries a source and a method",
+  ],
+  assets: [
+    "Table: engine, length, start image or start and last frame, sound (from the help center)",
+    "Fidelity checklist table: frame, what to check, the fix",
+    "Existing localized app capture of the Video studio (create-a-video-studio.webp)",
+  ],
+  links: [
+    ["vertical video ad from a product image", "/resources/how-to/vertical-video-ad-from-product-image"],
+    ["product photo to lifestyle image", "/resources/how-to/product-photo-to-lifestyle-image"],
+    ["Video studio", "/app/create"],
+    ["motion design service", "/services/design/motion-design"],
+    ["AI video production", "/solutions/ai-production/video"],
+  ],
+  seoTitle: "How to Animate a Still Product Photo with AI",
+  seoDesc:
+    "Turn a product photo into a short clip without the product warping: start and last frames, one camera move per shot, short lengths and a frame check.",
+  faqs: [
+    "How do I turn a product photo into a video?",
+    "Why does my product change shape when I animate it?",
+    "What is start and end frame in AI video?",
+    "How long should an animated product clip be?",
+    "Can I animate a product photo with text on the label?",
+    "Which AI video engine is best for animating a product photo?",
+  ],
+  cta: "Create your account",
+  notes: "Reuse the existing localized Video studio captures; no new capture of an undocumented feature.",
+};

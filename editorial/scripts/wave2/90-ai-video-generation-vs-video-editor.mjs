@@ -1,0 +1,71 @@
+// editorial/scripts/wave2/90-ai-video-generation-vs-video-editor.mjs
+export default {
+  id: "90",
+  date: "2026-11-05",
+  family: "comparison",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Comparisons",
+  contentType: "Comparison",
+  readerStage: "budget-holder",
+  slug: "ai-video-generation-vs-video-editor",
+  h1: "AI video generation or a video editor: which job each one does",
+  query: "AI video generator vs video editor",
+  secondary: [
+    "AI video generator or editor",
+    "do I need an AI video generator",
+    "generate video vs edit footage",
+    "AI video generation for brands",
+  ],
+  verdict:
+    "Vendors of each kind rank, each saying its kind is the practical one; the answer by job is missing: generation makes shots that do not exist, editing turns shots into a finished piece, and brand video needs both in sequence.",
+  words: 2000,
+  angle:
+    "Generation and editing are two stages of one job, not rival tools. Generation supplies shots you could not film; editing decides order, length, captions, sound and format per network. Compare them by job (product teaser, explainer, UGC-style cut, long video to shorts), show where each stage sits and what each costs by pricing model.",
+  mustInclude: [
+    "A job table: job, generate, edit, both",
+    "What generation does well and badly: shots that never existed, clips of a few seconds up to 30 depending on the engine; continuity across clips, exact on-screen text, real people",
+    "What editing does: trims, order, captions, music, cover, a format per network",
+    "In hubStudio, inside its facts: the Video studio (text to video, image to video, reference to video; up to 4K, up to 30 seconds on some engines, generated sound); the Video editor, free in the browser, framing a clip for an Instagram Reel, a TikTok or a Facebook reel with trims, speed, texts, word-by-word captions, music and a cover; Shorts autopilot for a long video cut into shorts",
+    "Cost models by category: generation priced per second of clip, editing priced in time or seats; in hubStudio the render price shows before each run and the Video editor is free; no amounts",
+    "When to brief the studio: a film with a story arc, broadcast, a launch",
+  ],
+  doNot: [
+    "Name any video generator, editor or vendor",
+    "Present the Video editor as a desktop editing suite: it frames clips for social networks",
+    "Print an amount",
+    "Cite a time-saving figure without a method",
+    "Use an em dash",
+  ],
+  stats: [
+    "Engine length ranges: the help center, create-a-video.md",
+    "Category pricing models (per second, per seat), from published pages, attributed to the category and the date",
+    "No trust or conversion figure without a stated method",
+  ],
+  assets: [
+    "Job table",
+    "Pipeline: generate, select, edit, publish, described for a diagram",
+    "Cost model table",
+  ],
+  links: [
+    ["long video to shorts guide", "/resources/how-to/long-video-to-shorts"],
+    ["Video tools", "/app/video-tools"],
+    ["all-in cost of AI video", "/resources/insights/all-in-cost-of-ai-video"],
+    ["video production service", "/services/design/video-production"],
+    ["word-by-word captions guide", "/resources/how-to/word-by-word-video-captions"],
+  ],
+  seoTitle: "AI Video Generator or Video Editor: Which Job?",
+  seoDesc:
+    "An AI video generator makes shots that do not exist; an editor makes a finished video from shots. Which job each does, where they meet, and costs.",
+  faqs: [
+    "What is the difference between an AI video generator and a video editor?",
+    "Do I need a video editor if I use an AI video generator?",
+    "Can an AI video generator make a full ad?",
+    "How long can AI-generated video clips be?",
+    "Is AI video generation cheaper than editing footage?",
+    "Can I add captions and music to an AI-generated video?",
+  ],
+  cta: "Create your account",
+  notes: "Category Buying models. Compares ways of working, never a named tool.",
+};

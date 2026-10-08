@@ -1,0 +1,281 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is the best size for an Instagram post in 2026?",
+    "a": "For most feed posts, 1,080 by 1,350 pixels at 4:5. It's the tallest shape both the Instagram app and its publishing API accept, so it works whether you post by hand or through a tool. Instagram's app also keeps 3:4 at 1,080 by 1,440, but only when you post it yourself."
+  },
+  {
+    "q": "Can I post a 3:4 photo on Instagram?",
+    "a": "Yes, in the app. Instagram's Help Center lists 1.91:1 to 3:4 as the range it keeps, which at 1,080 wide means up to 1,440 pixels tall. Through the Content Publishing API, which every publishing tool uses, 3:4 is refused with error 2207009, because the API only accepts 4:5 to 1.91:1."
+  },
+  {
+    "q": "How many photos can you put in an Instagram carousel?",
+    "a": "Up to 20 photos and videos when you post the carousel in the Instagram app, according to Instagram's Help Center. A carousel published through the API, which is how scheduling and publishing tools post, is capped at 10 items and needs at least 2. Carousel ads run 2 to 10 cards."
+  },
+  {
+    "q": "Do all slides in an Instagram carousel have to be the same size?",
+    "a": "They end up the same shape whether you plan it or not. In the app, the orientation you choose applies to every slide. Through the API, every image is cropped to the first image's ratio. Build all slides at one ratio and keep text away from the edges so nothing is cut."
+  },
+  {
+    "q": "What size is the Instagram profile grid?",
+    "a": "Instagram hasn't said. Its Help Center, blog and developer documentation give no ratio or pixel size for a grid tile, as of October 8, 2026. The grid moved from squares to taller tiles in January 2025. Plan for a crop you can't measure: keep faces, products and type away from the edges."
+  },
+  {
+    "q": "Why does my scheduled Instagram post get rejected?",
+    "a": "Usually one of five limits in Instagram's Content Publishing API: a ratio taller than 4:5, a file over 8 MB, a format other than JPEG, a carousel outside 2 to 10 items, or the daily post cap (100 posts in 24 hours in the guide's rate limit section, 50 in its carousel section). Instagram's error list names each one with its own code."
+  },
+  {
+    "q": "What size should an Instagram Story be?",
+    "a": "Instagram's developer documentation gives 9:16, a JPEG of up to 8 MB for a picture, and 3 to 60 seconds and 100 MB for a video. Instagram prints no pixel size for an organic Story. Meta's ads guide asks for 1,440 by 2,560 for Story ads."
+  }
+];
+---
+
+<ArticleLayout slug="instagram-post-sizes-2026" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">For the Instagram post size question in 2026, Instagram's own help pages settle most of it. A feed photo is 1,080 pixels wide and can be anything from a 1.91:1 landscape to a 3:4 portrait. The trouble starts in two places: a post sent by a publishing tool, which plays by stricter rules, and the profile grid, which plays by rules Instagram has never written down.</p>
+
+  <p>Reviewed October 8, 2026, against the Instagram Help Center, Instagram's developer documentation and Meta's ads guide. Every value on this page comes from one of those three.</p>
+
+  <h2>What size is an Instagram post in 2026?</h2>
+
+  <p>Make it 1,080 pixels wide. Instagram keeps any shape from 1.91:1 to 3:4, so a feed photo runs from 566 to 1,440 pixels tall. If the post goes out through a publishing tool, hubStudio included, the tallest accepted shape is 4:5, or 1,080 by 1,350, and the file has to be a JPEG of 8 MB at most.</p>
+
+  <blockquote class="evidence">Instagram keeps a photo at its original resolution when it is between 320 and 1,080 pixels wide and its aspect ratio sits between 1.91:1 and 3:4, which at 1,080 pixels wide means a height between 566 and 1,440 pixels. Wider files are sized down to 1,080; a ratio outside that range is cropped.</blockquote>
+  <p class="source">Source: Instagram Help Center, image resolution article, read October 8, 2026. The article is undated; values quoted as written.</p>
+
+  <p>One oddity worth knowing: the same article's page description still promises "up to 1080x1080 pixels." The body text gives the width rule instead. Go by the body.</p>
+
+  <h2>Instagram feed, carousel, Reel and Story specs</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Format</th>
+          <th scope="col">Ratio</th>
+          <th scope="col">Size</th>
+          <th scope="col">Limits</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Landscape photo</th>
+          <td>1.91:1</td>
+          <td>1,080 x 566</td>
+          <td>Widest shape Instagram keeps</td>
+          <td>Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Square photo</th>
+          <td>1:1</td>
+          <td>1,080 x 1,080</td>
+          <td>Inside the kept range</td>
+          <td>Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Portrait photo</th>
+          <td>4:5</td>
+          <td>1,080 x 1,350</td>
+          <td>Tallest shape the API and feed ads accept</td>
+          <td>Help Center, API docs</td>
+        </tr>
+        <tr>
+          <th scope="row">Tall portrait</th>
+          <td>3:4</td>
+          <td>1,080 x 1,440</td>
+          <td>Instagram app only; the API refuses it</td>
+          <td>Help Center, API docs</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel, posted in the app</th>
+          <td>One shape for every slide</td>
+          <td>As above</td>
+          <td>Up to 20 photos and videos</td>
+          <td>Help Center</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel, posted by a tool</th>
+          <td>Cropped to the first image, 1:1 by default</td>
+          <td>As above</td>
+          <td>2 to 10 items, JPEG, 8 MB each</td>
+          <td>API docs</td>
+        </tr>
+        <tr>
+          <th scope="row">Reel</th>
+          <td>1.91:1 to 9:16</td>
+          <td>720 pixels minimum; cover 420 x 654</td>
+          <td>30 FPS minimum; by API, MP4 or MOV, 3 seconds to 15 minutes, 300 MB</td>
+          <td>Help Center, API docs</td>
+        </tr>
+        <tr>
+          <th scope="row">Story, posted by a tool</th>
+          <td>9:16</td>
+          <td>No pixel size published</td>
+          <td>Image JPEG, 8 MB; video 3 to 60 seconds, 100 MB</td>
+          <td>API docs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The help article prints only the two ends of the height range, 566 and 1,440. The square and 4:5 heights are simple arithmetic on its 1,080-pixel width. Note what isn't in the table, too: Instagram publishes no file-size limit for a photo posted in its own app, and no pixel size for a Story.</p>
+
+  <h2>Why does a 3:4 post work in the app but fail in a scheduler?</h2>
+
+  <p>Because the app and the Content Publishing API are two different doors, and the API's is narrower. A tool that posts to Instagram for you, the hubStudio app included, goes through the API.</p>
+
+  <blockquote class="evidence">Through Instagram's Content Publishing API, images must be JPEG, at most 8 MB, 320 to 1,440 pixels wide and between 4:5 and 1.91:1. Carousels stop at 10 items and are cropped to the first image's ratio. The guide's rate limit section allows 100 API-published posts in a rolling 24 hours, a carousel counting as one; its carousel section still says 50.</blockquote>
+  <p class="source">Source: Instagram Platform developer documentation, media reference and content publishing guide, read October 8, 2026. Pages undated.</p>
+
+  <p>So a 3:4 photo posts cleanly by hand and gets refused by the API. A PNG meets the same wall, since JPEG is the only image format the API takes.</p>
+
+  <p>Ads add a third reading. Meta's ads guide recommends 4:5 at 1,440 by 1,800 pixels for an Instagram Feed image ad and accepts nothing taller than 4:5. Its own business help center recommends 1:1 for the same placement.</p>
+
+  <blockquote class="evidence">Meta's ads guide asks for 4:5 at 1,440 by 1,800 pixels, JPG or PNG, up to 30 MB, for an Instagram Feed image ad, with an accepted range from 4:5 to 1.91:1. Meta's business help center says 1:1 is recommended for single-image ads delivered to Instagram Feed.</blockquote>
+  <p class="source">Source: Meta Ads Guide, Instagram Feed image ad specs (Awareness objective), and Meta Business Help Center, best practices for aspect ratios, both read October 8, 2026.</p>
+
+  <p>Two Meta pages, two answers. Both shapes sit inside the guide's accepted range, so either one runs. The guide's own pick is 4:5.</p>
+
+  <h2>How many photos can an Instagram carousel hold?</h2>
+
+  <p>Twenty, if you post it in the app. Ten, if a tool posts it.</p>
+
+  <blockquote class="evidence">A carousel holds up to 20 photos and videos, and the orientation you pick (square, portrait or landscape) applies to every item in the post; you can't pick a different one per item.</blockquote>
+  <p class="source">Source: Instagram Help Center, sharing multiple photos or videos as a single post, read October 8, 2026.</p>
+
+  <p>The practical rule follows from both pages: build every slide at one ratio. In the app, slides that don't match get cropped to the orientation you chose. Through the API, they get cropped to the first image. Either way a headline near the edge of slide four can lose its last word. Ads differ again: Meta's ads guide caps a carousel ad at 2 to 10 cards, at 4:5 for images only and 1:1 once any card is a video.</p>
+
+  <h2>What does the Instagram profile grid crop?</h2>
+
+  <p>Nobody can quote you the number, because Instagram hasn't published one.</p>
+
+  <blockquote class="evidence">The Instagram Help Center, Instagram's own blog and its developer documentation state no ratio and no pixel size for a profile grid tile, searched and read October 8, 2026. The move from square tiles to taller ones was trailed by Instagram's head in a video in August 2024 and announced in his Instagram Story in January 2025, never in a help article.</blockquote>
+  <p class="source">Source: Instagram Help Center, about.instagram.com and Instagram Platform documentation, October 8, 2026; trade press reports of the two announcements, Social Media Today, August 18, 2024, and RouteNote, January 20, 2025.</p>
+
+  <p>The tile sizes circulating in size guides don't come from any Instagram page. What Instagram has said, in its own announcement back in 2017, is that the first photo or video of a carousel is the one that shows on the grid.</p>
+
+  <p>So plan for a crop you can't measure. Keep faces, products and type off all four edges, and make slide one work as a cover. Then open the profile and look before you call it done.</p>
+
+  <h2>Where are the safe areas on a Story or Reel?</h2>
+
+  <p>For organic posts, Instagram prints none. The only published figures are Meta's, and they're written for ads.</p>
+
+  <blockquote class="evidence">For Instagram Reels and Stories ads, Meta's ads guide suggests leaving about 14% of the top, 35% of the bottom and 6% of each side of a 9:16 asset free of text, logos and key elements, so the profile icon and call to action don't cover them.</blockquote>
+  <p class="source">Source: Meta Ads Guide, Instagram Reels video and Instagram Stories image ad specs, read October 8, 2026. Ad placements only.</p>
+
+  <p>On a 1,080 by 1,920 frame that works out to about 269 pixels at the top, 672 at the bottom and 65 on each side. It's a sensible margin for an organic Reel as well. Just know you're borrowing an ad rule.</p>
+
+  <h2>Why do Instagram uploads fail?</h2>
+
+  <p>Most failures trace back to one of the limits above. These come from Instagram's Help Center and from the error list in its developer documentation.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">What you see</th>
+          <th scope="col">What caused it</th>
+          <th scope="col">Fix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Photo looks soft</th>
+          <td>It was under 1,080 wide; under 320, Instagram enlarges it</td>
+          <td>Upload at least 1,080 wide</td>
+        </tr>
+        <tr>
+          <th scope="row">Photo cropped on its own</th>
+          <td>Ratio outside 1.91:1 to 3:4</td>
+          <td>Reframe inside the range</td>
+        </tr>
+        <tr>
+          <th scope="row">Tool refuses a tall photo</th>
+          <td>Error 2207009: ratio outside 4:5 to 1.91:1</td>
+          <td>Crop 3:4 to 4:5</td>
+        </tr>
+        <tr>
+          <th scope="row">Tool says the image is too large</th>
+          <td>Error 2207004: over 8 MB</td>
+          <td>Re-export below 8 MB</td>
+        </tr>
+        <tr>
+          <th scope="row">Tool rejects the image format</th>
+          <td>Error 2207005: the API takes JPEG only</td>
+          <td>Convert to JPEG</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel refused by a tool</th>
+          <td>Error 2207028: needs 2 to 10 items</td>
+          <td>Split it, or post by hand</td>
+        </tr>
+        <tr>
+          <th scope="row">Tool stops posting for the day</th>
+          <td>Error 2207042: the daily cap, 100 posts in 24 hours (50 in the guide's carousel section)</td>
+          <td>Wait for the rolling window</td>
+        </tr>
+        <tr>
+          <th scope="row">Reel below Instagram's floor</th>
+          <td>Help Center minimum is 30 FPS and 720 pixels</td>
+          <td>Re-export at 30 FPS or more, 720 pixels or wider</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel with videos stalls</th>
+          <td>Several videos upload slowly</td>
+          <td>Use a reliable connection</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>When none of that applies, Instagram's general troubleshooting order is short: update the app and the phone's operating system, restart the phone, try Wi-Fi and then mobile data, and reinstall as a last resort.</p>
+
+  <h2>How to make each format in hubStudio</h2>
+
+  <p>The Image editor in the hubStudio app frames a picture for Instagram from its Social panel. Pick Feed portrait (1,080 by 1,350, marked as the best choice), Square, Landscape, Story, Reel cover or Profile photo. Grid portrait, the 3:4 shape, is there too, labeled for the Instagram app only, which matches the API limit above. Choose Crop to fill, or Fit it whole over a blurred copy of the picture. The editor marks in red what Instagram's own buttons and captions cover, and draws its preview of the profile grid crop in dashed lines. Then Apply the format. Editing costs nothing. The Video editor does the same for a Reel at 9:16.</p>
+
+  <p>Publishing runs from the Instagram module. Connect an Instagram professional account, Business or Creator, in My Connections. Pick One image, Carousel or Reel; render it, pick it from the Assets Library, or upload it. Every picture is converted to a JPEG Instagram accepts on the way out. Pictures go out as a feed post or a Story, a video always as a Reel, and a Story clip runs 60 seconds at most. Publish now or schedule it, to up to 20 accounts per post. Publishing itself is free; renders are charged to your prepaid balance at the price shown before you run them. The <a href="/app/publish">publishing page of the hubStudio app</a> covers the other networks, and the <a href="/solutions/platforms/meta">Meta platform page</a> covers the studio's Instagram and Facebook work.</p>
+
+  <p>If you'd rather have the work made for you, the <a href="/services/design/social-media">social media design service</a> is the studio route.</p>
+
+  <h2>Does RedNote use the same sizes?</h2>
+
+  <p>Close, but not the same, and not from the same kind of source. RedNote's cover is most commonly published at 3:4, 1,080 by 1,440, a shape Instagram's app accepts and its API refuses. RedNote's own help pages serve nothing readable without a login, so those figures are counted across published sources rather than read from the platform. The <a href="/resources/insights/rednote-note-cover-specs">RedNote note and cover specs</a> page explains the method and the cover crop.</p>
+
+  <h2>Changelog</h2>
+
+  <p><strong>October 8, 2026.</strong> First published. Read against the Instagram Help Center (image resolution, carousels, Reels, troubleshooting), Instagram Platform developer documentation (media reference, content publishing, error codes), the Meta Ads Guide (Instagram Feed image, carousel and video, Reels, Stories) and the Meta Business Help Center. The profile grid tile ratio is recorded as unpublished. Next scheduled recheck: January 8, 2027.</p>
+
+  <h2>Questions about Instagram post sizes</h2>
+
+  <h3>What is the best size for an Instagram post in 2026?</h3>
+
+  <p>For most feed posts, 1,080 by 1,350 pixels at 4:5. It's the tallest shape both the Instagram app and its publishing API accept, so it works whether you post by hand or through a tool. Instagram's app also keeps 3:4 at 1,080 by 1,440, but only when you post it yourself.</p>
+
+  <h3>Can I post a 3:4 photo on Instagram?</h3>
+
+  <p>Yes, in the app. Instagram's Help Center lists 1.91:1 to 3:4 as the range it keeps, which at 1,080 wide means up to 1,440 pixels tall. Through the Content Publishing API, which every publishing tool uses, 3:4 is refused with error 2207009, because the API only accepts 4:5 to 1.91:1.</p>
+
+  <h3>How many photos can you put in an Instagram carousel?</h3>
+
+  <p>Up to 20 photos and videos when you post the carousel in the Instagram app, according to Instagram's Help Center. A carousel published through the API, which is how scheduling and publishing tools post, is capped at 10 items and needs at least 2. Carousel ads run 2 to 10 cards.</p>
+
+  <h3>Do all slides in an Instagram carousel have to be the same size?</h3>
+
+  <p>They end up the same shape whether you plan it or not. In the app, the orientation you choose applies to every slide. Through the API, every image is cropped to the first image's ratio. Build all slides at one ratio and keep text away from the edges so nothing is cut.</p>
+
+  <h3>What size is the Instagram profile grid?</h3>
+
+  <p>Instagram hasn't said. Its Help Center, blog and developer documentation give no ratio or pixel size for a grid tile, as of October 8, 2026. The grid moved from squares to taller tiles in January 2025. Plan for a crop you can't measure: keep faces, products and type away from the edges.</p>
+
+  <h3>Why does my scheduled Instagram post get rejected?</h3>
+
+  <p>Usually one of five limits in Instagram's Content Publishing API: a ratio taller than 4:5, a file over 8 MB, a format other than JPEG, a carousel outside 2 to 10 items, or the daily post cap (100 posts in 24 hours in the guide's rate limit section, 50 in its carousel section). Instagram's error list names each one with its own code.</p>
+
+  <h3>What size should an Instagram Story be?</h3>
+
+  <p>Instagram's developer documentation gives 9:16, a JPEG of up to 8 MB for a picture, and 3 to 60 seconds and 100 MB for a video. Instagram prints no pixel size for an organic Story. Meta's ads guide asks for 1,440 by 2,560 for Story ads.</p>
+</ArticleLayout>
