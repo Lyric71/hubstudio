@@ -1,0 +1,30 @@
+﻿2026-10-06T00:30:03 start draft (model claude-opus-5-5)
+2026-10-06T00:30:03 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-06T00:40:00 Opus 5.5 decision record.
+State on entry:
+- Prompt SHA-256 matches the manifest (28046D05...B858CF).
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct.
+- HEAD 55c0e86. Working tree: modified French and Chinese dictionaries under src/i18n/dict (translation work outside this run, left untouched) and untracked run files for 2026-10-05 and today. No half-written research file, draft or hero image.
+Read: editorial/CLAUDE.md (pipeline, settled fallbacks), editorial/SPEC.md, editorial/RUNBOOK.md (daily steps, row selection).
+Today's row:
+- 2026-10-06, Tue, slot B, brief 04, jd-image-requirements-vs-tmall: status published (researched, drafted, quality passed, image and publish all 2026-09-10). Re-verified on disk: research/<slug>.md, output/<slug>.md, src/pages/resources/insights/<slug>.astro, public/Images/insight-<slug>.webp, its src/data/insights.ts entry, its French slug exigences-images-jd-face-a-tmall in src/i18n/routes.ts, and its French and Chinese dictionaries. Past image_ready: nothing to draft.
+Fallback (RUNBOOK step 2, oldest not_started row): schedule.csv parsed as CSV, 48 rows, all published, zero not_started, zero blocked. output/ and research/ each hold one archived alternate, agency-white-label-question.ALT-2026-09-21.md (settled fallback 8), ignored.
+watch.csv: one row, automotive-content-without-shipping-a-car, due 2026-11-24. Not due; watch rows belong to the publish run.
+Decision: settled fallback 7 in editorial/CLAUDE.md (no eligible row). The run records that and ends. Extending the calendar past brief 48 is a planning change in schedule.csv and the briefs, not a run item.
+Steps not run, because there was no eligible row: the R1 to R7 research gate, /createarticle, /content-quality-us, /generate-image-openai, check-draft.mjs.
+Files: schedule.csv unchanged (every row is already correct). editorial/logs/2026-10-06.md not written from TEMPLATE.md, because no article went through the pipeline (same decision as the 2026-10-05 draft runs). This runner log is the record. No publish, no commit, per the prompt.
+Outside the repo (settled fallback 9, plain fact): the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors reported needing authorization; this run did not use them.
+2026-10-06T00:40:00 end of Opus 5.5 decision record.
+I didn't draft anything today: every row on the schedule is already published, so there was nothing eligible to work on.
+
+- **Today's row:** brief 04, `jd-image-requirements-vs-tmall`, went live on 2026-09-10. Its research file, draft, page, hero image, `insights.ts` entry, French address (`exigences-images-jd-face-a-tmall`) and French and Chinese dictionaries are all on disk.
+- **Fallback:** all 48 rows in `editorial/schedule.csv` are published, and none is `not_started` or `blocked`. The `agency-white-label-question.ALT-2026-09-21.md` files are archived alternates, which settled fallback 8 says to ignore. The only watch row, for the automotive article, isn't due until 2026-11-24.
+- **Earlier attempts:** the run log only had the runner's two start lines, so no earlier model had left work to finish or an error to fix.
+
+`editorial/CLAUDE.md` covers this as settled fallback 7: when no row is eligible, the run records that and ends. So I didn't run the research gate, `/createarticle`, `/content-quality-us`, the image step or `check-draft.mjs`.
+
+The only file I changed is `editorial/logs/runs/2026-10-06-draft.txt`, where I added the decision record. `schedule.csv` didn't need changing. I didn't write `logs/2026-10-06.md`, because no article went through the pipeline. The French and Chinese dictionary edits already in the working tree aren't from this run, and I left them alone. Nothing was published or committed.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be re-authorized in your claude.ai connector settings before they can be used. This run didn't need them.
+2026-10-06T00:30:54 model Opus 5.5 completed successfully
+2026-10-06T00:30:54 end draft exit 0

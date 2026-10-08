@@ -1,0 +1,30 @@
+﻿2026-10-06T04:00:04 start publish (model claude-opus-5-5)
+2026-10-06T04:00:04 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-06T04:03:00 Opus 5.5 decision record.
+State on entry:
+- Prompt SHA-256 matches the manifest (647B03B8...FFBB86).
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct.
+- HEAD 55c0e86, equal to origin/main. Working tree: git lists French and Chinese dictionaries as modified, but git diff (content and whitespace) shows no change; the flag is line-ending normalization only. Left untouched. Untracked run files for 2026-10-05 and today.
+Read: editorial/CLAUDE.md (settled fallbacks), editorial/RUNBOOK.md, editorial/SPEC.md.
+schedule.csv parsed as CSV: 48 rows, all published. No row is image_ready, none is blocked, so no row is skipped for a decision.
+Cross-check: every draft in editorial/output (ALT archives excluded, fallback 8) has its page under src/pages/resources/insights. No finished draft is waiting outside the schedule.
+watch.csv: one row, automotive-content-without-shipping-a-car, due 2026-11-24. Not due today (2026-10-06), so no recheck.
+Decision: settled fallback 7 in editorial/CLAUDE.md (no eligible row, no watch row due). The run records that and ends.
+Steps not run, because nothing was eligible: /createblogarticle, the French and Chinese step, npm run build, npm run check, commit, push, notify-publish.mjs (the email is sent after a push or on a failed build; neither happened).
+Files: only this log changed. schedule.csv and watch.csv unchanged.
+Outside the repo (fallback 9): the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors reported needing authorization. This run did not use them.
+2026-10-06T04:03:00 end of Opus 5.5 decision record.
+Nothing was published this run because no draft was ready.
+
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are already published. None is `image_ready` and none is blocked waiting on a decision.
+- **Drafts:** every draft in `editorial/output/` already has a live page under `src/pages/resources/insights/`. The archived `*.ALT-*` copies don't count as drafts (settled fallback 8).
+- **Watch list:** the only row in `editorial/watch.csv` is the EU vote check for `automotive-content-without-shipping-a-car`. It isn't due until 2026-11-24, so I didn't recheck it.
+- **Earlier attempts:** the run log only had the runner's two start lines, so there was no partial work or error to pick up.
+
+`editorial/CLAUDE.md` covers this case (settled fallback 7): when no row is eligible and no watch row is due, the run records that and ends. So I didn't run `/createblogarticle`, the French and Chinese step, the build, the check, a commit, a push or the notification email. The email only goes out after a push or when a build fails, and neither happened.
+
+The only file I changed is the run log, `editorial/logs/runs/2026-10-06-publish.txt`, where I added the decision record. Git shows the French and Chinese dictionaries as modified, but they have no content changes, only line-ending differences, so I left them alone.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be re-authorized in your claude.ai connector settings before they can be used. This run didn't need them.
+2026-10-06T04:00:53 model Opus 5.5 completed successfully
+2026-10-06T04:00:53 end publish exit 0

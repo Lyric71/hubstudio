@@ -1,0 +1,29 @@
+﻿2026-10-05T00:30:01 start draft (model claude-opus-5-5)
+2026-10-05T00:30:01 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-05T00:30:46 Opus 5.5 decision record.
+State on entry:
+- Prompt SHA-256 matches the manifest (28046D05...858CF).
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct.
+- HEAD ed915a8. Working tree: untracked run files for today only. No half-written research file, draft or hero image.
+Read: editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md.
+Today's row: 2026-10-05, Mon, slot A, brief 13, cost-to-localize-a-campaign-for-china. Status published (researched, drafted, quality passed, image and publish all 2026-09-09). Re-verified on disk: editorial/research/<slug>.md, editorial/output/<slug>.md, src/pages/resources/insights/<slug>.astro, public/Images/insight-<slug>.webp, its src/data/insights.ts entry and its French slug in src/i18n/routes.ts all exist. Already past image_ready, so nothing to draft.
+Fallback (RUNBOOK step 2, oldest not_started row): schedule.csv has 48 rows, all published, none not_started.
+watch.csv: one row, automotive-content-without-shipping-a-car, due 2026-11-24. Not due, and watch rows belong to the publish run.
+Decision: settled fallback 7 in editorial/CLAUDE.md (no eligible row). The run records that nothing is eligible and ends. Per that rule this is not an open item, and extending the calendar past brief 48 is a planning change made in schedule.csv and the briefs.
+Steps not run, because there was no eligible row: the R1 to R7 research gate, /createarticle, /content-quality-us, /generate-image-openai, check-draft.mjs.
+Files: schedule.csv unchanged (every row is already correct). editorial/logs/2026-10-05.md not written from TEMPLATE.md, because no article went through the pipeline (same decision as the 2026-10-01 draft runs). This runner log is the record. No publish, no commit, per the prompt.
+Outside the repo: the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors reported needing authorization. This run did not use them.
+2026-10-05T00:30:46 end of Opus 5.5 decision record.
+I didn't draft an article today because there was nothing to draft.
+
+- **Today's row:** this is brief 13, `cost-to-localize-a-campaign-for-china`, which was published on 2026-09-09. I checked that its research file, draft, live page, hero image, `insights.ts` entry and French address all exist.
+- **The rest of the schedule:** all 48 rows in `editorial/schedule.csv` are already published, so there is no `not_started` row to fall back to.
+- **Watch list:** the only row in `watch.csv` is the automotive article's EU vote check, due 2026-11-24, so nothing is due yet.
+
+`editorial/CLAUDE.md` covers this case as settled fallback 7: when no row is eligible, the run records that and ends. So I didn't run the research gate, `/createarticle`, `/content-quality-us`, the image step or `check-draft.mjs`.
+
+The only file I changed is `editorial/logs/runs/2026-10-05-draft.txt`, where I added the decision record. I left `schedule.csv` as it was and didn't write `logs/2026-10-05.md`, because no article went through the pipeline; the 2026-10-01 draft runs made the same call. Nothing was published or committed.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be re-authorized in your claude.ai connector settings before they can be used. This run didn't need them.
+2026-10-05T00:30:53 model Opus 5.5 completed successfully
+2026-10-05T00:30:53 end draft exit 0

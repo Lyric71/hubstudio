@@ -1,0 +1,31 @@
+﻿2026-10-08T00:30:01 start draft (model claude-opus-5-5)
+2026-10-08T00:30:01 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-08T00:30:51 Opus 5.5 decision record (scheduled 00:30 draft run, Thursday 2026-10-08, slot C).
+State on entry:
+- Prompt SHA-256 matches the manifest (28046D05...B858CF).
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct.
+- HEAD f51a6e9, no commit since the 2026-10-06 runs. Working tree: French and Chinese dictionaries flagged modified (outside this run, left untouched) and untracked runner files for 2026-10-05 to today. No half-written research file, draft or hero image under editorial/ or public/Images/.
+Read: editorial/CLAUDE.md (settled fallbacks 7, 8 and 9), editorial/SPEC.md, editorial/RUNBOOK.md (row selection at step 2).
+Today's row:
+- 2026-10-08, Thu, slot C, brief 25, content-credentials-c2pa-in-production: status published. Re-verified on disk: research/<slug>.md, output/<slug>.md, src/pages/resources/insights/<slug>.astro, public/Images/insight-<slug>.webp, its src/data/insights.ts entry and its French slug (content-credentials-c2pa-en-production) in src/i18n/routes.ts. Past image_ready: nothing to draft.
+Fallback (RUNBOOK step 2, oldest not_started row): schedule.csv parsed as quoted CSV, 48 rows, all published, zero not_started, zero blocked. Every published row cross-checked: each slug has its .astro page and its insights.ts entry, none missing. output/ holds one archived alternate, agency-white-label-question.ALT-2026-09-21.md (settled fallback 8), ignored.
+watch.csv: one row, automotive-content-without-shipping-a-car, due 2026-11-24. Not due; watch rows belong to the publish run.
+Decision: settled fallback 7 in editorial/CLAUDE.md (no eligible row). The run records that and ends. Extending the calendar past brief 48 is a planning change in schedule.csv and the briefs, not a run item.
+Steps not run, because there was no eligible row: the R1 to R7 research gate, /createarticle, /content-quality-us, /generate-image-openai, check-draft.mjs.
+Files: only this log changed. schedule.csv and watch.csv unchanged. editorial/logs/2026-10-08.md not written from TEMPLATE.md, because no article went through the pipeline (same decision as the earlier no-row runs). No publish, no commit, per the prompt.
+Outside the repo (settled fallback 9, plain fact): the Gmail, Google Calendar and Google Drive connectors reported needing authorization; this run did not use them.
+2026-10-08T00:30:51 end of Opus 5.5 decision record.
+I didn't draft an article today because there was nothing left to draft.
+
+- **Today's row:** Thursday 2026-10-08, slot C, brief 25, `content-credentials-c2pa-in-production`, is already published. Its research file, draft, page, hero image, `insights.ts` entry and French address (`content-credentials-c2pa-en-production`) are all on disk.
+- **Fallback:** all 48 rows in `editorial/schedule.csv` are published, and none is `not_started` or `blocked`. I checked every published slug and each one has its page and its `insights.ts` entry. The extra `.ALT-2026-09-21.md` file in `output/` is an archived alternate, so I ignored it.
+- **Watch list:** the only row, for the automotive article, isn't due until 2026-11-24, and the publish run handles it.
+- **Earlier attempts:** this run's log had only the runner's two start lines, so no earlier model left partial work or an error to fix.
+
+`editorial/CLAUDE.md` covers this case as settled fallback 7: when no row is eligible, the run records that and ends. So I didn't run the research gate, `/createarticle`, `/content-quality-us`, the image step or `check-draft.mjs`.
+
+The only file I changed is `editorial/logs/runs/2026-10-08-draft.txt`, where I added the decision record. `schedule.csv` and `watch.csv` didn't need changes. I didn't write `logs/2026-10-08.md` because no article went through the pipeline, which matches the earlier runs. Nothing was published or committed.
+
+The Gmail, Google Calendar and Google Drive connectors need to be re-authorized in your claude.ai connector settings before they can be used. This run didn't need them.
+2026-10-08T00:30:57 model Opus 5.5 completed successfully
+2026-10-08T00:30:57 end draft exit 0

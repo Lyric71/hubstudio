@@ -1,0 +1,27 @@
+﻿2026-10-05T04:00:02 start publish (model claude-opus-5-5)
+2026-10-05T04:00:02 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-05T04:00:34 Opus 5.5 decision record.
+State on entry:
+- Prompt SHA-256 matches the manifest (647B03B8...FFBB86).
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct.
+- HEAD ed915a8. Working tree: untracked run files for today only.
+Read: editorial/CLAUDE.md (settled fallbacks), editorial/RUNBOOK.md (failure table).
+schedule.csv: 48 rows, all published. No row is image_ready, none is blocked, so no row is skipped for a decision.
+Cross-check: every draft in editorial/output (ALT archives excluded, fallback 8) has its page under src/pages/resources/insights. No finished draft is waiting outside the schedule.
+watch.csv: one row, automotive-content-without-shipping-a-car, due 2026-11-24. Not due today (2026-10-05), so no recheck.
+Decision: settled fallback 7 in editorial/CLAUDE.md (no eligible row, no watch row due). The run records that and ends.
+Steps not run, because nothing was eligible: /createblogarticle, the French and Chinese step, npm run build, npm run check, commit, push, notify-publish.mjs (the email is sent after a push or on a failed build; neither happened).
+Files: only this log changed. schedule.csv and watch.csv unchanged.
+Outside the repo: the Gmail, Google Calendar, Google Drive and Microsoft 365 connectors reported needing authorization. This run did not use them.
+2026-10-05T04:00:34 end of Opus 5.5 decision record.
+Nothing was published this run because no draft was ready to publish.
+
+- **Schedule:** all 48 rows in `editorial/schedule.csv` are already published. No row is `image_ready`, and none is blocked waiting on a decision.
+- **Drafts:** every draft in `editorial/output/` already has a live page under `src/pages/resources/insights/`, so no finished draft is sitting outside the schedule either.
+- **Watch list:** the only row in `editorial/watch.csv` is the EU vote check for `automotive-content-without-shipping-a-car`. It isn't due until 2026-11-24, so I didn't recheck it.
+
+`editorial/CLAUDE.md` covers this case (settled fallback 7): when no row is eligible and no watch row is due, the run records that and ends. So I didn't run `/createblogarticle`, the French and Chinese step, the build, the check, a commit, a push or the notification email. The email only goes out after a push or when a build fails, and neither happened. The only file I changed is the run log, `editorial/logs/runs/2026-10-05-publish.txt`, where I added the decision record.
+
+The Gmail, Google Calendar, Google Drive and Microsoft 365 connectors need to be re-authorized in your claude.ai connector settings before they can be used. This run didn't need them.
+2026-10-05T04:00:39 model Opus 5.5 completed successfully
+2026-10-05T04:00:39 end publish exit 0

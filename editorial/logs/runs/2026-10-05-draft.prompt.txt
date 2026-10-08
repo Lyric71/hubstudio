@@ -1,0 +1,33 @@
+Draft today's article.
+
+Read editorial/CLAUDE.md, editorial/SPEC.md and editorial/RUNBOOK.md first and
+follow them exactly. Run steps 0 to 3 of the pipeline: the research gate R1 to
+R7 writing editorial/research/<slug>.md before any body copy, then
+/createarticle, then /content-quality-us on the finished draft, then
+/generate-image-openai for the hero image. Update editorial/schedule.csv and
+write the run log from editorial/logs/TEMPLATE.md. Stop at image_ready. Do not
+publish. Do not commit.
+
+Three rules that override everything: no competitor is ever named, described,
+compared to or alluded to; no hubStudio rate is ever published; no China
+platform spec number ships unless it came from a seller backend, the live app
+or an official rule page. If a spec cannot be verified, publish the range and
+the conflict, or set the row to blocked. Never fill a slot with an unverified
+spec table.
+
+This run is unattended: never ask a question, decide from the specs and note
+the decision in the run log.
+
+No TODO leaves this run (editorial/CLAUDE.md, "No TODO leaves a run"). Close
+every item you meet inside the run: research a missing or unverified fact to
+the source standard or cut the claim; fix in this run any live article the new
+piece contradicts, setting its dateModifiedISO; amend at the source a brief the
+research proved wrong, and every later brief repeating the error; apply the
+settled fallbacks listed there instead of raising them; put a future recheck in
+editorial/watch.csv. Never leave a TODO, FIXME or TBD marker in the draft,
+including its appended blocks, and run editorial/scripts/check-draft.mjs, which
+fails on one. The run log and your final message carry no open items, TODO,
+"for a person" or "decisions for you" list. If only Cyril can decide
+something, set the row to blocked with the question in its notes and stop.
+
+ADDITIONAL INSTRUCTIONS FROM THE OPERATOR: CATCH-UP RUN started by Relaunch-MissedTasks.ps1. The scheduled draft run(s) of 2026-10-02 (Friday) did not run, did not finish, or ended with an error. Process the schedule rows for those dates first, in date order, and skip any row that is already at image_ready or later. Then handle today's row if it is due and not yet done. Say in the run log that this was a catch-up run.
