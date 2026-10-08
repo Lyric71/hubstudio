@@ -20,7 +20,8 @@
  * title is checked.
  *
  * The live URL is derived from the article page that exists for the slug:
- * src/pages/resources/insights/<slug>.astro -> /resources/insights/<slug>.
+ * src/pages/resources/insights/<slug>.astro -> /resources/insights/<slug>, or
+ * src/pages/resources/how-to/<slug>.astro -> /resources/how-to/<slug> for a guide.
  * Every article also ships in French and Chinese (editorial/CLAUDE.md, step
  * 4b): the French URL comes from the article's line in the ARTICLES map of
  * src/i18n/routes.ts, the Chinese one is /zh + the English path, and the
@@ -64,18 +65,35 @@ function parseArgs(argv) {
   return out;
 }
 
+/**
+ * Insights live under /resources/insights, how-to and engine guides (template
+ * howto) under /resources/how-to. The kind is read from the page on disk, so
+ * the same command serves both.
+ */
+const KINDS = {
+  insight: { dir: 'insights', fr: 'analyses', map: 'ARTICLES', register: 'insights.ts', hero: 'insight' },
+  howto: { dir: 'how-to', fr: 'guides-pratiques', map: 'HOWTOS', register: 'howtos.ts', hero: 'howto' },
+};
+function kindOf(slug) {
+  for (const [key, kind] of Object.entries(KINDS)) {
+    if (existsSync(path.join('src', 'pages', 'resources', kind.dir, `${slug}.astro`))) return key;
+  }
+  return 'insight';
+}
+let kind = KINDS.insight;
+
 /** The article page has to exist before we claim a URL for it. */
 function liveUrl(slug) {
-  const page = path.join('src', 'pages', 'resources', 'insights', `${slug}.astro`);
-  return existsSync(page) ? `${SITE}/resources/insights/${slug}` : null;
+  const page = path.join('src', 'pages', 'resources', kind.dir, `${slug}.astro`);
+  return existsSync(page) ? `${SITE}/resources/${kind.dir}/${slug}` : null;
 }
 
-/** The article's French slug, from the ARTICLES map of src/i18n/routes.ts. */
+/** The article's French slug, from the ARTICLES (or HOWTOS) map of src/i18n/routes.ts. */
 function frenchSlug(slug) {
   const file = path.join('src', 'i18n', 'routes.ts');
   if (!existsSync(file)) return null;
   const src = readFileSync(file, 'utf8');
-  const start = src.indexOf('const ARTICLES');
+  const start = src.indexOf(`const ${kind.map}`);
   if (start < 0) return null;
   const block = src.slice(start, src.indexOf('};', start));
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
@@ -85,7 +103,7 @@ function frenchSlug(slug) {
 
 /** Entries of the article's dictionary in one language, empty ones counted. */
 function dictStatus(locale, slug) {
-  const file = path.join('src', 'i18n', 'dict', locale, 'pages', 'resources', 'insights', `${slug}.json`);
+  const file = path.join('src', 'i18n', 'dict', locale, 'pages', 'resources', kind.dir, `${slug}.json`);
   if (!existsSync(file)) return 'NO dictionary';
   const dict = JSON.parse(readFileSync(file, 'utf8'));
   const total = Object.keys(dict).length;
@@ -93,9 +111,9 @@ function dictStatus(locale, slug) {
   return empty ? `${total} entries, ${empty} EMPTY` : `${total} entries`;
 }
 
-/** Confirm the slug actually landed in the insights register, not just on disk. */
+/** Confirm the slug actually landed in its register, not just on disk. */
 function inRegister(slug) {
-  const file = path.join('src', 'data', 'insights.ts');
+  const file = path.join('src', 'data', kind.register);
   if (!existsSync(file)) return false;
   return readFileSync(file, 'utf8').includes(`slug: '${slug}'`);
 }
@@ -131,13 +149,14 @@ async function main() {
   }
   refuseOpenItems(args);
   const to = args.to || process.env.CONTACT_TO_EMAIL || FALLBACK_TO;
+  kind = KINDS[kindOf(args.slug)];
   const url = liveUrl(args.slug);
   const fr = frenchSlug(args.slug);
-  const frUrl = url && fr ? `${SITE}/fr/ressources/analyses/${fr}` : null;
-  const zhUrl = url ? `${SITE}/zh/resources/insights/${args.slug}` : null;
+  const frUrl = url && fr ? `${SITE}/fr/ressources/${kind.fr}/${fr}` : null;
+  const zhUrl = url ? `${SITE}/zh/resources/${kind.dir}/${args.slug}` : null;
   const registered = inRegister(args.slug);
-  const image = args.image || `/Images/insight-${args.slug}.webp`;
-  const imageOnDisk = existsSync(path.join('public', 'Images', `insight-${args.slug}.webp`));
+  const image = args.image || `/Images/${kind.hero}-${args.slug}.webp`;
+  const imageOnDisk = existsSync(path.join('public', image.replace(/^\//, '')));
   const when = new Date().toLocaleString('en-US', { timeZone: 'Asia/Shanghai', hour12: false });
 
   const rows = [
@@ -147,7 +166,7 @@ async function main() {
     ['French URL', frUrl || 'NO French address in src/i18n/routes.ts'],
     ['Chinese URL', zhUrl || 'no article page found for this slug'],
     ['Translations', `French ${dictStatus('fr', args.slug)}; Chinese ${dictStatus('zh', args.slug)}`],
-    ['In insights.ts', registered ? 'yes' : 'NO, the register entry is missing'],
+    [`In ${kind.register}`, registered ? 'yes' : 'NO, the register entry is missing'],
     ['Hero image', `${image}${imageOnDisk ? '' : '  (NOT FOUND on disk)'}`],
     ['Build', args.build || 'not reported'],
     ['Run log', args.log || 'not reported'],
