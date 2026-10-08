@@ -74,7 +74,7 @@ A studio engagement starts with a brief sent through `/contact`.
 - True and usable: no subscription, no seat fees, creating an account costs
   nothing, you pay only for what you run, the price is shown before every run,
   a failed run is never charged, the balance does not expire, the Image editor,
-  the Image anonymizer, Validation and publishing to LinkedIn, Instagram,
+  the Image anonymizer, Campaigns, Validation and publishing to LinkedIn, Instagram,
   Facebook and TikTok cost nothing to use. Each post sent to X through
   hubStudio is charged, with the price shown before you send. Storage and
   downloads carry a small charge against the balance.
@@ -121,6 +121,20 @@ A studio engagement starts with a brief sent through `/contact`.
   hidden data in a picture (camera data, location, content credentials) and
   rebuilds it clean. Do not lead with "strips AI markers"; frame it as privacy
   and clean delivery files.
+- **Campaigns** (added October 8, 2026): one launch's files under one name
+  (up to 120 characters, unique in the team) and an optional brief (up to
+  4,000 characters): renders, edited videos, shorts, posts, uploaded
+  documents. A campaign points at Assets Library files and copies nothing; a
+  file can sit in several campaigns; removing it or deleting the campaign
+  leaves it in the library; a new version stays in; a file deleted from the
+  library leaves every campaign. Filled from its page (Add assets), from the
+  library (Actions menu or ticked rows), or from the Campaign menu of every
+  creation form; listed by name in the side menu; a Campaign filter in the
+  library. A LinkedIn, Facebook or X post can be drafted from a campaign: it
+  reads the brief, the file list (name, type, prompt of a render) and the
+  text of up to 20 documents, never the pictures themselves. No Ask, no
+  agents in hubStudio. Rights row Campaigns (under Assets Library); clients
+  never see Campaigns. Free to use.
 - **Social publishing:** LinkedIn (profiles and company pages), Instagram
   (professional accounts: feed, Story, Reel), Facebook (pages), TikTok (Beta:
   always label it Beta), X (threads, up to four pictures). A brief goes to
@@ -141,9 +155,23 @@ A studio engagement starts with a brief sent through `/contact`.
   work tagged "Made for" a client appears in that client's Client space.
 - **Account:** email code at sign-up, optional sign-in code, trusted browsers,
   My Connections for social accounts, voice input in any text box, light or
-  dark theme.
-- **Languages:** the app interface is in English; the sign-in page speaks
-  English, French and Chinese. Say so plainly if language comes up.
+  dark theme, a weekly digest email of what changed (and an email when a new
+  AI model is added). Balance pages: top-up by card, Alipay or WeChat Pay,
+  promotional codes, automatic top-up (card only, threshold, amount, daily
+  limit), an invoice per top-up (view online or PDF), and a Usage log of every
+  paid action (admins see the whole team).
+- **Text models (writing):** wherever AI writes (post drafts, captions,
+  Improve with AI), a model picker offers Quick, Balanced or Best, or any
+  model from the full list; the pick is remembered per feature on that
+  browser. Model benchmarks compares the text models the team allows on public
+  scores (Intelligence Index, LMArena and others), each linked to its source,
+  never an estimated score. My models switches engines and models off for one
+  person. Never print the costs shown on those pages.
+- **Languages:** the app runs in English, French and Chinese, from the sign-in
+  page on; each person picks their own, and an admin chooses which ones the
+  team offers. Only the interface changes: prompts, posts and files stay in
+  the language they were written in. (Corrected October 8, 2026, from the
+  help center: the app is no longer English only.)
 - **Partners:** commercial partners open accounts for the customers they bring
   and earn a commission on what those accounts spend (no rates on the site).
 
@@ -201,7 +229,10 @@ do not exist or belong to the studio.
 | | `/app/create` | Explore, Image studio, Video studio, Skills |
 | | `/app/publish` | The five networks, scheduling, re-purposing |
 | | `/app/review` | Validation, Client space, teams and clients |
-| | `/app/library` | Assets Library, Image editor, Image anonymizer |
+| | `/app/library` | Assets Library, with a short Campaigns section |
+| | `/app/campaigns` | Campaigns |
+| | `/app/image-tools` | Image editor, Image anonymizer |
+| | `/app/video-tools` | Video editor, Shorts autopilot |
 | | `/app/engines` | Every engine by maker |
 | Studio | `/studio` | Studio overview, the three ways, the twenty services |
 | | `/studio/with-the-app` | The Studio + app offer |

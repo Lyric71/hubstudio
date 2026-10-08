@@ -33,11 +33,11 @@ import { APP_URL, APP_SIGNUP, APP_SIGNIN, BRIEF_URL, HELP_URL } from '../lib/lin
 const SITE = 'https://www.hubstudio.ai';
 
 /*
- * The app tour: the modules as the /app pages split them, and every feature
- * of each module with its own real capture. A feature opens on a hook (the
- * moment it answers, in the reader's words or as a situation), then its name,
- * then two plain sentences. Every fact is taken from the /app page the module
- * links to, which is itself quoted from the help center. Without JavaScript
+ * The app tour: ten modules, the /app pages plus Social networks and Account,
+ * and every feature of each module with its own real capture. A feature opens
+ * on a hook (the moment it answers, in the reader's words or as a situation),
+ * then its name, then two plain sentences. Every fact is taken from the help
+ * center (src/content/help), as the /app pages are. Without JavaScript
  * the modules and features render stacked; the script turns them into a
  * module switcher and a feature list beside one framed screen.
  */
@@ -63,17 +63,9 @@ const modules: Module[] = [
   {
     id: 'create',
     name: 'Create',
-    lede: 'Explore lists the engines, and the Image and Video studios run them. The price shows before every run, and a failed run is never charged.',
+    lede: 'The Image and Video studios run the engines you pick in Explore. The price shows before every run, and a failed run is never charged.',
     link: { label: 'How making works', href: '/app/create' },
     features: [
-      {
-        id: 'explore',
-        hook: 'You know the job. You don’t know which engine does it best.',
-        name: 'Explore',
-        body: 'One card per image and video engine, from OpenAI, Google, ByteDance, Kling and other makers, each saying what it’s good at. Search, filter by kind, maker or job, then click a card and its studio opens already set on that engine.',
-        shot: appShots.explore,
-        path: '/explore',
-      },
       {
         id: 'image-studio',
         hook: '“Same bottle, on marble this time, lit from the left.”',
@@ -97,6 +89,46 @@ const modules: Module[] = [
         body: 'A skill is a set of instructions the AI follows every time, in Improve with AI and in post drafts. Take one from the Catalog, such as packshot, lifestyle scene or a format per network, write your own, or follow the Team skills your admins write.',
         shot: appShots.skillsCatalog,
         path: '/skills/catalog',
+      },
+    ],
+  },
+  {
+    id: 'engines',
+    name: 'Engines',
+    lede: 'Every image and video engine on one page, and a choice of model wherever AI writes. Each run shows its price before it starts.',
+    link: { label: 'See every engine', href: '/app/engines' },
+    features: [
+      {
+        id: 'explore',
+        hook: 'You know the job. You don’t know which engine does it best.',
+        name: 'Explore',
+        body: 'One card per image and video engine, from OpenAI, Google, ByteDance, Kling and other makers, each saying what it’s good at. Search, filter by kind, maker or job, then click a card and its studio opens already set on that engine.',
+        shot: appShots.explore,
+        path: '/explore',
+      },
+      {
+        id: 'engine-card',
+        hook: 'Which one keeps the words in a picture readable?',
+        name: 'Engine cards',
+        body: 'Each card names the maker, says whether the engine makes an image or a video and what it’s good at, and lists its jobs, from text to image to reference to video. A New tag marks the engines released or added in the last 60 days, and Try it opens the studio on that engine.',
+        shot: appShots.exploreCard,
+        path: '/explore',
+      },
+      {
+        id: 'model-picker',
+        hook: 'A first draft doesn’t need the strongest model.',
+        name: 'Choose a model',
+        body: 'Wherever AI writes, a post, a caption or a rewritten prompt, one button picks the model: Quick, Balanced or Best, or any model from the full list. Each choice names the model it runs, and this browser remembers your pick for each feature.',
+        shot: appShots.modelPicker,
+        path: '/social/linkedin/posts',
+      },
+      {
+        id: 'benchmarks',
+        hook: 'Is the stronger model worth it for a LinkedIn post?',
+        name: 'Model benchmarks',
+        body: 'Compare models lays the text models your team allows side by side on public scores, from the Intelligence Index to LMArena, each linked to its source. A dash means there’s no public figure: no score is ever estimated.',
+        shot: appShots.benchmarks,
+        path: '/settings/model-benchmarks',
       },
     ],
   },
@@ -130,6 +162,46 @@ const modules: Module[] = [
         body: 'Upload the newer file and the old one moves under Versions. Each file’s Actions menu views, downloads, edits, tags, renames or moves it, and ticking several files moves or tags them in one go.',
         shot: appShots.libraryActions,
         path: '/files',
+      },
+    ],
+  },
+  {
+    id: 'campaigns',
+    name: 'Campaigns',
+    lede: 'One launch’s renders, videos, posts and documents under a name and a brief. A campaign points at the library and copies nothing, and it costs nothing to use.',
+    link: { label: 'How campaigns work', href: '/app/campaigns' },
+    features: [
+      {
+        id: 'campaigns',
+        hook: 'Which files were for the spring launch, again?',
+        name: 'Campaigns',
+        body: 'Each campaign gets a card with its pictures, its brief and a count of what it holds by type. Every creation form has a Campaign menu, so a render or a post joins the campaign as it’s made.',
+        shot: appShots.campaigns,
+        path: '/campaigns',
+      },
+      {
+        id: 'campaign-page',
+        hook: 'The brief and the files, on one page.',
+        name: 'A campaign’s page',
+        body: 'The name and the brief sit on top, then every file in the campaign, with a link to it in the library. Add files from the page or from the library, and removing one leaves it in the library.',
+        shot: appShots.campaignPage,
+        path: '/campaigns',
+      },
+      {
+        id: 'campaign-filter',
+        hook: 'Only the spring launch, please.',
+        name: 'Campaign filter',
+        body: 'In the Assets Library, the Campaign filter shows one campaign’s files, or the files in none. A file can sit in several campaigns, and a new version of it stays in each.',
+        shot: appShots.campaignFilter,
+        path: '/files',
+      },
+      {
+        id: 'campaign-post',
+        hook: 'The launch is filed. Now it needs a post.',
+        name: 'Posts from a campaign',
+        body: 'Pick the campaign under a LinkedIn, Facebook or X brief, and Draft with AI reads its brief, its file list and the text of up to 20 documents. It reads the names and prompts of the files, never the pictures themselves.',
+        shot: appShots.campaignPost,
+        path: '/social/linkedin/posts',
       },
     ],
   },
@@ -230,10 +302,10 @@ const modules: Module[] = [
     ],
   },
   {
-    id: 'publish',
-    name: 'Publish',
-    lede: 'Five networks, one place to post, and YouTube videos made ready for YouTube Studio. Publish now or schedule it, to up to 20 accounts a post, and the queue retries on its own.',
-    link: { label: 'How publishing works', href: '/app/publish' },
+    id: 'networks',
+    name: 'Social networks',
+    lede: 'One module per network. LinkedIn, Instagram, Facebook, TikTok (Beta) and X posts go out from hubStudio, and YouTube videos leave ready for YouTube Studio.',
+    link: { label: 'Every network, in detail', href: '/app/publish' },
     features: [
       {
         id: 'linkedin',
@@ -282,6 +354,38 @@ const modules: Module[] = [
         body: 'Write one post or a thread with up to four pictures, choose the hashtags and mentions, and send the link in a short follow-up post. Each post sent to X shows its price before you send.',
         shot: appShots.xKnobs,
         path: '/social/x/posts',
+      },
+    ],
+  },
+  {
+    id: 'publish',
+    name: 'Publish',
+    lede: 'Publish now or schedule it, to up to 20 accounts a post. Publishing costs nothing, except a post sent to X, which shows its price before you send.',
+    link: { label: 'How publishing works', href: '/app/publish' },
+    features: [
+      {
+        id: 'schedule',
+        hook: 'Tuesday, 9 a.m., and you’ll be in a meeting.',
+        name: 'Publish now or schedule',
+        body: 'Tick your accounts, then Publish now or pick a day and an hour, and hubStudio posts through the network itself. Each account gets its own row in the queue, a temporary failure is retried on its own, and Publish manually needs nothing connected.',
+        shot: appShots.publishStep,
+        path: '/social/instagram/posts',
+      },
+      {
+        id: 'picture-versions',
+        hook: 'The client liked the first picture better.',
+        name: 'Picture versions',
+        body: 'Every render, edit, pick or upload that changes a post’s pictures is kept as a version: v1, v2 and so on. Use this version puts an earlier set back, and the image editor opens a picture on the network’s own format.',
+        shot: appShots.pictureVersions,
+        path: '/social/instagram/posts',
+      },
+      {
+        id: 'repurpose',
+        hook: 'Written for LinkedIn. Needed on X by lunch.',
+        name: 'Re-purpose',
+        body: 'Tick the other networks, then open each one with this post as its brief, draft them all at once, or draft and publish them on the accounts you tick. A network that can’t take the post is grayed out: Instagram needs a picture, TikTok and YouTube a video.',
+        shot: appShots.repurpose,
+        path: '/social/instagram/posts',
       },
       {
         id: 'connections',
@@ -343,6 +447,72 @@ const modules: Module[] = [
       },
     ],
   },
+  {
+    id: 'account',
+    name: 'Account',
+    lede: 'One prepaid balance pays for every run. It never expires, and there’s no subscription and no seat fee.',
+    link: { label: 'How pricing works', href: '/pricing' },
+    features: [
+      {
+        id: 'top-up',
+        hook: 'The balance is low, and the launch is tomorrow.',
+        name: 'Top up',
+        body: 'Top up by card, Alipay or WeChat Pay, and a promotional code adds to what you buy. A team shares one balance, and an admin can cap what each creator draws from it in a day.',
+        shot: appShots.billingPay,
+        path: '/billing',
+      },
+      {
+        id: 'auto-top-up',
+        hook: 'A long run shouldn’t stop halfway.',
+        name: 'Automatic top-up',
+        body: 'Save a card, set a threshold, an amount and a daily limit, and the balance tops itself up when it runs low. It takes a card, since Alipay and WeChat Pay can’t be charged unattended.',
+        shot: appShots.autoTopup,
+        path: '/billing',
+      },
+      {
+        id: 'invoices',
+        hook: 'Finance wants last month’s invoices.',
+        name: 'Invoices and usage',
+        body: 'Every top-up comes with an invoice, to view online or download as a PDF. Usage lists every paid action and when it ran, and an admin sees the whole team’s.',
+        shot: appShots.invoices,
+        path: '/billing/invoices',
+      },
+      {
+        id: 'security',
+        hook: 'A laptop left open in the meeting room.',
+        name: 'Sign-in and security',
+        body: 'New teams ask for a code sent by email after the password, and a browser you trust skips it for 30 days. Changing your sign-in email or password asks for your current password first.',
+        shot: appShots.security,
+        path: '/settings',
+      },
+      {
+        id: 'language',
+        hook: 'Your Shanghai team would rather read Chinese.',
+        name: 'Your language',
+        body: 'hubStudio runs in English, French and Chinese, from the sign-in page on, and each person picks their own. Only the interface changes: prompts, posts and files stay in the language they were written in.',
+        shot: appShots.signInLanguage,
+        path: '/login',
+      },
+      {
+        id: 'digest',
+        hook: 'What changed in the app this week?',
+        name: 'Weekly digest',
+        body: 'Every Monday, an email sums up what changed in hubStudio in plain language, and a week without changes sends nothing. A second switch emails you when a new AI model joins your lists.',
+        shot: appShots.digest,
+        path: '/settings',
+      },
+    ],
+  },
+];
+
+/* The tab bar groups the modules by phase, as the header's App menu does.
+   The order of the groups is the order of `modules`, so the script's tab
+   list and the panels stay index for index. */
+const tourGroups = [
+  { label: 'Make', ids: ['create', 'engines', 'library', 'campaigns'] },
+  { label: 'Edit', ids: ['image-tools', 'video-tools'] },
+  { label: 'Ship', ids: ['networks', 'publish', 'review'] },
+  { label: 'Manage', ids: ['account'] },
 ];
 
 /* The tallest landscape capture of a module (smallest width / height) sets
@@ -618,32 +788,39 @@ const homeSchema = {
           <h2 class="headline h2" data-reveal>
             One app, from the first prompt to the <span class="accent">published</span> post.
           </h2>
-          <p class="s-head__intro" data-reveal>
-            hubStudio is a web app for people and teams who make their own content. You pick an
-            engine, check the price and run it. The result stays with your team, and you finish
-            the job in the same app. Pick a module, then a feature: every screen here is a real
-            capture of the app.
-          </p>
         </header>
 
         <div class="tour" data-tour data-reveal>
           <div class="tour__tabs" role="tablist" aria-label="Modules of the hubStudio app" hidden>
             {
-              modules.map((m, i) => (
-                <button
-                  type="button"
-                  class="tab tour__tab"
-                  role="tab"
-                  id={`tab-mod-${m.id}`}
-                  aria-controls={`mod-${m.id}`}
-                  aria-selected={i === 0 ? 'true' : 'false'}
-                  tabindex={i === 0 ? '0' : '-1'}
-                >
-                  <span class="tab__dot" aria-hidden="true" />
-                  {m.name}
-                </button>
+              tourGroups.map((g) => (
+                <div class="tour__group" role="presentation">
+                  <span class="tour__group-label" aria-hidden="true">
+                    {g.label}
+                  </span>
+                  <div class="tour__group-tabs" role="presentation">
+                    {g.ids.map((id) => {
+                      const m = modules.find((x) => x.id === id)!;
+                      const first = id === modules[0].id;
+                      return (
+                        <button
+                          type="button"
+                          class="tour__tab"
+                          role="tab"
+                          id={`tab-mod-${m.id}`}
+                          aria-controls={`mod-${m.id}`}
+                          aria-selected={first ? 'true' : 'false'}
+                          tabindex={first ? '0' : '-1'}
+                        >
+                          {m.name}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               ))
             }
+            <span class="tour__ink" aria-hidden="true" />
           </div>
 
           {
@@ -1811,29 +1988,108 @@ const homeSchema = {
   .tour.is-live {
     gap: clamp(28px, 3.4vw, 44px);
   }
+  /* The tab bar: text tabs grouped by phase under a mono label, on one
+     hairline, with an orange rule that slides to the open module (the
+     script sets --ink-x and --ink-w). The groups spread across the
+     container; when they no longer fit, the row scrolls inside its own
+     track, never the page, and the rule scrolls with it. */
   .tour__tabs {
     position: relative;
     display: flex;
-    gap: 8px;
-    padding: 7px;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-pill);
-    background: var(--bg-cream);
+    justify-content: space-between;
+    gap: clamp(22px, 2.6vw, 40px);
+    border-bottom: 1px solid var(--line-strong);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
   }
-  /* Six modules do not share one row below desktop: the chips scroll
-     inside their own track, never the page. */
-  @media (max-width: 999.98px) {
-    .tour__tabs {
-      overflow-x: auto;
-      border-radius: 20px;
-      scrollbar-width: none;
-      overscroll-behavior-x: contain;
-    }
-    .tour__tabs::-webkit-scrollbar {
-      display: none;
-    }
-    .tour__tab {
-      flex: none;
+  .tour__tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .tour__group {
+    flex: none;
+    display: grid;
+    gap: 12px;
+  }
+  .tour__group-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    opacity: 0.75;
+  }
+  .tour__group-label::after {
+    content: '';
+    flex: 1;
+    min-width: 16px;
+    height: 1px;
+    background: var(--line-hairline);
+  }
+  .tour__group-tabs {
+    display: flex;
+    gap: clamp(16px, 1.8vw, 28px);
+  }
+  /* Only when the row is wider than its column (the script sets
+     .is-scroll): the ends fade instead of cutting a word. */
+  .tour__tabs.is-scroll {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+    padding-inline: 20px;
+    scroll-padding-inline: 28px;
+  }
+  .tour__tab {
+    appearance: none;
+    position: relative;
+    padding: 4px 0 18px;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: clamp(15px, 1.1vw, 16px);
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--text-mute);
+    cursor: pointer;
+    transition: color 220ms ease;
+  }
+  .tour__tab:hover,
+  .tour__tab[aria-selected='true'] {
+    color: var(--text-ink);
+  }
+  .tour__tab:focus-visible {
+    outline: none;
+  }
+  .tour__tab:focus-visible::after {
+    content: '';
+    position: absolute;
+    inset: -2px -8px 12px;
+    border-radius: 8px;
+    outline: 2px solid var(--brand-orange);
+  }
+  .tour__ink {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: var(--ink-w, 0);
+    height: 2px;
+    border-radius: 2px;
+    background: var(--brand-orange);
+    transform: translateX(var(--ink-x, 0));
+    transition:
+      transform 0.5s var(--ease),
+      width 0.5s var(--ease);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tour__ink {
+      transition: none;
     }
   }
   .tour.is-live .mod.is-active {
@@ -3716,18 +3972,32 @@ const homeSchema = {
       pick(0, false, false);
     });
 
+    /* The orange rule under the open tab. The groups are not positioned,
+       so a tab's offsetLeft is measured from the bar itself. */
+    let current = 0;
+    const ink = () => {
+      const tab = modTabs[current];
+      if (!tab) return;
+      tourList.style.setProperty('--ink-x', `${tab.offsetLeft}px`);
+      tourList.style.setProperty('--ink-w', `${tab.offsetWidth}px`);
+      tourList.classList.toggle('is-scroll', tourList.scrollWidth > tourList.clientWidth + 1);
+    };
+    new ResizeObserver(ink).observe(tourList);
+
     const show = (index: number, focus = false) => {
+      current = index;
       modTabs.forEach((tab, i) => {
         const selected = i === index;
         tab.setAttribute('aria-selected', selected ? 'true' : 'false');
         tab.tabIndex = selected ? 0 : -1;
         if (selected) {
-          /* Keep the picked chip in view inside its own scroller. */
+          /* Keep the picked tab in view when the bar scrolls. */
           const left = tab.offsetLeft - (tourList.clientWidth - tab.offsetWidth) / 2;
           tourList.scrollTo({ left, behavior: RM ? 'auto' : 'smooth' });
           if (focus) tab.focus();
         }
       });
+      ink();
       mods.forEach((mod, i) => {
         mod.classList.remove('is-active');
         mod.hidden = i !== index;
@@ -3764,5 +4034,7 @@ const homeSchema = {
     tourList.hidden = false;
     tour.classList.add('is-live');
     show(0);
+    /* The web font changes the tabs' widths once it lands. */
+    document.fonts?.ready.then(ink);
   }
 </script>

@@ -3,11 +3,14 @@
  * src/data/app-shots.ts), in French and Chinese: x.fr.webp and x.zh.webp
  * beside x.webp, same size, same crop, same encoding as the English file.
  *
- *   node scripts/captures/app.mjs [fr|zh ...] [--only <name>,<name>]
+ *   node scripts/captures/app.mjs [en|fr|zh ...] [--only <name>,<name>]
+ *
+ * An English file is taken again only once deleted; a shot of its own then
+ * takes the size of its crop.
  *
  * Three sources, as for the English set:
  *   - a crop of the localized help capture (scripts/captures/help.mjs, run
- *     first): the editors, Validation;
+ *     first): the editors, Validation, Campaigns;
  *   - the help shot taken again for the site, 1424 px wide so the app's main
  *     column is 1128 px as it was for the English crops, with every price and
  *     credit line hidden (the site never publishes rates; the English files
@@ -21,7 +24,7 @@
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { HELP_IMAGES, SITE_ROOT, capture, click, listLocalized, run, sharp } from './lib.mjs';
+import { HELP_IMAGES, MAYA, SITE_ROOT, capture, click, listLocalized, run, sharp } from './lib.mjs';
 import { shots as helpShots } from './help.mjs';
 
 const PUBLIC = join(SITE_ROOT, 'public', 'Images', 'app');
@@ -76,6 +79,18 @@ const shots = [
   // The localized help capture itself, cropped or whole.
   { name: 'validation', file: 'validation-page', crop: [0, 68, 1440, 452] },
   { name: 'clientSpace', file: 'client-space-home', crop: [0, 68, 1440, 386] },
+  // Campaigns (8 October 2026): under the top bar (the balance stays out),
+  // the list with the side menu, the campaign's page on its main column.
+  { name: 'campaigns', file: 'campaigns-list', crop: [0, 66, 1440, 598] },
+  { name: 'campaignPage', file: 'campaigns-page', crop: [256, 72, 1432, 960] },
+  // The home page's app tour, 8 October 2026: Campaigns, Publish and Account
+  // tabs. The library's Campaign filter open, under the top bar; a post's
+  // picture with its versions; three settings cards, whole.
+  { name: 'campaignFilter', file: 'campaigns-filter', crop: [272, 246, 1416, 526] },
+  { name: 'pictureVersions', file: 'instagram-picture-versions', fit: true },
+  { name: 'security', file: 'account-and-sign-in-security', fit: true },
+  { name: 'digest', file: 'account-and-sign-in-digest', fit: true },
+  { name: 'signInLanguage', file: 'account-and-sign-in-language' },
   { name: 'editorEffects', file: 'image-editor-effects' },
   { name: 'editorCrop', file: 'image-editor-crop' },
   { name: 'editorDraw', file: 'image-editor-draw' },
@@ -86,7 +101,21 @@ const shots = [
   { name: 'videoSave', file: 'video-editor-save', quality: 86 },
 
   // Shots of their own, at 2x, brought back to 1x.
-  { name: 'exploreApp', own: { route: '/explore', dpr: 2, steps: (p) => p.waitForTimeout(2500) }, crop: [0, 65, 1440, 570], quality: 86 },
+  // Explore with the menu in its default order (the Agents group kept out,
+  // as in help.mjs getting-started-menu).
+  {
+    name: 'exploreApp',
+    own: {
+      route: '/explore',
+      dpr: 2,
+      steps: async (p) => {
+        await p.evaluate(() => document.querySelector('.sn-group[data-key="agents"]')?.remove());
+        await p.waitForTimeout(2500);
+      },
+    },
+    crop: [0, 65, 1440, 570],
+    quality: 86,
+  },
   {
     name: 'anonymizer',
     own: { route: '/files/tools/image-anonymizer', dpr: 2, upload: { input: '[data-img-input]', file: 'glass-skin-campaign.jpg' } },
@@ -103,10 +132,144 @@ const shots = [
     crop: [272, 85, 1424, 685],
     quality: 86,
   },
+
+  // The home page's app tour, 8 October 2026: Engines, Campaigns, Publish and
+  // Account. Every amount is hidden (visibility, so the layout holds); a
+  // translation larger than the English frame is brought down into it (fit).
+  {
+    name: 'exploreCard',
+    own: { route: '/explore', dpr: 2, element: '.ex-card' },
+    fit: true,
+    quality: 86,
+  },
+  {
+    name: 'modelPicker',
+    own: {
+      route: '/social/linkedin/posts',
+      dpr: 2,
+      css: '.mp-opt__side, .mp-trigger__price { visibility: hidden !important; }',
+      steps: (p) => click(p, '[data-project-panel]:not(.hidden) [data-mp-trigger]', 1200),
+      element: '.mp-pop',
+    },
+    fit: true,
+    quality: 86,
+  },
+  {
+    // Scores and costs, its first eight models, cut before the cost columns;
+    // the price level column hidden.
+    name: 'benchmarks',
+    own: {
+      route: '/settings/model-benchmarks',
+      height: 1400,
+      css: 'table th:nth-child(2), table td:nth-child(2) { visibility: hidden !important; }',
+      // The Provider menu sits past the cut: out of the picture rather than halved.
+      steps: (p) => p.evaluate(() => { document.querySelector('select').parentElement.style.visibility = 'hidden'; }),
+      clip: (p) =>
+        p.evaluate(() => {
+          const t = document.querySelector('table');
+          let card = t.parentElement;
+          while (card && !/card/.test(card.className)) card = card.parentElement;
+          const c = card.getBoundingClientRect();
+          const end = t.querySelectorAll('thead th')[8].getBoundingClientRect().left;
+          const rows = t.querySelectorAll('tbody tr');
+          const bottom = rows[Math.min(7, rows.length - 1)].getBoundingClientRect().bottom;
+          return { x: Math.round(c.x), y: Math.round(c.y + scrollY), width: Math.round(end - c.x), height: Math.round(bottom - c.y + 1) };
+        }),
+    },
+    fit: true,
+  },
+  {
+    // Maya's LinkedIn brief with her campaign picked as its material.
+    name: 'campaignPost',
+    own: {
+      route: '/social/linkedin/posts',
+      as: MAYA,
+      css: '.mp-trigger__price { visibility: hidden !important; }',
+      steps: async (p) => {
+        await p.locator('[data-project-panel]:not(.hidden) select[data-campaign-pick]').first().selectOption({ label: 'Lumera Essence launch' });
+        await p.waitForTimeout(800);
+      },
+      clip: (p) =>
+        p.evaluate(() => {
+          const s = document.querySelector('[data-project-panel]:not(.hidden) select[data-campaign-pick]');
+          let card = s.parentElement;
+          while (card && card.getBoundingClientRect().height < 400) card = card.parentElement;
+          const r = card.getBoundingClientRect();
+          return { x: Math.round(r.x - 20), y: Math.round(r.y - 20 + scrollY), width: Math.round(r.width + 40), height: Math.round(r.height + 40) };
+        }),
+    },
+    fit: true,
+  },
+  {
+    // The publishing step of Maya's Instagram draft, its re-purpose block left out.
+    name: 'publishStep',
+    own: {
+      route: '/social/instagram/posts#item=fac4760b-f7a4-4a59-a5ec-2a7c98ec554d&step=publish',
+      as: MAYA,
+      height: 1300,
+      css: '[data-sc-rp] { display: none !important; }',
+      steps: (p) => p.waitForTimeout(3000),
+      clip: (p) =>
+        p.evaluate(() => {
+          let s = document.querySelector('[data-sc-phone-slot]');
+          while (s && s.getBoundingClientRect().width < 1100) s = s.parentElement;
+          const r = s.getBoundingClientRect();
+          return { x: Math.round(r.x), y: Math.round(r.y + scrollY), width: Math.round(r.width), height: Math.round(r.height) };
+        }),
+    },
+    fit: true,
+  },
+  {
+    name: 'repurpose',
+    own: {
+      route: '/social/instagram/posts#item=fac4760b-f7a4-4a59-a5ec-2a7c98ec554d&step=publish',
+      as: MAYA,
+      height: 1300,
+      steps: (p) => p.waitForTimeout(3000),
+      element: '[data-sc-rp]',
+    },
+    fit: true,
+  },
+  {
+    // Buy credits, its Pay column: the three ways to pay and the promotional code, amounts hidden.
+    name: 'billingPay',
+    own: {
+      route: '/billing',
+      height: 1300,
+      css: '[data-pay-method] .tabular-nums { visibility: hidden !important; }',
+      clip: (p) =>
+        p.evaluate(() => {
+          const col = document.querySelector('[data-pay-method]').closest('.min-w-0');
+          const sum = [...col.children].find((e) => e.className.includes('bg-muted/40') && !e.querySelector('input'));
+          const c = col.getBoundingClientRect();
+          return { x: Math.round(c.x + 12), y: Math.round(c.y - 16 + scrollY), width: Math.round(c.width + 4), height: Math.round(sum.getBoundingClientRect().top - c.y + 10) };
+        }),
+    },
+    fit: true,
+  },
+  {
+    // Automatic top-up, its three amounts emptied from view.
+    name: 'autoTopup',
+    own: { route: '/billing', height: 1700, css: '.ui-card input { color: transparent !important; }', element: '.ui-card.p-5 >> nth=2' },
+    fit: true,
+  },
+  {
+    name: 'invoices',
+    own: { route: '/billing/invoices', element: '.ui-card:has(table) >> nth=0' },
+    fit: true,
+  },
 ].map((s) => ({ ...s, out: (lang) => join(PUBLIC, lang === 'en' ? `${s.name}.webp` : `${s.name}.${lang}.webp`) }));
 
 const enSize = async (name) => {
-  const m = await sharp(join(PUBLIC, `${name}.webp`)).metadata();
+  const f = join(PUBLIC, `${name}.webp`);
+  // An English file taken again (deleted, then `en`): the size of its crop.
+  if (!existsSync(f)) {
+    const crop = cropOf(shots.find((s) => s.name === name), 'en');
+    // No crop (an element or a clip of its own): the capture sets the size.
+    if (!crop) return null;
+    return { width: crop[2] - crop[0], height: crop[3] - crop[1] };
+  }
+  const m = await sharp(f).metadata();
   return { width: m.width, height: m.height };
 };
 
@@ -147,7 +310,7 @@ async function make(browser, shot, lang) {
   let buf;
   let k = 1;
   if (shot.file) {
-    const f = join(HELP_IMAGES, `${shot.file}.${lang}.png`);
+    const f = join(HELP_IMAGES, lang === 'en' ? `${shot.file}.png` : `${shot.file}.${lang}.png`);
     if (!existsSync(f)) throw new Error(`no ${f}: run help.mjs first`);
     buf = readFileSync(f);
   } else if (shot.from) {
@@ -189,7 +352,21 @@ async function make(browser, shot, lang) {
     buf = await sharp(buf).extract({ left: x0 * k, top: y0 * k, width: (x1 - x0) * k, height: (y1 - y0) * k }).toBuffer();
   }
   // A 2x shot, or a page taken wider for one language (wide), back to the English width.
+  if (!size) {
+    // The English file taken for the first time, from its own element or clip.
+    if (k !== 1) buf = await sharp(buf).resize({ width: Math.round((await sharp(buf).metadata()).width / k) }).toBuffer();
+    return sharp(buf).webp({ quality: shot.quality ?? 84, effort: 6 }).toBuffer();
+  }
   if (k !== 1 || (crop && shot.wide?.[lang])) buf = await sharp(buf).resize({ width: size.width }).toBuffer();
+  // fit: a translation larger than the English frame, the whole of it brought down into the frame.
+  if (shot.fit) {
+    const m = await sharp(buf).metadata();
+    if (m.width > size.width || m.height > size.height) {
+      const { data } = await sharp(buf).raw().toBuffer({ resolveWithObject: true });
+      buf = await sharp(buf).resize({ width: size.width, height: size.height, fit: 'contain', background: { r: data[0], g: data[1], b: data[2], alpha: 1 } }).toBuffer();
+      console.log(`  scaled ${m.width}x${m.height} into ${size.width}x${size.height}`);
+    }
+  }
   buf = await toSize(buf, size, shot.extend);
   return sharp(buf).webp({ quality: shot.quality ?? 84, effort: 6 }).toBuffer();
 }
