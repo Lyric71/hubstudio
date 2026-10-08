@@ -5,7 +5,7 @@ description: "Render a picture from a prompt, edit pictures you upload or upscal
 excerpt: "The image studio: three jobs, a choice of engines, every option priced before the run, and each result saved in your History."
 section: "studio"
 order: 3
-updated: 2026-09-29
+updated: 2026-10-08
 appPaths: ["/content/image-generate"]
 audience: "Everyone"
 related: ["explore", "create-a-video", "history", "assets-library", "validation", "your-team", "skills", "balance-and-payments"]
@@ -13,8 +13,8 @@ shots:
   - file: "/Images/help/create-an-image-studio.webp"
     route: "/content/image-generate"
     alt: "The image studio: the Image and Video switch in the dark band, the engine and its price with the three jobs, the prompt box on the left and the empty results panel on the right"
-    captured: 2026-09-27
-sources: ["src/pages/content/image-generate.astro", "src/scripts/imageGenerate.ts", "src/pages/api/content/image-generate.ts", "src/lib/image-models.ts", "src/scripts/promptImprove.ts", "src/pages/api/content/prompt-improve.ts", "src/lib/prompt-craft.ts", "src/components/ContentNav.astro", "src/components/ClientPick.astro", "src/scripts/clientPick.ts", "src/scripts/validationRequest.ts", "src/scripts/imageEditorLauncher.ts"]
+    captured: 2026-10-08
+sources: ["src/pages/content/image-generate.astro", "src/scripts/imageGenerate.ts", "src/pages/api/content/image-generate.ts", "src/lib/image-models.ts", "src/scripts/promptImprove.ts", "src/pages/api/content/prompt-improve.ts", "src/lib/prompt-craft.ts", "src/components/ContentNav.astro", "src/components/ClientPick.astro", "src/scripts/clientPick.ts", "src/scripts/validationRequest.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/campaignChoice.ts", "src/lib/request-campaign.ts"]
 ---
 
 The image studio renders pictures from your words, rewrites pictures you upload, or re-renders one larger and sharper. Open it from **Image** in the menu, or from a card in [Explore](/help/explore), which opens it already set on that engine.
@@ -25,7 +25,7 @@ The page has three parts: the job and the engine on top, the form on the left wi
 
 ## The three jobs
 
-Pick the job with the tabs next to the **Engine** list, under **What this run does**. Engines that can't do the job you picked are taken off the list.
+Pick the job with the tabs next to the **Engine** list, under **What this run does**. Engines that can't do the job you picked are taken off the list. The studio opens on the least expensive engine.
 
 | Job | What it does | What it needs |
 |---|---|---|
@@ -78,12 +78,13 @@ When you upload images, the shape of the result follows the first one. You can c
 | **Resolution** | On the ChatGPT Image engines, a second choice beside the quality: **1K: standard**, **2K: sharper**, **4K: up to 3840 px**. |
 | **Shape** | Square, landscape, widescreen, ultra-wide, portrait or vertical, depending on the engine. The ChatGPT Image engines add **Panorama (3:1)** and **Tall (1:3)**. |
 | **Format** | PNG, JPG or WebP, as the engine allows. |
-| **Background** | On the ChatGPT Image engines: **Auto: the engine decides**, **Opaque** or **Transparent**. A transparent background needs PNG or WebP, so **Transparent** disappears when you pick JPG. |
+| **Background** | On the ChatGPT Image engines: **Auto: the engine decides**, **Opaque** or **Transparent**. **Transparent** is on the 2.5 engines only (ChatGPT Image 2 cannot cut a subject out), and it needs PNG or WebP, so it disappears when you pick JPG. |
 | **Images per run** | On the ChatGPT Image engines: from 1 to 10 pictures from one run. |
 | **File quality** | On the ChatGPT Image engines, for JPG and WebP: 100% keeps every detail, lower makes a lighter file. |
 | **Less strict content filter** | On the ChatGPT Image engines: the provider's own low setting. Its usage policies still apply. |
 | **Mask** | On the ChatGPT Image engines, when you edit: an optional PNG whose transparent areas mark what may change in the first image. Everything else stays as it is. The mask must actually contain a transparent area. |
 | **Made for** | The client the picture is made for, when your team works for clients. See [Made for a client](#made-for-a-client). |
+| **Campaign** | **None** by default. Pick one of your team's campaigns and everything the page renders joins it. **Manage campaigns**, or **Create a campaign** while your team has none, opens the Campaigns page in a new tab. Shown to creators and admins. See [Campaigns](/help/campaigns#fill-a-campaign-as-you-create). |
 
 ## Made for a client
 
@@ -99,7 +100,7 @@ The price follows everything that changes it: the engine, the quality, the resol
 
 ## Improve with AI
 
-**Improve with AI** rewrites what you typed into a prompt the chosen engine follows well. It knows the job, the engine and the shape you picked: an edit comes back as an edit instruction, an upscale as a careful restoration note. It never changes your settings; when another engine or setting would suit your brief better, it says so in its notes.
+**Improve with AI** rewrites what you typed into a prompt the chosen engine follows well. The model picker next to the button chooses the text model that writes the rewrite, **Quick**, **Balanced**, **Best** or any model in **All models**, with what one rewrite costs; the engine that renders stays the one in **Engine**. See [Choosing a model](/help/choosing-a-model). It knows the job, the engine and the shape you picked: an edit comes back as an edit instruction, an upscale as a careful restoration note. It never changes your settings; when another engine or setting would suit your brief better, it says so in its notes.
 
 Under the box, hubStudio shows **Prompt rewritten**, the short list of what changed, what the rewrite cost, and **Undo**, which puts your own text back. Once you type in the box again, Undo goes away.
 

@@ -5,20 +5,20 @@ description: "The TikTok module: connect your TikTok account, start from the vid
 excerpt: "Start from the video, add a caption with AI or by hand, or brief a video in depth, and publish it on your TikTok account, now or on schedule."
 section: "social"
 order: 12
-updated: 2026-10-05
+updated: 2026-10-08
 appPaths: ["/social/tiktok/posts", "/social/tiktok/brief", "/my-connections"]
 audience: "Creators and admins; viewers read"
-related: ["linkedin", "instagram", "facebook", "youtube", "x", "validation", "create-a-video", "history", "assets-library"]
+related: ["linkedin", "instagram", "facebook", "youtube", "x", "validation", "create-a-video", "choosing-a-model", "history", "assets-library"]
 shots:
   - file: "/Images/help/tiktok-video.webp"
     route: "/social/tiktok/posts"
-    alt: "The TikTok module on a new post: the Posts and Brief tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer"
-    captured: 2026-09-29
+    alt: "The TikTok module on a new post: the Posts and Brief tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer, with the Skills and material strip unfolded beside it"
+    captured: 2026-10-08
   - file: "/Images/help/tiktok-brief.webp"
     route: "/social/tiktok/brief"
     alt: "The Brief tab of TikTok: Title of this piece, Language, The brief, Post type, Video length, Caption style, Call to action, Audience, Register, Must appear and Must not appear"
     captured: 2026-09-29
-sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/TikTokBriefPanel.astro", "src/pages/social/tiktok/brief.astro", "src/scripts/socialContent.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts", "src/lib/tiktok-constraints.ts", "src/pages/api/social-content/draft.ts", "src/lib/social/publishers.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/pages/files/tools/shorts.astro"]
+sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/TikTokBriefPanel.astro", "src/pages/social/tiktok/brief.astro", "src/scripts/socialContent.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts", "src/lib/tiktok-constraints.ts", "src/pages/api/social-content/draft.ts", "src/lib/social/publishers.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/pages/files/tools/shorts.astro", "src/pages/api/social-content/index.ts", "src/lib/brief-sources.ts"]
 ---
 
 **TikTok** in the menu holds your TikTok videos, from the first clip to the published post. On TikTok a post is a video and the words are its caption: you render, pick or upload the clip, then write its caption with AI or by hand, and publish it on your account, now or at a time you pick. Or you post it yourself on TikTok.
@@ -44,7 +44,7 @@ On **Posts**, the dark band at the top holds:
 
 Click the post list button to open every post in a panel over the page. Type in the search box to match words of the title or the caption, a status or a date, or keep the posts written between two days. Click a row to open that post.
 
-![The TikTok module on a new post: the Posts and Brief tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer](/Images/help/tiktok-video.webp)
+![The TikTok module on a new post: the Posts and Brief tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer, with the Skills and material strip unfolded beside it](/Images/help/tiktok-video.webp)
 
 ## Who sees a post
 
@@ -56,13 +56,22 @@ A post made for a client is also shown to that client's people, whoever it is sh
 
 Pick one of three ways in:
 
-- **Render with AI**. Write the prompt; **Improve with AI** rewrites it for you. Pick the **Engine**, the **Aspect**, the length, the resolution and the sound. The price is on the button before you press.
+- **Render with AI**. Write the prompt; **Improve with AI** rewrites it for you, with the text model picked next to it (see [Choosing a model](/help/choosing-a-model)). Pick the **Engine**, which opens on the least expensive one, the **Aspect**, the length, the resolution and the sound. Then click **Generate the clip** under the prompt, or the **Render with AI** button above. The price is on both buttons before you press.
 - **Pick from the library**: a clip already in your [Assets Library](/help/assets-library).
 - **Upload from your computer**. The file is saved in your Assets Library and put on the post.
 
-The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A clip takes a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. **Render again** makes a new one.
+**Skills and material.** The strip at the right edge, **Skills and material**, unfolds two cards. Fill them before you render, pick or upload:
 
-**Edit the clip.** Point at the clip of the post and click the pencil under the **×** (its tooltip starts **Edit this clip**). The clip opens in the [Video editor](/help/assets-library#the-video-editor), on its **Social** panel set to a TikTok **Video**: click **Apply the format** for the 9:16 frame, see in red where TikTok's caption, sound and buttons cover the video, and read the checks, each with a button to fix what it found. You can also trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. Then click **Save** and **Save and use it in the post**: the edited video takes the place of the clip in the post, and the original stays in the Assets Library. Editing is free; only the fast captions are billed, at the price shown before you start. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
+- the material to write from: **Files** (PDF or plain text, read once and not stored), **Context folder from the Assets Library** (a folder of the library whose text documents are read, or one of your [campaigns](/help/campaigns), read with its brief), **Pages to read** (web addresses, one per line) and **Keywords to target**;
+- **Skills**, where **TikTok caption format** is already picked. Add your own skills or unpick it. See [Skills](/help/skills).
+
+When the post is created, the material is read once and kept with the post, and so are the skills: the caption, in step 02, is written from them. The strip then empties itself for the next post, and the folder stays picked.
+
+The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A clip takes a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. **Render again** makes a new one. Once the post has a clip, the step is split in two: the ways in and the render settings on the left, the clip on the post on the right, in sight while the next render runs.
+
+**Versions of the clip.** Each render, edit, pick or upload that changes the clip is kept as a version, v1, v2 and so on, with its day and time. Once there are two, **Picture versions** lists them under the clip, and **On the post** marks the one the post carries. **Use this version** puts an earlier clip back on the post. The **×** on a version takes it off the list, and its file stays in the Assets Library. The version on the post can't be taken off the list.
+
+**Edit the clip.** Point at the clip of the post and click the pencil under the **×** (its tooltip starts **Edit this clip**), or click **Edit in the video editor** under it. The clip opens in the [Video editor](/help/assets-library#the-video-editor), on its **Social** panel set to a TikTok **Video**: click **Apply the format** for the 9:16 frame, see in red where TikTok's caption, sound and buttons cover the video, and read the checks, each with a button to fix what it found. You can also trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. Then click **Save** and **Save and use it in the post**: the edited video takes the place of the clip in the post, as a new version, and the original stays in the versions and in the Assets Library. Editing is free; only the fast captions are billed, at the price shown before you start. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
 
 **Start from a long video.** An interview, a talk or a podcast can become several TikToks at once: [Shorts autopilot](/help/shorts-autopilot) picks its best moments, frames them at 9:16, captions them and saves each one in the Assets Library, with a TikTok caption to copy. Then pick one from the library here.
 
@@ -72,9 +81,9 @@ TikTok takes one MP4, MOV or WEBM clip of 3 seconds to 10 minutes. Your account 
 
 The caption step writes the words for the video. While the caption is empty, it opens on the **Have AI write the caption** box:
 
-1. Check the model and the skills at the top. **TikTok caption format** is already picked; it carries TikTok's caption rules.
-2. Under **Your brief for the AI** (optional), say anything the caption has to carry: an offer, a date, a call to action. Left empty, the caption is written from the clip alone.
-3. Click **Write it with AI**. The caption lands in the editor below, ready to edit.
+1. Check the model and the skills at the top (see [Choosing a model](/help/choosing-a-model)). The skills are the ones picked in **Skills and material** when the post was started, **TikTok caption format** by default; it carries TikTok's caption rules.
+2. Under **Your brief for the AI** (optional), say anything the caption has to carry: an offer, a date, a call to action. Left empty, the caption is written from what you said the clip shows.
+3. Click **Write it with AI**. The caption lands in the editor below, ready to edit. The line beside the button says what it is written from: what you said the clip shows and your brief, and, when the post has some, the material kept with it.
 
 Or skip the box and type the caption straight in the editor. See [Skills](/help/skills).
 

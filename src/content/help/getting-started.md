@@ -5,20 +5,20 @@ description: "What hubStudio is, how to create your account alone or with a team
 excerpt: "Create your account, find your way around the menu and render your first image in a few minutes."
 section: "getting-started"
 order: 1
-updated: 2026-10-05
+updated: 2026-10-08
 appPaths: ["/signup", "/login", "/explore"]
 audience: "Everyone"
-related: ["explore", "create-an-image", "assets-library", "shorts-autopilot", "linkedin", "validation", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
+related: ["explore", "create-an-image", "assets-library", "shorts-autopilot", "campaigns", "linkedin", "validation", "agents", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
 shots:
   - file: "/Images/help/getting-started-menu.webp"
     route: "/explore"
     clip: "#side-nav"
-    alt: "The menu on the left: Explore, Image, Video, History, Assets Library, Image editor, Video editor, Shorts autopilot, Image anonymizer, the six networks, Validation and Skills, with Team and Credits at the foot"
-    captured: 2026-10-05
+    alt: "The menu on the left: Explore, Campaigns, Image, Video, the six networks, Assets Library, Image editor, Image anonymizer, Video editor, Shorts autopilot, History, Skills, Agents and Validation, with Team and Credits at the foot"
+    captured: 2026-10-08
 sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/lib/auth.ts", "src/middleware.ts", "src/pages/signup.astro", "src/lib/signup.ts", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/invite/[token].astro", "src/pages/explore.astro"]
 ---
 
-hubStudio is a studio for images, video and social posts made with AI. It gathers the image and video engines of several makers (OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax and Meta) in one place. You pick an engine, describe what you want, see the price, and run it. Everything you make is saved in your History and in the Assets Library, where you can also edit a picture or a video, or cut a long video into shorts. From there, you can write posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X and publish them on your own accounts, have work approved in Validation, and deliver it to the clients your team works for.
+hubStudio is a studio for images, video and social posts made with AI. It gathers the image and video engines of several makers (OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax and Meta) in one place. You pick an engine, describe what you want, see the price, and run it. Everything you make is saved in your History and in the Assets Library, where you can also edit a picture or a video, or cut a long video into shorts. From there, you can write posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X and publish them on your own accounts, have work approved in Validation, let agents watch your publishing, and deliver it to the clients your team works for.
 
 Every run is charged against a prepaid balance held in US dollars. You can work alone, or in a team that shares one balance.
 
@@ -54,29 +54,31 @@ Once you're in, hubStudio checks your connected social accounts in the backgroun
 
 ## Find your way around
 
-The menu on the left holds the studio first, then the networks and Validation, then the housekeeping at the foot:
+The menu on the left starts with Explore and Campaigns, then the two studios and the networks, then the Assets Library and its tools, History, Skills, Agents and Validation. The housekeeping sits at the foot. This is the order every account starts with; **Arrange menu**, at the foot, puts the entries in your own order.
 
 | Menu entry | What it opens |
 |---|---|
 | **Explore** | The gallery of every image and video engine you can use, with its price. See [Explore the engines](/help/explore). |
+| **Campaigns** | The files of one campaign gathered under a name and a brief, to write posts from. See [Campaigns](/help/campaigns). |
 | **Image** | The image studio: text to image, image editing, upscaling. See [Create an image](/help/create-an-image). |
 | **Video** | The video studio. See [Create a video](/help/create-a-video). |
-| **History** | Everything you and your team made. See [History](/help/history). |
+| **LinkedIn**, **Instagram**, **Facebook**, **TikTok**, **X** and **YouTube** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. YouTube is published by you, in YouTube Studio, and also prepares your channel. See [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok), [X](/help/x) and [YouTube](/help/youtube). |
 | **Assets Library** | Every file of your team, uploads and renders, in folders. See [Assets Library and the tools](/help/assets-library). |
 | **Image editor** | Frame a picture for X, Instagram or LinkedIn, write, draw, place a logo. See [The Image editor](/help/assets-library#the-image-editor). |
+| **Image anonymizer** | See what is hidden inside a picture (camera, place, AI tags), then download a clean copy. See [The Image anonymizer](/help/assets-library#the-image-anonymizer). |
 | **Video editor** | Frame a video for Instagram, TikTok or Facebook, trim it, add texts, captions word by word and music. See [The Video editor](/help/assets-library#the-video-editor). |
 | **Shorts autopilot** | A long video cut into vertical shorts by itself: the best moments, framed, captioned and saved. See [Shorts autopilot](/help/shorts-autopilot). |
-| **Image anonymizer** | See what is hidden inside a picture (camera, place, AI tags), then download a clean copy. See [The Image anonymizer](/help/assets-library#the-image-anonymizer). |
-| **LinkedIn**, **Instagram**, **Facebook**, **TikTok**, **YouTube** and **X** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. YouTube is published by you, in YouTube Studio, and also prepares your channel. See [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok), [YouTube](/help/youtube) and [X](/help/x). |
-| **Validation** | The work waiting for someone's approval, and what you sent for approval. See [Validation](/help/validation). |
+| **History** | Everything you and your team made. See [History](/help/history). |
 | **Skills** | **My skills**, **Team skills** (administrators only) and the **Catalog**. See [Skills](/help/skills). |
+| **Agents** | **My agents**, **Team agents** (administrators only), the **Catalog** and **Runs**: agents that watch your publishing on every network and tell you what changed. See [Agents](/help/agents). |
+| **Validation** | The work waiting for someone's approval, and what you sent for approval. See [Validation](/help/validation). |
 | **Partner** | Only for commercial partners. See [Partners](/help/partners). |
 | **Team** | The people who share your balance, and your clients. See [Your team](/help/your-team). |
 | **Credits** | Your balance: **Buy credits** to top it up, **Invoices** and **Usage**. See [Balance and payments](/help/balance-and-payments). |
 
 A client login sees a much shorter menu: **Client space** and **Validation**. See [Client space](/help/client-space).
 
-![The menu on the left: Explore, Image, Video, History, Assets Library, Image editor, Video editor, Shorts autopilot, Image anonymizer, the six networks, Validation and Skills, with Team and Credits at the foot](/Images/help/getting-started-menu.webp)
+![The menu on the left: Explore, Campaigns, Image, Video, the six networks, Assets Library, Image editor, Image anonymizer, Video editor, Shorts autopilot, History, Skills, Agents and Validation, with Team and Credits at the foot](/Images/help/getting-started-menu.webp)
 
 The bar at the top of every page holds:
 

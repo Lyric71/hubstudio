@@ -13,7 +13,11 @@
  * (Maya Chen's four pictures, the Spring campaign folder, the
  * lumera-essence-teaser.mp4 clip, her Instagram draft with the Lumera
  * packshot, her YouTube post with the teaser, the team's YouTube channel kit
- * "Lumera Skincare" with its banner and picture fitted from the packshot).
+ * "Lumera Skincare" with its banner and picture fitted from the packshot, a
+ * second picture version of her Instagram draft (v2, the Calverra launch
+ * visual, kept off the post so v1 stays on it), and her campaign "Lumera
+ * Essence launch" holding the packshot, the teaser and the two channel
+ * pictures).
  * The video tools are fed the clips in ./files.
  */
 import { join } from 'node:path';
@@ -23,6 +27,7 @@ const PACKSHOT = '407aab76-d79e-4861-ad3f-1ea15e6d3b71'; // lumera-essence-packs
 const TEASER = 'lumera-essence-teaser.mp4';
 const IG_DRAFT = 'fac4760b-f7a4-4a59-a5ec-2a7c98ec554d'; // Maya's Instagram draft with the packshot
 const YT_POST = 'ff4d2cf0-00d9-4da7-8323-036a291f7aee'; // Maya's YouTube post with the teaser clip
+const CAMPAIGN = '8fea8d0f-8301-4c7b-962b-4d03c785072a'; // Maya's campaign Lumera Essence launch
 /** The banner and the picture of the team's YouTube channel kit, fitted copies kept in the library. */
 const YT_COPY = /-youtube-(banner|picture)-\d+x\d+\.jpg$/;
 
@@ -128,6 +133,13 @@ async function videoSocial(page) {
   await click(page, '[data-ve-net-place=ig-reel]');
   await click(page, '[data-ve-seg=netFit][data-v=fit]', 500);
   await click(page, '[data-ve-net-apply]', 3500);
+}
+
+/** A new post with its Skills and material strip unfolded: its two cards in view, the skills picker loaded. */
+async function openStrip(page) {
+  await click(page, '[data-project-panel]:not(.hidden) [data-sc-side-toggle]', 1500);
+  await page.waitForFunction(() => !document.querySelector('[data-project-panel]:not(.hidden) [data-sc-skills] .slash-spinner'), null, { timeout: 20000 }).catch(() => {});
+  await page.waitForTimeout(800);
 }
 
 const shots = [
@@ -292,15 +304,36 @@ const shots = [
       await page.hover('[data-sc-visual]');
       await page.waitForTimeout(600);
     },
-    // The picture card down to the three doors, as in English.
+    // The picture step from its title down to the post's picture: the three
+    // doors on the left, the pointed picture with its pencil on the right
+    // (the step is split in two since 2026-10-08).
     clip: async (page) => {
       const r = await page.evaluate(() => document.querySelector('img[data-sc-visual-file]').closest('section').getBoundingClientRect().toJSON());
-      return { x: Math.round(r.x + 9), y: Math.round(r.y), width: 1126, height: 440 };
+      return { x: Math.round(r.x), y: Math.round(r.y), width: Math.round(r.width), height: Math.min(Math.round(r.height), 620) };
     },
+  },
+  {
+    name: 'instagram-picture-versions',
+    route: `/social/instagram/posts#item=${IG_DRAFT}`,
+    as: MAYA,
+    wait: '[data-sc-vv] img[data-sc-vv-file]',
+    steps: async (page) => {
+      await page.waitForFunction(() => [...document.querySelectorAll('img[data-sc-visual-file], img[data-sc-vv-file]')].every((i) => i.complete && i.naturalWidth > 0), null, { timeout: 30000 });
+      await page.evaluate(() => document.querySelector('[data-sc-vv]').scrollIntoView({ block: 'end' }));
+      await page.waitForTimeout(800);
+    },
+    // The right half of the step: the picture on the post, Edit in the image
+    // editor and Picture versions.
+    element: '.sc-split__out:has([data-sc-vv])',
   },
 
   // Studios, Explore, History
-  { name: 'getting-started-menu', route: '/explore', clip: around('aside', 0, { height: 900 }) },
+  // The menu in its default order.
+  {
+    name: 'getting-started-menu',
+    route: '/explore',
+    clip: around('aside', 0, { height: 900 }),
+  },
   { name: 'explore-gallery', route: '/explore', steps: (p) => p.waitForTimeout(1500) },
   { name: 'explore-card', route: '/explore', element: '.ex-card' },
   {
@@ -320,11 +353,11 @@ const shots = [
 
   // Social networks
   { name: 'linkedin-brief', route: '/social/linkedin/posts' },
-  { name: 'instagram-picture', route: '/social/instagram/posts' },
+  { name: 'instagram-picture', route: '/social/instagram/posts', steps: openStrip },
   { name: 'facebook-brief', route: '/social/facebook/posts' },
-  { name: 'tiktok-video', route: '/social/tiktok/posts' },
+  { name: 'tiktok-video', route: '/social/tiktok/posts', steps: openStrip },
   { name: 'tiktok-brief', route: '/social/tiktok/brief' },
-  { name: 'youtube-video', route: '/social/youtube/posts' },
+  { name: 'youtube-video', route: '/social/youtube/posts', steps: openStrip },
   { name: 'youtube-publish', route: `/social/youtube/posts#item=${YT_POST}&step=publish`, as: MAYA, height: 1100, wait: '.sc-yt' },
   { name: 'youtube-channel', route: '/social/youtube/channel', as: MAYA, wait: '[data-project-panel]:not(.hidden) .yc-page' },
   {
@@ -342,11 +375,33 @@ const shots = [
   { name: 'x-brief', route: '/social/x/posts' },
   { name: 'x-knobs', route: '/social/x/posts', steps: scrollTo('[data-sc-x-knobs]', 200), element: '[data-sc-x-knobs]' },
 
+  // Campaigns: the list and Maya's campaign.
+  { name: 'campaigns-list', route: '/campaigns', as: MAYA, wait: '.cp-card', steps: (p) => p.waitForTimeout(1500) },
+  { name: 'campaigns-page', route: `/campaigns/${CAMPAIGN}`, as: MAYA, height: 1100, wait: '[data-cp-assets] .fp-card', steps: (p) => p.waitForTimeout(2000) },
+  // Her campaigns listed in the menu, the library's Campaign filter, and the
+  // Campaign choice of a creation form (the image studio).
+  { name: 'campaigns-menu', route: '/campaigns', as: MAYA, wait: '.cp-card', steps: (p) => click(p, '.sn-group[data-key=campaigns] .sn-caret', 1200) },
+  {
+    name: 'campaigns-filter', route: '/files', as: MAYA, height: 1000, wait: '[data-pop-toggle=campaign]',
+    steps: async (p) => { await p.waitForTimeout(1500); await click(p, '[data-pop-toggle=campaign]', 1200); },
+  },
+  {
+    name: 'campaigns-choice', route: '/content/image-generate', as: MAYA, wait: 'select[data-campaign-pick]',
+    steps: async (p) => {
+      await p.locator('select[data-campaign-pick]').first().selectOption({ label: 'Lumera Essence launch' });
+      await p.locator('[data-campaign-pick-host]').first().scrollIntoViewIfNeeded();
+      await p.waitForTimeout(800);
+    },
+    element: '.sc-panel:has([data-campaign-pick-host])',
+  },
+
   // Validation, Skills, Team
   { name: 'validation-page', route: '/validation' },
   { name: 'validation-send-dialog', route: '/validation', steps: (p) => click(p, '[data-validation-new]', 1000), element: '.ui-card:has([data-vr-send])' },
   { name: 'skills-my-skills', route: '/skills' },
   { name: 'skills-catalog', route: '/skills/catalog' },
+  { name: 'agents-catalog', route: '/agents/catalog', element: '#standard' },
+  { name: 'agents-runs', route: '/agents/runs' },
   {
     name: 'your-team-members',
     route: '/team',

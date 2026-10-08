@@ -5,7 +5,7 @@ description: "Shorts autopilot turns a long video into vertical 9:16 shorts for 
 excerpt: "Give it an interview, a talk or a podcast: it picks the moments that work on their own and saves each one as a vertical short, captioned and ready to post."
 section: "library"
 order: 7
-updated: 2026-10-05
+updated: 2026-10-08
 appPaths: ["/files/tools/shorts"]
 audience: "Creators and admins"
 related: ["assets-library", "tiktok", "instagram", "youtube", "history", "balance-and-payments"]
@@ -50,7 +50,7 @@ The card then opens on **The shorts**, which names the video and its length. A v
 | **Framing** | **Follow the speaker**: the 9:16 crop is placed on the person speaking, moment by moment. **Center**: the middle of the picture. **Whole picture, blurred around**: nothing is cut, over a blurred copy of the video. A video that is already vertical reads **Already vertical**. |
 | **Captions on the video** | **None**, or one of the Video editor's five looks: **Classic**, **Karaoke** (the word said lights up), **One word**, **Boxed** or **Highlight**. |
 | **Hook** | **A hook line over the first seconds**: a short line in a white box at the top of the first few seconds, written from the moment. Or **None**. |
-| **Listening** | The fast ways, each marked **Fast**, are billed by the minute of sound. **Free, in this browser** costs nothing and sends nothing, but takes about as long as the video, or longer on a modest computer: best under 20 minutes. It then asks for the **Speech model**: **Quick**, **Balanced** or **Accurate**, downloaded once by your browser. |
+| **Listening** | The fast ways, each marked **Fast**, are billed by the minute of sound; the list opens on the least expensive one. **Free, in this browser** costs nothing and sends nothing, but takes about as long as the video, or longer on a modest computer: best under 20 minutes. It then asks for the **Speech model**: **Quick**, **Balanced** or **Accurate**, downloaded once by your browser. |
 | **Language spoken** | **Detect it**, or the language of the video. |
 
 Under the choices, the price line starts with **About** and the total, then what listening, picking the moments and framing each cost. Writing the videos runs in your browser and costs nothing.

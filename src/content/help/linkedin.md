@@ -5,15 +5,15 @@ description: "The LinkedIn module: connect your LinkedIn account, brief and draf
 excerpt: "Draft a LinkedIn post with AI or by hand, give it a picture or a carousel, and publish it on your account, now or on schedule."
 section: "social"
 order: 9
-updated: 2026-10-05
+updated: 2026-10-08
 appPaths: ["/social/linkedin/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
-related: ["instagram", "facebook", "tiktok", "x", "validation", "account-and-sign-in", "skills", "history", "assets-library"]
+related: ["instagram", "facebook", "tiktok", "x", "validation", "account-and-sign-in", "skills", "choosing-a-model", "history", "assets-library", "campaigns"]
 shots:
   - file: "/Images/help/linkedin-brief.webp"
     route: "/social/linkedin/posts"
-    alt: "The LinkedIn module on a new post: the band with All posts, New post and the four step tiles, and the brief with Format, Emoticons, Language, Model, Draft with AI and Write it myself"
-    captured: 2026-09-27
+    alt: "The LinkedIn module on a new post: the band with All posts, New post and the four step tiles, and the brief with Format, Emoticons, Language, the model picker on Balanced, Draft with AI and Write it myself"
+    captured: 2026-10-08
 sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
 ---
 
@@ -38,7 +38,7 @@ Click **LinkedIn** in the menu. The dark band at the top holds:
 
 Click the post list button to open every post in a panel over the page. Type in the search box to match words of the title or the copy, a status or a date, or keep the posts written between two days. Click a row to open that post.
 
-![The LinkedIn module on a new post: the band with All posts, New post and the four step tiles, and the brief with Format, Emoticons, Language, Model, Draft with AI and Write it myself](/Images/help/linkedin-brief.webp)
+![The LinkedIn module on a new post: the band with All posts, New post and the four step tiles, and the brief with Format, Emoticons, Language, the model picker on Balanced, Draft with AI and Write it myself](/Images/help/linkedin-brief.webp)
 
 ## Who sees a post
 
@@ -50,13 +50,13 @@ A post made for a client is also shown to that client's people, whoever it is sh
 
 1. Pick the **Format**: **Text only**, **+ Image** or **+ Carousel**.
 2. Leave **Emoticons** ticked to have a few emoji spread through the post, or untick it for none.
-3. Pick the **Language**, and the model that writes. hubStudio remembers your pick for next time.
+3. Pick the **Language**, and the model that writes: **Quick**, **Balanced**, **Best** or any model in **All models**, each with what a run costs. hubStudio remembers your pick for next time. See [Choosing a model](/help/choosing-a-model).
 4. Write the brief the way you'd brief a writer: the angle or the news, who it speaks to, and what the post has to achieve. **Import a file** adds the text of a .txt or .md file to the box; the file itself isn't kept.
 5. Click **Draft with AI**, or **Write it myself** to open the editor with no AI call and nothing billed.
 
 The strip at the right edge, **Skills and material**, unfolds two cards:
 
-- the material to write from: **Files** (PDF or plain text, read once and not stored), **Pages to read** (web addresses, one per line) and **Keywords to target**;
+- the material to write from: **Files** (PDF or plain text, read once and not stored), **Context folder from the Assets Library** (a folder of the library whose text documents are read, or one of your [campaigns](/help/campaigns), read with its brief), **Pages to read** (web addresses, one per line) and **Keywords to target**;
 - **Skills**, where **LinkedIn post format** is already picked. It carries LinkedIn's posting rules. Add your own skills or unpick it. See [Skills](/help/skills).
 
 The draft opens on the copy step, with a line that says what it cost. The run also shows in **Activity**, so you can leave the page while it works.
@@ -75,13 +75,15 @@ The copy step has one editor, with a working title on top and the copy under it.
 
 The pictures step starts with the shape, which you can change at any time: text only, one image, or a carousel of 2 to 8 slides. LinkedIn takes no video from hubStudio yet. Then pick one of three ways in:
 
-- **Render with AI** (**Render again** once there's a picture). Write the prompt, or leave it empty to have it written from the post; **Improve with AI** rewrites it for you. Pick the **Engine** and the **Aspect**. The price is on the button before you press.
+- **Render with AI** (**Render again** once there's a picture). Write the prompt, or leave it empty to have it written from the post; **Improve with AI** rewrites it for you, with the text model picked next to it (see [Choosing a model](/help/choosing-a-model)). Pick the **Engine**, which opens on the least expensive one, and the **Aspect**. Then click **Generate the image** (or **Generate the carousel**) under the prompt, or the **Render with AI** button above. The price is on both buttons before you press.
 - **Pick from the library**: a picture already in your [Assets Library](/help/assets-library).
 - **Upload from your computer**. The file is saved in your Assets Library and put on the post.
 
-A picture takes a minute or two. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library.
+A picture takes a minute or two. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library. Once the post has a picture, the step is split in two: the ways in and the render settings on the left, the pictures on the post on the right, in sight while the next render runs.
 
-**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor, on its **Social** panel set to LinkedIn: pick **Post, portrait** (the one that takes the most room on phones), **Post, square** or **Post, landscape**, crop it or fit it whole over a blurred background, then click **Apply the format**. The panel checks the size, the file and the words before you save. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
+**Picture versions.** Each render, edit, pick or upload that changes the post's pictures is kept as a version, v1, v2 and so on, with its day and time. Once there are two, **Picture versions** lists them under the pictures, and **On the post** marks the one the post carries. **Use this version** puts an earlier set back on the post. The **×** on a version takes it off the list, and its files stay in the Assets Library. The version on the post can't be taken off the list.
+
+**Edit a picture.** Point at a picture of the post and click the pencil under the **×**, or click **Edit in the image editor** under the pictures (**Edit slide 1 in the image editor** when there are several, each keeping its own pencil). The picture opens in the Image editor, on its **Social** panel set to LinkedIn: pick **Post, portrait** (the one that takes the most room on phones), **Post, square** or **Post, landscape**, crop it or fit it whole over a blurred background, then click **Apply the format**. The panel checks the size, the file and the words before you save. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, as a new version, and the original stays in the versions and in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
 
 LinkedIn takes JPG, PNG and GIF pictures, not WebP, up to 10 MB each.
 

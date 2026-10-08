@@ -5,10 +5,10 @@ description: "What hubStudio's messages mean and what to do: an empty balance, a
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
 order: 20
-updated: 2026-10-01
-appPaths: ["/content/image-generate", "/content/video", "/history", "/files", "/files/tools/image-editor", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
+updated: 2026-10-08
+appPaths: ["/content/image-generate", "/content/video", "/history", "/files", "/campaigns", "/files/tools/image-editor", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
 audience: "Everyone"
-related: ["balance-and-payments", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in"]
+related: ["balance-and-payments", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in", "campaigns"]
 shots: []
 sources: ["src/lib/credits.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorCaptions.ts", "src/pages/files/tools/video-editor.astro", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
 ---
@@ -91,6 +91,15 @@ A run that fails is never charged. A run that succeeds is charged the price show
 | **The picture could not be written. Try a smaller size.** | The picture is too large for your browser to save at that size. | Lower the **Width** or pick 50% under **Size**, then save again. |
 | **Leave the editor?** | You are closing the editor with changes that aren't saved. | **Keep editing**, then **Save**; or **Leave without saving** to drop them. |
 
+## Campaigns
+
+| Message | What it means | What to do |
+|---|---|---|
+| **Give the campaign a name.** | The name of the campaign is empty. | Type a name, then click **Create the campaign** or **Save** again. |
+| **A campaign named "[name]" already exists.** | Two campaigns of a team can't share a name. | Pick another name, or add your files to the campaign that already exists. |
+| **Only the person who created this campaign, or an administrator, can delete it.** | You may change the campaign, not delete it. | Ask the person who created it, or an admin. |
+| **Campaign not found.** | The campaign was deleted, perhaps by a teammate. Its files are still in the Assets Library. | Go back to **All campaigns**. |
+
 ## The Video editor
 
 | Message | What it means | What to do |
@@ -170,6 +179,7 @@ A run that fails is never charged. A run that succeeds is charged the price show
 | Your account isn't in the list | Only this network's accounts are listed, and only the ones you connected. | Connect it on **My Connections**. See [Account and sign-in](/help/account-and-sign-in#my-connections-your-social-accounts). |
 | **Reconnect** on an account's tile | The connection ran out or was revoked. | Click **Connect again** on its row on My Connections. |
 | **Some connections need attention** in a notification at the bottom right of the screen | The check after sign-in found an account that no longer lets hubStudio in. | Click **Reconnect**, sign in again on the card that opens, then **Check again** on the notification. |
+| **This version is on the post. Use another one first.** | The version on the post can't be taken off the **Picture versions** list. | Click **Use this version** on another version first, then take this one off. |
 
 ## Still stuck?
 

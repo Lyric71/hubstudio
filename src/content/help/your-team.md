@@ -5,10 +5,10 @@ description: "Working alone or in a team, the Admin, Creator, Viewer and Client 
 excerpt: "A team shares one balance and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
 order: 15
-updated: 2026-10-05
+updated: 2026-10-08
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
-related: ["getting-started", "balance-and-payments", "history", "assets-library", "validation", "client-space", "skills"]
+related: ["getting-started", "balance-and-payments", "history", "assets-library", "campaigns", "validation", "client-space", "skills"]
 shots:
   - file: "/Images/help/your-team-members.webp"
     route: "/team"
@@ -57,7 +57,7 @@ hubStudio has four roles.
 Beyond the role, each person's access can be fitted more finely, on their own page: on the Team page, an admin clicks **Details** in their row, adjusts the cards below, then clicks **Save changes**. **Back to the team** returns to the list.
 
 - **Modules**: a module switched off for someone disappears for them entirely, menu and pages, such as the Image editor, the Video editor or Shorts autopilot for someone who doesn't need them.
-- **Rights, module by module**: what a person may do in each area (see it, create in it, change it, delete from it), graded on **Image**, **Video**, **Assets**, **Image editor**, **Video editor**, **Shorts autopilot**, **Posts**, **Publishing and scheduling**, **Validation**, **Skills**, **Team members**, **Team settings** and **Shared credits**. Each right follows the person's role until it is changed for them. Nobody can change their own rights.
+- **Rights, module by module**: what a person may do in each area (see it, create in it, change it, delete from it), graded on **Image**, **Video**, **Assets**, **Image editor**, **Video editor**, **Shorts autopilot**, **Campaigns**, **Posts**, **Publishing and scheduling**, **Validation**, **Agents**, **Skills**, **Team members**, **Team settings** and **Shared credits**. Each right follows the person's role until it is changed for them. Nobody can change their own rights.
 
 The person who creates a team is its first admin. Your own role is shown in **User Settings**, with a line that says what it allows.
 

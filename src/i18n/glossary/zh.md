@@ -21,6 +21,9 @@ Image studio / Video studio -> 图片工作台 / 视频工作台 (never 工作�
 History -> 历史记录
 Skills / Skills Catalog / Team skills -> 技能 / 技能目录 / 团队技能
 Assets Library -> 素材库
+Campaigns (Assets Library) -> 营销活动, never 广告系列 (Add to a campaign / Add to campaign: “加入营销活动”; Add assets: “添加素材”; In this campaign: “此营销活动中”; Open in its module / In the library / Remove: “在所属模块中打开” / “在素材库中查看” / “移除”; Campaign menu of a creation form: “营销活动”, set to “不加入营销活动”; library filter In no campaign: “未加入营销活动”; Context folder from the Assets Library: “素材库中的上下文文件夹”)
+Agents -> 智能体 (My agents / Team agents / Catalog / Runs: “我的智能体” / “团队智能体” / “目录” / “运行记录”; Agents Command Room: “智能体指挥室”; Social publishing watcher: “社交发布监测”; finding: “发现”; Run now: “立即运行”)
+Picture versions / Use this version (social post) -> “图片版本” / “使用此版本”
 Image tools / Video tools -> 图片工具 / 视频工具
 Image editor / Video editor -> 图片编辑器 / 视频编辑器
 Image anonymizer -> 图片脱敏
@@ -45,6 +48,17 @@ In the queue -> 排队中; Scheduled (post) -> 已定时; Published -> 已发布
 Who sees it / Only me / Everyone in the team -> 可见范围 / 仅自己 / 团队内所有成员
 Upload from your computer -> 从您的电脑上传; Pick from the library -> 从素材库选择
 Sign in / Create account -> 登录 / 创建账户
+Engine cards (Explore): New tag -> “新上线”; Try it -> 试用
+Choose a model -> 选择模型; tiers Quick / Balanced / Best -> 快速 / 均衡 / 旗舰 (never 推荐); Recommended here -> 此处推荐; All models -> 全部模型; Compare models -> 比较模型; Model benchmarks -> 模型基准测试; Scores and costs -> 得分与费用 (benchmark column names stay in English)
+Re-purpose for other networks -> 改编发布到其他平台 (short heading: 改编发布); its tabs Manually / Draft at once / Publish automatically -> 手动 / 一键起草 / 自动发布
+Picture versions: On the post -> 当前使用; Edit in the image editor -> 在图片编辑器中编辑
+Connect an account -> 连接账户; Where it stands -> 当前状态
+Social networks (site section or tab) -> 社交平台
+Account (app section) -> 账户; Top up -> 充值; Automatic top-up -> 自动充值; Save a card -> 保存银行卡; rules Below / Top up by / Daily limit -> 低于 / 充值金额 / 每日限额; Save top-up settings -> 保存充值设置; Pay (step) -> 付款; Promotional code -> 优惠码; Usage -> 用量; Invoices -> 发票
+Sign-in and security -> 登录与安全; Login email / Sign-in code / Update email -> 登录邮箱 / 登录验证码 / 更新邮箱
+Weekly digest -> 每周摘要
+a run is charged / never charged -> 扣费 / 不扣费 (against the prepaid balance)
+launch (a product launch, campaign context) -> 新品发布 / 上市 (Lumera Essence launch stays in English, as the screenshots show it)
 Send a brief -> 提交简报; Send the brief -> 发送简报
 
 ## Navigation and chrome

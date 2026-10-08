@@ -5,10 +5,10 @@ description: "Every file of your team in one place, in folders: uploads, renders
 excerpt: "Your team's files in folders, and three tools that run in your browser, each with its own entry in the menu: the Image editor, the Video editor for Reels, TikToks and Facebook reels, and the Image anonymizer."
 section: "library"
 order: 6
-updated: 2026-10-02
+updated: 2026-10-08
 appPaths: ["/files", "/files/tools/image-editor", "/files/tools/video-editor", "/files/tools/image-anonymizer"]
 audience: "Everyone except client logins"
-related: ["history", "shorts-autopilot", "create-an-image", "create-a-video", "linkedin", "instagram", "facebook", "tiktok", "x", "balance-and-payments"]
+related: ["history", "shorts-autopilot", "campaigns", "create-an-image", "create-a-video", "linkedin", "instagram", "facebook", "tiktok", "x", "balance-and-payments"]
 shots:
   - file: "/Images/help/assets-library-page.webp"
     route: "/files"
@@ -17,13 +17,13 @@ shots:
   - file: "/Images/help/assets-library-actions.webp"
     route: "/files"
     clip: "the list with a picture's Actions menu open"
-    alt: "The Actions menu of a picture in the Assets Library: View, Download, Edit image, Upload a new version, Tags, Rename, Move and Delete"
-    captured: 2026-09-28
+    alt: "The Actions menu of a picture in the Assets Library: View, Download, Edit image, Upload a new version, Tags, Campaigns, Rename, Move and Delete"
+    captured: 2026-10-08
   - file: "/Images/help/assets-library-video-actions.webp"
     route: "/files"
     clip: "the list with a video's Actions menu open"
-    alt: "The Actions menu of a video in the Assets Library: View, Download, Edit video, Make shorts, Upload a new version, Tags, Rename and Move"
-    captured: 2026-10-01
+    alt: "The Actions menu of a video in the Assets Library: View, Download, Edit video, Make shorts, Upload a new version, Tags, Campaigns, Rename and Move"
+    captured: 2026-10-08
   - file: "/Images/help/image-anonymizer-page.webp"
     route: "/files/tools/image-anonymizer"
     alt: "Image anonymizer lit in the menu, its page open: the box to drop a picture, the Output format list, and the three steps Drop a picture, See what it carries and Download the clean copy"
@@ -82,14 +82,14 @@ shots:
     clip: "the picture step of a post"
     alt: "The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer"
     captured: 2026-09-28
-sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/pages/files/index.astro", "src/scripts/filesPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/pages/api/files/folders/[id].ts", "src/pages/api/files/captions.ts", "src/lib/stored-files.ts", "src/lib/asset-tools.ts", "src/components/AssetToolsNav.astro", "src/pages/files/tools/index.astro", "src/pages/files/tools/image-editor.astro", "src/pages/files/tools/video-editor.astro", "src/pages/files/tools/image-anonymizer.astro", "src/scripts/imageEditor.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/videoEditorModel.ts", "src/scripts/videoEditorCaptions.ts", "src/scripts/videoEditorAudio.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorLauncher.ts", "src/lib/video-captions.ts", "src/lib/social/limits.ts", "src/scripts/lightbox.ts", "src/scripts/historyPanel.ts", "src/scripts/imageGenerate.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
+sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/pages/files/index.astro", "src/scripts/filesPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/pages/api/files/folders/[id].ts", "src/pages/api/files/captions.ts", "src/lib/stored-files.ts", "src/lib/campaigns.ts", "src/lib/asset-tools.ts", "src/components/AssetToolsNav.astro", "src/pages/files/tools/index.astro", "src/pages/files/tools/image-editor.astro", "src/pages/files/tools/video-editor.astro", "src/pages/files/tools/image-anonymizer.astro", "src/scripts/imageEditor.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/videoEditorModel.ts", "src/scripts/videoEditorCaptions.ts", "src/scripts/videoEditorAudio.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorLauncher.ts", "src/lib/video-captions.ts", "src/lib/social/limits.ts", "src/scripts/lightbox.ts", "src/scripts/historyPanel.ts", "src/scripts/imageGenerate.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js", "src/scripts/campaignChoice.ts", "src/lib/request-campaign.ts"]
 ---
 
 The **Assets Library** holds every file of your team in one place, in folders: the pictures and clips you upload, the ones the studios render, the pictures and videos you edit, and the shorts [Shorts autopilot](/help/shorts-autopilot) makes. **Assets Library** in the menu opens it.
 
 The tools that work on a file you already have are features of their own, each with its own entry in the menu, right under the Assets Library: the **Image editor**, the **Video editor**, **Shorts autopilot** and the **Image anonymizer**. Each page is named after its tool in the dark band at the top. The editors and the Image anonymizer are described below; Shorts autopilot has [its own article](/help/shorts-autopilot).
 
-[History](/help/history) and the Assets Library show the same renders in two ways. History lists what the studios made, newest first, with the prompt, the engine and the cost of each piece. The library holds everything, renders and uploads alike, in the folders you choose.
+[History](/help/history) and the Assets Library show the same renders in two ways. History lists what the studios made, newest first, with the prompt, the engine and the cost of each piece. The library holds everything, renders and uploads alike, in the folders you choose. [Campaigns](/help/campaigns) gather files of the library under one name and one brief, without moving or copying them.
 
 A client login doesn't see the Assets Library. What the team makes for a client reaches them in their [Client space](/help/client-space).
 
@@ -99,18 +99,20 @@ The dark band at the top holds **New folder** and **Upload files**, the number o
 
 Everything your team renders lands here on its own, and so does every file you upload in the studios or in a network module for a post. Anyone in the team sees what the others added.
 
+To file what you upload in a campaign, pick it in the list next to **New folder**, which reads **No campaign** until you do. See [Campaigns](/help/campaigns#fill-a-campaign-as-you-create).
+
 ![The Assets Library: the dark band with New folder, Upload files and one tile per type, the search and its filters, then a folder and four pictures in the list](/Images/help/assets-library-page.webp)
 
 ### Find a file
 
 - Type in **Search names, prompts, texts and tags…**: the words are looked for in the file names, the prompts of the renders, the texts and the tags.
-- Narrow with the filters under it: **Type**, **Date**, **Tags** and **Added by**.
+- Narrow with the filters under it: **Type**, **Date**, **Tags**, **Campaign** (once your team has a campaign) and **Added by**. See [Campaigns](/help/campaigns#filter-the-library-by-campaign).
 - A search or a filter looks across the whole library, not only the open folder.
 - Sort the list with **Newest first**, **Oldest first**, **Name, A to Z** or **Largest first**, and switch between **List** and **Grid**.
 
 ### Folders
 
-Click **New folder**, type its name, and it appears in the folder you have open. Open a folder with a click. To move a file, drag its row onto a folder, or pick **Move** in its **Actions** menu. Tick several rows to move, tag or delete them together.
+Click **New folder**, type its name, and it appears in the folder you have open. Open a folder with a click. To move a file, drag its row onto a folder, or pick **Move** in its **Actions** menu. Tick several rows to move, tag, add to a campaign or delete them together.
 
 Deleting a folder deletes everything inside it. A folder that holds files added by someone else can't be deleted: only the person who added a file can delete it.
 
@@ -128,15 +130,16 @@ Each row has an **Actions** menu. What it offers depends on the file:
 | **Versions** | Lists the earlier versions of a file, once it has more than one. |
 | **Upload a new version** | Replaces a file you uploaded with a newer one. The earlier one stays under **Versions**. Renders don't take versions. |
 | **Tags** | Your own words, such as "spring launch" or "approved". Click a tag anywhere to filter on it. |
+| **Add to a campaign** | Puts the file in a [campaign](/help/campaigns), or in a new one you name on the spot. Once the file is in a campaign, the item reads **Campaigns** and lists the campaigns that hold it. |
 | **Rename** | Changes the name shown in the library. |
 | **Move** | Puts the file in another folder. |
 | **Delete** | Removes the file for good, after you confirm. Only the person who added a file can delete it. |
 
-![The Actions menu of a picture in the Assets Library: View, Download, Edit image, Upload a new version, Tags, Rename, Move and Delete](/Images/help/assets-library-actions.webp)
+![The Actions menu of a picture in the Assets Library: View, Download, Edit image, Upload a new version, Tags, Campaigns, Rename, Move and Delete](/Images/help/assets-library-actions.webp)
 
 On a video, the same menu reads **Edit video** where a picture reads **Edit image**, and adds **Make shorts**:
 
-![The Actions menu of a video in the Assets Library: View, Download, Edit video, Make shorts, Upload a new version, Tags, Rename and Move](/Images/help/assets-library-video-actions.webp)
+![The Actions menu of a video in the Assets Library: View, Download, Edit video, Make shorts, Upload a new version, Tags, Campaigns, Rename and Move](/Images/help/assets-library-video-actions.webp)
 
 ### What files cost
 
@@ -392,7 +395,7 @@ Captions write the words said in the video on screen, as they are said, timed wo
 
 1. Under **Make the captions**, pick how:
    - **Free, in your browser**: a speech model runs on your own computer. Nothing is sent and nothing is billed. Pick the **Speech model**: **Quick** (about 40 MB), **Balanced** (about 80 MB) or **Accurate** (about 250 MB). It downloads the first time, then your browser keeps it. A minute of speech takes from a few seconds to a minute.
-   - **Fast, billed**: a speech model online writes them in a few seconds. Pick one of the models listed, each with its price for a minute of sound. The panel shows **About** the price **for this video** before you start, and **Cost of these captions:** once they are made. It is billed by the second of sound, and listed in **Usage**.
+   - **Fast, billed**: a speech model online writes them in a few seconds. Pick one of the models listed, each with its price for a minute of sound; the list opens on the least expensive. The panel shows **About** the price **for this video** before you start, and **Cost of these captions:** once they are made. It is billed by the second of sound, and listed in **Usage**.
 2. Pick the **Language spoken**, or **Detect it**.
 3. Click **Make the captions**.
 
@@ -450,14 +453,14 @@ On a Mac, use Cmd in place of Ctrl. Click the ✕ at the top left, or press Esca
 
 ## Edit a picture of a post
 
-In the LinkedIn, Instagram, Facebook and X modules, a post's pictures carry two small buttons when you point at them: the **×** takes the picture off the post, and the pencil opens it in the Image editor. For a LinkedIn, Instagram or X post, the editor opens on its **Social** panel, set to that network, so you can pick the placement and apply its format straight away.
+In the LinkedIn, Instagram, Facebook and X modules, a post's pictures carry two small buttons when you point at them: the **×** takes the picture off the post, and the pencil opens it in the Image editor. **Edit in the image editor**, under the pictures, does the same for the picture or the first slide. For a LinkedIn, Instagram or X post, the editor opens on its **Social** panel, set to that network, so you can pick the placement and apply its format straight away.
 
 ![The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer](/Images/help/instagram-picture-edit.webp)
 
-Edit the picture, then open **Save**. The main button reads **Save and use it in the post**: the edited copy is saved in the Assets Library, takes the place of the old picture in the post (the same slide in a carousel), and the editor closes. The step then says **The edited picture is in the post. The original stays in the Assets Library.** **Download** is there as well; it changes nothing in the post.
+Edit the picture, then open **Save**. The main button reads **Save and use it in the post**: the edited copy is saved in the Assets Library, takes the place of the old picture in the post (the same slide in a carousel) as a new picture version, and the editor closes. The set from before stays under **Picture versions**, ready to come back with **Use this version**. The step then says **The edited picture is in the post. The original stays in the Assets Library.** **Download** is there as well; it changes nothing in the post.
 
 ## Edit the clip of a post
 
-On a video post, the clip carries the same two buttons: the **×** takes the clip off the post, and the pencil, **Edit this clip**, opens it in the Video editor. On a TikTok, Instagram or Facebook post, the editor opens on its **Social** panel, set to that network's best placement (a TikTok video, an Instagram Reel, a Facebook reel), so you can apply its format and see what the network covers straight away.
+On a video post, the clip carries the same two buttons: the **×** takes the clip off the post, and the pencil, **Edit this clip**, opens it in the Video editor. **Edit in the video editor**, under the clip, does the same. On a TikTok, Instagram or Facebook post, the editor opens on its **Social** panel, set to that network's best placement (a TikTok video, an Instagram Reel, a Facebook reel), so you can apply its format and see what the network covers straight away.
 
-Edit the clip, then open **Save**. The main button reads **Save and use it in the post**: the edited MP4 is saved in the Assets Library next to the original, takes the place of the clip in the post, and the editor closes. The step then says **The edited video is in the post. The original stays in the Assets Library.**
+Edit the clip, then open **Save**. The main button reads **Save and use it in the post**: the edited MP4 is saved in the Assets Library next to the original, takes the place of the clip in the post as a new version, and the editor closes. The clip from before stays under **Picture versions**. The step then says **The edited video is in the post. The original stays in the Assets Library.**

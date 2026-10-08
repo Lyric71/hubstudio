@@ -5,7 +5,7 @@ description: "Render a clip from a prompt, open it on a picture of yours, or fee
 excerpt: "The video studio: text to video, image to video and references, priced per second before the render, with every clip saved in your History."
 section: "studio"
 order: 4
-updated: 2026-09-29
+updated: 2026-10-08
 appPaths: ["/content/video"]
 audience: "Everyone"
 related: ["explore", "create-an-image", "history", "assets-library", "validation", "your-team", "skills", "balance-and-payments", "troubleshooting"]
@@ -13,8 +13,8 @@ shots:
   - file: "/Images/help/create-a-video-studio.webp"
     route: "/content/video"
     alt: "The video studio: the engine menu with its price per second, the scene prompt on the left and the empty results panel on the right"
-    captured: 2026-09-27
-sources: ["src/pages/content/video.astro", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/pages/api/content/video-generate.ts", "src/lib/video-models.ts", "src/lib/media-limits.ts", "src/scripts/promptImprove.ts", "src/components/ClientPick.astro", "src/scripts/clientPick.ts", "src/scripts/validationRequest.ts"]
+    captured: 2026-10-08
+sources: ["src/pages/content/video.astro", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/pages/api/content/video-generate.ts", "src/lib/video-models.ts", "src/lib/media-limits.ts", "src/scripts/promptImprove.ts", "src/components/ClientPick.astro", "src/scripts/clientPick.ts", "src/scripts/validationRequest.ts", "src/scripts/campaignChoice.ts", "src/lib/request-campaign.ts"]
 ---
 
 The video studio renders short clips. Open it from **Video** in the menu, or from a video card in [Explore](/help/explore), which opens it already set on that engine.
@@ -47,7 +47,7 @@ Engines are added over time, so your list may hold more than this table.
 
 1. Pick the **Engine**.
 2. In **Describe your video**, write the scene as a shot rather than a subject: what moves, where the light comes from, how the camera behaves. Up to 2,500 characters.
-3. Optional: click **Improve with AI** to have the prompt rewritten for this engine, this length and this sound choice. It works as in the image studio: see [Improve with AI](/help/create-an-image#improve-with-ai).
+3. Optional: click **Improve with AI** to have the prompt rewritten for this engine, this length and this sound choice, by the text model picked next to the button. It works as in the image studio: see [Improve with AI](/help/create-an-image#improve-with-ai).
 4. Optional: under **What the render is fed**, attach a start frame or references. See below.
 5. Set the options under **How it is rendered**.
 6. Check the price next to the button, then click **Generate video**.
@@ -80,6 +80,7 @@ On some engines, attaching a reference clip lowers the price of the whole render
 | **Shape** | Widescreen (16:9), vertical (9:16), square, landscape, portrait or cinemascope, depending on the engine. On Wan 3.0 and Seedance 2.5, **Adaptive (follows what you attach)** takes the shape of the picture or clip you fed it. |
 | **Generate sound** | The engine composes the clip's own audio rather than returning a silent one. Shown only when the engine and the chosen mode offer sound. On some engines, sound costs more per second. |
 | **Made for** | The client the clip is made for, when your team works for clients. See [Made for a client](#made-for-a-client). |
+| **Campaign** | **None** by default. Pick one of your team's campaigns and everything the page renders joins it. **Manage campaigns**, or **Create a campaign** while your team has none, opens the Campaigns page in a new tab. Shown to creators and admins. See [Campaigns](/help/campaigns#fill-a-campaign-as-you-create). |
 
 ## Made for a client
 

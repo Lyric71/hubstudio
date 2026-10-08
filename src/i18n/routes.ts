@@ -19,6 +19,7 @@ const ARTICLES: Record<string, string> = {
   'ai-brand-ambassadors-what-you-sign': 'ambassadeurs-ia-ce-que-vous-signez',
   'ai-content-production-beyond-the-prompt': 'production-de-contenu-ia-au-dela-du-prompt',
   'ai-content-quality-argument-over': 'qualite-du-contenu-ia-le-debat-est-clos',
+  'ai-model-benchmarks': 'comparatif-des-modeles-d-ia',
   'ai-search-content-systems': 'recherche-ia-et-systemes-de-contenu',
   'ai-sound-for-video': 'le-son-genere-par-ia-pour-la-video',
   'aigc-adoption-curve': 'la-courbe-d-adoption-de-l-aigc',
@@ -107,8 +108,11 @@ const HOWTOS: Record<string, string> = {
 
 const HELP: Record<string, string> = {
   'account-and-sign-in': 'compte-et-connexion',
+  agents: 'agents',
   'assets-library': 'bibliotheque-de-contenus',
   'balance-and-payments': 'solde-et-paiements',
+  campaigns: 'campagnes',
+  'choosing-a-model': 'choisir-un-modele',
   'client-space': 'espace-client',
   'create-a-video': 'creer-une-video',
   'create-an-image': 'creer-une-image',
@@ -187,6 +191,7 @@ export const FR_PATHS: Record<string, string> = {
   '/about/team': '/fr/a-propos/equipe',
   ...Object.fromEntries(TEAM.map((s) => [`/about/team/${s}`, `/fr/a-propos/equipe/${s}`])),
   '/app': '/fr/application',
+  '/app/campaigns': '/fr/application/campagnes',
   '/app/create': '/fr/application/creer',
   '/app/engines': '/fr/application/moteurs',
   '/app/image-tools': '/fr/application/outils-image',

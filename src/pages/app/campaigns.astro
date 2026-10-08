@@ -1,0 +1,359 @@
+---
+/**
+ * /app/campaigns: Campaigns, the module of the hubStudio app that gathers the
+ * files of one marketing push under a name and a brief. A menu entry of its
+ * own in the app since 8 October 2026; this page gives it its entry on the
+ * site. /app/library keeps a short Campaigns section that links here.
+ *
+ * Facts come from src/content/help/campaigns.md (synced from the app) and
+ * the app itself (reporting-site src/lib/campaigns.ts, pages/campaigns,
+ * scripts/campaignsPanel.ts, scripts/libraryFolderPicker.ts, lib/brief-sources.ts):
+ * a name up to 120 characters, unique in the team, an optional brief up to
+ * 4,000; pointers to Assets Library files, never copies; a post for LinkedIn,
+ * Facebook or X written from a campaign reads its brief, the list of its
+ * files (name, type, prompt of a render) and the text of up to 20 documents.
+ * hubStudio has no Ask and no agents: only posts read a campaign. Button
+ * and menu names are quoted from the help. Both pictures are real captures
+ * from src/data/app-shots.ts, cropped so no balance shows.
+ * Layout and styles: src/styles/app-page.css.
+ *
+ * Copy: content-quality-us deck, scratchpad cq-campaigns/final.md.
+ * No ordinal numerals in any repeated block, no amounts.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+import '../../styles/app-page.css';
+
+const SITE = 'https://www.hubstudio.ai';
+
+/** What a post written from a campaign reads, as the help lists it. */
+const reads = ['The brief', 'Each file’s name and type', 'The prompt of a render', 'The text of up to 20 documents'];
+
+const nextLinks = [
+  { lead: 'Where the files live', name: 'Assets Library', href: '/app/library' },
+  { lead: 'Write and schedule the posts', name: 'Publish', href: '/app/publish' },
+  { lead: 'Get the work approved', name: 'Review', href: '/app/review' },
+];
+
+const faqs = [
+  {
+    q: 'What does a campaign cost?',
+    a: 'Nothing. Making a campaign and filling it are free. The files are the library’s own and count toward your storage once, however many campaigns hold them. A post written from a campaign is billed like any Draft with AI, with the price shown before it runs.',
+  },
+  {
+    q: 'What happens to the files when we delete a campaign?',
+    a: 'They stay put. Only the campaign goes, and every file it held stays in the Assets Library.',
+  },
+  {
+    q: 'Can one file belong to two campaigns?',
+    a: 'Yes. Take it out of one and it stays in the others, and in the library.',
+  },
+  {
+    q: 'Which posts can be written from a campaign?',
+    a: 'LinkedIn, Facebook, and X posts. Pick the campaign in the post’s brief, where you’d pick a library folder, then click Draft with AI. Instagram and TikTok posts don’t read a campaign, but what you make in their forms can still join one.',
+  },
+  {
+    q: 'Does the AI look at the pictures?',
+    a: 'No. It reads the brief, the list of files with their names, types, and prompts, and the text of up to 20 documents. A picture or a video reaches it through its name and its prompt.',
+  },
+  {
+    q: 'Can our clients see our campaigns?',
+    a: 'No. Client logins don’t see Campaigns. Work made for a client reaches them in their Client space.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Campaigns', item: `${SITE}/app/campaigns` },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Campaigns: one launch’s files under one name | hubStudio"
+  description="Gather the renders, videos, posts, and documents of one launch under a name and a brief, without copying a file, then write a post from the whole campaign."
+  preloadImage={appShots.campaigns.src}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="apg-page">
+
+  <!-- ===== Hero ===== -->
+  <section class="apg-hero">
+    <div class="container apg-hero__grid">
+      <div class="apg-hero__copy">
+        <nav class="apg-crumbs" aria-label="Breadcrumb">
+          <a href="/app">The app</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Campaigns</span>
+        </nav>
+        <h1 class="headline h1 apg-hero__title">
+          Keep a whole launch in one <span class="accent">campaign</span>.
+        </h1>
+        <p class="lead apg-hero__lead">
+          A product launch ends up in pieces across the app: packshots from the Image studio, a
+          teaser from the Video studio, the cut-downs, the posts, the client’s brief in a folder of
+          uploads. A campaign gathers them under one name and a short brief, without copying a
+          thing. When it’s time to write the LinkedIn, Facebook, or X post, hubStudio can read the
+          whole campaign before drafting.
+        </p>
+        <div class="apg-hero__cta">
+          <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          <Button variant="secondary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
+          <a class="apg-arrow" href="/app">See the whole app <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="apg-hero__shot">
+        <AppShot shot={appShots.campaigns} path="/campaigns" eager caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== What a campaign is ===== -->
+  <section class="apg-sheet apg-sheet--white" id="what-a-campaign-is">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">What a campaign is</span>
+        <h2 class="headline h2 reveal">It points at your files and copies none of <span class="accent">them</span>.</h2>
+      </header>
+      <div class="apg-cols">
+        <p class="apg-p">
+          A campaign starts with a name, such as “Spring launch 2027.” It can run to 120
+          characters, and no two campaigns in a team share one. The brief is optional, up to 4,000
+          characters, and it’s the place for the goal, the audience, the key message, and the
+          dates. Then come the files, from any module: pictures and clips from the studios, videos
+          cut in the Video editor, shorts, posts, and documents you uploaded.
+        </p>
+        <p class="apg-p">
+          None of those files move. A campaign points at them where they already sit, in the
+          Assets Library, so one file can belong to three campaigns and still take up space once.
+          Remove a file from a campaign and it’s still in the library. Deleting the campaign itself
+          takes none of its files with it. The pointers follow the library, so after you upload a
+          new version of a file, the campaign shows that version. A file deleted from the library
+          drops out of every campaign that held it.
+        </p>
+      </div>
+      <p class="apg-p apg-campaigns__more">
+        On the Campaigns page, each campaign has a card with up to four of its pictures, a count by
+        type, the brief, the date of the last change, and who created it. The side menu lists
+        every campaign by name under Campaigns, which keeps the one you’re working on a click away.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Filling it ===== -->
+  <section class="apg-sheet apg-sheet--cream" id="filling-it">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">Filling it</span>
+        <h2 class="headline h2 reveal">Fill it as you <span class="accent">go</span>.</h2>
+        <p class="apg-p">There are three ways in. Use whichever is closest to hand.</p>
+      </header>
+
+      <div class="apg-duo">
+        <div class="apg-duo__copy">
+          <h3 class="apg-duo__title">The campaign’s own page</h3>
+          <p class="apg-p">
+            It opens on the name and the brief, which you can edit, and on tiles that count the
+            files by type. The files themselves are listed below, under In this campaign. Open in
+            its module goes back to where a file was made, a render in its studio or a post in its
+            network’s module. In the library opens the file in the Assets Library, and Remove takes
+            it out of the campaign.
+          </p>
+          <p class="apg-p">
+            To bring files in, click Add assets. The library opens right on the page, with a search
+            across names, prompts, texts, and tags and a filter by type. Tick what belongs and add
+            it.
+          </p>
+        </div>
+        <AppShot shot={appShots.campaignPage} path="/campaigns" caption />
+      </div>
+
+      <div class="apg-cols apg-campaigns__more">
+        <p class="apg-p">
+          You don’t have to open the campaign to fill it. In the Assets Library, each file’s
+          Actions menu has Add to a campaign, and from there you can also start a new campaign with
+          the file already in it. For a batch, tick the rows and use Add to campaign. A Campaign
+          filter narrows the library to one campaign’s files, or to the files in no campaign at
+          all.
+        </p>
+        <p class="apg-p">
+          Better still, file things as they’re made. Every creation form has a Campaign menu, set
+          to none until you choose. It’s in the Image studio, the Video studio, the post form of
+          every network, the TikTok brief, and the Assets Library’s upload. Pick a campaign there
+          and whatever the form makes lands in it as soon as it exists.
+        </p>
+      </div>
+      <a class="apg-arrow" href="/help/campaigns#add-files">
+        Adding files in detail <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Writing from it ===== -->
+  <section class="apg-sheet apg-sheet--ink grain" id="writing-from-it">
+    <div class="container apg-anon__grid">
+      <div class="apg-anon__copy">
+        <span class="eyebrow apg-eyebrow--dark">Writing from it</span>
+        <h2 class="headline h2 reveal">
+          Write a post from the whole <span class="accent">campaign</span>.
+        </h2>
+        <ul class="apg-hidden" aria-label="What a post written from a campaign reads">
+          {
+            reads.map((r) => (
+              <li class="chip apg-hidden__chip">
+                <span class="chip__dot" aria-hidden="true" />
+                {r}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="apg-anon__copy">
+        <p class="apg-p apg-p--dark">
+          Whoever writes the LinkedIn post shouldn’t have to explain the launch all over again. In
+          the brief of a LinkedIn, Facebook, or X post, the list called Context folder from the
+          Assets Library shows your folders first, then your campaigns in a group of their own.
+          Pick the campaign and click Draft with AI.
+        </p>
+        <p class="apg-p apg-p--dark">
+          Before it writes a word, hubStudio goes through the campaign: its brief, the list of what
+          it holds (each file’s name and type, and the prompt behind each render), and the text of
+          up to 20 of its documents, in PDF, Word, Excel, or plain text. The AI doesn’t look at the
+          pictures and videos. It knows them by name and prompt, so it helps when a file’s name
+          says what’s in the shot.
+        </p>
+        <p class="apg-p apg-p--dark">
+          The draft is billed like any Draft with AI, and the model picker shows the price before
+          it runs. Making a campaign and filling it cost nothing.
+        </p>
+        <a class="apg-arrow" href="/help/linkedin#write-the-brief">
+          How a post’s brief works <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Who does what ===== -->
+  <section class="apg-sheet apg-sheet--white" id="who-does-what">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">Who does what</span>
+        <h2 class="headline h2 reveal">Who sees a campaign, and who can change <span class="accent">it</span>.</h2>
+      </header>
+      <div class="apg-cols">
+        <p class="apg-p">
+          A campaign belongs to the whole team. Anyone allowed to open Campaigns sees every
+          campaign, and inside each one, the files they can already see in the library. The
+          Campaigns row of the rights, under Assets Library, decides who sees campaigns and who can
+          create, update, and delete them. By default, creators and admins can do all of it and
+          viewers only look. Deleting a campaign is left to whoever created it, or to an admin.
+        </p>
+        <p class="apg-p">
+          Client logins don’t see Campaigns. Work you make for a client reaches them in their
+          Client space, and goes through Validation when it needs a sign-off.
+        </p>
+      </div>
+      <a class="apg-arrow apg-campaigns__link" href="/help/campaigns">
+        Campaigns in the help center <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== The rest of the app ===== -->
+  <section class="apg-next">
+    <div class="container">
+      <h2 class="apg-next__label">The rest of the app, from here</h2>
+      <div class="apg-next__grid">
+        {
+          nextLinks.map((l) => (
+            <a class="apg-next__card" href={l.href}>
+              <span class="apg-next__lead">{l.lead}</span>
+              <span class="apg-next__name">
+                {l.name} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="apg-faq" id="faq">
+    <div class="container apg-faq__grid">
+      <header class="apg-faq__head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">What people ask about <span class="accent">campaigns</span>.</h2>
+        <p class="apg-updated">Updated October 2026</p>
+      </header>
+      <div class="apg-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="apg-qa">
+              <summary>
+                <h3 class="apg-qa__q">{f.q}</h3>
+                <span class="apg-qa__icon" aria-hidden="true" />
+              </summary>
+              <p class="apg-qa__a">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <DualCta />
+</Layout>
+
+<style>
+  /* Spacing for a paragraph or link that follows a two-column block. */
+  .apg-campaigns__more {
+    margin: clamp(32px, 4vw, 48px) 0 24px;
+  }
+  .apg-campaigns__link {
+    margin-top: clamp(28px, 3vw, 40px);
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

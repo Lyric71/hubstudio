@@ -6,7 +6,10 @@
  * (Video editor, Shorts autopilot). This page links to both.
  *
  * Facts come from src/content/help/assets-library.md and history.md; button
- * and panel names are quoted from there. Every picture is a real capture from
+ * and panel names are quoted from there. Campaigns (8 October 2026) are read
+ * from the app: reporting-site src/lib/campaigns.ts, pages/campaigns,
+ * scripts/campaignsPanel.ts and scripts/libraryFolderPicker.ts (a campaign
+ * offered where a post's brief picks a library folder). Every picture is a real capture from
  * src/data/app-shots.ts. Layout and styles: src/styles/app-page.css.
  *
  * Copy: content-quality-us deck, scratchpad cq/app-library/final.md.
@@ -40,6 +43,10 @@ const faqs = [
   {
     q: 'Do the tools cost anything?',
     a: 'The Image editor, the Image anonymizer and the Video editor are free and run in your browser. Two things are paid, each with its price shown before you start: the fast captions of the Video editor, and a Shorts autopilot run. A file you save to the library is stored like any other.',
+  },
+  {
+    q: 'Does a campaign copy our files?',
+    a: 'No. A campaign only points at files in the library, so a file can sit in several campaigns and takes no extra space. Deleting a campaign leaves every file where it was.',
   },
   {
     q: 'Can our clients see the library?',
@@ -164,8 +171,36 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- ===== Campaigns ===== -->
+  <section class="apg-sheet apg-sheet--cream" id="campaigns">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">Campaigns</span>
+        <h2 class="headline h2 reveal">Every file of one launch, under one <span class="accent">name</span>.</h2>
+      </header>
+      <div class="apg-cols">
+        <p class="apg-p">
+          A spring launch leaves files all over the app: renders from the Image studio, a clip
+          from the Video studio, the posts for each network, the client’s brief in a folder of
+          uploads. A campaign gathers them under one name and a short brief, whichever studio made
+          them. Add files from the campaign’s page, or pick Add to a campaign in a file’s Actions
+          menu, for one file or for several ticked at once.
+        </p>
+        <p class="apg-p">
+          Nothing is copied. A campaign points at files in the library, so a newer version stays
+          in it and a deleted file drops out on its own. When you write a post, pick the campaign
+          where you’d pick a library folder. Before it writes, the AI reads the brief, a line for
+          every picture and clip with its prompt, and the text of the documents.
+        </p>
+      </div>
+      <a class="apg-arrow apg-library__campaigns" href="/app/campaigns">
+        Campaigns in detail <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
   <!-- ===== The tools ===== -->
-  <section class="apg-sheet apg-sheet--cream" id="tools">
+  <section class="apg-sheet apg-sheet--white" id="tools">
     <div class="container">
       <header class="apg-head">
         <span class="eyebrow">Its tools</span>
@@ -238,6 +273,13 @@ const faqSchema = {
   <DualCta />
 </Layout>
 
+
+<style>
+  /* The link to /app/campaigns, under the two columns of the Campaigns section. */
+  .apg-library__campaigns {
+    margin-top: clamp(28px, 3vw, 40px);
+  }
+</style>
 
 <script>
   /* Fade-in on scroll, matching the other hub pages. */

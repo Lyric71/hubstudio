@@ -1,14 +1,14 @@
 ---
 title: "Account and sign-in"
 seoTitle: "Your account settings and signing in | hubStudio Help"
-description: "The interface in English, French or Chinese, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the weekly digest of what changed, the engines in your lists, voice input, and how to reset a forgotten password."
+description: "The interface in English, French or Chinese, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the weekly digest of what changed, the engines in your lists, voice input, how to reset a forgotten password, and what happens to a login left unused."
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
 order: 18
-updated: 2026-10-05
+updated: 2026-10-08
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"
-related: ["getting-started", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "balance-and-payments", "troubleshooting"]
+related: ["getting-started", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "choosing-a-model", "balance-and-payments", "troubleshooting"]
 shots:
   - file: "/Images/help/account-and-sign-in-security.webp"
     route: "/settings"
@@ -17,8 +17,8 @@ shots:
     captured: 2026-09-27
   - file: "/Images/help/account-and-sign-in-my-connections.webp"
     route: "/my-connections"
-    alt: "My Connections: the Your social accounts card with one card per network, LinkedIn, Instagram, Facebook, TikTok and X, each with its steps and Connect an account"
-    captured: 2026-09-27
+    alt: "My Connections: the Your social accounts card with one card per network, LinkedIn, Instagram, Facebook, TikTok and X, each with its steps and Connect an account, and the Beta tag next to Instagram, Facebook and TikTok"
+    captured: 2026-10-08
   - file: "/Images/help/account-and-sign-in-appearance.webp"
     route: "/settings"
     clip: "#appearance"
@@ -92,7 +92,9 @@ To publish posts from hubStudio, connect your own social accounts. Click your pi
 
 What you connect is yours alone. Nobody else in your team, admins included, can see it or publish with it, and you can't publish on a teammate's account either. Connecting publishes nothing.
 
-![My Connections: the Your social accounts card with one card per network, LinkedIn, Instagram, Facebook, TikTok and X, each with its steps and Connect an account](/Images/help/account-and-sign-in-my-connections.webp)
+Instagram, Facebook and TikTok carry a **Beta** tag next to their name while hubStudio waits for Meta and TikTok to approve it as an app. Point at the tag to read why: until their review is done, which takes a few weeks, connecting may show a warning screen, or the connection may run with some limits.
+
+![My Connections: the Your social accounts card with one card per network, LinkedIn, Instagram, Facebook, TikTok and X, each with its steps and Connect an account, and the Beta tag next to Instagram, Facebook and TikTok](/Images/help/account-and-sign-in-my-connections.webp)
 
 ### Connect an account
 
@@ -176,6 +178,8 @@ Each switch is saved the moment you flip it. Every digest also carries an unsubs
 
 **My models** lists every engine you can use, in tabs. Switch off an engine you don't want to see: it leaves your own lists in [Explore](/help/explore) and in the studios, and nothing changes for anybody else. Each switch is saved the moment you flip it. The last engine of each kind always stays on.
 
+The **Text** tab holds the models that write your posts and captions. A text model you switch off also leaves the **Quick**, **Balanced** and **Best** choices: the choice moves to the closest model in price that you kept. **Compare the models on public benchmarks**, at the top of the card, opens **Model benchmarks**, where the text models your team allows are compared on public scores and on what a post or an article costs. See [Choosing a model](/help/choosing-a-model).
+
 ## Voice input
 
 Every text box with more than one line, the prompt boxes of the studios included, has a microphone in its corner. Click it and speak: your words appear where your cursor is as you say them. Click again to stop.
@@ -205,6 +209,16 @@ Under **Invoices**, type the **Name on the invoice** and the **Address** printed
 5. The page says **Password updated**. Click **Sign in**.
 
 A reset link works once. If it has expired, the page says **This link is invalid or has expired**: click **Request a new link**.
+
+## A login left unused
+
+A login that hasn't been used for two months can be closed. Using it means signing in, or simply opening hubStudio in a browser that kept you signed in.
+
+1. You first get an email, **Your login is about to be deactivated**, with the day you last signed in and the day of the deactivation, one month later.
+2. Sign in once before that day, with **Sign in** in the email or on the sign-in page, and nothing changes. If you forgot your password, see [Forgot your password](#forgot-your-password).
+3. Still unused on that day, the login is deactivated, and an email tells you so.
+
+Nothing is deleted. A deactivated login keeps its account, its work and its history, and an administrator can open it again. A question about the email? Answer it.
 
 ## Sign out
 

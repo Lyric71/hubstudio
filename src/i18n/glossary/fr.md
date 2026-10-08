@@ -15,6 +15,16 @@ Explore -> Explorer
 Image studio / Video studio -> studio Image / studio Vidéo
 History -> Historique
 Assets Library -> Bibliothèque de contenus
+Campaigns (Assets Library) -> Campagnes (a campaign: une campagne; Add to a campaign: « Ajouter à une campagne »; Add to campaign, ticked rows: « Ajouter à la campagne »; Add assets: « Ajouter des contenus »; In this campaign: « Dans cette campagne »; Open in its module / In the library / Remove: « Ouvrir dans son module » / « Dans la bibliothèque » / « Retirer »; Campaign menu of a creation form: « Campagne », set to « Aucune campagne »; library filter In no campaign: « Hors campagne »; Context folder from the Assets Library: « Dossier de contexte tiré de la bibliothèque »; never « campagne publicitaire »)
+Agents -> Agents (My agents / Team agents / Catalog / Runs: « Mes agents » / « Agents de l’équipe » / « Catalogue » / « Exécutions »; Agents Command Room: « Poste de commande des agents »; Social publishing watcher: « Veilleur des publications sociales »; finding: « constat »; Run now: « Lancer maintenant »)
+Picture versions / Use this version (social post) -> « Versions des visuels » / « Utiliser cette version »; On the post (version tag) -> « Sur la publication »
+Re-purpose for other networks -> « Réutiliser sur d’autres réseaux » (tabs Manually / Draft at once / Publish automatically: « Manuellement » / « Rédiger d’un coup » / « Publier automatiquement »)
+engine card (Explore) -> fiche (une fiche moteur); New badge -> « Nouveau »; Try it -> « Essayer »; job chips -> pastilles
+Choose a model / Compare models / All models / Recommended here -> « Choisir un modèle » / « Comparer les modèles » / « Tous les modèles » / « Recommandé ici »
+model tiers Quick / Balanced / Best -> Rapide / Équilibré / Puissant (masculine, as in the app's model-tier strings and the capture; not « Équilibrée »)
+Model benchmarks / Scores and costs -> « Benchmarks des modèles » / « Scores et coûts » (score names Intelligence Index, LMArena Text, Output speed stay in English, as in the app)
+Account (app tab) -> Compte; Top up (verb) -> recharger, a top-up -> une recharge; Automatic top-up / Top up automatically / Save a card -> « Rechargement automatique » / « Recharger automatiquement » / « Enregistrer une carte »; Below / Top up by / Daily limit -> « Inférieur à » / « Montant de la recharge » / « Limite quotidienne »; Promotional code -> « Code promotionnel »
+Invoices / Usage -> Factures / Consommation; Sign-in and security -> Connexion et sécurité; Weekly digest -> Récapitulatif hebdomadaire
 asset -> contenu (production prose: contenu, livrable when it is a deliverable)
 Image editor -> Éditeur d’images
 Image anonymizer -> Anonymiseur d’images

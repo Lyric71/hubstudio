@@ -5,21 +5,26 @@ description: "The Instagram module: connect your professional account, start fro
 excerpt: "Start from the visual, add a caption with AI or by hand, and publish a feed post, a carousel, a Story or a Reel, now or on schedule."
 section: "social"
 order: 10
-updated: 2026-10-05
+updated: 2026-10-08
 appPaths: ["/social/instagram/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
-related: ["linkedin", "facebook", "tiktok", "x", "validation", "create-an-image", "create-a-video", "history", "assets-library"]
+related: ["linkedin", "facebook", "tiktok", "x", "validation", "create-an-image", "create-a-video", "choosing-a-model", "history", "assets-library"]
 shots:
   - file: "/Images/help/instagram-picture.webp"
     route: "/social/instagram/posts"
-    alt: "The Instagram module on a new post: the band with the three step tiles, and the picture or the video step with One image, Carousel and Reel, Render with AI, Pick from the library and Upload from your computer"
-    captured: 2026-09-27
+    alt: "The Instagram module on a new post: the band with the three step tiles, and the picture or the video step with One image, Carousel and Reel, Render with AI, Pick from the library and Upload from your computer, with the Skills and material strip unfolded beside it"
+    captured: 2026-10-08
   - file: "/Images/help/instagram-picture-edit.webp"
     route: "/social/instagram/posts"
     clip: "the picture step of a post"
-    alt: "The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer"
-    captured: 2026-09-28
-sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts"]
+    alt: "The picture step of an Instagram post: Render again, Add from the library and Upload from your computer on the left, the post's picture on the right with the pencil under the cross"
+    captured: 2026-10-08
+  - file: "/Images/help/instagram-picture-versions.webp"
+    route: "/social/instagram/posts"
+    clip: "the right half of the picture step"
+    alt: "The right half of the picture step: the post's picture, Edit in the image editor, then Picture versions with v2 and its Use this version button, and v1 marked On the post"
+    captured: 2026-10-08
+sources: ["src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "src/components/panels/SocialFormatBlock.astro", "src/scripts/socialContent.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/videoEditorLauncher.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/selectionRewrite.ts", "src/scripts/clientPick.ts", "src/pages/api/social-content/[id].ts", "src/lib/social-content-db.ts", "src/lib/social/limits.ts", "src/lib/social/live.ts", "src/lib/social/scheduler.ts", "src/lib/social/publications.ts", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/own-work.ts", "src/lib/team-clients.ts", "src/pages/api/social-content/index.ts", "src/lib/brief-sources.ts"]
 ---
 
 **Instagram** in the menu holds your Instagram posts, from the first picture to the published post. On Instagram the visual comes first: you render, pick or upload a picture, a carousel or a clip, then write its caption with AI or by hand, and publish it on your account, now or at a time you pick. Or you post it yourself in Instagram.
@@ -43,7 +48,7 @@ Click **Instagram** in the menu. The dark band at the top holds:
 
 Click the post list button to open every post in a panel over the page. Type in the search box to match words of the title or the caption, a status or a date, or keep the posts written between two days. Click a row to open that post.
 
-![The Instagram module on a new post: the band with the three step tiles, and the picture or the video step with One image, Carousel and Reel, Render with AI, Pick from the library and Upload from your computer](/Images/help/instagram-picture.webp)
+![The Instagram module on a new post: the band with the three step tiles, and the picture or the video step with One image, Carousel and Reel, Render with AI, Pick from the library and Upload from your computer, with the Skills and material strip unfolded beside it](/Images/help/instagram-picture.webp)
 
 ## Who sees a post
 
@@ -55,17 +60,28 @@ A post made for a client is also shown to that client's people, whoever it is sh
 
 Pick the shape first: **One image**, **Carousel** (2 to 8 slides when rendered) or **Reel**. Instagram never publishes a caption alone, so there is no text only post. Then pick one of three ways in:
 
-- **Render with AI**. Write the prompt; **Improve with AI** rewrites it for you. Pick the **Engine** and the **Aspect**, and for a Reel the length, resolution and sound. The price is on the button before you press.
+- **Render with AI**. Write the prompt; **Improve with AI** rewrites it for you, with the text model picked next to it (see [Choosing a model](/help/choosing-a-model)). Pick the **Engine**, which opens on the least expensive one, and the **Aspect**, and for a Reel the length, resolution and sound. Then click **Generate the image** (or **Generate the carousel**, **Generate the clip**) under the prompt, or the **Render with AI** button above. The price is on both buttons before you press.
 - **Pick from the library**: a picture or a clip already in your [Assets Library](/help/assets-library).
 - **Upload from your computer**. The file is saved in your Assets Library and put on the post.
 
-The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A picture takes a minute or two, a clip a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library. **Render again** makes a new one.
+**Skills and material.** The strip at the right edge, **Skills and material**, unfolds two cards. Fill them before you render, pick or upload:
 
-**Edit a picture.** Point at a picture of the post and click the pencil under the **×**. The picture opens in the Image editor, on its **Social** panel set to Instagram: pick **Feed portrait**, **Square**, **Landscape**, **Story** or another placement, crop it or fit it whole over a blurred background, see what Instagram covers and how the profile grid shows it, then click **Apply the format**. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, and the original stays in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
+- the material to write from: **Files** (PDF or plain text, read once and not stored), **Context folder from the Assets Library** (a folder of the library whose text documents are read, or one of your [campaigns](/help/campaigns), read with its brief), **Pages to read** (web addresses, one per line) and **Keywords to target**;
+- **Skills**, where **Instagram caption format** is already picked. Add your own skills or unpick it. See [Skills](/help/skills).
 
-![The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer](/Images/help/instagram-picture-edit.webp)
+When the post is created, the material is read once and kept with the post, and so are the skills: the caption, in step 02, is written from them. The strip then empties itself for the next post, and the folder stays picked.
 
-**Edit the clip of a Reel.** The pencil on the clip opens it in the [Video editor](/help/assets-library#the-video-editor), on its **Social** panel set to an Instagram **Reel**: pick **Reel**, **Story**, **Feed portrait** or **Square**, click **Apply the format**, see in red what Instagram covers and how the profile grid shows the cover, and read the checks. You can also trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. **Save and use it in the post** puts the edited video in place of the clip; the original stays in the Assets Library. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
+The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A picture takes a minute or two, a clip a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. The **×** on a picture takes it off the post; it stays in the Assets Library. **Render again** makes a new one. Once the post has a picture or a clip, the step is split in two: the ways in and the render settings on the left, what is on the post on the right, in sight while the next render runs.
+
+**Picture versions.** Each render, edit, pick or upload that changes the post's pictures or its clip is kept as a version, v1, v2 and so on, with its day and time. Once there are two, **Picture versions** lists them under the pictures, and **On the post** marks the one the post carries. **Use this version** puts an earlier set back on the post. The **×** on a version takes it off the list, and its files stay in the Assets Library. The version on the post can't be taken off the list.
+
+![The right half of the picture step: the post's picture, Edit in the image editor, then Picture versions with v2 and its Use this version button, and v1 marked On the post](/Images/help/instagram-picture-versions.webp)
+
+**Edit a picture.** Point at a picture of the post and click the pencil under the **×**, or click **Edit in the image editor** under the pictures (**Edit slide 1 in the image editor** on a carousel, whose every slide keeps its own pencil). The picture opens in the Image editor, on its **Social** panel set to Instagram: pick **Feed portrait**, **Square**, **Landscape**, **Story** or another placement, crop it or fit it whole over a blurred background, see what Instagram covers and how the profile grid shows it, then click **Apply the format**. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, as a new version, and the original stays in the versions and in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
+
+![The picture step of an Instagram post: Render again, Add from the library and Upload from your computer on the left, the post's picture on the right with the pencil under the cross](/Images/help/instagram-picture-edit.webp)
+
+**Edit the clip of a Reel.** The pencil on the clip, or **Edit in the video editor** under it, opens it in the [Video editor](/help/assets-library#the-video-editor), on its **Social** panel set to an Instagram **Reel**: pick **Reel**, **Story**, **Feed portrait** or **Square**, click **Apply the format**, see in red what Instagram covers and how the profile grid shows the cover, and read the checks. You can also trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. **Save and use it in the post** puts the edited video in place of the clip, as a new version; the original stays in the versions and in the Assets Library. See [Edit the clip of a post](/help/assets-library#edit-the-clip-of-a-post).
 
 **Reels from a long video.** [Shorts autopilot](/help/shorts-autopilot) cuts an interview, a talk or a podcast into vertical shorts by itself, captioned, with an Instagram caption for each one. They land in the Assets Library, ready to pick here.
 
@@ -73,7 +89,9 @@ You don't need to prepare the files: every picture is turned into a JPEG Instagr
 
 ## 02 The caption
 
-The caption step writes the words for the visual. While the caption is empty, it opens on the **Have AI write the caption** box: check the model and the skills at the top, say under **Your brief for the AI** (optional) anything the caption has to carry (an offer, a date, a call to action), then click **Write it with AI**. Left empty, the brief lets the caption be written from the picture alone. Or just type the caption in the editor. The skill **Instagram caption format** is already picked; it carries Instagram's posting rules. See [Skills](/help/skills).
+The caption step writes the words for the visual. While the caption is empty, it opens on the **Have AI write the caption** box: check the model (see [Choosing a model](/help/choosing-a-model)) and the skills at the top, say under **Your brief for the AI** (optional) anything the caption has to carry (an offer, a date, a call to action), then click **Write it with AI**. Left empty, the brief lets the caption be written from what you said the picture shows. Or just type the caption in the editor. The skills are the ones picked in **Skills and material** when the post was started, **Instagram caption format** by default; it carries Instagram's posting rules. See [Skills](/help/skills).
+
+The line beside **Write it with AI** says what the caption is written from: what you said the picture shows and your brief, and, when the post has some, the material kept with it. Its facts, figures and names come from that material. A file or a page that couldn't be read is named under **Could not read**.
 
 Whatever sits in the editor is what goes out. Instagram keeps up to 2,200 characters, 30 hashtags and 20 @ tags, and a counter under the box shows how much room is left.
 

@@ -5,15 +5,15 @@ description: "The YouTube module: start from the video, write its title and desc
 excerpt: "Start from the video, write its title and description with AI or by hand, then hand everything over to YouTube Studio. The Channel tab prepares the channel itself."
 section: "social"
 order: 12.5
-updated: 2026-10-05
+updated: 2026-10-08
 appPaths: ["/social/youtube/posts", "/social/youtube/channel"]
 audience: "Creators and admins; viewers read"
-related: ["tiktok", "shorts-autopilot", "instagram", "validation", "create-a-video", "assets-library", "skills"]
+related: ["tiktok", "shorts-autopilot", "instagram", "validation", "create-a-video", "assets-library", "skills", "choosing-a-model"]
 shots:
   - file: "/Images/help/youtube-video.webp"
     route: "/social/youtube/posts"
-    alt: "The YouTube module on a new post: the Videos and Channel tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer"
-    captured: 2026-10-05
+    alt: "The YouTube module on a new post: the Videos and Channel tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer, with the Skills and material strip unfolded beside it"
+    captured: 2026-10-08
   - file: "/Images/help/youtube-publish.webp"
     route: "/social/youtube/posts#item=<a post with its video>&step=publish"
     alt: "The publishing step of a YouTube post: Publish interactively and the steps of the upload in YouTube Studio, with the post shown as YouTube's watch page on the right"
@@ -21,12 +21,12 @@ shots:
   - file: "/Images/help/youtube-channel.webp"
     route: "/social/youtube/channel"
     alt: "The Channel tab: What the channel is about with Write the kit with AI, then Name and handle, with the channel page as it will look on the right"
-    captured: 2026-10-05
+    captured: 2026-10-08
   - file: "/Images/help/youtube-channel-art.webp"
     route: "/social/youtube/channel"
     alt: "The Banner and profile picture card: the banner with its dashed frame, the round profile picture, and under each Render with AI, From the Assets Library, Upload a picture and Download"
     captured: 2026-10-05
-sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/pages/social/youtube/posts.astro", "src/pages/social/youtube/channel.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/YoutubeChannelPanel.astro", "src/scripts/socialContent.ts", "src/scripts/youtubeChannel.ts", "src/lib/youtube-channel.ts", "src/lib/youtube-constraints.ts", "src/pages/api/social-content/youtube-channel.ts", "src/pages/api/social-content/[id].ts", "src/pages/api/social-content/draft.ts", "src/pages/api/social-content/versions.ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/scripts/videoEditor.ts"]
+sources: ["src/lib/app.ts", "src/components/SocialNav.astro", "src/pages/social/youtube/posts.astro", "src/pages/social/youtube/channel.astro", "src/components/panels/SocialContentPanel.astro", "src/components/panels/YoutubeChannelPanel.astro", "src/scripts/socialContent.ts", "src/scripts/youtubeChannel.ts", "src/lib/youtube-channel.ts", "src/lib/youtube-constraints.ts", "src/pages/api/social-content/youtube-channel.ts", "src/pages/api/social-content/[id].ts", "src/pages/api/social-content/draft.ts", "src/pages/api/social-content/versions.ts", "src/lib/social-content-db.ts", "src/lib/social-format-skills.ts", "src/lib/social/limits.ts", "src/scripts/videoEditor.ts", "src/pages/api/social-content/index.ts", "src/lib/brief-sources.ts"]
 ---
 
 **YouTube** in the menu prepares your YouTube videos and the channel they go out on. A YouTube post is a video with its title and its description: you render, pick or upload the video, have the title and the description written with AI or write them yourself, then hubStudio hands everything over to YouTube Studio, where you publish it.
@@ -50,7 +50,7 @@ On **Videos**, the dark band at the top holds:
 
 Click the post list button to open every post in a panel over the page. Type in the search box to match words of the title or the description, a status or a date. Click a row to open that post.
 
-![The YouTube module on a new post: the Videos and Channel tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer](/Images/help/youtube-video.webp)
+![The YouTube module on a new post: the Videos and Channel tabs, the band with the three step tiles, and the video step with Render with AI, Pick from the library and Upload from your computer, with the Skills and material strip unfolded beside it](/Images/help/youtube-video.webp)
 
 ## Who sees a post
 
@@ -60,15 +60,24 @@ A post belongs to the person who made it. Until you share it, only you see it. O
 
 Pick one of three ways in:
 
-- **Render with AI**. Write the prompt; **Improve with AI** rewrites it for you. Pick the **Engine**, the **Aspect**, the length, the resolution and the sound. The price is on the button before you press.
+- **Render with AI**. Write the prompt; **Improve with AI** rewrites it for you, with the text model picked next to it (see [Choosing a model](/help/choosing-a-model)). Pick the **Engine**, which opens on the least expensive one, the **Aspect**, the length, the resolution and the sound. Then click **Generate the clip** under the prompt, or the **Render with AI** button above. The price is on both buttons before you press.
 - **Pick from the library**: a video already in your [Assets Library](/help/assets-library).
 - **Upload from your computer**. The file is saved in your Assets Library and put on the post.
 
-The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A rendered clip takes a few minutes. The run shows in **Activity**, and the post keeps the result if you leave.
+**Skills and material.** The strip at the right edge, **Skills and material**, unfolds two cards. Fill them before you render, pick or upload:
+
+- the material to write from: **Files** (PDF or plain text, read once and not stored), **Context folder from the Assets Library** (a folder of the library whose text documents are read, or one of your [campaigns](/help/campaigns), read with its brief), **Pages to read** (web addresses, one per line) and **Keywords to target**;
+- **Skills**, where **YouTube title and description format** is already picked. Add your own skills or unpick it. See [Skills](/help/skills).
+
+When the post is created, the material is read once and kept with the post, and so are the skills: the title and the description, in step 02, are written from them. The strip then empties itself for the next post, and the folder stays picked.
+
+The post is created the moment you render, pick or upload: until then nothing exists and nothing is billed. A rendered clip takes a few minutes. The run shows in **Activity**, and the post keeps the result if you leave. Once the post has a clip, the step is split in two: the ways in and the render settings on the left, the clip on the post on the right, in sight while the next render runs.
+
+**Versions of the clip.** Each render, edit, pick or upload that changes the clip is kept as a version, v1, v2 and so on, with its day and time. Once there are two, **Picture versions** lists them under the clip, and **On the post** marks the one the post carries. **Use this version** puts an earlier clip back on the post. The **×** on a version takes it off the list, and its file stays in the Assets Library. The version on the post can't be taken off the list.
 
 A video that is upright or square and lasts three minutes or less becomes a YouTube Short: the preview marks it **Short**. A longer or wider video is an ordinary YouTube video.
 
-**Edit the clip.** Point at the video of the post and click the pencil under the **×** (its tooltip starts **Edit this clip**). It opens in the [Video editor](/help/assets-library#the-video-editor), where you can trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. Then click **Save** and **Save and use it in the post**: the edited video takes the place of the first one in the post, and the original stays in the Assets Library.
+**Edit the clip.** Point at the video of the post and click the pencil under the **×** (its tooltip starts **Edit this clip**), or click **Edit in the video editor** under it. It opens in the [Video editor](/help/assets-library#the-video-editor), where you can trim and split it, change its speed, add texts, captions timed word by word and music, and pick its cover. Then click **Save** and **Save and use it in the post**: the edited video takes the place of the first one in the post, as a new version, and the original stays in the versions and in the Assets Library.
 
 **Start from a long video.** An interview, a talk or a podcast can become several Shorts at once: [Shorts autopilot](/help/shorts-autopilot) picks its best moments, frames them upright, captions them and saves each one in the Assets Library. Then pick one from the library here.
 
@@ -78,9 +87,9 @@ The step holds two boxes: the title on top, as YouTube shows it (100 characters 
 
 While the description is empty, the step opens on the **Have AI write the title and the description** box:
 
-1. Check the model and the skills. **YouTube title and description format** is already picked; it carries YouTube's rules.
-2. Under **Your brief for the AI** (optional), say anything the video's words have to carry: an offer, a date, a link. Left empty, they are written from the video alone.
-3. Click **Write it with AI**. The title and the description land in their boxes, ready to edit.
+1. Check the model and the skills (see [Choosing a model](/help/choosing-a-model)). The skills are the ones picked in **Skills and material** when the post was started, **YouTube title and description format** by default; it carries YouTube's rules.
+2. Under **Your brief for the AI** (optional), say anything the video's words have to carry: an offer, a date, a link. Left empty, they are written from what you said the video shows.
+3. Click **Write it with AI**. The title and the description land in their boxes, ready to edit. The line beside the button says what they are written from: what you said the video shows and your brief, and, when the post has some, the material kept with it.
 
 Or skip the box and type them yourself. See [Skills](/help/skills).
 
@@ -142,7 +151,7 @@ The publishing step has one way out: **Publish interactively**. Sign in to YouTu
 | Title | 100 characters, no < or > |
 | Description | 5,000 characters, no < or > |
 | Hashtags | Past 60, YouTube ignores every one of them |
-| Video types | MP4, MOV, WEBM, AVI, WMV, MPEG, FLV, 3GP, MKV |
+| Video types | MP4, MOV, MPEG, MPG, AVI, WMV, FLV, 3GP, WEBM (ProRes, DNxHR, CineForm and HEVC video inside a MOV or MP4 file) |
 | Video size | 256 GB, or 12 hours |
 | Over 15 minutes | Needs a YouTube account with a verified phone number |
 
@@ -158,7 +167,7 @@ YouTube lets no app create a channel. So the **Channel** tab prepares it, and th
 
 ![The Channel tab: What the channel is about with Write the kit with AI, then Name and handle, with the channel page as it will look on the right](/Images/help/youtube-channel.webp)
 
-1. **What the channel is about.** Say who the channel is for and what they will watch, pick the **Language** and the **Model**, then click **Write the kit with AI**. The AI proposes names, handles, a description and keywords, plus the prompts of the two pictures. Every field stays yours to edit.
+1. **What the channel is about.** Say who the channel is for and what they will watch, pick the **Language** and the model, then click **Write the kit with AI**. The AI proposes names, handles, a description and keywords, plus the prompts of the two pictures. Every field stays yours to edit.
 2. **Name and handle.** Click the name and the handle you prefer among the proposals, or type your own. A **Channel name** is 50 characters at most. A **Handle** is 3 to 30 characters: letters, numbers, underscores, hyphens and periods, never one of those three at either end. Whether a handle is free is only known on YouTube, so keep a second one in mind.
 3. **Description and keywords.** Edit the **Description** (1,000 characters) and the **Keywords** (500 characters). The first 150 characters of the description are what search and the channel page show. A keyword of several words goes between quotes.
 4. **Links.** Click **+ Add a link** for each one, up to 14, each with the words shown for it. The first one also shows beside the description.
@@ -171,7 +180,7 @@ On the right, **The channel page, as it will look** follows every keystroke. Onc
 
 For each picture, you can:
 
-- **Render with AI**: write what it shows (the kit fills the prompt for you), pick the engine, and click. The price shows before you press.
+- **Render with AI**: write what it shows (the kit fills the prompt for you), pick the engine (the list opens on the least expensive one for that picture), and click. The price shows before you press.
 - **From the Assets Library**: pick a picture of your team. Free.
 - **Upload a picture** from your computer. Free.
 
