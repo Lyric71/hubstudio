@@ -1,0 +1,599 @@
+---
+/**
+ * Book onboarding  ·  /services/onboarding/book
+ *
+ * Step one of the onboarding offer: who is coming, the company, the session
+ * language and a preferred date. No time of day (we propose the hours: the
+ * sessions add up to four hours or more) and no "how did you hear about us"
+ * (whoever books this already knows us). Nothing is charged here.
+ *
+ * Posts to /api/onboarding, which validates every answer, mails the booking
+ * tagged [Onboarding] through Resend like /api/contact, and lands the visitor
+ * on /thank-you/onboarding: step two, the payment. Same anti-spam as
+ * /contact: the hidden `company_url` honeypot. Options and caps come from
+ * src/lib/onboarding.ts, which the endpoint checks against.
+ *
+ * Prerendered: the date bounds are set in the browser by the script below
+ * and enforced again by the endpoint on every request.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import { LIMITS, SESSION_LANGUAGES, TEAM_STATUS, ONBOARDING_THANKS } from '../../../lib/onboarding';
+
+const SITE = 'https://www.hubstudio.ai';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Onboarding', item: `${SITE}/services/onboarding` },
+    { '@type': 'ListItem', position: 3, name: 'Book onboarding', item: `${SITE}/services/onboarding/book` },
+  ],
+};
+---
+
+<Layout
+  title="Book onboarding: pick your date | hubStudio"
+  description="Pick a date for hubStudio onboarding: four hours or more, live, to set up your team and train your people. We confirm within one business day."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="bk-hero">
+    <div class="container">
+      <nav class="bk-crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/services/onboarding">Onboarding</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Book</span>
+      </nav>
+      <span class="eyebrow bk-hero__eyebrow">Book onboarding</span>
+      <h1 class="headline h1 bk-hero__title">
+        Pick the date. We’ll set it up with <span class="accent">you</span>.
+      </h1>
+      <p class="lead bk-hero__lead">
+        At least four hours, live: your team set up and your people trained, then three months of
+        free support. Nothing is charged on this page.
+      </p>
+      <ul class="bk-hero__meta">
+        <li>At least four hours</li>
+        <li>500 USD, 250 back in your wallet</li>
+        <li>Confirmed within one business day</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Form and rail ===== -->
+  <section class="bk-sheet" id="booking">
+    <div class="container bk-grid">
+      <div class="bk-card">
+        <span class="chip bk-card__chip"><span class="chip__dot"></span>The booking</span>
+        <h2 class="headline h3 bk-card__head">
+          Three short sections: who to set up, and <span class="accent">when</span>.
+        </h2>
+
+        <form
+          class="bk-form"
+          id="booking-form"
+          method="POST"
+          action="/api/onboarding"
+          data-href={ONBOARDING_THANKS}
+        >
+          <!-- Honeypot, as on /contact: hidden from people, tempting to bots. -->
+          <div class="hp" aria-hidden="true">
+            <label for="company_url">Company website</label>
+            <input id="company_url" name="company_url" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <fieldset class="bk-panel">
+            <legend class="bk-legend">Who you are</legend>
+            <div class="row">
+              <div class="field">
+                <label for="firstName">First name <span class="req">*</span></label>
+                <input id="firstName" name="firstName" type="text" maxlength={LIMITS.firstName} autocomplete="given-name" required />
+              </div>
+              <div class="field">
+                <label for="lastName">Last name <span class="req">*</span></label>
+                <input id="lastName" name="lastName" type="text" maxlength={LIMITS.lastName} autocomplete="family-name" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Work email <span class="req">*</span></label>
+              <input id="email" name="email" type="email" maxlength={LIMITS.email} autocomplete="email" required />
+            </div>
+          </fieldset>
+
+          <fieldset class="bk-panel">
+            <legend class="bk-legend">The company</legend>
+            <div class="row">
+              <div class="field">
+                <label for="company">Company <span class="req">*</span></label>
+                <input id="company" name="company" type="text" maxlength={LIMITS.company} autocomplete="organization" required />
+              </div>
+              <div class="field">
+                <label for="website">Website <span class="opt-tag">optional</span></label>
+                <input id="website" name="website" type="url" maxlength={LIMITS.website} placeholder="https://" autocomplete="url" />
+              </div>
+            </div>
+            <fieldset class="choice-set">
+              <legend>Is your team already on hubStudio? <span class="req">*</span></legend>
+              <div class="choice">
+                {TEAM_STATUS.map((o) => (
+                  <label class="pick-wrap">
+                    <input type="radio" name="team" value={o.value} required />
+                    <span class="pick">{o.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          </fieldset>
+
+          <fieldset class="bk-panel">
+            <legend class="bk-legend">The sessions</legend>
+            <fieldset class="choice-set">
+              <legend>Session language <span class="req">*</span></legend>
+              <div class="choice">
+                {SESSION_LANGUAGES.map((o) => (
+                  <label class="pick-wrap">
+                    <input type="radio" name="sessionLanguage" value={o.value} required />
+                    <span class="pick">{o.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <div class="field bk-date">
+              <label for="date">Preferred date <span class="req">*</span></label>
+              <input id="date" name="date" type="date" required autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="people">Who’s coming <span class="opt-tag">optional</span></label>
+              <textarea
+                id="people"
+                name="people"
+                rows="4"
+                maxlength={LIMITS.people}
+                placeholder="Names and roles of the people we’ll train, if you know them."
+              ></textarea>
+            </div>
+            <!-- Read off the browser rather than asked for. -->
+            <input type="hidden" name="timezone" id="timezone" />
+          </fieldset>
+
+          <div class="form-foot">
+            <button type="submit" class="btn btn--primary form-submit">Book the sessions</button>
+            <p class="form-fine">
+              Nothing is charged here. You pay on the next page, and we confirm the first session by
+              email within one business day.
+            </p>
+          </div>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+
+          <p class="bk-privacy">
+            We use what you write here to prepare and confirm the sessions, and for nothing else.
+            See the <a href="/privacy">privacy notice</a>.
+          </p>
+        </form>
+      </div>
+
+      <aside class="rail">
+        <span class="eyebrow">Good to know</span>
+        <div class="rail__block">
+          <span class="rail__label">Next, payment</span>
+          <p class="rail__text">
+            Once you send this, you pay 500 USD by card or Alipay on the next page. 250 USD of it
+            goes into your team’s wallet in hubStudio.
+          </p>
+        </div>
+        <div class="rail__block">
+          <span class="rail__label">What it includes</span>
+          <p class="rail__text">
+            We set up your team with you, train your people, then answer your questions free for
+            three months. <a href="/services/onboarding">Read the details</a>.
+          </p>
+        </div>
+        <div class="rail__block">
+          <span class="rail__label">Still deciding</span>
+          <p class="rail__text">
+            Ask us first. The <a href="/contact?way=app">contact form</a> reaches a person, who
+            replies within one business day.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---- Hero ---------------------------------------------------- */
+  .bk-hero {
+    padding-top: clamp(40px, 6vw, 88px);
+    padding-bottom: clamp(96px, 10vw, 150px);
+  }
+  .bk-crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .bk-crumbs a:hover {
+    color: var(--brand-orange);
+  }
+  .bk-hero__eyebrow {
+    color: var(--brand-orange-cta);
+  }
+  .bk-hero__title {
+    margin-top: 14px;
+    max-width: 14ch;
+    font-size: clamp(44px, 5.6vw, 80px);
+    letter-spacing: -0.035em;
+  }
+  .bk-hero__title .accent {
+    color: var(--brand-orange);
+  }
+  .bk-hero__lead {
+    margin-top: 22px;
+    max-width: 56ch;
+  }
+  .bk-hero__meta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+  }
+  .bk-hero__meta li {
+    position: relative;
+    padding-left: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+  .bk-hero__meta li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 7px;
+    height: 7px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+
+  /* ---- Sheet: form and rail ------------------------------------ */
+  .bk-sheet {
+    position: relative;
+    margin-top: calc(-1 * clamp(28px, 3.6vw, 60px));
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    padding-block: clamp(72px, 8vw, 120px);
+    background: var(--bg-white);
+  }
+  .bk-grid {
+    display: grid;
+    gap: 48px;
+  }
+  @media (min-width: 960px) {
+    .bk-grid {
+      grid-template-columns: 1fr minmax(260px, 320px);
+      gap: 64px;
+      align-items: start;
+    }
+    .rail {
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+    }
+  }
+
+  .bk-card__chip {
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange-cta);
+  }
+  .bk-card__head {
+    margin-top: 16px;
+    max-width: 24ch;
+  }
+  .bk-form {
+    margin-top: 30px;
+    display: grid;
+    gap: 22px;
+  }
+
+  /* Each section of the form is a titled panel. */
+  .bk-panel {
+    min-width: 0;
+    margin: 0;
+    padding: 0 24px 26px;
+    display: grid;
+    gap: 22px;
+    border: 1px solid var(--line-strong);
+    border-radius: 22px;
+    background: var(--bg-cream);
+  }
+  .bk-legend {
+    float: left;
+    width: 100%;
+    padding: 20px 0 0;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+  .bk-legend + * {
+    clear: both;
+  }
+
+  /* Honeypot: kept in the layout flow for bots, invisible to people. */
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .row {
+    display: grid;
+    gap: 22px;
+  }
+  @media (min-width: 620px) {
+    .row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .field {
+    display: grid;
+    gap: 8px;
+  }
+  .field label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .req {
+    color: var(--brand-orange);
+  }
+  .opt-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 13px 15px;
+    font: inherit;
+    font-size: 15px;
+    color: var(--text-ink);
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    transition: border-color 120ms ease-out;
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.55;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: var(--text-mute);
+    opacity: 0.7;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--brand-orange);
+  }
+  .bk-date {
+    max-width: 260px;
+  }
+
+  /* Radio pills, as on /contact. */
+  .choice-set {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  .choice-set legend {
+    padding: 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .choice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pick-wrap {
+    display: inline-flex;
+    cursor: pointer;
+  }
+  .pick-wrap input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pick {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line-strong);
+    background: var(--bg-white);
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-ink);
+    transition: background-color 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out;
+  }
+  .pick-wrap:hover .pick {
+    border-color: var(--brand-orange);
+    color: var(--brand-orange);
+  }
+  .pick-wrap input:checked + .pick {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    color: #fff;
+  }
+  .pick-wrap input:focus-visible + .pick {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 2px;
+  }
+
+  .form-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 20px;
+    padding-top: 6px;
+  }
+  .form-submit {
+    flex: none;
+  }
+  .form-fine {
+    flex: 1;
+    min-width: 220px;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .form-status {
+    margin: 0;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: var(--type-small);
+    line-height: 1.5;
+  }
+  .form-status[data-tone='err'] {
+    background: rgba(233, 78, 27, 0.1);
+    color: var(--brand-orange-deep);
+  }
+  .bk-privacy {
+    font-size: var(--type-small);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+  .bk-privacy a {
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+
+  /* ---- Rail ---------------------------------------------------- */
+  .rail__block {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .rail__label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .rail__text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .rail__text a {
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .rail__text a:hover,
+  .bk-privacy a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 619px) {
+    .bk-panel {
+      padding: 0 18px 22px;
+    }
+  }
+</style>
+
+<script>
+  import { t } from '../../../scripts/i18n';
+
+  const form = document.getElementById('booking-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status') as HTMLParagraphElement | null;
+  const submit = form?.querySelector('.form-submit') as HTMLButtonElement | null;
+
+  /* The bookable range, computed here because the page is prerendered (a
+     build-time date would be wrong the next day). Mirrors bookingBounds() in
+     src/lib/onboarding.ts; the endpoint enforces it again. */
+  const date = document.getElementById('date') as HTMLInputElement | null;
+  if (date) {
+    const DAY = 86_400_000;
+    const midnight = new Date().setUTCHours(0, 0, 0, 0);
+    const iso = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+    date.min = iso(midnight - DAY);
+    date.max = iso(midnight + 120 * DAY);
+  }
+
+  /* Timezone, read off the machine rather than asked for. */
+  const zone = document.getElementById('timezone') as HTMLInputElement | null;
+  try {
+    const resolved = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (resolved && zone) zone.value = resolved;
+  } catch {
+    // No Intl: the email says the zone was not detected.
+  }
+
+  /* Submit over fetch for inline errors. Without JS the form still posts to
+     /api/onboarding and the endpoint redirects to the payment page. */
+  form?.addEventListener('submit', async (event) => {
+    if (!form.reportValidity()) return;
+    event.preventDefault();
+    if (!submit || !status) return;
+
+    submit.disabled = true;
+    const label = submit.textContent;
+    submit.textContent = t('Sending…');
+    status.hidden = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
+        // The middleware localizes data-href on French and Chinese pages.
+        // replace(), so Back does not return to a spent form.
+        window.location.replace(form.dataset.href || '/thank-you/onboarding');
+        return;
+      }
+      // The endpoint answers in the page's language (it reads the Referer).
+      status.textContent =
+        data.error || t('Something went wrong. Email hello@bearingbridge.com and we will pick it up.');
+      status.dataset.tone = 'err';
+      status.hidden = false;
+    } catch {
+      status.textContent = t('Network error. Email hello@bearingbridge.com and we will pick it up.');
+      status.dataset.tone = 'err';
+      status.hidden = false;
+    }
+    submit.disabled = false;
+    submit.textContent = label;
+  });
+</script>

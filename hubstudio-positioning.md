@@ -86,6 +86,12 @@ A studio engagement starts with a brief sent through `/contact`.
   image or per second, no markups, no "1 credit = 1 USD". The studio's rates are
   never published either (asset-based, project-based or retainer, quoted after
   a brief; a written proposal within 48 hours).
+- **One exception, the onboarding offer** (owner decision, October 8, 2026):
+  `/services/onboarding`, its booking page, its payment page and its card on
+  `/solutions` print its price: 500 USD, one payment, 250 USD of it back in the
+  team’s wallet (the prepaid balance). French pages show 500 € and 250 €,
+  Chinese pages 3,500 CNY and 1,750 CNY (in yuan). No other amount anywhere, and the
+  payment provider is never named.
 
 ## App facts you may use (and nothing beyond them)
 

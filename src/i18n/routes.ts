@@ -205,6 +205,8 @@ export const FR_PATHS: Record<string, string> = {
   ...Object.fromEntries(
     Object.entries(DESIGN).map(([en, fr]) => [`/services/design/${en}`, `/fr/services/design/${fr}`]),
   ),
+  '/services/onboarding': '/fr/services/prise-en-main',
+  '/services/onboarding/book': '/fr/services/prise-en-main/reserver',
   '/solutions': '/fr/solutions',
   '/solutions/agencies': '/fr/solutions/agences',
   '/solutions/ai-production/content': '/fr/solutions/production-ia/contenu',
@@ -224,6 +226,7 @@ export const FR_PATHS: Record<string, string> = {
   '/studio/with-the-app': '/fr/studio/avec-l-application',
   '/terms': '/fr/conditions',
   '/thank-you': '/fr/merci',
+  '/thank-you/onboarding': '/fr/merci/prise-en-main',
   '/work': '/fr/realisations',
   ...Object.fromEntries(WORK.map((s) => [`/work/${s}`, `/fr/realisations/${s}`])),
 };

@@ -1,0 +1,262 @@
+---
+/**
+ * Payment  ·  /thank-you/onboarding
+ *
+ * Where /api/onboarding lands a booking, and step two of the onboarding
+ * offer: the payment. The form asked for a date, not an hour, so the first
+ * session is confirmed by email within one business day. The pay button is
+ * the Payment Link in the currency of the page (ONBOARDING_PAY, picked by
+ * Astro.locals.locale). The copy never names the payment provider.
+ *
+ * Built like /thank-you (image hero, then a short band), kept out of the
+ * sitemap by its /thank-you prefix and out of the index by `noindex`.
+ */
+import Layout from '../../layouts/Layout.astro';
+import { ONBOARDING_PAY } from '../../lib/onboarding';
+
+// The payment link in the currency of the page being rendered.
+const payHref = ONBOARDING_PAY[Astro.locals.locale ?? 'en'];
+
+/* What happens next, in order, each labelled by when (never numbered). */
+const next = [
+  {
+    when: 'Within one business day',
+    text: 'We email you to confirm the first session, with the hours, based on the date you picked.',
+  },
+  {
+    when: 'Before the first session',
+    text: 'Have the list of people to invite ready, and your client list if you make work for clients.',
+  },
+  {
+    when: 'At least four hours, live',
+    text: 'We set up your team with you: people and rights, limits, clients, connections, skills, and Validation. Then everyone gets trained.',
+  },
+  {
+    when: 'For three months after',
+    text: 'Ask us anything, free. And 250 USD of the fee goes into your team’s wallet, to spend on images and video.',
+  },
+];
+---
+
+<Layout
+  heroOverlay
+  noindex
+  title="Onboarding booked: one step left | hubStudio"
+  description="Your onboarding request is in. Pay the 500 USD, and we confirm your first session by email within one business day."
+>
+  <!-- ===== S1: Hero, with the payment ===== -->
+  <section class="py-hero">
+    <div class="py-hero__media" aria-hidden="true">
+      <div class="py-hero__scrim"></div>
+    </div>
+
+    <div class="container py-hero__inner">
+      <div class="py-hero__copy">
+        <span class="eyebrow py-hero__eyebrow">Onboarding booked</span>
+        <h1 class="headline h1 reveal py-hero__title">
+          Your request is in. Now the <span class="accent">payment</span>.
+        </h1>
+        <p class="lead py-hero__lead">
+          Pay the 500 USD by card or Alipay. We confirm your first session by email within one
+          business day.
+        </p>
+        <div class="py-hero__cta">
+          <a class="btn btn--primary py-hero__pay" href={payHref}>Pay 500 USD</a>
+          <a class="btn btn--on-dark" href="/services/onboarding">What onboarding covers</a>
+        </div>
+        <p class="py-hero__note">
+          250 USD of it goes into your team’s wallet in hubStudio. Watch for our email at the
+          address you gave us. Closing this page? The pay link is also at the end of the
+          <a href="/services/onboarding#order">onboarding page</a>. A question first? Write to
+          <a href="mailto:hello@bearingbridge.com">hello@bearingbridge.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S2: What happens next ===== -->
+  <section class="section py-next">
+    <div class="container">
+      <header class="py-next__head">
+        <span class="eyebrow">What happens next</span>
+        <h2 class="headline h2 reveal">
+          From the payment to your first <span class="accent">session</span>.
+        </h2>
+      </header>
+      <div class="py-next__grid">
+        {
+          next.map((n) => (
+            <article class="py-next__card card card--white">
+              <span class="py-next__when">
+                <span class="py-dot" aria-hidden="true"></span>
+                {n.when}
+              </span>
+              <p class="py-next__text">{n.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---- S1 Hero ------------------------------------------------- */
+  .py-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: clamp(540px, 78vh, 820px);
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    /* Pull up under the transparent sticky header. */
+    margin-top: -64px;
+  }
+  @media (min-width: 1024px) {
+    .py-hero {
+      margin-top: calc(-1 * var(--nav-h));
+    }
+  }
+  .py-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--bg-ink) url('/Images/app-desk.webp') center / cover no-repeat;
+  }
+  .py-hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 12, 28, 0.95) 0%,
+        rgba(8, 12, 28, 0.72) 50%,
+        rgba(8, 12, 28, 0.34) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 12, 28, 0.6) 0%,
+        rgba(8, 12, 28, 0.14) 34%,
+        rgba(8, 12, 28, 0.82) 100%
+      );
+  }
+  .py-hero__inner {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-h) + 56px);
+    padding-bottom: 64px;
+  }
+  .py-hero__copy {
+    max-width: 740px;
+  }
+  .py-hero__eyebrow {
+    color: var(--brand-orange);
+  }
+  .py-hero__title {
+    margin-top: 20px;
+    color: #fff;
+    font-size: clamp(40px, 5.4vw, 78px);
+  }
+  .py-hero__lead {
+    margin-top: 22px;
+    max-width: 52ch;
+    color: rgba(240, 237, 233, 0.84);
+  }
+  .py-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .py-hero__pay {
+    padding-inline: 34px;
+  }
+  .py-hero__note {
+    margin-top: 22px;
+    max-width: 60ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.7);
+  }
+  .py-hero__note a {
+    font-weight: 600;
+    color: var(--brand-orange);
+  }
+  .py-hero__note a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---- S2 What happens next ------------------------------------ */
+  .py-next__head {
+    max-width: 680px;
+    display: grid;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .py-next__grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 768px) {
+    .py-next__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .py-next__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .py-next__card {
+    padding: 30px 28px 32px;
+  }
+  .py-next__when {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+  }
+  .py-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .py-next__text {
+    margin-top: 14px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-ink);
+  }
+</style>
+
+<script>
+  /* Reveal headlines on scroll (§10: headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

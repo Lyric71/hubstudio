@@ -1,0 +1,874 @@
+---
+/**
+ * Onboarding  ·  /services/onboarding
+ *
+ * The paid onboarding of the hubStudio app: 500 USD, one payment, for at
+ * least four hours of live sessions (the team set up with the customer, its
+ * people trained), then three months of free support. 250 USD of it goes
+ * back into the team's wallet in the app, spent like any other money in it.
+ * That is the reason to buy, so it is the headline, the first section, and
+ * the line read just before the order cards.
+ *
+ * Every setup claim comes from the app's own configuration (the hubstudio
+ * entry of the app repository's src/lib/app.ts: a team, four roles, modules
+ * and rights per person, client logins) and from the help center on this
+ * site (your-team, balance-and-payments, skills, validation, linkedin):
+ * nothing here describes a feature the app does not have.
+ *
+ * Two steps, in this order: book the date (ONBOARDING_BOOK, the form), then
+ * pay (ONBOARDING_PAY, the link in the currency of the page, also offered on
+ * /thank-you/onboarding right after the form). The cards are labelled First
+ * and Then, never numbered. The copy never names the payment provider.
+ *
+ * Owner decision for this page only: it prints the price, which the
+ * positioning file otherwise keeps off the site. French pages show it in
+ * euros, Chinese pages in yuan (the dictionaries carry the local amounts).
+ */
+import Layout from '../../layouts/Layout.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { HELP_URL } from '../../lib/links';
+import { ONBOARDING_BOOK, ONBOARDING_PAY } from '../../lib/onboarding';
+
+// The payment link in the currency of the page being rendered.
+const payHref = ONBOARDING_PAY[Astro.locals.locale ?? 'en'];
+
+const facts: [string, string][] = [
+  ['Price', '500 USD, one payment'],
+  ['Back in your wallet', '250 USD, to spend in the app'],
+  ['Sessions', 'At least four hours, live'],
+  ['Training', 'Everyone who’ll use it'],
+  ['Support', 'Free for three months'],
+];
+
+/* Icons: authored for this page (32 by 32, stroked, one orange shape each). */
+const setup = [
+  {
+    icon: 'team',
+    t: 'Your team',
+    b: 'The workspace your company works in, and the wallet your 250 USD lands in. We name it, fill in the invoice details, choose the interface languages, and decide whether everyone gets an emailed code at sign-in.',
+  },
+  {
+    icon: 'rights',
+    t: 'People and rights',
+    b: 'Everyone who needs a login gets one of four roles: Admin, Creator, Viewer, or Client. Then we go person by person: which modules they see, what they may do in each, who publishes, and who approves.',
+  },
+  {
+    icon: 'limits',
+    t: 'Spending limits',
+    b: 'Each creator can get a daily limit on the team wallet. Automatic top-up is optional and has its own daily ceiling. We size both to the work you plan to run.',
+  },
+  {
+    icon: 'clients',
+    t: 'Clients',
+    b: 'Each company you make work for, with logins for its people. They see only what’s tagged as made for them, in their own Client space, and they approve it in Validation.',
+  },
+];
+
+const training = [
+  'Pick an engine and see the price before you run it',
+  'Find any render in History and reuse its prompt',
+  'Write a post and schedule it',
+  'Send work for approval, or approve it',
+  'Add a person, a client, or a skill without calling us',
+];
+
+const questions = [
+  'How do I give a client a login?',
+  'Why was this run refused?',
+  'Is this daily limit set right?',
+  'Why didn’t this post go out?',
+];
+
+const SITE = 'https://www.hubstudio.ai';
+const pageUrl = `${SITE}/services/onboarding`;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
+    { '@type': 'ListItem', position: 3, name: 'Onboarding', item: pageUrl },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'hubStudio onboarding',
+  serviceType: 'Live onboarding and team training for the hubStudio app',
+  url: pageUrl,
+  description:
+    'At least four hours of live sessions: the hubStudio team set up with the customer and its people trained, then three months of free support. Part of the fee goes back into the team’s wallet in the app.',
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: 'Worldwide',
+};
+---
+
+<Layout
+  title="hubStudio onboarding: 500 USD, 250 back in your wallet"
+  description="Four hours or more of live sessions to set up hubStudio and train your team, then three months of free support. 500 USD, and 250 goes into your wallet."
+  image="/Images/app-desk.webp"
+  preloadImage="/Images/app-desk.webp"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="ob-hero">
+    <div class="container ob-hero__grid">
+      <div class="ob-hero__copy">
+        <nav class="ob-crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="/solutions">Solutions</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Onboarding</span>
+        </nav>
+        <span class="eyebrow ob-hero__eyebrow">Onboarding</span>
+        <h1 class="headline h1 ob-hero__title">
+          Pay 500 USD, get 250 back in your <span class="accent">wallet</span>.
+        </h1>
+        <p class="lead ob-hero__lead">
+          Onboarding costs 500 USD, and 250 of it goes straight back into your team’s wallet in
+          hubStudio, the prepaid balance you spend on images and video. The other 250 pays for at
+          least four hours of live sessions with our team. We set up your workspace with you and
+          train everyone who’ll use it. Questions stay free for three months after that.
+        </p>
+        <div class="ob-hero__cta">
+          <a class="btn btn--primary" href={ONBOARDING_BOOK.href}>{ONBOARDING_BOOK.label}</a>
+          <a class="btn btn--secondary" href="#setup">See what we set up</a>
+        </div>
+      </div>
+      <figure class="ob-hero__figure">
+        <img
+          src="/Images/app-desk.webp"
+          alt="Two colleagues at a laptop in a sunlit office, one pointing at the screen while the other listens, pen in hand."
+          width="1600"
+          height="1200"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </div>
+
+    <div class="container">
+      <dl class="ob-facts">
+        {
+          facts.map(([k, v]) => (
+            <div class="ob-facts__row">
+              <dt>{k}</dt>
+              <dd>{v}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===== The 250 USD: the payment as two meters ===== -->
+  <section class="ob-sheet ob-sheet--white" id="wallet">
+    <div class="container ob-wallet">
+      <div>
+        <span class="eyebrow">Your 250 USD</span>
+        <h2 class="headline h2 reveal ob-wallet__title">
+          Your first 250 USD in the app, paid <span class="accent">for</span>.
+        </h2>
+        <p class="ob-quote">
+          That’s <span class="ob-quote__acc">250 USD of images and video</span> before you top up
+          yourself.
+        </p>
+        <p class="ob-p">
+          Think of it as your first top-up, done for you. It lands in your team’s wallet like any
+          other top-up, not as a coupon, and pays for runs, storage, and downloads at the usual
+          prices. It never expires.
+        </p>
+      </div>
+      <div class="ob-bill">
+        <span class="ob-bill__label">One payment, 500 USD</span>
+        <div class="ob-meter">
+          <span class="ob-meter__name">Into your wallet</span>
+          <span class="ob-meter__val">250 USD</span>
+          <span class="ob-meter__track"><span class="ob-meter__fill" style="--v: 0.5"></span></span>
+        </div>
+        <div class="ob-meter">
+          <span class="ob-meter__name">The sessions and three months of support</span>
+          <span class="ob-meter__val">250 USD</span>
+          <span class="ob-meter__track"><span class="ob-meter__fill ob-meter__fill--navy" style="--v: 0.5"></span></span>
+        </div>
+        <a class="ob-arrow" href="/pricing">
+          How paying works <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== What we set up: four tiles, then the rest in prose ===== -->
+  <section class="ob-sheet ob-sheet--ink grain" id="setup">
+    <div class="container">
+      <header class="ob-head ob-head--dark">
+        <span class="eyebrow">What we set up</span>
+        <h2 class="headline h2 reveal">
+          Seven things we settle with you in the <span class="accent">sessions</span>.
+        </h2>
+        <p class="ob-head__lead">
+          Here’s where the four hours go. Each one is a real setting in the app, documented in the
+          <a href={`${HELP_URL}/your-team`}>help center</a>. Sessions run in English, French, or
+          Chinese. Bring the names of the people who need a login and, if you make work for
+          clients, your client list.
+        </p>
+      </header>
+
+      <div class="ob-tiles">
+        {
+          setup.map((s) => (
+            <article class="ob-tile">
+              <svg class="ob-tile__icon" viewBox="0 0 32 32" aria-hidden="true">
+                {s.icon === 'team' && (
+                  <>
+                    <rect x="4" y="7" width="24" height="18" rx="4" />
+                    <path d="M4 13h24" />
+                    <circle cx="22" cy="19" r="2.6" fill="var(--brand-orange)" stroke="none" />
+                  </>
+                )}
+                {s.icon === 'rights' && (
+                  <>
+                    <circle cx="12" cy="11" r="4.5" />
+                    <path d="M4 26c0-4.6 3.6-8 8-8s8 3.4 8 8" />
+                    <path d="m20 15 3 3 6-6" stroke="var(--brand-orange)" />
+                  </>
+                )}
+                {s.icon === 'limits' && (
+                  <>
+                    <path d="M5 23a11 11 0 0 1 22 0" />
+                    <path d="M16 23 22 14" />
+                    <circle cx="16" cy="23" r="2.4" fill="var(--brand-orange)" stroke="none" />
+                  </>
+                )}
+                {s.icon === 'clients' && (
+                  <>
+                    <rect x="4" y="9" width="16" height="17" rx="3" />
+                    <rect x="12" y="5" width="16" height="17" rx="3" />
+                    <path d="M17 11h6" stroke="var(--brand-orange)" />
+                  </>
+                )}
+              </svg>
+              <h3 class="ob-tile__title">{s.t}</h3>
+              <p class="ob-tile__body">{s.b}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="ob-setup__rest">
+        <p class="ob-p ob-p--first">
+          The other three decide how the work gets made and shipped. Social accounts in
+          hubStudio are personal, so each person connects their own LinkedIn, Instagram, Facebook,
+          TikTok, YouTube, and X on My Connections. Then the <a href={`${HELP_URL}/skills`}>skills</a>:
+          we walk your team through the Catalog, from e-commerce packshots to vertical video ads,
+          and write your house style as team skills, so Improve with AI and the post drafts follow
+          it. Last comes <a href={`${HELP_URL}/validation`}>Validation</a>: who approves what, and
+          which of your clients’ people sign off on their own work.
+        </p>
+        <p class="ob-aside">
+          Want our studio to make the work as well? <a href="/studio/with-the-app">Studio + app</a>
+          covers that, as a separate offer quoted after a brief.
+        </p>
+      </div>
+
+      <div class="ob-shots">
+        <AppShot shot={appShots.teamInvite} path="/team" dark caption />
+        <AppShot shot={appShots.teamClients} path="/team" dark caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Training: the list first ===== -->
+  <section class="ob-sheet ob-sheet--white" id="training">
+    <div class="container">
+      <header class="ob-head">
+        <span class="eyebrow">Training</span>
+        <h2 class="headline h2 reveal">Everyone trained on the job they <span class="accent">do</span>.</h2>
+      </header>
+      <div class="ob-pair">
+        <div class="ob-list">
+          <span class="ob-list__label">What everyone leaves able to do</span>
+          <ul>
+            {training.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div>
+          <p class="ob-p ob-p--first">
+            Then the people who’ll use it. Each person practices what they’ll do in hubStudio, on
+            your own projects, until they can do it alone. Admins spend most of the time on team
+            settings. The people who approve practice on real drafts.
+          </p>
+          <p class="ob-aside">
+            Someone joining later? The <a href={HELP_URL}>help center</a> has a step-by-step guide
+            to every screen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Support ===== -->
+  <section class="ob-sheet ob-sheet--cream" id="support">
+    <div class="container ob-pair">
+      <div>
+        <span class="eyebrow">Afterwards</span>
+        <h2 class="headline h2 reveal ob-support__title">
+          Three months of answers, at no <span class="accent">charge</span>.
+        </h2>
+        <p class="ob-p">For three months after onboarding, ask us anything, however small.</p>
+        <p class="ob-p">
+          After that, the <a href={HELP_URL}>help center</a> is still there, and the
+          <a href="/contact?way=app">contact form</a> still reaches a person, who replies within one
+          business day.
+        </p>
+      </div>
+      <div class="ob-list ob-list--white">
+        <span class="ob-list__label">Ask things like</span>
+        <ul>
+          {questions.map((q) => <li>{q}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Order: the two steps, in words ===== -->
+  <section class="ob-sheet ob-sheet--white" id="order">
+    <div class="container">
+      <header class="ob-head">
+        <span class="eyebrow">Order</span>
+        <h2 class="headline h2 reveal">Book the date, then <span class="accent">pay</span>.</h2>
+        <p class="ob-head__lead">Still weighing the price? Half of it, 250 USD, comes back to your wallet.</p>
+      </header>
+      <div class="ob-steps">
+        <article class="ob-step">
+          <span class="ob-step__tag"><span class="ob-dot" aria-hidden="true"></span>First</span>
+          <h3 class="ob-step__title">Book your date</h3>
+          <p class="ob-p">
+            Tell us who’s coming, the date that suits you, and whether the sessions run in English,
+            French, or Chinese. Nothing is charged on the form.
+          </p>
+          <div class="ob-step__cta">
+            <a class="btn btn--primary" href={ONBOARDING_BOOK.href}>{ONBOARDING_BOOK.label}</a>
+          </div>
+        </article>
+        <article class="ob-step">
+          <span class="ob-step__tag"><span class="ob-dot" aria-hidden="true"></span>Then</span>
+          <h3 class="ob-step__title">Pay 500 USD</h3>
+          <p class="ob-p">
+            By card or Alipay, on the next page, right after you send the form. We confirm your
+            first session by email within one business day.
+          </p>
+          <p class="ob-step__paid">Already booked? <a href={payHref}>Pay here</a>.</p>
+        </article>
+      </div>
+      <p class="ob-updated">Updated October 8, 2026</p>
+    </div>
+  </section>
+
+  <DualCta
+    eyebrow="No rush"
+    pre="Or start on your "
+    accent="own"
+    post="."
+    text="You don’t need onboarding to use hubStudio. An account costs nothing to open, you pay only for what you run, and you can call us in later."
+  />
+</Layout>
+
+<style>
+  /* ---- Sheets (style guide 3) ---------------------------------- */
+  .ob-sheet {
+    position: relative;
+    margin-top: calc(-1 * clamp(28px, 3.6vw, 60px));
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    padding-block: clamp(88px, 10vw, 150px);
+    scroll-margin-top: var(--nav-h);
+  }
+  .ob-sheet--white {
+    background: var(--bg-white);
+  }
+  .ob-sheet--cream {
+    background: var(--bg-cream);
+  }
+  .ob-sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+  }
+
+  .ob-head {
+    display: grid;
+    gap: 14px;
+    max-width: 760px;
+    margin-bottom: clamp(36px, 4vw, 56px);
+  }
+  .ob-head__lead {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .ob-head--dark .eyebrow {
+    color: var(--brand-orange);
+  }
+  .ob-head--dark .headline {
+    color: #fff;
+  }
+  .ob-head--dark .ob-head__lead {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .ob-p {
+    margin-top: 16px;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+    max-width: 62ch;
+  }
+  .ob-p--first {
+    margin-top: 0;
+  }
+  .ob-sheet--ink .ob-p {
+    color: rgba(240, 237, 233, 0.8);
+  }
+  .ob-p a,
+  .ob-aside a,
+  .ob-step__paid a {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+  }
+  .ob-sheet--ink .ob-p a,
+  .ob-sheet--ink .ob-aside a {
+    color: var(--brand-orange);
+  }
+  .ob-p a:hover,
+  .ob-aside a:hover,
+  .ob-step__paid a:hover {
+    text-decoration: underline;
+  }
+  .ob-aside {
+    margin-top: 24px;
+    padding: 18px 22px;
+    border-left: 3px solid var(--brand-orange);
+    background: var(--bg-cream);
+    border-radius: 0 16px 16px 0;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    max-width: 62ch;
+  }
+  .ob-sheet--cream .ob-aside {
+    background: var(--bg-white);
+  }
+  .ob-sheet--ink .ob-aside {
+    background: rgba(240, 237, 233, 0.06);
+    color: rgba(240, 237, 233, 0.86);
+  }
+  .ob-arrow {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 26px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .ob-arrow span {
+    display: inline-block;
+    transition: transform 160ms ease-out;
+  }
+  .ob-arrow:hover span {
+    transform: translateX(6px);
+  }
+  .ob-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* ---- Hero ---------------------------------------------------- */
+  .ob-hero {
+    padding-top: clamp(40px, 6vw, 88px);
+    padding-bottom: clamp(96px, 11vw, 160px);
+  }
+  .ob-hero__grid {
+    display: grid;
+    gap: 44px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .ob-hero__grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+    }
+  }
+  .ob-crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .ob-crumbs a:hover {
+    color: var(--brand-orange);
+  }
+  .ob-hero__eyebrow {
+    color: var(--brand-orange-cta);
+  }
+  .ob-hero__title {
+    margin-top: 14px;
+    font-size: clamp(44px, 5.4vw, 78px);
+    letter-spacing: -0.035em;
+  }
+  .ob-hero__title .accent {
+    color: var(--brand-orange);
+  }
+  .ob-hero__lead {
+    margin-top: 22px;
+    max-width: 54ch;
+  }
+  .ob-hero__cta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ob-hero__figure {
+    position: relative;
+    margin: 0;
+  }
+  .ob-hero__figure::before {
+    content: '';
+    position: absolute;
+    inset: 18px -14px -14px 18px;
+    border-radius: var(--radius-card);
+    background: var(--brand-orange);
+    z-index: 0;
+  }
+  .ob-hero__figure img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* The facts: a ruled strip under the hero, label over value. */
+  .ob-facts {
+    margin: clamp(48px, 6vw, 80px) 0 0;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line-strong);
+  }
+  @media (min-width: 640px) {
+    .ob-facts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .ob-facts {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .ob-facts__row {
+    padding: 18px 20px 18px 0;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .ob-facts dt {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .ob-facts dd {
+    margin: 8px 0 0;
+    font-size: var(--type-body);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    color: var(--text-ink);
+  }
+
+  /* ---- Wallet -------------------------------------------------- */
+  .ob-wallet {
+    display: grid;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (min-width: 960px) {
+    .ob-wallet {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 72px;
+    }
+  }
+  .ob-wallet__title {
+    margin-top: 14px;
+  }
+  .ob-quote {
+    margin-top: 28px;
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    max-width: 30ch;
+  }
+  .ob-quote__acc {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange-cta);
+  }
+  .ob-bill {
+    padding: clamp(28px, 3.4vw, 40px);
+    border-radius: var(--radius-card);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    display: grid;
+    gap: 22px;
+  }
+  .ob-bill__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+  }
+  .ob-meter {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 16px;
+    align-items: baseline;
+  }
+  .ob-meter__name {
+    font-size: var(--type-body);
+    line-height: 1.45;
+    color: var(--text-ink);
+  }
+  .ob-meter__val {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .ob-meter__track {
+    grid-column: 1 / -1;
+    height: 8px;
+    border-radius: var(--radius-pill);
+    background: rgba(10, 10, 20, 0.08);
+    overflow: hidden;
+  }
+  .ob-meter__fill {
+    display: block;
+    height: 100%;
+    width: calc(var(--v) * 100%);
+    border-radius: inherit;
+    background: var(--brand-orange);
+  }
+  .ob-meter__fill--navy {
+    background: var(--brand-navy);
+  }
+
+  /* ---- Setup --------------------------------------------------- */
+  .ob-tiles {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 720px) {
+    .ob-tiles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .ob-tiles {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .ob-tile {
+    padding: 30px 28px 32px;
+    border-radius: clamp(20px, 2vw, 30px);
+    background: rgba(240, 237, 233, 0.05);
+    border: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .ob-tile__icon {
+    width: 36px;
+    height: 36px;
+    fill: none;
+    stroke: var(--text-on-dark);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .ob-tile__title {
+    margin-top: 22px;
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .ob-tile__body {
+    margin-top: 10px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .ob-setup__rest {
+    margin-top: clamp(40px, 5vw, 64px);
+    max-width: 760px;
+  }
+  .ob-shots {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: grid;
+    gap: 32px;
+  }
+
+  /* ---- Training, support: a list card beside prose -------------- */
+  .ob-pair {
+    display: grid;
+    gap: 44px;
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .ob-pair {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+  }
+  .ob-support__title {
+    margin-top: 14px;
+  }
+  .ob-list {
+    padding: clamp(28px, 3.4vw, 40px);
+    border-radius: var(--radius-card);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  .ob-list--white {
+    background: var(--bg-white);
+    border-color: var(--line-hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .ob-list__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+  }
+  .ob-list ul {
+    margin-top: 20px;
+    display: grid;
+    gap: 14px;
+    list-style: none;
+    padding: 0;
+  }
+  .ob-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: var(--text-ink);
+  }
+  .ob-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+
+  /* ---- Order --------------------------------------------------- */
+  .ob-steps {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 860px) {
+    .ob-steps {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .ob-step {
+    padding: clamp(28px, 3.4vw, 44px);
+    border-radius: var(--radius-card);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+  }
+  .ob-step__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange-cta);
+  }
+  .ob-step__title {
+    margin-top: 14px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .ob-step__cta {
+    margin-top: auto;
+    padding-top: 28px;
+  }
+  .ob-updated {
+    margin-top: 28px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+  .ob-step__paid {
+    margin-top: auto;
+    padding-top: 28px;
+    font-size: var(--type-body);
+    color: var(--text-mute);
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

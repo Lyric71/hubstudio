@@ -75,6 +75,8 @@ Brand Identity / Illustration Design / Packaging & Merch Design -> 品牌识别 
 Presentation Design / Pitch Deck / Ebook and Digital Reports / Press Release -> 演示文稿设计 / 路演文稿 / 电子书与数字报告 / 新闻稿
 Brands / Agencies / Retailers / Manufacturers -> 品牌方 / 代理公司 / 零售商 / 制造商
 Consulting / Training -> 咨询 / 培训
+Onboarding (the paid service, /services/onboarding) -> 上线引导; Book onboarding -> 预约上线引导; session -> 辅导
+wallet (onboarding pages: the team’s prepaid balance) -> 余额 / 团队余额 (never 额度 on the site); price shown in yuan on Chinese pages: 3,500 元人民币, 1,750 元 back (owner decision), paid by 银行卡、支付宝或微信支付
 Self-serve / Managed / Full service -> 自助 / 托管 / 全案服务
 lane -> 产线; surface -> 版位; placement -> 投放位; brand line -> 品牌主线
 master / signed-off master -> 母版 / 已定稿的母版

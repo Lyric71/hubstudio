@@ -61,6 +61,8 @@ art director / creative director -> directeur artistique / directeur de créatio
 producer -> producteur
 Brands / Agencies / Retailers / Manufacturers -> Marques / Agences / Distributeurs / Fabricants
 Consulting / Training / AI Production -> Conseil / Formation / Production IA
+Onboarding (the paid service, /services/onboarding) -> Prise en main; Book onboarding -> Réserver la prise en main; session -> séance
+wallet (onboarding pages: the team’s prepaid balance) -> solde (de l’équipe), never « crédits » or « portefeuille »; its price is shown in euros on French pages: 500 €, 250 € back (owner decision), paid « par carte bancaire »
 Social Media / Ad Creative / Short Video -> Réseaux sociaux / Création publicitaire / Vidéo courte
 Email Design / Video Production / Motion Design -> Design d’e-mails / Production vidéo / Motion design
 eCommerce / Website Design / Print Design -> E-commerce / Création de sites web / Création print
