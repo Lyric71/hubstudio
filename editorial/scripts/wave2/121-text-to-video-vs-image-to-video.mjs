@@ -1,0 +1,73 @@
+// editorial/scripts/wave2/121-text-to-video-vs-image-to-video.mjs
+export default {
+  id: "121",
+  date: "2026-12-10",
+  family: "comparison",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Comparisons",
+  contentType: "Comparison",
+  readerStage: "budget-holder",
+  slug: "text-to-video-vs-image-to-video",
+  h1: "Text to video or image to video for product ads",
+  query: "text to video vs image to video",
+  secondary: [
+    "image to video for product ads",
+    "text to video or image to video which is better",
+    "reference to video AI",
+    "AI product video from an image or a prompt",
+  ],
+  verdict:
+    "Tool vendors and model resellers rank with definitions and demo reels; none decides for a product ad, where the product has to stay the product, or covers the third way (references) and what each way costs in retries before a clip is usable.",
+  words: 2000,
+  angle:
+    "Decide by what must stay true. When the product is on screen, open on the real picture: image to video holds the packshot, the label and the color that text to video can only describe. Text to video earns its place for mood, scenes without the product, and concept tests before a shoot. References sit between the two: borrow a character, a motion or a voice without fixing the first frame. Most product ads use all three, shot by shot.",
+  mustInclude: [
+    "A decision table: criterion (product on screen, exact label and color, scene variety, concept test, character continuity, a motion to copy) against text to video, image to video, references",
+    "What each way fixes and what it leaves to the engine: the first frame, the last frame, the subject, the motion, the sound",
+    "The cost of retries: why a clip that drifts off the product costs a rerun, described by mechanism, with no invented hit rate",
+    "In the app, per the help center: the Video studio does text to video, image to video (a start frame, or a start and last frame on the engines that take both) and references (pictures, clips and sound), with input limits per engine stated in the form; for example Seedance 2.5 takes up to 30 pictures, 10 clips and 2 sound files as references",
+    "A shot-by-shot plan for one product ad: the opening scene from text, the product shots from the packshot, the closing frame fixed with a last frame",
+    "Leaderboards rank text to video and image to video separately: cite them only as the ledger logs them, with date and vote count, no single best verdict",
+    "Pointers to animate a product photo, the vertical video ad guide and the generation or editor comparison",
+  ],
+  doNot: [
+    "Name a video tool or reseller",
+    "Claim one mode or one engine is best for every ad",
+    "Invent a success rate or retry count",
+    "Print a hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "Two public blind-vote video leaderboards, text to video and image to video boards, as logged in the ledger with date, vote count and model count",
+    "App behavior: create-a-video.md in the help center",
+    "Any keep rate for generated clips only as logged in the ledger, with its stated basis",
+  ],
+  assets: [
+    "Decision table by criterion",
+    "What each way fixes table",
+    "Shot-by-shot plan for one product ad",
+  ],
+  links: [
+    ["animate a product photo", "/resources/how-to/animate-product-photo"],
+    ["vertical video ad from a product image", "/resources/how-to/vertical-video-ad-from-product-image"],
+    ["AI video generation or a video editor", "/resources/insights/ai-video-generation-vs-video-editor"],
+    ["consistent character across images and video", "/resources/how-to/consistent-character-ai-images-video"],
+    ["all-in cost of AI video", "/resources/insights/all-in-cost-of-ai-video"],
+    ["short video service", "/services/design/short-video"],
+  ],
+  seoTitle: "Text to Video or Image to Video for Product Ads",
+  seoDesc:
+    "When to start a product ad from a prompt, from the product photo or from references: decide by what must stay true on screen, shot by shot.",
+  faqs: [
+    "What is the difference between text to video and image to video?",
+    "Is image to video better for product ads?",
+    "When should I use text to video?",
+    "What is reference to video?",
+    "Can I set the first and last frame of an AI video?",
+    "How do I keep my product accurate in an AI video?",
+  ],
+  cta: "Create your account",
+  notes: "Category Buying models. Compares ways of working, never a named tool. Distinct from animate-product-photo (the how-to) and ai-video-generation-vs-video-editor (generation against editing).",
+};

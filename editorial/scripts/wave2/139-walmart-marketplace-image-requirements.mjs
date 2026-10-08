@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/139-walmart-marketplace-image-requirements.mjs
+export default {
+  id: "139",
+  date: "2026-12-29",
+  family: "spec",
+  template: "spec",
+  brief: true,
+  status: "not_started",
+  cluster: "Platform specs",
+  contentType: "Spec page",
+  readerStage: "practitioner",
+  slug: "walmart-marketplace-image-requirements",
+  h1: "Walmart Marketplace image requirements for 2026",
+  query: "Walmart image requirements",
+  secondary: [
+    "Walmart product image size",
+    "Walmart Marketplace main image rules",
+    "Walmart image white background",
+    "Walmart product video requirements",
+    "Walmart listing quality images",
+  ],
+  verdict:
+    "STALE AND UNCITED. Listing agencies and feed tools rank with rules copied from one another, often mixing the supplier guide with Marketplace seller rules and rarely linking Walmart's own pages; none sets the main image against the additional images and rich media, or says how images feed Walmart's listing quality score.",
+  words: 1500,
+  angle:
+    "Walmart's own Marketplace Learn and Seller Help pages, read and dated: the main image, the additional images and rich media kept apart, and how images count toward listing quality. Set beside Amazon and Google Merchant Center for the seller who lists on all three. Visible Reviewed date, quarterly recheck.",
+  mustInclude: [
+    "Main image table from Walmart's own pages: background, fill of the frame, minimum and recommended size, ratio, formats, file limit, what may not appear",
+    "Additional images: how many, what they may show, from Walmart's pages",
+    "Rich media (video, 360-degree views) only as Walmart describes it for Marketplace sellers, with any eligibility condition",
+    "How images feed the listing quality score, from Walmart Seller Help",
+    "Where Walmart differs from Amazon and Google Merchant Center, in one comparison table, each value linked to its own spec page",
+    "What Walmart's pages say about AI-generated images; if they say nothing, the page says so and applies Walmart's accuracy rules instead",
+    "A visible Reviewed date and a dated changelog block at the foot",
+    "How hubStudio fits, from the help center only: a white-background packshot made from your own product photo (Image studio, Edit an image), Upscale & restore for a small source, the Image editor's Square crop; hubStudio has no Walmart connection, files are uploaded in Seller Center by hand",
+  ],
+  doNot: [
+    "Take any value from an agency, feed tool or third-party blog",
+    "Mix the supplier guide with Marketplace seller rules without labeling which is which",
+    "Claim hubStudio connects to Walmart",
+    "Print any hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "Main and additional image rules: Walmart Marketplace Learn image guidelines, dated",
+    "Listing quality and the role of images: Walmart Seller Help, dated",
+    "Rich media rules and eligibility: Walmart's own pages, dated",
+    "Amazon and Google values: reuse the ledger citations of the Amazon and Google Merchant Center spec pieces",
+    "hubStudio facts: create-an-image.md and assets-library.md in the help center",
+  ],
+  assets: [
+    "Main image spec table: rule, value, source page",
+    "Three-marketplace comparison table: Walmart, Amazon, Google Merchant Center",
+    "Changelog block, dated, updated in place",
+  ],
+  links: [
+    ["Amazon product image requirements", "/resources/insights/amazon-product-image-requirements"],
+    ["Google Merchant Center image requirements", "/resources/insights/google-merchant-center-image-requirements"],
+    ["white background packshot guide", "/resources/how-to/ai-white-background-packshot"],
+    ["AI product image rules on Amazon and Google Shopping", "/resources/insights/marketplace-policies-ai-product-images"],
+    ["platform specs hub", "/resources/specs"],
+    ["eCommerce design service", "/services/design/ecommerce"],
+  ],
+  seoTitle: "Walmart Marketplace Image Requirements for 2026",
+  seoDesc:
+    "Walmart Marketplace main image, additional image, rich media and listing quality rules for 2026, from Walmart's own pages, set beside Amazon and Google.",
+  faqs: [
+    "What are Walmart's product image requirements?",
+    "What size should Walmart product images be?",
+    "Does Walmart require a white background on the main image?",
+    "How many images can a Walmart listing have?",
+    "Can I add video to a Walmart Marketplace listing?",
+    "Does Walmart allow AI-generated product images?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Spec page: Walmart's own Marketplace Learn and Seller Help pages only. Watch row due 2027-03-29. hubStudio has no Walmart connection.",
+};

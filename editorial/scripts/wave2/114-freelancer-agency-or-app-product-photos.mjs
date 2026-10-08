@@ -1,0 +1,73 @@
+// editorial/scripts/wave2/114-freelancer-agency-or-app-product-photos.mjs
+export default {
+  id: "114",
+  date: "2026-12-03",
+  family: "comparison",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Comparisons",
+  contentType: "Comparison",
+  readerStage: "budget-holder",
+  slug: "freelancer-agency-or-app-product-photos",
+  h1: "A freelancer, an agency or an app for product photos",
+  query: "who should make my product photos",
+  secondary: [
+    "hire a product photographer or use AI",
+    "product photography agency vs freelancer",
+    "AI product photo app vs photographer",
+    "outsource product photography",
+  ],
+  verdict:
+    "Marketplace gig pages, photographer blogs and app landing pages rank, each arguing for itself; none decides by the catalog (SKU count, how often it changes, how exact the product must be) or covers what decides the second year: who owns the files, how revisions are billed, and who answers when a marketplace rejects an image.",
+  words: 2000,
+  angle:
+    "The choice follows the catalog, not the price list. A freelancer fits a short run with a clear shot list; an agency fits a launch that needs direction, models and sets; an app fits a catalog that changes every week and a team that can judge its own output. Most brands end up mixing them: shoot the hero once, make the variants in an app, call the agency for the launch. Compared by job, contract and risk, never by firm.",
+  mustInclude: [
+    "A decision table: criterion (SKU count, refresh rate, exactness required, models or sets, internal skill, timeline, revision rounds) against freelancer, agency, app, and a mix",
+    "Cost by pricing model, by category and date only: day rates, per-image rates, project fees, pay-per-run; published rate cards and official wage data, never a named firm",
+    "The contract side: who owns the files and the raw shoot, usage terms and territory, model releases, revision rounds, reshoot clauses",
+    "Risk: who fixes a marketplace rejection, who keeps the source files, what happens when the freelancer is unavailable",
+    "The mix in practice: the hero shot once, variants and seasonal scenes made from it in the app",
+    "How hubStudio fits, inside its facts: the app (Image studio edits from source pictures, the E-commerce packshot and Lifestyle product scene skills, the Assets Library with versions, Validation for approvals) or the studio for launches, presented as Use the app, Studio + app, Studio only",
+    "Pointers to the per-SKU cost piece and to the week of social content cost piece",
+  ],
+  doNot: [
+    "Name a freelance marketplace, agency, photographer or app",
+    "Quote a rate card that is not dated and attributed to its category",
+    "Print a hubStudio amount",
+    "Present the studio as the only serious option",
+    "Use an em dash",
+  ],
+  stats: [
+    "Photographer pay: the official occupational wage survey for photographers in at least one market, with its year and method",
+    "Per-image and day rates: published rate cards by category, dated, logged in the ledger (reuse the logged per-asset card rows with their labels)",
+    "Any outsourcing share or satisfaction figure only from a survey with sample and method",
+  ],
+  assets: [
+    "Decision table by criterion",
+    "Pricing model table: how each charges, what drives the bill, what is extra",
+    "Contract checklist table",
+  ],
+  links: [
+    ["product photography cost per SKU", "/resources/insights/product-photography-cost-per-sku"],
+    ["the cost of a week of social content", "/resources/insights/cost-of-social-content-week"],
+    ["in-house studio or outsourced production", "/resources/insights/in-house-studio-vs-outsourced-production"],
+    ["shoot it or generate it", "/resources/insights/shoot-it-or-generate-it"],
+    ["product photo to lifestyle image", "/resources/how-to/product-photo-to-lifestyle-image"],
+    ["eCommerce design service", "/services/design/ecommerce"],
+  ],
+  seoTitle: "Freelancer, Agency or App for Product Photos",
+  seoDesc:
+    "Who should make your product photos: decide by SKU count, refresh rate and exactness, then by contract, file ownership and who fixes a rejection.",
+  faqs: [
+    "Should I hire a freelance photographer or an agency for product photos?",
+    "Is an AI app good enough for product photos?",
+    "How much does product photography cost per image?",
+    "Who owns the product photos a photographer takes?",
+    "Can I mix photography and AI for one catalog?",
+    "What should a product photography contract include?",
+  ],
+  cta: "Create your account",
+  notes: "Category Buying models. Compares ways of working, never a named firm or tool. Distinct from cost-of-social-content-week (social, cost) and product-photography-cost-per-sku (cost): this one decides who, by catalog and contract.",
+};

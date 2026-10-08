@@ -1,0 +1,76 @@
+// editorial/scripts/wave2/123-measure-creative-performance.mjs
+export default {
+  id: "123",
+  date: "2026-12-14",
+  family: "insight",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Insights",
+  contentType: "Insight",
+  readerStage: "practitioner",
+  slug: "measure-creative-performance",
+  h1: "Measuring whether a visual works: the metrics that matter",
+  query: "how to measure creative performance",
+  secondary: [
+    "creative performance metrics",
+    "how to measure ad creative effectiveness",
+    "hook rate and hold rate",
+    "creative testing metrics",
+    "how to test which image performs better",
+  ],
+  verdict:
+    "Ad-analytics vendors and agency blogs rank with home-made metrics (hook rate, thumb-stop ratio) and benchmark tables without a method; none maps each objective to the metric the platform itself defines, says which numbers judge the creative and which judge the targeting, or explains how to run a test the platform will split fairly.",
+  words: 2000,
+  angle:
+    "Judge a visual on the metric that matches its job, read from the platform's own definition, in a test that changes one thing. Attention (video plays, view rate), response (click-through rate), outcome (conversion rate, cost per result) and memory (brand lift) answer different questions, and most dashboards mix them. One table maps objective to metric to the page that defines it; then a test protocol: one variable, enough volume, the platform's own split test, the decision rule written before the result. When to refresh a visual that has worn out is the creative fatigue piece; this one is how to tell whether it worked.",
+  mustInclude: [
+    "An answer table in the first screen: objective, the metric, what it says about the visual, what it cannot say, the platform page that defines it",
+    "Platform definitions from their own help pages: Meta (3-second video plays, ThruPlays, link click-through rate, cost per result), YouTube Analytics (impressions, impressions click-through rate, average view duration), LinkedIn Campaign Manager (video views, click-through rate), Google Ads (view rate, conversion rate)",
+    "The home-made ratios (hook rate, hold rate): how each is computed from platform metrics, and why they do not compare across platforms",
+    "Built-in split tests from the platforms' own pages: Meta A/B tests, YouTube's A/B test of titles and thumbnails, Google Ads experiments; what each holds constant",
+    "Why the creative and the audience get confused: a visual tested on different audiences, budgets or dates measures the delivery, not the picture",
+    "Organic posts: the reach, engagement and click figures each network shows for a post, and why they are a weak test of a visual",
+    "Making variants to test: one change per variant (the background, the first frame, the words in the picture), kept together so the files and the results match; in hubStudio, a campaign gathers the variants and History keeps each one with its prompt and engine",
+    "A short section on brand lift and incrementality studies: what the platforms offer and when a budget justifies one",
+  ],
+  doNot: [
+    "Name an ad-analytics vendor or an agency",
+    "Publish a benchmark click-through or conversion rate without a source, a date, a sample and a method",
+    "Restate the fatigue signals covered on the creative fatigue page beyond a pointer",
+    "Claim hubStudio reads ad results or connects to an ad account",
+    "Use an em dash",
+  ],
+  stats: [
+    "Each metric definition from the platform's own help page, dated",
+    "Any typical range only where the platform publishes it itself, such as YouTube's own statement on typical impressions click-through rates in YouTube Help, dated",
+    "Any figure on how much of an ad's result comes from the creative only from a study with sample and method; if a party that sells advertising published it, label it a market claim",
+  ],
+  assets: [
+    "Answer table: objective, metric, what it says, what it cannot say, source page",
+    "Test protocol checklist: one variable, volume, duration, decision rule written first",
+    "Variant table: what changes per variant and what stays",
+  ],
+  links: [
+    ["creative fatigue", "/resources/insights/ad-creative-fatigue-refresh"],
+    ["data-driven AIGC", "/resources/insights/data-driven-aigc"],
+    ["how to make a YouTube thumbnail people click", "/resources/how-to/youtube-thumbnail-that-gets-clicks"],
+    ["Campaigns in hubStudio", "/app/campaigns"],
+    ["ad creative service", "/services/design/ad-creative"],
+    ["creative strategy service", "/services/design/creative-strategy"],
+  ],
+  seoTitle: "Measuring Creative Performance: Metrics That Matter",
+  seoDesc:
+    "Judge a visual on the metric that matches its job, read from each platform's own definition, in a test that changes one thing. Objective by objective.",
+  faqs: [
+    "How do you measure creative performance?",
+    "What is a good click-through rate for an ad?",
+    "What is hook rate and how is it calculated?",
+    "How do I A/B test ad images?",
+    "How long should a creative test run?",
+    "Which metrics show whether a video ad works?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "Platforms' own help pages only; no benchmark without a method. Distinct from brief 102 (when to refresh): this piece is how to judge a visual.",
+};

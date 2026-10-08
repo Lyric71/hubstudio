@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/117-ai-avatar-explainer-video-from-script.mjs
+export default {
+  id: "117",
+  date: "2026-12-08",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "ai-avatar-explainer-video-from-script",
+  h1: "How to make an AI avatar explainer video from a script",
+  query: "AI avatar video from script",
+  secondary: [
+    "script to avatar video",
+    "how to write a script for an AI avatar video",
+    "AI presenter explainer video steps",
+    "AI avatar product explainer",
+  ],
+  verdict:
+    "Avatar software vendors own the results with their own sign-up flows as the tutorial; none teaches the parts that decide whether the video works and can be published: a script written for the ear, the rights to the face and the voice, the cutaways that show the product, captions, disclosure and a review before release.",
+  words: 1800,
+  angle:
+    "The avatar is the easy part. An explainer stands or falls on the script, the rights and the edit: write for the ear and time it aloud, secure a license for any real face and voice, cut away to the product whenever the words describe it, caption every line, label what is synthetic, and get the cut approved. Taught as a production method that works whatever renders the presenter; the avatar itself comes from a licensed avatar service or the studio, the product cutaways and captions from the app.",
+  mustInclude: [
+    "Steps: brief and message, script for the ear (short sentences, one idea each, read aloud and timed), presenter choice (a stock avatar under its license, or a custom likeness with written consent), voice (licensed or cloned with consent), render, cutaways, captions, disclosure, review",
+    "A script template the reader can copy: hook, problem, the product shown, proof, the call to action, with where each cutaway lands",
+    "A rights checklist: likeness and voice consent in writing, term, territory, media, the right to change the script later; pointing to the brand ambassadors piece",
+    "Cutaways made in the app: image to video from a packshot in the Video studio (start frame, or start and last frame on the engines that take both), so the product on screen is the real one",
+    "Captions in the Video editor, timed word by word, free in the browser or fast and billed, with Download as SRT; Validation to get the cut approved, versions on one thread",
+    "Disclosure: the EU AI Act transparency duty (Article 50) and New York's synthetic performer law, from the official texts, pointing to the EU and US disclosure pieces",
+    "A QA list before release: lip sync on the hard words, product names pronounced right, every claim backed, captions corrected, the label in place",
+    "A plain line on what the app does not do: it does not render talking avatars or lip sync; the studio runs avatar programs with their contracts",
+  ],
+  doNot: [
+    "Claim the app makes talking avatars, lip sync or voice clones",
+    "Name an avatar, voice or video tool vendor",
+    "Give a words-per-minute figure unless a published speech-rate study with its method is found",
+    "Give legal advice: say the piece describes production practice",
+    "Print a price",
+    "Use an em dash",
+  ],
+  stats: [
+    "EU AI Act Article 50 and New York General Business Law section 396-b: official texts, with dates",
+    "Any trust or completion figure for avatar video only from a peer-reviewed or preregistered study with sample and method",
+    "App behavior: create-a-video.md, assets-library.md (Captions) and validation.md in the help center",
+  ],
+  assets: [
+    "Script template with cutaway marks",
+    "Rights checklist table",
+    "QA list before release",
+    "Existing localized capture create-a-video-studio.webp",
+  ],
+  links: [
+    ["AI avatar or real presenter", "/resources/insights/ai-avatar-vs-real-presenter"],
+    ["AI avatars in brand content", "/resources/insights/ai-avatars-brand-content"],
+    ["AI brand ambassadors: what you sign", "/resources/insights/ai-brand-ambassadors-what-you-sign"],
+    ["word-by-word video captions", "/resources/how-to/word-by-word-video-captions"],
+    ["vertical video ad from a product image", "/resources/how-to/vertical-video-ad-from-product-image"],
+    ["video production service", "/services/design/video-production"],
+  ],
+  seoTitle: "AI Avatar Explainer Video From a Script",
+  seoDesc:
+    "Make an AI avatar explainer that can be published: a script for the ear, rights to face and voice, product cutaways, captions, disclosure and review.",
+  faqs: [
+    "How do I turn a script into an AI avatar video?",
+    "How long should an AI avatar explainer script be?",
+    "Do I need permission to make an avatar of a real person?",
+    "Do I need to disclose an AI avatar in a video?",
+    "How do I show my product in an avatar video?",
+    "Can an AI avatar pronounce brand and product names correctly?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "How-to taught as a production method. The app supplies cutaways (Video studio), captions (Video editor) and approval (Validation) only; avatar rendering is the studio's, hence Send a brief rather than the family's Create your account. Distinct from ai-avatar-vs-real-presenter (the decision) and ai-avatars-brand-content: link both.",
+};

@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/133-muse-image-guide.mjs
+export default {
+  id: "133",
+  date: "2026-12-23",
+  family: "engine",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "Engine guides",
+  contentType: "Engine guide",
+  readerStage: "practitioner",
+  slug: "muse-image-guide",
+  h1: "Muse Image 1.0 for low-cost drafts from long prompts",
+  query: "Muse Image prompts",
+  secondary: [
+    "Meta Muse Image",
+    "Muse Image 1.0 prompt examples",
+    "Muse Image edit a photo",
+    "AI image engine for drafts",
+  ],
+  verdict:
+    "THIN. A new engine: Meta's own announcement and documentation, news write-ups and aggregator model pages that list it without guidance; nobody shows how to use it inside a production flow, as the drafting engine whose chosen direction moves to a finishing engine.",
+  words: 1700,
+  angle:
+    "Muse Image 1.0 sits at the lowest price level of the app's image engines, reasons about long prompts, and renders around 2 to 3 megapixels whatever the shape. That makes it a drafting engine: write the full brief, explore layouts and scenes at the lowest price level, then take the chosen direction to an engine built for the final file. Meta's own documentation for the prompting, the app's catalog and help center for the limits.",
+  mustInclude: [
+    "Meta's own description of Muse Image 1.0 and its prompting guidance, from Meta's own pages only",
+    "In the app, per the catalog and the help center: text to image and edit; one source image per edit; a single quality setting (Standard); ten shapes, square, landscape 5:4, 4:3 and 3:2, widescreen 16:9, ultra-wide 21:9, portrait 4:5, 3:4 and 2:3, vertical 9:16; around 2 to 3 megapixels whatever the shape; PNG; no Upscale & restore job",
+    "The app describes it as the least expensive image engine by a wide margin: say so as a price level read from the image section of the Model benchmarks page, never as a figure",
+    "Long prompts: the prompt box takes up to 4,000 characters; how to structure a long brief (subject, setting, light, layout, room for copy, what must not appear) so the engine's reasoning has something to work with",
+    "Meta describes blending several photos into one scene; in the app an edit takes one source image, so a blend there means one combined source picture, or an engine that takes up to four",
+    "The drafting flow: several runs at once, each in its own tab; pick the direction; Reuse prompt; then move to a finishing engine: Seedream 5.0 Pro for native 4K, a ChatGPT Image engine for text inside the picture, Nano Banana Pro or FLUX.1 Kontext for exact edits, Upscale & restore on an engine that offers it",
+    "Four prompt examples, each with what the draft settled and what the final engine changed: a product scene, a social layout with room for copy, a seasonal background, an edit of one product photo",
+    "The price shown before every run; a failed run is not charged",
+  ],
+  doNot: [
+    "Cite any source but Meta for a capability",
+    "Print a price or a per-image figure, alone or as a comparison",
+    "Claim Muse Image upscales or takes several source images in the app",
+    "Call it fast: neither the catalog nor the help center says so",
+    "Name resellers or aggregator sites",
+    "Use an em dash",
+  ],
+  stats: [
+    "Meta's own announcement and documentation for Muse Image 1.0, dated",
+    "App facts: create-an-image.md (engine table, prompt length, jobs) and the engine card in Explore (explore.md)",
+    "Price level: the image section of the Model benchmarks page, a relative level from $ to $$$$, never a figure",
+  ],
+  assets: [
+    "Engine facts table from the help center: jobs, source images, quality, shapes, format",
+    "Draft to final table: what Muse settles, which engine finishes it, why",
+    "Four prompt blocks",
+    "Existing localized capture create-an-image-studio.webp",
+  ],
+  links: [
+    ["Seedream 5.0 Pro guide", "/resources/how-to/seedream-5-pro-guide"],
+    ["ChatGPT Image 2 product prompting guide", "/resources/how-to/chatgpt-image-2-product-prompting-guide"],
+    ["FLUX.1 Kontext editing guide", "/resources/how-to/flux-kontext-editing-guide"],
+    ["model benchmarks", "/resources/insights/ai-model-benchmarks"],
+    ["one AI engine or several", "/resources/insights/one-ai-engine-or-several"],
+    ["engines page", "/app/engines"],
+    ["AI image production", "/solutions/ai-production/image"],
+  ],
+  seoTitle: "Muse Image 1.0 Prompts for Low-Cost Drafts",
+  seoDesc:
+    "How to prompt Meta's Muse Image 1.0 as a drafting engine: long briefs, ten shapes, one-photo edits, and when to move a pick to a finishing engine.",
+  faqs: [
+    "How do I write a prompt for Muse Image 1.0?",
+    "What is Meta's Muse Image good for?",
+    "Can Muse Image edit a photo?",
+    "What resolution does Muse Image 1.0 render?",
+    "Is Muse Image good enough for final product images?",
+    "Which shapes does Muse Image support?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Meta's own pages only. Muse Image 1.0 (Meta) is in the app. The H1 says drafts, not fast drafts: the catalog blurb speaks of price, long prompts and resolution, never of speed. The engine blurb also says the file comes back as WebP while the form and the help center list PNG; the page names PNG only.",
+};

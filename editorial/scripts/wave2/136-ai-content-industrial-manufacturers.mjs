@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/136-ai-content-industrial-manufacturers.mjs
+export default {
+  id: "136",
+  date: "2026-12-25",
+  family: "industry",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Industries",
+  contentType: "Industry page",
+  readerStage: "budget-holder",
+  slug: "ai-content-industrial-manufacturers",
+  h1: "AI content for industrial and B2B manufacturers",
+  query: "AI product images for manufacturers",
+  secondary: [
+    "AI product photography for industrial equipment",
+    "AI images from CAD files",
+    "AI content for B2B manufacturing marketing",
+    "AI visuals for trade shows and dealer catalogs",
+  ],
+  verdict:
+    "Rendering studios and general AI image apps rank, aimed at consumer products; none deals with what a manufacturer has to protect: exact geometry from engineering files, safety signs and certification marks that must never be generated, documentation that falls under product law, and engineers who sign off.",
+  words: 1800,
+  angle:
+    "A manufacturer's product is specified to the millimeter, and its pictures sit close to a specification. Generate the setting: the plant, the site, the market, the season. Keep the machine true by working from CAD exports, renders or real photos, and never let a model draw a safety sign, a rating plate or a certification mark. With the EU and US rules that touch industrial visuals, the date the EU Machinery Regulation applies, and the case studies that fit.",
+  mustInclude: [
+    "Where generation helps and where it must not: application scenes, plant and site settings, trade-show and LinkedIn visuals, market versions; never geometry, dimensions, rating plates, safety signs or certification marks",
+    "Working from engineering files: CAD exports and renders as source pictures, the studio route described on the manufacturers solution page, engineers approving every asset in Validation, a fix returned as a new version",
+    "Safety signs and marks: standard safety symbols come from the standard (ISO 7010 internationally, ANSI Z535 in the US), placed from approved artwork, never generated; the CE marking shown only as the product carries it, per the European Commission's own pages",
+    "EU: Regulation (EU) 2023/1230 on machinery, its date of application and what it says about instructions in digital form, from EUR-Lex",
+    "US: the FTC on advertising claims and the Made in USA Labeling Rule (16 CFR Part 323), from the FTC's own pages and ecfr.gov",
+    "Case references only as written in src/data/case-studies.ts: premium-suv (a manufacturer's new SUV shown in fifteen markets with generated environments and no vehicle logistics) and hisense (a self-serve content platform with custom-trained models, live in eight weeks); no industrial equipment client is in the case studies, so none is claimed",
+    "The three ways to work, as the manufacturers page puts them: most manufacturers start with Studio only and add the app when marketing makes its own posts; the app has no DAM, PIM or ERP connector",
+    "A line stating the piece describes production practice, not legal advice",
+  ],
+  doNot: [
+    "Describe generating a safety sign, rating plate or certification mark",
+    "Name a manufacturer outside the case studies, a CAD or rendering vendor, or any tool",
+    "Claim a DAM, PIM or ERP connector",
+    "Print an amount; a case study figure runs only as written on its page",
+    "Use an em dash",
+  ],
+  stats: [
+    "EUR-Lex text of Regulation (EU) 2023/1230: its date of application and the article on instructions in digital form",
+    "ISO 7010 and ANSI Z535: scope as stated on the standards bodies' own pages, no paywalled text quoted",
+    "CE marking: the European Commission's own CE marking pages",
+    "FTC Made in USA pages and 16 CFR Part 323 on ecfr.gov",
+    "Any B2B buyer-behavior figure only from a survey with sample and method; none from a vendor's marketing",
+  ],
+  assets: [
+    "Decision table: asset, generate, from engineering files, shoot, mixed",
+    "Rules table by market: the rule, the page, what it means for an image",
+    "Case-study strip with two links",
+  ],
+  links: [
+    ["manufacturers solution page", "/solutions/manufacturers"],
+    ["premium SUV case study", "/work/premium-suv"],
+    ["HiSense case study", "/work/hisense"],
+    ["generated photos or 3D renders", "/resources/insights/generated-photos-vs-3d-renders"],
+    ["automotive content without shipping a car", "/resources/insights/automotive-content-without-shipping-a-car"],
+    ["LinkedIn post specs", "/resources/insights/linkedin-post-specs"],
+    ["ebook and digital reports service", "/services/design/ebook-digital-reports"],
+  ],
+  seoTitle: "AI Content for Industrial and B2B Manufacturers",
+  seoDesc:
+    "Where AI fits in manufacturer content: generate the setting, keep the machine true from CAD, never generate safety signs or marks. EU and US rules.",
+  faqs: [
+    "Can manufacturers use AI-generated product images?",
+    "Can AI make product images from CAD files?",
+    "Can AI images show safety signs or CE marks?",
+    "How do we keep technical details accurate in AI visuals?",
+    "What does the EU Machinery Regulation change for instructions?",
+    "Do we need to disclose AI-generated images in B2B marketing?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "Category Production. Regulators' and standards bodies' own pages only; case studies premium-suv and hisense as written; the manufacturers solution page is the main internal link.",
+};

@@ -3,7 +3,7 @@
 Four articles a week, Monday, Tuesday, Thursday, Friday. Forty-eight articles,
 September 14 to December 4, 2026. Batch one (briefs 01 to 30) publishes weeks
 1 to 8. Batch two (31 to 48) is briefed in month two and publishes weeks 6
-to 12.
+to 12. Wave two follows (section below) and runs to December 31.
 
 ## The daily command
 
@@ -298,7 +298,8 @@ keys and the full model are all here, and a cloud routine has none of them.
 | hubStudio Editorial Draft | Mon to Fri 00:30 and 12:30 | `run-daily.ps1 -Mode draft`: one run drafts one row, the earliest `not_started` row due today or earlier; steps 0 to 3, stops at `image_ready` | enabled |
 | hubStudio Editorial Publish | every day 04:00 and 16:30 | `run-daily.ps1 -Mode publish`: publishes every `image_ready` row whatever its `publish_date`, by its template (insight, spec or howto), builds, commits, pushes, emails | enabled |
 
-Wave two (12 October to 20 November 2026) puts up to two rows on one day,
+Wave two (8 October to 31 December 2026, seven rows a week from 12 October)
+puts up to two rows on one day,
 Monday to Friday, which is why the draft task fires twice a weekday. Its
 families and where each publishes are in `CLAUDE.md`, "Wave two".
 

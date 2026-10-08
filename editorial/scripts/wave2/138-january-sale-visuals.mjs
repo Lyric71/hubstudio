@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/138-january-sale-visuals.mjs
+export default {
+  id: "138",
+  date: "2026-12-29",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "january-sale-visuals",
+  h1: "How to make New Year and January sale visuals",
+  query: "January sale images",
+  secondary: [
+    "New Year sale banner",
+    "January sale social media posts",
+    "winter sale graphics",
+    "clearance sale visuals with AI",
+  ],
+  verdict:
+    "Template sites and stock libraries rank with festive banners; none treats January as its own season (the decorations gone, clearance and fresh-start themes), keeps the offer as editable text on a real product photo, or checks the was-price against the reference-price rules that bite hardest in a sale.",
+  words: 1700,
+  angle:
+    "January is not December with a new date. The decorations come down, the message turns to clearance and fresh starts, and the price claim carries more weight. Reuse the season's product photos: take the holiday scene out with an edit, set a clean winter or new-start setting, put the offer on as editable text in the Image editor, resize for every network, and check the was-price against the rules. Lunar New Year gets its own set for the markets that keep it.",
+  mustInclude: [
+    "The January calendar for the markets in view, from the holiday calendar piece: New Year's Day, the start of the winter sales in France and the UK, and Lunar New Year 2027 for the markets that keep it",
+    "From December to January with one edit: take the holiday scene out of a product photo you already have and set a clean winter or new-start setting (Image studio, Edit an image, up to four source pictures, engine dependent); the product stays the product",
+    "The offer as editable text, not baked in: the Image editor's Text panel (font, size, color, highlight behind the words, dark outline or soft shadow), so a percentage changes without a new run; when text inside the picture is wanted, link the readable text piece",
+    "Resize for each network with the Image editor's Social panel and Crop formats, keeping the offer out of what the network covers",
+    "Price claims, from the primary texts: the FTC Guides Against Deceptive Pricing (16 CFR Part 233) in the US, and the EU prior-price rule (the lowest price in the previous 30 days) in Europe; link the holiday visuals piece for the detail",
+    "Lunar New Year as its own set for the markets that keep it, with color and symbol choices checked locally; link the localization piece",
+    "A checklist before posting: product true, offer and dates right, was-price checked, words inside the safe area",
+    "The price shown before each run; the Image editor is free",
+  ],
+  doNot: [
+    "Bake a sale percentage into a generated picture as the only version",
+    "State a reference-price rule from a secondary source",
+    "Name a template site, stock library or tool",
+    "Print a price",
+    "Use an em dash",
+  ],
+  stats: [
+    "Winter sale start dates: reuse the ledger citations of the holiday calendar piece (Service Public for France)",
+    "FTC Guides Against Deceptive Pricing, 16 CFR Part 233, ecfr.gov",
+    "EU prior-price rule: Article 6a of Directive 98/6/EC as inserted by Directive (EU) 2019/2161, EUR-Lex",
+    "Lunar New Year 2027 date: an official calendar, such as the Hong Kong Observatory's Gregorian and lunar calendar tables",
+    "App facts: create-an-image.md and assets-library.md (The Image editor)",
+  ],
+  assets: [
+    "Calendar table: date, market, occasion, assets",
+    "Before and after pair described in the ASSET BRIEF: the holiday scene, then the January scene, same product",
+    "Existing localized captures image-editor-social.webp and image-editor-draw.webp",
+  ],
+  links: [
+    ["holiday visuals from product photos", "/resources/how-to/holiday-visuals-from-product-photos"],
+    ["holiday content calendar 2026", "/resources/insights/holiday-content-calendar-2026"],
+    ["readable text in AI images", "/resources/how-to/readable-text-in-ai-images"],
+    ["localize one visual for several markets", "/resources/how-to/localize-visual-for-markets"],
+    ["Image editor", "/app/image-tools"],
+    ["social media design service", "/services/design/social-media"],
+  ],
+  seoTitle: "How to Make New Year and January Sale Visuals",
+  seoDesc:
+    "Turn holiday product photos into January sale visuals: take the decor out, add the offer as editable text, resize for each network, check the was-price.",
+  faqs: [
+    "How do I make January sale images?",
+    "What should a New Year sale post look like?",
+    "Can I reuse my holiday product photos for January sales?",
+    "How do I add a sale percentage to a product image?",
+    "What are the rules for showing a was price in a sale?",
+    "When do the January sales start in 2027?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Help: create-an-image.md and assets-library.md (The Image editor). Distinct from the Black Friday piece: January's own season, the offer as editable text. Reuse the existing localized captures.",
+};

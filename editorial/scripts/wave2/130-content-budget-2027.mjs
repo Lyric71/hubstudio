@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/130-content-budget-2027.mjs
+export default {
+  id: "130",
+  date: "2026-12-21",
+  family: "insight",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Insights",
+  contentType: "Insight",
+  readerStage: "budget-holder",
+  slug: "content-budget-2027",
+  h1: "Planning a 2027 content budget: in-house, app or studio",
+  query: "content production budget 2027",
+  secondary: [
+    "how to budget for content production",
+    "marketing content budget template",
+    "creative production budget breakdown",
+    "AI content budget planning",
+    "in-house vs outsourced content cost",
+  ],
+  verdict:
+    "Budget templates from software vendors and percent-of-revenue rules from marketing blogs rank; none starts from the number of assets the year needs, splits it by the way each asset is best made, or shows what changes when part of the volume moves to an app paid per run.",
+  words: 2300,
+  angle:
+    "Build the 2027 budget from the asset count, not from last year's line. Count what the calendar needs by type and channel, then give each type to the way of working that makes it best: the in-house team for what needs daily context, an app paid per run for volume and variants, the studio for launches and hero work. Price each block from official wage statistics and dated category ranges, never from a single quote, and keep a reserve for what the year adds. The comparison of who makes product photos is its own piece; this one is the annual plan.",
+  mustInclude: [
+    "A decision table in the first screen: asset type against in-house, app, studio, with the reason for each",
+    "The method in steps: count the year (launches, seasonal moments, always-on social, marketplace refreshes), group by asset type, assign a way of working, price each block, add a reserve, set review points",
+    "A budget template table the reader can copy: block, asset count, way of working, cost basis (salary, per run, per asset or project), source of the figure",
+    "Cost bases from published sources only: official wage statistics for in-house roles; category rate cards with collection dates for studios and agencies, no firm named; for an app paid per run, the structure only (a prepaid balance, the price shown before each run, no seats, no subscription), never a hubStudio amount",
+    "What moves from 2026 to 2027: the share of variants and resizes an app can take, review and approval time, file storage, the people the in-house team still needs",
+    "Mixed models as one line in the plan: Studio + app (the studio works inside the app, the team approves in Validation)",
+    "Pointers to the cost pages rather than restating them: the real cost of brand content, what a finished asset costs, in-house or outsourced, a week of social content, and the freelancer, agency or app comparison",
+    "Calendar anchors for 2027 taken from the holiday calendar page and each platform's own published dates",
+  ],
+  doNot: [
+    "Name an agency, a subscription service or a software vendor",
+    "Publish a hubStudio rate, monthly figure or per-item price",
+    "Use a percent-of-revenue rule without a source, a date and a method",
+    "Use an em dash",
+  ],
+  stats: [
+    "In-house wages: official statistics, such as the US Bureau of Labor Statistics occupational wage tables, dated; other markets from their national statistics offices",
+    "Studio and agency ranges: category rate cards logged in the ledger, reused with their collection dates",
+    "Marketing budget shares only from a survey with sample and method; if a party that sells marketing services published it, label it a market claim",
+  ],
+  assets: [
+    "Decision table: asset type, in-house, app, studio",
+    "Budget template table, copyable",
+    "Review calendar: when to re-read the plan during 2027",
+  ],
+  links: [
+    ["real cost of brand content 2026", "/resources/insights/real-cost-of-brand-content-2026"],
+    ["what a finished brand asset costs", "/resources/insights/what-a-finished-brand-asset-costs"],
+    ["in-house studio or outsourced production", "/resources/insights/in-house-studio-vs-outsourced-production"],
+    ["what a week of social content costs", "/resources/insights/cost-of-social-content-week"],
+    ["a freelancer, an agency or an app for product photos", "/resources/insights/freelancer-agency-or-app-product-photos"],
+    ["holiday content calendar 2026", "/resources/insights/holiday-content-calendar-2026"],
+    ["Studio + app", "/studio/with-the-app"],
+    ["pricing", "/pricing"],
+  ],
+  seoTitle: "2027 Content Budget: In-House, App or Studio",
+  seoDesc:
+    "Build a 2027 content budget from the asset count: give each asset type to in-house, an app or a studio, price it from published ranges, keep a reserve.",
+  faqs: [
+    "How much should a brand budget for content production in 2027?",
+    "How do I build a content production budget?",
+    "Is in-house content production cheaper than a studio?",
+    "How do AI tools change a content budget?",
+    "What should a creative production budget include?",
+    "How often should a content budget be reviewed?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "Market figures only, each with a method; no hubStudio amount. Distinct from brief 114 (who makes product photos) and brief 71 (one week priced): this is the annual plan.",
+};

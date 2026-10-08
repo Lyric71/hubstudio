@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/124-ai-packaging-mockup.mjs
+export default {
+  id: "124",
+  date: "2026-12-15",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "ai-packaging-mockup",
+  h1: "How to make a packaging mockup with AI",
+  query: "AI packaging mockup",
+  secondary: [
+    "packaging mockup generator",
+    "how to put a label on a product mockup",
+    "AI box and bottle mockup",
+    "packaging design visualization AI",
+    "product label mockup",
+  ],
+  verdict:
+    "Template mockup libraries and generator apps rank; templates fit only the shapes they ship, generators redraw the label and lose the text, and none says which method fits which job, how to keep the artwork exact, or when a mockup may not stand in for a product photo.",
+  words: 1700,
+  angle:
+    "A mockup has one job: show the real artwork on a believable pack before it is printed. Generation is good at the pack, the material and the scene, and bad at copying a label letter for letter. So feed it the flat artwork as a source picture, ask it to wrap rather than redraw, check every word against the file, and keep a mockup out of any listing that sells the product as photographed. Taught with Edit an image in the Image studio.",
+  mustInclude: [
+    "Three methods and when each wins: a template mockup, a 3D render, a generated mockup from the flat artwork; a short decision table",
+    "The run in the Image studio: Edit an image with the flat label or dieline and a reference of the pack shape as source pictures (up to four on the engines that take several; FLUX.1 Kontext Pro and Max take one); the instruction names what to wrap and what must stay exact",
+    "Engine choice from the help center: the ChatGPT Image engines follow long briefs, write legible text and take a mask that protects the rest of the first image; Transparent background on the ChatGPT Image 2.5 engines, in PNG or WebP; Nano Banana 2 and Pro and Seedream edit from up to four sources; Seedream renders natively up to 4K",
+    "Prompt examples in prompt blocks: a folding carton, a bottle with a wrap-around label, a stand-up pouch, a can, a shelf scene",
+    "A fidelity checklist: every word against the artwork file, logo geometry, color against the reference, barcode and legal text, the curve of a label on a round pack, the shadow and contact with the surface",
+    "What to do with text a model gets wrong: place the exact words or the logo afterward in the Image editor (Text and Picture panels), or run a new edit on the passage that failed; the Catalog skill Legible text inside an image",
+    "Mockup against product photo: a mockup serves decks, retail sell-in, concept pages and pre-launch tests; a marketplace main image must show the product as sold",
+    "Keep the artwork, the mockups and the approved version together: a campaign for the pack, versions in the Assets Library, Validation for the client's sign-off",
+    "The price shown before the run; a failed run is not charged",
+  ],
+  doNot: [
+    "Name a mockup template site or generator app",
+    "Promise letter-perfect text from any engine",
+    "Suggest a mockup as a marketplace main image",
+    "Print a price",
+    "Use an em dash",
+  ],
+  stats: [
+    "App behavior: create-an-image.md (jobs, engines, source pictures, mask, transparent background), assets-library.md (Image editor), skills.md, campaigns.md, validation.md",
+    "Engine text and editing claims only from the makers' own documentation, dated",
+    "Marketplace main-image rules: link the spec and policy pages rather than restating them",
+  ],
+  assets: [
+    "Method decision table: template, 3D render, generated",
+    "Fidelity checklist table: what to check, how, the fix",
+    "Five prompt blocks",
+    "Existing localized capture create-an-image-studio.webp",
+  ],
+  links: [
+    ["readable text in AI images", "/resources/how-to/readable-text-in-ai-images"],
+    ["keep the product exact in AI images", "/resources/how-to/keep-product-accurate-ai-images"],
+    ["generated photos or 3D renders", "/resources/insights/generated-photos-vs-3d-renders"],
+    ["marketplace policies for AI product images", "/resources/insights/marketplace-policies-ai-product-images"],
+    ["Image studio", "/app/create"],
+    ["packaging design service", "/services/design/packaging-merch-design"],
+  ],
+  seoTitle: "How to Make a Packaging Mockup with AI",
+  seoDesc:
+    "Put your real label on a believable box, bottle or pouch with AI: feed the flat artwork, ask it to wrap, check every word, and know when not to use it.",
+  faqs: [
+    "Can AI make a packaging mockup from my label design?",
+    "How do I put my logo on a product mockup with AI?",
+    "Why does AI get the text on my packaging wrong?",
+    "Can I use an AI mockup as a product photo on Amazon?",
+    "What file should I upload for a packaging mockup?",
+    "Can AI make a mockup with a transparent background?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Help: create-an-image.md, assets-library.md (Image editor), skills.md. Reuse the existing localized Image studio capture.",
+};

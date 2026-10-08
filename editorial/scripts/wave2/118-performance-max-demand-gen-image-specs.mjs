@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/118-performance-max-demand-gen-image-specs.mjs
+export default {
+  id: "118",
+  date: "2026-12-08",
+  family: "spec",
+  template: "spec",
+  brief: true,
+  status: "not_started",
+  cluster: "Platform specs",
+  contentType: "Spec page",
+  readerStage: "practitioner",
+  slug: "performance-max-demand-gen-image-specs",
+  h1: "Google Performance Max and Demand Gen image specs for 2026",
+  query: "Performance Max image specs",
+  secondary: [
+    "Demand Gen image sizes",
+    "Performance Max asset requirements 2026",
+    "Google Ads image aspect ratios",
+    "Performance Max logo size",
+    "Demand Gen video specs",
+  ],
+  verdict:
+    "STALE AND MIXED. Agency and template blogs list ratios and pixel sizes copied from each other, blend Performance Max with Demand Gen and display, and rarely link Google Ads Help; none explains the image policy rules behind most disapprovals (overlaid text, collages, blurry or poorly cropped images) or what the two campaign types share.",
+  words: 1500,
+  angle:
+    "Google Ads Help, read and dated, with Performance Max and Demand Gen side by side: the ratios each takes, the recommended and minimum pixels, the file limits, how many images an asset group or ad holds, the logos, the video lengths, and the image requirements that cause most disapprovals. Build one set that serves both campaign types. Visible Reviewed date, quarterly recheck.",
+  mustInclude: [
+    "Spec table, one row per asset: campaign type, ratio, recommended pixels, minimum pixels, file size limit, maximum count, source page; all from Google Ads Help",
+    "Logos: square and landscape, sizes and limits, from Google Ads Help",
+    "Video: the lengths and ratios each campaign type accepts, and what Google's own page says happens when an asset group has no video",
+    "The image requirements and policies behind disapprovals: overlaid text, logos and buttons, collages, borders, blur, cropping, from Google Ads Help and the Google Ads policy pages",
+    "One set for both: which ratios overlap, and where to keep the subject so each crop holds",
+    "A visible Reviewed date and a dated changelog block at the foot",
+    "How hubStudio fits, from the help center only: the Image studio renders at 16:9, 1:1, 4:5 and 9:16 among other shapes; a wide ratio the engines do not offer is cropped from a wider render in the free Image editor, which crops to any format; the Assets Library keeps every size of one visual together",
+  ],
+  doNot: [
+    "Take any value from a third-party blog or template site",
+    "Mix display, App or Shopping campaign specs into the table without saying so",
+    "Describe or compare the ad platform's own generative asset tools",
+    "Claim hubStudio connects to Google Ads or uploads assets to it",
+    "Print a hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "Performance Max asset specs: Google Ads Help, dated on both check dates",
+    "Demand Gen image and video specs: Google Ads Help, dated",
+    "Image requirements and policy: Google Ads Help and Google Ads policies pages, dated",
+    "hubStudio facts: create-an-image.md and assets-library.md in the help center",
+  ],
+  assets: [
+    "Spec table with a source column, Performance Max and Demand Gen side by side",
+    "Logo and video table",
+    "Disapproval reasons table: the rule, what triggers it, the fix",
+    "Changelog block, dated, updated in place",
+  ],
+  links: [
+    ["Google Merchant Center image requirements", "/resources/insights/google-merchant-center-image-requirements"],
+    ["YouTube video and thumbnail specs", "/resources/insights/youtube-video-thumbnail-specs"],
+    ["resize one visual for every network", "/resources/how-to/resize-image-every-social-network"],
+    ["specs hub", "/resources/specs"],
+    ["ad creative service", "/services/design/ad-creative"],
+  ],
+  seoTitle: "Performance Max and Demand Gen Image Specs 2026",
+  seoDesc:
+    "Performance Max and Demand Gen image, logo and video specs for 2026 from Google Ads Help, side by side, with the image rules behind most disapprovals.",
+  faqs: [
+    "What image sizes does Performance Max need?",
+    "What are the Demand Gen image specs?",
+    "How many images can a Performance Max asset group have?",
+    "What logo size does Google Ads require?",
+    "Why was my Performance Max image disapproved?",
+    "Can I use the same images for Performance Max and Demand Gen?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Spec page: Google Ads Help and Google Ads policies only. Watch row due 2027-03-08. No value without its Google page.",
+};

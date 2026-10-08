@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/116-product-images-ai-shopping-answers.mjs
+export default {
+  id: "116",
+  date: "2026-12-07",
+  family: "insight",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Insights",
+  contentType: "Insight",
+  readerStage: "practitioner",
+  slug: "product-images-ai-shopping-answers",
+  h1: "How product images get picked in AI shopping answers",
+  query: "product images in AI shopping results",
+  secondary: [
+    "how AI shopping assistants choose product images",
+    "Google AI Mode shopping product images",
+    "ChatGPT shopping product feed image",
+    "optimize product images for AI search",
+    "product structured data image AI Overviews",
+  ],
+  verdict:
+    "GEO agencies and feed-tool blogs rank with checklists that assert image ranking factors no assistant has published; none separates what is documented (the feed fields, the structured data, the image rules each surface reads) from what is guessed, or says where an answer's picture actually comes from.",
+  words: 2200,
+  angle:
+    "No AI shopping surface publishes how it weighs a picture. What is documented is where the picture comes from: the merchant feed, the product page's structured data, the image rules each program sets. So the work is plumbing, not tricks: one main image that meets every surface's rules, additional images that answer the questions a shopper asks, the same picture in the feed and on the page, and nothing that misrepresents the product. Primary documentation only, and a plain line on what is not known.",
+  mustInclude: [
+    "An answer table in the first screen: surface (Google's AI shopping experiences in Search, ChatGPT shopping, Microsoft Copilot shopping, and any other assistant only if it publishes merchant documentation), where its product data and images come from, the image fields it documents, the source page",
+    "Google: Merchant Center image_link and additional_image_link requirements, and Search Central's product structured data image property, from Google's own help and developer pages",
+    "OpenAI: the merchant product feed specification and its image fields, from OpenAI's own documentation, dated",
+    "Microsoft: Microsoft Merchant Center image requirements, from Microsoft's own help",
+    "A documented versus not documented table: what each maker says it reads, and what no maker has published (any weighting of image quality, style or count)",
+    "What a merchant controls: a compliant main image, additional images by question (scale, use, detail, what is in the box), consistency between feed and page, alt text and file names as page hygiene",
+    "Misrepresentation rules apply whatever the surface: link the marketplace policy piece",
+    "How hubStudio fits, inside its facts: the studio for catalog image programs; in the app, packshots and lifestyle scenes from source pictures, the Image editor to crop to each surface's shape, the Assets Library with versions",
+  ],
+  doNot: [
+    "State an image ranking factor no maker has published",
+    "Cite a GEO agency, feed tool or SEO blog as the source of a rule",
+    "Promise visibility in any AI answer",
+    "Claim hubStudio connects to Merchant Center or any merchant feed",
+    "Use an em dash",
+  ],
+  stats: [
+    "Google Merchant Center Help image requirements and Search Central product structured data docs, each dated on both check dates",
+    "OpenAI's product feed specification, dated",
+    "Microsoft Merchant Center image requirements, dated",
+    "Any share-of-shoppers figure for AI shopping only from a survey with sample, method and funder stated; a figure from a party selling AI search services labeled a market claim",
+  ],
+  assets: [
+    "Answer table by surface",
+    "Documented versus not documented table",
+    "Image set plan: the main image and the additional images by shopper question",
+  ],
+  links: [
+    ["Google Merchant Center image requirements", "/resources/insights/google-merchant-center-image-requirements"],
+    ["marketplace policies for AI product images", "/resources/insights/marketplace-policies-ai-product-images"],
+    ["AI search content systems", "/resources/insights/ai-search-content-systems"],
+    ["GEO vs SEO", "/resources/insights/geo-vs-seo"],
+    ["multi-angle product set from one photo", "/resources/how-to/multi-angle-product-photos-from-one-photo"],
+    ["eCommerce design service", "/services/design/ecommerce"],
+  ],
+  seoTitle: "Product Images in AI Shopping Answers",
+  seoDesc:
+    "Where AI shopping answers get their product pictures: feed fields, structured data and image rules per surface, what is documented and what is guessed.",
+  faqs: [
+    "How do AI shopping assistants choose product images?",
+    "Does Google AI Mode use my Merchant Center images?",
+    "How do I get my products into ChatGPT shopping results?",
+    "Do image quality or style affect AI shopping rankings?",
+    "Should my feed image match the image on my product page?",
+    "Can I use AI-generated product images in shopping feeds?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "Makers' own documentation only. Watch row three months out (2027-03-07): these surfaces and their feed specs are new and moving. Distinct from ai-search-content-systems and geo-vs-seo (text and pages): this one is the picture.",
+};

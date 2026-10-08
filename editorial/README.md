@@ -1,9 +1,9 @@
 # hubStudio editorial system
 
-Forty-eight article slots, thirty full briefs, and the specs Claude Code
-drafts them from. Lives in `editorial/` inside the hubstudio repo so the
+Wave one (48 slots, September 14 to December 4, 2026, four a week, all
+published) and wave two (94 slots, October 8 to December 31, 2026, seven a
+week from October 12), and the specs Claude Code drafts them from. Lives in `editorial/` inside the hubstudio repo so the
 pipeline can publish straight into `src/pages/resources/insights/`.
-September 14 to December 4, 2026. Four articles a week.
 
 The strategy behind it is `editorial/SEARCH-SPEC.md`. This
 folder executes it.

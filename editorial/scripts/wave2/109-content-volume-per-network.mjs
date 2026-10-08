@@ -1,0 +1,76 @@
+// editorial/scripts/wave2/109-content-volume-per-network.mjs
+export default {
+  id: "109",
+  date: "2026-11-30",
+  family: "insight",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Insights",
+  contentType: "Insight",
+  readerStage: "budget-holder",
+  slug: "content-volume-per-network",
+  h1: "How much content a brand needs each month, network by network",
+  query: "how many posts per week per platform",
+  secondary: [
+    "how often to post on social media 2026",
+    "posting frequency by platform",
+    "how much content does a brand need per month",
+    "how many posts per week on Instagram",
+    "how often to post on LinkedIn for business",
+  ],
+  verdict:
+    "Scheduler and social tool blogs rank with one table of posts per week per network (3 to 5 on Instagram, 15 to 25 pins a day) and benchmark studies from their own users that state little method; none separates what a platform itself says from what a vendor counted, and none turns a posting rhythm into the monthly asset count a budget is built on.",
+  words: 2200,
+  angle:
+    "Platforms publish caps and a little guidance, not an ideal frequency; the posting numbers that circulate are counts of what vendors' own users did. So build the month the other way round: start from what each network itself says, keep only the studies that state their method, then convert posts into assets (a carousel is several pictures, a Reel needs a cover and cut-downs, ads need variants). The output is a monthly asset count per network that a budget holder can price.",
+  mustInclude: [
+    "An answer table in the first screen: network, what the platform itself says about posting frequency (or that it says nothing), the posting cap where the platform states one, what studies with a stated method found, the source of each",
+    "The networks: Instagram, Facebook, TikTok, LinkedIn, X, YouTube and Shorts, Pinterest; and RedNote, Douyin and WeChat Channels as one market among several, where no platform publishes a frequency either",
+    "Each benchmark study labeled by who ran it, its sample and its method; a vendor count of its own users is labeled a market claim",
+    "Posts into assets: a conversion table (single image, carousel, Reel or TikTok with cover and cut-downs, Story, pin, ad variants) the reader fills with their own rhythm",
+    "A monthly worksheet: network, posts a week the team can sustain, assets per post, ad variants, total assets a month",
+    "What keeps the number sustainable: one long video into several shorts, one visual resized for every network, a week planned in one afternoon, with links to those pieces",
+    "How the app carries the volume, from the help center and hubstudio-positioning.md: posts drafted from a brief, pictures and clips rendered or picked from the library, publishing to LinkedIn, Instagram, Facebook and TikTok (Beta) free of charge and to X with the price shown before sending, up to 20 accounts per post, a queue with automatic retries",
+  ],
+  doNot: [
+    "Print a recommended posting frequency without the source that states it and its method",
+    "Present a platform's daily posting cap as a target",
+    "Name a scheduler, social tool or agency",
+    "Print a hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "What each platform says about posting frequency: each network's own creator, business or help pages, dated; record where a platform says nothing",
+    "Posting caps where stated: the platforms' own pages (the hubStudio help notes Instagram's 100 posts a day per account and TikTok's cap of about 15 a day; confirm each on the platform's own page)",
+    "Benchmark studies: only those with sample, period and method stated, labeled with who ran them",
+    "Chinese platforms: the ledger rows from brief 36 on the absence of a published interval",
+  ],
+  assets: [
+    "Answer table: network, platform guidance, cap, studies with method, source",
+    "Posts into assets conversion table",
+    "Monthly worksheet described for a table",
+  ],
+  links: [
+    ["what a week of social content costs", "/resources/insights/cost-of-social-content-week"],
+    ["plan a week of social posts", "/resources/how-to/plan-week-social-posts"],
+    ["long video to shorts", "/resources/how-to/long-video-to-shorts"],
+    ["resize one visual for every social network", "/resources/how-to/resize-image-every-social-network"],
+    ["social media design service", "/services/design/social-media"],
+    ["publishing in the app", "/app/publish"],
+  ],
+  seoTitle: "How Many Posts a Week on Each Social Network",
+  seoDesc:
+    "What each network itself says about posting frequency, which studies state a method, and how to turn a posting rhythm into a monthly asset count.",
+  faqs: [
+    "How many times a week should a brand post on Instagram?",
+    "How often should a business post on LinkedIn?",
+    "How many TikToks should a brand post per week?",
+    "Is posting every day better for reach?",
+    "How many pieces of content does a brand need per month?",
+    "Is there a limit to how many posts I can publish a day?",
+  ],
+  cta: "Send a brief",
+  notes:
+    "Platforms' own pages and studies with a stated method only. Distinct from brief 71 (cost of a week) and brief 65 (planning a week): this one sizes the volume per network.",
+};

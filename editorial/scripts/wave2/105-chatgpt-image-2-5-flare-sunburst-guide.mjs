@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/105-chatgpt-image-2-5-flare-sunburst-guide.mjs
+export default {
+  id: "105",
+  date: "2026-11-25",
+  family: "engine",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "Engine guides",
+  contentType: "Engine guide",
+  readerStage: "practitioner",
+  slug: "chatgpt-image-2-5-flare-sunburst-guide",
+  h1: "ChatGPT Image 2.5 Flare and Sunburst: fast renders and precise edits",
+  query: "ChatGPT Image 2.5 prompts",
+  secondary: [
+    "gpt image 2.5 flare vs sunburst",
+    "gpt-image-2.5 prompting guide",
+    "gpt image 2.5 transparent background",
+    "gpt image 2.5 edit with reference images",
+    "chatgpt image 2.5 vs chatgpt image 2",
+  ],
+  verdict:
+    "Resellers and API aggregators rank with launch-week explainers that restate OpenAI's announcement and their own price tables; none tests the two variants on product work, none says when Flare's speed is enough and when Sunburst's edit precision earns its wait, and none gives a QA list for an edited product image.",
+  words: 1800,
+  angle:
+    "Two variants, two jobs. Flare is the everyday renderer: fast, follows a written brief, writes legible type. Sunburst is the editor: give it up to four pictures and it changes what the brief names and keeps the rest. Both cut a subject out on a transparent background, which ChatGPT Image 2 cannot. Taught on product work (a packshot, a transparent cut-out, a label change, a scene swap) with OpenAI's own documentation as the only source for capabilities.",
+  mustInclude: [
+    "The two variants as OpenAI names and describes them, from OpenAI's own model pages, image generation guide and release notes, with the release date as OpenAI states it",
+    "A capability table sourced from OpenAI, then a second table of what the app offers per the help center: text to image and edit, up to 4 source images, quality Low, Medium, High, Extra high and Max, resolution 1K, 2K or 4K (up to 3840 px), Panorama 3:1 and Tall 1:3 among the shapes, PNG, JPG or WebP, 1 to 10 images a run, a mask on an edit, Background Auto, Opaque or Transparent",
+    "Transparent background: on the 2.5 engines only, with PNG or WebP; ChatGPT Image 2 cannot cut a subject out",
+    "When to pick which: Flare for drafts, series and text-heavy layouts; Sunburst for edits that must leave the product and the rest of the frame untouched; ChatGPT Image 2 and FLUX.1 Kontext as the alternatives already covered on their own pages",
+    "Five product prompts with the variant for each: a white-background packshot, a transparent cut-out for a layout, a label text change on an existing photo, a scene swap that keeps the product, a series of ten from one run",
+    "Edit discipline: name the change, state what stays, quote the text to write, use the mask for the area that may change, one change per pass",
+    "Source images are resized in the browser to 1,536 pixels on the long side before they are sent: feed a close-up of a label as its own source picture",
+    "Improve with AI rewrites the prompt for the chosen engine; the price of each run is shown before it runs and a failed run is not charged",
+    "A QA list for an edited product image: label text, logo, color, edges of a cut-out, shadow, what changed that should not have",
+  ],
+  doNot: [
+    "Cite any source but OpenAI for a capability, a limit or a release date",
+    "Repeat a latency or quality comparison unless OpenAI publishes it, attributed to OpenAI",
+    "Name resellers, API aggregators or tool vendors",
+    "Print a price, a relative price or any hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "OpenAI: the GPT Image 2.5 model pages, the image generation guide, the API reference and the release notes, dated",
+    "App facts: create-an-image.md (engine table, options, Background, Mask, Images per run) and choosing-a-model.md",
+  ],
+  assets: [
+    "Flare and Sunburst table, per OpenAI",
+    "App options table from the help center",
+    "Five prompt blocks",
+    "QA list for an edited product image",
+    "Existing localized capture create-an-image-studio.webp",
+  ],
+  links: [
+    ["ChatGPT Image 2 product prompting guide", "/resources/how-to/chatgpt-image-2-product-prompting-guide"],
+    ["FLUX.1 Kontext editing guide", "/resources/how-to/flux-kontext-editing-guide"],
+    ["white background packshot guide", "/resources/how-to/ai-white-background-packshot"],
+    ["readable text in AI images", "/resources/how-to/readable-text-in-ai-images"],
+    ["engines page", "/app/engines"],
+    ["AI image production", "/solutions/ai-production/image"],
+  ],
+  seoTitle: "ChatGPT Image 2.5 Flare and Sunburst Prompts",
+  seoDesc:
+    "How to prompt ChatGPT Image 2.5 Flare for fast renders and Sunburst for precise edits: packshots, transparent cut-outs, label changes, scene swaps.",
+  faqs: [
+    "What is the difference between GPT Image 2.5 Flare and Sunburst?",
+    "How do I write a prompt for ChatGPT Image 2.5?",
+    "Can ChatGPT Image 2.5 make a transparent background?",
+    "How many reference images can GPT Image 2.5 edit at once?",
+    "Is ChatGPT Image 2.5 better than ChatGPT Image 2 for product photos?",
+    "What resolution can ChatGPT Image 2.5 render?",
+  ],
+  cta: "Create your account",
+  notes:
+    "OpenAI's own docs only. Both variants are in the app (help center engine table). Distinct from brief 60 (ChatGPT Image 2): links it rather than repeating it.",
+};

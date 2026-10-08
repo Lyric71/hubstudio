@@ -1,0 +1,78 @@
+// editorial/scripts/wave2/110-on-model-photos-from-flat-lay.mjs
+export default {
+  id: "110",
+  date: "2026-12-01",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "on-model-photos-from-flat-lay",
+  h1: "How to make on-model photos from flat lays with AI",
+  query: "AI on model photos from flat lay",
+  secondary: [
+    "flat lay to model AI",
+    "AI fashion model from product photo",
+    "turn flat lay into model photo",
+    "AI clothing on model generator",
+    "AI virtual model for apparel",
+  ],
+  verdict:
+    "Flat-lay-to-model apps rank with seconds-per-image and cost-per-image claims and a three-click workflow; none says how to shoot the flat lay so the garment survives, how to state size and fit in the prompt, how to keep one model across a collection, or how to check the result against the garment before it goes on a product page.",
+  words: 1800,
+  angle:
+    "The garment is the product; the model is generated. So the work is in the inputs and the check: a flat lay shot for color and detail, close-ups fed as their own pictures, a prompt that states the model, the size worn and what of the garment must not change, one model reference reused across the collection, and a side-by-side check before upload. Taught with Edit an image in the Image studio.",
+  mustInclude: [
+    "Shooting the flat lay for this use: even light, true color with a reference card, the whole garment uncropped, close-ups of print, label, texture and hardware; front and back",
+    "The source pack: flat lay, a detail close-up and a model reference picture (up to four source pictures on engines that take them: ChatGPT Image 2 and 2.5, Nano Banana 2 and Pro, Seedream 4.5 and 5.0 Pro); source images are resized to 1,536 pixels on the long side, so a print detail goes in as its own picture",
+    "The prompt: the model (build, age range, pose, setting), the size worn and the fit intended, then what stays (color, print scale, length, neckline, buttons, logo), one change per pass",
+    "The same model across a collection: one reference picture reused and the Consistent character across images skill",
+    "Back views, details and a short clip: the same model reference, then image to video in the video studio for a few seconds of movement",
+    "The fit and color check: a table comparing the result with the flat lay (color, print scale, length, drape, details), and the fix for each",
+    "Marketplace rules for apparel images: link the Amazon and Shopify spec pages rather than restating them",
+    "Disclosure for synthetic models: point to the fashion industry piece for the rules",
+    "Case reference only as written in src/data/case-studies.ts: the global fashion brand (an automated workflow turning flat product shots into styled, on-model imagery; a virtual model library for its target demographics)",
+  ],
+  doNot: [
+    "Promise exact fit or drape from a flat lay",
+    "Name a flat-lay-to-model app or tool vendor",
+    "Repeat seconds-per-image or cost-per-image claims",
+    "Print a price or any hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "App behavior: create-an-image.md, create-a-video.md, skills.md and assets-library.md in the help center",
+    "Any conversion or return figure for on-model against flat-lay images only from a study with sample and method; otherwise cut",
+  ],
+  assets: [
+    "Flat lay shooting checklist",
+    "Source pack table: picture, why it is there",
+    "Prompt blocks: front view, back view, a second pose with the same model",
+    "Fit and color check table",
+    "Existing localized capture create-an-image-studio.webp",
+  ],
+  links: [
+    ["AI content for fashion and apparel brands", "/resources/insights/ai-content-fashion-apparel"],
+    ["global fashion brand case study", "/work/global-fashion-brand"],
+    ["consistent character in AI images and video", "/resources/how-to/consistent-character-ai-images-video"],
+    ["keep the product exact in AI images", "/resources/how-to/keep-product-accurate-ai-images"],
+    ["Amazon product image requirements", "/resources/insights/amazon-product-image-requirements"],
+    ["eCommerce design service", "/services/design/ecommerce"],
+  ],
+  seoTitle: "How to Make On-Model Photos from Flat Lays with AI",
+  seoDesc:
+    "Turn flat lays into on-model photos with AI: shoot the flat lay for color and detail, state size and fit, keep one model across a collection, check it.",
+  faqs: [
+    "Can AI put my clothes on a model from a flat lay photo?",
+    "How do I keep the garment color accurate on an AI model?",
+    "How do I use the same AI model for a whole collection?",
+    "Can AI show how a garment fits?",
+    "Can I use AI on-model photos on Amazon?",
+    "Do I need to disclose AI-generated models?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Help: create-an-image.md (Edit an image, sources), create-a-video.md, skills.md. Reuse the existing localized Image studio capture. Distinct from brief 96 (fashion industry page): this is the method.",
+};

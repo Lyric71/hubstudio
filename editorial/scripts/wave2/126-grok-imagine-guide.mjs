@@ -1,0 +1,76 @@
+// editorial/scripts/wave2/126-grok-imagine-guide.mjs
+export default {
+  id: "126",
+  date: "2026-12-16",
+  family: "engine",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "Engine guides",
+  contentType: "Engine guide",
+  readerStage: "practitioner",
+  slug: "grok-imagine-guide",
+  h1: "Grok Imagine for images and short video",
+  query: "Grok Imagine prompts",
+  secondary: [
+    "grok imagine video prompts",
+    "grok imagine image to video",
+    "grok imagine video length",
+    "grok imagine aspect ratios",
+    "grok imagine video with sound",
+  ],
+  verdict:
+    "Consumer tips and social threads rank, aimed at the chatbot's playful modes, with xAI's own API documentation lower down; none applies the maker's documentation to brand work (product scenes, short social clips with sound) or says what the image and the video engines cannot do.",
+  words: 1800,
+  angle:
+    "Grok Imagine is the quick sketchbook of the roster: fast image renders from a prompt alone, and short clips with sound at any whole-second length from 1 to 15 seconds, with a cheap 480p draft. Use it to explore and for short social video; know its limits in the app (no image editing or upscaling, no 5:4 or 4:5 image, no last frame), and hand finished work to an engine that does those. From xAI's own documentation and the app's own limits.",
+  mustInclude: [
+    "xAI's own documentation from docs.x.ai for image and video generation: what each model is for, its inputs, its prompting advice",
+    "A capability table with an app column from the help center: Grok Imagine Image 2.0 (xAI) does text to image only, no editing and no upscaling, Low or Standard quality each at 1K or 2K, JPG; shapes square, 4:3, 3:2, 16:9, 21:9, 3:4, 2:3 and 9:16, with 5:4 and 4:5 refused by the engine and so not offered",
+    "Grok Imagine 1.5 (xAI) in the app: 1 to 15 seconds in whole seconds, 480p draft, 720p or 1080p, shapes 16:9, 9:16, 1:1, 4:3, 3:4, 3:2 and 2:3, optional generated sound, fed a start image (no last frame) or references of up to seven pictures and one sound file",
+    "The maker and the app read apart: xAI's API takes reference pictures for the image model while the app runs it as text to image only (ledger, 2026-10-08); xAI's reference-to-video page gave 720p as the ceiling for reference renders (ledger, brief 58), so re-read it and print the maker's value and the app's offer each with its own source",
+    "Prompt examples in prompt blocks: two image prompts (a product hero, a lifestyle scene) and three video prompts (text to video with sound, a start image animated, references for a recurring product)",
+    "Drafting cheap: 480p and short durations to test motion and timing, then the final at 720p or 1080p",
+    "When another engine in the app fits better: an edit or an upscale (Nano Banana 2 and Pro, Seedream, the ChatGPT Image engines, FLUX.1 Kontext), a 4:5 feed image, a clip that must end on a set frame (engines that take a last frame), a clip longer than 15 seconds",
+    "A QA list for both: hands and faces, the product's shape and label, motion artifacts, sound that fits the picture",
+    "Improve with AI rewrites the prompt for the engine picked; the price is shown before the run; a failed run is not charged",
+  ],
+  doNot: [
+    "Cite any source but xAI for a capability",
+    "Describe the consumer chatbot's modes or content settings",
+    "Name resellers or tool vendors",
+    "Print a price",
+    "Use an em dash",
+  ],
+  stats: [
+    "xAI docs: the image generation and video generation pages, and the reference-to-video page logged for brief 58, dated",
+    "App facts: create-an-image.md and create-a-video.md, checked against the engines page",
+  ],
+  assets: [
+    "Capability table: job, the image engine, the video engine, xAI's documentation, the app",
+    "Draft-to-final table: settings for a draft, settings for a final",
+    "Five prompt blocks",
+    "Existing localized captures create-an-image-studio.webp and create-a-video-studio.webp",
+  ],
+  links: [
+    ["engines page", "/app/engines"],
+    ["consistent character in AI images and video", "/resources/how-to/consistent-character-ai-images-video"],
+    ["product video with sound", "/resources/how-to/product-video-with-sound"],
+    ["animate a product photo", "/resources/how-to/animate-product-photo"],
+    ["AI video production", "/solutions/ai-production/video"],
+  ],
+  seoTitle: "Grok Imagine Prompts for Images and Short Video",
+  seoDesc:
+    "How to prompt Grok Imagine for brand work: fast image renders, 1 to 15 second clips with sound, cheap drafts, and what to hand to another engine.",
+  faqs: [
+    "How do I write a good Grok Imagine prompt?",
+    "How long can a Grok Imagine video be?",
+    "Can Grok Imagine edit an existing image?",
+    "Does Grok Imagine make video with sound?",
+    "Can Grok Imagine animate my product photo?",
+    "What aspect ratios does Grok Imagine support?",
+  ],
+  cta: "Create your account",
+  notes:
+    "xAI's own docs only. Covers both engines in the app: Grok Imagine Image 2.0 (xAI) and Grok Imagine 1.5 (xAI). App facts from the help center, which mirrors the app's image and video catalogs.",
+};

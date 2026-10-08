@@ -1,0 +1,73 @@
+// editorial/scripts/wave2/135-generate-or-edit-source-photo.mjs
+export default {
+  id: "135",
+  date: "2026-12-24",
+  family: "comparison",
+  template: "insight",
+  brief: true,
+  status: "not_started",
+  cluster: "Comparisons",
+  contentType: "Comparison",
+  readerStage: "budget-holder",
+  slug: "generate-or-edit-source-photo",
+  h1: "Generate from scratch or edit a source photo",
+  query: "AI image generation vs AI photo editing",
+  secondary: [
+    "text to image vs image to image",
+    "AI photo editing for product images",
+    "when to use text to image",
+    "edit my product photo with AI or generate a new one",
+  ],
+  verdict:
+    "Glossaries and tool landing pages explain text to image and image editing as features; none treats the choice as a decision about what must stay true (the product, a person, a place), the rights carried by the source photo, the runs it takes to a usable result, and who signs off.",
+  words: 1900,
+  angle:
+    "The question is not which feature is newer but what must stay true. Generate from scratch when nothing in the picture has to match a real object: concepts, backgrounds, moods, a product that does not exist yet. Edit a source photo when the product, the person or the place is real and must stay itself. Most production does both: generate the setting, then bring the real product into it with an edit.",
+  mustInclude: [
+    "A decision table in the first screen: criterion (the product must match, a person's likeness, rights in the source, text on the product, volume of variants, runs to a usable result, sign-off) against generate, edit, both",
+    "What an edit keeps and what it can still change: label text, proportions, color, edges; the check after every edit",
+    "Rights: an edit inherits the rights of its source photo, so the source license matters; a generated picture's copyright status from the US Copyright Office's own report",
+    "Marketplace accuracy rules that apply either way: the picture must show the product sold (link the marketplace policies piece)",
+    "The hybrid, described as a way of working: generate the setting, then edit with the real packshot as a source picture (up to four source pictures, engine dependent), with a mask on some engines to fix what may change",
+    "Cost structure, never amounts: both paths are paid per run; what drives the number of runs on each",
+  ],
+  doNot: [
+    "Name any image app, photo editor or tool vendor",
+    "Rank individual engines as better or worse",
+    "Print a hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "US Copyright Office, Copyright and Artificial Intelligence Part 2: Copyrightability (January 2025), copyright.gov, the human-authorship conclusion quoted",
+    "Any figure on runs to a usable result only from a study with sample and method; otherwise no figure",
+    "App facts: create-an-image.md (jobs, source pictures, mask)",
+  ],
+  assets: [
+    "Decision table",
+    "Hybrid workflow diagram described in the ASSET BRIEF: generated setting, real packshot, edit, check",
+    "Edit check table: what to inspect after an edit and the fix",
+  ],
+  links: [
+    ["stock photos or AI images", "/resources/insights/stock-photos-vs-ai-images"],
+    ["what Amazon and Google Shopping allow", "/resources/insights/marketplace-policies-ai-product-images"],
+    ["product photo to lifestyle image", "/resources/how-to/product-photo-to-lifestyle-image"],
+    ["shoot it or generate it", "/resources/insights/shoot-it-or-generate-it"],
+    ["keep the product exact in AI images", "/resources/how-to/keep-product-accurate-ai-images"],
+    ["text to video or image to video", "/resources/insights/text-to-video-vs-image-to-video"],
+    ["generated photos or 3D renders", "/resources/insights/generated-photos-vs-3d-renders"],
+    ["AI image production", "/solutions/ai-production/image"],
+  ],
+  seoTitle: "Generate From Scratch or Edit a Source Photo",
+  seoDesc:
+    "AI image generation or AI photo editing: decide by what must stay true. When to generate, when to edit your own photo, and how most teams do both.",
+  faqs: [
+    "What is the difference between AI image generation and AI photo editing?",
+    "Should I generate product images or edit my product photos?",
+    "Does AI editing change my product?",
+    "Who owns an AI-edited photo?",
+    "Can I combine a generated background with my real product?",
+    "Is editing a photo cheaper than generating one?",
+  ],
+  cta: "Create your account",
+  notes: "Category Buying models. Compares ways of working, never a named tool or engine.",
+};

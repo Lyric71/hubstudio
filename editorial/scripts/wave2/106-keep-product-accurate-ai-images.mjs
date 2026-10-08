@@ -1,0 +1,77 @@
+// editorial/scripts/wave2/106-keep-product-accurate-ai-images.mjs
+export default {
+  id: "106",
+  date: "2026-11-26",
+  family: "howto",
+  template: "howto",
+  brief: true,
+  status: "not_started",
+  cluster: "How-to",
+  contentType: "How-to guide",
+  readerStage: "practitioner",
+  slug: "keep-product-accurate-ai-images",
+  h1: "How to keep the product exact in AI images",
+  query: "keep product accurate in AI images",
+  secondary: [
+    "AI product image wrong logo",
+    "AI changes my product",
+    "product fidelity AI image generation",
+    "keep packaging text accurate AI",
+    "AI product photo color accuracy",
+  ],
+  verdict:
+    "Editing-app blogs rank with a checklist that ends in their own fix button; none explains why a product drifts (text to image invents it, a small source loses the label, one prompt asks for too much), none sets the method upstream of the fix, and none ties fidelity to the marketplace rules that punish a picture that misrepresents the product.",
+  words: 1700,
+  angle:
+    "A product drifts for three reasons: it was described instead of shown, the source was too small to carry the detail, or one run was asked to change too much. So start from the real photo, feed the detail as its own picture, name what must stay, change one thing per pass, and check against the original before anything ships. Taught with Edit an image in the Image studio.",
+  mustInclude: [
+    "Why products drift: text to image invents the product; an edit keeps it only as well as the source and the prompt protect it",
+    "The source pack: a clean front photo, an angle, and a close-up of the label or logo as separate source pictures (up to four on engines that take them); source images are resized to 1,536 pixels on the long side in the browser, so a label shot from afar loses its text",
+    "The prompt: name the change, list what stays (shape, proportions, color, label text quoted, logo, materials), one change per pass",
+    "Engines suited to keeping a product, per the help center: the FLUX.1 Kontext engines change exactly what you name and keep the rest (one source); Nano Banana 2 is dependable on an existing photo; the ChatGPT Image engines take a mask whose transparent area marks what may change; ChatGPT Image 2.5 Sunburst is tuned for precise edits",
+    "The Catalog skills Precise image edits, E-commerce packshot and Lifestyle product scene; a team skill written by an admin holding the product facts that never change",
+    "A fidelity check table: shape and proportions, color, logo, label text, pattern, material and texture, parts and accessories, scale against the scene; the fix for each (rerun the edit, mask the area, shoot a better source)",
+    "What the free Image editor can fix (light, color, crop, a logo placed over) and what it must not be used to fake",
+    "Sign-off: Send for validation to the person who owns the product; keep the original and the result as versions in the Assets Library",
+    "Why it matters beyond looks: the marketplaces' rules against images that show a different product, features it lacks or accessories not included",
+  ],
+  doNot: [
+    "Promise that any engine keeps a product exact every time",
+    "Recommend repainting label text by hand in the editor to pass a check",
+    "Name an editing app or tool vendor",
+    "Print a price or any hubStudio amount",
+    "Use an em dash",
+  ],
+  stats: [
+    "App behavior: create-an-image.md, skills.md, assets-library.md and validation.md in the help center",
+    "Marketplace misrepresentation rules: link the Amazon, Google Merchant Center and marketplace policy pages rather than restating them without a source",
+  ],
+  assets: [
+    "Drift causes table: cause, symptom, prevention",
+    "Fidelity check table: what to compare, how, the fix",
+    "Prompt blocks: a weak and a strong edit instruction",
+    "Existing localized capture create-an-image-studio.webp",
+  ],
+  links: [
+    ["product photo to lifestyle image", "/resources/how-to/product-photo-to-lifestyle-image"],
+    ["readable text in AI images", "/resources/how-to/readable-text-in-ai-images"],
+    ["on-brand images with skills", "/resources/how-to/on-brand-images-with-skills"],
+    ["marketplace policies for AI product images", "/resources/insights/marketplace-policies-ai-product-images"],
+    ["retouching at volume", "/resources/insights/retouch-at-volume-qa-pipeline"],
+    ["Image studio", "/app/create"],
+  ],
+  seoTitle: "How to Keep the Product Exact in AI Images",
+  seoDesc:
+    "Why AI changes your product and how to stop it: start from the real photo, feed the label as its own source, name what stays, edit in passes, check.",
+  faqs: [
+    "Why does AI change my product in generated images?",
+    "How do I keep my logo accurate in AI images?",
+    "Can AI keep the text on my packaging?",
+    "Which AI engine is best for keeping a product unchanged?",
+    "How do I check an AI product image before publishing?",
+    "Is it legal to sell with AI product images that differ from the product?",
+  ],
+  cta: "Create your account",
+  notes:
+    "Help: create-an-image.md (Edit an image, Mask, source resizing), skills.md, assets-library.md, validation.md. Reuse the existing localized Image studio capture.",
+};
