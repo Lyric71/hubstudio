@@ -26,7 +26,7 @@ shots:
     captured: 2026-10-08
   - file: "/Images/help/image-anonymizer-page.webp"
     route: "/files/tools/image-anonymizer"
-    alt: "Image anonymizer lit in the menu, its page open: the box to drop a picture, the Output format list, and the three steps Drop a picture, See what it carries and Download the clean copy"
+    alt: "Image anonymizer lit in the menu, its page open: the box to drop a picture and the From the Assets Library button beside it, the Output format list, and the three steps Open a picture, See what it carries and Download the clean copy"
     captured: 2026-10-02
   - file: "/Images/help/image-editor-social.webp"
     route: "/files/tools/image-editor"
@@ -153,9 +153,9 @@ The Image editor, the Video editor and the Image anonymizer run in your own brow
 
 **Image anonymizer** in the menu opens it.
 
-![Image anonymizer lit in the menu, its page open: the box to drop a picture, the Output format list, and the three steps Drop a picture, See what it carries and Download the clean copy](/Images/help/image-anonymizer-page.webp)
+![Image anonymizer lit in the menu, its page open: the box to drop a picture and the From the Assets Library button beside it, the Output format list, and the three steps Open a picture, See what it carries and Download the clean copy](/Images/help/image-anonymizer-page.webp)
 
-Drop a picture on the box, or click it to choose one. The tool first lists what is hidden inside the file: camera data, the place it was taken, editing records, content credentials and the tags AI engines write into their pictures. It then rebuilds the picture pixel by pixel into a new file that carries none of it, under a neutral file name.
+Drop a picture on the box, or click it to choose one. To clean a picture your team already keeps, click **From the Assets Library** next to the box and pick it there: it's read as it's stored, and the library copy never changes. The picker shows 15 pictures a page, newest first, with a search by name or tag and filters for where it came from, the brand, the folder and the date. The tool first lists what is hidden inside the file: camera data, the place it was taken, editing records, content credentials and the tags AI engines write into their pictures. It then rebuilds the picture pixel by pixel into a new file that carries none of it, under a neutral file name.
 
 Nothing is uploaded and nothing is kept: the clean copy exists only on the page until you download it. Leave the page and it's gone. The tool cleans what is written into the file, not the picture itself, so a watermark drawn in the pixels can survive. Only anonymize pictures you have the rights to use.
 

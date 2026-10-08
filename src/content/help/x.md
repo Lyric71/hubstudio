@@ -96,6 +96,8 @@ A picture takes a minute or two. The run shows in **Activity**, and the post kee
 
 **Edit a picture.** Point at a picture of the post and click the pencil under the **×**, or click **Edit in the image editor** under the pictures (**Edit slide 1 in the image editor** when there are several, each keeping its own pencil). The picture opens in the Image editor, on its **Social** panel set to X: pick **Post, wide** (16:9, shown whole), **Post, square**, **Post, portrait** or **One of two**, crop it or fit it whole over a blurred background, see how X crops it beside other pictures, then click **Apply the format**. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, as a new version, and the original stays in the versions and in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
 
+**The clean picture.** On a post with pictures, **Attach the clean picture** (**Attach the clean pictures** on a carousel), on the bar under the phone preview, takes the AI marks out of the picture files: the Content Credentials (the **CR** badge LinkedIn shows), and the tags the generator writes. Each marked picture is redrawn without them, saved to the Assets Library and put on the post in its place, as a new picture version. The pixels don't change, and the original stays in the versions. A picture with no AI mark is left as it is. It's free.
+
 X takes JPG, PNG, WebP and GIF pictures up to 5 MB each. An animated GIF (up to 15 MB) goes out alone, as the only picture of its post.
 
 ## Made for a client

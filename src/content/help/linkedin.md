@@ -85,6 +85,8 @@ A picture takes a minute or two. The run shows in **Activity**, and the post kee
 
 **Edit a picture.** Point at a picture of the post and click the pencil under the **×**, or click **Edit in the image editor** under the pictures (**Edit slide 1 in the image editor** when there are several, each keeping its own pencil). The picture opens in the Image editor, on its **Social** panel set to LinkedIn: pick **Post, portrait** (the one that takes the most room on phones), **Post, square** or **Post, landscape**, crop it or fit it whole over a blurred background, then click **Apply the format**. The panel checks the size, the file and the words before you save. You can also adjust its light and colors, write a caption, draw an arrow, or place your logo in a corner. Then click **Save** and **Save and use it in the post**: the edited copy takes the place of the picture in the post, in the same slide, as a new version, and the original stays in the versions and in the Assets Library. Editing is free. See [Edit a picture of a post](/help/assets-library#edit-a-picture-of-a-post).
 
+**The clean picture.** On a post with pictures, **Attach the clean picture** (**Attach the clean pictures** on a carousel), on the bar under the phone preview, takes the AI marks out of the picture files: the Content Credentials LinkedIn shows as a **CR** badge, and the tags the generator writes. Each marked picture is redrawn without them, saved to the Assets Library and put on the post in its place, as a new picture version. The pixels don't change, and the original stays in the versions. A picture with no AI mark is left as it is. It's free.
+
 LinkedIn takes JPG, PNG and GIF pictures, not WebP, up to 10 MB each.
 
 ## Made for a client
