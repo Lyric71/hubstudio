@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Build the app screenshots of the contact follow-up email (src/lib/contact-followup.ts).
+// Build the pictures of the contact follow-up email (src/lib/contact-followup.ts):
+// its app screenshots and its header logo.
 //
 // Usage:
 //   node scripts/build-email-shots.mjs
@@ -50,4 +51,14 @@ for (const [capture, name] of Object.entries(SHOTS)) {
     console.log(`${path.relative(root, out)}  ${width}x${height}  ${kb} KB`);
   }
 }
+// The logo of the email header: the cream wordmark flattened onto the header's
+// navy, so the picture carries its own background. A transparent logo vanishes
+// when a dark mode (Gmail on iOS, Outlook.com) recolors the band behind it.
+const logo = path.join(to, "logo.png");
+await sharp(path.join(root, "public", "logo", "hubstudio-logo-dark.png"))
+  .flatten({ background: "#0e1f4e" })
+  .png({ compressionLevel: 9 })
+  .toFile(logo);
+console.log(`${path.relative(root, logo)}  ${Math.round((await stat(logo)).size / 1024)} KB`);
+
 if (failed) process.exit(1);
