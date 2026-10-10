@@ -51,6 +51,19 @@ Every article goes through these steps. None is optional.
 person says "Publish <slug>" after reviewing the draft. Step 5 follows step 4
 automatically. Nothing publishes itself.
 
+**`publish_date` orders the queue; it never gates a run (standing, Cyril,
+2026-10-10).** "Today's article" is the next row in `publish_date` order that
+is still `not_started`, whatever its date: a run takes it on a future date
+too. A finished draft publishes at the next publish run, whatever its date.
+No prompt, script or rule may make a run wait for a row's date, and "nothing
+due today" is never a reason to end a run while a `not_started` row is left.
+Twice a date gate held content back: finished drafts sat unpublished for
+weeks in September (fixed for publish on 27 September), then 79 briefs sat
+undrafted from 8 October, when a draft prompt rewrite brought the gate back.
+`scripts/check-queue.mjs` runs after every draft run and mails Cyril when
+drafting stalls, a draft sits at `image_ready`, or a week or less of briefs is
+left.
+
 Step 2 runs on all 48 articles, not a selection. Step 3 uses the
 `generate-image-openai` skill only, never `scripts/generate-image.mjs`.
 
@@ -183,10 +196,13 @@ now decided. A run applies them and does not raise them again.
 6. **An insights category no layer claims.** The publish step files the
    article under a category a placement already claims (see the publish
    prompt in `run-daily.ps1`).
-7. **No eligible row.** When every schedule row is published and no watch row
-   is due, the run records that and ends. It is not an open item. Extending
-   the calendar past brief 48 is a planning change made in `schedule.csv` and
-   the briefs, not something a run asks for.
+7. **No eligible row.** When every schedule row is published or blocked and
+   no watch row is due, the run records that and ends. It is not an open item.
+   A `not_started` row with a future `publish_date` is eligible, so this holds
+   only when the queue is truly empty. Extending the calendar is a planning
+   change made in `schedule.csv` and the briefs, not something a run asks for;
+   the runner's `check-queue.mjs` mail (a fact, not an open item) says when the
+   queue is a week from empty.
 8. **Files named `*.ALT-YYYY-MM-DD.md` in `output/` or `research/`** are
    archived alternates of a slug already published. They are never drafts
    awaiting publication and a run ignores them.

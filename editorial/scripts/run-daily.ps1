@@ -8,15 +8,21 @@
   the .env keys and the full model. A cloud routine has none of those.
 
   Modes:
-    draft    "Draft today's article."  Steps 0 to 3 of the pipeline. Stops at
-             image_ready. Runs Mon, Tue, Thu, Fri.
+    draft    "Draft the next article."  Steps 0 to 3 of the pipeline on the
+             next not_started row in publish_date order, whatever its date.
+             Stops at image_ready. Runs every day, twice. Then
+             check-queue.mjs emails Cyril when a week or less of briefs is
+             left, so an empty queue never goes unnoticed.
     publish  Publishes every row in editorial/schedule.csv whose status is
              image_ready, in English, French and Chinese (the translation
              step starts its own dev server: npm run i18n:local), then sends
              the Resend email. A finished draft goes
-             live the next morning rather than waiting for its publish_date:
-             that column is the drafting calendar, and waiting on it left
-             finished drafts sitting unpublished for weeks.
+             live the next morning rather than waiting for its publish_date.
+
+  publish_date orders the queue. It never gates a run, in either mode.
+  Waiting on it left finished drafts unpublished for weeks in September
+  (fixed for publish on 27 September), then left 79 briefs undrafted from
+  8 October, when a draft prompt rewrite brought the gate back.
 
   Output of each run is written to editorial/logs/runs/<date>-<mode>.txt.
   Register with editorial/scripts/register-tasks.ps1.
@@ -27,7 +33,7 @@
 param(
   [ValidateSet('draft', 'publish')]
   [string]$Mode = 'draft',
-  # Manual test run: ignore the plan-start date and the weekday guard.
+  # Manual test run: ignore the plan-start date.
   [switch]$Force,
   # Optional extra instructions appended to the prompt (for example a resume
   # note after an interrupted run).
@@ -50,28 +56,22 @@ if (-not $Force -and (Get-Date).Date -lt $PlanStart) {
   exit 0
 }
 
-# Wave two has rows Monday to Friday, two on the busiest days, so the draft
-# task fires twice each weekday and each run takes one row. No weekend rows.
-if ($Mode -eq 'draft' -and -not $Force) {
-  $Dow = (Get-Date).DayOfWeek
-  if ($Dow -in 'Saturday', 'Sunday') {
-    "$(Get-Date -Format s) no draft on $Dow" | Out-File $RunLog -Encoding utf8
-    exit 0
-  }
-}
-
 # The shared runner uses: Opus 5.5, then Fable, GPT-6 Astra and GPT-5.6 Sol as fallbacks.
 $Model = 'claude-opus-5-5'
 
 if ($Mode -eq 'draft') {
   $Prompt = @'
-Draft today's article.
+Draft the next article.
 
 Read editorial/CLAUDE.md (its "Wave two" section included), editorial/SPEC.md,
 editorial/RUNBOOK.md and hubstudio-positioning.md first and follow them
-exactly. Take ONE row from editorial/schedule.csv: the earliest row whose
-status is not_started and whose publish_date is today or earlier. If none
-qualifies, record that nothing is due and end. Its brief is the brief_file of
+exactly. Take ONE row from editorial/schedule.csv. If a row stopped at
+researched, drafted or quality_passed (an interrupted run), finish that one.
+Otherwise take the earliest row in publish_date order whose status is
+not_started, WHATEVER ITS PUBLISH_DATE: that column orders the queue, it is
+not a release date, and a future date is never a reason to skip a row or end
+the run. Skip only a blocked row. If no not_started row is left at all, record
+that the queue is empty and end. Its brief is the brief_file of
 that row, rendered from editorial/scripts/wave2/<id>-<slug>.mjs for wave two.
 Run steps 0 to 3 of the pipeline: the research gate R1 to R7 writing
 editorial/research/<slug>.md before any body copy, then /createarticle, then
@@ -206,4 +206,13 @@ $AgentRunner = 'C:\Users\cyril\Project\automation\scripts\Invoke-ProjectAgent.ps
 $Code = & $AgentRunner -Repo $Repo -PromptFile $PromptFile -RunLog $RunLog -RunName "hubStudio $Mode"
 
 "$(Get-Date -Format s) end $Mode exit $Code" | Out-File $RunLog -Append -Encoding utf8
+
+# An empty queue is silent by design (settled fallback 7), so the runner, not
+# the model, says when it is running low: a mail once a day while a week or
+# less of briefs is left. Never fails the run.
+if ($Mode -eq 'draft') {
+  $Queue = & cmd.exe /c "node editorial\scripts\check-queue.mjs 2>&1"
+  "$(Get-Date -Format s) queue: $($Queue -join ' ')" | Out-File $RunLog -Append -Encoding utf8
+}
+
 exit $Code

@@ -3,9 +3,9 @@
   Registers (or re-registers) the two Windows scheduled tasks that run the
   hubStudio editorial pipeline on this machine.
 
-  hubStudio Editorial Draft    Mon to Fri at 00:30 and 12:30 local (Shanghai);
-                               each run drafts one due row (wave two has up
-                               to two rows a day)
+  hubStudio Editorial Draft    every day at 00:30 and 12:30 local (Shanghai);
+                               each run drafts the next row in the queue,
+                               whatever its publish_date
   hubStudio Editorial Publish  every day at 04:00 and 16:30 local, DISABLED by
                                default unless -EnablePublish is passed
 
@@ -51,10 +51,9 @@ function Register([string]$Name, [string]$Mode, $Trigger, [bool]$Enabled) {
   Write-Host "$Name registered ($(if ($Enabled) {'enabled'} else {'disabled'}))"
 }
 
-$Weekdays = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'
 $DraftTrigger = @(
-  (New-ScheduledTaskTrigger -Weekly -DaysOfWeek $Weekdays -At $DraftTime),
-  (New-ScheduledTaskTrigger -Weekly -DaysOfWeek $Weekdays -At $DraftTime2)
+  (New-ScheduledTaskTrigger -Daily -At $DraftTime),
+  (New-ScheduledTaskTrigger -Daily -At $DraftTime2)
 )
 Register 'hubStudio Editorial Draft' 'draft' $DraftTrigger $true
 
