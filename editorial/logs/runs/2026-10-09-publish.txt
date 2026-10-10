@@ -1,0 +1,22 @@
+﻿2026-10-09T17:18:58 start publish (model claude-opus-5-5)
+2026-10-09T17:18:59 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-09T17:25:00 Opus 5.5 decision record.
+State on entry: this log held only the runner's two start lines, so no earlier model in this chain made partial progress or left an error to correct. HEAD df983b6. Working tree: only the runner's own files under editorial/logs/runs/ modified or new; no half-built article page, insights.ts entry, hero image or dictionary change.
+Read: editorial/CLAUDE.md, editorial/SPEC.md, editorial/RUNBOOK.md (per the prompt), the schedule and watch.csv.
+Row selection: schedule.csv parsed as quoted CSV, 142 rows: 63 published, 79 not_started, 0 image_ready, 0 blocked, 0 at any other status. No row is image_ready, so nothing is eligible to publish. Stale-status check: every file in editorial/output/ has a live page under src/pages/resources/insights/ or src/pages/resources/how-to/, except agency-white-label-question.ALT-2026-09-21.md, an alternate draft of a page already live, not a schedule row.
+watch.csv: 31 rows, earliest due 2026-10-12 (singles-day-618-production-calendar); no row is due today or earlier, so no recheck runs.
+Steps not run, because nothing was eligible: /createblogarticle, publish-draft.mjs, the French and Chinese step, npm run build, npm run check, commit, push, notify-publish.mjs (the email is sent after a push or on a failed build; neither happened, as in the 2026-10-06 to 2026-10-08 publish runs).
+Files: only this log changed. schedule.csv and watch.csv unchanged.
+2026-10-09T17:25:00 end of Opus 5.5 decision record.
+I didn't publish anything in this run because no draft is finished.
+
+- **Earlier attempts:** the run log had only the runner's two start lines, so no earlier model left partial work or an error to fix.
+- **Schedule:** `editorial/schedule.csv` has 142 rows: 63 published and 79 not started. No row is at `image_ready` and none is blocked.
+- **Drafts:** I checked `editorial/output/` against the live pages in case a row's status was out of date. Every draft there is already live, except `agency-white-label-question.ALT-2026-09-21.md`, which is an alternate draft of a page that is already live, not a schedule row.
+- **Watch list:** the earliest row in `editorial/watch.csv` is due 2026-10-12 (`singles-day-618-production-calendar`), so nothing needed rechecking today.
+
+Since there was nothing to publish, I also skipped the translation, `npm run build`, `npm run check`, the commit and push, and the notification email. That email only goes out after a push or a failed build, which matches the publish runs of October 6 to 8.
+
+The only file I changed is `editorial/logs/runs/2026-10-09-publish.txt`, where I added this decision record. It contains no em dashes.
+2026-10-09T17:20:15 model Opus 5.5 completed successfully
+2026-10-09T17:20:15 end publish exit 0

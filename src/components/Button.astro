@@ -2,7 +2,10 @@
 /**
  * Button: §7 component library.
  * Renders an <a> when `href` is set, otherwise a <button>.
+ * A link into the app (sign-up, sign-in, the app itself) opens in a new tab.
  */
+import { APP_URL } from '../lib/links';
+
 type Variant = 'primary' | 'primary-inverse' | 'secondary' | 'on-dark' | 'ghost';
 
 interface Props {
@@ -14,11 +17,12 @@ interface Props {
 
 const { variant = 'primary', href, type = 'button', class: extra = '' } = Astro.props;
 const cls = `btn btn--${variant} ${extra}`.trim();
+const newTab = href?.startsWith(APP_URL) ? { target: '_blank', rel: 'noopener' } : {};
 ---
 
 {
   href ? (
-    <a href={href} class={cls}>
+    <a href={href} class={cls} {...newTab}>
       <slot />
     </a>
   ) : (

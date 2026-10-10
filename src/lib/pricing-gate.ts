@@ -1,9 +1,10 @@
 /**
  * Password gate for the hidden pricing calculator (/pricing/calculator).
  *
- * Same shape as the DeBeers gate: the password is checked server-side and never
- * leaves the server, and the browser only ever holds an HMAC-signed, expiring,
- * httpOnly cookie. No client-side-only gate, because the page exposes rate-card
+ * Same shape as the DeBeers gate: the password is checked server-side, and the
+ * browser only ever holds an HMAC-signed, expiring, httpOnly cookie. The
+ * password reaches people by email only: the contact follow-up
+ * (src/lib/contact-followup.ts) sends it to everyone who uses the contact form. No client-side-only gate, because the page exposes rate-card
  * numbers we do not publish.
  *
  * Configure in the Vercel project (or .env for local dev):
@@ -45,6 +46,11 @@ function safeEqual(a: string, b: string): boolean {
   let diff = 0;
   for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
   return diff === 0;
+}
+
+/** The access password, for the contact follow-up email that hands it out. */
+export function calculatorPassword(): string {
+  return PASSWORD;
 }
 
 /** True when the submitted password matches. */

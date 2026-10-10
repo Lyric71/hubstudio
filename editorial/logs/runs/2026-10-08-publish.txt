@@ -1,27 +1,17 @@
-﻿2026-10-08T04:00:02 start publish (model claude-opus-5-5)
-2026-10-08T04:00:02 model attempt 1/4, cycle 1: Opus 5.5
-2026-10-08T04:05 Opus 5.5 decision record.
-Prompt verified: SHA-256 647B03B82C231CC552836AF114393EE1DFBDD45B639D0D9F49235540E4FFBB86 matches the manifest.
-Prior state: this log held only the runner's two start lines, so no earlier model made partial progress or left an error. HEAD f51a6e9, no commit since 2026-10-06. Working tree: French dictionaries listed as modified, but git diff --ignore-cr-at-eol is empty (line endings only, outside this run, left untouched); untracked runner files for 2026-10-05 to today.
-Read: editorial/CLAUDE.md (settled fallbacks 7 and 8), editorial/RUNBOOK.md, editorial/SPEC.md.
-schedule.csv: parsed as quoted CSV, 48 rows, all published. Zero image_ready, zero blocked, zero rows held for a decision.
-Cross-check: every file in editorial/output/ (48 drafts plus agency-white-label-question.ALT-2026-09-21.md, an archived alternate per fallback 8) has its src/pages/resources/insights/<slug>.astro page and its src/data/insights.ts entry. No finished draft waits behind a stale row.
-watch.csv: one row, automotive-content-without-shipping-a-car, due 2026-11-24. Not due today, not rechecked.
-Decision: settled fallback 7 in editorial/CLAUDE.md (no eligible row, no watch row due). The run records that and ends.
-Steps not run, because nothing was eligible: /createblogarticle, step 4b (French slug, extract, three passes, i18n check, i18n guard), npm run build, npm run check, commit, push, notify-publish. The email goes out only after a push or a failed step; neither happened.
-Files: only this log changed. schedule.csv and watch.csv unchanged. No commit.
-2026-10-08T04:05 end of Opus 5.5 decision record.
-Nothing was published today because no finished draft was waiting.
+﻿2026-10-08T20:14:21 start publish (model claude-opus-5-5)
+2026-10-08T20:14:22 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-08T20:15:02 checked editorial/CLAUDE.md and RUNBOOK.md for the no-eligible-row rule; working tree held only the run-log files of today's draft and publish runs, no partial publish work from an earlier attempt.
+2026-10-08T20:15:02 schedule.csv: 142 rows, 63 published, 79 not_started, 0 image_ready, 0 blocked. No not_started row has a draft in editorial/output (checked for stale status). No row to publish.
+2026-10-08T20:15:02 watch.csv: earliest due_date is 2026-10-12 (singles-day-618-production-calendar); no row due on or before 2026-10-08. No recheck this run.
+2026-10-08T20:15:02 nothing eligible (editorial/CLAUDE.md settled fallback 7): no build, no commit, no push, no notification email. Run ends.
+There was nothing to publish today, so this run published nothing.
 
-- **Schedule:** all 48 rows in `editorial/schedule.csv` are already published. None is at `image_ready`, `blocked`, or waiting on a decision.
-- **Cross-check:** every draft in `editorial/output/` has its live page and its `insights.ts` entry, so no finished article is hiding behind an out-of-date row. The one extra file, `agency-white-label-question.ALT-2026-09-21.md`, is an archived alternate, which the rules say to ignore.
-- **Watch list:** its only row, for the automotive article, isn't due until 2026-11-24, so I didn't recheck it.
-- **Earlier attempts:** this run's log had only the runner's start lines, so there was no partial work or error to fix.
+- **Schedule:** none of the 142 rows in `editorial/schedule.csv` is at image_ready. 63 are published and 79 are not_started. I also looked for not_started rows with a finished draft already sitting in `editorial/output`, a known stale-status problem, and found none.
+- **Watch list:** no row in `editorial/watch.csv` is due on or before today. The first one is due on 2026-10-12: it adds JD's and Douyin's 2026 Singles Day dates to the Singles Day production calendar page.
+- **No earlier attempt to fix:** the working tree held only today's run-log files. No earlier model had left half-finished publish work.
 
-`editorial/CLAUDE.md` covers this case (settled fallback 7): when no row is eligible and no watch row is due, the run records that and ends. So I didn't run the publish step, the French and Chinese step, the build, the check, the commit, the push or the email.
+Because nothing was eligible (rule 7 in `editorial/CLAUDE.md`), I did not build, commit or push, and I sent no notification email. I wrote this decision in `editorial/logs/runs/2026-10-08-publish.txt`.
 
-The only file I changed is the run log, `editorial/logs/runs/2026-10-08-publish.txt`, where I added the decision record. Git lists the French dictionaries as modified, but only their line endings differ, so I left them alone.
-
-The Gmail, Google Calendar and Google Drive connectors need to be re-authorized in your claude.ai connector settings before they can be used. This run didn't need them.
-2026-10-08T04:00:54 model Opus 5.5 completed successfully
-2026-10-08T04:00:54 end publish exit 0
+The Gmail, Google Calendar and Google Drive connectors need authorizing in your claude.ai connector settings before they can be used. This run didn't need them.
+2026-10-08T20:15:11 model Opus 5.5 completed successfully
+2026-10-08T20:15:11 end publish exit 0

@@ -1,27 +1,27 @@
-﻿2026-10-08T08:31:07 start draft (model claude-opus-5-5)
-2026-10-08T08:31:07 model attempt 1/4, cycle 1: Opus 5.5
-2026-10-08T08:33:00 Opus 5.5 decision record (CATCH-UP RUN started by Relaunch-MissedTasks.ps1 for the missed 2026-10-02 (Friday) draft run, then today's row).
+﻿2026-10-08T20:14:21 start draft (model claude-opus-5-5)
+2026-10-08T20:14:22 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-08T20:15:37 Opus 5.5 decision record.
 State on entry:
-- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct. The 00:30 scheduled run (archived as 2026-10-08-draft.before-catchup-083106.txt) ended exit 0 under settled fallback 7.
-- HEAD f51a6e9, no commit since. Working tree: French and Chinese dictionaries flagged modified (outside this run, left untouched) and untracked runner files. No half-written research file, draft or hero image.
-Read: editorial/CLAUDE.md (settled fallbacks 7 and 8), editorial/RUNBOOK.md step 2 (row selection).
-Catch-up row, 2026-10-02 Fri slot D, brief 28, china-ecommerce-content-pack: status published (image_ready or later), skipped as the operator instruction requires. Its page src/pages/resources/insights/china-ecommerce-content-pack.astro and its src/data/insights.ts entry exist.
-Today's row, 2026-10-08 Thu slot C, brief 25, content-credentials-c2pa-in-production: status published, skipped. Page and insights.ts entry exist.
-Fallback (RUNBOOK step 2, oldest not_started row): schedule.csv parsed as quoted CSV, 48 rows, 48 published, zero not_started, zero blocked. Every row's page and insights.ts entry checked: none missing. Every file in output/ has a published page except agency-white-label-question.ALT-2026-09-21.md, an archived alternate (settled fallback 8), ignored.
-watch.csv: one row, automotive-content-without-shipping-a-car, due 2026-11-24, not due.
-Decision: settled fallback 7 (no eligible row). The run records that and ends. Steps 0 to 3 (R1 to R7 research gate, /createarticle, /content-quality-us, /generate-image-openai, check-draft.mjs) not run because no row was eligible. editorial/logs/2026-10-08.md not written from TEMPLATE.md, because no article went through the pipeline (same decision as the earlier no-row runs).
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct. Prompt SHA-256 matches the manifest (98DEF520...C5D75D).
+- HEAD df983b6 (wave two extended to December 31, schedule rows 102 to 142). Working tree: only the runner's own files under editorial/logs/runs/ modified. No half-written research file, draft or hero image for any not_started row.
+Read: editorial/CLAUDE.md (Wave two, No TODO leaves a run, settled fallbacks), editorial/SPEC.md, editorial/RUNBOOK.md, hubstudio-positioning.md, editorial/logs/TEMPLATE.md.
+Row selection: schedule.csv parsed as quoted CSV, 142 rows, 63 published, 79 not_started, 0 blocked, 0 at an intermediate status. Every row dated 2026-10-08 or earlier is published, and each has its page and its insights.ts or howtos.ts entry (checked file by file, none missing). The earliest not_started row is 2026-10-12 Mon, insight, brief 64, europe-campaign-localization, which is after today; no output/, research/ or hero file exists for it yet, so the schedule status is accurate.
+watch.csv: earliest due row is singles-day-618-production-calendar on 2026-10-12, not due today (and watch rows are worked by the publish run).
+Decision: no row qualifies under the prompt's rule (not_started and publish_date today or earlier), so the run records that nothing is due and ends, as the prompt directs and in line with settled fallback 7. Brief 64 is not drafted early: the prompt limits selection to rows due today or earlier, and the Monday 2026-10-12 00:30 draft run takes it.
+Steps 0 to 3 (R1 to R7 research gate, /createarticle, /content-quality-us, /generate-image-openai, check-draft.mjs) not run because no row was eligible. editorial/logs/2026-10-08.md not written from TEMPLATE.md, because no article went through the pipeline.
 Files: only this log changed. schedule.csv and watch.csv unchanged. No publish, no commit, per the prompt.
-2026-10-08T08:33:00 end of Opus 5.5 decision record.
-I didn't draft an article in this catch-up run because there was nothing left to draft.
+2026-10-08T20:15:37 end of Opus 5.5 decision record.
+I didn't draft an article in this run because no row was due today.
 
-- **Missed 2026-10-02 row (Friday, slot D, brief 28, `china-ecommerce-content-pack`):** it's already published, with its page and its `insights.ts` entry in place, so I skipped it.
-- **Today's row (2026-10-08, slot C, brief 25, `content-credentials-c2pa-in-production`):** also already published, so I skipped it too.
-- **Fallback to the oldest not-started row:** all 48 rows in `editorial/schedule.csv` are published and none is `not_started` or `blocked`. Every row has its page and its `insights.ts` entry. The only file in `output/` without a page is `agency-white-label-question.ALT-2026-09-21.md`, which is an archived alternate, so I ignored it.
-- **Watch list:** its one row, for the automotive article, isn't due until 2026-11-24.
-- **Earlier attempts:** this run's log had only the runner's start lines, so no earlier model left partial work or an error to fix. The prompt's hash matches the manifest.
+- **Schedule:** `editorial/schedule.csv` has 142 rows: 63 published and 79 not started, with none blocked or partly done. Every row dated 2026-10-08 or earlier is published, and I checked that each one has its page and its `insights.ts` or `howtos.ts` entry.
+- **Next row:** brief 64, `europe-campaign-localization`, is due Monday 2026-10-12. It has no research file, draft or hero image yet, so its status in the schedule is accurate. The prompt only allows rows due today or earlier, so I didn't start it early. The Monday 00:30 draft run will pick it up.
+- **Watch list:** the earliest entry in `watch.csv` (the Singles Day calendar) is due 2026-10-12, so nothing is due today. The publish run handles those entries anyway.
+- **Earlier attempts:** the run log had only the runner's two start lines, so no earlier model left partial work or an error to fix. The prompt's hash matches the manifest.
 
-`editorial/CLAUDE.md` covers this case as settled fallback 7: when no row is eligible, the run records that and ends. So I didn't run the research gate, `/createarticle`, `/content-quality-us`, the image step or `check-draft.mjs`.
+Because no row qualified, I skipped the research gate, `/createarticle`, `/content-quality-us`, the image step and `check-draft.mjs`, and I didn't write `editorial/logs/2026-10-08.md`. The prompt says to record that nothing is due and end, which matches settled fallback 7 in `editorial/CLAUDE.md`.
 
-The only file I changed is `editorial/logs/runs/2026-10-08-draft.txt`, where I added the decision record and noted that this was a catch-up run. `schedule.csv` and `watch.csv` didn't need changes. Nothing was published or committed.
-2026-10-08T08:31:56 model Opus 5.5 completed successfully
-2026-10-08T08:31:56 end draft exit 0
+The only file I changed is `editorial/logs/runs/2026-10-08-draft.txt`, where I added the decision record; it contains no em dashes. `schedule.csv` and `watch.csv` didn't need changes. Nothing was published or committed.
+
+The Gmail, Google Calendar and Google Drive connectors need to be signed in from claude.ai's connector settings before they can be used. This run didn't need them.
+2026-10-08T20:15:45 model Opus 5.5 completed successfully
+2026-10-08T20:15:45 end draft exit 0

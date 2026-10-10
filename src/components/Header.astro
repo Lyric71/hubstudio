@@ -11,7 +11,7 @@
  */
 import Logo from './Logo.astro';
 import LangSwitch from './LangSwitch.astro';
-import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../lib/links';
+import { APP_URL, APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../lib/links';
 
 interface Props {
   /** When true the bar sits transparently over a dark hero: light text /
@@ -450,7 +450,8 @@ const menu: MenuItem[] = [
                       {item.featured && (
                         <a
                           class={`mega__feat card card--${item.featured.variant}`}
-                          href={/^https?:/.test(item.featured.cta.href) ? item.featured.cta.href : item.featured.cta.href}
+                          href={item.featured.cta.href}
+                          {...(item.featured.cta.href.startsWith(APP_URL) ? { target: '_blank', rel: 'noopener' } : {})}
                         >
                           {item.featured.image ? (
                             <img
@@ -485,8 +486,8 @@ const menu: MenuItem[] = [
         {/* The app door first (sign in, create an account), the studio door
             second (send a brief). See hubstudio-positioning.md. */}
         <LangSwitch class="site-header__lang" />
-        <a class="site-header__signin" href={APP_SIGNIN} rel="noopener">Sign in</a>
-        <a class="btn btn--primary site-header__engine" href={APP_SIGNUP} rel="noopener"
+        <a class="site-header__signin" href={APP_SIGNIN} target="_blank" rel="noopener">Sign in</a>
+        <a class="btn btn--primary site-header__engine" href={APP_SIGNUP} target="_blank" rel="noopener"
           >Create account</a
         >
         <a class="btn btn--secondary site-header__brief" href={BRIEF_URL}>Send a brief</a>
@@ -616,9 +617,9 @@ const menu: MenuItem[] = [
         }
       </div>
       <div class="mobile-drawer__foot container">
-        <a class="btn btn--primary" href={APP_SIGNUP} rel="noopener">Create account</a>
+        <a class="btn btn--primary" href={APP_SIGNUP} target="_blank" rel="noopener">Create account</a>
         <a class="btn btn--secondary" href={BRIEF_URL}>Send a brief</a>
-        <a class="mobile-drawer__signin" href={APP_SIGNIN} rel="noopener">Already on hubStudio? Sign in</a>
+        <a class="mobile-drawer__signin" href={APP_SIGNIN} target="_blank" rel="noopener">Already on hubStudio? Sign in</a>
         <LangSwitch variant="row" class="mobile-drawer__lang" />
       </div>
     </div>

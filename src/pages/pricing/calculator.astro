@@ -195,14 +195,44 @@ const goodToKnow = [
             <form class="pc-login" method="POST" action="/api/pricing/login">
               <label class="pc-field">
                 <span class="pc-label">Password</span>
-                <input
-                  type="password"
-                  name="password"
-                  autocomplete="current-password"
-                  required
-                  autofocus
-                  class="pc-input"
-                />
+                <span class="pc-pw">
+                  <input
+                    type="password"
+                    name="password"
+                    id="pc-password"
+                    autocomplete="current-password"
+                    required
+                    autofocus
+                    class="pc-input pc-input--pw"
+                  />
+                  <button
+                    type="button"
+                    class="pc-pw-toggle"
+                    id="pc-pw-toggle"
+                    aria-controls="pc-password"
+                    aria-pressed="false"
+                    aria-label="Show password"
+                  >
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                      <path
+                        d="M2.5 12c2.4-4.2 5.6-6.3 9.5-6.3s7.1 2.1 9.5 6.3c-2.4 4.2-5.6 6.3-9.5 6.3S4.9 16.2 2.5 12Z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linejoin="round"
+                      />
+                      <circle cx="12" cy="12" r="3.1" fill="none" stroke="currentColor" stroke-width="1.6" />
+                      <path
+                        class="pc-pw-slash"
+                        d="M4 4.5 20 19.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </button>
+                </span>
               </label>
               {loginError && (
                 <p class="pc-error" role="alert">
@@ -1227,6 +1257,45 @@ const goodToKnow = [
     gap: 16px;
     text-align: left;
   }
+  /* The eye sits inside the field; struck through once the password shows,
+     so the icon always names what a click will do next. */
+  .pc-pw {
+    position: relative;
+    display: block;
+  }
+  .pc-input--pw {
+    padding-right: 52px;
+  }
+  .pc-pw-toggle {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-mute);
+    cursor: pointer;
+  }
+  .pc-pw-toggle:hover {
+    color: var(--text-ink);
+  }
+  .pc-pw-toggle:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 0;
+    color: var(--text-ink);
+  }
+  .pc-pw-slash {
+    display: none;
+  }
+  .pc-pw-toggle[aria-pressed='true'] .pc-pw-slash {
+    display: inline;
+  }
   .pc-error {
     color: var(--brand-orange-deep);
     font-size: var(--type-small);
@@ -1957,6 +2026,21 @@ const goodToKnow = [
     }
   }
 </style>
+
+<script>
+  // Login gate: the eye button flips the password field between hidden and
+  // shown. The label stays "Show password"; aria-pressed carries the state.
+  const pwToggle = document.getElementById('pc-pw-toggle');
+  const pwInput = document.getElementById('pc-password') as HTMLInputElement | null;
+  if (pwToggle && pwInput) {
+    pwToggle.addEventListener('click', () => {
+      const show = pwInput.type === 'password';
+      pwInput.type = show ? 'text' : 'password';
+      pwToggle.setAttribute('aria-pressed', String(show));
+      pwInput.focus();
+    });
+  }
+</script>
 
 <script>
   /**

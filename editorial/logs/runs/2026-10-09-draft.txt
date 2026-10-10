@@ -1,0 +1,25 @@
+﻿2026-10-09T14:22:55 start draft (model claude-opus-5-5)
+2026-10-09T14:22:56 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-09T14:27:21 Opus 5.5 decision record.
+State on entry:
+- This log held only the runner's two start lines: no earlier model in this chain made partial progress or left an error to correct. Prompt SHA-256 matches the manifest (98DEF520...C5D75D).
+- HEAD df983b6. Working tree: only the runner's own files under editorial/logs/runs/ modified or new. No half-written research file, draft or hero image for any not_started row (no output/, research/ or public/Images/insight- file for europe-campaign-localization).
+Read: editorial/CLAUDE.md (Wave two, No TODO leaves a run, settled fallbacks), editorial/SPEC.md, editorial/RUNBOOK.md, hubstudio-positioning.md, editorial/logs/TEMPLATE.md.
+Row selection: schedule.csv parsed as quoted CSV, 142 rows, 63 published, 79 not_started, 0 blocked, 0 at an intermediate status. The only row dated 2026-10-09 (brief 30, singles-day-618-production-calendar) is published, with its page and insights.ts entry present. The earliest not_started row is 2026-10-12 Mon, insight, brief 64, europe-campaign-localization, which is after today.
+watch.csv: earliest due row is singles-day-618-production-calendar on 2026-10-12, not due today (watch rows are worked by the publish run).
+Decision: no row qualifies under the prompt's rule (not_started and publish_date today or earlier), so the run records that nothing is due and ends, as the prompt directs and in line with settled fallback 7. Brief 64 is not drafted early; the Monday 2026-10-12 00:30 draft run takes it.
+Steps 0 to 3 (research gate, /createarticle, /content-quality-us, /generate-image-openai, check-draft.mjs) not run because no row was eligible. editorial/logs/2026-10-09.md not written from TEMPLATE.md, because no article went through the pipeline.
+Files: only this log changed. schedule.csv and watch.csv unchanged. No publish, no commit, per the prompt.
+2026-10-09T14:27:21 end of Opus 5.5 decision record.
+I didn't draft an article in this run because no row was due today.
+
+- **Schedule:** `editorial/schedule.csv` has 142 rows: 63 published and 79 not started, with none blocked or partly done. The only row dated today is brief 30 (`singles-day-618-production-calendar`). It's already published, and its page and `insights.ts` entry are both there.
+- **Next row:** brief 64, `europe-campaign-localization`, is due Monday 2026-10-12. It has no research file, draft or hero image yet, so the schedule is accurate. The prompt only allows rows due today or earlier, so the Monday 00:30 draft run will pick it up.
+- **Watch list:** the earliest entry in `watch.csv` is due 2026-10-12, so nothing is due today.
+- **Earlier attempts:** the run log had only the runner's two start lines, so no earlier model left partial work or an error to fix. The prompt's hash matches the manifest.
+
+Since no row qualified, I skipped steps 0 to 3 and `check-draft.mjs`, and didn't write `editorial/logs/2026-10-09.md`. This follows the prompt and settled fallback 7.
+
+The only file I changed is `editorial/logs/runs/2026-10-09-draft.txt`, where I added the decision record; it contains no em dashes. Nothing was published or committed.
+2026-10-09T14:27:41 model Opus 5.5 completed successfully
+2026-10-09T14:27:41 end draft exit 0

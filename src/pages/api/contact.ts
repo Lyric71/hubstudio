@@ -5,16 +5,25 @@
  * how they heard about us in the table. Server-rendered on demand (Vercel function), so the rest of the
  * site stays static. JS submits with `Accept: application/json` and reads the
  * JSON reply; a plain form post (no JS) is answered with a 303 to /thank-you.
+ * Once the inbox has the message, a follow-up to the sender is scheduled with
+ * Resend for one hour later, in the language of the form they used
+ * (src/lib/contact-followup.ts).
  */
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 import { pathIn, tr } from '../../i18n/index';
 import { refererLocale } from '../../lib/referer-locale';
+import { contactFollowUp } from '../../lib/contact-followup';
 
 export const prerender = false;
 
 const TO = 'cyril.drouin@outlook.com';
 const FROM = 'hubStudio Contact <onboarding@resend.dev>';
+/** The follow-up goes out from, and is answered to, the public contact address
+ *  (bearingbridge.com is a verified Resend domain). */
+const FOLLOW_UP_FROM = 'hubStudio <hello@bearingbridge.com>';
+const FOLLOW_UP_REPLY_TO = 'hello@bearingbridge.com';
+const FOLLOW_UP_DELAY_MS = 60 * 60 * 1000;
 
 /** "How do you want to work?" values from the form, and how the email names them. */
 const WAYS: Record<string, { label: string; subject: string }> = {
@@ -149,8 +158,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap">${esc(message)}</p>
     </div>`;
 
+  const resend = new Resend(apiKey);
   try {
-    const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: FROM,
       to: TO,
@@ -171,6 +180,24 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       502,
       'We could not send your message. Email hello@bearingbridge.com and we will pick it up.',
     );
+  }
+
+  // The message reached us, so the sender's answer stands whatever happens
+  // here: a follow-up that cannot be scheduled is logged, not reported.
+  try {
+    const followUp = contactFollowUp(locale, firstName);
+    const { error } = await resend.emails.send({
+      from: FOLLOW_UP_FROM,
+      to: email,
+      replyTo: FOLLOW_UP_REPLY_TO,
+      subject: followUp.subject,
+      html: followUp.html,
+      text: followUp.text,
+      scheduledAt: new Date(Date.now() + FOLLOW_UP_DELAY_MS).toISOString(),
+    });
+    if (error) console.error('contact follow-up not scheduled:', error);
+  } catch (err) {
+    console.error('contact follow-up not scheduled:', err);
   }
 
   return ok();

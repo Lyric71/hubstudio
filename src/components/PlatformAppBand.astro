@@ -77,7 +77,7 @@ const {
                 <a
                   class:list={['pab__btn', `pab__btn--${a.kind ?? 'text'}`]}
                   href={a.href}
-                  {...(a.external ? { rel: 'noopener' } : {})}
+                  {...(a.external ? { target: '_blank', rel: 'noopener' } : {})}
                 >
                   {a.label}
                   {(a.kind ?? 'text') === 'text' && <span aria-hidden="true">&rarr;</span>}
@@ -116,7 +116,7 @@ const {
               <a
                 class:list={['pab__btn', `pab__btn--${a.kind ?? 'text'}`]}
                 href={a.href}
-                {...(a.external ? { rel: 'noopener' } : {})}
+                {...(a.external ? { target: '_blank', rel: 'noopener' } : {})}
               >
                 {a.label}
                 {(a.kind ?? 'text') === 'text' && <span aria-hidden="true">&rarr;</span>}

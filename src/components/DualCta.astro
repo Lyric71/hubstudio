@@ -43,11 +43,11 @@ const briefHref = briefQuery ? `${BRIEF_URL}?${briefQuery}` : BRIEF_URL;
       </h2>
       <p class="dcta__text">{text}</p>
       <div class:list={['dcta__actions', lead === 'studio' && 'is-studio-first']}>
-        <a class="dcta__btn dcta__btn--app" href={APP_SIGNUP} rel="noopener">Create your account</a>
+        <a class="dcta__btn dcta__btn--app" href={APP_SIGNUP} target="_blank" rel="noopener">Create your account</a>
         <a class="dcta__btn dcta__btn--brief" href={briefHref}>Send a brief</a>
       </div>
       <p class="dcta__signin">
-        Already on hubStudio? <a href={APP_SIGNIN} rel="noopener">Sign in</a>
+        Already on hubStudio? <a href={APP_SIGNIN} target="_blank" rel="noopener">Sign in</a>
       </p>
     </div>
   </div>
