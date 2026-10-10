@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'europe-campaign-localization',
+    image: '/Images/insight-europe-campaign-localization.webp',
+    imageAlt:
+      'A pale bottle of olive oil with a cork stopper stands on a worn terracotta tile on a studio table while two hands slide a blue and white patterned tile in beside it, with marble, oak and speckled stone samples leaning behind in low window light.',
+    category: 'Rights',
+    tone: 'navy',
+    title: 'Campaign Localization in Europe: 4 Markets Compared',
+    deck: 'One campaign, four markets: France, Germany, Spain and Italy. The words are the easy part; the discount, green line, image labels and sale dates change.',
+    date: 'October 10, 2026',
+    dateISO: '2026-10-10',
+    readingTime: '13 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Campaign Localization in Europe: 4 Markets Compared | hubStudio',
+    metaDescription:
+      'One campaign in France, Germany, Spain and Italy: price and green-claim rules, language and retouching labels, sales calendars, casting and formats.',
+  },
+  {
     slug: 'holiday-content-calendar-2026',
     image: '/Images/insight-holiday-content-calendar-2026.webp',
     imageAlt:

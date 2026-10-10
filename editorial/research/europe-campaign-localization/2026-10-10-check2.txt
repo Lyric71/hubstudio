@@ -1,0 +1,162 @@
+Source check 2 - europe-campaign-localization
+Run date: 2026-10-10 (timestamps UTC)
+Methods: "curl" = curl -sL with a desktop Chrome User-Agent, text extracted from the HTML or PDF (pdftotext) and the claim searched verbatim.
+"WebFetch" = page loaded through the WebFetch tool (used where curl is blocked: Legifrance, facebook.com).
+EUR-Lex texts checked on publications.europa.eu/resource/celex/<CELEX> with Accept: application/xhtml+xml and Accept-Language: eng
+(without the language header Cellar answers HTTP 400 "CONTENT_STREAM ... without language").
+
+Result summary: 27 rows checked. 27 OK. 0 CHANGED. 0 UNREACHABLE.
+Notes on wording precision are given on rows 6, 11, 25 and 27.
+
+1. https://publications.europa.eu/resource/celex/32019L2161
+   Result: OK
+   Method: curl, Accept application/xhtml+xml + Accept-Language eng, HTTP 200 (resolved to cellar eefb17ee-2173-11ea-95ab-01aa75ed71a1.0006.03/DOC_1), 2026-10-10T04:58Z
+   Found: "prior price means the lowest price applied by the trader during a period of time not shorter than 30 days prior to the application of the price reduction"; transposition article: "They shall apply those measures from 28 May 2022."
+
+2. https://publications.europa.eu/resource/celex/32024L0825
+   Result: OK
+   Method: curl, same headers, HTTP 200 (cellar 1391c6b2-db63-11ee-b9d9-01aa75ed71a1.0006.03/DOC_1), 2026-10-10T04:58Z
+   Found: Article 4 "By 27 March 2026, Member States shall adopt and publish ... They shall apply those measures from 27 September 2026."
+   Annex point 4a: "Making a generic environmental claim for which the trader is not able to demonstrate recognised excellent environmental performance relevant to the claim."
+   Recital (9) lists "'environmentally friendly', 'eco-friendly', 'green', 'nature's friend', 'ecological', 'environmentally correct', 'climate friendly', 'gentle on the environment', 'carbon friendly', 'energy efficient', 'biodegradable', 'biobased'".
+   Example: "the claim 'climate-friendly packaging' would be a generic claim".
+
+3. https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000349929 (Loi 94-665)
+   Result: OK
+   Method: WebFetch (Legifrance blocks curl), 2026-10-10T05:00Z, version shown at 10 octobre 2026
+   Found: Art. 2 "Les mêmes dispositions s'appliquent à toute publicité écrite, parlée ou audiovisuelle."
+   Art. 2 "La législation sur les marques ne fait pas obstacle à l'application des premier et troisième alinéas du présent article aux mentions et messages enregistrés avec la marque."
+   Art. 4 "la présentation en français doit être aussi lisible, audible ou intelligible que la présentation en langues étrangères."
+
+4. https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032411563 (CSP L2133-2)
+   Result: OK
+   Method: WebFetch, 2026-10-10T05:01Z, version in force since 01/05/2016
+   Found: "... doivent être accompagnées de la mention : « Photographie retouchée »." and "Le non-respect du présent article est puni de 37 500 € d'amende, le montant de cette amende pouvant être porté à 30 % des dépenses consacrées à la publicité."
+
+5. https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000050468897 (Loi 2023-451 art. 5)
+   Result: OK
+   Method: WebFetch, 2026-10-10T05:00Z, version dated 08/11/2024
+   Found: I 1° mention " Images retouchées "; I 2° mention " Images virtuelles "; III "La violation des dispositions des I et II du présent article est punie d'un an d'emprisonnement et de 4 500 euros d'amende."
+
+6. https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038523234 (Arrêté du 27 mai 2019)
+   Result: OK
+   Method: WebFetch, 2026-10-10T05:00Z, version dated 30 mai 2019
+   Found: Art. 1 "les soldes d'hiver débutent le deuxième mercredi du mois de janvier à 8 heures du matin. Cette date est avancée au premier mercredi du mois de janvier lorsque le deuxième mercredi intervient après le 12 du mois"
+   "les soldes d'été débutent le dernier mercredi du mois de juin à 8 heures du matin. Cette date est avancée à l'avant-dernier mercredi du mois de juin lorsque le dernier mercredi intervient après le 28 du mois"
+   Art. 3 "La durée de chaque période de soldes est fixée à quatre semaines."
+   Wording note: the rule is "brought forward to the first Wednesday of January when the second Wednesday falls after the 12th" (and to the second-to-last Wednesday of June when the last Wednesday falls after the 28th). It is not "the first Wednesday after the 12th".
+
+7. https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038586528 (Code de commerce L310-3)
+   Result: OK
+   Method: WebFetch, 2026-10-10T05:00Z, version in force since 01/11/2019
+   Found: "Les produits annoncés comme soldés doivent avoir été proposés à la vente et payés depuis au moins un mois à la date de début de la période de soldes considérée."
+
+8. https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044549592 (Code de la consommation L112-1-1)
+   Result: OK
+   Method: WebFetch, 2026-10-10T05:01Z, version in force since 28/05/2022
+   Found: "Ce prix antérieur correspond au prix le plus bas pratiqué par le professionnel à l'égard de tous les consommateurs au cours des trente derniers jours précédant l'application de la réduction de prix."
+
+9. https://www.gesetze-im-internet.de/pangv_2022/__4.html , __5.html , __11.html
+   Result: OK
+   Method: curl, HTTP 200 x3, 2026-10-10T04:59Z
+   Found: § 4(1) "hat neben dem Gesamtpreis auch den Grundpreis unmissverständlich, klar erkennbar und gut lesbar anzugeben"
+   § 5(1) "Die Mengeneinheit für den Grundpreis ist jeweils 1 Kilogramm, 1 Liter, 1 Kubikmeter, 1 Meter oder 1 Quadratmeter der Ware."
+   § 11(1) "den niedrigsten Gesamtpreis anzugeben, den er innerhalb der letzten 30 Tage vor der Anwendung der Preisermäßigung gegenüber Verbrauchern angewendet hat"
+
+10. https://www.gesetze-im-internet.de/uwg_2004/__5a.html , __5b.html , anhang.html
+   Result: OK
+   Method: curl, HTTP 200 x3, 2026-10-10T04:59Z
+   Found: § 5a(1) "wer einen Verbraucher oder sonstigen Marktteilnehmer irreführt, indem er ihm eine wesentliche Information vorenthält"
+   § 5b(1) "1. alle wesentlichen Merkmale der Ware oder Dienstleistung ... 2. die Identität und Anschrift des Unternehmers ... 3. der Gesamtpreis"
+   Anhang Nr. 4a "nicht nachweisbare allgemeine Umweltaussage das Treffen einer allgemeinen Umweltaussage, wenn der Unternehmer keine ihr zugrunde liegende anerkannte hervorragende Umweltleistung nachweisen kann"
+
+11. https://www.recht.bund.de/bgbl/1/2026/43/regelungstext.pdf?__blob=publicationFile&v=1
+   Result: OK
+   Method: curl + pdftotext, HTTP 200, 2026-10-10T04:59Z
+   Found: "Drittes Gesetz zur Änderung des Gesetzes gegen den unlauteren Wettbewerb Vom 12. Februar 2026" (BGBl. 2026 I Nr. 43, ausgegeben 19. Februar 2026). Artikel 2 "(1) Dieses Gesetz tritt vorbehaltlich des Absatzes 2 am 27. September 2026 in Kraft. (2) Artikel 1 Nummer 2 Buchstabe c tritt am 19. Juni 2026 in Kraft."
+   Wording note: one sub-provision (Art. 1 Nr. 2 c) entered into force earlier, on 19 June 2026.
+
+12. https://dserver.bundestag.de/btd/15/014/1501487.pdf
+   Result: OK
+   Method: curl + pdftotext, HTTP 200, 2026-10-10T04:59Z
+   Found: "Die Reglementierung der Sonderveranstaltungen wird ersatzlos aufgehoben. Bestimmungen über Schlussverkäufe, Jubiläumsverkäufe und Räumungsverkäufe fallen ganz weg."
+
+13. https://www.boe.es/buscar/act.php?id=BOE-A-1988-26156
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: Art. 3 e) "La publicidad engañosa, la publicidad desleal y la publicidad agresiva, que tendrán el carácter de actos de competencia desleal en los términos contemplados en la Ley de Competencia Desleal."
+
+14. https://www.boe.es/buscar/act.php?id=BOE-A-1996-1072
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: Art. 20.1 "Se entenderá por precio anterior el menor que hubiese sido aplicado sobre productos idénticos en los treinta días precedentes."
+   Art. 25 "1. Las ventas en rebajas podrán tener lugar en los periodos estacionales de mayor interés comercial según el criterio de cada comerciante. 2. La duración de cada periodo de rebajas será decidida libremente por cada comerciante."
+
+15. https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: Art. 18.3 "las indicaciones obligatorias del etiquetado y presentación de los bienes o servicios comercializados en España deberán figurar, al menos, en castellano, lengua española oficial del Estado."
+
+16. https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-09-06;206~art9 (~art17bis, ~art21)
+   Result: OK
+   Method: curl, HTTP 200 x3, 2026-10-10T04:59Z
+   Found: Art. 9 "Tutte le informazioni destinate ai consumatori e agli utenti devono essere rese almeno in lingua italiana."
+   Art. 17-bis(2) "il prezzo più basso applicato dal professionista alla generalità dei consumatori nei trenta giorni precedenti all'applicazione della riduzione del prezzo"
+   Art. 21(1)(b) "le caratteristiche principali del prodotto, quali ... le caratteristiche ambientali o sociali"
+
+17. https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2026-02-20;30~art2
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T05:00Z
+   Found: Art. 2 "Le disposizioni del presente decreto si applicano a decorrere dal 27 settembre 2026." (Entrata in vigore del provvedimento 24/03/2026, GU n. 56 del 09-03-2026.)
+
+18. https://www.regione.lombardia.it/attivita-produttive-imprese/commercio/commercio-al-dettaglio-in-sede-fissa/date-e-regole-dei-saldi
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: "per i saldi invernali, il primo giorno feriale antecedente l'Epifania di ogni anno; per i saldi estivi, il primo sabato del mese di luglio."
+
+19. https://www.regione.sicilia.it/la-regione-informa/date-vendite-promozionali-saldi-biennio-2026-2027
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: winter "per l'esercizio 2027 dal 5 gennaio al 15 marzo"; summer "per l'esercizio 2027 dal 3 luglio al 15 settembre" (D.A. n. 2763 del 14/10/2025).
+
+20. https://www.camcom.bz.it/it/servizi/regolazione-del-mercato/vendite-fine-stagione/i-saldi-invernali
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: "I saldi invernali inizieranno nella maggior parte dei comuni dell'Alto Adige giovedì 8 gennaio e terminano giovedì 5 febbraio 2026. Nei comuni turistici i saldi invernali inizieranno sabato 7 marzo e terminano sabato 4 aprile 2026."
+
+21. https://www.facebook.com/business/ads-guide/update/image/facebook-feed?locale=en_US and .../video/instagram-reels?locale=en_US
+   Result: OK
+   Method: curl returned HTTP 400 (855 bytes) for both; WebFetch succeeded, 2026-10-10T05:00Z
+   Found: Facebook Feed image "4:5", "1440 x 1800 pixels". Instagram Reels "9:16", "1440 x 2560 pixels", "Consider leaving at least 14% of the top, 35% of the bottom, and 6% on each side of your asset free from text, logos, or other important creative elements."
+
+22. https://ads.tiktok.com/help/article/video-ads-specifications
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: "Vertical (recommended) : 9:16, more than or equal to 540*960px"; "Standard Version (LTR) : For all regions except the Arabic region" and "All regions, except the Arabic region, should download the standard safe zone file." (Arabic Version (RTL) files listed.)
+
+23. https://www.linkedin.com/help/lms/answer/a468679 and https://www.linkedin.com/help/lms/answer/a427089
+   Result: OK
+   Method: curl, HTTP 200 x2, 2026-10-10T04:59Z
+   Found: a468679 "Ad creative and landing page language should match the audience language selected in ad set audience settings."
+   a427089 "After you create and launch an ad set, you won't be able to change the language. To use a different language, you'll need to create a new ad set."
+
+24. https://ads.tiktok.com/help/article/ad-review-checklist-ad-language?lang=en
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: "Ad's text/caption matches one acceptable language in all the countries/regions targeted by an ad group. Spoken words and subtitles in your ad's video match the acceptable languages in all the countries/regions targeted by an ad group."
+
+25. https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T04:59Z
+   Found: "It shall apply from 2 August 2026."
+   Wording note: the page now flags amended points: high-risk Chapter III Sections 1-3 apply from 2 December 2027 (Annex III) and 2 August 2028 (Annex I); Article 5(1) points (ba) and (bb) and 5(1a)/(1b) from 2 December 2026; new point (d) Articles 102 to 110 from 27 July 2026. The general 2 August 2026 date is unchanged.
+
+26. https://www.senat.fr/dossier-legislatif/pjl25-118.html ; https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N53140 ; https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044563114
+   Result: OK
+   Method: Senat curl HTTP 200 2026-10-10T05:01Z; AN dossier WebFetch (curl body is a JS shell) 2026-10-10T05:01Z; Legifrance WebFetch 2026-10-10T05:01Z
+   Found: Senat page (mise à jour le 4 septembre 2026): "Texte n° 63 (2025-2026) adopté par le Sénat le 18 février 2026"; "Texte n° 2518 transmis à l'Assemblée nationale le 20 février 2026"; no later step. AN dossier: latest step "Première lecture à l'Assemblée nationale, vendredi 20 février 2026"; no AN adoption, CMP or promulgation. Code de la consommation L121-2: "Version en vigueur depuis le 28/05/2022", no later or future version listed. France has still not transposed 2024/825.
+
+27. https://www.europarl.europa.eu/legislative-train/theme-a-european-green-deal/file-substantiating-green-claims
+   Result: OK
+   Method: curl, HTTP 200, 2026-10-10T05:01Z
+   Found: "Status: Blocked  Blocking institutions: COUNCIL"; "On 20 June 2025, the Commission announced that it intends to withdraw the proposal. The third trilogue, scheduled for 23 June 2025, was cancelled. The 2026 Commission Work Programme, adopted on 21 October 2025, lists the proposal as pending."

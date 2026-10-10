@@ -135,6 +135,15 @@ English or French version (of a help page) -> version anglaise / version frança
 Content ID: a claimed Short -> un Short revendiqué; claim lifted -> levée de la revendication; lose its monetization -> perdre sa monétisation (never « coûter la monétisation »)
 carousel slides -> diapositives (not « visuels »)
 
+## European consumer law and campaign localization (settled 2026-10-10)
+was price (on a sale visual) -> prix barré; prior price (Directive 98/6/CE, art. 6 bis) -> prix antérieur; price card / price block -> bloc prix; unit price -> prix unitaire
+green claim -> allégation environnementale (« allégation verte » in tables); green line (on the ad) -> mention verte; generic / specific claim -> allégation générique / précise; trader -> professionnel
+supers -> incrustations; hero image -> visuel principal; key visuals -> visuels clés; creator cut -> déclinaison confiée aux créateurs; ad group (TikTok) -> groupe d’annonces
+sales / sale season -> soldes / période de soldes; "the retailer's call" -> au choix du commerçant; "the brand's call" -> au choix de la marque
+French labels quoted verbatim in « »: « Photographie retouchée », « Images retouchées », « Images virtuelles »; loi Toubon, Code de la consommation, Code de commerce, Code de la santé publique, Légifrance, projet de loi DDADUE, arrêté ministériel
+foreign statutes: ordonnance allemande sur l’indication des prix (PAngV), loi contre la concurrence déloyale (UWG), § 5a; loi espagnole 7/1996 sur le commerce de détail, Bulletin officiel de l’État (BOE); Code de la consommation italien, article 17 bis; recital -> considérant; Green Claims Directive -> directive sur les allégations environnementales (Green Claims)
+"Latest" tag before a category (insights lead card) -> « Dernier article » (Rights -> Droits)
+
 ## Changelog, What's new (settled 2026-10-08)
 What's new (app page, footer link, /app/whats-new) -> Nouveautés (app label); "What’s new in hubStudio" -> Les nouveautés de hubStudio
 kind chips New / Improved / Fixed -> Nouveau / Amélioré / Corrigé; All changes (filter) -> Toutes les modifications; See every change -> Voir toutes les nouveautés; Read what changed -> Lire le détail

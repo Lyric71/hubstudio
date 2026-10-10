@@ -1,0 +1,434 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What changes when you localize an ad campaign for Europe?",
+    "a": "More than the words. In France, Germany, Spain and Italy a discount must show the lowest price of the last 30 days, generic green claims are banned under an EU directive applied from Sept. 27, 2026, France adds language and retouching rules, and sale dates follow national or regional rules. Formats stay the same on each network."
+  },
+  {
+    "q": "Is it legal to run an English-only ad in France?",
+    "a": "Not under the Toubon law. Its Article 2 makes French obligatory in all written, spoken and audiovisual advertising for goods and services. English can appear alongside, but the French must be as legible, audible or intelligible. Products with a foreign name widely known to the public are exempt, and a registered trademark does not exempt a slogan."
+  },
+  {
+    "q": "What is the 30-day prior price rule for discounts in the EU?",
+    "a": "When a shop announces a price reduction, it must show its prior price, defined as the lowest price it charged in at least the 30 days before the reduction. The rule comes from a 2019 directive applied since May 28, 2022. France, Germany, Spain and Italy all use the 30-day period in their own laws."
+  },
+  {
+    "q": "Can I still say a product is eco-friendly in EU ads in 2026?",
+    "a": "Not as a bare claim. From Sept. 27, 2026, \"eco-friendly,\" \"green\" and similar generic claims are banned unless the trader can show recognized excellent environmental performance. A specific claim stated clearly on the same medium can run. Germany and Italy apply the rule in national law; France and Spain had not passed theirs on Oct. 10, 2026."
+  },
+  {
+    "q": "Do I need a retouched photo label in France?",
+    "a": "Yes, if a model's silhouette in a commercial photo was slimmed or thickened with software. The label reads \"Photographie retouchée\" and applies to posters, online ads, the press and printed advertising. Paid influencers have a separate duty: \"Images retouchées\" for a reshaped body or face, and \"Images virtuelles\" for an AI-generated face or silhouette."
+  },
+  {
+    "q": "When are the official sales periods in France, Spain and Italy?",
+    "a": "France fixes two four-week periods by ministerial order; the rule puts winter 2027 at Jan. 6 to Feb. 2, pending the official notice. Spain lets each retailer choose its seasons and their length. Italy's regions set the dates on a common rule, which gives Jan. 5, 2027, for winter and July 3 for summer. Germany has no legal sale periods."
+  },
+  {
+    "q": "Do social media formats change from one European country to another?",
+    "a": "No. Meta, TikTok and LinkedIn publish one set of ad specs for every market, with no country variant, so a French and a German ad use the same shapes. What changes is language: LinkedIn and TikTok want an ad's language to match the audience language of the ad set, so plan one ad set per market language."
+  }
+];
+---
+
+<ArticleLayout slug="europe-campaign-localization" ctaLabel="Send a brief" faq={faq}>
+  <p class="standfirst">Translation is the smallest job. Take one campaign into France, Germany, Spain and Italy and the discount, the green line, the image labels and the sale dates all get rechecked, market by market. The formats stay exactly as they are.</p>
+
+  <h2>What changes in campaign localization for Europe?</h2>
+
+  <p>Campaign localization in Europe changes four things before it touches the copy: how a discount shows its old price, whether a sustainability line survives, which retouching or AI labels the images carry, and when a sale may run. The formats do not change. hubStudio describes production practice here, not legal advice.</p>
+
+  <p>Take one campaign with four parts: a hero image with a model, a 9:16 video, a "30 percent off" promotion and a line that says "eco-friendly packaging." Here is what each market asks of it.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Asset</th>
+          <th scope="col">France</th>
+          <th scope="col">Germany</th>
+          <th scope="col">Spain</th>
+          <th scope="col">Italy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Headline and copy</th>
+          <td>French required in all advertising; any translation no more legible than the French</td>
+          <td>Copy in the language the ad set targets</td>
+          <td>Copy in the language the ad set targets; pack labels at least in Castilian</td>
+          <td>Consumer information at least in Italian, no less visible than another language</td>
+        </tr>
+        <tr>
+          <th scope="row">"30 percent off"</th>
+          <td>Old price is the lowest of the last 30 days; "soldes" only inside the two legal periods</td>
+          <td>Old price is the lowest of the last 30 days; unit price beside any price by weight or volume</td>
+          <td>Old price is the lowest of the last 30 days</td>
+          <td>Old price is the lowest of the last 30 days</td>
+        </tr>
+        <tr>
+          <th scope="row">"Eco-friendly packaging"</th>
+          <td>Cut it: banned by the EU directive from Sept. 27, 2026; French law still in parliament</td>
+          <td>Cut it: banned in German law since Sept. 27, 2026</td>
+          <td>Cut it anyway: Spanish law not passed yet, and one master serves all four</td>
+          <td>Cut it: banned in Italian law since Sept. 27, 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Hero image with a model</th>
+          <td>"Photographie retouchée" if the silhouette was reshaped</td>
+          <td>Casting is the brand's call</td>
+          <td>Casting is the brand's call</td>
+          <td>Casting is the brand's call</td>
+        </tr>
+        <tr>
+          <th scope="row">9:16 video</th>
+          <td>Same file, French supers and voice</td>
+          <td>Same file, German supers</td>
+          <td>Same file, Spanish supers</td>
+          <td>Same file, Italian supers</td>
+        </tr>
+        <tr>
+          <th scope="row">Sale date</th>
+          <td>Winter sales from Jan. 6, 2027 (derived from the rule)</td>
+          <td>No legal sale periods since 2004</td>
+          <td>Each retailer picks</td>
+          <td>Each region sets them; Jan. 5, 2027, on the common rule</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>"Brand's call" means no statute read for this page adds a label to that image; casting and setting there are production decisions, covered further down. Every cell was checked against the published texts on Oct. 10, 2026.</p>
+
+  <h2>Which rules apply in all four markets?</h2>
+
+  <p>Two EU directives sit under every version of the campaign: one for the price, one for the green line.</p>
+
+  <p>The price rule is the older one. It has applied since May 2022.</p>
+
+  <blockquote class="evidence">Any announcement of a price reduction must show the prior price, the lowest price the trader charged in a period of at least 30 days before the reduction.</blockquote>
+  <p class="source">Source: Directive (EU) 2019/2161, Article 6a of Directive 98/6/EC, applied from May 28, 2022. Instrument text, read October 10, 2026.</p>
+
+  <p>All four markets wrote the 30 days into their own law: France in Article L112-1-1 of its Consumer Code, Germany in section 11 of its Price Indication Ordinance, Spain in Article 20 of its Retail Trade Act and Italy in Article 17-bis of its Consumer Code. For production, that turns the "was" price into a data question. The artwork can be finished early. The number in it waits for whoever owns the price history, in each market separately.</p>
+
+  <p>The green rule is newer, and it bites harder.</p>
+
+  <blockquote class="evidence">From Sept. 27, 2026, a generic environmental claim the trader cannot back with recognized excellent environmental performance is banned outright, along with sustainability labels that rest on no certification scheme or public authority and climate-neutral claims based on offsetting.</blockquote>
+  <p class="source">Source: Directive (EU) 2024/825, Article 4 and the points it adds to Annex I of Directive 2005/29/EC, February 28, 2024. Instrument text, read October 10, 2026.</p>
+
+  <p>The directive spells out what "generic" means.</p>
+
+  <blockquote class="evidence">The directive's own examples of generic claims include "eco-friendly," "green," "nature's friend," "climate friendly" and "biodegradable." A claim stops being generic when its specification sits, clear and prominent, on the same medium, such as the same ad spot.</blockquote>
+  <p class="source">Source: Directive (EU) 2024/825, recital 9, February 28, 2024. Instrument text, read October 10, 2026.</p>
+
+  <p>So "eco-friendly packaging" goes. A line that says something true and provable, on the same frame, can stay in. The recital gives its own pair: "climate-friendly packaging" is generic, while a statement that all the energy used to make the packaging came from renewable sources is specific.</p>
+
+  <p>A directive binds governments, not shops. The four markets are not at the same point.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Market</th>
+          <th scope="col">National law carrying the 2024 green-claim rules</th>
+          <th scope="col">Status on Oct. 10, 2026</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Germany</th>
+          <td>Third Act amending the Unfair Competition Act, Feb. 12, 2026</td>
+          <td>In force since Sept. 27, 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">Italy</th>
+          <td>Legislative Decree 30 of Feb. 20, 2026</td>
+          <td>Applies since Sept. 27, 2026</td>
+        </tr>
+        <tr>
+          <th scope="row">France</th>
+          <td>The DDADUE bill adapting French law to EU law, articles 20 and 21</td>
+          <td>Passed by the Senate Feb. 18, 2026; before the National Assembly</td>
+        </tr>
+        <tr>
+          <th scope="row">Spain</th>
+          <td>Draft Sustainable Consumption Act</td>
+          <td>Approved by the cabinet at first reading July 1, 2025; not in the Official State Gazette</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>One master serves all four, so build it to the strictest of them, which today means the German and Italian texts.</p>
+
+  <p>Don't confuse this text with the Green Claims Directive. That is a separate proposal from 2023, and the European Parliament's legislative tracker listed it as blocked in September 2026.</p>
+
+  <h2>What does France add?</h2>
+
+  <p>Three rules, each touching something the viewer sees.</p>
+
+  <p><strong>Language.</strong> The Toubon law of 1994 makes French obligatory in the offer and description of goods and services. Its Article 2 adds: "Les mêmes dispositions s'appliquent à toute publicité écrite, parlée ou audiovisuelle." English can run, but a French version has to sit beside it, and Article 4 requires the French to be as legible, audible or intelligible as the foreign text. Putting an English slogan into a registered trademark doesn't get around it. The same Article 2 says so.</p>
+
+  <p><strong>Retouched photos.</strong> A commercial photo of a model whose body was reshaped with software carries a label.</p>
+
+  <blockquote class="evidence">"Photographie retouchée" must accompany a commercial photo of a model whose silhouette was slimmed or thickened with image software, on posters, online, in the press and in printed advertising. The fine is 37,500 euros, or up to 30 percent of the advertising spend.</blockquote>
+  <p class="source">Source: French Public Health Code, Article L2133-2, and Decree 2017-738, in force since October 1, 2017. Statute text on Legifrance, read October 10, 2026.</p>
+
+  <p>The decree puts the check on the advertiser, which must find out whether the photos it buys were altered. If the master was retouched for shape, the French file gets the label, legible and set apart from the message.</p>
+
+  <p><strong>Influencer posts.</strong> Content that paid influencers publish has its own labels, and they are plural.</p>
+
+  <blockquote class="evidence">Paid influencers must label images with a reshaped silhouette or face "Images retouchées" and images made by AI to depict a face or a silhouette "Images virtuelles." A breach carries up to a year in prison and a 4,500 euro fine.</blockquote>
+  <p class="source">Source: French Law 2023-451 of June 9, 2023, Article 5, as rewritten by Ordinance 2024-978 of November 6, 2024. Statute text on Legifrance, read October 10, 2026.</p>
+
+  <p>That reaches the creator cut of the campaign, not just the brand's own ads. A generated face in a sponsored post is "Images virtuelles" in France, whatever the rest of Europe asks.</p>
+
+  <h2>What does Germany ask of the price card?</h2>
+
+  <p>Mostly, how the price is shown.</p>
+
+  <blockquote class="evidence">Every announced price reduction in Germany must state the lowest total price charged to consumers in the 30 days before it, and any price per weight, volume, length or area needs the unit price beside the total.</blockquote>
+  <p class="source">Source: German Price Indication Ordinance (PAngV) of November 12, 2021, sections 4, 5 and 11, as amended May 12, 2026. Statute text, read October 10, 2026.</p>
+
+  <p>The unit is one kilogram, one liter, one meter, one square meter or one cubic meter. A price card built for another market, showing a 400 ml bottle at its total price alone, fails here.</p>
+
+  <p>The Unfair Competition Act adds a duty not to leave things out. Section 5a treats withholding essential information as misleading, and section 5b lists what counts in an offer: the main characteristics of the product, the trader's identity and address, and the total price. A short cut that drops the price line to save a second is an easy way to break it.</p>
+
+  <p>Germany wrote the green rules into national law by an act of February 2026. It has no legal sale season at all. The 2004 rewrite of that act abolished the old end-of-season sales rules, calendar and product range alike.</p>
+
+  <h2>What do Spain and Italy add?</h2>
+
+  <p>Spain's General Advertising Act of 1988 makes misleading, unfair and aggressive advertising unlawful and treats it as unfair competition. Its consumer law wants mandatory label information at least in Castilian. That is a labeling rule, not an advertising one, but it shapes the shot: if a Spanish-market pack exists, it is the pack to show. Sales are the trader's call.</p>
+
+  <blockquote class="evidence">Spanish retailers choose their own sale seasons and decide how long each runs.</blockquote>
+  <p class="source">Source: Spain's Retail Trade Act, Ley 7/1996, Article 25, as amended in 2012. Consolidated text on the Official State Gazette, read October 10, 2026.</p>
+
+  <p>Italy's Consumer Code carries its own language rule. Article 9 requires all consumer information at least in Italian, and where other languages appear, the Italian can't be less visible or legible. Foreign words in common use are allowed. Article 21 now names environmental characteristics among the things an ad can mislead about.</p>
+
+  <p>Italian sale dates are set region by region, on a shared rule.</p>
+
+  <blockquote class="evidence">Italy's regions start winter sales on the first working day before Epiphany and summer sales on the first Saturday of July, under a common rule agreed in 2011.</blockquote>
+  <p class="source">Source: Tuscany regional resolution 607 of May 18, 2026, and Lombardy's sales page, updated May 27, 2026, both read October 10, 2026. Regional authorities restating the rule.</p>
+
+  <h2>Which legal lines touch which asset?</h2>
+
+  <p>If the producer prints one table from this page, it should be this one.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Market</th>
+          <th scope="col">Rule</th>
+          <th scope="col">What the text says</th>
+          <th scope="col">What it changes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">All four</th>
+          <td>Directive 98/6/EC, Art. 6a</td>
+          <td>Prior price is the lowest of at least 30 days before the cut</td>
+          <td>Every "was" price</td>
+        </tr>
+        <tr>
+          <th scope="row">All four</th>
+          <td>Directive (EU) 2024/825, Annex I</td>
+          <td>Generic green claims, uncertified labels and offset-based neutral claims banned</td>
+          <td>Every green line</td>
+        </tr>
+        <tr>
+          <th scope="row">France</th>
+          <td>Law 94-665, Arts. 2 and 4</td>
+          <td>French in all advertising; French as legible as any translation</td>
+          <td>Supers, voice, end card</td>
+        </tr>
+        <tr>
+          <th scope="row">France</th>
+          <td>Public Health Code, L2133-2</td>
+          <td>"Photographie retouchée" on reshaped model photos</td>
+          <td>Hero and key visuals</td>
+        </tr>
+        <tr>
+          <th scope="row">France</th>
+          <td>Law 2023-451, Art. 5</td>
+          <td>"Images retouchées" and "Images virtuelles" in paid influencer content</td>
+          <td>Creator posts</td>
+        </tr>
+        <tr>
+          <th scope="row">France</th>
+          <td>Commercial Code, L310-3</td>
+          <td>"Soldes" only in two legal periods, stock on sale a month before</td>
+          <td>Sale artwork and dates</td>
+        </tr>
+        <tr>
+          <th scope="row">Germany</th>
+          <td>PAngV, sections 4, 5 and 11</td>
+          <td>Unit price beside the total; 30-day prior price</td>
+          <td>Price cards</td>
+        </tr>
+        <tr>
+          <th scope="row">Germany</th>
+          <td>UWG, sections 5a and 5b</td>
+          <td>Withholding essential information misleads</td>
+          <td>Short cuts that drop the price</td>
+        </tr>
+        <tr>
+          <th scope="row">Spain</th>
+          <td>Ley 34/1988, Art. 3</td>
+          <td>Misleading advertising is unlawful</td>
+          <td>Every claim</td>
+        </tr>
+        <tr>
+          <th scope="row">Spain</th>
+          <td>Consumer Protection Act (TRLGDCU), Art. 18.3</td>
+          <td>Mandatory label information at least in Castilian</td>
+          <td>The pack in the shot</td>
+        </tr>
+        <tr>
+          <th scope="row">Italy</th>
+          <td>Consumer Code, Art. 9</td>
+          <td>Consumer information at least in Italian, no less visible</td>
+          <td>Supers, end card</td>
+        </tr>
+        <tr>
+          <th scope="row">Italy</th>
+          <td>Consumer Code, Arts. 20 and 21</td>
+          <td>Unfair practices banned; environmental traits named</td>
+          <td>Green line, claims</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Every line was read in the statute's own published text on Oct. 10, 2026.</p>
+
+  <h2>When can the sale run in each market?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Market</th>
+          <th scope="col">Who sets the dates</th>
+          <th scope="col">Winter 2027</th>
+          <th scope="col">Summer 2027</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">France</th>
+          <td>The economy minister's order, two periods of four weeks</td>
+          <td>Wed. Jan. 6 to Tue. Feb. 2, derived from the rule; four eastern departments start on the first working day of January</td>
+          <td>Wed. June 23, derived from the rule</td>
+        </tr>
+        <tr>
+          <th scope="row">Germany</th>
+          <td>Nobody: legal sale periods abolished in 2004</td>
+          <td>Retailer's choice</td>
+          <td>Retailer's choice</td>
+        </tr>
+        <tr>
+          <th scope="row">Spain</th>
+          <td>Each retailer, dates and length</td>
+          <td>Retailer's choice</td>
+          <td>Retailer's choice</td>
+        </tr>
+        <tr>
+          <th scope="row">Italy</th>
+          <td>Each region, on the 2011 common rule</td>
+          <td>Tue. Jan. 5 on the rule; Sicily has published Jan. 5 to March 15</td>
+          <td>Sat. July 3 on the rule; Sicily has published July 3 to Sept. 15</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">French winter sales start the second Wednesday of January at 8 a.m., moved to the first Wednesday when the second falls after the 12th, and run four weeks.</blockquote>
+  <p class="source">Source: French ministerial order of May 27, 2019, under Commercial Code Article L310-3. Statute text on Legifrance, read October 10, 2026.</p>
+
+  <p>France had not published its official 2027 notice on Oct. 10, 2026, so the French dates above are the rule applied to the calendar. Two more French details shape the brief. Goods sold as "soldes" must have been on sale and paid for at least a month before the period opens. And the 30-day rule still applies: for a Jan. 6 sale, the reference price is the lowest one charged since early December, holiday promotions included.</p>
+
+  <p>Some Italian areas run their own dates. The Bolzano chamber of commerce listed Jan. 8 for most of Alto Adige in 2026, and March 7 in its tourist towns.</p>
+
+  <h2>What gets reshot, what gets regenerated and what stays?</h2>
+
+  <p>The law decides some of it. Copy, price blocks, the green line and the labels change because a text says so. Casting, setting and props are left to the brand. They are production decisions.</p>
+
+  <p>Split the master into layers before anyone shoots or generates. The product, the light and the framing are shared: they are the hardest part to get right, and nothing in the four markets' rules asks for them to change. The people, the setting, the props and anything with words on it are candidates for a market version.</p>
+
+  <p>Then decide layer by layer. Would a buyer in that market recognize the street or the kitchen in the frame? Is there a legal reason to change it, a pack or a label? Is it cheaper to regenerate a background than to reshoot a scene? A generated setting behind the real product is often the cheapest local version there is.</p>
+
+  <p>A generated person is not a free swap. In France it can trigger "Images virtuelles" in a creator's post, and in all four markets a realistic synthetic person can be a deep fake.</p>
+
+  <p>The <a href="/resources/insights/campaign-adaptation-cost-per-market">campaign adaptation cost per market</a> piece prices these levels of change.</p>
+
+  <h2>Do formats change from one country to another?</h2>
+
+  <p>No. On the same network, a French, German, Spanish and Italian ad use the same shapes.</p>
+
+  <blockquote class="evidence">Meta publishes one set of ad specs with no country selector: a feed image at 4:5 and 1440 x 1800 pixels, and a Reels video at 9:16 and 1440 x 2560, with 14 percent of the top, 35 percent of the bottom and 6 percent of each side kept free of text and logos.</blockquote>
+  <p class="source">Source: Meta Ads Guide, Facebook Feed image and Instagram Reels video pages, read October 10, 2026. Platform specification pages.</p>
+
+  <p>TikTok's only regional split in its in-feed specs is a separate safe-zone file for right-to-left scripts. LinkedIn's single-image sizes carry no country variant either. The master stays one set of shapes, and nobody should be rebuilding formats per market.</p>
+
+  <p>What does change on the platform is language matching. LinkedIn's help center says "Ad creative and landing page language should match the audience language selected in ad set audience settings," and the language can't be changed once the ad set is live. TikTok's review checklist wants captions, spoken words and subtitles to match a language accepted in every country an ad group targets. In practice: one ad set or ad group per market language.</p>
+
+  <h2>Do AI-generated visuals need a label in these markets?</h2>
+
+  <p>Since Aug. 2, 2026, Article 50 of the EU AI Act asks the brand or agency that deploys a deep fake to disclose it. The Commission's guidelines count a realistic synthetic person in an ad as a deep fake, and an AI image that misleads about how a product looks or works. A real product against a generated background is not one, as long as the ad doesn't mislead. The <a href="/resources/insights/eu-ai-act-labeling-brand-content">EU AI Act labeling piece</a> covers who applies the label and how the platform labels line up with it. For creator content, France adds its own label on top.</p>
+
+  <h2>How do you keep one master and four versions in order?</h2>
+
+  <p>Keep every version of the launch in one place. Send each market's cut to its own reviewer.</p>
+
+  <p>In the hubStudio app, <a href="/app/campaigns">Campaigns</a> keep one launch's files under one name with a brief: the renders, the edited videos, the posts and the documents. A campaign points at files in the Assets Library and copies nothing, so the French cut and the master stay side by side, and a new version stays in. Validation then sends each market's version to its reviewer, a teammate or a client, who approves it or sends it back with a comment. Versions stay on one thread. A reviewer in Paris can run the app in French.</p>
+
+  <p><strong>A change list for the brief.</strong> It can be pasted as it stands.</p>
+
+  <ul>
+    <li>Copy: transcreate per market; in France, French beside any English, at the same legibility.</li>
+    <li>Price: the lowest price of the last 30 days per market, from the price owner, not from design; in Germany, the unit price beside any price by quantity.</li>
+    <li>Green line: cut every generic claim; keep only a specific, provable claim stated on the same frame.</li>
+    <li>Images: log which files were reshaped; "Photographie retouchée" on French ads; "Images retouchées" or "Images virtuelles" on French creator posts.</li>
+    <li>People and settings: no rule decides these, so the brief has to.</li>
+    <li>Formats stay as they are. One set of shapes covers all four markets.</li>
+    <li>Dates: French soldes from Jan. 6, 2027; Italy by region; Germany and Spain at the retailer's call.</li>
+  </ul>
+
+  <p>The <a href="/resources/insights/transcreation-as-a-production-line">transcreation as a production line</a> piece covers the copy side of this list, and the <a href="/services/design/ad-creative">ad creative design service</a> builds the per-market batch. The <a href="/solutions/platforms/meta">Meta platform page</a> covers the network itself.</p>
+
+  <h2>Questions buyers ask about localizing a campaign for Europe</h2>
+
+  <h3>What changes when you localize an ad campaign for Europe?</h3>
+
+  <p>More than the words. In France, Germany, Spain and Italy a discount must show the lowest price of the last 30 days, generic green claims are banned under an EU directive applied from Sept. 27, 2026, France adds language and retouching rules, and sale dates follow national or regional rules. Formats stay the same on each network.</p>
+
+  <h3>Is it legal to run an English-only ad in France?</h3>
+
+  <p>Not under the Toubon law. Its Article 2 makes French obligatory in all written, spoken and audiovisual advertising for goods and services. English can appear alongside, but the French must be as legible, audible or intelligible. Products with a foreign name widely known to the public are exempt, and a registered trademark does not exempt a slogan.</p>
+
+  <h3>What is the 30-day prior price rule for discounts in the EU?</h3>
+
+  <p>When a shop announces a price reduction, it must show its prior price, defined as the lowest price it charged in at least the 30 days before the reduction. The rule comes from a 2019 directive applied since May 28, 2022. France, Germany, Spain and Italy all use the 30-day period in their own laws.</p>
+
+  <h3>Can I still say a product is eco-friendly in EU ads in 2026?</h3>
+
+  <p>Not as a bare claim. From Sept. 27, 2026, "eco-friendly," "green" and similar generic claims are banned unless the trader can show recognized excellent environmental performance. A specific claim stated clearly on the same medium can run. Germany and Italy apply the rule in national law; France and Spain had not passed theirs on Oct. 10, 2026.</p>
+
+  <h3>Do I need a retouched photo label in France?</h3>
+
+  <p>Yes, if a model's silhouette in a commercial photo was slimmed or thickened with software. The label reads "Photographie retouchée" and applies to posters, online ads, the press and printed advertising. Paid influencers have a separate duty: "Images retouchées" for a reshaped body or face, and "Images virtuelles" for an AI-generated face or silhouette.</p>
+
+  <h3>When are the official sales periods in France, Spain and Italy?</h3>
+
+  <p>France fixes two four-week periods by ministerial order; the rule puts winter 2027 at Jan. 6 to Feb. 2, pending the official notice. Spain lets each retailer choose its seasons and their length. Italy's regions set the dates on a common rule, which gives Jan. 5, 2027, for winter and July 3 for summer. Germany has no legal sale periods.</p>
+
+  <h3>Do social media formats change from one European country to another?</h3>
+
+  <p>No. Meta, TikTok and LinkedIn publish one set of ad specs for every market, with no country variant, so a French and a German ad use the same shapes. What changes is language: LinkedIn and TikTok want an ad's language to match the audience language of the ad set, so plan one ad set per market language.</p>
+
+  <p>Send the campaign as it stands, with the markets and the dates. A producer reads every brief within one business day, and the written proposal follows within 48 hours.</p>
+</ArticleLayout>

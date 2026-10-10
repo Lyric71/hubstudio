@@ -44,6 +44,7 @@ const ARTICLES: Record<string, string> = {
   'douyin-ad-creative-specs-by-format': 'douyin-specifications-publicitaires-par-format',
   'douyin-video-specs-safe-zones': 'douyin-specifications-video-et-zones-de-securite',
   'eu-ai-act-labeling-brand-content': 'ai-act-l-etiquetage-ia-des-contenus-de-marque',
+  'europe-campaign-localization': 'localiser-une-campagne-en-europe',
   'geo-vs-seo': 'geo-ou-seo',
   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',

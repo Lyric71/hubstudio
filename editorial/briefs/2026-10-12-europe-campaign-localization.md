@@ -75,7 +75,7 @@ citation. Append anything new to the ledger before finishing.
 - Green claims: Directive (EU) 2024/825, EUR-Lex, the date from which member states apply the measures and the list of banned practices (generic environmental claims, unverified sustainability labels)
 - France: Law 94-665 of 4 August 1994 (Legifrance), Decree 2017-738 on retouched commercial photographs (Legifrance), Law 2023-451 on commercial influence (Legifrance); quote the label wording
 - Germany: Preisangabenverordnung 2022 unit-price rule and UWG section 5a, gesetze-im-internet.de
-- Spain: Ley 34/1988 General de Publicidad, BOE consolidated text; Italy: Codice del Consumo, Normattiva; sales-period rules from each government's own page (economie.gouv.fr for the French soldes dates of January 2027)
+- Spain: Ley 34/1988 General de Publicidad, BOE consolidated text; Italy: Codice del Consumo, Normattiva; sales-period rules from each government's own page (the French soldes rule is the arrêté of 27 May 2019 on Legifrance; the official January 2027 dates were not yet published on 2026-10-10, so print the date the rule gives and label it derived)
 - EU AI Act Article 50 transparency date, EUR-Lex, only as a pointer to the labeling piece
 
 **If a figure cannot be sourced, cut the claim.** Do not estimate, do not
@@ -85,10 +85,10 @@ than an unsourced one.
 ## Must include
 
 - A one-screen answer table: asset (headline, price claim, green claim, model image, video, retail date) against the four markets, with what changes in each
-- The EU-wide layer first: the prior-price rule for announced price reductions (lowest price in the previous 30 days, Price Indication Directive Article 6a as amended in 2019) and the ban on generic environmental claims under Directive (EU) 2024/825, with the date its national rules apply
+- The EU-wide layer first: the prior-price rule for announced price reductions (lowest price in the previous 30 days, Price Indication Directive Article 6a as amended in 2019) and the ban on generic environmental claims under Directive (EU) 2024/825, with the date its national rules apply and which of the four markets had written it into national law at drafting (on 2026-10-10: Germany and Italy yes, from 27 September 2026; France and Spain not yet)
 - France: the obligation to use French in advertising (Law 94-665 of 1994, the Toubon law), the 'photographie retouchée' label on commercial photos with a reshaped body silhouette, and the influencer law of 2023 on retouched or virtual images (write the label in French with its accents on the page)
 - Germany: unit-price display under the Price Indication Ordinance and the unfair-competition act on misleading omissions, stated from gesetze-im-internet.de
-- Spain and Italy: the general advertising law (Ley 34/1988) and the Consumer Code (Legislative Decree 206/2005), plus how sales periods are set (free in Spain, regional in Italy, fixed by decree in France)
+- Spain and Italy: the general advertising law (Ley 34/1988) and the Consumer Code (Legislative Decree 206/2005), plus how sales periods are set (free in Spain, regional in Italy, fixed by ministerial order under the Commercial Code in France)
 - Casting, setting and props as a production decision, not a translation one: what is reshot or regenerated per market and what stays shared
 - Formats do not change by country on the same network, so the master stays one set of shapes: say so, to stop teams rebuilding formats per market
 - AI-generated visuals in Europe: one paragraph pointing to the EU AI Act labeling piece for the transparency duties from August 2026

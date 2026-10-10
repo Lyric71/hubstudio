@@ -151,3 +151,16 @@ My Connections -> 我的连接; User Settings -> 账户设置; Languages card ->
 Report a bug -> 反馈问题; AI-generated content (TikTok choice) -> “AI 生成内容”; Play -> 播放; Copy the description -> “复制说明”
 Weekly digest -> 每周摘要 (Monday mail: 每周一发出的更新摘要)
 Inactive logins warned then deactivated -> 闲置账号先提醒，后停用
+
+## EU campaign localization and consumer law (settled 2026-10-10, europe-campaign-localization)
+Directive (EU) 2024/825 -> 欧盟第 2024/825 号指令; Directive 98/6/EC -> 第 98/6/EC 号指令; Green Claims Directive -> 《绿色声明指令》
+green claim / green line -> 环保宣称 / 环保宣传语; generic claim -> 笼统宣称; climate-neutral claim -> “气候中和”宣称
+prior price (30-day rule) -> 降价前价格; "was" price -> 划线价; unit price -> 单位价格; price card -> 价格卡
+sale season / official sales (soldes) -> 折扣季 / 法定折扣季; French "soldes" stays in French in quotes
+paid influencer -> 商业推广达人; creator cut / creator posts -> 达人版本 / 达人帖子
+supers -> 字幕; master -> 母版; the French cut -> 法国版
+French labels stay verbatim in French with a gloss: “Photographie retouchée”（照片经过修图）, “Images retouchées”（图片经过修图）, “Images virtuelles”（虚拟图片）
+Toubon law -> 法国《图邦法》; Consumer Code (FR) / Commercial Code / Public Health Code -> 《消费法典》 / 《商法典》 / 《公共卫生法典》; décret / ordonnance -> 政令 / 授权法令; Senate / National Assembly -> 参议院 / 国民议会
+PAngV -> 德国《价格标示条例》（PAngV）; UWG -> 德国《反不正当竞争法》（UWG）
+Italian Consumer Code -> 意大利《消费者法典》; Article 17-bis -> 第 17 条之二; region (Italy) -> 大区
+Spain: Retail Trade Act -> 《零售贸易法》; General Advertising Act -> 《广告总法》; TRLGDCU -> 《消费者和用户保护法》（TRLGDCU）; Official State Gazette -> 《国家官方公报》（BOE）; Castilian -> 卡斯蒂利亚语

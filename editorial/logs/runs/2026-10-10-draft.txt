@@ -1,0 +1,89 @@
+﻿2026-10-10T12:30:01 start draft (model claude-opus-5-5)
+2026-10-10T12:30:01 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-10T12:30:44 working tree clean apart from this run's own log files; no row at researched, drafted or quality_passed; no prior partial output for any not_started row
+2026-10-10T12:30:44 row taken: brief 64, europe-campaign-localization (publish_date 2026-10-12, earliest not_started, template insight)
+2026-10-10T12:33:07 research gate started: three parallel research subagents (EU layer and France; Germany, Spain and Italy; SERP map and per-country format check), primary legal surfaces only
+2026-10-10T12:35:03 site profile was a month stale (built 2026-09-09, still describing hub4You and /the-studio): refreshed from the repo and hubstudio-positioning.md
+2026-10-10T12:35:41 waiting on the three research subagents; captures arriving in editorial/research/europe-campaign-localization/
+2026-10-10T12:37:24 SERP and formats subagent done: six queries mapped; Meta, TikTok and LinkedIn publish one spec set for all four markets; TikTok and LinkedIn language rules captured
+2026-10-10T12:44:37 EU and France subagent done: EUR-Lex down (HTTP 202 empty), OJ texts read on publications.europa.eu; Legifrance via WebFetch; France has not transposed Directive 2024/825 as of 2026-10-10 (DDADUE bill at the Assemblee nationale); influencer mentions are plural; 2027 soldes not yet published, derived 6 January 2027
+2026-10-10T12:49:23 DE, ES and IT subagent done: Germany (BGBl. 2026 I Nr. 43) and Italy (D.Lgs. 30/2026) apply 2024/825 from 27 September 2026; Spain not transposed (draft bill July 2025); Italy saldi by region, Sicily 2027 published; Spain rebajas free; Germany sales periods abolished 2004
+2026-10-10T12:50:45 brief 64 amended at source (wave2 module) and in the rendered brief: France sales dates are set by ministerial order (arrete of 27 May 2019), not decree; 2027 soldes not published, print derived date; green-claims transposition status per market added. Fresh rendering matches (line endings only)
+2026-10-10T12:53:19 R7 research file written (45 claims, all primary or derived and labeled); schedule row 64 set to researched
+2026-10-10T12:54:10 step 1 createarticle started (house version, 13 iterations, model claude-opus-5-5); versions kept in the session scratch folder
+2026-10-10 createarticle iteration 1: journalist draft written (12 H2, 3 tables, 10 sourced blockquotes; prose 2,735 words, 3,431 with tables)
+2026-10-10 createarticle iteration 2, ten weaknesses: (1) hedged "no label in the rules read here" cells in the answer table; (2) an invented example price in the Germany section; (3) an aside about other publishers' explainers mislabeling the directive, which alludes to third parties; (4) the brief's legal-line table missing; (5) the AI paragraph's product example not yet in the research file; (6) the CTA carried an H2 and a promise not in the studio facts; (7) prose over the 2,300 floor through repetition in the casting and workflow sections; (8) an unneeded "earliest in this group" comparison for Germany; (9) Spain's pack advice read as a legal consequence rather than practice; (10) derived sale dates in the answer table not labeled as derived
+2026-10-10 createarticle iteration 3: rewrite fixing all ten (hedged cells replaced by "brand's call" with a note; invented price removed; third-party allusion removed; legal-line table added; research rows C46 (AI Act guidelines, reused) and C47 (studio facts) added before use; CTA heading and unsupported promise cut; Germany comparison cut; Spain pack advice framed as practice; derived dates labeled)
+2026-10-10 createarticle iteration 4: production review; Spain green cell reworded so it implies no direct effect of an untransposed directive; Germany 2004 sentence split
+2026-10-10 createarticle iteration 5: AI-tell pass; duplicate "bites" removed, "deserve the same care" cut, two balanced sentence pairs broken
+2026-10-10 createarticle iteration 6: zero em dashes; all 10 blockquotes carry Source, date and method; Italian regional quote given its read date
+2026-10-10 createarticle iteration 7 ran as the CADENCE variant (house rule, no planted errors): one paragraph split to a single-line beat, three parallel list items broken, two section openers varied
+2026-10-10 createarticle iteration 8: paragraph and citation structure checked; R8 reconciliation run against claims C1 to C47 (one evaluative line "the firmest of the four on language" cut as unsupported; AI Act Art. 50(4) deployer duty added to C46 before use); check 2 delegated to a re-fetch subagent over all 27 cited surfaces, results recorded when it reports
+2026-10-10 createarticle iteration 9: SEO fields counted: title 51/52, meta 148/152 (both the brief's approved values, unchanged), excerpt 22/25 words
+2026-10-10 createarticle iteration 10: second AI-tell pass; a performing closing line in the green-claims section replaced by the plain fact (German and Italian texts are the strictest standard today)
+2026-10-10 createarticle iteration 11: human touch; two sentence rhythms loosened (AI section close, workflow opener)
+2026-10-10 createarticle iteration 12: visual formatting; change list given a bold lead-in; four tables (answer, transposition, legal lines, sales calendar)
+2026-10-10 createarticle iteration 13: five visual concepts weighed (a campaign proof on a light table: rejected, implies text; four identical bottles on four backdrops: rejected, generic; producer's hands swapping the ground under a fixed product: chosen; an art director comparing four prints on a wall: rejected, needs readable prints; a pack on a turntable with backdrop swatches: rejected, weaker idea); hero prompt written, no real person named; feature image, schema and asset brief blocks appended. check-draft.mjs: all hard checks passed. Draft saved to editorial/output/europe-campaign-localization.md
+2026-10-10 watch.csv: four rows added for europe-campaign-localization (France transposition 2026-11-10, Spain transposition 2026-11-10, Italian winter 2027 dates 2026-12-01, official French winter 2027 notice 2026-12-15). No live article contradicted (holiday-content-calendar-2026 already prints the same derived Jan. 6 date and the same 30-day rule)
+2026-10-10 content-quality-us (18 passes plus final, on a scratch copy of the draft, versions cq01 to cq18):
+  pass 1 newsroom draft: draft already in newsroom register, carried as v1
+  pass 2 ten weaknesses: standfirst repeated the first answer's list; an unwrapped Italian paragraph; vague "Consumer law" label in the legal table; "the usual way to break it" unsupported; AI guidelines sentence ambiguous about what counts as a deep fake; no early freshness cue; "never more legible" unclear in the answer table; France bill unnamed in the transposition table; one stacked triad in the casting section; repeated "layer" wording
+  pass 3 rewrite: all ten fixed (standfirst rewritten, rewrap, TRLGDCU named, "an easy way", "as a deep fake", check date under the answer table)
+  pass 4 production review: FAQ answers 54 to 60 words each, first answer 51 words naming hubStudio once, not-legal-advice line in place
+  pass 5 AI-undetectable: France section opener rewritten
+  pass 6 em dash and blockquotes: zero em dashes, 10 blockquotes with Source, date and method, straight quotes kept to match the repo's other drafts
+  pass 7 human touch: casting question triad broken into a two-part question
+  pass 8 SEO: title 51 and meta 148 kept (brief's approved values); excerpt rewritten to 25 words (house ceiling 25, not the skill's 156/60 looser fields)
+  pass 9 second AI pass: no new tells found beyond one reworded clause on price history
+  pass 10 second human touch: price-history sentence loosened
+  pass 11 hostile reader, ten problems: weak AI subhead, repetitive "What does X add?" subheads, freshness cue, unnamed bill, unclear table cell, cost question (answered by the pointer to the adaptation cost piece), missing author anchor (byline is set at publish), legal table lacked a reason to read it, Germany opener thin, CTA fine; fixes applied (two H2s rewritten, bill named, cue added)
+  pass 12 structural ratio: bold-label paragraphs only in the France section and the change list, prose well above half; no conversion needed
+  pass 13 AI marker hunt: one triad broken, no jargon from the banned list found
+  pass 14 read-aloud: a Germany opener addition tried and reverted in pass 18 as inaccurate (the section carries three rules, not two)
+  pass 15 structural sniff: blockquote formatting identical, no em dash crept back
+  pass 16 pacing: one mid-page cue added before the legal-line table
+  pass 17 SEO and structure: title 51/52, meta 148/152, excerpt 25/25, one H1, clean H2/H3, US spelling check passed
+  pass 18 self-created patterns: "layer" cut from six uses to five, the reverted Germany line removed
+  final: SEO fields already folded in the frontmatter
+2026-10-10T13:03:34 iteration 8 check 2 complete: all 27 cited surfaces re-fetched, all OK, none changed (EU texts on publications.europa.eu, Legifrance and facebook.com via WebFetch); results in research/europe-campaign-localization/2026-10-10-check2.txt
+2026-10-10 step 3 image: attempt 1 rejected (flat light, no cast shadow, bottle not across both grounds); attempt 2 accepted after the AI-tells check; saved public/Images/insight-europe-campaign-localization.webp (1536x1024, 91 KB, webp q78); feature-image block updated to the prompt actually used
+2026-10-10 ledger: 19 rows and 6 do-not-publish rows appended to editorial/sources/verified-sources.md, both checks dated 2026-10-10
+2026-10-10 schedule row 64 set to image_ready (researched, drafted, quality_passed and image dates 2026-10-10); run log written to editorial/logs/2026-10-10-europe-campaign-localization.md
+2026-10-10 final checks: check-draft.mjs all hard checks passed; check-content-todo no marker; zero em dashes across every file this run touched. Not published, not committed, as the task requires
+2026-10-10T13:08:30 run finished at image_ready
+Brief 64, `europe-campaign-localization`, is drafted and stopped at `image_ready`. Nothing is published or committed. The draft checker passes every hard check, the content-marker scan finds nothing, and no file this run touched contains an em dash.
+
+**Which row and why:** no row had been left half-finished at researched, drafted or quality_passed. So the run took the earliest `not_started` row, brief 64 (scheduled October 12). No earlier attempt had left partial work.
+
+**What the article says:** it takes one campaign (a hero image with a model, a 9:16 video, a "30 percent off" promotion and an "eco-friendly packaging" line) through France, Germany, Spain and Italy. Every legal line comes from the statute text itself. Four findings changed what the draft could say:
+- **Green claims:** the EU ban on generic claims like "eco-friendly" applies from September 27, 2026. Germany and Italy have put it into national law. France and Spain had not by October 10, so the page says so and tells readers to build the one master to the German and Italian standard.
+- **French influencer labels:** the law's wording is plural, "Images retouchées" and "Images virtuelles". The separate retouched-photo label for ads, "Photographie retouchée", is printed with its fine.
+- **2027 sale dates:** France has not published its official notice, so the page prints January 6, 2027 and marks it as worked out from the rule. Italy's dates come from the regions' shared rule, with Sicily's published dates beside it.
+- **Formats:** Meta, TikTok and LinkedIn publish one set of ad sizes for all four countries. What changes per market is the language the ad set targets.
+
+**Draft and checks:**
+- **Length:** 2,766 words of prose and 3,785 with the four tables, against a 2,300-word minimum. The overage is tables, legal citations and FAQ, not padding.
+- **SEO fields:** title 51 of 52 characters, meta 148 of 152, excerpt 25 of 25 words.
+- **Source re-check:** all 27 cited pages were fetched a second time and none had changed.
+- **Workarounds:** the EU law site was down, so the EU texts were read on the EU Publications Office's own server. The French legal site only answered through a fetch tool.
+
+**Hero image:** the second attempt is saved (91 KB). It shows a producer's hands sliding a new tile under a fixed product in one window light. The first attempt was rejected for flat light and no shadow.
+
+**Other changes made in this run:**
+- **Brief 64 corrected** in its source module and in the rendered brief: French sale dates are set by a ministerial order, not a decree. The 2027 French dates are labeled as derived, and the green-claims item now asks for each country's status. No later brief repeated these errors.
+- **Watch list:** four rechecks added to `watch.csv`. France's and Spain's green-claims laws are due November 10, 2026, Italy's 2027 dates December 1, and the official French notice December 15.
+- **Site profile refreshed:** `editorial/sources/site-profile.md` was a month old and still described the retired hub4You and the old studio pages. It is rebuilt from the repo and the positioning file.
+- **Records:** 19 rows added to the source ledger, row 64 updated in `schedule.csv`, and the run log is at `editorial/logs/2026-10-10-europe-campaign-localization.md`.
+
+No live article was contradicted.
+
+The Gmail, Google Calendar and Google Drive connectors need signing in again in the claude.ai connector settings before they can be used; this run did not need them.
+
+Files are in `editorial/`:
+- `output/europe-campaign-localization.md`
+- `research/europe-campaign-localization.md`
+
+The hero image is at `public/Images/insight-europe-campaign-localization.webp`.
+2026-10-10T13:08:44 model Opus 5.5 completed successfully
+2026-10-10T13:08:44 end draft exit 0
+2026-10-10T13:08:44 queue: ok: 78 to draft, 0 blocked, last draft 2026-10-10
