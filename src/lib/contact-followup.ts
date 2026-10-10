@@ -253,9 +253,23 @@ function label(text: string, font: string): string {
   return `<p style="margin:0 0 14px;font-family:${font};font-size:12px;line-height:16px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:${C.orange}">${esc(text)}</p>`;
 }
 
+/**
+ * A first name as a greeting should print it: "suraj" or "SURAJ" becomes
+ * "Suraj". A name typed in mixed case ("McDonald", "Anne-Sophie") is kept as
+ * typed; scripts without case (Chinese) pass through unchanged.
+ */
+function tidyName(name: string): string {
+  if (name !== name.toLowerCase() && name !== name.toUpperCase()) return name;
+  return name
+    .split(/([\s-]+)/)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join('');
+}
+
 /** Subject, HTML and plain-text versions of the follow-up, for one person. */
-export function contactFollowUp(locale: Locale, firstName: string) {
+export function contactFollowUp(locale: Locale, typedName: string) {
   const c = COPY[locale];
+  const firstName = tidyName(typedName);
   const home = SITE + (pathIn('/', locale) ?? '/');
   const calculator = SITE + (pathIn('/pricing/calculator', locale) ?? '/pricing/calculator');
   const password = calculatorPassword();
