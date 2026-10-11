@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'carousel-post-guide',
+    image: '/Images/howto-carousel-post-guide.webp',
+    imageAlt:
+      'Two hands pull open a concertina strip of matte prints on a worn oak table: the first panel shows a navy rain jacket beaded with water on a hook against gray concrete, the folded panels behind it close views of the same jacket, in soft window light from the left.',
+    category: 'Social media',
+    tone: 'navy',
+    title: 'How to Make a Carousel Post People Swipe Through',
+    deck: 'Plan the slides, frame every one the same way, and post Instagram and LinkedIn carousels that people swipe to the end.',
+    date: 'October 12, 2026',
+    dateISO: '2026-10-12',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'How to Make a Carousel Post People Swipe Through | hubStudio',
+    metaDescription:
+      'Build Instagram and LinkedIn carousels that hold the swipe: a cover that promises, one idea per slide, the right ratio, and the PDF or picture split.',
+  },
+  {
     slug: 'plan-week-social-posts',
     image: '/Images/howto-plan-week-social-posts.webp',
     imageAlt:

@@ -1,0 +1,271 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I make a carousel post on Instagram?",
+    "a": "In the Instagram app, start a post and select up to 20 photos and videos, then pick one orientation for all of them. Through a publishing tool the limit is 10. In hubStudio, pick Carousel in the Instagram module, render, pick or upload 2 to 8 slides, write the caption, and publish now or schedule it."
+  },
+  {
+    "q": "How do I post a carousel on LinkedIn?",
+    "a": "Decide the format first. For pictures, start a post, add up to 20 photos and lead with the strongest, because the first one sets the layout. For a document, add one PDF of up to 300 pages and give it a title. In hubStudio, pick + Carousel and add 2 to 8 slides; a document goes out from LinkedIn directly."
+  },
+  {
+    "q": "What size should carousel slides be?",
+    "a": "Use 4:5 portrait at 1080 by 1350 pixels on both networks. Instagram keeps a 1080-wide photo at full resolution between 1.91:1 and 3:4, and its publishing interface takes 4:5 to 1.91:1, so 4:5 passes both. LinkedIn shows a multi-photo post at most 4:5. Keep every slide the same shape."
+  },
+  {
+    "q": "How many slides can a carousel have?",
+    "a": "On Instagram, up to 20 photos and videos in the app and 10 through a publishing tool. On LinkedIn, up to 20 photos in a multi-photo post, or one document of up to 300 pages. hubStudio renders 2 to 8 slides per carousel. The right count is the story's: stop when it ends, and cut any slide that repeats another."
+  },
+  {
+    "q": "Should a LinkedIn carousel be a PDF or images?",
+    "a": "Use a PDF when the post is an argument with real text that people will want to keep, since readers can download it. Use images for a visual set, led by the strongest photo. A posted document can't be edited, only deleted and posted again. hubStudio publishes the image kind; post a PDF in LinkedIn itself."
+  },
+  {
+    "q": "Can I mix photos and videos in one carousel?",
+    "a": "Yes, on Instagram. Its help center counts photos and videos together toward the 20, and its publishing interface accepts images, videos or a mix, up to 10, though a Reel can't be one of the items. On LinkedIn, the multi-photo post is a set of photos, and hubStudio sends no video to LinkedIn yet."
+  }
+];
+---
+
+<HowtoLayout slug="carousel-post-guide" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">A carousel usually loses its reader on the first slide, or on a crop that jumps from one slide to the next. The template is rarely the problem.</p>
+
+  <h2>How do you make a carousel post?</h2>
+
+  <p>Plan the slides first: a cover that promises the next slide, one idea on each slide after it, and a last slide with one ask. Make every slide the same shape, 4:5 portrait at 1080 by 1350 pixels. Then post it. In hubStudio you render, pick or upload the slides and publish to Instagram or LinkedIn.</p>
+
+  <p>The two networks don't mean the same thing by "carousel." This is what each one takes, as their own help pages put it on October 12, 2026.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Network and kind</th>
+          <th scope="col">Items</th>
+          <th scope="col">Shape</th>
+          <th scope="col">Files</th>
+          <th scope="col">How it goes out</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Instagram carousel</th>
+          <td>Up to 20 in the Instagram app, up to 10 through a publishing tool</td>
+          <td>One orientation for every item</td>
+          <td>JPEG only through a publishing tool, 8 MB each</td>
+          <td>hubStudio (2 to 8 slides when rendered) or by hand</td>
+        </tr>
+        <tr>
+          <th scope="row">LinkedIn multi-photo post</th>
+          <td>Up to 20 photos</td>
+          <td>Laid out by the first photo, shown at most 4:5</td>
+          <td>5 MB in LinkedIn's composer; JPG, PNG or GIF up to 10 MB through hubStudio</td>
+          <td>hubStudio (2 to 8 slides) or by hand</td>
+        </tr>
+        <tr>
+          <th scope="row">LinkedIn document post</th>
+          <td>One file, up to 300 pages</td>
+          <td>One page size throughout</td>
+          <td>PDF, PPT, PPTX, DOC or DOCX, up to 100 MB</td>
+          <td>By hand, in LinkedIn</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Why do people stop swiping?</h2>
+
+  <p>Often because the first slide gave them no reason to go on. On Instagram the feed shows only that slide, with a row of dots under it, so everything behind it depends on what the cover promises.</p>
+
+  <blockquote class="evidence">In the feed, Instagram shows the first photo or video of a carousel with a row of dots below it, and people swipe to see the rest. Likes and comments apply to the whole post, not to single slides.</blockquote>
+  <p class="source">Source: Instagram Help Center, sharing multiple photos or videos as a single post, read October 12, 2026.</p>
+
+  <p>So the cover does one job. It names a payoff the reader gets only by swiping, like the answer held back for the last slide or the after shot behind a before. A cover that delivers everything at once gives nobody a reason to move.</p>
+
+  <p>Then each slide carries one idea, and a second idea gets its own slide. Keep the words short enough to read on a phone in the second it takes to swipe.</p>
+
+  <p>The framing has to hold still. When the subject jumps from a tight crop to a wide one, or the headline moves from the top to the bottom, the eye restarts on every slide. Keep the shape and the margins fixed, and put the words in the same place each time.</p>
+
+  <p>The last slide asks for one thing: save the post, say, or read the guide. Not both.</p>
+
+  <h2>What goes on each slide?</h2>
+
+  <p>A plan by role keeps the sequence honest. Write it before you make a single picture.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Slide role</th>
+          <th scope="col">What it says</th>
+          <th scope="col">What it shows</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Cover</th>
+          <td>The payoff, in a few words</td>
+          <td>The subject at its strongest, room left for the headline</td>
+        </tr>
+        <tr>
+          <th scope="row">Setup</th>
+          <td>The problem, or why it matters now</td>
+          <td>The situation before the fix</td>
+        </tr>
+        <tr>
+          <th scope="row">Idea slides</th>
+          <td>One point each, a short headline and a line under it</td>
+          <td>One picture per point, framed like the cover</td>
+        </tr>
+        <tr>
+          <th scope="row">Proof</th>
+          <td>The result, the detail or the example</td>
+          <td>A close-up or the after shot</td>
+        </tr>
+        <tr>
+          <th scope="row">Last slide</th>
+          <td>One ask</td>
+          <td>A plain field with the ask, or the product</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Stop when the story ends. Any slide that repeats another comes out.</p>
+
+  <h2>What size and how many slides does Instagram allow?</h2>
+
+  <p>Instagram's help center sets the count and the one rule that decides the crop.</p>
+
+  <blockquote class="evidence">You can share up to 20 photos and videos as a single post, a carousel, and "the orientation you choose (square, portrait or landscape) affects all of the photos or videos in your post."</blockquote>
+  <p class="source">Source: Instagram Help Center, sharing multiple photos or videos as a single post, read October 12, 2026.</p>
+
+  <p>That 20 is the Instagram app's figure. A post sent by a scheduling or publishing tool goes through Instagram's publishing interface, which has its own limits.</p>
+
+  <blockquote class="evidence">Carousels made through Instagram's publishing interface stop at 10 items, and "carousel images are all cropped based on the first image in the carousel, with the default being a 1:1 aspect ratio." Images must be JPEG, up to 8 MB, between 4:5 and 1.91:1.</blockquote>
+  <p class="source">Source: Instagram Platform developer documentation, content publishing guide and media reference, read October 12, 2026.</p>
+
+  <p>Read both together and one shape is safe everywhere: 4:5 portrait at 1080 by 1350. Instagram's photo help keeps a 1080-wide picture at full resolution from 1.91:1 to 3:4, and 4:5 sits inside that range and inside the publishing interface's range too. A 3:4 slide posts from the Instagram app but not through a publishing tool.</p>
+
+  <p>Photos and videos can share one carousel. A Reel can't be one of its items, by the publishing interface's own reference. <a href="/resources/insights/instagram-post-sizes-2026">The Instagram post sizes for 2026 guide</a> carries the full size table.</p>
+
+  <h2>Should a LinkedIn carousel be a PDF or pictures?</h2>
+
+  <p>LinkedIn has two formats people call a carousel, and they behave differently.</p>
+
+  <p>A document post is one file. LinkedIn takes a PDF, PPT, PPTX, DOC or DOCX, one per post, and readers can download it as a PDF.</p>
+
+  <blockquote class="evidence">A document post takes one file of up to 100 MB and 300 pages. Pages of different sizes must be fit to one page size, layered PDFs flattened, and animations show as still images. The document can't be changed after posting: delete the post and start again.</blockquote>
+  <p class="source">Source: LinkedIn Help, Upload and share documents and Document uploads FAQ, read October 12, 2026.</p>
+
+  <p>A multi-photo post is a set of pictures, and its first photo sets the layout.</p>
+
+  <blockquote class="evidence">A multi-photo post takes up to 20 photos, shown at most 4:5, and "the layout of the post depends on the height and orientation of the first image uploaded." A portrait or square first photo sits in a left column with the others stacked beside it; a landscape one sits on top.</blockquote>
+  <p class="source">Source: LinkedIn Help, Share photos on LinkedIn, read October 12, 2026.</p>
+
+  <p>Pick by the job. A long argument with real text, something a reader will want to keep, belongs in a document. A set of visuals, for instance a product seen from five angles, belongs in a picture post led by its strongest photo.</p>
+
+  <p>The hubStudio app publishes the picture kind. Its LinkedIn module has no document format, so a PDF carousel goes out from LinkedIn's own composer. <a href="/resources/insights/linkedin-post-specs">The LinkedIn post specs page</a> lists every limit, and <a href="/solutions/platforms/linkedin">the LinkedIn platform page</a> covers the network as a whole.</p>
+
+  <h2>How do you make the slides in hubStudio?</h2>
+
+  <p>With the plan written and the shape settled, the making goes quickly. On Instagram, the visual comes first. Open Instagram in the menu and pick the shape.</p>
+
+  <ul>
+    <li>Pick Carousel: 2 to 8 slides when rendered.</li>
+    <li>Choose a way in: Render with AI, Pick from the library for pictures already in your Assets Library, or Upload from your computer.</li>
+    <li>To render, write one prompt that describes the whole set, pick the Engine and the Aspect, and click Generate the carousel. The price is on the button before you press.</li>
+    <li>Write the caption with AI or by hand, up to 2,200 characters.</li>
+  </ul>
+
+  <figure>
+    <img src="/Images/help/instagram-picture.webp" alt="The Instagram module on a new post: the band with the three step tiles, and the picture or the video step with One image, Carousel and Reel, Render with AI, Pick from the library and Upload from your computer, with the Skills and material strip unfolded beside it" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>Pick Carousel first, then render the slides, pick them from the library or upload them.</figcaption>
+  </figure>
+
+  <p>The prompt carries the consistency. Name what stays fixed before you name what changes.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Carousel prompt, a rain jacket launch</p>
+    <p class="prompt__body">Portrait photographs for one carousel. Every frame shares the same gray concrete wall, the same soft window light from the left and the same camera height at chest level. Frame one: a navy rain jacket on a hook, beaded with water, empty wall above it. Frame two: a close view of the taped seams.<br />Frame three: the hood in wind. Frame four: the jacket folded into its own pocket. No words in the pictures.</p>
+  </div>
+
+  <p>Leave the words out of the render. You'll write them on each slide in the editor, where you can read them at phone size.</p>
+
+  <p>On LinkedIn, the post starts from the words. Pick the Format + Carousel, draft the post, then open the pictures step and add a carousel of 2 to 8 slides the same three ways. LinkedIn keeps up to 3,000 characters of copy, and only the first lines show before "see more."</p>
+
+  <h2>How do you frame every slide the same way?</h2>
+
+  <p>Point at a slide and click the pencil under the cross. On a carousel, every slide keeps its own pencil. The picture opens in the Image editor, on its Social panel, already set to the network.</p>
+
+  <ul>
+    <li>On Instagram, pick Feed portrait, 1080 by 1350, marked Best.</li>
+    <li>On LinkedIn, pick Post, portrait, also 1080 by 1350 and marked Best.</li>
+    <li>Choose Crop to fill and drag the box over the part to keep, or Fit it whole over a blurred copy of the picture or a plain color.</li>
+    <li>Leave Show what the network covers on. Red marks where the network's own buttons sit, and on Instagram a dashed line shows the Profile grid crop. Keep the words and the logo out of both.</li>
+    <li>Click Apply the format, write the slide's words in the Text panel, then click Save, and Save and use it in the post.</li>
+  </ul>
+
+  <figure>
+    <img src="/Images/help/image-editor-social.webp" alt="The Social panel of the Image editor on Instagram, Feed portrait picked: the crop box of 1080 by 1350 over the picture, the dashed Profile grid lines, and Crop to fill, Fit it whole, Show what the network covers and Apply the format" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>The Social panel: Feed portrait at 1080 by 1350, with the dashed Profile grid crop.</figcaption>
+  </figure>
+
+  <p>The edited copy takes the slide's place as a new version. Before you save, the panel's checks flag a soft picture, a file the network refuses, anything under its buttons and words too small to read on a phone. Editing is free.</p>
+
+  <p>The Profile grid line matters for the cover. Instagram shows a carousel's first slide on your profile, so the cover has to read in that crop too.</p>
+
+  <p>Nothing is lost along the way. Each render, edit, pick or upload that changes the slides is kept as a picture version (v1, v2 and so on), and Use this version puts an earlier set back on the post.</p>
+
+  <figure>
+    <img src="/Images/help/instagram-picture-edit.webp" alt="The picture step of an Instagram post: Render again, Add from the library and Upload from your computer on the left, the post's picture on the right with the pencil under the cross" width="1144" height="611" loading="lazy" decoding="async" />
+    <figcaption>Each slide keeps its own pencil into the Image editor.</figcaption>
+  </figure>
+
+  <p>Files are handled on the way out. Every picture sent to Instagram is turned into a JPEG it accepts. LinkedIn takes JPG, PNG and GIF through hubStudio, not WebP, up to 10 MB each. Its own composer caps a photo at 5 MB, so export under 5 MB if you might post by hand.</p>
+
+  <h2>What should you check before the carousel goes out?</h2>
+
+  <ul>
+    <li>The cover promises something only the next slides deliver.</li>
+    <li>Each slide holds one idea.</li>
+    <li>Every slide is the same shape, 4:5 at 1080 by 1350.</li>
+    <li>Words and logo sit outside the network's buttons and the grid crop.</li>
+    <li>Words read at phone size.</li>
+    <li>The last slide asks for one thing.</li>
+    <li>Instagram: 10 items or fewer if a tool publishes it, and no Reel inside.</li>
+    <li>LinkedIn: pictures for a visual set, a document for a long argument.</li>
+    <li>LinkedIn pictures are JPG, PNG or GIF, under 5 MB for the composer.</li>
+    <li>The caption's first line stands on its own.</li>
+  </ul>
+
+  <p>Publishing to Instagram and LinkedIn from hubStudio costs nothing; renders and AI drafts are charged against a prepaid balance, at the price shown before each run. <a href="/app/publish">The publish page of the app</a> covers scheduling and the other networks, and <a href="/services/design/social-media">the social media design service</a> makes the slides for teams that would rather hand the work over.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>How do I make a carousel post on Instagram?</h3>
+
+  <p>In the Instagram app, start a post and select up to 20 photos and videos, then pick one orientation for all of them. Through a publishing tool the limit is 10. In hubStudio, pick Carousel in the Instagram module, render, pick or upload 2 to 8 slides, write the caption, and publish now or schedule it.</p>
+
+  <h3>How do I post a carousel on LinkedIn?</h3>
+
+  <p>Decide the format first. For pictures, start a post, add up to 20 photos and lead with the strongest, because the first one sets the layout. For a document, add one PDF of up to 300 pages and give it a title. In hubStudio, pick + Carousel and add 2 to 8 slides; a document goes out from LinkedIn directly.</p>
+
+  <h3>What size should carousel slides be?</h3>
+
+  <p>Use 4:5 portrait at 1080 by 1350 pixels on both networks. Instagram keeps a 1080-wide photo at full resolution between 1.91:1 and 3:4, and its publishing interface takes 4:5 to 1.91:1, so 4:5 passes both. LinkedIn shows a multi-photo post at most 4:5. Keep every slide the same shape.</p>
+
+  <h3>How many slides can a carousel have?</h3>
+
+  <p>On Instagram, up to 20 photos and videos in the app and 10 through a publishing tool. On LinkedIn, up to 20 photos in a multi-photo post, or one document of up to 300 pages. hubStudio renders 2 to 8 slides per carousel. The right count is the story's: stop when it ends, and cut any slide that repeats another.</p>
+
+  <h3>Should a LinkedIn carousel be a PDF or images?</h3>
+
+  <p>Use a PDF when the post is an argument with real text that people will want to keep, since readers can download it. Use images for a visual set, led by the strongest photo. A posted document can't be edited, only deleted and posted again. hubStudio publishes the image kind; post a PDF in LinkedIn itself.</p>
+
+  <h3>Can I mix photos and videos in one carousel?</h3>
+
+  <p>Yes, on Instagram. Its help center counts photos and videos together toward the 20, and its publishing interface accepts images, videos or a mix, up to 10, though a Reel can't be one of the items. On LinkedIn, the multi-photo post is a set of photos, and hubStudio sends no video to LinkedIn yet.</p>
+</HowtoLayout>

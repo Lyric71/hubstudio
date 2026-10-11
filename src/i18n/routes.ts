@@ -97,6 +97,7 @@ const ARTICLES: Record<string, string> = {
 const HOWTOS: Record<string, string> = {
   'ai-search-content-systems-win': 'gagner-la-recherche-ia-avec-un-systeme-de-contenu',
   'ai-white-background-packshot': 'packshot-sur-fond-blanc-avec-l-ia',
+  'carousel-post-guide': 'reussir-un-carrousel-instagram-et-linkedin',
   'chatgpt-image-2-product-prompting-guide': 'chatgpt-image-2-guide-des-prompts-produit',
   'consistent-character-ai-images-video': 'un-personnage-coherent-en-images-et-videos-ia',
   'long-video-to-shorts': 'd-une-video-longue-a-des-formats-courts',

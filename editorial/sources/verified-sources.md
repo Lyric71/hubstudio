@@ -2539,3 +2539,26 @@ Copied from the research file's own ledger section, which carries the full claim
 | Story safe areas "950 x 1270" or "central 1080 x 1420" | Search summaries, tool pages | Not on any Meta page | 2026-10-11 |
 | Link preview display tiers ("small square thumbnail", "ignored") | Open Graph tool pages | Meta says "much smaller" and 200 x 200 minimum only | 2026-10-11 |
 | Carousel image minimum 600 x 600 | Search summary | That is the Facebook Reels image ad minimum | 2026-10-11 |
+
+
+## Added 2026-10-11 (ledger rows from brief 67, carousel-post-guide)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+### Instagram and LinkedIn carousel readings (added 2026-10-12, brief 67)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Instagram carousel in the feed: the first photo or video shows with a row of dots, people swipe for the rest; the profile shows the first item; likes and comments apply to the whole post; a filter applies to all items or one; items can be reordered or removed and the caption edited after posting | "Instagram Help Center, sharing multiple photos or videos as a single post, read October 12, 2026" | help.instagram.com/269314186824048 | undated, read 2026-10-12 | primary | 2026-10-12 | 2026-10-12 (re-fetched after drafting) | 67 |
+| Instagram Platform: Reels cannot appear in carousels | "Instagram Platform developer documentation, IG User Media reference, read October 12, 2026" | developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media | undated, read 2026-10-12 | primary, API route | 2026-10-12 | 2026-10-12 | 67 |
+| Re-read, unchanged: Instagram 20 items and one orientation; 1.91:1 to 3:4 at 1080 wide; API 10 items, first-image crop (1:1 default), JPEG, 8 MB, 4:5 to 1.91:1; LinkedIn 20 photos, layout by the first image, 4:5 container, 5 MB, 3:1 to 4:5; documents 100 MB, 300 pages, one per post, no edit after posting; image types GIF, JPEG, PNG, WEBP | existing brief 54 and 63 rows | help.instagram.com/269314186824048 and /1631821640426723; developers.facebook.com content-publishing and ig-user/media; linkedin.com/help/linkedin/answer/a527229, a518909, a523054, a564109 | re-read 2026-10-12 | primary | 2026-10-08 | 2026-10-12 (third read) | 54, 63, 67 |
+
+### Do not publish, added from brief 67
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| LinkedIn document carousels earn 3.2x reach or a 4.40 percent engagement rate against 1.20 percent for images | carousel tool blogs, 2026 | No method, sample or date, published by sellers of carousel tools | 2026-10-12 |
+| LinkedIn multi-image posts take up to 9 images | a carousel tool blog | LinkedIn's help says 20 | 2026-10-12 |
+| Instagram carousel video clips under 60 seconds | a scheduler blog | No Instagram page states a carousel video length; 60 seconds is the API Story limit | 2026-10-12 |
+| LinkedIn multi-photo posts or document posts shown as swipeable slides | carousel tool blogs | LinkedIn's help describes a first-image layout for photos and says nothing of the feed display for documents | 2026-10-12 |
+

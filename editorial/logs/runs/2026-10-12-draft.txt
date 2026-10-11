@@ -1,0 +1,29 @@
+﻿2026-10-12T00:30:02 start draft (model claude-opus-5-5)
+2026-10-12T00:30:02 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-12T00:30:34+08:00 working tree inspected: no partial work for any row (no researched, drafted or quality_passed row; 66 published, 76 not_started). The uncommitted tail of 2026-10-11-publish.txt is the earlier publish run's own closing lines and is left untouched. Taking row 67, carousel-post-guide (template howto), the earliest not_started row by publish_date (2026-10-14).
+2026-10-12T00:34:42+08:00 step 0 research gate passed: editorial/research/carousel-post-guide.md written before any body copy; 8 primary pages captured to research/carousel-post-guide/ (Instagram Help Center x2, Instagram Platform docs x2, LinkedIn Help x4); SERP mapped on five phrasings; R4 not applicable (no China content). Status researched.
+2026-10-12T00:38:14+08:00 step 1 /createarticle (house version) done: 13 iterations, iteration 7 ran as the cadence variant (no planted errors), iteration 8 check 2 re-fetched all 8 cited pages (all 200, every quoted string found) and R8 reconciled; output/carousel-post-guide.md saved, check-draft.mjs all hard checks passed. Status drafted.
+2026-10-12T00:39:12+08:00 step 2 /content-quality-us done: 18 passes plus final in place (versions v0, v3, v13 in the session scratchpad); SEO fields unchanged and inside the house ceilings (title 48, meta 149, excerpt 21 words). Status quality_passed.
+2026-10-12T00:42:13+08:00 step 3 /generate-image-openai done: gpt-image-2 high, 3:2, one attempt, looked at and passed the AI-tells checklist; saved public/Images/howto-carousel-post-guide.webp (1536x1024, 160 KB). Ledger appended (brief 67, append-ledger.mjs), watch.csv row added due 2027-01-12, schedule row 67 set to image_ready with all four dates, run log editorial/logs/2026-10-12-carousel-post-guide.md written. No brief amended and no live article corrected: none was contradicted. Not published and not committed, per the prompt. run complete at image_ready.
+Row 67, `carousel-post-guide`, is drafted and stopped at `image_ready`. Nothing is published or committed. The working tree had no partial work from an earlier attempt, so this run started the row from scratch.
+
+- **Research:** I wrote `editorial/research/carousel-post-guide.md` before any body copy. Every number comes from Instagram's or LinkedIn's own help pages or Instagram's developer documentation, captured today to `research/carousel-post-guide/` and re-fetched after drafting with every quoted line still there. The app facts come only from the help center and `hubstudio-positioning.md`.
+- **What I cut:** the ranking pages' engagement multiples, a "9 images" LinkedIn limit (LinkedIn's help says 20), a carousel video length and an ideal slide count. All four went on the do-not-publish list.
+- **Draft:** `editorial/output/carousel-post-guide.md` went through `/createarticle` (step 7 ran as the cadence pass, with no planted errors) and then all 18 passes of `/content-quality-us`. `check-draft.mjs` passes every hard check.
+  - Title is 48 characters, meta 149, excerpt 21 words.
+  - Five sourced quotes, two tables, a prompt example and a checklist.
+  - It reuses three existing app screenshots that already have French and Chinese versions.
+  - It states the LinkedIn split plainly: the app publishes the picture kind, and a PDF is posted in LinkedIn itself.
+  - Prose runs 2,177 words against the 1,700 floor. Under the settled rule that's fine, since the overage is the required FAQ, quotes and steps.
+- **Hero image:** `public/Images/howto-carousel-post-guide.webp` (1536×1024, 160 KB). It shows a folded strip of matching prints being opened panel by panel, the carousel made physical. I looked at it and checked it against the style guide's AI-tells list; the first attempt passed.
+- **Records:**
+  - `schedule.csv`: row 67 is at `image_ready` with all four dates.
+  - The source ledger has the brief 67 rows.
+  - `watch.csv` has a quarterly recheck due 2027-01-12.
+  - The run log is `editorial/logs/2026-10-12-carousel-post-guide.md`, with every decision also in `logs/runs/2026-10-12-draft.txt`.
+- **Nothing else to fix:** the guide agrees with the live Instagram post sizes and LinkedIn post specs pages, and the brief's app facts match the help center, so no brief or live article needed changing.
+
+The uncommitted tail of `logs/runs/2026-10-11-publish.txt` is the closing lines of an earlier publish run; I left it untouched. The Gmail, Google Calendar and Google Drive connectors need authorizing in your claude.ai connector settings. This run didn't need them.
+2026-10-12T00:42:23 model Opus 5.5 completed successfully
+2026-10-12T00:42:23 end draft exit 0
+2026-10-12T00:42:24 queue: ok: 75 to draft, 0 blocked, last draft 2026-10-12

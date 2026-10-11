@@ -177,3 +177,11 @@ thread (X) -> thread (« en thread », « partir en thread »)
 Make / Adapt / Approve and schedule (workflow blocks) -> Produire / Décliner / Valider et programmer; Re-purpose (verb, a post for other networks) -> décliner
 endpoint (API) -> point de terminaison; rolling 24 hours -> 24 heures glissantes
 @ tags (caption) -> mentions @; format skill -> compétence de format
+
+## Carousels on Instagram and LinkedIn (settled 2026-10-12)
+document post (LinkedIn) -> post document; multi-photo post (LinkedIn) -> post à plusieurs photos; picture post -> post photo; composer (LinkedIn) -> éditeur de LinkedIn
+publishing interface (Instagram, the plain-language name of its API) -> interface de publication d’Instagram; publishing tool / scheduling tool -> outil de publication / outil de planification
+items (carousel) -> éléments; orientation -> orientation; cover (first slide) -> couverture; payoff (of a cover) -> promesse
+slide roles Cover / Setup / Idea slides / Proof / Last slide -> Couverture / Contexte / Développement / Preuve / Dernière diapositive; one ask -> une seule demande
+Image editor Social panel, Instagram and LinkedIn: Crop to fill / Fit it whole / Show what the network covers / Profile grid / Apply the format -> « Recadrer » / « Image entière » / « Montrer ce que le réseau recouvre » / « Grille du profil » / « Appliquer le format »; Post, portrait (LinkedIn) -> « Post, format portrait »; Text panel -> panneau « Texte »; Save and use it in the post -> « Enregistrer et l’utiliser dans la publication »
+Pick from the library / Add from the library / Render again -> « Choisir dans la bibliothèque » / « Ajouter depuis la bibliothèque » / « Générer à nouveau »; + Carousel (LinkedIn format) -> « + Carrousel »

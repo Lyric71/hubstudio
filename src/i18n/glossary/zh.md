@@ -175,3 +175,10 @@ Image editor crop ratio Link (1.91:1) -> “链接”; Video editor Social panel
 X thread -> 讨论串 (app label); Instagram 24-hour moving window -> 滚动 24 小时; quota endpoint -> 配额接口
 Campaign brief / Post brief -> 营销活动简报 / 帖子简报; New campaign -> “新建营销活动”; Validated (post status) -> 已确认
 YouTube private upload -> 私享; app not audited by YouTube -> 未经 YouTube 审计的应用
+
+## Carousels (settled 2026-10-12, carousel-post-guide)
+carousel post -> 轮播帖 (a carousel -> 一组轮播); slide -> 页 (封面 / 末页 / 观点页 / 每页一个观点), but a count of rendered slides keeps the app wording: 2 至 8 张
+the ask (last slide) / one ask -> 行动号召 / 一个行动号召
+LinkedIn document post / multi-photo post -> 文档帖子 / 多图帖子; LinkedIn's composer -> LinkedIn 自带的发帖框 (short: 发帖框)
+Instagram's publishing interface (generic) -> 发布接口 (named API: 内容发布 API); publishing tool / scheduling tool -> 发布工具 / 排期工具; item (carousel) -> 项
+Image editor steps: the pencil under the cross -> 叉号下方的铅笔图标; Text panel -> “文本”面板; LinkedIn Post, portrait -> “帖子 · 竖版”; marked Best (placement) -> 标为“推荐”

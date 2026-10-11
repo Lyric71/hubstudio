@@ -174,3 +174,14 @@
 2026-10-11T16:30:41+08:00 schedule.csv: no row has status image_ready, so nothing is eligible to publish and no row is skipped.
 2026-10-11T16:30:41+08:00 watch.csv: no row has a due_date on or before 2026-10-11 (earliest 2026-10-12, singles-day-618-production-calendar), so no recheck runs.
 2026-10-11T16:30:41+08:00 no build, commit of an article or notify-publish email: nothing was published. run complete, nothing eligible.
+This run had nothing to publish.
+
+- **Schedule:** no row in `editorial/schedule.csv` has status `image_ready`, so no row was published or skipped. Earlier today the catch-up run published rows 65 and 66 (`plan-week-social-posts` and `facebook-post-specs`) in English, French and Chinese, in commit 3a3cdd8.
+- **Watch list:** no row in `editorial/watch.csv` is due on or before 2026-10-11. The earliest is the Singles Day check, due 2026-10-12.
+- **Run log:** the runner had cut `editorial/logs/runs/2026-10-11-publish.txt` back to its two start lines, which would have lost the record of the earlier run. I restored that record and added this run's lines after it. I committed the log as baeb1a5 and pushed it to origin main.
+
+Since nothing was published, I didn't run the build or the type check, and no notification email went out.
+
+The Gmail, Google Calendar and Google Drive connectors need to be authorized in your claude.ai connector settings. This run didn't use them.
+2026-10-11T16:30:59 model Opus 5.5 completed successfully
+2026-10-11T16:30:59 end publish exit 0
