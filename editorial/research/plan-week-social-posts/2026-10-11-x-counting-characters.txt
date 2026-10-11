@@ -1,0 +1,111 @@
+URL: https://docs.x.com/fundamentals/counting-characters
+Page date: undated
+Read date: 2026-10-11
+Scope: X developer documentation; applies to post text whether posted by API or app
+Capture method: plain HTTP fetch of the page HTML, tags stripped
+Note: any em dash in the source is rendered here as a spaced hyphen. Everything inside the EXCERPT blocks is verbatim page text.
+
+=== EXCERPT: Counting Characters ===
+Counting Characters
+Copy page Copy page
+
+How X counts characters in Posts, including the 280-character limit, weighted code points, URL shortening, emoji and Unicode handling, and edge cases.
+
+Copy page Copy page
+
+Posts on X can contain up to 280 characters . However, not all characters count equally - emojis, URLs, and certain Unicode ranges have special counting rules.
+
+​
+
+Character weights
+
+X uses a weighted character counting system. Most characters count as 1, but some count as 2:
+Character type
+Weight
+Max characters
+
+Latin, punctuation, common symbols
+1
+280
+
+Emojis
+2
+140 emojis
+
+CJK (Chinese, Japanese, Korean)
+2
+140 characters
+
+Other Unicode
+2 (default)
+Varies
+
+Use the open-source twitter-text library to accurately count characters in your app.
+
+​
+
+Emoji counting
+
+All emojis count as 2 characters , regardless of complexity:
+Emoji
+Display
+Character count
+Unicode
+
+👾
+Single emoji
+2
+U+1F47E
+
+🙋🏽
+With skin tone
+2
+🙋 + 🏽 modifier
+
+👨‍🎤
+Combined with ZWJ
+2
+👨 + ZWJ + 🎤
+
+👨‍👩‍👧‍👦
+Family sequence
+2
+4 emojis + 3 ZWJs
+
+Zero-width joiners (ZWJ) combine emojis visually but don’t add to the count.
+
+​
+
+URL handling
+
+All URLs are wrapped with t.co shortener and count as 23 characters , regardless of the original length:
+
+https://example.com → 23 characters
+https://example.com/very/long/path → 23 characters
+
+This applies to any valid URL detected in post text.
+
+​
+
+Special cases
+
+Content
+Counting rule
+
+@mentions in replies
+Auto-populated @mentions at the start of replies don’t count
+
+New @mentions
+@mentions you add manually count normally
+
+Media
+Attached media (via official clients) counts as 0 characters
+
+Hashtags
+Count normally (# + tag text)
+
+​
+
+Text encoding
+
+The X API requires UTF-8 encoding. Character length is calculated using Unicode Normalization Form C (NFC).

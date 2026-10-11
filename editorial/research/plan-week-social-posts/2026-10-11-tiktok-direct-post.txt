@@ -1,0 +1,40 @@
+URL: https://developers.tiktok.com/doc/content-posting-api-reference-direct-post
+Page date: Last updated August 24, 2026
+Read date: 2026-10-11
+Scope: TikTok Content Posting API, video Direct Post endpoint
+Capture method: plain HTTP fetch of the page HTML, tags stripped
+Note: any em dash in the source is rendered here as a spaced hyphen. Everything inside the EXCERPT blocks is verbatim page text.
+
+=== EXCERPT: Page header ===
+Share to TikTok / Content Posting API / API Reference / Video / Direct Post Share to TikTok / Content Posting API / API Reference / Video / Direct Post Last updated August 24, 2026
+
+=== EXCERPT: Request note ===
+# Request
+Note : Each user access_token is limited to 6 requests per minute.
+
+=== EXCERPT: post_info.title field ===
+title
+
+string
+
+The video caption. Hashtags (#) and mentions (@) will be matched, or deliminated by spaces or new lines.
+
+The maximum length is 2200 in UTF-16 runes.
+If not specified, the ticket post will not have any captions.
+
+=== EXCERPT: Error codes ===
+Check error message for details.
+
+403
+
+spam_risk_too_many_posts
+
+The daily post cap from the API is reached for the current user.
+
+spam_risk_user_banned_from_posting
+
+The user is banned from making new posts.
+
+reached_active_user_cap
+
+The daily quota for active publishing users from your client is reached.

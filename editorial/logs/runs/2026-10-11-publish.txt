@@ -1,0 +1,165 @@
+﻿2026-10-11T15:22:14 start publish (model claude-opus-5-5)
+2026-10-11T15:22:14 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-11T15:22:30+08:00 resumed (catch-up run): run log held only its start lines; the 04:00 publish run reached no model. Two rows to check: 65 plan-week-social-posts and 66 facebook-post-specs, both drafted today and untracked on disk.
+2026-10-11T15:23:38+08:00 published both rows with publish-draft.mjs (the repo's implementation of the createblogarticle publish step; its locale steps skipped, step 4b below). plan-week-social-posts: template howto, page src/pages/resources/how-to/plan-week-social-posts.astro, entry at head of src/data/howtos.ts, how-to category Social media (topical tag), tone orange, date 2026-10-11, 7 links wired, the two localized help captures (linkedin-brief, instagram-picture; fr and zh in localized-images.json) embedded as figures; showcase clip follows settled fallback 12. facebook-post-specs: template spec, page src/pages/resources/insights/facebook-post-specs.astro, entry at head of src/data/insights.ts, category Platform specs (claimed by the socialMedia layer on /services/design/social-media and the ecommerce layer; the specs hub lists it under a Facebook group), tone navy, 5 links wired, Reviewed date October 11, 2026 on the page. Hero alt text written by hand after viewing each image.
+2026-10-11T15:23:38+08:00 French slugs: facebook-post-specs -> facebook-formats-des-publications-reels-et-stories-2026 (ARTICLES); plan-week-social-posts -> planifier-une-semaine-de-publications-en-un-apres-midi (HOWTOS).
+2026-10-11T15:24:40+08:00 extract (npm run i18n:local -- extract --context .i18n-work/ctx, own dev server on 127.0.0.1:4341): 231 pages, 69803 units. Pending in fr and zh: plan-week-social-posts 140, facebook-post-specs 103, common 8, resources/how-to 2, home 1, resources/insights 1. The extract also moved Free, Carousel and Social media into common.json (now on three pages or more), swapped the Latest chip on home, the insights index and the how-to index to the new leads, and reshuffled case-card entries between common and work; no translated wording was lost. Cleared the 2026-10-10 pass files in .i18n-work/passes/<fr|zh>/{common,home,resources/insights} (merged that day; their indexes would map onto today's empty units).
+2026-10-11T15:36:30+08:00 zh translation done: builds clean (facebook-post-specs 108 entries, plan-week-social-posts 145, common 1195, home 364, resources/how-to 30, resources/insights 92), pending zh: nothing. Campaigns kept as 营销活动 per the glossary (the app's own zh.json says 广告系列; the glossary and the live help pages settled 营销活动). Glossary zh.md gained a section on Facebook specs and the weekly social plan. changes.md files follow.
+----- zh resources/insights/facebook-post-specs changes.md -----
+[intro] pass1 -> pass3: "因为 Meta 写了三套规则：广告指南规定……" -> "因为 Meta 定了三套规则：广告指南管付费版位的尺寸，开发者页面为发布工具代发的主页帖子划定上限" / why: parallel verbs 管 / 划定 instead of three stacked 规定-clauses
+[reviewed line] pass1 -> pass3: "依据为……本页每一个数值都出自这四者之一" -> "对照……逐项核对。本页所有数值均出自这四个来源" / why: verb-led opening, tighter close
+[answer box] pass1 -> pass3: "（hubStudio 这类工具都走这条路）……照片不得超过 10 MB" -> "（hubStudio 等工具都走这条通道）……照片最大 10 MB" / why: shorter written register
+[Graph API quote] pass1 -> pass3: "PNG 宜控制在 1 MB 以内，否则可能出现像素化" -> "PNG 文件最好不超过 1 MB，否则画面可能像素化" / why: subject made explicit, less nominal
+[fourth row] pass1 -> pass3: "只是按 1,080 像素宽换算出的 4:5" -> "不过是 4:5 按 1,080 像素宽算出来的结果" / why: native emphasis with 不过是, clause order follows Chinese logic
+[organic vs ads] pass1 -> pass3: "几乎每一项，广告这边都更宽松。……受 Meta 开发者限制约束" -> "广告一栏几乎每一项都更宽松。……适用的是 Meta 开发者文档的限制" / why: ties the sentence to the table column; 受……约束 was English-shaped
+[one file rule] pass1 -> pass3: "按自然发布的限制制作，广告也同样适用" -> "就按自然发布的限制来做，拿去投广告也照样合规" / why: natural consequence clause, stronger close
+[shape] pass1 -> pass3: "在形状上……意见一致……隔壁却不是这样" -> "形状方面……口径一致……一墙之隔却是另一回事" / why: 口径一致 is the business-press idiom; idiomatic contrast for "next door"
+[Reel answer] pass1 -> pass3: "大多数尺寸指南栽在时长上：Meta 已于 2025 年做了调整" -> "多数尺寸指南恰恰错在时长上：Meta 2025 年已改了规则" / why: plainer verb, rhythm
+[90-second note] pass1 -> pass3: "已不再适用于……但对……依然有效" -> "对……已经失效，对……却仍然有效" / why: balanced antithesis reads as written Chinese
+[Story row] pass1 -> pass3: "按 60 秒制作" -> "制作时以 60 秒为准" / why: an instruction in house style, not a calque of "Build to 60"
+[safe zone] pass1 -> pass3: "以上都是针对广告的指引" -> "以上均为广告指引" / why: concise 书面语
+[pixel mismatch] pass1 -> pass3: "百分比和像素本身也对不上……14% 约为 269 像素" -> "百分比和像素，彼此也对不上……14% 约合 269 像素" / why: 约合 is the standard conversion verb
+[link preview] pass1 -> pass3: "直接给出了这些数字" -> "把数字写得明明白白" / why: renders "outright" with a native idiom
+[caching rule] pass1 -> pass3: "确保首次分享前已获取新图" -> "让 Facebook 在首次分享前就抓取到新图" / why: clear agent, matches the debugger's fetch
+[carousels] pass1 -> pass3: "所有公开的数字都在广告这一边……方形，1,080 × 1,080 或更大" -> "公开的数字全在广告一侧……2 至 10 张方形卡片，尺寸 1,080 × 1,080 或更大" / why: adjective folded into the noun phrase, no list fragment
+[Stories carousel] pass1 -> pass3: "一边建议……一边建议……请先在广告管理工具中查看预览" -> "在相邻两行分别建议……先在广告管理工具中核对预览" / why: removes the doubled 一边, 核对 fits a check step
+[hubStudio module] pass1 -> pass3: "而非个人档案帖子：纯文字……" -> "不发个人档案帖子，形式包括纯文字……一条帖子带图片就不能带视频，反之亦然" / why: verb-led, the either/or made idiomatic
+[editors] pass1 -> pass3: "借助其中的裁剪工具裁成……等比例" -> "除其他工具外，还能裁成“链接”（1.91:1）或“方形”" / why: keeps "among its other tools" without a noun chain; app labels unchanged
+[editors] pass1 -> pass3: "两个编辑器都免费使用" -> "两个编辑器里的编辑都不收费" / why: says what is free (the editing), as the English does
+[publishing] pass1 -> pass3: "若希望把帖子交给别人来做" -> "若希望帖子由我们代为制作" / why: the service is the studio itself; 代为制作 is the trade phrase
+[FAQ ratio] pass1 -> pass3: "方形 1:1 同样支持，而且是……的要求" -> "1:1 方形同样可用，Meta 广告指南对动态轮播广告要求的正是 1:1" / why: emphasis with 正是, no 而且 chain
+[FAQ safe zone] pass1 -> pass3: "自然发布的快拍没有公布安全区" -> "自然发布的快拍，安全区未见公布" / why: topic-comment order, matches the sibling Instagram pages
+[build fix] pass3: "详见<a1>2026 年" -> "详见 <a1>2026 年" / why: half-width space between Han and a digit
+[native read] pass3: "抓取一遍……抓取到新图" -> "跑一遍……抓取到新图"; "换算到……（由我们按……换算）" -> "落到……上，约为……（按 Meta 的百分比自行换算）"; "两个编辑器里的编辑都不收费" -> "在这两个编辑器中修改，均不收费" / why: removes repeated verbs found on the final read
+
+----- zh resources/how-to/plan-week-social-posts changes.md -----
+[title] pass1 -> pass3: "一个下午排好一周社交媒体帖子" -> "一个下午，排好一周社交媒体帖子" / why: the comma gives the headline its spoken-out beat, as Chinese how-to titles do
+[meta] pass1 -> pass3: "一次坐下来，完成……审核流程内置，各平台上限一一标明" -> "一口气完成……审核环节内置，各平台上限逐一标明" / why: "in one sitting" was calqued; 一口气 is the native idiom
+[intro] pass1 -> pass3: "排日历是最快的一步。整个下午真正耗在三件事上……以及等人点头" -> "排日历最省事。整个下午，时间其实都耗在三件事上：做图……再等人拍板" / why: 省事 and 拍板 are the press register; list closes on a verb
+[answer box] pass1 -> pass3: "分四块来做。先根据……再制作……接着……最后……" -> "分四块推进：先依据……；再逐条制作……；接着……；最后……" / why: colon and semicolons carry the sequence, no English run-on
+[cost line] pass1 -> pass3: "所有费用都从以真实货币计价的预付余额中扣除" -> "所有费用均从预付余额中扣除，余额以真实货币计价" / why: breaks a long 的-chain into two clauses
+[week grid] pass1 -> pass3: "已确认，定时 09:00" -> "已确认，定于 09:00 发布"; "夹克在真雨里的样子" -> "夹克淋上真雨" / why: status and idea cells read as a planner would write them; app status 已确认 kept
+[week grid] pass1 -> pass3: "面料的三项本领，以讨论串形式发布" -> "面料的三项性能，以讨论串形式呈现" / why: 性能 is the product-copy term; 讨论串 matches the app's X label
+[cadence] pass1 -> pass3: "这张表留下两个悬而未决的问题" -> "这张表还有两件事悬而未决：多久发一次，几点发" / why: shorter, the questions phrased as a scheduler says them
+[Meta quote] pass1 -> pass3: "会根据您的粉丝……推荐发帖时间" -> "会参照您的粉丝……给出发帖时间建议" / why: the quote describes a suggestion, not a push
+[cadence close] pass1 -> pass3: "<a1>2026 年节日内容日历</a1>说明了……" -> "……需要提前多久备好素材，见 <a1>2026 年节日季内容日历</a1>" / why: link text matches the article's settled Chinese title; reference moved to the end as Chinese guides do
+[campaign] pass1 -> pass3: "为它命名并撰写简报" -> "起个名字，写好简报" / why: short verb-object steps
+[campaign] pass1 -> pass3: "营销活动只是指向素材库中的文件，并不复制" -> "营销活动只引用素材库中的文件，不做复制" / why: 引用 is the exact verb for a pointer
+[brief sample] pass1 -> pass3: "他们已有一件雨衣，但信不过它……避免使用“革命性”一词" -> "手里已有一件雨衣，却信不过它……不用“革命性”这类字眼" / why: a real brief is terse and blunt
+[brief payoff] pass1 -> pass3: "这份简报能派上两次用场" -> "这份简报一稿两用" / why: four-character idiom, written register
+[brief payoff] pass1 -> pass3: "它从不查看图片本身，所以请在简报里写明图片内容" -> "图片本身它从不查看，所以图片拍了什么，要在简报里写明" / why: topic-first order, concrete
+[make] pass1 -> pass3: "在 LinkedIn、Facebook 和 X 上，从文字入手" -> "LinkedIn、Facebook 和 X 从文字起步" / why: drops the preposition shell; parallels "Instagram 和 TikTok 则从视觉素材起步"
+[pictures] pass1 -> pass3: "图片有三种来源：在帖子内点击“AI 生成”、“从素材库选择”……" -> "在帖子内用“AI 生成”，或“从素材库选择”，或“从您的电脑上传”" / why: no 、 between quoted labels; the three routes read as equals
+[tools] pass1 -> pass3: "有两款工具辅助视觉制作" -> "做视觉，有两件工具可以帮忙" / why: topic-comment, lighter rhythm
+[adapt] pass1 -> pass3: "每份草稿都由该平台自己的格式技能塑造……都是改写而成，而非原样粘贴" -> "由该平台专属的格式技能（默认选中）来定型……都是重写，而非照搬" / why: 定型 and 照搬 are native, shorter
+[caps] pass1 -> pass3: "一个品牌一周的发帖量远低于此" -> "一个品牌一周的发帖量远远够不着" / why: livelier verb, same fact
+[approval] pass1 -> pass3: "审批最耗时间，所以要一次性全部提交" -> "审批是最慢的一环，所以要一次全部提交" / why: 一环 fits the workflow image
+[schedule list] pass1 -> pass3: "排入该帖子的人会收到一封邮件，说明平台的反馈" -> "把帖子排入队列的人会收到一封邮件，转述平台给出的原因" / why: clear agent; 转述 says the email relays the network's words
+[checklist] pass1 -> pass3: "定时发布的时间在您的时区下显示无误" -> "按您的时区核对，定时发布时间无误" / why: checklist items lead with the action
+[YouTube] pass1 -> pass3: "凡是来自未经 YouTube 审计的应用的上传" -> "凡未经 YouTube 审计的应用上传的视频" / why: removes a doubled 的; 私享 kept from the settled YouTube pages
+[studio close] pass1 -> pass3: "<a1>社交媒体设计服务</a1>就是由工作室……" -> "可选<a1>社交媒体设计服务</a1>：由工作室……" / why: the service is offered, not equated
+[FAQ plan] pass1 -> pass3: "这正是一个下午就能完成的关键" -> "一个下午能做完，靠的正是这一点" / why: native emphatic close, no nominal 关键
+[build fix] pass3: "见<a1>2026" -> "见 <a1>2026" (two links) / why: half-width space between Han and a digit
+[native read] pass3: grid status "已确认，定于 09:00 发布" / "已定时 18:00" -> "已确认，定时 09:00 发布" / "已定时，18:00 发布"; "排满队列" -> "排好发布队列"; "09:00 实际是 09:00 至 09:05 之间" -> "定在 09:00 的帖子，实际在 09:00 至 09:05 之间发出"; checklist "正在等待" -> "处于待审核状态"; "YouTube 上传已排进" -> "YouTube 上传事项已记入" / why: parallel status cells, the app's 待审核 label, and full clauses where the first read left a fragment
+
+----- zh common changes.md -----
+[Facebook hero alt] pass1 -> pass3: "按在一张照片的底边上……贴在石膏墙上，墙下的木架上放着" -> "压在照片下方的白边上……贴在灰泥墙上，墙下木架上搁着" / why: "margin" is the white border; 灰泥墙 for plaster; 搁着 lighter than 放着
+[Facebook card title] pass1 -> pass3: "2026 年 Facebook 帖子、Reels 与快拍规格" kept / why: matches the page title and the sibling Instagram spec cards
+[Facebook deck] pass1 -> pass3: "均出自 Meta 官方页面，另附工具发布主页帖子时更严格的限制" -> "全部取自 Meta 官方页面，并列出工具代发主页帖子时更严的限制" / why: 代发 says who sends; tighter close
+[Facebook meta] pass1 -> pass3: "自然发布与广告分列，注明审订日期" -> "自然发布与广告分开列出，并注明审订日期" / why: verbs complete the clause; within 80 characters
+[how-to hero alt] pass1 -> pass3: "两只手把六张同一件……夹克照片排成一列" -> "六张照片拍的都是同一件挂满雨珠的藏青色夹克，各裁成不同形状，两只手正把它们……排齐" / why: breaks the long 的-chain; subject first, action second
+[how-to card title] pass1 -> pass3: "一个下午，排好一周社交媒体帖子" kept / why: same wording as the guide's title
+[how-to deck] pass1 -> pass3: "一次完成……均已内置" -> "一口气完成……一并内置" / why: idiomatic for "in one sitting"
+[date] "2026 年 10 月 11 日" / why: house date format
+
+----- zh home changes.md -----
+[latest chip] pass1 -> pass3: "<span1>最新</span1>平台规格" kept through passes / why: reuses the settled chip pattern (<span1>最新</span1>图片生成) and the glossary's 平台规格
+
+----- zh resources/how-to changes.md -----
+[latest chip] pass1 -> pass3: "<span1>最新</span1>社交媒体" kept / why: settled chip pattern and the dictionary's 社交媒体
+[json-ld description] pass1 -> pass3: "一次坐下来，完成……审核流程内置，各平台上限一一标明" -> "一口气完成……审核环节内置，各平台上限逐一标明" / why: same wording as the guide's meta description; "in one sitting" no longer calqued
+
+----- zh resources/insights changes.md -----
+[latest chip] pass1 -> pass3: "<span1>最新</span1>平台规格" kept through passes / why: same chip pattern as the home page and the glossary's Platform specs hub term
+
+2026-10-11T15:42:13+08:00 fr translation done: builds clean (facebook-post-specs 108 entries, plan-week-social-posts 145, common 1195, home 364, resources/how-to 30, resources/insights 92), pending fr: nothing. The translator aligned the publish-queue statuses with the app's own French labels (reporting-site fr.json: Scheduled « Programmé », Did not go out « Échec de l’envoi »): common.json and the glossary line changed; this run applied the same two labels to src/i18n/dict/fr/pages/app/publish.json so the term is the same everywhere. Glossary fr.md gained a section on Facebook specs and the weekly social plan. changes.md files follow.
+----- fr resources/insights/facebook-post-specs changes.md -----
+[title] pass1 -> pass3: « Facebook 2026 : formats des posts, Reels et Stories » -> « Formats Facebook 2026 : posts, Reels et Stories » / why: the noun leads like the sibling Instagram titles; 59 characters with the brand suffix.
+[intro] pass1 -> pass3: « la question de la taille d’un post Facebook appelle trois réponses, car Meta écrit trois jeux de règles » -> « Combien mesure un post Facebook en 2026 ? Trois réponses coexistent, car Meta édicte trois jeux de règles » / why: an opening question instead of an English noun chain, « édicter » for rules; the three clauses joined by semicolons for rhythm.
+[answer box] pass1 -> pass3: « Construisez une image de fil en 4:5 » -> « Pour le fil, optez pour une image en 4:5 » / why: « construire une image » is a calque of "build"; pass 2’s « partez sur » was too spoken.
+[answer box] pass1 -> pass3: « comme le fait un outil tel que hubStudio, accepte des photos de 10 Mo au plus » -> « la voie qu’emprunte un outil comme hubStudio, n’accepte pas de photo de plus de 10 Mo » / why: verbal phrasing, no doubled « comme / tel que ».
+[Graph API quote] pass1 -> pass3: « Un PNG devrait rester sous 1 Mo, faute de quoi... et Facebook redimensionne » -> « Au-delà de 1 Mo, un PNG risque de paraître pixellisé. Facebook, de son côté, redimensionne » / why: split the run-on sentence; the condition leads.
+[sources] pass1 -> pass3: « valeurs citées telles qu’imprimées » -> « valeurs citées telles quelles »; « Reels Publishing API, consulté » -> « page Reels Publishing API, consultée » / why: same wording as the Instagram spec pages; agreement fixed on « page ».
+[fourth row] pass1 -> pass3: « Regardez la quatrième ligne... qui remplit la plupart des guides... calculé sur 1 080 pixels » -> « Attardez-vous sur la quatrième ligne... qui peuple la plupart des guides... rapporté à 1 080 pixels de large, et non un chiffre de Facebook » / why: a stronger verb and a sharper contrast.
+[organic vs ads] pass1 -> pass3: « Côté publicité, la marge est plus large sur presque chaque ligne » -> « La publicité se montre plus généreuse sur presque toutes les lignes » / why: the subject acts; « plus serrées » replaces the flat « plus strictes ».
+[organic vs ads] pass1 -> pass3: « construisez-le donc selon la limite organique » -> « D’où une règle simple : ... calibrez-le sur la limite organique » / why: a native connector and the right verb for sizing a file.
+[Reels] pass1 -> pass3: « Les stories et les Live font exception. L’annonce de Meta précisait... » -> « Seules les stories et les vidéos en direct font exception. Dans son annonce, Meta indiquait... » / why: Facebook’s French name for Live; pass 2’s « Selon... seraient » read as a journalistic conditional that casts doubt, so it was dropped.
+[Reels API quote] pass1 -> pass3: « tourner de 24 à 60 images par seconde » -> « avoir une cadence de 24 à 60 images par seconde » / why: « tourner » is spoken for a frame rate.
+[Story row] pass1 -> pass3: « La ligne Story recèle une petite contradiction... Retenez 60 » -> « La ligne consacrée à la story cache une petite contradiction... plafonne la story vidéo à 60 secondes. Tenez-vous-en à 60 » / why: verbal, less bookish, a firmer instruction.
+[safe zone] pass1 -> pass3: « Sa page sur les publicités image... demande 14 % » -> « Sur celle des publicités image..., la consigne passe à 14 % » / why: removes the repeated « demande ».
+[safe zone] pass1 -> pass3: « pourcentages et pixels ne concordent pas non plus... appliquent le jeu 14, 35 et 6 sans contradiction » -> « les pourcentages ne concordent d’ailleurs pas avec les pixels... s’en tiennent sans contradiction au trio 14, 35 et 6 » / why: native connector and rhythm; pass 2’s « ne collent pas » was too familiar.
+[safe zone] pass1 -> pass3: « La prudence commande de retenir le jeu le plus strict » -> « Par prudence, retenez le jeu le plus strict » / why: direct instruction, lighter.
+[link preview] pass1 -> pass3: « donne les chiffres sans détour » -> « le dit en toutes lettres »; « Restez au plus près du 1,91:1, à 8 Mo au plus » -> « Visez un ratio aussi proche que possible du 1,91:1, un poids de 8 Mo au plus » / why: idiom, and the constraints now parallel.
+[link preview] pass1 -> pass3: « passez le lien dans le Débogueur de partage » -> « soumettez le lien au Débogueur de partage de Meta » / why: the right verb for a debugging tool; Meta’s French tool name kept.
+[carousels] pass1 -> pass3: « en affiche d’une à cinq d’elle-même, avant que le spectateur n’en demande davantage » -> « en montre d’office une à cinq avant que le spectateur ne demande la suite »; « Les deux ne peuvent être vrais ensemble » -> « Les deux sont incompatibles » / why: idiomatic and shorter.
+[hubStudio] pass1 -> pass3: « soit le plafond fixé par l’API » -> « le plafond même de l’API »; « La retouche est gratuite dans l’un comme dans l’autre » -> « Dans les deux éditeurs, la retouche est gratuite » / why: no ambiguous pronoun; the app labels (« Lien », « Carré », Portrait (fil), « Appliquer le format », « Conseillé », zone sûre) match the capture.
+[hubStudio] pass1 -> pass3: « s’impose si vous préférez faire réaliser vos posts » -> « si vous préférez confier la réalisation de vos posts, le service... prend le relais » / why: native hand-off phrasing.
+[FAQ] pass1 -> pass3: « Construisez en 1 440 × 1 800, gardez le fichier à 10 Mo au plus, et une seule image servira aux deux » -> « Produisez l’image en 1 440 × 1 800 sans dépasser 10 Mo : elle servira aux deux usages » / why: one instruction, one consequence.
+[native read] « calibrez-le sur la limite organique, il conviendra » -> « calibrez-le sur la limite organique et il conviendra »; « Sources consultées » -> « Pages consultées » / why: no comma splice, and no « Source » echo in one line.
+
+----- fr resources/how-to/plan-week-social-posts changes.md -----
+[title] pass1 -> pass3: « Planifier une semaine de posts en un après-midi | hubStudio » kept from pass 1 / why: matches the French slug and fits 60 characters; « publications » would have run past the limit.
+[intro] pass1 -> pass3: « Le calendrier, c’est la partie rapide. L’après-midi passe à produire... » -> « Le calendrier se remplit vite. C’est ailleurs que l’après-midi s’envole : produire... » / why: the spoken « c’est » opener removed; a written contrast and a list of infinitives.
+[answer box] pass1 -> pass3: « envoyez la semaine en validation et chargez la programmation » -> « soumettez la semaine à validation et programmez les envois » / why: « charger la programmation » was a calque of "load the schedule".
+[answer box] pass1 -> pass3: « les quatre étapes se déroulent au même endroit » -> « les quatre blocs se jouent au même endroit »; « vérifiées avant toute publication » -> « contrôlées avant tout envoi » / why: keeps the page’s own word, « bloc », and a sharper verb.
+[four blocks table] pass1 -> pass3: « Où, dans hubStudio » -> « Dans hubStudio »; « Les modules réseau » -> « Les modules des réseaux, le Pilote automatique de shorts » / why: a clean column header and a correct noun complement.
+[four blocks table] pass1 -> pass3: « Manuellement est gratuit jusqu’à ce que... » -> « « Manuellement » ne coûte rien tant que vous ne lancez pas la rédaction » / why: tab names in guillemets so a label is not read as an adverb; no false app label for "Draft".
+[cost line] pass1 -> pass3: « solde prépayé tenu en monnaie réelle, et le prix s’affiche à l’écran avant le lancement » -> « solde prépayé en monnaie réelle, et le prix s’affiche avant chaque lancement » / why: trimmed padding; the money stays a balance in real currency, no amount, no « crédits ».
+[week grid] pass1 -> pass3: « Le designer parle des coutures étanchées »; « Carrousel de cinq images, tirées de... » -> « Le designer et les coutures étanchées »; « Carrousel de cinq images tirées de la séance photo » / why: a grid cell names an idea and needs no verb; the stray comma removed.
+[week grid] pass1 -> pass3: « sous forme de thread » -> « en thread »; « La question d’un client, et sa réponse » -> « Une question de client et sa réponse » / why: shorter, like a planning sheet.
+[cadence] pass1 -> pass3: « deux questions ouvertes » -> « deux questions en suspens »; « ne donnent de chiffre ni pour l’une ni pour l’autre » -> « ne chiffrent ni l’une ni l’autre » / why: native idiom, verbal construction.
+[TikTok quote] pass1 -> pass3: « vous aidera à prendre de l’élan » -> « vous aidera à créer une dynamique » / why: "build momentum" in French business prose.
+[campaign] pass1 -> pass3: « Une campagne pointe vers des fichiers... sans rien copier... la rejoint » -> « renvoie à des fichiers... sans rien dupliquer... vient s’y ajouter » / why: « pointer vers » is web jargon; the verb now describes what the user sees.
+[sample brief] pass1 -> pass3: « les citadins qui vont au travail »; « toute allégation sur la planète » -> « les actifs qui font la navette »; « toute allégation environnementale » / why: native wording for commuters, and the glossary term for a green claim.
+[sample brief] pass1 -> pass3: « Ton : simple » -> « Ton : sobre, un brin pince-sans-rire » / why: register of a real creative brief.
+[campaign drafting] pass1 -> pass3: « Le brief sert deux fois » -> « Le soin apporté au brief paie deux fois »; « Il ne regarde jamais les images elles-mêmes. » -> « Les images elles-mêmes, il ne les regarde jamais : » / why: idiom for "pays off twice"; the fronted object stresses the warning.
+[make] pass1 -> pass3: « Sur LinkedIn, Facebook et X, on part des mots... Ou bien sur Je l’écris moi-même » -> « tout part des mots... À moins de préférer Je l’écris moi-même » / why: no « on », a native alternative clause; app labels unchanged.
+[make] pass1 -> pass3: « Les images arrivent par trois voies... Attaquez le post suivant pendant ce temps » -> « Les images s’obtiennent de trois façons... Comptez une minute ou deux par image (...) : lancez le post suivant en attendant » / why: « attaquer » is spoken; timing and advice joined.
+[adapt] pass1 -> pass3: « Rien n’est rédigé tant que vous n’y lancez pas la rédaction » -> « Aucun texte n’est produit tant que... »; « facturé comme un Rédiger avec l’IA » -> « facturé comme une rédaction avec l’IA » / why: no rédigé/rédaction echo; a button name used as a noun read badly.
+[adapt] pass1 -> pass3: « qui porte ses règles... réécrite, et non collée » -> « qui fixe ses règles de publication (longueur, hashtags, ton) : ... réécrite, et non simplement recopiée » / why: lighter noun chain, precise verb.
+[limits] pass1 -> pass3: « Vérifiez de nouveau avant une grosse série » -> « Revérifiez-les avant toute série importante »; « Aucune indiquée sur les pages de Meta » -> « Non précisée par les pages de Meta » / why: written register.
+[daily caps] pass1 -> pass3: « doit tabler sur le chiffre bas d’Instagram » -> « aura intérêt à tabler sur le plus bas des deux chiffres d’Instagram » / why: pass 2 had drifted to « le chiffre le plus bas, celui d’Instagram », which compared Instagram with TikTok; the English means Instagram’s lower figure (50).
+[approve] pass1 -> pass3: « La validation, c’est l’étape lente. Envoyez tout d’un coup. » -> « La validation est l’étape lente : envoyez donc tout d’un coup. » / why: spoken dislocation removed, cause and advice linked.
+[approve] pass1 -> pass3: « la version suivante reste dans le même fil » -> « s’ajoute au même fil de discussion » / why: « fil » alone means the feed in this glossary; the app says « Fil de discussion ».
+[schedule list] pass1 -> pass3: « L’heure est lue dans votre propre fuseau horaire »; « 9 h signifie donc entre 9 h et 9 h 05 » -> « L’heure s’entend dans votre fuseau horaire »; « un envoi prévu à 9 h part donc entre 9 h et 9 h 05 » / why: calque of "read in" removed; the chips use the app’s own labels (« Ce soir, 18 h », « Demain, 9 h »).
+[schedule list] pass1 -> pass3: « Un problème passager côté réseau donne lieu à de nouvelles tentatives » -> « En cas de problème passager côté réseau, l’envoi est relancé automatiquement, trois tentatives au total » / why: same wording as the app’s publish page.
+[checklist] pass1 -> pass3: « Que vérifier avant que la semaine parte ? » -> « Que vérifier avant de lancer la semaine ? »; « attend la décision d’un validateur désigné, avec une date » -> « en attente auprès d’un validateur désigné, avec une échéance » / why: natural question; « échéance » for a due date.
+[FAQ] pass1 -> pass3: « Manuellement ouvre chaque réseau... » -> « « Manuellement » ouvre chaque réseau... ; « Rédiger d’un coup » rédige... » / why: labels at the head of a clause need guillemets to read as names.
+[FAQ] pass1 -> pass3: « Une semaine normale de posts de marque n’en approche jamais » -> « Une semaine ordinaire de posts de marque en reste très loin »; « depuis hubStudio même » -> « depuis hubStudio lui-même » / why: idiomatic.
+[meta description] pass1 -> pass3: « Planifier, produire, décliner et programmer en une séance une semaine de posts..., validation et plafonds compris. » -> « En une séance, planifier, produire, décliner et programmer une semaine de posts LinkedIn, Instagram, Facebook, TikTok et X, validation et plafonds inclus. » / why: the time frame leads, the verbs run together; 154 characters, reused for the index page JSON-LD.
+[native read] « Envoyer en validation désigne un membre de l’équipe » -> « Envoyer en validation permet de désigner un membre de l’équipe »; « tombent juste dans votre propre fuseau horaire » -> « correspondent bien à votre fuseau horaire »; « rédaction avec l’IA » -> « rédaction par IA » / why: a button is not the one who names the validator; plainer phrasing; one term across the table and the list.
+
+----- fr common changes.md -----
+[Facebook card, hero alt] pass1 -> pass3: « Une main applique une bande de ruban de masquage sur la marge inférieure d’un tirage montrant un étal... ; le tirage est scotché... où reposent le rouleau » -> « Une main pose une bande de ruban de masquage en travers de la marge inférieure d’un tirage scotché à un mur de plâtre : un étal de fruits sous un auvent rayé, à la tombée du jour. Dessous, sur une étagère en bois, le rouleau et un crayon. » / why: one long relative chain split into a scene and a detail; pass 2’s apposition left it unclear what was taped to the wall.
+[Facebook card, title] pass1 -> pass3: « Formats Facebook 2026 : posts, Reels et Stories » kept / why: same wording as the page title, built like the Instagram spec titles.
+[Facebook card, deck] pass1 -> pass3: « Les tailles du fil, des liens, des carrousels, des Reels et des Stories Facebook d’après les pages de Meta... plus strictes » -> « Fil, liens, carrousels, Reels et Stories : les tailles Facebook tirées des pages de Meta, et les limites plus serrées d’un post de page envoyé par un outil. » / why: the list leads, which drops the chain of « des ».
+[Facebook meta description] pass1 -> pass3: « Tailles 2026 des images du fil, carrousels, aperçus de lien... avec date de révision. » (170 characters) -> « Fil, carrousel, aperçu de lien, Reels, Stories : les tailles Facebook 2026 relevées chez Meta, organique et publicité distingués, avec date de révision. » (152) / why: under the 155-character ceiling and the list leads.
+[Facebook card, date] « 11 octobre 2026 » / why: French date format, as on the other cards.
+[how-to card, hero alt] pass1 -> pass3: « six tirages de la même veste marine perlée de pluie, découpés en six formats différents » -> « six tirages d’une même veste bleu marine perlée de pluie, chacun découpé à un format différent » / why: « bleu marine » is the standard color name; « chacun » makes it clear that each print has its own format.
+[how-to card, title] « Planifier une semaine de posts en un après-midi » / why: same as the page title and the French slug.
+[how-to card, deck] pass1 -> pass3: « ...une semaine de posts pour cinq réseaux en une seule séance, limites de chaque réseau et validation comprises » -> « Planifier, produire, décliner et programmer en une séance une semaine de posts pour cinq réseaux, limites de chaque réseau et validation intégrées. » / why: the time phrase moved next to the verbs; « intégrées » says "built in", where « comprises » only said "included".
+[publish page queue statuses] « Planifié » -> « Programmé »; « Non parti » -> « Échec de l’envoi » / why: the app’s own French labels (reporting-site fr.json "Scheduled", "Did not go out"), which the localized captures show; the new guide uses « Programmé » too, and the glossary line is updated to match.
+
+----- fr home changes.md -----
+[insights band, lead card chip] pass1 -> pass3: « <span1>Dernier article</span1>Spécifications des plateformes » / why: the settled « Dernier article » chip of the lead card, and « Spécifications des plateformes », the category already used for this tag in common.json.
+
+----- fr resources/how-to changes.md -----
+[how-to index, lead card chip] pass1 -> pass3: « <span1>Dernier guide</span1>Réseaux sociaux » / why: the « Dernier guide » chip used on this index before, and « Réseaux sociaux », the settled translation of the Social media category.
+[json-ld description] pass1 -> pass3: « Planifier, produire, décliner et programmer en une séance une semaine de posts LinkedIn, Instagram, Facebook, TikTok et X, validation et plafonds compris. » -> « En une séance, planifier, produire, décliner et programmer une semaine de posts LinkedIn, Instagram, Facebook, TikTok et X, validation et plafonds inclus. » / why: the time frame leads, the four verbs follow without a break; identical to the guide’s meta description (154 characters).
+
+----- fr resources/insights changes.md -----
+[insights index, lead card chip] pass1 -> pass3: « <span1>Dernier article</span1>Spécifications des plateformes » / why: the settled « Dernier article » chip of the lead card, and « Spécifications des plateformes », the category already used for this tag in common.json.
+
+2026-10-11T15:42:51+08:00 npm run i18n:local -- check: ✓ every page is translated in French and Chinese (231 pages). npm run i18n:guard: ✓ 231 English pages with a French address, dictionaries complete. No new localized capture needed: the how-to reuses linkedin-brief and instagram-picture (fr and zh already listed in localized-images.json); the spec page embeds no capture; heroes carry no text.
+2026-10-11T15:44:28+08:00 npm run build: passed (prebuild content:todo and i18n guard included; /fr/ressources/guides-pratiques/planifier-une-semaine-de-publications-en-un-apres-midi, /fr/ressources/analyses/facebook-formats-des-publications-reels-et-stories-2026 and both /zh pages emitted). npm run check: passed, 0 errors, 0 warnings. Rows 65 and 66 set to published, published_on 2026-10-11.
+2026-10-11T15:44:48+08:00 staged 122 paths (both pages, insights.ts, howtos.ts, heroes, routes.ts, dictionaries and glossaries, output, research, logs, schedule, sources, watch.csv, and the draft runs' brief and script amendments); staged diff carries no U+2014. One commit for both rows: they share the common, home and index dictionaries, so the subject names both slugs.

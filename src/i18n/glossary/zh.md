@@ -164,3 +164,14 @@ Toubon law -> 法国《图邦法》; Consumer Code (FR) / Commercial Code / Publ
 PAngV -> 德国《价格标示条例》（PAngV）; UWG -> 德国《反不正当竞争法》（UWG）
 Italian Consumer Code -> 意大利《消费者法典》; Article 17-bis -> 第 17 条之二; region (Italy) -> 大区
 Spain: Retail Trade Act -> 《零售贸易法》; General Advertising Act -> 《广告总法》; TRLGDCU -> 《消费者和用户保护法》（TRLGDCU）; Official State Gazette -> 《国家官方公报》（BOE）; Castilian -> 卡斯蒂利亚语
+
+## Facebook specs and the weekly social plan (settled 2026-10-11, facebook-post-specs, plan-week-social-posts)
+Facebook page / page post -> Facebook 主页 / 主页帖子; personal profile -> 个人档案 (app wording)
+Facebook Feed / Facebook Stories / Facebook Reels -> Facebook 动态 / Facebook 快拍 / Facebook Reels; Live -> 直播
+Awareness image ad specs on Facebook Feed -> “Facebook 动态品牌认知图片广告规格” (same pattern for video, Reels and Stories)
+Facebook Help Center -> Facebook 帮助中心; Meta newsroom -> Meta 新闻中心; Meta for Developers stays in Latin (as TikTok for Developers); API page titles (Page Photos, Images in Link Shares, Reels Publishing API) stay in English
+Sharing Debugger -> 分享调试器; link preview image -> 链接预览图; large link card -> 大尺寸链接卡片; catalog ads -> 目录广告
+Image editor crop ratio Link (1.91:1) -> “链接”; Video editor Social panel placements -> “Reels” “快拍” “动态竖版” “方形”; marked as the best choice -> 标为推荐
+X thread -> 讨论串 (app label); Instagram 24-hour moving window -> 滚动 24 小时; quota endpoint -> 配额接口
+Campaign brief / Post brief -> 营销活动简报 / 帖子简报; New campaign -> “新建营销活动”; Validated (post status) -> 已确认
+YouTube private upload -> 私享; app not audited by YouTube -> 未经 YouTube 审计的应用

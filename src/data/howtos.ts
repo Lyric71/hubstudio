@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'plan-week-social-posts',
+    image: '/Images/howto-plan-week-social-posts.webp',
+    imageAlt:
+      'Two hands line up six prints of the same rain-beaded navy jacket, cut to six different shapes, on a scuffed cutting mat beside a brass ruler, a craft knife and a glass of green tea.',
+    category: 'Social media',
+    tone: 'orange',
+    title: 'Plan a Week of Social Posts in One Afternoon',
+    deck: 'Plan, make, adapt and schedule a week of posts for five networks in one sitting, with each network\'s limits and sign-off built in.',
+    date: 'October 11, 2026',
+    dateISO: '2026-10-11',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Plan a Week of Social Posts in One Afternoon | hubStudio',
+    metaDescription:
+      'Plan, make, adapt and schedule a week of posts for LinkedIn, Instagram, Facebook, TikTok and X in one sitting, with approval built in and caps stated.',
+  },
+  {
     slug: 'product-photo-to-lifestyle-image',
     image: '/Images/howto-product-photo-to-lifestyle-image.webp',
     imageAlt:

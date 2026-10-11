@@ -1,0 +1,21 @@
+URL: https://developers.tiktok.com/doc/content-sharing-guidelines
+Page date: Last updated August 4, 2026
+Read date: 2026-10-11
+Scope: TikTok Content Posting API, Direct Post route (applies to API clients, not the native app)
+Capture method: plain HTTP fetch of the page HTML, tags stripped
+Note: any em dash in the source is rendered here as a spaced hyphen. Everything inside the EXCERPT blocks is verbatim page text.
+
+=== EXCERPT: Page header ===
+Introduction / Our Guidelines / Content Sharing Guidelines Introduction / Our Guidelines / Content Sharing Guidelines Last updated August 4, 2026
+
+=== EXCERPT: Direct Post API - Developer Guidelines ===
+# Direct Post API - Developer Guidelines
+Direct Post API enables developers to build "Share to TikTok" experiences in their app, which allows creators to share content directly to their TikTok profile. As a developer, you can use this API in an unverified status, but all content uploaded via this endpoint will be restricted to private viewing mode. To lift this restriction, your API client must undergo an audit to verify compliance with our Terms of Service .
+
+If your API client has not been audited, the following restrictions will apply:
+User cap : Unaudited API Clients can allow up to 5 users to post in a 24 hour window. All user accounts using the API client to post must be set to private at the time of posting.
+Private Viewership : Unaudited API Clients can only post contents in SELF_ONLY viewership. To make the contents publicly viewable later on, the account owner must first change their account visibility to public, and then change the privacy settings of each content to "Everyone."
+
+Additionally, both audited and unaudited API clients will be subject to the following caps:
+Creator cap : There will be a 24-hour active creator cap for each API client based on the usage estimates provided in the audit application form.
+Posting cap : There is a limit on the number of posts that can be made to a creator account in a 24-hour window via Direct Post API. The upper limit may vary among creators (typically around 15 posts per day/ creator account) and is shared across all API Clients using Direct Post.

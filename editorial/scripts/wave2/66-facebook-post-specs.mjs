@@ -20,10 +20,10 @@ export default {
     "facebook carousel image size",
   ],
   verdict:
-    "SATURATED, UNCITED. Tool blogs and resizer pages repeat 1080 x 1350 and 1200 x 630 with no link to Meta, mix organic posts with ads specs, and give no review date; none separates what Meta's Ads Guide states from what organic page posts accept.",
+    "SATURATED, MOSTLY UNCITED. Tool blogs and resizer pages repeat 1080 x 1350 and 1200 x 630 with no link to Meta and mix organic posts with ads specs. The one ranking page that links its figures to Meta and splits organic from paid covers images only: no page states the limits for a page post sent by a tool (Meta for Developers: photos, Reels, Stories), the September 2025 change that made every Facebook video a reel, or the conflict in Meta's own Facebook Stories safe zones. (Amended 2026-10-11 by the research gate.)",
   words: 1500,
   angle:
-    "Every figure read from Meta's own pages, organic page posts and ads kept apart, with a visible Reviewed date and a quarterly recheck. The ranking pages blend the two and cite nobody; this one says which surface each number comes from, and where Meta gives a range rather than a single size.",
+    "Every figure read from Meta's own pages, organic page posts and ads kept apart, with a visible Reviewed date and a quarterly recheck. Most ranking pages blend the two and cite nobody, and the one that cites Meta stops at images; this one says which surface each number comes from, covers video and the page publishing limits, and shows where Meta gives a range or two figures rather than a single size.",
   mustInclude: [
     "Spec table for feed images: ratio, recommended pixels, minimum, file type and weight, with the Meta page each row comes from",
     "Reels and Stories: 9:16, recommended size, length limits, and the safe zones Meta's Ads Guide gives for text and logos",
@@ -41,7 +41,7 @@ export default {
     "Use an em dash",
   ],
   stats: [
-    "Every dimension, ratio, file limit and length: Meta Ads Guide (facebook.com/business/ads-guide) per placement, and Meta Business Help Center for organic page posts; record URL and both check dates",
+    "Every dimension, ratio, file limit and length: Meta Ads Guide (facebook.com/business/ads-guide) per placement for ads; for organic page posts, the Facebook Help Center and Meta for Developers (Page photos, Images in Link Shares, Reels Publishing API, Facebook Stories API), since the Business Help Center prints ad guidance only; record URL and both check dates",
     "Story and Reel safe zones (top and bottom margins free of text): Meta Ads Guide, quoted as Meta states them",
     "hubStudio limits: facebook.md and assets-library.md in the help center",
   ],
@@ -71,5 +71,5 @@ export default {
   ],
   cta: "Create your account",
   notes:
-    "Spec page: primary sources only (Meta Business Help Center, Meta Ads Guide). Visible Reviewed date. Watch row due 2027-01-13 for the quarterly recheck.",
+    "Spec page: primary sources only (Meta Ads Guide, Meta Business Help Center, Facebook Help Center, Meta for Developers). Visible Reviewed date. Watch row due 2027-01-13 for the quarterly recheck.",
 };

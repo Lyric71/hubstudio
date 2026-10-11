@@ -1,0 +1,34 @@
+URL: https://developers.facebook.com/docs/instagram-platform/content-publishing/
+Page date: undated (newest dated notice on the page: March 24, 2025)
+Read date: 2026-10-11
+Scope: Instagram API (Instagram Platform, professional accounts), not the native app
+Capture method: plain HTTP fetch; developers.facebook.com served the page as Markdown text
+Note: any em dash in the source is rendered here as a spaced hyphen. Everything inside the EXCERPT blocks is verbatim page text.
+
+=== EXCERPT: Intro ===
+# Content Publishing
+
+This guide shows you how to publish single images, videos, reels (single media posts), or posts containing multiple images and videos (carousel posts) on Instagram professional accounts using the Instagram Platform.
+
+**Success:** On March 24, 2025, we introduced the new `alt_text` field for image posts on the `/<INSTAGRAM_PROFESSIONAL_ACCOUNT_ID>/media` endpoint. Reels and stories are not supported.
+
+=== EXCERPT: Rate Limit section ===
+#### Rate Limit
+
+Instagram accounts are limited to 100 API-published posts within a 24-hour moving period. Carousels count as a single post. This limit is enforced on the `POST /<IG_ID>/media_publish` endpoint when attempting to publish a media container. We recommend that your app also enforce the publishing rate limit, especially if your app allows app users to schedule posts to be published in the future.
+
+To check an Instagram professional account's current rate limit usage, query the `GET /<IG_ID>/content_publishing_limit` endpoint.
+
+=== EXCERPT: Carousel container section and its Limitations list ===
+To publish up to 10 images, videos, or a combination of the two, in a single post, a carousel post, you must create a carousel container. This carousel containter will contain a list of all media containers.
+
+To create the carousel container, send a `POST` request to the `/<IG_ID>/media` endpoint with the following parameters:
+
+* `media_type` - Set to `CAROUSEL`. Indicates that the container is for a carousel.
+* `children` - A comma separated list of up to 10 container IDs of each image and video that should appear in the published carousel.
+
+#### Limitations
+
+* Carousels are limited to 10 images, videos, or a mix of the two.
+* Carousel images are all cropped based on the first image in the carousel, with the default being a 1:1 aspect ratio.
+* Accounts are limited to 50 published posts within a 24-hour period. Publishing a carousel counts as a single post.

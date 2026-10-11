@@ -1,0 +1,39 @@
+URL: https://developers.facebook.com/docs/pages-api/posts and https://developers.facebook.com/docs/graph-api/reference/page/feed
+Page date: both undated
+Read date: 2026-10-11
+Scope: Facebook Pages API (Graph API), not the native app
+Capture method: plain HTTP fetch; developers.facebook.com served the page as Markdown text (Pages API guide); plain HTTP fetch of the page HTML, tags stripped (Page feed reference)
+Note: any em dash in the source is rendered here as a spaced hyphen. Everything inside the EXCERPT blocks is verbatim page text.
+
+=== EXCERPT: Pages API guide: Publish posts ===
+## Publish posts
+
+To publish a post to a Page, send a `POST` request to the `/page_id/feed` endpoint, where `page_id` is the ID for your Page, with the following parameters:
+
+* `message` set to the text for your post
+* `link` set to your URL if you want to post a link
+* `published` set to `true` to publish the post immediately (default) or `false` to publish later
+* Include `scheduled_publish_time` if set to `false` with the date in one of the following formats:
+
+#### Notes about scheduled posts
+
+* The publish date must be between 10 minutes and 30 days from the time of the API request.
+
+=== EXCERPT: Page feed reference: message field (read) ===
+message
+string
+The status message in the post.
+
+=== EXCERPT: Page feed reference: scheduled publish time field (read; field name spelled this way on the page) ===
+sheduled_publish_time
+float
+The UNIX timestamp of the scheduled publish time for the post. Date will be between 10 minutes and 75 days from the time of the POST request to publish the post.
+
+=== EXCERPT: Page feed reference: publishing parameters message and scheduled_publish_time ===
+message
+string
+The main body of the post. The message can contain mentions of Facebook Pages , @[page-id] .
+
+scheduled_publish_time
+timestamp
+UNIX timestamp indicating when post should go live. Must be date between 10 minutes and 75 days from the time of the API request.

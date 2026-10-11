@@ -30,7 +30,7 @@ export default {
     "Block three, adapt: Re-purpose for other networks (Manually, Draft at once, or Publish automatically); each network's own format skill shapes every draft",
     "Block four, approve and schedule: Send for validation locks the post until the validator decides; then Schedule with a day and time or a chip, up to 20 accounts per post, read in your own time zone, a queue checked every five minutes with automatic retries",
     "The networks hubStudio publishes to: LinkedIn, Instagram, Facebook, TikTok (Beta) and X; YouTube is published by hand in YouTube Studio",
-    "Network caps that shape a week: Instagram allows 100 posts a day per account (a carousel counts as one), TikTok caps an account at about 15 a day, X posts sent through hubStudio are charged with the price shown before you send",
+    "Network caps that shape a week: Instagram caps API-published posts per account per 24 hours, a carousel counting as one, but Meta's own pages disagree on the number (100 in the Content Publishing guide's rate limit section, 50 in its carousel section and in the content_publishing_limit reference): publish both, TikTok caps an account at about 15 a day, X posts sent through hubStudio are charged with the price shown before you send",
     "What costs nothing: Write it myself, the Image editor, Validation, Campaigns, publishing to LinkedIn, Instagram, Facebook and TikTok",
   ],
   doNot: [

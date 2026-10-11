@@ -54,7 +54,7 @@ if (body.includes('\u2014')) {
 
 appendFileSync(
   LEDGER,
-  `\n\n## Added 2026-09-10 ${marker}\n\nCopied from the research file's own ledger section, which carries the full claims table and reasons.\n\n${body}\n`,
+  `\n\n## Added ${new Date().toISOString().slice(0, 10)} ${marker}\n\nCopied from the research file's own ledger section, which carries the full claims table and reasons.\n\n${body}\n`,
   'utf8',
 );
 console.log(`brief ${brief}: ${body.split('\n').length} lines appended to the ledger`);

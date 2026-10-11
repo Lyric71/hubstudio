@@ -53,7 +53,7 @@ Brand voice -> Voix de la marque
 Publish now / Schedule / Schedule it -> Publier maintenant / Programmer / Le programmer
 Publish automatically / Publish manually -> Publier automatiquement / Publier manuellement
 YouTube module: Videos / Channel (tabs) -> Vidéos / Chaîne; channel kit -> kit de chaîne; Publish interactively -> Publier vous-même; Write the kit with AI -> Rédiger le kit avec l’IA; Short (YouTube) -> Short
-In the queue / Scheduled / Published -> Dans la file d’attente / Planifié / Publié
+In the queue / Scheduled / Published -> Dans la file d’attente / Programmé / Publié (app labels; « Planifié » retired 2026-10-11); Sending now / Did not go out -> « Envoi en cours » / « Échec de l’envoi »
 caption -> légende; prompt -> prompt; brief -> brief (verb: briefer)
 network (social) -> réseau
 Sign in / Create account / Create your account -> Se connecter / Créer un compte / Créer votre compte
@@ -160,3 +160,20 @@ material (saved with a post, beside the Skills) -> supports
 client login -> compte client (to give a login: attribuer des identifiants)
 Escape key -> touche Échap
 RSS link (Resources) -> « Recevoir par RSS chaque nouvelle analyse et chaque nouveau guide »
+
+## Facebook specs and the weekly social plan (settled 2026-10-11)
+page post (Facebook) -> post de page; organic page post -> post de page organique; a page (Facebook) -> une page
+Meta Ads Guide -> guide des publicités de Meta (table cell: Guide des publicités); Meta Business Help Center -> Centre d’aide Meta Business; Facebook Help Center -> Centre d’aide Facebook; Meta for Developers, Graph API, Reels Publishing API, Page Photos, Images in Link Shares -> kept; Meta newsroom -> salle de presse de Meta
+Awareness (ads guide objective) -> notoriété (« publicités image de notoriété »); single-image ad -> publicité à image unique; catalog ads -> publicités catalogue; carousel card -> carte
+Ads Manager (Meta) -> Gestionnaire de publicités; Sharing Debugger -> Débogueur de partage; Live (Facebook) -> vidéos en direct
+link preview image -> image d’aperçu de lien; large link card -> grande carte de lien; link post with the larger image -> publication de lien avec grande image; shared link -> lien partagé
+sent by a tool / posted in the app (spec tables) -> envoyé par un outil / publié depuis l’application
+safe area (Image and Video editor label) -> zone sûre (app); safe zone (Meta’s guidance) -> zone de sécurité
+Image editor crops Link / Square -> « Lien » / « Carré »; Video editor formats Reel / Story / Feed portrait / Square -> Reel / Story / Portrait (fil) / Carré; Best (format tag) -> « Conseillé »
+Skills and material (post panel) -> Compétences et matière; New campaign -> Nouvelle campagne; Campaign (menu) -> Campagne
+scheduling chips In an hour / Tonight, 18:00 / Tomorrow, 09:00 / Monday, 09:00 -> « Dans une heure » / « Ce soir, 18 h » / « Demain, 9 h » / « Lundi, 9 h »; times in prose: 9 h, 9 h 05
+Validated / Waiting for validation / Draft (post status) -> Validé / En attente de validation / Brouillon; validation thread -> fil de discussion (never « fil » alone, which is the feed)
+thread (X) -> thread (« en thread », « partir en thread »)
+Make / Adapt / Approve and schedule (workflow blocks) -> Produire / Décliner / Valider et programmer; Re-purpose (verb, a post for other networks) -> décliner
+endpoint (API) -> point de terminaison; rolling 24 hours -> 24 heures glissantes
+@ tags (caption) -> mentions @; format skill -> compétence de format

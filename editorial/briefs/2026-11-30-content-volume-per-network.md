@@ -72,7 +72,7 @@ first: if the figure is logged, current and verified twice, reuse the logged
 citation. Append anything new to the ledger before finishing.
 
 - What each platform says about posting frequency: each network's own creator, business or help pages, dated; record where a platform says nothing
-- Posting caps where stated: the platforms' own pages (the hubStudio help notes Instagram's 100 posts a day per account and TikTok's cap of about 15 a day; confirm each on the platform's own page)
+- Posting caps where stated: the platforms' own pages (the hubStudio help notes Instagram's 100 posts a day per account and TikTok's cap of about 15 a day; confirm each on the platform's own page. Meta's own pages give Instagram 100 in one place and 50 in two (read 2026-10-11, research/plan-week-social-posts.md): publish both, never one figure)
 - Benchmark studies: only those with sample, period and method stated, labeled with who ran them
 - Chinese platforms: the ledger rows from brief 36 on the absence of a published interval
 

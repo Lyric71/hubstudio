@@ -1,0 +1,27 @@
+URL: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit
+Page date: undated
+Read date: 2026-10-11
+Scope: Instagram API (IG User content_publishing_limit endpoint)
+Capture method: plain HTTP fetch; developers.facebook.com served the page as Markdown text
+Note: any em dash in the source is rendered here as a spaced hyphen. Everything inside the EXCERPT blocks is verbatim page text.
+
+=== EXCERPT: Title and description ===
+# IG User Content Publishing Limit
+
+Represents an [IG User's](https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user) current [content publishing](https://developers.facebook.com/documentation/instagram-platform/content-publishing) usage.
+
+=== EXCERPT: Fields table (config / quota_usage) ===
+| `config` <br>*Object* | Returns these values:<br><br>* `quota_total` - The maximum number of [IG Containers](https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container) the app user can publish within the `quota_duration` time period (currently `50`).<br>* `quota_duration` - The period of time in seconds against which the `quota_total` is calculated (currently `86400` seconds, or 24 hours). |
+| `quota_usage` <br>*Comma-separated list* | The number of times the app user has published an [IG Container](https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container) since the time specified in the `since` query string parameter. If the `since` parameter is omitted, this value will be the number of times the app user has published a container within the last 24 hours. This field is returned by default if the `fields` query string parameter is omitted from the query. |
+
+=== EXCERPT: Sample response ===
+```json
+{
+"data": [
+{
+"quota_usage": 2,
+"config": {
+"quota_total": 50,
+"quota_duration": 86400
+}
+}

@@ -143,7 +143,10 @@ if (imgPath && field('slug')) {
 }
 
 // ---- links
-const mdLinks = (body.match(/\[[^\]]+\]\([^)]+\)/g) || []).length;
+// An image embed, ![alt](/Images/...), is not a link: publish-draft.mjs turns
+// it into a figure on how-to pages, and the wave two briefs ask for existing
+// captures placed that way. Only a bare [text](url) counts.
+const mdLinks = (body.match(/(?<!!)\[[^\]]+\]\([^)]+\)/g) || []).length;
 hard(mdLinks === 0, 'No markdown links in body copy', `${mdLinks} found`);
 const assetLinks = (joined.match(/->\s*\//g) || []).length;
 hard(assetLinks >= 3, 'At least three internal links listed in the asset brief', `${assetLinks}`);

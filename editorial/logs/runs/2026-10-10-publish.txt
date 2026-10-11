@@ -158,3 +158,20 @@
 2026-10-10T16:47:25 committed 8b60559 feat(insights): publish europe-campaign-localization (pre-commit optimizer took the hero from 88.8 KB to 78.7 KB); pushed to origin main (9f0d3dc..8b60559).
 2026-10-10T16:47:25 notify-publish.mjs sent (Resend id 01a124fe-c9bb-7313-86e9-c6f065629a73).
 2026-10-10T16:47:25 run complete: one row published in three languages; no other image_ready row; no watch row due.
+The article **europe-campaign-localization** ("Campaign Localization in Europe: 4 Markets Compared") is now live in English, French and Chinese. It was the only row at `image_ready`, and nothing in its notes needed a decision from anyone.
+
+- **Publish:** I ran `publish-draft.mjs`, which created the article page and put its entry at the top of `src/data/insights.ts`. It is filed under **Rights**, the category the brands page's reading band (`/solutions/brands`) pulls from. The script wired five of the internal links. I added the sixth by hand, the Campaigns link to `/app/campaigns`. The newest four articles on the home page each still appear on at least one page's reading band.
+- **French and Chinese:** the French address is `/fr/ressources/analyses/localiser-une-campagne-en-europe`. French and Chinese were each done with the three passes, covering the article, its card, the home page and the insights index. Both glossaries gained a section of new terms. All the `changes.md` files are copied into the run log. `i18n:local -- check` and `i18n:guard` both passed.
+- **Build and check:** `npm run build` passed, and `npm run check` passed with 0 errors and 0 warnings.
+- **Commit and push:** `8b60559 feat(insights): publish europe-campaign-localization` is pushed to origin main. A second commit, `b734757`, closes the run log. The row is set to `published` with today's date.
+- **Email:** the publish email went out through Resend.
+- **Watch list:** no row was due. The earliest is 2026-10-12.
+
+Three things the run did along the way, all in the run log:
+- **Dictionary cleanup:** the translation step deleted old dictionary entries whose English text was already gone from the pages after earlier commits. I checked that this text no longer exists anywhere in `src/`.
+- **Run log reset:** when this run started, it overwrote the run log text from the 04:00 run. That text is still in git history.
+- **Dev server:** a dev server started at 10:23, before this run, was still running. The translation commands used it, and I left it running.
+
+The Gmail, Google Calendar and Google Drive connectors need to be authorized in claude.ai's connector settings before they can be used. This run didn't need them.
+2026-10-10T16:47:40 model Opus 5.5 completed successfully
+2026-10-10T16:47:40 end publish exit 0

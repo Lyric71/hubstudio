@@ -1,0 +1,58 @@
+URL: https://developers.tiktok.com/doc/content-posting-api-reference-photo-post
+Page date: Last updated August 24, 2026
+Read date: 2026-10-11
+Scope: TikTok Content Posting API, photo post endpoint (Direct Post or upload)
+Capture method: plain HTTP fetch of the page HTML, tags stripped
+Note: any em dash in the source is rendered here as a spaced hyphen. Everything inside the EXCERPT blocks is verbatim page text.
+
+=== EXCERPT: Page header ===
+Share to TikTok / Content Posting API / API Reference / Photo Share to TikTok / Content Posting API / API Reference / Photo Last updated August 24, 2026
+
+=== EXCERPT: Overview ===
+# Overview
+The /v2/post/publish/content/init/ endpoint allows you to post directly or upload photos to TikTok.
+
+=== EXCERPT: Request note ===
+Note : Each user access_token is limited to six requests per minute.
+
+=== EXCERPT: post_info.title and post_info.description fields ===
+title
+
+string
+
+The post title. The maximum length for photo posts is 90 in UTF-16 runes.
+
+false
+
+description
+
+string
+
+The post description. The maximum length for photo posts is 4000 in UTF-16 runes.
+
+=== EXCERPT: source_info.photo_images field ===
+photo_images
+
+list<string>
+
+An array containing up to 35 photo content URLs. The URLs must be publicly accessible and verified by your app. Learn more about pulling from URLs .
+
+=== EXCERPT: Error codes ===
+403
+
+spam_risk_too_many_posts
+
+The daily post cap from API is reached for the current user
+
+spam_risk_user_banned_from_posting
+
+The user is banned from making new posts
+
+spam_risk_too_many_pending_share
+
+The daily upload cap from the API is reached for the current user.
+To reduce spamming, TikTok limits the number of videos that can be uploaded via API that are not pending approval and posting by the creator. There may be at most 5 pending shares within any 24-hour period.
+
+reached_active_user_cap
+
+The daily quota for active publishing users from your client is reached

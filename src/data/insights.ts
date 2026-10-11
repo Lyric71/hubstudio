@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'facebook-post-specs',
+    image: '/Images/insight-facebook-post-specs.webp',
+    imageAlt:
+      'A hand presses a strip of masking tape across the bottom margin of a print of a fruit stall under a striped awning at dusk, taped to a plaster wall above a wooden shelf with the roll and a pencil.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Facebook Post, Reel and Story Specs 2026',
+    deck: 'Facebook feed, link, carousel, Reel and Story sizes from Meta\'s own pages, plus the tighter limits for a page post sent by a tool.',
+    date: 'October 11, 2026',
+    dateISO: '2026-10-11',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Facebook Post, Reel and Story Specs 2026 | hubStudio',
+    metaDescription:
+      'Facebook feed image, carousel, link preview, Reel and Story sizes for 2026, from Meta\'s own pages, organic and ads kept apart, with a Reviewed date.',
+  },
+  {
     slug: 'europe-campaign-localization',
     image: '/Images/insight-europe-campaign-localization.webp',
     imageAlt:

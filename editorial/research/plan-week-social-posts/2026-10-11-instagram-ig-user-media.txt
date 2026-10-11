@@ -1,0 +1,29 @@
+URL: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media
+Page date: undated (newest dated notice on the page: July 9, 2025)
+Read date: 2026-10-11
+Scope: Instagram API (POST /<IG_ID>/media container creation)
+Capture method: plain HTTP fetch; developers.facebook.com served the page as Markdown text
+Note: any em dash in the source is rendered here as a spaced hyphen. Everything inside the EXCERPT blocks is verbatim page text.
+
+=== EXCERPT: Intro ===
+# IG User Media
+
+Represents a collection of [IG Media](https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media) objects on an [IG User](https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user).
+
+**Success:** On July 9, 2025, we added support for the existing `user_tags` field for image and video stories on the `/<IG_ID>/media` endpoint. You can mention users in a story and optionally specify x, y coordinates to tag them at a particular coordinate in the media.
+
+=== EXCERPT: General Limitations ===
+### Limitations {#limitations}
+
+#### General Limitations {#limitations-general}
+
+* Containers expire after 24 hours
+* An Instagram account can only create 400 containers within a rolling 24 hour period
+* If the [Page](https://developers.facebook.com/documentation/instagram-platform/overview#pages) connected to the targeted Instagram professional account requires [Page Publishing Authorization](https://www.facebook.com/help/www/1939753742723975) (PPA), PPA must be completed or the request will fail
+* If the Page connected to the targeted Instagram professional account requires two-factor authentication, the Facebook User must also have performed two-factor authentication or the request will fail
+* We strongly recommended the HTTP IETF standard character set for URLs, URLs that contain only US ASCII characters, or the request will fail
+
+=== EXCERPT: Parameters table rows: caption, collaborators, children ===
+| `caption` | `<IMAGE_CAPTION>` | A caption for the image, video, or carousel. Can include hashtags (example: `#crazywildebeest`) and usernames of Instagram users (example: `@natgeo`). @Mentioned Instagram users receive a notification when the container is published. Maximum 2200 characters, 30 hashtags, and 20 @ tags.<br><br>**Not supported on images or videos in carousels**. |
+| `collaborators` | `<LIST_OF_COLLABORATORS>` | For Feed image, Reels and Carousels only. A list of up to 3 instagram usernames as collaborators on an ig media.<br><br>**Not supported for Stories.** |
+| `children` | `<ARRAY_OF_CAROUSEL_CONTAINTER_IDS` | **Required for carousels. Applies only to carousels**. An array of up to 10 container IDs of each image and video that should appear in the published carousel. Carousels can have up to 10 total images, vidoes, or a mix of the two. |
