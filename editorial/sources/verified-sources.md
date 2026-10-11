@@ -2562,3 +2562,19 @@ Copied from the research file's own ledger section, which carries the full claim
 | Instagram carousel video clips under 60 seconds | a scheduler blog | No Instagram page states a carousel video length; 60 seconds is the API Story limit | 2026-10-12 |
 | LinkedIn multi-photo posts or document posts shown as swipeable slides | carousel tool blogs | LinkedIn's help describes a first-image layout for photos and says nothing of the feed display for documents | 2026-10-12 |
 
+## Added 2026-10-12 (watch recheck, singles-day-618-production-calendar)
+
+### JD and Douyin Double 11 2026 (added 2026-10-12, watch row due 2026-10-12)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| JD Double 11 2026 opens at 8 p.m. on 12 October ("Yuehei Fenggao" gala first), announced in a merchant rules livestream on 23 September 2026 | "Chinese technology and trade press reporting JD's merchant briefing, 24 and 25 September 2026" | ithome.com/1/007/052.htm (2026-09-25, citing ebrun); news.qq.com/rain/a/20260925A004GR00 (2026-09-25, Yiou) | 2026-09-23 | reported, two outlets, one origin | 2026-10-12 | 2026-10-12 | 30 |
+| Douyin Double 11 2026: merchant sign-up from 14 September; sale from October to 11 November | "Chinese ecommerce trade press, 28 and 29 September 2026" | 100ec.cn report via timeline.sohu.com/news/ztbfOmoax7 (2026-09-28); news.qq.com/rain/a/20260929A0C19P00 (2026-09-29, ebrun) | 2026-09-28 | reported, two outlets | 2026-10-12 | 2026-10-12 | 30 |
+| Douyin Double 11 2026 activity period 00:00 on 15 October to 24:00 on 11 November, "as officially announced by the platform" | "one Chinese ecommerce trade outlet, 29 September 2026" | news.qq.com/rain/a/20260929A0C19P00 (ebrun) | 2026-09-29 | single-source, printed as reported with the count stated | 2026-10-12 | | 30 |
+
+### Do not publish, added from the 2026-10-12 recheck
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| JD Double 11 2026 runs to 24:00 on 11 November, with a 20 October flash-sale day, a 30 October opening wave and 4 to 9 November category days | consumer shopping guides (sina reposts, Zhihu, ifeng), early October 2026 | Consumer guides with coupon codes; the trade reports of JD's merchant briefing give no closing date | 2026-10-12 |
+| JD and Taobao 2026 dates as "expected" | finance.sina.com.cn/jjxw/2026-10-08/doc-iniunmii7649971.shtml (reprint of a local outlet) | Worded as a forecast, not a report of the platform's announcement | 2026-10-12 |

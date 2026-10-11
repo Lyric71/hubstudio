@@ -667,3 +667,29 @@ cited blockquote and one line of arithmetic), and the asset brief's
 never-do list. JD and Douyin 2026 dates were not researched in this run; the
 page tells the reader to check their own announcements, and a watch.csv row
 (due 2026-10-12) rechecks them.
+
+## Amended 2026-10-12 (JD and Douyin Double 11 2026 dates, watch recheck)
+
+The watch row due 2026-10-12 asked for JD's and Douyin's 2026 Singles Day
+dates. Searched the Chinese-language web first (Jingdong Shuang 11 2026
+kaishi shijian; Douyin Shangcheng Shuang 11 Haowujie 2026), read each source
+below in full.
+
+| Claim | Source | Confidence |
+|---|---|---|
+| JD Double 11 2026 opens at 8 p.m. on 12 October with the "Yuehei Fenggao" gala; announced to merchants in a rules livestream on 23 September 2026 (2025 opened 9 October, 8 p.m.) | ithome.com/1/007/052.htm, 2026-09-25 07:23, citing ebrun; news.qq.com/rain/a/20260925A004GR00, 2026-09-25, Yiou | reported, two outlets, one origin (the merchant briefing) |
+| Douyin Double 11 2026: merchant sign-up opened 14 September; the sale runs from October to 11 November | 100ec.cn (Wangjingshe) report collected on timeline.sohu.com/news/ztbfOmoax7, 2026-09-28; news.qq.com/rain/a/20260929A0C19P00, 2026-09-29, ebrun. The platform's own 2026 rule page, as indexed on school.jinritemai.com, also gives the activity time as October 2026 to 11 November 2026 | reported, two outlets |
+| Douyin Double 11 2026 activity period from 00:00 on 15 October to 24:00 on 11 November, "officially set" by the platform | news.qq.com/rain/a/20260929A0C19P00, 2026-09-29, ebrun only | single-source; printed on the page as reported, with the count stated |
+
+Cut: a JD closing time of 24:00 on 11 November and JD's sub-phases (20
+October flash-sale day, 30 October opening wave, 4 to 9 November category
+days), found only in consumer coupon guides; and the 8 October sina finance
+reprint, which gives JD and Taobao dates as forecasts ("yuji").
+
+Page and draft changed on 2026-10-12: a JD Singles Day 2026 and a Douyin
+Singles Day 2026 row in the Singles Day table, two cited blockquotes before
+the table, the closing line after the 2026 Tmall blockquote (it no longer
+tells the reader to check JD and Douyin), and the first FAQ answer.
+dateModifiedISO moved to 2026-10-12. Douyin's exact opening rests on one
+report; watch.csv rechecks it on 2026-10-19, after the reported date has
+passed, against the press coverage of the launch.

@@ -90,6 +90,20 @@ wrong-footed the year it does not.
 > Source: Chinese ecommerce trade press reporting the platform's published
 > schedule, 28 September 2025. Dates as scheduled by the platform.
 
+> JD told its merchants on 23 September 2026 that its 2026 Singles Day sale
+> opens at 8:00 p.m. on 12 October.
+> Source: Chinese technology and trade press reporting JD's merchant briefing,
+> 24 and 25 September 2026. Date as announced by the platform; two outlets
+> agree, treated as one origin.
+
+> Douyin's ecommerce arm opened merchant sign-up for its 2026 Singles Day sale
+> on 14 September and runs the sale from October to 11 November. One trade
+> outlet reported the platform's announced period as midnight on 15 October to
+> 11:59 p.m. on 11 November.
+> Source: Chinese ecommerce trade press, 28 and 29 September 2026. The October
+> to 11 November period appears in two outlets; the 15 October opening in one
+> only.
+
 | Platform and year | Opening | Notes |
 |---|---|---|
 | Tmall Singles Day 2023 | Presale 24 October, 8:00 p.m. | |
@@ -100,6 +114,8 @@ wrong-footed the year it does not.
 | JD Singles Day 2024 | Sale 14 October, 8:00 p.m. | |
 | JD Singles Day 2025 | Sale 9 October, 8:00 p.m. | Runs to 14 November |
 | Douyin Singles Day 2025 | Sale 9 October, midnight | Promotion period from 16 September |
+| JD Singles Day 2026 | Sale 12 October, 8:00 p.m. | Announced to merchants 23 September |
+| Douyin Singles Day 2026 | Sale 15 October, midnight, as reported | One report; runs to 11 November; sign-up from 14 September |
 
 In 2025 JD and Douyin both opened on 9 October, six days before Tmall's presale. A
 brand selling on all three is not producing to one date. It is producing to the
@@ -112,7 +128,8 @@ earliest one.
 > and 25 September 2026. Dates as reported; two outlets agree, treated as one origin.
 
 The 2026 rules were reported 23 days before the presale opened, against 21 days in
-2025. Check JD's and Douyin's own 2026 announcements before planning to them.
+2025. JD again opens first in 2026, three days before Tmall's deposits, and
+Douyin's reported opening falls on the same day as Tmall's.
 
 <!-- SECTION: 618 milestones -->
 
@@ -255,7 +272,9 @@ Before each platform's opening. For 2025, JD and Douyin opened on 9 October and
 Tmall's presale opened at 8:00 p.m. on 15 October, with Tmall's rules published only
 21 days earlier. No platform publishes a separate asset deadline for Singles Day.
 For 2026, Tmall's rules as reported in September 2026 open deposits at 8:00 p.m. on
-15 October and the spot sale on 20 October, running to 13 November.
+15 October and the spot sale on 20 October, running to 13 November. JD opens first
+again, at 8:00 p.m. on 12 October, and Douyin's sale was reported to open at
+midnight on 15 October.
 
 **How long before 618 should production start?**
 

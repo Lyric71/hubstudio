@@ -583,7 +583,7 @@ export const insights: Insight[] = [
     deck: 'No platform publishes how long production takes before a sale. What they do publish is dates, and those can be counted backwards.',
     date: 'September 10, 2026',
     dateISO: '2026-09-10',
-    dateModifiedISO: '2026-10-08',
+    dateModifiedISO: '2026-10-12',
     readingTime: '10 min read',
     author: 'Cyril Drouin',
     metaTitle: 'The 11.11 and 618 Production Calendar | hubStudio',
