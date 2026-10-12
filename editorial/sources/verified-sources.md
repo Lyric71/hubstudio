@@ -2578,3 +2578,31 @@ Copied from the research file's own ledger section, which carries the full claim
 |---|---|---|---|
 | JD Double 11 2026 runs to 24:00 on 11 November, with a 20 October flash-sale day, a 30 October opening wave and 4 to 9 November category days | consumer shopping guides (sina reposts, Zhihu, ifeng), early October 2026 | Consumer guides with coupon codes; the trade reports of JD's merchant briefing give no closing date | 2026-10-12 |
 | JD and Taobao 2026 dates as "expected" | finance.sina.com.cn/jjxw/2026-10-08/doc-iniunmii7649971.shtml (reprint of a local outlet) | Worded as a forecast, not a report of the platform's announcement | 2026-10-12 |
+
+
+## Added 2026-10-12 (ledger rows from brief 69, stock-photos-vs-ai-images)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+### Stock licensing, AI copyright and product-image labeling (added 2026-10-12, brief 69)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Copyright "does not extend to purely AI-generated material, or material where there is insufficient human control over the expressive elements"; "prompts do not alone provide sufficient control" | "US Copyright Office, Copyright and Artificial Intelligence, Part 2: Copyrightability, January 29, 2025, executive summary" | copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf | 2025-01-29 | primary | 2026-10-12 | 2026-10-12 | 69 |
+| Where a human inputs their own copyrightable work and it is perceptible in the output, they are the author of at least that portion, not of the AI-generated elements standing alone; a Review Board refusal where the input photo was no longer clearly shown | "US Copyright Office, Part 2: Copyrightability, January 29, 2025, Section II.E, page 24" | same report, pp. 22 to 24 and footnote 124 | 2025-01-29 | primary | 2026-10-12 | 2026-10-12 | 69 |
+| The Copyright Act "requires all eligible work to be authored in the first instance by a human being"; certiorari denied March 2, 2026 | "US Court of Appeals for the D.C. Circuit, Thaler v. Perlmutter, No. 23-5233, March 18, 2025; Supreme Court docket No. 25-449" | media.cadc.uscourts.gov/opinions/docs/2025/03/23-5233.pdf; supremecourt.gov/docket/docketfiles/html/public/25-449.html | 2025-03-18; 2026-03-02 | primary | 2026-10-12 | 2026-10-12 | 69 |
+| Standard stock licenses cap print runs at 500,000 and the library's legal protection at $5,000 to $10,000; one library raises it to $250,000 per image with an extended license | "four published stock license agreements and three plan pages, read October 12, 2026, category level, no library named" | four license agreements and three plan pages (captures in research/stock-photos-vs-ai-images/) | read 2026-10-12 | triangulated ($250,000 single-source) | 2026-10-12 | 2026-10-12 | 69 |
+| Entry stock subscriptions about $29 to $30 a month, roughly $3 to $10 a standard image | "lowest monthly plans on three stock libraries' public price pages, collected October 12, 2026" | three public plan pages | read 2026-10-12 | triangulated, partly derived | 2026-10-12 | 2026-10-12 | 69 |
+| Stock licenses are non-exclusive; exclusivity is a buy-out on request (one agreement); editorial-use-only images carry no release and cannot be used commercially; copyright stays with the library or contributor | "published stock license agreements, read October 12, 2026" | agreements A, B, D | read 2026-10-12 | triangulated (buy-out single-source) | 2026-10-12 | 2026-10-12 | 69 |
+| EU guidelines: an AI product image that can mislead as to actual appearance, characteristics or use is a deep fake; a real product against an AI background is not, absent misleading; aesthetic background replacement and compositions of existing products are likely minor | "European Commission guidelines on Article 50 of the AI Act, C(2026) 5054, July 20, 2026, examples after paragraph 116" | ec.europa.eu/newsroom/dae/redirection/document/131215 | 2026-07-20 | primary | 2026-10-08 | 2026-10-12 | 52, 69 |
+| UK regulator ruling: stock photo with added number plates shown as product footage was misleading | "UK advertising regulator ruling, June 5, 2024" | asa.org.uk/rulings/portable-multimedia-ltd.html | 2024-06-05 | primary | 2026-09-10 | 2026-10-12 | 42, 69 |
+| UK regulator guidance: images "should not be altered in a way which exaggerates what the product can do"; small print "generally unlikely to prevent an ad from misleading consumers" | "UK advertising regulator guidance on misleading imagery, September 11, 2025" | asa.org.uk/news/a-picture-says-a-thousand-words-avoiding-misleading-imagery-in-ads.html | 2025-09-11 | primary | 2026-09-10 | 2026-10-12 | 42, 69 |
+
+### Do not publish, added from brief 69
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| AI images cost $0.01 to $0.10 each; $20 to $100 a month for hundreds of images | Vendor blogs on the cost query | No date, no method, sellers of the thing they flatter | 2026-10-12 |
+| Viewers trust human-captured visuals more; AI images convert better | Seller and tool blogs | No study, sample or method | 2026-10-12 |
+| AI images are in the public domain, as a blanket rule | Legal explainers | Overstates the Copyright Office: case by case, human inputs and edits can be protected | 2026-10-12 |
+| A rights-managed price band | None on an open page | Quoted per use only | 2026-10-12 |

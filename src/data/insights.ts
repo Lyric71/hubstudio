@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'stock-photos-vs-ai-images',
+    image: '/Images/insight-stock-photos-vs-ai-images.webp',
+    imageAlt:
+      'A celadon ceramic bottle with a cork stopper on a worn oak block, in front of a taped photo print of a sunlit terrace under olive branches, its shadow falling across the print.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: 'Stock Photos vs AI Images for Product Content',
+    deck: 'Stock can\'t show your product and neither can a prompt. Editing your own photo can. Cost, rights, labels and speed, compared.',
+    date: 'October 12, 2026',
+    dateISO: '2026-10-12',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Stock Photos vs AI Images for Product Content | hubStudio',
+    metaDescription:
+      'Licensed stock, AI from a prompt, or AI from your own product photo: cost structure, rights, exclusivity, speed and product fidelity, compared.',
+  },
+  {
     slug: 'facebook-post-specs',
     image: '/Images/insight-facebook-post-specs.webp',
     imageAlt:

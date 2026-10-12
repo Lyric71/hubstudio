@@ -150,3 +150,143 @@
 2026-10-12T04:15:41+08:00 npm run build: passed (prebuild check-content-todo and i18n guard clean; fr page /fr/ressources/guides-pratiques/reussir-un-carrousel-instagram-et-linkedin and zh page built with the .fr and .zh captures). npm run check: 0 errors, 0 warnings. schedule.csv row 38 set to published, published_on 2026-10-12. Commits follow: feat(insights): publish carousel-post-guide, then fix(insights): update singles-day-618-production-calendar (the watch change, with its ledger rows and the replaced watch row).
 2026-10-12T04:16:43+08:00 committed 78b7c2c feat(insights): publish carousel-post-guide (the pre-commit optimizer re-encoded the hero, 160.3 KB to 143.2 KB). Next: fix commit for the Singles Day watch change.
 2026-10-12T04:16:57+08:00 committed 685aea7 fix(insights): update singles-day-618-production-calendar; git push origin main succeeded (baeb1a5..685aea7). notify-publish sent for carousel-post-guide (build passed, note with both commit hashes), Resend id 01a12c9c-86bf-7121-bbd5-b92056bec04b. No other schedule row is image_ready and no other watch row is due on or before 2026-10-12. Run complete.
+2026-10-12T17:02:08 start publish (model claude-opus-5-5)
+2026-10-12T17:02:08 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-12T17:05:08+08:00 attempt 1 (Opus 5.5): working tree inspected. No partial publish work from this run: the uncommitted changes are the 2026-10-12 12:36 draft run's outputs (stock-photos-vs-ai-images draft, research and captures, hero, ledger rows, watch row, schedule row 69 at image_ready) and the runners' log tails; all kept and committed with this run. The runner had truncated this log at start; the earlier 2026-10-12 04:00 publish run (carousel-post-guide) was restored above these lines from HEAD.
+2026-10-12T17:05:08+08:00 schedule.csv: one row at image_ready, row 69 stock-photos-vs-ai-images (template insight, comparison family, publish_date 2026-10-15). Its notes name no decision for a person, so it publishes. No other row is image_ready.
+2026-10-12T17:05:08+08:00 watch.csv: no row due on or before 2026-10-12 (the singles-day row was replaced this morning by one due 2026-10-19; the earliest other due date is 2026-10-26).
+2026-10-12T17:05:08+08:00 published row 69 with publish-draft.mjs (the repo's implementation of the createblogarticle publish step; its locale steps skipped, step 4b below): template insight, page src/pages/resources/insights/stock-photos-vs-ai-images.astro, entry at the head of src/data/insights.ts, category Buying models (wave two comparison rule; claimed by the studio, agencies and pricing placements, so it lands on /studio, /solutions/agencies and /pricing, plus the home page's newest four), tone orange (alternating with the navy entry below it), date 2026-10-12 (publish date, not the drafting calendar's 2026-10-15), hand-written alt checked against the image, 6 links wired (all targets exist), CTA Create your account, 6 FAQ pairs. Hero checked against the style guide: no text or logos, one softbox light, one shadow, no AI tells. The ASSET BRIEF's optional Image studio capture is not in the draft body, so the page shows no app capture and needs no localized one. No em dash and no Han character in the draft.
+2026-10-12T17:05:08+08:00 French slug: stock-photos-vs-ai-images -> banque-d-images-ou-images-ia (ARTICLES, alphabetical).
+2026-10-12T17:16:59+08:00 extract (npm run i18n:local -- extract --context .i18n-work/ctx, own dev server on 127.0.0.1:4341): 233 pages, 70485 units, 1204 shared. Pending in fr and zh: resources/insights/stock-photos-vs-ai-images 153, common 3 (hero alt, card title, deck), home 1 and resources/insights 2 (the Latest Buying models tag, the index json-ld description). The extract moved 'AI disclosure' from agency-white-label-question into common.json with its translations (now on three pages), dropped the dates and card strings that left the pages as the article pushed older cards down, and reordered entries in common and work; no translated wording was lost. Moved the earlier pass files of common, home and resources/insights to .i18n-work/passes-old-1012b so their indexes cannot merge into today's units. French and Chinese translators started as two parallel subagents.
+2026-10-12T17:25:03+08:00 zh translation done (three passes, subagent): builds clean (stock-photos-vs-ai-images 154 entries, common 1204, home 364, resources/insights 94), pending zh: nothing. The translator corrected one prefilled unit (Criterion: 评分标准 to 对比项, a comparison column scores nothing). App labels match the zh app file and glossary (文生图, 编辑图片, 历史记录, 图片工作台, 蒙版). Glossary zh.md gained a section Stock, licensing and AI image rights (图库照片, 授权, 买断, 产品还原度, the Copyright Office report and court names). changes.md files follow.
+----- zh resources/insights/stock-photos-vs-ai-images changes.md -----
+[title] pass1 -> pass3: "图库照片还是 AI 图片：产品内容怎么选" -> "做产品内容，选图库照片还是 AI 图片" / why: aligned with the H1 in common.json; a reader's question, not a label
+[meta] pass1 -> pass3: "……三条路线在成本结构……上的对比。" -> "……还是用 AI 编辑自家产品照片？从……五个维度逐一比较。" / why: the noun chain ending in 对比 becomes a question plus a verb
+[lead] pass1 -> pass3: "真正要选的其实不是图库还是 AI，而是这张图是否必须出现" -> "真正的选择题并非“图库还是 AI”，而是画面里是否必须出现" / why: framed as the choice itself; quoted dichotomy reads as an editor would set it
+[answer] pass1 -> pass3: "用授权图库照片……用文生图" -> "交给授权图库照片……交给文生图" / why: parallel 交给 gives the verdict rhythm; "可以在……完成，也可以用……" tightened to 可借助 / 也可使用
+[table 1] pass1 -> pass3: "Criterion" 评分标准 (pre-filled) -> "对比项"; "取得授权，版权仍归图库" -> "仅获授权，版权归图库"; "实际上独一无二，但难以维权" -> "实际上独一无二，却难以维权" / why: the column compares routes, it scores nothing; terse cell register
+[table 1] pass1 -> pass3: "每次尝试生成一次，可同时跑多次" -> "每试一次即生成一次，可多次并行" / why: 跑 was spoken
+[product] pass1 -> pass3: "它只会画出一个看似合理的东西。看似合理，放在情绪板上无妨" -> "它只会画出一个像模像样的东西。像模像样，做情绪板无妨" / why: plausible rendered with a native idiom, repeated as the hinge like the English
+[product] pass1 -> pass3: "看的是购物者从中得到什么印象" -> "看的是购物者从中读出了什么" / why: verbal, no nominal 印象 construction
+[product] pass1 -> pass3: "所以第一步分拣很简单……可以修图，可以扩展" -> "所以第一道分拣很简单……可以修，可以扩，但绝不能凭空编造" / why: short native triplet
+[license] pass1 -> pass3: "远比下载按钮暗示的重" -> "远比一个下载按钮看上去要重" / why: 暗示 was English-shaped ("suggests")
+[license] pass1 -> pass3: "但止步于两种情形" -> "但有两类情形不在其内" / why: 止步于 with a list was stiff; legal-plain phrasing
+[license] pass1 -> pass3: "<strong1>没有独占。</strong1>" -> "<strong1>谁都不独占。</strong1>" / why: keeps the punch of "Nobody's exclusive"
+[license] pass1 -> pass3: "图库提供的保障也有上限" -> "图库的保障到了上限便告终止" / why: "runs out at a ceiling" as an action, not a state
+[cost] pass1 -> pass3: "这一点很难被超越" -> "只要画面里没有产品，这个优势很难撼动" / why: passive 被超越 is translationese
+[cost] pass1 -> pass3: "包括最后弃用的那些" -> "弃用的也照付" ; "会改变可能出错的地方" -> "可能出错的地方也随之改变" / why: shorter clauses, topic first
+[table 2] pass1 -> pass3: "按次付费，在留下任何一张图之前" -> "按次付费，留不留图都照付"; "在 hubStudio 中，生成失败的那次" -> "hubStudio 中失败的生成" / why: cells read as cells, not as stranded English prepositions
+[copyright] pass1 -> pass3: "起点已经明确：机器不能成为作者，单凭提示词" -> "出发点已有定论：机器当不了作者，光写提示词" / why: firmer verbs, journalistic rhythm
+[copyright] pass1 -> pass3: "当输入是您自己的照片时，这条界线至关重要" -> "输入的若是您自己的照片，这条线就举足轻重" / why: the 当……时 frame was English-shaped
+[copyright] pass1 -> pass3: "几乎无须担责" -> "几乎不用担什么责任"; review board sentence split at 该案 / why: one idea per clause
+[table 3] pass1 -> pass3: "纯生成部分无人享有" -> "无人享有（纯生成部分）"; "可能需要，若能冒充真实产品" -> "若足以冒充真实产品，可能需要" / why: Chinese puts the condition first
+[labels] pass1 -> pass3: "欧盟委员会指南划出的界线，与本文的对比恰好一致" -> "欧盟委员会指南的分界线，恰与本文的划分重合" / why: tighter, no 对比 echo
+[labels] pass1 -> pass3: "凭空编造、比真品更好看的产品图则不然" -> "凭空编造、比实物更好看的产品图，就没有这份豁免" / why: names what is lost
+[labels] pass1 -> pass3: "标识也挽救不了误导性的图片……防止广告误导" -> "标识也救不了误导性的图片……阻止广告误导" ; link sentence restructured around 详见 / why: native close
+[accuracy] pass1 -> pass3: "三个习惯有帮助" -> "以下三个习惯能派上用场"; "所以小字在这个尺寸下也要看得清" -> "所以小字缩到这个尺寸后仍须清晰可辨" / why: written register
+[speed] pass1 -> pass3: "这取决于卡在哪里" -> "要看您卡在哪个环节"; "差强人意的候选图" -> "似是而非的候选图" / why: 差强人意 means "acceptable", wrong sense for near-misses
+[speed] pass1 -> pass3: "生成则把等待变成一轮轮迭代……第一次还没结束" -> "拆成了一轮轮迭代……上一次还没跑完，下一次就能发起" / why: stronger verb, parallel clauses
+[app] pass1 -> pass3: "这份记录正好派上用场" -> "凭的就是这份记录" / why: firmer close
+[stock] pass1 -> pass3: "凡是画面必须是真实世界的照片时。" (fragment) -> "凡是画面必须是真实世界的照片，就该选图库。" ; "而模仿恰恰就是问题所在" -> "生成固然能模仿，而模仿本身正是问题所在" / why: complete sentence, concessive rhythm
+[FAQ] pass1 -> pass3: "有两条限制。第一……第二……" -> "有两条底线：其一……其二……" / why: written enumeration
+[FAQ] pass1 -> pass3: "标识永远无法让误导性图片变得可以接受" -> "加了标识，误导性图片也不会因此变得可以接受" / why: drops the absolute 永远, closer to the source and less translated
+
+----- zh common changes.md -----
+[card alt] pass1 -> pass3: "一只青瓷陶瓶，塞着软木塞，立在一块磨旧的橡木块上；背后用胶带贴着一张照片，印着橄榄枝下阳光照耀的露台" -> "一只带软木塞的青瓷陶瓶立在磨旧的橡木块上，身后用胶带贴着一张照片，照片上是橄榄枝掩映、洒满阳光的露台" / why: one subject carried through, 掩映 and 洒满 instead of the flat 阳光照耀
+[card alt] pass1 -> pass3: "瓶影落在照片上" -> "瓶身的影子投在照片上" / why: clearer image for a screen reader
+[card title / H1] pass1 -> pass3: "产品内容：用图库照片还是 AI 图片" -> "做产品内容，选图库照片还是 AI 图片" / why: the colon label read like a translated "X vs Y"; now the reader's own question, matched by the page title
+[card deck] pass1 -> pass3: "图库照片呈现不了您的产品，提示词也不行" -> "图库照片里没有您的产品，提示词也变不出来" / why: concrete verbs; 也不行 was spoken
+[card deck] pass1 -> pass3: "编辑您自己的照片却可以。成本、版权、标识与速度，逐项对比。" -> "编辑您自己的照片却可以。成本、版权、标识、速度，逐项比较。" / why: enumeration with 顿号 only, 比较 matches the meta description
+[terms] stock photo -> 图库照片 (as already used on the dash cam and fine-tuning pages); text-to-image -> 文生图 (app label); deep fake -> 深度伪造 (glossary)
+
+----- zh home changes.md -----
+[insights band chip] pass1 -> pass3: "<span1>Latest</span1>Buying models" -> "<span1>最新</span1>采购模式" / why: reuses the settled 最新 (as in "<span1>最新</span1>社交媒体") and the category name 采购模式 already in the zh dictionaries; a label, so passes 2 and 3 left it unchanged
+
+----- zh resources/insights changes.md -----
+[filter chip] pass1 -> pass3: "<span1>Latest</span1>Buying models" -> "<span1>最新</span1>采购模式" / why: same settled wording as the home page band and the category label 采购模式; unchanged in passes 2 and 3
+[json-ld description] pass1 -> pass3: "授权图库照片、提示词生成的 AI 图片、基于自家产品照片的 AI 编辑：三条路线在成本结构……上的对比。" -> "授权图库照片、提示词生成，还是用 AI 编辑自家产品照片？从成本结构、版权、独占性、速度和产品还原度五个维度逐一比较。" / why: noun chain ending in 对比 turned into a question and a verb; identical to the article's meta description
+
+2026-10-12T17:30:50+08:00 fr translation done (three passes, subagent): builds clean (stock-photos-vs-ai-images 154 entries, common 1204, home 364, resources/insights 94), pending fr: nothing. Title 58 characters with the brand, meta 153. App labels from the app's fr.json (studio Image, Texte vers image, Modifier une image, Historique, page Créer, masque). Quoted primary sources translated as quotations in guillemets. Glossary fr.md gained a section Stock imagery, image rights and US copyright (banque d'images, libre de droits, droits gérés, licence standard and étendue, rachat, tirage, Copyright Office américain). changes.md files follow.
+----- fr resources/insights/stock-photos-vs-ai-images changes.md -----
+# fr: resources/insights/stock-photos-vs-ai-images (Banque d’images ou images IA)
+
+Terms settled: stock = banque d’images (photo de banque d’images), licensed stock = banque d’images sous licence, royalty-free / rights-managed = libre de droits / droits gérés, standard / extended license = licence standard / étendue, editorial-only = « usage éditorial uniquement », model or property release = autorisation de modèle ou de propriété, buy-out = rachat, indemnity = garantie d’indemnisation, text-to-image (prose) = texte vers image, route = voie, run = génération, SKU = référence, deep fake = deepfake. App labels from the app’s fr.json: studio Image, « Texte vers image », « Modifier une image », Historique, page Créer, masque.
+
+[title] pass1 -> pass2: "Banque d’images ou images IA pour vos produits" -> "Banque d’images ou IA pour vos visuels produit" / why: « visuels produit » is the trade’s word; 58 characters with the brand.
+[meta] pass1 -> pass3: "… IA à partir d’un prompt ou IA à partir de votre photo produit … fidélité comparés" (152) -> "… image générée par prompt ou retouche IA de votre photo produit … fidélité comparés" (153) / why: the repeated « IA à partir de » read as a calque; pass 2 ran to 160 and was cut back under 155.
+[standfirst] pass1 -> pass3: "le vrai choix ne se joue pas entre banque d’images et IA. Il dépend d’une question" -> "le choix ne se joue pas vraiment entre … Il tient à une seule question" / why: verb « tenir à » carries the idea; the « en est incapable … aussi … si » mismatch is fixed with « Ni … ni … n’en sont capables. … si ».
+[short answer] pass1 -> pass3: "Réservez la banque d’images … Confiez à la génération texte vers image …" -> "puisez dans une banque d’images sous licence … générez l’image à partir d’un texte" / why: two imperatives built on strong verbs instead of « réserver / confier à » chains.
+[short answer] pass1 -> pass3: "bénéficient d’un droit d’auteur plus mince" -> "ne bénéficient que d’une protection plus fragile au titre du droit d’auteur" / why: « droit d’auteur mince » is an English image; French speaks of a fragile protection.
+[table 1] pass1 -> pass2: "Votre photo reste protégée là où elle demeure visible" -> "… là où elle transparaît" / why: one native verb for « shows through », reused in the rights table.
+[table 1] pass1 -> pass3: "Une génération par essai, plusieurs générations en parallèle" -> "Une génération par essai, plusieurs à la fois" / why: no repeated noun in a table cell.
+[product] pass1 -> pass3: "peut contenir des archives immenses, mais aucune image n’y montre votre référence" -> "a beau réunir des archives colossales, aucune de ses images ne montre votre référence" / why: concessive « avoir beau » is the native turn.
+[product] pass1 -> pass2: "Le plausible convient à une planche d’ambiance, pas à une fiche produit" -> "Le plausible fait l’affaire sur une planche d’ambiance, pas sur une fiche produit" / why: sharper idiom, keeps the punchline.
+[dash cam] pass1 -> pass3: "pour prêter au produit des capacités supérieures" -> "pour faire paraître le produit plus performant" / why: closer to « look more capable » without adding a claim; the regulator’s words stay a faithful quotation in « ».
+[license] pass1 -> pass2: "Libre de droits signifie que vous payez une fois, puis réutilisez l’image" -> "Une image libre de droits se paie une fois, puis se réutilise" / why: pronominal passives instead of an English definition pattern.
+[license] pass2 -> pass3: "Elle s’arrête là où l’image fait l’essentiel de la valeur …, ainsi qu’aux très gros tirages" -> "Elle ne couvre ni les produits destinés à la revente dont l’image fait l’essentiel de la valeur …, ni les très gros tirages" / why: the pass 2 sentence did not hold together grammatically; « ni … ni » does.
+[license] pass1 -> pass3: "mais ne peuvent rien vendre" -> "mais en aucun cas servir à vendre" / why: literal « sell anything » replaced by the French construction.
+[license] pass1 -> pass3: "Une clause de plus compte désormais, tant la retouche passe par l’IA" -> "Une clause de plus mérite l’attention, maintenant qu’une si grande part de la retouche passe par l’IA" / why: keeps « so much », drops the flat « compte ».
+[cost] pass1 -> pass2: "La génération obéit à une autre logique de prix" -> "La génération se facture autrement" / why: shorter, verbal.
+[cost] pass1 -> pass2: "y compris ceux que vous jetez … le contrôle porte sur la dérive, non sur un objet différent" -> "y compris ceux qui finissent à la corbeille … le contrôle traque la dérive, non un objet de substitution" / why: concrete image and a stronger verb.
+[cost] pass1 -> pass3: "démarrent autour de 29 à 30 $" kept, "Les premiers abonnements" (pass 2) -> "Les abonnements d’entrée de gamme" / why: « premiers » was ambiguous (first ever vs entry level). Amounts unchanged: 29 à 30 $, 3 à 10 $, 500 000, 5 000 et 10 000 $, 250 000 $.
+[ownership] pass1 -> pass2: "le point de départ est acquis … un prompt, à lui seul, ne fait pas de vous un auteur" -> "le principe est acquis … un prompt ne suffit pas à vous en faire un" / why: no repeated « auteur ».
+[ownership] pass1 -> pass2: "Les tribunaux vont dans le même sens … refusé de revenir sur la question" -> "Les tribunaux abondent dans ce sens … refusé de rouvrir le débat" / why: native legal-press phrasing.
+[ownership] pass1 -> pass3: "Appliquez cette grille" -> "Confrontez ce principe aux trois voies", and the Review Board sentence rebuilt as "dans un cas où une photo avait servi de point de départ, mais où le résultat, restylisé, ne la laissait plus clairement apparaître" / why: pass 2 compressed it into an unclear participle.
+[quotes] Copyright Office, Court of Appeals, Commission guidelines and UK regulator quoted text translated as quotations in « », never paraphrased; only the framing around them changed across passes.
+[labels] pass1 -> pass2: "impose à celui qui décide … de signaler" -> "oblige quiconque décide … à signaler", "Et un deepfake ne se limite pas" -> "Or un deepfake ne se résume pas" / why: « or » is the native logical hinge.
+[labels] pass1 -> pass2: "Une étiquette ne sauve pas non plus une image trompeuse" -> "Une étiquette ne rachète pas pour autant une image trompeuse" / why: idiomatic verb.
+[accuracy] pass1 -> pass2: "Seulement si elle part du produit" -> "À condition de partir du produit" / why: French answers a yes/no headline with a condition.
+[accuracy] pass1 -> pass2: "Trois réflexes aident" -> "Trois réflexes limitent les dégâts" / why: « aider » with no object is an anglicism.
+[speed] pass1 -> pass3: "l’attente se transforme en séries d’essais … Le goulot d’étranglement se déplace vers le contrôle" -> "l’attente se mue en allers-retours … C’est le contrôle qui prend alors du temps" / why: idiom and a cleft sentence instead of a metaphor stack.
+[speed] pass2 -> pass3: "Cela fait, elle avance au rythme de la génération" -> "Une fois cette photo en main, tout avance au rythme de la génération" / why: the pronoun « elle » was ambiguous.
+[app] pass1 -> pass3: "« Texte vers image » produit une image à partir de votre description" -> "« Texte vers image » génère l’image d’après votre description" / why: app label kept exactly, verb tightened.
+[stock] pass1 -> pass3: "La vraie ligne d’horizon d’une ville" -> "La silhouette d’une ville réelle" / why: « skyline » rendered the French way.
+[links] pass1 -> pass3: "L’analyse « Tourner ou générer » traite de l’étape précédente" -> "… remonte d’une étape" / why: shorter, verbal; titles of linked pages match their French titles.
+[FAQ] pass1 -> pass3: "La génération se paie à la génération" -> "La génération, elle, se paie à l’essai" / why: the echo read as a translation slip.
+[re-read] pass2 -> pass3: "la garantie juridique de la banque d’images entre 5 000 et 10 000 $" -> "… à un montant compris entre 5 000 et 10 000 $"; "se facture autrement : à la génération, et non au fichier conservé" -> "… par génération lancée, et non par fichier conservé" / why: zeugma on « plafonner » and a word echo caught on the final native read.
+
+----- fr common changes.md -----
+# fr: common (card of « Banque d’images ou IA pour vos visuels produit »: hero alt, title, deck)
+
+Three units only; all three were rewritten in pass 2, two again in pass 3.
+
+[card title / h1] pass1 -> pass2: "Banque d’images ou images IA pour le contenu produit" -> "Banque d’images ou IA pour vos visuels produit" / why: « contenu produit » reads translated; « visuels produit » is the trade’s word, and the h1 now matches the page title.
+[card title / h1] pass2 -> pass3: kept as is.
+[deck] pass1 -> pass2: "Ni la banque d’images ni un prompt ne peuvent montrer votre produit. Retoucher votre propre photo, si." -> "Une banque d’images ne peut pas montrer votre produit, un prompt non plus. Votre propre photo retouchée, si." / why: the answer « si » needs a noun subject to echo, not an infinitive.
+[deck] pass2 -> pass3: "… un prompt non plus. … au banc d’essai." -> "Ni une banque d’images ni un prompt ne montreront votre produit. … Coûts, droits, étiquetage et rapidité comparés." / why: « ni … ni » with a future is tighter than two clauses; « au banc d’essai » was a cliché.
+[hero alt] pass1 -> pass2: "Une bouteille en céramique céladon fermée par un bouchon de liège, posée sur un bloc de chêne patiné" -> "Bouteille en céramique céladon bouchée de liège, sur un bloc de chêne usé" / why: alt text drops the article and the heavy participle chain.
+[hero alt] pass2 -> pass3: "devant un tirage photo fixé au ruban adhésif : une terrasse … sur laquelle se projette son ombre" -> "devant un tirage photo scotché montrant une terrasse ensoleillée sous des branches d’olivier, où se projette son ombre" / why: « scotché » is the everyday word, and the shadow now clearly falls on the print, as in the English.
+[hero alt] pass1 -> pass3: "son ombre s’étend sur le tirage" (after a semicolon) -> "où se projette son ombre" / why: one flowing description instead of two juxtaposed clauses.
+[check] Typographic apostrophes, no dash, no Han character; the deck stays under the card’s length.
+
+----- fr home changes.md -----
+# fr: home (one unit: lead-card tag "<span1>Latest</span1>Buying models")
+
+One unit, a label pair with settled French on both sides, so passes 2 and 3 had nothing to change and no pass2.json or pass3.json was written.
+
+[lead card tag] pass1: "<span1>Latest</span1>Buying models" -> "<span1>Dernier article</span1>Modèles d’achat"
+why: « Dernier article » is the glossary’s settled tag for the insights lead card ("Latest" before a category, as in « Dernier article » + « Vidéo IA »); « Modèles d’achat » is the existing French of the "Buying models" category across the fr dictionaries.
+[pass 2] kept as is: changing either half would break consistency with every other card carrying this category or this tag.
+[pass 3] kept as is: re-read in place on the home page lead card; the placeholder <span1> keeps its position before the category.
+[check] Typographic apostrophe in « d’achat », sentence case, no punctuation added.
+[check] Same rendering as the insights index lead card (resources/insights unit 12), so the two pages read alike.
+[check] No Han character, no dash.
+[check] Placeholder count and nesting match the English key.
+[check] The article’s category is Buying models in src/data/insights.ts, so the tag names the right category.
+
+----- fr resources/insights changes.md -----
+# fr: resources/insights (insights index: lead-card tag and the new article’s JSON-LD description)
+
+Two units. The tag is a settled label pair; the JSON-LD description follows the article’s meta description through its passes.
+
+[lead card tag] pass1: "<span1>Latest</span1>Buying models" -> "<span1>Dernier article</span1>Modèles d’achat"
+why: glossary tag « Dernier article » plus the existing French category « Modèles d’achat »; identical to the home page so both lead cards match. Passes 2 and 3 keep it as is.
+[json-ld description] pass1 -> pass3: "Banque d’images sous licence, IA à partir d’un prompt ou IA à partir de votre photo produit : coûts, droits, exclusivité, rapidité et fidélité comparés." -> "Banque d’images sous licence, image générée par prompt ou retouche IA de votre photo produit : coûts, droits, exclusivité, rapidité et fidélité comparés."
+why: the repeated « IA à partir de » was a calque of "AI from … AI from"; the final wording is the article’s own meta description, so the index and the page describe the article in the same words (153 characters).
+[pass 2] no separate pass2.json: the article’s pass 2 meta ran to 160 characters and was cut back in pass 3; the index takes the pass 3 text directly.
+[check] U+00A0 before the colon, typographic apostrophes, no dash, no Han character.
+[check] The three routes (stock, prompt, own photo) and the five criteria stay exactly as in the English.
+[check] No competitor or stock library named, as in the English.
+[check] « fidélité » covers "product fidelity" in context, as in the article’s first table.
+
+2026-10-12T17:33:49+08:00 npm run i18n:local -- check: ✓ every page is translated in French and Chinese (233 pages). npm run i18n:guard: ✓ 233 English pages with a French address, dictionaries complete. npm run build: passed (prebuild check-content-todo and i18n guard clean; /fr/ressources/analyses/banque-d-images-ou-images-ia and /zh/resources/insights/stock-photos-vs-ai-images built). npm run check: 0 errors, 0 warnings. schedule.csv row 69 set to published, published_on 2026-10-12. Commit follows: feat(insights): publish stock-photos-vs-ai-images.

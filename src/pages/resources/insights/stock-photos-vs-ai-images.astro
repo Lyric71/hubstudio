@@ -1,0 +1,354 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "Is it cheaper to use AI images or stock photos?",
+    "a": "Per image, entry stock plans work out to roughly $3 to $10 a standard image on the price pages we read in October 2026. Generation is priced per run, so the cost depends on how many attempts a picture takes. For product content the fair comparison is with a reshoot, because neither stock nor a text prompt can show your actual product."
+  },
+  {
+    "q": "Can I copyright an AI-generated image?",
+    "a": "Not the purely generated parts, in the United States. The Copyright Office says prompts alone don't give enough control, and the courts require a human author. Your own photo used as the input stays protected where it is clearly visible in the result, along with creative arrangement and edits. This is production practice, not legal advice."
+  },
+  {
+    "q": "Can I use AI-generated images commercially?",
+    "a": "Usually, yes, subject to the terms of the tool you used and the rules where the ad runs. Two limits matter for products. The picture must not mislead about the product, whatever made it. In Europe, an AI image that could pass as the real product, and mislead, is a deep fake that needs a visible label."
+  },
+  {
+    "q": "Can AI show my actual product?",
+    "a": "Only if you give it your product. A text prompt produces a plausible stand-in, not your SKU. Editing your own product photo keeps the real item and changes the scene around it. Check every result against the product, starting with the small print and the colors, which drift first. A mask, where the engine supports one, keeps the product untouched."
+  },
+  {
+    "q": "Are stock photos exclusive to my brand?",
+    "a": "No. Standard stock licenses are non-exclusive, so the library can license the same file to anyone, rival brands included. At least one major library offers exclusive rights to a royalty-free image only as a separately negotiated buy-out. The library or the photographer keeps the copyright; you hold a license with conditions and a capped warranty."
+  },
+  {
+    "q": "Do I have to label AI-generated product images?",
+    "a": "In the EU, a deep fake needs a visible label from August 2, 2026, and an AI product image that misleads about the product's look or use counts as one. A real product shown against an AI background, with nothing misrepresented, does not, according to the Commission's guidelines. A label never makes a misleading image acceptable."
+  }
+];
+---
+
+<ArticleLayout slug="stock-photos-vs-ai-images" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">For product content, the choice isn't really stock or AI. It's whether the picture has to show your product. A stock photo can't, and neither can an image generated from a sentence. An AI edit of your own product photo can.</p>
+
+  <h2>Stock photos vs AI images: which should you use for product content?</h2>
+
+  <p>Use licensed stock for real places, real events and documentary scenes. Use text-to-image for props, moods and backgrounds that hold no product. When the product itself must appear, edit your own product photo into the new scene, in an app like hubStudio or any editor that takes a source picture. Stock licenses cap use. Generated work carries thinner copyright.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Criterion</th>
+          <th scope="col">Licensed stock</th>
+          <th scope="col">Generated from words</th>
+          <th scope="col">Generated from your product photo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Cost structure</th>
+          <td>A license per image, or a monthly plan</td>
+          <td>A price per run</td>
+          <td>A price per run, plus one good photo of the product</td>
+        </tr>
+        <tr>
+          <th scope="row">Rights</th>
+          <td>A license; the library keeps the copyright</td>
+          <td>Purely generated parts carry no US copyright</td>
+          <td>Your photo stays protected where it shows through</td>
+        </tr>
+        <tr>
+          <th scope="row">Exclusivity</th>
+          <td>Non-exclusive: anyone can license the same file</td>
+          <td>Unique in practice, with little to enforce</td>
+          <td>Your product, so nobody else has it</td>
+        </tr>
+        <tr>
+          <th scope="row">Speed</th>
+          <td>As fast as the search</td>
+          <td>One run per attempt, several runs at once</td>
+          <td>Same, once the source photo exists</td>
+        </tr>
+        <tr>
+          <th scope="row">Product fidelity</th>
+          <td>Cannot show your product</td>
+          <td>Cannot show your product</td>
+          <td>Keeps the product, changes the scene</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Does the picture have to show your product?</h2>
+
+  <p>Start here, because it settles most cases before price comes up.</p>
+
+  <p>A stock library can hold an enormous archive, and none of it shows your SKU. A text-to-image engine has never seen your bottle, your label or your exact shade of green. It renders something plausible. Plausible is fine for a mood board and wrong for a product page.</p>
+
+  <p>The risk isn't only aesthetic. Advertising regulators judge a picture by what a shopper takes from it.</p>
+
+  <blockquote class="evidence">A stock photo with readable number plates added, shown as footage from the advertised dash cams, was "misleading, because it was not taken from footage from any of the advertised dash cams."</blockquote>
+  <p class="source">Source: UK advertising regulator ruling, June 5, 2024.</p>
+
+  <p>The advertiser in that case had used a stock image and added detail to make the product look more capable. The same logic reaches an AI image that improves a product, as the regulator's own guidance says.</p>
+
+  <blockquote class="evidence">"If using pre- or post-production techniques, images should not be altered in a way which exaggerates what the product can do."</blockquote>
+  <p class="source">Source: UK advertising regulator guidance on misleading imagery, September 11, 2025.</p>
+
+  <p>So the first sort is simple. Pictures with no product in them (a kitchen, a beach at dawn, hands holding a coffee cup with no brand) can come from stock or from a prompt. Pictures of the product come from a photo of the product, retouched or extended, and never invented.</p>
+
+  <h2>What does a stock license actually buy?</h2>
+
+  <p>Less than many buyers assume. A license is permission to use a file under conditions, and the conditions matter more than the download button suggests.</p>
+
+  <p><strong>Royalty-free or rights-managed.</strong> Royalty-free means you pay once and reuse the image without further royalties, in any medium. It doesn't mean free. Rights-managed images are priced and limited by use, size, placement, duration and territory, so a second campaign means a second license.</p>
+
+  <p><strong>Standard or extended.</strong> A standard license covers most marketing. It stops at products for resale where the image is the main value (a printed mug, a poster, a template) and at very large print runs. Both need an extended license, at an extra fee.</p>
+
+  <p>Watch for the editorial-only tag, too. Those images carry no model or property release, so they can illustrate news and commentary but can't sell anything.</p>
+
+  <p><strong>Nobody's exclusive.</strong> The library can license the same file to anyone, including the brand next to yours on the shelf. Exclusivity, where a library offers it at all, is a separate buy-out negotiated on request.</p>
+
+  <p>If a licensed image draws a claim, the library's protection runs out at a ceiling. Some agreements also cover the file only in the form delivered, not the version you retouched.</p>
+
+  <blockquote class="evidence">Standard licenses cap print runs at 500,000 and cap the library's legal protection at $5,000 to $10,000; one library raises that to $250,000 per image with an extended license.</blockquote>
+  <p class="source">Source: four published stock license agreements and three plan pages, read October 12, 2026, category level, no library named.</p>
+
+  <p>One more clause matters now that so much editing runs through AI. One large library group's agreements allow AI for permitted editing of a licensed creative image, but bar any training use, including uploading the file to an AI tool that acquires rights in it. Read that clause before you put a stock photo into any generator.</p>
+
+  <h2>What does each route cost, and when do you pay?</h2>
+
+  <p>Stock is cheap per image and priced up front. For a picture with no product in it, that is hard to beat.</p>
+
+  <blockquote class="evidence">Entry stock subscriptions start at about $29 to $30 a month, which works out to roughly $3 to $10 a standard image.</blockquote>
+  <p class="source">Source: lowest monthly plans on three stock libraries' public price pages, collected October 12, 2026; per-image figures as printed, or the monthly price divided by the images it includes.</p>
+
+  <p>Those are the published entry plans as of October 12, 2026. Extended licenses are sold on top of the standard one, and video and premium collections cost more. Rights-managed images are quoted per use, so there's no published band to compare.</p>
+
+  <p>Generation is priced differently: per run, not per file you keep. You pay for each attempt, including the ones you throw away, so cost follows how many tries a picture takes. Starting from a real product photo changes what can go wrong: the engine works from your product instead of inventing one, so the review checks for drift, not for a different object.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Route</th>
+          <th scope="col">What you pay for</th>
+          <th scope="col">When you pay</th>
+          <th scope="col">What is never charged</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Licensed stock</th>
+          <td>A license per image, or a plan</td>
+          <td>At download, or monthly</td>
+          <td>Re-use within the license terms</td>
+        </tr>
+        <tr>
+          <th scope="row">Generated from words</th>
+          <td>Each run</td>
+          <td>Per run, before you keep anything</td>
+          <td>In hubStudio, a failed run</td>
+        </tr>
+        <tr>
+          <th scope="row">Generated from your photo</th>
+          <td>Each run, plus the photo once</td>
+          <td>Per run; the photo when it's shot</td>
+          <td>In hubStudio, a failed run</td>
+        </tr>
+        <tr>
+          <th scope="row">A new product shoot</th>
+          <td>Studio, crew, styling, retouching</td>
+          <td>Per shoot day or per SKU</td>
+          <td>Depends on the contract</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>If the real comparison is a new shoot, the <a href="/resources/insights/product-photography-cost-per-sku">product photography cost per SKU piece</a> lays out how studio pricing scales. And if you already hold one clean photo of each product, that photo is the asset the third route reuses.</p>
+
+  <h2>Who owns an AI-generated product image?</h2>
+
+  <p>This section describes production practice, not legal advice. Ask counsel before you register or enforce anything.</p>
+
+  <p>In the United States the starting point is settled. A machine can't be an author, and a prompt on its own doesn't make you one.</p>
+
+  <blockquote class="evidence">Copyright "does not extend to purely AI-generated material, or material where there is insufficient human control over the expressive elements," and "prompts do not alone provide sufficient control."</blockquote>
+  <p class="source">Source: US Copyright Office, Copyright and Artificial Intelligence, Part 2: Copyrightability, January 29, 2025, executive summary.</p>
+
+  <p>The courts agree, and the Supreme Court has declined to revisit the point.</p>
+
+  <blockquote class="evidence">The Copyright Act "requires all eligible work to be authored in the first instance by a human being." The Supreme Court declined to hear the appeal on March 2, 2026.</blockquote>
+  <p class="source">Source: US Court of Appeals for the D.C. Circuit, Thaler v. Perlmutter, No. 23-5233, March 18, 2025; Supreme Court docket No. 25-449.</p>
+
+  <p>That isn't the end of it for product work. The same report draws a line that matters a great deal when the input is your own photograph.</p>
+
+  <blockquote class="evidence">When "a human inputs their own copyrightable work and that work is perceptible in the output, they will be the author of at least that portion of the output." That copyright "would not extend to the AI-generated elements standing alone."</blockquote>
+  <p class="source">Source: US Copyright Office, Part 2: Copyrightability, January 29, 2025, Section II.E, page 24.</p>
+
+  <p>Read that against the three routes. A text-to-image picture is mostly unprotected, so a rival who copies it has little to answer for. An edit of your own photo keeps protection over the photo where it shows through, but not over the generated room around it. The photo has to stay clearly visible. The Office's Review Board upheld a refusal where a photo went in and the restyled result no longer clearly showed it.</p>
+
+  <p>Stock gives you no copyright at all, only a license. The library or the photographer keeps it.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Question</th>
+          <th scope="col">Licensed stock</th>
+          <th scope="col">Generated from words</th>
+          <th scope="col">Generated from your product photo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Who holds the copyright</th>
+          <td>The library or the photographer</td>
+          <td>Nobody, for the purely generated parts</td>
+          <td>You, for your photo where it shows through</td>
+        </tr>
+        <tr>
+          <th scope="row">Exclusivity</th>
+          <td>None unless bought out</td>
+          <td>Unique, but little to enforce</td>
+          <td>The product is yours alone</td>
+        </tr>
+        <tr>
+          <th scope="row">Indemnity</th>
+          <td>Capped by the license</td>
+          <td>Whatever the tool's terms say</td>
+          <td>Whatever the tool's terms say</td>
+        </tr>
+        <tr>
+          <th scope="row">AI disclosure</th>
+          <td>None for an unaltered photograph</td>
+          <td>Possible, if it passes as a real product</td>
+          <td>Usually none when the product is shown as it is</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The <a href="/resources/copyright-and-ai">copyright and AI page</a> on this site covers what to document for each asset, and where trademarks come in.</p>
+
+  <h2>Do you have to label AI-generated product images?</h2>
+
+  <p>Sometimes, and Europe is where the rule is written down. Since August 2, 2026, Article 50 of the EU AI Act has required whoever decides how AI is used in a campaign to disclose deep fakes. And a deep fake isn't only a face: the Commission reads the "objects" in the legal definition to include consumer goods.</p>
+
+  <p>The Commission's guidelines draw the line where this comparison does.</p>
+
+  <blockquote class="evidence">An AI image of a product that can mislead "as to the actual product appearance, characteristics or use" counts as a deep fake. A real product "shown in an advertisement against an AI-generated background" does not, as long as the ad does not mislead about the product.</blockquote>
+  <p class="source">Source: European Commission guidelines on Article 50 of the AI Act, C(2026) 5054, July 20, 2026, examples after paragraph 116.</p>
+
+  <p>The guidelines also class aesthetic background replacements and compositions of existing products in product ads as minor edits. So the third route, done honestly, usually stays out of the label. An invented product shot that looks better than the real one doesn't.</p>
+
+  <p>A label doesn't rescue a misleading picture, either. The UK regulator's guidance says small print is "generally unlikely to prevent an ad from misleading consumers." The <a href="/resources/insights/eu-ai-act-labeling-brand-content">EU AI Act labeling piece</a> covers who applies the label, where it sits and what the platforms add.</p>
+
+  <h2>Can an AI image keep your product accurate?</h2>
+
+  <p>Only if it starts from the product. An edit begins with your photo and changes what you name: the background, the light, the surface, the props. The product's shape and label come from the source.</p>
+
+  <p>Even then, check. Engines re-render pixels, and the small things drift first: the words on a label, a cap's color, the count of items in a pack. Three habits help.</p>
+
+  <ul>
+    <li>Shoot or pick a sharp, evenly lit source photo with the label readable. hubStudio's Image studio resizes source pictures in your browser to 1,536 pixels on the long side before sending them, so fine print needs to be legible at that size.</li>
+    <li>Protect the product. On the ChatGPT Image engines in hubStudio, an optional mask marks what may change in the first image, and everything else stays as it is.</li>
+    <li>Compare every result against the real item before it ships: label, color, proportions, and anything a shopper would hold you to.</li>
+  </ul>
+
+  <p>The <a href="/resources/how-to/product-photo-to-lifestyle-image">how-to on turning a product photo into a lifestyle image</a> walks through prompts and engine choice step by step.</p>
+
+  <h2>Which route is fastest?</h2>
+
+  <p>That depends on what slows you down.</p>
+
+  <p>Stock is as fast as your search. When the right photo exists, it's yours in minutes. When it doesn't, you can lose an afternoon to near-misses.</p>
+
+  <p>With generation, the wait turns into rounds. Each attempt is one run, and you can start the next before the first finishes. The slow part moves to review: checking that the scene reads right and that nothing in the product has shifted.</p>
+
+  <p>The edit route adds one step at the start: a usable product photo. Once that exists, it runs at the speed of generation, and every review starts from the real item rather than an invented one.</p>
+
+  <h2>How do the three routes work in the hubStudio app?</h2>
+
+  <p>Two of the three run in the Image studio. Text to image renders from your description. Edit an image rewrites the pictures you upload following your instruction (change a background, restyle a product shot), with up to four source pictures depending on the engine.</p>
+
+  <p>Money works the same way on both. The app runs on a prepaid balance in real currency, with no subscription. The price of a run sits next to the button before you click, and a failed run is never charged.</p>
+
+  <p>Every render lands in History with its prompt and the engine that made it. That's the record you want when someone later asks how a picture was made, or whether it needs a label.</p>
+
+  <p>The <a href="/app/create">Create page of the hubStudio app</a> sets out the engines and the Image studio in more detail.</p>
+
+  <h2>When should you still choose stock?</h2>
+
+  <p>Whenever the picture has to be a photograph of the real world. A real city skyline, a real event, a documentary scene, a news moment: generation can imitate those, and the imitation is the problem. Stock also wins when you need a generic photo in the next ten minutes and no product appears in it.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">If the picture needs</th>
+          <th scope="col">Choose</th>
+          <th scope="col">Because</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">A real place, event or documentary moment</th>
+          <td>Licensed stock</td>
+          <td>It has to be a photograph of the real world</td>
+        </tr>
+        <tr>
+          <th scope="row">Your product, in a new setting</th>
+          <td>An edit of your product photo</td>
+          <td>It keeps the product and changes the scene</td>
+        </tr>
+        <tr>
+          <th scope="row">A mood, texture or backdrop with no product</th>
+          <td>Text to image or stock</td>
+          <td>Neither has to match anything real</td>
+        </tr>
+        <tr>
+          <th scope="row">Exclusivity you can enforce</th>
+          <td>Your own photo, edited</td>
+          <td>Stock is shared and pure generation is thin on rights</td>
+        </tr>
+        <tr>
+          <th scope="row">Merchandise for resale or a huge print run</th>
+          <td>Stock with an extended license, or your own work</td>
+          <td>Standard licenses stop there</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The <a href="/resources/insights/shoot-it-or-generate-it">shoot it or generate it piece</a> covers the step before this one: which products still need a camera at all.</p>
+
+  <h2>FAQ</h2>
+
+  <h3>Is it cheaper to use AI images or stock photos?</h3>
+
+  <p>Per image, entry stock plans work out to roughly $3 to $10 a standard image on the price pages we read in October 2026. Generation is priced per run, so the cost depends on how many attempts a picture takes. For product content the fair comparison is with a reshoot, because neither stock nor a text prompt can show your actual product.</p>
+
+  <h3>Can I copyright an AI-generated image?</h3>
+
+  <p>Not the purely generated parts, in the United States. The Copyright Office says prompts alone don't give enough control, and the courts require a human author. Your own photo used as the input stays protected where it is clearly visible in the result, along with creative arrangement and edits. This is production practice, not legal advice.</p>
+
+  <h3>Can I use AI-generated images commercially?</h3>
+
+  <p>Usually, yes, subject to the terms of the tool you used and the rules where the ad runs. Two limits matter for products. The picture must not mislead about the product, whatever made it. In Europe, an AI image that could pass as the real product, and mislead, is a deep fake that needs a visible label.</p>
+
+  <h3>Can AI show my actual product?</h3>
+
+  <p>Only if you give it your product. A text prompt produces a plausible stand-in, not your SKU. Editing your own product photo keeps the real item and changes the scene around it. Check every result against the product, starting with the small print and the colors, which drift first. A mask, where the engine supports one, keeps the product untouched.</p>
+
+  <h3>Are stock photos exclusive to my brand?</h3>
+
+  <p>No. Standard stock licenses are non-exclusive, so the library can license the same file to anyone, rival brands included. At least one major library offers exclusive rights to a royalty-free image only as a separately negotiated buy-out. The library or the photographer keeps the copyright; you hold a license with conditions and a capped warranty.</p>
+
+  <h3>Do I have to label AI-generated product images?</h3>
+
+  <p>In the EU, a deep fake needs a visible label from August 2, 2026, and an AI product image that misleads about the product's look or use counts as one. A real product shown against an AI background, with nothing misrepresented, does not, according to the Commission's guidelines. A label never makes a misleading image acceptable.</p>
+</ArticleLayout>

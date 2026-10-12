@@ -182,3 +182,16 @@ the ask (last slide) / one ask -> 行动号召 / 一个行动号召
 LinkedIn document post / multi-photo post -> 文档帖子 / 多图帖子; LinkedIn's composer -> LinkedIn 自带的发帖框 (short: 发帖框)
 Instagram's publishing interface (generic) -> 发布接口 (named API: 内容发布 API); publishing tool / scheduling tool -> 发布工具 / 排期工具; item (carousel) -> 项
 Image editor steps: the pencil under the cross -> 叉号下方的铅笔图标; Text panel -> “文本”面板; LinkedIn Post, portrait -> “帖子 · 竖版”; marked Best (placement) -> 标为“推荐”
+
+## Stock, licensing and AI image rights (settled 2026-10-12, stock-photos-vs-ai-images)
+stock photo / stock -> 图库照片 (never 素材图 or 库存照片); stock library -> 图库; licensed stock -> 授权图库照片; library group -> 图库集团
+text-to-image (prose and app label) -> 文生图; Edit an image (app job) -> “编辑图片”; source picture / source photo -> 源图; mask -> 蒙版
+generated from words / generated from your product photo (route labels) -> 文字生成 / 基于产品照片生成; route -> 路线
+run (a generation, priced per run) -> 一次生成 / 按次计费; a failed run is never charged -> 生成失败，分文不收
+royalty-free / rights-managed -> 免版税 / 版权管理型; standard / extended license -> 标准授权 / 扩展授权; editorial-only -> 仅限编辑用途
+model release / property release -> 肖像授权书 / 物权授权书; buy-out -> 买断; print run -> 印量; indemnity / indemnification -> 赔偿保障
+product fidelity -> 产品还原度; drift (product details) -> 走样; mood board -> 情绪板; plausible (AI render) -> 像模像样
+US Copyright Office -> 美国版权局; Copyright and Artificial Intelligence, Part 2: Copyrightability -> 《版权与人工智能》第二部分《可版权性》; Review Board -> 复审委员会; human author -> 人类作者
+D.C. Circuit -> 哥伦比亚特区巡回上诉法院; Thaler v. Perlmutter -> Thaler 诉 Perlmutter 案; docket No. -> 案卷号
+UK advertising regulator (unnamed) -> 英国广告监管机构; ruling / guidance -> 裁定 / 指引; Commission guidelines on Article 50 -> 欧盟委员会《第 50 条指南》; minor edits -> 轻微编辑
+Buying models (insights category) -> 采购模式; Latest (chip) -> 最新

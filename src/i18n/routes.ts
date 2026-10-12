@@ -71,6 +71,7 @@ const ARTICLES: Record<string, string> = {
   'running-a-tmall-flagship-content': 'faire-vivre-le-contenu-d-un-flagship-tmall',
   'shoot-it-or-generate-it': 'shooter-ou-generer',
   'singles-day-618-production-calendar': 'singles-day-et-618-le-calendrier-de-production',
+  'stock-photos-vs-ai-images': 'banque-d-images-ou-images-ia',
   'subscription-or-managed-production': 'abonnement-ou-production-geree',
   'the-2026-model-roster': 'les-modeles-ia-de-2026',
   'three-years-of-genai-ecommerce': 'trois-ans-d-ia-generative-dans-l-e-commerce',

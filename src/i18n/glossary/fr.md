@@ -185,3 +185,13 @@ items (carousel) -> éléments; orientation -> orientation; cover (first slide) 
 slide roles Cover / Setup / Idea slides / Proof / Last slide -> Couverture / Contexte / Développement / Preuve / Dernière diapositive; one ask -> une seule demande
 Image editor Social panel, Instagram and LinkedIn: Crop to fill / Fit it whole / Show what the network covers / Profile grid / Apply the format -> « Recadrer » / « Image entière » / « Montrer ce que le réseau recouvre » / « Grille du profil » / « Appliquer le format »; Post, portrait (LinkedIn) -> « Post, format portrait »; Text panel -> panneau « Texte »; Save and use it in the post -> « Enregistrer et l’utiliser dans la publication »
 Pick from the library / Add from the library / Render again -> « Choisir dans la bibliothèque » / « Ajouter depuis la bibliothèque » / « Générer à nouveau »; + Carousel (LinkedIn format) -> « + Carrousel »
+
+## Stock imagery, image rights and US copyright (settled 2026-10-12)
+stock / stock photo / stock library -> banque d’images / photo de banque d’images / banque d’images (never « stock » alone, never « photothèque »); licensed stock -> banque d’images sous licence
+royalty-free / rights-managed -> libre de droits / droits gérés; standard / extended license -> licence standard / licence étendue (French spelling « licence »); license a file (verb) -> concéder sous licence
+editorial-only (tag) -> « usage éditorial uniquement »; model release / property release -> autorisation de modèle / autorisation de propriété; buy-out (exclusivity) -> rachat; print run -> tirage
+indemnity (license, tool terms) -> garantie d’indemnisation; the library's legal protection -> garantie juridique de la banque d’images
+text-to-image (prose) -> texte vers image (« un moteur texte vers image », « générer l’image à partir d’un texte »); Image studio modes « Texte vers image » / « Modifier une image » (app labels); mask -> masque
+route (stock, prompt, own photo) -> voie; product visuals -> visuels produit; SKU (prose) -> référence; mood board -> planche d’ambiance; product page -> fiche produit
+US Copyright Office -> Copyright Office américain; Review Board (Copyright Office) -> commission de réexamen du Copyright Office; Copyright Act -> kept; Supreme Court -> Cour suprême; US Court of Appeals for the D.C. Circuit -> cour d’appel fédérale du district de Columbia; v. / No. -> c. / n° (Thaler c. Perlmutter, n° 23-5233)
+UK advertising regulator -> régulateur britannique de la publicité; its guidance / ruling -> recommandations / décision; dash cam -> caméra embarquée; small print -> mentions en petits caractères
