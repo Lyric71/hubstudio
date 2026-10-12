@@ -5,7 +5,7 @@ description: "Render a picture from a prompt, edit pictures you upload or upscal
 excerpt: "The image studio: three jobs, a choice of engines, every option priced before the run, and each result saved in your History."
 section: "studio"
 order: 3
-updated: 2026-10-08
+updated: 2026-10-12
 appPaths: ["/content/image-generate"]
 audience: "Everyone"
 related: ["explore", "create-a-video", "history", "assets-library", "validation", "your-team", "skills", "balance-and-payments"]
@@ -122,7 +122,7 @@ A tab shows where its run stands: **Generating** with the seconds elapsed, **Rea
 
 A run that returned several pictures shows them side by side, each with its own **Download image**, **Download clean copy**, **Edit** and **Send for validation**.
 
-Close a tab with its ✕. Closing a tab that is still rendering does not cancel the render: it keeps running and is still billed. **Close all** closes every finished tab at once. Your tabs come back when you reload the page, for a day.
+Close a tab with its ✕. Closing a tab that is still rendering does not cancel the render: it keeps running and is still billed. **Close all** closes every finished tab at once. Your tabs come back when you reload the page, for a day, and a tab that was still rendering comes back on **Generating** and picks up the picture when it's ready. A connection that drops or stalls while a picture renders doesn't fail it either: the tab keeps waiting and shows the result.
 
 ## Edit a picture
 

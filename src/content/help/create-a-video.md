@@ -5,7 +5,7 @@ description: "Render a clip from a prompt, open it on a picture of yours, or fee
 excerpt: "The video studio: text to video, image to video and references, priced per second before the render, with every clip saved in your History."
 section: "studio"
 order: 4
-updated: 2026-10-08
+updated: 2026-10-12
 appPaths: ["/content/video"]
 audience: "Everyone"
 related: ["explore", "create-an-image", "history", "assets-library", "validation", "your-team", "skills", "balance-and-payments", "troubleshooting"]
@@ -98,9 +98,9 @@ Gemini Omni Flash is a language model that answers in video. Its maker bills it 
 
 A clip takes a few minutes. Each render opens its own tab on the right, newest first, with **Generating** and the seconds elapsed, then **Ready** or **Failed**. You can start the next render while the previous one runs, and the **Activity** button in the top bar follows your renders from any page.
 
-A render is given about five minutes. A long clip, over 15 seconds, can take longer and fail after being paid for: the form warns you under **Duration**. Wan 3.0 and MiniMax H3 are among the slower engines, so keep their clips short. If a render runs out of time, the tab reads **The render took too long and was abandoned. Try a shorter duration or a faster engine.**
+A render is given about five minutes. A long clip, over 15 seconds, can take longer and fail after being paid for: the form warns you under **Duration**. Wan 3.0 and MiniMax H3 are among the slower engines, so keep their clips short. If a render runs out of time, the tab reads **The render took too long and was abandoned. Try again, or pick a faster engine.**
 
-Closing a tab that is still rendering does not cancel the render: it keeps running, is still billed, and lands in History when it finishes.
+Closing a tab that is still rendering does not cancel the render: it keeps running, is still billed, and lands in History when it finishes. A connection that drops or stalls during a render doesn't fail it, and neither does reloading the page, or closing it and opening it again in the same browser within a day: the tab comes back on **Generating** and plays the clip when it's ready.
 
 On a ready tab:
 
