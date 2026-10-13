@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'x-image-video-specs',
+    image: '/Images/insight-x-image-video-specs.webp',
+    imageAlt:
+      'An art director\'s hands slide a black card with four cut windows across a street photograph on a cutting mat, so only four fragments of the picture show.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'X Image and Video Specs for 2026',
+    deck: 'X\'s photo, video, header and ad specs, read from X\'s own pages on October 14, 2026, with every conflict between those pages printed.',
+    date: 'October 14, 2026',
+    dateISO: '2026-10-14',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'X Image and Video Specs for 2026 | hubStudio',
+    metaDescription:
+      'X post image sizes, multi-picture posts, video limits, profile and header photos for 2026, read from X\'s own Help Center and Business specs, dated.',
+  },
+  {
     slug: 'stock-photos-vs-ai-images',
     image: '/Images/insight-stock-photos-vs-ai-images.webp',
     imageAlt:

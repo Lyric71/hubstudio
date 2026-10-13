@@ -1,0 +1,41 @@
+﻿2026-10-14T00:30:02 start draft (model claude-opus-5-5)
+2026-10-14T00:30:02 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-14T00:30:34+0800 Attempt 1 inspected the tree: no partial work (no row at researched, drafted or quality_passed; no output, research or image for any not_started row). Earliest not_started row in publish_date order: brief 70, x-image-video-specs (2026-10-16, template spec). Taking it. Run log: editorial/logs/2026-10-14-x-image-video-specs.md.
+2026-10-14T00:51:35+0800 Step 0 done: research gate R1 to R7, editorial/research/x-image-video-specs.md written with 11 captures (headless Chromium; help.x.com refuses a plain fetch). Brief 70 amended at source (module and rendered brief): X publishes no crop geometry for 2 to 4 pictures. Row 70 set to researched.
+2026-10-14T00:58:56+0800 Step 1 done: /createarticle 13 iterations (iteration 7 as the cadence variant), check 2 re-captured all 11 cited pages (79 strings matched), R8 reconciled. check-draft.mjs: all hard checks passed. Row 70 set to drafted.
+2026-10-14T01:00:22+0800 Step 2 done: /content-quality-us 18 passes plus final, in place (versions v1 to v18 in the session scratchpad). SEO 32 / 147 / 23 words. check-draft.mjs all hard checks passed. Row 70 set to quality_passed.
+2026-10-14T01:03:46+0800 Step 3 done: hero generated with gpt-image-2 (high, 3:2, one attempt), checked against the AI-tells list, saved as public/Images/insight-x-image-video-specs.webp (1536 x 1024, 117,692 bytes). Row 70 set to image_ready with all four dates. Ledger: 11 rows and 5 do-not-publish rows. watch.csv: quarterly recheck due 2027-01-16. Run log: editorial/logs/2026-10-14-x-image-video-specs.md. Stopped at image_ready: not published, not committed.
+I drafted brief 70, the X image and video specs page (`x-image-video-specs`), and stopped at `image_ready` as asked. Nothing is published or committed. Nothing was left half-done from an earlier attempt, so this run took the earliest `not_started` row.
+
+**The main finding:** X does not publish how it crops a post with two, three or four pictures. The ratios every size guide prints for those layouts aren't on any of the 11 X pages I read: the help center, the ads specs, the developer docs and two X blog posts. So the page says that plainly. It gives what X does publish: up to four items per post, and a single photo between 2:1 and 3:4 shown in full. It then points to X's composer preview as the check. I amended brief 70 to match, in both its source module and the brief file, and the two still match. Brief 72 only mentions the app's own two-picture overlay, so it needed no change.
+
+**Conflicts printed side by side, each with its X page named:**
+- **Long video limits:** three X pages disagree. One says under 4 hours and 16GB, one says about 3 hours and 8GB, one says 125 minutes and 16 GB.
+- **Standard account video:** 140 seconds and 512MB on the web, but 20 minutes and 8 GB through the developer route.
+- **WebP:** listed in the developer docs, missing from the help center's file list.
+
+**Checks:**
+- All 11 cited pages were captured twice, and all 79 quoted strings matched on the second read.
+- `check-draft.mjs` passes every hard check.
+- Title is 32 characters, meta 147, excerpt 23 words.
+- No em dashes, no `$`, no competitor, no Han characters.
+- Both skills ran in full. The cadence pass ran with no planted errors.
+
+**Length:** the brief asked for 1,500 words of body. The draft has 1,924 words of prose (2,872 with tables). The extra is the conflicts and tables the brief requires. Under the rule that the target is a minimum, it ships as written, with nothing padded.
+
+**Hero image:** hands sliding a black card with four windows cut into it across a street print, in a Hong Kong studio. It took one attempt and passed the AI-tells check. The light comes from the left rather than the right the prompt asked for, but it's consistent across the frame. Saved as `public/Images/insight-x-image-video-specs.webp` (118 KB).
+
+**Also updated:**
+- 11 new rows in the source ledger, plus 5 claims logged as not to publish.
+- A quarterly recheck in `watch.csv`, due 2027-01-16.
+- Row 70 in `schedule.csv` is set to `image_ready` with all four dates.
+- No live article contradicts this page.
+- Run log: `editorial/logs/2026-10-14-x-image-video-specs.md`.
+
+**Things that affected this run:**
+- `help.x.com` blocks a plain fetch, so I captured the pages with a headless browser instead.
+- The site has no X platform page. The links list uses the app's publishing page and the X help article in its place.
+- The Gmail, Google Calendar and Google Drive connectors need authorizing in your claude.ai connector settings. This run didn't use them.
+2026-10-14T01:03:58 model Opus 5.5 completed successfully
+2026-10-14T01:03:58 end draft exit 0
+2026-10-14T01:03:58 queue: ok: 72 to draft, 0 blocked, last draft 2026-10-14

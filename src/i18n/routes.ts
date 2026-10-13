@@ -90,6 +90,7 @@ const ARTICLES: Record<string, string> = {
   'what-aigc-production-actually-is': 'ce-qu-est-vraiment-la-production-aigc',
   'where-language-ai-delivers': 'la-ou-l-ia-linguistique-tient-ses-promesses',
   'without-creatives-aigc-is-nothing': 'sans-creatifs-l-aigc-n-est-rien',
+  'x-image-video-specs': 'x-formats-des-images-et-des-videos-2026',
   'your-ai-content-is-about-to-introduce-itself': 'votre-contenu-ia-va-bientot-se-presenter',
   'youtube-shorts-specs': 'youtube-shorts-specifications',
   'youtube-video-thumbnail-specs': 'youtube-specifications-video-et-miniatures',

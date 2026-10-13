@@ -1,0 +1,405 @@
+URL: https://docs.x.com/x-api/posts/create-post
+Final URL: https://docs.x.com/x-api/posts/create-post
+HTTP: 200
+Title: Create Posts - X
+Captured: 2026-10-13T16:57:06.694Z (headless Chromium, logged out, en-US, each collapsed question clicked open)
+
+Documentation Index
+
+Fetch the complete documentation index at: /llms.txt
+
+Use this file to discover all available pages before exploring further.
+
+Skip to main content
+X home page
+X API
+Documentation
+API Reference
+Changelog
+Support
+Developer Console
+
+General
+
+Developer Console
+Forums
+GitHub
+Overview
+Overview
+Fundamentals
+Posts
+Search
+Post Counts
+Filtered Stream
+Timelines
+Post Lookup
+Bookmarks
+Manage Posts
+Introduction
+Guides
+POST
+Create Posts
+DEL
+Delete Posts
+Reposts
+Quotes
+Hide replies
+Articles
+Introduction
+POST
+Create draft Article
+POST
+Publish Article
+Users
+User Lookup
+Search
+Follows
+Mutes
+Blocks
+Affiliates
+Direct Messages
+Manage
+Lookup
+Blocks
+Likes
+Introduction
+Guides
+GET
+Get Users Liked Posts
+GET
+Get Posts Liking Users
+POST
+Like Post
+DEL
+Unlike Post
+Lists
+Lookup Lists
+Lookup List Posts
+Manage Lists
+List Members
+Pinned Lists
+Spaces
+Introduction
+Spaces Lookup
+Search Spaces
+Communities
+Communities Lookup
+Search Communities
+Community Notes
+Community Notes API for X API v2
+Quickstart
+GET
+Search Eligible Posts
+GET
+Search Community Notes Written
+POST
+Create Community Notes
+DEL
+Delete a Community Note
+POST
+Evaluate Community Notes
+Trends
+Trends
+Personalized Trends
+News
+Introduction
+GET
+Get news stories by ID
+GET
+Search News
+Media
+Introduction
+Upload
+Metadata
+X Activity
+Introduction
+Quickstart
+Event payloads
+Event Pricing
+GET
+Activity Stream
+POST
+Create X activity subscription
+DEL
+Deletes X activity subscription
+DEL
+Delete X activity subscriptions by IDs
+GET
+Get X activity subscriptions
+PUT
+Update X activity subscription
+Usage
+Introduction
+GET
+Get Usage
+GET
+Get usage credits
+Stream Connections
+Introduction
+GET
+Get Connection History
+DEL
+Terminate connections by endpoint
+DEL
+Terminate multiple connections
+DEL
+Terminate all connections
+Compliance
+Batch Compliance
+Compliance streams
+Webhooks
+Introduction
+Quickstart
+POST
+Create webhook
+DEL
+Delete webhook
+GET
+Get webhook
+PUT
+Validate webhook
+POST
+Create replay job for webhook
+Manage Posts
+Create Posts
+$
+View Pricing
+POST
+/
+2
+/
+tweets
+Try it
+Quote-posting (using the quote_tweet_id parameter) requires an Enterprise plan. It is not available on self-serve (pay-per-use) tiers.
+​
+Media attachments
+Upload media first with the chunked upload endpoints, then pass the returned media_id in media.media_ids.
+A Post may include up to 4 photos, 1 animated GIF, or 1 video.
+Duration and file size are checked again at Post create. They follow the posting user’s X Premium / verified status and the media_category used at upload  -  not your developer API plan.
+Posting account	Video cap when attaching to a Post
+Default (no Premium)	20 minutes, 8 GB
+X Premium / verified	125 minutes, 16 GB
+These caps apply to tweet_video and amplify_video. If the video is longer than that user is allowed to post, the response is 403 Forbidden:
+{
+  "title": "Forbidden",
+  "detail": "This user is not allowed to post a video longer than 20 minutes.",
+  "type": "about:blank",
+  "status": 403
+}
+
+A successful upload does not guarantee the media can be attached. See size and duration limits.
+Authorizations
+OAuth2UserToken
+UserToken
+OAuth2UserToken
+​
+Authorization
+stringheaderrequired
+
+The access token received from the authorization server in the OAuth 2.0 flow.
+
+Body
+application/json
+​
+card_uri
+string
+
+Card URI parameter.
+
+​
+community_id
+string
+
+Community to post the tweet to.
+
+Pattern: ^[0-9]{1,19}$
+​
+direct_message_deep_link
+string
+
+Direct message deep link.
+
+​
+edit_options
+object
+
+Edit an existing tweet rather than creating a new one.
+
+Show child attributes
+
+​
+for_super_followers_only
+boolean
+
+Restrict tweet to super followers.
+
+​
+geo
+object
+
+Geo location for the tweet.
+
+Show child attributes
+
+​
+made_with_ai
+boolean
+
+Disclose that the tweet contains AI-generated media.
+
+​
+media
+object
+
+Media attachments.
+
+Show child attributes
+
+​
+nullcast
+boolean
+
+If true, the tweet is not shown in the public timeline.
+
+​
+paid_partnership
+boolean
+
+Disclose that the tweet is a paid partnership.
+
+​
+poll
+object
+
+Poll configuration.
+
+Show child attributes
+
+​
+quote_tweet_id
+string
+
+Tweet ID to quote.
+
+Pattern: ^[0-9]{1,19}$
+​
+reply
+object
+
+Tweet reply configuration.
+
+Show child attributes
+
+​
+reply_settings
+enum<string>
+
+Who can reply to this tweet.
+
+Available options: following, mentionedUsers, subscribers, verified 
+​
+share_with_followers
+boolean
+
+Share an exclusive (super-follower) tweet with all followers.
+
+​
+text
+stringdefault:""
+
+Text of the tweet. Required unless media is provided. Defaulted to an empty string so it is always sent: the backend's tweet_text variable is non-null and rejects an absent value.
+
+Response
+201
+application/json
+
+The request has succeeded.
+
+​
+data
+object
+
+Show child attributes
+
+​
+errors
+object[]
+Option 1
+Option 2
+Option 3
+Option 4
+Option 5
+Option 6
+Option 7
+Option 8
+Option 9
+Option 10
+Option 11
+Option 12
+
+Show child attributes
+
+Integration guide
+Previous
+Delete Posts
+Next
+Create Posts
+
+cURL
+
+curl --request POST \
+  --url https://api.x.com/2/tweets \
+  --header 'Authorization: Bearer <token>' \
+  --header 'Content-Type: application/json' \
+  --data '
+{
+  "card_uri": "<string>",
+  "community_id": "<string>",
+  "direct_message_deep_link": "<string>",
+  "for_super_followers_only": true,
+  "made_with_ai": true,
+  "nullcast": true,
+  "paid_partnership": true,
+  "quote_tweet_id": "<string>",
+  "share_with_followers": true,
+  "text": ""
+}
+'
+201
+default
+{
+  "data": {
+    "id": "<string>",
+    "text": "<string>",
+    "edit_history_post_ids": [
+      "<string>"
+    ]
+  },
+  "errors": [
+    {
+      "detail": "<string>",
+      "resource_type": "<string>",
+      "title": "<string>",
+      "type": "https://api.x.com/2/problems/resource-not-found",
+      "parameter": "<string>",
+      "resource_id": "<string>",
+      "status": 123,
+      "value": "<string>"
+    }
+  ]
+}
+X home page
+
+Resources
+
+Status
+Incidents
+
+Legal
+
+Terms of Service
+Privacy Policy
+Cookies
+Developer Terms
+x
+github

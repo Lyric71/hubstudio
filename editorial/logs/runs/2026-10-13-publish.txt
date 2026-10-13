@@ -118,3 +118,24 @@ Pass 1 (from an earlier attempt) checked against the English: meaning held throu
 
 2026-10-13T18:14:19+08:00 npm run i18n:local -- check: ✓ every page is translated in French and Chinese (234 pages, 70799 units). npm run i18n:guard: ✓ 234 English pages with a French address, dictionaries complete. npm run build: passed (prebuild content:todo 178 published files no marker, i18n guard clean; /resources/how-to/social-media-client-approval, /fr/ressources/guides-pratiques/faire-valider-ses-posts-par-le-client-sans-chaine-d-e-mails and /zh/resources/how-to/social-media-client-approval built). npm run check: 0 errors, 0 warnings. While the build ran, a concurrent session on this checkout committed and pushed the whole working tree as 05bd159 (18:11:43, docs(editorial): how-to on client approval for social content (EN/FR/ZH), run logs of 12 and 13 October): page, howtos.ts, hero, routes.ts, fr and zh dictionaries and glossaries, output, research, sources, watch.csv and logs. git diff HEAD after the build showed no difference in any of those files, so the committed content is exactly what passed the four checks above; history kept as it is (no rewrite of a pushed commit). schedule.csv row 41 set to published, published_on 2026-10-13; committed with this log as feat(insights): publish social-media-client-approval. watch.csv: no row due on or before 2026-10-13, nothing to recheck. No other schedule row is image_ready.
 2026-10-13T18:14:37+08:00 git push origin main succeeded (05bd159..6b44da5). notify-publish sent for social-media-client-approval (build passed, note with commits 05bd159 and 6b44da5), Resend id 01a134c1-b2d2-7794-800a-3d5981478a7d. Catch-up run complete: one row eligible and published, no watch row due.
+I published the how-to guide `social-media-client-approval` in English, French and Chinese. It's on main and the publish email has been sent. This was a catch-up run, and the run log says so.
+
+- **What was eligible:** only row 41 ("How to get client approval on social content without the email chain"). Its notes carry a drafting instruction, not a decision for you, so it went out. No watch-list row was due today.
+- **Where the earlier attempt stopped:** the 16:30 run had already built the page, its entry in `src/data/howtos.ts`, the French address and the extract. Its translators then stopped after the first of three passes. The runner had overwritten that run's log lines when this run started, so I restored them to the log first.
+- **French and Chinese:** I kept the existing first pass and ran the second and third passes in both languages. I also translated the guide's card and its date on the how-to index. All three dictionaries per language build cleanly and nothing is left untranslated.
+  - Both translators matched the app's own button and menu wording, and quote the app's refusal message word for word. I checked the French one against the app's dictionary. The French help page on validation paraphrased that message, so it now quotes it too.
+  - Both glossaries gained the settled terms for this workflow.
+  - Each language's three change notes are copied into the run log.
+- **Checks:** the French/Chinese completeness check, the i18n guard, the build and `npm run check` all passed: 0 errors, 0 warnings.
+- **Commits:**
+  - While my build was running, another session on this checkout committed and pushed all the files as `05bd159`. After the build they were identical to that commit, so what's live is exactly what passed the checks. I left that commit as it is.
+  - My own commits: `6b44da5` (`feat(insights): publish social-media-client-approval`, which marks the row published on 2026-10-13) and `5af7f01`, which closes the run log. Both are pushed.
+  - The email went out through Resend (id 01a134c1-b2d2-7794-800a-3d5981478a7d).
+- **Addresses:**
+  - English: `/resources/how-to/social-media-client-approval`
+  - French: `/fr/ressources/guides-pratiques/faire-valider-ses-posts-par-le-client-sans-chaine-d-e-mails`
+  - Chinese: `/zh/resources/how-to/social-media-client-approval`
+
+The Gmail, Google Calendar and Google Drive connectors need authorizing in your claude.ai connector settings. This run didn't need them.
+2026-10-13T18:14:50 model Opus 5.5 completed successfully
+2026-10-13T18:14:50 end publish exit 0

@@ -201,3 +201,15 @@ Clients card / New client / Add the client -> “客户”卡片 / “新建客�
 Validate / Send back / Validated / Sent back -> “通过” / “退回” / “已确认” / “已退回”; Submit a new version / What changed -> “提交新版本” / “修改说明”; Waiting for validation -> “待审核”
 Thread -> 讨论串; Message to the validator -> “给审核人的留言”; Send an asset for validation -> “提交素材审核”; Assets to validate / Waiting for me / My requests / All assets -> “待审核素材” / “等我审核” / “我的申请” / “全部素材”
 approval thread -> 审核讨论串; email chain -> 邮件往来; requester -> 申请人; client's people -> 客户方人员; sign-off (prose) -> 拍板 / 确认
+
+## X specs (settled 2026-10-14, x-image-video-specs)
+X's composer -> X 自带的发帖框 (short: 发帖框); composer preview -> 发帖框预览
+Header photo / Profile photo (X slots, app labels) -> 横幅图 / 头像; Header ("banner") -> 横幅图（页头图）
+Image editor, Social panel set to X: Post, wide / Post, square / Post, portrait / One of two -> “帖子 · 横版” / “帖子 · 方形” / “帖子 · 竖版” / “双图之一”
+shape window (single photo, 2:1 to 3:4) -> 比例区间; weight cap -> 文件大小上限
+X Help Center / X ads creative specs / X developer documentation / X engineering blog -> X 帮助中心 / X 广告创意规格 / X 开发者文档 / X 工程博客; X help article titles in 《》 (帮助中心《如何发布照片或 GIF》)
+Premium subscribers / no subscription / Premium or verified (API) -> Premium 订阅用户 / 未订阅 / Premium 或已认证账户
+upload route -> 上传途径; media item (X post) -> 项媒体 (最多 4 项媒体); animated GIF -> GIF 动图; renders static -> 显示为静态图
+saliency algorithm -> 显著性算法; timeline (X) -> 时间线
+"Allow video to be downloaded" (X setting) -> “允许下载视频”
+self-serve advertisers -> 自助投放的广告主; account manager / support ticket -> 客户经理 / 支持工单

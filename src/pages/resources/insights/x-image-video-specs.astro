@@ -1,0 +1,395 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What is the best image size for X in 2026?",
+    "a": "X gives no pixel size for a post photo. Its help center says a single photo shows in full anywhere from 2:1 to 3:4, up to 5MB, as a JPEG, PNG or GIF. A 16:9 landscape such as 1600 by 900 sits well inside that window and is the size hubStudio's Image editor marks Best for an X post."
+  },
+  {
+    "q": "How does X crop a post with several pictures?",
+    "a": "X doesn't publish it. Its help center and developer docs give the limit, four items a post, and say a single photo between 2:1 and 3:4 shows in full. No X page read on October 14, 2026 describes the layout for two, three or four pictures. Keep each subject centered with margin, then check X's composer preview before posting."
+  },
+  {
+    "q": "How long can a video on X be?",
+    "a": "On the web without a subscription, 140 seconds and 512MB, by X's video help. Premium subscribers get far more, but X's pages disagree on how much: under four hours and 16GB on the video help, about three hours and 8GB on the Premium page, 125 minutes through the API. Video ads run up to 2 minutes 20 seconds."
+  },
+  {
+    "q": "What is the X header photo size?",
+    "a": "X recommends 1500 by 500 pixels for the header and 400 by 400 for the profile photo, as JPG, GIF or PNG, with no animated GIF in either slot. The profile photo caps at 2MB. X warns that 60 pixels at the top and bottom of the header could be cropped on some screens, so keep words in the middle."
+  },
+  {
+    "q": "What file types does X accept for images?",
+    "a": "X's help center lists GIF, JPEG and PNG and refuses BMP and TIFF. Its developer documentation adds WEBP for uploads through the API. Photos cap at 5MB; animated GIFs at 5MB on mobile and 15MB on the web. For an image ad, X recommends PNG or JPEG, and a GIF renders as a still."
+  },
+  {
+    "q": "How many pictures can I add to one post on X?",
+    "a": "Four. X's help center allows up to four media items in a post, and the app lets you mix them, for example two photos, a GIF and a video. Through the API, the rule is stricter: four photos, or one animated GIF, or one video. Photos and GIFs don't count against the 280 characters."
+  },
+  {
+    "q": "Can hubStudio post video to X?",
+    "a": "Not yet. hubStudio's X module posts text, one image or two to four pictures, now or on a schedule, to up to 20 accounts. For a video, the Publish manually tab opens X's own composer with your copy in it, and you add the clip there. Posting by hand costs nothing."
+  }
+];
+---
+
+<ArticleLayout slug="x-image-video-specs" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">X doesn't publish a pixel size for a post photo. It publishes a shape window and a weight cap. And three of its own pages disagree on how long a video can run.</p>
+
+  <h2>What is the best X image size in 2026?</h2>
+
+  <p>X image size in 2026 is a window, not a number. X's help center says a single photo shows in full anywhere from 2:1 to 3:4, up to 5MB, as a JPEG, PNG or GIF. A 16:9 frame sits well inside that window, and hubStudio's Image editor marks 1600 by 900 Best for an X post.</p>
+
+  <p>Reviewed October 14, 2026. Every number here comes from X's Help Center, X's ads creative specs or X's developer documentation, read directly that day, plus two dated X blog posts on how it crops images. The help and developer pages carry no date, so each row is dated by the read. Where two X pages disagree, both values are printed and each page is named.</p>
+
+  <h2>X post image specs: files, weight and shape</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">What</th>
+          <th scope="col">X's limit</th>
+          <th scope="col">Source, read October 14, 2026</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">One photo, shape</th>
+          <td>2:1 to 3:4 shown in full</td>
+          <td>Help: How to post photos or GIFs</td>
+        </tr>
+        <tr>
+          <th scope="row">Photo weight</th>
+          <td>5MB</td>
+          <td>Help: How to post photos or GIFs</td>
+        </tr>
+        <tr>
+          <th scope="row">Animated GIF weight</th>
+          <td>5MB on mobile, 15MB on the web</td>
+          <td>Help: How to post photos or GIFs</td>
+        </tr>
+        <tr>
+          <th scope="row">Image files, app</th>
+          <td>GIF, JPEG, PNG; no BMP or TIFF</td>
+          <td>Help: How to post photos or GIFs</td>
+        </tr>
+        <tr>
+          <th scope="row">Image files, API</th>
+          <td>JPG, PNG, GIF, WEBP; GIF up to 15 MB</td>
+          <td>Developer docs: Media best practices</td>
+        </tr>
+        <tr>
+          <th scope="row">GIF frame, API</th>
+          <td>Up to 1280 x 1080 and 350 frames recommended</td>
+          <td>Developer docs: Media best practices</td>
+        </tr>
+        <tr>
+          <th scope="row">Media per post</th>
+          <td>Up to 4 items, mixed (2 photos, 1 GIF, 1 video)</td>
+          <td>Help: How to Post</td>
+        </tr>
+        <tr>
+          <th scope="row">Media per post, API</th>
+          <td>4 photos, or 1 animated GIF, or 1 video</td>
+          <td>Developer docs: Create Posts</td>
+        </tr>
+        <tr>
+          <th scope="row">Characters</th>
+          <td>Photos and GIFs don't count against the 280</td>
+          <td>Help: How to post photos or GIFs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">X's help center says a single photo with a standard aspect ratio, from 2:1 to 3:4, "will display in full," and that what you see in the composer is what you get on X. Read directly from the help article, which carries no date.</blockquote>
+  <p class="source">Source: X Help Center, "How to post photos or GIFs on X," read October 14, 2026. https://help.x.com/en/using-x/posting-gifs-and-pictures</p>
+
+  <p>Many size guides print 1200 by 675 as "the" X post size. You won't find it on X. None of the pages read for this guide gives a pixel size for a post photo; the pixels are your call, as long as the shape stays in the window.</p>
+
+  <p>WebP is the one file conflict. X's developer documentation lists it; the consumer help article lists GIF, JPEG and PNG only. A JPEG or a PNG under 5MB clears both pages.</p>
+
+  <h2>How does X crop a post with two, three or four pictures?</h2>
+
+  <p>X doesn't say. Its pages give the four-item limit and the single-photo window, then point you to the composer preview. None of the X pages read for this guide describes how the timeline lays out or crops two, three or four pictures.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Question</th>
+          <th scope="col">What X's own pages say</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">How many pictures fit?</th>
+          <td>Up to 4 media items in one post</td>
+          <td>Help: How to Post</td>
+        </tr>
+        <tr>
+          <th scope="row">Is one picture cropped?</th>
+          <td>Not if its shape is between 2:1 and 3:4</td>
+          <td>Help: How to post photos or GIFs</td>
+        </tr>
+        <tr>
+          <th scope="row">Very long or very wide?</th>
+          <td>Possible exceptions, presented to keep the focal point</td>
+          <td>X blog, October 1, 2020</td>
+        </tr>
+        <tr>
+          <th scope="row">Two, three or four pictures?</th>
+          <td>No layout or crop published</td>
+          <td>None of the 11 X pages read</td>
+        </tr>
+        <tr>
+          <th scope="row">How do I check?</th>
+          <td>The composer shows what will post</td>
+          <td>Help article; X blog, May 19, 2021</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">X began cropping timeline images with a saliency algorithm in 2018. In 2021 it moved to showing standard aspect ratio photos in full on iOS and Android, launched that to everyone, and added a true preview of the image in the composer, according to its engineering blog.</blockquote>
+  <p class="source">Source: X engineering blog, "Sharing learnings about our image cropping algorithm," May 19, 2021, read October 14, 2026. https://blog.x.com/engineering/en_us/topics/insights/2021/sharing-learnings-about-our-image-cropping-algorithm</p>
+
+  <p>The layout ratios that circulate for multi-picture posts (one set for two, another for three, a grid for four) come from size guides. They don't appear on X's help center, in its developer documentation or on its blog. They are observations, with no X page behind them.</p>
+
+  <p>What works in production instead (this is our practice, not X's spec):</p>
+
+  <ul>
+    <li><strong>Leave room on every side.</strong> Put the subject and any words in the middle of the frame, with margin all round, so a tighter cell can't reach them.</li>
+    <li><strong>Load every picture before you judge.</strong> The composer preview is the only view X stands behind. Read it with all four pictures in place.</li>
+    <li><strong>Reorder in the composer.</strong> On iOS, X's help says you can tap and hold a photo to drag it into a new place once two or more are selected.</li>
+  </ul>
+
+  <h2>How long can a video on X be?</h2>
+
+  <p>For a standard account posting on the web: 140 seconds and 512MB. Past that, the answer depends on how you upload and which X page you believe.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Upload route</th>
+          <th scope="col">Length</th>
+          <th scope="col">Weight</th>
+          <th scope="col">Frame and shape</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Web, no subscription</th>
+          <td>Up to 140 seconds</td>
+          <td>512MB</td>
+          <td>32 x 32 to 1920 x 1200 (or 1200 x 1900); 1:2.39 to 2.39:1; 40 fps; 25 Mbps</td>
+          <td>Help: How to share and watch videos</td>
+        </tr>
+        <tr>
+          <th scope="row">Web, Premium</th>
+          <td>Under 4 hours at 1080p; 2 to 4 hours at 720p</td>
+          <td>16GB</td>
+          <td>As above</td>
+          <td>Help: How to share and watch videos</td>
+        </tr>
+        <tr>
+          <th scope="row">Premium, by the Premium page</th>
+          <td>About 3 hours at 1080p, x.com and iOS only</td>
+          <td>8GB</td>
+          <td>Not stated</td>
+          <td>Help: About X Premium</td>
+        </tr>
+        <tr>
+          <th scope="row">API, default account</th>
+          <td>0.5 seconds to 20 minutes</td>
+          <td>8 GB</td>
+          <td>32 x 32 to 1280 x 1024; 1:3 to 3:1; 60 fps or less</td>
+          <td>Developer docs: Media best practices</td>
+        </tr>
+        <tr>
+          <th scope="row">API, Premium or verified</th>
+          <td>0.5 seconds to 125 minutes</td>
+          <td>16 GB</td>
+          <td>As above</td>
+          <td>Developer docs: Media best practices</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Three X pages give three ceilings for a long video. The video help article says under four hours at 1080p and 16GB for subscribers. The Premium page says about three hours and 8GB. The developer docs say 125 minutes and 16 GB through the API, and add that "Post-video caps match the X app."</blockquote>
+  <p class="source">Source: X Help Center, "How to share and watch videos on X" and "About X Premium"; X developer documentation, "Media best practices"; read October 14, 2026. https://help.x.com/en/using-x/x-videos</p>
+
+  <p>The build that clears every route: H.264 video with AAC audio, 1280 by 720 for landscape (or 720 by 720 square), 30 frames a second, under 140 seconds and under 512MB. Those are the codecs and frames X's developer docs recommend, and they sit inside the web limits too. X's organic help names no container; its ads specs take MP4 or MOV, so an MP4 is the safe export. The docs add that an account without a subscription gets 720p playback. Only subscribers get 1080p back.</p>
+
+  <p>Two behaviors to plan for. Videos of 60 seconds or less loop. And Premium subscribers can download your video unless you switch off "Allow video to be downloaded" while composing; X's help says that setting can't be changed after the post goes out.</p>
+
+  <h2>What is the X header photo size?</h2>
+
+  <p>1500 by 500 pixels, by X's recommendation. The profile photo is 400 by 400.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Slot</th>
+          <th scope="col">Size X recommends</th>
+          <th scope="col">Files and weight</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Header ("banner")</th>
+          <td>1500 x 500</td>
+          <td>JPG, GIF or PNG; no animated GIF; no weight given</td>
+          <td>Help: How to customize your profile</td>
+        </tr>
+        <tr>
+          <th scope="row">Profile photo</th>
+          <td>400 x 400</td>
+          <td>JPEG, GIF or PNG; 2MB; no animated GIF</td>
+          <td>Help: Help with uploading a profile photo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">X's profile help recommends a 1500 by 500 header and a 400 by 400 profile photo, caps the profile photo at 2MB, and says 60 pixels at the top and bottom of the header could be cropped on some monitors and browsers.</blockquote>
+  <p class="source">Source: X Help Center, "Help with uploading a profile photo," read October 14, 2026. https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo</p>
+
+  <p>Keep the header's words and logo inside the middle band, clear of those 60 pixels. X gives no file-size cap for the header itself, so don't trust one you read elsewhere.</p>
+
+  <h2>X ad specs: image, video, vertical video and carousel</h2>
+
+  <p>These are ads only. They live in X's ads creative specs, and they don't track the organic rules above. An organic photo gets a shape window; an image ad gets six named shapes, each with its pixels. A web video upload stops at 512MB; a video ad can weigh 1 GB.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Ad format</th>
+          <th scope="col">Files and weight</th>
+          <th scope="col">Shapes and pixels</th>
+          <th scope="col">Length or count</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Image ad</th>
+          <td>PNG or JPEG recommended; a GIF renders static; 5MB</td>
+          <td>1:1 at 1080 x 1080; 1.91:1 at 2064 x 1080; 16:9 at 1920 x 1080; 9:16 at 1080 x 1920; 4:5 at 1440 x 1800; 2:3 at 1080 x 1620</td>
+          <td>One image</td>
+          <td>X Ads creative specs</td>
+        </tr>
+        <tr>
+          <th scope="row">Video ad</th>
+          <td>MP4 or MOV; 1 GB, under 30 MB recommended; H264, AAC LC</td>
+          <td>1200 x 1200 for 1:1 or 1920 x 1080 for 16:9 recommended</td>
+          <td>15 seconds or less recommended; up to 2:20</td>
+          <td>X Ads creative specs</td>
+        </tr>
+        <tr>
+          <th scope="row">Vertical video ad</th>
+          <td>H264, AAC LC; 25 Mbps max</td>
+          <td>9:16, 720 x 1280 to 1080 x 1920</td>
+          <td>Under 15 seconds recommended; up to 2:20</td>
+          <td>X Ads creative specs</td>
+        </tr>
+        <tr>
+          <th scope="row">Carousel ad</th>
+          <td>Images or videos, one shape per carousel</td>
+          <td>800 x 418 (1.91:1) or 800 x 800 (1:1) recommended for images</td>
+          <td>2 to 6 slides</td>
+          <td>X Ads creative specs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">X's ads specs recommend video ads of 15 seconds or less, support up to two minutes 20 seconds, cap the file at 1 GB and strongly recommend staying under 30 MB. Select advertisers can request up to 10 minutes.</blockquote>
+  <p class="source">Source: X Help Center, "X Ads creative specs," read October 14, 2026. https://help.x.com/en/business-and-advertising/creative-ad-specifications</p>
+
+  <p>Ad copy follows the post rule, 280 characters, and each link takes 23 of them. X recommends a logo held in the upper left of a video ad, plus captions or text overlays. Not every format is open to self-serve advertisers, X notes. For the others, it points you to an account manager or a support ticket.</p>
+
+  <h2>Why X uploads fail</h2>
+
+  <p>Each cause below comes from X's own pages.</p>
+
+  <ul>
+    <li><strong>The wrong file.</strong> BMP and TIFF are refused for posts and image ads.</li>
+    <li><strong>A GIF that doesn't loop.</strong> X shows it as a still image. In an image ad, any uploaded GIF renders static.</li>
+    <li><strong>An animated profile or header.</strong> Neither slot takes an animated GIF, X says.</li>
+    <li><strong>A heavy profile photo.</strong> Over 2MB, it fails.</li>
+    <li><strong>A video past the account's cap.</strong> Through the API, X refuses it at posting time ("This user is not allowed to post a video longer than N minutes"), even when the upload itself went through.</li>
+    <li><strong>Changing your mind on downloads.</strong> The setting is fixed once the post is out. Delete and repost to change it.</li>
+  </ul>
+
+  <h2>How hubStudio posts pictures to X</h2>
+
+  <p>Connect your X account once on My Connections. Then, in the X module, pick a format (Text only, + Image, or + 2 to 4 pictures), write a brief and click Draft with AI, or Write it myself to type the post with no AI run. The X post format skill, picked by default, carries X's posting rules, and the counter counts 280 characters the way X does.</p>
+
+  <p>Pictures come from a render, the Assets Library or an upload. Through hubStudio, X takes JPG, PNG, WebP and GIF up to 5 MB each; an animated GIF up to 15 MB goes out alone, as the only picture of its post.</p>
+
+  <p>The pencil on a picture opens the Image editor on its Social panel, set to X. For a post it offers Post, wide (1600 by 900, marked Best), Post, square, Post, portrait and One of two; Header photo and Profile photo sit on the same list. Crop the picture or fit it whole over a blurred copy, and the editor shows in dashed lines how X crops it beside another picture. Editing is free.</p>
+
+  <p>Publish now or schedule it, on up to 20 accounts. The queue is checked every five minutes, and each post is checked against X's limits again before it goes. A temporary error on X's side is retried, three attempts in all.</p>
+
+  <p>Video is the exception. X takes no video from hubStudio yet, so a clip goes out through X's own composer, which the Publish manually tab opens with your copy in it. The <a href="/app/publish">publishing page of the app</a> covers the other networks.</p>
+
+  <p>Each post sent to X through hubStudio is charged against your prepaid balance, and the price shows before you send. Posting it yourself in X's composer costs nothing. The <a href="/resources/insights/linkedin-post-specs">LinkedIn</a> and <a href="/resources/insights/instagram-post-sizes-2026">Instagram spec guides</a> in the <a href="/resources/specs">platform specs library</a> cover the other feeds. Teams that would rather hand the channel over can brief the <a href="/services/design/social-media">social media design service</a>.</p>
+
+  <h2>Changelog</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">What changed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">October 14, 2026</th>
+          <td>Page reviewed and written. Every row read that day from X's Help Center, X's ads creative specs and X's developer documentation, none of which carries a date. Three video ceilings printed side by side. No multi-picture crop geometry printed: X publishes none. Next review January 16, 2027.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>FAQ</h2>
+
+  <h3>What is the best image size for X in 2026?</h3>
+
+  <p>X gives no pixel size for a post photo. Its help center says a single photo shows in full anywhere from 2:1 to 3:4, up to 5MB, as a JPEG, PNG or GIF. A 16:9 landscape such as 1600 by 900 sits well inside that window and is the size hubStudio's Image editor marks Best for an X post.</p>
+
+  <h3>How does X crop a post with several pictures?</h3>
+
+  <p>X doesn't publish it. Its help center and developer docs give the limit, four items a post, and say a single photo between 2:1 and 3:4 shows in full. No X page read on October 14, 2026 describes the layout for two, three or four pictures. Keep each subject centered with margin, then check X's composer preview before posting.</p>
+
+  <h3>How long can a video on X be?</h3>
+
+  <p>On the web without a subscription, 140 seconds and 512MB, by X's video help. Premium subscribers get far more, but X's pages disagree on how much: under four hours and 16GB on the video help, about three hours and 8GB on the Premium page, 125 minutes through the API. Video ads run up to 2 minutes 20 seconds.</p>
+
+  <h3>What is the X header photo size?</h3>
+
+  <p>X recommends 1500 by 500 pixels for the header and 400 by 400 for the profile photo, as JPG, GIF or PNG, with no animated GIF in either slot. The profile photo caps at 2MB. X warns that 60 pixels at the top and bottom of the header could be cropped on some screens, so keep words in the middle.</p>
+
+  <h3>What file types does X accept for images?</h3>
+
+  <p>X's help center lists GIF, JPEG and PNG and refuses BMP and TIFF. Its developer documentation adds WEBP for uploads through the API. Photos cap at 5MB; animated GIFs at 5MB on mobile and 15MB on the web. For an image ad, X recommends PNG or JPEG, and a GIF renders as a still.</p>
+
+  <h3>How many pictures can I add to one post on X?</h3>
+
+  <p>Four. X's help center allows up to four media items in a post, and the app lets you mix them, for example two photos, a GIF and a video. Through the API, the rule is stricter: four photos, or one animated GIF, or one video. Photos and GIFs don't count against the 280 characters.</p>
+
+  <h3>Can hubStudio post video to X?</h3>
+
+  <p>Not yet. hubStudio's <a href="/help/x">X module</a> posts text, one image or two to four pictures, now or on a schedule, to up to 20 accounts. For a video, the Publish manually tab opens X's own composer with your copy in it, and you add the clip there. Posting by hand costs nothing.</p>
+</ArticleLayout>

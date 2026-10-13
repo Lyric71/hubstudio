@@ -196,3 +196,12 @@ text-to-image (prose) -> texte vers image (« un moteur texte vers image », « 
 route (stock, prompt, own photo) -> voie; product visuals -> visuels produit; SKU (prose) -> référence; mood board -> planche d’ambiance; product page -> fiche produit
 US Copyright Office -> Copyright Office américain; Review Board (Copyright Office) -> commission de réexamen du Copyright Office; Copyright Act -> kept; Supreme Court -> Cour suprême; US Court of Appeals for the D.C. Circuit -> cour d’appel fédérale du district de Columbia; v. / No. -> c. / n° (Thaler c. Perlmutter, n° 23-5233)
 UK advertising regulator -> régulateur britannique de la publicité; its guidance / ruling -> recommandations / décision; dash cam -> caméra embarquée; small print -> mentions en petits caractères
+
+## X specs (settled 2026-10-14)
+X Help Center -> Centre d’aide de X; X developer documentation / developer docs -> documentation développeurs de X; X ads creative specs -> spécifications créatives publicitaires de X (the page: « X Ads creative specs »); X engineering blog -> blog d’ingénierie de X
+X help pages cited as sources: English title kept in « » (the page read is the English one; X’s French help pages could not be confirmed), with a French gloss in parentheses in the Source lines (« How to post photos or GIFs on X » (publier des photos ou des GIF sur X)); table cells: Aide : « How to post photos or GIFs », Documentation développeurs : « Media best practices »
+composer (X) -> éditeur de X; composer preview -> aperçu de l’éditeur; timeline (X) -> fil; saliency algorithm -> algorithme de saillance
+header photo (X) -> photo d’en-tête; header (« banner ») -> en-tête (« bannière »); Image editor X formats Post, wide / Post, square / Post, portrait / One of two / Header photo / Profile photo -> « Post, format large » / « Post, format carré » / « Post, format portrait » / « Duo d’images » / « Photo d’en-tête » / « Photo de profil » (app labels)
+upload route -> voie d’importation; Premium subscriber -> abonné Premium; verified (account) -> vérifié; video loops -> tourne en boucle; renders static (GIF) -> s’affiche figé
+self-serve advertisers -> annonceurs en libre-service; account manager -> gestionnaire de compte; support ticket -> demande d’assistance; Select advertisers -> certains annonceurs
+X settings and API messages quoted verbatim in English in « » (« Allow video to be downloaded » with a French gloss in parentheses)

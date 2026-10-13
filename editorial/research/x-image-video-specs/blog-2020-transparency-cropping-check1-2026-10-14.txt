@@ -1,0 +1,111 @@
+URL: https://blog.x.com/en_us/topics/product/2020/transparency-image-cropping
+Final URL: https://blog.x.com/en_us/topics/product/2020/transparency-image-cropping
+HTTP: 200
+Title: Transparency around image cropping and changes to come
+Captured: 2026-10-13T16:46:43.089Z (headless Chromium, logged out, en-US, each collapsed question clicked open)
+
+Blog
+Blog
+Events
+Product
+Insights
+Company
+Other blogs
+‎English (US)‎ 
+Sign Up
+Product
+Transparency around image cropping and changes to come
+By 
+Parag Agrawal
+ and 
+Dantley Davis
+Thursday, 1 October 2020 
+   
+
+We’re always striving to work in a way that’s transparent and easy to understand, but we don’t always get this right. Recent conversation around our photo cropping methods brought this to the forefront, and over the past week, we’ve been reviewing the way we test for bias in our systems and discussing ways we can improve how we display images on Twitter. So, while there’s a lot still to do, today we want to share how we’re developing a solution for each of these areas. 
+
+How We Tested Our System
+
+We tested the existing machine learning (ML) system that decides how to crop images before bringing it to Twitter, but we should’ve published how we did it at the same time so the analysis could be externally reproducible. This was an oversight.  
+
+The image cropping system relies on saliency, which predicts where people might look first. For our initial bias analysis, we tested pairwise preference between two demographic groups (White-Black, White-Indian, White-Asian and male-female). In each trial, we combined two faces into the same image, with their order randomized, then computed the saliency map over the combined image. Then, we located the maximum of the saliency map, and recorded which demographic category it landed on. We repeated this 200 times for each pair of demographic categories and evaluated the frequency of preferring one over the other.
+
+While our analyses to date haven’t shown racial or gender bias, we recognize that the way we automatically crop photos means there is a potential for harm. We should’ve done a better job of anticipating this possibility when we were first designing and building this product. We are currently conducting additional analysis to add further rigor to our testing, are committed to sharing our findings, and are exploring ways to open-source our analysis so that others can help keep us accountable.
+
+Changes to Come
+
+We are prioritizing work to decrease our reliance on ML-based image cropping by giving people more visibility and control over what their images will look like in a Tweet. We’ve started exploring different options to see what will work best across the wide range of images people Tweet every day. We hope that giving people more choices for image cropping and previewing what they’ll look like in the Tweet composer may help reduce the risk of harm.  
+
+Going forward, we are committed to following the “what you see is what you get” principles of design, meaning quite simply: the photo you see in the Tweet composer is what it will look like in the Tweet. There may be some exceptions to this, such as photos that aren’t a standard size or are really long or wide. In those cases, we’ll need to experiment with how we present the photo in a way that doesn’t lose the creator’s intended focal point or take away from the integrity of the photo. 
+
+Bias in ML systems is an industry-wide issue, and one we’re committed to improving on Twitter. We’re aware of our responsibility, and want to work towards making it easier for everyone to understand how our systems work. While no system can be completely free of bias, we’ll continue to minimize bias through deliberate and thorough analysis, and share updates as we progress in this space.
+
+There’s lots of work to do, but we’re grateful for everyone who spoke up and shared feedback on this. We’re eager to improve and will share additional updates as we have them.
+
+Only on X
+@Twitter
+#OnlyOnTwitter
+ 
+ 
+ 
+More from Product
+New video products make it easier to watch what’s happening on X
+By 
+X
+ on Thursday, 29 September 2022
+How recommendations help you discover more on Twitter
+By 
+X
+ on Tuesday, 20 September 2022
+We’re making images on Twitter more accessible. Here’s how
+Monday, 19 September 2022
+Introducing Twitter Circle, a new way to Tweet to a smaller crowd
+By 
+X
+ on Tuesday, 30 August 2022
+X platform
+X.com
+Status
+Accessibility
+Embed a post
+Privacy Center
+Transparency Center
+Download the X app
+Try Grok.com
+X Corp.
+About the company
+Company news
+Brand toolkit
+Jobs and internships
+Investors
+Help
+Help Center
+Using X
+X for creators
+Ads Help Center
+Managing your account
+Email Preference Center
+Rules and policies
+Contact us
+Developer resources
+Developer home
+Documentation
+Forums
+Communities
+Developer blog
+Engineering blog
+Developer terms
+Business resources
+Advertise
+X for business
+Resources and guides
+X for marketers
+Marketing insights
+Brand inspiration
+X Ads Academy
+
+‎© 2026 X Corp.‎
+
+Cookies
+Privacy
+Terms and conditions

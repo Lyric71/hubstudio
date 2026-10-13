@@ -2626,3 +2626,36 @@ The next edition (published 2025-10-08, fielded June 24 to August 14, 2025, 1,01
 | 46 percent of marketers spend over 40 percent of their time on admin, reviews and approvals; three to six rounds | A creative software vendor's September 2025 release, 400+ Australian respondents | Seller of review and approval tools; Australian sample; admin lumped with reviews | 2026-10-13 |
 | 83 percent of creative projects approved within five rounds; 78 percent within a week | A proofing-software vendor and a trade association, February 2020 | Seller-published, six years old, fieldwork date not stated | 2026-10-13 |
 | Median six hours to approval; 30 to 50 percent shorter approval time; 10 to 15 hours reclaimed per client a month | Scheduler vendor pages | Seller's own data or untraceable, no method | 2026-10-13 |
+
+## Added 2026-10-14 (ledger rows from brief 70, x-image-video-specs)
+
+### X image, video, profile and ad specs (added 2026-10-14, brief 70)
+
+X Help Center and docs.x.com pages carry no date: each row is dated by the
+read. help.x.com refuses a plain fetch (403 challenge), so both checks
+rendered the pages logged out in headless Chromium with every collapsed
+question opened. Captures in `editorial/research/x-image-video-specs/`.
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| A single photo with a standard aspect ratio between 2:1 and 3:4 displays in full; the composer shows what you get | "X Help Center, How to post photos or GIFs on X, read October 14, 2026" | help.x.com/en/using-x/posting-gifs-and-pictures | undated, read 2026-10-14 | primary | 2026-10-14 | 2026-10-14 | 70 |
+| Photos up to 5MB; animated GIFs up to 5MB on mobile and 15MB on web; GIF, JPEG, PNG accepted; BMP and TIFF refused; a non-looping GIF shows static | "X Help Center, How to post photos or GIFs on X, read October 14, 2026" | help.x.com/en/using-x/posting-gifs-and-pictures | undated, read 2026-10-14 | primary | 2026-10-14 | 2026-10-14 | 70 |
+| Up to 4 media items per post, mixed (2 photos, 1 GIF, 1 video); 280 characters | "X Help Center, How to Post, read October 14, 2026" | help.x.com/en/using-x/how-to-post | undated, read 2026-10-14 | primary | 2026-10-14 | 2026-10-14 | 70 (also 65, read 2026-10-11) |
+| API: 4 photos, or 1 animated GIF, or 1 video per Post; images JPG, PNG, GIF, WEBP up to 5 MB; animated GIF up to 15 MB; GIF up to 1280 x 1080 and 350 frames recommended | "X developer documentation, Media best practices and Create Posts, read October 14, 2026" | docs.x.com/x-api/media/quickstart/best-practices; docs.x.com/x-api/posts/create-post | undated, read 2026-10-14 | primary | 2026-10-14 | 2026-10-14 | 70 |
+| API post video: 0.5 s to 20 minutes and 8 GB by default; 0.5 s to 125 minutes and 16 GB for Premium or verified; 32 x 32 to 1280 x 1024; 1:3 to 3:1; 60 fps or less; H264 High Profile, AAC LC; 1280 x 720, 720 x 1280, 720 x 720 recommended; 720p playback without a subscription | "X developer documentation, Media best practices, read October 14, 2026" | docs.x.com/x-api/media/quickstart/best-practices | undated, read 2026-10-14 | primary; conflicts with the two help rows below | 2026-10-14 | 2026-10-14 | 70 |
+| Web video upload: 140 seconds and 512MB without a subscription; Premium under 4 hours at 1080p (2 to 4 hours at 720p), 16GB; 32 x 32 to 1920 x 1200 (or 1200 x 1900), 1:2.39 to 2.39:1, 40 fps, 25 Mbps; videos of 60 seconds or less loop; download setting fixed after posting | "X Help Center, How to share and watch videos on X, read October 14, 2026" | help.x.com/en/using-x/x-videos | undated, read 2026-10-14 | primary | 2026-10-14 | 2026-10-14 | 70 |
+| Premium video uploads about 3 hours and 8GB (1080p), x.com and iOS only | "X Help Center, About X Premium, read October 14, 2026" | help.x.com/en/using-x/x-premium | undated, read 2026-10-14 | primary; conflicts with the two rows above | 2026-10-14 | 2026-10-14 | 70 |
+| Header 1500 x 500 and profile photo 400 x 400 recommended; JPG, GIF or PNG; no animated GIF in either; profile photo max 2MB; 60 px top and bottom of the header could be cropped | "X Help Center, How to customize your profile and Help with uploading a profile photo, read October 14, 2026" | help.x.com/en/managing-your-account/how-to-customize-your-profile; help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo | undated, read 2026-10-14 | primary | 2026-10-14 | 2026-10-14 | 70 |
+| Image ads PNG or JPEG, GIF static, 5MB, six ratios with pixels; video ads MP4 or MOV, 1 GB, under 30 MB recommended, 15 s recommended, up to 2:20 (10 minutes on request); vertical video 720 x 1280 to 1080 x 1920, 25 Mbps; carousel 2 to 6 slides, one ratio, 800 x 418 or 800 x 800; ad copy 280, each link 23 | "X Help Center, X Ads creative specs, read October 14, 2026" | help.x.com/en/business-and-advertising/creative-ad-specifications | undated, read 2026-10-14 | primary | 2026-10-14 | 2026-10-14 | 70 |
+| Saliency crop from 2018; standard aspect ratio photos shown in full on iOS and Android from 2021, launched to everyone, with a true composer preview | "X engineering blog, Sharing learnings about our image cropping algorithm, May 19, 2021" | blog.x.com/engineering/en_us/topics/insights/2021/sharing-learnings-about-our-image-cropping-algorithm | 2021-05-19 | primary | 2026-10-14 | 2026-10-14 | 70 |
+| Composer "what you see is what you get"; exceptions for photos that are not a standard size or are really long or wide | "X blog, Transparency around image cropping and changes to come, October 1, 2020" | blog.x.com/en_us/topics/product/2020/transparency-image-cropping | 2020-10-01 | primary | 2026-10-14 | 2026-10-14 | 70 |
+
+### Do not publish, added from brief 70
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| 1200 x 675 as X's recommended post image size | Size guides across the SERP | No X page gives a pixel size for a post photo; X gives the 2:1 to 3:4 window | 2026-10-14 |
+| Multi-picture layout ratios (7:8 for two, 7:8 plus 4:7 for three, 2:1 cells for four) | Size guides | On no X page read (help, docs, blog); X publishes no multi-picture layout | 2026-10-14 |
+| Header image 5MB cap | Header size pages | No X page gives a header file cap | 2026-10-14 |
+| Link card 1200 x 628 or 1200 x 630 | Size guides | X's cards documentation not reachable on 2026-10-14 (docs.x.com 404); not verified | 2026-10-14 |
+| Android app caps Premium video at 10 minutes | Video tool blog | Not on an X page read | 2026-10-14 |

@@ -20,13 +20,13 @@ export default {
     "x ads image specs",
   ],
   verdict:
-    "STALE AND UNCITED. Tool and marketing blogs recycle 1200 x 675 and 1500 x 500 from the Twitter years, mix ads specs with organic posts, and rarely link to X's own Help Center or Business specs; none explains how X crops several pictures in one post.",
+    "STALE AND UNCITED. Tool and marketing blogs recycle 1200 x 675 and 1500 x 500 from the Twitter years, mix ads specs with organic posts, and rarely link to X's own Help Center or Business specs; none explains how X crops several pictures in one post, and the crop ratios some print for two, three and four pictures appear on no X page (checked 2026-10-14).",
   words: 1500,
   angle:
-    "X's own Help Center and Business specs, read and dated, organic and ads kept apart, plus the thing that actually ruins X images: how a post with two, three or four pictures is cropped in the timeline. Visible Reviewed date, quarterly recheck.",
+    "X's own Help Center and Business specs, read and dated, organic and ads kept apart, plus the thing that actually ruins X images: a post with two, three or four pictures, whose timeline crop X does not publish, so the composer preview and a subject kept clear of the edges are the only reliable method. Visible Reviewed date, quarterly recheck.",
   mustInclude: [
     "Spec table for post images: supported formats, file size limits, recommended ratios, from X Help Center",
-    "Multi-picture posts: up to four pictures, how the timeline crops two, three and four, and how to keep the subject inside the crop",
+    "Multi-picture posts: up to four media items (X Help Center and X developer docs); X publishes no crop geometry for two, three or four pictures (checked 2026-10-14), so say so plainly, give X's composer preview as the check, and keep the subject inside a tighter crop. Never print the per-layout ratios that circulate on third-party guides",
     "Video: formats, length, size and ratio limits from X's own pages, organic and ads separately",
     "Profile photo and header photo sizes from X Help Center",
     "Ads specs from X Business, flagged as ads only",
@@ -50,7 +50,7 @@ export default {
   ],
   assets: [
     "Spec table: surface, ratio, recommended pixels, file limits, source page",
-    "Multi-picture crop table: number of pictures, how each is shown, where to keep the subject",
+    "Multi-picture table: what X's own pages say (up to four media items, a single photo from 2:1 to 3:4 shown whole, the composer preview) against what they do not publish",
     "Video table: organic versus ads, length, size, ratio",
     "Changelog block, dated, updated in place",
   ],
@@ -63,7 +63,7 @@ export default {
   ],
   seoTitle: "X Image and Video Specs for 2026",
   seoDesc:
-    "X post image sizes, multi-picture crops, video limits, profile and header photos for 2026, read from X's own Help Center and Business specs, dated.",
+    "X post image sizes, multi-picture posts, video limits, profile and header photos for 2026, read from X's own Help Center and Business specs, dated.",
   faqs: [
     "What is the best image size for X in 2026?",
     "How does X crop a post with several pictures?",

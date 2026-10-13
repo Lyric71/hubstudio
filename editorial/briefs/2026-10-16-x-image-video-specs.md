@@ -39,13 +39,13 @@ first) and `../SPEC.md`. They override any conflicting rule inside the skill.
 | Hero image | `public/Images/insight-x-image-video-specs.webp`, referenced as `/Images/insight-x-image-video-specs.webp` |
 | Primary query | `X image size 2026` |
 | Secondary queries | `twitter image size 2026`, `x post image aspect ratio`, `x video length and size limit`, `x header photo size`, `x ads image specs` |
-| SERP verdict | STALE AND UNCITED. Tool and marketing blogs recycle 1200 x 675 and 1500 x 500 from the Twitter years, mix ads specs with organic posts, and rarely link to X's own Help Center or Business specs; none explains how X crops several pictures in one post. |
+| SERP verdict | STALE AND UNCITED. Tool and marketing blogs recycle 1200 x 675 and 1500 x 500 from the Twitter years, mix ads specs with organic posts, and rarely link to X's own Help Center or Business specs; none explains how X crops several pictures in one post, and the crop ratios some print for two, three and four pictures appear on no X page (checked 2026-10-14). |
 | Body length | 1,500 words (body only, per the char-count rule) |
 | Slot requirement | Spec table with a source column, visible Reviewed date, dated changelog |
 
 ## The angle
 
-X's own Help Center and Business specs, read and dated, organic and ads kept apart, plus the thing that actually ruins X images: how a post with two, three or four pictures is cropped in the timeline. Visible Reviewed date, quarterly recheck.
+X's own Help Center and Business specs, read and dated, organic and ads kept apart, plus the thing that actually ruins X images: a post with two, three or four pictures, whose timeline crop X does not publish, so the composer preview and a subject kept clear of the edges are the only reliable method. Visible Reviewed date, quarterly recheck.
 
 ## The research gate, before any drafting
 
@@ -88,7 +88,7 @@ than an unsourced one.
 ## Must include
 
 - Spec table for post images: supported formats, file size limits, recommended ratios, from X Help Center
-- Multi-picture posts: up to four pictures, how the timeline crops two, three and four, and how to keep the subject inside the crop
+- Multi-picture posts: up to four media items (X Help Center and X developer docs); X publishes no crop geometry for two, three or four pictures (checked 2026-10-14), so say so plainly, give X's composer preview as the check, and keep the subject inside a tighter crop. Never print the per-layout ratios that circulate on third-party guides
 - Video: formats, length, size and ratio limits from X's own pages, organic and ads separately
 - Profile photo and header photo sizes from X Help Center
 - Ads specs from X Business, flagged as ads only
@@ -116,7 +116,7 @@ Describe each in the ASSET BRIEF block at the end of the file. Do not embed
 images in body copy.
 
 - Spec table: surface, ratio, recommended pixels, file limits, source page
-- Multi-picture crop table: number of pictures, how each is shown, where to keep the subject
+- Multi-picture table: what X's own pages say (up to four media items, a single photo from 2:1 to 3:4 shown whole, the composer preview) against what they do not publish
 - Video table: organic versus ads, length, size, ratio
 - Changelog block, dated, updated in place
 - Feature image: see `../SPEC.md`, saved as `public/Images/insight-x-image-video-specs.webp`.
@@ -150,7 +150,7 @@ Final section only. CTA label: **Create your account**
 | Field | Ceiling | Draft value |
 |---|---|---|
 | Title | 52 chars | X Image and Video Specs for 2026 (32 chars) |
-| Meta description | 152 chars | X post image sizes, multi-picture crops, video limits, profile and header photos for 2026, read from X's own Help Center and Business specs, dated. (147 chars) |
+| Meta description | 152 chars | X post image sizes, multi-picture posts, video limits, profile and header photos for 2026, read from X's own Help Center and Business specs, dated. (147 chars) |
 | Excerpt | 25 words | generate in the SEO iteration |
 
 The draft values above are approved and inside the ceilings. Use them unless
