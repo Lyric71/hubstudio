@@ -23,6 +23,8 @@ const FROM = 'hubStudio Contact <onboarding@resend.dev>';
  *  (bearingbridge.com is a verified Resend domain). */
 const FOLLOW_UP_FROM = 'hubStudio <hello@bearingbridge.com>';
 const FOLLOW_UP_REPLY_TO = 'hello@bearingbridge.com';
+/** Copied on every follow-up, so the team sees what each contact received. */
+const FOLLOW_UP_CC = 'hello@hubstudio.ai';
 const FOLLOW_UP_DELAY_MS = 60 * 60 * 1000;
 
 /** "How do you want to work?" values from the form, and how the email names them. */
@@ -189,6 +191,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const { error } = await resend.emails.send({
       from: FOLLOW_UP_FROM,
       to: email,
+      cc: FOLLOW_UP_CC,
       replyTo: FOLLOW_UP_REPLY_TO,
       subject: followUp.subject,
       html: followUp.html,
