@@ -38,6 +38,7 @@ Client space -> Espace client
 Made for (app label) -> Conçue pour; "Made for a client" (help heading) -> Conçu pour un client
 Validation -> Validation; validator -> validateur
 Send for validation -> Envoyer en validation
+approval thread -> fil de validation (panel « Fil de discussion »); (current) -> « (en cours) »; Submitted / Sent back -> « Proposé » / « Renvoyé »; send the same piece again -> soumettre de nouveau (never « renvoyer », which is Send back); the approval record -> l’historique; refusal quoted verbatim: « Ce contenu a été réalisé pour un autre client. Demandez à l’une des personnes de ce client, ou à un collègue. » (settled 2026-10-13)
 Assets to validate / Waiting for me / My requests / All assets -> Contenus à valider / En attente de moi / Mes demandes / Tous les contenus
 roles Admin / Creator / Viewer / Client -> Administrateur / Créateur / Lecteur / Client
 Activity -> Activité

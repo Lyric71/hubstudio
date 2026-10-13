@@ -1,0 +1,277 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How do agencies get client approval on social media posts?",
+    "a": "Give the client's people their own logins and send each post to one of them on a single thread. In hubStudio, an admin adds the client under Clients, gives its people the Client role, and tags work Made for that client. Send for validation on the post's publishing step names the client's person, who validates it or sends it back with a comment."
+  },
+  {
+    "q": "How do I stop a post being changed after the client approved it?",
+    "a": "Approve a numbered version, not a file in an inbox. Each decision in hubStudio is tied to a version tab, v1, v2 and so on, with its date, so the approval points at the version the client opened. While the post waits, it is locked. To change it after the yes, send it again: it lands on the same thread as a new version for the client to decide on."
+  },
+  {
+    "q": "Can a client approve posts without seeing our other clients' work?",
+    "a": "Yes. A client login sees only what was made for its own company, in its Client space, and only its own company's threads in Validation. A piece made for one client can't be sent to another client's people: the app refuses it and asks for one of that client's people or a colleague."
+  },
+  {
+    "q": "What happens when a client sends a post back?",
+    "a": "They must write a comment to send it back, so the reason is on the record. The post returns to draft, you are emailed, and Submit a new version opens on the same page. You add the new version and say what changed. The status goes back to Waiting for validation, and the client is emailed again."
+  },
+  {
+    "q": "Can the client see what the content cost or how it was made?",
+    "a": "No. The prompts, the engines and the costs stay with your team. A client login holds no balance, sees no prices and spends nothing. It sees the finished work, can download it, comment on it and decide on it when it is the named validator. Its downloads are charged against your team balance, like any download."
+  },
+  {
+    "q": "Can I delete an approval thread?",
+    "a": "No. In hubStudio, nobody can withdraw a request or delete a thread, a version or a comment; the history is kept on purpose. If a request no longer applies, say so in the thread. An admin can still decide in the validator's place, and the validator can be changed."
+  }
+];
+---
+
+<HowtoLayout slug="social-media-client-approval" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">Client approval on social content breaks on two questions: which version the client approved, and whether the post changed after they said yes.</p>
+
+  <h2>What does a social media client approval workflow need?</h2>
+
+  <p>One thread per post, with every version and every decision on it, and a post that cannot move while the client decides. In hubStudio, the client signs in to see only the work made for their company, approves it or sends it back with a comment, and nothing on the thread can be deleted.</p>
+
+  <p>Here is where an email chain and a single approval thread part ways.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Question that starts the dispute</th>
+          <th scope="col">Email chain</th>
+          <th scope="col">One approval thread</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Which version did they approve?</th>
+          <td>The attachment above the reply, if nobody renamed or forwarded it</td>
+          <td>A numbered version tab, v1 or v2, marked Validated with the date</td>
+        </tr>
+        <tr>
+          <th scope="row">Did it change while they decided?</th>
+          <td>Nothing stops an edit</td>
+          <td>The post is locked: no change, no delete, no publish</td>
+        </tr>
+        <tr>
+          <th scope="row">Who saw what?</th>
+          <td>Everyone copied, and anyone they forwarded to</td>
+          <td>The client's people see only their company's work</td>
+        </tr>
+        <tr>
+          <th scope="row">Where is the record?</th>
+          <td>Spread across inboxes, and deletable</td>
+          <td>One page per piece; no version, comment or decision can be deleted</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Where does client approval by email break down?</h2>
+
+  <p>At those two questions, and nobody asks them until something has gone wrong.</p>
+
+  <p>The first is which version was approved. Files get renamed, forwarded and replaced over a week of replies. A "looks good" sits under whichever attachment happened to be above it. Reconstructing the answer means reading the thread backward.</p>
+
+  <p>The second is whether anything changed after the yes. An email reply approves a file at a moment. Nothing in the inbox stops someone fixing a typo, swapping a picture or editing the caption after that moment, and nothing records it.</p>
+
+  <p>One benchmark puts a number on how many marketers feel it.</p>
+
+  <blockquote class="evidence">In an annual benchmark survey of 980 B2B marketers, mostly in North America, 33 percent named managing workflow issues or the content approvals process as a challenge outside content creation, down from 41 percent the year before. The survey does not print the base of the percentage beside the figure.</blockquote>
+  <p class="source">Source: annual B2B content marketing benchmark survey, published October 2024, online questionnaire fielded June 25 to August 16, 2024.</p>
+
+  <p>The fix is a record that cannot be edited and a post that cannot move while it waits. The rest of this guide sets that loop up in the hubStudio app.</p>
+
+  <h2>How do you give a client a login that shows only their work?</h2>
+
+  <p>An admin sets up each client company once, on the Team page.</p>
+
+  <ul>
+    <li>On the Clients card, type the company's name under New client and click Add the client. Two clients of one team can't share a name.</li>
+    <li>Under the client's name, type a person's first name, last name and email, then click Give them a login. They get an invitation by email with the role Client, valid for a week.</li>
+    <li>Tag the work. Pick the client in Made for: in the image or video studio before the run, on a History card at any time, or on a post in a network module.</li>
+  </ul>
+
+  <figure>
+    <img src="/Images/help/your-team-clients.webp" alt="The Clients card: the New client field, a client with its Rename and Delete the client buttons, one login with Pause login, and the form to give its people a login" width="1128" height="437" loading="lazy" decoding="async" />
+    <figcaption>Each client gets its own small form for logins.</figcaption>
+  </figure>
+
+  <p>Nothing reaches a client until it is tagged for them. Your team keeps seeing everything it made, whoever it was made for. Pause login stops one person signing in; Let back in restores them.</p>
+
+  <p>The app charges no subscription and no seat fees, so a login for every approver on the client's side costs nothing.</p>
+
+  <h2>What does the client see when they sign in?</h2>
+
+  <p>Only what you made for their company. The page is titled Made for and the company's name, newest first and grouped by day, with tabs for All, Images, Videos, Posts and Files.</p>
+
+  <p>An image or a video shows as a card with Download. A post takes a whole row: the network, its title and text, its pictures, and where it stands, whether Published, Planned for a date or last Updated.</p>
+
+  <figure>
+    <img src="/Images/help/client-space-home.webp" alt="A client login on its Client space: the menu holds Client space and Validation, the page is titled Made for and the company name, with the All, Images, Videos, Posts and Files tabs and nothing shared yet" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>A client login lands on its Client space, with two entries in the menu.</figcaption>
+  </figure>
+
+  <p>What the client never sees matters as much. The prompts, the engines and the costs stay with your team. A client login holds no balance and sees no prices. When it downloads a file, the download is charged against your team balance, like any download. Its menu holds two entries, Client space and Validation.</p>
+
+  <p>When you need a decision, a card at the top of their space lists what waits, and they get an email with a link.</p>
+
+  <h2>How do you send a post to the client for approval?</h2>
+
+  <p>From wherever you made it. Send for validation sits on a ready tab of the image studio, under each picture, on a ready tab of the video studio, and on the publishing step of a post in each network module.</p>
+
+  <ul>
+    <li>Check the Title. Name the network and the day it should go out.</li>
+    <li>Pick the Validator: a teammate, or one of the client's people, listed under Client: and the company's name.</li>
+    <li>Add a Message to the validator: what to look at, the context, the deadline.</li>
+    <li>Click Send for validation. The thread opens in a new tab, and the validator is emailed.</li>
+  </ul>
+
+  <figure>
+    <img src="/Images/help/validation-send-dialog.webp" alt="The Send for validation dialog: Title, Type, Validator, the asset to upload, paste or link, and an optional message" width="512" height="640" loading="lazy" decoding="async" />
+    <figcaption>A title, a validator, the piece, and a message if you want one.</figcaption>
+  </figure>
+
+  <p>The message is free text, and it does the work a cover email used to do.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Message to the validator, an example</p>
+    <p class="prompt__body">First version of Thursday's launch post for LinkedIn: the copy and one picture. Please check the product name in the first line and the link at the end. We need your decision by Wednesday noon to schedule it for Thursday morning.</p>
+  </div>
+
+  <p>A deadline written there is a sentence for the validator to read, not a date the app tracks. Something made outside the app (a caption in a document, a link to a microsite) goes through Send an asset for validation on the Validation page.</p>
+
+  <p>A piece made for one client can only go to that client's people or to a teammate. Name someone from another client and the app refuses: "This piece was made for another client. Ask one of that client's people, or a colleague."</p>
+
+  <h2>What happens on the approval thread?</h2>
+
+  <p>Everything about one piece stays on one page. Tabs at the top hold each version, v1, v2 and so on, with (current) beside the latest. Each says when it was submitted and by whom, then when it was Validated or Sent back. On the right, the Thread lists every event and comment in order.</p>
+
+  <p>The client decides there. Validate approves the version. Send back asks for changes, and it won't go without a comment, so "not quite" always comes with a reason. Each version gets one decision.</p>
+
+  <p>You answer a send-back with Submit a new version, on the same page, and say What changed. The status returns to Waiting for validation. Sending the same piece again never opens a second thread; it adds a version.</p>
+
+  <figure>
+    <img src="/Images/help/validation-page.webp" alt="The Validation page titled Assets to validate, with the Waiting for me, My requests and All assets tabs and the Send an asset for validation button" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>Three tabs: what waits for you, what you sent, and everything your team sent.</figcaption>
+  </figure>
+
+  <p>Every step sends an email: the validator on each new version, you on each decision, everyone on the thread on each comment. A client's colleague can comment on their company's threads even when someone else is the validator.</p>
+
+  <h2>How do you stop a post changing while the client decides?</h2>
+
+  <p>You don't have to. A post sent for validation shows Waiting for validation in its network module, and the band reads: "Waiting for validation: this post is locked until the validator decides."</p>
+
+  <p>Until then, nobody on your team can change it, delete it or publish it. That includes the colleague who wants to fix the caption while the client is still reading.</p>
+
+  <p>Approved, the post can go out. Sent back, it returns to draft for another round, and the next version goes on the same thread.</p>
+
+  <h2>Who can do what in the approval loop?</h2>
+
+  <p>hubStudio has four roles. Settle this table before you invite the client, because one cell trips teams up.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Action</th>
+          <th scope="col">Admin</th>
+          <th scope="col">Creator</th>
+          <th scope="col">Viewer</th>
+          <th scope="col">Client</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Send a piece, submit a new version</th>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <th scope="row">Comment on a thread</th>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Own company's threads</td>
+        </tr>
+        <tr>
+          <th scope="row">Validate or send back</th>
+          <td>Yes, in the validator's place</td>
+          <td>When named validator</td>
+          <td>No, even when named</td>
+          <td>When named validator</td>
+        </tr>
+        <tr>
+          <th scope="row">Change the validator</th>
+          <td>Yes</td>
+          <td>When requester or validator</td>
+          <td>No</td>
+          <td>No</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>That cell is the Viewer's. A Viewer can be named validator but can't record a decision, so the piece sits until an admin steps in. Name a creator, an admin or one of the client's people instead.</p>
+
+  <h2>Can anyone delete an approval or rewrite the record?</h2>
+
+  <p>No. Nobody can withdraw a request or delete a thread, a version or a comment. The history is kept on purpose. If a request is no longer needed, say so in the thread.</p>
+
+  <p>There are two safety valves. An admin can decide in the validator's place when the validator is away. The requester, the validator or an admin can name another validator; on a client's thread, the list offers your teammates and that client's people.</p>
+
+  <h2>What does client approval cost in hubStudio?</h2>
+
+  <p>Nothing for the round trip itself, and no AI is involved. Two things around it are billed against the prepaid balance as usual: a file you upload to a thread is stored with your team's files and billed as storage, and opening or downloading a file from the thread is billed like any download.</p>
+
+  <h2>What if our studio makes the work?</h2>
+
+  <p>Then the loop doesn't change. When our studio makes the work inside hubStudio, it tags it Made for your company and gives your people client logins, so you approve in the same Validation and Client space. Studio + app also works the other way round: you add our creatives to your own team, and your admins approve.</p>
+
+  <h2>What should you check before the first client round?</h2>
+
+  <ul>
+    <li>The client company exists under Clients, and every approver has a login with the role Client.</li>
+    <li>Every piece for that client is tagged Made for it.</li>
+    <li>The validator can decide: a creator, an admin or the client's person, never a Viewer.</li>
+    <li>The title names the network and the day the post should go out.</li>
+    <li>The message says what to check and by when.</li>
+    <li>A send-back gets a new version on the same thread, with What changed filled in.</li>
+    <li>The post goes out only once the thread reads Validated.</li>
+  </ul>
+
+  <p><a href="/app/review">The review page of the app</a> covers Validation and the Client space. <a href="/help/validation">The Validation help article</a> and <a href="/help/client-space">the Client space help article</a> list every button, <a href="/solutions/agencies">hubStudio for agencies</a> walks through serving several clients from one team, and <a href="/studio/with-the-app">Studio + app</a> explains how our studio works inside the app.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>How do agencies get client approval on social media posts?</h3>
+
+  <p>Give the client's people their own logins and send each post to one of them on a single thread. In hubStudio, an admin adds the client under Clients, gives its people the Client role, and tags work Made for that client. Send for validation on the post's publishing step names the client's person, who validates it or sends it back with a comment.</p>
+
+  <h3>How do I stop a post being changed after the client approved it?</h3>
+
+  <p>Approve a numbered version, not a file in an inbox. Each decision in hubStudio is tied to a version tab, v1, v2 and so on, with its date, so the approval points at the version the client opened. While the post waits, it is locked. To change it after the yes, send it again: it lands on the same thread as a new version for the client to decide on.</p>
+
+  <h3>Can a client approve posts without seeing our other clients' work?</h3>
+
+  <p>Yes. A client login sees only what was made for its own company, in its Client space, and only its own company's threads in Validation. A piece made for one client can't be sent to another client's people: the app refuses it and asks for one of that client's people or a colleague.</p>
+
+  <h3>What happens when a client sends a post back?</h3>
+
+  <p>They must write a comment to send it back, so the reason is on the record. The post returns to draft, you are emailed, and Submit a new version opens on the same page. You add the new version and say what changed. The status goes back to Waiting for validation, and the client is emailed again.</p>
+
+  <h3>Can the client see what the content cost or how it was made?</h3>
+
+  <p>No. The prompts, the engines and the costs stay with your team. A client login holds no balance, sees no prices and spends nothing. It sees the finished work, can download it, comment on it and decide on it when it is the named validator. Its downloads are charged against your team balance, like any download.</p>
+
+  <h3>Can I delete an approval thread?</h3>
+
+  <p>No. In hubStudio, nobody can withdraw a request or delete a thread, a version or a comment; the history is kept on purpose. If a request no longer applies, say so in the thread. An admin can still decide in the validator's place, and the validator can be changed.</p>
+</HowtoLayout>

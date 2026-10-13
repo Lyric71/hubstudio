@@ -195,3 +195,9 @@ US Copyright Office -> 美国版权局; Copyright and Artificial Intelligence, P
 D.C. Circuit -> 哥伦比亚特区巡回上诉法院; Thaler v. Perlmutter -> Thaler 诉 Perlmutter 案; docket No. -> 案卷号
 UK advertising regulator (unnamed) -> 英国广告监管机构; ruling / guidance -> 裁定 / 指引; Commission guidelines on Article 50 -> 欧盟委员会《第 50 条指南》; minor edits -> 轻微编辑
 Buying models (insights category) -> 采购模式; Latest (chip) -> 最新
+
+## Client approval (settled 2026-10-13, social-media-client-approval)
+Clients card / New client / Add the client -> “客户”卡片 / “新建客户” / “添加客户”; Give them a login -> “为其开通登录”; Pause login / Let back in -> “暂停登录” / “恢复登录”
+Validate / Send back / Validated / Sent back -> “通过” / “退回” / “已确认” / “已退回”; Submit a new version / What changed -> “提交新版本” / “修改说明”; Waiting for validation -> “待审核”
+Thread -> 讨论串; Message to the validator -> “给审核人的留言”; Send an asset for validation -> “提交素材审核”; Assets to validate / Waiting for me / My requests / All assets -> “待审核素材” / “等我审核” / “我的申请” / “全部素材”
+approval thread -> 审核讨论串; email chain -> 邮件往来; requester -> 申请人; client's people -> 客户方人员; sign-off (prose) -> 拍板 / 确认

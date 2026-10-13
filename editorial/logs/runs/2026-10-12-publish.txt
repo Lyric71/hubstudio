@@ -291,3 +291,28 @@ why: the repeated « IA à partir de » was a calque of "AI from … AI from"; t
 
 2026-10-12T17:33:49+08:00 npm run i18n:local -- check: ✓ every page is translated in French and Chinese (233 pages). npm run i18n:guard: ✓ 233 English pages with a French address, dictionaries complete. npm run build: passed (prebuild check-content-todo and i18n guard clean; /fr/ressources/analyses/banque-d-images-ou-images-ia and /zh/resources/insights/stock-photos-vs-ai-images built). npm run check: 0 errors, 0 warnings. schedule.csv row 69 set to published, published_on 2026-10-12. Commit follows: feat(insights): publish stock-photos-vs-ai-images.
 2026-10-12T17:34:28+08:00 committed c6f526c feat(insights): publish stock-photos-vs-ai-images (the pre-commit optimizer re-encoded the hero, 63.8 KB to 57.2 KB); git push origin main succeeded (f962bf4..c6f526c). notify-publish sent for stock-photos-vs-ai-images (build passed, note with the commit hash), Resend id 01a12f76-92a1-7bf3-8018-0dfac6048d94. watch.csv: no row due on or before 2026-10-12, nothing to recheck. No other schedule row is image_ready. Run complete.
+I published `stock-photos-vs-ai-images` in English, French and Chinese. It's pushed to main and the publish email has gone out.
+
+- **What was eligible:** one row was ready to publish, row 69, "Stock Photos vs AI Images for Product Content", drafted at 12:36 today. Its notes needed no decision from you. No earlier attempt had left partial work.
+- **Run log fix:** the runner had wiped this morning's publish log when this run started. I restored those lines from git and added this run's lines below them.
+- **The page:** `src/pages/resources/insights/stock-photos-vs-ai-images.astro`, with its entry at the top of `src/data/insights.ts`.
+  - Category is Buying models, so it shows on `/studio`, `/solutions/agencies`, `/pricing` and in the home page's newest four.
+  - All 6 internal links point to pages that exist. The FAQ has 6 questions and the button is "Create your account".
+  - It's dated 2026-10-12, today, rather than the schedule's 2026-10-15.
+  - I checked the hero image against the style guide.
+  - The page shows no app screenshot, so no French or Chinese capture was needed.
+- **French and Chinese:**
+  - The French address is `/fr/ressources/analyses/banque-d-images-ou-images-ia`; Chinese is `/zh/resources/insights/stock-photos-vs-ai-images`.
+  - Two translators ran in parallel, three passes each, covering 159 entries per language: the article, its card, and one tag each on the home page and the insights index.
+  - Both glossaries gained terms for stock licensing and image rights. The Chinese translator also corrected one table heading ("Criterion") that came in already filled with the wrong meaning.
+  - Every `changes.md` is copied into the run log.
+- **Checks and commits:**
+  - The i18n check, the i18n guard, the build and `npm run check` all passed: 0 errors, 0 warnings.
+  - Row 69 is marked published on 2026-10-12.
+  - Two commits went to main: `c6f526c` for the article and `bf9f034` closing the run log.
+  - The email went through Resend (id 01a12f76-92a1-7bf3-8018-0dfac6048d94).
+- **Watch list:** no row was due today or earlier; the next one falls on 2026-10-19.
+
+The Gmail, Google Calendar and Google Drive connectors need authorizing in your claude.ai connector settings. This run didn't use them.
+2026-10-12T17:34:44 model Opus 5.5 completed successfully
+2026-10-12T17:34:44 end publish exit 0

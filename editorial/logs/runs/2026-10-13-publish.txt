@@ -1,0 +1,118 @@
+﻿2026-10-13T16:30:01 start publish (model claude-opus-5-5)
+2026-10-13T16:30:02 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-13T16:31:25+08:00 attempt 1 (Opus 5.5): working tree inspected. No partial publish work found: the uncommitted changes are the 2026-10-13 draft run's outputs (social-media-client-approval draft, research and captures, hero, ledger rows, watch row, schedule row at image_ready, draft log) and the runner's tail on the 2026-10-12 publish log. These are kept and committed with this run.
+2026-10-13T16:31:25+08:00 schedule.csv: one row at image_ready, row 41 social-media-client-approval (brief 68, template howto, publish_date 2026-10-15). Its notes carry a drafting instruction (Viewer in the roles table, which the draft follows), no decision for a person, so it publishes. No other row is image_ready.
+2026-10-13T16:31:25+08:00 watch.csv: no row due on or before 2026-10-13 (the earliest is 2026-10-19).
+2026-10-13T16:31:25+08:00 published row 41 with publish-draft.mjs (the repo's implementation of the createblogarticle publish step; its locale steps skipped, step 4b below): template howto, page src/pages/resources/how-to/social-media-client-approval.astro, entry at the head of src/data/howtos.ts, how-to category Social media (topical tag, same as the two sibling social how-tos), tone orange (alternating with the navy carousel guide), date 2026-10-13 (publish date, not the drafting calendar's 2026-10-15), hand-written alt, 5 links wired (all targets exist: /app/review, /studio/with-the-app, /solutions/agencies, /help/validation, /help/client-space), CTA Create your account, 6 FAQ pairs. The four localized help captures the ASSET BRIEF names (your-team-clients, client-space-home, validation-send-dialog, validation-page; fr and zh on disk and in localized-images.json) are embedded as figures. Showcase clip follows settled fallback 12. Hero checked against the style guide: no text or marks, one window light from the left, natural hand, no AI tells.
+2026-10-13T16:31:25+08:00 French slug: social-media-client-approval -> faire-valider-ses-posts-par-le-client-sans-chaine-d-e-mails (HOWTOS; "post" and "e-mail" per glossary fr.md).
+2026-10-13T16:33:39+08:00 extract (npm run i18n:local -- extract --context .i18n-work/ctx, own dev server on 127.0.0.1:4341): 234 pages, 70799 units, 1209 shared. Pending in fr and zh: social-media-client-approval 103, common 3 (the hero alt, the card title and deck), resources/how-to 2 (date, json-ld description). The extract moved "Action" (now on three pages with the new roles table) from help/validation and help/balance-and-payments into common.json with its translations, and reordered entries in common and work; no translated wording was lost. Moved the earlier pass files of common and resources/how-to to .i18n-work/passes-old-1013 so their indexes cannot merge into today's units. French and Chinese translators launched as two parallel subagents.
+2026-10-13T16:50:39+08:00 the first French and Chinese translator subagents both stopped on the stream watchdog (no progress for 600 s) before writing any pass file; nothing on disk to keep. Relaunched both with the pass 1 split into chunks of about 25 units (pass1-a, pass1-b...), as TRANSLATING.md allows for a long page.
+
+﻿2026-10-13T18:00:15 start publish (model claude-opus-5-5)
+2026-10-13T18:00:16 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-13T18:00:57+08:00 catch-up run (Relaunch-MissedTasks.ps1), attempt 1 (Opus 5.5): restored the 16:30 attempt lines above from 2026-10-13-publish.before-catchup-180014.txt, which the runner wrote aside when it reset this log. The 16:30 attempt stopped after its relaunched translators wrote pass 1 chunks only (fr pass1-a..e, zh pass1-a..d, 16:51-16:52); no pass 2, pass 3 or build. The page, howtos.ts entry, routes.ts slug and extract output are on disk and kept. Resuming at the translation step.
+2026-10-13T18:02:14+08:00 schedule.csv rechecked: row 41 social-media-client-approval is the only row at image_ready (68 published, 73 not_started, none at review, approved or blocked); its notes hold a drafting instruction, no decision for a person. watch.csv: no row due on or before 2026-10-13. English page rechecked: 0 em dash, 0 Han, 0 markers, all 5 internal link targets exist, French slug 59 characters. pending: fr and zh each 108 (social-media-client-approval 103, common 3, resources/how-to 2). The 16:30 pass 1 chunks cover all 103 page units in both languages (fr 5 chunks, zh 4) and are kept; French and Chinese translators relaunched as two parallel subagents for pass 2, pass 3 and changes.md on the page, and all three passes on common and resources/how-to, writing pass 2 and pass 3 in chunks of about 25 units then merging, so no single long write trips the watchdog again.
+2026-10-13T18:09:06+08:00 French translator done: npm run i18n:tx -- build fr: ✓ 110 entries clean (resources/how-to/social-media-client-approval), ✓ 1209 (common), ✓ 33 (resources/how-to); pending fr: nothing pending. Pass 1 kept, pass 2 changed 85 units, pass 3 changed 32. Meaning fixes in pass 2: the refusal message now quotes the app verbatim (checked in reporting-site/src/locales/fr.json line 2380); onglet terminé -> onglet prêt (help page wording); re-sending is « soumettre de nouveau », never « renvoyer » (the Send back label). Same verbatim refusal text applied to src/i18n/dict/fr/pages/help/validation.json, which paraphrased it. Glossary fr.md: one line added (approval thread, (current), Submitted / Sent back, send again, approval record, refusal text), settled 2026-10-13.
+
+--- changes.md fr, resources/how-to/social-media-client-approval ---
+# FR, resources/how-to/social-media-client-approval: pass log
+
+Pass 1 (from an earlier attempt) kept; checked against the English, meaning fixes folded into pass 2.
+
+[meaning] pass1 -> pass2: refusal quoted as « Cette pièce a été conçue pour un autre client. Adressez-vous à l’un de ses collaborateurs… » -> the app's own French, « Ce contenu a été réalisé pour un autre client. Demandez à l’une des personnes de ce client, ou à un collègue. » / why: an app message quoted in « » must be the app's verbatim text.
+[meaning] pass1 -> pass2: « onglet terminé » -> « onglet prêt » / why: settled wording of the Validation help page for a ready tab.
+[meaning] pass1 -> pass2: « quand elle a été Validé ou Renvoyé » -> « puis, une fois la décision prise, Validé ou Renvoyé avec la date » / why: the masculine app labels clashed with a feminine subject.
+[meaning] pass1 -> pass2: « Renvoyer la même pièce n’ouvre jamais un second fil » -> « Soumettre de nouveau la même pièce… » / why: « Renvoyer » is the app's Send back button; re-sending needed another verb.
+[meta] pass1 -> pass3: « La validation client des posts sur un seul fil de discussion : des comptes clients limités à leur travail… » -> « Faire valider ses posts par le client sur un fil unique : accès limités à son travail, chaque version conservée, post verrouillé jusqu’à la décision. » / why: verbal lead; articles dropped in pass 3 to stay under 155 characters.
+[send] pass1 -> pass3: « présentés sous Client : suivi du nom de l’entreprise » -> « regroupés sous la mention « Client : » suivie du nom de l’entreprise » / why: the label's own colon read as sentence punctuation.
+[title] pass1 -> pass2: « Validation client des posts sans e-mails » -> « Validation client des posts, sans e-mails » / why: rhythm within 60 characters.
+[lede] pass1 -> pass3: « achoppe sur deux questions… après son accord » -> « bute sur deux questions… le post a-t-il bougé après son feu vert ? » / why: livelier verbs, no invented « toujours ».
+[h2 1] pass1 -> pass2: « De quoi un circuit de validation client des posts a-t-il besoin ? » -> « Qu’exige un circuit de validation client pour les réseaux sociaux ? » / why: the noun chain read as English.
+[table intro] pass1 -> pass3: « Voici où une chaîne d’e-mails et un fil de validation unique se séparent. » -> « Voici, point par point, ce qui distingue une chaîne d’e-mails d’un fil de validation unique. » / why: calque of "part ways".
+[table] pass1 -> pass3: « A-t-il changé pendant la décision ? » -> « Le post a-t-il changé pendant que le client tranchait ? » / why: ambiguous subject.
+[table] pass1 -> pass3: « Où se trouve la trace ? / Dispersée… et supprimable » -> « Où se trouve l’historique ? / Éparpillé dans les boîtes de réception, et effaçable »; last cell -> « aucune version, aucun commentaire, aucune décision ne s’efface » / why: "record" settled as « historique » across the page; lighter negation.
+[email breaks] pass1 -> pass3: « Un « c’est bon » se retrouve sous la pièce jointe qui se trouvait au-dessus » -> « atterrit sous la pièce jointe qui se trouvait là, juste au-dessus »; « relire le fil à l’envers » -> « remonter le fil à rebours » / why: repetition removed, native image.
+[email breaks] pass1 -> pass2: « La seconde consiste à savoir si… » -> « La seconde : quelque chose a-t-il changé après l’accord ? … et rien n’en garde la trace. » / why: nominal English skeleton.
+[survey] pass1 -> pass3: « comme une difficulté extérieure à la création de contenu » -> « parmi les difficultés qu’ils rencontrent en dehors de la création de contenu »; « l’année précédente » -> « un an plus tôt » / why: idiom; figures unchanged (980, 33 %, 41 %).
+[fix] pass1 -> pass2: « La solution : une trace que l’on ne peut pas modifier… » -> « Le remède tient en deux points : un historique que personne ne peut modifier, et un post qui ne bouge plus tant qu’il attend. » / why: rhythm, active voice.
+[logins] pass1 -> pass2: « Comment donner à un client un compte qui n’affiche que son travail ? » -> « Comment ouvrir à un client un accès limité à son propre travail ? » / why: echoes the app button « Leur ouvrir un accès ».
+[logins] pass1 -> pass3: « Chaque client dispose de son propre petit formulaire pour les comptes. » -> « À chaque client son petit formulaire d’accès. » / why: caption register.
+[logins] pass1 -> pass2: « Rien ne parvient à un client tant que ce n’est pas rattaché à lui. » -> « Tant qu’une pièce ne lui est pas rattachée, le client n’en voit rien. Votre équipe, elle, continue de voir… » / why: English word order.
+[client view] pass1 -> pass3: « et son statut, Publié, Prévu le avec une date, ou Mis à jour » -> « et son état : Publié, Prévu le suivi d’une date, ou Mis à jour avec la date de la dernière modification » / why: clearer label use.
+[client view] pass1 -> pass2: « Les prompts, les moteurs et les coûts restent chez votre équipe » -> « Prompts, moteurs et coûts restent l’affaire de votre équipe » / why: native phrasing, matches the Client space help page.
+[send] pass1 -> pass2: « il remplit le rôle que jouait autrefois l’e-mail d’accompagnement » -> « Ce message, en texte libre, tient lieu de l’ancien e-mail d’accompagnement. »; « Message au validateur, un exemple » -> « Exemple de message au validateur » / why: lighter, native.
+[example] pass1 -> pass3: « Première version du post de lancement de jeudi pour LinkedIn » -> « Première version du post de lancement prévu jeudi sur LinkedIn »; « mercredi à midi » -> « mercredi midi » / why: chained « de » removed.
+[thread] pass1 -> pass2: « Vous répondez à un renvoi avec Proposer une nouvelle version » -> « Pour répondre à un renvoi, ouvrez Proposer une nouvelle version sur la même page et précisez Ce qui a changé. » / why: instruction in the imperative.
+[lock] pass1 -> pass3: « Y compris le collègue qui veut corriger la légende pendant que le client est encore en train de la lire. » -> « Pas même le collègue tenté de corriger la légende alors que le client n’a pas fini de lire. » / why: sharper, no dangling pronoun.
+[roles] pass1 -> pass3: « Arrêtez ce tableau… car une case fait trébucher les équipes » -> « Arrêtez la répartition de ce tableau avant d’inviter le client : une case en particulier prend souvent les équipes en défaut. »; cells « Lorsqu’il est désigné validateur » -> « S’il est désigné validateur », « Non, même lorsqu’il est désigné » -> « Non, même désigné » / why: table cells kept short.
+[delete] pass1 -> pass3: « Il existe deux soupapes de sécurité. » -> « Restent deux soupapes de sécurité. »; « réécrire la trace » -> « réécrire l’historique » / why: native inversion; consistent term.
+[cost] pass1 -> pass2: « Rien pour l’aller-retour lui-même… Deux éléments annexes » -> « L’aller-retour lui-même ne coûte rien, et aucune IA n’intervient. Deux opérations connexes… » / why: full sentence instead of an English fragment.
+[studio] pass1 -> pass2: « vous validez dans les mêmes Validation et Espace client » -> « vous validez dans les mêmes espaces, Validation et Espace client » / why: ungrammatical plural of two labels.
+[checklist] pass1 -> pass3: « chaque valideur » -> « chaque personne appelée à valider »; « marquée Conçue pour lui » -> « lui est rattachée dans Conçue pour »; « avec Ce qui a changé renseigné » -> « avec le champ Ce qui a changé renseigné »; « Le post ne part qu’une fois que le fil de discussion affiche Validé » -> « …qu’une fois le fil passé à Validé » / why: « valideur » is not the app's word; tighter checks.
+[faq] pass1 -> pass2: « si bien que la raison figure dans la trace » -> « Il ne peut le renvoyer sans rédiger un commentaire : le motif reste donc consigné. »; « renvoyez-le » -> « soumettez-le de nouveau » / why: native register; avoids the Send back label.
+[typography] pass1 -> pass3: every « ? : ; % » and « » carries U+00A0 / why: pass 1 had ordinary spaces.
+
+--- changes.md fr, common ---
+# FR, common: pass log, card of social-media-client-approval (hero alt, title, deck)
+
+[alt 616] pass1 -> pass3: « Une main, dans une manche indigo délavée, se pose sur une liasse d’épreuves… sur un bureau en bois usé dans la lumière d’une fenêtre, un radiateur et un thermos à l’arrière-plan. » -> « Sur un bureau en bois patiné, dans la lumière d’une fenêtre, une main sortant d’une manche indigo délavée repose sur une liasse d’épreuves mates d’une tasse en céramique céladon, déployée en éventail, retenue en haut par une pince noire et maintenue à plat par un presse-papiers en verre ; derrière, un radiateur et un thermos. » / why: setting first, as in the sibling alts (« bois patiné »); one chain of participles instead of an English list; checked against the image.
+[title 617] pass1 -> pass2: « Validation client des contenus sociaux sans e-mails » -> « Faire valider ses posts par le client sans chaîne d’e-mails » / why: infinitive title like the sibling guides, matches the French slug faire-valider-ses-posts-par-le-client-sans-chaine-d-e-mails.
+[deck 618] pass1 -> pass3: « Obtenez l’accord du client sur vos posts dans un seul fil : …, le post verrouillé pendant la décision du client, et un historique que personne ne peut effacer. » -> « Faites valider vos posts par le client sur un fil unique : chaque version conservée, le post verrouillé pendant que le client tranche, un historique que nul ne peut effacer. » / why: echoes the title, verbal clause instead of a noun, pass 2's ambiguous « tant qu’il décide » removed.
+
+--- changes.md fr, resources/how-to ---
+# FR, resources/how-to (index): pass log, new card of social-media-client-approval
+
+[date] pass1: « 13 octobre 2026 » / why: same format as the sibling cards (12 août 2026); unchanged in passes 2 and 3.
+[json-ld description] pass1 -> pass2: « La validation client des posts sur un seul fil : des comptes clients limités à leur travail, toutes les versions gardées… » -> « Faire valider ses posts par le client sur un fil unique : des accès limités à son travail, chaque version conservée… » / why: verbal lead like the sibling descriptions, singular client kept consistent.
+[json-ld description] pass2 -> pass3: dropped the articles (« accès limités », « post verrouillé ») / why: under 155 characters, and identical to the guide page's own meta description.
+
+2026-10-13T18:10:25+08:00 Chinese translator done: npm run i18n:tx -- build zh: ✓ 110 entries clean (resources/how-to/social-media-client-approval), ✓ 1209 (common), ✓ 33 (resources/how-to); pending zh: nothing pending. Pass 1 kept (meaning held), pass 2 rewrote 94 units, pass 3 changed 39. App labels aligned to reporting-site zh.json (新建客户, 为其开通登录, verbatim refusal message); the Clients-card capture alt corrected to 新建客户. Glossary zh.md: new section "Client approval (settled 2026-10-13)".
+
+--- changes.md zh, resources/how-to/social-media-client-approval ---
+# zh: resources/how-to/social-media-client-approval
+
+Pass 1 (from an earlier attempt) checked against the English: meaning held throughout. Label fixes came in with pass 2, against the app's zh.json.
+
+[labels] pass1 -> pass2: “新客户” / “为其开通账号” -> “新建客户” / “为其开通登录” / why: the app's own Chinese labels, so the copy matches the screens.
+[labels] pass1 -> pass2: refusal quote “此作品是为另一个客户制作的……” -> “该内容是为另一位客户制作的，请联系该客户的人员或您的同事。” / why: quote the app's message verbatim.
+[seo] pass1 -> pass3: meta “社交帖子的客户审核集中在一个讨论串里……保持锁定” -> “社交帖子交客户审核，一个讨论串走到底：……客户拍板前帖子锁定不动” / why: verb-led, shorter, a 书面 rhythm instead of a noun-heavy sentence.
+[lede] pass1 -> pass3: “往往卡在两个问题上：……以及客户点头之后帖子有没有再改过” -> “最容易在两个问题上出岔子：客户批的究竟是哪一版；客户点头之后，帖子有没有被人再改过” / why: a semicolon splits the two questions; avoids the ambiguous “再被动过” read as 被动.
+[table] pass1 -> pass3: “没有任何机制阻止修改” -> “随时可改，无从拦阻”; “散落在各人的收件箱里，而且可以删除” -> “散落在各人收件箱，随时可删”; “帖子锁定：不能修改、不能删除、不能发布” -> “不能改、不能删、不能发” / why: table cells read as tight parallel phrases, not translated clauses.
+[email breaks] pass1 -> pass2: “要弄清答案，只能把邮件从后往前翻一遍” -> “要还原答案，只能把整串邮件倒着读一遍”; “收件箱里没有任何东西能拦住，也没有任何记录” -> “收件箱既拦不住，也不留痕” / why: stronger verbs, the English “nothing ... and nothing” skeleton dropped.
+[benchmark] pass1 -> pass3: “有一项基准调查，给这种困扰的普遍程度提供了一个数字” -> “有多少营销人员为此头疼，一项基准调查给出了数字” / why: topic first, no nominal chain.
+[benchmark] pass1 -> pass3: “将管理工作流程问题或内容审批流程列为……挑战，低于上一年的 41%” -> “表示，在内容创作之外，工作流程问题或内容审批流程的管理是一大难题；上一年这一比例为 41%” / why: reported-speech structure of a Chinese survey write-up; all figures unchanged (980, 33%, 41%, dates).
+[bridge] pass1 -> pass3: “本指南余下部分，就在 hubStudio 应用中把这个流程搭起来” -> “下文就在 hubStudio 应用中，把这套流程逐步搭建起来” / why: 下文 is the native signpost.
+[client logins] pass1 -> pass3: “每家客户公司只需管理员在团队页面设置一次” -> “每家客户公司只需设置一次，由管理员在团队页面完成” / why: untangles the stacked modifier.
+[client logins] pass1 -> pass3: tagging step rebuilt as three parallel clauses (“在图片或视频工作台里，生成前即可选定；在‘历史记录’的卡片上，随时可选；……同样能选”) / why: the English “in X, on Y or on Z” list read as one long run-on.
+[client logins] pass1 -> pass3: “‘暂停登录’可阻止某人登录，‘恢复登录’则恢复其访问” -> “点击‘暂停登录’可停用某人的登录，点击‘恢复登录’即可恢复” / why: action-led UI phrasing.
+[client logins] pass1 -> pass2: “所以给客户方每位审核人都开一个账号，不花一分钱” -> “客户方每位审核人各开一个账号，分文不花” / why: cut the English “so”, four-character close.
+[client view] pass1 -> pass3: “其空间顶部会出现一张卡片，列出待处理的内容” -> “等客户拍板的事项，会列在其空间顶部的一张卡片上” / why: topic-first Chinese order.
+[sending] pass1 -> pass2: “‘提交审核’按钮分布在……” -> “分布在四处：……” / why: announce the count, then the list, as a Chinese how-to does.
+[sending] pass1 -> pass3: message field “看哪里、背景是什么、截止时间是何时” -> “重点看哪里、有何背景、何时截止” / why: parallel 书面 triplet.
+[message] pass1 -> pass3: “留言是自由填写的文本，承担的正是过去那封附言邮件的作用” -> “留言不限格式，过去靠一封说明邮件交代的事，如今都写在这里” / why: verbal, concrete, no “承担……作用” calque.
+[thread] pass1 -> pass2: “同一件作品的一切都在同一个页面上” -> “一件作品的来龙去脉，全在一个页面上” / why: native idiom instead of “everything about”.
+[thread] pass1 -> pass3: “所以‘还差一点’总会附带理由” -> “因此一句‘还差点意思’背后，总有具体理由”; “不写评论就无法退回” -> “不附评论便无法退回” / why: idiomatic hedge, 书面 connector.
+[lock] pass1 -> pass3: “这一点无须您操心” -> “无须您动手”; banner quote aligned on the app's wording (“等待审核：在审核人做出决定前，该帖子已锁定。”) / why: the lock is automatic, which 动手 says; label fidelity.
+[lock] pass1 -> pass3: “获批后……被退回，则……” -> “获得通过，帖子即可发布；被退回，则回到草稿进入下一轮” / why: balanced paired clauses, 通过 matches the app's button.
+[roles] pass1 -> pass3: H2 “谁能做什么？” -> “谁有权做什么？”; “就是‘查看者’那一格” -> “症结就在‘查看者’那一格”; table cells end on “可以 / 也不行” so each cell reads as a full answer / why: names the problem as a Chinese editor would.
+[record] pass1 -> pass3: H2 “有人能删除审核记录或改写历史吗？” -> “有人能删除审核结果、改写记录吗？”; “历史记录是有意保留的” -> “历史记录有意完整保留” / why: drops the English “is kept on purpose” passive.
+[cost] pass1 -> pass3: “与之相关的两项照常从预付余额中扣费” -> “与之相关的两项费用照常从预付余额中扣除”; H2 “要花多少钱” -> “怎么收费” / why: register of a pricing answer; no amount printed, balance not credits.
+[studio] pass1 -> pass3: “如果作品由我们的工作室制作呢？那么流程不变” -> “如果作品由我们的工作室来做呢？流程照旧” / why: shorter, spoken English “then” dropped.
+[checklist] pass1 -> pass3: H2 “应检查什么？” -> “该逐项核对什么？”; “何时之前给出决定” -> “最晚何时答复” / why: checklist register, concrete deadline wording.
+[faq] pass1 -> pass3: “客户审核帖子时，能否看不到我们其他客户的作品？” -> “让客户审核帖子，又不让他们看到我们其他客户的作品，能做到吗？” / why: the awkward negative-capability question restated as a natural one; answer 可以 still fits.
+[faq] pass1 -> pass3: “客户能看到内容花了多少钱、是怎么做出来的吗？” -> “客户能看到内容的成本和制作过程吗？”; “添加新版本并说明改动之处” -> “补上新版本，写明改了什么” / why: tighter question, verbal answer.
+[alt] existing alt of the Clients card: “新客户输入框” -> “新建客户输入框” / why: matches the app label used in the body.
+
+--- changes.md zh, common ---
+# zh: common (3 units, the social-media-client-approval card and hero alt)
+
+[card title] pass1 -> pass3: “社交内容客户审核，不再靠邮件往来” -> “客户审核社交内容，告别邮件往来” / why: verb-object headline, matches the page title.
+[card deck] pass1 -> pass3: “在一个讨论串里拿到客户对社交帖子的批准：每个版本都留存……记录谁也删不掉” -> “社交帖子交客户确认，一个讨论串即可走完：版本悉数留存，客户拍板前帖子锁定，记录任何人都删不掉” / why: topic first, parallel 四字 rhythm, no “拿到……的批准” calque.
+[hero alt] pass1 -> pass3: one long clause chain (“一只……的手，搭在……上，打样印的是……”) -> setting first (“磨旧的木桌沐着窗光”), then the hand, then the proofs, two sentences / why: Chinese image descriptions set the scene before the subject; every object kept (indigo sleeve, celadon mug proofs, bulldog clip, glass paperweight, radiator, thermos).
+
+--- changes.md zh, resources/how-to ---
+# zh: resources/how-to (2 units, the new card's date and JSON-LD description)
+
+[date] pass1: “2026 年 10 月 13 日” / why: house date format, same as the sibling cards; unchanged in passes 2 and 3.
+[json-ld description] pass1 -> pass3: “社交帖子的客户审核集中在一个讨论串里：客户账号只看得到自己的内容……保持锁定” -> “社交帖子交客户审核，一个讨论串走到底：客户账号只看得到自家作品，每个版本都有存档，客户拍板前帖子锁定不动” / why: same English as the page's meta description, so it carries the page's final wording; verb-led and within the 80-character limit.
+

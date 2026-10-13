@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'social-media-client-approval',
+    image: '/Images/howto-social-media-client-approval.webp',
+    imageAlt:
+      'A hand in a faded indigo sleeve rests on a fanned stack of matte proofs of a celadon ceramic mug, held at the top by a black bulldog clip and pressed flat by a glass paperweight, on a worn wooden desk in window light, a radiator and a thermos behind.',
+    category: 'Social media',
+    tone: 'orange',
+    title: 'Client Approval for Social Content Without Email',
+    deck: 'Get client sign-off on social posts on one thread: every version kept, the post locked while the client decides, and a record nobody can delete.',
+    date: 'October 13, 2026',
+    dateISO: '2026-10-13',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Client Approval for Social Content Without Email | hubStudio',
+    metaDescription:
+      'Client sign-off for social posts on one thread: client logins that see only their work, every version kept, posts locked until the client decides.',
+  },
+  {
     slug: 'carousel-post-guide',
     image: '/Images/howto-carousel-post-guide.webp',
     imageAlt:

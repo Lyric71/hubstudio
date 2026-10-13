@@ -2606,3 +2606,23 @@ Copied from the research file's own ledger section, which carries the full claim
 | Viewers trust human-captured visuals more; AI images convert better | Seller and tool blogs | No study, sample or method | 2026-10-12 |
 | AI images are in the public domain, as a blanket rule | Legal explainers | Overstates the Copyright Office: case by case, human inputs and edits can be protected | 2026-10-12 |
 | A rights-managed price band | None on an open page | Quoted per use only | 2026-10-12 |
+
+
+## Added 2026-10-13 (ledger rows from brief 68, social-media-client-approval)
+
+### Content approvals as a marketing challenge (added 2026-10-13, brief 68)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| 33 percent of B2B marketers named managing workflow issues or the content approvals process as a challenge not related to content creation, down from 41 percent the year before; base of the percentage not printed beside it | "annual B2B content marketing benchmark survey, published October 2024, online questionnaire fielded June 25 to August 16, 2024, 980 B2B respondents mostly in North America" (no organization named on the page) | contentmarketinginstitute.com/b2b-research/b2b-content-marketing-trends-research-2025 (capture in research/social-media-client-approval/) | 2024-10-09 | primary (the survey's own publication), single survey | 2026-10-13 | 2026-10-13 | 68 |
+
+The next edition (published 2025-10-08, fielded June 24 to August 14, 2025, 1,015 B2B respondents) prints no approvals figure, read 2026-10-13. Watch row due 2026-11-16 for the autumn 2026 edition.
+
+### Do not publish, added from brief 68
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| 47 percent of marketers report approval bottlenecks | A ranking vendor page citing the benchmark survey | Misquoted: the survey says 33 percent | 2026-10-13 |
+| 46 percent of marketers spend over 40 percent of their time on admin, reviews and approvals; three to six rounds | A creative software vendor's September 2025 release, 400+ Australian respondents | Seller of review and approval tools; Australian sample; admin lumped with reviews | 2026-10-13 |
+| 83 percent of creative projects approved within five rounds; 78 percent within a week | A proofing-software vendor and a trade association, February 2020 | Seller-published, six years old, fieldwork date not stated | 2026-10-13 |
+| Median six hours to approval; 30 to 50 percent shorter approval time; 10 to 15 hours reclaimed per client a month | Scheduler vendor pages | Seller's own data or untraceable, no method | 2026-10-13 |
