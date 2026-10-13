@@ -27,7 +27,7 @@ Every run is charged against a prepaid balance held in US dollars. You can work 
 1. On the sign-in page, click **Create an account**.
 2. Type your **First name**, **Last name** and **Email**.
 3. Under **How you work**, pick one of the three options:
-   - **Just me**: you create on your own, paid from your own balance, and can invite people later. hubStudio opens a team of one for you, named after you, and you are its administrator.
+   - **Just me**: you create on your own, as a **Creator**, paid from your own balance. No team is created. You can create one later from the **Team** page, and you then become its Admin.
    - **Create a team**: you run it, invite people, and they create from one shared balance. A name field appears: type the name of your team.
    - **Join a team**: "Your team already uses hubStudio: an admin lets you in." A field appears where you type your team's name or your admin's email address.
 4. Tick the box to accept the Terms of Service.

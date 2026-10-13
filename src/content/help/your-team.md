@@ -37,7 +37,7 @@ In hubStudio, a **team** is a group of people who share one balance. Everything 
 
 ## Working alone or in a team
 
-**Working alone?** You are a team of one, and nothing changes for you: the balance you top up pays for what you create. The Team page says **Just you, for now**. Invite someone and they start sharing the balance with you.
+**Working alone?** You need no team. You create as a **Creator**, and the balance you top up pays for what you create. The Team page says **You work on your own**. When you want to work with others, type a **Team name** there and click **Create the team**: you become the team's **Admin**, and the people you invite share the team balance with you.
 
 **In a team**, the page says how many people share the team balance, and lists them under **Members**.
 
