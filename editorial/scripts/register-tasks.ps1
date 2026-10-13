@@ -44,6 +44,9 @@ function Register([string]$Name, [string]$Mode, $Trigger, [bool]$Enabled) {
     -ExecutionTimeLimit (New-TimeSpan -Hours 6) `
     -StartWhenAvailable `
     -WakeToRun `
+    -AllowStartIfOnBatteries `
+    -DontStopIfGoingOnBatteries `
+    -DontStopOnIdleEnd `
     -MultipleInstances IgnoreNew
   Register-ScheduledTask -TaskName $Name -Action $Action -Trigger $Trigger `
     -Settings $Settings -Description "hubStudio editorial pipeline ($Mode)" -Force | Out-Null
