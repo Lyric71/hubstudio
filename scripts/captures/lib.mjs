@@ -19,10 +19,12 @@
  *   scripts/captures/app.mjs   the captures of the app pages (public/Images/app),
  *                              crops of the help captures or of their own shots
  *
- *   node scripts/captures/<group>.mjs [en|fr|zh ...] [--only <name>,<name>]
+ *   node scripts/captures/<group>.mjs [en|fr|zh ...] [--only <name>,<name>] [--retake]
  *
  * Default: French and Chinese. An English capture is taken only when its file
- * is missing; the English files in place are never rewritten.
+ * is missing; the English files in place are never rewritten, unless the run
+ * says --retake (a redesign of the app: `en fr zh --retake` takes the three
+ * languages again).
  * Playwright, Supabase and sharp come from the app repository's help-center
  * folder (support-site), which already depends on them. The demo clips in
  * files/ (.mp4, .webm) are too large for git and stay on this machine only.
@@ -40,6 +42,9 @@ const require = createRequire(`${APP_REPO}/support-site/package.json`);
 const { chromium } = require('playwright');
 const { createClient } = require('@supabase/supabase-js');
 export const sharp = require('sharp');
+// No file cache: on Windows a cached input stays open, and an English file
+// read for its size could not be written again (--retake).
+sharp.cache(false);
 
 export const APP = process.env.APP_URL ?? 'http://127.0.0.1:4324';
 export const SITE_ROOT = resolve(import.meta.dirname, '..', '..');
@@ -89,15 +94,18 @@ async function resetLanguages() {
 /**
  * The menu in the product's own order (this account arranged its own), no
  * staff entry, no dev toolbar, no corner notification: what a team admin sees.
+ * Since 14 October 2026 the menu is three pillars (Create, Publish, Library),
+ * each with its own list of modules: every list is put back in its default
+ * order, and the pillars too.
  */
 export async function tidy(page) {
   await page
     .evaluate(() => {
       document.querySelectorAll('astro-dev-toolbar').forEach((e) => e.remove());
-      const groups = [...document.querySelectorAll('.sn-group[data-default-index]')];
-      if (groups.length) {
-        const parent = groups[0].parentElement;
-        const mine = groups.filter((g) => g.parentElement === parent);
+      const SORTED = '.sn-group[data-default-index], .sn-pillar[data-default-index]';
+      const parents = new Set([...document.querySelectorAll(SORTED)].map((g) => g.parentElement));
+      for (const parent of parents) {
+        const mine = [...parent.children].filter((c) => c.matches(SORTED));
         const anchor = mine[mine.length - 1].nextSibling;
         [...mine].sort((a, b) => Number(a.dataset.defaultIndex) - Number(b.dataset.defaultIndex)).forEach((g) => parent.insertBefore(g, anchor));
       }
@@ -118,6 +126,37 @@ export async function click(page, sel, wait = 700) {
   await t.waitFor({ state: 'visible', timeout: 30000 });
   await t.click().catch((e) => (/intercepts pointer|outside of the viewport/.test(e.message) ? t.dispatchEvent('click') : Promise.reject(e)));
   await page.waitForTimeout(wait);
+}
+
+/**
+ * The demo team's files only. The BearingBridge team in hubStudio also holds
+ * real members working on real clients' files (October 2026: renders and
+ * pictures made for a client); a capture shows the demo people's files alone
+ * (Maya Chen's set and the admin's), never theirs.
+ */
+const DEMO_PEOPLE = /@bearingbridge\.(com|test)$/i;
+export function demoFilesOnly(d) {
+  if (!Array.isArray(d?.files)) return d;
+  const gone = d.files.filter((f) => f.uploadedByEmail && !DEMO_PEOPLE.test(f.uploadedByEmail));
+  if (!gone.length) return d;
+  const bytes = gone.reduce((n, f) => n + (Number(f.sizeBytes ?? f.size) || 0), 0);
+  return {
+    ...d,
+    files: d.files.filter((f) => !gone.includes(f)),
+    usage: d.usage && { ...d.usage, files: d.usage.files - gone.length, bytes: d.usage.bytes - bytes, totalBytes: d.usage.totalBytes - bytes },
+  };
+}
+
+/**
+ * Every shot's API rewrites: its own, with /api/files cut to the demo team's
+ * files first (demoFilesOnly) whatever the shot asks.
+ */
+function withDemoFiles(routes = []) {
+  const own = routes.find((r) => r.path === '/api/files' && (r.method ?? 'GET') === 'GET');
+  const files = own?.transform
+    ? { ...own, transform: (d) => own.transform(demoFilesOnly(d)) }
+    : own ?? { path: '/api/files', transform: demoFilesOnly };
+  return [...routes.filter((r) => r !== own), files];
 }
 
 /**
@@ -149,7 +188,9 @@ async function applyRoutes(ctx, routes) {
  * fixtures), upload {input, file}, wait (selector), esc (press Escape after
  * load, default true), steps (async (page, lang) => {}), css, element
  * (selector screenshotted alone), clip (object or async page => object),
- * full (whole page).
+ * full (whole page), folded (pillars of the menu folded, as
+ * bbg.nav.folded keeps them: ["create", "publish"]; the pillar of the
+ * current page never folds).
  */
 export async function capture(browser, shot, lang, extra = {}) {
   const s = shot.signedOut ? null : await sessionOf(shot.as ?? ADMIN);
@@ -162,21 +203,26 @@ export async function capture(browser, shot, lang, extra = {}) {
     colorScheme: 'light',
   });
   try {
-    await applyRoutes(ctx, shot.routes);
+    await applyRoutes(ctx, withDemoFiles(shot.routes));
     await ctx.addCookies([
       ...(s ? [{ name: 'bbg_at', value: s.access_token, url: APP }] : []),
       { name: 'bbg_lang', value: lang, url: APP },
     ]);
     if (s) {
       await ctx.addInitScript(
-        ([a, r]) => {
+        ([a, r, folded]) => {
           localStorage.setItem('bbg_auth', 'true');
           localStorage.setItem('bbg_session', a);
           localStorage.setItem('bbg_refresh', r);
           // No theme stored: Appearance reads System, drawn light (colorScheme).
           localStorage.removeItem('bbg.theme');
+          // Every pillar of the menu open (unless the shot folds some, see
+          // `folded`), the menu pinned at full width.
+          if (folded.length) localStorage.setItem('bbg.nav.folded', JSON.stringify(folded));
+          else localStorage.removeItem('bbg.nav.folded');
+          localStorage.removeItem('bbg.nav.pinned');
         },
-        [s.access_token, s.refresh_token],
+        [s.access_token, s.refresh_token, shot.folded ?? []],
       );
     }
     const page = await ctx.newPage();
@@ -210,13 +256,18 @@ export async function capture(browser, shot, lang, extra = {}) {
   }
 }
 
-/** Command line: languages (default fr zh) and --only <name,...>. */
+/**
+ * Command line: languages (default fr zh), --only <name,...>, and --retake,
+ * which takes the English file again although it is in place (the app's
+ * design changed): the English file still sets the frame, as it is read
+ * before it is rewritten.
+ */
 export function parseArgs() {
   const args = process.argv.slice(2);
   const oi = args.indexOf('--only');
   const only = oi > -1 ? args[oi + 1].split(',') : null;
   const langs = args.filter((a) => ['en', 'fr', 'zh'].includes(a));
-  return { only, langs: langs.length ? langs : ['fr', 'zh'] };
+  return { only, langs: langs.length ? langs : ['fr', 'zh'], retake: args.includes('--retake') };
 }
 
 /** x.png, x.fr.png, x.zh.png (any extension). */
@@ -228,7 +279,7 @@ export const localized = (file, lang) => (lang === 'en' ? file : file.replace(/\
  * when its file is missing.
  */
 export async function run(shots, make) {
-  const { only, langs } = parseArgs();
+  const { only, langs, retake } = parseArgs();
   const list = only ? shots.filter((s) => only.includes(s.name)) : shots;
   let browser = null;
   let failed = 0;
@@ -242,7 +293,7 @@ export async function run(shots, make) {
       browser = await chromium.launch({ channel: process.env.CAPTURE_CHANNEL ?? 'msedge', args: [`--lang=${BROWSER_LOCALE[lang]}`] });
       for (const shot of list) {
         const out = shot.out(lang);
-        if (lang === 'en' && existsSync(out)) {
+        if (lang === 'en' && existsSync(out) && !retake) {
           console.log('keep', lang, shot.name, '(English capture in place)');
           continue;
         }

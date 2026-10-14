@@ -54,7 +54,7 @@ const SHOTS = {
   generate: { shot: 'generate', width: 1152, height: 518 },
   edit: { shot: 'edit', width: 1200, height: 750 },
   campaigns: { shot: 'campaigns', width: 1200, height: 443 },
-  publish: { shot: 'publish', width: 1144, height: 874 },
+  publish: { shot: 'publish', width: 1144, height: 890 },
 };
 
 const COPY: Record<Locale, Copy> = {

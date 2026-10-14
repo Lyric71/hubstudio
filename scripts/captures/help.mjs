@@ -68,6 +68,12 @@ const northwind = {
   },
 };
 
+/** The client space with nothing shared yet: no file, no post, no review. */
+const nothingShared = {
+  path: '/api/client',
+  transform: (d) => ({ ...d, files: [], posts: [], reviews: [] }),
+};
+
 /** A clip around an element, padded (page coordinates, the page not scrolled). */
 const around = (sel, pad = 0, size) => async (page) => {
   const r = await page.locator(sel).first().boundingBox();
@@ -491,7 +497,9 @@ const shots = [
   { name: 'your-team-invoices-and-sign-in', route: '/team', routes: [teamJustYou, northwind], steps: scrollTo('#billing', 120), element: '#billing' },
 
   // Client space: Dana Whitfield, the login of the team's client Northwind Foods, nothing shared yet.
-  { name: 'client-space-home', route: '/client', as: DANA },
+  // Since October 2026 a real member of the team makes real work for that
+  // client: the capture keeps the space as the English text shows it, empty.
+  { name: 'client-space-home', route: '/client', as: DANA, routes: [nothingShared] },
 ].map((s) => ({ ...s, out: (lang) => join(HELP_IMAGES, lang === 'en' ? `${s.name}.png` : `${s.name}.${lang}.png`) }));
 
 export { shots };

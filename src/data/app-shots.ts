@@ -25,9 +25,9 @@ export const appShots = {
   exploreApp: {
     src: '/Images/app/exploreApp.webp',
     width: 1440,
-    height: 505,
-    alt: 'The hubStudio app with its side menu open on Explore, listing Campaigns, Image, Video, LinkedIn, Instagram, Facebook, TikTok, X, YouTube, Assets Library, Image editor, Image anonymizer, Video editor, Shorts autopilot, History and Skills, next to the Explore banner and the first row of engine cards.',
-    caption: 'hubStudio with its side menu: Explore and Campaigns, the two studios, the social networks, then the library and its tools.',
+    height: 640,
+    alt: 'The hubStudio app open on Explore, its side menu in three pillars: Create with Explore, Image, Video, Image editor, Image anonymizer, Video editor and Shorts autopilot; Publish with Campaigns, LinkedIn, Instagram, Facebook, TikTok, X and YouTube; Library with Assets Library, History, Validation and PDF. Beside it, the Explore banner and the first row of engine cards.',
+    caption: 'hubStudio with its side menu in three pillars: Create, Publish and Library.',
   },
   imageStudio: {
     src: '/Images/app/imageStudio.webp',
@@ -305,7 +305,7 @@ export const appShots = {
   publishStep: {
     src: '/Images/app/publishStep.webp',
     width: 1144,
-    height: 874,
+    height: 890,
     alt: 'The Publishing step of an Instagram post in hubStudio: the Publish automatically and Publish manually tabs, a card explaining that publishing for you needs a connected account with a Connect an account button, the Where it stands block, and the post previewed on a phone with Save and Send for validation under it.',
     caption: 'The publishing step: the app posts it for you, or you post it yourself, with the post on a phone beside it.',
   },
@@ -346,8 +346,8 @@ export const appShots = {
   },
   security: {
     src: '/Images/app/security.webp',
-    width: 888,
-    height: 434,
+    width: 904,
+    height: 435,
     alt: 'The Sign-in and security card in hubStudio’s settings, with the Login email, Password and Sign-in code tabs, the New email and Current password fields, and Update email.',
     caption: 'Sign-in and security: your email, your password and the sign-in code.',
   },
@@ -360,7 +360,7 @@ export const appShots = {
   },
   digest: {
     src: '/Images/app/digest.webp',
-    width: 888,
+    width: 904,
     height: 413,
     alt: 'The Weekly digest card in hubStudio’s settings: Send me the weekly digest of what’s new and Email me when a new AI model is added, both on, with See what’s new and Manage all your emails.',
     caption: 'Weekly digest: the week’s changes every Monday, and a note when a new model arrives.',

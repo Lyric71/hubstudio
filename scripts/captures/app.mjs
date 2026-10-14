@@ -77,7 +77,10 @@ const shots = [
   { name: 'connections', from: 'account-and-sign-in-my-connections', width: NARROW, wide: { fr: 1560 }, crop: { en: MAIN(76, 730), fr: [260, 76, 1548, 807], zh: MAIN(76, 649) }, extend: 'copy' },
 
   // The localized help capture itself, cropped or whole.
-  { name: 'validation', file: 'validation-page', crop: [0, 68, 1440, 452] },
+  // Validation selected in the menu: since the three pillars (14 October
+  // 2026) it sits in Library, below the cut, so Create and Publish are folded
+  // and Library shows its four modules under their headings.
+  { name: 'validation', own: { route: '/validation', folded: ['create', 'publish'] }, crop: [0, 68, 1440, 452] },
   { name: 'clientSpace', file: 'client-space-home', crop: [0, 68, 1440, 386] },
   // Campaigns (8 October 2026): under the top bar (the balance stays out),
   // the list with the side menu, the campaign's page on its main column.
@@ -101,19 +104,17 @@ const shots = [
   { name: 'videoSave', file: 'video-editor-save', quality: 86 },
 
   // Shots of their own, at 2x, brought back to 1x.
-  // Explore with the menu in its default order (the Agents group kept out,
-  // as in help.mjs getting-started-menu).
+  // Explore with the menu in its default order: its three pillars, Create,
+  // Publish and Library, down to PDF (14 October 2026; Agents and Skills sit
+  // in the top bar, above the cut).
   {
     name: 'exploreApp',
     own: {
       route: '/explore',
       dpr: 2,
-      steps: async (p) => {
-        await p.evaluate(() => document.querySelector('.sn-group[data-key="agents"]')?.remove());
-        await p.waitForTimeout(2500);
-      },
+      steps: (p) => p.waitForTimeout(2500),
     },
-    crop: [0, 65, 1440, 570],
+    crop: [0, 65, 1440, 705],
     quality: 86,
   },
   {
