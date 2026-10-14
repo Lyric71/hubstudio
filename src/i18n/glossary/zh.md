@@ -19,8 +19,10 @@ credits -> 额度 (app); AI credits -> AI 额度
 Explore -> 探索
 Image studio / Video studio -> 图片工作台 / 视频工作台 (never 工作室, which is the agency)
 History -> 历史记录
+Discovery (page a first sign-in opens on) -> 功能总览 (Welcome aboard: “欢迎加入”; quick tour: 快速导览, Take the quick tour: “开始快速导览”; Show in the menu: “在菜单中定位”); tips after sign-in -> 小贴士 (Never see this again: “不再显示”; Show me: “带我去看”) (settled 2026-10-14)
 Skills / Skills Catalog / Team skills -> 技能 / 技能目录 / 团队技能
 Assets Library -> 素材库
+App pillars (menu headings, home page, header App panel) Create / Publish / Library -> 创作 / 发布 / 管理 (Library is 管理, never 素材库, which is the Assets Library module inside it); AI layer (Agents and Skills, across the three) -> AI 层; pillar -> 支柱; PDF (module, eight PDF tools) -> PDF; home tour group Manage (the account) -> 账户与支付, kept apart from 管理 (settled 2026-10-14)
 Campaigns (Assets Library) -> 营销活动, never 广告系列 (Add to a campaign / Add to campaign: “加入营销活动”; Add assets: “添加素材”; In this campaign: “此营销活动中”; Open in its module / In the library / Remove: “在所属模块中打开” / “在素材库中查看” / “移除”; Campaign menu of a creation form: “营销活动”, set to “不加入营销活动”; library filter In no campaign: “未加入营销活动”; Context folder from the Assets Library: “素材库中的上下文文件夹”)
 Agents -> 智能体 (My agents / Team agents / Catalog / Runs: “我的智能体” / “团队智能体” / “目录” / “运行记录”; Agents Command Room: “智能体指挥室”; Social publishing watcher: “社交发布监测”; finding: “发现”; Run now: “立即运行”)
 Picture versions / Use this version (social post) -> “图片版本” / “使用此版本”

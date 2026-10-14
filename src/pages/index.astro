@@ -12,9 +12,12 @@
  *  - Tactile components: 3D pointer tilt, magnetic buttons, pointer glow,
  *    tabbed audience switcher. All gated on prefers-reduced-motion.
  *
- * Hero (app capture) . The app (module tour) . Engines . Ways to work .
- * The studio . Services (bento) . Studio + app . Selected work .
- * Who it's for (tabs) . Pricing . Manifesto . Insights . Closing (DualCta).
+ * Hero (app capture) . The app's three pillars (Create, Publish, Library,
+ * each in its colour) . The AI layer (Agents and Skills, across the three) .
+ * Inside the app (module tour, grouped by pillar) . Engines . What's new .
+ * Ways to work . The studio . Services (bento) . Studio + app . Selected
+ * work . Who it's for (tabs) . Pricing . Manifesto . Insights . Closing
+ * (DualCta).
  *
  * Insights: the first four entries of src/data/insights.ts, lead plus grid,
  * never a hard-coded slug (CLAUDE.md, Insights distribution).
@@ -34,8 +37,107 @@ import { APP_URL, APP_SIGNUP, APP_SIGNIN, BRIEF_URL, HELP_URL } from '../lib/lin
 const SITE = 'https://www.hubstudio.ai';
 
 /*
+ * The app's three pillars, as its own menu groups them, each module linked
+ * to the page of this site that covers it (PDF has none, so it is named
+ * without a link). The colours are the --pillar-* tokens of global.css.
+ */
+type PillarKey = 'create' | 'publish' | 'library';
+type PillarModule = { name: string; text: string; href?: string };
+type Pillar = {
+  key: PillarKey;
+  name: string;
+  summary: string;
+  link: { label: string; href: string };
+  modules: PillarModule[];
+};
+const pillars: Pillar[] = [
+  {
+    key: 'create',
+    name: 'Create',
+    summary: 'Make the picture or the clip, then finish it in the browser.',
+    link: { label: 'How making works', href: '/app/create' },
+    modules: [
+      { name: 'Explore', text: 'Every engine, side by side', href: '/app/engines' },
+      { name: 'Image', text: 'Text to image, edits, upscale to 4K', href: '/app/create#image-studio' },
+      { name: 'Video', text: 'A clip from words, a frame or references', href: '/app/create#video-studio' },
+      { name: 'Image editor', text: 'Crop, light, text and logo, free', href: '/app/image-tools#image-editor' },
+      { name: 'Image anonymizer', text: 'Hidden data out, nothing uploaded', href: '/app/image-tools#image-anonymizer' },
+      { name: 'Video editor', text: 'Cut and caption for each network, free', href: '/app/video-tools#video-editor' },
+      { name: 'Shorts autopilot', text: 'A long video, cut into shorts', href: '/app/video-tools#shorts-autopilot' },
+    ],
+  },
+  {
+    key: 'publish',
+    name: 'Publish',
+    summary: 'Turn the work into posts and send them from your own accounts.',
+    link: { label: 'How publishing works', href: '/app/publish' },
+    modules: [
+      { name: 'Campaigns', text: 'One launch under one name and brief', href: '/app/campaigns' },
+      { name: 'LinkedIn', text: 'Profiles and company pages', href: '/app/publish#linkedin' },
+      { name: 'Instagram', text: 'Feed, Story and Reel', href: '/app/publish#instagram' },
+      { name: 'Facebook', text: 'Pages, with a first comment', href: '/app/publish#facebook' },
+      { name: 'TikTok', text: 'A script, then the clip (Beta)', href: '/app/publish#tiktok' },
+      { name: 'X', text: 'Posts and threads', href: '/app/publish#x' },
+      { name: 'YouTube', text: 'Ready for YouTube Studio', href: '/app/publish#youtube' },
+    ],
+  },
+  {
+    key: 'library',
+    name: 'Library',
+    summary: 'Every file, every render and every approval, kept for the team.',
+    link: { label: 'The Assets Library', href: '/app/library' },
+    modules: [
+      { name: 'Assets Library', text: 'The team’s files in folders', href: '/app/library#assets-library' },
+      { name: 'History', text: 'Every render, with its prompt', href: '/app/create#history' },
+      { name: 'Validation', text: 'Approval from a teammate or a client', href: '/app/review#validation' },
+      { name: 'PDF', text: 'Eight PDF tools in the browser' },
+    ],
+  },
+];
+
+/*
+ * The AI layer: Agents and Skills, the header band of the app, never a
+ * pillar. Each card says where it reaches; the rails underneath say what it
+ * does in each pillar. Facts from src/content/help/agents.md and skills.md.
+ */
+const aiLayer = [
+  {
+    id: 'skills',
+    hook: 'The third time you paste the same house rules into a prompt.',
+    name: 'Skills',
+    body: 'A skill is a set of instructions the AI follows every time, in Improve with AI and in post drafts. Take one from the Catalog, such as packshot, lifestyle scene or a format per network, write your own, or follow the Team skills your admins write.',
+    reach: ['create', 'publish'] as PillarKey[],
+    link: { label: 'How skills work', href: '/app/create#skills' },
+  },
+  {
+    id: 'agents',
+    hook: 'Instagram has been quiet for ten days. Who noticed?',
+    name: 'Agents',
+    body: 'An agent re-reads part of your team’s work on a schedule and reports what changed, with real dates, networks and post titles, and a next step. Run it now or let it run on its own, with the results by email. A run with nothing new to read costs nothing.',
+    reach: ['publish', 'library'] as PillarKey[],
+    link: { label: 'Read the Agents guide', href: '/help/agents' },
+  },
+];
+const aiRails: { key: PillarKey; text: string }[] = [
+  {
+    key: 'create',
+    text: 'Skills ride along with Improve with AI, which rewrites your prompt for the engine you picked.',
+  },
+  {
+    key: 'publish',
+    text: 'Each network drafts to its own format skill, and the Social publishing watcher reads every network about once a day.',
+  },
+  {
+    key: 'library',
+    text: 'An agent you build can read your campaigns, folders and documents, then email what it found.',
+  },
+];
+const pillarName = (k: PillarKey) => pillars.find((p) => p.key === k)!.name;
+
+/*
  * The app tour: ten modules, the /app pages plus Social networks and Account,
- * and every feature of each module with its own real capture. A feature opens
+ * grouped under the three pillars, and every feature of each module with its
+ * own real capture. A feature opens
  * on a hook (the moment it answers, in the reader's words or as a situation),
  * then its name, then two plain sentences. Every fact is taken from the help
  * center (src/content/help), as the /app pages are. Without JavaScript
@@ -63,7 +165,7 @@ type Module = {
 const modules: Module[] = [
   {
     id: 'create',
-    name: 'Create',
+    name: 'Studios',
     lede: 'The Image and Video studios run the engines you pick in Explore. The price shows before every run, and a failed run is never charged.',
     link: { label: 'How making works', href: '/app/create' },
     features: [
@@ -82,14 +184,6 @@ const modules: Module[] = [
         body: 'Start a clip from words, from a start frame (or a start and a last frame), or from pictures, clips and sound to imitate. Clips go up to 4K and, on some engines, up to 30 seconds, with generated sound where the engine offers it.',
         shot: appShots.videoStudio,
         path: '/content/video',
-      },
-      {
-        id: 'skills',
-        hook: 'The third time you paste the same house rules into a prompt.',
-        name: 'Skills',
-        body: 'A skill is a set of instructions the AI follows every time, in Improve with AI and in post drafts. Take one from the Catalog, such as packshot, lifestyle scene or a format per network, write your own, or follow the Team skills your admins write.',
-        shot: appShots.skillsCatalog,
-        path: '/skills/catalog',
       },
     ],
   },
@@ -130,79 +224,6 @@ const modules: Module[] = [
         body: 'Compare models lays the text models your team allows side by side on public scores, from the Intelligence Index to LMArena, each linked to its source. A dash means there’s no public figure: no score is ever estimated.',
         shot: appShots.benchmarks,
         path: '/settings/model-benchmarks',
-      },
-    ],
-  },
-  {
-    id: 'library',
-    name: 'Library',
-    lede: 'Where everything the team makes or uploads ends up, with the prompt that made it.',
-    link: { label: 'The Assets Library', href: '/app/library' },
-    features: [
-      {
-        id: 'history',
-        hook: 'Which prompt made the good one on Tuesday?',
-        name: 'History',
-        body: 'Every image and video the team renders, newest first, with its prompt, its engine and who made it. Use this prompt reopens the studio with the prompt in the box, so a variation is one changed word away.',
-        shot: appShots.history,
-        path: '/history',
-        caption: 'History on a new team: nothing made yet, so the page points back to Explore.',
-      },
-      {
-        id: 'assets-library',
-        hook: '“Where did last week’s packshot go?”',
-        name: 'Assets Library',
-        body: 'Every render lands here on its own, next to every file you upload, in folders you choose and with your own tags. One search reads file names, prompts, texts and tags, and filters narrow it by type, date, tag or who added it.',
-        shot: appShots.library,
-        path: '/files',
-      },
-      {
-        id: 'versions',
-        hook: 'The client sent the logo again. Corrected, they say.',
-        name: 'Versions and actions',
-        body: 'Upload the newer file and the old one moves under Versions. Each file’s Actions menu views, downloads, edits, tags, renames or moves it, and ticking several files moves or tags them in one go.',
-        shot: appShots.libraryActions,
-        path: '/files',
-      },
-    ],
-  },
-  {
-    id: 'campaigns',
-    name: 'Campaigns',
-    lede: 'One launch’s renders, videos, posts and documents under a name and a brief. A campaign points at the library and copies nothing, and it costs nothing to use.',
-    link: { label: 'How campaigns work', href: '/app/campaigns' },
-    features: [
-      {
-        id: 'campaigns',
-        hook: 'Which files were for the spring launch, again?',
-        name: 'Campaigns',
-        body: 'Each campaign gets a card with its pictures, its brief and a count of what it holds by type. Every creation form has a Campaign menu, so a render or a post joins the campaign as it’s made.',
-        shot: appShots.campaigns,
-        path: '/campaigns',
-      },
-      {
-        id: 'campaign-page',
-        hook: 'The brief and the files, on one page.',
-        name: 'A campaign’s page',
-        body: 'The name and the brief sit on top, then every file in the campaign, with a link to it in the library. Add files from the page or from the library, and removing one leaves it in the library.',
-        shot: appShots.campaignPage,
-        path: '/campaigns',
-      },
-      {
-        id: 'campaign-filter',
-        hook: 'Only the spring launch, please.',
-        name: 'Campaign filter',
-        body: 'In the Assets Library, the Campaign filter shows one campaign’s files, or the files in none. A file can sit in several campaigns, and a new version of it stays in each.',
-        shot: appShots.campaignFilter,
-        path: '/files',
-      },
-      {
-        id: 'campaign-post',
-        hook: 'The launch is filed. Now it needs a post.',
-        name: 'Posts from a campaign',
-        body: 'Pick the campaign under a LinkedIn, Facebook or X brief, and Draft with AI reads its brief, its file list and the text of up to 20 documents. It reads the names and prompts of the files, never the pictures themselves.',
-        shot: appShots.campaignPost,
-        path: '/social/linkedin/posts',
       },
     ],
   },
@@ -303,6 +324,46 @@ const modules: Module[] = [
     ],
   },
   {
+    id: 'campaigns',
+    name: 'Campaigns',
+    lede: 'One launch’s renders, videos, posts and documents under a name and a brief. A campaign points at the library and copies nothing, and it costs nothing to use.',
+    link: { label: 'How campaigns work', href: '/app/campaigns' },
+    features: [
+      {
+        id: 'campaigns',
+        hook: 'Which files were for the spring launch, again?',
+        name: 'Campaigns',
+        body: 'Each campaign gets a card with its pictures, its brief and a count of what it holds by type. Every creation form has a Campaign menu, so a render or a post joins the campaign as it’s made.',
+        shot: appShots.campaigns,
+        path: '/campaigns',
+      },
+      {
+        id: 'campaign-page',
+        hook: 'The brief and the files, on one page.',
+        name: 'A campaign’s page',
+        body: 'The name and the brief sit on top, then every file in the campaign, with a link to it in the library. Add files from the page or from the library, and removing one leaves it in the library.',
+        shot: appShots.campaignPage,
+        path: '/campaigns',
+      },
+      {
+        id: 'campaign-filter',
+        hook: 'Only the spring launch, please.',
+        name: 'Campaign filter',
+        body: 'In the Assets Library, the Campaign filter shows one campaign’s files, or the files in none. A file can sit in several campaigns, and a new version of it stays in each.',
+        shot: appShots.campaignFilter,
+        path: '/files',
+      },
+      {
+        id: 'campaign-post',
+        hook: 'The launch is filed. Now it needs a post.',
+        name: 'Posts from a campaign',
+        body: 'Pick the campaign under a LinkedIn, Facebook or X brief, and Draft with AI reads its brief, its file list and the text of up to 20 documents. It reads the names and prompts of the files, never the pictures themselves.',
+        shot: appShots.campaignPost,
+        path: '/social/linkedin/posts',
+      },
+    ],
+  },
+  {
     id: 'networks',
     name: 'Social networks',
     lede: 'One module per network. LinkedIn, Instagram, Facebook, TikTok (Beta) and X posts go out from hubStudio, and YouTube videos leave ready for YouTube Studio.',
@@ -360,7 +421,7 @@ const modules: Module[] = [
   },
   {
     id: 'publish',
-    name: 'Publish',
+    name: 'Scheduling',
     lede: 'Publish now or schedule it, to up to 20 accounts a post. Publishing costs nothing, except a post sent to X, which shows its price before you send.',
     link: { label: 'How publishing works', href: '/app/publish' },
     features: [
@@ -395,6 +456,39 @@ const modules: Module[] = [
         body: 'You connect your own accounts by signing in on the network itself, so hubStudio never sees the password. Nobody else on the team can post with your account, admins included.',
         shot: appShots.connections,
         path: '/my-connections',
+      },
+    ],
+  },
+  {
+    id: 'library',
+    name: 'Files and history',
+    lede: 'Where everything the team makes or uploads ends up, with the prompt that made it.',
+    link: { label: 'The Assets Library', href: '/app/library' },
+    features: [
+      {
+        id: 'history',
+        hook: 'Which prompt made the good one on Tuesday?',
+        name: 'History',
+        body: 'Every image and video the team renders, newest first, with its prompt, its engine and who made it. Use this prompt reopens the studio with the prompt in the box, so a variation is one changed word away.',
+        shot: appShots.history,
+        path: '/history',
+        caption: 'History on a new team: nothing made yet, so the page points back to Explore.',
+      },
+      {
+        id: 'assets-library',
+        hook: '“Where did last week’s packshot go?”',
+        name: 'Assets Library',
+        body: 'Every render lands here on its own, next to every file you upload, in folders you choose and with your own tags. One search reads file names, prompts, texts and tags, and filters narrow it by type, date, tag or who added it.',
+        shot: appShots.library,
+        path: '/files',
+      },
+      {
+        id: 'versions',
+        hook: 'The client sent the logo again. Corrected, they say.',
+        name: 'Versions and actions',
+        body: 'Upload the newer file and the old one moves under Versions. Each file’s Actions menu views, downloads, edits, tags, renames or moves it, and ticking several files moves or tags them in one go.',
+        shot: appShots.libraryActions,
+        path: '/files',
       },
     ],
   },
@@ -506,13 +600,14 @@ const modules: Module[] = [
   },
 ];
 
-/* The tab bar groups the modules by phase, as the header's App menu does.
-   The order of the groups is the order of `modules`, so the script's tab
-   list and the panels stay index for index. */
-const tourGroups = [
-  { label: 'Make', ids: ['create', 'engines', 'library', 'campaigns'] },
-  { label: 'Edit', ids: ['image-tools', 'video-tools'] },
-  { label: 'Ship', ids: ['networks', 'publish', 'review'] },
+/* The tab bar groups the modules by pillar, as the header's App menu and the
+   app's own menu do, each group in its pillar's colour; the account comes
+   last, outside the pillars. The order of the groups is the order of
+   `modules`, so the script's tab list and the panels stay index for index. */
+const tourGroups: { label: string; pillar?: PillarKey; ids: string[] }[] = [
+  { label: 'Create', pillar: 'create', ids: ['create', 'engines', 'image-tools', 'video-tools'] },
+  { label: 'Publish', pillar: 'publish', ids: ['campaigns', 'networks', 'publish'] },
+  { label: 'Library', pillar: 'library', ids: ['library', 'review'] },
   { label: 'Manage', ids: ['account'] },
 ];
 
@@ -786,12 +881,130 @@ const homeSchema = {
     </section>
 
     <!-- ==========================================================
-         The app in brief
+         The app's three pillars, and the AI layer over them
     ========================================================== -->
-    <section class="sheet sheet--light sheet--first section" id="app">
+    <section class="sheet sheet--light sheet--first section" id="pillars">
       <div class="container">
         <header class="s-head">
           <span class="eyebrow" data-reveal>The hubStudio app</span>
+          <h2 class="headline h2" data-reveal>
+            Create it, publish it, and keep it where the team can <span class="accent">find</span> it.
+          </h2>
+          <p class="s-head__intro" data-reveal>
+            The app stands on three pillars, and its menu follows them. Create makes the images
+            and video and finishes them. Publish turns them into posts and sends them to the
+            networks. Library keeps every file, every render and every approval. Agents and
+            Skills, the AI layer, work across all three.
+          </p>
+        </header>
+
+        <a class="layer-bar" href="#ai-layer" data-reveal>
+          <span class="layer-bar__tag">AI layer</span>
+          <span class="layer-bar__text">Agents and Skills, across all three pillars</span>
+          <span class="arrow layer-bar__arrow" aria-hidden="true">&darr;</span>
+        </a>
+
+        <div class="pillars">
+          {
+            pillars.map((p, i) => (
+              <article
+                class:list={['pillar', `pillar--${p.key}`]}
+                aria-labelledby={`pillar-${p.key}`}
+                data-reveal
+                style={`--i:${i}`}
+              >
+                <header class="pillar__head">
+                  <h3 class="pillar__name" id={`pillar-${p.key}`}>
+                    {p.name}
+                  </h3>
+                  <p class="pillar__summary">{p.summary}</p>
+                </header>
+                <ul class="pillar__mods">
+                  {p.modules.map((m) => (
+                    <li>
+                      {m.href ? (
+                        <a class="pmod" href={m.href}>
+                          <span class="pmod__name">{m.name}</span>
+                          <span class="pmod__text">{m.text}</span>
+                        </a>
+                      ) : (
+                        <span class="pmod pmod--static">
+                          <span class="pmod__name">{m.name}</span>
+                          <span class="pmod__text">{m.text}</span>
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <a class="arrow-link pillar__link" href={p.link.href}>
+                  {p.link.label} <span class="arrow" aria-hidden="true">&rarr;</span>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         The AI layer: Agents and Skills, across the three pillars
+    ========================================================== -->
+    <section class="sheet sheet--ink section" id="ai-layer">
+      <div class="grain sheet__grain" aria-hidden="true"></div>
+      <div class="container">
+        <header class="s-head s-head--dark">
+          <span class="eyebrow eyebrow--orange" data-reveal>AI layer</span>
+          <h2 class="headline h2" data-reveal>
+            Agents and Skills work across all three <span class="accent">pillars</span>.
+          </h2>
+          <p class="s-head__intro" data-reveal>
+            They sit above the pillars rather than beside them. Skills shape what the AI makes and
+            writes. Agents read what your team publishes and files, then tell you what changed.
+          </p>
+        </header>
+
+        <div class="layer">
+          <div class="layer__band">
+            {
+              aiLayer.map((a, i) => (
+                <article class="layer-card" data-reveal style={`--i:${i}`}>
+                  <p class="layer-card__hook">{a.hook}</p>
+                  <h3 class="layer-card__name">{a.name}</h3>
+                  <p class="layer-card__body">{a.body}</p>
+                  <ul class="layer-card__reach" aria-label={`Where ${a.name} work`}>
+                    {a.reach.map((k) => (
+                      <li class:list={['reach', `pillar--${k}`]}>{pillarName(k)}</li>
+                    ))}
+                  </ul>
+                  <a class="arrow-link layer-card__link" href={a.link.href}>
+                    {a.link.label} <span class="arrow" aria-hidden="true">&rarr;</span>
+                  </a>
+                </article>
+              ))
+            }
+          </div>
+
+          <div class="layer__rails">
+            {
+              aiRails.map((r, i) => (
+                <div class:list={['rail', `pillar--${r.key}`]} data-reveal style={`--i:${i}`}>
+                  <p class="rail__name">{pillarName(r.key)}</p>
+                  <p class="rail__text">{r.text}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Inside the app: the module tour, grouped by pillar
+    ========================================================== -->
+    <section class="sheet sheet--light section" id="app">
+      <div class="container">
+        <header class="s-head">
+          <span class="eyebrow" data-reveal>Inside the app</span>
           <h2 class="headline h2" data-reveal>
             One app, from the first prompt to the <span class="accent">published</span> post.
           </h2>
@@ -801,7 +1014,7 @@ const homeSchema = {
           <div class="tour__tabs" role="tablist" aria-label="Modules of the hubStudio app" hidden>
             {
               tourGroups.map((g) => (
-                <div class="tour__group" role="presentation">
+                <div class:list={['tour__group', g.pillar && `pillar--${g.pillar}`]} role="presentation">
                   <span class="tour__group-label" aria-hidden="true">
                     {g.label}
                   </span>
@@ -1756,6 +1969,337 @@ const homeSchema = {
   }
 
   /* ============================================================
+     The app's three pillars (global.css --pillar-* tokens)
+  ============================================================ */
+  .pillar--create {
+    --pillar: var(--pillar-create);
+  }
+  .pillar--publish {
+    --pillar: var(--pillar-publish);
+  }
+  .pillar--library {
+    --pillar: var(--pillar-library);
+  }
+
+  /* The AI layer, drawn as a bar over the three cards, a short line
+     dropping from it into each one. */
+  .layer-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 22px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease;
+  }
+  .layer-bar:hover {
+    box-shadow: var(--shadow-card-hi);
+  }
+  .layer-bar__tag {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ff9a5c;
+  }
+  .layer-bar__tag::before,
+  .layer-card__name::before {
+    content: '';
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--pillar-create) 0 33%,
+      var(--pillar-publish) 0 66%,
+      var(--pillar-library) 0
+    );
+  }
+  .layer-bar__text {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .layer-bar__arrow {
+    flex: none;
+    color: #ff9a5c;
+  }
+  .layer-bar:hover .layer-bar__arrow {
+    transform: translateY(4px);
+  }
+
+  .pillars {
+    display: grid;
+    gap: var(--gap-card);
+    margin-top: 22px;
+  }
+  @media (min-width: 900px) {
+    .pillars {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .pillar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: clamp(26px, 2.6vw, 36px);
+    border-radius: var(--radius-card);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  /* The drop from the AI bar, and the pillar's colour across its top. */
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: -23px;
+    left: clamp(26px, 2.6vw, 36px);
+    width: 2px;
+    height: 22px;
+    background: linear-gradient(to bottom, var(--bg-ink), var(--pillar));
+  }
+  .pillar::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: clamp(26px, 2.6vw, 36px);
+    right: clamp(26px, 2.6vw, 36px);
+    height: 4px;
+    border-radius: 0 0 4px 4px;
+    background: var(--pillar);
+  }
+  .pillar__name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+  .pillar__name::before {
+    content: '';
+    flex: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--pillar);
+  }
+  .pillar__summary {
+    margin-top: 12px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .pillar__mods {
+    flex: 1;
+    border-top: 1px solid var(--line-strong);
+  }
+  .pmod {
+    position: relative;
+    display: grid;
+    gap: 2px;
+    padding: 11px 26px 11px 0;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .pmod__name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    text-decoration: underline 2px transparent;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.2s ease;
+  }
+  .pmod__text {
+    font-size: var(--type-small);
+    line-height: 1.45;
+    color: var(--text-mute);
+  }
+  a.pmod::after {
+    content: '\2192';
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    color: var(--pillar);
+    font-weight: 600;
+    opacity: 0;
+    transform: translate(-6px, -50%);
+    transition:
+      opacity 0.2s ease,
+      transform 0.25s var(--ease);
+  }
+  a.pmod:hover .pmod__name,
+  a.pmod:focus-visible .pmod__name {
+    text-decoration-color: var(--pillar);
+  }
+  a.pmod:hover::after,
+  a.pmod:focus-visible::after {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+  .pillar__link {
+    color: color-mix(in srgb, var(--pillar) 72%, var(--text-ink));
+  }
+
+  /* ============================================================
+     The AI layer: two cards on one band, over the three rails
+  ============================================================ */
+  .layer__band {
+    display: grid;
+    gap: 20px;
+    padding: clamp(14px, 1.6vw, 22px);
+    border-radius: clamp(24px, 2.4vw, 34px);
+    background: rgba(240, 237, 233, 0.04);
+    border: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  @media (min-width: 860px) {
+    .layer__band {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .layer-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: clamp(24px, 2.4vw, 34px);
+    border-radius: clamp(18px, 1.8vw, 26px);
+    background:
+      radial-gradient(120% 140% at 100% 0%, rgba(30, 58, 138, 0.5), transparent 60%),
+      rgba(240, 237, 233, 0.04);
+    border: 1px solid rgba(240, 237, 233, 0.1);
+  }
+  .layer-card__hook {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(19px, 1.5vw, 21px);
+    line-height: 1.35;
+    color: rgba(240, 237, 233, 0.78);
+    max-width: 40ch;
+  }
+  .layer-card__name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+  .layer-card__name::before {
+    width: 12px;
+    height: 12px;
+  }
+  .layer-card__body {
+    flex: 1;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.82);
+    max-width: 52ch;
+  }
+  .layer-card__reach {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .reach {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, var(--pillar) 60%, transparent);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-on-dark);
+  }
+  .reach::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pillar);
+  }
+  .layer-card__link {
+    color: #ff9a5c;
+  }
+  .layer__rails {
+    display: grid;
+    gap: 28px;
+    padding-top: 36px;
+  }
+  @media (min-width: 860px) {
+    .layer__rails {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--gap-card);
+    }
+  }
+  .rail {
+    position: relative;
+    padding-top: 20px;
+    border-top: 3px solid var(--pillar);
+  }
+  /* The drop from the band into each pillar. */
+  .rail::before {
+    content: '';
+    position: absolute;
+    top: -39px;
+    left: 0;
+    width: 2px;
+    height: 36px;
+    background: linear-gradient(to bottom, rgba(240, 237, 233, 0.18), var(--pillar));
+  }
+  /* Stacked on a phone, only the first card and the first rail sit under
+     the layer; the others would drop a line onto the block above them. */
+  @media (max-width: 899.98px) {
+    .pillar + .pillar::before {
+      display: none;
+    }
+  }
+  @media (max-width: 859.98px) {
+    .rail + .rail::before {
+      display: none;
+    }
+  }
+  .rail__name {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-on-dark);
+  }
+  .rail__name::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pillar);
+  }
+  .rail__text {
+    margin-top: 12px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.74);
+    max-width: 40ch;
+  }
+
+  /* ============================================================
      Hero: headline, both doors, and a real capture of the app
   ============================================================ */
   .hero {
@@ -2073,6 +2617,15 @@ const homeSchema = {
     color: var(--text-mute);
     opacity: 0.75;
   }
+  /* A pillar's group carries its colour in a dot before its name. */
+  .tour__group[class*='pillar--'] .tour__group-label::before {
+    content: '';
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pillar);
+  }
   .tour__group-label::after {
     content: '';
     flex: 1;
@@ -2129,11 +2682,12 @@ const homeSchema = {
     width: var(--ink-w, 0);
     height: 2px;
     border-radius: 2px;
-    background: var(--brand-orange);
+    background: var(--ink-c, var(--brand-orange));
     transform: translateX(var(--ink-x, 0));
     transition:
       transform 0.5s var(--ease),
-      width 0.5s var(--ease);
+      width 0.5s var(--ease),
+      background-color 0.5s var(--ease);
   }
   @media (prefers-reduced-motion: reduce) {
     .tour__ink {
@@ -4119,6 +4673,11 @@ const homeSchema = {
       if (!tab) return;
       tourList.style.setProperty('--ink-x', `${tab.offsetLeft}px`);
       tourList.style.setProperty('--ink-w', `${tab.offsetWidth}px`);
+      /* The rule takes the colour of the open module's pillar. */
+      const group = tab.closest<HTMLElement>('.tour__group');
+      const color = group ? getComputedStyle(group).getPropertyValue('--pillar').trim() : '';
+      if (color) tourList.style.setProperty('--ink-c', color);
+      else tourList.style.removeProperty('--ink-c');
       tourList.classList.toggle('is-scroll', tourList.scrollWidth > tourList.clientWidth + 1);
     };
     new ResizeObserver(ink).observe(tourList);

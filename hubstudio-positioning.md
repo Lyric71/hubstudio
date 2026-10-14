@@ -95,6 +95,21 @@ A studio engagement starts with a brief sent through `/contact`.
 
 ## App facts you may use (and nothing beyond them)
 
+- **How the app is organized** (owner decision, October 14, 2026, as the
+  app's own menu): three pillars, each with its colour, and an AI layer over
+  them. **Create** (`#e94e1b`): Explore, Image, Video, Image editor, Image
+  anonymizer, Video editor, Shorts autopilot. **Publish** (`#3f6fe0`):
+  Campaigns, LinkedIn, Instagram, Facebook, TikTok, X, YouTube. **Library**
+  (`#1fa58a`): Assets Library, History, Validation, PDF. **AI layer**
+  (Agents and Skills): the header band of the app, working across all three,
+  never a pillar. French: Créer, Publier, Bibliothèque, la couche IA. Chinese:
+  创作, 发布, 管理, AI 层. The colours are the `--pillar-*` tokens of
+  `src/styles/global.css`; the home page and the header's App panel follow
+  this order.
+- **PDF** (Library pillar, added October 14, 2026): eight PDF tools in the
+  browser on one page: edit, merge, split, organize, rotate, extract, crop
+  and compress. No page of this site covers it yet, so it is named without a
+  link.
 - **Explore:** a gallery of every image and video engine, one card each, with
   search, filters by kind, maker and job, and sorting. Makers offered: OpenAI,
   Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax, Meta.
@@ -259,4 +274,13 @@ do not exist or belong to the studio.
 | Resources | `/resources/*`, `/help` | Insights, how-to, glossary, rights, help center |
 
 Header: App · Studio · Solutions · Work · Pricing · Resources, with **Sign in**,
-**Create account** (primary) and **Send a brief** (secondary).
+**Create account** (primary) and **Send a brief** (secondary). The App panel
+lists the modules under Create, Publish and Library, then the AI layer
+(Agents, linked to `/help/agents`; Skills, linked to `/app/create#skills`),
+each module linked to the `/app` page section that covers it.
+
+Home page order: hero · the three pillars (with the AI layer bar over them)
+· the AI layer (Agents and Skills, what each does in each pillar) · inside
+the app (module tour grouped by pillar) · engines · what's new · the three
+ways to work · then the studio, its services, Studio + app, work, who it is
+for, pricing, manifesto, insights and the closing.

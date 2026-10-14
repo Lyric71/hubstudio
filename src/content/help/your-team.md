@@ -1,11 +1,11 @@
 ---
 title: "Your team"
 seoTitle: "Your team, its roles and its clients | hubStudio Help"
-description: "Working alone or in a team, the Admin, Creator, Viewer and Client roles, inviting people, answering requests to join, daily limits, pausing a login, adding clients and giving their people a login, invoice details, the sign-in code and the interface languages."
+description: "Working alone or in a team, the Admin, Creator, Viewer and Client roles, inviting people, answering requests to join, daily limits, pausing a login, what each person did, adding clients and giving their people a login, invoice details, the sign-in code and the interface languages."
 excerpt: "A team shares one balance and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
 order: 15
-updated: 2026-10-08
+updated: 2026-10-14
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
 related: ["getting-started", "balance-and-payments", "history", "assets-library", "campaigns", "validation", "client-space", "skills"]
@@ -30,7 +30,7 @@ shots:
     clip: "the Invoices and sign-in card"
     alt: "The Invoices and sign-in card: who the invoices are made out to, where they are sent, the billing address, and the sign-in code switch"
     captured: 2026-09-27
-sources: ["src/pages/team.astro", "src/scripts/teamPanel.ts", "src/pages/api/team.ts", "src/pages/api/team/clients.ts", "src/pages/api/team/clients/[id].ts", "src/lib/team-clients.ts", "src/lib/invitations.ts", "src/lib/user-admin.ts", "src/lib/app.ts", "src/lib/features.ts", "src/pages/settings.astro", "src/pages/invite/[token].astro", "src/lib/credits.ts", "src/pages/signup.astro", "src/components/ClientPick.astro"]
+sources: ["src/pages/team.astro", "src/scripts/teamPanel.ts", "src/pages/api/team.ts", "src/pages/api/team/clients.ts", "src/pages/api/team/clients/[id].ts", "src/lib/team-clients.ts", "src/lib/invitations.ts", "src/lib/user-admin.ts", "src/lib/app.ts", "src/lib/features.ts", "src/pages/settings.astro", "src/pages/invite/[token].astro", "src/lib/credits.ts", "src/pages/signup.astro", "src/components/ClientPick.astro", "src/scripts/userDetail.ts", "src/lib/usage-events.ts", "src/lib/signup-fields.ts"]
 ---
 
 In hubStudio, a **team** is a group of people who share one balance. Everything the team creates is charged against the team balance first. A team can also work for **clients**: the companies it makes images, videos and posts for. Open **Team** in the menu, or **Team** in the menu under your picture.
@@ -58,6 +58,8 @@ Beyond the role, each person's access can be fitted more finely, on their own pa
 
 - **Modules**: a module switched off for someone disappears for them entirely, menu and pages, such as the Image editor, the Video editor or Shorts autopilot for someone who doesn't need them.
 - **Rights, module by module**: what a person may do in each area (see it, create in it, change it, delete from it), graded on **Image**, **Video**, **Assets**, **Image editor**, **Video editor**, **Shorts autopilot**, **Campaigns**, **Posts**, **Publishing and scheduling**, **Validation**, **Agents**, **Skills**, **Team members**, **Team settings** and **Shared credits**. Each right follows the person's role until it is changed for them. Nobody can change their own rights.
+
+The same page shows what the person did. The **Activity** card sums up what they spent today and this month, their paid actions since the account was opened, and the number of features they used in the last 30 days. Under **Modules and features, last 30 days**, each module they worked in lists its features, with the pages they opened, the changes they made, the paid runs, what those cost and the day they last used it. Below, **Everything they did** lists the last pages opened and changes made, and **Paid actions** the last paid runs with their price. When the person created their account themselves, the band at the top of the page also shows the country they gave at sign-up.
 
 The person who creates a team is its first admin. Your own role is shown in **User Settings**, with a line that says what it allows.
 

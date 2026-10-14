@@ -5,7 +5,7 @@ description: "Shorts autopilot turns a long video into vertical 9:16 shorts for 
 excerpt: "Give it an interview, a talk or a podcast: it picks the moments that work on their own and saves each one as a vertical short, captioned and ready to post."
 section: "library"
 order: 7
-updated: 2026-10-08
+updated: 2026-10-14
 appPaths: ["/files/tools/shorts"]
 audience: "Creators and admins"
 related: ["assets-library", "tiktok", "instagram", "youtube", "history", "balance-and-payments"]
@@ -28,7 +28,7 @@ It works best on several minutes of someone speaking. It picks its moments from 
 
 ## Open it
 
-Shorts autopilot has its own entry in the menu, under the Assets Library and the two editors. You can also reach it from the **Actions** menu of a video in the Assets Library: **Make shorts** opens the page with that video already picked.
+Shorts autopilot has its own entry in the menu, the last of the **Create** pillar, under the Video editor. You can also reach it from the **Actions** menu of a video in the Assets Library: **Make shorts** opens the page with that video already picked.
 
 ![Shorts autopilot in the menu, its page open on The long video: the box to drop a video, From the Assets Library, and the four steps It listens, It picks the best moments, It frames them and It writes and saves them](/Images/help/shorts-autopilot-page.webp)
 

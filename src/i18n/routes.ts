@@ -124,6 +124,7 @@ const HELP: Record<string, string> = {
   'client-space': 'espace-client',
   'create-a-video': 'creer-une-video',
   'create-an-image': 'creer-une-image',
+  'discovery-and-tips': 'decouverte-et-astuces',
   explore: 'explorer',
   facebook: 'facebook',
   'getting-started': 'premiers-pas',

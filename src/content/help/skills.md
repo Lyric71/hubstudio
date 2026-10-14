@@ -5,7 +5,7 @@ description: "What a skill is, how to take one from the Catalog, edit it or writ
 excerpt: "Reusable instructions that Improve with AI follows every time it rewrites a prompt for an image or a video."
 section: "skills"
 order: 8
-updated: 2026-10-05
+updated: 2026-10-14
 appPaths: ["/skills", "/skills/organization", "/skills/catalog"]
 audience: "Everyone; team skills are for administrators"
 related: ["create-an-image", "create-a-video", "linkedin", "x", "your-team"]
@@ -33,12 +33,14 @@ Every such skill joins every rewrite, image or video. That is why the standard s
 
 Skills add words to each rewrite, so they cost a few tokens per call, billed with the rewrite. Keep them short and specific: what to do, what to avoid.
 
-## The Skills menu
+## The Skills pages
 
-| Entry | Who sees it | What it holds |
+**Skills** sits at the top of every page, beside **Agents** (on a phone, at the top of the menu). Its pages share three tabs.
+
+| Page | Who sees it | What it holds |
 |---|---|---|
 | **My skills** | Everyone | Your own skills: the ones you added from the Catalog or from your team, and the ones you wrote. Only these can be edited. |
-| **Team skills** | Administrators in the menu; every member through the tab on the Skills pages | The skills your administrators wrote for everyone in the team. |
+| **Team skills** | Every member, through the **Team** tab on the Skills pages | The skills your administrators wrote for everyone in the team. |
 | **Catalog** | Everyone | Every standard skill hubStudio ships, open to all. |
 
 ![My skills: the Personal, Team and Catalog tabs, New skill, and the network format skills each with Duplicate, Switch off, Edit and Delete](/Images/help/skills-my-skills.webp)

@@ -5,7 +5,7 @@ description: "Every file of your team in one place, in folders: uploads, renders
 excerpt: "Your team's files in folders, and three tools that run in your browser, each with its own entry in the menu: the Image editor, the Video editor for Reels, TikToks and Facebook reels, and the Image anonymizer."
 section: "library"
 order: 6
-updated: 2026-10-08
+updated: 2026-10-14
 appPaths: ["/files", "/files/tools/image-editor", "/files/tools/video-editor", "/files/tools/image-anonymizer"]
 audience: "Everyone except client logins"
 related: ["history", "shorts-autopilot", "campaigns", "create-an-image", "create-a-video", "linkedin", "instagram", "facebook", "tiktok", "x", "balance-and-payments"]
@@ -87,7 +87,7 @@ sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/pages/files/index.a
 
 The **Assets Library** holds every file of your team in one place, in folders: the pictures and clips you upload, the ones the studios render, the pictures and videos you edit, and the shorts [Shorts autopilot](/help/shorts-autopilot) makes. **Assets Library** in the menu opens it.
 
-The tools that work on a file you already have are features of their own, each with its own entry in the menu, right under the Assets Library: the **Image editor**, the **Video editor**, **Shorts autopilot** and the **Image anonymizer**. Each page is named after its tool in the dark band at the top. The editors and the Image anonymizer are described below; Shorts autopilot has [its own article](/help/shorts-autopilot).
+The tools that work on a file you already have are features of their own, each with its own entry in the menu, under the **Create** pillar (the Assets Library itself heads the **Library** pillar): the **Image editor**, the **Image anonymizer**, the **Video editor** and **Shorts autopilot**. Each page is named after its tool in the dark band at the top. The editors and the Image anonymizer are described below; Shorts autopilot has [its own article](/help/shorts-autopilot).
 
 [History](/help/history) and the Assets Library show the same renders in two ways. History lists what the studios made, newest first, with the prompt, the engine and the cost of each piece. The library holds everything, renders and uploads alike, in the folders you choose. [Campaigns](/help/campaigns) gather files of the library under one name and one brief, without moving or copying them.
 

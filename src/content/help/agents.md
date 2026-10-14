@@ -5,7 +5,7 @@ description: "The Social publishing watcher, agents you create from scratch over
 excerpt: "Agents re-read your publishing on every network on a schedule and tell you what changed, with the real dates, networks and post titles."
 section: "agents"
 order: 14.5
-updated: 2026-10-08
+updated: 2026-10-14
 appPaths: ["/agents", "/agents/organization", "/agents/catalog", "/agents/runs"]
 audience: "Everyone; Creators and Admins add, change and run agents; team agents are for Admins"
 related: ["linkedin", "instagram", "facebook", "tiktok", "youtube", "x", "validation", "campaigns", "assets-library", "balance-and-payments", "your-team"]
@@ -23,9 +23,9 @@ sources: ["src/pages/agents/index.astro", "src/pages/agents/organization.astro",
 
 An **agent** watches part of your team's work for you. On a schedule, it re-reads its data, compares it with what it saw last time, and reports what changed as **findings**: short alerts with the real dates, networks and post titles, and a suggested next step.
 
-Nothing runs until someone adds an agent. Open **Agents** in the menu: it holds four entries, which are also the four tabs at the top of each Agents page.
+Nothing runs until someone adds an agent. Click **Agents** at the top of the page, beside **Skills** (on a phone, at the top of the menu): its pages share four tabs.
 
-| Menu entry | Tab | What it holds |
+| Page | Tab | What it holds |
 |---|---|---|
 | **My agents** | **Personal** | Your own agents: the only ones you edit, test and duplicate. They spend your own budget. |
 | **Team agents** | **Team** | The agents shared across the team. Admins only. |

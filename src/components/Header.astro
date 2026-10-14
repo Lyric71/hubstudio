@@ -3,7 +3,9 @@
  * Header: §5 navigation + mega menu.
  * Persistent top nav, mega-menu panels, mobile right-sheet drawer.
  * Every desktop panel opens with the same intro column (eyebrow · headline ·
- * blurb · "All of X" link), then a layout that fits the section: standard
+ * blurb · "All of X" link), then a layout that fits the section: app (the
+ * three pillars of the app, Create · Publish · Library, each in its colour,
+ * then the AI layer, Agents and Skills, which works across them), standard
  * (link groups · featured card), services (four-column design-service list)
  * or solutions (client/consulting columns · platform grid). Panels open on
  * hover / keyboard focus (CSS); JS handles the scroll state, Esc-to-close and
@@ -36,11 +38,17 @@ type FlatLink = { label: string; href: string };
 type ServiceGroup = { heading: string; links: FlatLink[] };
 type SubGroup = { heading: string; links: FlatLink[] };
 type SolutionCol = { heading: string; links?: FlatLink[]; subgroups?: SubGroup[] };
+/** A module of the app: a link when this site has a page for it, plain text otherwise. */
+type PillarLink = { title: string; desc?: string; href?: string };
+/** One pillar of the app (Create, Publish, Library) or the AI layer above them. */
+type Pillar = { key: 'create' | 'publish' | 'library' | 'ai'; heading: string; note?: string; links: PillarLink[] };
 type MenuItem = {
   label: string;
   href: string;
   intro?: Intro;
   groups?: Group[];
+  /** When set, the item renders the App panel: the three pillars and the AI layer. */
+  pillars?: Pillar[];
   featured?: Featured;
   /** When set, the item renders the Services panel (grouped columns). */
   serviceGroups?: ServiceGroup[];
@@ -61,40 +69,61 @@ const menu: MenuItem[] = [
       post: '.',
       text: 'Make images and video with the leading AI engines, then edit, approve, and publish them. You pay as you go, and there are no seat fees.',
     },
-    groups: [
+    introLinks: [
+      { label: 'Help center', href: '/help' },
+      { label: 'What’s new', href: '/app/whats-new' },
+    ],
+    /* The app's own menu: three pillars, each in its colour, and the AI layer
+       that works across them (the header band of the app, never a pillar).
+       Every link goes to a page of this site; a module with no page of its
+       own (PDF) is named without a link. */
+    pillars: [
       {
-        heading: 'Make',
+        key: 'create',
+        heading: 'Create',
         links: [
-          { title: 'Create', desc: 'Explore, the Image and Video studios, Skills', href: '/app/create' },
-          { title: 'Engines', desc: 'Every image and video engine, by maker', href: '/app/engines' },
-          { title: 'Assets Library', desc: 'Files in folders, tags, versions, search', href: '/app/library' },
+          { title: 'Explore', desc: 'Every image and video engine, by maker', href: '/app/engines' },
+          { title: 'Image', desc: 'Text to image, edits, upscale', href: '/app/create#image-studio' },
+          { title: 'Video', desc: 'From words, a picture or a reference', href: '/app/create#video-studio' },
+          { title: 'Image editor', desc: 'Crop, adjust and brand a picture', href: '/app/image-tools#image-editor' },
+          { title: 'Image anonymizer', desc: 'Hidden data shown, a clean copy saved', href: '/app/image-tools#image-anonymizer' },
+          { title: 'Video editor', desc: 'Cut, caption and size a clip', href: '/app/video-tools#video-editor' },
+          { title: 'Shorts autopilot', desc: 'A long video cut into shorts', href: '/app/video-tools#shorts-autopilot' },
+        ],
+      },
+      {
+        key: 'publish',
+        heading: 'Publish',
+        links: [
           { title: 'Campaigns', desc: 'One launch’s files under one name', href: '/app/campaigns' },
+          { title: 'LinkedIn', href: '/app/publish#linkedin' },
+          { title: 'Instagram', href: '/app/publish#instagram' },
+          { title: 'Facebook', href: '/app/publish#facebook' },
+          { title: 'TikTok', href: '/app/publish#tiktok' },
+          { title: 'X', href: '/app/publish#x' },
+          { title: 'YouTube', href: '/app/publish#youtube' },
         ],
       },
       {
-        heading: 'Edit',
+        key: 'library',
+        heading: 'Library',
         links: [
-          { title: 'Image tools', desc: 'The Image editor and the Image anonymizer', href: '/app/image-tools' },
-          { title: 'Video tools', desc: 'The Video editor and Shorts autopilot', href: '/app/video-tools' },
+          { title: 'Assets Library', desc: 'Files in folders, tags, versions, search', href: '/app/library#assets-library' },
+          { title: 'History', desc: 'Every render, to find again and reuse', href: '/app/create#history' },
+          { title: 'Validation', desc: 'Approval from a teammate or a client', href: '/app/review#validation' },
+          { title: 'PDF', desc: 'Eight PDF tools in the browser' },
         ],
       },
       {
-        heading: 'Ship',
+        key: 'ai',
+        heading: 'AI layer',
+        note: 'Across all three pillars',
         links: [
-          { title: 'Publish', desc: 'LinkedIn, Instagram, Facebook, TikTok, YouTube, X', href: '/app/publish' },
-          { title: 'Review and clients', desc: 'Validation, Client space, your team', href: '/app/review' },
-          { title: 'Help center', desc: 'Step-by-step guides to every screen', href: '/help' },
+          { title: 'Agents', desc: 'They watch the networks and report what changed', href: '/help/agents' },
+          { title: 'Skills', desc: 'Instructions the AI follows every time', href: '/app/create#skills' },
         ],
       },
     ],
-    featured: {
-      variant: 'navy',
-      eyebrow: 'Open sign-up',
-      title: 'Create your hubStudio account',
-      text: 'The account is free. You pay only for what you run.',
-      cta: { label: 'Create your account', href: APP_SIGNUP },
-      image: '/Images/app/explore.webp',
-    },
   },
   {
     label: 'Studio',
@@ -308,7 +337,7 @@ const menu: MenuItem[] = [
           {
             menu.map((item) => {
               /* Plain link: no dropdown */
-              if (!item.groups && !item.serviceGroups && !item.solutionCols) {
+              if (!item.groups && !item.serviceGroups && !item.solutionCols && !item.pillars) {
                 return (
                   <li class="nav-item">
                     <a class="nav-item__trigger" href={item.href}>
@@ -333,6 +362,7 @@ const menu: MenuItem[] = [
                         'mega__grid',
                         item.serviceGroups && 'mega__grid--services',
                         item.solutionCols && 'mega__grid--solutions',
+                        item.pillars && 'mega__grid--pillars',
                       ]}
                     >
                       {/* Column 1: shared intro */}
@@ -427,6 +457,35 @@ const menu: MenuItem[] = [
                         </div>
                       )}
 
+                      {/* App layout: the three pillars, then the AI layer */}
+                      {item.pillars && (
+                        <div class="mega__pillars">
+                          {item.pillars.map((p) => (
+                            <div class:list={['mega__pillar', `pillar--${p.key}`]}>
+                              <p class="mega__group-head mega__pillar-head">{p.heading}</p>
+                              {p.note && <p class="mega__pillar-note">{p.note}</p>}
+                              <ul>
+                                {p.links.map((link) => (
+                                  <li>
+                                    {link.href ? (
+                                      <a class="mega__link" href={link.href}>
+                                        <span class="mega__link-title">{link.title}</span>
+                                        {link.desc && <span class="mega__link-desc">{link.desc}</span>}
+                                      </a>
+                                    ) : (
+                                      <span class="mega__link mega__link--static">
+                                        <span class="mega__link-title">{link.title}</span>
+                                        {link.desc && <span class="mega__link-desc">{link.desc}</span>}
+                                      </span>
+                                    )}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
                       {/* Standard layout: link groups + featured card */}
                       {item.groups && (
                         <div class="mega__lists" data-cols={item.groups.length}>
@@ -515,7 +574,7 @@ const menu: MenuItem[] = [
         {
           menu.map((item) => {
             /* Plain link */
-            if (!item.groups && !item.serviceGroups && !item.solutionCols) {
+            if (!item.groups && !item.serviceGroups && !item.solutionCols && !item.pillars) {
               return (
                 <div class="m-acc">
                   <a class="m-acc__trigger m-acc__trigger--link" href={item.href}>
@@ -589,6 +648,25 @@ const menu: MenuItem[] = [
                                 </ul>
                               </div>
                             ))}
+                        </div>
+                      ))}
+
+                    {item.pillars &&
+                      item.pillars.map((p) => (
+                        <div class:list={['m-acc__group', 'm-pillar', `pillar--${p.key}`]}>
+                          <p class="mega__group-head mega__pillar-head">{p.heading}</p>
+                          {p.note && <p class="m-pillar__note">{p.note}</p>}
+                          <ul class="m-acc__group-list">
+                            {p.links.map((link) => (
+                              <li>
+                                {link.href ? (
+                                  <a href={link.href}>{link.title}</a>
+                                ) : (
+                                  <span class="m-pillar__static">{link.title}</span>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       ))}
 
@@ -763,8 +841,94 @@ const menu: MenuItem[] = [
     padding-block: 34px;
   }
   .mega__grid--services,
-  .mega__grid--solutions {
+  .mega__grid--solutions,
+  .mega__grid--pillars {
     grid-template-columns: 25% 1fr;
+  }
+
+  /* ---- App panel: three pillars and the AI layer ---------------- */
+  .pillar--create {
+    --pillar: var(--pillar-create);
+  }
+  .pillar--publish {
+    --pillar: var(--pillar-publish);
+  }
+  .pillar--library {
+    --pillar: var(--pillar-library);
+  }
+  .mega__pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.05fr);
+    gap: 28px;
+    align-items: start;
+  }
+  /* The pillar's name carries its colour: a dot, and the rule under it. */
+  .mega__pillar-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom-color: color-mix(in srgb, var(--pillar, var(--text-mute)) 45%, transparent);
+  }
+  .mega__pillar-head::before {
+    content: '';
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pillar, var(--text-mute));
+  }
+  .mega__pillar ul {
+    display: grid;
+    gap: 0;
+  }
+  .mega__pillar .mega__link {
+    padding-block: 6px;
+  }
+  .mega__pillar .mega__link:hover .mega__link-title {
+    color: var(--pillar, var(--brand-orange));
+  }
+  .mega__link--static,
+  .mega__link--static:hover {
+    background: none;
+  }
+  /* The AI layer: an ink card set apart from the pillars, its dot made of
+     the three pillar colours because it works across all of them. */
+  .mega__pillar.pillar--ai {
+    padding: 16px 18px 12px;
+    border-radius: 20px;
+    background:
+      radial-gradient(120% 120% at 100% 0%, rgba(63, 111, 224, 0.32), transparent 60%),
+      var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .pillar--ai .mega__pillar-head {
+    color: rgba(240, 237, 233, 0.78);
+    border-bottom-color: rgba(240, 237, 233, 0.16);
+    padding-bottom: 10px;
+    margin-bottom: 0;
+  }
+  .pillar--ai .mega__pillar-head::before,
+  .m-pillar.pillar--ai .mega__pillar-head::before {
+    background: conic-gradient(
+      var(--pillar-create) 0 33%,
+      var(--pillar-publish) 0 66%,
+      var(--pillar-library) 0
+    );
+  }
+  .mega__pillar-note {
+    margin: 10px 0 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: rgba(240, 237, 233, 0.66);
+  }
+  .pillar--ai .mega__link:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
+  .pillar--ai .mega__link:hover .mega__link-title {
+    color: #ff9a5c;
+  }
+  .pillar--ai .mega__link-desc {
+    color: rgba(240, 237, 233, 0.66);
   }
 
   /* Column 1: shared intro */
@@ -1215,6 +1379,27 @@ const menu: MenuItem[] = [
     display: block;
     padding: 8px 0;
     font-size: 15px;
+  }
+  /* The drawer's App panel: each pillar under its coloured name, the AI
+     layer last, on a quiet tint of its own. */
+  .m-pillar .m-acc__group-list a:hover {
+    color: var(--pillar, var(--brand-orange));
+  }
+  .m-pillar.pillar--ai {
+    padding: 14px 16px 6px;
+    border-radius: 16px;
+    background: rgba(14, 22, 51, 0.06);
+  }
+  .m-pillar__note {
+    margin: 10px 0 2px;
+    font-size: 13px;
+    color: var(--text-mute);
+  }
+  .m-pillar__static {
+    display: block;
+    padding: 8px 0;
+    font-size: 15px;
+    color: var(--text-mute);
   }
   .m-acc__link-title {
     display: block;

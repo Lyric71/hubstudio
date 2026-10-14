@@ -5,7 +5,7 @@ description: "Gather the renders, videos, pictures and documents of one campaign
 excerpt: "A campaign keeps the files of one marketing push together, under one name and one brief, without copying anything out of the Assets Library."
 section: "library"
 order: 7.5
-updated: 2026-10-08
+updated: 2026-10-14
 appPaths: ["/campaigns", "/campaigns/[id]", "/files"]
 audience: "Everyone except client logins; creators and admins create and fill campaigns"
 related: ["assets-library", "linkedin", "facebook", "x", "your-team", "history"]
@@ -37,7 +37,7 @@ A campaign gathers the files of one marketing push under one name: the pictures 
 
 Give it a brief, a few lines on what the campaign is for, and you can write a post from the whole campaign at once.
 
-**Campaigns** in the menu, under **Image anonymizer**, unfolds into a short list: **All campaigns** first, which opens the Campaigns page, then each of your team's campaigns by name, in alphabetical order. Click a name to open that campaign.
+**Campaigns**, the first entry of the **Publish** pillar in the menu, unfolds into a short list: **All campaigns** first, which opens the Campaigns page, then each of your team's campaigns by name, in alphabetical order. Click a name to open that campaign.
 
 ![The menu with Campaigns unfolded: All campaigns, then the team's campaign Lumera Essence launch, beside the Campaigns page](/Images/help/campaigns-menu.webp)
 

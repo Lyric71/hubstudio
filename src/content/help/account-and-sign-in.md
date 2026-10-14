@@ -1,14 +1,14 @@
 ---
 title: "Account and sign-in"
 seoTitle: "Your account settings and signing in | hubStudio Help"
-description: "The interface in English, French or Chinese, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the weekly digest of what changed, the engines in your lists, voice input, how to reset a forgotten password, and what happens to a login left unused."
+description: "The interface in English, French or Chinese, your name, picture, sign-in email and password, the sign-in code sent by email, your social accounts on My Connections, the connection check after sign-in, light or dark, date and time, the weekly digest of what changed, the tips after sign-in, the engines in your lists, voice input, how to reset a forgotten password, and what happens to a login left unused."
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
 order: 18
-updated: 2026-10-08
+updated: 2026-10-14
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"
-related: ["getting-started", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "choosing-a-model", "balance-and-payments", "troubleshooting"]
+related: ["getting-started", "discovery-and-tips", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "choosing-a-model", "balance-and-payments", "troubleshooting"]
 shots:
   - file: "/Images/help/account-and-sign-in-security.webp"
     route: "/settings"
@@ -34,7 +34,12 @@ shots:
     clip: "#digest"
     alt: "The Weekly digest card in Settings: Send me the weekly digest of what's new and Email me when a new AI model is added, both on, the unsubscribe note, See what's new and Manage all your emails"
     captured: 2026-09-29
-sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro", "src/lib/changelog-digest.ts", "src/pages/api/changelog-digest/cron.ts", "src/lib/email-preferences.ts"]
+  - file: "/Images/help/account-and-sign-in-tips.webp"
+    route: "/settings"
+    clip: "#tips"
+    alt: "The Tips card in Settings: the Show me tips when I sign in switch, on, the note about Never see this again and the arrows, Show me a tip now, and a small picture of a tip card"
+    captured: 2026-10-14
+sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro", "src/lib/changelog-digest.ts", "src/pages/api/changelog-digest/cron.ts", "src/lib/email-preferences.ts", "src/lib/tips.ts", "src/scripts/tipsNotice.ts"]
 ---
 
 Open **User Settings** from the menu under your picture, at the top right of every page. The band at the top of the page shows who is signed in, your role and your team, then three figures: **Available now**, **Spent today** and **Spent this month**. The sections are listed on the left.
@@ -174,6 +179,17 @@ Each switch is saved the moment you flip it. Every digest also carries an unsubs
 
 ![The Weekly digest card in Settings: Send me the weekly digest of what's new and Email me when a new AI model is added, both on, the unsubscribe note, See what's new and Manage all your emails](/Images/help/account-and-sign-in-digest.webp)
 
+## Tips
+
+When you sign in, a small card in the bottom right corner of the first page brings a few tips, each with a screenshot of hubStudio in your language. See [Discovery and tips](/help/discovery-and-tips#tips-after-you-sign-in) for how the card works.
+
+Under **Tips**:
+
+- **Show me tips when I sign in**: on, the card opens after each sign-in; off, it no longer does. The switch is saved the moment you flip it. **Never see this again**, on a tip, switches it off here too.
+- **Show me a tip now** opens the card on the spot, whatever the switch says.
+
+![The Tips card in Settings: the Show me tips when I sign in switch, on, the note about Never see this again and the arrows, Show me a tip now, and a small picture of a tip card](/Images/help/account-and-sign-in-tips.webp)
+
 ## My models
 
 **My models** lists every engine you can use, in tabs. Switch off an engine you don't want to see: it leaves your own lists in [Explore](/help/explore) and in the studios, and nothing changes for anybody else. Each switch is saved the moment you flip it. The last engine of each kind always stays on.
@@ -219,6 +235,10 @@ A login that hasn't been used for two months can be closed. Using it means signi
 3. Still unused on that day, the login is deactivated, and an email tells you so.
 
 Nothing is deleted. A deactivated login keeps its account, its work and its history, and an administrator can open it again. A question about the email? Answer it.
+
+## Discovery
+
+**Discovery**, in the menu under your picture, opens the page your first sign-in landed on: every module of your menu, the first steps, the help center and the quick tour. See [Discovery and tips](/help/discovery-and-tips).
 
 ## Sign out
 

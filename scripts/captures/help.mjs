@@ -157,6 +157,73 @@ const shots = [
     },
   },
   { name: 'account-and-sign-in-digest', route: '/settings', element: '#digest' },
+  { name: 'account-and-sign-in-tips', route: '/settings', steps: scrollTo('#tips', 120), element: '#tips' },
+
+  // Getting started: the Create your account card, the country picked.
+  {
+    name: 'getting-started-signup',
+    route: '/signup',
+    signedOut: true,
+    height: 1100,
+    steps: async (page) => {
+      await page.locator('select#country').selectOption('FR');
+      await page.waitForTimeout(300);
+    },
+    full: true,
+    clip: async (page) => {
+      const b = await page.evaluate(() => {
+        const r = document.querySelector('main .ui-card').getBoundingClientRect();
+        return { x: r.x, y: r.y + window.scrollY, width: r.width, height: r.height };
+      });
+      return { x: Math.round(b.x - 40), y: Math.round(b.y - 32), width: Math.round(b.width + 80), height: Math.round(b.height + 64) };
+    },
+  },
+
+  // Discovery and tips: the tip card, opened from Settings > Tips.
+  {
+    name: 'discovery-and-tips-card',
+    route: '/settings',
+    steps: async (page) => {
+      await scrollTo('#tips', 120)(page);
+      await click(page, '[data-tips-now]', 3000);
+      await page.waitForSelector('.tpn', { timeout: 20000 });
+      await page.waitForTimeout(2500);
+    },
+    element: '.tpn',
+  },
+  // The Discovery page as a first sign-in shows it (Welcome aboard).
+  { name: 'discovery-and-tips-page', route: '/discover?welcome=1', height: 1000, steps: (p) => p.waitForTimeout(1500) },
+  {
+    name: 'discovery-and-tips-modules',
+    route: '/discover?welcome=1',
+    height: 1000,
+    steps: async (page) => {
+      await page.addStyleTag({ content: '.dv-index { visibility: hidden !important; }' });
+      await scrollTo('#dv-ch-create', 40)(page);
+      await page.waitForTimeout(2000);
+    },
+    // A clip, not an element shot: the explorer moves on its own and never
+    // holds still long enough for an element screenshot.
+    clip: async (page) => {
+      const r = await page.evaluate(() => {
+        const b = document.querySelector('#dv-ch-create').getBoundingClientRect();
+        return { x: b.x, y: b.y, width: b.width, height: b.height };
+      });
+      const y = Math.max(0, Math.round(r.y - 16));
+      return { x: Math.round(r.x - 16), y, width: Math.round(r.width + 32), height: Math.min(1000 - y, Math.round(r.height + 32)) };
+    },
+  },
+  // The quick tour on the first pillar of the menu, Create (third stop).
+  {
+    name: 'discovery-and-tips-tour',
+    route: '/discover?welcome=1',
+    steps: async (page) => {
+      await page.waitForTimeout(1000);
+      await click(page, '[data-dv-tour]', 1200);
+      await click(page, '[data-next]', 1200);
+      await click(page, '[data-next]', 1500);
+    },
+  },
 
   // Assets Library and its tools
   { name: 'assets-library-page', route: '/files', as: MAYA, height: 1000, routes: [libraryBeforeTeaser], wait: '[data-file-row], tr' },

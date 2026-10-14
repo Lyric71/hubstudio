@@ -14,7 +14,9 @@ run (an AI run) -> génération (verb: lancer)
 Explore -> Explorer
 Image studio / Video studio -> studio Image / studio Vidéo
 History -> Historique
+Discovery (page a first sign-in opens on) -> Découverte (Welcome aboard: « Bienvenue à bord »; quick tour: « visite rapide », Take the quick tour: « Lancer la visite rapide »; Show in the menu: « Voir dans le menu »); tips after sign-in -> astuces (tip card: « carte d’astuces »; Never see this again: « Ne plus afficher »; Show me: « Me montrer ») (settled 2026-10-14)
 Assets Library -> Bibliothèque de contenus
+App pillars (menu headings, home page, header App panel) Create / Publish / Library -> Créer / Publier / Bibliothèque; AI layer (Agents and Skills, across the three) -> la couche IA (heading: « La couche IA »); pillar -> pilier; PDF (module, eight PDF tools) -> PDF (settled 2026-10-14)
 Campaigns (Assets Library) -> Campagnes (a campaign: une campagne; Add to a campaign: « Ajouter à une campagne »; Add to campaign, ticked rows: « Ajouter à la campagne »; Add assets: « Ajouter des contenus »; In this campaign: « Dans cette campagne »; Open in its module / In the library / Remove: « Ouvrir dans son module » / « Dans la bibliothèque » / « Retirer »; Campaign menu of a creation form: « Campagne », set to « Aucune campagne »; library filter In no campaign: « Hors campagne »; Context folder from the Assets Library: « Dossier de contexte tiré de la bibliothèque »; never « campagne publicitaire »)
 Agents -> Agents (My agents / Team agents / Catalog / Runs: « Mes agents » / « Agents de l’équipe » / « Catalogue » / « Exécutions »; Agents Command Room: « Poste de commande des agents »; Social publishing watcher: « Veilleur des publications sociales »; finding: « constat »; Run now: « Lancer maintenant »)
 Picture versions / Use this version (social post) -> « Versions des visuels » / « Utiliser cette version »; On the post (version tag) -> « Sur la publication »
