@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'cost-of-social-content-week',
+    image: '/Images/insight-cost-of-social-content-week.webp',
+    imageAlt:
+      'A hand sets a stack of blank prints on one pan of an old brass balance scale, a worn wristwatch on the other, on a scuffed wooden table in warm window light.',
+    category: 'Cost',
+    tone: 'orange',
+    title: 'What a Week of Social Content Really Costs',
+    deck: 'One defined week of social posts, priced four ways: in-house, freelance, by agency and in an app, from official wage data and dated rate surveys.',
+    date: 'October 14, 2026',
+    dateISO: '2026-10-14',
+    readingTime: '13 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'What a Week of Social Content Really Costs | hubStudio',
+    metaDescription:
+      'One defined week of social posts priced four ways (in-house, freelance, agency, an app) from official wage data and dated rate surveys, hidden costs in.',
+  },
+  {
     slug: 'x-image-video-specs',
     image: '/Images/insight-x-image-video-specs.webp',
     imageAlt:
@@ -429,6 +446,7 @@ export const insights: Insight[] = [
     deck: 'Nobody publishes what brand content costs with a method attached. This page compiles every absolute figure readable at source, dated, with the conflicts left in.',
     date: 'September 27, 2026',
     dateISO: '2026-09-27',
+    dateModifiedISO: '2026-10-14',
     readingTime: '24 min read',
     author: 'Cyril Drouin',
     metaTitle: 'The Real Cost of Brand Content in 2026 | hubStudio',

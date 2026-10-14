@@ -2659,3 +2659,33 @@ question opened. Captures in `editorial/research/x-image-video-specs/`.
 | Header image 5MB cap | Header size pages | No X page gives a header file cap | 2026-10-14 |
 | Link card 1200 x 628 or 1200 x 630 | Size guides | X's cards documentation not reachable on 2026-10-14 (docs.x.com 404); not verified | 2026-10-14 |
 | Android app caps Premium video at 10 minutes | Video tool blog | Not on an X page read | 2026-10-14 |
+
+
+## Added 2026-10-14 (ledger rows from brief 71, cost-of-social-content-week)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+### Cost of a week of social content (added 2026-10-14, brief 71)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| US May 2025 medians: marketing specialists $78,760 ($37.87 an hour; 10th $43,390, 90th $155,480); graphic designers $62,960 ($30.27); public relations specialists $74,750 ($35.94); film and video editors $75,420 ($36.26); marketing managers $166,790 ($80.19) | "US Bureau of Labor Statistics, Occupational Employment and Wage Statistics, May 2025" | api.bls.gov OEWS national series (bls.gov pages 403 to automated reads) | 2025-05 | primary | 2026-10-14 | 2026-10-14 | 71 |
+| US private industry compensation June 2026: $46.89 total, $32.82 wages, $14.07 benefits, load 1.43 | "US Bureau of Labor Statistics, Employer Costs for Employee Compensation, June 2026" | api.bls.gov ECEC series CMU2010000000000D, CMU2020000000000D | 2026-06 reference, released 2026-09 | primary | 2026-10-14 | 2026-10-14 | 71 (same as row 1180) |
+| Germany 2025 median gross annual, full time, bonuses included: advertising and marketing 64,923 euros; design specialist 49,028; public relations 73,562; all occupations 54,066 | "Destatis, earnings survey 2025" | genesis.destatis.de 62361-0034; press release Nr. 113, 2026-04-01 | 2025 | primary | 2026-10-14 | 2026-10-14 | 71 |
+| Labour cost levels 2025: Germany 45.0 total, 34.5 wages (load 1.30); France 44.3, 30.0 (1.48, non-wage 32.3 percent); EU27 34.9, 26.2 (1.33) | "Eurostat, labour cost levels 2025" | Eurostat lc_lci_lev, updated 2026-04-23; news release 2026-03-31 | 2025 | primary | 2026-10-14 | 2026-10-14 | 71 |
+| UK April 2025 provisional full-time medians: marketing associate professionals 33,412 pounds; graphic and multimedia designers 32,510; public relations professionals 37,563; marketing and commercial managers 53,703 | "Office for National Statistics, Annual Survey of Hours and Earnings 2025, provisional" | ons.gov.uk ASHE Table 14.7a, released 2025-10-23 | 2025-04 | primary, provisional | 2026-10-14 | 2026-10-14 | 71 |
+| Freelance contractor averages, bookings 2024 to 2025: US hourly social media manager $54, graphic designer $57, motion graphics $64, videographer $70; UK day 326, 348, 385, 427 pounds | "a freelance contractor marketplace's 2026 rates report, from its own booking data; a market claim" | yunojuno.com/freelancer-rates-report | 2026 edition | market claim | 2026-10-14 | 2026-10-14 | 71 |
+| UK freelance copywriter median day rate 440 pounds (mean 465), 338 freelancers, fieldwork February 2026 | "a UK copywriters' network survey, 2026" | procopywriters.co.uk/survey-2026 | 2026-07 | single-source survey | 2026-10-14 | 2026-10-14 | 71 |
+| German marketing freelancers 86.70 euros an hour (n over 3,300, Jan to Mar 2026); DACH marketing and communication 94, design and media 89 euros (n 1,310, Jan to Feb 2026) | "two project marketplaces' 2026 freelancer surveys; market claims" | freelance.de/blog/freelancer-studie-2026; freelancermap.de freelancer-kompass-2026.pdf | 2026-03 and 2026-02 | market claim, triangulated | 2026-10-14 | 2026-10-14 | 71 |
+| Agency social media management retainers on 17 agencies' own price pages: US $99 to $8,280 a month, UK 99 to 2,200 pounds, euro pages 49 to 3,000 euros; per post $9.30 to $540, 2.99 to 26.70 pounds, 2.26 to 166.67 euros | "17 agencies' own price pages, read October 14, 2026, no agency named; seller-published, no method" | research/cost-of-social-content-week/agency-01 to agency-17 | 2026-10-14 | market claim | 2026-10-14 | 2026-10-14 | 71 |
+
+### Do not publish, added from brief 71
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| 45 minutes a post; 5 to 10 management hours a month | SERP vendor and consultancy pages | Seller estimates, no method | 2026-10-14 |
+| Loaded multiplier 1.4 to 2.0 times salary | SERP pages | Asserted, no source | 2026-10-14 |
+| Marketplace median freelance hourly $25, typical $15 to $40 | Freelance marketplace guide | 403, method unreachable, seller | 2026-10-14 |
+| Video editors average $27.55 an hour | Editor portfolio platform survey, Q4 2024 | 201 self-selected global respondents, seller of an editing tool | 2026-10-14 |
+| Social media consulting $50 to $60 an hour | Editorial freelancers' rate chart 2026 | Prices marketing advice for authors, not content | 2026-10-14 |
+| UK creative recruiter day rates 2026 | Recruiter salary survey PDF | No sample, no method | 2026-10-14 |

@@ -35,6 +35,7 @@ const ARTICLES: Record<string, string> = {
   'cloudflare-pay-per-crawl': 'cloudflare-et-le-paiement-a-l-exploration',
   'consumer-electronics-launch-content': 'contenu-de-lancement-en-electronique-grand-public',
   'content-credentials-c2pa-in-production': 'content-credentials-c2pa-en-production',
+  'cost-of-social-content-week': 'le-vrai-cout-d-une-semaine-de-contenus-reseaux-sociaux',
   'cost-to-localize-a-campaign-for-china': 'cout-de-localisation-d-une-campagne-pour-la-chine',
   'custom-aigc-workflows': 'flux-de-production-aigc-sur-mesure',
   'data-driven-aigc': 'aigc-guidee-par-les-donnees',

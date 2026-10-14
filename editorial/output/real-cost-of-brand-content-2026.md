@@ -559,7 +559,7 @@ one found anywhere was seller-published with no method, and it is not here.
 | Four full-time seats in the US | About $452,000 a year at national medians, $54.32 a paid hour | Two national series | Before recruitment, idle time, tools or space. Utilization is your input, not a published figure |
 | Generated video at any volume | Priced per second: 120 generated seconds at the cheapest published rate is about $6, against a loaded US editor hour of about $52 | Published list prices and national wage series | The retry ratio swings the bill about 75 times and is your input |
 | One master across many markets | Count languages, not markets. At one published 1,350 euro adaptation price, twelve markets speaking eight languages is 10,800 euro rather than 16,200 | One card, one duration | Single card, single duration |
-| Freelance or agency retainer | No open published figure exists | The reference handbook is priced; the trade body benchmarks go only to contributing members | Say so rather than estimate |
+| Freelance or agency retainer | Social media retainers publish tiers of $99 to $8,280 a month in the US, but bundle account management with the making | Agencies' own price pages, read October 14, 2026. Freelance rates appear only in surveys; the reference handbook is still priced | Seller-published with no method: a market claim, not a production price |
 
 Product photography cost per SKU and campaign adaptation cost per market work
 the first and last of those rows out in detail.

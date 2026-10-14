@@ -205,3 +205,13 @@ header photo (X) -> photo d’en-tête; header (« banner ») -> en-tête («�
 upload route -> voie d’importation; Premium subscriber -> abonné Premium; verified (account) -> vérifié; video loops -> tourne en boucle; renders static (GIF) -> s’affiche figé
 self-serve advertisers -> annonceurs en libre-service; account manager -> gestionnaire de compte; support ticket -> demande d’assistance; Select advertisers -> certains annonceurs
 X settings and API messages quoted verbatim in English in « » (« Allow video to be downloaded » with a French gloss in parentheses)
+
+## Cost of social content (settled 2026-10-14)
+route (in-house, freelance, agency, app, studio) -> voie; In-house hire -> Un salarié en interne; Freelance (route) -> Freelance, a freelancer -> un freelance (prose may say indépendant); Agency retainer -> Agence au forfait mensuel
+the defined week -> la semaine type; tier (agency price plan) -> formule; Volume tier -> formule au volume; template graphics -> visuels sur gabarit
+loaded (cost) -> charges comprises; loaded weekly cost -> coût employeur hebdomadaire; load (benefits multiplier) -> coefficient de charges; payroll taxes -> cotisations patronales; 10th / 90th percentile -> 10e / 90e centile
+marketing specialist / marketing manager -> spécialiste marketing / responsable marketing; social media manager -> responsable des réseaux sociaux; motion graphics designer -> motion designer; videographer -> vidéaste; copywriter -> concepteur-rédacteur; public relations specialist -> spécialiste des relations publiques
+review hours -> heures de relecture; review round -> tour de relecture; approval round -> tour de validation; rework -> reprises; agreed rounds -> tours convenus
+setup / onboarding fees -> frais de mise en place / d’intégration; minimum term -> engagement minimal; ad spend -> budget publicitaire; paid media -> achat d’espace; tool seats -> licences d’outils
+pounds / euros, when the English writes them out: livres (livres sterling at first mention) / euros; dollars as 2 200 $
+Shared labels overridden on a page where common.json means something else: "Fixed" (a cost) -> Fixe (common: Corrigé); "Item" (table row header) -> Poste (common: Commande)

@@ -213,3 +213,13 @@ upload route -> 上传途径; media item (X post) -> 项媒体 (最多 4 项媒�
 saliency algorithm -> 显著性算法; timeline (X) -> 时间线
 "Allow video to be downloaded" (X setting) -> “允许下载视频”
 self-serve advertisers -> 自助投放的广告主; account manager / support ticket -> 客户经理 / 支持工单
+
+## Social content costs (settled 2026-10-14, cost-of-social-content-week)
+route (in-house / freelance / agency / app / studio) -> 路线; In-house (route, column) -> 自有团队; In-house hire -> 内部招聘; Freelance -> 自由职业者; Agency retainer -> 代理公司长期协议
+loaded (cost) -> 计入福利成本; load / multiplier (1.43, 1.30) -> 福利成本系数 (short: 系数); employer costs -> 雇主成本; labor cost (Eurostat) -> 用工成本
+Fixed or variable (cost) -> 固定或浮动; Fixed (cost cell) -> 固定, written as a page override because common.json reads "Fixed" as the changelog chip 修复; Item (table header) -> 项目 (page override of 选项)
+10th / 90th percentile -> 第 10 百分位 / 第 90 百分位; median -> 中位数; hourly -> 时薪; day rate -> 日费率; rate survey -> 费率调查; market claim -> 市场方说法
+US Bureau of Labor Statistics -> 美国劳工统计局; Occupational Employment and Wage Statistics -> 《职业就业与工资统计》; Employer Costs for Employee Compensation -> 《雇主雇员薪酬成本》; Destatis -> 德国联邦统计局（Destatis）; Eurostat -> 欧盟统计局（Eurostat）, then Eurostat; Office for National Statistics -> 英国国家统计局
+marketing specialist / marketing manager / public relations specialist / film and video editor / motion graphics designer / videographer -> 营销专员 / 营销经理 / 公关专员 / 影视剪辑师 / 动态图形设计师 / 摄像师
+tier (agency price) -> 档位; volume tier -> 走量档位; setup or onboarding fee -> 开户费或上线费; minimum term -> 最短合约期; ad spend -> 广告费; community management -> 社群运营; price per post -> 单帖价格
+review hours -> 审核工时; rework beyond agreed rounds -> 超出约定轮次的返工; tool seats -> 工具席位; stock licenses -> 图库授权; recruiting and replacement -> 招聘与替补
