@@ -111,6 +111,8 @@ Each network has its own card with numbered steps in plain words. In short:
 
 To add a second account on the same network, click **Connect another account** on its card.
 
+LinkedIn connects whoever is already signed in to linkedin.com in your browser, so it would only send back the account you already have. On LinkedIn, **Connect another account** therefore shows a note first, with **Sign out of LinkedIn**, which opens LinkedIn's sign-out in a new tab, and **Continue**. Sign out there (or open the page in a private window), click **Continue**, then sign in as the other account. If LinkedIn still sends back an account that was already connected, the page names it and says that nothing was added.
+
 | Network | What to know before you connect |
 |---|---|
 | LinkedIn | Your profile comes back, along with any company page LinkedIn lists you as an administrator of. Keep the ones you post on and remove the others. |
