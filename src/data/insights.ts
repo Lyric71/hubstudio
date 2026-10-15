@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'pinterest-pin-specs',
+    image: '/Images/insight-pinterest-pin-specs.webp',
+    imageAlt:
+      'A designer\'s hands fold the bottom of a taller print back under itself and pin it level with a row of portrait prints of a bowl, linen and sneakers on a cork board, in late window light.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Pinterest Pin Specs for 2026',
+    deck: 'Pinterest\'s pin sizes, video, carousel and collections limits, read from Pinterest\'s own pages on October 15, 2026, with retired formats flagged.',
+    date: 'October 15, 2026',
+    dateISO: '2026-10-15',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Pinterest Pin Specs for 2026 | hubStudio',
+    metaDescription:
+      'Pinterest standard, video and carousel pin sizes, ratios and file limits for 2026, read from Pinterest\'s own Help Center and Business specs.',
+  },
+  {
     slug: 'cost-of-social-content-week',
     image: '/Images/insight-cost-of-social-content-week.webp',
     imageAlt:

@@ -233,3 +233,15 @@ Crop panel presets Story / Wide / Link and Apply the crop -> “快拍” / “�
 Save the picture panel: Quality / Size / Width / Height / Save a copy in the Assets Library / Save as a new version / Download / Versions -> “质量” / “大小” / “宽度” / “高度” / “在素材库中保存副本” / “另存为新版本” / “下载” / “版本”; the Save panel (prose) -> 保存面板
 link picture (1.91:1 placement) -> 链接预览图; video thumbnail -> 视频缩略图; Full screen (placement) -> 全屏; Page cover (LinkedIn) -> 主页封面
 pixel sizes written with × and the English digits as printed (1080 × 1350, 1,440 × 1,800); "percent" -> %
+
+## Pinterest specs (settled 2026-10-15, pinterest-pin-specs)
+Pinterest stays in Latin (never 缤趣); pin -> Pin 图 (a pin: 一张 Pin 图; standard / image / video / carousel pin -> 标准 Pin 图 / 图片 Pin 图 / 视频 Pin 图 / 轮播 Pin 图)
+Create Pin (Pinterest's form and option) -> “创建 Pin 图”, first mention “创建 Pin 图”（Create Pin）; Mark as AI-Modified (Pinterest toggle) stays in English in quotes, glossed once: “Mark as AI-Modified”（标记为经 AI 修改）开关
+Story Pins / Idea Pins -> 故事 Pin 图（Story Pins） / 创意 Pin 图（Idea Pins）, the English only in the first mention; long pin / infographic pin -> 长 Pin 图 / 信息图 Pin 图 (in quotes when a size guide's claim)
+Idea ad / Showcase ad / Quiz ad -> 创意广告 / 橱窗广告 / 测验广告 (橱窗广告, never 展示广告, which is display advertising); title pin -> 标题 Pin 图; cards / features (showcase) -> 卡片 / 特色图; results (quiz) -> 结果
+collections (format) -> 精选集; Max width collections -> 最大宽度精选集; hero / secondary (images) -> 主图 / 副图; standard width / max. width video -> 标准宽度视频 / 最大宽度视频
+feed (Pinterest) -> 信息流; home feed / search feed -> 首页信息流 / 搜索信息流; light mode / dark mode -> 浅色模式 / 深色模式; tint (overlay on image pins) -> 蒙层
+description (pin field) -> 说明文字 (table header 说明, from common); double-byte languages -> 双字节语言; custom color profiles -> 自定义色彩配置文件; 8-bit RGB JPEG -> 8 位 RGB JPEG
+organic / paid (Pinterest use) -> 自然发布 / 付费推广; organic impressions -> 自然展示; sales objective -> “销售”目标; catalog (product) -> 产品目录; business account -> 企业账户; full-bleed -> 全屏满版
+Pinterest Help Center -> Pinterest 帮助中心 (table shorthand “帮助中心”); Pinterest Business (business site) -> Pinterest 商务网站 (shorthand “商务网站”); creator site (Pinterest Create) -> Pinterest 创作者网站, the blog -> Pinterest Create 博客; Newsroom archive -> 新闻中心存档; help article titles in 《》 (帮助中心《查看广告规格》, 商务网站《创意最佳实践》)
+App labels used on this page: Image studio Shape portrait / vertical -> “画幅”竖版 / 竖屏; Tall (1:3) -> “竖长（1:3）”; Image editor Crop, Free -> “裁剪”中选“自由”; Save, Width -> “保存”, “宽度”; Video editor Format panel Vertical / Portrait / Square -> “格式”面板“竖屏” / “竖版” / “方形”

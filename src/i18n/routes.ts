@@ -61,6 +61,7 @@ const ARTICLES: Record<string, string> = {
   'meta-tiktok-against-douyin-rednote': 'meta-et-tiktok-face-a-douyin-et-rednote',
   'offshore-creative-production-china': 'production-creative-delocalisee-en-chine',
   'one-shoot-six-platforms-china-variant-matrix': 'un-shooting-six-plateformes-la-matrice-chinoise',
+  'pinterest-pin-specs': 'pinterest-formats-des-epingles-2026',
   'procurement-guide-buying-ai-content-production': 'guide-achats-production-de-contenu-ia',
   'product-photography-cost-per-sku': 'cout-de-la-photo-produit-par-reference',
   'production-roster-review-questions': 'questions-pour-evaluer-vos-prestataires-de-production',
