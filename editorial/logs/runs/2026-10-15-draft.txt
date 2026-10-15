@@ -1,0 +1,38 @@
+﻿2026-10-15T12:30:49 start draft (model claude-opus-5-5)
+2026-10-15T12:30:49 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-15T12:31:59+08:00 catch-up run (Relaunch-MissedTasks.ps1). Working tree inspected: no row at researched, drafted or quality_passed. Row 72 resize-image-every-social-network was taken to image_ready by the 00:30 draft run of 2026-10-15 and is being published by the publish runner (its page, howtos.ts, routes.ts, dictionaries and publish logs are uncommitted); those files are left untouched. No schedule row carries publish_date 2026-10-15 except row 40 (published). This 12:30 slot therefore drafts the next row: row 48, brief 73, pinterest-pin-specs (template spec, publish_date 2026-10-20), the earliest not_started row in publish_date order.
+2026-10-15T12:43:24+08:00 step 0 research gate passed: editorial/research/pinterest-pin-specs.md written before any body copy (SERP mapped on five phrasings by a research subagent, 12 third-party pages opened, domains replaced by category labels; 12 Pinterest pages captured from the Help Center, Pinterest Business, Pinterest Create and the newsroom archive to research/pinterest-pin-specs/; R4 not applicable). Status researched.
+2026-10-15T12:48:47+08:00 step 1 createarticle done: output/pinterest-pin-specs.md written (13 iterations, iteration 7 as the cadence variant; check 2 re-capture of all 12 Pinterest pages passed, figures unchanged; R8 reconciled). check-draft.mjs passes every hard check. Status drafted.
+2026-10-15T12:49:56+08:00 step 2 content-quality-us done: 18 passes plus final in place (versions v1 to v18 in the session scratchpad); SEO kept at the brief's approved values, 28/140/21 words inside 52/152/25; four H2s turned into questions, upload rules moved from a bold-label list to prose. Status quality_passed.
+2026-10-15T12:53:07+08:00 step 3 generate-image-openai done: one gpt-image-2 high attempt, checked against the AI-tells list, saved as public/Images/insight-pinterest-pin-specs.webp (1536x1024, 137 KB). Ledger rows (10 figures, 6 do-not-publish) appended with both check dates; watch row 2027-01-20 added; run log editorial/logs/2026-10-15-pinterest-pin-specs.md. Row 73 at image_ready. Not published, not committed. This was a catch-up run; no other 2026-10-15 row was pending.
+The catch-up run is done. Row 73, the spec page `pinterest-pin-specs`, is at `image_ready`. Nothing was published or committed.
+
+**Which row and why:** no 2026-10-15 row was waiting, so there was nothing to catch up first. The 00:30 draft run had already taken row 72 (resize-image) to `image_ready`, and the publish runner is part-way through publishing it. I left all of that run's files alone. This 12:30 run then took the next `not_started` row, brief 73.
+
+**What this run did:**
+- **Research:** written to `editorial/research/pinterest-pin-specs.md` before any of the article. A background agent mapped search results for five queries. I saved 12 of Pinterest's own pages (help center, business site, creator site, newsroom archive) to `research/pinterest-pin-specs/`. I saved them all again after drafting, and every figure was unchanged.
+- **Draft** (`editorial/output/pinterest-pin-specs.md`): 1,813 words of prose, 2,633 with its six tables; the brief's 1,400 is a minimum. It covers:
+  - standard pins: 2:3, 1000 by 1500, PNG or JPEG, 20 MB from a computer or 32 MB in the app;
+  - video, carousel, collections, and the Idea, Showcase and Quiz ad formats;
+  - formats that are retired or were never Pinterest's;
+  - the checks to run before posting;
+  - how to make the files in hubStudio, stating plainly that hubStudio does not publish to Pinterest.
+
+  It ends with a reviewed date and a changelog. `check-draft.mjs` passes every hard check.
+- **Quality pass:** all 18 passes ran. The title (28 characters), meta description (140) and excerpt (21 words) are the brief's approved values, all inside the house limits.
+- **Hero image:** generated on the first try and checked against the style guide's list of AI giveaways. Saved as `public/Images/insight-pinterest-pin-specs.webp` (137 KB).
+- **Records:**
+  - ten figures and six rejected claims added to `verified-sources.md`, each with both check dates;
+  - a recheck row dated 2027-01-20 in `watch.csv`;
+  - the run log at `editorial/logs/2026-10-15-pinterest-pin-specs.md`;
+  - progress lines in `runs/2026-10-15-draft.txt`.
+
+**Decisions I made, all recorded in the run log:**
+- **Where Pinterest contradicts itself, the page prints both values and names each page.** The description limit is 800 or 500 characters. Scheduling runs 30 days or two weeks ahead. The ideal video length is 6 to 15, 15 to 60, or 45 to 90 seconds.
+- **No size for tall pins or minimum size is printed.** The 1000 by 2100 "long pin", the 1000 by 3000 "infographic pin" and the 600 by 900 minimum are on no Pinterest page, so the article says so instead.
+- **Story Pins and Idea Pins are flagged as retired,** each with a dated Pinterest announcement: renamed in May 2021 and merged into the standard pin in August 2023. Idea ads are still a current ad format and are listed as one.
+- **Sources outside the brief's list:** the brief named the help center and business site only. I also used two other Pinterest-owned sites, the creator site and the newsroom archive, because the dated history of the retired formats is no longer on any help page. Creator-site advice is labeled with the page it comes from.
+- **Other pages:** no live page or later brief makes a Pinterest claim that this article contradicts, so nothing else needed fixing.
+2026-10-15T12:53:19 model Opus 5.5 completed successfully
+2026-10-15T12:53:19 end draft exit 0
+2026-10-15T12:53:20 queue: ok: 69 to draft, 0 blocked, last draft 2026-10-15

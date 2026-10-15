@@ -1,0 +1,761 @@
+URL: https://developers.facebook.com/docs/graph-api/reference/page/photos
+Final URL: https://developers.facebook.com/docs/graph-api/reference/page/photos
+HTTP: 200
+Captured: 2026-10-14T16:41:02.187Z
+
+Docs
+Tools
+Support
+Search input
+​
+Login
+Docs
+Graph API
+Reference
+Page
+Photos
+Graph API
+Overview
+Get Started
+Batch Requests
+Debug Requests
+Handle Errors
+Field Expansion
+Secure Requests
+Changelog
+Reference
+Graph API Version
+v26.0
+Page Photos
+
+Profile pictures and uploaded pictures for a Facebook Page.
+
+Reading
+
+Retrieve the photos associated to a page.
+
+New Page Experience
+This endpoint is supported for New Page Experience.
+Feature Permissions
+Name	Description
+Page Public Content Access	This feature permission may be required.
+When using the Page Public Content Access feature, use a system user access token to avoid rate limiting issues.
+Requirements
+You will need:
+A Page access token requested by a person who can perform the MODERATE task on the Page
+The pages_read_engagement permission
+The pages_show_list permission
+If a person is not able to perform the task on the Page, you will need:
+The Pages Public Content Access feature
+Example
+HTTPPHP SDKJavaScript SDKAndroid SDKiOS SDKcURLGraph API Explorer
+GET /v26.0/{page-id}/photos HTTP/1.1
+Host: graph.facebook.com
+If you want to learn how to use the Graph API, read our Using Graph API guide.
+
+By default reading from the photos edge returns the current profile picture for the Page as well as previous profile pictures. Use the optional type parameter with the value uploaded to get the photos that a Page has uploaded.
+
+GET /{page-id}/photos?type=uploaded
+
+Parameters
+Parameter	Description
+
+biz_tag_id
+int64
+	
+
+business tag id to filter photos
+
+
+
+business_id
+numeric string or integer
+	
+
+optional param assist with filters such as recently used
+
+
+
+type
+enum{profile, tagged, uploaded}
+	
+Default value: profile
+
+Allows you to query which type of photos to return
+
+Fields
+
+Reading from this edge will return a JSON formatted result:
+
+{
+    "data": [],
+    "paging": {}
+}
+
+
+
+data
+A list of Photo nodes.
+paging
+For more details about pagination, see the Graph API guide.
+Error Codes
+Error	Description
+200	Permissions error
+100	Invalid parameter
+80001	There have been too many calls to this Page account. Wait a bit and try again. For more info, please refer to https://developers.facebook.com/docs/graph-api/overview/rate-limiting.
+190	Invalid OAuth 2.0 Access Token
+104	Incorrect signature
+368	The action attempted has been deemed abusive or is otherwise disallowed
+Creating
+Requirements
+A Page access token requested by a person who can perform the CREATE_CONTENT task on the Page
+The pages_read_engagement permission
+The pages_manage_posts permission
+The pages_show_list permission
+Photo Specifications
+Property	Specification
+
+
+File type
+
+	
+
+.jpeg, .bmp, .png, .gif, .tiff
+
+
+
+
+File size
+
+	
+
+Files can not exceed 10MB. For .png files, we recommend not exceeding 1MB or the image may appear pixelated.
+
+Facebook strips all location metadata before publishing and resizes images to different dimensions to best support rendering in multiple sizes.
+
+Uploading Photos
+
+There are two separate ways of uploading photos to Facebook:
+
+Attach the photo as multipart/form-data. The name of the object doesn't matter, but historically people have used source as the parameter name for the photo. How this works depends on the SDK you happen to be using to do the post.
+
+Use a photo that is already on the internet by publishing using the url parameter:
+
+HTTPPHP SDKJavaScript SDKAndroid SDKiOS SDK
+POST /v26.0/page-id/photos HTTP/1.1
+Host: graph.facebook.com
+
+url=image-url
+
+Single Photo Page Post
+
+You can upload and publish a single photo in one API request.
+
+curl -i -X POST \
+ -d "url=https://www.facebook.com/images/fb_icon_325x325.png" \
+ -d "published=true" \
+ -d "access_token=<access_token>" \
+ "https://graph.facebook.com/me/photos"
+
+Uploading an unpublished photo
+
+Upload a photo without publishing it to the /{page-id}/photos edge by making a similar call as described in the single photo post section but by adding the argument published=false.
+
+curl -i -X POST \
+ -d "url=https://www.facebook.com/images/fb_icon_325x325.png" \
+ -d "published=false" \
+ -d "access_token=<access_token>" \
+ "https://graph.facebook.com/me/photos"
+
+If the photo is used in a scheduled post, temporary=true must be used.
+
+curl -i -X POST \
+ -d "url=https://www.facebook.com/images/fb_icon_325x325.png" \
+ -d "published=false" \
+ -d "temporary=true" \
+ -d "access_token=<access_token>" \
+ "https://graph.facebook.com/me/photos"
+
+Use the Graph API Explorer to get SDK code snippets of the requests.
+
+On successful upload, the Graph API provides a response including the photo ID. After you upload an unpublished photo, Facebook stores it in a temporary upload state, which means it will remain on Facebook servers for about 24 hours. If you do not publish these photos within 24 hours, we delete them.
+
+Publishing a multi-photo post with uploaded photos
+
+After you successfully upload all photos, you can publish a multi-photo post using the returned ids by using the /page-id/feed endpoint. Here is an example of a request:
+
+curl -i -X POST \
+ -d "message=Testing multi-photo post!" \
+ -d "attached_media[0]={"media_fbid":"1002088839996"}" \
+ -d "attached_media[1]={"media_fbid":"1002088840149"}" \
+ -d "access_token=<access_token>" \
+ "https://graph.facebook.com/me/feed"
+
+When the photos are part of a scheduled post, the published, scheduled_publish_time, and unpublished_content_type parameters must be included.
+
+curl -i -X POST \
+ -d "message=Testing multi-photo post!" \
+ -d "attached_media[0]={"media_fbid":"1002088839996"}" \
+ -d "attached_media[1]={"media_fbid":"1002088840149"}" \
+ -d "access_token=<access_token>" \
+ -d "published=false" \
+ -d "scheduled_publish_time=1512068400" \
+ -d "unpublished_content_type=SCHEDULED" \
+ "https://graph.facebook.com/me/feed"
+
+Use the Graph API Explorer to get SDK code snippets of the requests.
+
+When publishing to a page using the Graph API Explorer the media_fbids must appear as an array in one Value box, [{"media_fbid":"photo_id"},{"media_fbid":"photo_id"}] or an error will occur.
+
+A successful Graph API request returns the Page Post ID.
+
+If you receive any errors, it's typically because of a permission failure or a bad parameter.
+
+You can make a POST request to photos edge from the following paths:
+/{page_id}/photos
+When posting to this edge, a Photo will be created.
+Parameters
+Parameter	Description
+
+aid
+string
+	
+
+Legacy album ID. Deprecated
+
+
+
+allow_spherical_photo
+boolean
+	
+Default value: false
+
+Indicates that we should allow this photo to be treated as a spherical photo. This will not change the behavior unless the server is able to interpret the photo as spherical, such as via Photosphere XMP metadata. Regular non-spherical photos will still be treated as regular photos even if this parameter is true.
+
+
+
+alt_text_custom
+string
+	
+
+Accessible alternative description for an image
+
+
+
+android_key_hash
+string
+	
+
+Android key hash
+
+
+
+application_id
+non-empty string
+	
+
+iTunes App ID. This is used by the native Share dialog that's part of iOS
+
+
+
+attempt
+int64
+	
+Default value: 0
+
+Number of attempts that have been made to upload this photo
+
+
+
+audience_exp
+boolean
+	
+Default value: false
+
+Audience exp
+
+
+
+backdated_time
+datetime
+	
+
+A user-specified creation time for this photo
+
+
+
+backdated_time_granularity
+enum{year, month, day, hour, min, none}
+	
+Default value: none
+
+Use only the part of the backdated_time parameter to the specified granularity
+
+
+
+caption
+UTF-8 string
+	
+
+The description of the photo
+
+Supports Emoji
+
+
+composer_entry_point
+string
+	
+
+composer_entry_point
+
+
+
+composer_session_id
+string
+	
+
+Composer session ID
+
+
+
+direct_share_status
+int64
+	
+
+The status to allow sponsor directly boost the post.
+
+
+
+feed_targeting
+feed target
+	
+
+Object that controls News Feed targeting for this post. Anyone in these groups will be more likely to see this post. People not in these groups will be less likely to see this post, but may still see it anyway. Any of the targeting fields shown here can be used, but none are required. feed_targeting applies to Pages only.
+
+
+
+filter_type
+int64
+	
+Default value: -1
+
+Unused?
+
+
+
+full_res_is_coming_later
+boolean
+	
+Default value: false
+
+Full res is coming later
+
+
+
+initial_view_heading_override_degrees
+int64
+	
+
+Manually specify the initial view heading in degrees from 0 to 360. This overrides any value present in the photo embedded metadata or provided in the spherical_metadata parameter
+
+
+
+initial_view_pitch_override_degrees
+int64
+	
+
+Manually specify the initial view pitch in degrees from -90 to 90. This overrides any value present in the photo embedded metadata or provided in the spherical_metadata parameter
+
+
+
+initial_view_vertical_fov_override_degrees
+int64
+	
+
+Manually specify the initial view vertical FOV in degrees from 60 to 120. This overrides any value present in the photo embedded metadata or provided in the spherical_metadata parameter
+
+
+
+ios_bundle_id
+string
+	
+
+iOS Bundle ID
+
+
+
+is_explicit_location
+boolean
+	
+
+Is this an explicit location?
+
+
+
+is_explicit_place
+boolean
+	
+
+If set to true, the tag is a place, not a person
+
+
+
+location_source_id
+numeric string or integer
+	
+
+ID of a page or a page set that provides location informationto enable Local Extensions
+
+
+
+manual_privacy
+boolean
+	
+Default value: false
+
+Manual privacy
+
+
+
+message
+string
+	
+
+Deprecated. Please use the caption param instead.
+
+
+
+name
+string
+	
+
+Deprecated. Please use the caption param instead.
+
+
+
+nectar_module
+string
+	
+
+Nectar module. Internal apps only
+
+
+
+no_story
+boolean
+	
+
+If set to true, this will suppress the News Feed story that is automatically generated on a profile when people upload a photo using your app. Useful for adding old photos where you may not want to generate a story
+
+
+
+offline_id
+int64
+	
+Default value: 0
+
+Offline ID
+
+
+
+og_action_type_id
+numeric string or integer
+	
+
+The Open Graph action type
+
+
+
+og_icon_id
+numeric string or integer
+	
+
+The Open Graph icon
+
+
+
+og_object_id
+OG object ID or URL string
+	
+
+The Open Graph object ID
+
+
+
+og_phrase
+string
+	
+
+The Open Graph phrase
+
+
+
+og_set_profile_badge
+boolean
+	
+Default value: false
+
+Flag to set if the post should create a profile badge
+
+
+
+og_suggestion_mechanism
+string
+	
+
+The Open Graph suggestion
+
+
+
+place
+place tag
+	
+
+Page ID of a place associated with the photo
+
+
+
+privacy
+Privacy Parameter
+	
+
+Determines the privacy settings of the photo. If not supplied, this defaults to the privacy level granted to the app in the Login dialog. This field cannot be used to set a more open privacy setting than the one granted
+
+
+
+profile_id
+int
+	
+
+Deprecated. Use target_id instead
+
+Deprecated
+
+
+provenance_info
+JSON object
+	
+
+provenance_info
+
+
+
+provenance_metadata
+JSON object
+	
+
+provenance_metadata
+
+
+
+proxied_app_id
+numeric string or integer
+	
+
+Proxied app ID
+
+
+
+published
+boolean
+	
+Default value: true
+
+Set to false if you don't want the photo to be published immediately
+
+
+
+qn
+string
+	
+
+Photos waterfall ID
+
+
+
+reshare_source_photo_fbid
+int64
+	
+
+reshare_source_photo_fbid
+
+
+
+scheduled_publish_time
+int64
+	
+
+Time at which an unpublished post should be published (Unix timestamp). Applies to Pages only
+
+
+
+spherical_metadata
+JSON object
+	
+
+A set of params describing an uploaded spherical photo. This field is not required; if it is not present we will try to generate spherical metadata from the metadata embedded in the image. If it is present, it takes precedence over any embedded metadata. Please click to the left to expand this list and see more information on each parameter. See also the Google Photo Sphere spec for more info on the meaning of the params: https://developers.google.com/streetview/spherical-metadata
+
+
+
+sponsor_id
+numeric string or integer
+	
+
+Facebook Page id that is tagged as sponsor in the photo post
+
+
+
+sponsor_relationship
+int64
+	
+
+Sponsor Relationship, such as Presented By or Paid PartnershipWith
+
+
+
+tags
+list<Object>
+	
+Default value: Vec
+
+Tags on this photo
+
+
+
+target_id
+int
+	
+
+Don't use this. Specifying a target_id allows you to post the photo to an object that's not the user in the access token. It only works when posting directly to the /photos endpoint. Instead of using this parameter you should be using the edge on an object directly, like /page/photos.
+
+
+
+targeting
+target
+	
+
+Allows you to target posts to specific audiences. Applies to Pages only
+
+
+
+temporary
+boolean
+	
+Default value: false
+
+This is a temporary photo. published must be false, and you can't set scheduled_publish_time
+
+
+
+time_since_original_post
+int64
+	
+
+Same as backdated_time but with a time delta instead of absolute time
+
+
+
+uid
+int
+	
+
+Deprecated
+
+
+
+unpublished_content_type
+enum {SCHEDULED, SCHEDULED_RECURRING, DRAFT, PUBLISH_PENDING, ADS_POST, INLINE_CREATED, PUBLISHED, REVIEWABLE_BRANDED_CONTENT}
+	
+
+Content type of the unpublished content type
+
+
+
+url
+URL
+	
+
+The URL of a photo that is already uploaded to the Internet. You must specify this or a file attachment
+
+
+
+user_selected_tags
+boolean
+	
+Default value: false
+
+User selected tags
+
+
+
+vault_image_id
+numeric string or integer
+	
+
+A vault image ID to use for a photo. You can use only one of url, a file attachment, vault_image_id, or sync_object_uuid
+
+Return Type
+This endpoint supports read-after-write and will read the node represented by id in the return type.
+Struct {
+id: numeric string,
+post_id: string,
+}
+Error Codes
+Error	Description
+368	The action attempted has been deemed abusive or is otherwise disallowed
+324	Missing or invalid image file
+200	Permissions error
+190	Invalid OAuth 2.0 Access Token
+100	Invalid parameter
+240	Desktop applications cannot call this function for other users
+283	That action requires the extended permission pages_read_engagement and/or pages_read_user_content and/or pages_manage_ads and/or pages_manage_metadata
+Updating
+You can't perform this operation on this endpoint.
+Deleting
+You can't perform this operation on this endpoint.
+On This Page
+Page Photos
+Reading
+New Page Experience
+Feature Permissions
+Requirements
+Example
+Parameters
+Fields
+Error Codes
+Creating
+Requirements
+Photo Specifications
+Uploading Photos
+Single Photo Page Post
+Publishing a multi-photo post with uploaded photos
+Parameters
+Return Type
+Error Codes
+Updating
+Deleting
+Build with Meta
+AI
+Meta Horizon
+Social technologies
+Wearables
+News
+Meta for Developers
+Blog
+Success stories
+Support
+Developer Support
+Bug tool
+Platform status
+Developer community forum
+Report an incident
+About us
+About
+Careers
+Terms and policies
+Responsible platform initiatives
+Platform terms
+Developer policies
+Privacy policy
+Cookies
+English (US)

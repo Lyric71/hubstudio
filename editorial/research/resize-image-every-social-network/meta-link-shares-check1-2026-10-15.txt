@@ -1,0 +1,91 @@
+URL: https://developers.facebook.com/docs/sharing/webmasters/images
+Final URL: https://developers.facebook.com/documentation/sharing/webmasters/images
+HTTP: 200
+Captured: 2026-10-14T16:33:50.156Z
+
+Build with us
+Docs
+Blog
+Resources
+Developer centers
+Login
+Sharing
+Sharing
+Overview
+iOS
+Android
+Web
+Messenger
+Sharing to Stories
+Webmasters
+Webmasters
+Getting Started
+Link Sharing FAQ
+Meta Web Crawlers
+Optimization
+Images in Link Shares
+Domain Verification
+Best Practices
+Docs
+Overview
+Images in Link Shares
+Was this helpful?
+Images in Link Shares
+Updated: Jun 30, 2026
+Copy for LLM
+View as Markdown
+The Open Graph meta-tag
+The og:image tag can be used to specify the URL of the image that appears when someone shares the content to Facebook. The full list of image properties can be found here.
+Requirements
+The minimum allowed image dimension is 200 x 200 pixels.
+The size of the image file must not exceed 8 MB.
+Use images that are at least 1200 x 630 pixels for the best display on high resolution devices. At the minimum, you should use images that are 600 x 315 pixels to display link page posts with larger images.
+If your image is smaller than 600 x 315 px, it will still display in the link page post, but the size will be much smaller.
+We’ve also re-designed link page posts so that the aspect ratio for images is the same across desktop and mobile Feed. Try to keep your images as close to 1.91:1 aspect ratio as possible to display the full image in Feed without any cropping.
+Our crawler only accepts gzip and deflate encodings, so make sure your server uses the right encoding.
+Pre-caching images
+When content is shared for the first time, the Facebook crawler will scrape and cache the metadata from the URL shared. The crawler has to see an image at least once before it can be rendered. This means that the first person who shares a piece of content won’t see a rendered image:
+There are three ways to avoid this and have images render on the first Like or Share action:
+Pre-cache the image with the Sharing Debugger: Run the URL through the URL debugger to pre-fetch metadata for the page. This can also be used to update the image for a piece of content.
+Pre-cache the image using Graph API: Perform a force-scrape of the URL programmatically using the Graph API to pre-fetch metadata for the page . This can also be used to update the image for a piece of content.
+Use og:image:width and og:image:height Open Graph tags: Using these tags will specify the image dimensions to the crawler so that it can render the image immediately without having to asynchronously download and process it.
+Updating images
+We cache all images referenced based on each image’s URL, so if you replace an image:
+Use a new URL for the new image or the image won’t be updated
+Don’t remove old images, as there maybe existing stories that reference the old image
+Follow the instructions in the section above to ensure that the new image has been downloaded by our crawler.
+Note that updating the image for a URL will not automatically update the preview for old shares. To do this, you must refresh the share as described here.
+Troubleshooting
+If you have any problems with images not being displayed correctly for a URL, try plugging in the image URL in the Sharing Debugger for any errors. If you think there’s an issue on our side, consider filing a bug report to us.
+Did you find this page helpful?
+ON THIS PAGE
+The Open Graph meta-tag
+Requirements
+Pre-caching images
+Updating images
+Troubleshooting
+Build with Meta
+AI
+Meta Horizon
+Social technologies
+Wearables
+News
+Meta for Developers
+Blog
+Success stories
+Support
+Developer Support
+Bug tool
+Platform status
+Developer community forum
+Report an incident
+About us
+About
+Careers
+Terms and policies
+Responsible platform initiatives
+Platform terms
+Developer policies
+Privacy policy
+Cookies
+English (US)

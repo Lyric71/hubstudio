@@ -225,3 +225,11 @@ US Bureau of Labor Statistics -> 美国劳工统计局; Occupational Employment 
 marketing specialist / marketing manager / public relations specialist / film and video editor / motion graphics designer / videographer -> 营销专员 / 营销经理 / 公关专员 / 影视剪辑师 / 动态图形设计师 / 摄像师
 tier (agency price) -> 档位; volume tier -> 走量档位; setup or onboarding fee -> 开户费或上线费; minimum term -> 最短合约期; ad spend -> 广告费; community management -> 社群运营; price per post -> 单帖价格
 review hours -> 审核工时; rework beyond agreed rounds -> 超出约定轮次的返工; tool seats -> 工具席位; stock licenses -> 图库授权; recruiting and replacement -> 招聘与替补
+
+## Resizing for every network (settled 2026-10-15, resize-image-every-social-network)
+master (one picture every copy is cut from) -> 母版; copy (per placement) -> 副本 (逐份构图, 各做一份副本); crop (prose verb) -> 裁切, but Crop panel / crop box -> “裁剪”面板 / 裁剪框
+Image editor, Social panel: Where it goes / Frame it / Crop to fill / Fit it whole / Blurred picture / Show what the network covers / Apply the format -> “发布位置” / “构图方式” / “裁切填满” / “完整放入” / “模糊背景” / “显示平台界面遮挡区域” / “应用格式”; plain color -> 纯色; Checks -> “检查项”
+Crop panel presets Story / Wide / Link and Apply the crop -> “快拍” / “宽屏” / “链接” / “应用裁剪”; Shape (Image studio) -> “画幅”, Square -> “方形”
+Save the picture panel: Quality / Size / Width / Height / Save a copy in the Assets Library / Save as a new version / Download / Versions -> “质量” / “大小” / “宽度” / “高度” / “在素材库中保存副本” / “另存为新版本” / “下载” / “版本”; the Save panel (prose) -> 保存面板
+link picture (1.91:1 placement) -> 链接预览图; video thumbnail -> 视频缩略图; Full screen (placement) -> 全屏; Page cover (LinkedIn) -> 主页封面
+pixel sizes written with × and the English digits as printed (1080 × 1350, 1,440 × 1,800); "percent" -> %

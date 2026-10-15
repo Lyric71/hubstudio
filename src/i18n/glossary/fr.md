@@ -217,3 +217,12 @@ review hours -> heures de relecture; review round -> tour de relecture; approval
 setup / onboarding fees -> frais de mise en place / d’intégration; minimum term -> engagement minimal; ad spend -> budget publicitaire; paid media -> achat d’espace; tool seats -> licences d’outils
 pounds / euros, when the English writes them out: livres (livres sterling at first mention) / euros; dollars as 2 200 $
 Shared labels overridden on a page where common.json means something else: "Fixed" (a cost) -> Fixe (common: Corrigé); "Item" (table row header) -> Poste (common: Commande)
+
+## Resizing one visual for every network (settled 2026-10-15)
+master (the one source picture) -> master; per-placement copy -> déclinaison (verb: décliner, « Décliner un visuel sur chaque réseau social »); « copie » only for the app's Save a copy and the blurred copy behind a picture
+preset -> préréglage; crop (noun) -> recadrage; crop box -> cadre (de recadrage); full screen -> plein écran; link picture -> image d’aperçu de lien; video thumbnail -> miniature de vidéo
+Image editor Social panel: Where it goes / Frame it -> « Emplacement » / « Cadrage »; Checks -> « Vérifications » (six checks: « six contrôles, regroupés sous « Vérifications » »)
+Image editor Crop panel -> panneau « Recadrer »; its presets Story / Wide / Link -> « Story » / « Paysage » / « Lien »; Apply the crop -> « Appliquer le recadrage »
+Save the picture panel -> panneau « Enregistrer l’image »; Quality / Size / Width / Height -> « Qualité » / « Taille » / « Largeur » / « Hauteur »; Download -> « Télécharger »
+Upscale and restore (Image studio) -> « Agrandir et restaurer »; Image studio Shape stays « Format » in site copy (help center, carousel guide), although the app's French dictionary now reads « Cadrage »
+plain color (Fit it whole background) -> couleur unie; blurred copy -> copie floutée

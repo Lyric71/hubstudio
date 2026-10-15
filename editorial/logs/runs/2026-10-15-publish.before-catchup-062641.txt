@@ -1,0 +1,128 @@
+﻿2026-10-15T04:00:04 start publish (model claude-opus-5-5)
+2026-10-15T04:00:04 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-15T04:06:00+08:00 attempt 1 (Opus 5.5): working tree inspected. No partial publish work found: the uncommitted changes are the 2026-10-15 00:30 draft run's outputs (resize-image-every-social-network draft, research and captures, hero, ledger rows, watch row, schedule row at image_ready) and the runner's logs. All kept and committed with this run.
+2026-10-15T04:06:00+08:00 schedule.csv: one row at image_ready, row 47 resize-image-every-social-network (brief 72, template howto, publish_date 2026-10-20). Its notes name no decision for a person (the Facebook, X and Pinterest link note resolves itself: facebook-post-specs and x-image-video-specs are live and linked, the Pinterest page is not live and the draft does not reference it), so it publishes. No other row is image_ready.
+2026-10-15T04:06:00+08:00 watch.csv: no row due on or before 2026-10-15.
+2026-10-15T04:06:00+08:00 link targets checked: all eleven ASSET BRIEF targets exist as pages (/app/image-tools, seven insights spec pages, /resources/how-to, /solutions/platforms/linkedin, /services/design/social-media). The three help captures (image-editor-social, -crop, -save) exist with .fr and .zh siblings, retaken for the new app design in a92ceec.
+2026-10-15T04:12:00+08:00 published row 47 with publish-draft.mjs (the repo's implementation of the createblogarticle publish step; its locale steps skipped, step 4b below): template howto, page src/pages/resources/how-to/resize-image-every-social-network.astro, entry at the head of src/data/howtos.ts, how-to category Social media (topical tag, same as the three sibling social how-tos), tone navy (alternating with the orange entry below it), date 2026-10-15 (publish date, not the drafting calendar's 2026-10-20), hand-written alt checked against the hero, 11 links wired (all targets exist), CTA Create your account, 6 FAQ pairs, the three localized Image editor help captures embedded as figures. Showcase clip: settled fallback 12. Zero em dashes on the page.
+2026-10-15T04:12:00+08:00 French slug: resize-image-every-social-network -> adapter-un-visuel-a-chaque-reseau-social (HOWTOS, alphabetical).
+2026-10-15T04:12:00+08:00 extract (npm run i18n:local -- extract --context .i18n-work/ctx, own dev server on 127.0.0.1:4341): 238 pages, 74572 units, 1228 shared. Pending in fr and zh: resources/how-to/resize-image-every-social-network 120, common 3 (hero alt, card title, deck), resources/how-to 2. The extract moved the Image editor Social capture alt from help/assets-library and carousel-post-guide into common.json with its translations (now on three pages) and reordered entries in common and work; no translated wording was lost. Moved the 2026-10-14 pass files of common to .i18n-work/passes-archive/2026-10-14 so they cannot merge into today's build.
+2026-10-15T04:11:08+08:00 zh translation done (three passes, subagent): builds clean (resize-image-every-social-network 123 entries, common 1228, resources/how-to 35), pending zh: nothing. Title 25 characters, meta 77. App labels checked against the app's zh.json and the help dictionaries (裁切填满, 完整放入, 显示平台界面遮挡区域, 应用格式, 应用裁剪, 保存图片, 在素材库中保存副本, 另存为新版本). No prefilled entry corrected. Glossary zh.md gained a section Resizing for every network. changes.md files follow.
+----- zh resources/how-to/resize-image-every-social-network changes.md -----
+[standfirst] pass1 -> pass3: 往往会在三个地方出问题……根源在于画面最初是怎么构图的 -> 往往坏在三处……病根在画面最初怎么构图 / why: shorter verbs, drop the nominal 在于 chain
+[answer] pass1 -> pass3: 再为每个投放位单独构图一份副本 -> 再按投放位逐份构图 / why: English noun chain "frame a copy per placement" folded into one verb phrase
+[answer] pass1 -> pass3: 主体经得起裁切，就裁切填满；经不起…… -> 主体经得起裁，就裁切填满；经不起…… / why: tighter parallel clauses, native rhythm
+[answer] pass1 -> pass3: 免费的图片编辑器就能在浏览器里完成这些操作 -> hubStudio 的图片编辑器免费，浏览器里就能做完 / why: split the attribute out of the noun, end on the verb
+[why 4:5] pass1 -> pass3: 把三家的帮助页面并排一看，三个区间正好在这里重叠 -> 把三家的帮助页面摆在一起看，三个区间恰好在这里重叠 / why: more natural collocation
+[quotes] pass1 -> pass3: 会被裁切成受支持的比例 -> 将被裁切为受支持的比例 / why: written register for quoted platform text
+[X quote] pass1 -> pass3: 并表示发帖框里看到的就是最终效果 -> 并称发帖框里看到的就是发出后的样子 / why: concrete, closer to how a reporter paraphrases
+[arithmetic] pass1 -> pass3: 在 X 上，编辑器的“推荐”预设…… -> 至于 X，编辑器的“推荐”预设…… / why: native topic shift instead of a locative calque
+[Facebook] pass1 -> pass3: 一文把自然发布和广告的数字并列对照 -> 自然发布与广告的数字，……一文已并列对照 / why: topic-first sentence, Chinese information order
+[master] pass1 -> pass3: 怎样构图，母版才能经得起每一次裁切 -> 母版怎样构图，才扛得住每一次裁切 / why: stronger verb, topic first
+[master] pass1 -> pass3: 要留多少，数字说了算……保留 56% 的宽度 -> 余地要多大，看数字……宽度只剩 56% / why: verbal, stresses the loss as the English does
+[master] pass1 -> pass3: 裁剪框可以滑动……只是不能靠近边缘 -> 裁剪框可以平移，主体偏左偏右都行，只是不能贴边 / why: idiomatic 贴边
+[Image studio] pass1 -> pass3: 在提示词里写明留白要求 -> 留白要求，直接写进提示词 / why: imperative with topic first, as a Chinese how-to writes it
+[prompt] pass1 -> pass3: 同样留白 -> 同样空出宽边; 画面中不要出现文字和标志 -> 画面中不出现文字，不出现标志 / why: prompt reads as a brief, no repeated 大片
+[text later] pass1 -> pass3: 直接做进母版的标题，遇到第一个装不下它的裁切就会被切掉 -> 标题若直接做进母版，第一个容不下它的裁切就会把它切掉 / why: conditional clause instead of a long attributive
+[crop or fit] pass1 -> pass3: 主体经得起裁切，就裁切；经不起，就完整放入 -> 主体裁得动就裁，裁不动就完整放入 / why: potential complements, native cadence
+[table] pass1 -> pass3: 稍紧的裁切就会把边上的人切掉 -> 裁得稍紧，边上的人就会被切掉; 文字背后的模糊显得脏乱 -> 文字背后垫模糊会显得浑浊 / why: verbal table cells, precise adjective
+[covers] pass1 -> pass3: 每个平台都会在画面上叠加自己的界面 -> 每个平台都会在画面上铺一层自己的界面 / why: concrete verb
+[covers] pass1 -> pass3: 圆形头像将要落下的位置 -> 圆形头像的落点; 全部避开 -> 统统避开 / why: concise noun, emphatic adverb
+[TikTok] pass1 -> pass3: 以及右侧从 560 像素往下、宽 120 像素的一列 -> 右侧从 560 像素处往下，还有一列 120 像素宽的区域 / why: breaks the stacked attributive
+[ads margins] pass1 -> pass3: 所以这些边距值得借用 -> 所以值得借用的，正是这两套边距 / why: end-weight on the point
+[steps] pass1 -> pass3: 费时的是前面的思考 -> 最费工夫的是前面的构思 / why: idiom, right noun
+[steps] pass1 -> pass3: 选择“裁切填满”并拖动选框 -> 选“裁切填满”，拖动选框 / why: short verb-object steps
+[crop panel] pass1 -> pass3: 裁剪决定比例，保存面板决定尺寸 -> 裁剪定比例，保存面板定尺寸 / why: tighter parallel close
+[save] pass1 -> pass3: 照片用 JPG：文件最小 -> 照片选 JPG：文件最轻 / why: weight, not size, is what the English means
+[save] pass1 -> pass3: 最后把它存好 -> 最后一步是保存; 计入您的存储空间 -> 占用您的存储空间 / why: natural step transition and verb
+[checks] pass1 -> pass3: 下面最后两条要您自己检查 -> 清单最后两条，要您亲自核对 / why: names the list, avoids repeating 检查
+[links] pass1 -> pass3: 若团队更想把调整尺寸的工作交出去 -> 若想把调尺寸的工作整个交出去，团队可以…… / why: subject moved to the main clause
+[FAQ] pass1 -> pass3: 如何在 Instagram 上发布完整图片而不被裁切 -> 怎样在 Instagram 上发一张完整、不被裁切的图片 / why: drops the English "without" structure
+[FAQ] pass1 -> pass3: 画面一点都不会被裁掉 -> 画面分毫不会被裁; 放大会 -> 放大才会 / why: written register, the 才 carries the English emphasis
+[SEO] pass1 -> pass3: meta description 在浏览器中免费完成 -> 浏览器内免费完成, with 各自的 for the per-network specs / why: tighter, under 80 characters
+[native read] after build: 照片宽……Instagram 按原始分辨率保留 -> Instagram 会按原始分辨率保留; 单个上传上限 5 MB -> 单次上传上限 5 MB / why: missing modal in a quoted rule, and an upload is an act, not an item
+[links] build fix: 见<a1>TikTok…… -> 见 <a1>TikTok……, 以及 <a4>YouTube, 见 <a6>LinkedIn / why: house rule, one space between Chinese and a Latin word even across a link placeholder
+
+----- zh common changes.md -----
+[hero alt] pass1 -> pass3: 两只手把……压在……照片上……都摆在磨旧的胶合板桌上，窗光照入 -> 窗光洒在磨旧的胶合板桌上：两只手把……按在……照片上 / why: scene first, as a Chinese caption sets it, instead of trailing the place and light at the end
+[hero alt] pass1 -> pass3: 框出一个竖长的裁切范围 -> 框出一个竖幅裁切 / why: the photo trade term, shorter
+[hero alt] pass1 -> pass3: 旁边是三张卡纸衬框，开口分别为竖长、横宽和方形 -> 一旁是三张开口分别为竖幅、横幅和方形的卡纸衬框 / why: 竖幅/横幅 is the native pair; one clause instead of two
+[hero alt] pass1 -> pass3: 压在 -> 按在 / why: the hands hold the corners in place, 按 is the precise verb
+[card title] pass1 -> pass3: 一张图如何适配每个社交平台 -> 一张图，如何适配每个社交平台 / why: comma gives the headline its pause; matches the page title tag wording
+[card deck] pass1 -> pass3: 先构图一张主体四周留有余地的母版 -> 先做一张主体四周留足余地的母版 / why: 构图一张 is an English-shaped verb-object pair; 留足 is stronger
+[card deck] pass1 -> pass3: 再为每个平台裁切或完整放入一份副本 -> 再按平台逐份裁切或完整放入 / why: drops the noun chain, same wording as the guide
+[card deck] pass1 -> pass3: 并让文字避开平台按钮 -> 文字一律避开平台按钮 / why: no causative 让, firmer instruction
+[all] the three entries reuse the guide's settled terms: 母版, 裁切, 完整放入 (app label Fit it whole)
+[all] full-width punctuation throughout, one space around Latin L, no dash
+
+----- zh resources/how-to changes.md -----
+[card date] pass1 -> pass3: 2026 年 10 月 15 日, unchanged / why: settled date format, nothing to improve
+[index json-ld description] pass1 -> pass3: 再按……的比例、像素和安全区逐一裁切或完整放入 -> 再按……各自的比例、像素与安全区裁切或完整放入 / why: 各自的 carries the per-network sense without the extra adverb 逐一
+[index json-ld description] pass1 -> pass3: 在浏览器中免费完成 -> 浏览器内免费完成 / why: tighter SEO close, 77 characters, under the 80 limit
+[index json-ld description] pass3: kept word for word identical to the guide's own meta description / why: the index structured data and the page meta describe the same guide; the carousel guide's entry follows the same rule
+[index json-ld description] pass3: no change after pass 2 / why: read again as a native SEO editor; the sentence already ends on the verb and the network names stay in Latin as the glossary requires
+[all] full-width punctuation, one space between Chinese and Latin names, no dash, no exclamation mark
+
+2026-10-15T04:15:06+08:00 fr translation done (three passes, subagent): builds clean (resize-image-every-social-network 123 entries, common 1228, resources/how-to 35), pending fr: nothing. Title « Décliner un visuel sur chaque réseau social » (55 characters with the brand), meta 149. App labels from the app's fr.json and the help dictionaries (« Recadrer », « Image entière », « Montrer ce que le réseau recouvre », « Appliquer le format », « Conseillé », « Agrandir et restaurer »). No prefilled entry corrected. Glossary fr.md gained a section Resizing one visual for every network (master, déclinaison, préréglage, recadrage, image d'aperçu de lien). Image studio Shape stays « Format », the settled glossary and help center term (the app's fr.json now reads « Cadrage », which also labels the Image editor's Frame it on this page; no capture here shows the Shape selector, and the glossary rule changes a settled term everywhere or not at all): decision recorded in glossary/fr.md. changes.md files follow.
+----- fr resources/how-to/resize-image-every-social-network changes.md -----
+# resources/how-to/resize-image-every-social-network (fr): pass1 -> pass3
+
+[title] pass1 -> pass3: « Adapter un visuel à chaque réseau social » -> « Décliner un visuel sur chaque réseau social » / why: « décliner » is the trade verb for one visual turned into per-network versions; 55 characters with the brand.
+[meta] pass1 -> pass3: « Un master, puis une version par réseau : … gratuitement en ligne » (148) -> « Composez un master, puis déclinez-le pour Instagram, LinkedIn, X, TikTok et YouTube : format, pixels, zones de sécurité. Gratuit, dans le navigateur. » (149) / why: pass 2 ran to 162 characters; verbal opening, browser fact restored.
+[standfirst] pass1 -> pass3: « casse en général à l’un de ces trois endroits … Ils tiennent à la façon dont l’image a été cadrée » -> « pèche le plus souvent sur l’un de ces trois points … ils se jouent dès le cadrage de l’image » / why: English skeleton (break in three places) replaced by a French image; two short sentences fused with a colon.
+[standfirst] pass1 -> pass2: « le recadrage coupe le produit en deux, le titre se retrouve sous un bouton » -> « le recadrage tranche le produit en deux, le titre atterrit sous un bouton » / why: stronger, concrete verbs.
+[whole page] pass1 -> pass2: « version » -> « déclinaison » for each per-placement copy / why: native production term; « copie » kept only for the app's Save a copy and the blurred copy.
+[h2 one image] pass1 -> pass2: « Comment adapter une même image à tous les réseaux sociaux ? » -> « Comment décliner une même image sur tous les réseaux sociaux ? » / why: matches the title; the FAQ question keeps « redimensionner », the search wording.
+[answer] pass1 -> pass2: one long sentence with three « quand » clauses -> three sentences: « Recadrez … ; sinon, faites tenir l’image entière … Et gardez le texte hors des zones … » / why: the English chain read as a translation; French rhythm wants shorter clauses.
+[4:5 section] pass1 -> pass2: « entre dans la plage … se recoupent » -> « se loge dans la plage … se chevauchent » / why: more precise, less flat verbs.
+[4:5 arithmetic] pass1 -> pass3: « Plus haute, LinkedIn la centre et la recadre » -> « Plus haute, elle serait centrée puis recadrée par LinkedIn » / why: pass 1 had a dangling subject (the image, not LinkedIn, is taller).
+[4:5 section] pass1 -> pass2: « Facebook fait exception … met côte à côte » -> « Facebook fait bande à part … confronte les chiffres » / why: livelier register of a business daily, one verb instead of a phrase.
+[quotes] pass1 -> pass3: X quote « Les photos sont limitées à 5 Mo, en GIF, JPEG ou PNG » -> « Les photos, en GIF, JPEG ou PNG, ne peuvent dépasser 5 Mo » / why: the limit closes the sentence, as a French editor would place it.
+[master] pass1 -> pass3: « Tout ce qui doit survivre à chaque version doit tenir dans une zone d’un peu plus de la moitié du cadre, dans les deux sens » -> « Ce qui doit apparaître sur toutes les déclinaisons a donc pour place une zone à peine plus grande que la moitié du cadre, en largeur comme en hauteur » / why: double « doit » removed; « each way » rendered natively.
+[master] pass1 -> pass3: « mais jamais près d’un bord » -> « sans jamais frôler un bord » / why: a verb carries the image.
+[master] pass1 -> pass3: « Demandez la marge dans le prompt » -> « Et demandez la marge dès le prompt » / why: closes the paragraph with the timing that matters.
+[prompt] pass1 -> pass2: « lumière matinale d’une fenêtre venant de la gauche » -> « lumière du matin entrant par une fenêtre à gauche »; « Aucun texte, aucun logo » -> « Ni texte ni logo » / why: prompt reads as a French brief, not a word list.
+[text panel] pass1 -> pass2: « sera coupé par le premier recadrage qui ne lui laisse pas de place » -> « sautera au premier recadrage qui ne lui fait pas de place » / why: active, idiomatic.
+[crop or fit] pass1 -> pass2: one sentence joined by a semicolon -> three sentences, « offre les deux options », « comble l’espace » / why: a list of two tools reads better as separate statements.
+[table] pass1 -> pass2: « Le moindre recadrage serré fait sortir quelqu’un du cadre », « Rien sur les bords n’est porteur de sens », « fait brouillon » -> « Au moindre recadrage serré, quelqu’un sort du cadre », « Les bords ne portent rien d’essentiel », « brouille la lecture » / why: shorter cells, no calque.
+[table] pass1 -> pass3: crop presets « Format « Lien » du panneau Recadrer » -> « … du panneau « Recadrer » » / why: panel names quoted as in the body copy (glossary: panneau « Réseaux sociaux », panneau « Enregistrer »).
+[covers] pass1 -> pass2: « Où chaque réseau masque-t-il l’image ? » -> « Où chaque réseau recouvre-t-il l’image ? » / why: same verb as the app label « Montrer ce que le réseau recouvre ».
+[covers] pass1 -> pass2: « ce sont donc ces marges qu’il vaut la peine d’emprunter » -> « autant leur emprunter ces marges » / why: native idiom, half the length.
+[banners] pass1 -> pass3: « garde texte et logos en sécurité dans une zone » -> « réserve à texte et logos une zone sûre » / why: « garder en sécurité » is an English shape.
+[editor steps] pass1 -> pass3: « Le plus long, c’était la réflexion » -> « La réflexion était le plus long » / why: written register, not spoken.
+[editor steps] pass1 -> pass3: « ou « Image entière » en optant pour une image floutée … autour » -> « ou « Image entière », entourée d’une image floutée ou d’une couleur unie » / why: participle instead of a stacked gerund.
+[crop panel] pass1 -> pass3: « images de lien » -> « images d’aperçu de lien » / why: glossary term (link preview image).
+[save] pass1 -> pass3: « Pour JPG et WEBP, un curseur … restent proportionnelles » -> « Pour le JPG et le WEBP, un curseur « Qualité » apparaît … gardent des proportions verrouillées » / why: articles before formats, wording of the help center (proportions verrouillées).
+[save] pass1 -> pass2: « l’enregistre uniquement sur votre ordinateur » -> « l’enregistre sur votre seul ordinateur »; « est comptée dans » -> « entre dans votre espace de stockage » / why: tighter, native.
+[checks] pass1 -> pass2: « Les deux dernières lignes ci-dessous sont à contrôler vous-même » -> « Les deux dernières lignes de la liste restent à votre charge » / why: native formula.
+[links] pass1 -> pass2: « Pour LinkedIn dans son ensemble, voyez … ; les autres guides prolongent celui-ci » -> « La page plateforme LinkedIn traite du réseau dans son ensemble, et les autres guides pratiques prennent le relais » / why: no imperative aside, sibling guides' wording.
+[faq quality] pass1 -> pass3: « Instagram agrandit à 320 pixels toute image de moins de 320 pixels de large … est le moins modifié » -> « Instagram agrandit à 320 pixels de large toute image plus étroite … en ressort le moins altéré » / why: no repeated number, stronger closing verb.
+[labels] all passes: app labels from the app's French dictionary: « Recadrer », « Image entière », « Montrer ce que le réseau recouvre », « Appliquer le format », « Emplacement », « Cadrage », « Conseillé », « Paysage », « Lien », « Story », « Appliquer le recadrage », « Enregistrer l’image », « Vérifications », « Agrandir et restaurer »; Image studio Shape kept as « Format » (glossary, help center).
+[native read] pass2 -> pass3: h2 « Comment cadrer chaque version » -> « chaque déclinaison »; « autant leur emprunter ces marges » -> « autant reprendre ces marges-là »; « six « Vérifications » » -> « six contrôles, regroupés sous « Vérifications » »; « choisissez le Format » -> « le « Format » » / why: term kept consistent, an ambiguous pronoun removed, app labels always in « ».
+
+----- fr common changes.md -----
+# common (fr), the resize guide's card and hero: pass1 -> pass3
+
+[card title] pass1 -> pass2: « Adapter un visuel à chaque réseau social » -> « Décliner un visuel sur chaque réseau social » / why: the trade verb for one visual turned into per-network versions; matches the page title.
+[card deck] pass1 -> pass2: « Composer un master avec de l’air autour du sujet, puis recadrer ou faire tenir une copie entière pour chaque réseau, en tenant le texte à l’écart de ses boutons » -> « Composer un master qui laisse de l’air au sujet, puis recadrer chaque déclinaison ou la faire tenir entière, réseau par réseau, sans texte sous les boutons » / why: « en tenant … à l’écart » after « tenir » was a clumsy echo; « copie » replaced by the production term.
+[card deck] pass2 -> pass3: infinitive chain -> nominal deck « Un master qui laisse de l’air au sujet, puis une déclinaison par réseau, recadrée ou entière, le texte à l’écart des boutons » / why: shorter, the elliptic style of the sibling decks on the guides index (« couverture qui promet, une idée par diapositive »).
+[hero alt] pass1 -> pass2: « pressent des coins de carton noirs en forme de L » -> « posent des équerres de carton noir » / why: the framer's word for L-shaped corners, no calque of « L-shaped ».
+[hero alt] pass1 -> pass2: « pour cadrer un format vertical, à côté de trois passe-partout … d’une règle … et d’un crayon » -> « et y délimitent un cadrage vertical ; à côté, trois passe-partout …, une règle en acier et un crayon » / why: one long accumulation split by a semicolon into action and setting.
+[hero alt] pass2 -> pass3: « percés d’ouvertures », « baignée de la lumière d’une fenêtre » -> « aux ouvertures », « à la lumière d’une fenêtre » / why: plainer description, no added lyricism; « contreplaqué usé » became « patiné » in pass 2.
+
+----- fr resources/how-to changes.md -----
+# resources/how-to (fr), the guides index: pass1 -> pass3
+
+[date] pass1: « 15 octobre 2026 » / why: French date format, unchanged in passes 2 and 3.
+[json-ld description] pass1 -> pass2: « une version par réseau : format, pixels » -> « une déclinaison par réseau : formats, pixels » / why: the production term used across the guide.
+[json-ld description] pass2 -> pass3: « Un master, puis une déclinaison par réseau : … gratuitement en ligne » -> « Composez un master, puis déclinez-le pour Instagram, LinkedIn, X, TikTok et YouTube : format, pixels, zones de sécurité. Gratuit, dans le navigateur. » / why: same English as the guide's meta description, so the same French (149 characters); verbal opening, and « in the browser » restored instead of the vaguer « en ligne ».
+[json-ld description] pass1 -> pass3: noun chain « format, pixels et zones de sécurité pour … » moved after the networks / why: the networks are what a reader scans for first; the specs close the sentence.
+[json-ld description] all passes: no anglicism (« safe zones » -> « zones de sécurité », glossary), sentence case, non-breaking space before the colon.
+[json-ld description] pass3: two sentences instead of one long chain / why: rhythm of a French standfirst, short closing fragment for the benefit.
+[consistency] pass3: wording identical to src/i18n/dict/fr/pages/resources/how-to/resize-image-every-social-network.json unit [1] / why: one sentence, one translation across the site.
+[consistency] pass3: « déclinez-le » matches the card title « Décliner un visuel sur chaque réseau social » in common.json / why: the index card and its structured data say the same thing.
+[register] pass3: vouvoiement imperative (« Composez »), as in the other decks of the index that address the reader / why: house rule.
+[length] pass1 148, pass2 149, pass3 149 characters / why: under the 155 ceiling for descriptions.
+
+2026-10-15T04:15:06+08:00 French slug changed before going live to match the French title: adapter-un-visuel-a-chaque-reseau-social -> decliner-un-visuel-sur-chaque-reseau-social (never published, so no 301).
+2026-10-15T04:15:07+08:00 npm run i18n:local -- check: ✓ every page is translated in French and Chinese (238 pages). npm run i18n:guard: ✓ 238 English pages with a French address, dictionaries complete.

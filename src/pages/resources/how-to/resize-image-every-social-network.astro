@@ -1,0 +1,294 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I resize one image for all social media platforms?",
+    "a": "Start from one master with the subject inside the middle half of the frame and margin on every side. Then make one copy per placement: 4:5 at 1080 by 1350 for Instagram and LinkedIn feeds, 16:9 for X and YouTube, 9:16 for stories and TikTok, 1.91:1 for link pictures. Crop where the subject survives; fit it whole where it doesn't."
+  },
+  {
+    "q": "How do I post a full picture on Instagram without cropping it?",
+    "a": "Keep its ratio between 1.91:1 and 3:4, the range Instagram keeps without cropping, or fit it whole inside a 4:5 frame over a blurred copy of itself or a plain color. In the Image editor, pick Instagram, Feed portrait, then Fit it whole, and Apply the format. Nothing is cut."
+  },
+  {
+    "q": "What is the best image size for Instagram, LinkedIn and X?",
+    "a": "One 4:5 portrait at 1080 by 1350 posts uncut on all three, since it sits inside Instagram's 1.91:1 to 3:4, LinkedIn's 3:1 to 4:5 and X's 2:1 to 3:4. The Image editor marks it Best for Instagram and LinkedIn. On X, the editor's Best is a wide 1600 by 900, and the 4:5 copy still shows whole."
+  },
+  {
+    "q": "Where should I keep text on a social media image?",
+    "a": "Away from the edges and from wherever the network lays its own buttons, name and caption. On vertical ads, Meta suggests keeping the top 14 percent, the bottom 35 percent and 6 percent at each side free. In the Image editor, Show what the network covers marks the buttons in red, so the words can go around them."
+  },
+  {
+    "q": "Should I save social images as JPG, PNG or WebP?",
+    "a": "JPG for photographs, because it makes the lightest file. PNG for graphics with sharp edges or transparency, kept under 1MB for Facebook, which recommends that to avoid pixelation. WebP is light and keeps transparency, but X's help center lists only GIF, JPEG and PNG for photos, so keep a JPG for X."
+  },
+  {
+    "q": "Does resizing an image lower its quality?",
+    "a": "Enlarging does. Instagram enlarges anything narrower than 320 pixels to 320, and both Instagram and Facebook resize what you send, so a file built to their numbers comes through with the least change. The Image editor's Checks flag a picture too soft for its size, and Upscale and restore in the Image studio re-renders one larger without changing what is in it."
+  }
+];
+---
+
+<HowtoLayout slug="resize-image-every-social-network" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">Resize an image for social media with a preset and it tends to break in one of three places. The crop cuts the product in half, the headline lands under a button, or the network squeezes the file until it goes soft. The first two have nothing to do with pixels. They start with how the picture was framed.</p>
+
+  <h2>How do you resize one image for every social media platform?</h2>
+
+  <p>Make one master with room around the subject, then frame a copy per placement: crop to fill where the subject survives the cut, fit the picture whole over a blurred copy where it doesn't, and keep words out of the zones each network covers. In hubStudio, the free Image editor does this in the browser.</p>
+
+  <p>Here is what each placement takes, from the networks' own help pages, read October 14 and 15, 2026, and from the presets in the Image editor.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Network</th>
+          <th scope="col">Placement</th>
+          <th scope="col">Ratio</th>
+          <th scope="col">Pixels</th>
+          <th scope="col">How to frame it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Instagram</th>
+          <td>Feed portrait</td>
+          <td>4:5</td>
+          <td>1080 x 1350</td>
+          <td>Crop to fill; Social preset, marked Best</td>
+        </tr>
+        <tr>
+          <th scope="row">LinkedIn</th>
+          <td>Post, portrait</td>
+          <td>4:5</td>
+          <td>1080 x 1350</td>
+          <td>Crop to fill; Social preset, marked Best</td>
+        </tr>
+        <tr>
+          <th scope="row">X</th>
+          <td>Post, wide</td>
+          <td>16:9</td>
+          <td>1600 x 900</td>
+          <td>Crop to fill; Social preset, marked Best</td>
+        </tr>
+        <tr>
+          <th scope="row">Facebook and LinkedIn</th>
+          <td>Link picture</td>
+          <td>1.91:1</td>
+          <td>1200 x 630 (Meta), 1200 x 627 (LinkedIn)</td>
+          <td>Crop preset Link</td>
+        </tr>
+        <tr>
+          <th scope="row">Instagram Stories and Reels, TikTok</th>
+          <td>Full screen</td>
+          <td>9:16</td>
+          <td>No organic size printed; 1440 x 2560 for Reels ads</td>
+          <td>Crop preset Story, or Fit it whole</td>
+        </tr>
+        <tr>
+          <th scope="row">YouTube</th>
+          <td>Video thumbnail</td>
+          <td>16:9</td>
+          <td>3840 x 2160 recommended, 640 wide minimum</td>
+          <td>Crop preset Wide</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Why does one 4:5 picture work on Instagram, LinkedIn and X?</h2>
+
+  <p>Because 4:5 sits inside the range each of the three shows in full. Lay their help pages side by side and the ranges overlap right there.</p>
+
+  <blockquote class="evidence">Instagram keeps a photo at its original resolution when it is between 320 and 1,080 pixels wide and its ratio sits between 1.91:1 and 3:4. A ratio outside that range "will be cropped to fit a supported ratio," and a wider file is sized down to 1,080 pixels.</blockquote>
+  <p class="source">Source: Instagram Help Center, image resolution article, read October 15, 2026.</p>
+
+  <blockquote class="evidence">LinkedIn takes photos from 3:1 to 4:5, recommends 1,080 pixels wide and caps an upload at 5 MB. A taller photo "will be centered and cropped to fit the max ratio," and a photo can't be resized once it is posted.</blockquote>
+  <p class="source">Source: LinkedIn Help, "Share photos on LinkedIn," read October 15, 2026.</p>
+
+  <blockquote class="evidence">X shows a single photo in full when its ratio sits anywhere from 2:1 to 3:4, and says the composer shows what you will get. Photos stop at 5MB, in GIF, JPEG or PNG.</blockquote>
+  <p class="source">Source: X Help Center, "How to post photos or GIFs on X," read October 14, 2026.</p>
+
+  <p>Do the arithmetic. A 4:5 picture is 0.8 as wide as it is tall. Instagram stops at 3:4, which is 0.75, and LinkedIn stops at 4:5 itself, so a 4:5 copy at 1080 by 1350 posts uncut on all three. Go taller and LinkedIn centers and crops it. On X, the editor's Best preset is wide, 1600 by 900, but a 4:5 copy still shows in full.</p>
+
+  <p>Facebook is the odd one out. Meta prints no pixel size for a page photo and says it resizes every image. Its ads guide asks for 4:5 at 1,440 by 1,800, so the same portrait copy carries over. <a href="/resources/insights/facebook-post-specs">The Facebook post specs page</a> sets the organic and ad figures side by side.</p>
+
+  <h2>How do you compose a master that survives every crop?</h2>
+
+  <p>Leave room. Every crop eats an edge, so the subject has to sit well inside the frame, a little off-center, with margin on every side.</p>
+
+  <p>The numbers show how much room. On a square master, a 9:16 crop keeps 56 percent of the width and a 16:9 crop keeps 56 percent of the height (nine divided by sixteen, nothing more). A 4:5 crop is gentler, at 80 percent of the width. Whatever must survive every version has to fit in a box a bit more than half the frame each way. The crop box can slide, so the subject can sit left or right of center, just not near an edge.</p>
+
+  <p>In the Image studio, pick the Shape before you render. Square gives the most room to crop both ways. On the ChatGPT Image engines, the 4K resolution renders up to 3840 pixels, enough for a YouTube thumbnail at its recommended size. Ask for the margin in the prompt.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Master for every network, a coffee dripper</p>
+    <p class="prompt__body">Square photograph of a white ceramic coffee dripper on a pale oak counter, morning window light from the left. The dripper sits slightly left of center, inside the middle half of the frame. Leave a wide empty margin of counter below and plain plaster wall above and on both sides. Nothing important near any edge. No words, no logo in the picture.</p>
+  </div>
+
+  <p>Write the words later, in the editor's Text panel, on each copy. A headline baked into the master gets cut by the first crop that doesn't fit it.</p>
+
+  <h2>Should you crop to fill or fit the picture whole?</h2>
+
+  <p>Crop when the subject survives the cut. When it doesn't, fit it whole. The Image editor's Social panel offers both: Crop to fill draws a box of the right shape that you drag over the part to keep, and Fit it whole cuts nothing and fills the space around the picture with a blurred copy of itself or a plain color.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Subject</th>
+          <th scope="col">Crop to fill or fit whole</th>
+          <th scope="col">Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">A product with margin around it</th>
+          <td>Crop to fill</td>
+          <td>The subject survives every shape and fills the frame</td>
+        </tr>
+        <tr>
+          <th scope="row">A wide scene going into 9:16</th>
+          <td>Fit it whole</td>
+          <td>A vertical crop keeps 56 percent of a square master's width and less of a wide one</td>
+        </tr>
+        <tr>
+          <th scope="row">A group of people or several products in a row</th>
+          <td>Fit it whole</td>
+          <td>Any tight crop drops someone at the edge</td>
+        </tr>
+        <tr>
+          <th scope="row">A detail shot or a texture</th>
+          <td>Crop to fill</td>
+          <td>Nothing at the edge carries meaning</td>
+        </tr>
+        <tr>
+          <th scope="row">A chart, a slide or a screenshot</th>
+          <td>Fit it whole, plain color</td>
+          <td>Cutting one edge cuts information; blur behind text looks muddy</td>
+        </tr>
+        <tr>
+          <th scope="row">A portrait going to a profile photo</th>
+          <td>Crop to fill</td>
+          <td>The editor previews it in a circle, and the face has to fill it</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Blur works on photographs, because the blurred copy repeats the picture's own colors. A plain color suits graphics and anything with type.</p>
+
+  <h2>Where does each network cover the picture?</h2>
+
+  <p>Every network lays its own interface over some of the frame. Turn on Show what the network covers in the Social panel and the editor draws it: red where the network's buttons, name or caption sit, dashed lines for the crops it shows elsewhere, such as Instagram's profile grid or one of two pictures on X. On a banner, it draws the round profile photo where it will land. Keep the words and the logo out of all of it.</p>
+
+  <p>For full-screen vertical frames, Meta and TikTok publish their margins in numbers.</p>
+
+  <blockquote class="evidence">Meta's ads guide asks Reels ads for 9:16 at 1,440 by 2,560 pixels and suggests leaving at least 14 percent of the top, 35 percent of the bottom and 6 percent of each side free of text and logos.</blockquote>
+  <p class="source">Source: Meta Ads Guide, Instagram Reels video ad specs, read October 15, 2026.</p>
+
+  <blockquote class="evidence">On TikTok's standard in-feed template, a 720 by 1,280 frame, the caption and buttons cover 160 pixels at the top, 440 at the bottom and a column 120 pixels wide on the right from 560 pixels down.</blockquote>
+  <p class="source">Source: TikTok's In-Feed Standard template, linked from TikTok's auction in-feed ad specs, measured October 8, 2026.</p>
+
+  <p>Both are written for ads. Instagram's help prints no safe zone for an organic Reel or Story, so these are the margins worth borrowing.</p>
+
+  <p>Banners get cut differently again, at the top and bottom or at the edges, depending on the screen.</p>
+
+  <blockquote class="evidence">X warns that 60 pixels at the top and bottom of a 1,500 by 500 header could be cropped on some screens. LinkedIn asks for key details away from the edges of a Page cover, especially the lower-right corner. YouTube's banner keeps text and logos safe in 1,235 by 338 pixels at the 2,048 by 1,152 minimum.</blockquote>
+  <p class="source">Source: X Help Center, LinkedIn Help and YouTube Help, read October 8 to 15, 2026.</p>
+
+  <p><a href="/resources/insights/tiktok-video-specs">The TikTok video specs page</a> and <a href="/resources/insights/instagram-reels-stories-specs">the Instagram Reel and Story specs page</a> carry the full margins for each format.</p>
+
+  <h2>How do you frame each copy in the Image editor?</h2>
+
+  <p>The thinking was the slow part. Open the picture from the Image editor in the menu, from the Assets Library, from History or from the Image studio, then work through the Social panel:</p>
+
+  <ul>
+    <li>Open Social and pick the network: Instagram, X or LinkedIn.</li>
+    <li>Under Where it goes, pick the placement. Best marks the network's own recommendation for a post: Feed portrait on Instagram and Post, portrait on LinkedIn, both 1080 by 1350, and Post, wide on X, 1600 by 900.</li>
+    <li>Under Frame it, pick Crop to fill and drag the box, or Fit it whole and choose a blurred picture or a plain color around it.</li>
+    <li>Leave Show what the network covers on, and move the words if they touch red.</li>
+    <li>Click Apply the format. The picture takes the placement's size, and the Save panel is set to the file that network wants, with a name that says the network and the size.</li>
+  </ul>
+
+  <figure>
+    <img src="/Images/help/image-editor-social.webp" alt="The Social panel of the Image editor on Instagram, Feed portrait picked: the crop box of 1080 by 1350 over the picture, the dashed Profile grid lines, and Crop to fill, Fit it whole, Show what the network covers and Apply the format" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>Feed portrait at 1080 by 1350, with the dashed profile grid crop.</figcaption>
+  </figure>
+
+  <p>The Social panel covers Instagram, X and LinkedIn. For the rest, the Crop panel has the shapes: Story, 9:16, for TikTok, Stories and Reels; Wide, 16:9, for YouTube; Link, 1.91:1, for link pictures on Facebook and LinkedIn. Pick one, check the size in pixels shown under the formats, and click Apply the crop. The crop sets the shape; the Save panel sets the size.</p>
+
+  <figure>
+    <img src="/Images/help/image-editor-crop.webp" alt="The Image editor on a product photo, with the Crop panel open and the Portrait 4:5 format picked, the crop box drawn over the picture" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>The Crop panel: pick a shape, and the size in pixels shows under the formats.</figcaption>
+  </figure>
+
+  <p>Editing is free and happens in the browser. Nothing leaves your computer until you save. A picture larger than 4,096 pixels on its long side is edited at 4,096, and the Save panel says so.</p>
+
+  <h2>Which format and file size should you save?</h2>
+
+  <p>Pick by what is in the picture. In the Save the picture panel:</p>
+
+  <ul>
+    <li>JPG for photographs: the lightest file. Transparent areas turn white.</li>
+    <li>PNG when the picture has sharp type or a transparent background. It is lossless, and it makes the largest file of the three.</li>
+    <li>WEBP is light and sharp and keeps transparency (though X's help lists only GIF, JPEG and PNG for photos).</li>
+  </ul>
+
+  <p>JPG and WEBP add a Quality slider. Under Size, Width and Height stay locked in proportion, with quick picks at 100, 75, 50 and 25 percent, and at 2048 or 1080 pixels on the long side.</p>
+
+  <p>Watch the weight against each network's limit. X and LinkedIn stop at 5 MB a photo, and YouTube takes a thumbnail up to 2 MB from a phone or 50MB from a computer.</p>
+
+  <blockquote class="evidence">Facebook caps a Page photo at 10MB and recommends keeping a PNG under 1MB "or the image may appear pixelated."</blockquote>
+  <p class="source">Source: Meta for Developers, Page Photos reference, read October 15, 2026.</p>
+
+  <p>Then keep it. Save a copy in the Assets Library puts the new file next to the original, which stays as it was, under a name that says the network and the size. Save as a new version, offered on a file you uploaded, replaces it and keeps the previous one under Versions. Download saves it to your computer only. A copy saved in the library counts toward your storage like any upload.</p>
+
+  <figure>
+    <img src="/Images/help/image-editor-save.webp" alt="The Save the picture panel: name, format, quality, size, then Save a copy in the Assets Library, Save as a new version and Download" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>Save a copy, save a new version, or download.</figcaption>
+  </figure>
+
+  <h2>What should you check before each copy goes out?</h2>
+
+  <p>The Social panel runs six Checks on every placement. The last two lines here are yours to check.</p>
+
+  <ul>
+    <li>The shape matches the placement.</li>
+    <li>The picture is sharp enough for the size.</li>
+    <li>The network accepts the file format.</li>
+    <li>The file weighs less than the network's limit.</li>
+    <li>Nothing you added sits under the network's buttons.</li>
+    <li>The words are large enough to read on a phone.</li>
+    <li>The subject is whole in every copy, not only in the master.</li>
+    <li>Each copy's name says the network and the size.</li>
+  </ul>
+
+  <p>Every limit behind these checks is on the network's own spec page: <a href="/resources/insights/instagram-post-sizes-2026">the Instagram post sizes for 2026 guide</a>, <a href="/resources/insights/linkedin-post-specs">the LinkedIn post specs page</a>, <a href="/resources/insights/x-image-video-specs">the X image and video specs page</a>, and <a href="/resources/insights/youtube-video-thumbnail-specs">the YouTube video thumbnail specs page</a>, which also covers the 4:5 thumbnail YouTube puts on vertical videos. The <a href="/app/image-tools">image tools page</a> of the app shows the Image editor next to the Image anonymizer. For LinkedIn as a whole there is <a href="/solutions/platforms/linkedin">the LinkedIn platform page</a>, and the other <a href="/resources/how-to">how-to guides</a> go on from here to carousels and captions. Teams that would rather hand the resizing over can brief <a href="/services/design/social-media">the social media design service</a>.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>How do I resize one image for all social media platforms?</h3>
+
+  <p>Start from one master with the subject inside the middle half of the frame and margin on every side. Then make one copy per placement: 4:5 at 1080 by 1350 for Instagram and LinkedIn feeds, 16:9 for X and YouTube, 9:16 for stories and TikTok, 1.91:1 for link pictures. Crop where the subject survives; fit it whole where it doesn't.</p>
+
+  <h3>How do I post a full picture on Instagram without cropping it?</h3>
+
+  <p>Keep its ratio between 1.91:1 and 3:4, the range Instagram keeps without cropping, or fit it whole inside a 4:5 frame over a blurred copy of itself or a plain color. In the Image editor, pick Instagram, Feed portrait, then Fit it whole, and Apply the format. Nothing is cut.</p>
+
+  <h3>What is the best image size for Instagram, LinkedIn and X?</h3>
+
+  <p>One 4:5 portrait at 1080 by 1350 posts uncut on all three, since it sits inside Instagram's 1.91:1 to 3:4, LinkedIn's 3:1 to 4:5 and X's 2:1 to 3:4. The Image editor marks it Best for Instagram and LinkedIn. On X, the editor's Best is a wide 1600 by 900, and the 4:5 copy still shows whole.</p>
+
+  <h3>Where should I keep text on a social media image?</h3>
+
+  <p>Away from the edges and from wherever the network lays its own buttons, name and caption. On vertical ads, Meta suggests keeping the top 14 percent, the bottom 35 percent and 6 percent at each side free. In the Image editor, Show what the network covers marks the buttons in red, so the words can go around them.</p>
+
+  <h3>Should I save social images as JPG, PNG or WebP?</h3>
+
+  <p>JPG for photographs, because it makes the lightest file. PNG for graphics with sharp edges or transparency, kept under 1MB for Facebook, which recommends that to avoid pixelation. WebP is light and keeps transparency, but X's help center lists only GIF, JPEG and PNG for photos, so keep a JPG for X.</p>
+
+  <h3>Does resizing an image lower its quality?</h3>
+
+  <p>Enlarging does. Instagram enlarges anything narrower than 320 pixels to 320, and both Instagram and Facebook resize what you send, so a file built to their numbers comes through with the least change. The Image editor's Checks flag a picture too soft for its size, and Upscale and restore in the Image studio re-renders one larger without changing what is in it.</p>
+</HowtoLayout>

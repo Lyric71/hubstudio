@@ -2689,3 +2689,48 @@ Copied from the research file's own ledger section, which carries the full claim
 | Video editors average $27.55 an hour | Editor portfolio platform survey, Q4 2024 | 201 self-selected global respondents, seller of an editing tool | 2026-10-14 |
 | Social media consulting $50 to $60 an hour | Editorial freelancers' rate chart 2026 | Prices marketing advice for authors, not content | 2026-10-14 |
 | UK creative recruiter day rates 2026 | Recruiter salary survey PDF | No sample, no method | 2026-10-14 |
+
+
+## Added 2026-10-14 (ledger rows from brief 72, resize-image-every-social-network)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+### Resizing one visual across networks (added 2026-10-15, brief 72)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Re-read, unchanged: Instagram 1.91:1 to 3:4 at 1080 wide, unsupported ratio cropped; Reels 1.91:1 to 9:16, 720 px minimum, no pixel size printed; LinkedIn photo 3:1 to 4:5, 1080 wide recommended, 5 MB, taller centered and cropped; LinkedIn link image 1.91:1 at 1200 x 627, cover away from the lower-right edge; Meta link image 1200 x 630 near 1.91:1; Page photo 10MB, PNG under 1MB; YouTube thumbnail 3840 x 2160, 640 wide minimum, 2 MB phone, 50MB desktop; X profile 400 x 400 under 2MB, header 1500 x 500, 60 px top and bottom may be cropped; Meta Reels ads 1440 x 2560 and 14/35/6 percent; TikTok in-feed 9:16 at 540 x 960 or more | existing brief 54, 56, 62, 63, 66 and 70 rows | help.instagram.com/1631821640426723 and /1038071743007909; linkedin.com/help/linkedin/answer/a527229 and a563309; developers.facebook.com/docs/sharing/webmasters/images and graph-api/reference/page/photos; support.google.com/youtube/answer/72431; help.x.com common-issues-when-uploading-profile-photo; facebook.com/business/ads-guide/update/video/instagram-reels; ads.tiktok.com/help/article/tiktok-auction-in-feed-ads | read 2026-10-15 | primary | 2026-10-15 | 2026-10-15 (re-fetched after drafting; X photo help 403, ledger checks of 2026-10-14 stand) | 72 |
+| 4:5 sits inside the full-display ranges of Instagram (1.91:1 to 3:4), LinkedIn (3:1 to 4:5) and X (2:1 to 3:4) | "arithmetic on the three networks' own ranges, October 2026" | the three rows above | 2026-10-15 | derived | 2026-10-15 | 2026-10-15 | 72 |
+| On a square master a 9:16 or 16:9 crop keeps 56 percent of the width or height | "arithmetic, labeled as such" | 9 / 16 = 0.5625 | 2026-10-15 | derived | 2026-10-15 | 2026-10-15 | 72 |
+
+## Added 2026-10-15 (ledger rows from brief 73, pinterest-pin-specs)
+
+Pinterest's own pages, undated, read logged out on 2026-10-15; captures in
+`research/pinterest-pin-specs/` (check1 and check2). Full claims table in
+the research file.
+
+### Pinterest pin specs (added 2026-10-15, brief 73)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Standard pin 2:3, 1000 x 1500; PNG or JPEG; 20 MB desktop, 32 MB in app; "Pins with an aspect ratio greater than 2:3 might get cut off in people's feeds"; uploads converted to 8-bit RGB JPEG, PNG in sRGB advised; 4% black and 10% white feed tint on white or black backgrounds; title 100 (first 40 shown, 30 double-byte); description 800 | "Pinterest Help Center, Review ad specs, read October 15, 2026" | help.pinterest.com/en/business/article/pinterest-product-specs | undated, read 2026-10-15 | primary | 2026-10-15 | 2026-10-15 | 73 |
+| Video: MP4, MOV, M4V; H.264 or H.265; 2GB; 4 s to 15 min; 1:2 to 1.91:1, 1:1, 2:3, 4:5, 9:16 recommended; ads 6 to 15 s recommended; max. width video paid only, no taller than 1:1 | same page | same | undated, read 2026-10-15 | primary | 2026-10-15 | 2026-10-15 | 73 |
+| Carousel 2 to 5 images, 20 MB each, 1:1 or 2:3 (catalog 2 to 10, sales objective); collections 10MB, 1 hero, 3 recommended, 24 max, center crop on non-square secondaries; max width collections 4 recommended, video hero 1:1 or 16:9 | same page | same | undated, read 2026-10-15 | primary | 2026-10-15 | 2026-10-15 | 73 |
+| Idea ads: BMP, JPEG, PNG, TIFF, WEBP; video iOS and Android, 2GB app, 100MB web; up to 5 min; 1080 x 1920; safe zones 270/65/195/440 px. Showcase and Quiz ads: 32MB, 3 to 60 s, 1000 x 1500, safe zones 342 x 430 and 342 x 376 | same page | same | undated, read 2026-10-15 | primary | 2026-10-15 | 2026-10-15 | 73 |
+| Description up to 500 characters; 20MB and 32MB; 2:3 or 1000 x 1500, "Larger aspect ratios may get cut off" | "Pinterest Business, Creative best practices, read October 15, 2026" | business.pinterest.com/creative-best-practices/ | undated, read 2026-10-15 | primary (conflicts with 800 on the Help Center: both printed) | 2026-10-15 | 2026-10-15 | 73 |
+| Scheduling up to 30 days ahead, up to 10 scheduled; desktop upload up to 10 images or videos; Mark as AI-Modified toggles; media not editable after publishing; automatic captions not editable | "Pinterest Help Center, read October 15, 2026" | help.pinterest.com/en/article/create-a-pin-from-an-image-or-video; /en/business/article/schedule-pins; /en/article/edit-or-delete-a-pin; /en/article/interact-with-pins | undated, read 2026-10-15 | primary | 2026-10-15 | 2026-10-15 | 73 |
+| Schedule "up to two weeks in advance"; 2:3 for images and videos of 15 to 60 seconds | "Pinterest Help Center, Pin performance and distribution, read October 15, 2026" | help.pinterest.com/en/business/article/pin-performance-and-distribution | undated, read 2026-10-15 | primary (advice; conflicts with 30 days and with the other lengths: all printed) | 2026-10-15 | 2026-10-15 | 73 |
+| Creator advice: 2:3 at 1000 x 1500 for images, 9:16 at 1080 x 1920 for video, ideal video 45 to 90 seconds, room at top and bottom of video | "Pinterest Create, read October 15, 2026" | create.pinterest.com/product-features/how-to-create-pins/ | undated, read 2026-10-15 | primary (advice) | 2026-10-15 | 2026-10-15 | 73 |
+| Standard Pins and Idea Pins merged into one Pin format | "Pinterest Create blog, August 25, 2023" | create.pinterest.com/blog/new-pin-format-update/ | 2023-08-25 | primary | 2026-10-15 | 2026-10-15 | 73 |
+| Story Pins (beta September 2020) renamed Idea Pins | "Pinterest newsroom archive, May 18, 2021" | newsroom-archive.pinterest.com/pinterest-introduces-idea-pins-globally-and-launches-new-creator-discovery-features | 2021-05-18 | primary | 2026-10-15 | 2026-10-15 | 73 |
+
+### Do not publish, added from brief 73
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| 1000 x 2100 "long pin", cut-off at 1:2.1 | Size guides in the SERP | On no Pinterest page | 2026-10-15 |
+| 1000 x 3000 "infographic pin" | Size guides | On no Pinterest page | 2026-10-15 |
+| 600 x 900, 600 px or 1000 px minimum | Size guides | Pinterest publishes no minimum | 2026-10-15 |
+| Carousel "3 to 24"; video "4 s to 5 min"; bottom safe zone 790 px | Size guides | Collections, Idea ad and unsourced figures misattributed | 2026-10-15 |
+| Idea Pins as a current organic format | Size guides | Merged into one Pin format, August 25, 2023 | 2026-10-15 |
+| Idea Pin growth "4x" and "9x comment rate" | Pinterest newsroom, 2021 | Seller's own figures, no method, stale | 2026-10-15 |

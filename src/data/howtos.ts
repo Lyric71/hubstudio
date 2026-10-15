@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'resize-image-every-social-network',
+    image: '/Images/howto-resize-image-every-social-network.webp',
+    imageAlt:
+      'Two hands press black L-shaped card corners onto a matte print of a white ceramic coffee dripper, framing a tall crop, beside three card mats with tall, wide and square openings, a steel ruler and a pencil on a worn plywood table in window light.',
+    category: 'Social media',
+    tone: 'navy',
+    title: 'How to Resize One Visual for Every Social Network',
+    deck: 'Compose one master with room around the subject, then crop or fit a copy for each network and keep words clear of its buttons.',
+    date: 'October 15, 2026',
+    dateISO: '2026-10-15',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'How to Resize One Visual for Every Social Network | hubStudio',
+    metaDescription:
+      'Compose one master, then crop or fit it for Instagram, LinkedIn, X, TikTok and YouTube with the right ratio, pixels and safe zones, free in the browser.',
+  },
+  {
     slug: 'social-media-client-approval',
     image: '/Images/howto-social-media-client-approval.webp',
     imageAlt:
