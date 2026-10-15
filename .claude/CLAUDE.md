@@ -65,6 +65,13 @@ content: the insights pages, `src/data/insights.ts`, `src/content/help/` and
 - If the site must serve a region with a restrictive firewall, avoid any
   blocked third-party service (Google Fonts, Analytics, Maps, reCAPTCHA, Tag
   Manager). Self-host fonts as woff2 in `/public/fonts`.
+- One deliberate exception: the service desk bubble (`desk-widget.js` from
+  intelligence.bearingbridge.com, desk `hubstudio`, in `Layout.astro`), our
+  own app. It loads async and fetches nothing until clicked; the CSP in
+  `vercel.json` allows that origin (script, connect, frame) and the app's
+  Supabase storage host (the bubble's picture).
+  `.github/workflows/desk-refresh.yml` has the desk read the site again after
+  every production deploy.
 
 ## Image optimization rule
 
