@@ -120,3 +120,14 @@
 2026-10-15T16:30+08:00 schedule.csv: 73 rows published, 69 not_started; no row at image_ready, review, approved or blocked, so nothing is eligible to publish (RUNBOOK: the run records that and ends). Working tree held no partial article work: only the three files of this run log were modified.
 2026-10-15T16:30+08:00 watch.csv: earliest due_date is 2026-10-19 (singles-day-618-production-calendar); no row is due on or before 2026-10-15, so no recheck runs.
 2026-10-15T16:30+08:00 no build, check or notify-publish: nothing was published. End of the scheduled publish run; this closing note is committed as chore(editorial).
+There was nothing to publish in this run.
+
+- **Schedule:** of the 142 rows in `editorial/schedule.csv`, 73 are published and 69 are `not_started`. None is at `image_ready`, `review`, `approved` or `blocked`. The two catch-up articles from earlier today (`resize-image-every-social-network`, `pinterest-pin-specs`) were already published and pushed.
+- **Watch list:** no row in `editorial/watch.csv` is due today or earlier. The first one comes due on 2026-10-19 (the Douyin Singles Day opening date). So no live page was rechecked.
+- **Earlier progress:** the scheduled 16:30 run's launcher had overwritten today's run log, wiping the catch-up run's entries. I put them back from `e0a329c` without changes and added this run's notes after them. There was no half-finished article work in the working tree.
+- **Build and email:** no build, type check or publish email ran, because nothing was published.
+- **Commit:** the closing log is committed as `962b505 chore(editorial): close the 2026-10-15 afternoon publish run log` and pushed to `origin/main`.
+
+The Gmail, Google Calendar and Google Drive connectors need authorizing in claude.ai's connector settings before they can be used. This run didn't need them.
+2026-10-15T16:31:03 model Opus 5.5 completed successfully
+2026-10-15T16:31:03 end publish exit 0

@@ -52,6 +52,22 @@ const parent = {
         <a href={APP_SIGNIN} target="_blank" rel="noopener">Sign in</a>
       </p>
       <p class="site-footer__loc">Working worldwide</p>
+      <p class="site-footer__social">
+        <a
+          class="footer-social"
+          href="https://x.com/hubstudioai"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow hubStudio on X"
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+            />
+          </svg>
+        </a>
+      </p>
     </div>
 
     <nav class="site-footer__nav" aria-label="Footer">
@@ -144,6 +160,30 @@ const parent = {
     font-size: 11px;
     letter-spacing: 0.04em;
     color: rgba(240, 237, 233, 0.5);
+  }
+  /* Social row: one quiet icon per account, under the location line. */
+  .site-footer__social {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+  }
+  .footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(240, 237, 233, 0.18);
+    border-radius: 999px;
+    color: rgba(240, 237, 233, 0.82);
+    transition:
+      color 120ms ease-out,
+      border-color 120ms ease-out;
+  }
+  .footer-social:hover,
+  .footer-social:focus-visible {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
   }
   .site-footer__nav {
     display: flex;
