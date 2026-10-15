@@ -20,10 +20,10 @@ export default {
     "AI product video prompt",
   ],
   verdict:
-    "RESELLER-WRITTEN. The ranking guides come from API resellers and video apps, built around ready-to-copy prompt lists for people and cinematic scenes; they rarely link the maker's own documentation, and none deals with product video, where the object has to stay the same object for the whole clip.",
+    "The October 16 search snapshot includes maker documentation, general prompting guides and product examples. The useful gap is the connection between documented engine capabilities, hubStudio prompt-only inputs, and an explicit product acceptance workflow. No exclusivity claim.",
   words: 1800,
   angle:
-    "Kling 3.0 from the maker's own documentation, applied to product video: how to write the shot so the product stays consistent, which camera moves hold up, and how to pick a length from 3 to 15 seconds. Honest about the boundary: in the hubStudio app the Kling engines take a prompt only, so when the clip must show your exact product from a photo, the guide says which start-frame engines to switch to.",
+    "Kling 3.0 from the maker's own documentation, applied to product video: how to write the shot so the product stays consistent, how to plan camera moves and inspect their results, and how to pick a length from 3 to 15 seconds. Honest about the boundary: in the hubStudio app the Kling engines take a prompt only, so when the clip must show your exact product from a photo, the guide says which start-frame engines to switch to.",
   mustInclude: [
     "What Kling 3.0 is and what changed from 2.6 and 2.5 Turbo, from the maker's own pages only",
     "A prompt structure for product shots: the product described precisely (material, color, label, scale), the surface, one light source, one camera move, the pace",
@@ -51,7 +51,7 @@ export default {
     "Engine table: Kling 3.0, 2.6, 2.5 Turbo against length, mode, frame size, sound (from the help center)",
     "Camera move table: move, prompt wording, what it does to a product, risk",
     "Three worked prompts as text blocks",
-    "Existing capture: create-a-video-studio",
+    "Existing localized captures: create-a-video-studio.webp, create-a-video-studio.fr.webp and create-a-video-studio.zh.webp. Exclude from this article: they display monetary amounts. Use the hero and documented text instructions.",
   ],
   links: [
     ["Engines in the hubStudio app", "/app/engines"],
@@ -62,7 +62,7 @@ export default {
   ],
   seoTitle: "Kling 3.0 Prompts for Product Video",
   seoDesc:
-    "Kling 3.0 prompts that keep a product consistent: shot structure, camera moves that hold up, lengths from 3 to 15 seconds, and when to switch engines.",
+    "Kling 3.0 prompts for product shots: camera moves, lengths from 3 to 15 seconds, app settings, and checks for labels, shape, and reflections.",
   faqs: [
     "How do I write a good Kling 3.0 prompt?",
     "How long can a Kling 3.0 video be?",

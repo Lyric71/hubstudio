@@ -39,13 +39,13 @@ first) and `../SPEC.md`. They override any conflicting rule inside the skill.
 | Hero image | `public/Images/howto-kling-3-product-video-guide.webp`, referenced as `/Images/howto-kling-3-product-video-guide.webp` |
 | Primary query | `kling 3.0 prompts` |
 | Secondary queries | `kling 3.0 prompt guide`, `kling camera movement prompts`, `kling 3.0 vs kling 2.6`, `kling 3.0 video length`, `AI product video prompt` |
-| SERP verdict | RESELLER-WRITTEN. The ranking guides come from API resellers and video apps, built around ready-to-copy prompt lists for people and cinematic scenes; they rarely link the maker's own documentation, and none deals with product video, where the object has to stay the same object for the whole clip. |
+| SERP verdict | The October 16 search snapshot includes maker documentation, general prompting guides and product examples. The useful gap is the connection between documented engine capabilities, hubStudio prompt-only inputs, and an explicit product acceptance workflow. No exclusivity claim. |
 | Body length | 1,800 words (body only, per the char-count rule) |
 | Slot requirement | A capability table sourced from the maker, prompt examples, a QA list |
 
 ## The angle
 
-Kling 3.0 from the maker's own documentation, applied to product video: how to write the shot so the product stays consistent, which camera moves hold up, and how to pick a length from 3 to 15 seconds. Honest about the boundary: in the hubStudio app the Kling engines take a prompt only, so when the clip must show your exact product from a photo, the guide says which start-frame engines to switch to.
+Kling 3.0 from the maker's own documentation, applied to product video: how to write the shot so the product stays consistent, how to plan camera moves and inspect their results, and how to pick a length from 3 to 15 seconds. Honest about the boundary: in the hubStudio app the Kling engines take a prompt only, so when the clip must show your exact product from a photo, the guide says which start-frame engines to switch to.
 
 ## The research gate, before any drafting
 
@@ -121,7 +121,7 @@ in ```` ```prompt ```` fenced blocks and steps in markdown lists (see the header
 - Engine table: Kling 3.0, 2.6, 2.5 Turbo against length, mode, frame size, sound (from the help center)
 - Camera move table: move, prompt wording, what it does to a product, risk
 - Three worked prompts as text blocks
-- Existing capture: create-a-video-studio
+- Existing localized captures: create-a-video-studio.webp, create-a-video-studio.fr.webp and create-a-video-studio.zh.webp. Exclude from this article: they display monetary amounts. Use the hero and documented text instructions.
 - Feature image: see `../SPEC.md`, saved as `public/Images/howto-kling-3-product-video-guide.webp`.
   `hubstudio-image-style-guide.md` at the repo root is binding. Never name a
   real person in the prompt: convert every photographer reference into its
@@ -153,7 +153,7 @@ Final section only. CTA label: **Create your account**
 | Field | Ceiling | Draft value |
 |---|---|---|
 | Title | 52 chars | Kling 3.0 Prompts for Product Video (35 chars) |
-| Meta description | 152 chars | Kling 3.0 prompts that keep a product consistent: shot structure, camera moves that hold up, lengths from 3 to 15 seconds, and when to switch engines. (150 chars) |
+| Meta description | 152 chars | Kling 3.0 prompts for product shots: camera moves, lengths from 3 to 15 seconds, app settings, and checks for labels, shape, and reflections. (141 chars) |
 | Excerpt | 25 words | generate in the SEO iteration |
 
 The draft values above are approved and inside the ceilings. Use them unless

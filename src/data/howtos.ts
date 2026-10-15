@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'kling-3-product-video-guide',
+    image: '/Images/howto-kling-3-product-video-guide.webp',
+    imageAlt:
+      'An unbranded amber glass bottle with a blank cream label stands on a scratched gray worktable while a black camera on a short metal slider, partly cropped at the lower left, aims at it in overcast window light.',
+    category: 'Video generation',
+    tone: 'orange',
+    title: 'Kling 3.0 Prompts for Product Video',
+    deck: 'Write a product shot for Kling, choose its camera move and duration, then check the result against the details your customer will notice before approval.',
+    date: 'October 16, 2026',
+    dateISO: '2026-10-16',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Kling 3.0 Prompts for Product Video | hubStudio',
+    metaDescription:
+      'Kling 3.0 prompts for product shots: camera moves, lengths from 3 to 15 seconds, app settings, and checks for labels, shape, and reflections.',
+  },
+  {
     slug: 'resize-image-every-social-network',
     image: '/Images/howto-resize-image-every-social-network.webp',
     imageAlt:

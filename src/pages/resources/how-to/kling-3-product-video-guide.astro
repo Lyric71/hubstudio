@@ -1,0 +1,367 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I write a good Kling 3.0 prompt?",
+    "a": "Describe the object precisely, then its surface, lighting, action, and camera move. Say what stays still and where the shot ends. Start from a simple shot whose result you can judge. In the app, review any Improve with AI rewrite before rendering, especially changes to the product."
+  },
+  {
+    "q": "How long can a Kling 3.0 video be?",
+    "a": "The maker’s February 2026 guide and hubStudio’s October 2026 help page list 3 to 15 seconds. Choose the duration in the form as well as describing the pace in your prompt. Use the time for a visible action or a deliberate hold; the maximum is not a target for every shot."
+  },
+  {
+    "q": "What camera movements work in Kling?",
+    "a": "The maker documents push in, pull back, pan, tilt, tracking, orbit, and static-camera wording. These describe intended movement, not guaranteed results. For a product shot, begin with a move you can inspect easily. Watch newly revealed surfaces during an orbit and check label readability through any change of angle."
+  },
+  {
+    "q": "What is the difference between Kling 3.0 and Kling 2.6?",
+    "a": "The maker’s guide adds flexible duration, multi-shot generation, and element references in 3.0; both versions document native audio. The app exposes its own set of controls and lists both as prompt-only engines. Use the settings table above for app options rather than assuming every maker-side feature appears in the form."
+  },
+  {
+    "q": "Can Kling make a video from my product photo?",
+    "a": "The maker documents image-to-video capability, but the Kling engines in hubStudio are prompt only according to its help center. To open on your photo inside the app, select a supported start-frame engine, such as Veo 3.1 Fast, Seedance 2.0, or Wan 3.0. Check the resulting product throughout the clip, not just at the opening."
+  },
+  {
+    "q": "Does Kling 3.0 generate sound?",
+    "a": "Yes. The maker documents native audio, and the app offers optional generated sound on Kling 3.0. Describe the ambience or speech you want and listen to the result before approval. The app’s Kling 2.6 sound option is available in Pro mode only. Confirm the selected settings and displayed price before starting the render."
+  }
+];
+---
+
+<HowtoLayout slug="kling-3-product-video-guide" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">A bottle can look convincing while its cap changes shape halfway through the shot. Write the product before the camera move, then inspect the whole clip. A prompt describes an object; it does not prove that the clip matches the product you sell.</p>
+
+  <h2>How do you write Kling 3.0 prompts for product video?</h2>
+
+  <p>Write Kling 3.0 prompts as a shot: describe the product’s material, shape, and label, place it on a surface, then specify the lighting and a camera move. In hubStudio, Kling takes a prompt only. For a clip that opens on your actual product photo, choose an engine with a start-frame input.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">What the shot needs</th>
+          <th scope="col">Starting choice</th>
+          <th scope="col">Acceptance check</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">An invented product concept</th>
+          <td>Describe the object in a Kling prompt</td>
+          <td>Shape and materials stay coherent</td>
+        </tr>
+        <tr>
+          <th scope="row">Your photographed product at the opening</th>
+          <td>A documented start-frame engine</td>
+          <td>Opening matches the supplied image</td>
+        </tr>
+        <tr>
+          <th scope="row">A front label that stays visible</th>
+          <td>A restrained frontal shot</td>
+          <td>Lettering and label edges survive playback</td>
+        </tr>
+        <tr>
+          <th scope="row">A reflective object</th>
+          <td>Fixed lighting and a modest move</td>
+          <td>Highlights follow the surface without changing its shape</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Reviewed October 16, 2026. The settings below come from the help center and the maker’s documentation. The prompts are proposed shot plans, not results from a product-video test.</p>
+
+  <h2>What changed from Kling 2.6 and 2.5 Turbo?</h2>
+
+  <p>Kling 3.0 is a video-generation model. Its maker documents broader scene control than the earlier versions, including multi-shot generation and element references. Check the app separately for the controls it exposes.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Maker documentation</th>
+          <th scope="col">What it says</th>
+          <th scope="col">Consequence for a product brief</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Kling 2.5 Turbo release</th>
+          <td>Improved prompt understanding and dynamic camera motion</td>
+          <td>Give the motion a clear purpose</td>
+        </tr>
+        <tr>
+          <th scope="row">Kling 2.6 guide</th>
+          <td>Visuals and native audio generated together</td>
+          <td>Specify the sound as part of the scene</td>
+        </tr>
+        <tr>
+          <th scope="row">Kling 3.0 guide</th>
+          <td>Flexible duration, multi-shot generation, element references</td>
+          <td>Separate model capabilities from the inputs your app exposes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Kling’s VIDEO 3.0 guide documents a duration range of 3 to 15 seconds and native speech in Chinese, English, Japanese, Korean, and Spanish.</blockquote>
+  <p class="source">Source: Kling AI, February 6, 2026, VIDEO 3.0 model user guide, the maker’s documentation, not a measured product-consistency test.</p>
+
+  <p>Kuaishou’s September 26, 2025 release describes better prompt comprehension and dynamic motion for 2.5 Turbo. Kling’s December 16, 2025 guide describes 2.6’s combined visual and audio generation. Sources: Kuaishou investor relations release on Kling 2.5 Turbo; Kling AI, VIDEO 2.6 audio user guide.</p>
+
+  <p>These are maker claims, not evidence that a particular bottle, shoe, or watch will render correctly.</p>
+
+  <blockquote class="evidence">Native 4K video output was added to the Kling 3.0 series during the second quarter of 2026, according to its maker.</blockquote>
+  <p class="source">Source: Kuaishou, August 19, 2026 interim-results announcement, a record of a feature release rather than an independent image-quality test.</p>
+
+  <p><a href="/app/engines">Engines in the hubStudio app</a> lists the choices. Confirm that the selected engine takes your source image before writing a brief around that input.</p>
+
+  <h2>What belongs in a product-shot prompt?</h2>
+
+  <p>Start with the product’s visible identity. “A luxury bottle” leaves most of the object unspecified. “A squat amber glass bottle with rounded shoulders, a black screw cap, and a blank cream paper label” gives the shot something concrete to preserve.</p>
+
+  <p>The surface belongs in the prompt too. The bottle might stand on stone, painted wood, or a bathroom shelf. If scale matters, add a familiar object such as a drinking glass. Avoid adding props whose movement would distract from the product.</p>
+
+  <p>Now decide what moves. The product can stay still. Set the light direction. Give the camera a move and an ending. Reserve room in that ending for a headline if the clip needs one.</p>
+
+  <p>This follows the subject, movement, and scene structure in Kling’s Text-to-Video guide, dated November 24, 2025. Its camera and lighting terms remain useful vocabulary; its older duration examples are not the source for the current settings table.</p>
+
+  <p>If exact packaging text matters, do not treat a sentence in a prompt as an approved label file. Keep the intended wording in the brief and compare it with the output. Use blank labels only for these practice shots. They let you judge the movement before attempting real packaging; they cannot replace approved label artwork in a finished product ad.</p>
+
+  <h2>Which camera move should you ask for?</h2>
+
+  <p>Kling’s camera-control guide, dated August 13, 2026, recommends keeping one main move per shot rather than combining several commands. The vocabulary below comes from that guide. The product risks are editorial inspection criteria, not measured failure rates.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Move</th>
+          <th scope="col">Prompt wording</th>
+          <th scope="col">Intended effect</th>
+          <th scope="col">Inspect closely</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Push in</th>
+          <td>Slowly move closer to the bottle</td>
+          <td>Make a detail larger in frame</td>
+          <td>Label edges and cap proportions</td>
+        </tr>
+        <tr>
+          <th scope="row">Pull back</th>
+          <td>Slowly pull back from the shoe</td>
+          <td>Reveal more of its surroundings</td>
+          <td>Product scale as the view widens</td>
+        </tr>
+        <tr>
+          <th scope="row">Pan</th>
+          <td>Pan right to bring the stationary product into view</td>
+          <td>Shift the view sideways</td>
+          <td>Whether the product stays visible</td>
+        </tr>
+        <tr>
+          <th scope="row">Tilt</th>
+          <td>Tilt upward from the base to the cap</td>
+          <td>Reveal the product’s height</td>
+          <td>Whether the reveal crops essential detail</td>
+        </tr>
+        <tr>
+          <th scope="row">Orbit</th>
+          <td>Make a shallow orbit around the object</td>
+          <td>Expose part of another side</td>
+          <td>Newly revealed surfaces and reflections</td>
+        </tr>
+        <tr>
+          <th scope="row">Track</th>
+          <td>Track alongside the moving product</td>
+          <td>Follow the product while it moves through the scene</td>
+          <td>Contact with the surface and direction of travel</td>
+        </tr>
+        <tr>
+          <th scope="row">Static</th>
+          <td>Keep the camera locked off</td>
+          <td>Hold a fixed composition</td>
+          <td>Unrequested object movement</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>For a labeled bottle, start frontally. An orbit asks the render to show surfaces that a frontal description may leave vague. On polished metal, inspect the highlight as well as the outline: a bright reflection moving across a bezel should not become a new ridge in the metal.</p>
+
+  <p>Specify whether the camera moves or the product turns. If a shoe must remain still while the camera retreats, write that explicitly rather than asking for a “dynamic reveal.”</p>
+
+  <h2>What can you set in the hubStudio video studio?</h2>
+
+  <p>Open Video and choose a Kling engine. Write in Describe your video. The help center lists these settings. All of these engines take a prompt only in the app.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Engine</th>
+          <th scope="col">Length</th>
+          <th scope="col">Mode</th>
+          <th scope="col">Frame size</th>
+          <th scope="col">Generated sound</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Kling 3.0</th>
+          <td>3 to 15 seconds</td>
+          <td>Standard or Pro</td>
+          <td>720p, 1080p, or 4K</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <th scope="row">Kling 2.6</th>
+          <td>5 or 10 seconds</td>
+          <td>Standard or Pro</td>
+          <td>720p or 1080p</td>
+          <td>Pro only</td>
+        </tr>
+        <tr>
+          <th scope="row">Kling 2.5 Turbo</th>
+          <td>5 or 10 seconds</td>
+          <td>Standard or Pro</td>
+          <td>720p or 1080p</td>
+          <td>Optional</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">The app’s Create a video help page lists the lengths and frame sizes above. It labels Pro as sharper and says Frame size does not change the price on the Kling engines.</blockquote>
+  <p class="source">Source: hubStudio help center, updated October 12, 2026, documented interface options, not a comparison of rendered results.</p>
+
+  <p>Set Shape from the options the selected engine offers. Use Generate sound only when the shot needs audio, and describe the intended ambience or speech. For a silent edit, leave it off. The help page’s optional sound entry for 2.5 Turbo is an app setting; it is not a claim that the underlying model has 2.6’s native-audio architecture.</p>
+
+  <p>Improve with AI rewrites the prompt for the selected engine, length, and sound choice. The Catalog includes Video camera movement vocabulary and Video shot pacing and duration. Before generating, read what changed. The rewrite should preserve the product description and your chosen shot.</p>
+
+  <p>The price per second and total appear before a Kling render. Check them after changing the settings. A successful Kling render draws from the prepaid balance and is saved in History with its prompt and engine. The help center states that these renders are charged only when they succeed. Reuse prompt loads the settings for editing; Run again starts another paid render.</p>
+
+  <h2>How long should the product shot be?</h2>
+
+  <p>Choose the length for the action, then select it in Duration. A request for a long shot in the prompt does not replace the form setting. These are starting suggestions within the documented ranges, not quality thresholds.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Suggested setting</th>
+          <th scope="col">A shot to try</th>
+          <th scope="col">What to remove if it feels crowded</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">3 seconds on Kling 3.0</th>
+          <td>A brief static product moment</td>
+          <td>A second action or a scene change</td>
+        </tr>
+        <tr>
+          <th scope="row">5 seconds</th>
+          <td>A modest push toward a bottle</td>
+          <td>A simultaneous orbit</td>
+        </tr>
+        <tr>
+          <th scope="row">10 seconds</th>
+          <td>A slow pull back that reveals the setting</td>
+          <td>Unnecessary prop movement</td>
+        </tr>
+        <tr>
+          <th scope="row">15 seconds on Kling 3.0</th>
+          <td>A sustained move with a deliberate ending</td>
+          <td>Any action that does not help show the product</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Try a short version of the action first. If the move finishes early, ask for a held ending. If it rushes, simplify the shot before extending it. Trim a held ending if the edit does not need it.</p>
+
+  <h2>What do product-shot prompts look like?</h2>
+
+  <p>These examples describe generic objects. Expected results below are the intent of the shot, not a report of a successful render. Set the duration in the form and keep it consistent with the prompt.</p>
+
+  <h3>Bottle: a restrained push in</h3>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">A squat amber glass bottle stands upright on a worn pale stone counter. Rounded shoulders, black screw cap, blank cream paper label centered on the front. The bottle stays still. Soft window light enters from the left. Over five seconds, the camera slowly pushes closer from a medium view to the label and shoulders, keeping the cap visible. The label faces forward throughout. Quiet room ambience, no speech, no music, no added lettering.</p>
+  </div>
+
+  <p>The intended result is a closer view of the same bottle. Reject a cap that widens, a label that slides, or reflections that conceal the detail the shot was meant to show. Switch sound off if the final edit supplies audio.</p>
+
+  <h3>Shoe: reveal the setting</h3>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">A single off-white canvas sneaker rests on a scuffed wooden bench, toe pointing left. Tan rubber sole, plain off-white laces, no logo or lettering. Soft daylight from a window on the right. The shoe remains still while the camera slowly pulls back over ten seconds, revealing the bench and a little empty wall behind it. End with room above the shoe for a headline. No people, no other shoes, no scene change. Silent clip.</p>
+  </div>
+
+  <p>The composition should widen without the shoe turning. Check the sole thickness and lace pattern throughout, especially when the shoe becomes smaller. A good ending needs usable empty space, not a new object appearing where the headline belongs.</p>
+
+  <h3>Watch: hold the dial</h3>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">A brushed steel wristwatch lies face up on a folded gray cotton cloth. Round case, dark plain dial, simple baton hour markers, brown leather strap, no logo or text. A broad window to the left lights the steel softly. Keep the camera locked off for five seconds. The watch and cloth stay still; the hands remain in the same positions. Show subtle natural surface texture, without sparkle effects or a scene change. Silent clip.</p>
+  </div>
+
+  <p>The aim is a product detail rather than a demonstration of timekeeping. Check the hands and markers as separate parts. Do not use this shot to demonstrate the accuracy of a real watch. If an exact dial is essential, use the actual product image as a start frame on a supporting engine and still inspect every part of the resulting clip.</p>
+
+  <h2>Can the clip start from your actual product photo?</h2>
+
+  <p>Yes, with an engine that accepts a start frame. The help center lists Veo 3.1 Fast, Seedance 2.0, and Wan 3.0 among those choices. It lists Kling as prompt only. The maker’s image-input documentation does not describe the app’s form.</p>
+
+  <p><a href="/resources/how-to/vertical-video-ad-from-product-image">Vertical video ad from a product image</a> covers the image-led workflow. Choose a clean, approved source picture and a move that suits the view it provides. A start frame supplies the opening; it does not certify the rest of the clip as an exact product reproduction.</p>
+
+  <h2>What should you reject before the clip reaches a client?</h2>
+
+  <p>Watch the whole clip, then stop on frames where the camera or product changes direction. Compare against the approved product information:</p>
+
+  <ul>
+    <li>Check the silhouette, seams, cap, sole, or case. No part should become a different design during the shot.</li>
+    <li>Read visible lettering. A near-match is still wrong packaging text.</li>
+    <li>Follow the reflections. Check that the apparent material and geometry remain coherent as the view changes.</li>
+    <li>Inspect contact with the surface. A stationary object should not slide or float without a reason in the brief.</li>
+    <li>Listen to the audio and inspect the ending. Remove unwanted speech and leave space for the planned edit.</li>
+  </ul>
+
+  <p>When a shot fails, return to its prompt in History and change the instruction responsible for the problem. Simplify an orbit to a fixed view if the unseen side is being invented. In your review notes, identify the rejected version and the defect to check in the next render.</p>
+
+  <p>The <a href="/services/design/short-video">Short video service</a> covers finished production when the work needs an editor. The <a href="/solutions/platforms/tiktok">TikTok platform page</a> gives the delivery context for that network; a well-made source clip still needs to fit its intended placement. For a production brief spanning several shots, see <a href="/solutions/ai-production/video">AI video production</a>.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>How do I write a good Kling 3.0 prompt?</h3>
+
+  <p>Describe the object precisely, then its surface, lighting, action, and camera move. Say what stays still and where the shot ends. Start from a simple shot whose result you can judge. In the app, review any Improve with AI rewrite before rendering, especially changes to the product.</p>
+
+  <h3>How long can a Kling 3.0 video be?</h3>
+
+  <p>The maker’s February 2026 guide and hubStudio’s October 2026 help page list 3 to 15 seconds. Choose the duration in the form as well as describing the pace in your prompt. Use the time for a visible action or a deliberate hold; the maximum is not a target for every shot.</p>
+
+  <h3>What camera movements work in Kling?</h3>
+
+  <p>The maker documents push in, pull back, pan, tilt, tracking, orbit, and static-camera wording. These describe intended movement, not guaranteed results. For a product shot, begin with a move you can inspect easily. Watch newly revealed surfaces during an orbit and check label readability through any change of angle.</p>
+
+  <h3>What is the difference between Kling 3.0 and Kling 2.6?</h3>
+
+  <p>The maker’s guide adds flexible duration, multi-shot generation, and element references in 3.0; both versions document native audio. The app exposes its own set of controls and lists both as prompt-only engines. Use the settings table above for app options rather than assuming every maker-side feature appears in the form.</p>
+
+  <h3>Can Kling make a video from my product photo?</h3>
+
+  <p>The maker documents image-to-video capability, but the Kling engines in hubStudio are prompt only according to its help center. To open on your photo inside the app, select a supported start-frame engine, such as Veo 3.1 Fast, Seedance 2.0, or Wan 3.0. Check the resulting product throughout the clip, not just at the opening.</p>
+
+  <h3>Does Kling 3.0 generate sound?</h3>
+
+  <p>Yes. The maker documents native audio, and the app offers optional generated sound on Kling 3.0. Describe the ambience or speech you want and listen to the result before approval. The app’s Kling 2.6 sound option is available in Pro mode only. Confirm the selected settings and displayed price before starting the render.</p>
+
+  <p>The <a href="/resources/how-to">How-to guides</a> cover the next editing steps. Choose a product concept, write its shot, and inspect the resulting clip in the video studio.</p>
+</HowtoLayout>

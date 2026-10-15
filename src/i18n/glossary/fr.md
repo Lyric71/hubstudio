@@ -235,3 +235,9 @@ Pinterest page titles cited in their real French versions (Pinterest publishes t
 home feed -> fil d’accueil; light mode / dark mode -> mode clair / mode nuit (Pinterest’s labels); tint (overlay) -> voile; business account -> compte professionnel; aspect ratio (question form) -> ratio (Pinterest’s pages: rapport largeur/hauteur); RGB -> RVB (sRGB kept); custom color profile -> profil colorimétrique personnalisé
 « Mark as AI-Modified » kept in English with the gloss (marquer comme modifié par l’IA): the French help page does not show the toggle; toggles -> boutons
 Image editor Crop preset Free -> « Libre »; Image studio Tall (1:3) -> « Bannière verticale (1:3) »; Video editor Format panel -> panneau « Format » with « Vertical », « Portrait », « Carré »
+
+## Kling product video guide (settled 2026-10-16, kling-3-product-video-guide)
+camera moves (Kling camera-control vocabulary) push in / pull back / pan / tilt / orbit / track / static -> travelling avant / travelling arrière / panoramique / panoramique vertical / travelling circulaire / travelling latéral / plan fixe; camera move -> mouvement de caméra (table head « Mouvement »); locked-off camera -> caméra fixe; held ending -> fin tenue
+multi-shot generation / element references (Kling 3.0) -> génération multiplan / références d’éléments; native audio -> audio natif; maker guide -> guide d’utilisation (« guide d’utilisation du modèle VIDEO 3.0 »); render (noun, video studio) -> rendu
+App skills (Catalog, video) Video camera movement vocabulary / Video shot pacing and duration -> « Vocabulaire des mouvements de caméra » / « Rythme et durée des plans vidéo »; Frame size -> « Taille d’image »; Pro: sharper -> « Pro : plus net »; Reuse prompt / Run again -> « Réutiliser le prompt » / « Relancer »
+"Latest" tag on the guides index (/resources/how-to) lead card -> « Dernier guide » (« Dernier article » stays for the insights index)

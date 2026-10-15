@@ -2734,3 +2734,24 @@ the research file.
 | Carousel "3 to 24"; video "4 s to 5 min"; bottom safe zone 790 px | Size guides | Collections, Idea ad and unsourced figures misattributed | 2026-10-15 |
 | Idea Pins as a current organic format | Size guides | Merged into one Pin format, August 25, 2023 | 2026-10-15 |
 | Idea Pin growth "4x" and "9x comment rate" | Pinterest newsroom, 2021 | Seller's own figures, no method, stale | 2026-10-15 |
+
+## Brief 74: Kling product video, October 16, 2026
+
+All rows are documentation, not measured product performance. The maker or
+hubStudio paid for its own documentation; sample size is not applicable.
+No amount, frame rate, success rate, or engine ranking is cleared.
+
+| Claim | Source | Source date | Check 1 | Check 2 | Scope |
+|---|---|---|---|---|---|
+| Kling 3.0: 3 to 15 seconds, native audio in the five listed languages, multi-shot and element references | https://kling.ai/quickstart/klingai-video-3-model-user-guide | 2026-02-06 | 2026-10-16 | 2026-10-16 | Maker capabilities, not app controls |
+| Kling 2.6 generates visuals and audio together | https://kling.ai/quickstart/klingai-video-26-audio-user-guide | 2025-12-16 | 2026-10-16 | 2026-10-16 | Maker documentation |
+| Kling 2.5 Turbo improved prompt understanding and camera motion | https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-launches-25-turbo-video-model-industry-leading | 2025-09-26 | 2026-10-16 | 2026-10-16 | Maker claim, no benchmark reused |
+| Native 4K video added during second quarter 2026 | https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-technology-announces-second-quarter-and-interim-2026 | 2026-08-19 | 2026-10-16 | 2026-10-16 | Feature release, not native 4K at launch |
+| Subject, movement, scene, camera and lighting prompt structure | https://kling.ai/quickstart/text-to-video-prompt-guide | 2025-11-24 | 2026-10-16 | 2026-10-16 | Vocabulary only; older limits not reused |
+| Push, pull, pan, tilt, track, orbit and static wording; one main move | https://kling.ai/blog/kling-ai-camera-control-video-guide | 2026-08-13 | 2026-10-16 | 2026-10-16 | Maker advice, product risks are editorial checks |
+| App Kling duration/mode/frame-size/sound table and prompt-only inputs | src/content/help/create-a-video.md; https://www.hubstudio.ai/help/create-a-video | 2026-10-12 | 2026-10-16 | 2026-10-16 | Repository help is source of truth for app behavior |
+| Catalog skills, Improve with AI and History | src/content/help/skills.md; src/content/help/history.md; src/content/help/create-a-video.md | Source frontmatter, read 2026-10-16 | 2026-10-16 | 2026-10-16 | First-party documented workflow |
+
+Not cleared: a Kling frame rate, longest-duration superlative, native 4K at
+launch, product-consistency guarantee or implied in-app Kling image input.
+Removed related unsupported glossary and service copy in this run.

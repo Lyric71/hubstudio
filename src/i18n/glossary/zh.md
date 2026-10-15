@@ -245,3 +245,10 @@ description (pin field) -> 说明文字 (table header 说明, from common); doub
 organic / paid (Pinterest use) -> 自然发布 / 付费推广; organic impressions -> 自然展示; sales objective -> “销售”目标; catalog (product) -> 产品目录; business account -> 企业账户; full-bleed -> 全屏满版
 Pinterest Help Center -> Pinterest 帮助中心 (table shorthand “帮助中心”); Pinterest Business (business site) -> Pinterest 商务网站 (shorthand “商务网站”); creator site (Pinterest Create) -> Pinterest 创作者网站, the blog -> Pinterest Create 博客; Newsroom archive -> 新闻中心存档; help article titles in 《》 (帮助中心《查看广告规格》, 商务网站《创意最佳实践》)
 App labels used on this page: Image studio Shape portrait / vertical -> “画幅”竖版 / 竖屏; Tall (1:3) -> “竖长（1:3）”; Image editor Crop, Free -> “裁剪”中选“自由”; Save, Width -> “保存”, “宽度”; Video editor Format panel Vertical / Portrait / Square -> “格式”面板“竖屏” / “竖版” / “方形”
+
+## Kling product video guide (settled 2026-10-16, kling-3-product-video-guide)
+Camera moves (Kling prompting): push in / pull back / pan / tilt / orbit / track / static -> 推镜 / 拉镜 / 横摇 / 纵摇 / 环绕 / 跟拍 / 固定机位; camera move (table head) -> 运镜; camera locked off -> 镜头锁定不动; one main move per shot -> 一个镜头只保留一个主运镜; held ending -> 结尾定格; ending (where a move lands) -> 落点
+Kling AI (maker) -> 可灵 AI; Kling (maker in prose) -> 可灵; the Kling engines -> 可灵系列引擎; model ids Kling 3.0 / Kling 2.6 / Kling 2.5 Turbo unchanged; Kuaishou -> 快手; maker guides cited in 《》: 可灵 AI《VIDEO 3.0 模型使用指南》
+multi-shot generation -> 多镜头生成; element references -> 元素参考; native audio -> 原生音频; visuals and audio generated together -> 音画一体生成
+Video studio labels (Kling): Mode Standard / Pro -> “模式” 标准 / Pro; Pro: sharper -> Pro：更清晰; Frame size -> “画面尺寸”; Reuse prompt / Run again -> “复用提示词” / “再次生成”; Catalog skills Video camera movement vocabulary / Video shot pacing and duration -> “视频运镜术语” / “视频镜头节奏与时长”
+Help article "Create a video" cited in prose -> 帮助中心《生成视频》页面
