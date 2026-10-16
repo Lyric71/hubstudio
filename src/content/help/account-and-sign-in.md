@@ -27,8 +27,8 @@ shots:
   - file: "/Images/help/account-and-sign-in-language.webp"
     route: "/login"
     clip: "the sign-in card, in a browser set to French"
-    alt: "The sign-in card as a browser set to French shows it, with English, Français and 中文 under the card and Français picked"
-    captured: 2026-09-28
+    alt: "The sign-in card, with the I'm not a robot check ticked above Sign in, and English, Français and 中文 under the card"
+    captured: 2026-10-16
   - file: "/Images/help/account-and-sign-in-digest.webp"
     route: "/settings"
     clip: "#digest"
@@ -39,7 +39,7 @@ shots:
     clip: "#tips"
     alt: "The Tips card in Settings: the Show me tips when I sign in switch, on, the note about Never see this again and the arrows, Show me a tip now, and a small picture of a tip card"
     captured: 2026-10-14
-sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro", "src/lib/changelog-digest.ts", "src/pages/api/changelog-digest/cron.ts", "src/lib/email-preferences.ts", "src/lib/tips.ts", "src/scripts/tipsNotice.ts", "src/scripts/dictation.ts", "src/scripts/scratchpad.ts"]
+sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/outcomes.ts", "src/scripts/captcha.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro", "src/lib/changelog-digest.ts", "src/pages/api/changelog-digest/cron.ts", "src/lib/email-preferences.ts", "src/lib/tips.ts", "src/scripts/tipsNotice.ts", "src/scripts/dictation.ts", "src/scripts/scratchpad.ts"]
 ---
 
 Open **User Settings** from the menu under your picture, at the top right of every page. The band at the top of the page shows who is signed in, your role and your team, then three figures: **Available now**, **Spent today** and **Spent this month**. The sections are listed on the left.
@@ -48,7 +48,7 @@ Your role is one of **Admin**, **Creator**, **Viewer** or **Client**, with a lin
 
 ## Your name
 
-Under **Your name**, type your **First name** and **Last name** and click **Save**. It is how hubStudio addresses you and how your teammates see you, in the header, in the list of people and in the emails we send you. Leave both fields empty and hubStudio uses your email address instead.
+Under **Your name**, type your **First name** and **Last name** and click **Save**. It is how hubStudio addresses you and how your teammates see you, in the header, in the list of people and in the emails we send you. Leave both fields empty and hubStudio uses your email address instead. A name can't contain a web address or an email address: hubStudio says so and keeps the one you had.
 
 ## Profile picture
 
@@ -77,7 +77,7 @@ You pick it in three places:
 - The menu under your picture, at the top right of every page: the **Language · Langue · 语言** row holds **English**, **Français** and **中文**. Click one and the page reloads in it; your account remembers it as well.
 - The sign-in page, before you sign in: it greets you in the language you picked there last time, or else the one your browser prefers. To change it, click **English**, **Français** or **中文** under the sign-in card; the page reloads in that language and remembers it on this browser.
 
-![The sign-in card as a browser set to French shows it, with English, Français and 中文 under the card and Français picked](/Images/help/account-and-sign-in-language.webp)
+![The sign-in card, with the I'm not a robot check ticked above Sign in, and English, Français and 中文 under the card](/Images/help/account-and-sign-in-language.webp)
 
 ## The sign-in code by email
 
@@ -218,10 +218,16 @@ Under **Invoices**, type the **Name on the invoice** and the **Address** printed
 
 **Activity log** lists every paid action you ran, what it used and what it was billed.
 
+## Publishing log
+
+**Publishing log** lists what happened to every post you scheduled or published on a social network: when, the post, the account, the outcome (**Published**, **Did not go out**, **Will be tried again**, **Edited on the network** or **Deleted**) and the link to the post or what the network said. Three figures sit on top: **Published**, **Did not go out** and **Tried again later**. Filter the list by typing, or with **All**, **Published**, **Did not go out** and **Other**; **Show more** brings older events.
+
+The scheduled posts that went out or did not also reach you by email, once a day at 08:00 your time, all in one recap: hubStudio sends no email post by post, and a day with nothing to report sends nothing. To stop the recap, switch off **Social publishing** on the page **Manage all your emails** opens; the log stays.
+
 ## Forgot your password
 
 1. On the sign-in page, click **Forgot password?**.
-2. Type your **Login** email address and click **Send reset link**.
+2. Type your **Login** email address and click **Send reset link**. The **I'm not a robot** box above the button ticks itself first, as on the sign-in page.
 3. If an account exists for that address, a reset link is on its way. It stays valid for about an hour.
 4. Open the link, type a **New password** of at least 8 characters and **Confirm password**, then click **Set new password**.
 5. The page says **Password updated**. Click **Sign in**.

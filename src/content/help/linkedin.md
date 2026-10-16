@@ -5,7 +5,7 @@ description: "The LinkedIn module: connect your LinkedIn account, brief and draf
 excerpt: "Draft a LinkedIn post with AI or by hand, give it a picture or a carousel, and publish it on your account, now or on schedule."
 section: "social"
 order: 9
-updated: 2026-10-08
+updated: 2026-10-16
 appPaths: ["/social/linkedin/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["instagram", "facebook", "tiktok", "x", "validation", "account-and-sign-in", "skills", "choosing-a-model", "history", "assets-library", "campaigns"]
@@ -137,7 +137,7 @@ Everything you schedule or send lands under **In the queue**, one row per accoun
 | Published | Live, with **View live** | Edit or delete it on LinkedIn itself |
 | Did not go out | Refused, or waiting to retry | **Try again now**, **Cancel** |
 
-A temporary problem on LinkedIn's side is retried by itself, three attempts in all. A content problem (too long, a wrong file type) or an account that needs reconnecting is not retried, and the person who queued the post receives an email saying what LinkedIn said. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
+A temporary problem on LinkedIn's side is retried by itself, three attempts in all. A content problem (too long, a wrong file type) or an account that needs reconnecting is not retried. What LinkedIn said shows on the post, in your **Publishing log** in **User Settings** and in the next daily recap email: hubStudio sends no email post by post. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
 
 ## Take a post to other networks
 

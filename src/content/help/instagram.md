@@ -5,7 +5,7 @@ description: "The Instagram module: connect your professional account, start fro
 excerpt: "Start from the visual, add a caption with AI or by hand, and publish a feed post, a carousel, a Story or a Reel, now or on schedule."
 section: "social"
 order: 10
-updated: 2026-10-08
+updated: 2026-10-16
 appPaths: ["/social/instagram/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "facebook", "tiktok", "x", "validation", "create-an-image", "create-a-video", "choosing-a-model", "history", "assets-library"]
@@ -147,7 +147,7 @@ Everything you schedule or send lands under **In the queue**, one row per accoun
 | Published | Live, with **View live** | Edit or delete it in Instagram itself |
 | Did not go out | Refused, or waiting to retry | **Try again now**, **Cancel** |
 
-A temporary problem on Instagram's side is retried by itself, three attempts in all. A content problem (too long, a clip too short) or an account that needs reconnecting is not retried, and the person who queued the post receives an email saying what Instagram said. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
+A temporary problem on Instagram's side is retried by itself, three attempts in all. A content problem (too long, a clip too short) or an account that needs reconnecting is not retried. What Instagram said shows on the post, in your **Publishing log** in **User Settings** and in the next daily recap email: hubStudio sends no email post by post. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
 
 ## Take a post to other networks
 

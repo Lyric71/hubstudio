@@ -5,7 +5,7 @@ description: "The X module: connect your X account, brief and draft a post or a 
 excerpt: "Draft a post or a thread for X with AI or by hand, add up to four pictures, and publish it on your account, now or on schedule."
 section: "social"
 order: 13
-updated: 2026-10-08
+updated: 2026-10-16
 appPaths: ["/social/x/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "instagram", "facebook", "tiktok", "validation", "account-and-sign-in", "skills", "choosing-a-model", "balance-and-payments", "assets-library", "campaigns"]
@@ -147,7 +147,7 @@ Everything you schedule or send lands under **In the queue**, one row per accoun
 
 **Update the post on X** replaces the post on X with the post as it now stands, copy and pictures, after you confirm. A thread is replaced post for post, so the new copy has to make the same number of posts. X lets only a Premium account edit a post, within an hour of posting and up to five times. The post keeps its replies and likes; its link changes and the old one forwards. **Delete the post from X** takes it down; the row then shows when.
 
-A temporary problem on X's side is retried by itself, three attempts in all. A content problem (too long, a wrong file type) or an account that needs reconnecting is not retried, and the person who queued the post receives an email saying what X said. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
+A temporary problem on X's side is retried by itself, three attempts in all. A content problem (too long, a wrong file type) or an account that needs reconnecting is not retried. What X said shows on the post, in your **Publishing log** in **User Settings** and in the next daily recap email: hubStudio sends no email post by post. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
 
 ## Take a post to other networks
 

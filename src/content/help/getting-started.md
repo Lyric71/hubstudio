@@ -13,8 +13,8 @@ shots:
   - file: "/Images/help/getting-started-signup.webp"
     route: "/signup"
     clip: "the Create your account card"
-    alt: "The Create your account card: First name, Last name, Email, Country, the three choices under How you work, the five answers under How did you hear about us?, the Terms of Service box and Send my code"
-    captured: 2026-10-14
+    alt: "The Create your account card: First name, Last name, Email, Country, the How you work list, the How did you hear about us? list, the Terms of Service box, the I'm not a robot check, ticked, and Send my code"
+    captured: 2026-10-16
   - file: "/Images/help/getting-started-menu.webp"
     route: "/explore"
     clip: "#side-nav"
@@ -34,19 +34,19 @@ Every run is charged against a prepaid balance held in US dollars. You can work 
 ## Create your account
 
 1. On the sign-in page, click **Create an account**.
-2. Type your **First name**, **Last name** and **Email**.
+2. Type your **First name**, **Last name** and **Email**. A name can't contain a web address or an email address.
 3. Under **Country**, pick the country you work from. The list is written in the language of the page; when hubStudio can tell where you connect from, that country is already picked, and you change it if it is wrong.
-4. Under **How you work**, pick one of the three options:
+4. Under **How you work**, open the list and pick one of the three options. **Just me** is picked to start with, and the line under the list explains the option you picked:
    - **Just me**: you create on your own, as a **Creator**, paid from your own balance. No team is created. You can create one later from the **Team** page, and you then become its Admin.
-   - **Create a team**: you run it, invite people, and they create from one shared balance. A name field appears: type the name of your team.
+   - **Create a team**: you run it, invite people, and they create from one shared balance. A name field appears: type the name of your team, which can't contain a web address or an email address either.
    - **Join a team**: "Your team already uses hubStudio: an admin lets you in." A field appears where you type your team's name or your admin's email address.
-5. Under **How did you hear about us?**, pick the answer that fits: **Google or another search engine**, **An AI assistant (ChatGPT, Gemini, Claude, Perplexity…)**, **An exhibition or a trade show**, **A referral, someone recommended us** or **Somewhere else**.
+5. Under **How did you hear about us?**, open the list, which reads **Choose an answer**, and pick the one that fits: **Google or another search engine**, **An AI assistant (ChatGPT, Gemini, Claude, Perplexity…)**, **An exhibition or a trade show**, **A referral, someone recommended us** or **Somewhere else**.
 6. Tick the box to accept the Terms of Service.
-7. Click **Send my code**. hubStudio emails you a 6-digit code. Nothing is created before you enter it.
+7. Click **Send my code**, under the box marked **I'm not a robot**, which ticks itself while the page loads: there is nothing to click. hubStudio emails you a 6-digit code. Nothing is created before you enter it.
 
 The country and the answer are both required: without them, the form says **Please choose your country.** or **Please tell us how you heard about us.** Your country shows on your page in the team, for your admins; how you heard about us stays with hubStudio.
 
-![The Create your account card: First name, Last name, Email, Country, the three choices under How you work, the five answers under How did you hear about us?, the Terms of Service box and Send my code](/Images/help/getting-started-signup.webp)
+![The Create your account card: First name, Last name, Email, Country, the How you work list, the How did you hear about us? list, the Terms of Service box, the I'm not a robot check, ticked, and Send my code](/Images/help/getting-started-signup.webp)
 
 The code is valid for 20 minutes. Temporary mailboxes can't open an account: use your work or personal address. If the address already has an account, you receive an email saying so instead of a code.
 
@@ -61,7 +61,7 @@ Nothing arriving? Check the spam folder, or click **start again** to correct the
 
 ## Sign in
 
-Type your **Login** (your email address) and your **Password**, then click **Sign in**. The sign-in page speaks your browser's language, English, French or Chinese, and the language names under the card switch it. Once you're in, hubStudio speaks your language too; change it any time in **User Settings**, under **Language**. The very first time you sign in, hubStudio opens **Discovery**: every module of your menu, the first steps worth taking, the help center and a quick guided tour of the screen. If you were heading for a page, from a link in an email for instance, **Continue to your page** takes you there. After that, you land on **Explore**, or on the home page you chose in **User Settings**, and **Discovery** stays in the menu under your picture. A client login always lands on its **Client space**.
+Type your **Login** (your email address) and your **Password**, then click **Sign in**. The box marked **I'm not a robot** above the button ticks itself while the page loads and reads **Verified** a second later: it keeps scripts out, and there is nothing to click. The sign-in page speaks your browser's language, English, French or Chinese, and the language names under the card switch it. Once you're in, hubStudio speaks your language too; change it any time in **User Settings**, under **Language**. The very first time you sign in, hubStudio opens **Discovery**: every module of your menu, the first steps worth taking, the help center and a quick guided tour of the screen. If you were heading for a page, from a link in an email for instance, **Continue to your page** takes you there. After that, you land on **Explore**, or on the home page you chose in **User Settings**, and **Discovery** stays in the menu under your picture. A client login always lands on its **Client space**.
 
 New teams also ask for a second step: a 6-digit sign-in code sent to your email address, valid for 10 minutes. Type it under **Sign-in code** and click **Confirm and sign in**. Leave **Trust this browser for 30 days, so it only asks for my password.** ticked on a computer you use every day. See [Account and sign-in](/help/account-and-sign-in) for the details.
 

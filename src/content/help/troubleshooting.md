@@ -131,7 +131,9 @@ A run that fails is never charged. A run that succeeds is charged the price show
 |---|---|---|
 | **This code is not valid, or it has expired. Request a new one.** | The sign-up code is wrong or older than 20 minutes, or it was mistyped too many times. | Click **start again** and ask for a new code. |
 | **Temporary mailboxes cannot open an account. Please use your work or personal address.** | Disposable addresses are refused. | Use a real address. |
+| **A name cannot contain a web address or an email address.** | A first name, a last name or a team name holds a web address or an email address, on the sign-up form, in **User Settings** or on the **Team** page. | Take the address out and try again. |
 | **Invalid login or password.** | The email or the password is wrong. | Check both, or click **Forgot password?**. |
+| **The security check did not pass. Please try again.** | The automatic check above the button, the box marked **I'm not a robot**, couldn't finish on the sign-in, sign-up or forgot password form. | Wait until the box reads **Verified**, then try again, or reload the page. The check needs JavaScript, and an ad blocker or a strict privacy extension can stop it: allow hubStudio in the extension, or use another browser. |
 | **This code is not valid, or it has expired. Sign in again to get a new one.** | The sign-in code is wrong or older than 10 minutes. | Sign in again, or click **Send another code**. |
 | **Too many wrong codes. Sign in again to get a new one.** | The sign-in code was mistyped too many times. | Sign in again. |
 | **A code was already sent three times. Please sign in again in a few minutes.** | Too many codes were asked for. | Wait a few minutes, then sign in again. |

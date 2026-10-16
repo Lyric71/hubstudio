@@ -75,7 +75,7 @@ A custom agent reads the data you pick and follows instructions you write: a wee
    - **Social activity**: the social content of the last 30 days, what was drafted, planned and published.
    - **Social publishing**: the posts of every network, network by network, over the last 30 days and the next 14: published, scheduled, failed, and the drafts waiting.
    - **From the Assets Library**: any of your team's [campaigns](/help/campaigns), listed first and marked **Campaign**, and any folder or document of the library. A campaign brings its brief and every asset in it, pictures and clips by their prompt. A folder brings every document in it and in its subfolders. PDF, Word, Excel, Markdown and text files are read; pictures and clips are left aside. Every download is billed like one from the Assets Library. Past six entries, a search box (**Search a campaign, a folder or a document**) narrows the list.
-4. On the **General** tab, write its **Instructions**: what it should look for in that data, what counts as a finding, and what it should ignore.
+4. On the **General** tab, write its **Instructions**: what it should look for in that data, what counts as a finding, and what it should ignore. **Improve with AI**, next to the box, writes them for you from the agent's name and scope, or rewrites what you typed.
 5. Click **Create the agent**. It starts switched on.
 
 You can only give an agent data you can see yourself. Each block follows your rights, as on its own pages.
@@ -86,7 +86,7 @@ The same form serves for adding, creating and editing an agent. The **Name** sit
 
 | Tab | What it holds |
 |---|---|
-| **General** | **What users are told it does**, the sentence shown on its card, and its **Instructions**: what it watches and how to judge it. Leave the instructions empty on the standard agent to keep the standard ones. What it may report and how it grades severity is fixed by hubStudio. |
+| **General** | **What users are told it does**, the sentence shown on its card, and its **Instructions**: what it watches and how to judge it. Leave the instructions empty on the standard agent to keep the standard ones. What it may report and how it grades severity is fixed by hubStudio. Each box has an **Improve with AI** button: it rewrites what you typed, or writes it from the agent's name and scope when the box is empty, with the model picked at the top of the tab. Its price shows under the box, with **Undo**. |
 | **Scope** | Everything the agent works on, and the AI it runs with (see below). |
 | **Schedule and budget** | **Runs every (hours)**, the minimum time between two scheduled runs. **Monthly budget (USD)** and **Weekly budget (USD)**, the most this agent may spend per calendar month and over any seven days: whichever is reached first stops it, and empty means no limit of its own. An agent that already ran shows what it spent **This month** and over the **Last seven days**. |
 | **Notifications** | **Email the results to**: **The agent's owner** (your own agents) or **The team's administrators** (team agents), **These people only** with a list of addresses, or **Nobody**. **Email content**: **Summary and link**, or **Full results** with the findings in the email. |
@@ -177,6 +177,7 @@ A run that reaches the AI is paid: the tokens of the model, plus each web search
 | A scheduled run of your personal agent | You, the agent's owner, counted against your daily limit on the team balance. |
 | A scheduled run of a team agent | The team. |
 | **Run now** | The person who clicks it. |
+| **Improve with AI** on the agent form | The person who clicks it, at the price shown under the box. |
 
 The price of every run that reached the AI is shown in **Previous runs** and in the results email. The agent's own **Monthly budget (USD)** and **Weekly budget (USD)** stop it before it spends more; a tighter limit set for you or the team still wins. See [Balance and payments](/help/balance-and-payments).
 

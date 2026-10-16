@@ -59,6 +59,7 @@ Social networks (site section or tab) -> 社交平台
 Account (app section) -> 账户; Top up -> 充值; Automatic top-up -> 自动充值; Save a card -> 保存银行卡; rules Below / Top up by / Daily limit -> 低于 / 充值金额 / 每日限额; Save top-up settings -> 保存充值设置; Pay (step) -> 付款; Promotional code -> 优惠码; Usage -> 用量; Invoices -> 发票
 Sign-in and security -> 登录与安全; Login email / Sign-in code / Update email -> 登录邮箱 / 登录验证码 / 更新邮箱
 Weekly digest -> 每周摘要
+Publishing log (User Settings) -> 发布日志 (outcomes Published / Did not go out / Will be tried again / Edited on the network / Deleted: “已发布” / “未能发出” / “将再次尝试” / “已在平台上编辑” / “已删除”; Tried again later: “稍后重试”); the daily publishing recap -> 每日汇总邮件; Improve with AI -> “用 AI 优化”; the sign-in check I’m not a robot / Verified -> “我不是机器人” / “已验证” (the check widget’s own Chinese) (settled 2026-10-16)
 a run is charged / never charged -> 扣费 / 不扣费 (against the prepaid balance)
 launch (a product launch, campaign context) -> 新品发布 / 上市 (Lumera Essence launch stays in English, as the screenshots show it)
 Send a brief -> 提交简报; Send the brief -> 发送简报

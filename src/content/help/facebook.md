@@ -5,7 +5,7 @@ description: "The Facebook module: connect your Facebook page, brief and draft a
 excerpt: "Draft a Facebook page post with AI or by hand, give it pictures or a video, and publish it on your page, now or on schedule."
 section: "social"
 order: 11
-updated: 2026-10-08
+updated: 2026-10-16
 appPaths: ["/social/facebook/posts", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "instagram", "tiktok", "x", "validation", "account-and-sign-in", "skills", "choosing-a-model", "history", "assets-library", "campaigns"]
@@ -136,7 +136,7 @@ Everything you schedule or send lands under **In the queue**, one row per page:
 | Published | Live, with **View live** | Edit or delete it on Facebook itself |
 | Did not go out | Refused, or waiting to retry | **Try again now**, **Cancel** |
 
-A temporary problem on Facebook's side is retried by itself, three attempts in all. A content problem (a file too large, a wrong file type) or a page that needs reconnecting is not retried, and the person who queued the post receives an email saying what Facebook said. A page that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
+A temporary problem on Facebook's side is retried by itself, three attempts in all. A content problem (a file too large, a wrong file type) or a page that needs reconnecting is not retried. What Facebook said shows on the post, in your **Publishing log** in **User Settings** and in the next daily recap email: hubStudio sends no email post by post. A page that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
 
 ## Take a post to other networks
 

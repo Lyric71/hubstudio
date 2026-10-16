@@ -27,6 +27,7 @@ model tiers Quick / Balanced / Best -> Rapide / Équilibré / Puissant (masculin
 Model benchmarks / Scores and costs -> « Benchmarks des modèles » / « Scores et coûts » (score names Intelligence Index, LMArena Text, Output speed stay in English, as in the app)
 Account (app tab) -> Compte; Top up (verb) -> recharger, a top-up -> une recharge; Automatic top-up / Top up automatically / Save a card -> « Rechargement automatique » / « Recharger automatiquement » / « Enregistrer une carte »; Below / Top up by / Daily limit -> « Inférieur à » / « Montant de la recharge » / « Limite quotidienne »; Promotional code -> « Code promotionnel »
 Invoices / Usage -> Factures / Consommation; Sign-in and security -> Connexion et sécurité; Weekly digest -> Récapitulatif hebdomadaire
+Publishing log (User Settings) -> Journal de publication (outcomes Published / Did not go out / Will be tried again / Edited on the network / Deleted: « Publié » / « Échec de l’envoi » / « Nouvelle tentative prévue » / « Modifié sur le réseau » / « Supprimé »; Tried again later: « Retentés plus tard »); the daily publishing recap -> le récapitulatif quotidien; Improve with AI -> « Améliorer avec l’IA »; the sign-in check I’m not a robot / Verified -> « Je ne suis pas un robot » / « Vérifié » (the check widget’s own French) (settled 2026-10-16)
 asset -> contenu (production prose: contenu, livrable when it is a deliverable)
 Image editor -> Éditeur d’images
 Image anonymizer -> Anonymiseur d’images

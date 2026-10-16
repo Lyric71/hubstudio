@@ -5,7 +5,7 @@ description: "The TikTok module: connect your TikTok account, start from the vid
 excerpt: "Start from the video, add a caption with AI or by hand, or brief a video in depth, and publish it on your TikTok account, now or on schedule."
 section: "social"
 order: 12
-updated: 2026-10-08
+updated: 2026-10-16
 appPaths: ["/social/tiktok/posts", "/social/tiktok/brief", "/my-connections"]
 audience: "Creators and admins; viewers read"
 related: ["linkedin", "instagram", "facebook", "youtube", "x", "validation", "create-a-video", "choosing-a-model", "history", "assets-library"]
@@ -161,7 +161,7 @@ Everything you schedule or send lands under **In the queue**, one row per accoun
 | Published | Live, with **View live** | Edit or delete it on TikTok itself |
 | Did not go out | Refused, or waiting to retry | **Try again now**, **Cancel** |
 
-A temporary problem on TikTok's side is retried by itself, three attempts in all. A content problem (a clip too long, a wrong file type) or an account that needs reconnecting is not retried, and the person who queued the post receives an email saying what TikTok said. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
+A temporary problem on TikTok's side is retried by itself, three attempts in all. A content problem (a clip too long, a wrong file type) or an account that needs reconnecting is not retried. What TikTok said shows on the post, in your **Publishing log** in **User Settings** and in the next daily recap email: hubStudio sends no email post by post. An account that stopped working shows **Reconnect** on its tile and can't be ticked: reconnect it on My Connections.
 
 ## Take a post to other networks
 
