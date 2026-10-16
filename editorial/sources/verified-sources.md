@@ -2755,3 +2755,27 @@ No amount, frame rate, success rate, or engine ranking is cleared.
 Not cleared: a Kling frame rate, longest-duration superlative, native 4K at
 launch, product-consistency guarantee or implied in-app Kling image input.
 Removed related unsupported glossary and service copy in this run.
+
+## Added 2026-10-16 (ledger rows from brief 76, one-app-vs-tool-stack-social-content)
+
+Copied from the research file, which carries the full claims table, the
+hand-off trace and the reasons for every cut.
+
+### Martech utilization and app switching (added 2026-10-16, brief 76)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Marketers reported using 42 percent of the capabilities in their martech stack, down from 58 percent in 2020 | "industry analyst firm survey of 324 marketers, May and June 2022, published October 2022, self-reported" | gartner.com/en/newsroom/press-releases/2022-10-03-gartner-survey-finds-marketers-utilize-just-42-percent-of-their-martech-stack-capabilities (live URL 403 to automated fetch; read from the archive snapshot of 2025-11-13) | 2022-10-03 | primary | 2026-10-16 | 2026-10-16 | 76 |
+| Martech utilization at 49 percent in the 2025 survey of 413 marketing technology leaders, fielded June to August 2025 | "industry analyst firm survey of martech leaders, 2025, self-reported"; write "about half" of the stack's capabilities, never "half their tools", and make no trend claim | gartner.com/en/marketing/topics/marketing-technology (49 percent; archive 2026-09-14) with the sample from gartner.com/en/newsroom/press-releases/2025-10-29-gartner-survey-finds-45-percent-of-martech-leaders-say-existing-vendor-offered-ai-agents-fail-to-meet-their-expectations-of-promised-business-performance (archive 2026-09-28) | 2025 | primary, figure and sample on two pages of the same publisher | 2026-10-16 | 2026-10-16 | 76 |
+| Workers toggled between apps and websites nearly 1,200 times a day, just under four hours a week reorienting, about 9 percent of work time | "study in a business management magazine, August 2022, 137 users in 20 teams at three large companies, up to five weeks, mostly finance, HR and supply-chain jobs", always labeled a market claim (the authors' company sells the measuring software) and never presented as a figure about marketers | hbr.org/2022/08/how-much-time-and-energy-do-we-waste-toggling-between-applications (full text from the archive snapshot of 2022-09-10) | 2022-08-29 | market claim | 2026-10-16 | 2026-10-16 | 76 |
+| No statistics office, trade body or peer-reviewed study has measured time lost to file hand-offs between marketing tools | "search of trade body, statistics office and academic sources, October 16, 2026, an observation about the published record" | Own search, logged in the research file | 2026-10-16 | primary observation | 2026-10-16 | 2026-10-16 | 76 |
+
+### Do not publish, added from brief 76
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| 36 percent of SaaS licenses unused | License-management vendor index, January 2026 | Vendor's own customer data, "unused" undefined, no organization count, no period | 2026-10-16 |
+| 33 percent martech utilization from 405 marketing leaders (2023); 56 percent (2024) | Social posts and roundups | No reachable page from the analyst firm carries them with a sample | 2026-10-16 |
+| 8.8 apps per knowledge worker | Work-management software maker, fielded November 2022 | Seller of a platform pitched against app sprawl; knowledge workers in general, not marketers | 2026-10-16 |
+| 9.5 minutes to refocus after an app switch; 23 minutes 15 seconds to return to a task | Workspace-hub vendor report, 2021; widely attributed university study | Originals 404 or never found | 2026-10-16 |
+| 53 percent of SaaS apps or licenses wasted; 60 percent of teams favor suites; 6 hours a week on integrations; 51 minutes a week of tool fatigue; 2.5 hours a day re-entering data | Vendor blogs and roundups | No reachable original with a method; sellers of the thing they flatter | 2026-10-16 |

@@ -60,6 +60,7 @@ const ARTICLES: Record<string, string> = {
   'luxury-ai-content-systems': 'luxe-et-systemes-de-contenu-ia',
   'meta-tiktok-against-douyin-rednote': 'meta-et-tiktok-face-a-douyin-et-rednote',
   'offshore-creative-production-china': 'production-creative-delocalisee-en-chine',
+  'one-app-vs-tool-stack-social-content': 'une-application-ou-plusieurs-outils-pour-les-reseaux-sociaux',
   'one-shoot-six-platforms-china-variant-matrix': 'un-shooting-six-plateformes-la-matrice-chinoise',
   'pinterest-pin-specs': 'pinterest-formats-des-epingles-2026',
   'procurement-guide-buying-ai-content-production': 'guide-achats-production-de-contenu-ia',

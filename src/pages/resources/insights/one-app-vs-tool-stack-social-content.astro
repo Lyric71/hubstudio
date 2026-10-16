@@ -1,0 +1,318 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "Is an all-in-one social media tool better than separate tools?",
+    "a": "For a team that makes and publishes its own posts, usually yes. What you gain is fewer exports, uploads and re-approvals, plus an approval that covers the post that actually goes out. Separate tools win when one specialist job, such as heavy retouching or motion design, needs more depth than an all-in-one app offers."
+  },
+  {
+    "q": "What are the hidden costs of using many marketing tools?",
+    "a": "Three of them. Seats multiply across people and tools. Some of what you pay for never gets opened. And time goes into moving files from one tool to the next. Analyst surveys put use at 42 to 49 percent of a marketing stack's capabilities. No neutral study has measured the hand-off time for marketing teams, so count the exports and uploads on one of your own posts."
+  },
+  {
+    "q": "How do I keep track of versions across several tools?",
+    "a": "With difficulty. Versions end up in the editor, comments in the approval tool, and the latest file in the file store. Pick one place as the record and make every approval happen there. In hubStudio, versions sit on one Validation thread, nothing on it can be deleted, and a post waiting for approval is locked until someone decides."
+  },
+  {
+    "q": "Do all-in-one apps charge per seat?",
+    "a": "Some price per seat and some per account, so check the pricing model before the feature list. hubStudio does neither: there's no subscription and no seat fee. A team tops up a shared prepaid balance, each run is charged at the price shown before it runs, and a failed run isn't charged. Adding a teammate adds a login, not a seat."
+  },
+  {
+    "q": "When does a specialist tool make more sense?",
+    "a": "When one person spends the whole day on one job that needs depth, like compositing and retouching or motion graphics. A catalog that has to stay in sync with a product information system counts too. Build the stack around that desk, and let the rest of the social work run in one place."
+  },
+  {
+    "q": "Can one app create, approve and publish social content?",
+    "a": "Yes. In hubStudio a post is drafted, given pictures rendered or edited in the same place, sent for validation, then published or scheduled to LinkedIn, Instagram, Facebook, TikTok (Beta) and X. YouTube is the exception: the app writes the title and description, and you publish the video in YouTube Studio yourself."
+  }
+];
+---
+
+<ArticleLayout slug="one-app-vs-tool-stack-social-content" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">Judge them by the hand-offs. On one simple trace, a post made across five tools changes hands 17 times, and the approval covers a file and a text rather than the post that goes out. One app takes those moves out. A stack still wins where one expert does one deep job all day.</p>
+
+  <h2>Is an all-in-one social media content tool better than a stack of tools?</h2>
+
+  <p>For most teams making their own social posts, yes. The picture, the copy, the approval and the schedule live on one post, so nothing is exported or uploaded twice, and in an app like hubStudio the approved version is the one that publishes. A stack is better when one specialist job needs a deeper tool.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Criterion</th>
+          <th scope="col">A stack of single-purpose tools</th>
+          <th scope="col">One app</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Hand-offs</th>
+          <td>An export or upload at every change of tool</td>
+          <td>The file stays on the post from render to publish</td>
+        </tr>
+        <tr>
+          <th scope="row">Version record</th>
+          <td>Split across the editor, the file store and the inbox</td>
+          <td>Versions on one approval thread, nothing deletable</td>
+        </tr>
+        <tr>
+          <th scope="row">Cost structure</th>
+          <td>A plan per tool, often priced per seat</td>
+          <td>In hubStudio, a prepaid balance, no seat fees</td>
+        </tr>
+        <tr>
+          <th scope="row">Seats</th>
+          <td>A login in each tool a person touches</td>
+          <td>One login, with a role set per person</td>
+        </tr>
+        <tr>
+          <th scope="row">Learning</th>
+          <td>Five interfaces, five sets of habits</td>
+          <td>One interface</td>
+        </tr>
+        <tr>
+          <th scope="row">Depth on one task</th>
+          <td>The deepest tool for each job</td>
+          <td>Enough for social formats, not for every specialty</td>
+        </tr>
+        <tr>
+          <th scope="row">Lock-in</th>
+          <td>Each tool holds one part of the work</td>
+          <td>One account holds it all; originals can be downloaded</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Where does a social post change hands in each way of working?</h2>
+
+  <p>Feature lists hide the real cost of a stack, which sits in the seams between tools. So follow one post.</p>
+
+  <p>The trace below is deliberately simple: one LinkedIn post with one picture, one round of changes, then the same post adapted for Instagram. The stack has five tools (an image generator, an image editor, a shared file store, an approval tool and a scheduler), and the copy is written in an ordinary document. Each export, upload, rename and paste of the copy into another tool counts as one move.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Step</th>
+          <th scope="col">In the stack</th>
+          <th scope="col">Moves</th>
+          <th scope="col">In one app (hubStudio)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Make the picture</th>
+          <td>Generate it, download it</td>
+          <td>1 export</td>
+          <td>Rendered in the post or the Image studio, saved on render</td>
+        </tr>
+        <tr>
+          <th scope="row">Crop and retouch</th>
+          <td>Upload to the editor, export the crop</td>
+          <td>1 upload, 1 export</td>
+          <td>Image editor in the browser, saved back into the post</td>
+        </tr>
+        <tr>
+          <th scope="row">File it</th>
+          <td>Upload to the file store, rename it to the convention</td>
+          <td>1 upload, 1 rename</td>
+          <td>Already in the Assets Library, filed to a campaign if one is set</td>
+        </tr>
+        <tr>
+          <th scope="row">Get approval</th>
+          <td>Upload the picture, paste the copy</td>
+          <td>1 upload, 1 paste</td>
+          <td>Sent for validation from the post, nothing uploaded again</td>
+        </tr>
+        <tr>
+          <th scope="row">One revision</th>
+          <td>Back to the editor, export, upload to approval and files</td>
+          <td>3 uploads, 1 export</td>
+          <td>A new version on the same thread</td>
+        </tr>
+        <tr>
+          <th scope="row">Schedule</th>
+          <td>Upload the approved picture, paste the copy</td>
+          <td>1 upload, 1 paste</td>
+          <td>Publish now or schedule from the same post</td>
+        </tr>
+        <tr>
+          <th scope="row">Second network</th>
+          <td>Re-crop, export, upload to the scheduler, paste new copy</td>
+          <td>2 uploads, 1 export, 1 paste</td>
+          <td>Re-purpose for other networks, reframe in the post's editor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>That's 4 exports, 9 uploads, 1 rename and 3 pastes. Seventeen moves for one post on two networks, counted on this example in October 2026 rather than measured across teams. Your count will differ, and it's worth making on your own last campaign.</p>
+
+  <p>Every move is a chance to grab the wrong file. "final_v3" and "final_v3_crop" look alike in a download folder at six in the evening.</p>
+
+  <p>The cost in time is harder to pin down, and nobody has measured it for marketing teams. No statistics office, trade body or peer-reviewed study has published the time lost to file hand-offs between marketing tools. The closest measurement comes from other desks.</p>
+
+  <blockquote class="evidence">Workers in 20 teams at three large companies switched between apps and websites nearly 1,200 times a day and spent just under four hours a week getting reoriented, about 9 percent of their working time.</blockquote>
+  <p class="source">Source: study in a business management magazine, August 2022, 137 users logged for up to five weeks, mostly finance, HR and supply-chain jobs. A market claim: the authors' company sells the measuring software.</p>
+
+  <p>Take it as a direction for your team rather than a number. The jobs were back office, and the people who measured it sell software for the problem.</p>
+
+  <h2>Why does the approval record matter more than the feature list?</h2>
+
+  <p>Because in a stack, nobody approves the post that goes out.</p>
+
+  <p>Look at the trace again. The reviewer approves a picture and a block of text in the approval tool. Someone then rebuilds the post in the scheduler, from files that came out of the file store. If the wrong crop gets picked, or the copy is pasted from the draft before the edit, the approval no longer covers what's published. Nothing in the stack connects the two.</p>
+
+  <p>The record is split as well. Earlier versions sit in the editor's history. Comments live in the approval tool, or in somebody's inbox. The file store keeps whatever was uploaded last. Rebuilding who approved what, three months later, means opening four tools and trusting the file names.</p>
+
+  <p>In hubStudio, a post is sent for validation from the post itself, with its copy and a link to each of its pictures. The validator approves it or sends it back with a comment. A new version lands on the same thread as v2, then v3. Nothing on the thread can be deleted, so the record of who approved what is permanent. And while the post waits, it's locked: nobody can change, delete or publish it until the validator decides.</p>
+
+  <p><a href="/resources/how-to/social-media-client-approval">The client approval how-to</a> walks through the round trip step by step.</p>
+
+  <h2>How does the money work in each model?</h2>
+
+  <p>A stack bills tool by tool. Each one has its own plan, monthly or annual, and many in the category price by seat, so the bill grows with people times tools. A designer who needs the editor, the file store and the scheduler holds three seats.</p>
+
+  <p>Then there's the software nobody opens.</p>
+
+  <blockquote class="evidence">Marketers reported using 42 percent of the capabilities in their marketing technology stack in 2022, down from 58 percent in 2020. The 2025 edition of the same survey, of 413 marketing technology leaders, put utilization at 49 percent.</blockquote>
+  <p class="source">Source: industry analyst firm surveys, published October 2022 (324 marketers, May and June 2022) and 2025 (fielded June to August 2025). Self-reported shares of capability used, with no count of tools behind them.</p>
+
+  <p>They're shares of capability with no money attached, and they cover whole marketing stacks rather than social tools alone. Still, two editions of one survey put use at under half of what was bought.</p>
+
+  <p>hubStudio is paid a different way. There's no subscription and no seat fees, and creating an account costs nothing. A team tops up one shared, prepaid balance held in real currency, by card, Alipay or WeChat Pay. Each run is charged at the price shown before it runs, a failed run isn't charged, and the balance doesn't expire. An admin can set a daily spending limit per creator.</p>
+
+  <p>Which comes out cheaper depends on how much you make. A seat costs the same in a quiet month as in a launch month. A run is paid only when it happens, so a team that renders a lot pays for a lot of runs, and a team that renders little pays little.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">A stack</th>
+          <th scope="col">hubStudio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">What you pay for</th>
+          <td>Access, per tool and often per seat</td>
+          <td>Each run, at the price shown first</td>
+        </tr>
+        <tr>
+          <th scope="row">Adding a person</th>
+          <td>A seat in each tool they need</td>
+          <td>A login, no seat fee</td>
+        </tr>
+        <tr>
+          <th scope="row">Editing and approval</th>
+          <td>Inside each tool's plan</td>
+          <td>Image editor and Validation cost nothing</td>
+        </tr>
+        <tr>
+          <th scope="row">Publishing</th>
+          <td>Inside the scheduler's plan</td>
+          <td>Free to LinkedIn, Instagram, Facebook and TikTok; each X post charged, price shown first</td>
+        </tr>
+        <tr>
+          <th scope="row">Files</th>
+          <td>Inside the file store's plan</td>
+          <td>A small charge for storage and downloads</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><a href="/pricing">The pricing page</a> sets out how the balance works. It prints no amount, and neither does this piece. For what a week of social content costs to make, in-house or bought, see <a href="/resources/insights/cost-of-social-content-week">the cost of a week of social content piece</a>.</p>
+
+  <h2>What does one app cover, and what does it leave out?</h2>
+
+  <p>Run the jobs in the trace against the app. Here is what hubStudio covers, as of October 2026, and where it stops. <a href="/app">The hubStudio app</a> page lists every module.</p>
+
+  <p>On the making side, Explore lists the image and video engines of several makers, and the Image studio and Video studio run them, with History keeping every render, its prompt and its engine. The Image editor frames a picture for each network and handles crop, light and color, text, arrows and a logo, free in the browser.</p>
+
+  <p>The Assets Library holds the team's files in folders, with tags, versions and search. Campaigns gathers one launch's files under one name without copying anything.</p>
+
+  <p>Validation carries the approval thread. Then the publishing modules post to LinkedIn, Instagram, Facebook, TikTok (in Beta) and X, now or on a schedule, to up to 20 accounts per post, through a queue that retries when a network fails for a moment. For YouTube, the app writes the title and description; you publish the video yourself in YouTube Studio.</p>
+
+  <p>Now the gaps. There's no API, no connector to a digital asset management system (DAM) or a product information system (PIM), no brand kit, no single sign-on and no mobile app. A team whose process runs through any of those is better served by a stack, or by handing the work to a studio.</p>
+
+  <p><a href="/app/publish">The Publish page of the hubStudio app</a> and <a href="/app/library">the Assets Library page</a> show both modules in detail.</p>
+
+  <h2>When does a stack of specialist tools still make sense?</h2>
+
+  <p>When one person does one job all day, and does it deeply.</p>
+
+  <p>A retoucher compositing product shots for hours needs a dedicated retouching tool, not a crop-and-caption editor. A motion designer building title sequences frame by frame needs a full motion suite. The app's editors cover what social formats need; they don't try to replace those desks.</p>
+
+  <p>The same goes for systems. A catalog that lives in a PIM, or a brand library that lives in a DAM wired to the ecommerce site, pulls the stack toward those systems. The app has no connector to them.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Team profile</th>
+          <th scope="col">Better fit</th>
+          <th scope="col">Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">A small team making and posting its own content</th>
+          <td>One app</td>
+          <td>Everything happens on the same post</td>
+        </tr>
+        <tr>
+          <th scope="row">An agency posting for several clients</th>
+          <td>One app</td>
+          <td>Client logins see and approve only their own work</td>
+        </tr>
+        <tr>
+          <th scope="row">A team with a full-time retoucher or motion designer</th>
+          <td>A stack around that desk</td>
+          <td>The specialist needs depth the app doesn't aim for</td>
+        </tr>
+        <tr>
+          <th scope="row">A brand whose assets live in a DAM or PIM</th>
+          <td>A stack</td>
+          <td>No connector to those systems in the app</td>
+        </tr>
+        <tr>
+          <th scope="row">A brand with no in-house makers</th>
+          <td>A studio</td>
+          <td>Someone else makes the work, inside the app or outside it</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>There's a middle path, too. In <a href="/studio/with-the-app">Studio + app</a>, hubStudio's studio makes the work inside the app, and the client's people review and approve it there; <a href="/solutions/platforms/linkedin">the LinkedIn platform page</a> shows what that looks like for one network. <a href="/resources/insights/automation-platform-or-production-partner">The automation platform or production partner piece</a> covers when to buy the making rather than the tools.</p>
+
+  <h2>Questions buyers ask about one app against a tool stack</h2>
+
+  <h3>Is an all-in-one social media tool better than separate tools?</h3>
+
+  <p>For a team that makes and publishes its own posts, usually yes. What you gain is fewer exports, uploads and re-approvals, plus an approval that covers the post that actually goes out. Separate tools win when one specialist job, such as heavy retouching or motion design, needs more depth than an all-in-one app offers.</p>
+
+  <h3>What are the hidden costs of using many marketing tools?</h3>
+
+  <p>Three of them. Seats multiply across people and tools. Some of what you pay for never gets opened. And time goes into moving files from one tool to the next. Analyst surveys put use at 42 to 49 percent of a marketing stack's capabilities. No neutral study has measured the hand-off time for marketing teams, so count the exports and uploads on one of your own posts.</p>
+
+  <h3>How do I keep track of versions across several tools?</h3>
+
+  <p>With difficulty. Versions end up in the editor, comments in the approval tool, and the latest file in the file store. Pick one place as the record and make every approval happen there. In hubStudio, versions sit on one Validation thread, nothing on it can be deleted, and a post waiting for approval is locked until someone decides.</p>
+
+  <h3>Do all-in-one apps charge per seat?</h3>
+
+  <p>Some price per seat and some per account, so check the pricing model before the feature list. hubStudio does neither: there's no subscription and no seat fee. A team tops up a shared prepaid balance, each run is charged at the price shown before it runs, and a failed run isn't charged. Adding a teammate adds a login, not a seat.</p>
+
+  <h3>When does a specialist tool make more sense?</h3>
+
+  <p>When one person spends the whole day on one job that needs depth, like compositing and retouching or motion graphics. A catalog that has to stay in sync with a product information system counts too. Build the stack around that desk, and let the rest of the social work run in one place.</p>
+
+  <h3>Can one app create, approve and publish social content?</h3>
+
+  <p>Yes. In hubStudio a post is drafted, given pictures rendered or edited in the same place, sent for validation, then published or scheduled to LinkedIn, Instagram, Facebook, TikTok (Beta) and X. YouTube is the exception: the app writes the title and description, and you publish the video in YouTube Studio yourself.</p>
+</ArticleLayout>

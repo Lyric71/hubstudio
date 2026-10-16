@@ -299,3 +299,10 @@ platform pages kicker -> Travaux plateforme; Adapt step -> Déclinaison
 help centres -> Centre d’aide Meta Business, Centre d’aide TikTok Ads, Centre d’aide de TikTok, Aide Google Ads
 English-only platform quotes -> English title in « » + « version anglaise, notre traduction »; indirect speech for English-only sources
 FAQ json-ld answers and index cards -> copy the page’s visible answer / own meta word for word
+
+## One app or a tool stack (settled 2026-10-16, one-app-vs-tool-stack-social-content)
+tool stack (single-purpose tools chained for one job) -> chaîne d’outils (une chaîne d’outils spécialisés); marketing technology stack (survey, whole martech) -> parc d’outils marketing; all-in-one app -> application tout-en-un; one app (column, prose) -> application unique; single-purpose / specialist tool -> outil spécialisé; separate tools -> outils séparés
+hand-off (between tools) -> passage de relais (changes hands -> change de mains); move (export, upload, rename, paste counted in a trace) -> manipulation; upload into a third-party tool -> import / importer; paste (counted) -> copier-coller (invariable: 3 copier-coller); rename -> renommage
+file store -> espace de stockage (partagé); approval tool -> outil de validation; scheduler -> outil de planification; image editor (generic, third-party) -> outil de retouche (« Éditeur d’images » stays the hubStudio module); reviewer (in a stack) -> relecteur
+seat -> licence (Seats, table row: Licences; per seat: à la licence; seat fee: frais de licence; no seat fees: sans licence par utilisateur); Learning (row) -> Prise en main; Lock-in -> Dépendance; version record -> historique des versions; Better fit (column) -> Option la plus adaptée
+"Item" (cost table head) on an insight page -> page override « Poste » (common.json renders « Élément »)

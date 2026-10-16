@@ -284,3 +284,12 @@ brand-trained models -> 品牌训练模型 (品牌训练图像模型; never 经�
 token -> token on help pages and in quoted app labels, Token in other website prose
 run (billing, pricing, agents) -> 运行; image or video studio run -> 生成
 the original picture (kept beside an edited copy) -> 原图; source picture (input of an edit) -> 源图
+
+## One app or a tool stack (settled 2026-10-16, one-app-vs-tool-stack-social-content)
+a stack of tools / tool stack -> 工具组合 (一套工具 in headlines); a stack of single-purpose tools -> 多款单一功能工具组合; single-purpose tool -> 单一功能工具; specialist tool -> 专业工具; separate tools -> 独立工具
+all-in-one app / tool -> 一体化应用 / 一体化工具; marketing technology stack -> 营销技术栈
+hand-off -> 交接; change hands -> 转手; move (export, upload, rename, paste) -> 一步操作 (共 17 步); export / upload / rename / paste -> 导出 / 上传 / 重命名 / 粘贴 (table cells: 导出 1 次, 上传 9 次)
+seat -> 席位 (a seat in each tool -> 每款工具各占一个席位); login -> 登录账号; plan (a tool's paid tier) -> 方案; lock-in -> 锁定效应; learning (cost) -> 学习成本
+generic stack tools: image generator / image editor / shared file store / approval tool / scheduler -> 图片生成工具 / 图片编辑工具 / 共享文件库 (short: 文件库) / 审核工具 / 排期工具 (keep 图片编辑器 for the hubStudio module only)
+DAM / PIM -> 数字资产管理系统（DAM） / 产品信息管理系统（PIM）, then DAM / PIM; connector -> 连接器 (prose: 对接); brand kit -> 品牌套件; single sign-on -> 单点登录; mobile app -> 移动端应用
+retoucher / motion designer / desk (a specialist's job) -> 修图师 / 动态设计师 / 岗位

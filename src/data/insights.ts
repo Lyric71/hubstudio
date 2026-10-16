@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'one-app-vs-tool-stack-social-content',
+    image: '/Images/insight-one-app-vs-tool-stack-social-content.webp',
+    imageAlt:
+      'A hand smooths a worn proof print of a pale celadon teapot on a dark oak desk; the paper carries pinholes, staple holes, tape residue and a creased corner, with a loose paper clip and staple beside it in low window light.',
+    category: 'Buying models',
+    tone: 'orange',
+    title: 'One App or a Stack of Tools for Social Content',
+    deck: 'Follow one social post through five tools and through one app. Count the exports and re-uploads, then see when a stack of tools still wins.',
+    date: 'October 16, 2026',
+    dateISO: '2026-10-16',
+    readingTime: '8 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'One App or a Stack of Tools for Social Content | hubStudio',
+    metaDescription:
+      'One app or several single-purpose tools for social content, compared on hand-offs, version records, cost structure and seats, and when a stack wins.',
+  },
+  {
     slug: 'pinterest-pin-specs',
     image: '/Images/insight-pinterest-pin-specs.webp',
     imageAlt:
