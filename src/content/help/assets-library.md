@@ -5,7 +5,7 @@ description: "Every file of your team in one place, in folders: uploads, renders
 excerpt: "Your team's files in folders, and three tools that run in your browser, each with its own entry in the menu: the Image editor, the Video editor for Reels, TikToks and Facebook reels, and the Image anonymizer."
 section: "library"
 order: 6
-updated: 2026-10-14
+updated: 2026-10-16
 appPaths: ["/files", "/files/tools/image-editor", "/files/tools/video-editor", "/files/tools/image-anonymizer"]
 audience: "Everyone except client logins"
 related: ["history", "shorts-autopilot", "campaigns", "create-an-image", "create-a-video", "linkedin", "instagram", "facebook", "tiktok", "x", "balance-and-payments"]
@@ -82,7 +82,7 @@ shots:
     clip: "the picture step of a post"
     alt: "The picture step of an Instagram post: the pencil under the cross on the post's picture, then Render again, Add from the library and Upload from your computer"
     captured: 2026-09-28
-sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/pages/files/index.astro", "src/scripts/filesPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/pages/api/files/folders/[id].ts", "src/pages/api/files/captions.ts", "src/lib/stored-files.ts", "src/lib/campaigns.ts", "src/lib/asset-tools.ts", "src/components/AssetToolsNav.astro", "src/pages/files/tools/index.astro", "src/pages/files/tools/image-editor.astro", "src/pages/files/tools/video-editor.astro", "src/pages/files/tools/image-anonymizer.astro", "src/scripts/imageEditor.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/videoEditorModel.ts", "src/scripts/videoEditorCaptions.ts", "src/scripts/videoEditorAudio.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorLauncher.ts", "src/lib/video-captions.ts", "src/lib/social/limits.ts", "src/scripts/lightbox.ts", "src/scripts/historyPanel.ts", "src/scripts/imageGenerate.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js", "src/scripts/campaignChoice.ts", "src/lib/request-campaign.ts"]
+sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/pages/files/index.astro", "src/scripts/filesPanel.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/pages/api/files/folders/[id].ts", "src/pages/api/files/captions.ts", "src/lib/stored-files.ts", "src/lib/campaigns.ts", "src/lib/asset-tools.ts", "src/components/AssetToolsNav.astro", "src/pages/files/tools/index.astro", "src/pages/files/tools/image-editor.astro", "src/pages/files/tools/video-editor.astro", "src/pages/files/tools/image-anonymizer.astro", "src/scripts/imageEditor.ts", "src/scripts/imageEditorNetworks.ts", "src/scripts/imageEditorLauncher.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorNetworks.ts", "src/scripts/videoEditorModel.ts", "src/scripts/videoEditorCaptions.ts", "src/scripts/videoEditorAudio.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorLauncher.ts", "src/lib/video-captions.ts", "src/lib/social/limits.ts", "src/scripts/lightbox.ts", "src/scripts/historyPanel.ts", "src/scripts/imageGenerate.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js", "src/scripts/campaignChoice.ts", "src/lib/request-campaign.ts", "src/lib/storage-billing.ts", "src/lib/scratchpad.ts"]
 ---
 
 The **Assets Library** holds every file of your team in one place, in folders: the pictures and clips you upload, the ones the studios render, the pictures and videos you edit, and the shorts [Shorts autopilot](/help/shorts-autopilot) makes. **Assets Library** in the menu opens it.
@@ -143,7 +143,7 @@ On a video, the same menu reads **Edit video** where a picture reads **Edit imag
 
 ### What files cost
 
-Keeping files has a small daily rent, and downloading one has a small transfer charge, both charged against the team balance, exactly as described in [History](/help/history#what-storing-files-costs). Delete what you no longer need and the rent goes down from the next day. When the balance is empty, new files can't be uploaded until you top up.
+Keeping files has a small daily rent, and downloading one has a small transfer charge, both charged against the team balance, exactly as described in [History](/help/history#what-storing-files-costs). The rent counts every file the team stores, the files and recordings of everyone's [Scratchpad](/help/scratchpad) included. Delete what you no longer need and the rent goes down from the next day. When the balance is empty, new files can't be uploaded until you top up.
 
 ## What the tools cost
 

@@ -5,7 +5,7 @@ description: "The interface in English, French or Chinese, your name, picture, s
 excerpt: "Everything in User Settings that applies to you, your social accounts, and how signing in, the connection check and password recovery work."
 section: "account"
 order: 18
-updated: 2026-10-14
+updated: 2026-10-16
 appPaths: ["/settings", "/my-connections", "/connections-check", "/login", "/forgot-password", "/reset-password"]
 audience: "Everyone"
 related: ["getting-started", "discovery-and-tips", "linkedin", "instagram", "facebook", "tiktok", "x", "explore", "choosing-a-model", "balance-and-payments", "troubleshooting"]
@@ -39,7 +39,7 @@ shots:
     clip: "#tips"
     alt: "The Tips card in Settings: the Show me tips when I sign in switch, on, the note about Never see this again and the arrows, Show me a tip now, and a small picture of a tip card"
     captured: 2026-10-14
-sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro", "src/lib/changelog-digest.ts", "src/pages/api/changelog-digest/cron.ts", "src/lib/email-preferences.ts", "src/lib/tips.ts", "src/scripts/tipsNotice.ts"]
+sources: ["src/pages/settings.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/forgot-password.astro", "src/pages/reset-password.astro", "src/components/ThemeSwitch.astro", "src/layouts/Layout.astro", "src/pages/my-connections.astro", "src/scripts/socialAccounts.ts", "src/lib/social/connect-guide.ts", "src/lib/connection-health.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/connections-check.astro", "src/lib/app.ts", "src/middleware.ts", "src/components/AppWordmark.astro", "src/lib/changelog-digest.ts", "src/pages/api/changelog-digest/cron.ts", "src/lib/email-preferences.ts", "src/lib/tips.ts", "src/scripts/tipsNotice.ts", "src/scripts/dictation.ts", "src/scripts/scratchpad.ts"]
 ---
 
 Open **User Settings** from the menu under your picture, at the top right of every page. The band at the top of the page shows who is signed in, your role and your team, then three figures: **Available now**, **Spent today** and **Spent this month**. The sections are listed on the left.
@@ -200,7 +200,7 @@ The **Text** tab holds the models that write your posts and captions. A text mod
 
 ## Voice input
 
-Every text box with more than one line, the prompt boxes of the studios included, has a microphone in its corner. Click it and speak: your words appear where your cursor is as you say them. Click again to stop.
+Every text box with more than one line, the prompt boxes of the studios and the sheets of the [Scratchpad](/help/scratchpad) included, has a microphone in its corner. Click it and speak: your words appear where your cursor is as you say them. Click again to stop.
 
 Under **Voice input**:
 

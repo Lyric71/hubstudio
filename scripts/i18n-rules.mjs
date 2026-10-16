@@ -11,6 +11,9 @@ const CJK = '\\u3400-\\u9fff\\uf900-\\ufaff';
 export function problems(key, value, locale) {
   const out = [];
   if (slotSignature(key) !== slotSignature(value)) out.push('placeholders differ from the English');
+  // A space put before the ; of an entity (French typography run over
+  // markup) breaks it: the page shows "&rarr ;" as text.
+  if (/&(?:[a-z]+|#\d+|#x[0-9a-f]+)\s+;/i.test(value)) out.push('broken entity (space before its ;)');
   // Entities (&amp;, &rarr;) are markup, not words or punctuation.
   const text = strip(value).replace(/&(?:[a-z]+|#\d+|#x[0-9a-f]+);/gi, ' ');
   if (/—/.test(text)) out.push('em dash');

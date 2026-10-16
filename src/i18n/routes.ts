@@ -135,6 +135,7 @@ const HELP: Record<string, string> = {
   instagram: 'instagram',
   linkedin: 'linkedin',
   partners: 'partenaires',
+  scratchpad: 'bloc-notes',
   'shorts-autopilot': 'pilote-automatique-de-shorts',
   skills: 'competences',
   tiktok: 'tiktok',

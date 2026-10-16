@@ -8,7 +8,7 @@ the studio -> le studio
 Studio + app -> Studio + application
 Studio only -> Studio seul
 Self-serve / Managed / Full service -> En autonomie / Accompagné / Service complet
-engine (AI) -> moteur ("by maker" = par concepteur)
+engine (AI) -> moteur ("by maker" = par éditeur, as the app)
 model (AI) -> modèle
 run (an AI run) -> génération (verb: lancer)
 Explore -> Explorer
@@ -16,10 +16,10 @@ Image studio / Video studio -> studio Image / studio Vidéo
 History -> Historique
 Discovery (page a first sign-in opens on) -> Découverte (Welcome aboard: « Bienvenue à bord »; quick tour: « visite rapide », Take the quick tour: « Lancer la visite rapide »; Show in the menu: « Voir dans le menu »); tips after sign-in -> astuces (tip card: « carte d’astuces »; Never see this again: « Ne plus afficher »; Show me: « Me montrer ») (settled 2026-10-14)
 Assets Library -> Bibliothèque de contenus
-App pillars (menu headings, home page, header App panel) Create / Publish / Library -> Créer / Publier / Bibliothèque; AI layer (Agents and Skills, across the three) -> la couche IA (heading: « La couche IA »); pillar -> pilier; PDF (module, eight PDF tools) -> PDF (settled 2026-10-14)
-Campaigns (Assets Library) -> Campagnes (a campaign: une campagne; Add to a campaign: « Ajouter à une campagne »; Add to campaign, ticked rows: « Ajouter à la campagne »; Add assets: « Ajouter des contenus »; In this campaign: « Dans cette campagne »; Open in its module / In the library / Remove: « Ouvrir dans son module » / « Dans la bibliothèque » / « Retirer »; Campaign menu of a creation form: « Campagne », set to « Aucune campagne »; library filter In no campaign: « Hors campagne »; Context folder from the Assets Library: « Dossier de contexte tiré de la bibliothèque »; never « campagne publicitaire »)
-Agents -> Agents (My agents / Team agents / Catalog / Runs: « Mes agents » / « Agents de l’équipe » / « Catalogue » / « Exécutions »; Agents Command Room: « Poste de commande des agents »; Social publishing watcher: « Veilleur des publications sociales »; finding: « constat »; Run now: « Lancer maintenant »)
-Picture versions / Use this version (social post) -> « Versions des visuels » / « Utiliser cette version »; On the post (version tag) -> « Sur la publication »
+App pillars (menu headings, home page, header App panel) Create / Publish / Library -> Créer / Publier / Bibliothèque; AI layer (Agents and Skills, across the three) -> la couche d’IA (heading: « La couche d’IA », as the app); pillar -> pilier; PDF (module, eight PDF tools) -> PDF (settled 2026-10-14)
+Campaigns (Assets Library) -> Campagnes (a campaign: une campagne; Add to a campaign: « Ajouter à une campagne »; Add to campaign, ticked rows: « Ajouter à la campagne »; Add assets: « Ajouter des contenus »; In this campaign: « Dans cette campagne »; Open in its module / In the library / Remove: « Ouvrir dans son module » / « Dans la bibliothèque » / « Retirer »; Campaign menu of a creation form: « Campagne », default « Aucune » (the library band’s No campaign: « Aucune campagne »); library filter In no campaign: « Hors campagne »; Context folder from the Assets Library: « Dossier de contexte de la Bibliothèque de contenus »; never « campagne publicitaire »)
+Agents -> Agents (My agents / Team agents / Catalog / Runs: « Mes agents » / « Agents de l’équipe » / « Catalogue » / « Exécutions »; Agents Command Room: « Poste de commande des agents »; Social publishing watcher: « Agent de veille des publications sociales »; finding: « constat »; Run now: « Lancer maintenant »)
+Picture versions / Use this version (social post) -> « Versions des visuels » / « Utiliser cette version »; On the post (version tag) -> « Sur le post »
 Re-purpose for other networks -> « Réutiliser sur d’autres réseaux » (tabs Manually / Draft at once / Publish automatically: « Manuellement » / « Rédiger d’un coup » / « Publier automatiquement »)
 engine card (Explore) -> fiche (une fiche moteur); New badge -> « Nouveau »; Try it -> « Essayer »; job chips -> pastilles
 Choose a model / Compare models / All models / Recommended here -> « Choisir un modèle » / « Comparer les modèles » / « Tous les modèles » / « Recommandé ici »
@@ -40,8 +40,8 @@ Client space -> Espace client
 Made for (app label) -> Conçue pour; "Made for a client" (help heading) -> Conçu pour un client
 Validation -> Validation; validator -> validateur
 Send for validation -> Envoyer en validation
-approval thread -> fil de validation (panel « Fil de discussion »); (current) -> « (en cours) »; Submitted / Sent back -> « Proposé » / « Renvoyé »; send the same piece again -> soumettre de nouveau (never « renvoyer », which is Send back); the approval record -> l’historique; refusal quoted verbatim: « Ce contenu a été réalisé pour un autre client. Demandez à l’une des personnes de ce client, ou à un collègue. » (settled 2026-10-13)
-Assets to validate / Waiting for me / My requests / All assets -> Contenus à valider / En attente de moi / Mes demandes / Tous les contenus
+approval thread -> fil de validation (panel « Fil de discussion »); (current) -> « (en cours) »; Submitted / Sent back -> « Proposé » / « Renvoyé »; send the same piece again -> soumettre de nouveau (never « renvoyer », which is Send back); the approval record -> l’historique; refusal quoted verbatim: « Ce contenu a été réalisé pour un autre client. Adressez-vous à l’un des interlocuteurs de ce client, ou à un collègue. » (settled 2026-10-13)
+Assets to validate / Waiting for me / My requests / All assets -> Contenus à valider / À traiter / Mes demandes / Tous les contenus
 roles Admin / Creator / Viewer / Client -> Administrateur / Créateur / Lecteur / Client
 Activity -> Activité
 balance (prepaid) -> solde (prépayé); credits -> crédits IA
@@ -103,7 +103,7 @@ flagship store (Tmall) -> boutique officielle / flagship Tmall
 transcreation -> transcréation; localization -> localisation
 digital human -> humain numérique; avatar -> avatar; brand ambassador -> ambassadeur de marque
 lip sync -> lip sync; provenance -> provenance; Content Credentials / C2PA -> kept
-QA -> contrôle qualité; workflow -> workflow; benchmark -> référence (benchmark when it names a study)
+QA -> contrôle qualité; workflow -> workflow; benchmark (reference point) -> étalon / repère (« repère » in tables; benchmark when it names a study; « référence » is kept for SKU)
 turnaround -> délai de production
 Gen Z -> génération Z
 
@@ -125,7 +125,7 @@ end card -> carton de fin; clean plate -> fond vierge; start frame / last frame 
 lifestyle image -> photo d’ambiance (in prose: mise en situation); fill (share of the frame) -> occupation du cadre; cutout -> détourage
 keep list (prompting) -> liste des éléments à conserver; masked edit -> retouche masquée; reference sheet -> planche de référence; drift -> dérive
 burned-in captions -> sous-titres incrustés; hook / payoff (short video) -> accroche / chute
-engine maker -> concepteur (as in "par concepteur")
+engine maker -> éditeur (as the app: « Éditeur », « Tous les éditeurs », « l’éditeur du modèle »)
 App skills (Catalog) -> Packshot e-commerce / Produit en situation / Texte lisible dans l’image / Même personnage d’une image à l’autre
 Shape (Image studio selector) -> Format
 provider / deployer (EU AI Act) -> fournisseur / déployeur; deep fake -> deepfake (« hypertrucage » named once at most)
@@ -165,17 +165,17 @@ Escape key -> touche Échap
 RSS link (Resources) -> « Recevoir par RSS chaque nouvelle analyse et chaque nouveau guide »
 
 ## Facebook specs and the weekly social plan (settled 2026-10-11)
-page post (Facebook) -> post de page; organic page post -> post de page organique; a page (Facebook) -> une page
+page post (Facebook) -> publication de page; organic page post -> publication de page organique; a page (Facebook) -> une page
 Meta Ads Guide -> guide des publicités de Meta (table cell: Guide des publicités); Meta Business Help Center -> Centre d’aide Meta Business; Facebook Help Center -> Centre d’aide Facebook; Meta for Developers, Graph API, Reels Publishing API, Page Photos, Images in Link Shares -> kept; Meta newsroom -> salle de presse de Meta
 Awareness (ads guide objective) -> notoriété (« publicités image de notoriété »); single-image ad -> publicité à image unique; catalog ads -> publicités catalogue; carousel card -> carte
 Ads Manager (Meta) -> Gestionnaire de publicités; Sharing Debugger -> Débogueur de partage; Live (Facebook) -> vidéos en direct
 link preview image -> image d’aperçu de lien; large link card -> grande carte de lien; link post with the larger image -> publication de lien avec grande image; shared link -> lien partagé
 sent by a tool / posted in the app (spec tables) -> envoyé par un outil / publié depuis l’application
-safe area (Image and Video editor label) -> zone sûre (app); safe zone (Meta’s guidance) -> zone de sécurité
+safe area (Image and Video editor label) -> zone de sécurité (app); safe zone (Meta’s guidance) -> zone de sécurité
 Image editor crops Link / Square -> « Lien » / « Carré »; Video editor formats Reel / Story / Feed portrait / Square -> Reel / Story / Portrait (fil) / Carré; Best (format tag) -> « Conseillé »
-Skills and material (post panel) -> Compétences et matière; New campaign -> Nouvelle campagne; Campaign (menu) -> Campagne
+Skills and material (post panel) -> Compétences et sources; New campaign -> Nouvelle campagne; Campaign (menu) -> Campagne
 scheduling chips In an hour / Tonight, 18:00 / Tomorrow, 09:00 / Monday, 09:00 -> « Dans une heure » / « Ce soir, 18 h » / « Demain, 9 h » / « Lundi, 9 h »; times in prose: 9 h, 9 h 05
-Validated / Waiting for validation / Draft (post status) -> Validé / En attente de validation / Brouillon; validation thread -> fil de discussion (never « fil » alone, which is the feed)
+Validated / Waiting for validation / Draft (post status) -> Validé / En attente de validation / Brouillon; validation thread -> fil de validation (the panel’s own label stays « Fil de discussion » when quoted; never « fil » alone, which is the feed)
 thread (X) -> thread (« en thread », « partir en thread »)
 Make / Adapt / Approve and schedule (workflow blocks) -> Produire / Décliner / Valider et programmer; Re-purpose (verb, a post for other networks) -> décliner
 endpoint (API) -> point de terminaison; rolling 24 hours -> 24 heures glissantes
@@ -214,7 +214,7 @@ the defined week -> la semaine type; tier (agency price plan) -> formule; Volume
 loaded (cost) -> charges comprises; loaded weekly cost -> coût employeur hebdomadaire; load (benefits multiplier) -> coefficient de charges; payroll taxes -> cotisations patronales; 10th / 90th percentile -> 10e / 90e centile
 marketing specialist / marketing manager -> spécialiste marketing / responsable marketing; social media manager -> responsable des réseaux sociaux; motion graphics designer -> motion designer; videographer -> vidéaste; copywriter -> concepteur-rédacteur; public relations specialist -> spécialiste des relations publiques
 review hours -> heures de relecture; review round -> tour de relecture; approval round -> tour de validation; rework -> reprises; agreed rounds -> tours convenus
-setup / onboarding fees -> frais de mise en place / d’intégration; minimum term -> engagement minimal; ad spend -> budget publicitaire; paid media -> achat d’espace; tool seats -> licences d’outils
+setup / onboarding fees -> frais de mise en place / d’intégration; minimum term -> engagement minimal; ad spend -> budget publicitaire; paid media -> achat média; tool seats -> licences d’outils
 pounds / euros, when the English writes them out: livres (livres sterling at first mention) / euros; dollars as 2 200 $
 Shared labels overridden on a page where common.json means something else: "Fixed" (a cost) -> Fixe (common: Corrigé); "Item" (table row header) -> Poste (common: Commande)
 
@@ -236,8 +236,66 @@ home feed -> fil d’accueil; light mode / dark mode -> mode clair / mode nuit (
 « Mark as AI-Modified » kept in English with the gloss (marquer comme modifié par l’IA): the French help page does not show the toggle; toggles -> boutons
 Image editor Crop preset Free -> « Libre »; Image studio Tall (1:3) -> « Bannière verticale (1:3) »; Video editor Format panel -> panneau « Format » with « Vertical », « Portrait », « Carré »
 
+## App labels re-settled by the app's three-pass rewrite (2026-10-15)
+Quote these exactly when the copy names the app: watcher -> agent de veille (named: « Agent de veille des positions »), never « veilleur »; shared credit pool -> crédits partagés (shared balance: solde commun); daily allowance -> quota journalier (daily cap: plafond quotidien); Settings page -> Paramètres (« Paramètres de l’organisation »); Assets Library / File Library -> Bibliothèque de contenus; upload -> importer (« Importer un fichier », « Importé par »); social post -> post (Facebook and TikTok keep « publication », their own word); landing page -> page de destination; tokens -> jetons; Super Admin -> super administrateur; desks -> bureaux (screen label « Bureaux »); In the Image editor: the Crop panel -> « Recadrer », its option Crop to fill -> « Recadrer pour remplir », Shape -> « Format », Framing -> « Cadrage », Show what the network covers -> « Afficher les zones masquées par le réseau », Save and use it in the post -> « Enregistrer et utiliser dans le post »; How it goes out on X -> « Mode de publication sur X »; Write it in 1080p -> « L’exporter en 1080p ».
+
 ## Kling product video guide (settled 2026-10-16, kling-3-product-video-guide)
 camera moves (Kling camera-control vocabulary) push in / pull back / pan / tilt / orbit / track / static -> travelling avant / travelling arrière / panoramique / panoramique vertical / travelling circulaire / travelling latéral / plan fixe; camera move -> mouvement de caméra (table head « Mouvement »); locked-off camera -> caméra fixe; held ending -> fin tenue
-multi-shot generation / element references (Kling 3.0) -> génération multiplan / références d’éléments; native audio -> audio natif; maker guide -> guide d’utilisation (« guide d’utilisation du modèle VIDEO 3.0 »); render (noun, video studio) -> rendu
+multi-shot generation / element references (Kling 3.0) -> génération multiplan / références d’éléments; native audio -> audio natif; maker guide -> guide d’utilisation (« guide d’utilisation du modèle VIDEO 3.0 »); render (noun, video studio) -> génération (as the app: « Ce que reçoit la génération »; « rendu » only for looks in Effects)
 App skills (Catalog, video) Video camera movement vocabulary / Video shot pacing and duration -> « Vocabulaire des mouvements de caméra » / « Rythme et durée des plans vidéo »; Frame size -> « Taille d’image »; Pro: sharper -> « Pro : plus net »; Reuse prompt / Run again -> « Réutiliser le prompt » / « Relancer »
 "Latest" tag on the guides index (/resources/how-to) lead card -> « Dernier guide » (« Dernier article » stays for the insights index)
+
+## Settled by the 2026-10-15 rewrite
+hubStudio app vocabulary swap -> « équipe » where BearingBridge says « organisation », « Crédits » where it says « Facturation » (billing page: la page Crédits)
+Founder and CEO (Cyril Drouin at hubStudio) -> fondateur et directeur général (never PDG or CEO); his past role -> ancien directeur général au sein de Publicis (never « chez Publicis »); full title -> l’ancien directeur général de Publicis Commerce et Performance Marketing pour la Chine et l’Asie du Nord
+engine / model maker -> éditeur (« par éditeur », « l’éditeur du modèle »); « concepteur » only in concepteur-rédacteur and concepteurs sonores
+render (AI output, image or video) -> génération (« lancer la génération », « une génération qui échoue »); output -> résultat; « rendu » only for looks in Effects, for CG renders (rendus d’interface, rendus 3D), for email rendering tests and inside quoted app strings
+text rendering (engine capability) -> maîtrise du texte / écrire du texte
+tokens (AI) -> jetons (glossary entry « Jeton (token) »); design tokens (design systems) stay « tokens » (tokens de couleur)
+AI layer -> la couche d’IA (heading « La couche d’IA »)
+marketplace -> place de marché; SKU in prose -> référence
+safe zone / safe area -> zone de sécurité
+AI Overviews (Google) -> les Aperçus IA
+approval rate -> taux de validation (first-round approval -> taux de validation au premier tour; creative approval rate -> taux de validation des créations)
+paid media -> achat média
+store decoration (Tmall) -> habillage (« Habillage d’une boutique officielle Tmall : les dimensions »)
+prompts quoted on the site -> vous imperative (« Gardez… », « Remplacez… », « Ne changez rien d’autre »), never tu or the infinitive; the operation verbs « Générez. Modifiez. Restylisez. Agrandissez. Traduisez. »
+"you pay only for what you run" (CTA) -> vous ne payez que les générations que vous lancez
+links to another insight -> « L’analyse <a1>exact French h1</a1> » (« Notre analyse … », « Les analyses <a1>…</a1> et <a2>…</a2> »), never « l’article sur … »; how-to links -> « Le guide pratique <a1>…</a1> »
+Shoot it or generate it (insight) -> Tourner ou générer : la règle de décision
+Product Photography Cost per SKU (insight) -> Coût de la photographie produit par référence
+14 Questions for a Production Roster Review -> 14 questions pour passer en revue son panel de prestataires
+Lip sync insight -> Lip sync vidéo par IA : ce qui casse, ce que cela coûte
+Adobe insight -> Pourquoi Adobe n’a pas manqué la révolution de l’IA : le groupe a simplement choisi le mauvais camp
+Facebook specs insight -> Formats Facebook 2026 : publications, Reels et Stories
+C2PA insight -> Ce qui reste du C2PA dans une vraie chaîne de production
+team lines -> « Originaire de …, X est <rôle> au sein de hubStudio. »
+Waiting for me (Validation tab) -> « À traiter »
+Post, landscape (LinkedIn preset) -> « Post, format paysage »
+How it is rendered (studio panel) -> « Comment elle est générée »; What this run does -> « Ce que fait cette exécution » (app label)
+Send as a thread when the copy is longer than one post (X) -> « Publier en fil quand le texte dépasse un post »
+Bring the address back (YouTube channel kit step) -> « Reporter l’adresse ici »
+Spring launch 2027 (campaign name example) -> « Lancement printemps 2027 »
+Just me (sign-up) -> « Pour moi seul »; Start here (Discovery) -> « Pour commencer »
+Best (preset badge) -> « Conseillé »; model tiers -> Rapide / Équilibré / Puissant
+Crop panel / Crop to fill / Shape / Framing (Image editor) -> « Recadrer » / « Recadrer pour remplir » / « Format » / « Cadrage »
+edited file suffix -> « (modifié) »; save panel -> panneau « Enregistrer »; browser export -> l’export
+approval thread -> fil de validation; X thread in prose -> thread (« fil » only when quoting the app)
+lifestyle scene -> produit en situation / mise en situation; client login -> compte client (quoted app screen: « accès client »); give a login -> attribuer des identifiants
+binding proposal -> proposition ferme; firm fixed price -> prix ferme et définitif; approval rounds -> tours de validation; revisions -> cycles de retouches
+markup -> majoration; labor / pass-through -> main-d’œuvre / débours; bidding -> mise en concurrence; pitch -> compétition d’agences; RFP -> appel d’offres; statement of work -> cahier des charges
+cost-plus -> prix coûtant majoré; firm bid -> offre ferme; contract exit -> réversibilité; managed subscription -> abonnement géré
+China labeling -> étiquette explicite / implicite; AI Act citations -> « Art. 50, par. 2 » (tables), « article 50, paragraphe 4 » (prose)
+US Copyright Office registration -> enregistrement / faire enregistrer (never « dépôt »); v. / No. -> c. / n°
+platform upload -> mettre en ligne (never « téléverser »; « importer » only in the hubStudio app); platform upload API -> API de mise en ligne
+KOC seeding -> recommandation par des KOC (zhongcao at first mention); Weibo seeding kit -> kit d’amorçage
+shoot -> tournage / prise de vues (never « shooting »); reshoot -> nouvelle prise de vues; reference images (app input) -> images sources
+gate (QA) -> point de contrôle; approval gate -> point de validation; QA pipeline -> circuit de contrôle qualité; AQL -> NQA; sign-off -> visa
+benchmark (reference point) -> étalon / repère
+Reels / Stories -> capitalised in headings; « un reel », « une story » in prose
+Tmall: promotion / presale / warm-up -> opération / prévente / préchauffe; campaign skin / always-on -> habillage de campagne / habillage permanent; sign band -> bandeau d’enseigne; store builder -> éditeur de boutique
+Amazon: Brand Registry -> Registre des marques (Brand Registry); lifestyle tiles -> tuiles d’ambiance
+platform pages kicker -> Travaux plateforme; Adapt step -> Déclinaison
+help centres -> Centre d’aide Meta Business, Centre d’aide TikTok Ads, Centre d’aide de TikTok, Aide Google Ads
+English-only platform quotes -> English title in « » + « version anglaise, notre traduction »; indirect speech for English-only sources
+FAQ json-ld answers and index cards -> copy the page’s visible answer / own meta word for word

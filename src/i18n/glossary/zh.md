@@ -22,9 +22,9 @@ History -> 历史记录
 Discovery (page a first sign-in opens on) -> 功能总览 (Welcome aboard: “欢迎加入”; quick tour: 快速导览, Take the quick tour: “开始快速导览”; Show in the menu: “在菜单中定位”); tips after sign-in -> 小贴士 (Never see this again: “不再显示”; Show me: “带我去看”) (settled 2026-10-14)
 Skills / Skills Catalog / Team skills -> 技能 / 技能目录 / 团队技能
 Assets Library -> 素材库
-App pillars (menu headings, home page, header App panel) Create / Publish / Library -> 创作 / 发布 / 管理 (Library is 管理, never 素材库, which is the Assets Library module inside it); AI layer (Agents and Skills, across the three) -> AI 层; pillar -> 支柱; PDF (module, eight PDF tools) -> PDF; home tour group Manage (the account) -> 账户与支付, kept apart from 管理 (settled 2026-10-14)
-Campaigns (Assets Library) -> 营销活动, never 广告系列 (Add to a campaign / Add to campaign: “加入营销活动”; Add assets: “添加素材”; In this campaign: “此营销活动中”; Open in its module / In the library / Remove: “在所属模块中打开” / “在素材库中查看” / “移除”; Campaign menu of a creation form: “营销活动”, set to “不加入营销活动”; library filter In no campaign: “未加入营销活动”; Context folder from the Assets Library: “素材库中的上下文文件夹”)
-Agents -> 智能体 (My agents / Team agents / Catalog / Runs: “我的智能体” / “团队智能体” / “目录” / “运行记录”; Agents Command Room: “智能体指挥室”; Social publishing watcher: “社交发布监测”; finding: “发现”; Run now: “立即运行”)
+App pillars (menu headings, home page, header App panel) Create / Publish / Library -> 创作 / 发布 / 管理 (Library is 管理, never 素材库, which is the Assets Library module inside it); AI layer (Agents and Skills, across the three) -> AI 层; pillar -> 板块 (as in the app, changed from 支柱 on 2026-10-15); PDF (module, eight PDF tools) -> PDF; home tour group Manage (the account) -> 账户与支付, kept apart from 管理 (settled 2026-10-14)
+Campaigns (Assets Library) -> 营销活动, never 广告系列 (Add to a campaign / Add to campaign: “加入营销活动”; Add assets: “添加素材”; In this campaign: “此营销活动中”; Open in its module / In the library / Remove: “在所属模块中打开” / “在素材库中查看” / “移除”; Campaign menu of a creation form: “营销活动”, default “无” (the library band’s No campaign: “不加入营销活动”); library filter In no campaign: “未加入营销活动”; Context folder from the Assets Library: “素材库中的上下文文件夹”)
+Agents -> 智能体 (My agents / Team agents / Catalog / Runs: “我的智能体” / “团队智能体” / “目录” / “运行记录”; Agents Command Room: “智能体指挥室”; Social publishing watcher: “社交发布监测智能体”; finding: 发现项; Run now: “立即运行”)
 Picture versions / Use this version (social post) -> “图片版本” / “使用此版本”
 Image tools / Video tools -> 图片工具 / 视频工具
 Image editor / Video editor -> 图片编辑器 / 视频编辑器
@@ -46,8 +46,8 @@ Draft with AI -> AI 起草; Draft at once -> 一键起草; Rewrite with AI -> �
 Publish now / Schedule / Schedule it -> 立即发布 / 定时发布 / 确认定时发布
 YouTube module: Videos / Channel (tabs) -> 视频 / 频道; channel kit -> 频道资料包; Publish interactively -> 自行发布; Write the kit with AI -> 用 AI 撰写频道资料包; Short (YouTube) -> Shorts
 Publish automatically / Publish manually / Publish interactively -> 自动发布 / 手动发布 / 自行发布
-In the queue -> 排队中; Scheduled (post) -> 已定时; Published -> 已发布
-Who sees it / Only me / Everyone in the team -> 可见范围 / 仅自己 / 团队内所有成员
+In the queue -> 排队中; Scheduled (post) -> 已排期; Published -> 已发布
+Who sees it / Only me / Everyone in the team -> 可见范围 / 仅我自己 / 团队内所有成员
 Upload from your computer -> 从您的电脑上传; Pick from the library -> 从素材库选择
 Sign in / Create account -> 登录 / 创建账户
 Engine cards (Explore): New tag -> “新上线”; Try it -> 试用
@@ -119,7 +119,7 @@ Cyberspace Administration of China -> 国家互联网信息办公室
 
 ## Platform specs, ads, prompting and regulation (settled 2026-10-08, wave two)
 Black Friday -> 黑色星期五（下称黑五），之后用 黑五; Cyber Monday -> 网络星期一; Boxing Day -> 节礼日
-feed -> 动态 (app term; ad-industry prose may use 信息流); in-feed ads -> 信息流广告
+feed -> 信息流 (动态 is only the Activity page, changed 2026-10-16); in-feed ads -> 信息流广告
 organic (post) -> 自然发布; boost -> 加速推广; paid social -> 付费社交广告
 ad set -> 广告组; learning phase (Meta) -> 学习期; Ads Manager -> 广告管理工具; call-to-action button -> 行动号召按钮
 TikTok auction / reservation in-feed -> 竞价 / 合约信息流广告; anchor (link card) -> 锚点链接（锚点链接卡片）; caption (TikTok) -> 配文
@@ -169,12 +169,12 @@ Spain: Retail Trade Act -> 《零售贸易法》; General Advertising Act -> 《
 
 ## Facebook specs and the weekly social plan (settled 2026-10-11, facebook-post-specs, plan-week-social-posts)
 Facebook page / page post -> Facebook 主页 / 主页帖子; personal profile -> 个人档案 (app wording)
-Facebook Feed / Facebook Stories / Facebook Reels -> Facebook 动态 / Facebook 快拍 / Facebook Reels; Live -> 直播
-Awareness image ad specs on Facebook Feed -> “Facebook 动态品牌认知图片广告规格” (same pattern for video, Reels and Stories)
+Facebook Feed / Facebook Stories / Facebook Reels -> Facebook 信息流 / Facebook 快拍 / Facebook Reels; Live -> 直播
+Awareness image ad specs on Facebook Feed -> “Facebook 信息流品牌认知图片广告规格” (same pattern for video, Reels and Stories)
 Facebook Help Center -> Facebook 帮助中心; Meta newsroom -> Meta 新闻中心; Meta for Developers stays in Latin (as TikTok for Developers); API page titles (Page Photos, Images in Link Shares, Reels Publishing API) stay in English
 Sharing Debugger -> 分享调试器; link preview image -> 链接预览图; large link card -> 大尺寸链接卡片; catalog ads -> 目录广告
 Image editor crop ratio Link (1.91:1) -> “链接”; Video editor Social panel placements -> “Reels” “快拍” “动态竖版” “方形”; marked as the best choice -> 标为推荐
-X thread -> 讨论串 (app label); Instagram 24-hour moving window -> 滚动 24 小时; quota endpoint -> 配额接口
+X thread -> 推文串 (app label; 讨论串 is the Validation thread); Instagram 24-hour moving window -> 滚动 24 小时; quota endpoint -> 配额接口
 Campaign brief / Post brief -> 营销活动简报 / 帖子简报; New campaign -> “新建营销活动”; Validated (post status) -> 已确认
 YouTube private upload -> 私享; app not audited by YouTube -> 未经 YouTube 审计的应用
 
@@ -199,15 +199,15 @@ UK advertising regulator (unnamed) -> 英国广告监管机构; ruling / guidanc
 Buying models (insights category) -> 采购模式; Latest (chip) -> 最新
 
 ## Client approval (settled 2026-10-13, social-media-client-approval)
-Clients card / New client / Add the client -> “客户”卡片 / “新建客户” / “添加客户”; Give them a login -> “为其开通登录”; Pause login / Let back in -> “暂停登录” / “恢复登录”
+Clients card / New client / Add the client -> “客户”卡片 / “新建客户” / “添加客户”; Give them a login -> “开通登录账号”; Pause login / Let back in -> “暂停登录” / “恢复登录”
 Validate / Send back / Validated / Sent back -> “通过” / “退回” / “已确认” / “已退回”; Submit a new version / What changed -> “提交新版本” / “修改说明”; Waiting for validation -> “待审核”
-Thread -> 讨论串; Message to the validator -> “给审核人的留言”; Send an asset for validation -> “提交素材审核”; Assets to validate / Waiting for me / My requests / All assets -> “待审核素材” / “等我审核” / “我的申请” / “全部素材”
+Thread -> 讨论串; Message to the validator -> “给审核人的留言”; Send an asset for validation -> “提交素材审核”; Assets to validate / Waiting for me / My requests / All assets -> “待审核素材” / “待我审核” / “我的申请” / “全部素材”
 approval thread -> 审核讨论串; email chain -> 邮件往来; requester -> 申请人; client's people -> 客户方人员; sign-off (prose) -> 拍板 / 确认
 
 ## X specs (settled 2026-10-14, x-image-video-specs)
 X's composer -> X 自带的发帖框 (short: 发帖框); composer preview -> 发帖框预览
 Header photo / Profile photo (X slots, app labels) -> 横幅图 / 头像; Header ("banner") -> 横幅图（页头图）
-Image editor, Social panel set to X: Post, wide / Post, square / Post, portrait / One of two -> “帖子 · 横版” / “帖子 · 方形” / “帖子 · 竖版” / “双图之一”
+Image editor, Social panel set to X: Post, wide / Post, square / Post, portrait / One of two -> “帖子 · 宽幅” / “帖子 · 方形” / “帖子 · 竖版” / “双图之一”
 shape window (single photo, 2:1 to 3:4) -> 比例区间; weight cap -> 文件大小上限
 X Help Center / X ads creative specs / X developer documentation / X engineering blog -> X 帮助中心 / X 广告创意规格 / X 开发者文档 / X 工程博客; X help article titles in 《》 (帮助中心《如何发布照片或 GIF》)
 Premium subscribers / no subscription / Premium or verified (API) -> Premium 订阅用户 / 未订阅 / Premium 或已认证账户
@@ -228,10 +228,10 @@ review hours -> 审核工时; rework beyond agreed rounds -> 超出约定轮次�
 
 ## Resizing for every network (settled 2026-10-15, resize-image-every-social-network)
 master (one picture every copy is cut from) -> 母版; copy (per placement) -> 副本 (逐份构图, 各做一份副本); crop (prose verb) -> 裁切, but Crop panel / crop box -> “裁剪”面板 / 裁剪框
-Image editor, Social panel: Where it goes / Frame it / Crop to fill / Fit it whole / Blurred picture / Show what the network covers / Apply the format -> “发布位置” / “构图方式” / “裁切填满” / “完整放入” / “模糊背景” / “显示平台界面遮挡区域” / “应用格式”; plain color -> 纯色; Checks -> “检查项”
+Image editor, Social panel: Where it goes / Frame it / Crop to fill / Fit it whole / Blurred picture / Show what the network covers / Apply the format -> “发布位置” / “构图方式” / “裁剪填满” / “完整放入” / “模糊背景” / “显示平台界面遮挡区域” / “应用格式”; plain color -> 纯色; Checks -> “检查项”
 Crop panel presets Story / Wide / Link and Apply the crop -> “快拍” / “宽屏” / “链接” / “应用裁剪”; Shape (Image studio) -> “画幅”, Square -> “方形”
 Save the picture panel: Quality / Size / Width / Height / Save a copy in the Assets Library / Save as a new version / Download / Versions -> “质量” / “大小” / “宽度” / “高度” / “在素材库中保存副本” / “另存为新版本” / “下载” / “版本”; the Save panel (prose) -> 保存面板
-link picture (1.91:1 placement) -> 链接预览图; video thumbnail -> 视频缩略图; Full screen (placement) -> 全屏; Page cover (LinkedIn) -> 主页封面
+link picture (1.91:1 placement) -> 链接预览图; video thumbnail -> 视频缩略图; Full screen (placement) -> 全屏; Page cover (LinkedIn) -> 公司主页封面
 pixel sizes written with × and the English digits as printed (1080 × 1350, 1,440 × 1,800); "percent" -> %
 
 ## Pinterest specs (settled 2026-10-15, pinterest-pin-specs)
@@ -246,9 +246,41 @@ organic / paid (Pinterest use) -> 自然发布 / 付费推广; organic impressio
 Pinterest Help Center -> Pinterest 帮助中心 (table shorthand “帮助中心”); Pinterest Business (business site) -> Pinterest 商务网站 (shorthand “商务网站”); creator site (Pinterest Create) -> Pinterest 创作者网站, the blog -> Pinterest Create 博客; Newsroom archive -> 新闻中心存档; help article titles in 《》 (帮助中心《查看广告规格》, 商务网站《创意最佳实践》)
 App labels used on this page: Image studio Shape portrait / vertical -> “画幅”竖版 / 竖屏; Tall (1:3) -> “竖长（1:3）”; Image editor Crop, Free -> “裁剪”中选“自由”; Save, Width -> “保存”, “宽度”; Video editor Format panel Vertical / Portrait / Square -> “格式”面板“竖屏” / “竖版” / “方形”
 
+## App labels re-settled by the app's three-pass rewrite (2026-10-15)
+Quote these exactly when the copy names the app: pillar -> 板块 (三大板块, never 支柱 for the product's pillars; brand-messaging pillars stay 支柱); a section of a page -> 分区; shared credit pool -> 共享额度 (shared balance 共享余额); daily allowance -> 每日限额 (daily cap 每日上限); credits -> 额度; markup -> 加价; a render (AI generation) -> 生成; social caption -> 配文; post composer -> 发帖界面; social feed -> 信息流 (动态 is the Activity page, quoted “动态”); named watchers -> X监测智能体 (排名监测智能体); Model Watch -> 模型监测; Assets Library / File Library -> 素材库; workspace -> 工作空间; token -> token; Validation approvals -> 审核 (等待审核, 待我审核); Crop to fill -> 裁剪填满; Feed portrait -> 信息流竖版; Framing -> 取景; Shape -> 画幅.
+
 ## Kling product video guide (settled 2026-10-16, kling-3-product-video-guide)
 Camera moves (Kling prompting): push in / pull back / pan / tilt / orbit / track / static -> 推镜 / 拉镜 / 横摇 / 纵摇 / 环绕 / 跟拍 / 固定机位; camera move (table head) -> 运镜; camera locked off -> 镜头锁定不动; one main move per shot -> 一个镜头只保留一个主运镜; held ending -> 结尾定格; ending (where a move lands) -> 落点
 Kling AI (maker) -> 可灵 AI; Kling (maker in prose) -> 可灵; the Kling engines -> 可灵系列引擎; model ids Kling 3.0 / Kling 2.6 / Kling 2.5 Turbo unchanged; Kuaishou -> 快手; maker guides cited in 《》: 可灵 AI《VIDEO 3.0 模型使用指南》
 multi-shot generation -> 多镜头生成; element references -> 元素参考; native audio -> 原生音频; visuals and audio generated together -> 音画一体生成
 Video studio labels (Kling): Mode Standard / Pro -> “模式” 标准 / Pro; Pro: sharper -> Pro：更清晰; Frame size -> “画面尺寸”; Reuse prompt / Run again -> “复用提示词” / “再次生成”; Catalog skills Video camera movement vocabulary / Video shot pacing and duration -> “视频运镜术语” / “视频镜头节奏与时长”
 Help article "Create a video" cited in prose -> 帮助中心《生成视频》页面
+
+## Settled by the 2026-10-15 rewrite (site-wide sweep 2026-10-16)
+hubStudio app wording -> 团队 (where BearingBridge says 组织), “额度” (where BearingBridge says “账单”)
+campaign (app feature, generic marketing campaign, h1s included) -> 营销活动 (never 广告活动 / 广告战役); Google Ads / TikTok / Meta campaign object -> 广告系列; an ad -> 广告; media flight -> 投放; JD / Tmall festival lane -> 大促
+Campaign localization -> 营销活动本地化 (insight h1 《欧洲营销活动本地化：4 国规则对照》)
+approve / approval (app, review rounds) -> 审核 (审核轮次, 审核人); client approval -> “通过” / “退回”; sign-off -> 确认 / 签字确认; cost or change-order approval -> 批准 / 批准人; never 审批 / 签批 / 签核
+Waiting for me -> “待我审核”
+your company (the reader's) -> 您的公司 (never 贵公司); 贵方 only in questions put to a vendor inside an article; FAQ questions to the studio name hubStudio (never 你们)
+consensus / contested (source-agreement badges, prose and table cells) -> 一致 / 有分歧 (legal text and generic prose keep 共识 / 有争议)
+findings (agent) -> 发现项; research findings in prose -> 发现 / 结论
+pillar (product) -> 板块; brand-messaging / content / SEO pillar -> 支柱 (信息支柱, 内容支柱, 支柱页)
+prep / pre-production -> 前期制作 / 前期准备 / 准备 (never 筹备); prep crew -> 前期制作人员
+motion (alone, service sense) -> 动态设计; motion text -> 文字动画; 动态 kept in fixed terms (动态创意, 动态广告, 动态分镜, 动态模糊, 动态 GIF, 朋友圈动态)
+copyright guide link -> <a>《版权与 AI 指南》</a> (never “版权与 AI”指南 or bare)
+insight link -> 《exact common.json h1》一文; how-to link -> 本站实操指南<a>《exact h1》</a>; help links stay bare (“生成图片”帮助文章)
+Tmall insight quoted -> 《天猫商品图要求 2026 年版》; Instagram insight -> 《2026 年 Instagram 帖子尺寸：信息流、轮播与个人主页网格》; cost insights -> 《营销活动本地化进入中国要花多少》 / 《营销活动分市场适配要花多少》
+Noyz case study h1 -> 一款遇肤化乳的香水; Mexicash h1 -> 一套五平台视频营销活动，五天从简报到交付
+case-study title / JSON-LD headline -> 客户：h1 | hubStudio when it fits 30, else 客户：h1 (global-fashion-brand keeps 全球时尚品牌：自建 AI 内容工作室, premium-suv and shiseido keep their shortened forms)
+help page title -> … | hubStudio 帮助中心 (body shortened to fit 30: TikTok 视频定时发布, X 帖子与推文串发布, YouTube 视频与频道, Instagram 发帖)
+team page -> title 姓名，hubStudio 职位; meta 姓名，X籍职位，供职于 hubStudio。; alt 姓名 肖像，hubStudio 职位。; JSON-LD 姓名，hubStudio 职位; Social Creative -> 社媒创意
+SEO title over 30 -> drop the " | hubStudio" suffix first, then shorten natively (年 may go: 2026 Facebook 帖子尺寸)
+LinkedIn Post, landscape / X Post, wide (presets) -> “帖子 · 横版” / “帖子 · 宽幅”
+Only me -> “仅我自己” (never 仅自己); Scheduled -> 已排期 (never 已定时); Working alone? -> “独自工作？”; Rights, module by module -> “逐个模块的权限”; Spring launch 2027 (example name) -> “2027 春季新品发布”; Last seen -> 最近登录
+Profile grid -> “主页网格” when quoted as the app label, 个人主页网格 in prose
+square (format) -> 方形 (never 方版); start frame -> 首帧 (never 起始帧)
+brand-trained models -> 品牌训练模型 (品牌训练图像模型; never 经品牌训练的模型)
+token -> token on help pages and in quoted app labels, Token in other website prose
+run (billing, pricing, agents) -> 运行; image or video studio run -> 生成
+the original picture (kept beside an edited copy) -> 原图; source picture (input of an edit) -> 源图

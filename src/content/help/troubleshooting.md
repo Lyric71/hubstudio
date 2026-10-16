@@ -1,16 +1,16 @@
 ---
 title: "Troubleshooting"
 seoTitle: "Troubleshooting and error messages | hubStudio Help"
-description: "What hubStudio's messages mean and what to do: an empty balance, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, the Assets Library, the Image editor and the Video editor, clients, validation, posts and connections, and more."
+description: "What hubStudio's messages mean and what to do: an empty balance, an engine refusing a prompt, a file too large, a render that took too long, an expired code or invitation, the Assets Library, the Image editor and the Video editor, clients, validation, posts and connections, agents, the Scratchpad, and more."
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
 order: 20
-updated: 2026-10-12
+updated: 2026-10-16
 appPaths: ["/content/image-generate", "/content/video", "/history", "/files", "/campaigns", "/files/tools/image-editor", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
 audience: "Everyone"
-related: ["balance-and-payments", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in", "campaigns"]
+related: ["balance-and-payments", "scratchpad", "agents", "getting-started", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in", "campaigns"]
 shots: []
-sources: ["src/lib/credits.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorCaptions.ts", "src/pages/files/tools/video-editor.astro", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "public/apps/hubstudio/vocabulary.js"]
+sources: ["src/lib/credits.ts", "src/scripts/videoEditor.ts", "src/scripts/videoEditorExport.ts", "src/scripts/videoEditorCaptions.ts", "src/pages/files/tools/video-editor.astro", "src/lib/gateway-fault.ts", "src/pages/api/content/image-generate.ts", "src/pages/api/content/video-generate.ts", "src/scripts/imageGenerate.ts", "src/scripts/videoGenerate.ts", "src/scripts/videoInputs.ts", "src/lib/media-limits.ts", "src/pages/api/files/index.ts", "src/pages/api/files/[id].ts", "src/lib/signup.ts", "src/lib/mfa.ts", "src/lib/invitations.ts", "src/pages/invite/[token].astro", "src/pages/reset-password.astro", "src/lib/promo.ts", "src/scripts/creditsPanel.ts", "src/pages/api/team.ts", "src/lib/team-clients.ts", "src/pages/api/files/[id].ts", "src/pages/api/social-content/[id].ts", "src/lib/validation-http.ts", "src/lib/validation-lock.ts", "src/pages/api/validation/[id]/comments.ts", "src/pages/api/client/index.ts", "src/middleware.ts", "src/scripts/connectionCheckNotice.ts", "src/pages/api/social-content/draft.ts", "src/scripts/socialContent.ts", "src/scripts/scratchpad.ts", "src/lib/scratchpad.ts", "src/pages/api/scratchpad/[id]/files.ts", "src/pages/api/scratchpad/files/[id].ts", "src/lib/agents/declared-scope.ts", "src/pages/api/agents/settings.ts", "src/scripts/supportPanel.ts", "public/apps/hubstudio/vocabulary.js"]
 ---
 
 Find the message you see in the first column. In the messages below, a name in square brackets stands for your own file, engine or amount.
@@ -100,7 +100,7 @@ A run that fails is never charged. A run that succeeds is charged the price show
 | **Give the campaign a name.** | The name of the campaign is empty. | Type a name, then click **Create the campaign** or **Save** again. |
 | **A campaign named "[name]" already exists.** | Two campaigns of a team can't share a name. | Pick another name, or add your files to the campaign that already exists. |
 | **Only the person who created this campaign, or an administrator, can delete it.** | You may change the campaign, not delete it. | Ask the person who created it, or an admin. |
-| **Campaign not found.** | The campaign was deleted, perhaps by a teammate. Its files are still in the Assets Library. | Go back to **All campaigns**. |
+| **This campaign no longer exists.** | The campaign was deleted, perhaps by a teammate. Its files are still in the Assets Library. | Go back to **All campaigns**. |
 
 ## The Video editor
 
@@ -183,6 +183,32 @@ A run that fails is never charged. A run that succeeds is charged the price show
 | **Some connections need attention** in a notification at the bottom right of the screen | The check after sign-in found an account that no longer lets hubStudio in. | Click **Reconnect**, sign in again on the card that opens, then **Check again** on the notification. |
 | **This version is on the post. Use another one first.** | The version on the post can't be taken off the **Picture versions** list. | Click **Use this version** on another version first, then take this one off. |
 
+## Agents
+
+| Message | What it means | What to do |
+|---|---|---|
+| **You can only give an agent the features you can use yourself.** | A module or feature added to the agent's **Scope** is one your rights don't open to you. | Take it out of the scope, or ask an admin for the right first. |
+| **You can only give an agent your own connections or your team's.** | A connection in the scope is neither yours nor your team's. | Pick one of yours, or set it to **Off**. |
+| **Your role is read-only, so you can look at how these agents are set up but not change them or run a test.** | Viewers read the agent form but can't save it. | Ask an admin to make you a creator. |
+
+## Scratchpad
+
+| Message | What it means | What to do |
+|---|---|---|
+| **That file is too large (limit [n] MB).** | The file is bigger than your team allows for one file, as in the Assets Library. | Make the file smaller, or keep it somewhere else. |
+| **Your team is out of AI credits ([amount] left) and you have no credits of your own.** when you attach a file | Stored files are paid from the balance, so an empty balance stops new ones. Your text still saves. | Top up, or ask an admin to top up the team balance. See [Balance](#balance). |
+| **Upload failed: the connection to storage dropped.** | The connection broke during the upload. | Attach the file again. |
+| **You have 100 sheets, the most the Scratchpad keeps. Delete one to start another.** | You reached the number of sheets one person can keep. | Delete a sheet you no longer need. |
+| **A sheet holds up to 200,000 characters. Start another sheet for the rest.** | The sheet is full. | Start a new sheet with the **+** button. |
+| **The browser was not allowed to listen. Allow the microphone (or the share) and try again.** | Your browser blocked the microphone, or you closed the tab sharing window. | Allow the microphone for hubStudio in your browser's site settings, then click **Record** again. |
+| **No microphone was found on this device.** | No microphone is plugged in or switched on. | Connect one, or record **Sound of a tab** instead. |
+| **No sound came with that share. Pick a tab and tick "Share tab audio".** | The tab was shared without its sound. | Click **Record** again, pick the tab and tick **Share tab audio**. |
+| **The recording could not be stored, so it was saved to this computer.** | The recording could not reach storage. Nothing is lost: your browser downloaded it. | Attach the downloaded file to the sheet later with **Attach**. |
+| **You may not add assets to the library.** | **Keep a copy in the Assets Library** needs the right to add files to the library. | Ask an admin for that right, or download the file instead. |
+| **Click in a field of the page first** | The text box you last clicked in is no longer on the page, for example after a new page opened. | Click in the box where the text should go, then click **Insert into the field you were writing in** again. |
+
 ## Still stuck?
 
-Use **Report a bug** or **Contact us** in the footer of every page. Tell us what you clicked, what you expected, and the exact message you saw.
+Click **Support** in the bar at the top of any page and ask your question: the assistant answers from this help center, and offers **Send an email** or **Fill in the form** when it can't. See [Getting started](/help/getting-started#ask-support).
+
+You can also use **Report a bug** or **Contact us** in the footer of every page. Tell us what you clicked, what you expected, and the exact message you saw.

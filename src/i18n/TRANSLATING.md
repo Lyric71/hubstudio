@@ -155,6 +155,8 @@ real characters (é, «, 。), never `\u` escapes.
   or dropped, but formatted for the locale (below).
 - URLs, e-mail addresses, code, file names, model names (gpt-image-2, Veo 3).
 
+- An engine, model or product name of four words or more that stays as the English writes it ("Seedance 1.0 Pro Fast (ByteDance)") trips the build's "left in English" check: write it with a no-break space (U+00A0) between two of its words, which keeps it identical on screen. Settled 2026-10-15.
+
 ## Interface labels match the app
 
 When the copy names something in the hubStudio app (a menu, a module, a

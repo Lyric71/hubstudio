@@ -5,10 +5,10 @@ description: "What hubStudio is, how to create your account alone or with a team
 excerpt: "Create your account, find your way around the menu and render your first image in a few minutes."
 section: "getting-started"
 order: 1
-updated: 2026-10-14
+updated: 2026-10-16
 appPaths: ["/signup", "/login", "/discover", "/explore"]
 audience: "Everyone"
-related: ["discovery-and-tips", "explore", "create-an-image", "assets-library", "shorts-autopilot", "campaigns", "linkedin", "validation", "agents", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
+related: ["discovery-and-tips", "scratchpad", "troubleshooting", "explore", "create-an-image", "assets-library", "shorts-autopilot", "campaigns", "linkedin", "validation", "agents", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
 shots:
   - file: "/Images/help/getting-started-signup.webp"
     route: "/signup"
@@ -20,7 +20,11 @@ shots:
     clip: "#side-nav"
     alt: "The menu on the left in three pillars: Create with Explore, Image, Video, Image editor, Image anonymizer, Video editor and Shorts autopilot; Publish with Campaigns and the six networks; Library with Assets Library, History, Validation and PDF; Team and Credits at the foot"
     captured: 2026-10-08
-sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/lib/auth.ts", "src/middleware.ts", "src/pages/signup.astro", "src/lib/signup.ts", "src/lib/signup-fields.ts", "src/pages/discover.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/invite/[token].astro", "src/pages/explore.astro"]
+  - file: "/Images/help/support-panel.webp"
+    route: "/explore"
+    alt: "The Support panel open under the bar at the top of the page: hubStudio Support, a question about inviting someone to the team and the answer, written from the help center"
+    captured: 2026-10-16
+sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/scripts/supportPanel.ts", "src/styles/support-panel.css", "src/pages/s/[slug].astro", "src/scripts/scratchpad.ts", "src/lib/auth.ts", "src/middleware.ts", "src/pages/signup.astro", "src/lib/signup.ts", "src/lib/signup-fields.ts", "src/pages/discover.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/invite/[token].astro", "src/pages/explore.astro"]
 ---
 
 hubStudio is a studio for images, video and social posts made with AI. It gathers the image and video engines of several makers (OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax and Meta) in one place. You pick an engine, describe what you want, see the price, and run it. Everything you make is saved in your History and in the Assets Library, where you can also edit a picture or a video, or cut a long video into shorts. From there, you can write posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X and publish them on your own accounts, have work approved in Validation, let agents watch your publishing, and deliver it to the clients your team works for.
@@ -102,12 +106,24 @@ A client login sees a much shorter menu: **Client space** and **Validation**. Se
 The bar at the top of every page holds:
 
 - **Agents** and **Skills**, the AI layer (see above). A module your administrator switched off for you shows no button.
+- **Scratchpad** (the page icon): your own notes, files and recordings, in a drawer that opens over any page. **Alt+N** opens and closes it. See [Scratchpad](/help/scratchpad).
+- **Support**: a chat that answers your questions about hubStudio from this help center (see below).
 - **Activity**: the renders, drafts and checks running for you, and how they ended. It keeps following a run while you move to another page.
 - Your balance: the amount you can spend right now. Click it to top up. A client login has no balance, so it sees no amount here.
 - A sun or moon button that switches between light and dark.
 - Your picture, which opens a menu with **User Settings**, **Discovery**, **Billing & credits**, **Team**, **My Connections** (your social accounts) and **Sign out**.
 
 The footer links to the **Help center**, **Report a bug**, **Contact us** and **What's new**.
+
+## Ask Support
+
+Click **Support** in the bar at the top of the page. A panel opens under the bar, over the page you are on, with **hubStudio Support**: an AI assistant that answers from this help center. The panel speaks the language of your interface, and the assistant answers in the language you write in. Type your question in **Ask a question…** and click **Send**. Each answer lists the help articles it comes from under **Sources:**.
+
+![The Support panel open under the bar at the top of the page: hubStudio Support, a question about inviting someone to the team and the answer, written from the help center](/Images/help/support-panel.webp)
+
+The panel keeps the conversation while you stay on the page: close it with the cross or **Escape**, open it again and carry on. Asking costs you nothing.
+
+When the assistant can't answer, it offers **Send an email** and **Fill in the form**. The form opens with your name and email already filled in and your question in the message: click **Send**, and a person from hubStudio gets back to you.
 
 ## Your first render
 

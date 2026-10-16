@@ -1,11 +1,11 @@
 ---
 title: "Agents"
 seoTitle: "Agents that watch your social publishing | hubStudio Help"
-description: "The Social publishing watcher, agents you create from scratch over your posts, campaigns and library, schedules, Run now, findings, the results email, and what a run costs and who pays."
+description: "The Social publishing watcher, agents you create from scratch over your posts, campaigns and library, the agent form and its Scope tab, schedules, Run now, findings, the results email, and what a run costs and who pays."
 excerpt: "Agents re-read your publishing on every network on a schedule and tell you what changed, with the real dates, networks and post titles."
 section: "agents"
 order: 14.5
-updated: 2026-10-14
+updated: 2026-10-16
 appPaths: ["/agents", "/agents/organization", "/agents/catalog", "/agents/runs"]
 audience: "Everyone; Creators and Admins add, change and run agents; team agents are for Admins"
 related: ["linkedin", "instagram", "facebook", "tiktok", "youtube", "x", "validation", "campaigns", "assets-library", "balance-and-payments", "your-team"]
@@ -18,7 +18,12 @@ shots:
     route: "/agents/runs"
     alt: "The Agents Command Room tab: Running now, Switched on and Previous runs with the Agents of filter"
     captured: 2026-10-08
-sources: ["src/pages/agents/index.astro", "src/pages/agents/organization.astro", "src/pages/agents/catalog.astro", "src/pages/agents/runs.astro", "src/scripts/agentsAdminPanel.ts", "src/scripts/agentForm.ts", "src/scripts/agentsCatalog.ts", "src/scripts/agentRunsPanel.ts", "src/lib/agents/watchers.ts", "src/lib/agents/data-sources.ts", "src/lib/agents/external-sources.ts", "src/lib/campaigns.ts", "src/lib/agents/agent-spend.ts", "src/lib/agents/agent-web.ts", "src/lib/agents/scheduler.ts", "src/lib/agents/run-notify.ts", "src/pages/api/agents/run.ts", "src/pages/api/agents/runs.ts", "src/pages/api/agents/settings.ts", "src/lib/app.ts", "public/apps/hubstudio/vocabulary.js", "vercel.json"]
+  - file: "/Images/help/agents-scope.webp"
+    route: "/agents/catalog"
+    clip: "the Add Social publishing watcher dialog, Scope tab"
+    alt: "The Scope tab of the agent form for the Social publishing watcher: Posts and Publishing and scheduling under Modules and features, both set to Reads, with Add a module or feature, Data it reads, then AI with A text model, the model and its price, and Web search"
+    captured: 2026-10-16
+sources: ["src/pages/agents/index.astro", "src/pages/agents/organization.astro", "src/pages/agents/catalog.astro", "src/pages/agents/runs.astro", "src/scripts/agentsAdminPanel.ts", "src/scripts/agentForm.ts", "src/styles/agent-form.css", "src/scripts/modelPicker.ts", "src/lib/agents/declared-scope.ts", "src/scripts/agentsCatalog.ts", "src/scripts/agentRunsPanel.ts", "src/lib/agents/watchers.ts", "src/lib/agents/data-sources.ts", "src/lib/agents/external-sources.ts", "src/lib/campaigns.ts", "src/lib/agents/agent-spend.ts", "src/lib/agents/agent-web.ts", "src/lib/agents/scheduler.ts", "src/lib/agents/run-notify.ts", "src/pages/api/agents/run.ts", "src/pages/api/agents/runs.ts", "src/pages/api/agents/settings.ts", "src/lib/app.ts", "public/apps/hubstudio/vocabulary.js", "vercel.json"]
 ---
 
 An **agent** watches part of your team's work for you. On a schedule, it re-reads its data, compares it with what it saw last time, and reports what changed as **findings**: short alerts with the real dates, networks and post titles, and a suggested next step.
@@ -66,33 +71,43 @@ A custom agent reads the data you pick and follows instructions you write: a wee
 
 1. Open **Agents** > **My agents**.
 2. Unfold **Create an agent from scratch**.
-3. Fill in the form (see below). Under **The data it reads**, tick what it should read:
+3. Fill in the form (see below). On the **Scope** tab, under **Data it reads**, tick what it should read:
    - **Social activity**: the social content of the last 30 days, what was drafted, planned and published.
    - **Social publishing**: the posts of every network, network by network, over the last 30 days and the next 14: published, scheduled, failed, and the drafts waiting.
    - **From the Assets Library**: any of your team's [campaigns](/help/campaigns), listed first and marked **Campaign**, and any folder or document of the library. A campaign brings its brief and every asset in it, pictures and clips by their prompt. A folder brings every document in it and in its subfolders. PDF, Word, Excel, Markdown and text files are read; pictures and clips are left aside. Every download is billed like one from the Assets Library. Past six entries, a search box (**Search a campaign, a folder or a document**) narrows the list.
-4. Write its **Instructions**: what it should look for in that data, what counts as a finding, and what it should ignore.
+4. On the **General** tab, write its **Instructions**: what it should look for in that data, what counts as a finding, and what it should ignore.
 5. Click **Create the agent**. It starts switched on.
 
 You can only give an agent data you can see yourself. Each block follows your rights, as on its own pages.
 
 ## The agent form
 
-The same form serves for adding, creating and editing an agent.
+The same form serves for adding, creating and editing an agent. The **Name** sits at the top, shown on the agent's card and in the emails. Everything else is spread over four tabs; the form opens on the tab you used last on the page.
 
-| Field | What it does |
+| Tab | What it holds |
 |---|---|
-| **Name** | The name shown on its card and in the emails. |
-| **Model** | The model the agent reasons with. |
-| **The data it reads** | Fixed for the standard agent; your choice for one you created. |
-| **Web search** | **ON**: on each run the agent also searches the web, up to three searches, for what your data can't hold (a trend, a competitor's news, a network's new rule). Each search is billed with the run. **OFF**: its own data only. |
-| **What users are told it does** | The sentence shown on its card. |
-| **Instructions (the brief the agent reasons with)** | What it watches and how to judge it. Leave it empty on the standard agent to keep the standard instructions. What it may report and how it grades severity is fixed by the platform. |
-| **Runs every (hours)** | The minimum time between two scheduled runs. |
-| **Monthly budget (USD)** and **Weekly budget (USD)** | The most this agent may spend per calendar month and over any seven days. Whichever is reached first stops it from running. Empty means no limit of its own. The form shows what it spent this month and in the last seven days. |
-| **Email the results to** | **The agent's owner** (your own agents) or **The team's administrators** (team agents), **These people only** with a list of addresses, or **Nobody**. |
-| **Email content** | **Summary and link**, or **Full results** with the findings in the email. |
+| **General** | **What users are told it does**, the sentence shown on its card, and its **Instructions**: what it watches and how to judge it. Leave the instructions empty on the standard agent to keep the standard ones. What it may report and how it grades severity is fixed by hubStudio. |
+| **Scope** | Everything the agent works on, and the AI it runs with (see below). |
+| **Schedule and budget** | **Runs every (hours)**, the minimum time between two scheduled runs. **Monthly budget (USD)** and **Weekly budget (USD)**, the most this agent may spend per calendar month and over any seven days: whichever is reached first stops it, and empty means no limit of its own. An agent that already ran shows what it spent **This month** and over the **Last seven days**. |
+| **Notifications** | **Email the results to**: **The agent's owner** (your own agents) or **The team's administrators** (team agents), **These people only** with a list of addresses, or **Nobody**. **Email content**: **Summary and link**, or **Full results** with the findings in the email. |
 
 A field left empty uses the standard version of the agent. Changes apply from the next run.
+
+### The Scope tab
+
+![The Scope tab of the agent form for the Social publishing watcher: Posts and Publishing and scheduling under Modules and features, both set to Reads, with Add a module or feature, Data it reads, then AI with A text model, the model and its price, and Web search](/Images/help/agents-scope.webp)
+
+**Scope** shows, part by part, what the agent works on, and lets you change any part at any time, whether you are adding the agent or editing it later. Click **Save** (or **Add the agent**) to keep the change. A run never reads or changes anything outside its scope.
+
+| Part | What it shows and what you change |
+|---|---|
+| **Modules and features** | Each part of hubStudio the agent works on, under the names your rights use, set to **Off**, **Reads** or **Reads and changes**. The Social publishing watcher starts with **Social networks › Posts** and **Social networks › Publishing and scheduling**, both on **Reads**. **Add a module or feature…** gives it one more, picked from the parts of hubStudio you can open yourself. |
+| **Data it reads** | Fixed for the standard agent; your choice for one you created (see [Create an agent from scratch](#create-an-agent-from-scratch)). |
+| **AI** | The kind of model the agent runs: **No AI model**, **A text model**, **An image model** or **A video model**. Then the model itself, in the same picker as everywhere in hubStudio, each model with the price of one run (of one image, or of one clip); **Standard** keeps the standard model. Then **Web search**: **ON**, the agent also searches the web on each run, up to three searches, for what your data can't hold (a trend, a competitor's news, a network's new rule), each search billed with the run; **OFF**, its own data only. With **No AI model**, a run costs nothing. |
+
+You can only give an agent what you can reach yourself: the modules and features your rights open to you, and your own connections or your team's. The team's administration (members, team settings, shared credits) never goes into an agent's scope.
+
+An agent you are creating from scratch shows a shorter **Scope** until it exists: **Data it reads**, then **AI** with the model and **Web search**. Once it is created, **Edit & test** shows its full scope.
 
 ## Manage your agents
 

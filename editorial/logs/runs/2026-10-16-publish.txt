@@ -11,3 +11,22 @@
 2026-10-16T04:31:00+08:00 notify-publish.mjs sent (Resend id 01a1413b-bfcf-7337-b4e1-7a266db79e5f), build passed, note carrying the commit hash.
 2026-10-16T04:33:00+08:00 other work restored to the working tree, uncommitted: 183 dictionaries (11,304 values, 13 added and 11 removed keys from its three page edits; its rewording of "3 to 15 seconds" on the help page applied to the shared entry, where this run's extraction moved that sentence), TRANSLATING.md, both glossaries (its edits merged with this run's committed Kling section), the three English page corrections, and its .i18n-work/passes folder (this run's passes kept in .i18n-work/passes-publish-1016-kling). i18n:guard passes on the restored tree.
 2026-10-16T04:33:00+08:00 end: one row published in English, French and Chinese; no row blocked; no watch row due.
+One draft was waiting, and it is now live in English, French and Chinese: **Kling 3.0 Prompts for Product Video** (`kling-3-product-video-guide`), published as a how-to under Video generation.
+
+- **Addresses:** `/resources/how-to/kling-3-product-video-guide`, `/fr/ressources/guides-pratiques/kling-3-prompts-pour-la-video-produit`, and `/zh/resources/how-to/kling-3-product-video-guide`.
+- **Translation:** French and Chinese each went through the three passes on the guide, its card and the guides index. The new terms (camera moves, Kling app labels) are in both glossaries. The `changes.md` records are copied into `editorial/logs/2026-10-16.md`.
+- **Checks:** the i18n check, the i18n guard, `npm run check` (0 errors) and `npm run build` all passed. Commit `bf38dd2` is pushed to main, the run-log commit `1e04692` follows it, and the publish email went out.
+- **Draft-run corrections:** the commit also carries the draft run's fixes to the glossary's Kling entry and the video-production service page, in all three languages.
+- **Watch list:** no row in `watch.csv` was due; the earliest is 19 October.
+
+Changes I made while publishing:
+- **Source lines:** the publish script printed bare URLs in six source lines. I reworded them to the site's usual form (source named and dated, no URL). The draft keeps the URLs.
+- **Byline:** the draft named Liyan Ye, but the publish script fixes the byline to Cyril Drouin, as on all 16 earlier how-tos. I kept Cyril Drouin.
+- **Column header:** both languages had pre-filled the table's "Move" header with a verb; it now reads « Mouvement » in French and 运镜 in Chinese.
+- **Dashes:** the draft runner's console log had picked up 12 em dashes from tool output. I replaced them with spaced hyphens before committing.
+
+**Other work left out of the commit:** the working tree also held a separate French and Chinese rewrite of the whole site that this pipeline did not produce. The draft run had already marked it as not its own. It covers 11,304 values in 183 dictionaries, edits to `TRANSLATING.md` and both glossaries, and three English fixes (production-roster-review-questions, print-design, short-video). I set it aside, published from the last commit plus the draft run's files, and then put it back in the working tree uncommitted. The i18n guard passes with it restored. A full backup is in the session scratchpad.
+
+The Gmail, Google Calendar and Google Drive connectors are not authorized in this session. That does not affect this run, which emails through Resend.
+2026-10-16T04:25:04 model Opus 5.5 completed successfully
+2026-10-16T04:25:04 end publish exit 0
