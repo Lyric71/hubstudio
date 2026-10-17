@@ -27,7 +27,7 @@ export default {
   mustInclude: [
     "A side-by-side table: what each marketplace allows, requires in the file, forbids, and the page that says so",
     "Amazon: the synthetic-performer disclosure, its exact keyword and metadata field, its scope and exclusions, the date it began, from Seller Central help; the main-image rules that still apply",
-    "The New York synthetic performer law behind it (General Business Law section 396-b), from the statute, with its effective date",
+    "The New York synthetic performer law behind it (General Business Law section 396-b), from the statute, with its effective date, and California's synthetic performer rule (Business and Professions Code 17610, SB 1050, in force January 1, 2027), from the chaptered text",
     "Google: keep the IPTC DigitalSourceType metadata that marks an AI image, from Merchant Center Help; the misrepresentation policy",
     "What both forbid regardless of AI: an image that shows a different product, features it lacks or accessories not included",
     "File handling: keep the engine-written metadata; in hubStudio, download the original for a marketplace file, never the clean copy or the Image anonymizer output (both remove AI-generation markers); History keeps the prompt and engine of every render as a record",

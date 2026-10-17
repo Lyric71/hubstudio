@@ -90,7 +90,7 @@ than an unsourced one.
 - A rights checklist: likeness and voice consent in writing, term, territory, media, the right to change the script later; pointing to the brand ambassadors piece
 - Cutaways made in the app: image to video from a packshot in the Video studio (start frame, or start and last frame on the engines that take both), so the product on screen is the real one
 - Captions in the Video editor, timed word by word, free in the browser or fast and billed, with Download as SRT; Validation to get the cut approved, versions on one thread
-- Disclosure: the EU AI Act transparency duty (Article 50) and New York's synthetic performer law, from the official texts, pointing to the EU and US disclosure pieces
+- Disclosure: the EU AI Act transparency duty (Article 50), New York's synthetic performer law and California's synthetic performer rule (Business and Professions Code 17610, SB 1050, in force January 1, 2027), from the official texts, pointing to the EU and US disclosure pieces
 - A QA list before release: lip sync on the hard words, product names pronounced right, every claim backed, captions corrected, the label in place
 - A plain line on what the app does not do: it does not render talking avatars or lip sync; the studio runs avatar programs with their contracts
 

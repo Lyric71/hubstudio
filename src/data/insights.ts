@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'us-ai-disclosure-rules-brands',
+    image: '/Images/insight-us-ai-disclosure-rules-brands.webp',
+    imageAlt:
+      'A producer in a navy shirt clips a blank white card under a printed campaign photo of a model in a quilted rust jacket, the real jacket hanging on a wooden hanger beside it on a cork wall, with a roll of masking tape, a chipped enamel mug and a tangle of cables on the bench below.',
+    category: 'Rights',
+    tone: 'orange',
+    title: 'AI Disclosure in US Ads: FTC, States, Platforms',
+    deck: 'No single US law makes a brand label AI in ads. The FTC, New York, California and the platforms each set their own trigger.',
+    date: 'October 18, 2026',
+    dateISO: '2026-10-18',
+    readingTime: '15 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'AI Disclosure in US Ads: FTC, States, Platforms | hubStudio',
+    metaDescription:
+      'What US brands must disclose about AI in ads: FTC deception and endorsement rules, New York and California statutes and platform labels, from the text.',
+  },
+  {
     slug: 'amazon-product-image-requirements',
     image: '/Images/insight-amazon-product-image-requirements.webp',
     imageAlt:
@@ -1079,7 +1096,7 @@ export const insights: Insight[] = [
     deck: 'Three regimes now ask different questions about the same generated asset. Here is the per-asset record that answers all of them from a single row.',
     date: 'April 30, 2026',
     dateISO: '2026-04-30',
-    dateModifiedISO: '2026-10-08',
+    dateModifiedISO: '2026-10-18',
     readingTime: '10 min read',
     author: 'Liyan Ye',
     metaTitle: 'The AI Disclosure Audit Trail per Asset | hubStudio',

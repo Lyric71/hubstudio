@@ -29,7 +29,7 @@ export default {
     "EU: Regulation (EC) No 1223/2009, Article 20, and the common criteria for cosmetic claims in Commission Regulation (EU) No 655/2013, from EUR-Lex",
     "UK: the ASA ruling and guidance on beauty filters in ads, from asa.org.uk",
     "China as one market: the efficacy claim evaluation rules under the Cosmetics Supervision and Administration Regulation, from NMPA (Chinese-language first), with the China beauty piece linked for depth",
-    "Synthetic people: Amazon's synthetic-performer disclosure and New York's synthetic performer law, each from its own page",
+    "Synthetic people: Amazon's synthetic-performer disclosure, New York's synthetic performer law and California's synthetic performer rule (Business and Professions Code 17610, SB 1050, in force January 1, 2027), each from its own page",
     "Case studies, only as written in src/data/case-studies.ts: Noyz (a model trained on fluid physics for the mist-to-milk transformation, one master film cut for every feed), age20 (product photography into on-model campaigns across Asian markets in hours), Shiseido RQ PYOLOGY (campaign visuals and brand video holding clinical credibility and luxury appeal in China's medical aesthetics market)",
     "The three ways to work, with Studio + app for a brand whose regulatory reviewer approves in Validation",
     "A line stating the piece describes production practice, not legal advice",

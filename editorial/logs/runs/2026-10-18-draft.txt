@@ -1,0 +1,33 @@
+﻿2026-10-18T00:30:03 start draft (model claude-opus-5-5)
+2026-10-18T00:30:04 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-18 run decision: no row stopped at researched, drafted or quality_passed. Earliest not_started row in publish_date order is brief 78, us-ai-disclosure-rules-brands (2026-10-26). git shows no output or research file for that slug, so no earlier partial work. Taking it.
+2026-10-18 01:05 research gate R1 to R7 done: editorial/research/us-ai-disclosure-rules-brands.md plus 23 captures. Row 78 set to researched.
+2026-10-18 01:05 closed in run: California SB 1000 (ch. 861, 30 Sep 2026) removed the 1,000,000 user threshold the live page disclosure-audit-trail-per-asset still printed. Corrected the page, its draft, the FR and ZH dictionary entries and dateModifiedISO (2026-10-18).
+2026-10-18 01:30 createarticle 13 iterations done (iteration 7 ran as the cadence variant, no planted errors); output/us-ai-disclosure-rules-brands.md written; check-draft passes. Row 78 set to drafted. Source check 2 running in parallel.
+2026-10-18 01:45 content-quality-us 18 passes done in place; title 47, meta 151, excerpt 24 words. Row 78 set to quality_passed.
+2026-10-18 02:10 image generated and checked (public/Images/insight-us-ai-disclosure-rules-brands.webp, 148 KB). Source check 2: 26 sources re-fetched, one citation corrected. Ledger appended (17 rows), 4 watch rows, 5 later briefs amended for California SB 1050. Row 78 set to image_ready. Run log: editorial/logs/2026-10-18-us-ai-disclosure-rules-brands.md. Stopped at image_ready; nothing published or committed.
+Brief 78, "AI disclosure in US advertising: the FTC, state laws and platform labels" (slug `us-ai-disclosure-rules-brands`), is drafted and stopped at `image_ready`. It was the earliest `not_started` row, and no earlier attempt had started it. Nothing is published or committed.
+
+**What the run produced**
+- **Research file** (`editorial/research/us-ai-disclosure-rules-brands.md`): 23 verbatim captures from primary sources only. These are the US Code, eCFR, FTC releases and notices, state legislature texts, federal court orders and each platform's own help pages. Every one of the 26 cited sources was fetched a second time; 25 matched as written and one citation pointed at the wrong document, now fixed.
+- **Draft** (`editorial/output/us-ai-disclosure-rules-brands.md`): all 13 createarticle iterations ran, with iteration 7 as the cadence pass (no planted errors), then the full 18-pass quality loop. `check-draft.mjs` passes every hard check: title 47 characters, meta description 151, excerpt 24 words, 4 tables, 16 sourced blockquotes, no em dash, no `$`, no Han characters.
+- **Length:** 3,090 words of prose against a 2,400-word floor. The extra is quotes, blockquotes, tables and the required FAQ, which the settled fallback allows; nothing was padded.
+- **Hero image** (`public/Images/insight-us-ai-disclosure-rules-brands.webp`): 148 KB, made with gpt-image-2 and checked by eye against the AI-tells list (no text, hands correct, one light source).
+
+**Research that changed the piece**
+- No federal rule requires an AI label on ads. The FTC acts through its deception rules (Section 5), its endorsement guidance and its fake-review rule.
+- California passed a second synthetic performer law (SB 1050), in force January 1, 2027, with set disclosure wording.
+- On September 30, 2026, SB 1000 deleted the AI Transparency Act's million-user threshold and its visible-label option.
+- Hawaii's Act 247 now requires written consent before a realistic AI imitation of a real person appears in an ad.
+
+**Other files changed in the same run**
+- **Live article corrected:** `disclosure-audit-trail-per-asset` still said California's law only covered systems above a million monthly users. I fixed the page, its draft, its French and Chinese dictionary entries and its `dateModifiedISO` (2026-10-18).
+- **Five later briefs amended** (84, 92, 95, 117, 137): they treated New York as the only synthetic performer law. California's rule now sits beside it, in both the wave-two module and the brief file.
+- **Four `watch.csv` rows:** Pennsylvania SB 806 and New York A11683, the open FTC rulemakings, the January 1, 2027 switch to present tense for the California passages, and the quarterly platform recheck.
+- **Source ledger:** 17 new rows and 6 do-not-publish entries. The old row saying SB 1050 was not enacted is marked superseded.
+- **Schedule and logs:** `schedule.csv` row 78 is at `image_ready` with all four dates. The run log is `editorial/logs/2026-10-18-us-ai-disclosure-rules-brands.md`, and each decision is also recorded in `logs/runs/2026-10-18-draft.txt`.
+
+`npm run i18n:guard` currently fails with 14 empty translations. All of them are in work that was already uncommitted before this run started (the feature-videos page, two help pages, the pricing calculator and the resources page). None are in files this run touched, and I didn't change that work.
+2026-10-18T01:23:30 model Opus 5.5 completed successfully
+2026-10-18T01:23:30 end draft exit 0
+2026-10-18T01:23:31 queue: ok: 64 to draft, 0 blocked, last draft 2026-10-18

@@ -86,6 +86,7 @@ const ARTICLES: Record<string, string> = {
   'training-a-brand-model-that-stays-on-brand': 'entrainer-un-modele-fidele-a-la-marque',
   'transcreation-as-a-production-line': 'la-transcreation-comme-chaine-de-production',
   'turnaround-days-not-weeks': 'des-delais-en-jours-pas-en-semaines',
+  'us-ai-disclosure-rules-brands': 'publicite-et-ia-les-regles-de-transparence-aux-etats-unis',
   'veo-3-studio-review': 'veo-3-le-test-du-studio',
   'wechat-specs-articles-channels-mini-program': 'wechat-specifications-articles-channels-mini-programmes',
   'weibo-image-video-specs': 'weibo-specifications-image-et-video',

@@ -1,0 +1,415 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "Do I have to disclose AI-generated content in US ads?",
+    "a": "Not as a general rule, since no federal law requires it. New York requires a disclosure when an ad has a synthetic performer, and California will from January 1, 2027, when one appears prominently. The FTC expects one when an AI asset would otherwise mislead, as with a generated \"customer.\" TikTok ads and election ads on Meta and Google need their own labels."
+  },
+  {
+    "q": "What does the FTC say about AI in advertising?",
+    "a": "That the old rules apply. Section 5 bans ads that leave a false net impression, however they were made. The Endorsement Guides reach virtual endorsers and expect real consumers or a disclosure. The reviews rule bans fake reviews, AI-written ones included. The AI cases the FTC has announced went after false claims about what AI products can do."
+  },
+  {
+    "q": "What is New York's synthetic performer disclosure law?",
+    "a": "General Business Law 396-b, in force since June 9, 2026. Whoever produces or creates an ad must conspicuously disclose a synthetic performer, a generated human who is not any identifiable real person, when they know one is in it. Audio ads and ads for films, shows and games are exempt. Fines are 1,000 dollars, then 5,000 dollars per violation."
+  },
+  {
+    "q": "Does California require labels on AI-generated images?",
+    "a": "Not from brands. Its AI Transparency Act makes engine makers embed a hidden disclosure in what their systems create, and since September 30, 2026, that holds whatever the system's size. A brand's visible label comes from a different law, from January 1, 2027, when an ad prominently features a synthetic performer, a synthetic voice included."
+  },
+  {
+    "q": "Do Instagram, TikTok and YouTube label AI content automatically?",
+    "a": "Often. TikTok labels content made with its AI effects or carrying C2PA Content Credentials, and the label can't be removed. YouTube labels content made with its own tools, carrying C2PA data or caught by detection. Meta labels AI content it detects and, since June 2026, ads made with third-party AI tools. Creators still have to disclose realistic content themselves."
+  },
+  {
+    "q": "Can I use AI-generated reviews or testimonials?",
+    "a": "Not if they pass as real. The FTC's reviews rule bans reviews and testimonials that misrepresent that the reviewer exists, and the agency says AI-generated fake reviews are covered. A knowing violation can cost up to 53,088 dollars each. A generated spokesperson who isn't presented as a customer is a different case, though New York's and California's synthetic performer rules still apply."
+  },
+  {
+    "q": "What records should a brand keep for AI-made ads?",
+    "a": "For each asset: the engine and version, the prompt and source files, consent for any real face or voice, whether a synthetic performer appears, who approved which version, which disclosure went where, and the states and platforms it ran in. New York's rule turns on what you knew, and the record is how you show it."
+  }
+];
+---
+
+<ArticleLayout slug="us-ai-disclosure-rules-brands" ctaLabel="Send a brief" faq={faq}>
+  <p class="standfirst">No federal law makes a brand label AI in an ad. The duty comes in three layers instead: the FTC's deception rules, a few state statutes with narrow triggers, and each platform's own label.</p>
+
+  <h2>What are the AI disclosure rules for advertising in the US?</h2>
+
+  <p>There is no general US rule. The FTC bars AI content that misleads, including fake people and fake reviews. New York requires a disclosure when an ad shows a synthetic performer, and California follows on January 1, 2027. Meta, TikTok and YouTube add their own labels. hubStudio describes production practice here, not legal advice.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Layer</th>
+          <th scope="col">What triggers it</th>
+          <th scope="col">What it requires</th>
+          <th scope="col">Who it binds</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">FTC, Section 5</th>
+          <td>Any ad whose overall impression misleads, however it was made</td>
+          <td>No false impression, and a disclosure where one is needed to correct it</td>
+          <td>The advertiser</td>
+          <td>15 U.S.C. 45</td>
+        </tr>
+        <tr>
+          <th scope="row">FTC Endorsement Guides</th>
+          <td>A virtual endorser, or an ad that presents "actual consumers"</td>
+          <td>Honest opinions; real consumers, or a clear disclosure that they are not</td>
+          <td>Advertisers and endorsers</td>
+          <td>16 CFR Part 255</td>
+        </tr>
+        <tr>
+          <th scope="row">FTC reviews rule</th>
+          <td>A review or testimonial from someone who does not exist, AI-written included</td>
+          <td>Don't write, buy or post it</td>
+          <td>Any business</td>
+          <td>16 CFR Part 465</td>
+        </tr>
+        <tr>
+          <th scope="row">New York</th>
+          <td>An ad with a synthetic performer, known to whoever makes it</td>
+          <td>A conspicuous disclosure in the ad</td>
+          <td>Whoever produces or creates the ad</td>
+          <td>N.Y. Gen. Bus. Law 396-b</td>
+        </tr>
+        <tr>
+          <th scope="row">California, from Jan. 1, 2027</th>
+          <td>An ad that prominently features a synthetic performer, voice included</td>
+          <td>A clear and conspicuous disclosure in set wording</td>
+          <td>Whoever creates and publishes the ad</td>
+          <td>Cal. Bus. &amp; Prof. Code 17610</td>
+        </tr>
+        <tr>
+          <th scope="row">California AI Transparency Act</th>
+          <td>Image, video or audio made by a generative AI system offered in California</td>
+          <td>A hidden disclosure embedded in the file</td>
+          <td>Engine makers now; large platforms from 2027</td>
+          <td>Cal. Bus. &amp; Prof. Code 22757</td>
+        </tr>
+        <tr>
+          <th scope="row">Platforms</th>
+          <td>Realistic AI content, and AI-made ads</td>
+          <td>The platform's own label or setting</td>
+          <td>The account holder</td>
+          <td>Each platform's help pages</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Every rule on this page was read at its source on October 18, 2026. Read the column on who each rule binds before anything else. The California law most often described as a labeling law binds the engine makers, not you. Only two rules put a label inside a brand's ad, and both are about synthetic performers: New York's, now, and California's, from January.</p>
+
+  <blockquote class="evidence">No federal statute, FTC rule, FTC guide or FTC policy statement read for this page requires a label on AI-generated content in a commercial ad. The FTC works through its general ban on deception, its endorsement guidance and its fake review rule.</blockquote>
+  <p class="source">Source: 16 CFR Parts 255, 461 and 465, read through the eCFR (current to October 15, 2026), and the FTC's Federal Register documents since June 2025, checked October 18, 2026.</p>
+
+  <h2>Does the FTC require a label on AI-generated ads?</h2>
+
+  <p>No. What it requires is older and wider: an ad can't leave people with a false impression, however it was made.</p>
+
+  <blockquote class="evidence">Section 5 of the FTC Act declares "unfair or deceptive acts or practices in or affecting commerce" unlawful. The FTC reads an ad by its net impression, looking at "the entire mosaic, rather than each tile separately." Written disclosures or fine print "may be insufficient to correct a misleading representation."</blockquote>
+  <p class="source">Source: FTC Act, Section 5, 15 U.S.C. 45; FTC Policy Statement on Deception, October 14, 1983.</p>
+
+  <p>An AI packshot that shows the product as it is raises no Section 5 question. An AI image that makes a serum look richer or a sofa deeper than the real thing does, and it would if a retoucher had done it. A label in the corner doesn't fix that. Fixing the picture does.</p>
+
+  <p>Generated people bring in the Endorsement Guides. The FTC revised them in 2023, and its announcement listed virtual influencers among the topics. An endorser is now anyone who "could be or appear to be an individual, group, or institution."</p>
+
+  <blockquote class="evidence">Endorsements "must reflect the honest opinions, findings, beliefs, or experience of the endorser." An ad that presents "actual consumers" should use actual consumers, or clearly and conspicuously disclose that it does not.</blockquote>
+  <p class="source">Source: FTC Guides Concerning the Use of Endorsements and Testimonials in Advertising, 16 CFR 255.1(a) and 255.2(c), effective July 26, 2023, read October 18, 2026.</p>
+
+  <p>In production terms, a generated "customer" who says a cream changed her skin is a consumer endorsement from someone who never used it. Say it is not a real customer, or don't run it. A brand mascot nobody mistakes for a buyer is another matter.</p>
+
+  <p>The Guides carry no penalties of their own. The FTC calls them administrative interpretations of the laws it enforces (in practice, how it reads Section 5 when a case comes).</p>
+
+  <h2>What does the FTC's fake review rule say about AI?</h2>
+
+  <p>It's the one federal rule that the FTC, in its own notice, says covers AI-made content. It also carries civil penalties, which the Guides don't.</p>
+
+  <blockquote class="evidence">The rule bars reviews and testimonials that misrepresent "that the reviewer or testimonialist exists." The FTC's announcement gave "AI-generated fake reviews" as an example of reviews by someone who does not exist, and the rule's Federal Register notice says AI-generated reviews are covered.</blockquote>
+  <p class="source">Source: FTC Trade Regulation Rule on the Use of Consumer Reviews and Testimonials, 16 CFR Part 465, announced August 14, 2024, effective October 21, 2024; 89 FR 68037, footnote 35.</p>
+
+  <blockquote class="evidence">A knowing violation of an FTC rule carries a civil penalty of up to 53,088 dollars per violation, an amount the FTC left unchanged for 2026.</blockquote>
+  <p class="source">Source: 16 CFR 1.98(d), as adjusted January 17, 2025; FTC notice of September 15, 2026, 91 FR 58446.</p>
+
+  <p>The FTC has started using it.</p>
+
+  <blockquote class="evidence">FTC staff sent warning letters to 10 companies about possible violations of the reviews rule in December 2025. A final order in July 2026, against a supplement seller over fake and employee-written reviews, required a payment of 750,000 dollars.</blockquote>
+  <p class="source">Source: FTC press releases of December 22, 2025, and July 15, 2026.</p>
+
+  <p>For a brand making content with AI, that rules out a short list of shortcuts: generated reviews on a product page, a testimonial from a customer who doesn't exist, a quote card with an invented name and face. Each is a fake review, whatever tool wrote it.</p>
+
+  <h2>What has the FTC actually enforced on AI?</h2>
+
+  <p>Mostly claims about what AI can do. None of the cases read for this page turns on a missing label.</p>
+
+  <blockquote class="evidence">In September 2024 the FTC announced five actions against "operations that use AI hype": one over the claimed abilities of an AI legal-services product, one against an AI tool that wrote reviews, and three against online store schemes sold as AI-powered income.</blockquote>
+  <p class="source">Source: FTC press release, September 25, 2024.</p>
+
+  <p>The review-tool order didn't last. On December 22, 2025, the FTC reopened it and set it aside, saying it "unduly burdens innovation in the nascent AI industry." What the agency has kept pursuing is the overclaim: AI products said to do what they don't.</p>
+
+  <blockquote class="evidence">The FTC said a company promoted its AI content detector as "98 percent" accurate when independent testing put its accuracy on general-purpose content at 53 percent. The final order came in August 2025.</blockquote>
+  <p class="source">Source: FTC press releases of April 28 and August 28, 2025.</p>
+
+  <p>Some federal pieces are still moving. The FTC's proposal to extend its impersonation rule from businesses and government to individuals, deepfakes included, has no final action; its regulatory notice of October 1, 2026, says the agency "is still evaluating its options."</p>
+
+  <p>Under a December 2025 executive order, the FTC has also proposed, not issued, a policy statement on state laws that require changes to the truthful outputs of AI models. It is aimed at AI models, not at ad labels. A federal digital replica bill, the NO FAKES Act, sits in committee in both chambers. Nothing here changes what a brand has to label today.</p>
+
+  <h2>What does New York's synthetic performer law require?</h2>
+
+  <blockquote class="evidence">Anyone who produces or creates an ad for a product or service "shall conspicuously disclose in such advertisement that a synthetic performer is in such advertisement, where such person has actual knowledge." A first violation costs 1,000 dollars, and each later one 5,000 dollars.</blockquote>
+  <p class="source">Source: New York General Business Law section 396-b, as amended by S8420-A, chapter 617 of the Laws of 2025, signed December 11, 2025, in force June 9, 2026; bill text read October 18, 2026.</p>
+
+  <p>A synthetic performer, in the statute's words, is a digitally created asset made with generative AI or a software algorithm to give the impression of a human performer "who is not recognizable as any identifiable natural performer." A generated model in a jacket is one. So is a generated presenter in a product video. A real model whose photo was retouched is not, because a real person performed.</p>
+
+  <p>The law leaves out audio ads, ads for films, shows and games that use the performer the way the work does, and AI used only to translate a real performer. The newspapers, stations, streamers and billboards that carry an ad are excluded too. The duty sits with whoever made it.</p>
+
+  <p>Actual knowledge is the hinge. Whoever chose to generate the performer knows, so the answer belongs in the brief and in the delivery note, where the brand and the media buyer will see it too.</p>
+
+  <p>A bill filed in September 2026, A11683, would keep the disclosure on screen for as long as the performer appears in a video. It sits in committee.</p>
+
+  <h2>What changes in California on January 1, 2027?</h2>
+
+  <p>California adds its own synthetic performer rule. It reaches further than New York's in two places: audio, and the wording.</p>
+
+  <blockquote class="evidence">From January 1, 2027, it is unlawful to publish an ad that "prominently includes a synthetic performer without a clear and conspicuous disclosure." The disclosure must use wording substantially similar to "this performance features a synthetic performer" or "no human performer is depicted."</blockquote>
+  <p class="source">Source: California Business and Professions Code section 17610, added by SB 1050, chapter 246 of the Statutes of 2026, approved September 16, 2026, in force January 1, 2027, under the state constitution's default date for regular-session statutes; chaptered text read October 18, 2026.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Point</th>
+          <th scope="col">New York</th>
+          <th scope="col">California</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">In force</th>
+          <td>June 9, 2026</td>
+          <td>January 1, 2027</td>
+        </tr>
+        <tr>
+          <th scope="row">Trigger</th>
+          <td>A synthetic performer in the ad, known to the maker</td>
+          <td>A synthetic performer shown prominently in the ad</td>
+        </tr>
+        <tr>
+          <th scope="row">Audio ads</th>
+          <td>Exempt</td>
+          <td>Covered, a synthetic voice included</td>
+        </tr>
+        <tr>
+          <th scope="row">Wording</th>
+          <td>Not set</td>
+          <td>Close to "this performance features a synthetic performer"</td>
+        </tr>
+        <tr>
+          <th scope="row">Penalty</th>
+          <td>1,000 dollars, then 5,000 dollars per violation</td>
+          <td>Civil penalty up to 2,500 dollars per violation; also a misdemeanor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>"Prominently" is defined. The synthetic performer is in the foreground showing the product, voices the narration or the message, or reacts to it. A generated crowd far behind a real presenter falls outside. A generated voice-over falls inside.</p>
+
+  <blockquote class="evidence">A violation of section 17610 is a violation of section 17500, a misdemeanor punishable by up to six months in county jail or a fine of up to 2,500 dollars, and section 17536 adds a civil penalty of up to 2,500 dollars per violation.</blockquote>
+  <p class="source">Source: California Business and Professions Code sections 17500, 17536 and 17610(f), code and chaptered text read October 18, 2026.</p>
+
+  <h2>Does California require labels on AI-generated images?</h2>
+
+  <p>Not from brands. The California AI Transparency Act, operative since August 2, 2026, puts its duties on the makers of generative AI systems, and from 2027 on large platforms.</p>
+
+  <blockquote class="evidence">Since September 30, 2026, any person that produces a generative AI system publicly accessible in California must, where technically feasible, embed a hidden disclosure in the image, video or audio the system creates or alters beyond minor edits. It names the provider, the system and its version, the time and date, a unique identifier, and whether the content was created or altered. Each violation costs 5,000 dollars, and every day counts as a separate violation.</blockquote>
+  <p class="source">Source: California Business and Professions Code sections 22757.1 to 22757.4, as amended by SB 1000, chapter 861 of the Statutes of 2026, an urgency statute in effect September 30, 2026; chaptered text read October 18, 2026.</p>
+
+  <p>SB 1000 also scrapped two things many explainers still describe: the threshold of a million monthly users and the duty to offer users a visible label. From January 1, 2027, large online platforms must detect provenance data, show it, and not knowingly strip it. Camera makers follow in 2028.</p>
+
+  <p>For a brand, the point is the file. What your engines produce is meant to carry a hidden record of its origin, and from January the big platforms have to read it. Keep it. An export step that strips metadata throws away the proof, and <a href="/resources/insights/content-credentials-c2pa-in-production">Content Credentials in a real pipeline</a> shows where that proof survives (and where it breaks).</p>
+
+  <h2>Which other state laws touch AI in ads?</h2>
+
+  <p>Consent laws, mostly. They ask for permission rather than a label, and no label stands in for permission.</p>
+
+  <ul>
+    <li>Tennessee's ELVIS Act, in force since July 1, 2024, makes it actionable to use a person's voice or likeness to advertise without consent, and its definition of voice includes a simulation of it.</li>
+    <li>Hawaii's Act 247, in force since July 14, 2026, makes it unlawful to knowingly publish a realistic AI imitation of an identifiable person in connection with an ad without that person's written consent.</li>
+    <li>New York amended its Civil Rights Law on December 11, 2025: commercial use of a deceased performer's digital replica needs the rights holder's consent.</li>
+    <li>California has required consent for a deceased personality's digital replica since January 1, 2025, and from the same date a vague digital replica clause in an unrepresented performer's contract is unenforceable.</li>
+    <li>Utah requires a business to say it is using generative AI when a consumer clearly asks. That governs conversations, not ad creative.</li>
+  </ul>
+
+  <blockquote class="evidence">Hawaii's act allows damages of up to 25,000 dollars per advertisement, or actual damages, plus punitive damages where malice is proven. It took effect on approval.</blockquote>
+  <p class="source">Source: Hawaii Act 247 (HB 2137, CD1), approved July 14, 2026, act text and the governor's message read October 18, 2026.</p>
+
+  <p>Political and issue ads run on separate election laws, state by state. California's makes a political committee's ad with AI-made media carry the line "Ad generated or substantially altered using artificial intelligence." Two other California election deepfake laws were blocked in federal court in August 2025. Check the election code of every state an issue ad runs in.</p>
+
+  <p>The consent paperwork for a real person's face or voice is its own subject, and <a href="/resources/insights/ai-avatars-brand-content">AI avatars in brand content</a> covers it.</p>
+
+  <h2>What do Meta, TikTok, YouTube and LinkedIn ask for?</h2>
+
+  <p>Platform rules aren't law, but they are enforced first: a rejected ad, a removed post. Each network treats organic posts and paid ads separately, and the paid side tends to be stricter.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Platform</th>
+          <th scope="col">Organic posts</th>
+          <th scope="col">Ads</th>
+          <th scope="col">Automatic label</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Meta (Facebook, Instagram)</th>
+          <td>Label required on photorealistic video and realistic audio, not on images; shows as "AI content"</td>
+          <td>"AI info" on ads made or edited with AI tools, in the About this ad menu; self-disclosure where local rules call for it, New York and California included; required on political and issue ads</td>
+          <td>Meta's own tools, and since June 1, 2026, third-party AI detected through signals such as C2PA</td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok</th>
+          <td>Label required on realistic AI-generated or significantly edited people and scenes</td>
+          <td>AIGC label or a clear disclaimer required; undisclosed AI content rejected or restricted; no political ads</td>
+          <td>TikTok AI effects and C2PA Content Credentials; the label can't be removed</td>
+        </tr>
+        <tr>
+          <th scope="row">YouTube and Google Ads</th>
+          <td>Disclosure required for realistic altered or synthetic content, set in YouTube Studio</td>
+          <td>An AI label setting in Google Ads, shown on the ad itself only where local rules require it, New York included; disclosure required on election ads</td>
+          <td>On YouTube: its own tools, C2PA metadata and detection</td>
+        </tr>
+        <tr>
+          <th scope="row">LinkedIn</th>
+          <td>No AI label rule; manipulated media of a real person must be clearly disclosed</td>
+          <td>No AI rule in the ads policy; political ads banned</td>
+          <td>Shows C2PA Content Credentials already in an image or video, ads included</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">TikTok allows significantly edited and AI-generated content in ads only with its AIGC label or "a clear disclaimer, caption, watermark, or sticker" of the advertiser's own, and warns: "If we identify AI-generated content that has not been disclosed, your ad will be rejected or restricted."</blockquote>
+  <p class="source">Source: TikTok Ads policy, Misleading and false content, last updated April 2026, read October 18, 2026.</p>
+
+  <blockquote class="evidence">Meta lets advertisers self-disclose AI use on ads delivered to places whose rules call for it, and lists California and New York among them. The label then sits next to Sponsored instead of inside a menu.</blockquote>
+  <p class="source">Source: Meta Business Help Center, About AI info on ads created or edited with generative AI tools, read October 18, 2026.</p>
+
+  <blockquote class="evidence">Google says its AI label setting "doesn't guarantee your compliance with specific regulations."</blockquote>
+  <p class="source">Source: Google Ads Help, AI label setting, read October 18, 2026.</p>
+
+  <p>Remember that last line in New York. A platform label tucked behind a menu is not obviously a conspicuous disclosure in the ad, so where a statute applies, put the disclosure in the creative and set the platform label too.</p>
+
+  <p>The <a href="/solutions/platforms/meta">Meta platform page</a> and the <a href="/solutions/platforms/tiktok">TikTok platform page</a> cover each network's formats. For campaigns that also run in Europe, <a href="/resources/insights/eu-ai-act-labeling-brand-content">The EU AI Act labeling duty</a> explains the stricter rule on deep fakes.</p>
+
+  <h2>Which rules does each kind of asset trigger?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Asset</th>
+          <th scope="col">Federal</th>
+          <th scope="col">State</th>
+          <th scope="col">Platform</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">AI product image, shown as the product is</th>
+          <td>Nothing specific</td>
+          <td>Nothing specific</td>
+          <td>Meta may add "AI info" to the ad; TikTok ads need a label if it is completely generated</td>
+        </tr>
+        <tr>
+          <th scope="row">AI image that makes the product look better than it is</th>
+          <td>Section 5 deception risk, which a label may not cure</td>
+          <td>Nothing specific</td>
+          <td>As above</td>
+        </tr>
+        <tr>
+          <th scope="row">Generated person with no real identity</th>
+          <td>Endorsement Guides, if presented as a customer</td>
+          <td>New York disclosure; California from 2027 when prominent</td>
+          <td>TikTok and YouTube labels when realistic; Meta's organic label on video</td>
+        </tr>
+        <tr>
+          <th scope="row">A real person's likeness or a cloned voice</th>
+          <td>Section 5, if it implies an endorsement that wasn't given</td>
+          <td>Consent: Tennessee, Hawaii, and for the dead, California and New York</td>
+          <td>TikTok ads bar false endorsements by public figures</td>
+        </tr>
+        <tr>
+          <th scope="row">Review or testimonial</th>
+          <td>Reviews rule: no reviewer who doesn't exist</td>
+          <td>Nothing specific</td>
+          <td>Nothing specific</td>
+        </tr>
+        <tr>
+          <th scope="row">Political or issue ad</th>
+          <td>Nothing specific</td>
+          <td>State election laws, such as California's set wording</td>
+          <td>Meta and Google require disclosure; TikTok and LinkedIn take no political ads</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What should a brand keep for every AI-made asset?</h2>
+
+  <p>The statutes ask what you knew and whether you had consent; the platforms ask whether you disclosed. A short record per asset answers both:</p>
+
+  <ul>
+    <li>the engine, its version and the date the asset was made</li>
+    <li>the prompt, and every source file that went in</li>
+    <li>consent on file for any real person's face or voice</li>
+    <li>whether a synthetic performer appears, and whether prominently</li>
+    <li>who approved which version, and when</li>
+    <li>which disclosure went where: the line in the creative, the platform setting, the ad account's self-disclosure</li>
+    <li>the states and platforms the asset runs in</li>
+    <li>whether the delivered file still carries its provenance data</li>
+  </ul>
+
+  <p>The hubStudio app keeps part of this on its own. History keeps every render with its prompt and engine, and Validation keeps who approved which version on a thread nobody can delete. When our studio makes the work, through the <a href="/services/design/ad-creative">ad creative design service</a> for instance, it records provenance per asset. <a href="/resources/insights/disclosure-audit-trail-per-asset">The AI disclosure audit trail per asset</a> sets out the full field list, and the <a href="/resources/copyright-and-ai">Copyright and AI resource</a> covers who owns what.</p>
+
+  <h2>Questions brands ask about AI disclosure in US ads</h2>
+
+  <h3>Do I have to disclose AI-generated content in US ads?</h3>
+
+  <p>Not as a general rule, since no federal law requires it. New York requires a disclosure when an ad has a synthetic performer, and California will from January 1, 2027, when one appears prominently. The FTC expects one when an AI asset would otherwise mislead, as with a generated "customer." TikTok ads and election ads on Meta and Google need their own labels.</p>
+
+  <h3>What does the FTC say about AI in advertising?</h3>
+
+  <p>That the old rules apply. Section 5 bans ads that leave a false net impression, however they were made. The Endorsement Guides reach virtual endorsers and expect real consumers or a disclosure. The reviews rule bans fake reviews, AI-written ones included. The AI cases the FTC has announced went after false claims about what AI products can do.</p>
+
+  <h3>What is New York's synthetic performer disclosure law?</h3>
+
+  <p>General Business Law 396-b, in force since June 9, 2026. Whoever produces or creates an ad must conspicuously disclose a synthetic performer, a generated human who is not any identifiable real person, when they know one is in it. Audio ads and ads for films, shows and games are exempt. Fines are 1,000 dollars, then 5,000 dollars per violation.</p>
+
+  <h3>Does California require labels on AI-generated images?</h3>
+
+  <p>Not from brands. Its AI Transparency Act makes engine makers embed a hidden disclosure in what their systems create, and since September 30, 2026, that holds whatever the system's size. A brand's visible label comes from a different law, from January 1, 2027, when an ad prominently features a synthetic performer, a synthetic voice included.</p>
+
+  <h3>Do Instagram, TikTok and YouTube label AI content automatically?</h3>
+
+  <p>Often. TikTok labels content made with its AI effects or carrying C2PA Content Credentials, and the label can't be removed. YouTube labels content made with its own tools, carrying C2PA data or caught by detection. Meta labels AI content it detects and, since June 2026, ads made with third-party AI tools. Creators still have to disclose realistic content themselves.</p>
+
+  <h3>Can I use AI-generated reviews or testimonials?</h3>
+
+  <p>Not if they pass as real. The FTC's reviews rule bans reviews and testimonials that misrepresent that the reviewer exists, and the agency says AI-generated fake reviews are covered. A knowing violation can cost up to 53,088 dollars each. A generated spokesperson who isn't presented as a customer is a different case, though New York's and California's synthetic performer rules still apply.</p>
+
+  <h3>What records should a brand keep for AI-made ads?</h3>
+
+  <p>For each asset: the engine and version, the prompt and source files, consent for any real face or voice, whether a synthetic performer appears, who approved which version, which disclosure went where, and the states and platforms it ran in. New York's rule turns on what you knew, and the record is how you show it.</p>
+
+  <p>If a US campaign uses generated people or voices, send us the brief. We flag the assets each rule touches, put the disclosure in the creative where a statute calls for it, and record provenance per asset.</p>
+</ArticleLayout>

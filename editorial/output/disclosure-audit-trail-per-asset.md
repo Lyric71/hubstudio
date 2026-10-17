@@ -176,17 +176,20 @@ spreadsheet and a penalty in a statute.
 California supplies the clearest published field list anywhere, though it binds
 someone else.
 
-> The California AI Transparency Act says a latent disclosure must convey the
-> name of the covered provider, the name and version number of the generative AI
-> system that created or altered the content, the time and date of the content's
-> creation or alteration, and a unique identifier.
-> Source: California Business and Professions Code section 22757.3(b), code text
-> retrieved 9 September 2026.
+> The California AI Transparency Act, as amended on 30 September 2026, says a
+> latent disclosure must convey the name of the covered provider, the name and
+> version information of the generative AI system that created or altered the
+> content, the time and date of the content's creation or alteration, a unique
+> identifier, and whether the system created or altered the content.
+> Source: California Business and Professions Code section 22757.3(a), as
+> amended by SB 1000, chapter 861 of the Statutes of 2026, official legislative
+> data read 18 October 2026.
 
-Four fields, named in a statute. That duty follows systems above a million
-monthly users, so it is almost certainly not yours. The field list still tells
-you what a legislature considers a complete disclosure, which is worth
-borrowing.
+Five fields, named in a statute. Since 30 September 2026 the duty reaches every
+maker of a generative AI system offered in California, whatever its size, but
+it still binds the engine maker, not the brand that publishes the output. The
+field list still tells you what a legislature considers a complete disclosure,
+which is worth borrowing.
 
 <!-- SECTION: Retention -->
 

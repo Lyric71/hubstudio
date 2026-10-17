@@ -541,3 +541,18 @@ enjoined California elections provision, no Maine political-ad statute, no
 metadata-survival claim, no FTC rule, and no effective date for AB 1836. The
 EU wording is attributed to the European Commission's own FAQ and fact page,
 never to the Official Journal, since EUR-Lex returned empty during research.
+
+## Correction, 2026-10-18 (brief 78 run)
+
+The rows above on California BPC 22757.1(d) and 22757.3 describe the Act as
+it stood on 2026-09-09. SB 1000 (Statutes of 2026, chapter 861, urgency,
+approved and in effect 30 September 2026) deleted the 1,000,000 monthly user
+threshold from the covered provider definition, deleted the manifest
+disclosure option, moved the latent disclosure to 22757.3(a), changed "version
+number" to "version information" and added a fifth field: whether the system
+created or altered the content. Read from the Legislature's official bulk data
+(downloads.leginfo.legislature.ca.gov, pubinfo_2025, chaptered version
+20250SB100094CHP) on 2026-10-18; capture in
+research/us-ai-disclosure-rules-brands/state-ca-ai-transparency-act.txt. The
+page, the draft, both dictionaries and dateModifiedISO (2026-10-18) were
+corrected in the same run.

@@ -27,7 +27,7 @@ export default {
     "A decision table by job: product tour, onboarding, multilingual update, testimonial, founder message, regulated claims",
     "Trust evidence only from peer-reviewed or preregistered studies, with sample and method stated",
     "Contracts: likeness and voice rights, term, territory, usage, pointing to the brand ambassadors piece",
-    "Disclosure: New York's synthetic performer law, the EU AI Act transparency duty for deepfakes (Article 50), platform labels; pointing to the EU and US disclosure pieces",
+    "Disclosure: New York's synthetic performer law and California's synthetic performer rule (Business and Professions Code 17610, SB 1050, in force January 1, 2027), the EU AI Act transparency duty for deepfakes (Article 50), platform labels; pointing to the EU and US disclosure pieces",
     "Localization: lip sync across languages, pointing to the lip-sync piece",
     "Cost by pricing model: presenter fees and usage by category and date, avatar pricing models by category; no hubStudio amount",
     "How the app fits, inside its facts: reference to video with pictures, clips and sound on the engines that take them; the Consistent character across images skill; Validation for approvals; the studio runs avatar programs and their contracts",

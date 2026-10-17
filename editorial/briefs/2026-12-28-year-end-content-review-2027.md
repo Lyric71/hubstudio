@@ -85,7 +85,7 @@ than an unsourced one.
 
 - The review table as a template: asset, where it runs, performance from the platform's own analytics, rights end date, spec fit, label duty, verdict (keep, cut, change)
 - Rights that lapse: talent usage terms, stock licenses, music licenses; where the end date sits in the contract; no market figure
-- What moved and what moves, each dated from its own page: Google Merchant Center's minimum image size enforced from January 31, 2027; the EU AI Act transparency duties as the EU AI Act piece states them; the New York synthetic performer disclosure; for teams that also sell in China, the CAC labeling Measures in force since September 1, 2025; platform spec changes as the spec pages record them
+- What moved and what moves, each dated from its own page: Google Merchant Center's minimum image size enforced from January 31, 2027; the EU AI Act transparency duties as the EU AI Act piece states them; the New York synthetic performer disclosure, and California's synthetic performer rule (Business and Professions Code 17610, SB 1050, in force January 1, 2027); for teams that also sell in China, the CAC labeling Measures in force since September 1, 2025; platform spec changes as the spec pages record them
 - Change rather than reshoot: what an edit, a resize, a new caption or a new version fixes without a new shoot
 - The evidence for keep: performance read from each platform's own reporting, compared like for like, never a vendor benchmark
 - How to run it: one owner, a two-week window, one shared list; in hubStudio a Campaign can hold the 2027 refresh and Validation records who approved each change

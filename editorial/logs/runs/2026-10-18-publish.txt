@@ -1,0 +1,154 @@
+﻿2026-10-18T04:00:05 start publish (model claude-opus-5-5)
+2026-10-18T04:00:07 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-18T04:03+08:00 state on entry: log held only the start lines, no earlier attempt today; nothing partial to repair. schedule.csv: one row at image_ready, row 78 us-ai-disclosure-rules-brands (publish_date 2026-10-26, drafted 2026-10-18 01:05 to 02:10); its notes carry no person decision, so it is eligible. watch.csv: no row due on or before 2026-10-18 (earliest 2026-10-19).
+2026-10-18T04:03+08:00 the primary tree carries uncommitted work that no editorial run made (feature-videos page and its dictionaries, help and pricing dictionaries, header, home page, astro.config.mjs, vercel.json, package.json, editorial runner scripts, editorial/CLAUDE.md and RUNBOOK.md); its 14 empty translations fail i18n:guard and so the prebuild. Decision: publish from a clean worktree off HEAD 85f9e87 (.worktrees/publish-1018, npm ci), carrying over only the 2026-10-18 draft run's files (row 78 draft, research, captures, hero, logs, source ledger, watch rows, five amended briefs and wave-two modules, the disclosure-audit-trail-per-asset correction with its FR and ZH entries and dateModifiedISO). The other work is left untouched in the primary tree.
+2026-10-18T04:07+08:00 row 78 pre-publish review of output/us-ai-disclosure-rules-brands.md: 0 em dashes, 0 Han characters, no $, no TODO/FIXME/TBD marker, no credits, no hub4You; the only companies named are the platforms whose rules the page quotes (Meta, TikTok, YouTube and Google Ads, LinkedIn), no FTC case respondent named; check-draft.mjs passes every hard check (16 sourced blockquotes, 4 tables, 9 asset-brief links). Hero viewed and accepted against the AI-tells list (one window light, hands correct, no text or logo).
+2026-10-18T04:08+08:00 row 78 published with publish-draft.mjs (the repo's implementation of the createblogarticle publish step, as in every earlier run; its locale steps skipped, replaced by step 4b): template insight, page src/pages/resources/insights/us-ai-disclosure-rules-brands.astro, entry at the head of src/data/insights.ts, category Rights (claimed by the brands placement in insight-placements.ts, the "What legal asks" layer on /solutions/brands, beside the other disclosure pieces; a buyer of this topic reads that page), tone orange (alternating with the navy entry below it), date 2026-10-18, 15 min read, CTA Send a brief, hero alt written by hand after viewing the image. Eight internal links wired (disclosure-audit-trail-per-asset, content-credentials-c2pa-in-production, eu-ai-act-labeling-brand-content, ai-avatars-brand-content, /resources/copyright-and-ai, /services/design/ad-creative, /solutions/platforms/meta, /solutions/platforms/tiktok); the ninth brief entry is the breadcrumb, rendered by ArticleLayout. The home page takes it as its lead through the array order. No app capture (none in the asset brief). French slug in ARTICLES: us-ai-disclosure-rules-brands -> publicite-et-ia-les-regles-de-transparence-aux-etats-unis.
+2026-10-18T04:13+08:00 step 4b: npm ci in the worktree (374 packages), then npm run i18n:local -- extract --context .i18n-work/ctx ran clean (own dev server on 4341, 245 pages). It dropped, in fr and zh alike, the sentences that left their pages because the new article took the lead slot: the "Latest Platform specs" chip on home and the insights index, and one rotated "further reading" card sentence on four article pages. Pending in fr and zh alike: the article 191, common 4 (its card), home 1 and resources/insights 2 (the "Latest Rights" chip, and the meta description in the index json-ld). French and Chinese launched as two parallel subagents (three passes, changes.md, build until the check mark), glossaries and the sibling disclosure articles' dictionaries read first.
+2026-10-18T04:26+08:00 Chinese three passes done, all four builds print the check mark (article 196, common 1268, home 401, insights index 98); pending zh empty. Title 美国广告的 AI 披露：FTC、州法与平台规则 (23 characters, the hubStudio suffix dropped under the 30-character ceiling as the glossary says); Rights chip <span1>最新</span1>版权 as on the other chips; app labels 历史记录 and 审核 from the app dictionary; quotes from English texts carry 引文由本站翻译 in their Source lines, as on the YouTube page; new terms settled in glossary/zh.md (section 2026-10-18, US AI disclosure). changes.md files follow.
+--- changes.md zh resources/insights/us-ai-disclosure-rules-brands
+[title] pass1 -> pass3: 美国广告中的 AI 披露：FTC、州法与平台规则 -> 美国广告的 AI 披露：FTC、州法与平台规则 / why: lines up with the h1 in common.json, 23 characters, under the 30 ceiling without the hubStudio suffix
+[meta] pass1 -> pass3: 美国品牌在广告中需要就 AI 披露什么：…依据原文梳理。 -> 美国品牌的广告用了 AI，要披露什么？…均依原文梳理。 / why: the question opening reads like a 36氪 deck instead of a noun chain; same text in resources/insights json-ld
+[standfirst] pass1 -> pass3: 这项义务分为三层 -> 相关义务分散在三个层面 / why: the first sentence now runs on with a comma, which is the native rhythm; FTC spelled out once here (美国联邦贸易委员会)
+[answer] pass1 -> pass3: 包括虚假的人物和虚假的评价 -> 虚假人物、虚假评价都在其列 / why: drops the English-shaped 包括 clause; not-legal-advice line kept: 并非法律意见
+[intro after table] pass1 -> pass3: 本页每条规则均于…查阅原始出处。请先看“约束对象”一栏 -> 本页所列规则，均于…逐条核对原始出处。读表先看“约束对象”一栏 / why: stronger verb, and the instruction is tied to reading the table
+[evidence, FTC tools] pass1 -> pass3: FTC 依靠的是对欺骗行为的一般禁令… -> FTC 倚仗的是三件工具：… / why: colon list instead of a long object chain
+[Section 5 example] pass1 -> pass3: 若 AI 图片让精华液显得更浓稠…把图改对才行 -> 若 AI 图片把精华液做得比实物更浓稠…把图改对才是根本 / why: verb-led parallel clauses; closing line lands harder
+[Endorsement Guides] pass1 -> pass3: 生成的人物会牵涉《代言指南》 -> 画面里出现生成的人物，就要看《代言指南》 / why: conditional clause is how a Chinese editor opens the point
+[customer example] pass1 -> pass3: 从制作角度看 -> 落到制作层面；要么别投放 -> 要么干脆不投 / why: tighter, written register, no translated connector
+[Guides status] pass1 -> pass3: （实际上就是案件发生时它如何解读第 5 条） -> （落到实处，就是真有案件时它如何解读第 5 条） / why: removes the flat 实际上
+[reviews rule] pass1 -> pass3: 这是 FTC 在其自己的公告中明确表示涵盖 AI 生成内容的唯一一项联邦规则 -> FTC 在自己的公告中明言涵盖 AI 生成内容的联邦规则，只有这一项 / why: end-weight on 只有这一项 instead of a long pre-modified noun
+[reviews quote] pass1 -> pass3: 在“评价者或证言提供者是否存在”上作虚假陈述 -> 就“评价者或证言提供者确有其人”作虚假陈述 / why: faithful to misrepresent that the reviewer exists, without the 是否 that bent the meaning
+[penalty] pass1 -> pass3: FTC 未对 2026 年的这一金额作调整 -> 2026 年，FTC 未调整这一金额 / why: time first, short verb
+[shortcuts] pass1 -> pass3: 这就堵死了几条捷径：产品页上生成的评价、并不存在的顾客写的证言 -> 几条捷径就此堵死：产品页上的生成评价，子虚乌有的顾客证言 / why: topic-comment order and a native idiom
+[enforcement h2] pass1 -> pass3: FTC 在 AI 方面实际执法了什么？ -> FTC 在 AI 领域实际查处过哪些案件？ / why: 执法了什么 is a calque
+[review-tool order] pass1 -> pass3: 没有维持下去…新兴 AI 产业 -> 未能维持…重启审查并撤销；夸大宣传：把 AI 产品说成能做到它做不到的事 / why: legal register for the order, quote kept exact
+[federal pending] pass1 -> pass3: 仍在参众两院的委员会审议中 -> 仍停留在参众两院的委员会阶段；与广告标识无关 / why: plainer status line; 而非广告标识 was English-shaped
+[New York definition] pass1 -> pass3: 按法规的表述 -> 法规原文的定义是；照片经过修图的真实模特 -> 照片修过图的真人模特 / why: lighter noun phrases, quote of the statute kept verbatim in translation
+[New York exemptions] pass1 -> pass3: 该法不适用于音频广告；不适用于…也不适用于… -> 该法有几项除外：音频广告；…；仅用 AI 翻译真人表演的情形 / why: one lead-in and a list instead of three repeated verbs
+[A11683] pass1 -> pass3: 要求视频中只要合成表演者出现，披露就须一直留在屏幕上 -> 合成表演者在视频中出现多久，披露就须在屏幕上停留多久 / why: native correlative structure
+[California prominence] pass1 -> pass3: “显著”有明确定义 -> “显著”在法条中有明确界定；画外音则在此列 -> 生成的画外配音则算 / why: crisper contrast between the two examples
+[SB 1000] pass1 -> pass3: 还废除了两项许多解读文章仍在介绍的内容 -> 还取消了两项规定，不少解读文章至今仍在照讲 / why: breaks the stacked attributive clause
+[file provenance] pass1 -> pass3: 请保留它。导出时剥离元数据，等于丢掉证据 -> 务必留住它。导出环节一旦剥离元数据，证据也就随之丢失 / why: firmer imperative, cause and effect spelled out
+[consent laws] pass1 -> pass3: 任何标识都替代不了许可 -> 加什么标识都抵不了许可 / why: native turn of phrase
+[election ads] pass1 -> pass3: 受各州单独的选举法管辖 -> 另受各州选举法管辖，各州不一 / why: English separate election laws, state by state no longer calqued; the required California line stays in English with a Chinese gloss
+[platforms] pass1 -> pass3: 却最先执行 -> 执行起来却最快；付费一侧往往更严 -> 付费广告往往更严 / why: plain business register
+[platform table] pass1 -> pass3: Meta UI labels kept in English in quotes with a gloss at first mention: “AI info”（AI 信息）, “About this ad”（关于此广告）, “Sponsored”（赞助内容） / why: the UI shows the English on US ads
+[records] pass1 -> pass3: 法规问的是…平台问的是…两头都能回答 -> 法规关心…平台关心…两边的问题都能答上 / why: rhythm, stronger verbs
+[app paragraph] pass1 -> pass3: hubStudio 应用自动保存其中一部分 -> 其中一部分，hubStudio 应用会自动记下 / why: topic first; History and Validation as the app labels them (历史记录, 审核), same wording as the EU article
+[FAQ reviews] pass1 -> pass3: 冒充真实的就不行 -> 冒充真实评价就不行 / why: the object was missing
+[sources] all quote sources: 引文由本站翻译 added after the Section 5, Endorsement Guides, reviews rule, New York, California 17610, TikTok and Google sources / why: the quotes are our Chinese of English texts, as the YouTube precedent says
+
+--- changes.md zh common
+[card title] pass1 -> pass3: 美国广告的 AI 披露：FTC、各州与平台 -> 美国广告的 AI 披露：FTC、州法与平台 / why: 州法 names what the article is about (state statutes), and matches the page title
+[card deck] pass1 -> pass2: 美国没有哪部法律统一要求品牌在广告中标注 AI。FTC、纽约州、加州和各大平台，各自设定触发条件。 -> 美国没有哪一部法律统一要求品牌为广告中的 AI 加标识。FTC、纽约州、加州和各平台，触发条件各不相同。 / why: 加标识 is the page's term for the legal label; topic-comment rhythm
+[card deck] pass2 -> pass3: 两句 -> 美国没有哪一部法律统一要求品牌为广告中的 AI 加标识，FTC、纽约州、加州和各大平台各设各的触发条件。 / why: one sentence with a comma reads like a news deck; 各设各的 is the native idiom for each set their own
+[hero alt] pass1 -> pass2: 正把一张空白白卡夹在一张印出来的广告照片下方，照片里的模特穿着… -> 把一张空白卡片夹在打印出来的广告大片下方，画面中的模特身穿… / why: drops the doubled 一张 and the redundant 空白白卡
+[hero alt] pass1 -> pass2: 真正的那件夹克挂在一旁… -> 实物夹克就挂在旁边软木墙的木衣架上 / why: 实物 is the word a producer uses for the real garment
+[hero alt] pass1 -> pass2: 下方工作台上散着…一只掉了瓷的搪瓷杯和一团缠在一起的线缆 -> 下方工作台上搁着…一只磕掉瓷的搪瓷杯和一团缠绕的线缆 / why: split into two sentences, more precise verbs (磕掉瓷)
+[date] pass1: 2026 年 10 月 18 日 / why: house date format, kept through the passes
+[check] pass3: no em dash, full-width punctuation, one space between Han and Latin or digits / why: house rules
+[terms] FTC kept as FTC on the card (spelled out in the article standfirst) / why: card space; the article glosses it once
+[terms] 加标识 for a legal label, 标签 for a platform label, as in the EU sibling article / why: one term per concept across the cluster
+
+--- changes.md zh home
+[latest chip] pass1: <span1>Latest</span1>Rights -> <span1>最新</span1>版权 / why: settled chip pattern (<span1>最新</span1>短视频, <span1>最新</span1>采购模式) and the Rights category label 版权 from common.json
+[latest chip] pass2 -> pass3: kept as is / why: a two-word UI chip with settled terms on both sides; any rewording would break consistency with the insights index and the other chips
+[placeholder] <span1> kept around 最新, no space before 版权 / why: the chip renders the two words as separate visual blocks, as the other chips do
+[check] no Latin left, no em dash, no full-width punctuation needed / why: house rules
+[consistency] same value as the chip in resources/insights.json / why: one label per category across the site
+[source of terms] glossary/zh.md: Latest (chip) -> 最新; common.json: Rights -> 版权 / why: settled terms are never changed on one page only
+[scope] only this unit was empty in home.json; every other entry left untouched / why: improve the existing locale page, never retranslate it
+[review] read in place on the home grid card line: 最新 版权 / why: native reader pass
+[build] npm run i18n:tx -- build zh home / why: house-rule check of the whole file
+[result] one unit changed in the dictionary / why: the new article's chip on the home page
+
+--- changes.md zh resources/insights
+[latest chip] pass1: <span1>Latest</span1>Rights -> <span1>最新</span1>版权 / why: settled chip pattern and the Rights label 版权 from common.json; same value as home.json
+[latest chip] pass2 -> pass3: kept as is / why: settled terms on both sides
+[json-ld description] pass1 -> pass2: 美国品牌在广告中需要就 AI 披露什么：FTC 的欺骗与代言规则、纽约州与加州的法规以及平台标签，依据原文梳理。 -> 美国品牌的广告用了 AI，要披露什么？FTC 的欺骗与代言规则、纽约州和加州法规、各平台标签，均依原文梳理。 / why: the question opening replaces the 需要就…披露什么 noun chain, and the list reads as three parallel items
+[json-ld description] pass3: kept / why: identical to the article's meta description, so search snippets and the index agree
+[length] about 55 characters / why: under the 80-character ceiling for a Chinese description
+[terms] 代言 for endorsement, 欺骗 for deception, 平台标签 for platform labels / why: the article's settled wording
+[names] 纽约州 and 加州, never 纽约 alone / why: the state, not the city
+[check] full-width punctuation, one space around FTC and AI, no em dash / why: house rules
+[scope] only the two empty units filled; every other entry untouched / why: improve the existing locale page, never retranslate it
+[build] npm run i18n:tx -- build zh resources/insights / why: house-rule check of the whole file
+
+2026-10-18T04:28+08:00 French three passes done, all four builds print the check mark (article 196, common 1268, home 401, insights index 98); pending fr empty. Title « Publicité et IA : les règles de transparence aux États-Unis » (h1 and card), SEO title « Publicité et IA : la transparence aux États-Unis | hubStudio » (60 characters), meta 153 characters mirrored in the index json-ld; chip « Dernier article » then « Droits » as settled; app labels Historique and Validation; quotes from English-only US texts marked « (notre traduction) », platform help pages « (version anglaise, notre traduction) »; US platform labels quoted in English as US viewers see them, with a French gloss (the EU page keeps Meta's French « Infos IA »; the glossary records when each applies); the citations « Cal. Bus. & Prof. Code 17610 » and « 22757 » take the settled no-break space after « Cal. ». New terms settled in glossary/fr.md (section 2026-10-18, US AI disclosure). changes.md files follow.
+--- changes.md fr resources/insights/us-ai-disclosure-rules-brands
+[standfirst] pass1 -> pass3: « dans une publicité. L’obligation se superpose plutôt en trois couches » -> « dans ses publicités. L’obligation s’empile en trois couches » / why: drops the English-shaped « plutôt » (instead) and gives the sentence a concrete verb.
+[first answer, h2] pass1 -> pass3: « Quelles règles de transparence sur l’IA s’appliquent à la publicité aux États-Unis ? » -> « Aux États-Unis, quelles règles encadrent la mention de l’IA dans la publicité ? » / why: fronted place, stronger verb, uses the page’s one term for disclosure (mention).
+[first answer] pass1 -> pass3: « Il n’existe pas de règle générale... interdit les contenus IA trompeurs, y compris les faux personnages... la Californie suivra » -> « Aucune règle générale ne s’applique... proscrit les contenus IA trompeurs, faux personnages et faux avis compris... la Californie emboîtera le pas » / why: tighter apposition, journalistic verbs; the not-legal-advice line kept.
+[layers table, heads] pass1 -> pass3: « Ce qui la déclenche » / « Ce qu’elle exige » -> « Déclencheur » / « Exigence » / why: nominal table heads, as a French legal table is set.
+[layers table, cells] pass1 -> pass3: « Une publicité avec un artiste synthétique, à la connaissance de celui qui la réalise » -> « Une publicité comportant un artiste synthétique, en connaissance de cause » / why: the set legal phrase instead of a calque of "known to whoever makes it".
+[layers table, cells] pass1 -> pass3: « Ne pas le rédiger, l’acheter ni le publier » -> « Interdiction de le rédiger, de l’acheter ou de le publier » / why: a table cell states the rule, not an instruction.
+[read the binds column] pass1 -> pass3: « Lisez d’abord la colonne qui indique qui est tenu » -> « Lisez d’abord la colonne « Qui est tenu » » / why: names the column by its own heading, shorter.
+[blockquote, no federal rule] pass1 -> pass3: « Aucune loi fédérale, aucune règle, aucune ligne directrice ni aucune déclaration... n’impose » -> « Ni les lois fédérales, ni les règles, lignes directrices ou déclarations de principe... n’imposent » / why: one negation carries the list; the four-fold « aucune » read as a translation.
+[FTC answer] pass1 -> pass3: « une publicité ne doit pas laisser une fausse impression, quelle que soit la façon dont elle a été produite » -> « ...ne doit pas laisser de fausse impression, quelle que soit la façon dont elle a été conçue » / why: partitive « de » after the negation, the right verb for an ad.
+[Section 5 example] pass1 -> pass3: « rend un sérum plus onctueux ou un canapé plus profond » -> « prête à un sérum une texture plus riche, ou à un canapé une assise plus profonde » ; « Corriger l’image, si. » kept as the closing beat after a semicolon / why: a sofa is not « profond », its seat is; native image of the overclaim.
+[Endorsement Guides] pass1 -> pass3: « Les personnages générés font entrer en jeu les Endorsement Guides » -> « Dès qu’un personnage est généré, les Endorsement Guides entrent en jeu : ce sont les lignes directrices... » / why: verbal opening, the gloss given as its own clause.
+[generated customer] pass1 -> pass3: « Concrètement, une « cliente » générée... livre une recommandation de consommatrice sans avoir jamais utilisé le produit » -> « En pratique, une « cliente » générée... signe la recommandation d’une consommatrice qui n’a jamais utilisé le produit » / why: « livrer une recommandation » is a calque; « signer » carries the deception.
+[fake review rule, h2] pass1 -> pass3: « Que dit de l’IA la règle de la FTC sur les faux avis ? » -> « Règle de la FTC sur les faux avis : que dit-elle de l’IA ? » / why: the inverted order was stiff; topic first, question second.
+[penalty blockquote] pass1 -> pass3: « expose à une amende civile pouvant atteindre 53 088 dollars..., montant que la FTC a maintenu » -> « est passible d’une amende civile de 53 088 dollars au plus..., un montant que la FTC n’a pas modifié » / why: the legal register (« passible de »), figure unchanged.
+[FTC uses it] pass1 -> pass3: « La FTC a commencé à s’en servir. » -> « La FTC s’en sert déjà. » / why: shorter transition, native rhythm.
+[enforcement blockquote] pass1 -> pass3: « une décision définitive visant un vendeur... lui a imposé un paiement de 750 000 dollars » -> « une décision définitive a contraint un vendeur..., épinglé pour de faux avis..., à verser 750 000 dollars » / why: verb instead of a noun chain (« imposé un paiement »).
+[shortcuts] pass1 -> pass3: « voilà qui exclut une courte liste de raccourcis » -> « voilà quelques raccourcis à proscrire » / why: drops the English "rules out a short list".
+[enforcement answer] pass1 -> pass3: « ne porte sur une étiquette manquante » -> « ne repose sur l’absence d’étiquette » / why: French states the absence, not a "missing label".
+[review-tool order] pass1 -> pass3: « Ce que l’agence continue de poursuivre, ce sont les promesses excessives » -> « L’agence continue en revanche de traquer les promesses excessives » / why: removes the cleft sentence, adds the contrast connector.
+[executive order] pass1 -> pass3: « En application d’un décret..., la FTC a également proposé, sans l’avoir encore publiée » -> « Dans le cadre d’un décret..., la FTC a aussi proposé, sans l’avoir encore adoptée » / why: a proposed policy statement is not yet adopted; « publiée » misread "issued".
+[New York, knowledge] pass1 -> pass3: « Tout se joue sur la connaissance effective. » -> « Tout tient à la connaissance effective. » / why: the correct collocation.
+[New York, exemptions] pass1 -> pass3: « La loi exclut les publicités audio... » -> « Échappent à la loi les publicités audio... » / why: inverted legal opening, varies the paragraph starts.
+[California blockquote] pass1 -> pass3: « une formulation substantiellement similaire à » -> « une formulation proche, en substance, de » / why: avoids the anglicism; the required English wording stays in English with a French gloss.
+[California table] pass1 -> pass3: « Amende civile jusqu’à 2 500 dollars par infraction ; également un délit (misdemeanor) » -> « Amende civile de 2 500 dollars au plus par infraction ; c’est aussi un délit (misdemeanor) » / why: « au plus » as in the statute paraphrase, a full clause after the semicolon.
+[prominently] pass1 -> pass3: « Une foule générée loin derrière un vrai présentateur reste en dehors. Une voix off générée tombe dedans. » -> « Une foule générée à l’arrière-plan, loin d’un vrai présentateur, n’est pas concernée. Une voix off générée l’est. » / why: « tomber dedans » is spoken; the pair now closes on a short echo.
+[file and provenance] pass1 -> pass3: « Une étape d’export qui efface les métadonnées jette la preuve... où cette preuve survit (et où elle se rompt) » -> « ...détruit la preuve ; l’analyse... montre où elle résiste (et où elle cède) » / why: native verb pair, no repeated noun.
+[consent laws] pass1 -> pass3: « L’ELVIS Act du Tennessee... ouvre une action en justice contre... » -> « Au Tennessee, l’ELVIS Act... permet d’agir en justice contre... » / why: each bullet now opens on its state, as a French list reads.
+[platforms intro] pass1 -> pass3: « ce sont elles qui s’appliquent en premier : une publicité refusée, un post retiré » -> « ce sont elles qui frappent les premières : publicité refusée, post retiré » / why: stronger verb, telegraphic sanctions.
+[New York and platform labels] pass1 -> pass3: « Retenez cette dernière phrase à New York. » -> « À New York, cette dernière phrase compte. » / why: the imperative calque read translated.
+[asset table] pass1 -> pass3: « Image IA qui embellit le produit » -> « Image IA qui flatte le produit » ; « Section 5, si elle suggère... » -> « Section 5, si le contenu laisse croire à une recommandation jamais donnée » / why: sharper verb; agreement fixed for a row headed by two nouns.
+[record] pass1 -> pass3: « L’application hubStudio en conserve une partie d’elle-même. L’Historique garde... » -> « L’application hubStudio prend déjà une partie de ce travail à son compte. L’Historique conserve... » / why: native idiom; app labels Historique and Validation as in the app.
+[FAQ, FTC] pass1 -> pass3: « Que les règles anciennes s’appliquent. » -> « Que les règles de toujours s’appliquent. » / why: "the old rules" means the established ones, not outdated ones.
+[FAQ, first answer] pass1 -> pass3: « lorsqu’un contenu IA induirait sinon en erreur » -> « dès qu’un contenu IA induirait le public en erreur sans elle » / why: « sinon » mid-clause is an English "otherwise".
+[closing] pass1 -> pass3: « Si une campagne américaine fait appel à des personnes ou à des voix générées, envoyez-nous le brief. » -> « Votre campagne américaine met en scène des personnes ou des voix générées ? Envoyez-nous le brief. » / why: the house closing form, as on the EU page.
+[SEO] title kept at 60 characters « Publicité et IA : la transparence aux États-Unis | hubStudio »; meta description 153 characters, also copied word for word into the insights index json-ld.
+[build] « Cal. Bus. &amp; Prof. Code 17610 » and « 22757 » flagged as left in English: a no-break space after « Cal. », the settled fix, keeps the citation identical on screen.
+
+--- changes.md fr common
+[card title] pass1 -> pass3: « Publicité et IA : les règles de transparence aux États-Unis » kept / why: matches the French address publicite-et-ia-les-regles-de-transparence-aux-etats-unis and serves as the article h1.
+[card deck] pass1 -> pass2: « Aux États-Unis, aucune loi n’oblige à elle seule une marque... FTC, New York, Californie, plateformes : chacun fixe son propre déclencheur. » -> « ...aucune loi ne suffit à obliger une marque... La FTC, New York, la Californie et les plateformes fixent chacun leur propre déclencheur. » / why: the bare list before a colon read as a slide; articles restore a sentence.
+[card deck] pass2 -> pass3: « aucune loi ne suffit à obliger une marque » -> « aucune loi unique n’oblige une marque » / why: "no single law" said directly, without the softer « ne suffit pas ».
+[hero alt] pass1 -> pass2: « Un producteur en chemise bleu marine fixe une carte blanche vierge sous la photo imprimée d’une campagne, où un mannequin porte... ; la vraie veste pend à côté... » -> « Contre un mur en liège, un producteur... épingle une carte blanche vierge sous le tirage d’une photo de campagne : un mannequin y porte... et la vraie veste pend juste à côté » / why: the setting first, as a French caption sets a scene; « tirage » for a print.
+[hero alt] pass2 -> pass3: « épingle » -> « fixe » / why: the English says clips, not pins; accuracy over colour.
+[date] pass1: « 18 octobre 2026 » / why: French date form, no ordinal.
+[house rules] no em or en dash, guillemets none needed, typographic apostrophes, no-break space before « : ».
+[consistency] « mention » and « signaler » used for disclosure, as on the article and the audit-trail page.
+[check] common.json build: 1268 entries clean.
+[scope] only the four empty units were written; every other common entry left as it was.
+
+--- changes.md fr home
+[lead card chip] pass1 -> pass3: « <span1>Dernier article</span1>Droits » / why: the settled chip form (glossary: "Latest" -> « Dernier article »; Rights -> Droits, as in common.json), same pattern as the earlier « <span1>Dernier article</span1>Vidéo IA ».
+[pass2] no change: a two-word UI chip with a settled wording leaves nothing to restructure.
+[pass3] no change: checked against the insights index chip, identical on both pages.
+[placeholders] <span1></span1> kept around « Dernier article », category label after it, as in the key.
+[scope] only the one empty unit was written; the home page’s other entries stay as they were.
+[check] home.json build: 401 entries clean.
+[consistency] « Droits » matches the category filter label in common.json, so the chip and the filter read the same.
+[typography] no punctuation in the chip; nothing to normalize.
+[source] the chip wording comes from the glossary’s 2026-10-10 section, not a new choice.
+[result] the lead card on /fr now reads « Dernier article » then « Droits ».
+
+--- changes.md fr resources/insights
+[lead card chip] pass1 -> pass3: « <span1>Dernier article</span1>Droits » / why: the settled chip of the insights index (glossary: « Dernier article », Rights -> Droits), identical to the home page.
+[json-ld description] pass1 -> pass3: « Publicité et IA aux États-Unis : règles de la FTC sur la tromperie et les recommandations, lois de New York et de Californie, étiquettes des plateformes. » / why: copied word for word from the article’s own meta description, as the glossary requires for index cards and json-ld.
+[json-ld length] 153 characters, under the 155 ceiling, no-break space before the colon.
+[pass2] no change: both units are fixed copies (a settled chip, a mirrored meta), so a rewrite would break the match.
+[pass3] no change, for the same reason; checked against the article dictionary after its last build.
+[terms] « tromperie » (deception), « recommandations » (endorsement), « étiquettes des plateformes » (platform labels), as settled in the glossary’s 2026-10-18 section.
+[placeholders] <span1></span1> kept around « Dernier article ».
+[scope] only the two empty units were written; the index’s other entries stay as they were.
+[check] resources/insights.json build: 98 entries clean.
+[typography] typographic apostrophes, no dash of any kind.
+
+2026-10-18T04:29+08:00 npm run i18n:local -- check: ✓ every page is translated in French and Chinese (245 pages). npm run i18n:guard: ✓ 245 English pages with a French address, dictionaries complete. The extract also moved the case-study card sentences from work.json into common.json (now on three pages or more), translations carried with them. npm run check (astro check): 0 errors, 0 warnings, 26 hints.
+2026-10-18T04:32+08:00 npm run build: passed (exit 0; prebuild content:todo and i18n:guard clean). Built pages verified: FR h1 « Publicité et IA : les règles de transparence aux États-Unis » at /fr/ressources/analyses/publicite-et-ia-les-regles-de-transparence-aux-etats-unis, ZH h1 美国广告的 AI 披露：FTC、州法与平台 at /zh/resources/insights/us-ai-disclosure-rules-brands; the article is on the home page, the /solutions/brands layer and the EN, FR and ZH resource feeds. Row 78 set to published (published_on 2026-10-18).

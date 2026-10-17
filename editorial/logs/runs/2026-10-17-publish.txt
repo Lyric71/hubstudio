@@ -290,3 +290,16 @@
 2026-10-17T20:36:10+08:00 schedule.csv: 77 rows published, 65 not_started; no row at image_ready, review or approved, none blocked. Nothing is eligible to publish (RUNBOOK, "Every schedule row is published" case applies to the ready queue): no build, no publish commit, no notification.
 2026-10-17T20:36:10+08:00 watch.csv: no row due on or before 2026-10-17 (earliest due 2026-10-19, singles-day-618-production-calendar). Nothing rechecked.
 2026-10-17T20:36:10+08:00 end of catch-up run: nothing eligible, nothing published. The Gmail, Google Calendar and Google Drive connectors are not authorized in this session; the run did not need them.
+2026-10-17T20:36:24+08:00 run log committed and pushed as 85f9e87 (origin/main up to date).
+I ran the catch-up publish run, and nothing was ready to publish.
+
+- **Earlier runs today:** the 13:19 catch-up run had already finished and pushed both of today's rows in English, French and Chinese: row 75 `word-by-word-video-captions` (f24743c) and row 77 `amazon-product-image-requirements` (ee92c62). The 16:35 attempt lost its connection to the model providers before doing any work. No half-done publish work was left in the working tree.
+- **Queue:** `editorial/schedule.csv` has 77 rows published and 65 at not_started. None is at image_ready, review or approved, and none is blocked. Following the runbook, I didn't build, make a publish commit or send a notification.
+- **Watch list:** no row in `editorial/watch.csv` is due yet. The first is on 2026-10-19 (`singles-day-618-production-calendar`).
+- **Run log:** the scheduler had restarted `editorial/logs/runs/2026-10-17-publish.txt` empty. I put back the 13:19 run's entries from git so the day has one log, then added this run's findings and noted that it was a catch-up run. I committed the log and the 16:35 attempt's log on main as 85f9e87 and pushed. The push succeeded and main matches origin.
+- **Not touched:** the other uncommitted changes in the tree (`editorial/CLAUDE.md`, the three runner scripts, the new resources videos page and its dictionaries, the header, home page, `vercel.json` and `astro.config.mjs`) were there before this run and weren't made by an editorial run.
+- **One line not committed:** after the push I added a line to the run log recording the commit hash, so that line is in the working tree but not in 85f9e87.
+
+The Gmail, Google Calendar and Google Drive connectors aren't authorized in this session; you can connect them in your claude.ai connector settings. This run didn't need them.
+2026-10-17T20:36:33 model Opus 5.5 completed successfully
+2026-10-17T20:36:33 end publish exit 0
