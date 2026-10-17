@@ -1,0 +1,529 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What are Amazon's main image requirements?",
+    "a": "A pure white background, RGB 255, 255, 255. The product fills 85 percent of the frame and appears in full, a single unit shown once, with only the accessories that ship with it. No text, logos, watermarks, props, mannequins or placeholders. Packaging only when it's a real feature, multipacks aside. Adult clothing goes on a standing model; shoes go single, facing left, at 45 degrees."
+  },
+  {
+    "q": "What size should Amazon product images be?",
+    "a": "Between 500 and 10,000 pixels on the longest side, and 1,000 or more if you want zoom, which Amazon recommends. Amazon sets no aspect ratio in its Product image guide, though its clothing page asks for close to 3:4 on a clothing main image. One Amazon page says 500 on the shortest side, so keep both sides at 500 or more."
+  },
+  {
+    "q": "Does the Amazon main image have to be on white?",
+    "a": "Yes, pure white, RGB 255, 255, 255, which is hex #FFFFFF. A background that isn't pure white is a listed suppression reason. Six product types are the exception: beds, bed frames, mattresses, rugs, rug pads and sofas may use a lifestyle main image, with no text or extra logos. Additional images can show the product in use."
+  },
+  {
+    "q": "Why was my Amazon image rejected or suppressed?",
+    "a": "Amazon lists 14 suppression reasons: text or logos on the main image, a background that isn't pure white, a cropped product, packaging or tags, props, blur, a product too small in the frame and extra items among them. Check the Fix tab in Manage Products and the Content compliance issues report, then upload a compliant replacement with the MAIN code."
+  },
+  {
+    "q": "Can I add text or logos to Amazon product images?",
+    "a": "Not on the main image: text, logos, graphics and watermarks are a suppression reason. On additional images the guide bans text only on the swatch, but claims such as free shipping, review stars, seller details and Amazon's own logos and badges are banned on every image. Text on a country-specific image must be in that country's language or English."
+  },
+  {
+    "q": "Can I use AI-generated images on Amazon?",
+    "a": "None of Amazon's image help pages read for this guide bans AI. They ask for a realistic, professional-quality image that shows the real product at its real scale, quantity and color. The one AI rule is about people: photorealistic people generated entirely by AI must be tagged contains-synthetic-performer in the file's XMP dc:subject field before upload."
+  }
+];
+---
+
+<ArticleLayout slug="amazon-product-image-requirements" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">Pure white, 85 percent of the frame, 1,000 pixels for zoom. Those three come straight from Amazon. Two things rarely reach the size guides: the places where Amazon's own pages disagree, and a new line saying Amazon may edit the files you send.</p>
+
+  <h2>What are Amazon's product image requirements in 2026?</h2>
+
+  <p>Amazon's product image requirements in 2026 center on the main image: pure white (RGB 255, 255, 255), with the product filling 85 percent of the frame, shown whole and only once. Files run 500 to 10,000 pixels on the longest side, 1,000 or more for zoom. hubStudio can build the files; Seller Central takes the upload.</p>
+
+  <p>Reviewed October 17, 2026. Every rule below is quoted from Amazon's Seller Central help for the US store, read that day in a logged-out browser. The help pages carry no dates, so each row is dated by the read. Where two Amazon pages disagree, both values are printed and each page is named.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Requirement</th>
+          <th scope="col">Amazon's value</th>
+          <th scope="col">Amazon page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Main image background</th>
+          <td>Pure white, RGB 255, 255, 255</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Product in the frame</th>
+          <td>85 percent of the image, whole, shown once</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Pixels, longest side</th>
+          <td>500 minimum, 10,000 maximum</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Zoom</th>
+          <td>1,000 pixels or more on the longest side</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Files</th>
+          <td>JPEG (recommended), PNG, TIFF, non-animated GIF</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Color</th>
+          <td>RGB; CMYK "Not preferred"</td>
+          <td>Technical image file requirements</td>
+        </tr>
+        <tr>
+          <th scope="row">Images per listing</th>
+          <td>One compliant main required; six more and a video recommended</td>
+          <td>Product image guide</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What does Amazon require of the main image?</h2>
+
+  <p>The main image carries the variant code MAIN. It's the picture shoppers see in search, and 11 of Amazon's 14 suppression reasons apply to it alone. Without a compliant one, Amazon may pull the listing from search until you fix it.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Rule</th>
+          <th scope="col">What Amazon's page says</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Background</th>
+          <td>"a pure white background (RGB color values: 255, 255, 255)"</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Fill</th>
+          <td>"Show the product as 85% of the image"</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Whole product</th>
+          <td>Show all of it; "Do not cut off any part of the product"</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Shown once</th>
+          <td>Front only, not front and back in one image</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Quantity</th>
+          <td>One unit, plus accessories included with it</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Realism</th>
+          <td>"a realistic, professional-quality image" at real scale, quantity and color</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Placeholders</th>
+          <td>None, temporary ones included</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Packaging</th>
+          <td>Only when it is an important feature, such as a carrying case</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Props</th>
+          <td>None that aren't included and could confuse the customer</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Mannequins</th>
+          <td>No part of one, clear, flesh-toned, framework or hanger</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Text, logos, graphics, watermarks</th>
+          <td>A suppression reason on any main image</td>
+          <td>Image suppression</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Amazon's main image must have "a pure white background (RGB color values: 255, 255, 255)" and should "Show the product as 85% of the image," whole, once and as one unit. Read from Amazon's own help article.</blockquote>
+  <p class="source">Source: Amazon Seller Central, Product image guide, US store, page undated, read October 17, 2026. https://sellercentral.amazon.com/help/hub/reference/external/G1881</p>
+
+  <p>How is the 85 percent measured? The guide doesn't say. Two other Amazon pages come close. The clothing page counts "85% of the total image area," for clothing. The error codes page gives an example instead: a product filling only 100 by 100 pixels of a 500 by 500 image is too small, because "at least 85% of a product image should be taken up with the product itself." For everything else the method stays open. Pick one and hold it across the catalog.</p>
+
+  <p>Lifestyle main images exist, but barely. Amazon's style guide page names six product types that may use one: BED, BED_FRAME, MATTRESS, RUG, RUG_PAD and SOFA. Everything else goes on white.</p>
+
+  <h2>What size, file format and file name does Amazon want?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Setting</th>
+          <th scope="col">Amazon's value</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Longest side</th>
+          <td>500 to 10,000 pixels; under 500 will not upload</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Zoom</th>
+          <td>"Images with 1,000+ pixels on the longest side enable the zoom function"</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Upscaling</th>
+          <td>"Do not artificially enlarge small images"</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Formats</th>
+          <td>JPEG, TIFF, PNG, non-animated GIF; JPEG recommended</td>
+          <td>Product image guide, Upload images</td>
+        </tr>
+        <tr>
+          <th scope="row">Refused</th>
+          <td>EPS, BMP, PDF, and app files such as PSD</td>
+          <td>Technical image file requirements</td>
+        </tr>
+        <tr>
+          <th scope="row">Color</th>
+          <td>RGB; CMYK uploads but convert it; grayscale only for gray or silver metal</td>
+          <td>Technical image file requirements</td>
+        </tr>
+        <tr>
+          <th scope="row">Compression</th>
+          <td>Minimal or none; JPEG at the highest quality; remove layers</td>
+          <td>Technical image file requirements</td>
+        </tr>
+        <tr>
+          <th scope="row">File name, bulk</th>
+          <td>Product ID + variant code + extension: B000123456.MAIN.jpg</td>
+          <td>Product image guide, Upload images</td>
+        </tr>
+        <tr>
+          <th scope="row">Zip upload</th>
+          <td>Up to 1,000 images and 1 GB per zip</td>
+          <td>Upload images</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Images must be 500 to 10,000 pixels on the longest side, and "Images with 1,000+ pixels on the longest side enable the zoom function." Read from Amazon's own help article.</blockquote>
+  <p class="source">Source: Amazon Seller Central, Product image guide, US store, page undated, read October 17, 2026. https://sellercentral.amazon.com/help/hub/reference/external/G1881</p>
+
+  <p>The file name has three parts separated by periods. Spaces, dashes or extra characters stop the upload. The ID can be the ASIN, UPC, ISBN, EAN, GTIN or JAN. One trap: a file named with an ID and no variant code, B000123456.jpg, uploads as the main image. The guide marks the naming rule optional, and the Upload images page offers flexible naming as well: any file name, assigned to products after upload.</p>
+
+  <p>Amazon contradicts itself in two places, and both matter at upload. Its <a href="https://sellercentral.amazon.com/help/hub/reference/external/G202131130">Product image error codes</a> page says a file must be "at least 500 pixels on the shortest side" and lists .tif, .tiff, .jpg, .jpeg and .gif, with no PNG. The Product image guide, the Upload images page and the upload errors page all say longest side and all accept PNG. That's three pages against one. A file at least 500 pixels on both sides, saved as JPEG, clears every version.</p>
+
+  <p>The fill figure has a history too. Amazon's 2018 Quick Start Style Guide, written by its Australian entity and still linked from the US style guides page, asks for the product to "occupy at least 80 percent of the image area." Build to 85. It passes both.</p>
+
+  <p>Size guides often print a 2,000-pixel recommendation, a 1,600-pixel zoom line or a 10 MB file cap. None of those numbers appears on the Amazon image help pages read for this guide. Amazon's line is 1,000 pixels for zoom, and it sets no megabyte limit there.</p>
+
+  <h2>What can Amazon's additional images show?</h2>
+
+  <p>More than the main image, with a few limits that follow every slot. Amazon names each slot by a variant code, and the code says what belongs in it.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Variant code</th>
+          <th scope="col">What Amazon says it is for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">PT01 to PT99</th>
+          <td>Additional angles, product in use, screenshots, accessories, product details</td>
+        </tr>
+        <tr>
+          <th scope="row">TOPP, BOTT, LEFT, RGHT, FRNT, BACK, SIDE</th>
+          <td>Other angles and sides of the product</td>
+        </tr>
+        <tr>
+          <th scope="row">SWCH</th>
+          <td>The swatch, usually a color sample; MAIN stands in when there is none</td>
+        </tr>
+        <tr>
+          <th scope="row">PS01 to PS06</th>
+          <td>Warning and safety information, shown under Safety and Product Resources</td>
+        </tr>
+        <tr>
+          <th scope="row">INGR, EEGL, DTLS</th>
+          <td>Ingredients, the energy guide, multiples packed together</td>
+        </tr>
+        <tr>
+          <th scope="row">IN01 to IN99</th>
+          <td>Interior shots, usually sample pages of books</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Lifestyle scenes belong in the PT slots, as "product in use." What every image still can't carry, main or not: anything that misrepresents the product or doesn't match its title; nudity or sexually suggestive images; customer reviews, five-star graphics, claims such as free shipping, or seller information; Amazon's logos, trademarks or badges, "Best seller" and "Amazon's Choice" included.</p>
+
+  <p>Text is narrower than its reputation. The guide's line reads "No text or pricing details (swatch image only)," so the text ban sits on the swatch, and claims are banned everywhere. Selling in several countries? Text on a country-specific image must be in that country's official language or in English.</p>
+
+  <p>On AI, Amazon's rule is about people, not products: an image showing photorealistic people generated entirely by AI must carry the keyword contains-synthetic-performer in its XMP dc:subject field before upload.</p>
+
+  <h2>Which categories have their own Amazon image rules?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Category</th>
+          <th scope="col">What changes</th>
+          <th scope="col">Amazon page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Adult clothing</th>
+          <td>Main on a standing model; not sitting, kneeling, leaning or lying down</td>
+          <td>Product image guide, Image guidelines for clothing</td>
+        </tr>
+        <tr>
+          <th scope="row">Clothing mains</th>
+          <td>Frontal view; aspect ratio "close to 3:4"; 85 percent of the total image area; no mannequin, hanger, folded product or selfie</td>
+          <td>Image guidelines for clothing</td>
+        </tr>
+        <tr>
+          <th scope="row">Clothing, all images</th>
+          <td>1,000 pixels or more for zoom; children's wear under 1,000 pixels prohibited; up to eight alternate images per SKU</td>
+          <td>Image guidelines for clothing</td>
+        </tr>
+        <tr>
+          <th scope="row">Children's undergarments, leotards, swimwear</th>
+          <td>Photographed lying flat, never on a model</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Clothing accessories and multipacks</th>
+          <td>Flat, without a model</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Footwear</th>
+          <td>A single shoe, facing left, at a 45-degree angle</td>
+          <td>Product image guide</td>
+        </tr>
+        <tr>
+          <th scope="row">Multipacks</th>
+          <td>Main shows the total quantity delivered, in its packaging</td>
+          <td>Multipack imaging standards</td>
+        </tr>
+        <tr>
+          <th scope="row">Beds, mattresses, rugs, rug pads, sofas</th>
+          <td>A lifestyle main image is allowed</td>
+          <td>Product page style guides</td>
+        </tr>
+        <tr>
+          <th scope="row">Gray or silver metal products</th>
+          <td>Grayscale accepted</td>
+          <td>Technical image file requirements</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Amazon's clothing page asks for a main image with a "Minimum aspect ratio is close to 3:4 (width/height) and 85% of the total image area occupied," shot on a model on pure white. Read from Amazon's own help article.</blockquote>
+  <p class="source">Source: Amazon Seller Central, Image guidelines for clothing, US store, page undated, read October 17, 2026. https://sellercentral.amazon.com/help/hub/reference/external/G200498950</p>
+
+  <p>Multipacks flip the packaging rule. The general guide says no packaging on the main image unless it matters; the multipack page says the main image "must show the product in the packaging," with the full count the customer gets. The title has to state that count too, so the picture and the title agree.</p>
+
+  <h2>Why did Amazon reject or suppress my product image?</h2>
+
+  <p>Amazon's <a href="https://sellercentral.amazon.com/help/hub/reference/external/GT8RSE9S9NK4LP6Z">Image suppression</a> page lists 14 reasons, and its fix never changes: submit a compliant image. So the last column is ours. It's how we'd rebuild the file in production, not Amazon's text.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Reason, as Amazon names it</th>
+          <th scope="col">What Amazon says is wrong</th>
+          <th scope="col">Images</th>
+          <th scope="col">How to rebuild the file</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Text, logo, graphics, or watermarks</th>
+          <td>Any of them on the main image</td>
+          <td>Main</td>
+          <td>Re-export from a clean master with no overlays</td>
+        </tr>
+        <tr>
+          <th scope="row">Non-white background</th>
+          <td>Background not pure white, RGB 255 255 255</td>
+          <td>Main</td>
+          <td>Set the background to 255, 255, 255 and check the corners</td>
+        </tr>
+        <tr>
+          <th scope="row">Image missing</th>
+          <td>Main image missing or incorrect</td>
+          <td>Main</td>
+          <td>Upload a new MAIN; replace rather than delete</td>
+        </tr>
+        <tr>
+          <th scope="row">Additional items</th>
+          <td>Items not permitted for this product type</td>
+          <td>Main</td>
+          <td>Remove anything that doesn't ship with the product</td>
+        </tr>
+        <tr>
+          <th scope="row">Cropped product</th>
+          <td>Part of the product cut off</td>
+          <td>Main</td>
+          <td>Reframe with a margin on every side</td>
+        </tr>
+        <tr>
+          <th scope="row">Product not outside of packaging</th>
+          <td>Product in packaging, or brand or swing tags</td>
+          <td>Main</td>
+          <td>Shoot it out of the box, tags removed</td>
+        </tr>
+        <tr>
+          <th scope="row">Propping</th>
+          <td>Props inside, hiding or surrounding the product</td>
+          <td>Main</td>
+          <td>Hide supports or retouch them out</td>
+        </tr>
+        <tr>
+          <th scope="row">Blurriness or pixelation</th>
+          <td>Image blurred or pixelated</td>
+          <td>Any</td>
+          <td>Re-shoot or re-render; never upscale a small file</td>
+        </tr>
+        <tr>
+          <th scope="row">Product too small</th>
+          <td>Product too small in the frame</td>
+          <td>Any</td>
+          <td>Crop to about 85 percent fill</td>
+        </tr>
+        <tr>
+          <th scope="row">Prurience</th>
+          <td>Image is prurient</td>
+          <td>Any</td>
+          <td>Replace the image</td>
+        </tr>
+        <tr>
+          <th scope="row">Multiple product images</th>
+          <td>One product shown more than once</td>
+          <td>Main, apparel</td>
+          <td>One view only</td>
+        </tr>
+        <tr>
+          <th scope="row">Human model</th>
+          <td>Model used for a non-clothing product</td>
+          <td>Main, softlines except adult apparel</td>
+          <td>Shoot it off-model</td>
+        </tr>
+        <tr>
+          <th scope="row">Mannequin or hanger</th>
+          <td>Mannequin or hanger shown</td>
+          <td>Main, apparel or accessories</td>
+          <td>Model for adult apparel; flat for accessories</td>
+        </tr>
+        <tr>
+          <th scope="row">Model in non-standing position</th>
+          <td>Model not standing</td>
+          <td>Main, apparel</td>
+          <td>Use a standing frame</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Products removed from search show on the Fix tab in Manage Products. Files that failed show under Submission status, report type Content compliance issues. Then allow up to 24 hours for a replacement main image to appear.</p>
+
+  <p>Not every failure waits for review. Some happen at upload. Amazon's upload errors page names two worth knowing before a reshoot. Error 990003 means the new main image shows a different product from the one on the ASIN. "Resubmission of previously accepted or rejected images" means the same file went in twice: change it (crop, resolution, a fresh export) and Amazon reads it as new.</p>
+
+  <p>One sentence on the Product image guide is new this autumn. It wasn't there when we read the page on September 14.</p>
+
+  <blockquote class="evidence">"We may also modify images that you submit to meet the product image requirements or enhance the customer experience." The sentence appears on the October 17 read, in English and in the page's Chinese version, and not on the September 14 read of the same address.</blockquote>
+  <p class="source">Source: Amazon Seller Central, Product image guide, US store, two dated captures of the same page compared, September 14 and October 17, 2026. https://sellercentral.amazon.com/help/hub/reference/external/G1881</p>
+
+  <p>The suppression page gives the example: Amazon may remove a watermark itself. Don't count on it. The same page lists a watermark on the main image as a reason to suppress the listing.</p>
+
+  <h2>How do you make Amazon-ready product images in hubStudio?</h2>
+
+  <p>Start from a photo of the real product. Amazon asks for real scale, quantity and color, so the honest route is to edit your own picture, not to invent the product from a prompt.</p>
+
+  <p>In the <a href="/help/create-an-image">Image studio</a>, Edit an image takes your photo and an instruction, such as a pure white background or a stray object removed. Add the <a href="/help/skills">E-commerce packshot skill</a> from the Catalog, and Improve with AI rewrites your prompt with it. On the ChatGPT Image engines, pick an Opaque background and a resolution up to 4K (3840 pixels), which clears Amazon's 1,000-pixel zoom line with room to crop. Transparent, which only the 2.5 engines offer, is no use for a main image: it has to be white.</p>
+
+  <p>Then open the result in the <a href="/help/assets-library#the-image-editor">Image editor</a>, which is free. Crop to Square 1:1 or draw your own frame, leaving about 85 percent fill. Save as JPG or PNG at the size you choose. Skip WebP here: it isn't on Amazon's list. The editor works on pictures up to 4,096 pixels on the long side.</p>
+
+  <p>The upload is yours. hubStudio doesn't connect to Seller Central; files go in through <a href="https://sellercentral.amazon.com/help/hub/reference/external/GUGPCYWV2P8KVFUT">Upload images</a> or Image Manager.</p>
+
+  <p>The <a href="/resources/how-to/ai-white-background-packshot">AI white-background packshot how-to</a> walks through the main image step by step, and the <a href="/resources/how-to/product-photo-to-lifestyle-image">product photo to lifestyle image how-to</a> covers the PT slots. Selling on Tmall and JD as well? The <a href="/resources/insights/amazon-tmall-jd-one-product-three-listings">one product, three listings piece</a> shows which Amazon files carry over. For the full listing built by a team, see the <a href="/services/design/ecommerce">ecommerce design service</a> and the <a href="/solutions/platforms/amazon">Amazon platform page</a>; the <a href="/resources/specs">platform specs library</a> holds the other networks.</p>
+
+  <h2>Changelog</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">What changed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">October 17, 2026</th>
+          <td>Page reviewed and written from 10 Seller Central help articles and the 2018 Quick Start Style Guide, all read that day. Amazon's Product image guide now says Amazon "may also modify images that you submit"; the sentence was absent on September 14, 2026. Next review January 23, 2027.</td>
+        </tr>
+        <tr>
+          <th scope="row">September 14, 2026</th>
+          <td>Product image guide read by hubStudio: pure white, 85 percent, 500 to 10,000 pixels, 1,000 for zoom, the same values as on October 17.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>FAQ</h2>
+
+  <h3>What are Amazon's main image requirements?</h3>
+
+  <p>A pure white background, RGB 255, 255, 255. The product fills 85 percent of the frame and appears in full, a single unit shown once, with only the accessories that ship with it. No text, logos, watermarks, props, mannequins or placeholders. Packaging only when it's a real feature, multipacks aside. Adult clothing goes on a standing model; shoes go single, facing left, at 45 degrees.</p>
+
+  <h3>What size should Amazon product images be?</h3>
+
+  <p>Between 500 and 10,000 pixels on the longest side, and 1,000 or more if you want zoom, which Amazon recommends. Amazon sets no aspect ratio in its <a href="https://sellercentral.amazon.com/help/hub/reference/external/G1881">Product image guide</a>, though its clothing page asks for close to 3:4 on a clothing main image. One Amazon page says 500 on the shortest side, so keep both sides at 500 or more.</p>
+
+  <h3>Does the Amazon main image have to be on white?</h3>
+
+  <p>Yes, pure white, RGB 255, 255, 255, which is hex #FFFFFF. A background that isn't pure white is a listed suppression reason. Six product types are the exception: beds, bed frames, mattresses, rugs, rug pads and sofas may use a lifestyle main image, with no text or extra logos. Additional images can show the product in use.</p>
+
+  <h3>Why was my Amazon image rejected or suppressed?</h3>
+
+  <p>Amazon lists 14 suppression reasons: text or logos on the main image, a background that isn't pure white, a cropped product, packaging or tags, props, blur, a product too small in the frame and extra items among them. Check the Fix tab in Manage Products and the Content compliance issues report, then upload a compliant replacement with the MAIN code.</p>
+
+  <h3>Can I add text or logos to Amazon product images?</h3>
+
+  <p>Not on the main image: text, logos, graphics and watermarks are a suppression reason. On additional images the guide bans text only on the swatch, but claims such as free shipping, review stars, seller details and Amazon's own logos and badges are banned on every image. Text on a country-specific image must be in that country's language or English.</p>
+
+  <h3>Can I use AI-generated images on Amazon?</h3>
+
+  <p>None of Amazon's image help pages read for this guide bans AI. They ask for a realistic, professional-quality image that shows the real product at its real scale, quantity and color. The one AI rule is about people: photorealistic people generated entirely by AI must be tagged contains-synthetic-performer in the file's XMP dc:subject field before upload.</p>
+</ArticleLayout>

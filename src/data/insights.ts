@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'amazon-product-image-requirements',
+    image: '/Images/insight-amazon-product-image-requirements.webp',
+    imageAlt:
+      'Two hands set an unbranded tan suede sneaker on a sweep of white paper, toe angled to the left, a strip of masking tape marking its spot, its pair cropped at the lower right and a roll of black tape and a light stand on the concrete floor at the left.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Amazon Product Image Requirements for 2026',
+    deck: 'Amazon\'s main image, additional image and category rules, read from Seller Central on October 17, 2026, with every conflict between its pages printed.',
+    date: 'October 17, 2026',
+    dateISO: '2026-10-17',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Amazon Product Image Requirements for 2026 | hubStudio',
+    metaDescription:
+      'Amazon main and additional image rules for 2026: white background, frame fill, zoom size, formats and rejection reasons, quoted from Seller Central.',
+  },
+  {
     slug: 'one-app-vs-tool-stack-social-content',
     image: '/Images/insight-one-app-vs-tool-stack-social-content.webp',
     imageAlt:

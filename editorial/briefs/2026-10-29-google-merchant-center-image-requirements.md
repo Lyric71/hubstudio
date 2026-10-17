@@ -94,7 +94,7 @@ than an unsourced one.
 - Google's rule on generative AI images in Merchant Center, quoted: keep the IPTC DigitalSourceType tag (trainedAlgorithmicMedia, or the composite value for an AI background on a real photo) that marks the file, never strip it
 - Google's own automatic image improvements in Merchant Center, only as Google describes them
 - Any separate rule Merchant Center Help states for apparel and for variants
-- How the hubStudio app fits, inside its facts: renders up to 4K in the Image studio, a transparent background on the ChatGPT Image engines, the free Image editor to crop; for a feed, download the original file, never the clean copy or the Image anonymizer output, because both remove the AI-generation markers Google asks you to keep
+- How the hubStudio app fits, inside its facts: renders up to 4K in the Image studio, a transparent background on the ChatGPT Image 2.5 engines only, in PNG or WebP (ChatGPT Image 2 cannot cut a subject out; amended 2026-10-17 from create-an-image.md), the free Image editor to crop; for a feed, download the original file, never the clean copy or the Image anonymizer output, because both remove the AI-generation markers Google asks you to keep
 - A visible Reviewed date under the H1 and a dated changelog block at the foot
 
 ## Do not

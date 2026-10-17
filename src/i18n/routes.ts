@@ -24,6 +24,7 @@ const ARTICLES: Record<string, string> = {
   'ai-sound-for-video': 'le-son-genere-par-ia-pour-la-video',
   'aigc-adoption-curve': 'la-courbe-d-adoption-de-l-aigc',
   'all-in-cost-of-ai-video': 'le-cout-complet-d-une-video-ia',
+  'amazon-product-image-requirements': 'amazon-exigences-des-images-produit-2026',
   'amazon-tmall-jd-one-product-three-listings': 'amazon-tmall-jd-un-produit-trois-fiches',
   'automation-platform-or-production-partner': 'plateforme-d-automatisation-ou-partenaire-de-production',
   'automotive-content-without-shipping-a-car': 'contenu-automobile-sans-expedier-de-voiture',

@@ -264,8 +264,9 @@ products from January 31, 2027.
 ### How much of the frame should the product fill?
 
 About 85 percent. That's Amazon's figure, and it sits inside Google's 75 to 90
-percent window. Neither platform says whether it measures the width, the height
-or the area, so pick one method and use it across the catalog. Shopify sets no
+percent window. Neither main image rule says whether it measures the width, the height
+or the area (Amazon's clothing page counts the area, for clothing only), so
+pick one method and use it across the catalog. Shopify sets no
 fill rule.
 
 ### Do I have to label an AI product photo?

@@ -1,0 +1,38 @@
+﻿2026-10-17T12:30:03 start draft (model claude-opus-5-5)
+2026-10-17T12:30:04 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-17T12:30:41 Opus 5.5 attempt 1: no partial progress for this run in the log or the tree. Row 75 word-by-word-video-captions is already image_ready (done by the 10:08 run) and is left as is. Taking brief 77 amazon-product-image-requirements (spec, publish_date 2026-10-23), the earliest not_started row; no output or research file exists for it. Pre-existing uncommitted edits (CLAUDE.md, scripts, ledger, watch.csv, schedule.csv from the 10:08 run) are preserved.
+2026-10-17T12:39:50 Research captures saved (13 files, research/amazon-product-image-requirements/): 11 Amazon Seller Central help articles rendered logged out, the Chinese-locale G1881 and the 2018 Quick Start Style Guide PDF. G1881 gained one sentence since 2026-09-14 ("We may also modify images that you submit"). Brief 77 amended at source (module and brief): ChatGPT Image 2 has no transparent background per create-an-image.md, and no Amazon page lists infographics or size charts as image types; brief 83 repeated the transparent error and is amended the same way. generate-briefs --check: both render identically.
+2026-10-17T12:41:51 R7 done: research/amazon-product-image-requirements.md written (28 Amazon claims, 6 app facts, 5 SERP phrasings, do-not-publish list). Row 77 set to researched.
+2026-10-17T12:47:09 createarticle iterations 1 to 6 done; check 2 (iteration 8) re-rendered all 10 cited help pages and re-fetched the PDF: all unchanged from check 1, all 28 quoted strings present. Captures saved with suffix check2-2026-10-17.
+2026-10-17T12:49:45 createarticle iterations 7 to 13 done (iteration 7 ran as the cadence variant, no planted errors). R8 reconciled; four unsupported phrasings cut. Live how-to ai-white-background-packshot corrected in EN, FR and ZH (FAQ on how fill is measured), draft updated, dateModifiedISO 2026-10-17; i18n:guard passes. A concurrent publish run (12:30) is publishing row 75 in the same tree; this run touched none of its files.
+2026-10-17T12:50:45 content-quality-us 18 passes plus final done in place (versions v0, v3, v18 in the session scratchpad): unsupported causal clause cut, repeated triad varied three ways, suppression intro and upload paragraph re-cut; straight quotes kept to match every draft in output/. SEO 42/148/23 words, inside 52/152/25. check-draft: all hard checks pass. Row 77 at quality_passed.
+2026-10-17T12:57:30 Image step done: gpt-image-2 high, attempt 2 kept (attempt 1 rejected: logo-like mark in the tape core, local patches left visible rectangles; prompt amended in the draft). Saved public/Images/insight-amazon-product-image-requirements.webp (1536x1024, 62 KB). Ledger section for brief 77 appended (11 rows, 5 do-not-publish), watch row 2027-01-23 added, schedule row 77 at image_ready with all four dates, run log editorial/logs/2026-10-17-amazon-product-image-requirements.md written. check-draft and content:todo pass. Stopped at image_ready: no publish, no commit.
+I drafted brief 77, "Amazon product image requirements for 2026", and stopped at `image_ready`. Nothing was published or committed.
+
+**Why this row:** this run started fresh. Row 75 was already at `image_ready` from the 10:08 run, so brief 77 was the earliest `not_started` row (publish_date 2026-10-23).
+
+**What the run did (steps 0 to 3):**
+- **Research:** written to `editorial/research/amazon-product-image-requirements.md` before any drafting. Every number comes from ten of Amazon's own Seller Central help pages for the US store, plus Amazon's 2018 Quick Start Style Guide. Search results were mapped for five phrasings, four English and one Chinese. Because these are Amazon's readable help pages, they count as primary: no modal-value disclaimer applies.
+- **Fresh read, read twice:** all pages were read on 17 October, then read again later the same day. Nothing changed between the two reads, and all 28 quoted lines are still on Amazon's pages.
+- **A new Amazon rule:** Amazon's image guide gained one sentence since 14 September: "We may also modify images that you submit". The page prints it, with a dated changelog.
+- **Draft:** `editorial/output/amazon-product-image-requirements.md`, written with `/createarticle`. Iteration 7 ran as the cadence pass, with no planted errors.
+- **Quality pass:** all 18 passes of `/content-quality-us`. The title is 42 characters, the meta description 148 and the excerpt 23 words. `check-draft.mjs` and `content:todo` both pass.
+- **Hero image:** `public/Images/insight-amazon-product-image-requirements.webp` (1536×1024, 62 KB). It shows hands setting one shoe facing left at 45 degrees, which is Amazon's footwear rule. I rejected the first attempt because of a logo-like mark on a tape roll, and kept the second.
+
+**Things I closed in this run instead of leaving open:**
+- **Where Amazon contradicts itself:** the page prints both values each time.
+  - One Amazon page says 500 pixels on the shortest side and leaves PNG off its list. Three others say longest side and accept PNG.
+  - The 2018 guide says the product should fill 80 percent of the frame; the current pages say 85.
+- **Brief corrections:** brief 77 said ChatGPT Image 2 can make a transparent background. The help center says only the 2.5 engines can, so I corrected it. It also listed infographics and size charts as image types, which no Amazon page does. Brief 83 repeated the transparent error and is corrected the same way.
+- **A live page this piece contradicted:** the AI white-background packshot how-to said in its FAQ that neither platform says how fill is measured. Amazon's clothing page does: it counts the image area. I fixed the English page, the French and Chinese entries, and its draft, and set `dateModifiedISO` to 2026-10-17. The i18n guard passes.
+- **Source ledger:** 11 new rows, each checked twice, plus 5 claims ruled out and the reasons.
+- **Watch list:** a quarterly recheck is due 2027-01-23.
+
+A publish run started at the same minute (12:30) and was publishing row 75 in the same folder. I didn't touch any of its files. The only file we both changed is `src/data/howtos.ts`, where my one `dateModifiedISO` line, on the packshot entry, is still in place.
+
+Each step is logged in `editorial/logs/2026-10-17-amazon-product-image-requirements.md` and `editorial/logs/runs/2026-10-17-draft.txt`.
+
+The Gmail, Google Calendar and Google Drive connectors need signing in through your claude.ai connector settings before they can be used. This run didn't need them.
+2026-10-17T12:57:45 model Opus 5.5 completed successfully
+2026-10-17T12:57:45 end draft exit 0
+2026-10-17T12:57:45 queue: ok: 65 to draft, 0 blocked, last draft 2026-10-17

@@ -87,11 +87,11 @@ than an unsourced one.
 ## Must include
 
 - Main image table: background (pure white), fill of the frame, what may not appear (text, logos, watermarks, props, inset images), minimum and recommended pixels for zoom, formats, color mode, file naming, each quoted from Seller Central
-- Additional images: what Amazon allows (lifestyle, infographics, size charts) and what it still forbids
+- Additional images: what Amazon's image variant codes allow (additional angles, product in use, screenshots, accessories, product details, ingredients, safety information, multipacks), as Amazon names them, and what it still forbids on every image. Amended 2026-10-17 by the draft run: no Amazon help page lists infographics or size charts as an image type
 - Category exceptions Amazon documents (apparel on model, for example), from Amazon's own pages
 - Rejection and suppression reasons table: the reason as Amazon states it, the fix
 - A visible Reviewed date and a dated changelog block at the foot
-- Making compliant files in hubStudio: the E-commerce packshot skill in the Catalog shapes Improve with AI; ChatGPT Image 2 renders up to 4K with an opaque or transparent background; Edit an image changes the scene of your own product photo; the Image editor crops Square 1:1 and saves PNG or JPG at a chosen size
+- Making compliant files in hubStudio: the E-commerce packshot skill in the Catalog shapes Improve with AI; the ChatGPT Image engines render up to 4K (up to 3840 px) on an Opaque background (Transparent exists on the 2.5 engines only, and Amazon's main image needs pure white, so it does not apply here; amended 2026-10-17 from create-an-image.md); Edit an image changes the scene of your own product photo; the Image editor crops Square 1:1 and saves PNG or JPG at a chosen size
 - One line on AI-generated product images pointing to Amazon's own policy wording if it exists at research time; otherwise say nothing about it
 
 ## Do not

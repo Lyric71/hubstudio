@@ -2806,3 +2806,40 @@ of truth for the app.
 | "99.9%" or "99%" caption accuracy | Caption tool landing pages | Vendor claims about their own product, no test set | 2026-10-17 |
 | TikTok caption placement "480 px bottom reserve", "550 to 700 px from the bottom", "avoid the bottom 20%" | Tool and agency blogs | On no TikTok page; use the brief 57 template rows | 2026-10-17 |
 | Facebook SRT file naming `filename.[language]_[country].srt` | Search snippets of Facebook Help 261764017354370 and Meta Business Help 1675722002698686 | Both pages returned HTTP 400 on 2026-10-17; not readable | 2026-10-17 |
+
+## Added 2026-10-17 (ledger rows from brief 77, amazon-product-image-requirements)
+
+Primary readings of Amazon Seller Central help articles, US store, rendered in
+a logged-out headless browser (the pages are undated; each row is dated by the
+read). Captures in `research/amazon-product-image-requirements/`, check 1 and
+check 2 both 2026-10-17, body text identical. App facts come from the help
+center and are not repeated here. Check 2 for the brief 31 rows on the
+Product image guide and Technical image file requirements: re-read
+2026-10-17, unchanged except the "may also modify" sentence below; 77 is added
+to their "Used in" by this note.
+
+### Amazon product image rules (added 2026-10-17, brief 77)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| "We may also modify images that you submit to meet the product image requirements or enhance the customer experience." Absent from the 2026-09-14 capture, present 2026-10-17 in English and in the Chinese locale | "Amazon Seller Central, Product image guide, US store, two dated captures compared, September 14 and October 17, 2026" | sellercentral.amazon.com/help/hub/reference/external/G1881 | added between 2026-09-14 and 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 77 |
+| Formats JPEG (recommended), TIFF, PNG, non-animated GIF; 500 to 10,000 px longest side; 1,000+ enables zoom; do not enlarge; one compliant main required, six additional and one video recommended; file name product ID + variant code + extension, naming optional; variant codes MAIN, PS01 to PS06, SWCH, PT01 to PT99, IN01 to IN99, angle codes, INGR, EEGL, DTLS; footwear single shoe facing left at 45 degrees | "Amazon Seller Central, Product image guide, US store, page undated, read October 17, 2026" | .../external/G1881 | read 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 77 |
+| 14 suppression reasons with affected image (11 main only, 3 any image); Fix tab in Manage Products; Submission status, Content compliance issues; Amazon may "Remove or modify non-compliant images (for example, removing a watermark)" | "Amazon Seller Central, Image suppression, US store, page undated, read October 17, 2026" | .../external/GT8RSE9S9NK4LP6Z | read 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 77 |
+| Upload errors and fixes, incl. error 100239 and 990003, resubmission of the same file, RGB or CMYK accepted at upload | "Amazon Seller Central, Image upload errors and display issues, US store, page undated, read October 17, 2026" | .../external/G17811 | read 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 77 |
+| Conflict: "at least 500 pixels on the shortest side"; accepted extensions .tif, .tiff, .jpg, .jpeg, .gif (no PNG); "at least 85% of a product image"; hex #FFFFFF | "Amazon Seller Central, Product image error codes, US store, page undated, read October 17, 2026" | .../external/G202131130 | read 2026-10-17 | primary, published as a conflict | 2026-10-17 | 2026-10-17 | 77 |
+| Legacy or flexible file naming; ID without variant code uploads as main; 1,000 images and 1 GB per zip; country-specific image text in the official language or English | "Amazon Seller Central, Upload images, US store, page undated, read October 17, 2026" | .../external/GUGPCYWV2P8KVFUT | read 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 77 |
+| Clothing: main on a model (exceptions), white #FFFFFF, frontal, "Minimum aspect ratio is close to 3:4 (width/height) and 85% of the total image area occupied"; 1,000 px for zoom; children's wear under 1,000 px prohibited; up to eight alternate images per SKU | "Amazon Seller Central, Image guidelines for clothing, US store, page undated, read October 17, 2026" | .../external/G200498950 | read 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 77 |
+| Multipack main shows total quantity, in packaging; title states total quantity | "Amazon Seller Central, Multipack imaging standards, US store, page undated, read October 17, 2026" | .../external/G94GSFMC79RSLDBY | read 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 77 |
+| Lifestyle main allowed only for BED, BED_FRAME, MATTRESS, RUG, RUG_PAD, SOFA | "Amazon Seller Central, Product page style guides, US store, page undated, read October 17, 2026" | .../external/G200270100 | read 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 77 |
+| contains-synthetic-performer in XMP dc:subject; "Amazon requires selling partners to tag applicable media"; Windows Tags field, macOS Preview keywords, exiftool | "Amazon Seller Central, How to tag media that contains an AI-generated person, US store, page undated, read October 17, 2026" | .../external/GFXHCHYZRGJRBZA5 | read 2026-10-17 | primary, no effective date | 2026-10-17 | 2026-10-17 | 77 |
+| "occupy at least 80 percent of the image area" (against 85 in the help articles) | "Amazon Quick Start Style Guide, Amazon Commercial Services Pty Ltd, 2018, still linked from the US Product page style guides page, read October 17, 2026" | m.media-amazon.com/images/G/01/rainier/help/Selling_on_Amazon_Quick_Start_Style_Guide_2018.pdf | 2018 | primary, older document, conflict only | 2026-10-17 | 2026-10-17 | 77 |
+
+### Do not publish, added from brief 77
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Amazon 1,600 px for zoom; 2,000 to 2,500 px "sweet spot"; sRGB; nine images, seven shown | Ranking size guides, October 2026 | On no Amazon help page read; Amazon says 1,000+ enables zoom and RGB | 2026-10-17 |
+| Amazon apparel main "flat or on an invisible or ghost mannequin" | A ranking spec guide, updated May 2026 | Contradicted by Amazon's clothing page and suppression table | 2026-10-17 |
+| "2026 new rule: Amazon now auto-replaces non-compliant main images" | Chinese cross-border news portal, 27 February 2026 | No Amazon notice cited; Amazon's own wording is the "may also modify" sentence | 2026-10-17 |
+| "At least 1,000 dpi" | Amazon Quick Start Style Guide, 2018 | dpi cut cluster-wide; an obvious mis-statement in an old document | 2026-10-17 |
+| Infographics and size charts as Amazon image types | Brief 77 as first written | No Amazon help page lists them; brief amended | 2026-10-17 |
