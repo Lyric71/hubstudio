@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'word-by-word-video-captions',
+    image: '/Images/howto-word-by-word-video-captions.webp',
+    imageAlt:
+      'A video editor in black headphones and a mustard cardigan rests her fingertip under a blurred caption band on a vertical clip of a man speaking, the same frame on a phone beside her keyboard, a lidded tea mug and a blank notebook in window light.',
+    category: 'Short video',
+    tone: 'navy',
+    title: 'How to Add Word-by-Word Captions to a Video',
+    deck: 'Word-by-word captions made free in your browser or fast, corrected by hand, placed clear of the buttons, saved burned in or as SRT.',
+    date: 'October 17, 2026',
+    dateISO: '2026-10-17',
+    readingTime: '10 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'How to Add Word-by-Word Captions to a Video | hubStudio',
+    metaDescription:
+      'Add word-by-word captions to Reels and TikToks: free in-browser or fast transcription, five looks, safe-zone placement, corrections and SRT export.',
+  },
+  {
     slug: 'kling-3-product-video-guide',
     image: '/Images/howto-kling-3-product-video-guide.webp',
     imageAlt:

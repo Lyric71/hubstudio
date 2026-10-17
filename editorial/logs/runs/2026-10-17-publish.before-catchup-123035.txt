@@ -1,0 +1,18 @@
+﻿2026-10-17T10:08:12 start publish (model claude-opus-5-5)
+2026-10-17T10:08:13 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-17T10:09:39+08:00 pre-flight: working tree holds only the earlier uncommitted edits to editorial/CLAUDE.md, the 2026-10-16 publish log and three editorial scripts (check-queue.mjs, notify-publish.mjs, run-daily.ps1), plus this run's and the concurrent draft run's files; no partial progress from an earlier model in this run. Prompt SHA-256 matches the manifest.
+2026-10-17T10:09:39+08:00 schedule.csv: 75 rows published, 67 not_started, none image_ready, none blocked. Every output_file in the schedule checked on disk: no draft exists behind a not_started row, and every existing draft has its live page. Nothing is eligible to publish.
+2026-10-17T10:09:39+08:00 watch.csv: 48 rows, none due on or before 2026-10-17; the earliest falls due 2026-10-19.
+2026-10-17T10:09:39+08:00 no build, commit, push or email: nothing was published or changed. The uncommitted editorial edits stay in the working tree, untouched.
+2026-10-17T10:09:39+08:00 end: nothing eligible; no row published, no row blocked, no watch row due.
+Nothing was ready to publish, so this run published nothing.
+
+- **Schedule:** 75 rows are published and 67 are `not_started`. No row is `image_ready` and none is `blocked`. Rows can lag behind the files, so I also looked on disk for every draft the schedule lists. No draft is sitting behind a `not_started` row, and every draft that exists already has its live page.
+- **Watch list:** none of the 48 rows in `watch.csv` is due today or earlier. The earliest is due on 19 October.
+- **No build, commit, push or email:** nothing changed, so there was nothing to build, commit or report. The uncommitted edits already in the working tree are untouched: `editorial/CLAUDE.md`, the 16 October publish log, `check-queue.mjs`, `notify-publish.mjs` and `run-daily.ps1`.
+
+All of this is written in `editorial/logs/runs/2026-10-17-publish.txt`.
+
+The Gmail, Google Calendar and Google Drive connectors are not authorized in this session; that did not affect this run. To use them, connect them in your claude.ai connector settings.
+2026-10-17T10:09:46 model Opus 5.5 completed successfully
+2026-10-17T10:09:46 end publish exit 0

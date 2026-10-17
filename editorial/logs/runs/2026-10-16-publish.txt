@@ -13,3 +13,23 @@
 2026-10-16T17:11:00+08:00 notify-publish.mjs queued the publish message for the editorial digest (outbox file 2026-10-16T08-51-21-059Z-hubstudio-zq2qjq.json), build passed, note carrying the commit hash.
 2026-10-16T17:11:00+08:00 .i18n-work: this run's pass files kept in .i18n-work/passes-publish-1016-one-app; the earlier pass folder put back at .i18n-work/passes as found. The other work's edits to editorial/CLAUDE.md and the three editorial scripts stay in the working tree, uncommitted.
 2026-10-16T17:11:00+08:00 end: one row published in English, French and Chinese; no row blocked; no watch row due.
+One draft was waiting, and it is now live in English, French and Chinese: **One App or a Stack of Tools for Social Content** (`one-app-vs-tool-stack-social-content`), published as an insight under Buying models.
+
+- **Addresses:** `/resources/insights/one-app-vs-tool-stack-social-content`, `/fr/ressources/analyses/une-application-ou-plusieurs-outils-pour-les-reseaux-sociaux` and `/zh/resources/insights/one-app-vs-tool-stack-social-content`.
+- **Where it shows:** the home page's newest four, the insights index, the three RSS feeds, and the studio, agencies and pricing reading lists, which all take Buying models articles.
+- **Translation:** French and Chinese each went through the three passes on the article, its card, the home page and the insights index. The new tool-stack terms are now in both glossaries. The French and Chinese `changes.md` files are copied into `editorial/logs/2026-10-16-one-app-vs-tool-stack-social-content.md`.
+- **Checks:** the i18n check, the i18n guard, `npm run check` (0 errors) and `npm run build` all passed. Commit `e753df9` is pushed to main, with the run-log commit `182d89d` after it. The publish message is queued for the next editorial email digest.
+- **Watch list:** no row in `watch.csv` was due; the earliest is 19 October.
+
+Changes I made while publishing:
+- **Date:** the draft's schema date said 22 October (the planned slot). I changed it to 16 October, the day it actually went live.
+- **Links:** all nine internal links from the draft are wired, and I checked that every target page exists.
+- **App screenshots:** the draft offered two existing app screenshots as optional. I left them out, because this morning's run found that some existing screenshots show rates.
+- **One French word:** the money table's "Item" column would have shown « Élément » from the shared dictionary. The French page uses « Poste » instead, as the cost-of-a-week-of-social-content page already does.
+- **Old translation work files:** I moved the earlier translation work files aside for the run so they could not merge into this article's dictionaries, then put them back as I found them.
+
+**Left out of the commit:** the working tree also holds uncommitted edits that are not this article's: `editorial/CLAUDE.md`, `check-queue.mjs`, `notify-publish.mjs` and `run-daily.ps1`, which move editorial mail from Resend to the digest queue. They are still uncommitted, unchanged. This run used `notify-publish.mjs` in that edited form, which is why the message went to the digest queue rather than straight out through Resend.
+
+The Gmail, Google Calendar and Google Drive connectors are not authorized in this session. That does not affect this run.
+2026-10-16T16:51:45 model Opus 5.5 completed successfully
+2026-10-16T16:51:45 end publish exit 0

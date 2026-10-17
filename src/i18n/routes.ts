@@ -116,6 +116,7 @@ const HOWTOS: Record<string, string> = {
   'resize-image-every-social-network': 'decliner-un-visuel-sur-chaque-reseau-social',
   'social-media-client-approval': 'faire-valider-ses-posts-par-le-client-sans-chaine-d-e-mails',
   'vertical-video-ad-from-product-image': 'une-publicite-video-verticale-a-partir-d-une-photo-produit',
+  'word-by-word-video-captions': 'sous-titrer-une-video-mot-a-mot',
 };
 
 const HELP: Record<string, string> = {

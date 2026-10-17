@@ -1,0 +1,295 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I add word-by-word captions to a video?",
+    "a": "Open the video in hubStudio's Video editor and frame it for its network in Social. In Captions, pick the free in-browser speech model or a fast billed one, choose the language spoken or Detect it, and click Make the captions. Correct every line under The words, pick a look such as Karaoke, keep the captions inside the safe area, then save the MP4."
+  },
+  {
+    "q": "Can I add captions to a video for free?",
+    "a": "Yes. In the Video editor, Free, in your browser runs a speech model on your own computer: nothing is sent and nothing is billed. Pick Quick, Balanced or Accurate, a download of about 40, 80 or 250 MB that your browser keeps after the first time. A minute of speech takes from a few seconds to a minute. The editor itself is free to use."
+  },
+  {
+    "q": "How do I make karaoke-style captions?",
+    "a": "Make the captions, then pick Karaoke as the look: the line stays on screen and the word being said lights up. Set its color under The word being said, the rest under Text, and choose how many Words at once share the screen. One word, which shows a single big word at a time, suits shorter, punchier clips."
+  },
+  {
+    "q": "Where should captions go on a TikTok or Reel?",
+    "a": "Inside the safe area, clear of the lower part of the frame and the right side, where the network puts its name, caption, reply box and buttons. In the Social panel, Show what the network covers draws those zones in red with a dashed safe area. If a check finds captions under the buttons, Move the captions into the safe area fixes it."
+  },
+  {
+    "q": "How do I get an SRT file from my video?",
+    "a": "Make the captions in the Video editor, correct them under The words, then click Download as SRT. You get a plain-text subtitle file with the same words and timing. YouTube takes basic SRT files in plain UTF-8, and LinkedIn takes an SRT attached on the desktop before you post. The styling stays behind: SRT carries no look."
+  },
+  {
+    "q": "Are auto captions accurate enough to publish?",
+    "a": "Not without a read. YouTube itself warns that automatic captions can misrepresent speech because of accents, dialects, mispronunciation or background noise. Treat the model's output as a first draft. Read every line under The words, fix names, product terms and numbers, and don't click Make them again afterward, which replaces your corrections."
+  },
+  {
+    "q": "Can I caption a video in another language?",
+    "a": "Yes, in the language spoken in it. Pick that language under Language spoken, or let the editor Detect it, and the captions come out in that language. The captions are a transcription of what is said, not a translation. A video for another market starts from a voice in that market's language."
+  }
+];
+---
+
+<HowtoLayout slug="word-by-word-video-captions" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">Making the captions is the easy part. Getting them right takes three more checks: the spelling of your product's name, where the network's buttons sit, and whether the platform wanted the words in the picture or in a file.</p>
+
+  <h2>How do you add captions to a video?</h2>
+
+  <p>Open the clip in a video editor, let a speech model write the words, correct every line by hand, pick a look, move the captions clear of the network's buttons, then save. In hubStudio's Video editor you can run the speech model free in your own browser, or pay for a fast online one.</p>
+
+  <p>Both routes end in the same panel, with the same looks and the same way to correct the words. Where they part is time, privacy and cost.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Route</th>
+          <th scope="col">Speed</th>
+          <th scope="col">Where the sound goes</th>
+          <th scope="col">What it costs</th>
+          <th scope="col">Best for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Free, in your browser</th>
+          <td>A few seconds to a minute per minute of speech</td>
+          <td>Nowhere: the model runs on your computer</td>
+          <td>Nothing</td>
+          <td>Unreleased products and client footage that can't leave your computer</td>
+        </tr>
+        <tr>
+          <th scope="row">Fast, billed</th>
+          <td>A few seconds</td>
+          <td>To an online speech model</td>
+          <td>Charged against your prepaid balance by the second of sound, price shown before you start</td>
+          <td>A long clip on a slow laptop, or a deadline</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The free route asks for a speech model the first time: Quick (about 40 MB), Balanced (about 80 MB) or Accurate (about 250 MB). Your browser downloads it once and keeps it. Nothing is sent and nothing is billed. The fast route lists its models, each with a price for a minute of sound, and opens on the least expensive. The panel shows the price for this video before you start and what the captions cost once they're made, and every charge lands in Usage.</p>
+
+  <h2>Should captions be burned in or sent as a subtitle file?</h2>
+
+  <p>Burn them in for Reels, TikToks and Facebook reels. Send a file where the platform takes one, as YouTube and LinkedIn do. Captions burned into the picture are open captions: every viewer sees them and nobody can switch them off. A subtitle file gives closed captions, which the viewer turns on or off.</p>
+
+  <blockquote class="evidence">The W3C, which writes the web's accessibility standard, lists both open and closed captions as sufficient ways to caption a prerecorded video, and defines open captions as "any captions that cannot be turned off."</blockquote>
+  <p class="source">Source: W3C, Understanding WCAG 2.2 success criterion 1.2.2, updated August 2026. https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html</p>
+
+  <p>Word-by-word captions belong in the picture. The highlight that follows the speaker is drawn into each frame, and a basic subtitle file carries words and timing, not a look. They're the captions most Reels and TikToks carry, and the Video editor writes its MP4 for exactly those places: Instagram, TikTok and Facebook. TikTok's own auto captions, launched in September 2021, can be switched off by the viewer from the share panel. The burned-in ones are the words you checked.</p>
+
+  <p>Where a platform takes a file, send one.</p>
+
+  <blockquote class="evidence">YouTube accepts SubRip (.srt) caption files in their basic form: "No style info (markup) is recognized. The file must be in plain UTF-8."</blockquote>
+  <p class="source">Source: YouTube Help, Supported subtitle and closed caption files, read October 2026. https://support.google.com/youtube/answer/2734698</p>
+
+  <blockquote class="evidence">LinkedIn adds closed captions to a video from the desktop only, from "an associated SRT (SubRip Subtitle) file attached to the video before it can be posted."</blockquote>
+  <p class="source">Source: LinkedIn Help, Add closed captions to videos on LinkedIn, read October 2026; the page says it was last updated five years ago. https://www.linkedin.com/help/linkedin/answer/a552177</p>
+
+  <p>You don't have to choose once. The editor keeps both: the captions on the picture, and Download as SRT for the same words with their timing. An SRT file is plain text, and each caption in it is a short block.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Line in the block</th>
+          <th scope="col">What it holds</th>
+          <th scope="col">As it reads</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Number</th>
+          <td>The caption's place in the file</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th scope="row">Timing</th>
+          <td>Start and end, hours to milliseconds, a comma before the milliseconds</td>
+          <td>00:00:00,599 --&gt; 00:00:04,160</td>
+        </tr>
+        <tr>
+          <th scope="row">Text</th>
+          <td>The words shown in that window</td>
+          <td>The words as you corrected them</td>
+        </tr>
+        <tr>
+          <th scope="row">Blank line</th>
+          <td>The end of the block</td>
+          <td>(empty)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>How do you make the captions in the Video editor?</h2>
+
+  <p>The Video editor runs in your browser and costs nothing to use. It takes MP4, MOV and WebM files up to 2 GB.</p>
+
+  <ul>
+    <li><strong>Open the video.</strong> Drop it on the Video editor page, or pick it From the Assets Library. A video in the library also opens from Edit video in its Actions menu.</li>
+    <li><strong>Frame it first.</strong> In Social, pick Instagram, TikTok or Facebook and the placement, then Apply the format. The network's zones only show once the video is framed, and you'll want them when you place the captions.</li>
+    <li><strong>Open Captions.</strong> Under Make the captions, pick Free, in your browser and a Speech model, or Fast, billed and one of the models listed.</li>
+    <li><strong>Set the language.</strong> Pick the Language spoken, or Detect it.</li>
+    <li><strong>Make them.</strong> Click Make the captions. The words arrive timed word by word, on their own row of the timeline.</li>
+    <li><strong>Correct them.</strong> Read every line under The words before you style anything. The next section covers what to look for.</li>
+    <li><strong>Style and place them.</strong> Pick a look, then check the zones.</li>
+  </ul>
+
+  <h2>Which caption look should you pick?</h2>
+
+  <p>The editor offers five looks. Pick the one that suits what the clip does.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Look</th>
+          <th scope="col">What it does</th>
+          <th scope="col">Where it works</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Classic</th>
+          <td>White words, outlined</td>
+          <td>Interviews and talks, where the speaker carries the frame</td>
+        </tr>
+        <tr>
+          <th scope="row">Karaoke</th>
+          <td>The word being said lights up</td>
+          <td>Fast talk to camera; the eye follows the voice</td>
+        </tr>
+        <tr>
+          <th scope="row">One word</th>
+          <td>Big, one word at a time</td>
+          <td>Short punchy clips, hooks, a slogan</td>
+        </tr>
+        <tr>
+          <th scope="row">Boxed</th>
+          <td>Words on a dark band</td>
+          <td>Busy or bright footage, white product shots</td>
+        </tr>
+        <tr>
+          <th scope="row">Highlight</th>
+          <td>A color behind the word being said</td>
+          <td>Brand-colored series, tutorials with steps</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Then tune it. Words at once sets how many words share the screen. Size and Height on the screen handle scale and position, or drag the captions up or down on the preview. Colors for the Text and for The word being said, the Font and Capital letters do the rest. Show the captions hides them without losing them.</p>
+
+  <h2>How do you fix names, product terms and numbers?</h2>
+
+  <p>By hand, line by line. A speech model writes what it hears. It has no way of knowing how your brand spells itself.</p>
+
+  <blockquote class="evidence">YouTube warns that its automatic captions "might misrepresent the spoken content due to mispronunciations, accents, dialects, or background noise," and tells creators to "always review automatic captions."</blockquote>
+  <p class="source">Source: YouTube Help, Use automatic captioning, read October 2026. https://support.google.com/youtube/answer/6373554</p>
+
+  <p>Under The words, click a line, fix it and press Enter. Empty a line to drop it. Three things deserve a second look in every line: names (yours, your product's, the speaker's), the jargon of your trade, and numbers, which have to match what's on the pack or the slide.</p>
+
+  <div class="prompt">
+    <p class="prompt__label">A line under The words, before and after</p>
+    <p class="prompt__body">Before: the new hub studio app runs seed dream five pro</p>
+    <p class="prompt__body">After: The new hubStudio app runs Seedream 5.0 Pro</p>
+  </div>
+
+  <p>Correct before you restyle, and never click Make them again after correcting. It writes the words afresh and replaces your corrections.</p>
+
+  <h2>Where should captions go on a TikTok or a Reel?</h2>
+
+  <p>Inside the safe area, above the network's own caption and clear of its buttons. Each network lays its name, its caption, a reply box and its buttons over the lower part of a vertical video and down its right side. Captions under them don't get read.</p>
+
+  <blockquote class="evidence">W3C's explanation of the criterion defines captions with a note attached: "Captions should not obscure or obstruct relevant information in the video."</blockquote>
+  <p class="source">Source: W3C, Understanding WCAG 2.2 success criterion 1.2.2, updated August 2026. https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html</p>
+
+  <p>The Social panel draws the problem for you. With Show what the network covers on, the zones that Instagram, TikTok or Facebook covers turn red over the preview, and a dashed line marks the safe area. The Zones switch in the top bar keeps them visible from any panel, including Captions.</p>
+
+  <figure>
+    <img src="/Images/help/video-editor-social.webp" alt="The Social panel of the Video editor on Instagram, Reel picked and applied with Fit it whole: the red zones Name and progress bar and Caption, reply box and buttons over the preview, the dashed Profile grid crop, and the Zones switch on in the top bar" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>The red zones are what the network covers; the dashed line is the safe area.</figcaption>
+  </figure>
+
+  <p>Then read the Checks. They flag captions that sit under the buttons, words too small to read on a phone, and a video with no captions at all. When the captions are in the wrong place, the check carries a button: Move the captions into the safe area. For the measured zones of each network, the <a href="/resources/insights/tiktok-video-specs">TikTok video specs</a> and the <a href="/resources/insights/instagram-reels-stories-specs">Instagram Reels and Stories specs</a> pages print them, with their sources.</p>
+
+  <h2>How do you caption many short clips at once?</h2>
+
+  <p>With Shorts autopilot, which captions every short it cuts from a long video (it works best on several minutes of someone speaking). Under Captions on the video, pick None or one of the same five looks. Add A hook line over the first seconds and each short opens on a short line in a white box, written from the moment.</p>
+
+  <figure>
+    <img src="/Images/help/shorts-autopilot-settings.webp" alt="The shorts card for a video of 6 minutes: For, How many, Length of each short, Framing, Captions on the video, Hook, Listening and Language spoken, the price line, then Make the shorts and Pick another video" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>Captions on the video takes the Video editor's five looks.</figcaption>
+  </figure>
+
+  <p>Listening works the same two ways: free in your browser, best under 20 minutes of video, or fast and billed by the minute of sound, with the price shown before the run. The shorts land in the Assets Library at 1080 by 1920. Edit in the Video editor opens one on its Social panel, so you can correct a line or move the captions before it goes out. The <a href="/resources/how-to/long-video-to-shorts">Long video to shorts</a> guide covers the cutting itself.</p>
+
+  <h2>Do word-by-word captions make a video accessible?</h2>
+
+  <p>Partly. Captions for prerecorded video sit at Level A, the baseline of the web's accessibility standard. And the standard asks for more than the words.</p>
+
+  <blockquote class="evidence">WCAG 2.2 success criterion 1.2.2, Captions (Prerecorded), Level A: "Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such."</blockquote>
+  <p class="source">Source: W3C, Web Content Accessibility Guidelines 2.2, W3C Recommendation, December 2024. https://www.w3.org/TR/WCAG22/</p>
+
+  <p>W3C's explanation adds that captions "not only include dialogue, but identify who is speaking and include non-speech information conveyed through sound, including meaningful sound effects." A speech model writes the dialogue. A doorbell that matters, or a second speaker, is yours to add, with a text in the editor's Text panel.</p>
+
+  <h2>How do you save the captioned video?</h2>
+
+  <p>Click Save. Pick 1080p or 720p, then Save it in the Assets Library or Download. The MP4 is written in your browser in about as long as the video lasts, so keep the tab open. The original stays as it was.</p>
+
+  <figure>
+    <img src="/Images/help/video-editor-save.webp" alt="The Save the video panel after Apply the format: Made for Instagram, Reel with its Checks button, the name ending in (Instagram Reel), 1080p or 720p, the file details, Fits for Instagram Reel, Instagram Story, Facebook and TikTok, then Save it in the Assets Library and Download" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>Save it in the Assets Library keeps the original untouched.</figcaption>
+  </figure>
+
+  <p>The Video editor doesn't publish. It writes the file. To post it, pick it from the library in the Instagram, TikTok (Beta) or Facebook module. When you open a post's clip in the editor from one of those modules, Save and use it in the post puts the captioned version in the post.</p>
+
+  <p>Before it goes out, run this list:</p>
+
+  <ul>
+    <li>Every line under The words read, names and numbers above all</li>
+    <li>The video framed for its network in Social before the captions were placed</li>
+    <li>Captions inside the dashed safe area, Zones on</li>
+    <li>No caption warning left in the Checks</li>
+    <li>Sounds and speakers that matter added as text</li>
+    <li>An SRT downloaded too if the video also goes to YouTube or LinkedIn</li>
+  </ul>
+
+  <p>Rather hand the job over? The <a href="/services/design/short-video">short video service</a> is our studio cutting and captioning clips to a brief, safe-zone audit included. The <a href="/app/video-tools">Video editor and Shorts autopilot</a> page shows both tools side by side.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>How do I add word-by-word captions to a video?</h3>
+
+  <p>Open the video in hubStudio's Video editor and frame it for its network in Social. In Captions, pick the free in-browser speech model or a fast billed one, choose the language spoken or Detect it, and click Make the captions. Correct every line under The words, pick a look such as Karaoke, keep the captions inside the safe area, then save the MP4.</p>
+
+  <h3>Can I add captions to a video for free?</h3>
+
+  <p>Yes. In the Video editor, Free, in your browser runs a speech model on your own computer: nothing is sent and nothing is billed. Pick Quick, Balanced or Accurate, a download of about 40, 80 or 250 MB that your browser keeps after the first time. A minute of speech takes from a few seconds to a minute. The editor itself is free to use.</p>
+
+  <h3>How do I make karaoke-style captions?</h3>
+
+  <p>Make the captions, then pick Karaoke as the look: the line stays on screen and the word being said lights up. Set its color under The word being said, the rest under Text, and choose how many Words at once share the screen. One word, which shows a single big word at a time, suits shorter, punchier clips.</p>
+
+  <h3>Where should captions go on a TikTok or Reel?</h3>
+
+  <p>Inside the safe area, clear of the lower part of the frame and the right side, where the network puts its name, caption, reply box and buttons. In the Social panel, Show what the network covers draws those zones in red with a dashed safe area. If a check finds captions under the buttons, Move the captions into the safe area fixes it.</p>
+
+  <h3>How do I get an SRT file from my video?</h3>
+
+  <p>Make the captions in the Video editor, correct them under The words, then click Download as SRT. You get a plain-text subtitle file with the same words and timing. YouTube takes basic SRT files in plain UTF-8, and LinkedIn takes an SRT attached on the desktop before you post. The styling stays behind: SRT carries no look.</p>
+
+  <h3>Are auto captions accurate enough to publish?</h3>
+
+  <p>Not without a read. YouTube itself warns that automatic captions can misrepresent speech because of accents, dialects, mispronunciation or background noise. Treat the model's output as a first draft. Read every line under The words, fix names, product terms and numbers, and don't click Make them again afterward, which replaces your corrections.</p>
+
+  <h3>Can I caption a video in another language?</h3>
+
+  <p>Yes, in the language spoken in it. Pick that language under Language spoken, or let the editor Detect it, and the captions come out in that language. The captions are a transcription of what is said, not a translation. A video for another market starts from a voice in that market's language.</p>
+</HowtoLayout>

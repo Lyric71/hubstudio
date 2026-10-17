@@ -2779,3 +2779,30 @@ hand-off trace and the reasons for every cut.
 | 8.8 apps per knowledge worker | Work-management software maker, fielded November 2022 | Seller of a platform pitched against app sprawl; knowledge workers in general, not marketers | 2026-10-16 |
 | 9.5 minutes to refocus after an app switch; 23 minutes 15 seconds to return to a task | Workspace-hub vendor report, 2021; widely attributed university study | Originals 404 or never found | 2026-10-16 |
 | 53 percent of SaaS apps or licenses wasted; 60 percent of teams favor suites; 6 hours a week on integrations; 51 minutes a week of tool fatigue; 2.5 hours a day re-entering data | Vendor blogs and roundups | No reachable original with a method; sellers of the thing they flatter | 2026-10-16 |
+
+## Added 2026-10-17 (ledger rows from brief 75, word-by-word-video-captions)
+
+Copied from the research file, which carries the full claims table and the
+reasons for every cut. App behavior rows are not repeated here: they come from
+the help center (assets-library.md, shorts-autopilot.md), which is the source
+of truth for the app.
+
+### Captions: WCAG 2.2, caption files and platform caption features (added 2026-10-17, brief 75)
+
+| Figure | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| WCAG 2.2 SC 1.2.2 Captions (Prerecorded), Level A, verbatim: "Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such." Captions defined as "synchronized visual and/or text alternative for both speech and non-speech audio information needed to understand the media content" | "W3C, Web Content Accessibility Guidelines 2.2, W3C Recommendation, December 2024" | w3.org/TR/WCAG22/ | 2024-12-12 | primary | 2026-10-17 | 2026-10-17 | 75 |
+| Understanding SC 1.2.2: captions "not only include dialogue, but identify who is speaking and include non-speech information conveyed through sound, including meaningful sound effects"; closed captions can be turned on and off, open captions "cannot be turned off"; G93 (open) and G87 (closed) both sufficient techniques; Note 4: "Captions should not obscure or obstruct relevant information in the video." | "W3C, Understanding WCAG 2.2 success criterion 1.2.2, updated August 2026" | w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html | updated 2026-08-10 | primary | 2026-10-17 | 2026-10-17 | 75 |
+| YouTube supports SubRip (.srt): "Only basic versions of these files are supported. No style info (markup) is recognized. The file must be in plain UTF-8."; example timing 00:00:00,599 --> 00:00:04,160 | "YouTube Help, Supported subtitle and closed caption files, read October 2026" | support.google.com/youtube/answer/2734698 | undated, read 2026-10-17 | primary | 2026-10-17 | 2026-10-17 | 75 |
+| YouTube automatic captions (brief 53 row) re-fetched: "might misrepresent the spoken content due to mispronunciations, accents, dialects, or background noise. You should always review automatic captions" | "YouTube Help, Use automatic captioning, read October 2026" | support.google.com/youtube/answer/6373554 | undated, read 2026-10-17 | primary | 2026-10-08 | 2026-10-17 | 53, 75 |
+| LinkedIn closed captions: desktop only, "You must have an associated SRT (SubRip Subtitle) file attached to the video before it can be posted"; personal accounts and Pages | "LinkedIn Help, Add closed captions to videos on LinkedIn, read October 2026; the page says last updated five years ago" | linkedin.com/help/linkedin/answer/a552177 | page about 5 years old, read 2026-10-17 | primary, dated by the page itself | 2026-10-17 | 2026-10-17 | 75 |
+| TikTok auto captions: creators tap the auto captions icon, can edit the text once generated; viewers set captions to off from the share panel; initially English | "TikTok Newsroom, auto captions launch post, September 2021" | newsroom.tiktok.com/auto-captions-on-tiktok | 2021-09-30 | primary, dated 2021 | 2026-10-17 | 2026-10-17 | 75 |
+
+### Do not publish, added from brief 75
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| "85% of social videos watched without sound", "38% more engagement", "31% longer watch time", 12.5 against 6.9 percent conversion | Caption startup landing pages | No source, no method, sellers of captions (extends the brief 53 sound-off row) | 2026-10-17 |
+| "99.9%" or "99%" caption accuracy | Caption tool landing pages | Vendor claims about their own product, no test set | 2026-10-17 |
+| TikTok caption placement "480 px bottom reserve", "550 to 700 px from the bottom", "avoid the bottom 20%" | Tool and agency blogs | On no TikTok page; use the brief 57 template rows | 2026-10-17 |
+| Facebook SRT file naming `filename.[language]_[country].srt` | Search snippets of Facebook Help 261764017354370 and Meta Business Help 1675722002698686 | Both pages returned HTTP 400 on 2026-10-17; not readable | 2026-10-17 |

@@ -1,0 +1,40 @@
+﻿2026-10-17T10:08:12 start draft (model claude-opus-5-5)
+2026-10-17T10:08:13 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-17T10:09:03 Opus 5.5 attempt 1: fresh run, no partial progress found in log or tree. Queue: 75 published, 67 not_started, none at researched/drafted/quality_passed/image_ready. Taking brief 75 word-by-word-video-captions (howto, publish_date 2026-10-22), earliest not_started row. Pre-existing uncommitted edits (editorial/CLAUDE.md, check-queue.mjs, notify-publish.mjs, run-daily.ps1, 2026-10-16-publish.txt) are not this run's and are left untouched.
+2026-10-17T10:15:38 Research gate R1 to R7 done: editorial/research/word-by-word-video-captions.md written, captures in research/word-by-word-video-captions/ (W3C pages kept as HTML, long dashes replaced; YouTube, LinkedIn, TikTok pages kept as verbatim source text). Facebook and Meta caption help returned HTTP 400: no Facebook file claim made.
+2026-10-17T10:20:33 createarticle iterations 1 to 13 done (iteration 7 ran as the cadence variant, no planted errors); check 2 re-fetch passed on six URLs; R8 written. check-draft passes.
+2026-10-17T10:21:33 content-quality-us 18 passes plus final done in place; SEO 43/147/23 words; check-draft all hard checks pass. Row at quality_passed.
+2026-10-17T10:26:55 Image step done: gpt-image-2 high, attempt 2 kept (attempt 1 had a logo-like headband mark and notebook scribbles), wall pseudo-text cloned out, saved public/Images/howto-word-by-word-video-captions.webp (1536x1024, 73 KB). Ledger block for brief 75 appended, watch row 2027-01-22 added, schedule row 75 at image_ready with all four dates, run log editorial/logs/2026-10-17-word-by-word-video-captions.md written. Stopped at image_ready: no publish, no commit.
+I drafted brief 75, "How to add word-by-word captions to a video", and stopped at `image_ready`. Nothing was published or committed. This run started fresh, with nothing from an earlier attempt to finish. Brief 75 was the earliest `not_started` row in the queue (publish_date 2026-10-22).
+
+**Steps 0 to 3:**
+- **Research:** written to `editorial/research/word-by-word-video-captions.md` before any drafting. It maps five search queries and cites only primary sources:
+  - the W3C accessibility standard (WCAG 2.2, success criterion 1.2.2) and W3C's own explanation of it;
+  - YouTube's help pages on caption files and on automatic captions;
+  - LinkedIn's help page on adding captions with an SRT file;
+  - TikTok's 2021 launch post for auto captions.
+
+  Every app fact comes from the help center's `assets-library.md` and `shorts-autopilot.md`. Page captures are in `research/word-by-word-video-captions/`.
+- **Draft:** `editorial/output/word-by-word-video-captions.md`, written with `/createarticle`. Iteration 7 ran as the cadence pass, with no planted errors. All six cited pages were fetched again after drafting, and every quote was still there word for word. `check-draft.mjs` passes every hard check.
+- **Quality pass:** all 18 passes of `/content-quality-us` ran on the file. The title is 43 characters, the meta description 147 and the excerpt 23 words.
+- **Hero image:** `public/Images/howto-word-by-word-video-captions.webp` (1536×1024, 73 KB). I rejected the first attempt because it had a logo-like mark on the headphones and scribbled near-text in a notebook. I kept the second, but painted out a faint scribble on the wall that looked like fake writing, using a patch of clean wall from the same picture.
+
+**Things I closed in this run instead of leaving open:**
+- **Cut for lack of a source:**
+  - every "watched without sound" and engagement statistic;
+  - the accuracy percentages that caption tools advertise;
+  - third-party pixel measurements for TikTok's safe zone;
+  - Facebook's naming rule for caption files, because both of Meta's help pages returned an HTTP 400 error.
+
+  These are all recorded in the do-not-publish list.
+- **Source ledger:** the new sources are added to `sources/verified-sources.md`, each checked twice on 2026-10-17.
+- **Watch list:** a quarterly recheck is added to `editorial/watch.csv`, due 2027-01-22.
+- **Existing pages:** no live article contradicts this piece, and the brief needed no change.
+- **Showcase clip:** none exists, so the page ships with its hero image and three existing localized app screenshots. The clip comes later under settled fallback 12.
+
+The schedule row now has all four dates. The run log is `editorial/logs/2026-10-17-word-by-word-video-captions.md`, and each step is also recorded in `logs/runs/2026-10-17-draft.txt`. Edits that were already uncommitted in `editorial/` (`CLAUDE.md`, three scripts and the 2026-10-16 publish log) are not from this run, and I didn't touch them.
+
+The Gmail, Google Calendar and Google Drive connectors need signing in through your claude.ai connector settings before they can be used. This run didn't need them.
+2026-10-17T10:27:08 model Opus 5.5 completed successfully
+2026-10-17T10:27:08 end draft exit 0
+2026-10-17T10:27:08 queue: ok: 66 to draft, 0 blocked, last draft 2026-10-17
