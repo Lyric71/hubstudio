@@ -107,6 +107,7 @@ const HOWTOS: Record<string, string> = {
   'carousel-post-guide': 'reussir-un-carrousel-instagram-et-linkedin',
   'chatgpt-image-2-product-prompting-guide': 'chatgpt-image-2-guide-des-prompts-produit',
   'consistent-character-ai-images-video': 'un-personnage-coherent-en-images-et-videos-ia',
+  'holiday-visuals-from-product-photos': 'visuels-black-friday-a-partir-de-vos-photos-produit',
   'kling-3-product-video-guide': 'kling-3-prompts-pour-la-video-produit',
   'long-video-to-shorts': 'd-une-video-longue-a-des-formats-courts',
   'nano-banana-pro-photo-editing': 'retouche-photo-avec-nano-banana-pro',

@@ -1,0 +1,141 @@
+﻿2026-10-19T04:00:05 start publish (model claude-opus-5-5)
+2026-10-19T04:00:06 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-19T04:05 read prompt (sha256 verified), manifest, editorial/CLAUDE.md, SPEC.md, RUNBOOK.md. Log held only the start lines: no earlier progress to resume.
+2026-10-19T04:05 eligible rows (status image_ready): holiday-visuals-from-product-photos (brief 79, template howto). No row carries a note asking for a person's decision.
+2026-10-19T04:05 working tree carries unrelated uncommitted work (feature videos: src/pages/video, src/pages/resources/videos.astro, FeatureVideo, astro.config.mjs, vercel.json, dict edits, editorial script edits). It is not this run's: only the article's files and hunks are staged.
+2026-10-19T04:15 holiday-visuals-from-product-photos: published by template howto with node editorial/scripts/publish-draft.mjs (category Image editing, tone orange, date 2026-10-19, hand-written alt). Page src/pages/resources/how-to/holiday-visuals-from-product-photos.astro, entry at the head of src/data/howtos.ts. Five internal links wired; the first body mention of the Holiday content calendar 2026 was linked by hand (the script had wired only the FAQ mention). The four localized help captures named by the ASSET BRIEF are embedded, each with .fr and .zh siblings already listed in localized-images.json. Settled fallback 12 applies: no showcase clip yet. Hero checked against the style guide (190 KB, no text, one light source).
+2026-10-19T04:15 French slug: HOWTOS map, holiday-visuals-from-product-photos -> visuels-black-friday-a-partir-de-vos-photos-produit.
+2026-10-19T04:16 extract started: npm run i18n:local -- extract --context .i18n-work/ctx
+2026-10-19T04:25 translation: French and Chinese subagents launched in parallel; stale pass files for common and the how-to index moved to .i18n-work/passes-archive/2026-10-19 first.
+2026-10-19T04:40 watch.csv: one row due (2026-10-19, singles-day-618-production-calendar, Douyin Singles Day 2026 opening). Rechecked in the Chinese-language press: China National Radio (cnr.cn, 15 October 2026), Securities Daily (10jqka, 15 October 2026) and Dianshangpai (pai.com.cn, 15 October 2026) report the 2026 Douyin Mall Double 11 opening on 15 October, running to 11 November, 28 days, no presale. None gives an opening hour, so the single-source midnight time is dropped. Corrected on the page and in the draft: the Douyin 2026 blockquote and source line, the table row (no longer "as reported" or "One report"), the closing line after the 2026 Tmall blockquote, and the first FAQ answer. dateModifiedISO 2026-10-12 -> 2026-10-19. Ledger row and research claims table updated. The changed sentences are translated after the how-to's translation lands, then the row is removed and the fix ships as its own commit.
+2026-10-19T04:52 Chinese translation finished: resources/how-to/holiday-visuals-from-product-photos (162 entries), common (3 new) and resources/how-to (3 new), every build clean. Also aligned one entry in zh resources/how-to/product-photo-to-lifestyle-image ('Prompt rewritten' now the app's 提示词已改写). Glossary zh.md: a settled-terms block for this guide added.
+--- zh changes.md (how-to, common, index) ---
+[resources/how-to/holiday-visuals-from-product-photos]
+[title] pass1 -> pass3: 用现有产品图做黑色星期五视觉 -> 用现有产品图做黑色星期五节日视觉 | hubStudio / why: matches the h1 in common.json, 28 characters with the suffix
+[meta] pass1 -> pass3: 只换场景，不动产品，优惠信息保持可改 -> 只换场景、不动产品，优惠信息随时可改 / why: "保持可改" is a calque; paired four-character beats read as a native deck
+[lede] pass1 -> pass3: 场景并不难做，容易出问题的是产品，以及印在产品上方的价格 -> 场景其实最好做，难的是产品，以及压在产品上的那行价格 / why: introduces 黑五 per the glossary and replaces the "on top of" calque with a concrete image
+[answer box] pass1 -> pass3: hubStudio 在一个应用里完成每一步 -> 这些步骤，在 hubStudio 一个应用里就能走完 / why: an English subject-verb skeleton became a topic-comment sentence
+[steps] pass1 -> pass3: 同时在多款引擎上运行 / 而不是修图 -> 多款引擎同时开跑 / 不靠修图补救 / why: short verb-object list items, sibling guides use 重跑
+[steps] pass1 -> pass3: 作为图片上方的文字，加在副本上 -> 以文字叠在图上，改在副本上 / why: "上方" read as a spatial position; 叠 is the production verb
+[dates] pass1 -> pass3: 网络星期一随后，在 11 月 30 日 -> 紧随其后的是 11 月 30 日的网络星期一 / why: English word order removed
+[dates] pass1 -> pass3: 本指南讲的是这两者之间要做的事 -> 本指南讲的，是简报与交付之间的那段制作 / why: names what "in between" refers to
+[sources] pass1 -> pass3: 只能自己去填补 -> 只能凭空补全 / why: firmer written verb
+[sources] pass1 -> pass3: 印刷字就会丢失 -> 印刷字一缩便模糊难辨 / why: says what actually happens to the print at 1,536 pixels
+[prompt] pass1 -> pass3: 写编辑指令，而不是描述一张新图。先用几句话写场景 -> 写成编辑指令，而非对一张新图的描述。场景交给几句话，产品则单独占一整句 / why: parallel structure, 书面语 而非
+[prompt table] pass1 -> pass3: 改 / 不改 / 改还是不改 -> 改动 / 保持不变 / 改动与否 / why: bare single-character cells read like a form
+[prompt example] pass1 -> pass3: 保持安静 -> 画面保持素净，留待后期加字 / why: "calm" calqued; 素净 is the photographer's word, wording kept consistent with the sibling guides' prompts
+[skills] pass1 -> pass3: 它们承载着您原本要在每条提示词里重复输入的规则 -> 有了它们，那些规则就不必在每条提示词里重打一遍 / why: nominal English chain turned into a verbal Chinese sentence
+[skills] pass1 -> pass3: 用于只需改动场景的生成 -> 遇到只该变动场景的生成，正好派上用场 / why: purpose clause made idiomatic
+[variations] pass1 -> pass3: 怎样做出足够多的变体，又不必一张张等 -> 怎样多出几版变体，又不必一张张干等 / why: tighter heading rhythm
+[variations] pass1 -> pass3: 在您点击之前不会运行任何东西 -> 不点击，什么都不会运行 / why: conditional made Chinese-shaped
+[campaign] pass1 -> pass3: 只要它一直被选中 -> 只要不改选 ... 不会散落在素材库各处 / why: passive calque removed
+[check] pass1 -> pass3: 那会把您产品的照片变成产品的一幅画 -> 那样一来，产品的照片就成了产品的画 / why: drops the possessive chain
+[mask] pass1 -> pass3: 这样就只有场景能变 -> 能变的就只剩场景 / why: end-weight on the point
+[discount] pass1 -> pass3: 它可能拼错，而且是固定的 -> 等于多出一处要核查的文字，可能拼错，而且一经生成便无法改动 / why: "frozen" rendered by its meaning
+[editor] pass1 -> pass3: 能让浅色文字保持清晰可读 -> 浅色文字才不会被吞没 / why: native image, app labels kept (文本, 添加文本, 深色描边, 柔和阴影, 文字底色)
+[editor] pass1 -> pass3: 您添加的每样东西在保存前都是独立的一块 -> 保存之前，添加的每个元素都各自独立 / why: "piece" calque removed
+[price rules] pass1 -> pass3: 前价只有在以下情况下才能支撑价格比较 -> 前价要用作价格比较的依据，必须是 / why: "support" calque; quotes from FTC, the EU directive and Google Merchant Center are our own Chinese, flagged 引文由本站翻译 in the source lines
+[price rules] pass1 -> pass3: 放到制作上 ... 这样做网络星期一版本的人看到的是同一组数字 -> 落到制作上 ... 做网络星期一版本的人才会拿到同一组数字 / why: result clause made Chinese-shaped
+[formats] pass1 -> pass3: 它会设置平台为某个投放位要求的尺寸 -> 它按平台对各投放位的要求设定尺寸 / why: relative clause unpacked; Best kept as the app's “推荐”
+[formats table] pass1 -> pass3: 只定比例 / 保持拍摄比例 / 提交干净成图 -> 仅定比例 / 沿用原图比例 / 直接提交干净成图 / why: table-cell register
+[campaign end] pass1 -> pass3: 您一开始选的营销活动里已经有了干净成图 -> 开工时选定的营销活动里，已收录干净成图 / why: written register
+[FAQ] pass1 -> pass3: 能做到很接近，余下的由您的核查完成 -> 可以非常接近，余下的靠核查补齐 / why: agentless calque removed
+[FAQ] pass1 -> pass3: 去算，而不是去猜 -> 要算，不要猜 / why: the native imperative pair
+[FAQ date] pass2 -> pass3: 即感恩节次日，感恩节为 11 月 26 日（周四） -> 即感恩节（11 月 26 日，周四）次日 / why: 感恩节 said twice in one breath; the date folds into a parenthesis
+[campaign] pass2 -> pass3: 选中这次上线 -> 选定本次上线 / why: written register, the launch is what the campaign menu names
+
+[common]
+[card alt] pass1 -> pass3: 一只琥珀色玻璃蜡烛罐，配哑光黑色罐盖和一张没有文字的米白色标签 -> 琥珀色玻璃蜡烛罐配哑光黑盖，米白色标签上空无一字 / why: the English noun chain became short descriptive clauses, the way a Chinese caption describes a still life
+[card alt] pass1 -> pass3: 冬日低斜的阳光照在桌面 -> 冬日斜阳低低照来 / why: a literal "low winter sun" turned into a native image
+[card alt] pass1 -> pass3: 旁边是四张同一只罐子在冬日场景中的打印照片 -> 旁边摊着四张打印照片，都是这只罐子置身冬日场景的样子 / why: the stacked modifier before the noun was split into two clauses
+[card alt] pass2 -> pass3: one long sentence -> two sentences, 不同 dropped / why: the English says "winter scenes", not "different" ones; a breath before the pencil detail
+[card title] pass1 -> pass3: 用现有产品图做黑色星期五视觉 -> 用现有产品图做黑色星期五节日视觉 / why: "visuals" alone is vague in Chinese; 节日视觉 carries the holiday season the guide covers; matches the page title
+[card deck] pass1 -> pass3: 用您已有的照片做出节日季视觉：新的场景，相同的产品，优惠信息放在上方 -> 节日季视觉，用手头现成的照片就能做：场景换新，产品不变，优惠信息叠在最上层 / why: topic-first sentence and paired four-character beats replace the English list of noun phrases
+[card deck] pass1 -> pass3: 价格宣称经过核实 -> 价格宣称逐一核实 / why: active, matches the guide's meta description
+[note] Black Friday is written in full (黑色星期五) on the card: it stands alone on listing pages, before the guide's lede introduces 黑五
+
+[resources/how-to]
+[latest card chip] pass1 -> pass3: <span1>最新</span1>图片编辑, unchanged / why: same pattern as the earlier chips on this index (<span1>最新</span1>短视频, <span1>最新</span1>版权) and the category 图片编辑 from common.json
+[latest card date] pass1 -> pass3: 2026 年 10 月 19 日, unchanged / why: house date format, same as the other dates on the index
+[json-ld description] pass1 -> pass2: 把手头的产品图做成 ... 优惠信息保持可改 -> 用手头的产品图做 ... 优惠信息随时可改 / why: "保持可改" is a calque of "keep editable"; 随时可改 says it in Chinese
+[json-ld description] pass2 -> pass3: 只换场景不动产品 -> 只换场景、不动产品 / why: the pause mark gives the two four-character beats their rhythm
+[json-ld description] note: the final text is word for word the guide's own meta description, so the index's structured data and the guide's search snippet agree
+
+2026-10-19T05:05 French translation finished: holiday-visuals-from-product-photos (163 entries, one page override 'Label' -> Étiquette), common (3 new), resources/how-to (3 new), every build clean. Glossary fr.md: a settled-terms block for this guide added. Two quotes the translator gave from memory were checked against the originals and corrected: the EU directive's official French (EUR-Lex, 'prix antérieur appliqué', not 'pratiqué'; the quote now stops where the English stops) and Google Merchant Center's own French help page wording and title (support.google.com/merchants/answer/6324350?hl=fr). Glossary line corrected. Rebuilt clean.
+--- fr changes.md (how-to, common, index) ---
+[resources/how-to/holiday-visuals-from-product-photos]
+# FR, resources/how-to/holiday-visuals-from-product-photos (149 units, plus a page override)
+
+[meta] pass1 -> pass3: "Tirez vos visuels Black Friday et de fêtes de vos photos produit : changer le décor..." -> "Black Friday et fêtes : des visuels tirés de vos photos produit. Le décor change, le produit non ; l’offre reste modifiable, l’annonce de prix vérifiée." / why: the doubled "vos" and the infinitive list read as a translated spec; two short sentences, 152 characters.
+[standfirst] pass1 -> pass3: "Le décor de Black Friday est la partie facile..." / "gardez le produit tel qu’il a été photographié" -> "Planter un décor de Black Friday, c’est le plus facile." / "Changez la pièce, jamais le produit : il doit rester tel que la prise de vues l’a saisi." / why: a French lede that opens on the action; passive "a été photographié" dropped.
+[h2 how] pass1 -> pass3: "avec l’IA ... à partir de vos photos existantes" -> "par IA ... à partir des photos dont vous disposez déjà" / why: "photos existantes" is an English calque.
+[answer box] pass1 -> pass3: "Partez de votre packshot existant comme source d’une retouche" -> "Votre packshot existant devient la source d’une retouche d’image" / why: subject first, stronger verb.
+[steps] pass1 -> pass3: "Une étiquette fausse impose une nouvelle génération, pas une retouche." -> "Une étiquette fautive se corrige par une nouvelle génération, jamais par une retouche." / why: sharper contrast; "Vérifier" became "Contrôler", "réunir" became "regrouper" to avoid three "vérifier" in a row.
+[calendar h2] pass1 -> pass3: "et que compte encore la saison ?" -> "et quels autres temps forts jalonnent la saison ?" / why: glossary term "temps fort"; the first wording was vague.
+[French sales note] pass1 -> pass3: "La ligne française relève du calcul... avancés au premier lorsque..." -> "La ligne consacrée à la France résulte d’un calcul, non d’une annonce : les soldes d’hiver ouvrent le deuxième mercredi de janvier, ou le premier si le deuxième tombe après le 12." / why: plainer, and "soldes d’hiver" named.
+[calendar link] pass1 -> pass3: "remonte de chacune de ces dates... Ce guide traite de ce qui se passe entre les deux." -> "part de chacune de ces dates et remonte... Ce guide couvre l’entre-deux." / why: tighter close; the link names the insight by its French h1, as the glossary requires.
+[sources] pass1 -> pass3: "un petit produit sur un large fond blanc y perd ses inscriptions" -> "un petit produit perdu sur un large fond blanc y laisse ses inscriptions" / why: native image; "dans votre navigateur" moved next to the verb.
+[prompt h2 body] pass1 -> pass3: "Consacrez quelques phrases au décor, puis une phrase entière au produit" -> "Le décor a droit à ses phrases ; le produit, à une phrase entière rien que pour lui" / why: rhythm and parallelism of a French editor.
+[prompt example] pass1 -> pass3: "Deux brins de pin et une écharpe en laine grise pliée sur le bord gauche" -> "Sur le bord gauche, deux brins de pin et une écharpe de laine grise pliée"; "N’ajoutez ni texte, ni chiffre, ni prix, ni logo, ni second pot" -> "N’ajoutez aucun texte, chiffre, prix ou logo, ni de second pot" / why: place first as in a French brief; vous imperative kept (glossary); WINTER FIG and 220 g left as printed on the product.
+[prompt note] pass1 -> pass3: "remplit deux fonctions. Il empêche le moteur d’inscrire une bannière" -> "fait double office : il empêche le moteur de peindre une bannière de soldes" / why: idiom over a flat noun phrase.
+[skills h2] pass1 -> pass3: "Quel rôle pour les compétences..." -> "Où interviennent les compétences Packshot e-commerce et Produit en situation ?" / why: a real question; app labels from the glossary and the app's fr.json (Retouches d’image précises, Voir le détail).
+[Improve with AI] pass1 -> pass3: "Vos réglages restent intacts." (separate sentence) -> "une retouche revient donc sous forme de consigne de retouche, et vos réglages restent intacts"; "Si la phrase sur l’étiquette a raccourci" -> "a été raccourcie" / why: one sentence of cause and effect; pass2's "a fondu" was too familiar and went in pass3.
+[variations] pass1 -> pass3: "Lancez le deuxième moteur pendant que le premier travaille." -> "Lancez le deuxième moteur sans attendre que le premier ait fini."; "un échec n’est pas facturé" -> "une génération en échec ne coûte rien" / why: avoids "facturées... facturée" in two clauses.
+[reuse, campaign] pass1 -> pass3: "Quand un produit passe le contrôle" -> "Une fois un produit validé"; "dans le menu Campagne, parmi les options" -> "dans le menu Campagne, que vous trouverez parmi les options" / why: pass2's absolute construction dangled; the options clause read as a stray English tail.
+[check h2 body] pass1 -> pass3: "Un défaut ... renvoie l’image à une nouvelle génération" -> "Au moindre défaut d’étiquette, de logo, de couleur ou de forme, l’image repart en génération" / why: verbal construction, a French cadence.
+[discount] pass1 -> pass3: "Une remise générée par le moteur, c’est un lettrage de plus à contrôler ; ... quand l’offre se creuse" -> "Une remise dessinée par le moteur ajoute un lettrage à contrôler, peut revenir avec une faute, et reste figée : si la réduction s’accentue" / why: spoken "c’est" removed, loose "se creuser" replaced.
+[Image editor text] pass1 -> pass3: "Cliquez sur Modifier : l’Éditeur d’images s’ouvre, gratuit, dans votre navigateur" -> "Un clic sur Modifier ouvre l’Éditeur d’images, gratuit et exécuté dans votre navigateur"; "garde lisibles des mots clairs" -> "préserve la lisibilité des mots clairs" / why: as the sibling guides word it; Text panel labels from the app.
+[save] pass1 -> pass3: "vous pouvez le déplacer et en changer le style... Sans nouvelle génération." -> "que vous pouvez déplacer et remettre en forme... sans relancer la moindre génération" / why: the verbless closing sentence became a clause.
+[price rules] pass1 -> pass3: "la référence est constituée par les lignes directrices de la FTC... le prix « avant » d’une offre qui affiche un avant et un après" -> "la règle de référence figure dans les lignes directrices de la FTC (...) consacrées aux comparaisons avec un prix antérieur, c’est-à-dire le prix barré d’une offre qui met en regard l’ancien et le nouveau prix" / why: glossary "prix barré"; FTC glossed once.
+[FTC quote] pass1 -> pass3: "pendant une durée raisonnablement substantielle" -> "pendant une période raisonnablement longue"; "si insignifiante qu’elle en perd tout sens" -> "insignifiante au point de ne plus rien signifier" / why: calque removed, faithful to the CFR text, marked "notre traduction".
+[EU quote] kept from pass1: the official French of article 6 bis of directive 98/6/CE ("trente jours" as the Journal officiel writes it).
+[production note] pass1 -> pass3: "Concrètement, en production : ... ; prévoyez-lui de la place" -> "En production, cela se traduit ainsi : ... auquel il faut donc réserver de la place dans l’incrustation" / why: one fluid sentence; "Il s’agit de pratique de production" -> "Ces indications relèvent de la pratique de production, non du conseil juridique", as on the sibling guides.
+[formats] pass1 -> pass3: "marque celle qu’il recommande comme Conseillé" -> "signale celle qu’il recommande par la mention Conseillé"; table heads "Où le régler dans l’éditeur" / "Taille indiquée par l’éditeur" -> "Réglage dans l’éditeur" / "Taille signalée par l’éditeur" / why: noun heads, as French tables are set; editor paths in « » so the commas inside "Post, format large" cannot be misread.
+[FAQ] pass1 -> pass3: "au lendemain de Thanksgiving, fixé au jeudi 26 novembre" -> "au lendemain de Thanksgiving, fêté le jeudi 26 novembre"; "ce que leurs modèles peuvent encore rater" -> "les points où leurs modèles peuvent encore se tromper" / why: register; the JSON-LD answer copies the visible answer word for word.
+[override] "Label" table row: common.json renders « Étiquetage »; this page gets « Étiquette » (product label), added as a page override.
+[verification, orchestrator] EU quote checked against EUR-Lex (FR, CELEX 32019L2161, read 2026-10-19): the official text reads « le prix antérieur appliqué par le professionnel pendant une durée déterminée... », not « pratiqué »; the quote now stops at « le prix antérieur », where the English quote stops. Google Merchant Center quotes replaced by Google's own French page (support.google.com/merchants/answer/6324350?hl=fr, read 2026-10-19): « une vue dégagée et nette de l’article en vente », « mentions de prix, de remises ou d’offres comme “Livraison gratuite” »; source line says « version française de la page ».
+
+[common]
+# FR, common (3 units: the holiday visuals guide card)
+
+[card alt] pass1 -> pass2: "Un pot de bougie en verre ambré, au couvercle noir mat..., se dresse sur une table en bois usée sous un soleil d’hiver bas" -> "Sur une table de bois usée, dans la lumière rasante d’un soleil d’hiver, un pot de bougie en verre ambré" / why: the setting first, as a French caption composes a still life; "soleil d’hiver bas" was a literal rendering of "low winter sun".
+[card alt] pass2 -> pass3: "dans des décors hivernaux ; ... le crayon posé en travers" -> "mis en scène dans l’hiver ; ... le crayon posé en travers du tirage" / why: less flat adjective, and the end of the sentence restored so the image reads complete.
+[card alt] pass1 -> pass3: "une étiquette est entourée au crayon rouge" -> "sur l’un d’eux, une étiquette entourée au crayon rouge" / why: a nominal caption needs no verb, and it now says which print.
+[title] pass1 -> pass2: "Visuels Black Friday : partir de vos photos produit" -> "Des visuels Black Friday tirés de vos photos produit" / why: the colon construction read as a slogan built on the English; the participle carries the idea and keeps sentence case. This is also the guide's h1.
+[deck] pass1 -> pass2: "Créez les visuels de la saison à partir des photos que vous possédez déjà : un nouveau décor..." -> "Les visuels de la saison, tirés des photos que vous avez déjà : un nouveau décor, le même produit, l’offre posée par-dessus, l’annonce de prix vérifiée." / why: nominal deck, as on the sibling cards; echoes the title's "tirés de".
+[deck] pass2 -> pass3: "que vous avez déjà : un nouveau décor, le même produit, l’offre posée..." -> "dont vous disposez déjà : nouveau décor, même produit, offre posée par-dessus, annonce de prix vérifiée." / why: articles dropped for a tighter list; "disposer" is the written register.
+[terms] "price claim" rendered « annonce de prix », the wording of directive 98/6/CE art. 6 bis, as in the guide itself.
+[title] pass3: kept from pass2; checked against the sibling card titles ("D’une photo produit à une photo d’ambiance", "Du texte lisible dans une image IA"), which also drop the English "How to" frame.
+[deck] key holds the entity &#39; ; the French uses the typographic apostrophe, and the colon takes a no-break space.
+[card alt] checked against the image brief: amber glass, matte black lid, blank cream label, four prints, red pencil circle; nothing added, nothing dropped.
+
+[resources/how-to]
+# FR, resources/how-to (3 units on the how-to index)
+
+[lead card tag] pass1: "<span1>Latest</span1>Image editing" -> "<span1>Dernier guide</span1>Retouche d’image" / why: glossary settles « Dernier guide » for this index (« Dernier article » stays for insights) and common.json's « Retouche d’image » for the category; kept through passes 2 and 3.
+[lead card date] pass1: "October 19, 2026" -> "19 octobre 2026" / why: French date order, no comma; kept.
+[json-ld description] pass1 -> pass2: "Tirez vos visuels Black Friday et de fêtes de vos photos produit : changer le décor, jamais le produit, garder l’offre modifiable, vérifier l’annonce de prix." -> "Black Friday et fêtes : des visuels tirés de vos photos produit. Le décor change, le produit non ; l’offre reste modifiable, l’annonce de prix vérifiée." / why: the index card copies the guide's own meta description word for word (glossary rule); the guide's pass2 rewrite of that meta is carried here.
+[json-ld description] pass3: no change, the guide's meta did not change in its pass3.
+[json-ld description] length checked: 152 characters, under the 155 ceiling, with no-break spaces before ":" and ";".
+[lead card tag] the two placeholders kept in place: the tag stays inside span1, the category follows it unwrapped, as on the English card.
+[lead card] title and deck come from common.json (translated in the common run), so the index shows the same h1 and deck as the guide.
+[check] build clean with the three entries filled; nothing else in the index dictionary touched.
+
+2026-10-19T05:06 second extract started, to pick up the singles-day-618-production-calendar sentences changed by the watch recheck.
+2026-10-19T05:20 singles-day-618-production-calendar: the six changed units translated in French and Chinese with three pass files (old pass files archived), both builds clean, nothing pending in either language.
+--- fr changes.md (singles-day-618-production-calendar) ---
+[Douyin 2026 blockquote] pass1 -> pass3: "a ouvert son Singles Day 2026 le 15 octobre et le fait courir jusqu'au 11 novembre" -> "a lancé son Singles Day 2026 le 15 octobre : 28 jours de vente jusqu'au 11 novembre, sans prévente" / why: one strong verb, the duration carried by the colon instead of an English-shaped "and runs it".
+[Douyin 2026 blockquote] pass1 -> pass2: "avaient ouvert le 14 septembre" -> "étaient ouvertes depuis le 14 septembre" / why: the state, not the event, is what the reader needs.
+[source line] pass1 -> pass3: "presse chinoise financière et spécialisée dans l'e-commerce, qui ont rendu compte" -> "China National Radio ainsi que la presse économique et spécialisée chinoise" / why: "presse économique" is the French category; "ne donne d'heure" -> "ne précise l'heure".
+[table] "Sale 15 October, midnight, as reported" row: "Vente le 15 octobre" and "Jusqu'au 11 novembre, sans prévente ; inscriptions dès le 14 septembre" / why: the hedges dropped with the English, cell register kept.
+[2026 rules paragraph] pass1 -> pass2: "Douyin, lui, ouvre le même jour que les acomptes de Tmall" -> "quant à Douyin, il ouvre le jour même des acomptes de Tmall" / why: avoids "ouvre ... ouvre" and keeps the page's earlier "quant à" construction.
+[FAQ] pass1 -> pass3: "la vente de Douyin ouvre le 15 octobre" -> "la vente de Douyin a démarré le 15 octobre et court jusqu'au 11 novembre" / why: the sale is under way at the update date; the rest of the answer kept word for word.
+--- zh changes.md (singles-day-618-production-calendar) ---
+[抖音 2026 引文] pass1 -> pass3: 大促于 10 月 15 日开启，持续至 11 月 11 日 -> 于 10 月 15 日启动，11 月 11 日收官，为期 28 天，全程不设预售 / why: 启动、收官 is the press's own pair; one sentence with a semicolon instead of two flat ones.
+[抖音 2026 引文] pass1 -> pass2: 商家报名已于 9 月 14 日开放 -> 商家报名早在 9 月 14 日即已开放 / why: 早在……即已 gives the time contrast in written register.
+[来源] pass1 -> pass2: 央广网及中国财经、电商媒体对平台启动活动的报道，2026 年 10 月 15 日 -> 央广网及多家中国财经、电商媒体 2026 年 10 月 15 日对活动启动的报道 / why: date folded into the attribute, as Chinese source lines run; 未提及 -> 未给出.
+[表格] 开售 10 月 15 日 0 点（据报道） -> 10 月 15 日开售; 仅一家报道 dropped -> 持续至 11 月 11 日，不设预售；9 月 14 日起报名 / why: hedges dropped with the English.
+[2026 规则段] pass1 -> pass2: 抖音则与天猫开付定金同日开启 -> 抖音的开启日，恰与天猫开付定金同一天 / why: 恰 marks the coincidence the paragraph is about.
+[FAQ] pass1 -> pass3: 抖音于 10 月 15 日开售，持续至 11 月 11 日 -> 抖音则于 10 月 15 日开售，至 11 月 11 日结束 / why: 则 links to the JD clause; rest of the answer kept word for word.
+2026-10-19T05:30 npm run i18n:local -- check: every page translated in French and Chinese. npm run i18n:guard: 248 pages, dictionaries complete. npm run build started.
+2026-10-19T04:28 npm run build passed (exit 0), npm run check passed (0 errors, 0 warnings). Note: the clock times written above from 04:15 on were estimates and ran ahead of the machine clock; from here the times are read from the clock.

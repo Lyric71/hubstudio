@@ -1,0 +1,375 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I make Black Friday product images with AI?",
+    "a": "Start from a sharp packshot you already own. Run an image edit with it as the first source picture and a prompt that names the new scene, then a sentence on what must not change: shape, color, the label's exact words. Check each result against the packshot, add the discount on top in an editor, and confirm the price claim before it runs."
+  },
+  {
+    "q": "Can AI put my product in a holiday scene without changing it?",
+    "a": "It gets close, and your check does the rest. Put the label's words in quotation marks, describe the product in detail, and add a close crop of the label as a second source picture where the engine takes one. Engine makers list brand elements among the things their models can still get wrong, so compare every render with the packshot and rerun any that fail."
+  },
+  {
+    "q": "Should I put the discount in the image or on top of it?",
+    "a": "Put it on top, as text added in an editor to a copy of the render. Lettering drawn by the engine can come back misspelled and can't change: a deeper discount would mean a new render and a new product check. The clean render also stays usable where overlays are refused, Google Merchant Center product images among them."
+  },
+  {
+    "q": "When is Black Friday 2026?",
+    "a": "Friday, Nov. 27, 2026, the day after Thanksgiving, which falls on Thursday, Nov. 26. Cyber Monday is Monday, Nov. 30. In the UK, Boxing Day is Saturday, Dec. 26, with the bank holiday on Monday, Dec. 28. The Holiday content calendar 2026 counts back from each date to the last day to brief."
+  },
+  {
+    "q": "What are the rules for showing a sale price in an ad?",
+    "a": "In the US, the FTC's Guides Against Deceptive Pricing say a former price must be one you genuinely offered on a regular basis for a reasonably substantial period. In the EU, a price reduction must show the lowest price you applied in at least the 30 days before it. Have the price owner sign off the number. This is production practice, not legal advice."
+  },
+  {
+    "q": "How many holiday visuals do I need for the season?",
+    "a": "Count it rather than guess it. Multiply the products you will push by the placements each one runs in (feed, Story, X, LinkedIn, the marketplace) and by the moments you mark, such as Black Friday, Cyber Monday and Christmas. Then add a copy for every offer change. The clean renders are fewer than the total, because each one carries several overlays."
+  }
+];
+---
+
+<HowtoLayout slug="holiday-visuals-from-product-photos" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">The Black Friday scene is the easy part. What goes wrong is the product, and the price written across it. Change the room and keep the product exactly as shot. The offer goes on last, on top, where it can still change.</p>
+
+  <h2>How do you make Black Friday product images with AI from photos you already have?</h2>
+
+  <p>Use your existing packshot as the source of an image edit. The prompt names what changes (scene, props, light) and what must not (label, color, shape). Check every render against the packshot, add the offer as text on top rather than inside the picture, and confirm the price claim. hubStudio does each step in one app.</p>
+
+  <p>The sequence, start to finish:</p>
+
+  <ul>
+    <li><strong>Pick the sources.</strong> One sharp packshot per product, plus a close crop of the label.</li>
+    <li><strong>Write one scene prompt.</strong> It says what changes and what stays, and it asks for empty space where the offer will sit.</li>
+    <li><strong>Run it on several engines at once</strong>, each run in its own tab.</li>
+    <li><strong>Check every render against the packshot.</strong> A wrong label means a rerun, not a retouch.</li>
+    <li><strong>Add the offer in the Image editor</strong>, as text over the picture, on a copy.</li>
+    <li><strong>Check the price claim</strong> against the rule of the market it runs in.</li>
+    <li><strong>Frame each copy for its placement</strong> and keep the launch together in one campaign.</li>
+  </ul>
+
+  <h2>When is Black Friday 2026, and what else falls in the season?</h2>
+
+  <p>Black Friday is Friday, Nov. 27, 2026, the day after Thanksgiving. Cyber Monday follows on Nov. 30.</p>
+
+  <blockquote class="evidence">Thanksgiving falls on Thursday, Nov. 26, 2026, and Christmas on Friday, Dec. 25.</blockquote>
+  <p class="source">Source: US Office of Personnel Management, federal holidays 2026, read Oct. 19, 2026. Government holiday list.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Moment</th>
+          <th scope="col">Date</th>
+          <th scope="col">Market</th>
+          <th scope="col">How the date is set</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Thanksgiving</th>
+          <td>Thu. Nov. 26, 2026</td>
+          <td>US</td>
+          <td>Federal holiday list</td>
+        </tr>
+        <tr>
+          <th scope="row">Black Friday</th>
+          <td>Fri. Nov. 27, 2026</td>
+          <td>US</td>
+          <td>The day after Thanksgiving</td>
+        </tr>
+        <tr>
+          <th scope="row">Cyber Monday</th>
+          <td>Mon. Nov. 30, 2026</td>
+          <td>US</td>
+          <td>The Monday after Thanksgiving</td>
+        </tr>
+        <tr>
+          <th scope="row">Christmas</th>
+          <td>Fri. Dec. 25, 2026</td>
+          <td>US, UK</td>
+          <td>Fixed date</td>
+        </tr>
+        <tr>
+          <th scope="row">Boxing Day</th>
+          <td>Sat. Dec. 26, 2026</td>
+          <td>UK</td>
+          <td>Bank holiday moves to Mon. Dec. 28</td>
+        </tr>
+        <tr>
+          <th scope="row">French winter sales</th>
+          <td>Wed. Jan. 6, 2027, 8 a.m.</td>
+          <td>France</td>
+          <td>Published rule applied to the 2027 calendar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The French row is arithmetic, not an announcement: the sales open on the second Wednesday of January, moved to the first when the second falls after the 12th. Four eastern departments set their own dates.</p>
+
+  <p>The <a href="/resources/insights/holiday-content-calendar-2026">Holiday content calendar 2026</a> counts back from each of these dates to the last day to brief and deliver. This guide covers what happens in between.</p>
+
+  <h2>Which product photos make good sources?</h2>
+
+  <p>The ones where you can read the label at full size. If the packshot is soft, the engine has nothing to copy, and it fills the gap itself.</p>
+
+  <p>Pick a sharp shot with the whole product in frame and even light. Then crop it close. The Image studio resizes source pictures in your browser to 1,536 pixels on the long side before it sends them, so a small product on a wide white sweep loses its print. On an engine that takes several source pictures, add a tight crop of the label as the second one.</p>
+
+  <p>In the Image studio, pick the job <strong>Edit an image</strong>. The ChatGPT Image engines, Nano Banana 2 and Pro, and Seedream 4.5 and 5.0 Pro take up to four source pictures. FLUX.1 Kontext Pro and Max take one. The result takes the shape of the first picture you upload, so put the packshot first and change <strong>Shape</strong> when the placement needs another.</p>
+
+  <figure>
+    <img src="/Images/help/create-an-image-studio.webp" alt="The image studio: the Image and Video switch in the dark band, the engine and its price with the three jobs, the prompt box on the left and the empty results panel on the right" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>Edit an image takes your packshot as the first source picture.</figcaption>
+  </figure>
+
+  <h2>How do you write a prompt that changes the scene and not the product?</h2>
+
+  <p>Write an edit instruction, not a description of a new picture. Give the scene its sentences, then give the product a full sentence of its own: what it is, its colors, the exact words on its label in quotation marks. Engine makers say the same.</p>
+
+  <blockquote class="evidence">Google's image generation documentation tells users that to preserve critical details such as a logo during an edit, they should "describe them in great detail along with your edit request."</blockquote>
+  <p class="source">Source: Gemini API image generation documentation, the maker's own page, last updated Oct. 9, 2026, read Oct. 19, 2026.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Part of the prompt</th>
+          <th scope="col">Changes or stays</th>
+          <th scope="col">Example wording</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Scene</th>
+          <td>Changes</td>
+          <td>"on a dark walnut table beside a window, early winter evening"</td>
+        </tr>
+        <tr>
+          <th scope="row">Props</th>
+          <td>Changes</td>
+          <td>"two pine sprigs and a folded wool scarf, cropped by the frame"</td>
+        </tr>
+        <tr>
+          <th scope="row">Light</th>
+          <td>Changes</td>
+          <td>"one warm lamp from the left, one soft shadow to the right"</td>
+        </tr>
+        <tr>
+          <th scope="row">Product shape</th>
+          <td>Stays</td>
+          <td>"keep the jar exactly as in image 1, same proportions and lid"</td>
+        </tr>
+        <tr>
+          <th scope="row">Color and finish</th>
+          <td>Stays</td>
+          <td>"amber glass, matte black lid, no added shine"</td>
+        </tr>
+        <tr>
+          <th scope="row">Label</th>
+          <td>Stays</td>
+          <td>"the label reads 'WINTER FIG' above '220 g', same type and place"</td>
+        </tr>
+        <tr>
+          <th scope="row">The offer</th>
+          <td>Not in the image</td>
+          <td>"no other text, no numbers, empty space in the upper left"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A working example, for a candle shot on white:</p>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Using the provided images, place the candle jar from image 1 on a dark walnut table beside a frosted window, early winter evening. Two pine sprigs and a folded gray wool scarf at the left edge, cropped by the frame. One warm lamp from the left, one soft shadow falling right.</p>
+    <p class="prompt__body">Keep the jar exactly as it is in image 1: amber glass, matte black lid, the same height and width. The cream label reads "WINTER FIG" above "220 g", in the same typeface, size and position; use image 2 for its detail. Do not add text, numbers, prices, logos or a second jar.</p>
+    <p class="prompt__body">The jar stands in the lower right third. Leave the upper left third empty and calm for text added later. Portrait 4:5, real photograph.</p>
+  </div>
+
+  <p>The last paragraph does two jobs. It keeps the engine from lettering a sale banner into the picture, and it reserves the place where your offer goes.</p>
+
+  <h2>Where do the E-commerce packshot and Lifestyle product scene skills fit?</h2>
+
+  <p>They carry the rules you would otherwise type into every prompt. Open <strong>Skills</strong>, then <strong>Catalog</strong>. Find <strong>Lifestyle product scene</strong> for the festive settings and <strong>E-commerce packshot</strong> for clean product pictures, read each one with <strong>View details</strong>, then click <strong>Add to my skills</strong>. <strong>Precise image edits</strong> is worth adding too, for runs where only the scene should move.</p>
+
+  <p>From then on, every skill switched on for <strong>Images and video</strong> rides along when <strong>Improve with AI</strong> rewrites a prompt. The rewrite is written for the engine and the job you picked, so an edit comes back as an edit instruction. It never changes your settings. Under the box you get <strong>Prompt rewritten</strong>, a short list of what changed, and <strong>Undo</strong>. Each rewrite is a small paid call against your prepaid balance.</p>
+
+  <p>Read the rewrite before you run it. If the sentence about the label got shorter, put it back.</p>
+
+  <figure>
+    <img src="/Images/help/skills-catalog.webp" alt="The Catalog with its search box, one chip per section, and the Social networks skills marked In my skills" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>The Catalog holds the product skills; Add to my skills makes them ride along.</figcaption>
+  </figure>
+
+  <h2>How do you make enough variations without waiting on each one?</h2>
+
+  <p>Run them side by side. Every run in the Image studio opens its own tab, newest first, and the form empties for the next one. Start the second engine while the first renders.</p>
+
+  <p>On the ChatGPT Image engines, ask for one to ten images from a single run and keep the best. You pay for the images that come back. The price shows before every run, and a run that fails is not charged. The Image editor and Campaigns, used in the steps below, cost nothing.</p>
+
+  <p>When one product passes, move to the next with <strong>Reuse prompt</strong> on the tab that worked: the prompt and settings come back, you swap the source picture and the label sentence, and nothing runs until you click.</p>
+
+  <p>Pick the launch under <strong>Campaign</strong> among the options before you start. While it stays picked, every render the page saves joins that campaign, so the season's files don't scatter across the library.</p>
+
+  <h2>How do you check that the product survived the render?</h2>
+
+  <p>Open the render and the packshot side by side at the same size. Go down the list. A failure on the label, the logo, the color or the shape sends the picture back for a rerun. Don't paint a label back in by hand; that turns the photograph of your product into a drawing of it.</p>
+
+  <ul>
+    <li><strong>Label text.</strong> Every word spelled as printed, in the same order, typeface and place. Nothing added.</li>
+    <li><strong>Logo.</strong> Once, where it belongs, not mirrored, not repeated on a prop.</li>
+    <li><strong>Color.</strong> The product matches the packshot on the same screen, glass tint and lid included.</li>
+    <li><strong>Proportions.</strong> Same height to width, same lid, same edges.</li>
+    <li><strong>Count.</strong> One unit, and only the parts that ship with it.</li>
+    <li><strong>Scale.</strong> The size reads right against the table, the scarf, a hand.</li>
+    <li><strong>Light.</strong> One direction, with the shadow falling away from it.</li>
+    <li><strong>Free space.</strong> The empty area you asked for is still empty, with no invented lettering.</li>
+  </ul>
+
+  <p>No engine promises the label, and the makers say so.</p>
+
+  <blockquote class="evidence">OpenAI says its image model "may occasionally struggle to maintain visual consistency for recurring characters or brand elements across multiple generations."</blockquote>
+  <p class="source">Source: OpenAI image generation guide, the maker's own documentation, page undated, read Oct. 8, 2026.</p>
+
+  <p>When the product keeps drifting, the ChatGPT Image engines take a <strong>Mask</strong>: a PNG whose transparent areas mark what may change in the first picture. Prepare it from the packshot, product solid and everything around it transparent, and only the scene can move.</p>
+
+  <h2>Should the discount go inside the image or on top of it?</h2>
+
+  <p>On top. A discount rendered by the engine is one more piece of lettering to check, it can come back misspelled, and it's frozen: when the offer gets deeper, you pay for a new render and check the product all over again.</p>
+
+  <p>There's a second reason. Some product listings take nothing but the clean render.</p>
+
+  <blockquote class="evidence">Google Merchant Center wants "an unobstructed, clean view of the item for sale" and lists among the overlays it does not allow "mentions of price, discounts, or offers like 'Free shipping'."</blockquote>
+  <p class="source">Source: Google Merchant Center Help, Image link [image_link], page undated, read Oct. 19, 2026. The platform's own product image requirements.</p>
+
+  <p>So keep the clean render as the master. Click <strong>Edit</strong> on it and the Image editor opens, free and in your browser. In <strong>Text</strong>, click <strong>Add text</strong> and type the offer into the space the prompt kept empty. Pick the <strong>Font</strong>, the <strong>Size</strong> and the <strong>Color</strong>. On a light scene, a <strong>Dark outline</strong> or a <strong>Soft shadow</strong> keeps light words readable; <strong>Highlight behind the words</strong> puts a band of color under them.</p>
+
+  <p>Everything you add stays a separate piece until you save, so you can move it and restyle it. Then click <strong>Save</strong> and <strong>Save a copy in the Assets Library</strong>. The render stays as it was. When the offer changes on Cyber Monday, open the clean render again, type the new line and save another copy. No new run.</p>
+
+  <p>Lettering that must live inside the scene, on a sign or a gift tag, is a different job. The <a href="/resources/how-to/readable-text-in-ai-images">Readable text in AI images</a> guide covers it.</p>
+
+  <figure>
+    <img src="/Images/help/image-editor-draw.webp" alt="The Image editor with a caption reading New season and a red arrow on the picture, the Draw panel open on the selected arrow" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>Text added in the Image editor stays editable until you save a copy.</figcaption>
+  </figure>
+
+  <h2>What rules apply to the sale price on a holiday visual?</h2>
+
+  <p>The overlay makes a price claim, and in the US and the EU that claim has to stand on the price you actually charged before.</p>
+
+  <p>In the US, the reference is the Federal Trade Commission's guidance on former price comparisons: the "was" in a was-and-now offer.</p>
+
+  <blockquote class="evidence">A former price supports a price comparison only if it is "the actual, bona fide price at which the article was offered to the public on a regular basis for a reasonably substantial period of time."</blockquote>
+  <p class="source">Source: FTC Guides Against Deceptive Pricing, 16 CFR 233.1(a), eCFR text current as of Oct. 15, 2026. Federal guidance under section 5 of the FTC Act.</p>
+
+  <p>The same section adds that a visual saying only "Sale" still promises a real saving: the cut must not be "so insignificant as to be meaningless." The guides set no fixed number of days for the former price.</p>
+
+  <p>The EU does set one.</p>
+
+  <blockquote class="evidence">"Any announcement of a price reduction shall indicate the prior price," meaning "the lowest price applied by the trader during a period of time not shorter than 30 days prior to the application of the price reduction."</blockquote>
+  <p class="source">Source: Directive (EU) 2019/2161, Article 6a of Directive 98/6/EC, applied from May 28, 2022. EU legislation; member states may adjust it for perishable goods, new products and progressive reductions.</p>
+
+  <p>In production terms: the person who owns the price history signs off the number before the overlay is typed, and for an EU market the announcement carries the prior price, so leave room for it in the overlay. Write both prices and the period into the campaign's brief, so whoever makes the Cyber Monday copy reads the same figures. This describes production practice, not legal advice.</p>
+
+  <h2>Which formats does each holiday placement need?</h2>
+
+  <p>Frame each copy in the Image editor's <strong>Social</strong> panel, which sets the size a network wants for a placement and marks its recommended one as <strong>Best</strong>. The <strong>Crop</strong> panel covers the shapes the Social panel doesn't list.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Placement</th>
+          <th scope="col">Shape</th>
+          <th scope="col">Where to set it in the editor</th>
+          <th scope="col">Size the editor marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Instagram feed</th>
+          <td>4:5</td>
+          <td>Social, Instagram, Feed portrait</td>
+          <td>1080 x 1350, Best</td>
+        </tr>
+        <tr>
+          <th scope="row">Instagram Story</th>
+          <td>9:16</td>
+          <td>Social, Instagram, Story</td>
+          <td>Placement size</td>
+        </tr>
+        <tr>
+          <th scope="row">X post</th>
+          <td>16:9</td>
+          <td>Social, X, Post, wide</td>
+          <td>1600 x 900, Best</td>
+        </tr>
+        <tr>
+          <th scope="row">LinkedIn post</th>
+          <td>4:5</td>
+          <td>Social, LinkedIn, Post, portrait</td>
+          <td>1080 x 1350, Best</td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok and Reels stills</th>
+          <td>9:16</td>
+          <td>Crop, Story</td>
+          <td>Shape only</td>
+        </tr>
+        <tr>
+          <th scope="row">Link previews</th>
+          <td>1.91:1</td>
+          <td>Crop, Link</td>
+          <td>Shape only</td>
+        </tr>
+        <tr>
+          <th scope="row">Marketplace image</th>
+          <td>As shot</td>
+          <td>Nowhere: send the clean render, no overlay</td>
+          <td>Per the marketplace</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Leave <strong>Show what the network covers</strong> on. It draws, in red, where the network's own buttons and caption sit over the picture, so the offer stays out of them. <strong>Checks</strong> then tells you whether the words are large enough to read on a phone.</p>
+
+  <p>When a crop would cut into the product, render that shape instead: change <strong>Shape</strong> in the Image studio and run the prompt again.</p>
+
+  <figure>
+    <img src="/Images/help/image-editor-social.webp" alt="The Social panel of the Image editor on Instagram, Feed portrait picked: the crop box of 1080 by 1350 over the picture, the dashed Profile grid lines, and Crop to fill, Fit it whole, Show what the network covers and Apply the format" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>The Social panel frames each copy for its placement and shows what the network covers.</figcaption>
+  </figure>
+
+  <p>The campaign you picked at the start already holds the clean renders. Add the edited copies from the Assets Library: tick their rows, pick the campaign and click <strong>Add to campaign</strong>. Nothing is copied; the campaign only points at the files.</p>
+
+  <p>If the photos you have can't carry the season (a label too small, a range never shot), <a href="/services/design/ecommerce">the ecommerce design service</a> page describes how we produce the set in the studio. To make it yourself, <a href="/app/create">the create page of the app</a> shows the Image studio and the Skills catalog, and the <a href="/resources/how-to/product-photo-to-lifestyle-image">Product photo to lifestyle image</a> guide goes deeper on the edit.</p>
+
+  <h2>FAQ</h2>
+
+  <h3>How do I make Black Friday product images with AI?</h3>
+
+  <p>Start from a sharp packshot you already own. Run an image edit with it as the first source picture and a prompt that names the new scene, then a sentence on what must not change: shape, color, the label's exact words. Check each result against the packshot, add the discount on top in an editor, and confirm the price claim before it runs.</p>
+
+  <h3>Can AI put my product in a holiday scene without changing it?</h3>
+
+  <p>It gets close, and your check does the rest. Put the label's words in quotation marks, describe the product in detail, and add a close crop of the label as a second source picture where the engine takes one. Engine makers list brand elements among the things their models can still get wrong, so compare every render with the packshot and rerun any that fail.</p>
+
+  <h3>Should I put the discount in the image or on top of it?</h3>
+
+  <p>Put it on top, as text added in an editor to a copy of the render. Lettering drawn by the engine can come back misspelled and can't change: a deeper discount would mean a new render and a new product check. The clean render also stays usable where overlays are refused, Google Merchant Center product images among them.</p>
+
+  <h3>When is Black Friday 2026?</h3>
+
+  <p>Friday, Nov. 27, 2026, the day after Thanksgiving, which falls on Thursday, Nov. 26. Cyber Monday is Monday, Nov. 30. In the UK, Boxing Day is Saturday, Dec. 26, with the bank holiday on Monday, Dec. 28. The <a href="/resources/insights/holiday-content-calendar-2026">Holiday content calendar 2026</a> counts back from each date to the last day to brief.</p>
+
+  <h3>What are the rules for showing a sale price in an ad?</h3>
+
+  <p>In the US, the FTC's Guides Against Deceptive Pricing say a former price must be one you genuinely offered on a regular basis for a reasonably substantial period. In the EU, a price reduction must show the lowest price you applied in at least the 30 days before it. Have the price owner sign off the number. This is production practice, not legal advice.</p>
+
+  <h3>How many holiday visuals do I need for the season?</h3>
+
+  <p>Count it rather than guess it. Multiply the products you will push by the placements each one runs in (feed, Story, X, LinkedIn, the marketplace) and by the moments you mark, such as Black Friday, Cyber Monday and Christmas. Then add a copy for every offer change. The clean renders are fewer than the total, because each one carries several overlays.</p>
+</HowtoLayout>

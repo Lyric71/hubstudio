@@ -1,0 +1,41 @@
+﻿2026-10-19T00:30:05 start draft (model claude-opus-5-5)
+2026-10-19T00:30:06 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-19 run decision: no row stopped at researched, drafted or quality_passed. Earliest not_started row in publish_date order is brief 79, holiday-visuals-from-product-photos (2026-10-27, howto). git shows no output or research file for that slug, so no earlier partial work. Taking it.
+2026-10-19 research gate R1 to R7 done: editorial/research/holiday-visuals-from-product-photos.md plus 4 captures (eCFR Part 233, EUR-Lex Art. 6a, OPM 2026, GOV.UK bank holidays). Row 79 set to researched.
+2026-10-19 createarticle 13 iterations done (iteration 7 ran as the cadence variant, no planted errors); source check 2 re-fetched all six cited URLs, the Gemini citation's last-updated date corrected from Oct. 6 to Oct. 9, 2026; output/holiday-visuals-from-product-photos.md written; check-draft passes. Row 79 set to drafted.
+2026-10-19 content-quality-us 18 passes done in place; title 45, meta 150, excerpt 24 words; check-draft passes. Row 79 set to quality_passed.
+2026-10-19 image generated and checked (public/Images/howto-holiday-visuals-from-product-photos.webp, 1536 x 1024, 186 KB). Ledger appended (10 rows, 4 do-not-publish), 3 watch rows, no brief or live article needed amending. Row 79 set to image_ready. Run log: editorial/logs/2026-10-19-holiday-visuals-from-product-photos.md. Stopped at image_ready; nothing published or committed.
+I drafted brief 79, "How to make Black Friday and holiday visuals from the product photos you already have" (slug `holiday-visuals-from-product-photos`, a how-to). It stopped at `image_ready`. Nothing is published or committed.
+
+No earlier run had started it, and no row was partly finished, so this was a fresh start on the earliest `not_started` row.
+
+**What the run produced**
+- **Research file** (`editorial/research/holiday-visuals-from-product-photos.md`): the facts and dates come from primary sources, with four captures saved:
+  - the FTC's pricing guidance (16 CFR Part 233);
+  - the EU 30-day prior-price rule (Article 6a);
+  - the US federal and UK bank holiday lists.
+
+  App facts come only from the help center and `hubstudio-positioning.md`. The top-ranking pages are tool promos and stock libraries. None of them keeps the product unchanged, keeps the discount editable, or mentions a price rule.
+- **Draft** (`editorial/output/holiday-visuals-from-product-photos.md`): all 13 createarticle iterations ran, with iteration 7 as the cadence pass (no planted errors), then the full 18-pass quality loop. `check-draft.mjs` passes every hard check:
+  - title 45 characters, meta description 150, excerpt 24 words;
+  - three tables and six sourced quotes;
+  - no em dash, no `$`, no Han characters, no TODO marker.
+
+  The app screenshots reuse four existing help captures that already have French and Chinese versions.
+- **Length:** 2,623 words of prose against a 1,700-word minimum. The extra is source quotes, the required FAQ, image alt text and the prompt example. Nothing was padded.
+- **Hero image** (`public/Images/howto-holiday-visuals-from-product-photos.webp`): 1536 × 1024, 186 KB, made with gpt-image-2 and checked by eye. It has no text and no hands, and the light comes from one window. The jars in the printed proofs are squatter than the real jar. I kept the image because it fits the point of the shot: proofs checked against the real product.
+
+**Other files changed**
+- **Citation fix:** the second source check re-read all six cited pages. Google's image documentation now says it was updated October 9, 2026, not October 6. I corrected the draft and the source ledger.
+- **Source ledger:** 10 new rows and 4 do-not-publish entries in `editorial/sources/verified-sources.md`.
+- **Three `watch.csv` rows:**
+  - the official 2027 French winter sales notice (December 15, 2026);
+  - a quarterly recheck (January 19, 2027);
+  - recounting the season dates for 2027 (July 1, 2027).
+- **No brief or live article needed a fix.**
+- **Schedule and logs:** `schedule.csv` row 79 is at `image_ready` with all four dates. The run log is `editorial/logs/2026-10-19-holiday-visuals-from-product-photos.md`, and each decision is also in `logs/runs/2026-10-19-draft.txt`.
+
+Separately, the Gmail, Google Calendar and Google Drive connectors need signing in through the claude.ai connector settings. This run didn't use them.
+2026-10-19T00:51:21 model Opus 5.5 completed successfully
+2026-10-19T00:51:21 end draft exit 0
+2026-10-19T00:51:22 queue: ok: 63 to draft, 0 blocked, last draft 2026-10-19

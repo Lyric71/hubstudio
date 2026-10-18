@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'holiday-visuals-from-product-photos',
+    image: '/Images/howto-holiday-visuals-from-product-photos.webp',
+    imageAlt:
+      'An amber glass candle jar with a matte black lid and a blank cream label stands on a worn wooden table in low winter sun, beside four prints of the same jar in winter scenes, one label circled in red pencil, the pencil lying across the print.',
+    category: 'Image editing',
+    tone: 'orange',
+    title: 'Black Friday Visuals From Your Product Photos',
+    deck: 'Make the season\'s visuals from photos you already own: a new scene, the same product, the offer on top and the price claim checked.',
+    date: 'October 19, 2026',
+    dateISO: '2026-10-19',
+    readingTime: '12 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Black Friday Visuals From Your Product Photos | hubStudio',
+    metaDescription:
+      'Turn the product photos you have into Black Friday and holiday visuals: change the scene not the product, keep offers editable and check price claims.',
+  },
+  {
     slug: 'word-by-word-video-captions',
     image: '/Images/howto-word-by-word-video-captions.webp',
     imageAlt:
