@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'shopify-product-image-sizes',
+    image: '/Images/insight-shopify-product-image-sizes.webp',
+    imageAlt:
+      'A scuffed blue enamel mug on a worn packing table beside a square print of the same mug, shown squatter than it is, with a roll of tape and an open box behind.',
+    category: 'Platform specs',
+    tone: 'navy',
+    title: 'Shopify Product Image Sizes for 2026',
+    deck: 'Prepare Shopify product images with verified upload limits, consistent crops, and a manual export workflow. Separate platform requirements from theme settings before making your batch.',
+    date: 'October 20, 2026',
+    dateISO: '2026-10-20',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Shopify Product Image Sizes for 2026 | hubStudio',
+    metaDescription:
+      'Shopify product image sizes, limits and formats for 2026, quoted from the Shopify Help Center, with what the theme decides about crop and ratio, dated.',
+  },
+  {
     slug: 'us-ai-disclosure-rules-brands',
     image: '/Images/insight-us-ai-disclosure-rules-brands.webp',
     imageAlt:

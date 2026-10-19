@@ -90,7 +90,8 @@ than an unsourced one.
 - Aspect ratio: why one ratio across all images of a product and of a collection; where the theme sets image crop or aspect, said generally (no named theme)
 - Alt text and file names, from Shopify's own guidance
 - A visible Reviewed date and a dated changelog block at the foot
-- Making the files in hubStudio: renders up to 4K in the Image studio; the Image editor crops Square 1:1 and saves PNG, JPG or WEBP at a chosen size, with quick picks at 2048 px on the long side; Upscale and restore for older photos
+- Making the files in hubStudio: renders up to 4K depending on the engine; the Image editor crops Square 1:1 and saves PNG, JPG or WEBP at a chosen size, with a 2048 px long-side quick pick when the source is larger; editing caps the long side at 4096 px; Upscale and restore for older photos
+- Research amendment October 20, 2026: distinguish the product page's 25 MP ceiling from the theme page's 20 to 25 MP wording; preserve the accepted-format and video-resolution differences between Help Center pages. Dates are dates read because the living pages display no publication date. Never turn a recommendation into an acceptance limit.
 - hubStudio does not connect to Shopify: files are downloaded and uploaded in the Shopify admin
 
 ## Do not
@@ -166,7 +167,7 @@ each in 40 to 70 words. Mark them up in the SCHEMA block.
 
 ## Notes
 
-Spec page: Shopify Help Center only. Watch row due 2027-01-27.
+Spec page: Shopify Help Center only. Reviewed October 20, 2026; quarterly watch due 2027-01-20, measured from the actual review rather than the queue date.
 
 ## Definition of done
 

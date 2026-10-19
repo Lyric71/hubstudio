@@ -1,0 +1,139 @@
+﻿2026-10-20T04:00:02 start publish (model claude-opus-5-5)
+2026-10-20T04:00:02 model attempt 1/4, cycle 1: Opus 5.5
+2026-10-20T04:01+08:00 read prompt (sha256 verified against the manifest), manifest, editorial/CLAUDE.md, SPEC.md, RUNBOOK.md and the 2026-10-19 publish log. The log held only the start lines: no earlier progress to resume.
+2026-10-20T04:01+08:00 eligible rows (status image_ready): row 80 shopify-product-image-sizes (template spec), drafted this morning by the draft run. Its notes ask no decision of a person. No other row at image_ready.
+2026-10-20T04:01+08:00 working tree carries unrelated uncommitted work that is not this run's: feature videos (src/pages/video, src/pages/resources/videos.astro, FeatureVideo, sync-videos, astro.config.mjs, vercel.json, Header, resources hub, help and work dictionaries), the editorial digest queue change (notify-publish.mjs, check-queue.mjs, run-daily.ps1, register-tasks.ps1, CLAUDE.md, RUNBOOK.md) and the tails of the 10-18 and 10-19 run logs. Only this article's files and hunks will be staged; the rest stays uncommitted and untouched.
+2026-10-20T04:02+08:00 pre-publish review of output/shopify-product-image-sizes.md: check-draft.mjs passes every hard check (2236 words with tables, 9 sourced blockquotes, 2 tables); 0 em dashes, 0 Han characters, no $, no credits, no marker, no hub4You, no company other than the platform named. App facts rechecked against src/content/help: up to 4K by engine (create-an-image), Square 1:1, 2048 px long-side quick pick when the picture is larger, 4,096 px editing limit, Save a copy and Download (assets-library). Hero viewed: no text, one window light, the print shows the mug squatter than the real one (the distortion the page warns about); alt written by hand to say so.
+2026-10-20T04:02+08:00 published with publish-draft.mjs (the repo's implementation of the createblogarticle publish step; its locale steps skipped, replaced by step 4b): template spec, page src/pages/resources/insights/shopify-product-image-sizes.astro, entry at the head of src/data/insights.ts, category Platform specs (claimed by the marketplace and social placements in insight-placements.ts; the specs hub lists it in its Shopify group by slug), tone navy (alternates with the orange article below it), date 2026-10-20, 9 min read, CTA Create your account, visible Reviewed line. Five links wired: /resources/specs, /services/design/ecommerce, /solutions/platforms/shopify, /resources/how-to/ai-white-background-packshot, /resources/how-to/product-photo-to-lifestyle-image. Shopify source titles in table cells stay plain text as on earlier spec pages. The Reviewed line dropped its "By Cyril Drouin." (the layout already prints the byline), in the page and the draft alike. No app capture embedded: the page is an insight, and insight pages carry no figures (as amazon-product-image-requirements and pinterest-pin-specs); the existing captures also show a portrait crop, not the square export the page describes. Showcase clip per settled fallback 12.
+2026-10-20T04:02+08:00 French slug: ARTICLES 'shopify-product-image-sizes' -> 'shopify-tailles-des-images-produit-2026'.
+2026-10-20T04:02+08:00 extract started: npm run i18n:local -- extract --context .i18n-work/ctx
+2026-10-20T04:03+08:00 extract finished clean (249 pages). Pending in fr and zh alike: the article 105, common 5 (its card), home 1 and resources/insights 1 (the Latest Platform specs chip). Stale pass files for common, home and resources/insights archived under .i18n-work/passes-archive/2026-10-20/. French and Chinese translators launched as two parallel subagents.
+2026-10-20T04:04+08:00 watch.csv: 57 rows, none due on or before 2026-10-20 (earliest 2026-10-26). Nothing rechecked.
+2026-10-20T04:12+08:00 French translation finished: the article (105 entries), common (5), home (1), resources/insights (1), every build clean, nothing pending in fr. Shopify's own French Help Center pages (help.shopify.com/fr, fetched with a French Accept-Language) gave the page titles, the admin labels and the verbatim French of the 2048 x 2048 quote. Glossary fr.md: a settled-terms block for this page added.
+--- fr changes.md (article, common, home, resources/insights) ---
+[resources/insights/shopify-product-image-sizes]
+# FR, resources/insights/shopify-product-image-sizes (105 units)
+
+Shopify wording: titles and labels taken from Shopify's French Help Center pages (help.shopify.com/fr, read 2026-10-20): « Types de supports multimédias de produit », « Chargement et gestion des fichiers », « Chargement des images », « Prise de photographies de produits », « Utilisation de l’éditeur de supports multimédias », « Résolution des problèmes liés au thème de votre boutique en ligne », « Ajout de mots-clés pour le référencement naturel (SEO) à votre boutique Shopify », « Ajout de supports multimédias de produit », section « Supports multimédias », page Fichiers, Centre d’aide de Shopify, interface administrateur, éditeur de thème, « mise au point » (focal point). The quote is Shopify's own French, verbatim: « une taille de 2 048 x 2 048 px offre généralement le meilleur affichage ». URLs stay on the English pages read.
+
+[title] pass1 -> pass3: kept « Shopify : tailles des images produit en 2026 | hubStudio » / why: concise (56 characters), same pattern as the Amazon sibling.
+[standfirst] pass1 « Un fichier peut être accepté sans encombre et perdre pourtant l’anse… » -> pass3 « Un fichier peut franchir la mise en ligne sans le moindre refus, puis perdre l’anse… Deux contrôles s’imposent donc » / why: a sharper sequence and a verbal close instead of a flat imperative.
+[intro] pass1 « Vous pouvez créer et dimensionner les fichiers dans hubStudio, puis… » -> pass3 « hubStudio vous permet de créer les fichiers et de les mettre aux bonnes dimensions ; reste à les télécharger » / why: « dimensionner » is a calque; « reste à » gives the native rhythm.
+[table 1 heads] pass1 « Exigence pour les médias produit » / « Ce que cela implique en production » -> pass3 « Ce que fixe Shopify pour les médias produit » / « Conséquence pour la production » / why: verbal head, shorter second column.
+[table 1 cells] pass1 « Limite haute des images », « La prise en charge par le thème compte aussi » -> pass3 « Plafond des images », « Encore faut-il que le thème la prenne en charge » / why: idiomatic French in place of English-shaped noun phrases.
+[table 1 formats] pass1 « JPEG, PNG, WebP, HEIC, GIF » -> pass3 « JPEG, PNG, WebP, HEIC et GIF » / why: the build flagged the bare list as left in English; « et » closes a French enumeration.
+[evidence quote] pass1 « Shopify indique qu’… » -> pass3 « Shopify estime qu’… », with Shopify's French sentence quoted exactly (its own « x », not ×) / why: quote verified on the French page, verb matches the hedged « généralement ».
+[limits] pass1 « s’accordent sur 25 Mpx… comporte une section… fixée à 20 Mpx » -> pass3 « retiennent le même chiffre : 25 Mpx… fixe 20 Mpx dans sa section…, puis évoque 25 Mpx…, avant de préciser » / why: one narrative sentence instead of three stacked statements; « oscille entre 20 et 25 Mpx » replaces « laisse un écart ».
+[limits, weight] pass1 « Restez sous ce seuil pour satisfaire les deux formulations » -> pass3 « restez en dessous et vous respectez les deux formulations » / why: native conditional rhythm.
+[upload test] pass1 « faites l’essai avec un fichier à l’emplacement… Gardez le master d’origine » -> pass3 « essayez un fichier à l’endroit exact où il sera mis en ligne… Conservez le master d’origine tel quel » / why: concrete verb, firmer close.
+[formats] pass1 « ne lisez dans aucune de ces préférences une liste exclusive » -> pass3 « Ni l’une ni l’autre de ces préférences ne constitue une liste exclusive des formats acceptés » / why: the imperative read as a calque of "don't read".
+[crop] pass1 « s’inscrit dans sa zone d’affichage » -> pass3 « occupe sa zone d’affichage »; « images de collection mal alignées » -> « lorsque les images d’une collection ne s’alignent pas » / why: verbal construction over noun chain.
+[ratio] pass1 « rend les changements de vue moins déroutants. C’est un choix de production » -> pass3 « rend le passage d’une vue à l’autre plus fluide. Voyez-y un choix de production, pas une obligation » / why: positive phrasing, stronger link between the two sentences.
+[bottle and bowl] pass1 « l’espace vide autour de chacun ne sera pas le même » -> pass3 « le vide ne sera pas le même autour de chacun »; « Le saladier aura peut-être besoin de plus d’air » -> « Il se peut que le saladier réclame plus d’air que prévu » / why: lighter syntax, stronger verb.
+[theme editor] pass1 « un point focal, lorsque le thème le prend en charge » -> pass3 « un point focal (la « mise au point » de Shopify), quand le thème en propose un » / why: gives the reader Shopify's own French label.
+[compression] pass1 « Son guide consacré aux images de thème juge… » -> pass3 « Son guide sur les images de thème, à l’inverse, juge inutile toute compression manuelle » / why: marks the contrast; « charger la meilleure qualité possible » follows Shopify's French.
+[delivery format] pass1 « ne signifie pas que tous les formats qu’il sert figurent sur la liste » -> pass3 « ne fait pas pour autant de chaque format servi un format accepté à la mise en ligne » / why: tighter, no English "doesn't mean" skeleton.
+[filenames] pass1 « Shopify déconseille de commencer… » -> pass3 « Shopify met en garde contre un nom qui commence par un point »; « trait de soulignement » as in Shopify's French page / why: closer to Shopify's register.
+[alt text] pass1 « une suite d’adjectifs commerciaux, rien » -> pass3 « une enfilade d’adjectifs commerciaux ne lui apprend rien » / why: the ellipsis was too clipped for written press.
+[video] pass1 « fixe un maximum 4K de 4 096 × 2 160 pixels » -> pass3 « plafonne à la 4K, soit 4 096 × 2 160 pixels »; « retenez » -> « tenez-vous-en à » / why: verb instead of noun stack.
+[hubStudio steps] pass1 « Utilisez Modifier une image pour une modification guidée » -> pass3 « Le mode Modifier une image applique une modification décrite par une consigne ; Agrandir et restaurer convient à une source ancienne » / why: app labels kept exactly (glossary), sentence built around them.
+[hubStudio save] pass1 « Choisissez Enregistrer une copie… si vous voulez y conserver » -> pass3 « Pour garder le fichier modifié dans hubStudio, choisissez Enregistrer une copie dans la Bibliothèque de contenus ; pour un export local, Télécharger »; « ne se connecte pas à Shopify et ne s’y synchronise pas » -> « n’est ni connecté ni synchronisé à Shopify » / why: purpose first, parallel structure.
+[changelog] pass1 « Qu’a-t-on vérifié » -> pass3 « Qu’avons-nous vérifié »; « documents vivants » -> « évoluent en continu » / why: first person plural as the studio voice; "living documents" is an anglicism.
+[FAQ max size] pass1 « un fichier léger peut tout de même contenir trop de pixels » -> pass3 « un fichier léger peut très bien contenir trop de pixels » / why: idiomatic emphasis. JSON-LD answers share the visible keys, so they match word for word.
+[FAQ video] pass1 « doit être examiné avant d’être utilisé » -> pass3 « doit être examiné de près avant de servir sur le reste du catalogue » / why: avoids the passive pair.
+Units: Mo, Go, Ko, Mpx; sizes 2 048 × 2 048 with no-break spaces, as in the glossary; figures unchanged.
+
+[common]
+# FR, common (5 units: the Shopify product image sizes card)
+
+[card title] pass1 -> pass3: « Shopify : les tailles des images produit en 2026 » kept through the passes / why: same pattern as the Amazon sibling card (« Amazon : les exigences des images produit en 2026 »); this string is also the article's H1.
+[hero alt] pass1 « Une tasse en émail bleu éraflée sur une table d’emballage usée, à côté d’un tirage carré…, avec un rouleau de ruban adhésif et un carton ouvert à l’arrière-plan » -> pass3 « Sur une table d’emballage usée, une tasse en émail bleu éraflée est posée à côté d’un tirage carré de la même tasse, qui la fait paraître plus trapue qu’elle n’est ; derrière, un rouleau de ruban adhésif et un carton ouvert » / why: scene set first, then subject, then background; « la fait paraître plus trapue » is the natural verb for "shown squatter".
+[deck] pass1 « Préparez vos images produit Shopify avec des limites de mise en ligne vérifiées… Distinguez les exigences de la plateforme des réglages du thème » -> pass3 « Limites de mise en ligne vérifiées, recadrages cohérents, export manuel : la méthode pour préparer vos images produit Shopify. Avant de lancer la série, faites la part entre ce qu’exige la plateforme et ce que règle le thème » / why: the English "with… with…" chain became a nominal lead and a verbal contrast, as a French deck would read.
+[date] « 20 octobre 2026 » / why: French date format.
+[meta description] pass1 « Tailles, limites et formats des images produit Shopify en 2026, cités d’après son Centre d’aide, avec ce que le thème décide… » -> pass3 « Images produit Shopify en 2026 : tailles, limites et formats tirés de son Centre d’aide, et ce que le thème décide du recadrage et du ratio. Relevé daté. » (153 characters) / why: the keyword leads, and "dated" becomes a short closing phrase instead of a dangling adjective.
+Shopify's French name for its help site, Centre d’aide, follows help.shopify.com/fr.
+
+[home]
+# FR, home (1 unit)
+
+[insights lead chip] pass1 -> pass3: « <span1>Dernier article</span1>Formats des plateformes », unchanged through passes 2 and 3 / why: settled wording (glossary: "Latest" on the insights lead card = « Dernier article »; Platform specs = « Formats des plateformes »), used on 2026-10-17 for the same category; changing it on one page would break the rule that settled terms change everywhere or nowhere.
+
+[resources/insights]
+# FR, resources/insights (1 unit)
+
+[lead card chip] pass1 -> pass3: « <span1>Dernier article</span1>Formats des plateformes », unchanged through passes 2 and 3 / why: settled wording (glossary: "Latest" on the insights index lead card = « Dernier article », the guides index uses « Dernier guide »; Platform specs = « Formats des plateformes »), identical to the home page chip and to the 2026-10-17 entry.
+
+2026-10-20T04:14+08:00 Chinese translation finished: the article (105 entries, plus the page override Item -> 项目 for the spec-table head, as on cost-of-social-content-week), common (5), home (1), resources/insights (1), every build clean, nothing pending in zh. Shopify's simplified-Chinese Help Center pages gave the page titles, admin labels and the verbatim Chinese of the 2048 x 2048 quote; theme settled as 模板, Shopify's own word. Glossary zh.md: a settled-terms block for this page added.
+2026-10-20T04:14+08:00 orchestrator review of the Chinese: the translator had written pixel sizes with a Latin x, against the settled zh rule (glossary line 237, ×). Six units of the article (and their pass files) now use ×; only the verbatim Shopify quote keeps Shopify's own x. The new glossary line was amended to say so. Rebuilt clean (106 entries). For consistency with the settled theme -> 模板, the one zh entry on ai-white-background-packshot ('No rule; your theme decides') now reads 无规定，由店铺模板决定 (was 主题), edited in place in the dictionary. Left as is: 方图 1:1 on one-shoot-six-platforms-china-variant-matrix, where Square 1:1 names a platform crop in a matrix, not the app's crop label.
+--- zh changes.md (article, common, home, resources/insights) ---
+[resources/insights/shopify-product-image-sizes]
+Shopify Chinese wording: page titles, admin labels and the one quote were checked on Shopify's simplified-Chinese Help Center (help.shopify.com/zh-CN, read 2026-10-20): 《产品媒体类型》, 《上传和管理文件》, 《上传图片》, 《产品摄影》, 《使用媒体文件编辑器》, 《在线商店模板故障排除》, 《为您的 Shopify 商店添加 SEO 关键字》, 《添加产品媒体文件》; Shopify 后台, “文件”页面, “媒体文件”部分, 模板 (theme), 模板编辑器, 分区, 焦点, 产品系列, 宽高比, 2500 万像素 / 2000 万像素. The quote is Shopify's own Chinese sentence (“2048 x 2048 像素的尺寸通常显示效果最佳”), so the source line says the quote follows the page's simplified-Chinese version instead of 引文由本站翻译.
+[title] pass1 -> pass3: 2026 年 Shopify 产品图片尺寸 | hubStudio -> 2026 Shopify 产品图片尺寸 | hubStudio / why: 30-character ceiling for a Chinese title; 年 goes first, as the glossary allows.
+[standfirst] pass1 -> pass3: 文件能顺利上传，产品的把手却仍可能在店面裁切中被切掉。文件尺寸要查，显示区域的形状也要看。 -> 文件顺利传了上去，产品的把手却可能在店面裁切时被切掉。文件尺寸要查，显示区域的形状同样要查。 / why: verb-led opening, parallel closing clauses instead of two different verbs.
+[h2 size] pass1 -> pass3: Shopify 产品图片该用多大尺寸？ -> Shopify 产品图片，该用什么尺寸？ / why: topic-comment headline.
+[answer] pass1 -> pass3: 文件须小于 20 MB，并在准备整批图片之前，先在店铺模板中检查裁切效果 -> 文件控制在 20 MB 以下；批量制作之前，先到店铺模板（theme）里查看裁切效果 / why: English-shaped "并在...之前" chain split; theme glossed once, since Shopify's Chinese calls it 模板.
+[table] pass1 -> pass3: 尺寸与文件大小分别核查 -> 像素尺寸和文件大小，要分开核查; 导出起点尺寸，并非强制形状 -> 导出的起步尺寸，并非强制形状 / why: noun chains opened up.
+[quote] pass1 -> pass3: 对于方形图片，Shopify 的说法是 -> 关于方形图片，Shopify 的原话是 / why: marks the line as a verbatim quote; "单独查阅…与模板规则分开看" -> "只看产品专属要求，模板规则另行考量".
+[limits h2] pass1 -> pass3: Shopify 自家页面的图片上限为何不一致？ -> 同为 Shopify 官方页面，图片上限为何对不上？ / why: native framing of the contradiction.
+[limits] pass1 -> pass3: 由此，这几种情境下的文档口径在 2000 万至 2500 万像素之间浮动，但这不构成用较小数字取代…的理由 -> 综合这几处，文档给出的上限在 2000 万至 2500 万像素之间浮动，但这不是拿较小数字替换…的理由 / why: "不构成…理由" is translated legal register.
+[limits quote] pass1 -> pass3: 文档之间的冲突，并非实测的上传验收结果 -> 文档自相矛盾，不是实测的上传验收结果; 三相对照 (pass2) -> 相互对照 / why: plainer verb; 三相 is an electrical term.
+[test upload] pass1 -> pass3: 原始母版留存不动 -> 原始母版另行留存 / why: "Keep the original master" as a firm instruction, written register.
+[formats] pass1 -> pass3: 因此两种偏好都不能当作排他的格式清单来理解 -> 因此无论哪一方的排序，都不应读作排他的格式清单 / why: names what differs (the order), drops the English "read X as" frame.
+[crop h2] pass1 -> pass3: 图片是否裁切，由谁决定？ -> 图片会不会被裁切，由谁说了算？ / why: newsroom headline rhythm.
+[crop] pass1 -> pass3: 文件决定了可用的画面，模板决定这幅画面如何放进显示区域 -> 画面里有什么，由文件决定；画面怎样放进显示区域，由模板决定 / why: parallel topic-comment pair.
+[ratio] pass1 -> pass3: 切换视角时就不那么扰人 -> 换个视角时就不那么突兀; 碗周围需要的空间，可能比您预想的更多 -> 碗的四周，可能要比预想多留些空间 / why: 扰人 is a calque of "distracting"; verb-led close.
+[theme editor] pass1 -> pass3: 设置的名称和是否提供 -> 设置的名称以及是否提供; 让重要细节留在画面内 -> 把关键细节留在画面里 / why: pass2 had gone colloquial (叫什么、有没有), pass3 restores written register.
+[compression] pass1 -> pass3: 建议以 200 KB 或更小为目标 -> 建议把图片控制在 200 KB 以内; 如果压缩让针织面料显得像打了蜡 -> 压缩之后针织面料泛出蜡感 / why: native collocations.
+[delivery] pass1 -> pass3: 这种传送上的选择，并不意味着它传送的每种格式都能上传 -> 传送时用了哪种格式，并不代表这种格式就在可上传之列 / why: no nominalized "delivery choice".
+[filenames] pass1 -> pass3: 遵守这些命名规则，可以避免文件名被意外改动 -> 守住这几条命名规则，文件名就不会被意外改动 / why: result clause instead of "可以避免".
+[video] pass1 -> pass3: 不合并二者关于分辨率的表述 -> 不把二者关于分辨率的表述混为一谈 / why: idiomatic verb.
+[capacity] pass1 -> pass3: 视频和 3D 模型的配额取决于店铺套餐 -> 视频和 3D 模型能放多少，取决于店铺套餐 / why: verbal over nominal.
+[hubStudio] pass1 -> pass3: 从一张清晰的真实产品照片入手 -> 以一张清晰的真实产品照片为起点; 把结果与原图对照检查 -> 成图要与原图逐一对照 / why: 成图 is the settled term for the render; pass2's 先拍一张 added a shoot the English never asks for, removed.
+[export] pass1 -> pass3: 方形裁切导出的就是方形文件 -> 方形裁切，导出的自然是方形文件; App labels kept exactly: “编辑图片”, “放大与修复”, 图片工作台, 图片编辑器, “裁剪”, “方形 1:1”, “保存”, “在素材库中保存副本”, “下载”, 素材库 (app zh.json and help dictionaries).
+[upload] pass1 -> pass3: hubStudio 不与 Shopify 对接或同步 -> hubStudio 与 Shopify 之间没有对接，也不做同步 / why: two plain statements instead of a compressed "或".
+[changelog] pass1 -> pass3: 来源页面持续更新 (pass2 随时更新) -> 持续更新 / why: "living documents" means continuously revised, not revised at any moment.
+[FAQ square] pass1 -> pass3: 并不要求必须是方形 -> 并没有规定必须用方形 (pass2's 非方形不可 read ambiguously) / why: unambiguous.
+[FAQ video] pass1 -> pass3: 文件传输成功却没有可用预览的 -> 文件传上去了却没有可用的预览; pass2's 推广到 (promote) -> 用于 / why: wrong sense of "use across the catalog".
+[table head] Item: common.json reads 选项; this page carries the page override "Item": "项目", the same fix as cost-of-social-content-week.
+[FAQ JSON-LD] The FAQ answers share their key with the visible answers, so the structured data copies the visible Chinese word for word.
+
+[common]
+common.json, the card of shopify-product-image-sizes (5 units).
+[card title] pass1 -> pass3: 2026 年 Shopify 产品图片尺寸 (kept) / why: follows the sibling cards (2026 年 Amazon 商品图片要求, 2026 年 Pinterest Pin 图规格); 产品图片 is Shopify's own Chinese for product images.
+[card date] pass1 -> pass3: 2026 年 10 月 20 日 (kept) / why: glossary date format.
+[hero alt] pass1 -> pass3: 一张破旧的打包桌上，一只有磨痕的蓝色搪瓷杯，旁边是同一只杯子的方形照片 -> 磨旧的打包桌上，一只带磨痕的蓝色搪瓷杯旁放着它的方形照片 / why: one scene sentence instead of a list of noun phrases.
+[hero alt] pass1 -> pass3: 照片里的杯子显得比实物矮胖；后方有一卷胶带和一只打开的纸箱 -> 照片里的杯子比实物显得矮胖；后方是一卷胶带和一只敞开的纸箱 / why: 敞开 is the native word for an open box; 是 anchors the background.
+[deck] pass1: 按核实过的上传上限、统一的裁切和手动导出流程，准备 Shopify 产品图片。
+[deck] pass2: 上传上限经过核实，裁切保持统一，导出手动完成：Shopify 产品图片就这样准备。 / why: tried a three-clause rhythm.
+[deck] pass3: 依据核实过的上传上限、统一的裁切和手动导出流程，备好 Shopify 产品图片。 / why: pass2's triad read as a slogan; 依据 + 备好 is plainer and keeps the method first.
+[deck] pass1 -> pass3: 动手做整批图片之前，先把平台要求和模板设置分开 -> 批量制作之前，先把平台要求与模板设置分开来看 / why: 批量制作 is the production term; 分开来看 completes the verb.
+[meta] pass1 -> pass3: 2026 年 Shopify 产品图片尺寸、上限与格式，引自 Shopify 帮助中心，并说明…注明查阅日期 -> 2026 年 Shopify 产品图片的尺寸、上限与格式，均引自 Shopify 帮助中心；另说明模板如何决定裁切与比例，并注明日期 / why: semicolon splits fact and method, under 80 characters.
+[terms] theme -> 模板 (Shopify's Chinese admin and help center wording), Shopify Help Center -> Shopify 帮助中心.
+
+[home]
+One unit: the "Latest" chip on the newest insight card, now Platform specs (shopify-product-image-sizes).
+[chip] pass1 -> pass3: <span1>最新</span1>平台规格 (kept through all three passes)
+why: settled wording. Glossary zh.md: Latest (chip) -> 最新; Platform specs hub -> 平台规格.
+why: the same chip shipped on 2026-10-17 (amazon-product-image-requirements) as <span1>最新</span1>平台规格.
+pass2: re-read without the English: two-character label plus the category name, the form every other chip on the page uses; nothing to restructure.
+pass2: the category name must stay 平台规格 so it matches the insights index filter and the specs hub.
+pass3: placeholder checked: <span1> appears once, around 最新, as in the English key.
+pass3: no punctuation inside the chip, no half-width characters, no space between the span and 平台规格.
+pass3: label identical on the home page and the insights index.
+Result: pass2.json and pass3.json carry no change for this unit.
+
+[resources/insights]
+One unit: the "Latest" chip on the newest insight card, now Platform specs (shopify-product-image-sizes).
+[chip] pass1 -> pass3: <span1>最新</span1>平台规格 (kept through all three passes)
+why: settled wording. Glossary zh.md: Latest (chip) -> 最新; Platform specs hub -> 平台规格.
+why: the same chip shipped on 2026-10-17 (amazon-product-image-requirements) as <span1>最新</span1>平台规格.
+pass2: re-read without the English: two-character label plus the category name, the form every other chip on the page uses; nothing to restructure.
+pass2: the category name must stay 平台规格 so it matches the insights index filter and the specs hub.
+pass3: placeholder checked: <span1> appears once, around 最新, as in the English key.
+pass3: no punctuation inside the chip, no half-width characters, no space between the span and 平台规格.
+pass3: label identical on the home page and the insights index.
+Result: pass2.json and pass3.json carry no change for this unit.
+
+2026-10-20T04:15+08:00 npm run i18n:local -- check: every page translated in French and Chinese (249 pages). npm run i18n:guard passed. npm run build started.
+2026-10-20T04:16+08:00 npm run build passed (exit 0; prebuild content:todo and i18n:guard clean), npm run check passed (0 errors, 0 warnings). schedule.csv row 80 set to published, published_on 2026-10-20.
+2026-10-20T04:17+08:00 staging: the article page, insights.ts, the hero, the fr and zh article dictionaries, home and insights-index dictionaries, the zh packshot entry, the draft run's files for row 80 (output, research and captures, brief and wave2 module amendments, source ledger block, watch row, today's draft log) and this log. In routes.ts, common.json (fr, zh) and the glossaries only this article's lines are staged (built from HEAD plus this run's entries); the feature-video lines stay uncommitted in the working tree.

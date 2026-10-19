@@ -1,0 +1,241 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should Shopify product images be?",
+    "a": "For a square product image, start with Shopify’s recommended 2048 x 2048 pixels. Test the actual product page before making the batch. If the product looks too small or loses an edge, review the framing and theme crop before increasing resolution."
+  },
+  {
+    "q": "What is the maximum image size on Shopify?",
+    "a": "For product media, Shopify lists 5000 x 5000 pixels or 25 MP, below 20 MB. Both limits matter: a compact file can still contain too many pixels. Theme-image documentation has different wording, explained above. Keep a master copy and test the intended upload surface before preparing large exports for the whole catalog."
+  },
+  {
+    "q": "Should Shopify product images be square?",
+    "a": "Shopify’s size recommendation applies when you choose a square image; it doesn’t require that shape. The object and its display area should guide the ratio. Keep main images consistent across a collection, then check whether secondary views need a different crop to show the detail clearly."
+  },
+  {
+    "q": "What image formats does Shopify accept?",
+    "a": "JPEG, PNG, WebP, HEIC, and GIF appear in both the Files and product-media lists. Shopify’s product-media page also names additional formats, with conversion and transformation qualifications elsewhere in its help center. Transparency or animation can change how an image looks after upload, so inspect the preview before approving the batch."
+  },
+  {
+    "q": "Why are my Shopify product images cropped?",
+    "a": "The image’s shape may differ from the area where the theme displays it. Look at the affected section on desktop and on a phone. If its settings offer no suitable adjustment, prepare a crop that keeps the product inside its visible area without stretching it."
+  },
+  {
+    "q": "Can I add video to a Shopify product page?",
+    "a": "Yes, provided the theme supports product video. Uploaded files can run up to 10 minutes and 1 GB; check the resolution distinction above. Test playback after upload, including the opening frame. A file that transfers successfully but has no working preview needs investigation before you use it across the rest of the catalog."
+  }
+];
+---
+
+<ArticleLayout slug="shopify-product-image-sizes" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">A file can upload successfully and still lose the product’s handle in the storefront crop. Check the size of the file and the shape of its display area.</p>
+
+  <p>Reviewed October 20, 2026.</p>
+
+  <h2>What Shopify product image size should you use?</h2>
+
+  <p>For square product images, start at 2048 x 2048 pixels, Shopify’s recommended size. Keep files below 20 MB and check the crop in your theme before preparing the batch. You can make and size the files in hubStudio, then download them and upload them in Shopify’s admin.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Product-media specification</th>
+          <th scope="col">Meaning for production</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Square image</th>
+          <td>2048 x 2048 px recommended</td>
+          <td>A starting export size, not a mandatory shape</td>
+          <td>Product media types</td>
+        </tr>
+        <tr>
+          <th scope="row">Image ceiling</th>
+          <td>5000 x 5000 px, or 25 MP; below 20 MB</td>
+          <td>Check dimensions and file weight separately</td>
+          <td>Product media types</td>
+        </tr>
+        <tr>
+          <th scope="row">Shared image formats</th>
+          <td>JPEG, PNG, WebP, HEIC, GIF</td>
+          <td>Listed on both product and Files pages</td>
+          <td>Product media types; Uploading and managing files</td>
+        </tr>
+        <tr>
+          <th scope="row">Uploaded video</th>
+          <td>Up to 10 minutes and 1 GB; MP4, MOV, WebM</td>
+          <td>Theme support also matters</td>
+          <td>Uploading and managing files</td>
+        </tr>
+        <tr>
+          <th scope="row">Product model</th>
+          <td>Up to 500 MB; GLB or USDZ</td>
+          <td>Check the model in a supporting theme</td>
+          <td>Product media types</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">For square images, Shopify says “a size of 2048 x 2048 px usually displays best.” Its product page gives the image and model limits above. Method: read the product-specific requirements, separately from theme rules.</blockquote>
+  <p class="source">Source: Shopify Help Center, Product media types, undated, read October 20, 2026. https://help.shopify.com/en/manual/products/product-media/product-media-types</p>
+
+  <blockquote class="evidence">The video and shared-format rows follow the admin upload requirements. Method: compared that table with the product-specific page.</blockquote>
+  <p class="source">Source: Shopify Help Center, Uploading and managing files, undated, read October 20, 2026. https://help.shopify.com/en/manual/shopify-admin/productivity-tools/file-uploads</p>
+
+  <p>The <a href="/resources/specs">Platform specs hub</a> covers other destinations. These requirements apply to Shopify product media; don’t treat them as a specification for every channel where you sell.</p>
+
+  <h2>Why do Shopify’s own image limits differ between pages?</h2>
+
+  <p>The product-media page and the Files table agree on 25 MP. The theme-image page has a 20 MP upload-limit section, while another passage on that page mentions 25 MP. It also says product-image limits differ. That leaves a documented spread of 20 to 25 MP across these contexts, not a reason to replace the product-specific ceiling with the smaller number. The product page says smaller than 20 MB; the Files page says a maximum of 20 MB. Stay below that boundary to satisfy both wordings.</p>
+
+  <blockquote class="evidence">The theme-image page contains both 20 MP and 25 MP guidance. Method: compare its upload-limit section with its compression section and the product-specific table. This is a documentation conflict, not a measured acceptance test.</blockquote>
+  <p class="source">Source: Shopify Help Center, Uploading images, undated, read October 20, 2026. https://help.shopify.com/en/manual/online-store/images/theme-images</p>
+
+  <p>Before exporting the catalog, try a file in the intended upload location. Record the upload location, exported dimensions, format, and file weight alongside the result. If a large image is rejected, preserve the error text and make a smaller export for that placement. Keep the original master.</p>
+
+  <p>The accepted-format lists need the same care. Product media types also names TIFF, BMP, and SVG. Uploading images says TIFF and BMP convert on upload; resizing or cropping SVG needs raster output. For a routine photo handoff, use JPEG for a photographic export or PNG when you need transparency, then inspect the uploaded result. This follows the practical format guidance in Shopify’s Uploading images page. Product media types puts PNG first, then JPEG, so don’t read either preference as an exclusive acceptance list.</p>
+
+  <h2>Who decides whether the image is cropped?</h2>
+
+  <p>Your file sets the available picture. The theme sets how that picture fits its display area. Shopify’s media-editor guidance recommends matching aspect ratios for images shown together. Its theme troubleshooting page gives the same advice for collection images that don’t align.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Decision</th>
+          <th scope="col">Where to check it</th>
+          <th scope="col">What to approve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Upload acceptance</th>
+          <td>Shopify product media requirements</td>
+          <td>File type, pixels, file weight</td>
+        </tr>
+        <tr>
+          <th scope="row">Product framing</th>
+          <td>Your source image and export</td>
+          <td>Whole product, truthful proportions</td>
+        </tr>
+        <tr>
+          <th scope="row">Collection alignment</th>
+          <td>Main images across the collection</td>
+          <td>Consistent width-to-height ratio</td>
+        </tr>
+        <tr>
+          <th scope="row">Display crop</th>
+          <td>Theme section and its available settings</td>
+          <td>Product remains visible on desktop and phone</td>
+        </tr>
+        <tr>
+          <th scope="row">Zoom behavior</th>
+          <td>The active product template</td>
+          <td>Useful detail in the actual storefront</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Within a product set, a common ratio makes changes of view less distracting. Treat that as a production choice. Shopify doesn’t require every image to be square.</p>
+
+  <p>As a framing example, picture a tall bottle beside a wide serving bowl. A square canvas can hold both, but their empty space will differ. Approve their apparent scale in the collection grid before applying the same crop to the rest of the range. The bowl may need more space around it than you expected.</p>
+
+  <blockquote class="evidence">Matching aspect ratios helps collection images align. Resizing with the proportions unlocked can distort a product; crop to change the shape. Method: read Shopify’s editor instructions and collection troubleshooting.</blockquote>
+  <p class="source">Source: Shopify Help Center, Using the media editor and Troubleshooting your online store theme, undated, read October 20, 2026. https://help.shopify.com/en/manual/shopify-admin/productivity-tools/media-editor https://help.shopify.com/en/manual/online-store/themes/theme-support/troubleshooting</p>
+
+  <p>In the theme editor, inspect the affected section’s image settings. Their names and availability depend on the theme and version. Check whether the section can adapt to the image, or whether a supported focal point keeps the important detail in frame.</p>
+
+  <p>Preview the product page and collection separately. The collection card may hide an edge that the product page shows.</p>
+
+  <h2>Should you compress every image to a fixed file weight?</h2>
+
+  <p>No. Shopify’s photography guide suggests aiming at 200 KB or less. Its theme-image guide says manual compression isn’t necessary and recommends uploading the best quality available. The small-file suggestion is advice, not the product upload ceiling.</p>
+
+  <blockquote class="evidence">The photography guide’s 200 KB target is an optimization suggestion. Method: read the recommendation in its photography context, rather than treating it as an upload rule.</blockquote>
+  <p class="source">Source: Shopify Help Center, Taking product photographs, undated, read October 20, 2026. https://help.shopify.com/en/manual/products/product-media/product-photography The different best-quality upload advice appears in Uploading images, also read October 20, 2026. https://help.shopify.com/en/manual/online-store/images/theme-images</p>
+
+  <p>Stay inside the file-weight ceiling, then look closely at the export. If compression makes a knit look waxy or erases an embossed mark, increase quality and compare again. Lettering is worth checking at full size, even when the rest of the picture looks fine in the collection grid.</p>
+
+  <p>Open the larger preview.</p>
+
+  <p>Shopify can deliver a different image format to a browser. That delivery choice doesn’t mean every format it serves belongs on the upload list.</p>
+
+  <h2>What should the filename and alt text say?</h2>
+
+  <p>Use a unique, descriptive filename, for example linen-tote-natural-side.jpg. Shopify warns against starting a filename with a period and against endings reserved for image transformations. Avoid an underscore immediately before dimensions in a filename. These naming rules help avoid unintended filename changes.</p>
+
+  <p>For alt text, describe the visible product and view. In this case, “Natural linen tote shown from the side with its outer pocket” tells the reader something useful. A string of sales adjectives does not. Change the description when the image shows a different detail rather than copying the same text across the gallery.</p>
+
+  <blockquote class="evidence">Use descriptive filenames and alt text that describes what the image shows. Method: read the Files naming guidance and Shopify’s SEO alt-text instructions.</blockquote>
+  <p class="source">Source: Shopify Help Center, Uploading and managing files and Adding keywords for SEO, undated, read October 20, 2026. https://help.shopify.com/en/manual/shopify-admin/productivity-tools/file-uploads https://help.shopify.com/en/manual/promoting-marketing/seo/adding-keywords</p>
+
+  <h2>What changes when you add video or a model?</h2>
+
+  <p>The video limits in the opening table apply to uploaded files. Shopify’s product page gives a 4K maximum of 4096 x 2160 pixels; its Files page says UHD and recommends 3840 x 2160. For a landscape handoff, use the documented UHD recommendation unless your upload test establishes another accepted export. Keep the source clip separately.</p>
+
+  <blockquote class="evidence">The opening table uses the Files page’s uploaded-video limits. The export distinction above compares its UHD recommendation with the product page. Method: read both Help Center pages without merging their resolution wording.</blockquote>
+  <p class="source">Source: Shopify Help Center, Product media types and Uploading and managing files, undated, read October 20, 2026. https://help.shopify.com/en/manual/products/product-media/product-media-types https://help.shopify.com/en/manual/shopify-admin/productivity-tools/file-uploads</p>
+
+  <p>Confirm that the theme supports the media, and check the store’s remaining capacity: video and model allowances depend on its plan. For a model, inspect its materials and orientation in the storefront after upload.</p>
+
+  <h2>How do you prepare the image in hubStudio?</h2>
+
+  <p>Once the destination and crop are settled, prepare the export.</p>
+
+  <p>Start with a clear photograph of the actual product. Use Edit an image for an instructed change, or Upscale &amp; restore for an older source. Image studio supports renders up to 4K depending on the engine. Review the result against the original, especially seams and fittings that the edit could have changed.</p>
+
+  <p>Open the result in the Image editor. In Crop, choose Square 1:1, position the box, and apply the crop. In Save, choose PNG, JPG, or WEBP and set the size. The 2048 px long-side shortcut appears when the source is larger; the width and height remain proportional. A square crop gives a square export. The editor works at a maximum long side of 4096 pixels, so keep larger originals separately.</p>
+
+  <blockquote class="evidence">Image studio offers up to 4K on supported engines. The Image editor has Square 1:1 cropping, a conditional 2048 px shortcut, and a 4096 px working limit. Method: checked against the documented controls, not an engine test.</blockquote>
+  <p class="source">Source: hubStudio Help, Create an image and Assets Library and the tools, checked October 20, 2026. https://www.hubstudio.ai/help/create-an-image https://www.hubstudio.ai/help/assets-library</p>
+
+  <p>Save a copy in the Assets Library if you want the edited file kept there, or use Download for a local export. Upload the result through the product’s Media section in Shopify. hubStudio doesn’t connect or sync to Shopify.</p>
+
+  <p>If the upload fails, check the real file format as well as its extension. Shopify’s Adding product media guide describes failures caused by a mismatch. Renaming the extension isn’t a conversion.</p>
+
+  <blockquote class="evidence">Upload product media from the product’s Media section; check format mismatches when a video lacks a working preview. Method: read the upload steps and troubleshooting entries.</blockquote>
+  <p class="source">Source: Shopify Help Center, Adding product media, undated, read October 20, 2026. https://help.shopify.com/en/manual/products/product-media/add-media</p>
+
+  <p>The <a href="/resources/how-to/ai-white-background-packshot">AI white-background packshot</a> guide covers preparing the main shot. Use <a href="/resources/how-to/product-photo-to-lifestyle-image">Product photo to lifestyle image</a> for supporting scenes. The <a href="/services/design/ecommerce">Ecommerce design service</a> and <a href="/solutions/platforms/shopify">Shopify platform page</a> cover the broader production brief.</p>
+
+  <h2>What was reviewed for this edition?</h2>
+
+  <p>October 20, 2026: checked product-media and Files requirements, compared theme guidance, and retained the differences in megapixels, formats, and video resolution. Checked the hubStudio export controls against its help center. The source pages are living documents without displayed revision dates; the date here records when they were read.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>What size should Shopify product images be?</h3>
+
+  <p>For a square product image, start with Shopify’s recommended 2048 x 2048 pixels. Test the actual product page before making the batch. If the product looks too small or loses an edge, review the framing and theme crop before increasing resolution.</p>
+
+  <h3>What is the maximum image size on Shopify?</h3>
+
+  <p>For product media, Shopify lists 5000 x 5000 pixels or 25 MP, below 20 MB. Both limits matter: a compact file can still contain too many pixels. Theme-image documentation has different wording, explained above. Keep a master copy and test the intended upload surface before preparing large exports for the whole catalog.</p>
+
+  <h3>Should Shopify product images be square?</h3>
+
+  <p>Shopify’s size recommendation applies when you choose a square image; it doesn’t require that shape. The object and its display area should guide the ratio. Keep main images consistent across a collection, then check whether secondary views need a different crop to show the detail clearly.</p>
+
+  <h3>What image formats does Shopify accept?</h3>
+
+  <p>JPEG, PNG, WebP, HEIC, and GIF appear in both the Files and product-media lists. Shopify’s product-media page also names additional formats, with conversion and transformation qualifications elsewhere in its help center. Transparency or animation can change how an image looks after upload, so inspect the preview before approving the batch.</p>
+
+  <h3>Why are my Shopify product images cropped?</h3>
+
+  <p>The image’s shape may differ from the area where the theme displays it. Look at the affected section on desktop and on a phone. If its settings offer no suitable adjustment, prepare a crop that keeps the product inside its visible area without stretching it.</p>
+
+  <h3>Can I add video to a Shopify product page?</h3>
+
+  <p>Yes, provided the theme supports product video. Uploaded files can run up to 10 minutes and 1 GB; check the resolution distinction above. Test playback after upload, including the opening frame. A file that transfers successfully but has no working preview needs investigation before you use it across the rest of the catalog.</p>
+
+  <p>Make a product image and check the exported file in your storefront.</p>
+</ArticleLayout>

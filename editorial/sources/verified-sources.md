@@ -1,5 +1,31 @@
 # Verified sources ledger
 
+## Shopify product image sizes, brief 80, October 20, 2026
+
+Living Help Center pages have no displayed publication date or Last-Modified
+header. Dates below identify verified reads, not inferred publication dates.
+Method: primary documentation read and compared by upload surface. Sample
+size is not applicable; the documentation is funded by Shopify. No measured
+performance claim is made. All eight external source bodies were unchanged
+on an independent browser re-fetch. Evidence: research/shopify-product-image-sizes/.
+
+| Figure or rule | Attribution | Source | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|
+| Product image: 5000 x 5000 px or 25 MP, below 20 MB; square recommendation 2048 x 2048 | Shopify Help Center, Product media types, undated, read October 20, 2026; product requirements, not a live acceptance test | https://help.shopify.com/en/manual/products/product-media/product-media-types | primary, refresh of brief 51 row | 2026-10-20 | 2026-10-20 | 80 |
+| Product model: up to 500 MB, GLB/USDZ; theme must support the media | Same attribution and method | https://help.shopify.com/en/manual/products/product-media/product-media-types | primary | 2026-10-20 | 2026-10-20 | 80 |
+| Shared upload formats JPEG, PNG, WebP, HEIC, GIF; video 10 minutes, 1 GB, MOV/MP4/WebM; unique descriptive filenames | Shopify Help Center, Uploading and managing files, undated, read October 20, 2026; admin requirements table and naming guidance | https://help.shopify.com/en/manual/shopify-admin/productivity-tools/file-uploads | primary | 2026-10-20 | 2026-10-20 | 80 |
+| Product video page says 4096 x 2160; Files page says UHD and recommends 3840 x 2160 | Both Shopify Help Center pages, undated, read October 20, 2026; differences retained, UHD chosen as workflow recommendation | Product media types and Uploading and managing files URLs above | primary, scope conflict | 2026-10-20 | 2026-10-20 | 80 |
+| Theme page contains 20 MP limit and 25 MP guidance; product limits explicitly differ; TIFF/BMP convert and SVG transformations need raster output; image delivery format can differ | Shopify Help Center, Uploading images, undated, read October 20, 2026; compared sections with product-specific requirements | https://help.shopify.com/en/manual/online-store/images/theme-images | primary, scope conflict retained | 2026-10-20 | 2026-10-20 | 80 |
+| Photography guide suggests 200 KB; theme guide advises best-quality uploads without required manual compression | Shopify Help Center, Taking product photographs and Uploading images, undated, read October 20, 2026; recommendation versus acceptance distinguished | https://help.shopify.com/en/manual/products/product-media/product-photography | primary, recommendation only | 2026-10-20 | 2026-10-20 | 80 |
+| Matching ratios aid collection alignment; crop rather than distort the proportions | Shopify Help Center, Using the media editor and Troubleshooting your online store theme, undated, read October 20, 2026; workflow instructions | https://help.shopify.com/en/manual/shopify-admin/productivity-tools/media-editor ; https://help.shopify.com/en/manual/online-store/themes/theme-support/troubleshooting | primary | 2026-10-20 | 2026-10-20 | 80 |
+| Descriptive alt text; product Media upload and format-mismatch diagnosis | Shopify Help Center, Adding keywords for SEO and Adding product media, undated, read October 20, 2026; documented actions | https://help.shopify.com/en/manual/promoting-marketing/seo/adding-keywords ; https://help.shopify.com/en/manual/products/product-media/add-media | primary | 2026-10-20 | 2026-10-20 | 80 |
+| App: engine-dependent up to 4K; Square 1:1; PNG/JPG/WEBP; conditional 2048 px long-side shortcut; 4096 px editor working limit; manual download | hubStudio Help, Create an image and Assets Library and the tools, checked October 20, 2026; local help and positioning are binding, no rendering benchmark claimed | src/content/help/create-an-image.md ; src/content/help/assets-library.md ; https://www.hubstudio.ai/help/create-an-image ; https://www.hubstudio.ai/help/assets-library | primary first-party controls | 2026-10-20 | 2026-10-20 | 80 |
+
+Cut: universal 20 MP product ceiling, mandatory 200 KB upload cap, uniform
+format support across surfaces, undocumented zoom threshold and automatic
+Shopify connection. No later brief repeats the corrected conditional export
+shortcut. The live packshot guide already carries matching Shopify numbers.
+
 Every figure that reaches a page passes through here first. Read this before
 researching anything. If a figure is logged, dated within 12 months and
 carries two passing checks, reuse the exact citation rather than researching

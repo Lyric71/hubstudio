@@ -74,6 +74,7 @@ const ARTICLES: Record<string, string> = {
   'retouch-at-volume-qa-pipeline': 'retouche-en-volume-et-controle-qualite',
   'running-a-tmall-flagship-content': 'faire-vivre-le-contenu-d-un-flagship-tmall',
   'shoot-it-or-generate-it': 'shooter-ou-generer',
+  'shopify-product-image-sizes': 'shopify-tailles-des-images-produit-2026',
   'singles-day-618-production-calendar': 'singles-day-et-618-le-calendrier-de-production',
   'stock-photos-vs-ai-images': 'banque-d-images-ou-images-ia',
   'subscription-or-managed-production': 'abonnement-ou-production-geree',
