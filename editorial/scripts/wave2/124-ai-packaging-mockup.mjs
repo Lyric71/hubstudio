@@ -27,7 +27,7 @@ export default {
   mustInclude: [
     "Three methods and when each wins: a template mockup, a 3D render, a generated mockup from the flat artwork; a short decision table",
     "The run in the Image studio: Edit an image with the flat label or dieline and a reference of the pack shape as source pictures (up to four on the engines that take several; FLUX.1 Kontext Pro and Max take one); the instruction names what to wrap and what must stay exact",
-    "Engine choice from the help center: the ChatGPT Image engines follow long briefs, write legible text and take a mask that protects the rest of the first image; Transparent background on the ChatGPT Image 2.5 engines, in PNG or WebP; Nano Banana 2 and Pro and Seedream edit from up to four sources; Seedream renders natively up to 4K",
+    "Engine choice from the help center: the ChatGPT Image engines follow long briefs, write legible text and take a mask that protects the rest of the first image; Transparent background on the ChatGPT Image 2.5 engines, in PNG or WebP; Nano Banana 2 and Pro and Seedream edit from up to four sources; Seedream 4.5 renders natively up to 4K (5.0 Pro stops at 2K, amended 2026-10-21)",
     "Prompt examples in prompt blocks: a folding carton, a bottle with a wrap-around label, a stand-up pouch, a can, a shelf scene",
     "A fidelity checklist: every word against the artwork file, logo geometry, color against the reference, barcode and legal text, the curve of a label on a round pack, the shadow and contact with the surface",
     "What to do with text a model gets wrong: place the exact words or the logo afterward in the Image editor (Text and Picture panels), or run a new edit on the passage that failed; the Catalog skill Legible text inside an image",

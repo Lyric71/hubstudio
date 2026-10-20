@@ -182,7 +182,7 @@ that fails is not charged.
 | ChatGPT Image 2 (OpenAI)   | Up to 4                  | Follows long briefs, writes legible text      |
 | Nano Banana 2 (Google)     | Up to 4                  | Fast and dependable on an existing photo      |
 | FLUX.1 Kontext Pro and Max | 1                        | Changes exactly what you name, keeps the rest |
-| Seedream 4.5 and 5.0 Pro   | Up to 4                  | Renders natively up to 4K                     |
+| Seedream 4.5 and 5.0 Pro   | Up to 4                  | 4.5 renders natively up to 4K, 5.0 Pro to 2K  |
 
 On the ChatGPT Image engines, ask for several images in one run (one to ten)
 and keep the best. You pay for the images that come back.

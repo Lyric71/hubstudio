@@ -29,7 +29,7 @@ export default {
     "The app describes it as the least expensive image engine by a wide margin: say so as a price level read from the image section of the Model benchmarks page, never as a figure",
     "Long prompts: the prompt box takes up to 4,000 characters; how to structure a long brief (subject, setting, light, layout, room for copy, what must not appear) so the engine's reasoning has something to work with",
     "Meta describes blending several photos into one scene; in the app an edit takes one source image, so a blend there means one combined source picture, or an engine that takes up to four",
-    "The drafting flow: several runs at once, each in its own tab; pick the direction; Reuse prompt; then move to a finishing engine: Seedream 5.0 Pro for native 4K, a ChatGPT Image engine for text inside the picture, Nano Banana Pro or FLUX.1 Kontext for exact edits, Upscale & restore on an engine that offers it",
+    "The drafting flow: several runs at once, each in its own tab; pick the direction; Reuse prompt; then move to a finishing engine: Seedream 4.5 for native 4K (5.0 Pro stops at 2K, amended 2026-10-21), a ChatGPT Image engine for text inside the picture, Nano Banana Pro or FLUX.1 Kontext for exact edits, Upscale & restore on an engine that offers it",
     "Four prompt examples, each with what the draft settled and what the final engine changed: a product scene, a social layout with room for copy, a seasonal background, an edit of one product photo",
     "The price shown before every run; a failed run is not charged",
   ],

@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'seedream-5-pro-guide',
+    image: '/Images/howto-seedream-5-pro-guide.webp',
+    imageAlt:
+      'A retoucher holds a brass loupe against a large print of a cream jar, beside a smaller proof and the real jar on a worn ledge in window light.',
+    category: 'Image generation',
+    tone: 'navy',
+    title: 'Seedream 5.0 Pro Prompts for Product Images',
+    deck: 'What ByteDance documents for Seedream 5.0 Pro, the prompt structure it rewards, multi-image product edits, and why 4K is a job for Seedream 4.5.',
+    date: 'October 21, 2026',
+    dateISO: '2026-10-21',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Seedream 5.0 Pro Prompts for Product Images | hubStudio',
+    metaDescription:
+      'Prompt Seedream 5.0 Pro for product and campaign images: prompt structure, multi-image edits that keep the product, its 2K ceiling and limits.',
+  },
+  {
     slug: 'holiday-visuals-from-product-photos',
     image: '/Images/howto-holiday-visuals-from-product-photos.webp',
     imageAlt:
@@ -166,6 +183,7 @@ export const howtos: Howto[] = [
     deck: 'A plain packshot can become a believable scene without a reshoot. The method: lock the product, brief the edit, run several engines, check every result.',
     date: 'October 8, 2026',
     dateISO: '2026-10-08',
+    dateModifiedISO: '2026-10-21',
     readingTime: '11 min read',
     author: 'Cyril Drouin',
     metaTitle: 'How to turn a product photo into a lifestyle image | hubStudio',
@@ -252,6 +270,7 @@ export const howtos: Howto[] = [
     deck: 'What OpenAI documents for ChatGPT Image 2, what our six test runs showed, and the product prompts that hold up for packshots, scenes and labels.',
     date: 'October 8, 2026',
     dateISO: '2026-10-08',
+    dateModifiedISO: '2026-10-21',
     readingTime: '11 min read',
     author: 'Cyril Drouin',
     metaTitle: 'ChatGPT Image 2 Prompts for Product Images | hubStudio',

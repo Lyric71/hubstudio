@@ -1,0 +1,341 @@
+---
+import HowtoLayout from '../../../layouts/HowtoLayout.astro';
+
+const faq = [
+  {
+    "q": "How do I write prompts for Seedream 5.0?",
+    "a": "Write plain sentences, not keyword strings. ByteDance's guide asks for the subject, the action and the environment, then style, color, light and composition, and it says to state what the image is for. Put any text you want rendered in double quotes. For an edit, name the object, the change and everything that must stay as it is."
+  },
+  {
+    "q": "What is the difference between Seedream 4.5 and 5.0 Pro?",
+    "a": "5.0 Pro, released July 8, 2026, adds point and lasso editing, layer separation, denser text layouts and over ten rendering languages, per ByteDance. 4.5 reaches 4K, while 5.0 Pro stops at about 4.6 megapixels. The maker's API takes 14 reference images on 4.5 and 10 on 5.0 Pro. In hubStudio, both take four and return JPG."
+  },
+  {
+    "q": "Can Seedream edit my product photo?",
+    "a": "Yes. In hubStudio, pick Edit an image, upload the product photo first, and write the change plus a keep list: shape, color, lid, label text in quotes. ByteDance says 4.5 strictly preserves reference details and that 5.0 Pro fuses several references into one scene. It also says pixel-level editing consistency still has room to improve, so compare every result with the original."
+  },
+  {
+    "q": "How many reference images can Seedream use?",
+    "a": "ByteDance's API accepts up to 10 reference images on Seedream 5.0 Pro and up to 14 on Seedream 4.5. The hubStudio Image studio takes up to four source pictures per edit on either engine, resized to 1,536 pixels on the long side. Number them in the prompt, \"Image 1 is the product photo,\" and give each one a job."
+  },
+  {
+    "q": "Can Seedream render text inside an image?",
+    "a": "Short text, yes. ByteDance's guide says to put the words in double quotes, and the maker built 5.0 Pro for text-rich layouts in over ten languages. It also says finer-grained text rendering still has room to improve. Keep headlines short and read them letter by letter, and set small legal copy in a layout tool."
+  },
+  {
+    "q": "Can Seedream make an image with a transparent background?",
+    "a": "Not in hubStudio, where both Seedream engines return JPG. ByteDance's own API has a transparent mode on 5.0 Pro, but it needs one input that already has an alpha channel and returns PNG. For a cutout in the app, use ChatGPT Image 2.5 Flare or Sunburst with PNG or WebP, then confirm the file really has transparency."
+  }
+];
+---
+
+<HowtoLayout slug="seedream-5-pro-guide" ctaLabel="Create your account" faq={faq}>
+  <p class="standfirst">Seedream 5.0 Pro, ByteDance's newest image engine, rewards a plain, specific brief and can merge several pictures into one scene. It also stops short of 4K, and that decides which Seedream you pick for a master file.</p>
+
+  <h2>How do you write Seedream 5.0 prompts?</h2>
+
+  <p>Describe the subject, what it is doing and where, then add style, color, light and composition, in plain sentences. Say what the image is for. Put every word you want rendered in double quotes. For an edit, name the change and what must stay. In hubStudio, Seedream 5.0 Pro runs in the Image studio.</p>
+
+  <p>That advice comes from ByteDance, the engine's maker. This guide uses two kinds of source only. One is ByteDance's own documentation: the Seed team's pages in English, and the Chinese documentation on Volcano Engine, ByteDance's cloud, which is where the hard limits live. We read all of it on October 21, 2026, and ran four test renders the same day to settle a question it raised.</p>
+
+  <h2>What is Seedream 5.0 Pro, and what changed from 4.5?</h2>
+
+  <p>ByteDance released Seedream 5.0 Pro on July 8, 2026, and calls it its "multimodal image creation model." The launch post lists better image-text alignment, structure, text rendering and aesthetics, plus four additions: dense infographics, interactive editing, more realistic light and skin, and native rendering in over ten languages besides Chinese and English.</p>
+
+  <blockquote class="evidence">ByteDance says 5.0 Pro improves image-text alignment, structure, text rendering and aesthetics, and adds point and lasso editing, layer separation and multi-image fusion. It also says "there is still room to improve in finer-grained text rendering and pixel-level editing consistency."</blockquote>
+  <p class="source">Source: ByteDance Seed, Seedream 5.0 Pro launch post, July 8, 2026, the maker's own claims and stated limitation.</p>
+
+  <p>The hard numbers sit in the API reference. They decide which engine gets the job.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Capability</th>
+          <th scope="col">Seedream 5.0 Pro</th>
+          <th scope="col">Seedream 4.5</th>
+          <th scope="col">In the hubStudio Image studio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Output size</th>
+          <td>1K, 1.5K or 2K, up to 4,624,220 pixels</td>
+          <td>2K or 4K, up to 4,096 by 4,096</td>
+          <td>2K on 5.0 Pro; 4K on 4.5</td>
+        </tr>
+        <tr>
+          <th scope="row">Reference images</th>
+          <td>Up to 10</td>
+          <td>Up to 14</td>
+          <td>Up to 4 on either</td>
+        </tr>
+        <tr>
+          <th scope="row">Output format</th>
+          <td>PNG or JPEG</td>
+          <td>JPEG</td>
+          <td>JPG on both</td>
+        </tr>
+        <tr>
+          <th scope="row">Transparent background</th>
+          <td>From one picture already transparent, PNG</td>
+          <td>Not offered</td>
+          <td>Not on Seedream; ChatGPT Image 2.5 engines</td>
+        </tr>
+        <tr>
+          <th scope="row">Point, lasso, layers</th>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Not in the form</td>
+        </tr>
+        <tr>
+          <th scope="row">A series of images</th>
+          <td>Not yet</td>
+          <td>Yes</td>
+          <td>One image per run</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">ByteDance's API sets Seedream 5.0 Pro's output between 921,600 and 4,624,220 pixels, in 1K, 1.5K or 2K tiers, and Seedream 4.5's between 3,686,400 and 16,777,216, which is 4096 by 4096.</blockquote>
+  <p class="source">Source: ByteDance, Volcano Engine image generation API, updated October 14, 2026, the maker's own parameter reference.</p>
+
+  <blockquote class="evidence">ByteDance's API takes up to 10 reference images on Seedream 5.0 Pro and up to 14 on Seedream 4.5; it returns PNG or JPEG on 5.0 Pro and JPEG only on 4.5.</blockquote>
+  <p class="source">Source: ByteDance, Volcano Engine image generation API and tutorial, updated October 13 and 14, 2026, parameter reference and model table.</p>
+
+  <h2>Can Seedream 5.0 Pro make a 4K image?</h2>
+
+  <p>No. Its ceiling is about 4.6 megapixels, enough for a 2,048-pixel square. We checked it on the same path the app uses to render.</p>
+
+  <blockquote class="evidence">When we asked Seedream 5.0 Pro for a 4,096-pixel square on October 21, 2026, the engine refused: "image area must be at most 4624220 pixels." The same request on Seedream 4.5 came back 4,096 pixels square.</blockquote>
+  <p class="source">Source: hubStudio test renders, four requests on the app's render path, October 21, 2026, dimensions read from the returned files.</p>
+
+  <p>So keep Resolution on 2K when you run 5.0 Pro in hubStudio. A run that fails isn't charged, but it costs you the wait. For a 4K master, or a 4K upscale of an existing photo, switch the engine to Seedream 4.5.</p>
+
+  <p>Upscale &amp; restore follows the same rule. Your source is resized to 1,536 pixels on the long side before it's sent, so on 5.0 Pro an upscale lands inside that 2K ceiling. Run it on Seedream 4.5 when the file has to reach 4K. And leave "4K" out of the prompt: ByteDance's API takes the output size as a separate setting, and in the app that's the Resolution list.</p>
+
+  <h2>What prompt structure works for product images?</h2>
+
+  <p>ByteDance's prompt guide for its Seedream family asks for concise natural language: subject, action and environment first, then style, color, light and composition. It says a short, precise prompt beats a pile of ornate adjectives. For product work we split that into six slots. Text comes after.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Slot</th>
+          <th scope="col">What to write</th>
+          <th scope="col">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Use</th>
+          <td>Where the image runs and what kind of image it is</td>
+          <td>Hero image for a product page, square</td>
+        </tr>
+        <tr>
+          <th scope="row">Subject</th>
+          <td>The product, its material and finish, which side shows</td>
+          <td>A frosted glass jar of face cream, matte white lid, label facing camera</td>
+        </tr>
+        <tr>
+          <th scope="row">Setting</th>
+          <td>The surface, the background, the time of day</td>
+          <td>On pale travertine, plain warm gray wall, early morning</td>
+        </tr>
+        <tr>
+          <th scope="row">Light</th>
+          <td>One source and its side</td>
+          <td>Soft window light from camera left, one shadow to the right</td>
+        </tr>
+        <tr>
+          <th scope="row">Camera</th>
+          <td>Lens, height, framing</td>
+          <td>85mm, eye level, jar on the right third</td>
+        </tr>
+        <tr>
+          <th scope="row">Finish</th>
+          <td>The grade and what to leave out</td>
+          <td>Natural color, fine grain, no props, no extra text</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Text gets its own rule: the words go in double quotes. The guide's example is a poster titled "Seedream 4.5," not a poster titled Seedream 4.5. Keep it short. The maker still lists finer-grained text as a weak spot, so quote a headline and leave the small print to a layout tool.</p>
+
+  <p>Two more habits come from the same guide. Name the use and the type of image ("a logo for a games company," not "an abstract picture of a dog"). And when the look matters, use a precise style word or upload a reference picture (a vague mood gives the engine nothing to hold).</p>
+
+  <h2>How do you keep the product when you edit with several pictures?</h2>
+
+  <p>Pick Edit an image and upload up to four source pictures: the product photo, then a scene, a style reference or a second product. In the prompt, number them and give each one a job. ByteDance's own example reads "Using the material from Image 1 and the color swatch from Image 2, modify the sofa in Image 3."</p>
+
+  <p>Then name what is fixed. ByteDance's guide wants the object you're changing named outright (no "make it pink"), and it wants you to say that everything else stays as it is. For a product that means the shape, the cap, the label text in quotes and the color. Repeat that keep list on every follow-up run.</p>
+
+  <p>Three app details matter here. Your uploads are resized in the browser to 1,536 pixels on the long side, so send the sharpest photo you have. The shape of the result follows the first picture, so lead with the one whose framing you want. And ByteDance says the engine reads marks drawn on a picture, such as colored frames that show where each element goes. The Image studio has no lasso, but the free Image editor draws boxes and arrows: mark a copy there, download it and upload the marked copy as a source.</p>
+
+  <p><a href="/resources/how-to/product-photo-to-lifestyle-image">The product photo to lifestyle image guide</a> walks through the same edit with several engines side by side.</p>
+
+  <h2>Prompt examples for product and campaign work</h2>
+
+  <p>Run the first one as Text to image. The other two are edits. Set the shape in the form; the scene goes first in the second prompt because the result takes the shape of the first upload.</p>
+
+  <h3>Packshot</h3>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Hero image for an ecommerce product page, square. A frosted glass jar of face cream with a matte white lid, front label facing the camera, the label text "LUMA" in a thin sans-serif and "NIGHT CREAM 50 ML" below it. The jar stands on a pale travertine block against a plain warm gray wall. Soft window light from camera left, one soft shadow falling to the right. 85mm lens at eye level, the jar centered and filling most of the frame height. Natural color, fine grain. No props, no other text, no watermark.</p>
+  </div>
+
+  <h3>Lifestyle scene from a product photo</h3>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">Image 1 is the setting. Image 2 is the product photo. Place the jar from Image 2 on the bathroom shelf in Image 1, beside a folded linen towel, in early-morning light from the window on the right. Change only what sits on the shelf and the light. Keep the jar's shape, glass, lid, color and label exactly as in Image 2, including the text "LUMA" and "NIGHT CREAM 50 ML". Natural color, 50mm lens, jar on the left third. No other text.</p>
+  </div>
+
+  <h3>Campaign key visual with a headline</h3>
+
+  <div class="prompt">
+    <p class="prompt__label">Prompt example</p>
+    <p class="prompt__body">A horizontal campaign key visual for a winter skincare launch, 16:9. Image 1 is the product photo: keep the jar exactly as it is, label included. Set it in the lower right on a snow-dusted slate ledge, cold blue dusk outside a window behind it, one warm light from the left on the jar. Leave the upper left calm and dark for type. Headline in the upper left, in a clean bold sans-serif, exactly: "Made for the long nights". No other words, no logo.</p>
+  </div>
+
+  <p>Check the headline letter by letter before anyone signs it off. Anything longer than one line belongs in layout.</p>
+
+  <h2>Seedream 4.5 or 5.0 Pro: when is the older engine enough?</h2>
+
+  <p>Often. ByteDance says 4.5 "strictly preserves the details of the reference images" and keeps facial features, lighting and color tone, and it's the only Seedream in the app that reaches 4K.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">The job</th>
+          <th scope="col">Engine</th>
+          <th scope="col">Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">A 4K master or a 4K upscale</th>
+          <td>Seedream 4.5</td>
+          <td>It renders natively up to 4K; 5.0 Pro stops near 4.6 MP</td>
+        </tr>
+        <tr>
+          <th scope="row">A dense layout, an infographic, a poster</th>
+          <td>Seedream 5.0 Pro</td>
+          <td>The maker built it for text-rich, dense layouts</td>
+        </tr>
+        <tr>
+          <th scope="row">A headline in French, Spanish or Arabic</th>
+          <td>Seedream 5.0 Pro</td>
+          <td>Native rendering in over ten languages, per the maker</td>
+        </tr>
+        <tr>
+          <th scope="row">A product edit from up to four photos</th>
+          <td>Either</td>
+          <td>Both take four sources in the app</td>
+        </tr>
+        <tr>
+          <th scope="row">A cutout on a transparent background</th>
+          <td>ChatGPT Image 2.5 Flare or Sunburst</td>
+          <td>Seedream returns JPG in the app</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><a href="/app/engines">The engines page</a> lists every engine by maker. For the transparent cutout, <a href="/resources/how-to/chatgpt-image-2-product-prompting-guide">the ChatGPT Image 2 product prompting guide</a> covers OpenAI's engines, and the <a href="/resources/how-to/nano-banana-prompting-guide">Nano Banana prompting guide</a> covers Google's.</p>
+
+  <h2>How do you run Seedream 5.0 Pro in hubStudio?</h2>
+
+  <figure>
+    <img src="/Images/help/create-an-image-studio.webp" alt="The image studio: the Image and Video switch in the dark band, the engine and its price with the three jobs, the prompt box on the left and the empty results panel on the right" width="1440" height="900" loading="lazy" decoding="async" />
+    <figcaption>The Image studio, where you pick the job and the engine.</figcaption>
+  </figure>
+
+  <ul>
+    <li><strong>Open Image from the menu.</strong> Pick Text to image, Edit an image, or Upscale &amp; restore, then choose Seedream 5.0 Pro under Engine.</li>
+    <li><strong>Add your sources.</strong> An edit takes up to four PNG, JPEG or WebP files; an upscale takes one.</li>
+    <li><strong>Write the prompt.</strong> The box holds 4,000 characters. Improve with AI rewrites what you typed for the engine you chose, and the Catalog skills E-commerce packshot, Lifestyle product scene and Legible text inside an image shape that rewrite.</li>
+    <li><strong>Set Resolution to 2K and pick a shape.</strong> The file comes back as a JPG.</li>
+    <li><strong>Check the price, then run.</strong> The price shows before anything renders, and a failed run isn't charged. Every picture lands in History with its prompt and engine, so a good result can be run again.</li>
+  </ul>
+
+  <p>If you'd rather have our studio make the pictures, the <a href="/solutions/ai-production/image">AI image production page</a> explains how that works.</p>
+
+  <h2>What should you check before a Seedream image ships?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">What to look for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Label and type</th>
+          <td>Every quoted word, letter by letter, at full size</td>
+        </tr>
+        <tr>
+          <th scope="row">The product</th>
+          <td>Shape, cap, proportions and color against the real item or the photo</td>
+        </tr>
+        <tr>
+          <th scope="row">The keep list</th>
+          <td>Run two against run one: nothing on the product should have moved</td>
+        </tr>
+        <tr>
+          <th scope="row">Light</th>
+          <td>One source, every shadow falling the same way</td>
+        </tr>
+        <tr>
+          <th scope="row">Contact</th>
+          <td>Where the product meets the surface, which is where renders give way</td>
+        </tr>
+        <tr>
+          <th scope="row">Size</th>
+          <td>Open the file: 5.0 Pro tops out near 4.6 megapixels, 4.5 reaches 4K</td>
+        </tr>
+        <tr>
+          <th scope="row">Format</th>
+          <td>A JPG has no alpha channel, so plan the background before the layout</td>
+        </tr>
+        <tr>
+          <th scope="row">Claims</th>
+          <td>Anything printed on the pack is approved for that market by a person</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>FAQ</h2>
+
+  <h3>How do I write prompts for Seedream 5.0?</h3>
+
+  <p>Write plain sentences, not keyword strings. ByteDance's guide asks for the subject, the action and the environment, then style, color, light and composition, and it says to state what the image is for. Put any text you want rendered in double quotes. For an edit, name the object, the change and everything that must stay as it is.</p>
+
+  <h3>What is the difference between Seedream 4.5 and 5.0 Pro?</h3>
+
+  <p>5.0 Pro, released July 8, 2026, adds point and lasso editing, layer separation, denser text layouts and over ten rendering languages, per ByteDance. 4.5 reaches 4K, while 5.0 Pro stops at about 4.6 megapixels. The maker's API takes 14 reference images on 4.5 and 10 on 5.0 Pro. In hubStudio, both take four and return JPG.</p>
+
+  <h3>Can Seedream edit my product photo?</h3>
+
+  <p>Yes. In hubStudio, pick Edit an image, upload the product photo first, and write the change plus a keep list: shape, color, lid, label text in quotes. ByteDance says 4.5 strictly preserves reference details and that 5.0 Pro fuses several references into one scene. It also says pixel-level editing consistency still has room to improve, so compare every result with the original.</p>
+
+  <h3>How many reference images can Seedream use?</h3>
+
+  <p>ByteDance's API accepts up to 10 reference images on Seedream 5.0 Pro and up to 14 on Seedream 4.5. The hubStudio Image studio takes up to four source pictures per edit on either engine, resized to 1,536 pixels on the long side. Number them in the prompt, "Image 1 is the product photo," and give each one a job.</p>
+
+  <h3>Can Seedream render text inside an image?</h3>
+
+  <p>Short text, yes. ByteDance's guide says to put the words in double quotes, and the maker built 5.0 Pro for text-rich layouts in over ten languages. It also says finer-grained text rendering still has room to improve. Keep headlines short and read them letter by letter, and set small legal copy in a layout tool.</p>
+
+  <h3>Can Seedream make an image with a transparent background?</h3>
+
+  <p>Not in hubStudio, where both Seedream engines return JPG. ByteDance's own API has a transparent mode on 5.0 Pro, but it needs one input that already has an alpha channel and returns PNG. For a cutout in the app, use ChatGPT Image 2.5 Flare or Sunburst with PNG or WebP, then confirm the file really has transparency.</p>
+</HowtoLayout>

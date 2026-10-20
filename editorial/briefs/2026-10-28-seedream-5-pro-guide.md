@@ -45,7 +45,7 @@ first) and `../SPEC.md`. They override any conflicting rule inside the skill.
 
 ## The angle
 
-Seedream 5.0 Pro from ByteDance's own documentation, applied to product and campaign images: how to prompt it, how to use up to four source pictures to keep a product while changing everything around it, and when its native 4K and upscale make it the right pick. Honest about the limits that matter in production, such as JPG-only output in the app, so no transparent background.
+Seedream 5.0 Pro from ByteDance's own documentation, applied to product and campaign images: how to prompt it, how to use up to four source pictures to keep a product while changing everything around it, and where it stops. Honest about the limits that matter in production: ByteDance caps 5.0 Pro at about 4.6 megapixels (its 2K tier), so a 4K master or a 4K upscale is a Seedream 4.5 job, and the app returns JPG only, so no transparent background. (Amended 2026-10-21: the brief first claimed native 4K for 5.0 Pro; ByteDance's Volcano Engine image API and a live render refused a 4096 px request.)
 
 ## The research gate, before any drafting
 
@@ -89,8 +89,8 @@ than an unsourced one.
 - What Seedream 5.0 Pro is and what changed from 4.5, from ByteDance's own pages only
 - A prompt structure for product and campaign images (subject, setting, light, camera, finish) and how the maker says to write text inside the image
 - Edit an image with up to four source pictures: the product plus a scene, a style or a second product; what to name as fixed
-- Upscale and restore: Seedream re-renders up to 4K and is the pick for a 4K upscale
-- Settings in the hubStudio Image studio: 2K or 4K, JPG output; for a transparent background use a ChatGPT Image engine with PNG or WebP instead
+- Upscale and restore: 5.0 Pro upscales within its 2K ceiling; Seedream 4.5 renders natively up to 4K and is the pick for a 4K upscale (ByteDance's Volcano Engine image API)
+- Settings in the hubStudio Image studio: Resolution 2K on 5.0 Pro (4K on Seedream 4.5), JPG output; for a transparent background use a ChatGPT Image 2.5 engine with PNG or WebP instead
 - Seedream 4.5 versus 5.0 Pro: when the older engine is enough
 - Improve with AI rewrites the prompt for the chosen engine; Catalog skills (E-commerce packshot, Lifestyle product scene, Legible text inside an image) shape it
 - The price shown before every run; a failed run is never charged; every render in History with prompt and engine
@@ -106,6 +106,7 @@ than an unsourced one.
 - Cite any source other than ByteDance's own documentation for engine behavior
 - Name a reseller, another app or any competitor
 - Claim a transparent PNG from Seedream in hubStudio
+- Claim 4K output from Seedream 5.0 Pro
 - Print any hubStudio amount
 - Name an engine that is not offered in the app
 - Use an em dash
@@ -118,7 +119,7 @@ captures may be placed in the body as markdown images,
 in ```` ```prompt ```` fenced blocks and steps in markdown lists (see the header of
 `scripts/publish-draft.mjs`). Nothing else is embedded.
 
-- Engine table: Seedream 4.5 and 5.0 Pro against jobs, source pictures, resolution, format (from the help center)
+- Engine table: Seedream 4.5 and 5.0 Pro against jobs, source pictures, resolution, format (help center for the app, ByteDance's Volcano Engine docs for the output ceiling)
 - Prompt structure table: slot, what to write, example
 - Three worked prompts as text blocks
 - Existing capture: create-an-image-studio

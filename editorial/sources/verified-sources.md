@@ -2931,3 +2931,22 @@ Copied from the research file's own ledger section, which carries the full claim
 | Conversion or click lift from festive product images | Vendor blogs ranking for Black Friday product images | No method; the brief forbids vendor conversion statistics | 2026-10-19 |
 | A fixed FTC look-back period (30, 60 or 90 days) for a former price | Common commentary | 16 CFR Part 233 states none; state rules not read at source | 2026-10-19 |
 | French winter sales 2027 dates as "official" from calendar sites | Six calendar and retail sites, October 2026 | Secondary; official 2027 notice not read at source (watch rows 2026-12-15) | 2026-10-19 |
+
+
+## Added 2026-10-20 (ledger rows from brief 81, seedream-5-pro-guide)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+| Figure or claim | Attribution | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Seedream 5.0 Pro output: 1K, 1.5K, 2K tiers, 921,600 to 4,624,220 pixels (2048 x 2048 x 1.1025); no 4K | "ByteDance, Volcano Engine image generation API, updated October 14, 2026, the maker's own parameter reference" | volcengine.com/docs/82379/1541523 | 2026-10-14 | primary | 2026-10-21 | 2026-10-21 | 81 |
+| Seedream 4.5 output: 2K or 4K, 3,686,400 to 16,777,216 pixels (4096 x 4096) | same | volcengine.com/docs/82379/1541523 | 2026-10-14 | primary | 2026-10-21 | 2026-10-21 | 81 |
+| References: up to 10 on 5.0 Pro, up to 14 on 4.5; output PNG or JPEG on 5.0 Pro, JPEG only on 4.5 | "ByteDance, Volcano Engine image generation API and tutorial, updated October 13 and 14, 2026" | volcengine.com/docs/82379/1541523; volcengine.com/docs/82379/1824121 | 2026-10-14 | primary | 2026-10-21 | 2026-10-21 | 81 |
+| 5.0 Pro transparent mode: image to image, one alpha-channel input, PNG output; layer separation into a base plus up to 16 PNG layers; interactive editing and layers on 5.0 Pro, not 4.5; series generation on 4.5, not yet 5.0 Pro | same | same | 2026-10-14 | primary | 2026-10-21 | 2026-10-21 | 81 |
+| Seedream prompt guide: subject, action, environment, then style, color, light, composition; state the use; text in double quotes; edits name the change and what stays; assign each image a role | "ByteDance, Volcano Engine, Seedream 4.0-5.0 prompt guide, updated May 11, 2026, written for the family" | volcengine.com/docs/82379/1829186 | 2026-05-11 | primary, family guide | 2026-10-21 | 2026-10-21 | 81 |
+| Seedream 5.0 Pro launch claims and stated limit (re-verified; existing ledger row) | "ByteDance Seed launch post, 8 July 2026" | seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro | 2026-07-08 | primary, maker claim | 2026-10-21 | 2026-10-21 | 40, 58, 61, 81 |
+| Test: 5.0 Pro refused 4096 x 4096 ("image area must be at most 4624220 pixels"); 4.5 returned 4096 x 4096; 5.0 Pro returned 2048 x 2048; JPEG, no alpha | "hubStudio test renders, four requests on the app's render path, October 21, 2026" | research/seedream-5-pro-guide/test-renders-2026-10-21.txt | 2026-10-21 | first-party test, four requests | 2026-10-21 | 2026-10-21 | 81 |
+
+Corrected in this run: the help-center line "Seedream renders natively up to
+4K" holds for Seedream 4.5 only. Every later citation of a Seedream 4K claim
+names 4.5.

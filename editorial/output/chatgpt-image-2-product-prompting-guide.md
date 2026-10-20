@@ -227,7 +227,7 @@ its two GPT Image 2.5 models, which hubStudio also offers.
 | An edit where precision comes first  | ChatGPT Image 2.5 Sunburst          | OpenAI's advice: "Choose Sunburst for workflows where editing precision matters most" |
 | Change one thing, keep the rest      | FLUX.1 Kontext Pro or Max           | They change exactly what you name and leave the rest alone                      |
 | A quick edit of an existing photo    | Nano Banana 2                       | Fast and dependable on a photo you already have                                  |
-| A 4K master or a 4K upscale          | Seedream 4.5 or 5.0 Pro             | They render natively up to 4K; ChatGPT Image 2 has no upscale job in the app     |
+| A 4K master or a 4K upscale          | Seedream 4.5                        | It renders natively up to 4K; ChatGPT Image 2 has no upscale job in the app      |
 
 The engines page sorts every engine by maker, and Explore in the app has a
 card for each. For Google's two image models, our Nano Banana prompting guide

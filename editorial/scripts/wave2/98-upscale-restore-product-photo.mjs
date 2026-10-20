@@ -26,7 +26,7 @@ export default {
   mustInclude: [
     "What upscaling does and what it invents; when to reshoot instead",
     "The Upscale & restore job: one source image, the prompt optional (the box reads Anything to add? (optional)); it re-renders the picture larger, sharper and free of compression noise without changing what is in it",
-    "Engines that upscale in the app: Nano Banana 2, Nano Banana Pro, Seedream 4.5 and Seedream 5.0 Pro; Seedream renders natively up to 4K and is the pick for a 4K upscale",
+    "Engines that upscale in the app: Nano Banana 2, Nano Banana Pro, Seedream 4.5 and Seedream 5.0 Pro; Seedream 4.5 renders natively up to 4K and is the pick for a 4K upscale, while ByteDance caps 5.0 Pro at about 4.6 megapixels, its 2K tier (amended 2026-10-21 from the Volcano Engine image API and a live render)",
     "Source images are resized in the browser to 1,536 pixels on the long side at most before they are sent, which also removes their metadata: what that means for the source you pick",
     "Improve with AI returns a careful restoration note for an upscale; the Catalog skill Upscaling and restoration",
     "The check after the run (label text, edges, texture, color), then the free Image editor for light and color",

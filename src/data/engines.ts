@@ -84,6 +84,9 @@ const CHATGPT_NOTE = 'Follows long written briefs and writes legible text inside
 const CHATGPT_OPTIONS = 'Transparent background, 1 to 10 images per run, and an edit mask';
 const KONTEXT_NOTE = 'Changes exactly what you name and keeps the rest.';
 const SEEDREAM_NOTE = 'Renders natively up to 4K. The pick for a 4K upscale.';
+// ByteDance caps Seedream 5.0 Pro at 2048x2048x1.1025 pixels (Volcano Engine
+// image API, read 2026-10-21); a 4096 px request is refused.
+const SEEDREAM_5_PRO_NOTE = 'Renders up to 2K. For 4K, pick Seedream 4.5.';
 const SLOW_NOTE = 'Among the slower engines, so keep its clips short.';
 
 export const engines: Engine[] = [
@@ -211,8 +214,8 @@ export const engines: Engine[] = [
     maker: 'ByteDance',
     kind: 'image',
     jobs: ['text-to-image', 'image-editing', 'upscale'],
-    note: SEEDREAM_NOTE,
-    specs: ['Up to 4 source pictures per edit', '2K or 4K', 'JPG'],
+    note: SEEDREAM_5_PRO_NOTE,
+    specs: ['Up to 4 source pictures per edit', 'Up to 2K', 'JPG'],
   },
   {
     name: 'Seedance 1.0 Pro Fast',

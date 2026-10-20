@@ -93,7 +93,7 @@ than an unsourced one.
 - Source images are resized in the browser to 1,536 pixels on the long side at most before they are sent, which also removes their metadata: start from the best file and keep the original in the Assets Library
 - Five edits with prompt blocks: a new background behind a product, a seasonal restyle, a removed prop or passer-by, a second product merged into one scene from two sources, a re-crop to 9:16 with the scene extended
 - A drift check after every edit: label and packaging text, logo, product color, proportions, hands and faces; the fix for each
-- When to step up: Nano Banana Pro for the most faithful edits and legible type, the FLUX.1 Kontext engines (one source) to change exactly what is named, a mask on the ChatGPT Image engines to lock an area, Seedream for a native 4K upscale
+- When to step up: Nano Banana Pro for the most faithful edits and legible type, the FLUX.1 Kontext engines (one source) to change exactly what is named, a mask on the ChatGPT Image engines to lock an area, Seedream 4.5 for a native 4K upscale (5.0 Pro stops at 2K, amended 2026-10-21)
 - Improve with AI rewrites the prompt for the chosen engine; the Precise image edits skill in the Catalog; History keeps every run with its prompt and engine
 - The price shown before the run; a failed run is not charged
 

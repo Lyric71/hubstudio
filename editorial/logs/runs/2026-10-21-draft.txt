@@ -1,0 +1,27 @@
+﻿2026-10-21T00:30:02 start draft (model claude-opus-5-5)
+2026-10-21T00:30:02 model attempt 1/5, cycle 1: Opus 5.5
+2026-10-21T00:30:31 attempt 1: log shows no prior progress; working tree has unrelated uncommitted edits (videos feature, i18n) left untouched. No row at researched/drafted/quality_passed. Took row 81 seedream-5-pro-guide (earliest not_started, publish_date 2026-10-28, template howto).
+2026-10-21T00:40:33 researched: research/seedream-5-pro-guide.md written. ByteDance's Volcano Engine API caps Seedream 5.0 Pro at 4,624,220 px (2K tier); a live 4096 px request was refused. Brief 81 and briefs 98, 112, 124, 133 amended at source and re-rendered; engines.ts, /app/engines, /app/create and two live how-tos corrected with fr/zh dictionaries.
+2026-10-21T00:43:14 drafted: output/seedream-5-pro-guide.md, 13 iterations (iteration 7 cadence variant), check 2 passed, R8 reconciled, check-draft all hard checks passed.
+2026-10-21T00:44:23 quality_passed: content-quality-us 18 passes plus final, versions v0/v3/v18 in session scratch; SEO 43/142/24 words.
+2026-10-21T00:47:00 image_ready: public/Images/howto-seedream-5-pro-guide.webp (1536x1024, 117 KB), checked against the AI-tells list. watch.csv row 2027-01-21 added. Run log editorial/logs/2026-10-21.md written. i18n:guard passed after the dictionary edits. Stopped at image_ready: nothing published, nothing committed.
+Brief 81, the Seedream 5.0 Pro guide, is drafted and stopped at `image_ready`. Nothing was published or committed.
+
+**What was made**
+- **Research:** `editorial/research/seedream-5-pro-guide.md`, with copies of the source pages saved in `research/seedream-5-pro-guide/`. The sources are ByteDance's own Seed pages and its Chinese Volcano Engine documentation (the API reference, the tutorial and the prompt guide). Every cited page was fetched a second time and still says what the draft quotes. Seven new rows went into the source ledger.
+- **Draft:** `editorial/output/seedream-5-pro-guide.md`, about 1,900 words of prose, with four tables, three example prompts, six FAQs and the existing help-center screenshot of the Image studio. Both the drafting pass and the 18-pass quality pass ran, and `check-draft.mjs` passes every check. Title is 43 characters, meta description 142, excerpt 24 words.
+- **Hero image:** `public/Images/howto-seedream-5-pro-guide.webp` (117 KB). I looked at it and checked it against the style guide's list of AI tells before saving.
+- **Bookkeeping:** the schedule row is at `image_ready`, the run log is `editorial/logs/2026-10-21.md`, and a quarterly recheck is in `watch.csv` for 2027-01-21.
+
+**What the research found:** Seedream 5.0 Pro cannot make a 4K image. ByteDance's API caps it at 4,624,220 pixels, about a 2,048-pixel square. I ran four test renders through the app's own render path (a few cents). A 4,096-pixel request on 5.0 Pro was refused with exactly that limit, while Seedream 4.5 returned a full 4,096-pixel square. The guide says to keep 5.0 Pro on 2K and use 4.5 for any 4K file.
+
+**Corrected in the same run, because they repeated the 4K claim:**
+- **Briefs:** 81 itself, plus the later briefs 98, 112, 124 and 133, fixed at their source modules and re-rendered. I re-rendered only those five; the generator's force mode would also have overwritten 79 other briefs.
+- **Live pages:** the engine data (`src/data/engines.ts`), the 4K sentence on `/app/engines` and `/app/create`, and the ChatGPT Image 2 and product-photo-to-lifestyle how-tos. Each changed sentence was also updated in the French and Chinese dictionaries. The two how-tos' drafts were updated too, and their modified date set to 2026-10-21. `npm run i18n:guard` passes.
+
+**One problem outside this repo:** the app still offers a 4K setting on Seedream 5.0 Pro, and that setting always fails. Its help-center page also lists 4K for 5.0 Pro. Both live in the app repository (`reporting-site/src/lib/image-models.ts` and `hubstudio-site/help/create-an-image.md`), so under the editorial rules I recorded this in the run log and didn't edit them. The guide's advice is correct whichever settings the form shows.
+
+Gmail, Google Calendar and Google Drive need authorizing in your claude.ai connector settings. This run didn't need them.
+2026-10-21T00:47:12 model Opus 5.5 completed successfully
+2026-10-21T00:47:12 end draft exit 0
+2026-10-21T00:47:12 queue: ok: 61 to draft, 0 blocked, last draft 2026-10-21

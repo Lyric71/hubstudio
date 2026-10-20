@@ -118,6 +118,7 @@ const HOWTOS: Record<string, string> = {
   'product-photo-to-lifestyle-image': 'd-une-photo-produit-a-une-photo-d-ambiance',
   'readable-text-in-ai-images': 'du-texte-lisible-dans-une-image-ia',
   'resize-image-every-social-network': 'decliner-un-visuel-sur-chaque-reseau-social',
+  'seedream-5-pro-guide': 'seedream-5-pro-prompts-pour-images-produit',
   'social-media-client-approval': 'faire-valider-ses-posts-par-le-client-sans-chaine-d-e-mails',
   'vertical-video-ad-from-product-image': 'une-publicite-video-verticale-a-partir-d-une-photo-produit',
   'word-by-word-video-captions': 'sous-titrer-une-video-mot-a-mot',

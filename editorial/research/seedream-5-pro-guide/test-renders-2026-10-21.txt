@@ -1,0 +1,24 @@
+Test renders, 2026-10-21, about 00:45 to 00:55 Shanghai time.
+
+Path: the hubStudio app's own render path (Vercel AI Gateway through the AI SDK
+generateImage call in reporting-site/src/lib/ai-gateway.ts), with the pixel
+sizes the app sends for each Resolution setting (SEEDREAM_SIZE in
+reporting-site/src/lib/image-models.ts). Run from the app repository's
+reporting-site folder with its own gateway key. One prompt for every run:
+
+"Photorealistic studio packshot of a matte white ceramic mug on a warm gray
+paper sweep, one softbox from camera left, one soft shadow to the right, 85mm
+lens, product centered. No text, no logo."
+
+| Run | Model | Size requested | Result |
+|---|---|---|---|
+| 1 | bytedance/seedream-5.0-pro | 4096x4096 (the app's 4K, 1:1) | Refused: "The parameter `size` specified in the request are not valid: image area must be at most 4624220 pixels." Request id 0217925139795338eedaf36e20f5141b2bc84e877dea1f73950a0 |
+| 2 | bytedance/seedream-4.5 | 4096x4096 | Rendered; file not saved (local path error in the probe script) |
+| 3 | bytedance/seedream-4.5 | 4096x4096 | Rendered: image/jpeg, 4096 x 4096 px, 2,677,466 bytes, no alpha channel |
+| 4 | bytedance/seedream-5.0-pro | 2048x2048 (the app's 2K, 1:1) | Rendered: image/jpeg, 2048 x 2048 px, 184,400 bytes, no alpha channel |
+
+The 4,624,220-pixel ceiling in the refusal is the figure ByteDance's Volcano
+Engine image API documents for Seedream 5.0 pro (2048x2048x1.1025), see
+volc-image-api.txt. Output files were inspected for dimensions with sharp and
+kept in the session scratch folder, not in the repo (test outputs are not
+published).
