@@ -16595,3 +16595,1361 @@ index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f664
 +const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
 +for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
 +console.log('How-to index and all three sitemap URLs verified.');
+
+apply patch
+patch: completed
+C:\Users\cyril\Project\hubstudio\.i18n-work\stage-publish-release.cjs
+diff --git a/.i18n-work/fill-release-translations.cjs b/.i18n-work/fill-release-translations.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..24731addba8e8cbc25bb235e1c6616a5a1b1314e
+--- /dev/null
++++ b/.i18n-work/fill-release-translations.cjs
+@@ -0,0 +1,29 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
++let filled = 0;
++const missing = [];
++for (const locale of ['fr', 'zh']) {
++  const sourceRoot = path.join(root,'src/i18n/dict',locale);
++  const targetRoot = path.join(release,'src/i18n/dict',locale);
++  const shared = JSON.parse(fs.readFileSync(path.join(sourceRoot,'common.json'),'utf8'));
++  for (const file of walk(targetRoot).filter(f => f.endsWith('.json'))) {
++    const target = JSON.parse(fs.readFileSync(file,'utf8'));
++    const sourceFile = path.join(sourceRoot,path.relative(targetRoot,file));
++    const source = fs.existsSync(sourceFile) ? JSON.parse(fs.readFileSync(sourceFile,'utf8')) : {};
++    let count = 0;
++    for (const [key,value] of Object.entries(target)) {
++      if (value && path.relative(targetRoot,file).replaceAll('\\','/') !== 'pages/resources/how-to/seedream-5-pro-guide.json') continue;
++      const translated = source[key] || shared[key];
++      if (!translated) { missing.push(`${locale}/${path.relative(targetRoot,file)}: ${key.slice(0,80)}`); continue; }
++      target[key] = translated;
++      count++;
++    }
++    if (count) fs.writeFileSync(file,JSON.stringify(target,null,2)+'\n');
++    filled += count;
++  }
++}
++console.log(`Copied ${filled} translated entries required by the isolated release.`);
++if (missing.length) {console.error(missing.join('\n'));process.exit(1);}
+diff --git a/.i18n-work/finalize-publish-copy.cjs b/.i18n-work/finalize-publish-copy.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..94a95d246f4c5ccc6e117f35b11ea0b6a062b427
+--- /dev/null
++++ b/.i18n-work/finalize-publish-copy.cjs
+@@ -0,0 +1,33 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const before = 'which is 2,048 pixels square';
++const after = 'enough for a 2,048-pixel square';
++for (const base of [root, release]) {
++  for (const relative of ['editorial/output/seedream-5-pro-guide.md','src/pages/resources/how-to/seedream-5-pro-guide.astro']) {
++    const file = path.join(base, relative);
++    const value = fs.readFileSync(file,'utf8');
++    if (!value.includes(before)) throw new Error('Missing expected sentence in '+file);
++    fs.writeFileSync(file,value.replace(before,after));
++  }
++  for (const locale of ['fr','zh']) {
++    const file = path.join(base,'src/i18n/dict',locale,'pages/resources/how-to/seedream-5-pro-guide.json');
++    const dict = JSON.parse(fs.readFileSync(file,'utf8'));
++    const result = Object.fromEntries(Object.entries(dict).map(([k,v])=>[k.replace(before,after),v]));
++    fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');
++  }
++}
++fs.copyFileSync(path.join(root,'editorial/research/seedream-5-pro-guide.md'),path.join(release,'editorial/research/seedream-5-pro-guide.md'));
++const ids = ['common','resources/how-to','resources/how-to/seedream-5-pro-guide','app/create','app/engines','resources/how-to/chatgpt-image-2-product-prompting-guide','resources/how-to/product-photo-to-lifestyle-image'];
++let log = '\n## Publication translation review: seedream-5-pro-guide\n\n';
++for (const locale of ['fr','zh']) {
++  for (const id of ids) {
++    const source = path.join(__dirname,'passes',locale,id,'changes.md');
++    if (!fs.existsSync(source)) throw new Error('Missing pass summary '+source);
++    log += `\n### ${locale}: ${id}\n\n`+fs.readFileSync(source,'utf8')+'\n';
++  }
++}
++fs.appendFileSync(path.join(root,'editorial/logs/runs/2026-10-21-publish.txt'),log);
++fs.appendFileSync(path.join(root,'editorial/logs/2026-10-21.md'),log);
++console.log('Corrected the numerical relationship in draft/page and both dictionary keys; copied all 14 translation summaries into both run logs.');
+diff --git a/.i18n-work/stage-publish-release.cjs b/.i18n-work/stage-publish-release.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..792dfbf1c407a8b8456bc3297da0c46b74da6d1f
+--- /dev/null
++++ b/.i18n-work/stage-publish-release.cjs
+@@ -0,0 +1,22 @@
++const fs=require('fs'),path=require('path'),cp=require('child_process');
++const root=path.resolve(__dirname,'..');
++const release=path.join(__dirname,'publish-2026-10-21-release');
++const run=(args,cwd=root,extra={})=>cp.execFileSync('git',args,{cwd,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024,...extra});
++if(run(['diff','--cached','--name-only']).trim())throw Error('Primary index already contains changes');
++if(run(['rev-parse','HEAD']).trim()!==run(['rev-parse','HEAD'],release).trim())throw Error('Checkout heads differ');
++const files=JSON.parse(fs.readFileSync(path.join(__dirname,'publish-2026-10-21-files.json'),'utf8'));
++for(const name of fs.readdirSync(path.join(root,'editorial/logs/runs')).filter(n=>n.startsWith('2026-10-21-')))files.push('editorial/logs/runs/'+name);
++for(const file of files.filter(f=>f.startsWith('editorial/logs/')||f==='editorial/schedule.csv')){
++  const dest=path.join(release,file);fs.mkdirSync(path.dirname(dest),{recursive:true});
++  let content=fs.readFileSync(path.join(root,file));
++  if(file.startsWith('editorial/logs/')&&!file.includes('.prompt.'))content=Buffer.from(content.toString('utf8').replaceAll(String.fromCharCode(0x2014),' - ').replace(/\r\n?/g,'\n').replace(/[ \t]+$/gm,'').trimEnd()+'\n');
++  fs.writeFileSync(dest,content);
++}
++run(['add','--',...files,'src/i18n/routes.ts','src/i18n/dict'],release);
++run(['diff','--cached','--check','--','.',':(exclude)editorial/research/seedream-5-pro-guide'],release);
++const patch=run(['diff','--cached','--binary','--full-index'],release,{encoding:'buffer'});
++run(['apply','--cached','--whitespace=nowarn','-'],root,{input:patch});
++const a=run(['write-tree']).trim(),b=run(['write-tree'],release).trim();
++if(a!==b)throw Error('Staged release trees differ');
++console.log('Primary main index matches the validated release tree: '+a);
++console.log(run(['diff','--cached','--stat']));
+diff --git a/.i18n-work/verify-publish-output.cjs b/.i18n-work/verify-publish-output.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f66476de78ee
+--- /dev/null
++++ b/.i18n-work/verify-publish-output.cjs
+@@ -0,0 +1,38 @@
++const fs = require('fs');
++const path = require('path');
++const {parse} = require('node-html-parser');
++const base = path.join(__dirname,'publish-2026-10-21-release','.vercel/output/static');
++const slug = 'seedream-5-pro-guide';
++const routes = [
++  ['en',`/resources/how-to/${slug}`],
++  ['fr','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit'],
++  ['zh',`/zh/resources/how-to/${slug}`],
++];
++const check = (condition,message) => {if (!condition) throw new Error(message);};
++for(const [locale,route] of routes){
++  const file=path.join(base,route,'index.html');
++  check(fs.existsSync(file),'Missing output '+file);
++  const source=fs.readFileSync(file,'utf8');
++  const html=parse(source);
++  const h1=html.querySelector('h1')?.textContent;
++  check(!!h1,'Missing heading '+locale);
++  check(html.querySelector('link[rel="canonical"]')?.getAttribute('href')==='https://www.hubstudio.ai'+route,'Wrong canonical '+locale);
++  for(const lang of ['en','fr','zh-CN'])check(html.querySelector(`link[hreflang="${lang}"]`),'Missing alternate '+lang+' '+locale);
++  check(source.includes(`/Images/howto-${slug}.webp`),'Hero missing '+locale);
++  const shot='/Images/help/create-an-image-studio'+(locale==='en'?'':'.'+locale)+'.webp';
++  check(source.includes(shot),'Wrong capture '+locale);
++  check(!/\b(?:TODO|FIXME|TBD|TKTK)\b/.test(html.querySelector('main')?.textContent||''),'Unclosed content marker '+locale);
++  if(locale!=='en')check(!source.includes('No. Its ceiling is about 4.6 megapixels'),'Untranslated body '+locale);
++  console.log(`${locale}: built page, native H1 (${h1}), canonical, three language alternates, hero and localized capture verified`);
++}
++for(const [locale,feed] of [['en','resources/rss.xml'],['fr','fr/ressources/rss.xml'],['zh','zh/resources/rss.xml']]){
++  const text=fs.readFileSync(path.join(base,feed),'utf8');
++  const route=routes.find(x=>x[0]===locale)[1];
++  check(text.includes('https://www.hubstudio.ai'+route),'Missing RSS entry '+locale);
++  console.log(`${locale}: resource RSS entry verified`);
++}
++const index=fs.readFileSync(path.join(base,'resources/how-to/index.html'),'utf8');
++check(index.indexOf('/resources/how-to/'+slug)>0,'Guide absent from index');
++const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
++for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
++console.log('How-to index and all three sitemap URLs verified.');
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'node .i18n-work/stage-publish-release.cjs' in C:\Users\cyril\Project\hubstudio
+ succeeded in 1126ms:
+Primary main index matches the validated release tree: 4569053b6e56a1e955e919838ed658421ae9d9bf
+ .../briefs/2026-10-28-seedream-5-pro-guide.md      |     9 +-
+ .../2026-11-17-upscale-restore-product-photo.md    |     2 +-
+ .../2026-12-02-nano-banana-2-photo-editing.md      |     2 +-
+ editorial/briefs/2026-12-15-ai-packaging-mockup.md |     2 +-
+ editorial/briefs/2026-12-23-muse-image-guide.md    |     2 +-
+ editorial/logs/2026-10-21.md                       |   483 +
+ editorial/logs/runs/2026-10-21-draft.prompt.txt    |    43 +
+ .../runs/2026-10-21-draft.prompt.txt.context.json  |    16 +
+ editorial/logs/runs/2026-10-21-draft.txt           |    27 +
+ editorial/logs/runs/2026-10-21-publish.prompt.txt  |    76 +
+ .../2026-10-21-publish.prompt.txt.context.json     |    16 +
+ editorial/logs/runs/2026-10-21-publish.txt         | 16597 +++++++++++++++++++
+ .../chatgpt-image-2-product-prompting-guide.md     |     2 +-
+ .../output/product-photo-to-lifestyle-image.md     |     2 +-
+ editorial/output/seedream-5-pro-guide.md           |   359 +
+ editorial/research/seedream-5-pro-guide.md         |   268 +
+ editorial/research/seedream-5-pro-guide/launch.txt |   104 +
+ .../research/seedream-5-pro-guide/model45.txt      |    69 +
+ .../research/seedream-5-pro-guide/model50pro.txt   |    73 +
+ .../test-renders-2026-10-21.txt                    |    24 +
+ .../seedream-5-pro-guide/volc-image-api.txt        |  1189 ++
+ .../seedream-5-pro-guide/volc-prompt-guide.txt     |   207 +
+ .../seedream-5-pro-guide/volc-tutorial.txt         |  2595 +++
+ editorial/schedule.csv                             |     2 +-
+ .../wave2/112-nano-banana-2-photo-editing.mjs      |     2 +-
+ .../scripts/wave2/124-ai-packaging-mockup.mjs      |     2 +-
+ editorial/scripts/wave2/133-muse-image-guide.mjs   |     2 +-
+ .../scripts/wave2/81-seedream-5-pro-guide.mjs      |     9 +-
+ .../wave2/98-upscale-restore-product-photo.mjs     |     2 +-
+ editorial/sources/verified-sources.md              |    19 +
+ editorial/watch.csv                                |     1 +
+ public/Images/howto-seedream-5-pro-guide.webp      |   Bin 0 -> 116780 bytes
+ src/data/engines.ts                                |     7 +-
+ src/data/howtos.ts                                 |    19 +
+ src/i18n/dict/fr/common.json                       |    11 +-
+ src/i18n/dict/fr/pages/app/create.json             |     4 +-
+ src/i18n/dict/fr/pages/app/engines.json            |     7 +-
+ src/i18n/dict/fr/pages/help/create-an-image.json   |     1 -
+ src/i18n/dict/fr/pages/resources/how-to.json       |     6 +-
+ .../chatgpt-image-2-product-prompting-guide.json   |     7 +-
+ .../holiday-visuals-from-product-photos.json       |     2 -
+ .../how-to/nano-banana-prompting-guide.json        |     1 -
+ .../how-to/product-photo-to-lifestyle-image.json   |     5 +-
+ .../how-to/readable-text-in-ai-images.json         |     1 -
+ .../resources/how-to/seedream-5-pro-guide.json     |   131 +
+ .../resources/insights/linkedin-post-specs.json    |     1 -
+ .../insights/what-aigc-production-actually-is.json |     1 -
+ .../resources/insights/x-image-video-specs.json    |     1 -
+ src/i18n/dict/zh/common.json                       |    11 +-
+ src/i18n/dict/zh/pages/app/create.json             |     4 +-
+ src/i18n/dict/zh/pages/app/engines.json            |     7 +-
+ src/i18n/dict/zh/pages/help/create-an-image.json   |     1 -
+ src/i18n/dict/zh/pages/resources/how-to.json       |     6 +-
+ .../chatgpt-image-2-product-prompting-guide.json   |     7 +-
+ .../holiday-visuals-from-product-photos.json       |     2 -
+ .../how-to/nano-banana-prompting-guide.json        |     1 -
+ .../how-to/product-photo-to-lifestyle-image.json   |     5 +-
+ .../how-to/readable-text-in-ai-images.json         |     1 -
+ .../resources/how-to/seedream-5-pro-guide.json     |   131 +
+ .../resources/insights/linkedin-post-specs.json    |     1 -
+ .../insights/what-aigc-production-actually-is.json |     1 -
+ .../resources/insights/x-image-video-specs.json    |     1 -
+ src/i18n/routes.ts                                 |     1 +
+ src/pages/app/create.astro                         |     2 +-
+ src/pages/app/engines.astro                        |     2 +-
+ .../chatgpt-image-2-product-prompting-guide.astro  |     4 +-
+ .../how-to/product-photo-to-lifestyle-image.astro  |     2 +-
+ .../resources/how-to/seedream-5-pro-guide.astro    |   341 +
+ 68 files changed, 22868 insertions(+), 74 deletions(-)
+
+
+diff --git a/.i18n-work/fill-release-translations.cjs b/.i18n-work/fill-release-translations.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..24731addba8e8cbc25bb235e1c6616a5a1b1314e
+--- /dev/null
++++ b/.i18n-work/fill-release-translations.cjs
+@@ -0,0 +1,29 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
++let filled = 0;
++const missing = [];
++for (const locale of ['fr', 'zh']) {
++  const sourceRoot = path.join(root,'src/i18n/dict',locale);
++  const targetRoot = path.join(release,'src/i18n/dict',locale);
++  const shared = JSON.parse(fs.readFileSync(path.join(sourceRoot,'common.json'),'utf8'));
++  for (const file of walk(targetRoot).filter(f => f.endsWith('.json'))) {
++    const target = JSON.parse(fs.readFileSync(file,'utf8'));
++    const sourceFile = path.join(sourceRoot,path.relative(targetRoot,file));
++    const source = fs.existsSync(sourceFile) ? JSON.parse(fs.readFileSync(sourceFile,'utf8')) : {};
++    let count = 0;
++    for (const [key,value] of Object.entries(target)) {
++      if (value && path.relative(targetRoot,file).replaceAll('\\','/') !== 'pages/resources/how-to/seedream-5-pro-guide.json') continue;
++      const translated = source[key] || shared[key];
++      if (!translated) { missing.push(`${locale}/${path.relative(targetRoot,file)}: ${key.slice(0,80)}`); continue; }
++      target[key] = translated;
++      count++;
++    }
++    if (count) fs.writeFileSync(file,JSON.stringify(target,null,2)+'\n');
++    filled += count;
++  }
++}
++console.log(`Copied ${filled} translated entries required by the isolated release.`);
++if (missing.length) {console.error(missing.join('\n'));process.exit(1);}
+diff --git a/.i18n-work/finalize-publish-copy.cjs b/.i18n-work/finalize-publish-copy.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..94a95d246f4c5ccc6e117f35b11ea0b6a062b427
+--- /dev/null
++++ b/.i18n-work/finalize-publish-copy.cjs
+@@ -0,0 +1,33 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const before = 'which is 2,048 pixels square';
++const after = 'enough for a 2,048-pixel square';
++for (const base of [root, release]) {
++  for (const relative of ['editorial/output/seedream-5-pro-guide.md','src/pages/resources/how-to/seedream-5-pro-guide.astro']) {
++    const file = path.join(base, relative);
++    const value = fs.readFileSync(file,'utf8');
++    if (!value.includes(before)) throw new Error('Missing expected sentence in '+file);
++    fs.writeFileSync(file,value.replace(before,after));
++  }
++  for (const locale of ['fr','zh']) {
++    const file = path.join(base,'src/i18n/dict',locale,'pages/resources/how-to/seedream-5-pro-guide.json');
++    const dict = JSON.parse(fs.readFileSync(file,'utf8'));
++    const result = Object.fromEntries(Object.entries(dict).map(([k,v])=>[k.replace(before,after),v]));
++    fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');
++  }
++}
++fs.copyFileSync(path.join(root,'editorial/research/seedream-5-pro-guide.md'),path.join(release,'editorial/research/seedream-5-pro-guide.md'));
++const ids = ['common','resources/how-to','resources/how-to/seedream-5-pro-guide','app/create','app/engines','resources/how-to/chatgpt-image-2-product-prompting-guide','resources/how-to/product-photo-to-lifestyle-image'];
++let log = '\n## Publication translation review: seedream-5-pro-guide\n\n';
++for (const locale of ['fr','zh']) {
++  for (const id of ids) {
++    const source = path.join(__dirname,'passes',locale,id,'changes.md');
++    if (!fs.existsSync(source)) throw new Error('Missing pass summary '+source);
++    log += `\n### ${locale}: ${id}\n\n`+fs.readFileSync(source,'utf8')+'\n';
++  }
++}
++fs.appendFileSync(path.join(root,'editorial/logs/runs/2026-10-21-publish.txt'),log);
++fs.appendFileSync(path.join(root,'editorial/logs/2026-10-21.md'),log);
++console.log('Corrected the numerical relationship in draft/page and both dictionary keys; copied all 14 translation summaries into both run logs.');
+diff --git a/.i18n-work/stage-publish-release.cjs b/.i18n-work/stage-publish-release.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..792dfbf1c407a8b8456bc3297da0c46b74da6d1f
+--- /dev/null
++++ b/.i18n-work/stage-publish-release.cjs
+@@ -0,0 +1,22 @@
++const fs=require('fs'),path=require('path'),cp=require('child_process');
++const root=path.resolve(__dirname,'..');
++const release=path.join(__dirname,'publish-2026-10-21-release');
++const run=(args,cwd=root,extra={})=>cp.execFileSync('git',args,{cwd,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024,...extra});
++if(run(['diff','--cached','--name-only']).trim())throw Error('Primary index already contains changes');
++if(run(['rev-parse','HEAD']).trim()!==run(['rev-parse','HEAD'],release).trim())throw Error('Checkout heads differ');
++const files=JSON.parse(fs.readFileSync(path.join(__dirname,'publish-2026-10-21-files.json'),'utf8'));
++for(const name of fs.readdirSync(path.join(root,'editorial/logs/runs')).filter(n=>n.startsWith('2026-10-21-')))files.push('editorial/logs/runs/'+name);
++for(const file of files.filter(f=>f.startsWith('editorial/logs/')||f==='editorial/schedule.csv')){
++  const dest=path.join(release,file);fs.mkdirSync(path.dirname(dest),{recursive:true});
++  let content=fs.readFileSync(path.join(root,file));
++  if(file.startsWith('editorial/logs/')&&!file.includes('.prompt.'))content=Buffer.from(content.toString('utf8').replaceAll(String.fromCharCode(0x2014),' - ').replace(/\r\n?/g,'\n').replace(/[ \t]+$/gm,'').trimEnd()+'\n');
++  fs.writeFileSync(dest,content);
++}
++run(['add','--',...files,'src/i18n/routes.ts','src/i18n/dict'],release);
++run(['diff','--cached','--check','--','.',':(exclude)editorial/research/seedream-5-pro-guide'],release);
++const patch=run(['diff','--cached','--binary','--full-index'],release,{encoding:'buffer'});
++run(['apply','--cached','--whitespace=nowarn','-'],root,{input:patch});
++const a=run(['write-tree']).trim(),b=run(['write-tree'],release).trim();
++if(a!==b)throw Error('Staged release trees differ');
++console.log('Primary main index matches the validated release tree: '+a);
++console.log(run(['diff','--cached','--stat']));
+diff --git a/.i18n-work/verify-publish-output.cjs b/.i18n-work/verify-publish-output.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f66476de78ee
+--- /dev/null
++++ b/.i18n-work/verify-publish-output.cjs
+@@ -0,0 +1,38 @@
++const fs = require('fs');
++const path = require('path');
++const {parse} = require('node-html-parser');
++const base = path.join(__dirname,'publish-2026-10-21-release','.vercel/output/static');
++const slug = 'seedream-5-pro-guide';
++const routes = [
++  ['en',`/resources/how-to/${slug}`],
++  ['fr','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit'],
++  ['zh',`/zh/resources/how-to/${slug}`],
++];
++const check = (condition,message) => {if (!condition) throw new Error(message);};
++for(const [locale,route] of routes){
++  const file=path.join(base,route,'index.html');
++  check(fs.existsSync(file),'Missing output '+file);
++  const source=fs.readFileSync(file,'utf8');
++  const html=parse(source);
++  const h1=html.querySelector('h1')?.textContent;
++  check(!!h1,'Missing heading '+locale);
++  check(html.querySelector('link[rel="canonical"]')?.getAttribute('href')==='https://www.hubstudio.ai'+route,'Wrong canonical '+locale);
++  for(const lang of ['en','fr','zh-CN'])check(html.querySelector(`link[hreflang="${lang}"]`),'Missing alternate '+lang+' '+locale);
++  check(source.includes(`/Images/howto-${slug}.webp`),'Hero missing '+locale);
++  const shot='/Images/help/create-an-image-studio'+(locale==='en'?'':'.'+locale)+'.webp';
++  check(source.includes(shot),'Wrong capture '+locale);
++  check(!/\b(?:TODO|FIXME|TBD|TKTK)\b/.test(html.querySelector('main')?.textContent||''),'Unclosed content marker '+locale);
++  if(locale!=='en')check(!source.includes('No. Its ceiling is about 4.6 megapixels'),'Untranslated body '+locale);
++  console.log(`${locale}: built page, native H1 (${h1}), canonical, three language alternates, hero and localized capture verified`);
++}
++for(const [locale,feed] of [['en','resources/rss.xml'],['fr','fr/ressources/rss.xml'],['zh','zh/resources/rss.xml']]){
++  const text=fs.readFileSync(path.join(base,feed),'utf8');
++  const route=routes.find(x=>x[0]===locale)[1];
++  check(text.includes('https://www.hubstudio.ai'+route),'Missing RSS entry '+locale);
++  console.log(`${locale}: resource RSS entry verified`);
++}
++const index=fs.readFileSync(path.join(base,'resources/how-to/index.html'),'utf8');
++check(index.indexOf('/resources/how-to/'+slug)>0,'Guide absent from index');
++const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
++for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
++console.log('How-to index and all three sitemap URLs verified.');
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+const fs=require('fs'),cp=require('child_process');const files=cp.execFileSync('git',['diff','--cached','--name-only'],{encoding:'utf8'}).trim().split('\\n');
+let bad=[];for(const p of files){if(p.endsWith('.webp'))continue;const text=cp.execFileSync('git',['show',':'+p],{encoding:'utf8',maxBuffer:16*1024*1024});if(text.includes(String.fromCharCode(0x2014)))bad.push(p);}
+if(bad.length)throw Error('Long dashes in staged files: '+bad.join(', '));
+fs.copyFileSync('.i18n-work/publish-2026-10-21-release/editorial/logs/2026-10-21.md','editorial/logs/2026-10-21.md');
+console.log('All '+files.length+' staged files pass the long-dash scan; isolated release tree matched before the image hook.');
+'@ | node
+git commit -m 'feat(insights): publish seedream-5-pro-guide'" in C:\Users\cyril\Project\hubstudio
+ succeeded in 4939ms:
+All 68 staged files pass the long-dash scan; isolated release tree matched before the image hook.
+[pre-commit] optimizing 1 image(s)...
+Scanning: public\Images\howto-seedream-5-pro-guide.webp  (max-width=2000, min-size=30 KB)
+  public\Images\howto-seedream-5-pro-guide.webp  114.0 KB -> 94.8 KB  (-17%)
+
+Done: 1 optimized, 0 kept (no gain), 0 skipped, 0 errored.
+Total: 114.0 KB -> 94.8 KB  (19.3 KB saved, -16.9%)
+[main f43cce7] feat(insights): publish seedream-5-pro-guide
+ 68 files changed, 22868 insertions(+), 74 deletions(-)
+ create mode 100644 editorial/logs/2026-10-21.md
+ create mode 100644 editorial/logs/runs/2026-10-21-draft.prompt.txt
+ create mode 100644 editorial/logs/runs/2026-10-21-draft.prompt.txt.context.json
+ create mode 100644 editorial/logs/runs/2026-10-21-draft.txt
+ create mode 100644 editorial/logs/runs/2026-10-21-publish.prompt.txt
+ create mode 100644 editorial/logs/runs/2026-10-21-publish.prompt.txt.context.json
+ create mode 100644 editorial/logs/runs/2026-10-21-publish.txt
+ create mode 100644 editorial/output/seedream-5-pro-guide.md
+ create mode 100644 editorial/research/seedream-5-pro-guide.md
+ create mode 100644 editorial/research/seedream-5-pro-guide/launch.txt
+ create mode 100644 editorial/research/seedream-5-pro-guide/model45.txt
+ create mode 100644 editorial/research/seedream-5-pro-guide/model50pro.txt
+ create mode 100644 editorial/research/seedream-5-pro-guide/test-renders-2026-10-21.txt
+ create mode 100644 editorial/research/seedream-5-pro-guide/volc-image-api.txt
+ create mode 100644 editorial/research/seedream-5-pro-guide/volc-prompt-guide.txt
+ create mode 100644 editorial/research/seedream-5-pro-guide/volc-tutorial.txt
+ create mode 100644 public/Images/howto-seedream-5-pro-guide.webp
+ create mode 100644 src/i18n/dict/fr/pages/resources/how-to/seedream-5-pro-guide.json
+ create mode 100644 src/i18n/dict/zh/pages/resources/how-to/seedream-5-pro-guide.json
+ create mode 100644 src/pages/resources/how-to/seedream-5-pro-guide.astro
+
+diff --git a/.i18n-work/fill-release-translations.cjs b/.i18n-work/fill-release-translations.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..24731addba8e8cbc25bb235e1c6616a5a1b1314e
+--- /dev/null
++++ b/.i18n-work/fill-release-translations.cjs
+@@ -0,0 +1,29 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
++let filled = 0;
++const missing = [];
++for (const locale of ['fr', 'zh']) {
++  const sourceRoot = path.join(root,'src/i18n/dict',locale);
++  const targetRoot = path.join(release,'src/i18n/dict',locale);
++  const shared = JSON.parse(fs.readFileSync(path.join(sourceRoot,'common.json'),'utf8'));
++  for (const file of walk(targetRoot).filter(f => f.endsWith('.json'))) {
++    const target = JSON.parse(fs.readFileSync(file,'utf8'));
++    const sourceFile = path.join(sourceRoot,path.relative(targetRoot,file));
++    const source = fs.existsSync(sourceFile) ? JSON.parse(fs.readFileSync(sourceFile,'utf8')) : {};
++    let count = 0;
++    for (const [key,value] of Object.entries(target)) {
++      if (value && path.relative(targetRoot,file).replaceAll('\\','/') !== 'pages/resources/how-to/seedream-5-pro-guide.json') continue;
++      const translated = source[key] || shared[key];
++      if (!translated) { missing.push(`${locale}/${path.relative(targetRoot,file)}: ${key.slice(0,80)}`); continue; }
++      target[key] = translated;
++      count++;
++    }
++    if (count) fs.writeFileSync(file,JSON.stringify(target,null,2)+'\n');
++    filled += count;
++  }
++}
++console.log(`Copied ${filled} translated entries required by the isolated release.`);
++if (missing.length) {console.error(missing.join('\n'));process.exit(1);}
+diff --git a/.i18n-work/finalize-publish-copy.cjs b/.i18n-work/finalize-publish-copy.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..94a95d246f4c5ccc6e117f35b11ea0b6a062b427
+--- /dev/null
++++ b/.i18n-work/finalize-publish-copy.cjs
+@@ -0,0 +1,33 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const before = 'which is 2,048 pixels square';
++const after = 'enough for a 2,048-pixel square';
++for (const base of [root, release]) {
++  for (const relative of ['editorial/output/seedream-5-pro-guide.md','src/pages/resources/how-to/seedream-5-pro-guide.astro']) {
++    const file = path.join(base, relative);
++    const value = fs.readFileSync(file,'utf8');
++    if (!value.includes(before)) throw new Error('Missing expected sentence in '+file);
++    fs.writeFileSync(file,value.replace(before,after));
++  }
++  for (const locale of ['fr','zh']) {
++    const file = path.join(base,'src/i18n/dict',locale,'pages/resources/how-to/seedream-5-pro-guide.json');
++    const dict = JSON.parse(fs.readFileSync(file,'utf8'));
++    const result = Object.fromEntries(Object.entries(dict).map(([k,v])=>[k.replace(before,after),v]));
++    fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');
++  }
++}
++fs.copyFileSync(path.join(root,'editorial/research/seedream-5-pro-guide.md'),path.join(release,'editorial/research/seedream-5-pro-guide.md'));
++const ids = ['common','resources/how-to','resources/how-to/seedream-5-pro-guide','app/create','app/engines','resources/how-to/chatgpt-image-2-product-prompting-guide','resources/how-to/product-photo-to-lifestyle-image'];
++let log = '\n## Publication translation review: seedream-5-pro-guide\n\n';
++for (const locale of ['fr','zh']) {
++  for (const id of ids) {
++    const source = path.join(__dirname,'passes',locale,id,'changes.md');
++    if (!fs.existsSync(source)) throw new Error('Missing pass summary '+source);
++    log += `\n### ${locale}: ${id}\n\n`+fs.readFileSync(source,'utf8')+'\n';
++  }
++}
++fs.appendFileSync(path.join(root,'editorial/logs/runs/2026-10-21-publish.txt'),log);
++fs.appendFileSync(path.join(root,'editorial/logs/2026-10-21.md'),log);
++console.log('Corrected the numerical relationship in draft/page and both dictionary keys; copied all 14 translation summaries into both run logs.');
+diff --git a/.i18n-work/stage-publish-release.cjs b/.i18n-work/stage-publish-release.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..792dfbf1c407a8b8456bc3297da0c46b74da6d1f
+--- /dev/null
++++ b/.i18n-work/stage-publish-release.cjs
+@@ -0,0 +1,22 @@
++const fs=require('fs'),path=require('path'),cp=require('child_process');
++const root=path.resolve(__dirname,'..');
++const release=path.join(__dirname,'publish-2026-10-21-release');
++const run=(args,cwd=root,extra={})=>cp.execFileSync('git',args,{cwd,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024,...extra});
++if(run(['diff','--cached','--name-only']).trim())throw Error('Primary index already contains changes');
++if(run(['rev-parse','HEAD']).trim()!==run(['rev-parse','HEAD'],release).trim())throw Error('Checkout heads differ');
++const files=JSON.parse(fs.readFileSync(path.join(__dirname,'publish-2026-10-21-files.json'),'utf8'));
++for(const name of fs.readdirSync(path.join(root,'editorial/logs/runs')).filter(n=>n.startsWith('2026-10-21-')))files.push('editorial/logs/runs/'+name);
++for(const file of files.filter(f=>f.startsWith('editorial/logs/')||f==='editorial/schedule.csv')){
++  const dest=path.join(release,file);fs.mkdirSync(path.dirname(dest),{recursive:true});
++  let content=fs.readFileSync(path.join(root,file));
++  if(file.startsWith('editorial/logs/')&&!file.includes('.prompt.'))content=Buffer.from(content.toString('utf8').replaceAll(String.fromCharCode(0x2014),' - ').replace(/\r\n?/g,'\n').replace(/[ \t]+$/gm,'').trimEnd()+'\n');
++  fs.writeFileSync(dest,content);
++}
++run(['add','--',...files,'src/i18n/routes.ts','src/i18n/dict'],release);
++run(['diff','--cached','--check','--','.',':(exclude)editorial/research/seedream-5-pro-guide'],release);
++const patch=run(['diff','--cached','--binary','--full-index'],release,{encoding:'buffer'});
++run(['apply','--cached','--whitespace=nowarn','-'],root,{input:patch});
++const a=run(['write-tree']).trim(),b=run(['write-tree'],release).trim();
++if(a!==b)throw Error('Staged release trees differ');
++console.log('Primary main index matches the validated release tree: '+a);
++console.log(run(['diff','--cached','--stat']));
+diff --git a/.i18n-work/verify-publish-output.cjs b/.i18n-work/verify-publish-output.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f66476de78ee
+--- /dev/null
++++ b/.i18n-work/verify-publish-output.cjs
+@@ -0,0 +1,38 @@
++const fs = require('fs');
++const path = require('path');
++const {parse} = require('node-html-parser');
++const base = path.join(__dirname,'publish-2026-10-21-release','.vercel/output/static');
++const slug = 'seedream-5-pro-guide';
++const routes = [
++  ['en',`/resources/how-to/${slug}`],
++  ['fr','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit'],
++  ['zh',`/zh/resources/how-to/${slug}`],
++];
++const check = (condition,message) => {if (!condition) throw new Error(message);};
++for(const [locale,route] of routes){
++  const file=path.join(base,route,'index.html');
++  check(fs.existsSync(file),'Missing output '+file);
++  const source=fs.readFileSync(file,'utf8');
++  const html=parse(source);
++  const h1=html.querySelector('h1')?.textContent;
++  check(!!h1,'Missing heading '+locale);
++  check(html.querySelector('link[rel="canonical"]')?.getAttribute('href')==='https://www.hubstudio.ai'+route,'Wrong canonical '+locale);
++  for(const lang of ['en','fr','zh-CN'])check(html.querySelector(`link[hreflang="${lang}"]`),'Missing alternate '+lang+' '+locale);
++  check(source.includes(`/Images/howto-${slug}.webp`),'Hero missing '+locale);
++  const shot='/Images/help/create-an-image-studio'+(locale==='en'?'':'.'+locale)+'.webp';
++  check(source.includes(shot),'Wrong capture '+locale);
++  check(!/\b(?:TODO|FIXME|TBD|TKTK)\b/.test(html.querySelector('main')?.textContent||''),'Unclosed content marker '+locale);
++  if(locale!=='en')check(!source.includes('No. Its ceiling is about 4.6 megapixels'),'Untranslated body '+locale);
++  console.log(`${locale}: built page, native H1 (${h1}), canonical, three language alternates, hero and localized capture verified`);
++}
++for(const [locale,feed] of [['en','resources/rss.xml'],['fr','fr/ressources/rss.xml'],['zh','zh/resources/rss.xml']]){
++  const text=fs.readFileSync(path.join(base,feed),'utf8');
++  const route=routes.find(x=>x[0]===locale)[1];
++  check(text.includes('https://www.hubstudio.ai'+route),'Missing RSS entry '+locale);
++  console.log(`${locale}: resource RSS entry verified`);
++}
++const index=fs.readFileSync(path.join(base,'resources/how-to/index.html'),'utf8');
++check(index.indexOf('/resources/how-to/'+slug)>0,'Guide absent from index');
++const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
++for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
++console.log('How-to index and all three sitemap URLs verified.');
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'git push origin main; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; $publishCommit = git rev-parse HEAD; node editorial/scripts/notify-publish.mjs --slug seedream-5-pro-guide --title '"'Seedream 5.0 Pro Prompts for Product Images' --build passed --log editorial/logs/runs/2026-10-21-publish.txt --note \"Published in English, French and Chinese. Build, type check, full translation check and guard passed. Commit "'$publishCommit. The earlier local packaging failure was corrected before this release."; git rev-list --left-right --count HEAD...origin/main' in C:\Users\cyril\Project\hubstudio
+ succeeded in 5621ms:
+To github.com:Lyric71/hubstudio.git
+   5bd6c3a..f43cce7  main -> main
+Queued for the next editorial digest (C:\Users\cyril\Project\automation\outbox\pending\2026-10-20T20-20-24-058Z-hubstudio-vh1maq.json)
+0	0
+
+diff --git a/.i18n-work/fill-release-translations.cjs b/.i18n-work/fill-release-translations.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..24731addba8e8cbc25bb235e1c6616a5a1b1314e
+--- /dev/null
++++ b/.i18n-work/fill-release-translations.cjs
+@@ -0,0 +1,29 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
++let filled = 0;
++const missing = [];
++for (const locale of ['fr', 'zh']) {
++  const sourceRoot = path.join(root,'src/i18n/dict',locale);
++  const targetRoot = path.join(release,'src/i18n/dict',locale);
++  const shared = JSON.parse(fs.readFileSync(path.join(sourceRoot,'common.json'),'utf8'));
++  for (const file of walk(targetRoot).filter(f => f.endsWith('.json'))) {
++    const target = JSON.parse(fs.readFileSync(file,'utf8'));
++    const sourceFile = path.join(sourceRoot,path.relative(targetRoot,file));
++    const source = fs.existsSync(sourceFile) ? JSON.parse(fs.readFileSync(sourceFile,'utf8')) : {};
++    let count = 0;
++    for (const [key,value] of Object.entries(target)) {
++      if (value && path.relative(targetRoot,file).replaceAll('\\','/') !== 'pages/resources/how-to/seedream-5-pro-guide.json') continue;
++      const translated = source[key] || shared[key];
++      if (!translated) { missing.push(`${locale}/${path.relative(targetRoot,file)}: ${key.slice(0,80)}`); continue; }
++      target[key] = translated;
++      count++;
++    }
++    if (count) fs.writeFileSync(file,JSON.stringify(target,null,2)+'\n');
++    filled += count;
++  }
++}
++console.log(`Copied ${filled} translated entries required by the isolated release.`);
++if (missing.length) {console.error(missing.join('\n'));process.exit(1);}
+diff --git a/.i18n-work/finalize-publish-copy.cjs b/.i18n-work/finalize-publish-copy.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..94a95d246f4c5ccc6e117f35b11ea0b6a062b427
+--- /dev/null
++++ b/.i18n-work/finalize-publish-copy.cjs
+@@ -0,0 +1,33 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const before = 'which is 2,048 pixels square';
++const after = 'enough for a 2,048-pixel square';
++for (const base of [root, release]) {
++  for (const relative of ['editorial/output/seedream-5-pro-guide.md','src/pages/resources/how-to/seedream-5-pro-guide.astro']) {
++    const file = path.join(base, relative);
++    const value = fs.readFileSync(file,'utf8');
++    if (!value.includes(before)) throw new Error('Missing expected sentence in '+file);
++    fs.writeFileSync(file,value.replace(before,after));
++  }
++  for (const locale of ['fr','zh']) {
++    const file = path.join(base,'src/i18n/dict',locale,'pages/resources/how-to/seedream-5-pro-guide.json');
++    const dict = JSON.parse(fs.readFileSync(file,'utf8'));
++    const result = Object.fromEntries(Object.entries(dict).map(([k,v])=>[k.replace(before,after),v]));
++    fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');
++  }
++}
++fs.copyFileSync(path.join(root,'editorial/research/seedream-5-pro-guide.md'),path.join(release,'editorial/research/seedream-5-pro-guide.md'));
++const ids = ['common','resources/how-to','resources/how-to/seedream-5-pro-guide','app/create','app/engines','resources/how-to/chatgpt-image-2-product-prompting-guide','resources/how-to/product-photo-to-lifestyle-image'];
++let log = '\n## Publication translation review: seedream-5-pro-guide\n\n';
++for (const locale of ['fr','zh']) {
++  for (const id of ids) {
++    const source = path.join(__dirname,'passes',locale,id,'changes.md');
++    if (!fs.existsSync(source)) throw new Error('Missing pass summary '+source);
++    log += `\n### ${locale}: ${id}\n\n`+fs.readFileSync(source,'utf8')+'\n';
++  }
++}
++fs.appendFileSync(path.join(root,'editorial/logs/runs/2026-10-21-publish.txt'),log);
++fs.appendFileSync(path.join(root,'editorial/logs/2026-10-21.md'),log);
++console.log('Corrected the numerical relationship in draft/page and both dictionary keys; copied all 14 translation summaries into both run logs.');
+diff --git a/.i18n-work/stage-publish-release.cjs b/.i18n-work/stage-publish-release.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..792dfbf1c407a8b8456bc3297da0c46b74da6d1f
+--- /dev/null
++++ b/.i18n-work/stage-publish-release.cjs
+@@ -0,0 +1,22 @@
++const fs=require('fs'),path=require('path'),cp=require('child_process');
++const root=path.resolve(__dirname,'..');
++const release=path.join(__dirname,'publish-2026-10-21-release');
++const run=(args,cwd=root,extra={})=>cp.execFileSync('git',args,{cwd,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024,...extra});
++if(run(['diff','--cached','--name-only']).trim())throw Error('Primary index already contains changes');
++if(run(['rev-parse','HEAD']).trim()!==run(['rev-parse','HEAD'],release).trim())throw Error('Checkout heads differ');
++const files=JSON.parse(fs.readFileSync(path.join(__dirname,'publish-2026-10-21-files.json'),'utf8'));
++for(const name of fs.readdirSync(path.join(root,'editorial/logs/runs')).filter(n=>n.startsWith('2026-10-21-')))files.push('editorial/logs/runs/'+name);
++for(const file of files.filter(f=>f.startsWith('editorial/logs/')||f==='editorial/schedule.csv')){
++  const dest=path.join(release,file);fs.mkdirSync(path.dirname(dest),{recursive:true});
++  let content=fs.readFileSync(path.join(root,file));
++  if(file.startsWith('editorial/logs/')&&!file.includes('.prompt.'))content=Buffer.from(content.toString('utf8').replaceAll(String.fromCharCode(0x2014),' - ').replace(/\r\n?/g,'\n').replace(/[ \t]+$/gm,'').trimEnd()+'\n');
++  fs.writeFileSync(dest,content);
++}
++run(['add','--',...files,'src/i18n/routes.ts','src/i18n/dict'],release);
++run(['diff','--cached','--check','--','.',':(exclude)editorial/research/seedream-5-pro-guide'],release);
++const patch=run(['diff','--cached','--binary','--full-index'],release,{encoding:'buffer'});
++run(['apply','--cached','--whitespace=nowarn','-'],root,{input:patch});
++const a=run(['write-tree']).trim(),b=run(['write-tree'],release).trim();
++if(a!==b)throw Error('Staged release trees differ');
++console.log('Primary main index matches the validated release tree: '+a);
++console.log(run(['diff','--cached','--stat']));
+diff --git a/.i18n-work/verify-publish-output.cjs b/.i18n-work/verify-publish-output.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f66476de78ee
+--- /dev/null
++++ b/.i18n-work/verify-publish-output.cjs
+@@ -0,0 +1,38 @@
++const fs = require('fs');
++const path = require('path');
++const {parse} = require('node-html-parser');
++const base = path.join(__dirname,'publish-2026-10-21-release','.vercel/output/static');
++const slug = 'seedream-5-pro-guide';
++const routes = [
++  ['en',`/resources/how-to/${slug}`],
++  ['fr','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit'],
++  ['zh',`/zh/resources/how-to/${slug}`],
++];
++const check = (condition,message) => {if (!condition) throw new Error(message);};
++for(const [locale,route] of routes){
++  const file=path.join(base,route,'index.html');
++  check(fs.existsSync(file),'Missing output '+file);
++  const source=fs.readFileSync(file,'utf8');
++  const html=parse(source);
++  const h1=html.querySelector('h1')?.textContent;
++  check(!!h1,'Missing heading '+locale);
++  check(html.querySelector('link[rel="canonical"]')?.getAttribute('href')==='https://www.hubstudio.ai'+route,'Wrong canonical '+locale);
++  for(const lang of ['en','fr','zh-CN'])check(html.querySelector(`link[hreflang="${lang}"]`),'Missing alternate '+lang+' '+locale);
++  check(source.includes(`/Images/howto-${slug}.webp`),'Hero missing '+locale);
++  const shot='/Images/help/create-an-image-studio'+(locale==='en'?'':'.'+locale)+'.webp';
++  check(source.includes(shot),'Wrong capture '+locale);
++  check(!/\b(?:TODO|FIXME|TBD|TKTK)\b/.test(html.querySelector('main')?.textContent||''),'Unclosed content marker '+locale);
++  if(locale!=='en')check(!source.includes('No. Its ceiling is about 4.6 megapixels'),'Untranslated body '+locale);
++  console.log(`${locale}: built page, native H1 (${h1}), canonical, three language alternates, hero and localized capture verified`);
++}
++for(const [locale,feed] of [['en','resources/rss.xml'],['fr','fr/ressources/rss.xml'],['zh','zh/resources/rss.xml']]){
++  const text=fs.readFileSync(path.join(base,feed),'utf8');
++  const route=routes.find(x=>x[0]===locale)[1];
++  check(text.includes('https://www.hubstudio.ai'+route),'Missing RSS entry '+locale);
++  console.log(`${locale}: resource RSS entry verified`);
++}
++const index=fs.readFileSync(path.join(base,'resources/how-to/index.html'),'utf8');
++check(index.indexOf('/resources/how-to/'+slug)>0,'Guide absent from index');
++const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
++for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
++console.log('How-to index and all three sitemap URLs verified.');
+
+codex
+Commit `f43cce7` is pushed to `origin/main`, and the success notification is queued for the next editorial digest. I’m checking the deployed URLs and recording the final outcome. No other finished drafts or due watch entries remain.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+const paths=['/resources/how-to/seedream-5-pro-guide','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit','/zh/resources/how-to/seedream-5-pro-guide'];
+Promise.all(paths.map(async p=>{try{const r=await fetch('https://www.hubstudio.ai'+p,{signal:AbortSignal.timeout(25000)});const t=await r.text();console.log(JSON.stringify({path:p,status:r.status,seedream:t.includes('Seedream 5.0 Pro'),title:t.match(/<title>(.*?)<\\/title>/s)?.[1]}));}catch(e){console.log(JSON.stringify({path:p,error:e.message}));}}));
+'@ | node
+Import-Csv editorial/schedule.csv | Where-Object status -eq 'image_ready' | Select-Object brief_id,output_file
+Import-Csv editorial/watch.csv | Where-Object { "'$_.due_date -le '"'2026-10-21' } | Select-Object due_date,slug" in C:\Users\cyril\Project\hubstudio
+ succeeded in 2547ms:
+{"path":"/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit","status":404,"seedream":false,"title":"Page not found | hubStudio"}
+{"path":"/zh/resources/how-to/seedream-5-pro-guide","status":404,"seedream":false,"title":"Page not found | hubStudio"}
+{"path":"/resources/how-to/seedream-5-pro-guide","status":404,"seedream":false,"title":"Page not found | hubStudio"}
+
+diff --git a/.i18n-work/fill-release-translations.cjs b/.i18n-work/fill-release-translations.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..24731addba8e8cbc25bb235e1c6616a5a1b1314e
+--- /dev/null
++++ b/.i18n-work/fill-release-translations.cjs
+@@ -0,0 +1,29 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
++let filled = 0;
++const missing = [];
++for (const locale of ['fr', 'zh']) {
++  const sourceRoot = path.join(root,'src/i18n/dict',locale);
++  const targetRoot = path.join(release,'src/i18n/dict',locale);
++  const shared = JSON.parse(fs.readFileSync(path.join(sourceRoot,'common.json'),'utf8'));
++  for (const file of walk(targetRoot).filter(f => f.endsWith('.json'))) {
++    const target = JSON.parse(fs.readFileSync(file,'utf8'));
++    const sourceFile = path.join(sourceRoot,path.relative(targetRoot,file));
++    const source = fs.existsSync(sourceFile) ? JSON.parse(fs.readFileSync(sourceFile,'utf8')) : {};
++    let count = 0;
++    for (const [key,value] of Object.entries(target)) {
++      if (value && path.relative(targetRoot,file).replaceAll('\\','/') !== 'pages/resources/how-to/seedream-5-pro-guide.json') continue;
++      const translated = source[key] || shared[key];
++      if (!translated) { missing.push(`${locale}/${path.relative(targetRoot,file)}: ${key.slice(0,80)}`); continue; }
++      target[key] = translated;
++      count++;
++    }
++    if (count) fs.writeFileSync(file,JSON.stringify(target,null,2)+'\n');
++    filled += count;
++  }
++}
++console.log(`Copied ${filled} translated entries required by the isolated release.`);
++if (missing.length) {console.error(missing.join('\n'));process.exit(1);}
+diff --git a/.i18n-work/finalize-publish-copy.cjs b/.i18n-work/finalize-publish-copy.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..94a95d246f4c5ccc6e117f35b11ea0b6a062b427
+--- /dev/null
++++ b/.i18n-work/finalize-publish-copy.cjs
+@@ -0,0 +1,33 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const before = 'which is 2,048 pixels square';
++const after = 'enough for a 2,048-pixel square';
++for (const base of [root, release]) {
++  for (const relative of ['editorial/output/seedream-5-pro-guide.md','src/pages/resources/how-to/seedream-5-pro-guide.astro']) {
++    const file = path.join(base, relative);
++    const value = fs.readFileSync(file,'utf8');
++    if (!value.includes(before)) throw new Error('Missing expected sentence in '+file);
++    fs.writeFileSync(file,value.replace(before,after));
++  }
++  for (const locale of ['fr','zh']) {
++    const file = path.join(base,'src/i18n/dict',locale,'pages/resources/how-to/seedream-5-pro-guide.json');
++    const dict = JSON.parse(fs.readFileSync(file,'utf8'));
++    const result = Object.fromEntries(Object.entries(dict).map(([k,v])=>[k.replace(before,after),v]));
++    fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');
++  }
++}
++fs.copyFileSync(path.join(root,'editorial/research/seedream-5-pro-guide.md'),path.join(release,'editorial/research/seedream-5-pro-guide.md'));
++const ids = ['common','resources/how-to','resources/how-to/seedream-5-pro-guide','app/create','app/engines','resources/how-to/chatgpt-image-2-product-prompting-guide','resources/how-to/product-photo-to-lifestyle-image'];
++let log = '\n## Publication translation review: seedream-5-pro-guide\n\n';
++for (const locale of ['fr','zh']) {
++  for (const id of ids) {
++    const source = path.join(__dirname,'passes',locale,id,'changes.md');
++    if (!fs.existsSync(source)) throw new Error('Missing pass summary '+source);
++    log += `\n### ${locale}: ${id}\n\n`+fs.readFileSync(source,'utf8')+'\n';
++  }
++}
++fs.appendFileSync(path.join(root,'editorial/logs/runs/2026-10-21-publish.txt'),log);
++fs.appendFileSync(path.join(root,'editorial/logs/2026-10-21.md'),log);
++console.log('Corrected the numerical relationship in draft/page and both dictionary keys; copied all 14 translation summaries into both run logs.');
+diff --git a/.i18n-work/stage-publish-release.cjs b/.i18n-work/stage-publish-release.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..792dfbf1c407a8b8456bc3297da0c46b74da6d1f
+--- /dev/null
++++ b/.i18n-work/stage-publish-release.cjs
+@@ -0,0 +1,22 @@
++const fs=require('fs'),path=require('path'),cp=require('child_process');
++const root=path.resolve(__dirname,'..');
++const release=path.join(__dirname,'publish-2026-10-21-release');
++const run=(args,cwd=root,extra={})=>cp.execFileSync('git',args,{cwd,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024,...extra});
++if(run(['diff','--cached','--name-only']).trim())throw Error('Primary index already contains changes');
++if(run(['rev-parse','HEAD']).trim()!==run(['rev-parse','HEAD'],release).trim())throw Error('Checkout heads differ');
++const files=JSON.parse(fs.readFileSync(path.join(__dirname,'publish-2026-10-21-files.json'),'utf8'));
++for(const name of fs.readdirSync(path.join(root,'editorial/logs/runs')).filter(n=>n.startsWith('2026-10-21-')))files.push('editorial/logs/runs/'+name);
++for(const file of files.filter(f=>f.startsWith('editorial/logs/')||f==='editorial/schedule.csv')){
++  const dest=path.join(release,file);fs.mkdirSync(path.dirname(dest),{recursive:true});
++  let content=fs.readFileSync(path.join(root,file));
++  if(file.startsWith('editorial/logs/')&&!file.includes('.prompt.'))content=Buffer.from(content.toString('utf8').replaceAll(String.fromCharCode(0x2014),' - ').replace(/\r\n?/g,'\n').replace(/[ \t]+$/gm,'').trimEnd()+'\n');
++  fs.writeFileSync(dest,content);
++}
++run(['add','--',...files,'src/i18n/routes.ts','src/i18n/dict'],release);
++run(['diff','--cached','--check','--','.',':(exclude)editorial/research/seedream-5-pro-guide'],release);
++const patch=run(['diff','--cached','--binary','--full-index'],release,{encoding:'buffer'});
++run(['apply','--cached','--whitespace=nowarn','-'],root,{input:patch});
++const a=run(['write-tree']).trim(),b=run(['write-tree'],release).trim();
++if(a!==b)throw Error('Staged release trees differ');
++console.log('Primary main index matches the validated release tree: '+a);
++console.log(run(['diff','--cached','--stat']));
+diff --git a/.i18n-work/verify-publish-output.cjs b/.i18n-work/verify-publish-output.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f66476de78ee
+--- /dev/null
++++ b/.i18n-work/verify-publish-output.cjs
+@@ -0,0 +1,38 @@
++const fs = require('fs');
++const path = require('path');
++const {parse} = require('node-html-parser');
++const base = path.join(__dirname,'publish-2026-10-21-release','.vercel/output/static');
++const slug = 'seedream-5-pro-guide';
++const routes = [
++  ['en',`/resources/how-to/${slug}`],
++  ['fr','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit'],
++  ['zh',`/zh/resources/how-to/${slug}`],
++];
++const check = (condition,message) => {if (!condition) throw new Error(message);};
++for(const [locale,route] of routes){
++  const file=path.join(base,route,'index.html');
++  check(fs.existsSync(file),'Missing output '+file);
++  const source=fs.readFileSync(file,'utf8');
++  const html=parse(source);
++  const h1=html.querySelector('h1')?.textContent;
++  check(!!h1,'Missing heading '+locale);
++  check(html.querySelector('link[rel="canonical"]')?.getAttribute('href')==='https://www.hubstudio.ai'+route,'Wrong canonical '+locale);
++  for(const lang of ['en','fr','zh-CN'])check(html.querySelector(`link[hreflang="${lang}"]`),'Missing alternate '+lang+' '+locale);
++  check(source.includes(`/Images/howto-${slug}.webp`),'Hero missing '+locale);
++  const shot='/Images/help/create-an-image-studio'+(locale==='en'?'':'.'+locale)+'.webp';
++  check(source.includes(shot),'Wrong capture '+locale);
++  check(!/\b(?:TODO|FIXME|TBD|TKTK)\b/.test(html.querySelector('main')?.textContent||''),'Unclosed content marker '+locale);
++  if(locale!=='en')check(!source.includes('No. Its ceiling is about 4.6 megapixels'),'Untranslated body '+locale);
++  console.log(`${locale}: built page, native H1 (${h1}), canonical, three language alternates, hero and localized capture verified`);
++}
++for(const [locale,feed] of [['en','resources/rss.xml'],['fr','fr/ressources/rss.xml'],['zh','zh/resources/rss.xml']]){
++  const text=fs.readFileSync(path.join(base,feed),'utf8');
++  const route=routes.find(x=>x[0]===locale)[1];
++  check(text.includes('https://www.hubstudio.ai'+route),'Missing RSS entry '+locale);
++  console.log(`${locale}: resource RSS entry verified`);
++}
++const index=fs.readFileSync(path.join(base,'resources/how-to/index.html'),'utf8');
++check(index.indexOf('/resources/how-to/'+slug)>0,'Guide absent from index');
++const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
++for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
++console.log('How-to index and all three sitemap URLs verified.');
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "gh api repos/Lyric71/hubstudio/commits/f43cce7/status --jq '{state: .state, statuses: [.statuses[] | {context, state, description, target_url}]}'" in C:\Users\cyril\Project\hubstudio
+ exited 1 in 367ms:
+To get started with GitHub CLI, please run:  gh auth login
+Alternatively, populate the GH_TOKEN environment variable with a GitHub API authentication token.
+
+diff --git a/.i18n-work/fill-release-translations.cjs b/.i18n-work/fill-release-translations.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..24731addba8e8cbc25bb235e1c6616a5a1b1314e
+--- /dev/null
++++ b/.i18n-work/fill-release-translations.cjs
+@@ -0,0 +1,29 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
++let filled = 0;
++const missing = [];
++for (const locale of ['fr', 'zh']) {
++  const sourceRoot = path.join(root,'src/i18n/dict',locale);
++  const targetRoot = path.join(release,'src/i18n/dict',locale);
++  const shared = JSON.parse(fs.readFileSync(path.join(sourceRoot,'common.json'),'utf8'));
++  for (const file of walk(targetRoot).filter(f => f.endsWith('.json'))) {
++    const target = JSON.parse(fs.readFileSync(file,'utf8'));
++    const sourceFile = path.join(sourceRoot,path.relative(targetRoot,file));
++    const source = fs.existsSync(sourceFile) ? JSON.parse(fs.readFileSync(sourceFile,'utf8')) : {};
++    let count = 0;
++    for (const [key,value] of Object.entries(target)) {
++      if (value && path.relative(targetRoot,file).replaceAll('\\','/') !== 'pages/resources/how-to/seedream-5-pro-guide.json') continue;
++      const translated = source[key] || shared[key];
++      if (!translated) { missing.push(`${locale}/${path.relative(targetRoot,file)}: ${key.slice(0,80)}`); continue; }
++      target[key] = translated;
++      count++;
++    }
++    if (count) fs.writeFileSync(file,JSON.stringify(target,null,2)+'\n');
++    filled += count;
++  }
++}
++console.log(`Copied ${filled} translated entries required by the isolated release.`);
++if (missing.length) {console.error(missing.join('\n'));process.exit(1);}
+diff --git a/.i18n-work/finalize-publish-copy.cjs b/.i18n-work/finalize-publish-copy.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..94a95d246f4c5ccc6e117f35b11ea0b6a062b427
+--- /dev/null
++++ b/.i18n-work/finalize-publish-copy.cjs
+@@ -0,0 +1,33 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const before = 'which is 2,048 pixels square';
++const after = 'enough for a 2,048-pixel square';
++for (const base of [root, release]) {
++  for (const relative of ['editorial/output/seedream-5-pro-guide.md','src/pages/resources/how-to/seedream-5-pro-guide.astro']) {
++    const file = path.join(base, relative);
++    const value = fs.readFileSync(file,'utf8');
++    if (!value.includes(before)) throw new Error('Missing expected sentence in '+file);
++    fs.writeFileSync(file,value.replace(before,after));
++  }
++  for (const locale of ['fr','zh']) {
++    const file = path.join(base,'src/i18n/dict',locale,'pages/resources/how-to/seedream-5-pro-guide.json');
++    const dict = JSON.parse(fs.readFileSync(file,'utf8'));
++    const result = Object.fromEntries(Object.entries(dict).map(([k,v])=>[k.replace(before,after),v]));
++    fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');
++  }
++}
++fs.copyFileSync(path.join(root,'editorial/research/seedream-5-pro-guide.md'),path.join(release,'editorial/research/seedream-5-pro-guide.md'));
++const ids = ['common','resources/how-to','resources/how-to/seedream-5-pro-guide','app/create','app/engines','resources/how-to/chatgpt-image-2-product-prompting-guide','resources/how-to/product-photo-to-lifestyle-image'];
++let log = '\n## Publication translation review: seedream-5-pro-guide\n\n';
++for (const locale of ['fr','zh']) {
++  for (const id of ids) {
++    const source = path.join(__dirname,'passes',locale,id,'changes.md');
++    if (!fs.existsSync(source)) throw new Error('Missing pass summary '+source);
++    log += `\n### ${locale}: ${id}\n\n`+fs.readFileSync(source,'utf8')+'\n';
++  }
++}
++fs.appendFileSync(path.join(root,'editorial/logs/runs/2026-10-21-publish.txt'),log);
++fs.appendFileSync(path.join(root,'editorial/logs/2026-10-21.md'),log);
++console.log('Corrected the numerical relationship in draft/page and both dictionary keys; copied all 14 translation summaries into both run logs.');
+diff --git a/.i18n-work/stage-publish-release.cjs b/.i18n-work/stage-publish-release.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..792dfbf1c407a8b8456bc3297da0c46b74da6d1f
+--- /dev/null
++++ b/.i18n-work/stage-publish-release.cjs
+@@ -0,0 +1,22 @@
++const fs=require('fs'),path=require('path'),cp=require('child_process');
++const root=path.resolve(__dirname,'..');
++const release=path.join(__dirname,'publish-2026-10-21-release');
++const run=(args,cwd=root,extra={})=>cp.execFileSync('git',args,{cwd,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024,...extra});
++if(run(['diff','--cached','--name-only']).trim())throw Error('Primary index already contains changes');
++if(run(['rev-parse','HEAD']).trim()!==run(['rev-parse','HEAD'],release).trim())throw Error('Checkout heads differ');
++const files=JSON.parse(fs.readFileSync(path.join(__dirname,'publish-2026-10-21-files.json'),'utf8'));
++for(const name of fs.readdirSync(path.join(root,'editorial/logs/runs')).filter(n=>n.startsWith('2026-10-21-')))files.push('editorial/logs/runs/'+name);
++for(const file of files.filter(f=>f.startsWith('editorial/logs/')||f==='editorial/schedule.csv')){
++  const dest=path.join(release,file);fs.mkdirSync(path.dirname(dest),{recursive:true});
++  let content=fs.readFileSync(path.join(root,file));
++  if(file.startsWith('editorial/logs/')&&!file.includes('.prompt.'))content=Buffer.from(content.toString('utf8').replaceAll(String.fromCharCode(0x2014),' - ').replace(/\r\n?/g,'\n').replace(/[ \t]+$/gm,'').trimEnd()+'\n');
++  fs.writeFileSync(dest,content);
++}
++run(['add','--',...files,'src/i18n/routes.ts','src/i18n/dict'],release);
++run(['diff','--cached','--check','--','.',':(exclude)editorial/research/seedream-5-pro-guide'],release);
++const patch=run(['diff','--cached','--binary','--full-index'],release,{encoding:'buffer'});
++run(['apply','--cached','--whitespace=nowarn','-'],root,{input:patch});
++const a=run(['write-tree']).trim(),b=run(['write-tree'],release).trim();
++if(a!==b)throw Error('Staged release trees differ');
++console.log('Primary main index matches the validated release tree: '+a);
++console.log(run(['diff','--cached','--stat']));
+diff --git a/.i18n-work/verify-publish-output.cjs b/.i18n-work/verify-publish-output.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f66476de78ee
+--- /dev/null
++++ b/.i18n-work/verify-publish-output.cjs
+@@ -0,0 +1,38 @@
++const fs = require('fs');
++const path = require('path');
++const {parse} = require('node-html-parser');
++const base = path.join(__dirname,'publish-2026-10-21-release','.vercel/output/static');
++const slug = 'seedream-5-pro-guide';
++const routes = [
++  ['en',`/resources/how-to/${slug}`],
++  ['fr','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit'],
++  ['zh',`/zh/resources/how-to/${slug}`],
++];
++const check = (condition,message) => {if (!condition) throw new Error(message);};
++for(const [locale,route] of routes){
++  const file=path.join(base,route,'index.html');
++  check(fs.existsSync(file),'Missing output '+file);
++  const source=fs.readFileSync(file,'utf8');
++  const html=parse(source);
++  const h1=html.querySelector('h1')?.textContent;
++  check(!!h1,'Missing heading '+locale);
++  check(html.querySelector('link[rel="canonical"]')?.getAttribute('href')==='https://www.hubstudio.ai'+route,'Wrong canonical '+locale);
++  for(const lang of ['en','fr','zh-CN'])check(html.querySelector(`link[hreflang="${lang}"]`),'Missing alternate '+lang+' '+locale);
++  check(source.includes(`/Images/howto-${slug}.webp`),'Hero missing '+locale);
++  const shot='/Images/help/create-an-image-studio'+(locale==='en'?'':'.'+locale)+'.webp';
++  check(source.includes(shot),'Wrong capture '+locale);
++  check(!/\b(?:TODO|FIXME|TBD|TKTK)\b/.test(html.querySelector('main')?.textContent||''),'Unclosed content marker '+locale);
++  if(locale!=='en')check(!source.includes('No. Its ceiling is about 4.6 megapixels'),'Untranslated body '+locale);
++  console.log(`${locale}: built page, native H1 (${h1}), canonical, three language alternates, hero and localized capture verified`);
++}
++for(const [locale,feed] of [['en','resources/rss.xml'],['fr','fr/ressources/rss.xml'],['zh','zh/resources/rss.xml']]){
++  const text=fs.readFileSync(path.join(base,feed),'utf8');
++  const route=routes.find(x=>x[0]===locale)[1];
++  check(text.includes('https://www.hubstudio.ai'+route),'Missing RSS entry '+locale);
++  console.log(`${locale}: resource RSS entry verified`);
++}
++const index=fs.readFileSync(path.join(base,'resources/how-to/index.html'),'utf8');
++check(index.indexOf('/resources/how-to/'+slug)>0,'Guide absent from index');
++const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
++for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
++console.log('How-to index and all three sitemap URLs verified.');
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+const fs=require('fs'),path=require('path'),cp=require('child_process');
+const release=fs.realpathSync('.i18n-work/publish-2026-10-21-release'),scope=fs.realpathSync('.i18n-work')+path.sep;
+if("'!release.startsWith(scope)||path.basename(release)!=='"'publish-2026-10-21-release')throw Error('Unsafe release cleanup path');
+const diff=cp.execFileSync('git',['diff','HEAD',cp.execFileSync('git',['-C',release,'write-tree'],{encoding:'utf8'}).trim(),'--name-only'],{encoding:'utf8'}).trim().split('\\n').filter(Boolean);
+if(diff.some(p=>p"'!=='"'public/Images/howto-seedream-5-pro-guide.webp'))throw Error('Unexpected release divergence '+diff.join(', '));
+const keep='.i18n-work/publish-2026-10-21-validation';fs.mkdirSync(keep,{recursive:true});
+for(const name of ['publish-build.txt','publish-build-retry.txt','publish-check.txt'])fs.copyFileSync(path.join(release,'.i18n-work',name),path.join(keep,name));
+cp.execFileSync('git',['worktree','remove','--force',release],{stdio:'inherit'});
+console.log('Removed only the verified temporary release checkout; validation logs and translator pass files retained.');
+'@ | node" in C:\Users\cyril\Project\hubstudio
+ succeeded in 6937ms:
+Removed only the verified temporary release checkout; validation logs and translator pass files retained.
+
+diff --git a/.i18n-work/fill-release-translations.cjs b/.i18n-work/fill-release-translations.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..24731addba8e8cbc25bb235e1c6616a5a1b1314e
+--- /dev/null
++++ b/.i18n-work/fill-release-translations.cjs
+@@ -0,0 +1,29 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
++let filled = 0;
++const missing = [];
++for (const locale of ['fr', 'zh']) {
++  const sourceRoot = path.join(root,'src/i18n/dict',locale);
++  const targetRoot = path.join(release,'src/i18n/dict',locale);
++  const shared = JSON.parse(fs.readFileSync(path.join(sourceRoot,'common.json'),'utf8'));
++  for (const file of walk(targetRoot).filter(f => f.endsWith('.json'))) {
++    const target = JSON.parse(fs.readFileSync(file,'utf8'));
++    const sourceFile = path.join(sourceRoot,path.relative(targetRoot,file));
++    const source = fs.existsSync(sourceFile) ? JSON.parse(fs.readFileSync(sourceFile,'utf8')) : {};
++    let count = 0;
++    for (const [key,value] of Object.entries(target)) {
++      if (value && path.relative(targetRoot,file).replaceAll('\\','/') !== 'pages/resources/how-to/seedream-5-pro-guide.json') continue;
++      const translated = source[key] || shared[key];
++      if (!translated) { missing.push(`${locale}/${path.relative(targetRoot,file)}: ${key.slice(0,80)}`); continue; }
++      target[key] = translated;
++      count++;
++    }
++    if (count) fs.writeFileSync(file,JSON.stringify(target,null,2)+'\n');
++    filled += count;
++  }
++}
++console.log(`Copied ${filled} translated entries required by the isolated release.`);
++if (missing.length) {console.error(missing.join('\n'));process.exit(1);}
+diff --git a/.i18n-work/finalize-publish-copy.cjs b/.i18n-work/finalize-publish-copy.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..94a95d246f4c5ccc6e117f35b11ea0b6a062b427
+--- /dev/null
++++ b/.i18n-work/finalize-publish-copy.cjs
+@@ -0,0 +1,33 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const before = 'which is 2,048 pixels square';
++const after = 'enough for a 2,048-pixel square';
++for (const base of [root, release]) {
++  for (const relative of ['editorial/output/seedream-5-pro-guide.md','src/pages/resources/how-to/seedream-5-pro-guide.astro']) {
++    const file = path.join(base, relative);
++    const value = fs.readFileSync(file,'utf8');
++    if (!value.includes(before)) throw new Error('Missing expected sentence in '+file);
++    fs.writeFileSync(file,value.replace(before,after));
++  }
++  for (const locale of ['fr','zh']) {
++    const file = path.join(base,'src/i18n/dict',locale,'pages/resources/how-to/seedream-5-pro-guide.json');
++    const dict = JSON.parse(fs.readFileSync(file,'utf8'));
++    const result = Object.fromEntries(Object.entries(dict).map(([k,v])=>[k.replace(before,after),v]));
++    fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');
++  }
++}
++fs.copyFileSync(path.join(root,'editorial/research/seedream-5-pro-guide.md'),path.join(release,'editorial/research/seedream-5-pro-guide.md'));
++const ids = ['common','resources/how-to','resources/how-to/seedream-5-pro-guide','app/create','app/engines','resources/how-to/chatgpt-image-2-product-prompting-guide','resources/how-to/product-photo-to-lifestyle-image'];
++let log = '\n## Publication translation review: seedream-5-pro-guide\n\n';
++for (const locale of ['fr','zh']) {
++  for (const id of ids) {
++    const source = path.join(__dirname,'passes',locale,id,'changes.md');
++    if (!fs.existsSync(source)) throw new Error('Missing pass summary '+source);
++    log += `\n### ${locale}: ${id}\n\n`+fs.readFileSync(source,'utf8')+'\n';
++  }
++}
++fs.appendFileSync(path.join(root,'editorial/logs/runs/2026-10-21-publish.txt'),log);
++fs.appendFileSync(path.join(root,'editorial/logs/2026-10-21.md'),log);
++console.log('Corrected the numerical relationship in draft/page and both dictionary keys; copied all 14 translation summaries into both run logs.');
+diff --git a/.i18n-work/stage-publish-release.cjs b/.i18n-work/stage-publish-release.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..792dfbf1c407a8b8456bc3297da0c46b74da6d1f
+--- /dev/null
++++ b/.i18n-work/stage-publish-release.cjs
+@@ -0,0 +1,22 @@
++const fs=require('fs'),path=require('path'),cp=require('child_process');
++const root=path.resolve(__dirname,'..');
++const release=path.join(__dirname,'publish-2026-10-21-release');
++const run=(args,cwd=root,extra={})=>cp.execFileSync('git',args,{cwd,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024,...extra});
++if(run(['diff','--cached','--name-only']).trim())throw Error('Primary index already contains changes');
++if(run(['rev-parse','HEAD']).trim()!==run(['rev-parse','HEAD'],release).trim())throw Error('Checkout heads differ');
++const files=JSON.parse(fs.readFileSync(path.join(__dirname,'publish-2026-10-21-files.json'),'utf8'));
++for(const name of fs.readdirSync(path.join(root,'editorial/logs/runs')).filter(n=>n.startsWith('2026-10-21-')))files.push('editorial/logs/runs/'+name);
++for(const file of files.filter(f=>f.startsWith('editorial/logs/')||f==='editorial/schedule.csv')){
++  const dest=path.join(release,file);fs.mkdirSync(path.dirname(dest),{recursive:true});
++  let content=fs.readFileSync(path.join(root,file));
++  if(file.startsWith('editorial/logs/')&&!file.includes('.prompt.'))content=Buffer.from(content.toString('utf8').replaceAll(String.fromCharCode(0x2014),' - ').replace(/\r\n?/g,'\n').replace(/[ \t]+$/gm,'').trimEnd()+'\n');
++  fs.writeFileSync(dest,content);
++}
++run(['add','--',...files,'src/i18n/routes.ts','src/i18n/dict'],release);
++run(['diff','--cached','--check','--','.',':(exclude)editorial/research/seedream-5-pro-guide'],release);
++const patch=run(['diff','--cached','--binary','--full-index'],release,{encoding:'buffer'});
++run(['apply','--cached','--whitespace=nowarn','-'],root,{input:patch});
++const a=run(['write-tree']).trim(),b=run(['write-tree'],release).trim();
++if(a!==b)throw Error('Staged release trees differ');
++console.log('Primary main index matches the validated release tree: '+a);
++console.log(run(['diff','--cached','--stat']));
+diff --git a/.i18n-work/verify-publish-output.cjs b/.i18n-work/verify-publish-output.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f66476de78ee
+--- /dev/null
++++ b/.i18n-work/verify-publish-output.cjs
+@@ -0,0 +1,38 @@
++const fs = require('fs');
++const path = require('path');
++const {parse} = require('node-html-parser');
++const base = path.join(__dirname,'publish-2026-10-21-release','.vercel/output/static');
++const slug = 'seedream-5-pro-guide';
++const routes = [
++  ['en',`/resources/how-to/${slug}`],
++  ['fr','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit'],
++  ['zh',`/zh/resources/how-to/${slug}`],
++];
++const check = (condition,message) => {if (!condition) throw new Error(message);};
++for(const [locale,route] of routes){
++  const file=path.join(base,route,'index.html');
++  check(fs.existsSync(file),'Missing output '+file);
++  const source=fs.readFileSync(file,'utf8');
++  const html=parse(source);
++  const h1=html.querySelector('h1')?.textContent;
++  check(!!h1,'Missing heading '+locale);
++  check(html.querySelector('link[rel="canonical"]')?.getAttribute('href')==='https://www.hubstudio.ai'+route,'Wrong canonical '+locale);
++  for(const lang of ['en','fr','zh-CN'])check(html.querySelector(`link[hreflang="${lang}"]`),'Missing alternate '+lang+' '+locale);
++  check(source.includes(`/Images/howto-${slug}.webp`),'Hero missing '+locale);
++  const shot='/Images/help/create-an-image-studio'+(locale==='en'?'':'.'+locale)+'.webp';
++  check(source.includes(shot),'Wrong capture '+locale);
++  check(!/\b(?:TODO|FIXME|TBD|TKTK)\b/.test(html.querySelector('main')?.textContent||''),'Unclosed content marker '+locale);
++  if(locale!=='en')check(!source.includes('No. Its ceiling is about 4.6 megapixels'),'Untranslated body '+locale);
++  console.log(`${locale}: built page, native H1 (${h1}), canonical, three language alternates, hero and localized capture verified`);
++}
++for(const [locale,feed] of [['en','resources/rss.xml'],['fr','fr/ressources/rss.xml'],['zh','zh/resources/rss.xml']]){
++  const text=fs.readFileSync(path.join(base,feed),'utf8');
++  const route=routes.find(x=>x[0]===locale)[1];
++  check(text.includes('https://www.hubstudio.ai'+route),'Missing RSS entry '+locale);
++  console.log(`${locale}: resource RSS entry verified`);
++}
++const index=fs.readFileSync(path.join(base,'resources/how-to/index.html'),'utf8');
++check(index.indexOf('/resources/how-to/'+slug)>0,'Guide absent from index');
++const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
++for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
++console.log('How-to index and all three sitemap URLs verified.');
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+const paths=['/resources/how-to/seedream-5-pro-guide','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit','/zh/resources/how-to/seedream-5-pro-guide'];
+Promise.all(paths.map(async p=>{try{const r=await fetch('https://www.hubstudio.ai'+p,{signal:AbortSignal.timeout(25000),headers:{'cache-control':'no-cache'}});const t=await r.text();console.log(JSON.stringify({path:p,status:r.status,title:t.match(/<title>(.*?)<\\/title>/s)?.[1],corrected: p.startsWith('/resources/') ? t.includes('enough for a 2,048-pixel square') : undefined}));}catch(e){console.log(JSON.stringify({path:p,error:e.message}));}}));
+'@ | node" in C:\Users\cyril\Project\hubstudio
+ succeeded in 1113ms:
+{"path":"/resources/how-to/seedream-5-pro-guide","status":200,"title":"Seedream 5.0 Pro Prompts for Product Images | hubStudio","corrected":true}
+{"path":"/zh/resources/how-to/seedream-5-pro-guide","status":200,"title":"Seedream 5.0 Pro 产品图提示词"}
+{"path":"/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit","status":200,"title":"Seedream 5.0 Pro : prompts pour images produit | hubStudio"}
+
+diff --git a/.i18n-work/fill-release-translations.cjs b/.i18n-work/fill-release-translations.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..24731addba8e8cbc25bb235e1c6616a5a1b1314e
+--- /dev/null
++++ b/.i18n-work/fill-release-translations.cjs
+@@ -0,0 +1,29 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
++let filled = 0;
++const missing = [];
++for (const locale of ['fr', 'zh']) {
++  const sourceRoot = path.join(root,'src/i18n/dict',locale);
++  const targetRoot = path.join(release,'src/i18n/dict',locale);
++  const shared = JSON.parse(fs.readFileSync(path.join(sourceRoot,'common.json'),'utf8'));
++  for (const file of walk(targetRoot).filter(f => f.endsWith('.json'))) {
++    const target = JSON.parse(fs.readFileSync(file,'utf8'));
++    const sourceFile = path.join(sourceRoot,path.relative(targetRoot,file));
++    const source = fs.existsSync(sourceFile) ? JSON.parse(fs.readFileSync(sourceFile,'utf8')) : {};
++    let count = 0;
++    for (const [key,value] of Object.entries(target)) {
++      if (value && path.relative(targetRoot,file).replaceAll('\\','/') !== 'pages/resources/how-to/seedream-5-pro-guide.json') continue;
++      const translated = source[key] || shared[key];
++      if (!translated) { missing.push(`${locale}/${path.relative(targetRoot,file)}: ${key.slice(0,80)}`); continue; }
++      target[key] = translated;
++      count++;
++    }
++    if (count) fs.writeFileSync(file,JSON.stringify(target,null,2)+'\n');
++    filled += count;
++  }
++}
++console.log(`Copied ${filled} translated entries required by the isolated release.`);
++if (missing.length) {console.error(missing.join('\n'));process.exit(1);}
+diff --git a/.i18n-work/finalize-publish-copy.cjs b/.i18n-work/finalize-publish-copy.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..94a95d246f4c5ccc6e117f35b11ea0b6a062b427
+--- /dev/null
++++ b/.i18n-work/finalize-publish-copy.cjs
+@@ -0,0 +1,33 @@
++const fs = require('fs');
++const path = require('path');
++const root = path.resolve(__dirname, '..');
++const release = path.join(__dirname, 'publish-2026-10-21-release');
++const before = 'which is 2,048 pixels square';
++const after = 'enough for a 2,048-pixel square';
++for (const base of [root, release]) {
++  for (const relative of ['editorial/output/seedream-5-pro-guide.md','src/pages/resources/how-to/seedream-5-pro-guide.astro']) {
++    const file = path.join(base, relative);
++    const value = fs.readFileSync(file,'utf8');
++    if (!value.includes(before)) throw new Error('Missing expected sentence in '+file);
++    fs.writeFileSync(file,value.replace(before,after));
++  }
++  for (const locale of ['fr','zh']) {
++    const file = path.join(base,'src/i18n/dict',locale,'pages/resources/how-to/seedream-5-pro-guide.json');
++    const dict = JSON.parse(fs.readFileSync(file,'utf8'));
++    const result = Object.fromEntries(Object.entries(dict).map(([k,v])=>[k.replace(before,after),v]));
++    fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');
++  }
++}
++fs.copyFileSync(path.join(root,'editorial/research/seedream-5-pro-guide.md'),path.join(release,'editorial/research/seedream-5-pro-guide.md'));
++const ids = ['common','resources/how-to','resources/how-to/seedream-5-pro-guide','app/create','app/engines','resources/how-to/chatgpt-image-2-product-prompting-guide','resources/how-to/product-photo-to-lifestyle-image'];
++let log = '\n## Publication translation review: seedream-5-pro-guide\n\n';
++for (const locale of ['fr','zh']) {
++  for (const id of ids) {
++    const source = path.join(__dirname,'passes',locale,id,'changes.md');
++    if (!fs.existsSync(source)) throw new Error('Missing pass summary '+source);
++    log += `\n### ${locale}: ${id}\n\n`+fs.readFileSync(source,'utf8')+'\n';
++  }
++}
++fs.appendFileSync(path.join(root,'editorial/logs/runs/2026-10-21-publish.txt'),log);
++fs.appendFileSync(path.join(root,'editorial/logs/2026-10-21.md'),log);
++console.log('Corrected the numerical relationship in draft/page and both dictionary keys; copied all 14 translation summaries into both run logs.');
+diff --git a/.i18n-work/stage-publish-release.cjs b/.i18n-work/stage-publish-release.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..792dfbf1c407a8b8456bc3297da0c46b74da6d1f
+--- /dev/null
++++ b/.i18n-work/stage-publish-release.cjs
+@@ -0,0 +1,22 @@
++const fs=require('fs'),path=require('path'),cp=require('child_process');
++const root=path.resolve(__dirname,'..');
++const release=path.join(__dirname,'publish-2026-10-21-release');
++const run=(args,cwd=root,extra={})=>cp.execFileSync('git',args,{cwd,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024,...extra});
++if(run(['diff','--cached','--name-only']).trim())throw Error('Primary index already contains changes');
++if(run(['rev-parse','HEAD']).trim()!==run(['rev-parse','HEAD'],release).trim())throw Error('Checkout heads differ');
++const files=JSON.parse(fs.readFileSync(path.join(__dirname,'publish-2026-10-21-files.json'),'utf8'));
++for(const name of fs.readdirSync(path.join(root,'editorial/logs/runs')).filter(n=>n.startsWith('2026-10-21-')))files.push('editorial/logs/runs/'+name);
++for(const file of files.filter(f=>f.startsWith('editorial/logs/')||f==='editorial/schedule.csv')){
++  const dest=path.join(release,file);fs.mkdirSync(path.dirname(dest),{recursive:true});
++  let content=fs.readFileSync(path.join(root,file));
++  if(file.startsWith('editorial/logs/')&&!file.includes('.prompt.'))content=Buffer.from(content.toString('utf8').replaceAll(String.fromCharCode(0x2014),' - ').replace(/\r\n?/g,'\n').replace(/[ \t]+$/gm,'').trimEnd()+'\n');
++  fs.writeFileSync(dest,content);
++}
++run(['add','--',...files,'src/i18n/routes.ts','src/i18n/dict'],release);
++run(['diff','--cached','--check','--','.',':(exclude)editorial/research/seedream-5-pro-guide'],release);
++const patch=run(['diff','--cached','--binary','--full-index'],release,{encoding:'buffer'});
++run(['apply','--cached','--whitespace=nowarn','-'],root,{input:patch});
++const a=run(['write-tree']).trim(),b=run(['write-tree'],release).trim();
++if(a!==b)throw Error('Staged release trees differ');
++console.log('Primary main index matches the validated release tree: '+a);
++console.log(run(['diff','--cached','--stat']));
+diff --git a/.i18n-work/verify-publish-output.cjs b/.i18n-work/verify-publish-output.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..801b681fb77e77781239b799e6f6f66476de78ee
+--- /dev/null
++++ b/.i18n-work/verify-publish-output.cjs
+@@ -0,0 +1,38 @@
++const fs = require('fs');
++const path = require('path');
++const {parse} = require('node-html-parser');
++const base = path.join(__dirname,'publish-2026-10-21-release','.vercel/output/static');
++const slug = 'seedream-5-pro-guide';
++const routes = [
++  ['en',`/resources/how-to/${slug}`],
++  ['fr','/fr/ressources/guides-pratiques/seedream-5-pro-prompts-pour-images-produit'],
++  ['zh',`/zh/resources/how-to/${slug}`],
++];
++const check = (condition,message) => {if (!condition) throw new Error(message);};
++for(const [locale,route] of routes){
++  const file=path.join(base,route,'index.html');
++  check(fs.existsSync(file),'Missing output '+file);
++  const source=fs.readFileSync(file,'utf8');
++  const html=parse(source);
++  const h1=html.querySelector('h1')?.textContent;
++  check(!!h1,'Missing heading '+locale);
++  check(html.querySelector('link[rel="canonical"]')?.getAttribute('href')==='https://www.hubstudio.ai'+route,'Wrong canonical '+locale);
++  for(const lang of ['en','fr','zh-CN'])check(html.querySelector(`link[hreflang="${lang}"]`),'Missing alternate '+lang+' '+locale);
++  check(source.includes(`/Images/howto-${slug}.webp`),'Hero missing '+locale);
++  const shot='/Images/help/create-an-image-studio'+(locale==='en'?'':'.'+locale)+'.webp';
++  check(source.includes(shot),'Wrong capture '+locale);
++  check(!/\b(?:TODO|FIXME|TBD|TKTK)\b/.test(html.querySelector('main')?.textContent||''),'Unclosed content marker '+locale);
++  if(locale!=='en')check(!source.includes('No. Its ceiling is about 4.6 megapixels'),'Untranslated body '+locale);
++  console.log(`${locale}: built page, native H1 (${h1}), canonical, three language alternates, hero and localized capture verified`);
++}
++for(const [locale,feed] of [['en','resources/rss.xml'],['fr','fr/ressources/rss.xml'],['zh','zh/resources/rss.xml']]){
++  const text=fs.readFileSync(path.join(base,feed),'utf8');
++  const route=routes.find(x=>x[0]===locale)[1];
++  check(text.includes('https://www.hubstudio.ai'+route),'Missing RSS entry '+locale);
++  console.log(`${locale}: resource RSS entry verified`);
++}
++const index=fs.readFileSync(path.join(base,'resources/how-to/index.html'),'utf8');
++check(index.indexOf('/resources/how-to/'+slug)>0,'Guide absent from index');
++const sitemaps=fs.readdirSync(base).filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync(path.join(base,f),'utf8')).join('\n');
++for(const [,route] of routes)check(sitemaps.includes('https://www.hubstudio.ai'+route),'Sitemap missing '+route);
++console.log('How-to index and all three sitemap URLs verified.');
+
+codex
+All three deployed article URLs now return HTTP 200 with the correct localized titles. The English page also contains the corrected pixel-area sentence. I’m saving the final publication and notification results in the run logs; the publishing queue is clear.
+
+## Publication outcome
+
+Published seedream-5-pro-guide in English, French and Chinese in commit f43cce7f94e3e03a3ab03884ff022ee4bc6a680d, pushed to origin/main. The image hook optimized the hero to 94.8 KB; the final image was inspected and accepted. All three production URLs returned HTTP 200 with their localized titles, and the corrected English numerical sentence was present. The success notice was queued after the push for the next editorial digest (2026-10-20T20-20-24-058Z-hubstudio-vh1maq.json); it supersedes the first validation-attempt failure notice.
+
+The final queue check found no image_ready row and no watch row due through 2026-10-21. No eligible draft was skipped. The temporary release checkout was removed after confirming its only difference from the publication commit was the image hook optimization; validation logs and translation passes remain under .i18n-work. The existing video feature and automation edits remain uncommitted and intact. GitHub CLI had no signed-in session, so deployment was verified directly against the three public URLs.
+
+Whitespace review normalized mixed console line endings and trailing spaces in the committed run-trace snapshot. Captured research text retains its source whitespace. This closing commit changes only the two run logs; the validated source is unchanged.
