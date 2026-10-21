@@ -1,0 +1,25 @@
+﻿2026-10-22T00:30:02 start draft (model claude-opus-5-5)
+2026-10-22T00:30:02 model attempt 1/5, cycle 1: Opus 5.5
+2026-10-22T00:30:33 Opus 5.5: fresh start (no partial progress in log or tree). Row taken: id 82 localize-visual-for-markets (earliest not_started; no researched/drafted/quality_passed row exists).
+2026-10-22T00:34:31 research gate R1-R7 done: editorial/research/localize-visual-for-markets.md written, row 82 set to researched
+2026-10-22T00:36:57 createarticle 13 iterations done, iteration 7 as cadence variant; check-draft passed; R8 filled; row 82 drafted
+2026-10-22T00:37:54 content-quality-us 18 passes done in place (versions in session scratchpad); house SEO ceilings held (46/151/25 words); row 82 quality_passed
+2026-10-22T00:41:26 hero generated (1 attempt, checked), saved public/Images/howto-localize-visual-for-markets.webp; ledger appended; row 82 image_ready; run log editorial/logs/2026-10-22.md written. Stopped at image_ready, nothing committed.
+I drafted brief 82, "How to localize one visual for several markets". It stopped at `image_ready`, and nothing was published or committed.
+
+**Queue:** there was no earlier progress to pick up. No row was interrupted or blocked, and this was the earliest `not_started` row (publish_date 2026-10-29). I didn't touch the uncommitted work that was already in the tree (the videos feature, i18n, positioning and editorial script edits).
+
+**What was done:**
+- **Research** (`editorial/research/localize-visual-for-markets.md`, sources saved alongside it): I checked the top search results for four English queries and one Chinese query. They all explain why images need localizing and sell a service or a tool, but none gives a production method. The quoted sources are the W3C's guidance on text length in translation, the Noto font project's FAQ, the OpenAI and Google pages on their image models, and the French language law.
+- **Draft** (`editorial/output/localize-visual-for-markets.md`): it went through the 13 drafting steps, with step 7 run as the cadence variant (no planted errors), then the 18-pass quality loop. It has two tables, three existing app screenshots that already have French and Chinese versions, three prompt examples, a checklist and six FAQs. `check-draft.mjs` passes every hard check, and the SEO fields are 46 / 151 characters and 25 words.
+- **Hero image:** `public/Images/howto-localize-visual-for-markets.webp` (1536×1024, 130 KB). The first frame passed the AI-tells check: three copies of the same coffee-pot print on a cork board, each with a blank colored strip, and no text anywhere.
+- **Records:** the schedule row is at `image_ready` with all four dates. New sources went into the ledger, and the run log is at `editorial/logs/2026-10-22.md`.
+
+**Decisions:**
+- I left out percentages for how much text grows in translation. The only figures behind them come from IBM guidance with no stated method, so the guide gives the layout rule instead, as the brief asked.
+- Legifrance, the French government's law site, blocked the re-check of the French language-law citation today. The page of ARPP (France's advertising standards body) quotes the same two articles word for word, so the citation passed through that page.
+- The prose runs past the 1,700-word target, which is a floor; the overage is prompts, tables and quotes, not padding.
+- No brief needed amending, no live article contradicts this one, and nothing needed a recheck date in `watch.csv`.
+2026-10-22T00:41:38 model Opus 5.5 completed successfully
+2026-10-22T00:41:38 end draft exit 0
+2026-10-22T00:41:39 queue: ok: 60 to draft, 0 blocked, last draft 2026-10-22

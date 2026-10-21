@@ -2950,3 +2950,24 @@ Copied from the research file's own ledger section, which carries the full claim
 Corrected in this run: the help-center line "Seedream renders natively up to
 4K" holds for Seedream 4.5 only. Every later citation of a Seedream 4K claim
 names 4.5.
+
+
+## Added 2026-10-22 (ledger rows from brief 82, localize-visual-for-markets)
+
+Copied from the research file's own ledger section, which carries the full claims table and reasons.
+
+| Figure or claim | Attribution | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Text translated from English or Chinese "will typically be longer in the translation than the original"; Chinese, Japanese and Korean may need more horizontal space with fewer characters and often much more height than Latin text; "Be especially careful about fitting text snugly into graphic designs. Separate presentation and content, so that font sizes, line heights, etc. can be easily adapted for translated text." | "W3C Internationalization, Text size in translation, updated February 2016, standards-body guidance" | w3.org/International/articles/article-text-size | 2016-02-01 | primary (guidance), qualitative only | 2026-10-22 | 2026-10-22 | 82 |
+| "Tofu": characters shown as little boxes because the device has no font with images for them; the name Noto conveys the goal "no more tofu" | "Noto project FAQ, repository archived January 2023" | github.com/notofonts/noto-fonts/blob/master/FAQ.md | 2023-01-25 | primary for the definition | 2026-10-22 | 2026-10-22 | 82 |
+| GPT Image models "can still struggle with precise text placement and clarity" and with "visual consistency for recurring characters or brand elements" (existing row, re-verified) | "OpenAI image generation guide, read October 2026, the maker's stated limitations" | developers.openai.com/api/docs/guides/image-generation | undated page | primary | 2026-10-08 | 2026-10-22 | 40, 61, 82 |
+| Nano Banana Pro translation "may struggle with grammar, spelling, cultural nuances, or idiomatic phrases" (existing row, re-verified) | "Google DeepMind, Nano Banana Pro model page, read October 2026" | deepmind.google/models/gemini-image/pro/ | undated page | primary | 2026-10-08 | 2026-10-22 | 61, 82 |
+| Nano Banana 2 can "translate and localize text within an image" (existing row, re-verified) | "Google launch post, Nano Banana 2, February 26, 2026, maker claim" | blog.google/innovation-and-ai/technology/ai/nano-banana-2/ | 2026-02-26 | primary (maker claim) | 2026-10-08 | 2026-10-22 | 61, 82 |
+| Loi Toubon Arts. 2 and 4 (existing row, re-verified): Legifrance returned HTTP 403 to WebFetch on 2026-10-22; the ARPP doctrine page dated 17 May 2024 quotes both articles word for word as captured on 2026-10-10 | "French Law 94-665 of August 4, 1994, Articles 2 and 4, statute text on Legifrance, read October 10, 2026" | legifrance.gouv.fr; arpp.org/nous-consulter/regles/fiches-de-doctrine/fiche-de-doctrine-langue-francaise/ | 1994-08-04 | primary | 2026-10-10 | 2026-10-22 (via ARPP) | 64, 82 |
+
+Do not publish (logged 2026-10-22, brief 82):
+
+| Claim | Where it came from | Why it was cut | Logged |
+|---|---|---|---|
+| Text expansion percentages (200 to 300 percent under 10 characters, 130 percent over 70) | W3C article quoting IBM design guidelines | No sample or method on the page; brief 82 bans a percentage without one | 2026-10-22 |
+| Colors and gestures that offend by country | Localization and ad-tool blogs ranking for localization queries | Asserted without a primary source | 2026-10-22 |

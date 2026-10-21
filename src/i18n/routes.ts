@@ -110,6 +110,7 @@ const HOWTOS: Record<string, string> = {
   'consistent-character-ai-images-video': 'un-personnage-coherent-en-images-et-videos-ia',
   'holiday-visuals-from-product-photos': 'visuels-black-friday-a-partir-de-vos-photos-produit',
   'kling-3-product-video-guide': 'kling-3-prompts-pour-la-video-produit',
+  'localize-visual-for-markets': 'adapter-un-visuel-a-plusieurs-marches',
   'long-video-to-shorts': 'd-une-video-longue-a-des-formats-courts',
   'nano-banana-pro-photo-editing': 'retouche-photo-avec-nano-banana-pro',
   'nano-banana-prompting-guide': 'guide-des-prompts-nano-banana',

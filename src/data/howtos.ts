@@ -37,6 +37,23 @@ export interface Howto {
 
 export const howtos: Howto[] = [
   {
+    slug: 'localize-visual-for-markets',
+    image: '/Images/howto-localize-visual-for-markets.webp',
+    imageAlt:
+      'A hand pins three coffee-pot prints with blank colored paper strips to a worn corkboard beside a stack of paper swatches.',
+    category: 'Image editing',
+    tone: 'navy',
+    title: 'How to Localize One Visual for Several Markets',
+    deck: 'Build the master without words, add each market\'s text as a layer you can fix, and change the scene only where a market needs it.',
+    date: 'October 22, 2026',
+    dateISO: '2026-10-22',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'How to Localize One Visual for Several Markets | hubStudio',
+    metaDescription:
+      'Localize one visual for several markets: a clean master, text as an editable layer or rendered in, casting and setting per market, legal lines checked.',
+  },
+  {
     slug: 'seedream-5-pro-guide',
     image: '/Images/howto-seedream-5-pro-guide.webp',
     imageAlt:
