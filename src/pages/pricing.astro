@@ -1954,9 +1954,9 @@ const faqSchema = {
   .hero__picker {
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
     padding: 6px;
-    border-radius: var(--radius-pill);
+    border-radius: 20px;
     background: #fff;
     border: 1px solid var(--line-hairline);
     box-shadow: var(--shadow-card);
@@ -1966,10 +1966,10 @@ const faqSchema = {
   .hero__picker-item {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 9px 16px;
+    gap: 6px;
+    padding: 7px 12px;
     border-radius: var(--radius-pill);
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 500;
     color: var(--text-ink);
     white-space: nowrap;
@@ -2147,6 +2147,7 @@ const faqSchema = {
   /* Head + photo on row 1, body full width on row 2. */
   .chapter__grid {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
   @media (min-width: 1024px) {
@@ -2239,10 +2240,17 @@ const faqSchema = {
     align-items: center;
     gap: 10px;
     min-width: 0;
+    overflow: hidden;
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.02em;
     color: var(--text-mute);
+  }
+  .app-shot__url span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .app-shot__url b {
     font-weight: 500;
@@ -2499,18 +2507,32 @@ const faqSchema = {
   /* Two-Zone Split Deck */
   .pillar-row {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
     align-items: stretch;
     transition: grid-template-columns 360ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   @media (min-width: 960px) {
     .pillar-row {
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: 28px;
+      row-gap: 0;
+    }
+    [data-meter-view='all'] .pillar {
+      display: grid;
+      grid-row: span 8;
+      grid-template-rows: subgrid;
+      row-gap: 16px;
+    }
+    [data-meter-view='all'] .pillar__list {
+      display: grid;
+      grid-row: span 5;
+      grid-template-rows: subgrid;
+      row-gap: 12px;
     }
     [data-meter-view='free'] .pillar-row,
     [data-meter-view='paid'] .pillar-row {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
   [data-meter-view='free'] [data-pillar-zone='paid'],
@@ -2525,7 +2547,7 @@ const faqSchema = {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    overflow: hidden;
+    overflow: clip;
     isolation: isolate;
     transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 360ms, border-color 360ms, opacity 320ms;
   }
@@ -2557,17 +2579,14 @@ const faqSchema = {
 
   .pillar__glow {
     position: absolute;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    top: -160px;
-    right: -140px;
-    background: radial-gradient(circle, rgba(31, 165, 138, 0.14), transparent 70%);
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(300px circle at calc(100% - 70px) 50px, rgba(31, 165, 138, 0.14), transparent 70%);
     pointer-events: none;
     z-index: -1;
   }
   .pillar__glow--paid {
-    background: radial-gradient(circle, rgba(233, 78, 27, 0.28), transparent 70%);
+    background: radial-gradient(300px circle at calc(100% - 70px) 50px, rgba(233, 78, 27, 0.28), transparent 70%);
   }
 
   .pillar__top {
@@ -2941,6 +2960,8 @@ const faqSchema = {
   }
   .run-widget__meta {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    flex: 1;
     gap: 3px;
     min-width: 0;
   }
@@ -3011,11 +3032,11 @@ const faqSchema = {
     padding: 16px 18px;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto minmax(0, 1fr);
     gap: 14px;
     align-items: center;
     transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms, border-color 260ms;
-    overflow: hidden;
+    overflow: clip;
     isolation: isolate;
   }
   @media (min-width: 960px) {
@@ -3093,6 +3114,7 @@ const faqSchema = {
 
   .feature-card__body {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 6px;
     min-width: 0;
   }
@@ -3100,8 +3122,9 @@ const faqSchema = {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    flex-wrap: nowrap;
+    gap: 6px 8px;
+    flex-wrap: wrap;
+    min-width: 0;
   }
   .feature-card__eyebrow {
     font-family: var(--font-mono);
@@ -3112,6 +3135,7 @@ const faqSchema = {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0;
   }
   .feature-card__eyebrow--free { color: var(--brand-navy); }
   .feature-card__eyebrow--paid { color: #ff9470; }
@@ -3158,18 +3182,18 @@ const faqSchema = {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    flex-wrap: nowrap;
+    gap: 8px 10px;
+    flex-wrap: wrap;
+    min-width: 0;
   }
   .feature-card--paid .feature-card__foot {
     border-top-color: rgba(255, 255, 255, 0.1);
   }
   .feature-card__chips {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 5px;
     min-width: 0;
-    overflow: hidden;
   }
   .feature-chip {
     padding: 3px 9px;
@@ -3178,6 +3202,7 @@ const faqSchema = {
     font-size: 10px;
     letter-spacing: 0.02em;
     white-space: nowrap;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -3313,10 +3338,12 @@ const faqSchema = {
     background: var(--bg-cream);
     border: 1px solid var(--line-strong);
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
   }
   .app-inspector__head {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
   }
   .app-inspector__eyebrow {
@@ -4211,7 +4238,7 @@ const faqSchema = {
     background: var(--bg-ink);
     color: var(--text-on-dark);
     isolation: isolate;
-    overflow: hidden;
+    overflow: clip;
   }
   .chapter__dark-bg {
     position: absolute;

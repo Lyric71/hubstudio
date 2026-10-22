@@ -373,6 +373,11 @@ const parent = {
       flex-direction: row;
       align-items: flex-end;
       justify-content: space-between;
+      gap: 32px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .site-footer__top {
       gap: 48px;
     }
   }
@@ -397,15 +402,30 @@ const parent = {
     align-items: flex-start;
     gap: 14px;
   }
-  @media (min-width: 1024px) {
-    .site-footer__actions {
-      align-items: flex-end;
-    }
-  }
   .site-footer__btns {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+  }
+  @media (min-width: 1024px) {
+    .site-footer__actions {
+      align-items: flex-end;
+    }
+    .site-footer__btns {
+      justify-content: flex-end;
+    }
+  }
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .site-footer__line {
+      max-width: 30ch;
+    }
+    .site-footer__btns {
+      gap: 10px;
+    }
+    .site-footer__btns .btn {
+      padding: 12px 20px;
+      font-size: 14px;
+    }
   }
   .site-footer__btn-primary {
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-orange) 18%, transparent);

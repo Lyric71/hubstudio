@@ -3945,10 +3945,15 @@ const homeSchema = {
   }
   .who__accent {
     position: absolute;
-    inset: 28px -28px -28px 28px;
+    inset: 16px -14px -16px 16px;
     border-radius: clamp(20px, 2.4vw, 32px);
     background: var(--brand-orange);
     z-index: 0;
+  }
+  @media (min-width: 768px) {
+    .who__accent {
+      inset: 28px -28px -28px 28px;
+    }
   }
   .who__media {
     position: relative;
