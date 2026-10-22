@@ -596,24 +596,24 @@ const breadcrumbSchema = {
 
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
-      <div class="shell craft__intro">
-        <p class="kicker r"><span class="kicker__tick"></span>How a website build runs</p>
-        <h2 class="dh r" style="--d:.05s">
-          One brief,<br />every <span class="serif">page</span>.
-        </h2>
-        <p class="craft__lede r" style="--d:.12s">
-          All five lanes share one editorial direction and one process. The
-          lane changes the format. It does not change how the work gets made.
-          And the calls that matter most get made early, well before launch
-          day.
-        </p>
-        <p class="craft__note r" style="--d:.16s">
-          The first two steps decide the site. Everything after is execution.
-        </p>
-      </div>
-
       <div class="seq" id="seq">
         <div class="seq__stick">
+          <div class="shell craft__intro">
+            <p class="kicker r"><span class="kicker__tick"></span>How a website build runs</p>
+            <h2 class="dh r" style="--d:.05s">
+              One brief,<br />every <span class="serif">page</span>.
+            </h2>
+            <p class="craft__lede r" style="--d:.12s">
+              All five lanes share one editorial direction and one process. The
+              lane changes the format. It does not change how the work gets made.
+              And the calls that matter most get made early, well before launch
+              day.
+            </p>
+            <p class="craft__note r" style="--d:.16s">
+              The first two steps decide the site. Everything after is execution.
+            </p>
+          </div>
+
           <div class="shell seq__stage">
             <div class="seq__nav" aria-label="Process steps">
               {
@@ -759,7 +759,7 @@ const breadcrumbSchema = {
     --navy: #0e1f4e;
     --paper: #f0ede9;
     --paper-2: #e7e3dd;
-    overflow: clip;
+    overflow-x: clip;
   }
   .shell {
     width: 100%;
@@ -924,12 +924,20 @@ const breadcrumbSchema = {
   .cred svg { width: 13px; height: 13px; color: var(--brand-orange); }
 
   /* Process */
-  .craft { background: var(--paper); padding-top: clamp(80px, 10vw, 150px); }
-  .craft__intro { max-width: 780px; margin-bottom: clamp(36px, 5vw, 60px); }
+  .craft { background: var(--paper); padding-top: clamp(72px, 8vw, 120px); }
+  .craft--pinned { padding-top: 0; }
+  .craft__intro { margin-bottom: clamp(20px, 2.4vh, 32px); }
   .craft__intro .kicker { color: var(--brand-orange); }
-  .craft__intro .dh { margin-top: 16px; }
-  .craft__lede { margin-top: 18px; font-size: var(--type-lead); line-height: 1.5; color: var(--text-mute); }
-  .craft__note { margin-top: 22px; display: inline-block; padding: 13px 20px; border-left: 3px solid var(--brand-orange); background: rgba(233, 78, 27, 0.07); border-radius: 0 10px 10px 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--text-ink); }
+  .craft__intro .dh { margin-top: 10px; }
+  .craft__lede { margin-top: 12px; font-size: var(--type-lead); line-height: 1.48; color: var(--text-mute); }
+  .craft__note { margin-top: 14px; display: inline-block; padding: 11px 18px; border-left: 3px solid var(--brand-orange); background: rgba(233, 78, 27, 0.07); border-radius: 0 10px 10px 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--text-ink); }
+  @media (min-width: 880px) {
+    .craft__intro { display: grid; grid-template-columns: 1.08fr 0.92fr; column-gap: clamp(40px, 5vw, 72px); align-items: start; }
+    .craft__intro .kicker { grid-column: 1 / -1; }
+    .craft__intro .dh { grid-column: 1; grid-row: 2 / span 2; margin-top: 10px; }
+    .craft__lede { grid-column: 2; grid-row: 2; margin-top: 10px; }
+    .craft__note { grid-column: 2; grid-row: 3; margin-top: 12px; justify-self: start; }
+  }
 
   .seq__nav { display: none; }
   .seq__panels { display: grid; gap: clamp(48px, 7vw, 96px); padding-bottom: clamp(80px, 10vw, 150px); }
@@ -943,20 +951,20 @@ const breadcrumbSchema = {
   .seq__title { margin-top: 12px; font-size: clamp(25px, 2.7vw, 38px); font-weight: 600; line-height: 1.12; letter-spacing: -0.025em; }
   .seq__body { margin-top: 14px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
 
-  .craft--pinned .seq { height: 480vh; }
-  .craft--pinned .seq__stick { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
-  .craft--pinned .seq__stage { width: 100%; display: flex; flex-direction: column; gap: clamp(22px, 3vw, 40px); }
+  .craft--pinned .seq { height: 380vh; }
+  .craft--pinned .seq__stick { position: sticky; top: var(--nav-h); min-height: calc(100vh - var(--nav-h)); display: flex; flex-direction: column; justify-content: center; padding-block: clamp(20px, 2.8vh, 36px) clamp(24px, 3.5vh, 44px); overflow: hidden; }
+  .craft--pinned .seq__stage { width: 100%; display: flex; flex-direction: column; gap: clamp(16px, 2vh, 24px); }
   .craft--pinned .seq__nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
   .seq__step { display: flex; flex-direction: column; gap: 10px; padding: 0; background: transparent; border: none; text-align: left; cursor: pointer; }
   .seq__step-dot { height: 5px; border-radius: 3px; background: var(--line-strong); overflow: hidden; }
   .seq__step-fill { display: block; height: 100%; width: 100%; background: var(--brand-orange); transform: scaleX(0); transform-origin: 0 50%; }
   .seq__step-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-mute); transition: color 0.3s ease; }
   .seq__step[data-active='true'] .seq__step-label { color: var(--text-ink); }
-  .craft--pinned .seq__panels { position: relative; display: block; height: clamp(340px, 60vh, 540px); padding-bottom: 0; }
-  .craft--pinned .seq__panel { position: absolute; inset: 0; align-content: center; opacity: 0; visibility: hidden; transform: translateY(26px); transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.5s; }
+  .craft--pinned .seq__panels { position: relative; display: block; height: clamp(290px, 44vh, 420px); padding-bottom: 0; }
+  .craft--pinned .seq__panel { position: absolute; inset: 0; align-content: start; padding-top: 8px; opacity: 0; visibility: hidden; transform: translateY(26px); transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.5s; }
   .craft--pinned .seq__panel[data-active='true'] { opacity: 1; visibility: visible; transform: none; transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
   .craft--pinned .seq__panel:nth-child(even) .seq__media { order: 0; }
-  .craft--pinned .seq__media .crop__inner { aspect-ratio: auto; height: clamp(280px, 52vh, 460px); }
+  .craft--pinned .seq__media .crop__inner { aspect-ratio: auto; height: clamp(260px, 40vh, 390px); }
   @media (prefers-reduced-motion: reduce) { .craft--pinned .seq__panel { transition: none; } }
 
   /* FAQ */
@@ -1088,12 +1096,15 @@ const breadcrumbSchema = {
       });
     };
 
+    const stick = seq.querySelector<HTMLElement>('.seq__stick');
     let ticking = false;
     const update = () => {
       ticking = false;
       if (!craft.classList.contains('craft--pinned')) return;
-      const total = seq.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(total, Math.max(0, -seq.getBoundingClientRect().top));
+      const stickH = stick ? stick.offsetHeight : window.innerHeight;
+      const stickTop = stick ? parseFloat(getComputedStyle(stick).top) || 0 : 0;
+      const total = Math.max(1, seq.offsetHeight - stickH);
+      const scrolled = Math.min(total, Math.max(0, stickTop - seq.getBoundingClientRect().top));
       const p = total > 0 ? scrolled / total : 0;
       const exact = p * n;
       const idx = Math.min(n - 1, Math.floor(exact));
@@ -1120,8 +1131,10 @@ const breadcrumbSchema = {
     steps.forEach((s, i) => {
       s.addEventListener('click', () => {
         if (!craft.classList.contains('craft--pinned')) return;
-        const railTop = seq.getBoundingClientRect().top + window.scrollY;
-        const total = seq.offsetHeight - window.innerHeight;
+        const stickH = stick ? stick.offsetHeight : window.innerHeight;
+        const stickTop = stick ? parseFloat(getComputedStyle(stick).top) || 0 : 0;
+        const railTop = seq.getBoundingClientRect().top + window.scrollY - stickTop;
+        const total = Math.max(1, seq.offsetHeight - stickH);
         window.scrollTo({
           top: railTop + ((i + 0.5) / n) * total,
           behavior: reduceMotion.matches ? 'auto' : 'smooth',
