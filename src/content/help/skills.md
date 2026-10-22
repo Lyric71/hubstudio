@@ -5,7 +5,7 @@ description: "What a skill is, how to take one from the Catalog, edit it or writ
 excerpt: "Reusable instructions that Improve with AI follows every time it rewrites a prompt for an image or a video."
 section: "skills"
 order: 8
-updated: 2026-10-17
+updated: 2026-10-22
 appPaths: ["/skills", "/skills/organization", "/skills/catalog"]
 audience: "Everyone; team skills are for administrators"
 related: ["create-an-image", "create-a-video", "linkedin", "x", "your-team"]
@@ -18,7 +18,7 @@ shots:
     route: "/skills/catalog"
     alt: "The Catalog with its search box, one chip per section, and the Social networks skills marked In my skills"
     captured: 2026-09-27
-sources: ["src/pages/skills/index.astro", "src/pages/skills/organization.astro", "src/pages/skills/catalog.astro", "src/scripts/skillsPanel.ts", "src/components/SkillsNav.astro", "src/lib/skill-catalog.ts", "src/lib/imagery-skills.ts", "src/lib/prompt-craft.ts", "src/lib/skills-db.ts", "src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "public/apps/hubstudio/vocabulary.js"]
+sources: ["src/pages/skills/index.astro", "src/pages/skills/organization.astro", "src/pages/skills/catalog.astro", "src/scripts/skillsPanel.ts", "src/components/SkillsNav.astro", "src/lib/skill-catalog.ts", "src/lib/social-format-skills.ts", "src/lib/social/chinese.ts", "src/lib/imagery-skills.ts", "src/lib/prompt-craft.ts", "src/lib/skills-db.ts", "src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "public/apps/hubstudio/vocabulary.js"]
 ---
 
 A **skill** is a reusable set of instructions the AI follows: a method, a checklist, a house style, a list of rules. You write it once, say where it applies, and it rides along every time, so you never paste the same instructions twice.
@@ -57,7 +57,7 @@ The Catalog groups the standard skills in sections, with a search box and one ch
 - **Video camera movement vocabulary**, **Video shot pacing and duration**, **Animating a still (image to video)** and **Short vertical video ad**.
 - **Avoid list: hands, text artifacts, watermarks**.
 
-The **Social networks** section holds the posting rules of each network (LinkedIn, X, Instagram, Facebook, TikTok, YouTube): length, hashtags, tone. These skills are already in your own list, and each network module picks its own format skill for every draft. See, for example, [LinkedIn](/help/linkedin#write-the-brief).
+The **Social networks** section holds the posting rules of each network (LinkedIn, X, Instagram, Facebook, TikTok, YouTube, WeChat, Xiaohongshu, Douyin and Weibo): length, hashtags or topics, tone, and for the four Chinese networks (**WeChat post format**, **Xiaohongshu note format**, **Douyin post format** and **Weibo post format**), native Simplified Chinese rules, off-platform link restrictions and Advertising Law rules. These skills are already in your own list, and each network module picks its own format skill for every draft. See, for example, [LinkedIn](/help/linkedin#write-the-brief).
 
 The **Web publishing** section holds four editorial standards used by [Web](/help/web): **Newsroom standard (US English)** (the 18-pass editorial revision loop), **Native translation standard** (the 3-pass native journalist translation for non-English editions), **AI tells to remove** (words and patterns stripped during editing) and **Hero image standard** (composition and visual rules for article cover images).
 

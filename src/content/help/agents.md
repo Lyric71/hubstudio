@@ -5,7 +5,7 @@ description: "The Social publishing watcher, agents you create from scratch over
 excerpt: "Agents re-read your publishing on every network on a schedule and tell you what changed, with the real dates, networks and post titles."
 section: "agents"
 order: 14.5
-updated: 2026-10-17
+updated: 2026-10-22
 appPaths: ["/agents", "/agents/organization", "/agents/catalog", "/agents/runs"]
 audience: "Everyone; Creators and Admins add, change and run agents; team agents are for Admins"
 related: ["linkedin", "instagram", "facebook", "tiktok", "youtube", "x", "validation", "campaigns", "assets-library", "balance-and-payments", "your-team"]
@@ -41,7 +41,7 @@ Nothing runs until someone adds an agent. Click **Agents** at the top of the pag
 
 ![The agent Catalog: the Standard section with the Social publishing watcher, what it reads, View details and Add to my agents](/Images/help/agents-catalog.webp)
 
-The standard agent of hubStudio. About once a day it reads your publishing on LinkedIn, Instagram, Facebook, TikTok, YouTube and X: what went out in the last 30 days, what is scheduled for the next 14, the publishing queue and the drafts. It judges each network you work on by itself, so a busy network never hides a silent one. It flags:
+The standard agent of hubStudio. About once a day it reads your publishing on LinkedIn, Instagram, Facebook, TikTok, YouTube, X, WeChat, Xiaohongshu, Douyin and Weibo: what went out in the last 30 days, what is scheduled for the next 14, the publishing queue and the drafts. It judges each network you work on by itself, so a busy network never hides a silent one. It flags:
 
 - a network with no post for 7 days or more, naming it and saying since which date;
 - a network with nothing scheduled within the next 7 days;
@@ -51,7 +51,7 @@ The standard agent of hubStudio. About once a day it reads your publishing on Li
 - posts waiting for validation for 3 days or more;
 - approved posts nobody scheduled.
 
-A network you never posted on is left out. YouTube videos are uploaded by hand from YouTube Studio, never scheduled in hubStudio, so YouTube is judged on what was marked published and on its drafts. Steady rhythms with filled schedules give one finding at most.
+A network you never posted on is left out. YouTube videos, and posts on WeChat, Xiaohongshu, Douyin and Weibo, are published by hand rather than scheduled in hubStudio, so those five networks are judged on what was marked published and on their drafts. Steady rhythms with filled schedules give one finding at most.
 
 The agent only reads what the person it runs for can see: a draft its author keeps private is left out. A post already published counts, whoever wrote it.
 

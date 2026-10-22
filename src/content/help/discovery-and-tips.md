@@ -5,7 +5,7 @@ description: "The Discovery page your first sign-in opens on: the three pillars 
 excerpt: "Everything hubStudio can do for you on one page, a two minute tour of the screen, then a few tips each time you sign in."
 section: "getting-started"
 order: 1.5
-updated: 2026-10-14
+updated: 2026-10-22
 appPaths: ["/discover", "/settings"]
 audience: "Everyone"
 related: ["getting-started", "account-and-sign-in", "explore", "balance-and-payments", "your-team", "assets-library"]
@@ -54,7 +54,7 @@ The page is laid out like your menu, in three pillars: **Create** makes the pict
 - **At the top**, a greeting with your first name, **Take the quick tour** and **Open the help center**, the number of modules in your menu, and a map of the three pillars around the AI layer. Point at a pillar or a module on the map to read what it does; click it to jump to it further down.
 - **A bar of sections** follows you down the page: **Start here**, **Create**, **Publish**, **Library**, **The AI layer**, **Your account** and **Help center**. Click one to go to it.
 - **First steps**: three things worth doing first. **Connect your social accounts** (**Open My Connections**), since posts go out from your own accounts; **Add credits** (**Open Credits**); and **Work alone or as a team** (**Open Team**), as you can start on your own and create a team later.
-- **Create**, **Publish** and **Library**: one section per pillar, with what it is for and its modules listed on the left. The six networks share one entry, **Social networks**, and the Image editor, the Image anonymizer, the Video editor and Shorts autopilot share another, **Editing tools**. Click a module and it opens beside the list: what it does, three things you can do with it, and three links. **Open** takes you to the module, **Show in the menu** points at it in the menu on the left, and **Help article** opens its article in this help center, in your language, in a new tab. While you leave a list alone, it moves from one module to the next by itself.
+- **Create**, **Publish** and **Library**: one section per pillar, with what it is for and its modules listed on the left. The ten networks (LinkedIn, Instagram, Facebook, TikTok, X and YouTube, plus WeChat, Xiaohongshu, Douyin and Weibo written in Chinese with their English reading and posted by hand) share one entry, **Social networks**, and the Image editor, the Image anonymizer, the Video editor and Shorts autopilot share another, **Editing tools**. Click a module and it opens beside the list: what it does, three things you can do with it, and three links. **Open** takes you to the module, **Show in the menu** points at it in the menu on the left, and **Help article** opens its article in this help center, in your language, in a new tab. While you leave a list alone, it moves from one module to the next by itself.
 - **The AI layer**: **Agents** and **Skills**, the two buttons at the top of every page, each with **Open** and **Help article**.
 - **Your account**: **Team** and **Credits**, and **Partner** for commercial partners, presented like the modules.
 - **Help center**: a few articles to start with, then **What's new**, every change to hubStudio, and **Report a bug**.

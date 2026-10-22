@@ -136,6 +136,7 @@ const HELP: Record<string, string> = {
   'create-a-video': 'creer-une-video',
   'create-an-image': 'creer-une-image',
   'discovery-and-tips': 'decouverte-et-astuces',
+  douyin: 'douyin',
   explore: 'explorer',
   facebook: 'facebook',
   'getting-started': 'premiers-pas',
@@ -152,7 +153,10 @@ const HELP: Record<string, string> = {
   troubleshooting: 'depannage',
   validation: 'validation',
   web: 'web',
+  wechat: 'wechat',
+  weibo: 'weibo',
   x: 'x',
+  xiaohongshu: 'xiaohongshu',
   'your-team': 'votre-equipe',
   youtube: 'youtube',
 };

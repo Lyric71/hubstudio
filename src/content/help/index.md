@@ -1,7 +1,7 @@
 ---
 title: "hubStudio Help"
 seoTitle: "hubStudio Help Center"
-description: "Guides for hubStudio: getting started, the Support chat, the Discovery page and tips, the Scratchpad, the Explore gallery, the image and video studios, History, the Assets Library with its Image editor and Video editor, the PDF tools, Shorts autopilot, Campaigns, skills, choosing a model, LinkedIn, Instagram, Facebook, TikTok, YouTube, X and Web, Validation, agents, teams and their clients, the Client space, your balance and payments, your account, your Log and troubleshooting."
+description: "Guides for hubStudio: getting started, the Support chat, the Discovery page and tips, the Scratchpad, the Explore gallery, the image and video studios, History, the Assets Library with its Image editor and Video editor, the PDF tools, Shorts autopilot, Campaigns, skills, choosing a model, LinkedIn, Instagram, Facebook, TikTok, YouTube, X, WeChat, Xiaohongshu, Douyin, Weibo and Web, Validation, agents, teams and their clients, the Client space, your balance and payments, your account, your Log and troubleshooting."
 excerpt: "Everything you need to make images, videos, posts and website articles with hubStudio, alone or with your team, and to deliver them to your clients."
 section: "home"
 order: 0
@@ -13,7 +13,7 @@ shots: []
 sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/middleware.ts"]
 ---
 
-hubStudio makes images and videos with the AI engines of several makers, turns them into posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X, writes and publishes articles on your own website through GitHub, and delivers work to the clients your team works for, for you alone or for your whole team, paid from one prepaid balance. These guides follow the menu, from your first render to your team, your clients and your invoices.
+hubStudio makes images and videos with the AI engines of several makers, turns them into posts for LinkedIn, Instagram, Facebook, TikTok, YouTube, X, WeChat, Xiaohongshu, Douyin and Weibo, writes and publishes articles on your own website through GitHub, and delivers work to the clients your team works for, for you alone or for your whole team, paid from one prepaid balance. These guides follow the menu, from your first render to your team, your clients and your invoices.
 
 ## Start here
 
@@ -42,22 +42,26 @@ hubStudio makes images and videos with the AI engines of several makers, turns t
 17. [TikTok](/help/tiktok): the video first, then its caption, the in-depth Brief, and TikTok's own posting choices.
 18. [YouTube](/help/youtube): the video first, then its title and description, the upload in YouTube Studio, and the channel kit: name, handle, description, links, banner and profile picture.
 19. [X](/help/x): a post or a thread with up to four pictures, then updating or deleting it on X.
-20. [Web](/help/web): connecting a website repository on GitHub, planning articles with AI, editing site files from the browser, and running the 12-step pipeline that researches, drafts, fact-checks, illustrates, translates and opens a pull request on your site.
-21. [Validation](/help/validation): sending an image, a video, a post or a file for approval, deciding, new versions, comments, and your clients as validators.
-22. [Agents](/help/agents): the Social publishing watcher and the Web editor, agents you create from scratch over your posts, campaigns and library, the agent form and its Scope tab, schedules, Run now, findings, the results email, and what a run costs.
+20. [WeChat](/help/wechat): Official Account articles, image posts, short texts and videos, and Channels videos and image posts, written in Chinese with their English reading, then published by hand.
+21. [Xiaohongshu](/help/xiaohongshu): picture notes, video notes, text card notes and long articles for RED, written in Chinese with their English reading.
+22. [Douyin](/help/douyin): videos, picture posts and long articles, written in Chinese with their English reading.
+23. [Weibo](/help/weibo): posts, picture posts, video posts and headline articles, with a poll or a giveaway, written in Chinese with their English reading.
+24. [Web](/help/web): connecting a website repository on GitHub, planning articles with AI, editing site files from the browser, and running the 12-step pipeline that researches, drafts, fact-checks, illustrates, translates and opens a pull request on your site.
+25. [Validation](/help/validation): sending an image, a video, a post or a file for approval, deciding, new versions, comments, and your clients as validators.
+26. [Agents](/help/agents): the Social publishing watcher and the Web editor, agents you create from scratch over your posts, campaigns and library, the agent form and its Scope tab, schedules, Run now, findings, the results email, and what a run costs.
 
 ## Your team and your clients
 
-23. [Your team](/help/your-team): working alone or in a team, the Admin, Creator, Viewer and Client roles, invitations, requests to join, daily limits, pausing a login, clients and their logins, invoice details, the interface languages and renaming the team.
-24. [Client space](/help/client-space): for the people of your clients: what they see, downloading, and approving the team's work.
+27. [Your team](/help/your-team): working alone or in a team, the Admin, Creator, Viewer and Client roles, invitations, requests to join, daily limits, pausing a login, clients and their logins, invoice details, the interface languages and renaming the team.
+28. [Client space](/help/client-space): for the people of your clients: what they see, downloading, and approving the team's work.
 
 ## Your money and your account
 
-25. [Balance and payments](/help/balance-and-payments): a prepaid balance in US dollars, the team balance then your own, topping up by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log.
-26. [Account and sign-in](/help/account-and-sign-in): the interface in English, French or Chinese, your name, picture, email and password, the sign-in code by email, your social accounts and GitHub repositories on My Connections, the connection check, light or dark, date and time, My models, voice input, password reset and a login left unused.
-27. [Log](/help/log): your own history in the menu under your picture: runs and notifications, agent runs, the emails you received, your sign-ins and your spending, in one table you can filter, search and sort.
-28. [Partners](/help/partners): the partner area, for commercial partners only.
+29. [Balance and payments](/help/balance-and-payments): a prepaid balance in US dollars, the team balance then your own, topping up by card, Alipay or WeChat Pay, promotional codes, automatic top-up, invoices and the usage log.
+30. [Account and sign-in](/help/account-and-sign-in): the interface in English, French or Chinese, your name, picture, email and password, the sign-in code by email, your social accounts and GitHub repositories on My Connections, the connection check, light or dark, date and time, My models, voice input, password reset and a login left unused.
+31. [Log](/help/log): your own history in the menu under your picture: runs and notifications, agent runs, the emails you received, your sign-ins and your spending, in one table you can filter, search and sort.
+32. [Partners](/help/partners): the partner area, for commercial partners only.
 
 ## When something goes wrong
 
-29. [Troubleshooting](/help/troubleshooting): the messages hubStudio shows, what they mean and what to do, and where to ask when you are stuck.
+33. [Troubleshooting](/help/troubleshooting): the messages hubStudio shows, what they mean and what to do, and where to ask when you are stuck.

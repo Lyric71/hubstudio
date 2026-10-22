@@ -5,7 +5,7 @@ description: "What hubStudio is, how to create your account alone or with a team
 excerpt: "Create your account, find your way around the menu and render your first image in a few minutes."
 section: "getting-started"
 order: 1
-updated: 2026-10-17
+updated: 2026-10-22
 appPaths: ["/signup", "/login", "/discover", "/explore"]
 audience: "Everyone"
 related: ["discovery-and-tips", "scratchpad", "troubleshooting", "explore", "create-an-image", "assets-library", "shorts-autopilot", "campaigns", "linkedin", "web", "validation", "agents", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
@@ -27,7 +27,7 @@ shots:
 sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/scripts/supportPanel.ts", "src/styles/support-panel.css", "src/pages/s/[slug].astro", "src/scripts/scratchpad.ts", "src/lib/auth.ts", "src/middleware.ts", "src/pages/signup.astro", "src/lib/signup.ts", "src/lib/signup-fields.ts", "src/pages/discover.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/invite/[token].astro", "src/pages/explore.astro"]
 ---
 
-hubStudio is a studio for images, video, social posts and website articles made with AI. It gathers the image and video engines of several makers (OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax and Meta) in one place. You pick an engine, describe what you want, see the price, and run it. Everything you make is saved in your History and in the Assets Library, where you can also edit a picture or a video, or cut a long video into shorts. From there, you can write posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X and publish them on your own accounts, write and publish articles on your own website through GitHub in Web, have work approved in Validation, let agents watch your publishing, and deliver it to the clients your team works for.
+hubStudio is a studio for images, video, social posts and website articles made with AI. It gathers the image and video engines of several makers (OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax and Meta) in one place. You pick an engine, describe what you want, see the price, and run it. Everything you make is saved in your History and in the Assets Library, where you can also edit a picture or a video, or cut a long video into shorts. From there, you can write posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X and publish them on your own accounts, write posts in Simplified Chinese with an English reading for WeChat, Xiaohongshu, Douyin and Weibo, write and publish articles on your own website through GitHub in Web, have work approved in Validation, let agents watch your publishing, and deliver it to the clients your team works for.
 
 Every run is charged against a prepaid balance held in US dollars. You can work alone, or in a team that shares one balance.
 
@@ -78,12 +78,12 @@ The menu on the left groups the modules in three pillars, in the order you work:
 | **Create** | **Explore** | The gallery of every image and video engine you can use, with its price. See [Explore the engines](/help/explore). |
 | **Create** | **Image** | The image studio: text to image, image editing, upscaling. See [Create an image](/help/create-an-image). |
 | **Create** | **Video** | The video studio. See [Create a video](/help/create-a-video). |
-| **Create** | **Image editor** | Frame a picture for X, Instagram or LinkedIn, write, draw, place a logo. See [The Image editor](/help/assets-library#the-image-editor). |
+| **Create** | **Image editor** | Frame a picture for Instagram, X, LinkedIn, WeChat, Xiaohongshu, Douyin or Weibo, write, draw, place a logo. See [The Image editor](/help/assets-library#the-image-editor). |
 | **Create** | **Image anonymizer** | See what is hidden inside a picture (camera, place, AI tags), then download a clean copy. See [The Image anonymizer](/help/assets-library#the-image-anonymizer). |
-| **Create** | **Video editor** | Frame a video for Instagram, TikTok or Facebook, trim it, add texts, captions word by word and music. See [The Video editor](/help/assets-library#the-video-editor). |
+| **Create** | **Video editor** | Frame a video for Instagram, TikTok, Facebook, Douyin, Xiaohongshu, WeChat Channels or Weibo, trim it, add texts, captions word by word and music. See [The Video editor](/help/assets-library#the-video-editor). |
 | **Create** | **Shorts autopilot** | A long video cut into vertical shorts by itself: the best moments, framed, captioned and saved. See [Shorts autopilot](/help/shorts-autopilot). |
 | **Publish** | **Campaigns** | The files of one campaign gathered under a name and a brief, to write posts from. See [Campaigns](/help/campaigns). |
-| **Publish** | **LinkedIn**, **Instagram**, **Facebook**, **TikTok**, **X** and **YouTube** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. YouTube is published by you, in YouTube Studio, and also prepares your channel. See [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok), [X](/help/x) and [YouTube](/help/youtube). |
+| **Publish** | **LinkedIn**, **Instagram**, **Facebook**, **TikTok**, **X**, **YouTube**, **WeChat**, **Xiaohongshu**, **Douyin** and **Weibo** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. YouTube is published by you, in YouTube Studio, and also prepares your channel. WeChat, Xiaohongshu, Douyin and Weibo are written in Simplified Chinese with their English reading under the editor, and published by you with **Publish interactively**. See [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok), [X](/help/x) and [YouTube](/help/youtube). |
 | **Publish** | **Web** | Connect a website repository on GitHub, plan articles with AI, edit site files from the browser, and run the editorial pipeline that researches, drafts, fact-checks, illustrates, translates and opens a pull request on your site. See [Web](/help/web). |
 | **Library** | **Assets Library** | Every file of your team, uploads and renders, in folders. See [Assets Library and the tools](/help/assets-library). |
 | **Library** | **History** | Everything you and your team made. See [History](/help/history). |

@@ -5,7 +5,7 @@ description: "Every file of your team in one place, in folders: uploads, renders
 excerpt: "Your team's files in folders, and three tools that run in your browser, each with its own entry in the menu: the Image editor, the Video editor for Reels, TikToks and Facebook reels, and the Image anonymizer."
 section: "library"
 order: 6
-updated: 2026-10-17
+updated: 2026-10-22
 appPaths: ["/files", "/files/tools/image-editor", "/files/tools/video-editor", "/files/tools/image-anonymizer"]
 audience: "Everyone except client logins"
 related: ["history", "pdf-tools", "shorts-autopilot", "campaigns", "create-an-image", "create-a-video", "linkedin", "instagram", "facebook", "tiktok", "x", "balance-and-payments"]
@@ -187,9 +187,9 @@ Everything you add on top of the picture (a caption, an arrow, a box, a logo) st
 
 ### Social: frame it for a network
 
-The **Social** panel prepares a picture for one place on one network, at the pixels that network wants. The editor opens on it when you edit the picture of a LinkedIn, Instagram or X post, already set to that network.
+The **Social** panel prepares a picture for one place on one network, at the pixels that network wants. The editor opens on it when you edit the picture of a LinkedIn, Instagram, X, WeChat, Xiaohongshu, Douyin or Weibo post, already set to that network.
 
-1. Pick the network at the top: **Instagram**, **X** or **LinkedIn**.
+1. Pick the network at the top: **Instagram**, **X**, **LinkedIn**, **WeChat**, **Xiaohongshu**, **Douyin** or **Weibo**.
 2. Under **Where it goes**, pick the placement. **Best** marks the network's own recommendation for a post.
 
 | Network | Placements |
@@ -197,6 +197,10 @@ The **Social** panel prepares a picture for one place on one network, at the pix
 | Instagram | **Feed portrait** (1080 × 1350, Best), **Square**, **Landscape**, **Grid portrait** (3:4, Instagram app only), **Story**, **Reel cover**, **Profile photo** |
 | X | **Post, wide** (1600 × 900, Best), **Post, square**, **Post, portrait**, **One of two**, **Header photo**, **Profile photo**, **Link card** |
 | LinkedIn | **Post, portrait** (1080 × 1350, Best), **Post, square**, **Post, landscape**, **Profile banner**, **Page cover**, **Profile photo** |
+| WeChat | **Image post** (1080 × 1440, Best), **Article cover** (900 × 383, with the 1:1 thumbnail WeChat crops from it), **Article thumbnail**, **Channels cover** |
+| Xiaohongshu | **Note, portrait** (1080 × 1440, Best), **Note, square**, **Note, landscape** |
+| Douyin | **Picture post** (1080 × 1440, Best), **Full screen** (1080 × 1920), **Cover, upright**, **Cover, across** |
+| Weibo | **Post, square** (1080 × 1080, Best), **Post, portrait**, **Post, landscape**, **Headline article cover** (1000 × 562) |
 
 3. Under **Frame it**, pick how the picture gets that shape:
    - **Crop to fill**: a crop box of the right shape appears over the picture. Drag it over the part to keep.
@@ -332,7 +336,7 @@ The rail on the left opens one panel at a time: **Social**, **Format**, **Clips*
 
 The **Social** panel prepares the video for one place on one network: the shape, the framing, what the network's buttons cover, and the checks before you save.
 
-1. Pick the network at the top: **Instagram**, **TikTok** or **Facebook**.
+1. Pick the network at the top: **Instagram**, **TikTok**, **Facebook**, **Douyin**, **Xiaohongshu**, **WeChat Channels** or **Weibo**.
 2. Under **Where it goes**, pick the placement. **Best** marks the network's own recommendation.
 
 | Network | Placements |
@@ -340,6 +344,10 @@ The **Social** panel prepares the video for one place on one network: the shape,
 | Instagram | **Reel** (9:16, 1080 × 1920, Best), **Story** (9:16), **Feed portrait** (4:5) and **Square** (1:1). Every video posted to Instagram is shared as a reel. |
 | TikTok | **Video** (9:16, 1080 × 1920, Best) and **Square** (1:1, shown with bands above and below). |
 | Facebook | **Reel** (9:16, 1080 × 1920, Best), **Story** (9:16), **Feed portrait** (4:5) and **Square** (1:1). |
+| Douyin | **Video** (9:16, 1080 × 1920, Best) and **Landscape** (16:9). |
+| Xiaohongshu | **Note** (3:4, 1080 × 1440, Best), **Vertical** (9:16) and **Square** (1:1). |
+| WeChat Channels | **Vertical** (9:16, Best) and **Landscape** (16:9, 1920 × 1080). |
+| Weibo | **Vertical** (9:16, Best) and **Landscape** (16:9). |
 
 3. Under **Frame it**, pick how every clip gets that shape:
    - **Crop to fill**: every clip fills the frame and what overflows is cut. Drag the picture in the preview to choose what shows.
