@@ -122,6 +122,15 @@ const base = `/videos/${v.file}`;
     object-fit: contain;
     background: var(--bg-ink);
   }
+  /* The bottom band of every MP4 already carries a dark frame and burned-in
+     white captions: remove the native control bar's dark gradient scrim so
+     hovering the player never dims the captions underneath. */
+  .fv__video::-webkit-media-controls-enclosure,
+  .fv__video::-webkit-media-controls-panel {
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+  }
   .fv__cap {
     display: flex;
     align-items: baseline;
