@@ -20255,3 +20255,1051 @@ index 293c21e8523f8c113d0d885a57d6cf01a2f8834e..fc293544fa21cb6c99b676dd648215a5
 codex
 All checks passed, including TypeScript with zero errors and zero warnings. The article is marked published. I’m committing the release now, including the related guide correction and both translation audits, then pushing it before queuing the notification.
 - Staged whitespace review found only terminal-output whitespace in raw transcripts and build/check artifacts, plus one final blank line in the SERP audit. Normalized the build/check artifacts and SERP ending; preserve raw transcripts verbatim. Source and structured audits pass the staged whitespace check with raw transcripts excluded.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+for name in ['editorial/logs/2026-10-23-publish83/build.txt','editorial/logs/2026-10-23-publish83/check.txt','editorial/research/google-merchant-center-image-requirements/serp-map.md']:
+ p=Path(name)
+ s=p.read_text(encoding='utf-8-sig')
+ p.write_text('\\n'.join(x.rstrip() for x in s.splitlines()).rstrip()+'\\n',encoding='utf-8')
+print('Normalized terminal whitespace in build/check artifacts and final blank line in SERP audit. Raw run transcripts preserved.')
+'@ | python -
+"'$record='"'- Staged whitespace review found only terminal-output whitespace in raw transcripts and build/check artifacts, plus one final blank line in the SERP audit. Normalized the build/check artifacts and SERP ending; preserve raw transcripts verbatim. Source and structured audits pass the staged whitespace check with raw transcripts excluded.'
+Add-Content editorial/logs/2026-10-23-publish.md -Value "'$record -Encoding UTF8
+Add-Content editorial/logs/runs/2026-10-23-publish.txt -Value $record -Encoding UTF8
+git -c core.safecrlf=false add -- editorial/logs/2026-10-23-publish.md editorial/logs/2026-10-23-publish83/build.txt editorial/logs/2026-10-23-publish83/check.txt editorial/research/google-merchant-center-image-requirements/serp-map.md editorial/logs/runs/2026-10-23-publish.txt
+git -c core.safecrlf=false diff --cached --check -- . '"':(exclude)editorial/logs/runs/*.txt'
+if ("'$LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+git commit -m '"'feat(insights): publish google-merchant-center-image-requirements'" in C:\Users\cyril\Project\hubstudio
+ succeeded in 2068ms:
+Normalized terminal whitespace in build/check artifacts and final blank line in SERP audit. Raw run transcripts preserved.
+[pre-commit] optimizing 1 image(s)...
+Scanning: public\Images\insight-google-merchant-center-image-requirements.webp  (max-width=2000, min-size=30 KB)
+  public\Images\insight-google-merchant-center-image-requirements.webp  42.8 KB -> 38.4 KB  (-10%)
+
+Done: 1 optimized, 0 kept (no gain), 0 skipped, 0 errored.
+Total: 42.8 KB -> 38.4 KB  (4.4 KB saved, -10.3%)
+[main f768ff2] feat(insights): publish google-merchant-center-image-requirements
+ 134 files changed, 141022 insertions(+), 171 deletions(-)
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v01.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v02.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v03.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v04.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v05.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v06.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v07.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v08.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v09.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v10.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v11.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v12.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/createarticle-v13.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/iterations.jsonl
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v01.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v02.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v03.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v04.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v05.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v06.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v07.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v08.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v09.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v10.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v11.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v12.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v13.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v14.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v15.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v16.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v17.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v18.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/quality-v19.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/translations/fr/changes.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/translations/fr/pass1.json
+ create mode 100644 editorial/logs/2026-10-23-draft83/translations/fr/pass2.json
+ create mode 100644 editorial/logs/2026-10-23-draft83/translations/fr/pass3.json
+ create mode 100644 editorial/logs/2026-10-23-draft83/translations/zh/changes.md
+ create mode 100644 editorial/logs/2026-10-23-draft83/translations/zh/pass1.json
+ create mode 100644 editorial/logs/2026-10-23-draft83/translations/zh/pass2.json
+ create mode 100644 editorial/logs/2026-10-23-draft83/translations/zh/pass3.json
+ create mode 100644 editorial/logs/2026-10-23-publish.md
+ create mode 100644 editorial/logs/2026-10-23-publish83/build.txt
+ create mode 100644 editorial/logs/2026-10-23-publish83/check.txt
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/article-build.txt
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/common-build.txt
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/common/changes.md
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/common/pass1.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/common/pass2.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/common/pass3.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/pending-final.txt
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/resources/insights/google-merchant-center-image-requirements/changes.md
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/resources/insights/google-merchant-center-image-requirements/pass1.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/resources/insights/google-merchant-center-image-requirements/pass2.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/resources/insights/google-merchant-center-image-requirements/pass3.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/fr/verification.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/zh/common/changes.md
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/zh/common/pass1.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/zh/common/pass2.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/zh/common/pass3.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/zh/resources/insights/google-merchant-center-image-requirements/changes.md
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/zh/resources/insights/google-merchant-center-image-requirements/pass1.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/zh/resources/insights/google-merchant-center-image-requirements/pass2.json
+ create mode 100644 editorial/logs/2026-10-23-publish83/translations/zh/resources/insights/google-merchant-center-image-requirements/pass3.json
+ create mode 100644 editorial/logs/2026-10-23.md
+ create mode 100644 editorial/logs/runs/2026-10-23-draft.prompt.txt
+ create mode 100644 editorial/logs/runs/2026-10-23-draft.prompt.txt.context.json
+ create mode 100644 editorial/logs/runs/2026-10-23-draft.txt
+ create mode 100644 editorial/logs/runs/2026-10-23-publish.prompt.txt
+ create mode 100644 editorial/logs/runs/2026-10-23-publish.prompt.txt.context.json
+ create mode 100644 editorial/logs/runs/2026-10-23-publish.txt
+ create mode 100644 editorial/output/google-merchant-center-image-requirements.md
+ create mode 100644 editorial/research/google-merchant-center-image-requirements.md
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/additional-format-2026-10-23.png
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-additional.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-algorithmic.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-apparel.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-automatic.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-best-practices.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-big.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-composite.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-lifestyle.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-main.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-overlay.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-small.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-status.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check1-trained.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-additional.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-algorithmic.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-apparel.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-automatic.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-best-practices.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-big.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-composite.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-hubstudio-assets-library.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-hubstudio-create-an-image.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-lifestyle.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-main.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-overlay.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-small.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-status.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/check2-trained.txt
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/lifestyle-format-2026-10-23.png
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/lifestyle-minimum-2026-10-23.png
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/local-source-checks.json
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/main-format-2026-10-23.png
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/screenshots.json
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/serp-map.md
+ create mode 100644 editorial/research/google-merchant-center-image-requirements/small-transition-2026-10-23.png
+ create mode 100644 public/Images/insight-google-merchant-center-image-requirements.webp
+ create mode 100644 src/i18n/dict/fr/pages/resources/insights/google-merchant-center-image-requirements.json
+ create mode 100644 src/i18n/dict/zh/pages/resources/insights/google-merchant-center-image-requirements.json
+ create mode 100644 src/pages/resources/insights/google-merchant-center-image-requirements.astro
+
+diff --git a/.i18n-work/publish83-verify.mjs b/.i18n-work/publish83-verify.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..d092ae952ebb0f2b9fa36622e2d64d598037529b
+--- /dev/null
++++ b/.i18n-work/publish83-verify.mjs
+@@ -0,0 +1,72 @@
++import { readFileSync, readdirSync, existsSync } from 'node:fs';
++import { join } from 'node:path';
++import assert from 'node:assert/strict';
++import { parse } from 'node-html-parser';
++
++const root = 'dist/client';
++const slug = 'google-merchant-center-image-requirements';
++const routes = [
++  `/resources/insights/${slug}`,
++  '/fr/ressources/analyses/google-merchant-center-exigences-images',
++  `/zh/resources/insights/${slug}`,
++];
++const host = 'https://www.hubstudio.ai';
++const report = [];
++function htmlAt(route) {
++  const file = join(root, route, 'index.html');
++  assert(existsSync(file), `Missing output: ${file}`);
++  return parse(readFileSync(file, 'utf8'));
++}
++for (const route of routes) {
++  const doc = htmlAt(route);
++  assert(doc.querySelector('h1')?.text.trim(), `Missing H1: ${route}`);
++  assert.equal(doc.querySelector('link[rel="canonical"]')?.getAttribute('href'), host + route);
++  const alternates = doc.querySelectorAll('link[rel="alternate"][hreflang]').map(x => x.getAttribute('href'));
++  for (const alternate of routes) assert(alternates.includes(host + alternate), `Missing alternate: ${alternate}`);
++  assert(doc.querySelector(`img[src="/Images/insight-${slug}.webp"]`), `Missing hero: ${route}`);
++  const schemas = doc.querySelectorAll('script[type="application/ld+json"]').flatMap(x => {
++    const value = JSON.parse(x.text);
++    return Array.isArray(value) ? value : value['@graph'] ?? [value];
++  });
++  const article = schemas.find(x => x['@type'] === 'BlogPosting');
++  assert(article, `Missing BlogPosting: ${route}`);
++  assert.equal(article.datePublished, '2026-10-23');
++  assert.equal(schemas.find(x => x['@type'] === 'FAQPage')?.mainEntity.length, 6);
++  for (const term of ['trainedAlgorithmicMedia', 'compositeSynthetic', 'algorithmicMedia']) {
++    assert(doc.querySelectorAll('code').some(x => x.text === term), `Missing identifier ${term}: ${route}`);
++  }
++  assert.equal(doc.querySelectorAll('.prose table').length, 4);
++  report.push(`${route}: H1, canonical, three alternates, hero, article date, six FAQs, four tables and IPTC identifiers passed`);
++}
++const en = htmlAt(routes[0]);
++const hrefs = new Set(en.querySelectorAll('a').map(x => x.getAttribute('href')));
++for (const target of ['/resources/specs', '/resources/insights/amazon-product-image-requirements', '/resources/insights/shopify-product-image-sizes', '/resources/how-to/ai-white-background-packshot', '/solutions/platforms/shopify', '/services/design/ecommerce', '/app/create', '/about/team/cyril-drouin']) {
++  assert(hrefs.has(target), `Missing internal reference ${target}`);
++  htmlAt(target);
++}
++report.push('All eight internal references point to emitted pages');
++for (const route of ['/', '/resources', '/resources/insights', '/resources/specs', '/services/design/ecommerce', '/services/design/social-media']) {
++  assert(htmlAt(route).querySelectorAll('a').some(x => x.getAttribute('href') === routes[0]), `Missing article listing: ${route}`);
++}
++report.push('Home, resources, insights, specs and both category placements list the article');
++for (const [index, pages] of [
++  [1, ['/fr', '/fr/ressources', '/fr/ressources/analyses', '/fr/ressources/formats-des-plateformes', '/fr/services/design/e-commerce', '/fr/services/design/reseaux-sociaux']],
++  [2, ['/zh', '/zh/resources', '/zh/resources/insights', '/zh/resources/specs', '/zh/services/design/ecommerce', '/zh/services/design/social-media']],
++]) {
++  for (const route of pages) {
++    const link = htmlAt(route).querySelectorAll('a').find(x => x.getAttribute('href') === routes[index]);
++    assert(link, `Missing localized listing: ${route}`);
++    assert(!link.text.includes('Google Shopping image requirements for 2026'), `English listing title: ${route}`);
++  }
++}
++report.push('French and Chinese listings use localized article links and titles on all six surfaces');
++for (const [i, feed] of ['/resources/rss.xml', '/fr/ressources/rss.xml', '/zh/resources/rss.xml'].entries()) {
++  assert(readFileSync(join(root, feed), 'utf8').includes(host + routes[i]), `Missing localized feed item ${feed}`);
++}
++const sitemaps = readdirSync(root).filter(x => /^sitemap-\d+\.xml$/.test(x)).map(x => readFileSync(join(root, x), 'utf8')).join('\n');
++for (const route of routes) assert(sitemaps.includes(`<loc>${host + route}</loc>`), `Missing sitemap URL: ${route}`);
++report.push('All three localized feeds and sitemap URLs passed');
++const corrected = htmlAt('/resources/how-to/ai-white-background-packshot');
++assert(corrected.querySelectorAll('script[type="application/ld+json"]').some(x => x.text.includes('2026-10-23')), 'Packshot modified date missing');
++report.push('Related packshot correction emits the October 23 modified date');
++console.log(report.join('\n'));
+diff --git a/src/data/insights.ts b/src/data/insights.ts
+index 1d1c50e8b52bb0d1dccb2b260d32725355d8fdca..e1e06f0478d173551ac3712b1fc4e853a9ba4552
+--- a/src/data/insights.ts
++++ b/src/data/insights.ts
+@@ -50,7 +50,7 @@
+       'A sage-green enamel kettle on a white paper sweep beside a worn studio worktable, with a hand adjusting the paper edge.',
+     category: 'Platform specs',
+     tone: 'orange',
+-    title: 'Google Merchant Center Image Requirements 2026',
++    title: 'Google Shopping image requirements for 2026',
+     deck: 'Match each product image to its feed attribute, prepare for the new minimum size, and keep AI metadata through the final export for Merchant Center.',
+     date: 'October 23, 2026',
+     dateISO: '2026-10-23',
+diff --git a/src/i18n/routes.ts b/src/i18n/routes.ts
+index be86ccb94299a879f5f683573dd22a23be77511c..89114c6f2e647e5f05bfea9978339a9bd576fb2d
+--- a/src/i18n/routes.ts
++++ b/src/i18n/routes.ts
+@@ -49,6 +49,7 @@
+   'europe-campaign-localization': 'localiser-une-campagne-en-europe',
+   'facebook-post-specs': 'facebook-formats-des-publications-reels-et-stories-2026',
+   'geo-vs-seo': 'geo-ou-seo',
++  'google-merchant-center-image-requirements': 'google-merchant-center-exigences-images',
+   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
+   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
+   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',
+diff --git a/src/pages/resources/insights/google-merchant-center-image-requirements.astro b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+index 293c21e8523f8c113d0d885a57d6cf01a2f8834e..fc293544fa21cb6c99b676dd648215a55ac6a3f1
+--- a/src/pages/resources/insights/google-merchant-center-image-requirements.astro
++++ b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+@@ -30,9 +30,9 @@
+ ---
+ 
+ <ArticleLayout slug="google-merchant-center-image-requirements" ctaLabel="Create your account" faq={faq}>
+-  <p class="standfirst">Reviewed October 23, 2026. By Cyril Drouin.</p>
++  <p>Reviewed October 23, 2026. By <a href="/about/team/cyril-drouin">Cyril Drouin</a>.</p>
+ 
+-  <p>Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
++  <p class="standfirst">Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
+ 
+   <h2>What are the Google Shopping image requirements?</h2>
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'git push origin main; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; git rev-parse HEAD; git rev-list --left-right --count HEAD...origin/main' in C:\Users\cyril\Project\hubstudio
+ succeeded in 8624ms:
+To github.com:Lyric71/hubstudio.git
+   10f19ac..f768ff2  main -> main
+f768ff225328123a4cce22bc840119be02789557
+0	0
+
+diff --git a/.i18n-work/publish83-verify.mjs b/.i18n-work/publish83-verify.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..d092ae952ebb0f2b9fa36622e2d64d598037529b
+--- /dev/null
++++ b/.i18n-work/publish83-verify.mjs
+@@ -0,0 +1,72 @@
++import { readFileSync, readdirSync, existsSync } from 'node:fs';
++import { join } from 'node:path';
++import assert from 'node:assert/strict';
++import { parse } from 'node-html-parser';
++
++const root = 'dist/client';
++const slug = 'google-merchant-center-image-requirements';
++const routes = [
++  `/resources/insights/${slug}`,
++  '/fr/ressources/analyses/google-merchant-center-exigences-images',
++  `/zh/resources/insights/${slug}`,
++];
++const host = 'https://www.hubstudio.ai';
++const report = [];
++function htmlAt(route) {
++  const file = join(root, route, 'index.html');
++  assert(existsSync(file), `Missing output: ${file}`);
++  return parse(readFileSync(file, 'utf8'));
++}
++for (const route of routes) {
++  const doc = htmlAt(route);
++  assert(doc.querySelector('h1')?.text.trim(), `Missing H1: ${route}`);
++  assert.equal(doc.querySelector('link[rel="canonical"]')?.getAttribute('href'), host + route);
++  const alternates = doc.querySelectorAll('link[rel="alternate"][hreflang]').map(x => x.getAttribute('href'));
++  for (const alternate of routes) assert(alternates.includes(host + alternate), `Missing alternate: ${alternate}`);
++  assert(doc.querySelector(`img[src="/Images/insight-${slug}.webp"]`), `Missing hero: ${route}`);
++  const schemas = doc.querySelectorAll('script[type="application/ld+json"]').flatMap(x => {
++    const value = JSON.parse(x.text);
++    return Array.isArray(value) ? value : value['@graph'] ?? [value];
++  });
++  const article = schemas.find(x => x['@type'] === 'BlogPosting');
++  assert(article, `Missing BlogPosting: ${route}`);
++  assert.equal(article.datePublished, '2026-10-23');
++  assert.equal(schemas.find(x => x['@type'] === 'FAQPage')?.mainEntity.length, 6);
++  for (const term of ['trainedAlgorithmicMedia', 'compositeSynthetic', 'algorithmicMedia']) {
++    assert(doc.querySelectorAll('code').some(x => x.text === term), `Missing identifier ${term}: ${route}`);
++  }
++  assert.equal(doc.querySelectorAll('.prose table').length, 4);
++  report.push(`${route}: H1, canonical, three alternates, hero, article date, six FAQs, four tables and IPTC identifiers passed`);
++}
++const en = htmlAt(routes[0]);
++const hrefs = new Set(en.querySelectorAll('a').map(x => x.getAttribute('href')));
++for (const target of ['/resources/specs', '/resources/insights/amazon-product-image-requirements', '/resources/insights/shopify-product-image-sizes', '/resources/how-to/ai-white-background-packshot', '/solutions/platforms/shopify', '/services/design/ecommerce', '/app/create', '/about/team/cyril-drouin']) {
++  assert(hrefs.has(target), `Missing internal reference ${target}`);
++  htmlAt(target);
++}
++report.push('All eight internal references point to emitted pages');
++for (const route of ['/', '/resources', '/resources/insights', '/resources/specs', '/services/design/ecommerce', '/services/design/social-media']) {
++  assert(htmlAt(route).querySelectorAll('a').some(x => x.getAttribute('href') === routes[0]), `Missing article listing: ${route}`);
++}
++report.push('Home, resources, insights, specs and both category placements list the article');
++for (const [index, pages] of [
++  [1, ['/fr', '/fr/ressources', '/fr/ressources/analyses', '/fr/ressources/formats-des-plateformes', '/fr/services/design/e-commerce', '/fr/services/design/reseaux-sociaux']],
++  [2, ['/zh', '/zh/resources', '/zh/resources/insights', '/zh/resources/specs', '/zh/services/design/ecommerce', '/zh/services/design/social-media']],
++]) {
++  for (const route of pages) {
++    const link = htmlAt(route).querySelectorAll('a').find(x => x.getAttribute('href') === routes[index]);
++    assert(link, `Missing localized listing: ${route}`);
++    assert(!link.text.includes('Google Shopping image requirements for 2026'), `English listing title: ${route}`);
++  }
++}
++report.push('French and Chinese listings use localized article links and titles on all six surfaces');
++for (const [i, feed] of ['/resources/rss.xml', '/fr/ressources/rss.xml', '/zh/resources/rss.xml'].entries()) {
++  assert(readFileSync(join(root, feed), 'utf8').includes(host + routes[i]), `Missing localized feed item ${feed}`);
++}
++const sitemaps = readdirSync(root).filter(x => /^sitemap-\d+\.xml$/.test(x)).map(x => readFileSync(join(root, x), 'utf8')).join('\n');
++for (const route of routes) assert(sitemaps.includes(`<loc>${host + route}</loc>`), `Missing sitemap URL: ${route}`);
++report.push('All three localized feeds and sitemap URLs passed');
++const corrected = htmlAt('/resources/how-to/ai-white-background-packshot');
++assert(corrected.querySelectorAll('script[type="application/ld+json"]').some(x => x.text.includes('2026-10-23')), 'Packshot modified date missing');
++report.push('Related packshot correction emits the October 23 modified date');
++console.log(report.join('\n'));
+diff --git a/src/data/insights.ts b/src/data/insights.ts
+index 1d1c50e8b52bb0d1dccb2b260d32725355d8fdca..e1e06f0478d173551ac3712b1fc4e853a9ba4552
+--- a/src/data/insights.ts
++++ b/src/data/insights.ts
+@@ -50,7 +50,7 @@
+       'A sage-green enamel kettle on a white paper sweep beside a worn studio worktable, with a hand adjusting the paper edge.',
+     category: 'Platform specs',
+     tone: 'orange',
+-    title: 'Google Merchant Center Image Requirements 2026',
++    title: 'Google Shopping image requirements for 2026',
+     deck: 'Match each product image to its feed attribute, prepare for the new minimum size, and keep AI metadata through the final export for Merchant Center.',
+     date: 'October 23, 2026',
+     dateISO: '2026-10-23',
+diff --git a/src/i18n/routes.ts b/src/i18n/routes.ts
+index be86ccb94299a879f5f683573dd22a23be77511c..89114c6f2e647e5f05bfea9978339a9bd576fb2d
+--- a/src/i18n/routes.ts
++++ b/src/i18n/routes.ts
+@@ -49,6 +49,7 @@
+   'europe-campaign-localization': 'localiser-une-campagne-en-europe',
+   'facebook-post-specs': 'facebook-formats-des-publications-reels-et-stories-2026',
+   'geo-vs-seo': 'geo-ou-seo',
++  'google-merchant-center-image-requirements': 'google-merchant-center-exigences-images',
+   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
+   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
+   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',
+diff --git a/src/pages/resources/insights/google-merchant-center-image-requirements.astro b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+index 293c21e8523f8c113d0d885a57d6cf01a2f8834e..fc293544fa21cb6c99b676dd648215a55ac6a3f1
+--- a/src/pages/resources/insights/google-merchant-center-image-requirements.astro
++++ b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+@@ -30,9 +30,9 @@
+ ---
+ 
+ <ArticleLayout slug="google-merchant-center-image-requirements" ctaLabel="Create your account" faq={faq}>
+-  <p class="standfirst">Reviewed October 23, 2026. By Cyril Drouin.</p>
++  <p>Reviewed October 23, 2026. By <a href="/about/team/cyril-drouin">Cyril Drouin</a>.</p>
+ 
+-  <p>Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
++  <p class="standfirst">Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
+ 
+   <h2>What are the Google Shopping image requirements?</h2>
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "node editorial/scripts/notify-publish.mjs --slug google-merchant-center-image-requirements --title 'Google Merchant Center Image Requirements 2026' --build passed --log editorial/logs/2026-10-23-publish.md --note 'Published in English, French and Chinese. Build, type check, rendered language check and translation guard passed. Related packshot correction included. Commit f768ff225328123a4cce22bc840119be02789557 pushed to origin/main.'" in C:\Users\cyril\Project\hubstudio
+ succeeded in 251ms:
+Queued for the next editorial digest (C:\Users\cyril\Project\automation\outbox\pending\2026-10-22T20-25-13-913Z-hubstudio-yeeoxj.json)
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+const paths=['/resources/insights/google-merchant-center-image-requirements','/fr/ressources/analyses/google-merchant-center-exigences-images','/zh/resources/insights/google-merchant-center-image-requirements'];
+for(const path of paths){try{const r=await fetch('https://www.hubstudio.ai'+path,{signal:AbortSignal.timeout(30000)});const s=await r.text();console.log(JSON.stringify({path,status:r.status,h1:s.match(/<h1["'^>]*>(['"\\s\\S]*?)<\\/h1>/)?.[1]?.replace(/<["'^>]*>/g,'"'').trim()}));}catch(e){console.log(JSON.stringify({path,error:e.message}));}}
+'@ | node --input-type=module -" in C:\Users\cyril\Project\hubstudio
+ succeeded in 2364ms:
+{"path":"/resources/insights/google-merchant-center-image-requirements","status":404,"h1":"This page has moved on."}
+{"path":"/fr/ressources/analyses/google-merchant-center-exigences-images","status":404,"h1":"This page has moved on."}
+{"path":"/zh/resources/insights/google-merchant-center-image-requirements","status":404,"h1":"This page has moved on."}
+
+diff --git a/.i18n-work/publish83-verify.mjs b/.i18n-work/publish83-verify.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..d092ae952ebb0f2b9fa36622e2d64d598037529b
+--- /dev/null
++++ b/.i18n-work/publish83-verify.mjs
+@@ -0,0 +1,72 @@
++import { readFileSync, readdirSync, existsSync } from 'node:fs';
++import { join } from 'node:path';
++import assert from 'node:assert/strict';
++import { parse } from 'node-html-parser';
++
++const root = 'dist/client';
++const slug = 'google-merchant-center-image-requirements';
++const routes = [
++  `/resources/insights/${slug}`,
++  '/fr/ressources/analyses/google-merchant-center-exigences-images',
++  `/zh/resources/insights/${slug}`,
++];
++const host = 'https://www.hubstudio.ai';
++const report = [];
++function htmlAt(route) {
++  const file = join(root, route, 'index.html');
++  assert(existsSync(file), `Missing output: ${file}`);
++  return parse(readFileSync(file, 'utf8'));
++}
++for (const route of routes) {
++  const doc = htmlAt(route);
++  assert(doc.querySelector('h1')?.text.trim(), `Missing H1: ${route}`);
++  assert.equal(doc.querySelector('link[rel="canonical"]')?.getAttribute('href'), host + route);
++  const alternates = doc.querySelectorAll('link[rel="alternate"][hreflang]').map(x => x.getAttribute('href'));
++  for (const alternate of routes) assert(alternates.includes(host + alternate), `Missing alternate: ${alternate}`);
++  assert(doc.querySelector(`img[src="/Images/insight-${slug}.webp"]`), `Missing hero: ${route}`);
++  const schemas = doc.querySelectorAll('script[type="application/ld+json"]').flatMap(x => {
++    const value = JSON.parse(x.text);
++    return Array.isArray(value) ? value : value['@graph'] ?? [value];
++  });
++  const article = schemas.find(x => x['@type'] === 'BlogPosting');
++  assert(article, `Missing BlogPosting: ${route}`);
++  assert.equal(article.datePublished, '2026-10-23');
++  assert.equal(schemas.find(x => x['@type'] === 'FAQPage')?.mainEntity.length, 6);
++  for (const term of ['trainedAlgorithmicMedia', 'compositeSynthetic', 'algorithmicMedia']) {
++    assert(doc.querySelectorAll('code').some(x => x.text === term), `Missing identifier ${term}: ${route}`);
++  }
++  assert.equal(doc.querySelectorAll('.prose table').length, 4);
++  report.push(`${route}: H1, canonical, three alternates, hero, article date, six FAQs, four tables and IPTC identifiers passed`);
++}
++const en = htmlAt(routes[0]);
++const hrefs = new Set(en.querySelectorAll('a').map(x => x.getAttribute('href')));
++for (const target of ['/resources/specs', '/resources/insights/amazon-product-image-requirements', '/resources/insights/shopify-product-image-sizes', '/resources/how-to/ai-white-background-packshot', '/solutions/platforms/shopify', '/services/design/ecommerce', '/app/create', '/about/team/cyril-drouin']) {
++  assert(hrefs.has(target), `Missing internal reference ${target}`);
++  htmlAt(target);
++}
++report.push('All eight internal references point to emitted pages');
++for (const route of ['/', '/resources', '/resources/insights', '/resources/specs', '/services/design/ecommerce', '/services/design/social-media']) {
++  assert(htmlAt(route).querySelectorAll('a').some(x => x.getAttribute('href') === routes[0]), `Missing article listing: ${route}`);
++}
++report.push('Home, resources, insights, specs and both category placements list the article');
++for (const [index, pages] of [
++  [1, ['/fr', '/fr/ressources', '/fr/ressources/analyses', '/fr/ressources/formats-des-plateformes', '/fr/services/design/e-commerce', '/fr/services/design/reseaux-sociaux']],
++  [2, ['/zh', '/zh/resources', '/zh/resources/insights', '/zh/resources/specs', '/zh/services/design/ecommerce', '/zh/services/design/social-media']],
++]) {
++  for (const route of pages) {
++    const link = htmlAt(route).querySelectorAll('a').find(x => x.getAttribute('href') === routes[index]);
++    assert(link, `Missing localized listing: ${route}`);
++    assert(!link.text.includes('Google Shopping image requirements for 2026'), `English listing title: ${route}`);
++  }
++}
++report.push('French and Chinese listings use localized article links and titles on all six surfaces');
++for (const [i, feed] of ['/resources/rss.xml', '/fr/ressources/rss.xml', '/zh/resources/rss.xml'].entries()) {
++  assert(readFileSync(join(root, feed), 'utf8').includes(host + routes[i]), `Missing localized feed item ${feed}`);
++}
++const sitemaps = readdirSync(root).filter(x => /^sitemap-\d+\.xml$/.test(x)).map(x => readFileSync(join(root, x), 'utf8')).join('\n');
++for (const route of routes) assert(sitemaps.includes(`<loc>${host + route}</loc>`), `Missing sitemap URL: ${route}`);
++report.push('All three localized feeds and sitemap URLs passed');
++const corrected = htmlAt('/resources/how-to/ai-white-background-packshot');
++assert(corrected.querySelectorAll('script[type="application/ld+json"]').some(x => x.text.includes('2026-10-23')), 'Packshot modified date missing');
++report.push('Related packshot correction emits the October 23 modified date');
++console.log(report.join('\n'));
+diff --git a/src/data/insights.ts b/src/data/insights.ts
+index 1d1c50e8b52bb0d1dccb2b260d32725355d8fdca..e1e06f0478d173551ac3712b1fc4e853a9ba4552
+--- a/src/data/insights.ts
++++ b/src/data/insights.ts
+@@ -50,7 +50,7 @@
+       'A sage-green enamel kettle on a white paper sweep beside a worn studio worktable, with a hand adjusting the paper edge.',
+     category: 'Platform specs',
+     tone: 'orange',
+-    title: 'Google Merchant Center Image Requirements 2026',
++    title: 'Google Shopping image requirements for 2026',
+     deck: 'Match each product image to its feed attribute, prepare for the new minimum size, and keep AI metadata through the final export for Merchant Center.',
+     date: 'October 23, 2026',
+     dateISO: '2026-10-23',
+diff --git a/src/i18n/routes.ts b/src/i18n/routes.ts
+index be86ccb94299a879f5f683573dd22a23be77511c..89114c6f2e647e5f05bfea9978339a9bd576fb2d
+--- a/src/i18n/routes.ts
++++ b/src/i18n/routes.ts
+@@ -49,6 +49,7 @@
+   'europe-campaign-localization': 'localiser-une-campagne-en-europe',
+   'facebook-post-specs': 'facebook-formats-des-publications-reels-et-stories-2026',
+   'geo-vs-seo': 'geo-ou-seo',
++  'google-merchant-center-image-requirements': 'google-merchant-center-exigences-images',
+   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
+   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
+   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',
+diff --git a/src/pages/resources/insights/google-merchant-center-image-requirements.astro b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+index 293c21e8523f8c113d0d885a57d6cf01a2f8834e..fc293544fa21cb6c99b676dd648215a55ac6a3f1
+--- a/src/pages/resources/insights/google-merchant-center-image-requirements.astro
++++ b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+@@ -30,9 +30,9 @@
+ ---
+ 
+ <ArticleLayout slug="google-merchant-center-image-requirements" ctaLabel="Create your account" faq={faq}>
+-  <p class="standfirst">Reviewed October 23, 2026. By Cyril Drouin.</p>
++  <p>Reviewed October 23, 2026. By <a href="/about/team/cyril-drouin">Cyril Drouin</a>.</p>
+ 
+-  <p>Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
++  <p class="standfirst">Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
+ 
+   <h2>What are the Google Shopping image requirements?</h2>
+ 
+
+codex
+Commit `f768ff2` is pushed to `main`, and the publication notification is queued for the editorial digest. The production URLs still return the previous deployment’s 404 page; I’m waiting for the deployment and checking all three language URLs.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'git status --short; Get-Content editorial/logs/2026-10-23-publish.md -Tail 3; Import-Csv editorial/schedule.csv | Group-Object status | Select-Object Name,Count' in C:\Users\cyril\Project\hubstudio
+ succeeded in 473ms:
+ M editorial/logs/runs/2026-10-23-publish.txt
+- Set brief 83 to published with published_on 2026-10-23 after all required gates passed. No image_ready row remains and no watch row is due.
+- Stage the article, hero, data entries, routes, affected dictionaries, original draft/research/brief corrections, source modules, evidence, schedule, watch dates and run audits together. Commit on main with the authorized conventional publication subject, then push before notifying.
+- Staged whitespace review found only terminal-output whitespace in raw transcripts and build/check artifacts, plus one final blank line in the SERP audit. Normalized the build/check artifacts and SERP ending; preserve raw transcripts verbatim. Source and structured audits pass the staged whitespace check with raw transcripts excluded.
+
+Name        Count
+----        -----
+published      83
+not_started    59
+
+
+
+diff --git a/.i18n-work/publish83-verify.mjs b/.i18n-work/publish83-verify.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..d092ae952ebb0f2b9fa36622e2d64d598037529b
+--- /dev/null
++++ b/.i18n-work/publish83-verify.mjs
+@@ -0,0 +1,72 @@
++import { readFileSync, readdirSync, existsSync } from 'node:fs';
++import { join } from 'node:path';
++import assert from 'node:assert/strict';
++import { parse } from 'node-html-parser';
++
++const root = 'dist/client';
++const slug = 'google-merchant-center-image-requirements';
++const routes = [
++  `/resources/insights/${slug}`,
++  '/fr/ressources/analyses/google-merchant-center-exigences-images',
++  `/zh/resources/insights/${slug}`,
++];
++const host = 'https://www.hubstudio.ai';
++const report = [];
++function htmlAt(route) {
++  const file = join(root, route, 'index.html');
++  assert(existsSync(file), `Missing output: ${file}`);
++  return parse(readFileSync(file, 'utf8'));
++}
++for (const route of routes) {
++  const doc = htmlAt(route);
++  assert(doc.querySelector('h1')?.text.trim(), `Missing H1: ${route}`);
++  assert.equal(doc.querySelector('link[rel="canonical"]')?.getAttribute('href'), host + route);
++  const alternates = doc.querySelectorAll('link[rel="alternate"][hreflang]').map(x => x.getAttribute('href'));
++  for (const alternate of routes) assert(alternates.includes(host + alternate), `Missing alternate: ${alternate}`);
++  assert(doc.querySelector(`img[src="/Images/insight-${slug}.webp"]`), `Missing hero: ${route}`);
++  const schemas = doc.querySelectorAll('script[type="application/ld+json"]').flatMap(x => {
++    const value = JSON.parse(x.text);
++    return Array.isArray(value) ? value : value['@graph'] ?? [value];
++  });
++  const article = schemas.find(x => x['@type'] === 'BlogPosting');
++  assert(article, `Missing BlogPosting: ${route}`);
++  assert.equal(article.datePublished, '2026-10-23');
++  assert.equal(schemas.find(x => x['@type'] === 'FAQPage')?.mainEntity.length, 6);
++  for (const term of ['trainedAlgorithmicMedia', 'compositeSynthetic', 'algorithmicMedia']) {
++    assert(doc.querySelectorAll('code').some(x => x.text === term), `Missing identifier ${term}: ${route}`);
++  }
++  assert.equal(doc.querySelectorAll('.prose table').length, 4);
++  report.push(`${route}: H1, canonical, three alternates, hero, article date, six FAQs, four tables and IPTC identifiers passed`);
++}
++const en = htmlAt(routes[0]);
++const hrefs = new Set(en.querySelectorAll('a').map(x => x.getAttribute('href')));
++for (const target of ['/resources/specs', '/resources/insights/amazon-product-image-requirements', '/resources/insights/shopify-product-image-sizes', '/resources/how-to/ai-white-background-packshot', '/solutions/platforms/shopify', '/services/design/ecommerce', '/app/create', '/about/team/cyril-drouin']) {
++  assert(hrefs.has(target), `Missing internal reference ${target}`);
++  htmlAt(target);
++}
++report.push('All eight internal references point to emitted pages');
++for (const route of ['/', '/resources', '/resources/insights', '/resources/specs', '/services/design/ecommerce', '/services/design/social-media']) {
++  assert(htmlAt(route).querySelectorAll('a').some(x => x.getAttribute('href') === routes[0]), `Missing article listing: ${route}`);
++}
++report.push('Home, resources, insights, specs and both category placements list the article');
++for (const [index, pages] of [
++  [1, ['/fr', '/fr/ressources', '/fr/ressources/analyses', '/fr/ressources/formats-des-plateformes', '/fr/services/design/e-commerce', '/fr/services/design/reseaux-sociaux']],
++  [2, ['/zh', '/zh/resources', '/zh/resources/insights', '/zh/resources/specs', '/zh/services/design/ecommerce', '/zh/services/design/social-media']],
++]) {
++  for (const route of pages) {
++    const link = htmlAt(route).querySelectorAll('a').find(x => x.getAttribute('href') === routes[index]);
++    assert(link, `Missing localized listing: ${route}`);
++    assert(!link.text.includes('Google Shopping image requirements for 2026'), `English listing title: ${route}`);
++  }
++}
++report.push('French and Chinese listings use localized article links and titles on all six surfaces');
++for (const [i, feed] of ['/resources/rss.xml', '/fr/ressources/rss.xml', '/zh/resources/rss.xml'].entries()) {
++  assert(readFileSync(join(root, feed), 'utf8').includes(host + routes[i]), `Missing localized feed item ${feed}`);
++}
++const sitemaps = readdirSync(root).filter(x => /^sitemap-\d+\.xml$/.test(x)).map(x => readFileSync(join(root, x), 'utf8')).join('\n');
++for (const route of routes) assert(sitemaps.includes(`<loc>${host + route}</loc>`), `Missing sitemap URL: ${route}`);
++report.push('All three localized feeds and sitemap URLs passed');
++const corrected = htmlAt('/resources/how-to/ai-white-background-packshot');
++assert(corrected.querySelectorAll('script[type="application/ld+json"]').some(x => x.text.includes('2026-10-23')), 'Packshot modified date missing');
++report.push('Related packshot correction emits the October 23 modified date');
++console.log(report.join('\n'));
+diff --git a/src/data/insights.ts b/src/data/insights.ts
+index 1d1c50e8b52bb0d1dccb2b260d32725355d8fdca..e1e06f0478d173551ac3712b1fc4e853a9ba4552
+--- a/src/data/insights.ts
++++ b/src/data/insights.ts
+@@ -50,7 +50,7 @@
+       'A sage-green enamel kettle on a white paper sweep beside a worn studio worktable, with a hand adjusting the paper edge.',
+     category: 'Platform specs',
+     tone: 'orange',
+-    title: 'Google Merchant Center Image Requirements 2026',
++    title: 'Google Shopping image requirements for 2026',
+     deck: 'Match each product image to its feed attribute, prepare for the new minimum size, and keep AI metadata through the final export for Merchant Center.',
+     date: 'October 23, 2026',
+     dateISO: '2026-10-23',
+diff --git a/src/i18n/routes.ts b/src/i18n/routes.ts
+index be86ccb94299a879f5f683573dd22a23be77511c..89114c6f2e647e5f05bfea9978339a9bd576fb2d
+--- a/src/i18n/routes.ts
++++ b/src/i18n/routes.ts
+@@ -49,6 +49,7 @@
+   'europe-campaign-localization': 'localiser-une-campagne-en-europe',
+   'facebook-post-specs': 'facebook-formats-des-publications-reels-et-stories-2026',
+   'geo-vs-seo': 'geo-ou-seo',
++  'google-merchant-center-image-requirements': 'google-merchant-center-exigences-images',
+   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
+   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
+   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',
+diff --git a/src/pages/resources/insights/google-merchant-center-image-requirements.astro b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+index 293c21e8523f8c113d0d885a57d6cf01a2f8834e..fc293544fa21cb6c99b676dd648215a55ac6a3f1
+--- a/src/pages/resources/insights/google-merchant-center-image-requirements.astro
++++ b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+@@ -30,9 +30,9 @@
+ ---
+ 
+ <ArticleLayout slug="google-merchant-center-image-requirements" ctaLabel="Create your account" faq={faq}>
+-  <p class="standfirst">Reviewed October 23, 2026. By Cyril Drouin.</p>
++  <p>Reviewed October 23, 2026. By <a href="/about/team/cyril-drouin">Cyril Drouin</a>.</p>
+ 
+-  <p>Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
++  <p class="standfirst">Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
+ 
+   <h2>What are the Google Shopping image requirements?</h2>
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "gh api repos/Lyric71/hubstudio/commits/f768ff225328123a4cce22bc840119be02789557/status --jq '{state: .state, statuses: [.statuses[] | {context,state,description,target_url}]}'" in C:\Users\cyril\Project\hubstudio
+ exited 1 in 562ms:
+To get started with GitHub CLI, please run:  gh auth login
+Alternatively, populate the GH_TOKEN environment variable with a GitHub API authentication token.
+
+diff --git a/.i18n-work/publish83-verify.mjs b/.i18n-work/publish83-verify.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..d092ae952ebb0f2b9fa36622e2d64d598037529b
+--- /dev/null
++++ b/.i18n-work/publish83-verify.mjs
+@@ -0,0 +1,72 @@
++import { readFileSync, readdirSync, existsSync } from 'node:fs';
++import { join } from 'node:path';
++import assert from 'node:assert/strict';
++import { parse } from 'node-html-parser';
++
++const root = 'dist/client';
++const slug = 'google-merchant-center-image-requirements';
++const routes = [
++  `/resources/insights/${slug}`,
++  '/fr/ressources/analyses/google-merchant-center-exigences-images',
++  `/zh/resources/insights/${slug}`,
++];
++const host = 'https://www.hubstudio.ai';
++const report = [];
++function htmlAt(route) {
++  const file = join(root, route, 'index.html');
++  assert(existsSync(file), `Missing output: ${file}`);
++  return parse(readFileSync(file, 'utf8'));
++}
++for (const route of routes) {
++  const doc = htmlAt(route);
++  assert(doc.querySelector('h1')?.text.trim(), `Missing H1: ${route}`);
++  assert.equal(doc.querySelector('link[rel="canonical"]')?.getAttribute('href'), host + route);
++  const alternates = doc.querySelectorAll('link[rel="alternate"][hreflang]').map(x => x.getAttribute('href'));
++  for (const alternate of routes) assert(alternates.includes(host + alternate), `Missing alternate: ${alternate}`);
++  assert(doc.querySelector(`img[src="/Images/insight-${slug}.webp"]`), `Missing hero: ${route}`);
++  const schemas = doc.querySelectorAll('script[type="application/ld+json"]').flatMap(x => {
++    const value = JSON.parse(x.text);
++    return Array.isArray(value) ? value : value['@graph'] ?? [value];
++  });
++  const article = schemas.find(x => x['@type'] === 'BlogPosting');
++  assert(article, `Missing BlogPosting: ${route}`);
++  assert.equal(article.datePublished, '2026-10-23');
++  assert.equal(schemas.find(x => x['@type'] === 'FAQPage')?.mainEntity.length, 6);
++  for (const term of ['trainedAlgorithmicMedia', 'compositeSynthetic', 'algorithmicMedia']) {
++    assert(doc.querySelectorAll('code').some(x => x.text === term), `Missing identifier ${term}: ${route}`);
++  }
++  assert.equal(doc.querySelectorAll('.prose table').length, 4);
++  report.push(`${route}: H1, canonical, three alternates, hero, article date, six FAQs, four tables and IPTC identifiers passed`);
++}
++const en = htmlAt(routes[0]);
++const hrefs = new Set(en.querySelectorAll('a').map(x => x.getAttribute('href')));
++for (const target of ['/resources/specs', '/resources/insights/amazon-product-image-requirements', '/resources/insights/shopify-product-image-sizes', '/resources/how-to/ai-white-background-packshot', '/solutions/platforms/shopify', '/services/design/ecommerce', '/app/create', '/about/team/cyril-drouin']) {
++  assert(hrefs.has(target), `Missing internal reference ${target}`);
++  htmlAt(target);
++}
++report.push('All eight internal references point to emitted pages');
++for (const route of ['/', '/resources', '/resources/insights', '/resources/specs', '/services/design/ecommerce', '/services/design/social-media']) {
++  assert(htmlAt(route).querySelectorAll('a').some(x => x.getAttribute('href') === routes[0]), `Missing article listing: ${route}`);
++}
++report.push('Home, resources, insights, specs and both category placements list the article');
++for (const [index, pages] of [
++  [1, ['/fr', '/fr/ressources', '/fr/ressources/analyses', '/fr/ressources/formats-des-plateformes', '/fr/services/design/e-commerce', '/fr/services/design/reseaux-sociaux']],
++  [2, ['/zh', '/zh/resources', '/zh/resources/insights', '/zh/resources/specs', '/zh/services/design/ecommerce', '/zh/services/design/social-media']],
++]) {
++  for (const route of pages) {
++    const link = htmlAt(route).querySelectorAll('a').find(x => x.getAttribute('href') === routes[index]);
++    assert(link, `Missing localized listing: ${route}`);
++    assert(!link.text.includes('Google Shopping image requirements for 2026'), `English listing title: ${route}`);
++  }
++}
++report.push('French and Chinese listings use localized article links and titles on all six surfaces');
++for (const [i, feed] of ['/resources/rss.xml', '/fr/ressources/rss.xml', '/zh/resources/rss.xml'].entries()) {
++  assert(readFileSync(join(root, feed), 'utf8').includes(host + routes[i]), `Missing localized feed item ${feed}`);
++}
++const sitemaps = readdirSync(root).filter(x => /^sitemap-\d+\.xml$/.test(x)).map(x => readFileSync(join(root, x), 'utf8')).join('\n');
++for (const route of routes) assert(sitemaps.includes(`<loc>${host + route}</loc>`), `Missing sitemap URL: ${route}`);
++report.push('All three localized feeds and sitemap URLs passed');
++const corrected = htmlAt('/resources/how-to/ai-white-background-packshot');
++assert(corrected.querySelectorAll('script[type="application/ld+json"]').some(x => x.text.includes('2026-10-23')), 'Packshot modified date missing');
++report.push('Related packshot correction emits the October 23 modified date');
++console.log(report.join('\n'));
+diff --git a/src/data/insights.ts b/src/data/insights.ts
+index 1d1c50e8b52bb0d1dccb2b260d32725355d8fdca..e1e06f0478d173551ac3712b1fc4e853a9ba4552
+--- a/src/data/insights.ts
++++ b/src/data/insights.ts
+@@ -50,7 +50,7 @@
+       'A sage-green enamel kettle on a white paper sweep beside a worn studio worktable, with a hand adjusting the paper edge.',
+     category: 'Platform specs',
+     tone: 'orange',
+-    title: 'Google Merchant Center Image Requirements 2026',
++    title: 'Google Shopping image requirements for 2026',
+     deck: 'Match each product image to its feed attribute, prepare for the new minimum size, and keep AI metadata through the final export for Merchant Center.',
+     date: 'October 23, 2026',
+     dateISO: '2026-10-23',
+diff --git a/src/i18n/routes.ts b/src/i18n/routes.ts
+index be86ccb94299a879f5f683573dd22a23be77511c..89114c6f2e647e5f05bfea9978339a9bd576fb2d
+--- a/src/i18n/routes.ts
++++ b/src/i18n/routes.ts
+@@ -49,6 +49,7 @@
+   'europe-campaign-localization': 'localiser-une-campagne-en-europe',
+   'facebook-post-specs': 'facebook-formats-des-publications-reels-et-stories-2026',
+   'geo-vs-seo': 'geo-ou-seo',
++  'google-merchant-center-image-requirements': 'google-merchant-center-exigences-images',
+   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
+   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
+   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',
+diff --git a/src/pages/resources/insights/google-merchant-center-image-requirements.astro b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+index 293c21e8523f8c113d0d885a57d6cf01a2f8834e..fc293544fa21cb6c99b676dd648215a55ac6a3f1
+--- a/src/pages/resources/insights/google-merchant-center-image-requirements.astro
++++ b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+@@ -30,9 +30,9 @@
+ ---
+ 
+ <ArticleLayout slug="google-merchant-center-image-requirements" ctaLabel="Create your account" faq={faq}>
+-  <p class="standfirst">Reviewed October 23, 2026. By Cyril Drouin.</p>
++  <p>Reviewed October 23, 2026. By <a href="/about/team/cyril-drouin">Cyril Drouin</a>.</p>
+ 
+-  <p>Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
++  <p class="standfirst">Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
+ 
+   <h2>What are the Google Shopping image requirements?</h2>
+ 
+
+diff --git a/.i18n-work/publish83-verify.mjs b/.i18n-work/publish83-verify.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..d092ae952ebb0f2b9fa36622e2d64d598037529b
+--- /dev/null
++++ b/.i18n-work/publish83-verify.mjs
+@@ -0,0 +1,72 @@
++import { readFileSync, readdirSync, existsSync } from 'node:fs';
++import { join } from 'node:path';
++import assert from 'node:assert/strict';
++import { parse } from 'node-html-parser';
++
++const root = 'dist/client';
++const slug = 'google-merchant-center-image-requirements';
++const routes = [
++  `/resources/insights/${slug}`,
++  '/fr/ressources/analyses/google-merchant-center-exigences-images',
++  `/zh/resources/insights/${slug}`,
++];
++const host = 'https://www.hubstudio.ai';
++const report = [];
++function htmlAt(route) {
++  const file = join(root, route, 'index.html');
++  assert(existsSync(file), `Missing output: ${file}`);
++  return parse(readFileSync(file, 'utf8'));
++}
++for (const route of routes) {
++  const doc = htmlAt(route);
++  assert(doc.querySelector('h1')?.text.trim(), `Missing H1: ${route}`);
++  assert.equal(doc.querySelector('link[rel="canonical"]')?.getAttribute('href'), host + route);
++  const alternates = doc.querySelectorAll('link[rel="alternate"][hreflang]').map(x => x.getAttribute('href'));
++  for (const alternate of routes) assert(alternates.includes(host + alternate), `Missing alternate: ${alternate}`);
++  assert(doc.querySelector(`img[src="/Images/insight-${slug}.webp"]`), `Missing hero: ${route}`);
++  const schemas = doc.querySelectorAll('script[type="application/ld+json"]').flatMap(x => {
++    const value = JSON.parse(x.text);
++    return Array.isArray(value) ? value : value['@graph'] ?? [value];
++  });
++  const article = schemas.find(x => x['@type'] === 'BlogPosting');
++  assert(article, `Missing BlogPosting: ${route}`);
++  assert.equal(article.datePublished, '2026-10-23');
++  assert.equal(schemas.find(x => x['@type'] === 'FAQPage')?.mainEntity.length, 6);
++  for (const term of ['trainedAlgorithmicMedia', 'compositeSynthetic', 'algorithmicMedia']) {
++    assert(doc.querySelectorAll('code').some(x => x.text === term), `Missing identifier ${term}: ${route}`);
++  }
++  assert.equal(doc.querySelectorAll('.prose table').length, 4);
++  report.push(`${route}: H1, canonical, three alternates, hero, article date, six FAQs, four tables and IPTC identifiers passed`);
++}
++const en = htmlAt(routes[0]);
++const hrefs = new Set(en.querySelectorAll('a').map(x => x.getAttribute('href')));
++for (const target of ['/resources/specs', '/resources/insights/amazon-product-image-requirements', '/resources/insights/shopify-product-image-sizes', '/resources/how-to/ai-white-background-packshot', '/solutions/platforms/shopify', '/services/design/ecommerce', '/app/create', '/about/team/cyril-drouin']) {
++  assert(hrefs.has(target), `Missing internal reference ${target}`);
++  htmlAt(target);
++}
++report.push('All eight internal references point to emitted pages');
++for (const route of ['/', '/resources', '/resources/insights', '/resources/specs', '/services/design/ecommerce', '/services/design/social-media']) {
++  assert(htmlAt(route).querySelectorAll('a').some(x => x.getAttribute('href') === routes[0]), `Missing article listing: ${route}`);
++}
++report.push('Home, resources, insights, specs and both category placements list the article');
++for (const [index, pages] of [
++  [1, ['/fr', '/fr/ressources', '/fr/ressources/analyses', '/fr/ressources/formats-des-plateformes', '/fr/services/design/e-commerce', '/fr/services/design/reseaux-sociaux']],
++  [2, ['/zh', '/zh/resources', '/zh/resources/insights', '/zh/resources/specs', '/zh/services/design/ecommerce', '/zh/services/design/social-media']],
++]) {
++  for (const route of pages) {
++    const link = htmlAt(route).querySelectorAll('a').find(x => x.getAttribute('href') === routes[index]);
++    assert(link, `Missing localized listing: ${route}`);
++    assert(!link.text.includes('Google Shopping image requirements for 2026'), `English listing title: ${route}`);
++  }
++}
++report.push('French and Chinese listings use localized article links and titles on all six surfaces');
++for (const [i, feed] of ['/resources/rss.xml', '/fr/ressources/rss.xml', '/zh/resources/rss.xml'].entries()) {
++  assert(readFileSync(join(root, feed), 'utf8').includes(host + routes[i]), `Missing localized feed item ${feed}`);
++}
++const sitemaps = readdirSync(root).filter(x => /^sitemap-\d+\.xml$/.test(x)).map(x => readFileSync(join(root, x), 'utf8')).join('\n');
++for (const route of routes) assert(sitemaps.includes(`<loc>${host + route}</loc>`), `Missing sitemap URL: ${route}`);
++report.push('All three localized feeds and sitemap URLs passed');
++const corrected = htmlAt('/resources/how-to/ai-white-background-packshot');
++assert(corrected.querySelectorAll('script[type="application/ld+json"]').some(x => x.text.includes('2026-10-23')), 'Packshot modified date missing');
++report.push('Related packshot correction emits the October 23 modified date');
++console.log(report.join('\n'));
+diff --git a/src/data/insights.ts b/src/data/insights.ts
+index 1d1c50e8b52bb0d1dccb2b260d32725355d8fdca..e1e06f0478d173551ac3712b1fc4e853a9ba4552
+--- a/src/data/insights.ts
++++ b/src/data/insights.ts
+@@ -50,7 +50,7 @@
+       'A sage-green enamel kettle on a white paper sweep beside a worn studio worktable, with a hand adjusting the paper edge.',
+     category: 'Platform specs',
+     tone: 'orange',
+-    title: 'Google Merchant Center Image Requirements 2026',
++    title: 'Google Shopping image requirements for 2026',
+     deck: 'Match each product image to its feed attribute, prepare for the new minimum size, and keep AI metadata through the final export for Merchant Center.',
+     date: 'October 23, 2026',
+     dateISO: '2026-10-23',
+diff --git a/src/i18n/routes.ts b/src/i18n/routes.ts
+index be86ccb94299a879f5f683573dd22a23be77511c..89114c6f2e647e5f05bfea9978339a9bd576fb2d
+--- a/src/i18n/routes.ts
++++ b/src/i18n/routes.ts
+@@ -49,6 +49,7 @@
+   'europe-campaign-localization': 'localiser-une-campagne-en-europe',
+   'facebook-post-specs': 'facebook-formats-des-publications-reels-et-stories-2026',
+   'geo-vs-seo': 'geo-ou-seo',
++  'google-merchant-center-image-requirements': 'google-merchant-center-exigences-images',
+   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
+   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
+   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',
+diff --git a/src/pages/resources/insights/google-merchant-center-image-requirements.astro b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+index 293c21e8523f8c113d0d885a57d6cf01a2f8834e..fc293544fa21cb6c99b676dd648215a55ac6a3f1
+--- a/src/pages/resources/insights/google-merchant-center-image-requirements.astro
++++ b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+@@ -30,9 +30,9 @@
+ ---
+ 
+ <ArticleLayout slug="google-merchant-center-image-requirements" ctaLabel="Create your account" faq={faq}>
+-  <p class="standfirst">Reviewed October 23, 2026. By Cyril Drouin.</p>
++  <p>Reviewed October 23, 2026. By <a href="/about/team/cyril-drouin">Cyril Drouin</a>.</p>
+ 
+-  <p>Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
++  <p class="standfirst">Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
+ 
+   <h2>What are the Google Shopping image requirements?</h2>
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+const paths=['/resources/insights/google-merchant-center-image-requirements','/fr/ressources/analyses/google-merchant-center-exigences-images','/zh/resources/insights/google-merchant-center-image-requirements'];
+await Promise.all(paths.map(async path=>{try{const r=await fetch('https://www.hubstudio.ai'+path,{signal:AbortSignal.timeout(30000),cache:'no-store'});const s=await r.text();console.log(JSON.stringify({path,status:r.status,h1:s.match(/<h1["'^>]*>(['"\\s\\S]*?)<\\/h1>/)?.[1]?.replace(/<["'^>]*>/g,'"'').trim()}));}catch(e){console.log(JSON.stringify({path,error:e.message}));}}));
+'@ | node --input-type=module -" in C:\Users\cyril\Project\hubstudio
+ succeeded in 1349ms:
+{"path":"/resources/insights/google-merchant-center-image-requirements","status":200,"h1":"Google Shopping image requirements for 2026"}
+{"path":"/fr/ressources/analyses/google-merchant-center-exigences-images","status":200,"h1":"Google Shopping : exigences pour les images en 2026"}
+{"path":"/zh/resources/insights/google-merchant-center-image-requirements","status":200,"h1":"2026 年 Google Shopping 商品图要求"}
+
+diff --git a/.i18n-work/publish83-verify.mjs b/.i18n-work/publish83-verify.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..d092ae952ebb0f2b9fa36622e2d64d598037529b
+--- /dev/null
++++ b/.i18n-work/publish83-verify.mjs
+@@ -0,0 +1,72 @@
++import { readFileSync, readdirSync, existsSync } from 'node:fs';
++import { join } from 'node:path';
++import assert from 'node:assert/strict';
++import { parse } from 'node-html-parser';
++
++const root = 'dist/client';
++const slug = 'google-merchant-center-image-requirements';
++const routes = [
++  `/resources/insights/${slug}`,
++  '/fr/ressources/analyses/google-merchant-center-exigences-images',
++  `/zh/resources/insights/${slug}`,
++];
++const host = 'https://www.hubstudio.ai';
++const report = [];
++function htmlAt(route) {
++  const file = join(root, route, 'index.html');
++  assert(existsSync(file), `Missing output: ${file}`);
++  return parse(readFileSync(file, 'utf8'));
++}
++for (const route of routes) {
++  const doc = htmlAt(route);
++  assert(doc.querySelector('h1')?.text.trim(), `Missing H1: ${route}`);
++  assert.equal(doc.querySelector('link[rel="canonical"]')?.getAttribute('href'), host + route);
++  const alternates = doc.querySelectorAll('link[rel="alternate"][hreflang]').map(x => x.getAttribute('href'));
++  for (const alternate of routes) assert(alternates.includes(host + alternate), `Missing alternate: ${alternate}`);
++  assert(doc.querySelector(`img[src="/Images/insight-${slug}.webp"]`), `Missing hero: ${route}`);
++  const schemas = doc.querySelectorAll('script[type="application/ld+json"]').flatMap(x => {
++    const value = JSON.parse(x.text);
++    return Array.isArray(value) ? value : value['@graph'] ?? [value];
++  });
++  const article = schemas.find(x => x['@type'] === 'BlogPosting');
++  assert(article, `Missing BlogPosting: ${route}`);
++  assert.equal(article.datePublished, '2026-10-23');
++  assert.equal(schemas.find(x => x['@type'] === 'FAQPage')?.mainEntity.length, 6);
++  for (const term of ['trainedAlgorithmicMedia', 'compositeSynthetic', 'algorithmicMedia']) {
++    assert(doc.querySelectorAll('code').some(x => x.text === term), `Missing identifier ${term}: ${route}`);
++  }
++  assert.equal(doc.querySelectorAll('.prose table').length, 4);
++  report.push(`${route}: H1, canonical, three alternates, hero, article date, six FAQs, four tables and IPTC identifiers passed`);
++}
++const en = htmlAt(routes[0]);
++const hrefs = new Set(en.querySelectorAll('a').map(x => x.getAttribute('href')));
++for (const target of ['/resources/specs', '/resources/insights/amazon-product-image-requirements', '/resources/insights/shopify-product-image-sizes', '/resources/how-to/ai-white-background-packshot', '/solutions/platforms/shopify', '/services/design/ecommerce', '/app/create', '/about/team/cyril-drouin']) {
++  assert(hrefs.has(target), `Missing internal reference ${target}`);
++  htmlAt(target);
++}
++report.push('All eight internal references point to emitted pages');
++for (const route of ['/', '/resources', '/resources/insights', '/resources/specs', '/services/design/ecommerce', '/services/design/social-media']) {
++  assert(htmlAt(route).querySelectorAll('a').some(x => x.getAttribute('href') === routes[0]), `Missing article listing: ${route}`);
++}
++report.push('Home, resources, insights, specs and both category placements list the article');
++for (const [index, pages] of [
++  [1, ['/fr', '/fr/ressources', '/fr/ressources/analyses', '/fr/ressources/formats-des-plateformes', '/fr/services/design/e-commerce', '/fr/services/design/reseaux-sociaux']],
++  [2, ['/zh', '/zh/resources', '/zh/resources/insights', '/zh/resources/specs', '/zh/services/design/ecommerce', '/zh/services/design/social-media']],
++]) {
++  for (const route of pages) {
++    const link = htmlAt(route).querySelectorAll('a').find(x => x.getAttribute('href') === routes[index]);
++    assert(link, `Missing localized listing: ${route}`);
++    assert(!link.text.includes('Google Shopping image requirements for 2026'), `English listing title: ${route}`);
++  }
++}
++report.push('French and Chinese listings use localized article links and titles on all six surfaces');
++for (const [i, feed] of ['/resources/rss.xml', '/fr/ressources/rss.xml', '/zh/resources/rss.xml'].entries()) {
++  assert(readFileSync(join(root, feed), 'utf8').includes(host + routes[i]), `Missing localized feed item ${feed}`);
++}
++const sitemaps = readdirSync(root).filter(x => /^sitemap-\d+\.xml$/.test(x)).map(x => readFileSync(join(root, x), 'utf8')).join('\n');
++for (const route of routes) assert(sitemaps.includes(`<loc>${host + route}</loc>`), `Missing sitemap URL: ${route}`);
++report.push('All three localized feeds and sitemap URLs passed');
++const corrected = htmlAt('/resources/how-to/ai-white-background-packshot');
++assert(corrected.querySelectorAll('script[type="application/ld+json"]').some(x => x.text.includes('2026-10-23')), 'Packshot modified date missing');
++report.push('Related packshot correction emits the October 23 modified date');
++console.log(report.join('\n'));
+diff --git a/src/data/insights.ts b/src/data/insights.ts
+index 1d1c50e8b52bb0d1dccb2b260d32725355d8fdca..e1e06f0478d173551ac3712b1fc4e853a9ba4552
+--- a/src/data/insights.ts
++++ b/src/data/insights.ts
+@@ -50,7 +50,7 @@
+       'A sage-green enamel kettle on a white paper sweep beside a worn studio worktable, with a hand adjusting the paper edge.',
+     category: 'Platform specs',
+     tone: 'orange',
+-    title: 'Google Merchant Center Image Requirements 2026',
++    title: 'Google Shopping image requirements for 2026',
+     deck: 'Match each product image to its feed attribute, prepare for the new minimum size, and keep AI metadata through the final export for Merchant Center.',
+     date: 'October 23, 2026',
+     dateISO: '2026-10-23',
+diff --git a/src/i18n/routes.ts b/src/i18n/routes.ts
+index be86ccb94299a879f5f683573dd22a23be77511c..89114c6f2e647e5f05bfea9978339a9bd576fb2d
+--- a/src/i18n/routes.ts
++++ b/src/i18n/routes.ts
+@@ -49,6 +49,7 @@
+   'europe-campaign-localization': 'localiser-une-campagne-en-europe',
+   'facebook-post-specs': 'facebook-formats-des-publications-reels-et-stories-2026',
+   'geo-vs-seo': 'geo-ou-seo',
++  'google-merchant-center-image-requirements': 'google-merchant-center-exigences-images',
+   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
+   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
+   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',
+diff --git a/src/pages/resources/insights/google-merchant-center-image-requirements.astro b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+index 293c21e8523f8c113d0d885a57d6cf01a2f8834e..fc293544fa21cb6c99b676dd648215a55ac6a3f1
+--- a/src/pages/resources/insights/google-merchant-center-image-requirements.astro
++++ b/src/pages/resources/insights/google-merchant-center-image-requirements.astro
+@@ -30,9 +30,9 @@
+ ---
+ 
+ <ArticleLayout slug="google-merchant-center-image-requirements" ctaLabel="Create your account" faq={faq}>
+-  <p class="standfirst">Reviewed October 23, 2026. By Cyril Drouin.</p>
++  <p>Reviewed October 23, 2026. By <a href="/about/team/cyril-drouin">Cyril Drouin</a>.</p>
+ 
+-  <p>Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
++  <p class="standfirst">Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
+ 
+   <h2>What are the Google Shopping image requirements?</h2>
+ 
+
+codex
+All three production URLs now return 200 with the correct localized titles. The article is live, the notification is queued, and no finished draft or due watch item remains. I’m saving the final publication result in the run log.
+
+## Publication completed
+- Publication commit f768ff225328123a4cce22bc840119be02789557 was pushed successfully to origin/main. Local and remote commit counts were 0 ahead and 0 behind.
+- The normal pre-commit image hook reduced the hero from 42.8 KB to 38.4 KB. Reinspected the optimized image; dimensions, plausible anatomy, light, texture and subject remained intact.
+- Only after the successful push, notify-publish queued the passed-build publication for the next editorial digest, including the publication commit hash and this log path. Queue item: 2026-10-22T20-25-13-913Z-hubstudio-yeeoxj.json.
+- Initial production probes returned the previous deployment's 404 page while the release propagated. Subsequent probes returned 200 on all three article URLs with their correct English, French and Chinese H1s. The related packshot correction and October 23 modified date are also present on production.
+- GitHub CLI deployment-status inspection was unavailable because that CLI has no authenticated session. Direct production verification succeeded; no deployment-status access was required to finish.
+- Published addresses: /resources/insights/google-merchant-center-image-requirements; /fr/ressources/analyses/google-merchant-center-exigences-images; /zh/resources/insights/google-merchant-center-image-requirements.
+- Final queue: 83 published, 59 not_started, zero image_ready, zero blocked. No watch row is due on October 23; the next due date is October 26. No draft was skipped.
+- All application and editorial publication changes are committed. This audit update records the successful push, queued notification and production verification; the active raw transcript continues to receive the scheduler's terminal output after its committed snapshot.
