@@ -1,0 +1,356 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const faq = [
+  {
+    "q": "What size should Google Shopping images be?",
+    "a": "Use Google’s recommendation of around 1500 x 1500 pixels or above as the starting point for main and additional images. Check both pixel count and file weight before delivery. The minimum is a separate question: the table above distinguishes the temporary floors, the incoming general floor, and the lifestyle-specific requirement."
+  },
+  {
+    "q": "Why was my Google Merchant Center image disapproved?",
+    "a": "Read the issue in Products, Needs attention. It may concern promotional overlays, an undersized image, the wrong product, or a file Google cannot reach. Test the submitted URL before commissioning another image. If the problem is an overlay, replace the image or review the result of automatic image improvements."
+  },
+  {
+    "q": "Can I use AI-generated images in Google Shopping?",
+    "a": "Yes, if they meet the image rules and contain metadata identifying their AI origin. Preserve the embedded DigitalSourceType property, and inspect the delivered file after editing or conversion. Also compare the visible product with the actual item: a correctly tagged image can still depict the wrong color, shape, or variant."
+  },
+  {
+    "q": "What is the minimum image size for Google Merchant Center in 2027?",
+    "a": "The general minimum becomes 500 x 500 pixels on January 31, 2027. Prepare replacement main images before that date. Do not apply that number to every attribute without checking: the lifestyle page specifies a higher floor, and TV Shopping ads already have their own requirement. The dated table above keeps those cases separate."
+  },
+  {
+    "q": "Do Google Shopping images need a white background?",
+    "a": "Not universally. Google recommends solid white or light-neutral backgrounds for main images and also accepts staged images that clearly show the product. Lifestyle images serve a different purpose: context or use. Keep that distinction when preparing the set, and don’t add promotional text simply because an image has a lifestyle setting."
+  },
+  {
+    "q": "What is a lifestyle image in Merchant Center?",
+    "a": "It shows the product in a setting or in use and is submitted through the optional lifestyle_image_link attribute for free listings. It does not replace the main image. The attribute’s own page sets a higher minimum resolution than the general incoming rule and prohibits borders, padding, promotional elements, and other text."
+  }
+];
+---
+
+<ArticleLayout slug="google-merchant-center-image-requirements" ctaLabel="Create your account" faq={faq}>
+  <p>Reviewed October 23, 2026. By <a href="/about/team/cyril-drouin">Cyril Drouin</a>.</p>
+
+  <p class="standfirst">Merchant Center checks the picture and the file behind its URL. The image attribute determines which rules apply. Today’s minimum and the coming minimum are different, and AI metadata must survive the export.</p>
+
+  <h2>What are the Google Shopping image requirements?</h2>
+
+  <p>Google Shopping image requirements cover the pictured product, file size, and crawlable URL. Prepare main images at Google’s recommended 1500 x 1500 pixels or above, keep AI metadata, and check the dated minimums below. Lifestyle images have their own rules. hubStudio supplies image creation and export; you submit the URLs through your Merchant Center data source.</p>
+
+  <h3>Main image: image_link</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">Specification</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Required image</th>
+          <td>Main view of the item being sold</td>
+          <td>Image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Before January 31, 2027</th>
+          <td>100 x 100 px non-clothing; 250 x 250 px clothing</td>
+          <td>Image too small</td>
+        </tr>
+        <tr>
+          <th scope="row">TV Shopping ads now</th>
+          <td>500 x 500 px minimum</td>
+          <td>Image too small</td>
+        </tr>
+        <tr>
+          <th scope="row">From January 31, 2027</th>
+          <td>500 x 500 px for all products</td>
+          <td>Image too small</td>
+        </tr>
+        <tr>
+          <th scope="row">Recommended size</th>
+          <td>Around 1500 x 1500 px or above</td>
+          <td>Image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Maximum</th>
+          <td>64 megapixels; 16 MB</td>
+          <td>Image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Formats</th>
+          <td>JPEG, WebP, PNG, GIF, BMP, TIFF</td>
+          <td>Image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Background</th>
+          <td>Solid white or light neutral recommended; clear staged images also acceptable</td>
+          <td>Image best practices</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Google recommends around 1500 x 1500 pixels or above for the main image. Its attribute table lists a ceiling of 64 megapixels and 16 MB. Method: direct reading of the published formatting specifications.</blockquote>
+  <p class="source">Source: Google Merchant Center Help, Image link, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/6324350?hl=en</p>
+
+  <p>Keep exports below both ceilings. The Image too big help page says “less than” in its headline and “cannot be larger than” in its body. Avoid that boundary when exporting.</p>
+
+  <p>Measure file weight and pixel count separately.</p>
+
+  <p>Source: Google Merchant Center Help, Image too big, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/12473903?hl=en</p>
+
+  <h2>When does the new minimum image size apply?</h2>
+
+  <p>Google’s attribute table already prints the incoming minimum. Its dedicated Image too small page explains the transition:</p>
+
+  <blockquote class="evidence">“Enforcement of the new requirements will begin January 31, 2027.” The new general minimum is 500 x 500 pixels. Until then, the stated floors remain 100 x 100 for non-clothing and 250 x 250 for clothing. Warnings began in July 2026. Method: read the dated transition notice alongside the temporary requirements on the same page.</blockquote>
+  <p class="source">Source: Google Merchant Center Help, Image too small, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/12159030?hl=en</p>
+
+  <p>The page gives an enforcement date but no dated announcement. For new main images, use the incoming minimum as your production floor. YouTube Shopping ads on TV already require 500 x 500 pixels. Lifestyle images have a higher attribute-specific minimum, below.</p>
+
+  <p>A main image below the applicable minimum can cause product disapproval. Open Products, then Needs attention, and use the upcoming-enforcement warnings to find affected products. Check the file at the submitted URL: a small thumbnail can fail even when a larger master exists elsewhere. Open that URL before making another render.</p>
+
+  <h2>What belongs in additional_image_link?</h2>
+
+  <p>An additional image can show the reverse side. A close-up may explain a detail that disappears in the main view; a wider shot can show the item in use. They inherit the main image’s technical requirements, but Google permits staging and views that show only part of the product. An image of one component can also explain a bundle.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">Specification</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Number</th>
+          <td>Up to 10 additional images; optional</td>
+          <td>Additional image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Minimum</th>
+          <td>Before January 31, 2027: 100 x 100 px non-clothing, 250 x 250 clothing; then 500 x 500</td>
+          <td>Additional image link; Image too small</td>
+        </tr>
+        <tr>
+          <th scope="row">Recommended size</th>
+          <td>1500 x 1500 px or above</td>
+          <td>Additional image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Maximum</th>
+          <td>Same as main: 64 MP and 16 MB</td>
+          <td>Additional image link; Image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Formats</th>
+          <td>JPEG, WebP, PNG, GIF, BMP, TIFF</td>
+          <td>Additional image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Background</th>
+          <td>Staging and product-in-use scenes allowed</td>
+          <td>Additional image link</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">Google allows up to 10 additional images and recommends 1500 x 1500 pixels or above. Method: read the attribute’s format table, notice, and exceptions together, including its rule for undersized additional images.</blockquote>
+  <p class="source">Source: Google Merchant Center Help, Additional image link, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/6324370?hl=en</p>
+
+  <p>An additional image below the minimum won’t be shown, but it does not itself disapprove the product. That exception is about size, not permission to add promotional overlays.</p>
+
+  <h2>How does lifestyle_image_link differ?</h2>
+
+  <p>This optional attribute supplies a scene for free listings: the product in use, staged in a room, or shown as part of a set. It is not a replacement for the required main image.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Check</th>
+          <th scope="col">Specification</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Number</th>
+          <td>Up to 5 lifestyle images</td>
+          <td>Lifestyle image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Minimum</th>
+          <td>600 x 600 px on the attribute-specific page</td>
+          <td>Lifestyle image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Recommended size</th>
+          <td>Highest-resolution full-size image available, within the caps</td>
+          <td>Lifestyle image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Maximum</th>
+          <td>64 MP and 16 MB</td>
+          <td>Lifestyle image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Formats</th>
+          <td>JPEG, WebP, PNG, GIF, BMP, TIFF</td>
+          <td>Lifestyle image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Background</th>
+          <td>Real-world or staged context; no borders or padding</td>
+          <td>Lifestyle image link</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote class="evidence">The lifestyle attribute permits up to 5 images, requires at least 600 x 600 pixels, and gives upper limits of 64 megapixels and 16 MB. Its aspect-ratio range is printed as “2:0 and 2:3”; the first value is unusable. Method: direct reading of the attribute page, with that defect left uncorrected.</blockquote>
+  <p class="source">Source: Google Merchant Center Help, Lifestyle image link, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/9103186?hl=en</p>
+
+  <p>Google’s general Image best practices page applies primary-image resolution guidance to lifestyle images. The attribute page still requires 600 x 600. Use the higher minimum. The malformed ratio has no verified correction; check the intended crop in Merchant Center before preparing the full set.</p>
+
+  <p>Source for the general guidance: Google Merchant Center Help, Image best practices, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/18353357?hl=en</p>
+
+  <h2>What gets a Merchant Center image rejected?</h2>
+
+  <p>Read the issue named in Needs attention before changing the artwork. Google may simply be unable to fetch the file.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Problem</th>
+          <th scope="col">What to change</th>
+          <th scope="col">Google Help source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Added sale text, shipping claims, or a watermark</th>
+          <td>Supply a product image without the promotional layer</td>
+          <td>Text on image</td>
+        </tr>
+        <tr>
+          <th scope="row">A border, placeholder, or unrelated item in the main image</th>
+          <td>Show the actual item sold; keep unrelated props out of the main view</td>
+          <td>Image link</td>
+        </tr>
+        <tr>
+          <th scope="row">Wrong color or pattern</th>
+          <td>Match the pictured variant to the product and landing page</td>
+          <td>Clothing and accessories</td>
+        </tr>
+        <tr>
+          <th scope="row">Broken or blocked URL</th>
+          <td>Serve the actual supported image file at a public, crawlable URL</td>
+          <td>Product image status</td>
+        </tr>
+        <tr>
+          <th scope="row">File extension and format disagree</th>
+          <td>Fix the export and URL so they identify the same format</td>
+          <td>Product image status</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Branding that is part of the physical product differs from a logo added over the photograph. Google permits the former. Its rules also contain specific generic-image exceptions for hardware, vehicles and parts, and software; a placeholder is not automatically acceptable for other categories. A set sold together can appear together; unrelated products are the problem in a main image. AI disclosure labels have a separate exception, explained below.</p>
+
+  <p>Sources: Google Merchant Center Help, Text on image and Image link, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/12158684?hl=en https://support.google.com/merchants/answer/6324350?hl=en</p>
+
+  <p>For URL failures, test the exact submitted address outside a signed-in session. Confirm that Googlebot and Googlebot-Image can fetch it. Fixing the picture won’t repair an inaccessible server path.</p>
+
+  <p>Source: Google Merchant Center Help, How to check and manage your product image status, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/18353079?hl=en</p>
+
+  <h2>Do backgrounds, apparel, and variants need separate treatment?</h2>
+
+  <p>A white background is recommended, not universally mandatory. Google’s Image best practices page accepts staged images that clearly show the item. Its clothing guide recommends showing clothing on a model, while shoes, bags, and accessories appear alone in main images and on a model in additional views.</p>
+
+  <p>For a full-body clothing photo, keep the head and feet in frame.</p>
+
+  <blockquote class="evidence">Google recommends a product filling 75 to 90 percent of the frame. This is framing guidance, not a published width-versus-area measurement formula. Method: read the recommendation in the Image best practices page.</blockquote>
+  <p class="source">Source: Google Merchant Center Help, Image best practices, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/18353357?hl=en</p>
+
+  <p>The clothing guide says both main and additional images should show the variant being sold, with the correct option selected on the destination page. Name the export for that variant and check it against the selected option, especially when similar finishes share a folder.</p>
+
+  <p>Source: Google Merchant Center Help, Best practices for advertising clothing and accessories, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/7348545?hl=en</p>
+
+  <p>Use the <a href="/resources/how-to/ai-white-background-packshot">white background packshot guide</a> for production. The <a href="/resources/specs">Platform specs</a> hub, <a href="/resources/insights/amazon-product-image-requirements">Amazon product image requirements</a>, and <a href="/resources/insights/shopify-product-image-sizes">Shopify product image sizes</a> cover other destinations. The <a href="/solutions/platforms/shopify">Shopify platform page</a> explains the store workflow; its image settings do not replace Merchant Center’s feed rules.</p>
+
+  <h2>What metadata must AI-generated product images retain?</h2>
+
+  <p>The next check is in the file, not the visible picture.</p>
+
+  <p>Google allows AI-generated imagery subject to its image rules and requires metadata identifying that origin. Preserve the embedded IPTC DigitalSourceType property through export and delivery.</p>
+
+  <blockquote class="evidence">“Don’t remove embedded metadata tags” is Google’s instruction for images created with generative AI. Method: direct reading of the additional-image attribute’s metadata rule, also present on the main and lifestyle pages.</blockquote>
+  <p class="source">Source: Google Merchant Center Help, Additional image link, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/6324370?hl=en</p>
+
+  <p>IPTC’s identifier <code>trainedAlgorithmicMedia</code> describes content created with a trained generative model. <code>compositeSynthetic</code> describes a composite with generative elements. A photographed product in an AI-made setting fits that definition; this is an application of the vocabulary, not a separate Google exemption for backgrounds. <code>algorithmicMedia</code> covers a different process: algorithmic creation without a model trained on sampled content. Use the value that describes how the image was made.</p>
+
+  <p>Source: IPTC NewsCodes, Digital Source Type vocabulary, checked October 23, 2026. https://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia https://cv.iptc.org/newscodes/digitalsourcetype/compositeSynthetic https://cv.iptc.org/newscodes/digitalsourcetype/algorithmicMedia</p>
+
+  <p>The Image studio supports output up to 4K, depending on the engine. Its transparent-background option is limited to the ChatGPT Image 2.5 engines with PNG or WebP. The free Image editor can crop the result. These are production tools, not a Merchant Center connection.</p>
+
+  <blockquote class="evidence">hubStudio’s help center documents output up to 4K and limits transparent output to its ChatGPT Image 2.5 engines in PNG or WebP. Method: checked against the current Image studio help and the binding product description.</blockquote>
+  <p class="source">Source: hubStudio Help, Create an image, checked October 23, 2026. https://www.hubstudio.ai/help/create-an-image</p>
+
+  <p>Choose Download image for the original render.</p>
+
+  <p>Do not use Download clean copy or an Image anonymizer export for a feed: they strip the embedded markers. After editing, inspect the file itself. A crop or format conversion may leave you with different metadata, and downloading an original does not prove that every required tag is present.</p>
+
+  <p>If tags are missing, correct them before submission and inspect the file served at the final image URL. The <a href="/services/design/ecommerce">eCommerce design service</a> covers work made with the studio team inside the app.</p>
+
+  <p>Source: hubStudio Help, Create an image and Assets Library and the tools, checked October 23, 2026. https://www.hubstudio.ai/help/assets-library</p>
+
+  <h2>Will automatic image improvements fix a disapproval?</h2>
+
+  <p>They may fix an overlay. Google says automatic image improvements are off by default; enable them under Products, Automations. Merchant Center then tries to remove detected text, watermarks, or logos. Successful changes can replace the image and restore approval. Inspect the result in Needs attention, where affected products show the original and improved images.</p>
+
+  <p>Google also exempts AI disclosure labels from its overlay and watermark prohibitions. Do not treat that exception as permission to add a sale badge, or as a substitute for the embedded metadata rule. This is production practice, not legal advice.</p>
+
+  <p>Source: Google Merchant Center Help, Allow Merchant Center to improve your product images, undated, accessed October 23, 2026. https://support.google.com/merchants/answer/12724659?hl=en</p>
+
+  <h2>FAQ</h2>
+
+  <h3>What size should Google Shopping images be?</h3>
+
+  <p>Use Google’s recommendation of around 1500 x 1500 pixels or above as the starting point for main and additional images. Check both pixel count and file weight before delivery. The minimum is a separate question: the table above distinguishes the temporary floors, the incoming general floor, and the lifestyle-specific requirement.</p>
+
+  <h3>Why was my Google Merchant Center image disapproved?</h3>
+
+  <p>Read the issue in Products, Needs attention. It may concern promotional overlays, an undersized image, the wrong product, or a file Google cannot reach. Test the submitted URL before commissioning another image. If the problem is an overlay, replace the image or review the result of automatic image improvements.</p>
+
+  <h3>Can I use AI-generated images in Google Shopping?</h3>
+
+  <p>Yes, if they meet the image rules and contain metadata identifying their AI origin. Preserve the embedded DigitalSourceType property, and inspect the delivered file after editing or conversion. Also compare the visible product with the actual item: a correctly tagged image can still depict the wrong color, shape, or variant.</p>
+
+  <h3>What is the minimum image size for Google Merchant Center in 2027?</h3>
+
+  <p>The general minimum becomes 500 x 500 pixels on January 31, 2027. Prepare replacement main images before that date. Do not apply that number to every attribute without checking: the lifestyle page specifies a higher floor, and TV Shopping ads already have their own requirement. The dated table above keeps those cases separate.</p>
+
+  <h3>Do Google Shopping images need a white background?</h3>
+
+  <p>Not universally. Google recommends solid white or light-neutral backgrounds for main images and also accepts staged images that clearly show the product. Lifestyle images serve a different purpose: context or use. Keep that distinction when preparing the set, and don’t add promotional text simply because an image has a lifestyle setting.</p>
+
+  <h3>What is a lifestyle image in Merchant Center?</h3>
+
+  <p>It shows the product in a setting or in use and is submitted through the optional lifestyle_image_link attribute for free listings. It does not replace the main image. The attribute’s own page sets a higher minimum resolution than the general incoming rule and prohibits borders, padding, promotional elements, and other text.</p>
+
+  <h2>What changed in this review?</h2>
+
+  <p>October 23, 2026: checked the main, additional, and lifestyle attributes; separated current minima from the January enforcement date; documented the lifestyle-page conflict; and checked metadata preservation and automatic image improvements against their source pages.</p>
+
+  <p>Prepare the product views in the <a href="/app/create">Image studio</a>, then check the exported files against the attribute they will serve.</p>
+</ArticleLayout>

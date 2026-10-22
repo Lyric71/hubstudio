@@ -39,7 +39,7 @@ first) and `../SPEC.md`. They override any conflicting rule inside the skill.
 | Hero image | `public/Images/howto-ai-white-background-packshot.webp`, referenced as `/Images/howto-ai-white-background-packshot.webp` |
 | Primary query | `AI product photo white background` |
 | Secondary queries | `how to make amazon main image white background with AI`, `AI packshot white background Google Shopping requirements`, `white background product photo rejected Amazon AI generated`, `Shopify product image size white background` |
-| SERP verdict | The SERP is tool vendor landing pages and blogs selling background removal; they restate Amazon secondhand, claim Google Shopping requires a white background (its Merchant Center page sets no background color), and none sets Amazon, Google and Shopify rules side by side, cites the 75 to 90 percent fill window, the January 31, 2027 size enforcement or Google's AI metadata rule. |
+| SERP verdict | The SERP is tool vendor landing pages and blogs selling background removal; they restate Amazon secondhand, claim Google Shopping requires a white background (Merchant Center recommends white or light-neutral backgrounds but also accepts clear staged images), and none sets Amazon, Google and Shopify rules side by side, cites the 75 to 90 percent fill window, the January 31, 2027 size enforcement or Google's AI metadata rule. |
 | Body length | 1,500 words (body only, per the char-count rule) |
 | Slot requirement | A step sequence, a prompt example, a checklist the reader can use today |
 
@@ -103,7 +103,7 @@ than an unsourced one.
 - Use an em dash anywhere.
 - Print a decorative ordinal inside any repeated titled block.
 - Do not claim the main image is the most rejected asset: no published rejection data
-- Do not say Google Shopping requires a white background: the Merchant Center page sets none
+- Do not say Google Shopping requires a white background: Merchant Center recommends white or light-neutral backgrounds, with staged images also acceptable; its apparel guide recommends white or transparent backgrounds (checked October 23, 2026)
 - Do not do pixel arithmetic on the 85 percent fill: Amazon does not define how it is measured
 - Do not describe the contents of the E-commerce packshot skill beyond the help center
 - Do not claim 2,000 pixels for Amazon zoom

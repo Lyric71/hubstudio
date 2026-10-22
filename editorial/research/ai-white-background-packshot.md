@@ -190,3 +190,15 @@ render costs anything" (wrong: Improve with AI is a paid call, corrected);
 improve what they see, and labels suffer first" (unsourced generalization,
 cut); a line that guides commonly call white a Google requirement (alludes to
 other publishers, cut).
+
+## October 23, 2026 background guidance correction
+
+Brief 83 re-read Merchant Center's Image best practices (18353357) and apparel
+recommendations (7348545), twice, HTTP 200. Merchant Center recommends white
+or light-neutral main backgrounds and also accepts clear staged images; the
+apparel page recommends white or transparent. The table, Background paragraph
+and FAQ in this article and its source draft were corrected, with
+howtos.ts dateModifiedISO set to 2026-10-23. The source and rendered brief 51
+were amended. These are recommendations, not a universal background rule.
+The primary captures and full claim record are in
+research/google-merchant-center-image-requirements/ and its research file.

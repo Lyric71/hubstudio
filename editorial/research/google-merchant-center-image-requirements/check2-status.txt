@@ -1,0 +1,133 @@
+Source: https://support.google.com/merchants/answer/18353079?hl=en
+Captured: 2026-10-22T16:42:39.021851+00:00
+HTTP: 200
+Publication date: not displayed on Google Help; see IPTC concept timestamps where present.
+Capture method: HTML article text; unrelated tool promotion omitted; long dashes normalized.
+
+How to check and manage your product image status
+Product images are essential for shoppers discovering your products across Google surfaces. Because Google Merchant Center crawls image URLs you provide in your feed rather than storing uploaded image files directly, tracking the status of your images and resolving review, crawling, or compliance issues quickly is vital to keeping your products approved and active.
+Learn tips for high quality images and feed attributes in
+Images best practices
+.
+On this page
+Check the status of your images
+Understand image statuses and processing timelines
+Troubleshoot common image errors and delays
+Quick tips for uploading your first images
+Upload additional and lifestyle images
+Best practices
+Check the status of your images
+After you submit the URL(s) for image attributes, Google’s automated crawlers retrieve and review your image assets. You can monitor image health and review progress across three primary areas in Merchant Center:
+Merchant Center UI
+Purpose and status check
+Products > Needs attention
+Use this section to diagnose and resolve critical issues causing product disapprovals. You can quickly identify image-related errors, such as promotional overlays, invalid formats, or unreachable URLs, preventing your items from serving.
+Note that you may need to disable "Priority Fixes" to see all issues.
+Products > Needs attention > View History
+Use this link to access a complete history of warnings and historical performance. This page provides an overview of issues including your image trends over time, helping you track resolved issues and monitor overall account health.
+Product details page (Click any item title)
+Use this view for in-depth, item-level troubleshooting of specific products. Here, you can inspect the crawled image thumbnail, check the last crawl timestamp, and review any active policy warning banners to pinpoint exact image issues.
+Understand image statuses and processing timelines
+Google must fetch and evaluate every image URL before an item can serve. New images are typically crawled and approved within 3 days, during which the product remains under review. If you are updating an existing image, we temporarily serve your previously approved image for up to 30 days while the new URL processes to prevent serving disruptions; however, you should always use a unique, new URL to prompt a faster crawl and avoid a detection delay of up to 6 weeks. To prevent timeout disapprovals, ensure your servers are configured to allow immediate access from Googlebot and Googlebot-Image.
+Troubleshoot common image errors and delays
+If your product image is delayed or disapproved, consult this troubleshooting matrix to identify the possible root cause and how to address the error:
+Issue
+Root cause
+How to fix it
+Image processing delay (>3 days)
+Googlebot cannot reach your hosting server, or your server is throttling crawler traffic.
+Ensure robots.txt permits User-agent: Googlebot and User-agent: Googlebot-image.
+Confirm the URL does not redirect through scripts or login screens.
+Test URL accessibility using Search Console’s robots.txt Tester (for self-hosted domains), or run a direct browser or curl check to verify your hosting server returns a clean "200 OK" status instead of 403, 500, or firewall (WAF) blocks.
+Learn
+How to fix: Image processing or experiencing delays
+.
+Unsupported image format / invalid URL
+The URL links to a web page instead of a raw image file, or uses an unsupported format.
+Use supported formats: JPEG (recommended), WebP (recommended), PNG, GIF (non-animated), BMP, or TIFF.
+Verify file extensions match the MIME type (for example, .jpg for JPEG).
+Paste the URL into a browser window; it must render only the raw image.
+Learn
+How to fix: Broken image link
+and
+Invalid image format
+.
+Promotional overlay / watermark
+The image contains text such as "SALE," price tags, shipping banners, or retailer watermarks.
+Remove all overlaid text and logos.
+Submit a clean "hero shot" of the product on a neutral background.
+Review the formatting criteria in
+Images best practices
+.
+Learn
+How to fix: Text on image
+.
+Image too small
+The image doesn’t meet minimum pixel dimensions.
+Provide images of at least 500 × 500 pixels (enforced across all categories starting January 31, 2027).
+For optimal zoom quality and Store Badges, use 1500 × 1500 px or larger.
+Learn
+How to fix: Image too small
+.
+Previous image continues to show
+An existing image was updated on the server, but the image URL remained identical.
+Google may take up to 6 weeks to recrawl an unchanged URL.
+Fix: Rename the image file (for example, item_v2.jpg) and submit the new unique URL to prompt a re-crawl within 24–72 hours.
+Learn
+How to fix: Image processing or experiencing delays
+.
+Quick tips for uploading your first images
+If you are a new merchant setting up your inventory for the first time, Google accesses your product photos via the image web links (URLs) you provide in your product data. Ensure Google can read your links on the very first try by following these simple preparation rules:
+Use direct, public Links
+: Your URLs must link directly to the raw image file (for example, ending in .jpg or .png). Do not use links that go to a general store web page, a drive preview, or password-protected directories.
+Confirm crawler access
+: Google's crawlers (Googlebot and Googlebot-image) must have permission to view your website's files. Ensure your website hosting provider or security settings do not block automated traffic.
+Keep links stable
+: Avoid using temporary URLs that change every time your site updates. Stable links prevent unnecessary re-crawling backlogs.
+Access the
+Image link
+[image_link]
+to learn more about exact Image guidelines, formatting requirements, and feed specifications.
+Upload additional and lifestyle images
+Broaden buyer confidence by presenting alternative angles, packaging details, and real-world usage:
+Attribute
+Maximum limit
+Intended content
+Feed/API syntax
+Additional image link
+[additional_image_link]
+Up to 10 image URLs per item.
+Alternative angles, close-up textures, packaging, or dimension diagrams.
+• CSV/TSV: Comma-separated URLs.
+• XML: Repeat
+<g:additional_image_link>
+tags.
+• API: String array in
+additionalImageLinks
+.
+Lifestyle image link
+[lifestyle_image_link]
+Multiple URLs allowed.
+Staged settings, non-white backgrounds, models wearing apparel, or styled room settings.
+• Merchant API: String array in
+lifestyleImageLinks
+.
+• Feed CSV/TSV Format:
+lifestyle_image_link
+column.
+• Feed XML Format:
+<g:lifestyle_image_link>
+tag.
+Best practices
+When updating product photography, follow these best practices to avoid delays and mismatched customer experiences:
+Always use a new URL
+: When changing an image, do not overwrite the image file while preserving the old URL. Modifying the file name (for example, product-v2.jpg) forces Googlebot to prioritize the recrawl within 24–72 hours rather than waiting up to 6 weeks. Before submitting updated image URLs in your feed, open each link in a web browser to verify that the image loads directly without errors or redirect issues.
+Manage the 30-day transition window
+: When you change an image URL for an existing approved product, Google continues serving the previous approved image for up to 30 days while evaluating the new asset.
+Prevent variant and attribute conflicts
+: Because the fallback image displays during processing, do not change associated product attributes (such as color or pattern) without verifying they still match the fallback image. If a critical visual conflict occurs, revert the attribute change or assign a brand-new item ID
+[id]
+.
+Was this helpful?
+How can we improve it?
+Submit

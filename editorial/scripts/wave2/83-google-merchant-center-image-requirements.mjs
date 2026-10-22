@@ -19,19 +19,20 @@ export default {
     "google shopping lifestyle image requirements",
   ],
   verdict:
-    "Feed-tool vendors and agency blogs hold the top ten, each repeating one list of minimum size, file cap and formats with no date; a few report the 500 x 500 minimum from January 31, 2027, almost none separates image_link, additional_image_link and lifestyle_image_link, and none puts Google's AI image metadata rule next to the size rules.",
+    "Live search checked October 23, 2026: official Google Help pages occupy many returned positions. The useful gap is reconciling their current and future minima, the lifestyle-specific exceptions, and AI metadata preservation in one dated production handoff. No ranking claim about an excluded publisher is retained.",
   words: 1500,
   angle:
     "The page that maps every rule to the attribute it governs (image_link, additional_image_link, lifestyle_image_link) and to the disapproval it triggers, carries the January 31, 2027 minimum-size change with Google's own wording and date, and states Google's rule on AI-generated product images: keep the metadata the engine wrote. Read from Merchant Center Help only, with a visible Reviewed date.",
   mustInclude: [
     "A spec table per attribute (image_link, additional_image_link, lifestyle_image_link): minimum size, recommended size, file size cap, accepted formats, background rule",
-    "The minimum-size change Google announced for January 31, 2027, in Google's words, with the date of the announcement and what happens to a product that misses it",
-    "What gets an image disapproved, each tied to the Merchant Center Help page that states it: promotional overlays, watermarks, borders, placeholder or generic images, several products in a main image, an image that misrepresents the product",
+    "The minimum-size change enforced January 31, 2027, in Google's words, with the help-page access date (the page does not publish an announcement date); distinguish product disapproval from suppression of an undersized additional image",
+    "What gets an image disapproved, tied to its Google Help page: promotional overlays, watermarks, borders, placeholders outside category exceptions, unrelated products not sold together in a main image, and incorrect variants. Keep permitted bundles separate from unrelated products. AI disclosure labels have an explicit exception on Google's automatic-improvements page.",
     "Google's rule on generative AI images in Merchant Center, quoted: keep the IPTC DigitalSourceType tag (trainedAlgorithmicMedia, or the composite value for an AI background on a real photo) that marks the file, never strip it",
     "Google's own automatic image improvements in Merchant Center, only as Google describes them",
     "Any separate rule Merchant Center Help states for apparel and for variants",
     "How the hubStudio app fits, inside its facts: renders up to 4K in the Image studio, a transparent background on the ChatGPT Image 2.5 engines only, in PNG or WebP (ChatGPT Image 2 cannot cut a subject out; amended 2026-10-17 from create-an-image.md), the free Image editor to crop; for a feed, download the original file, never the clean copy or the Image anonymizer output, because both remove the AI-generation markers Google asks you to keep",
     "A visible Reviewed date under the H1 and a dated changelog block at the foot",
+    "Keep the lifestyle attribute's 600 x 600 minimum beside the general 500 x 500 rule. Its upper aspect-ratio bound is printed as 2:0 and cannot be used; report the malformed value, never silently correct it. Use its own 64 MP and 16 MB guidance. Distinguish recommended white/light-neutral backgrounds from a universal requirement, using Google's Image best practices and apparel help pages.",
   ],
   doNot: [
     "Cite anything but Merchant Center Help, Google Ads Help or Google's own announcements for a number",
@@ -74,5 +75,5 @@ export default {
   ],
   cta: "Create your account",
   notes:
-    "Primary sources only: Merchant Center Help and Google's own announcements. Watch rows: the quarterly recheck due 2027-01-29, and the 500 x 500 enforcement date 2027-01-31 (rewrite the dated box once it is in force).",
+    "Primary sources only: Merchant Center Help and Google's own announcements. Watch rows: the quarterly recheck due 2027-01-23 (three months after the actual review), and the 500 x 500 enforcement date 2027-01-31 (rewrite the dated box once it is in force).",
 };

@@ -39,7 +39,7 @@ Amazon's US store, Google Merchant Center and Shopify's help center.
 
 | Rule | Amazon (MAIN image) | Google Merchant Center (image_link) | Shopify |
 |---|---|---|---|
-| Background | Pure white, RGB 255, 255, 255 | No color set on the page | No rule; your theme decides |
+| Background | Pure white, RGB 255, 255, 255 | White or light neutral recommended; clear staged images also accepted | No rule; your theme decides |
 | Product fill | 85 percent of the image | 75 to 90 percent (best practice) | No rule |
 | Minimum size | 500 px on the longest side; 1,000 or more turns on zoom | 500 x 500 px, for all products from January 31, 2027; 1500 x 1500 recommended | None stated; 2048 x 2048 recommended for square |
 | Maximum | 10,000 px on the longest side | 64 megapixels and 16 MB | 5000 x 5000 px or 25 megapixels, under 20 MB |
@@ -76,11 +76,10 @@ sells on Google inherits Google's rules for the same image.
 
 In four places, and each one changes how you make the file.
 
-**Background.** Google's Merchant Center page for the main image sets no
-background color at all. The line about "a solid white or transparent
-background" sits on Google's Manufacturer Center page, as a best practice for
-brands that submit product data. White is still the safe choice everywhere.
-It's Amazon's rule, though, not Google's.
+**Background.** Google's Merchant Center best practices recommend a solid white or light-neutral background, while also accepting staged images that clearly show the product. Its apparel guide recommends white or transparent backgrounds. White is a useful shared production choice, but it is not a universal Merchant Center requirement.
+
+Source: Google Merchant Center Help, Image best practices and Best practices for advertising clothing and accessories, pages undated, read October 23, 2026.
+https://support.google.com/merchants/answer/18353357?hl=en and https://support.google.com/merchants/answer/7348545?hl=en
 
 **Fill.** Amazon asks for 85 percent. Google wants 75 to 90 percent and warns
 that it may test subtle crops of its own. Neither page says whether the
@@ -248,11 +247,7 @@ placeholders.
 
 ### Does Google Shopping require a white background?
 
-Not on the Merchant Center page for the main image, read October 8, 2026. That
-page bans promotional overlays, borders, watermarks and placeholders, and asks
-for 75 to 90 percent fill. The white or transparent background line sits on
-Google's Manufacturer Center page as a best practice. White remains the safe
-choice.
+No. Merchant Center recommends a solid white or light-neutral background for the main image, but also accepts staged images that clearly show the product. Its apparel guide recommends white or transparent backgrounds. These are recommendations, not a universal background-color requirement. This guidance was rechecked on October 23, 2026.
 
 ### What size should a white-background product photo be?
 

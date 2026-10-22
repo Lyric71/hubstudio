@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'google-merchant-center-image-requirements',
+    image: '/Images/insight-google-merchant-center-image-requirements.webp',
+    imageAlt:
+      'A sage-green enamel kettle on a white paper sweep beside a worn studio worktable, with a hand adjusting the paper edge.',
+    category: 'Platform specs',
+    tone: 'orange',
+    title: 'Google Shopping image requirements for 2026',
+    deck: 'Match each product image to its feed attribute, prepare for the new minimum size, and keep AI metadata through the final export for Merchant Center.',
+    date: 'October 23, 2026',
+    dateISO: '2026-10-23',
+    readingTime: '9 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'Google Merchant Center Image Requirements 2026 | hubStudio',
+    metaDescription:
+      'Google Shopping image rules per attribute: sizes, file caps, formats, what gets disapproved, the 500 px minimum from January 2027 and the AI image rule.',
+  },
+  {
     slug: 'shopify-product-image-sizes',
     image: '/Images/insight-shopify-product-image-sizes.webp',
     imageAlt:

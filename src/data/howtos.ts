@@ -218,7 +218,7 @@ export const howtos: Howto[] = [
     deck: 'Amazon, Google and Shopify set different main-image rules. One AI packshot can clear all three if you build it to the overlap.',
     date: 'October 8, 2026',
     dateISO: '2026-10-08',
-    dateModifiedISO: '2026-10-17',
+    dateModifiedISO: '2026-10-23',
     readingTime: '10 min read',
     author: 'Cyril Drouin',
     metaTitle: 'AI White-Background Product Photos That Pass | hubStudio',

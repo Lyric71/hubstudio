@@ -49,6 +49,7 @@ const ARTICLES: Record<string, string> = {
   'europe-campaign-localization': 'localiser-une-campagne-en-europe',
   'facebook-post-specs': 'facebook-formats-des-publications-reels-et-stories-2026',
   'geo-vs-seo': 'geo-ou-seo',
+  'google-merchant-center-image-requirements': 'google-merchant-center-exigences-images',
   'hisense-self-serve-content-platform': 'hisense-une-plateforme-de-contenu-en-libre-service',
   'holiday-content-calendar-2026': 'calendrier-des-contenus-des-fetes-2026',
   'how-many-variants-a-china-launch-needs': 'combien-de-declinaisons-pour-un-lancement-en-chine',

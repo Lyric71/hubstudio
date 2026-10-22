@@ -2971,3 +2971,39 @@ Do not publish (logged 2026-10-22, brief 82):
 |---|---|---|---|
 | Text expansion percentages (200 to 300 percent under 10 characters, 130 percent over 70) | W3C article quoting IBM design guidelines | No sample or method on the page; brief 82 bans a percentage without one | 2026-10-22 |
 | Colors and gestures that offend by country | Localization and ad-tool blogs ranking for localization queries | Asserted without a primary source | 2026-10-22 |
+
+## Added 2026-10-23 (brief 83, Google Merchant Center image requirements)
+
+Every Google Help page is undated, accessed October 23, 2026. These are primary
+platform specifications, not sample-based research or measured performance.
+Google publishes and funds its help; IPTC maintains its vocabulary. Check 1
+and check 2 were separate HTTP fetches, all 200, with identical evidence text.
+Captures: research/google-merchant-center-image-requirements/check1-*.txt and
+check2-*.txt; five timestamped screenshots and the full claims table accompany them.
+
+| Figure or rule | Attribution to use | Source | Date | Confidence | Check 1 | Check 2 | Used in |
+|---|---|---|---|---|---|---|---|
+| Main required; around 1500 x 1500 or above recommended; no larger than 64 MP or 16 MB; JPEG, WebP, PNG, GIF, BMP, TIFF | Google Merchant Center Help, Image link, undated, accessed October 23, 2026 | https://support.google.com/merchants/answer/6324350?hl=en | accessed 2026-10-23 | primary | 2026-10-23 | 2026-10-23 | 83 |
+| General 500 x 500 minimum enforced January 31, 2027; before then 100 x 100 non-clothing, 250 x 250 clothing; warnings from July 2026; TV Shopping ads already require 500 x 500 | Google Merchant Center Help, Image too small, undated, accessed October 23, 2026 | https://support.google.com/merchants/answer/12159030?hl=en | accessed 2026-10-23 | primary | 2026-10-23 | 2026-10-23 | 83 |
+| Additional: up to 10; 1500 x 1500 or above recommended; main technical requirements with staging, partial view and bundle exceptions; undersized additional image is not shown but does not disapprove product | Google Merchant Center Help, Additional image link, undated, accessed October 23, 2026 | https://support.google.com/merchants/answer/6324370?hl=en | accessed 2026-10-23 | primary | 2026-10-23 | 2026-10-23 | 83 |
+| Lifestyle: up to 5; 600 x 600 minimum; up to 64 MP and 16 MB; same six formats; highest-resolution full-size original recommended; no border or padding | Google Merchant Center Help, Lifestyle image link, undated, accessed October 23, 2026 | https://support.google.com/merchants/answer/9103186?hl=en | accessed 2026-10-23 | primary | 2026-10-23 | 2026-10-23 | 83 |
+| Lifestyle ratio printed 2:0 to 2:3 is malformed; general best-practice page says primary-image resolution, specific attribute retains 600 x 600 | Google Merchant Center Help, Lifestyle image link and Image best practices, accessed October 23, 2026; conflict described, no replacement ratio invented | https://support.google.com/merchants/answer/9103186?hl=en ; https://support.google.com/merchants/answer/18353357?hl=en | accessed 2026-10-23 | primary conflict | 2026-10-23 | 2026-10-23 | 83 |
+| Solid white/light-neutral main background recommended, clear staged images acceptable; 75 to 90 percent fill recommended | Google Merchant Center Help, Image best practices, accessed October 23, 2026 | https://support.google.com/merchants/answer/18353357?hl=en | accessed 2026-10-23 | primary; updates background guidance in brief 51 | 2026-10-23 | 2026-10-23 | 51, 83 |
+| Apparel guide recommends white/transparent background and clothing on models; accessories alone in main, on-person in additional; keep head/feet for full-body; match variant in main/additional and landing page | Google Merchant Center Help, Best practices for advertising clothing and accessories, accessed October 23, 2026 | https://support.google.com/merchants/answer/7348545?hl=en | accessed 2026-10-23 | primary | 2026-10-23 | 2026-10-23 | 51, 83 |
+| Promotional overlays disallowed; physical product branding allowed; main-image generic-art exceptions scoped to named categories; unrelated items not sold together excluded | Google Merchant Center Help, Text on image and Image link, accessed October 23, 2026 | https://support.google.com/merchants/answer/12158684?hl=en ; https://support.google.com/merchants/answer/6324350?hl=en | accessed 2026-10-23 | primary | 2026-10-23 | 2026-10-23 | 83 |
+| AI-origin metadata required and embedded DigitalSourceType retained; exact vocabulary IDs trainedAlgorithmicMedia, compositeSynthetic, algorithmicMedia | Google Merchant Center Help and IPTC NewsCodes, checked October 23, 2026 | https://support.google.com/merchants/answer/6324370?hl=en ; https://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia ; https://cv.iptc.org/newscodes/digitalsourcetype/compositeSynthetic ; https://cv.iptc.org/newscodes/digitalsourcetype/algorithmicMedia | accessed 2026-10-23; concept dates in captures | primary | 2026-10-23 | 2026-10-23 | 83 |
+| Automatic improvements off by default, may remove overlays and restore approval, inspect original/improved; AI disclosure labels exempt from overlay ban | Google Merchant Center Help, Allow Merchant Center to improve your product images, accessed October 23, 2026 | https://support.google.com/merchants/answer/12724659?hl=en | accessed 2026-10-23 | primary | 2026-10-23 | 2026-10-23 | 83 |
+| Image-too-big headline uses strict below-cap wording, body allows at most 64 MP and 16 MB; production advice keeps below both | Google Merchant Center Help, Image too big, accessed October 23, 2026 | https://support.google.com/merchants/answer/12473903?hl=en | accessed 2026-10-23 | primary conflict | 2026-10-23 | 2026-10-23 | 83 |
+| Public crawlable file URL, supported format matching extension, diagnosis in Products > Needs attention | Google Merchant Center Help, How to check and manage your product image status, accessed October 23, 2026 | https://support.google.com/merchants/answer/18353079?hl=en | accessed 2026-10-23 | primary | 2026-10-23 | 2026-10-23 | 83 |
+| Up to 4K engine-dependent; transparent only ChatGPT Image 2.5 engines with PNG/WebP; original Download image differs from clean-copy metadata stripping; editor crops | hubStudio Help, Create an image and Assets Library and the tools; local help and positioning checked October 23, 2026 | src/content/help/create-an-image.md ; src/content/help/assets-library.md ; hubstudio-positioning.md | checked 2026-10-23 | primary product documentation, no export retention test claimed | 2026-10-23 | 2026-10-23; public URLs also HTTP 200 | 83 |
+
+### Excluded claims, brief 83
+
+| Claim | Why excluded | Logged |
+|---|---|---|
+| A specific date when Google announced the new minimum | Help gives enforcement and warning dates, not a publication date | 2026-10-23 |
+| A silently corrected lifestyle aspect ratio | Source prints an unusable upper bound; no supported replacement | 2026-10-23 |
+| General 500 x 500 rule overrides lifestyle minimum | Attribute-specific page states 600 x 600; conflict is disclosed | 2026-10-23 |
+| Every original download or editor export preserves all required tags | No such guarantee in product documentation; inspect final delivered file | 2026-10-23 |
+| Automatic approval, a fixed approval turnaround or measured image-performance uplift | Neither the official image requirements nor the app documentation establishes these outcomes | 2026-10-23 |
+| White-background recommendations belong only to Manufacturer Center | Merchant Center's own best-practice and apparel pages provide recommendations; brief 51 corrected | 2026-10-23 |

@@ -19,7 +19,7 @@ export default {
     'Shopify product image size white background',
   ],
   verdict:
-    'The SERP is tool vendor landing pages and blogs selling background removal; they restate Amazon secondhand, claim Google Shopping requires a white background (its Merchant Center page sets no background color), and none sets Amazon, Google and Shopify rules side by side, cites the 75 to 90 percent fill window, the January 31, 2027 size enforcement or Google\'s AI metadata rule.',
+    'The SERP is tool vendor landing pages and blogs selling background removal; they restate Amazon secondhand, claim Google Shopping requires a white background (Merchant Center recommends white or light-neutral backgrounds but also accepts clear staged images), and none sets Amazon, Google and Shopify rules side by side, cites the 75 to 90 percent fill window, the January 31, 2027 size enforcement or Google\'s AI metadata rule.',
   words: 1500,
   angle:
     'The main image is the one picture every listing must have, and the one with the strictest rules: no compliant main image and the listing can drop out of search or off Google surfaces. How to make one with AI that passes: the marketplace rules first, read from Amazon\'s, Google\'s and Shopify\'s own help pages and dated; then the method in the hubStudio app, starting from a photo of the real product (Edit an image), the E-commerce packshot skill, the transparent background option, the Image editor crop and save; then the checks.',
@@ -35,7 +35,7 @@ export default {
   ],
   doNot: [
     'Do not claim the main image is the most rejected asset: no published rejection data',
-    'Do not say Google Shopping requires a white background: the Merchant Center page sets none',
+    'Do not say Google Shopping requires a white background: Merchant Center recommends white or light-neutral backgrounds, with staged images also acceptable; its apparel guide recommends white or transparent backgrounds (checked October 23, 2026)',
     'Do not do pixel arithmetic on the 85 percent fill: Amazon does not define how it is measured',
     'Do not describe the contents of the E-commerce packshot skill beyond the help center',
     'Do not claim 2,000 pixels for Amazon zoom',

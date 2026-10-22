@@ -1,0 +1,228 @@
+Source: https://support.google.com/merchants/answer/6324370?hl=en
+Captured: 2026-10-22T16:42:37.040546+00:00
+HTTP: 200
+Publication date: not displayed on Google Help; see IPTC concept timestamps where present.
+Capture method: HTML article text; unrelated tool promotion omitted; long dashes normalized.
+
+Additional image link [additional_image_link]
+Use the additional image link
+[additional_image_link]
+attribute to provide more images for your product beyond the main image you provide in the
+image link
+[image_link]
+attribute. Additional images for your product can appear to potential customers and are commonly used to show a product from different angles or with product staging elements.
+Important: We recently announced new image size requirements of at least 500 x 500 pixels for all products beginning January 31, 2027
+. However, to ensure best performance in all listing formats, we recommend that you provide images 1500x1500 pixels or above.
+On this page
+When to use
+Format
+Minimum requirements
+Best practices
+Examples
+When to use
+Optional
+but recommended for each product
+Format
+Follow these formatting guidelines to make sure Google understands the data you're submitting. Learn
+when and how to submit your product data
+.
+Formatting specifications
+Technical name
+additional_image_link
+Type
+URL (including
+http
+or
+https
+), ASCII characters only, and RFC 3986 compliant
+Limits
+1–2,000 characters
+Supported file formats
+JPEG (.jpg/.jpeg), WebP (.webp), PNG (.png), GIF (.gif), BMP (.bmp), and TIFF (.tif/.tiff)
+The file extensions for these images should correspond to their format.
+Repeated field (
+What's this?
+)
+Include up to 10 additional images
+Schema.org property (
+What’s this?
+)
+No
+File format examples
+To ensure your attribute is recognized correctly, use the formatting specific to your data source type.
+Data source format
+Examples
+Text data sources
+To submit one image,
+submit the (encoded) URL:
+https://www.example.com/image2.jpg
+To submit more than one image (up to 10),
+separate each URL with a comma (
+,
+):
+https://www.example.com/image2.jpg,https://www.example.com/image3.jpg
+Make sure to encode any commas (as
+%2C
+) within the URL, but don’t encode the comma that you use to separate each image URL:
+https://www.example.com/image2
+%2C
+3.jpg
+,
+https://www.example.com/image2
+%2C
+4.jpg
+Alternatively, you can enclose each individual URL with quotation marks (
+“”
+), and separate the URLs with commas, for example:
+“https://www.example.com/image2,3.jpg","https://www.example.com/image2,4.jpg”
+Note that content in the quoted values is treated as a single value. Learn more about
+Quoted attributes
+.
+XML data sources
+<g:additional_image_link>https://www.example.com/image2.jpg </g:additional_image_link> <g:additional_image_link>https://www.example.com/image3.jpg </g:additional_image_link>
+Merchant API
+To format your data, check the
+Merchant API
+resource.
+Minimum requirements
+These are the requirements you'll need to meet to show your product. If you don't follow these requirements, we'll disapprove your product and let you know in your Merchant Center account.
+Meet the requirements for the
+image link
+[image_link]
+attribute. The additional image can also:
+Include product staging or show the product in use.
+Highlight parts of the product
+without showing the entire product.
+Show parts of a bundle
+instead of showing all products in the bundle. When you submit a custom bundle of products, use the
+bundle
+[is_bundle]
+attribute.
+Display the entire multipack.
+When you submit a custom multipack of products, use the
+multipack
+[multipack]
+attribute.
+All images created using generative AI must contain meta data indicating that the image was AI-generated (for example, the IPTC
+DigitalSourceType
+TrainedAlgorithmicMedia
+metadata tag). Don't remove embedded metadata tags such as the IPTC
+DigitalSourceType
+property from images created using generative AI tools, for example
+[unrelated tool example omitted]
+. The following IPTC NewsCodes specify the type of digital source that was used to create the image, and should be preserved:
+TrainedAlgorithmicMedia
+: The image was created using a model derived from sampled content.
+CompositeSynthetic
+: The image is a composite that includes synthetic elements.
+AlgorithmicMedia
+: The image was created purely by an algorithm not based on any sampled training data (for example, an image created by software using a mathematical formula).
+Learn more about
+using AI content label settings and disclosures
+.
+Best practices
+These best practices can help you go beyond the basic requirements to optimize your product data for performance.
+Follow the best practices for the
+image link
+[image_link]
+attribute.
+For example, do not submit:
+Brand-only or logo images
+Blurry or misshapen images
+Images with a watermark, or text not relevant to the image such as trademark or store info
+Submit images that meet the size requirements.
+If you include images that are under the minimum size requirements, your product won’t be disapproved, but your images won’t be shown.
+Use additional images to show the product from different angles or the product being used.
+For example, if the main image shows product packaging, including images of the box contents in the additional images can help customers better understand what they are buying.
+Use lifestyle images.
+Lifestyle images submitted with the
+lifestyle image link
+[lifestyle_image_link]
+attribute are used to showcase your product in a real world context, for example, clothing worn by a model, furniture staged within a room, multiple products displayed as a complete set, or products shown with vivid background colors or presented in playful situations. Read more about
+lifestyle images
+.
+Examples
+Product with one additional image
+Attribute
+Value
+Additional product information
+Image link
+[image_link]
+https://example.com/image1.jpg
+Only the couch on a white background
+Additional image link
+[additional_image_link]
+https://example.com/image2.jpg
+The couch with two pillows and a living room setting
+Product with three additional images
+Attribute
+Value
+Additional product information
+Image link
+[image_link]
+https://example.com/ring1.jpg
+Only the ring on a white background
+Additional image link
+[additional_image_link]
+https://example.com/ring2.jpg
+Only the ring on a white background from a different angle
+Additional image link
+[additional_image_link]
+https://example.com/ring3.jpg
+The ring on a model wearing a matching outfit
+Additional image link
+[additional_image_link]
+https://example.com/ring4.jpg
+The ring inside its gift box packaging
+Attribute
+Value
+Additional product information
+Image link
+[image_link]
+https://example.com/image1.jpg
+Only the pie pan on a white background
+Additional image link
+[additional_image_link]
+https://example.com/image2.jpg
+The end product - a slice of pie on a plate
+Additional image link
+[additional_image_link]
+https://example.com/image3.jpg
+The baker holding the finished pie in the pan
+Additional image link
+[additional_image_link]
+https://example.com/image4.jpg
+The pie pan in close up showing the finished pie
+Bundle
+Attribute
+Value
+Additional product information
+Bundle
+[is_bundle]
+yes
+Image link
+[image_link]
+https://example.com/camerabundle1.jpg
+All products in the bundle on a white background
+Additional image link
+[additional_image_link]
+https://example.com/camerabundle2.jpg
+Only the camera body on a white background
+Multipack
+Attribute
+Value
+Additional product information
+Multipack
+[multipack]
+3
+Image link
+[image_link]
+https://example.com/soap1.jpg
+Only one bar of soap on a white background
+Additional image link
+[additional_image_link]
+https://example.com/soap2.jpg
+Three bars of soap on a white background
+Was this helpful?
+How can we improve it?
+Submit
