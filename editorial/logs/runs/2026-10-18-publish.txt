@@ -157,3 +157,25 @@
 2026-10-18T04:37+08:00 notify-publish.mjs (dry run checked: live, French and Chinese URLs resolve in the repo, 196 entries per language, entry in insights.ts) queued the publish message for the next editorial digest, build passed, note carrying commit 3d186ad.
 2026-10-18T04:37+08:00 watch.csv: no row due on or before 2026-10-18 (earliest due 2026-10-19, singles-day-618-production-calendar). Nothing rechecked.
 2026-10-18T04:38+08:00 end of run: row 78 us-ai-disclosure-rules-brands published in English, French and Chinese (3d186ad); no other row at image_ready, none blocked; the worktree .worktrees/publish-1018 removed after the push. The Gmail, Google Calendar and Google Drive connectors are not authorized in this session; the run did not need them.
+I published one article this run, in English, French and Chinese: row 78, "AI Disclosure in US Ads: FTC, States, Platforms" (`us-ai-disclosure-rules-brands`). It's in commit `3d186ad`, pushed to origin main. The build, `npm run check`, `i18n:local -- check` and `i18n:guard` all passed.
+
+- **Eligible rows:** row 78 was the only one at image_ready. Its notes ask for no decision from a person, so nothing was skipped or blocked.
+- **The article:**
+  - Built with `publish-draft.mjs`, the repo's version of the createblogarticle publish step that earlier runs also used.
+  - Filed under **Rights**, so it appears in the "What legal asks" section on `/solutions/brands`, next to the other disclosure articles. It is also the home page lead and is in all three RSS feeds.
+  - All eight internal links point to live pages.
+  - The French address is `/fr/ressources/analyses/publicite-et-ia-les-regles-de-transparence-aux-etats-unis`.
+- **Translations:** French and Chinese were translated in parallel, three passes each. That covered the article (191 entries per language), its card, the "Latest Rights" label on the home page and insights index, and the index's search description. Each language's glossary got a short section on the US disclosure terms. Both translators' change notes are copied into the run log.
+- **Unrelated uncommitted work:** the main tree holds unfinished work no editorial run made: the feature-videos page, help and pricing dictionaries, the header, the home page, config files, and the runner scripts and docs. It leaves 14 empty translations, which fail the build. So I published from a clean worktree off the last commit and carried over only the files from this morning's draft run.
+- **Main tree sync:** after the push I moved the main tree to the new commit and left that other work unchanged. Five files conflicted:
+  - The schedule clashed on row 78 itself; I took the published version.
+  - The French and Chinese `common.json` and `work.json` differed only in entry order. I merged them entry by entry and added the six new card entries to each `common.json`.
+  - Backups of every touched file are in the session scratchpad.
+- **Also in the commit:** the draft run's correction to `disclosure-audit-trail-per-asset` for California SB 1000, five amended briefs, new rows in the source list, and four new watch rows.
+- **Notification:** `notify-publish.mjs` queued the message for the next editorial digest email, citing commit `3d186ad`.
+- **Watch list:** no row is due yet; the first falls due on 2026-10-19.
+- **Run log:** `editorial/logs/runs/2026-10-18-publish.txt`, committed and pushed as `6746c5a`. The worktree is removed and main matches origin.
+
+The Gmail, Google Calendar and Google Drive connectors aren't authorized in this session; you can connect them in your claude.ai connector settings. This run didn't need them.
+2026-10-18T04:38:40 model Opus 5.5 completed successfully
+2026-10-18T04:38:40 end publish exit 0

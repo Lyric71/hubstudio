@@ -34,6 +34,7 @@ Image anonymizer -> Anonymiseur d’images
 Video editor -> Éditeur vidéo
 Shorts autopilot -> Pilote automatique de shorts
 Image tools / Video tools -> Outils image / Outils vidéo
+Feature videos (the collection, header menu) -> Fonctionnalités en vidéo, as on bearingbridge.com; overview film (/video/overview) -> Présentation vidéo (breadcrumb too)
 Skills -> Compétences; Skills Catalog -> catalogue de compétences; Team skills -> Compétences de l’équipe
 Personal / Team / Catalog (tabs) -> Personnel / Équipe / Catalogue
 team (hubStudio word for organization) -> équipe; Your team -> Votre équipe

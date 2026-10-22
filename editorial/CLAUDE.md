@@ -45,7 +45,7 @@ Every article goes through these steps. None is optional.
 | 3. Image | `/generate-image-openai` | Hero image from the feature-image block | `image_ready`, `image_generated_on` |
 | 4. Publish | `/createblogarticle` + build + git | Creates the article page and the `insights.ts` entry, wires the image, runs `npm run build` and `npm run check`, commits on main, pushes to origin | `published`, `published_on` |
 | 4b. French and Chinese | `src/i18n/TRANSLATING.md` | Inside step 4, before the build: French slug in `src/i18n/routes.ts`, extract, three-pass translation of every new French and Chinese entry (the article and the pages that list it), localized captures if it shows the app, `npm run i18n:local -- check` and `npm run i18n:guard` passing, dictionaries in the same commit | (none: a row is `published` only in three languages) |
-| 5. Notify | `editorial/scripts/notify-publish.mjs` (Resend) | Emails a publish summary to Cyril | (noted in the run log) |
+| 5. Notify | `editorial/scripts/notify-publish.mjs` (digest queue) | Queues a publish summary for the daily 07:00 digest to Cyril | (noted in the run log) |
 
 "Draft today's article." runs steps 0 to 3 and stops. Step 4 runs only when a
 person says "Publish <slug>" after reviewing the draft. Step 5 follows step 4
@@ -487,8 +487,8 @@ When step 4 finishes, run from the repo root:
 node editorial/scripts/notify-publish.mjs --slug <slug> --title "<title>" --build passed --log editorial/logs/YYYY-MM-DD.md --note "<commit hash>"
 ```
 
-It sends one email through Resend (`RESEND_API_KEY` in `.env`) to the address
-in `CONTACT_TO_EMAIL` with the live URL, the hero image path, build status
+It queues one message for the editorial email digest (`C:\Users\cyril\Project\automation\scripts\send-editorial-digest.mjs`), which mails everything waiting as one email a day at 07:00, addressed to
+`CONTACT_TO_EMAIL`, with the live URL, the hero image path, build status
 and the run log path. It has no TODO or open items section: the `--todo`
 option is gone, and the script refuses to send if it is passed or if the note
 carries a TODO, FIXME or TBD marker. Anything still open was supposed to be

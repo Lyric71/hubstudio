@@ -23,7 +23,7 @@
  * Always exits 0, so it never fails the run that calls it.
  */
 
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const FALLBACK_TO = 'cyril.drouin@outlook.com';
@@ -71,6 +71,22 @@ function parseCsv(text) {
 const shanghaiToday = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' });
 const daysBetween = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / DAY);
 const addDays = (iso, n) => new Date(Date.parse(iso) + n * DAY).toISOString().slice(0, 10);
+
+// Alerts go out batched: this script drops its message in the shared queue
+// and the Editorial Email Digest task sends everything waiting as one email
+// once a day at 07:00
+// (C:\Users\cyril\Project\automation\scripts\send-editorial-digest.mjs).
+const OUTBOX = process.env.EDITORIAL_OUTBOX || 'C:\\Users\\cyril\\Project\\automation\\outbox\\pending';
+
+function queueDigest(payload) {
+  mkdirSync(OUTBOX, { recursive: true });
+  const name = `${new Date().toISOString().replace(/[:.]/g, '-')}-hubstudio-queue-${Math.random().toString(36).slice(2, 8)}.json`;
+  const file = path.join(OUTBOX, name);
+  // Written then renamed, so the digest never reads a half written file.
+  writeFileSync(`${file}.tmp`, JSON.stringify({ queued_at: new Date().toISOString(), source: 'hubStudio', ...payload }, null, 2));
+  renameSync(`${file}.tmp`, file);
+  return file;
+}
 
 async function main() {
   loadEnv();
@@ -130,23 +146,10 @@ async function main() {
     console.log(text);
     return;
   }
-  const key = process.env.RESEND_API_KEY;
-  if (!key) {
-    console.log(`alert not sent, RESEND_API_KEY missing: ${subject}`);
-    return;
-  }
   const to = process.env.CONTACT_TO_EMAIL || FALLBACK_TO;
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: FROM, to: [to], subject, text }),
-  });
-  if (!res.ok) {
-    console.log(`alert not sent, Resend ${res.status}: ${subject}`);
-    return;
-  }
+  queueDigest({ to: [to], subject, text });
   writeFileSync(marker, `${new Date().toISOString()} ${text}\n`);
-  console.log(`alert sent to ${to}: ${subject}`);
+  console.log(`alert queued for the editorial digest: ${subject}`);
 }
 
 main().catch((err) => {

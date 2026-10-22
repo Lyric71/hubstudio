@@ -140,3 +140,24 @@ Result: pass2.json and pass3.json carry no change for this unit.
 2026-10-20T04:18+08:00 committed b3b9242 feat(insights): publish shopify-product-image-sizes (only this article's files and hunks; the feature-video and digest-queue work stays uncommitted). The pre-commit optimizer took the hero from 175.5 KB to 157.5 KB. git push origin main succeeded (b007565..b3b9242).
 2026-10-20T04:18+08:00 notify-publish.mjs queued the publish message for the next editorial digest (automation outbox), slug shopify-product-image-sizes, build passed, note carrying commit b3b9242.
 2026-10-20T04:18+08:00 end of run: row 80 shopify-product-image-sizes published in English, French and Chinese (b3b9242). No other row at image_ready, none blocked, no watch row due. The working tree is on the pushed commit, with the unrelated uncommitted work left as it was.
+I published "Shopify Product Image Sizes for 2026" (`shopify-product-image-sizes`) in English, French and Chinese. It's in commit `b3b9242`, pushed to origin main. The i18n check, the i18n guard, `npm run build` and `npm run check` (0 errors) all passed.
+
+- **Eligible rows:** row 80 was the only row at image_ready, and its notes ask for no decision. It is now set to published (2026-10-20).
+- **The article:**
+  - I built it with the repo's publish script as a spec page, filed under **Platform specs**, so the specs hub lists it under Shopify.
+  - It is the new home page lead.
+  - All five internal links point to live pages.
+  - French address: `/fr/ressources/analyses/shopify-tailles-des-images-produit-2026`.
+  - I checked the app facts it states (up to 4K depending on the engine, Square 1:1, the 2048 px quick pick, the 4,096 px editing limit) against the help center.
+  - I removed a duplicate "By Cyril Drouin" from the Reviewed line, since the page layout already shows the byline.
+  - I embedded no app screenshots: insight pages carry none, and the existing ones show a portrait crop, not the square export the page describes.
+- **Translations:** French and Chinese were each done in three passes. Shopify's own French and Chinese help pages supplied the page titles, admin labels and the one direct quote. Both glossaries gained a short block of Shopify terms, and both translators' change notes are in the run log.
+- **Fixes to the Chinese:** the translator wrote pixel sizes with a plain "x". The glossary already settles "×", so I changed it everywhere except inside Shopify's quoted sentence. For the same consistency, one Chinese line on the white-background packshot guide now uses Shopify's word for "theme" (模板).
+- **Watch list:** no row is due; the earliest is 2026-10-26.
+- **Notification:** queued for the next 07:00 editorial digest, citing the commit.
+- **Run log:** closed and pushed in `5bd6c3a`.
+- **The draft run's log is large:** the morning draft run's console log, committed with the article, is 3.9 MB. Earlier draft logs are about 5 KB. I scanned it before committing and it contains no API keys.
+
+Your uncommitted feature-video work and the change that sends editorial email as one daily digest are still uncommitted and untouched. The article shares four files with that work: `routes.ts`, both `common.json` files and the glossaries. In those I committed only the article's lines.
+2026-10-20T04:18:53 model Opus 5.5 completed successfully
+2026-10-20T04:18:53 end publish exit 0

@@ -15,8 +15,9 @@
              left, so an empty queue never goes unnoticed.
     publish  Publishes every row in editorial/schedule.csv whose status is
              image_ready, in English, French and Chinese (the translation
-             step starts its own dev server: npm run i18n:local), then sends
-             the Resend email. A finished draft goes
+             step starts its own dev server: npm run i18n:local), then queues
+             the notification for the editorial digest (one email a day at
+             07:00). A finished draft goes
              live the next morning rather than waiting for its publish_date.
 
   publish_date orders the queue. It never gates a run, in either mode.
@@ -56,7 +57,7 @@ if (-not $Force -and (Get-Date).Date -lt $PlanStart) {
   exit 0
 }
 
-# The shared runner uses: Opus 5.5, then Fable, GPT-6 Astra and GPT-5.6 Sol as fallbacks.
+# The shared runner uses: Opus 5.5, then Fable, GPT-6 Astra, GPT-5.6 Sol and Gemini 4 Argon as fallbacks.
 $Model = 'claude-opus-5-5'
 
 if ($Mode -eq 'draft') {

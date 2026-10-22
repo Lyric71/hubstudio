@@ -1,67 +1,96 @@
 # hubStudio positioning and messaging (binding)
 
 The single source for what hubstudio.ai says and how the site is organized.
-Written September 29, 2026, for the site reorg around two offers. Every page,
-component, meta tag, alt text and llms file follows it. When a page disagrees
-with this file, the page is wrong.
+Updated October 21, 2026, for the two-pillar architecture (Creative assets and
+Social networks) across both the App (the core) and Services (our added value).
+Every page, component, meta tag, alt text and llms file follows it. When a page
+disagrees with this file, the page is wrong.
 
 ## The one idea
 
-hubStudio makes images, video and social content with AI. **Use the app and
-make it yourself, or have our studio make it for you, inside the app or
-outside it.** We propose both, and a customer can move between them.
+hubStudio is built around **two complementary pillars** across both the **app**
+(the core) and **our services** (our added value):
+
+- **Pillar · Creative assets**: text, images, and videos.
+- **Pillar · Social networks**: posts, campaigns, publishing, paid social, and
+  executive advocacy across Western and Chinese networks.
+
+**Use the app on your own, or work with our team inside the app.** The app is
+the core. Our services are the added value on top of it: our creatives and
+social managers work with you inside the same workspace, where you validate and
+publish.
 
 Order of importance on the site: **the app comes first** (the primary action
-everywhere is creating an account), **the studio comes a close second** (the
-secondary action everywhere is sending a brief). Neither is an afterthought.
+everywhere is creating an account), **our services come a close second** (the
+secondary action everywhere is sending a brief). Neither is an afterthought, and
+every page expresses how the app and our services complete each other.
 
-## The two offers
+## The two offers & two pillars
 
-### The hubStudio app
+### The hubStudio app (the core)
 
-A web app where a person or a team makes images and video with the AI engines
-of several makers, edits them, turns them into posts, gets them approved, and
-publishes or delivers them to clients. Self-serve, open sign-up.
+A web app where a person or a team creates creative assets (text, images, video)
+with the AI engines of several makers, edits them, organizes campaigns, drafts
+and schedules social network posts across Western and Chinese channels, and runs
+client or team approvals in Validation. Self-serve, open sign-up.
 
 - Address: `https://hubstudio.bearingbridge.com` (sign-up `/signup`, sign-in
   `/login`). Use the constants in `src/lib/links.ts`, never a hard-coded URL.
 - Help center: `/help` on this site (synced from the app repo, do not edit it
   by hand).
 
-### The hubStudio studio
+### Our services (the added value)
 
-The human creative production house: senior art directors, designers,
-retouchers, motion designers, writers and AIGC specialists who take a brief and
-deliver finished work. Twenty service lines. Brand-trained models and GPU
-pipelines run by the studio team. Hong Kong headquarters; studios in Shanghai
-and Changsha and a team in the Philippines; an office in Paris.
+The human creative and social team working inside hubStudio across the same two
+pillars:
 
-## The three ways to work (locked names)
+- **Services · Creative assets**: senior art directors, designers, retouchers,
+  motion designers, writers and AIGC specialists working across twenty studio
+  service lines (`/services/design/*`). Brand-trained models and GPU pipelines
+  run by the studio team.
+- **Services · Social networks**: social strategists, editors, community
+  managers and media buyers who run your presence across Western networks
+  (LinkedIn, Instagram, Facebook, TikTok, X, YouTube) and Chinese networks
+  (WeChat, RedNote, Douyin, Weibo). Three service areas:
+  - **Content & page management**: editorial positioning, monthly content
+    calendars, post writing, visuals/carousels/short video, community
+    management, and scheduling in the app.
+  - **Paid social & advertising**: campaign strategy, ad formats, audience
+    targeting, retargeting, A/B testing, and media optimization.
+  - **Consulting, advocacy & training**: executive ghostwriting, employee
+    advocacy programs, channel audits, and hands-on workshops.
+
+Hong Kong headquarters; studios in Shanghai and Changsha and a team in the
+Philippines; an office in Paris.
+
+## The two ways to work (locked names)
 
 Use these names verbatim wherever the choice is presented. Never number them.
 
-| Name | Who makes the work | What the customer does | Primary action |
+| Name | Who does the work | What the customer does | Primary action |
 |---|---|---|---|
-| **Use the app** | The customer's own team | Creates, edits, publishes in hubStudio, pays as it goes from a prepaid balance | Create your account |
-| **Studio + app** | Our studio, working inside hubStudio | Reviews, comments and approves in the app (Validation, Client space), downloads, publishes | Send a brief |
-| **Studio only** | Our studio, outside the app | Sends a brief, receives finished files; no account needed | Send a brief |
+| **Use the app** | The customer's own team (client alone) | Creates assets, plans campaigns, and publishes to social networks in hubStudio, paying as it goes from a prepaid balance | Create your account |
+| **Work with us in the app** | Client + our team working together in hubStudio | Our team creates assets, writes posts, and runs social campaigns inside the app; the customer reviews, validates, and publishes in Client space or its own workspace | Send a brief |
 
-How **Studio + app** works, and only this (it is what the app really supports):
+How **Work with us in the app** works, and only this (it is what the app really
+supports):
 
-- **In our workspace.** The studio works in its own hubStudio team, tags the
-  work "Made for" the customer, and gives the customer's people client logins.
-  They see a **Client space** with only the finished work made for them: they
-  download it, comment, and approve or send it back in **Validation**. They
-  never see prompts, engines or costs, and they hold no balance.
+- **In our workspace (Client space).** Our team works in its own hubStudio
+  workspace, tags the assets and social posts "Made for" the customer, and gives
+  the customer's people client logins. They see a **Client space** with only the
+  finished work and scheduled posts made for them: they download assets,
+  comment, and approve or send items back in **Validation**. They never see
+  prompts, engines or costs, and they hold no balance.
 - **In the customer's workspace.** The customer has its own hubStudio team and
-  adds our creatives as members. We create from their workspace and their
-  balance; their admins approve in Validation; everything stays in their
-  History and Assets Library when the project ends.
+  adds our creatives and social managers as members. We create assets and
+  schedule posts from their workspace and their balance; their admins approve in
+  Validation; everything stays in their History, Assets Library and publishing
+  queue when the project ends.
 - Versions (v1, v2 and so on) stay on one approval thread, and nothing on that
   thread can be deleted, so the record of who approved what is permanent.
 
 There is **no "order from the studio" button inside the app**. Never claim one.
-A studio engagement starts with a brief sent through `/contact`.
+A service engagement starts with a brief sent through `/contact`.
 
 ## Money: how to talk about it
 
@@ -83,7 +112,7 @@ A studio engagement starts with a brief sent through `/contact`.
   time out after the engine has billed it, and the form warns about it. Gemini
   Omni Flash is billed after the render, so its price is not shown before.
 - **No amounts, ever.** No dollar or yuan figures, no "from $X", no rate per
-  image or per second, no markups, no "1 credit = 1 USD". The studio's rates are
+  image or per second, no markups, no "1 credit = 1 USD". Service rates are
   never published either (asset-based, project-based or retainer, quoted after
   a brief; a written proposal within 48 hours).
 - **One exception, the onboarding offer** (owner decision, October 8, 2026):
@@ -96,14 +125,15 @@ A studio engagement starts with a brief sent through `/contact`.
 ## App facts you may use (and nothing beyond them)
 
 - **How the app is organized** (owner decision, October 14, 2026, as the
-  app's own menu): three pillars, each with its colour, and an AI layer over
-  them. **Create** (`#e94e1b`): Explore, Image, Video, Image editor, Image
-  anonymizer, Video editor, Shorts autopilot. **Publish** (`#3f6fe0`):
-  Campaigns, LinkedIn, Instagram, Facebook, TikTok, X, YouTube. **Library**
-  (`#1fa58a`): Assets Library, History, Validation, PDF. **AI layer**
-  (Agents and Skills): the header band of the app, working across all three,
-  never a pillar. French: Créer, Publier, Bibliothèque, la couche IA. Chinese:
-  创作, 发布, 管理, AI 层. The colours are the `--pillar-*` tokens of
+  app's own menu): three modules mapped to the two pillars and shared library,
+  each with its colour, and an AI layer over them. **Create · Creative assets**
+  (`#e94e1b`): Explore, Image, Video, Image editor, Image anonymizer, Video
+  editor, Shorts autopilot. **Publish · Social networks** (`#3f6fe0`):
+  Campaigns, LinkedIn, Instagram, Facebook, TikTok, X, YouTube. **Library &
+  Validation** (`#1fa58a`): Assets Library, History, Validation, PDF. **AI
+  layer** (Agents and Skills): the header band of the app, working across all
+  three, never a pillar. French: Créer, Publier, Bibliothèque, la couche IA.
+  Chinese: 创作, 发布, 管理, AI 层. The colours are the `--pillar-*` tokens of
   `src/styles/global.css`; the home page and the header's App panel follow
   this order.
 - **PDF** (Library pillar, added October 14, 2026): eight PDF tools in the
@@ -206,15 +236,22 @@ A studio engagement starts with a brief sent through `/contact`.
 Never claim for the app: brand kits, DAM or PIM connectors, an API, SSO, a
 mobile app, private GPUs, custom model training, a free plan or free trial,
 uptime figures, customer counts, or any feature not listed above. Those either
-do not exist or belong to the studio.
+do not exist or belong to our services.
 
-## Studio facts you may use
+## Services facts you may use
 
-- Senior art directors lead every brief; AIGC production underneath; some
-  assets are shot, some generated, most mix both, decided asset by asset.
-- Twenty service lines (see `/services/design/*`), platform work for Western
-  and Chinese networks and marketplaces (see `/solutions/platforms/*`).
-- Brand-trained models and GPU pipelines, run by the studio team.
+- **Pillar 1 · Creative assets**: senior art directors lead every brief; AIGC
+  production underneath; some assets are shot, some generated, most mix both,
+  decided asset by asset across twenty service lines (`/services/design/*`).
+  Brand-trained models and GPU pipelines run by the studio team.
+- **Pillar 2 · Social networks**: social strategists, editors, community
+  managers and media buyers manage organic content and company/executive pages,
+  run paid social and advertising campaigns, and deliver executive advocacy,
+  ghostwriting, channel audits and team training across Western networks
+  (LinkedIn, Instagram, Facebook, TikTok, X, YouTube) and Chinese networks
+  (WeChat, RedNote, Douyin, Weibo).
+- All service work is delivered and validated inside hubStudio (via Client
+  space or inside the customer's workspace).
 - A producer reads every brief within one business day; a written proposal
   within 48 hours; provenance recorded per asset.
 - Founder: Cyril Drouin, former CEO at Publicis.
@@ -225,17 +262,17 @@ do not exist or belong to the studio.
 ## Retired, never mention
 
 - **hub4You.** Retired completely. No page, link, mention, schema or alt text.
-  Anything it used to describe is either the hubStudio app (self-serve) or the
-  studio (custom work). `/hub4you` redirects to `/app`.
+  Anything it used to describe is either the hubStudio app (self-serve) or our
+  services (working with us in the app). `/hub4you` redirects to `/app`.
 - "Quotation Engine" as a public call to action (the gated tool stays internal).
 - "Not software" claims in `llms.txt` and `/llm-info`: hubStudio now sells
-  both an app and a studio.
+  both an app and added-value services.
 
 ## Voice and house rules
 
 - American English, newsroom register: short sentences, plain words, concrete
   facts, contractions welcome. Second person for the app ("you make"), first
-  person plural for the studio ("we make").
+  person plural for our services ("we make", "we run with you").
 - Headings in sentence case, one Playfair italic accent word per headline
   (`<span class="accent">word</span>`).
 - No em dash character (U+2014) anywhere, including comments. No Chinese
@@ -252,35 +289,44 @@ do not exist or belong to the studio.
 
 | Section | URL | Role |
 |---|---|---|
-| Home | `/` | Both offers, app first |
+| Home | `/` | Two pillars (Creative assets + Social networks) across App (core) and Services (added value) |
 | App | `/app` | App overview, sign-up |
 | | `/app/create` | Explore, Image studio, Video studio, Skills |
-| | `/app/publish` | The five networks, scheduling, re-purposing |
+| | `/app/publish` | Campaigns, social networks, scheduling, re-purposing |
 | | `/app/review` | Validation, Client space, teams and clients |
 | | `/app/library` | Assets Library, with a short Campaigns section |
 | | `/app/campaigns` | Campaigns |
 | | `/app/image-tools` | Image editor, Image anonymizer |
 | | `/app/video-tools` | Video editor, Shorts autopilot |
 | | `/app/engines` | Every engine by maker |
-| Studio | `/studio` | Studio overview, the three ways, the twenty services |
-| | `/studio/with-the-app` | The Studio + app offer |
-| | `/studio/ai-excellence` | How the studio uses AI (moved from `/the-studio/ai-excellence`) |
-| | `/services/design/*` | The twenty service lines (URLs kept) |
+| Services | `/studio` | Services overview across both pillars, the two ways to work, the twenty creative service lines and social network services |
+| | `/studio/with-the-app` | Working with us in the app |
+| | `/studio/ai-excellence` | How our team uses AI |
+| | `/services/design/*` | The twenty creative asset service lines (URLs kept) |
 | Solutions | `/solutions`, `/solutions/*` | Who it is for, consulting, training, AI production, platforms (URLs kept) |
-| Pricing | `/pricing` | App (prepaid balance) and Studio (asset, project, retainer), no amounts |
+| Pricing | `/pricing` | App (prepaid balance) and Services (asset, project, retainer), no amounts |
 | Work | `/work`, `/work/*` | Case studies |
-| About | `/about`, `/about/team`, `/about/team/*` | Company, founder, creative talents (moved from `/the-studio/*`) |
-| Partners | `/partners` | Studio referrals and app partners (moved from `/partner-program`) |
+| About | `/about`, `/about/team`, `/about/team/*` | Company, founder, creative talents |
+| Partners | `/partners` | Service referrals and app partners |
 | Resources | `/resources/*`, `/help` | Insights, how-to, glossary, rights, help center |
 
-Header: App · Studio · Solutions · Work · Pricing · Resources, with **Sign in**,
+Header: App · Services · Solutions · Work · Pricing · Resources, with **Sign in**,
 **Create account** (primary) and **Send a brief** (secondary). The App panel
-lists the modules under Create, Publish and Library, then the AI layer
-(Agents, linked to `/help/agents`; Skills, linked to `/app/create#skills`),
-each module linked to the `/app` page section that covers it.
+lists the modules under Create · Assets, Publish · Social and Library & Review,
+then the AI layer (Agents, linked to `/help/agents`; Skills, linked to
+`/app/create#skills`). The Services panel splits into the two pillars:
+**Pillar · Creative assets** (the six studio groups) and **Pillar · Social
+networks** (Content & page management, Paid social & advertising, Consulting &
+advocacy, Western & China platforms), plus how we work together in the app.
 
-Home page order: hero · the three pillars (with the AI layer bar over them)
-· the AI layer (Agents and Skills, what each does in each pillar) · inside
-the app (module tour grouped by pillar) · engines · what's new · the three
-ways to work · then the studio, its services, Studio + app, work, who it is
-for, pricing, manifesto, insights and the closing.
+Home page order: hero (both pillars + two ways to work + 3-card pillar/completion
+ribbon) · the app's pillars (Create · Creative assets, Publish · Social networks,
+Library & Validation, with the AI layer bar over them) · the AI layer (Agents
+and Skills) · inside the app (module tour grouped by pillar) · engines · what's
+new · the two ways to work (`Use the app` vs. `Work with us in the app`) · our
+services overview (`#studio`, app as core + team as added value) · Services
+Pillar 1: Creative assets (`#services`, 20 service lines) · Services Pillar 2:
+Social networks (`#social-services`, Content & page management, Paid social &
+advertising, Consulting, advocacy & training + Western/China networks strip) ·
+Working together in the app (`#studio-app`) · work · who it is for · pricing ·
+manifesto · insights · closing.

@@ -295,13 +295,17 @@ keys and the full model are all here, and a cloud routine has none of them.
 
 | Task | When (Shanghai) | What | Default |
 |---|---|---|---|
-| hubStudio Editorial Draft | every day 00:30 and 12:30 | `run-daily.ps1 -Mode draft`: one run drafts one row, the earliest `not_started` row in `publish_date` order whatever its date; steps 0 to 3, stops at `image_ready`; then `check-queue.mjs` mails Cyril if drafting stalls or a week or less of briefs is left | enabled |
-| hubStudio Editorial Publish | every day 04:00 and 16:30 | `run-daily.ps1 -Mode publish`: publishes every `image_ready` row whatever its `publish_date`, by its template (insight, spec or howto), builds, commits, pushes, emails | enabled |
+| hubStudio Editorial Draft | every day 00:30 | `run-daily.ps1 -Mode draft`: one run drafts one row, the earliest `not_started` row in `publish_date` order whatever its date; steps 0 to 3, stops at `image_ready`; then `check-queue.mjs` mails Cyril if drafting stalls or a week or less of briefs is left | enabled |
+| hubStudio Editorial Publish | every day 04:00 | `run-daily.ps1 -Mode publish`: publishes every `image_ready` row whatever its `publish_date`, by its template (insight, spec or howto), builds, commits, pushes, emails | enabled |
 
 Wave two (rows dated 8 October to 31 December 2026) is a queue, not a
 release calendar: `publish_date` sets the order and never makes a run wait
-(`CLAUDE.md`, the standing rule under the pipeline table). At two drafts a
-day the pipeline runs ahead of the dates and the queue empties early; the
+(`CLAUDE.md`, the standing rule under the pipeline table). At one draft a
+day the pipeline still runs ahead of the dates and the queue empties early.
+One a day is the ceiling: on 17 October 2026 the second draft (12:30) and
+publish (16:30) runs were removed, because two articles a day was more than
+a young domain should ship. Do not add a second run to empty the queue
+faster; the
 `check-queue.mjs` mail says when a week of briefs is left, which is the time
 to plan the next wave. Its families and where each publishes are in
 `CLAUDE.md`, "Wave two".

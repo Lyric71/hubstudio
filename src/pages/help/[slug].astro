@@ -9,7 +9,9 @@
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 import { APP_URL } from '../../lib/links';
+import FeatureVideo from '../../components/FeatureVideo.astro';
 import { formatDate, helpArticles, helpGroups, type HelpArticle } from '../../lib/help';
+import { VIDEOS_URL, videosForHelp } from '../../lib/feature-videos';
 
 export function getStaticPaths() {
   return helpArticles.map((a) => ({ params: { slug: a.slug } }));
@@ -25,6 +27,8 @@ const next = helpArticles[i + 1];
 const { Content } = article;
 const outline = article.headings.filter((h) => h.depth === 2);
 const updated = formatDate(article.updated);
+/* The feature videos recorded for this article, in the page's language. */
+const videos = videosForHelp(article.slug);
 
 const schema = {
   '@context': 'https://schema.org',
@@ -96,6 +100,26 @@ const schema = {
           )
         }
       </header>
+
+      {
+        videos.length > 0 && (
+          <section class:list={['hp-videos', videos.length > 1 && 'hp-videos--grid']} aria-labelledby="hp-videos-title">
+            <div class="hp-videos__head">
+              <h2 class="hp-videos__title" id="hp-videos-title">
+                Watch how it works
+              </h2>
+              <a class="hp-videos__all" href={VIDEOS_URL}>
+                See every video <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+            <div class="hp-videos__list">
+              {videos.map((v) => (
+                <FeatureVideo video={v} />
+              ))}
+            </div>
+          </section>
+        )
+      }
 
       <div class="hp-prose">
         <Content />
@@ -344,6 +368,46 @@ const schema = {
     border-radius: 50%;
     background: var(--brand-orange);
     vertical-align: middle;
+  }
+
+  /* ---- Feature videos of the article ---- */
+  .hp-videos {
+    margin-top: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .hp-videos__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-bottom: 18px;
+  }
+  .hp-videos__title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .hp-videos__all {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+  }
+  .hp-videos__all:hover {
+    color: var(--brand-orange-deep);
+  }
+  .hp-videos__list {
+    display: grid;
+    gap: 28px 24px;
+  }
+  @media (min-width: 640px) {
+    .hp-videos--grid .hp-videos__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   /* ---- Prose ---- */

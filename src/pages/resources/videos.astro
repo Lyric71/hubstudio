@@ -1,0 +1,328 @@
+---
+/**
+ * /resources/videos: every feature video of the app, grouped by topic.
+ *
+ * Nothing is hand-listed: the page reads src/data/feature-videos.json
+ * (npm run videos:sync) through src/lib/feature-videos.ts, so a video joins
+ * its topic the moment the list is synced. Topics keep the manifest's order,
+ * videos their number; a topic with no video does not render.
+ *
+ * Titles, topic names and durations are the manifest's own, in the page's
+ * language (data-no-i18n); the rest of the copy goes through the
+ * dictionaries like any page. The hero heading and lead are the same
+ * sentences as the home page's video band, so both read from one
+ * translation.
+ *
+ * The topic filter is a row of toggle buttons (aria-pressed). Without
+ * JavaScript the row stays hidden and every video shows; the groups also
+ * answer to #topic-<key>. Posters load as the videos near the viewport.
+ */
+import Layout from '../../layouts/Layout.astro';
+import DualCta from '../../components/DualCta.astro';
+import FeatureVideo from '../../components/FeatureVideo.astro';
+import { HELP_URL } from '../../lib/links';
+import { videoTopics, videos } from '../../lib/feature-videos';
+import type { Locale } from '../../i18n/paths';
+
+const locale = (Astro.locals.locale ?? 'en') as Locale;
+
+const SITE = 'https://www.hubstudio.ai';
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: `${SITE}/resources` },
+    { '@type': 'ListItem', position: 3, name: 'Feature videos', item: `${SITE}/resources/videos` },
+  ],
+};
+const collection = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Feature videos',
+  description:
+    'Short screen recordings of the hubStudio app, each one a real task from start to finish, in English, French and Chinese with captions.',
+  url: `${SITE}/resources/videos`,
+};
+---
+
+<Layout
+  title="Feature videos: the hubStudio app, task by task | hubStudio"
+  description="Short screen recordings of the hubStudio app, each one a real task from start to finish, in English, French and Chinese with captions."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(collection)} />
+
+  <!-- ===== Hero ===== -->
+  <section class="vc-hero">
+    <div class="container vc-hero__inner">
+      <nav class="vc-crumb" aria-label="Breadcrumb">
+        <a href="/resources">Resources</a>
+        <span aria-hidden="true">/</span>
+        <span>Feature videos</span>
+      </nav>
+      <h1 class="headline h1 reveal vc-hero__title">
+        Watch it done, one task at a <span class="accent">time</span>.
+      </h1>
+      <p class="vc-hero__lead">
+        Short screen recordings of the hubStudio app, each one a real task from start to finish,
+        in English, French and Chinese with captions.
+      </p>
+      <p class="vc-hero__lead">
+        Every video belongs to a guide of the <a href={HELP_URL}>help center</a>, where the same
+        task is written out step by step.
+      </p>
+
+      {
+        videos.length > 0 && (
+          <div class="vc-filter" role="group" aria-label="Filter the videos by topic" data-vc-filter hidden>
+            <button type="button" class="vc-filter__btn" aria-pressed="true" data-topic="">
+              All topics
+            </button>
+            {videoTopics.map((t) => (
+              <button
+                type="button"
+                class:list={['vc-filter__btn', `vc-topic--${t.key}`]}
+                aria-pressed="false"
+                data-topic={t.key}
+              >
+                <span class="vc-filter__dot" aria-hidden="true" />
+                <span data-no-i18n>{t[locale]}</span>
+                <span class="vc-filter__count">{t.videos.length}</span>
+              </button>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- ===== Topics ===== -->
+  {
+    videoTopics.length > 0 && (
+      <section class="vc-groups">
+        <div class="container">
+          {videoTopics.map((t) => (
+            <section
+              class:list={['vc-group', `vc-topic--${t.key}`]}
+              id={`topic-${t.key}`}
+              data-vc-group={t.key}
+              aria-labelledby={`topic-${t.key}-title`}
+            >
+              <h2 class="vc-group__title" id={`topic-${t.key}-title`}>
+                <span class="vc-group__dot" aria-hidden="true" />
+                <span data-no-i18n>{t[locale]}</span>
+              </h2>
+              <div class="vc-grid">
+                {t.videos.map((v) => (
+                  <FeatureVideo video={v} lazy />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- ===== Closing: both doors, app first ===== -->
+  <DualCta eyebrow="Next step" pre="Seen how it works? Try it in the " accent="app" post=", or send us the brief." />
+</Layout>
+
+<script>
+  /* Reveal headline on scroll (headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* Topic filter: one topic, or all. The address keeps the choice (#topic-<key>). */
+  const bar = document.querySelector<HTMLElement>('[data-vc-filter]');
+  const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-vc-group]'));
+  if (bar && groups.length) {
+    const buttons = Array.from(bar.querySelectorAll<HTMLButtonElement>('button[data-topic]'));
+    const apply = (topic: string) => {
+      const known = groups.some((g) => g.dataset.vcGroup === topic) ? topic : '';
+      for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.topic === known));
+      for (const g of groups) g.hidden = Boolean(known) && g.dataset.vcGroup !== known;
+      for (const v of document.querySelectorAll<HTMLVideoElement>('.vc-group[hidden] video')) v.pause();
+      return known;
+    };
+    for (const b of buttons) {
+      b.addEventListener('click', () => {
+        const topic = apply(b.dataset.topic ?? '');
+        history.replaceState(null, '', topic ? `#topic-${topic}` : location.pathname + location.search);
+      });
+    }
+    const fromHash = () => apply(location.hash.startsWith('#topic-') ? location.hash.slice(7) : '');
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
+    bar.hidden = false;
+  }
+</script>
+
+<style>
+  /* ---- Topic colours: the app's pillars, then the AI layer and the account ---- */
+  .vc-topic--create {
+    --topic: var(--pillar-create);
+  }
+  .vc-topic--publish {
+    --topic: var(--pillar-publish);
+  }
+  .vc-topic--library {
+    --topic: var(--pillar-library);
+  }
+  .vc-topic--ai {
+    --topic: var(--brand-navy);
+  }
+  .vc-topic--team {
+    --topic: var(--text-mute);
+  }
+
+  /* ---- Hero ---- */
+  .vc-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(32px, 5vw, 56px);
+  }
+  .vc-hero__inner {
+    max-width: 880px;
+  }
+  .vc-crumb {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .vc-crumb a:hover {
+    color: var(--brand-orange);
+  }
+  .vc-hero__title {
+    margin-top: 20px;
+  }
+  .vc-hero__lead {
+    margin-top: 24px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .vc-hero__lead + .vc-hero__lead {
+    margin-top: 14px;
+  }
+  .vc-hero__lead a {
+    color: var(--brand-orange-cta);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ---- Filter ---- */
+  .vc-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 36px;
+  }
+  .vc-filter[hidden] {
+    display: none;
+  }
+  .vc-filter__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 8px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    font: inherit;
+    font-size: var(--type-small);
+    line-height: 1.2;
+    color: var(--text-ink);
+    cursor: pointer;
+    transition:
+      color 160ms ease-out,
+      background-color 160ms ease-out,
+      border-color 160ms ease-out;
+  }
+  .vc-filter__btn:hover {
+    border-color: var(--text-ink);
+  }
+  .vc-filter__btn[aria-pressed='true'] {
+    background: var(--bg-ink);
+    border-color: var(--bg-ink);
+    color: var(--text-on-dark);
+  }
+  .vc-filter__dot,
+  .vc-group__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--topic, var(--brand-orange));
+  }
+  .vc-filter__count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    opacity: 0.7;
+  }
+
+  /* ---- Groups ---- */
+  .vc-groups {
+    padding-block: 16px 112px;
+  }
+  .vc-group {
+    padding-top: 48px;
+    border-top: 1px solid var(--line-hairline);
+    scroll-margin-top: 96px;
+  }
+  .vc-group[hidden] {
+    display: none;
+  }
+  .vc-group:not([hidden]) ~ .vc-group:not([hidden]) {
+    margin-top: 64px;
+  }
+  .vc-group__title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .vc-group__dot {
+    width: 12px;
+    height: 12px;
+  }
+  .vc-grid {
+    display: grid;
+    gap: 40px var(--gap-card);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .vc-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1100px) {
+    .vc-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

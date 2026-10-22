@@ -1,11 +1,13 @@
 ---
 /**
- * WaysToWork: the three ways to work with hubStudio, as one band.
+ * WaysToWork: the two ways to work with hubStudio, as one band.
  *
- * The locked names come from hubstudio-positioning.md: Use the app,
- * Studio + app, Studio only. Every page that presents the choice renders this
- * component rather than rewording it, so the offer reads the same everywhere.
- * No ordinal numerals: the order on the page carries the sequence.
+ * The app is the core; our services are the added value on top of it. Both
+ * cover our two pillars: creative assets (text, images, video) and social
+ * networks (posts, campaigns, publishing, paid social). Customers either run
+ * the app on their own ("Use the app") or work with our team inside the app
+ * ("App + our services"). No ordinal numerals: the order on the page carries
+ * the sequence.
  *
  * Self-contained (own container, tokens, type), so it drops into any page.
  * `tone` picks the band background to contrast with the section above;
@@ -30,16 +32,18 @@ interface Props {
 const {
   tone = 'white',
   highlight,
-  eyebrow = 'Three ways to work',
-  pre = 'Make it yourself, or have us ',
-  accent = 'make it',
-  post = '.',
-  lead = 'The app and the studio are one company. Start with either one, mix them on a single project, or move from one to the other when the work changes.',
+  eyebrow = 'Two ways to work',
+  pre = 'Run the app alone, or work with ',
+  accent = 'us',
+  post = ' inside it.',
+  lead = 'Start on your own in the app, or bring our team into your workspace across creative assets and social networks.',
   id = 'ways-to-work',
 } = Astro.props;
 
+const activeHighlight = highlight === 'studio' ? 'studio-app' : highlight;
+
 const ways: {
-  key: Way;
+  key: 'app' | 'studio-app';
   tag: string;
   name: string;
   body: string;
@@ -49,42 +53,29 @@ const ways: {
 }[] = [
   {
     key: 'app',
-    tag: 'Self-serve',
+    tag: 'Client alone · Self-serve',
     name: 'Use the app',
-    body: 'Your team makes the work in hubStudio. Pick an engine, see the price, run it, then edit, approve, and publish without leaving the app.',
+    body: 'Your team creates text, images, and video, builds campaigns, and publishes across your social networks on its own.',
     points: [
-      'The leading image and video engines in one place',
-      'Pay as you go from a prepaid balance, with no seat fees',
-      'Post to LinkedIn, Instagram, Facebook, TikTok, and X, and prepare videos for YouTube',
+      'Creative assets: AI engines, browser editors, and reusable Skills',
+      'Social publishing: LinkedIn, Instagram, Facebook, TikTok (Beta), X, and YouTube',
+      'Prepaid balance with no subscription and no seat fees',
     ],
     cta: { label: 'Create your account', href: APP_SIGNUP, external: true },
     more: { label: 'Tour the app', href: '/app' },
   },
   {
     key: 'studio-app',
-    tag: 'Managed',
-    name: 'Studio + app',
-    body: 'Our creatives make the work inside hubStudio. You see it there, comment on it, approve it, and download it. Every version stays on record.',
+    tag: 'Client + us · App & services',
+    name: 'Work with us in the app',
+    body: 'Our creative and social teams work inside your workspace to produce your assets, run your pages and ads, and send every piece to Validation.',
     points: [
-      'Senior art directors lead every brief',
-      'Approvals run on one thread, version by version',
-      'We work in our workspace or in yours',
+      'Creative production across twenty studio service lines',
+      'Social management: weekly posts, paid ads, and executive posts',
+      'Shared workflow: review, approve, and publish on one thread',
     ],
     cta: { label: 'Send a brief', href: `${BRIEF_URL}?way=studio-app` },
-    more: { label: 'How it works', href: '/studio/with-the-app' },
-  },
-  {
-    key: 'studio',
-    tag: 'Full service',
-    name: 'Studio only',
-    body: "Send us a brief and get finished files back. You don't need an account or any software. The studio runs the job from start to finish.",
-    points: [
-      'Twenty service lines under one roof',
-      'A written proposal within 48 hours',
-      'Priced per asset, per project, or on retainer',
-    ],
-    cta: { label: 'Send a brief', href: `${BRIEF_URL}?way=studio` },
-    more: { label: 'Meet the studio', href: '/studio' },
+    more: { label: 'How we work together', href: '/studio/with-the-app' },
   },
 ];
 ---
@@ -102,7 +93,7 @@ const ways: {
     <div class="wtw__grid">
       {
         ways.map((w) => (
-          <article class:list={['wtw__card', w.key === highlight && 'is-hi']} data-way={w.key}>
+          <article class:list={['wtw__card', w.key === activeHighlight && 'is-hi']} data-way={w.key}>
             <span class="wtw__tag">
               <span class="wtw__dot" aria-hidden="true" />
               {w.tag}
@@ -207,9 +198,9 @@ const ways: {
     display: grid;
     gap: var(--gap-card);
   }
-  @media (min-width: 960px) {
+  @media (min-width: 900px) {
     .wtw__grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   .wtw__card {

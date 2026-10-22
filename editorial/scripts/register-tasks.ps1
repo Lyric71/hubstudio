@@ -3,11 +3,13 @@
   Registers (or re-registers) the two Windows scheduled tasks that run the
   hubStudio editorial pipeline on this machine.
 
-  hubStudio Editorial Draft    every day at 00:30 and 12:30 local (Shanghai);
-                               each run drafts the next row in the queue,
-                               whatever its publish_date
-  hubStudio Editorial Publish  every day at 04:00 and 16:30 local, DISABLED by
-                               default unless -EnablePublish is passed
+  hubStudio Editorial Draft    every day at 00:30 local (Shanghai); each run
+                               drafts the next row in the queue, whatever its
+                               publish_date. One draft a day, on purpose: two
+                               a day was more than a young domain should ship
+                               (cut on 17 October 2026)
+  hubStudio Editorial Publish  every day at 04:00 local, DISABLED by default
+                               unless -EnablePublish is passed
 
   Publishing starts disabled on purpose. The first week gets reviewed by hand:
   a spec page that shipped an unverified number is the one failure this system
@@ -26,9 +28,7 @@
 #>
 param(
   [string]$DraftTime = '00:30',
-  [string]$DraftTime2 = '12:30',
   [string]$PublishTime = '04:00',
-  [string]$PublishTime2 = '16:30',
   # Pass -EnablePublish once the first week has been reviewed by hand.
   [switch]$EnablePublish
 )
@@ -54,16 +54,10 @@ function Register([string]$Name, [string]$Mode, $Trigger, [bool]$Enabled) {
   Write-Host "$Name registered ($(if ($Enabled) {'enabled'} else {'disabled'}))"
 }
 
-$DraftTrigger = @(
-  (New-ScheduledTaskTrigger -Daily -At $DraftTime),
-  (New-ScheduledTaskTrigger -Daily -At $DraftTime2)
-)
+$DraftTrigger = New-ScheduledTaskTrigger -Daily -At $DraftTime
 Register 'hubStudio Editorial Draft' 'draft' $DraftTrigger $true
 
-$PublishTrigger = @(
-  (New-ScheduledTaskTrigger -Daily -At $PublishTime),
-  (New-ScheduledTaskTrigger -Daily -At $PublishTime2)
-)
+$PublishTrigger = New-ScheduledTaskTrigger -Daily -At $PublishTime
 Register 'hubStudio Editorial Publish' 'publish' $PublishTrigger ([bool]$EnablePublish)
 
 Get-ScheduledTask -TaskName 'hubStudio Editorial *' | Format-Table TaskName, State -AutoSize

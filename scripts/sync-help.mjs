@@ -13,6 +13,9 @@
 //     x.zh.webp beside x.webp, and is listed in src/i18n/localized-images.json
 //     so the /fr and /zh help pages show it (src/middleware.ts).
 // Files that no longer exist upstream are removed here too.
+// The list of the app's feature videos comes along (scripts/sync-videos.mjs):
+// docs/video-scripts/hubstudio-videos.json of the same repository becomes
+// src/data/feature-videos.json, shown on the articles the videos belong to.
 //
 // Run: npm run help:sync [-- <path to hubstudio-site/help>] [--images-only]
 // Default source: ../BearingBridgeIntelligence/hubstudio-site/help
@@ -20,6 +23,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { basename, extname, join, resolve } from 'node:path';
 import sharp from 'sharp';
+import { syncVideos } from './sync-videos.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const args = process.argv.slice(2);
@@ -87,6 +91,9 @@ console.log(
   `✓ ${imagesOnly ? 'images only, articles left as they are; ' : `${articles.length} articles and `}` +
     `${images.length} captures from ${src} (French ${counts.fr}, Chinese ${counts.zh})`,
 );
+
+// The feature videos of the same repository (hubstudio-site/help -> ../../docs).
+syncVideos(join(src, '..', '..', 'docs', 'video-scripts', 'hubstudio-videos.json'));
 
 // A synced article is a page of this site: it ships in French and Chinese in
 // the same commit (src/i18n/TRANSLATING.md). Name what is still to do.

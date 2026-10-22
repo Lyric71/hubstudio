@@ -1,6 +1,6 @@
 // @ts-check
 import { execSync } from 'node:child_process';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -149,6 +149,30 @@ function normalizeRootAlternate() {
   };
 }
 
+/**
+ * Dev proxy for /videos/*, built from the rewrite of vercel.json (one place
+ * names the storage host). Empty when vercel.json has no such rewrite.
+ * @returns {Record<string, import('vite').ProxyOptions>}
+ */
+function videoProxy() {
+  try {
+    /** @type {{ rewrites?: { source: string; destination: string }[] }} */
+    const config = JSON.parse(readFileSync('vercel.json', 'utf8'));
+    const rule = config.rewrites?.find((r) => r.source === '/videos/:path*');
+    if (!rule) return {};
+    const dest = new URL(rule.destination.replace('/:path*', ''));
+    return {
+      '/videos/': {
+        target: dest.origin,
+        changeOrigin: true,
+        rewrite: (path) => dest.pathname + path.slice('/videos'.length),
+      },
+    };
+  } catch {
+    return {};
+  }
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE,
@@ -224,6 +248,10 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    // The feature videos play from /videos/*, which vercel.json rewrites to
+    // the storage bucket. The dev server proxies the same path the same way,
+    // read from that rewrite, so a local preview plays them too.
+    server: { proxy: videoProxy() },
   },
 
   adapter: vercel(),

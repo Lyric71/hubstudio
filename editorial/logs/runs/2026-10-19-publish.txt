@@ -143,3 +143,30 @@
 2026-10-19T04:30 committed 7f3ad9d fix(insights): update singles-day-618-production-calendar; git push origin main succeeded (6746c5a..7f3ad9d).
 2026-10-19T04:30 notify-publish.mjs: queued for the next editorial digest (automation outbox), slug holiday-visuals-from-product-photos, build passed, note with both commit hashes.
 2026-10-19T04:30 run complete: one row published (holiday-visuals-from-product-photos), one watch row closed (singles-day-618-production-calendar). No other row at image_ready, no other watch row due.
+The 2026-10-19 publish run is finished. The one finished draft is live in English, French and Chinese, the one watch item due today is closed, and both changes are pushed to main.
+
+**Published: "How to make Black Friday and holiday visuals from the product photos you already have"**
+- **English:** `/resources/how-to/holiday-visuals-from-product-photos`, filed under the how-to category "Image editing".
+- **French:** `/fr/ressources/guides-pratiques/visuels-black-friday-a-partir-de-vos-photos-produit`.
+- **Chinese:** under `/zh` at the same path as the English page.
+- The page embeds the four app screenshots its brief names, each with its French and Chinese version. There's no demo clip yet, so the page ships without one, as the editorial rules allow.
+- French and Chinese were each translated in three passes. Each translator's notes on what changed are in the run log.
+- The French translator had quoted two sources from memory, so I checked both:
+  - **EU directive:** the French wording was wrong ("pratiqué" where EUR-Lex says "appliqué"). It now uses the official text.
+  - **Google Merchant Center:** the quote now uses Google's own French help page instead of a translation of the English one.
+- The i18n check, the i18n guard, `npm run build` and `npm run check` all passed (0 errors).
+- **Commit:** `13f7c18`. The schedule row is now `published` (2026-10-19).
+
+**Watch item: Douyin's 2026 Singles Day opening**
+- China National Radio and two other Chinese outlets reported on 15 October that the sale opened that day and runs to 11 November.
+- None of them gives an opening hour, so the "midnight, as reported" wording was dropped.
+- I corrected the live page, its draft, the French and Chinese text, the source ledger and the research file, and moved the article's last-modified date to 2026-10-19. The watch row is removed.
+- **Commit:** `7f3ad9d`.
+
+**Wrap-up**
+- The run log is closed in `b007565`.
+- The notification is queued for the next 07:00 editorial digest.
+
+Your working tree had uncommitted feature-video work (video pages, header and config edits, editorial script edits). I committed only this run's files and changes, so all of that is still uncommitted and untouched. The how-to, the Singles Day correction and the video work all touch three shared files: `common.json`, `routes.ts` and the glossaries. In those I committed only this run's lines.
+2026-10-19T04:30:19 model Opus 5.5 completed successfully
+2026-10-19T04:30:19 end publish exit 0

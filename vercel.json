@@ -79,9 +79,12 @@
     { "source": "/cloudflare-pay-per-crawl-how-brands-can-protect-aigc-content", "destination": "/resources/insights/cloudflare-pay-per-crawl", "statusCode": 301 },
     { "source": "/data-driven-aigc-how-smart-brands-scale-content-with-ai-performance", "destination": "/resources/insights/data-driven-aigc", "statusCode": 301 }
   ],
+  "rewrites": [
+    { "source": "/videos/:path*", "destination": "https://ayzpgauikfwhielervki.supabase.co/storage/v1/object/public/feature-videos/hubstudio/:path*" }
+  ],
   "headers": [
     {
-      "source": "/(Images|Video|logo|Team|AgencyLogos)/(.*)",
+      "source": "/(Images|Video|videos|logo|Team|AgencyLogos)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

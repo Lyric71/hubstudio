@@ -1,4 +1,4 @@
-﻿---
+---
 /**
  * Header: §5 navigation + mega menu.
  * Persistent top nav, mega-menu panels, mobile right-sheet drawer.
@@ -36,6 +36,13 @@ type Featured = {
 };
 type FlatLink = { label: string; href: string };
 type ServiceGroup = { heading: string; links: FlatLink[] };
+type ServicePillar = {
+  key: 'create' | 'publish';
+  eyebrow: string;
+  heading: string;
+  summary: string;
+  groups: ServiceGroup[];
+};
 type SubGroup = { heading: string; links: FlatLink[] };
 type SolutionCol = { heading: string; links?: FlatLink[]; subgroups?: SubGroup[] };
 /** A module of the app: a link when this site has a page for it, plain text otherwise. */
@@ -50,11 +57,13 @@ type MenuItem = {
   /** When set, the item renders the App panel: the three pillars and the AI layer. */
   pillars?: Pillar[];
   featured?: Featured;
+  /** When set, the item renders the Services panel split across the two pillars. */
+  servicePillars?: ServicePillar[];
   /** When set, the item renders the Services panel (grouped columns). */
   serviceGroups?: ServiceGroup[];
   /** When set, the item renders the Solutions panel (grouped columns). */
   solutionCols?: SolutionCol[];
-  /** Short link list under the intro column (the Studio panel's own pages). */
+  /** Short link list under the intro column (the Services panel's own pages). */
   introLinks?: FlatLink[];
 };
 
@@ -63,11 +72,11 @@ const menu: MenuItem[] = [
     label: 'App',
     href: '/app',
     intro: {
-      eyebrow: 'The hubStudio app',
-      pre: 'Every engine, one ',
+      eyebrow: 'The hubStudio app · Core',
+      pre: 'Creative assets and social in one ',
       accent: 'app',
       post: '.',
-      text: 'Make images and video with the leading AI engines, then edit, approve, and publish them. You pay as you go, and there are no seat fees.',
+      text: 'Generate text, images, and video with the leading AI engines, then draft, validate, and publish posts across your social networks. Pay as you go, with no seat fees.',
     },
     introLinks: [
       { label: 'Help center', href: '/help' },
@@ -80,7 +89,7 @@ const menu: MenuItem[] = [
     pillars: [
       {
         key: 'create',
-        heading: 'Create',
+        heading: 'Create · Assets',
         links: [
           { title: 'Explore', desc: 'Every image and video engine, by maker', href: '/app/engines' },
           { title: 'Image', desc: 'Text to image, edits, upscale', href: '/app/create#image-studio' },
@@ -93,7 +102,7 @@ const menu: MenuItem[] = [
       },
       {
         key: 'publish',
-        heading: 'Publish',
+        heading: 'Publish · Social',
         links: [
           { title: 'Campaigns', desc: 'One launch’s files under one name', href: '/app/campaigns' },
           { title: 'LinkedIn', href: '/app/publish#linkedin' },
@@ -106,7 +115,7 @@ const menu: MenuItem[] = [
       },
       {
         key: 'library',
-        heading: 'Library',
+        heading: 'Library & Review',
         links: [
           { title: 'Assets Library', desc: 'Files in folders, tags, versions, search', href: '/app/library#assets-library' },
           { title: 'History', desc: 'Every render, to find again and reuse', href: '/app/create#history' },
@@ -126,71 +135,100 @@ const menu: MenuItem[] = [
     ],
   },
   {
-    label: 'Studio',
+    label: 'Services',
     href: '/studio',
     intro: {
-      eyebrow: 'The hubStudio studio',
-      pre: 'Twenty service lines. One ',
-      accent: 'studio',
-      post: '.',
-      text: 'Senior art directors and AIGC specialists who take the brief and deliver the work, inside the app or outside it.',
+      eyebrow: 'Our services · Added value',
+      pre: 'Our team in the ',
+      accent: 'app',
+      post: ' with you.',
+      text: 'The app is the core. Add our team inside hubStudio to produce your creative assets and run your social networks end to end, with your validation on every piece.',
     },
     introLinks: [
-      { label: 'Studio + app', href: '/studio/with-the-app' },
+      { label: 'Working together in the app', href: '/studio/with-the-app' },
       { label: 'How we use AI', href: '/studio/ai-excellence' },
+      { label: 'Team onboarding', href: '/services/onboarding' },
       { label: 'Who we are', href: '/about' },
       { label: 'Creative talents', href: '/about/team' },
       { label: 'Partners', href: '/partners' },
     ],
-    serviceGroups: [
+    servicePillars: [
       {
-        heading: 'Content & Social',
-        links: [
-          { label: 'Social Media', href: '/services/design/social-media' },
-          { label: 'Ad Creative', href: '/services/design/ad-creative' },
-          { label: 'Short Video', href: '/services/design/short-video' },
-          { label: 'Email Design', href: '/services/design/email-design' },
+        key: 'create',
+        eyebrow: 'Pillar · Creative assets',
+        heading: 'Text, images & video',
+        summary: 'Senior art directors, designers, motion artists, and writers producing across twenty service lines.',
+        groups: [
+          {
+            heading: 'Content & Video',
+            links: [
+              { label: 'Social Media', href: '/services/design/social-media' },
+              { label: 'Ad Creative', href: '/services/design/ad-creative' },
+              { label: 'Short Video', href: '/services/design/short-video' },
+              { label: 'Video Production', href: '/services/design/video-production' },
+              { label: 'Motion Design', href: '/services/design/motion-design' },
+              { label: 'Email Design', href: '/services/design/email-design' },
+            ],
+          },
+          {
+            heading: 'Commerce & Brand',
+            links: [
+              { label: 'eCommerce', href: '/services/design/ecommerce' },
+              { label: 'Website Design', href: '/services/design/website-design' },
+              { label: 'Brand Identity', href: '/services/design/brand-identity' },
+              { label: 'Packaging & Merch Design', href: '/services/design/packaging-merch-design' },
+              { label: 'Illustration Design', href: '/services/design/illustration-design' },
+              { label: 'Print Design', href: '/services/design/print-design' },
+            ],
+          },
+          {
+            heading: 'Strategy & Comms',
+            links: [
+              { label: 'Marketing Strategy', href: '/services/design/marketing-strategy' },
+              { label: 'Creative Strategy', href: '/services/design/creative-strategy' },
+              { label: 'Concept Creation', href: '/services/design/concept-creation' },
+              { label: 'Storyboard', href: '/services/design/storyboard' },
+              { label: 'Presentation Design', href: '/services/design/presentation-design' },
+              { label: 'Pitch Deck', href: '/services/design/pitch-deck' },
+              { label: 'Ebook and Digital Reports', href: '/services/design/ebook-digital-reports' },
+              { label: 'Press Release', href: '/services/design/press-release' },
+            ],
+          },
         ],
       },
       {
-        heading: 'Video & Motion',
-        links: [
-          { label: 'Video Production', href: '/services/design/video-production' },
-          { label: 'Motion Design', href: '/services/design/motion-design' },
-        ],
-      },
-      {
-        heading: 'Commerce & Web',
-        links: [
-          { label: 'eCommerce', href: '/services/design/ecommerce' },
-          { label: 'Website Design', href: '/services/design/website-design' },
-          { label: 'Print Design', href: '/services/design/print-design' },
-        ],
-      },
-      {
-        heading: 'Strategy & Direction',
-        links: [
-          { label: 'Marketing Strategy', href: '/services/design/marketing-strategy' },
-          { label: 'Creative Strategy', href: '/services/design/creative-strategy' },
-          { label: 'Concept Creation', href: '/services/design/concept-creation' },
-          { label: 'Storyboard', href: '/services/design/storyboard' },
-        ],
-      },
-      {
-        heading: 'Brand Identity',
-        links: [
-          { label: 'Brand Identity', href: '/services/design/brand-identity' },
-          { label: 'Illustration Design', href: '/services/design/illustration-design' },
-          { label: 'Packaging & Merch Design', href: '/services/design/packaging-merch-design' },
-        ],
-      },
-      {
-        heading: 'Sales & Communications',
-        links: [
-          { label: 'Presentation Design', href: '/services/design/presentation-design' },
-          { label: 'Pitch Deck', href: '/services/design/pitch-deck' },
-          { label: 'Ebook and Digital Reports', href: '/services/design/ebook-digital-reports' },
-          { label: 'Press Release', href: '/services/design/press-release' },
+        key: 'publish',
+        eyebrow: 'Pillar · Social networks',
+        heading: 'Posts, publishing & growth',
+        summary: 'We run your social channels inside hubStudio: weekly posts, paid ads, and executive posts across every network.',
+        groups: [
+          {
+            heading: 'Content & Pages',
+            links: [
+              { label: 'Page & channel management', href: '/#social-services' },
+              { label: 'Weekly posts, carousels & video', href: '/#social-services' },
+              { label: 'Newsletters & editorial series', href: '/#social-services' },
+              { label: 'Live events & webinars', href: '/#social-services' },
+            ],
+          },
+          {
+            heading: 'Paid Social & Ads',
+            links: [
+              { label: 'Campaign setup & funnels', href: '/#social-services' },
+              { label: 'Audience targeting & retargeting', href: '/#social-services' },
+              { label: 'Ad creative & variant testing', href: '/services/design/ad-creative' },
+              { label: 'Lead generation & reporting', href: '/#social-services' },
+            ],
+          },
+          {
+            heading: 'Advocacy & Networks',
+            links: [
+              { label: 'Employee advocacy programs', href: '/#social-services' },
+              { label: 'Executive personal branding', href: '/#social-services' },
+              { label: 'Workshops & team training', href: '/solutions/training' },
+              { label: 'LinkedIn, Meta, TikTok, X & China', href: '/solutions/platforms/linkedin' },
+            ],
+          },
         ],
       },
     ],
@@ -303,6 +341,7 @@ const menu: MenuItem[] = [
         links: [
           { title: 'Copyright & AI', desc: 'Using AI without risk', href: '/resources/copyright-and-ai' },
           { title: 'Help center', desc: 'Guides to the hubStudio app', href: '/help' },
+          { title: 'Feature videos', desc: 'The app, shown task by task', href: '/resources/videos' },
           { title: 'About hubStudio', desc: 'The company and the people', href: '/about' },
         ],
       },
@@ -337,7 +376,7 @@ const menu: MenuItem[] = [
           {
             menu.map((item) => {
               /* Plain link: no dropdown */
-              if (!item.groups && !item.serviceGroups && !item.solutionCols && !item.pillars) {
+              if (!item.groups && !item.serviceGroups && !item.servicePillars && !item.solutionCols && !item.pillars) {
                 return (
                   <li class="nav-item">
                     <a class="nav-item__trigger" href={item.href}>
@@ -360,7 +399,7 @@ const menu: MenuItem[] = [
                       class:list={[
                         'container',
                         'mega__grid',
-                        item.serviceGroups && 'mega__grid--services',
+                        (item.serviceGroups || item.servicePillars) && 'mega__grid--services',
                         item.solutionCols && 'mega__grid--solutions',
                         item.pillars && 'mega__grid--pillars',
                       ]}
@@ -389,6 +428,37 @@ const menu: MenuItem[] = [
                           All of {item.label} &rarr;
                         </a>
                       </div>
+
+                      {/* Two-pillar Services layout */}
+                      {item.servicePillars && (
+                        <div class="mega__svc-pillars">
+                          {item.servicePillars.map((sp) => (
+                            <div class:list={['mega__svc-pillar', `pillar--${sp.key}`]}>
+                              <div class="mega__svc-pillar-top">
+                                <span class="mega__svc-pillar-tag">{sp.eyebrow}</span>
+                                <p class="mega__svc-pillar-title">{sp.heading}</p>
+                                <p class="mega__svc-pillar-sub">{sp.summary}</p>
+                              </div>
+                              <div class="mega__svc-pillar-cols">
+                                {sp.groups.map((group) => (
+                                  <div class="mega__svc-col">
+                                    <p class="mega__sol-sub-head">{group.heading}</p>
+                                    <ul class="mega__svc-list">
+                                      {group.links.map((l) => (
+                                        <li>
+                                          <a class="sol-link" href={l.href}>
+                                            {l.label}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
 
                       {/* Services layout */}
                       {item.serviceGroups && (
@@ -574,7 +644,7 @@ const menu: MenuItem[] = [
         {
           menu.map((item) => {
             /* Plain link */
-            if (!item.groups && !item.serviceGroups && !item.solutionCols && !item.pillars) {
+            if (!item.groups && !item.serviceGroups && !item.servicePillars && !item.solutionCols && !item.pillars) {
               return (
                 <div class="m-acc">
                   <a class="m-acc__trigger m-acc__trigger--link" href={item.href}>
@@ -607,6 +677,26 @@ const menu: MenuItem[] = [
                         </ul>
                       </div>
                     )}
+
+                    {item.servicePillars &&
+                      item.servicePillars.map((sp) => (
+                        <div class:list={['m-acc__group', 'm-pillar', `pillar--${sp.key}`]}>
+                          <p class="mega__group-head mega__pillar-head">{sp.eyebrow} · {sp.heading}</p>
+                          <p class="m-pillar__note">{sp.summary}</p>
+                          {sp.groups.map((group) => (
+                            <div class="m-acc__sub">
+                              <p class="m-acc__sub-head">{group.heading}</p>
+                              <ul class="m-acc__group-list">
+                                {group.links.map((l) => (
+                                  <li>
+                                    <a href={l.href}>{l.label}</a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      ))}
 
                     {item.serviceGroups &&
                       item.serviceGroups.map((group) => (
@@ -1015,6 +1105,66 @@ const menu: MenuItem[] = [
   }
 
   /* ---- Services panel ------------------------------------------ */
+  .mega__svc-pillars {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-content: start;
+  }
+  .mega__svc-pillar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 22px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.56);
+    border: 1px solid var(--line-hairline);
+    border-top: 3px solid var(--pillar, var(--brand-orange));
+  }
+  .mega__svc-pillar-top {
+    display: grid;
+    gap: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .mega__svc-pillar-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .mega__svc-pillar-tag::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pillar, var(--brand-orange));
+  }
+  .mega__svc-pillar-title {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+  }
+  .mega__svc-pillar-sub {
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--text-mute);
+  }
+  .mega__svc-pillar-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-content: start;
+  }
+  .mega__svc-pillar-cols .mega__svc-list {
+    margin-top: 6px;
+  }
   .mega__services {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));

@@ -1,0 +1,277 @@
+---
+/**
+ * /video/overview: hubStudio in 30 seconds, the overview film the email
+ * campaign links to. One English film (narrated and captioned in English on
+ * every locale), cut from the footage of the feature videos, then what it
+ * showed with the app page that tells the rest, and the way to the whole
+ * collection (/resources/videos).
+ *
+ * The film is made in the app repository
+ * (BearingBridgeIntelligence/automation/demo-videos/overview.mjs, script
+ * docs/video-scripts/hubstudio/overview-30s.md) and served from this site's
+ * own origin, /videos/en/overview-30s-en.* (vercel.json rewrites /videos to
+ * the storage bucket). No page names another host.
+ *
+ * Translation: page copy through pages/video/overview.json like any page.
+ * The player is data-no-i18n: its caption track is English, labelled in
+ * English. Money language follows hubstudio-positioning.md (no amount, no
+ * credits).
+ */
+import Layout from '../../layouts/Layout.astro';
+import DualCta from '../../components/DualCta.astro';
+
+const SITE = 'https://www.hubstudio.ai';
+const FILE = '/videos/en/overview-30s-en';
+
+// What the film shows, in its order, each with the app page that tells the rest.
+const moments = [
+  { k: 'Create', t: 'One brief, every engine', b: 'Describe a product picture once and compare what each engine makes, tab by tab, before you keep the best.', href: '/app/create', link: 'Create' },
+  { k: 'Create', t: 'A still that starts to move', b: 'Pick a picture from your library, write the motion in a few words, and get back a video clip that opens on it.', href: '/app/create', link: 'Create' },
+  { k: 'Create', t: 'Reels cut in your browser', b: 'Trim, add a title and music, and save a Reel for Instagram in the Video editor, without leaving the page.', href: '/app/video-tools', link: 'Video tools' },
+  { k: 'Publish', t: 'Posts that come with their picture', b: 'Write a LinkedIn or Instagram post and its picture together, seen on a phone the way the network will show it.', href: '/app/publish', link: 'Publish' },
+  { k: 'Publish', t: 'A week of posts in one sitting', b: 'Give each network its own moment, now, tonight or Monday morning, and the posts go out by themselves.', href: '/app/publish', link: 'Publish' },
+];
+
+const video = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'hubStudio in 30 seconds',
+  description: 'A 30-second film of the hubStudio app: product pictures compared across engines, a still turned into a clip, a Reel cut in the browser, and a week of posts scheduled.',
+  thumbnailUrl: `${SITE}${FILE}.jpg`,
+  contentUrl: `${SITE}${FILE}.mp4`,
+  uploadDate: '2026-10-18',
+  duration: 'PT0M30S',
+  inLanguage: 'en',
+};
+---
+
+<Layout
+  title="hubStudio in 30 seconds: images, video and posts in one studio | hubStudio"
+  description="A 30-second film of the hubStudio app at work: product pictures compared across engines, a still turned into a clip, a Reel cut in the browser, a week of posts scheduled."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(video)} />
+
+  <!-- ===== Hero and player ===== -->
+  <section class="ov-hero">
+    <div class="container">
+      <nav class="ov-crumb" aria-label="Breadcrumb">
+        <a href="/resources/videos">Feature videos</a>
+        <span aria-hidden="true">/</span>
+        <span>Overview</span>
+      </nav>
+      <h1 class="headline h1 reveal ov-hero__title">
+        hubStudio in thirty <span class="accent">seconds</span>.
+      </h1>
+      <p class="ov-hero__lead">
+        Half a minute of the app at work: what your team makes, faster, with images, video and social posts in one studio.
+      </p>
+      <p class="ov-hero__lead">
+        The film is narrated and captioned in English, and recorded in a demo team on invented data.
+      </p>
+
+      <figure class="ov-player" data-no-i18n>
+        <div class="ov-player__frame">
+          <video class="ov-player__video" controls preload="metadata" playsinline width="1920" height="1080" poster={`${FILE}.jpg`} aria-labelledby="ov-cap">
+            <source src={`${FILE}.mp4`} type="video/mp4" />
+            <track kind="captions" src={`${FILE}.vtt`} srclang="en" label="English" default />
+          </video>
+        </div>
+      </figure>
+      <p class="ov-player__cap" id="ov-cap">hubStudio overview, 0:30, in English.</p>
+    </div>
+  </section>
+
+  <!-- ===== What the film shows ===== -->
+  <section class="ov-moments" aria-labelledby="ov-moments-title">
+    <div class="container">
+      <h2 class="headline h2 reveal" id="ov-moments-title">What you just <span class="accent">saw</span>.</h2>
+      <ol class="ov-grid">
+        {
+          moments.map((m) => (
+            <li class:list={['ov-card', `ov-card--${m.k.toLowerCase()}`]}>
+              <p class="ov-card__k">
+                <span class="ov-card__dot" aria-hidden="true" />
+                {m.k}
+              </p>
+              <h3 class="ov-card__t">{m.t}</h3>
+              <p class="ov-card__b">{m.b}</p>
+              <a class="ov-card__a" href={m.href}>
+                {m.link} <span aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="ov-more">
+        Every task has its own short film, in English, French and Chinese: <a href="/resources/videos">see the feature videos</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Closing: both doors, app first ===== -->
+  <DualCta eyebrow="Next step" pre="Seen it at work? Try it in the " accent="app" post=", or send us the brief." />
+</Layout>
+
+<script>
+  /* Reveal headline on scroll (headlines only). */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>
+
+<style>
+  .ov-card--create {
+    --topic: var(--pillar-create);
+  }
+  .ov-card--publish {
+    --topic: var(--pillar-publish);
+  }
+
+  /* ---- Hero and player ---- */
+  .ov-hero {
+    padding-top: clamp(56px, 8vw, 104px);
+    padding-bottom: clamp(48px, 6vw, 80px);
+  }
+  .ov-crumb {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .ov-crumb a:hover {
+    color: var(--brand-orange);
+  }
+  .ov-hero__title {
+    margin-top: 20px;
+    max-width: 880px;
+  }
+  .ov-hero__lead {
+    margin-top: 24px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .ov-hero__lead + .ov-hero__lead {
+    margin-top: 14px;
+  }
+  .ov-player {
+    margin-top: 40px;
+    max-width: 1120px;
+  }
+  .ov-player__frame {
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--bg-ink);
+    border: 1px solid var(--line-hairline);
+    box-shadow: 0 24px 48px -28px rgba(10, 10, 20, 0.55);
+  }
+  .ov-player__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: var(--bg-ink);
+  }
+  .ov-player__cap {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+  }
+
+  /* ---- What the film shows ---- */
+  .ov-moments {
+    padding-block: 32px 112px;
+  }
+  .ov-grid {
+    display: grid;
+    gap: var(--gap-card);
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 640px) {
+    .ov-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1100px) {
+    .ov-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .ov-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    border: 1px solid var(--line-hairline);
+    border-radius: 18px;
+  }
+  .ov-card__k {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .ov-card__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--topic, var(--brand-orange));
+  }
+  .ov-card__t {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .ov-card__b {
+    flex: 1;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  .ov-card__a,
+  .ov-more a {
+    color: var(--brand-orange-cta);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .ov-card__a {
+    font-size: var(--type-small);
+    font-weight: 500;
+  }
+  .ov-more {
+    margin-top: 40px;
+    max-width: 62ch;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+</style>

@@ -78,6 +78,18 @@ never paste the English into a dictionary to make the check pass, never leave
 a placeholder or a marker in a dictionary. The no-TODO rule
 (`editorial/CLAUDE.md`, "No TODO leaves a run") applies to translations.
 
+Settled 2026-10-18: `/pricing/calculator` and its settings page print the live
+exchange rate (an add-on price such as `$41`, the rate source or
+`Unavailable`). When the rate fetch fails during an extract, those sentences
+change and come back empty; that is not translation work. Restore the
+committed entries (`git show HEAD:<dictionary>`) and extract again once the
+rate loads, so the dictionaries keep the live-rate sentences.
+
+Pass files left in `.i18n-work/passes/<locale>/<id>/` by an earlier run are
+merged by `build` with the new ones (pass3 wins), and their indexes point at
+whatever the page holds today. Delete a page's old pass files before writing
+new ones.
+
 ## The three passes
 
 The method is the `/deep-translate` skill

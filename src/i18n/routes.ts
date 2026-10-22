@@ -245,6 +245,7 @@ export const FR_PATHS: Record<string, string> = {
   ),
   '/resources/production-cost': '/fr/ressources/cout-de-production',
   '/resources/specs': '/fr/ressources/formats-des-plateformes',
+  '/resources/videos': '/fr/ressources/videos',
   ...Object.fromEntries(
     Object.entries(DESIGN).map(([en, fr]) => [`/services/design/${en}`, `/fr/services/design/${fr}`]),
   ),
@@ -270,6 +271,7 @@ export const FR_PATHS: Record<string, string> = {
   '/terms': '/fr/conditions',
   '/thank-you': '/fr/merci',
   '/thank-you/onboarding': '/fr/merci/prise-en-main',
+  '/video/overview': '/fr/video/presentation',
   '/work': '/fr/realisations',
   ...Object.fromEntries(WORK.map((s) => [`/work/${s}`, `/fr/realisations/${s}`])),
 };

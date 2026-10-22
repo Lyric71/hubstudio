@@ -27,6 +27,7 @@ Campaigns (Assets Library) -> 营销活动, never 广告系列 (Add to a campaig
 Agents -> 智能体 (My agents / Team agents / Catalog / Runs: “我的智能体” / “团队智能体” / “目录” / “运行记录”; Agents Command Room: “智能体指挥室”; Social publishing watcher: “社交发布监测智能体”; finding: 发现项; Run now: “立即运行”)
 Picture versions / Use this version (social post) -> “图片版本” / “使用此版本”
 Image tools / Video tools -> 图片工具 / 视频工具
+Feature videos (the collection, header menu) -> 功能演示视频, as on bearingbridge.com; overview film (/video/overview) -> 概览视频 (breadcrumb: 概览)
 Image editor / Video editor -> 图片编辑器 / 视频编辑器
 Image anonymizer -> 图片脱敏
 Shorts autopilot -> 短视频自动剪辑
