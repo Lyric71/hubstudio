@@ -86,6 +86,8 @@ const shots = [
   // the list with the side menu, the campaign's page on its main column.
   { name: 'campaigns', file: 'campaigns-list', crop: [0, 66, 1440, 598] },
   { name: 'campaignPage', file: 'campaigns-page', crop: [256, 72, 1432, 960] },
+  { name: 'web', file: 'web-sites', crop: [0, 66, 1440, 598] },
+  { name: 'webPage', file: 'web-queue', crop: [256, 72, 1432, 960] },
   // The home page's app tour, 8 October 2026: Campaigns, Publish and Account
   // tabs. The library's Campaign filter open, under the top bar; a post's
   // picture with its versions; three settings cards, whole.
@@ -258,6 +260,17 @@ const shots = [
     name: 'invoices',
     own: { route: '/billing/invoices', element: '.ui-card:has(table) >> nth=0' },
     fit: true,
+  },
+  {
+    name: 'partnerCommissions',
+    own: {
+      route: '/partner/commissions',
+      as: MAYA,
+      partner: true,
+      folded: ['create', 'publish', 'library'],
+      steps: (p) => click(p, '.sn-group[data-key=partner] .sn-caret', 1000),
+    },
+    crop: [0, 68, 1440, 464],
   },
 ].map((s) => ({ ...s, out: (lang) => join(PUBLIC, lang === 'en' ? `${s.name}.webp` : `${s.name}.${lang}.webp`) }));
 

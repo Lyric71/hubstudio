@@ -1,0 +1,362 @@
+---
+/**
+ * /app/web: Web, the module of the hubStudio app that connects your website
+ * repository on GitHub, plans an editorial roadmap, edits pages in Repository
+ * Files & AI Studio, and drafts, reviews, translates, and opens pull requests
+ * with a multi-pass AI editorial pipeline.
+ *
+ * Facts come from src/content/help/web.md (synced from the app) and the app
+ * itself (reporting-site src/pages/web, src/scripts/webPanel.ts,
+ * src/lib/web-sites-db.ts, src/lib/web-pipeline.ts):
+ * four tabs on each site (Queue & Test Run, AI Editorial Plan, Repository Files
+ * & AI Studio, Site Settings); the 18-pass editorial loop, 3-pass native
+ * localization, Web editor agent, and GitHub pull request or direct commit.
+ * Both pictures are real captures from src/data/app-shots.ts, cropped so no
+ * balance shows. Layout and styles: src/styles/app-page.css.
+ *
+ * Copy: content-quality-us rules. No ordinal numerals in any repeated block,
+ * no amounts.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import AppShot from '../../components/AppShot.astro';
+import DualCta from '../../components/DualCta.astro';
+import { appShots } from '../../data/app-shots';
+import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+import '../../styles/app-page.css';
+
+const SITE = 'https://www.hubstudio.ai';
+
+/** What the editorial pipeline runs before opening a pull request. */
+const pipeline = [
+  'Repository scan and site voice',
+  'Primary draft in the primary language',
+  '18-pass editorial review and fact check',
+  'Cover image and inline illustrations',
+  '3-pass native localization per target language',
+  'GitHub branch and pull request',
+];
+
+const nextLinks = [
+  { lead: 'Post to social networks', name: 'Publish', href: '/app/publish' },
+  { lead: 'Group a launch under one brief', name: 'Campaigns', href: '/app/campaigns' },
+  { lead: 'Get the work approved', name: 'Review', href: '/app/review' },
+];
+
+const faqs = [
+  {
+    q: 'What kind of website does Web work with?',
+    a: 'Any website kept in a GitHub repository whose articles or pages live as Markdown, MDX, Astro, HTML, or JSON files. Static sites built with Astro, Next.js, Nuxt, Hugo, Eleventy, or custom setups work out of the box.',
+  },
+  {
+    q: 'Does hubStudio publish straight to our live website?',
+    a: 'Only if you ask it to. By default, Publish mode is set to Open a Pull Request (review before merge), so every article or page edit lands on a new branch in GitHub and opens a pull request for your team to inspect and merge. You can switch a site to Commit directly to branch in Site Settings.',
+  },
+  {
+    q: 'Who can see our GitHub token?',
+    a: 'Nobody else in the team. You connect your GitHub repository on My Connections under Your website repositories, or paste a token on the site itself. Personal repository connections belong to your own login, just like social network connections.',
+  },
+  {
+    q: 'How does the 18-pass editorial pipeline work?',
+    a: 'Instead of publishing a first AI draft, hubStudio runs the article through an 18-pass loop that checks structure, factual accuracy against your brief and sources, rhythm, AI phrasing, headings, internal links, and SEO metadata. You can inspect every pass in the Pipeline Log tab.',
+  },
+  {
+    q: 'How does multi-language translation work?',
+    a: 'In Site Settings, set your primary language and any target languages, then map how each language is stored in your repo (such as src/content/blog/fr/ or messages/fr.json). When an article passes review in the primary language, hubStudio rewrites it into each target language across three passes so it reads like native journalism rather than a literal translation.',
+  },
+  {
+    q: 'What does running an article or a page edit cost?',
+    a: 'Registering a site, browsing Repository Files & AI Studio, and editing files by hand cost nothing. Running AI Editorial Plan, Ask AI to Edit, or the article pipeline draws from your team’s prepaid balance according to the text and image models you pick.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'App', item: `${SITE}/app` },
+    { '@type': 'ListItem', position: 3, name: 'Web', item: `${SITE}/app/web` },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Web: AI editorial pipeline and GitHub website publishing | hubStudio"
+  description="Connect your website’s GitHub repository, plan an editorial calendar, edit pages in AI Studio, and ship reviewed, localized articles as GitHub pull requests."
+  preloadImage={appShots.web.src}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="apg-page">
+
+  <!-- ===== Hero ===== -->
+  <section class="apg-hero">
+    <div class="container apg-hero__grid">
+      <div class="apg-hero__copy">
+        <nav class="apg-crumbs" aria-label="Breadcrumb">
+          <a href="/app">The app</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Web</span>
+        </nav>
+        <h1 class="headline h1 apg-hero__title">
+          Ship reviewed articles and page edits straight to your <span class="accent">website</span>.
+        </h1>
+        <p class="lead apg-hero__lead">
+          Your site lives in a GitHub repository, but drafting articles, generating illustrations,
+          translating pages, and wiring frontmatter still happens across five different tools. Web
+          connects your repository to hubStudio so you can plan an editorial calendar, edit existing
+          pages with AI, and run an 18-pass editorial pipeline that opens a clean GitHub pull
+          request when the article is ready.
+        </p>
+        <div class="apg-hero__cta">
+          <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+          <Button variant="secondary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
+          <a class="apg-arrow" href="/app">See the whole app <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="apg-hero__shot">
+        <AppShot shot={appShots.web} path="/web" eager caption />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Four workspaces ===== -->
+  <section class="apg-sheet apg-sheet--white" id="how-web-works">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">One site, four workspaces</span>
+        <h2 class="headline h2 reveal">From repository setup to a ready-to-merge <span class="accent">pull request</span>.</h2>
+      </header>
+      <div class="apg-cols">
+        <p class="apg-p">
+          Connect your GitHub repository once on My Connections under Your website repositories, or
+          click Add a website on the Web page. Pick the repository, default branch, content folder,
+          frontmatter template, and languages in Site Settings, then click Verify GitHub repo &amp;
+          Inspect structure so hubStudio learns how your pages and images are laid out.
+        </p>
+        <p class="apg-p">
+          Every registered site opens on four tabs: Queue &amp; Test Run for queued articles and
+          live pipeline runs, AI Editorial Plan for mapping out upcoming topics, Repository Files
+          &amp; AI Studio for editing any file in the repo, and Site Settings for models, skills,
+          cadence, and language paths.
+        </p>
+      </div>
+      <p class="apg-p apg-web__more">
+        Nothing touches your live site without your say-so. When Publish mode is set to Open a Pull
+        Request (review before merge), every run commits the Markdown file, translated versions, and
+        generated images to a dedicated branch and opens a pull request on GitHub with the full
+        editorial summary.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Queue, Planner, and AI Studio ===== -->
+  <section class="apg-sheet apg-sheet--cream" id="inside-a-site">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">Inside a site</span>
+        <h2 class="headline h2 reveal">Plan the calendar, run the queue, or edit any file in <span class="accent">place</span>.</h2>
+        <p class="apg-p">Work from a multi-week editorial plan, queue a single brief, or open any file in your repository.</p>
+      </header>
+
+      <div class="apg-duo">
+        <div class="apg-duo__copy">
+          <h3 class="apg-duo__title">Queue &amp; Test Run</h3>
+          <p class="apg-p">
+            Click Add article to queue a topic with its target slug, category, angle, keywords, and
+            brief sources from your Assets Library or Campaigns. Click Run Now on any queued item
+            or Run Pipeline Now (Test) in the header to watch the pipeline work step by step.
+          </p>
+          <p class="apg-p">
+            Clicking any article in the queue opens its detail panel below the table, with tabs for
+            Brief &amp; Angle, Pipeline Log, Preview (Primary), Translations, Cover &amp; Images,
+            and Raw Markdown. From there you can edit the text, re-run the 18-pass quality loop, or
+            trigger 3-pass native localization.
+          </p>
+        </div>
+        <AppShot shot={appShots.webPage} path="/web" caption />
+      </div>
+
+      <div class="apg-cols apg-web__more">
+        <p class="apg-p">
+          Not sure what to write next? Open AI Editorial Plan, enter your themes or product focus,
+          and click Generate Editorial Plan. hubStudio scans the articles already in your
+          repository so it never proposes a duplicate, then builds a structured table of topics with
+          titles, slugs, categories, and angles. Queue the ones you want with a click, or click
+          Queue All &amp; Enable Autopilot.
+        </p>
+        <p class="apg-p">
+          When you need to update an existing landing page, article, or locale file, open Repository
+          Files &amp; AI Studio. Browse the live file tree from GitHub, edit the code directly, or
+          type an instruction under Ask AI to Edit, run the 18-pass polish or 3-pass translation on
+          that file, and commit or open a pull request right from the editor.
+        </p>
+      </div>
+      <a class="apg-arrow" href="/help/web">
+        Web module in the help center <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== The 18-pass pipeline ===== -->
+  <section class="apg-sheet apg-sheet--ink grain" id="editorial-pipeline">
+    <div class="container apg-anon__grid">
+      <div class="apg-anon__copy">
+        <span class="eyebrow apg-eyebrow--dark">The editorial pipeline</span>
+        <h2 class="headline h2 reveal">
+          Eighteen editorial passes and native localization in one <span class="accent">run</span>.
+        </h2>
+        <ul class="apg-hidden" aria-label="What the Web pipeline runs">
+          {
+            pipeline.map((step) => (
+              <li class="chip apg-hidden__chip">
+                <span class="chip__dot" aria-hidden="true" />
+                {step}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="apg-anon__copy">
+        <p class="apg-p apg-p--dark">
+          A raw AI draft reads like a raw AI draft. When Web runs an article, it first inspects
+          existing files in your repository to match your frontmatter schema and tone, writes the
+          initial draft from your brief and attached campaign documents, and then runs an 18-pass
+          editorial review that strips out clichés, checks claims against your brief, tightens
+          headings, and verifies metadata.
+        </p>
+        <p class="apg-p apg-p--dark">
+          Once the primary article passes review, hubStudio generates the cover image and inline
+          illustrations with your chosen image engine and commits the optimized files into your
+          repository’s assets folder. If your site publishes in multiple languages, each target
+          language goes through a three-pass rewrite so the French or Chinese page reads as if a
+          native editor wrote it from scratch.
+        </p>
+        <p class="apg-p apg-p--dark">
+          Four pre-made skills under Web publishing shape how the pipeline writes, edits,
+          illustrates, and translates, and the Web editor agent in Agents can review your queued
+          briefs or propose new topics on a schedule.
+        </p>
+        <a class="apg-arrow" href="/help/web#pipeline">
+          See every step of the pipeline <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Who does what ===== -->
+  <section class="apg-sheet apg-sheet--white" id="who-does-what">
+    <div class="container">
+      <header class="apg-head">
+        <span class="eyebrow">Who does what</span>
+        <h2 class="headline h2 reveal">Personal GitHub connections and team <span class="accent">permissions</span>.</h2>
+      </header>
+      <div class="apg-cols">
+        <p class="apg-p">
+          Connecting a GitHub account on My Connections is personal: your token stays tied to your
+          login, and you choose which repositories to register in Web. Within the team, the Web
+          row of the rights matrix controls who can view sites, queue briefs, run the pipeline, or
+          change repository settings.
+        </p>
+        <p class="apg-p">
+          Want a teammate or a client to sign off on an article before you merge the pull request?
+          Send the draft or preview link through Validation, just like a social post or a studio
+          render.
+        </p>
+      </div>
+      <a class="apg-arrow apg-web__link" href="/help/web">
+        Read the full Web guide <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== The rest of the app ===== -->
+  <section class="apg-next">
+    <div class="container">
+      <h2 class="apg-next__label">The rest of the app, from here</h2>
+      <div class="apg-next__grid">
+        {
+          nextLinks.map((l) => (
+            <a class="apg-next__card" href={l.href}>
+              <span class="apg-next__lead">{l.lead}</span>
+              <span class="apg-next__name">
+                {l.name} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="apg-faq" id="faq">
+    <div class="container apg-faq__grid">
+      <header class="apg-faq__head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="headline h2 reveal">What people ask about <span class="accent">Web</span>.</h2>
+        <p class="apg-updated">Updated October 2026</p>
+      </header>
+      <div class="apg-faq__list">
+        {
+          faqs.map((f) => (
+            <details class="apg-qa">
+              <summary>
+                <h3 class="apg-qa__q">{f.q}</h3>
+                <span class="apg-qa__icon" aria-hidden="true" />
+              </summary>
+              <p class="apg-qa__a">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <DualCta />
+</Layout>
+
+<style>
+  /* Spacing for a paragraph or link that follows a two-column block. */
+  .apg-web__more {
+    margin: clamp(32px, 4vw, 48px) 0 24px;
+  }
+  .apg-web__link {
+    margin-top: clamp(28px, 3vw, 40px);
+  }
+</style>
+
+<script>
+  /* Fade-in on scroll, matching the other hub pages. */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
+  }
+</script>

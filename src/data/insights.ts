@@ -1080,7 +1080,7 @@ export const insights: Insight[] = [
     date: 'June 2, 2026',
     dateISO: '2026-06-02',
     readingTime: '9 min read',
-    author: 'Maya Patel',
+    author: 'Maya',
     metaTitle: 'Shoot It or Generate It: The Decision Rule | hubStudio',
     metaDescription:
       'The rule a working studio uses, asset by asset: the four conditions that force capture, when generation wins, and what getting it wrong costs.',
@@ -1183,7 +1183,7 @@ export const insights: Insight[] = [
     date: 'March 4, 2026',
     dateISO: '2026-03-04',
     readingTime: '6 min read',
-    author: 'Marcus Sullivan',
+    author: 'Marcus',
     metaTitle: 'AI Content Quality: The Argument Is Over | hubStudio',
     metaDescription:
       'AI content quality stopped being the constraint in 2026. Cannes now judges it as craft. Here is what actually limits brands instead.',
@@ -1235,7 +1235,7 @@ export const insights: Insight[] = [
     date: 'January 21, 2026',
     dateISO: '2026-01-21',
     readingTime: '6 min read',
-    author: 'Maya Patel',
+    author: 'Maya',
     metaTitle: 'AI Content Production: Beyond the Prompt | hubStudio',
     metaDescription:
       'Prompts make images. Brands need direction. Why AI content production takes more than a good prompt, and what actually gets you brand-grade work.',
@@ -1252,7 +1252,7 @@ export const insights: Insight[] = [
     date: 'December 24, 2025',
     dateISO: '2025-12-24',
     readingTime: '6 min read',
-    author: 'Aisha Rahman',
+    author: 'Aisha',
     metaTitle: 'Why AI Search Is Forcing a New Content System | hubStudio',
     metaDescription:
       'AI search is rewriting SEO. As Google prioritizes video, tools, and structured content, brands must shift from text-heavy pages to AI-ready content systems.',
@@ -1269,7 +1269,7 @@ export const insights: Insight[] = [
     date: 'December 24, 2025',
     dateISO: '2025-12-24',
     readingTime: '6 min read',
-    author: 'Marcus Sullivan',
+    author: 'Marcus',
     metaTitle: "Luxury's Quiet AI Phase Is Ending | hubStudio",
     metaDescription:
       'Luxury brands are not slow on AI, they are selective. The real test is building AI-native content systems that protect brand equity, creativity, and control.',
@@ -1286,7 +1286,7 @@ export const insights: Insight[] = [
     date: 'December 13, 2025',
     dateISO: '2025-12-13',
     readingTime: '8 min read',
-    author: 'Jason Liu',
+    author: 'Jason',
     metaTitle: 'Promptable 3D and the Spatial Shift in Content Operations | hubStudio',
     metaDescription:
       'Promptable 3D shifts production from one-off assets to reusable 3D objects. The winners build the QA and creative direction that scale.',
@@ -1303,7 +1303,7 @@ export const insights: Insight[] = [
     date: 'December 7, 2025',
     dateISO: '2025-12-07',
     readingTime: '7 min read',
-    author: 'Aisha Rahman',
+    author: 'Aisha',
     metaTitle: 'Where Language AI Actually Delivers for Content Teams | hubStudio',
     metaDescription:
       'Language models have been oversold as universal solutions. Applied to the right creative challenges, AI transforms content teams through focused execution.',
@@ -1320,7 +1320,7 @@ export const insights: Insight[] = [
     date: 'November 21, 2025',
     dateISO: '2025-11-21',
     readingTime: '6 min read',
-    author: 'Erik Lindström',
+    author: 'Erik',
     metaTitle: 'Foley-Grade Audio for AI Video at Scale | hubStudio',
     metaDescription:
       'AI video looks good but often sounds flat. New AI sound models let hubStudio add Foley-grade audio to AIGC at production scale.',
@@ -1337,7 +1337,7 @@ export const insights: Insight[] = [
     date: 'November 17, 2025',
     dateISO: '2025-11-17',
     readingTime: '6 min read',
-    author: 'Aisha Rahman',
+    author: 'Aisha',
     metaTitle: 'GEO vs SEO: How AI Search Rewrites the Rules | hubStudio',
     metaDescription:
       'Google search is fading fast. ChatGPT, Perplexity, and AI Overviews now control visibility. GEO optimizes for AI recommendation and trust.',
@@ -1422,7 +1422,7 @@ export const insights: Insight[] = [
     date: 'September 14, 2025',
     dateISO: '2025-09-14',
     readingTime: '5 min read',
-    author: 'Erik Lindström',
+    author: 'Erik',
     metaTitle: 'How AI Avatars Are Transforming Brand Content | hubStudio',
     metaDescription:
       'How businesses use AI avatars for scalable content creation, global localization, personalized outreach, and consistent brand representation.',
@@ -1439,7 +1439,7 @@ export const insights: Insight[] = [
     date: 'August 19, 2025',
     dateISO: '2025-08-19',
     readingTime: '6 min read',
-    author: 'Jason Liu',
+    author: 'Jason',
     metaTitle: 'Diffusion Models: The Science Behind AI Visuals | hubStudio',
     metaDescription:
       'How diffusion models power AI image generation for brands: the technology behind tools like Midjourney, and the custom AIGC workflows built on it.',
@@ -1473,7 +1473,7 @@ export const insights: Insight[] = [
     date: 'July 27, 2025',
     dateISO: '2025-07-27',
     readingTime: '5 min read',
-    author: 'Maya Patel',
+    author: 'Maya',
     metaTitle: 'How Agentic AI Is Reshaping Creative Data Work | hubStudio',
     metaDescription:
       'How autonomous AI agents reshape creative analytics, the insights they surface automatically, and how analysts become brand intelligence architects.',
@@ -1490,7 +1490,7 @@ export const insights: Insight[] = [
     date: 'July 4, 2025',
     dateISO: '2025-07-04',
     readingTime: '9 min read',
-    author: 'Erik Lindström',
+    author: 'Erik',
     metaTitle: "Veo 3 Review: An AIGC Studio's Honest Assessment | hubStudio",
     metaDescription:
       'A professional AIGC studio assesses Veo 3: video quality, brand applications, cost, and where it fits in a real production workflow.',
@@ -1507,7 +1507,7 @@ export const insights: Insight[] = [
     date: 'July 3, 2025',
     dateISO: '2025-07-03',
     readingTime: '7 min read',
-    author: 'Aisha Rahman',
+    author: 'Aisha',
     metaTitle: 'Cloudflare Pay Per Crawl and AIGC Content Protection | hubStudio',
     metaDescription:
       "Cloudflare's pay-per-crawl model blocks default AI scrapers and forces platforms to pay for access, turning original brand content into a protected asset.",

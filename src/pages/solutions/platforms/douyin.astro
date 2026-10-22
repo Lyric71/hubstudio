@@ -2,16 +2,14 @@
 /**
  * Douyin · /solutions/platforms/douyin
  *
- * Editorial layout adapted from /solutions/platforms/meta. Same print-shop
- * primitives (crop marks, calibration color bar, mono figure labels, dashed
- * rules) reframed for Douyin: the five service lanes, the AIGC mechanics for
- * each, the partnership model.
+ * Full-service Douyin agency and AIGC production studio: Enterprise Blue V
+ * account setup, For You feed short-form video, Ocean Engine and Qianchuan
+ * paid media buying, Xingtu KOL and studio UGC campaigns, end-to-end Live
+ * Commerce and Douyin Shop operations, plus brand-owned AI digital hosts.
  *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
- * its canonical lowercase-h casing. The page sells to international brands,
- * so the copy is English; the on-screen work content in the imagery is
- * Mandarin, because Douyin is a Chinese-market platform.
+ * its canonical lowercase-h casing.
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
@@ -25,35 +23,35 @@ const colourBar = [
 ];
 
 const stats = [
-  { from: 0, to: 5, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, UGC, live, avatar' },
-  { from: 0, to: 60, suffix: '+', label: 'Cuts per concept', note: 'From one signed-off master' },
+  { from: 0, to: 6, suffix: '', label: 'Service pillars', note: 'Setup, video, Ocean Engine, KOLs, Live & Shop, AI hosts' },
+  { from: 0, to: 60, suffix: '+', label: 'Cuts per concept', note: 'For Ocean Engine and Qianchuan' },
   { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On short-form Douyin video' },
 ];
 
 const samples = [
   {
     src: '/Images/douyin-sample-feed.jpg',
-    kind: 'Content · For You feed',
+    kind: 'Brand Account · For You feed',
     alt: 'A vertical phone held in soft window light, the screen filled with a Douyin For You video of a styled product scene in warm tones, the right-side icon rail and bottom navigation bar visible.',
   },
   {
     src: '/Images/douyin-sample-topview.jpg',
-    kind: 'Ad creative · TopView',
+    kind: 'Ocean Engine · TopView',
     alt: 'A phone screen showing a full-screen Douyin TopView ad at app open, a paused fashion frame with a call-to-action button visible in the lower interface.',
   },
   {
     src: '/Images/douyin-sample-ugc.jpg',
-    kind: 'UGC · KOC review',
+    kind: 'Xingtu & Studio · KOC review',
     alt: 'A phone screen showing a vertical Douyin video of a creator holding a product to camera in a sunlit bedroom, the caption overlay and the like-comment-share rail visible in the interface.',
   },
   {
     src: '/Images/douyin-sample-live.jpg',
-    kind: 'Live commerce · Shop livestream',
+    kind: 'Douyin Shop · Live commerce',
     alt: 'A phone held vertically showing a Douyin Shop livestream, a host gesturing toward a product, floating heart animations rising up the frame and a pinned product card with a shopping cart icon.',
   },
   {
     src: '/Images/douyin-sample-avatar.jpg',
-    kind: 'Avatar · Digital host',
+    kind: '24/7 Live · Digital host',
     alt: 'A phone screen showing a vertical Douyin video of a digital host presenter speaking to camera in neutral knitwear, captions and the For You icon rail visible in the interface.',
   },
 ];
@@ -61,131 +59,170 @@ const samples = [
 const coverage = [
   {
     fig: 'B',
-    label: 'Content',
-    heading: 'Content. The For You feed, handled.',
+    label: 'Account Setup & Feed Video',
+    heading: 'Blue V verification and For You feed video production.',
     image: '/Images/douyin-content.jpg',
     alt: 'A phone held in both hands, the screen filled with the vertical Douyin For You feed, the right-side icon rail of profile photo, heart, comment and share visible alongside the spinning circular music disc.',
-    lead: 'Short-form video for the For You feed, written and shot by the studio.',
+    lead: 'Enterprise Blue V onboarding and high-tempo 9:16 video engineered for Douyin’s recommendation algorithm.',
     body: [
-      "We handle the organic side of a Douyin account from script to final cut: product demos that hold the viewer past the first second, lifestyle videos that match the rest of the brand book, explainer pieces on a weekly schedule, and trend formats caught while the trend is still worth catching. Everything runs vertical and sound-on, because that is how the feed plays it.",
-      "A creative director signs off every cut. The same retoucher who finished the campaign hero finishes these. Captions get written in Mandarin from scratch, not pushed through a translation tool, and every file ships in the 9:16 the feed expects. The idea is to add volume without letting the brand drift.",
+      "We register and verify your Douyin Enterprise (Blue V) account, handling overseas or domestic business credentials, compliance checks, profile setup, and commercial permissions. From there, our Shanghai team plans and runs your monthly content calendar.",
+      "Every video is scripted, shot, and edited in native Mandarin to earn the thumb-stop in the first two seconds and drive completion, shares, and profile taps: product demos, lifestyle vignettes, tutorials, mini-dramas, and same-week trend formats, all signed off by our studio directors.",
     ],
     tags: [
-      'Product demos', 'Lifestyle video', 'Explainer cuts',
-      'Trend formats', 'Vertical 9:16', 'Hook-first edits',
-      'Sound-on mix', 'Always-on calendar',
+      'Enterprise Blue V setup', 'Product demos & tutorials', 'Mini-dramas & storytelling',
+      'Trend-reactive 9:16 cuts', 'Hook-first editing', 'Native Mandarin scripts',
+      'Sound-on audio mix', 'Always-on account ops',
     ],
   },
   {
     fig: 'C',
-    label: 'Ad creative',
-    heading: 'Ad creative. Built for Ocean Engine.',
+    label: 'Ocean Engine & Qianchuan Ads',
+    heading: 'Paid advertising. Full media buying on Ocean Engine.',
     image: '/Images/douyin-ads.jpg',
     alt: 'A wide monitor showing the Ocean Engine creative library, a grid of vertical In-Feed and TopView ad cuts lined up in the placement preview panel.',
-    lead: "Paid creative, made at the volume Ocean Engine's auction rewards.",
+    lead: 'End-to-end media buying, bidding, and high-volume ad creative across Ocean Engine and Qianchuan.',
     body: [
-      "Ocean Engine learns faster when it has more creative to test, so volume here is not a vanity number, it is how the buying works. We brief, generate and finish paid creative around whatever placements the media team is buying: In-Feed video, TopView, Search, Shop cards. We build the format range dynamic creative needs, and we name the files the way the reporting downstream expects to find them.",
-      "Conversion video, full-screen TopView, Search units, DOU+ boosts, Branded Effects: all of it goes through one studio pass. That is what keeps cut number forty looking like the hero instead of a washed-out copy of it.",
+      "Douyin's ad auction learns fast and burns through creative even faster. Our Shanghai media buyers manage the full paid operation inside Ocean Engine (Jiliang Yinqing) for brand and lead campaigns, and Qianchuan for Douyin Shop and livestream GMV. We handle audience and interest targeting, search keyword bidding, budget pacing, and transparent ROAS reporting.",
+      "Every ad surface is covered: In-Feed video ads, full-screen TopView takeovers, Douyin Search ads, DOU+ content boosting, Shop cards, and Branded Effects. Sitting right beside the buyers, our AIGC studio produces sixty-plus hook and cohort cuts per master so campaigns scale without creative fatigue.",
     ],
     tags: [
-      'In-Feed video', 'TopView', 'Search ads',
-      'DOU+ boosts', 'Shop cards', 'Branded Effects',
-      'Hook A/B testing', 'Retargeting cuts',
+      'Ocean Engine media buying', 'Qianchuan e-commerce ads', 'In-Feed & TopView ads',
+      'Douyin Search & DOU+', 'Shop card & live boosting', '60+ AIGC ad variants',
+      'Hook & cohort testing', 'Transparent CPA & ROAS',
     ],
   },
   {
     fig: 'D',
-    label: 'UGC',
-    heading: 'UGC. KOC-style, at studio scale.',
+    label: 'Xingtu KOLs & Studio UGC',
+    heading: 'Xingtu influencer campaigns and studio UGC at scale.',
     image: '/Images/douyin-ugc.jpg',
     alt: 'A phone screen showing a vertical Douyin video of a creator filming a product review in a sunlit room, the For You icon rail and the caption overlay visible in the interface.',
-    lead: 'KOC-style video for the feed, minus the casting calls and the rights negotiations.',
+    lead: 'Verified Douyin KOL and KOC partnerships via Xingtu, paired with owned studio UGC.',
     body: [
-      "We make the full range of creator-style content: reviews, hauls, unboxings, GRWM, founder testimonials, reaction cuts. The briefs read like creator briefs, and the footage has the handheld feel to match, shaky in the right places. Captions are native Mandarin. Because it is finished in the studio, the brand owns the masters and the usage rights from the first export, with nobody to renegotiate with later.",
-      "And the volume is the whole point. Thirty KOC cuts for a single launch. Ten fresh hooks a week on an always-on account. Separate edits for separate markets. The first cut costs what it costs; by the tenth, the per-cut number is barely worth tracking.",
+      "We run end-to-end creator campaigns through Douyin's official Xingtu (Star Map) platform and Daren affiliate network. Our team sources creators in your vertical, audits their historical completion rates, fake-follower ratios, and actual GMV conversion data, negotiates fees and commission splits, and manages scripting, compliance, and Spark-style paid amplification.",
+      "To give your media buyers a deep library of creator-style ads without recurring talent fees or expiring usage windows, our Shanghai studio also shoots and generates KOC-style reviews, unboxings, and GRWM cuts that your brand owns permanently.",
     ],
     tags: [
-      'KOC reviews', 'Hauls', 'Unboxing',
-      'GRWM cuts', 'Testimonials', 'Reaction edits',
-      'Native Mandarin', 'Always-on UGC',
+      'Xingtu (Star Map) KOLs', 'Daren affiliate seeding', 'Fake-follower & GMV audits',
+      'Creator whitelisting', 'In-house studio UGC', 'KOC reviews & hauls',
+      'Perpetual usage rights', 'Full-funnel ROI tracking',
     ],
   },
   {
     fig: 'E',
-    label: 'Live commerce',
-    heading: 'Live commerce. The look of a shoppable stream.',
+    label: 'Live Commerce & Douyin Shop',
+    heading: 'End-to-end Live Commerce and Douyin Shop operations.',
     image: '/Images/douyin-live.jpg',
     alt: 'A phone screen showing a Douyin Shop livestream, floating heart animations rising up the frame and a product card pinned in the lower corner with a shopping cart icon.',
-    lead: 'The visual production behind a Douyin Shop livestream: the set, the graphics, the segments.',
+    lead: 'We open and operate your Douyin Shop and run your live selling broadcasts from set design to checkout.',
     body: [
-      "We build the visual side of a Douyin Shop livestream. Not the operations of running one, the look of it. That means set design and dressing, the on-screen overlays and lower-thirds, a script for each product-showcase segment, the shoppable card creative, and the replay cut down into short-form once the stream is over.",
-      "Most brand livestreams on Douyin still look like a folding table in a stockroom. This one should not. A digital host from the avatar lane can run it, or a human host can work from a studio run-of-show. The on-screen look holds either way.",
+      "Douyin is a closed-loop commerce powerhouse where viewers watch a video or enter a livestream and check out in seconds via Douyin Pay. We set up and operate your Douyin Shop (Doudian), managing product catalog listings, pricing, promotional mechanics, customer service, and affiliate distribution.",
+      "In our Shanghai livestream studios, we plan and run your live selling sessions end to end: custom set design and lighting, professional Mandarin hosts, product run-of-show scripting, real-time flash sales and comment moderation, Qianchuan traffic boosting into the live room, and post-stream replay cut-downs.",
     ],
     tags: [
-      'Livestream sets', 'Segment scripts', 'On-screen overlays',
-      'Product cards', 'Shop integration', 'Replay cut-downs',
-      'Run-of-show', 'Always-on lives',
+      'Douyin Shop (Doudian) ops', 'End-to-end live selling', 'Professional Mandarin hosts',
+      'Studio set & overlay design', 'Qianchuan live traffic', 'Flash-sale mechanics',
+      'Daren affiliate management', 'Replay short-form cuts',
     ],
   },
   {
     fig: 'F',
-    label: 'Avatar',
-    heading: 'Avatar. A digital host the brand owns.',
+    label: 'Avatar & 24/7 Digital Hosts',
+    heading: 'Avatar. Brand-owned digital hosts for video and 24/7 streams.',
     image: '/Images/douyin-avatar.jpg',
     alt: 'A phone screen showing a vertical Douyin video of a digital host presenting to camera, captions and the For You icon rail visible in the interface.',
-    lead: 'A custom digital host that works only on your channels, in any language Douyin reaches.',
+    lead: 'Custom AI presenters and 24/7 livestream hosts trained exclusively on your brand.',
     body: [
-      "We build and train digital hosts a brand owns outright. A founder's twin. A brand presenter. A product expert. A separate cast for each market, when a market needs its own face. The host talks to camera in short-form, runs the Shop livestream, and walks through shopping clips.",
-      "The lip-sync holds up close. The look stays on-brand. And the rights are yours, for good. Refreshing the host does not mean another shoot, and adding a language does not mean another casting call.",
+      "Peak livestream hours are won by human hosts, while off-peak hours and daily short-form product explainers are where brand-owned digital hosts shine. We build and train custom avatars your company owns outright: a founder digital twin, a brand spokesperson, or a product specialist.",
+      "Your digital host delivers daily 9:16 video updates and keeps your Douyin Shop livestream room running during off-peak hours, answering common product questions and pinning shopping cards with studio-grade lip-sync and native Mandarin delivery.",
     ],
     tags: [
-      'Digital host', 'Founder twin', 'Product expert',
-      'Livestream host', 'Multi-language cuts', 'Localized casts',
-      'Shop hosts', 'Always-on avatar',
+      '24/7 AI livestream hosts', 'Founder digital twin', 'Brand spokespeople',
+      'Daily short-form hosts', 'Native Mandarin lip-sync', 'Multi-language cuts',
+      'Shop card walkthroughs', 'Owned IP & models',
     ],
   },
 ];
 
-const credentials = ['Private GPU infra', 'NDA & DPA', 'EU AI Act', 'Data sovereignty'];
+const servicePillars = [
+  {
+    eyebrow: 'Market Entry & Blue V',
+    title: 'Account Setup & Strategy',
+    body: 'Register and verify your Douyin Enterprise (Blue V) account for foreign or local entities. We handle compliance documentation, brand positioning, content pillars, and your commercial KPI roadmap.',
+    items: ['Enterprise Blue V verification', 'Overseas & local onboarding', 'Competitor & category audit', 'Content & commerce roadmap'],
+  },
+  {
+    eyebrow: '9:16 Video Engine',
+    title: 'Short-Form Content Production',
+    body: 'Native Mandarin short-form video produced in Shanghai for the For You feed. We script, shoot, and generate demos, lifestyle stories, tutorials, mini-dramas, and rapid trend adaptations.',
+    items: ['Hook-first 9:16 video cuts', 'Demos, tutorials & mini-dramas', 'Same-week trend execution', 'Brand-trained AIGC variants'],
+  },
+  {
+    eyebrow: 'Closed-Loop Live Selling',
+    title: 'End-to-End Live Commerce',
+    body: 'Full planning and execution of Douyin live selling sessions. We provide Shanghai studio sets, trained human hosts, run-of-show scripting, real-time moderation, and post-stream analytics.',
+    items: ['Dedicated Shanghai live studios', 'Experienced Mandarin hosts', 'Run-of-show & flash-sale ops', 'Replay highlight repurposing'],
+  },
+  {
+    eyebrow: 'Creator & Affiliate Scale',
+    title: 'KOL, KOC & Daren Campaigns',
+    body: 'Source, audit, and manage Douyin creators through Xingtu (Star Map) and Daren affiliate networks, paired with in-house studio UGC that your brand owns with perpetual rights.',
+    items: ['Xingtu KOL & KOC booking', 'Fake-follower & GMV vetting', 'Commission affiliate seeding', 'Rights-owned studio UGC'],
+  },
+  {
+    eyebrow: 'Paid Media Buying',
+    title: 'Ocean Engine & Qianchuan Ads',
+    body: 'Full-funnel media buying across Ocean Engine and Qianchuan. We manage In-Feed Ads, TopView, Search Ads, DOU+, and live-room traffic acquisition, backed by 60+ creative cuts per concept.',
+    items: ['Ocean Engine & Qianchuan buying', 'TopView, In-Feed & Search Ads', 'Live-room ROI bidding', '60+ studio creative variants'],
+  },
+  {
+    eyebrow: 'Storefront & AI Hosts',
+    title: 'Douyin Shop & Digital Hosts',
+    body: 'Open and run your in-app Douyin Shop (Doudian) and deploy custom AI digital hosts to keep your feed and livestream room converting around the clock.',
+    items: ['Douyin Shop setup & catalog ops', 'Video & live checkout linking', '24/7 AI digital stream hosts', 'Monthly GMV & ROAS reporting'],
+  },
+];
+
+const credentials = ['Ocean Engine & Qianchuan Buyers', 'Xingtu & Shop Ops', 'Private GPU infra', 'Data sovereignty'];
 
 const processSteps = [
   {
-    short: 'Brief',
+    short: 'Setup',
     tier: 'Where it is won',
-    title: 'Discovery and brief.',
-    body: 'One working session, long enough to settle the goal, the audience, which Douyin surfaces are in scope, what the brand actually stands for, and what it cannot be seen doing. You leave with a one-page brief and an asset map broken out by placement and by lane.',
+    title: 'Blue V setup, Shop onboarding and brief.',
+    body: 'We verify your Douyin Enterprise account, set up your Douyin Shop (Doudian) if selling in-app, audit category competitors, and lock your content, livestream, KOL, and ROAS targets.',
     image: '/Images/douyin-p1-brief.jpg',
     alt: 'A creative director and a brand lead at a studio table in a lived-in Shanghai office, tea mugs and sticky notes around a laptop showing the Ocean Engine planner beside printed Douyin For You feed screenshots.',
   },
   {
     short: 'Direction',
     tier: 'Where it is won',
-    title: 'Creative direction, lane by lane.',
-    body: 'References locked, tone set, shot list drafted. We pick the AI and digital-host models surface by surface. Each lane gets its own treatment rather than one look stretched five ways. This is the step that makes a campaign yours and hard to copy.',
+    title: 'Creative, live and Ocean Engine direction.',
+    body: 'We lock the visual references, script the first wave of 9:16 hooks and livestream run-of-shows, shortlist vetted Xingtu creators, architect the Ocean Engine and Qianchuan ad funnel, and train your brand LoRA and digital-host models.',
     image: '/Images/douyin-p2-direction.jpg',
     alt: 'A storyboard wall in a Shanghai studio with five columns of frame sketches labeled Content, Ads, UGC, Live and Avatar, each column anchored by a printed phone mock of the vertical Douyin feed.',
   },
   {
-    short: 'AIGC',
+    short: 'Production',
     tier: 'The rest is execution',
-    title: 'Generation and an authored finish.',
-    body: 'Now the generation runs, lane by lane, across the surfaces we agreed on. Nothing reaches a media plan until it has been through the studio retouch, a brand check, and a compliance read against Douyin rules.',
+    title: 'Studio shoots, live set build and AIGC cuts.',
+    body: 'Our Shanghai crew shoots and generates the For You videos, studio UGC, livestream sets, and sixty-plus Ocean Engine ad variants. Every frame passes studio retouch and Douyin ad-compliance checks.',
     image: '/Images/douyin-p3-aigc.jpg',
     alt: 'A Chinese motion designer at a calibrated workstation in a cluttered Shanghai studio, the main monitor showing a single vertical Douyin video frame, the side panel showing the Ocean Engine creative library grid of cuts.',
   },
   {
     short: 'Launch',
     tier: 'The rest is execution',
-    title: 'Launch, per placement and market.',
-    body: 'The media team gets the assets in the formats Ocean Engine actually serves: right ratios, right durations, named for In-Feed, TopView and Search. The naming is built so the reporting afterward reads clearly instead of turning into a guessing game.',
+    title: 'Publishing, media buying, KOLs and live broadcasts.',
+    body: 'We publish the daily video calendar, launch and pace Ocean Engine and Qianchuan campaigns, coordinate Xingtu creator drops, and host live selling sessions linked directly to your Douyin Shop.',
     image: '/Images/douyin-p4-launch.jpg',
     alt: 'A Chinese media buyer at a daylit studio desk in Shanghai, the calibrated monitor showing the Ocean Engine campaign dashboard with In-Feed and TopView placements live.',
   },
   {
-    short: 'Adapt',
+    short: 'Optimize',
     tier: 'The rest is execution',
-    title: 'Adapt, refresh, follow the trend.',
-    body: 'With the hero approved, new cuts land in days rather than weeks: a different audience, a trend worth chasing, a seasonal angle. The brief does not change much. The library just keeps growing.',
+    title: 'GMV optimization, creative refresh and trend velocity.',
+    body: 'Every week we cut fatigued hooks, spin up fresh variants, adjust Qianchuan live-room bidding, and scale winning products across KOL affiliates and 24/7 digital-host streams.',
     image: '/Images/douyin-p5-adapt.jpg',
     alt: 'A Chinese colorist at a calibrated grading suite in a Shanghai studio, the reference monitor showing a warm vertical Douyin video frame paused on a product still, the For You icon rail visible at the screen edge.',
   },
@@ -193,48 +230,44 @@ const processSteps = [
 
 const faqs = [
   {
-    q: 'What exactly do you produce for Douyin?',
-    a: 'Five lanes, one studio. Content is organic short-form video for the For You feed: demos, lifestyle, explainers, trend formats. Ad creative is In-Feed, TopView, Search and Shop-card work for Ocean Engine. UGC is KOC-style reviews and hauls, made at volume. Live commerce is the on-screen production for a Douyin Shop livestream. Avatar is a digital host the brand owns. The five share one creative direction and one finishing pass, which is the only reason the cheap-to-make long tail still looks like the hero.',
+    q: 'What Douyin services do you provide?',
+    a: 'We operate as a full-service Douyin agency and AIGC production studio in Shanghai and Hong Kong. Our six pillars cover Enterprise Blue V account setup and strategy; For You feed short-form video production; end-to-end Live Commerce broadcasts; KOL and KOC campaigns via Xingtu plus owned studio UGC; full-funnel paid advertising on Ocean Engine and Qianchuan; and Douyin Shop (Doudian) store operations and brand-owned AI digital hosts.',
   },
   {
-    q: 'How is the UGC lane different from sourcing KOCs through Xingtu?',
-    a: 'We write the brief, build the creator profile, shoot the takes in the studio, and finish them to the same standard as the hero. It comes out with the loose handheld feel of creator video, product-in-hand frames, and captions written in Mandarin from scratch instead of translated. No casting cycle, no chasing usage rights after the fact. You own the masters and the rights from the first export. When a campaign genuinely needs a named creator and their following, that is a media buy you run next to this lane, not a replacement for it, and we will say so when that is the case.',
+    q: 'Do you manage Ocean Engine and Qianchuan media buying as well as the ad creative?',
+    a: 'Yes. Our Shanghai media buyers plan, launch, and optimize paid campaigns inside Ocean Engine (for brand and lead generation) and Qianchuan (for Douyin Shop and livestream GMV). We manage In-Feed video ads, TopView, Douyin Search ads, DOU+ boosts, and live-room traffic bidding with transparent ad spend, while our studio produces sixty-plus creative cuts per concept so the auction never stalls.',
   },
   {
-    q: 'What goes into building the Avatar, the digital host?',
-    a: 'We build and train a host the brand owns: a founder twin, a brand presenter, a product expert, or a small cast when different markets need different faces. The host speaks to camera in short-form, fronts the Shop livestream, and narrates shopping clips. Lip-sync holds up at close range, the look stays on-brand, and the same host works in every language Douyin reaches without a reshoot. It never turns up on another company account, because it was trained on your material and nobody else.',
+    q: 'Do you run Douyin livestreams and Douyin Shop operations end to end?',
+    a: 'Yes. We do both the visual production and the daily operation. We set up and manage your Douyin Shop (Doudian) catalog, pricing, promotions, and Daren affiliate links, and we run live selling broadcasts from our Shanghai studios with professional Mandarin human hosts, custom set design, real-time flash sales, Qianchuan traffic boosting, and optional 24/7 AI digital hosts for off-peak hours.',
   },
   {
-    q: 'What does the Live commerce lane actually deliver?',
-    a: 'The visual production for a Douyin Shop livestream, not the running of it. We design and dress the set, build the overlays and lower-thirds, script each product segment, produce the shoppable card creative, and cut the replay into short-form once it is over. The aim is a stream that looks like the brand book, not a card table in a stockroom. A digital host from the avatar lane can front it, or a person can host it from the run-of-show we write.',
+    q: 'How do you handle Xingtu KOL campaigns versus your studio UGC lane?',
+    a: 'Through Douyin’s official Xingtu (Star Map) platform, we source verified Chinese KOLs and KOCs, audit them for fake followers and historical GMV performance, and manage contracting, briefing, and commission affiliate seeding. Alongside real creators, our studio UGC lane produces dozens of handheld KOC-style reviews and unboxings in-house that your brand owns permanently with no usage-window limits.',
   },
   {
-    q: 'How do you keep the five lanes looking like one brand?',
-    a: 'The hero concept gets approved once, in the direction step. After that, every cut in every lane goes through the same retouch, the same color grade, the same brand-safety check. Honestly, that finishing pass is the whole product. It is what keeps content, ad creative, UGC, live and avatar reading as one campaign instead of five that happened to ship the same month.',
+    q: 'What goes into building a brand-owned Avatar or digital host for Douyin?',
+    a: 'We train a custom digital presenter exclusively on your brand: a founder twin, a brand spokesperson, or a product specialist. It delivers daily 9:16 short videos and can host off-peak Douyin Shop livestreams, walking viewers through product cards with studio-grade Mandarin lip-sync.',
   },
   {
-    q: 'How fast is turnaround, and can you keep up the volume?',
-    a: 'Short-form video for a brand we already know can go from brief to first cut in 24 to 72 hours. One hero shoot or AI sprint creates the master, and the variants follow over the next few days, audience by audience. A new brand or a new product needs a one-time setup first, to lock the treatment, the LoRA models and the digital host. After that, three to five posts a week at production quality is a normal pace, not a stretch one.',
+    q: 'Can an international brand operate on Douyin without a mainland China company?',
+    a: 'We guide foreign brands through Enterprise Blue V verification and cross-border Douyin Shop onboarding using overseas corporate credentials, or work with your existing Chinese entity or TP partner. We handle all document translation, category compliance, and platform filings.',
   },
   {
-    q: 'How do you price a Douyin engagement?',
-    a: 'Every engagement is scoped to the brief, so there is no per-asset price list to quote here. What moves the number is the lane mix, the volume you need each month, and whether we are building new models and a digital host or working from ones that already exist. Media spend on Ocean Engine is separate and stays with the media team. Send the brief and a scope plus an indicative range comes back, usually inside two days.',
+    q: 'How fast is turnaround, and how does pricing work?',
+    a: 'Short-form video for an onboarded brand goes from brief to first cut in 24 to 72 hours. Engagements are scoped modularly across account management, short-form production, Live Commerce, Douyin Shop ops, Xingtu KOLs, and Ocean Engine media buying. Paid media spend and creator fees pass through transparently. Send a brief and we return a tailored scope and quote within 48 hours.',
   },
   {
-    q: 'Do you handle Ocean Engine paid placements and dynamic creative?',
-    a: 'Yes, on the creative side. We brief the ad creative lane around whatever the media team is buying: In-Feed video, TopView, Search ads, DOU+ boosts, Shop cards, Branded Effects. The cuts come in the format range dynamic creative needs, named so the reporting downstream makes sense. The media team owns the buying and the budget. We own the work that runs in the slots.',
+    q: 'How do you keep AI-generated cuts from looking synthetic?',
+    a: 'Every AIGC output goes through our Shanghai studio finishing bench: dodge and burn, natural grain, optical detail, color grading in DaVinci Resolve or Capture One, and a human compliance and brand-safety check before anything enters Ocean Engine or the For You feed.',
   },
   {
-    q: 'How do you keep the work from looking AI-generated?',
-    a: 'Every output goes through a studio retouch: dodge and burn, grain, a little chromatic aberration at the edges, a color grade in Lightroom or Capture One. Our image style guide bans the usual giveaways, the poreless skin, the identical bokeh, the melted jewelry, the text that is almost but not quite words. A person reviews the final file before any media plan sees it. That review is the difference between an AI image and a campaign image, and it is not optional.',
+    q: 'Can you white-label your Douyin services for our agency?',
+    a: 'Yes. We partner with international agencies on a confidential, white-label basis. Your agency holds the client relationship while our Shanghai team executes the Douyin account management, short-form video, live commerce, Xingtu KOLs, and Ocean Engine buying.',
   },
   {
-    q: 'Can you white-label this for our agency?',
-    a: 'Yes. A good share of our Douyin work ships under agency brands, white-labeled, with the collaboration kept confidential. The agency holds the client relationship and runs the communication. We are the production capacity behind it, and we are content to stay invisible.',
-  },
-  {
-    q: 'Who owns the assets, the masters and the trained models?',
-    a: 'You do. All finished assets, all masters, and any LoRA, fine-tuned or digital-host model trained on your IP. Commercial-use rights for the AI outputs come through enterprise tiers that grant commercial use. For the legal detail, our Copyright and AI guide lays it out.',
+    q: 'Who owns the Douyin accounts, assets, masters and trained models?',
+    a: 'You do. Your Douyin Enterprise account, Douyin Shop, Ocean Engine ad account, finished video masters, and any LoRA or digital-host models trained on your IP belong to your company. See our Copyright and AI guide for full legal details.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
 ];
@@ -261,8 +294,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="Douyin AIGC: Feed, Ads, Live & Avatar Work | hubStudio"
-  description="We make Douyin short-form video, Ocean Engine ad creative, livestream and digital-host work in a working studio. One brief, every placement."
+  title="Douyin Agency & AIGC Studio: Short Video, Ocean Engine Ads, Live & Shop | hubStudio"
+  description="Full-service Douyin agency and AIGC studio: Blue V setup, 9:16 video, Ocean Engine and Qianchuan ads, Xingtu KOLs, Live Commerce, Douyin Shop, and AI hosts."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -283,25 +316,24 @@ const breadcrumbSchema = {
             <span class="kicker__sep">/</span> Douyin
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Five lanes,</span></span>
-            <span class="line"><span class="line__i serif">one Douyin brief.</span></span>
-            <span class="line"><span class="line__i">AIGC, in scale.</span></span>
+            <span class="line"><span class="line__i">Full-service</span></span>
+            <span class="line"><span class="line__i serif">Douyin commerce.</span></span>
+            <span class="line"><span class="line__i">AIGC, at scale.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Content. Ad creative. UGC. Live. <em>Avatar.</em>
+            Short Video. Ocean Engine Ads. KOLs. Live &amp; Shop. <em>AI Hosts.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              We make five kinds of work for Douyin. Short-form video for the
-              For You feed. Paid creative cut for Ocean Engine. KOC-style
-              reviews at the volume the feed burns through. Then the parts of a
-              Shop livestream you see on screen, fronted, if you want one, by a
-              digital host that speaks for the brand in any language.
+              We run your entire Douyin operation from Shanghai: Enterprise Blue
+              V verification, daily 9:16 short-form video, full-funnel media
+              buying on Ocean Engine and Qianchuan, vetted Xingtu KOL campaigns,
+              and end-to-end Douyin Shop and livestream selling.
             </p>
             <p>
-              One brief covers all five. One creative direction, then sixty
-              cuts for sixty audiences. The AI work happens inside a working
-              production company, with directors signing off every frame.
+              Underneath the agency team sits our AIGC production studio,
+              turning one signed-off direction into sixty-plus ad and audience
+              cuts, studio UGC, and 24/7 brand-owned digital hosts.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
@@ -314,7 +346,7 @@ const breadcrumbSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Hong Kong + Shanghai <span>/</span> Douyin-native creative under one director
+            Hong Kong + Shanghai <span>/</span> Full-service Douyin agency &amp; AIGC studio
           </p>
         </div>
       </div>
@@ -342,23 +374,22 @@ const breadcrumbSchema = {
           <div class="why__head">
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
             <h2 class="dh r" style="--d:.05s">
-              What we ship<br /><span class="serif">into Douyin</span>.
+              Everything we do<br /><span class="serif">on Douyin</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              Five lanes, all handled in one place. Short-form video for the
-              For You feed, the kind that has to win in the first second or
-              lose the viewer. Ad creative cut for Ocean Engine, across
-              In-Feed, TopView, Search and Shop cards. KOC-style reviews and
-              hauls, made at volume. Livestream production for Douyin Shop. And
-              a digital host the brand owns outright.
+              With over 750 million daily active users, Douyin merges short-form
+              entertainment, search, live streaming, and instant in-app checkout
+              into a single loop. Winning on the platform requires connecting
+              For You feed video, Ocean Engine and Qianchuan paid traffic,
+              Xingtu creators, and live selling into a converting Douyin Shop.
             </p>
             <p class="r" style="--d:.16s">
-              One creative direction runs through all five. The people who
-              retouch the hero frame also finish the fiftieth variant, and that
-              is the only reason the long tail still reads as the brand and not
-              a faded photocopy of it.
+              We operate every part of that loop in Shanghai and Hong Kong,
+              pairing licensed media buyers, livestream hosts, and Shop
+              operators with an AIGC studio that delivers sixty-plus cuts per
+              concept.
             </p>
           </div>
         </div>
@@ -373,15 +404,14 @@ const breadcrumbSchema = {
               loading="lazy"
             />
           </div>
-          <figcaption class="fig">Five lanes, one creative direction</figcaption>
+          <figcaption class="fig">Six Douyin pillars, one integrated Shanghai &amp; Hong Kong operation</figcaption>
         </figure>
 
         <div class="stats">
           <p class="stats__quote r">
-            One brief, five lanes, every placement. The same studio finishes
-            all of it, which is how sixty cuts a concept still read as one
-            brand, and how a short-form video gets from brief to first cut
-            inside forty-eight hours.
+            One brief across Blue V account management, Ocean Engine and
+            Qianchuan media buying, Xingtu KOLs, Douyin Shop livestreams, and
+            studio AIGC production.
           </p>
           <div class="stats__grid">
             {
@@ -411,7 +441,7 @@ const breadcrumbSchema = {
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
           <h2 class="dh r" style="--d:.05s">
-            Five lanes, one <span class="serif">brand line</span>.
+            Feed, live and shop, <span class="serif">connected</span>.
           </h2>
         </header>
 
@@ -431,7 +461,7 @@ const breadcrumbSchema = {
                 <figcaption class="fig">{c.label} surface</figcaption>
               </figure>
               <div class="feature__body">
-                <p class="feature__idx r"><span class="feature__tick"></span>Surface</p>
+                <p class="feature__idx r"><span class="feature__tick"></span>Pillar</p>
                 <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
                 {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
                 {c.body.map((para, pi) => (
@@ -449,6 +479,31 @@ const breadcrumbSchema = {
             </article>
           ))
         }
+
+        <div class="matrix">
+          <header class="matrix__head">
+            <p class="kicker r"><span class="kicker__tick"></span>Complete service catalog</p>
+            <h3 class="dh dh--sm r" style="--d:.05s">
+              Six Douyin pillars, <span class="serif">end to end</span>.
+            </h3>
+          </header>
+          <div class="matrix__grid">
+            {
+              servicePillars.map((p, i) => (
+                <article class="mcard r" style={`--d:${(i % 3) * 0.08}s`}>
+                  <p class="mcard__eyebrow">{p.eyebrow}</p>
+                  <h4 class="mcard__title">{p.title}</h4>
+                  <p class="mcard__body">{p.body}</p>
+                  <ul class="mcard__list">
+                    {p.items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </div>
       </div>
     </section>
 
@@ -518,26 +573,25 @@ const breadcrumbSchema = {
           </figure>
           <div class="source__stat">
             <span class="source__stat-num">1 brief</span>
-            <span class="source__stat-cap">Five lanes, every placement, every market</span>
+            <span class="source__stat-cap">Six pillars, feed, live and shop</span>
           </div>
         </div>
 
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Partnership</p>
           <h2 class="dh r" style="--d:.05s">
-            Authored creative, <span class="serif">AI volume</span>.
+            Shanghai agency ops, <span class="serif">AIGC volume</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            The brands pulling ahead on Douyin in 2026 are not the ones with
-            the biggest tool stack. They are the ones who run a creative
-            process worth the name, with AI carrying the volume inside it.
+            The brands compounding on Douyin in 2026 are not splitting short
+            video, Ocean Engine media buying, live selling, and Douyin Shop
+            across four vendors. They run all of it inside one Shanghai studio.
           </p>
           <p class="source__p r" style="--d:.16s">
-            We sit between the technical side and the creative side. There are
-            directors, retouchers and colorists in the building, and there are
-            AI engineers and a LoRA-training pipeline in the same building.
-            Every cut carries the discipline of the hero frame, because the
-            same people approve it.
+            In our Shanghai and Hong Kong offices, Ocean Engine and Qianchuan
+            media buyers, Xingtu creator managers, and livestream operators
+            share the floor with our directors, colorists, and AIGC engineers.
+            Every cut and live session is built to convert inside Douyin Shop.
           </p>
           <ul class="creds r" style="--d:.22s">
             {
@@ -554,11 +608,11 @@ const breadcrumbSchema = {
           <p class="source__p r" style="--d:.26s">
             Everything runs on private infrastructure. Hosting sits in mainland
             China, Hong Kong, the EU or the US, depending on where your data is
-            allowed to live. The LoRA models trained on your brand stay yours,
-            and you can take them with you if you ever walk.
+            allowed to live. The LoRA and digital-host models trained on your
+            brand stay yours, and you can take them with you if you ever walk.
           </p>
           <p class="source__p source__p--quiet r" style="--d:.3s">
-            Some brands hand us all five lanes. Others hand us one. Both work.
+            Hand us the entire Douyin operation, or start with a single pillar.
           </p>
         </div>
       </div>
@@ -566,12 +620,12 @@ const breadcrumbSchema = {
 
     <!-- APP OR STUDIO -->
     <PlatformAppBand
-      pre={'Douyin work comes from the '}
-      accent={'studio'}
+      pre={'Full-service Douyin from our '}
+      accent={'Shanghai & HK team'}
       post={'.'}
       paras={[
-        'Brands ask this early, so here it is up front. The short-form video, Ocean Engine creative, livestream kits and digital hosts on this page are studio work. Your media agency or your local operator puts them live. The hubStudio app does not publish to Douyin. Its TikTok module covers TikTok alone, and it’s still in Beta.',
-        'Your team can still make images and video in the app, then pass them to us to finish or to the people who run your account. We deliver every cut finished and named for its placement.',
+        'Our Shanghai and Hong Kong team runs your Douyin presence end to end: Enterprise Blue V verification, 9:16 short-form video, Ocean Engine and Qianchuan media buying, Xingtu KOL campaigns, Douyin Shop operations, and live selling broadcasts (with human or AI digital hosts). While the hubStudio app’s self-serve publishing module covers TikTok rather than Douyin, our team coordinates every Douyin asset, live schedule, and performance report with you.',
+        'Your internal team can also generate product visuals and video concepts inside the hubStudio app, then pass them to our Shanghai crew to finish, localize into Mandarin, and deploy across Douyin.',
       ]}
       actions={[
         { label: 'Send a brief', href: `${BRIEF_URL}?way=studio`, kind: 'primary' },
@@ -582,14 +636,15 @@ const breadcrumbSchema = {
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
-        <p class="kicker r"><span class="kicker__tick"></span>How a Douyin campaign runs</p>
+        <p class="kicker r"><span class="kicker__tick"></span>How a Douyin program runs</p>
         <h2 class="dh r" style="--d:.05s">
-          One brief,<br />every <span class="serif">placement</span>.
+          One brief,<br />every <span class="serif">Douyin lever</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          A feed video, a TopView spot, a livestream, an avatar cut: different
-          formats, same five steps. But the campaign is mostly decided in the
-          first two of them, well before anything goes live.
+          Blue V setup, For You video, Ocean Engine and Qianchuan ads, Xingtu
+          creators, Douyin Shop livestreams, and digital hosts all run through
+          one five-step rhythm. The commercial outcome is mostly decided in the
+          first two steps, before the first cut or stream goes live.
         </p>
         <p class="craft__note r" style="--d:.16s">
           The first two steps decide the campaign. The other three carry it out.
@@ -870,6 +925,19 @@ const breadcrumbSchema = {
   .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 12px; font-weight: 500; transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
   .chip:hover { background: var(--brand-orange); border-color: var(--brand-orange); color: #fff; }
+
+  .matrix { margin-top: clamp(56px, 7vw, 96px); padding-top: clamp(48px, 6vw, 80px); border-top: 1.5px dashed var(--line-strong); }
+  .matrix__head { max-width: 680px; margin-bottom: clamp(32px, 4vw, 52px); display: grid; gap: 14px; }
+  .matrix__grid { display: grid; gap: 22px; }
+  @media (min-width: 720px) { .matrix__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .matrix__grid { grid-template-columns: repeat(3, 1fr); } }
+  .mcard { display: flex; flex-direction: column; gap: 12px; padding: clamp(24px, 3vw, 32px); background: var(--bg-white); border: 1px solid var(--line-strong); border-radius: 6px; }
+  .mcard__eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
+  .mcard__title { font-size: clamp(19px, 1.8vw, 23px); font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: var(--text-ink); }
+  .mcard__body { font-size: var(--type-body); line-height: 1.6; color: var(--text-mute); }
+  .mcard__list { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line-strong); list-style: none; padding-left: 0; display: grid; gap: 7px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--text-ink); }
+  .mcard__list li { position: relative; padding-left: 14px; }
+  .mcard__list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 1.5px; background: var(--brand-orange); }
 
   /* Proof */
   .proof { background: var(--bg-white); padding-block: clamp(80px, 10vw, 150px); }

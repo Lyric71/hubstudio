@@ -2,13 +2,18 @@
 /**
  * hubStudio for manufacturers  ·  /solutions/manufacturers
  *
- * From CAD file to finished content. The studio takes CAD files, prototype
- * photos or product data and delivers images, film and launch material
- * (Studio only, the highlighted way); marketing can use the app for its own
- * product pictures and posts; Studio + app keeps engineering sign-off on
- * record in Validation. The retired "We Build It For You" offer is gone;
- * the FAQ now explains the three ways to work.
- * Copy from the content-quality-us deck (cq/sol-manufacturers).
+ * Covers both parts of the job for manufacturers:
+ *   - Creative assets (CAD-derived photoreal product images, application
+ *     scenes, launch films, dealer catalogs, assembly and safety visuals)
+ *   - Social networks (B2B LinkedIn feeds, trade-show campaigns, executive
+ *     ghostwriting, employee advocacy, B2B lead ads, and WeChat Official
+ *     Accounts and Channels)
+ * across both ways to work:
+ *   - Use the app (marketing generates visuals, edits in the browser, runs
+ *     campaigns, and schedules posts)
+ *   - Work with us in the app (our studio produces from CAD/specs and runs
+ *     B2B social channels inside the workspace, with engineering sign-off on
+ *     record in Validation)
  *
  * Per repo standards: no em dash character, no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
@@ -29,90 +34,93 @@ const colourBar = [
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
 ];
 
-/* The bottleneck, as three plain sentences. No labels, no ordinals. */
+/* The bottleneck, as three plain cards across assets and channels. No ordinals. */
 const reasons = [
   {
+    label: 'Creative assets',
     title: 'Engineers end up at the wrong desk.',
-    body: 'The people who designed the product end up making renders and screenshots for marketing, instead of the next product.',
+    body: 'The people who designed the product end up making renders and screenshots for marketing, instead of engineering the next machine.',
   },
   {
-    title: 'The versions drift apart.',
-    body: 'Marketing, sales, and dealers each hold a different picture of the product. Nobody is sure which one is current.',
+    label: 'Social networks',
+    title: 'The company page goes quiet between trade shows.',
+    body: 'Launch dates slip because visuals arrive late, and LinkedIn, YouTube, and WeChat sit quiet when buyers and distributors are looking.',
   },
   {
-    title: 'The launch waits.',
-    body: 'Content arrives after the product. Dealers sell from last year’s catalog, and sales starts late.',
+    label: 'Version control',
+    title: 'Marketing, sales, and dealers drift apart.',
+    body: 'Each region holds a different picture of the machine and posts its own specs. Nobody is sure which version engineering signed off.',
   },
 ];
 
-/* What the studio makes from your files. Images kept from the previous page. */
+/* What our creative and social teams build with you inside the app. */
 const lanes = [
   {
-    label: 'Product visuals from CAD',
+    label: 'Pillar · Creative assets · CAD to photoreal',
     heading: 'Photoreal product images, made from your CAD files.',
     image: '/Images/pmd-inspect.jpg',
     alt: 'A documentary frame of a manufacturing engineer reviewing CAD-derived assembly guides on a calibrated monitor, warm window light from camera left, lifted black point.',
-    body: 'Often before the first unit comes off the line. Materials and finishes follow your references.',
+    body: 'Often ready before the first unit comes off the line. Materials, tolerances, and finishes follow your engineering references, ready for catalogs, spec sheets, and social posts.',
     tags: ['CAD-based imagery', 'Exploded views', '360-degree views', 'Finish and color variants'],
   },
   {
-    label: 'Launch material',
-    heading: 'Ready while the product is still in production.',
-    image: '/Images/pmd-factory.jpg',
-    alt: 'A wide shop-floor frame of a partially assembled product on a rig with calibrated daylight from a tall window, prime-lens depth of field, warm shadow grade.',
-    body: 'Dealer catalogs, training visuals, and a launch film. We can localize each piece for the markets you sell in.',
-    tags: ['Dealer catalogs', 'Training visuals', 'Launch films', 'Localized versions'],
-  },
-  {
-    label: 'Products in context',
-    heading: 'The machine where your customers use it.',
+    label: 'Pillar · Creative assets · Launch & context',
+    heading: 'The machine in context, plus launch film and dealer kits.',
     image: '/Images/md-launch.jpg',
     alt: 'A wide industrial environment with a piece of equipment in context, single low-angle directional light, calibrated negative space for headline copy, real-photography grade.',
-    body: 'A machine shown in the kind of plant where your customers work, without moving it anywhere.',
-    tags: ['Application scenes', 'Trade-show visuals', 'Sales presentations', 'Vertical-market versions'],
+    body: 'Show a machine inside the kind of plant or site where your customers work, without shipping heavy equipment anywhere. We deliver launch films, vertical video cuts, dealer catalogs, and localized versions for every market.',
+    tags: ['Application scenes', 'Launch films', 'Dealer catalogs', 'Localized market kits'],
   },
   {
-    label: 'Documentation visuals',
+    label: 'Pillar · Creative assets · Documentation visuals',
     heading: 'Assembly, maintenance, and safety visuals.',
     image: '/Images/md-fmcg.jpg',
     alt: 'A precise close-up of a compliance label and a printed safety instruction sheet on a workshop bench, hard side light, real-photography grade.',
-    body: 'Drawn from your approved source files. Your engineers and your compliance team sign them off. The certification itself stays with your team.',
+    body: 'Drawn from your approved source files. Your engineers and your compliance team sign them off in Validation. The certification itself stays with your team.',
     tags: ['Assembly visuals', 'Maintenance guides', 'Safety sheet visuals', 'Revision updates'],
+  },
+  {
+    label: 'Pillar · Social networks · B2B & global channels',
+    heading: 'LinkedIn, trade-show campaigns, executive voices, and WeChat.',
+    image: '/Images/pmd-factory.jpg',
+    alt: 'A wide shop-floor frame of a partially assembled product on a rig with calibrated daylight from a tall window, prime-lens depth of field, warm shadow grade.',
+    body: 'Our social strategists and writers run your B2B social calendar inside the app: company-page posts and carousels on LinkedIn, YouTube product walkthroughs, executive ghostwriting, employee advocacy kits for sales engineers, paid B2B lead campaigns, and WeChat Official Accounts and Channels for China and APAC.',
+    tags: ['LinkedIn management', 'Executive ghostwriting', 'Employee advocacy kits', 'Paid B2B lead ads', 'WeChat Official Account', 'Trade-show social kits'],
   },
 ];
 
 const faqs = [
   {
     q: 'Can you make product visuals from CAD before production?',
-    a: 'Yes. We work from CAD exports, prototype photos, and spec sheets to make product images, launch material, and film while the product is still in production. Tell us the file formats you have and we’ll say what we need.',
+    a: 'Yes. We work from CAD exports, prototype photos, and spec sheets to make product images, launch material, film, and social cuts while the product is still in production. Tell us the file formats you have and we will say what we need.',
   },
   {
-    q: 'Do you replace our content team?',
-    a: 'No. The studio takes the volume and the craft work so your engineers can stay engineers. Your marketing team keeps the brand, the calendar, and the final say.',
+    q: 'Can hubStudio handle our B2B social networks as well as our product visuals?',
+    a: 'Yes. The app and our team cover both pillars. Your marketing team can use the app to group launch assets in a Campaign and draft and schedule posts across LinkedIn, YouTube, X, Facebook, Instagram, and TikTok (Beta). Or our team can manage your LinkedIn pages, executive posts, paid B2B ads, and WeChat Official Account directly inside your workspace.',
   },
   {
     q: 'Which way should we work with you?',
-    a: 'There are three. With Studio only, you send a brief and get finished files back, with no account needed. With Studio + app, we make the work inside hubStudio and your people approve it there. With Use the app, your own team makes and publishes the work. Most manufacturers start with Studio only and add the app when marketing wants to make its own posts.',
+    a: 'There are two ways, and both happen in the same workspace. With Use the app, your marketing team creates visuals, edits video, and schedules social posts on its own. With Work with us in the app, our creative directors, 3D/AI specialists, and social managers produce the assets and run the channels inside your hubStudio workspace while your engineers and marketers approve in Validation.',
   },
   {
-    q: 'How do you keep technical details right?',
-    a: 'We work from your engineering files and references, and your engineers approve every asset before it’s used. If they spot an error, they send the piece back with a comment and the fix arrives as a new version. With Studio + app, all of that stays on record in Validation.',
+    q: 'How do you keep technical details right across visuals and posts?',
+    a: 'We work from your engineering files and spec sheets, and your engineers approve every visual and technical post in Validation before it ships. If they spot an error, they send the piece back with a comment and the fix arrives on the same thread as a new version.',
   },
   {
-    q: 'Can you localize for other markets?',
-    a: 'Yes. We adapt settings, signage, and on-screen text for each market you sell in, and with Studio + app your local teams can review in the same thread.',
+    q: 'Can you localize assets and social campaigns for other markets?',
+    a: 'Yes. We adapt industrial settings, safety signage, subtitles, and post copy for each market you sell in, including Western networks and Chinese B2B channels like WeChat, and your local teams can review in the same Validation thread.',
   },
   {
-    q: 'What can you make for us?',
-    a: 'Product images and 360-degree views, exploded and assembly visuals, maintenance and safety visuals, dealer catalogs, trade-show material, training visuals, launch films, and short product videos.',
+    q: 'What can you make and run for us?',
+    a: 'On the asset side: CAD-derived product images, 360-degree and exploded views, application scenes, assembly and maintenance visuals, dealer catalogs, trade-show material, and launch films. On the social side: LinkedIn company posts and carousels, YouTube clips, executive ghostwriting, employee advocacy kits, paid B2B lead campaigns, and WeChat articles and video.',
   },
   {
     q: 'Does it connect to our DAM, PIM, or ERP?',
-    a: 'The app has no connectors. For studio work, we work from your exports and deliver finished files in the formats and sizes your systems need.',
+    a: 'The app has no external connectors, SSO, or public API. Your approved files live in the Assets Library with folders, tags, and version history, and for studio deliverables we export finished files in the exact formats and sizes your systems need.',
   },
   {
     q: 'How is it priced?',
-    a: 'The studio is priced per asset, per project, or on retainer, and quoted after a brief. The app runs on a prepaid balance with no subscription and no seat fees; you see the price before every run.',
+    a: 'The app runs on a shared prepaid balance in real currency with no subscription and no seat fees; you see the price before every run. Working with our creative and social teams is priced per asset, per project, or on a monthly retainer, and quoted in writing within 48 hours of your brief.',
   },
 ];
 
@@ -140,8 +148,8 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
 ---
 
 <Layout
-  title="hubStudio for manufacturers: from CAD file to content"
-  description="Manufacturers send CAD files or product data to our studio and get finished images and film back. Marketing can use the app for its own posts."
+  title="hubStudio for manufacturers: CAD-to-photoreal assets and B2B social"
+  description="Turn CAD files and specs into photoreal product visuals, launch films, and B2B social campaigns on LinkedIn, YouTube, and WeChat inside hubStudio."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -163,28 +171,29 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           </p>
           <h1 class="hero__title">
             <span class="line"><span class="line__i">From CAD file</span></span>
-            <span class="line"><span class="line__i">to finished</span></span>
-            <span class="line"><span class="line__i serif">content.</span></span>
+            <span class="line"><span class="line__i">to finished assets</span></span>
+            <span class="line"><span class="line__i">and B2B <span class="serif">channels</span>.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Your engineers get back to <em>engineering</em>.
+            Your engineers get back to <em>engineering</em>, and your launches go live on time.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              A new product is signed off. Then marketing wants pictures and
-              sales wants a sheet. Every dealer wants the lot in its own
-              language. Before long, a design engineer is exporting renders at
-              9 p.m.
+              A new machine is signed off. Marketing needs product pictures and
+              a launch film, sales needs a dealer kit in four languages, and the
+              LinkedIn, YouTube, and WeChat feeds need a steady drumbeat before
+              the trade show opens.
             </p>
             <p>
-              Our studio takes CAD files, prototype photos, or product data
-              and makes finished images, film, and launch material. You don’t
-              need an account for that. Your marketing team can use the
-              hubStudio app for its own product pictures and posts.
+              hubStudio covers both parts of the job in one workspace:
+              <strong>creative assets</strong> drawn from your CAD files and
+              specs, and <strong>social networks</strong> across Western and
+              Chinese B2B channels. Your marketing team can run the app itself,
+              or work with our creative and social teams inside the app.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
             <a class="ghost-link ghost-link--light" href={APP_SIGNUP} target="_blank" rel="noopener">
               Create your account
               <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -193,7 +202,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            CAD <span>/</span> Product data <span>/</span> Launch material
+            CAD to photoreal <span>/</span> Launch film & catalogs <span>/</span> LinkedIn, YouTube & WeChat
           </p>
         </div>
       </div>
@@ -206,7 +215,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           loading="eager"
           fetchpriority="high"
         />
-        <span class="hero__chip">Manufacturing <span>/</span> Launch prep</span>
+        <span class="hero__chip">Manufacturing <span>/</span> Assets & B2B social</span>
       </div>
     </section>
 
@@ -225,8 +234,9 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
             </h2>
           </div>
           <p class="band__note band__note--light r" style="--d:.1s">
-            You won’t find it on a budget line. You find it when a launch sits
-            waiting for its pictures.
+            You will not find it on a budget line. You find it when a launch
+            sits waiting for its pictures and the company feed goes silent
+            between trade shows.
           </p>
         </header>
 
@@ -234,7 +244,10 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           {
             reasons.map((r, i) => (
               <article class="reason r" style={`--d:${i * 0.08}s`}>
-                <span class="reason__tick" aria-hidden="true"></span>
+                <p class="reason__label">
+                  <span class="reason__tick"></span>
+                  {r.label}
+                </p>
                 <h3 class="reason__title">{r.title}</h3>
                 <p class="reason__body">{r.body}</p>
               </article>
@@ -244,19 +257,20 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
       </div>
     </section>
 
-    <!-- ============ STUDIO: FROM YOUR FILES ============ -->
+    <!-- ============ WORK WITH US IN THE APP: ASSETS & CHANNELS ============ -->
     <section class="cover" id="studio">
       <div class="shell">
         <header class="band">
-          <p class="kicker r"><span class="kicker__tick"></span>Studio only</p>
+          <p class="kicker r"><span class="kicker__tick"></span>Work with us in the app</p>
           <h2 class="dh r" style="--d:.05s">
-            From your files to<br />finished <span class="serif">work</span>.
+            From your CAD files to finished<br />assets and B2B <span class="serif">channels</span>.
           </h2>
           <p class="band__note r" style="--d:.1s">
-            This is the usual first step. Send what you have: CAD exports,
-            material and color references, prototype photos, spec sheets. A
-            producer reads it within one business day and tells you what else
-            we’d need.
+            Send what you have: CAD exports, material and color references,
+            prototype photos, spec sheets, or your trade-show calendar. A
+            producer reads your brief within one business day, and our creative
+            and social teams build the assets and run the feeds inside your
+            workspace.
           </p>
         </header>
 
@@ -289,26 +303,34 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
       </div>
     </section>
 
-    <!-- ============ THE APP ============ -->
+    <!-- ============ USE THE APP ============ -->
     <section class="appsec" id="app">
       <div class="shell appsec__grid">
         <div class="appsec__body">
           <p class="kicker r"><span class="kicker__tick"></span>Use the app</p>
           <h2 class="dh r" style="--d:.05s">
-            Your team’s own<br />pictures and <span class="serif">posts</span>.
+            Your marketing team’s own<br />assets and B2B <span class="serif">posts</span>.
           </h2>
           <p class="appsec__p r" style="--d:.1s">
-            Not everything needs a brief. Your marketing team can make a
-            product picture for a trade-show post, crop a studio image to a
-            LinkedIn format, or draft the post with “Draft with AI”. Then it
-            goes straight to the company page.
+            <strong>Pillar · Creative assets:</strong> Not every visual needs a
+            studio brief. Your marketing team can place a studio render into a
+            new industrial scene in the Image studio, turn a product still into
+            a short clip in the Video studio, or crop and caption visuals for
+            each network in the free browser Image and Video editors.
           </p>
           <p class="appsec__p r" style="--d:.14s">
-            Files live in the Assets Library, in folders, with tags, and with
-            versions, so the approved picture is the one everyone finds. You
-            pay only for what you run, and the Image editor costs nothing to
-            use. Engineers who only need to look can join as Viewers, who see
-            the team’s work and spend nothing.
+            <strong>Pillar · Social networks:</strong> Group every asset, dealer
+            sheet, and post for a product launch or trade show inside a
+            Campaign. Draft and schedule company posts across LinkedIn, YouTube,
+            X, Facebook, Instagram, and TikTok (Beta) to up to 20 accounts at
+            once, and use Re-purpose to adapt one technical announcement for
+            every channel.
+          </p>
+          <p class="appsec__p r" style="--d:.16s">
+            Approved files live in the Assets Library with folders, tags, and
+            versions, so sales and dealers always pull the current spec.
+            Engineers who only need to inspect or sign off can join as Viewers
+            at no cost.
           </p>
           <p class="r" style="--d:.18s">
             <a class="ghost-link" href="/app">
@@ -330,46 +352,48 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
       </div>
     </section>
 
-    <!-- ============ THREE WAYS TO WORK ============ -->
+    <!-- ============ TWO WAYS TO WORK ============ -->
     <WaysToWork
       tone="white"
-      highlight="studio"
-      pre="Three ways to work with "
+      highlight="studio-app"
+      pre="Two ways to work with "
       accent="us"
       post="."
-      lead="The studio comes first for many of the manufacturers we work with. Some add the app for the marketing team, and some have the studio work inside the app so engineers can sign off there."
+      lead="Many manufacturers start by having our team turn CAD files into launch assets and B2B social campaigns inside the app, while marketing uses the same workspace for day-to-day product posts."
     />
 
-    <!-- ============ STUDIO + APP: SIGN-OFF ON RECORD ============ -->
+    <!-- ============ ENGINEERING SIGN-OFF ON RECORD ============ -->
     <section class="record" id="approvals">
       <div class="shell record__grid">
         <div class="record__body">
-          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Studio + app</p>
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Validation & audit trail</p>
           <h2 class="dh r" style="--d:.05s">
             A sign-off your<br />engineers can <span class="serif">trace</span>.
           </h2>
           <p class="record__lead r" style="--d:.08s">
-            If your engineers want a say before anything ships, this part is
-            for them.
+            Before a render enters a dealer catalog or a technical post goes to
+            LinkedIn, your engineers have the final word.
           </p>
           <p class="record__p r" style="--d:.12s">
-            With Studio + app, our creatives make the work inside hubStudio.
-            Your engineers and marketers approve it in Validation, or send it
-            back with a comment.
+            When you work with us in the app, our creatives and social managers
+            submit every product visual, launch video, and scheduled post
+            through Validation. Your engineers and marketers approve it in one
+            click, or send it back with a comment.
           </p>
           <p class="record__p r" style="--d:.16s">
-            Each version sits on one thread, and nothing on that thread can be
-            deleted. When a dealer asks whether the exploded view matches
-            revision C, you can show who approved it and when.
+            Each version sits on one permanent thread, and nothing on that
+            thread can be deleted. A social post waiting for engineering review
+            is locked until sign-off. When a distributor asks whether the
+            exploded view matches revision C, you can show who approved it and
+            when.
           </p>
           <p class="record__p r" style="--d:.2s">
-            For a manufacturer, working in your own workspace usually makes
-            sense: you add our creatives as members, and every file stays in
-            your History and Assets Library when the project ends.
+            Every approved render and post stays in your workspace’s History and
+            Assets Library when the project ends.
           </p>
           <p class="record__more r" style="--d:.24s">
             <a class="ghost-link ghost-link--light" href="/studio/with-the-app">
-              How Studio + app works
+              How working with us in the app works
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d={arrow} fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -406,23 +430,25 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why hubStudio</p>
           <h2 class="dh r" style="--d:.05s">
-            A production team that<br />can read a CAD <span class="serif">file</span>.
+            A team that can read a CAD file<br />and run a B2B <span class="serif">feed</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            Senior art directors lead every brief, with AI production
-            underneath. Some assets are rendered or shot, others generated.
+            Senior art directors and B2B social strategists lead every brief,
+            with AI production underneath. Some assets are rendered from CAD or
+            shot on location, others generated, and every piece is cut for the
+            channels where your buyers actually look.
           </p>
           <p class="source__p r" style="--d:.16s">
-            Two jobs show how this works. For a premium SUV, we built <a class="source__a" href="/work/premium-suv">the launch imagery for each market</a> without shipping the car anywhere. For iFlytek’s AI wearable, <a class="source__a" href="/work/iflytek-anypin">one launch film</a> mixed live shooting, CGI, and AIGC, then was cut for every channel.
+            Two jobs show how this works. For a premium SUV, we built <a class="source__a" href="/work/premium-suv">the launch imagery for each market</a> without shipping the car anywhere. For iFlytek’s AI wearable, <a class="source__a" href="/work/iflytek-anypin">one launch film</a> mixed live shooting, CGI, and AIGC, then was cut for every social channel.
           </p>
           <p class="source__p r" style="--d:.22s">
             We record the provenance of every asset, so you can tell how each
-            one was made. The studio was founded by Cyril Drouin, former CEO
+            one was made. hubStudio was founded by Cyril Drouin, former CEO
             at Publicis.
           </p>
           <ul class="creds r" style="--d:.28s">
             {
-              ['CAD to content', 'Senior art directors', 'Provenance per asset', 'Approvals on record'].map((c) => (
+              ['CAD to content', 'B2B social & WeChat', 'Provenance per asset', 'Engineering sign-off on record'].map((c) => (
                 <li class="cred">
                   <svg viewBox="0 0 14 14" aria-hidden="true">
                     <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -447,9 +473,9 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           <p class="faq__sub r" style="--d:.1s">
             What engineering and marketing leads ask us first.
           </p>
-          <p class="faq__updated r" style="--d:.12s">Updated September 2026</p>
+          <p class="faq__updated r" style="--d:.12s">Updated October 2026</p>
           <div class="r" style="--d:.16s">
-            <Button variant="primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</Button>
+            <Button variant="primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
           </div>
         </aside>
 
@@ -479,11 +505,11 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
     <!-- ============ CLOSING ============ -->
     <DualCta
       lead="studio"
-      briefQuery="way=studio"
+      briefQuery="way=studio-app"
       pre="Send us the "
       accent="files"
       post="."
-      text="A CAD set, a launch date, or just the product line you want to move next. A producer reads your brief within one business day. Or open the app for your marketing team, at no cost."
+      text="A CAD set, a trade-show date, or the product line and social channels you want to move next. A producer reads your brief within one business day. Or open the app for your marketing team at no cost."
     />
   </div>
 </Layout>
@@ -537,7 +563,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
   .hero__panel { position: relative; display: flex; align-items: center; padding: clamp(40px, 4.4vw, 72px) clamp(24px, 5vw, 64px); overflow: clip; }
   .hero__reg { position: absolute; width: clamp(240px, 28vw, 420px); right: -12%; bottom: -14%; color: rgba(240, 237, 233, 0.055); pointer-events: none; }
   .hero__panel-in { position: relative; width: 100%; max-width: 600px; }
-  .hero__title { margin-top: 24px; font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.02; letter-spacing: -0.045em; }
+  .hero__title { margin-top: 24px; font-family: var(--font-sans); font-weight: 600; font-size: clamp(38px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.045em; }
   .hero__title .line { display: block; overflow: hidden; padding: 0.22em 0.14em; margin: -0.22em -0.14em; }
   .hero__title .line__i { display: block; transform: translateY(145%); transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
   .hero__title .line:nth-child(1) .line__i { transition-delay: 0.12s; }
@@ -550,6 +576,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
   .hero__tag em { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--brand-orange); }
   .hero__lead { margin-top: 20px; display: grid; gap: 13px; max-width: 48ch; }
   .hero__lead p { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
+  .hero__lead strong { color: var(--text-on-dark); font-weight: 600; }
   .hero__cta { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
   .hero__meta { margin-top: 34px; padding-top: 20px; border-top: 1.5px dashed rgba(240, 237, 233, 0.2); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240, 237, 233, 0.5); }
   .hero__meta span { color: var(--brand-orange); }
@@ -564,6 +591,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
   .reasons { display: grid; gap: 28px; }
   @media (min-width: 820px) { .reasons { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
   .reason { padding-top: 26px; border-top: 1.5px solid rgba(240, 237, 233, 0.18); display: grid; gap: 14px; align-content: start; }
+  .reason__label { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
   .reason__tick { width: 22px; height: 0; border-top: 1.5px solid var(--brand-orange); }
   .reason__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(22px, 2vw, 28px); line-height: 1.18; letter-spacing: -0.02em; color: var(--text-on-dark); }
   .reason__body { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
@@ -590,10 +618,11 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
   @media (min-width: 980px) { .appsec__grid { grid-template-columns: 0.85fr 1.15fr; gap: 72px; } .appsec__body { position: sticky; top: 110px; } }
   .appsec__body .dh { margin-top: 16px; }
   .appsec__p { margin-top: 16px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); max-width: 56ch; }
+  .appsec__p strong { color: var(--text-ink); font-weight: 600; }
   .appsec__body > p:last-child { margin-top: 24px; }
   .appsec__shots { display: grid; gap: clamp(32px, 4vw, 48px); }
 
-  /* Studio + app: engineering sign-off on record. */
+  /* Work with us in the app: engineering sign-off on record. */
   .record { background: var(--ink); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
   .record__grid { display: grid; gap: 48px; align-items: center; }
   @media (min-width: 980px) { .record__grid { grid-template-columns: 1.2fr 0.8fr; gap: 72px; } }

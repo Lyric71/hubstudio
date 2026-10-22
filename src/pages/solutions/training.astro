@@ -1,11 +1,13 @@
 ---
 /**
- * AIGC Training  ·  /solutions/training
+ * App Training  ·  /solutions/training
  *
- * Professional AIGC training for marketing teams and agencies, drawn from
- * the existing /professional-aigc-training-course-ai-content-creation-for-brands/
- * page. Shares the print-shop typographic frame, calibration bars and
- * editorial display headings used across the solutions pages.
+ * Hands-on training exclusively on the hubStudio app for brand, agency,
+ * retail, and manufacturing teams. Teaches operators and leads how to get the
+ * best out of every AI model and engine available inside the app (Explore
+ * image and video engines, text model picker, Model benchmarks, Improve with
+ * AI, and reusable Skills), plus the full workflow across both pillars:
+ * Creative assets and Social networks, with Validation and Assets Library.
  *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
@@ -17,11 +19,12 @@ import AppShot from '../../components/AppShot.astro';
 import WaysToWork from '../../components/WaysToWork.astro';
 import DualCta from '../../components/DualCta.astro';
 import { appShots } from '../../data/app-shots';
+import type { AppShot as Shot } from '../../data/app-shots';
 import { APP_SIGNUP, BRIEF_URL, HELP_URL } from '../../lib/links';
 
 const SITE = 'https://www.hubstudio.ai';
 const pageUrl = `${SITE}/solutions/training`;
-const briefHref = `${BRIEF_URL}?way=studio`;
+const briefHref = `${BRIEF_URL}?way=studio-app`;
 
 /* Calibration color bar: a printer's strip, used as a section divider. */
 const colourBar = [
@@ -29,157 +32,230 @@ const colourBar = [
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
 ];
 
-/* Why training matters. Card content carries no ordinal numerals; the
-   heading and visual order do the sequencing. */
+/* Why train on the app. Card content carries no ordinal numerals. */
 const reasons = [
   {
-    label: 'Beyond basic prompting',
-    title: 'Past the prompt-syntax demo, into the production muscle.',
-    body: "Most courses stop at typing a prompt. We teach the surrounding discipline: brief, generate, judge, retouch, brand-check, ship. The skill that compounds is the workflow around the tool, not the tool itself.",
+    label: 'The right model for each job',
+    title: 'Know which AI engine to pick, and how to prompt it.',
+    body: 'hubStudio gives your team image, video, and text models from OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax, and Meta in one place. No single model wins every brief. We teach your team how each engine behaves and when to switch.',
   },
   {
-    label: 'Competitive advantage',
-    title: 'Move at the pace of brands already pulling ahead.',
-    body: 'The teams compounding their output through AIGC are not the ones with the biggest stack. They are the ones with the trained operators. Train inside an active studio and your team ships campaign-grade work the week after class.',
+    label: 'Both pillars in one routine',
+    title: 'From first prompt to edited asset to scheduled post.',
+    body: 'Most courses stop at generating a picture. Because we train exclusively on the hubStudio app, your team learns the entire loop in one workspace: generating assets, cutting formats in the free editors, grouping campaigns, getting sign-off in Validation, and publishing to social networks.',
   },
   {
-    label: 'Future-proof skills',
-    title: 'Skills the next model release does not break.',
-    body: 'Models change every quarter. The underlying craft does not. The curriculum builds the visual judgment, prompt engineering and workflow architecture that survive each new release rather than getting rebuilt by it.',
+    label: 'Ready on Monday morning',
+    title: 'Train inside the workspace your team keeps using.',
+    body: 'Every participant works inside your live hubStudio team account during the session. By the time training ends, your roles, daily spending limits, Team skills, Assets Library folders, and social connections are already configured and tested.',
+  },
+];
+
+/* Centerpiece: getting the best out of the AI models in the app. */
+const modelTracks = [
+  {
+    eyebrow: 'Image engines · Explore',
+    title: 'Pick the right image model for packshots, lifestyle, or type.',
+    providers: 'OpenAI (ChatGPT Image) · Google (Imagen, Nano Banana) · Black Forest Labs (FLUX) · ByteDance (Seedream) · Alibaba (Wan) · xAI · Meta',
+    body: 'Each image engine in Explore has a distinct strength. Some hold packaging typography and logos cleanly; others excel at natural skin, studio lighting, architectural depth, or fast ideation. We teach your team how to match the engine to the brief, feed up to four reference photos to lock product geometry or style, choose aspect ratio and resolution up to 4K, and weigh price per run before clicking Generate.',
+    bullets: [
+      'When to use FLUX, ChatGPT Image, Imagen, Nano Banana, or Seedream',
+      'Using 1 to 4 reference images to keep products and framing consistent',
+      'Writing engine-specific prompts vs. using “Improve with AI”',
+      'Generating 1 to 10 variations and comparing cost before every run',
+    ],
+    shot: appShots.exploreCard,
+    path: '/explore',
+  },
+  {
+    eyebrow: 'Video engines · Explore',
+    title: 'Direct motion, camera paths, and pacing across video models.',
+    providers: 'Google (Veo) · Kling · ByteDance (Seedance) · Alibaba (Wan) · MiniMax (Hailuo)',
+    body: 'Video models respond very differently to motion prompts. We train your team to generate an approved still frame first, then bring it into the Video studio as the starting frame so the product never morphs. Participants learn which engine handles camera pans, human motion, product turntables, or native audio best, and how to pick duration and aspect ratio for Reels, TikTok, Shorts, or widescreen.',
+    bullets: [
+      'Image-to-video from an approved packshot vs. pure text-to-video',
+      'Prompting camera movement, lighting shifts, and subject action per engine',
+      'Choosing between Veo, Kling, Seedance, Wan, and Hailuo by shot type',
+      'Turning raw clips into captioned vertical cuts in the Video editor and Shorts',
+    ],
+    shot: appShots.videoStudio,
+    path: '/content/video-generate',
+  },
+  {
+    eyebrow: 'Text models, Benchmarks & Skills',
+    title: 'Steer AI writing, prompt rewriting, and reusable brand rules.',
+    providers: 'Quick, Balanced & Best text presets · Specific model picker · Model benchmarks · Skills Catalog & Team skills',
+    body: 'Inside the app, text models power social post drafting, Re-purpose across networks, and “Improve with AI” prompt expansion. We show your team how to read the in-app Model benchmarks table to compare speed, quality, and cost across every text, image, and video model, when to switch between Quick, Balanced, and Best, and how to write Team skills so every AI model follows your brand voice and visual rules automatically.',
+    bullets: [
+      'Reading the in-app Model benchmarks to evaluate newly released models',
+      'Picking Quick, Balanced, or Best (or a specific LLM) for post writing',
+      'How “Improve with AI” combines your Team skills with the target engine’s rules',
+      'Building My skills and Team skills from the Skills Catalog',
+    ],
+    shot: appShots.benchmarks,
+    path: '/benchmarks',
   },
 ];
 
 /* "For who" audiences. Repeated card block, no numerals per repo standard. */
 const audiences = [
   {
-    label: 'Brand professionals',
-    title: 'In-house brand and content teams.',
-    body: 'Marketing, brand and content leads who commission AIGC work and own the output. Leave the cohort with the literacy to brief, review and approve.',
+    label: 'Brand & marketing teams',
+    title: 'In-house marketers, designers, and social managers.',
+    body: 'Teams that create daily visuals and run company social channels in-house. Leave knowing which model to pick, how to edit in the browser, and how to schedule a full campaign.',
   },
   {
-    label: 'Agency teams',
-    title: 'Creative, account and production crews.',
-    body: 'Agencies adopting AIGC inside live client workflows. The training fits around an existing approval chain rather than replacing it.',
+    label: 'Agency crews',
+    title: 'Creative, social, and account teams.',
+    body: 'Agencies running multiple client brands in hubStudio. Learn how to switch Team skills per client, route deliverables through Validation, and share clean Client spaces.',
   },
   {
-    label: 'Creative directors',
-    title: 'Design and creative leadership.',
-    body: 'Directors building an AI-fluent studio without losing the brand voice. The course foregrounds craft, judgment and the editorial pass models still skip.',
+    label: 'Retail & e-commerce teams',
+    title: 'Merchandising, catalog, and performance marketers.',
+    body: 'Teams turning out high-volume SKU variants, seasonal promos, and daily Reels or TikToks on a tight calendar without waiting on reshoots.',
   },
   {
-    label: 'Procurement & operations',
-    title: 'Policy, vendor and cost owners.',
-    body: 'Procurement, operations and finance teams writing the AIGC policy, picking vendors and setting the cost model. Built to give the non-creative side a real working knowledge.',
+    label: 'Team admins & leads',
+    title: 'Creative directors and workspace owners.',
+    body: 'Leaders setting up governance in the app: roles, module permissions, daily spending limits on the prepaid balance, Team skills, and approval rules.',
   },
 ];
 
-/* Two curriculum lanes. Each carries a lead, body and a tag list of the
-   underlying topics. The tag list replaces numbered sub-headings, satisfying
-   the no-numbers rule while preserving the substance. */
-const lanes = [
+/* Four hands-on curriculum modules on the hubStudio app. */
+type Lane = {
+  label: string;
+  heading: string;
+  lead: string;
+  body: string[];
+  tags: string[];
+  shot: Shot;
+  path: string;
+};
+
+const lanes: Lane[] = [
   {
-    label: 'AIGC for beginners',
-    heading: 'AIGC for beginners.',
-    image: '/Images/training-beginner.jpg',
-    alt: 'A daylit hubStudio workshop with a participant generating brand visuals on a color-calibrated monitor, a printed brief on the desk beside the keyboard.',
-    lead: 'Two days inside the studio. Real tools, real briefs, work that ships.',
+    label: 'Module · AI models & prompting in the app',
+    heading: 'Master Explore, Model benchmarks, and prompt craft.',
+    shot: appShots.exploreApp,
+    path: '/explore',
+    lead: 'How to choose, prompt, and combine the AI models inside hubStudio.',
     body: [
-      "Fundamentals first: an intuition for diffusion models, prompt engineering, parameter optimization, brand-safety guardrails and the legal frameworks every team now has to work inside. The theory is short, the workshop is long.",
-      'Then the tool tour: image and video engines such as ChatGPT Image 2, Nano Banana, FLUX, Seedream, Kling, Veo and Wan, with three real brand-case workshops running alongside. The cohort leaves with a motion module, a starter prompt library tuned to its brand voice and a portfolio of pieces it generated itself.',
+      'We start in Explore and Model benchmarks. Participants compare the live roster of image, video, and text models side by side, learning what each model is built for, what it costs per run, and how its prompt syntax differs.',
+      'Then we practice hands-on prompting on your own products and campaigns: writing structured prompts, feeding reference images, using “Improve with AI” to tailor prompts to the chosen engine, and troubleshooting common model artifacts.',
     ],
     tags: [
-      'Diffusion fundamentals', 'Prompt engineering',
-      'Parameter optimization', 'Brand-safety guardrails',
-      'Legal frameworks',
-      'Image and video engines',
-      'Three brand-case workshops', 'Motion module',
-      'Prompt library starter',
+      'Explore engine gallery', 'Model benchmarks',
+      'Image model selection', 'Video model selection',
+      'Quick / Balanced / Best text models', 'Reference image workflows',
+      'Improve with AI', 'Cost vs. quality per run',
     ],
   },
   {
-    label: 'Advanced AIGC',
-    heading: 'Advanced AIGC.',
-    image: '/Images/training-advanced.jpg',
-    alt: 'A dim, daylit advanced-training workstation with a ComfyUI node graph on one monitor and a high-resolution render preview on the other.',
-    lead: 'ComfyUI, ControlNet and Stable Diffusion treated as a production stack.',
+    label: 'Module · Pillar: Creative assets',
+    heading: 'Generate, retouch, crop, and cut in the browser.',
+    shot: appShots.editorSocial,
+    path: '/editor',
+    lead: 'Turn raw model outputs into finished images and vertical video that ship.',
     body: [
-      'Node-based logic, sampling techniques, AnimateDiff for motion and high-resolution processing pipelines. The curriculum is the workflow itself, taught by the engineers who built and run hubStudio production every week.',
-      'Then the enterprise layer: character consistency at scale, scalable asset production, brand-voice fine-tuning, export optimization and the integration patterns that connect AIGC into existing creative software, asset management and approval chains. Built for teams already shipping content and ready to industrialise it.',
+      'In the Image studio and Video studio, cohorts generate high-resolution product shots, lifestyle scenes, and short video clips from still frames. Every render is automatically logged in History with its exact prompt and engine so any winning look can be reproduced.',
+      'Next, participants move into the free in-browser Image editor, Video editor, and Shorts autopilot: cropping to network safe zones (Instagram 4:5, Stories/Reels 9:16, LinkedIn 1.91:1), adding logos and text layers, sequencing multi-clip timelines, and styling word-by-word captions.',
     ],
     tags: [
-      'ComfyUI', 'ControlNet', 'Stable Diffusion',
-      'AnimateDiff', 'Sampling techniques',
-      'Node-based workflows', 'High-resolution processing',
-      'Character consistency', 'Scalable asset production',
-      'Brand-voice fine-tuning', 'Workflow integration',
-      'Quality control',
+      'Image studio up to 4K', 'Video studio from first frame',
+      'Free Image editor', 'Social safe-zone overlays',
+      'Free Video editor', 'Shorts autopilot & captions',
+      'History & prompt reuse', 'Assets Library folders & tags',
+    ],
+  },
+  {
+    label: 'Module · Pillar: Social networks & campaigns',
+    heading: 'Draft, repurpose, validate, and publish across channels.',
+    shot: appShots.campaignPost,
+    path: '/campaigns',
+    lead: 'Run your entire social calendar from the same workspace where assets are made.',
+    body: [
+      'Cohorts build a live Campaign in the app, grouping visuals, videos, briefs, and posts on one page. Participants connect social accounts and draft posts for Instagram, Facebook, TikTok (Beta), LinkedIn, X, and YouTube with a live side-by-side preview for each network.',
+      'We train the team to use “Draft with AI” and “Re-purpose” so one post is adapted for every other network’s tone and character limit, schedule posts to up to 20 accounts at once, and configure the Social publishing watcher agent to monitor the calendar.',
+    ],
+    tags: [
+      'Campaigns workspace', 'Instagram, Facebook & TikTok',
+      'LinkedIn, X & YouTube', 'Draft with AI',
+      'Re-purpose across networks', 'Multi-account scheduling',
+      'Social publishing watcher', 'Live network previews',
+    ],
+  },
+  {
+    label: 'Module · Skills, governance & Validation',
+    heading: 'Lock your brand rules and approval chain into the app.',
+    shot: appShots.skillsCatalog,
+    path: '/skills/catalog',
+    lead: 'Make sure every teammate and every AI model follows the same house rules.',
+    body: [
+      'Starting from the Skills Catalog, we help your cohort write My skills and Team skills: framing rules for product photos, lighting and color preferences, forbidden words, and tone of voice per social channel. Once saved, those skills steer every prompt rewrite and social draft across the workspace.',
+      'Finally, we run a full approval cycle in Validation: sending assets and scheduled posts to teammates or clients, reviewing versions on one permanent thread, and configuring Admin, Creator, Viewer, and Client roles with daily spending limits.',
+    ],
+    tags: [
+      'Skills Catalog', 'My skills & Team skills',
+      'Brand voice & framing rules', 'Validation threads',
+      'Locked posts until sign-off', 'Roles & daily spend limits',
+      'Client spaces', 'Audit trail in History',
     ],
   },
 ];
 
-/* The setup a cohort leaves with when it trains on the hubStudio app. A
-   checklist, so no numerals: the order on the page carries it. */
+/* The setup a cohort leaves with when it trains on the hubStudio app. */
 const onApp = [
   {
-    title: 'Accounts and roles',
-    body: 'Everyone gets an account in your team, with the right role: Admin, Creator or Viewer. Admins learn to invite people and set a daily spending limit for each creator. Runs are paid from the team\u2019s prepaid balance, at the price shown before each one.',
+    title: 'Accounts, roles, and daily limits',
+    body: 'Everyone works in your live team workspace with the right role: Admin, Creator, Viewer, or Client. Admins learn how to switch modules on or off per person and set daily spending limits on the shared prepaid balance.',
   },
   {
-    title: 'Team skills',
-    body: 'Your brand rules get written as Team skills, together, so \u201cImprove with AI\u201d and every social post drafted with AI follow them from the first day.',
+    title: 'Your Team skills written and tested',
+    body: 'Your brand’s visual and writing rules are built as Team skills during the session, so “Improve with AI” and every social post drafted with AI follow them from day one.',
   },
   {
-    title: 'An approval flow',
-    body: 'A real piece goes through Validation: who reviews it, who approves it, what happens when it\u2019s sent back. Your team runs each step on its own accounts.',
+    title: 'A live campaign and approval flow',
+    body: 'Your team builds a real Campaign, routes assets and social posts through Validation, and leaves with organized folders in the Assets Library ready for the next brief.',
   },
 ];
 
-/* FAQ: phrasing held close to the source page, restructured for the repo
-   standard (no em-dashes, native phrasing). */
 const faqs: { q: string; a: string; link?: { label: string; href: string } }[] = [
   {
-    q: 'Can you customize the AIGC training for our specific industry?',
-    a: 'Yes. The curriculum is shaped by sector: beauty, automotive, luxury, food and beverage, technology, with industry-specific case studies and a preliminary consultation that aligns the cohort with the work your team actually ships.',
+    q: 'Do you teach generic external AI tools, or only the hubStudio app?',
+    a: 'We offer training exclusively on the hubStudio app. Because hubStudio already brings together the leading image, video, and text models alongside editors, Skills, Validation, and social publishing, your team learns one cohesive production environment rather than a patchwork of disconnected tools.',
+  },
+  {
+    q: 'Will our team learn how to choose and use the different AI models in the app?',
+    a: 'Yes, that is a centerpiece of the training. We cover the image and video engines in Explore (across OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax, and Meta) as well as the text model picker and the in-app Model benchmarks. Your team learns which model fits each creative or social job, how to prompt each one, and how to use reference images and Team skills for consistent results.',
+  },
+  {
+    q: 'Does the training cover both creative assets and social networks?',
+    a: 'Yes. Every program covers both pillars of the app: generating and editing images and video on one side, and grouping campaigns, drafting, repurposing, validating, and scheduling posts across social networks on the other. We weight the agenda toward whichever pillar your team uses most.',
+  },
+  {
+    q: 'Can you customize the training around our brand and industry?',
+    a: 'Yes. Before the session, we review your brand guidelines, product category, and social channels. During the workshop, participants practice on your actual products, write Team skills tuned to your brand voice, and build real campaign assets they can publish.',
   },
   {
     q: 'What technical prerequisites do participants need?',
-    a: 'None. No advanced background is required, though basic familiarity with design software helps. The advanced module benefits from creative-workflow experience but is not gated on it.',
+    a: 'None. Everything runs in the browser inside the hubStudio app. Marketers, copywriters, social managers, art directors, and designers can all participate in the same cohort without installing anything or managing GPUs.',
   },
   {
-    q: 'Can we focus on specific aspects of AIGC rather than the full curriculum?',
-    a: 'Yes. Customised half-day and full-day sessions dive deep on the topics most relevant to your immediate needs and strategic goals. Most clients run a focused first cohort, then expand.',
+    q: 'What is the difference between App Training and the Onboarding package?',
+    a: 'Our Onboarding package is a focused 2-hour live setup and training session for 500 USD (with 250 USD credited directly to your team’s prepaid balance). Full App Training is a deeper half-day, full-day, or multi-session program for teams that want hands-on workshops across every AI model, editor, campaign workflow, and approval step.',
+    link: { label: 'See the Onboarding package', href: '/services/onboarding' },
   },
   {
-    q: 'Do you offer post-training support for our team?',
-    a: 'Thirty days of post-training support is included on every corporate program: trainer access for technical questions, implementation guidance and prompt-library refinement. Extended packages run quarterly or annually.',
+    q: 'Where does the training take place, and in what languages?',
+    a: 'Training runs either live online with your team or in person at our Shanghai studio, or on-site at your offices on request. Sessions are delivered in English, French, or Mandarin Chinese, matching the three languages of the hubStudio app.',
   },
   {
-    q: 'Can you deliver training at our company offices?',
-    a: 'The default is on-premise at the Shanghai studio, with the high-performance workstations, GPU acceleration and licensed software the curriculum needs. On-site delivery at your offices is available on request, subject to hardware and software validation.',
+    q: 'How is training priced?',
+    a: 'Full training cohorts are scoped to your team size and agenda and quoted within 48 hours of your brief. If you just want a fast live setup and starter training, the fixed-price Onboarding session is 500 USD with 250 USD added to your wallet.',
   },
   {
-    q: "What's the difference between the Beginner and Advanced modules?",
-    a: 'The beginner module covers popular tools and prompt engineering for everyday content production. The advanced module covers ComfyUI workflows, ControlNet and the enterprise production pipelines a studio runs at scale. Both together give the full stack; either alone is useful in isolation.',
-  },
-  {
-    q: 'How long are the training sessions and can they be shortened?',
-    a: 'Sessions are designed as four-hour or eight-hour intensives, with a 30% theory and 70% practical split. Shorter overview sessions are possible for executive briefings.',
-  },
-  {
-    q: 'What languages is the training available in?',
-    a: 'English and Mandarin Chinese. The trainer team is international, and the case studies come from more than one market. The hubStudio app itself runs in English, French and Chinese.',
-  },
-  {
-    q: 'Can the training run on the hubStudio app?',
-    a: 'Yes. It makes the most sense for teams that plan to produce in-house. Tell us in the brief and we\u2019ll plan the sessions around your own accounts. Training is quoted per cohort after we read the brief; we don\u2019t publish rates.',
-  },
-  {
-    q: 'What will participants take away from the training?',
-    a: 'A portfolio of brand-aligned visual content they generated themselves, documented workflows ready for ongoing implementation, a reusable prompt library tuned to the brand, technical troubleshooting capabilities and the strategic context to brief future AIGC work.',
-  },
-  {
-    q: 'Do you offer consulting services beyond training?',
-    a: 'Yes. Consulting covers what training doesn\u2019t, such as the approval chain and a rollout plan for the whole team. Many teams start with a cohort and continue with a consulting engagement.',
+    q: 'Do you also offer broader workflow and governance consulting?',
+    a: 'Yes. If you want us to audit your current production process, design a multi-market approval chain, and run a staged rollout across departments, see our AI consulting practice.',
     link: { label: 'See AI consulting', href: '/solutions/consulting' },
   },
 ];
@@ -200,14 +276,14 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
     { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${SITE}/solutions` },
-    { '@type': 'ListItem', position: 3, name: 'AI training', item: pageUrl },
+    { '@type': 'ListItem', position: 3, name: 'App training', item: pageUrl },
   ],
 };
 ---
 
 <Layout
-  title="AIGC Training for Marketing Teams & Agencies | hubStudio"
-  description="Hands-on AI training for marketing teams and agencies in our Shanghai studio. Train on the hubStudio app and leave with your setup in place."
+  title="hubStudio App Training: Master the AI Models & Workflows | hubStudio"
+  description="Hands-on training on the hubStudio app. Learn how to get the best out of every image, video, and text AI model in the app, build creative assets, and run social campaigns."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -225,41 +301,42 @@ const breadcrumbSchema = {
         <div class="hero__panel-in">
           <p class="kicker kicker--light r">
             <span class="kicker__tick"></span>Solutions
-            <span class="kicker__sep">/</span> Training
+            <span class="kicker__sep">/</span> App training
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Master the future</span></span>
-            <span class="line"><span class="line__i">of creative</span></span>
-            <span class="line"><span class="line__i serif">intelligence.</span></span>
+            <span class="line"><span class="line__i">Train your team</span></span>
+            <span class="line"><span class="line__i">on the hubStudio</span></span>
+            <span class="line"><span class="line__i serif">app.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            The tools, and the craft that makes them <em>worth using</em>.
+            Every AI model in the app, and the workflow that makes them <em>ship</em>.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              Most AI training stops at prompt syntax. The teams pulling ahead
-              learn the whole loop: tooling, judgment, brand safety and the
-              production pipeline that turns a generated frame into a campaign
-              asset.
+              We train exclusively on the hubStudio app. Your team learns on
+              the exact workspace it will use every week: how to choose and
+              prompt the right AI model for each job, finish images and video
+              in the browser editors, and run campaigns across your social
+              networks.
             </p>
             <p>
-              We train inside an active content studio, so the curriculum is
-              the workflow we run every week. Cohorts leave with a portfolio
-              of pieces they generated, the prompt library to repeat them and
-              the workflow architecture to scale.
+              Taught by the senior art directors, AI specialists, and social
+              strategists who produce client work inside hubStudio every day.
+              Your team leaves with its workspace configured, its Team skills
+              written, and real campaign work ready to publish.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
             <Button variant="primary" href={briefHref}>Start a training brief</Button>
-            <a class="ghost-link ghost-link--light" href="#curriculum">
-              See the curriculum
+            <a class="ghost-link ghost-link--light" href="#models">
+              How we teach the AI models
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Shanghai studio <span>/</span> English & Mandarin, on-site cohorts
+            100% on the hubStudio app <span>/</span> AI models, assets & social <span>/</span> English, French & Mandarin
           </p>
         </div>
       </div>
@@ -272,7 +349,7 @@ const breadcrumbSchema = {
           loading="eager"
           fetchpriority="high"
         />
-        <span class="hero__chip">Shanghai <span>/</span> Training floor</span>
+        <span class="hero__chip">App training <span>/</span> Live online or Shanghai studio</span>
       </div>
     </section>
 
@@ -286,15 +363,16 @@ const breadcrumbSchema = {
       <div class="shell">
         <header class="band band--split">
           <div>
-            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why train</p>
+            <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why train on the app</p>
             <h2 class="dh r" style="--d:.05s">
-              Why AI generated<br />content <span class="serif">training</span>.
+              Access to models is easy.<br />Knowing how to <span class="serif">drive</span> them is the craft.
             </h2>
           </div>
           <p class="band__note band__note--light r" style="--d:.1s">
-            The buy-a-tool reflex stops at the demo. The brands compounding
-            real content output have trained operators inside the workflow,
-            and the training itself is what gets them there.
+            Opening an account gives your team dozens of AI engines and
+            publishing tools in one browser tab. Training turns that access
+            into a repeatable weekly habit across creative assets and social
+            channels.
           </p>
         </header>
 
@@ -315,18 +393,61 @@ const breadcrumbSchema = {
       </div>
     </section>
 
+    <!-- ============ S2b · GETTING THE BEST OUT OF THE AI MODELS ============ -->
+    <section class="models" id="models">
+      <div class="shell">
+        <header class="band band--split">
+          <div>
+            <p class="kicker r"><span class="kicker__tick"></span>AI models in the app</p>
+            <h2 class="dh r" style="--d:.05s">
+              Get the best out of every<br />AI model in <span class="serif">hubStudio</span>.
+            </h2>
+          </div>
+          <p class="band__note r" style="--d:.1s">
+            Through the app, your team can run image, video, and text models
+            from nine leading providers. We teach your people how to pick the
+            right engine for the job, feed it the right inputs, and keep quality
+            high without wasting balance.
+          </p>
+        </header>
+
+        <div class="mtracks">
+          {
+            modelTracks.map((m, i) => (
+              <article class={`mtrack ${i % 2 === 1 ? 'mtrack--rev' : ''}`}>
+                <div class="mtrack__media r">
+                  <AppShot shot={m.shot} path={m.path} caption />
+                </div>
+                <div class="mtrack__body">
+                  <p class="kicker r"><span class="kicker__tick"></span>{m.eyebrow}</p>
+                  <h3 class="dh dh--sm r" style="--d:.05s">{m.title}</h3>
+                  <p class="mtrack__prov r" style="--d:.08s">{m.providers}</p>
+                  <p class="mtrack__p r" style="--d:.12s">{m.body}</p>
+                  <ul class="mtrack__list r" style="--d:.16s">
+                    {m.bullets.map((b) => (
+                      <li>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
     <!-- ============ S3 · FOR WHO ============ -->
     <section class="audience">
       <div class="shell">
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>For whom</p>
           <h2 class="dh r" style="--d:.05s">
-            Built for the people who <span class="serif">commission</span>,<br />approve and run the work.
+            Built for the people who <span class="serif">create</span>,<br />publish, and approve in the app.
           </h2>
           <p class="band__note r" style="--d:.1s">
-            Four audiences, one curriculum. Each cohort is shaped to the
-            role mix in the room, so the work tracks the way your team
-            actually operates.
+            Each session is shaped to the roles in the room, whether your team
+            focuses on visual production, social calendars, or workspace
+            governance.
           </p>
         </header>
 
@@ -347,43 +468,34 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <!-- ============ S4 · CURRICULUM LANES ============ -->
+    <!-- ============ S4 · CURRICULUM MODULES ============ -->
     <section class="cover" id="curriculum">
       <div class="shell">
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>What you will learn</p>
           <h2 class="dh r" style="--d:.05s">
-            Two modules, one <span class="serif">studio</span>.
+            Four modules inside the <span class="serif">app</span>.
           </h2>
           <p class="band__note r" style="--d:.1s">
-            Beginner builds fluency, advanced builds production capability.
-            Most teams run both back to back; some pick the module that
-            matches their current stage and grow into the other.
+            Every module runs live inside hubStudio on your own briefs. Run the
+            full program across a day or two, or pick the modules your team
+            needs right now.
           </p>
         </header>
 
         {
           lanes.map((c, i) => (
             <article class={`feature ${i % 2 === 1 ? 'feature--rev' : ''}`}>
-              <figure class="feature__media crop r-clip">
-                <div class="crop__inner">
-                  <img
-                    src={c.image}
-                    alt={c.alt}
-                    width="1024"
-                    height="820"
-                    loading="lazy"
-                  />
-                </div>
-                <figcaption class="fig">{c.label}</figcaption>
-              </figure>
+              <div class="feature__media r">
+                <AppShot shot={c.shot} path={c.path} caption />
+              </div>
               <div class="feature__body">
                 <p class="feature__idx r">
                   <span class="feature__tick"></span>
-                  Curriculum module
+                  {c.label}
                 </p>
                 <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
-                {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
+                <p class="feature__lead r" style="--d:.1s">{c.lead}</p>
                 {c.body.map((para, pi) => (
                   <p class="feature__p r" style={`--d:${0.12 + pi * 0.06}s`}>
                     {para}
@@ -402,39 +514,38 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <!-- ============ S4b · ON THE APP ============ -->
+    <!-- ============ S4b · LEAVE WITH A WORKING SETUP ============ -->
     <section class="onapp" id="on-the-app">
       <div class="shell onapp__grid">
         <div class="onapp__copy">
-          <p class="kicker r"><span class="kicker__tick"></span>On the hubStudio app</p>
+          <p class="kicker r"><span class="kicker__tick"></span>Your workspace, ready</p>
           <h2 class="dh r" style="--d:.05s">
             Leave with a working <span class="serif">setup</span>.
           </h2>
           <p class="onapp__lead r" style="--d:.1s">
-            One more option, for teams that will make the work themselves.
-            Training can run on the hubStudio app. Your team learns on the
-            tool it will use at work, and the setup is in place by the time
-            the cohort ends.
-          </p>
-          <p class="onapp__p r" style="--d:.14s">
-            After a course, someone usually has to set everything up alone,
-            back at the desk. When the cohort runs on hubStudio, we build that
-            setup during the sessions, with your people at the keyboard.
+            After most courses, someone still has to go back to their desk and
+            configure everything alone. Because we train directly inside your
+            hubStudio workspace, we build that setup during the session with
+            your team at the keyboard.
           </p>
           <ul class="onapp__list">
             {
               onApp.map((item, i) => (
-                <li class="onapp__item r" style={`--d:${0.18 + i * 0.06}s`}>
+                <li class="onapp__item r" style={`--d:${0.16 + i * 0.06}s`}>
                   <h3 class="onapp__title">{item.title}</h3>
                   <p class="onapp__p">{item.body}</p>
                 </li>
               ))
             }
           </ul>
+          <p class="onapp__p r" style="--d:.34s">
+            Want a fast 2-hour live setup and starter training first? See our
+            <a class="inline-link" href="/services/onboarding">Onboarding package</a> (500 USD, with 250 USD credited back to your team’s wallet). Or for full multi-team governance and rollout, <a class="inline-link" href="/solutions/consulting">see AI consulting</a>.
+          </p>
         </div>
         <div class="onapp__media">
           <div class="r" style="--d:.1s">
-            <AppShot shot={appShots.exploreApp} path="/explore" caption />
+            <AppShot shot={appShots.modelPicker} path="/social/linkedin/posts" caption />
           </div>
           <div class="onapp__cta r" style="--d:.2s">
             <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
@@ -446,12 +557,7 @@ const breadcrumbSchema = {
             </a>
           </div>
           <p class="onapp__note r" style="--d:.24s">
-            Creating an account costs nothing. The app runs in English, French and Chinese.
-          </p>
-          <p class="onapp__p r" style="--d:.28s">
-            Want help past the last session, with the approval chain and a
-            rollout for the whole team?
-            <a class="inline-link" href="/solutions/consulting">See AI consulting</a>.
+            Creating an account costs nothing. The app and training run in English, French, and Chinese.
           </p>
         </div>
       </div>
@@ -465,7 +571,7 @@ const breadcrumbSchema = {
             <div class="crop__inner">
               <img
                 src="/Images/training-trainers.jpg"
-                alt="A senior hubStudio trainer reviewing a ComfyUI workflow on a large monitor with a cohort participant, warm afternoon light through a Shanghai studio window."
+                alt="A senior hubStudio trainer reviewing an AI generation workflow on a large monitor with a cohort participant, warm afternoon light through a Shanghai studio window."
                 width="1024"
                 height="820"
                 loading="lazy"
@@ -474,32 +580,31 @@ const breadcrumbSchema = {
           </figure>
           <div class="source__stat">
             <span class="source__stat-num">Senior leads</span>
-            <span class="source__stat-cap">Creative directors and AIGC engineers, no juniors</span>
+            <span class="source__stat-cap">Art directors, AI specialists & social leads</span>
           </div>
         </div>
 
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Who teaches</p>
           <h2 class="dh r" style="--d:.05s">
-            Elite creative and<br />technical <span class="serif">experts</span>.
+            Taught by the people who build<br />and run the <span class="serif">app</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            Our senior creative directors teach alongside the AIGC
-            specialists who run hubStudio&rsquo;s production. hubStudio&rsquo;s
-            founder, Cyril Drouin, is a former CEO at Publicis. And the people
-            teaching the course make client work in the same studio every week.
+            Your trainers are the senior creative directors, AI specialists,
+            and social strategists who use hubStudio every day on live client
+            campaigns. hubStudio was founded by Cyril Drouin, former CEO at
+            Publicis.
           </p>
           <p class="source__p r" style="--d:.16s">
-            Years of brand and campaign work for global accounts, plus the
-            current studio practice of generating, fine-tuning and deploying
-            models for clients every week. The course material is whatever
-            shipped that morning, not last year's deck.
+            When a new image, video, or text model lands in Explore, our team
+            benchmarks it on real client briefs that same week. We bring those
+            exact findings into your training session: where the model shines,
+            where it breaks, and the prompt patterns that get consistent output.
           </p>
           <p class="source__p r" style="--d:.22s">
-            The curriculum is customizable for beauty, automotive, luxury,
-            food and beverage, technology. A preliminary consultation aligns
-            the cohort with your category, your toolchain and the formats you
-            already ship to.
+            Every cohort is tailored to your category, whether beauty, luxury,
+            automotive, retail, food and beverage, or industrial manufacturing,
+            and to the social channels your team actually publishes on.
           </p>
           <ul class="creds r" style="--d:.28s">
             <li class="cred">
@@ -512,19 +617,19 @@ const breadcrumbSchema = {
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              English & Mandarin
+              English, French & Mandarin
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Customised by industry
+              Tailored to your brand
             </li>
             <li class="cred">
               <svg viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Shanghai studio
+              Live online or Shanghai studio
             </li>
           </ul>
         </div>
@@ -540,11 +645,11 @@ const breadcrumbSchema = {
         <aside class="faq__intro">
           <p class="kicker r"><span class="kicker__tick"></span>Questions</p>
           <h2 class="dh r" style="--d:.05s">
-            Before the<br />first <span class="serif">cohort</span>.
+            Before the<br />first <span class="serif">session</span>.
           </h2>
           <p class="faq__sub r" style="--d:.1s">
-            The questions teams ask before a cohort starts. If yours is not
-            below, put it in the brief.
+            The questions teams ask before booking app training. If yours is
+            not below, put it in the brief.
           </p>
           <p class="faq__fresh r" style="--d:.13s">Updated October 2026</p>
           <div class="r" style="--d:.16s">
@@ -586,12 +691,12 @@ const breadcrumbSchema = {
     <!-- ============ S7 · CLOSING ============ -->
     <DualCta
       eyebrow="Next cohort"
-      pre="Train with "
-      accent="us"
+      pre="Train your team on the "
+      accent="app"
       post="."
-      text="Send a roster, a date window or just the gap you want to close. A producer reads it within one business day and replies with a curriculum and a format. Or open the app and look around first."
+      text="Send your team size, the channels you publish on, and the skills you want to build. A producer reads your brief within one business day and replies with a tailored agenda. Or open the app and explore the models first."
       lead="studio"
-      briefQuery="way=studio"
+      briefQuery="way=studio-app"
     />
   </div>
 </Layout>
@@ -824,9 +929,6 @@ const breadcrumbSchema = {
   .cbar span {
     flex: 1;
   }
-  .cbar--end {
-    margin-top: clamp(60px, 8vw, 110px);
-  }
 
   /* ===================== S1 · Hero ===================== */
   .hero {
@@ -914,7 +1016,7 @@ const breadcrumbSchema = {
     margin-top: 20px;
     display: grid;
     gap: 13px;
-    max-width: 46ch;
+    max-width: 48ch;
   }
   .hero__lead p {
     font-size: var(--type-body);
@@ -1009,6 +1111,7 @@ const breadcrumbSchema = {
     border-top: 1.5px solid rgba(240, 237, 233, 0.18);
     display: grid;
     gap: 14px;
+    align-content: start;
   }
   .reason__label {
     display: flex;
@@ -1039,6 +1142,69 @@ const breadcrumbSchema = {
     color: rgba(240, 237, 233, 0.74);
   }
 
+  /* ===================== S2b · AI Models in the App ===================== */
+  .models {
+    background: #ffffff;
+    padding-block: clamp(80px, 10vw, 150px);
+  }
+  .mtracks {
+    display: grid;
+  }
+  .mtrack {
+    display: grid;
+    gap: 36px;
+    align-items: center;
+    padding-block: clamp(40px, 5vw, 68px);
+    border-top: 1.5px dashed var(--line-strong);
+  }
+  .mtrack:last-child {
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  @media (min-width: 940px) {
+    .mtrack {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+    }
+    .mtrack--rev {
+      grid-template-columns: 0.95fr 1.05fr;
+    }
+    .mtrack--rev .mtrack__media {
+      order: 2;
+    }
+  }
+  .mtrack__body .dh {
+    margin-top: 14px;
+  }
+  .mtrack__prov {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 2.5px solid var(--brand-orange);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.55;
+    letter-spacing: 0.04em;
+    color: var(--text-ink);
+  }
+  .mtrack__p {
+    margin-top: 16px;
+    font-size: var(--type-body);
+    line-height: 1.66;
+    color: var(--text-mute);
+  }
+  .mtrack__list {
+    margin-top: 18px;
+    padding-left: 18px;
+    display: grid;
+    gap: 8px;
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: var(--text-ink);
+  }
+  .mtrack__list li::marker {
+    color: var(--brand-orange);
+  }
+
   /* ===================== S3 · Audience ===================== */
   .audience {
     background: var(--paper);
@@ -1067,6 +1233,7 @@ const breadcrumbSchema = {
     border-radius: 6px;
     display: grid;
     gap: 14px;
+    align-content: start;
     transition: border-color 0.18s ease, transform 0.24s ease;
   }
   .aud:hover {
@@ -1119,15 +1286,15 @@ const breadcrumbSchema = {
   }
   @media (min-width: 900px) {
     .feature {
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+    }
+    .feature--rev {
+      grid-template-columns: 0.95fr 1.05fr;
     }
     .feature--rev .feature__media {
       order: 2;
     }
-  }
-  .feature__media .crop__inner {
-    aspect-ratio: 5 / 4;
   }
   .feature__idx {
     display: flex;

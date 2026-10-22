@@ -34,16 +34,41 @@ const greetings = ['Hello', 'Bonjour', 'Hola', 'Ciao', 'Hallo', 'Olá'];
 /* "You are": Solutions > Clients, from the header nav. */
 const clientTypes = ['Brand', 'Agency', 'Retailer', 'Manufacturer', 'Other'];
 
-/* "Services you are looking for": the twenty design service lines plus the
-   three consulting lines, mirroring the header Services + Solutions menus. */
-const designServices = [
-  'Social Media', 'eCommerce', 'Short Video', 'Ad Creative', 'Video Production',
-  'Print Design', 'Website Design', 'Email Design', 'Motion Design',
-  'Marketing Strategy', 'Presentation Design', 'Illustration Design', 'Storyboard',
-  'Packaging & Merch Design', 'Brand Identity', 'Ebook and Digital Reports',
-  'Concept Creation', 'Pitch Deck', 'Creative Strategy', 'Press Release',
+/* "Services you are looking for": split across the two service pillars
+   (Creative Assets and Social Networks), mirroring the Services mega menu. */
+const servicePillars = [
+  {
+    key: 'create' as const,
+    eyebrow: 'Pillar · Creative assets',
+    heading: 'Text, images & video',
+    services: [
+      'Social Media', 'Ad Creative', 'Short Video', 'Video Production',
+      'Motion Design', 'Email Design', 'eCommerce', 'Website Design',
+      'Brand Identity', 'Packaging & Merch Design', 'Illustration Design', 'Print Design',
+      'Marketing Strategy', 'Creative Strategy', 'Concept Creation', 'Storyboard',
+      'Presentation Design', 'Pitch Deck', 'Ebook and Digital Reports', 'Press Release',
+    ],
+  },
+  {
+    key: 'publish' as const,
+    eyebrow: 'Pillar · Social networks',
+    heading: 'Posts, publishing & growth',
+    services: [
+      'Page & channel management',
+      'Weekly posts, carousels & video',
+      'Newsletters & editorial series',
+      'Live events & webinars',
+      'Campaign setup & funnels',
+      'Audience targeting & retargeting',
+      'Ad creative & variant testing',
+      'Lead generation & reporting',
+      'Employee advocacy programs',
+      'Executive personal branding',
+      'Workshops & team training',
+      'LinkedIn, Meta, TikTok, X & China',
+    ],
+  },
 ];
-const consultingServices = ['Consulting', 'Agentic-Design', 'Training'];
 
 const retainerOptions = [
   'Yes, that’s what we want',
@@ -51,12 +76,11 @@ const retainerOptions = [
   'No, project by project',
 ];
 
-/* Size of the work, in words: the site never prints an amount. */
-const scopeOptions = [
-  'A handful of assets',
-  'A project or campaign',
-  'Ongoing production, month after month',
-  'Too early to say',
+const budgetRanges = [
+  'Less than 5k USD',
+  '5–20k USD',
+  '20–50k USD',
+  '50k USD+',
 ];
 
 /* "How did you hear about us?": values are the slugs the API whitelists (the
@@ -117,12 +141,9 @@ const studios = [
           Tell us what you want to <span class="accent">make</span>.
         </h1>
         <p class="lead c-hero__lead">
-          Send the studio a brief, or ask us about the app. The form first asks
-          how you’d like to work, so your message reaches the right person. A
-          producer reads every brief within one business day and sends a written
-          proposal within 48 hours. Got a question about the app instead? You’ll
-          hear back within one business day too, and opening an account costs
-          nothing.
+          Send the studio a brief, or ask us about the app. We read every
+          message within one business day and send written proposals within 48
+          hours.
         </p>
         <div class="c-hero__cta">
           <Button variant="primary" href="#brief">Send a brief</Button>
@@ -186,18 +207,6 @@ const studios = [
           </p>
         </div>
 
-        <div class="rail__block">
-          <span class="rail__label">Where we produce</span>
-          <ul class="rail__regions">
-            <li>Greater China</li>
-            <li>Southeast Asia</li>
-            <li>Europe</li>
-            <li>North America</li>
-            <li>Middle East</li>
-            <li>Latin America</li>
-          </ul>
-        </div>
-
         <p class="rail__note">
           Looking for prices? The <a href="/pricing">pricing page</a> explains
           how the app and the studio charge. Bringing us clients for the studio,
@@ -258,7 +267,14 @@ const studios = [
             <div class="choice">
               {ways.map((w) => (
                 <label class="pick-wrap">
-                  <input type="radio" name="way" value={w.value} required />
+                  <input
+                    type="radio"
+                    name="way"
+                    value={w.value}
+                    checked={w.value === 'studio-app'}
+                    autocomplete="off"
+                    required
+                  />
                   <span class="pick">{w.label}</span>
                 </label>
               ))}
@@ -267,6 +283,21 @@ const studios = [
               What’s the difference? <a href="/studio#ways-to-work">Compare the three ways to work</a>,
               or pick “Not sure yet” and we’ll suggest one.
             </p>
+          </fieldset>
+
+          <fieldset class="choice-set" id="quotation-set">
+            <legend>Studio quotation calculator <span class="opt-tag">optional</span></legend>
+            <div class="choice">
+              <label class="pick-wrap">
+                <input
+                  type="checkbox"
+                  id="quotationEngine"
+                  name="quotationEngine"
+                  value="yes"
+                />
+                <span class="pick">I’d like access to the studio quotation calculator</span>
+              </label>
+            </div>
           </fieldset>
 
           <fieldset class="choice-set">
@@ -289,40 +320,23 @@ const studios = [
 
           <fieldset class="choice-set">
             <legend>Services you are looking for <span class="opt-tag">select any</span></legend>
-            <span class="choice-sub">Design</span>
-            <div class="choice">
-              {designServices.map((s) => (
-                <label class="pick-wrap">
-                  <input type="checkbox" name="services" value={s} />
-                  <span class="pick">{s}</span>
-                </label>
+            <div class="svc-pillars">
+              {servicePillars.map((p) => (
+                <div class:list={['svc-pillar', `pillar--${p.key}`]}>
+                  <div class="svc-pillar__head">
+                    <span class="svc-pillar__tag">{p.eyebrow}</span>
+                    <span class="svc-pillar__title">{p.heading}</span>
+                  </div>
+                  <div class="choice">
+                    {p.services.map((s) => (
+                      <label class="pick-wrap">
+                        <input type="checkbox" name="services" value={s} />
+                        <span class="pick">{s}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
               ))}
-            </div>
-            <span class="choice-sub">Consulting</span>
-            <div class="choice">
-              {consultingServices.map((s) => (
-                <label class="pick-wrap">
-                  <input type="checkbox" name="services" value={s} />
-                  <span class="pick">{s}</span>
-                </label>
-              ))}
-            </div>
-          </fieldset>
-
-          <!-- Internal, gated tool: shown only to visitors who arrive with
-               ?request=quotation-engine. Never a public call to action. -->
-          <fieldset class="choice-set" id="quotation-set" hidden>
-            <legend>Quotation Engine <span class="opt-tag">optional</span></legend>
-            <div class="choice">
-              <label class="pick-wrap">
-                <input
-                  type="checkbox"
-                  id="quotationEngine"
-                  name="quotationEngine"
-                  value="yes"
-                />
-                <span class="pick">I want to access the Quotation Engine</span>
-              </label>
             </div>
           </fieldset>
 
@@ -339,12 +353,12 @@ const studios = [
           </fieldset>
 
           <fieldset class="choice-set">
-            <legend>Size of the work <span class="opt-tag">optional</span></legend>
+            <legend>Your budget <span class="opt-tag">optional</span></legend>
             <div class="choice">
-              {scopeOptions.map((o) => (
+              {budgetRanges.map((b) => (
                 <label class="pick-wrap">
-                  <input type="radio" name="scope" value={o} />
-                  <span class="pick">{o}</span>
+                  <input type="radio" name="budget" value={b} />
+                  <span class="pick">{b}</span>
                 </label>
               ))}
             </div>
@@ -628,18 +642,6 @@ const studios = [
     line-height: 1.5;
     color: var(--text-mute);
   }
-  .rail__regions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .rail__regions li {
-    padding: 6px 13px;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--line-strong);
-    font-size: 12px;
-    font-weight: 500;
-  }
   .rail__note {
     margin-top: 28px;
     padding-top: 22px;
@@ -761,18 +763,70 @@ const studios = [
     letter-spacing: -0.01em;
     margin-bottom: 12px;
   }
-  .choice-sub {
-    display: block;
+  .svc-pillars {
+    display: grid;
+    gap: 14px;
+  }
+  .svc-pillar {
+    --pillar: var(--pillar-create);
+    display: grid;
+    gap: 12px;
+    padding: 16px 18px 18px;
+    border-radius: 18px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-hairline);
+    border-top: 3px solid var(--pillar);
+  }
+  .svc-pillar.pillar--publish {
+    --pillar: var(--pillar-publish);
+  }
+  .svc-pillar__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  .svc-pillar__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     font-family: var(--font-mono);
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-mute);
-    margin: 14px 0 8px;
   }
-  .choice-sub:first-of-type {
-    margin-top: 0;
+  .svc-pillar__tag::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pillar);
+  }
+  .svc-pillar__title {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+  }
+  .svc-pillar .pick {
+    background: var(--bg-white);
+  }
+  .svc-pillar .pick-wrap:hover .pick {
+    border-color: var(--pillar);
+    color: var(--pillar);
+  }
+  .svc-pillar .pick-wrap input:checked + .pick {
+    background: var(--pillar);
+    border-color: var(--pillar);
+    color: #fff;
+  }
+  .svc-pillar .pick-wrap input:focus-visible + .pick {
+    outline-color: var(--pillar);
   }
   .choice-hint {
     margin-top: 12px;
@@ -932,33 +986,41 @@ const studios = [
 
   const params = new URLSearchParams(window.location.search);
 
-  /* Arriving with ?request=quotation-engine (the gated calculator's own link):
-     reveal the request and tick it, so the ask they came to make is already
-     made. The box stays hidden for everyone else. */
+  /* Arriving with ?request=quotation-engine (e.g. from "Access the calculator"
+     on /pricing): tick the request so the ask they came to make is already made. */
   if (params.get('request') === 'quotation-engine') {
-    const set = document.getElementById('quotation-set');
     const box = document.querySelector<HTMLInputElement>('#quotationEngine');
-    if (set && box) {
-      set.hidden = false;
+    if (box) {
       box.checked = true;
-      set.scrollIntoView({ block: 'center' });
     }
   }
 
-  /* "How do you want to work?": preselect from ?way=, and move the studio-only
-     questions out of the way for app questions and partners. */
+  /* "How do you want to work?": defaults to "Studio + app", overrides from ?way=,
+     and moves the studio-only questions out of the way for app questions and partners. */
   const wayInputs = document.querySelectorAll<HTMLInputElement>('input[name="way"]');
   const studioOnly = document.getElementById('studio-only');
   const syncWay = () => {
     const picked = Array.from(wayInputs).find((i) => i.checked)?.value;
     if (studioOnly) studioOnly.hidden = picked === 'app' || picked === 'partner';
   };
-  const wayParam = params.get('way');
+  const rawWay = params.get('way');
+  const resolvedWay =
+    rawWay === 'app' || rawWay === 'partner' || rawWay === 'unsure'
+      ? rawWay
+      : rawWay === 'studio-only'
+        ? 'studio'
+        : 'studio-app';
+  const applyWay = () => {
+    wayInputs.forEach((input) => {
+      input.checked = input.value === resolvedWay;
+    });
+    syncWay();
+  };
   wayInputs.forEach((input) => {
-    if (input.value === wayParam) input.checked = true;
     input.addEventListener('change', syncWay);
   });
-  syncWay();
+  applyWay();
+  window.addEventListener('pageshow', applyWay);
 
   /* "How did you hear about us?": the "Which one?" box only for the answers
      that have a name to give (an exhibition, a referral, somewhere else). */

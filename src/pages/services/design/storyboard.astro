@@ -1653,26 +1653,25 @@ const breadcrumbSchema = {
   /* ===================== S6 · Process ===================== */
   .craft {
     background: var(--paper);
-    padding-top: clamp(80px, 10vw, 150px);
+    padding-top: clamp(72px, 8vw, 120px);
   }
   .craft__intro {
-    max-width: 780px;
-    margin-bottom: clamp(36px, 5vw, 60px);
+    margin-bottom: clamp(24px, 3vw, 36px);
   }
   .craft__intro .kicker {
     color: var(--brand-orange);
   }
   .craft__intro .dh {
-    margin-top: 16px;
+    margin-top: 14px;
   }
   .craft__lede {
-    margin-top: 18px;
+    margin-top: 16px;
     font-size: var(--type-lead);
     line-height: 1.5;
     color: var(--text-mute);
   }
   .craft__note {
-    margin-top: 22px;
+    margin-top: 18px;
     display: inline-block;
     padding: 13px 20px;
     border-left: 3px solid var(--brand-orange);
@@ -1682,6 +1681,33 @@ const breadcrumbSchema = {
     font-size: 12px;
     letter-spacing: 0.04em;
     color: var(--text-ink);
+  }
+  @media (min-width: 880px) {
+    .craft__intro {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      column-gap: clamp(40px, 5vw, 72px);
+      align-items: start;
+    }
+    .craft__intro .kicker {
+      grid-column: 1 / -1;
+    }
+    .craft__intro .dh {
+      grid-column: 1;
+      grid-row: 2 / span 2;
+      margin-top: 14px;
+    }
+    .craft__lede {
+      grid-column: 2;
+      grid-row: 2;
+      margin-top: 14px;
+    }
+    .craft__note {
+      grid-column: 2;
+      grid-row: 3;
+      margin-top: 16px;
+      justify-self: start;
+    }
   }
 
   .seq__nav {
@@ -1732,21 +1758,19 @@ const breadcrumbSchema = {
   }
 
   .craft--pinned .seq {
-    height: 480vh;
+    height: 380vh;
   }
   .craft--pinned .seq__stick {
     position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+    top: 76px;
+    padding-block: clamp(12px, 1.8vh, 22px) clamp(40px, 5vh, 64px);
     overflow: hidden;
   }
   .craft--pinned .seq__stage {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: clamp(22px, 3vw, 40px);
+    gap: clamp(18px, 2.2vw, 28px);
   }
   .craft--pinned .seq__nav {
     display: grid;
@@ -1791,13 +1815,14 @@ const breadcrumbSchema = {
   .craft--pinned .seq__panels {
     position: relative;
     display: block;
-    height: clamp(340px, 60vh, 540px);
+    height: clamp(320px, 54vh, 470px);
     padding-bottom: 0;
   }
   .craft--pinned .seq__panel {
     position: absolute;
     inset: 0;
-    align-content: center;
+    align-content: start;
+    padding-top: 8px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(26px);
@@ -1819,7 +1844,7 @@ const breadcrumbSchema = {
   }
   .craft--pinned .seq__media .crop__inner {
     aspect-ratio: auto;
-    height: clamp(280px, 52vh, 460px);
+    height: clamp(280px, 48vh, 430px);
   }
   @media (prefers-reduced-motion: reduce) {
     .craft--pinned .seq__panel {
@@ -2283,12 +2308,15 @@ const breadcrumbSchema = {
       });
     };
 
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      if (!craft.classList.contains('craft--pinned')) return;
-      const total = seq.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(total, Math.max(0, -seq.getBoundingClientRect().top));
+    const stick = seq.querySelector<HTMLElement>('.seq__stick');
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        if (!craft.classList.contains('craft--pinned')) return;
+        const stickH = stick ? stick.offsetHeight : window.innerHeight;
+        const stickTop = stick ? parseFloat(getComputedStyle(stick).top) || 0 : 0;
+        const total = Math.max(1, seq.offsetHeight - stickH);
+        const scrolled = Math.min(total, Math.max(0, stickTop - seq.getBoundingClientRect().top));
       const p = total > 0 ? scrolled / total : 0;
       const exact = p * n;
       const idx = Math.min(n - 1, Math.floor(exact));

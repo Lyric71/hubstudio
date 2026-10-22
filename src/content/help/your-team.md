@@ -5,7 +5,7 @@ description: "Working alone or in a team, the Admin, Creator, Viewer and Client 
 excerpt: "A team shares one balance and works for its clients. Administrators invite people, set daily limits, add clients and give their people a login."
 section: "team"
 order: 15
-updated: 2026-10-16
+updated: 2026-10-17
 appPaths: ["/team", "/invite"]
 audience: "Everyone; most actions are for administrators"
 related: ["getting-started", "balance-and-payments", "history", "assets-library", "campaigns", "validation", "client-space", "skills"]
@@ -57,7 +57,7 @@ hubStudio has four roles.
 Beyond the role, each person's access can be fitted more finely, on their own page: on the Team page, an admin clicks **Details** in their row, adjusts the cards below, then clicks **Save changes**. **Back to the team** returns to the list.
 
 - **Modules**: a module switched off for someone disappears for them entirely, menu and pages, such as the Image editor, the Video editor or Shorts autopilot for someone who doesn't need them.
-- **Rights, module by module**: what a person may do in each area (see it, create in it, change it, delete from it), graded on **Image**, **Video**, **Assets**, **Image editor**, **Video editor**, **Shorts autopilot**, **Campaigns**, **Posts**, **Publishing and scheduling**, **Validation**, **Agents**, **Skills**, **Scratchpad**, **Support**, **Team members**, **Team settings** and **Shared credits**. **Scratchpad** opens the person's own notes drawer, which nobody else reads: a Viewer writes in it too (see [Scratchpad](/help/scratchpad)). **Support** shows the Support button at the top of the page; seeing it is all it takes. Each right follows the person's role until it is changed for them. Nobody can change their own rights.
+- **Rights, module by module**: what a person may do in each area (see it, create in it, change it, delete from it), graded on **Image**, **Video**, **Assets**, **Image editor**, **Video editor**, **Shorts autopilot**, **Campaigns**, **Posts**, **Publishing and scheduling**, **Web**, **Validation**, **Agents**, **Skills**, **Scratchpad**, **Log**, **Support**, **Team members**, **Team settings** and **Shared credits**. **Scratchpad** opens the person's own notes drawer, which nobody else reads: a Viewer writes in it too (see [Scratchpad](/help/scratchpad)). **Log** opens the person's own history (runs, notifications, agent runs, emails received, sign-ins and paid actions), which nobody else sees; viewing is all it takes (see [Log](/help/log)). **Support** shows the Support button at the top of the page; seeing it is all it takes. Each right follows the person's role until it is changed for them. Nobody can change their own rights.
 
 The same page shows what the person did. The **Activity** card sums up what they spent today and this month, their paid actions since the account was opened, and the number of features they used in the last 30 days. Under **Modules and features, last 30 days**, each module they worked in lists its features, with the pages they opened, the changes they made, the paid runs, what those cost and the day they last used it. Below, **Everything they did** lists the last pages opened and changes made, and **Paid actions** the last paid runs with their price. When the person created their account themselves, the band at the top of the page also shows the country they gave at sign-up.
 

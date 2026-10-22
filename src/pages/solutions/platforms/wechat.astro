@@ -2,18 +2,14 @@
 /**
  * WeChat · /solutions/platforms/wechat
  *
- * Editorial layout adapted from /solutions/platforms/meta. Same print-shop
- * primitives (crop marks, calibration color bar, mono figure labels, dashed
- * rules) reframed for WeChat: the four surfaces we ship creative into, the
- * AIGC mechanics for each, the partnership model.
+ * Full-service WeChat agency and AIGC production studio: Official Account
+ * setup and verification, editorial content, Mini Program development and
+ * storefronts, Tencent Ads media buying and creative, WeCom private domain
+ * CRM, and Channels video, livestreams, KOLs, and brand-owned avatars.
  *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
  * its canonical lowercase-h casing.
- *
- * Page excerpt (25 words): hubStudio produces WeChat creative across four
- * surfaces: Official Account articles, Tencent Ads, Channels video, and Mini
- * Program storefronts. One brief, one creative direction, every market.
  *
  * Two attributed blockquote citations (Tencent results) carry the external
  * data points; both use the .cite component. Copy reviewed early 2026.
@@ -30,35 +26,35 @@ const colourBar = [
 ];
 
 const stats = [
-  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, Channels, storefront' },
-  { from: 0, to: 50, suffix: '+', label: 'Variations per concept', note: 'From one signed-off master' },
-  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On Moments ads and Channels' },
+  { from: 0, to: 6, suffix: '', label: 'Service pillars', note: 'Setup, content, Mini Programs, ads, WeCom, Channels & KOLs' },
+  { from: 0, to: 50, suffix: '+', label: 'Variations per concept', note: 'For Tencent Ads and city cohorts' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On Moments ads and Channels video' },
 ];
 
 const samples = [
   {
     src: '/Images/wechat-sample-a.jpg',
-    kind: 'Content · OA article',
+    kind: 'Official Account · Article',
     alt: 'A vertical phone held in soft window light, the screen showing an open WeChat Official Account article with a wide cover image and the article headline stacked above warm editorial body text.',
   },
   {
     src: '/Images/wechat-sample-b.jpg',
-    kind: 'Ad creative · Moments',
+    kind: 'Tencent Ads · Moments',
     alt: 'A phone screen showing the WeChat Moments feed, a sponsored brand card with image, advertiser name and a call-to-action button sitting between two personal posts.',
   },
   {
     src: '/Images/wechat-sample-c.jpg',
-    kind: 'Ad creative · Channels',
+    kind: 'Tencent Ads · Channels',
     alt: 'A phone screen showing a WeChat Channels video, a sponsored in-feed ad frame of a skincare product with the advertiser label and an action button along the lower interface.',
   },
   {
     src: '/Images/wechat-sample-d.jpg',
-    kind: 'Channels · Short-form',
+    kind: 'Channels · Video & KOL',
     alt: 'A phone held vertically, the screen showing a WeChat Channels video paused mid-frame, the like, comment and share rail running up the right edge of the interface.',
   },
   {
     src: '/Images/wechat-sample-e.jpg',
-    kind: 'Storefront · Mini Program',
+    kind: 'Mini Program · Storefront',
     alt: 'A phone screen showing a WeChat Mini Program storefront, a campaign banner above a grid of product cards, the rounded capsule menu visible in the top corner of the interface.',
   },
 ];
@@ -66,114 +62,153 @@ const samples = [
 const coverage = [
   {
     fig: 'B',
-    label: 'Content',
-    heading: 'Content. Articles for the Official Account.',
+    label: 'Account Setup & Editorial',
+    heading: 'Official Account setup, verification and editorial.',
     image: '/Images/wechat-content.jpg',
     alt: 'A phone held in both hands, the screen filled with an open WeChat Official Account article, the cover image and headline at the top and an in-article image stack below, the WeChat chrome visible across the top of the screen.',
-    lead: 'Official Account articles, written and designed in-house for a surface readers choose to open.',
+    lead: 'From overseas Service Account registration and Tencent verification to weekly native Mandarin articles.',
     body: [
-      "We write, art-direct, and build the articles that carry a WeChat Official Account. That means a cover good enough to earn the tap in a crowded subscription list, a headline that holds up in the feed, and a layout that reads as designed rather than pasted together. One month it is a long brand feature, the next a product launch or a seasonal piece. Either way, it stays inside the brand book.",
-      "Native Mandarin writers handle the copy. They publish on WeChat every week, so they write for the platform from the first line, and nothing gets run through a translated English draft. We finish each article image by image, retouched by the same people who handle the campaign hero, then hand it over ready to schedule.",
+      "Foreign brands do not need a mainland Chinese entity to operate on WeChat. We register and verify WeChat Service Accounts using your overseas business license, handling document translation, Tencent compliance, custom menus, welcome sequences, and keyword auto-replies in seven to fifteen working days.",
+      "Once the account is live, our Shanghai editorial team plans, writes, and designs the articles that carry it: long-form brand features, interactive SVG layouts, product launches, and seasonal editorials. Native Mandarin writers handle the copy from scratch, and our studio finishes every cover and in-article visual to campaign standard.",
     ],
     tags: [
-      'Service Account articles', 'Subscription posts', 'Cover design',
-      'Long-form features', 'Launch announcements', 'Seasonal editorials',
-      'Article image sets', 'Always-on calendar',
+      'Overseas OA registration', 'Tencent verification', 'Service & Subscription OAs',
+      'Native Mandarin copy', 'Interactive SVG articles', 'Custom menus & auto-replies',
+      'Seasonal editorials', 'Monthly publishing calendar',
     ],
   },
   {
     fig: 'C',
-    label: 'Ad creative',
-    heading: 'Ad creative. Built for Tencent Ads.',
+    label: 'Paid Advertising',
+    heading: 'WeChat Advertising. Full media buying and creative on Tencent Ads.',
     image: '/Images/wechat-ads.jpg',
     alt: 'A wide monitor showing the Tencent Ads creative library, a grid of WeChat Moments and Channels ad variants lined up in the placement preview panel.',
-    lead: 'Performance creative for every Tencent Ads surface, made at the volume a real media plan burns through.',
+    lead: 'End-to-end media planning, audience targeting, bid management, and high-volume ad creative across every WeChat placement.',
     body: [
-      "A Moments ad should look like it belongs between two friends' posts, not crash into the middle of them. Channels video has to hold attention through the first second or it loses the rest. We build banner placements, Mini Program ads, and search creative the same way, each one briefed around the exact placements the media team is buying.",
-      "Conversion frames, catalog cards, hook-tested Channels cuts, retargeting units: all of it goes through the same studio finish as the hero ad. Files arrive named the way Tencent Ads and your reporting expect, so nobody downstream has to rename anything.",
+      "We manage both the media buying and the creative production inside Tencent Ads. Our buyers plan the funnel, configure demographic, geographic, interest, and lookalike targeting, manage bidding and A/B tests, and report transparently on impressions, clicks, conversions, and cost per acquisition.",
+      "Every WeChat ad format is covered: Moments Ads that sit naturally in the social feed, Channels video ads, Official Account Banner Ads, Mini Program Ads, and high-intent WeChat Search and Brand Zone placements. Alongside the buying, our AIGC studio produces fifty-plus visual and video variants per concept so the auction never fatigues.",
     ],
     tags: [
-      'Moments ads', 'Channels in-feed', 'Banner placements',
-      'Mini Program ads', 'Search creative', 'Catalog cards',
-      'Hook A/B testing', 'Retargeting variants',
+      'Tencent Ads media buying', 'Moments Ads', 'Channels in-feed Ads',
+      'WeChat Search & Brand Zone', 'OA Banner & Mini Program Ads', 'Audience & lookalike targeting',
+      '50+ AIGC ad variants', 'Transparent CPA & ROAS reporting',
     ],
   },
   {
     fig: 'D',
-    label: 'Channels',
-    heading: 'Channels. Video and livestream.',
+    label: 'Channels, Live & KOLs',
+    heading: 'WeChat Channels, livestream commerce, KOLs and avatars.',
     image: '/Images/wechat-video.jpg',
     alt: 'A phone screen showing a WeChat Channels video paused mid-frame, the vertical video interface with the like, comment and share rail running up the right edge.',
-    lead: 'Short-form video and livestream creative for WeChat Channels, scripted, shot, and finished by one team.',
+    lead: 'Short-form video, managed livestreams, vetted Chinese KOL partnerships, and brand-owned digital hosts.',
     body: [
-      "We handle the organic side of a Channels presence. The short videos are built to hold attention from the opening frame. Livestreams come with lower-thirds, product cards, and overlays that match the brand, plus replay cuts and highlight clips that keep earning views after the stream ends. Because Channels links straight through to the Official Account and the Mini Program, every video is made to move the viewer somewhere next.",
-      "A creative director signs off the work, it gets graded in the studio, and it ships vertical, the way Channels serves it. If you want, brand-owned avatar presenters can host the clips and the livestreams in any language, which means a seasonal refresh never sends anyone back to a booking agent.",
+      "WeChat Channels links public algorithm discovery directly to your Official Account, Mini Program store, and WeCom groups. We script, shoot, and edit vertical short-form video, and we plan and operate live selling streams complete with studio set design, product card pinning, real-time moderation, and post-stream highlight cuts.",
+      "When a campaign calls for creator credibility, we source, audit for fake followers, contract, and manage WeChat KOLs and KOCs across your category. And when you want always-on video or 24/7 livestream coverage without recurring talent fees, we build and train brand-owned avatar presenters that speak native Mandarin.",
     ],
     tags: [
-      'Short-form video', 'Livestream creative', 'Lower-thirds and overlays',
-      'Replay highlight cuts', 'Product card frames', 'Avatar presenters',
-      'Vertical edits', 'Always-on calendar',
+      'Channels video ops', 'Livestream commerce', 'KOL sourcing & vetting',
+      'Fake-follower auditing', 'Brand-owned AI avatars', 'Product card linking',
+      'Replay highlight cuts', 'Campaign ROI tracking',
     ],
   },
   {
     fig: 'E',
-    label: 'Storefront',
-    heading: 'Storefront. A Mini Program designed to sell.',
+    label: 'Mini Programs & WeCom CRM',
+    heading: 'Mini Program development, storefronts and WeCom private domain.',
     image: '/Images/wechat-miniprogram.jpg',
     alt: 'A phone screen showing a WeChat Mini Program storefront, a campaign banner above a grid of product cards, the rounded capsule menu in the top corner of the interface.',
-    lead: 'The visual design of a Mini Program storefront: covers, banners, product cards, and campaign skins, all on-brand and built to convert.',
+    lead: 'Custom Mini Program design and engineering connected to WeChat Pay, paired with WeCom private domain CRM.',
     body: [
-      "A Mini Program is the brand's own storefront inside WeChat, and it should not look like it came out of a template. We design the visual system for it, from the home banner and category tiles to the product grid and the campaign landing screens. Then we shoot or generate the product and lifestyle photography to fill it, sized to the exact frames the storefront serves.",
-      "We design the look and produce the images. Your developers handle the build itself. Every campaign also gets a storefront skin to match, designed from the same brief as the ads sending traffic to it.",
+      "We design, build, and operate WeChat Mini Programs end to end: e-commerce storefronts with native WeChat Pay checkout, membership and loyalty hubs, store locators, booking tools, and interactive campaign apps. Our studio also shoots and generates all product photography, home banners, and seasonal storefront skins.",
+      "To turn one-time buyers into repeat customers, we set up and run your WeCom (WeChat Work) private domain: customer tagging and CRM segmentation, automated welcome flows, 1-on-1 clienteling, and managed VIP community groups that generate recurring revenue without paying Tencent for every impression.",
     ],
     tags: [
-      'Home banners', 'Category tiles', 'Product card imagery',
-      'Campaign landing skins', 'Seasonal refreshes', 'Lifestyle photography',
-      'Promo modules', 'Brand-book system',
+      'Mini Program development', 'WeChat Pay e-commerce', 'Loyalty & booking apps',
+      'Storefront UI & skins', 'WeCom CRM setup', 'Private domain groups',
+      '1-on-1 clienteling flows', 'Lifecycle retention',
     ],
   },
 ];
 
-const credentials = ['Private GPU infra', 'NDA & DPA', 'EU AI Act', 'Data sovereignty'];
+const servicePillars = [
+  {
+    eyebrow: 'Market Entry & Setup',
+    title: 'Account Setup & Verification',
+    body: 'Register and verify a WeChat Service Account or Subscription Account using your overseas or local business license. We handle translations, Tencent compliance, custom menus, and auto-replies in 7 to 15 working days.',
+    items: ['Overseas entity registration', 'Official Tencent verification', 'Menu architecture & routing', 'Welcome & keyword automation'],
+  },
+  {
+    eyebrow: 'Editorial & AIGC',
+    title: 'Content Strategy & Production',
+    body: 'Native Mandarin editorial planned and produced in Shanghai. We publish weekly Official Account articles, interactive SVG layouts, graphics, and short videos, scaled with brand-trained AIGC.',
+    items: ['Official Account long-form articles', 'Interactive SVG & HTML layouts', 'Native Mandarin copywriters', 'Studio photography & AIGC'],
+  },
+  {
+    eyebrow: 'In-App Commerce',
+    title: 'Mini Program Design & Build',
+    body: 'Full UI/UX design, front- and back-end development, and ongoing operations for WeChat Mini Programs. Launch e-commerce stores, loyalty programs, booking tools, and seasonal campaign hubs.',
+    items: ['Custom Mini Program engineering', 'WeChat Pay & cross-border checkout', 'CRM & ERP integrations', 'Storefront skins & product visuals'],
+  },
+  {
+    eyebrow: 'Paid Media Buying',
+    title: 'Tencent Ads Management',
+    body: 'Full-funnel media planning, bidding, A/B testing, and creative variants across Moments Ads, Channels Ads, OA Banners, Mini Program Ads, and WeChat Search, with transparent ad spend.',
+    items: ['Moments & Channels ad buying', 'WeChat Search & Brand Zone', 'Audience & lookalike targeting', '50+ studio creative variants'],
+  },
+  {
+    eyebrow: 'Customer Retention',
+    title: 'WeCom & Private Domain CRM',
+    body: 'Build an owned customer base inside WeCom. We configure contact tagging, automated onboarding sequences, 1-on-1 sales outreach, and community group operations to lift repeat purchase rates.',
+    items: ['WeCom setup & CRM integration', 'Tagging & user segmentation', 'Automated welcome sequences', 'Managed VIP community groups'],
+  },
+  {
+    eyebrow: 'Video, Live & Creators',
+    title: 'Channels, Livestreams, KOLs & Avatars',
+    body: 'Grow reach through WeChat Channels short videos, managed live commerce sessions, vetted KOL partnerships, and custom AI avatar presenters owned outright by your brand.',
+    items: ['Channels short-video production', 'End-to-end livestream operations', 'KOL vetting & campaign management', 'Brand-owned Mandarin AI avatars'],
+  },
+];
+
+const credentials = ['Tencent Ads Buyers', 'Overseas OA Setup', 'Private GPU infra', 'Data sovereignty'];
 
 const processSteps = [
   {
-    short: 'Brief',
+    short: 'Setup',
     tier: 'Where it is won',
-    title: 'Discovery and brief.',
-    body: 'One working session to settle the goal, the audience, which WeChat surfaces are in scope, and what the brand will and will not do. You get back a one-page brief and an asset map broken out by surface and by lane.',
+    title: 'Account verification, architecture and brief.',
+    body: 'We verify your Official Account (or audit your existing ecosystem), map the user journey across OA, Channels, Mini Program, and WeCom, and lock the commercial KPIs, audience cohorts, and brand guardrails.',
     image: '/Images/wechat-p1-brief.jpg',
     alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the WeChat Official Account dashboard alongside printed Moments and Channels screenshots.',
   },
   {
     short: 'Direction',
     tier: 'Where it is won',
-    title: 'Creative direction across the four lanes.',
-    body: 'We lock the visual references and set the editorial voice for the Official Account. AIGC and avatar models get chosen surface by surface. Content, ad creative, Channels, and storefront each get their own treatment, all of it under one direction.',
+    title: 'Editorial, media and technical direction.',
+    body: 'We set the Mandarin editorial voice, architect the Tencent Ads funnel and KOL shortlist, wire the Mini Program and WeCom flows, and train your private brand LoRA and avatar models.',
     image: '/Images/wechat-p2-direction.jpg',
     alt: 'A storyboard wall with four columns of frame sketches labeled Content, Ads, Channels and Storefront, each column anchored by a printed WeChat phone mock.',
   },
   {
-    short: 'AIGC',
+    short: 'Production',
     tier: 'The rest is execution',
-    title: 'AIGC generation and authored finish.',
-    body: 'Now the generation runs, lane by lane, across the surfaces we agreed on. Every output still goes through the studio retouch and a brand check before a media plan or a publishing calendar ever sees it.',
+    title: 'Studio production, Mini Program build and AIGC.',
+    body: 'Our Shanghai writers, developers, designers, and AIGC engineers build the articles, Mini Program pages, Channels videos, and fifty-plus ad variants. Every asset passes human retouch and Tencent compliance checks.',
     image: '/Images/wechat-p3-aigc.jpg',
     alt: 'A motion designer at a calibrated workstation, the main monitor showing a single WeChat Channels hero frame, the side panel showing the Tencent Ads creative library grid of variants.',
   },
   {
     short: 'Launch',
     tier: 'The rest is execution',
-    title: 'Launch. Per-surface, per-market.',
-    body: 'Assets are handed over in the formats WeChat actually uses: article image sets ready to schedule, Moments and Channels ads named for Tencent Ads, storefront skins cut to the Mini Program frames. Tracking and naming are set up so the reporting later makes sense.',
+    title: 'Publishing, media buying, KOLs and WeCom activation.',
+    body: 'We publish the Official Account and Channels calendar, launch and pace Moments and Search campaigns in Tencent Ads, coordinate KOL drops, and route new followers into your WeCom private domain.',
     image: '/Images/wechat-p4-launch.jpg',
     alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the Tencent Ads campaign dashboard with WeChat Moments ad placements live.',
   },
   {
-    short: 'Adapt',
+    short: 'Optimize',
     tier: 'The rest is execution',
-    title: 'Adapt. Variants, refresh, season.',
-    body: 'Once the hero is approved, new variants land within days, for a new audience, another city, a festival, or the next season. The brief does not change, so each new batch is faster and cheaper than the one before it.',
+    title: 'Optimization, CRM retention and seasonal refresh.',
+    body: 'We reallocate ad spend toward top-converting cohorts, refresh creative for Chinese shopping festivals, nurture WeCom groups for repeat orders, and deliver clear monthly ROI and attribution reports.',
     image: '/Images/wechat-p5-adapt.jpg',
     alt: 'A colorist at a calibrated grading suite, the main reference monitor showing a warm WeChat Channels frame paused on a product still, the Channels interface elements visible at the screen edges.',
   },
@@ -181,48 +216,48 @@ const processSteps = [
 
 const faqs = [
   {
-    q: 'What exactly do you produce for WeChat?',
-    a: 'Four things, all under one studio. We write and design Official Account articles, for both Service and Subscription accounts. We build ad creative for Tencent Ads, across Moments, Channels in-feed, banner, and Mini Program placements. We script and produce Channels video and livestreams. And we design the look of a Mini Program storefront, down to the banners and product cards. One creative direction sits over all four.',
+    q: 'What WeChat services do you provide?',
+    a: 'We are a full-service WeChat agency and AIGC production studio. We cover six connected pillars: Official Account registration and Tencent verification (including for overseas companies without a Chinese entity); native Mandarin content strategy and article production; custom Mini Program design and development with WeChat Pay; full-funnel Tencent Ads media buying and creative; WeCom private domain CRM and community management; plus WeChat Channels video, livestreams, KOL campaigns, and brand-owned AI avatars.',
   },
   {
-    q: 'Who writes the Official Account articles?',
-    a: "Native Mandarin writers, not translators working off an English document. They publish on WeChat every week, so they write for the platform's habits from the first line. The brief can reach us in English; the article itself is written in Chinese, for a Chinese reader.",
+    q: 'Can our company open a verified WeChat Official Account without a Chinese business entity?',
+    a: 'Yes. We register and verify WeChat Service Accounts for international brands using your overseas business registration documents. Users in mainland China see and interact with the account just like a local one. We handle all document translation, compliance filings, and Tencent verification, which typically completes in 7 to 15 working days.',
   },
   {
-    q: 'What does the Storefront lane actually cover?',
-    a: 'Design and imagery, not the back end. We design the storefront system, the banners, the category tiles, the product grid, the campaign screens, and we shoot or generate the photography that fills it. What we do not do is the build. Registration, verification, and development stay with your team or your developer. You get a finished design and a full set of images, ready to drop in.',
+    q: 'Do you build and develop Mini Programs, or only design the visuals?',
+    a: 'Both. We handle the complete Mini Program lifecycle: UI/UX design, front-end and back-end development, WeChat Pay and cross-border payment integration, CRM and inventory connections, Tencent review submission, and ongoing storefront operations. If you already have an in-house dev team or a SaaS store, we can also supply the visual system, campaign skins, and product photography alone.',
   },
   {
-    q: 'Can you produce Channels video at the volume our plan needs?',
-    a: 'Yes. One hero shoot, or one AIGC sprint, produces the master. After that the variants come fast, sorted by audience and by city, usually within days. LoRA models trained on your brand keep every frame consistent, and the optional avatar presenters mean a refresh does not need another shoot.',
+    q: 'Do you manage Tencent Ads media buying as well as producing the ad creative?',
+    a: 'Yes. Our media buyers plan, launch, and optimize campaigns inside Tencent Ads across Moments Ads, Channels in-feed Ads, Official Account Banners, Mini Program Ads, and WeChat Search. Ad spend is billed transparently with no hidden markups, while our studio produces fifty-plus creative variants per concept so the algorithm has the volume it needs to optimize.',
   },
   {
-    q: 'How does pricing work?',
-    a: 'Every project is scoped from the brief, so there is no public rate card. What it costs depends on which surfaces are in scope, how many variants you need, and whether the brand needs a one-time setup for LoRA models or an avatar. The more you order, the lower the cost per asset, since most of the work sits in the master and not the variants behind it. Send the brief and you get a written scope and an indicative figure back, usually within 48 hours.',
+    q: 'How do WeCom and private domain CRM fit into your WeChat service?',
+    a: 'Acquiring traffic on WeChat is only half the equation; keeping those customers in your private domain is where margin is made. We set up WeCom (WeChat Work), build QR acquisition touchpoints across your articles, ads, and packaging, tag and segment contacts, run automated welcome sequences, and manage 1-on-1 clienteling and VIP group chats that drive repeat purchases.',
   },
   {
-    q: 'How do you keep the brand line consistent across the four lanes?',
-    a: 'The hero concept gets signed off once, during the direction step. From then on, every variant in every lane runs through the same retouch, the same color grade, and the same brand-safety check. That shared finish is what keeps the articles, the ads, the Channels video, and the storefront looking like a single campaign.',
+    q: 'Do you source and manage WeChat KOLs and run Channels livestreams?',
+    a: 'Yes. We source WeChat Official Account and Channels KOLs in your category, audit their historical read rates and engagement to screen out fake followers, negotiate rates, manage briefs and compliance, and track conversions. For Channels livestreams, we handle scripting, studio set design, product card linking to your Mini Program, live moderation, and either human hosts or 24/7 brand-owned AI avatar hosts.',
   },
   {
-    q: 'What is your turnaround for a Moments ad or a Channels cut?',
-    a: 'For a brand we already work with, short-form creative runs about 24 to 72 hours from brief to first cut. A new brand or a new product needs a one-time setup first, to lock the treatment, train the LoRA models, and build the avatar. After that, a weekly drop at full production quality is the normal pace. When something is trending and the calendar calls for it, we can turn a piece around in a day or two.',
+    q: 'Who writes the Official Account articles and copy?',
+    a: "Native Mandarin writers based in Shanghai, never translators working off an English document. They publish on WeChat every week, so they write for the platform's reading habits and search behavior from the first line. You can brief us in English or French; we review bilingual outlines with you and publish native Chinese work.",
   },
   {
-    q: 'Do you handle Tencent Ads placements and dynamic creative?',
-    a: 'Yes. We brief the ad creative around whatever placements the media team is buying across Tencent Ads: Moments, Channels, banner, Mini Program. Dynamic creative needs a lot of format variety, and we produce it, named cleanly so the reporting stays readable afterward. We make and finish the creative. The media buying itself stays with whoever runs your account.',
+    q: 'How does pricing work for WeChat management, ads and studio production?',
+    a: 'We scope engagements modularly across account setup, monthly operations, Tencent Ads management, Mini Program development, KOL campaigns, and AIGC production. Media spend and KOL fees are passed through transparently. Send us your brief and we return a tailored scope and pricing breakdown within 48 hours.',
   },
   {
-    q: 'How do you keep the work from feeling AI-generated?',
-    a: 'Every output goes through a studio retouch pass: dodge and burn, film grain, a little chromatic aberration, a color grade in Lightroom or Capture One. We keep a written image style guide that bans the usual AI tells, things like poreless skin, identical bokeh, melted product detail, and text that is almost but not quite real letters. A person reviews every final file before it goes anywhere near a media plan.',
+    q: 'How do you keep AI-generated visuals from looking artificial?',
+    a: 'Every AIGC output goes through a human studio retouch pass: dodge and burn, natural film grain, optical detail, and color grading in Lightroom or Capture One. Our art directors check every final frame against our brand and platform style guides before anything reaches your Official Account or Tencent Ads.',
   },
   {
-    q: 'Can you white-label this for our agency?',
-    a: "Yes, and a good share of our WeChat work already does. We deliver under your agency's brand, with NDAs in place, and we stay out of sight. You keep the client relationship and run the conversation. We are the production capacity behind it.",
+    q: 'Can you white-label your WeChat services for our agency?',
+    a: "Yes. We act as the China execution and AIGC production partner for international agencies under strict NDAs. You keep the client relationship while our Shanghai and Hong Kong teams handle account verification, Mandarin editorial, Mini Programs, Tencent Ads buying, and studio production.",
   },
   {
-    q: 'Who owns the assets, the masters and the trained models?',
-    a: 'You do. That covers the finished assets, the masters, and any LoRA, fine-tuned, or avatar models trained on your IP. Commercial-use rights for AIGC output are handled through enterprise tiers that grant them. The Copyright and AI guide goes through the legal detail.',
+    q: 'Who owns the WeChat accounts, Mini Program code, assets and trained models?',
+    a: 'You do. Your Official Account, Tencent Ads account, WeCom customer database, custom Mini Program code, finished creative masters, and any LoRA or avatar models trained on your IP belong to your company. Our Copyright and AI guide covers the legal details.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
 ];
@@ -249,8 +284,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="WeChat AIGC: Content, Ads & Channels Creative | hubStudio"
-  description="AIGC creative for WeChat: Official Account articles, Moments and Channels ads, and Mini Program storefront design from one studio, one brief."
+  title="WeChat Agency & AIGC Studio: Official Accounts, Ads, Mini Programs & CRM | hubStudio"
+  description="Full-service WeChat agency and AIGC studio: Official Account setup, Mandarin editorial, Tencent Ads buying, Mini Program development, WeCom CRM, KOLs, and Channels video."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -271,26 +306,25 @@ const breadcrumbSchema = {
             <span class="kicker__sep">/</span> WeChat
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Four lanes,</span></span>
-            <span class="line"><span class="line__i serif">one WeChat brief.</span></span>
+            <span class="line"><span class="line__i">Full-service</span></span>
+            <span class="line"><span class="line__i serif">WeChat ecosystem.</span></span>
             <span class="line"><span class="line__i">AIGC, at scale.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Content. Ad creative. Channels. <em>Storefront.</em>
+            Accounts &amp; Content. Tencent Ads. Mini Programs. WeCom. <em>Channels &amp; KOLs.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              We make four kinds of work for WeChat: editorial articles for
-              your Official Account, paid ad creative for Tencent Ads,
-              short-form video and livestreams for Channels, and the design of
-              a Mini Program storefront.
+              We build and run your entire WeChat ecosystem: overseas Official
+              Account registration and verification, weekly Mandarin articles,
+              custom Mini Program development with WeChat Pay, full-funnel
+              Tencent Ads media buying, WeCom private domain CRM, and Channels
+              video, livestreams, and KOL campaigns.
             </p>
             <p>
-              It all runs off one brief. A single creative direction holds the
-              surfaces together, and one approved concept becomes around fifty
-              versions, each tuned to a different city or market. The AI runs
-              inside a working studio. People still direct it and sign off
-              every frame.
+              Underneath the agency operation sits our Shanghai AIGC studio,
+              turning one approved creative direction into fifty-plus localized
+              ad and content variants, plus brand-owned digital hosts.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
@@ -303,7 +337,7 @@ const breadcrumbSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Hong Kong + Shanghai <span>/</span> WeChat-native creative under one director
+            Hong Kong + Shanghai <span>/</span> Full-service WeChat agency &amp; AIGC studio
           </p>
         </div>
       </div>
@@ -331,21 +365,22 @@ const breadcrumbSchema = {
           <div class="why__head">
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
             <h2 class="dh r" style="--d:.05s">
-              What we ship<br /><span class="serif">into WeChat</span>.
+              Everything we do<br /><span class="serif">on WeChat</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              WeChat behaves like four products inside one app. People read on
-              the Official Account, scroll Moments, watch Channels, and shop in
-              Mini Programs, mostly without switching to anything else. We make
-              work for all four.
+              WeChat is China's digital operating system. People read on Official
+              Accounts, discover video and livestreams on Channels, click
+              Moments and Search ads, buy inside Mini Programs with WeChat Pay,
+              and stay connected with brands through WeCom private domain
+              groups, all without leaving the app.
             </p>
             <p class="r" style="--d:.16s">
-              A single creative direction sits over everything we make. The
-              same studio hands that retouch the hero image also finish every
-              variant behind it. That keeps the fiftieth ad looking like the
-              brand, not a tired knockoff of the first.
+              We operate every part of that loop under one roof in Shanghai and
+              Hong Kong: account registration, Mandarin editorial, Mini Program
+              engineering, Tencent Ads media buying, KOL campaigns, WeCom CRM,
+              and studio AIGC production.
             </p>
           </div>
         </div>
@@ -360,7 +395,7 @@ const breadcrumbSchema = {
               loading="lazy"
             />
           </div>
-          <figcaption class="fig">Four lanes, one creative direction</figcaption>
+          <figcaption class="fig">Six WeChat pillars, one integrated Shanghai &amp; Hong Kong team</figcaption>
         </figure>
 
         <div class="stats">
@@ -403,7 +438,7 @@ const breadcrumbSchema = {
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
           <h2 class="dh r" style="--d:.05s">
-            Four lanes, one <span class="serif">brand line</span>.
+            Every WeChat surface, <span class="serif">handled</span>.
           </h2>
         </header>
 
@@ -423,7 +458,7 @@ const breadcrumbSchema = {
                 <figcaption class="fig">{c.label} surface</figcaption>
               </figure>
               <div class="feature__body">
-                <p class="feature__idx r"><span class="feature__tick"></span>Surface</p>
+                <p class="feature__idx r"><span class="feature__tick"></span>Pillar</p>
                 <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
                 {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
                 {c.body.map((para, pi) => (
@@ -441,6 +476,31 @@ const breadcrumbSchema = {
             </article>
           ))
         }
+
+        <div class="matrix">
+          <header class="matrix__head">
+            <p class="kicker r"><span class="kicker__tick"></span>Complete service catalog</p>
+            <h3 class="dh dh--sm r" style="--d:.05s">
+              Six WeChat pillars, <span class="serif">end to end</span>.
+            </h3>
+          </header>
+          <div class="matrix__grid">
+            {
+              servicePillars.map((p, i) => (
+                <article class="mcard r" style={`--d:${(i % 3) * 0.08}s`}>
+                  <p class="mcard__eyebrow">{p.eyebrow}</p>
+                  <h4 class="mcard__title">{p.title}</h4>
+                  <p class="mcard__body">{p.body}</p>
+                  <ul class="mcard__list">
+                    {p.items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </div>
       </div>
     </section>
 
@@ -510,25 +570,25 @@ const breadcrumbSchema = {
           </figure>
           <div class="source__stat">
             <span class="source__stat-num">1 brief</span>
-            <span class="source__stat-cap">Four lanes, every surface, every market</span>
+            <span class="source__stat-cap">Six pillars, every surface, every city</span>
           </div>
         </div>
 
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Partnership</p>
           <h2 class="dh r" style="--d:.05s">
-            Authored creative, <span class="serif">AI volume</span>.
+            China agency ops, <span class="serif">AIGC volume</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            Right now, plenty of brands have AI tools for WeChat. Fewer have
-            kept a real creative process around those tools. The ones that did
-            tend to be the ones getting results, because the tooling was never
-            the hard part.
+            International brands on WeChat usually get stuck choosing between a
+            local media agency that outsources creative and a design studio
+            that cannot register an account, buy Tencent Ads, or build a Mini
+            Program. We do both in-house.
           </p>
           <p class="source__p r" style="--d:.14s">
-            WeChat is also where the ad money is heading. Tencent's own results
-            say as much, and Channels, which the company reports under the name
-            Video Accounts, is a big part of why.
+            WeChat is also where China's ad and social-commerce budget is
+            concentrating. Tencent's own results show why Video Accounts
+            (Channels) and Weixin Search have become central to brand growth.
           </p>
           <blockquote class="cite r" style="--d:.18s">
             <p>
@@ -539,11 +599,11 @@ const breadcrumbSchema = {
             <cite>Tencent Holdings, full-year 2025 results</cite>
           </blockquote>
           <p class="source__p r" style="--d:.22s">
-            We are a working studio before anything else. Directors, writers,
-            retouchers, and colorists sit next to the AIGC engineers, the
-            people who run the AI image and video generation. Nothing goes
-            straight from a model to a client. Every file gets the same review
-            the hero shot does.
+            In our Shanghai and Hong Kong offices, account managers, Tencent
+            Ads media buyers, Mini Program engineers, and Mandarin writers sit
+            alongside our studio directors, colorists, and AIGC engineers. Every
+            campaign is wired for conversion and backed by studio-finished
+            creative volume.
           </p>
           <ul class="creds r" style="--d:.28s">
             {
@@ -560,12 +620,12 @@ const breadcrumbSchema = {
           <p class="source__p r" style="--d:.32s">
             Everything runs on private infrastructure. You choose where it is
             hosted, in mainland China, Hong Kong, the EU, or the US, depending
-            on where your data needs to sit. The LoRA models we train, small
-            add-on models that teach the AI your brand's look, stay your
-            property, and you can take them with you if you ever leave.
+            on where your data needs to sit. The LoRA and avatar models we
+            train on your brand stay your property, and you can take them with
+            you if you ever leave.
           </p>
           <p class="source__p source__p--quiet r" style="--d:.36s">
-            We do as much or as little of this as you need.
+            Hand us the entire WeChat ecosystem, or start with a single pillar.
           </p>
         </div>
       </div>
@@ -573,12 +633,12 @@ const breadcrumbSchema = {
 
     <!-- APP OR STUDIO -->
     <PlatformAppBand
-      pre={'WeChat work comes from the '}
-      accent={'studio'}
+      pre={'Full-service WeChat from our '}
+      accent={'Shanghai & HK team'}
       post={'.'}
       paras={[
-        'We make the Official Account articles, the Moments ads, the Channels video and the storefront design on this page. Your team or your local operator puts them live, because the hubStudio app doesn’t publish to WeChat.',
-        'Your team can still make images and video in the app, with the Image studio and the Video studio, then hand them to us to finish or to the agency that runs your Official Account. Whatever we make arrives finished, sized and named for each placement.',
+        'Our agency and studio team handles your WeChat presence end to end: Official Account verification, weekly Mandarin articles, Tencent Ads media buying, Mini Program development, WeCom CRM, KOL campaigns, and Channels livestreams. While direct WeChat publishing is managed by our team rather than self-serve in the hubStudio app, every asset and campaign plan flows through your shared workspace.',
+        'Your internal team can also generate product visuals and video in the hubStudio app with the Image studio and Video studio, then hand them to our Shanghai team to finish, localize, and deploy across WeChat.',
       ]}
       actions={[
         { label: 'Send a brief', href: `${BRIEF_URL}?way=studio`, kind: 'primary' },
@@ -589,18 +649,18 @@ const breadcrumbSchema = {
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
-        <p class="kicker r"><span class="kicker__tick"></span>How a WeChat campaign runs</p>
+        <p class="kicker r"><span class="kicker__tick"></span>How a WeChat program runs</p>
         <h2 class="dh r" style="--d:.05s">
-          One brief,<br />every <span class="serif">surface</span>.
+          One brief,<br />every <span class="serif">WeChat surface</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Articles, Moments ads, Channels video, and storefront design all run
-          through the same process. The format at the end of it changes, but
-          the steps to get there do not. Most of the outcome is settled early,
-          in the brief and the creative direction.
+          Account verification, Official Account articles, Tencent Ads buying,
+          Channels video, Mini Program builds, and WeCom CRM all run through
+          one five-step process. Most of the commercial outcome is settled in
+          the first two steps, before the first campaign launches.
         </p>
         <p class="craft__note r" style="--d:.16s">
-          The first two steps decide most of it. The rest is execution.
+          The first two steps decide most of it. The rest is execution and optimization.
         </p>
       </div>
 
@@ -889,6 +949,19 @@ const breadcrumbSchema = {
   .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 12px; font-weight: 500; transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
   .chip:hover { background: var(--brand-orange); border-color: var(--brand-orange); color: #fff; }
+
+  .matrix { margin-top: clamp(56px, 7vw, 96px); padding-top: clamp(48px, 6vw, 80px); border-top: 1.5px dashed var(--line-strong); }
+  .matrix__head { max-width: 680px; margin-bottom: clamp(32px, 4vw, 52px); display: grid; gap: 14px; }
+  .matrix__grid { display: grid; gap: 22px; }
+  @media (min-width: 720px) { .matrix__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .matrix__grid { grid-template-columns: repeat(3, 1fr); } }
+  .mcard { display: flex; flex-direction: column; gap: 12px; padding: clamp(24px, 3vw, 32px); background: var(--bg-white); border: 1px solid var(--line-strong); border-radius: 6px; }
+  .mcard__eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
+  .mcard__title { font-size: clamp(19px, 1.8vw, 23px); font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: var(--text-ink); }
+  .mcard__body { font-size: var(--type-body); line-height: 1.6; color: var(--text-mute); }
+  .mcard__list { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line-strong); list-style: none; padding-left: 0; display: grid; gap: 7px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--text-ink); }
+  .mcard__list li { position: relative; padding-left: 14px; }
+  .mcard__list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 1.5px; background: var(--brand-orange); }
 
   /* Proof */
   .proof { background: var(--bg-white); padding-block: clamp(80px, 10vw, 150px); }

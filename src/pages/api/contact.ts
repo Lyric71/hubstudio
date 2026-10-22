@@ -96,7 +96,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const clientType = val('clientType');
   const way = WAYS[val('way')];
   const retainer = val('retainer');
-  const scope = val('scope');
+  const budget = val('budget') || val('scope');
   const message = val('message');
   const source = SOURCES[val('source')];
   // "Which one?" only counts for the answers that ask it, capped like the input.
@@ -137,7 +137,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     ['Client type', clientType || blank],
     ['Services', services.length ? services.join(', ') : blank],
     ['Monthly retainer', retainer || blank],
-    ['Size of the work', scope || blank],
+    ['Budget', budget || blank],
     ['Quotation Engine', quotationEngine ? 'Requesting access' : 'No'],
     ['Heard about us via', sourceDetail ? `${source.label}: ${sourceDetail}` : source.label],
   ];

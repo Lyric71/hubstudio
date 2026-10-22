@@ -2,10 +2,11 @@
 /**
  * hubStudio for brands  ·  /solutions/brands
  *
- * In-house brand teams: the app for the daily run, the studio for campaigns,
- * and Studio + app when they want both with every approval on record. The
- * page highlights Studio + app in the three ways band and closes with the
- * studio door first. Copy from the content-quality-us deck (cq/sol-brands).
+ * In-house brand teams do two jobs every week: creative assets (text, images,
+ * and video) and social networks (posts, campaigns, publishing, paid social,
+ * and executive advocacy). This page explains how both parts of the job run in
+ * the hubStudio app on their own ("Use the app") and with our creative and
+ * social teams working inside the same workspace ("Work with us in the app").
  *
  * Keeps the print-shop frame of the solutions pages (calibration bars, crop
  * marks, editorial display headings) and the brands insights layer, which is
@@ -31,99 +32,98 @@ const colourBar = [
   '#6b6b73', '#a8a299', '#d8d3cb', '#e5e1db', '#ffffff',
 ];
 
-/* The brand team's week: three problems. No ordinals; the labels carry them. */
+/* The brand team's week across both pillars and approvals. No ordinals. */
 const reasons = [
   {
-    label: 'Volume',
-    title: 'Every network wants its own shape.',
-    body: 'One campaign visual becomes a square, a Story, a banner, and a LinkedIn post. The resizing and rewriting eats the week.',
+    label: 'Creative assets',
+    title: 'Launches and product visuals still need an art director’s eye.',
+    body: 'Off-the-shelf AI output looks like everyone else’s, and a product’s shape, label, or color drifts from one shot to the next.',
   },
   {
-    label: 'Craft',
-    title: 'A launch still needs an art director’s eye.',
-    body: 'Off-the-shelf AI output looks like everyone else’s, and the product’s shape or color drifts from one shot to the next.',
+    label: 'Social networks',
+    title: 'Every channel wants its own format, cadence, and voice.',
+    body: 'One campaign turns into LinkedIn carousels, Instagram Reels, TikTok scripts, paid social variants, and regional posts across Western and Chinese feeds.',
   },
   {
     label: 'Sign-off',
     title: 'Approvals scatter across email and chat.',
-    body: 'Six weeks later, nobody can say who signed off on which version.',
+    body: 'Visuals sit in a shared drive while post copy sits in a spreadsheet. Six weeks later, nobody can show who signed off on which version.',
   },
 ];
 
-/* Categories the studio sees most with brand teams. Images kept from the
-   previous page; each lane is prose now, with a case link where one exists. */
+/* Categories we see most with brand teams, covering both assets and social. */
 const lanes = [
   {
     label: 'Fashion',
-    heading: 'Lookbooks, drops, and seasonal campaigns.',
+    heading: 'Lookbooks, seasonal drops, and daily social feeds.',
     image: '/Images/hub4fashion.jpg',
     alt: 'A daylit fashion editorial frame with a model in a sculpted coat against a warm-grey wall, prime-lens shallow focus, soft window light from camera left.',
-    body: 'We keep fit, fabric, and color true from the first frame to the last, whether it ends up on a billboard or a product page.',
+    body: 'We keep fit, fabric, and color true from the lookbook and ecommerce listings down to the weekly Instagram Reels, TikTok clips, and RedNote notes.',
   },
   {
     label: 'Automotive',
-    heading: 'The vehicle in context, without shipping it anywhere.',
+    heading: 'Regional launch visuals and local social calendars, without shipping a car.',
     image: '/Images/md-launch.jpg',
     alt: 'A wide cinematic vehicle frame on a quiet coastal road at the end of the afternoon, single low-angle sun source, warm shadow grade, restrained negative space for headline copy.',
-    body: 'We build the road and the weather around the car, market by market.',
+    body: 'We build the road and the weather around the vehicle for each market, then cut vertical videos, carousels, and paid social ads for local feeds.',
     caseStudy: { label: 'A premium SUV, shown without shipping a car', href: '/work/premium-suv' },
   },
   {
     label: 'Electronics',
-    heading: 'Launch films and product explainers.',
+    heading: 'Launch films, product explainers, and short-form social video.',
     image: '/Images/md-saas.jpg',
     alt: 'A clean tech product still life on a matte-grey surface, single softbox from camera right, lifted black point, subtle film grain on the highlights.',
-    body: 'They turn a spec sheet into something a buyer understands. The feature list becomes a scene someone can picture at home.',
+    body: 'We turn a spec sheet into scenes a buyer understands, from the keynote launch film down to YouTube Shorts, TikTok demos, and LinkedIn posts.',
     caseStudy: { label: 'A global AI wearable launch for iFlytek', href: '/work/iflytek-anypin' },
   },
   {
     label: 'Food and drink',
-    heading: 'Appetite, texture, and season.',
+    heading: 'Appetite visuals, seasonal refreshes, and always-on social.',
     image: '/Images/md-ooh.jpg',
     alt: 'A close food editorial frame, ingredients with imperfect surfaces, hard side light raking across texture, warm shadow grade.',
-    body: 'We light food for texture and restage it when the menu changes.',
+    body: 'We light bottles and ingredients for texture, restage them when the season turns, and keep Instagram, Facebook, and paid social stocked.',
     caseStudy: { label: 'A gin launch built from zero assets', href: '/work/1834-gin' },
   },
   {
     label: 'B2B',
-    heading: 'Decks, case-study visuals, and sales material in one voice.',
+    heading: 'Decks, case-study visuals, LinkedIn pages, and executive posts.',
     image: '/Images/hub4presentation.jpg',
     alt: 'A small client workshop in a sunlit meeting room with a printed campaign roadmap on the wall and three people discussing a phase, documentary in-studio register.',
-    body: 'The deck and the trade-show panel end up looking like one company made them.',
+    body: 'Your sales deck, trade-show visuals, company LinkedIn page, and leadership posts all read like one company made them.',
   },
 ];
 
 const faqs = [
   {
-    q: 'Should our team use the app or the studio?',
-    a: 'Usually both. The daily content runs in the app, and the studio takes launches and seasonal campaigns. If you want the two joined up, Studio + app puts our creatives inside hubStudio and your people approve there.',
+    q: 'How do brand teams split the work between the app and your team?',
+    a: 'Most run both. Your marketers use the app for daily visuals, resizes, and scheduled social posts. When you have a campaign launch or want full management of your social pages and paid ads, our creative and social teams work with you inside the same hubStudio workspace.',
   },
   {
-    q: 'Does the app learn our brand?',
-    a: 'Not the way a trained model does. In the app, Team skills written by your admins shape the AI’s post drafts and prompt rewrites. Brand-trained models are studio work: our team trains them and runs them on the studio’s own pipelines.',
+    q: 'Does hubStudio cover both creative production and social network management?',
+    a: 'Yes. Those are the two pillars of hubStudio. On the creative side, the app gives you image and video AI engines and free browser editors, while our studio runs twenty creative service lines. On the social side, the app handles Campaigns and publishing to LinkedIn, Instagram, Facebook, TikTok (Beta), X, and YouTube, while our team manages weekly calendars, paid social ads, executive posts, and Chinese networks (WeChat, RedNote, Douyin, and Weibo).',
   },
   {
-    q: 'How do approvals work?',
-    a: 'In Validation. You send an image, a video, a post, a file, or a link to a colleague or a client, and they approve it or send it back with a comment. Versions stay on one thread, and nothing on that thread can be deleted.',
+    q: 'Does the app learn our brand voice and visual style?',
+    a: 'In the app, your admins write Team skills that shape every AI prompt rewrite and social post draft so the tone and framing stay consistent. When a campaign needs a brand-trained visual model, our studio trains and runs it on our own GPU pipelines.',
+  },
+  {
+    q: 'How do approvals work for assets and social posts?',
+    a: 'In Validation. You or our team send an image, a video, a social post, a file, or a link to your marketing lead, legal, or a regional manager. They approve it or send it back with a comment. Every version stays on one permanent thread, and a social post waiting for approval is locked until someone signs off.',
   },
   {
     q: 'What does it cost?',
-    a: 'The app runs on a prepaid balance in real currency. You see the price before every run, a failed run is never charged, there are no seat fees, and the balance doesn’t expire. You top up by card, Alipay, or WeChat Pay and get an invoice every time. The studio is priced per asset, per project, or on retainer, and quoted after a brief.',
+    a: 'The app runs on a prepaid balance in real currency. You see the price before every run, a failed run is never charged, there are no subscriptions or seat fees, and the balance never expires. You top up by card, Alipay, or WeChat Pay and get an invoice every time. Our services are priced per asset, per project, or on retainer, quoted in writing within 48 hours of your brief.',
   },
   {
-    q: 'Can we start with the studio and move to the app later?',
-    a: 'Yes. If we worked in your workspace, the files are already in your History and Assets Library. If we worked in ours, you download the finished work and carry on in your own account.',
+    q: 'Can you manage our social channels in both Western and Chinese markets?',
+    a: 'Yes. Inside the app, your team or ours can draft and schedule posts across LinkedIn, Instagram, Facebook, TikTok (Beta), X, and YouTube. For China, our social team manages WeChat Official Accounts and Channels, RedNote, Douyin, and Weibo, with every asset and post reviewed in hubStudio.',
   },
   {
-    q: 'Who sees our work?',
-    a: 'In the app, your team and the people you invite. A client login sees only what was made for its company, never a prompt, an engine, or a cost. Brand-trained models are run by the studio team on its own GPU pipelines.',
+    q: 'Can the app start from our own product photos and campaign briefs?',
+    a: 'Yes. In the Image studio, choose Edit an image and drop in up to four product photos on supported engines. In Campaigns, upload up to 20 brief or product documents so Draft with AI writes social posts directly from your facts.',
   },
   {
-    q: 'Can the app start from our own product photos?',
-    a: 'Yes. In the Image studio, choose Edit an image and drop in your product photo; some engines take up to four at once. Keep the originals in the Assets Library. For a hero campaign, the studio can shoot new ones.',
-  },
-  {
-    q: 'How quickly can the studio start?',
+    q: 'How quickly can your team start on a brief?',
     a: 'A producer reads every brief within one business day and sends a written proposal within 48 hours.',
   },
 ];
@@ -150,8 +150,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="hubStudio for brands: daily content, campaigns, approvals"
-  description="In-house brand teams use the hubStudio app for daily content and our studio for campaigns, with every approval kept on one record."
+  title="hubStudio for brands: creative assets & social networks"
+  description="In-house brand teams create visuals and video and run social networks in the hubStudio app, or work with our creative and social teams inside it."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -172,37 +172,38 @@ const breadcrumbSchema = {
             <span class="kicker__sep">/</span> Brands
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Daily content in</span></span>
-            <span class="line"><span class="line__i">the app. Campaigns</span></span>
-            <span class="line"><span class="line__i">from the <span class="serif">studio.</span></span></span>
+            <span class="line"><span class="line__i">Creative assets</span></span>
+            <span class="line"><span class="line__i">and social networks,</span></span>
+            <span class="line"><span class="line__i">in one <span class="serif">workspace.</span></span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Or both, with every approval <em>on record</em>.
+            Use the app on your own, or work with our team <em>inside it</em>.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              A brand team does two kinds of work. The daily run: posts,
-              resizes, product variants for this week’s promotion. And the
-              campaign, where the brand has to look its best.
+              A brand team does two jobs every week. It makes creative assets:
+              product visuals, launch films, campaign key visuals, and decks.
+              And it runs social networks: weekly posts, Reels, carousels, paid
+              social ads, and executive pages.
             </p>
             <p>
-              hubStudio covers both. Your team makes the daily work in the
-              app. Our studio makes the campaign, led by a senior art
-              director, and if we work inside the app your people review it
-              all in one place.
+              hubStudio puts both in one place. Your marketers generate assets
+              and schedule posts in the app. When a launch lands or you want
+              full channel management, our art directors and social managers
+              work with you inside the same workspace.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
-            <Button variant="primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
-            <a class="ghost-link ghost-link--light" href={APP_SIGNUP} target="_blank" rel="noopener">
-              Create your account
+            <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
+            <a class="ghost-link ghost-link--light" href={`${BRIEF_URL}?way=studio-app`}>
+              Send a brief
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Hong Kong HQ <span>/</span> Studios in Shanghai and Changsha <span>/</span> Paris office
+            Creative assets <span>/</span> Social networks <span>/</span> Approvals on record
           </p>
         </div>
       </div>
@@ -230,12 +231,12 @@ const breadcrumbSchema = {
           <div>
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>The brand team’s week</p>
             <h2 class="dh r" style="--d:.05s">
-              More channels to fill,<br />and the same <span class="serif">team</span>.
+              Two jobs at once,<br />and the same <span class="serif">team</span>.
             </h2>
           </div>
           <p class="band__note band__note--light r" style="--d:.1s">
-            Channels multiplied faster than headcount. Most brand teams we
-            meet run into the same three problems.
+            Brand teams are asked to ship campaign-grade assets and feed every
+            social channel at the same time. Three things usually break first.
           </p>
         </header>
 
@@ -256,31 +257,58 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <!-- ============ THE APP AND THE STUDIO ============ -->
+    <!-- ============ TWO PILLARS: CREATIVE ASSETS & SOCIAL NETWORKS ============ -->
     <section class="fit" id="app-and-studio">
       <div class="shell">
+        <header class="band">
+          <p class="kicker r"><span class="kicker__tick"></span>Two pillars, one workspace</p>
+          <h2 class="dh r" style="--d:.05s">
+            The assets and the channels,<br />under one <span class="serif">roof</span>.
+          </h2>
+          <p class="band__note r" style="--d:.1s">
+            Both parts of a brand team’s job run inside hubStudio. Your team
+            handles the daily flow in the app, and our creative and social
+            teams step into the same workspace whenever you want extra hands.
+          </p>
+        </header>
+
         <article class="fit__row">
           <div class="fit__media r">
-            <AppShot shot={appShots.linkedin} path="/social/linkedin/posts" caption />
+            <AppShot shot={appShots.imageStudio} path="/content/image-generate" caption />
           </div>
           <div class="fit__body">
-            <p class="kicker r"><span class="kicker__tick"></span>Use the app</p>
-            <h2 class="dh dh--sm r" style="--d:.05s">The daily run, in your team’s <span class="serif">hands</span>.</h2>
+            <p class="kicker r"><span class="kicker__tick"></span>Pillar · Creative assets</p>
+            <h2 class="dh dh--sm r" style="--d:.05s">Text, images, and video that stay on <span class="serif">brand</span>.</h2>
             <p class="fit__p r" style="--d:.1s">
-              Your team picks an engine in Explore, sees the price, and runs
-              it. Need the product in a spring scene for Friday’s post?
-              That’s a few minutes of work, and nobody books a photographer.
+              <strong>In the app:</strong> Your team picks an image or video
+              engine in Explore from OpenAI, Google, Black Forest Labs,
+              ByteDance, or Kling, sees the price first, and renders up to 4K.
+              The free browser Image editor crops to each network’s safe zones
+              and places your logo; the Video editor and Shorts autopilot cut
+              and caption vertical clips.
             </p>
             <p class="fit__p r" style="--d:.14s">
-              The Image editor crops to each network’s format and adds your
-              logo. Posts go to LinkedIn, Instagram, Facebook, TikTok (Beta),
-              and X, now or on a schedule. Team skills, written by your
-              admins, shape the AI’s post drafts and prompt rewrites, so the
-              tone stays yours.
+              <strong>With our team:</strong> For a launch or a seasonal
+              campaign, send us a brief. A senior art director leads the work
+              across twenty studio service lines, running brand-trained models
+              on our own GPU pipelines and mixing live shoots with AI asset by
+              asset.
             </p>
             <p class="fit__links r" style="--d:.18s">
-              <a class="ghost-link" href="/app">
-                See what the app does
+              <a class="ghost-link" href="/app/create">
+                How creation works in the app
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a class="ghost-link" href="/studio">
+                See the twenty creative services
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a class="ghost-link" href="/work/elizabeth-gage">
+                The Elizabeth Gage campaign
                 <svg viewBox="0 0 20 20" aria-hidden="true">
                   <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -290,41 +318,37 @@ const breadcrumbSchema = {
         </article>
 
         <article class="fit__row fit__row--rev">
-          <figure class="fit__media crop r-clip">
-            <div class="crop__inner fit__photo">
-              <img
-                src="/Images/studio-hero.webp"
-                alt="An art director marks a pinned proof with a red pencil while a colleague holds another print, in front of a wall of campaign prints at the hubStudio studio."
-                width="2000"
-                height="1333"
-                loading="lazy"
-              />
-            </div>
-            <figcaption class="fig">The studio <span>/</span> Proof wall</figcaption>
-          </figure>
+          <div class="fit__media r">
+            <AppShot shot={appShots.linkedin} path="/social/linkedin/posts" caption />
+          </div>
           <div class="fit__body">
-            <p class="kicker r"><span class="kicker__tick"></span>Studio only</p>
-            <h2 class="dh dh--sm r" style="--d:.05s">Campaigns that stay on brand, shot after <span class="serif">shot</span>.</h2>
+            <p class="kicker r"><span class="kicker__tick"></span>Pillar · Social networks</p>
+            <h2 class="dh dh--sm r" style="--d:.05s">Posts, campaigns, paid social, and executive <span class="serif">voices</span>.</h2>
             <p class="fit__p r" style="--d:.1s">
-              For a launch or a seasonal campaign, send us a brief. A senior
-              art director leads it from the first frame to the last file.
+              <strong>In the app:</strong> Group a launch’s visuals, clips, and
+              up to 20 brief documents in a Campaign, then draft and schedule
+              posts to LinkedIn, Instagram, Facebook, TikTok (Beta), X, and
+              YouTube. Re-purpose one post across the other networks in a
+              click, while Team skills keep the copy in your voice and the
+              Social publishing watcher agent flags quiet channels.
             </p>
             <p class="fit__p r" style="--d:.14s">
-              Our team trains models on your brand and runs them on the
-              studio’s own GPU pipelines. That’s what keeps a product, a face,
-              or a palette the same across a whole campaign. Some pictures
-              are shot, some generated, and most mix both, decided asset by
-              asset.
+              <strong>With our team:</strong> Our social strategists, editors,
+              and media buyers can run your channels inside hubStudio. We
+              manage your monthly calendar and weekly posts, run paid social
+              campaigns and creative testing on your ad accounts, ghostwrite
+              for executives, and operate your Chinese presence on WeChat,
+              RedNote, Douyin, and Weibo.
             </p>
             <p class="fit__links r" style="--d:.18s">
-              <a class="ghost-link" href="/work/elizabeth-gage">
-                The content we made for Elizabeth Gage, a heritage London jeweler
+              <a class="ghost-link" href="/app/publish">
+                Social publishing in the app
                 <svg viewBox="0 0 20 20" aria-hidden="true">
                   <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>
-              <a class="ghost-link" href="/studio">
-                Meet the studio
+              <a class="ghost-link" href="/#social-services">
+                Our social network services
                 <svg viewBox="0 0 20 20" aria-hidden="true">
                   <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -335,45 +359,48 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <!-- ============ THREE WAYS TO WORK ============ -->
+    <!-- ============ TWO WAYS TO WORK ============ -->
     <WaysToWork
       tone="white"
       highlight="studio-app"
       pre="Pick the way that fits the "
       accent="job"
       post="."
-      lead="Plenty of brand teams use all three in a year: the daily run in the app, a launch from the studio, and a steady retainer where we work inside hubStudio and your people approve there."
+      lead="Most brand teams use both across the year: the app for daily visuals and scheduled posts, and our team inside the app for campaign launches, social page management, and paid social."
     />
 
-    <!-- ============ STUDIO + APP: APPROVALS ON RECORD ============ -->
+    <!-- ============ WORK WITH US IN THE APP: APPROVALS ON RECORD ============ -->
     <section class="record" id="approvals">
       <div class="shell record__grid">
         <div class="record__body">
-          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Studio + app</p>
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Work with us in the app</p>
           <h2 class="dh r" style="--d:.05s">
-            Who approved what,<br />and <span class="serif">when</span>.
+            Who approved which asset and post, and <span class="serif">when</span>.
           </h2>
           <p class="record__p r" style="--d:.1s">
-            With Studio + app, our creatives make the work inside hubStudio.
-            Your marketing lead reviews it in Validation, and so can legal or
-            the regional team. Each person approves it or sends it back with
-            a comment.
+            When you work with us in the app, our creatives and social managers
+            produce the visuals and draft the posts inside hubStudio. Your
+            marketing lead reviews each piece in Validation, and so can legal
+            or a regional director. Each person validates it or sends it back
+            with a comment.
           </p>
           <p class="record__p r" style="--d:.14s">
-            A new version lands on the same thread as the last one, and
-            nothing on that thread can be deleted. When someone asks who
-            approved the spring key visual, you open the thread and look.
+            Every revision lands on the same thread as the last one, and
+            nothing on that thread can be deleted. A social post waiting for
+            approval is locked so it cannot go out early. When someone asks who
+            signed off on the spring key visual or Tuesday’s LinkedIn post, you
+            open the thread and look.
           </p>
           <p class="record__p r" style="--d:.18s">
-            We can work in our own workspace and give your people client
-            logins, so they see only the finished work made for them and hold
-            no balance. Or we join your workspace as members, work from your
-            balance, and everything stays in your History and Assets Library
-            when the project ends.
+            We can work in our workspace and give your people free client
+            logins, so they see only the finished assets and scheduled posts
+            made for them. Or we join your workspace as members, work from your
+            balance, and leave every render, file, and post in your History,
+            Assets Library, and publishing queue.
           </p>
           <p class="r" style="--d:.22s">
             <a class="ghost-link ghost-link--light" href="/studio/with-the-app">
-              How Studio + app works
+              How working with us in the app runs
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -395,10 +422,10 @@ const breadcrumbSchema = {
             Five categories we know <span class="serif">well</span>.
           </h2>
           <p class="band__note r" style="--d:.1s">
-            One detour before the questions. The studio works across many
-            categories. These five come up most with brand teams, and any of
-            the three ways works for each: a fashion team might post daily
-            from the app and bring us the lookbook.
+            One detour before the questions. These five categories come up most
+            with brand teams across both creative production and social
+            management: a fashion label might schedule daily Reels in the app
+            and bring our team in for the seasonal lookbook and paid social.
           </p>
         </header>
 
@@ -459,26 +486,28 @@ const breadcrumbSchema = {
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why hubStudio</p>
           <h2 class="dh r" style="--d:.05s">
-            Creative judgment, with<br />the AI <span class="serif">underneath</span>.
+            Creative direction and social execution, under one <span class="serif">roof</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            Senior art directors lead every brief, and the AI production runs
-            under their direction.
+            Senior art directors lead every creative brief, and seasoned social
+            strategists and editors run your channels alongside them.
           </p>
           <p class="source__p r" style="--d:.16s">
-            The same company builds the app your team uses and runs the
-            studio that makes your campaigns. So moving a job from one to the
-            other doesn’t mean starting over.
+            The same company builds the app your marketers use and runs the
+            team that produces your campaigns and social calendars. Moving work
+            between your in-house team and ours never means switching tools or
+            rebuilding your approval chain.
           </p>
           <p class="source__p r" style="--d:.2s">
-            We record the provenance of every asset, so you know what was
-            shot, what was generated, and what was retouched. The studio was
-            founded by Cyril Drouin, former CEO at Publicis, and has its
-            headquarters in Hong Kong.
+            We record the provenance of every asset, so you always know what
+            was shot, what was generated, and what was retouched. Founded by
+            Cyril Drouin, former CEO at Publicis, hubStudio is headquartered in
+            Hong Kong, with studios in Shanghai and Changsha, a team in the
+            Philippines, and an office in Paris.
           </p>
           <ul class="creds r" style="--d:.26s">
             {
-              ['Senior art directors', 'Brand-trained models', 'Provenance per asset', 'Twenty service lines'].map((c) => (
+              ['Senior art directors', 'Brand-trained models', 'Western & Chinese networks', 'Provenance per asset'].map((c) => (
                 <li class="cred">
                   <svg viewBox="0 0 14 14" aria-hidden="true">
                     <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -501,10 +530,10 @@ const breadcrumbSchema = {
             Before the<br />first <span class="serif">brief</span>.
           </h2>
           <p class="faq__sub r" style="--d:.1s">
-            What brand teams ask us first. If yours isn’t here, put it in the
-            brief.
+            What brand teams ask us first about assets, social channels, and
+            approvals. If yours isn’t here, put it in the brief.
           </p>
-          <p class="faq__updated r" style="--d:.12s">Updated September 2026</p>
+          <p class="faq__updated r" style="--d:.12s">Updated October 2026</p>
           <div class="r" style="--d:.16s">
             <Button variant="primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</Button>
           </div>
@@ -538,12 +567,12 @@ const breadcrumbSchema = {
 
     <!-- ============ CLOSING ============ -->
     <DualCta
-      lead="studio"
+      lead="app"
       briefQuery="way=studio-app"
-      pre="Send a brief, or open the "
-      accent="app"
+      pre="Open the app, or send us a "
+      accent="brief"
       post="."
-      text="Tell us about the campaign, and a producer replies within one business day. Or create an account today, at no cost, and your team can start on the daily run."
+      text="Create an account today at no cost and start making assets and scheduling posts. Or send us a brief for a campaign or social management, and a producer replies within one business day."
     />
   </div>
 </Layout>
@@ -646,10 +675,10 @@ const breadcrumbSchema = {
   .reason__title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(22px, 2vw, 28px); line-height: 1.18; letter-spacing: -0.02em; color: var(--text-on-dark); }
   .reason__body { font-size: var(--type-body); line-height: 1.62; color: rgba(240, 237, 233, 0.74); }
 
-  /* The app and the studio, side by side as two editorial rows. */
+  /* Two pillars side by side as two editorial rows. */
   .fit { background: var(--paper); padding-block: clamp(80px, 10vw, 150px); }
-  .fit__row { display: grid; gap: 36px; align-items: center; }
-  .fit__row + .fit__row { margin-top: clamp(64px, 8vw, 120px); padding-top: clamp(56px, 7vw, 100px); border-top: 1.5px dashed var(--line-strong); }
+  .fit__row { display: grid; gap: 36px; align-items: center; padding-top: clamp(48px, 6vw, 80px); border-top: 1.5px dashed var(--line-strong); }
+  .fit__row + .fit__row { margin-top: clamp(64px, 8vw, 120px); padding-top: clamp(56px, 7vw, 100px); }
   @media (min-width: 940px) {
     .fit__row { grid-template-columns: 1.1fr 0.9fr; gap: 72px; }
     .fit__row--rev { grid-template-columns: 0.9fr 1.1fr; }
@@ -658,9 +687,10 @@ const breadcrumbSchema = {
   .fit__photo { aspect-ratio: 3 / 2; }
   .fit__body .dh { margin-top: 16px; }
   .fit__p { margin-top: 16px; font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); max-width: 60ch; }
+  .fit__p strong { color: var(--text-ink); font-weight: 600; }
   .fit__links { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 14px 28px; }
 
-  /* Studio + app: approvals on record, on ink with a dark app capture. */
+  /* Work with us in the app: approvals on record, on ink with a dark app capture. */
   .record { background: var(--ink); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
   .record__grid { display: grid; gap: 48px; align-items: center; }
   @media (min-width: 980px) { .record__grid { grid-template-columns: 0.9fr 1.1fr; gap: 72px; } }

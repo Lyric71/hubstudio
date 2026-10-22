@@ -5,10 +5,10 @@ description: "What hubStudio is, how to create your account alone or with a team
 excerpt: "Create your account, find your way around the menu and render your first image in a few minutes."
 section: "getting-started"
 order: 1
-updated: 2026-10-16
+updated: 2026-10-17
 appPaths: ["/signup", "/login", "/discover", "/explore"]
 audience: "Everyone"
-related: ["discovery-and-tips", "scratchpad", "troubleshooting", "explore", "create-an-image", "assets-library", "shorts-autopilot", "campaigns", "linkedin", "validation", "agents", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
+related: ["discovery-and-tips", "scratchpad", "troubleshooting", "explore", "create-an-image", "assets-library", "shorts-autopilot", "campaigns", "linkedin", "web", "validation", "agents", "balance-and-payments", "your-team", "account-and-sign-in", "client-space"]
 shots:
   - file: "/Images/help/getting-started-signup.webp"
     route: "/signup"
@@ -27,7 +27,7 @@ shots:
 sources: ["src/lib/app.ts", "src/layouts/Layout.astro", "src/scripts/supportPanel.ts", "src/styles/support-panel.css", "src/pages/s/[slug].astro", "src/scripts/scratchpad.ts", "src/lib/auth.ts", "src/middleware.ts", "src/pages/signup.astro", "src/lib/signup.ts", "src/lib/signup-fields.ts", "src/pages/discover.astro", "src/pages/login.astro", "src/lib/mfa.ts", "src/pages/invite/[token].astro", "src/pages/explore.astro"]
 ---
 
-hubStudio is a studio for images, video and social posts made with AI. It gathers the image and video engines of several makers (OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax and Meta) in one place. You pick an engine, describe what you want, see the price, and run it. Everything you make is saved in your History and in the Assets Library, where you can also edit a picture or a video, or cut a long video into shorts. From there, you can write posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X and publish them on your own accounts, have work approved in Validation, let agents watch your publishing, and deliver it to the clients your team works for.
+hubStudio is a studio for images, video, social posts and website articles made with AI. It gathers the image and video engines of several makers (OpenAI, Google, Black Forest Labs, ByteDance, Kling, Alibaba, xAI, MiniMax and Meta) in one place. You pick an engine, describe what you want, see the price, and run it. Everything you make is saved in your History and in the Assets Library, where you can also edit a picture or a video, or cut a long video into shorts. From there, you can write posts for LinkedIn, Instagram, Facebook, TikTok, YouTube and X and publish them on your own accounts, write and publish articles on your own website through GitHub in Web, have work approved in Validation, let agents watch your publishing, and deliver it to the clients your team works for.
 
 Every run is charged against a prepaid balance held in US dollars. You can work alone, or in a team that shares one balance.
 
@@ -84,10 +84,11 @@ The menu on the left groups the modules in three pillars, in the order you work:
 | **Create** | **Shorts autopilot** | A long video cut into vertical shorts by itself: the best moments, framed, captioned and saved. See [Shorts autopilot](/help/shorts-autopilot). |
 | **Publish** | **Campaigns** | The files of one campaign gathered under a name and a brief, to write posts from. See [Campaigns](/help/campaigns). |
 | **Publish** | **LinkedIn**, **Instagram**, **Facebook**, **TikTok**, **X** and **YouTube** | One module per network: write a post, add its picture or video, then schedule it or publish it on the accounts you connected. YouTube is published by you, in YouTube Studio, and also prepares your channel. See [LinkedIn](/help/linkedin), [Instagram](/help/instagram), [Facebook](/help/facebook), [TikTok](/help/tiktok), [X](/help/x) and [YouTube](/help/youtube). |
+| **Publish** | **Web** | Connect a website repository on GitHub, plan articles with AI, edit site files from the browser, and run the editorial pipeline that researches, drafts, fact-checks, illustrates, translates and opens a pull request on your site. See [Web](/help/web). |
 | **Library** | **Assets Library** | Every file of your team, uploads and renders, in folders. See [Assets Library and the tools](/help/assets-library). |
 | **Library** | **History** | Everything you and your team made. See [History](/help/history). |
 | **Library** | **Validation** | The work waiting for someone's approval, and what you sent for approval. See [Validation](/help/validation). |
-| **Library** | **PDF** | Eight PDF tools that run in your browser: edit, merge, split, organize, rotate, extract, crop and compress. |
+| **Library** | **PDF** | Eight PDF tools that run in your browser: edit, merge, split, organize, rotate, extract, crop and compress. See [PDF tools](/help/pdf-tools). |
 | | **Partner** | Only for commercial partners. See [Partners](/help/partners). |
 | | **Team** | The people who share your balance, and your clients. See [Your team](/help/your-team). |
 | | **Credits** | Your balance: **Buy credits** to top it up, **Invoices** and **Usage**. See [Balance and payments](/help/balance-and-payments). |
@@ -96,8 +97,8 @@ The menu on the left groups the modules in three pillars, in the order you work:
 
 | Button | What it opens |
 |---|---|
-| **Agents** | **My agents**, **Team agents** (administrators only), the **Catalog** and **Runs**, as tabs: agents that watch your publishing on every network and tell you what changed. See [Agents](/help/agents). |
-| **Skills** | **My skills**, the **Team** skills and the **Catalog**, as tabs: the instructions that shape your prompts and posts. See [Skills](/help/skills). |
+| **Agents** | Four tabs: **Personal** (your own agents), **Team** (the team's agents, administrators only), **Agents Command Room** (what is running now, what is switched on, and the previous runs) and **Catalog**. Agents watch your publishing on every network and tell you what changed. See [Agents](/help/agents). |
+| **Skills** | Three tabs: **Personal** (your own skills), **Team** (the team's skills) and **Catalog**. Skills are the instructions that shape your prompts and posts. See [Skills](/help/skills). |
 
 A client login sees a much shorter menu: **Client space** and **Validation**. See [Client space](/help/client-space).
 
@@ -108,10 +109,10 @@ The bar at the top of every page holds:
 - **Agents** and **Skills**, the AI layer (see above). A module your administrator switched off for you shows no button.
 - **Scratchpad** (the page icon): your own notes, files and recordings, in a drawer that opens over any page. **Alt+N** opens and closes it. See [Scratchpad](/help/scratchpad).
 - **Support**: a chat that answers your questions about hubStudio from this help center (see below).
-- **Activity**: the renders, drafts and checks running for you, and how they ended. It keeps following a run while you move to another page.
+- **Activity**: the renders, drafts and checks running for you, and how they ended. It keeps following a run while you move to another page, and a card in the bottom right corner tells you when one ends. Coming back to more than five finished runs, you get a card for the five newest and one **While you were away** card with the count and a **More** button that opens your [Log](/help/log). **See everything in the Log**, at the foot of the panel, opens it too, and **Clear finished** takes the finished runs off the panel without deleting them: they stay in the Log.
 - Your balance: the amount you can spend right now. Click it to top up. A client login has no balance, so it sees no amount here.
 - A sun or moon button that switches between light and dark.
-- Your picture, which opens a menu with **User Settings**, **Discovery**, **Billing & credits**, **Team**, **My Connections** (your social accounts) and **Sign out**.
+- Your picture, which opens a menu with **User Settings**, **Log** (your own history of runs, notifications, emails, sign-ins and spending, see [Log](/help/log)), **Discovery**, **Billing & credits**, **Team**, **My Connections** (your social accounts) and **Sign out**.
 
 The footer links to the **Help center**, **Report a bug**, **Contact us** and **What's new**.
 

@@ -16,7 +16,14 @@
 import Layout from '../../layouts/Layout.astro';
 import DualCta from '../../components/DualCta.astro';
 import { BRIEF_URL } from '../../lib/links';
-import { caseStudies } from '../../data/case-studies';
+import { caseStudies, type WorkDiscipline } from '../../data/case-studies';
+
+const disciplines: WorkDiscipline[] = [
+  'Social media',
+  'AI content & merchandising',
+  'Video & launch films',
+  'Custom platforms & studios',
+];
 
 const SITE = 'https://www.hubstudio.ai';
 const breadcrumb = {
@@ -59,17 +66,12 @@ for (let i = shuffled.length - 1; i > 0; i--) {
       </p>
       <div class="hero__cols">
         <p class="hero__intro">
-          A fragrance that had to transform on screen. A five-platform
-          campaign with a five-day deadline. A heritage jeweler closing years
-          of digital lag. Each project below started as a problem traditional
-          production could not solve at the speed or the budget the brand
-          needed.
+          Each project below started as a brief traditional production could not
+          solve on speed or budget.
         </p>
         <div class="hero__note">
           <p class="hero__note-text">
-            A lot of what we make never carries our name. We make work that
-            agencies deliver under their own name, and we subcontract for
-            brands, so plenty of it never reaches this page.
+            Much of what we produce for agencies and brands never appears here.
           </p>
           <a class="hero__note-cta" href={`${BRIEF_URL}?way=studio`}>
             Ask us to see more case studies
@@ -85,9 +87,8 @@ for (let i = shuffled.length - 1; i > 0; i--) {
             </svg>
           </a>
           <p class="hero__note-text hero__note-app">
-            Every project on this page was made by our studio. Rather make the
-            work yourself? The hubStudio app lets your own team make images and
-            video with AI, and anyone can open an account.
+            Rather make it yourself? Create images and video with AI in the
+            hubStudio app.
           </p>
           <a class="hero__note-cta" href="/app">
             Tour the app
@@ -113,10 +114,36 @@ for (let i = shuffled.length - 1; i > 0; i--) {
   <!-- ===== S2: Case study grid ===== -->
   <section class="section work">
     <div class="container">
-      <ul class="work__grid">
+      <div class="work__filters" data-work-filters role="group" aria-label="Filter case studies by discipline">
+        <span class="work__filters-label" id="work-filter-label">Discipline</span>
+        <div class="work__filters-chips" aria-labelledby="work-filter-label">
+          <button
+            class="fchip is-on"
+            type="button"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            All work
+          </button>
+          {
+            disciplines.map((d) => (
+              <button
+                class="fchip"
+                type="button"
+                data-filter={d}
+                aria-pressed="false"
+              >
+                {d}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <ul class="work__grid" data-work-grid>
         {
           shuffled.map((c, i) => (
-            <li class="work__item" data-reveal style={`--i:${i % 2}`}>
+            <li class="work__item" data-work-card data-discipline={c.discipline} data-reveal style={`--i:${i % 2}`}>
               <a class="study" href={`/work/${c.slug}`}>
                 <div class="study__media">
                   <img
@@ -375,6 +402,62 @@ for (let i = shuffled.length - 1; i > 0; i--) {
   .work {
     background: var(--bg-cream);
   }
+  .work__filters {
+    display: grid;
+    gap: 14px;
+    padding: 0 0 28px;
+    margin-bottom: 44px;
+    border-bottom: 1px solid var(--line-hairline);
+  }
+  @media (min-width: 900px) {
+    .work__filters {
+      grid-template-columns: 96px 1fr;
+      align-items: baseline;
+      gap: 18px;
+    }
+  }
+  .work__filters-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .work__filters-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .fchip {
+    padding: 8px 16px;
+    border: 1px solid var(--line-hairline);
+    border-radius: var(--radius-pill);
+    background: var(--bg-white);
+    font-family: inherit;
+    font-size: var(--type-small);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-ink);
+    cursor: pointer;
+    transition:
+      color 160ms ease-out,
+      border-color 160ms ease-out,
+      background-color 160ms ease-out;
+  }
+  .fchip:hover {
+    color: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+  }
+  .fchip.is-on {
+    background: var(--brand-navy);
+    border-color: var(--brand-navy);
+    color: var(--text-on-dark);
+  }
+  .fchip.is-on:hover {
+    background: var(--brand-orange-cta);
+    border-color: var(--brand-orange-cta);
+    color: var(--text-on-dark);
+  }
   .work__grid {
     display: grid;
     gap: var(--gap-card);
@@ -541,5 +624,59 @@ for (let i = shuffled.length - 1; i > 0; i--) {
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+  const filterBar = document.querySelector<HTMLElement>('[data-work-filters]');
+  const filterChips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-work-filters] .fchip'));
+  const workCards = Array.from(document.querySelectorAll<HTMLElement>('[data-work-card]'));
+
+  if (filterBar && filterChips.length && workCards.length) {
+    const known = new Set(filterChips.map((c) => c.dataset.filter ?? 'all'));
+    let activeFilter = 'all';
+
+    const applyFilter = (pushUrl: boolean) => {
+      let visibleIndex = 0;
+      for (const card of workCards) {
+        const match = activeFilter === 'all' || card.dataset.discipline === activeFilter;
+        card.hidden = !match;
+        if (match) {
+          card.style.setProperty('--i', String(visibleIndex % 2));
+          card.classList.add('is-in');
+          visibleIndex++;
+        }
+      }
+      for (const chip of filterChips) {
+        const on = chip.dataset.filter === activeFilter;
+        chip.classList.toggle('is-on', on);
+        chip.setAttribute('aria-pressed', String(on));
+      }
+      if (pushUrl) {
+        const params = new URLSearchParams(location.search);
+        if (activeFilter === 'all') params.delete('discipline');
+        else params.set('discipline', activeFilter);
+        const q = params.toString();
+        history.replaceState(null, '', q ? `?${q}` : location.pathname);
+      }
+    };
+
+    const readFilterFromUrl = () => {
+      const param = new URLSearchParams(location.search).get('discipline') ?? 'all';
+      activeFilter = known.has(param) ? param : 'all';
+    };
+
+    filterBar.addEventListener('click', (e) => {
+      const chip = (e.target as HTMLElement).closest<HTMLButtonElement>('.fchip');
+      if (!chip || !filterBar.contains(chip)) return;
+      const val = chip.dataset.filter ?? 'all';
+      activeFilter = val === activeFilter && val !== 'all' ? 'all' : val;
+      applyFilter(true);
+    });
+
+    window.addEventListener('popstate', () => {
+      readFilterFromUrl();
+      applyFilter(false);
+    });
+
+    readFilterFromUrl();
+    if (activeFilter !== 'all') applyFilter(false);
   }
 </script>

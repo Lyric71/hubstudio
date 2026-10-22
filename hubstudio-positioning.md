@@ -230,8 +230,10 @@ A service engagement starts with a brief sent through `/contact`.
   team offers. Only the interface changes: prompts, posts and files stay in
   the language they were written in. (Corrected October 8, 2026, from the
   help center: the app is no longer English only.)
-- **Partners:** commercial partners open accounts for the customers they bring
-  and earn a commission on what those accounts spend (no rates on the site).
+- **Partners:** one partner program integrated into the app. Commercial partners
+  open accounts for the customers they bring or invite them in, and earn a share
+  of everything those customers pay us (usually 10%, or more by agreement)
+  across both app credits and services.
 
 Never claim for the app: brand kits, DAM or PIM connectors, an API, SSO, a
 mobile app, private GPUs, custom model training, a free plan or free trial,
@@ -307,7 +309,7 @@ do not exist or belong to our services.
 | Pricing | `/pricing` | App (prepaid balance) and Services (asset, project, retainer), no amounts |
 | Work | `/work`, `/work/*` | Case studies |
 | About | `/about`, `/about/team`, `/about/team/*` | Company, founder, creative talents |
-| Partners | `/partners` | Service referrals and app partners |
+| Partners | `/partners` | One partner program built into the app (app credits and services) |
 | Resources | `/resources/*`, `/help` | Insights, how-to, glossary, rights, help center |
 
 Header: App · Services · Solutions · Work · Pricing · Resources, with **Sign in**,

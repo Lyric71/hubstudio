@@ -324,3 +324,9 @@ megapixels -> 万像素 as Shopify writes them (25 MP -> 2500 万像素, 20 MP -
 Shopify help titles in 《》 as Shopify's Chinese pages title them: 《产品媒体类型》 (Product media types), 《上传和管理文件》 (Uploading and managing files), 《上传图片》 (Uploading images), 《产品摄影》 (Taking product photographs), 《使用媒体文件编辑器》 (Using the media editor), 《在线商店模板故障排除》 (Troubleshooting your online store theme), 《为您的 Shopify 商店添加 SEO 关键字》 (Adding keywords for SEO), 《添加产品媒体文件》 (Adding product media); Shopify Help Center -> Shopify 帮助中心
 A Shopify quote taken from its zh-CN page is quoted in Shopify's own Chinese, and the source line says so (引文采用该页面简体中文版的措辞) instead of 引文由本站翻译
 Table head "Item" on spec tables -> 项目 (page override; common.json keeps 选项)
+
+## Web、日志与 PDF 工具 (settled 2026-10-22)
+Web (app module in Publish pillar) -> 网站; Add a site -> “添加网站”; Your website repositories -> “您的网站仓库”; Queue & Test Run / AI Editorial Plan / Repository Files & AI Studio / Site Settings -> “队列与测试运行” / “AI 选题规划” / “仓库文件与 AI 工作台” / “网站设置”
+Import the queue / Write a brief / Start the next brief / Start full run / Run the next step now -> “导入队列” / “撰写简报” / “启动下一份简报” / “启动完整运行” / “立即运行下一步”; Publishes on its own / Merges on green checks / 18-pass edit -> “自动发布” / “检查通过后自动合并” / “18 轮精修”
+Web editor (agent MK13) -> “网站编辑”; Web publishing (skills category) -> “网站发布”; its four skills Newsroom standard (US English) / Native translation standard / AI tells to remove / Hero image standard -> “新闻编辑规范（美式英语）” / “母语级翻译规范” / “需清除的 AI 痕迹” / “头图规范”
+Log (app module) -> 日志; PDF tools -> PDF 工具

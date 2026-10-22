@@ -203,6 +203,7 @@ export async function capture(browser, shot, lang, extra = {}) {
     colorScheme: 'light',
   });
   try {
+    if (shot.partner && s) await hubAdmin.from('user_profiles').update({ is_partner: true }).eq('user_id', s.user.id);
     await applyRoutes(ctx, withDemoFiles(shot.routes));
     await ctx.addCookies([
       ...(s ? [{ name: 'bbg_at', value: s.access_token, url: APP }] : []),
@@ -252,6 +253,7 @@ export async function capture(browser, shot, lang, extra = {}) {
     const clip = typeof shot.clip === 'function' ? await shot.clip(page) : shot.clip;
     return await page.screenshot({ type: 'png', animations: 'disabled', fullPage: !!shot.full, ...(clip ? { clip } : {}) });
   } finally {
+    if (shot.partner && s) await hubAdmin.from('user_profiles').update({ is_partner: false }).eq('user_id', s.user.id);
     await ctx.close();
   }
 }

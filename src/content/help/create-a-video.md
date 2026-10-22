@@ -5,7 +5,7 @@ description: "Render a clip from a prompt, open it on a picture of yours, or fee
 excerpt: "The video studio: text to video, image to video and references, priced per second before the render, with every clip saved in your History."
 section: "studio"
 order: 4
-updated: 2026-10-12
+updated: 2026-10-18
 appPaths: ["/content/video"]
 audience: "Everyone"
 related: ["explore", "create-an-image", "history", "assets-library", "validation", "your-team", "skills", "balance-and-payments", "troubleshooting"]
@@ -79,6 +79,7 @@ On some engines, attaching a reference clip lowers the price of the whole render
 | **Frame size** | On the Kling engines only: 720p, 1080p, and 4K on Kling 3.0. It does not change the price. |
 | **Shape** | Widescreen (16:9), vertical (9:16), square, landscape, portrait or cinemascope, depending on the engine. On Wan 3.0 and Seedance 2.5, **Adaptive (follows what you attach)** takes the shape of the picture or clip you fed it. |
 | **Generate sound** | The engine composes the clip's own audio rather than returning a silent one. Shown only when the engine and the chosen mode offer sound. On some engines, sound costs more per second. |
+| **Music** | Shown while sound is on. Optional: the background music in a few words (genre, mood, tempo, instruments). The engine scores the clip with it; it costs nothing beyond the sound. |
 | **Made for** | The client the clip is made for, when your team works for clients. See [Made for a client](#made-for-a-client). |
 | **Campaign** | **None** by default. Pick one of your team's campaigns and everything the page renders joins it. **Manage campaigns**, or **Create a campaign** while your team has none, opens the Campaigns page in a new tab. Shown to creators and admins. See [Campaigns](/help/campaigns#fill-a-campaign-as-you-create). |
 

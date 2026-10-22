@@ -29,7 +29,7 @@ type Solution = {
   alt: string;
   desc: string;
   /** The way to work that usually fits this audience (locked names). */
-  fit?: 'Use the app' | 'Studio + app' | 'Studio only';
+  fit?: 'Use the app' | 'Work with us in the app';
   /** Link label; defaults to "Explore". */
   cta?: string;
 };
@@ -49,7 +49,7 @@ const audiences: Category = {
   id: 'who',
   title: 'Who it’s for',
   blurb:
-    'Where each kind of team usually starts. It’s a pattern we see, and plenty of teams end up using more than one way.',
+    'Every team has two jobs: making creative assets and running social networks. Here is how each kind of team uses the app and works with us inside it.',
   subgroups: [
     {
       heading: null,
@@ -59,8 +59,8 @@ const audiences: Category = {
           href: '/solutions/brands',
           img: '/Images/brands-hero.jpg',
           alt: 'A hubStudio creative floor with a model under window light and brand variations pinned for review.',
-          desc: 'Your team keeps the daily posts in the app. Our studio makes the campaigns inside it, so nobody hunts through email for who approved what.',
-          fit: 'Studio + app',
+          desc: 'Your team creates daily visuals and schedules social posts in the app. Our creative and social teams build campaigns and run channels inside the same workspace.',
+          fit: 'Work with us in the app',
           cta: 'How brand teams use it',
         },
         {
@@ -68,7 +68,7 @@ const audiences: Category = {
           href: '/solutions/agencies',
           img: '/Images/agencies-hero.jpg',
           alt: 'Two creative directors reviewing a wall of pinned campaign variations on an agency production floor.',
-          desc: 'Give each client a login and a space of its own, and get the client’s sign-off in the app. When a launch lands, the studio can produce behind your name.',
+          desc: 'Produce client assets, manage multi-brand social calendars, and get client sign-off in Client spaces. When pitches or launches stack up, our team produces behind your name.',
           fit: 'Use the app',
           cta: 'The agency setup',
         },
@@ -77,7 +77,7 @@ const audiences: Category = {
           href: '/solutions/retailers',
           img: '/Images/retailers-hero.jpg',
           alt: 'A retail product still life on a sunlit kitchen counter in late-afternoon window light.',
-          desc: 'Your team turns out variants and schedules posts the same day. The studio takes the seasonal campaign and the marketplace pages.',
+          desc: 'Turn out SKU visuals, promo clips, and daily social posts in the app. Our team handles seasonal campaigns, marketplace pages, and paid or China social.',
           fit: 'Use the app',
           cta: 'Retail, season by season',
         },
@@ -86,9 +86,9 @@ const audiences: Category = {
           href: '/solutions/manufacturers',
           img: '/Images/manufacturers-hero.jpg',
           alt: 'A partially assembled industrial product under tall window light on a daylit shop floor.',
-          desc: 'You send CAD files or product data, and we send back finished images and film. Marketing can still use the app for its own posts.',
-          fit: 'Studio only',
-          cta: 'From CAD to content',
+          desc: 'Turn CAD files and specs into photoreal product visuals, launch films, and B2B social campaigns on LinkedIn, YouTube, and WeChat, with engineering sign-off in Validation.',
+          fit: 'Work with us in the app',
+          cta: 'From CAD to assets & B2B social',
         },
       ],
     },
@@ -99,7 +99,7 @@ const categories: Category[] = [
   {
     id: 'consulting',
     title: 'Consulting and training',
-    blurb: 'For teams that would rather build the skill themselves.',
+    blurb: 'For teams that want their workspace, AI models, and approval chain set up right.',
     subgroups: [
       {
         heading: null,
@@ -116,7 +116,7 @@ const categories: Category[] = [
             href: '/solutions/training',
             img: '/Images/training-hero.jpg',
             alt: 'A senior trainer at a whiteboard with four participants reviewing AIGC frames at workstations.',
-            desc: 'Hands-on sessions that teach your team to brief, generate, and review the work.',
+            desc: 'Hands-on training on the hubStudio app: how to get the best out of every AI model in the app, build assets, and run social campaigns.',
           },
           {
             name: 'Onboarding',
@@ -166,7 +166,7 @@ const categories: Category[] = [
     id: 'platforms',
     title: 'Platforms',
     blurb:
-      'Studio work made for where you publish and sell, on Western and Chinese networks and marketplaces.',
+      'Full-service channel management, paid media buying, creator seeding, social commerce and studio AIGC across Western and Chinese platforms.',
     subgroups: [
       {
         heading: 'Social',
@@ -176,49 +176,49 @@ const categories: Category[] = [
             href: '/solutions/platforms/meta',
             img: '/Images/meta-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a paused Instagram Reels frame.',
-            desc: 'Feed, Stories, and Reels creative sized and paced for Meta.',
+            desc: 'IG & FB management, Advantage+ ads, creator whitelisting, Shops and studio AIGC.',
           },
           {
             name: 'TikTok',
             href: '/solutions/platforms/tiktok',
             img: '/Images/tt-hero.jpg',
             alt: 'A young creator filming themselves on a tripod-mounted phone in soft window daylight.',
-            desc: 'Short vertical video, shot and cut the way people watch TikTok.',
+            desc: 'Organic channels, Spark Ads, TikTok Shop, affiliate creators, LIVE and vertical AIGC.',
           },
           {
             name: 'LinkedIn',
             href: '/solutions/platforms/linkedin',
             img: '/Images/linkedin-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a LinkedIn feed post.',
-            desc: 'B2B posts, carousels, and video for a professional feed.',
+            desc: 'Company Pages, executive ghostwriting, ABM LinkedIn Ads, KOLs and B2B creative.',
           },
           {
             name: 'WeChat',
             href: '/solutions/platforms/wechat',
             img: '/Images/wechat-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing an open WeChat Official Account article.',
-            desc: 'Official Account articles, mini-program assets, and Moments.',
+            desc: 'Official Accounts, Channels, Mini-Programs, Moments Ads, WeCom CRM and studio creative.',
           },
           {
             name: 'RedNote',
             href: '/solutions/platforms/rednote',
             img: '/Images/rednote-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing the RedNote discovery feed.',
-            desc: 'Lifestyle notes and images for Xiaohongshu.',
+            desc: 'Pro accounts, Note SEO, KOL/KOC seeding, JuGuang ads, RedNote Shops and creative.',
           },
           {
             name: 'Douyin',
             href: '/solutions/platforms/douyin',
             img: '/Images/douyin-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a paused vertical Douyin video.',
-            desc: 'Short video and livestream assets for Douyin.',
+            desc: 'Blue V accounts, Ocean Engine ads, Douyin Store, livestream selling, KOLs and video.',
           },
           {
             name: 'Weibo',
             href: '/solutions/platforms/weibo',
             img: '/Images/weibo-hero.jpg',
             alt: 'A hand holding a phone in warm rim light showing a Weibo feed post.',
-            desc: 'Campaign and always-on content for Weibo.',
+            desc: 'Blue V verification, Super Topics, Hot Search PR, Fan Tong ads, KOLs and studio creative.',
           },
         ],
       },
@@ -280,7 +280,7 @@ const categories: Category[] = [
 
 const jump = [
   { id: 'who', label: 'Who it’s for' },
-  { id: 'offers', label: 'The app and the studio' },
+  { id: 'offers', label: 'The app and our team' },
   { id: 'consulting', label: 'Consulting and training' },
   { id: 'ai-production', label: 'AI production' },
   { id: 'platforms', label: 'Platforms' },
@@ -297,8 +297,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="hubStudio solutions: find the way that fits your team"
-  description="Brands, agencies, retailers, and manufacturers use hubStudio three ways: the app, the studio, or both. See which one usually fits your team."
+  title="hubStudio solutions: creative assets and social networks for your team"
+  description="Brands, agencies, retailers, and manufacturers use hubStudio to make creative assets and run social networks: use the app yourself, or work with our team in the app."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
@@ -307,13 +307,13 @@ const breadcrumbSchema = {
     <div class="container">
       <span class="eyebrow">Solutions</span>
       <h1 class="headline h1 reveal sol-hero__title">
-        Images, video, and posts, made the way your team <span class="accent">works</span>.
+        Creative assets and social networks, made the way your team <span class="accent">works</span>.
       </h1>
       <p class="lead sol-hero__lead">
-        hubStudio is an app and a studio, from one company. You can use the
-        app and make the work yourself, have our studio make it inside the
-        app, or send a brief and get finished files back. The cards below say
-        who usually picks which.
+        hubStudio brings both parts of the job into one workspace: generating
+        and editing text, images, and video on one side, and running campaigns
+        and social channels on the other. Use the app yourself, or have our
+        creative and social teams work with you inside the app.
       </p>
       <nav class="sol-jump" aria-label="On this page">
         {
@@ -360,29 +360,30 @@ const breadcrumbSchema = {
           }
         </div>
         <p class="sol-aside">
-          Not on this list? Most teams still fit one of the three ways.
+          Not on this list? Every team can start in the app or with our team.
           <a href={APP_SIGNUP} target="_blank" rel="noopener">Open an account and try the app</a>, or
-          <a href={BRIEF_URL}>send a brief</a> and a producer will tell you which way fits.
+          <a href={BRIEF_URL}>send a brief</a> and a producer will help you scope the work.
         </p>
       </section>
     </div>
   </div>
 
-  <!-- ===== The app and the studio ===== -->
+  <!-- ===== The app and our team ===== -->
   <section class="sol-offers" id="offers">
     <div class="container">
       <span class="eyebrow">See both</span>
       <h2 class="headline h2 sol-offers__title reveal">
-        What the app looks like, and who works in the <span class="accent">studio</span>.
+        What the app looks like, and who works with you <span class="accent">inside</span> it.
       </h2>
       <div class="sol-offers__grid">
         <article class="sol-offer">
-          <p class="sol-offer__label">The hubStudio app</p>
+          <p class="sol-offer__label">Use the hubStudio app</p>
           <AppShot shot={appShots.exploreApp} path="/explore" caption />
           <p class="sol-offer__text">
-            Your team picks an engine, sees the price, and runs it, then
-            edits, gets approval, and publishes. You pay as you go from a
-            prepaid balance, with no subscription and no seat fees.
+            Your team picks an AI engine, sees the price, and runs it, then
+            edits in the browser, gets sign-off in Validation, and schedules
+            posts across social networks. You pay as you go from a prepaid
+            balance, with no subscription and no seat fees.
           </p>
           <p class="sol-offer__links">
             <a href="/app">Tour the app <span aria-hidden="true">&rarr;</span></a>
@@ -390,7 +391,7 @@ const breadcrumbSchema = {
           </p>
         </article>
         <article class="sol-offer">
-          <p class="sol-offer__label">The hubStudio studio</p>
+          <p class="sol-offer__label">Work with us in the app</p>
           <figure class="sol-offer__photo">
             <img
               src="/Images/studio-hero.webp"
@@ -403,29 +404,30 @@ const breadcrumbSchema = {
           </figure>
           <p class="sol-offer__text">
             Senior art directors, designers, retouchers, motion designers, and
-            writers take a brief and deliver finished work. Founded by Cyril
-            Drouin, former CEO at Publicis, and headquartered in Hong Kong,
-            with studios in Shanghai and Changsha. A producer reads every brief
-            within one business day.
+            social strategists produce creative assets and run social channels
+            inside your hubStudio workspace. Founded by Cyril Drouin, former
+            CEO at Publicis, and headquartered in Hong Kong, with studios in
+            Shanghai and Changsha. A producer reads every brief within one
+            business day.
           </p>
           <p class="sol-offer__links">
-            <a href="/studio">Meet the studio <span aria-hidden="true">&rarr;</span></a>
+            <a href="/studio">Meet our team <span aria-hidden="true">&rarr;</span></a>
             <a href="/work">See the work <span aria-hidden="true">&rarr;</span></a>
           </p>
         </article>
       </div>
       <p class="sol-offers__price">
-        The app is pay as you go; the studio is quoted after a brief.
+        The app is pay as you go; working with our team is quoted after a brief.
         <a href="/pricing">How pricing works</a>
       </p>
     </div>
   </section>
 
-  <!-- ===== Three ways to work ===== -->
+  <!-- ===== Two ways to work ===== -->
   <WaysToWork
     tone="white"
     highlight="app"
-    lead="Each card above points to one of these three. Start with either offer and switch when the work changes."
+    lead="Each card above points to where teams usually start. Both ways happen in the same workspace, so you can add our team whenever a campaign or channel needs extra hands."
   />
 
   <!-- ===== The map: consulting, AI production, platforms ===== -->

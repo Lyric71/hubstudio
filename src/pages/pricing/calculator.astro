@@ -2491,6 +2491,11 @@ const goodToKnow = [
       .querySelector<HTMLButtonElement>('[data-print]')
       ?.addEventListener('click', () => window.print());
 
+    if (currencySelect) {
+      if (LOCALE === 'fr-FR') currencySelect.value = 'EUR';
+      else if (LOCALE === 'zh-CN') currencySelect.value = 'CNY';
+    }
+
     render();
   }
 </script>

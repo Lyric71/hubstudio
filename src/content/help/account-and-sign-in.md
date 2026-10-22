@@ -91,9 +91,9 @@ New teams ask for a second step when you sign in. After your password, hubStudio
 
 The **Sign-in code** tab in **Sign-in and security** lists the browsers you told hubStudio to trust. Drop one and its next sign-in asks for a code again. **Stop trusting every browser** drops them all.
 
-## My Connections: your social accounts
+## My Connections: your social accounts and website repositories
 
-To publish posts from hubStudio, connect your own social accounts. Click your picture at the top right, then **My Connections**. In hubStudio the page holds one card, **Your social accounts**, so that the posts you write in LinkedIn, Instagram, Facebook, TikTok and X go out in your name. YouTube has no card: you publish there yourself, in YouTube Studio (see [YouTube](/help/youtube)).
+To publish posts or open website pull requests from hubStudio, connect your own accounts. Click your picture at the top right, then **My Connections**. In hubStudio the page holds **Your social accounts** (so that the posts you write in LinkedIn, Instagram, Facebook, TikTok and X go out in your name; YouTube has no card because you publish there yourself in YouTube Studio, see [YouTube](/help/youtube)) and **Your website repositories** (your personal GitHub connection for [Web](/help/web), so that branches and pull requests on your website repositories are opened by your GitHub account).
 
 What you connect is yours alone. Nobody else in your team, admins included, can see it or publish with it, and you can't publish on a teammate's account either. Connecting publishes nothing.
 

@@ -47,22 +47,22 @@ const setup = [
   {
     icon: 'team',
     t: 'Your team',
-    b: 'The workspace your company works in, and the wallet your 250 USD lands in. We name it, fill in the invoice details, choose the interface languages, and decide whether everyone gets an emailed code at sign-in.',
+    b: 'Your workspace and wallet: name, billing details, languages, and sign-in security.',
   },
   {
     icon: 'rights',
     t: 'People and rights',
-    b: 'Everyone who needs a login gets one of four roles: Admin, Creator, Viewer, or Client. Then we go person by person: which modules they see, what they may do in each, who publishes, and who approves.',
+    b: 'Roles (Admin, Creator, Viewer, Client) and per-person rights for modules, publishing, and approvals.',
   },
   {
     icon: 'limits',
     t: 'Spending limits',
-    b: 'Each creator can get a daily limit on the team wallet. Automatic top-up is optional and has its own daily ceiling. We size both to the work you plan to run.',
+    b: 'Daily spending limits per creator and optional auto top-up ceilings.',
   },
   {
     icon: 'clients',
     t: 'Clients',
-    b: 'Each company you make work for, with logins for its people. They see only what’s tagged as made for them, in their own Client space, and they approve it in Validation.',
+    b: 'Dedicated spaces and logins where clients view and approve only their own work.',
   },
 ];
 
@@ -215,10 +215,8 @@ const serviceSchema = {
           Seven things we settle with you in the <span class="accent">sessions</span>.
         </h2>
         <p class="ob-head__lead">
-          Here’s where the four hours go. Each one is a real setting in the app, documented in the
-          <a href={`${HELP_URL}/your-team`}>help center</a>. Sessions run in English, French, or
-          Chinese. Bring the names of the people who need a login and, if you make work for
-          clients, your client list.
+          Sessions run in English, French, or Chinese. Bring your team and client lists. Every
+          setting is in the <a href={`${HELP_URL}/your-team`}>help center</a>.
         </p>
       </header>
 
@@ -265,17 +263,12 @@ const serviceSchema = {
 
       <div class="ob-setup__rest">
         <p class="ob-p ob-p--first">
-          The other three decide how the work gets made and shipped. Social accounts in
-          hubStudio are personal, so each person connects their own LinkedIn, Instagram, Facebook,
-          TikTok, YouTube, and X on My Connections. Then the <a href={`${HELP_URL}/skills`}>skills</a>:
-          we walk your team through the Catalog, from e-commerce packshots to vertical video ads,
-          and write your house style as team skills, so Improve with AI and the post drafts follow
-          it. Last comes <a href={`${HELP_URL}/validation`}>Validation</a>: who approves what, and
-          which of your clients’ people sign off on their own work.
+          The last three cover production and shipping: connecting personal social accounts, writing
+          your house style into team <a href={`${HELP_URL}/skills`}>skills</a>, and setting up
+          <a href={`${HELP_URL}/validation`}>Validation</a> sign-offs for your team and clients.
         </p>
         <p class="ob-aside">
-          Want our studio to make the work as well? <a href="/studio/with-the-app">Studio + app</a>
-          covers that, as a separate offer quoted after a brief.
+          Want us to produce the work too? See <a href="/studio/with-the-app">Studio + app</a>.
         </p>
       </div>
 

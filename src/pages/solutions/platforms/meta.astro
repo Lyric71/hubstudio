@@ -28,35 +28,35 @@ const colourBar = [
 ];
 
 const stats = [
-  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, UGC, avatar' },
-  { from: 0, to: 50, suffix: '+', label: 'Variations per concept', note: 'From one signed-off master' },
-  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On short-form Reels and Feed' },
+  { from: 0, to: 6, suffix: '', label: 'Core Meta practices', note: 'Organic, Paid Ads, Creative, Creators, Commerce & Avatars' },
+  { from: 0, to: 50, suffix: '+', label: 'Creative variants per concept', note: 'Built for Advantage+ and hook testing' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On short-form Reels, Stories and Feed ads' },
 ];
 
 const samples = [
   {
     src: '/Images/meta-sample-aluna.jpg',
-    kind: 'Organic · IG Feed',
+    kind: 'Organic · IG Feed & Reels',
     alt: 'A vertical phone held in soft window light, the screen filled with an Instagram Feed grid of nine skincare frames in warm sand and ceramic tones.',
   },
   {
     src: '/Images/meta-sample-corren.jpg',
-    kind: 'Ad creative · Reels',
+    kind: 'Paid Media · Advantage+ Reels',
     alt: 'A phone screen showing a paused Instagram Reels frame of a model in a camel linen coat, the sponsored label and call-to-action button visible in the lower interface.',
   },
   {
     src: '/Images/meta-sample-davos.jpg',
-    kind: 'Ad creative · FB carousel',
+    kind: 'Catalog Ads · FB & IG Carousel',
     alt: 'A laptop screen showing the Meta Ads Manager carousel preview, three espresso lifestyle frames lined up in a Facebook ad placement.',
   },
   {
     src: '/Images/meta-sample-evren.jpg',
-    kind: 'UGC · IG Stories',
+    kind: 'Partnership Ads · Creator UGC',
     alt: 'A phone held vertically, the screen displaying an Instagram Stories frame of a creator unboxing a cream leather handbag, the poll sticker visible at the bottom of the interface.',
   },
   {
     src: '/Images/meta-sample-fynn.jpg',
-    kind: 'Avatar · Reels',
+    kind: 'Avatar · Multilingual Reels',
     alt: 'A phone screen showing an Instagram Reels frame of an AI avatar spokesperson speaking to camera in neutral knitwear, captions and the like-comment-share rail visible in the interface.',
   },
 ];
@@ -64,114 +64,200 @@ const samples = [
 const coverage = [
   {
     fig: 'B',
-    label: 'Content',
-    heading: 'Content. The organic feed.',
+    label: 'Organic & Community',
+    heading: 'Organic social and community across Instagram, Facebook and Threads.',
     image: '/Images/meta-content.jpg',
     alt: 'A phone held in both hands, the screen filled with an Instagram Feed of a brand grid in warm editorial tones, the bottom navigation bar of the Instagram app visible.',
-    lead: 'The posts a brand publishes itself, on Feed, Reels and Stories, made to the standard of the paid work.',
+    lead: 'Always-on channel management, editorial Feed grids, Reels, Stories, Broadcast Channels and active community management.',
     body: [
-      "Organic is where a lot of brands get lazy. A few reposts, a product photo stretched to fit wherever it lands. We treat it as real production instead. Reels are built to survive the first second. Feed posts match the brand book instead of fighting it. Stories run on a weekly rhythm, not whenever someone on the team remembers.",
-      "A creative director signs off every piece, and the retoucher who finishes a hero campaign finishes the Tuesday Story too. That is how the volume climbs without the brand quietly drifting.",
+      'Organic is where prospects verify your brand after seeing an ad. We manage your Instagram, Facebook and Threads presence end to end: monthly editorial calendars, cohesive Feed grids, retention-engineered Reels, interactive Story sequences, Broadcast Channels and daily comment and DM moderation.',
+      'A creative director signs off every piece, and the retoucher who finishes your hero campaign finishes the Tuesday Story too. Or, if your team prefers to publish in-house, our software lets you draft, schedule and cross-post directly to Facebook and Instagram.',
     ],
     tags: [
-      'Feed posts', 'Reels', 'Stories',
-      'Carousels', 'Shop content', 'Threads posts',
-      'Brand-book grids', 'Always-on calendar',
+      'IG & FB channel management', 'Editorial Feed grids', 'Organic Reels & Stories',
+      'Educational carousels', 'Threads strategy', 'Broadcast Channels',
+      'Comment & DM moderation', 'Social listening',
     ],
   },
   {
     fig: 'C',
-    label: 'Ad creative',
-    heading: 'Ad creative. Built for Advantage+.',
+    label: 'Paid Media & Advantage+',
+    heading: 'Full-funnel Meta media buying, Advantage+ and CAPI attribution.',
     image: '/Images/meta-ads.jpg',
     alt: 'A wide monitor showing the Meta Ads Manager creative library, a grid of Instagram Reels and Facebook Feed ad variants lined up in the placement preview panel.',
-    lead: "Paid creative, made in the volume Meta's ad system actually rewards.",
+    lead: 'Precision campaign architecture across Advantage+ Shopping, Lead Gen, App Ads and server-side Conversions API tracking.',
     body: [
-      "Media buyers learn this fast: Advantage+ gets smarter the more creative you give it. Five variants is starvation. Fifty gives the system enough to work with. So we build to the exact placement set the media team is buying, in every ratio and length the auction will take, and we name the files so the reporting still reads clearly a month later.",
-      "Conversion ads, catalog ads, hook-tested Reels, lead-gen frames: all of it gets the same studio finish. The fiftieth variant should still look like the campaign, not a tired copy of it.",
+      'Modern Meta media buying is won through signal quality and account consolidation. We architect and manage your Meta Ads Manager end to end: Advantage+ Shopping Campaigns (ASC) for e-commerce, Advantage+ Lead Generation with CRM webhook integration for B2B and high-ticket services, and full-funnel prospecting and retargeting.',
+      'Before scaling spend, we audit and harden your tracking foundation: Meta Pixel, server-side Conversions API (CAPI), event match quality scoring, custom conversion events and incrementality testing so the algorithm optimizes against real revenue and qualified pipeline.',
     ],
     tags: [
-      'Advantage+ Shopping', 'Advantage+ Creative', 'Dynamic creative',
-      'Catalog ads', 'Hook A/B testing', 'Conversion Reels',
-      'Lead-gen frames', 'Retargeting variants',
+      'Advantage+ Shopping (ASC)', 'Advantage+ Lead Generation', 'Meta Pixel & CAPI setup',
+      'Account consolidation', 'Broad & lookalike targeting', 'Dynamic retargeting',
+      'ROAS & CPA optimization', 'Lift & incrementality testing',
     ],
   },
   {
     fig: 'D',
-    label: 'UGC',
-    heading: 'UGC. The creator look, made in-house.',
-    image: '/Images/meta-ugc.jpg',
-    alt: 'A phone screen showing an Instagram Reels frame of a creator filming a haul in a sunlit bedroom, the vertical Reels interface with caption overlay and like-share rail visible.',
-    lead: 'Reels and Stories that feel shot by a creator, minus the casting calls and the rights paperwork.',
+    label: 'Creative Velocity & Testing',
+    heading: 'High-velocity performance creative built for Meta’s Andromeda engine.',
+    image: '/Images/meta-testing.jpg',
+    alt: 'A wide studio monitor showing structured hook and body ad variations being compared side by side for Meta Ads performance testing.',
+    lead: 'Fifty-plus modular ad variants per concept so creative becomes your primary targeting lever.',
     body: [
-      "Hauls, unboxings, get-ready-with-me clips, day-in-the-life, founders talking straight to camera, reaction Reels. The handheld framing, the slightly rough edit, the talking-to-a-friend tone. We work from a proper creator brief and finish in the studio, so the brand owns the master and the usage rights the moment the file lands.",
-      "And there is a lot of it. Thirty cuts for one launch. Ten fresh hooks a week on an always-on account. Separate edits for separate markets. The first cut is genuinely expensive. By the thirtieth, the cost barely shows up.",
+      'Meta’s AI retrieval engine does the targeting through your creative: different hooks, visual angles and formats unlock entirely different pockets of the auction. Five ad variants is starvation; fifty gives Advantage+ room to scale without creative fatigue.',
+      'We build structured testing matrices around every launch: 3-second visual and verbal hooks, problem-solution angles, founder vs. customer framing, static callout cards, carousel stories and 9:16 Reels cuts, all named cleanly so performance reporting tells you exactly why an ad won.',
     ],
     tags: [
-      'Hauls', 'Unboxing', 'Testimonials',
-      'GRWM Reels', 'Day-in-the-life', 'Founder POV',
-      'Reaction edits', 'Always-on UGC',
+      'Hook / body / CTA matrices', '50+ variants per concept', '3-second thumbstop engineering',
+      'Static & motion callout ads', '9:16 Reels & 4:5 Feed cuts', 'Anti-fatigue weekly drops',
+      'Clean taxonomy & naming', 'Creative analytics feedback',
     ],
   },
   {
     fig: 'E',
-    label: 'Avatar',
-    heading: 'Avatar. A spokesperson you own.',
-    image: '/Images/meta-avatar.jpg',
-    alt: 'A phone screen showing an Instagram Reels frame of an AI avatar presenter speaking to camera, captions and the music label visible in the Reels interface.',
-    lead: 'A presenter the brand owns, who only ever works for you, in whatever language a market needs.',
+    label: 'Creators, Whitelisting & UGC',
+    heading: 'Creator partnerships, Partnership Ads whitelisting and studio UGC.',
+    image: '/Images/meta-ugc.jpg',
+    alt: 'A phone screen showing an Instagram Reels frame of a creator filming a haul in a sunlit bedroom, the vertical Reels interface with caption overlay and like-share rail visible.',
+    lead: 'Real creator seeding and dark-post whitelisting paired with rights-clean studio UGC produced in volume.',
     body: [
-      "This is the newest lane, and clients tend to be skeptical until they watch one. We build and train an avatar the brand owns outright: a digital twin of the founder, a brand spokesperson, a product expert, a different face for each market. It presents in Reels, talks through Stories, narrates carousels and hosts the shopping clips.",
-      "The lip-sync holds up close. The look stays on brand. And since the brand owns the model, refreshing the message next quarter no longer means booking a shoot, and taking it into a new language no longer means recasting.",
+      'We run creator programs two ways. First, we source, brief and manage real creators and run Meta Partnership Ads (collaborator whitelisting), boosting paid media directly through the creator’s handle alongside your brand handle for higher click-through rates and lower CPAs.',
+      'Second, when you need thirty variations of a haul, unboxing, GRWM or testimonial without casting delays or expiring usage windows, our studio produces creator-style UGC in-house. You own the master files and perpetual global paid media rights from day one.',
     ],
     tags: [
-      'Founder twin', 'Brand spokespeople', 'Product expert',
-      'Multi-language Reels', 'Localized casts', 'Shopping hosts',
-      'Story narration', 'Always-on avatar feed',
+      'Meta Partnership Ads', 'Creator handle whitelisting', 'Creator sourcing & seeding',
+      'Studio-shot UGC in volume', 'Hauls & unboxings', 'Founder POV & testimonials',
+      'Perpetual usage rights', 'Multi-market creator cuts',
+    ],
+  },
+  {
+    fig: 'F',
+    label: 'Commerce, Catalogs & Avatars',
+    heading: 'Meta Shops, Dynamic Product Ads and brand-owned AI avatars.',
+    image: '/Images/meta-avatar.jpg',
+    alt: 'A phone screen showing an Instagram Reels frame of an AI avatar presenter speaking to camera, captions and the music label visible in the Reels interface.',
+    lead: 'Frictionless social commerce catalogs, Click-to-Message flows and multilingual digital spokespeople you own outright.',
+    body: [
+      'We connect your storefront to Meta Commerce Manager: Instagram and Facebook Shops, product tagging in Reels and Feed, enriched Dynamic Product Ad (DPA) catalog frames that replace plain white-background packshots with designed overlays, and Click-to-WhatsApp or Click-to-Messenger automated lead and shopping flows.',
+      'Alongside commerce, we build and train custom brand avatars and founder digital twins. Your avatar presents products in Reels, narrates Stories and localizes winning video ads across 30+ languages without rebooking a studio shoot.',
+    ],
+    tags: [
+      'Instagram & Facebook Shops', 'Enriched Catalog / DPA ads', 'Product tagging in Reels',
+      'Click-to-WhatsApp & Messenger', 'Custom brand AI avatars', 'Founder digital twins',
+      '30+ language localization', 'Custom brand LoRA models',
     ],
   },
 ];
 
-const credentials = ['Private GPU infra', 'NDA & DPA', 'EU AI Act', 'Data sovereignty'];
+const servicePillars = [
+  {
+    eyebrow: 'Organic & Community',
+    title: 'Channel Management & Editorial Engine',
+    desc: 'Full-service daily management of your Instagram, Facebook and Threads presence so your organic profile converts the traffic your ads generate.',
+    items: [
+      'Instagram, Facebook & Threads content strategy and calendars',
+      'Cohesive Feed grids, multi-slide carousels & daily Story sequences',
+      'Organic Reels production engineered for watch time and shares',
+      'Broadcast Channels, comment moderation & DM community management',
+    ],
+  },
+  {
+    eyebrow: 'Paid Social & Media Buying',
+    title: 'Advantage+ Campaigns & CAPI Attribution',
+    desc: 'End-to-end Meta Ads Manager execution focused on signal quality, consolidated campaign architecture and profitable scaling.',
+    items: [
+      'Advantage+ Shopping (ASC), App & Lead Generation campaigns',
+      'Meta Pixel + server-side Conversions API (CAPI) implementation',
+      'Full-funnel prospecting, lookalike & dynamic catalog retargeting',
+      'CRM lead scoring integration, lift studies & ROAS reporting',
+    ],
+  },
+  {
+    eyebrow: 'Performance Creative',
+    title: 'High-Velocity Ad Creative & Hook Testing',
+    desc: 'Authored studio direction combined with AI production pipelines to feed Meta’s algorithm the creative diversity it needs.',
+    items: [
+      '50+ modular ad variants from one signed-off hero concept',
+      'Structured 3-second hook, body and CTA A/B testing matrices',
+      'Native 9:16 Reels, 4:5 Feed video and high-converting static ads',
+      'Weekly creative refresh drops to eliminate ad fatigue',
+    ],
+  },
+  {
+    eyebrow: 'Creators & UGC',
+    title: 'Creator Whitelisting & Studio UGC',
+    desc: 'Combine the third-party trust of real creator handles with the speed and perpetual rights of studio-produced UGC.',
+    items: [
+      'Creator sourcing, briefing, seeding and contract management',
+      'Meta Partnership Ads (whitelisting / dark posting via creator handles)',
+      'In-house studio UGC: unboxings, hauls, GRWM & testimonials',
+      '100% perpetual paid media usage rights with zero renewal fees',
+    ],
+  },
+  {
+    eyebrow: 'Social Commerce & Messaging',
+    title: 'Meta Shops, Enriched Catalogs & DM Flows',
+    desc: 'Turn discovery into checkout and qualified conversations directly inside Instagram, Facebook, Messenger and WhatsApp.',
+    items: [
+      'Instagram & Facebook Shop setup and Shopify / WooCommerce sync',
+      'Designed Dynamic Product Ad (DPA) catalog overlays & frames',
+      'Click-to-WhatsApp and Click-to-Messenger conversational ad flows',
+      'Automated DM comment-to-message triggers and lead capture',
+    ],
+  },
+  {
+    eyebrow: 'AI Avatars & Localization',
+    title: 'Brand-Owned Digital Presenters & LoRAs',
+    desc: 'Bespoke AI spokespeople and custom-trained visual models that scale your brand across global markets in days.',
+    items: [
+      'Custom-trained brand spokespeople and founder digital twins',
+      'Multilingual Reels and Story localization across 30+ languages',
+      'Custom product and aesthetic LoRA models for instant ad variants',
+      'Full enterprise IP ownership and human retouching quality control',
+    ],
+  },
+];
+
+const credentials = ['Meta Pixel & CAPI', 'Advantage+ & Partnership Ads', 'Private GPU infra', 'NDA, DPA & EU AI Act'];
 
 const processSteps = [
   {
-    short: 'Brief',
+    short: 'Audit & Brief',
     tier: 'Where it is won',
-    title: 'Discovery and brief.',
-    body: 'One working session. We pin down the goal, the audience, which Meta surfaces are in play, what the brand stands for and what it will not do. You leave with a one-page brief and a map of every asset, sorted by placement and by lane.',
+    title: 'Account audit, tracking check and brief.',
+    body: 'We start by auditing your existing Instagram and Facebook channels, Meta Ads Manager structure, Pixel and Conversions API signal health, and historical creative winners. You leave with a unified roadmap covering organic cadence, paid media architecture and creative testing.',
     image: '/Images/meta-p1-brief.jpg',
     alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the Meta Business Suite planner alongside printed Instagram Feed and Reels screenshots.',
   },
   {
-    short: 'Direction',
+    short: 'Direction & Architecture',
     tier: 'Where it is won',
-    title: 'Creative direction across the four lanes.',
-    body: 'References go on the wall, the tone gets named, the shot list takes shape, and we pick the AI and avatar models that suit each lane. Content, ad creative, UGC and avatar each get their own treatment. This is the step that makes a campaign yours and not a template.',
+    title: 'Campaign architecture and creative direction.',
+    body: 'Media buyers and creative directors work together to design the campaign structure, audience signals, hook-testing matrix and visual treatment across organic, paid, creator UGC and avatar lanes. Every asset is mapped to a specific funnel stage and placement.',
     image: '/Images/meta-p2-direction.jpg',
     alt: 'A storyboard wall with four columns of frame sketches labeled Content, Ads, UGC and Avatar, each column anchored by a printed Instagram Reels phone mock.',
   },
   {
-    short: 'AIGC',
+    short: 'Production & AIGC',
     tier: 'The rest is execution',
-    title: 'AIGC generation and authored finish.',
-    body: 'Now the volume gets made, lane by lane, surface by surface. Nothing reaches a media plan until it has been through the retouch bench and the brand check.',
+    title: 'Studio production, creator seeding and AIGC scale.',
+    body: 'We shoot, generate and edit the creative library: editorial Feed assets, creator-style UGC, multilingual avatar cuts and 50+ Advantage+ ad variants. Nothing reaches a media plan until it passes our human retouching and brand-safety bench.',
     image: '/Images/meta-p3-aigc.jpg',
     alt: 'A motion designer at a calibrated workstation, the main monitor showing a single Instagram Reels hero frame, the side panel showing the Meta Ads Manager creative library grid of variants.',
   },
   {
-    short: 'Launch',
+    short: 'Launch & Media Buying',
     tier: 'The rest is execution',
-    title: 'Launch. Per-placement, per-market.',
-    body: 'Files go to the media team in the formats Meta actually serves: the right ratios, the right durations, the right names. The naming matters more than it sounds. It is what keeps the reporting readable once the campaign is live.',
+    title: 'Publishing, Partnership Ads and Advantage+ launch.',
+    body: 'Organic calendars go live across Instagram, Facebook and Threads while our media buyers launch Advantage+ Shopping, Lead Gen and whitelisted Partnership Ads with clean taxonomy, CAPI tracking and automated rules.',
     image: '/Images/meta-p4-launch.jpg',
     alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the Meta Ads Manager campaign dashboard with Advantage+ Shopping placements live.',
   },
   {
-    short: 'Adapt',
+    short: 'Iterate & Scale',
     tier: 'The rest is execution',
-    title: 'Adapt. Variants, refresh, season.',
-    body: 'Once the hero is approved, new variants come fast: a new audience, a different market, a seasonal swap. The original brief still holds. You are adding to it, not starting over.',
+    title: 'Weekly hook analysis, creative refresh and budget scaling.',
+    body: 'Every week we read thumbstop rate, hold rate, CTR and CPA across every variant. Losing angles are cut, winning hooks are spun into ten new variations, and budgets scale into the highest-ROAS ad sets and markets.',
     image: '/Images/meta-p5-adapt.jpg',
     alt: 'A colorist at a calibrated grading suite, the main reference monitor showing a warm Instagram Reels frame paused on a fashion still, the Reels interface elements visible at the screen edges.',
   },
@@ -179,53 +265,49 @@ const processSteps = [
 
 const faqs = [
   {
-    q: 'What exactly do you produce for Meta?',
-    a: 'Four lanes of work. Organic content for Feed, Reels, Stories, carousels, Shop and Threads. Paid ad creative built for Advantage+ Shopping and Advantage+ Creative. Creator-style UGC for Reels and Stories, made in volume. And avatar presenters the brand owns, for Reels, Stories and shopping clips. They share one creative direction and one finishing pass, so a brand can hire a single lane or all four and the work still matches.',
+    q: 'Do you only produce creative, or do you manage Meta Ads and organic accounts too?',
+    a: 'We do both. We operate as a full-service Meta agency and production studio under one roof. That includes daily organic management across Instagram, Facebook and Threads, full-funnel paid media buying in Meta Ads Manager (Advantage+, catalog ads, lead generation, Pixel and CAPI setup), creator seeding and Partnership Ads whitelisting, Meta Shops commerce, and high-velocity studio and AIGC creative production. You can hire us for the entire Meta ecosystem or plug our creative engine into your existing media team.',
   },
   {
-    q: 'How is the UGC lane different from booking real creators?',
-    a: "Booking a creator means buying their time, their schedule and a usage window that eventually runs out. Our UGC lane works the other way around. You brief the look, we build and finish it in the studio, and the brand owns the master from day one. No casting calls, no renewal emails. The economics shift too: the first cut takes real work, and the tenth costs almost nothing.",
+    q: 'How do you structure and manage Meta Paid Ads and Advantage+ campaigns?',
+    a: 'We build consolidated account structures designed for Meta’s modern AI delivery system. Depending on your business model, we run Advantage+ Shopping Campaigns (ASC) for e-commerce, Advantage+ Lead Generation with CRM conversion leads integration for B2B, and structured creative testing sandboxes. We also configure Meta Pixel and server-side Conversions API (CAPI) so bidding algorithms optimize for real revenue and qualified pipeline rather than cheap clicks.',
   },
   {
-    q: 'Tell me more about the Avatar lane.',
-    a: 'We build and train a presenter the brand owns: a digital twin of the founder, a brand spokesperson, a product expert, or a separate face for each market. It speaks to camera in Reels, narrates Stories and hosts shopping clips. The lip-sync holds up at close range, and because the model belongs to you, the same presenter can run in every language Meta supports without booking a single shoot.',
+    q: 'What are Meta Partnership Ads (creator whitelisting) and do you run them?',
+    a: 'Meta Partnership Ads allow your brand to run paid ads directly through a creator’s Instagram or Facebook handle (or co-branded with both handles) while controlling targeting, spend and links inside your own Ads Manager. We handle creator sourcing, whitelisting permissions, custom ad edits and media buying, which consistently delivers stronger thumbstop rates and lower acquisition costs than brand-handle ads alone.',
   },
   {
-    q: 'How does pricing work?',
-    a: 'We price by project, and usually by lane, so a brand can start with one and add the others later. What it costs depends on how many surfaces are in scope, how much volume the media plan needs, and whether we are training new brand or avatar models from scratch. Send a brief and a scope and a quote come back, with no obligation to go ahead.',
+    q: 'How is your studio UGC lane different from booking external creators?',
+    a: 'When you need real creator handles for Partnership Ads or organic seeding, we book and manage vetted creators. When you need high-volume UGC ad creative without casting delays, reshoots or expiring usage licenses, our studio produces creator-style UGC in-house. You own the master files and perpetual global paid media rights from day one, and spinning out 30 hook and language variants takes days instead of months.',
   },
   {
-    q: 'Can you produce Reels at the volume our media plan needs?',
-    a: 'Yes, and volume is where this model earns its keep. One hero shoot or AI sprint produces the master. After that, variants for new markets and audiences land within days. The first variant is the expensive one. By the fiftieth, the cost per cut is close to nothing, and the brand models we train keep all of them on-brand.',
+    q: 'Can you set up Instagram and Facebook Shops and improve our Dynamic Product Ads?',
+    a: 'Yes. We sync your Shopify, WooCommerce or custom product feed with Meta Commerce Manager, set up product tagging across Reels and Feed, and transform plain white-background catalog items into enriched Dynamic Product Ads (DPAs) with custom frames, dynamic pricing badges, review callouts and seasonal styling.',
   },
   {
-    q: 'How do you keep the brand line consistent across the four lanes?',
-    a: 'The hero concept gets signed off once, during the direction step. From there, every variant in every lane goes through the same retouch, the same color grade and the same brand-safety check. That shared finish is the reason content, ad creative, UGC and avatar read as one campaign instead of four that happen to share a logo.',
+    q: 'Tell me more about the AI Avatar and localization lane.',
+    a: 'We build and train a custom digital presenter that your brand owns outright: a digital twin of your founder, a dedicated brand spokesperson, or localized presenters for different regions. Your avatar speaks to camera in Reels, narrates Stories and hosts product explainers across 30+ languages with studio-grade lip-sync, letting you test new scripts and international markets without booking a physical shoot.',
   },
   {
-    q: 'What is your turnaround for a Reels or Feed asset?',
-    a: 'For a brand we already know, a short-form asset can go from brief to first cut in 24 to 72 hours. A new brand or a new product needs a one-time setup first, to lock the treatment and train the models. After that, a weekly drop at production quality is a comfortable pace.',
+    q: 'Can you produce Reels and ad variants at the volume our media plan needs?',
+    a: 'Yes, and creative velocity is where our hybrid studio + AIGC model shines. Meta’s algorithm rewards creative diversity across hooks, formats and visual angles. From one approved hero concept, we deliver 50+ formatted variants across 9:16 Reels, 4:5 Feed and 1:1 placements so your media buyers never hit creative fatigue.',
   },
   {
-    q: 'Do you handle Meta Advantage+ placements and dynamic creative?',
-    a: 'Yes. We build the ad creative lane around whatever placement set the media team is buying, Advantage+ Shopping and Advantage+ Creative included. The variants come in the format range dynamic creative needs, and they are named so the reporting still makes sense once everything is live.',
+    q: 'How do you keep AIGC work from looking AI-generated?',
+    a: 'Every file goes through a human studio finish: dodge and burn, natural skin texture, film grain, optical lens characteristics and a professional color grade in Lightroom, Capture One or DaVinci Resolve. A creative director checks every frame against our quality checklist before it ever reaches your feed or ad account.',
   },
   {
-    q: 'How do you keep the work from looking AI-generated?',
-    a: 'Every file goes through a studio finish: dodge and burn, grain, a little chromatic aberration, a color grade in Lightroom or Capture One. Our image style guide names the usual giveaways, the poreless skin, the identical bokeh, the jewelry that melts into a hand, the text that is almost but not quite words. A person checks the final frame against that list before it ships. That last pass is what separates an AI image from a campaign image.',
-  },
-  {
-    q: 'Can we post to Facebook and Instagram ourselves?',
-    a: 'Yes, in the hubStudio app. Connect your Facebook page or your Instagram professional account in My Connections. Draft the post with AI or write it yourself, then publish it now or schedule it. One post can go to up to 20 accounts, and Re-purpose for other networks turns it into posts for LinkedIn, TikTok or X. And if our creatives work inside your hubStudio team, the approved files are already sitting in your library.',
+    q: 'Can we publish to Facebook and Instagram ourselves using the hubStudio app?',
+    a: 'Yes, in the hubStudio app. Connect your Facebook Page or Instagram Professional account in My Connections, draft captions and visuals with AI or upload your own, and publish immediately or schedule across up to 20 accounts. You can also repurpose posts for LinkedIn, TikTok or X in one click, while relying on our agency and studio team for paid campaigns, high-volume ad creative and hero shoots.',
     link: { match: 'hubStudio app', href: '/app/publish' },
   },
   {
-    q: 'Can you white-label this for our agency?',
-    a: 'Yes. A good share of our Meta work ships under agency brands, with full white-label delivery and a confidentiality agreement in place. The agency keeps the client relationship. We supply the production capacity behind it.',
+    q: 'How does pricing work across agency management and studio production?',
+    a: 'We scope modularly based on what you need: monthly retainers for organic management, paid media buying and weekly creative testing drops, or fixed-scope projects for campaign launches, UGC sprints and custom avatar training. Send us a brief and we return a clear breakdown within 48 hours.',
   },
   {
-    q: 'Who owns the assets, the masters and the trained models?',
-    a: 'You do. Every finished asset, every master file, and any custom model we train on your brand or your avatar belongs to you. Commercial rights for the AI outputs run through enterprise tiers that grant commercial use. The Copyright and AI guide covers the legal detail.',
+    q: 'Who owns the ad accounts, creator masters and trained AI models?',
+    a: 'You do. Your Meta Business Portfolio, Ad Accounts, Pixel/CAPI data, finished creative masters and any custom-trained brand or avatar models remain 100% your property. The Copyright and AI guide covers the legal detail.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
 ];
@@ -252,8 +334,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="Meta Ad Creative, UGC & Avatars at Scale | hubStudio"
-  description="Meta content, ad creative, UGC and avatar video from our studio. Or post to Facebook and Instagram yourself from the hubStudio app."
+  title="Meta Agency: Paid Ads, Advantage+, Organic, UGC & Avatars | hubStudio"
+  description="Full-service Meta agency and creative studio: Instagram, Facebook & Threads management, Advantage+ media buying, CAPI attribution, creator whitelisting, studio UGC and AI avatars."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -274,25 +356,19 @@ const breadcrumbSchema = {
             <span class="kicker__sep">/</span> Meta
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Four lanes,</span></span>
-            <span class="line"><span class="line__i serif">one Meta brief.</span></span>
-            <span class="line"><span class="line__i">AIGC, at scale.</span></span>
+            <span class="line"><span class="line__i">Organic, Advantage+,</span></span>
+            <span class="line"><span class="line__i serif">creators & commerce.</span></span>
+            <span class="line"><span class="line__i">Plus AIGC at scale.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Content. Ad creative. UGC. <em>Avatar.</em>
+            Content. Paid Ads. Creators. Shops. <em>Avatars.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              hubStudio makes four kinds of work for Meta. Organic content for
-              Feed, Reels and Stories. Ad creative built to feed Advantage+.
-              Creator-style UGC, produced in volume. And avatar presenters a
-              brand owns outright and can run in any language a market speaks.
+              hubStudio is a full-service Meta agency and creative production studio. We manage your Instagram, Facebook and Threads channels, run full-funnel paid media across Advantage+ with server-side CAPI attribution, manage creator seeding and Partnership Ads whitelisting, operate Meta Shops and enriched catalogs, and produce high-velocity studio UGC and brand-owned AI avatars.
             </p>
             <p>
-              It all runs off a single brief. One creative direction goes in,
-              and the work comes back sized and cut for every placement. The AI
-              works inside a real production company. That is the part most
-              studios skip.
+              Instead of splitting your Meta growth across a social shop, a media buyer, a UGC marketplace and an AI vendor, everything runs under one brief, one creative director and one performance dashboard.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
@@ -305,7 +381,7 @@ const breadcrumbSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Hong Kong + Shanghai <span>/</span> Meta-native creative under one director
+            Global Meta operations <span>/</span> Organic, Advantage+, Creators, Shops & Studio
           </p>
         </div>
       </div>
@@ -333,23 +409,15 @@ const breadcrumbSchema = {
           <div class="why__head">
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
             <h2 class="dh r" style="--d:.05s">
-              What we ship<br /><span class="serif">into Meta</span>.
+              Creative is the new<br /><span class="serif">targeting on Meta</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              Most brands run their Meta presence as a set of separate jobs. A
-              content agency here, a performance shop there, a UGC roster
-              somewhere else, and lately someone pitching AI avatars on top.
-              Four vendors, four invoices, four slightly different versions of
-              the same brand.
+              Most brands still run Meta as a set of disconnected jobs: a social agency posting to the grid, a performance buyer starving in Ads Manager for fresh hooks, a UGC broker chasing creators for usage rights, and an e-commerce manager nursing a broken catalog feed.
             </p>
             <p class="r" style="--d:.16s">
-              hubStudio keeps all four under one roof and one creative
-              director. Organic content, ad creative, UGC and avatar video come
-              off the same brief, take the same color grade, and pass the same
-              pair of eyes before they ship. The work holds together because
-              the team behind it does.
+              On modern Meta, media buying and creative velocity cannot be separated. Advantage+ relies on first-party CAPI signals and dozens of distinct creative angles to find new pockets of buyers. hubStudio unites organic channel management, full-funnel Meta Ads buying, creator whitelisting, social commerce and high-volume studio + AIGC production under one roof.
             </p>
           </div>
         </div>
@@ -364,14 +432,12 @@ const breadcrumbSchema = {
               loading="lazy"
             />
           </div>
-          <figcaption class="fig">Four lanes, one creative direction</figcaption>
+          <figcaption class="fig">Organic, Paid Media, Creators, Commerce & AIGC under one roof</figcaption>
         </figure>
 
         <div class="stats">
           <p class="stats__quote r">
-            One brief covers all four lanes. The same hands finish every
-            variant, and short-form work comes back as a first cut within
-            two days.
+            One integrated team handles organic channels, Advantage+ media buying, creator whitelisting, catalog commerce and studio creative, with new short-form cuts ready in 48 hours.
           </p>
           <div class="stats__grid">
             {
@@ -399,9 +465,9 @@ const breadcrumbSchema = {
     <section class="cover">
       <div class="shell">
         <header class="band">
-          <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
+          <p class="kicker r"><span class="kicker__tick"></span>Full-stack Meta capabilities</p>
           <h2 class="dh r" style="--d:.05s">
-            Four lanes, one <span class="serif">brand line</span>.
+            Everything you need to win <span class="serif">on Meta</span>.
           </h2>
         </header>
 
@@ -421,7 +487,7 @@ const breadcrumbSchema = {
                 <figcaption class="fig">{c.label} lane</figcaption>
               </figure>
               <div class="feature__body">
-                <p class="feature__idx r"><span class="feature__tick"></span>Lane</p>
+                <p class="feature__idx r"><span class="feature__tick"></span>Practice</p>
                 <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
                 {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
                 {c.body.map((para, pi) => (
@@ -439,6 +505,34 @@ const breadcrumbSchema = {
             </article>
           ))
         }
+
+        <div class="matrix">
+          <header class="matrix__head">
+            <p class="kicker r"><span class="kicker__tick"></span>Complete service catalog</p>
+            <h3 class="dh dh--sm r" style="--d:.05s">
+              Six Meta practices, modular or <span class="serif">end to end</span>.
+            </h3>
+            <p class="matrix__sub r" style="--d:.1s">
+              Engage us for full-service Meta agency management across Instagram, Facebook, Threads and WhatsApp, or plug specific media buying, creator whitelisting or studio AIGC lanes into your in-house growth team.
+            </p>
+          </header>
+          <div class="matrix__grid">
+            {
+              servicePillars.map((p, i) => (
+                <article class="mcard r" style={`--d:${(i % 3) * 0.07}s`}>
+                  <p class="mcard__eyebrow">{p.eyebrow}</p>
+                  <h4 class="mcard__title">{p.title}</h4>
+                  <p class="mcard__desc">{p.desc}</p>
+                  <ul class="mcard__list">
+                    {p.items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </div>
       </div>
     </section>
 
@@ -453,9 +547,7 @@ const breadcrumbSchema = {
             </h2>
           </div>
           <p class="band__note r" style="--d:.1s">
-            A handful of stills from recent Meta work, across all four lanes.
-            Each one was made for the exact surface it runs on, not resized
-            to fit.
+            A handful of stills from recent Meta programs across organic feeds, Advantage+ Reels, enriched catalog carousels, creator Partnership Ads and multilingual avatars.
           </p>
         </header>
 
@@ -507,26 +599,21 @@ const breadcrumbSchema = {
             />
           </figure>
           <div class="source__stat">
-            <span class="source__stat-num">1 brief</span>
-            <span class="source__stat-cap">Four lanes, every placement, every market</span>
+            <span class="source__stat-num">1 team</span>
+            <span class="source__stat-cap">Media buying, creators, commerce and studio AIGC</span>
           </div>
         </div>
 
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Partnership</p>
           <h2 class="dh r" style="--d:.05s">
-            Authored creative, <span class="serif">AI volume</span>.
+            Performance discipline, <span class="serif">studio velocity</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            The brands pulling ahead on Meta right now are not the ones with
-            the biggest tool subscription. They are the ones who kept their
-            creative process intact and put AI to work inside it.
+            The brands pulling ahead on Meta right now are not the ones with the biggest software stack. They are the ones uniting disciplined media buying with an authored creative studio that uses AI for volume.
           </p>
           <p class="source__p r" style="--d:.16s">
-            That gap is where we sit. On one side, directors, retouchers and
-            colorists. On the other, the AI engineers and the model-training
-            pipeline. They share a room, which is why the fiftieth variant
-            gets signed off as carefully as the first.
+            That is how we are built. Performance media buyers and CAPI engineers sit in the same room as creative directors, retouchers, colorists and AI model trainers. When an ad hook spikes in Ads Manager on Tuesday morning, our studio spins out ten new variations of it by Thursday.
           </p>
           <ul class="creds r" style="--d:.22s">
             {
@@ -541,14 +628,10 @@ const breadcrumbSchema = {
             }
           </ul>
           <p class="source__p r" style="--d:.26s">
-            Everything runs on our own infrastructure. Hosting sits in
-            mainland China, Hong Kong, the EU or the US, wherever your data
-            rules point. The models we train on your brand belong to you, and
-            you can take them along if the relationship ever ends.
+            Everything runs on our own infrastructure. Hosting sits in mainland China, Hong Kong, the EU or the US, wherever your data rules point. Your ad accounts, first-party Pixel/CAPI data and custom-trained brand models belong to you.
           </p>
           <p class="source__p source__p--quiet r" style="--d:.3s">
-            Some clients hand us the whole Meta operation. Others just want
-            the avatar lane. Both are fine by us.
+            Some clients hand us the entire Meta operation. Others plug our creative and avatar engine into their in-house media buyers. Both work seamlessly.
           </p>
         </div>
       </div>
@@ -556,28 +639,28 @@ const breadcrumbSchema = {
 
     <!-- APP OR STUDIO -->
     <PlatformAppBand
-      pre={'Run it '}
+      pre={'Publish '}
       accent={'yourself'}
-      post={' in the app, or have the studio run it.'}
+      post={' in the app, or have our agency & studio run it.'}
       paras={[
-        'One thing before the process: you can keep the account in-house. The hubStudio app publishes to Facebook pages and to Instagram professional accounts, as a feed post, a Story or a Reel, so your team runs the weekly posts from there and calls us for the work that needs a studio. Publishing itself costs nothing.',
+        'You can keep daily organic publishing in-house when you want to. The hubStudio app publishes directly to Facebook Pages and Instagram Professional accounts as Feed posts, Stories or Reels, while our agency and studio team handles Advantage+ media buying, creator whitelisting, catalog commerce and high-volume creative sprints.',
       ]}
       columns={[
         {
           title: 'What your team does in the app',
           items: [
-            'Renders the picture or the Reel with AI, or picks it from the library',
-            'Drafts the caption with AI, or writes it by hand',
-            'Publishes now or schedules it, to up to 20 accounts per post',
+            'Renders images or Reels with AI, or picks approved assets from the library',
+            'Drafts captions with AI or writes them by hand',
+            'Publishes immediately or schedules across up to 20 accounts per post',
             'Re-purposes one post for LinkedIn, TikTok or X',
           ],
         },
         {
-          title: 'What the studio adds',
+          title: 'What the agency & studio add',
           items: [
-            'Concepts, shoots, UGC and avatar work',
-            'Reels hooks and ad sets built for Advantage+ placements',
-            'Fifty variants that still look like the campaign',
+            'Full-funnel Meta Ads buying, Advantage+ & CAPI attribution',
+            'Creator seeding, Partnership Ads whitelisting & Meta Shops setup',
+            'Hero shoots, studio UGC, custom avatars & 50+ tested ad variants',
           ],
         },
       ]}
@@ -594,18 +677,15 @@ const breadcrumbSchema = {
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
-        <p class="kicker r"><span class="kicker__tick"></span>How a Meta campaign runs</p>
+        <p class="kicker r"><span class="kicker__tick"></span>How a Meta program runs</p>
         <h2 class="dh r" style="--d:.05s">
-          One brief,<br />every <span class="serif">placement</span>.
+          From tracking audit<br />to scaled <span class="serif">ROAS</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Every lane runs through the same five steps. The format changes
-          from one lane to the next. The process under it does not, and most
-          of what decides whether the work lands happens early, well before
-          launch day.
+          Organic management, Advantage+ media buying, creator whitelisting and high-velocity studio production follow one five-step loop. Most of what decides whether a campaign scales happens in the audit and architecture phase, before a dollar is spent.
         </p>
         <p class="craft__note r" style="--d:.16s">
-          The first two steps decide the campaign. Everything after is execution.
+          Lock the signal and the creative matrix first. Everything after is disciplined iteration.
         </p>
       </div>
 
@@ -884,6 +964,21 @@ const breadcrumbSchema = {
   .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 12px; font-weight: 500; transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
   .chip:hover { background: var(--brand-orange); border-color: var(--brand-orange); color: #fff; }
+
+  .matrix { margin-top: clamp(64px, 8vw, 112px); padding-top: clamp(48px, 6vw, 84px); border-top: 1.5px dashed var(--line-strong); }
+  .matrix__head { max-width: 720px; display: grid; gap: 16px; margin-bottom: clamp(32px, 4vw, 52px); }
+  .matrix__sub { font-size: var(--type-body); line-height: 1.62; color: var(--text-mute); }
+  .matrix__grid { display: grid; gap: 22px; }
+  @media (min-width: 720px) { .matrix__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1060px) { .matrix__grid { grid-template-columns: repeat(3, 1fr); } }
+  .mcard { background: var(--bg-white); border: 1px solid var(--line-strong); border-radius: 8px; padding: clamp(24px, 2.8vw, 32px); display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .mcard:hover { border-color: var(--brand-orange); transform: translateY(-2px); }
+  .mcard__eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
+  .mcard__title { font-family: var(--font-sans); font-size: clamp(19px, 1.8vw, 22px); font-weight: 600; line-height: 1.22; letter-spacing: -0.02em; color: var(--text-ink); }
+  .mcard__desc { font-size: 14.5px; line-height: 1.58; color: var(--text-mute); }
+  .mcard__list { margin: 8px 0 0; padding: 14px 0 0; border-top: 1px solid var(--line-hairline); list-style: none; display: grid; gap: 8px; }
+  .mcard__list li { position: relative; padding-left: 16px; font-size: 13px; line-height: 1.48; color: var(--text-ink); }
+  .mcard__list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 1.5px; background: var(--brand-orange); }
 
   /* Proof */
   .proof { background: var(--bg-white); padding-block: clamp(80px, 10vw, 150px); }

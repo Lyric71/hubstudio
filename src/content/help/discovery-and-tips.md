@@ -49,7 +49,7 @@ The page follows your own menu: it presents only the modules you can open, in th
 
 ![The Discovery page on a first visit: Welcome aboard, the greeting with Take the quick tour and Open the help center, the number of modules in the menu, and the map of the three pillars, Create, Publish and Library, around the AI layer](/Images/help/discovery-and-tips-page.webp)
 
-The page is laid out like your menu, in three pillars: **Create** makes the picture or the clip, **Publish** puts it on the networks, **Library** keeps it. **Agents** and **Skills**, the AI layer, work across all three.
+The page is laid out like your menu, in three pillars: **Create** makes the picture or the clip, **Publish** puts it on the networks and on your website, **Library** keeps it. **Agents** and **Skills**, the AI layer, work across all three.
 
 - **At the top**, a greeting with your first name, **Take the quick tour** and **Open the help center**, the number of modules in your menu, and a map of the three pillars around the AI layer. Point at a pillar or a module on the map to read what it does; click it to jump to it further down.
 - **A bar of sections** follows you down the page: **Start here**, **Create**, **Publish**, **Library**, **The AI layer**, **Your account** and **Help center**. Click one to go to it.

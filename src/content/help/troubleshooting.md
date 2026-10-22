@@ -5,7 +5,7 @@ description: "What hubStudio's messages mean and what to do: an empty balance, a
 excerpt: "The messages hubStudio shows when something stops, what each one means, and how to get going again."
 section: "help"
 order: 20
-updated: 2026-10-16
+updated: 2026-10-17
 appPaths: ["/content/image-generate", "/content/video", "/history", "/files", "/campaigns", "/files/tools/image-editor", "/team", "/billing", "/login", "/signup", "/invite", "/validation", "/client", "/my-connections", "/social/linkedin/posts", "/social/instagram/posts", "/social/facebook/posts", "/social/tiktok/posts", "/social/x/posts"]
 audience: "Everyone"
 related: ["balance-and-payments", "scratchpad", "agents", "getting-started", "create-an-image", "create-a-video", "assets-library", "your-team", "validation", "linkedin", "instagram", "facebook", "tiktok", "x", "client-space", "account-and-sign-in", "campaigns"]
@@ -51,7 +51,7 @@ A run that fails is never charged. A run that succeeds is charged the price show
 | **The generation took too long and was abandoned. Try a faster engine or a lower quality.** | The page could not reach hubStudio for several minutes while the picture rendered. | Look in [History](/help/history) first, since it may have finished; otherwise pick a faster engine or a lower quality. |
 | **The render took too long and was abandoned. Try a shorter duration or a faster engine.** | The page could not reach hubStudio for several minutes while the clip rendered. | Look in [History](/help/history) first, since it may have finished; otherwise shorten the clip or pick a faster engine. |
 | **The render took too long and was abandoned. Try again, or pick a faster engine.** | A picture or a clip took more than about five minutes and was stopped. | Pick a faster engine, a lower quality or a shorter clip, then run it again. |
-| **This render is no longer on record. If it finished, it is in the Assets Library.** | The run was cleared from **Activity** while the page was still waiting for it. | Look in [History](/help/history) before running it again. |
+| **This render is no longer on record. If it finished, it is in the Assets Library.** | The page lost track of the run it was waiting for. | Look in [History](/help/history), or in your [Log](/help/log), before running it again. |
 | **The render finished, but its answer was lost on the way. It is in the Assets Library.** | The picture or clip was made and saved, but it never reached the tab. | Open it from [History](/help/history). **Retry** would start a new run and bill it again. |
 | **The engine that made this image is no longer offered. Pick another one and generate again.** | The engine is not in your list any more, or you switched it off in **My models**. | Pick another engine, or switch it back on in **User Settings** > **My models**. |
 | **The images this run worked from were not kept, so it cannot be run again: upload them again on the left.** | Source images of an edit or an upscale are never stored. | Upload the images again. |

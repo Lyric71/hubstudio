@@ -2,18 +2,15 @@
 /**
  * Weibo · /solutions/platforms/weibo
  *
- * Editorial layout adapted from /solutions/platforms/meta. Same print-shop
- * primitives (crop marks, calibration color bar, mono figure labels, dashed
- * rules) reframed for Weibo: the four surfaces we ship creative into, the
- * AIGC mechanics for each, the partnership model.
+ * Full-service Weibo agency and AIGC production studio: Corporate Blue V
+ * account setup and verification, feed and nine-grid editorial, Fan Tong and
+ * Splash paid media buying, KOL and celebrity campaigns, Hot Search and Super
+ * Topic operations, social listening and PR reputation management, plus
+ * brand-owned avatar video.
  *
  * Per repo standards: no em-dashes (U+2014), no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
  * its canonical lowercase-h casing.
- *
- * SEO excerpt (25 words): hubStudio ships four lanes of creative into Weibo:
- * feed content, Fan Tong ads, Hot Search and topic kits, and avatar video,
- * all from one brief.
  */
 import Layout from '../../../layouts/Layout.astro';
 import Button from '../../../components/Button.astro';
@@ -27,30 +24,30 @@ const colourBar = [
 ];
 
 const stats = [
-  { from: 0, to: 4, suffix: '', label: 'Lanes we ship', note: 'Content, ad creative, topic, avatar' },
-  { from: 0, to: 50, suffix: '+', label: 'Variations per concept', note: 'From one signed-off master' },
-  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On feed posts and Fan Tong' },
+  { from: 0, to: 6, suffix: '', label: 'Service pillars', note: 'Setup, feed, Fan Tong ads, KOLs, Hot Search, listening & avatars' },
+  { from: 0, to: 50, suffix: '+', label: 'Variations per concept', note: 'For Fan Tong and topic seeding' },
+  { from: 0, to: 48, suffix: 'h', label: 'Brief to first cut', note: 'On feed posts and Fan Tong ads' },
 ];
 
 const samples = [
   {
     src: '/Images/weibo-sample-feed.jpg',
-    kind: 'Content · Weibo feed',
+    kind: 'Brand Account · Nine-grid feed',
     alt: 'A vertical phone held in soft window light, the screen showing a Weibo feed post with a circular profile avatar, a short caption line and a nine-image grid of warm editorial frames above the repost, comment and like row.',
   },
   {
     src: '/Images/weibo-sample-fantong.jpg',
-    kind: 'Ad creative · Fan Tong',
+    kind: 'Paid Media · Fan Tong',
     alt: 'A phone screen showing the Weibo timeline, a sponsored brand post with a wide image, a small gray promoted label under the advertiser name and a call-to-action button along the lower edge of the card.',
   },
   {
     src: '/Images/weibo-sample-splash.jpg',
-    kind: 'Ad creative · Splash',
+    kind: 'Paid Media · Open-Screen Splash',
     alt: 'A phone held vertically, the screen filled by a Weibo open-screen splash ad, a single bold brand image with a small skip-countdown button in the top corner of the interface.',
   },
   {
     src: '/Images/weibo-sample-topic.jpg',
-    kind: 'Topic · Hashtag page',
+    kind: 'Hot Search & KOL · Topic page',
     alt: 'A phone screen showing a Weibo topic page, a wide banner header with a hashtag title and a follower count above a ranked trending list and a feed of post cards.',
   },
   {
@@ -63,114 +60,153 @@ const samples = [
 const coverage = [
   {
     fig: 'B',
-    label: 'Content',
-    heading: 'Content. The feed, the nine-grid, long Weibo.',
+    label: 'Account Setup & Editorial',
+    heading: 'Blue V verification, nine-image grids and Long Weibo.',
     image: '/Images/weibo-content.jpg',
     alt: 'A phone held in both hands, the screen filled with a Weibo feed post, a circular profile avatar and name at the top, a short caption, a nine-image grid below it and a repost, comment and like row along the bottom of the card.',
-    lead: 'Editorial-grade organic content for the Weibo feed, written and produced by the studio.',
+    lead: 'From Corporate Blue V verification to daily Mandarin posts, nine-image grids, and Long Weibo editorials.',
     body: [
-      "We write and produce the organic side of a Weibo account. Short posts with an opening line strong enough to survive the scroll. The nine-image grid built as one composition, not nine crops that happen to sit together. Long-Weibo image essays. Video posts. The festival and trend pieces a brand needs to look present rather than absent.",
-      "Native Mandarin writers handle the copy. They post on Weibo themselves, every week, so the voice stays current instead of reading like a translated English draft. The grid gets finished image by image, retouched by the same hand that finished the campaign hero, then handed over ready to schedule. The posting cadence can climb without the brand line wandering off somewhere.",
+      "International brands can register and verify a Weibo Corporate Account (Blue V) using their overseas business license without a Chinese entity. We handle all document translation, compliance filings, profile buildout, custom tabs, and ongoing community management.",
+      "Our Shanghai editorial and studio team then runs your monthly calendar across short posts, nine-image grids designed as a single visual composition, Long Weibo image essays, video posts, and Chinese festival campaigns. Native Mandarin writers draft every post from scratch, while our studio finishes every grid frame to campaign standard.",
     ],
     tags: [
-      'Short posts', 'Nine-image grids', 'Long Weibo',
-      'Video posts', 'Festival editorials', 'Trend-reactive posts',
-      'Repost-chain assets', 'Always-on calendar',
+      'Corporate Blue V setup', 'Nine-image grids', 'Long Weibo essays',
+      'Native Mandarin copy', 'Festival & cultural drops', 'Video & poll posts',
+      'Comment & fan ops', 'Monthly publishing calendar',
     ],
   },
   {
     fig: 'C',
-    label: 'Ad creative',
-    heading: 'Ad creative. Built for Fan Tong.',
+    label: 'Paid Advertising',
+    heading: 'Weibo Ads. Full media buying on Fan Tong and Splash.',
     image: '/Images/weibo-ads.jpg',
     alt: 'A wide monitor showing the Weibo advertising creative library, a grid of Fan Tong in-feed and open-screen splash ad variants lined up in the placement preview panel.',
-    lead: 'Performance creative for every Weibo ad surface, produced at the volume the buying actually wants.',
+    lead: 'End-to-end media planning, competitor-follower targeting, and high-volume ad creative across every Weibo ad placement.',
     body: [
-      "Fan Tong ads that sit in the timeline like a post, not an interruption in it. Open-screen splash built for the one second after a user opens the app. Fan Headlines units, search creative, in-feed display. Each one is briefed against the placements your media team is buying, with the format range the auction rewards and the file names the reporting downstream can read.",
-      "Conversion frames, carousel cards, hook tests, retargeting cuts: they all go through the same studio pass. The last variant in a set still looks like the first one, not a faded photocopy of it.",
+      "We manage both the media buying and the creative production across Weibo's advertising platform. Our Shanghai buyers configure demographic, city, interest, keyword, and competitor-follower targeting, manage bidding and budget pacing, and report transparently on CPM, CPC, CPA, and ROAS.",
+      "Every format is in play: Fan Tong (Chaoji Fensi Tong) in-feed ads, Fan Headlines (Fensi Toutiao) to amplify top posts and KOL mentions, full-screen Open-Screen Splash takeovers, Weibo Search promotion, and Hashtag Topic ads. Alongside the buying, our AIGC studio produces fifty-plus visual and copy variants per campaign.",
     ],
     tags: [
-      'Fan Tong in-feed', 'Open-screen splash', 'Fan Headlines',
-      'Search creative', 'In-feed display', 'Carousel cards',
-      'Hook A/B testing', 'Retargeting variants',
+      'Fan Tong media buying', 'Open-Screen Splash ads', 'Fan Headlines boosting',
+      'Search & Topic promotion', 'Competitor-follower targeting', '50+ AIGC ad variants',
+      'Hook & grid A/B testing', 'Transparent CPA & ROAS',
     ],
   },
   {
     fig: 'D',
-    label: 'Topic',
-    heading: 'Topic. Hot Search and hashtag pages.',
+    label: 'Hot Search, Topics & KOLs',
+    heading: 'Hot Search campaigns, Super Topics and KOL amplification.',
     image: '/Images/weibo-topic.jpg',
     alt: 'A phone screen showing a Weibo topic page, a wide banner header with a hashtag title and a follower count, a ranked Hot Search list along the side and a feed of posts running down the page.',
-    lead: 'The visual identity and content kit for a Weibo topic push, built to land in the trending conversation.',
+    lead: 'End-to-end trending topic creation, KOL and celebrity waves, Super Topic communities, and seeding kits.',
     body: [
-      "A Hot Search push lives or dies on the kit behind it. We design the topic-page banner, the hashtag lockup and the pinned hero post. Then we build the seeding kit: dozens of on-brand posts in different voices and crop scales, so the conversation reads like people talking and not like a brand talking to itself. Every asset is cut for Hot Search timing and for the Super Topic page running alongside.",
-      "It is a volume problem as much as a design problem, and we staff it that way. Our writers are in Shanghai, on the same clock as the trending board, so if a moment breaks mid-campaign the reactive post can be drafted, finished and back with you the same afternoon.",
+      "Weibo is China's public town square, where product launches, brand collaborations, and cultural moments break nationwide on the Hot Search list. We plan and execute complete topic campaigns: creating and hosting the official `#Topic#` page, building and managing your brand's Super Topic (Chao Hua) fan community, and booking paid Hot Search and search-result placements.",
+      "To ignite the conversation, we source, audit for fake followers and bot engagement, and manage tiered Weibo KOLs, celebrities, and KOC seeding networks, backed by a studio-produced seeding kit of dozens of distinct visual and copy angles timed to peak traffic hours.",
     ],
     tags: [
-      'Topic-page banners', 'Hashtag lockups', 'Pinned hero posts',
-      'Seeding content kits', 'Super Topic pages', 'Creator-style posts',
-      'Hot Search timing', 'Trend-reactive drops',
+      'Hot Search campaigns', 'Hashtag page hosting', 'Super Topic (Chao Hua) ops',
+      'KOL & celebrity booking', 'Bot & fake-follower audits', 'Multi-voice seeding kits',
+      'Repost-chain mechanics', 'Same-day trend response',
     ],
   },
   {
     fig: 'E',
-    label: 'Avatar',
-    heading: 'Avatar. Spokespeople you own.',
+    label: 'Listening, PR & Avatars',
+    heading: 'Social listening, reputation management and brand avatars.',
     image: '/Images/weibo-avatar.jpg',
     alt: 'A phone screen showing a Weibo video post, an AI avatar presenter speaking to camera inside the post card, a video scrubber bar across the clip and a repost, comment and like row beneath it.',
-    lead: 'An avatar your brand owns outright, built to present on Weibo video and nowhere else.',
+    lead: 'Real-time sentiment monitoring and PR protection on China’s fastest-moving public feed, plus owned AI video hosts.',
     body: [
-      "We build and train it from scratch: a founder twin, a brand spokesperson, a product expert, or a cast with a different face for each market. The avatar presents to camera in Weibo video posts, hosts the clips inside a topic campaign, and narrates the long-Weibo explainers. One avatar covers every language Weibo serves.",
-      "Lip-sync is studio-tight, the look holds inside the brand book, and the rights sit with you for good. Refreshing a campaign never means another shoot, and a new market does not send you back to casting.",
+      "Because public conversations and consumer issues surface on Weibo first, we run continuous social listening across brand mentions, product reviews, and competitor activity. We track sentiment shifts daily, flag emerging PR risks early, and draft rapid-response statements and community replies in native Mandarin.",
+      "On the video side, we also build and train custom AI avatar spokespeople your brand owns outright: a founder twin, a brand presenter, or a product specialist that delivers weekly Weibo video updates and topic-campaign explainers without booking a camera crew.",
     ],
     tags: [
-      'Founder twin', 'Brand spokespeople', 'Product expert',
-      'Weibo video hosts', 'Topic-campaign clips', 'Multi-language video',
-      'Localized casts', 'Always-on avatar feed',
+      'Daily social listening', 'Sentiment & PR monitoring', 'Crisis response playbooks',
+      'Competitor benchmarking', 'Brand-owned AI avatars', 'Founder digital twins',
+      'Multi-language video', 'Monthly ROI dashboards',
     ],
   },
 ];
 
-const credentials = ['Private GPU infra', 'NDA & DPA', 'EU AI Act', 'Data sovereignty'];
+const servicePillars = [
+  {
+    eyebrow: 'Market Entry & Blue V',
+    title: 'Account Setup & Verification',
+    body: 'Register and verify your official Weibo Corporate Account (Blue V) using overseas or local business credentials. We handle document translation, Tencent/Sina compliance, custom tabs, and profile setup.',
+    items: ['Overseas Blue V registration', 'License translation & filing', 'Profile header & custom tabs', 'Pinned campaign architecture'],
+  },
+  {
+    eyebrow: 'Mandarin Editorial',
+    title: 'Content Strategy & Production',
+    body: 'Native Chinese copywriting and studio visual production in Shanghai. We publish short posts, cohesive nine-image grids, Long Weibo articles, video clips, and major Chinese festival campaigns.',
+    items: ['Nine-image grid compositions', 'Long Weibo editorial essays', 'Festival & trend tie-ins', 'Studio photography & AIGC'],
+  },
+  {
+    eyebrow: 'Paid Media Buying',
+    title: 'Weibo Advertising (Fan Tong & Splash)',
+    body: 'Full-funnel media buying across Fan Tong, Fan Headlines, Open-Screen Splash, Search Promotion, and Topic Ads, targeting by demographics, interests, keywords, and competitor followers.',
+    items: ['Fan Tong & Fan Headlines buying', 'Open-Screen Splash takeovers', 'Search & keyword promotion', '50+ studio creative variants'],
+  },
+  {
+    eyebrow: 'Influence & Endorsement',
+    title: 'KOL, Celebrity & KOC Campaigns',
+    body: 'End-to-end influencer marketing across top-tier Weibo celebrities, vertical KOLs, and KOC seeding networks. Every account is audited for fake followers and bot engagement before booking.',
+    items: ['Tiered KOL & celebrity sourcing', 'Bot & fake-follower auditing', 'Briefing, contracting & filing', 'Repost-chain amplification'],
+  },
+  {
+    eyebrow: 'Viral & Fan Communities',
+    title: 'Hot Search & Super Topic Ops',
+    body: 'Launch and host branded `#Hashtag#` pages, coordinate timed KOL and paid waves to climb Weibo Hot Search, and build loyal Super Topic (Chao Hua) fan communities.',
+    items: ['Branded hashtag page hosting', 'Hot Search launch orchestration', 'Super Topic community management', 'Multi-voice seeding kits'],
+  },
+  {
+    eyebrow: 'Intelligence, PR & Video',
+    title: 'Social Listening, PR & Avatars',
+    body: 'Monitor brand sentiment and competitor mentions in real time, protect brand reputation on China’s public square, and deploy custom AI avatar presenters for Weibo video.',
+    items: ['Daily mention & sentiment tracking', 'PR & reputation management', 'Brand-owned Mandarin AI avatars', 'Monthly attribution reporting'],
+  },
+];
+
+const credentials = ['Fan Tong & Splash Buyers', 'Overseas Blue V Setup', 'Private GPU infra', 'Data sovereignty'];
 
 const processSteps = [
   {
-    short: 'Brief',
+    short: 'Setup',
     tier: 'Where it is won',
-    title: 'Discovery and brief.',
-    body: 'One working session. We lock the goal, the audience, the Weibo surfaces in scope, the brand truth and the things you never want to see. You leave with a one-page strategic brief and an asset map, sorted by surface and by service lane.',
+    title: 'Blue V verification, listening audit and brief.',
+    body: 'We verify your Weibo Corporate Account, audit existing brand mentions, sentiment, and competitor topic share, and lock your editorial calendar, KOL tiers, and campaign KPIs.',
     image: '/Images/weibo-p1-brief.jpg',
     alt: 'A creative director and a brand lead at a studio table, a laptop between them showing the Weibo advertising dashboard alongside printed Weibo feed posts and a topic-page mock.',
   },
   {
     short: 'Direction',
     tier: 'Where it is won',
-    title: 'Creative direction across the four lanes.',
-    body: 'References locked, tone agreed, the posting voice set for the feed. We pick the AIGC and avatar models per surface. Content, ad creative, topic and avatar each get their own treatment. This is the step where a campaign becomes yours and not anyone else’s.',
+    title: 'Editorial, Topic and Fan Tong direction.',
+    body: 'We set the Mandarin posting voice, design the nine-grid and `#Topic#` visual system, shortlist audited KOLs and KOCs, structure the Fan Tong and Splash media plan, and train your brand LoRA and avatar models.',
     image: '/Images/weibo-p2-direction.jpg',
     alt: 'A storyboard wall with four columns of frame sketches labeled Content, Ads, Topic and Avatar, each column anchored by a printed Weibo phone mock.',
   },
   {
-    short: 'AIGC',
+    short: 'Production',
     tier: 'The rest is execution',
-    title: 'AIGC generation and authored finish.',
-    body: 'Generation runs lane by lane across the surfaces we agreed. Every output clears the studio retouch and the brand check before a media plan or a posting calendar ever sees it.',
+    title: 'Studio grids, seeding kits and AIGC scale.',
+    body: 'Our Shanghai writers, designers, and AIGC engineers produce the nine-image grids, Long Weibo essays, avatar videos, fifty-plus Fan Tong ad variants, and multi-voice topic seeding kits.',
     image: '/Images/weibo-p3-aigc.jpg',
     alt: 'A motion designer at a calibrated workstation, the main monitor showing a single Weibo nine-image grid post, the side panel showing the Weibo advertising creative library grid of variants.',
   },
   {
     short: 'Launch',
     tier: 'The rest is execution',
-    title: 'Launch. Per-surface, per-market.',
-    body: 'You get the assets in the formats Weibo actually serves: nine-image grids ready to schedule, Fan Tong and splash ads named for the ad platform, topic banners cut to the hashtag page. Tracking and creative naming are built so the reporting holds up later.',
+    title: 'Publishing, Fan Tong buying and Topic waves.',
+    body: 'We publish the daily feed, host the official `#Topic#` and Super Topic pages, trigger timed KOL and KOC waves, and manage Fan Tong, Fan Headlines, and Splash ad bidding.',
     image: '/Images/weibo-p4-launch.jpg',
     alt: 'A media buyer at a daylit studio desk, the calibrated monitor showing the Weibo advertising campaign dashboard with Fan Tong placements live.',
   },
   {
-    short: 'Adapt',
+    short: 'Optimize',
     tier: 'The rest is execution',
-    title: 'Adapt. Variants, refresh, season.',
-    body: 'Once the hero is signed off, the variant cascade lands in days. New audiences, new cities, new festivals, the next Hot Search moment. The brief does not change; the variants just keep coming.',
+    title: 'Social listening, reactive drops and ROI reporting.',
+    body: 'We monitor daily brand sentiment, jump on breaking cultural moments within hours, reallocate Fan Tong budget toward top-converting creatives, and deliver monthly attribution reports.',
     image: '/Images/weibo-p5-adapt.jpg',
     alt: 'A colorist at a calibrated grading suite, the main reference monitor showing a warm Weibo video frame paused on a product still, the Weibo interface elements visible at the screen edges.',
   },
@@ -178,44 +214,44 @@ const processSteps = [
 
 const faqs = [
   {
-    q: 'What exactly do you make for Weibo?',
-    a: 'Four lanes, one studio. Content is the organic feed: short posts, the nine-image grid, long Weibo and video. Ad creative is the paid side: Fan Tong in-feed, open-screen splash, Fan Headlines and search, all built for the Weibo ad platform. Topic is the visual kit behind a Hot Search or hashtag campaign. Avatar is the synthetic presenters, owned by your brand, for Weibo video. All four share one creative direction and one finishing pass, which is why the long tail looks like the hero.',
+    q: 'What Weibo services do you provide?',
+    a: 'We operate as a full-service Weibo agency and AIGC production studio in Shanghai and Hong Kong. Our six pillars cover Corporate Blue V account setup and verification; native Mandarin feed, nine-grid, and Long Weibo production; full-funnel paid advertising across Fan Tong, Fan Headlines, Splash, and Search; KOL, celebrity, and KOC campaigns; Hot Search hashtag and Super Topic community management; plus daily social listening, PR reputation management, and brand-owned avatar video.',
   },
   {
-    q: 'Who actually writes the posts?',
-    a: 'Native Mandarin writers who use Weibo themselves and post on it every week, not translators working off an English document. A Weibo post is written for the scroll from the first character: an opening that survives the feed, a grid composed as a set, a caption that fits the platform’s rhythm. The English brief sets the strategy. The post is written in Chinese, for a Chinese reader.',
+    q: 'Can an international brand open a verified Weibo account without a Chinese company?',
+    a: 'Yes. Foreign brands can register and verify a Weibo Corporate Account (Blue V) using their overseas business registration documents. We handle all document translation, compliance filings, and verification with Sina Weibo, which typically completes in two to three weeks.',
   },
   {
-    q: 'What does the Topic lane cover, and what does it not?',
-    a: 'It covers the creative kit behind a trending push: the topic-page banner, the hashtag lockup, the pinned hero post, and a seeding kit of on-brand posts in a range of voices. It doesn’t cover the media booking. We build the assets and time them for Hot Search; whoever runs your account places the paid promotion and briefs the creators. Plenty of brands want exactly that split.',
+    q: 'Do you manage Weibo paid advertising (Fan Tong, Splash, Search) as well as the creative?',
+    a: 'Yes. Our Shanghai media buyers plan, launch, and optimize campaigns inside Weibo’s ad platform across Fan Tong in-feed ads, Fan Headlines, Open-Screen Splash takeovers, Search Result Promotion, and Hashtag Topic ads. We target by demographics, city, interests, keywords, and even competitor followers, while our studio produces fifty-plus visual and copy variants per campaign.',
   },
   {
-    q: 'Can you produce feed content at the volume our plan needs?',
-    a: 'Yes, and volume is really the point here. One hero shoot or one AIGC sprint produces the master, and the variants land per audience and per city inside days. The first variant carries most of the cost; each one after it costs far less. LoRA models trained on your brand keep every frame and every grid on-brand.',
+    q: 'Do you run full Hot Search and Super Topic campaigns, including KOL booking?',
+    a: 'Yes. We do both the creative kit and the full campaign execution. We create and host the official `#Topic#` page, manage your Super Topic (Chao Hua) fan community, book paid topic and search placements, produce the multi-voice seeding kit, and coordinate timed waves of audited KOLs, celebrities, and KOCs to drive topic reads and organic discussion.',
   },
   {
-    q: 'How do you keep the brand line steady across four lanes?',
-    a: 'The hero concept is signed off once, in the direction step. After that, every variant in every lane runs the same retouch pass, the same color grade and the same brand-safety check. The studio is the thing that keeps feed content, ad creative, topic kits and avatar video reading as one campaign instead of four that drifted apart.',
+    q: 'How do you vet Weibo KOLs for fake followers and bot engagement?',
+    a: 'Inflated follower counts and repost bots are common on Weibo if you only look at surface numbers. Before we recommend any creator, we audit their audience quality, historical comment-to-repost ratios, active fan percentage, and past brand campaign performance so your budget goes to creators who actually move readers.',
   },
   {
-    q: 'How fast is a feed post or a Fan Tong ad?',
-    a: 'Short-form work for an existing brand runs 24 to 72 hours, brief to first cut. A new brand or a new product needs a one-time onboarding to lock the treatment, the LoRA models and the avatar; after that, a weekly drop at production-grade quality is the normal tempo. When Hot Search demands it, a reactive piece can turn around inside a day.',
+    q: 'Do you offer social listening and reputation management on Weibo?',
+    a: 'Yes. Because Weibo is China’s public square where consumer feedback and PR issues break first, we monitor brand mentions, product keywords, and competitor activity daily. We track sentiment trends, alert your team early if an issue surfaces, and draft culturally fluent Mandarin responses.',
   },
   {
-    q: 'What does this cost?',
-    a: 'Pricing follows the lanes you take, the volume per month and whether avatar work is in scope. Most engagements run as a monthly retainer across one or more lanes, with project rates for one-off campaigns. Send the brief and a scope outline with an indicative cost comes back inside 48 hours, before anything is committed.',
+    q: 'What does a Weibo engagement cost?',
+    a: 'We scope engagements modularly across Blue V setup, monthly account and Super Topic management, Fan Tong media buying, KOL and Hot Search campaigns, social listening, and AIGC studio production. Paid media spend and KOL fees pass through transparently. Send us your brief and we return a clear scope and quote within 48 hours.',
   },
   {
-    q: 'How do you keep the work from looking AI-generated?',
-    a: 'Every output goes through a studio retouch pass: dodge and burn, a grain pass, slight chromatic aberration, a color grade in Lightroom or Capture One. Our image style guide lists the tells we hunt for: poreless skin, identical bokeh, melted product detail, text that is almost a word. A human signs off the final file before any media plan or posting calendar sees it. That pass is the gap between an AI image and a campaign image.',
+    q: 'How do you keep AI-assisted visuals from looking artificial?',
+    a: 'Every output from our AIGC pipeline goes through a human retouch pass in our Shanghai studio: dodge and burn, film grain, optical detail, and color grading in Lightroom or Capture One. Native Mandarin editors and art directors sign off every post and nine-image grid before publication.',
   },
   {
-    q: 'Can you white-label this for our agency?',
-    a: 'Yes. A good share of our Weibo work runs under agency brands, white-label, with the collaboration kept confidential. The agency holds the relationship and the client conversation. We supply the production capacity behind it.',
+    q: 'Can you white-label your Weibo services for our agency?',
+    a: 'Yes. We partner with international PR, social, and media agencies on a white-label basis under NDA. Your agency holds the client relationship while our Shanghai team executes the Blue V setup, Mandarin editorial, Fan Tong buying, KOLs, Hot Search campaigns, and studio production.',
   },
   {
-    q: 'Who owns the assets, the masters and the trained models?',
-    a: 'You do: every finished asset, every master, and any LoRA, fine-tuned or avatar model trained on your IP. Commercial-use rights for AIGC outputs run through enterprise tiers that grant commercial use. For the full legal detail, see our Copyright and AI guide.',
+    q: 'Who owns the Weibo account, assets, masters and trained models?',
+    a: 'You do. Your verified Weibo Corporate Account, ad account, finished creative masters, and any LoRA or avatar models trained on your IP belong to your company permanently. For full legal details, see our Copyright and AI guide.',
     link: { match: 'Copyright and AI guide', href: '/resources/copyright-and-ai' },
   },
 ];
@@ -242,8 +278,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="Weibo AIGC: Feed, Ad & Hot Search Creative | hubStudio"
-  description="AIGC for Weibo: feed content, Fan Tong ads, Hot Search and topic campaigns, and avatar video, made inside a working studio. One brief, every surface."
+  title="Weibo Agency & AIGC Studio: Feed, Fan Tong Ads, KOLs & Hot Search | hubStudio"
+  description="Full-service Weibo agency and AIGC studio: Blue V setup, nine-grid editorial, Fan Tong and Splash ads, KOLs, Hot Search and Super Topics, social listening, and avatars."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -264,25 +300,25 @@ const breadcrumbSchema = {
             <span class="kicker__sep">/</span> Weibo
           </p>
           <h1 class="hero__title">
-            <span class="line"><span class="line__i">Four lanes,</span></span>
-            <span class="line"><span class="line__i serif">one Weibo brief.</span></span>
-            <span class="line"><span class="line__i">AIGC, in scale.</span></span>
+            <span class="line"><span class="line__i">Full-service</span></span>
+            <span class="line"><span class="line__i serif">Weibo campaigns.</span></span>
+            <span class="line"><span class="line__i">AIGC, at scale.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Content. Ad creative. Topic. <em>Avatar.</em>
+            Blue V &amp; Feed. Fan Tong Ads. KOLs. Hot Search. <em>Listening &amp; Avatars.</em>
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              We make four kinds of work for Weibo. Organic posts for the feed
-              and the nine-image grid. Paid creative for Fan Tong and the
-              open-screen splash. The visual kit behind a Hot Search or topic
-              campaign. And avatar presenters for Weibo video that your brand
-              owns.
+              We run your entire Weibo presence from Shanghai: Corporate Blue V
+              verification, daily Mandarin posts and nine-image grids,
+              full-funnel media buying across Fan Tong and Open-Screen Splash,
+              audited KOL and celebrity campaigns, Hot Search and Super Topic
+              operations, plus daily social listening.
             </p>
             <p>
-              One brief covers all four lanes. One signed-off direction becomes
-              the fifty variants a market rollout needs. AIGC inside a working
-              production company, not in place of one.
+              Underneath the agency team sits our AIGC production studio,
+              turning one approved creative direction into fifty-plus ad and
+              topic-seeding variants, plus brand-owned avatar video hosts.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
@@ -295,7 +331,7 @@ const breadcrumbSchema = {
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Hong Kong + Shanghai <span>/</span> Weibo-native creative under one director
+            Hong Kong + Shanghai <span>/</span> Full-service Weibo agency &amp; AIGC studio
           </p>
         </div>
       </div>
@@ -323,22 +359,23 @@ const breadcrumbSchema = {
           <div class="why__head">
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why it matters</p>
             <h2 class="dh r" style="--d:.05s">
-              What we ship<br /><span class="serif">into Weibo</span>.
+              Everything we do<br /><span class="serif">on Weibo</span>.
             </h2>
           </div>
           <div class="why__text">
             <p class="r" style="--d:.1s">
-              Four service lanes, and we run all of them, start to finish.
-              Organic content for the feed and the nine-image grid, written by
-              native Mandarin hands. Paid creative for every Weibo ad surface.
-              The visual kit behind a Hot Search or topic campaign. Avatar
-              presenters for Weibo video that the brand owns outright.
+              With nearly 600 million monthly active users, Weibo is China's
+              real-time public square where national trends, celebrity
+              endorsements, and brand launches break into the open. Winning on
+              the platform takes more than feed graphics: it requires Blue V
+              authority, Fan Tong and Splash media buying, KOL waves, Hot
+              Search orchestration, and active reputation monitoring.
             </p>
             <p class="r" style="--d:.16s">
-              One creative direction runs across all four. The hands that
-              retouch the hero image, the one frame everyone signs off on,
-              finish every variant after it, so the last cut looks like the
-              campaign and not a thinned-out copy of it.
+              We run all six pillars under one roof in Shanghai and Hong Kong,
+              pairing licensed media buyers, KOL managers, and Mandarin writers
+              with an AIGC studio that delivers fifty-plus visual and seeding
+              variants per campaign.
             </p>
           </div>
         </div>
@@ -353,14 +390,14 @@ const breadcrumbSchema = {
               loading="lazy"
             />
           </div>
-          <figcaption class="fig">Four lanes, one creative direction</figcaption>
+          <figcaption class="fig">Six Weibo pillars, one integrated Shanghai &amp; Hong Kong operation</figcaption>
         </figure>
 
         <div class="stats">
           <p class="stats__quote r">
-            One brief, four lanes, the same hands on every frame. A signed-off
-            master becomes the fifty-plus variants a market rollout needs, and
-            on short-form work the first cut is back inside two days.
+            One brief across Blue V account management, Fan Tong and Splash ad
+            buying, KOL and Hot Search campaigns, social listening, and studio
+            AIGC production.
           </p>
           <div class="stats__grid">
             {
@@ -390,7 +427,7 @@ const breadcrumbSchema = {
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>The work, defined</p>
           <h2 class="dh r" style="--d:.05s">
-            Four lanes, one <span class="serif">brand line</span>.
+            Feed, ads and Hot Search, <span class="serif">connected</span>.
           </h2>
         </header>
 
@@ -410,7 +447,7 @@ const breadcrumbSchema = {
                 <figcaption class="fig">{c.label} surface</figcaption>
               </figure>
               <div class="feature__body">
-                <p class="feature__idx r"><span class="feature__tick"></span>Surface</p>
+                <p class="feature__idx r"><span class="feature__tick"></span>Pillar</p>
                 <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
                 {c.lead && <p class="feature__lead r" style="--d:.1s">{c.lead}</p>}
                 {c.body.map((para, pi) => (
@@ -428,6 +465,31 @@ const breadcrumbSchema = {
             </article>
           ))
         }
+
+        <div class="matrix">
+          <header class="matrix__head">
+            <p class="kicker r"><span class="kicker__tick"></span>Complete service catalog</p>
+            <h3 class="dh dh--sm r" style="--d:.05s">
+              Six Weibo pillars, <span class="serif">end to end</span>.
+            </h3>
+          </header>
+          <div class="matrix__grid">
+            {
+              servicePillars.map((p, i) => (
+                <article class="mcard r" style={`--d:${(i % 3) * 0.08}s`}>
+                  <p class="mcard__eyebrow">{p.eyebrow}</p>
+                  <h4 class="mcard__title">{p.title}</h4>
+                  <p class="mcard__body">{p.body}</p>
+                  <ul class="mcard__list">
+                    {p.items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </div>
       </div>
     </section>
 
@@ -496,27 +558,21 @@ const breadcrumbSchema = {
             />
           </figure>
           <div class="source__stat">
-            <span class="source__stat-num">1 brief</span>
-            <span class="source__stat-cap">Four lanes, every surface, every market</span>
+            <span class="source__stat-num">1 team</span>
+            <span class="source__stat-cap">Blue V, topics, Fan Tong ads, KOLs and studio creative</span>
           </div>
         </div>
 
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Partnership</p>
           <h2 class="dh r" style="--d:.05s">
-            Authored creative, <span class="serif">AI volume</span>.
+            Public relations strategy, <span class="serif">studio velocity</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            The Weibo brands that compound their results are not the ones with
-            the biggest tool stack. They are the ones running an authored
-            creative process with AIGC sitting inside it.
+            The international brands that compound their reach on Weibo do not split account operations, hashtag campaigns, Fan Tong media buying and creative production across disconnected vendors. They run them under one roof.
           </p>
           <p class="source__p r" style="--d:.16s">
-            We work in the gap between the technical and the creative: a real
-            studio, with directors, writers, retouchers and colorists, next to
-            the AIGC engineers and the model-training pipeline. Every variant
-            carries the same brand discipline as the hero, because the same
-            people sign it off.
+            We combine native mainland Chinese PR and social operators, Fan Tong media buyers, KOL and Super Topic managers, and an authored creative studio powered by proprietary AIGC and model-training pipelines. Every post, topic kit, ad variant and crisis response carries the same brand discipline.
           </p>
           <ul class="creds r" style="--d:.22s">
             {
@@ -531,10 +587,7 @@ const breadcrumbSchema = {
             }
           </ul>
           <p class="source__p r" style="--d:.26s">
-            Everything runs on private infrastructure. Hosting sits in mainland
-            China, Hong Kong, the EU or the US, depending on where your data
-            has to live. The models we train on your brand stay your property,
-            and you can take them with you if you ever go.
+            Everything runs on private infrastructure with full PIPL compliance. Hosting sits in mainland China, Hong Kong, the EU or the US, depending on where your data has to live. Your verified Enterprise Blue V account, Fan Tong ad accounts, first-party data and custom brand models remain 100% your property.
           </p>
           <p class="source__p source__p--quiet r" style="--d:.3s">
             We step in where you need us, and step back where you do not.
@@ -545,12 +598,12 @@ const breadcrumbSchema = {
 
     <!-- APP OR STUDIO -->
     <PlatformAppBand
-      pre={'Weibo work comes from the '}
-      accent={'studio'}
+      pre={'Weibo work runs through our '}
+      accent={'agency and studio'}
       post={'.'}
       paras={[
-        'We make the feed posts, Fan Tong ads, topic kits and avatar video on this page. Whoever runs your Weibo account posts them and books the media. The hubStudio app doesn’t publish to Weibo.',
-        'Your team can still make images and video in the app and pass them to us to finish, or straight to your account team. Our files arrive finished and sized for each surface.',
+        'We handle Blue V verification, daily publishing, Super Topics, hashtag campaigns, KOL amplification, Fan Tong paid media buying, social listening and studio AIGC creative on this page. We can run your entire Weibo presence end to end, or plug directly into your China PR and marketing team.',
+        'Your team can also generate images and video inside the hubStudio app and pass them to us for mainland localization, topic packaging, KOL seeding or Fan Tong ad deployment.',
       ]}
       actions={[
         { label: 'Send a brief', href: `${BRIEF_URL}?way=studio`, kind: 'primary' },
@@ -561,18 +614,15 @@ const breadcrumbSchema = {
     <!-- S6 · PROCESS -->
     <section class="craft" id="craft">
       <div class="shell craft__intro">
-        <p class="kicker r"><span class="kicker__tick"></span>How a Weibo campaign runs</p>
+        <p class="kicker r"><span class="kicker__tick"></span>How a Weibo program runs</p>
         <h2 class="dh r" style="--d:.05s">
-          One brief,<br />every <span class="serif">surface</span>.
+          From Blue V setup<br />to national <span class="serif">buzz</span>.
         </h2>
         <p class="craft__lede r" style="--d:.12s">
-          Feed posts, Fan Tong ads, topic kits and avatar video share one
-          brand line and one process. The format shifts from lane to lane; the
-          discipline underneath it does not. A campaign is won in the
-          direction, long before the launch.
+          Account verification, editorial publishing, hashtag campaigns, Fan Tong ads, KOL amplification and social listening share one brand line and one integrated process.
         </p>
         <p class="craft__note r" style="--d:.16s">
-          Get the first two steps right and the rest is mostly execution.
+          Get the positioning and topic mechanics right first, and every launch compounds.
         </p>
       </div>
 
@@ -851,6 +901,21 @@ const breadcrumbSchema = {
   .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 12px; font-weight: 500; transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
   .chip:hover { background: var(--brand-orange); border-color: var(--brand-orange); color: #fff; }
+
+  .matrix { margin-top: clamp(64px, 8vw, 112px); padding-top: clamp(48px, 6vw, 84px); border-top: 1.5px dashed var(--line-strong); }
+  .matrix__head { max-width: 720px; display: grid; gap: 16px; margin-bottom: clamp(32px, 4vw, 52px); }
+  .matrix__sub { font-size: var(--type-body); line-height: 1.62; color: var(--text-mute); }
+  .matrix__grid { display: grid; gap: 22px; }
+  @media (min-width: 720px) { .matrix__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1060px) { .matrix__grid { grid-template-columns: repeat(3, 1fr); } }
+  .mcard { background: var(--bg-white); border: 1px solid var(--line-strong); border-radius: 8px; padding: clamp(24px, 2.8vw, 32px); display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .mcard:hover { border-color: var(--brand-orange); transform: translateY(-2px); }
+  .mcard__eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
+  .mcard__title { font-family: var(--font-sans); font-size: clamp(19px, 1.8vw, 22px); font-weight: 600; line-height: 1.22; letter-spacing: -0.02em; color: var(--text-ink); }
+  .mcard__desc { font-size: 14.5px; line-height: 1.58; color: var(--text-mute); }
+  .mcard__list { margin: 8px 0 0; padding: 14px 0 0; border-top: 1px solid var(--line-hairline); list-style: none; display: grid; gap: 8px; }
+  .mcard__list li { position: relative; padding-left: 16px; font-size: 13px; line-height: 1.48; color: var(--text-ink); }
+  .mcard__list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 1.5px; background: var(--brand-orange); }
 
   /* Proof */
   .proof { background: var(--bg-white); padding-block: clamp(80px, 10vw, 150px); }

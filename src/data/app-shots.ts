@@ -120,6 +120,20 @@ export const appShots = {
     alt: 'A campaign’s page in hubStudio: a dark band with All campaigns, Add assets and Delete the campaign above the name and brief of the Lumera Essence launch and tiles counting images, videos, texts, and documents, then the Name and brief card with Save, and In this campaign with four files, each with In the library and Remove, two with Open in its module.',
     caption: 'A campaign’s page: its name and brief, tiles by type, and the files in it.',
   },
+  web: {
+    src: '/Images/app/web.webp',
+    width: 1440,
+    height: 532,
+    alt: 'The Web page in hubStudio, with Web highlighted in the side menu, a dark band with Add a site and tiles counting sites, published pages, pages in progress, and stopped runs, and the card of the Lumera Skincare Journal site showing its repository, published, in progress, waiting and in review counts, its languages, its live address and its publisher.',
+    caption: 'The Web page: one card per website repository, with its queue counts, languages and publisher.',
+  },
+  webPage: {
+    src: '/Images/app/webPage.webp',
+    width: 1176,
+    height: 888,
+    alt: 'A website’s page in hubStudio on the Queue & Test Run tab: the Publication Queue on the left and the selected brief on the right showing its 12 steps from Research to Published, model and context controls, and Brief & AI, Log, Versions and Files tabs.',
+    caption: 'A site’s workspace: the publication queue, the 12-step pipeline, and AI controls for every brief.',
+  },
   editorEffects: {
     src: '/Images/app/editorEffects.webp',
     width: 1440,
@@ -371,5 +385,12 @@ export const appShots = {
     height: 654,
     alt: 'The My Connections page in hubStudio, "Your social accounts": step-by-step cards to connect LinkedIn, Instagram, Facebook and TikTok, each with a Connect an account button.',
     caption: 'My Connections: link LinkedIn, Instagram, Facebook, TikTok and X to publish in your name.',
+  },
+  partnerCommissions: {
+    src: '/Images/app/partnerCommissions.webp',
+    width: 1440,
+    height: 396,
+    alt: 'The Partner area in hubStudio open on Commissions: the Partner menu in the side bar with Users, Invitations and Commissions, five summary tiles starting with Your rate at 10%, Teams, Users, They paid us and You earned, and the Your accounts section below.',
+    caption: 'The Partner area in hubStudio: Users, Invitations, and Commissions in the side menu, with your rate and every account you brought.',
   },
 } satisfies Record<string, AppShot>;

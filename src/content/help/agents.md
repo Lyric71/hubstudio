@@ -5,7 +5,7 @@ description: "The Social publishing watcher, agents you create from scratch over
 excerpt: "Agents re-read your publishing on every network on a schedule and tell you what changed, with the real dates, networks and post titles."
 section: "agents"
 order: 14.5
-updated: 2026-10-16
+updated: 2026-10-17
 appPaths: ["/agents", "/agents/organization", "/agents/catalog", "/agents/runs"]
 audience: "Everyone; Creators and Admins add, change and run agents; team agents are for Admins"
 related: ["linkedin", "instagram", "facebook", "tiktok", "youtube", "x", "validation", "campaigns", "assets-library", "balance-and-payments", "your-team"]
@@ -23,19 +23,19 @@ shots:
     clip: "the Add Social publishing watcher dialog, Scope tab"
     alt: "The Scope tab of the agent form for the Social publishing watcher: Posts and Publishing and scheduling under Modules and features, both set to Reads, with Add a module or feature, Data it reads, then AI with A text model, the model and its price, and Web search"
     captured: 2026-10-16
-sources: ["src/pages/agents/index.astro", "src/pages/agents/organization.astro", "src/pages/agents/catalog.astro", "src/pages/agents/runs.astro", "src/scripts/agentsAdminPanel.ts", "src/scripts/agentForm.ts", "src/styles/agent-form.css", "src/scripts/modelPicker.ts", "src/lib/agents/declared-scope.ts", "src/scripts/agentsCatalog.ts", "src/scripts/agentRunsPanel.ts", "src/lib/agents/watchers.ts", "src/lib/agents/data-sources.ts", "src/lib/agents/external-sources.ts", "src/lib/campaigns.ts", "src/lib/agents/agent-spend.ts", "src/lib/agents/agent-web.ts", "src/lib/agents/scheduler.ts", "src/lib/agents/run-notify.ts", "src/pages/api/agents/run.ts", "src/pages/api/agents/runs.ts", "src/pages/api/agents/settings.ts", "src/lib/app.ts", "public/apps/hubstudio/vocabulary.js", "vercel.json"]
+sources: ["src/components/AgentsNav.astro", "src/pages/agents/index.astro", "src/pages/agents/organization.astro", "src/pages/agents/catalog.astro", "src/pages/agents/runs.astro", "src/scripts/agentsAdminPanel.ts", "src/scripts/agentForm.ts", "src/styles/agent-form.css", "src/scripts/modelPicker.ts", "src/lib/agents/declared-scope.ts", "src/scripts/agentsCatalog.ts", "src/scripts/agentRunsPanel.ts", "src/lib/agents/watchers.ts", "src/lib/agents/data-sources.ts", "src/lib/agents/external-sources.ts", "src/lib/campaigns.ts", "src/lib/agents/agent-spend.ts", "src/lib/agents/agent-web.ts", "src/lib/agents/scheduler.ts", "src/lib/agents/run-notify.ts", "src/pages/api/agents/run.ts", "src/pages/api/agents/runs.ts", "src/pages/api/agents/settings.ts", "src/lib/app.ts", "public/apps/hubstudio/vocabulary.js", "vercel.json"]
 ---
 
 An **agent** watches part of your team's work for you. On a schedule, it re-reads its data, compares it with what it saw last time, and reports what changed as **findings**: short alerts with the real dates, networks and post titles, and a suggested next step.
 
-Nothing runs until someone adds an agent. Click **Agents** at the top of the page, beside **Skills** (on a phone, at the top of the menu): its pages share four tabs.
+Nothing runs until someone adds an agent. Click **Agents** at the top of the page, beside **Skills** (on a phone, at the top of the menu). It opens on the **Personal** tab. Agents has no entries in the left menu: you move between its pages with four tabs at the top, and the browser tab names the page you are on.
 
-| Page | Tab | What it holds |
+| Tab | Page name in the browser tab | What it holds |
 |---|---|---|
-| **My agents** | **Personal** | Your own agents: the only ones you edit, test and duplicate. They spend your own budget. |
-| **Team agents** | **Team** | The agents shared across the team. Admins only. |
-| **Catalog** | **Catalog** | The standard agents, open to everyone. |
-| **Runs** | **Agents Command Room** | What is running, what is switched on, and every previous run. |
+| **Personal** | **Personal agents** | Your own agents: the only ones you edit, test and duplicate. They spend your own budget. |
+| **Team** | **Team agents** | The agents shared across the team. Admins only. |
+| **Agents Command Room** | **Agents Command Room** | What is running now, what is switched on, and the previous runs. |
+| **Catalog** | **Agent catalog** | The standard agents, open to everyone. |
 
 ## The Social publishing watcher
 
@@ -55,25 +55,30 @@ A network you never posted on is left out. YouTube videos are uploaded by hand f
 
 The agent only reads what the person it runs for can see: a draft its author keeps private is left out. A post already published counts, whoever wrote it.
 
-## Add the standard agent
+## The Web editor
 
-1. Open **Agents** > **Catalog**.
+The second standard agent in the **Catalog** works alongside [Web](/help/web). On its schedule (by default once a week), it reads the websites connected in **Web**, their published articles, their queued briefs and their site instructions, searches the web for timely industry angles, and either proposes fresh article briefs into the site queue or flags queued articles waiting for review or retry.
+
+## Add a standard agent
+
+1. Click **Agents**, then the **Catalog** tab.
 2. Click **View details** to read the agent in full before you take it: what it reads, the model it runs on, how often it runs, whether it searches the web, and its instructions.
 3. Click **Add to my agents**. The agent form opens, already filled in with the standard setup. Change anything you want, then confirm with **Add the agent**.
 
-The agent joins **My agents**, switched on, and the Catalog card now reads **In my agents**. The Catalog itself stays as shipped.
+The agent joins your own agents on the **Personal** tab, switched on, and the Catalog card now reads **In my agents**. The Catalog itself stays as shipped.
 
-You can also add it from the bottom of **My agents**: unfold **Add an agent** and click **Add** next to the agent.
+You can also add it from the bottom of the **Personal** tab: unfold **Add an agent** and click **Add** next to the agent.
 
 ## Create an agent from scratch
 
 A custom agent reads the data you pick and follows instructions you write: a weekly check of one client's campaign, a watch on the Instagram drafts only, a reminder of what waits for approval.
 
-1. Open **Agents** > **My agents**.
+1. Click **Agents**. It opens on the **Personal** tab.
 2. Unfold **Create an agent from scratch**.
 3. Fill in the form (see below). On the **Scope** tab, under **Data it reads**, tick what it should read:
    - **Social activity**: the social content of the last 30 days, what was drafted, planned and published.
    - **Social publishing**: the posts of every network, network by network, over the last 30 days and the next 14: published, scheduled, failed, and the drafts waiting.
+   - **Web publishing**: the websites connected in [Web](/help/web), their article queue, their recent pipeline runs and their published articles.
    - **From the Assets Library**: any of your team's [campaigns](/help/campaigns), listed first and marked **Campaign**, and any folder or document of the library. A campaign brings its brief and every asset in it, pictures and clips by their prompt. A folder brings every document in it and in its subfolders. PDF, Word, Excel, Markdown and text files are read; pictures and clips are left aside. Every download is billed like one from the Assets Library. Past six entries, a search box (**Search a campaign, a folder or a document**) narrows the list.
 4. On the **General** tab, write its **Instructions**: what it should look for in that data, what counts as a finding, and what it should ignore. **Improve with AI**, next to the box, writes them for you from the agent's name and scope, or rewrites what you typed.
 5. Click **Create the agent**. It starts switched on.
@@ -111,7 +116,7 @@ An agent you are creating from scratch shows a shorter **Scope** until it exists
 
 ## Manage your agents
 
-On **My agents**, each agent card shows its name, whether it is **on** and how often it runs, the model it runs on and what it reads. On each card:
+On the **Personal** tab, each agent card shows its name, whether it is **on** and how often it runs, the model it runs on and what it reads. On each card:
 
 - **On** / **Off**: switches the agent on or off. Switched off, it keeps its setup but stops running.
 - **Edit & test**: opens the form. Click **Save** to keep your changes.
@@ -128,11 +133,11 @@ A switched-on agent runs on its schedule. The scheduler makes one pass a day, an
 
 A run skips the AI call entirely, and costs nothing, when nothing changed since the last pass or when there is nothing to read yet (no post on any network, for example).
 
-To run an agent now, open **Agents** > **Runs** and click **Run now** next to it.
+To run an agent now, click **Agents**, open the **Agents Command Room** tab and click **Run now** next to the agent.
 
 ## The Agents Command Room
 
-**Runs** opens the **Agents Command Room**.
+The **Agents Command Room** tab shows which agents are running, which are switched on and when they run next, and everything they did, in three lists from top to bottom.
 
 ![The Agents Command Room tab: Running now, Switched on and Previous runs with the Agents of filter](/Images/help/agents-runs.webp)
 
@@ -161,10 +166,10 @@ A run that skipped the AI, because nothing changed or there was nothing to read,
 
 **Team agents** (the **Team** tab) is for Admins. The agents added there are shared: they run for the whole team, and their runs are paid by the team.
 
-- **Create an agent from scratch** at the top and **Add an agent** at the bottom work as on My agents.
+- **Create an agent from scratch** at the top and **Add an agent** at the bottom work as on the **Personal** tab.
 - **Configure** picks what you set up, for example the team's agents, or one member's personal agents, managed on their behalf.
 
-Members see the team's agents on **My agents**, under **Your team's agents**. **View details** shows one in full, and **Add to my agents** makes a copy of their own, which they change, run and schedule, and whose runs are billed to them. The team's agent stays as it is.
+Members see the team's agents on the **Personal** tab, under **Your team's agents**. **View details** shows one in full, and **Add to my agents** makes a copy of their own, which they change, run and schedule, and whose runs are billed to them. The team's agent stays as it is.
 
 A team agent reads only what the whole team may see: a draft its author keeps private is left out of its runs.
 
@@ -185,7 +190,7 @@ The price of every run that reached the AI is shown in **Previous runs** and in 
 
 | Role | Agents |
 |---|---|
-| Admin | Everything below, plus **Team agents**, every member's runs in the Agents Command Room, and **Run now** on any agent. |
+| Admin | Everything below, plus the **Team** tab, every member's runs in the Agents Command Room, and **Run now** on any agent. |
 | Creator | Adds, creates, edits, tests, duplicates and runs their own agents. |
 | Viewer | Opens the Agents pages and reads how agents are set up, but can't add, change, test or run one: "Your role is read-only, so you can look at how these agents are set up but not change them or run a test." |
 | Client | No access. |

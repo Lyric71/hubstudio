@@ -2,14 +2,13 @@
 /**
  * hubStudio for agencies  ·  /solutions/agencies
  *
- * Two stories for agencies. First, the app as the place an agency serves its
- * own clients: the Client role, the Client space, "Made for", Validation, the
- * team roles and daily spending limits (facts from src/content/help/
- * client-space.md and your-team.md; no custom branding or domains, and the
- * page says so plainly). Second, the studio as the agency's quiet production
- * team: white-label production delivered to the agency. Use the app is the
- * highlighted way; the closing leads with the app door.
- * Copy from the content-quality-us deck (cq/sol-agencies).
+ * Agencies run two jobs for every client: creative assets (campaign visuals,
+ * video cuts, product shots, presentations) and social networks (monthly
+ * calendars, multi-account publishing, paid social variants, executive
+ * advocacy). This page explains how agencies run both in the hubStudio app
+ * with Client spaces and Validation ("Use the app"), and how our creative and
+ * social teams back them up inside their workspace or behind their name
+ * ("Work with us in the app").
  *
  * Per repo standards: no em dash character, no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
@@ -33,43 +32,42 @@ const colourBar = [
 
 const reasons = [
   {
-    label: 'Volume',
-    title: 'Clients want more variants for more networks.',
-    body: 'Staffing up for every launch month breaks the budget in the quiet ones.',
+    label: 'Assets & feeds',
+    title: 'Clients want campaign visuals and daily social on the same retainer.',
+    body: 'One brief now asks for hero imagery, vertical video cuts, LinkedIn carousels, and paid ad variants across five networks.',
   },
   {
     label: 'Feedback',
-    title: 'Comments come by email, chat, and phone.',
-    body: 'Versions get lost, and nobody is sure which file the client actually approved.',
+    title: 'Approvals scatter across email, chat, and decks.',
+    body: 'Visuals sit in a transfer link while post copy sits in a spreadsheet, and nobody is sure which version the client actually approved.',
   },
   {
     label: 'Ownership',
-    title: 'You own the client relationship.',
-    body: 'Any tool or partner you bring in has to leave it that way.',
+    title: 'You own the client relationship and the strategy.',
+    body: 'Any workspace or production partner you bring in has to keep your agency in front and scale up without adding fixed headcount.',
   },
 ];
 
-/* Story A: how an agency serves a client in the app. No ordinals; the
-   headings carry the order. Captures are real; clientSpace is an empty
-   state and its caption says so. */
+/* Story A: how an agency serves a client in the app across both assets and
+   social networks. No ordinals; the headings carry the order. */
 const steps = [
   {
-    title: 'Add the client.',
-    body: 'In Your team, an admin adds the client company and gives its people a login. They get an email invitation and set their own password.',
+    title: 'Add each client company.',
+    body: 'In Your team, an admin adds the client company and gives its people logins. Each client gets its own space, separate from every other account you manage.',
     shot: appShots.teamClients,
     path: '/team',
     caption: true as boolean | string,
   },
   {
-    title: 'Tag the work “Made for” them.',
-    body: 'Pick the client in the Image or Video studio before a run, on a card in History, or on a post in any network module. The piece then shows up in that client’s Client space, and nowhere else outside your team.',
+    title: 'Tag assets and social posts “Made for” them.',
+    body: 'Generate images and video in the studios, crop in the free editors, and draft posts for LinkedIn, Instagram, Facebook, TikTok (Beta), X, and YouTube. Tag any render or scheduled post “Made for” that client, and it appears in their Client space and nowhere else outside your agency.',
     shot: appShots.clientSpace,
     path: '/client',
     caption: 'A client’s view before anything is shared: only Client space and Validation in the menu.' as boolean | string,
   },
   {
-    title: 'Get it approved in Validation.',
-    body: 'Send the piece to one of the client’s people. They validate it or send it back with a comment, and each new version joins the same thread.',
+    title: 'Lock approvals in Validation before publishing.',
+    body: 'Send an image, a video, a social post, or a deck to the client’s approver. They validate it or send it back with a comment on one permanent thread, and a social post waiting for approval is locked so it cannot go out early.',
     shot: appShots.validation,
     path: '/validation',
     caption: true as boolean | string,
@@ -79,84 +77,92 @@ const steps = [
 const roles = [
   {
     name: 'Admin',
-    body: 'Runs the team. Invites people, adds clients, sets each creator’s daily spending limit, and switches modules on or off per person.',
+    body: 'Runs the agency workspace. Invites teammates, adds client companies, sets each creator’s daily spending limit, and switches modules on or off per person.',
   },
   {
     name: 'Creator',
-    body: 'Makes images, video, and posts, tags who they’re for, and sends them for approval, within a daily limit if an admin set one.',
+    body: 'Generates images and video, edits in the browser tools, drafts and schedules social posts, tags which client they’re for, and sends them for approval.',
   },
   {
     name: 'Viewer',
-    body: 'Sees the team’s work in History and the Assets Library. Creates nothing and spends nothing.',
+    body: 'Account managers or strategists who check the team’s work in History and the Assets Library without creating or spending from the balance.',
   },
   {
     name: 'Client',
-    body: 'Sees only what was made for their company. Downloads it, comments on it, and approves it or sends it back.',
+    body: 'Sees only the finished assets and scheduled posts tagged for their company. Downloads files, comments, and approves or sends items back in Validation.',
   },
 ];
 
-/* Story B: the two production lanes the studio runs for agencies. */
+/* Story B: the three lanes our team runs for agencies across both pillars. */
 const lanes = [
   {
-    label: 'Images and visuals',
-    heading: 'Campaign visuals, delivered to you.',
+    label: 'Pillar · Creative assets (Images & design)',
+    heading: 'Campaign visuals, product shots, and decks delivered to you.',
     image: '/Images/ecom-imagery.jpg',
     alt: 'A daylit visual studio frame with calibrated monitors showing brand variations in progress, prime-lens depth, warm shadow grade, generous negative space.',
-    body: 'Campaign visuals, social adaptations, product pictures, and localized versions, briefed by you and delivered to you.',
-    tags: ['Campaign visuals', 'Social adaptations', 'Product pictures', 'Localized versions', 'Format variants'],
+    body: 'Senior art directors, designers, and retouchers produce campaign key visuals, ecommerce sets, packaging, presentations, and localized adaptations across twenty studio service lines, briefed by you and delivered under your name.',
+    tags: ['Campaign visuals', 'Product & ecommerce sets', 'Presentations & pitch decks', 'Localized adaptations', 'Format variants'],
   },
   {
-    label: 'Video',
-    heading: 'One master film, cut for every feed.',
+    label: 'Pillar · Creative assets (Video & motion)',
+    heading: 'One master film, cut for every feed and ratio.',
     image: '/Images/sb-hub.jpg',
     alt: 'A documentary-style frame of a video edit suite with a master TVC paused on the monitor and short-form cuts arranged in the timeline panel, warm window light, real-photography grade.',
-    body: 'Short social cuts, product demos, and a master film cut down for every feed and ratio.',
-    tags: ['Short-form social', 'Product demos', 'Master to social cuts', 'Ratio variants'],
+    body: 'Launch films, storyboards, motion design, product demos, and vertical social cuts sized for TikTok, Reels, YouTube Shorts, and Douyin.',
+    tags: ['Launch films', 'Short-form social video', 'Product demos & motion', 'Master to social cuts'],
     caseStudy: { label: 'The Mexicash video campaign, briefed and shipped across five platforms', href: '/work/mexicash' },
+  },
+  {
+    label: 'Pillar · Social networks (Content, ads & China)',
+    heading: 'Social calendars, paid ad variants, and Chinese channels.',
+    image: '/Images/sm-hero.jpg',
+    alt: 'A content creator in a sunlit Shanghai loft holding a vertical smartphone close to her face.',
+    body: 'When a client needs full social execution or a local team in China, our social editors and media buyers produce weekly posts and carousels, build paid social variant sets, ghostwrite executive posts, and run WeChat, RedNote, Douyin, and Weibo behind your agency.',
+    tags: ['Monthly social calendars', 'Paid social ad variants', 'Executive ghostwriting', 'WeChat, RedNote, Douyin & Weibo'],
   },
 ];
 
 const faqs: { q: string; a: string; link?: { label: string; href: string } }[] = [
   {
-    q: 'Can our clients see and approve work in hubStudio?',
-    a: 'Yes. An admin adds each client company and gives its people a login. They see a Client space with only the work tagged “Made for” them, and they approve it or send it back in Validation.',
+    q: 'Can we run both creative production and client social publishing in hubStudio?',
+    a: 'Yes. Your team uses the Create modules (Explore, Image, Video, and the free browser editors) to produce assets, and the Publish modules (Campaigns, LinkedIn, Instagram, Facebook, TikTok Beta, X, and YouTube) to draft and schedule client posts across up to 20 accounts per post.',
+  },
+  {
+    q: 'Can our clients see and approve assets and social posts in hubStudio?',
+    a: 'Yes. An admin adds each client company and gives its people logins. They see a Client space with only the images, videos, posts, and files tagged “Made for” their company, and they approve or return items with a comment in Validation.',
   },
   {
     q: 'Will our clients see prompts, engines, or costs?',
-    a: 'No. A client login shows the finished work and the approval thread. Prompts, engines, and prices stay with your team, and clients hold no balance.',
+    a: 'No. A client login shows only the finished work, the scheduled posts, and the approval thread. Prompts, engines, and prices stay with your agency team, and clients hold no balance.',
   },
   {
     q: 'Can we put our agency’s logo on the Client space?',
-    a: 'No. The Client space is part of hubStudio, at hubStudio’s address. If a client must see only your agency’s name, download the approved work and deliver it yourself, or use the studio, which delivers to you.',
+    a: 'No. The Client space runs on hubStudio’s address and carries hubStudio’s interface. If a client must see only your agency’s name, download the approved files and deliver them yourself, or brief our team for white-label delivery.',
   },
   {
-    q: 'How do we keep spending under control?',
-    a: 'The team pays from one prepaid balance. An admin can set a daily spending limit for each creator; admins have none. Every run shows its price before it starts.',
+    q: 'How do we keep team spending under control across client accounts?',
+    a: 'Your agency pays from one shared prepaid balance. An admin can set a daily spending limit for each creator, and every run shows its price before it starts. The Image editor, Video editor, Campaigns, Validation, and publishing to LinkedIn, Instagram, Facebook, and TikTok cost nothing to use.',
   },
   {
     q: 'Do client logins cost anything?',
-    a: 'There are no seat fees for anyone, clients included, and a client never spends from a balance of its own. When a client downloads a file, that download is charged to your team’s balance, like any download.',
+    a: 'There are no seat fees for anyone, clients included, and a client never spends from a balance of its own. When a client downloads a file, that download carries the same small charge against your team’s balance as any download.',
   },
   {
-    q: 'How does the white-label studio work?',
-    a: 'You brief us, we produce, and we deliver the finished files to you. You present them to your client under your agency’s name.',
+    q: 'How does working with your creative and social team work for an agency?',
+    a: 'Two ways. You can add our creatives and social managers as members of your agency’s hubStudio workspace, where we produce assets and draft posts from your balance and your admins approve them before tagging them for your client. Or you send us a brief for white-label delivery, and we hand the finished files straight to your team.',
   },
   {
-    q: 'Can we mix the app and the studio?',
-    a: 'Yes. Add our creatives to your agency’s workspace and we work from your balance. Your admins approve in Validation, and you tag the approved work for your client.',
+    q: 'Can your team handle Chinese social networks for our Western clients?',
+    a: 'Yes. Many Western agencies bring us in specifically for China. Our Shanghai and Changsha teams produce and manage content for WeChat Official Accounts and Channels, RedNote, Douyin, and Weibo, while your agency keeps the client relationship.',
   },
   {
-    q: 'How is it priced?',
-    a: 'The app runs on a prepaid balance with no subscription and no seat fees, and a failed run is never charged. Every top-up comes with an invoice made out to your agency. The studio is priced per asset, per project, or on retainer, quoted after a brief.',
-  },
-  {
-    q: 'Can we earn from the accounts we bring to the app?',
-    a: 'Yes. Agencies can join as partners: you open accounts for the customers you bring and earn a commission on what those accounts spend. Details are on the Partners page.',
+    q: 'Can we earn a commission from client accounts we bring to the app?',
+    a: 'Yes. Agencies that join as partners open hubStudio accounts for the clients they bring and earn a commission on what those accounts spend. Details are on the Partners page.',
     link: { label: 'Partners', href: '/partners' },
   },
   {
-    q: 'What do you need from us to start?',
-    a: 'For the app, an email address. For the studio, a brief, your client’s brand guidelines, and a few examples of work they liked. A producer reads the brief within one business day.',
+    q: 'How is it priced?',
+    a: 'The app runs on a prepaid balance in real currency with no subscription and no seat fees, a failed run is never charged, and every top-up comes with an invoice made out to your agency. Our services are priced per asset, per project, or on retainer, quoted in writing within 48 hours of your brief.',
   },
 ];
 
@@ -184,8 +190,8 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
 ---
 
 <Layout
-  title="hubStudio for agencies: client logins and white-label work"
-  description="Agencies run client work in the hubStudio app, with client logins and approvals in one place, or use our studio as a quiet production team."
+  title="hubStudio for agencies: client assets, social & approvals"
+  description="Agencies produce creative assets and run client social networks in the hubStudio app with client logins, or use our team for white-label production."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -207,28 +213,30 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           </p>
           <h1 class="hero__title">
             <span class="line"><span class="line__i">Your clients in</span></span>
-            <span class="line"><span class="line__i">the app. Our studio</span></span>
+            <span class="line"><span class="line__i">the app. Our team</span></span>
             <span class="line"><span class="line__i serif">behind you.</span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Show clients the work where you <em>made it</em>.
+            Creative assets and social networks, approved where you <em>make them</em>.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              An agency needs a place to make the work and a place to show it
-              to clients. It also needs extra hands when a pitch comes through
-              or a launch lands.
+              Clients hire an agency for two jobs that run side by side:
+              producing creative assets (campaign visuals, video cuts, product
+              shots, decks) and running social networks (monthly calendars,
+              multi-account posts, paid social ads, executive voices).
             </p>
             <p>
-              In the hubStudio app, your team makes and publishes the work,
-              and your clients log in to approve it. When you need more
-              capacity, our studio produces under your agency’s name and hands
-              the files to you, not your client.
+              In the hubStudio app, your team makes the assets, schedules the
+              posts, and gives each client a login to approve its own work.
+              When a pitch or launch needs extra capacity, our creative and
+              social teams work inside your workspace or deliver white-label
+              under your agency’s name.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
             <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
-            <a class="ghost-link ghost-link--light" href={`${BRIEF_URL}?way=studio`}>
+            <a class="ghost-link ghost-link--light" href={`${BRIEF_URL}?way=studio-app`}>
               Send a brief
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d={arrow} fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
@@ -236,7 +244,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Client logins <span>/</span> Approvals <span>/</span> Made under your name
+            Creative assets <span>/</span> Social networks <span>/</span> Client logins & white-label
           </p>
         </div>
       </div>
@@ -264,12 +272,13 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           <div>
             <p class="kicker kicker--light r"><span class="kicker__tick"></span>The agency squeeze</p>
             <h2 class="dh r" style="--d:.05s">
-              More work per client,<br />and no more <span class="serif">margin</span>.
+              More assets and feeds per client,<br />on the same <span class="serif">margin</span>.
             </h2>
           </div>
           <p class="band__note band__note--light r" style="--d:.1s">
-            Clients want more every month. Hiring for each peak doesn’t pay,
-            and client feedback is scattered across inboxes.
+            Clients expect campaign-grade visuals and a full social calendar
+            every month. Staffing for every peak breaks the quiet months, and
+            approvals get lost across inboxes.
           </p>
         </header>
 
@@ -296,12 +305,14 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
         <header class="band">
           <p class="kicker r"><span class="kicker__tick"></span>Use the app</p>
           <h2 class="dh r" style="--d:.05s">
-            Run client work from<br />one <span class="serif">workspace</span>.
+            Run client assets and social<br />from one <span class="serif">workspace</span>.
           </h2>
           <p class="band__note r" style="--d:.1s">
-            Your agency is one team in hubStudio. Admins run it, Creators make
-            the work, Viewers follow along. Each client company gets its own
-            logins, with the Client role.
+            Your agency is one team in hubStudio. Creators generate visuals
+            with the leading AI engines, finish them in the browser editors,
+            organize launches in Campaigns, and schedule posts across LinkedIn,
+            Instagram, Facebook, TikTok (Beta), X, and YouTube. Each client
+            company gets its own logins, with the Client role.
           </p>
         </header>
 
@@ -322,7 +333,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
         </div>
 
         <div class="roles">
-          <h3 class="roles__title r">Four roles, one team</h3>
+          <h3 class="roles__title r">Four roles, one agency workspace</h3>
           <div class="aud-grid">
             {
               roles.map((a, i) => (
@@ -352,7 +363,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           </p>
           <p class="r" style="--d:.1s">
             <a class="ghost-link" href="/app/review">
-              How review works in the app
+              How review and Client space work in the app
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d={arrow} fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -362,43 +373,43 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
       </div>
     </section>
 
-    <!-- ============ THREE WAYS TO WORK ============ -->
+    <!-- ============ TWO WAYS TO WORK ============ -->
     <WaysToWork
       tone="white"
       highlight="app"
-      pre="Start in the app, add the "
-      accent="studio"
-      post=" when it helps."
-      lead="Run client work in the app day to day. When a big job lands, bring in the studio, inside the app or outside it."
+      pre="Run client work in the app, or bring our "
+      accent="team"
+      post=" in."
+      lead="Handle daily assets and social calendars in the app with your own crew. When a pitch lands or an account scales up, add our creative and social teams inside your workspace."
     />
 
-    <!-- ============ STORY B: THE STUDIO AS YOUR PRODUCTION TEAM ============ -->
+    <!-- ============ STORY B: OUR TEAM AS YOUR PRODUCTION PARTNER ============ -->
     <section class="cover" id="white-label">
       <div class="shell">
         <header class="band band--split">
           <div>
-            <p class="kicker r"><span class="kicker__tick"></span>Studio only</p>
+            <p class="kicker r"><span class="kicker__tick"></span>Work with us in the app · Or white-label</p>
             <h2 class="dh r" style="--d:.05s">
-              A production team<br />behind your <span class="serif">name</span>.
+              A creative and social team<br />behind your <span class="serif">name</span>.
             </h2>
           </div>
           <div class="band__prose">
             <p class="band__p r" style="--d:.1s">
-              That’s the app side. The studio side is simpler to explain. In
-              the trade, it’s called white-label production. You win the
-              account and own the strategy. We make the images and the video,
-              and we hand the finished files to you. Questions from your
-              client still come to you.
+              You win the account and own the strategy. When you need extra
+              hands across creative production or social channels, our team
+              produces the images, the video, the social posts, and the ad
+              variants, and hands them to you. Questions from your client still
+              come to you.
             </p>
             <p class="band__p r" style="--d:.14s">
-              We work to your brand guides, your specs, and your approval
-              steps, so you don’t have to learn ours. A senior art director
-              leads every brief and checks the work before it leaves the
-              studio.
+              We follow your client’s brand guides, specs, and tone of voice. A
+              senior art director or social lead checks every deliverable
+              before it reaches your desk.
             </p>
             <p class="band__p r" style="--d:.18s">
               Book us per asset, per project, or on retainer. Plenty of
-              agencies use us for the launch month and not for the quiet ones.
+              agencies bring us in for launch months or Chinese channels and
+              run the quiet months on their own in the app.
             </p>
           </div>
         </header>
@@ -415,7 +426,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
               <div class="feature__body">
                 <p class="feature__idx r">
                   <span class="feature__tick"></span>
-                  White-label lane
+                  {c.label}
                 </p>
                 <h3 class="dh dh--sm r" style="--d:.05s">{c.heading}</h3>
                 <p class="feature__p r" style="--d:.1s">{c.body}</p>
@@ -442,17 +453,18 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
 
         <aside class="combo r">
           <p class="combo__label">
-            <span class="kicker__tick"></span>Studio + app, in your workspace
+            <span class="kicker__tick"></span>Work with us inside your agency’s workspace
           </p>
           <p class="combo__p">
-            There’s a middle way too. Add our creatives as members of your
-            agency’s hubStudio team. We make the work from your workspace and
-            your balance, your admins approve it in Validation, and you tag it
-            “Made for” your client when it’s ready. Everything stays in your
-            workspace afterward.
+            Want everything in one place? Add our creatives and social managers
+            as members of your agency’s hubStudio team. We produce the assets
+            and draft the posts from your workspace and your balance, your
+            admins approve them in Validation, and you tag them “Made for” your
+            client when they’re ready. Every file and approval thread stays in
+            your workspace afterward.
           </p>
           <a class="ghost-link" href="/studio/with-the-app">
-            How Studio + app works
+            How working together in the app runs
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d={arrow} fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -485,26 +497,27 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
         <div class="source__body">
           <p class="kicker kicker--light r"><span class="kicker__tick"></span>Why hubStudio</p>
           <h2 class="dh r" style="--d:.05s">
-            A production partner<br />that knows agency <span class="serif">life</span>.
+            A partner that knows<br />agency <span class="serif">life</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            We make work for brands and for agencies, and we know the
-            difference between a client and the agency that holds the account.
+            We know the difference between a brand client and the agency that
+            holds the account.
           </p>
           <p class="source__p r" style="--d:.16s">
             Your agency owns the strategy, the client relationship, and the
-            creative direction. The studio owns production and delivery to
-            you. The studio was founded by Cyril Drouin, former CEO at
-            Publicis, so we’ve sat on the agency side of the table.
+            creative direction. Our team backs you up on creative assets and
+            social execution, inside your workspace or delivered behind your
+            name. Founded by Cyril Drouin, former CEO at Publicis, we’ve sat on
+            the agency side of the table.
           </p>
           <p class="source__p r" style="--d:.22s">
-            The same company builds the app, so moving a job between your
-            team, our studio, and the app doesn’t need a new contract or a new
-            tool.
+            And because we build the hubStudio app as well, your team can move
+            work between self-serve production and our studio without switching
+            tools or opening a new contract.
           </p>
           <ul class="creds r" style="--d:.28s">
             {
-              ['Senior art directors', 'Delivered to you', 'Twenty service lines', 'Proposal within 48 hours'].map((c) => (
+              ['Senior art directors', 'Creative & social teams', 'Western & China channels', 'Proposal within 48 hours'].map((c) => (
                 <li class="cred">
                   <svg viewBox="0 0 14 14" aria-hidden="true">
                     <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -527,9 +540,9 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
             Before the<br />first <span class="serif">client</span>.
           </h2>
           <p class="faq__sub r" style="--d:.1s">
-            What agency owners and producers ask us first.
+            What agency owners, account leads, and producers ask us first.
           </p>
-          <p class="faq__updated r" style="--d:.12s">Updated September 2026</p>
+          <p class="faq__updated r" style="--d:.12s">Updated October 2026</p>
           <div class="r" style="--d:.16s">
             <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
           </div>
@@ -571,11 +584,11 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
     <!-- ============ CLOSING ============ -->
     <DualCta
       lead="app"
-      briefQuery="way=studio"
+      briefQuery="way=studio-app"
       pre="Open the app, or send us the "
       accent="brief"
       post="."
-      text="Create your agency’s account and add your first client today, at no cost. For the next launch, send us a brief and a producer reads it within one business day."
+      text="Create your agency’s account and add your first client today, at no cost. When a launch or a social retainer needs extra hands, send us a brief and a producer reads it within one business day."
     />
   </div>
 </Layout>
@@ -685,7 +698,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
   .notes__p { font-size: var(--type-body); line-height: 1.66; color: var(--text-ink); }
   .notes__p--flag { padding: 18px 22px; border-left: 3px solid var(--brand-orange); background: #fff; border-radius: 0 6px 6px 0; color: var(--text-mute); }
 
-  /* Story B: white-label production lanes. */
+  /* Story B: creative and social production lanes. */
   .cover { background: var(--paper-2); padding-block: clamp(80px, 10vw, 150px); }
   .feature { display: grid; gap: 36px; align-items: center; padding-block: clamp(40px, 5vw, 72px); border-top: 1.5px dashed var(--line-strong); }
   @media (min-width: 900px) {

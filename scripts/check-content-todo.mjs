@@ -27,8 +27,8 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-/** Uppercase markers only: "todo" in running prose is a word, "TODO" is a flag. */
-export const MARKER = /\b(TODO|FIXME|TBD|TKTK)\b|lorem ipsum|\[(?:citation needed|placeholder|tk)\]/;
+/** Uppercase markers only: "todo" in running prose is a word, "TODO" is a flag; backticked code literals (`TODO`) are documentation. */
+export const MARKER = /(?<!`)\b(TODO|FIXME|TBD|TKTK)\b(?!`)|lorem ipsum|\[(?:citation needed|placeholder|tk)\]/;
 
 /** Returns [{ line, text }] for every line of `text` carrying a marker. */
 export function findMarkers(text) {

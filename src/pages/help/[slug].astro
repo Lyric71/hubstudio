@@ -103,7 +103,7 @@ const schema = {
 
       {
         videos.length > 0 && (
-          <section class:list={['hp-videos', videos.length > 1 && 'hp-videos--grid']} aria-labelledby="hp-videos-title">
+          <section class="hp-videos" aria-labelledby="hp-videos-title">
             <div class="hp-videos__head">
               <h2 class="hp-videos__title" id="hp-videos-title">
                 Watch how it works
@@ -403,11 +403,6 @@ const schema = {
   .hp-videos__list {
     display: grid;
     gap: 28px 24px;
-  }
-  @media (min-width: 640px) {
-    .hp-videos--grid .hp-videos__list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
   }
 
   /* ---- Prose ---- */

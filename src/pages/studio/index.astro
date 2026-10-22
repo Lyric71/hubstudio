@@ -1,33 +1,65 @@
 ---
 /**
- * The studio hub  ·  /studio
+ * Our services hub  ·  /studio
  *
- * The Studio pillar of the site: what the studio is, the two studio ways to
- * work (Studio + app, Studio only) inside the shared WaysToWork band, the
- * twenty service lines grouped six ways (each group carries an anchor id, and
- * each line links to its /services/design/* page), how a project runs, who
- * works on it, proof from src/data/case-studies.ts, the platforms we produce
- * for, an FAQ and the closing DualCta with the studio door first.
+ * Built around the two complementary pillars of hubStudio services on top of
+ * the hubStudio app (hubstudio-positioning.md):
+ *  - Pillar · Creative assets: twenty service lines across six studio groups
+ *    (/services/design/*), led by senior art directors with brand-trained
+ *    models, studio GPU pipelines, and hybrid live shoots.
+ *  - Pillar · Social networks: twelve service lines across three social tracks
+ *    (/services/social/*), running organic content, company pages, paid social
+ *    funnels, and executive advocacy across Western and Chinese networks.
  *
- * Replaces the old /services index (/services now 301s here). Copy comes from
- * the content-quality-us deck `studio` (final.md). No ordinal numerals in any
- * card, step or repeated block; sequence is carried by order alone.
+ * Includes interactive UI components and scroll/pointer JS engines:
+ *  - Scroll progress bar & scroll-reactive ambient orbs/timelines
+ *  - Kinetic hero entrance, magnetic buttons, count-up SLA metrics
+ *  - Interactive Two-Pillar Architecture explorer with 3D pointer tilt & glow
+ *  - Creative Assets interactive category switcher with sliding ink bar
+ *  - Social Networks dark Command Studio with interactive track tabs, 12
+ *    service cards, and a live AppShot screen stage
+ *  - Interactive Western & China platform ecosystem filter matrix
+ *  - Interactive Workspace Setup switcher (In our workspace vs In yours)
+ *  - Interactive 5-stage project pipeline & filterable FAQ
+ *
+ * No ordinal numerals in any card, step, or repeated block. No em-dash.
  */
 import Layout from '../../layouts/Layout.astro';
 import WaysToWork from '../../components/WaysToWork.astro';
 import DualCta from '../../components/DualCta.astro';
 import InsightsLayer from '../../components/InsightsLayer.astro';
-import { APP_SIGNUP, BRIEF_URL } from '../../lib/links';
+import AppShot from '../../components/AppShot.astro';
+import { appShots } from '../../data/app-shots';
+import type { AppShot as Shot } from '../../data/app-shots';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../../lib/links';
 import { caseStudies } from '../../data/case-studies';
 
-type Service = { name: string; href: string; img: string; alt: string; desc: string };
-type Category = { id: string; title: string; blurb: string; intro: string; services: Service[] };
+type Service = {
+  name: string;
+  href: string;
+  img: string;
+  alt: string;
+  desc: string;
+  tag: string;
+};
 
-const categories: Category[] = [
+type CreativeCategory = {
+  id: string;
+  title: string;
+  blurb: string;
+  intro: string;
+  craft: string;
+  icon: 'content' | 'video' | 'commerce' | 'strategy' | 'brand' | 'sales';
+  services: Service[];
+};
+
+const creativeCategories: CreativeCategory[] = [
   {
     id: 'content-social',
     title: 'Content & Social',
     blurb: 'The assets that ship every week.',
+    craft: 'Hybrid shoots · AIGC variants · Motion cuts',
+    icon: 'content',
     intro:
       'This is work with a calendar attached. Social posts, ad creative, short video, and email run on the same clock: something has to go out this week, in the right format, for a feed that punishes anything recycled. Brands call us when their team makes good work but not enough of it.',
     services: [
@@ -37,6 +69,7 @@ const categories: Category[] = [
         img: '/Images/sm-hero.jpg',
         alt: 'A content creator in a sunlit Shanghai loft holding a vertical smartphone close to her face.',
         desc: 'Posts, carousels, and stories made for each feed.',
+        tag: 'Stills & carousels',
       },
       {
         name: 'Ad Creative',
@@ -44,6 +77,7 @@ const categories: Category[] = [
         img: '/Images/ac-hero.jpg',
         alt: 'Overhead view of a creative workspace with a phone showing a paused vertical-video ad.',
         desc: 'Ads built in variants, so you can test and keep the winners.',
+        tag: 'Paid variants',
       },
       {
         name: 'Short Video',
@@ -51,6 +85,7 @@ const categories: Category[] = [
         img: '/Images/sv-hero.jpg',
         alt: 'A short-video creator filming on a tripod-mounted phone in a warm-lit Shanghai studio.',
         desc: 'Vertical video for TikTok, Reels, and Douyin.',
+        tag: 'Vertical video',
       },
       {
         name: 'Email Design',
@@ -58,6 +93,7 @@ const categories: Category[] = [
         img: '/Images/emd-p4-build.jpg',
         alt: 'A laptop showing an HTML email code editor beside a live email preview.',
         desc: 'Campaigns and lifecycle emails, designed and coded.',
+        tag: 'CRM & HTML',
       },
     ],
   },
@@ -65,6 +101,8 @@ const categories: Category[] = [
     id: 'video-motion',
     title: 'Video & Motion',
     blurb: 'Moving images, long and short.',
+    craft: 'Live set direction · AI video · Motion graphics',
+    icon: 'video',
     intro:
       'Film work, from a scripted brand piece to an ident that has to read in half a second. Much of it is hybrid: a real plate finished with generated elements, or a generated sequence graded like a shoot. A director signs off on every cut.',
     services: [
@@ -74,6 +112,7 @@ const categories: Category[] = [
         img: '/Images/vp-hero.jpg',
         alt: 'A director of photography behind a cinema camera on a darkened studio set.',
         desc: 'Script to final cut, shot on set, generated, or both.',
+        tag: 'Brand & product film',
       },
       {
         name: 'Motion Design',
@@ -81,6 +120,7 @@ const categories: Category[] = [
         img: '/Images/md-ident.jpg',
         alt: 'A frosted glass fragrance bottle wrapped in drifting incense smoke under a warm sidelight.',
         desc: 'Idents, explainers, and motion graphics.',
+        tag: 'Idents & explainers',
       },
     ],
   },
@@ -88,6 +128,8 @@ const categories: Category[] = [
     id: 'commerce-web',
     title: 'Commerce & Web',
     blurb: 'Everything that sells or hosts.',
+    craft: 'Brand-trained LoRA · Catalog scale · Responsive UI',
+    icon: 'commerce',
     intro:
       'Content with a conversion rate attached: product visuals, storefronts, site pages, and print. Catalog scale is the usual reason brands call. Think a few hundred products that have to look identical on a marketplace listing and in a paid ad. We set up the rules before we make the pictures.',
     services: [
@@ -97,6 +139,7 @@ const categories: Category[] = [
         img: '/Images/ecom-hero.jpg',
         alt: 'A single matte white ceramic skincare bottle on a soft warm beige paper backdrop.',
         desc: 'Product visuals for listings, storefronts, and ads.',
+        tag: 'Catalog & PDPs',
       },
       {
         name: 'Website Design',
@@ -104,6 +147,7 @@ const categories: Category[] = [
         img: '/Images/wd-hero.jpg',
         alt: 'A 16-inch laptop on a warm walnut desk in a sunlit studio.',
         desc: 'Pages designed for every screen size.',
+        tag: 'Landing & brand sites',
       },
       {
         name: 'Print Design',
@@ -111,6 +155,7 @@ const categories: Category[] = [
         img: '/Images/print-hero.jpg',
         alt: 'A hardcover monograph and a bound editorial catalog open on a plaster worktable.',
         desc: 'Press-ready catalogs, brochures, and editorial.',
+        tag: 'Print & POS',
       },
     ],
   },
@@ -118,6 +163,8 @@ const categories: Category[] = [
     id: 'strategy-direction',
     title: 'Strategy & Direction',
     blurb: 'The thinking before the pixels.',
+    craft: 'Market positioning · Campaign concepts · Pre-vis',
+    icon: 'strategy',
     intro:
       'The work that decides what gets made, from where a brand sits in its market down to the frames a film will be built from. Anyone can now produce a thousand variations overnight. Picking the right one, and being able to say why, is the hard part.',
     services: [
@@ -127,6 +174,7 @@ const categories: Category[] = [
         img: '/Images/ms-hero.jpg',
         alt: 'A marketing strategist working at a long oak table in a Shanghai studio.',
         desc: 'The plan behind the content, market by market.',
+        tag: 'Go-to-market',
       },
       {
         name: 'Creative Strategy',
@@ -134,6 +182,7 @@ const categories: Category[] = [
         img: '/Images/cs-hero.jpg',
         alt: 'A strategy wall in a Shanghai studio pinned with a printed positioning statement.',
         desc: 'One idea that every asset ties back to.',
+        tag: 'Creative platform',
       },
       {
         name: 'Concept Creation',
@@ -141,6 +190,7 @@ const categories: Category[] = [
         img: '/Images/cc-hero.jpg',
         alt: 'A creative director reviewing printed campaign key-visual mockups pinned to a wall.',
         desc: 'The campaign idea, locked before production starts.',
+        tag: 'Key visuals',
       },
       {
         name: 'Storyboard',
@@ -148,6 +198,7 @@ const categories: Category[] = [
         img: '/Images/sb-hero.jpg',
         alt: 'A senior art director marking a pinned storyboard frame in warm afternoon light.',
         desc: 'Frames that map a film before the first shot.',
+        tag: 'Frame-by-frame',
       },
     ],
   },
@@ -155,6 +206,8 @@ const categories: Category[] = [
     id: 'brand-identity',
     title: 'Brand Identity',
     blurb: 'The system everything else follows.',
+    craft: 'Visual systems · Custom illustration · Structural pack',
+    icon: 'brand',
     intro:
       'Marks, type, color, illustration, and packaging: the rules every other asset inherits. A generative pipeline can turn out a thousand assets that are each fine and together off-brand. A tight system is what keeps high volume on-brand, so we usually build it first.',
     services: [
@@ -164,6 +217,7 @@ const categories: Category[] = [
         img: '/Images/bi-hero.jpg',
         alt: 'A printed brand identity board on a warm plaster ledge.',
         desc: 'Logos, systems, and guidelines built to scale.',
+        tag: 'Identity & rules',
       },
       {
         name: 'Illustration Design',
@@ -171,6 +225,7 @@ const categories: Category[] = [
         img: '/Images/illustration-hero.jpg',
         alt: 'An illustrator’s worktable with a graphics tablet showing an editorial illustration.',
         desc: 'Custom illustration drawn in your brand’s style.',
+        tag: 'Bespoke art',
       },
       {
         name: 'Packaging & Merch Design',
@@ -178,6 +233,7 @@ const categories: Category[] = [
         img: '/Images/packaging-merch-aurele.jpg',
         alt: 'A serum bottle and carton styled as one art-directed shot on a plaster ledge.',
         desc: 'Packaging and merchandise, from dieline to shelf.',
+        tag: 'Dielines & mockups',
       },
     ],
   },
@@ -185,6 +241,8 @@ const categories: Category[] = [
     id: 'sales-communications',
     title: 'Sales & Communications',
     blurb: 'Decks, documents, and news.',
+    craft: 'Narrative structure · Data design · Editorial layout',
+    icon: 'sales',
     intro:
       'The documents a business is judged on when it isn’t in the room, like the investor deck or the announcement that either gets picked up or doesn’t. Usually the content exists somewhere. What’s missing is the structure and the design.',
     services: [
@@ -194,6 +252,7 @@ const categories: Category[] = [
         img: '/Images/presentation-design-hero.jpg',
         alt: 'An open laptop showing a clean deck slide with a minimalist growth chart.',
         desc: 'Sales and board decks with a clear argument.',
+        tag: 'Keynote & slides',
       },
       {
         name: 'Pitch Deck',
@@ -201,6 +260,7 @@ const categories: Category[] = [
         img: '/Images/pitch-hero.jpg',
         alt: 'A founder pitching to two investors in a quiet meeting room.',
         desc: 'Investor and client pitches, story first.',
+        tag: 'Investor narrative',
       },
       {
         name: 'Ebook and Digital Reports',
@@ -208,6 +268,7 @@ const categories: Category[] = [
         img: '/Images/edr-hero.jpg',
         alt: 'A hardcover bound annual report lying open on a warm walnut desk.',
         desc: 'Long-form reports and guides, laid out to be read.',
+        tag: 'Whitepapers & PDFs',
       },
       {
         name: 'Press Release',
@@ -215,39 +276,242 @@ const categories: Category[] = [
         img: '/Images/pr-hero.jpg',
         alt: 'A journalist reading a printed multi-page press release at a sunlit newsroom desk.',
         desc: 'Announcements written and designed for editors.',
+        tag: 'PR & media kits',
       },
     ],
   },
 ];
 
-const facts = [
-  'A producer reads your brief within one business day.',
-  'A written proposal follows within 48 hours.',
-  'The provenance of every asset is recorded.',
-  'Priced per asset, per project, or on retainer.',
+type SocialTrack = {
+  id: string;
+  shortName: string;
+  tag: string;
+  title: string;
+  blurb: string;
+  intro: string;
+  highlights: { title: string; text: string }[];
+  services: Service[];
+  shots: { label: string; shot: Shot; path: string }[];
+};
+
+const socialTracks: SocialTrack[] = [
+  {
+    id: 'social-content-pages',
+    shortName: 'Content & Pages',
+    tag: 'Organic & editorial',
+    title: 'Social · Content & Pages',
+    blurb: 'Your channels, weekly calendar, and editorial series.',
+    intro:
+      'Running a brand presence inside the hubStudio app: we set up and refresh your company pages, produce your weekly carousels and short videos, write recurring social newsletters, and turn live webinars into weeks of vertical clips.',
+    highlights: [
+      { title: 'Page & channel stewardship', text: 'Bios, banners, featured sections, and daily community management.' },
+      { title: 'Weekly posts & vertical video', text: 'Carousels, Reels, TikToks, Shorts, and recurring newsletters.' },
+      { title: 'Approved in Validation', text: 'Every draft and visual sits on one permanent thread before it goes out.' },
+    ],
+    services: [
+      {
+        name: 'Page & channel management',
+        href: '/services/social/page-channel-management',
+        img: '/Images/linkedin-content.jpg',
+        alt: 'A laptop on a sunlit studio desk displaying a LinkedIn company page.',
+        desc: 'Banners, bios, pinned posts, and daily channel stewardship.',
+        tag: 'Channel setup & care',
+      },
+      {
+        name: 'Weekly posts, carousels & video',
+        href: '/services/social/weekly-posts-carousels-video',
+        img: '/Images/soc-plat-tiktok-feed.jpg',
+        alt: 'A hand holding a smartphone displaying a vertical video feed post.',
+        desc: 'Weekly posts, eight-slide carousels, Reels, TikToks, and Shorts.',
+        tag: 'Always-on calendar',
+      },
+      {
+        name: 'Newsletters & editorial series',
+        href: '/services/social/newsletters-editorial-series',
+        img: '/Images/soc-plat-newsletter.jpg',
+        alt: 'A laptop on a walnut desk showing a LinkedIn Newsletter edition.',
+        desc: 'LinkedIn Newsletters, WeChat columns, and recurring series.',
+        tag: 'Long-form social',
+      },
+      {
+        name: 'Live events & webinars',
+        href: '/services/social/live-events-webinars',
+        img: '/Images/soc-plat-live-event.jpg',
+        alt: 'A studio monitor displaying a LinkedIn Live broadcast with two speakers.',
+        desc: 'Pre-event registration kits, live graphics, and post-event Shorts.',
+        tag: 'Events & cutdowns',
+      },
+    ],
+    shots: [
+      { label: 'LinkedIn studio', shot: appShots.linkedin, path: '/social/linkedin/posts' },
+      { label: 'Instagram studio', shot: appShots.instagram, path: '/social/instagram/posts' },
+      { label: 'TikTok (Beta)', shot: appShots.tiktok, path: '/social/tiktok/brief' },
+      { label: 'YouTube kit', shot: appShots.youtube, path: '/social/youtube/posts' },
+      { label: 'Publishing step', shot: appShots.publishStep, path: '/social/instagram/posts' },
+    ],
+  },
+  {
+    id: 'social-paid-ads',
+    shortName: 'Paid & Ads',
+    tag: 'Full-funnel & leads',
+    title: 'Social · Paid & Ads',
+    blurb: 'Full-funnel campaigns, variants, and qualified leads.',
+    intro:
+      'Paid social engineered and tested in the studio, billed straight to your own ad accounts. We structure the funnels, segment audiences and retargeting windows, test forty to eighty creative variants a month, and report at the creative level.',
+    highlights: [
+      { title: 'Direct media billing', text: 'Ad spend goes straight to your own ad accounts with zero media markup.' },
+      { title: 'High-volume variant testing', text: 'Hooks, visuals, and aspect ratios split-tested by audience segment.' },
+      { title: 'Creative-level attribution', text: 'See which exact hook, frame, or carousel slide drove the lead.' },
+    ],
+    services: [
+      {
+        name: 'Campaign setup & funnels',
+        href: '/services/social/campaign-setup-funnels',
+        img: '/Images/linkedin-ads.jpg',
+        alt: 'An external monitor on a studio desk showing LinkedIn Campaign Manager.',
+        desc: 'Account structure, tracking, and full-funnel launch packs.',
+        tag: 'Funnel architecture',
+      },
+      {
+        name: 'Audience targeting & retargeting',
+        href: '/services/social/audience-targeting-retargeting',
+        img: '/Images/soc-plat-audience-retargeting.jpg',
+        alt: 'A laptop showing an audience targeting and retargeting interface.',
+        desc: 'ABM lists, retargeting windows, and persona-adapted creative.',
+        tag: 'ABM & segments',
+      },
+      {
+        name: 'Ad creative & variant testing',
+        href: '/services/social/ad-creative-variant-testing',
+        img: '/Images/meta-ads.jpg',
+        alt: 'A strategist reviewing a grid of social ad variants in Meta Ads Manager.',
+        desc: 'Hook, visual, and format split tests iterated every week.',
+        tag: 'A/B split testing',
+      },
+      {
+        name: 'Lead generation & reporting',
+        href: '/services/social/lead-generation-reporting',
+        img: '/Images/soc-plat-lead-report.jpg',
+        alt: 'A widescreen monitor showing a social lead generation and funnel report.',
+        desc: 'Native Lead Gen forms, gated reports, and creative attribution.',
+        tag: 'Lead Gen & ROI',
+      },
+    ],
+    shots: [
+      { label: 'Campaign hub', shot: appShots.campaignPage, path: '/campaigns' },
+      { label: 'Video safe zones', shot: appShots.videoSocial, path: '/files/tools/video-editor' },
+      { label: 'Feed crop checks', shot: appShots.editorSocial, path: '/files/tools/image-editor' },
+      { label: 'Client validation', shot: appShots.validation, path: '/validation' },
+    ],
+  },
+  {
+    id: 'social-advocacy-networks',
+    shortName: 'Advocacy & Networks',
+    tag: 'Leadership & global',
+    title: 'Social · Advocacy & Networks',
+    blurb: 'Leadership voices, employee sharing, and every network.',
+    intro:
+      'The human side of social scale: ghostwritten posts and Thought Leader Ads for executives, multi-voice advocacy packs and Team Skills for employees, hands-on workshops, and cross-border operations across Western and Chinese platforms.',
+    highlights: [
+      { title: 'Executive ghostwriting', text: 'Monthly interviews turned into essays, threads, and short videos.' },
+      { title: 'Employee advocacy in the app', text: 'Custom Team Skills and role-based drafts so teammates post in their own voice.' },
+      { title: 'West & China operations', text: 'Direct publishing on Western channels plus native production for China.' },
+    ],
+    services: [
+      {
+        name: 'Employee advocacy programs',
+        href: '/services/social/employee-advocacy-programs',
+        img: '/Images/soc-plat-employee-advocacy.jpg',
+        alt: 'Two smartphones on an oak table showing LinkedIn posts from two colleagues.',
+        desc: 'Role-based drafts and Team Skills so teammates post in their own voice.',
+        tag: 'Team amplification',
+      },
+      {
+        name: 'Executive personal branding',
+        href: '/services/social/executive-personal-branding',
+        img: '/Images/linkedin-thought.jpg',
+        alt: 'A smartphone on a wooden desk showing an executive LinkedIn profile and post.',
+        desc: 'Founder and C-suite interviews turned into weekly essays and videos.',
+        tag: 'C-suite & founders',
+      },
+      {
+        name: 'Workshops & team training',
+        href: '/services/social/workshops-team-training',
+        img: '/Images/training-hero.jpg',
+        alt: 'An art director leading a hands-on workshop around a sunlit studio table.',
+        desc: 'Hands-on AI and social training taught on your own brand briefs.',
+        tag: 'Live upskilling',
+      },
+      {
+        name: 'LinkedIn, Meta, TikTok, X & China',
+        href: '/services/social/linkedin-meta-tiktok-x-china',
+        img: '/Images/rednote-hero.jpg',
+        alt: 'A hand holding a smartphone displaying a RedNote discovery feed.',
+        desc: 'Western publishing in the app plus WeChat, RedNote, Douyin, and Weibo.',
+        tag: 'Cross-border social',
+      },
+    ],
+    shots: [
+      { label: 'Format Skills catalog', shot: appShots.skillsCatalog, path: '/skills' },
+      { label: 'Cross-network repurpose', shot: appShots.repurpose, path: '/social/instagram/posts' },
+      { label: 'My Connections', shot: appShots.connections, path: '/my-connections' },
+      { label: 'Client space', shot: appShots.clientSpace, path: '/client' },
+    ],
+  },
 ];
 
-/* How a studio project runs. Titled steps, no numerals: order carries it. */
+/* Combined catalog for JSON-LD OfferCatalog schema */
+const allCategories = [
+  ...creativeCategories.map((c) => ({ title: c.title, services: c.services })),
+  ...socialTracks.map((t) => ({ title: t.title, services: t.services })),
+];
+
+/* Interactive 5-stage project workflow (no numbers in cards: sequence is order + rail) */
 const steps = [
   {
+    id: 'step-brief',
+    kicker: 'Start here',
     title: 'Brief',
-    text: 'You tell us what you need, where it will run, and by when. A producer reads it within one business day.',
+    summary: 'You tell us what you need, where it will run, and by when.',
+    ourSide: 'A senior producer reads your brief within one business day, checks your brand materials, and pairs the right art director and social strategist to the scope.',
+    yourSide: 'Send a short brief through our contact form with your goals, channels, and timeline. If anything is missing, the producer asks on a quick call.',
+    deliverable: 'Producer response within one business day',
   },
   {
+    id: 'step-proposal',
+    kicker: 'Written scope',
     title: 'Proposal',
-    text: 'Within 48 hours you get a written proposal with the approach, deliverables, timeline, and price. We price per asset, per project, or on retainer.',
+    summary: 'You receive a written proposal with the approach, deliverables, timeline, and price.',
+    ourSide: 'We map out the exact asset list or monthly social calendar, choose the workspace setup (our workspace with Client space, or inside your own hubStudio team), and lock dates.',
+    yourSide: 'Pick the pricing model that fits the work: per asset for a defined list, per project for a launch, or a monthly retainer for ongoing creative and social operations.',
+    deliverable: 'Written scope, dates, and pricing model',
   },
   {
-    title: 'Production',
-    text: 'An art director leads. The team shoots, generates, or does both, depending on the asset.',
+    id: 'step-production',
+    kicker: 'Creative & Social',
+    title: 'Production & Social',
+    summary: 'Senior art directors, AIGC specialists, and social editors make the work.',
+    ourSide: 'For creative assets, we shoot on set, generate on brand-trained models, or combine both. For social networks, we draft posts, cut vertical video, organize Campaigns, and set up paid variants.',
+    yourSide: 'You only brief your brand once. The same team keeps your visual identity and your social voice consistent across Western and Chinese channels.',
+    deliverable: 'Campaign assets, video cuts, and social drafts',
   },
   {
-    title: 'Review',
-    text: 'You comment on the work. With Studio + app, each version goes to your approvers in the app’s Validation.',
+    id: 'step-review',
+    kicker: 'In the app',
+    title: 'Validation',
+    summary: 'Every piece and every post goes to your approvers on one permanent thread.',
+    ourSide: 'We send each asset or scheduled post to Validation in hubStudio. When you request changes, we upload each new version to that same thread.',
+    yourSide: 'Your approvers click Validate or send the item back with a comment. Nothing on an approval thread can be deleted, so your audit trail is permanent.',
+    deliverable: 'Locked approval thread with version history',
   },
   {
-    title: 'Delivery',
-    text: 'You get finished files in the formats each channel needs, with the provenance of each asset recorded.',
+    id: 'step-delivery',
+    kicker: 'Live & archived',
+    title: 'Delivery & Publishing',
+    summary: 'Posts go live on your schedule, and finished files land in your library with provenance.',
+    ourSide: 'Approved social posts publish or queue in hubStudio across LinkedIn, Instagram, Facebook, TikTok (Beta), and X, or prepare for YouTube Studio. China and commerce files ship ready to post.',
+    yourSide: 'Download channel-ready files from Client space or keep every render, prompt, and campaign directly inside your own workspace’s Assets Library.',
+    deliverable: 'Published campaigns + provenance record per asset',
   },
 ];
 
@@ -256,65 +520,189 @@ const proof = proofSlugs
   .map((slug) => caseStudies.find((c) => c.slug === slug))
   .filter((c): c is (typeof caseStudies)[number] => Boolean(c));
 
-const platformsWest = [
-  { name: 'Meta', href: '/solutions/platforms/meta' },
-  { name: 'TikTok', href: '/solutions/platforms/tiktok' },
-  { name: 'LinkedIn', href: '/solutions/platforms/linkedin' },
-  { name: 'Amazon', href: '/solutions/platforms/amazon' },
-  { name: 'Shopify', href: '/solutions/platforms/shopify' },
-  { name: 'Brand website', href: '/solutions/platforms/brand-website' },
-  { name: 'Ecommerce website', href: '/solutions/platforms/ecommerce-website' },
-];
-const platformsChina = [
-  { name: 'WeChat', href: '/solutions/platforms/wechat' },
-  { name: 'Douyin', href: '/solutions/platforms/douyin' },
-  { name: 'RedNote', href: '/solutions/platforms/rednote' },
-  { name: 'Weibo', href: '/solutions/platforms/weibo' },
-  { name: 'Tmall', href: '/solutions/platforms/tmall' },
-  { name: 'JD', href: '/solutions/platforms/jd' },
+type PlatformItem = {
+  name: string;
+  href: string;
+  region: 'west' | 'china';
+  mode: 'app-publish' | 'studio-ops';
+  badge: string;
+  formats: string;
+};
+
+const platformItems: PlatformItem[] = [
+  {
+    name: 'LinkedIn',
+    href: '/solutions/platforms/linkedin',
+    region: 'west',
+    mode: 'app-publish',
+    badge: 'App + Services',
+    formats: 'Company pages · Carousels · Executive posts · Lead Gen Ads',
+  },
+  {
+    name: 'Meta (Instagram & Facebook)',
+    href: '/solutions/platforms/meta',
+    region: 'west',
+    mode: 'app-publish',
+    badge: 'App + Services',
+    formats: 'Reels · Stories · Feed carousels · Meta Ads variant testing',
+  },
+  {
+    name: 'TikTok',
+    href: '/solutions/platforms/tiktok',
+    region: 'west',
+    mode: 'app-publish',
+    badge: 'App (Beta) + Services',
+    formats: 'Vertical video · Timed scripts (Beta) · Spark Ads',
+  },
+  {
+    name: 'X',
+    href: '/app/publish#x',
+    region: 'west',
+    mode: 'app-publish',
+    badge: 'App + Services',
+    formats: 'Threads · Multi-image posts · Launch commentary',
+  },
+  {
+    name: 'YouTube',
+    href: '/app/publish#youtube',
+    region: 'west',
+    mode: 'app-publish',
+    badge: 'App kit + Services',
+    formats: 'YouTube Shorts · Channel branding · Studio-ready metadata',
+  },
+  {
+    name: 'Amazon',
+    href: '/solutions/platforms/amazon',
+    region: 'west',
+    mode: 'studio-ops',
+    badge: 'Creative service',
+    formats: 'PDP hero stacks · Enhanced brand modules · Store video',
+  },
+  {
+    name: 'Shopify',
+    href: '/solutions/platforms/shopify',
+    region: 'west',
+    mode: 'studio-ops',
+    badge: 'Creative service',
+    formats: 'Storefront themes · Collection visuals · Conversion landing pages',
+  },
+  {
+    name: 'Brand website',
+    href: '/solutions/platforms/brand-website',
+    region: 'west',
+    mode: 'studio-ops',
+    badge: 'Creative service',
+    formats: 'Key visuals · Interactive web design · Launch films',
+  },
+  {
+    name: 'Ecommerce website',
+    href: '/solutions/platforms/ecommerce-website',
+    region: 'west',
+    mode: 'studio-ops',
+    badge: 'Creative service',
+    formats: 'Consistent catalog photography · Lifestyle scenes · High-res zoom',
+  },
+  {
+    name: 'WeChat',
+    href: '/solutions/platforms/wechat',
+    region: 'china',
+    mode: 'studio-ops',
+    badge: 'China service',
+    formats: 'Official Account long-reads · WeChat Channels · Mini-programs',
+  },
+  {
+    name: 'RedNote',
+    href: '/solutions/platforms/rednote',
+    region: 'china',
+    mode: 'studio-ops',
+    badge: 'China service',
+    formats: 'Editorial seeding notes · KOL briefs · Storefront assets',
+  },
+  {
+    name: 'Douyin',
+    href: '/solutions/platforms/douyin',
+    region: 'china',
+    mode: 'studio-ops',
+    badge: 'China service',
+    formats: 'Fast-hook vertical video · Livestream kits · Dou+ ad variants',
+  },
+  {
+    name: 'Weibo',
+    href: '/solutions/platforms/weibo',
+    region: 'china',
+    mode: 'studio-ops',
+    badge: 'China service',
+    formats: 'Brand pages · Super Topic campaigns · Multi-image launch visuals',
+  },
+  {
+    name: 'Tmall',
+    href: '/solutions/platforms/tmall',
+    region: 'china',
+    mode: 'studio-ops',
+    badge: 'China commerce',
+    formats: 'Flagship store design · Long-scroll PDPs · Festival campaigns',
+  },
+  {
+    name: 'JD',
+    href: '/solutions/platforms/jd',
+    region: 'china',
+    mode: 'studio-ops',
+    badge: 'China commerce',
+    formats: 'Spec-driven product pages · Tech & appliance visuals · Hero banners',
+  },
 ];
 
-/* FAQ: `a` is plain text for the JSON-LD; `html` adds the in-page links. */
-const faqs: { q: string; a: string; html?: string }[] = [
+/* FAQ: `a` is plain text for the JSON-LD; `html` adds the in-page links; `topic` powers the JS filter. */
+const faqs: { q: string; a: string; html?: string; topic: 'creative' | 'social' | 'app' }[] = [
   {
-    q: 'How much does a studio project cost?',
-    a: 'It depends on the work, and we quote after reading your brief. There are three ways to price it. Per asset suits a defined list of deliverables. Per project suits a campaign or a launch. A retainer suits content you need every month. The written proposal arrives within 48 hours. We don’t publish rates, but the pricing page explains each model.',
-    html: 'It depends on the work, and we quote after reading your brief. There are three ways to price it. Per asset suits a defined list of deliverables. Per project suits a campaign or a launch. A retainer suits content you need every month. The written proposal arrives within 48 hours. We don’t publish rates, but <a href="/pricing">the pricing page</a> explains each model.',
+    topic: 'app',
+    q: 'How do your creative and social services connect with the hubStudio app?',
+    a: 'The app is the core, and our services are the added value on top of it. Across both pillars, Creative assets and Social networks, our team works inside hubStudio with you. We either work in our own workspace and give your people free client logins for Client space and Validation, or join your own hubStudio team as members.',
+    html: 'The app is the core, and our services are the added value on top of it. Across both pillars, Creative assets and Social networks, our team works inside hubStudio with you. We either work in our own workspace and give your people free client logins for Client space and Validation, or join <a href="/studio/with-the-app">your own hubStudio team</a> as members.',
   },
   {
+    topic: 'app',
+    q: 'How much does a studio or social engagement cost?',
+    a: 'It depends on the work, and we quote after reading your brief. There are three ways to price it. Per asset suits a defined list of deliverables. Per project suits a campaign or a launch. A retainer suits creative assets and social networks you need every month. The written proposal arrives within 48 hours. We don’t publish rates, but the pricing page explains each model.',
+    html: 'It depends on the work, and we quote after reading your brief. There are three ways to price it. Per asset suits a defined list of deliverables. Per project suits a campaign or a launch. A retainer suits creative assets and social networks you need every month. The written proposal arrives within 48 hours. We don’t publish rates, but <a href="/pricing">the pricing page</a> explains each model.',
+  },
+  {
+    topic: 'social',
+    q: 'Can your team run our social networks and paid ads end to end?',
+    a: 'Yes. Under our Social networks pillar, our strategists, editors, and media buyers manage your pages, write and produce weekly posts, carousels, and short video, run executive ghostwriting and employee advocacy programs, and manage paid social campaigns billed straight to your ad accounts.',
+  },
+  {
+    topic: 'app',
     q: 'What should a brief include?',
-    a: 'What you need, where it will run, the deadline, and any brand material you have: guidelines, past work, product shots. A short brief is fine. The producer will ask for what’s missing.',
+    a: 'What you need across creative assets or social networks, where it will run, the deadline, and any brand material you have: guidelines, past work, product shots. A short brief is fine. A producer reads it within one business day and asks for what’s missing.',
   },
   {
-    q: 'Do I need a hubStudio account?',
-    a: 'Not for Studio only: you send a brief and receive files. For Studio + app, your people get client logins in our workspace, or you add our creatives to your own hubStudio team.',
-    html: 'Not for Studio only: you send a brief and receive files. For <a href="/studio/with-the-app">Studio + app</a>, your people get client logins in our workspace, or you add our creatives to your own hubStudio team.',
-  },
-  {
+    topic: 'creative',
     q: 'How long does a project take?',
     a: 'That depends on the scope, and the proposal gives you a date for each deliverable. For a sense of pace, the Mexicash campaign went from brief to five platforms in five days.',
     html: 'That depends on the scope, and the proposal gives you a date for each deliverable. For a sense of pace, <a href="/work/mexicash">the Mexicash campaign</a> went from brief to five platforms in five days.',
   },
   {
-    q: 'Is the work shot or generated?',
-    a: 'Both. We decide asset by asset. Some assets are shot, some are generated, and most mix the two.',
+    topic: 'creative',
+    q: 'Is the creative work shot or generated with AI?',
+    a: 'Both. We decide asset by asset. Some assets are shot on set, some are generated on brand-trained models and studio GPU pipelines, and most combine the two.',
+    html: 'Both. We decide asset by asset. Some assets are shot on set, some are generated on <a href="/studio/ai-excellence">brand-trained models and studio GPU pipelines</a>, and most combine the two.',
   },
   {
+    topic: 'creative',
     q: 'What do you record about each asset?',
-    a: 'Its provenance. For every asset we deliver, we record how it was made and what went into it.',
+    a: 'Its provenance and its approval history. For every asset we deliver, we record how it was made and what went into it, and every version approved in Validation stays on a permanent thread.',
   },
   {
-    q: 'Can the studio make content for Chinese platforms?',
-    a: 'Yes. We produce for WeChat, Douyin, RedNote, Weibo, Tmall, and JD. The app doesn’t publish there, so we deliver files ready to post.',
+    topic: 'social',
+    q: 'How do you handle Chinese social networks and marketplaces?',
+    a: 'We produce native content and run campaigns for WeChat, Douyin, RedNote, Weibo, Tmall, and JD from our Shanghai, Changsha, and Hong Kong teams. The hubStudio app publishes directly to Western networks; for Chinese platforms, you validate the work in the app and our team delivers files ready to post or operates your local channels.',
   },
   {
-    q: 'Can we move from the studio to the app later?',
-    a: 'Yes. You can start with the studio and make more of the work yourself in the app over time, or go the other way.',
-    html: 'Yes. You can start with the studio and make more of the work yourself <a href="/app">in the app</a> over time, or go the other way.',
-  },
-  {
-    q: 'Do you work with agencies?',
-    a: 'Yes. Agencies brief the studio like any other client. With Studio + app, we can work inside your agency’s own hubStudio team, and your clients can approve the work there with client logins.',
+    topic: 'app',
+    q: 'Can we move work between your team and our own team in the app?',
+    a: 'Yes. You can start with our team running production and social inside hubStudio and take more of the daily work in-house over time, or use the app on your own and bring us in for launches, brand systems, and paid campaigns.',
+    html: 'Yes. You can start with our team running production and social inside <a href="/app">hubStudio</a> and take more of the daily work in-house over time, or use the app on your own and bring us in for launches, brand systems, and paid campaigns.',
   },
 ];
 
@@ -326,7 +714,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-    { '@type': 'ListItem', position: 2, name: 'Studio', item: pageUrl },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: pageUrl },
   ],
 };
 
@@ -340,7 +728,6 @@ const faqSchema = {
   })),
 };
 
-/* The studio as a ProfessionalService. No price range, by policy. */
 const studioSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
@@ -348,7 +735,7 @@ const studioSchema = {
   name: 'hubStudio',
   url: pageUrl,
   description:
-    'The hubStudio studio: senior art directors and AIGC specialists who make images, video, and social content from a brief, across twenty service lines, inside the hubStudio app or outside it.',
+    'hubStudio services across two pillars: Creative assets (twenty studio service lines for text, images, and video) and Social networks (twelve service lines for content, paid social, and advocacy across Western and Chinese platforms), delivered and validated inside the hubStudio app.',
   image: `${SITE}/Images/studio-hero.webp`,
   parentOrganization: { '@id': `${SITE}/#organization` },
   founder: { '@id': `${SITE}/#cyril-drouin` },
@@ -356,8 +743,8 @@ const studioSchema = {
   areaServed: 'Worldwide',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'hubStudio creative services',
-    itemListElement: categories.map((cat) => ({
+    name: 'hubStudio creative assets and social network services',
+    itemListElement: allCategories.map((cat) => ({
       '@type': 'OfferCatalog',
       name: cat.title,
       itemListElement: cat.services.map((svc) => ({
@@ -376,8 +763,9 @@ const studioSchema = {
 ---
 
 <Layout
-  title="AI creative studio: images, video, social | hubStudio"
-  description="Senior art directors and AIGC specialists make your images, video, and social content across twenty service lines, in the hubStudio app or outside it."
+  heroOverlay
+  title="Creative assets & social network services in the app | hubStudio"
+  description="Work with our senior art directors, AIGC specialists, and social managers inside hubStudio across two pillars: twenty creative asset lines and twelve social network services."
   image="/Images/studio-hero.webp"
   preloadImage="/Images/studio-hero.webp"
 >
@@ -385,947 +773,1896 @@ const studioSchema = {
   <script is:inline type="application/ld+json" set:html={JSON.stringify(studioSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-  <!-- ===== Hero ===== -->
-  <section class="st-hero">
-    <figure class="st-hero__media">
-      <img
-        src="/Images/studio-hero.webp"
-        alt="Two hubStudio art directors at a wall of pinned proofs; one circles a sneaker print in red pencil beside the notes “crop tighter” and “lift shadows.”"
-        width="2000"
-        height="1333"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    </figure>
-    <div class="container st-hero__inner">
-      <div class="st-hero__copy">
-        <nav class="st-crumbs" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">/</span>
-          <span aria-current="page">Studio</span>
-        </nav>
-        <span class="eyebrow st-hero__eyebrow">The studio</span>
-        <h1 class="headline h1 st-hero__title">
-          Send the brief. Our <span class="accent">studio</span> makes the work.
-        </h1>
-        <p class="lead st-hero__lead">
-          Our art directors and AIGC specialists make the images, video, and social content,
-          and hand it back finished. We can work inside the hubStudio app, where you approve
-          each version, or we can leave the app out and just send you the files.
-        </p>
-        <div class="st-hero__cta">
-          <a class="btn btn--primary" href={`${BRIEF_URL}?way=studio`}>Send a brief</a>
-          <a class="btn btn--secondary" href="#services">See the twenty services</a>
+  <!-- Fixed scroll progress bar -->
+  <div class="scrollbar" aria-hidden="true"><span class="scrollbar__fill"></span></div>
+
+  <!-- Floating interactive section quick-dock (reveals on scroll) -->
+  <nav class="st-dock" id="st-dock" aria-label="Services quick navigation" data-dock>
+    <a class="st-dock__pill st-dock__pill--create is-active" href="#services" data-dock-link="services">
+      <span class="st-dock__dot" aria-hidden="true"></span>
+      <span>Pillar · Creative assets</span>
+    </a>
+    <a class="st-dock__pill st-dock__pill--publish" href="#social-networks" data-dock-link="social-networks">
+      <span class="st-dock__dot" aria-hidden="true"></span>
+      <span>Pillar · Social networks</span>
+    </a>
+    <a class="st-dock__pill" href="#setups" data-dock-link="setups">
+      <span>In the app</span>
+    </a>
+    <a class="st-dock__pill" href="#how-it-runs" data-dock-link="how-it-runs">
+      <span>How it runs</span>
+    </a>
+    <a class="st-dock__pill" href="#work" data-dock-link="work">
+      <span>Case studies</span>
+    </a>
+    <a class="st-dock__cta" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</a>
+  </nav>
+
+  <div class="studio-page">
+    <!-- ==========================================================
+         S1 · Dark Cinematic Hero: Both Pillars + Interactive Cards
+    ========================================================== -->
+    <section class="st-hero" data-spot>
+      <div class="st-hero__bg" aria-hidden="true">
+        <div class="grain st-hero__grain"></div>
+        <div class="st-hero__orb st-hero__orb--create"></div>
+        <div class="st-hero__orb st-hero__orb--publish"></div>
+        <div class="st-hero__grid-bg"></div>
+      </div>
+
+      <div class="container st-hero__inner">
+        <div class="st-hero__main">
+          <div class="st-hero__copy">
+            <nav class="st-crumbs" aria-label="Breadcrumb">
+              <a href="/">Home</a>
+              <span aria-hidden="true">/</span>
+              <span aria-current="page">Studio &amp; Services</span>
+            </nav>
+
+            <span class="eyebrow eyebrow--orange st-hero__eyebrow">
+              Our services · Added value on the app
+            </span>
+
+            <h1 class="st-hero__title">
+              <span class="line"><span>Creative assets and</span></span>
+              <span class="line"><span>social networks, built</span></span>
+              <span class="line"><span>with <em class="accent">us</em> in the app.</span></span>
+            </h1>
+
+            <p class="st-hero__lead">
+              The hubStudio app is the core. Bring our senior art directors, AIGC specialists, and
+              social managers into your workspace across two complementary pillars: we produce your
+              text, images, and video, and we run your social presence across Western and Chinese
+              networks while you validate every piece on one thread.
+            </p>
+
+            <div class="st-hero__actions">
+              <div class="st-hero__cta">
+                <a class="btn btn--primary st-mag" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</a>
+                <a class="btn btn--on-dark st-mag" href={APP_SIGNUP} target="_blank" rel="noopener">
+                  Create your account
+                </a>
+              </div>
+              <p class="st-hero__alt">
+                Already on hubStudio? <a href={APP_SIGNIN} target="_blank" rel="noopener">Sign in</a>
+                <span aria-hidden="true">·</span>
+                <a href="/studio/with-the-app">How we work together in the app</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Right visual stage: Layered editorial photo + interactive dual-pillar cards -->
+          <div class="st-hero__stage">
+            <figure class="st-hero__frame" data-tilt>
+              <img
+                src="/Images/studio-hero.webp"
+                alt="Two hubStudio art directors at a wall of pinned proofs; one circles a sneaker print in red pencil beside the notes “crop tighter” and “lift shadows.”"
+                width="2000"
+                height="1333"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                data-parallax
+                data-speed="0.08"
+              />
+              <div class="st-hero__scrim" aria-hidden="true"></div>
+              <figcaption class="st-hero__badge">
+                <span class="st-hero__badge-dot" aria-hidden="true"></span>
+                <span>Hong Kong · Shanghai · Changsha · Philippines · Paris</span>
+              </figcaption>
+            </figure>
+
+            <!-- Floating Interactive Dual-Pillar Cards -->
+            <div class="st-hero__pillars">
+              <a
+                class="st-hpil st-hpil--create"
+                href="#services"
+                data-glow
+                data-tilt
+              >
+                <div class="st-hpil__top">
+                  <span class="st-hpil__kicker">
+                    <span class="st-hpil__dot" aria-hidden="true"></span>
+                    Pillar · Creative assets
+                  </span>
+                  <span class="st-hpil__pill">Six studio groups</span>
+                </div>
+                <p class="st-hpil__title">Text, images &amp; video</p>
+                <p class="st-hpil__desc">
+                  Campaigns, video &amp; motion, eCommerce catalogs, strategy, brand systems, and decks.
+                </p>
+                <span class="st-hpil__cta">
+                  Explore creative lines <span class="arrow" aria-hidden="true">&rarr;</span>
+                </span>
+              </a>
+
+              <a
+                class="st-hpil st-hpil--publish"
+                href="#social-networks"
+                data-glow
+                data-tilt
+              >
+                <div class="st-hpil__top">
+                  <span class="st-hpil__kicker">
+                    <span class="st-hpil__dot" aria-hidden="true"></span>
+                    Pillar · Social networks
+                  </span>
+                  <span class="st-hpil__pill">Three social tracks</span>
+                </div>
+                <p class="st-hpil__title">Posts, paid ads &amp; advocacy</p>
+                <p class="st-hpil__desc">
+                  Page management, weekly content, full-funnel ads, and executive voices across West &amp; China.
+                </p>
+                <span class="st-hpil__cta">
+                  Explore social lines <span class="arrow" aria-hidden="true">&rarr;</span>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
-        <p class="st-hero__alt">
-          Prefer to make it yourself? <a href={APP_SIGNUP} target="_blank" rel="noopener">Create your account</a>
-        </p>
-        <ul class="st-hero__meta">
-          <li>Senior art directors on every brief</li>
-          <li>Hong Kong, Shanghai, Changsha, the Philippines, and Paris</li>
-          <li>Founded by Cyril Drouin, former CEO at Publicis</li>
-        </ul>
+
+        <!-- Bottom SLA & Fact Ribbon -->
+        <div class="st-hero__stats" data-reveal>
+          <div class="st-hstat">
+            <span class="st-hstat__val st-hstat__val--word">One day</span>
+            <span class="st-hstat__lbl">For a senior producer to read your brief</span>
+          </div>
+          <div class="st-hstat">
+            <span class="st-hstat__val"><span class="count" data-to="48">48</span><i>h</i></span>
+            <span class="st-hstat__lbl">To a written proposal with deliverables and dates</span>
+          </div>
+          <div class="st-hstat">
+            <span class="st-hstat__val"><span class="count" data-to="32">32</span></span>
+            <span class="st-hstat__lbl">Service lines across Creative assets and Social networks</span>
+          </div>
+          <div class="st-hstat">
+            <span class="st-hstat__val st-hstat__val--word">Per asset</span>
+            <span class="st-hstat__lbl">Provenance &amp; permanent approval thread in Validation</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== How the studio works ===== -->
-  <section class="st-sheet st-sheet--white st-how">
-    <div class="container st-how__grid">
-      <div class="st-how__copy">
-        <span class="eyebrow">How we work</span>
-        <h2 class="headline h2 reveal st-how__title">
-          A senior art director on every <span class="accent">brief</span>.
-        </h2>
-        <p class="st-p">
-          Every project is led by a senior art director. Under them, AIGC specialists run the
-          production on brand-trained models and GPU pipelines that the studio team operates
-          itself. We train on the brand because a general model gets a product almost right,
-          and almost right is what a brand manager sends back.
-        </p>
-        <p class="st-p">
-          The first thing most clients ask is whether the work is shot or made with AI.
-          Usually it’s both: some assets are shot, some are generated, and most combine the
-          two. We make that call asset by asset, based on what the picture needs, not on a
-          house style.
-        </p>
-        <p class="st-p">
-          The studio is headquartered in Hong Kong, with studios in Shanghai and Changsha, a
-          team in the Philippines, and an office in Paris. Cyril Drouin, former CEO at
-          Publicis, founded it.
-        </p>
-        <a class="st-arrow" href="/studio/ai-excellence">
-          How we use AI <span aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
-      <aside class="st-facts" aria-label="Studio facts">
-        <span class="eyebrow">What to expect</span>
-        <ul class="st-facts__list">
-          {facts.map((f) => <li>{f}</li>)}
-        </ul>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ===== Ways to work (shared band) ===== -->
-  <div class="st-ways">
-    <WaysToWork tone="cream" highlight="studio-app" />
-  </div>
-
-  <!-- ===== The two studio ways, explained ===== -->
-  <section class="st-sheet st-sheet--white st-two">
-    <div class="container">
-      <header class="st-head">
-        <span class="eyebrow">Two ways to hire us</span>
-        <h2 class="headline h2 reveal">
-          What changes between the two studio <span class="accent">ways</span>
-        </h2>
-        <p class="st-head__lead">
-          Both get you the same studio and the same art directors. The difference is where you
-          see the work and what stays on record.
-        </p>
-      </header>
-      <div class="st-two__grid">
-        <article class="st-way st-way--hi">
-          <span class="st-way__tag"><span class="st-dot" aria-hidden="true"></span>Managed</span>
-          <h3 class="st-way__name">Studio + app</h3>
-          <p class="st-way__text">
-            You see the work in hubStudio, one approval thread per piece. Your people either get
-            client logins in our workspace, or you add our creatives to your own team. Every
-            version, v1, v2, and on, stays on that thread, and nothing on it can be deleted. You
-            see the finished work. Our prompts, engines, and costs stay on our side.
+    <!-- ==========================================================
+         S2 · Two-Pillar Architecture Explorer
+    ========================================================== -->
+    <section class="sheet sheet--light sheet--first section" id="pillars">
+      <div class="container">
+        <header class="s-head s-head--row">
+          <div>
+            <span class="eyebrow" data-reveal>Two complementary pillars</span>
+            <h2 class="headline h2" data-reveal>
+              Built around what you make and where it <span class="accent">ships</span>.
+            </h2>
+          </div>
+          <p class="s-head__intro" data-reveal>
+            Most brands don’t need a disconnected design shop and a separate social agency. Our team
+            covers both pillars inside the same hubStudio workspace, founded by Cyril Drouin, former
+            CEO at Publicis.
           </p>
-          <a class="st-arrow" href="/studio/with-the-app">
-            How Studio + app works <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-        <article class="st-way">
-          <span class="st-way__tag"><span class="st-dot" aria-hidden="true"></span>Full service</span>
-          <h3 class="st-way__name">Studio only</h3>
-          <p class="st-way__text">
-            Your producer sends each round for your comments and runs the job from the first
-            call to delivery. Nobody on your side needs an account or has to learn any software.
-            You get finished files in the formats each channel needs.
-          </p>
-          <a class="st-arrow" href={`${BRIEF_URL}?way=studio`}>
-            Send a brief <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      </div>
-    </div>
-  </section>
+        </header>
 
-  <!-- ===== Services catalog ===== -->
-  <section class="st-sheet st-sheet--cream st-svc" id="services">
-    <div class="container">
-      <header class="st-head">
-        <span class="eyebrow">Services</span>
-        <h2 class="headline h2 reveal">
-          Twenty service lines, one <span class="accent">studio</span>.
-        </h2>
-        <p class="st-head__lead">
-          The same art directors run every line. A brand identity, its packaging, and next
-          month’s social calendar can all come from one team, and you only brief your brand once.
-        </p>
-        <nav class="st-jump" aria-label="Service groups">
+        <!-- Interactive Dual-Pillar Command Grid -->
+        <div class="pil-arch">
+          <!-- Pillar 1 Card: Creative Assets -->
+          <article class="pil-card pil-card--create" data-reveal data-glow data-tilt style="--i:0">
+            <div class="pil-card__head">
+              <div class="pil-card__badge-row">
+                <span class="pil-card__tag">
+                  <span class="pil-card__dot" aria-hidden="true"></span>
+                  Services · Creative assets
+                </span>
+                <span class="pil-card__count">Six groups · Twenty lines</span>
+              </div>
+              <div class="pil-card__title-row">
+                <span class="pil-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7">
+                    <rect x="4" y="4" width="16" height="16" rx="4.5" />
+                    <rect x="12" y="12" width="16" height="16" rx="4.5" />
+                    <circle class="ic-accent" cx="20" cy="20" r="3.2" stroke="none" />
+                  </svg>
+                </span>
+                <h3 class="pil-card__title">Text, images, and video</h3>
+              </div>
+              <p class="pil-card__body">
+                Senior art directors lead every brief, backed by designers, retouchers, motion
+                artists, writers, and AIGC specialists running brand-trained models and studio GPU
+                pipelines. Some assets are shot on set, some are generated, and most combine both.
+              </p>
+            </div>
+
+            <div class="pil-card__groups">
+              <span class="pil-card__sublabel">Jump to a creative group</span>
+              <div class="pil-card__pills">
+                {
+                  creativeCategories.map((cat) => (
+                    <a class="pil-pill" href={`#${cat.id}`} data-jump-cat={cat.id}>
+                      <span>{cat.title}</span>
+                      <span class="pil-pill__arr" aria-hidden="true">&rarr;</span>
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+
+            <div class="pil-card__foot">
+              <a class="arrow-link" href="#services">
+                Explore all twenty creative service lines <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <a class="pil-card__sec-link" href="/studio/ai-excellence">How we use AI &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Pillar 2 Card: Social Networks -->
+          <article class="pil-card pil-card--publish" data-reveal data-glow data-tilt style="--i:1">
+            <div class="pil-card__head">
+              <div class="pil-card__badge-row">
+                <span class="pil-card__tag">
+                  <span class="pil-card__dot" aria-hidden="true"></span>
+                  Services · Social networks
+                </span>
+                <span class="pil-card__count">Three tracks · Twelve lines</span>
+              </div>
+              <div class="pil-card__title-row">
+                <span class="pil-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7">
+                    <circle cx="9" cy="16" r="4.5" />
+                    <circle cx="23" cy="8.5" r="4.5" />
+                    <circle cx="23" cy="23.5" r="4.5" />
+                    <path d="M13 13.8 19 10.6M13 18.2l6 3.2" stroke-linecap="round" />
+                    <circle class="ic-accent" cx="9" cy="16" r="2.4" stroke="none" />
+                  </svg>
+                </span>
+                <h3 class="pil-card__title">Posts, publishing, paid social, and advocacy</h3>
+              </div>
+              <p class="pil-card__body">
+                Social strategists, editors, community managers, and media buyers run your presence
+                inside hubStudio across Western networks (LinkedIn, Instagram, Facebook, TikTok, X,
+                YouTube) and Chinese networks (WeChat, RedNote, Douyin, Weibo).
+              </p>
+            </div>
+
+            <div class="pil-card__groups">
+              <span class="pil-card__sublabel">Jump to a social track</span>
+              <div class="pil-card__pills">
+                {
+                  socialTracks.map((tr, idx) => (
+                    <a class="pil-pill pil-pill--publish" href={`#${tr.id}`} data-jump-soc={idx}>
+                      <span>{tr.shortName}</span>
+                      <span class="pil-pill__arr" aria-hidden="true">&rarr;</span>
+                    </a>
+                  ))
+                }
+                <a class="pil-pill pil-pill--publish" href="#platforms">
+                  <span>West &amp; China platforms</span>
+                  <span class="pil-pill__arr" aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="pil-card__foot">
+              <a class="arrow-link arrow-link--publish" href="#social-networks">
+                Explore all twelve social service lines <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <a class="pil-card__sec-link" href="/app/publish">See publishing in the app &rarr;</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Connected Shared Foundation Bar (Library, Validation, Client Space) -->
+        <div class="pil-bridge" data-reveal>
+          <div class="pil-bridge__left">
+            <span class="pil-bridge__dot" aria-hidden="true"></span>
+            <div>
+              <strong class="pil-bridge__title">One shared workspace underneath both pillars</strong>
+              <p class="pil-bridge__text">
+                Every creative asset and every social post we make lands in hubStudio’s Campaigns,
+                Assets Library, and Validation, so your team reviews and signs off in one place.
+              </p>
+            </div>
+          </div>
+          <a class="btn btn--secondary" href="/studio/with-the-app">How we work in the app</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         S3 · Pillar 1: Creative Assets Interactive Studio Deck
+    ========================================================== -->
+    <section class="sheet sheet--cream section" id="services" data-creative-deck>
+      <div class="container" id="creative-assets">
+        <header class="s-head s-head--row">
+          <div>
+            <span class="eyebrow eyebrow--orange" data-reveal>
+              Pillar · Creative assets · 20 service lines
+            </span>
+            <h2 class="headline h2" data-reveal>
+              Twenty creative service lines, one <span class="accent">studio</span>.
+            </h2>
+          </div>
+          <p class="s-head__intro" data-reveal>
+            The same senior art directors run every line. A brand identity, its packaging, an
+            eCommerce catalog, and next month’s campaign film all come from one team, and you only
+            brief your brand once.
+          </p>
+        </header>
+
+        <!-- Interactive Category Filter & Jump Bar -->
+        <div class="ca-toolbar" data-reveal>
+          <div class="ca-tabs" role="tablist" aria-label="Filter creative service groups">
+            <button
+              type="button"
+              class="ca-tab is-on"
+              role="tab"
+              aria-selected="true"
+              data-ca-filter="all"
+            >
+              <span class="ca-tab__dot" aria-hidden="true"></span>
+              <span>All creative groups</span>
+            </button>
+            {
+              creativeCategories.map((cat) => (
+                <button
+                  type="button"
+                  class="ca-tab"
+                  role="tab"
+                  aria-selected="false"
+                  data-ca-filter={cat.id}
+                >
+                  <span class="ca-tab__dot" aria-hidden="true" />
+                  <span>{cat.title}</span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Category Groups (all rendered in DOM for SEO & anchors; interactive filter highlights/isolates) -->
+        <div class="ca-groups">
           {
-            categories.map((cat) => (
-              <a class="st-jump__link" href={`#${cat.id}`}>
-                {cat.title}
+            creativeCategories.map((cat) => (
+              <section
+                class="ca-cat"
+                id={cat.id}
+                data-ca-group={cat.id}
+                aria-labelledby={`${cat.id}-title`}
+              >
+                <div class="ca-cat__banner" data-glow>
+                  <div class="ca-cat__main">
+                    <div class="ca-cat__eyebrow-row">
+                      <span class="ca-cat__kicker">Creative assets · {cat.title}</span>
+                      <span class="ca-cat__craft">{cat.craft}</span>
+                    </div>
+                    <h3 class="ca-cat__title" id={`${cat.id}-title`}>
+                      {cat.title}
+                    </h3>
+                    <p class="ca-cat__blurb">{cat.blurb}</p>
+                  </div>
+                  <p class="ca-cat__intro">{cat.intro}</p>
+                </div>
+
+                <div class:list={['ca-grid', `ca-grid--n${cat.services.length}`]}>
+                  {cat.services.map((svc, si) => (
+                    <a
+                      class="ca-card"
+                      href={svc.href}
+                      data-tilt
+                      data-glow
+                      data-reveal
+                      style={`--i:${si % 4}`}
+                    >
+                      <div class="ca-card__media">
+                        <img src={svc.img} alt={svc.alt} loading="lazy" decoding="async" />
+                        <div class="ca-card__scrim" aria-hidden="true" />
+                        <span class="ca-card__tag">{svc.tag}</span>
+                      </div>
+                      <div class="ca-card__body">
+                        <h4 class="ca-card__name">{svc.name}</h4>
+                        <p class="ca-card__desc">{svc.desc}</p>
+                        <span class="ca-card__cta">
+                          Explore service <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            ))
+          }
+        </div>
+
+        <div class="ca-aside" data-reveal>
+          <p class="ca-aside__text">
+            Can’t tell which creative line fits? Describe what you need in
+            <a href={`${BRIEF_URL}?way=studio-app`}>your brief</a>. Sorting a project across the
+            right specialists is the producer’s job, not yours.
+          </p>
+          <a class="btn btn--primary" href={`${BRIEF_URL}?way=studio-app`}>Send a creative brief</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         S4 · Pillar 2: Social Networks Interactive Command Studio
+    ========================================================== -->
+    <section
+      class="sheet sheet--ink section soc-studio"
+      id="social-networks"
+      data-spot
+      data-soc-command
+    >
+      <div class="grain sheet__grain" aria-hidden="true"></div>
+      <div class="soc-ambient" aria-hidden="true">
+        <span class="soc-orb soc-orb--a"></span>
+        <span class="soc-orb soc-orb--b"></span>
+        <span class="soc-grid-bg"></span>
+      </div>
+
+      <div class="container">
+        <header class="s-head s-head--row s-head--dark">
+          <div>
+            <span class="eyebrow eyebrow--publish" data-reveal>
+              Pillar · Social networks · 12 service lines
+            </span>
+            <h2 class="headline h2" data-reveal>
+              We run your social networks with you in the <span class="accent">app</span>.
+            </h2>
+          </div>
+          <p class="s-head__intro" data-reveal>
+            Social strategists, editors, community managers, and media buyers who manage your
+            pages, produce weekly posts and vertical video, run full-funnel paid campaigns, and
+            build executive voices across Western and Chinese networks.
+          </p>
+        </header>
+
+        <!-- Scroll-reactive & clickable 4-step workflow bar -->
+        <div class="soc-flow" data-reveal aria-label="How social network services run inside hubStudio">
+          <div class="soc-flow__rail" aria-hidden="true">
+            <span class="soc-flow__fill" data-soc-fill></span>
+          </div>
+          <div class="soc-flow__steps">
+            <a class="soc-step is-lit" href="#social-content-pages" data-soc-step>
+              <span class="soc-step__dot" aria-hidden="true"></span>
+              <span class="soc-step__kicker">Editorial &amp; Strategy</span>
+              <span class="soc-step__name">We plan, write &amp; cut</span>
+            </a>
+            <a class="soc-step" href="/app/campaigns" data-soc-step>
+              <span class="soc-step__dot" aria-hidden="true"></span>
+              <span class="soc-step__kicker">App · Campaigns</span>
+              <span class="soc-step__name">Organized in your workspace</span>
+            </a>
+            <a class="soc-step" href="/app/review" data-soc-step>
+              <span class="soc-step__dot" aria-hidden="true"></span>
+              <span class="soc-step__kicker">App · Validation</span>
+              <span class="soc-step__name">Your team approves on one thread</span>
+            </a>
+            <a class="soc-step" href="/app/publish" data-soc-step>
+              <span class="soc-step__dot" aria-hidden="true"></span>
+              <span class="soc-step__kicker">App · Publish &amp; Ads</span>
+              <span class="soc-step__name">Scheduled, posted &amp; amplified</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Track Switcher Tabs -->
+        <div class="soc-bar" data-reveal>
+          <div class="soc-tabs__list" role="tablist" aria-label="Social network service tracks">
+            <button
+              type="button"
+              class="soc-tab is-active"
+              role="tab"
+              aria-selected="true"
+              data-soc-filter="all"
+            >
+              <span class="soc-tab__dot" aria-hidden="true"></span>
+              <span>All social tracks</span>
+            </button>
+            {
+              socialTracks.map((tr) => (
+                <button
+                  type="button"
+                  class="soc-tab"
+                  role="tab"
+                  aria-selected="false"
+                  data-soc-filter={tr.id}
+                >
+                  <span class="soc-tab__dot" aria-hidden="true" />
+                  <span>{tr.shortName}</span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- The 3 Social Service Tracks (each with its 4 service cards + live interactive AppShot stage) -->
+        <div class="soc-tracks">
+          {
+            socialTracks.map((tr) => (
+              <section
+                class="soc-track-sec"
+                id={tr.id}
+                data-soc-group={tr.id}
+                aria-labelledby={`${tr.id}-title`}
+              >
+                <!-- Top Split: Track Overview + Live App Screen Switcher -->
+                <div class="soc-stage" data-glow>
+                  <div class="soc-stage__copy">
+                    <span class="soc-stage__tag">{tr.tag}</span>
+                    <h3 class="soc-stage__title" id={`${tr.id}-title`}>
+                      {tr.title}
+                    </h3>
+                    <p class="soc-stage__blurb">{tr.blurb}</p>
+                    <p class="soc-stage__intro">{tr.intro}</p>
+
+                    <div class="soc-highlights">
+                      {tr.highlights.map((h) => (
+                        <div class="soc-hi">
+                          <strong class="soc-hi__title">{h.title}</strong>
+                          <span class="soc-hi__text">{h.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="soc-stage__media">
+                    <div class="soc-ui-bar" role="group" aria-label={`App screens for ${tr.title}`}>
+                      {tr.shots.map((s, si) => (
+                        <button
+                          type="button"
+                          class={`soc-ch${si === 0 ? ' is-on' : ''}`}
+                          data-soc-shot-btn={si}
+                        >
+                          {s.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div class="soc-shots">
+                      {tr.shots.map((s, si) => (
+                        <div
+                          class={`soc-shot${si === 0 ? ' is-on' : ''}`}
+                          data-soc-shot={si}
+                          hidden={si !== 0}
+                        >
+                          <AppShot shot={s.shot} path={s.path} caption dark />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Row: The 4 Service Line Cards of this Track -->
+                <div class="soc-cards">
+                  {tr.services.map((svc, si) => (
+                    <a
+                      class="soc-card"
+                      href={svc.href}
+                      data-tilt
+                      data-glow
+                      data-reveal
+                      style={`--i:${si}`}
+                    >
+                      <div class="soc-card__media">
+                        <img src={svc.img} alt={svc.alt} loading="lazy" decoding="async" />
+                        <div class="soc-card__scrim" aria-hidden="true" />
+                        <span class="soc-card__badge">{svc.tag}</span>
+                      </div>
+                      <div class="soc-card__body">
+                        <h4 class="soc-card__name">{svc.name}</h4>
+                        <p class="soc-card__desc">{svc.desc}</p>
+                        <span class="soc-card__cta">
+                          View social service <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         S5 · Interactive Western & China Platform Ecosystem Matrix
+    ========================================================== -->
+    <section class="sheet sheet--light section" id="platforms" data-plat-matrix>
+      <div class="container">
+        <header class="s-head s-head--row">
+          <div>
+            <span class="eyebrow" data-reveal>Platforms · West &amp; China</span>
+            <h2 class="headline h2" data-reveal>
+              Made for the networks and marketplaces you <span class="accent">sell</span> on.
+            </h2>
+          </div>
+          <p class="s-head__intro" data-reveal>
+            The hubStudio app publishes directly to LinkedIn, Instagram, Facebook, TikTok (Beta),
+            and X, and prepares YouTube uploads for YouTube Studio. For Chinese networks and global
+            marketplaces, our studio produces native assets and runs campaigns tailored to each
+            platform.
+          </p>
+        </header>
+
+        <div class="plat-bar" data-reveal>
+          <div class="plat-filters" role="group" aria-label="Filter platforms">
+            <button type="button" class="plat-flt is-on" data-plat-filter="all">
+              All platforms
+            </button>
+            <button type="button" class="plat-flt" data-plat-filter="app-publish">
+              In-app social publishing
+            </button>
+            <button type="button" class="plat-flt" data-plat-filter="west">
+              Western &amp; global
+            </button>
+            <button type="button" class="plat-flt" data-plat-filter="china">
+              China ecosystem
+            </button>
+          </div>
+          <a class="arrow-link" href="/solutions">
+            Explore all platform solutions <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="plat-grid">
+          {
+            platformItems.map((p) => (
+              <a
+                class:list={['plat-card', `plat-card--${p.region}`, `plat-card--${p.mode}`]}
+                href={p.href}
+                data-plat-region={p.region}
+                data-plat-mode={p.mode}
+                data-glow
+                data-tilt
+              >
+                <div class="plat-card__top">
+                  <span class="plat-card__name">{p.name}</span>
+                  <span class="plat-card__badge">{p.badge}</span>
+                </div>
+                <p class="plat-card__formats">{p.formats}</p>
+                <span class="plat-card__cta">
+                  Platform guide <span class="arrow" aria-hidden="true">&rarr;</span>
+                </span>
               </a>
             ))
           }
-        </nav>
-      </header>
+        </div>
+      </div>
+    </section>
 
-      {
-        categories.map((cat) => (
-          <section class="st-cat" id={cat.id} aria-labelledby={`${cat.id}-title`}>
-            <header class="st-cat__head">
-              <h3 class="st-cat__title" id={`${cat.id}-title`}>
-                {cat.title}
+    <!-- ==========================================================
+         S6 · Ways to Work + Interactive Workspace Setups
+    ========================================================== -->
+    <div class="st-ways">
+      <WaysToWork tone="cream" highlight="studio-app" id="ways-to-work" />
+    </div>
+
+    <section class="sheet sheet--navy section" id="setups" data-spot data-setup-switcher>
+      <div class="grain sheet__grain" aria-hidden="true"></div>
+      <div class="container">
+        <header class="s-head s-head--row s-head--dark">
+          <div>
+            <span class="eyebrow eyebrow--orange" data-reveal>
+              Work with us in the app · Two setups
+            </span>
+            <h2 class="headline h2" data-reveal>
+              In our workspace with Client space, or inside <span class="accent">yours</span>.
+            </h2>
+          </div>
+          <p class="s-head__intro" data-reveal>
+            Every service engagement across creative assets and social networks is delivered and
+            validated inside hubStudio. Pick the workspace setup that matches how your team works.
+          </p>
+        </header>
+
+        <!-- Interactive Setup Switcher Bar -->
+        <div class="setup-tabs" role="tablist" aria-label="Workspace setups" data-reveal>
+          <button
+            type="button"
+            class="setup-tab is-on"
+            role="tab"
+            id="tab-setup-ours"
+            aria-controls="pane-setup-ours"
+            aria-selected="true"
+            data-setup-btn="0"
+          >
+            <span class="setup-tab__dot" aria-hidden="true"></span>
+            <span class="setup-tab__kicker">Our team, your logins</span>
+            <span class="setup-tab__name">In our workspace (Client space)</span>
+          </button>
+          <button
+            type="button"
+            class="setup-tab"
+            role="tab"
+            id="tab-setup-yours"
+            aria-controls="pane-setup-yours"
+            aria-selected="false"
+            tabindex="-1"
+            data-setup-btn="1"
+          >
+            <span class="setup-tab__dot" aria-hidden="true"></span>
+            <span class="setup-tab__kicker">Your team, our creatives</span>
+            <span class="setup-tab__name">In your workspace (Shared team)</span>
+          </button>
+        </div>
+
+        <!-- Setup Panel 1: In our workspace (Client space) -->
+        <div
+          class="setup-pane is-on"
+          id="pane-setup-ours"
+          role="tabpanel"
+          aria-labelledby="tab-setup-ours"
+          data-setup-pane="0"
+        >
+          <div class="setup-pane__copy">
+            <span class="setup-pane__tag">Managed workspace · Free client logins</span>
+            <h3 class="setup-pane__title">
+              You see the finished work and scheduled posts. We handle the rest.
+            </h3>
+            <p class="setup-pane__body">
+              Our creative and social teams work in our own hubStudio workspace, tag every asset and
+              social post “Made for” your company, and give your people free client logins. They open
+              a dedicated Client space with only the work made for them: they download files,
+              comment, and approve or send items back in Validation.
+            </p>
+            <ul class="setup-pane__points">
+              <li>Your people never see prompts, engines, or run costs, and hold no balance.</li>
+              <li>Every version (from first draft to final cut) stays on one approval thread that cannot be deleted.</li>
+              <li>Suits teams that want studio production and social management without running an account.</li>
+            </ul>
+            <div class="setup-pane__actions">
+              <a class="btn btn--primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</a>
+              <a class="arrow-link arrow-link--light" href="/studio/with-the-app">
+                Full guide to working in the app <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="setup-pane__shot">
+            <AppShot
+              shot={appShots.clientSpace}
+              path="/client"
+              caption="The Client space as your team sees it: only the creative assets and social posts made for your company, plus Validation."
+              dark
+            />
+          </div>
+        </div>
+
+        <!-- Setup Panel 2: In your workspace -->
+        <div
+          class="setup-pane"
+          id="pane-setup-yours"
+          role="tabpanel"
+          aria-labelledby="tab-setup-yours"
+          data-setup-pane="1"
+          hidden
+        >
+          <div class="setup-pane__copy">
+            <span class="setup-pane__tag">Your hubStudio team · Full handover</span>
+            <h3 class="setup-pane__title">
+              Add our art directors and social managers straight into your team.
+            </h3>
+            <p class="setup-pane__body">
+              Your company has its own hubStudio workspace and invites our creatives and social
+              managers as team members. We generate assets, organize Campaigns, and schedule social
+              posts directly from your workspace and your prepaid balance, while your admins approve
+              every piece in Validation.
+            </p>
+            <ul class="setup-pane__points">
+              <li>Every render, prompt, engine choice, and file stays in your History and Assets Library.</li>
+              <li>Your team can work alongside ours in the same Campaigns and social queues.</li>
+              <li>Suits brands and agencies already using the app or bringing production in-house over time.</li>
+            </ul>
+            <div class="setup-pane__actions">
+              <a class="btn btn--primary" href={`${BRIEF_URL}?way=studio-app`}>Send a brief</a>
+              <a class="arrow-link arrow-link--light" href="/studio/with-the-app#setups">
+                Compare both workspace setups <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="setup-pane__shot">
+            <AppShot
+              shot={appShots.validation}
+              path="/validation"
+              caption="Validation inside your workspace: every version and approval decision stays on record."
+              dark
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         S7 · How We Work (Craft + AI) & Interactive 5-Stage Pipeline
+    ========================================================== -->
+    <section class="sheet sheet--light section" id="how-it-runs" data-pipeline-sec>
+      <div class="container">
+        <!-- Part A: Senior Art Direction + Brand-Trained AI Split -->
+        <div class="craft-split">
+          <figure class="craft-split__figure" data-reveal>
+            <div class="craft-split__accent" aria-hidden="true"></div>
+            <div class="craft-split__media">
+              <img
+                src="/Images/who-we-are-studio.jpg"
+                alt="A photographer shooting a product on a lit set inside the hubStudio space."
+                width="1360"
+                height="768"
+                loading="lazy"
+                decoding="async"
+                data-parallax
+                data-speed="0.1"
+              />
+            </div>
+            <figcaption class="craft-split__badge">
+              <span class="craft-split__dot" aria-hidden="true"></span>
+              <span>Live shoots + Brand-trained LoRA + GPU pipelines</span>
+            </figcaption>
+          </figure>
+
+          <div class="craft-split__copy">
+            <span class="eyebrow" data-reveal>How we make the work</span>
+            <h2 class="headline h2" data-reveal>
+              A senior art director on every <span class="accent">brief</span>.
+            </h2>
+            <p class="craft-split__p" data-reveal>
+              Every project is led by a senior art director. Under them, AIGC specialists and social
+              editors run production on brand-trained models and GPU pipelines that the studio
+              operates itself. We train on the brand because a general model gets a product almost
+              right, and almost right is what a brand manager sends back.
+            </p>
+            <p class="craft-split__p" data-reveal>
+              Clients often ask whether our creative work is shot or made with AI. Usually it’s
+              both: some assets are shot on set, some are generated, and most combine the two. We
+              make that call asset by asset, based on what the picture needs, not on a house style.
+            </p>
+
+            <div class="craft-cards" data-reveal>
+              <div class="craft-mini">
+                <strong class="craft-mini__title">Brand-trained models</strong>
+                <p class="craft-mini__text">
+                  Custom LoRA and visual models trained on your product library so packaging,
+                  textures, and faces stay exact across hundreds of assets.
+                </p>
+              </div>
+              <div class="craft-mini">
+                <strong class="craft-mini__title">Provenance on record</strong>
+                <p class="craft-mini__text">
+                  Every delivered file records which model, shoot plate, and prompt made it, giving
+                  your legal team a clean audit trail.
+                </p>
+              </div>
+            </div>
+
+            <a class="arrow-link" href="/studio/ai-excellence" data-reveal>
+              Read how our studio uses AI <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Part B: Interactive 5-Stage Project Pipeline -->
+        <div class="pipe-box" data-reveal>
+          <header class="pipe-box__head">
+            <div>
+              <span class="eyebrow eyebrow--orange">From brief to delivery</span>
+              <h3 class="headline h3 pipe-box__title">
+                How a project <span class="accent">runs</span>
               </h3>
-              <p class="st-cat__blurb">{cat.blurb}</p>
-              <p class="st-cat__intro">{cat.intro}</p>
-            </header>
-            <div class="st-grid">
-              {cat.services.map((svc) => (
-                <a class="st-card" href={svc.href}>
-                  <div class="st-card__media">
-                    <img src={svc.img} alt={svc.alt} loading="lazy" decoding="async" />
+            </div>
+            <p class="pipe-box__sub">
+              Click any stage to see what happens on our side and in your workspace.
+            </p>
+          </header>
+
+          <!-- Scroll/Click Progress Rail -->
+          <div class="pipe-rail" aria-hidden="true">
+            <span class="pipe-rail__fill" data-pipe-fill></span>
+          </div>
+
+          <!-- Stage Selector Buttons (No numbers in cards: sequence carried by order & rail) -->
+          <div class="pipe-tabs" role="tablist" aria-label="Project stages">
+            {
+              steps.map((s, i) => (
+                <button
+                  type="button"
+                  class={`pipe-tab${i === 0 ? ' is-on' : ''}`}
+                  role="tab"
+                  id={`tab-${s.id}`}
+                  aria-controls={`pane-${s.id}`}
+                  aria-selected={i === 0 ? 'true' : 'false'}
+                  tabindex={i === 0 ? 0 : -1}
+                  data-pipe-btn={i}
+                >
+                  <span class="pipe-tab__diamond" aria-hidden="true" />
+                  <span class="pipe-tab__kicker">{s.kicker}</span>
+                  <span class="pipe-tab__title">{s.title}</span>
+                  <span class="pipe-tab__sum">{s.summary}</span>
+                </button>
+              ))
+            }
+          </div>
+
+          <!-- Stage Detail Panels -->
+          <div class="pipe-panes">
+            {
+              steps.map((s, i) => (
+                <div
+                  class={`pipe-pane${i === 0 ? ' is-on' : ''}`}
+                  id={`pane-${s.id}`}
+                  role="tabpanel"
+                  aria-labelledby={`tab-${s.id}`}
+                  data-pipe-pane={i}
+                  hidden={i !== 0}
+                >
+                  <div class="pipe-pane__col">
+                    <span class="pipe-pane__label">What our team does</span>
+                    <p class="pipe-pane__text">{s.ourSide}</p>
                   </div>
-                  <div class="st-card__body">
-                    <h4 class="st-card__name">{svc.name}</h4>
-                    <p class="st-card__desc">{svc.desc}</p>
-                    <span class="st-card__cta">
-                      View service <span aria-hidden="true">&rarr;</span>
+                  <div class="pipe-pane__col">
+                    <span class="pipe-pane__label">What your team does</span>
+                    <p class="pipe-pane__text">{s.yourSide}</p>
+                  </div>
+                  <div class="pipe-pane__outcome">
+                    <span class="pipe-pane__label">Stage outcome</span>
+                    <p class="pipe-pane__badge">{s.deliverable}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         S8 · The People & Selected Case Studies
+    ========================================================== -->
+    <section class="sheet sheet--cream section" id="people">
+      <div class="container">
+        <!-- People Split Card -->
+        <div class="people-card" data-reveal data-glow>
+          <figure class="people-card__media">
+            <img
+              src="/Team/team-photo.webp"
+              alt="The hubStudio team together on the studio floor."
+              width="1050"
+              height="586"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="people-card__body">
+            <span class="eyebrow">The people</span>
+            <h2 class="headline h2 people-card__title">
+              Who works on your <span class="accent">brief</span>.
+            </h2>
+            <p class="people-card__p">
+              The team mixes senior art directors, designers, retouchers, motion designers, writers,
+              social strategists, and AIGC specialists. One producer stays with your project from
+              brief to delivery, and that’s who you call.
+            </p>
+            <div class="people-hubs" aria-label="Studio locations">
+              <span class="people-hub">Hong Kong HQ</span>
+              <span class="people-hub">Shanghai Studio</span>
+              <span class="people-hub">Changsha Studio</span>
+              <span class="people-hub">The Philippines</span>
+              <span class="people-hub">Paris Office</span>
+            </div>
+            <div class="people-card__foot">
+              <a class="btn btn--secondary" href="/about/team">Meet the creative team</a>
+              <a class="arrow-link" href="/about">
+                About hubStudio &amp; Cyril Drouin <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selected Case Studies (#work) -->
+        <div class="work-block" id="work">
+          <header class="s-head s-head--row">
+            <div>
+              <span class="eyebrow" data-reveal>Recent work</span>
+              <h2 class="headline h2" data-reveal>
+                What the studio has <span class="accent">shipped</span>.
+              </h2>
+            </div>
+            <p class="s-head__intro" data-reveal>
+              Four projects that show the range. iFlytek mixed a live shoot with CGI and AIGC.
+              Mexicash went from brief to five platforms in five days. Camper adapted a global
+              library for China. 1834 Gin started with no pictures at all.
+            </p>
+          </header>
+
+          <div class="work-grid">
+            {
+              proof.map((c, i) => (
+                <a
+                  class="study"
+                  href={`/work/${c.slug}`}
+                  data-reveal
+                  data-tilt
+                  style={`--i:${i % 2}`}
+                >
+                  <div class="study__media">
+                    <img src={c.hero.src} alt={c.hero.alt} loading="lazy" decoding="async" />
+                    <div class="study__scrim" aria-hidden="true" />
+                  </div>
+                  <div class="study__overlay">
+                    <span class="study__tag">
+                      {c.client} · {c.industry}
+                    </span>
+                    <h3 class="study__title">{c.title}</h3>
+                    <span class="study__cta">
+                      Read the case study <span class="arrow" aria-hidden="true">&rarr;</span>
                     </span>
                   </div>
                 </a>
-              ))}
-            </div>
-          </section>
-        ))
-      }
+              ))
+            }
+          </div>
 
-      <p class="st-svc__aside">
-        Can’t tell which line fits? Describe the problem in <a href={`${BRIEF_URL}?way=studio`}>your brief</a>.
-        Sorting it into the right service is the producer’s job, not yours.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===== How a studio project runs ===== -->
-  <section class="st-sheet st-sheet--ink st-run grain">
-    <div class="container">
-      <header class="st-head st-head--dark">
-        <span class="eyebrow">How it runs</span>
-        <h2 class="headline h2 reveal">From brief to <span class="accent">delivery</span></h2>
-        <p class="st-head__lead">
-          Here is what happens after you send it. A social calendar and an annual report need
-          different people, but the steps are the same.
-        </p>
-      </header>
-      <ul class="st-steps">
-        {
-          steps.map((s, i) => (
-            <li class="st-step reveal" style={`--i:${i}`}>
-              <span class="st-step__mark" aria-hidden="true" />
-              <h3 class="st-step__title">{s.title}</h3>
-              <p class="st-step__text">{s.text}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== Who works on it ===== -->
-  <section class="st-sheet st-sheet--white st-people">
-    <div class="container st-people__grid">
-      <figure class="st-people__figure">
-        <img
-          src="/Team/team-photo.webp"
-          alt="The hubStudio team together on the studio floor."
-          width="1050"
-          height="586"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-      <div class="st-people__copy">
-        <span class="eyebrow">The people</span>
-        <h2 class="headline h2 reveal">Who works on your <span class="accent">brief</span></h2>
-        <p class="st-p">
-          The team mixes senior art directors, designers, retouchers, motion designers, writers,
-          and AIGC specialists. They work from Hong Kong, Shanghai, Changsha, the Philippines,
-          and Paris. One producer stays with your project from brief to delivery, and that’s who
-          you call.
-        </p>
-        <p class="st-p">The team profiles show who they are and what they’ve made.</p>
-        <a class="st-arrow" href="/about/team">Meet the team <span aria-hidden="true">&rarr;</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Proof ===== -->
-  <section class="st-sheet st-sheet--cream st-proof">
-    <div class="container">
-      <header class="st-head">
-        <span class="eyebrow">Recent work</span>
-        <h2 class="headline h2 reveal">What the studio has <span class="accent">shipped</span></h2>
-        <p class="st-head__lead">
-          Four projects that show the range. iFlytek mixed a live shoot with CGI and AIGC.
-          Mexicash went from brief to five platforms in five days. Camper adapted a global
-          library for China. 1834 Gin started with no pictures at all.
-        </p>
-      </header>
-      <div class="st-proof__grid">
-        {
-          proof.map((c) => (
-            <a class="st-case" href={`/work/${c.slug}`}>
-              <div class="st-case__media">
-                <img src={c.hero.src} alt={c.hero.alt} loading="lazy" decoding="async" />
-              </div>
-              <div class="st-case__body">
-                <span class="st-case__client">
-                  {c.client} <span aria-hidden="true">·</span> {c.industry}
-                </span>
-                <h3 class="st-case__title">{c.title}</h3>
-                <span class="st-card__cta">
-                  Read the case <span aria-hidden="true">&rarr;</span>
-                </span>
-              </div>
-            </a>
-          ))
-        }
-      </div>
-      <a class="st-arrow st-proof__all" href="/work">See all the work <span aria-hidden="true">&rarr;</span></a>
-    </div>
-  </section>
-
-  <!-- ===== Platforms ===== -->
-  <section class="st-sheet st-sheet--white st-plat">
-    <div class="container st-plat__grid">
-      <div>
-        <span class="eyebrow">Platforms</span>
-        <h2 class="headline h2 reveal">Made for the platforms you <span class="accent">sell</span> on</h2>
-        <p class="st-p">
-          We produce for Western and Chinese networks and marketplaces, in each one’s own formats
-          and ratios.
-        </p>
-        <p class="st-p">
-          The hubStudio app publishes to LinkedIn, Instagram, Facebook, TikTok (in Beta), and X.
-          It doesn’t publish to Chinese platforms. For WeChat, Douyin, RedNote, Weibo, Tmall, and
-          JD, the studio makes the work and delivers files ready to post.
-        </p>
-        <a class="st-arrow" href="/solutions">All solutions <span aria-hidden="true">&rarr;</span></a>
-      </div>
-      <div class="st-plat__groups">
-        <div class="st-plat__group">
-          <h3 class="st-plat__label">Western networks, stores, and sites</h3>
-          <ul class="st-chips">
-            {platformsWest.map((p) => <li><a class="st-chip" href={p.href}>{p.name}</a></li>)}
-          </ul>
-        </div>
-        <div class="st-plat__group">
-          <h3 class="st-plat__label">Chinese networks and marketplaces</h3>
-          <ul class="st-chips">
-            {platformsChina.map((p) => <li><a class="st-chip" href={p.href}>{p.name}</a></li>)}
-          </ul>
+          <div class="block-more" data-reveal>
+            <a class="btn btn--secondary" href="/work">See all case studies</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== FAQ ===== -->
-  <section class="st-sheet st-sheet--cream st-faq">
-    <div class="container st-faq__inner">
-      <header class="st-head">
-        <span class="eyebrow">Questions</span>
-        <h2 class="headline h2 reveal">Questions about the <span class="accent">studio</span></h2>
-        <p class="st-faq__updated">Updated September 2026</p>
-      </header>
-      <div class="st-faq__list">
-        {
-          faqs.map((f) => (
-            <details class="st-qa">
-              <summary class="st-qa__q">
-                <span>{f.q}</span>
-                <span class="st-qa__sign" aria-hidden="true" />
-              </summary>
-              <div class="st-qa__a">
-                <p set:html={f.html ?? f.a} />
-              </div>
-            </details>
-          ))
-        }
+    <!-- ==========================================================
+         S9 · Filterable FAQ
+    ========================================================== -->
+    <section class="sheet sheet--light section" id="faq" data-faq-sec>
+      <div class="container st-faq__inner">
+        <header class="s-head s-head--row">
+          <div>
+            <span class="eyebrow" data-reveal>Questions</span>
+            <h2 class="headline h2" data-reveal>
+              Questions about our <span class="accent">services</span>.
+            </h2>
+          </div>
+          <div class="st-faq__controls" data-reveal>
+            <button type="button" class="faq-flt is-on" data-faq-filter="all">All</button>
+            <button type="button" class="faq-flt" data-faq-filter="app">App &amp; pricing</button>
+            <button type="button" class="faq-flt" data-faq-filter="creative">Creative &amp; AI</button>
+            <button type="button" class="faq-flt" data-faq-filter="social">Social &amp; China</button>
+          </div>
+        </header>
+
+        <div class="st-faq__list" data-reveal>
+          {
+            faqs.map((f) => (
+              <details class="st-qa" data-faq-topic={f.topic}>
+                <summary class="st-qa__q">
+                  <span>{f.q}</span>
+                  <span class="st-qa__sign" aria-hidden="true" />
+                </summary>
+                <div class="st-qa__a">
+                  <p set:html={f.html ?? f.a} />
+                </div>
+              </details>
+            ))
+          }
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== Further reading (placement `studio` in insight-placements.ts) ===== -->
-  <InsightsLayer placement="studio" tone="white" id="reading" />
+    <!-- ===== Further reading (placement `studio` in insight-placements.ts) ===== -->
+    <InsightsLayer placement="studio" tone="cream" id="reading" />
 
-  <DualCta lead="studio" />
+    <DualCta lead="studio" briefQuery="way=studio-app" />
+  </div>
 </Layout>
 
 <style>
-  /* ---- Sheets: each section overlaps the one above (style guide 3) ---- */
-  .st-sheet {
+  /* ============================================================
+     Shared Tokens & Sheet Stacking
+  ============================================================ */
+  .studio-page {
+    --shadow-sheet: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    --shadow-sheet-dark: 0 -36px 80px -34px rgba(0, 0, 0, 0.65);
+    --shadow-card: 0 2px 6px rgba(10, 10, 20, 0.04),
+      0 14px 30px -12px rgba(10, 10, 20, 0.12);
+    --shadow-card-hi: 0 8px 20px rgba(10, 10, 20, 0.08),
+      0 36px 64px -24px rgba(10, 10, 20, 0.28);
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     position: relative;
-    margin-top: calc(-1 * clamp(28px, 3.6vw, 60px));
-    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
-    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
-    padding-block: clamp(88px, 10vw, 150px);
-  }
-  .st-sheet--white {
-    background: var(--bg-white);
-  }
-  .st-sheet--cream {
-    background: var(--bg-cream);
-  }
-  .st-sheet--ink {
-    background: var(--bg-ink);
-    color: var(--text-on-dark);
+    overflow-x: clip;
   }
 
-  .st-head {
-    display: grid;
-    gap: 14px;
-    max-width: 760px;
-    margin-bottom: clamp(36px, 4vw, 56px);
+  /* Scroll progress bar */
+  .scrollbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 200;
+    pointer-events: none;
   }
-  .st-head__lead {
-    font-size: var(--type-body);
-    line-height: 1.64;
-    color: var(--text-mute);
-    max-width: 60ch;
+  .scrollbar__fill {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--pillar-create), #ff9a5c, var(--pillar-publish));
   }
-  .st-head--dark .eyebrow {
-    color: var(--brand-orange);
+
+  /* Floating Section Quick-Dock */
+  .st-dock {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translate(-50%, 140%);
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.88);
+    border: 1px solid rgba(240, 237, 233, 0.18);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform 0.45s var(--ease),
+      opacity 0.35s ease;
+    max-width: calc(100vw - 24px);
+    overflow-x: auto;
+    scrollbar-width: none;
   }
-  .st-head--dark .headline {
-    color: #fff;
+  .st-dock::-webkit-scrollbar {
+    display: none;
   }
-  .st-head--dark .st-head__lead {
-    color: rgba(240, 237, 233, 0.78);
+  .st-dock.is-visible {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    pointer-events: auto;
   }
-  .st-p {
-    margin-top: 18px;
-    font-size: var(--type-body);
-    line-height: 1.64;
-    color: var(--text-mute);
-    max-width: 60ch;
-  }
-  .st-arrow {
+  .st-dock__pill {
+    flex: none;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 24px;
-    font-size: var(--type-small);
+    gap: 7px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 13px;
     font-weight: 600;
-    color: var(--brand-orange-cta);
+    color: rgba(240, 237, 233, 0.74);
+    white-space: nowrap;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
-  .st-arrow span {
-    display: inline-block;
-    transition: transform 160ms ease-out;
+  .st-dock__pill:hover,
+  .st-dock__pill.is-active {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
   }
-  .st-arrow:hover span {
-    transform: translateX(6px);
-  }
-  .st-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
+  .st-dock__dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: currentColor;
   }
-
-  /* ---- Hero ---------------------------------------------------- */
-  .st-hero {
-    position: relative;
-    padding-bottom: clamp(88px, 10vw, 140px);
+  .st-dock__pill--create .st-dock__dot {
+    background: var(--pillar-create);
   }
-  .st-hero__media {
-    margin: 0;
-    aspect-ratio: 3 / 2;
+  .st-dock__pill--publish .st-dock__dot {
+    background: #60a5fa;
+  }
+  .st-dock__cta {
+    flex: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--brand-orange-cta);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: transform 0.2s ease;
+  }
+  .st-dock__cta:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Reveal motion */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.75s var(--ease),
+      transform 0.75s var(--ease);
+    transition-delay: calc(var(--i, 0) * 85ms);
+    will-change: opacity, transform;
+  }
+  [data-reveal].in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* 3D Tilt & Pointer Glow */
+  [data-tilt] {
+    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.35s var(--ease);
+  }
+
+  /* Sheets */
+  .sheet {
+    position: relative;
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    margin-top: clamp(-60px, -4.6vw, -40px);
+  }
+  .sheet--first {
+    z-index: 2;
+  }
+  .sheet--light {
+    background: var(--bg-white);
+    box-shadow: var(--shadow-sheet);
+  }
+  .sheet--cream {
+    background: var(--bg-cream);
+    box-shadow: var(--shadow-sheet);
+  }
+  .sheet--ink {
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    box-shadow: var(--shadow-sheet-dark);
     overflow: hidden;
   }
-  .st-hero__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 30% 50%;
+  .sheet--navy {
+    background: var(--brand-navy-deep);
+    color: var(--text-on-dark);
+    box-shadow: var(--shadow-sheet-dark);
+    overflow: hidden;
   }
-  .st-hero__copy {
-    padding-top: 36px;
-    max-width: 640px;
+  .section {
+    padding-block: clamp(96px, 11vw, 164px);
   }
+  .sheet__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.42;
+    pointer-events: none;
+  }
+  .sheet .container {
+    position: relative;
+    z-index: 1;
+  }
+  [id] {
+    scroll-margin-top: calc(var(--nav-h) + 28px);
+  }
+
+  /* Pointer spotlight on dark sections */
+  .sheet--navy::before,
+  .st-hero::before {
+    content: '';
+    position: absolute;
+    width: 640px;
+    height: 640px;
+    border-radius: 50%;
+    left: var(--sx, 50%);
+    top: var(--sy, 30%);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(233, 78, 27, 0.16), transparent 64%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+  .sheet--navy[data-lit]::before,
+  .st-hero[data-lit]::before {
+    opacity: 1;
+  }
+
+  /* Section Headers */
+  .s-head {
+    max-width: 720px;
+    margin-bottom: clamp(44px, 5.5vw, 76px);
+    display: grid;
+    gap: 16px;
+  }
+  .s-head--row {
+    max-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px 48px;
+  }
+  .s-head--row .eyebrow {
+    margin-bottom: 12px;
+  }
+  .s-head--row .s-head__intro {
+    max-width: 44ch;
+    padding-bottom: 4px;
+  }
+  .s-head__intro {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
+    max-width: 60ch;
+  }
+  .s-head--dark .headline {
+    color: #fff;
+  }
+  .s-head--dark .s-head__intro {
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .eyebrow--orange {
+    color: var(--brand-orange);
+  }
+  .eyebrow--publish {
+    color: #60a5fa;
+  }
+  .headline .accent,
+  .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--brand-orange);
+  }
+
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange-cta);
+  }
+  .arrow-link--publish {
+    color: var(--pillar-publish);
+  }
+  .arrow-link--light {
+    color: var(--text-on-dark);
+  }
+  .arrow {
+    display: inline-block;
+    transition: transform 220ms var(--ease);
+  }
+  .arrow-link:hover .arrow {
+    transform: translateX(6px);
+  }
+
+  /* ============================================================
+     S1 · Dark Cinematic Hero
+  ============================================================ */
+  .st-hero {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    margin-top: calc(-1 * var(--nav-h));
+    padding-top: calc(var(--nav-h) + clamp(36px, 5vw, 72px));
+    padding-bottom: clamp(104px, 10vw, 156px);
+  }
+  .st-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .st-hero__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.48;
+  }
+  .st-hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(76px);
+    opacity: 0.44;
+  }
+  .st-hero__orb--create {
+    width: 580px;
+    height: 580px;
+    left: -140px;
+    top: -120px;
+    background: radial-gradient(circle, rgba(233, 78, 27, 0.52), transparent 68%);
+  }
+  .st-hero__orb--publish {
+    width: 620px;
+    height: 620px;
+    right: -140px;
+    bottom: -140px;
+    background: radial-gradient(circle, rgba(63, 111, 224, 0.56), transparent 68%);
+  }
+  .st-hero__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 90%);
+  }
+
+  .st-hero__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: clamp(44px, 5vw, 68px);
+  }
+  .st-hero__main {
+    display: grid;
+    gap: clamp(36px, 4.5vw, 56px);
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .st-hero__main {
+      grid-template-columns: 1.04fr 0.96fr;
+    }
+  }
+
   .st-crumbs {
     display: flex;
     gap: 8px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-mute);
+    color: rgba(240, 237, 233, 0.62);
   }
   .st-crumbs a:hover {
     color: var(--brand-orange);
   }
+  .st-hero__eyebrow {
+    margin-bottom: 16px;
+  }
   .st-hero__title {
-    margin-top: 14px;
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-weight: 600;
     letter-spacing: -0.035em;
+    line-height: 1.02;
+    font-size: clamp(42px, 5.6vw, 76px);
   }
-  .st-hero__title .accent {
-    color: var(--brand-orange);
+  .st-hero__title .line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
   }
+  .st-hero__title .line > span {
+    display: block;
+    animation: heroLine 0.95s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+  }
+  .st-hero__title .line:nth-child(1) > span {
+    animation-delay: 0.12s;
+  }
+  .st-hero__title .line:nth-child(2) > span {
+    animation-delay: 0.24s;
+  }
+  .st-hero__title .line:nth-child(3) > span {
+    animation-delay: 0.36s;
+  }
+  @keyframes heroLine {
+    from {
+      transform: translateY(110%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
   .st-hero__lead {
     margin-top: 22px;
-    max-width: 52ch;
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: rgba(240, 237, 233, 0.84);
+    max-width: 56ch;
+  }
+  .st-hero__actions {
+    margin-top: 30px;
+    display: grid;
+    gap: 14px;
   }
   .st-hero__cta {
-    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
   }
   .st-hero__alt {
-    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     font-size: var(--type-small);
-    color: var(--text-mute);
+    color: rgba(240, 237, 233, 0.68);
   }
   .st-hero__alt a {
-    color: var(--text-ink);
+    color: #fff;
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-  .st-hero__meta {
-    margin-top: 28px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 22px;
-  }
-  .st-hero__meta li {
-    position: relative;
-    padding-left: 16px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    color: var(--text-mute);
-  }
-  .st-hero__meta li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 5px;
-    width: 7px;
-    height: 7px;
-    background: var(--brand-orange);
-    transform: rotate(45deg);
-  }
-  /* Wide screens: the picture fills the band and the copy sits in the
-     empty right third of the frame, over the plain studio wall. */
-  @media (min-width: 1000px) {
-    .st-hero {
-      min-height: clamp(640px, 66vw, 900px);
-      display: flex;
-      align-items: center;
-      padding-block: 120px 160px;
-    }
-    .st-hero__media {
-      position: absolute;
-      inset: 0;
-      aspect-ratio: auto;
-    }
-    .st-hero__media::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(240, 237, 233, 0) 38%,
-        rgba(240, 237, 233, 0.72) 58%,
-        rgba(240, 237, 233, 0.9) 100%
-      );
-    }
-    .st-hero__inner {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .st-hero__copy {
-      padding-top: 0;
-      max-width: 520px;
-    }
-    .st-hero__title {
-      font-size: clamp(48px, 5vw, 76px);
-    }
+  .st-hero__alt a:hover {
+    color: var(--brand-orange);
   }
 
-  /* ---- How we work --------------------------------------------- */
-  .st-how__grid {
-    display: grid;
-    gap: 44px;
-  }
-  @media (min-width: 960px) {
-    .st-how__grid {
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 72px;
-      align-items: start;
-    }
-  }
-  .st-how__title {
-    margin-top: 14px;
-    max-width: 18ch;
-  }
-  .st-facts {
-    padding: clamp(28px, 3vw, 38px);
-    border-radius: var(--radius-card);
-    background: var(--bg-cream);
-    border: 1px solid var(--line-strong);
-  }
-  .st-facts__list {
-    margin-top: 16px;
-    display: grid;
-  }
-  .st-facts__list li {
+  /* Hero Right Stage */
+  .st-hero__stage {
     position: relative;
-    padding: 16px 0 16px 22px;
-    border-top: 1px solid var(--line-strong);
-    font-size: var(--type-body);
-    line-height: 1.5;
+    display: grid;
+    gap: 16px;
   }
-  .st-facts__list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 24px;
-    width: 8px;
-    height: 8px;
-    background: var(--brand-orange);
-    transform: rotate(45deg);
-  }
-
-  /* The shared band becomes a sheet too: clipped to the same top radius. */
-  .st-ways {
+  .st-hero__frame {
     position: relative;
-    margin-top: calc(-1 * clamp(28px, 3.6vw, 60px));
-    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    margin: 0;
+    border-radius: clamp(22px, 2.4vw, 32px);
     overflow: hidden;
-    box-shadow: 0 -30px 64px -36px rgba(10, 10, 20, 0.42);
+    aspect-ratio: 16 / 10;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 32px 72px -28px rgba(0, 0, 0, 0.75);
   }
-
-  /* ---- The two studio ways ------------------------------------- */
-  .st-two__grid {
-    display: grid;
-    gap: var(--gap-card);
+  .st-hero__frame img {
+    width: 100%;
+    height: 116%;
+    object-fit: cover;
+    object-position: 30% 50%;
+    will-change: transform;
   }
-  @media (min-width: 820px) {
-    .st-two__grid {
-      grid-template-columns: 1fr 1fr;
-    }
+  .st-hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(14, 22, 51, 0.78) 100%);
   }
-  .st-way {
-    display: flex;
-    flex-direction: column;
-    padding: clamp(28px, 3.4vw, 44px);
-    border-radius: var(--radius-card);
-    background: var(--bg-cream);
-    border: 1px solid var(--line-strong);
-  }
-  .st-way--hi {
-    background: var(--bg-white);
-    border-color: var(--line-hairline);
-    box-shadow: 0 24px 50px -30px rgba(10, 10, 20, 0.35);
-    outline: 2px solid var(--brand-orange);
-    outline-offset: -2px;
-  }
-  .st-way__tag {
+  .st-hero__badge {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.84);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(8px);
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--brand-orange-cta);
+    color: var(--text-on-dark);
   }
-  .st-way__name {
-    margin-top: 16px;
-    font-size: var(--type-h3);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-  .st-way__text {
-    margin-top: 14px;
-    font-size: var(--type-body);
-    line-height: 1.64;
-    color: var(--text-mute);
-  }
-  .st-way .st-arrow {
-    margin-top: auto;
-    padding-top: 22px;
+  .st-hero__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-orange);
   }
 
-  /* ---- Services ------------------------------------------------ */
-  .st-jump {
-    margin-top: 12px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  /* Hero Interactive Dual-Pillar Cards */
+  .st-hero__pillars {
+    display: grid;
+    gap: 14px;
   }
-  .st-jump__link {
+  @media (min-width: 560px) {
+    .st-hero__pillars {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .st-hpil {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 22px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s var(--ease);
+  }
+  .st-hpil::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    background: radial-gradient(
+      240px circle at var(--mx, 50%) var(--my, 50%),
+      var(--hpil-glow, rgba(233, 78, 27, 0.25)),
+      transparent 70%
+    );
+  }
+  .st-hpil:hover::before {
+    opacity: 1;
+  }
+  .st-hpil--create {
+    --hpil-c: var(--pillar-create);
+    --hpil-glow: rgba(233, 78, 27, 0.26);
+    border-top: 3px solid var(--pillar-create);
+  }
+  .st-hpil--publish {
+    --hpil-c: #60a5fa;
+    --hpil-glow: rgba(96, 165, 250, 0.26);
+    border-top: 3px solid #60a5fa;
+  }
+  .st-hpil:hover {
+    border-color: var(--hpil-c);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.65);
+  }
+  .st-hpil__top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .st-hpil__kicker {
     display: inline-flex;
     align-items: center;
-    padding: 9px 16px;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-pill);
-    font-size: var(--type-small);
-    font-weight: 500;
-    color: var(--text-ink);
-    transition: color 120ms ease-out, border-color 120ms ease-out;
-  }
-  .st-jump__link:hover {
-    color: var(--brand-orange);
-    border-color: var(--brand-orange);
-  }
-  .st-cat {
-    scroll-margin-top: calc(var(--nav-h) + 24px);
-  }
-  .st-cat + .st-cat {
-    margin-top: clamp(64px, 8vw, 104px);
-  }
-  .st-cat__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 6px 32px;
-    padding-top: 26px;
-    border-top: 1px solid var(--line-strong);
-    margin-bottom: 32px;
-  }
-  .st-cat__title {
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 10px;
     font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(28px, 3.2vw, 44px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--hpil-c);
   }
-  .st-cat__blurb {
+  .st-hpil__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--hpil-c);
+  }
+  .st-hpil__pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .st-hpil__title {
+    position: relative;
+    z-index: 1;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: #fff;
+  }
+  .st-hpil__desc {
+    position: relative;
+    z-index: 1;
     font-size: var(--type-body);
-    color: var(--text-mute);
+    line-height: 1.52;
+    color: rgba(240, 237, 233, 0.76);
   }
-  .st-cat__intro {
-    margin-top: 12px;
-    max-width: 68ch;
-    font-size: var(--type-body);
-    line-height: 1.62;
-    color: var(--text-ink);
+  .st-hpil__cta {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    padding-top: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--hpil-c);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
-  .st-grid {
+
+  /* Hero Bottom SLA Stats Ribbon */
+  .st-hero__stats {
     display: grid;
-    gap: var(--gap-card);
+    gap: 18px;
+    padding-top: clamp(28px, 3.5vw, 44px);
+    border-top: 1px solid rgba(240, 237, 233, 0.14);
   }
   @media (min-width: 640px) {
-    .st-grid {
+    .st-hero__stats {
       grid-template-columns: repeat(2, 1fr);
     }
   }
   @media (min-width: 1024px) {
-    .st-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  .st-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--bg-white);
-    border: 1px solid var(--line-hairline);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    box-shadow: var(--shadow-card);
-    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
-  }
-  .st-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.12);
-  }
-  .st-card__media {
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
-    background: var(--bg-cream);
-  }
-  .st-card__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 400ms ease-out;
-  }
-  .st-card:hover .st-card__media img {
-    transform: scale(1.04);
-  }
-  .st-card__body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 22px 24px 24px;
-  }
-  .st-card__name {
-    font-size: var(--type-h4);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-  .st-card__desc {
-    font-size: var(--type-body);
-    line-height: 1.55;
-    color: var(--text-mute);
-  }
-  .st-card__cta {
-    margin-top: auto;
-    padding-top: 14px;
-    font-size: var(--type-small);
-    font-weight: 600;
-    color: var(--brand-orange-cta);
-  }
-  .st-card__cta span {
-    display: inline-block;
-    transition: transform 160ms ease-out;
-  }
-  .st-card:hover .st-card__cta span,
-  .st-case:hover .st-card__cta span {
-    transform: translateX(4px);
-  }
-  .st-svc__aside {
-    margin-top: clamp(48px, 6vw, 72px);
-    padding-top: 26px;
-    border-top: 1px solid var(--line-strong);
-    font-size: var(--type-body);
-    line-height: 1.6;
-    max-width: 62ch;
-  }
-  .st-svc__aside a {
-    color: var(--brand-orange-cta);
-    font-weight: 600;
-  }
-
-  /* ---- How it runs --------------------------------------------- */
-  .st-run {
-    overflow: hidden;
-  }
-  .st-steps {
-    display: grid;
-    gap: 0;
-  }
-  @media (min-width: 900px) {
-    .st-steps {
-      grid-template-columns: repeat(5, 1fr);
+    .st-hero__stats {
+      grid-template-columns: repeat(4, 1fr);
       gap: 28px;
     }
   }
-  .st-step {
-    position: relative;
-    padding: 26px 0;
-    border-top: 1px solid rgba(240, 237, 233, 0.16);
+  .st-hstat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
-  .st-step__mark {
-    display: block;
-    width: 12px;
-    height: 12px;
-    background: var(--brand-orange);
-    transform: rotate(45deg);
-  }
-  .st-step__title {
-    margin-top: 18px;
-    font-size: clamp(22px, 2vw, 28px);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+  .st-hstat__val {
+    font-size: clamp(30px, 3.2vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
     color: #fff;
+    font-variant-numeric: tabular-nums;
   }
-  .st-step__text {
-    margin-top: 10px;
-    font-size: var(--type-body);
-    line-height: 1.6;
-    color: rgba(240, 237, 233, 0.78);
+  .st-hstat__val i {
+    font-style: normal;
+    color: var(--brand-orange);
+    margin-left: 2px;
   }
-
-  /* ---- People -------------------------------------------------- */
-  .st-people__grid {
-    display: grid;
-    gap: 40px;
-    align-items: center;
+  .st-hstat__val--word {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--brand-orange);
   }
-  @media (min-width: 960px) {
-    .st-people__grid {
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 72px;
-    }
-  }
-  .st-people__figure {
-    margin: 0;
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    box-shadow: var(--shadow-card);
-  }
-  .st-people__figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .st-people__copy .headline {
-    margin-top: 14px;
+  .st-hstat__lbl {
+    font-size: var(--type-small);
+    line-height: 1.45;
+    color: rgba(240, 237, 233, 0.74);
   }
 
-  /* ---- Proof --------------------------------------------------- */
-  .st-proof__grid {
+  /* ============================================================
+     S2 · Two-Pillar Architecture Explorer
+  ============================================================ */
+  .pil-arch {
     display: grid;
     gap: var(--gap-card);
   }
-  @media (min-width: 640px) {
-    .st-proof__grid {
-      grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 960px) {
+    .pil-arch {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
-  @media (min-width: 1100px) {
-    .st-proof__grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-  .st-case {
+  .pil-card {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    background: var(--bg-white);
-    border: 1px solid var(--line-hairline);
+    justify-content: space-between;
+    gap: 28px;
+    padding: clamp(28px, 3.4vw, 44px);
     border-radius: var(--radius-card);
-    overflow: hidden;
-    box-shadow: var(--shadow-card);
-    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
-  }
-  .st-case:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 40px rgba(10, 10, 20, 0.12);
-  }
-  .st-case__media {
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
     background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    border-top: 5px solid var(--pil-color, var(--pillar-create));
+    box-shadow: var(--shadow-card);
   }
-  .st-case__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .pil-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(
+      380px circle at var(--mx, 50%) var(--my, 50%),
+      var(--pil-glow, rgba(233, 78, 27, 0.12)),
+      transparent 70%
+    );
   }
-  .st-case__body {
-    flex: 1;
+  .pil-card:hover::before {
+    opacity: 1;
+  }
+  .pil-card--create {
+    --pil-color: var(--pillar-create);
+    --pil-glow: rgba(233, 78, 27, 0.12);
+  }
+  .pil-card--publish {
+    --pil-color: var(--pillar-publish);
+    --pil-glow: rgba(63, 111, 224, 0.12);
+  }
+  .pil-card__head {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 16px;
+  }
+  .pil-card__badge-row {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
     gap: 10px;
-    padding: 22px 22px 24px;
   }
-  .st-case__client {
+  .pil-card__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.08em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pil-color);
+  }
+  .pil-card__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pil-color);
+  }
+  .pil-card__count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--text-mute);
   }
-  .st-case__title {
-    font-size: var(--type-h4);
+  .pil-card__title-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .pil-card__icon {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    color: var(--text-ink);
+  }
+  .pil-card__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .pil-card__icon .ic-accent {
+    fill: var(--pil-color);
+  }
+  .pil-card__title {
+    font-size: var(--type-h3);
     font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
   }
-  .st-proof__all {
-    margin-top: 36px;
+  .pil-card__body {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-mute);
   }
-
-  /* ---- Platforms ----------------------------------------------- */
-  .st-plat__grid {
+  .pil-card__groups {
+    position: relative;
+    z-index: 1;
     display: grid;
-    gap: 44px;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-strong);
   }
-  @media (min-width: 960px) {
-    .st-plat__grid {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 72px;
-      align-items: center;
-    }
-  }
-  .st-plat__grid .headline {
-    margin-top: 14px;
-  }
-  .st-plat__groups {
-    display: grid;
-    gap: 32px;
-  }
-  .st-plat__label {
+  .pil-card__sublabel {
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 500;
@@ -1333,48 +2670,1568 @@ const studioSchema = {
     text-transform: uppercase;
     color: var(--text-mute);
   }
-  .st-chips {
-    margin-top: 14px;
+  .pil-card__pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
-  .st-chip {
+  .pil-pill {
     display: inline-flex;
-    padding: 10px 18px;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-ink);
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .pil-pill:hover {
+    background: var(--pil-color);
+    border-color: var(--pil-color);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .pil-pill__arr {
+    font-size: 12px;
+    opacity: 0.65;
+    transition: transform 0.2s ease;
+  }
+  .pil-pill:hover .pil-pill__arr {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+  .pil-card__foot {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-hairline);
+  }
+  .pil-card__sec-link {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-mute);
+  }
+  .pil-card__sec-link:hover {
+    color: var(--text-ink);
+  }
+
+  /* Connected Shared Foundation Bar */
+  .pil-bridge {
+    margin-top: 24px;
+    padding: 24px 30px;
+    border-radius: 24px;
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    border-top: 3px solid var(--pillar-library);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 32px;
+    box-shadow: var(--shadow-card);
+  }
+  .pil-bridge__left {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 68ch;
+  }
+  .pil-bridge__dot {
+    flex: none;
+    margin-top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--pillar-library);
+    box-shadow: 0 0 12px var(--pillar-library);
+  }
+  .pil-bridge__title {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .pil-bridge__text {
+    margin-top: 4px;
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.78);
+  }
+  .pil-bridge .btn--secondary {
+    color: #fff;
+    border-color: rgba(240, 237, 233, 0.32);
+  }
+
+  /* ============================================================
+     S3 · Pillar 1: Creative Assets Studio Deck
+  ============================================================ */
+  .ca-toolbar {
+    position: sticky;
+    top: calc(var(--nav-h) + 12px);
+    z-index: 20;
+    margin-bottom: clamp(36px, 4.5vw, 56px);
+  }
+  .ca-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 7px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--line-strong);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 32px -16px rgba(10, 10, 20, 0.18);
+  }
+  @media (max-width: 959.98px) {
+    .ca-tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      border-radius: 20px;
+      scrollbar-width: none;
+    }
+    .ca-tabs::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .ca-tab {
+    flex: 1;
+    min-width: max-content;
+    appearance: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-mute);
+    transition:
+      background-color 0.22s ease,
+      color 0.22s ease,
+      box-shadow 0.22s ease;
+  }
+  .ca-tab:hover {
+    color: var(--text-ink);
+    background: rgba(10, 10, 20, 0.04);
+  }
+  .ca-tab__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.4;
+  }
+  .ca-tab__badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 99px;
+    background: rgba(10, 10, 20, 0.07);
+    color: inherit;
+  }
+  .ca-tab.is-on {
+    background: var(--bg-ink);
+    color: #fff;
+    box-shadow: 0 8px 20px -8px rgba(10, 10, 20, 0.45);
+  }
+  .ca-tab.is-on .ca-tab__dot {
+    background: var(--pillar-create);
+    opacity: 1;
+  }
+  .ca-tab.is-on .ca-tab__badge {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .ca-groups {
+    display: grid;
+    gap: clamp(56px, 7vw, 96px);
+  }
+  .ca-cat[hidden] {
+    display: none;
+  }
+  .ca-cat__banner {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 20px;
+    padding: clamp(24px, 3vw, 36px);
+    margin-bottom: 24px;
+    border-radius: 24px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-left: 4px solid var(--pillar-create);
+    box-shadow: var(--shadow-card);
+  }
+  @media (min-width: 900px) {
+    .ca-cat__banner {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: end;
+      gap: 48px;
+    }
+  }
+  .ca-cat__eyebrow-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .ca-cat__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pillar-create);
+  }
+  .ca-cat__craft {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: var(--bg-cream);
+    color: var(--text-mute);
+  }
+  .ca-cat__title {
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+  .ca-cat__blurb {
+    margin-top: 6px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--text-mute);
+  }
+  .ca-cat__intro {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: var(--text-ink);
+  }
+
+  .ca-grid {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 640px) {
+    .ca-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .ca-grid--n3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .ca-grid--n4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .ca-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.3s var(--ease),
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .ca-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(233, 78, 27, 0.45);
+    box-shadow: var(--shadow-card-hi);
+  }
+  .ca-card__media {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--bg-cream);
+  }
+  .ca-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+  }
+  .ca-card:hover .ca-card__media img {
+    transform: scale(1.06);
+  }
+  .ca-card__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 10, 20, 0.28) 0%, transparent 45%);
+  }
+  .ca-card__tag {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    padding: 5px 11px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.8);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .ca-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px;
+  }
+  .ca-card__name {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.22;
+  }
+  .ca-card__desc {
+    font-size: var(--type-body);
+    line-height: 1.56;
+    color: var(--text-mute);
+  }
+  .ca-card__cta {
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--brand-orange-cta);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ca-card:hover .ca-card__cta .arrow {
+    transform: translateX(5px);
+  }
+
+  .ca-aside {
+    margin-top: clamp(48px, 6vw, 72px);
+    padding: 26px 32px;
+    border-radius: 24px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px 32px;
+  }
+  .ca-aside__text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+  .ca-aside__text a {
+    color: var(--brand-orange-cta);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ============================================================
+     S4 · Pillar 2: Social Networks Command Studio
+  ============================================================ */
+  .soc-studio {
+    --soc-scroll: 0;
+  }
+  .soc-ambient {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .soc-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(84px);
+    opacity: 0.42;
+    will-change: transform;
+  }
+  .soc-orb--a {
+    width: 580px;
+    height: 580px;
+    top: -120px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.58), transparent 68%);
+    transform: translate3d(0, calc(var(--soc-scroll) * 160px), 0);
+  }
+  .soc-orb--b {
+    width: 520px;
+    height: 520px;
+    bottom: -140px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(233, 78, 27, 0.36), transparent 68%);
+    transform: translate3d(0, calc(var(--soc-scroll) * -140px), 0);
+  }
+  .soc-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 35%, transparent 100%);
+  }
+
+  /* Scroll-reactive workflow pipeline bar */
+  .soc-flow {
+    position: relative;
+    margin-bottom: clamp(32px, 4vw, 48px);
+    padding: 20px 24px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+  }
+  .soc-flow__rail {
+    position: relative;
+    height: 3px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .soc-flow__fill {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform-origin: 0 50%;
+    transform: scaleX(calc(0.25 + var(--soc-scroll) * 0.75));
+    background: linear-gradient(90deg, #60a5fa, var(--brand-orange), #34d399);
+    transition: transform 0.25s ease-out;
+  }
+  .soc-flow__steps {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 780px) {
+    .soc-flow__steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .soc-step {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      transform 0.25s ease;
+  }
+  .soc-step:hover,
+  .soc-step.is-lit {
+    background: rgba(59, 130, 246, 0.14);
+    border-color: rgba(96, 165, 250, 0.45);
+    transform: translateY(-2px);
+  }
+  .soc-step__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    margin-bottom: 4px;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+  }
+  .soc-step:hover .soc-step__dot,
+  .soc-step.is-lit .soc-step__dot {
+    background: #60a5fa;
+    box-shadow: 0 0 12px #60a5fa;
+  }
+  .soc-step__kicker {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #93c5fd;
+  }
+  .soc-step__name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-on-dark);
+  }
+
+  /* Track Switcher Bar */
+  .soc-bar {
+    margin-bottom: clamp(32px, 4vw, 48px);
+  }
+  .soc-tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 7px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+  }
+  @media (max-width: 859.98px) {
+    .soc-tabs__list {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      border-radius: 20px;
+      scrollbar-width: none;
+    }
+    .soc-tabs__list::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .soc-tab {
+    flex: 1;
+    min-width: max-content;
+    appearance: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(240, 237, 233, 0.72);
+    transition:
+      background-color 0.22s ease,
+      color 0.22s ease,
+      box-shadow 0.22s ease;
+  }
+  .soc-tab:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .soc-tab__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.4;
+  }
+  .soc-tab.is-active {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    box-shadow: 0 10px 24px -8px rgba(37, 99, 235, 0.65);
+  }
+  .soc-tab.is-active .soc-tab__dot {
+    background: #93c5fd;
+    opacity: 1;
+    box-shadow: 0 0 8px #93c5fd;
+  }
+
+  .soc-tracks {
+    display: grid;
+    gap: clamp(64px, 8vw, 108px);
+  }
+  .soc-track-sec[hidden] {
+    display: none;
+  }
+
+  /* Track Stage (Copy left + Interactive AppShot right) */
+  .soc-stage {
+    display: grid;
+    gap: clamp(28px, 3.6vw, 44px);
+    padding: clamp(24px, 3.4vw, 42px);
+    margin-bottom: 24px;
+    border-radius: clamp(22px, 2.4vw, 32px);
+    background:
+      radial-gradient(120% 120% at 100% 0%, rgba(37, 99, 235, 0.22), transparent 60%),
+      rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    align-items: start;
+  }
+  @media (min-width: 980px) {
+    .soc-stage {
+      grid-template-columns: 0.92fr 1.08fr;
+    }
+  }
+  .soc-stage__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .soc-stage__tag {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 99px;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    color: #93c5fd;
+  }
+  .soc-stage__title {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: #fff;
+  }
+  .soc-stage__blurb {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.3;
+    color: #93c5fd;
+  }
+  .soc-stage__intro {
+    font-size: var(--type-body);
+    line-height: 1.62;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .soc-highlights {
+    display: grid;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .soc-hi {
+    padding: 13px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .soc-hi__title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .soc-hi__text {
+    font-size: var(--type-body);
+    line-height: 1.5;
+    color: rgba(240, 237, 233, 0.74);
+  }
+
+  .soc-stage__media {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+  .soc-ui-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .soc-ch {
+    appearance: none;
+    cursor: pointer;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(240, 237, 233, 0.8);
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .soc-ch:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+  .soc-ch.is-on {
+    background: #3b82f6;
+    border-color: #60a5fa;
+    color: #fff;
+    box-shadow: 0 6px 18px -4px rgba(59, 130, 246, 0.6);
+  }
+  .soc-shot[hidden] {
+    display: none;
+  }
+
+  /* 4 Social Service Cards per Track */
+  .soc-cards {
+    display: grid;
+    gap: var(--gap-card);
+  }
+  @media (min-width: 640px) {
+    .soc-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .soc-cards {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .soc-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition:
+      transform 0.3s var(--ease),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .soc-card:hover {
+    transform: translateY(-6px);
+    border-color: #60a5fa;
+    box-shadow: 0 24px 48px -20px rgba(37, 99, 235, 0.45);
+  }
+  .soc-card__media {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .soc-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+  }
+  .soc-card:hover .soc-card__media img {
+    transform: scale(1.06);
+  }
+  .soc-card__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14, 22, 51, 0.35) 0%, transparent 50%);
+  }
+  .soc-card__badge {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: rgba(14, 22, 51, 0.85);
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    backdrop-filter: blur(6px);
+    color: #93c5fd;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .soc-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+  }
+  .soc-card__name {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.24;
+    color: #fff;
+  }
+  .soc-card__desc {
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.76);
+  }
+  .soc-card__cta {
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: #60a5fa;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .soc-card:hover .soc-card__cta .arrow {
+    transform: translateX(5px);
+  }
+
+  /* ============================================================
+     S5 · Interactive Platform Ecosystem Matrix
+  ============================================================ */
+  .plat-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    margin-bottom: 32px;
+  }
+  .plat-filters {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px;
     border-radius: var(--radius-pill);
     background: var(--bg-cream);
     border: 1px solid var(--line-strong);
-    font-size: var(--type-small);
-    font-weight: 500;
-    transition: color 120ms ease-out, border-color 120ms ease-out;
   }
-  .st-chip:hover {
-    color: var(--brand-orange);
-    border-color: var(--brand-orange);
+  .plat-flt {
+    appearance: none;
+    cursor: pointer;
+    padding: 9px 16px;
+    border-radius: var(--radius-pill);
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-mute);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .plat-flt:hover {
+    color: var(--text-ink);
+  }
+  .plat-flt.is-on {
+    background: var(--bg-ink);
+    color: #fff;
   }
 
-  /* ---- FAQ ----------------------------------------------------- */
-  .st-faq__inner {
-    max-width: 880px;
+  .plat-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   }
-  .st-faq__updated {
+  .plat-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 22px 24px;
+    border-radius: 22px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    transition:
+      transform 0.25s var(--ease),
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .plat-card[hidden] {
+    display: none;
+  }
+  .plat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    background: radial-gradient(
+      240px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(63, 111, 224, 0.14),
+      transparent 70%
+    );
+  }
+  .plat-card--china::before {
+    background: radial-gradient(
+      240px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(233, 78, 27, 0.14),
+      transparent 70%
+    );
+  }
+  .plat-card:hover {
+    background: var(--bg-white);
+    border-color: var(--pillar-publish);
+    box-shadow: var(--shadow-card-hi);
+  }
+  .plat-card--china:hover {
+    border-color: var(--pillar-create);
+  }
+  .plat-card:hover::before {
+    opacity: 1;
+  }
+  .plat-card__top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .plat-card__name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .plat-card__badge {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 99px;
+    background: rgba(63, 111, 224, 0.12);
+    color: var(--pillar-publish);
+  }
+  .plat-card--china .plat-card__badge {
+    background: rgba(233, 78, 27, 0.12);
+    color: var(--brand-orange-cta);
+  }
+  .plat-card__formats {
+    position: relative;
+    z-index: 1;
+    font-size: var(--type-body);
+    line-height: 1.5;
     color: var(--text-mute);
+  }
+  .plat-card__cta {
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pillar-publish);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .plat-card--china .plat-card__cta {
+    color: var(--brand-orange-cta);
+  }
+
+  /* ============================================================
+     S6 · WaysToWork wrapper & Interactive Workspace Setups
+  ============================================================ */
+  .st-ways {
+    position: relative;
+    margin-top: clamp(-60px, -4.6vw, -40px);
+    border-radius: clamp(28px, 3.6vw, 60px) clamp(28px, 3.6vw, 60px) 0 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-sheet);
+  }
+
+  .setup-tabs {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  @media (min-width: 768px) {
+    .setup-tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .setup-tab {
+    appearance: none;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 26px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(240, 237, 233, 0.72);
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+  .setup-tab:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+  .setup-tab.is-on {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--brand-orange);
+    color: #fff;
+    box-shadow: 0 20px 44px -22px rgba(0, 0, 0, 0.65);
+  }
+  .setup-tab__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+  .setup-tab__name {
+    font-size: clamp(19px, 2vw, 24px);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  .setup-pane {
+    display: grid;
+    gap: clamp(28px, 4vw, 48px);
+    padding: clamp(26px, 3.6vw, 44px);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: center;
+  }
+  .setup-pane[hidden] {
+    display: none;
+  }
+  @media (min-width: 960px) {
+    .setup-pane {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .setup-pane__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .setup-pane__tag {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 99px;
+    background: rgba(233, 78, 27, 0.2);
+    border: 1px solid rgba(233, 78, 27, 0.45);
+    color: #ff9a5c;
+  }
+  .setup-pane__title {
+    font-size: var(--type-h3);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    color: #fff;
+  }
+  .setup-pane__body {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: rgba(240, 237, 233, 0.82);
+  }
+  .setup-pane__points {
+    display: grid;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .setup-pane__points li {
+    position: relative;
+    padding-left: 20px;
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: rgba(240, 237, 233, 0.88);
+  }
+  .setup-pane__points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    background: var(--brand-orange);
+    transform: rotate(45deg);
+  }
+  .setup-pane__actions {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+  }
+
+  /* ============================================================
+     S7 · Craft Split & Interactive 5-Stage Pipeline
+  ============================================================ */
+  .craft-split {
+    display: grid;
+    gap: clamp(40px, 5vw, 72px);
+    align-items: center;
+    margin-bottom: clamp(64px, 8vw, 112px);
+  }
+  @media (min-width: 960px) {
+    .craft-split {
+      grid-template-columns: 0.92fr 1.08fr;
+    }
+  }
+  .craft-split__figure {
+    position: relative;
+    margin: 0;
+  }
+  .craft-split__accent {
+    position: absolute;
+    inset: 22px -20px -20px 22px;
+    border-radius: 28px;
+    background: var(--brand-orange);
+    z-index: 0;
+  }
+  .craft-split__media {
+    position: relative;
+    z-index: 1;
+    border-radius: 28px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: var(--shadow-card-hi);
+  }
+  .craft-split__media img {
+    width: 100%;
+    height: 118%;
+    object-fit: cover;
+    will-change: transform;
+  }
+  .craft-split__badge {
+    position: absolute;
+    z-index: 2;
+    left: 16px;
+    bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: rgba(14, 22, 51, 0.85);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .craft-split__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+  .craft-split__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .craft-split__p {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+  .craft-cards {
+    display: grid;
+    gap: 14px;
+    margin-block: 6px;
+  }
+  @media (min-width: 640px) {
+    .craft-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .craft-mini {
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  .craft-mini__title {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-ink);
+  }
+  .craft-mini__text {
+    margin-top: 6px;
+    font-size: var(--type-body);
+    line-height: 1.55;
+    color: var(--text-mute);
+  }
+
+  /* Interactive 5-Stage Pipeline Box */
+  .pipe-box {
+    padding: clamp(28px, 4vw, 48px);
+    border-radius: var(--radius-card);
+    background: var(--bg-ink);
+    color: var(--text-on-dark);
+    box-shadow: var(--shadow-card-hi);
+  }
+  .pipe-box__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px 32px;
+    margin-bottom: 24px;
+  }
+  .pipe-box__title {
+    margin-top: 8px;
+    color: #fff;
+  }
+  .pipe-box__sub {
+    font-size: var(--type-body);
+    color: rgba(240, 237, 233, 0.72);
+  }
+  .pipe-rail {
+    height: 3px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.12);
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .pipe-rail__fill {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform-origin: 0 50%;
+    transform: scaleX(var(--pipe-progress, 0.2));
+    background: linear-gradient(90deg, var(--brand-orange), #ff9a5c, #60a5fa);
+    transition: transform 0.35s var(--ease);
+  }
+
+  .pipe-tabs {
+    display: grid;
+    gap: 12px;
+  }
+  @media (min-width: 960px) {
+    .pipe-tabs {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+  .pipe-tab {
+    appearance: none;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(240, 237, 233, 0.76);
+    transition:
+      background-color 0.22s ease,
+      border-color 0.22s ease,
+      transform 0.22s ease;
+  }
+  .pipe-tab:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+  }
+  .pipe-tab.is-on {
+    background: rgba(233, 78, 27, 0.16);
+    border-color: var(--brand-orange);
+    color: #fff;
+    transform: translateY(-3px);
+  }
+  .pipe-tab__diamond {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.35);
+    transform: rotate(45deg);
+    margin-bottom: 4px;
+    transition: background-color 0.22s ease;
+  }
+  .pipe-tab.is-on .pipe-tab__diamond {
+    background: var(--brand-orange);
+  }
+  .pipe-tab__kicker {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ff9a5c;
+  }
+  .pipe-tab__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .pipe-tab__sum {
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(240, 237, 233, 0.72);
+  }
+
+  .pipe-panes {
+    margin-top: 20px;
+  }
+  .pipe-pane {
+    display: grid;
+    gap: 20px;
+    padding: 24px 28px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: start;
+  }
+  .pipe-pane[hidden] {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .pipe-pane {
+      grid-template-columns: 1.2fr 1.2fr 0.8fr;
+      gap: 32px;
+    }
+  }
+  .pipe-pane__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ff9a5c;
+    margin-bottom: 8px;
+  }
+  .pipe-pane__text {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.86);
+  }
+  .pipe-pane__badge {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 14px;
+    background: rgba(233, 78, 27, 0.2);
+    border: 1px solid rgba(233, 78, 27, 0.45);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* ============================================================
+     S8 · People & Selected Case Studies
+  ============================================================ */
+  .people-card {
+    display: grid;
+    gap: 36px;
+    padding: clamp(26px, 3.6vw, 44px);
+    border-radius: var(--radius-card);
+    background: var(--bg-white);
+    border: 1px solid var(--line-hairline);
+    box-shadow: var(--shadow-card);
+    align-items: center;
+    margin-bottom: clamp(72px, 9vw, 128px);
+  }
+  @media (min-width: 960px) {
+    .people-card {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+    }
+  }
+  .people-card__media {
+    margin: 0;
+    border-radius: 22px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+  }
+  .people-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .people-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .people-card__p {
+    font-size: var(--type-body);
+    line-height: 1.64;
+    color: var(--text-mute);
+  }
+  .people-hubs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 6px;
+  }
+  .people-hub {
+    padding: 6px 13px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-ink);
+  }
+  .people-card__foot {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+  }
+
+  /* Selected Case Studies Grid */
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(18px, 2.2vw, 32px);
+  }
+  @media (min-width: 720px) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .study {
+      margin-top: calc(var(--i, 0) * 48px);
+    }
+  }
+  .study {
+    position: relative;
+    display: block;
+    border-radius: clamp(22px, 2.4vw, 30px);
+    overflow: hidden;
+    background: var(--bg-ink);
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.4s var(--ease),
+      box-shadow 0.4s ease;
+  }
+  .study:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hi);
+  }
+  .study__media {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+  }
+  .study__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease);
+  }
+  .study:hover .study__media img {
+    transform: scale(1.06);
+  }
+  .study__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 12, 28, 0) 35%,
+      rgba(8, 12, 28, 0.55) 68%,
+      rgba(8, 12, 28, 0.92) 100%
+    );
+  }
+  .study__overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: clamp(24px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #fff;
+  }
+  .study__tag {
+    align-self: flex-start;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: rgba(240, 237, 233, 0.16);
+    backdrop-filter: blur(6px);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .study__title {
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+  }
+  .study__cta {
+    margin-top: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: #ff9a5c;
+  }
+  .block-more {
+    margin-top: clamp(44px, 5vw, 68px);
+    text-align: center;
+  }
+
+  /* ============================================================
+     S9 · Filterable FAQ
+  ============================================================ */
+  .st-faq__inner {
+    max-width: 960px;
+  }
+  .st-faq__controls {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 5px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-cream);
+    border: 1px solid var(--line-strong);
+  }
+  .faq-flt {
+    appearance: none;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: var(--radius-pill);
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-mute);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .faq-flt.is-on {
+    background: var(--bg-ink);
+    color: #fff;
   }
   .st-faq__list {
     display: grid;
     gap: 12px;
   }
   .st-qa {
-    border: 1px solid var(--line-hairline);
-    border-radius: 18px;
-    background: var(--bg-white);
+    border: 1px solid var(--line-strong);
+    border-radius: 20px;
+    background: var(--bg-cream);
     overflow: hidden;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .st-qa[hidden] {
+    display: none;
   }
   .st-qa[open] {
-    border-color: var(--line-strong);
+    background: var(--bg-white);
+    border-color: var(--brand-orange);
+    box-shadow: var(--shadow-card);
   }
   .st-qa__q {
     display: flex;
@@ -1403,7 +4260,7 @@ const studioSchema = {
     position: absolute;
     background: var(--brand-orange);
     border-radius: 2px;
-    transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition: transform 240ms var(--ease);
   }
   .st-qa__sign::before {
     left: 0;
@@ -1429,39 +4286,377 @@ const studioSchema = {
     font-size: var(--type-body);
     line-height: 1.64;
     color: var(--text-mute);
-    max-width: 64ch;
+    max-width: 66ch;
   }
   .st-qa__a :global(a) {
     color: var(--brand-orange-cta);
     font-weight: 600;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .st-card,
-    .st-case,
-    .st-card__media img {
-      transition: none;
-    }
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 </style>
 
 <script>
-  /* Fade-in on scroll, matching the other hub pages. */
-  const reveals = document.querySelectorAll('.reveal');
+  const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- 1. Scroll-reveal observer ------------------------------- */
+  const reveals = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-in');
+            entry.target.classList.add('in');
             io.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2 },
+      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
     );
     reveals.forEach((el) => io.observe(el));
   } else {
-    reveals.forEach((el) => el.classList.add('is-in'));
+    reveals.forEach((el) => el.classList.add('in'));
+  }
+
+  /* ---- 2. Count-up SLA numbers --------------------------------- */
+  const counts = document.querySelectorAll<HTMLElement>('.count');
+  const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+  const runCount = (el: HTMLElement) => {
+    const target = Number(el.dataset.to || '0');
+    if (RM) {
+      el.textContent = String(target);
+      return;
+    }
+    const dur = 1400;
+    const start = performance.now();
+    const step = (now: number) => {
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = String(Math.round(easeOut(p) * target));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  if (counts.length && 'IntersectionObserver' in window) {
+    const cio = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            runCount(entry.target as HTMLElement);
+            cio.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+    counts.forEach((el) => cio.observe(el));
+  }
+
+  /* ---- 3. Scroll engine: progress bar, parallax, floating dock & social pipeline ---- */
+  const fill = document.querySelector<HTMLElement>('.scrollbar__fill');
+  const parallax = document.querySelectorAll<HTMLElement>('[data-parallax]');
+  const dock = document.querySelector<HTMLElement>('[data-dock]');
+  const dockLinks = Array.from(document.querySelectorAll<HTMLElement>('[data-dock-link]'));
+  const socCommand = document.querySelector<HTMLElement>('[data-soc-command]');
+  const socSteps = socCommand ? Array.from(socCommand.querySelectorAll<HTMLElement>('[data-soc-step]')) : [];
+
+  let ticking = false;
+  const onScroll = () => {
+    const y = window.scrollY;
+    const vh = window.innerHeight;
+    const max = document.documentElement.scrollHeight - vh;
+    if (fill) fill.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+
+    /* Floating dock visibility & active section spy */
+    if (dock) {
+      const showDock = y > vh * 0.65 && y < max - 380;
+      dock.classList.toggle('is-visible', showDock);
+    }
+    if (dockLinks.length) {
+      const ids = ['services', 'social-networks', 'setups', 'how-it-runs', 'work'];
+      let activeId = ids[0];
+      for (const id of ids) {
+        const sec = document.getElementById(id);
+        if (sec && sec.getBoundingClientRect().top <= vh * 0.42) {
+          activeId = id;
+        }
+      }
+      dockLinks.forEach((link) => {
+        link.classList.toggle('is-active', link.dataset.dockLink === activeId);
+      });
+    }
+
+    /* Parallax images */
+    if (!RM) {
+      parallax.forEach((img) => {
+        const speed = Number(img.dataset.speed || '0.08');
+        const rect = img.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < vh) {
+          const offset = (rect.top + rect.height / 2 - vh / 2) / vh;
+          img.style.transform = `translate3d(0, ${offset * -speed * 180}px, 0)`;
+        }
+      });
+    }
+
+    /* Social networks scroll-reactive workflow bar & orbs */
+    if (socCommand) {
+      const r = socCommand.getBoundingClientRect();
+      const total = r.height + vh * 0.4;
+      const raw = (vh * 0.8 - r.top) / total;
+      const p = Math.max(0, Math.min(1, raw));
+      socCommand.style.setProperty('--soc-scroll', p.toFixed(3));
+      if (socSteps.length) {
+        const activeCount = Math.max(1, Math.ceil(p * socSteps.length));
+        socSteps.forEach((st, idx) => st.classList.toggle('is-lit', idx < activeCount));
+      }
+    }
+
+    ticking = false;
+  };
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
+  onScroll();
+
+  /* ---- 4. 3D pointer tilt & pointer-tracked glow ---------------- */
+  if (!RM && window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll<HTMLElement>('[data-tilt]').forEach((el) => {
+      const MAX = 4.5;
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        el.style.transition = 'none';
+        el.style.setProperty('--ry', `${(px - 0.5) * MAX * 2}deg`);
+        el.style.setProperty('--rx', `${(0.5 - py) * MAX * 2}deg`);
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transition = '';
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      });
+    });
+
+    /* Magnetic hero buttons */
+    document.querySelectorAll<HTMLElement>('.st-mag').forEach((btn) => {
+      btn.addEventListener('pointermove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const mx = e.clientX - r.left - r.width / 2;
+        const my = e.clientY - r.top - r.height / 2;
+        btn.style.transform = `translate(${mx * 0.24}px, ${my * 0.3}px)`;
+      });
+      btn.addEventListener('pointerleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-glow]').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${((e.clientX - r.left) / r.width) * 100}%`);
+      el.style.setProperty('--my', `${((e.clientY - r.top) / r.height) * 100}%`);
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-spot]').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--sx', `${((e.clientX - r.left) / r.width) * 100}%`);
+      el.style.setProperty('--sy', `${((e.clientY - r.top) / r.height) * 100}%`);
+      el.setAttribute('data-lit', '');
+    });
+    el.addEventListener('pointerleave', () => el.removeAttribute('data-lit'));
+  });
+
+  /* ---- 5. Creative Assets Interactive Category Filter ----------- */
+  const caDeck = document.querySelector<HTMLElement>('[data-creative-deck]');
+  if (caDeck) {
+    const caBtns = Array.from(caDeck.querySelectorAll<HTMLButtonElement>('[data-ca-filter]'));
+    const caGroups = Array.from(caDeck.querySelectorAll<HTMLElement>('[data-ca-group]'));
+
+    const setCaFilter = (id: string) => {
+      caBtns.forEach((btn) => {
+        const on = btn.dataset.caFilter === id;
+        btn.classList.toggle('is-on', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      caGroups.forEach((grp) => {
+        const show = id === 'all' || grp.dataset.caGroup === id;
+        grp.hidden = !show;
+      });
+    };
+
+    caBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setCaFilter(btn.dataset.caFilter || 'all');
+      });
+    });
+
+    /* Ensure jumping to a category pill reveals all or that category cleanly */
+    document.querySelectorAll<HTMLAnchorElement>('[data-jump-cat]').forEach((link) => {
+      link.addEventListener('click', () => {
+        setCaFilter('all');
+      });
+    });
+  }
+
+  /* ---- 6. Social Networks Command Studio: Track Filter & AppShot Stage ---- */
+  if (socCommand) {
+    const socTabs = Array.from(socCommand.querySelectorAll<HTMLButtonElement>('[data-soc-filter]'));
+    const socGroups = Array.from(socCommand.querySelectorAll<HTMLElement>('[data-soc-group]'));
+
+    const setSocFilter = (id: string) => {
+      socTabs.forEach((btn) => {
+        const on = btn.dataset.socFilter === id;
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      socGroups.forEach((grp) => {
+        const show = id === 'all' || grp.dataset.socGroup === id;
+        grp.hidden = !show;
+      });
+    };
+
+    socTabs.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setSocFilter(btn.dataset.socFilter || 'all');
+      });
+    });
+
+    /* AppShot switcher inside each social track stage */
+    socGroups.forEach((grp) => {
+      const shotBtns = Array.from(grp.querySelectorAll<HTMLButtonElement>('[data-soc-shot-btn]'));
+      const shots = Array.from(grp.querySelectorAll<HTMLElement>('[data-soc-shot]'));
+      const warm = (el: HTMLElement | undefined) => {
+        const img = el?.querySelector('img');
+        if (img && img.loading === 'lazy') img.loading = 'eager';
+      };
+      shotBtns.forEach((btn, idx) => {
+        btn.addEventListener('pointerenter', () => warm(shots[idx]));
+        btn.addEventListener('click', () => {
+          shotBtns.forEach((b, bi) => b.classList.toggle('is-on', bi === idx));
+          shots.forEach((s, si) => {
+            const on = si === idx;
+            s.classList.toggle('is-on', on);
+            s.hidden = !on;
+          });
+          warm(shots[idx]);
+        });
+      });
+    });
+  }
+
+  /* ---- 7. Interactive Platform Ecosystem Matrix ----------------- */
+  const platSec = document.querySelector<HTMLElement>('[data-plat-matrix]');
+  if (platSec) {
+    const fltBtns = Array.from(platSec.querySelectorAll<HTMLButtonElement>('[data-plat-filter]'));
+    const cards = Array.from(platSec.querySelectorAll<HTMLElement>('.plat-card'));
+    fltBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.platFilter || 'all';
+        fltBtns.forEach((b) => b.classList.toggle('is-on', b === btn));
+        cards.forEach((c) => {
+          const match =
+            filter === 'all' ||
+            c.dataset.platRegion === filter ||
+            c.dataset.platMode === filter;
+          c.hidden = !match;
+        });
+      });
+    });
+  }
+
+  /* ---- 8. Interactive Workspace Setup Switcher ------------------ */
+  const setupSec = document.querySelector<HTMLElement>('[data-setup-switcher]');
+  if (setupSec) {
+    const btns = Array.from(setupSec.querySelectorAll<HTMLButtonElement>('[data-setup-btn]'));
+    const panes = Array.from(setupSec.querySelectorAll<HTMLElement>('[data-setup-pane]'));
+    const activateSetup = (idx: number, focus = false) => {
+      btns.forEach((b, i) => {
+        const on = i === idx;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+        if (on && focus) b.focus();
+      });
+      panes.forEach((p, i) => {
+        const on = i === idx;
+        p.classList.toggle('is-on', on);
+        p.hidden = !on;
+        if (on) {
+          const img = p.querySelector('img');
+          if (img && img.loading === 'lazy') img.loading = 'eager';
+        }
+      });
+    };
+    btns.forEach((b, i) => {
+      b.addEventListener('click', () => activateSetup(i));
+      b.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          activateSetup((i + 1) % btns.length, true);
+        }
+      });
+    });
+  }
+
+  /* ---- 9. Interactive 5-Stage Pipeline -------------------------- */
+  const pipeSec = document.querySelector<HTMLElement>('[data-pipeline-sec]');
+  if (pipeSec) {
+    const btns = Array.from(pipeSec.querySelectorAll<HTMLButtonElement>('[data-pipe-btn]'));
+    const panes = Array.from(pipeSec.querySelectorAll<HTMLElement>('[data-pipe-pane]'));
+    const pipeBox = pipeSec.querySelector<HTMLElement>('.pipe-box');
+    const activateStage = (idx: number, focus = false) => {
+      btns.forEach((b, i) => {
+        const on = i === idx;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+        if (on && focus) b.focus();
+      });
+      panes.forEach((p, i) => {
+        const on = i === idx;
+        p.classList.toggle('is-on', on);
+        p.hidden = !on;
+      });
+      if (pipeBox) {
+        pipeBox.style.setProperty('--pipe-progress', ((idx + 1) / btns.length).toFixed(2));
+      }
+    };
+    btns.forEach((b, i) => {
+      b.addEventListener('click', () => activateStage(i));
+      b.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          activateStage((i + 1) % btns.length, true);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          activateStage((i - 1 + btns.length) % btns.length, true);
+        }
+      });
+    });
+  }
+
+  /* ---- 10. Interactive FAQ Topic Filter ------------------------- */
+  const faqSec = document.querySelector<HTMLElement>('[data-faq-sec]');
+  if (faqSec) {
+    const flts = Array.from(faqSec.querySelectorAll<HTMLButtonElement>('[data-faq-filter]'));
+    const items = Array.from(faqSec.querySelectorAll<HTMLElement>('[data-faq-topic]'));
+    flts.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const topic = btn.dataset.faqFilter || 'all';
+        flts.forEach((b) => b.classList.toggle('is-on', b === btn));
+        items.forEach((item) => {
+          item.hidden = !(topic === 'all' || item.dataset.faqTopic === topic);
+        });
+      });
+    });
   }
 </script>

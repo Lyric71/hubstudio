@@ -2,12 +2,12 @@
 /**
  * hubStudio for retailers  ·  /solutions/retailers
  *
- * Volume and seasonality. The app for fast variants, resizes and scheduled
- * posts (real captures of the Image studio, the Image editor crop and the
- * Instagram post studio); the studio for the seasonal campaign set and
- * marketplace work, linking the Amazon, Tmall, JD and Shopify platform pages.
- * Use the app is the highlighted way; the closing leads with the app door.
- * Copy from the content-quality-us deck (cq/sol-retailers).
+ * Retail teams run two jobs side by side: creative assets (product packshots,
+ * lifestyle scenes, seasonal refreshes, marketplace listings) and social
+ * networks (daily Reels, Stories, TikToks, promotional carousels, paid social
+ * ads, and Chinese social commerce). This page explains how retailers run both
+ * in the hubStudio app ("Use the app") and with our creative and social teams
+ * inside the same workspace ("Work with us in the app").
  *
  * Per repo standards: no em dash character, no decorative numerals inside
  * cards or repeated blocks, body copy at var(--type-body), hubStudio keeps
@@ -30,27 +30,27 @@ const colourBar = [
 
 const reasons = [
   {
-    label: 'Volume',
-    title: 'Every product needs a hero, a detail, and a scene.',
-    body: 'Multiply that by a catalog and the photo budget runs out long before the SKUs do.',
+    label: 'Creative assets',
+    title: 'Every SKU needs a packshot, a detail shot, and a lifestyle scene.',
+    body: 'Multiply that across a seasonal catalog and the photo budget runs out long before the product list does.',
   },
   {
-    label: 'Seasons',
-    title: 'Holiday, back to school, and summer each want new pictures of the same products.',
-    body: 'Few budgets stretch to a reshoot every time the season turns.',
+    label: 'Social networks',
+    title: 'Promotions live or die on the daily social calendar.',
+    body: 'Every weekend sale needs Instagram Reels, TikTok clips, Facebook carousels, and paid ad variants sized and captioned on time.',
   },
   {
-    label: 'Channels',
-    title: 'Your store, the marketplaces, and each social feed all want their own sizes.',
-    body: 'And somebody has to crop and caption every one.',
+    label: 'Marketplaces & feeds',
+    title: 'Storefronts, marketplaces, and social feeds never share a ratio.',
+    body: 'Amazon, Tmall, JD, Shopify, and every social network enforce their own dimensions, safe zones, and copy rules.',
   },
 ];
 
-/* The app, by job. Labels are captions for the captures, not ordinals. */
+/* The app across both pillars. Labels are captions for the captures, not ordinals. */
 const shots = [
-  { job: 'Variant', shot: appShots.imageStudio, path: '/content/image-generate', wide: true },
-  { job: 'Resize', shot: appShots.editorCrop, path: '/files/tools/image-editor', wide: false },
-  { job: 'Post', shot: appShots.instagram, path: '/social/instagram/posts', wide: false },
+  { job: 'Creative assets · Generate variants', shot: appShots.imageStudio, path: '/content/image-generate', wide: true },
+  { job: 'Creative assets · Size for each feed', shot: appShots.editorSocial, path: '/files/tools/image-editor', wide: false },
+  { job: 'Social networks · Schedule & publish', shot: appShots.instagram, path: '/social/instagram/posts', wide: false },
 ];
 
 const platforms = [
@@ -58,72 +58,76 @@ const platforms = [
   { name: 'Tmall', href: '/solutions/platforms/tmall' },
   { name: 'JD', href: '/solutions/platforms/jd' },
   { name: 'Shopify', href: '/solutions/platforms/shopify' },
+  { name: 'Meta', href: '/solutions/platforms/meta' },
+  { name: 'TikTok', href: '/solutions/platforms/tiktok' },
+  { name: 'RedNote', href: '/solutions/platforms/rednote' },
+  { name: 'Douyin', href: '/solutions/platforms/douyin' },
 ];
 
-/* Four kinds of retail work and who usually makes them. Prose lanes. */
+/* Four parts of retail work across both creative assets and social networks. */
 const lanes = [
   {
-    label: 'Product scenes',
-    heading: 'One product, many settings.',
+    label: 'Creative assets · Product scenes',
+    heading: 'One SKU, staged for every season and room.',
     image: '/Images/ecom-imagery.jpg',
     alt: 'A daylit product still life on a kitchen counter, late-afternoon window light from camera left, warm shadow grade, generous negative space.',
-    body: 'From a kitchen counter to a garden table. Most teams make the quick scenes in the app and ask the studio for the hero set.',
+    body: 'From a kitchen counter in spring to a holiday table in December. Retail teams generate quick variants in the app and bring our studio in for the hero seasonal set.',
   },
   {
-    label: 'Seasonal refresh',
-    heading: 'The same products, dressed for the next date on the calendar.',
-    image: '/Images/pmd-factory.jpg',
-    alt: 'A documentary in-studio frame of a retail content team reviewing seasonal creative on a large monitor, warm window light, lifted black point.',
-    body: 'This is where Studio + app fits best: we work in your own workspace, the key visual sits in your Assets Library, and your team adapts it all season.',
-  },
-  {
-    label: 'Commerce pages',
-    heading: 'Product pages, A+ modules, and marketplace tiles.',
+    label: 'Creative assets · Marketplaces & storefronts',
+    heading: 'Product pages, A+ modules, and flagship tiles.',
     image: '/Images/ecom-listings.jpg',
     alt: 'A clean marketplace product layout on a calibrated monitor, with tile, hero and lifestyle variants pinned in a contact-sheet grid alongside.',
-    body: 'Each one follows its platform’s rules. The first build usually comes from the studio, and the team keeps it fresh afterward.',
+    body: 'Each marketplace enforces its own rules. Our team builds the listing images, A+ modules, and store pages for Amazon, Tmall, JD, and Shopify inside your workspace, and your team keeps them updated all season.',
   },
   {
-    label: 'Social commerce',
-    heading: 'Vertical video, carousels, and captions.',
+    label: 'Social networks · Always-on feeds & Reels',
+    heading: 'Weekly posts, Stories, and vertical video that move stock.',
     image: '/Images/sb-sample-branded.jpg',
     alt: 'A social-first video frame of a model holding a product, vertical aspect, soft natural daylight, prime-lens shallow focus.',
-    body: 'Made for the feeds where people shop. Day to day, it’s app work. Launch films go to the studio.',
+    body: 'Made for the feeds where shoppers browse. Your team drafts and schedules daily posts across Instagram, Facebook, TikTok (Beta), LinkedIn, X, and YouTube in the app, or hands the calendar to our social editors.',
+  },
+  {
+    label: 'Social networks · Paid social & China commerce',
+    heading: 'Ad variants tested for conversion, plus RedNote and Douyin.',
+    image: '/Images/pmd-factory.jpg',
+    alt: 'A documentary in-studio frame of a retail content team reviewing seasonal creative on a large monitor, warm window light, lifted black point.',
+    body: 'Our social and media teams plan paid social funnels, produce and test creative variants in hubStudio with media billed straight to your ad accounts, and run seeding notes and short video on RedNote, Douyin, WeChat, and Weibo.',
   },
 ];
 
 const faqs = [
   {
-    q: 'How fast can we make seasonal content?',
-    a: 'In the app, as fast as your team can work. You pick an engine, see the price, and run it. For the studio, a producer reads your brief within one business day and sends a written proposal within 48 hours.',
+    q: 'Does hubStudio cover both catalog visuals and social media for retailers?',
+    a: 'Yes. On the creative assets side, your team generates product scenes and video clips in the app and crops them in the free browser editors, while our studio produces seasonal campaigns and marketplace pages. On the social networks side, the app handles Campaigns and scheduling to Instagram, Facebook, TikTok (Beta), LinkedIn, X, and YouTube, while our social team runs weekly calendars, paid social ads, and Chinese social commerce.',
   },
   {
-    q: 'Will the product look right?',
-    a: 'Start from your own product pictures where the engine allows it, and check every image before it goes live. Generated images can get details wrong. For hero products, the studio can shoot the product or retouch it by hand.',
+    q: 'How fast can we turn out seasonal assets and promotional posts?',
+    a: 'In the app, as fast as your team works: pick an engine, see the price before the run, generate up to 10 images at a time, and schedule the post. When you work with our team, a producer reads your brief within one business day and sends a written proposal within 48 hours.',
   },
   {
-    q: 'Do you make marketplace pages?',
-    a: 'Yes, in the studio: listing images, A+ content, and store pages for Amazon, Tmall, JD, and Shopify.',
+    q: 'Will our products look accurate in generated scenes?',
+    a: 'Start from your own product photos where the engine supports it (up to four reference images at once), and check every image before it ships. For hero SKUs and complex packaging, our studio shoots the product or retouches the renders by hand.',
+  },
+  {
+    q: 'Do you build marketplace pages and run social commerce in China?',
+    a: 'Yes. Our Shanghai and Changsha teams build listing images, A+ content, and flagship store pages for Amazon, Tmall, JD, and Shopify, and run social commerce on RedNote, Douyin, WeChat, and Weibo.',
+  },
+  {
+    q: 'How do paid social campaigns work with your team?',
+    a: 'We plan the campaign, produce the image and video ad variants inside hubStudio, send them through Validation for your sign-off, and run audience targeting and A/B testing. Media spend is billed directly to your own ad accounts.',
   },
   {
     q: 'How do we pay?',
-    a: 'The app runs on a prepaid balance in real currency, topped up by card, Alipay, or WeChat Pay, with an invoice for every top-up. There are no seat fees. The studio is priced per asset, per project, or on retainer.',
+    a: 'The app runs on a prepaid balance in real currency, topped up by card, Alipay, or WeChat Pay, with an invoice for every top-up. There is no subscription, no seat fee, and your balance never expires between seasons. Our creative and social services are priced per asset, per project, or on retainer.',
   },
   {
-    q: 'Can we still do a real shoot?',
-    a: 'Yes. The studio decides asset by asset what to shoot and what to generate, and most campaigns mix both.',
+    q: 'Does the app connect to our PIM or DAM?',
+    a: 'No, the app has no connectors. Files live in its Assets Library in folders, with tags, versions, and a Campaign filter, and you download them in PNG, JPG, WebP, or MP4.',
   },
   {
-    q: 'Is there a contract or a minimum?',
-    a: 'Not for the app. There’s no subscription and no seat fees, and your balance doesn’t expire. Studio terms are set out in the written proposal.',
-  },
-  {
-    q: 'Does it connect to our PIM or DAM?',
-    a: 'No, the app has no connectors. Files live in its Assets Library, in folders, with tags, and with versions, and you download them in the format you need.',
-  },
-  {
-    q: 'Can the whole team work in the app?',
-    a: 'Yes. Invite people as Admins, Creators, or Viewers. They share one balance, and an admin can set a daily spending limit for each creator.',
+    q: 'Can regional and store teams work in the same workspace?',
+    a: 'Yes. Invite people as Admins, Creators, or Viewers at no seat cost. They share one balance, an admin can set a daily spending limit per creator, and Validation keeps every price or visual approval on one permanent thread.',
   },
 ];
 
@@ -151,8 +155,8 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
 ---
 
 <Layout
-  title="hubStudio for retailers: variants, seasons, marketplaces"
-  description="Retail teams make product variants and schedule posts in the hubStudio app, and get seasonal campaigns and marketplace pages from our studio."
+  title="hubStudio for retailers: catalog visuals & social commerce"
+  description="Retail teams make product visuals and run social feeds in the hubStudio app, and work with our team for seasonal campaigns, marketplaces, and paid ads."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -174,27 +178,31 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           </p>
           <h1 class="hero__title">
             <span class="line"><span class="line__i">The sale starts</span></span>
-            <span class="line"><span class="line__i">Friday. Make the</span></span>
-            <span class="line"><span class="line__i">pictures <span class="serif">today.</span></span></span>
+            <span class="line"><span class="line__i">Friday. Ship the visuals</span></span>
+            <span class="line"><span class="line__i">and the <span class="serif">posts.</span></span></span>
           </h1>
           <p class="hero__tag r" style="--d:.45s">
-            Variants in the app. Campaign sets from the <em>studio</em>.
+            Product assets and social feeds in the app. Seasonal campaigns and paid ads with our <em>team</em>.
           </p>
           <div class="hero__lead r" style="--d:.55s">
             <p>
-              Retail runs on volume and dates. Thousands of products need
-              pictures, each season wants new ones, and a promotion rarely
-              waits for a shoot to be booked.
+              Retail runs on two clocks at once. One produces creative assets:
+              packshots, lifestyle scenes, seasonal refreshes, and marketplace
+              listings across thousands of SKUs. The other feeds social
+              networks: daily Reels, Stories, TikToks, carousels, and paid ads
+              that bring shoppers to the store.
             </p>
             <p>
-              Your team makes the fast variants in the hubStudio app and
-              publishes them. Our studio makes the seasonal campaign and the
-              marketplace pages.
+              Your team makes product variants and schedules posts in the
+              hubStudio app. When a season turns or a promotion scales up, our
+              creative and social teams work with you inside the app to deliver
+              the campaign set, the marketplace pages, and the paid social
+              calendar.
             </p>
           </div>
           <div class="hero__cta r" style="--d:.65s">
             <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
-            <a class="ghost-link ghost-link--light" href={`${BRIEF_URL}?way=studio`}>
+            <a class="ghost-link ghost-link--light" href={`${BRIEF_URL}?way=studio-app`}>
               Send a brief
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d={arrow} fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
@@ -202,7 +210,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
             </a>
           </div>
           <p class="hero__meta r" style="--d:.72s">
-            Variants <span>/</span> Seasons <span>/</span> Marketplaces
+            Product assets <span>/</span> Social & paid ads <span>/</span> Marketplaces
           </p>
         </div>
       </div>
@@ -234,8 +242,9 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
             </h2>
           </div>
           <p class="band__note band__note--light r" style="--d:.1s">
-            Booking a shoot can take weeks. By the time the photographer is
-            free, the promotion it was for has often come and gone.
+            Booking a traditional shoot takes weeks, and social feeds burn
+            through creative in days. By the time a reshoot wraps, the
+            promotion has already moved on.
           </p>
         </header>
 
@@ -263,26 +272,30 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           <div>
             <p class="kicker r"><span class="kicker__tick"></span>Use the app</p>
             <h2 class="dh r" style="--d:.05s">
-              Variants, resizes, and<br />posts from one <span class="serif">app</span>.
+              Product assets and social<br />posts from one <span class="serif">app</span>.
             </h2>
           </div>
           <div class="band__prose">
             <p class="band__p r" style="--d:.1s">
-              In the Image studio, pick an engine and make 1 to 10 images a
-              run, up to 4K, with a transparent background on the engines that
-              offer one. Some engines take up to four of your own product
-              pictures as a starting point. In the Video studio, a product
-              picture can become the first frame of a short clip.
+              <strong>Pillar · Creative assets:</strong> In the Image studio,
+              pick an engine and generate 1 to 10 images a run up to 4K,
+              starting from up to four of your own product photos. In the Video
+              studio, turn a still packshot into the first frame of a short
+              clip. The free browser Image and Video editors crop to each
+              network’s safe zones, add price callouts or logos, and time
+              captions word by word.
             </p>
             <p class="band__p r" style="--d:.14s">
-              The Image editor crops to each network’s format and adds text,
-              arrows, or your logo. It costs nothing to use.
+              <strong>Pillar · Social networks:</strong> Group a promotion’s
+              visuals, clips, and promo sheets in a Campaign. Draft and
+              schedule posts across Instagram, Facebook, TikTok (Beta),
+              LinkedIn, X, and YouTube to up to 20 accounts at once. Re-purpose
+              one post for the other feeds, while the Social publishing watcher
+              agent flags empty schedules or failed posts.
             </p>
             <p class="band__p r" style="--d:.18s">
-              Posts go to Instagram, Facebook, LinkedIn, X, and TikTok (Beta),
-              now or on a schedule, to up to 20 accounts at once. A queue
-              retries automatically, and one post can be re-purposed for the
-              other networks. Every file lands in the Assets Library.
+              Every render and uploaded file lands in the Assets Library, with
+              folders, tags, and versions ready for the next sale.
             </p>
           </div>
         </header>
@@ -309,7 +322,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
       </div>
     </section>
 
-    <!-- ============ THE STUDIO ============ -->
+    <!-- ============ WORK WITH US IN THE APP ============ -->
     <section class="studio" id="studio">
       <div class="shell studio__grid">
         <figure class="studio__media crop r-clip">
@@ -322,21 +335,26 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
               loading="lazy"
             />
           </div>
-          <figcaption class="fig fig--light">The studio <span>/</span> Brief review</figcaption>
+          <figcaption class="fig fig--light">Our team <span>/</span> Brief review</figcaption>
         </figure>
         <div class="studio__body">
-          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Studio only</p>
+          <p class="kicker kicker--light r"><span class="kicker__tick"></span>Work with us in the app</p>
           <h2 class="dh r" style="--d:.05s">
-            Campaign sets and<br />marketplace pages, from the <span class="serif">studio</span>.
+            Seasonal campaigns, marketplaces,<br />and paid social with our <span class="serif">team</span>.
           </h2>
           <p class="studio__p r" style="--d:.1s">
-            For the season’s hero campaign or a new storefront, send a brief.
-            A senior art director leads it, and our team decides asset by
-            asset what to shoot and what to generate.
+            <strong>Creative assets:</strong> For a seasonal hero campaign, a
+            catalog refresh, or a new storefront, send us a brief. A senior art
+            director leads the production, mixing live shoots and brand-trained
+            AI models asset by asset, and builds listing images, A+ modules,
+            and store pages for Amazon, Tmall, JD, and Shopify.
           </p>
           <p class="studio__p r" style="--d:.14s">
-            We make listing images, A+ content, and store pages for Amazon,
-            Tmall, JD, and Shopify.
+            <strong>Social networks:</strong> Our social editors and media
+            buyers can run your retail channels inside hubStudio: weekly posts,
+            Reels, and TikToks, paid social and retargeting campaigns on your
+            ad accounts, and Chinese social commerce on RedNote, Douyin,
+            WeChat, and Weibo.
           </p>
           <ul class="plats r" style="--d:.18s">
             {
@@ -361,28 +379,27 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
       </div>
     </section>
 
-    <!-- ============ THREE WAYS TO WORK ============ -->
+    <!-- ============ TWO WAYS TO WORK ============ -->
     <WaysToWork
       tone="white"
       highlight="app"
       pre="Pick the way that fits the "
       accent="season"
       post="."
-      lead="Many retailers run the daily variants in the app and bring the studio in for the big seasonal set. Some have us make it inside the app, so the team can re-use every file."
+      lead="Retailers run daily product variants and social posts in the app, and bring our team into their workspace for seasonal campaigns, marketplace builds, and paid social."
     />
 
-    <!-- ============ WHO MAKES WHAT ============ -->
+    <!-- ============ FOUR PARTS OF RETAIL WORK ============ -->
     <section class="cover" id="lanes">
       <div class="shell">
         <header class="band">
-          <p class="kicker r"><span class="kicker__tick"></span>Who makes what</p>
+          <p class="kicker r"><span class="kicker__tick"></span>Across both pillars</p>
           <h2 class="dh r" style="--d:.05s">
-            Four kinds of retail work, and who usually <span class="serif">makes them</span>.
+            Four parts of retail work, across assets and <span class="serif">social</span>.
           </h2>
           <p class="band__note r" style="--d:.1s">
-            Planning next season? This is the part to skim. It’s a rough guide
-            from the work we see. Some teams do all four in the app. Others
-            hand every one of them to us.
+            Planning next season? Here is how retail teams split creative
+            assets and social networks between the app and our team.
           </p>
         </header>
 
@@ -436,22 +453,23 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
             Built around the<br />retail <span class="serif">calendar</span>.
           </h2>
           <p class="source__lead r" style="--d:.1s">
-            The app and the studio belong to one company, so your team and
-            ours can share a season’s files.
+            The app and our creative and social teams belong to one company, so
+            your catalog visuals, marketplace listings, and social feeds share
+            one library and one approval record.
           </p>
           <p class="source__p r" style="--d:.16s">
-            Your team sees the price before every run and pays only for what
-            it makes. Nothing is charged for a failed run, and the balance
-            doesn’t expire between seasons.
+            In the app, your team sees the price before every run and pays only
+            for what it makes. Nothing is charged for a failed run, and the
+            prepaid balance never expires between seasons.
           </p>
           <p class="source__p r" style="--d:.22s">
-            For studio work, a senior art director leads every brief and the
-            provenance of every asset is recorded. The studio was founded by
-            Cyril Drouin, former CEO at Publicis.
+            When our team works with you, a senior art director or social lead
+            runs the brief and the provenance of every asset is recorded.
+            hubStudio was founded by Cyril Drouin, former CEO at Publicis.
           </p>
           <ul class="creds r" style="--d:.28s">
             {
-              ['Marketplace pages', 'Senior art directors', 'Price shown before every run', 'Twenty service lines'].map((c) => (
+              ['Catalog & marketplace assets', 'Social & paid ads', 'Western & China platforms', 'Price shown before every run'].map((c) => (
                 <li class="cred">
                   <svg viewBox="0 0 14 14" aria-hidden="true">
                     <path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -473,8 +491,8 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
           <h2 class="dh r" style="--d:.05s">
             Before the<br />next <span class="serif">season</span>.
           </h2>
-          <p class="faq__sub r" style="--d:.1s">What retail teams ask us first.</p>
-          <p class="faq__updated r" style="--d:.12s">Updated September 2026</p>
+          <p class="faq__sub r" style="--d:.1s">What retail e-commerce and social teams ask us first.</p>
+          <p class="faq__updated r" style="--d:.12s">Updated October 2026</p>
           <div class="r" style="--d:.16s">
             <Button variant="primary" href={APP_SIGNUP}>Create your account</Button>
           </div>
@@ -506,11 +524,11 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
     <!-- ============ CLOSING ============ -->
     <DualCta
       lead="app"
-      briefQuery="way=studio"
+      briefQuery="way=studio-app"
       pre="Start this season in the "
       accent="app"
       post="."
-      text="Creating an account costs nothing, and you pay only for what you run. For the campaign set or a marketplace build, send us a brief and a producer replies within one business day."
+      text="Creating an account costs nothing, and you pay only for what you run. For a seasonal campaign set, marketplace pages, or social management, send us a brief and a producer replies within one business day."
     />
   </div>
 </Layout>
@@ -561,6 +579,7 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
   .band__note--light { color: rgba(240, 237, 233, 0.76); }
   .band__prose { display: grid; gap: 14px; }
   .band__p { font-size: var(--type-body); line-height: 1.66; color: var(--text-mute); }
+  .band__p strong { color: var(--text-ink); font-weight: 600; }
   .cbar { display: flex; height: 12px; }
   .cbar span { flex: 1; }
   .hero { display: grid; background: var(--ink); color: var(--text-on-dark); }
@@ -610,13 +629,14 @@ const arrow = 'M4 10h12M11 5l5 5-5 5';
   .shots__job { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-orange); }
   .appsec__more { margin-top: clamp(32px, 4vw, 48px); }
 
-  /* The studio: campaign sets and marketplace work, on ink. */
+  /* Working with our team: campaign sets, marketplaces, and social, on ink. */
   .studio { background: var(--ink); color: var(--text-on-dark); padding-block: clamp(80px, 10vw, 150px); }
   .studio__grid { display: grid; gap: 48px; align-items: center; }
   @media (min-width: 940px) { .studio__grid { grid-template-columns: 0.95fr 1.05fr; gap: 72px; } }
   .studio__media .crop__inner { aspect-ratio: 4 / 3; }
   .studio__body .dh { margin-top: 16px; }
   .studio__p { margin-top: 16px; font-size: var(--type-body); line-height: 1.66; color: rgba(240, 237, 233, 0.78); max-width: 58ch; }
+  .studio__p strong { color: #fff; font-weight: 600; }
   .plats { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 9px; list-style: none; padding: 0; }
   .plat { display: inline-flex; padding: 9px 16px; border-radius: var(--radius-pill); border: 1px solid rgba(240, 237, 233, 0.24); font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--text-on-dark); transition: border-color 0.2s ease, background-color 0.2s ease; }
   .plat:hover { border-color: var(--brand-orange); background: rgba(233, 78, 27, 0.16); }

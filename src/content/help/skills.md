@@ -5,20 +5,20 @@ description: "What a skill is, how to take one from the Catalog, edit it or writ
 excerpt: "Reusable instructions that Improve with AI follows every time it rewrites a prompt for an image or a video."
 section: "skills"
 order: 8
-updated: 2026-10-14
+updated: 2026-10-17
 appPaths: ["/skills", "/skills/organization", "/skills/catalog"]
 audience: "Everyone; team skills are for administrators"
 related: ["create-an-image", "create-a-video", "linkedin", "x", "your-team"]
 shots:
   - file: "/Images/help/skills-my-skills.webp"
     route: "/skills"
-    alt: "My skills: the Personal, Team and Catalog tabs, New skill, and the network format skills each with Duplicate, Switch off, Edit and Delete"
+    alt: "The Personal tab of Skills, beside the Team and Catalog tabs: New skill, and the network format skills, each with Duplicate, Switch off, Edit and Delete"
     captured: 2026-09-27
   - file: "/Images/help/skills-catalog.webp"
     route: "/skills/catalog"
     alt: "The Catalog with its search box, one chip per section, and the Social networks skills marked In my skills"
     captured: 2026-09-27
-sources: ["src/pages/skills/index.astro", "src/pages/skills/organization.astro", "src/pages/skills/catalog.astro", "src/scripts/skillsPanel.ts", "src/components/SkillsNav.astro", "src/lib/skill-catalog.ts", "src/lib/imagery-skills.ts", "src/lib/prompt-craft.ts", "src/lib/skills-db.ts", "src/lib/app.ts", "src/components/panels/SocialContentPanel.astro"]
+sources: ["src/pages/skills/index.astro", "src/pages/skills/organization.astro", "src/pages/skills/catalog.astro", "src/scripts/skillsPanel.ts", "src/components/SkillsNav.astro", "src/lib/skill-catalog.ts", "src/lib/imagery-skills.ts", "src/lib/prompt-craft.ts", "src/lib/skills-db.ts", "src/lib/app.ts", "src/components/panels/SocialContentPanel.astro", "public/apps/hubstudio/vocabulary.js"]
 ---
 
 A **skill** is a reusable set of instructions the AI follows: a method, a checklist, a house style, a list of rules. You write it once, say where it applies, and it rides along every time, so you never paste the same instructions twice.
@@ -35,15 +35,15 @@ Skills add words to each rewrite, so they cost a few tokens per call, billed wit
 
 ## The Skills pages
 
-**Skills** sits at the top of every page, beside **Agents** (on a phone, at the top of the menu). Its pages share three tabs.
+**Skills** sits at the top of every page, beside **Agents** (on a phone, at the top of the menu). It opens on the **Personal** tab. Skills has no entries in the left menu: you move between its pages with three tabs at the top, and the browser tab names the page you are on.
 
-| Page | Who sees it | What it holds |
-|---|---|---|
-| **My skills** | Everyone | Your own skills: the ones you added from the Catalog or from your team, and the ones you wrote. Only these can be edited. |
-| **Team skills** | Every member, through the **Team** tab on the Skills pages | The skills your administrators wrote for everyone in the team. |
-| **Catalog** | Everyone | Every standard skill hubStudio ships, open to all. |
+| Tab | Page name in the browser tab | Who sees it | What it holds |
+|---|---|---|---|
+| **Personal** | **Personal skills** | Everyone | Your own skills: the ones you added from the Catalog or from your team, and the ones you wrote. Only these can be edited. |
+| **Team** | **Team skills** | Every member; only administrators write them | The skills your administrators wrote for everyone in the team. |
+| **Catalog** | **Skill catalog** | Everyone | Every standard skill hubStudio ships, open to all. |
 
-![My skills: the Personal, Team and Catalog tabs, New skill, and the network format skills each with Duplicate, Switch off, Edit and Delete](/Images/help/skills-my-skills.webp)
+![The Personal tab of Skills, beside the Team and Catalog tabs: New skill, and the network format skills, each with Duplicate, Switch off, Edit and Delete](/Images/help/skills-my-skills.webp)
 
 ## The Catalog
 
@@ -59,10 +59,12 @@ The Catalog groups the standard skills in sections, with a search box and one ch
 
 The **Social networks** section holds the posting rules of each network (LinkedIn, X, Instagram, Facebook, TikTok, YouTube): length, hashtags, tone. These skills are already in your own list, and each network module picks its own format skill for every draft. See, for example, [LinkedIn](/help/linkedin#write-the-brief).
 
+The **Web publishing** section holds four editorial standards used by [Web](/help/web): **Newsroom standard (US English)** (the 18-pass editorial revision loop), **Native translation standard** (the 3-pass native journalist translation for non-English editions), **AI tells to remove** (words and patterns stripped during editing) and **Hero image standard** (composition and visual rules for article cover images).
+
 To take a skill:
 
 1. Click **View details** to read the whole skill before you take it: what it is for, where it applies and the instructions the AI follows.
-2. Click **Add to my skills**. Your own copy appears under **My skills**, and the card now reads **In my skills**.
+2. Click **Add to my skills**. Your own copy appears on the **Personal** tab, and the card now reads **In my skills**.
 
 The Catalog itself stays as shipped. You edit your copy.
 
@@ -70,7 +72,7 @@ The Catalog itself stays as shipped. You edit your copy.
 
 ## Edit or write your own
 
-On **My skills**, each skill has:
+On the **Personal** tab, each skill has:
 
 - **Switch off** (or **Switch on**): a skill switched off is kept but no longer used.
 - **Edit**: opens the form. Change the **Name**, **What it is for (shown to people, not to the AI)**, the **Instructions (what the AI follows)** and **Where it applies**, then click **Save**.
@@ -79,14 +81,14 @@ On **My skills**, each skill has:
 
 To write one from nothing, click **New skill**, fill in the same form and click **Create skill**. Instructions hold up to 8,000 characters. Write them the way you would brief a colleague: short rules or numbered steps work best.
 
-Under **Where it applies**, tick **Images and video** for a skill you want Improve with AI to follow, and **Social** for a skill you want the drafts of the network modules to follow. A skill with nothing ticked is stored but never used.
+Under **Where it applies**, tick **Images and video** for a skill you want Improve with AI to follow, **Social** for a skill you want the drafts of the network modules to follow, and **Web** for a skill you want the [Web](/help/web) article writer, editor and file studio to follow. A skill with nothing ticked is stored but never used.
 
 ## Team skills
 
 Team skills are written by the team's administrators for everyone. They apply to every member's rewrites, before each person's own skills.
 
-- **Administrators** open **Skills** > **Team skills** to write, edit, switch off and delete them, with the same form as above.
-- **Everyone else** opens the **Team** tab on the Skills pages to read them. Each one has **View details**, **Add to my skills** and **Duplicate**.
+- **Administrators** click **Skills**, then the **Team** tab, to write, edit, switch off and delete them, with the same form as above.
+- **Everyone else** opens the same **Team** tab to read the ones switched on. Each one has **View details**, **Add to my skills** and **Duplicate**.
 
 **Add to my skills** puts a copy with the same name among your own skills. Your copy replaces the team's version on your own rewrites, so you can adjust it for yourself. **Duplicate** makes a separate skill of yours that applies beside the original.
 

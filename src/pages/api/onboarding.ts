@@ -5,6 +5,9 @@
  * inbox via Resend, like /api/contact: same sender, same inbox, subject
  * tagged [Onboarding] with the company and the date asked for. Step one of
  * two: nothing is charged here, the visitor pays on /thank-you/onboarding.
+ * Right away, a confirmation email with the payment link in the language of
+ * the booking page is sent to the person who booked
+ * (src/lib/onboarding-confirmation.ts).
  *
  * Server-rendered on demand (Vercel function). JS submits with
  * `Accept: application/json` and reads the JSON reply; a plain form post (no
@@ -24,11 +27,21 @@ import {
   TEAM_STATUS,
   bookingBounds,
 } from '../../lib/onboarding';
+import {
+  onboardingConfirmation,
+  type SessionLanguageCode,
+} from '../../lib/onboarding-confirmation';
 
 export const prerender = false;
 
 const TO = 'cyril.drouin@outlook.com';
 const FROM = 'hubStudio Contact <onboarding@resend.dev>';
+/** The confirmation goes out from, and is answered to, the public contact
+ *  address (bearingbridge.com is a verified Resend domain). */
+const CONFIRMATION_FROM = 'hubStudio <hello@bearingbridge.com>';
+const CONFIRMATION_REPLY_TO = 'hello@bearingbridge.com';
+/** Copied on every confirmation, so the team sees what each customer received. */
+const CONFIRMATION_CC = 'hello@hubstudio.ai';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -86,15 +99,19 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const company = val('company');
   const website = val('website');
   const team = labelOf(TEAM_STATUS, val('team'));
-  const language = SESSION_LANGUAGES.find((o) => o.value === val('sessionLanguage'))?.name;
+  const sessionLangOption = SESSION_LANGUAGES.find((o) => o.value === val('sessionLanguage'));
+  const language = sessionLangOption?.name;
   const date = val('date');
   const timezone = val('timezone');
   const people = val('people');
 
   if (
-    !firstName || firstName.length > LIMITS.firstName ||
-    !lastName || lastName.length > LIMITS.lastName ||
-    !company || company.length > LIMITS.company
+    !firstName ||
+    firstName.length > LIMITS.firstName ||
+    !lastName ||
+    lastName.length > LIMITS.lastName ||
+    !company ||
+    company.length > LIMITS.company
   ) {
     return fail(422, 'Please fill in your name, work email, and company.');
   }
@@ -107,7 +124,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   if (!team) {
     return fail(422, 'Please tell us whether your team is already on hubStudio.');
   }
-  if (!language) {
+  if (!language || !sessionLangOption) {
     return fail(422, 'Please pick the language for the sessions.');
   }
   // Recomputed per request: the bounds in the browser come from the page.
@@ -156,8 +173,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap">${esc(people || blank)}</p>
     </div>`;
 
+  const resend = new Resend(apiKey);
   try {
-    const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: FROM,
       to: TO,
@@ -176,6 +193,29 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       502,
       'We could not send your booking. Email hello@bearingbridge.com and we will pick it up.',
     );
+  }
+
+  // The booking reached us, so the visitor's submission stands whatever happens
+  // here: a confirmation email that cannot be sent is logged, not reported.
+  try {
+    const confirmation = onboardingConfirmation(locale, {
+      firstName,
+      company,
+      date,
+      sessionLanguage: sessionLangOption.value as SessionLanguageCode,
+    });
+    const { error } = await resend.emails.send({
+      from: CONFIRMATION_FROM,
+      to: email,
+      cc: CONFIRMATION_CC,
+      replyTo: CONFIRMATION_REPLY_TO,
+      subject: confirmation.subject,
+      html: confirmation.html,
+      text: confirmation.text,
+    });
+    if (error) console.error('onboarding confirmation email not sent:', error);
+  } catch (err) {
+    console.error('onboarding confirmation email not sent:', err);
   }
 
   return ok();

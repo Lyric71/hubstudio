@@ -71,8 +71,8 @@ const pillars: Pillar[] = [
   },
   {
     key: 'publish',
-    name: 'Publish · Social networks',
-    summary: 'Draft posts, organize campaigns, and publish across your social accounts.',
+    name: 'Publish · Social & Web',
+    summary: 'Draft posts, organize campaigns, publish across your social accounts, and publish articles on your website via GitHub.',
     link: { label: 'How publishing works', href: '/app/publish' },
     modules: [
       { name: 'Campaigns', text: 'One launch under one name and brief', href: '/app/campaigns' },
@@ -82,6 +82,7 @@ const pillars: Pillar[] = [
       { name: 'TikTok', text: 'A script, then the clip (Beta)', href: '/app/publish#tiktok' },
       { name: 'X', text: 'Posts and threads', href: '/app/publish#x' },
       { name: 'YouTube', text: 'Ready for YouTube Studio', href: '/app/publish#youtube' },
+      { name: 'Web', text: 'Website pages via GitHub pull requests', href: '/app/web' },
     ],
   },
   {
@@ -128,7 +129,7 @@ const aiRails: { key: PillarKey; text: string }[] = [
   },
   {
     key: 'publish',
-    text: 'Each network drafts to its own format skill, and the Social publishing watcher reads every network about once a day.',
+    text: 'Each network drafts to its own format skill, Web follows the four Web publishing skills, and the Social publishing watcher and Web editor agents run on a schedule.',
   },
   {
     key: 'library',
@@ -456,9 +457,33 @@ const modules: Module[] = [
         id: 'connections',
         hook: 'Posting in your name shouldn’t mean handing over your password.',
         name: 'My Connections',
-        body: 'You connect your own accounts by signing in on the network itself, so hubStudio never sees the password. Nobody else on the team can post with your account, admins included.',
+        body: 'You connect your own social accounts and GitHub repositories by signing in on the service itself, so hubStudio never sees the password. Nobody else on the team can post with your account, admins included.',
         shot: appShots.connections,
         path: '/my-connections',
+      },
+    ],
+  },
+  {
+    id: 'web',
+    name: 'Web',
+    lede: 'Connect the GitHub repository of your website, fill a queue of briefs, and let the Web editor research, draft, run an 18-pass edit, recheck sources, illustrate, translate and open a pull request.',
+    link: { label: 'How Web works', href: '/app/web' },
+    features: [
+      {
+        id: 'web-sites',
+        hook: 'Your blog and landing pages live in GitHub, not in a CMS.',
+        name: 'Websites on GitHub',
+        body: 'Each site is the GitHub repository it is built from. Connect your GitHub account, pick the repository, and hubStudio reads its rule files, folders, schedule and target languages.',
+        shot: appShots.web,
+        path: '/web',
+      },
+      {
+        id: 'web-queue',
+        hook: 'From a brief to a merged pull request in twelve steps.',
+        name: 'Queue, 18-pass edit & pull request',
+        body: 'Write a brief, import editorial/schedule.csv, or draft a multi-article AI Editorial Plan. Each brief runs from primary-source research, drafting, an 18-pass edit and source recheck to a hero image, 3-pass native translations and a pull request on GitHub.',
+        shot: appShots.webPage,
+        path: '/web',
       },
     ],
   },
@@ -609,7 +634,7 @@ const modules: Module[] = [
    `modules`, so the script's tab list and the panels stay index for index. */
 const tourGroups: { label: string; pillar?: PillarKey; ids: string[] }[] = [
   { label: 'Create', pillar: 'create', ids: ['create', 'engines', 'image-tools', 'video-tools'] },
-  { label: 'Publish', pillar: 'publish', ids: ['campaigns', 'networks', 'publish'] },
+  { label: 'Publish', pillar: 'publish', ids: ['campaigns', 'networks', 'publish', 'web'] },
   { label: 'Library', pillar: 'library', ids: ['library', 'review'] },
   { label: 'Manage', ids: ['account'] },
 ];
@@ -727,11 +752,10 @@ const socialServices = [
       { title: 'Campaigns & Validation', text: 'Every draft approved on one thread before it goes live.' },
     ],
     links: [
-      { name: 'Social media', href: '/services/design/social-media' },
-      { name: 'Short video', href: '/services/design/short-video' },
-      { name: 'Email & newsletters', href: '/services/design/email-design' },
-      { name: 'Campaigns in the app', href: '/app/campaigns' },
-      { name: 'Social publishing', href: '/app/publish' },
+      { name: 'Page & channel management', href: '/services/social/page-channel-management' },
+      { name: 'Weekly posts, carousels & video', href: '/services/social/weekly-posts-carousels-video' },
+      { name: 'Newsletters & editorial series', href: '/services/social/newsletters-editorial-series' },
+      { name: 'Live events & webinars', href: '/services/social/live-events-webinars' },
     ],
     shots: [
       { label: 'LinkedIn', shot: appShots.linkedin, path: '/linkedin' },
@@ -755,10 +779,10 @@ const socialServices = [
       { title: 'Direct ad spend', text: 'Media billed to your own ad accounts, with clear reporting.' },
     ],
     links: [
-      { name: 'Ad creative', href: '/services/design/ad-creative' },
-      { name: 'Marketing strategy', href: '/services/design/marketing-strategy' },
-      { name: 'Video production', href: '/services/design/video-production' },
-      { name: 'Client validation', href: '/app/review' },
+      { name: 'Campaign setup & funnels', href: '/services/social/campaign-setup-funnels' },
+      { name: 'Audience targeting & retargeting', href: '/services/social/audience-targeting-retargeting' },
+      { name: 'Ad creative & variant testing', href: '/services/social/ad-creative-variant-testing' },
+      { name: 'Lead generation & reporting', href: '/services/social/lead-generation-reporting' },
     ],
     shots: [
       { label: 'Campaign hub', shot: appShots.campaignPage, path: '/campaigns' },
@@ -780,10 +804,10 @@ const socialServices = [
       { title: 'Audits & training', text: 'Channel reviews, custom Team skills, and live workshops.' },
     ],
     links: [
-      { name: 'Consulting', href: '/solutions/consulting' },
-      { name: 'Team training', href: '/solutions/training' },
-      { name: 'Creative strategy', href: '/services/design/creative-strategy' },
-      { name: 'Work with us in the app', href: '/studio/with-the-app' },
+      { name: 'Employee advocacy programs', href: '/services/social/employee-advocacy-programs' },
+      { name: 'Executive personal branding', href: '/services/social/executive-personal-branding' },
+      { name: 'Workshops & team training', href: '/services/social/workshops-team-training' },
+      { name: 'LinkedIn, Meta, TikTok, X & China', href: '/services/social/linkedin-meta-tiktok-x-china' },
     ],
     shots: [
       { label: 'Network format Skills', shot: appShots.skillsCatalog, path: '/skills' },

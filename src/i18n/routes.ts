@@ -142,13 +142,16 @@ const HELP: Record<string, string> = {
   history: 'historique',
   instagram: 'instagram',
   linkedin: 'linkedin',
+  log: 'journal',
   partners: 'partenaires',
+  'pdf-tools': 'outils-pdf',
   scratchpad: 'bloc-notes',
   'shorts-autopilot': 'pilote-automatique-de-shorts',
   skills: 'competences',
   tiktok: 'tiktok',
   troubleshooting: 'depannage',
   validation: 'validation',
+  web: 'web',
   x: 'x',
   'your-team': 'votre-equipe',
   youtube: 'youtube',
@@ -177,6 +180,21 @@ const DESIGN: Record<string, string> = {
   'website-design': 'design-de-sites-web',
 };
 
+const SOCIAL: Record<string, string> = {
+  'ad-creative-variant-testing': 'creations-publicitaires-et-tests-de-variantes',
+  'audience-targeting-retargeting': 'ciblage-d-audience-et-reciblage',
+  'campaign-setup-funnels': 'configuration-de-campagnes-et-tunnels',
+  'employee-advocacy-programs': 'programmes-d-ambassadeurs-collaborateurs',
+  'executive-personal-branding': 'personal-branding-des-dirigeants',
+  'lead-generation-reporting': 'generation-de-leads-et-reporting',
+  'linkedin-meta-tiktok-x-china': 'linkedin-meta-tiktok-x-et-chine',
+  'live-events-webinars': 'evenements-en-direct-et-webinaires',
+  'newsletters-editorial-series': 'newsletters-et-series-editoriales',
+  'page-channel-management': 'gestion-de-pages-et-de-chaines',
+  'weekly-posts-carousels-video': 'publications-hebdomadaires-carrousels-et-videos',
+  'workshops-team-training': 'ateliers-et-formation-des-equipes',
+};
+
 const PLATFORMS: Record<string, string> = {
   amazon: 'amazon',
   'brand-website': 'site-de-marque',
@@ -197,13 +215,13 @@ const PLATFORMS: Record<string, string> = {
 const WORK = [
   'iflytek-anypin', 'noyz-mylk-de-parfum', 'mexicash', 'elizabeth-gage', 'hisense',
   'diy-european-retailer', 'camper', 'age20', 'global-fashion-brand', 'shiseido-rq-pyology',
-  '1834-gin', 'linfuseur', 'premium-suv',
+  '1834-gin', 'linfuseur', 'premium-suv', 'viessmann', 'jaguar-land-rover', 'jac-motors', 'iguzzini', 'camper-social', 'mission-foods', 'marriott', 'master-martini', 'blue-insurance', 'age20s', 'langnese',
 ];
 const TEAM = [
-  'cyril-drouin', 'echo-peng', 'liyan-ye', 'marcus-sullivan', 'lea-moreau', 'james-whitmore',
-  'diego-martinez', 'nina-hoffmann', 'erik-lindstrom', 'wei-lin-tan', 'sofia-andersen',
-  'jason-liu', 'aisha-rahman', 'sophie-brennan', 'maya-patel', 'nara-suwan', 'olivier-dubois',
-  'isabella-rossi', 'finn-korhonen',
+  'cyril-drouin', 'echo-peng', 'liyan-ye', 'marcus', 'lea', 'james',
+  'diego', 'nina', 'erik', 'wei-lin', 'sofia',
+  'jason', 'aisha', 'sophie', 'maya', 'nara', 'olivier',
+  'isabella', 'finn',
 ];
 
 export const FR_PATHS: Record<string, string> = {
@@ -220,6 +238,7 @@ export const FR_PATHS: Record<string, string> = {
   '/app/publish': '/fr/application/publier',
   '/app/review': '/fr/application/validation',
   '/app/video-tools': '/fr/application/outils-video',
+  '/app/web': '/fr/application/web',
   '/app/whats-new': '/fr/application/nouveautes',
   '/contact': '/fr/contact',
   '/cookies': '/fr/cookies',
@@ -251,6 +270,9 @@ export const FR_PATHS: Record<string, string> = {
   ),
   '/services/onboarding': '/fr/services/prise-en-main',
   '/services/onboarding/book': '/fr/services/prise-en-main/reserver',
+  ...Object.fromEntries(
+    Object.entries(SOCIAL).map(([en, fr]) => [`/services/social/${en}`, `/fr/services/reseaux-sociaux/${fr}`]),
+  ),
   '/solutions': '/fr/solutions',
   '/solutions/agencies': '/fr/solutions/agences',
   '/solutions/ai-production/content': '/fr/solutions/production-ia/contenu',

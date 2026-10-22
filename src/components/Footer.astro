@@ -1,34 +1,207 @@
-﻿---
+---
 /**
- * Footer: §5. Top-level menu entries (no mega-menu links, the AI model
- * benchmarks page aside) as a static link list on --bg-ink. Small logo,
- * location line, copyright, legal links.
+ * Footer: §5. Structured footer on --bg-ink with a top conversion bar
+ * carrying the three header CTAs (Sign in, Create account, Send a brief)
+ * plus booking an onboarding session, followed by a four-column site map
+ * mirroring the header (App, Services, Solutions, Resources & Company),
+ * the BearingBridge AI parent lockup, and the legal strip.
  */
 import Logo from './Logo.astro';
 import LangSwitch from './LangSwitch.astro';
-import { APP_SIGNUP, APP_SIGNIN } from '../lib/links';
+import { APP_SIGNUP, APP_SIGNIN, BRIEF_URL } from '../lib/links';
+import { ONBOARDING_BOOK } from '../lib/onboarding';
 import { RESOURCES_FEED } from '../lib/resources-feed';
 
 const year = new Date().getFullYear();
 
-/* The two offers first, then the rest of the header, then the company.
-   English addresses: on a French or Chinese page the middleware points them
-   at the translated pages (src/i18n). */
-const navLinks: { label: string; href: string }[] = [
-  { label: 'The app', href: '/app' },
-  { label: 'The studio', href: '/studio' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Work', href: '/work' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Resources', href: '/resources' },
-  { label: 'AI model benchmarks', href: '/resources/insights/ai-model-benchmarks' },
-  { label: 'About', href: '/about' },
-  { label: 'Partners', href: '/partners' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Help center', href: '/help' },
-  { label: 'What’s new', href: '/app/whats-new' },
-  /* The feed of the page's language: links to files are never localized. */
-  { label: 'RSS feed', href: RESOURCES_FEED[Astro.locals.locale ?? 'en'] },
+type NavLink = { label: string; href: string };
+type SubGroup = {
+  heading: string;
+  pillar?: 'create' | 'publish' | 'library' | 'ai';
+  links: NavLink[];
+};
+type FooterCol = {
+  heading: string;
+  href?: string;
+  topLinks?: NavLink[];
+  groups: SubGroup[];
+};
+
+const columns: FooterCol[] = [
+  {
+    heading: 'App',
+    href: '/app',
+    topLinks: [
+      { label: 'The app', href: '/app' },
+      { label: 'What’s new', href: '/app/whats-new' },
+      { label: 'Help center', href: '/help' },
+    ],
+    groups: [
+      {
+        heading: 'Create · Assets',
+        pillar: 'create',
+        links: [
+          { label: 'Explore', href: '/app/engines' },
+          { label: 'Image', href: '/app/create#image-studio' },
+          { label: 'Video', href: '/app/create#video-studio' },
+          { label: 'Image editor', href: '/app/image-tools#image-editor' },
+          { label: 'Image anonymizer', href: '/app/image-tools#image-anonymizer' },
+          { label: 'Video editor', href: '/app/video-tools#video-editor' },
+          { label: 'Shorts autopilot', href: '/app/video-tools#shorts-autopilot' },
+        ],
+      },
+      {
+        heading: 'Publish · Social',
+        pillar: 'publish',
+        links: [
+          { label: 'Campaigns', href: '/app/campaigns' },
+          { label: 'LinkedIn', href: '/app/publish#linkedin' },
+          { label: 'Instagram', href: '/app/publish#instagram' },
+          { label: 'Facebook', href: '/app/publish#facebook' },
+          { label: 'TikTok', href: '/app/publish#tiktok' },
+          { label: 'X', href: '/app/publish#x' },
+          { label: 'YouTube', href: '/app/publish#youtube' },
+        ],
+      },
+      {
+        heading: 'Library & Review',
+        pillar: 'library',
+        links: [
+          { label: 'Assets Library', href: '/app/library#assets-library' },
+          { label: 'History', href: '/app/create#history' },
+          { label: 'Validation', href: '/app/review#validation' },
+        ],
+      },
+      {
+        heading: 'AI layer',
+        pillar: 'ai',
+        links: [
+          { label: 'Agents', href: '/help/agents' },
+          { label: 'Skills', href: '/app/create#skills' },
+        ],
+      },
+    ],
+  },
+  {
+    heading: 'Services',
+    href: '/studio',
+    topLinks: [
+      { label: 'The studio', href: '/studio' },
+      { label: 'Working together in the app', href: '/studio/with-the-app' },
+      { label: 'How we use AI', href: '/studio/ai-excellence' },
+      { label: 'Team onboarding', href: '/services/onboarding' },
+    ],
+    groups: [
+      {
+        heading: 'Pillar · Creative assets',
+        pillar: 'create',
+        links: [
+          { label: 'Social Media', href: '/services/design/social-media' },
+          { label: 'Ad Creative', href: '/services/design/ad-creative' },
+          { label: 'Short Video', href: '/services/design/short-video' },
+          { label: 'Video Production', href: '/services/design/video-production' },
+          { label: 'Motion Design', href: '/services/design/motion-design' },
+          { label: 'eCommerce', href: '/services/design/ecommerce' },
+          { label: 'Website Design', href: '/services/design/website-design' },
+          { label: 'Brand Identity', href: '/services/design/brand-identity' },
+          { label: 'Presentation Design', href: '/services/design/presentation-design' },
+          { label: 'Pitch Deck', href: '/services/design/pitch-deck' },
+        ],
+      },
+      {
+        heading: 'Pillar · Social networks',
+        pillar: 'publish',
+        links: [
+          { label: 'Page & channel management', href: '/services/social/page-channel-management' },
+          { label: 'Weekly posts, carousels & video', href: '/services/social/weekly-posts-carousels-video' },
+          { label: 'Campaign setup & funnels', href: '/services/social/campaign-setup-funnels' },
+          { label: 'Ad creative & variant testing', href: '/services/social/ad-creative-variant-testing' },
+          { label: 'Executive personal branding', href: '/services/social/executive-personal-branding' },
+          { label: 'LinkedIn, Meta, TikTok, X & China', href: '/services/social/linkedin-meta-tiktok-x-china' },
+        ],
+      },
+    ],
+  },
+  {
+    heading: 'Solutions',
+    href: '/solutions',
+    topLinks: [{ label: 'Solutions', href: '/solutions' }],
+    groups: [
+      {
+        heading: 'Who it is for',
+        links: [
+          { label: 'Brands', href: '/solutions/brands' },
+          { label: 'Agencies', href: '/solutions/agencies' },
+          { label: 'Retailers', href: '/solutions/retailers' },
+          { label: 'Manufacturers', href: '/solutions/manufacturers' },
+        ],
+      },
+      {
+        heading: 'Consulting',
+        links: [
+          { label: 'Consulting', href: '/solutions/consulting' },
+          { label: 'Training', href: '/solutions/training' },
+          { label: 'Onboarding', href: '/services/onboarding' },
+        ],
+      },
+      {
+        heading: 'AI Production',
+        links: [
+          { label: 'Image', href: '/solutions/ai-production/image' },
+          { label: 'Video', href: '/solutions/ai-production/video' },
+          { label: 'Content', href: '/solutions/ai-production/content' },
+        ],
+      },
+      {
+        heading: 'Platforms',
+        links: [
+          { label: 'Meta', href: '/solutions/platforms/meta' },
+          { label: 'TikTok', href: '/solutions/platforms/tiktok' },
+          { label: 'LinkedIn', href: '/solutions/platforms/linkedin' },
+          { label: 'WeChat', href: '/solutions/platforms/wechat' },
+          { label: 'RedNote', href: '/solutions/platforms/rednote' },
+          { label: 'Douyin', href: '/solutions/platforms/douyin' },
+          { label: 'Weibo', href: '/solutions/platforms/weibo' },
+          { label: 'Amazon', href: '/solutions/platforms/amazon' },
+          { label: 'Tmall', href: '/solutions/platforms/tmall' },
+          { label: 'JD', href: '/solutions/platforms/jd' },
+          { label: 'Shopify', href: '/solutions/platforms/shopify' },
+        ],
+      },
+    ],
+  },
+  {
+    heading: 'Resources',
+    href: '/resources',
+    groups: [
+      {
+        heading: 'Learn',
+        links: [
+          { label: 'Resources', href: '/resources' },
+          { label: 'Insights', href: '/resources/insights' },
+          { label: 'AI model benchmarks', href: '/resources/insights/ai-model-benchmarks' },
+          { label: 'How-to guides', href: '/resources/how-to' },
+          { label: 'Feature videos', href: '/resources/videos' },
+          { label: 'Glossary', href: '/resources/glossary' },
+          { label: 'Copyright & AI', href: '/resources/copyright-and-ai' },
+          { label: 'Help center', href: '/help' },
+          /* The feed of the page's language: links to files are never localized. */
+          { label: 'RSS feed', href: RESOURCES_FEED[Astro.locals.locale ?? 'en'] },
+        ],
+      },
+      {
+        heading: 'About hubStudio',
+        links: [
+          { label: 'Work', href: '/work' },
+          { label: 'Pricing', href: '/pricing' },
+          { label: 'About', href: '/about' },
+          { label: 'Creative talents', href: '/about/team' },
+          { label: 'Partners', href: '/partners' },
+          { label: 'Contact', href: '/contact' },
+        ],
+      },
+    ],
+  },
 ];
 
 /* Parent group: the BearingBridge AI lockup, rendered as on bearingbridge.com. */
@@ -39,18 +212,96 @@ const parent = {
 };
 ---
 
-<footer class="site-footer">
-  <div class="container site-footer__inner">
+<footer class="site-footer grain">
+  <!-- Top conversion band: brand lockup + 3 header CTAs + Book an onboarding session -->
+  <div class="container site-footer__top">
     <div class="site-footer__brand">
-      <a href="/" aria-label="hubStudio home"><Logo tone="dark" /></a>
+      <a class="site-footer__logo" href="/" aria-label="hubStudio home">
+        <Logo tone="dark" />
+      </a>
       <p class="site-footer__line">
         An AI production app, and the studio that runs on it.
       </p>
-      <p class="site-footer__app">
-        <a href={APP_SIGNUP} target="_blank" rel="noopener">Create your account</a>
-        <span aria-hidden="true">/</span>
-        <a href={APP_SIGNIN} target="_blank" rel="noopener">Sign in</a>
+    </div>
+
+    <div class="site-footer__actions">
+      <div class="site-footer__btns">
+        <a class="btn btn--primary site-footer__btn-primary" href={APP_SIGNUP} target="_blank" rel="noopener">
+          Create account
+        </a>
+        <a class="btn btn--on-dark" href={BRIEF_URL}>
+          Send a brief
+        </a>
+        <a class="btn btn--on-dark" href={ONBOARDING_BOOK.href}>
+          Book an onboarding session
+        </a>
+      </div>
+      <p class="site-footer__signin">
+        Already on hubStudio? <a href={APP_SIGNIN} target="_blank" rel="noopener">Sign in</a>
       </p>
+    </div>
+  </div>
+
+  <!-- Structured 4-column navigation -->
+  <nav class="container site-footer__nav" aria-label="Footer">
+    <div class="site-footer__cols">
+      {
+        columns.map((col) => (
+          <div class="site-footer__col">
+            <p class="site-footer__col-head">
+              {col.href ? <a href={col.href}>{col.heading}</a> : col.heading}
+            </p>
+
+            {col.topLinks && (
+              <ul class="site-footer__list site-footer__list--top">
+                {col.topLinks.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            <div class="site-footer__groups">
+              {col.groups.map((group) => (
+                <div class:list={['site-footer__group', group.pillar && `ft-pillar--${group.pillar}`]}>
+                  <p class="site-footer__subhead">{group.heading}</p>
+                  <ul class="site-footer__list">
+                    {group.links.map((link) => (
+                      <li>
+                        <a href={link.href}>{link.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </nav>
+
+  <!-- Parent network & social -->
+  <div class="container site-footer__network">
+    <div class="site-footer__parent-wrap">
+      <p class="site-footer__heading">Part of</p>
+      <a
+        class="footer-parent"
+        href={parent.href}
+        target="_blank"
+        rel="noopener"
+        aria-label={parent.name}
+      >
+        <span class="footer-parent__bar" aria-hidden="true"></span>
+        <span class="footer-parent__word"
+          >bearingbridge<span class="footer-parent__ai">ai</span></span
+        >
+      </a>
+      <p class="footer-parent__desc">{parent.desc}</p>
+    </div>
+
+    <div class="site-footer__meta">
       <p class="site-footer__loc">Working worldwide</p>
       <p class="site-footer__social">
         <a
@@ -69,38 +320,9 @@ const parent = {
         </a>
       </p>
     </div>
-
-    <nav class="site-footer__nav" aria-label="Footer">
-      <ul>
-        {
-          navLinks.map((link) => (
-            <li>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
   </div>
 
-  <div class="container site-footer__network">
-    <p class="site-footer__heading">Part of</p>
-    <a
-      class="footer-parent"
-      href={parent.href}
-      target="_blank"
-      rel="noopener"
-      aria-label={parent.name}
-    >
-      <span class="footer-parent__bar" aria-hidden="true"></span>
-      <span class="footer-parent__word"
-        >bearingbridge<span class="footer-parent__ai">ai</span></span
-      >
-    </a>
-    <p class="footer-parent__desc">{parent.desc}</p>
-  </div>
-
-
+  <!-- Legal & language strip -->
   <div class="container site-footer__bottom">
     <p>&copy; <span data-no-i18n>{year}</span> hubStudio. All rights reserved.</p>
     <LangSwitch variant="row" class="ls-row--quiet" />
@@ -117,90 +339,219 @@ const parent = {
 
 <style>
   .site-footer {
+    position: relative;
+    overflow: hidden;
     background: var(--bg-ink);
     color: var(--text-on-dark);
   }
-  .site-footer__inner {
-    display: grid;
-    gap: 48px;
-    padding-block: 80px 56px;
+  /* Subtle warm radial glow at the top right to give the ink footer depth */
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    top: -180px;
+    right: -120px;
+    width: 640px;
+    height: 420px;
+    background: radial-gradient(closest-side, rgba(233, 78, 27, 0.16), transparent);
+    filter: blur(28px);
+    pointer-events: none;
+  }
+  .site-footer > * {
+    position: relative;
+  }
+
+  /* ---- Top conversion band -------------------------------------- */
+  .site-footer__top {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: clamp(64px, 8vw, 96px) clamp(44px, 5vw, 64px);
+    border-bottom: 1px solid rgba(240, 237, 233, 0.12);
   }
   @media (min-width: 1024px) {
-    .site-footer__inner {
-      grid-template-columns: 1.4fr 3fr;
-      gap: 64px;
+    .site-footer__top {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 48px;
     }
   }
-  .site-footer__line {
-    margin-top: 20px;
-    max-width: 30ch;
-    font-size: var(--type-small);
-    line-height: 1.55;
-    color: rgba(240, 237, 233, 0.72);
-  }
-  .site-footer__app {
-    margin-top: 18px;
+  .site-footer__brand {
     display: flex;
-    gap: 10px;
-    font-size: var(--type-small);
-    font-weight: 600;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
-  .site-footer__app a {
-    color: var(--brand-orange);
-  }
-  .site-footer__app a:hover {
-    color: #fff;
-  }
-  .site-footer__app span {
-    color: rgba(240, 237, 233, 0.3);
-  }
-  .site-footer__loc {
-    margin-top: 14px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: rgba(240, 237, 233, 0.5);
-  }
-  /* Social row: one quiet icon per account, under the location line. */
-  .site-footer__social {
-    margin-top: 18px;
-    display: flex;
-    gap: 10px;
-  }
-  .footer-social {
+  .site-footer__logo {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgba(240, 237, 233, 0.18);
-    border-radius: 999px;
-    color: rgba(240, 237, 233, 0.82);
-    transition:
-      color 120ms ease-out,
-      border-color 120ms ease-out;
   }
-  .footer-social:hover,
-  .footer-social:focus-visible {
-    color: var(--brand-orange);
-    border-color: var(--brand-orange);
+  .site-footer__line {
+    max-width: 36ch;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: rgba(240, 237, 233, 0.78);
   }
-  .site-footer__nav {
+  .site-footer__actions {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
   }
-  .site-footer__nav ul {
+  @media (min-width: 1024px) {
+    .site-footer__actions {
+      align-items: flex-end;
+    }
+  }
+  .site-footer__btns {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px 28px;
+    gap: 12px;
   }
-  .site-footer__nav a {
+  .site-footer__btn-primary {
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-orange) 18%, transparent);
+    transition:
+      transform 120ms ease-out,
+      background-color 120ms ease-out,
+      box-shadow 180ms ease;
+  }
+  .site-footer__btn-primary:hover {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--brand-orange) 26%, transparent);
+  }
+  .site-footer__btns .btn--on-dark:hover {
+    border-color: var(--text-on-dark);
+    background: rgba(240, 237, 233, 0.06);
+  }
+  .site-footer__signin {
     font-size: var(--type-small);
-    color: rgba(240, 237, 233, 0.82);
+    color: rgba(240, 237, 233, 0.62);
+  }
+  .site-footer__signin a {
+    color: var(--text-on-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
     transition: color 120ms ease-out;
   }
-  .site-footer__nav a:hover {
+  .site-footer__signin a:hover {
     color: var(--brand-orange);
+  }
+
+  /* ---- 4-column site map ---------------------------------------- */
+  .site-footer__nav {
+    padding-block: clamp(48px, 6vw, 72px);
+    border-bottom: 1px solid rgba(240, 237, 233, 0.12);
+  }
+  .site-footer__cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 44px 32px;
+  }
+  @media (min-width: 640px) {
+    .site-footer__cols {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .site-footer__cols {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 40px;
+    }
+  }
+  .site-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .site-footer__col-head {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(240, 237, 233, 0.14);
+  }
+  .site-footer__col-head a {
+    transition: color 120ms ease-out;
+  }
+  .site-footer__col-head a:hover {
+    color: var(--brand-orange);
+  }
+  .site-footer__groups {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .site-footer__group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ft-pillar--create {
+    --ft-pillar: var(--pillar-create);
+  }
+  .ft-pillar--publish {
+    --ft-pillar: var(--pillar-publish);
+  }
+  .ft-pillar--library {
+    --ft-pillar: var(--pillar-library);
+  }
+  .site-footer__subhead {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.52);
+  }
+  .site-footer__group[class*='ft-pillar--'] .site-footer__subhead::before {
+    content: '';
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ft-pillar, var(--brand-orange));
+  }
+  .ft-pillar--ai .site-footer__subhead::before {
+    background: conic-gradient(
+      var(--pillar-create) 0 33%,
+      var(--pillar-publish) 0 66%,
+      var(--pillar-library) 0
+    );
+  }
+  .site-footer__list {
+    display: grid;
+    gap: 8px;
+  }
+  .site-footer__list--top {
+    padding-bottom: 4px;
+  }
+  .site-footer__list a {
+    display: inline-block;
+    font-size: var(--type-small);
+    line-height: 1.45;
+    color: rgba(240, 237, 233, 0.78);
+    transition: color 120ms ease-out;
+  }
+  .site-footer__list a:hover {
+    color: var(--ft-pillar, var(--brand-orange));
+  }
+
+  /* ---- Part of: BearingBridge AI lockup + location/social ------- */
+  .site-footer__network {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    justify-content: space-between;
+    padding-block: 44px;
+  }
+  @media (min-width: 768px) {
+    .site-footer__network {
+      flex-direction: row;
+      align-items: flex-end;
+    }
   }
   .site-footer__heading {
     font-family: var(--font-mono);
@@ -209,11 +560,7 @@ const parent = {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(240, 237, 233, 0.5);
-    margin-bottom: 16px;
-  }
-  /* ---- Part of: BearingBridge AI lockup -------------------------- */
-  .site-footer__network {
-    padding-bottom: 64px;
+    margin-bottom: 14px;
   }
   .footer-parent {
     display: inline-flex;
@@ -241,16 +588,52 @@ const parent = {
     color: #1bcde8;
   }
   .footer-parent__desc {
-    margin-top: 14px;
-    max-width: 42ch;
-    font-size: 12px;
-    line-height: 1.45;
-    color: rgba(240, 237, 233, 0.55);
+    margin-top: 12px;
+    max-width: 44ch;
+    font-size: var(--type-body);
+    line-height: 1.58;
+    color: rgba(240, 237, 233, 0.65);
+  }
+  .site-footer__meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .site-footer__loc {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 233, 0.52);
+  }
+  .site-footer__social {
+    display: flex;
+    gap: 10px;
+  }
+  .footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(240, 237, 233, 0.2);
+    border-radius: var(--radius-pill);
+    color: rgba(240, 237, 233, 0.84);
+    transition:
+      color 120ms ease-out,
+      border-color 120ms ease-out;
+  }
+  .footer-social:hover,
+  .footer-social:focus-visible {
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
   }
 
+  /* ---- Bottom legal bar ----------------------------------------- */
   .site-footer__bottom {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 16px;
     justify-content: space-between;
     padding-block: 24px 32px;
@@ -260,6 +643,7 @@ const parent = {
   }
   .site-footer__legal {
     display: flex;
+    flex-wrap: wrap;
     gap: 24px;
   }
   .site-footer__legal a:hover {
