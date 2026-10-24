@@ -17,6 +17,7 @@ const ARTICLES: Record<string, string> = {
   'agentic-ai-creative-data': 'ia-agentique-et-donnees-creatives',
   'ai-avatars-brand-content': 'avatars-ia-et-contenu-de-marque',
   'ai-brand-ambassadors-what-you-sign': 'ambassadeurs-ia-ce-que-vous-signez',
+  'ai-content-beauty-skincare': 'contenu-ia-pour-les-marques-de-beaute-et-de-soins',
   'ai-content-production-beyond-the-prompt': 'production-de-contenu-ia-au-dela-du-prompt',
   'ai-content-quality-argument-over': 'qualite-du-contenu-ia-le-debat-est-clos',
   'ai-model-benchmarks': 'comparatif-des-modeles-d-ia',

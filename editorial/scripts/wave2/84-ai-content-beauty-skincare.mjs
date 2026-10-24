@@ -19,10 +19,10 @@ export default {
     "cosmetics advertising claims rules AI images",
   ],
   verdict:
-    "Tool vendors, translation firms and market-data houses rank with adoption talk and volume promises; none says where generated imagery is risky in beauty (the on-skin result, the before and after, the retouched complexion) or how the US, the EU, the UK and China each treat it.",
+    "Research checked October 24, 2026: regulator guidance already addresses visual claims and production techniques. Build an asset-by-asset release decision tied to primary US, EU, UK and China rules, separating product evidence from synthetic-performer disclosure. Do not assert that all search results omit these subjects.",
   words: 1800,
   angle:
-    "In beauty the line is not generated against shot, it is atmosphere against efficacy. Texture, packaging, ingredient stories, settings and casting can be generated; anything that shows what the product does to skin is a claim, and a claim needs the proof the regulator asks for. Map which assets sit on which side, market by market, with China as one market among four.",
+    "Start with atmosphere versus efficacy, then test every factual visual claim. Packaging, shade swatches, texture and ingredient imagery also need product-specific verification; generation is not blanket clearance for those assets. Use generation for reviewed campaign illustration, preserve accurate product references, and never present invented on-skin results as evidence. Map asset choices and sign-off across the US, EU, UK and China.",
   mustInclude: [
     "A decision table: asset (packshot, texture swatch, ingredient visual, model campaign, on-skin result, before and after) against how to make it and the claim risk",
     "US: the FDA line between a cosmetic claim and a drug claim, from FDA's own page; the FTC on substantiation",
@@ -45,7 +45,7 @@ export default {
     "FDA: the cosmetic and drug definitions (FD&C Act section 201), from the FDA page on whether a product is a cosmetic, a drug or both",
     "EU 655/2013: the six common criteria (legal compliance, truthfulness, evidential support, honesty, fairness, informed decision-making), from EUR-Lex",
     "ASA: the filters ruling and its date, from asa.org.uk",
-    "NMPA: the cosmetics efficacy claim evaluation standard and the date it took effect, from nmpa.gov.cn",
+    "NMPA: the cosmetics efficacy claim evaluation standard, effective May 1, 2021, with phased filing and summary deadlines kept distinct. If nmpa.gov.cn blocks access, use the complete official provincial regulator republication, attribute that route, and preserve the sensory and physical-effect summary exemptions.",
     "Any adoption or market figure only from a source with a stated method; a vendor survey without one is cut",
   ],
   assets: [

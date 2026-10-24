@@ -1,0 +1,183 @@
+URL: https://sellercentral.amazon.com/help/hub/reference/external/GFXHCHYZRGJRBZA5?locale=en-US
+Captured: 2026-10-24T02:00:42.992Z
+
+Get over $50K in potential incentives when you start selling with Amazon. Learn how
+English
+Select your preferred language
+English - US
+中文 - CN
+한국어 - KR
+Français - FR
+Italiano - IT
+हिंदी - IN
+ไทย - TH
+தமிழ் - IN
+Tiếng Việt - VN
+Deutsch - DE
+Português - BR
+中文 - TW
+日本語 - JP
+Español - ES
+Log in
+Sign up
+This article applies to selling in: United States
+How to tag media that contains an AI-generated person
+On this page
+Tag images on macOS
+Tag images on Windows
+Tag media using command line tools
+Verify the tag
+
+If your image or video contains a AI-generated human, learn how to update the metadata.
+
+To comply with jurisdictions that require disclosure of AI-generated people in product media, Amazon requires selling partners to tag applicable media before upload.
+
+If your media contains an AI-generated person, you must add the contains-synthetic-performer keyword to the XMP dc:subject field. Specifically, the metadata must contain an rdf:li of contains-synthetic-performer inside the XMP dc:subject rdf:Bag.
+
+Many XMP-capable tools are available depending on your operating system and workflow. The instructions below cover built-in tools for macOS and Windows, as well as a command line option for other systems.
+
+Tag images on macOS
+
+Use Preview to add the keyword:
+
+
+Open the file in Preview.
+Open the inspector with Cmd+I (or select Tools then Show Inspector).
+Click the Keywords tab.
+The Keywords pane will initially show "No Keywords.” (Fig. 1)
+
+Fig. 1
+
+
+
+Click the + button at the bottom of the pane.
+Type "contains-synthetic-performer" and click Enter.
+Result: The keyword appears in the list. (Fig. 2)
+
+Fig.2
+
+Tag images on Windows
+
+Use File Explorer to add the keyword:
+
+
+Right-click the file and select Properties.
+Go to the Details tab.
+In the Description section, locate the Tags field. (The Subject and Tags fields write to different metadata locations. Use only the Tags field)
+Type "contains-synthetic-performer" into the Tags field.
+Leave the Subject field unchanged.
+Select OK.
+Result: You’ll see the addition of the keyword. (Fig. 3)
+
+Fig 3
+
+Tag media using command line tools
+
+Other cross-platform command line tools can add XMP tags for both images and videos across different system types (for example, Linux distributions).
+
+The following example uses exiftool.
+
+Tag a single file
+
+To add the keyword, first check the current state, then write and verify:
+
+exiftool -G1 javelinas.png | grep Subject
+# (no output  -  Subject is empty)
+
+exiftool -XMP-dc:Subject+=contains-synthetic-performer javelinas.png
+# 1 image files updated
+
+exiftool -G1 javelinas.png | grep Subject
+# [XMP-dc] Subject: contains-synthetic-performer
+
+Tag files in bulk
+
+To tag multiple files at once, use the same command with broader file targets:
+
+Tag all PNG images in the current folder:
+
+exiftool -XMP-dc:Subject+=contains-synthetic-performer *.png
+# 5 image files updated
+
+Tag specific files individually:
+
+exiftool -XMP-dc:Subject+=contains-synthetic-performer image1.png image2.jpg video.mp4 
+# 3 image files updated 
+
+
+Important details about the += operator:
+
+The operator appends to the keywords bag without overwriting existing keywords.
+Running the same command twice writes the keyword twice.
+Duplicates do not break tagging, but they do bloat the XMP packet unnecessarily.
+
+Verify the tag
+
+After adding the keyword, verify that the contains-synthetic-performer value is present in the XMP dc:subject field. Use any tool that can show the explicit XMP dc:subject field.
+
+Related articles
+FSA/HSA accounts and product eligibility
+Review listing changes
+Explore Brand Selection
+Qualify to Made in France / Fabriqué en France
+About product documents
+Compare and Choose Listing Methods
+Start Listing Your Products Now
+Add one product at a time
+Use the Purge and Replace tool
+Bulk listing templates
+Add your products using inventory files
+Add product data to your inventory file
+About products and listings
+Amazon Search
+Create a Size Chart for Your Products
+Product page style guides
+Product detail pages and offers
+Novelty SKU Limits
+Upload images
+Image guidelines for clothing
+Diversity imaging for Beauty ASINs
+3D model technical requirements
+Multipack imaging standards
+Image troubleshooting
+Potential duplicates and split variations
+Suppressed listings
+Listing blocked due to potential pricing error
+How the Other Sellers on Amazon box works
+Error code explanations
+Create and manage inventory FAQ
+Newer version widget
+Enroll products in our Climate Pledge Friendly program
+Enroll certified Textile and Oeko-Tex products in Climate Pledge Friendly
+Launch of new dimension attributes for 816 product types
+Size normalization FAQ
+Conditional Unit Count based on Item Form, Normalized Value of Size, Item Form, Number of Items and Net Content details
+Warning code 18367: Product type modified by Amazon
+Manage Images
+Assign Images
+Display Climate Pledge Friendly’s green leaf icon, sustainability attributes, and certification details on eligible products
+Need more help?
+Visit Seller Forums
+See more on Seller Central
+	
+English
+Sell with Amazon
+How to Sell on Amazon
+New Seller Guide
+Amazon Global Selling
+Selling Programs
+Amazon Brand Registry
+Amazon FBA
+Amazon Ads
+More Selling Programs
+Tools
+FBA Revenue Calculator
+Brand Name Generator
+Amazon Seller App
+Resources
+Seller Forums
+Help Center
+Seller University
+Terms of Service
+Privacy Policy
+© 2026 Amazon.com Services LLC.

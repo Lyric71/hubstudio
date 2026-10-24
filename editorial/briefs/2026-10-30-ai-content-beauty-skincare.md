@@ -39,13 +39,13 @@ first) and `../SPEC.md`. They override any conflicting rule inside the skill.
 | Hero image | `public/Images/insight-ai-content-beauty-skincare.webp`, referenced as `/Images/insight-ai-content-beauty-skincare.webp` |
 | Primary query | `AI content for beauty brands` |
 | Secondary queries | `AI generated skincare product images`, `AI beauty product photography`, `AI models in beauty ads`, `cosmetics advertising claims rules AI images` |
-| SERP verdict | Tool vendors, translation firms and market-data houses rank with adoption talk and volume promises; none says where generated imagery is risky in beauty (the on-skin result, the before and after, the retouched complexion) or how the US, the EU, the UK and China each treat it. |
+| SERP verdict | Research checked October 24, 2026: regulator guidance already addresses visual claims and production techniques. Build an asset-by-asset release decision tied to primary US, EU, UK and China rules, separating product evidence from synthetic-performer disclosure. Do not assert that all search results omit these subjects. |
 | Body length | 1,800 words (body only, per the char-count rule) |
 | Slot requirement | Asset list per channel, the category's claim rules, a case reference only from src/data/case-studies.ts |
 
 ## The angle
 
-In beauty the line is not generated against shot, it is atmosphere against efficacy. Texture, packaging, ingredient stories, settings and casting can be generated; anything that shows what the product does to skin is a claim, and a claim needs the proof the regulator asks for. Map which assets sit on which side, market by market, with China as one market among four.
+Start with atmosphere versus efficacy, then test every factual visual claim. Packaging, shade swatches, texture and ingredient imagery also need product-specific verification; generation is not blanket clearance for those assets. Use generation for reviewed campaign illustration, preserve accurate product references, and never present invented on-skin results as evidence. Map asset choices and sign-off across the US, EU, UK and China.
 
 ## The research gate, before any drafting
 
@@ -74,7 +74,7 @@ citation. Append anything new to the ledger before finishing.
 - FDA: the cosmetic and drug definitions (FD&C Act section 201), from the FDA page on whether a product is a cosmetic, a drug or both
 - EU 655/2013: the six common criteria (legal compliance, truthfulness, evidential support, honesty, fairness, informed decision-making), from EUR-Lex
 - ASA: the filters ruling and its date, from asa.org.uk
-- NMPA: the cosmetics efficacy claim evaluation standard and the date it took effect, from nmpa.gov.cn
+- NMPA: the cosmetics efficacy claim evaluation standard, effective May 1, 2021, with phased filing and summary deadlines kept distinct. If nmpa.gov.cn blocks access, use the complete official provincial regulator republication, attribute that route, and preserve the sensory and physical-effect summary exemptions.
 - Any adoption or market figure only from a source with a stated method; a vendor survey without one is cut
 
 **If a figure cannot be sourced, cut the claim.** Do not estimate, do not

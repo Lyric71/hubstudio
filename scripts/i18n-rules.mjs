@@ -16,7 +16,7 @@ export function problems(key, value, locale) {
   if (/&(?:[a-z]+|#\d+|#x[0-9a-f]+)\s+;/i.test(value)) out.push('broken entity (space before its ;)');
   // Entities (&amp;, &rarr;) are markup, not words or punctuation.
   const text = strip(value).replace(/&(?:[a-z]+|#\d+|#x[0-9a-f]+);/gi, ' ');
-  if (/—/.test(text)) out.push('em dash');
+  if (/\u2014/.test(text)) out.push('em dash');
   if (/\s[-–]\s/.test(text)) out.push('dash used as punctuation');
   const words = strip(key).match(/[A-Za-z]{3,}/g) ?? [];
   // A URL or a file name (no space) legitimately stays as it is.
@@ -24,11 +24,15 @@ export function problems(key, value, locale) {
   // A URL or file name kept verbatim (no space) is not prose: skip the punctuation rules (e.g. ?tool=edit).
   const verbatimToken = value === key && !/\s/.test(strip(key).trim());
   if (locale === 'fr' && !verbatimToken) {
-    if (/ [;:!?»]/.test(text) || /« /.test(text)) out.push('ordinary space where French needs a non-breaking one');
-    if (/[\p{L}\d)][;!?]/u.test(text) || /[\p{L})][:](?=\s|$)/u.test(text)) out.push('missing non-breaking space before ; : ! ?');
-    if (/«(?![  ])/.test(text) || /(?<![  ])»/.test(text)) out.push('guillemets without non-breaking spaces');
-    if (/\p{L}'\p{L}/u.test(text)) out.push("straight apostrophe (use ’)");
-    if (/"/.test(text.replace(/<[^>]*>/g, ''))) out.push('straight quotes (use « »)');
+    // Source URLs also occur inside translated citations. Their query strings
+    // keep URL syntax; French spacing rules still apply to surrounding prose.
+    const sourceUrls = new Set(strip(key).match(/https?:\/\/[^\s<>]+/g) ?? []);
+    const prose = text.replace(/https?:\/\/[^\s<>]+/g, (url) => sourceUrls.has(url) ? 'URL' : url);
+    if (/ [;:!?»]/.test(prose) || /« /.test(prose)) out.push('ordinary space where French needs a non-breaking one');
+    if (/[\p{L}\d)][;!?]/u.test(prose) || /[\p{L})][:](?=\s|$)/u.test(prose)) out.push('missing non-breaking space before ; : ! ?');
+    if (/«(?![  ])/.test(prose) || /(?<![  ])»/.test(prose)) out.push('guillemets without non-breaking spaces');
+    if (/\p{L}'\p{L}/u.test(prose)) out.push("straight apostrophe (use ’)");
+    if (/"/.test(prose.replace(/<[^>]*>/g, ''))) out.push('straight quotes (use « »)');
   }
   if (locale === 'zh') {
     if (new RegExp(`[${CJK}][,;:!?]|[,;:!?](?=[${CJK}])`).test(text)) out.push('half-width punctuation in Chinese');

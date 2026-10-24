@@ -44,6 +44,23 @@ export interface Insight {
 
 export const insights: Insight[] = [
   {
+    slug: 'ai-content-beauty-skincare',
+    image: '/Images/insight-ai-content-beauty-skincare.webp',
+    imageAlt:
+      'An open cream jar, sample tile and used spatula on a worn skincare work surface.',
+    category: 'Production',
+    tone: 'orange',
+    title: 'AI Content for Beauty and Skincare Brands',
+    deck: 'Plan beauty assets around real product evidence, with clear decisions on generated scenes, skin results, synthetic models, market rules, and final approval before commissioning production.',
+    date: 'October 24, 2026',
+    dateISO: '2026-10-24',
+    readingTime: '11 min read',
+    author: 'Cyril Drouin',
+    metaTitle: 'AI Content for Beauty and Skincare Brands | hubStudio',
+    metaDescription:
+      'Plan AI beauty content around product evidence: what to generate, how to review skin results, and which market and model disclosure rules apply.',
+  },
+  {
     slug: 'google-merchant-center-image-requirements',
     image: '/Images/insight-google-merchant-center-image-requirements.webp',
     imageAlt:
